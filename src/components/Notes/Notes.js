@@ -23,14 +23,14 @@ class Notes extends React.Component{
 
     async fechNotes(){
         //const res = await axios.get('http://46.41.151.63:3001/api/notes');
-        const res = await axios.get('http://192.168.0.195:3001/api/notes');
-        const notes = res.data;
-        this.setState({notes});  
+      //  const res = await axios.get('http://192.168.0.195:3001/api/notes');
+        // const notes = res.data;
+        // this.setState({notes});  
     }
 
     async fechOkladki(){
    // const res = await axios.get('http://46.41.151.63:3001/api/okladki/All');
-      const res = await axios.get('http://127.0.0.1:3001/api/okladki/All');
+      const res = await axios.get('http://localhost:3001/api/okladki/All');
         const notes = res.data;
         this.setState({notes});  
       

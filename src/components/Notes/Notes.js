@@ -16,11 +16,21 @@ class Notes extends React.Component{
     }
 
     componentDidMount(){
-        this.fechNotes();
+        // this.fechNotes();
+        this.fechOkladki();
+
     }
 
     async fechNotes(){
-        const res = await axios.get('http://46.41.151.63:3001/api/notes');
+        //const res = await axios.get('http://46.41.151.63:3001/api/notes');
+        const res = await axios.get('http://192.168.0.195:3001/api/notes');
+        const notes = res.data;
+        this.setState({notes});  
+    }
+
+    async fechOkladki(){
+    const res = await axios.get('http://46.41.151.63:3001/api/okladki/All');
+       // const res = await axios.get('http://192.168.0.195:3001/api/okladki/All');
         const notes = res.data;
         this.setState({notes});  
     }
@@ -48,18 +58,20 @@ render(){
             <p>Okładki</p>
 
 
-            <NewNote
+            {/* <NewNote
             onAdd= {(note)=> this.addNote(note)}
-            />
+            /> */}
 
 
             {this.state.notes.map(note =>(
                         <Note
                             key={note.id}
-                            title={note.title}
-                            body ={note.body}
+                            title={note.klient}
+                            body ={note.praca}
                             id ={note.id}
                             onDelete={()=>this.deleteNote(note.id)}
+                            klient={note.klient}
+
                         />
             ))}
        

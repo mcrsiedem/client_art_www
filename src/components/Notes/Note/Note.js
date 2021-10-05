@@ -10,16 +10,21 @@ function Note(props){
 
     return (
     <div className ="note">
+    {/* <p onClick={toggleDesc}>{props.title}</p>      */}
     <p onClick={toggleDesc}>{props.title}</p> 
     {showDesc &&
             (
             <div className ="description">{props.body}</div>
             )}
-    <button>edytuj</button>
-    <button 
+    <button>zrobione</button>
+
+    {/* <button 
         className="delete" 
-        onClick={()=>props.onDelete(props.id)}>usuń</button>
+        onClick={()=>props.onDelete(props.id)}>usuń</button> */}
+
     </div>
+    
+
     );
 }
 

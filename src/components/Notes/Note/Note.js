@@ -10,17 +10,17 @@ function Note(props){
 
     return (
     <div className ="note">
-    {/* <p onClick={toggleDesc}>{props.title}</p>      */}
-    <p onClick={toggleDesc}>{props.title}</p> 
-    {showDesc &&
-            (
-            <div className ="description">{props.body}</div>
-            )}
-    <button>zrobione</button>
+        {/* <p onClick={toggleDesc}>{props.title}</p>      */}
+        <p onClick={toggleDesc}>{props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
+        {showDesc &&
+                (
+                <div className ="description">{props.body}</div>
+                )}
+        <button>zrobione</button>
 
-    {/* <button 
-        className="delete" 
-        onClick={()=>props.onDelete(props.id)}>usuń</button> */}
+        {/* <button 
+            className="delete" 
+            onClick={()=>props.onDelete(props.id)}>usuń</button> */}
 
     </div>
     

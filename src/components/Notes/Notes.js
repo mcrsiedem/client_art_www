@@ -29,7 +29,7 @@ class Notes extends React.Component{
     }
 
     async fechOkladki(){
-    const res = await axios.get('http://46.41.151.63:3001/api/okladki/All');
+    const res = await axios.get('http://46.41.151.63:3001/api/okladki/Wydrukowane');
     // const res = await axios.get('http://localhost:3001/api/okladki/All');
         const notes = res.data;
         this.setState({notes});  
@@ -56,7 +56,7 @@ render(){
     
     return (
         <div>
-            <p>Okładki</p>
+            <p>Wydrukowane okładki</p>
 
 
             {/* <NewNote
@@ -72,6 +72,8 @@ render(){
                             id ={note.id}
                             onDelete={()=>this.deleteNote(note.id)}
                             klient={note.klient}
+                            nrZlecenia={note.nrZlecenia}
+                            rokZlecenia={note.rokZlecenia}
 
                         />
             ))}

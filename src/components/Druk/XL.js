@@ -26,6 +26,7 @@ class XL extends React.Component{
         //const notes =[...this.state.notes].filter(note=> note.id !== id)
 
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
+        console.log('usuwanie notatki',res.data);
        // this.setState({notes});
     }
 

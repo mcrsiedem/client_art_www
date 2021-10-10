@@ -12,11 +12,10 @@ import {
 
 export default function App() {
   return (
-    <Router>          
+    <Router>        
         <Switch>
-          <Route path="/xl"> <DrukXL />        </Route>
-          <Route path="/">   <Home />          </Route>
-
+          <Route path="/xl"> <XL />        </Route>
+          <Route path="/okladki">   <Notes />          </Route>
         </Switch>
     </Router>
   );
@@ -27,7 +26,7 @@ function Home() {
 }
 
 function DrukXL() {
-  return (<div className ="xl"> <XL />   </div>);
+  return (<div className ="XL"> <XL />   </div>);
 }
 
 

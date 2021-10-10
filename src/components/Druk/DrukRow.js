@@ -8,7 +8,10 @@ function DrukRow(props){
         setShowDesc(!showDesc);
     }
 
+    
+
     return (
+       // <div className ="note"></div>
     <div className ="note">
         {/* <p onClick={toggleDesc}>{props.title}</p>      */}
         <p onClick={toggleDesc}>{props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
@@ -16,7 +19,7 @@ function DrukRow(props){
                 (
                 <div className ="description">{props.body}</div>
                 )}
-        <button  
+        <button className ={props.nazwa==='Wydrukowane' ? 'wydrukowane':''} 
             onClick={()=>props.updateDruk(props.id)}>Wydrukowane</button>
 
         {/* <button 
@@ -27,6 +30,8 @@ function DrukRow(props){
     
 
     );
+
+  
 }
 
 export default DrukRow;

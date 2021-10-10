@@ -24,9 +24,10 @@ class XL extends React.Component{
     async updateDruk(id){
        // console.log('usuwanie notatki',id);
         //const notes =[...this.state.notes].filter(note=> note.id !== id)
-
+// const index = notes.findIndex(x => x.id === id)
+//         notes[index]
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
-        console.log('usuwanie notatki',res.data);
+        console.log('wydrukowane',res.data.changedRows);
        // this.setState({notes});
     }
 
@@ -46,6 +47,7 @@ render(){
                             klient={row.klient}
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
+                            nazwa={row.nazwa}
                         />
             ))}
         </div>

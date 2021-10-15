@@ -8,19 +8,26 @@ function DrukRow(props){
         setShowDesc(!showDesc);
     }
 
+
+
+  const handleToggle = () => {
+
+    document.getElementById(props.id).className = 'wydrukowane';
+    props.updateDruk(props.id);
+    
+  }
     
 
     return (
        // <div className ="note"></div>
     <div className ="note">
         {/* <p onClick={toggleDesc}>{props.title}</p>      */}
-        <p onClick={toggleDesc}>{props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
+        <p onClick={toggleDesc}> {props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
         {showDesc &&
                 (
                 <div className ="description">{props.body}</div>
                 )}
-        <button className ={props.nazwa==='Wydrukowane' ? 'wydrukowane':''} 
-            onClick={()=>props.updateDruk(props.id)}>Wydrukowane</button>
+        <button id={props.id} className = {props.nazwa==='Wydrukowane' ? 'wydrukowane':'niewydrukowane'} onClick={ ()=>props.updateDruk(props.id), handleToggle }>Wydrukowane</button>
 
         {/* <button 
             className="delete" 

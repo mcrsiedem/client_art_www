@@ -33,10 +33,13 @@
 .note button.wydrukowane{
     background-color: rgb(17, 167, 80);
 }
-
-.note button:hover{
-    background-color: rgb(129,70,200);
+.note button.niewydrukowane{
+    background-color: rgb(183, 179, 190);
 }
+
+/* .note button:hover{
+    background-color: rgb(129,70,200);
+} */
 .note button.delete{
     background-color: rgb(238,67,55);
 }

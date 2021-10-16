@@ -2,9 +2,10 @@ import React from "react";
 import '../Druk/Druk.css';
 
 import DrukRow from "./DrukRow";
+
 import axios from "axios";
 
-class XL extends React.Component{
+class H3 extends React.Component{
 
     constructor(props){
         super(props);
@@ -14,11 +15,11 @@ class XL extends React.Component{
     }
 
     componentDidMount(){
-        this.fechXL();
+        this.fechDruk();
     }
 
-    async fechXL(){
-    const res = await axios.get('http://46.41.151.63:3001/api/druk/XL');
+    async fechDruk(){
+    const res = await axios.get('http://46.41.151.63:3001/api/druk/H3');
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")
@@ -30,20 +31,22 @@ class XL extends React.Component{
     this.setState({notes});  
     }
     async updateDruk(id){
-       // console.log('usuwanie notatki',id);
-        //const notes =[...this.state.notes].filter(note=> note.id !== id)
-// const index = notes.findIndex(x => x.id === id)
-//         notes[index]
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
-        console.log('wydrukowane',res.data.changedRows);
-       // this.setState({notes});
+        console.log('wydrukowane',res.data);
+        document.getElementById(id).className = 'wydrukowane';
+    }
+
+    async updateDrukNiewydrukowane(id){
+        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value: '-'});
+        console.log('niewydrukowane',res.data);
+        document.getElementById(id).className = 'niewydrukowane';
     }
 
 render(){
 
     return (
         <div>
-            <p>Druk XL</p>
+            <p>Druk H3</p>
 
             {this.state.notes.map(row =>(
                         <DrukRow
@@ -56,10 +59,11 @@ render(){
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
                             nazwa={row.nazwa}
+                            updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                         />
             ))}
         </div>
     );
 }
 }
-export default XL;
+export default H3;

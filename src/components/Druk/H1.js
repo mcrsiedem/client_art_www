@@ -1,7 +1,7 @@
 import React from "react";
 import '../Druk/Druk.css';
+
 import DrukRow from "./DrukRow";
-import DrukRow2 from "./DrukRow2";
 
 import axios from "axios";
 
@@ -49,7 +49,7 @@ render(){
             <p>Druk H1</p>
 
             {this.state.notes.map(row =>(
-                        <DrukRow2
+                        <DrukRow
                             key={row.id}
                             title={row.klient}
                             body ={row.praca}

@@ -1,60 +1,93 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
+import '../Druk/Druk.css';
 
-function DrukRow(props){
 
-    const[showDesc,setShowDesc] = useState(false);
-    const toggleDesc = ()=>{
-        //zmiana setShowDesc na odwrotność aktualnego stanu
-        setShowDesc(!showDesc);
+import axios from "axios";
+
+class DrukRow extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+             notes : [],
+             showDesc: false,
+             showMinus: false
+             
+        };
+
+
+
+
+
+
     }
 
-    const[showMinus,setShowMinus] = useState(true);
-    const toggleMinus = ()=>{
-        //zmiana setShowDesc na odwrotność aktualnego stanu
-        console.log('true');
-        setShowMinus(!showMinus);
+ minusTrue(){
+      //  this.props.updateDruk(this.props.id) 
+     // this.props.nazwa==='Wydrukowane' ? this.setState({showMinus:true}): null
+
+     if(this.props.nazwa==='Wydrukowane'){
+        this.setState({showMinus:true})
+        console.log('minus true',this.props.nazwa); 
+     }
         
+      }
+
+ componentDidMount(){
+
+    this.minusTrue();
+
 
     }
-
-
-
-  const handleSend = () => {
-    props.updateDruk(props.id) 
-    console.log('OK');
-  }
 
     
+
+
+render(){
+    const handleSend = () => {
+        this.props.updateDruk(this.props.id) 
+        this.setState({showMinus:true})
+      }
+
+      const handleSendMinus = () => {
+        this.props.updateDrukNiewydrukowane(this.props.id)
+        this.setState({showMinus:false})
+      }
+
+      const toggleDesc = ()=>{
+        //zmiana setShowDesc na odwrotność aktualnego stanu
+        this.setState(prevState => ({
+            showDesc: !prevState.showDesc
+          }));
+  
+    }
+
+      
+
+
+
 
     return (
 
       
-       // <div className ="note"></div>
-    <div className ="note" >
+   
+     <div className ="note" >
+    <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}</p> 
+    {this.state.showDesc &&
+                (
+                <div className ="description">{this.props.body}</div>
+                )}
+    <button id={this.props.id} className = {this.props.nazwa==='Wydrukowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Wydrukowane</button>
+    {this.state.showMinus &&
+                (
+                  <button className="delete" onClick={handleSendMinus}>-</button>
+                )}
+     </div>
      
-        {/* <p onClick={toggleDesc}>{props.title}</p>      */}
-        <p onClick={toggleDesc}> {props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
-        {showDesc &&
-                (
-                <div className ="description">{props.body}</div>
-                )}
-        <button id={props.id} className = {props.nazwa==='Wydrukowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Wydrukowane</button>
+ 
+     );
 
-        
-
-         {showMinus &&
-                (
-                  <button className="delete" onClick={()=>props.updateDrukNiewydrukowane(props.id)}>-</button>
-                )}
-
-       {/* <button className="delete" onClick={()=>props.updateDrukNiewydrukowane(props.id)}>-</button> */}
-
-    </div>
-    
-
-    );
-
-  
 }
 
+}
 export default DrukRow;

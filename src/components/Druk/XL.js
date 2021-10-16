@@ -1,6 +1,7 @@
 import React from "react";
 import '../Druk/Druk.css';
 import DrukRow from "../Druk/DrukRow";
+import DrukRow2 from "../Druk/DrukRow2";
 import axios from "axios";
 
 class XL extends React.Component{
@@ -45,7 +46,7 @@ render(){
             <p>Druk XL</p>
 
             {this.state.notes.map(row =>(
-                        <DrukRow
+                        <DrukRow2
                             key={row.id}
                             title={row.klient}
                             body ={row.praca}

@@ -18,7 +18,7 @@ class XL extends React.Component{
     }
 
     async fechXL(){
-    const res = await axios.get('http://46.41.151.63:3001/api/druk/XL');
+    const res = await axios.get('http://46.41.151.63:3001/api/druk/XL/1');
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")
@@ -30,13 +30,16 @@ class XL extends React.Component{
     this.setState({notes});  
     }
     async updateDruk(id){
-       // console.log('usuwanie notatki',id);
-        //const notes =[...this.state.notes].filter(note=> note.id !== id)
-// const index = notes.findIndex(x => x.id === id)
-//         notes[index]
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
-        console.log('wydrukowane',res.data.changedRows);
-       // this.setState({notes});
+        console.log('wydrukowane',res.data);
+        document.getElementById(id).className = 'wydrukowane';
+
+    }
+
+    async updateDrukNiewydrukowane(id){
+        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value: '-'});
+        console.log('niewydrukowane',res.data);
+        document.getElementById(id).className = 'niewydrukowane';
     }
 
 render(){
@@ -56,6 +59,7 @@ render(){
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
                             nazwa={row.nazwa}
+                            updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                         />
             ))}
         </div>

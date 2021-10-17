@@ -19,7 +19,7 @@ class H1 extends React.Component{
     }
 
     async fechDruk(){
-    const res = await axios.get('http://46.41.151.63:3001/api/druk/H1');
+    const res = await axios.get('http://46.41.151.63:3001/api/druk/H1/1');
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")

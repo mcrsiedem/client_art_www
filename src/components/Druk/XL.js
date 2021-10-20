@@ -22,6 +22,7 @@ class XL extends React.Component{
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")
+                              .filter(row=> row.status !== "Akcept")
                               .filter(row=> row.status !== "Sfalcowane")
                               .filter(row=> row.status !== "Oprawione")
                               .filter(row=> row.status !== "Oddane")

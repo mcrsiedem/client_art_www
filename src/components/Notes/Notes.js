@@ -1,7 +1,7 @@
 import React from "react";
 import './Notes.css';
 import Note from "./Note/Note";
-import NewNote from "./NewNote/NewNote";
+import NewNote from "./Note/NewNote";
 import axios from "axios";
 
 

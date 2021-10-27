@@ -47,3 +47,8 @@
     background-color: rgb(201, 41, 29);
 }
 
+
+.cosladnegozi{
+    background-color: (#f0ff35, #a9ff00),
+        linear-gradient(  #ee8036 25%, #80c800 80%);
+    }

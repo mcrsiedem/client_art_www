@@ -68,26 +68,26 @@ render(){
     const czasfalcowania = this.state.zlecenia.reduce((czasfalcowania, row) => czasfalcowania + parseInt(row.falcCzas, 10), 0);
     const ilosczlecen = this.state.zlecenia.length;
     
-   const zlecenie_do_wydrukowania_h3 = this.state.produkty.  
-    filter(row=> row.maszyna === "H3").
-    filter(row=> row.typ !== "Przerwa").
-    filter(row=> row.status !== "Wydrukowane").
-    filter(row=> row.status !== "Sfalcowane").
-    filter(row=> row.status !== "Uszlachetnione").
-    filter(row=> row.status !== "Oprawione").
-    filter(row=> row.nazwa !== "Wydrukowane").
-    length;
+   const zlecenie_do_wydrukowania_h3 = this.state.produkty
+    .filter(row=> row.maszyna === "H3")
+    .filter(row=> row.typ !== "Przerwa")
+    .filter(row=> row.status !== "Wydrukowane")
+    .filter(row=> row.status !== "Sfalcowane")
+    .filter(row=> row.status !== "Uszlachetnione")
+    .filter(row=> row.status !== "Oprawione")
+    .filter(row=> row.nazwa !== "Wydrukowane")
+    .length;
 
      
-   const przeloty_do_wydrukowania_h3 = this.state.produkty.  
-   filter(row=> row.maszyna === "H3").
-   filter(row=> row.typ !== "Przerwa").
-   filter(row=> row.status !== "Wydrukowane").
-   filter(row=> row.status !== "Sfalcowane").
-   filter(row=> row.status !== "Uszlachetnione").
-   filter(row=> row.status !== "Oprawione").
-   filter(row=> row.nazwa !== "Wydrukowane").
-   reduce((przelotyh3, row) => przelotyh3 + parseInt(row.przeloty, 10), 0);
+   const przeloty_do_wydrukowania_h3 = this.state.produkty  
+   .filter(row=> row.maszyna === "H3")
+   .filter(row=> row.typ !== "Przerwa")
+   .filter(row=> row.status !== "Wydrukowane")
+   .filter(row=> row.status !== "Sfalcowane")
+   .filter(row=> row.status !== "Uszlachetnione")
+   .filter(row=> row.status !== "Oprawione")
+   .filter(row=> row.nazwa !== "Wydrukowane")
+   .reduce((przelotyh3, row) => przelotyh3 + parseInt(row.przeloty, 10), 0);
 
    const czas_do_wydrukowania_h3 = this.state.produkty.  
    filter(row=> row.maszyna === "H3").

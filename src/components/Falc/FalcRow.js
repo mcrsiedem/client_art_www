@@ -71,7 +71,7 @@ render(){
 
       
    
-     <div className ="note" >
+     <div id={this.props.id+"x"} className ="note" >
     <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ}</p> 
     {this.state.showDesc &&
                 (

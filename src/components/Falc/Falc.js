@@ -18,23 +18,27 @@ class Falc extends React.Component{
     }
 
     async fechXL(){
-
-    const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
+        const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
+    //const res = await axios.get('http://localhost:3001/api/falcowanie');
     const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane");
     this.setState({notes});  
     }
     async updateDruk(id){
      
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'Sfalcowane'});
-        console.log('wydrukowane',res.data);
+       const res = await axios.put('http://46.41.151.63:3001/api/updateProduktyStatusFalcowanie', { id: id, kolumna: 'Status', value:'Sfalcowane'});
+        console.log('wydrukowane',res.data.changedRows);
+        if(res.data.changedRows===0 ){
+            document.getElementById(id+"x").remove();
+        }else{
         document.getElementById(id).className = 'wydrukowane';
+    }
 
     }
 
     async updateDrukNiewydrukowane(id){
 
        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
-        console.log('niewydrukowane',res.data);
+        console.log('niewydrukowane',res.data.changedRows);
         document.getElementById(id).className = 'niewydrukowane';
     }
 

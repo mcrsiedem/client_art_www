@@ -18,22 +18,29 @@ class Falc extends React.Component{
     }
 
     async fechXL(){
-
-    const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
-    const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane");
+      //  const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
+    const res = await axios.get('http://localhost:3001/api/falcowanie');
+    const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane" || row.status === "W trakcie falcowania...");
     this.setState({notes});  
     }
     async updateDruk(id){
      
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'Sfalcowane'});
+       const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value:'Sfalcowane'});
         console.log('wydrukowane',res.data);
         document.getElementById(id).className = 'wydrukowane';
 
     }
+    async updateWtrakcie(id){
+     
+        const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value:'W trakcie falcowania...'});
+         console.log('wydrukowane',res.data);
+         document.getElementById(id).className = 'wydrukowane';
+ 
+     }
 
     async updateDrukNiewydrukowane(id){
 
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
+       const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
         console.log('niewydrukowane',res.data);
         document.getElementById(id).className = 'niewydrukowane';
     }
@@ -57,6 +64,7 @@ render(){
                             status={row.status}
                             updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                             typ={row.typ}
+                            wtrakcie={()=>this.updateWtrakcie(row.id)}
                         />
             ))}
         </div>

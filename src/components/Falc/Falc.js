@@ -18,33 +18,21 @@ class Falc extends React.Component{
     }
 
     async fechXL(){
-<<<<<<< HEAD
       //  const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
     const res = await axios.get('http://localhost:3001/api/falcowanie');
     const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane" || row.status === "W trakcie falcowania...");
-=======
-        const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
-    //const res = await axios.get('http://localhost:3001/api/falcowanie');
-    const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane");
->>>>>>> 232ef1a8ca29ad30df1208d62a0086edce009635
+   
     this.setState({notes});  
     }
+
     async updateDruk(id){
      
-<<<<<<< HEAD
        const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value:'Sfalcowane'});
         console.log('wydrukowane',res.data);
-=======
-       const res = await axios.put('http://46.41.151.63:3001/api/updateProduktyStatusFalcowanie', { id: id, kolumna: 'Status', value:'Sfalcowane'});
-        console.log('wydrukowane',res.data.changedRows);
-        if(res.data.changedRows===0 ){
-            document.getElementById(id+"x").remove();
-        }else{
->>>>>>> 232ef1a8ca29ad30df1208d62a0086edce009635
         document.getElementById(id).className = 'wydrukowane';
     }
 
-    }
+    
     async updateWtrakcie(id){
      
         const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value:'W trakcie falcowania...'});
@@ -55,13 +43,8 @@ class Falc extends React.Component{
 
     async updateDrukNiewydrukowane(id){
 
-<<<<<<< HEAD
        const res = await axios.put('http://localhost:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
         console.log('niewydrukowane',res.data);
-=======
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
-        console.log('niewydrukowane',res.data.changedRows);
->>>>>>> 232ef1a8ca29ad30df1208d62a0086edce009635
         document.getElementById(id).className = 'niewydrukowane';
     }
 

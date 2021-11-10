@@ -65,6 +65,7 @@ render(){
       const handleSendWtrakcie = () => {
         this.props.wtrakcie(this.props.id) 
         this.setState({showMinus:true})
+
       }
 
       const handleSendMinus = () => {
@@ -90,30 +91,25 @@ render(){
       
    
      <div id={this.props.id+"x"} className ="note" >
-    <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ}</p> 
 
-    {this.state.showDesc &&
-                (        <div className ="description">{this.props.body}</div>                )
-    }
+            <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ}</p> 
 
+            {this.state.showDesc &&
+                        (        <div className ="description">{this.props.body}</div>                )
+            }
 
+            {/* start */}   
+            <button id={this.props.id} className = {this.props.status==='W trakcie falcowania...' || this.props.status==='Sfalcowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSendWtrakcie}>START</button>   
 
-    {/* start */}   
-    <button id={this.props.id} className = {this.props.status==='W trakcie falcowania...' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSendWtrakcie}>START</button>   
-
-    {/* sfalcowane */}     
-    {this.state.showMinus &&  (        
-    <button id={this.props.id+'s'} className = {this.props.status==='Sfalcowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Sfalcowane</button>        )   
-     }
-       
-    {/* minus */}
-    {this.state.showMinus &&  (         
-    <button className="delete" onClick={handleSendMinus}>-</button>               )    
-    }
-
-
-
-
+            {/* sfalcowane */}     
+            {this.state.showMinus &&  (        
+            <button id={this.props.id+'f'} className = {this.props.status==='Sfalcowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Sfalcowane</button>        )   
+            }
+              
+            {/* minus */}
+            {this.state.showMinus &&  (         
+            <button className="delete" onClick={handleSendMinus}>-</button>               )    
+            }
 
      </div>
      

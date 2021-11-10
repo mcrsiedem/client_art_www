@@ -29,7 +29,7 @@ class FalcRow extends React.Component{
        // console.log('minus true',this.props.status); 
      }
 
-     if(this.props.status==='W trakcie falcowania...'){
+     if(this.props.status==='Falcowanie'){
       this.setState({showMinus:true})
       this.setState({showSfalcowane:true})
 
@@ -37,14 +37,14 @@ class FalcRow extends React.Component{
         
     }
 
-      sfalcowaneTrue(){
-       if(this.props.status==='W trakcie falcowania'){
-          this.setState({showSfalcowane:true})
+      // sfalcowaneTrue(){
+      //  if(this.props.status==='W trakcie falcowania'){
+      //     this.setState({showSfalcowane:true})
     
-       }
+      //  }
   
           
-        }
+      //   }
 
  componentDidMount(){
 
@@ -99,7 +99,7 @@ render(){
             }
 
             {/* start */}   
-            <button id={this.props.id} className = {this.props.status==='W trakcie falcowania...' || this.props.status==='Sfalcowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSendWtrakcie}>START</button>   
+            <button id={this.props.id} className = {this.props.status==='Falcowanie' || this.props.status==='Sfalcowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSendWtrakcie}>START</button>   
 
             {/* sfalcowane */}     
             {this.state.showMinus &&  (        

@@ -27,7 +27,7 @@ class Falc extends React.Component{
 
     async updateDruk(id){
      
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'Sfalcowane'});
+       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'9'});
         console.log('wydrukowane',res.data);
         document.getElementById(id+"f").className = 'wydrukowane';
     }
@@ -35,7 +35,7 @@ class Falc extends React.Component{
     
     async updateWtrakcie(id){
      
-        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'Falcowanie'});
+        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value:'8'});
          console.log('wydrukowane',res.data);
          document.getElementById(id).className = 'wydrukowane';
          document.getElementById(id+"f").className = 'niewydrukowane';
@@ -44,7 +44,7 @@ class Falc extends React.Component{
 
     async updateDrukNiewydrukowane(id){
 
-       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value: 'Wydrukowane'});
+       const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Status', value: '7'});
         console.log('niewydrukowane',res.data);
         document.getElementById(id).className = 'niewydrukowane';
     }

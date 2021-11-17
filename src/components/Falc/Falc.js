@@ -20,7 +20,7 @@ class Falc extends React.Component{
     async fechXL(){
       //  const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
     const res = await axios.get('http://46.41.151.63:3001/api/falcowanie');
-    const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane" || row.status === "Falcowanie");
+    const notes =[...res.data].filter(row=> row.status === "Wydrukowane" || row.status === "Sfalcowane" || row.status === "Falcowanie" || row.status === "Drukowanie");
    
     this.setState({notes});  
     }

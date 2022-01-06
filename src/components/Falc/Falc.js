@@ -69,6 +69,7 @@ render(){
                             updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                             typ={row.typ}
                             wtrakcie={()=>this.updateWtrakcie(row.id)}
+                            spedycja={row.spedycja}
                         />
             ))}
         </div>

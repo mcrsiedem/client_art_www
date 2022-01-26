@@ -28,6 +28,7 @@ class H3 extends React.Component{
                               .filter(row=> row.status !== "Oprawione")
                               .filter(row=> row.status !== "Oddane")
                               .filter(row=> row.status !== "Uszlachetnione")
+                              .filter(row=> row.status !== "Nieaktywne")
                               .filter(row=> row.typ !== "Przerwa");
     this.setState({notes});  
     }

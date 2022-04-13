@@ -3,22 +3,32 @@ import '../Papier/Papier.css';
 
 import PapierRow from "./PapierRow";
 import axios from "axios";
+import Search from "./Search";
 
 class Papier extends React.Component{
 
     constructor(props){
         super(props);
+     
         this.state={
-             notes : []
+             notes : [],
+             searchText: ""
+             
         };
+
+        
     }
 
     componentDidMount(){
         this.fechPapier();
     }
 
+
+
     
     async fechPapier(){
+        
+
     const res = await axios.get('http://46.41.151.63:3001/api/getPapierStan');
 //     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
 //                               .filter(row=> row.status !== "Nowe")
@@ -35,8 +45,22 @@ class Papier extends React.Component{
 const notes =[...res.data].   filter(row=> row.typ !== "Przerwa");
    this.setState({notes}); 
  
-
     }
+     
+    
+
+    async znajdz(txt){
+        
+        const notes =this.state.notes.   filter(row=> row.typ === "Okładka");
+   this.setState({notes}); 
+ 
+//    const notes =this.state.notes.   filter(row => row.Klinet.toLowerCase().icludes('WSIP'));
+//       this.setState({notes}); 
+     
+        }
+
+
+
     async updateDruk(id){
         const res = await axios.put('http://46.41.151.63:3001/api/updatePapierStanOneValue', { id: id, kolumna: 'czy_jest', value:'Jest'});
         console.log('wydrukowane',res.data);
@@ -49,13 +73,18 @@ const notes =[...res.data].   filter(row=> row.typ !== "Przerwa");
         console.log('niewydrukowane',res.data);
         document.getElementById(id).className = 'niewydrukowane';
     }
-// id, typ, NrZlecenia, RokZlecenia, Klient, Praca, FormatPapier
+
 render(){
 
+
     return (
+  
         <div>
             <p>Papier</p>
-            
+
+            <Search handlerznajdz={()=>this.znajdz()}/>
+
+        
             {this.state.notes.map(row =>(
                         <PapierRow
                             key={row.id}

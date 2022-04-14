@@ -5,6 +5,9 @@ const Search = ({handlerznajdz}) =>{
     return <div className="search">
 
         <input onChange={(event)=>handlerznajdz(event.target.value)}type='text' placeholder="Szukaj..." />
+
+
+        
     </div>;
 
 

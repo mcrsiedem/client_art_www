@@ -12,10 +12,10 @@ class Papier extends React.Component{
      
         this.state={
              notes : [],
-             searchText: ""
-             
+             searchText: "",
+             txt : ''
         };
-
+        
         
     }
 
@@ -50,12 +50,24 @@ const notes =[...res.data].   filter(row=> row.typ !== "Przerwa");
     
 
     async znajdz(txt){
+
         
-        const notes =this.state.notes.   filter(row=> row.typ === "Okładka");
-   this.setState({notes}); 
- 
-//    const notes =this.state.notes.   filter(row => row.Klinet.toLowerCase().icludes('WSIP'));
+      //  this.state.searchText.setState= txt;
+//         const notes =this.state.notes.   filter(row=> row.typ === "Okładka");
+//    this.setState({notes}); 
+// console.log(txt);
+//    const notes =this.state.notes.   filter(row => row.icludes(txt.toLowerCase()));
 //       this.setState({notes}); 
+
+
+        const notes =this.state.notes.   filter(row=> row.Klient == txt);
+   this.setState({notes}); 
+
+
+
+
+
+
      
         }
 
@@ -82,7 +94,9 @@ render(){
         <div>
             <p>Papier</p>
 
-            <Search handlerznajdz={()=>this.znajdz()}/>
+            <input onChange={(event)=>this.znajdz(event.target.value)}type='text' placeholder="Szukaj..." />
+      
+      
 
         
             {this.state.notes.map(row =>(

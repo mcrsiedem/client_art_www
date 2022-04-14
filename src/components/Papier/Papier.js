@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import '../Papier/Papier.css';
 
 import PapierRow from "./PapierRow";
@@ -13,9 +13,9 @@ class Papier extends React.Component{
         this.state={
              notes : [],
              searchText: "",
-             txt : ''
+             txt : "WSiP"
         };
-        
+      
         
     }
 
@@ -49,24 +49,11 @@ const notes =[...res.data].   filter(row=> row.typ !== "Przerwa");
      
     
 
-    async znajdz(txt){
-
-        
-      //  this.state.searchText.setState= txt;
-//         const notes =this.state.notes.   filter(row=> row.typ === "Okładka");
-//    this.setState({notes}); 
-// console.log(txt);
-//    const notes =this.state.notes.   filter(row => row.icludes(txt.toLowerCase()));
-//       this.setState({notes}); 
+    async znajdz(txt2){
 
 
-        const notes =this.state.notes.   filter(row=> row.Klient == txt);
-   this.setState({notes}); 
-
-
-
-
-
+ console.log(txt2)
+ this.setState({txt:txt2});
 
      
         }
@@ -88,18 +75,31 @@ const notes =[...res.data].   filter(row=> row.typ !== "Przerwa");
 
 render(){
 
+  
 
     return (
   
         <div>
             <p>Papier</p>
 
-            <input onChange={(event)=>this.znajdz(event.target.value)}type='text' placeholder="Szukaj..." />
-      
+            <input onInput={(event)=>this.znajdz(event.target.value)} type='text' placeholder="Szukaj..." />
       
 
         
-            {this.state.notes.map(row =>(
+            {this.state.notes.filter((row) => {
+    if(this.state.txt === ""){
+        return row;
+    }
+    else if(row.Klient.toLowerCase() && row.Praca.toLowerCase() 
+            .includes(this.state.txt.toLowerCase())){
+        return row
+
+    }
+
+
+    
+
+}).map(row =>(
                         <PapierRow
                             key={row.id}
 

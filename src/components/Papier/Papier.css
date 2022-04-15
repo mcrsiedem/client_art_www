@@ -1,6 +1,6 @@
 
 .note{
-    background-color: #fff;
+    background-color: rgb(241, 241, 241);
     border-radius: 6px;
     padding: 12px 20px;
     text-align: left;
@@ -53,9 +53,10 @@
         linear-gradient(  #ee8036 25%, #80c800 80%);
     }
 .search{
-    display: flex;
-    padding: 5px;
-    border-radius: 10px;
-    margin:5px
 
+    padding: 5px;
+    border-radius: 5px;
+    margin:10px;
+
+ 
 }

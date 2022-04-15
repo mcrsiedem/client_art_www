@@ -3,7 +3,7 @@ import '../Papier/Papier.css';
 
 import PapierRow from "./PapierRow";
 import axios from "axios";
-import Search from "./Search";
+
 
 class Papier extends React.Component{
 
@@ -80,21 +80,21 @@ render(){
     return (
   
         <div>
-            <p>Papier</p>
-
-            <input onInput={(event)=>this.znajdz(event.target.value)} type='text' placeholder="Szukaj..." />
-      
+          
+            
+            <input className="search" onInput={(event)=>this.znajdz(event.target.value)} type='text' placeholder="Szukaj..." />
+          
 
         
             {this.state.notes.filter((row) => {
-    if(this.state.txt === ""){
-        return row;
-    }
-    else if(row.Klient.toLowerCase() && row.Praca.toLowerCase() 
-            .includes(this.state.txt.toLowerCase())){
-        return row
+                    if(this.state.txt === ""){
+                        return row;
+                    }
+                    else if(row.Klient.toLowerCase() && row.Praca.toLowerCase() 
+                            .includes(this.state.txt.toLowerCase())){
+                        return row
 
-    }
+                    }
 
 
     

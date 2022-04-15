@@ -10,7 +10,7 @@ class PapierRow extends React.Component{
         super(props);
         this.state={
              notes : [],
-             showDesc: true,
+             showDesc: false,
              showMinus: false
              
         };
@@ -69,13 +69,12 @@ render(){
 
     return (
 
-      
    
      <div className ="note" >
-    <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.klient} {this.props.praca} {this.props.typ}</p> 
+    <p onClick={toggleDesc}> {this.props.nrZlecenia}  {this.props.rokZlecenia}  {this.props.typ} {this.props.klient} {this.props.praca.substring(0,20)} </p> 
     {this.state.showDesc &&
                 (
-                <div className ="description">{this.props.formatpapieru}  </div>
+                <div className ="description">{this.props.praca.substring(20,200)}  </div>
                 )}
     <button id={this.props.id} className = {this.props.czy_jest==='Jest' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Papier</button>
     {this.state.showMinus &&

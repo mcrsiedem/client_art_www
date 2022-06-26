@@ -7,6 +7,7 @@ import H3 from './components/Druk/H3';
 import Info from './components/Info/Info';
 import Falc from './components/Falc/Falc';
 import Papier from './components/Papier/Papier';
+import Historia from './components/Historia/Historia';
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/info">   <Info />          </Route>
           <Route path="/falc">   <Falc />          </Route>
           <Route path="/papier">   <Papier />          </Route>
+          <Route path="/historia">   <Historia />          </Route>
 
         </Switch>
     </Router>

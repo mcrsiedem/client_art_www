@@ -24,7 +24,7 @@ class Historia extends React.Component{
 
     async fechHistoria(){
 
-      const res = await axios.get('http://46.41.151.63:3001/api/historia');
+      const res = await axios.get('http://46.41.151.63:3001/api/historia_short');
       const notes =[...res.data].filter(row=> row.kategoria === "Logowanie");;
      
       this.setState({notes});  

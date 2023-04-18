@@ -8,6 +8,7 @@ import Info from './components/Info/Info';
 import Falc from './components/Falc/Falc';
 import Papier from './components/Papier/Papier';
 import Historia from './components/Historia/Historia';
+import Wydany_papier from './components/Druk/Wydany_papier';
 
 import {
   BrowserRouter as Router,
@@ -27,9 +28,9 @@ export default function App() {
           <Route path="/okladki">   <Notes />          </Route>
           <Route path="/info">   <Info />          </Route>
           <Route path="/falc">   <Falc />          </Route>
-          <Route path="/papier">   <Papier />          </Route>
+          <Route path="/papier">   <Wydany_papier />          </Route>
           <Route path="/historia">   <Historia />          </Route>
-
+    
         </Switch>
     </Router>
   );

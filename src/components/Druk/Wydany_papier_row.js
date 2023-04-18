@@ -4,7 +4,7 @@ import '../Druk/Druk.css';
 
 import axios from "axios";
 
-class DrukRow extends React.Component{
+class Wydany_papier_row extends React.Component{
 
     constructor(props){
         super(props);
@@ -26,7 +26,7 @@ class DrukRow extends React.Component{
       //  this.props.updateDruk(this.props.id) 
      // this.props.nazwa==='Wydrukowane' ? this.setState({showMinus:true}): null
 
-     if(this.props.nazwa==='Wydrukowane'){
+     if(this.props.czy_jest==='Przygotowany' ){
         this.setState({showMinus:true})
         console.log('minus true',this.props.nazwa); 
      }
@@ -72,12 +72,12 @@ render(){
       
    
      <div className ="note" >
-    <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ} </p> 
+    <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ}</p> 
     {this.state.showDesc &&
                 (
                 <div className ="description">{this.props.body} papier:  {this.props.format}</div>
                 )}
-    <button id={this.props.id} className = {this.props.nazwa==='Wydrukowane' ? 'wydrukowane':'niewydrukowane'} onClick={ handleSend}>Wydrukowane</button>
+    <button id={this.props.id} className = {this.props.czy_jest==='Przygotowany' ? 'przygotowane':'niewydrukowane'} onClick={ handleSend}>Przygotowany</button>
     {this.state.showMinus &&
                 (
                   <button className="delete" onClick={handleSendMinus}>-</button>
@@ -90,4 +90,4 @@ render(){
 }
 
 }
-export default DrukRow;
+export default Wydany_papier_row;

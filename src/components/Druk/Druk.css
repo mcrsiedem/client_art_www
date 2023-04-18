@@ -9,13 +9,19 @@
 
 
 .descriptions{
-    display: block;
+    display: flex;
+    flex-direction: row;
     color: #282c34;
     font-style: italic;
     margin-bottom: 20px;
 }
 
 .note p{
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+.poczatek{
     color: #000;
     font-weight: bold;
     cursor: pointer;

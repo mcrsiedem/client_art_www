@@ -63,6 +63,8 @@ render(){
                             nazwa={row.nazwa}
                             updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                             typ={row.typ}
+                            format={row.formatPapieru}
+
                         />
             ))}
         </div>

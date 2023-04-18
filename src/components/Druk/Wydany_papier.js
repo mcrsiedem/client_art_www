@@ -100,6 +100,7 @@ render(){
                             typ={row.typ}
                             format={row.formatPapieru}
                             czy_jest={row.czy_jest}
+                            poczatekDruku={row.poczatekDruku}
                         />
             ))}
 

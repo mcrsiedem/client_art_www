@@ -75,7 +75,7 @@ render(){
     <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ}</p> 
     {this.state.showDesc &&
                 (
-                <div className ="description">{this.props.body} papier:  {this.props.format} <div className="poczatek">Początek druku: {this.props.poczatekDruku}</div>  </div>
+                <div className ="description">{this.props.body} papier:  {this.props.format} <div className="poczatek">Początek druku: {this.props.poczatekDruku}</div> <div className="poczatek">Uwagi: {this.props.uwagi}</div> </div>
                 )}
     <button id={this.props.id} className = {this.props.czy_jest==='Przygotowany' ? 'przygotowane':'niewydrukowane'} onClick={ handleSend}>Wydany</button>
     {this.state.showMinus &&

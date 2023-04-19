@@ -77,7 +77,7 @@ render(){
                 (
                 <div className ="description">{this.props.body} papier:  {this.props.format} <div className="poczatek">Początek druku: {this.props.poczatekDruku}</div>  </div>
                 )}
-    <button id={this.props.id} className = {this.props.czy_jest==='Przygotowany' ? 'przygotowane':'niewydrukowane'} onClick={ handleSend}>Przygotowany</button>
+    <button id={this.props.id} className = {this.props.czy_jest==='Przygotowany' ? 'przygotowane':'niewydrukowane'} onClick={ handleSend}>Wydany</button>
     {this.state.showMinus &&
                 (
                   <button className="delete" onClick={handleSendMinus}>-</button>

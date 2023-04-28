@@ -14,9 +14,10 @@ function Note(props){
         <p onClick={toggleDesc}>{props.nrZlecenia} {props.rokZlecenia}   {props.title}</p> 
         {showDesc &&
                 (
-                <div className ="description">{props.body}</div>
+                <div className ="description">{props.body} <div className="descriptions_bold">{props.folia}</div></div>
+                
                 )}
-        <button>zrobione</button>
+       
 
         {/* <button 
             className="delete" 

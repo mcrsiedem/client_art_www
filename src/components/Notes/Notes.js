@@ -74,6 +74,7 @@ render(){
                             klient={note.klient}
                             nrZlecenia={note.nrZlecenia}
                             rokZlecenia={note.rokZlecenia}
+                            folia={note.folia}
 
                         />
             ))}

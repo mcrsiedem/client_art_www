@@ -4,6 +4,7 @@ import Notes from './components/Notes/Notes';
 import XL from './components/Druk/XL';
 import H1 from './components/Druk/H1';
 import H3 from './components/Druk/H3';
+import DrukPlanXL from './components/DrukPlan/DrukPlanXL';
 import Info from './components/Info/Info';
 import Falc from './components/Falc/Falc';
 import Papier from './components/Papier/Papier';
@@ -30,7 +31,7 @@ export default function App() {
           <Route path="/falc">   <Falc />          </Route>
           <Route path="/papier">   <Wydany_papier />          </Route>
           <Route path="/historia">   <Historia />          </Route>
-    
+          <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
         </Switch>
     </Router>
   );

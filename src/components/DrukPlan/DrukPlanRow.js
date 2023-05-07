@@ -1,5 +1,5 @@
 import React from "react";
-import '../DrukPlan/DrukPlan.css';
+import style from '../DrukPlan/DrukPlan.module.css';
 
 
 import axios from "axios";

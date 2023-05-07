@@ -1,5 +1,5 @@
 import React from "react";
-import '../DrukPlan/DrukPlan.css';
+import style from '../DrukPlan/DrukPlan.module.css';
 
 
 import axios from "axios";
@@ -71,11 +71,11 @@ render(){
 
       
    
-     <div className ="note" >
+     <div className ={style.bodyprzerwa+' '+style.note} >
     <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ} </p> 
     {this.state.showDesc &&
                 (
-                <div className ="description">{this.props.body} papier:  {this.props.format}</div>
+                <div className ={style.bodyprzerwa}>{this.props.body} papier:  {this.props.format}</div>
                 )}
   
      </div>

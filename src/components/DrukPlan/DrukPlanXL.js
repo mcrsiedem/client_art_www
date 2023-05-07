@@ -1,9 +1,10 @@
 import React from "react";
-import '../DrukPlan/DrukPlan.css';
+import style from '../DrukPlan/DrukPlan.module.css';
 
 import DrukPlanRow from "./DrukPlanRow";
 import axios from "axios";
 import DrukPlanRow_przerwa from "./DrukPlanRow_przerwa";
+import Copy from "./Copy";
 
 class DrukPlanXL extends React.Component{
 
@@ -46,6 +47,7 @@ render(){
 
     return (
         <div>
+            <Copy/>
             <p>Druk XL</p>
 
             {this.state.notes.map(row =>(row.typ=='Przerwa' ? 

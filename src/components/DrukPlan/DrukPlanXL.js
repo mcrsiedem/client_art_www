@@ -26,7 +26,8 @@ class DrukPlanXL extends React.Component{
                               .filter(row=> row.status !== "Oprawione")
                               .filter(row=> row.status !== "Oddane")
                               .filter(row=> row.status !== "Uszlachetnione")
-                              .filter(row=> row.status !== "Nieaktywne");
+                              .filter(row=> row.status !== "Nieaktywne")
+                              .filter(row=> row.status !== "Wydrukowane");
                             
     this.setState({notes});  
     }

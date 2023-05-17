@@ -25,6 +25,7 @@ class H1 extends React.Component{
                               .filter(row=> row.status !== "Pliki")
                               .filter(row=> row.status !== "Akcept")
                               .filter(row=> row.status !== "Sfalcowane")
+                              .filter(row=> row.status !== "Falcowanie")
                               .filter(row=> row.status !== "Oprawione")
                               .filter(row=> row.status !== "Oddane")
                               .filter(row=> row.status !== "Uszlachetnione")

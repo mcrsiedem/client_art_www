@@ -52,7 +52,7 @@ render(){
             <p>Druk XL</p>
 
             {this.state.notes.map(row =>(row.typ=='Przerwa' ? 
-                        <DrukPlanRow_przerwa
+                        <DrukPlanRow_przerwa key={row.id} czasDruku={row.czasDruku}
 
 
                         /> :

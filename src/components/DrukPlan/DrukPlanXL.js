@@ -53,18 +53,7 @@ render(){
 
             {this.state.notes.map(row =>(row.typ=='Przerwa' ? 
                         <DrukPlanRow_przerwa
-                            key={row.id}
-                            title={row.klient}
-                            body ={row.praca}
-                            id ={row.id}
-                            updateDruk={()=>this.updateDruk(row.id)}
-                            klient={row.klient}
-                            nrZlecenia={row.nrZlecenia}
-                            rokZlecenia={row.rokZlecenia}
-                            nazwa={row.nazwa}
-                            updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
-                            typ={row.typ}
-                            format={row.formatPapieru}
+
 
                         /> :
                         <DrukPlanRow

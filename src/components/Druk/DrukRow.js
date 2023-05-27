@@ -1,7 +1,5 @@
 import React from "react";
 import '../Druk/Druk.css';
-
-
 import axios from "axios";
 
 class DrukRow extends React.Component{
@@ -11,42 +9,32 @@ class DrukRow extends React.Component{
         this.state={
              notes : [],
              showDesc: false,
-             showMinus: false
-             
+             showMinus: false            
         };
-
-
-
-
-
-
     }
 
  minusTrue(){
       //  this.props.updateDruk(this.props.id) 
      // this.props.nazwa==='Wydrukowane' ? this.setState({showMinus:true}): null
-
      if(this.props.nazwa==='Wydrukowane'){
         this.setState({showMinus:true})
         console.log('minus true',this.props.nazwa); 
      }
-        
       }
 
  componentDidMount(){
-
     this.minusTrue();
-
-
     }
-
-    
-
 
 render(){
     const handleSend = () => {
+     // const start = Date.now();
+     // console.log('Start: ',start)
         this.props.updateDruk(this.props.id) 
         this.setState({showMinus:true})
+      //  const stop = Date.now();
+       // console.log('Stop: ',stop)
+       // console.log('Czas: ',stop-start)
       }
 
       const handleSendMinus = () => {
@@ -62,15 +50,7 @@ render(){
   
     }
 
-      
-
-
-
-
     return (
-
-      
-   
      <div className ="note" >
     <p onClick={toggleDesc}> {this.props.nrZlecenia} {this.props.rokZlecenia}   {this.props.title}  {this.props.typ} </p> 
     {this.state.showDesc &&
@@ -83,11 +63,7 @@ render(){
                   <button className="delete" onClick={handleSendMinus}>-</button>
                 )}
      </div>
-     
- 
      );
-
 }
-
 }
 export default DrukRow;

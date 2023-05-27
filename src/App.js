@@ -35,7 +35,7 @@ export default function App() {
           <Route path="/papier">   <Wydany_papier />          </Route>
           <Route path="/historia">   <Historia />          </Route>
           <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
-          <Route path="/logowanie">   <Logowanie />          </Route>
+          <Route path="/">   <Logowanie />          </Route>
         </Switch>
     </Router>
   );

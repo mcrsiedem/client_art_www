@@ -34,14 +34,14 @@ class XL extends React.Component{
     }
     async updateDruk(id){
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
-        console.log('wydrukowane',res.data);
+        console.log('wydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'wydrukowane';
 
     }
 
     async updateDrukNiewydrukowane(id){
         const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value: '-'});
-        console.log('niewydrukowane',res.data);
+        console.log('niewydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'niewydrukowane';
     }
 

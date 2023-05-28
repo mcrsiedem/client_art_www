@@ -3,6 +3,8 @@ import '../Druk/Druk.css';
 
 import DrukRow from "./DrukRow";
 import axios from "axios";
+import Host from "../../Host";
+
 
 class XL extends React.Component{
 
@@ -33,7 +35,9 @@ class XL extends React.Component{
     this.setState({notes});  
     }
     async updateDruk(id){
-        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
+       
+        
+        const res = await axios.put(Host.ip + 'produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
         console.log('wydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'wydrukowane';
 

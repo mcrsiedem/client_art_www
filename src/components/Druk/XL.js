@@ -20,7 +20,7 @@ class XL extends React.Component{
     }
 
     async fechXL(){
-    const res = await axios.get('http://46.41.151.63:3001/api/druk/XL/1');
+    const res = await axios.get(Host.ip + 'druk/XL/1');
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")
@@ -44,7 +44,7 @@ class XL extends React.Component{
     }
 
     async updateDrukNiewydrukowane(id){
-        const res = await axios.put('http://46.41.151.63:3001/api/produkty', { id: id, kolumna: 'Nazwa', value: '-'});
+        const res = await axios.put(Host.ip + 'produkty', { id: id, kolumna: 'Nazwa', value: '-'});
         console.log('niewydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'niewydrukowane';
     }

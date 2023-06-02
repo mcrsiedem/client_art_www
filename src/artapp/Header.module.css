@@ -5,12 +5,21 @@
   background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
    
   */  
-     background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
-
+  background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
+
+
 .bodyprzerwa{
-    background-color: #ffae00;
+    background-color: #ffae00;  border-radius: 6px;
+    padding: 12px 20px;
+    text-align: left;
+    margin:10px
 }
 
 .descriptions{

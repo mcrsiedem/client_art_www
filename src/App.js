@@ -12,7 +12,7 @@ import Historia from './components/Historia/Historia';
 import Wydany_papier from './components/Druk/Wydany_papier';
 
 import Logowanie from './components/Logowanie/Logowanie';
-
+import ArtApp from "./artapp/ArtApp";
 
 import {
   BrowserRouter as Router,
@@ -20,6 +20,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 export default function App() {
   return (
@@ -35,7 +36,7 @@ export default function App() {
           <Route path="/papier">   <Wydany_papier />          </Route>
           <Route path="/historia">   <Historia />          </Route>
           <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
-          <Route path="/">   <Logowanie />          </Route>
+          <Route path="/">   <ArtApp />          </Route>
         </Switch>
     </Router>
   );

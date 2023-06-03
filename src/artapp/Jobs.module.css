@@ -6,19 +6,19 @@
    
   */  
   /* background: linear-gradient( to right, #75b022 5%, #588a1b 95%); */
-  position: relative;
+  
   border-style: solid;
   border-radius: 10px;
   border-width: 1px;
   border-color: rgb(233, 233, 233, 0.5);
-  
-  height: 100px;
+  height: 600px;
   display: flex;
-  justify-content: right;
+  flex-direction: row ;
+  justify-content: center;
   align-items: center;
  margin: 10px 10px 10px 10px;
+ padding-left: 50px;
+ color: rgb(233, 233, 233, 0.5);
 
   
 }
-
-

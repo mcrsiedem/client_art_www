@@ -5,7 +5,15 @@
   background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
    
   */  
+  /* position: absolute;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+} */
+width: 150px;
+height: 20px;
+position: absolute;
+top: 30px;
+right: 20px;
 
 }
-
-

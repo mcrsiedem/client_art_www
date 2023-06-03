@@ -8,6 +8,7 @@ function Searchbar(){
                     <input className={style.body}
                     type="tekst"
                     placeholder="Szukaj..."/>
+                   
         </div>
     );
 

@@ -3,7 +3,7 @@ import '../Druk/Druk.css';
 
 import DrukRow from "./DrukRow";
 import axios from "axios";
-import Host from "../../Host";
+import {ip} from "../../Host";
 
 
 class XL extends React.Component{
@@ -20,7 +20,7 @@ class XL extends React.Component{
     }
 
     async fechXL(){
-    const res = await axios.get(Host.ip + 'druk/XL/1');
+    const res = await axios.get(ip + 'druk/XL/1');
     const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
                               .filter(row=> row.status !== "Nowe")
                               .filter(row=> row.status !== "Pliki")
@@ -37,14 +37,14 @@ class XL extends React.Component{
     async updateDruk(id){
        
         
-        const res = await axios.put(Host.ip + 'produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
+        const res = await axios.put(ip + 'produkty', { id: id, kolumna: 'Nazwa', value:'Wydrukowane'});
         console.log('wydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'wydrukowane';
 
     }
 
     async updateDrukNiewydrukowane(id){
-        const res = await axios.put(Host.ip + 'produkty', { id: id, kolumna: 'Nazwa', value: '-'});
+        const res = await axios.put(ip + 'produkty', { id: id, kolumna: 'Nazwa', value: '-'});
         console.log('niewydrukowane',res.data.serverStatus);
         document.getElementById(id).className = 'niewydrukowane';
     }

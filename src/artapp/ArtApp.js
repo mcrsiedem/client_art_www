@@ -10,7 +10,7 @@ function ArtApp(props){
     <div className={style.body}>
 
       <Header/>
-      <Menu/>
+      {/* <Menu/> */}
       <Jobs/>
       <Footer/>
     </div>

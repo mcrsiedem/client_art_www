@@ -1,5 +1,7 @@
 
 .body{
+  overflow: auto;
+
   /*
   background-color: linear-gradient( to right, #75b022 5%, #588a1b 95%);
   background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
@@ -7,18 +9,41 @@
   */  
   /* background: linear-gradient( to right, #75b022 5%, #588a1b 95%); */
   
-  border-style: solid;
+  /* border-style: solid;
   border-radius: 10px;
   border-width: 1px;
-  border-color: rgb(233, 233, 233, 0.5);
+  border-color: var(--border-color-light); */
   height: 600px;
   display: flex;
-  flex-direction: row ;
-  justify-content: center;
-  align-items: center;
- margin: 10px 10px 10px 10px;
- padding-left: 50px;
- color: rgb(233, 233, 233, 0.5);
+  flex-direction: column ;
 
-  
+
+ margin: 0px 10px 0px 10px;
+
+ color: var(--border-color-light);
+
+
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(155, 151, 151); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
 }

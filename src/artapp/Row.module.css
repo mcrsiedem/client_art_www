@@ -9,15 +9,17 @@
   
   border-style: solid;
   border-radius: 10px;
-  border-width: 1px;
-  border-color: rgb(233, 233, 233, 0.5);
-  height: 30px;
+  border-width: .5px;
+  border-color: var(--border-color-light);
+
   display: flex;
   justify-content: left;
   align-items: center;
- margin: 10px 10px 10px 10px;
- padding-left: 50px;
- color: rgb(233, 233, 233, 0.5);
+
+ margin-right: 10px;
+ padding: 10px 10px 10px 10px;
+
+ color: var(--border-color-light);
 
   
 }

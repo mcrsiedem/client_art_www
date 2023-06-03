@@ -10,10 +10,15 @@
   justify-content: right;
   align-items: center;
 } */
+background-color: transparent;
+border-color: var(--border-color-light);
+color: var(--border-color-light);
 width: 150px;
 height: 20px;
 position: absolute;
 top: 30px;
 right: 20px;
+font-size: 15px;
+text-align: center;
 
 }

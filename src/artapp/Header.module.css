@@ -10,7 +10,7 @@
   border-style: solid;
   border-radius: 10px;
   border-width: 1px;
-  border-color: rgb(233, 233, 233, 0.5);
+  border-color: var(--border-color-light);
   
   height: 100px;
   display: flex;

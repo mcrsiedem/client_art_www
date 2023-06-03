@@ -1,6 +1,15 @@
 
+
+:root {
+  /* Colors */
+  --ArtDruk-granat: #10207a;
+  --ArtDruk-granat2: #32c56f;
+  --ArtDruk-shadow: #b1b1b1;
+  --body-dark:#282c34;
+  --border-color-light: rgb(233, 233, 233, 0.3);
+}
 body{
-  background-color: #282c34;
+  background-color: var(--body-dark);
 }
 p{
   color: #fff;
@@ -59,3 +68,5 @@ margin-bottom : 10px;
     transform: rotate(360deg);
   }
 }
+
+

@@ -10,14 +10,14 @@
   border-style: solid;
   border-radius: 10px;
   border-width: 1px;
-  border-color: rgb(233, 233, 233, 0.5);
-  height: 50px;
+  border-color: var(--border-color-light);
+  height: 30px;
   display: flex;
   justify-content: left;
   align-items: center;
  margin: 10px 10px 10px 10px;
  padding-left: 20px;
- color: rgb(233, 233, 233, 0.5);
+ color: var(--border-color-light);
 
   
 }

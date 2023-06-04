@@ -1,0 +1,26 @@
+
+.body{
+  /*
+  background-color: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+  background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
+   
+  */  
+  /* background: linear-gradient( to right, #75b022 5%, #588a1b 95%); */
+  position: fixed;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: var(--border-color-light);
+  background-color: var(--body-dark);
+  
+  height: 100px;
+  width: 99%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+ margin: 10px 10px 10px 10px;
+bottom: 0;
+  
+}
+
+

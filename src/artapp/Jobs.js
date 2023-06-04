@@ -14,26 +14,9 @@ class Jobs extends Component{
     render(){
         return(
             <div className={style.body}>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-    
-                <Row/>
-        
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                
-              
+
+
+              <Row/>
         
         
 

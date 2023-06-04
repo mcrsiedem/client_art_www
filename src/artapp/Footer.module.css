@@ -11,6 +11,7 @@
   border-radius: 10px;
   border-width: 1px;
   border-color: var(--border-color-light);
+  background-color: var(--body-dark);
   
   height: 100px;
   width: 99%;

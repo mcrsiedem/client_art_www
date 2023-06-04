@@ -13,7 +13,11 @@
   border-radius: 10px;
   border-width: 1px;
   border-color: var(--border-color-light); */
-  height: 600px;
+  position: fixed;
+  width: 99%;
+  top: 120px;
+  bottom: 120px;
+  
   display: flex;
   flex-direction: column ;
 

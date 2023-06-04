@@ -6,11 +6,15 @@
    
   */  
   /* background: linear-gradient( to right, #75b022 5%, #588a1b 95%); */
-  position: relative;
+  position: fixed;
+  width: 99%;
+  top:0;
+  
   border-style: solid;
   border-radius: 10px;
-  border-width: 1px;
+  border-width: 0.5px;
   border-color: var(--border-color-light);
+  background-color: var(--body-dark);
   
   height: 100px;
   display: flex;

@@ -6,7 +6,8 @@
   --ArtDruk-granat2: #32c56f;
   --ArtDruk-shadow: #b1b1b1;
   --body-dark:#282c34;
-  --border-color-light: rgb(233, 233, 233, 0.4);
+  --border-color-light: rgb(233, 233, 233, 0.2);
+  --text-color-light: rgb(233, 233, 233, 0.6);
 }
 body{
   background-color: var(--body-dark);

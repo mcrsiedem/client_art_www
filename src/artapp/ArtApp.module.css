@@ -1,16 +1,13 @@
 
 .body{
-  /*
-  background-color: linear-gradient( to right, #75b022 5%, #588a1b 95%);
-  background: linear-gradient( to right, #47bfff 5%, #1a44c2 60%);
-   
-  */  
-     /* background: linear-gradient( to right, #75b022 5%, #588a1b 95%); */
 
-   
     display: flex;
+    height: 99vh;
     justify-content: center;
     align-items: center;
+  
     flex-direction: column;
-   
+
+   border: solid;
+   border-color: antiquewhite;
 }

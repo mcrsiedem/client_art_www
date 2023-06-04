@@ -6,7 +6,8 @@ function Footer(){
     
         return (
             <footer className={style.body}>
-                <Searchbar/>
+                {/* <Searchbar/> */}
+                <p>asdfsdfsdfsdfse</p>
             </footer>
         );
     

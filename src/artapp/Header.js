@@ -6,6 +6,7 @@ function Header(){
     return (
         <header className={style.body}>
                 <Searchbar/>
+             
         </header>
     );
 }

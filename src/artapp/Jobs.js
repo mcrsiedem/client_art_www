@@ -16,7 +16,8 @@ class Jobs extends Component{
             <div className={style.body}>
 
 
-              <Row/>
+            {/* <Searchbar/> */}
+            <p>asdfsdfsdfsdfse</p>
         
         
 

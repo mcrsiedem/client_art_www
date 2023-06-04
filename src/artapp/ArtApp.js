@@ -8,9 +8,10 @@ function ArtApp(props){
 
   return(
     <div className={style.body}>
-      <Header/>
-      <Jobs/>
-      <Footer/>
+       <Header/>
+       <Jobs/>
+       <Footer/>
+    
     </div>
   );
   

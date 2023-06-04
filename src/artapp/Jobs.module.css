@@ -1,5 +1,7 @@
 .body{
- color: var(--border-color-light);
+  background-color: blueviolet; 
+  flex: 7;
+  width: 99%;
 }
 
 

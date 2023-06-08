@@ -7,7 +7,7 @@ function Footer(){
         return (
             <footer className={style.body}>
                 {/* <Searchbar/> */}
-                <p>3</p>
+                <p>asdfsdfsdfsdfse</p>
             </footer>
         );
     

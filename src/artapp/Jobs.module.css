@@ -1,28 +1,47 @@
 .body{
-  background-color: blueviolet; 
-  flex: 10;
-  width: 90%;
+  background-color: #ffffff;
+  border-top: 1px solid rgb(73, 73, 73,0.5);
+  border-bottom: 1px solid rgb(73, 73, 73,0.5);
+
+  top: 100px;
+  height: calc(100vh - 240px);
+  width: 90vw;
+  position: absolute;
+overflow: scroll;
+
+padding: 20px;
+overflow-x: hidden;
+
+
 }
 
 
-/* width
+
 ::-webkit-scrollbar {
   width: 15px;
 }
 
 /* Track */
-/* ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
-} */
+} 
  
 /* Handle */
-/* ::-webkit-scrollbar-thumb {
-  background: rgb(44, 141, 5); 
+::-webkit-scrollbar-thumb {
+  background: rgb(105, 175, 202); 
   border-radius: 10px;
-} */
+} 
 
 /* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
-} */ 
+ ::-webkit-scrollbar-thumb:hover {
+  background: #9bfa5b; 
+} 
+
+
+.center{
+  /*centrowanie kontenera w którym są rowy*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

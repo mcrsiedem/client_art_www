@@ -7,7 +7,7 @@ import Footer from "./Footer";
 function ArtApp(props){
 
   return(
-    <div className={style.gridContainer}>
+    <div className={style.body}>
        <Header/>
        <Jobs/>
        <Footer/>

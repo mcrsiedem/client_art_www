@@ -5,8 +5,8 @@ import Searchbar from '../artapp/Searchbar';
 function Header(){
     return (
         <header className={style.body}>
-                {/* <Searchbar/> */}
-                <p>1</p>
+                <Searchbar/>
+             
         </header>
     );
 }

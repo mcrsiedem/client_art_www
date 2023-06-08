@@ -1,0 +1,13 @@
+
+.body{
+
+    display: flex;
+    height: 99vh;
+    justify-content: center;
+    align-items: center;
+  
+    flex-direction: column;
+
+   border: solid;
+   border-color: antiquewhite;
+}

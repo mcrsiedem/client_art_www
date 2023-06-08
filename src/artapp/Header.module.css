@@ -1,8 +1,12 @@
 
 .body{
-  background-color: cornflowerblue;
-  flex: 1;
-  width: 90%;
+ background-color: #ffffff;
+ top: 0px;
+ height: 100px;
+ width: 100vw;
+ position: fixed;
+ z-index: 1;
+ 
 }
 
 

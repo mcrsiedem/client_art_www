@@ -13,14 +13,46 @@ import style from '../artapp/Jobs.module.css';
 class Jobs extends Component{
     render(){
         return(
+            <div className={style.center}>
             <div className={style.body}>
 
 
-            {/* <Searchbar/> */}
-            <p>asdfsdfsdfsdfse</p>
-        
-        
 
+          
+
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+
+
+            </div>
             </div>
         );
     }

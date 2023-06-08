@@ -6,7 +6,7 @@ function Row(){
         // <div className={style.body}>899 / 2023 03-06-2023 12:05 Nowa Era  70432</div>
         <div className={style.body}>
         {/* <Searchbar/> */}
-        <p>2</p>
+        <p>899 / 2023 03-06-2023 12:05 Nowa Era  70432</p>
         </div>
 );
 }

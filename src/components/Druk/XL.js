@@ -52,7 +52,8 @@ class XL extends React.Component{
 render(){
 
     return (
-        <div>
+        <div className ="color-dark" >
+        
             <p>Druk XL</p>
 
             {this.state.notes.map(row =>(
@@ -73,6 +74,7 @@ render(){
                         />
             ))}
         </div>
+        
     );
 }
 }

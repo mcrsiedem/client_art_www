@@ -48,7 +48,8 @@ class H1 extends React.Component{
 render(){
 
     return (
-        <div>
+        
+        <div className ="color-dark">
             <p>Druk H1</p>
 
             {this.state.notes.map(row =>(

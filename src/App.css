@@ -13,7 +13,8 @@
   --text-color-light: rgba(61, 60, 60, 0.6); */
 }
 body{
-  background-color: #282c34;
+  background-color: #fff;
+  /* background-color: #282c34; */
   position: relative;
   /* display: flex;
   justify-content: center;
@@ -24,6 +25,12 @@ body{
 }
 
 
+.color-dark{
+
+   background-color: #282c34; 
+
+  
+}
 
 
 p{

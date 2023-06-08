@@ -1,6 +1,6 @@
 
 .note{
-    background-color: #fff;
+    background-color: #161515;
     border-radius: 6px;
     padding: 12px 20px;
     text-align: left;
@@ -17,7 +17,7 @@
 }
 
 .note p{
-    color: #000;
+    color: #0a0d9e;
     font-weight: bold;
     cursor: pointer;
 }

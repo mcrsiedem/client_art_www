@@ -1,4 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
+}
 
 :root {
   /* Colors */
@@ -8,6 +13,8 @@
    --body-dark:#282c34;
   --border-color-light: rgb(233, 233, 233, 0.2);
   --text-color-light: rgb(233, 233, 233, 0.6); 
+  --text-color-zielony: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
+
   /* --body-dark:#ffffff;
   --border-color-light: rgba(0, 0, 0, 0.2);
   --text-color-light: rgba(61, 60, 60, 0.6); */

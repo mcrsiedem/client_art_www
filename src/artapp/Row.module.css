@@ -1,4 +1,18 @@
 
 .body{
     border-bottom: 1px solid rgb(73, 73, 73,0.5);
+    height: 50px;
+    padding-left: 20px;
 }
+
+.wydrukowane{
+    background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+}
+.ripzaswiecone{
+    background-image: linear-gradient(to left bottom, #b8e356 5%, #a5cc52 100%);
+}
+    
+.akcept{
+    background-image: linear-gradient(to bottom, #d7e6f5 5%, #abc4db 100%);
+}
+

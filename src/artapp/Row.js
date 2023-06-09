@@ -1,12 +1,30 @@
 import React from "react";
 import style from '../artapp/Row.module.css';
 import Searchbar from "./Searchbar";
-function Row(){
+function Row(props){
+
+    function ChceckStatus(props) {
+     
+        if (props.status==='Wydrukowane' ) {
+          return style.wydrukowane;
+        }
+
+        if (props.status==='RIP' ^ props.status==='Zaświecone' ) {
+            return style.ripzaswiecone;
+        }
+
+        if (props.status==='Akcept' ) {
+            return style.akcept;
+        }
+
+        return style.body;
+    }
+
+
     return (
-        // <div className={style.body}>899 / 2023 03-06-2023 12:05 Nowa Era  70432</div>
-        <div className={style.body}>
-        {/* <Searchbar/> */}
-        <p>899 / 2023 03-06-2023 12:05 Nowa Era  70432</p>
+
+        <div className={ChceckStatus(props) +' '+ style.body}>
+        <p >  {props.poczatekDruku} {props.czasDruku} {props.koniecDruku} {props.nrZlecenia} {props.rokZlecenia}   {props.title}  {props.typ}  {props.status}</p> 
         </div>
 );
 }

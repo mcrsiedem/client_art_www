@@ -7,25 +7,21 @@ import Footer from "./Footer";
 import { useState } from "react";
 function ArtApp(props){
 
-  const [maszyna, setMaszyna] = useState("XL");
-  function giveMeJobsXL()
+  const [maszyna, setMaszyna] = useState("");
+  function giveMeJobs(maszyna)
   {
-    setMaszyna('XL');
-    console.log(maszyna);
+    setMaszyna(maszyna);
+     console.log(maszyna);
   }
 
-  function giveMeJobsSM()
-  {
-    setMaszyna('SM');
-    console.log(maszyna);
-  }
+
   
   return(
     <div className={style.gridContainer}>
        <Header/>
        <Jobs/>
       
-       <Footer giveMeJobsXL={()=>giveMeJobsXL()} giveMeJobsSM={()=>giveMeJobsSM()}/>
+       <Footer giveMeJobs={(maszyna)=>giveMeJobs(maszyna)}/>
     
     </div>
   );

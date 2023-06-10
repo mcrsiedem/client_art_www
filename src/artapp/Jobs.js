@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component,useEffect} from "react";
 import Row from "./Row";
 import style from '../artapp/Jobs.module.css';
 import axios from "axios";
@@ -18,13 +18,21 @@ class Jobs extends Component{
     constructor(props){
         super(props);
         this.state={
-             notes : []
+             notes : [],
+             maszyna: ''
         };
     }
 
     componentDidMount(){
         this.fechDruk();
+        this.setState({maszyna: this.props.maszyna})
+    
     }
+
+    
+    show(){console.log('OKOK');}
+
+
 
     async fechDruk(){
         const res = await axios.get(ip + 'druk/H3/1');
@@ -41,6 +49,7 @@ class Jobs extends Component{
         //                           .filter(row=> row.status !== "Nieaktywne")
         //                           .filter(row=> row.typ !== "Przerwa");
         this.setState({notes});  
+     
         }
 
 

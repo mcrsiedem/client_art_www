@@ -8,12 +8,12 @@ import {ip} from "../Host";
 
 function Jobs(props){
 
-    const [notes,setNotes] = useState();
+    const [notes,setNotes] = useState([]);
     
 
     async function fechDruk(){
         const res = await axios.get(ip + 'druk/H3/1');
-        const notes2 =[...res.data];
+        const job =[...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         //                           .filter(row=> row.status !== "Pliki")
@@ -25,8 +25,8 @@ function Jobs(props){
         //                           .filter(row=> row.status !== "Uszlachetnione")
         //                           .filter(row=> row.status !== "Nieaktywne")
         //                           .filter(row=> row.typ !== "Przerwa");
-        setNotes(notes2);  
-  
+        setNotes(job);  
+       console.log('notes '+ job);
         };
 
 

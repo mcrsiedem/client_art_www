@@ -1,42 +1,19 @@
-import React, {Component,useEffect} from "react";
+import React, {Component,useEffect, useState} from "react";
 import Row from "./Row";
 import style from '../artapp/Jobs.module.css';
 import axios from "axios";
 import {ip} from "../Host";
 
-// function Jobs(){
-//     return (
-//     <div>
-//          jobss
-//     </div>
-//     );
-// }
 
 
-class Jobs extends Component{
+function Jobs(props){
 
-    constructor(props){
-        super(props);
-        this.state={
-             notes : [],
-             maszyna: ''
-        };
-    }
-
-    componentDidMount(){
-        this.fechDruk();
-        this.setState({maszyna: this.props.maszyna})
+    const [notes,setNotes] = useState();
     
-    }
 
-    
-    show(){console.log('OKOK');}
-
-
-
-    async fechDruk(){
+    async function fechDruk(){
         const res = await axios.get(ip + 'druk/H3/1');
-        const notes =[...res.data];
+        const notes2 =[...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         //                           .filter(row=> row.status !== "Pliki")
@@ -48,49 +25,52 @@ class Jobs extends Component{
         //                           .filter(row=> row.status !== "Uszlachetnione")
         //                           .filter(row=> row.status !== "Nieaktywne")
         //                           .filter(row=> row.typ !== "Przerwa");
-        this.setState({notes});  
-     
-        }
+        setNotes(notes2);  
+  
+        };
 
 
-    render(){
-
-
-        return(
-            <div className={style.center}>
-            <div className={style.body}>
-
-
-
+        useEffect(()=>{
+            fechDruk();
           
+        },[]);
 
-            {this.state.notes.map(row =>(
-                        <Row
-                            key={row.id}
-                            title={row.klient}
-                            body ={row.praca}
-                            poczatekDruku={row.poczatekDruku}
-                            czasDruku={row.czasDruku}
-                            koniecDruku={row.koniecDruku}
-                            id ={row.id}
-                            // updateDruk={()=>this.updateDruk(row.id)}
-                            klient={row.klient}
-                            nrZlecenia={row.nrZlecenia}
-                            rokZlecenia={row.rokZlecenia}
-                            nazwa={row.nazwa}
-                            // updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
-                            typ={row.typ}
-                            format={row.formatPapieru}
-                            status={row.status}
+    return (
 
-                        />
-            ))}
+        <div className={style.center}>
+        <div className={style.body}>
+
+          { notes.map((row) =>{
+            return (
+                    <Row
+                        key={row.id}
+                        title={row.klient}
+                        body ={row.praca}
+                        poczatekDruku={row.poczatekDruku}
+                        czasDruku={row.czasDruku}
+                        koniecDruku={row.koniecDruku}
+                        id ={row.id}
+                        // updateDruk={()=>this.updateDruk(row.id)}
+                        klient={row.klient}
+                        nrZlecenia={row.nrZlecenia}
+                        rokZlecenia={row.rokZlecenia}
+                        nazwa={row.nazwa}
+                        // updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
+                        typ={row.typ}
+                        format={row.formatPapieru}
+                        status={row.status}
+
+            />
+            );
+                
+          })}
 
 
 
-            </div>
-            </div>
-        );
-    }
+        </div>
+        </div>
+    );
 }
+
+
 export default Jobs;

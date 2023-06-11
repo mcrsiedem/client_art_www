@@ -1,4 +1,4 @@
-import React, {Component,useEffect, useState} from "react";
+import React, {Component,useEffect, useState,forwardRef,useImperativeHandle} from "react";
 import Row from "./Row";
 import style from '../artapp/Jobs.module.css';
 import axios from "axios";
@@ -6,13 +6,22 @@ import {ip} from "../Host";
 
 
 
-function Jobs(props){
+const Jobs = forwardRef((props,ref)=> {
 
     const [notes,setNotes] = useState([]);
     
 
-    async function fechDruk(){
-        const res = await axios.get(ip + 'druk/H3/1');
+    useImperativeHandle(ref, () =>({
+        
+        callChildFunction(maszyna){
+            fechDruk(maszyna);
+        }
+
+    }));
+
+
+    async function fechDruk(maszyna){
+        const res = await axios.get(ip + 'druk/'+maszyna+'/1');
         const job =[...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
@@ -31,7 +40,7 @@ function Jobs(props){
 
 
         useEffect(()=>{
-            fechDruk();
+            fechDruk('XL');
           
         },[]);
 
@@ -72,5 +81,5 @@ function Jobs(props){
     );
 }
 
-
+)
 export default Jobs;

@@ -8,13 +8,12 @@ import { useState,useRef } from "react";
 function ArtApp(props){
 
   const [maszyna, setMaszyna] = useState("");
+  const ChildRef = useRef();
   
   function giveMeJobs(maszyna)
   {
-    setMaszyna(maszyna);
-     console.log(maszyna);
-     
- 
+    setMaszyna(maszyna);   
+   ChildRef.current.callChildFunction(maszyna);
   }
 
   const refContainer = useRef();
@@ -23,7 +22,7 @@ function ArtApp(props){
   return(
     <div className={style.gridContainer}>
        <Header/>
-       <Jobs  maszyna={maszyna}/>
+       <Jobs  ref={ChildRef} maszyna={maszyna}/>
       
        <Footer giveMeJobs={(maszyna)=>giveMeJobs(maszyna)}/>
     

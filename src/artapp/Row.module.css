@@ -3,7 +3,8 @@
     border-bottom: 1px solid rgb(73, 73, 73,0.5);
     height: 45px;
     padding-left: 20px;
-    font-size: 15px;
+    font-size: 14px;
+    
 }
 
 .wydrukowane{
@@ -16,4 +17,10 @@
 .akcept{
     background-image: linear-gradient(to bottom, #d7e6f5 5%, #abc4db 100%);
 }
+.nowe{
+    background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
+}
 
+.pliki{
+    background-image: linear-gradient(to right, #d7e6f5 30%, #f6f6f6 80%);
+}

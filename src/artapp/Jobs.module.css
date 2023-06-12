@@ -26,13 +26,13 @@ overflow-x: hidden;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(148, 49, 49); 
+  box-shadow: inset 0 0 5px rgb(190, 190, 190); 
   border-radius: 10px;
 } 
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:  #6c7c7c;
+  background:  #c3c4c4;
   border-radius: 10px;
 } 
 

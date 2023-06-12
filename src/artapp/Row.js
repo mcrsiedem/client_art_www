@@ -10,7 +10,7 @@ function Row(props){
 
     function ChceckStatus(status) {
     // ustawwia styl css w zależności od statusu
-        if (typ==='Przerwa' ) return style.ripzaswiecone;
+        // if (typ==='Przerwa' ) return style.ripzaswiecone;
         if (status==='Wydrukowane' ^ status==='Sfalcowane' ^ status==='Falcowanie') return style.wydrukowane;
         if (status==='RIP' ^ status==='Zaświecone' ) return style.ripzaswiecone;
         if (status==='Akcept' ) return style.akcept;
@@ -35,7 +35,8 @@ function Row(props){
     return (
 
         <div className={ChceckStatus(status) +' '+ style.body}>
-        <p >  {props.poczatekDruku} {TimeFormatter(czas)} {props.koniecDruku} <p> </p> {props.nrZlecenia} {props.rokZlecenia}   {props.title} {props.body}   {props.typ}  {props.status}</p> 
+            <div>{props.poczatekDruku} {TimeFormatter(czas)} {props.koniecDruku} </div>
+            <div>{props.nrZlecenia} {props.rokZlecenia}   {props.title} {props.body}   {props.typ}  {props.status} </div>
         </div>
 );
 }

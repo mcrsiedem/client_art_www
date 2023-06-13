@@ -34,8 +34,8 @@ function Row(props){
 
     return (
 
-        <div className={ChceckStatus(status) +' '+ style.body}>
-            <div>{props.poczatekDruku} {TimeFormatter(czas)} {props.koniecDruku} </div>
+        <div id='row' className={ChceckStatus(status) +' '+ style.body}>
+            <div>{props.poczatekDruku}</div> <div> {TimeFormatter(czas)} </div><div> {props.koniecDruku}  </div>
             <div>{props.nrZlecenia} {props.rokZlecenia}   {props.title} {props.body}   {props.typ}  {props.status} </div>
         </div>
 );

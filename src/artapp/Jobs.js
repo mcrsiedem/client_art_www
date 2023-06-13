@@ -46,8 +46,8 @@ const Jobs = forwardRef((props,ref)=> {
 
     return (
 
-        <div className={style.center}>
-        <div className={style.body}>
+        <div id='jobs' className={style.center}>
+        <div id='scroll-container' className={style.body}>
 
           { notes.map((row) =>{
             return (

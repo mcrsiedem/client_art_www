@@ -20,7 +20,7 @@ function ArtApp(props){
 
   
   return(
-    <div className={style.gridContainer}>
+    <div id='grid-container' className={style.gridContainer}>
        <Header/>
        <Jobs  ref={ChildRef} maszyna={maszyna}/>
       

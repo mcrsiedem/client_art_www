@@ -31,13 +31,42 @@ function Row(props){
         return godziny +':'+ minuty;
     }
 
+    function YearFormatter(czas) {
+        // zamienia czas podnay w minutach na hh:mm
+    
+            return '20'+czas.substring(2)
+        }
+
+
 
     return (
 
         <div id='row' className={ChceckStatus(status) +' '+ style.body}>
-            <div>{props.poczatekDruku}</div> <div> {TimeFormatter(czas)} </div><div> {props.koniecDruku}  </div>
-            <div>{props.nrZlecenia} {props.rokZlecenia}   {props.title} {props.body}   {props.typ}  {props.status} </div>
+            <div className={style.checbox} >
+                <input className={style.checboxinput}  type="checkbox" id="" name="" value=""/>
+            </div>
+
+            <div className={style.druk}>
+                <div className={style.klient} >{props.poczatekDruku}</div>
+                <div className={style.koniecdruku}> {props.koniecDruku}  </div>
+            </div>
+            
+            <div className={style.czas} > {TimeFormatter(czas)} </div>
+            
+            <div>
+                <div className={style.klient} >{props.nrZlecenia} </div>
+                <div>{props.rokZlecenia} </div>
+            </div>
+            
+            <div>
+                <div><div className={style.klient} >{props.title} </div>{props.body}</div>
+                
+            </div>
+            
+            
+            <div>{props.status} </div> 
         </div>
+
 );
 }
 

@@ -2,15 +2,57 @@
 .body{
     font-family: Calibri;
     /* border-bottom: 1px solid rgb(73, 73, 73,0.5); */
-    height: 45px;
-    padding-left: 20px;
+    height: 55px;
+    padding-left: 10px;
     font-size: 16px;
     display: grid;
-    grid-template-columns: 150px auto;
-    grid-template-rows: 20px 20px;
+    grid-template-columns: 50px 120px 100px 70px auto 120px;
+
     padding-top: 5px;;
     
 }
+.klient{
+    font-weight: bold;
+}
+.czas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    padding-top: 0;
+}
+
+.druk{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+
+
+.koniecdruku{
+    font-size: 13px;
+    
+}
+
+.checbox{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.checboxinput{
+
+}
+
+
+
+
 
 .wydrukowane{
     background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
@@ -29,3 +71,6 @@
 .pliki{
     background-image: linear-gradient(to right, #d7e6f5 30%, #f6f6f6 80%);
 }
+
+
+

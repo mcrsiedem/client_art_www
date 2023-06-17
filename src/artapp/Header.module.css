@@ -1,8 +1,8 @@
 
 .body{
- background-color: #ffffff;
+ background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
  top: 0px;
- height: 100px;
+ height: 80px;
  width: 100vw;
  position: fixed;
  z-index: 1;

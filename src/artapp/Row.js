@@ -42,29 +42,45 @@ function Row(props){
     return (
 
         <div id='row' className={ChceckStatus(status) +' '+ style.body}>
+
+
+            
+
+                <div className={style.druk}>
+                    <div className={style.bold}>{props.poczatekDruku}</div>
+                    <div className={style.koniecdruku}>  {props.koniecDruku}  {TimeFormatter(czas)}</div>
+                </div>
+            
+        
+            
+                <div className={style.nrzlecenia}>
+                    <div className={style.bold}>{props.nrZlecenia} </div>
+                    <div>{props.rokZlecenia} </div>
+                </div>
+            
+            <div className={style.klient} >
+                <div>
+                    <div className={style.bold}>{props.title} </div>
+                    <div>{props.body}</div>
+                </div>
+                
+            </div>
+
+                <div className={style.klient} >
+                    <div>
+                        <div > {props.format} </div>
+                </div>
+                    
+                </div>
+            
+            <div>
+                <div className={style.combo}>{props.status} </div> 
+            </div>
+            
             <div className={style.checbox} >
                 <input className={style.checboxinput}  type="checkbox" id="" name="" value=""/>
             </div>
-
-            <div className={style.druk}>
-                <div className={style.bold}>{props.poczatekDruku}</div>
-                <div className={style.koniecdruku}> {props.koniecDruku}  </div>
-            </div>
             
-            <div className={style.czas} > {TimeFormatter(czas)} </div>
-            
-            <div className={style.nrzlecenia}>
-                <div className={style.bold}>{props.nrZlecenia} </div>
-                <div>{props.rokZlecenia} </div>
-            </div>
-            
-            <div className={style.klient} >
-                <div><div className={style.bold}>{props.title} </div>{props.body}</div>
-                
-            </div>
-            
-            
-            <div>{props.status} </div> 
         </div>
 
 );

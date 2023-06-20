@@ -48,7 +48,9 @@ function Row(props){
 
                 <div className={style.druk}>
                     <div className={style.bold}>{props.poczatekDruku}</div>
-                    <div className={style.koniecdruku}>  {props.koniecDruku}  {TimeFormatter(czas)}</div>
+                    {/* <div className={style.bold} >{TimeFormatter(czas)}</div> */}
+                    <div className={style.koniecdruku}>  {props.koniecDruku} {TimeFormatter(czas)}  </div>
+                    
                 </div>
             
         
@@ -69,9 +71,14 @@ function Row(props){
                 <div className={style.klient} >
                     <div>
                         <div > {props.format} </div>
+                    </div>
                 </div>
-                    
+                <div className={style.klient} >
+                    <div>
+                        <div > {props.spedycja} </div>
+                    </div>
                 </div>
+
             
             <div>
                 <div className={style.combo}>{props.status} </div> 

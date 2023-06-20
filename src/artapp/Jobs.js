@@ -68,6 +68,7 @@ const Jobs = forwardRef((props,ref)=> {
                         typ={row.typ}
                         format={row.formatPapieru}
                         status={row.status}
+                        spedycja={row.spedycja}
 
             />
             );

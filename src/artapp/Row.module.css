@@ -6,7 +6,7 @@
     padding-left: 10px;
     font-size: 14px;
     display: grid;
-    grid-template-columns:  140px  40px auto 300px 100px 30px;
+    grid-template-columns:  140px  40px 1fr 1fr 150px 100px 30px ;
 
     padding-top: 8px;
     padding-bottom: 8px;
@@ -25,6 +25,14 @@
     justify-content: left;
     align-items: center;
     padding-left: 12px;
+}
+
+.combo{
+    display: flex;
+  
+    justify-content: left;
+    align-items: center;
+    
 }
 .czas{
    

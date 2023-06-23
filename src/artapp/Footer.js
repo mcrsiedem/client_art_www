@@ -11,9 +11,6 @@ function Footer(props){
         props.giveMeJobs(maszyna)
 
       }
-
-
-
         return (
             <footer className={style.body}>
            <button className={style.button} onClick={()=>giveMeJobs('H1')}>H1</button>

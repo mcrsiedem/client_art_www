@@ -18,10 +18,21 @@ function Login(){
 
    const handleSubmit = (event) =>{
 event.preventDefault();
-const r =  axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res => setUser(res.data[0]) );
+axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{  
+    if(res.data.length > 0){
+       setUser(res.data[0]);  
+       console.log("Zalogowano");
+    }else{
+        console.log("Błąd");
+    }
+    console.log(res);
+    
+    }
+   
+     );
 
 
-console.log(user.imie);
+
 
 
     }

@@ -4,6 +4,8 @@ import Notes from './components/Notes/Notes';
 import XL from './components/Druk/XL';
 import H1 from './components/Druk/H1';
 import H3 from './components/Druk/H3';
+
+
 import DrukPlanXL from './components/DrukPlan/DrukPlanXL';
 import Info from './components/Info/Info';
 import Falc from './components/Falc/Falc';
@@ -13,6 +15,8 @@ import Wydany_papier from './components/Druk/Wydany_papier';
 
 import Logowanie from './components/Logowanie/Logowanie';
 import ArtApp from "./artapp/ArtApp";
+import Login from "./artapp/Login";
+
 
 import {
   BrowserRouter as Router,
@@ -26,9 +30,13 @@ export default function App() {
   return (
     <Router>        
         <Switch>
+        
+          
           <Route path="/xl"> <XL />        </Route>
           <Route path="/H1"> <H1 />        </Route>
           <Route path="/H3"> <H3 />        </Route>
+          <Route path="/login">   <Login />          </Route>
+          
 
           <Route path="/okladki">   <Notes />          </Route>
           <Route path="/info">   <Info />          </Route>
@@ -36,7 +44,10 @@ export default function App() {
           <Route path="/papier">   <Wydany_papier />          </Route>
           <Route path="/historia">   <Historia />          </Route>
           <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
+
+
           <Route path="/">   <ArtApp />          </Route>
+
         </Switch>
     </Router>
   );

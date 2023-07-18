@@ -18,9 +18,11 @@ function Login(){
 
    const handleSubmit = (event) =>{
 event.preventDefault();
-const r =axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res => console.log(res) );
+const r =  axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res => setUser(res.data[0]) );
 
-console.log(r.data[0].imie);
+
+console.log(user.imie);
+
 
     }
         return (

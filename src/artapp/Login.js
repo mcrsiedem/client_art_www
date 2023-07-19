@@ -1,7 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState,redirect } from "react";
+
 import style from '../artapp/Login.modules.css';
-import 'bootstrap/dist/css/bootstrap.css'
+//import { useNavigate } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {ip} from "../Host";
 
@@ -14,18 +16,22 @@ function Login(){
     })
 
     const [user,setUser] = useState([]);
-
+  //  const navigate = useNavigate();
+ const history = useHistory()
 
    const handleSubmit = (event) =>{
+   
 event.preventDefault();
 axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{  
     if(res.data.length > 0){
        setUser(res.data[0]);  
        console.log("Zalogowano");
+     //  navigate('/xl');
+     history.push('/ArtApp')
     }else{
         console.log("Błąd");
     }
-    console.log(res);
+   // console.log(res);
     
     }
    
@@ -39,7 +45,7 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
         return (
             <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
 
-                <div className='bg-white p-3 rounded w-25 border'>
+                <div className='bg-white p-3 rounded w-25 border ' >
 
                     <h2>Zaloguj</h2> 
 

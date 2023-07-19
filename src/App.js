@@ -46,7 +46,8 @@ export default function App() {
           <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
 
 
-          <Route path="/">   <ArtApp />          </Route>
+          <Route path="/ArtApp">   <ArtApp />          </Route>
+          <Route path="/">   <Login />          </Route>
 
         </Switch>
     </Router>

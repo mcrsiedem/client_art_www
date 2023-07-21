@@ -1,6 +1,6 @@
 import React from "react";
-import style from '../artapp/Header.module.css';
-import Searchbar from '../artapp/Searchbar';
+import style from './Header.module.css';
+import Searchbar from '../Searchbar';
 
 function Header(){
     return (

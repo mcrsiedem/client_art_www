@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import style from '../artapp/Footer.module.css';
-import Searchbar from "./Searchbar";
+import style from './Footer.module.css';
+import Searchbar from "../Searchbar";
 
 function Footer(props){
 

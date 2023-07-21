@@ -1,9 +1,9 @@
 import React from "react";
 import style from '../artapp/ArtApp.module.css';
-import Header from "./Header";
+import Header from "./Header/Header";
 import Menu from "./Menu";
 import Jobs from "./Jobs";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 import { useState,useRef } from "react";
 function ArtApp(props){
 

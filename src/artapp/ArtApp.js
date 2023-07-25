@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from '../artapp/ArtApp.module.css';
 import Header from "./Header/Header";
 import Menu from "./Menu";
 import Jobs from "./Jobs";
 import Footer from "./Footer/Footer";
 import { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 function ArtApp(props) {
 
   const [maszyna, setMaszyna] = useState("");
@@ -16,6 +18,23 @@ function ArtApp(props) {
   }
 
   const refContainer = useRef();
+  const history = useHistory()
+
+
+
+  // useEffect(()=>{
+  //   axios.get('/dashboard').
+  //   then(res=> {
+  //     if(res.data.Status === "Success"){
+
+  //     } else{
+  //       history.push('/Login')
+
+  //     }
+  //   })
+  // },[])
+
+
 
   return (
     <div id='grid-container' className={style.gridContainer}>

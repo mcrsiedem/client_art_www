@@ -15,6 +15,7 @@ function Login(){
         haslo:''
     })
 
+ //   axios.defaults.withCredentials= true;
     const [user,setUser] = useState([]);
   //  const navigate = useNavigate();
  const history = useHistory()
@@ -24,8 +25,10 @@ function Login(){
 event.preventDefault();
 axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{  
     if(res.data.length > 0){
-       setUser(res.data[0]);  
+     //  setUser(res.data[0]);  
        console.log("Zalogowano");
+       console.log("token: "+res.data);
+    
      //  navigate('/xl');
      history.push('/ArtApp')
     }else{

@@ -20,7 +20,7 @@ const Jobs = forwardRef((props, ref) => {
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         setNotes(job);
-        console.log('notes ' + job);
+      //  console.log('notes ' + job);
     };
 
     useEffect(() => {

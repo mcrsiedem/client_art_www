@@ -1,14 +1,17 @@
 import React from "react";
-import { useState,redirect } from "react";
+import { useState,createContext,useContext } from "react";
 
 import style from '../artapp/Login.modules.css';
 //import { useNavigate } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {ip} from "../Host";
+const UserContext = createContext();
 
 
 function Login(){
+    const token = useContext(UserContext);
+
 
     const [values, setValues] = useState({
         login: '',
@@ -16,7 +19,7 @@ function Login(){
     })
 
  //   axios.defaults.withCredentials= true;
-    const [user,setUser] = useState([]);
+    
   //  const navigate = useNavigate();
  const history = useHistory()
 

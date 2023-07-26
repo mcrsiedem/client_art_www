@@ -30,22 +30,20 @@ const UserContext = createContext();
  
 export default function App() {
 
-  const [user, setUser] = useState(); 
+  const [token, setToken] = useState('mr'); 
 
-  function updateUser(){
 
-  };
  
 
   return (
     <Router>        
         <Switch>
         
-          
+        <UserContext.Provider value={{token, setToken}}>
           <Route path="/xl"> <XL />        </Route>
           <Route path="/H1"> <H1 />        </Route>
           <Route path="/H3"> <H3 />        </Route>
-          <Route path="/login">   <Login updateUser={()=>updateUser()} />          </Route>
+          <Route path="/login">   <Login />          </Route>
           
 
           <Route path="/okladki">   <Notes />          </Route>
@@ -58,7 +56,7 @@ export default function App() {
 
           <Route path="/ArtApp">   <ArtApp />          </Route>
           <Route path="/">   <Login />          </Route>
-
+          </UserContext.Provider>
         </Switch>
     </Router>
   );

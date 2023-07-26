@@ -16,7 +16,7 @@ import Wydany_papier from './components/Druk/Wydany_papier';
 import Logowanie from './components/Logowanie/Logowanie';
 import ArtApp from "./artapp/ArtApp";
 import Login from "./artapp/Login";
-
+import { useState, createContext } from "react";
 
 import {
   BrowserRouter as Router,
@@ -25,8 +25,18 @@ import {
   Link
 } from "react-router-dom";
 
+const UserContext = createContext();
 
+ 
 export default function App() {
+
+  const [user, setUser] = useState(); 
+
+  function updateUser(){
+
+  };
+ 
+
   return (
     <Router>        
         <Switch>
@@ -35,7 +45,7 @@ export default function App() {
           <Route path="/xl"> <XL />        </Route>
           <Route path="/H1"> <H1 />        </Route>
           <Route path="/H3"> <H3 />        </Route>
-          <Route path="/login">   <Login />          </Route>
+          <Route path="/login">   <Login updateUser={()=>updateUser()} />          </Route>
           
 
           <Route path="/okladki">   <Notes />          </Route>

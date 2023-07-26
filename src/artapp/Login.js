@@ -6,11 +6,12 @@ import style from '../artapp/Login.modules.css';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {ip} from "../Host";
-const UserContext = createContext();
+import TokenContext from "./tokenContext";
+
 
 
 function Login(){
-    const token = useContext(UserContext);
+    const token = useContext(TokenContext);
 
 
     const [values, setValues] = useState({
@@ -31,7 +32,10 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
      //  setUser(res.data[0]);  
        console.log("Zalogowano");
        console.log("token: "+res.data);
-    
+       token.setToken(res.data);
+       console.log("tokenContext: "+token.token);
+
+       
      //  navigate('/xl');
      history.push('/ArtApp')
     }else{

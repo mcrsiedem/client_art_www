@@ -24,8 +24,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import TokenContext from "./artapp/tokenContext";
 
-const UserContext = createContext();
+
 
  
 export default function App() {
@@ -39,7 +40,8 @@ export default function App() {
     <Router>        
         <Switch>
         
-        <UserContext.Provider value={{token, setToken}}>
+        <TokenContext.Provider value={{token, setToken}}>
+          
           <Route path="/xl"> <XL />        </Route>
           <Route path="/H1"> <H1 />        </Route>
           <Route path="/H3"> <H3 />        </Route>
@@ -56,7 +58,7 @@ export default function App() {
 
           <Route path="/ArtApp">   <ArtApp />          </Route>
           <Route path="/">   <Login />          </Route>
-          </UserContext.Provider>
+          </TokenContext.Provider>
         </Switch>
     </Router>
   );

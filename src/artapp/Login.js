@@ -2,8 +2,8 @@ import React from "react";
 import { useState,createContext,useContext } from "react";
 
 import style from '../artapp/Login.modules.css';
-//import { useNavigate } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+// import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {ip} from "../Host";
 import TokenContext from "./tokenContext";
@@ -21,8 +21,8 @@ function Login(){
 
  //   axios.defaults.withCredentials= true;
     
-  //  const navigate = useNavigate();
- const history = useHistory()
+    const navigate = useNavigate();
+//  const history = useHistory()
 
    const handleSubmit = (event) =>{
    
@@ -36,8 +36,8 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
        console.log("tokenContext: "+token.token);
 
        
-     //  navigate('/xl');
-     history.push('/ArtApp')
+       navigate('/ArtApp');
+    //  history.push('/ArtApp')
     }else{
         console.log("Błąd");
     }

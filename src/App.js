@@ -20,7 +20,7 @@ import { useState, createContext } from "react";
 
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
@@ -37,29 +37,31 @@ export default function App() {
  
 
   return (
-    <Router>        
-        <Switch>
+    <Router>   
+                 <TokenContext.Provider value={{token, setToken}}>  
+        <Routes>
         
-        <TokenContext.Provider value={{token, setToken}}>
+
           
-          <Route path="/xl"> <XL />        </Route>
-          <Route path="/H1"> <H1 />        </Route>
-          <Route path="/H3"> <H3 />        </Route>
-          <Route path="/login">   <Login />          </Route>
+          <Route path="/xl" element={<XL />} />
+          <Route path="/H1" element={<H1 />}/>      
+          <Route path="/H3" element={ <H3 />}/>          
+          <Route path="/login" element={<Login />}/>            
           
 
-          <Route path="/okladki">   <Notes />          </Route>
-          <Route path="/info">   <Info />          </Route>
-          <Route path="/falc">   <Falc />          </Route>
-          <Route path="/papier">   <Wydany_papier />          </Route>
-          <Route path="/historia">   <Historia />          </Route>
-          <Route path="/drukplanxl">   <DrukPlanXL />          </Route>
+          <Route path="/okladki" element={ <Notes />}/>
+          <Route path="/info" element={ <Info />}/>
+          <Route path="/falc" element={<Falc />}/>            
+          <Route path="/papier" element={<Wydany_papier />}/> 
+          <Route path="/historia" element={ <Historia />}/> 
+          <Route path="/drukplanxl" element={<DrukPlanXL />}/> 
 
 
-          <Route path="/ArtApp">   <ArtApp />          </Route>
-          <Route path="/">   <Login />          </Route>
-          </TokenContext.Provider>
-        </Switch>
+          <Route path="/ArtApp" element={ <ArtApp />}/> 
+          <Route path="/" element={<Login />}/> 
+          
+        </Routes>
+        </TokenContext.Provider>
     </Router>
   );
 }

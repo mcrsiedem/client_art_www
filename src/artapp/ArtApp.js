@@ -5,7 +5,7 @@ import Menu from "./Menu";
 import Jobs from "./Jobs";
 import Footer from "./Footer/Footer";
 import { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 function ArtApp(props) {
 
@@ -18,7 +18,7 @@ function ArtApp(props) {
   }
 
   const refContainer = useRef();
-  const history = useHistory()
+
 
 
 

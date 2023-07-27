@@ -4,13 +4,18 @@ import Header from "./Header/Header";
 import Menu from "./Menu";
 import Jobs from "./Jobs";
 import Footer from "./Footer/Footer";
-import { useState, useRef } from "react";
+import { useState, useRef,useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import TokenContext from "./tokenContext";
+import { ip } from "../Host";
 
 import axios from "axios";
 function ArtApp(props) {
 
   const [maszyna, setMaszyna] = useState("");
   const ChildRef = useRef();
+  const navigate = useNavigate();
+  const tokenContext = useContext(TokenContext);
 
   function giveMeJobs(maszyna) {
     setMaszyna(maszyna);
@@ -22,17 +27,18 @@ function ArtApp(props) {
 
 
 
-  // useEffect(()=>{
-  //   axios.get('/dashboard').
-  //   then(res=> {
-  //     if(res.data.Status === "Success"){
+  useEffect(()=>{
+ 
+    axios.get(ip + '/veryfiy/'+ tokenContext.token).
+    then(res=> {
+      if(res.data.Status === "Success"){
 
-  //     } else{
-  //       history.push('/Login')
+      } else{
+        navigate('/Login')
 
-  //     }
-  //   })
-  // },[])
+      }
+    })
+  },[])
 
 
 

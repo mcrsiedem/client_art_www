@@ -4,8 +4,6 @@ import Notes from './components/Notes/Notes';
 import XL from './components/Druk/XL';
 import H1 from './components/Druk/H1';
 import H3 from './components/Druk/H3';
-
-
 import DrukPlanXL from './components/DrukPlan/DrukPlanXL';
 import Info from './components/Info/Info';
 import Falc from './components/Falc/Falc';
@@ -26,42 +24,28 @@ import {
 } from "react-router-dom";
 import TokenContext from "./artapp/tokenContext";
 
-
-
- 
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
 
-
- 
-
   return (
-    <Router>   
-                 <TokenContext.Provider value={{token, setToken}}>  
+    <Router>
+      <TokenContext.Provider value={{ token, setToken }}>
         <Routes>
-        
-
-          
           <Route path="/xl" element={<XL />} />
-          <Route path="/H1" element={<H1 />}/>      
-          <Route path="/H3" element={ <H3 />}/>          
-          <Route path="/login" element={<Login />}/>            
-          
-
-          <Route path="/okladki" element={ <Notes />}/>
-          <Route path="/info" element={ <Info />}/>
-          <Route path="/falc" element={<Falc />}/>            
-          <Route path="/papier" element={<Wydany_papier />}/> 
-          <Route path="/historia" element={ <Historia />}/> 
-          <Route path="/drukplanxl" element={<DrukPlanXL />}/> 
-
-
-          <Route path="/ArtApp" element={ <ArtApp />}/> 
-          <Route path="/" element={<Login />}/> 
-          
+          <Route path="/H1" element={<H1 />} />
+          <Route path="/H3" element={<H3 />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/okladki" element={<Notes />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/falc" element={<Falc />} />
+          <Route path="/papier" element={<Wydany_papier />} />
+          <Route path="/historia" element={<Historia />} />
+          <Route path="/drukplanxl" element={<DrukPlanXL />} />
+          <Route path="/ArtApp" element={<ArtApp />} />
+          <Route path="/" element={<Login />} />
         </Routes>
-        </TokenContext.Provider>
+      </TokenContext.Provider>
     </Router>
   );
 }

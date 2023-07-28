@@ -17,7 +17,7 @@ import Login from "./artapp/Login";
 import { useState, createContext } from "react";
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   Link
@@ -29,7 +29,7 @@ export default function App() {
   const [token, setToken] = useState('mr'); 
 
   return (
-    <Router>
+    <BrowserRouter>
       <TokenContext.Provider value={{ token, setToken }}>
         <Routes>
           <Route path="/xl" element={<XL />} />
@@ -46,7 +46,7 @@ export default function App() {
           <Route path="/" element={<Login />} />
         </Routes>
       </TokenContext.Provider>
-    </Router>
+    </BrowserRouter>
   );
 }
 

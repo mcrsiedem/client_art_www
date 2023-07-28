@@ -63,14 +63,14 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
 
                     <form onSubmit={handleSubmit} >
                         <div className='mb-3'>
-                            <label for="login">Login:</label>
+                            <label htmlFor="login">Login:</label>
                             <input type="text" name='login' 
                             onChange={e => setValues({...values, login: e.target.value})}
                             className="from-control rounded-0" />
                         </div>
 
                         <div className='mb-3'>
-                            <label for="password">Hasło:</label>
+                            <label htmlFor="password">Hasło:</label>
                             <input type="password" name='haslo' 
                             onChange={e => setValues({...values, haslo: e.target.value})}
                             className="from-control rounded-0" />

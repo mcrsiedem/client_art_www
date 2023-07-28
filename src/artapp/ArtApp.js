@@ -11,7 +11,10 @@ import { ip } from "../Host";
 
 import axios from "axios";
 
+import { useCookies } from "react-cookie";
+
 function ArtApp(props) {
+  const [cookies, setCookie] = useCookies();
 
   const [maszyna, setMaszyna] = useState("");
   const ChildRef = useRef();
@@ -26,16 +29,17 @@ function ArtApp(props) {
   const refContainer = useRef();
 
 
-  const token_z_contextu = tokenContext.token;
-  const token_z_localStorge = localStorage.getItem('token');
+  // const token_z_contextu = tokenContext.token;
+  // const token_z_localStorge = localStorage.getItem('token');
   // const token_z_cookie = Cookies.get('token');
 
 
   useEffect(()=>{
-  //  console.log("Token z cookies 2: " + token_z_cookie);
+   // console.log("Token z cookies 2: " + cookies.token);
   //  console.log("Token z contextu: " + tokenContext.token);
  // axios.get(ip + '/veryfiy/'+ tokenContext.token).
-    axios.get(ip + '/islogged/'+ localStorage.getItem('token')).
+  //  axios.get(ip + '/islogged/'+ localStorage.getItem('token')).
+    axios.get(ip + '/islogged/'+ cookies.token).
     then(res=> {
       if(res.data.Status === "Success"){
 

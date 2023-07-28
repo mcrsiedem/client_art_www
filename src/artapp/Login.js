@@ -31,14 +31,12 @@ function Login(){
 event.preventDefault();
 axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{  
     if(res.data.length > 0){
-     //  setUser(res.data[0]);  
-    //    console.log("Zalogowano");
-    //    console.log("token: "+res.data);
-       token.setToken(res.data);
-       localStorage.setItem('token', res.data)
+
+    //    token.setToken(res.data);
+    //    localStorage.setItem('token', res.data)
        setCookie('token', res.data, { path: '/' });
 
-    //    console.log("tokenContext: "+token.token);
+
 
        navigate('/ArtApp');
 

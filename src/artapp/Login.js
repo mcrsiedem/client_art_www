@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {ip} from "../Host";
 import TokenContext from "./tokenContext";
+import { useCookies } from 'react-cookie';
 
 
 
 function Login(){
     const token = useContext(TokenContext);
+    const [cookies, setCookie] = useCookies(['']);
 
 
     const [values, setValues] = useState({
@@ -34,6 +36,8 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
     //    console.log("token: "+res.data);
        token.setToken(res.data);
        localStorage.setItem('token', res.data)
+       setCookie('token', res.data, { path: '/' });
+
     //    console.log("tokenContext: "+token.token);
 
        navigate('/ArtApp');

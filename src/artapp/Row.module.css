@@ -1,17 +1,18 @@
 
 .body{
-    font-family: Calibri;
+    font-family: Google Sans,-apple-system,BlinkMacSystemFont,sans-serif;
     /* border-bottom: 1px solid rgb(73, 73, 73,0.5); */
     /* height: 50px; */
     padding-left: 10px;
-    font-size: 14px;
+    font-size: 12px;
     display: grid;
-    grid-template-columns:  140px  40px 2fr 1fr 150px 100px 30px ;
+    grid-template-columns:  170px  40px 2fr 1fr 150px 100px 30px ;
 
     padding-top: 4px;
     padding-bottom: 4px;
     
 }
+
 
 .body:hover{
     /* background-image: linear-gradient(to top, #ffe000, #d6c439); */

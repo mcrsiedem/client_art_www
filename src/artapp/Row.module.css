@@ -86,16 +86,14 @@
     
 }
 
-.checboxinput{
-
-}
-
 
 
 
 
 .wydrukowane{
     background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    /* background:linear-gradient(to bottom, #7892c2 5%, #37557a 100%); */
+    /* background:linear-gradient(to bottom, #7892c2 5%, #40648f 100%); */
 }
 .ripzaswiecone{
     background-image: linear-gradient(to left bottom, #b8e356 5%, #a5cc52 100%);

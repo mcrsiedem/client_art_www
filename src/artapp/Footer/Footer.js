@@ -18,11 +18,11 @@ function Footer(props){
       }
         return (
           <footer className={style.body}>
-           <button className={style.button} onClick={()=>giveMeJobs('H1')}>H1</button>
-           <button className={style.button} onClick={()=>giveMeJobs('XL')}>XL</button>
-           <button className={style.button} onClick={()=>giveMeJobs('H3')}>H3</button>
-           <button className={style.button} onClick={()=>{console.log(token.token)}}>OK</button>
-           <button className={style.button} onClick={()=>{navigate('/Login')}}>Zaloguj</button>
+           <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button>
+           <button className={style.myButton} onClick={()=>giveMeJobs('XL')}>XL</button>
+           <button className={style.myButton} onClick={()=>giveMeJobs('H3')}>H3</button>
+           <button className={style.myButton} onClick={()=>{console.log(token.token)}}>OK</button>
+           <button className={style.myButton} onClick={()=>{navigate('/Login')}}>Zaloguj</button>
            </footer>
         );
     

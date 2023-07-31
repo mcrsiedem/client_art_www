@@ -75,7 +75,7 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
                             className="from-control rounded-0" />
                         </div>
 
-                        <button type='submit' className='btn btn-success w-100 rounded-0'> Zaloguj</button>
+                        <button type='submit' className='btn btn-success w-100 rounded-0 myButton'> Zaloguj</button>
                        
                     </form>
 

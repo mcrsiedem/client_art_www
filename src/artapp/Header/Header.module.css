@@ -1,12 +1,34 @@
 
 .body{
- background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+ /* background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%); */
+ /* background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%); */
+ background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
  top: 0px;
  height: 80px;
  width: 100vw;
  position: fixed;
  z-index: 1;
+
+ display: flex;
+ justify-content: left;
+ align-items: center;
+ padding-left: 20px;
  
+}
+
+.grid{
+    height: 70%;
+    padding: 10px;
+    
+}
+
+.grid:hover{
+
+    outline:1px solid #c4c4c4;
+    background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+    /* background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%); */
+
+    
 }
 
 

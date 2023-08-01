@@ -23,12 +23,12 @@
 	/* background-color:#f9f9f9; */
    background-color:transparent;
 	border-radius:10px;
-	border:1px solid #c4c4c4;
+	border: 1px solid #c4c4c4;
 	display:inline-block;
 	cursor:pointer;
 	color:#575656;
    color:#ffffff;
-	font-family:Arial;
+	
 	font-size:12px;
 	
 	padding:8px 50px;
@@ -46,7 +46,7 @@
 }
 
 
-        
 
 
-
+               
+               

@@ -16,7 +16,7 @@
 
 .body:hover{
     /* background-image: linear-gradient(to top, #ffe000, #d6c439); */
-    outline: 2px solid rgb(163, 163, 161);
+    outline: 1px solid rgb(87, 87, 87);
 
 }
 

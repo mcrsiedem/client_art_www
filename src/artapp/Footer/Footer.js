@@ -17,19 +17,14 @@ function Footer(props){
 
       }
 
-      const fullScrean = ()=>{
-       
-        var element = document.querySelector("#grid-container");
+  const fullScrean = () => {
 
-        element.requestFullscreen()
-.then(function() {
-	// element has entered fullscreen mode successfully
-})
-.catch(function(error) {
-	// element could not enter fullscreen mode
-	// error message
-	console.log(error.message);
-});
+    document.querySelector("#grid-container").requestFullscreen()
+      .then(function () {
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
 
       }
         return (

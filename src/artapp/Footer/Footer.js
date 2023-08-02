@@ -19,6 +19,8 @@ function Footer(props){
 
   const fullScrean = () => {
 
+
+
     document.querySelector("#grid-container").requestFullscreen()
       .then(function () {
       })
@@ -26,14 +28,16 @@ function Footer(props){
         console.log(error.message);
       });
 
+    
+
       }
         return (
           <footer className={style.body}>
            <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button>
            <button className={style.myButton} onClick={()=>giveMeJobs('XL')}>XL</button>
            <button className={style.myButton} onClick={()=>giveMeJobs('H3')}>H3</button>
-           <button className={style.myButton} onClick={()=>{fullScrean()}}>FullScrean</button>
-           <button className={style.myButton} onClick={()=>{navigate('/Login')}}>Zaloguj</button>
+           {/* <button className={style.myButton} onClick={()=>{fullScrean()}}>FullScrean</button>
+           <button className={style.myButton} onClick={()=>{navigate('/Login')}}>Zaloguj</button> */}
            </footer>
         );
     

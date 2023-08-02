@@ -6,7 +6,7 @@
 
     display: grid;
     min-height: calc(100vh - 5px);
-    grid-template-rows: 100px 1fr 100px;
+    grid-template-rows: 1fr 100px;
     
 
 }

@@ -12,7 +12,7 @@ function Header(){
     const navigate = useNavigate();
     const fullScrean = () => {
 
-        document.querySelector("#grid-container").requestFullscreen()
+        document.querySelector("#root").requestFullscreen()
           .then(function () {
           })
           .catch(function (error) {

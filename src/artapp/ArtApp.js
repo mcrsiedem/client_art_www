@@ -55,7 +55,7 @@ function ArtApp(props) {
 
   return (
     <div id='grid-container' className={style.gridContainer}>
-      <Header />
+      
       <Jobs ref={ChildRef} maszyna={maszyna} />
       <Footer giveMeJobs={(maszyna) => giveMeJobs(maszyna)} />
     </div>

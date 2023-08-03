@@ -8,8 +8,11 @@ import ReactLogo_full from './full.svg';
 import ReactLogo_history from './history.svg';
 import { useNavigate } from 'react-router-dom';
 
+import Hisotry from "../History/History";
+
 function Header(){
     const navigate = useNavigate();
+    const show = localStorage.getItem("header");
     const fullScrean = () => {
 
         document.querySelector("#root").requestFullscreen()
@@ -22,15 +25,19 @@ function Header(){
           }
 
     return (
-        <header id='header' className={style.body}>
-            <div className={style.leftHeaderContener}>
+
+        
+        
+                      <header id='header' className={style.body}>
+
+ <div className={style.leftHeaderContener}>
             <img className={style.icon} src={ReactLogo_full} onClick={()=>{fullScrean()}} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo_ustawienia} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
-                <img className={style.icon} src={ReactLogo_ilosc} alt="React Logo" />
-                <img className={style.icon} src={ReactLogo_history} onClick={()=>{fullScrean()}} alt="React Logo" />
+                <img className={style.icon} src={ReactLogo_ilosc} onClick={()=>{ navigate('/ArtApp');}} alt="React Logo" />
+                <img className={style.icon} src={ReactLogo_history} onClick={()=>{ navigate('/History');}} alt="React Logo" />
 
             </div >
             <div className={style.leftHeaderContener}>
@@ -40,11 +47,16 @@ function Header(){
                 <Searchbar />
                 
             </div>
+
+           
             
              
                
         </header>
-    );
-}
+            )}
+
+
+    
+
 
 export default Header;

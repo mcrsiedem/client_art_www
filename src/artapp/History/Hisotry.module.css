@@ -1,0 +1,13 @@
+
+.body{
+    margin: 0;
+
+    background-color: brown;
+    /* border: 1px solid red; */
+
+    display: grid;
+    min-height: calc(100vh - 5px);
+    grid-template-rows: 1fr 100px;
+    
+
+}

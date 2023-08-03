@@ -15,7 +15,7 @@ import Logowanie from './components/Logowanie/Logowanie';
 import ArtApp from "./artapp/ArtApp";
 import Login from "./artapp/Login";
 import { useState, createContext } from "react";
-
+import History from "./artapp/History/History";
 import {
   BrowserRouter,
   Routes,
@@ -32,8 +32,9 @@ export default function App() {
   return (
     
     <BrowserRouter>
-    <Header />
+    
       <TokenContext.Provider value={{ token, setToken }}>
+        <Header />
         <Routes>
           <Route path="/xl" element={<XL />} />
           <Route path="/H1" element={<H1 />} />
@@ -46,6 +47,8 @@ export default function App() {
           <Route path="/historia" element={<Historia />} />
           <Route path="/drukplanxl" element={<DrukPlanXL />} />
           <Route path="/ArtApp" element={<ArtApp />} />
+          <Route path="/History" element={<History />} />
+
           <Route path="/" element={<Login />} />
         </Routes>
       </TokenContext.Provider>

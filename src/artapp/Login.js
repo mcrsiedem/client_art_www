@@ -33,7 +33,7 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
     if(res.data.length > 0){
 
     //    token.setToken(res.data);
-    //    localStorage.setItem('token', res.data)
+      // localStorage.setItem('header', true)
        setCookie('token', res.data, { path: '/' });
 
 

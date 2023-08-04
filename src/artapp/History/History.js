@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from '../History/Hisotry.module.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import ResizableTable from "./ResizableTable";
+import Footer from "../Footer/Footer";
+
+import Table from 'react-bootstrap/Table';
 
 
 function History(){
+
+    useEffect(()=>{
+  
+
+
+
+
+
+       },[])
+
+
+
     return (
     <div className={style.body}>
 
 
-
-<ResizableTable resizable={true} resizeOptions={{}}>
+<Table striped bordered hover>
+{/* <ResizableTable resizable={true} resizeOptions={{}}> */}
 <thead>
         <tr>
       
@@ -35,8 +50,42 @@ function History(){
             <td>1</td>
             <td>1</td>
           </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+
+
         </tbody>
-      </ResizableTable>
+      {/* </ResizableTable> */}
+      </Table>
+      <Footer/>
     </div>
     );
 }

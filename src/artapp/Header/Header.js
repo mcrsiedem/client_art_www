@@ -7,6 +7,7 @@ import ReactLogo_ustawienia from './settings.svg';
 import ReactLogo_full from './full.svg';
 import ReactLogo_history from './history.svg';
 import { useNavigate } from 'react-router-dom';
+// import CloseButton from 'react-bootstrap/CloseButton';
 
 import Hisotry from "../History/History";
 
@@ -45,6 +46,7 @@ function Header(){
             </div>
             <div className={style.rightHeaderContener}>
                 <Searchbar />
+                {/* <CloseButton variant="white"/> */}
                 
             </div>
 

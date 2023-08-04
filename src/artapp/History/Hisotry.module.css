@@ -11,3 +11,51 @@
     
 
 }
+
+.footer{
+    background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
+    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+    /* background-color: transparent; */
+    /* position: absolute; */
+    bottom: 0px;
+    height: 60px;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+ }
+
+
+ .myButton {
+	/* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
+
+	/* background-color:#f9f9f9; */
+   background-color:transparent;
+	border-radius:10px;
+	border: 1px solid #c4c4c4;
+	display:inline-block;
+	cursor:pointer;
+	color:#575656;
+   color:#ffffff;
+	
+	font-size:12px;
+	
+	padding:8px 50px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+   background-image: linear-gradient(#383838 0%, #444343 80%);
+	background-color:#e9e9e9;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+ 

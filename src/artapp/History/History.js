@@ -83,10 +83,17 @@ function History(){
 
 
         </tbody>
-      {/* </ResizableTable> */}
-      </Table>
-      <Footer/>
-    </div>
+                {/* </ResizableTable> */}
+            </Table>
+
+            <footer className={style.footer}>
+                {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
+                <button className={style.myButton} >OK</button>
+
+            </footer>
+
+
+        </div>
     );
 }
 

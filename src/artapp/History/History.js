@@ -1,17 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import style from '../History/Hisotry.module.css';
 
 import ResizableTable from "./ResizableTable";
 import Footer from "../Footer/Footer";
+import axios from "axios";
 
 import Table from 'react-bootstrap/Table';
+import { ip } from "../../Host";
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 
 
 function History(){
+    const [cookies, setCookie] = useCookies();
+    const navigate = useNavigate();
+
+    const [data, setData] = useState([]);
+
+    async function fechHistory() {
+        const res = await axios.get(ip + 'historia_short');
+        const job = [...res.data];
+        // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
+        //                           .filter(row=> row.status !== "Nowe")
+        setData(job);
+
+    };
+
+    async function checkToken() {
+        axios.get(ip + '/islogged/'+ cookies.token).
+        then(res=> {
+          if(res.data.Status === "Success"){
+            fechHistory();
+    
+          } else{
+        
+            navigate('/Login')
+    
+          }
+        })
+
+    };
+
+
 
     useEffect(()=>{
-  
 
+
+
+
+        checkToken();
+  
+       
 
 
 
@@ -25,45 +64,39 @@ function History(){
 
 
 <Table  striped bordered hover>
-{/* <ResizableTable resizable={true} resizeOptions={{}}> */}
+ {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
                 <thead>
                     <tr>
 
-                        <th >First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th >Kiedy</th>
+                        <th>Kto</th>
+                        <th>Gdzie</th>
+                        <th>Co</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                {data.map((row) => {
+                    return (
+                        <tr key={row.id}>
+                            <td>{row.data}</td>
+                            <td>{row.user}</td>
+                            <td>{row.kategoria}</td>
+                            <td>{row.event}</td>
+                            
+                        
+                            </tr>
+                    );
+                })}
+       
+                    {/* <tr>
                         <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -80,10 +113,25 @@ function History(){
                         <td>2</td>
                         <td>3</td>
                     </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr> */}
 
 
                 </tbody>
-                {/* </ResizableTable> */}
+                {/* </ResizableTable>  */}
             </Table>
 
             <footer className={style.footer}>

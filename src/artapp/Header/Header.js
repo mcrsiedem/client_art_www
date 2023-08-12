@@ -25,6 +25,14 @@ function Header(){
     
           }
 
+          const resize = () => {
+          
+            // window.open("", "", "width=200, height=100");
+            window.resizeTo(500,500);
+        
+              }
+
+
     return (
 
         
@@ -32,8 +40,8 @@ function Header(){
                       <header id='header' className={style.body}>
 
  <div className={style.leftHeaderContener}>
-            <img className={style.icon} src={ReactLogo_full} onClick={()=>{fullScrean()}} alt="React Logo" />
-                <img className={style.icon} src={ReactLogo_ustawienia} alt="React Logo" />
+            
+                <img className={style.icon} src={ReactLogo_ustawienia}  onClick={()=>{resize()}} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
                 <img className={style.icon} src={ReactLogo} alt="React Logo" />
@@ -45,7 +53,8 @@ function Header(){
 
             </div>
             <div className={style.rightHeaderContener}>
-                <Searchbar />
+               <img className={style.icon} src={ReactLogo_full} onClick={()=>{fullScrean()}} alt="React Logo" /> 
+                
                 {/* <CloseButton variant="white"/> */}
                 
             </div>

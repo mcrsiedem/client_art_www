@@ -2,7 +2,7 @@ import React, { useEffect,useState } from "react";
 import style from '../History/Hisotry.module.css';
 
 import ResizableTable from "./ResizableTable";
-import Footer from "../Footer/Footer";
+
 import axios from "axios";
 
 import Table from 'react-bootstrap/Table';

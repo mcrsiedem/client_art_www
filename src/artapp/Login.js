@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,createContext,useContext } from "react";
+import { useState,createContext,useContext,useEffect } from "react";
 
 import style from '../artapp/Login.modules.css';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,14 @@ import { useCookies } from 'react-cookie';
 
 
 function Login(){
+
+var header = document.getElementById("header");
+    useEffect(()=>{
+        
+        header.style.display = "none";
+
+       },[])
+
     const token = useContext(TokenContext);
     const [cookies, setCookie] = useCookies(['']);
 
@@ -37,7 +45,7 @@ axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{
        setCookie('token', res.data, { path: '/' });
 
 
-
+       header.style.display = "grid";
        navigate('/ArtApp');
 
     }else{

@@ -9,13 +9,14 @@ import {ip} from "../Host";
 import TokenContext from "./tokenContext";
 import { useCookies } from 'react-cookie';
 
-
+var header;
 
 function Login(){
 
-var header = document.getElementById("header");
+
+       
     useEffect(()=>{
-        
+        header = document.getElementById("header");
         header.style.display = "none";
 
        },[])

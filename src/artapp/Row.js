@@ -1,11 +1,23 @@
 import React from "react";
 import style from '../artapp/Row.module.css';
-import Searchbar from "./Searchbar";
+import axios from "axios";
+import { ip } from "../Host";
+
+import { useState} from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
+
+
 function Row(props) {
+    const [blachy, setBlachy] = useState('x');
+    const [cookies, setCookie] = useCookies();
+    const navigate = useNavigate();
 
     const status = props.status;
     const czas = props.czasDruku;
-    const typ = props.typ;
+
+ const id = props.id;
+
 
 
     function ChceckStatus(status) {
@@ -37,9 +49,38 @@ function Row(props) {
         return '20' + czas.substring(2)
     }
 
+
+    const handleEditBlachy = () => {
+        //  event.preventDefault();
+        axios
+          .put(ip + "updatenaswietlenieprimewww/",{ id: props.id, ilosc: blachy, blacha_id: '2',user_id:"1",token: cookies.token})
+          .then((res) => {
+           
+            if (res.status === 201) {
+                console.log(res.data);
+               
+              //    token.setToken(res.data);
+              // localStorage.setItem('header', true)
+            //   setCookie("token", res.data, { path: "/" });
+            //   header.style.display = "grid";
+            //   navigate("/ArtApp");
+            } else {
+             
+               if(res.data.Error==="Wrong token"){
+                navigate("/Login");
+               }
+               console.log("Błąd");
+            }
+            // console.log(res);
+          });
+      };
+
+
+
+
     return (
 
-        <div id='row' className={ChceckStatus(status) + ' ' + style.body}>
+        <div id={props.id} className={ChceckStatus(status) + ' ' + style.body}>
 
             <div className={style.druk}>
                 <div className={style.bold}>{props.poczatekDruku}</div>
@@ -71,10 +112,26 @@ function Row(props) {
                     <div > {props.spedycja} </div>
                 </div>
             </div>
+            <div className={style.blachy}>
+                <input  
+                defaultValue={props.blachy} 
+                onChange={event => 
+                    setBlachy(event.target.value)
+                }
+                onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                     console.log("Blachy: " +blachy)
+                    handleEditBlachy();
+                    //  console.log("XX: " +props.xx)
+                    }
+                  }}
+                />
+
+            </div>
 
 
-            <div>
-                <div className={style.combo}>{props.status} </div>
+            <div className={style.combo}>
+                <div >{props.status} </div>
             </div>
 
 

@@ -35,34 +35,28 @@ function Login(){
     const navigate = useNavigate();
 
 
-   const handleSubmit = (event) =>{
-   
-event.preventDefault();
-axios.get(ip + 'users/'+values.login+'/'+values.haslo).then(res =>{  
-    if(res.data.length > 0){
+   const handleSubmit = (event) => {
+     event.preventDefault();
+     axios
+       .get(ip + "users/" + values.login + "/" + values.haslo)
+       .then((res) => {
+         if (res.data.length > 0) {
+           //    token.setToken(res.data);
+           // localStorage.setItem('header', true)
+           setCookie("token", res.data, { path: "/" });
 
-    //    token.setToken(res.data);
-      // localStorage.setItem('header', true)
-       setCookie('token', res.data, { path: '/' });
-
-
-       header.style.display = "grid";
-       navigate('/ArtApp');
-
-    }else{
-        console.log("Błąd");
-    }
-   // console.log(res);
-    
-    }
-   
-     );
+           header.style.display = "grid";
+           navigate("/ArtApp");
+         } else {
+           console.log("Błąd");
+         }
+         // console.log(res);
+       });
+   };
 
 
 
 
-
-    }
         return (
             <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
 

@@ -23,6 +23,12 @@ const Jobs = forwardRef((props, ref) => {
       //  console.log('notes ' + job);
     };
 
+
+
+
+
+
+
     useEffect(() => {
         fechDruk('XL');
     }, []);
@@ -40,7 +46,7 @@ const Jobs = forwardRef((props, ref) => {
                             czasDruku={row.czasDruku}
                             koniecDruku={row.koniecDruku}
                             id={row.id}
-                            // updateDruk={()=>this.updateDruk(row.id)}
+                            // handleEditBlachy={()=>handleEditBlachy(xx)}
                             klient={row.klient}
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
@@ -50,6 +56,7 @@ const Jobs = forwardRef((props, ref) => {
                             format={row.formatPapieru}
                             status={row.status}
                             spedycja={row.spedycja}
+                            blachy={row.xl_ok}
                         />
                     );
                 })}

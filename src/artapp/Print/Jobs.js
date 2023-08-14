@@ -7,8 +7,11 @@ import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Jobs = forwardRef((props, ref) => {
 
+    const [blacha_id, setBlacha_id] = useState();
     const [notes, setNotes] = useState([]);
 
     useImperativeHandle(ref, () => ({
@@ -24,13 +27,13 @@ const Jobs = forwardRef((props, ref) => {
     async function fechDruk(maszyna) {
         switch (maszyna) {
           case "XL":
-            sessionStorage.setItem("blacha_id", "2");
+            setBlacha_id("2")
             break;
           case "H1":
-            sessionStorage.setItem("blacha_id", "1");
+            setBlacha_id("1")
             break;
           case "H3":
-            sessionStorage.setItem("blacha_id", "1");
+            setBlacha_id("1")
             break;
         }
 
@@ -49,7 +52,7 @@ const Jobs = forwardRef((props, ref) => {
           .put(ip + "updatenaswietlenieprimewww/", {
             id: id,
             ilosc: sessionStorage.getItem("ilosc_blach"),
-            blacha_id: sessionStorage.getItem("blacha_id"),
+            blacha_id: blacha_id,
             user_id: "1",
             token: cookies.token,
           })
@@ -110,7 +113,8 @@ const Jobs = forwardRef((props, ref) => {
                     );
                 })}
             </div>
-            <h1>alert</h1>
+         
+            <h1>alert2 </h1>
         </div>
     );
 }

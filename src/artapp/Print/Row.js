@@ -3,7 +3,7 @@ import style from "../Print/Row.module.css";
 import { useState } from "react";
 
 function Row(props) {
-  const [blachy, setBlachy] = useState("x");
+//   const [blachy, setBlachy] = useState();
 
 
   const status = props.status;
@@ -81,10 +81,12 @@ function Row(props) {
       <div className={style.blachy}>
         <input
           defaultValue={props.blachy}
-          onChange={(event) => setBlachy(event.target.value)}
+        //   onChange={(event) => setBlachy(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
-              sessionStorage.setItem('ilosc_blach', blachy)
+         
+              sessionStorage.setItem('ilosc_blach', event.target.value)
+          //    console.log("ilosc: "+event.target.value)
               props.handleEditBlachy();
 
             }

@@ -12,7 +12,7 @@ import Historia from './components/Historia/Historia';
 import Wydany_papier from './components/Druk/Wydany_papier';
 
 import Logowanie from './components/Logowanie/Logowanie';
-import ArtApp from "./artapp/ArtApp";
+import Print from "./artapp/Print/Print";
 import Login from "./artapp/Login";
 import { useState, createContext } from "react";
 import History from "./artapp/History/History";
@@ -46,7 +46,7 @@ export default function App() {
           <Route path="/papier" element={<Wydany_papier />} />
           <Route path="/historia" element={<Historia />} />
           <Route path="/drukplanxl" element={<DrukPlanXL />} />
-          <Route path="/ArtApp" element={<ArtApp />} />
+          <Route path="/ArtApp" element={<Print />} />
           <Route path="/History" element={<History />} />
 
           <Route path="/" element={<Login />} />

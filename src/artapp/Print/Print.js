@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
-import style from '../artapp/ArtApp.module.css';
-import Header from "./Header/Header";
-import Menu from "./Menu";
+import style from '../Print/Print.module.css';
+
 import Jobs from "./Jobs";
 import Searchbar from "./Searchbar";
 
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import TokenContext from "./tokenContext";
-import { ip } from "../Host";
+import TokenContext from "../tokenContext";
+import { ip } from "../../Host";
 
 import axios from "axios";
 

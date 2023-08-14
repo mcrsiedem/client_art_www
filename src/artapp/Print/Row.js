@@ -1,7 +1,7 @@
 import React from "react";
-import style from '../artapp/Row.module.css';
+import style from '../Print/Row.module.css';
 import axios from "axios";
-import { ip } from "../Host";
+import { ip } from "../../Host";
 
 import { useState} from "react";
 import { useCookies } from "react-cookie";
@@ -60,7 +60,7 @@ function Row(props) {
             if (res.status === 201) {
                 console.log(res.data);
 
-             
+             alert("OK");
                
               //    token.setToken(res.data);
               // localStorage.setItem('header', true)

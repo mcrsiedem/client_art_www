@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import Row from "./Row";
-import style from '../artapp/Jobs.module.css';
+import style from './Print.module.css';
 import axios from "axios";
-import { ip } from "../Host";
+import { ip } from "../../Host";
 
 const Jobs = forwardRef((props, ref) => {
 

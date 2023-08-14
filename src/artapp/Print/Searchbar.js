@@ -1,6 +1,6 @@
 
 import React from "react";
-import style from '../artapp/Searchbar.module.css';
+import style from './Searchbar.module.css'
 
 function Searchbar(){
     return(

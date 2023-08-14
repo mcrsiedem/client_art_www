@@ -1,6 +1,5 @@
 import React from "react";
 import style from './Header.module.css';
-import Searchbar from '../Print/Searchbar';
 import ReactLogo from './grid.svg';
 import ReactLogo_ilosc from './ilosc.svg';
 import ReactLogo_ustawienia from './settings.svg';

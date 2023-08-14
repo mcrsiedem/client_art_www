@@ -4,6 +4,9 @@ import style from './Print.module.css';
 import axios from "axios";
 import { ip } from "../../Host";
 
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 const Jobs = forwardRef((props, ref) => {
 
     const [notes, setNotes] = useState([]);
@@ -13,6 +16,10 @@ const Jobs = forwardRef((props, ref) => {
             fechDruk(maszyna);
         }
     }));
+
+    const [cookies, setCookie] = useCookies();
+    const navigate = useNavigate();
+  
 
     async function fechDruk(maszyna) {
         switch (maszyna) {
@@ -36,7 +43,36 @@ const Jobs = forwardRef((props, ref) => {
     };
 
 
-
+    const handleEditBlachy2 = (id) => {
+        //  event.preventDefault();
+        axios
+          .put(ip + "updatenaswietlenieprimewww/", {
+            id: id,
+            ilosc: sessionStorage.getItem("ilosc_blach"),
+            blacha_id: sessionStorage.getItem("blacha_id"),
+            user_id: "1",
+            token: cookies.token,
+          })
+          .then((res) => {
+            if (res.status === 201) {
+              console.log(res.data);
+    
+              alert("OK");
+    
+              //    token.setToken(res.data);
+              // localStorage.setItem('header', true)
+              //   setCookie("token", res.data, { path: "/" });
+              //   header.style.display = "grid";
+              //   navigate("/ArtApp");
+            } else {
+              if (res.data.Error === "Wrong token") {
+                navigate("/Login");
+              }
+              console.log("Błąd");
+            }
+            // console.log(res);
+          });
+      };
 
 
 
@@ -58,7 +94,7 @@ const Jobs = forwardRef((props, ref) => {
                             czasDruku={row.czasDruku}
                             koniecDruku={row.koniecDruku}
                             id={row.id}
-                            // handleEditBlachy={()=>handleEditBlachy(xx)}
+                             handleEditBlachy={()=>handleEditBlachy2(row.id)}
                             klient={row.klient}
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
@@ -70,9 +106,11 @@ const Jobs = forwardRef((props, ref) => {
                             spedycja={row.spedycja}
                             blachy={row.xl_ok}
                         />
+                        
                     );
                 })}
             </div>
+            <h1>alert</h1>
         </div>
     );
 }

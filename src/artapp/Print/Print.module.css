@@ -80,3 +80,18 @@
      position:relative;
      top:1px;
  }
+
+
+ .search{
+
+    background-color: transparent;
+    border-color: var(--border-color-light);
+    color: var(--border-color-light);
+    
+    font-size: 13px;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #c4c4c4;
+    
+    }

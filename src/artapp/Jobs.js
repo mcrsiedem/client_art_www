@@ -15,6 +15,18 @@ const Jobs = forwardRef((props, ref) => {
     }));
 
     async function fechDruk(maszyna) {
+        switch (maszyna) {
+          case "XL":
+            sessionStorage.setItem("blacha_id", "2");
+            break;
+          case "H1":
+            sessionStorage.setItem("blacha_id", "1");
+            break;
+          case "H3":
+            sessionStorage.setItem("blacha_id", "1");
+            break;
+        }
+
         const res = await axios.get(ip + 'druk/' + maszyna + '/1');
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")

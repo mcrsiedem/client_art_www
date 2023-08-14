@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 
 
+
 function Row(props) {
     const [blachy, setBlachy] = useState('x');
     const [cookies, setCookie] = useCookies();
@@ -53,11 +54,13 @@ function Row(props) {
     const handleEditBlachy = () => {
         //  event.preventDefault();
         axios
-          .put(ip + "updatenaswietlenieprimewww/",{ id: props.id, ilosc: blachy, blacha_id: '2',user_id:"1",token: cookies.token})
+          .put(ip + "updatenaswietlenieprimewww/",{ id: props.id, ilosc: blachy, blacha_id: sessionStorage.getItem("blacha_id") ,user_id:"1",token: cookies.token})
           .then((res) => {
            
             if (res.status === 201) {
                 console.log(res.data);
+
+             
                
               //    token.setToken(res.data);
               // localStorage.setItem('header', true)

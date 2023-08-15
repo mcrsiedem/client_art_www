@@ -10,13 +10,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  
   }
   
 
-  
+    
   #show {
     visibility: visible;
-    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.6s;
   }
   #hide {
     visibility: hidden;
@@ -25,21 +26,25 @@
   @keyframes fadeIn {
     from {
       bottom: 100px;
+      left: -300px;
       opacity: 0;
     }
     to {
       bottom: 100px;
+        left: 0;
       opacity: 1;
     }
   }
   
   @keyframes fadeOut {
     from {
-      bottom: 100px;
+        bottom: 100px;
+        left: 0; 
       opacity: 1;
     }
     to {
-      bottom: 100;
+        bottom: 100px;
+      left: -300px;
       opacity: 0;
     }
   }

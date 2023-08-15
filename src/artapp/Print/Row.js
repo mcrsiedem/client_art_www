@@ -88,6 +88,7 @@ function Row(props) {
               sessionStorage.setItem('ilosc_blach', event.target.value)
           //    console.log("ilosc: "+event.target.value)
               props.handleEditBlachy();
+               document.activeElement.blur();
 
             }
           }}

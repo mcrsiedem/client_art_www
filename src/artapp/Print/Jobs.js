@@ -115,7 +115,7 @@ const Jobs = forwardRef((props, ref) => {
                         
                     );
                 })}
-              <Dialog ref={snackbarRef}/>
+              <Dialog  ref={snackbarRef}/>
 
             </div>
          

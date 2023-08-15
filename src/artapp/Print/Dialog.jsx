@@ -21,7 +21,7 @@ const Dialog = forwardRef((props, ref) => {
         }}
       >
         {" "}
-        OK
+        Zapisane {sessionStorage.getItem("ilosc_blach")} szt. 
       </div>
     </div>
   );

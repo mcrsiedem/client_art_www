@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState, forwardRef, useImperativeHandle } from "react";
+import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,useRef } from "react";
 import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
@@ -6,10 +6,13 @@ import { ip } from "../../Host";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import Dialog from "./Dialog";
 
 
 
 const Jobs = forwardRef((props, ref) => {
+
+  const snackbarRef = useRef(null);
 
     const [blacha_id, setBlacha_id] = useState();
     const [notes, setNotes] = useState([]);
@@ -60,7 +63,7 @@ const Jobs = forwardRef((props, ref) => {
             if (res.status === 201) {
               console.log(res.data);
     
-              alert("OK");
+              snackbarRef.current.show();
     
               //    token.setToken(res.data);
               // localStorage.setItem('header', true)
@@ -112,9 +115,11 @@ const Jobs = forwardRef((props, ref) => {
                         
                     );
                 })}
+              <Dialog ref={snackbarRef}/>
+
             </div>
          
-            <h1>alert2 </h1>
+            
         </div>
     );
 }

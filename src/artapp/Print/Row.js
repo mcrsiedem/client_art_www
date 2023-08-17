@@ -105,7 +105,8 @@ function Row(props) {
       <div className={style.combo}>
         <select value ={statusCombo} onChange={(e)=> {
           setStatusCombo(e.target.value);
-          sessionStorage.setItem('nowy_status', e.target.value)
+          sessionStorage.setItem('nowy_status', e.target.value);
+
           }}>
  
           <option value ="Nowe"> Nowe </option>

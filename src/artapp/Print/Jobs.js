@@ -80,6 +80,36 @@ const Jobs = forwardRef((props, ref) => {
           });
       };
 
+      const handleEditStatus= (id) => {
+        //  event.preventDefault();
+        axios
+          .put(ip + "updateStatusWWW/", {
+            id: id,
+            value: sessionStorage.getItem("nowy_status"),
+            idzlecenia: blacha_id,
+            user_id: "1",
+            token: cookies.token,
+          })
+          .then((res) => {
+            if (res.status === 201) {
+              console.log(res.data);
+    
+              snackbarRef.current.show();
+    
+              //    token.setToken(res.data);
+              // localStorage.setItem('header', true)
+              //   setCookie("token", res.data, { path: "/" });
+              //   header.style.display = "grid";
+              //   navigate("/ArtApp");
+            } else {
+              if (res.data.Error === "Wrong token") {
+                navigate("/Login");
+              }
+              console.log("Błąd");
+            }
+            // console.log(res);
+          });
+      };
 
 
 

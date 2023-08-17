@@ -1,15 +1,22 @@
 import React from "react";
 import style from "../Print/Row.module.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function Row(props) {
-//   const [blachy, setBlachy] = useState();
+   const [statusCombo, setStatusCombo] = useState();
 
 
   const status = props.status;
   const czas = props.czasDruku;
 
+  useEffect(()=>{
+    setStatusCombo(status);
+   },[])
 
+   useEffect(()=>{
+    // console.log(statusCombo)
+    // alert(statusCombo);
+   },[statusCombo])
 
   function ChceckStatus(status) {
     if (
@@ -96,7 +103,20 @@ function Row(props) {
       </div>
 
       <div className={style.combo}>
-        <div>{props.status} </div>
+        <select value ={statusCombo} onChange={(e)=> {
+          setStatusCombo(e.target.value);
+          sessionStorage.setItem('nowy_status', e.target.value)
+          }}>
+ 
+          <option value ="Nowe"> Nowe </option>
+          <option value ="Pliki"> Pliki </option>
+          <option value ="Akcept"> Akcept </option>
+          <option value ="RIP"> RIP </option>
+          <option value ="Zaświecone"> Zaświecone </option>
+          <option value ="Wydrukowane"> Wydrukowane </option>
+
+        </select>
+
       </div>
 
       <div className={style.checbox}>

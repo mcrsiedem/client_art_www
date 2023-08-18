@@ -101,3 +101,5 @@ let taskCompleted = {
     isCompleted: true, // nadpisane pole
 }
 
+delete taskPending.when;
+console.log('when' in takPending); //false

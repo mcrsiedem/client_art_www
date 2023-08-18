@@ -102,8 +102,8 @@ function Row(props) {
         />
       </div>
 
-      <div className={style.combo}>
-        <select value ={statusCombo} onChange={(e)=> {
+      <div className={style.comboContener}>
+        <select className={style.combo} value ={statusCombo} onChange={(e)=> {
           setStatusCombo(e.target.value);
           sessionStorage.setItem('nowy_status', e.target.value);
 

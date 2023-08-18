@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './Header.module.css';
 import ReactLogo from './grid.svg';
 import ReactLogo_ilosc from './ilosc.svg';
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import Hisotry from "../History/History";
 
 function Header(){
+    const [value,setValue] = useState('cos2');
     const navigate = useNavigate();
     const show = localStorage.getItem("header");
     const fullScrean = () => {
@@ -55,7 +56,8 @@ function Header(){
                <img className={style.icon} src={ReactLogo_full} onClick={()=>{fullScrean()}} alt="React Logo" /> 
                 
                 {/* <CloseButton variant="white"/> */}
-                
+                {{'cos':'😁',
+                  'cos2':'😎',}[value]}
             </div>
 
            

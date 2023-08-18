@@ -15,13 +15,8 @@ const Dialog = forwardRef((props, ref) => {
 
   return (
     <div className="dialog" id={showSnackbar ? "show" : "hide"}>
-      <div
-        style={{
-          color: "white",
-        }}
-      >
-        {" "}
-        Zapisane {sessionStorage.getItem("ilosc_blach")} szt. 
+      <div style={{color: "white"}}>
+        + {sessionStorage.getItem("ilosc_blach")} szt. 
       </div>
     </div>
   );

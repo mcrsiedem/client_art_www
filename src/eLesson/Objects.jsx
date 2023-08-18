@@ -1,7 +1,10 @@
 // JavaScript Objects Simplified // MasterClass - basarat
 // https://www.youtube.com/watch?v=oxVcJzoVqZM 
 
-let channig = {name: 'magic mike', gender: 'male'};
+let channig = {
+    name: 'magic mike',
+    gender: 'male'
+    };
 
 console.log(channing.name); // magic mike
 

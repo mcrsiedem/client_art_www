@@ -31,6 +31,8 @@ const Jobs = forwardRef((props, ref) => {
   }
 
   const snackbarRef = useRef(null);
+  const rowRef = useRef(null);
+
 
     const [blacha_id, setBlacha_id] = useState();
     const [notes, setNotes] = useState([]);
@@ -114,9 +116,10 @@ const Jobs = forwardRef((props, ref) => {
           })
           .then((res) => {
             if (res.status === 201) {
-              snackbarRef.current.show();
+              // snackbarRef.current.show();
+              rowRef.current.confirm();
 
-              
+
             } else {
               if (res.data.Error === "Wrong token") {
                 navigate("/Login");
@@ -158,7 +161,7 @@ const Jobs = forwardRef((props, ref) => {
                             blachy={row.xl_ok}
                             id_zlecenia={row.id_zlecenia}
                             handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
-                       
+                            ref={rowRef}
                         />
                         
                     );

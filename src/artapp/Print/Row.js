@@ -1,35 +1,49 @@
 import React from "react";
 import style from "../Print/Row.module.css";
-import { useState,useEffect } from "react";
+import { useState,useEffect,forwardRef,useImperativeHandle } from "react";
 
-function Row(props) {
+const Row=forwardRef((props,ref) => {
    const [statusCombo, setStatusCombo] = useState();
 
+   const [statusTemp, setStatusTemp] = useState();
 
-  const status = props.status;
+
+
+
   const czas = props.czasDruku;
 
+
+
   useEffect(()=>{
-    setStatusCombo(status);
+    setStatusCombo(props.status);
    },[])
 
    useEffect(()=>{
-    // console.log(statusCombo)
-    // alert(statusCombo);
+
+
    },[statusCombo])
 
-  function ChceckStatus(status) {
+
+   useImperativeHandle(ref, () => ({
+    confirm() {
+      setStatusCombo(statusTemp);
+    },
+  }));
+
+
+
+  function ChceckStatus(statusCombo) {
     if (
-      (status === "Wydrukowane") ^
-      (status === "Sfalcowane") ^
-      (status === "Falcowanie")
+      (statusCombo === "Wydrukowane") ^
+      (statusCombo === "Sfalcowane") ^
+      (statusCombo === "Falcowanie")
     )
       return style.wydrukowane;
-    if ((status === "RIP") ^ (status === "Zaświecone"))
+    if ((statusCombo === "RIP") ^ (statusCombo === "Zaświecone"))
       return style.ripzaswiecone;
-    if (status === "Akcept") return style.akcept;
-    if (status === "Nowe") return style.nowe;
-    if (status === "Pliki") return style.pliki;
+    if (statusCombo === "Akcept") return style.akcept;
+    if (statusCombo === "Nowe") return style.nowe;
+    if (statusCombo === "Pliki") return style.pliki;
     return style.body;
   }
 
@@ -54,7 +68,7 @@ function Row(props) {
 
 
   return (
-    <div id={props.id} className={ChceckStatus(status) + " " + style.body}>
+    <div id={props.id} className={ChceckStatus(statusCombo) + " " + style.body}>
       <div className={style.druk}>
         <div className={style.bold}>{props.poczatekDruku}</div>
         <div className={style.koniecdruku}>
@@ -99,7 +113,17 @@ function Row(props) {
 
       <div className={style.comboContener}>
         <select className={style.combo} value ={statusCombo} onChange={(e)=> {
-          props.handleEditStatus(e.target.value);   
+         
+        //  (setStatusComb ) =>{
+
+        //   props.handleEditStatus(e.target.value);  
+        //   setStatusCombo(e.target.value) 
+        //   document.activeElement.blur();
+        // }
+          props.handleEditStatus(e.target.value);  
+          
+          setStatusTemp(e.target.value) 
+          document.activeElement.blur();
 
           }}>
  
@@ -125,6 +149,6 @@ function Row(props) {
       </div>
     </div>
   );
-}
+});
 
 export default Row;

@@ -12,10 +12,29 @@ import Dialog from "./Dialog";
 
 const Jobs = forwardRef((props, ref) => {
 
+  const statusList ={
+    'Nowe': '1',
+    'Pliki': '2',
+    'Akcept': '3',
+    'RIP': '4',
+    'Zaświecone': '5',
+    'Drukowanie': '6',
+    'Wydrukowane': '7',
+    'Falcowanie': '8',
+    'Sfalcowane': '9',
+    'Uszlachetnione': '10',
+    'Oprawione': '11',
+    'Oddane': '12',
+    'Anulowane': '13',
+    'Wstrzymane': '14',
+    'Nieaktywne': '15',
+  }
+
   const snackbarRef = useRef(null);
 
     const [blacha_id, setBlacha_id] = useState();
     const [notes, setNotes] = useState([]);
+    const [sztuki, setSztuki] = useState();
 
     useImperativeHandle(ref, () => ({
         callChildFunction(maszyna) {
@@ -49,12 +68,13 @@ const Jobs = forwardRef((props, ref) => {
     };
 
 
-    const handleEditBlachy2 = (id) => {
+    const handleEditBlachy = (sztuki,id) => {
         //  event.preventDefault();
+        setSztuki(sztuki);
         axios
           .put(ip + "updatenaswietlenieprimewww/", {
             id: id,
-            ilosc: sessionStorage.getItem("ilosc_blach"),
+            ilosc: sztuki,
             blacha_id: blacha_id,
             user_id: "1",
             token: cookies.token,
@@ -76,38 +96,34 @@ const Jobs = forwardRef((props, ref) => {
               }
               console.log("Błąd");
             }
-            // console.log(res);
+
           });
       };
 
-      const handleEditStatus= (id) => {
+
+
+      const handleEditStatus= (status,id,id_zlecenia) => {
         //  event.preventDefault();
         axios
           .put(ip + "updateStatusWWW/", {
             id: id,
-            value: sessionStorage.getItem("nowy_status"),
-            idzlecenia: blacha_id,
+            value: statusList[status],
+            idzlecenia: id_zlecenia,
             user_id: "1",
             token: cookies.token,
           })
           .then((res) => {
             if (res.status === 201) {
-              console.log(res.data);
-    
               snackbarRef.current.show();
-    
-              //    token.setToken(res.data);
-              // localStorage.setItem('header', true)
-              //   setCookie("token", res.data, { path: "/" });
-              //   header.style.display = "grid";
-              //   navigate("/ArtApp");
+
+              
             } else {
               if (res.data.Error === "Wrong token") {
                 navigate("/Login");
               }
               console.log("Błąd");
             }
-            // console.log(res);
+  
           });
       };
 
@@ -130,22 +146,24 @@ const Jobs = forwardRef((props, ref) => {
                             czasDruku={row.czasDruku}
                             koniecDruku={row.koniecDruku}
                             id={row.id}
-                             handleEditBlachy={()=>handleEditBlachy2(row.id)}
+                            handleEditBlachy={(sztuki)=>handleEditBlachy(sztuki,row.id)}
                             klient={row.klient}
                             nrZlecenia={row.nrZlecenia}
                             rokZlecenia={row.rokZlecenia}
                             nazwa={row.nazwa}
-                            // updateDrukNiewydrukowane={()=>this.updateDrukNiewydrukowane(row.id)}
                             typ={row.typ}
                             format={row.formatPapieru}
                             status={row.status}
                             spedycja={row.spedycja}
                             blachy={row.xl_ok}
+                            id_zlecenia={row.id_zlecenia}
+                            handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
+                       
                         />
                         
                     );
                 })}
-              <Dialog  ref={snackbarRef}/>
+              <Dialog  sztuki={sztuki} ref={snackbarRef}/>
 
             </div>
          

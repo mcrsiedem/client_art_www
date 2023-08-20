@@ -88,15 +88,10 @@ function Row(props) {
       <div className={style.blachy}>
         <input
           defaultValue={props.blachy}
-        //   onChange={(event) => setBlachy(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
-         
-              sessionStorage.setItem('ilosc_blach', event.target.value)
-          //    console.log("ilosc: "+event.target.value)
-              props.handleEditBlachy();
-               document.activeElement.blur();
-
+              props.handleEditBlachy(event.target.value);
+              document.activeElement.blur();
             }
           }}
         />
@@ -104,8 +99,7 @@ function Row(props) {
 
       <div className={style.comboContener}>
         <select className={style.combo} value ={statusCombo} onChange={(e)=> {
-          setStatusCombo(e.target.value);
-          sessionStorage.setItem('nowy_status', e.target.value);
+          props.handleEditStatus(e.target.value);   
 
           }}>
  

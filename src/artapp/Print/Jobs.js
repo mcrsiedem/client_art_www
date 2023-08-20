@@ -78,7 +78,7 @@ const Jobs = forwardRef((props, ref) => {
             id: id,
             ilosc: sztuki,
             blacha_id: blacha_id,
-            user_id: "1",
+            user_id: sessionStorage.getItem("id"),
             token: cookies.token,
           })
           .then((res) => {
@@ -111,7 +111,7 @@ const Jobs = forwardRef((props, ref) => {
             id: id,
             value: statusList[status],
             idzlecenia: id_zlecenia,
-            user_id: "1",
+            user_id: sessionStorage.getItem("id"),
             token: cookies.token,
           })
           .then((res) => {

@@ -55,9 +55,7 @@ function Header(){
             <div className={style.rightHeaderContener}>
                <img className={style.icon} src={ReactLogo_full} onClick={()=>{fullScrean()}} alt="React Logo" /> 
                 
-                {/* <CloseButton variant="white"/> */}
-                {{'cos':'😁',
-                  'cos2':'😎',}[value]}
+
             </div>
 
            

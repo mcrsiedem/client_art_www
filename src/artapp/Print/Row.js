@@ -16,11 +16,12 @@ const Row=forwardRef((props,ref) => {
 
   useEffect(()=>{
     setStatusCombo(props.status);
+   
    },[])
 
    useEffect(()=>{
 
-
+  
    },[statusCombo])
 
 

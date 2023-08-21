@@ -1,7 +1,7 @@
 import React from "react";
 
 const TokenContext = React.createContext({
-    token: 'token context',
+    token: '',
     setToken: ()=>{}
 });
 

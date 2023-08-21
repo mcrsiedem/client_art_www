@@ -13,7 +13,7 @@ import axios from "axios";
 
 import { useCookies } from "react-cookie";
 
-function ArtApp(props) {
+function Print(props) {
   const [cookies, setCookie] = useCookies();
 
   const [maszyna, setMaszyna] = useState("");
@@ -26,7 +26,7 @@ function ArtApp(props) {
     ChildRef.current.callChildFunction(maszyna);
   }
 
-  const refContainer = useRef();
+
 
 
   // const token_z_contextu = tokenContext.token;
@@ -35,12 +35,13 @@ function ArtApp(props) {
 
 
   useEffect(()=>{
+    
    // console.log("Token z cookies 2: " + cookies.token);
-  //  console.log("Token z contextu: " + tokenContext.token);
+   console.log("Token z contextu: " + tokenContext.token);
  // axios.get(ip + '/veryfiy/'+ tokenContext.token).
   //  axios.get(ip + '/islogged/'+ localStorage.getItem('token')).
-    axios.get(ip + '/islogged/'+ cookies.token).
-    then(res=> {
+    axios.get(ip + '/islogged/'+ cookies.token)
+    .then(res=> {
       if(res.data.Status === "Success"){
 
       } else{
@@ -78,4 +79,4 @@ function ArtApp(props) {
   );
 
 }
-export default ArtApp;
+export default Print;

@@ -46,7 +46,7 @@ export default function App() {
           <Route path="/papier" element={<Wydany_papier />} />
           <Route path="/historia" element={<Historia />} />
           <Route path="/drukplanxl" element={<DrukPlanXL />} />
-          <Route path="/ArtApp" element={<Print />} />
+          <Route path="/Print" element={<Print />} />
           <Route path="/History" element={<History />} />
 
           <Route path="/" element={<Login />} />

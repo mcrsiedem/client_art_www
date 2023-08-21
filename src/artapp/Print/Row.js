@@ -1,37 +1,21 @@
 import React from "react";
 import style from "../Print/Row.module.css";
-import { useState,useEffect,forwardRef,useImperativeHandle } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
-const Row=forwardRef((props,ref) => {
-   const [statusCombo, setStatusCombo] = useState();
-
-   const [statusTemp, setStatusTemp] = useState();
-
-
-
-
+const Row = forwardRef((props, ref) => {
+  const [statusCombo, setStatusCombo] = useState();
+  const [statusTemp, setStatusTemp] = useState();
   const czas = props.czasDruku;
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     setStatusCombo(props.status);
-   
-   },[])
+  }, []);
 
-   useEffect(()=>{
-
-  
-   },[statusCombo])
-
-
-   useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref, () => ({
     confirm() {
       setStatusCombo(statusTemp);
     },
   }));
-
-
 
   function ChceckStatus(statusCombo) {
     if (
@@ -65,8 +49,6 @@ const Row=forwardRef((props,ref) => {
 
     return "20" + czas.substring(2);
   }
-
-
 
   return (
     <div id={props.id} className={ChceckStatus(statusCombo) + " " + style.body}>
@@ -113,30 +95,29 @@ const Row=forwardRef((props,ref) => {
       </div>
 
       <div className={style.comboContener}>
-        <select className={style.combo} value ={statusCombo} onChange={(e)=> {
-         
-        //  (setStatusComb ) =>{
+        <select
+          className={style.combo}
+          value={statusCombo}
+          onChange={(e) => {
+            //  (setStatusComb ) =>{
 
-        //   props.handleEditStatus(e.target.value);  
-        //   setStatusCombo(e.target.value) 
-        //   document.activeElement.blur();
-        // }
-          props.handleEditStatus(e.target.value);  
-          
-          setStatusTemp(e.target.value) 
-          document.activeElement.blur();
+            //   props.handleEditStatus(e.target.value);
+            //   setStatusCombo(e.target.value)
+            //   document.activeElement.blur();
+            // }
+            props.handleEditStatus(e.target.value);
 
-          }}>
- 
-          <option value ="Nowe"> Nowe </option>
-          <option value ="Pliki"> Pliki </option>
-          <option value ="Akcept"> Akcept </option>
-          <option value ="RIP"> RIP </option>
-          <option value ="Zaświecone"> Zaświecone </option>
-          <option value ="Wydrukowane"> Wydrukowane </option>
-
+            setStatusTemp(e.target.value);
+            document.activeElement.blur();
+          }}
+        >
+          <option value="Nowe"> Nowe </option>
+          <option value="Pliki"> Pliki </option>
+          <option value="Akcept"> Akcept </option>
+          <option value="RIP"> RIP </option>
+          <option value="Zaświecone"> Zaświecone </option>
+          <option value="Wydrukowane"> Wydrukowane </option>
         </select>
-
       </div>
 
       <div className={style.checbox}>

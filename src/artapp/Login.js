@@ -50,7 +50,7 @@ function Login() {
     event.preventDefault();
     axios.get(ip + "users/" + values.login + "/" + values.haslo).then((res) => {
       if (res.data.length > 0) {
-        //    token.setToken(res.data);
+       //   token.setToken(parseJwt(res.data).id);
         // localStorage.setItem('header', true)
         setCookie("token", res.data, { path: "/" });
 

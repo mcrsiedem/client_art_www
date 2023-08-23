@@ -15,9 +15,42 @@ const Dialog = forwardRef((props, ref) => {
 
   return (
     <div className="dialog" id={showSnackbar ? "show" : "hide"}>
-      <div style={{color: "white"}}>
- 
-        + {props.sztuki} szt. 
+      <div style={{
+        color: "white",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+      }}>
+
+<div style={{
+          position: "absolute",
+          left:"0",
+          background: "#a5cc52",
+          height: "50px",
+          width: "25px",
+
+        }}></div>
+
+        <div style={{
+          // position: "absolute",
+          // right:"0",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "250px",
+        }}>+ {props.sztuki} szt. </div>
+
+        {/* <div style={{
+          position: "absolute",
+          right:"0",
+          background: "#a5cc52",
+          height: "50px",
+          width: "20px",
+          borderTopRightRadius: "10px",
+          borderBottomRightRadius: "10px"
+        }}></div> */}
+        
       </div>
     </div>
   );

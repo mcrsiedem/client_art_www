@@ -1,15 +1,24 @@
 import React from "react";
 import style from "../Print/Row.module.css";
-import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from "react";
+import TokenContext from "../tokenContext";
 
 const Row = forwardRef((props, ref) => {
+  const [selected, setSelected] = useState(false);
   const [statusCombo, setStatusCombo] = useState();
   const [statusTemp, setStatusTemp] = useState();
   const czas = props.czasDruku;
+  const token = useContext(TokenContext);
 
   useEffect(() => {
     setStatusCombo(props.status);
+   // console.log("render")
   }, []);
+
+  useEffect(() => {
+   
+    console.log(selected)
+  }, [selected]);
 
   useImperativeHandle(ref, () => ({
     confirm() {
@@ -51,7 +60,13 @@ const Row = forwardRef((props, ref) => {
   }
 
   return (
-    <div id={props.id} className={ChceckStatus(statusCombo) + " " + style.body}>
+    <div id={props.id} className={ChceckStatus(statusCombo) + " " + style.body}
+      onClick={() => {
+        token.setRowSelected([...token.rowSelected, props.id]);
+        setSelected(prevState =>(!prevState));
+      }
+      }>
+
       <div className={style.druk}>
         <div className={style.bold}>{props.poczatekDruku}</div>
         <div className={style.koniecdruku}>

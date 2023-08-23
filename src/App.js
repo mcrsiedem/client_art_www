@@ -28,12 +28,13 @@ import Header from "./artapp/Header/Header";
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
+  const [rowSelected, setRowSelected] = useState([]); 
 
   return (
     
     <BrowserRouter>
     
-      <TokenContext.Provider value={{ token, setToken }}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected }}>
         <Header />
         
         <Routes>

@@ -1,5 +1,7 @@
 UWAGA! id usera przechowywane tymczasoweo w sessionStorage.getItem("id")
     - uźyć contextu do naprawy 
+
+Zaznaczanie row 
 Pełne informacje / wersja mini
 Ikonki
 Dodawanie zlecenia

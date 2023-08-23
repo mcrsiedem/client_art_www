@@ -35,7 +35,7 @@ const Jobs = forwardRef((props, ref) => {
 
 
     const [blacha_id, setBlacha_id] = useState();
-    const [notes, setNotes] = useState([]);
+    const [data, setData] = useState([]);
     const [sztuki, setSztuki] = useState();
 
     useImperativeHandle(ref, () => ({
@@ -65,7 +65,7 @@ const Jobs = forwardRef((props, ref) => {
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
-        setNotes(job);
+        setData(job);
       //  console.log('notes ' + job);
     };
 
@@ -139,7 +139,7 @@ const Jobs = forwardRef((props, ref) => {
     return (
         <div id='jobs' className={style.center}>
             <div id='scroll-container' className={style.body}>
-                {notes.map((row) => {
+                {data.map((row) => {
                     return (
                         <Row
                             key={row.id}

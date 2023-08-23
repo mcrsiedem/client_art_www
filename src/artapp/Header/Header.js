@@ -48,7 +48,8 @@ function Header() {
           className={style.icon}
           src={ReactLogo_ustawienia}
           onClick={() => {
-            //console.log("z contextu :"+ token.token)
+
+            console.log("z contextu :"+ token.rowSelected)
           //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
 
           }}

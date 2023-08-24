@@ -139,6 +139,7 @@
 
 
 
+
 .wydrukowane{
     background-image: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
     /* background:linear-gradient(to bottom, #7892c2 5%, #37557a 100%); */
@@ -160,4 +161,8 @@
 }
 
 
+.selected{
+    /* background-color: cornflowerblue; */
+    background-image: linear-gradient(to bottom, cornflowerblue 5%, cornflowerblue);
+}
 

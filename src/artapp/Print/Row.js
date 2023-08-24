@@ -17,7 +17,7 @@ const Row = forwardRef((props, ref) => {
 
   useEffect(() => {
    
-    console.log(selected)
+  //  console.log(selected)
   }, [selected]);
 
   useImperativeHandle(ref, () => ({
@@ -60,9 +60,18 @@ const Row = forwardRef((props, ref) => {
   }
 
   return (
-    <div id={props.id} className={ChceckStatus(statusCombo) + " " + style.body}
+    <div id={props.id} className={selected ? ChceckStatus(statusCombo) + " " + style.body + " "+ style.selected :  ChceckStatus(statusCombo) + " " + style.body}  
       onClick={() => {
-        token.setRowSelected([...token.rowSelected, props.id]);
+        
+        if(!selected){
+          token.setRowSelected([...token.rowSelected, props.id]);
+        }
+        
+        if(selected){
+          var index = token.rowSelected.indexOf(props.id)
+          token.rowSelected.splice(index,1)
+        }
+        
         setSelected(prevState =>(!prevState));
       }
       }>

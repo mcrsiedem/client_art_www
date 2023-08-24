@@ -44,7 +44,7 @@ const Row = forwardRef((props, ref) => {
 
     
     props.odznacz(false);
-    
+
 
   }
 
@@ -174,7 +174,7 @@ const Row = forwardRef((props, ref) => {
           id=""
           name=""
           value=""
-          onClick={() => {
+          onChange={() => {
             selectRowMulti();
           }
           }

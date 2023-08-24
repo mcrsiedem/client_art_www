@@ -107,6 +107,7 @@ const Jobs = forwardRef((props, ref) => {
       const odznacz = (s) => {
      console.log(s);
         setUnSelectedAll(s);
+       console.log(data)
 
       };
 

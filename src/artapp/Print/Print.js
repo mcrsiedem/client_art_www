@@ -24,6 +24,7 @@ function Print(props) {
   function giveMeJobs(maszyna) {
     setMaszyna(maszyna);
     ChildRef.current.callChildFunction(maszyna);
+    tokenContext.setRowSelected([]);
   }
 
 

@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from 
 import TokenContext from "../tokenContext";
 
 const Row = forwardRef((props, ref) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(props.isSelected);
   const [statusCombo, setStatusCombo] = useState();
   const [statusTemp, setStatusTemp] = useState();
   const czas = props.czasDruku;
@@ -12,7 +12,9 @@ const Row = forwardRef((props, ref) => {
 
   useEffect(() => {
     setStatusCombo(props.status);
+    // setSelected(props.isSelected)
    // console.log("render")
+
   }, []);
 
   useEffect(() => {
@@ -25,6 +27,28 @@ const Row = forwardRef((props, ref) => {
       setStatusCombo(statusTemp);
     },
   }));
+
+  function selectRowMulti(){
+    if (!selected) {
+      token.setRowSelected([...token.rowSelected, props.id]);
+    } else {
+      var index = token.rowSelected.indexOf(props.id)
+      token.rowSelected.splice(index, 1)
+    }
+    
+    setSelected(prevState =>(!prevState));
+    
+  }
+
+  function selectRowSingle(){
+
+    
+    props.odznacz(false);
+    
+
+  }
+
+
 
   function ChceckStatus(statusCombo) {
     if (
@@ -61,20 +85,18 @@ const Row = forwardRef((props, ref) => {
 
   return (
     <div id={props.id} className={selected ? ChceckStatus(statusCombo) + " " + style.body + " "+ style.selected :  ChceckStatus(statusCombo) + " " + style.body}  
-      onClick={() => {
-        
-        if(!selected){
-          token.setRowSelected([...token.rowSelected, props.id]);
-        }
-        
-        if(selected){
-          var index = token.rowSelected.indexOf(props.id)
-          token.rowSelected.splice(index,1)
-        }
-        
-        setSelected(prevState =>(!prevState));
+    onClick={(event) => {
+
+      if (event.ctrlKey) {
+        selectRowMulti();
+      }else{
+        selectRowSingle();
       }
-      }>
+      
+      
+    }
+    }
+      >
 
       <div className={style.druk}>
         <div className={style.bold}>{props.poczatekDruku}</div>
@@ -124,7 +146,7 @@ const Row = forwardRef((props, ref) => {
           value={statusCombo}
           onChange={(e) => {
             //  (setStatusComb ) =>{
-
+              
             //   props.handleEditStatus(e.target.value);
             //   setStatusCombo(e.target.value)
             //   document.activeElement.blur();
@@ -147,10 +169,15 @@ const Row = forwardRef((props, ref) => {
       <div className={style.checbox}>
         <input
           className={style.checboxinput}
+          checked={selected}
           type="checkbox"
           id=""
           name=""
           value=""
+          onClick={() => {
+            selectRowMulti();
+          }
+          }
         />
       </div>
     </div>

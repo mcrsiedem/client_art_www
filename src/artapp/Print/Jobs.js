@@ -33,7 +33,7 @@ const Jobs = forwardRef((props, ref) => {
   const snackbarRef = useRef(null);
   const rowRef = useRef(null);
 
-
+  const [unSelectedAll, setUnSelectedAll] = useState(false);
     const [blacha_id, setBlacha_id] = useState();
     const [data, setData] = useState([]);
     const [sztuki, setSztuki] = useState();
@@ -43,6 +43,7 @@ const Jobs = forwardRef((props, ref) => {
             fechDruk(maszyna);
         }
     }));
+
 
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
@@ -66,6 +67,7 @@ const Jobs = forwardRef((props, ref) => {
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         setData(job);
+    
       //  console.log('notes ' + job);
     };
 
@@ -102,6 +104,12 @@ const Jobs = forwardRef((props, ref) => {
           });
       };
 
+      const odznacz = (s) => {
+     console.log(s);
+        setUnSelectedAll(s);
+
+      };
+
 
 
       const handleEditStatus= (status,id,id_zlecenia) => {
@@ -134,6 +142,7 @@ const Jobs = forwardRef((props, ref) => {
 
     useEffect(() => {
         fechDruk('XL');
+        
     }, []);
 
     return (
@@ -143,6 +152,7 @@ const Jobs = forwardRef((props, ref) => {
                     return (
                         <Row
                             key={row.id}
+                            
                             title={row.klient}
                             body={row.praca}
                             poczatekDruku={row.poczatekDruku}
@@ -161,7 +171,11 @@ const Jobs = forwardRef((props, ref) => {
                             blachy={row.xl_ok}
                             id_zlecenia={row.id_zlecenia}
                             handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
+                            odznacz={(s)=>odznacz(s)}
                             ref={rowRef}
+                            isSelected={unSelectedAll}
+                           
+                
                         />
                         
                     );

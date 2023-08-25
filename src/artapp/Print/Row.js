@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from 
 import TokenContext from "../tokenContext";
 
 const Row = forwardRef((props, ref) => {
-  const [selected, setSelected] = useState(props.isSelected);
+  const [selected, setSelected] = useState();
   const [statusCombo, setStatusCombo] = useState();
   const [statusTemp, setStatusTemp] = useState();
   const czas = props.czasDruku;
@@ -12,20 +12,23 @@ const Row = forwardRef((props, ref) => {
 
   useEffect(() => {
     setStatusCombo(props.status);
-    // setSelected(props.isSelected)
-   // console.log("render")
+    setSelected(props.isSelected)
+ 
 
   }, []);
 
   useEffect(() => {
-   
-  //  console.log(selected)
-  }, [selected]);
+
+    setSelected(props.isSelected)
+  
+  }, [props.isSelected]);
 
   useImperativeHandle(ref, () => ({
     confirm() {
       setStatusCombo(statusTemp);
     },
+
+
   }));
 
   function selectRowMulti(){
@@ -36,15 +39,17 @@ const Row = forwardRef((props, ref) => {
       token.rowSelected.splice(index, 1)
     }
     
-    setSelected(prevState =>(!prevState));
+props.zaznacz(props.id)
+      setSelected(prevState =>(!prevState));
     
   }
 
   function selectRowSingle(){
 
-    
-    props.odznacz(false);
-
+    // console.log("isSelected:"+ selected)
+    props.odznacz();
+    token.setRowSelected([])
+  
 
   }
 
@@ -84,7 +89,8 @@ const Row = forwardRef((props, ref) => {
   }
 
   return (
-    <div id={props.id} className={selected ? ChceckStatus(statusCombo) + " " + style.body + " "+ style.selected :  ChceckStatus(statusCombo) + " " + style.body}  
+   
+     <div id={props.id} className={selected ? ChceckStatus(statusCombo) + " " + style.body + " "+ style.selected :  ChceckStatus(statusCombo) + " " + style.body}  
     onClick={(event) => {
 
       if (event.ctrlKey) {

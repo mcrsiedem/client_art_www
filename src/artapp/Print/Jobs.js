@@ -66,7 +66,17 @@ const Jobs = forwardRef((props, ref) => {
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
-        setData(job);
+        // setData(job);
+
+        setData(job.map((obj) => {
+          return { ...obj,  isSelected: false };
+          }
+        ));
+
+
+
+
+
     
       //  console.log('notes ' + job);
     };
@@ -104,13 +114,44 @@ const Jobs = forwardRef((props, ref) => {
           });
       };
 
-      const odznacz = (s) => {
-     console.log(s);
-        setUnSelectedAll(s);
-       console.log(data)
+      const odznacz = () => {
 
-      };
+      
+        // let newState = data.map((obj) => {
+        //   return { ...obj,  isSelected: false };
+        //   }
+        // );
+    
+        setData(data.map((obj) => {
+          return { ...obj,  isSelected: false };
+          }
+        ));
+      //  console.log(data);
+      }
 
+      
+      const zaznacz = (id) => {
+
+        // setData(data.map((obj) => {
+        //   if(obj.id === id){
+        //     return { ...obj,  isSelected: true };
+        //   }
+         
+        //   }
+        // ));
+
+        const newState = data.map(obj => {
+    
+          if (obj.id === id) {
+            return {...obj, isSelected: true};
+          }
+    
+          return obj;
+        });
+    
+        setData(newState);
+     
+      }
 
 
       const handleEditStatus= (status,id,id_zlecenia) => {
@@ -126,7 +167,7 @@ const Jobs = forwardRef((props, ref) => {
           .then((res) => {
             if (res.status === 201) {
               // snackbarRef.current.show();
-              rowRef.current.confirm();
+             rowRef.current.confirm();
 
 
             } else {
@@ -173,8 +214,9 @@ const Jobs = forwardRef((props, ref) => {
                             id_zlecenia={row.id_zlecenia}
                             handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
                             odznacz={(s)=>odznacz(s)}
+                            zaznacz={(id)=>zaznacz(id)}
                             ref={rowRef}
-                            isSelected={unSelectedAll}
+                            isSelected={row.isSelected}
                            
                 
                         />

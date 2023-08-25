@@ -9,3 +9,5 @@ Ikonki
 Dodawanie zlecenia
 Przenoszenie
 
+setSelected(prevState =>(!prevState));
+

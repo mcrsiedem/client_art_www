@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from 
 import TokenContext from "../tokenContext";
 
 const Row = forwardRef((props, ref) => {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(props.isSelected);
   const [statusCombo, setStatusCombo] = useState();
   const [statusTemp, setStatusTemp] = useState();
   const czas = props.czasDruku;
@@ -12,7 +12,7 @@ const Row = forwardRef((props, ref) => {
 
   useEffect(() => {
     setStatusCombo(props.status);
-    setSelected(props.isSelected)
+
  
 
   }, []);
@@ -40,7 +40,7 @@ const Row = forwardRef((props, ref) => {
     }
     
 props.zaznacz(props.id)
-      setSelected(prevState =>(!prevState));
+
     
   }
 

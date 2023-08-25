@@ -130,28 +130,20 @@ const Jobs = forwardRef((props, ref) => {
       }
 
       
-      const zaznacz = (id) => {
+  const zaznacz = (id) => {
 
-        // setData(data.map((obj) => {
-        //   if(obj.id === id){
-        //     return { ...obj,  isSelected: true };
-        //   }
-         
-        //   }
-        // ));
+    const newState = data.map(obj => {
 
-        const newState = data.map(obj => {
-    
-          if (obj.id === id) {
-            return {...obj, isSelected: true};
-          }
-    
-          return obj;
-        });
-    
-        setData(newState);
-     
+      if (obj.id === id) {
+        return { ...obj, isSelected: true };
       }
+
+      return obj;
+    });
+
+    setData(newState);
+
+  }
 
 
       const handleEditStatus= (status,id,id_zlecenia) => {

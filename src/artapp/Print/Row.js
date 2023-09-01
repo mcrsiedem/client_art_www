@@ -45,12 +45,8 @@ props.zaznacz(props.id)
   }
 
   function selectRowSingle(){
-
-    // console.log("isSelected:"+ selected)
     props.odznacz();
     token.setRowSelected([])
-  
-
   }
 
 

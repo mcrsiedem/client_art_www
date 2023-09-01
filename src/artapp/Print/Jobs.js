@@ -145,6 +145,28 @@ const Jobs = forwardRef((props, ref) => {
 
   }
 
+  const odznacz_zaznacz = (id) => {
+
+    setData(data.map((obj) => {
+      return { ...obj,  isSelected: false };
+      }
+    ));
+
+
+    const newState = data.map(obj => {
+
+      if (obj.id === id) {
+        return { ...obj, isSelected: true };
+      }
+
+      return obj;
+    });
+
+    setData(newState);
+
+  }
+
+
 
       const handleEditStatus= (status,id,id_zlecenia) => {
         //  event.preventDefault();
@@ -207,6 +229,7 @@ const Jobs = forwardRef((props, ref) => {
                             handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
                             odznacz={(s)=>odznacz(s)}
                             zaznacz={(id)=>zaznacz(id)}
+                            // odznacz_zaznacz={(id)=>odznacz_zaznacz(id)}
                             ref={rowRef}
                             isSelected={row.isSelected}
                            

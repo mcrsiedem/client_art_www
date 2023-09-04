@@ -32,12 +32,12 @@ export default function App() {
 
   return (
     
-    <BrowserRouter>
+    <BrowserRouter basename={''} >
     
       <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected }}>
         <Header />
         
-        <Routes>
+        <Routes >
           <Route path="/xl" element={<XL />} />
           <Route path="/H1" element={<H1 />} />
           <Route path="/H3" element={<H3 />} />

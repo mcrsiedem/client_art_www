@@ -86,18 +86,20 @@ props.zaznacz(props.id)
 
   return (
    
-     <div id={props.id} className={selected ? ChceckStatus(statusCombo) + " " + style.body + " "+ style.selected :  ChceckStatus(statusCombo) + " " + style.body}  
-    onClick={(event) => {
-
-      if (event.ctrlKey) {
-        selectRowMulti();
-      }else{
-        selectRowSingle();
-      }
-      
-      
-    }
-    }
+    <div         id={props.id}
+          className={selected ? 
+                                ChceckStatus(statusCombo) + " " + style.body + " " + style.selected 
+                                :
+                                ChceckStatus(statusCombo) + " " + style.body
+                    }
+            onClick={(event) => {
+                                  if (event.ctrlKey) {
+                                    selectRowMulti();
+                                  } else {
+                                    selectRowSingle();
+                                  }
+                                }
+                    }
       >
 
       <div className={style.druk}>

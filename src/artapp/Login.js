@@ -66,10 +66,10 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
-      <div className="bg-white p-3 rounded w-25 border ">
+    <div className="loginFormContener ">
+      <div className="loginBorder ">
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
+          <div className="">
             <input
               type="text"
               name="login"
@@ -79,7 +79,7 @@ function Login() {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="">
             <input
               type="password"
               name="haslo"
@@ -91,7 +91,7 @@ function Login() {
 
           <button
             type="submit"
-            className="btn btn-success w-100 rounded-0 myButton"
+            className=" myButton"
           >
             {" "}
             Zaloguj

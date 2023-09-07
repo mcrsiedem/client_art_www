@@ -32,20 +32,38 @@
 
 
 .loginFormContener{
+	margin: 0;
+
+	background-color: rgb(196, 74, 74);
 	
 	display: flex;
     justify-content: center;
     align-items: center;
 	height: 100vh;
+
 	
 
 }
 
 .loginBorder{
 	
-	padding: 10px;
+	padding: 20px;
 	border: 1px solid rgb(228, 226, 226);
 	border-radius: 10px;
-	width: 300px;
+	width: 350px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 	
+	
+}
+
+.form{
+	
+	display: flex;
+    justify-content: center;
+    align-items: center;
+ 	flex-direction: column;
+	
+ 	gap: 10px;
 }

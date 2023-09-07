@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, createContext, useContext, useEffect } from "react";
 
-import style from "../artapp/Login.modules.css";
+import style from '../artapp/Login.module.css';
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -66,36 +66,39 @@ function Login() {
   };
 
   return (
-    <div className="loginFormContener ">
-      <div className="loginBorder ">
-        <form onSubmit={handleSubmit}>
-          <div className="">
+    <div className={style.contener}>
+      <div className={style.loginPaine}>
+        <form onSubmit={handleSubmit} className={style.form}> 
+        
+        
+        <div >
             <input
               type="text"
               name="login"
               placeholder="Login"
               onChange={(e) => setValues({ ...values, login: e.target.value })}
-              className="from-control rounded-0"
+              className={style.input}
+           
             />
           </div>
 
-          <div className="">
+          <div >
             <input
               type="password"
               name="haslo"
               placeholder="Hasło"
               onChange={(e) => setValues({ ...values, haslo: e.target.value })}
-              className="from-control rounded-0"
+              className={style.input}
+             
             />
           </div>
 
-          <button
-            type="submit"
-            className=" myButton"
-          >
+          <button type="submit"  className={style.myButton}           >
             {" "}
             Zaloguj
           </button>
+
+
         </form>
       </div>
     </div>

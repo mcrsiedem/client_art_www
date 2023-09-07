@@ -60,22 +60,29 @@ function Print(props) {
       <Jobs ref={ChildRef} maszyna={maszyna} />
 
       <footer className={style.footer}>
-        <div className={style.lefContener}></div>
-        <div className={style.centerContener}>
-          <button className={style.myButton} onClick={() => giveMeJobs("H1")}>H1</button>
-          <button className={style.myButton} onClick={() => giveMeJobs("XL")}>XL</button>
-          <button className={style.myButton} onClick={() => giveMeJobs("H3")}>H3</button>
-        </div>
-        <div className={style.rightContener}>
-          <div>
-            <input
-              className={style.search}
-              type="tekst"
-              placeholder="Szukaj..."
-            />
-          </div>
-        </div>
+
+              <div className={style.lefContener}>
+
+              </div>
+
+              <div className={style.centerContener}>
+                <button className={style.myButton} onClick={() => giveMeJobs("H1")}>H1</button>
+                <button className={style.myButton} onClick={() => giveMeJobs("XL")}>XL</button>
+                <button className={style.myButton} onClick={() => giveMeJobs("H3")}>H3</button>
+              </div>
+
+              <div className={style.rightContener}>
+                    <div>
+                      <input
+                        className={style.search}
+                        type="tekst"
+                        placeholder="Szukaj..."
+                      />
+                    </div>
+              </div>
+
       </footer>
+
     </div>
   );
 

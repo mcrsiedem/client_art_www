@@ -3,12 +3,21 @@ import style from "../Print/Row.module.css";
 import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from "react";
 import TokenContext from "../tokenContext";
 
+import axios from "axios";
+import { ip } from "../../Host";
+
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 const Row = forwardRef((props, ref) => {
   const [selected, setSelected] = useState(props.isSelected);
   const [statusCombo, setStatusCombo] = useState();
-  const [statusTemp, setStatusTemp] = useState();
+
   const czas = props.czasDruku;
   const token = useContext(TokenContext);
+
+  const [cookies, setCookie] = useCookies();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setStatusCombo(props.status);
@@ -23,13 +32,15 @@ const Row = forwardRef((props, ref) => {
   
   }, [props.isSelected]);
 
-  useImperativeHandle(ref, () => ({
-    confirm() {
-      setStatusCombo(statusTemp);
-    },
+  // useImperativeHandle(ref, () => ({
+  //   confirm() {
+  //     console.log("status temp: ");
+ 
+      
+  //   },
 
 
-  }));
+  // }));
 
   function selectRowMulti(){
     if (!selected) {
@@ -83,6 +94,80 @@ props.zaznacz(props.id)
 
     return "20" + czas.substring(2);
   }
+
+  const statusList ={
+    'Nowe': '1',
+    'Pliki': '2',
+    'Akcept': '3',
+    'RIP': '4',
+    'Zaświecone': '5',
+    'Drukowanie': '6',
+    'Wydrukowane': '7',
+    'Falcowanie': '8',
+    'Sfalcowane': '9',
+    'Uszlachetnione': '10',
+    'Oprawione': '11',
+    'Oddane': '12',
+    'Anulowane': '13',
+    'Wstrzymane': '14',
+    'Nieaktywne': '15',
+  }
+  
+  // const handleEditStatusIn= (status) => {
+  //   //  event.preventDefault();
+  //   axios
+  //     .put(ip + "updateStatusWWW/", {
+  //       id: props.id,
+  //       value: statusList[status],
+  //       idzlecenia: props.id_zlecenia,
+  //       user_id: sessionStorage.getItem("id"),
+  //       token: cookies.token,
+  //     })
+  //     .then((res) => {
+  //       if (res.status === 201) {
+  //         // snackbarRef.current.show();
+  //       //  rowRef.current.confirm();
+  //       setStatusCombo(status);
+
+
+  //       } else {
+  //         if (res.data.Error === "Wrong token") {
+  //           navigate("/Login");
+  //         }
+  //         console.log("Błąd");
+  //       }
+
+  //     });
+  // };
+
+  async function handleEditStatus(status) {
+
+
+    const res = await axios.put(ip + "updateStatusWWW/", {
+      id: props.id,
+      value: statusList[status],
+      idzlecenia: props.id_zlecenia,
+      user_id: sessionStorage.getItem("id"),
+      token: cookies.token,
+    });
+
+    if (res.status === 201) {
+
+      setStatusCombo(status);
+
+
+    } else {
+      if (res.data.Error === "Wrong token") {
+        navigate("/Login");
+      }
+      console.log("Błąd");
+    }
+  };
+
+
+
+
+
 
   return (
    
@@ -149,15 +234,7 @@ props.zaznacz(props.id)
           className={style.combo}
           value={statusCombo}
           onChange={(e) => {
-            //  (setStatusComb ) =>{
-              
-            //   props.handleEditStatus(e.target.value);
-            //   setStatusCombo(e.target.value)
-            //   document.activeElement.blur();
-            // }
-            props.handleEditStatus(e.target.value);
-
-            setStatusTemp(e.target.value);
+            handleEditStatus(e.target.value);        
             document.activeElement.blur();
           }}
         >

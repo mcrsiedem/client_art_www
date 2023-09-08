@@ -12,26 +12,10 @@ import Dialog from "./Dialog";
 
 const Jobs = forwardRef((props, ref) => {
 
-  const statusList ={
-    'Nowe': '1',
-    'Pliki': '2',
-    'Akcept': '3',
-    'RIP': '4',
-    'Zaświecone': '5',
-    'Drukowanie': '6',
-    'Wydrukowane': '7',
-    'Falcowanie': '8',
-    'Sfalcowane': '9',
-    'Uszlachetnione': '10',
-    'Oprawione': '11',
-    'Oddane': '12',
-    'Anulowane': '13',
-    'Wstrzymane': '14',
-    'Nieaktywne': '15',
-  }
+
 
   const snackbarRef = useRef(null);
-  const rowRef = useRef(null);
+  // const rowRef = useRef(null);
 
   const [unSelectedAll, setUnSelectedAll] = useState(false);
     const [blacha_id, setBlacha_id] = useState();
@@ -168,33 +152,6 @@ const Jobs = forwardRef((props, ref) => {
 
 
 
-      const handleEditStatus= (status,id,id_zlecenia) => {
-        //  event.preventDefault();
-        axios
-          .put(ip + "updateStatusWWW/", {
-            id: id,
-            value: statusList[status],
-            idzlecenia: id_zlecenia,
-            user_id: sessionStorage.getItem("id"),
-            token: cookies.token,
-          })
-          .then((res) => {
-            if (res.status === 201) {
-              // snackbarRef.current.show();
-             rowRef.current.confirm();
-
-
-            } else {
-              if (res.data.Error === "Wrong token") {
-                navigate("/Login");
-              }
-              console.log("Błąd");
-            }
-  
-          });
-      };
-
-
 
     useEffect(() => {
         fechDruk('XL');
@@ -226,11 +183,11 @@ const Jobs = forwardRef((props, ref) => {
                             spedycja={row.spedycja}
                             blachy={row.xl_ok}
                             id_zlecenia={row.id_zlecenia}
-                            handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
+                            // handleEditStatus={(status)=>handleEditStatus(status,row.id,row.id_zlecenia)}
                             odznacz={(s)=>odznacz(s)}
                             zaznacz={(id)=>zaznacz(id)}
                             // odznacz_zaznacz={(id)=>odznacz_zaznacz(id)}
-                            ref={rowRef}
+                            // ref={rowRef}
                             isSelected={row.isSelected}
                            
                 

@@ -1,8 +1,9 @@
-import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,useRef } from "react";
+import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,useRef,useContext } from "react";
 import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
 import { ip } from "../../Host";
+import TokenContext from "../tokenContext";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,8 @@ const Jobs = forwardRef((props, ref) => {
     const [blacha_id, setBlacha_id] = useState();
     const [data, setData] = useState([]);
     const [sztuki, setSztuki] = useState();
+
+    const token = useContext(TokenContext)
 
     useImperativeHandle(ref, () => ({
         callChildFunction(maszyna) {
@@ -106,7 +109,7 @@ const Jobs = forwardRef((props, ref) => {
           return { ...obj,  isSelected: false };
           }
         ));
-      //  console.log(data);
+      // console.log(token.rowSelected);
       }
 
       

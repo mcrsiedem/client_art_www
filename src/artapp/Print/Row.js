@@ -43,23 +43,47 @@ const Row = forwardRef((props, ref) => {
   // }));
 
   function selectRowMulti(){
+    setSelected(!selected);
     if (!selected) {
       token.setRowSelected([...token.rowSelected, props.id]);
     } else {
       var index = token.rowSelected.indexOf(props.id)
       token.rowSelected.splice(index, 1)
+    
     }
     
 props.zaznacz(props.id)
 
     
   }
+  function doItWhenReady(){
+    props.odznacz(); 
+    
+  }
 
+  function process(callback) {
+    token.setRowSelected(props.id)
+    setSelected(true);
+    if (typeof callback !== 'function') {
+         callback = false;   
+    }
+    
+    if (callback) {
+         callback();  
+        
+    }  
+   
+}
+    // zwykle odznaczanie
   function selectRowSingle(){
     props.odznacz();
     token.setRowSelected([])
   }
 
+  // odznaczanie przygotowane do zaznaczania grupowego z shiftem
+  // function selectRowSingle(){
+  //   process(doItWhenReady);
+  // }
 
 
   function ChceckStatus(statusCombo) {
@@ -247,7 +271,7 @@ props.zaznacz(props.id)
         </select>
       </div>
 
-      <div className={style.checbox}>
+      {/* <div className={style.checbox}>
         <input
           className={style.checboxinput}
           checked={selected}
@@ -260,7 +284,7 @@ props.zaznacz(props.id)
           }
           }
         />
-      </div>
+      </div> */}
     </div>
   );
 });

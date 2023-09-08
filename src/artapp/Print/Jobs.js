@@ -101,11 +101,7 @@ const Jobs = forwardRef((props, ref) => {
       const odznacz = () => {
 
       
-        // let newState = data.map((obj) => {
-        //   return { ...obj,  isSelected: false };
-        //   }
-        // );
-    
+
         setData(data.map((obj) => {
           return { ...obj,  isSelected: false };
           }
@@ -116,7 +112,7 @@ const Jobs = forwardRef((props, ref) => {
       
   const zaznacz = (id) => {
 
-    const newState = data.map(obj => {
+    const dataSelected = data.map(obj => {
 
       if (obj.id === id) {
         return { ...obj, isSelected: true };
@@ -125,7 +121,7 @@ const Jobs = forwardRef((props, ref) => {
       return obj;
     });
 
-    setData(newState);
+    setData(dataSelected);
 
   }
 

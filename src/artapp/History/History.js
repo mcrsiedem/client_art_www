@@ -65,9 +65,9 @@ function History(){
                 <tbody>
                 {data.map((row) => {
                     return (
-                        <tr key={row.id}>
-                            <td>{row.data}</td>
-                            <td>{row.user}</td>
+                        <tr key={row.id} >
+                            <td class={row.event =='b'? "bg-danger":""}>{row.data} </td>
+                            <td >{row.user}</td>
                             <td>{row.kategoria}</td>
                             <td>{row.event}</td>
                             

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import style from '../History/Hisotry.module.css';
 
-import ResizableTable from "./ResizableTable";
+//import ResizableTable from "./ResizableTable";
 
 import axios from "axios";
 
@@ -27,8 +27,8 @@ function History(){
     };
 
     async function checkToken() {
-        axios.get(ip + '/islogged/'+ cookies.token).
-        then(res=> {
+        axios.get(ip + '/islogged/'+ cookies.token)
+        .then(res=> {
           if(res.data.Status === "Success"){
             fechHistory();
     
@@ -65,8 +65,8 @@ function History(){
                 <tbody>
                 {data.map((row) => {
                     return (
-                        <tr key={row.id} >
-                            <td class={row.event =='b'? "bg-danger":""}>{row.data} </td>
+                        <tr class={row.event ==='b'? "table-danger":""} key={row.id} >
+                            <td >{row.data} </td>
                             <td >{row.user}</td>
                             <td>{row.kategoria}</td>
                             <td>{row.event}</td>

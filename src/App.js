@@ -16,6 +16,7 @@ import Print from "./artapp/Print/Print";
 import Login from "./artapp/Login";
 import { useState, createContext } from "react";
 import History from "./artapp/History/History";
+import Panel from "./artapp/Panel/Panel";
 import {
   BrowserRouter,
   Routes,
@@ -51,6 +52,7 @@ export default function App() {
           <Route path='/drukplanxl' element={<DrukPlanXL />} />
           <Route path='/Print' element={<Print />} />
           <Route path='/History' element={<History />} />
+          <Route path='/Panel' element={<Panel />} />
           <Route path='*' element={<History />} />
         </Routes>
       </TokenContext.Provider>

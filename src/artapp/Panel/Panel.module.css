@@ -1,0 +1,44 @@
+.container{
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.row{
+    display: flex;
+     
+}
+.kafle{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e6f2ff;
+    color: #0059b3;
+    border: 1px solid #b3d9ff;
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+  
+
+}
+
+.kafle:hover{
+    background-image: linear-gradient(#0f92dd 0%, #4584be 80%);
+}
+
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -51,33 +51,33 @@ function History(){
     <div className={style.body}>
 
 
-<Table  striped bordered hover>
- {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
+            <Table striped bordered hover>
+                {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
                 <thead>
                     <tr>
-
-                        <th >Kiedy</th>
+                        <th>Kiedy</th>
                         <th>Kto</th>
                         <th>Gdzie</th>
                         <th>Co</th>
                     </tr>
                 </thead>
                 <tbody>
-                {data.map((row) => {
-                    return (
-                        <tr class={row.event ==='b'? "table-danger":""} key={row.id} >
-                            <td >{row.data} </td>
-                            <td >{row.user}</td>
-                            <td>{row.kategoria}</td>
-                            <td>{row.event}</td>
-                            
-                        
+                    {data.map((row) => {
+                        return (
+                            <tr
+                                class={row.event === 'b' ? "table-danger" : ""}
+                                key={row.id}
+                                onDoubleClick={(node, event) => {
+                                    console.log(row.user);      }
+                                }
+                            >
+                                <td>{row.data} </td>
+                                <td>{row.user}</td>
+                                <td>{row.kategoria}</td>
+                                <td>{row.event}</td>
                             </tr>
-                    );
-                })}
-
-
-
+                        );
+                    })}
                 </tbody>
                 {/* </ResizableTable>  */}
             </Table>
@@ -85,9 +85,10 @@ function History(){
             <footer className={style.footer}>
                 {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
                 <button className={style.myButton} >OK</button>
-
+                
             </footer>
-
+            
+            <div className={style.mod}></div>
 
         </div>
     );

@@ -60,22 +60,17 @@
 }
 
 .mod{
-   position: absolute;
-   margin: 50vh 50vw ;
-   transform: translateY(-50%);
-   transform: translateX(-50%);
-   /* position: absolute;
+   position: fixed;
+   top: 200px;
+   bottom: 200px;
+   left: 200px;
+   right: 200px;
 
-   top: 100px;
-   left: calc(50vw - 150px);
-   top: 50%; */
+   /* left: calc(50vw - 150px); */
 
-   /* top: calc(50vh - 100px); */
-
-
-   width: 300px;
-   height: 200px;
-   background-color: rgb(195, 199, 209);
+   background-color: rgb(230, 230, 230);
+   border: 1px solid black;
+   border-radius: 10px;
    display: flex;
    z-index: 2;
 

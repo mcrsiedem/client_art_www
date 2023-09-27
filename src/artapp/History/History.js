@@ -88,7 +88,7 @@ function History(){
                 
             </footer>
             
-            <div className={style.mod}></div>
+            <div className={style.mod}>d</div>
 
         </div>
     );

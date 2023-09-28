@@ -9,9 +9,13 @@ import Table from 'react-bootstrap/Table';
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
+import Modal from '../History/Modal';
 
 
 function History(){
+    const [row,setRow] =useState([]);
+    const [openModal, setOpenModal] = useState(false);
+    const [id,setId]= useState('');
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
 
@@ -55,6 +59,7 @@ function History(){
                 {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
                 <thead>
                     <tr>
+                    <th>#</th>
                         <th>Kiedy</th>
                         <th>Kto</th>
                         <th>Gdzie</th>
@@ -68,9 +73,14 @@ function History(){
                                 class={row.event === 'b' ? "table-danger" : ""}
                                 key={row.id}
                                 onDoubleClick={(node, event) => {
-                                    console.log(row.user);      }
+                                    // console.log(row.user);  
+                                setOpenModal(true); 
+                                setId(row.id) ;
+                                setRow([row.id,row.user]);
+                              }
                                 }
                             >
+                                <td>{row.id} </td>
                                 <td>{row.data} </td>
                                 <td>{row.user}</td>
                                 <td>{row.kategoria}</td>
@@ -87,8 +97,10 @@ function History(){
                 <button className={style.myButton} >OK</button>
                 
             </footer>
+            {openModal &&
+                <Modal openModal={openModal} setOpenModal={setOpenModal} id={id} row={row} />
+            }
             
-            <div className={style.mod}>d</div>
 
         </div>
     );

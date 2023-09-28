@@ -15,7 +15,7 @@ import Modal from '../History/Modal';
 function History(){
     const [row,setRow] =useState([]);
     const [openModal, setOpenModal] = useState(false);
-    const [id,setId]= useState('');
+
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
 
@@ -75,8 +75,7 @@ function History(){
                                 onDoubleClick={(node, event) => {
                                     // console.log(row.user);  
                                 setOpenModal(true); 
-                                setId(row.id) ;
-                                setRow([row.id,row.user]);
+                                setRow({id: row.id, user: row.user});
                               }
                                 }
                             >
@@ -98,7 +97,7 @@ function History(){
                 
             </footer>
             {openModal &&
-                <Modal openModal={openModal} setOpenModal={setOpenModal} id={id} row={row} />
+                <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
             }
             
 

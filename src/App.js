@@ -25,6 +25,7 @@ import {
 } from "react-router-dom";
 import TokenContext from "./artapp/tokenContext";
 import Header from "./artapp/Header/Header";
+import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 
 export default function App() {
 
@@ -53,7 +54,8 @@ export default function App() {
           <Route path='/Print' element={<Print />} />
           <Route path='/History' element={<History />} />
           <Route path='/Panel' element={<Panel />} />
-          <Route path='*' element={<History />} />
+          {/* <Route path='*' element={<History />} /> */}
+          <Route path='/zamowienia' element={<Zamowienia />} />
         </Routes>
       </TokenContext.Provider>
     </BrowserRouter>

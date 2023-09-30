@@ -57,7 +57,7 @@ function Login() {
         sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
 
         header.style.display = "grid";
-        navigate("/Print");
+        navigate("/Panel");
       } else {
         console.log("Błąd");
       }

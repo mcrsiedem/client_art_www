@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-
+import style from '../Zamowienia/Zamowienia.module.css';
 
 import ResizableTable from "./ResizableTable";
 
@@ -10,9 +10,9 @@ import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import Modal from '../History/Modal';
-import style from '../History/Hisotry.module.css';
 
-function History(){
+
+function Zamowienia(){
     const [row,setRow] =useState([]);
     const [openModal, setOpenModal] = useState(false);
 
@@ -105,4 +105,4 @@ function History(){
     );
 }
 
-export default History;
+export default Zamowienia;

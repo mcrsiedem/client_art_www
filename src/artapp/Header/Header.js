@@ -46,16 +46,16 @@ function Header() {
       <div className={style.leftHeaderContener}>
         <img
           className={style.icon}
-          src={ReactLogo_ustawienia}
+          src={ReactLogo}
           onClick={() => {
-
+            navigate("/Panel");
             console.log("z contextu :"+ token.rowSelected)
           //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
 
           }}
           alt="React Logo"
         />
-        <img className={style.icon} src={ReactLogo} alt="React Logo" />
+        <img className={style.icon} src={ReactLogo_ustawienia} alt="React Logo" />
         <img className={style.icon} src={ReactLogo} alt="React Logo" />
         <img className={style.icon} src={ReactLogo} alt="React Logo" />
         <img

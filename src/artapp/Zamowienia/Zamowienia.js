@@ -47,6 +47,7 @@ function Zamowienia(){
 
 
     useEffect(()=>{
+        document.getElementById("header").style.display = "grid";
         checkToken();
        },[])
 

@@ -36,7 +36,7 @@ function Print(props) {
 
 
   useEffect(()=>{
-    
+    document.getElementById("header").style.display = "grid"; 
    // console.log("Token z cookies 2: " + cookies.token);
  //  console.log("Token z contextu: " + tokenContext.token);
  // axios.get(ip + '/veryfiy/'+ tokenContext.token).

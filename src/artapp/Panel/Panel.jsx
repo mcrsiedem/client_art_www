@@ -11,22 +11,20 @@ function Panel(){
       }, []);
 
 
+
     return(<>
 
     <div id="container" className={style.container} >
 
             <div className={style.row}>
-                    <div className={style.kafle} onClick={() => {
-            navigate("/Zamowienia");
-            document.getElementById("header").style.display = "grid";
-          }}>Zamówienia</div>
+                    <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
                     <div className={style.kafle} >Zlecenia</div>
                     <div className={style.kafle} >CTP</div>
                     
             </div>
 
             <div className={style.row}>
-                    <div className={style.kafle} >Druk</div> 
+                    <div className={style.kafle} onClick={() => { navigate("/Print") }} >Druk</div> 
                     <div className={style.kafle} >Falcowanie</div>
                     <div className={style.kafle} >Oprawa</div>
                  

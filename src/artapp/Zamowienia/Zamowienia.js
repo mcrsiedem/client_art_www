@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import style from '../Zamowienia/Zamowienia.module.css';
+
 
 import ResizableTable from "./ResizableTable";
 
@@ -10,9 +10,31 @@ import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import Modal from '../History/Modal';
-
+import style from '../Zamowienia/Zamowienia.module.css';
 
 function Zamowienia(){
+
+    const zamowienia =[
+        {id: 1,
+        data: "2023-09-29 15:06",
+        user: "Maciek",
+        kategoria: "logowanie",
+        event: "e"},
+        {id: 2,
+            data: "2023-09-29 15:06",
+            user: "Maciek",
+            kategoria: "logowanie",
+            event: "e"}
+    
+    ]
+        
+
+    
+    const gray = {color:'gray'
+    }
+    const lightgreen = {color:'lightgreen'
+    }
+
     const [row,setRow] =useState([]);
     const [openModal, setOpenModal] = useState(false);
 
@@ -27,6 +49,8 @@ function Zamowienia(){
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         setData(job);
+
+        setData(zamowienia);
 
     };
 
@@ -58,13 +82,13 @@ function Zamowienia(){
 
             {/* <Table striped bordered hover> */}
                 <ResizableTable resizable={true} resizeOptions={{}}> 
-                <thead>
-                    <tr>
-                    <th>#</th>
-                        <th>Kiedy</th>
-                        <th>Kto</th>
-                        <th>Gdzie</th>
-                        <th>Co</th>
+                <thead >
+                    <tr >
+                    <th style={lightgreen}>#</th>
+                        <th style={lightgreen}>Kiedy</th>
+                        <th style={lightgreen}>Kto</th>
+                        <th style={lightgreen}>Gdzie</th>
+                        <th style={lightgreen}>Co</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,11 +104,11 @@ function Zamowienia(){
                               }
                                 }
                             >
-                                <td style={{color:'lightgreen'}}>{row.id} </td>
-                                <td>{row.data} </td>
-                                <td>{row.user}</td>
-                                <td style={{color:'gray'}}>{row.kategoria}</td>
-                                <td>{row.event}</td>
+                                <td style={gray}>{row.id} </td>
+                                <td style={gray}>{row.data} </td>
+                                <td style={gray}>{row.user}</td>
+                                <td style={gray}>{row.kategoria}</td>
+                                <td className={style.row} >{row.event}</td>
                             </tr>
                         );
                     })}
@@ -95,6 +119,7 @@ function Zamowienia(){
             <footer className={style.footer}>
                 {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
                 <button className={style.myButton} >OK</button>
+                <button className={style.myButton} >Dodaj</button>
                 
             </footer>
             {openModal &&

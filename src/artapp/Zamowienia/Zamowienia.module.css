@@ -1,5 +1,11 @@
 
+.row{
+   color: rgb(31, 37, 206);
+   background-color: red;
+ 
+ }
 .body{
+
 
     padding-top: 50px;
 
@@ -9,7 +15,7 @@
     display: grid;
     min-height: calc(100vh - 5px);
     grid-template-rows: 1fr 100px;
-    
+
 
 }
 
@@ -73,6 +79,5 @@
    border-radius: 10px;
    display: flex;
    z-index: 2;
-
-
  }
+

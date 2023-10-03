@@ -20,7 +20,6 @@ function Panel(){
                     <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
                     <div className={style.kafle} >Zlecenia</div>
                     <div className={style.kafle} >CTP</div>
-                    
             </div>
 
             <div className={style.row}>

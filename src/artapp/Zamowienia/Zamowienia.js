@@ -16,15 +16,23 @@ function Zamowienia(){
 
     const zamowienia =[
         {id: 1,
-        data: "2023-09-29 15:06",
-        user: "Maciek",
-        kategoria: "logowanie",
-        event: "e"},
+            produkt: "GRAF-DRUK ZBIGNIEW MILEWSKI - KATALOG FANAR WER PL ",
+        data: "",
+        user: "",
+        kategoria: "",
+        event: ""},
         {id: 2,
-            data: "2023-09-29 15:06",
-            user: "Maciek",
+            produkt: "",
+            data: "Okładka",
+            user: "4",
             kategoria: "logowanie",
-            event: "e"}
+            event: "e"},
+            {id: 2,
+                produkt: "",
+                data: "Środek",
+                user: "80",
+                kategoria: "logowanie",
+                event: "e"}
     
     ]
         
@@ -85,8 +93,9 @@ function Zamowienia(){
                 <thead >
                     <tr >
                     <th style={lightgreen}>#</th>
-                        <th style={lightgreen}>Kiedy</th>
-                        <th style={lightgreen}>Kto</th>
+                    <th style={lightgreen}>Katalog</th>
+                        <th style={lightgreen}>Element</th>
+                        <th style={lightgreen}>Ilość stron</th>
                         <th style={lightgreen}>Gdzie</th>
                         <th style={lightgreen}>Co</th>
                     </tr>
@@ -105,11 +114,14 @@ function Zamowienia(){
                                 }
                             >
                                 <td style={gray}>{row.id} </td>
+                                <td style={gray}>{row.produkt} </td>
                                 <td style={gray}>{row.data} </td>
                                 <td style={gray}>{row.user}</td>
                                 <td style={gray}>{row.kategoria}</td>
                                 <td className={style.row} >{row.event}</td>
+                           
                             </tr>
+                            
                         );
                     })}
                 </tbody>

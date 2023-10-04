@@ -15,24 +15,17 @@ import style from '../Zamowienia/Zamowienia.module.css';
 function Zamowienia(){
 
     const zamowienia =[
-        {id: 1,
-            produkt: "GRAF-DRUK ZBIGNIEW MILEWSKI - KATALOG FANAR WER PL ",
+        {
+        id: 1, 
+        zamowienie_nr : "",
+        klient_id: "1",
+        produkt: " ",
         data: "",
         user: "",
         kategoria: "",
-        event: ""},
-        {id: 2,
-            produkt: "",
-            data: "Okładka",
-            user: "4",
-            kategoria: "logowanie",
-            event: "e"},
-            {id: 2,
-                produkt: "",
-                data: "Środek",
-                user: "80",
-                kategoria: "logowanie",
-                event: "e"}
+        event: ""
+        },
+
     
     ]
         
@@ -92,7 +85,8 @@ function Zamowienia(){
                 <ResizableTable resizable={true} resizeOptions={{}}> 
                 <thead >
                     <tr >
-                    <th style={lightgreen}>#</th>
+                    <th class="w-15" style={lightgreen} >#</th>
+                    <th style={lightgreen}>nr zamówienia</th>
                     <th style={lightgreen}>Katalog</th>
                         <th style={lightgreen}>Element</th>
                         <th style={lightgreen}>Ilość stron</th>
@@ -113,11 +107,12 @@ function Zamowienia(){
                               }
                                 }
                             >
-                                <td style={gray}>{row.id} </td>
+                                <td  style={gray}>{row.id} </td>
                                 <td style={gray}>{row.produkt} </td>
                                 <td style={gray}>{row.data} </td>
                                 <td style={gray}>{row.user}</td>
                                 <td style={gray}>{row.kategoria}</td>
+                                <td className={style.row} >{row.event}</td>
                                 <td className={style.row} >{row.event}</td>
                            
                             </tr>

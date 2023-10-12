@@ -33,7 +33,7 @@ function Zamowienia(){
     
     const gray = {color:'gray'
     }
-    const lightgreen = {color:'lightgreen'
+    const lightgreen = {color:'gray'
     }
 
     const [row,setRow] =useState([]);

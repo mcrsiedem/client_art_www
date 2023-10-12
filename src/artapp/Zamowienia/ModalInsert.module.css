@@ -1,0 +1,38 @@
+
+.row{
+   color: rgb(31, 37, 206);
+   background-color: red;
+ 
+ }
+.body{
+
+
+    padding-top: 50px;
+
+    background-color: rgb(143, 143, 143);
+    /* border: 1px solid red; */
+
+    display: grid;
+    min-height: calc(100vh - 5px);
+    grid-template-rows: 1fr 100px;
+
+
+}
+
+
+.mod{
+   position: fixed;
+   top: 200px;
+   bottom: 200px;
+   left: 200px;
+   right: 200px;
+
+   /* left: calc(50vw - 150px); */
+
+   background-color: rgb(230, 230, 230);
+   border: 1px solid black;
+   border-radius: 10px;
+   display: flex;
+   z-index: 2;
+ }
+

@@ -9,12 +9,12 @@ import Table from 'react-bootstrap/Table';
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
-import Modal from '../History/Modal';
+
 import style from '../History/Hisotry.module.css';
 
 function History(){
     const [row,setRow] =useState([]);
-    const [openModal, setOpenModal] = useState(false);
+
 
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
@@ -74,7 +74,7 @@ function History(){
                                 key={row.id}
                                 onDoubleClick={(node, event) => {
                                     // console.log(row.user);  
-                                setOpenModal(true); 
+                            
                                 setRow({id: row.id, user: row.user});
                               }
                                 }
@@ -96,10 +96,7 @@ function History(){
                 <button className={style.myButton} >OK</button>
                 
             </footer>
-            {openModal &&
-                <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
-            }
-            
+   
 
         </div>
     );

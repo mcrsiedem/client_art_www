@@ -8,7 +8,7 @@ function Modal({ openModal, setOpenModal,row }) {
                    <button onClick={() => setOpenModal(false)}> X </button> 
                 </div>
                 <div>id {row.id}</div>
-                <div>id + user {row.user}</div>
+                <div>id + user MMMMM{row.user}</div>
                 
             </div>
 

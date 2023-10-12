@@ -9,12 +9,14 @@ import Table from 'react-bootstrap/Table';
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
-import Modal from '../History/Modal';
+import Modal from '../Zamowienia/Modal';
+import ModalInsert from '../Zamowienia/ModalInsert';
+
 import style from '../Zamowienia/Zamowienia.module.css';
 
 function Zamowienia(){
 
-    const zamowienia =[
+    const zam =[
         {
         id: 1, 
         zamowienie_nr : "",
@@ -29,7 +31,7 @@ function Zamowienia(){
     
     ]
         
-
+    const [zamowienia, setZamowienia] = useState(zam);
     
     const gray = {color:'gray'
     }
@@ -38,11 +40,17 @@ function Zamowienia(){
 
     const [row,setRow] =useState([]);
     const [openModal, setOpenModal] = useState(false);
+    const [openModalInsert, setOpenModalInsert] = useState(false);
 
     const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
 
     const [data, setData] = useState([]);
+
+    function dodaj_clikHandler(){
+       console.log("ok");
+       setOpenModalInsert(true);
+    }
 
     async function fechHistory() {
         const res = await axios.get(ip + 'historia_short');
@@ -125,14 +133,16 @@ function Zamowienia(){
 
             <footer className={style.footer}>
                 {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-                <button className={style.myButton} >OK</button>
-                <button className={style.myButton} >Dodaj</button>
+                <button className={style.myButton}>OK</button>
+                <button className={style.myButton}  onClick={()=>{dodaj_clikHandler()}} >Dodaj</button>
                 
             </footer>
             {openModal &&
                 <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
             }
-            
+            {openModalInsert &&
+                <ModalInsert openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert} />
+            }
 
         </div>
     );

@@ -18,7 +18,10 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 
 
                 <div className={style.footer}>
-                <p>footer</p>
+                    <button className={style.btn}>OK</button>
+                    <button className={style.btn}>Zapisz</button>
+                    <button className={style.btn}>Zapisz jako</button>
+               
                 </div>
                 
                 

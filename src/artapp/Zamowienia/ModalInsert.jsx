@@ -6,8 +6,8 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
         <>
             <div className={style.container}>
                 <div className={style.header}>
-                <button className={style.buttonX} onClick={() => setOpenModalInsert(false)}> X </button> 
-                
+          
+                <p>header</p>
                 </div>
 
                 <div className={style.center}>
@@ -18,7 +18,8 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 
 
                 <div className={style.footer}>
-                    <button className={style.btn}>OK</button>
+                    <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
+          
                     <button className={style.btn}>Zapisz</button>
                     <button className={style.btn}>Zapisz jako</button>
                

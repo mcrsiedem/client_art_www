@@ -27,6 +27,140 @@ function Zamowienia(){
         kategoria: "",
         event: ""
         },
+        {
+            id: 1, 
+            zamowienie_nr : "",
+            klient_id: "1",
+            produkt: " ",
+            data: "",
+            user: "",
+            kategoria: "",
+            event: ""
+            },
+            {
+                id: 1, 
+                zamowienie_nr : "",
+                klient_id: "1",
+                produkt: " ",
+                data: "",
+                user: "",
+                kategoria: "",
+                event: ""
+                },
+                {
+                    id: 1, 
+                    zamowienie_nr : "",
+                    klient_id: "1",
+                    produkt: " ",
+                    data: "",
+                    user: "",
+                    kategoria: "",
+                    event: ""
+                    },
+                    {
+                        id: 1, 
+                        zamowienie_nr : "",
+                        klient_id: "1",
+                        produkt: " ",
+                        data: "",
+                        user: "",
+                        kategoria: "",
+                        event: ""
+                        },
+                        {
+                            id: 1, 
+                            zamowienie_nr : "",
+                            klient_id: "1",
+                            produkt: " ",
+                            data: "",
+                            user: "",
+                            kategoria: "",
+                            event: ""
+                            },
+                            {
+                                id: 1, 
+                                zamowienie_nr : "",
+                                klient_id: "1",
+                                produkt: " ",
+                                data: "",
+                                user: "",
+                                kategoria: "",
+                                event: ""
+                                },
+                                {
+                                    id: 1, 
+                                    zamowienie_nr : "",
+                                    klient_id: "1",
+                                    produkt: " ",
+                                    data: "",
+                                    user: "",
+                                    kategoria: "",
+                                    event: ""
+                                    },
+                                    {
+                                        id: 1, 
+                                        zamowienie_nr : "",
+                                        klient_id: "1",
+                                        produkt: " ",
+                                        data: "",
+                                        user: "",
+                                        kategoria: "",
+                                        event: ""
+                                        },
+                                        {
+                                            id: 1, 
+                                            zamowienie_nr : "",
+                                            klient_id: "1",
+                                            produkt: " ",
+                                            data: "",
+                                            user: "",
+                                            kategoria: "",
+                                            event: ""
+                                            },
+                                            {
+                                                id: 1, 
+                                                zamowienie_nr : "",
+                                                klient_id: "1",
+                                                produkt: " ",
+                                                data: "",
+                                                user: "",
+                                                kategoria: "",
+                                                event: ""
+                                                },
+                                                {
+                                                    id: 1, 
+                                                    zamowienie_nr : "",
+                                                    klient_id: "1",
+                                                    produkt: " ",
+                                                    data: "",
+                                                    user: "",
+                                                    kategoria: "",
+                                                    event: ""
+                                                    },
+                                                    ,
+                                                    {
+                                                        id: 1, 
+                                                        zamowienie_nr : "",
+                                                        klient_id: "1",
+                                                        produkt: " ",
+                                                        data: "",
+                                                        user: "",
+                                                        kategoria: "",
+                                                        event: ""
+                                                        },
+                                                        ,
+                                                        {
+                                                            id: 2, 
+                                                            zamowienie_nr : "",
+                                                            klient_id: "1",
+                                                            produkt: " ",
+                                                            data: "",
+                                                            user: "",
+                                                            kategoria: "",
+                                                            event: ""
+                                                            },
+                        
+
 
     
     ]
@@ -88,10 +222,10 @@ function Zamowienia(){
     return (
     <div className={style.body}>
 
-
-            {/* <Table striped bordered hover> */}
-                <ResizableTable resizable={true} resizeOptions={{}}> 
-                <thead >
+<div class="table-responsive " >
+            <Table striped bordered hover class="table table-dark table-sm">
+                {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
+                <thead  className={style.thead}>
                     <tr >
                     <th class="w-15" style={lightgreen} >#</th>
                     <th style={lightgreen}>nr zamówienia</th>
@@ -128,15 +262,21 @@ function Zamowienia(){
                         );
                     })}
                 </tbody>
-                </ResizableTable> 
-            {/* </Table> */}
+                {/* </ResizableTable>  */}
+            </Table>
 
+            </div>
+
+      <div className={style.szczegoly}>
+                szczegoly
+            </div>
             <footer className={style.footer}>
                 {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
                 <button className={style.myButton}>OK</button>
                 <button className={style.myButton}  onClick={()=>{dodaj_clikHandler()}} >Dodaj</button>
                 
             </footer>
+      
             {openModal &&
                 <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
             }

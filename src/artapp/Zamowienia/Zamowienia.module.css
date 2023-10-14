@@ -14,9 +14,13 @@
 
     display: grid;
     min-height: calc(100vh - 5px);
-    grid-template-rows: 1fr 100px;
+    grid-template-rows: 30vh 2fr 60px;
 
 
+}
+.szczegoly{
+   background-color: gray;
+  
 }
 
 .footer{
@@ -34,6 +38,10 @@
     align-items: center;
     gap: 20px;
     
+ }
+
+ .thead{
+   /* position: fixed; */
  }
 
 

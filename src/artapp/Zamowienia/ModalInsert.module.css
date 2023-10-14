@@ -18,10 +18,10 @@
 
 .container{
    position: fixed;
-   top: 100px;
-   bottom: 100px;
-   left: 100px;
-   right: 100px;
+   top: 0px;
+   bottom: 0px;
+   left: 0px;
+   right: 0px;
 
    /* left: calc(50vw - 150px); */
 
@@ -50,13 +50,13 @@
 
 .footer{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   background-color: gray;
 
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 10px;
-  
+  gap: 20px;
 
 }
 

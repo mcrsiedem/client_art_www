@@ -18,22 +18,17 @@
   --text-color-light: rgb(233, 233, 233, 0.6); 
   --text-color-zielony: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
 
-  /* --body-dark:#ffffff;
-  --border-color-light: rgba(0, 0, 0, 0.2);
-  --text-color-light: rgba(61, 60, 60, 0.6); */
+
 }
 body{
   background-color: #fff;
-  /* background-color: #282c34; */
-  position: relative;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%; */
-  
-}
 
+  position: relative;
+
+}
+html {
+  font-size:16px;
+}
 
 .color-dark{
 
@@ -62,31 +57,7 @@ margin-bottom : 10px;
 
 }
 
-/* .App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
-.App-header {
-  /* background-color: #282c34; */
-  /* min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
-}
 /* zeby komponenty nie chowal sie pod header */
 .move_under_header{
   margin-top: 50px;

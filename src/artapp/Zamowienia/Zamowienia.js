@@ -13,152 +13,154 @@ import Modal from '../Zamowienia/Modal';
 import ModalInsert from '../Zamowienia/ModalInsert';
 
 import style from '../Zamowienia/Zamowienia.module.css';
+import '../Zamowienia/Zamowienia.css';
 
 function Zamowienia(){
 
     const zam =[
         {
         id: 1, 
-        zamowienie_nr : "",
+        zamowienie_nr : "606103",
         klient_id: "1",
-        produkt: " ",
-        data: "",
-        user: "",
-        kategoria: "",
-        event: ""
+        produkt: " Katalog",
+        data: "Katalog",
+        user: "Katalog",
+        kategoria: "Katalog",
+        event: "Katalog"
         },
         {
-            id: 1, 
-            zamowienie_nr : "",
+            id: 2, 
+            zamowienie_nr : "606103",
             klient_id: "1",
-            produkt: " ",
-            data: "",
-            user: "",
-            kategoria: "",
-            event: ""
+            produkt: " Katalog",
+            data: "Katalog",
+            user: "Katalog",
+            kategoria: "Katalog",
+            event: "Katalog"
             },
             {
-                id: 1, 
-                zamowienie_nr : "",
+                id: 3, 
+                zamowienie_nr : "606103",
                 klient_id: "1",
-                produkt: " ",
-                data: "",
-                user: "",
-                kategoria: "",
-                event: ""
+                produkt: " Katalog",
+                data: "Katalog",
+                user: "Katalog",
+                kategoria: "Katalog",
+                event: "Katalog"
                 },
                 {
-                    id: 1, 
-                    zamowienie_nr : "",
+                    id: 4, 
+                    zamowienie_nr : "606103",
                     klient_id: "1",
-                    produkt: " ",
-                    data: "",
-                    user: "",
-                    kategoria: "",
-                    event: ""
+                    produkt: " Katalog",
+                    data: "Katalog",
+                    user: "Katalog",
+                    kategoria: "Katalog",
+                    event: "Katalog"
                     },
                     {
-                        id: 1, 
-                        zamowienie_nr : "",
+                        id: 5, 
+                        zamowienie_nr : "606103",
                         klient_id: "1",
-                        produkt: " ",
-                        data: "",
-                        user: "",
-                        kategoria: "",
-                        event: ""
+                        produkt: " Katalog",
+                        data: "Katalog",
+                        user: "Katalog",
+                        kategoria: "Katalog",
+                        event: "Katalog"
                         },
                         {
-                            id: 1, 
-                            zamowienie_nr : "",
+                            id: 6, 
+                            zamowienie_nr : "606103",
                             klient_id: "1",
-                            produkt: " ",
-                            data: "",
-                            user: "",
-                            kategoria: "",
-                            event: ""
+                            produkt: " Katalog",
+                            data: "Katalog",
+                            user: "Katalog",
+                            kategoria: "Katalog",
+                            event: "Katalog"
                             },
                             {
-                                id: 1, 
-                                zamowienie_nr : "",
+                                id: 2, 
+                                zamowienie_nr : "606103",
                                 klient_id: "1",
-                                produkt: " ",
-                                data: "",
-                                user: "",
-                                kategoria: "",
-                                event: ""
+                                produkt: " Katalog",
+                                data: "Katalog",
+                                user: "Katalog",
+                                kategoria: "Katalog",
+                                event: "Katalog"
                                 },
                                 {
-                                    id: 1, 
-                                    zamowienie_nr : "",
+                                    id: 2, 
+                                    zamowienie_nr : "606103",
                                     klient_id: "1",
-                                    produkt: " ",
-                                    data: "",
-                                    user: "",
-                                    kategoria: "",
-                                    event: ""
+                                    produkt: " Katalog",
+                                    data: "Katalog",
+                                    user: "Katalog",
+                                    kategoria: "Katalog",
+                                    event: "Katalog"
                                     },
                                     {
-                                        id: 1, 
-                                        zamowienie_nr : "",
+                                        id: 2, 
+                                        zamowienie_nr : "606103",
                                         klient_id: "1",
-                                        produkt: " ",
-                                        data: "",
-                                        user: "",
-                                        kategoria: "",
-                                        event: ""
+                                        produkt: " Katalog",
+                                        data: "Katalog",
+                                        user: "Katalog",
+                                        kategoria: "Katalog",
+                                        event: "Katalog"
                                         },
                                         {
-                                            id: 1, 
-                                            zamowienie_nr : "",
+                                            id: 2, 
+                                            zamowienie_nr : "606103",
                                             klient_id: "1",
-                                            produkt: " ",
-                                            data: "",
-                                            user: "",
-                                            kategoria: "",
-                                            event: ""
+                                            produkt: " Katalog",
+                                            data: "Katalog",
+                                            user: "Katalog",
+                                            kategoria: "Katalog",
+                                            event: "Katalog"
                                             },
                                             {
-                                                id: 1, 
-                                                zamowienie_nr : "",
+                                                id: 2, 
+                                                zamowienie_nr : "606103",
                                                 klient_id: "1",
-                                                produkt: " ",
-                                                data: "",
-                                                user: "",
-                                                kategoria: "",
-                                                event: ""
+                                                produkt: " Katalog",
+                                                data: "Katalog",
+                                                user: "Katalog",
+                                                kategoria: "Katalog",
+                                                event: "Katalog"
                                                 },
                                                 {
-                                                    id: 1, 
-                                                    zamowienie_nr : "",
+                                                    id: 3, 
+                                                    zamowienie_nr : "606103",
                                                     klient_id: "1",
-                                                    produkt: " ",
-                                                    data: "",
-                                                    user: "",
-                                                    kategoria: "",
-                                                    event: ""
+                                                    produkt: " Katalog",
+                                                    data: "Katalog",
+                                                    user: "Katalog",
+                                                    kategoria: "Katalog",
+                                                    event: "Katalog"
                                                     },
-                                                    ,
+                                                    
                                                     {
-                                                        id: 1, 
-                                                        zamowienie_nr : "",
+                                                        id: 3, 
+                                                        zamowienie_nr : "606103",
                                                         klient_id: "1",
-                                                        produkt: " ",
-                                                        data: "",
-                                                        user: "",
-                                                        kategoria: "",
-                                                        event: ""
+                                                        produkt: " Katalog",
+                                                        data: "Katalog",
+                                                        user: "Katalog",
+                                                        kategoria: "Katalog",
+                                                        event: "Katalog"
                                                         },
-                                                        ,
                                                         {
-                                                            id: 2, 
-                                                            zamowienie_nr : "",
+                                                            id: 3, 
+                                                            zamowienie_nr : "606103",
                                                             klient_id: "1",
-                                                            produkt: " ",
-                                                            data: "",
-                                                            user: "",
-                                                            kategoria: "",
-                                                            event: ""
+                                                            produkt: " Katalog",
+                                                            data: "Katalog",
+                                                            user: "Katalog",
+                                                            kategoria: "Katalog",
+                                                            event: "Katalog"
                                                             },
+            
+
                         
 
 
@@ -169,7 +171,7 @@ function Zamowienia(){
     
     const gray = {color:'gray'
     }
-    const lightgreen = {color:'gray'
+    const lightgreen = {color:'lightgreen'
     }
 
     const [row,setRow] =useState([]);
@@ -218,73 +220,82 @@ function Zamowienia(){
         checkToken();
        },[])
 
-
+function kolor(k){
+    if (k==="6") return style.alert
+}
     return (
-    <div className={style.body}>
+      <div className={style.body}>
 
-<div class="table-responsive " >
-            <Table striped bordered hover class="table table-dark table-sm">
-                {/* <ResizableTable resizable={true} resizeOptions={{}}>  */}
-                <thead  className={style.thead}>
-                    <tr >
-                    <th class="w-15" style={lightgreen} >#</th>
-                    <th style={lightgreen}>nr zamówienia</th>
-                    <th style={lightgreen}>Katalog</th>
-                        <th style={lightgreen}>Element</th>
-                        <th style={lightgreen}>Ilość stron</th>
-                        <th style={lightgreen}>Gdzie</th>
-                        <th style={lightgreen}>Co</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((row) => {
-                        return (
-                            <tr
-                                class={row.event === 'b' ? "table-danger" : ""}
-                                key={row.id}
-                                onDoubleClick={(node, event) => {
-                                    // console.log(row.user);  
-                                setOpenModal(true); 
-                                setRow({id: row.id, user: row.user});
-                              }
-                                }
-                            >
-                                <td  style={gray}>{row.id} </td>
-                                <td style={gray}>{row.produkt} </td>
-                                <td style={gray}>{row.data} </td>
-                                <td style={gray}>{row.user}</td>
-                                <td style={gray}>{row.kategoria}</td>
-                                <td className={style.row} >{row.event}</td>
-                                <td className={style.row} >{row.event}</td>
-                           
-                            </tr>
-                            
-                        );
-                    })}
-                </tbody>
-                {/* </ResizableTable>  */}
-            </Table>
 
-            </div>
+       <div className={style.tableContainer}>
+                            <table>
+                            <thead >
+                                <tr>
+                                <th>#</th>
+                                <th>nr zamówienia</th>
+                                <th>Katalog</th>
+                                <th>Element</th>
+                                <th>Ilość stron</th>
+                                <th>Gdzie</th>
+                                <th>Co</th>
+                                </tr>
+                            </thead>
 
-      <div className={style.szczegoly}>
-                szczegoly
-            </div>
-            <footer className={style.footer}>
-                {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-                <button className={style.myButton}>OK</button>
-                <button className={style.myButton}  onClick={()=>{dodaj_clikHandler()}} >Dodaj</button>
-                
-            </footer>
-      
-            {openModal &&
-                <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
-            }
-            {openModalInsert &&
-                <ModalInsert openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert} />
-            }
-
+                            <tbody>
+                                {data.map((row) => {
+                                return (
+                                    <tr
+                              className="alert"
+                                    //  class={row.id === 6 ? "alert" : ""}
+                                    key={row.id}
+                                    onDoubleClick={(node, event) => {
+                                        // console.log(row.user);
+                                        setOpenModal(true);
+                                        setRow({ id: row.id, user: row.user });
+                                    }}
+                                    >
+                                    <td>{row.id} </td>
+                                    <td>{row.produkt} </td>
+                                    <td>{row.data} </td>
+                                    <td>{row.user}</td>
+                                    <td>{row.kategoria}</td>
+                                    <td>{row.event}</td>
+                                    <td>{row.event}</td>
+                                    </tr>
+                                );
+                                })}
+                            </tbody>
+                            </table>
         </div>
+
+
+
+        <div className={style.szczegoly}>szczegoly</div>
+
+
+                    <footer className={style.footer}>
+                    {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
+                    <button className={style.myButton}>OK</button>
+                    <button
+                        className={style.myButton}
+                        onClick={() => {
+                        dodaj_clikHandler();
+                        }}
+                    >
+                        Dodaj
+                    </button>
+                    </footer>
+
+        {openModal && (
+          <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
+        )}
+        {openModalInsert && (
+          <ModalInsert
+            openModalInsert={openModalInsert}
+            setOpenModalInsert={setOpenModalInsert}
+          />
+        )}
+      </div>
     );
 }
 

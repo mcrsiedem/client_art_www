@@ -13,7 +13,7 @@ import Modal from '../Zamowienia/Modal';
 import ModalInsert from '../Zamowienia/ModalInsert';
 
 import style from '../Zamowienia/Zamowienia.module.css';
-import '../Zamowienia/Zamowienia.css';
+import './Zamowienia.css';
 
 function Zamowienia(){
 
@@ -245,8 +245,10 @@ function kolor(k){
                                 {data.map((row) => {
                                 return (
                                     <tr
-                              className="alert"
-                                    //  class={row.id === 6 ? "alert" : ""}
+                            //   className='alert'
+                        //   ${active ? "active" : ""}
+                                    className={row.id === 6 ? style.alert : style.alert2}
+                                
                                     key={row.id}
                                     onDoubleClick={(node, event) => {
                                         // console.log(row.user);

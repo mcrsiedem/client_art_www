@@ -247,7 +247,7 @@ function kolor(k){
                                     <tr
                             //   className='alert'
                         //   ${active ? "active" : ""}
-                                    className={row.id === 6 ? style.alert : style.alert2}
+                                    // className={row.id === 6 ? style.alert : style.alert2}
                                 
                                     key={row.id}
                                     onDoubleClick={(node, event) => {

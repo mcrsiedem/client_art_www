@@ -114,6 +114,10 @@ tr:nth-of-type(2n){
 
 
 }
+
+tr{
+   outline: 1px solid #dbdad6;
+}
 tr:hover{
    /* outline: 1px solid gray; */
    background: #dbdad6;

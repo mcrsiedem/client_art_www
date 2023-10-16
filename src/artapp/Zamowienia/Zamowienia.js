@@ -13,7 +13,7 @@ import Modal from '../Zamowienia/Modal';
 import ModalInsert from '../Zamowienia/ModalInsert';
 
 import style from '../Zamowienia/Zamowienia.module.css';
-import './Zamowienia.css';
+//import './Zamowienia.css';
 
 function Zamowienia(){
 
@@ -161,7 +161,7 @@ function Zamowienia(){
                                                             },
 
     ]
-    
+
         
     const [zamowienia, setZamowienia] = useState(zam);
     

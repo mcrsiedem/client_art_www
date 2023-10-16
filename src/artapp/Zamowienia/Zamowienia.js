@@ -357,14 +357,8 @@ function kolor(k){
        <div className={style.tableContainer}>
                             <table>
                             <thead >
-                                <tr>
-                                <th>#</th>
-                                <th>nr zamówienia</th>
-                                <th>Katalog</th>
-                                <th>Element</th>
-                                <th>Ilość stron</th>
-                                <th>Gdzie</th>
-                                <th>Co</th>
+                                <tr>                                 
+                                    <th>#</th> <th>nr zamówienia</th> <th>Katalog</th> <th>Element</th> <th>Ilość stron</th> <th>Gdzie</th> <th>Co</th>
                                 </tr>
                             </thead>
 
@@ -374,7 +368,7 @@ function kolor(k){
                                     <tr
                             //   className='alert'
                         //   ${active ? "active" : ""}
-                                    // className={row.id === 6 ? style.alert : style.alert2}
+                                     className={row.id === 6 ? style.bgdanger : ""}
                                 
                                     key={row.id}
                                     onDoubleClick={(node, event) => {

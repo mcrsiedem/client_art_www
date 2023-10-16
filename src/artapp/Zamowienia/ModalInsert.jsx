@@ -5,21 +5,23 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     return (
         <>
             <div className={style.container}>
+
+
+
                 <div className={style.header}>
           
-                <p>header</p>
                 </div>
 
                 <div className={style.center}>
                     <input type="text" />
                     <input type="text" />
-                    <p>center</p>
+                    <input type="text" />
+           
                 </div>
 
 
                 <div className={style.footer}>
                     <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
-          
                     <button className={style.btn}>Zapisz</button>
                     <button className={style.btn}>Zapisz jako</button>
                
@@ -28,6 +30,9 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
                 
                 {/* <div>id {row.id}</div>
                 <div>id + user {row.user}</div> */}
+
+
+
                 
             </div>
 

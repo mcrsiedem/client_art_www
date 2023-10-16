@@ -366,13 +366,10 @@ function kolor(k){
                                 {data.map((row) => {
                                 return (
                                     <tr
-                            //   className='alert'
-                        //   ${active ? "active" : ""}
-                                     className={row.id === 6 ? style.bgdanger : ""}
-                                
+                                    // className={row.id === 6 ? style.bgdanger : ""}
                                     key={row.id}
                                     onDoubleClick={(node, event) => {
-                                        // console.log(row.user);
+                               
                                         setOpenModal(true);
                                         setRow({ id: row.id, user: row.user });
                                     }}
@@ -392,32 +389,16 @@ function kolor(k){
         </div>
 
 
-
-
-
-
                     <footer className={style.footer}>
-                    {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-                    <button className={style.myButton}>OK</button>
-                    <button
-                        className={style.myButton}
-                        onClick={() => {
-                        dodaj_clikHandler();
-                        }}
-                    >
-                        Dodaj
-                    </button>
+                            {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
+                            <button className={style.myButton}>OK</button>
+                            <button className={style.myButton}  onClick={() => { dodaj_clikHandler(); }} > Dodaj </button>
                     </footer>
 
-        {openModal && (
-          <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
-        )}
-        {openModalInsert && (
-          <ModalInsert
-            openModalInsert={openModalInsert}
-            setOpenModalInsert={setOpenModalInsert}
-          />
-        )}
+        {openModal && (<Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />)}
+        {openModalInsert && ( <ModalInsert openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>)}
+
+
       </div>
     );
 }

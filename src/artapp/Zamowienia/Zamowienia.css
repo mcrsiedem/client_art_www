@@ -30,9 +30,6 @@ background: #504f4f;
    /* max-width: 100%;
    overflow-y: scroll; */
 }
-tr:hover{
-   border: 1px solid gray;
-}
 
 .alert{
    background-color:green;

@@ -159,13 +159,9 @@ function Zamowienia(){
                                                             kategoria: "Katalog",
                                                             event: "Katalog"
                                                             },
-            
 
-                        
-
-
-    
     ]
+    
         
     const [zamowienia, setZamowienia] = useState(zam);
     

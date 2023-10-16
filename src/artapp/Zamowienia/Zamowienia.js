@@ -159,6 +159,137 @@ function Zamowienia(){
                                                             kategoria: "Katalog",
                                                             event: "Katalog"
                                                             },
+                                                            {
+                                                                id: 2, 
+                                                                zamowienie_nr : "606103",
+                                                                klient_id: "1",
+                                                                produkt: " Katalog",
+                                                                data: "Katalog",
+                                                                user: "Katalog",
+                                                                kategoria: "Katalog",
+                                                                event: "Katalog"
+                                                                },
+                                                                {
+                                                                    id: 3, 
+                                                                    zamowienie_nr : "606103",
+                                                                    klient_id: "1",
+                                                                    produkt: " Katalog",
+                                                                    data: "Katalog",
+                                                                    user: "Katalog",
+                                                                    kategoria: "Katalog",
+                                                                    event: "Katalog"
+                                                                    },
+                                                                    {
+                                                                        id: 4, 
+                                                                        zamowienie_nr : "606103",
+                                                                        klient_id: "1",
+                                                                        produkt: " Katalog",
+                                                                        data: "Katalog",
+                                                                        user: "Katalog",
+                                                                        kategoria: "Katalog",
+                                                                        event: "Katalog"
+                                                                        },
+                                                                        {
+                                                                            id: 5, 
+                                                                            zamowienie_nr : "606103",
+                                                                            klient_id: "1",
+                                                                            produkt: " Katalog",
+                                                                            data: "Katalog",
+                                                                            user: "Katalog",
+                                                                            kategoria: "Katalog",
+                                                                            event: "Katalog"
+                                                                            },
+                                                                            {
+                                                                                id: 6, 
+                                                                                zamowienie_nr : "606103",
+                                                                                klient_id: "1",
+                                                                                produkt: " Katalog",
+                                                                                data: "Katalog",
+                                                                                user: "Katalog",
+                                                                                kategoria: "Katalog",
+                                                                                event: "Katalog"
+                                                                                },
+                                                                                {
+                                                                                    id: 2, 
+                                                                                    zamowienie_nr : "606103",
+                                                                                    klient_id: "1",
+                                                                                    produkt: " Katalog",
+                                                                                    data: "Katalog",
+                                                                                    user: "Katalog",
+                                                                                    kategoria: "Katalog",
+                                                                                    event: "Katalog"
+                                                                                    },
+                                                                                    {
+                                                                                        id: 2, 
+                                                                                        zamowienie_nr : "606103",
+                                                                                        klient_id: "1",
+                                                                                        produkt: " Katalog",
+                                                                                        data: "Katalog",
+                                                                                        user: "Katalog",
+                                                                                        kategoria: "Katalog",
+                                                                                        event: "Katalog"
+                                                                                        },
+                                                                                        {
+                                                                                            id: 2, 
+                                                                                            zamowienie_nr : "606103",
+                                                                                            klient_id: "1",
+                                                                                            produkt: " Katalog",
+                                                                                            data: "Katalog",
+                                                                                            user: "Katalog",
+                                                                                            kategoria: "Katalog",
+                                                                                            event: "Katalog"
+                                                                                            },
+                                                                                            {
+                                                                                                id: 2, 
+                                                                                                zamowienie_nr : "606103",
+                                                                                                klient_id: "1",
+                                                                                                produkt: " Katalog",
+                                                                                                data: "Katalog",
+                                                                                                user: "Katalog",
+                                                                                                kategoria: "Katalog",
+                                                                                                event: "Katalog"
+                                                                                                },
+                                                                                                {
+                                                                                                    id: 2, 
+                                                                                                    zamowienie_nr : "606103",
+                                                                                                    klient_id: "1",
+                                                                                                    produkt: " Katalog",
+                                                                                                    data: "Katalog",
+                                                                                                    user: "Katalog",
+                                                                                                    kategoria: "Katalog",
+                                                                                                    event: "Katalog"
+                                                                                                    },
+                                                                                                    {
+                                                                                                        id: 3, 
+                                                                                                        zamowienie_nr : "606103",
+                                                                                                        klient_id: "1",
+                                                                                                        produkt: " Katalog",
+                                                                                                        data: "Katalog",
+                                                                                                        user: "Katalog",
+                                                                                                        kategoria: "Katalog",
+                                                                                                        event: "Katalog"
+                                                                                                        },
+                                                                                                        
+                                                                                                        {
+                                                                                                            id: 3, 
+                                                                                                            zamowienie_nr : "606103",
+                                                                                                            klient_id: "1",
+                                                                                                            produkt: " Katalog",
+                                                                                                            data: "Katalog",
+                                                                                                            user: "Katalog",
+                                                                                                            kategoria: "Katalog",
+                                                                                                            event: "Katalog"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                id: 3, 
+                                                                                                                zamowienie_nr : "606103",
+                                                                                                                klient_id: "1",
+                                                                                                                produkt: " Katalog",
+                                                                                                                data: "Katalog",
+                                                                                                                user: "Katalog",
+                                                                                                                kategoria: "Katalog",
+                                                                                                                event: "Katalog"
+                                                                                                                },
 
     ]
 
@@ -222,7 +353,7 @@ function kolor(k){
     return (
       <div className={style.body}>
 
-
+        
        <div className={style.tableContainer}>
                             <table>
                             <thead >
@@ -268,7 +399,7 @@ function kolor(k){
 
 
 
-        <div className={style.szczegoly}>szczegoly</div>
+
 
 
                     <footer className={style.footer}>

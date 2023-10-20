@@ -75,3 +75,23 @@ input{
     border: 1px solid #d3d3d3;
     text-align: center;
     }
+
+
+    select{
+      height: 3rem;
+      padding: 10px;
+    }
+    .klient{
+      height: 3rem;
+      width: 600px;
+      padding: 10px;
+    }
+    .tytul{
+      height: 3rem;
+      width: 600px;
+      padding: 10px;
+    }
+
+    label{
+      font-size: 0.8rem;
+    }

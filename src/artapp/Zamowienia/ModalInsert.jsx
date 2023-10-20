@@ -1,17 +1,37 @@
 import style from '../Zamowienia/ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
+import {_firma} from '../Zamowienia/_firma.jsx';
 
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         dragElement(document.getElementById("mydiv"));
        },[])
 
+
+      const handleChange_firna = event => {
+        console.log(event.target.value);
+        setSelected_firma(event.target.value);
+      };
+    
+      const [selected_firma, setSelected_firma] = useState(_firma[0].nazwa);
     return (
         <>
             <div className={style.container}>
                 <div className={style.header}>
                 </div>
                 <div className={style.center}>
+                  <div>
+                    <select value={selected_firma} onChange={handleChange_firna}>
+                          {_firma.map(option => (
+                            <option key={option.id} value={option.nazwa}>
+                              {option.nazwa}
+                            </option>
+                          ))}
+                    </select>
+                  </div>
+                    <input type="text" />
+                    <input type="text" />
+                    <input type="text" />
                     <input type="text" />
                     <input type="text" />
                     <input type="text" />

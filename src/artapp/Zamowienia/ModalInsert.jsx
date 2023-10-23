@@ -2,6 +2,9 @@ import style from '../Zamowienia/ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
 import {_firma} from '../Zamowienia/_firma.jsx';
 import {_klient} from '../Zamowienia/_klient.jsx';
+import {_elementy} from '../Zamowienia/_elementy.jsx';
+import {_produkty} from '../Zamowienia/_produkty.jsx';
+import {_zestawy} from '../Zamowienia/_zestawy.jsx';
 
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
@@ -20,66 +23,66 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     
       const [selected_firma, setSelected_firma] = useState(_firma[0].nazwa);
       const [klient, setKlient] = useState(_klient[0].firma);
+      const [elementy, setElementy] = useState(_elementy);
+      const [produkty, setProdukty] = useState(_produkty);
+      const [zestawy, setZestawy] = useState(_zestawy);
+
 
     return (
         <>
-            <div className={style.container}>
-                <div className={style.header}>
+        <div className={style.container}>
+          <div className={style.header}>
+          </div>
+          <div className={style.center}>
+
+
+            <div className={style.row1}>
+
+              <select value={selected_firma} onChange={handleChange_firna}>
+                {_firma.map(option => (
+                  <option key={option.id} value={option.nazwa}>
+                    {option.nazwa}
+                  </option>
+                ))}
+              </select>
+
+              <select className={style.klient} value={klient} onChange={handleChange_klient}>
+                {_klient.map(option => (
+                  <option key={option.id} value={option.firma}>
+                    {option.firma}
+                  </option>
+                ))}
+              </select>
+
+              <input className={style.tytul} value="Tytuł" type="text" />
+              <input className={style.data} type="date"></input>
+              <input className={style.data} type="date"></input>
+            </div>
+
+            <div className={style.row2}>
+                <div className={style.left}>
+left
                 </div>
-                <div className={style.center}>
-                    
-                      
-                          <select value={selected_firma} onChange={handleChange_firna}>
-                            {_firma.map(option => (
-                              <option key={option.id} value={option.nazwa}>
-                                {option.nazwa}
-                              </option>
-                            ))}
-                          </select>
-             
-          
-
-                 
-                        <select className={style.klient} value={klient} onChange={handleChange_klient}>
-                          {_klient.map(option => (
-                            <option key={option.id} value={option.firma}>
-                              {option.firma}
-                            </option>
-                          ))}
-                        </select>
-        
-
-
-
-          
-                        <input className={style.tytul} value="Tytuł" type="text" />
-      
-                   
-
-        
-                          <input type="date"></input>
-                          <input type="date"></input>
- 
-
-
-                  
-                      
-               
+                <div className={style.right}>
+right
                 </div>
+            </div>
 
-                
-                <div className={style.footer}>
-                    <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
-                    <button className={style.btn}>Zapisz</button>
-                    <button className={style.btn}>Zapisz jako</button>
-                </div>
-                <div id="mydiv" className={style.mydiv}>
-                    {/* <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
+          </div>
+
+
+          <div className={style.footer}>
+            <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
+            <button className={style.btn}>Zapisz</button>
+            <button className={style.btn}>Zapisz jako</button>
+          </div>
+          <div id="mydiv" className={style.mydiv}>
+            {/* <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
                     <p>Move</p>
                     <p>this</p>
                     <p>DIV</p> */}
-                </div>
-            </div>
+          </div>
+        </div>
 
         </>)
 //----------------------------------

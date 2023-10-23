@@ -25,12 +25,39 @@
 
  .center{
   background-color: #fff;
-  display: flex;
+  display: grid;
+  grid-template-rows: 4rem 1fr ;
   
+  /* padding: 10px; */
+  /* gap: 10px; */
+
+}
+
+.row1{
+  /* background-color: #ffc1c1; */
+  /* border: 1px solid gray; */
+  display: flex;
   padding: 10px;
   gap: 10px;
 
 }
+.row2{
+  /* background-color: #9b9696; */
+  /* border: 1px solid gray; */
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+
+}
+
+.left{
+  background-color: #2196F3;
+  width: 50%;
+}
+
+
+
+
 input{
   height: 3rem;
 }
@@ -81,17 +108,27 @@ input{
       height: 3rem;
       padding: 10px;
     }
+    
     .klient{
       height: 3rem;
       width: 600px;
       padding: 10px;
     }
+
     .tytul{
       height: 3rem;
-      width: 600px;
+      width: 100%;
       padding: 10px;
     }
 
     label{
       font-size: 0.8rem;
+    }
+
+    .data{
+      width: 300px;
+    }
+
+    .elementContainer{
+      background-color: #fff ;
     }

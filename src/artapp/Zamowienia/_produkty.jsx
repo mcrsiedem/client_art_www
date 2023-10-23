@@ -4,7 +4,8 @@ const _produkty = [
   {
     id: 1,
     typ: "Magazyn",
-    nazwa: "1",
+    tytul: "1",
+    wersja: "",
     ilosc_stron: "84",
     format_x: "210",
     format_y: "297",

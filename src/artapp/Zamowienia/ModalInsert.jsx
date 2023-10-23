@@ -60,13 +60,18 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
             </div>
 
             <div className={style.row2}>
-                <div className={style.left}>
-left
+                <div className={style.produkty}>
+produkty
                 </div>
-                <div className={style.right}>
-right
+                <div className={style.elementy}>
+elementy
+                </div>
+                <div className={style.zestawy}>
+zestawy
                 </div>
             </div>
+
+            
 
           </div>
 

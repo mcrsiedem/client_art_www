@@ -5,6 +5,8 @@ import {_klient} from '../Zamowienia/_klient.jsx';
 import {_elementy} from '../Zamowienia/_elementy.jsx';
 import {_produkty} from '../Zamowienia/_produkty.jsx';
 import {_zestawy} from '../Zamowienia/_zestawy.jsx';
+import Magazyn from './components/Magazyn';
+
 
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
@@ -53,7 +55,7 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
                   </option>
                 ))}
               </select>
-
+                 
               <input className={style.tytul} value="Tytuł" type="text" />
               <input className={style.data} type="date"></input>
               <input className={style.data} type="date"></input>
@@ -61,10 +63,16 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 
             <div className={style.row2}>
                 <div className={style.produkty}>
-produkty
+                {_produkty.map(prod => (
+                  // <input key={prod.id} className={style.tytul} defaultValue={prod.typ}></input>
+           <Magazyn key={prod.id}></Magazyn>
+                ))}
                 </div>
                 <div className={style.elementy}>
-elementy
+                {_elementy.map(elem => (
+                  <input key={elem.id} className={style.tytul} defaultValue={elem.typ}></input>
+          
+                ))}
                 </div>
                 <div className={style.zestawy}>
 zestawy

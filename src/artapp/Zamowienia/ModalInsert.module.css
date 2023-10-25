@@ -51,7 +51,8 @@
 }
 
 .produkty, .elementy, .zestawy{
-  background-color: #2196F3;
+  /* background-color: #2196F3; */
+ 
   width: 33%;
 }
 

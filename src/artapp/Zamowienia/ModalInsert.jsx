@@ -86,7 +86,7 @@ zestawy
 
           <div className={style.footer}>
             <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
-            <button className={style.btn}>Zapisz</button>
+            <button onClick={() => {window.resizeTo(200,200)}} className={style.btn}>Zapisz</button>
             <button className={style.btn}>Zapisz jako</button>
           </div>
           <div id="mydiv" className={style.mydiv}>

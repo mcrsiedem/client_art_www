@@ -13,12 +13,12 @@ import style from './Magazyn.module.css';
  
 
 
-            <label className={style.label} > Produkt2
+            <label className={style.label} > .
                 <input defaultValue="d" type="text" className={style.produkt}  />
             </label>
      
         
-        
+     
 
 
 

@@ -35,7 +35,7 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     return (
       
         <div className={style.container}>
-        <Header></Header>
+        <Header/>
 
 
           <div className={style.center}>
@@ -82,10 +82,10 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
           
                 ))}
                 </div>
-                <div className={style.zestawy}>
-zestawy
+                <div className={style.zestawy}>zestawy
                 </div>
-            </div>
+
+              </div>
 
             
 

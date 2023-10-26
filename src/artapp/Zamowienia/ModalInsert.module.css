@@ -1,58 +1,16 @@
-
-
-
-
 .container{
    position: fixed;
    top: 0px;
    bottom: 0px;
    left: 0px;
    right: 0px;
-
-   /* left: calc(50vw - 150px); */
-
    background-color: rgb(230, 230, 230);
    border: 1px solid rgb(143, 143, 143);
    border-radius: 10px;
   z-index: 2;
-
   display: grid;
   grid-template-rows: 50px 1fr 60px;
-   
  }
-
-
-
-
-
-
-
-input{
-  height: 3rem;
-}
-
-
-.footer{
-  display: flex;
-  justify-content: center;
-  background-color: gray;
-
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 10px;
-  gap: 20px;
-
-}
-
-.btn{
-  width: 150px;
-  height: 35px;
-  color: white;
-  border: 1px solid white;
-  background-color: transparent;
-  border-radius: 10px;
-
-}
 
 .mydivheader {
   padding: 10px;
@@ -70,31 +28,5 @@ input{
     }
 
 
-    select{
-      height: 3rem;
-      padding: 10px;
-    }
-    
-    .klient{
-      height: 3rem;
-      width: 600px;
-      padding: 10px;
-    }
 
-    .tytul{
-      height: 3rem;
-      width: 100%;
-      padding: 10px;
-    }
 
-    label{
-      font-size: 0.8rem;
-    }
-
-    .data{
-      width: 300px;
-    }
-
-    .elementContainer{
-      background-color: #fff ;
-    }

@@ -10,9 +10,9 @@ import { useRef } from 'react';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
-        dragElement(elmnt.current);
+        // dragElement(elmnt.current);
        },[])
-const elmnt = useRef(null);
+// const elmnt = useRef(null);
 
     return (
       
@@ -23,12 +23,12 @@ const elmnt = useRef(null);
         <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 
 
-          <div id="mydiv" ref={elmnt} className={style.mydiv}>
+          {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
             <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
                     <p>Move</p>
                     <p>this</p>
                     <p>DIV</p>
-          </div>
+          </div> */}
         </div>
 
   )

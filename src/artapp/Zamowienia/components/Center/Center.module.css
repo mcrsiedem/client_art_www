@@ -8,7 +8,7 @@ label{
 max-width: 100%;
 }
 .row1{
-    /* background-color: #ffc1c1; */
+    background-color: #ffc1c1;
     /* border: 1px solid gray; */
     display: flex;
    flex-direction: row;
@@ -17,7 +17,7 @@ max-width: 100%;
   
   }
   .row2{
-    /* background-color: #9b9696; */
+    background-color: #9b9696;
     /* border: 1px solid gray; */
     display: flex;
     padding: 10px;
@@ -55,9 +55,6 @@ max-width: 100%;
     padding: 10px;
   }
   
-  .firma{
-    width: 200px;
-  }
 
 
   input{

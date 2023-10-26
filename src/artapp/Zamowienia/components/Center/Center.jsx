@@ -30,35 +30,37 @@ import Produkt from "./produkt/Produkt";
 <div className={style.container}>
             <div className={style.row1}>
                       
-                            <label className={style.label}> Firma
-                                <select className={style.firma} value={selected_firma} onChange={handleChange_firna}>
-                                    {_firma.map(option => (
-                                        <option key={option.id} value={option.nazwa}>
-                                            {option.nazwa}
+                         
+                                <label className={style.label}> Firma
+                                    <select className={style.klient} value={selected_firma} onChange={handleChange_firna}>
+                                        {_firma.map(option => (
+                                            <option key={option.id} value={option.nazwa}>
+                                                {option.nazwa}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </label>
+
+                            <label className={style.label}> Klient           
+                                <select className={style.klient} value={klient} onChange={handleChange_klient}>
+                                    {_klient.map(option => (
+                                        <option key={option.id} value={option.firma}>
+                                            {option.firma}
                                         </option>
                                     ))}
                                 </select>
                             </label>
-                    
-                            <label className={style.label}> Klient           
-                            <select className={style.klient} value={klient} onChange={handleChange_klient}>
-                                {_klient.map(option => (
-                                    <option key={option.id} value={option.firma}>
-                                        {option.firma}
-                                    </option>
-                                ))}
-                            </select>
-                            </label>
 
                         <label className={style.label}> Tytuł     
-                        <input className={style.tytul} value="Tytuł" type="text" />
+                            <input className={style.tytul} value="Tytuł" type="text" />
                         </label>
+
                         <label className={style.label}> Data materiałów     
-                        <input className={style.data} type="date"></input>
+                            <input className={style.data} type="date"></input>
                         </label>
 
                         <label className={style.label}> Data spedycji   
-                        <input className={style.data} type="date"></input>
+                            <input className={style.data} type="date"></input>
                         </label>
             </div>
 

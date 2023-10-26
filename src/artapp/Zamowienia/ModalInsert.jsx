@@ -5,7 +5,9 @@ import {_klient} from '../Zamowienia/_klient.jsx';
 import {_elementy} from '../Zamowienia/_elementy.jsx';
 import {_produkty} from '../Zamowienia/_produkty.jsx';
 import {_zestawy} from '../Zamowienia/_zestawy.jsx';
-import Magazyn from './components/Magazyn';
+
+import Produkt from './components/Produkt';
+import Header from './components/Header/Header';
 
 
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
@@ -31,22 +33,27 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 
 
     return (
-        <>
+      
         <div className={style.container}>
-          <div className={style.header}>
-          </div>
+        <Header></Header>
+
+
           <div className={style.center}>
 
 
             <div className={style.row1}>
 
-              <select value={selected_firma} onChange={handleChange_firna}>
-                {_firma.map(option => (
-                  <option key={option.id} value={option.nazwa}>
-                    {option.nazwa}
-                  </option>
-                ))}
-              </select>
+            <label className={style.label} > Firma
+                
+                <select value={selected_firma} onChange={handleChange_firna}>
+                  {_firma.map(option => (
+                    <option key={option.id} value={option.nazwa}>
+                      {option.nazwa}
+                    </option>
+                  ))}
+                </select>
+                </label>
+
 
               <select className={style.klient} value={klient} onChange={handleChange_klient}>
                 {_klient.map(option => (
@@ -57,6 +64,7 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
               </select>
                  
               <input className={style.tytul} value="Tytuł" type="text" />
+              
               <input className={style.data} type="date"></input>
               <input className={style.data} type="date"></input>
             </div>
@@ -65,7 +73,7 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
                 <div className={style.produkty}>
                 {_produkty.map(prod => (
                   // <input key={prod.id} className={style.tytul} defaultValue={prod.typ}></input>
-           <Magazyn key={prod.id}></Magazyn>
+           <Produkt key={prod.id}></Produkt>
                 ))}
                 </div>
                 <div className={style.elementy}>
@@ -97,7 +105,7 @@ zestawy
           </div>
         </div>
 
-        </>)
+  )
 //----------------------------------
 
     function dragElement(elmnt) {

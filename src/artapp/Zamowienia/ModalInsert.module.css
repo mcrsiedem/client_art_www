@@ -32,11 +32,19 @@
   /* gap: 10px; */
 
 }
+label{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;        
+
+}
+
 
 .row1{
-  /* background-color: #ffc1c1; */
+  background-color: #ffc1c1;
   /* border: 1px solid gray; */
   display: flex;
+
   padding: 10px;
   gap: 10px;
 

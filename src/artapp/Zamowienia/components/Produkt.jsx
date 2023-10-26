@@ -1,12 +1,13 @@
 import React, { useEffect,useState } from "react";
-import style from './Magazyn.module.css';
 
- function Magazyn(){
+import style from '../components/Produkt.module.css'
+
+ function Produkt(){
     return(<>
 
     <div className={style.container}>
         
-            <label className={style.label} > Produkt  
+           <label className={style.label} > Produkt  
                 <input defaultValue="d" type="text" className={style.produkt}  />
           </label>
             
@@ -28,4 +29,4 @@ import style from './Magazyn.module.css';
 
 }
 
-export default Magazyn;
+export default Produkt;

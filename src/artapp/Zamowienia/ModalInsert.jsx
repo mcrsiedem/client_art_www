@@ -1,107 +1,33 @@
 import style from '../Zamowienia/ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
-import {_firma} from '../Zamowienia/_firma.jsx';
-import {_klient} from '../Zamowienia/_klient.jsx';
-import {_elementy} from '../Zamowienia/_elementy.jsx';
-import {_produkty} from '../Zamowienia/_produkty.jsx';
-import {_zestawy} from '../Zamowienia/_zestawy.jsx';
 
-import Produkt from './components/Produkt';
 import Header from './components/Header/Header';
+import Center from './components/Center/Center';
+import Footer from './components/Footer/Footer';
+import { useRef } from 'react';
 
 
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
-        dragElement(document.getElementById("mydiv"));
+        // dragElement(document.getElementById("mydiv"));
+        dragElement(elmnt.current);
        },[])
-
-
-      const handleChange_firna = event => {
-        console.log(event.target.value);
-        setSelected_firma(event.target.value);
-      };
-      const handleChange_klient = event => {
-        console.log(event.target.value);
-        setKlient(event.target.value);
-      };
-    
-      const [selected_firma, setSelected_firma] = useState(_firma[0].nazwa);
-      const [klient, setKlient] = useState(_klient[0].firma);
-      const [elementy, setElementy] = useState(_elementy);
-      const [produkty, setProdukty] = useState(_produkty);
-      const [zestawy, setZestawy] = useState(_zestawy);
-
+const elmnt = useRef(null);
 
     return (
       
         <div className={style.container}>
+
         <Header/>
+        <Center/>
+        <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 
 
-          <div className={style.center}>
-
-
-            <div className={style.row1}>
-
-            <label className={style.label} > Firma
-                
-                <select value={selected_firma} onChange={handleChange_firna}>
-                  {_firma.map(option => (
-                    <option key={option.id} value={option.nazwa}>
-                      {option.nazwa}
-                    </option>
-                  ))}
-                </select>
-                </label>
-
-
-              <select className={style.klient} value={klient} onChange={handleChange_klient}>
-                {_klient.map(option => (
-                  <option key={option.id} value={option.firma}>
-                    {option.firma}
-                  </option>
-                ))}
-              </select>
-                 
-              <input className={style.tytul} value="Tytuł" type="text" />
-              
-              <input className={style.data} type="date"></input>
-              <input className={style.data} type="date"></input>
-            </div>
-
-            <div className={style.row2}>
-                <div className={style.produkty}>
-                {_produkty.map(prod => (
-                  // <input key={prod.id} className={style.tytul} defaultValue={prod.typ}></input>
-           <Produkt key={prod.id}></Produkt>
-                ))}
-                </div>
-                <div className={style.elementy}>
-                {_elementy.map(elem => (
-                  <input key={elem.id} className={style.tytul} defaultValue={elem.typ}></input>
-          
-                ))}
-                </div>
-                <div className={style.zestawy}>zestawy
-                </div>
-
-              </div>
-
-            
-
-          </div>
-
-
-          <div className={style.footer}>
-            <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anluj</button>
-            <button onClick={() => {window.resizeTo(200,200)}} className={style.btn}>Zapisz</button>
-            <button className={style.btn}>Zapisz jako</button>
-          </div>
-          <div id="mydiv" className={style.mydiv}>
-            {/* <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
+          <div id="mydiv" ref={elmnt} className={style.mydiv}>
+            <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
                     <p>Move</p>
                     <p>this</p>
-                    <p>DIV</p> */}
+                    <p>DIV</p>
           </div>
         </div>
 

@@ -2,7 +2,7 @@
 
 import style from './Header.module.css'
 
- function Header(){
+ export default function Header(){
     return(<>
     <div className={style.container}>
      
@@ -12,4 +12,4 @@ import style from './Header.module.css'
 
 }
 
-export default Header;
+// export default Header;

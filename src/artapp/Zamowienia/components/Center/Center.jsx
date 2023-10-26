@@ -1,8 +1,31 @@
 
-
+import React, { useEffect,useState } from "react";
 import style from './Center.module.css'
 
- function Center(){
+import {_firma} from './_firma.jsx';
+import {_klient} from './_klient.jsx';
+import {_elementy} from './_elementy.jsx';
+import {_produkty} from './_produkty.jsx';
+import {_zestawy} from './_zestawy';
+
+import Produkt from "./produkt/Produkt";
+
+
+ export default function Center(){
+    const [selected_firma, setSelected_firma] = useState(_firma[0].nazwa);
+    const [klient, setKlient] = useState(_klient[0].firma);
+    const [elementy, setElementy] = useState(_elementy);
+    const [produkty, setProdukty] = useState(_produkty);
+    const [zestawy, setZestawy] = useState(_zestawy);
+
+    const handleChange_firna = event => {
+        console.log(event.target.value);
+        setSelected_firma(event.target.value);
+      };
+      const handleChange_klient = event => {
+        console.log(event.target.value);
+        setKlient(event.target.value);
+      };
     return(<>
     <div className={style.container}>
             <div className={style.row1}>
@@ -52,4 +75,3 @@ import style from './Center.module.css'
 
 }
 
-export default Center;

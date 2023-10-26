@@ -31,37 +31,47 @@ import Produkt from "./produkt/Produkt";
             <div className={style.row1}>
                       
                          
-                                <label className={style.label}> Firma
-                                    <select className={style.klient} value={selected_firma} onChange={handleChange_firna}>
-                                        {_firma.map(option => (
-                                            <option key={option.id} value={option.nazwa}>
-                                                {option.nazwa}
+                                <div className={style.col}>
+                                    <label className={style.label}> Firma   </label>
+                                        <select className={style.firma} value={selected_firma} onChange={handleChange_firna}>
+                                            {_firma.map(option => (
+                                                <option key={option.id} value={option.nazwa}>
+                                                    {option.nazwa}
+                                                </option>
+                                            ))}
+                                        </select>
+                                </div>
+                              
+
+                                <div className={style.col}>
+                                <label className={style.label}> Klient    </label>
+                                    <select className={style.klient} value={klient} onChange={handleChange_klient}>
+                                        {_klient.map(option => (
+                                            <option key={option.id} value={option.firma}>
+                                                {option.firma}
                                             </option>
                                         ))}
                                     </select>
-                                </label>
+                            </div>
+                            
 
-                            <label className={style.label}> Klient           
-                                <select className={style.klient} value={klient} onChange={handleChange_klient}>
-                                    {_klient.map(option => (
-                                        <option key={option.id} value={option.firma}>
-                                            {option.firma}
-                                        </option>
-                                    ))}
-                                </select>
-                            </label>
+                            <div className={style.col}>
+                            <label className={style.label}> Tytuł   </label>
+                                <input className={style.tytul} value="Tytuł" type="text" />
+                        </div>
+                        
 
-                        <label className={style.label}> Tytuł     
-                            <input className={style.tytul} value="Tytuł" type="text" />
-                        </label>
+                        <div className={style.col}>
+                            <label className={style.label}> Data materiałów   </label>
+                                <input className={style.data} type="date"></input>
+                        </div>
+                
 
-                        <label className={style.label}> Data materiałów     
-                            <input className={style.data} type="date"></input>
-                        </label>
-
-                        <label className={style.label}> Data spedycji   
-                            <input className={style.data} type="date"></input>
-                        </label>
+                        <div className={style.col}>
+                            <label className={style.label}> Data spedycji   </label>
+                                <input className={style.data} type="date"></input>
+                        </div>
+     
             </div>
 
             <div className={style.row2}>
@@ -70,11 +80,22 @@ import Produkt from "./produkt/Produkt";
                                 <Produkt key={prod.id}></Produkt>
                         ))}
                 </div>
+   
+            </div>
+
+
+            <div className={style.row3}>
+          
                 <div className={style.elementy}>
                         {_elementy.map(elem => (
                         <input key={elem.id} className={style.tytul} defaultValue={elem.typ}></input>
                         ))}
                 </div>
+         
+            </div>
+
+            <div className={style.row4}>
+
                 <div className={style.zestawy}>
                         zestawy
                 </div>

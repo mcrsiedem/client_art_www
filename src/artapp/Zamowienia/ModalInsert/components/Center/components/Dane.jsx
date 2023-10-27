@@ -1,9 +1,11 @@
 import style from '../Center.module.css';
 import {_firma,_produkty,_klient,_zestawy,_elementy} from '../components/api';
+
+
 export default function Dane({selected_firma,setSelected_firma,klient,setKlient}){
 
     return(<>
-    <div className={style.row1}>
+    <div className={style.dane}>
                       
                          
                       <div className={style.col}>

@@ -25,7 +25,7 @@ import Produkty from "./components/Produkty";
                     setSelected_firma={(firma)=>setSelected_firma(firma)} 
                     setKlient={(kl)=>setKlient(kl)} 
                     />
-            <Produkty _produkty={_produkty}/>
+            <Produkty _produkty={_produkty}/> 
    
 
 

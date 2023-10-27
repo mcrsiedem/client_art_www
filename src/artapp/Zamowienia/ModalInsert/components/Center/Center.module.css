@@ -14,8 +14,8 @@ font-size: 0.8rem;
     flex-direction: column;
 
   }
-.row1{
-    /* background-color: #ffc1c1; */
+.dane{
+    background-color: #ececec;
     /* border: 1px solid gray; */
     display: flex;
     flex-direction: row;
@@ -41,7 +41,7 @@ font-size: 0.8rem;
   }
 
   .row4{
-    background-color: #9b9696;
+    background-color: #ececec;
     /* border: 1px solid gray; */
     display: flex;
     padding: 10px;

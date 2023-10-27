@@ -1,5 +1,6 @@
 import Produkt from "./Produkt";
 import style from '../Center.module.css'
+import { Children } from "react";
 
 export default function Produkty({_produkty}){
 
@@ -13,6 +14,6 @@ export default function Produkty({_produkty}){
                 </div>
    
             </div>
-    
+
     </>);
 }

@@ -4,6 +4,7 @@ import style from './Center.module.css'
 
 import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api.jsx';
 import Produkt from "./components/Produkt";
+import Dane from "./components/Dane";
 
 
  export default function Center(){
@@ -13,61 +14,16 @@ import Produkt from "./components/Produkt";
     const [produkty, setProdukty] = useState(_produkty);
     const [zestawy, setZestawy] = useState(_zestawy);
 
-    const handleChange_firna = event => {
-        console.log(event.target.value);
-        setSelected_firma(event.target.value);
-      };
-      const handleChange_klient = event => {
-        console.log(event.target.value);
-        setKlient(event.target.value);
-      };
+    // const handleChange_firna = (firma) => {        setSelected_firma(firma);   };
+    // const handleChange_klient = event => {        setKlient(event.target.value);      };
+
     return(<>
 <div className={style.container}>
-            <div className={style.row1}>
-                      
-                         
-                                <div className={style.col}>
-                                    <label className={style.label}> Firma   </label>
-                                        <select className={style.firma} value={selected_firma} onChange={handleChange_firna}>
-                                            {_firma.map(option => (
-                                                <option key={option.id} value={option.nazwa}>
-                                                    {option.nazwa}
-                                                </option>
-                                            ))}
-                                        </select>
-                                </div>
-                              
-
-                                <div className={style.col}>
-                                <label className={style.label}> Klient    </label>
-                                    <select className={style.klient} value={klient} onChange={handleChange_klient}>
-                                        {_klient.map(option => (
-                                            <option key={option.id} value={option.firma}>
-                                                {option.firma}
-                                            </option>
-                                        ))}
-                                    </select>
-                            </div>
-                            
-
-                            <div className={style.col}>
-                            <label className={style.label}> Tytuł   </label>
-                                <input className={style.tytul} value="Tytuł" type="text" />
-                        </div>
-                        
-
-                        <div className={style.col}>
-                            <label className={style.label}> Data materiałów   </label>
-                                <input className={style.data} type="date"></input>
-                        </div>
-                
-
-                        <div className={style.col}>
-                            <label className={style.label}> Data spedycji   </label>
-                                <input className={style.data} type="date"></input>
-                        </div>
-     
-            </div>
+            <Dane   selected_firma={selected_firma} 
+                    klient={klient}
+                    setSelected_firma={(firma)=>setSelected_firma(firma)} 
+                    setKlient={(kl)=>setKlient(kl)} 
+                    />
 
             <div className={style.row2}>
                 <div className={style.produkty}>
@@ -93,6 +49,7 @@ import Produkt from "./components/Produkt";
 
                 <div className={style.zestawy}>
                         zestawy
+                        {selected_firma} {klient}
                 </div>
             </div>
 

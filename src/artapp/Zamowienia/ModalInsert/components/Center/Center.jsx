@@ -2,13 +2,8 @@
 import React, { useEffect,useState } from "react";
 import style from './Center.module.css'
 
-import {_firma} from './_firma.jsx';
-import {_klient} from './_klient.jsx';
-import {_elementy} from './_elementy.jsx';
-import {_produkty} from './_produkty.jsx';
-import {_zestawy} from './_zestawy';
-
-import Produkt from "./Produkt";
+import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api.jsx';
+import Produkt from "./components/Produkt";
 
 
  export default function Center(){

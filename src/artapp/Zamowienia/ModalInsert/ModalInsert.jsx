@@ -1,4 +1,4 @@
-import style from '../Zamowienia/ModalInsert.module.css';
+import style from './ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
 
 import Header from './components/Header/Header';

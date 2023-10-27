@@ -9,8 +9,8 @@ import Table from 'react-bootstrap/Table';
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
-import Modal from '../Zamowienia/Modal';
-import ModalInsert from '../Zamowienia/ModalInsert';
+import Modal from '../Zamowienia/Modal/Modal';
+import ModalInsert from './ModalInsert/ModalInsert';
 
 import style from '../Zamowienia/Zamowienia.module.css';
 import {zamowienia_temp} from '../Zamowienia/zam';

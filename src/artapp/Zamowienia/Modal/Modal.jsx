@@ -1,9 +1,10 @@
-import style from '../History/Hisotry.module.css';
+// import style from '../ModalInsert/ModalInsert';
 
 function Modal({ openModal, setOpenModal,row }) {
     return (
         <>
-            <div className={style.mod}>
+        <div>
+            {/* <div className={style.mod}> */}
                 <div>
                    <button onClick={() => setOpenModal(false)}> X </button> 
                 </div>

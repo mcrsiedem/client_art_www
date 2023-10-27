@@ -8,7 +8,7 @@ import {_elementy} from './_elementy.jsx';
 import {_produkty} from './_produkty.jsx';
 import {_zestawy} from './_zestawy';
 
-import Produkt from "./produkt/Produkt";
+import Produkt from "./Produkt";
 
 
  export default function Center(){

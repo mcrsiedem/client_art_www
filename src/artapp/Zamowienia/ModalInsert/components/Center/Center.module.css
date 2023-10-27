@@ -24,7 +24,7 @@ font-size: 0.8rem;
   
   }
   .row2{
-    background-color: #9b9696;
+    /* background-color: #9b9696; */
     /* border: 1px solid gray; */
     display: flex;
     padding: 10px;

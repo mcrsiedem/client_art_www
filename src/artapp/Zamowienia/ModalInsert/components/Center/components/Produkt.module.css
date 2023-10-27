@@ -4,13 +4,13 @@
 
 
   display: flex;
-  flex-direction: row;
-  /* background-color: bisque; */
-  justify-content: center;
-  gap:5px;
-  padding: 5px;
+gap: 10px;
 }
 label{
 
-  width: 100%;
+  /* width: 100%; */
+}
+
+.produkt{
+  width: 300px;
 }

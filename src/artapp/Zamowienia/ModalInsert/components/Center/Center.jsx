@@ -5,6 +5,7 @@ import style from './Center.module.css'
 import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api.jsx';
 import Produkt from "./components/Produkt";
 import Dane from "./components/Dane";
+import Produkty from "./components/Produkty";
 
 
  export default function Center(){
@@ -24,15 +25,8 @@ import Dane from "./components/Dane";
                     setSelected_firma={(firma)=>setSelected_firma(firma)} 
                     setKlient={(kl)=>setKlient(kl)} 
                     />
-
-            <div className={style.row2}>
-                <div className={style.produkty}>
-                        {_produkty.map(prod => (
-                                <Produkt key={prod.id}></Produkt>
-                        ))}
-                </div>
+            <Produkty _produkty={_produkty}/>
    
-            </div>
 
 
             <div className={style.row3}>

@@ -51,7 +51,8 @@ const _produkty = [
     format_y: "297",
     oprawa: "PUR",
     naklad: "1000",
-  }
+  },
+  
   
 ];
 

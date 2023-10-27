@@ -32,10 +32,7 @@ export default function Dane({selected_firma,setSelected_firma,klient,setKlient}
                   </div>
                   
 
-                  <div className={style.col}>
-                  <label className={style.label}> Tytuł   </label>
-                      <input className={style.tytul} value="Tytuł" type="text" />
-              </div>
+
               
 
               <div className={style.col}>

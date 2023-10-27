@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, createContext, useContext, useEffect } from "react";
 
-import style from '../artapp/Login.module.css';
+import style from './Login.module.css';
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { ip } from "../Host";
-import TokenContext from "./tokenContext";
+import { ip } from "../../Host";
+import TokenContext from "../Context/tokenContext";
 import { useCookies } from "react-cookie";
 
 var header;

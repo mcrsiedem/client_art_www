@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import style from '../Print/Print.module.css';
+import style from './Print.module.css';
 
 import Jobs from "./Jobs";
 
 
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import TokenContext from "../tokenContext";
+import TokenContext from "../Context/tokenContext";
 import { ip } from "../../Host";
 
 import axios from "axios";

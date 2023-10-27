@@ -6,7 +6,7 @@ import ReactLogo_ustawienia from "./settings.svg";
 import ReactLogo_full from "./full.svg";
 import ReactLogo_history from "./history.svg";
 import { useNavigate } from "react-router-dom";
-import TokenContext from "../tokenContext";
+import TokenContext from "../Context/tokenContext";
 // import CloseButton from 'react-bootstrap/CloseButton';
 
 import Hisotry from "../History/History";

@@ -13,7 +13,7 @@ import Wydany_papier from './components/Druk/Wydany_papier';
 
 import Logowanie from './components/Logowanie/Logowanie';
 import Print from "./artapp/Print/Print";
-import Login from "./artapp/Login";
+import Login from "./artapp/Login/Login";
 import { useState, createContext } from "react";
 import History from "./artapp/History/History";
 import Panel from "./artapp/Panel/Panel";
@@ -23,7 +23,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import TokenContext from "./artapp/tokenContext";
+import TokenContext from "./artapp/Context/tokenContext";
 import Header from "./artapp/Header/Header";
 import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 

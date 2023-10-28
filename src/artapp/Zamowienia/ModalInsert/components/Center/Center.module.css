@@ -1,4 +1,4 @@
-.container{
+.centerContainer{
     background-color: #ffffff;
     display: grid;
     grid-template-rows: 6rem 1fr 1fr 1fr;
@@ -7,6 +7,7 @@ label{
 /* background-color: aquamarine; */
 /* max-width: 100%; */
 font-size: 0.8rem;
+
 }
 .col{
     /* background-color: #9b9696; */
@@ -92,4 +93,19 @@ width: 400px;
   input{
     height: 3rem;
   }
+
+  .produkty{
+    background-color: aqua;
+  }
   
+
+  .produkt{
+
+  display: flex;
+  gap: 10px;
+padding: 5px;
+  }
+
+  .produkt .label{
+
+  }

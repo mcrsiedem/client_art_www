@@ -3,7 +3,7 @@ import React, { useEffect,useState } from "react";
 import style from './Center.module.css'
 
 import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api.jsx';
-import Produkt from "./components/Produkt";
+
 import Dane from "./components/Dane";
 import Produkty from "./components/Produkty";
 
@@ -20,7 +20,7 @@ import Produkty from "./components/Produkty";
     // const handleChange_klient = event => {        setKlient(event.target.value);      };
 
     return(<>
-<div className={style.container}>
+<div className={style.centerContainer}>
             <Dane   selected_firma={selected_firma} 
                     klient={klient}
                     setSelected_firma={(firma)=>setSelected_firma(firma)} 

@@ -6,8 +6,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { useRef } from 'react';
 import Dane from './components/Dane';
+import Elementy from './components/Elementy';
 import Produkty from './components/Produkty';
 import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api';
+import Zestawy from './components/Zestawy';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -29,28 +31,10 @@ const [zestawy, setZestawy] = useState(_zestawy);
                     setSelected_firma={(firma)=>setSelected_firma(firma)} 
                     setKlient={(kl)=>setKlient(kl)} 
                     />
-                    <Produkty _produkty={_produkty}/> 
-        {/* <Center/> */}
-
-
-        <div className={style.row3}>
-          
-          <div className={style.elementy}>
-                  {_elementy.map(elem => (
-                  <input key={elem.id} className={style.tytul} defaultValue={elem.typ}></input>
-                  ))}
-          </div>
-   
-      </div>
-
-      <div className={style.row4}>
-
-          <div className={style.zestawy}>
-                  zestawy
-                  {console.log(selected_firma)}
-                  {selected_firma} {klient}
-          </div>
-      </div>
+                    
+        <Produkty _produkty={_produkty}/> 
+        <Elementy _elementy={_elementy}></Elementy>
+        <Zestawy/>
         <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 
 

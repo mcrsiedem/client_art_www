@@ -1,6 +1,6 @@
 
 import style from './Produkty.module.css'
-import { Children } from "react";
+
 
 export default function Produkty({_produkty}){
 

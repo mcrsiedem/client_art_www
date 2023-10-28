@@ -33,3 +33,17 @@
 
 
 
+    .dane{
+      background-color: #ececec;
+      /* border: 1px solid gray; */
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      gap: 10px;
+    
+    }
+
+    .dane .col{
+      display: flex;
+      flex-direction: column;
+    }

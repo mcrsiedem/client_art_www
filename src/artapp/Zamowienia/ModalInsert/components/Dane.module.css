@@ -1,8 +1,8 @@
-.centerContainer{
+/* .centerContainer{
     background-color: #ffffff;
     display: grid;
     grid-template-rows: 6rem 1fr 1fr 1fr;
-}
+} */
 label{
 /* background-color: aquamarine; */
 /* max-width: 100%; */
@@ -18,10 +18,11 @@ font-size: 0.8rem;
 .dane{
     background-color: #ececec;
     /* border: 1px solid gray; */
-    display: flex;
-    flex-direction: row;
+    display: grid;
+
+grid-template-columns: 100px 1fr 200px 200px;
     padding: 10px;
-    gap: 10px;
+
   
   }
   .row2{

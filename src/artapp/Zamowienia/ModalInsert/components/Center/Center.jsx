@@ -9,7 +9,8 @@ import Produkty from "./components/Produkty";
 
 
  export default function Center(){
-    const [selected_firma, setSelected_firma] = useState(_firma[0].nazwa);
+
+    const [selected_firma, setSelected_firma] = useState(_firma[0].id);
     const [klient, setKlient] = useState(_klient[0].firma);
     const [elementy, setElementy] = useState(_elementy);
     const [produkty, setProdukty] = useState(_produkty);
@@ -43,6 +44,7 @@ import Produkty from "./components/Produkty";
 
                 <div className={style.zestawy}>
                         zestawy
+                        {console.log(selected_firma)}
                         {selected_firma} {klient}
                 </div>
             </div>

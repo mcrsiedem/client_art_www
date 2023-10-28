@@ -73,7 +73,7 @@ const _elementy = [
     uszlachetnianie_id: "UV"
   },
   {
-    id: 1,
+    id: 2,
     typ: "Środek",
     nazwa: "1",
     ilosc_stron: "80",

@@ -1,25 +1,56 @@
 import style from './ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
 
-import Header from './components/Header/Header';
-import Center from './components/Center/Center';
-import Footer from './components/Footer/Footer';
+import Header from './components/Header';
+
+import Footer from './components/Footer';
 import { useRef } from 'react';
-
-
+import Dane from './components/Dane';
+import Produkty from './components/Produkty';
+import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
         // dragElement(elmnt.current);
        },[])
 // const elmnt = useRef(null);
-
+const [selected_firma, setSelected_firma] = useState(_firma[0].id);
+const [klient, setKlient] = useState(_klient[0].firma);
+const [elementy, setElementy] = useState(_elementy);
+const [produkty, setProdukty] = useState(_produkty);
+const [zestawy, setZestawy] = useState(_zestawy);
     return (
       
         <div className={style.container}>
 
         <Header/>
-        <Center/>
+        <Dane   selected_firma={selected_firma} 
+                    klient={klient}
+                    setSelected_firma={(firma)=>setSelected_firma(firma)} 
+                    setKlient={(kl)=>setKlient(kl)} 
+                    />
+                    <Produkty _produkty={_produkty}/> 
+        {/* <Center/> */}
+
+
+        <div className={style.row3}>
+          
+          <div className={style.elementy}>
+                  {_elementy.map(elem => (
+                  <input key={elem.id} className={style.tytul} defaultValue={elem.typ}></input>
+                  ))}
+          </div>
+   
+      </div>
+
+      <div className={style.row4}>
+
+          <div className={style.zestawy}>
+                  zestawy
+                  {console.log(selected_firma)}
+                  {selected_firma} {klient}
+          </div>
+      </div>
         <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 
 

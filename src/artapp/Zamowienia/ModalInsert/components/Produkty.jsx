@@ -1,21 +1,18 @@
 
-import style from '../Center.module.css'
+import style from './Produkty.module.css'
 import { Children } from "react";
 
 export default function Produkty({_produkty}){
 
-    return(<>
-
-<div className={style.row2}>
-                <div className={style.produkty}>
-                        {_produkty.map(prod => (
-                                <Produkt key={prod.id}></Produkt>
-                        ))}
-                </div>
-   
-            </div>
-
-    </>);
+    return (
+      <>
+        <div className={style.produkty}>
+          {_produkty.map((prod) => (
+            <Produkt key={prod.id}></Produkt>
+          ))}
+        </div>
+      </>
+    );
 }
 
 

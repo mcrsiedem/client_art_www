@@ -21,7 +21,7 @@ function Produkt(){
           <div className={style.produkt}>
 
 <div className={style.col}>
-              <label className={style.label}> Rodzaj</label>
+              <label className={style.label}> Produkt</label>
               <input  defaultValue="Magazyn" type="input" className={style.produkt}/>
             </div>
 

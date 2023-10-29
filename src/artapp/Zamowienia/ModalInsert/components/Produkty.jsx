@@ -17,33 +17,42 @@ export default function Produkty({_produkty}){
 
 
 function Produkt(){
-        return(
+        return (
+          <div className={style.produkt}>
 
-        <div className={style.con}>
+<div className={style.col}>
+              <label className={style.label}> Rodzaj</label>
+              <input  defaultValue="Magazyn" type="input" className={style.produkt}/>
+            </div>
 
-        <label className={style.label} > Tytul
-            <input defaultValue="Katalog SDW" type="text" className={style.produkt} />
-        </label>
-        <label className={style.label} > Rodzaj
-            <input defaultValue="Magazyn" type="text" className={style.produkt} />
-        </label>
+            <div className={style.col}>
+              <label className={style.label}> Tytul</label>
+              <input  defaultValue="Katalog SDW" type="text" className={style.produkt}/>
+            </div>
+
+            
+
+            <div className={style.col}>
+              <label className={style.label}> Oprawa</label>
+              <input  defaultValue="PUR" type="text" className={style.produkt}/>
+            </div>
+
+            <div className={style.col}>
+              <label className={style.label}> Netto X</label>
+              <input  defaultValue="210" type="text" className={style.produkt}/>
+            </div>
+
+            <div className={style.col}>
+              <label className={style.label}> Netto Y</label>
+              <input  defaultValue="297" type="text" className={style.produkt}/>
+            </div>
+
+            <div className={style.col}>
+              <label className={style.label}> Bok oprawy</label>
+              <input  defaultValue="297" type="text" className={style.produkt}/>
+            </div>
 
 
-        <label className={style.label} > Oprawa
-            <input defaultValue="PUR" type="text" className={style.produkt} />
-        </label>
-        <label className={style.label} > Format X
-            <input defaultValue="210" type="text" className={style.produkt} />
-        </label>
-        <label className={style.label} > Format Y
-            <input defaultValue="297" type="text" className={style.produkt} />
-        </label>
-
-        <label className={style.label} > Bok oprawy
-            <input defaultValue="d" type="text" className={style.produkt} />
-        </label>
-
-
-    </div>
+          </div>
         );
 }

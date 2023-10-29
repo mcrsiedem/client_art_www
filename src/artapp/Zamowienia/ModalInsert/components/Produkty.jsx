@@ -6,7 +6,7 @@ export default function Produkty({_produkty}){
 
     return (
       <>
-        <div className={style.produkty}>
+        <div id="Produkty" className={style.produkty}>
           {_produkty.map((prod) => (
             <Produkt key={prod.id}></Produkt>
           ))}

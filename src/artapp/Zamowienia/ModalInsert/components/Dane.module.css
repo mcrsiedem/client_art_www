@@ -1,5 +1,5 @@
 .dane{
-  background-color: #ececec;
+  /* background-color: #ececec; */
   display: grid;
   grid-template-columns: 170px 1fr 170px 170px;
   padding: 10px;

@@ -60,7 +60,7 @@ const _elementy = [
   {
     id: 1,
     typ: "Okładka",
-    nazwa: "1",
+    nazwa: "PL",
     ilosc_stron: "4",
     kolor_front: "4",
     kolor_back: "4",
@@ -75,7 +75,7 @@ const _elementy = [
   {
     id: 2,
     typ: "Środek",
-    nazwa: "1",
+    nazwa: "PL",
     ilosc_stron: "80",
     kolor_front: "4",
     kolor_back: "4",
@@ -87,6 +87,38 @@ const _elementy = [
     naklad: "1000",
     uszlachetnianie_id: ""
   },
+  {
+    id: 3,
+    typ: "Insert",
+    nazwa: "PL",
+    ilosc_stron: "2",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "200",
+    format_y: "290",
+    papier_id: "Offset",
+    gramatura: "110",
+    wykonczenie: "",
+    naklad: "1000",
+    uszlachetnianie_id: ""
+  },
+  {
+    id: 4,
+    typ: "Insert",
+    nazwa: "EN",
+    ilosc_stron: "2",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "200",
+    format_y: "290",
+    papier_id: "Offset",
+    gramatura: "110",
+    wykonczenie: "",
+    naklad: "1000",
+    uszlachetnianie_id: ""
+  },
+  
+  
   
 ];
 

@@ -1,0 +1,30 @@
+.zestawy{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  gap: 10px;
+}
+.zestaw{
+ 
+  outline: 1px solid rgb(182, 182, 182);
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+ 
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgb(209, 160, 100); */
+  /* background-color: rgb(107, 158, 224); */
+  background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%);
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 40px;
+  color: #fff;
+  font-weight: bold;
+}

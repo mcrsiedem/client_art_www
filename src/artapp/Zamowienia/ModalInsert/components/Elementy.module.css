@@ -1,0 +1,10 @@
+.elementy{
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgb(216, 232, 253); */
+
+  
+  padding: 10px;
+  gap: 10px;
+
+}

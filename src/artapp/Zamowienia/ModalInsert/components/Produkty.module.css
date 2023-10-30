@@ -1,8 +1,8 @@
 .produkty{
-  background-color: rgb(57, 122, 122)ec;
   display: grid;
   grid-template-columns: 1fr; 
   gap:10px;
+
 }
 
 .produktyContainer .label

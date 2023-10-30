@@ -5,10 +5,30 @@ export default function Elementy({ _elementy }) {
     <>
       <div className={style.elementy}>
         {_elementy.map((element) => (
-          <Element key={element.id} element={element} ></Element>
+          <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
       </div>
     </>
+  );
+}
+
+function ElementKafel({ element }) {
+  return (
+    <div className={style.elementKafel}>
+
+    <div className={style.header}>
+    {element.typ} 
+    </div>
+    <div className={style.center}>
+    <div className={style.col}>
+              <label className={style.label}> Typ</label>
+              <input className={style.tytul} defaultValue={element.typ}></input>
+            </div>
+    </div>
+
+
+    </div>
+    
   );
 }
 

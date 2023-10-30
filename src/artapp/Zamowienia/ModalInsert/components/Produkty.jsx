@@ -21,7 +21,7 @@ function ProduktKafel(){
     <div className={style.produktKafel}>
 
     <div className={style.header}>
-    Magazyn
+    Gazeta
     </div>
     <div className={style.center}>
           <div className={style.col}>

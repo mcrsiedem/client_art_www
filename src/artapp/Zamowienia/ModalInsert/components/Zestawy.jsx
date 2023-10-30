@@ -21,5 +21,6 @@ function Zestaw({nr}) {
 <div className={style.header}>
 Zestaw {nr}
 </div>
-  </div>);
+  </div>
+  );
 }

@@ -39,7 +39,7 @@ font-size: 0.8rem;
   outline: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
   width: 800px;
-  height: 200px;
+  height: 10rem;
  
  
 }
@@ -54,7 +54,7 @@ font-size: 0.8rem;
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 40px;
+  height: 2rem;
   color: #fff;
   font-weight: bold;
 }
@@ -71,7 +71,8 @@ font-size: 0.8rem;
   color: rgb(180, 179, 179);
 }
 .produktKafel input{
-  height: 2rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
 }
 .center{
   display: grid;

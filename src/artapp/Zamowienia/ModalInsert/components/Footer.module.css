@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: gray;
+    /* background-image: linear-gradient(rgb(32, 32, 32) 0%,rgb(71, 71, 71) 50%,rgb(32,32,32) 100%); */
+    color: white;
   
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

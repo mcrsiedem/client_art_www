@@ -51,6 +51,7 @@ font-size: 0.8rem;
   /* background-color: rgb(209, 160, 100); */
   /* background-color: rgb(107, 158, 224); */
   background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%);
+  /* background-image: linear-gradient(rgb(95, 186, 21) 0%,rgb(110, 209, 29) 50%,rgb(95, 186, 21) 100%); */
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -73,6 +74,8 @@ font-size: 0.8rem;
 .produktKafel input{
   height: 1.5rem;
   font-size: 0.8rem;
+  /* background-color: rgb(216, 245, 216); */
+  background-color: rgb(231, 242, 250);
 }
 .center{
   display: grid;

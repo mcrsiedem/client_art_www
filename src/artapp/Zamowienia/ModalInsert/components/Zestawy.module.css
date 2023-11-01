@@ -14,14 +14,21 @@
   height: 10rem;
  
 }
+.zestawyKafel input{
+  height: 1.5rem;
+  padding: 5px;
+  font-size: 0.8rem;
+  background-color: rgb(255, 219, 165);
 
+}
 .header{
   display: flex;
   align-items: center;
   justify-content: center;
   /* background-color: rgb(209, 160, 100); */
   /* background-color: rgb(107, 158, 224); */
-  background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%);
+  background-image: linear-gradient(rgb(157, 47, 51) 0%,rgb(181, 61, 65) 50%,rgb(157, 47, 51 )100%);
+  background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

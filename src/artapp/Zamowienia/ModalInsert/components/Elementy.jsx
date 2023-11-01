@@ -1,12 +1,26 @@
 import style from "./Elementy.module.css";
 
+import { useState } from "react";
+
 export default function Elementy({ _elementy }) {
+
   return (
     <>
       <div className={style.elementy}>
+        
+     
+
         {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
+     {_elementy.map((element) => (
+          <ElementKafel key={element.id} element={element} ></ElementKafel>
+        ))}
+           {_elementy.map((element) => (
+          <ElementKafel key={element.id} element={element} ></ElementKafel>
+        ))}
+        
+
       </div>
     </>
   );

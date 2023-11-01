@@ -11,6 +11,7 @@
   padding: 10px;
   gap: 10px;
   /* width: 100%; */
+  overflow: hidden;
 
 }
 .element{
@@ -34,7 +35,7 @@ font-size: 0.8rem;
   outline: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
   width: 350px;
-  height: 16rem;
+  height: 14rem;
 }
 
 .elementKafel .col{

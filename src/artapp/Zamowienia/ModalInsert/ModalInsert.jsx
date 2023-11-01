@@ -9,7 +9,7 @@ import Dane from './components/Dane';
 import Elementy from './components/Elementy';
 import Produkty from './components/Produkty';
 import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api';
-import Zestawy from './components/Zestawy';
+import Warianty from './components/Warianty';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -21,6 +21,7 @@ const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
+const [rowView,setRowView] =useState(true);
     return (
       
         <div className={style.container}>
@@ -33,8 +34,8 @@ const [zestawy, setZestawy] = useState(_zestawy);
                     />
                     
         <Produkty _produkty={_produkty}/> 
-        <Elementy _elementy={_elementy}></Elementy>
-        <Zestawy/>
+        {rowView && <Elementy _elementy={_elementy}></Elementy>}
+        <Warianty/>
         <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 
 

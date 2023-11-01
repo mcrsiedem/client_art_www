@@ -1,6 +1,6 @@
-import style from "./Zestawy.module.css";
+import style from "./Warianty.module.css";
 
-export default function Zestawy({ _zestawy }) {
+export default function Warianty({ _zestawy }) {
   
   return (
     <>
@@ -8,18 +8,18 @@ export default function Zestawy({ _zestawy }) {
         {/* {_zestawy.map((prod) => (
             <Zestaw key={prod.id} typ={prod.typ}></Zestaw>
           ))} */}
-        <Zestaw nr={1}/>
-        <Zestaw nr={2}/>
+        <Wariant nr={1}/>
+        <Wariant nr={2}/>
       </div>
     </>
   );
 }
 
-function Zestaw({nr}) {
+function Wariant({nr}) {
   return(
   <div className={style.zestaw}> 
 <div className={style.header}>
-Zestaw {nr}
+Wariant {nr}
 </div>
   </div>
   );

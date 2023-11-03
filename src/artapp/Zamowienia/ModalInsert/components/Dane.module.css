@@ -1,10 +1,11 @@
 .dane{
   /* background-color: rgb(194, 231, 255); */
-  background-color: white;
+  background-color: ga;
   display: grid;
   grid-template-columns: 170px 1fr 170px 170px;
   padding: 10px;
   gap:10px;
+  border-bottom: 1px dashed rgb(231, 242, 250);
 }
 
 .col{

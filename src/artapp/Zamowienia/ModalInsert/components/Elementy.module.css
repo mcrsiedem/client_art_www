@@ -12,6 +12,7 @@
   gap: 10px;
   /* width: 100%; */
   overflow: hidden;
+  /* border: 1px dashed rgb(216, 245, 216); */
 
 }
 .element{
@@ -34,8 +35,8 @@ font-size: 0.8rem;
 .elementKafel{
   outline: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
-  width: 350px;
-  height: 14rem;
+  width: 400px;
+  height: 20rem;
 }
 
 .elementKafel .col{

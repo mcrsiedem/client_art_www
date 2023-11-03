@@ -13,13 +13,10 @@ export default function Elementy({ _elementy }) {
         {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
-     {_elementy.map((element) => (
+     {/* {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
-           {_elementy.map((element) => (
-          <ElementKafel key={element.id} element={element} ></ElementKafel>
-        ))}
-        
+        */}
 
       </div>
     </>

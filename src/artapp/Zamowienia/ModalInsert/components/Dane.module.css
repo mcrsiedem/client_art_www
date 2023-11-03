@@ -5,7 +5,7 @@
   grid-template-columns: 170px 1fr 170px 170px;
   padding: 10px;
   gap:10px;
-  border-bottom: 1px dashed rgb(231, 242, 250);
+  border-bottom: 1px dashed rgb(192, 192, 192);
 }
 
 .col{
@@ -20,7 +20,7 @@
   }
 
  select, input{
-  background-color: rgb(231, 242, 250);
+  background-color: rgb(219, 219, 219);
     height: 2.5rem;
     border-radius: 5px;
     border-color: transparent;

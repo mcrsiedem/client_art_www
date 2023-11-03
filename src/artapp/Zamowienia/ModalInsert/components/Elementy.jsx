@@ -1,8 +1,13 @@
 import style from "./Elementy.module.css";
+import iconCopy from "../../../../svg/copy.svg";
 
 import { useState } from "react";
 
 export default function Elementy({ _elementy }) {
+
+  function duplicate(){
+
+  }
 
   return (
     <>
@@ -13,6 +18,7 @@ export default function Elementy({ _elementy }) {
         {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
+
      {/* {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
@@ -28,7 +34,7 @@ function ElementKafel({ element }) {
     <div className={style.elementKafel}>
 
       <div className={style.header}>
-        {element.typ} 1000 szt.
+        {element.typ} 1000 szt.                      <img className={style.icon} src={iconCopy} alt="React Logo" />
       </div>
       <div className={style.center}>
         <div className={style.col}>

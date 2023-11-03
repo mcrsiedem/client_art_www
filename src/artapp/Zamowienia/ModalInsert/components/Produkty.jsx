@@ -10,6 +10,7 @@ export default function Produkty({_produkty}){
           {_produkty.map((prod) => (
             <ProduktKafel key={prod.id}></ProduktKafel>
           ))}
+
         </div>
       </>
     );

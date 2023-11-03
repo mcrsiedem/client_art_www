@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     background-color: gray;
+    background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
     /* background-image: linear-gradient(rgb(32, 32, 32) 0%,rgb(71, 71, 71) 50%,rgb(32,32,32) 100%); */
     color: white;
   

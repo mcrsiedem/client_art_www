@@ -1,46 +1,26 @@
-.elementy{
+.elementy {
   background-color: #fff;
-  /* border: 1px dashed gray; */
   display: flex;
   flex-direction: row;
- justify-content: center;
- align-items: center;
-  /* margin-left: 50px;
-  margin-right: 50px; */
-  
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   gap: 20px;
-  /* width: 100%; */
   overflow: hidden;
-  /* border: 1px dashed rgb(216, 245, 216); */
-
-}
-.element{
-  display: grid;
-  grid-template-columns: 150px 150px 100px 50px 100px 100px 50px 50px;
-  gap:5px;
-
-}
-/* .col{
-  display: grid;
-  grid-template-columns: 150px 1fr;
-} */
-
-.label
-{
-font-size: 0.8rem;
-
 }
 
-.elementKafel{
+
+
+
+.elementCard{
   outline: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
   width: 400px;
   height: 20rem;
-  box-shadow: 5px 5px 5px rgb(159, 159, 159);
+  box-shadow: 8px 8px 8px rgb(159, 159, 159);
 }
 
-.elementKafel .col{
+.elementCard .col{
   display: grid;
   grid-template-columns: 50px 1fr 1fr;
   margin: 5px 10px;
@@ -48,14 +28,14 @@ font-size: 0.8rem;
 
 }
 
-.elementKafel .label{
+.elementCard .label{
   font-size: 0.8rem;
   margin-bottom: 2px;
  
   color: rgb(180, 179, 179);
 
 }
-.elementKafel input{
+.elementCard input{
   height: 1.5rem;
   padding: 5px;
   font-size: 0.8rem;
@@ -67,11 +47,6 @@ font-size: 0.8rem;
   grid-template-columns: 20px 1fr 20px;
   padding-left: 10px;
   padding-right: 10px;
-  /* align-items: center;
-  justify-content: center; */
-  /* background-color: rgb(209, 160, 100); */
-  /* background-color: rgb(107, 158, 224); */
-  /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%); */
   background-image: linear-gradient(rgb(95, 186, 21) 0%,rgb(110, 209, 29) 50%,rgb(95, 186, 21) 100%); 
 
   border-top-left-radius: 10px;
@@ -88,8 +63,4 @@ justify-content: center;
 
 .icon{
   height: 15px;
-
- 
-
-  
 }

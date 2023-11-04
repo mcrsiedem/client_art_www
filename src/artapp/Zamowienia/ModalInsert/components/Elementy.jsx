@@ -16,22 +16,22 @@ export default function Elementy({ _elementy }) {
      
 
         {_elementy.map((element) => (
-          <ElementKafel key={element.id} element={element} ></ElementKafel>
+          <ElementCard key={element.id} element={element} ></ElementCard>
         ))}
 
      {/* {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
         */}
-{/*  */}
+
       </div>
     </>
   );
 }
 
-function ElementKafel({ element }) {
+function ElementCard({ element }) {
   return (
-    <div className={style.elementKafel}>
+    <div className={style.elementCard}>
 
       <div className={style.header}>
         <div className={style.typ}>
@@ -77,48 +77,3 @@ function ElementKafel({ element }) {
   );
 }
 
-function Element({ element }) {
-  return (
-    <div className={style.element}>
-
-
-      <div className={style.col}>
-              <label className={style.label}> Typ</label>
-              <input className={style.tytul} defaultValue={element.typ}></input>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Nakład</label>
-              <input  defaultValue={element.naklad} type="text" className={style.produkt}/>
-            </div>
-
-      <div className={style.col}>
-              <label className={style.label}> Wersja</label>
-              <input  defaultValue={element.nazwa} type="text" className={style.produkt}/>
-            </div>
-
-            <div className={style.col}>
-              <label className={style.label}> Strony</label>
-              <input  defaultValue={element.ilosc_stron} type="text" className={style.produkt}/>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Netto X</label>
-              <input  defaultValue={element.format_x} type="text" className={style.produkt}/>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Netto Y</label>
-              <input  defaultValue={element.format_y}  type="text" className={style.produkt}/>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Kolory </label>
-              <input  defaultValue="4" type="text" className={style.produkt}/>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Kolory </label>
-              <input  defaultValue="4" type="text" className={style.produkt}/>
-            </div>
-
-
-    </div>
-    
-  );
-}

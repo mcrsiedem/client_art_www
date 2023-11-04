@@ -34,7 +34,7 @@ const [rowView,setRowView] =useState(true);
                     />
                     
         <Produkty _produkty={_produkty}/> 
-        {rowView && <Elementy _elementy={_elementy}></Elementy>}
+        {rowView && <Elementy elementy={elementy} setElementy={setElementy}></Elementy>}
         <Warianty/>
         <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
 

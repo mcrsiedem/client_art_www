@@ -16,7 +16,7 @@ export default function Elementy({ elementy,setElementy }) {
      
 
         {elementy.map((card) => (
-          <ElementCard key={card.id} card={card} ></ElementCard>
+          <ElementCard key={card.id} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
         ))}
 
      {/* {_elementy.map((element) => (

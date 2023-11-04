@@ -1,6 +1,6 @@
 import style from "./Elementy.module.css";
 import iconCopy from "../../../../svg/copy.svg";
-
+import iconTrash from "../../../../svg/trash2.svg";
 import { useState } from "react";
 
 export default function Elementy({ _elementy }) {
@@ -34,8 +34,17 @@ function ElementKafel({ element }) {
     <div className={style.elementKafel}>
 
       <div className={style.header}>
-        {element.typ} 1000 szt.                      <img className={style.icon} src={iconCopy} alt="React Logo" />
+        <div className={style.typ}>
+            <img className={style.icon} src={iconTrash} alt="React Logo" /> 
+        </div>
+
+        <div className={style.typ}>{element.typ} 1000 szt.     </div>
+                       
+          <div className={style.typ}>
+      <img className={style.icon} src={iconCopy} alt="React Logo" />
+    </div>
       </div>
+
       <div className={style.center}>
         <div className={style.col}>
           <label className={style.label}> Wersja</label>

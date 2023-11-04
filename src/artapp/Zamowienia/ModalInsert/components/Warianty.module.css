@@ -4,7 +4,8 @@
   align-items: center;
   background-color: rgb(255, 255, 255);
   padding: 10px;
-  gap: 10px;
+  gap: 20px;
+
 }
 .zestaw{
  
@@ -12,7 +13,8 @@
   border-radius: 10px;
   width: 400px;
   height: 10rem;
- 
+  box-shadow: 5px 5px 5px rgb(159, 159, 159);
+
 }
 .zestawyKafel input{
   height: 1.5rem;

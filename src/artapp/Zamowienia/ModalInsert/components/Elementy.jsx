@@ -23,7 +23,7 @@ export default function Elementy({ _elementy }) {
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
         */}
-
+{/*  */}
       </div>
     </>
   );

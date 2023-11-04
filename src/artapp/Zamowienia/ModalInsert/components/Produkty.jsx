@@ -8,7 +8,7 @@ export default function Produkty({_produkty}){
       <>
         <div id="Produkty" className={style.produkty}>
           {_produkty.map((prod) => (
-            <ProduktKafel key={prod.id}></ProduktKafel>
+            <ProduktCard key={prod.id}></ProduktCard>
           ))}
 
         </div>
@@ -17,9 +17,9 @@ export default function Produkty({_produkty}){
 }
 
 
-function ProduktKafel(){
+function ProduktCard(){
   return (
-    <div className={style.produktKafel}>
+    <div className={style.produktCard}>
 
     <div className={style.header}>
     Gazeta
@@ -38,45 +38,4 @@ function ProduktKafel(){
 
     </div>
   );
-}
-
-function Produkt(){
-        return (
-          <div className={style.produkt}>
-
-<div className={style.col}>
-              <label className={style.label}> Produkt</label>
-              <input  defaultValue="Magazyn" type="input" className={style.produkt}/>
-            </div>
-
-            <div className={style.col}>
-              <label className={style.label}> Tytul</label>
-              <input  defaultValue="Katalog SDW" type="text" className={style.produkt}/>
-            </div>
-
-            
-
-            <div className={style.col}>
-              <label className={style.label}> Oprawa</label>
-              <input  defaultValue="PUR" type="text" className={style.produkt}/>
-            </div>
-
-            <div className={style.col}>
-              <label className={style.label}> Netto X</label>
-              <input  defaultValue="210" type="text" className={style.produkt}/>
-            </div>
-
-            <div className={style.col}>
-              <label className={style.label}> Netto Y</label>
-              <input  defaultValue="297" type="text" className={style.produkt}/>
-            </div>
-
-            <div className={style.col}>
-              <label className={style.label}> Bok oprawy</label>
-              <input  defaultValue="297" type="text" className={style.produkt}/>
-            </div>
-
-
-          </div>
-        );
 }

@@ -15,8 +15,8 @@ export default function Elementy({ elementy,setElementy }) {
         
      
 
-        {elementy.map((row) => (
-          <ElementCard key={row.id} row={row} ></ElementCard>
+        {elementy.map((card) => (
+          <ElementCard key={card.id} card={card} ></ElementCard>
         ))}
 
      {/* {_elementy.map((element) => (
@@ -29,7 +29,7 @@ export default function Elementy({ elementy,setElementy }) {
   );
 }
 
-function ElementCard({ row }) {
+function ElementCard({ card }) {
   return (
     <div className={style.elementCard}>
 
@@ -38,7 +38,7 @@ function ElementCard({ row }) {
             <img className={style.icon} src={iconTrash} alt="React Logo" /> 
         </div>
 
-        <div className={style.typ}>{row.typ} 1000 szt.     </div>
+        <div className={style.typ}>{card.typ} 1000 szt.     </div>
                        
           <div className={style.typ}>
       <img className={style.icon} src={iconCopy} alt="React Logo" />
@@ -48,26 +48,26 @@ function ElementCard({ row }) {
       <div className={style.center}>
         <div className={style.col}>
           <label className={style.label}> Wersja</label>
-          <input className={style.tytul} defaultValue={row.nazwa}></input>
+          <input className={style.tytul} defaultValue={card.nazwa}></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Strony</label>
-          <input className={style.tytul} defaultValue={row.ilosc_stron}></input>
+          <input className={style.tytul} defaultValue={card.ilosc_stron}></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Format</label>
-          <input className={style.tytul} defaultValue={row.format_x}></input>
-          <input className={style.tytul} defaultValue={row.format_y}></input>
+          <input className={style.tytul} defaultValue={card.format_x}></input>
+          <input className={style.tytul} defaultValue={card.format_y}></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Kolory</label>
-          <input className={style.tytul} defaultValue={row.kolor_front}></input>
-          <input className={style.tytul} defaultValue={row.kolor_back}></input>
+          <input className={style.tytul} defaultValue={card.kolor_front}></input>
+          <input className={style.tytul} defaultValue={card.kolor_back}></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Papier</label>
-          <input className={style.tytul} defaultValue={row.kolor_front}></input>
-          <input className={style.tytul} defaultValue={row.kolor_back}></input>
+          <input className={style.tytul} defaultValue={card.kolor_front}></input>
+          <input className={style.tytul} defaultValue={card.kolor_back}></input>
         </div>
       </div>
 

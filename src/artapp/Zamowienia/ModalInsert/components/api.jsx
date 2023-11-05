@@ -70,7 +70,8 @@ const _elementy = [
     gramatura: "250",
     wykonczenie: "gloss",
     naklad: "1000",
-    uszlachetnianie_id: "UV"
+    uszlachetnianie_id: "UV",
+    index: 0
   },
   {
     id: 2,
@@ -85,7 +86,8 @@ const _elementy = [
     gramatura: "110",
     wykonczenie: "",
     naklad: "1000",
-    uszlachetnianie_id: ""
+    uszlachetnianie_id: "",
+    index: 0
   },
   {
     id: 3,
@@ -100,7 +102,8 @@ const _elementy = [
     gramatura: "110",
     wykonczenie: "",
     naklad: "1000",
-    uszlachetnianie_id: ""
+    uszlachetnianie_id: "",
+    index: 0
   },
   {
     id: 4,
@@ -115,7 +118,8 @@ const _elementy = [
     gramatura: "110",
     wykonczenie: "",
     naklad: "1000",
-    uszlachetnianie_id: ""
+    uszlachetnianie_id: "",
+    index: 0
   },
   
   

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Elementy({ elementy,setElementy }) {
 
-
+let index = 1;
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function Elementy({ elementy,setElementy }) {
      
 
         {elementy.map((card) => (
-          <ElementCard key={card.id} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
+          <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
         ))}
   
      {/* {_elementy.map((element) => (
@@ -28,13 +28,13 @@ export default function Elementy({ elementy,setElementy }) {
 }
 
 function ElementCard({ card,elementy,setElementy}) {
-  function pokaz(){
-    console.log(elementy);
+  function usun(){
+    console.log(card );
   }
   function dodaj(){
 setElementy([...elementy,  {
   id: 5,
-  typ: "Wrzutka",
+  typ: card.typ,
   nazwa: "EN",
   ilosc_stron: "2",
   kolor_front: "4",
@@ -48,17 +48,21 @@ setElementy([...elementy,  {
   uszlachetnianie_id: ""
 }]);
   }
+  function dodaj2(){
+    setElementy([...elementy,card]);
+      }
+
   return (
     <div className={style.elementCard}>
       <div className={style.header}>
         <div className={style.typ}>
-          <img onClick={()=>{dodaj()}} className={style.icon} src={iconTrash} alt="React Logo" />
+          <img onClick={()=>{usun()}} className={style.icon} src={iconTrash} alt="React Logo" />
         </div>
 
         <div className={style.typ}>{card.typ} 1000 szt. </div>
 
         <div className={style.typ}>
-          <img onClick={()=>{pokaz()}} className={style.icon} src={iconCopy} alt="React Logo" />
+          <img onClick={()=>{dodaj2()}} className={style.icon} src={iconCopy} alt="React Logo" />
         </div>
 
       </div>

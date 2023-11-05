@@ -5,9 +5,7 @@ import { useState } from "react";
 
 export default function Elementy({ elementy,setElementy }) {
 
-  function duplicate(){
 
-  }
 
   return (
     <>
@@ -18,7 +16,7 @@ export default function Elementy({ elementy,setElementy }) {
         {elementy.map((card) => (
           <ElementCard key={card.id} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
         ))}
-
+  
      {/* {_elementy.map((element) => (
           <ElementKafel key={element.id} element={element} ></ElementKafel>
         ))}
@@ -29,20 +27,40 @@ export default function Elementy({ elementy,setElementy }) {
   );
 }
 
-function ElementCard({ card }) {
+function ElementCard({ card,elementy,setElementy}) {
+  function pokaz(){
+    console.log(elementy);
+  }
+  function dodaj(){
+setElementy([...elementy,  {
+  id: 5,
+  typ: "Wrzutka",
+  nazwa: "EN",
+  ilosc_stron: "2",
+  kolor_front: "4",
+  kolor_back: "4",
+  format_x: "200",
+  format_y: "290",
+  papier_id: "Offset",
+  gramatura: "110",
+  wykonczenie: "",
+  naklad: "1000",
+  uszlachetnianie_id: ""
+}]);
+  }
   return (
     <div className={style.elementCard}>
-
       <div className={style.header}>
         <div className={style.typ}>
-            <img className={style.icon} src={iconTrash} alt="React Logo" /> 
+          <img onClick={()=>{dodaj()}} className={style.icon} src={iconTrash} alt="React Logo" />
         </div>
 
-        <div className={style.typ}>{card.typ} 1000 szt.     </div>
-                       
-          <div className={style.typ}>
-      <img className={style.icon} src={iconCopy} alt="React Logo" />
-    </div>
+        <div className={style.typ}>{card.typ} 1000 szt. </div>
+
+        <div className={style.typ}>
+          <img onClick={()=>{pokaz()}} className={style.icon} src={iconCopy} alt="React Logo" />
+        </div>
+
       </div>
 
       <div className={style.center}>
@@ -52,7 +70,10 @@ function ElementCard({ card }) {
         </div>
         <div className={style.col}>
           <label className={style.label}> Strony</label>
-          <input className={style.tytul} defaultValue={card.ilosc_stron}></input>
+          <input
+            className={style.tytul}
+            defaultValue={card.ilosc_stron}
+          ></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Format</label>
@@ -61,19 +82,22 @@ function ElementCard({ card }) {
         </div>
         <div className={style.col}>
           <label className={style.label}> Kolory</label>
-          <input className={style.tytul} defaultValue={card.kolor_front}></input>
+          <input
+            className={style.tytul}
+            defaultValue={card.kolor_front}
+          ></input>
           <input className={style.tytul} defaultValue={card.kolor_back}></input>
         </div>
         <div className={style.col}>
           <label className={style.label}> Papier</label>
-          <input className={style.tytul} defaultValue={card.kolor_front}></input>
+          <input
+            className={style.tytul}
+            defaultValue={card.kolor_front}
+          ></input>
           <input className={style.tytul} defaultValue={card.kolor_back}></input>
         </div>
       </div>
-
-
     </div>
-    
   );
 }
 

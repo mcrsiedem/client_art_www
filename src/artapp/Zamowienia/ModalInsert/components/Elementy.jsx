@@ -16,19 +16,13 @@ let index = 1;
           <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
         )))}
 
-        {/* {elementy.map((card) => (
-          <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
-        ))}
-   */}
-
-
       </div>
     </>
   );
 }
 
 function ElementCard({ card,elementy,setElementy}) {
-  
+
   const handleRemoveItem = id => {
     if(elementy.length !==1){
       setElementy(elementy.filter(x=> x.id !== id))

@@ -22,6 +22,7 @@ const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [rowView,setRowView] =useState(true);
+let index=0;
     return (
       
         <div className={style.container}>

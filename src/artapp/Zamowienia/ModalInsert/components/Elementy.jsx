@@ -29,7 +29,11 @@ let index = 1;
 
 function ElementCard({ card,elementy,setElementy}) {
   const handleRemoveItem = id => {
-    setElementy(elementy.filter(x=> x.id !== id))
+
+    if(elementy.length !==1){
+      setElementy(elementy.filter(x=> x.id !== id))
+    }
+    
 }
   function usun(id){
 handleRemoveItem(id);

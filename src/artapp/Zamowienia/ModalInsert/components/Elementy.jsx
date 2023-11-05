@@ -28,8 +28,12 @@ let index = 1;
 }
 
 function ElementCard({ card,elementy,setElementy}) {
-  function usun(){
-    console.log(card );
+  const handleRemoveItem = id => {
+    setElementy(elementy.filter(x=> x.id !== id))
+}
+  function usun(id){
+handleRemoveItem(id);
+    console.log(id);
   }
   function dodaj(){
 setElementy([...elementy,  {
@@ -56,10 +60,10 @@ setElementy([...elementy,  {
     <div className={style.elementCard}>
       <div className={style.header}>
         <div className={style.typ}>
-          <img onClick={()=>{usun()}} className={style.icon} src={iconTrash} alt="React Logo" />
+          <img onClick={()=>{usun(card.id)}} className={style.icon} src={iconTrash} alt="React Logo" />
         </div>
 
-        <div className={style.typ}>{card.typ} 1000 szt. </div>
+        <div className={style.typ}>{card.id} {card.typ} 1000 szt. </div>
 
         <div className={style.typ}>
           <img onClick={()=>{dodaj2()}} className={style.icon} src={iconCopy} alt="React Logo" />

@@ -12,7 +12,7 @@
    border-radius: 10px;
   z-index: 2;
   display: grid;
-  grid-template-rows: 35px 75px 1fr 2fr 1fr 50px;
+  grid-template-rows: 45px 75px 1fr 2fr 1fr ;
 
 
  }

@@ -27,7 +27,7 @@ let index=0;
       
         <div className={style.container}>
 
-        <Header/>
+        <Header openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
         <Dane   selected_firma={selected_firma} 
                     klient={klient}
                     setSelected_firma={(firma)=>setSelected_firma(firma)} 
@@ -37,7 +37,7 @@ let index=0;
         <Produkty _produkty={_produkty}/> 
         {rowView && <Elementy elementy={elementy} setElementy={setElementy}></Elementy>}
         <Warianty/>
-        <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
+        {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
 
           {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>

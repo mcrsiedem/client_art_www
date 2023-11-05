@@ -28,35 +28,15 @@ let index = 1;
 }
 
 function ElementCard({ card,elementy,setElementy}) {
+  
   const handleRemoveItem = id => {
-
     if(elementy.length !==1){
       setElementy(elementy.filter(x=> x.id !== id))
     }
     
 }
-  function usun(id){
-handleRemoveItem(id);
-    console.log(id);
-  }
+
   function dodaj(){
-setElementy([...elementy,  {
-  id: 5,
-  typ: card.typ,
-  nazwa: "EN",
-  ilosc_stron: "2",
-  kolor_front: "4",
-  kolor_back: "4",
-  format_x: "200",
-  format_y: "290",
-  papier_id: "Offset",
-  gramatura: "110",
-  wykonczenie: "",
-  naklad: "1000",
-  uszlachetnianie_id: ""
-}]);
-  }
-  function dodaj2(){
     setElementy([...elementy,card]);
       }
 
@@ -64,13 +44,13 @@ setElementy([...elementy,  {
     <div className={style.elementCard}>
       <div className={style.header}>
         <div className={style.typ}>
-          <img onClick={()=>{usun(card.id)}} className={style.icon} src={iconTrash} alt="React Logo" />
+          <img onClick={()=>{handleRemoveItem(card.id)}} className={style.icon} src={iconTrash} alt="React Logo" />
         </div>
 
         <div className={style.typ}>{card.id} {card.typ} 1000 szt. </div>
 
         <div className={style.typ}>
-          <img onClick={()=>{dodaj2()}} className={style.icon} src={iconCopy} alt="React Logo" />
+          <img onClick={()=>{dodaj()}} className={style.icon} src={iconCopy} alt="React Logo" />
         </div>
 
       </div>

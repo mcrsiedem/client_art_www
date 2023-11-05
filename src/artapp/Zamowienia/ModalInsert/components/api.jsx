@@ -87,7 +87,7 @@ const _elementy = [
     wykonczenie: "",
     naklad: "1000",
     uszlachetnianie_id: "",
-    index: 0
+    index: 1
   },
   {
     id: 3,
@@ -103,7 +103,7 @@ const _elementy = [
     wykonczenie: "",
     naklad: "1000",
     uszlachetnianie_id: "",
-    index: 0
+    index: 2
   },
   {
     id: 4,
@@ -119,7 +119,7 @@ const _elementy = [
     wykonczenie: "",
     naklad: "1000",
     uszlachetnianie_id: "",
-    index: 0
+    index: 3
   },
   
   

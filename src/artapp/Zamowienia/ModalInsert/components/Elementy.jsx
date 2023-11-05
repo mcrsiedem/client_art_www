@@ -11,16 +11,16 @@ let index = 1;
     <>
       <div className={style.elementy}>
         
-     
+      {elementy.map((card) => ( {...card, index: index++}
+         )).map(((card) => (
+          <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
+        )))}
 
-        {elementy.map((card) => (
+        {/* {elementy.map((card) => (
           <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy}></ElementCard>
         ))}
-  
-     {/* {_elementy.map((element) => (
-          <ElementKafel key={element.id} element={element} ></ElementKafel>
-        ))}
-        */}
+   */}
+
 
       </div>
     </>

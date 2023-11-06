@@ -1,9 +1,10 @@
+@import url(/src/Color.module.css);
 
 .produkty{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--mr-gr-produkty-background);
   padding: 10px;
   gap: 10px;
 
@@ -20,17 +21,13 @@
 }
 
 
-
-
-
-
 .produktCard{
   outline: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
   width: 800px;
   height: 10rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
-  background-color: rgb(209, 221, 233);
+  background-color: var( --mr-gr-produktCard-background)
  
 }
 
@@ -38,10 +35,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: rgb(209, 160, 100); */
-  /* background-color: rgb(107, 158, 224); */
-  background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%);
-  /* background-image: linear-gradient(rgb(95, 186, 21) 0%,rgb(110, 209, 29) 50%,rgb(95, 186, 21) 100%); */
+
+  /* background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%); */
+  background-image: var(--mr-gr-produktCard-header);
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -66,7 +62,7 @@
   height: 2,5rem;
   font-size: 0.8rem;
   /* background-color: rgb(216, 245, 216); */
-  background-color: rgb(231, 242, 250);
+  background-color: var(--mr-gr-produkt-input);
   border-radius: 10px;
 }
 .center{

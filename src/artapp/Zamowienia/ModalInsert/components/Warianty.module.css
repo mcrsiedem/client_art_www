@@ -9,11 +9,14 @@ padding-bottom: 20px;
 }
 .zestaw{
  
-  outline: 1px solid rgb(182, 182, 182);
+  /* outline: 1px solid rgb(248, 141, 1); */
+  background-color: rgb(253, 223, 183);
+
   border-radius: 10px;
   width: 400px;
   height: 10rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
+
 
 }
 .zestawyKafel input{
@@ -27,9 +30,6 @@ padding-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: rgb(209, 160, 100); */
-  /* background-color: rgb(107, 158, 224); */
-  background-image: linear-gradient(rgb(157, 47, 51) 0%,rgb(181, 61, 65) 50%,rgb(157, 47, 51 )100%);
   background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
 
   border-top-left-radius: 10px;

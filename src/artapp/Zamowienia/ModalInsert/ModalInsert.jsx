@@ -24,7 +24,7 @@ const [zestawy, setZestawy] = useState(_zestawy);
 const [rowView,setRowView] =useState(true);
 let index=0;
 
-function handleChangeTask_elementyCard(card) {
+function handleChangeCardElementy(card) {
   setElementy(
     elementy.map((t) => {
       if (t.id === card.id) {
@@ -47,7 +47,7 @@ function handleChangeTask_elementyCard(card) {
                     />
                     
         <Produkty _produkty={_produkty}/> 
-        {rowView && <Elementy elementy={elementy} setElementy={setElementy} handleChangeTask_elementyCard={handleChangeTask_elementyCard}> </Elementy>}
+        {rowView && <Elementy elementy={elementy} setElementy={setElementy} handleChangeCardElementy={handleChangeCardElementy}> </Elementy>}
         <Warianty/>
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 

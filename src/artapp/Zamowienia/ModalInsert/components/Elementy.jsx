@@ -1,19 +1,25 @@
 import style from "./Elementy.module.css";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
-import { useState } from "react";
+import {  _papiery } from "./api";
 
-export default function Elementy({ elementy,setElementy,handleChangeCardElementy }) {
+export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier }) {
 
 let index = 1;
 
   return (
     <>
       <div className={style.elementy}>
-        
-      {elementy.map((card) => ( {...card, index: index++}
-         )).map(((card) => (
-          <ElementCard key={card.id} index={index} card={card} elementy={elementy} setElementy={setElementy} handleChangeCardElementy={handleChangeCardElementy}></ElementCard>
+
+        {elementy.map((card) => ({ ...card, index: index++ }
+        )).map(((card) => (
+          <ElementCard key={card.id}
+            card={card}
+            elementy={elementy}
+            setElementy={setElementy}
+            handleChangeCardElementy={handleChangeCardElementy}
+            selected_papier={selected_papier}
+            setSelected_papier={setSelected_papier}/>
         )))}
 
       </div>
@@ -21,17 +27,25 @@ let index = 1;
   );
 }
 
-function ElementCard({ card,elementy,setElementy,handleChangeCardElementy}) {
+function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier}) {
   return (
     <div className={style.elementCard}>
-      <CardHeader card={card} elementy={elementy} setElementy={setElementy}/>
-      <CardCenter card={card} setElementy={setElementy} handleChangeCardElementy={handleChangeCardElementy}/>
+      <CardHeader
+        card={card}
+        elementy={elementy}
+        setElementy={setElementy} />
+      <CardCenter
+        card={card}
+        setElementy={setElementy}
+        handleChangeCardElementy={handleChangeCardElementy}
+        selected_papier={selected_papier}
+        setSelected_papier={setSelected_papier} />
     </div>
   );
 }
 
 
- function CardCenter  ({card,handleChangeCardElementy})  {
+ function CardCenter  ({card,handleChangeCardElementy,selected_papier,setSelected_papier})  {
  const nakladHandler =(e)=>{handleChangeCardElementy({...card, naklad: e.target.value})   }
  const nazwaHandler = (e)=>{handleChangeCardElementy({...card, nazwa: e.target.value})  }
  const stronyHandler = (e)=>{handleChangeCardElementy({...card, ilosc_stron: e.target.value})  }
@@ -39,45 +53,82 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy}) {
  const formatYHandler = (e)=>{handleChangeCardElementy({...card, format_y: e.target.value})  }
  const kolorFrontHandler = (e)=>{handleChangeCardElementy({...card, kolor_front: e.target.value})  }
  const kolorBackHandler = (e)=>{handleChangeCardElementy({...card, kolor_back: e.target.value})  }
+
   return(
     <div className={style.center}>
-              <div className={style.col}>
-                <label className={style.label}> Nakład</label>
-                <input className={style.tytul} defaultValue={card.naklad} onChange={nakladHandler}></input>
-              </div>
-              <div className={style.col}>
-                <label className={style.label}> Wersja</label>
-                <input className={style.tytul} defaultValue={card.nazwa} onChange={nazwaHandler}></input>
-              </div>
-              <div className={style.col}>
-                <label className={style.label}> Strony</label>
-                <input className={style.tytul} onChange={stronyHandler} defaultValue={card.ilosc_stron}></input>
-              </div>
-              <div className={style.col}>
-                <label className={style.label}> Format</label>
-                <input className={style.tytul} onChange={formatXHandler} defaultValue={card.format_x}></input>
-                <input className={style.tytul} onChange={formatYHandler} defaultValue={card.format_y}></input>
-              </div>
-              <div className={style.col}>
-                <label className={style.label}> Kolory</label>
-                <input
-                  className={style.tytul}
-                  defaultValue={card.kolor_front}
-                  onChange={kolorFrontHandler}
-                ></input>
-                <input className={style.tytul} defaultValue={card.kolor_back} onChange={kolorBackHandler}></input>
-              </div>
-              <div className={style.col}>
-                <label className={style.label}> Papier</label>
-                <input
-                  className={style.tytul}
-                  defaultValue={card.kolor_front}
-                  
-                ></input>
-                <input className={style.tytul} defaultValue={card.kolor_back}></input>
-              </div>
-            </div>
-  );
+      <Naklad card={card} nakladHandler={nakladHandler} />
+      <Wersja card={card} stronyHandler={nazwaHandler} />
+      <Strony card={card} stronyHandler={stronyHandler} />
+      <Format card={card} formatXHandler={formatXHandler} formatYHandler={formatYHandler} />
+      <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
+      <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} />
+    </div>);
+}
+
+function Papier(card,selected_papier,setSelected_papier){
+  return(             <div className={style.col}>
+    <label className={style.label}> Papier</label>
+    <select
+        className={style.select}
+        value={selected_papier}
+        onChange={(event) => {
+          setSelected_papier(event.target.value);
+        }}
+      >
+        {_papiery.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} {option.wykonczenie}{option.gramatura}
+          </option>
+        ))}
+      </select>
+    <input className={style.tytul} defaultValue={card.kolor_back}></input>
+  </div>);
+}
+
+function Naklad({card,nakladHandler}){
+  return(     <div className={style.col}>
+    <label className={style.label}> Nakład</label>
+    <input className={style.tytul} defaultValue={card.naklad} onChange={nakladHandler}></input>
+  </div>);
+}
+function Kolory({ card, kolorFrontHandler, kolorBackHandler }) {
+  return (<div className={style.col}>
+    <label className={style.label}> Kolory</label>
+    <div className={style.ilosckolorow}>
+      <input
+        className={style.tytul}
+        defaultValue={card.kolor_front}
+        onChange={kolorFrontHandler}
+      ></input>
+      <input className={style.tytul} defaultValue={card.kolor_back} onChange={kolorBackHandler}></input>
+    </div>
+
+  </div>);
+}
+
+function Format({card,formatXHandler,formatYHandler}){
+  return(              <div className={style.col}>
+    <label className={style.label}> Format</label>
+    <div className={style.ilosckolorow}>
+          <input className={style.tytul} onChange={formatXHandler} defaultValue={card.format_x}></input>
+    <input className={style.tytul} onChange={formatYHandler} defaultValue={card.format_y}></input>
+    </div>
+
+  </div>);
+}
+
+function Strony({ card, stronyHandler }) {
+  return (     <div className={style.col}>
+    <label className={style.label}> Strony</label>
+    <input className={style.tytul} onChange={stronyHandler} defaultValue={card.ilosc_stron}></input>
+  </div>);
+}
+
+function Wersja({ card, nazwaHandler }) {
+  return (     <div className={style.col}>
+    <label className={style.label}> Wersja</label>
+    <input className={style.tytul} onChange={nazwaHandler} defaultValue={card.nazwa}></input>
+  </div>);
 }
 
 
@@ -89,10 +140,6 @@ function CardHeader({ card, elementy, setElementy }) {
     }
   }
 
-  function dodaj() {
-    setElementy([...elementy, card]);
-  }
-
   return (
     <div className={style.header}>
       <div className={style.typ}>
@@ -100,9 +147,8 @@ function CardHeader({ card, elementy, setElementy }) {
       </div>
 
       <div className={style.typ}> {card.typ} {card.naklad} szt.</div>
-
       <div className={style.typ}>
-        <img onClick={() => { dodaj() }} className={style.icon} src={iconCopy} alt="add" />
+        <img onClick={() => { setElementy([...elementy, card]) }} className={style.icon} src={iconCopy} alt="add" />
       </div>
     </div>
   )

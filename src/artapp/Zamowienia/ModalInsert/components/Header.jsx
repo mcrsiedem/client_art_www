@@ -5,7 +5,7 @@ import style from './Header.module.css'
  function Header({setOpenModalInsert}){
     return(<>
     <div className={style.container}>
-        <div className={style.title}>Dodaj zamowienie...</div>
+        <div className={style.title}>Dodaj zamówienie...</div>
         <div className={style.buttons}>
 
         <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anuluj</button>

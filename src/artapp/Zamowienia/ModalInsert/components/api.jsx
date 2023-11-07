@@ -138,6 +138,18 @@ const _zestawy = [
     oprawa: "PUR",
     naklad: "1000",
   }
+
+
   
 ];
-export {_firma,_produkty,_klient,_zestawy,_elementy};
+
+const _papiery = [
+  {
+    id: 1,
+    nazwa: "Kreda",
+    wykonczenie: "Mat",
+    gramatura: "90",
+
+  }]
+
+export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery};

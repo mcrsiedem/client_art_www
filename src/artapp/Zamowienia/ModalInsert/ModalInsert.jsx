@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dane from './components/Dane';
 import Elementy from './components/Elementy';
 import Produkty from './components/Produkty';
-import {_firma,_produkty,_klient,_zestawy,_elementy} from './components/api';
+import {_firma,_produkty,_klient,_zestawy,_elementy,_papiery} from './components/api';
 import Warianty from './components/Warianty';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
@@ -21,7 +21,9 @@ const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
-const [rowView,setRowView] =useState(true);
+const [selected_papier, setSelected_papier] = useState(_papiery);
+
+
 let index=0;
 
 function handleChangeCardElementy(card) {
@@ -39,16 +41,29 @@ function handleChangeCardElementy(card) {
       
         <div className={style.container}>
 
-        <Header openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>
-        <Dane   selected_firma={selected_firma} 
-                    klient={klient}
-                    setSelected_firma={(firma)=>setSelected_firma(firma)} 
-                    setKlient={(kl)=>setKlient(kl)} 
-                    />
-                    
-        <Produkty _produkty={_produkty}/> 
-        {rowView && <Elementy elementy={elementy} setElementy={setElementy} handleChangeCardElementy={handleChangeCardElementy}> </Elementy>}
-        <Warianty/>
+        <Header
+          openModalInsert={openModalInsert}
+          setOpenModalInsert={setOpenModalInsert} />
+
+        <Dane
+          selected_firma={selected_firma}
+          klient={klient}
+          setSelected_firma={(firma) => setSelected_firma(firma)}
+          setKlient={(kl) => setKlient(kl)} />
+
+        <Produkty
+          _produkty={_produkty} />
+
+        <Elementy
+          elementy={elementy}
+          setElementy={setElementy}
+          handleChangeCardElementy={handleChangeCardElementy}
+          selected_papier={selected_papier}
+          setSelected_papier={setSelected_papier} />
+
+        <Warianty />
+
+
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
 

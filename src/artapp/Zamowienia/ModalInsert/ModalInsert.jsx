@@ -23,6 +23,18 @@ const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [rowView,setRowView] =useState(true);
 let index=0;
+
+function handleChangeTask_elementyCard(card) {
+  setElementy(
+    elementy.map((t) => {
+      if (t.id === card.id) {
+        return card;
+      } else {
+        return t;
+      }
+    })
+  );
+}
     return (
       
         <div className={style.container}>
@@ -35,7 +47,7 @@ let index=0;
                     />
                     
         <Produkty _produkty={_produkty}/> 
-        {rowView && <Elementy elementy={elementy} setElementy={setElementy}></Elementy>}
+        {rowView && <Elementy elementy={elementy} setElementy={setElementy} handleChangeTask_elementyCard={handleChangeTask_elementyCard}> </Elementy>}
         <Warianty/>
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 

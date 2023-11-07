@@ -10,7 +10,7 @@ padding-bottom: 20px;
 .zestaw{
  
   /* outline: 1px solid rgb(248, 141, 1); */
-  background-color: rgb(253, 223, 183);
+  background-color: rgb(252, 244, 234);
 
   border-radius: 10px;
   width: 400px;
@@ -23,7 +23,7 @@ padding-bottom: 20px;
   height: 1.5rem;
   padding: 5px;
   font-size: 0.8rem;
-  background-color: rgb(255, 219, 165);
+  background-color: rgb(255, 229, 189);
 
 }
 .header{
@@ -36,5 +36,5 @@ padding-bottom: 20px;
   border-top-right-radius: 10px;
   height: 2rem;
   color: #fff;
-  font-weight: bold;
+
 }

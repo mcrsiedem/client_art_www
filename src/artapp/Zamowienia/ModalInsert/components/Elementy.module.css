@@ -18,7 +18,7 @@
   width: 400px;
   height: 20rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
-  background-color: rgb(207, 233, 211);
+  background-color: rgb(232, 245, 234);
 }
 
 .elementCard .col{
@@ -40,7 +40,7 @@
   height: 1.5rem;
   padding: 5px;
   font-size: 0.8rem;
-  background-color: rgb(255, 219, 165);
+
   background-color: rgb(216, 245, 216);
 }
 .header{
@@ -54,7 +54,7 @@
   border-top-right-radius: 10px;
   height: 2rem;
   color: #fff;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .typ{
 display: flex;

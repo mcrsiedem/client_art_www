@@ -150,6 +150,14 @@ const _papiery = [
     wykonczenie: "Mat",
     gramatura: "90",
 
-  }]
+  },{
+    id: 2,
+    nazwa: "Offset",
+    wykonczenie: "-",
+    gramatura: "150",
+
+  }
+
+]
 
 export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery};

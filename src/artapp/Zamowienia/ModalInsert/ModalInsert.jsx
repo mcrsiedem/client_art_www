@@ -21,7 +21,7 @@ const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
-const [selected_papier, setSelected_papier] = useState(_papiery);
+const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 
 let index=0;

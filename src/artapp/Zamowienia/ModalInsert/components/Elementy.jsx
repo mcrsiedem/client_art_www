@@ -53,6 +53,8 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
  const formatYHandler = (e)=>{handleChangeCardElementy({...card, format_y: e.target.value})  }
  const kolorFrontHandler = (e)=>{handleChangeCardElementy({...card, kolor_front: e.target.value})  }
  const kolorBackHandler = (e)=>{handleChangeCardElementy({...card, kolor_back: e.target.value})  }
+ const papierkHandler = (e)=>{handleChangeCardElementy({...card, papier_id: e.target.value})  }
+
 
   return(
     <div className={style.center}>
@@ -61,23 +63,22 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
       <Strony card={card} stronyHandler={stronyHandler} />
       <Format card={card} formatXHandler={formatXHandler} formatYHandler={formatYHandler} />
       <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
-      <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} />
+      <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
     </div>);
 }
 
-function Papier(card,selected_papier,setSelected_papier){
+function Papier({card,selected_papier,setSelected_papier,papierkHandler}){
   return(             <div className={style.col}>
     <label className={style.label}> Papier</label>
     <select
         className={style.select}
         value={selected_papier}
-        onChange={(event) => {
-          setSelected_papier(event.target.value);
-        }}
+        onChange={          papierkHandler
+        }
       >
         {_papiery.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.nazwa} {option.wykonczenie}{option.gramatura}
+          {option.nazwa} 
           </option>
         ))}
       </select>

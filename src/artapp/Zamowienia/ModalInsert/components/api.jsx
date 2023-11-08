@@ -158,6 +158,21 @@ const _papiery = [
 
   }
 
+];
+
+
+const _wykonczenie = [
+  {
+    id: 1,
+    nazwa: "MAT"
+
+  },{
+    id: 2,
+    nazwa: "GLOSS",
+
+
+  }
+
 ]
 
 export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery};

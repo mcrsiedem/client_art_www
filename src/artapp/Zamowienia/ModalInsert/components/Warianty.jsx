@@ -19,7 +19,7 @@ function Wariant({nr}) {
   return(
   <div className={style.zestaw}> 
 <div className={style.header}>
-Wariant {nr}
+Oprawa {nr}
 </div>
   </div>
   );

@@ -72,9 +72,8 @@ function Papier({card,selected_papier,setSelected_papier,papierkHandler}){
     <label className={style.label}> Papier</label>
     <select
         className={style.select}
-        value={selected_papier}
-        onChange={          papierkHandler
-        }
+        valueDefault={selected_papier}
+        onChange={papierkHandler}
       >
         {_papiery.map((option) => (
           <option key={option.id} value={option.id}>
@@ -82,7 +81,11 @@ function Papier({card,selected_papier,setSelected_papier,papierkHandler}){
           </option>
         ))}
       </select>
-    <input className={style.tytul} defaultValue={card.kolor_back}></input>
+      <div className={style.ilosckolorow}>
+        <input className={style.tytul} defaultValue={card.wykonczenie}></input>
+    <input className={style.tytul} defaultValue={card.gramatura}></input>
+      </div>
+    
   </div>);
 }
 
@@ -147,7 +150,7 @@ function CardHeader({ card, elementy, setElementy }) {
         <img onClick={() => { handleRemoveItem(card.id) }} className={style.icon} src={iconTrash} alt="delete" />
       </div>
 
-      <div className={style.typ}> {card.typ} {card.naklad} szt.</div>
+      <div className={style.typ}> {card.typ} {card.naklad} szt. pap id {card.papier_id} </div>
       <div className={style.typ}>
         <img onClick={() => { setElementy([...elementy, card]) }} className={style.icon} src={iconCopy} alt="add" />
       </div>

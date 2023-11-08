@@ -1,6 +1,6 @@
-import style from "./Warianty.module.css";
+import style from "./Introligatornia.module.css";
 
-export default function Warianty({ _zestawy }) {
+export default function Introligatornia({ _zestawy }) {
   
   return (
     <>
@@ -8,18 +8,18 @@ export default function Warianty({ _zestawy }) {
         {/* {_zestawy.map((prod) => (
             <Zestaw key={prod.id} typ={prod.typ}></Zestaw>
           ))} */}
-        <Wariant nr={1}/>
-
+        <Oprawa nr={1}/>
+        <Oprawa nr={2}/>
       </div>
     </>
   );
 }
 
-function Wariant({nr}) {
+function Oprawa({nr}) {
   return(
   <div className={style.zestaw}> 
 <div className={style.header}>
-Paleta {nr}
+Oprawa {nr}
 </div>
   </div>
   );

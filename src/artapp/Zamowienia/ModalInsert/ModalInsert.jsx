@@ -10,6 +10,7 @@ import Elementy from './components/Elementy';
 import Produkty from './components/Produkty';
 import {_firma,_produkty,_klient,_zestawy,_elementy,_papiery} from './components/api';
 import Warianty from './components/Warianty';
+import Introligatornia from './components/Introligatornia';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -61,6 +62,7 @@ function handleChangeCardElementy(card) {
           selected_papier={selected_papier}
           setSelected_papier={setSelected_papier} />
 
+      <Introligatornia/>
         <Warianty />
 
 

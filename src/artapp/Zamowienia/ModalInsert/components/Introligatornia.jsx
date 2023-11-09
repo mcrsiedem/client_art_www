@@ -8,8 +8,8 @@ export default function Introligatornia({ _zestawy }) {
         {/* {_zestawy.map((prod) => (
             <Zestaw key={prod.id} typ={prod.typ}></Zestaw>
           ))} */}
-        <Oprawa nr={1}/>
-        <Oprawa nr={2}/>
+        <Oprawa nr={500}/>
+        <Oprawa nr={500}/>
       </div>
     </>
   );

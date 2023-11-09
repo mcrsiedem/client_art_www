@@ -58,13 +58,24 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
 
   return(
     <div className={style.center}>
+      <div className={style.row}>
       <Naklad card={card} nakladHandler={nakladHandler} />
-      <Wersja card={card} stronyHandler={nazwaHandler} />
       <Strony card={card} stronyHandler={stronyHandler} />
+      <Wersja card={card} stronyHandler={nazwaHandler} />
+        </div>
+      
       <Format card={card} formatXHandler={formatXHandler} formatYHandler={formatYHandler} />
       <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
       <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
+      <Uszlachetnianie card={card} nakladHandler={nakladHandler} />
     </div>);
+}
+
+function Uszlachetnianie({card,nakladHandler}){
+  return(     <div className={style.col}>
+    <label className={style.label}> Lakier</label>
+    <input className={style.tytul} defaultValue={card.naklad} onChange={nakladHandler}></input>
+  </div>);
 }
 
 function Papier({card,selected_papier,setSelected_papier,papierkHandler}){

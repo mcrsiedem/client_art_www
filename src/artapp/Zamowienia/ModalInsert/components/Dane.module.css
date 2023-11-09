@@ -2,7 +2,7 @@
 
 .dane{
   /* background-color: rgb(194, 231, 255); */
-  background-color: var(--mr-gr-dane-background);
+  background-color: transparent;
   display: grid;
   grid-template-columns: 170px 1fr 170px 170px;
   padding: 5px 10px;

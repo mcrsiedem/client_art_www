@@ -27,7 +27,9 @@
   width: 800px;
   height: 8rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
-  background-color: var( --mr-gr-produktCard-background)
+  background-color: var( --mr-gr-produktCard-background);
+  background-image: linear-gradient(45deg,rgb(209, 221, 233) 20%, rgb(171, 183, 196) 100%);
+
  
 }
 

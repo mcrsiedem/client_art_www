@@ -19,7 +19,7 @@ function Wariant({nr}) {
   return(
   <div className={style.zestaw}> 
 <div className={style.header}>
-Paleta {nr}
+Transport {nr}
 </div>
   </div>
   );

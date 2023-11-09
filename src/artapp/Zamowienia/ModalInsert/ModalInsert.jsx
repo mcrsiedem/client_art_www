@@ -14,9 +14,9 @@ import Introligatornia from './components/Introligatornia';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
-        // dragElement(elmnt.current);
+        dragElement(elmnt.current);
        },[])
-// const elmnt = useRef(null);
+const elmnt = useRef(null);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
@@ -69,12 +69,11 @@ function handleChangeCardElementy(card) {
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
 
-          {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
-            <div id="mydivheader" className={style.mydivheader}>Click here to move</div>
-                    <p>Move</p>
-                    <p>this</p>
-                    <p>DIV</p>
-          </div> */}
+          <div id="mydiv" ref={elmnt} className={style.mydiv}>
+            <div id="mydivheader" className={style.mydivheader}>Dodatkowe informacje</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+          
+          </div>
         </div>
 
   )

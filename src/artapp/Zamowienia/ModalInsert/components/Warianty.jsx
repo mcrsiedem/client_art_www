@@ -9,6 +9,8 @@ export default function Warianty({ _zestawy }) {
             <Zestaw key={prod.id} typ={prod.typ}></Zestaw>
           ))} */}
         <Wariant nr={1}/>
+        <Wariant nr={2}/>
+        <Wariant nr={3}/>
 
       </div>
     </>

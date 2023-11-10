@@ -22,7 +22,7 @@
 .header{
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -54,9 +54,9 @@
   font-size: 1rem;
   /* font-weight: bold; */
   background-color: rgb(253, 237, 213);
-  background-color: transparent;
-  box-shadow: none;
-  color: white;
+  /* background-color: transparent; */
+  /* box-shadow: none; */
+  color: gray;
 
 }
 

@@ -23,14 +23,12 @@ function Oprawa({ nr }) {
 
   return (
     <div className={style.oprawaCard}>
-
       <div className={style.header}>
-      <RodzajOprawy/> {nr}
+        Oprawa  {nr}
       </div>
-      
       <div className={style.panel_1}>
-      <input></input>
-
+      <RodzajOprawy />
+        <input></input>
         <input type="date"></input>
       </div>
     </div>

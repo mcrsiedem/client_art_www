@@ -42,7 +42,7 @@ function Oprawa({ nr }) {
 function FragmentElementu({nazwa}){
   return(<>
   <div>{nazwa}</div>
-  <div>X</div>
+  <div>XX</div>
   </>)
 }
 function Header({nr}){

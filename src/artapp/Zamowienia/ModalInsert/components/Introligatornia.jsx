@@ -1,7 +1,8 @@
+import { Fragment } from "react";
 import style from "./Introligatornia.module.css";
 import {  _oprawa } from "./api";
 
-export default function Introligatornia({ zestawy,setZestwy }) {
+export default function Introligatornia({ zestawy,setZestwy,fragmenty,setFragmenty }) {
   
   return (
     <>
@@ -23,19 +24,32 @@ function Oprawa({ nr }) {
 
   return (
     <div className={style.oprawaCard}>
-      <div className={style.header}>
-        Oprawa  {nr}
+      <Header nr={nr} />
+
+      <div className={style.row1}>
+        <RodzajOprawy />
+        <Naklad />
+        <Spedycja />
       </div>
-      <div className={style.panel_1}>
-      <RodzajOprawy />
-        <input></input>
-        <input type="date"></input>
-      </div>
+    <FragmentElementu nazwa={"Okladka"}/>
+      <input></input>
+
     </div>
   );
 }
 
 
+function FragmentElementu({nazwa}){
+  return(<>
+  <div>{nazwa}</div>
+  <div>X</div>
+  </>)
+}
+function Header({nr}){
+return(    <div className={style.header}>
+  Oprawa  {nr}
+</div>)
+}
 function RodzajOprawy({zestawy,setZestwy}){
   return(
     <select 
@@ -49,5 +63,16 @@ function RodzajOprawy({zestawy,setZestwy}){
       </option>
     ))}
   </select>
+  );
+}
+
+function Naklad(){
+  return(<input></input>);
+}
+function Spedycja(){
+  return(
+  <>
+  <input type="date"></input>
+  </>
   );
 }

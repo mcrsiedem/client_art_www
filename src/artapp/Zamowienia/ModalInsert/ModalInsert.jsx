@@ -22,6 +22,7 @@ const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
+const [fragmenty, setFragmenty] = useState([]);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 
@@ -39,43 +40,46 @@ function handleChangeCardElementy(card) {
   );
 }
     return (
-      
-        <div className={style.container}>
-
+      <div className={style.container}>
         <Header
           openModalInsert={openModalInsert}
-          setOpenModalInsert={setOpenModalInsert} />
+          setOpenModalInsert={setOpenModalInsert}
+        />
 
         <Dane
           selected_firma={selected_firma}
           klient={klient}
           setSelected_firma={(firma) => setSelected_firma(firma)}
-          setKlient={(kl) => setKlient(kl)} />
+          setKlient={(kl) => setKlient(kl)}
+        />
 
-        <Produkty
-          _produkty={_produkty} />
+        <Produkty _produkty={_produkty} />
 
         <Elementy
           elementy={elementy}
           setElementy={setElementy}
           handleChangeCardElementy={handleChangeCardElementy}
           selected_papier={selected_papier}
-          setSelected_papier={setSelected_papier} />
+          setSelected_papier={setSelected_papier}
+        />
 
-      <Introligatornia zestawy={zestawy} setZestawy={setZestawy}/>
+        <Introligatornia
+          zestawy={zestawy}
+          setZestawy={setZestawy}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
+        />
         <Warianty />
-
 
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
-          {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
+        {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
             <div id="mydivheader" className={style.mydivheader}>Dodatkowe informacje</div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
           
           </div> */}
-        </div>
-
-  )
+      </div>
+    );
 //----------------------------------
 
     function dragElement(elmnt) {

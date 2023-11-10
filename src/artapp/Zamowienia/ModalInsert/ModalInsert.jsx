@@ -3,7 +3,7 @@ import React, { useEffect,useState } from "react";
 
 import Header from './components/Header';
 
-import Footer from './components/Footer';
+
 import { useRef } from 'react';
 import Dane from './components/Dane';
 import Elementy from './components/Elementy';
@@ -14,9 +14,9 @@ import Introligatornia from './components/Introligatornia';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
-        dragElement(elmnt.current);
+        // dragElement(elmnt.current);
        },[])
-const elmnt = useRef(null);
+// const elmnt = useRef(null);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].firma);
 const [elementy, setElementy] = useState(_elementy);
@@ -62,18 +62,17 @@ function handleChangeCardElementy(card) {
           selected_papier={selected_papier}
           setSelected_papier={setSelected_papier} />
 
-      <Introligatornia/>
+      <Introligatornia zestawy={zestawy} setZestawy={setZestawy}/>
         <Warianty />
 
 
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
-
-          <div id="mydiv" ref={elmnt} className={style.mydiv}>
+          {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
             <div id="mydivheader" className={style.mydivheader}>Dodatkowe informacje</div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
           
-          </div>
+          </div> */}
         </div>
 
   )

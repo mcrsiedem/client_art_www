@@ -1,26 +1,56 @@
 import style from "./Introligatornia.module.css";
+import {  _oprawa } from "./api";
 
-export default function Introligatornia({ _zestawy }) {
+export default function Introligatornia({ zestawy,setZestwy }) {
   
   return (
     <>
-      <div className={style.zestawy}>
-        {/* {_zestawy.map((prod) => (
-            <Zestaw key={prod.id} typ={prod.typ}></Zestaw>
-          ))} */}
-        <Oprawa nr={500}/>
-        <Oprawa nr={500}/>
+      <div className={style.oprawy}>
+        {zestawy.map((prod) => (
+
+            <Oprawa key={prod.id} typ={prod.typ} nr={1000}></Oprawa>
+          ))}
+        {/* <Oprawa nr={1000}/> */}
+      
       </div>
     </>
   );
 }
 
-function Oprawa({nr}) {
+function Oprawa({ nr }) {
+
+  const style2={
+    display: 'flex',
+    
+  }
+
+  return (
+    <div className={style.oprawa}>
+
+      <div className={style.header}>
+        Oprawa {nr}
+      </div>
+      <div style={style2}>
+      <RodzajOprawy/>
+        <input type="date"></input>
+      </div>
+    </div>
+  );
+}
+
+
+function RodzajOprawy({zestawy,setZestwy}){
   return(
-  <div className={style.zestaw}> 
-<div className={style.header}>
-Oprawa {nr}
-</div>
-  </div>
+    <select
+    className={style.select}
+    valueDefault={zestawy}
+    onChange={setZestwy}
+  >
+    {_oprawa.map((option) => (
+      <option key={option.id} value={option.id}>
+      {option.nazwa} 
+      </option>
+    ))}
+  </select>
   );
 }

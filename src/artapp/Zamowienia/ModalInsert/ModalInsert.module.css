@@ -19,6 +19,9 @@
  }
 
 .mydivheader {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width:300px;
   padding: 10px;
   cursor: move;
   z-index: 10;
@@ -26,6 +29,9 @@
   color: #fff;
   }
  .mydiv {
+  width: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
     position: absolute;
     z-index: 9;
     background-color: #f1f1f1;

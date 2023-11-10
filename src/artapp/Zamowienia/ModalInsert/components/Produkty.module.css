@@ -69,6 +69,6 @@
 }
 .center{
   display: grid;
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: 3fr 1fr;
 
 }

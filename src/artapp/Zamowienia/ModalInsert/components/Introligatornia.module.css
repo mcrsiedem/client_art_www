@@ -1,4 +1,4 @@
-.zestawy{
+.oprawy{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   gap: 20px;
 padding-bottom: 20px;
 }
-.zestaw{
+.oprawa{
  
   /* outline: 1px solid rgb(248, 141, 1); */
   background-color: rgb(252, 244, 234);
@@ -37,4 +37,20 @@ padding-bottom: 20px;
   height: 2rem;
   color: #fff;
 
+}
+
+.oprawa input{
+  margin: 10px;
+  height: 1.8rem;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: rgb(253, 237, 213);
+}
+
+.oprawa select{
+  margin: 10px;
+  height: 1.8rem;
+  padding: 5px;
+  font-size: 0.8rem;
+  background-color: rgb(253, 237, 213);
 }

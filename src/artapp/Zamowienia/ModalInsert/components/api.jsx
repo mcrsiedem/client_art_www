@@ -104,24 +104,7 @@ const _elementy = [
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 2
-  },
-  {
-    id: 4,
-    typ: "Insert",
-    nazwa: "EN",
-    ilosc_stron: "2",
-    kolor_front: "4",
-    kolor_back: "4",
-    format_x: "200",
-    format_y: "290",
-    papier_id: "Offset",
-    gramatura: "110",
-    wykonczenie: "",
-    naklad: "1000",
-    uszlachetnianie_id: "",
-    index: 3
-  },
-  
+  }
   
   
   
@@ -172,7 +155,21 @@ const _wykonczenie = [
 
 
   }
+]
+  const _oprawa = [
+    {
+      id: 1,
+      nazwa: "HotMelt"
+    },
+    {
+      id: 2,
+      nazwa: "PUR",
+    },
+    {
+      id: 3,
+      nazwa: "Zeszyt",
+    }
 
 ]
 
-export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery};
+export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery,_oprawa};

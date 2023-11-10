@@ -19,19 +19,18 @@ export default function Introligatornia({ zestawy,setZestwy }) {
 
 function Oprawa({ nr }) {
 
-  const style2={
-    display: 'flex',
-    
-  }
+
 
   return (
-    <div className={style.oprawa}>
+    <div className={style.oprawaCard}>
 
       <div className={style.header}>
-        Oprawa {nr}
+      <RodzajOprawy/> {nr}
       </div>
-      <div style={style2}>
-      <RodzajOprawy/>
+      
+      <div className={style.panel_1}>
+      <input></input>
+
         <input type="date"></input>
       </div>
     </div>
@@ -41,7 +40,7 @@ function Oprawa({ nr }) {
 
 function RodzajOprawy({zestawy,setZestwy}){
   return(
-    <select
+    <select 
     className={style.select}
     valueDefault={zestawy}
     onChange={setZestwy}

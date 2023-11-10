@@ -2,55 +2,73 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 10px;
   gap: 20px;
-padding-bottom: 20px;
+  padding-bottom: 20px;
 }
-.oprawa{
- 
-  /* outline: 1px solid rgb(248, 141, 1); */
-  background-color: rgb(252, 244, 234);
 
-  border-radius: 10px;
+
+.oprawaCard{
+  background-color: rgb(252, 244, 234);
+  border-radius: 10px;  
   width: 400px;
   height: 10rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
 
 
 }
-.zestawyKafel input{
-  height: 1.5rem;
-  padding: 5px;
-  font-size: 0.8rem;
-  background-color: rgb(255, 229, 189);
 
-}
+
 .header{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
-
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 2rem;
   color: #fff;
-
+  gap:20px
 }
 
-.oprawa input{
+
+.panel_1{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 10px;
+  gap:10px
+}
+
+.oprawaCard input{
+  
   height: 1.8rem;
   padding: 5px;
   font-size: 1rem;
   background-color: rgb(253, 237, 213);
 }
 
-.oprawa select{
-  margin: 10px;
+.oprawaCard select{
+
   height: 1.8rem;
-  padding: 5px;
-  font-size: 0.8rem;
+ 
+  font-size: 1rem;
+  /* font-weight: bold; */
   background-color: rgb(253, 237, 213);
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+
+}
+
+.oprawaCard option{
+
+  height: 1.8rem;
+ 
+  font-size: 1rem;
+  /* font-weight: bold; */
+  background-color: rgb(240, 151, 50);
+  /* background-color: transparent; */
+  /* box-shadow: none;
+  color: white; */
+
 }

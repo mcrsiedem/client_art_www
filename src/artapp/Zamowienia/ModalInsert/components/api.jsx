@@ -168,6 +168,10 @@ const _wykonczenie = [
     {
       id: 3,
       nazwa: "Zeszyt",
+    },
+    {
+      id: 4,
+      nazwa: "Szyto klejona",
     }
 
 ]

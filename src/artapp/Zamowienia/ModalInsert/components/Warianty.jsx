@@ -21,7 +21,7 @@ function Wariant({nr}) {
   return(
   <div className={style.zestaw}> 
 <div className={style.header}>
-Transport {nr}
+Pakowanie {nr}
 </div>
   </div>
   );

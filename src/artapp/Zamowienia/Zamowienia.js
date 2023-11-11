@@ -42,14 +42,14 @@ function Zamowienia(){
        setOpenModalInsert(true);
     }
 
-    async function fechHistory() {
+    async function fechZamowienia() {
         const res = await axios.get(ip + 'historia_short');
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
         setData(job);
 
-        setData(zamowienia);
+        // setData(zamowienia);
 
     };
 
@@ -57,7 +57,7 @@ function Zamowienia(){
         axios.get(ip + '/islogged/'+ cookies.token)
         .then(res=> {
           if(res.data.Status === "Success"){
-            fechHistory();
+            fechZamowienia();
     
           } else{
         

@@ -53,7 +53,7 @@ function Klient({klient,setKlient}){
           }}
         >
           {_klient.map((option) => (
-            <option key={option.id} value={option.klient}>
+            <option key={option.id} value={option.id}>
               {option.firma}
             </option>
           ))}

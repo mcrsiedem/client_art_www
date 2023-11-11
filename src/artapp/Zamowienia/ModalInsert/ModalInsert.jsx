@@ -11,6 +11,8 @@ import Produkty from './components/Produkty';
 import {_firma,_produkty,_klient,_zestawy,_elementy,_papiery} from './components/api';
 import Warianty from './components/Warianty';
 import Introligatornia from './components/Introligatornia';
+import axios from "axios";
+import {ip} from "../../../Host"
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -28,6 +30,15 @@ const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 let index=0;
 
+async function postZamowienie(){
+       
+        
+  const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient});
+  console.log('wydrukowane',res.data.serverStatus);
+  console.log('wydrukowane',res.data.insertId);
+
+}
+
 function handleChangeCardElementy(card) {
   setElementy(
     elementy.map((t) => {
@@ -39,11 +50,15 @@ function handleChangeCardElementy(card) {
     })
   );
 }
+
+
+
     return (
       <div className={style.container}>
         <Header
           openModalInsert={openModalInsert}
           setOpenModalInsert={setOpenModalInsert}
+          postZamowienie={postZamowienie}
         />
 
         <Dane

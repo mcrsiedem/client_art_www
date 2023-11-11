@@ -20,13 +20,14 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
        },[])
 // const elmnt = useRef(null);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
-const [klient, setKlient] = useState(_klient[0].firma);
+const [klient, setKlient] = useState(_klient[0].id);
 const [elementy, setElementy] = useState(_elementy);
 const [produkty, setProdukty] = useState(_produkty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [fragmenty, setFragmenty] = useState([]);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
+const [id, setId] = useState();
 
 let index=0;
 
@@ -36,7 +37,7 @@ async function postZamowienie(){
   const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient});
   console.log('wydrukowane',res.data.serverStatus);
   console.log('wydrukowane',res.data.insertId);
-
+  setId(res.data.insertId);
 }
 
 function handleChangeCardElementy(card) {
@@ -59,6 +60,7 @@ function handleChangeCardElementy(card) {
           openModalInsert={openModalInsert}
           setOpenModalInsert={setOpenModalInsert}
           postZamowienie={postZamowienie}
+          id={id}
         />
 
         <Dane

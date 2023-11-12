@@ -35,8 +35,9 @@ async function postZamowienie(){
        
         
   const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient});
-  setIdZamowienia(res.data.insertId);
-  setProdukty(produkty.map((t)=>({...t, zamowienie_id: res.data.insertId})));
+  const id_zamowienia = res.data.insertId
+  setProdukty(produkty.map((t)=>({...t, zamowienie_id: id_zamowienia})));
+  
 
   console.log('wydrukowane',res.data.serverStatus);
   console.log('wydrukowane',res.data.insertId);

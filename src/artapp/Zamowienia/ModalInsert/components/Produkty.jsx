@@ -2,40 +2,49 @@
 import style from './Produkty.module.css'
 
 
-export default function Produkty({_produkty}){
+export default function Produkty({produkty,handleChangeCardProdukty}){
 
     return (
       <>
         <div id="Produkty" className={style.produkty}>
-          {_produkty.map((prod) => (
-            <ProduktCard key={prod.id}></ProduktCard>
+          {produkty.map((card) => (
+            <ProduktCard key={card.id} card={card} handleChangeCardProdukty={handleChangeCardProdukty}></ProduktCard>
           ))}
 
         </div>
       </>
     );
-}
+}   
 
 
-function ProduktCard(){
+function ProduktCard({card,handleChangeCardProdukty}){
   return (
     <div className={style.produktCard}>
 
     <div className={style.header}>
-    Gazeta
+    Gazeta {card.tytul}
     </div>
     <div className={style.center}>
-          <div className={style.col}>
-              <label className={style.label}> Tytuł</label>
-              <input placeholder='Tytuł pracy' defaultValue="Katalog SDW" type="text" className={style.produkt}/>
-            </div>
-            <div className={style.col}>
-              <label className={style.label}> Wersja</label>
-              <input placeholder='Tytuł pracy' defaultValue="Katalog SDW" type="text" className={style.produkt}/>
-            </div>
+       <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}/>
+       <Wersja card={card}/>
     </div>
 
 
     </div>
   );
+}
+
+function Tytul({ card,handleChangeCardProdukty }) {
+  const tytulHandler =(e)=>{handleChangeCardProdukty({...card, tytul: e.target.value})   }
+  return (          <div className={style.col}>
+    <label className={style.label}> Tytuł</label>
+    <input placeholder='Tytuł pracy' defaultValue={card.tytul} onChange={tytulHandler} type="text" className={style.produkt}/>
+  </div>);
+}
+
+function Wersja({ card }) {
+  return (              <div className={style.col}>
+    <label className={style.label}> Wersja</label>
+    <input placeholder='Tytuł pracy' defaultValue="Katalog SDW" type="text" className={style.produkt}/>
+  </div>);
 }

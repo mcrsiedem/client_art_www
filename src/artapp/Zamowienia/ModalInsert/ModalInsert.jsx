@@ -27,7 +27,7 @@ const [zestawy, setZestawy] = useState(_zestawy);
 const [fragmenty, setFragmenty] = useState([]);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
-const [id, setId] = useState();
+const [idZamowienie, setIdZamowienia] = useState();
 
 let index=0;
 
@@ -35,14 +35,27 @@ async function postZamowienie(){
        
         
   const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient});
+  setIdZamowienia(res.data.insertId);
+
   console.log('wydrukowane',res.data.serverStatus);
   console.log('wydrukowane',res.data.insertId);
-  setId(res.data.insertId);
 }
 
 function handleChangeCardElementy(card) {
   setElementy(
     elementy.map((t) => {
+      if (t.id === card.id) {
+        return card;
+      } else {
+        return t;
+      }
+    })
+  );
+}
+
+function handleChangeCardProdukty(card) {
+  setProdukty(
+    produkty.map((t) => {
       if (t.id === card.id) {
         return card;
       } else {
@@ -60,7 +73,7 @@ function handleChangeCardElementy(card) {
           openModalInsert={openModalInsert}
           setOpenModalInsert={setOpenModalInsert}
           postZamowienie={postZamowienie}
-          id={id}
+          id={idZamowienie}
         />
 
         <Dane
@@ -70,7 +83,7 @@ function handleChangeCardElementy(card) {
           setKlient={(kl) => setKlient(kl)}
         />
 
-        <Produkty _produkty={_produkty} />
+        <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
 
         <Elementy
           elementy={elementy}

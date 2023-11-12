@@ -10,8 +10,15 @@ export default function Dane({
   return (
     <>
       <div className={style.dane}>
+
             <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-            <Klient klient={klient} setKlient={setKlient}/>
+            <div className={style.klientContainer}>
+              <Klient klient={klient} setKlient={setKlient}/>
+     
+            </div>
+            
+            <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+            <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
             <DataMeterialow/>
             <DataSpedycji/>
       </div>

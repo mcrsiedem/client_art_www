@@ -161,7 +161,7 @@ function CardHeader({ card, elementy, setElementy }) {
         <img onClick={() => { handleRemoveItem(card.id) }} className={style.icon} src={iconTrash} alt="delete" />
       </div>
 
-      <div className={style.typ}> {card.typ} {card.naklad} szt. index {card.index} </div>
+      <div className={style.typ}> {card.typ} {card.naklad} szt. </div>
       <div className={style.typ}>
         <img onClick={() => { setElementy([...elementy, card]) }} className={style.icon} src={iconCopy} alt="add" />
       </div>

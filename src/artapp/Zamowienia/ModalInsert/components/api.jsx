@@ -43,6 +43,7 @@ const _klient = [
 const _produkty = [
   {
     id: 1,
+    zamowienie_id: 1,
     typ: "Magazyn",
     tytul: "Tytul 1",
     wersja: "",
@@ -89,24 +90,7 @@ const _elementy = [
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 1
-  },
-  {
-    id: 3,
-    typ: "Insert",
-    nazwa: "PL",
-    ilosc_stron: "2",
-    kolor_front: "4",
-    kolor_back: "4",
-    format_x: "200",
-    format_y: "290",
-    papier_id: "Offset",
-    gramatura: "110",
-    wykonczenie: "",
-    naklad: "1000",
-    uszlachetnianie_id: "",
-    index: 2
   }
-  
   
   
 ];

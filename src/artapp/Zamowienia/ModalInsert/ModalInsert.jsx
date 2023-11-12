@@ -69,14 +69,14 @@ for (let i = 0; i < produkty.length; i++) {
 }
 
 function handleChangeCardElementy(card) {
-  setElementy(
-    elementy.map((t) => {
-      if (t.id === card.id) {
-        return card;
-      } else {
-        return t;
-      }
-    })
+  setElementy(elementy.map((tabl)=>(tabl.map((t) => {
+    if (t.id === card.id) {
+      return card;
+    } else {
+      return t;
+    }
+  })))
+    
   );
 }
 

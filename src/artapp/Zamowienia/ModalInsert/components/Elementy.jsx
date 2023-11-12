@@ -11,16 +11,33 @@ let index = 1;
     <>
       <div className={style.elementy}>
 
-        {elementy.map((card) => ({ ...card, index: index++ }
-        )).map(((card) => (
-          <ElementCard key={card.id}
-            card={card}
-            elementy={elementy}
-            setElementy={setElementy}
-            handleChangeCardElementy={handleChangeCardElementy}
-            selected_papier={selected_papier}
-            setSelected_papier={setSelected_papier}/>
-        )))}
+        {
+
+
+elementy.map((tabl)=>(tabl.map((card)=>(<ElementCard key={card.id}
+  card={card}
+  elementy={elementy}
+  setElementy={setElementy}
+  handleChangeCardElementy={handleChangeCardElementy}
+  selected_papier={selected_papier}
+  setSelected_papier={setSelected_papier}/>))))
+
+            
+        // elementy[0].map(((card) => (
+        //   <ElementCard key={card.id}
+        //     card={card}
+        //     elementy={elementy}
+        //     setElementy={setElementy}
+        //     handleChangeCardElementy={handleChangeCardElementy}
+        //     selected_papier={selected_papier}
+        //     setSelected_papier={setSelected_papier}/>
+        // )))
+        
+        
+        }
+
+
+
 
       </div>
     </>

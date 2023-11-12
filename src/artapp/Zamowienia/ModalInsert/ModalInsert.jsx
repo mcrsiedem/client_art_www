@@ -44,7 +44,8 @@ async function postZamowienie(){
 for (let i = 0; i < produkty.length; i++) {
   console.log(produkty[i].tytul);
   const res = await axios.post(ip + 'produkty', { tytul: produkty[i].tytul, wersj: produkty[i].wersja, zamowienie_id });
-  let produkt_id =  res.data.insertId;
+  let produkt_id =  res.data.insertId;  // id pierwszego produkty , czyli teraz trzeba przejsc po pierwszej tablicy elementow i nadac im id parenta
+
   // setProdukty(produkty[i].map((t)=>({...t, id: produkt_id})));
   // setProdukty(
   //   produkty.map((t) => {

@@ -71,6 +71,7 @@ const _produkty = [
 ];
 
 const _elementy = [
+  [
   {
     id: 1,
     produkt_id: 1,
@@ -105,7 +106,43 @@ const _elementy = [
     uszlachetnianie_id: "",
     index: 1
   }
-  
+],
+[
+  {
+    id: 1,
+    produkt_id: 1,
+    typ: "Okładka22",
+    nazwa: "PL",
+    ilosc_stron: "4",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "210",
+    format_y: "297",
+    papier_id: "Karton",
+    gramatura: "250",
+    wykonczenie: "gloss",
+    naklad: "1000",
+    uszlachetnianie_id: "UV",
+    index: 0
+  },
+  {
+    id: 2,
+    produkt_id: 1,
+    typ: "Środek22",
+    nazwa: "PL",
+    ilosc_stron: "80",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "210",
+    format_y: "297",
+    papier_id: "Offset",
+    gramatura: "110",
+    wykonczenie: "",
+    naklad: "1000",
+    uszlachetnianie_id: "",
+    index: 1
+  }
+]
   
 ];
 

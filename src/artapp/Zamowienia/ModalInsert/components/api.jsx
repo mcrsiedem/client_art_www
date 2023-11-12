@@ -52,6 +52,18 @@ const _produkty = [
     format_y: "297",
     oprawa: "PUR",
     naklad: "1000",
+  },
+  {
+    id: 2,
+    zamowienie_id: 1,
+    typ: "Magazyn",
+    tytul: "Tytul 1",
+    wersja: "",
+    ilosc_stron: "84",
+    format_x: "210",
+    format_y: "297",
+    oprawa: "PUR",
+    naklad: "1000",
   }
 
   
@@ -61,6 +73,7 @@ const _produkty = [
 const _elementy = [
   {
     id: 1,
+    produkt_id: 1,
     typ: "Okładka",
     nazwa: "PL",
     ilosc_stron: "4",
@@ -77,6 +90,7 @@ const _elementy = [
   },
   {
     id: 2,
+    produkt_id: 1,
     typ: "Środek",
     nazwa: "PL",
     ilosc_stron: "80",

@@ -22,7 +22,7 @@ function ProduktCard({card,handleChangeCardProdukty}){
     <div className={style.produktCard}>
 
     <div className={style.header}>
-    Gazeta {card.tytul}zamowienie.id {card.zamowienie_id}  
+    Wlasne id: {card.id} Gazeta {card.tytul}zamowienie.id {card.zamowienie_id}  
     </div>
     <div className={style.center}>
        <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}/>

@@ -14,24 +14,24 @@ let index = 1;
         {
 
 
-elementy.map((tabl)=>(tabl.map((card)=>(<ElementCard key={card.id}
-  card={card}
-  elementy={elementy}
-  setElementy={setElementy}
-  handleChangeCardElementy={handleChangeCardElementy}
-  selected_papier={selected_papier}
-  setSelected_papier={setSelected_papier}/>))))
+// elementy.map((tabl)=>(tabl.map((card)=>(<ElementCard key={card.id}
+//   card={card}
+//   elementy={elementy}
+//   setElementy={setElementy}
+//   handleChangeCardElementy={handleChangeCardElementy}
+//   selected_papier={selected_papier}
+//   setSelected_papier={setSelected_papier}/>))))
 
             
-        // elementy[0].map(((card) => (
-        //   <ElementCard key={card.id}
-        //     card={card}
-        //     elementy={elementy}
-        //     setElementy={setElementy}
-        //     handleChangeCardElementy={handleChangeCardElementy}
-        //     selected_papier={selected_papier}
-        //     setSelected_papier={setSelected_papier}/>
-        // )))
+        elementy.map(((card) => (
+          <ElementCard key={card.id}
+            card={card}
+            elementy={elementy}
+            setElementy={setElementy}
+            handleChangeCardElementy={handleChangeCardElementy}
+            selected_papier={selected_papier}
+            setSelected_papier={setSelected_papier}/>
+        )))
         
         
         }

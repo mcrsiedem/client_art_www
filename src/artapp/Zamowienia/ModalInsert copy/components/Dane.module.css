@@ -4,7 +4,7 @@
   /* background-color: rgb(194, 231, 255); */
   background-color: transparent;
   display: grid;
-  grid-template-columns: 150px 1fr 1fr 150px 150px 150px 150px;
+  grid-template-columns: 170px 1fr 1fr 170px 170px 170px;
   padding: 5px 10px;
   gap:10px;
   /* border-bottom: 1px solid rgb(192, 192, 192); */
@@ -39,9 +39,3 @@ gap:20px
   }
 
 
-.row{
-  display:flex;
-
-  
-
-}

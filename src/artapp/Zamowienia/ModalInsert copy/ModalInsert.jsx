@@ -112,7 +112,7 @@ function handleChangeCardProdukty(card) {
 
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
 
-        {/* <Elementy
+        <Elementy
           elementy={elementy}
           setElementy={setElementy}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -126,7 +126,7 @@ function handleChangeCardProdukty(card) {
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
         />
-        <Warianty /> */}
+        <Warianty />
 
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 

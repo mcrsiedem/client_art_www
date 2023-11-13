@@ -10,8 +10,8 @@ export default function Dane({
   return (
     <>
       <div className={style.dane}>
-            <div className={style.row}>
-                <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+
+            <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
             <div className={style.klientContainer}>
               <Klient klient={klient} setKlient={setKlient}/>
      
@@ -19,11 +19,8 @@ export default function Dane({
             
             <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
             <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-            <DataPrzyjecia/>
             <DataMeterialow/>
             <DataSpedycji/>
-            </div>
-          
       </div>
     </>
   );
@@ -79,15 +76,6 @@ function DataMeterialow(){
         <input className={style.data} type="date"></input>
       </div>
     );
-}
-
-function DataPrzyjecia(){
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Data przyjęcia </label>
-      <input className={style.data} type="date"></input>
-    </div>
-  );
 }
 
 function DataSpedycji(){

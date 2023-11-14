@@ -2,12 +2,24 @@
 
 .dane {
   padding: 5px 10px;
+ background-color: transparent;
+display: flex;
+flex-direction: column;
+gap:10px;
 }
 
-.row {
+.row1 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 150px 1fr 110px 110px 110px;
   gap: 10px;
+}
+.row2 {
+  display: grid;
+  
+  grid-template-columns:  1fr  230px  ;
+  gap: 10px;
+  grid-column-start: 2;
+  margin-left: 160px;
 }
 
 .col {
@@ -15,8 +27,6 @@
   flex-direction: column;
   width: 100%;
 }
-
-
 
 .label {
   font-size: 0.8rem;

@@ -10,18 +10,28 @@ export default function Dane({
   return (
     <>
       <div className={style.dane}>
-            <div className={style.row}>
+            <div className={style.row1}>
                       <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
                   <div className={style.klientContainer}>
                     <Klient klient={klient} setKlient={setKlient}/>
           
                   </div>
                   
-                  <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-                  <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+       
+       
                   <DataPrzyjecia/>
                   <DataMeterialow/>
                   <DataSpedycji/>
+            </div>
+            <div className={style.row2}>
+                      <Tytul selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+             
+                  
+       
+                  <Opiekun selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+
+     
+       
             </div>
           
       </div>
@@ -97,4 +107,34 @@ function DataSpedycji(){
         <input className={style.data} type="date"></input>
       </div>
     );
+}
+
+function Opiekun({ selected_firma, setSelected_firma }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Opiekun </label>
+      <select
+        className={style.firma}
+        value={selected_firma}
+        onChange={(event) => {
+          setSelected_firma(event.target.value);
+        }}
+      >
+        {_firma.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function Tytul(){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Tytul </label>
+      <input className={style.data} type="text"></input>
+    </div>
+  );
 }

@@ -8,7 +8,10 @@ export default function Produkty({produkty,handleChangeCardProdukty}){
       <>
         <div id="Produkty" className={style.produkty}>
           {produkty.map((card) => (
-            <ProduktCard key={card.id} card={card} handleChangeCardProdukty={handleChangeCardProdukty}></ProduktCard>
+            <ProduktCard key={card.id} card={card} handleChangeCardProdukty={handleChangeCardProdukty}>
+              <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}> dd</Tytul>
+              <Wersja card={card} />
+            </ProduktCard>
           ))}
 
         </div>
@@ -17,7 +20,7 @@ export default function Produkty({produkty,handleChangeCardProdukty}){
 }   
 
 
-function ProduktCard({card,handleChangeCardProdukty}){
+function ProduktCard({card,handleChangeCardProdukty,children}){
   return (
     <div className={style.produktCard}>
 
@@ -25,8 +28,7 @@ function ProduktCard({card,handleChangeCardProdukty}){
     Wlasne id: {card.id} Gazeta {card.tytul}zamowienie.id {card.zamowienie_id}  
     </div>
     <div className={style.center}>
-       <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}/>
-       <Wersja card={card}/>
+       {children}
     </div>
 
 
@@ -34,10 +36,10 @@ function ProduktCard({card,handleChangeCardProdukty}){
   );
 }
 
-function Tytul({ card,handleChangeCardProdukty }) {
+function Tytul({ card,handleChangeCardProdukty,children }) {
   const tytulHandler =(e)=>{handleChangeCardProdukty({...card, tytul: e.target.value})   }
   return (          <div className={style.col}>
-    <label className={style.label}> Tytuł</label>
+    <label className={style.label}> Tytuł {children}</label>
     <input placeholder='Tytuł pracy' defaultValue={card.tytul} onChange={tytulHandler} type="text" className={style.produkt}/>
   </div>);
 }

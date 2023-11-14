@@ -11,17 +11,17 @@ export default function Dane({
     <>
       <div className={style.dane}>
             <div className={style.row}>
-                <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-            <div className={style.klientContainer}>
-              <Klient klient={klient} setKlient={setKlient}/>
-     
-            </div>
-            
-            <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-            <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-            <DataPrzyjecia/>
-            <DataMeterialow/>
-            <DataSpedycji/>
+                      <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+                  <div className={style.klientContainer}>
+                    <Klient klient={klient} setKlient={setKlient}/>
+          
+                  </div>
+                  
+                  <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+                  <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+                  <DataPrzyjecia/>
+                  <DataMeterialow/>
+                  <DataSpedycji/>
             </div>
           
       </div>
@@ -51,25 +51,25 @@ function Firma({ selected_firma, setSelected_firma }) {
   );
 }
 
-function Klient({klient,setKlient}){
-    return(
-        <div className={style.col}>
-        <label className={style.label}> Klient </label>
-        <select
-          className={style.klient}
-          value={klient}
-          onChange={(event) => {
-            setKlient(event.target.value);
-          }}
-        >
-          {_klient.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.firma}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
+function Klient({ klient, setKlient }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Klient </label>
+      <select
+        className={style.klient}
+        value={klient}
+        onChange={(event) => {
+          setKlient(event.target.value);
+        }}
+      >
+        {_klient.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 }
 
 function DataMeterialow(){

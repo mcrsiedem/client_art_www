@@ -31,42 +31,37 @@ const [idZamowienie, setIdZamowienia] = useState();
 
 let index=0;
 
-async function postZamowienie(){
-       
- 
-  const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient});
-
-  const zamowienie_id = res.data.insertId
-  setIdZamowienia(zamowienie_id);
-  setProdukty(produkty.map((t)=>({...t, zamowienie_id: zamowienie_id})));
+  async function postZamowienie() {
 
 
-for (let i = 0; i < produkty.length; i++) {
-  console.log(produkty[i].tytul);
-  const res = await axios.post(ip + 'produkty', { tytul: produkty[i].tytul, wersj: produkty[i].wersja, zamowienie_id });
-  let produkt_id =  res.data.insertId;  // id pierwszego produkty , czyli teraz trzeba przejsc po pierwszej tablicy elementow i nadac im id parenta
+    const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient });
 
-  // setProdukty(produkty[i].map((t)=>({...t, id: produkt_id})));
-  // setProdukty(
-  //   produkty.map((t) => {
-  //     if (t.id === i) {
-  //       return {...t, id: produkt_id};
-  //     } else {
-  //       return t;
-  //     }
-  //   })
-  // ); 
+    const zamowienie_id = res.data.insertId
+    setIdZamowienia(zamowienie_id);
+    //setProdukty(produkty.map((t)=>({...t, zamowienie_id: zamowienie_id})));
+
+    produkty.map(async (produkt,i) => {
+      let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
+      let produkt_id = res.data.insertId;
+      setProdukty(
+        produkty.map((t) => {
+          if (t.index === i) {
+            console.log(t.index);
+            return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
+          } else {
+            return t;
+          }
+        })
+      );
+
       
+    }
+    )
 
-}
 
-  // nastepnie w petli po produktach zapisac je dodajac im prawdziwe id - tworzac endpointa ktory przyjmie tytul i wersje na poczatek
-
-  //nastepnie w petli po elementach nadac im prawdziwe id oraz id produktu oraz id zamowienie
-
-  console.log('wydrukowane',res.data.serverStatus);
-  console.log('wydrukowane',res.data.insertId);
-}
+    console.log('wydrukowane', res.data.serverStatus);
+    console.log('wydrukowane', res.data.insertId);
+  }
 
 function handleChangeCardElementy(card) {
   setElementy(elementy.map((tabl)=>(tabl.map((t) => {

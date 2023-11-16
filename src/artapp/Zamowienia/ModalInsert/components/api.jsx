@@ -75,6 +75,7 @@ const _elementy = [
   
   {
     id: 1,
+    zamowienie_id: 1,
     produkt_id: 1,
     typ: "Okładka",
     nazwa: "PL",
@@ -92,6 +93,7 @@ const _elementy = [
   },
   {
     id: 2,
+    zamowienie_id: 1,
     produkt_id: 1,
     typ: "Środek",
     nazwa: "PL",

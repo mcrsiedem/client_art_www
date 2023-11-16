@@ -39,62 +39,40 @@ const [idZamowienie, setIdZamowienia] = useState();
     const zamowienie_id = res.data.insertId
     setIdZamowienia(zamowienie_id);
 
-    // let res2 = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
-    //    let produkt_id = res.data.insertId;
-    // setProdukty(produkty.map((t,i)=>({...t,id: async()=> {
-    //   let res2 = await axios.post(ip + 'produkty', { tytul: t.tytul, zamowienie_id: zamowienie_id });
-    //       let produkt_id = res2.data.insertId;
-    //    if (t.index=== i){return produkt_id} else{ return t.id}
-      
-      
-      
-    //   }, zamowienie_id: zamowienie_id})));
+
+        produkty.map(async (produkt, i) => {
+                let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
+                let produkt_id = res.data.insertId;
+
+                setProdukty(prev =>
+                  prev.map((t) => {
+                    if (t.index === i) {
+                      return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
 
 
+                elementy.map( async(element,i)=>{
+                  let res = await axios.post(ip + 'elementy', {typ: element.typ, nazwa: element.nazwa, zamowienie_id: zamowienie_id , produkt_id:produkt_id});
+                  let element_id = res.data.insertId;
 
-   
-  produkty.map(async (produkt,i) => {
-      let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
-      let produkt_id = res.data.insertId;
+                  setElementy(prev =>
+                    prev.map((t) => {
+                      if (t.index === i && t.produkt_id === element.produkt_id) {
+                        return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
 
-      // console.log(nextProdukt)
-      // if(produkt.index ===i){
-      //   return { ...produkt, id: produkt_id, zamowienie_id: zamowienie_id };
-      // }
-      // else{
-      //   return produkt
-      // }
+                })
 
-
-        // if (produkt.index === i) {
-        //    console.log(produkt.index);
-        //    console.log(i);
-        //   return { ...produkt, id: produkt_id, zamowienie_id: zamowienie_id };
-        // } else {
-        //   return produkt;;
-        // }
-      
-      setProdukty(prev=>
-        prev.map((t) => {
-          if (t.index === i) {
-            console.log(t.index);
-            return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
-          } else {
-            return t;
-          }
         })
-      );
-
-      
-     }
-
-    
-
-    )
-
-
- 
-  
+        
 
 
   }
@@ -143,7 +121,7 @@ function handleChangeCardProdukty(card) {
 
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
 
-        {/* <Elementy
+        <Elementy
           elementy={elementy}
           setElementy={setElementy}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -151,7 +129,7 @@ function handleChangeCardProdukty(card) {
           setSelected_papier={setSelected_papier}
         />
 
-        <Introligatornia
+        {/* <Introligatornia
           zestawy={zestawy}
           setZestawy={setZestawy}
           fragmenty={fragmenty}

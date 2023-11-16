@@ -108,6 +108,42 @@ const _elementy = [
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 1
+  },
+  {
+    id: 3,
+    zamowienie_id: 1,
+    produkt_id: 3,
+    typ: "Okładka",
+    nazwa: "PL",
+    ilosc_stron: "4",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "210",
+    format_y: "297",
+    papier_id: "Karton",
+    gramatura: "250",
+    wykonczenie: "gloss",
+    naklad: "1000",
+    uszlachetnianie_id: "UV",
+    index: 2
+  },
+  {
+    id: 4,
+    zamowienie_id: 1,
+    produkt_id: 3,
+    typ: "Środek",
+    nazwa: "PL",
+    ilosc_stron: "80",
+    kolor_front: "4",
+    kolor_back: "4",
+    format_x: "210",
+    format_y: "297",
+    papier_id: "Offset",
+    gramatura: "110",
+    wykonczenie: "",
+    naklad: "1000",
+    uszlachetnianie_id: "",
+    index: 3
   }
 
   

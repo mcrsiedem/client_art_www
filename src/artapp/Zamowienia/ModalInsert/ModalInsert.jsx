@@ -53,11 +53,11 @@ const [idZamowienie, setIdZamowienia] = useState();
 
 
    
-  const nextProdukt = produkty.map(async (produkt,i) => {
+  produkty.map(async (produkt,i) => {
       let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
       let produkt_id = res.data.insertId;
 
-      console.log(nextProdukt)
+      // console.log(nextProdukt)
       // if(produkt.index ===i){
       //   return { ...produkt, id: produkt_id, zamowienie_id: zamowienie_id };
       // }
@@ -74,16 +74,16 @@ const [idZamowienie, setIdZamowienia] = useState();
         //   return produkt;;
         // }
       
-      // setProdukty(
-      //   produkty.map((t) => {
-      //     if (t.index === i) {
-      //       console.log(t.index);
-      //       return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
-      //     } else {
-      //       return t;
-      //     }
-      //   })
-      // );
+      setProdukty(prev=>
+        prev.map((t) => {
+          if (t.index === i) {
+            console.log(t.index);
+            return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
+          } else {
+            return t;
+          }
+        })
+      );
 
       
      }

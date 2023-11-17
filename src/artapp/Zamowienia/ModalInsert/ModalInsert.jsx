@@ -45,6 +45,9 @@ const [idZamowienie, setIdZamowienia] = useState();
                 let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
                 let produkt_id = res.data.insertId;
 
+                // produkty.filter((pr) => pr.index ===i).map((p)=>{
+                   
+                // })
                 setProdukty(prev =>
                   prev.map((t) => {
                     if (t.index === i) {
@@ -77,51 +80,7 @@ const [idZamowienie, setIdZamowienia] = useState();
 
 
   }
-  async function postZamowienieKOPIA() {
 
-
-    const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient });
-
-    const zamowienie_id = res.data.insertId
-    setIdZamowienia(zamowienie_id);
-
-
-        produkty.map(async (produkt, i) => {
-                let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
-                let produkt_id = res.data.insertId;
-
-                setProdukty(prev =>
-                  prev.map((t) => {
-                    if (t.index === i) {
-                      return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
-
-
-                elementy.map( async(element,i)=>{
-                  let res = await axios.post(ip + 'elementy', {typ: element.typ, nazwa: element.nazwa, zamowienie_id: zamowienie_id , produkt_id:produkt_id});
-                  let element_id = res.data.insertId;
-
-                  setElementy(prev =>
-                    prev.map((t) => {
-                      if (t.index === i && t.produkt_id === element.produkt_id) {
-                        return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
-                      } else {
-                        return t;
-                      }
-                    })
-                  );
-
-                })
-
-        })
-        
-
-
-  }
 
 
 function handleChangeCardElementy(card) {

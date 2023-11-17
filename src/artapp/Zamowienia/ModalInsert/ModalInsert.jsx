@@ -58,14 +58,13 @@ const [idZamowienie, setIdZamowienia] = useState();
                   })
                 );
 
-
-                elementy.filter((el)=> el.produkt_id === produkt.id) .map( async(element,i)=>{
+           elementy.filter((el)=> el.produkt_id === produkt.id) .map( async(element,a)=>{
                   let res = await axios.post(ip + 'elementy', {typ: element.typ, nazwa: element.nazwa, zamowienie_id: zamowienie_id , produkt_id:produkt_id});
                   let element_id = res.data.insertId;
 
                   setElementy(prev =>
                     prev.map((t) => {
-                      if (t.index === i && t.produkt_id === element.produkt_id) {
+                      if (t.index === a && t.produkt_id === element.produkt_id) {
                         return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
                       } else {
                         return t;
@@ -77,7 +76,9 @@ const [idZamowienie, setIdZamowienia] = useState();
 
         })
         
-
+        // setTimeout(() => {
+        //   console.log("Delayed for 1 second.");
+        // }, "4000");
 
   }
 

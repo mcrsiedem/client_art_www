@@ -58,13 +58,13 @@ const [idZamowienie, setIdZamowienia] = useState();
                   })
                 );
 
-           elementy.filter((el)=> el.produkt_id === produkt.id) .map( async(element,a)=>{
+           elementy.filter((el)=> el.produkt_id === produkt.id) .map( async(element,m)=>{
                   let res = await axios.post(ip + 'elementy', {typ: element.typ, nazwa: element.nazwa, zamowienie_id: zamowienie_id , produkt_id:produkt_id});
                   let element_id = res.data.insertId;
 
                   setElementy(prev =>
-                    prev.map((t) => {
-                      if (t.index === a && t.produkt_id === element.produkt_id) {
+                    prev.map((t,a) => {
+                      if (t.index === a && t.produkt_id === element.produkt_id ) {
                         return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
                       } else {
                         return t;

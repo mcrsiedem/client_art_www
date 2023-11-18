@@ -180,13 +180,13 @@ let nextId=3;
   }
 
   function handleAddCard(card) {
-    // nextCard = [...elementy, {id:5,zamowienie_id_produkt_id,typ,nazwa,index:4}]
+   
 
     setElementy(
       [
         ...elementy,
         {
-          id: 0,
+         
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           typ: card.typ,
@@ -195,13 +195,13 @@ let nextId=3;
         }
       ])
     
-    setElementy((prev) =>
-    prev.map((t) => {
+  //   setElementy((prev) =>
+  //   prev.map((t) => {
   
-        return t;
-      }
-    )
-  );
+  //       return t;
+  //     }
+  //   )
+  // );
 
 }
 

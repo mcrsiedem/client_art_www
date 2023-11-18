@@ -64,7 +64,7 @@ const [idZamowienie, setIdZamowienia] = useState();
 
                   setElementy(prev =>
                     prev.map((t,a) => {
-                      if (t.index === a && t.produkt_id === element.produkt_id ) {
+                      if (t.index === a && t.index === element.index ) {
                         return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
                       } else {
                         return t;

@@ -33,53 +33,58 @@ const [idZamowienie, setIdZamowienia] = useState();
 
 
   async function postZamowienie() {
+    const res = await axios.post(ip + "zamowienie", {
+      firma_id: selected_firma,
+      klient_id: klient,
+    });
 
-
-    const res = await axios.post(ip + 'zamowienie', { firma_id: selected_firma, klient_id: klient });
-
-    const zamowienie_id = res.data.insertId
+    const zamowienie_id = res.data.insertId;
     setIdZamowienia(zamowienie_id);
 
+    produkty.map(async (produkt, i) => {
+      let res = await axios.post(ip + "produkty", {
+        tytul: produkt.tytul,
+        zamowienie_id: zamowienie_id,
+      });
+      let produkt_id = res.data.insertId;
 
-        produkty.map(async (produkt, i) => {
-                let res = await axios.post(ip + 'produkty', { tytul: produkt.tytul, zamowienie_id: zamowienie_id });
-                let produkt_id = res.data.insertId;
-
-                // produkty.filter((pr) => pr.index ===i).map((p)=>{
-                   
-                // })
-                setProdukty(prev =>
-                  prev.map((t) => {
-                    if (t.index === i) {
-                      return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
-
-           elementy.filter((el)=> el.produkt_id === produkt.id) .map( async(element,m)=>{
-                  let res = await axios.post(ip + 'elementy', {typ: element.typ, nazwa: element.nazwa, zamowienie_id: zamowienie_id , produkt_id:produkt_id});
-                  let element_id = res.data.insertId;
-
-                  setElementy(prev =>
-                    prev.map((t,a) => {
-                      if (t.index === a && t.index === element.index ) {
-                        return { ...t, id: element_id, zamowienie_id: zamowienie_id , produkt_id: produkt_id };
-                      } else {
-                        return t;
-                      }
-                    })
-                  );
-
-                })
-
+      setProdukty((prev) =>
+        prev.map((t) => {
+          if (t.index === i) {
+            return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
+          } else {
+            return t;
+          }
         })
-        
-        // setTimeout(() => {
-        //   console.log("Delayed for 1 second.");
-        // }, "4000");
+      );
 
+      elementy
+        .filter((el) => el.produkt_id === produkt.id)
+        .map(async (element, m) => {
+          let res = await axios.post(ip + "elementy", {
+            typ: element.typ,
+            nazwa: element.nazwa,
+            zamowienie_id: zamowienie_id,
+            produkt_id: produkt_id,
+          });
+          let element_id = res.data.insertId;
+
+          setElementy((prev) =>
+            prev.map((t, a) => {
+              if (t.index === a && t.index === element.index) {
+                return {
+                  ...t,
+                  id: element_id,
+                  zamowienie_id: zamowienie_id,
+                  produkt_id: produkt_id,
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+        });
+    });
   }
 
 

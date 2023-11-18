@@ -66,21 +66,7 @@ const _produkty = [
     oprawa: "PUR",
     naklad: "1000",
     index: 1
-  },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    typ: "Magazyn",
-    tytul: "Tytul 2",
-    wersja: "",
-    ilosc_stron: "84",
-    format_x: "210",
-    format_y: "297",
-    oprawa: "PUR",
-    naklad: "1000",
-    index: 2
   }
-  
   
   
 ];
@@ -158,42 +144,6 @@ const _elementy = [
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 3
-  },
-  {
-    id: 5,
-    zamowienie_id: 1,
-    produkt_id: 3,
-    typ: "Okładka",
-    nazwa: "PL",
-    ilosc_stron: "4",
-    kolor_front: "4",
-    kolor_back: "4",
-    format_x: "210",
-    format_y: "297",
-    papier_id: "Karton",
-    gramatura: "250",
-    wykonczenie: "gloss",
-    naklad: "1000",
-    uszlachetnianie_id: "UV",
-    index: 4
-  },
-  {
-    id: 6,
-    zamowienie_id: 1,
-    produkt_id: 3,
-    typ: "Środek",
-    nazwa: "PL",
-    ilosc_stron: "80",
-    kolor_front: "4",
-    kolor_back: "4",
-    format_x: "210",
-    format_y: "297",
-    papier_id: "Offset",
-    gramatura: "110",
-    wykonczenie: "",
-    naklad: "1000",
-    uszlachetnianie_id: "",
-    index: 5
   }
 
   

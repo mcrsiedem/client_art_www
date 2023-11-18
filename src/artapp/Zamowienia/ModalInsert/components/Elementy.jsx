@@ -2,6 +2,7 @@ import style from "./Elementy.module.css";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import {  _papiery } from "./api";
+import { useState } from "react";
 
 export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier }) {
 
@@ -45,6 +46,8 @@ let index = 1;
 }
 
 function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier}) {
+
+  
   return (
     <div className={style.elementCard}>
       <CardHeader
@@ -85,6 +88,7 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
       <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
       <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
       <Uszlachetnianie card={card} nakladHandler={nakladHandler} />
+      <div> id {card.id}  index: {card.index}</div>
     </div>);
 }
 
@@ -166,11 +170,40 @@ function Wersja({ card, nazwaHandler }) {
 
 
 function CardHeader({ card, elementy, setElementy }) {
+
+let nextId=3;
+
   const handleRemoveItem = id => {
     if (elementy.length !== 1) {
       setElementy(elementy.filter(x => x.id !== id))
     }
   }
+
+  function handleAddCard(card) {
+    // nextCard = [...elementy, {id:5,zamowienie_id_produkt_id,typ,nazwa,index:4}]
+
+    setElementy(
+      [
+        ...elementy,
+        {
+          id: 0,
+          zamowienie_id: card.zamowienie_id,
+          produkt_id: card.produkt_id,
+          typ: card.typ,
+          nazwa: card.nazwa,
+          index: elementy.length,
+        }
+      ])
+    
+    setElementy((prev) =>
+    prev.map((t) => {
+  
+        return t;
+      }
+    )
+  );
+
+}
 
   return (
     <div className={style.header}>
@@ -180,7 +213,7 @@ function CardHeader({ card, elementy, setElementy }) {
 
       <div className={style.typ}> # {card.id} {card.typ} {card.naklad} szt.  Prod{card.produkt_id} </div>
       <div className={style.typ}>
-        <img onClick={() => { setElementy([...elementy, card]) }} className={style.icon} src={iconCopy} alt="add" />
+        <img onClick={() =>  handleAddCard(card)} className={style.icon} src={iconCopy} alt="add" />
       </div>
     </div>
   )

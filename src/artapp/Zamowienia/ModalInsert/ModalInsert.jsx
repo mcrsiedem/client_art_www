@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dane from './components/Dane';
 import Elementy from './components/Elementy';
 import Produkty from './components/Produkty';
-import {_firma,_produkty,_klient,_zestawy,_elementy,_papiery} from './components/api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty} from './components/api';
 import Warianty from './components/Warianty';
 import Introligatornia from './components/Introligatornia';
 import axios from "axios";
@@ -21,10 +21,10 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 // const elmnt = useRef(null);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].id);
-const [elementy, setElementy] = useState(_elementy);
-const [produkty, setProdukty] = useState(_produkty);
+const [elementy, setElementy] = useState(initialElementy);
+const [produkty, setProdukty] = useState(initialProdukty);
+const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
-const [fragmenty, setFragmenty] = useState([]);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
@@ -139,6 +139,8 @@ function handleChangeCardProdukty(card) {
           handleChangeCardElementy={handleChangeCardElementy}
           selected_papier={selected_papier}
           setSelected_papier={setSelected_papier}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
         />
 
         {/* <Introligatornia

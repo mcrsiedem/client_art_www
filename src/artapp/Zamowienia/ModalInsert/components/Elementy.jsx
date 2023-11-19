@@ -4,7 +4,7 @@ import iconTrash from "../../../../svg/trash2.svg";
 import {  _papiery } from "./api";
 import { useState } from "react";
 
-export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier }) {
+export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty }) {
 
 let index = 1;
 
@@ -13,16 +13,6 @@ let index = 1;
       <div className={style.elementy}>
 
         {
-
-
-// elementy.map((tabl)=>(tabl.map((card)=>(<ElementCard key={card.id}
-//   card={card}
-//   elementy={elementy}
-//   setElementy={setElementy}
-//   handleChangeCardElementy={handleChangeCardElementy}
-//   selected_papier={selected_papier}
-//   setSelected_papier={setSelected_papier}/>))))
-
             
         elementy.map(((card) => (
           <ElementCard key={card.id}
@@ -31,7 +21,10 @@ let index = 1;
             setElementy={setElementy}
             handleChangeCardElementy={handleChangeCardElementy}
             selected_papier={selected_papier}
-            setSelected_papier={setSelected_papier}/>
+            setSelected_papier={setSelected_papier}
+            fragmenty={fragmenty}
+            setFragmenty={setFragmenty}/>
+            
         )))
         
         
@@ -45,7 +38,7 @@ let index = 1;
   );
 }
 
-function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier}) {
+function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
 
   
   return (
@@ -60,10 +53,23 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
         handleChangeCardElementy={handleChangeCardElementy}
         selected_papier={selected_papier}
         setSelected_papier={setSelected_papier} />
+        <CardFooter/>
     </div>
   );
 }
 
+
+ function CardFooter(){
+  return(
+    <>
+
+      <div className={style.footer}>
+fragmenty
+      </div>
+
+    </>
+  )
+ }
 
  function CardCenter  ({card,handleChangeCardElementy,selected_papier,setSelected_papier})  {
  const nakladHandler =(e)=>{handleChangeCardElementy({...card, naklad: e.target.value})   }
@@ -199,10 +205,7 @@ function CardHeader({ card, elementy, setElementy }) {
   }
 
   function handleAddCard(card) {
-
-
     const newElementy = elementy.slice();
-
 
     newElementy.map((x) => {
       if (x.index > card.index) {
@@ -215,73 +218,16 @@ function CardHeader({ card, elementy, setElementy }) {
       }
     });
 
- newElementy.push({zamowienie_id:card.zamowienie_id,produkt_id:card.produkt_id,naklad:card.naklad,index:card.index++})
- 
+    newElementy.push({
+      zamowienie_id: card.zamowienie_id,
+      produkt_id: card.produkt_id,
+      naklad: card.naklad,
+      index: card.index++,
+    });
+
     newElementy.sort((a, b) => a.index - b.index);
     setElementy(newElementy);
-   
-    // //------------------
-    // const nextElementy = [
-    //   // Items before the insertion point:
-    //   ...elementy.slice(0, card.index+1),
-    //   // New item:
-    //   {
-    //     naklad:card.naklad,
-    //      zamowienie_id: card.zamowienie_id,
-    //      produkt_id: card.produkt_id,
-    //      typ: card.typ,
-    //      nazwa: card.nazwa,
-    //      index: elementy.length,
-    //    },
-    //   // Items after the insertion point:
-    //   ...elementy.slice(card.index+1)
-    // ];
-    // setElementy(nextElementy);
-    // //-------------------------
-
-  //   setElementy((prev) =>
-  //   prev.map((t, a) => {
-  //     if (t.index > card.index) {
-  //       return {
-  //         ...t,
-  //         index: t.index++
-          
-  //       };
-  //     } else {
-  //       return t;
-  //     }
-  //   })
-  // );
-
-
-  //   setElementy(
-  //     [
-  //       ...elementy,
-  //       {
-  //        naklad:card.naklad,
-  //         zamowienie_id: card.zamowienie_id,
-  //         produkt_id: card.produkt_id,
-  //         typ: card.typ,
-  //         nazwa: card.nazwa,
-  //         index: card.index++,
-  //       }
-  //     ])
-    
-    // setElementy(
-    //   [
-    //     ...elementy,
-    //     {
-    //      naklad:card.naklad,
-    //       zamowienie_id: card.zamowienie_id,
-    //       produkt_id: card.produkt_id,
-    //       typ: card.typ,
-    //       nazwa: card.nazwa,
-    //       index: elementy.length,
-    //     }
-    //   ])
-    
-
-}
+  }
 
   return (
     <div className={style.header}>

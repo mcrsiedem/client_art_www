@@ -40,7 +40,7 @@ const _klient = [
   
 ];
 
-const _produkty = [
+const initialProdukty = [
   {
     id: 1,
     zamowienie_id: 1,
@@ -71,7 +71,7 @@ const _produkty = [
   
 ];
 
-const _elementy = [
+const initialElementy = [
   
   {
     id: 1,
@@ -149,6 +149,47 @@ const _elementy = [
   
 ];
 
+const initialFragmenty=[
+  {
+    id: 1,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    elemenet_id: 1, 
+    naklad: "1000",
+    info:"",
+    index:0
+  },
+  {
+    id: 2,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    elemenet_id: 2, 
+    naklad: "1000",
+    info:"",
+    index:1
+  },
+  {
+    id: 3,
+    zamowienie_id: 1,
+    produkt_id: 2,
+    elemenet_id: 1, 
+    naklad: "1000",
+    info:"",
+    index:2
+  },
+  {
+    id: 4,
+    zamowienie_id: 1,
+    produkt_id: 2,
+    elemenet_id: 2, 
+    naklad: "1000",
+    info:"",
+    index:3
+  }
+
+  
+]
+
 const _zestawy = [
   {
     id: 1,
@@ -215,4 +256,4 @@ const _wykonczenie = [
 
 ]
 
-export {_firma,_produkty,_klient,_zestawy,_elementy,_papiery,_oprawa};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty};

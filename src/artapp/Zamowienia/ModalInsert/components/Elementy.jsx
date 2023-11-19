@@ -171,12 +171,31 @@ function Wersja({ card, nazwaHandler }) {
 
 function CardHeader({ card, elementy, setElementy }) {
 
-let nextId=3;
 
-  const handleRemoveItem = id => {
-    if (elementy.length !== 1) {
-      setElementy(elementy.filter(x => x.id !== id))
-    }
+
+  const handleRemoveItem = index => {
+
+     if (elementy.length !== 1) {
+    setElementy(elementy.filter(x => x.index !== index))
+  }
+ 
+    
+    setElementy((prev) =>
+    prev.map((t, a) => {
+      if (t.index > index) {
+        return {
+          ...t,
+          index: t.index--
+          
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+
   }
 
   function handleAddCard(card) {
@@ -186,7 +205,7 @@ let nextId=3;
       [
         ...elementy,
         {
-         
+         naklad:card.naklad,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           typ: card.typ,
@@ -195,20 +214,14 @@ let nextId=3;
         }
       ])
     
-  //   setElementy((prev) =>
-  //   prev.map((t) => {
-  
-  //       return t;
-  //     }
-  //   )
-  // );
+
 
 }
 
   return (
     <div className={style.header}>
       <div className={style.typ}>
-        <img onClick={() => { handleRemoveItem(card.id) }} className={style.icon} src={iconTrash} alt="delete" />
+        <img onClick={() => { handleRemoveItem(card.index) }} className={style.icon} src={iconTrash} alt="delete" />
       </div>
 
       <div className={style.typ}> # {card.id} {card.typ} {card.naklad} szt.  Prod{card.produkt_id} </div>

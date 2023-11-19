@@ -199,7 +199,45 @@ function CardHeader({ card, elementy, setElementy }) {
   }
 
   function handleAddCard(card) {
+
+
+    const newElementy = elementy.slice();
+
+
+    newElementy.map((x) => {
+      if (x.index > card.index) {
+        return {
+          ...x,
+          index: x.index++,
+        };
+      } else {
+        return x;
+      }
+    });
+
+ newElementy.push({zamowienie_id:card.zamowienie_id,produkt_id:card.produkt_id,naklad:card.naklad,index:card.index++})
+ 
+    newElementy.sort((a, b) => a.index - b.index);
+    setElementy(newElementy);
    
+    // //------------------
+    // const nextElementy = [
+    //   // Items before the insertion point:
+    //   ...elementy.slice(0, card.index+1),
+    //   // New item:
+    //   {
+    //     naklad:card.naklad,
+    //      zamowienie_id: card.zamowienie_id,
+    //      produkt_id: card.produkt_id,
+    //      typ: card.typ,
+    //      nazwa: card.nazwa,
+    //      index: elementy.length,
+    //    },
+    //   // Items after the insertion point:
+    //   ...elementy.slice(card.index+1)
+    // ];
+    // setElementy(nextElementy);
+    // //-------------------------
 
   //   setElementy((prev) =>
   //   prev.map((t, a) => {
@@ -216,6 +254,19 @@ function CardHeader({ card, elementy, setElementy }) {
   // );
 
 
+  //   setElementy(
+  //     [
+  //       ...elementy,
+  //       {
+  //        naklad:card.naklad,
+  //         zamowienie_id: card.zamowienie_id,
+  //         produkt_id: card.produkt_id,
+  //         typ: card.typ,
+  //         nazwa: card.nazwa,
+  //         index: card.index++,
+  //       }
+  //     ])
+    
     // setElementy(
     //   [
     //     ...elementy,
@@ -225,22 +276,9 @@ function CardHeader({ card, elementy, setElementy }) {
     //       produkt_id: card.produkt_id,
     //       typ: card.typ,
     //       nazwa: card.nazwa,
-    //       index: card.index++,
+    //       index: elementy.length,
     //     }
     //   ])
-    
-    setElementy(
-      [
-        ...elementy,
-        {
-         naklad:card.naklad,
-          zamowienie_id: card.zamowienie_id,
-          produkt_id: card.produkt_id,
-          typ: card.typ,
-          nazwa: card.nazwa,
-          index: elementy.length,
-        }
-      ])
     
 
 }

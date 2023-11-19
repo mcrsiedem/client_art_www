@@ -201,6 +201,34 @@ function CardHeader({ card, elementy, setElementy }) {
   function handleAddCard(card) {
    
 
+  //   setElementy((prev) =>
+  //   prev.map((t, a) => {
+  //     if (t.index > card.index) {
+  //       return {
+  //         ...t,
+  //         index: t.index++
+          
+  //       };
+  //     } else {
+  //       return t;
+  //     }
+  //   })
+  // );
+
+
+    // setElementy(
+    //   [
+    //     ...elementy,
+    //     {
+    //      naklad:card.naklad,
+    //       zamowienie_id: card.zamowienie_id,
+    //       produkt_id: card.produkt_id,
+    //       typ: card.typ,
+    //       nazwa: card.nazwa,
+    //       index: card.index++,
+    //     }
+    //   ])
+    
     setElementy(
       [
         ...elementy,
@@ -214,7 +242,6 @@ function CardHeader({ card, elementy, setElementy }) {
         }
       ])
     
-
 
 }
 

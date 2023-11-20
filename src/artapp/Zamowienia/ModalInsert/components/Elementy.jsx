@@ -72,7 +72,7 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
           .filter((fragmentCard) => fragmentCard.element_id === card.id)
           .filter((fragmentCard) =>  fragmentCard.produkt_id === card.produkt_id)
           .map(((fragmentCard) => (
-            <FragmentCard key={fragmentCard.id} />
+            <FragmentCard key={fragmentCard.id} fragmentCard={fragmentCard} fragmenty={fragmenty} setFragmenty={setFragmenty} />
           )))
         }
       </div>
@@ -81,10 +81,10 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
   )
  }
 
- function FragmentCard(){
+ function FragmentCard({fragmentCard}){
   return(<>
 
-  fragmentCard
+  fragmentCard id: {fragmentCard.id}
   </>)
  }
 

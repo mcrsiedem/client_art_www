@@ -83,6 +83,29 @@ const [idZamowienie, setIdZamowienia] = useState();
                           }
                         })
                       );
+
+                      //save fragmenty
+                      fragmenty
+                     .filter((frag) => frag.element_id === element_id)
+                    // .filter((frag) => frag.produkt_id === produkt.id)
+                      .map(async (fragment, m) => {
+                    
+                      // let res = await axios.post(ip + "fragmenty", {
+                      //   naklad: fragment.naklad,
+                      //   info: fragment.info,
+                      //   index: fragment.index,
+                      //   zamowienie_id: zamowienie_id,
+                      //   element_id: element_id,
+                      //   produkt_id: produkt_id,
+                      // });
+                      let fragment_id = res.data.insertId;
+                 
+                      console.log("zam: "+zamowienie_id);
+                      console.log("el: "+element_id);
+                      console.log("prod: "+produkt_id);
+                      console.log("---------------");
+                     });
+
               });
     });
   }

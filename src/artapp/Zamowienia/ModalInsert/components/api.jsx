@@ -154,7 +154,7 @@ const initialFragmenty=[
     id: 1,
     zamowienie_id: 1,
     produkt_id: 1,
-    elemenet_id: 1, 
+    element_id: 1, 
     naklad: "1000",
     info:"",
     index:0
@@ -163,7 +163,7 @@ const initialFragmenty=[
     id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
-    elemenet_id: 2, 
+    element_id: 2, 
     naklad: "1000",
     info:"",
     index:1
@@ -172,7 +172,7 @@ const initialFragmenty=[
     id: 3,
     zamowienie_id: 1,
     produkt_id: 2,
-    elemenet_id: 1, 
+    element_id: 3, 
     naklad: "1000",
     info:"",
     index:2
@@ -181,7 +181,7 @@ const initialFragmenty=[
     id: 4,
     zamowienie_id: 1,
     produkt_id: 2,
-    elemenet_id: 2, 
+    element_id: 4, 
     naklad: "1000",
     info:"",
     index:3

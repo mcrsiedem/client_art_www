@@ -53,22 +53,39 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
         handleChangeCardElementy={handleChangeCardElementy}
         selected_papier={selected_papier}
         setSelected_papier={setSelected_papier} />
-        <CardFooter/>
+      <CardFooter
+        fragmenty={fragmenty}
+        setFragmenty={setFragmenty}
+        card={card} />
     </div>
   );
 }
 
 
- function CardFooter(){
+ function CardFooter({fragmenty,setFragmenty,card}){
   return(
     <>
 
       <div className={style.footer}>
-fragmenty
+        {
+          fragmenty
+          .filter((fragmentCard) => fragmentCard.element_id === card.id)
+          .filter((fragmentCard) =>  fragmentCard.produkt_id === card.produkt_id)
+          .map(((fragmentCard) => (
+            <FragmentCard key={fragmentCard.id} />
+          )))
+        }
       </div>
 
     </>
   )
+ }
+
+ function FragmentCard(){
+  return(<>
+
+  fragmentCard
+  </>)
  }
 
  function CardCenter  ({card,handleChangeCardElementy,selected_papier,setSelected_papier})  {

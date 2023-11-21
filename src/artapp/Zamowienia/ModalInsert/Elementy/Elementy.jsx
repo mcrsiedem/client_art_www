@@ -1,7 +1,7 @@
 import style from "./Elementy.module.css";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
-import {  _papiery } from "./api";
+import {  _papiery } from "../api";
 import { useState } from "react";
 
 

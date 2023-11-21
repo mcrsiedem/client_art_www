@@ -1,5 +1,5 @@
-import style from "../components/Dane.module.css";
-import { _firma, _produkty, _klient, _zestawy, _elementy } from "./api";
+import style from "./Dane.module.css";
+import { _firma, _produkty, _klient, _zestawy, _elementy } from "../api";
 
 export default function Dane({
   selected_firma,

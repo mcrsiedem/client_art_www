@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import style from "./Introligatornia.module.css";
-import {  _oprawa } from "./api";
+import {  _oprawa } from "../api";
 
 export default function Introligatornia({ zestawy,setZestwy,fragmenty,setFragmenty }) {
   

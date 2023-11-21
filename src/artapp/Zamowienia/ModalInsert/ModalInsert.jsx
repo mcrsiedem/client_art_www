@@ -1,16 +1,16 @@
 import style from './ModalInsert.module.css';
 import React, { useEffect,useState } from "react";
 
-import Header from './components/Header';
+import Header from './Header/Header';
 
 
 import { useRef } from 'react';
-import Dane from './components/Dane';
-import Elementy from './components/Elementy';
-import Produkty from './components/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty} from './components/api';
-import Warianty from './components/Warianty';
-import Introligatornia from './components/Introligatornia';
+import Dane from './Dane/Dane';
+import Elementy from './Elementy/Elementy';
+import Produkty from './Produkty/Produkty';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty} from './api';
+import Warianty from './Warianty/Warianty';
+import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
 import {ip} from "../../../Host"
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {

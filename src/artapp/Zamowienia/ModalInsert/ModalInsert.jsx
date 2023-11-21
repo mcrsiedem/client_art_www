@@ -30,133 +30,6 @@ const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 const [idZamowienie, setIdZamowienia] = useState();
 
 
-
-
-  async function postZamowienie() {
-    const res = await axios.post(ip + "zamowienie", {
-      firma_id: selected_firma,
-      klient_id: klient,
-    });
-
-    const zamowienie_id = res.data.insertId;
-    setIdZamowienia(zamowienie_id);
-
-    produkty.map(async (produkt, i) => {
-            let res = await axios.post(ip + "produkty", {
-              tytul: produkt.tytul,
-              zamowienie_id: zamowienie_id,
-            });
-            let produkt_id = res.data.insertId;
-
-            setProdukty((prev) =>
-              prev.map((t) => {
-                if (t.index === i) {
-                  return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
-                } else {
-                  return t;
-                }
-              })
-            );
-
-            elementy
-                    .filter((el) => el.produkt_id === produkt.id)
-                    .map(async (element, m) => {
-                      let res = await axios.post(ip + "elementy", {
-                        typ: element.typ,
-                        nazwa: element.nazwa,
-                        zamowienie_id: zamowienie_id,
-                        produkt_id: produkt_id,
-                      });
-                      let element_id = res.data.insertId;
-
-                      setElementy((prev) =>
-                        prev.map((t, a) => {
-                          if (t.index === a && t.index === element.index) {
-                            return {
-                              ...t,
-                              id: element_id,
-                              zamowienie_id: zamowienie_id,
-                              produkt_id: produkt_id,
-                            };
-                          } else {
-                            return t;
-                          }
-                        })
-                      );
-
-                      //save fragmenty
-                      fragmenty
-                     //.filter((frag) => frag.element_id === element_id)
-                     .filter((frag) => frag.index === produkt.index)
-                      .map(async (fragment, m) => {
-                    
-                      let res = await axios.post(ip + "fragmenty", {
-                        naklad: fragment.naklad,
-                        info: fragment.info,
-                        index: fragment.index,
-                        zamowienie_id: zamowienie_id,
-                        element_id: element_id,
-                        produkt_id: produkt_id,
-                      });
-                      let fragment_id = res.data.insertId;
-
-
-                      setFragmenty((prev) =>
-                      prev.map((t, a) => {
-                        if (t.index === a && t.index === element.index) {
-                          return {
-                            ...t,
-                            id: fragment_id,
-                            zamowienie_id: zamowienie_id,
-                            produkt_id: produkt_id,
-                            element_id:element_id
-                          };
-                        } else {
-                          return t;
-                        }
-                      })
-                    );
-
-                      console.log("fragment produkt_id: "+fragment.produkt_id);
-                      console.log("fragment element id: "+fragment.element_id);
-                      console.log("zam: "+zamowienie_id);
-                      console.log("el: "+element_id);
-                      console.log("prod: "+produkt_id);
-                      console.log("---------------");
-                     });
-
-              });
-    });
-  }
-
-
-
-function handleChangeCardElementy(card) {
-  setElementy(elementy.map((tabl)=>(tabl.map((t) => {
-    if (t.id === card.id) {
-      return card;
-    } else {
-      return t;
-    }
-  })))
-    
-  );
-}
-
-function handleChangeCardProdukty(card) {
-  setProdukty(
-    produkty.map((t) => {
-      if (t.id === card.id) {
-        return card;
-      } else {
-        return t;
-      }
-    })
-  );
-}
-
-
-
     return (
       <div className={style.container}>
         <Header
@@ -204,46 +77,170 @@ function handleChangeCardProdukty(card) {
     );
 //----------------------------------
 
-    function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById(elmnt.id + "header")) {
-          // if present, the header is where you move the DIV from:
-          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-        } else {
-          // otherwise, move the DIV from anywhere inside the DIV:
-          elmnt.onmousedown = dragMouseDown;
-        }
-      
-        function dragMouseDown(e) {
-        //   e = e || window.event;
-          e.preventDefault();
-          // get the mouse cursor position at startup:
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          // call a function whenever the cursor moves:
-          document.onmousemove = elementDrag;
-        }
-      
-        function elementDrag(e) {
-        //   e = e || window.event;
-          e.preventDefault();
-          // calculate the new cursor position:
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          // set the element's new position:
-          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-      
-        function closeDragElement() {
-          // stop moving when mouse button is released:
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
+
+      async function postZamowienie() {
+        const res = await axios.post(ip + "zamowienie", {
+          firma_id: selected_firma,
+          klient_id: klient,
+        });
+    
+        const zamowienie_id = res.data.insertId;
+        setIdZamowienia(zamowienie_id);
+    
+        produkty.map(async (produkt, i) => {
+                let res = await axios.post(ip + "produkty", {
+                  tytul: produkt.tytul,
+                  zamowienie_id: zamowienie_id,
+                });
+                let produkt_id = res.data.insertId;
+    
+                setProdukty((prev) =>
+                  prev.map((t) => {
+                    if (t.index === i) {
+                      return { ...t, id: produkt_id, zamowienie_id: zamowienie_id };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
+    
+                elementy
+                        .filter((el) => el.produkt_id === produkt.id)
+                        .map(async (element, m) => {
+                          let res = await axios.post(ip + "elementy", {
+                            typ: element.typ,
+                            nazwa: element.nazwa,
+                            zamowienie_id: zamowienie_id,
+                            produkt_id: produkt_id,
+                          });
+                          let element_id = res.data.insertId;
+    
+                          setElementy((prev) =>
+                            prev.map((t, a) => {
+                              if (t.index === a && t.index === element.index) {
+                                return {
+                                  ...t,
+                                  id: element_id,
+                                  zamowienie_id: zamowienie_id,
+                                  produkt_id: produkt_id,
+                                };
+                              } else {
+                                return t;
+                              }
+                            })
+                          );
+    
+                          //save fragmenty
+                          fragmenty
+                         //.filter((frag) => frag.element_id === element_id)
+                         .filter((frag) => frag.index === produkt.index)
+                          .map(async (fragment, m) => {
+                        
+                          let res = await axios.post(ip + "fragmenty", {
+                            naklad: fragment.naklad,
+                            info: fragment.info,
+                            index: fragment.index,
+                            zamowienie_id: zamowienie_id,
+                            element_id: element_id,
+                            produkt_id: produkt_id,
+                          });
+                          let fragment_id = res.data.insertId;
+    
+    
+                          setFragmenty((prev) =>
+                          prev.map((t, a) => {
+                            if (t.index === a && t.index === element.index) {
+                              return {
+                                ...t,
+                                id: fragment_id,
+                                zamowienie_id: zamowienie_id,
+                                produkt_id: produkt_id,
+                                element_id:element_id
+                              };
+                            } else {
+                              return t;
+                            }
+                          })
+                        );
+    
+                          console.log("fragment produkt_id: "+fragment.produkt_id);
+                          console.log("fragment element id: "+fragment.element_id);
+                          console.log("zam: "+zamowienie_id);
+                          console.log("el: "+element_id);
+                          console.log("prod: "+produkt_id);
+                          console.log("---------------");
+                         });
+    
+                  });
+        });
       }
+    
+    
+    function handleChangeCardElementy(card) {
+      setElementy(elementy.map((tabl)=>(tabl.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })))
+        
+      );
+    }
+    
+    function handleChangeCardProdukty(card) {
+      setProdukty(
+        produkty.map((t) => {
+          if (t.id === card.id) {
+            return card;
+          } else {
+            return t;
+          }
+        })
+      );
+    }
+
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+      }
+    
+      function dragMouseDown(e) {
+      //   e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+    
+      function elementDrag(e) {
+      //   e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+    
+      function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+    
 }
 
 

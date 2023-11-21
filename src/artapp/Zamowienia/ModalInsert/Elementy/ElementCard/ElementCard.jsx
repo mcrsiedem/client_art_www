@@ -2,6 +2,7 @@ import iconCopy from "../../../../../svg/copy.svg";
 import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./ElementCard.module.css"
 import {  _papiery } from "../../api";
+import CardFooter from "./Footer/CardFooter";
 export default function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
 
   
@@ -26,32 +27,9 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
   }
   
   
-   function CardFooter({fragmenty,setFragmenty,card}){
-    return(
-      <>
+
   
-        <div className={style.footer}>
-          {
-            fragmenty
-            .filter((fragmentCard) => fragmentCard.element_id === card.id)
-            .filter((fragmentCard) =>  fragmentCard.produkt_id === card.produkt_id)
-            .map(((fragmentCard) => (
-              <FragmentCard key={fragmentCard.id} fragmentCard={fragmentCard} fragmenty={fragmenty} setFragmenty={setFragmenty} />
-            )))
-          }
-        </div>
-  
-      </>
-    )
-   }
-  
-   function FragmentCard({fragmentCard}){
-  
-    return(<>
-  
-    fragmentCard id: {fragmentCard.id}
-    </>)
-   }
+
   
   function CardCenter({ card, handleChangeCardElementy, selected_papier, setSelected_papier }) {
     const nakladHandler = (e) => { handleChangeCardElementy({ ...card, naklad: e.target.value }) }

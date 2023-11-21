@@ -1,5 +1,5 @@
 
-import style from "./Cardfooter.module.css"
+import style from "./ElementFooter.module.css"
 export default    function CardFooter({fragmenty,setFragmenty,card}){
     return(
       <>

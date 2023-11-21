@@ -86,20 +86,39 @@ const [idZamowienie, setIdZamowienia] = useState();
 
                       //save fragmenty
                       fragmenty
-                     .filter((frag) => frag.element_id === element_id)
-                    // .filter((frag) => frag.produkt_id === produkt.id)
+                     //.filter((frag) => frag.element_id === element_id)
+                     .filter((frag) => frag.index === produkt.index)
                       .map(async (fragment, m) => {
                     
-                      // let res = await axios.post(ip + "fragmenty", {
-                      //   naklad: fragment.naklad,
-                      //   info: fragment.info,
-                      //   index: fragment.index,
-                      //   zamowienie_id: zamowienie_id,
-                      //   element_id: element_id,
-                      //   produkt_id: produkt_id,
-                      // });
+                      let res = await axios.post(ip + "fragmenty", {
+                        naklad: fragment.naklad,
+                        info: fragment.info,
+                        index: fragment.index,
+                        zamowienie_id: zamowienie_id,
+                        element_id: element_id,
+                        produkt_id: produkt_id,
+                      });
                       let fragment_id = res.data.insertId;
-                 
+
+
+                      setFragmenty((prev) =>
+                      prev.map((t, a) => {
+                        if (t.index === a && t.index === element.index) {
+                          return {
+                            ...t,
+                            id: fragment_id,
+                            zamowienie_id: zamowienie_id,
+                            produkt_id: produkt_id,
+                            element_id:element_id
+                          };
+                        } else {
+                          return t;
+                        }
+                      })
+                    );
+
+                      console.log("fragment produkt_id: "+fragment.produkt_id);
+                      console.log("fragment element id: "+fragment.element_id);
                       console.log("zam: "+zamowienie_id);
                       console.log("el: "+element_id);
                       console.log("prod: "+produkt_id);

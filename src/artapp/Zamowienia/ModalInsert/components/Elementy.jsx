@@ -4,6 +4,7 @@ import iconTrash from "../../../../svg/trash2.svg";
 import {  _papiery } from "./api";
 import { useState } from "react";
 
+
 export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty }) {
 
 let index = 1;
@@ -82,31 +83,32 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
  }
 
  function FragmentCard({fragmentCard}){
+
   return(<>
 
   fragmentCard id: {fragmentCard.id}
   </>)
  }
 
- function CardCenter  ({card,handleChangeCardElementy,selected_papier,setSelected_papier})  {
- const nakladHandler =(e)=>{handleChangeCardElementy({...card, naklad: e.target.value})   }
- const nazwaHandler = (e)=>{handleChangeCardElementy({...card, nazwa: e.target.value})  }
- const stronyHandler = (e)=>{handleChangeCardElementy({...card, ilosc_stron: e.target.value})  }
- const formatXHandler = (e)=>{handleChangeCardElementy({...card, format_x: e.target.value})  }
- const formatYHandler = (e)=>{handleChangeCardElementy({...card, format_y: e.target.value})  }
- const kolorFrontHandler = (e)=>{handleChangeCardElementy({...card, kolor_front: e.target.value})  }
- const kolorBackHandler = (e)=>{handleChangeCardElementy({...card, kolor_back: e.target.value})  }
- const papierkHandler = (e)=>{handleChangeCardElementy({...card, papier_id: e.target.value})  }
+function CardCenter({ card, handleChangeCardElementy, selected_papier, setSelected_papier }) {
+  const nakladHandler = (e) => { handleChangeCardElementy({ ...card, naklad: e.target.value }) }
+  const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }
+  const stronyHandler = (e) => { handleChangeCardElementy({ ...card, ilosc_stron: e.target.value }) }
+  const formatXHandler = (e) => { handleChangeCardElementy({ ...card, format_x: e.target.value }) }
+  const formatYHandler = (e) => { handleChangeCardElementy({ ...card, format_y: e.target.value }) }
+  const kolorFrontHandler = (e) => { handleChangeCardElementy({ ...card, kolor_front: e.target.value }) }
+  const kolorBackHandler = (e) => { handleChangeCardElementy({ ...card, kolor_back: e.target.value }) }
+  const papierkHandler = (e) => { handleChangeCardElementy({ ...card, papier_id: e.target.value }) }
 
 
-  return(
+  return (
     <div className={style.center}>
       <div className={style.row}>
-      <Naklad card={card} nakladHandler={nakladHandler} />
-      <Strony card={card} stronyHandler={stronyHandler} />
-      <Wersja card={card} stronyHandler={nazwaHandler} />
-        </div>
-      
+        <Naklad card={card} nakladHandler={nakladHandler} />
+        <Strony card={card} stronyHandler={stronyHandler} />
+        <Wersja card={card} stronyHandler={nazwaHandler} />
+      </div>
+
       <Format card={card} formatXHandler={formatXHandler} formatYHandler={formatYHandler} />
       <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
       <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
@@ -118,7 +120,7 @@ function ElementCard({ card,elementy,setElementy,handleChangeCardElementy,select
 function Uszlachetnianie({card,nakladHandler}){
   return(     <div className={style.col}>
     <label className={style.label}> Lakier</label>
-    <input className={style.tytul} defaultValue={card.naklad} onChange={nakladHandler}></input>
+    <input className={style.tytul} valueDefault={card.naklad} onChange={nakladHandler}></input>
   </div>);
 }
 
@@ -137,8 +139,8 @@ function Papier({card,selected_papier,setSelected_papier,papierkHandler}){
         ))}
       </select>
       <div className={style.ilosckolorow}>
-        <input className={style.tytul} defaultValue={card.wykonczenie}></input>
-    <input className={style.tytul} defaultValue={card.gramatura}></input>
+        <input className={style.tytul} valueDefault={card.wykonczenie}></input>
+    <input className={style.tytul} valueDefault={card.gramatura}></input>
       </div>
     
   </div>);

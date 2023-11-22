@@ -150,7 +150,8 @@ const [idZamowienie, setIdZamowienia] = useState();
     
                           setFragmenty((prev) =>
                           prev.map((t, a) => {
-                            if (t.index === a && t.index === element.index) {
+                             if (t.index === a && t.index === fragment.index ) {
+                            // if (t.index === a && t.index === element.index  && t.element_id===element_id) {
                               return {
                                 ...t,
                                 id: fragment_id,

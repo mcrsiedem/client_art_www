@@ -7,9 +7,9 @@ export default    function CardFooter({fragmenty,setFragmenty,card}){
         <div className={style.footer}>
           {
             fragmenty
-            // .filter((fragmentCard) => fragmentCard.element_id === card.id)
-            // .filter((fragmentCard) =>  fragmentCard.produkt_id === card.produkt_id)
-            .filter((fragmentCard) =>  fragmentCard.index === card.index)
+              .filter((fragmentCard) => fragmentCard.element_id === card.id)
+            //   .filter((fragmentCard) =>  fragmentCard.produkt_id === card.produkt_id)
+            //  .filter((fragmentCard) =>  fragmentCard.index === card.index)
             .map(((fragmentCard) => (
               <FragmentCard key={fragmentCard.id} fragmentCard={fragmentCard} fragmenty={fragmenty} setFragmenty={setFragmenty} />
             )))
@@ -23,7 +23,9 @@ export default    function CardFooter({fragmenty,setFragmenty,card}){
    function FragmentCard({fragmentCard}){
   
     return(<>
+  <div className={style.fragmentCard}>
+      fragmentCard id: {fragmentCard.id} fragment index:{fragmentCard.index} el id: {fragmentCard.element_id}
+  </div>
   
-    fragmentCard id: {fragmentCard.id} fragment index:{fragmentCard.index} el id: {fragmentCard.element_id}
     </>)
    }

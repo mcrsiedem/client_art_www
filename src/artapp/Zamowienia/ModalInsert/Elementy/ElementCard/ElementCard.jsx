@@ -105,13 +105,15 @@ newFragmenty.map((x) => {
   }
 });
 
+let nextId = Math.max(...fragmenty.map(f=>f.id));
+
 newFragmenty.push({
 
   zamowienie_id: card.zamowienie_id,
   produkt_id: card.produkt_id,
   naklad: card.naklad,
   element_id: card.element_id,
-  index: card.index++,
+  index: nextId++,
 });
 
 newFragmenty.sort((a, b) => a.index - b.index);

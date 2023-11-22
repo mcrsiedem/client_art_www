@@ -12,7 +12,9 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
         <CardHeader
           card={card}
           elementy={elementy}
-          setElementy={setElementy} />
+          setElementy={setElementy} 
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}/>
         <CardCenter
           card={card}
           setElementy={setElementy}
@@ -36,7 +38,7 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
   
   
   
-  function CardHeader({ card, elementy, setElementy }) {
+  function CardHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
   
   
   
@@ -88,6 +90,36 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
   
       newElementy.sort((a, b) => a.index - b.index);
       setElementy(newElementy);
+
+//-------------------
+const newFragmenty = fragmenty.slice();
+  
+newFragmenty.map((x) => {
+  if (x.index > card.index) {
+    return {
+      ...x,
+      index: x.index++,
+    };
+  } else {
+    return x;
+  }
+});
+
+newFragmenty.push({
+
+  zamowienie_id: card.zamowienie_id,
+  produkt_id: card.produkt_id,
+  naklad: card.naklad,
+  element_id: card.element_id,
+  index: card.index++,
+});
+
+newFragmenty.sort((a, b) => a.index - b.index);
+setFragmenty(newFragmenty);
+
+
+
+
     }
   
     return (

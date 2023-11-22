@@ -86,6 +86,7 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
         produkt_id: card.produkt_id,
         naklad: card.naklad,
         index: card.index++,
+     
       });
   
       newElementy.sort((a, b) => a.index - b.index);
@@ -105,7 +106,7 @@ newFragmenty.map((x) => {
   }
 });
 
-let nextId = Math.max(...fragmenty.map(f=>f.id));
+//let nextId = Math.max(...fragmenty.map(f=>f.id));
 
 newFragmenty.push({
 
@@ -113,7 +114,7 @@ newFragmenty.push({
   produkt_id: card.produkt_id,
   naklad: card.naklad,
   element_id: card.element_id,
-  index: nextId++,
+  index:  Math.max(...fragmenty.map(f=>f.id)),
 });
 
 newFragmenty.sort((a, b) => a.index - b.index);

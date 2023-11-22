@@ -23,7 +23,7 @@ export default function CardCenter({ card, handleChangeCardElementy, selected_pa
         <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
         <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
         <Uszlachetnianie card={card} nakladHandler={nakladHandler} />
-        <div> id {card.id}  index: {card.index}</div>
+        <div className={style.row}> id {card.id}  index: {card.index}</div>
       </div>);
   }
   

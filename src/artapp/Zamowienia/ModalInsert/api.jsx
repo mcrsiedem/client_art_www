@@ -180,7 +180,7 @@ const initialFragmenty=[
   {
     id: 4,
     zamowienie_id: 1,
-    produkt_id: 2,
+    produkt_id: 3,
     element_id: 4, 
     naklad: "1000",
     info:"",

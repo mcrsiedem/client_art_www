@@ -163,12 +163,12 @@ const [idZamowienie, setIdZamowienia] = useState();
                           })
                         );
     
-                          console.log("fragment produkt_id: "+fragment.produkt_id);
-                          console.log("fragment element id: "+fragment.element_id);
-                          console.log("zam: "+zamowienie_id);
-                          console.log("el: "+element_id);
-                          console.log("prod: "+produkt_id);
-                          console.log("---------------");
+                          // console.log("fragment produkt_id: "+fragment.produkt_id);
+                          // console.log("fragment element id: "+fragment.element_id);
+                          // console.log("zam: "+zamowienie_id);
+                          // console.log("el: "+element_id);
+                          // console.log("prod: "+produkt_id);
+                          // console.log("---------------");
                          });
     
                   });

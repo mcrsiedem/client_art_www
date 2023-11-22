@@ -23,6 +23,6 @@ export default    function CardFooter({fragmenty,setFragmenty,card}){
   
     return(<>
   
-    fragmentCard id: {fragmentCard.index}
+    fragmentCard id: {fragmentCard.id} fragment index:{fragmentCard.index} el id: {fragmentCard.element_id}
     </>)
    }

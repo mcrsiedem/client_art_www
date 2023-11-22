@@ -133,7 +133,8 @@ const [idZamowienie, setIdZamowienia] = useState();
                           //save fragmenty
                           fragmenty
                          //.filter((frag) => frag.element_id === element_id)
-                         .filter((frag) => frag.index === produkt.index)
+                        //  .filter((frag) => frag.index === element.index)
+                         .filter((frag) => frag.element_id === element.id)
                           .map(async (fragment, m) => {
                         
                           let res = await axios.post(ip + "fragmenty", {
@@ -163,12 +164,12 @@ const [idZamowienie, setIdZamowienia] = useState();
                           })
                         );
     
-                          // console.log("fragment produkt_id: "+fragment.produkt_id);
-                          // console.log("fragment element id: "+fragment.element_id);
-                          // console.log("zam: "+zamowienie_id);
-                          // console.log("el: "+element_id);
-                          // console.log("prod: "+produkt_id);
-                          // console.log("---------------");
+                          console.log("fragment produkt_id: "+fragment.produkt_id);
+                          console.log("fragment element id: "+fragment.element_id);
+                          console.log("zam: "+zamowienie_id);
+                          console.log("el: "+element_id);
+                          console.log("prod: "+produkt_id);
+                          console.log("---------------");
                          });
     
                   });

@@ -24,7 +24,7 @@ export default    function CardFooter({fragmenty,setFragmenty,card}){
   
     return(<>
   <div className={style.fragmentCard}>
-      fragmentCard id: {fragmentCard.id} fragment index:{fragmentCard.index} el id: {fragmentCard.element_id}
+      fragment id: {fragmentCard.id}  fragment index:{fragmentCard.index}  element id: {fragmentCard.element_id} 
   </div>
   
     </>)

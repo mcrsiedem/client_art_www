@@ -1,7 +1,7 @@
 .elementy {
   background-color: transparent;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -16,7 +16,7 @@
 .elementCard{
   /* outline: 1px solid rgb(88, 116, 94); */
   border-radius: 10px;
-  width: 400px;
+  width: 300px;
   height: 16rem;
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
   background-color: rgb(232, 245, 234);

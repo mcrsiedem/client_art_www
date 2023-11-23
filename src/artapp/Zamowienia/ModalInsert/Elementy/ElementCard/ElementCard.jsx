@@ -39,11 +39,8 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
   
   
   function CardHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
-  
-  
-  
+
     const handleRemoveItem = index => {
-  
        if (elementy.length !== 1) {
       setElementy(elementy.filter(x => x.index !== index))
     }
@@ -82,7 +79,7 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
       });
   
       newElementy.push({
-        id: Math.max(...newElementy.map(f=>f.id))+1,
+       id:  Math.max(...elementy.map(f=>f.id))+1,
         zamowienie_id: card.zamowienie_id,
         produkt_id: card.produkt_id,
         naklad: card.naklad,
@@ -91,7 +88,8 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
       });
   
       newElementy.sort((a, b) => a.index - b.index);
-      setElementy(newElementy);
+setElementy(newElementy);
+      // setElementy((prev) =>prev.map((t)=> {return t}));
 
 //-------------------
 const newFragmenty = fragmenty.slice();
@@ -115,8 +113,9 @@ newFragmenty.push({
   zamowienie_id: card.zamowienie_id,
   produkt_id: card.produkt_id,
   naklad: card.naklad,
-  element_id: card.element_id,
-   index:  Math.max(...newFragmenty.map(f=>f.index))+1,
+  element_id:  Math.max(...elementy.map(f=>f.id))+1,
+  index:  Math.max(...newFragmenty.map(f=>f.index))+1,
+
 
 });
 

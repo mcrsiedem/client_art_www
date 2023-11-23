@@ -82,10 +82,11 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
       });
   
       newElementy.push({
+        id: Math.max(...newElementy.map(f=>f.id))+1,
         zamowienie_id: card.zamowienie_id,
         produkt_id: card.produkt_id,
         naklad: card.naklad,
-        index: card.index++,
+        index:  Math.max(...newElementy.map(f=>f.index))+1,
      
       });
   
@@ -110,15 +111,36 @@ newFragmenty.map((x) => {
 
 newFragmenty.push({
 
+  id: Math.max(...newFragmenty.map(f=>f.id))+1,
   zamowienie_id: card.zamowienie_id,
   produkt_id: card.produkt_id,
   naklad: card.naklad,
   element_id: card.element_id,
-  index:  Math.max(...fragmenty.map(f=>f.id)),
+   index:  Math.max(...newFragmenty.map(f=>f.index))+1,
+
 });
 
 newFragmenty.sort((a, b) => a.index - b.index);
 setFragmenty(newFragmenty);
+
+
+
+
+// setElementy((prev) =>
+// prev.map((t, a) => {
+//   if (t.index === a && t.index === element.index) {
+//     return {
+//       ...t,
+//       id: element_id,
+//       zamowienie_id: zamowienie_id,
+//       produkt_id: produkt_id,
+//     };
+//   } else {
+//     return t;
+//   }
+// })
+// );
+
 
 
 

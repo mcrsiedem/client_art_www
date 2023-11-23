@@ -2,6 +2,10 @@
 
 import style from './Header.module.css'
 
+const openInNewTab = (url) => {
+    window.open(url, "_blank", "noreferrer");
+  };
+
  function Header({setOpenModalInsert,postZamowienie,id}){
     return(<>
     <div className={style.container}>
@@ -10,7 +14,7 @@ import style from './Header.module.css'
 
         <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anuluj</button>
         <button onClick={() => postZamowienie()} className={style.btn}>Zapisz</button>
-        <button className={style.btn}>Zapisz jako</button>
+        <button onClick={() => openInNewTab("/Zamowienia")}className={style.btn}>Zapisz jako</button>
 
 
  

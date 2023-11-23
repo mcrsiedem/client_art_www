@@ -46,6 +46,7 @@ const [idZamowienie, setIdZamowienia] = useState();
           setKlient={(kl) => setKlient(kl)}
         />
 
+<div>
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
 
         <Elementy
@@ -57,6 +58,8 @@ const [idZamowienie, setIdZamowienia] = useState();
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
         />
+</div>
+
 
         {/* <Introligatornia
           zestawy={zestawy}

@@ -71,7 +71,7 @@ export default function ElementCard({ card,elementy,setElementy,handleChangeCard
         if (x.index > card.index) {
           return {
             ...x,
-            index: x.index++,
+       //     index: x.index++,
           };
         } else {
           return x;
@@ -98,7 +98,7 @@ newFragmenty.map((x) => {
   if (x.index > card.index) {
     return {
       ...x,
-      index: x.index++,
+ //     index: x.index++,
     };
   } else {
     return x;
@@ -109,7 +109,7 @@ newFragmenty.map((x) => {
 
 newFragmenty.push({
 
-  id: Math.max(...newFragmenty.map(f=>f.id))+1,
+  id: Math.max(...fragmenty.map(f=>f.id))+1,
   zamowienie_id: card.zamowienie_id,
   produkt_id: card.produkt_id,
   naklad: card.naklad,

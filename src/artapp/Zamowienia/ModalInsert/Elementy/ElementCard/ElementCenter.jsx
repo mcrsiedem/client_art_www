@@ -1,5 +1,5 @@
 import style from "./ElementCenter.module.css"
-import {  _papiery } from "../../../api";
+import {  _papiery } from "../../api";
 export default function CardCenter({ card, handleChangeCardElementy, selected_papier, setSelected_papier }) {
     const nakladHandler = (e) => { handleChangeCardElementy({ ...card, naklad: e.target.value }) }
     const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }

@@ -63,7 +63,13 @@ const[isTable,setIsTable] =useState(true);
             setFragmenty={setFragmenty}
           /> 
           : 
-          <ElementyTable
+          <ElementyTable         elementy={elementy}
+          setElementy={setElementy}
+          handleChangeCardElementy={handleChangeCardElementy}
+          selected_papier={selected_papier}
+          setSelected_papier={setSelected_papier}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
         />}
         
 </div>

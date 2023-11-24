@@ -1,12 +1,18 @@
 import style from "./ElementyTable.module.css";
 import ElementTable from "./ElementTable/ElementTable";
 
-export default function ElementyTable() {
+export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
 
     return (
         <>
             <div className={style.elementy}>
-                <ElementTable/>
+                <ElementTable elementy={elementy}
+            setElementy={setElementy}
+            handleChangeCardElementy={handleChangeCardElementy}
+            selected_papier={selected_papier}
+            setSelected_papier={setSelected_papier}
+            fragmenty={fragmenty}
+            setFragmenty={setFragmenty}/>
                 {/* {
                     elementy.map(((card) => (
                         <ElementCard key={card.id}

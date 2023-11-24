@@ -3,32 +3,59 @@
 import style from "./ElementTable.module.css";
 import { _papiery } from "../../api";
 import ElementTableHeader from "./ElementTableHeader";
-// import ElementFooter from "./ElementFooter";
-// import CardCenter from "./ElementCenter";
-// import ElementHeader from "./ElementHeader"
 
 
 
-export default function ElementTable({
-  card,
-  elementy,
-  setElementy,
-  handleChangeCardElementy,
-  selected_papier,
-  setSelected_papier,
-  fragmenty,
-  setFragmenty,
-}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
   return (
     <div className={style.elementCard}>
         
       <ElementTableHeader
-        card={card}
+        // card={card}
         elementy={elementy}
         setElementy={setElementy}
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
       />
+
+      <div className={style.main}>
+  
+<table className={style.table}>
+<thead>
+          <tr>
+            <th className="th_1">Person Name</th>
+            {/* <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th>
+            <th className="th_1">Person Name</th> */}
+          </tr>
+
+        </thead>
+        <tbody>
+
+        {elementy.map((row) => {
+                                return (
+                                    <tr
+                                    key={row.id}
+                                    // onDoubleClick={(node, event) => {
+                               
+                                    //     setOpenModal(true);
+                                    //     setRow({ id: row.id, user: row.user });
+                                    // }}
+                                    >
+                                            <td>1</td>
+                                    </tr>
+                                );
+                                })}
+    
+        </tbody>
+</table>
+
+   
+      </div>
       {/* <CardCenter
         card={card}
         setElementy={setElementy}

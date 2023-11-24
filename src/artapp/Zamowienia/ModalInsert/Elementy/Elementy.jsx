@@ -4,7 +4,7 @@ import ElementCard from "./ElementCard/ElementCard";
 
 export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty }) {
 
-let index = 1;
+
 
   return (
     <>

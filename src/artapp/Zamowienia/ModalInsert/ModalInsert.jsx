@@ -28,6 +28,7 @@ const [zestawy, setZestawy] = useState(_zestawy);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
+const[isTable,setIsTable] =useState(false);
 
 
     return (
@@ -37,6 +38,8 @@ const [idZamowienie, setIdZamowienia] = useState();
           setOpenModalInsert={setOpenModalInsert}
           postZamowienie={postZamowienie}
           id={idZamowienie}
+          isTable={isTable}
+          setIsTable={setIsTable}
         />
 
         <Dane
@@ -48,8 +51,7 @@ const [idZamowienie, setIdZamowienia] = useState();
 
 <div>
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
-
-        <Elementy
+{isTable ? <Elementy
           elementy={elementy}
           setElementy={setElementy}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -57,7 +59,8 @@ const [idZamowienie, setIdZamowienia] = useState();
           setSelected_papier={setSelected_papier}
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
-        />
+        /> : <div></div>}
+        
 </div>
 
 

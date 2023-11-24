@@ -39,3 +39,6 @@ background-color: rgb(81, 78, 78);
     gap:15px;
     font-size: 1rem;
   }
+  .icon{
+    height: 25px;
+  }

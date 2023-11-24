@@ -13,6 +13,7 @@ import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
 import {ip} from "../../../Host"
+import ElementyTable from './Elementy/ElementyTable';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -28,7 +29,7 @@ const [zestawy, setZestawy] = useState(_zestawy);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
-const[isTable,setIsTable] =useState(false);
+const[isTable,setIsTable] =useState(true);
 
 
     return (
@@ -51,15 +52,19 @@ const[isTable,setIsTable] =useState(false);
 
 <div>
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
-{isTable ? <Elementy
-          elementy={elementy}
-          setElementy={setElementy}
-          handleChangeCardElementy={handleChangeCardElementy}
-          selected_papier={selected_papier}
-          setSelected_papier={setSelected_papier}
-          fragmenty={fragmenty}
-          setFragmenty={setFragmenty}
-        /> : <div></div>}
+          {isTable ? 
+          <Elementy
+            elementy={elementy}
+            setElementy={setElementy}
+            handleChangeCardElementy={handleChangeCardElementy}
+            selected_papier={selected_papier}
+            setSelected_papier={setSelected_papier}
+            fragmenty={fragmenty}
+            setFragmenty={setFragmenty}
+          /> 
+          : 
+          <ElementyTable
+        />}
         
 </div>
 

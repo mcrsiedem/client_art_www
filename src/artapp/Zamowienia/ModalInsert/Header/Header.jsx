@@ -11,14 +11,14 @@ const openInNewTab = (url) => {
     <div className={style.container}>
         <div className={style.title}>Dodaj zamówienie...id: {id}</div>
         <div className={style.buttons}>
-        <img
-                            onClick={() => {
-                                setIsTable(!isTable);
-                            }}
-                            className={style.icon}
-                            src={iconTable}
-                            alt="table"
-                          />
+                <img
+                    onClick={() => {
+                        setIsTable(!isTable);
+                    }}
+                    className={style.icon}
+                    src={iconTable}
+                    alt="table"
+                />
         <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anuluj</button>
         <button onClick={() => postZamowienie()} className={style.btn}>Zapisz</button>
         <button onClick={() => openInNewTab("/Zamowienia")}className={style.btn}>Zapisz jako</button>

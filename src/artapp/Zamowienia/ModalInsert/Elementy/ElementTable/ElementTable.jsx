@@ -23,7 +23,9 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
 <table className={style.table}>
 <thead>
           <tr>
-            <th className="th_1">Person Name</th>
+            <th className="col1">#</th>
+            <th className="col2">typ</th>
+            <th className="col2">Nakład</th>
             {/* <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
@@ -46,7 +48,9 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                     //     setRow({ id: row.id, user: row.user });
                                     // }}
                                     >
-                                            <td>1</td>
+                                            <td>{row.id}</td>
+                                            <td>{row.typ}</td>
+                                            <td>{row.naklad}</td>
                                     </tr>
                                 );
                                 })}

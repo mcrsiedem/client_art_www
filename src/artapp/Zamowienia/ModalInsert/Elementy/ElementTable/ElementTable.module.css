@@ -25,6 +25,8 @@
  
   table{
     /* margin: 10px; */
+background-color:  rgb(232, 245, 234);
+color: rgb(108, 107, 107);
   }
 
   table input{
@@ -38,4 +40,9 @@
 
   .col4{
     width: 100px;
+  }
+
+th{
+  background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%);
+  color: rgb(61, 61, 61);
   }

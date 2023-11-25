@@ -22,7 +22,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
   
 <table className={style.table}>
 <thead>
-          <tr>
+          <tr >
             <th className={style.col1}>Zam.</th>
             <th className={style.col2}>Prod.</th>
             <th className={style.col3}>#</th>

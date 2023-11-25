@@ -30,6 +30,7 @@ const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
 const[isTable,setIsTable] =useState(true);
+const[info,setInfo]= useState("napis")
 
 
     return (
@@ -41,6 +42,7 @@ const[isTable,setIsTable] =useState(true);
           id={idZamowienie}
           isTable={isTable}
           setIsTable={setIsTable}
+          info={info}
         />
 
         <Dane
@@ -70,6 +72,8 @@ const[isTable,setIsTable] =useState(true);
           setSelected_papier={setSelected_papier}
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
+          info={info}
+          setInfo={setInfo}
         />}
         
 </div>

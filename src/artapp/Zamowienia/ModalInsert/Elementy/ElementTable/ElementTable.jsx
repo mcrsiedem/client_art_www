@@ -6,7 +6,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo}) {
   return (
     <div className={style.elementCard}>
         
@@ -26,6 +26,8 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className="col1">#</th>
             <th className="col2">typ</th>
             <th className="col2">Nakład</th>
+            <th className="col2">Nazwa</th>
+            <th className="col2">OK</th>
             {/* <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
@@ -51,6 +53,8 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.id}</td>
                                             <td>{row.typ}</td>
                                             <td>{row.naklad}</td>
+                                            <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td>
+                                            <td><button onClick={()=> setInfo("OK")}>OK</button></td>
                                     </tr>
                                 );
                                 })}

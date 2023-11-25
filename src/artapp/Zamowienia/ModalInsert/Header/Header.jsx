@@ -6,10 +6,10 @@ const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
 
- function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable}){
+ function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable,info}){
     return(<>
     <div className={style.container}>
-        <div className={style.title}>Dodaj zamówienie...id: {id}</div>
+        <div className={style.title}>Dodaj zamówienie...id: {id} {info}</div>
         <div className={style.buttons}>
                 <img
                     onClick={() => {

@@ -1,7 +1,7 @@
 import style from "./ElementyTable.module.css";
 import ElementTable from "./ElementTable/ElementTable";
 
-export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty}) {
+export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo}) {
 
     return (
         <>
@@ -12,7 +12,9 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             selected_papier={selected_papier}
             setSelected_papier={setSelected_papier}
             fragmenty={fragmenty}
-            setFragmenty={setFragmenty}/>
+            setFragmenty={setFragmenty}
+            info={info}
+            setInfo={setInfo}/>
                 {/* {
                     elementy.map(((card) => (
                         <ElementCard key={card.id}

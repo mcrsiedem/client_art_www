@@ -53,7 +53,13 @@ const[info,setInfo]= useState("napis")
         />
 
 <div>
+
+        {isTable ?
         <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
+        :
+        <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
+        }
+        
           {isTable ? 
           <Elementy
             elementy={elementy}

@@ -23,11 +23,13 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
 <table className={style.table}>
 <thead>
           <tr>
-            <th className="col1">#</th>
-            <th className="col2">typ</th>
-            <th className="col2">Nakład</th>
-            <th className="col2">Nazwa</th>
-            <th className="col2">OK</th>
+            <th className={style.col1}>Zam.</th>
+            <th className={style.col2}>Prod.</th>
+            <th className={style.col3}>#</th>
+            <th className={style.col4}>typ</th>
+            <th className={style.col5}>Nakład</th>
+            <th className={style.col6}>Nazwa</th>
+            <th className={style.col7}>OK</th>
             {/* <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
             <th className="th_1">Person Name</th>
@@ -50,9 +52,11 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                     //     setRow({ id: row.id, user: row.user });
                                     // }}
                                     >
+                                            <td>{row.zamowienie_id}</td>
+                                            <td>{row.produkt_id}</td>
                                             <td>{row.id}</td>
                                             <td>{row.typ}</td>
-                                            <td>{row.naklad}</td>
+                                            <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><button onClick={()=> setInfo("OK")}>OK</button></td>
                                     </tr>

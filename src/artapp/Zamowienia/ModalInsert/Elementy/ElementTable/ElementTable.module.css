@@ -31,3 +31,7 @@
     background-color: transparent;
     box-shadow: none;
   }
+
+  .col1, .col2, .col3{
+    width: 100px;
+  }

@@ -1,7 +1,7 @@
 .elementCard{
     /* outline: 1px solid rgb(88, 116, 94); */
     border-radius: 10px;
-    width: calc(100vw - 260px);
+    width: calc(100vw - 100px);
     /* height: 8rem; */
     box-shadow: 8px 8px 8px rgb(159, 159, 159);
     background-color: rgb(232, 245, 234);

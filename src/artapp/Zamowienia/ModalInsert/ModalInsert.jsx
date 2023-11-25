@@ -85,13 +85,13 @@ const[info,setInfo]= useState("napis")
 </div>
 
 
-        {/* <Introligatornia
+        <Introligatornia
           zestawy={zestawy}
           setZestawy={setZestawy}
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
         />
-        <Warianty /> */}
+        <Warianty />
 
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 

@@ -31,7 +31,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className={style.col6}>Nazwa</th>
             <th className={style.col7}>Ilość stron</th>
             <th className={style.col7}>Kolor Front</th>
-            <th className={style.col7}>KOlor Back</th>
+            <th className={style.col7}>Kolor Back</th>
             <th className={style.col7}>Netto X</th>
             <th className={style.col7}>Netto Y</th>
             <th className={style.col7}>Papier</th>

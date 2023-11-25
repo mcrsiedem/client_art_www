@@ -12,8 +12,7 @@ export default function Produkty({produkty,handleChangeCardProdukty}){
             <ProduktCard key={card.id} card={card} handleChangeCardProdukty={handleChangeCardProdukty}>
               <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}> dd</Tytul>
               <Wersja card={card} />
-              <button onClick={()=> alert(card.id)}>
-                 Pokaz ID</button>
+          
             </ProduktCard>
           ))}
 

@@ -33,5 +33,9 @@
   }
 
   .col1, .col2, .col3{
+    width: 50px;
+  }
+
+  .col4{
     width: 100px;
   }

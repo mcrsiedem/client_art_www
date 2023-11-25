@@ -26,17 +26,10 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className={style.col1}>Zam.</th>
             <th className={style.col2}>Prod.</th>
             <th className={style.col3}>#</th>
-            <th className={style.col4}>typ</th>
+            <th className={style.col4}>Typ</th>
             <th className={style.col5}>Nakład</th>
             <th className={style.col6}>Nazwa</th>
             <th className={style.col7}>OK</th>
-            {/* <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th>
-            <th className="th_1">Person Name</th> */}
           </tr>
 
         </thead>

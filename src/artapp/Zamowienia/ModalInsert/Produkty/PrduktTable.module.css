@@ -1,4 +1,4 @@
-.elementCard{
+.element{
     /* outline: 1px solid rgb(88, 116, 94); */
     border-radius: 10px;
     width: calc(100vw - 40px);
@@ -10,11 +10,12 @@
   
 
   .header{
-    display: grid;
-    grid-template-columns: 20px 1fr 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-image: linear-gradient(rgb(95, 186, 21) 0%,rgb(110, 209, 29) 50%,rgb(95, 186, 21) 100%); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* background-image: linear-gradient(rgb(107, 158, 224) 0%,rgb(126, 182, 255) 50%,rgb(107, 158, 224) 100%); */
+    background-image: var(--mr-gr-produktCard-header);
   
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -34,11 +35,11 @@
     box-shadow: none;
   }
 
-  .col1, .col2, .col3, .col5{
+  .col1, .col2, .col5{
     width: 50px;
   }
 
-  .col4{
+  .col3{
     width: 100px;
   }
 

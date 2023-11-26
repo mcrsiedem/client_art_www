@@ -3,13 +3,13 @@
 import style from "./PrduktTable.module.css";
 import { _papiery } from "../api"
 
-import ProduktTableHeader from "./ProduktTableHeader"
+// import ProduktTableHeader from "./ProduktTableHeader"
 
 
 
 export default function ProduktTable({produkty}) {
   return (
-    <div className={style.elementCard}>
+    <div className={style.element}>
         
       <ProduktTableHeader
         // card={card}
@@ -25,21 +25,17 @@ export default function ProduktTable({produkty}) {
 <thead>
           <tr >
             <th className={style.col1}>Zam.</th>
-            <th className={style.col2}>Prod.</th>
-            <th className={style.col3}>#</th>
-            <th className={style.col4}>Typ</th>
-            <th className={style.col5}>Nakład</th>
-            <th className={style.col6}>Nazwa</th>
-            <th className={style.col7}>Ilość stron</th>
-            <th className={style.col7}>Kolor Front</th>
-            <th className={style.col7}>Kolor Back</th>
+   
+            <th className={style.col2}>#</th>
+            <th className={style.col3}>Typ</th>
+            <th className={style.col4}>Tytuł</th>
+            <th className={style.col5}>Wersja</th>
+            <th className={style.col6}>Ilość stron</th>
             <th className={style.col7}>Netto X</th>
-            <th className={style.col7}>Netto Y</th>
-            <th className={style.col7}>Papier</th>
-            <th className={style.col7}>Gramatura</th>
-            <th className={style.col7}>Wykończenie</th>
-            <th className={style.col7}>Lakier</th>
-          //  <th className={style.col7}>OK</th>
+            <th className={style.col8}>Netto Y</th>
+            <th className={style.col9}>Oprawa</th>
+            <th className={style.col10}>Nakład</th>
+
           </tr>
 
         </thead>
@@ -56,22 +52,20 @@ export default function ProduktTable({produkty}) {
                                     // }}
                                     >
                                             <td>{row.zamowienie_id}</td>
-                                            <td>{row.produkt_id}</td>
+                            
                                             <td>{row.id}</td>
                                             <td>{row.typ}</td>
-                                            <td>{row.typ}</td>
-                                            <td>{row.typ}</td>
+                                            <td>{row.tytul}</td>
+                                            <td>{row.wersja}</td>
                                             {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td> */}
                                             <td>{row.ilosc_stron}</td>
-                                            <td>{row.kolor_front}</td>
-                                            <td>{row.kolor_back}</td>
+                                
                                             <td>{row.format_x}</td>
                                             <td>{row.format_y}</td>
-                                            <td>{row.papier_id}</td>
-                                            <td>{row.gramatura}</td>
-                                            <td>{row.wykonczenie}</td>
-                                            <td>{row.uszlachetnianie_id}</td>
+                                            <td>{row.oprawa}</td>
+                                            <td>{row.naklad}</td>
+                             
                                            {/* <td><button onClick={()=> setInfo("OK")}>OK</button></td> */}
                                       
                                     </tr>
@@ -96,3 +90,108 @@ export default function ProduktTable({produkty}) {
 }
 
 
+function ProduktTableHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
+    const handleRemoveItem = (index) => {
+      if (elementy.length !== 1) {
+        setElementy(elementy.filter((x) => x.index !== index));
+      }
+  
+      setElementy((prev) =>
+        prev.map((t, a) => {
+          if (t.index > index) {
+            return {
+              ...t,
+              index: t.index--,
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+    };
+  
+  
+                    return (
+                      <div className={style.header}>
+                        <div className={style.typ}>
+                          {/* <img
+                            onClick={() => {
+                              handleRemoveItem(card.index);
+                            }}
+                            className={style.icon}
+                            src={iconTrash}
+                            alt="delete"
+                          /> */}
+                        </div>
+  
+                        <div className={style.typ}>
+                          {" "}
+                          {/* # {card.id} {card.typ} {card.naklad} szt. Prod{card.produkt_id}{" "} */}
+                        </div>
+                        <div className={style.typ}>
+                          {/* <img
+                            onClick={() => handleAddCard(card)}
+                            className={style.icon}
+                            src={iconCopy}
+                            alt="add"
+                          /> */}
+                        </div>
+                      </div>
+                    );
+  
+  
+    // function handleAddCard(card) {
+    //   const newElementy = elementy.slice();
+  
+    //   newElementy.map((x) => {
+    //     if (x.index > card.index) {
+    //       return {
+    //         ...x,
+    //         //     index: x.index++,
+    //       };
+    //     } else {
+    //       return x;
+    //     }
+    //   });
+  
+    //   newElementy.push({
+    //     id: Math.max(...elementy.map((f) => f.id)) + 1,
+    //     zamowienie_id: card.zamowienie_id,
+    //     produkt_id: card.produkt_id,
+    //     naklad: card.naklad,
+    //     index: Math.max(...newElementy.map((f) => f.index)) + 1,
+    //   });
+  
+    //   newElementy.sort((a, b) => a.index - b.index);
+    //   setElementy(newElementy);
+    //   // setElementy((prev) =>prev.map((t)=> {return t}));
+  
+    //   //-------------------
+    //   const newFragmenty = fragmenty.slice();
+  
+    //   newFragmenty.map((x) => {
+    //     if (x.index > card.index) {
+    //       return {
+    //         ...x,
+    //         //     index: x.index++,
+    //       };
+    //     } else {
+    //       return x;
+    //     }
+    //   });
+  
+    //   //let nextId = Math.max(...fragmenty.map(f=>f.id));
+  
+    //   newFragmenty.push({
+    //     id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+    //     zamowienie_id: card.zamowienie_id,
+    //     produkt_id: card.produkt_id,
+    //     naklad: card.naklad,
+    //     element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+    //     index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+    //   });
+  
+    //   newFragmenty.sort((a, b) => a.index - b.index);
+    //   setFragmenty(newFragmenty);
+    // }
+  }

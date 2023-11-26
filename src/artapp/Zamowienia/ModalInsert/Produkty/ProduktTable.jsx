@@ -9,7 +9,7 @@ import { _papiery } from "../api"
 
 export default function ProduktTable({produkty}) {
   return (
-    <div className={style.element}>
+    <div className={style.produkt}>
         
       <ProduktTableHeader
         // card={card}

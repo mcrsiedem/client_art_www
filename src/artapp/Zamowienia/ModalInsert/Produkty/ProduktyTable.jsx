@@ -1,4 +1,5 @@
 
+import ProduktTable from './ProduktTable';
 import style from './ProduktyTable.module.css'
 
 
@@ -8,14 +9,15 @@ export default function ProduktyTable({produkty,handleChangeCardProdukty}){
     return (
       <>
         <div id="Produkty" className={style.produkty}>
-          {produkty.map((card) => (
+          <ProduktTable produkty={produkty}/>
+          {/* {produkty.map((card) => (
             <ProduktCard key={card.id} card={card} handleChangeCardProdukty={handleChangeCardProdukty}>
               <Tytul card={card} handleChangeCardProdukty={handleChangeCardProdukty}> dd</Tytul>
               <Wersja card={card} />
               <button onClick={()=> alert(card.id)}>
                  Pokaz ID</button>
             </ProduktCard>
-          ))}
+          ))} */}
 
         </div>
       </>

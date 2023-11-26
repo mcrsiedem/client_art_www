@@ -14,6 +14,7 @@ import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
 import {ip} from "../../../Host"
 import ElementyTable from './Elementy/ElementyTable';
+import ProduktyTable from './Produkty/ProduktyTable';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -52,38 +53,43 @@ const[info,setInfo]= useState("napis")
           setKlient={(kl) => setKlient(kl)}
         />
 
-<div>
+        <div>
+          {isTable ? (
+            <Produkty
+              produkty={produkty}
+              handleChangeCardProdukty={handleChangeCardProdukty}
+            />
+          ) : (
+            <ProduktyTable
+              produkty={produkty}
+              handleChangeCardProdukty={handleChangeCardProdukty}
+            />
+          )}
 
-        {isTable ?
-        <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
-        :
-        <Produkty produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
-        }
-        
-          {isTable ? 
-          <Elementy
-            elementy={elementy}
-            setElementy={setElementy}
-            handleChangeCardElementy={handleChangeCardElementy}
-            selected_papier={selected_papier}
-            setSelected_papier={setSelected_papier}
-            fragmenty={fragmenty}
-            setFragmenty={setFragmenty}
-          /> 
-          : 
-          <ElementyTable         elementy={elementy}
-          setElementy={setElementy}
-          handleChangeCardElementy={handleChangeCardElementy}
-          selected_papier={selected_papier}
-          setSelected_papier={setSelected_papier}
-          fragmenty={fragmenty}
-          setFragmenty={setFragmenty}
-          info={info}
-          setInfo={setInfo}
-        />}
-        
-</div>
-
+          {isTable ? (
+            <Elementy
+              elementy={elementy}
+              setElementy={setElementy}
+              handleChangeCardElementy={handleChangeCardElementy}
+              selected_papier={selected_papier}
+              setSelected_papier={setSelected_papier}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+            />
+          ) : (
+            <ElementyTable
+              elementy={elementy}
+              setElementy={setElementy}
+              handleChangeCardElementy={handleChangeCardElementy}
+              selected_papier={selected_papier}
+              setSelected_papier={setSelected_papier}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              info={info}
+              setInfo={setInfo}
+            />
+          )}
+        </div>
 
         <Introligatornia
           zestawy={zestawy}

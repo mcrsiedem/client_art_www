@@ -15,6 +15,7 @@ import axios from "axios";
 import {ip} from "../../../Host"
 import ElementyTable from './Elementy/ElementyTable';
 import ProduktyTable from './Produkty/ProduktyTable';
+import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -90,13 +91,21 @@ const[info,setInfo]= useState("napis")
             />
           )}
         </div>
-
+        {isTable ? 
         <Introligatornia
           zestawy={zestawy}
           setZestawy={setZestawy}
           fragmenty={fragmenty}
           setFragmenty={setFragmenty}
-        />
+        /> :
+        <IntroligatorniaTable
+        zestawy={zestawy}
+        setZestawy={setZestawy}
+        fragmenty={fragmenty}
+        setFragmenty={setFragmenty}
+      />
+
+}
         <Warianty />
 
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}

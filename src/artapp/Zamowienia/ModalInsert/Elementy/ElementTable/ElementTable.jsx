@@ -7,6 +7,14 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo}) {
+  const nakladHandler = (row,e) => { handleChangeCardElementy({ ...row, naklad: e.target.value }) }
+  // const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }
+  // const stronyHandler = (e) => { handleChangeCardElementy({ ...card, ilosc_stron: e.target.value }) }
+  // const formatXHandler = (e) => { handleChangeCardElementy({ ...card, format_x: e.target.value }) }
+  // const formatYHandler = (e) => { handleChangeCardElementy({ ...card, format_y: e.target.value }) }
+  // const kolorFrontHandler = (e) => { handleChangeCardElementy({ ...card, kolor_front: e.target.value }) }
+  // const kolorBackHandler = (e) => { handleChangeCardElementy({ ...card, kolor_back: e.target.value }) }
+  // const papierkHandler = (e) => { handleChangeCardElementy({ ...card, papier_id: e.target.value }) }
   return (
     <div className={style.elementCard}>
         
@@ -26,14 +34,13 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className={style.col1}>Zam.</th>
             <th className={style.col2}>Prod.</th>
             <th className={style.col3}>#</th>
-            <th className={style.col4}>Typ</th>
-            <th className={style.col5}>Nakład</th>
-            <th className={style.col6}>Nazwa</th>
-            <th className={style.col7}>Ilość stron</th>
-            <th className={style.col7}>Kolor Front</th>
-            <th className={style.col7}>Kolor Back</th>
-            <th className={style.col7}>Netto X</th>
-            <th className={style.col7}>Netto Y</th>
+            <th className={style.col_typ}>Typ</th>
+            <th className={style.col_naklad}>Nakład</th>
+            <th className={style.col_nazwa}>Nazwa</th>
+            <th className={style.col_strony}>Strony</th>
+            <th className={style.col_kolory}>Kolory</th>
+            <th className={style.col_format} colspan="2">Netto</th>
+           
             <th className={style.col7}>Papier</th>
             <th className={style.col7}>Gramatura</th>
             <th className={style.col7}>Wykończenie</th>
@@ -58,11 +65,10 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.produkt_id}</td>
                                             <td>{row.id}</td>
                                             <td>{row.typ}</td>
-                                            <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
+                                            <td><input defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td>{row.ilosc_stron}</td>
                                             <td>{row.kolor_front}</td>
-                                            <td>{row.kolor_back}</td>
                                             <td>{row.format_x}</td>
                                             <td>{row.format_y}</td>
                                             <td>{row.papier_id}</td>

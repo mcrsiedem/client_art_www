@@ -80,7 +80,7 @@ const initialElementy = [
     typ: "Okładka",
     nazwa: "PL",
     ilosc_stron: "4",
-    kolor_front: "4",
+    kolor_front: "CMYK PANTONE 666 / CMYK PANTONE 666 ",
     kolor_back: "4",
     format_x: "210",
     format_y: "297",

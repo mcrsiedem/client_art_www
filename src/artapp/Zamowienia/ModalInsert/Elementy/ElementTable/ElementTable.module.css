@@ -29,9 +29,10 @@
 /* background-color: rgb(0, 245, 0); */
   }
 
-  table input{
+  .table input{
     background-color: transparent;
     box-shadow: none;
+    height:2rem;
   }
 
   .col1, .col2, .col3, .col5{

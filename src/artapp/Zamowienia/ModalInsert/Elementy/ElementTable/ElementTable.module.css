@@ -42,8 +42,17 @@
     width: 100px;
   }
 
-table th{
-  background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%);
+.table th, .table tr:nth-child(even){
+  /* background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%); */
+  background-color: rgb(191, 209, 194);
   color: rgb(61, 61, 61);
   font-size: 0.9rem;
+
   }
+  .table tr:nth-child(odd){
+    background-color: rgb(213, 230, 216);
+  }
+
+
+
+

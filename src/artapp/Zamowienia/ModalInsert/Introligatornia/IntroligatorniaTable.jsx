@@ -25,7 +25,7 @@ function Oprawa({ nr,zestawy }) {
 
 
   return (
-    <div className={style.oprawaCard}>
+    <div className={style.oprawaTable}>
       <Header nr={nr} />
 
       <div className={style.main}>

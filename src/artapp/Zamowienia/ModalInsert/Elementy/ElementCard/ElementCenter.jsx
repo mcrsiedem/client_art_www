@@ -13,8 +13,8 @@ export default function CardCenter({ card, handleChangeCardElementy, selected_pa
   
     return (
       <div className={style.center}>
-        {/* <div className={style.row}>
-          <Naklad card={card} nakladHandler={nakladHandler} />
+        <Naklad card={card} nakladHandler={nakladHandler} />
+        <div className={style.row}>
           <Strony card={card} stronyHandler={stronyHandler} />
           <Wersja card={card} stronyHandler={nazwaHandler} />
         </div>
@@ -22,7 +22,7 @@ export default function CardCenter({ card, handleChangeCardElementy, selected_pa
         <Format card={card} formatXHandler={formatXHandler} formatYHandler={formatYHandler} />
         <Kolory card={card} kolorFrontHandler={kolorFrontHandler} kolorBackHandler={kolorBackHandler} />
         <Papier card={card} selected_papier={selected_papier} setSelected_papier={setSelected_papier} papierkHandler={papierkHandler} />
-        <Uszlachetnianie card={card} nakladHandler={nakladHandler} /> */}
+        <Uszlachetnianie card={card} nakladHandler={nakladHandler} />
         <div className={style.row}> id {card.id}  index: {card.index}</div>
       </div>);
   }
@@ -59,7 +59,7 @@ export default function CardCenter({ card, handleChangeCardElementy, selected_pa
   function Naklad({card,nakladHandler}){
     return(     <div className={style.col}>
       <label className={style.label}> Nakład</label>
-      <input className={style.tytul} defaultValue={card.naklad} onChange={nakladHandler}></input>
+      <input className={style.tytul} defaultValue={card.naklad} onChange={(e)=>nakladHandler(e)}></input>
     </div>);
   }
   function Kolory({ card, kolorFrontHandler, kolorBackHandler }) {

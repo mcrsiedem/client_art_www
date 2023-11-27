@@ -217,18 +217,30 @@ const[info,setInfo]= useState("napis")
       }
     
     
-    function handleChangeCardElementy(card) {
-      setElementy(elementy.map((tabl)=>(tabl.map((t) => {
+  //   function handleChangeCardElementy(card) {
+  //     setElementy(
+  //       elementy.map((tabl)=>{
+  //         tabl.map((t) => {
+  //       if (t.id === card.id) {
+  //         return card;
+  //       } else {
+  //         return t;
+  //       }
+  //     })
+  //   );
+  // }
+    
+  function handleChangeCardElementy(card) {
+    setElementy(
+      elementy.map((t) => {
         if (t.id === card.id) {
           return card;
         } else {
           return t;
         }
-      })))
-        
-      );
-    }
-    
+      })
+    );
+  }
     function handleChangeCardProdukty(card) {
       setProdukty(
         produkty.map((t) => {

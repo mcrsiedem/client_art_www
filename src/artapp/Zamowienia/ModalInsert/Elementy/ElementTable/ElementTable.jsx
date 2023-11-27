@@ -7,7 +7,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo}) {
-  const nakladHandler = (row,e) => { handleChangeCardElementy({ ...row, naklad: e.target.value }) }
+   const nakladHandler = (e,row) => { handleChangeCardElementy({ ...row, naklad: e.target.value }) }
   // const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }
   // const stronyHandler = (e) => { handleChangeCardElementy({ ...card, ilosc_stron: e.target.value }) }
   // const formatXHandler = (e) => { handleChangeCardElementy({ ...card, format_x: e.target.value }) }
@@ -65,7 +65,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.produkt_id}</td>
                                             <td>{row.id}</td>
                                             <td>{row.typ}</td>
-                                            <td><input defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
+                                            <td><input defaultValue={row.naklad} onChange={(e)=>nakladHandler(e,row)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td>{row.ilosc_stron}</td>
                                             <td>{row.kolor_front}</td>

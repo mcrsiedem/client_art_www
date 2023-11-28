@@ -6,7 +6,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia}) {
   //  const nakladHandler = (e,row) => { handleChangeCardElementy({ ...row, naklad: e.target.value }) }
   // const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }
   // const stronyHandler = (e) => { handleChangeCardElementy({ ...card, ilosc_stron: e.target.value }) }

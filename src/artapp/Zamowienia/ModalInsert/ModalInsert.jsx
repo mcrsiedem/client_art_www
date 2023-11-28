@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
 import Produkty from './Produkty/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty} from './api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
@@ -29,12 +29,36 @@ const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
+const [selected_wykonczenie, setSelected_wykonczenie] = useState();
+const [uszlachetnienia, setUszlachetnienia] = useState(_uszlachetnienia[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
 const[isTable,setIsTable] =useState(true);
 const[info,setInfo]= useState("napis")
+let listaUszlachetnien = [];
+let listaWykonczenia = [];
 
+// async function fechListaUszlachetnien() {
 
+//   // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
+//   //                           .filter(row=> row.status !== "Nowe")
+//   // setData(job);
+
+//   // setData(zamowienia);
+
+// };
+async function fechListy() {
+
+  const res = await axios.get(ip + 'lista-wykonczen');
+  listaWykonczenia = [...res.data];
+
+  const res2 = await axios.get(ip + 'lista-uszlachetnien');
+  listaUszlachetnien = [...res2.data];
+};
+
+useEffect(()=>{
+  fechListy();
+ },[])
     return (
       <div className={style.container}>
         <Header
@@ -88,6 +112,7 @@ const[info,setInfo]= useState("napis")
               setFragmenty={setFragmenty}
               info={info}
               setInfo={setInfo}
+              listaWykonczenia={listaWykonczenia}
             />
           )}
         </div>
@@ -154,7 +179,16 @@ const[info,setInfo]= useState("napis")
                             nazwa: element.nazwa,
                             zamowienie_id: zamowienie_id,
                             produkt_id: produkt_id,
-                            naklad: element.naklad
+                            naklad: element.naklad,
+                            strony:element.strony,
+                            kolory:element.kolory,
+                            format_x:element.format_x,
+                            format_y:element.format_y,
+                            papier_id:element.papier_id,
+                            gramatura:element.gramatura,
+                            wykonczenie:element.wykonczenie,
+
+
                           });
                           let element_id = res.data.insertId;
     

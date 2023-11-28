@@ -80,15 +80,15 @@ const initialElementy = [
     typ: "Okładka",
     nazwa: "PL",
     ilosc_stron: "4",
-    kolor_front: "CMYK PANTONE 666 / CMYK PANTONE 666 ",
-    kolor_back: "4",
+    kolory: "CMYK PANTONE 666 / CMYK PANTONE 666 ",
     format_x: "210",
     format_y: "297",
     papier_id: "Karton",
     gramatura: "250",
     wykonczenie: "gloss",
     naklad: "1000",
-    uszlachetnianie_id: "UV",
+    lakier_front: "UV",
+    lakier_back: "UV",
     index: 0
   },
   {
@@ -255,6 +255,10 @@ const _wykonczenie = [
 
   }
 ]
+
+
+
+
   const _oprawa = [
     {
       id: 1,
@@ -275,4 +279,19 @@ const _wykonczenie = [
 
 ]
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty};
+const _uszlachetnienia = [
+  {
+    id: 1,
+    nazwa: "UV"
+  },{
+    id: 2,
+    nazwa: "Dyspersja",
+  }
+  ,{
+    id: 3,
+    nazwa: "Folia mat",
+  }
+]
+
+
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,_uszlachetnienia};

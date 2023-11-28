@@ -154,6 +154,7 @@ const[info,setInfo]= useState("napis")
                             nazwa: element.nazwa,
                             zamowienie_id: zamowienie_id,
                             produkt_id: produkt_id,
+                            naklad: element.naklad
                           });
                           let element_id = res.data.insertId;
     

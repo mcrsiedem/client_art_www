@@ -29,15 +29,17 @@ const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
-const [selected_wykonczenie, setSelected_wykonczenie] = useState();
+
 const [uszlachetnienia, setUszlachetnienia] = useState(_uszlachetnienia[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
 const[isTable,setIsTable] =useState(true);
 const[info,setInfo]= useState("napis")
-let listaUszlachetnien = [];
-let listaWykonczenia = [];
 
+
+const[listaWykonczenia,setListaWykonczenia]= useState();
+const[listaUszlachetnien,setListaUszlachetnien]= useState();
+const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 // async function fechListaUszlachetnien() {
 
 //   // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
@@ -50,10 +52,11 @@ let listaWykonczenia = [];
 async function fechListy() {
 
   const res = await axios.get(ip + 'lista-wykonczen');
-  listaWykonczenia = [...res.data];
+  
+  setListaWykonczenia([...res.data]);
 
   const res2 = await axios.get(ip + 'lista-uszlachetnien');
-  listaUszlachetnien = [...res2.data];
+  setListaUszlachetnien([...res2.data]);
 };
 
 useEffect(()=>{
@@ -113,6 +116,8 @@ useEffect(()=>{
               info={info}
               setInfo={setInfo}
               listaWykonczenia={listaWykonczenia}
+              selected_wykonczenie={selected_wykonczenie}
+              setSelected_wykonczenie={setSelected_wykonczenie}
             />
           )}
         </div>

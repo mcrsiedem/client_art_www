@@ -6,7 +6,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,selected_wykonczenie,setSelected_wykonczenie}) {
   //  const nakladHandler = (e,row) => { handleChangeCardElementy({ ...row, naklad: e.target.value }) }
   // const nazwaHandler = (e) => { handleChangeCardElementy({ ...card, nazwa: e.target.value }) }
   // const stronyHandler = (e) => { handleChangeCardElementy({ ...card, ilosc_stron: e.target.value }) }
@@ -73,7 +73,18 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.format_y}</td>
                                             <td>{row.papier_id}</td>
                                             <td>{row.gramatura}</td>
-                                            <td>{row.wykonczenie}</td>
+                                            <td><select
+                                                className={style.select}
+                                                value={selected_wykonczenie}
+                                                 onChange={(e)=>handleChangeCardElementy({ ...row, wykonczenie: e.target.value })}
+                                              >
+                                                {listaWykonczenia.map((option) => (
+                                                  <option key={option.id} value={option.id}>
+                                                  {option.nazwa} 
+                                                  </option>
+                                                ))}
+                                              </select>
+                                              </td>
                                             <td>{row.uszlachetnianie_id}</td>
                                             <td><button onClick={()=> setInfo("OK")}>OK</button></td>
                                       

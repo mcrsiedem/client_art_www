@@ -75,7 +75,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.gramatura}</td>
                                             <td><select
                                                 className={style.select}
-                                                value={selected_wykonczenie}
+                                                defaultValue={selected_wykonczenie}
                                                  onChange={(e)=>handleChangeCardElementy({ ...row, wykonczenie: e.target.value })}
                                               >
                                                 {listaWykonczenia.map((option) => (

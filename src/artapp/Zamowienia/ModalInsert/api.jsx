@@ -85,7 +85,7 @@ const initialElementy = [
     format_y: "297",
     papier_id: "Karton",
     gramatura: "250",
-    wykonczenie: "gloss",
+    wykonczenie: "1",
     naklad: "1000",
     lakier_front: "UV",
     lakier_back: "UV",
@@ -104,7 +104,7 @@ const initialElementy = [
     format_y: "297",
     papier_id: "Offset",
     gramatura: "110",
-    wykonczenie: "",
+    wykonczenie: "1",
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 1
@@ -122,7 +122,7 @@ const initialElementy = [
     format_y: "297",
     papier_id: "Karton",
     gramatura: "250",
-    wykonczenie: "gloss",
+    wykonczenie: "1",
     naklad: "1000",
     uszlachetnianie_id: "UV",
     index: 2
@@ -140,7 +140,7 @@ const initialElementy = [
     format_y: "297",
     papier_id: "Offset",
     gramatura: "110",
-    wykonczenie: "",
+    wykonczenie: "1",
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 3

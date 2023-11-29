@@ -16,8 +16,7 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             info={info}
             setInfo={setInfo}
             listaWykonczenia={listaWykonczenia}
-            selected_wykonczenie={selected_wykonczenie}
-            setSelected_wykonczenie={setSelected_wykonczenie}/>
+          />
             
                 {/* {
                     elementy.map(((card) => (

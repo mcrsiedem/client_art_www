@@ -85,6 +85,9 @@
     font-size:1rem;
   }
 
-
+.table .select{
+  background-color: transparent;
+  box-shadow: none;
+}
 
 

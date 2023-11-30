@@ -47,7 +47,9 @@
     .col5 {
       width: 70px;
     }
-  
+    .col_id {
+      width: 20px;
+    }
     .col_typ {
       width: 80px;
     }
@@ -59,15 +61,17 @@
     .col_strony {
       width: 70px;
     }
-  
-    .col_nazwa {
-      /* width: 200px; */
+    .col_gramatura {
+      width: 70px;
     }
-    .col_kolory {
-      /* width: 150px; */
+    .col_wykonczenie {
+      width: 100px;
+    }
+    .col_wersja {
+      /* max-width: 500px; */
     }
     .col_format {
-      width: 40px;
+      width: 50px;
     }
   
 

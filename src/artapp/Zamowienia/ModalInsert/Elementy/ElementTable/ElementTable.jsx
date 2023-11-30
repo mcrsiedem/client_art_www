@@ -32,11 +32,11 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_wersja}>Wersja</th>
             <th className={style.col_strony}>Strony</th>
-            <th className={style.col_kolory}>Kolory</th>
             <th className={style.col_format} colspan="2">Netto</th>
+            <th className={style.col_kolory}>Kolory</th>
            
             <th className={style.col7}>Papier</th>
-            <th className={style.col_gramatura}>Gramatura</th>
+            <th className={style.col_gramatura}>g/m2</th>
             <th className={style.col_wykonczenie}>Wykończenie</th>
             <th className={style.col7}>Lakier</th>
             <th className={style.col7}>OK</th>
@@ -63,9 +63,9 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td><input defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>handleChangeCardElementy({ ...row, nazwa: e.target.value })}></input></td>
                                             <td><input defaultValue={row.ilosc_stron} onChange={(e)=>handleChangeCardElementy({ ...row, ilosc_stron: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.kolory} onChange={(e)=>handleChangeCardElementy({ ...row, kolory: e.target.value })}></input></td>
                                             <td className={style.col_format}><input defaultValue={row.format_x} onChange={(e)=>handleChangeCardElementy({ ...row, format_x: e.target.value })}></input></td>
                                             <td className={style.col_format}><input defaultValue={row.format_y} onChange={(e)=>handleChangeCardElementy({ ...row, format_y: e.target.value })}></input></td>
+                                            <td><input defaultValue={row.kolory} onChange={(e)=>handleChangeCardElementy({ ...row, kolory: e.target.value })}></input></td>
                                             <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td>
                                             <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td>
                                          

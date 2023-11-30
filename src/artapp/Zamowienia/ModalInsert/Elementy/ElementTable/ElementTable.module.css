@@ -55,23 +55,23 @@
     }
   
     .col_naklad {
-      width: 95px;
+      width: 85px;
     }
   
     .col_strony {
       width: 70px;
     }
     .col_gramatura {
-      width: 70px;
+      width: 60px;
     }
     .col_wykonczenie {
       width: 100px;
     }
     .col_wersja {
-      /* max-width: 500px; */
+      width: 100px;
     }
     .col_format {
-      width: 50px;
+      width: 55px;
     }
   
 

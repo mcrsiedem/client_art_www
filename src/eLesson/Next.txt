@@ -11,3 +11,8 @@ Przenoszenie
 
 setSelected(prevState =>(!prevState));
 
+
+Elementy:
+1. Baza papierów
+2. Baza lakierów
+3. Baza typów Okładka / Środek / Ulotka / Insert / Wklejka / Wyklejka / Oklejka / Obwoluta

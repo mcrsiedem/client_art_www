@@ -77,7 +77,7 @@ function Login() {
               name="login"
               placeholder="Login"
               onChange={(e) => setValues({ ...values, login: e.target.value })}
-              className={style.input}
+              className={style.loginInput}
            
             />
           </div>
@@ -88,7 +88,7 @@ function Login() {
               name="haslo"
               placeholder="Hasło"
               onChange={(e) => setValues({ ...values, haslo: e.target.value })}
-              className={style.input}
+              className={style.loginInput}
              
             />
           </div>

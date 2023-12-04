@@ -21,15 +21,15 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
 
       <div className={style.main}>
   
-<table className={style.table}>
+<table className={style.table2}>
 <thead>
           <tr >
             {/* <th className={style.col1}>Zam.</th>
             <th className={style.col2}>Prod.</th>
             <th className={style.col3}>#</th> */}
-            <th className={style.col_id}>#</th>
-            <th className={style.col_typ}>Typ</th>
-            <th className={style.col_naklad}>Nakład</th>
+            <th className={style.col1}>#</th>
+            <th className={style.col2}>Typ</th>
+            <th >Nakład</th>
             <th className={style.col_wersja}>Wersja</th>
             <th className={style.col_strony}>Strony</th>
             <th className={style.col_format} colspan="2">Netto</th>
@@ -61,7 +61,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td>{row.id}</td> */}
                                             <td>{i+1}</td>
                                             <td>{row.typ}</td>
-                                            <td><input defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
+                                            <td><input className={style.col_naklad} defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>handleChangeCardElementy({ ...row, nazwa: e.target.value })}></input></td>
                                             <td><input defaultValue={row.ilosc_stron} onChange={(e)=>handleChangeCardElementy({ ...row, ilosc_stron: e.target.value })}></input></td>
                                             <td className={style.col_format}><input defaultValue={row.format_x} onChange={(e)=>handleChangeCardElementy({ ...row, format_x: e.target.value })}></input></td>

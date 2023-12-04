@@ -68,3 +68,7 @@
     background-color: (#f0ff35, #a9ff00),
         linear-gradient(  #ee8036 25%, #80c800 80%);
     }
+
+    form input{
+        background-color: transparent;
+      }

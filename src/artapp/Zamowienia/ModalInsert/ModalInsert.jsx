@@ -39,6 +39,8 @@ const[info,setInfo]= useState("napis")
 
 const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
+const[listaPapierow,setListaPapierow]= useState();
+const[listaGramatur,setListaGramatur]= useState();
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 // async function fechListaUszlachetnien() {
 
@@ -52,11 +54,19 @@ const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 async function fechListy() {
 
   const res = await axios.get(ip + 'lista-wykonczen');
-  
   setListaWykonczenia([...res.data]);
 
   const res2 = await axios.get(ip + 'lista-uszlachetnien');
   setListaUszlachetnien([...res2.data]);
+
+  const res3 = await axios.get(ip + 'lista-papierow');
+  setListaPapierow([...res3.data]);
+
+  const res4 = await axios.get(ip + 'lista-gramatur');
+  setListaGramatur([...res4.data]);
+
+
+
 };
 
 useEffect(()=>{
@@ -118,6 +128,8 @@ useEffect(()=>{
               listaWykonczenia={listaWykonczenia}
               selected_wykonczenie={selected_wykonczenie}
               setSelected_wykonczenie={setSelected_wykonczenie}
+              setListaPapierow={setListaPapierow}
+              setListaGramatur={setListaGramatur}
             />
           )}
         </div>

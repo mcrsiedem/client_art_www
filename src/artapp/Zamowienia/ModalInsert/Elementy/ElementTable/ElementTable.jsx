@@ -6,7 +6,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,listaPapierow,listGramatur}) {
 
   return (
     <div className={style.elementCard}>
@@ -68,6 +68,8 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td className={style.col_format}><input defaultValue={row.format_y} onChange={(e)=>handleChangeCardElementy({ ...row, format_y: e.target.value })}></input></td>
                                             <td><input defaultValue={row.kolory} onChange={(e)=>handleChangeCardElementy({ ...row, kolory: e.target.value })}></input></td>
                                             <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td>
+
+                                            
                                             <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td>
                                             <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td>
                                          

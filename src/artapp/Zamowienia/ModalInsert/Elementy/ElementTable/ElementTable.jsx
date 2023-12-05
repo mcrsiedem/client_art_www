@@ -6,7 +6,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,listaPapierow,listGramatur}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
 
   return (
     <div className={style.elementCard}>
@@ -36,9 +36,9 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
             <th className={style.col_kolory}>Kolory</th>
            
             <th className={style.col7}>Papier</th>
+            <th className={style.col_wykonczenie}>matt / gloss</th>
             <th className={style.col_gramatura}>g/m2</th>
-            <th className={style.col_gramatura}>Vol.</th>
-            <th className={style.col_wykonczenie}>Wykończenie</th>
+            {/* <th className={style.col_gramatura}>Vol.</th> */}
             <th className={style.col7}>Lakier</th>
             <th className={style.col7}>OK</th>
           </tr>
@@ -82,9 +82,7 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                               </select>
                                               </td>
 
-                                            <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td>
-                                         
+                                            {/* <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td> */}
                                             <td><select
                                                 className={style.select}
                                                 defaultValue={row.wykonczenie}
@@ -97,6 +95,23 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                                 ))}
                                               </select>
                                               </td>
+                                            <td><select
+                                                className={style.select}
+                                                defaultValue={row.gramatura}
+                                                 onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}
+                                              >
+                                                {listaGramatur.map((option) => (
+                                                  <option key={option.id} value={option.id}>
+                                                  {option.gramatura} g/m2  vol. {option.bulk} 
+                                                  </option>
+                                                ))}
+                                              </select>
+                                              </td>
+
+                                              
+                                            {/* <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td> */}
+                                         
+                                  
                                             <td>{row.uszlachetnianie_id}</td>
                                             <td><button onClick={()=> setInfo("OK")}>OK</button></td>
                                       

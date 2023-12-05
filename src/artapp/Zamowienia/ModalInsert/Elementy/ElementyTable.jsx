@@ -1,7 +1,7 @@
 import style from "./ElementyTable.module.css";
 import ElementTable from "./ElementTable/ElementTable";
 
-export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,selected_wykonczenie,setSelected_wykonczenie,setListaPapierow,setListaGramatur}) {
+export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,selected_wykonczenie,setSelected_wykonczenie,listaGramatur,listaPapierow}) {
 
     return (
         <>
@@ -16,8 +16,8 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             info={info}
             setInfo={setInfo}
             listaWykonczenia={listaWykonczenia}
-            setListaPapierow={setListaPapierow}
-              setListaGramatur={setListaGramatur}
+            listaGramatur={listaGramatur}
+              listaPapierow={listaPapierow}
           />
             
                 {/* {

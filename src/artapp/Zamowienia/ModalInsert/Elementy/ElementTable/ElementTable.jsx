@@ -67,9 +67,21 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                             <td className={style.col_format}><input defaultValue={row.format_x} onChange={(e)=>handleChangeCardElementy({ ...row, format_x: e.target.value })}></input></td>
                                             <td className={style.col_format}><input defaultValue={row.format_y} onChange={(e)=>handleChangeCardElementy({ ...row, format_y: e.target.value })}></input></td>
                                             <td><input defaultValue={row.kolory} onChange={(e)=>handleChangeCardElementy({ ...row, kolory: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td>
+                                            {/* <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td> */}
 
-                                            
+                                            <td><select
+                                                className={style.select}
+                                                defaultValue={row.papier_id}
+                                                 onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}
+                                              >
+                                                {listaPapierow.map((option) => (
+                                                  <option key={option.id} value={option.id}>
+                                                  {option.nazwa} 
+                                                  </option>
+                                                ))}
+                                              </select>
+                                              </td>
+
                                             <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td>
                                             <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td>
                                          

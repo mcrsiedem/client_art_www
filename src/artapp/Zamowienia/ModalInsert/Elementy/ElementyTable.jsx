@@ -19,20 +19,6 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             listaGramatur={listaGramatur}
               listaPapierow={listaPapierow}
           />
-            
-                {/* {
-                    elementy.map(((card) => (
-                        <ElementCard key={card.id}
-                            card={card}
-                            elementy={elementy}
-                            setElementy={setElementy}
-                            handleChangeCardElementy={handleChangeCardElementy}
-                            selected_papier={selected_papier}
-                            setSelected_papier={setSelected_papier}
-                            fragmenty={fragmenty}
-                            setFragmenty={setFragmenty} />
-                    )))
-                } */}
             </div>
         </>
     );

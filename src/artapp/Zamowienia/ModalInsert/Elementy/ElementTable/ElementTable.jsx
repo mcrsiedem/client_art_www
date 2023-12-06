@@ -48,74 +48,163 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
 
         {elementy.map((row,i) => {
                                 return (
-                                    <tr
+                                  <tr
                                     key={row.id}
                                     // onDoubleClick={(node, event) => {
-                               
+
                                     //     setOpenModal(true);
                                     //     setRow({ id: row.id, user: row.user });
                                     // }}
-                                    >
-                                            {/* <td>{row.zamowienie_id}</td>
+                                  >
+                                    {/* <td>{row.zamowienie_id}</td>
                                             <td>{row.produkt_id}</td>
                                             <td>{row.id}</td> */}
-                                            <td>{i+1}</td>
-                                            <td>{row.typ}</td>
-                                            <td><input className={style.col_naklad} defaultValue={row.naklad} onChange={(e)=>handleChangeCardElementy({ ...row, naklad: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.nazwa} onChange={(e)=>handleChangeCardElementy({ ...row, nazwa: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.ilosc_stron} onChange={(e)=>handleChangeCardElementy({ ...row, ilosc_stron: e.target.value })}></input></td>
-                                            <td className={style.col_format}><input defaultValue={row.format_x} onChange={(e)=>handleChangeCardElementy({ ...row, format_x: e.target.value })}></input></td>
-                                            <td className={style.col_format}><input defaultValue={row.format_y} onChange={(e)=>handleChangeCardElementy({ ...row, format_y: e.target.value })}></input></td>
-                                            <td><input defaultValue={row.kolory} onChange={(e)=>handleChangeCardElementy({ ...row, kolory: e.target.value })}></input></td>
-                                            {/* <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td> */}
+                                    <td>{i + 1}</td>
+                                    <td>{row.typ}</td>
+                                    <td>
+                                      <input
+                                        className={style.col_naklad}
+                                        defaultValue={row.naklad}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            naklad: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    <td>
+                                      <input
+                                        defaultValue={row.nazwa}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            nazwa: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    <td>
+                                      <input
+                                        defaultValue={row.ilosc_stron}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            ilosc_stron: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    <td className={style.col_format}>
+                                      <input
+                                        defaultValue={row.format_x}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            format_x: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    <td className={style.col_format}>
+                                      <input
+                                        defaultValue={row.format_y}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            format_y: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    <td>
+                                      <input
+                                        defaultValue={row.kolory}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            kolory: e.target.value,
+                                          })
+                                        }
+                                      ></input>
+                                    </td>
+                                    {/* <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td> */}
 
-                                            <td><select
-                                                className={style.select}
-                                                defaultValue={row.papier_id}
-                                                 onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}
-                                              >
-                                                {listaPapierow.map((option) => (
-                                                  <option key={option.id} value={option.id}>
-                                                  {option.nazwa} 
-                                                  </option>
-                                                ))}
-                                              </select>
-                                              </td>
+                                    <td>
+                                      <select
+                                        className={style.select}
+                                        defaultValue={row.papier_id}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            papier_id: e.target.value,
+                                          })
+                                        }
+                                      >
+                                        {listaPapierow.map((option) => (
+                                          <option
+                                            key={option.id}
+                                            value={option.id}
+                                          >
+                                            {option.nazwa}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </td>
 
-                                            {/* <td><input defaultValue={row.gramatura} onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}></input></td> */}
-                                            <td><select
-                                                className={style.select}
-                                                defaultValue={row.wykonczenie}
-                                                 onChange={(e)=>handleChangeCardElementy({ ...row, wykonczenie: e.target.value })}
-                                              >
-                                                {listaWykonczenia.map((option) => (
-                                                  <option key={option.id} value={option.id}>
-                                                  {option.nazwa} 
-                                                  </option>
-                                                ))}
-                                              </select>
-                                              </td>
-                                            <td><select
-                                                className={style.select}
-                                                defaultValue={row.gramatura}
-                                                 onChange={(e)=>handleChangeCardElementy({ ...row, gramatura: e.target.value })}
-                                              >
-                                                {listaGramatur.map((option) => (
-                                                  <option key={option.id} value={option.id}>
-                                                  {option.gramatura} g/m2  vol. {option.bulk} 
-                                                  </option>
-                                                ))}
-                                              </select>
-                                              </td>
+                                    <td>
+                                      <select
+                                        className={style.select}
+                                        defaultValue={row.wykonczenie}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            wykonczenie: e.target.value,
+                                          })
+                                        }
+                                      >
+                                        {listaWykonczenia.map((option) => (
+                                          <option
+                                            key={option.id}
+                                            value={option.id}
+                                          >
+                                            {option.nazwa}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select
+                                        className={style.select}
+                                        defaultValue={row.gramatura}
+                                        onChange={(e) =>
+                                          handleChangeCardElementy({
+                                            ...row,
+                                            gramatura: e.target.value,
+                                          })
+                                        }
+                                      >
+                                        {listaGramatur.map((option) => (
+                                          <option
+                                            key={option.id}
+                                            value={option.id}
+                                          >
+                                            {option.gramatura} g/m2 vol.{" "}
+                                            {option.bulk}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </td>
 
-                                              
-                                            {/* <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td> */}
-                                         
-                                  
-                                            <td>{row.uszlachetnianie_id}</td>
-                                            <td><button onClick={()=> setInfo("OK")}>OK</button></td>
-                                      
-                                    </tr>
+                                    {/* <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td> */}
+
+                                    <td>{row.uszlachetnianie_id}</td>
+                                    <td>
+                                      <button onClick={() => setInfo("OK")}>
+                                        OK
+                                      </button>
+                                    </td>
+                                  </tr>
                                 );
                                 })}
     
@@ -137,3 +226,29 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
 }
 
 
+function PapierSelect({row,handleChangeCardElementy,listaPapierow}){
+
+  return (
+    <td>
+    <select
+      className={style.select}
+      defaultValue={row.papier_id}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          papier_id: e.target.value,
+        })
+      }
+    >
+      {listaPapierow.map((option) => (
+        <option
+          key={option.id}
+          value={option.id}
+        >
+          {option.nazwa}
+        </option>
+      ))}
+    </select>
+  </td>
+  )
+}

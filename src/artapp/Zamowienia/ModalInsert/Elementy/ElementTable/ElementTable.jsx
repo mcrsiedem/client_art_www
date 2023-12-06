@@ -6,7 +6,9 @@ import ElementTableHeader from "./ElementTableHeader";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
+export default function ElementTable({elementy,setElementy,handleChangeCardElementy,
+  selected_papier,setSelected_papier,fragmenty,setFragmenty,
+info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
 
   return (
     <div className={style.elementCard}>
@@ -130,49 +132,18 @@ export default function ElementTable({elementy,setElementy,handleChangeCardEleme
                                     </td>
                                     {/* <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td> */}
 
-                                    <td>
-                                      <select
-                                        className={style.select}
-                                        defaultValue={row.papier_id}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            papier_id: e.target.value,
-                                          })
-                                        }
-                                      >
-                                        {listaPapierow.map((option) => (
-                                          <option
-                                            key={option.id}
-                                            value={option.id}
-                                          >
-                                            {option.nazwa}
-                                          </option>
-                                        ))}
-                                      </select>
-                                    </td>
+                                    <PapierSelect
+                                      row={row}
+                                      handleChangeCardElementy={handleChangeCardElementy}
+                                      listaPapierow={listaPapierow}
+                                    />
 
-                                    <td>
-                                      <select
-                                        className={style.select}
-                                        defaultValue={row.wykonczenie}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            wykonczenie: e.target.value,
-                                          })
-                                        }
-                                      >
-                                        {listaWykonczenia.map((option) => (
-                                          <option
-                                            key={option.id}
-                                            value={option.id}
-                                          >
-                                            {option.nazwa}
-                                          </option>
-                                        ))}
-                                      </select>
-                                    </td>
+                                    <WykonczenieSelect
+                                      row={row}
+                                      handleChangeCardElementy={handleChangeCardElementy}
+                                      listaGramatur={listaGramatur}
+                                    />
+
                                     <td>
                                       <select
                                         className={style.select}
@@ -240,12 +211,42 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow}){
         })
       }
     >
-      {listaPapierow.map((option) => (
+      {listaPapierow
+      // .filter((pap) => pap.element_id === element.id)
+      .map((option) => (
         <option
           key={option.id}
           value={option.id}
         >
           {option.nazwa}
+        </option>
+      ))}
+    </select>
+  </td>
+  )
+}
+
+function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur}){
+  return(
+    <td>
+    <select
+      className={style.select}
+      defaultValue={row.wykonczenie}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          wykonczenie: e.target.value,
+        })
+      }
+    >
+      {listaGramatur
+       .filter((wyk) => wyk.papier_id === row.papier_id)
+      .map((option) => (
+        <option
+          key={option.id}
+          value={option.wykonczenie}
+        >
+          {option.wykonczenie}
         </option>
       ))}
     </select>

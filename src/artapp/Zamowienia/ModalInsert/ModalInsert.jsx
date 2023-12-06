@@ -130,6 +130,7 @@ useEffect(()=>{
               setSelected_wykonczenie={setSelected_wykonczenie}
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
+              setListaGramatur={setListaGramatur}
             />
           )}
         </div>

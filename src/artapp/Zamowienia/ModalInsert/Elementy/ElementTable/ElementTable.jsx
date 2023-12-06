@@ -8,7 +8,7 @@ import ElementTableHeader from "./ElementTableHeader";
 
 export default function ElementTable({elementy,setElementy,handleChangeCardElementy,
   selected_papier,setSelected_papier,fragmenty,setFragmenty,
-info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
+info,setInfo,listaWykonczenia,listaPapierow,listaGramatur,setListaGramatur}) {
 
   return (
     <div className={style.elementCard}>
@@ -136,6 +136,7 @@ info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
                                       row={row}
                                       handleChangeCardElementy={handleChangeCardElementy}
                                       listaPapierow={listaPapierow}
+                                      setListaGramatur={setListaGramatur}
                                     />
 
                                     <WykonczenieSelect
@@ -197,18 +198,24 @@ info,setInfo,listaWykonczenia,listaPapierow,listaGramatur}) {
 }
 
 
-function PapierSelect({row,handleChangeCardElementy,listaPapierow}){
+function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramatur}){
 
   return (
     <td>
     <select
       className={style.select}
       defaultValue={row.papier_id}
-      onChange={(e) =>
-        handleChangeCardElementy({
+      onChange={(e) =>{ handleChangeCardElementy({
           ...row,
           papier_id: e.target.value,
-        })
+        });
+        // console.log("okok")
+        setListaGramatur((prev) =>
+        prev   .filter((wyk) => wyk.papier_id === row.papier_id)
+      );
+      
+      }
+       
       }
     >
       {listaPapierow

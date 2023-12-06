@@ -16,6 +16,7 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             info={info}
             setInfo={setInfo}
             listaWykonczenia={listaWykonczenia}
+            setListaWykonczen={setListaWykonczen}
             listaGramatur={listaGramatur}
               listaPapierow={listaPapierow}
             setListaGramatur={setListaGramatur}

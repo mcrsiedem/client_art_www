@@ -126,6 +126,7 @@ useEffect(()=>{
               info={info}
               setInfo={setInfo}
               listaWykonczenia={listaWykonczenia}
+              setListaWykonczenia={setListaWykonczenia}
               selected_wykonczenie={selected_wykonczenie}
               setSelected_wykonczenie={setSelected_wykonczenie}
               listaPapierow={listaPapierow}

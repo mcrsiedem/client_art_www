@@ -241,14 +241,14 @@ function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur}){
     >
       {listaGramatur
        .filter((wyk) => wyk.papier_id === row.papier_id)
-       .map((el)=> el.wykonczenie)
-    .filter((currentValue, index, arr) => (
+        .map((el)=> el.wykonczenie)
+       .filter((currentValue, index, arr) => (
           arr.indexOf(currentValue) === index
         ))
       .map((option) => (
         <option
           key={option.id}
-          value={option.wykonczenie}
+          value={option}
         >
           {option}
         </option>

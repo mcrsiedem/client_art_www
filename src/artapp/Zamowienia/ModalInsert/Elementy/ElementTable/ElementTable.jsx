@@ -51,7 +51,39 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
 
         {elementy.map((row,i) => {
                                 return (
-                                  <tr
+
+                                  <RowElement 
+                                  i={i} 
+                                  row={row} 
+                                  handleChangeCardElementy={handleChangeCardElementy}
+                                  listaPapierow={listaPapierow}
+                                  listaGramatur={listaGramatur}
+                                  setListaGramatur={setListaGramatur}/>
+                                  
+                                );
+                                })}
+    
+        </tbody>
+</table>
+
+   
+      </div>
+      {/* <CardCenter
+        card={card}
+        setElementy={setElementy}
+        handleChangeCardElementy={handleChangeCardElementy}
+        selected_papier={selected_papier}
+        setSelected_papier={setSelected_papier}
+      /> */}
+
+    </div>
+  );
+}
+
+
+function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo}){
+  return(
+    <tr
                                     key={row.id}
                                     // onDoubleClick={(node, event) => {
 
@@ -63,30 +95,11 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
                                             <td>{row.produkt_id}</td>
                                             <td>{row.id}</td> */}
                                     <td>{i + 1}</td>
-                                    <td>{row.typ}</td>
-                                    <td>
-                                      <input
-                                        className={style.col_naklad}
-                                        defaultValue={row.naklad}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            naklad: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
-                                    <td>
-                                      <input
-                                        defaultValue={row.nazwa}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            nazwa: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
+                                    <Typ row={row}/>
+                                    <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy}/>
+                                    <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy}/>
+          
+
                                     <td>
                                       <input
                                         defaultValue={row.ilosc_stron}
@@ -178,26 +191,8 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
                                       </button>
                                     </td>
                                   </tr>
-                                );
-                                })}
-    
-        </tbody>
-</table>
-
-   
-      </div>
-      {/* <CardCenter
-        card={card}
-        setElementy={setElementy}
-        handleChangeCardElementy={handleChangeCardElementy}
-        selected_papier={selected_papier}
-        setSelected_papier={setSelected_papier}
-      /> */}
-
-    </div>
-  );
+  )
 }
-
 
 function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramatur,listaGramatur}){
 
@@ -258,6 +253,44 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
       ))}
     </select>
   </td>
+  )
+}
+function Naklad({row,handleChangeCardElementy}){
+  return(
+    <td>
+    <input
+      className={style.col_naklad}
+      defaultValue={row.naklad}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          naklad: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+function Nazwa({row,handleChangeCardElementy}){
+  return(
+    <td>
+    <input
+      defaultValue={row.nazwa}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          nazwa: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+
+
+function Typ({row}){
+  return(
+    <td>{row.typ}</td>
   )
 }
 

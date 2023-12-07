@@ -165,7 +165,7 @@ function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDost
       }
     >
       {listaDostepnychWykonczen
-       .filter((wyk) => wyk.papier_id === row.papier_id)
+
         .map((el)=> el.wykonczenie)
        .filter((currentValue, index, arr) => (
           arr.indexOf(currentValue) === index

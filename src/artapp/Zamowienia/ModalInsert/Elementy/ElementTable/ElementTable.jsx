@@ -97,17 +97,20 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
           ...row,
           papier_id: e.target.value,
         });
-        //  console.log(e.target.value)
+         console.log("e :" +e.target.value)
+        
 
-
-
-        setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id === row.papier_id)
-         .map((el)=> el.wykonczenie)
-       .filter((currentValue, index, arr) => (
-          arr.indexOf(currentValue) === index
-        ))
+        // const prev = listaGramatur.splice();
+        console.log("listaDostepnychWykonczen :" +listaDostepnychWykonczen)
+        setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value)
+        
+   
+      //  .filter((currentValue, index, arr) => (
+      //     arr.indexOf(currentValue) === index
+      //   ))
         );
 
+        console.log("listaDostepnychWykonczen2 :" +listaDostepnychWykonczen)
 
 
       // setListaGramatur(listaGramatur
@@ -161,7 +164,7 @@ function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDost
         })
       }
     >
-      {listaGramatur
+      {listaDostepnychWykonczen
        .filter((wyk) => wyk.papier_id === row.papier_id)
         .map((el)=> el.wykonczenie)
        .filter((currentValue, index, arr) => (

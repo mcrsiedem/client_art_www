@@ -209,12 +209,13 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
           ...row,
           papier_id: e.target.value,
         });
-        // console.log("okok")
-        setListaGramatur( listaGramatur.filter((wyk) => wyk.papier_id === e.target.value)
-        .map((el)=> el.wykonczenie)
-       .filter((currentValue, index, arr) => (
-          arr.indexOf(currentValue) === index
-        )));
+         console.log(e.target.value)
+      //   setListaGramatur( listaGramatur.filter((wyk) => wyk.papier_id === e.target.value)
+      //   .map((el)=> el.wykonczenie)
+      //  .filter((currentValue, index, arr) => (
+      //     arr.indexOf(currentValue) === index
+      //   ))
+      //   );
       
       }
        

@@ -102,7 +102,7 @@ const initialElementy = [
     kolory: "CMYK + CMYK",
     format_x: "210",
     format_y: "297",
-    papier_id: "Offset",
+    papier_id: 3,
     gramatura: "110",
     wolumen: "1.0",
     wykonczenie: "1",
@@ -121,7 +121,7 @@ const initialElementy = [
    
     format_x: "210",
     format_y: "297",
-    papier_id: "Karton",
+    papier_id: 3,
     gramatura: "250",
     wolumen: "1.0",
     wykonczenie: "1",
@@ -140,7 +140,7 @@ const initialElementy = [
     kolor_back: "4",
     kolory: "CMYK + CMYK",
     
-    papier_id: "Offset",
+    papier_id: 3,
     gramatura: "110",
     wolumen: "1.0",
     wykonczenie: "1",

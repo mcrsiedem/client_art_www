@@ -44,6 +44,7 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
             <th className={style.col7}>Lakier</th>
             <th className={style.col7}>OK</th>
           </tr>
+          
 
         </thead>
         <tbody>
@@ -210,12 +211,36 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
           papier_id: e.target.value,
         });
          console.log(e.target.value)
-      //   setListaGramatur( listaGramatur.filter((wyk) => wyk.papier_id === e.target.value)
-      //   .map((el)=> el.wykonczenie)
-      //  .filter((currentValue, index, arr) => (
-      //     arr.indexOf(currentValue) === index
-      //   ))
-      //   );
+
+
+
+        setListaGramatur(prev=> prev.filter((wyk) => wyk.papier_id === row.papier_id)
+
+       .filter((currentValue, index, arr) => (
+          arr.indexOf(currentValue) === index
+        ))
+        );
+
+
+
+      // setListaGramatur(listaGramatur
+      //     .filter((wyk) => wyk.papier_id === row.papier_id)
+      //      .map((el)=> el.wykonczenie)
+      //     .filter((currentValue, index, arr) => (
+      //        arr.indexOf(currentValue) === index
+      //      ))
+      //    .map((option) => (
+      //      <option
+      //        key={option.id}
+      //        value={option}
+      //      >
+      //        {option}
+      //      </option>
+      //    )));
+
+
+
+
       
       }
        

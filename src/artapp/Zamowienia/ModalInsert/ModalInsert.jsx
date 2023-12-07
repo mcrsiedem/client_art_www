@@ -65,7 +65,7 @@ async function fechListy() {
   const res4 = await axios.get(ip + 'lista-gramatur');
   setListaGramatur([...res4.data]);
 
-
+  // console.log(res4.data)
 
 };
 

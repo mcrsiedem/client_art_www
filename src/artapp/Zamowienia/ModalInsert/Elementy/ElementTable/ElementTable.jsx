@@ -3,6 +3,7 @@
 import style from "./ElementTable.module.css";
 import { _papiery } from "../../api";
 import ElementTableHeader from "./ElementTableHeader";
+import { useState } from "react";
 
 
 
@@ -12,7 +13,6 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
 
   return (
     <div className={style.elementCard}>
-        
       <ElementTableHeader
         // card={card}
         elementy={elementy}
@@ -22,179 +22,71 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
       />
 
       <div className={style.main}>
-  
-<table className={style.table2}>
-<thead>
-          <tr >
-            {/* <th className={style.col1}>Zam.</th>
-            <th className={style.col2}>Prod.</th>
-            <th className={style.col3}>#</th> */}
-            <th className={style.col1}>#</th>
-            <th className={style.col2}>Typ</th>
-            <th >Nakład</th>
-            <th className={style.col_wersja}>Wersja</th>
-            <th className={style.col_strony}>Strony</th>
-            <th className={style.col_format} colspan="2">Netto</th>
-            <th className={style.col_kolory}>Kolory</th>
-           
-            <th className={style.col7}>Papier</th>
-            <th className={style.col_wykonczenie}>matt / gloss</th>
-            <th className={style.col_gramatura}>g/m2</th>
-            {/* <th className={style.col_gramatura}>Vol.</th> */}
-            <th className={style.col7}>Lakier</th>
-            <th className={style.col7}>OK</th>
-          </tr>
-          
-
-        </thead>
-        <tbody>
-
-        {elementy.map((row,i) => {
-                                return (
-
-                                  <RowElement 
-                                  i={i} 
-                                  row={row} 
-                                  handleChangeCardElementy={handleChangeCardElementy}
-                                  listaPapierow={listaPapierow}
-                                  listaGramatur={listaGramatur}
-                                  setListaGramatur={setListaGramatur}/>
-                                  
-                                );
-                                })}
-    
-        </tbody>
-</table>
-
-   
+        <table className={style.table2}>
+          <thead>
+            <tr>
+              <th className={style.col1}>#</th>
+              <th className={style.col2}>Typ</th>
+              <th>Nakład</th>
+              <th className={style.col_wersja}>Wersja</th>
+              <th className={style.col_strony}>Strony</th>
+              <th className={style.col_format} colspan="2"> Netto </th>
+              <th className={style.col_kolory}>Kolory</th>
+              <th className={style.col7}>Papier</th>
+              <th className={style.col_wykonczenie}>matt / gloss</th>
+              <th className={style.col_gramatura}>g/m2</th>
+              <th className={style.col7}>Lakier</th>
+              <th className={style.col7}>OK</th>
+            </tr>
+          </thead>
+          <tbody>
+            {elementy.map((row, i) => {
+              return (
+                <RowElement
+                  i={i}
+                  row={row}
+                  handleChangeCardElementy={handleChangeCardElementy}
+                  listaPapierow={listaPapierow}
+                  listaGramatur={listaGramatur}
+                  setListaGramatur={setListaGramatur}
+                />
+              );
+            })}
+          </tbody>
+        </table>
       </div>
-      {/* <CardCenter
-        card={card}
-        setElementy={setElementy}
-        handleChangeCardElementy={handleChangeCardElementy}
-        selected_papier={selected_papier}
-        setSelected_papier={setSelected_papier}
-      /> */}
-
     </div>
   );
 }
 
 
 function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo}){
-  return(
-    <tr
-                                    key={row.id}
-                                    // onDoubleClick={(node, event) => {
 
-                                    //     setOpenModal(true);
-                                    //     setRow({ id: row.id, user: row.user });
-                                    // }}
-                                  >
-                                    {/* <td>{row.zamowienie_id}</td>
-                                            <td>{row.produkt_id}</td>
-                                            <td>{row.id}</td> */}
-                                    <td>{i + 1}</td>
-                                    <Typ row={row}/>
-                                    <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy}/>
-                                    <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy}/>
-          
+  const [listaDostepnychWykonczen,setListaDostepnychWykonczen] = useState(listaGramatur)
+  return (
+    <tr key={row.id}>
 
-                                    <td>
-                                      <input
-                                        defaultValue={row.ilosc_stron}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            ilosc_stron: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
-                                    <td className={style.col_format}>
-                                      <input
-                                        defaultValue={row.format_x}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            format_x: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
-                                    <td className={style.col_format}>
-                                      <input
-                                        defaultValue={row.format_y}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            format_y: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
-                                    <td>
-                                      <input
-                                        defaultValue={row.kolory}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            kolory: e.target.value,
-                                          })
-                                        }
-                                      ></input>
-                                    </td>
-                                    {/* <td><input defaultValue={row.papier_id} onChange={(e)=>handleChangeCardElementy({ ...row, papier_id: e.target.value })}></input></td> */}
-
-                                    <PapierSelect
-                                      row={row}
-                                      handleChangeCardElementy={handleChangeCardElementy}
-                                      listaPapierow={listaPapierow}
-                                      setListaGramatur={setListaGramatur}
-                                    />
-
-                                    <WykonczenieSelect
-                                      row={row}
-                                      handleChangeCardElementy={handleChangeCardElementy}
-                                      listaGramatur={listaGramatur}
-                                    />
-
-                                    <td>
-                                      <select
-                                        className={style.select}
-                                        defaultValue={row.gramatura}
-                                        onChange={(e) =>
-                                          handleChangeCardElementy({
-                                            ...row,
-                                            gramatura: e.target.value,
-                                          })
-                                        }
-                                      >
-                                        {listaGramatur.map((option) => (
-                                          <option
-                                            key={option.id}
-                                            value={option.id}
-                                          >
-                                            {option.gramatura} g/m2 vol.{" "}
-                                            {option.bulk}
-                                          </option>
-                                        ))}
-                                      </select>
-                                    </td>
-
-                                    {/* <td><input defaultValue={row.wolumen} onChange={(e)=>handleChangeCardElementy({ ...row, wolumen: e.target.value })}></input></td> */}
-
-                                    <td>{row.uszlachetnianie_id}</td>
-                                    <td>
-                                      <button onClick={() => setInfo("OK")}>
-                                        OK
-                                      </button>
-                                    </td>
-                                  </tr>
-  )
+      <td>{i + 1}</td>
+      <Typ row={row} />
+      <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      <PapierSelect row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaPapierow={listaPapierow} setListaGramatur={setListaGramatur}      />
+      <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}/>
+      <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur}/>
+      <td>{row.uszlachetnianie_id}</td>
+      <td>
+        <button onClick={() => console.log(listaDostepnychWykonczen)}>OK</button>
+      </td>
+    </tr>
+  );
 }
 
-function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramatur,listaGramatur}){
+
+function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramatur,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen}){
 
   return (
     <td>
@@ -205,15 +97,15 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
           ...row,
           papier_id: e.target.value,
         });
-         console.log(e.target.value)
+        //  console.log(e.target.value)
 
 
 
-        setListaGramatur(prev=> prev.filter((wyk) => wyk.papier_id === row.papier_id)
-
+        setListaDostepnychWykonczen(prev=> prev.filter((wyk) => wyk.papier_id === e.target.value)
+         .map((el)=> el.wykonczenie)
        .filter((currentValue, index, arr) => (
           arr.indexOf(currentValue) === index
-        ))
+        )).map((el)=> el.wykonczenie)
         );
 
 
@@ -249,6 +141,38 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
           value={option.id}
         >
           {option.nazwa}
+        </option>
+      ))}
+    </select>
+  </td>
+  )
+}
+
+function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen}){
+  return(
+    <td>
+    <select
+      className={style.select}
+      defaultValue={row.wykonczenie}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          wykonczenie: e.target.value,
+        })
+      }
+    >
+      {listaGramatur
+       .filter((wyk) => wyk.papier_id === row.papier_id)
+        .map((el)=> el.wykonczenie)
+       .filter((currentValue, index, arr) => (
+          arr.indexOf(currentValue) === index
+        ))
+      .map((option) => (
+        <option
+          key={option.id}
+          value={option}
+        >
+          {option}
         </option>
       ))}
     </select>
@@ -294,35 +218,95 @@ function Typ({row}){
   )
 }
 
-function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur}){
+function Strony({row,handleChangeCardElementy}){
   return(
     <td>
-    <select
-      className={style.select}
-      defaultValue={row.wykonczenie}
+    <input
+      defaultValue={row.ilosc_stron}
       onChange={(e) =>
         handleChangeCardElementy({
           ...row,
-          wykonczenie: e.target.value,
+          ilosc_stron: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+function NettoX({row,handleChangeCardElementy}){
+  return(
+    <td className={style.col_format}>
+    <input
+      defaultValue={row.format_x}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          format_x: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+function NettoY({row,handleChangeCardElementy}){
+  return(
+      
+    <td className={style.col_format}>
+    <input
+      defaultValue={row.format_y}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          format_y: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+function Kolory({row,handleChangeCardElementy}){
+  return(
+      
+    <td>
+    <input
+      defaultValue={row.kolory}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          kolory: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
+function Gramatura({row,handleChangeCardElementy,listaGramatur}){
+  return(
+      
+    <td>
+    <select
+      className={style.select}
+      defaultValue={row.gramatura}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          gramatura: e.target.value,
         })
       }
     >
-      {listaGramatur
-       .filter((wyk) => wyk.papier_id === row.papier_id)
-        .map((el)=> el.wykonczenie)
-       .filter((currentValue, index, arr) => (
-          arr.indexOf(currentValue) === index
-        ))
-      .map((option) => (
-        <option
-          key={option.id}
-          value={option}
-        >
-          {option}
+      {listaGramatur.map((option) => (
+        <option key={option.id} value={option.id}>
+          {option.gramatura} g/m2 vol. {option.bulk}
         </option>
       ))}
     </select>
   </td>
   )
 }
+
+
+
+
+
+
 // myArray.filter((value, index, array) => array.indexOf(value) === index);

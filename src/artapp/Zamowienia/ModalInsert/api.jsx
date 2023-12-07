@@ -102,7 +102,7 @@ const initialElementy = [
     kolory: "CMYK + CMYK",
     format_x: "210",
     format_y: "297",
-    papier_id: 3,
+    papier_id: 2,
     gramatura: "110",
     wolumen: "1.0",
     wykonczenie: "1",

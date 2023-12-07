@@ -101,11 +101,11 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
 
 
 
-        setListaDostepnychWykonczen(prev=> prev.filter((wyk) => wyk.papier_id === e.target.value)
+        setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id === row.papier_id)
          .map((el)=> el.wykonczenie)
        .filter((currentValue, index, arr) => (
           arr.indexOf(currentValue) === index
-        )).map((el)=> el.wykonczenie)
+        ))
         );
 
 

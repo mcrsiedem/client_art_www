@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function ElementTable({elementy,setElementy,handleChangeCardElementy,
   selected_papier,setSelected_papier,fragmenty,setFragmenty,
-info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setListaGramatur}) {
+info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setListaGramatur,isEdit,setIsEdit}) {
 
   return (
     <div className={style.elementCard}>
@@ -49,6 +49,8 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
                   listaPapierow={listaPapierow}
                   listaGramatur={listaGramatur}
                   setListaGramatur={setListaGramatur}
+                  isEdit={isEdit}
+                  setIsEdit={setIsEdit}
                 />
               );
             })}
@@ -60,7 +62,7 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
 }
 
 
-function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo}){
+function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo,isEdit,setIsEdit}){
 
   const [listaDostepnychWykonczen,setListaDostepnychWykonczen] = useState(listaGramatur)
   return (
@@ -75,7 +77,8 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
       <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <PapierSelect row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaPapierow={listaPapierow} setListaGramatur={setListaGramatur}      />
-      <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}/>
+      <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
+            setIsEdit={setIsEdit}/>
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur}/>
       <td>{row.uszlachetnianie_id}</td>
       <td>
@@ -151,11 +154,12 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
   )
 }
 
-function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen}){
+function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen,isEdit,setIsEdit}){
   return(
     <td>
     <select
       className={style.select}
+      // defaultValue={isEdit ? row.wykonczenie : "n/d"}
       defaultValue={row.wykonczenie}
       onChange={(e) =>
         handleChangeCardElementy({
@@ -175,7 +179,7 @@ function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDost
           key={option.id}
           value={option}
         >
-          {option}
+          { option }
         </option>
       ))}
     </select>

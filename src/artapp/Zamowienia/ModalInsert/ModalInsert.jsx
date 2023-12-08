@@ -42,6 +42,8 @@ const[listaUszlachetnien,setListaUszlachetnien]= useState();
 const[listaPapierow,setListaPapierow]= useState();
 const[listaGramatur,setListaGramatur]= useState();
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
+
+const[isEdit,setIsEdit]= useState(false);
 // async function fechListaUszlachetnien() {
 
 //   // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
@@ -132,6 +134,8 @@ useEffect(()=>{
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
               setListaGramatur={setListaGramatur}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
             />
           )}
         </div>

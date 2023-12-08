@@ -43,14 +43,14 @@
     width: 40px;
   }
 
-     .col5 {
-      width: 70px;
-    }
+     /* .col_kolory {
+      width: 300px;
+    } */
  .col_id {
       width: 120px;
     }
     .col_typ {
-      width: 80px;
+      width: 100px;
     }
   
     .col_naklad {
@@ -58,6 +58,7 @@
     }
   
     .col_strony {
+ 
       width: 70px;
     }
     .col_gramatura {
@@ -73,6 +74,9 @@
       width: 55px;
     } 
   
+    .col_papier {
+      width: 150px;
+    } 
 
 .table2 th, .table2 tr:nth-child(even){
   /* background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%); */

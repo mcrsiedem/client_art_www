@@ -26,13 +26,13 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
           <thead>
             <tr>
               <th className={style.col1}>#</th>
-              <th className={style.col2}>Typ</th>
-              <th>Nakład</th>
+              <th className={style.col_typ}>Typ</th>
+              <th className={style.col_naklad}>Nakład</th>
               <th className={style.col_wersja}>Wersja</th>
               <th className={style.col_strony}>Strony</th>
               <th className={style.col_format} colspan="2"> Netto </th>
               <th className={style.col_kolory}>Kolory</th>
-              <th className={style.col7}>Papier</th>
+              <th className={style.col_papier}>Papier</th>
               <th className={style.col_wykonczenie}>matt / gloss</th>
               <th className={style.col_gramatura}>g/m2</th>
               <th className={style.col7}>Lakier</th>
@@ -96,47 +96,25 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
     <select
       className={style.select}
       defaultValue={row.papier_id}
-      onChange={(e) =>{ handleChangeCardElementy({
-          ...row,
-          papier_id: e.target.value,
-        });
-         console.log("e :" +e.target.value)
-        
+      onChange=
+      {
+        (e) =>
+              { 
 
-        // const prev = listaGramatur.splice();
-        console.log("listaDostepnychWykonczen :" +listaDostepnychWykonczen)
-        setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value)
-        
-   
-      //  .filter((currentValue, index, arr) => (
-      //     arr.indexOf(currentValue) === index
-      //   ))
-        );
-
-        console.log("listaDostepnychWykonczen2 :" +listaDostepnychWykonczen)
+                setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value));
+                handleChangeCardElementy({
+                  ...row,
+                  papier_id: e.target.value,
+                   wykonczenie: listaDostepnychWykonczen[0].wykonczenie,
+                });
 
 
-      // setListaGramatur(listaGramatur
-      //     .filter((wyk) => wyk.papier_id === row.papier_id)
-      //      .map((el)=> el.wykonczenie)
-      //     .filter((currentValue, index, arr) => (
-      //        arr.indexOf(currentValue) === index
-      //      ))
-      //    .map((option) => (
-      //      <option
-      //        key={option.id}
-      //        value={option}
-      //      >
-      //        {option}
-      //      </option>
-      //    )));
+                // handleChangeCardElementy({
+                //   ...row,
+                //   wykonczenie: listaDostepnychWykonczen[0].wykonczenie,
+                // });
 
-
-
-
-      
-      }
-       
+              }
       }
     >
       {listaPapierow

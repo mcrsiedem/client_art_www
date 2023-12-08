@@ -86,7 +86,7 @@ const initialElementy = [
     papier_id: 7,
     gramatura: "1",
     wolumen: "1.0",
-    wykonczenie: "1",
+    wykonczenie: "n/d",
     naklad: "1000",
     lakier_front: "UV",
     lakier_back: "UV",
@@ -105,7 +105,7 @@ const initialElementy = [
     papier_id: 7,
     gramatura: "110",
     wolumen: "1.0",
-    wykonczenie: "1",
+    wykonczenie: "n/d",
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 1
@@ -124,7 +124,7 @@ const initialElementy = [
     papier_id: 7,
     gramatura: "250",
     wolumen: "1.0",
-    wykonczenie: "1",
+    wykonczenie: "n/d",
     naklad: "1000",
     uszlachetnianie_id: "UV",
     index: 2
@@ -143,7 +143,7 @@ const initialElementy = [
     papier_id: 7,
     gramatura: "110",
     wolumen: "1.0",
-    wykonczenie: "1",
+    wykonczenie: "n/d",
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 3

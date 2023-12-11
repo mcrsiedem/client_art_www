@@ -119,7 +119,7 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
               }
       }
     >
-
+{}
       {listaPapierow
       // .filter((pap) => pap.element_id === element.id)
       .map((option) => (

@@ -64,6 +64,11 @@ async function fechListy() {
   const res3 = await axios.get(ip + 'lista-papierow');
   setListaPapierow([...res3.data]);
 
+  // const res3 = await axios.get(ip + 'papiery');
+  // setListaPapierow([...res3.data]);
+
+
+
   const res4 = await axios.get(ip + 'lista-gramatur');
   setListaGramatur([...res4.data]);
 

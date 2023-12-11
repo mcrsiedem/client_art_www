@@ -84,9 +84,7 @@ const initialElementy = [
     format_x: "210",
     format_y: "297",
     papier_id: 7,
-    gramatura: "",
-    wolumen: "1.0",
-    wykonczenie: "n/d",
+    gramatura_id: 0,
     naklad: "1000",
     lakier_front: "UV",
     lakier_back: "UV",
@@ -103,9 +101,7 @@ const initialElementy = [
     format_x: "210",
     format_y: "297",
     papier_id: 7,
-    gramatura: "",
-    wolumen: "1.0",
-    wykonczenie: "n/d",
+    gramatura_id: 0,
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 1
@@ -122,9 +118,7 @@ const initialElementy = [
     format_x: "210",
     format_y: "297",
     papier_id: 7,
-    gramatura: "",
-    wolumen: "1.0",
-    wykonczenie: "n/d",
+    gramatura_id: 0,
     naklad: "1000",
     uszlachetnianie_id: "UV",
     index: 2
@@ -141,9 +135,7 @@ const initialElementy = [
     kolory: "CMYK + CMYK",
     
     papier_id: 7,
-    gramatura: "",
-    wolumen: "1.0",
-    wykonczenie: "n/d",
+    gramatura_id: 0,
     naklad: "1000",
     uszlachetnianie_id: "",
     index: 3

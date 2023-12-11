@@ -208,7 +208,7 @@ useEffect(()=>{
                             format_x:element.format_x,
                             format_y:element.format_y,
                             papier_id:element.papier_id,
-                            // gramatura:element.gramatura,
+                             gramatura_id:element.gramatura_id,
                             // wykonczenie:element.wykonczenie,
 
 

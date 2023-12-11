@@ -142,7 +142,7 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
     <td>
       <select
         className={style.select}
-        defaultValue={row.id}
+        defaultValue={row.gramatura_id}
         onChange={(e) =>
           handleChangeCardElementy({
             ...row,

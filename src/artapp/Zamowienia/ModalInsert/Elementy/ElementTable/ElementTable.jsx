@@ -183,9 +183,14 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
       >
 
         {listaDostepnychGramatur.sort((a,c)=>a.gramatura-c.gramatura).map((option) => (
+          
+          row.papier_id !==7 ? 
           <option key={option.id} value={option.id}>
             {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie}
-          </option>
+          </option> :
+          <option key={option.id} value={option.id}>
+          {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
+        </option>
         ))}
 
       </select>

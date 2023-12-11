@@ -173,11 +173,11 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
     <td>
       <select
         className={style.select}
-        defaultValue={row.gramatura}
+        defaultValue={row.papier_id}
         onChange={(e) =>
           handleChangeCardElementy({
             ...row,
-            gramatura: e.target.value,
+            papier_id: e.target.value,
           })
         }
       >

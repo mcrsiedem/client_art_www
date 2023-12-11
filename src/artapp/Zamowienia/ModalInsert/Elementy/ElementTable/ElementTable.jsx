@@ -107,7 +107,7 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
                 handleChangeCardElementy({
                   ...row,
                   papier_id: e.target.value,
-                   wykonczenie: listaDostepnychWykonczen[0].wykonczenie,
+ 
                 });
 
 
@@ -135,38 +135,7 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
   )
 }
 
-function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen,isEdit,setIsEdit}){
-  return(
-    <td>
-    <select
-      className={style.select}
-      // defaultValue={isEdit ? row.wykonczenie : "n/d"}
-      defaultValue={row.wykonczenie}
-      onChange={(e) =>
-        handleChangeCardElementy({
-          ...row,
-          wykonczenie: e.target.value,
-        })
-      }
-    >
-      {listaDostepnychWykonczen
 
-        .map((el)=> el.wykonczenie)
-       .filter((currentValue, index, arr) => (
-          arr.indexOf(currentValue) === index
-        ))
-      .map((option) => (
-        <option
-          key={option.id}
-          value={option}
-        >
-          { option }
-        </option>
-      ))}
-    </select>
-  </td>
-  )
-}
 
 function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychGramatur}){
   return (
@@ -302,7 +271,38 @@ function Kolory({row,handleChangeCardElementy}){
 
 
 
+// function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen,isEdit,setIsEdit}){
+//   return(
+//     <td>
+//     <select
+//       className={style.select}
+//       // defaultValue={isEdit ? row.wykonczenie : "n/d"}
+//       defaultValue={row.wykonczenie}
+//       onChange={(e) =>
+//         handleChangeCardElementy({
+//           ...row,
+//           wykonczenie: e.target.value,
+//         })
+//       }
+//     >
+//       {listaDostepnychWykonczen
 
+//         .map((el)=> el.wykonczenie)
+//        .filter((currentValue, index, arr) => (
+//           arr.indexOf(currentValue) === index
+//         ))
+//       .map((option) => (
+//         <option
+//           key={option.id}
+//           value={option}
+//         >
+//           { option }
+//         </option>
+//       ))}
+//     </select>
+//   </td>
+//   )
+// }
 
 
 

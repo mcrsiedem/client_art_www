@@ -208,8 +208,8 @@ useEffect(()=>{
                             format_x:element.format_x,
                             format_y:element.format_y,
                             papier_id:element.papier_id,
-                            gramatura:element.gramatura,
-                            wykonczenie:element.wykonczenie,
+                            // gramatura:element.gramatura,
+                            // wykonczenie:element.wykonczenie,
 
 
                           });

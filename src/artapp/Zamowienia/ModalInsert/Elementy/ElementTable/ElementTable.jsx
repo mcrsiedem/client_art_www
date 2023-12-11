@@ -187,6 +187,7 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
             {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie}
           </option>
         ))}
+
       </select>
     </td>
   );

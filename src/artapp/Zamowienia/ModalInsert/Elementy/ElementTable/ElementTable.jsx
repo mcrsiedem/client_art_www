@@ -107,6 +107,7 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
                 handleChangeCardElementy({
                   ...row,
                   papier_id: e.target.value,
+           
  
                 });
 
@@ -150,18 +151,30 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
           })
         }
       >
-
-        {listaDostepnychGramatur.sort((a,c)=>a.gramatura-c.gramatura).map((option) => (
-          
-          row.papier_id !==7 ? 
-          <option key={option.id} value={option.id}>
-            {option.gramatura} {option.bulk !== 1  ? <p> g/m2 vol. {option.bulk} { option.wykonczenie}</p>  : <p>g/m2 </p>}
-          </option> :
-          <option key={option.id} value={option.id}>
-          {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
-        </option>
-        ))}
-
+          <option value="0">
+               wybierz...
+              </option>
+        {listaDostepnychGramatur
+          .sort((a, c) => a.gramatura - c.gramatura)
+          .map((option) =>
+            row.papier_id !== 7 ? (
+              <option key={option.id} value={option.id}>
+                {option.gramatura}{" "}
+                {option.bulk !== 1 ? (
+                  <p>
+                    {" "}
+                    g/m2 vol. {option.bulk} {option.wykonczenie}
+                  </p>
+                ) : (
+                  <p>g/m2 </p>
+                )}
+              </option>
+            ) : (
+              <option key={option.id} value={option.id}>
+                {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
+              </option>
+            )
+          )}
       </select>
     </td>
   );

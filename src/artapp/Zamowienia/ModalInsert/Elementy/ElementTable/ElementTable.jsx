@@ -33,7 +33,7 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_format} colspan="2"> Netto </th>
               <th className={style.col_kolory}>Kolory</th>
               <th className={style.col_papier}>Papier</th>
-              <th className={style.col_wykonczenie}>matt / gloss</th>
+              {/* <th className={style.col_wykonczenie}>matt / gloss</th> */}
               <th className={style.col_gramatura}>g/m2</th>
               <th className={style.col7}>Lakier</th>
               <th className={style.col7}>OK</th>
@@ -78,8 +78,8 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
       <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <PapierSelect row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaPapierow={listaPapierow} setListaGramatur={setListaGramatur} listaDostepnychGramatur={listaDostepnychGramatur} setListaDostepnychGrmatur={setListaDostepnychGrmatur}    />
-      <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
-            setIsEdit={setIsEdit}/>
+      {/* <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
+            setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
       <td>{row.uszlachetnianie_id}</td>
       <td>
@@ -102,8 +102,8 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
         (e) =>
               { 
 
-                setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value));
-                setListaDostepnychGrmatur(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value));
+                // setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value));
+                 setListaDostepnychGrmatur(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value ));
                 handleChangeCardElementy({
                   ...row,
                   papier_id: e.target.value,
@@ -119,6 +119,7 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
               }
       }
     >
+
       {listaPapierow
       // .filter((pap) => pap.element_id === element.id)
       .map((option) => (
@@ -166,6 +167,31 @@ function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDost
   </td>
   )
 }
+
+function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychGramatur}){
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.gramatura}
+        onChange={(e) =>
+          handleChangeCardElementy({
+            ...row,
+            gramatura: e.target.value,
+          })
+        }
+      >
+
+        {listaDostepnychGramatur.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
+}
+
 function Naklad({row,handleChangeCardElementy}){
   return(
     <td>
@@ -267,29 +293,7 @@ function Kolory({row,handleChangeCardElementy}){
   </td>
   )
 }
-function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychGramatur}){
-  return(
-      
-    <td>
-    <select
-      className={style.select}
-      defaultValue={row.gramatura}
-      onChange={(e) =>
-        handleChangeCardElementy({
-          ...row,
-          gramatura: e.target.value,
-        })
-      }
-    >
-      {listaDostepnychGramatur.map((option) => (
-        <option key={option.id} value={option.id}>
-          {option.gramatura} g/m2 vol. {option.bulk}
-        </option>
-      ))}
-    </select>
-  </td>
-  )
-}
+
 
 
 

@@ -141,7 +141,7 @@ const initialElementy = [
     kolory: "CMYK + CMYK",
     
     papier_id: 7,
-    gramatura: "110",
+    gramatura: "",
     wolumen: "1.0",
     wykonczenie: "n/d",
     naklad: "1000",

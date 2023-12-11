@@ -186,7 +186,7 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
           
           row.papier_id !==7 ? 
           <option key={option.id} value={option.id}>
-            {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie}
+            {option.gramatura} {option.bulk !== 1  ? <p> g/m2 vol. {option.bulk} { option.wykonczenie}</p>  : <p>g/m2 </p>}
           </option> :
           <option key={option.id} value={option.id}>
           {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}

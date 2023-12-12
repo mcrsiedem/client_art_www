@@ -35,12 +35,12 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_kolory}>Kolory</th>
               <th className={style.col_papier}>Papier</th>
               <th className={style.col_gramatura}>g/m2</th>
-              <th className={style.col_papierInfo}>Uwagi do papieru</th>
-               <th className={style.col_uszlachetnianie}>Procesy</th>
-              <th className={style.col_uszlachetnianie}>Lakier / folia front</th>
-              <th className={style.col_uszlachetnianie}>Lakier / folia back</th>
+              <th className={style.col_papierInfo}>Uwagi</th>
+        
+              <th className={style.col_uszlachetnianie}>Procesy front</th>
+              <th className={style.col_uszlachetnianie}>Procesy back</th>
        
-              <th className={style.col_kolory}>Uwagi</th>
+              <th className={style.col_kolory}>Info </th>
             </tr>
           </thead>
           <tbody>
@@ -86,17 +86,7 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
             setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
             <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
-            <td>
-      <img
-          className={style.icon}
-          src={Logo_ustawienia}
-          onClick={() => {
-          
-          }}
-          alt="React Logo"
-        />
-         Druk UV
-      </td>
+
       <td>
       <img
           className={style.icon}

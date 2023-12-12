@@ -4,6 +4,7 @@ import style from "./ElementTable.module.css";
 import { _papiery } from "../../api";
 import ElementTableHeader from "./ElementTableHeader";
 import { useState } from "react";
+import Logo_ustawienia from "../../../../../svg/settings.svg";
 
 
 
@@ -33,10 +34,10 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_format} colspan="2"> Netto </th>
               <th className={style.col_kolory}>Kolory</th>
               <th className={style.col_papier}>Papier</th>
-              {/* <th className={style.col_wykonczenie}>matt / gloss</th> */}
               <th className={style.col_gramatura}>g/m2</th>
+              <th className={style.col_papierInfo}>Papier info</th>
+        
               <th className={style.col7}>Lakier</th>
-              <th className={style.col7}>OK</th>
             </tr>
           </thead>
           <tbody>
@@ -81,9 +82,17 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
       {/* <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
             setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
-      <td>{row.uszlachetnianie_id}</td>
+            <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
+
       <td>
-        <button onClick={() => console.log(listaDostepnychWykonczen)}>OK</button>
+      <img
+          className={style.icon}
+          src={Logo_ustawienia}
+          onClick={() => {
+          
+          }}
+          alt="React Logo"
+        />
       </td>
     </tr>
   );
@@ -152,7 +161,7 @@ function Gramatura({row,handleChangeCardElementy,listaGramatur, listaDostepnychG
         }
       >
           <option value="0">
-               wybierz...
+               wybierz
               </option>
         {listaDostepnychGramatur
           .sort((a, c) => a.gramatura - c.gramatura)
@@ -282,6 +291,22 @@ function Kolory({row,handleChangeCardElementy}){
   )
 }
 
+function PapierInfo({row,handleChangeCardElementy}){
+  return(
+      
+    <td>
+    <input
+      defaultValue={row.papier_info}
+      onChange={(e) =>
+        handleChangeCardElementy({
+          ...row,
+          papier_info: e.target.value,
+        })
+      }
+    ></input>
+  </td>
+  )
+}
 
 
 // function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen,isEdit,setIsEdit}){

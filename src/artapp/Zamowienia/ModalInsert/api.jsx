@@ -277,19 +277,19 @@ const _wykonczenie = [
 
 ]
 
-const _uszlachetnienia = [
-  {
-    id: 1,
-    nazwa: "UV"
-  },{
-    id: 2,
-    nazwa: "Dyspersja",
-  }
-  ,{
-    id: 3,
-    nazwa: "Folia mat",
-  }
-]
+// const _uszlachetnienia = [
+//   {
+//     id: 1,
+//     nazwa: "UV"
+//   },{
+//     id: 2,
+//     nazwa: "Dyspersja",
+//   }
+//   ,{
+//     id: 3,
+//     nazwa: "Folia mat",
+//   }
+// ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,_uszlachetnienia};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty};

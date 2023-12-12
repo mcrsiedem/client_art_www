@@ -23,14 +23,17 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
        },[])
 // const elmnt = useRef(null);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
+
 const [klient, setKlient] = useState(_klient[0].id);
 const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
+const [uszlachetnienia, setUszlachetnienia] = useState();
+
+
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
 
-const [uszlachetnienia, setUszlachetnienia] = useState(_uszlachetnienia[0].nazwa);
 
 const [idZamowienie, setIdZamowienia] = useState();
 const[isTable,setIsTable] =useState(true);
@@ -41,6 +44,8 @@ const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
 const[listaPapierow,setListaPapierow]= useState();
 const[listaGramatur,setListaGramatur]= useState();
+
+
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 
 const[isEdit,setIsEdit]= useState(false);
@@ -133,6 +138,8 @@ useEffect(()=>{
               setSelected_wykonczenie={setSelected_wykonczenie}
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
+              listaUszlachetnien={listaUszlachetnien}
+              setListaUszlachetnien={setListaUszlachetnien}
               setListaGramatur={setListaGramatur}
               isEdit={isEdit}
               setIsEdit={setIsEdit}

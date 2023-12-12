@@ -36,9 +36,11 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_papier}>Papier</th>
               <th className={style.col_gramatura}>g/m2</th>
               <th className={style.col_papierInfo}>Uwagi do papieru</th>
-        
-              <th className={style.col7}>Lakier front</th>
-              <th className={style.col7}>Lakier back</th>
+               <th className={style.col_uszlachetnianie}>Procesy</th>
+              <th className={style.col_uszlachetnianie}>Lakier / folia front</th>
+              <th className={style.col_uszlachetnianie}>Lakier / folia back</th>
+       
+              <th className={style.col_kolory}>Uwagi</th>
             </tr>
           </thead>
           <tbody>
@@ -84,7 +86,17 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
             setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
             <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
-
+            <td>
+      <img
+          className={style.icon}
+          src={Logo_ustawienia}
+          onClick={() => {
+          
+          }}
+          alt="React Logo"
+        />
+         Druk UV
+      </td>
       <td>
       <img
           className={style.icon}
@@ -106,6 +118,9 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
           alt="React Logo"
         />
       </td>
+
+
+      <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
     </tr>
   );
 }
@@ -116,34 +131,26 @@ function PapierSelect({row,handleChangeCardElementy,listaPapierow,setListaGramat
   return (
     <td>
     <select
+    //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
+    //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
+    //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
+    // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
       className={style.select}
       defaultValue={row.papier_id}
       onChange=
       {
         (e) =>
               { 
-
-                // setListaDostepnychWykonczen(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value));
                  setListaDostepnychGrmatur(listaGramatur.filter((wyk) => wyk.papier_id ==  e.target.value ));
                 handleChangeCardElementy({
                   ...row,
                   papier_id: e.target.value,
-           
- 
                 });
-
-
-                // handleChangeCardElementy({
-                //   ...row,
-                //   wykonczenie: listaDostepnychWykonczen[0].wykonczenie,
-                // });
-
               }
       }
     >
 {}
       {listaPapierow
-      // .filter((pap) => pap.element_id === element.id)
       .map((option) => (
         <option
           key={option.id}

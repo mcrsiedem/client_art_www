@@ -35,9 +35,10 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_kolory}>Kolory</th>
               <th className={style.col_papier}>Papier</th>
               <th className={style.col_gramatura}>g/m2</th>
-              <th className={style.col_papierInfo}>Papier info</th>
+              <th className={style.col_papierInfo}>Uwagi do papieru</th>
         
-              <th className={style.col7}>Lakier</th>
+              <th className={style.col7}>Lakier front</th>
+              <th className={style.col7}>Lakier back</th>
             </tr>
           </thead>
           <tbody>
@@ -83,6 +84,17 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
             setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
             <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
+
+      <td>
+      <img
+          className={style.icon}
+          src={Logo_ustawienia}
+          onClick={() => {
+          
+          }}
+          alt="React Logo"
+        />
+      </td>
 
       <td>
       <img

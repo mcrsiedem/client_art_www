@@ -87,8 +87,7 @@ const initialElementy = [
     papier_info:"",
     gramatura_id: 0,
     naklad: "1000",
-    lakier_front: "UV",
-    lakier_back: "UV",
+
     index: 0
   },
   {
@@ -105,7 +104,7 @@ const initialElementy = [
     papier_info:"",
     gramatura_id: 0,
     naklad: "1000",
-    uszlachetnianie_id: "",
+
     index: 1
   },
   {
@@ -123,7 +122,7 @@ const initialElementy = [
     papier_info:"",
     gramatura_id: 0,
     naklad: "1000",
-    uszlachetnianie_id: "UV",
+
     index: 2
   },
   {
@@ -141,7 +140,7 @@ const initialElementy = [
     papier_info:"",
     gramatura_id: 0,
     naklad: "1000",
-    uszlachetnianie_id: "",
+
     index: 3
   }
 

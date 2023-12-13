@@ -37,10 +37,10 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_gramatura}>g/m2</th>
               <th className={style.col_papierInfo}>Uwagi</th>
         
-              <th className={style.col_uszlachetnianie}>Procesy front</th>
-              <th className={style.col_uszlachetnianie}>Procesy back</th>
+              <th className={style.col_uszlachetnianie}>Uszlachetnianie</th>
+              {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
        
-              <th className={style.col_kolory}>Info </th>
+              <th className={style.col_kolory}>Dodatkowe informacje </th>
             </tr>
           </thead>
           <tbody>
@@ -87,7 +87,7 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
             <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
-      <td>
+      {/* <td>
       <img
           className={style.icon}
           src={Logo_ustawienia}
@@ -96,7 +96,7 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
           }}
           alt="React Logo"
         />
-      </td>
+      </td> */}
 
       <td>
       <img

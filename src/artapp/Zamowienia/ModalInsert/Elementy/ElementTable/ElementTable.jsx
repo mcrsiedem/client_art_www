@@ -32,12 +32,13 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
               <th className={style.col_wersja}>Wersja</th>
               <th className={style.col_strony}>Strony</th>
               <th className={style.col_format} colspan="2"> Netto </th>
-              <th className={style.col_kolory}>Kolory</th>
+         
               <th className={style.col_papier}>Papier</th>
               <th className={style.col_gramatura}>g/m2</th>
               <th className={style.col_papierInfo}>Uwagi</th>
+              <th className={style.col_kolory}>Druk</th>
         
-              <th className={style.col_uszlachetnianie}>Uszlachetnianie</th>
+              <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
               {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
        
               <th className={style.col_kolory}>Dodatkowe informacje </th>
@@ -80,12 +81,13 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
       <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
-      <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      
       <PapierSelect row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaPapierow={listaPapierow} setListaGramatur={setListaGramatur} listaDostepnychGramatur={listaDostepnychGramatur} setListaDostepnychGrmatur={setListaDostepnychGrmatur}    />
       {/* <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
             setIsEdit={setIsEdit}/> */}
       <Gramatura  row={row} handleChangeCardElementy={handleChangeCardElementy} listaGramatur={listaGramatur} listaDostepnychGramatur={listaDostepnychGramatur}/>
             <PapierInfo row={row} handleChangeCardElementy={handleChangeCardElementy} />
+            <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
       {/* <td>
       <img

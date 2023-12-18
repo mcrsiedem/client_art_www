@@ -1,7 +1,7 @@
 import style from "./ElementyTable.module.css";
 import ElementTable from "./ElementTable/ElementTable";
 
-export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,selected_wykonczenie,setSelected_wykonczenie,listaGramatur,listaPapierow,setListaGramatur,setListaWykonczen,isEdit, setIsEdit,listaUszlachetnien, setListaUszlachetnien}) {
+export default function ElementyTable({elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty,info,setInfo,listaWykonczenia,selected_wykonczenie,setSelected_wykonczenie,listaGramatur,listaPapierow,setListaGramatur,setListaWykonczen,isEdit, setIsEdit,listaUszlachetnien, setListaUszlachetnien,procesy,setProcesy}) {
 
     return (
         <>
@@ -24,6 +24,8 @@ export default function ElementyTable({elementy,setElementy,handleChangeCardElem
             setIsEdit={setIsEdit}
             listaUszlachetnien={listaUszlachetnien}
             setListaUszlachetnien={setListaUszlachetnien}
+            procesy={procesy}
+            setProcesy={setProcesy}
           />
             </div>
         </>

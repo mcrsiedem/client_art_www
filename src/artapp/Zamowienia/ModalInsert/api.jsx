@@ -240,6 +240,31 @@ const _papiery = [
 
 ];
 
+const initialProcesy = [
+  {
+    id: 1,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    element_id: 1, 
+    proces_id: 1, 
+    strona:"",
+    nazwa:"",
+    info:""
+
+  },{
+    id: 2,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    element_id: 1, 
+    proces_id: 1, 
+    strona:"",
+    nazwa:"",
+    info:""
+
+  }
+
+];
+
 
 const _wykonczenie = [
   {
@@ -292,4 +317,4 @@ const _wykonczenie = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy};

@@ -119,3 +119,8 @@
 .icon:active{
   box-shadow:  2px 2px 2px rgb(159, 159, 159);;
 }
+
+
+.procesy{
+  display: flex;
+}

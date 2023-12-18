@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
 import Produkty from './Produkty/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia} from './api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
@@ -29,6 +29,7 @@ const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
+const [procesy, setProcesy] = useState(initialProcesy);
 const [uszlachetnienia, setUszlachetnienia] = useState();
 
 
@@ -44,6 +45,7 @@ const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
 const[listaPapierow,setListaPapierow]= useState();
 const[listaGramatur,setListaGramatur]= useState();
+const[listaProcesow, setListaProcesow]= useState();
 
 
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
@@ -71,6 +73,9 @@ async function fechListy() {
 
   const res4 = await axios.get(ip + 'lista-gramatur');
   setListaGramatur([...res4.data]);
+
+  const res5 = await axios.get(ip + 'lista-procesow');
+  setListaProcesow([...res5.data]);
 
 
 
@@ -143,6 +148,10 @@ useEffect(()=>{
               setListaGramatur={setListaGramatur}
               isEdit={isEdit}
               setIsEdit={setIsEdit}
+              procesy={procesy}
+              setProcesy={setProcesy}
+              
+
             />
           )}
         </div>

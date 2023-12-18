@@ -109,6 +109,9 @@
 
 .icon{
   height: 70%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
   
 }
 
@@ -122,5 +125,8 @@
 
 
 .procesy{
-  display: flex;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+
 }
+

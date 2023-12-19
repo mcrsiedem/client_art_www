@@ -22,6 +22,8 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
         // dragElement(elmnt.current);
        },[])
 // const elmnt = useRef(null);
+
+const[showElementyProcesyModal,setShowElementyProcesyModal] =useState(true);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 
 const [klient, setKlient] = useState(_klient[0].id);
@@ -156,6 +158,8 @@ useEffect(()=>{
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}
+              showElementyProcesyModal={showElementyProcesyModal}
+              setShowElementyProcesyModal={setShowElementyProcesyModal}
               
 
             />

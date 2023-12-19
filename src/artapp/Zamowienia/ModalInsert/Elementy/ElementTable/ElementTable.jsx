@@ -10,7 +10,7 @@ import Logo_ustawienia from "../../../../../svg/settings.svg";
 
 export default function ElementTable({elementy,setElementy,handleChangeCardElementy,
   selected_papier,setSelected_papier,fragmenty,setFragmenty,
-info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setListaGramatur,isEdit,setIsEdit,procesy,setProcesy}) {
+info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setListaGramatur,isEdit,setIsEdit,procesyElementow,setProcesyElementow,listaDostepnychProcesow}) {
 
   return (
     <div className={style.elementCard}>
@@ -56,8 +56,9 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
                   setListaGramatur={setListaGramatur}
                   isEdit={isEdit}
                   setIsEdit={setIsEdit}
-                  procesy={procesy}
-                  setProcesy={setProcesy}
+                  procesyElementow={procesyElementow}
+                  setProcesyElementow={setProcesyElementow}
+                  listaDostepnychProcesow={listaDostepnychProcesow}
                 />
               );
             })}
@@ -69,7 +70,7 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
 }
 
 
-function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo,isEdit,setIsEdit,procesy,setProcesy}){
+function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramatur,listaGramatur, setInfo,isEdit,setIsEdit,procesyElementow,setProcesyElementow,listaDostepnychProcesow}){
 
   const [listaDostepnychWykonczen,setListaDostepnychWykonczen] = useState(listaGramatur)
   const [listaDostepnychGramatur,setListaDostepnychGrmatur] = useState(listaGramatur)
@@ -111,7 +112,7 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
           }}
           alt="Procesy"
         />
-        {procesy.filter((frag) => frag.element_id === row.id).map((pr)=>(pr.proces_id ))}
+        {procesyElementow.filter((frag) => frag.element_id === row.id).map((pr)=>(pr.proces ))}
 
       </td>
 

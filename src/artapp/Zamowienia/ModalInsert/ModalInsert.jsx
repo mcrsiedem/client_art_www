@@ -29,7 +29,7 @@ const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
-const [procesy, setProcesy] = useState(initialProcesy);
+
 const [uszlachetnienia, setUszlachetnienia] = useState();
 
 
@@ -45,7 +45,15 @@ const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
 const[listaPapierow,setListaPapierow]= useState();
 const[listaGramatur,setListaGramatur]= useState();
-const[listaProcesow, setListaProcesow]= useState();
+
+
+
+// lista wszystkich dostępnych procesów
+const[listaDostepnychProcesow, setListaDostepnychProcesow]= useState();
+
+//procesy dołączone do elementów
+const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+
 
 
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
@@ -62,9 +70,6 @@ const[isEdit,setIsEdit]= useState(false);
 // };
 async function fechListy() {
 
-  // const res = await axios.get(ip + 'lista-wykonczen');
-  // setListaWykonczenia([...res.data]);
-
   const res2 = await axios.get(ip + 'lista-uszlachetnien');
   setListaUszlachetnien([...res2.data]);
 
@@ -75,7 +80,7 @@ async function fechListy() {
   setListaGramatur([...res4.data]);
 
   const res5 = await axios.get(ip + 'lista-procesow');
-  setListaProcesow([...res5.data]);
+  setListaDostepnychProcesow([...res5.data]);
 
 
 
@@ -148,8 +153,9 @@ useEffect(()=>{
               setListaGramatur={setListaGramatur}
               isEdit={isEdit}
               setIsEdit={setIsEdit}
-              procesy={procesy}
-              setProcesy={setProcesy}
+              procesyElementow={procesyElementow}
+              setProcesyElementow={setProcesyElementow}
+              listaDostepnychProcesow={listaDostepnychProcesow}
               
 
             />

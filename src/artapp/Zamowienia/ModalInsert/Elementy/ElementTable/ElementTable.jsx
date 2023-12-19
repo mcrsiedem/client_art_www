@@ -4,15 +4,30 @@ import style from "./ElementTable.module.css";
 import { _papiery } from "../../api";
 import ElementTableHeader from "./ElementTableHeader";
 import ElementTableCenter from "./ElementTableCenter";
-import { useState } from "react";
-import Logo_ustawienia from "../../../../../svg/settings.svg";
 
 
 
-export default function ElementTable({elementy,setElementy,handleChangeCardElementy,
-  selected_papier,setSelected_papier,fragmenty,setFragmenty,
-info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setListaGramatur,isEdit,setIsEdit,procesyElementow,setProcesyElementow,listaDostepnychProcesow}) {
-
+export default function ElementTable({
+  elementy,
+  setElementy,
+  handleChangeCardElementy,
+  selected_papier,
+  setSelected_papier,
+  fragmenty,
+  setFragmenty,
+  info,
+  setInfo,
+  listaWykonczen,
+  setListaWykonczen,
+  listaPapierow,
+  listaGramatur,
+  setListaGramatur,
+  isEdit,
+  setIsEdit,
+  procesyElementow,
+  setProcesyElementow,
+  listaDostepnychProcesow,
+}) {
   return (
     <div className={style.elementCard}>
       <ElementTableHeader
@@ -22,10 +37,19 @@ info,setInfo,listaWykonczen,setListaWykonczen,listaPapierow,listaGramatur,setLis
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
       />
-      <ElementTableCenter/>
+      <ElementTableCenter
+        elementy={elementy}
+        handleChangeCardElementy={handleChangeCardElementy}
+        listaPapierow={listaPapierow}
+        listaGramatur={listaGramatur}
+        setListaGramatur={setListaGramatur}
+        isEdit={isEdit}
+        setIsEdit={setIsEdit}
+        procesyElementow={procesyElementow}
+        setProcesyElementow={setProcesyElementow}
+        listaDostepnychProcesow={listaDostepnychProcesow}
 
+      />
     </div>
   );
 }
-
-

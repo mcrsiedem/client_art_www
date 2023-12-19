@@ -111,7 +111,9 @@ function RowElement({row,handleChangeCardElementy,i,listaPapierow,setListaGramat
           }}
           alt="Procesy"
         />
-        {procesy[0].proces_id}
+        {procesy.filter((frag) => frag.element_id === row.id).map((pr)=>(pr.proces_id))}
+        {/* {procesy[0].proces_id} */}
+        {/* {row.id} */}
 
       </td>
 

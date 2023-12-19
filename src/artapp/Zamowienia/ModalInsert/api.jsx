@@ -246,7 +246,7 @@ const initialProcesy = [
     zamowienie_id: 1,
     produkt_id: 1,
     element_id: 1, 
-    proces_id: 1, 
+    proces_id: 2, 
     strona:"",
     nazwa:"",
     info:""
@@ -255,8 +255,8 @@ const initialProcesy = [
     id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
-    element_id: 1, 
-    proces_id: 1, 
+    element_id: 2, 
+    proces_id: 2, 
     strona:"",
     nazwa:"",
     info:""

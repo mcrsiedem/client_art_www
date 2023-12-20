@@ -6,40 +6,55 @@ import style from "./ElementyProcesInsert.module.css";
 // import { useState } from "react";
 // import Logo_ustawienia from "../../../../svg/settings.svg";
 
-
-
-export default function ElementyProcesInsert({showElementyProcesyInsert,setShowElementyProcesyInsert}) {
-
+export default function ElementyProcesInsert({
+  showElementyProcesyInsert,
+  setShowElementyProcesyInsert,
+}) {
   return (
     <div className={style.insertContainer}>
-      
-      <div className={style.header} > <p className={style.title}>Procesy</p></div>
-      <div className={style.center} > 
-      <table className={style.table2}>
-        <thead>
-          <tr>
-            <th className={style.col1}>#</th>
-            <th className={style.col_typ}>Proces</th>
-            <th className={style.col_naklad}>Strona</th>
-            <th className={style.col_wersja}>Nazwa</th>
-            <th className={style.col_strony}>Info</th>
+      <div className={style.header}>
+        {" "}
+        <p className={style.title}>Procesy</p>
+      </div>
+      <div className={style.center}>
+        <table className={style.table2}>
+          <thead>
+            <tr>
+              <th className={style.col1}>#</th>
+              <th className={style.col_typ}>Proces</th>
+              <th className={style.col_naklad}>Strona</th>
+              <th className={style.col_wersja}>Nazwa</th>
+              <th className={style.col_strony}>Info</th>
 
-            <th className={style.col_kolory}>Dodatkowe informacje </th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr >
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-
-
-
-      </tr>
-          {/* {elementy.map((row, i) => {
+              <th className={style.col_kolory}>Dodatkowe informacje </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Druk</td>
+              <td>Front</td>
+              <td>CMYK</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Druk</td>
+              <td>Back</td>
+              <td>CMYK</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Uszlachetnianie</td>
+              <td>Front</td>
+              <td>UV</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            {/* {elementy.map((row, i) => {
             return (
               <RowElement
                 i={i}
@@ -57,11 +72,21 @@ export default function ElementyProcesInsert({showElementyProcesyInsert,setShowE
               />
             );
           })} */}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
-      <div className={style.row} > <button className={style.btn} onClick={() => { setShowElementyProcesyInsert(false) }} >Anuluj</button > <button className={style.btn}>OK</button></div>
+      <div className={style.row}>
+        {" "}
+        <button
+          className={style.btn}
+          onClick={() => {
+            setShowElementyProcesyInsert(false);
+          }}
+        >
+          Anuluj
+        </button>{" "}
+        <button className={style.btn}>OK</button>
+      </div>
     </div>
   );
 }
-

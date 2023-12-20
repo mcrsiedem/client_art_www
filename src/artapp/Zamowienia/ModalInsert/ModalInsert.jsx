@@ -16,6 +16,7 @@ import {ip} from "../../../Host"
 import ElementyTable from './Elementy/ElementyTable';
 import ProduktyTable from './Produkty/ProduktyTable';
 import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
+import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
 function ModalInsert({ openModalInsert, setOpenModalInsert }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
@@ -23,53 +24,31 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
        },[])
 // const elmnt = useRef(null);
 
-const[showElementyProcesyModal,setShowElementyProcesyModal] =useState(true);
+const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(true);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
-
 const [klient, setKlient] = useState(_klient[0].id);
 const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
-
 const [uszlachetnienia, setUszlachetnienia] = useState();
-
-
 const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
-
-
 const [idZamowienie, setIdZamowienia] = useState();
 const[isTable,setIsTable] =useState(true);
 const[info,setInfo]= useState("napis")
-
-
 const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
 const[listaPapierow,setListaPapierow]= useState();
 const[listaGramatur,setListaGramatur]= useState();
-
-
-
 // lista wszystkich dostępnych procesów
 const[listaDostepnychProcesow, setListaDostepnychProcesow]= useState();
 
 //procesy dołączone do elementów
 const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
 
-
-
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
-
 const[isEdit,setIsEdit]= useState(false);
-// async function fechListaUszlachetnien() {
 
-//   // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
-//   //                           .filter(row=> row.status !== "Nowe")
-//   // setData(job);
-
-//   // setData(zamowienia);
-
-// };
 async function fechListy() {
 
   const res2 = await axios.get(ip + 'lista-uszlachetnien');
@@ -158,10 +137,8 @@ useEffect(()=>{
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}
-              showElementyProcesyModal={showElementyProcesyModal}
-              setShowElementyProcesyModal={setShowElementyProcesyModal}
-              
-
+              showElementyProcesyInsert={showElementyProcesyInsert}
+              setShowElementyProcesyInsert={setShowElementyProcesyInsert}
             />
           )}
         </div>
@@ -181,7 +158,7 @@ useEffect(()=>{
 
 }
         <Warianty />
-
+        {showElementyProcesyInsert && ( <ElementyProcesInsert showElementyProcesyInsert={showElementyProcesyInsert} setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>)}
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
         {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>

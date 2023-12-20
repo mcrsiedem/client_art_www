@@ -38,7 +38,7 @@ function Zamowienia(){
     const [data, setData] = useState([]);
 
     function dodaj_clikHandler(){
-       console.log("ok");
+    //    console.log("ok");
        setOpenModalInsert(true);
     }
 

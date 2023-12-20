@@ -24,7 +24,7 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
        },[])
 // const elmnt = useRef(null);
 
-const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(true);
+const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].id);
 const [elementy, setElementy] = useState(initialElementy);

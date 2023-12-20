@@ -24,7 +24,7 @@ export default function ElementyTable({
   setProcesyElementow,
   listaDostepnychProcesow,
   showElementyProcesyModal,
-  setShowElementyProcesyModal,
+  setShowElementyProcesyInsert
 }) {
   return (
     <>
@@ -52,7 +52,7 @@ export default function ElementyTable({
           setProcesyElementow={setProcesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
           showElementyProcesyModal={showElementyProcesyModal}
-          setShowElementyProcesyModal={setShowElementyProcesyModal}
+          setShowElementyProcesyInsert={setShowElementyProcesyInsert}
         />
       </div>
     </>

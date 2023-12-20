@@ -27,6 +27,7 @@ export default function ElementTable({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
+  setShowElementyProcesyInsert
 }) {
   return (
     <div className={style.elementCard}>
@@ -48,6 +49,7 @@ export default function ElementTable({
         procesyElementow={procesyElementow}
         setProcesyElementow={setProcesyElementow}
         listaDostepnychProcesow={listaDostepnychProcesow}
+        setShowElementyProcesyInsert={setShowElementyProcesyInsert}
 
       />
     </div>

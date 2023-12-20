@@ -8,14 +8,14 @@ import style from "./ElementyProcesInsert.module.css";
 
 
 
-export default function ElementyProcesInsert({}) {
+export default function ElementyProcesInsert({showElementyProcesyInsert,setShowElementyProcesyInsert}) {
 
   return (
     <div className={style.insertContainer}>
       
       <div className={style.header} > <p className={style.title}>Procesy</p></div>
       <div className={style.center} > </div>
-      <div className={style.row} > <button className={style.btn}>Anuluj</button > <button className={style.btn}>OK</button></div>
+      <div className={style.row} > <button className={style.btn} onClick={() => { setShowElementyProcesyInsert(false) }} >Anuluj</button > <button className={style.btn}>OK</button></div>
     </div>
   );
 }

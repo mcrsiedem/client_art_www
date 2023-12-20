@@ -12,7 +12,7 @@ export default function ElementTableCenter({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
-
+  setShowElementyProcesyInsert
 }) {
   return (
     <div className={style.main}>
@@ -55,6 +55,7 @@ export default function ElementTableCenter({
                 procesyElementow={procesyElementow}
                 setProcesyElementow={setProcesyElementow}
                 listaDostepnychProcesow={listaDostepnychProcesow}
+                setShowElementyProcesyInsert={setShowElementyProcesyInsert}
               />
             );
           })}
@@ -77,6 +78,7 @@ function RowElement({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
+  setShowElementyProcesyInsert
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
@@ -132,7 +134,7 @@ function RowElement({
         <img
           className={style.icon}
           src={Logo_ustawienia}
-          onClick={() => {}}
+          onClick={() => {setShowElementyProcesyInsert(true)}}
           alt="Procesy"
         />
         {procesyElementow

@@ -123,10 +123,10 @@ useEffect(()=>{
               setFragmenty={setFragmenty}
               info={info}
               setInfo={setInfo}
-              listaWykonczenia={listaWykonczenia}
-              setListaWykonczenia={setListaWykonczenia}
-              selected_wykonczenie={selected_wykonczenie}
-              setSelected_wykonczenie={setSelected_wykonczenie}
+              // listaWykonczenia={listaWykonczenia}
+              // setListaWykonczenia={setListaWykonczenia}
+              // selected_wykonczenie={selected_wykonczenie}
+              // setSelected_wykonczenie={setSelected_wykonczenie}
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
               listaUszlachetnien={listaUszlachetnien}
@@ -158,7 +158,7 @@ useEffect(()=>{
 
 }
         <Warianty />
-        {showElementyProcesyInsert && ( <ElementyProcesInsert showElementyProcesyInsert={showElementyProcesyInsert} setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>)}
+        {showElementyProcesyInsert && ( <ElementyProcesInsert showElementyProcesyInsert={showElementyProcesyInsert} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>)}
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
         {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>

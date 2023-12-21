@@ -17,8 +17,6 @@ export default function ElementTable({
   setFragmenty,
   info,
   setInfo,
-  listaWykonczen,
-  setListaWykonczen,
   listaPapierow,
   listaGramatur,
   setListaGramatur,

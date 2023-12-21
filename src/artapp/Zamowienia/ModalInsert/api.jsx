@@ -247,8 +247,10 @@ const initialProcesy = [
     produkt_id: 1,
     element_id: 1, 
     proces_id: 2, 
-    strona:"",
-    nazwa:"",
+    proces_nazwa: "Druk",
+    proces_typ: "farba",
+    front:"CMYK",
+    back:"CMYK",
     info:""
 
   },{
@@ -256,26 +258,28 @@ const initialProcesy = [
     zamowienie_id: 1,
     produkt_id: 1,
     element_id: 1, 
-    proces_id: 1, 
-    strona:"",
-    nazwa:"",
-    info:"",
-    proces: "druk"
+    proces_id: 2, 
+    proces_nazwa: "Uszlachetnienie",
+    proces_typ: "lakier",
+    front:"",
+    back:"",
+    info:""
 
   }
   ,{
-    id: 2,
+    id: 3,
     zamowienie_id: 1,
     produkt_id: 1,
-    element_id: 4, 
-    proces_id: 1, 
-    strona:"",
-    nazwa:"",
-    info:"",
-    proces: "druk"
+    element_id: 1, 
+    proces_id: 2, 
+    proces_nazwa: "Druk",
+    front:"",
+    back:"",
+    info:""
     
 
   }
+
 
 ];
 

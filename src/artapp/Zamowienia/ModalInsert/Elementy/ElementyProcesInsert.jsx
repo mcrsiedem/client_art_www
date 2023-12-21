@@ -9,6 +9,7 @@ import style from "./ElementyProcesInsert.module.css";
 export default function ElementyProcesInsert({
   showElementyProcesyInsert,
   setShowElementyProcesyInsert,
+  procesyElementow
 }) {
   return (
     <div className={style.insertContainer}>
@@ -22,38 +23,50 @@ export default function ElementyProcesInsert({
             <tr>
               <th className={style.col1}>#</th>
               <th className={style.col_typ}>Proces</th>
-              <th className={style.col_naklad}>Strona</th>
-              <th className={style.col_wersja}>Nazwa</th>
-              <th className={style.col_strony}>Info</th>
+              <th className={style.col_typ}>Typ</th>
+              <th className={style.col_naklad}>Front</th>
+              <th className={style.col_naklad}>Nazwa</th>
+              <th className={style.col_naklad}>Back</th>
+              <th className={style.col_naklad}>Nazwa</th>
+              <th className={style.col_wersja}>Uwagi</th>
 
-              <th className={style.col_kolory}>Dodatkowe informacje </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {
+                procesyElementow.map((row, i) => {
+                  return (
+                  <tr>
+                <td>{row.id}</td>
+                    <td>{row.proces_nazwa}</td>
+                    <td>{row.proces_typ}</td>
+                    <td>4</td>
+                    <td>CMYK</td>
+                    <td>CMYK</td>
+                    <td>CMYK</td>
+                    <td></td>
+                  </tr>)
+                })
+            }
+            {/* <tr>
               <td>1</td>
               <td>Druk</td>
-              <td>Front</td>
+              <td>farba</td>
               <td>CMYK</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Druk</td>
-              <td>Back</td>
               <td>CMYK</td>
-              <td>1</td>
-              <td>1</td>
+              <td></td>
+
             </tr>
+
             <tr>
               <td>3</td>
               <td>Uszlachetnianie</td>
-              <td>Front</td>
+              <td>lakier</td>
               <td>UV</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
+              <td></td>
+              <td></td>
+
+            </tr> */}
             {/* {elementy.map((row, i) => {
             return (
               <RowElement

@@ -32,7 +32,7 @@ export default function ElementTableCenter({
             <th className={style.col_papier}>Papier</th>
             <th className={style.col_gramatura}>g/m2</th>
             <th className={style.col_papierInfo}>Uwagi</th>
-            <th className={style.col_kolory}>Druk</th>
+   
 
             <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
@@ -117,7 +117,7 @@ function RowElement({
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
       />
-      <Kolory row={row} handleChangeCardElementy={handleChangeCardElementy} />
+  
 
       {/* <td>
         <img

@@ -206,7 +206,7 @@ useEffect(()=>{
                             zamowienie_id: zamowienie_id,
                             produkt_id: produkt_id,
                             naklad: element.naklad,
-                            strony:element.strony,
+                            strony:element.ilosc_stron,
                             kolory:element.kolory,
                             format_x:element.format_x,
                             format_y:element.format_y,

@@ -158,7 +158,7 @@ useEffect(()=>{
 
 }
         <Warianty />
-        {showElementyProcesyInsert && ( <ElementyProcesInsert showElementyProcesyInsert={showElementyProcesyInsert} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>)}
+        {showElementyProcesyInsert && ( <ElementyProcesInsert showElementyProcesyInsert={showElementyProcesyInsert} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow} listaDostepnychProcesow={listaDostepnychProcesow}/>)}
         {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
         {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>

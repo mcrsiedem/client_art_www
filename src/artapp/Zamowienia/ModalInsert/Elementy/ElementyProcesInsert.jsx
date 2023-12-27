@@ -9,7 +9,8 @@ import style from "./ElementyProcesInsert.module.css";
 export default function ElementyProcesInsert({
   showElementyProcesyInsert,
   setShowElementyProcesyInsert,
-  procesyElementow
+  procesyElementow,
+  listaDostepnychProcesow
 }) {
   return (
     <div className={style.insertContainer}>

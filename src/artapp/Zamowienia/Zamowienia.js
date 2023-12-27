@@ -43,7 +43,7 @@ function Zamowienia(){
     }
 
     async function fechZamowienia() {
-        const res = await axios.get(ip + 'historia_short');
+        const res = await axios.get(ip + 'zamowienia');
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
@@ -102,12 +102,12 @@ function kolor(k){
                                     }}
                                     >
                                     <td>{row.id} </td>
-                                    <td>{row.zamowienie_nr} </td>
-                                    <td>{row.data} </td>
-                                    <td>{row.user}</td>
-                                    <td>{row.kategoria}</td>
-                                    <td>{row.event}</td>
-                                    <td>{row.event}</td>
+                                    <td>{row.nr} </td>
+                                    <td>{row.rok} </td>
+                                    <td>{row.firma}</td>
+                                    <td>{row.klient}</td>
+                                    <td>{row.tytul}</td>
+                                    <td>{row.utworzono}</td>
                                     </tr>
                                 );
                                 })}

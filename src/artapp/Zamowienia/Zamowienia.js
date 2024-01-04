@@ -85,7 +85,7 @@ function kolor(k){
                             <table>
                             <thead >
                                 <tr>                                 
-                                    <th>#</th> <th>nr zamówienia</th> <th>Katalog</th> <th>Element</th> <th>Ilość stron</th> <th>Gdzie</th> <th>Co</th>
+                                    <th>#</th> <th>nr zamówienia</th> <th>Rok</th> <th>Element</th> <th>Ilość stron</th> <th>Gdzie</th> <th>Co</th>
                                 </tr>
                             </thead>
 

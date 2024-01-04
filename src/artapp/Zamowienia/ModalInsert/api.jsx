@@ -5,7 +5,6 @@ const _firma = [
     id: 1,
     nazwa: "ArtDruk",
     nip: "123-111-22-33",
-
   },
   {
     id: 2,

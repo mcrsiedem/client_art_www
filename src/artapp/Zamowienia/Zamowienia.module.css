@@ -141,3 +141,23 @@ tr:hover{
    background-image: linear-gradient(180deg,#e74a3b 10%,#be2617 100%);
    background-size: cover;
 }
+
+
+
+.col_id {
+   width: 50px;
+ }
+.col_nr {
+   width: 40px;
+ }
+
+ .col_rok {
+   width: 40px;
+ }
+
+ .col_firma {
+   width: 100px;
+ }
+ .col_utworzono {
+   width: 150px;
+ }

@@ -79,53 +79,68 @@ function kolor(k){
 }
     return (
       <div className={style.body}>
+        <div className={style.tableContainer}>
+          <table>
+            <thead>
+              <tr>
+                <th className={style.col_id}>#</th>{" "}
+                <th className={style.col_nr}>Nr</th>
+                <th className={style.col_rok}>Rok</th>{" "}
+                 <th>Klient</th>
+                 <th>Praca</th>
+                 <th className={style.col_firma}>Firma</th>
+                <th className={style.col_utworzono}>Utworzono</th>
+              </tr>
+            </thead>
 
-        
-       <div className={style.tableContainer}>
-                            <table>
-                            <thead >
-                                <tr>                                 
-                                    <th>#</th> <th>nr zamówienia</th> <th>Rok</th> <th>Element</th> <th>Ilość stron</th> <th>Gdzie</th> <th>Co</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {data.map((row) => {
-                                return (
-                                    <tr
-                                    // className={row.id === 6 ? style.bgdanger : ""}
-                                    key={row.id}
-                                    onDoubleClick={(node, event) => {
-                               
-                                        setOpenModal(true);
-                                        setRow({ id: row.id, user: row.user });
-                                    }}
-                                    >
-                                    <td>{row.id} </td>
-                                    <td>{row.nr} </td>
-                                    <td>{row.rok} </td>
-                                    <td>{row.firma}</td>
-                                    <td>{row.klient}</td>
-                                    <td>{row.tytul}</td>
-                                    <td>{row.utworzono}</td>
-                                    </tr>
-                                );
-                                })}
-                            </tbody>
-                            </table>
+            <tbody>
+              {data.map((row) => {
+                return (
+                  <tr
+                    // className={row.id === 6 ? style.bgdanger : ""}
+                    key={row.id}
+                    onDoubleClick={(node, event) => {
+                      setOpenModal(true);
+                      setRow({ id: row.id, user: row.user });
+                    }}
+                  >
+                    <td>{row.id} </td>
+                    <td>{row.nr} </td>
+                    <td>{row.rok} </td>
+                    <td>{row.klient}</td>
+                    <td>{row.tytul}</td>
+                    <td>{row.firma}</td>
+                    <td>{row.utworzono}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
 
+        <footer className={style.footer}>
+          {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
+          <button className={style.myButton}>OK</button>
+          <button
+            className={style.myButton}
+            onClick={() => {
+              dodaj_clikHandler();
+            }}
+          >
+            {" "}
+            Dodaj{" "}
+          </button>
+        </footer>
 
-                    <footer className={style.footer}>
-                            {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-                            <button className={style.myButton}>OK</button>
-                            <button className={style.myButton}  onClick={() => { dodaj_clikHandler(); }} > Dodaj </button>
-                    </footer>
-
-        {openModal && (<Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />)}
-        {openModalInsert && ( <ModalInsert openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/>)}
-
-
+        {openModal && (
+          <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
+        )}
+        {openModalInsert && (
+          <ModalInsert
+            openModalInsert={openModalInsert}
+            setOpenModalInsert={setOpenModalInsert}
+          />
+        )}
       </div>
     );
 }

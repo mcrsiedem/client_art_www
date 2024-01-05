@@ -64,7 +64,6 @@ async function fechListy() {
   setListaDostepnychProcesow([...res5.data]);
 
 
-
 };
 
 useEffect(()=>{

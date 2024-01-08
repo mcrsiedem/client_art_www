@@ -114,6 +114,7 @@ function DataPrzyjecia({dataPrzyjecia,setDataPrzyjecia}){
          defaultValue={dataPrzyjecia}
          onChange={(event) => {
            setDataPrzyjecia(event.target.value);
+           if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
     </div>
   );

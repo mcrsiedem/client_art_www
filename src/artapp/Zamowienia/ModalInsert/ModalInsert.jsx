@@ -52,6 +52,7 @@ const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
 
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 const[isEdit,setIsEdit]= useState(false);
+const[isOK,setIsOK]= useState(false);
 
 async function fechListy() {
 
@@ -83,6 +84,9 @@ useEffect(()=>{
           isTable={isTable}
           setIsTable={setIsTable}
           info={info}
+          isOK={isOK}
+          setIsOK={setIsOK}
+          sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
         />
 
         <Dane
@@ -179,13 +183,20 @@ useEffect(()=>{
       </div>
     );
 //----------------------------------
-
+function sprawdzPoprawnoscZamowienia(){
+  // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji
+  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") console.log("Zamówienie wypełnione poprawnie!")
+  
+}
+//----------------------------------
 
       async function postZamowienie() {
         const res = await axios.post(ip + "zamowienie", {
           firma_id: selected_firma,
           klient_id: klient,
           data_przyjecia: dataPrzyjecia,
+          data_materialow: dataMaterialow,
+          data_spedycji: dataSpedycji,
         });
     
         const zamowienie_id = res.data.insertId;

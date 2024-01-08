@@ -6,7 +6,7 @@ const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
 
- function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable,info}){
+ function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable,info,sprawdzPoprawnoscZamowienia}){
     return(<>
     <div className={style.container}>
         <div className={style.title}>Dodaj zamówienie...id: {id} {info}</div>
@@ -22,6 +22,7 @@ const openInNewTab = (url) => {
         <button onClick={() => setOpenModalInsert(false)} className={style.btn}>Anuluj</button>
         <button onClick={() => postZamowienie()} className={style.btn}>Zapisz</button>
         <button onClick={() => openInNewTab("/Zamowienia")}className={style.btn}>Zapisz jako</button>
+        <button onClick={() => sprawdzPoprawnoscZamowienia()}className={style.btn}>Sprawdź</button>
 
 
  

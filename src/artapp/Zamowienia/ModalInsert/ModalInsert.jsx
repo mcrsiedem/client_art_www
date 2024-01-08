@@ -185,6 +185,7 @@ useEffect(()=>{
         const res = await axios.post(ip + "zamowienie", {
           firma_id: selected_firma,
           klient_id: klient,
+          data_przyjecia: dataPrzyjecia,
         });
     
         const zamowienie_id = res.data.insertId;

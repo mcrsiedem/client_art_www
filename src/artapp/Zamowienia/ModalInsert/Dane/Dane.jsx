@@ -7,7 +7,11 @@ export default function Dane({
   klient,
   setKlient,
   dataPrzyjecia,
-  setDataPrzyjecia
+  setDataPrzyjecia,
+  dataMaterialow,
+  setDataMaterialow,
+  dataSpedycji,
+  setDataSpedycji
 }) {
   return (
     <>
@@ -21,9 +25,14 @@ export default function Dane({
                   
        
        
-                  <DataPrzyjecia dataPrzyjecia={dataPrzyjecia} setDataPrzyjecia={setDataPrzyjecia}/>
-                  <DataMeterialow/>
-                  <DataSpedycji/>
+                  <DataPrzyjecia         dataPrzyjecia={dataPrzyjecia}
+          setDataPrzyjecia={setDataPrzyjecia}
+/>
+                  <DataMeterialow  dataMaterialow={dataMaterialow}
+          setDataMaterialow={setDataMaterialow}/>
+                  <DataSpedycji  
+          dataSpedycji={dataSpedycji}
+          setDataSpedycji={setDataSpedycji}/>
             </div>
             <div className={style.row2}>
                       <Tytul selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
@@ -84,11 +93,15 @@ function Klient({ klient, setKlient }) {
   );
 }
 
-function DataMeterialow(){
+function DataMeterialow({dataMaterialow,setDataMaterialow}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
-        <input className={style.data} type="date"></input>
+        <input className={style.data} type="date"
+             defaultValue={dataMaterialow}
+             onChange={(event) => {
+               setDataMaterialow(event.target.value);
+             }}></input>
       </div>
     );
 }
@@ -106,11 +119,15 @@ function DataPrzyjecia({dataPrzyjecia,setDataPrzyjecia}){
   );
 }
 
-function DataSpedycji(){
+function DataSpedycji({dataSpedycji,setDataSpedycji}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
-        <input className={style.data} type="date"></input>
+        <input className={style.data} type="date"
+        defaultValue={dataSpedycji}
+        onChange={(event) => {
+          setDataSpedycji(event.target.value);
+        }}></input>
       </div>
     );
 }

@@ -35,6 +35,8 @@ export default function Dane({
           setDataSpedycji={setDataSpedycji}/>
             </div>
             <div className={style.row2}>
+              <Nr/>
+              <Rok/>
                       <Tytul selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
              
                   
@@ -92,6 +94,7 @@ function Klient({ klient, setKlient }) {
     </div>
   );
 }
+
 
 function DataMeterialow({dataMaterialow,setDataMaterialow}){
     return(
@@ -158,6 +161,24 @@ function Tytul(){
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
+      <input className={style.data} type="text"></input>
+    </div>
+  );
+}
+
+function Nr(){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Nr </label>
+      <input className={style.data} type="text"></input>
+    </div>
+  );
+}
+
+function Rok(){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Rok </label>
       <input className={style.data} type="text"></input>
     </div>
   );

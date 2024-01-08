@@ -185,8 +185,8 @@ useEffect(()=>{
 //----------------------------------
 function sprawdzPoprawnoscZamowienia(){
   // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji
-  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") console.log("Zamówienie wypełnione poprawnie!")
-  
+  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") console.log("Daty poprawne!")
+
 }
 //----------------------------------
 

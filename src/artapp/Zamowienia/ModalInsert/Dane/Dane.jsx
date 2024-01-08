@@ -2,51 +2,53 @@ import style from "./Dane.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy } from "../api";
 
 export default function Dane({
-  selected_firma,
-  setSelected_firma,
-  klient,
-  setKlient,
-  dataPrzyjecia,
-  setDataPrzyjecia,
-  dataMaterialow,
-  setDataMaterialow,
-  dataSpedycji,
-  setDataSpedycji
+  selected_firma,setSelected_firma,
+  klient,setKlient,
+  dataPrzyjecia, setDataPrzyjecia,
+  dataMaterialow, setDataMaterialow,
+  dataSpedycji, setDataSpedycji,
+  rok,setRok,
+  nr,setNr,
+  tytul,setTytul
 }) {
   return (
     <>
       <div className={style.dane}>
-            <div className={style.row1}>
-                      <Firma selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-                  <div className={style.klientContainer}>
-                    <Klient klient={klient} setKlient={setKlient}/>
-          
-                  </div>
-                  
-       
-       
-                  <DataPrzyjecia         dataPrzyjecia={dataPrzyjecia}
-          setDataPrzyjecia={setDataPrzyjecia}
-/>
-                  <DataMeterialow  dataMaterialow={dataMaterialow}
-          setDataMaterialow={setDataMaterialow}/>
-                  <DataSpedycji  
-          dataSpedycji={dataSpedycji}
-          setDataSpedycji={setDataSpedycji}/>
-            </div>
-            <div className={style.row2}>
-              <Nr/>
-              <Rok/>
-                      <Tytul selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
-             
-                  
-       
-                  <Opiekun selected_firma={selected_firma} setSelected_firma={setSelected_firma}/>
+        <div className={style.row1}>
+          <Firma
+            selected_firma={selected_firma}
+            setSelected_firma={setSelected_firma}
+          />
+          <div className={style.klientContainer}>
+            <Klient klient={klient} setKlient={setKlient} />
+          </div>
 
-     
-       
-            </div>
-          
+          <DataPrzyjecia
+            dataPrzyjecia={dataPrzyjecia}
+            setDataPrzyjecia={setDataPrzyjecia}
+          />
+          <DataMeterialow
+            dataMaterialow={dataMaterialow}
+            setDataMaterialow={setDataMaterialow}
+          />
+          <DataSpedycji
+            dataSpedycji={dataSpedycji}
+            setDataSpedycji={setDataSpedycji}
+          />
+        </div>
+        <div className={style.row2}>
+          <Nr nr={nr} setNr={setNr} />
+          <Rok rok={rok} setRok={setRok} />
+          <Tytul
+            tytul={tytul}
+            setTytul={setTytul}
+          />
+
+          <Opiekun
+            selected_firma={selected_firma}
+            setSelected_firma={setSelected_firma}
+          />
+        </div>
       </div>
     </>
   );
@@ -157,29 +159,41 @@ function Opiekun({ selected_firma, setSelected_firma }) {
   );
 }
 
-function Tytul(){
+function Tytul({tytul,setTytul}){
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
-      <input className={style.data} type="text"></input>
+      <input className={style.data} type="text"
+      value={tytul}
+      onChange={(event) => {
+        setTytul(event.target.value);
+      }}></input>
     </div>
   );
 }
 
-function Nr(){
+function Nr({nr,setNr}){
   return(
       <div className={style.col}>
-      <label className={style.label}> Nr </label>
-      <input className={style.data} type="text"></input>
+      <label className={style.label}> Nr zlecenia </label>
+      <input className={style.data} type="text"
+      value={nr}
+      onChange={(event) => {
+        setNr(event.target.value);
+      }}></input>
     </div>
   );
 }
 
-function Rok(){
+function Rok({rok,setRok}){
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>
-      <input className={style.data} type="text"></input>
+      <input className={style.data} type="text"
+            value={rok}
+            onChange={(event) => {
+              setRok(event.target.value);
+            }}></input>
     </div>
   );
 }

@@ -23,10 +23,12 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
         // dragElement(elmnt.current);
        },[])
 // const elmnt = useRef(null);
-
+const [nr, setNr] = useState();
+const [rok, setRok] = useState();
 const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].id);
+const [tytul, setTytul] = useState();
 const [dataPrzyjecia, setDataPrzyjecia] = useState();
 const [dataMaterialow, setDataMaterialow] = useState();
 const [dataSpedycji, setDataSpedycji] = useState();
@@ -100,6 +102,12 @@ useEffect(()=>{
           setDataMaterialow={setDataMaterialow}
           dataSpedycji={dataSpedycji}
           setDataSpedycji={setDataSpedycji}
+          nr={nr}
+          setNr={setNr}
+          rok={rok}
+          setRok={setRok}
+          tytul={tytul}
+          setTytul={setTytul}
           
         />
 
@@ -192,11 +200,15 @@ function sprawdzPoprawnoscZamowienia(){
 
       async function postZamowienie() {
         const res = await axios.post(ip + "zamowienie", {
+          nr,
+          rok,
           firma_id: selected_firma,
           klient_id: klient,
+          tytul: tytul,
           data_przyjecia: dataPrzyjecia,
           data_materialow: dataMaterialow,
           data_spedycji: dataSpedycji,
+
         });
     
         const zamowienie_id = res.data.insertId;

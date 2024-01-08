@@ -27,6 +27,10 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].id);
+const [dataPrzyjecia, setDataPrzyjecia] = useState();
+const [dataMaterialow, setDataMaterialow] = useState();
+const [dataSpedycji, setDataSpedycji] = useState();
+
 const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
@@ -86,6 +90,13 @@ useEffect(()=>{
           klient={klient}
           setSelected_firma={(firma) => setSelected_firma(firma)}
           setKlient={(kl) => setKlient(kl)}
+          dataPrzyjecia={dataPrzyjecia}
+          setDataPrzyjecia={setDataPrzyjecia}
+          dataMaterialow={dataMaterialow}
+          setDataMaterialow={setDataMaterialow}
+          dataSpedycji={dataSpedycji}
+          setDataSpedycji={setDataSpedycji}
+          
         />
 
         <div>

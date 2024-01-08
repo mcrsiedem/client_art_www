@@ -6,6 +6,8 @@ export default function Dane({
   setSelected_firma,
   klient,
   setKlient,
+  dataPrzyjecia,
+  setDataPrzyjecia
 }) {
   return (
     <>
@@ -19,7 +21,7 @@ export default function Dane({
                   
        
        
-                  <DataPrzyjecia/>
+                  <DataPrzyjecia dataPrzyjecia={dataPrzyjecia} setDataPrzyjecia={setDataPrzyjecia}/>
                   <DataMeterialow/>
                   <DataSpedycji/>
             </div>
@@ -91,11 +93,15 @@ function DataMeterialow(){
     );
 }
 
-function DataPrzyjecia(){
+function DataPrzyjecia({dataPrzyjecia,setDataPrzyjecia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
-      <input className={style.data} type="date"></input>
+      <input className={style.data} type="date"
+         defaultValue={dataPrzyjecia}
+         onChange={(event) => {
+           setDataPrzyjecia(event.target.value);
+         }}></input>
     </div>
   );
 }

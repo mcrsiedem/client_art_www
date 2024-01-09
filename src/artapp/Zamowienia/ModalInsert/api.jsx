@@ -39,6 +39,26 @@ const _klient = [
   
 ];
 
+const _opiekun = [
+  {
+    id: 1,
+    imie: "Maciej",
+    nazwisko: "Romiszewski",
+    login: "Maciek",
+    haslo: "mcr",
+    dostep: "7"
+  },
+  {
+    id: 2,
+    imie: "Piotr",
+    nazwisko: "Hołowicz",
+    login: "Piotr",
+    haslo: "p",
+    dostep: "7"
+  },
+  
+];
+
 const initialProdukty = [
   {
     id: 1,
@@ -134,7 +154,8 @@ const initialElementy = [
     kolor_front: "4",
     kolor_back: "4",
     kolory: "CMYK + CMYK",
-    
+    format_x: "210",
+    format_y: "297",
     papier_id: 7,
     papier_info:"",
     gramatura_id: 0,
@@ -334,4 +355,4 @@ const _wykonczenie = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun};

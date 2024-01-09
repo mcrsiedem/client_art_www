@@ -1,9 +1,10 @@
 import style from "./Dane.module.css";
-import { _firma, _produkty, _klient, _zestawy, _elementy } from "../api";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun } from "../api";
 
 export default function Dane({
   selected_firma,setSelected_firma,
   klient,setKlient,
+  opiekun, setOpiekun,
   dataPrzyjecia, setDataPrzyjecia,
   dataMaterialow, setDataMaterialow,
   dataSpedycji, setDataSpedycji,
@@ -45,8 +46,8 @@ export default function Dane({
           />
 
           <Opiekun
-            selected_firma={selected_firma}
-            setSelected_firma={setSelected_firma}
+            opiekun={opiekun}
+            setOpiekun={setOpiekun}
           />
         </div>
       </div>
@@ -138,20 +139,20 @@ function DataSpedycji({dataSpedycji,setDataSpedycji}){
     );
 }
 
-function Opiekun({ selected_firma, setSelected_firma }) {
+function Opiekun({ opiekun, setOpiekun }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={selected_firma}
+        value={opiekun}
         onChange={(event) => {
-          setSelected_firma(event.target.value);
+          setOpiekun(event.target.value);
         }}
       >
-        {_firma.map((option) => (
+        {_opiekun.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.nazwa}
+          {option.imie} {option.nazwisko} 
           </option>
         ))}
       </select>

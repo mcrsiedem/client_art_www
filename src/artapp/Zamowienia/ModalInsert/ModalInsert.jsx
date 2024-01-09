@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
 import Produkty from './Produkty/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy} from './api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
@@ -28,6 +28,8 @@ const [rok, setRok] = useState();
 const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
 const [selected_firma, setSelected_firma] = useState(_firma[0].id);
 const [klient, setKlient] = useState(_klient[0].id);
+const [opiekun, setOpiekun] = useState(_opiekun[0].id);
+
 const [tytul, setTytul] = useState();
 const [dataPrzyjecia, setDataPrzyjecia] = useState();
 const [dataMaterialow, setDataMaterialow] = useState();
@@ -55,6 +57,8 @@ const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
 const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 const[isEdit,setIsEdit]= useState(false);
 const[isOK,setIsOK]= useState(false);
+
+const[check_data_wejscia,setCheck_data_wejscia]= useState(false);
 
 async function fechListy() {
 
@@ -89,11 +93,14 @@ useEffect(()=>{
           isOK={isOK}
           setIsOK={setIsOK}
           sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
+          check_data_wejscia={check_data_wejscia}
         />
 
         <Dane
           selected_firma={selected_firma}
           klient={klient}
+          opiekun={opiekun}
+          setOpiekun={setOpiekun}
           setSelected_firma={(firma) => setSelected_firma(firma)}
           setKlient={(kl) => setKlient(kl)}
           dataPrzyjecia={dataPrzyjecia}
@@ -193,9 +200,13 @@ useEffect(()=>{
 //----------------------------------
 function sprawdzPoprawnoscZamowienia(){
   // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji
-  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") console.log("Daty poprawne!")
+  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") {
+    console.log("Daty poprawne!")
+    setCheck_data_wejscia(true);
 
+  }
 }
+
 //----------------------------------
 
       async function postZamowienie() {

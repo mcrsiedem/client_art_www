@@ -23,6 +23,18 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
         // dragElement(elmnt.current);
        },[])
 // const elmnt = useRef(null);
+const [daneZamowienia,setDaneZamowienia] = useState({
+  nr: "",
+  rok: "",
+  firma: _firma[0].id,
+  klient: _klient[0].id,
+  opiekun: _opiekun[0].id,
+  tytul: "",
+  dataPrzyjecia: "",
+  dataMaterialow: "",
+  dataSpedycji: "",
+
+})
 const [nr, setNr] = useState();
 const [rok, setRok] = useState();
 const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
@@ -219,6 +231,7 @@ function sprawdzPoprawnoscZamowienia(){
           data_przyjecia: dataPrzyjecia,
           data_materialow: dataMaterialow,
           data_spedycji: dataSpedycji,
+          // opiekun_zamowienia_id: 
 
         });
     

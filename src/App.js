@@ -30,6 +30,13 @@ import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
+  const [user, setUser] = useState({
+    id: "",
+    imie: "",
+    nazwisko: "",
+    login: "",
+    dostep: ""
+  }); 
   const [rowSelected, setRowSelected] = useState([]); 
 
   return (
@@ -44,7 +51,7 @@ export default function App() {
           <Route path='/xl' element={<XL />} />
           <Route path='/H1' element={<H1 />} />
           <Route path='/H3' element={<H3 />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login user={user} setUser={setUser}/>} />
           <Route path='/okladki' element={<Notes />} />
           <Route path='/info' element={<Info />} />
           <Route path='/falc' element={<Falc />} />
@@ -53,9 +60,9 @@ export default function App() {
           <Route path='/drukplanxl' element={<DrukPlanXL />} />
           <Route path='/Print' element={<Print />} />
           <Route path='/History' element={<History />} />
-          <Route path='/Panel' element={<Panel />} />
+          <Route path='/Panel' element={<Panel user={user} setUser={setUser}/>} />
           {/* <Route path='*' element={<History />} /> */}
-          <Route path='/zamowienia' element={<Zamowienia />} />
+          <Route path='/zamowienia' element={<Zamowienia user={user} setUser={setUser}/>} />
         </Routes>
       </TokenContext.Provider>
     </BrowserRouter>

@@ -16,7 +16,7 @@ import style from '../Zamowienia/Zamowienia.module.css';
 import {zamowienia_temp} from '../Zamowienia/zam';
 //import './Zamowienia.css';
 
-function Zamowienia(){
+function Zamowienia({user,setUser}){
 
 
 
@@ -139,6 +139,8 @@ function kolor(k){
           <ModalInsert
             openModalInsert={openModalInsert}
             setOpenModalInsert={setOpenModalInsert}
+            user={user} 
+            setUser={setUser}
           />
         )}
       </div>

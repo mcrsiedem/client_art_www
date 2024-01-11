@@ -17,7 +17,7 @@ import ElementyTable from './Elementy/ElementyTable';
 import ProduktyTable from './Produkty/ProduktyTable';
 import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
-function ModalInsert({ openModalInsert, setOpenModalInsert }) {
+function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
         // dragElement(elmnt.current);
@@ -206,6 +206,7 @@ function sprawdzPoprawnoscZamowienia(){
           data_materialow: daneZamowienia.dataMaterialow,
           data_spedycji: daneZamowienia.dataSpedycji,
           opiekun: daneZamowienia.opiekun,
+          user: user.id
 
         });
     

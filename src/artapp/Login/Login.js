@@ -11,7 +11,7 @@ import { useCookies } from "react-cookie";
 
 var header;
 
-function Login() {
+function Login({user,setUser}) {
   function parseJwt(token) {
     //wyciaga payload z tokenu
     var base64Url = token.split(".")[1];
@@ -55,6 +55,14 @@ function Login() {
         setCookie("token", res.data, { path: "/" });
 
         sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
+        setUser({
+          id:parseJwt(res.data).id,
+          imie:parseJwt(res.data).imie,
+          nazwisko:parseJwt(res.data).nazwisko,
+          login:parseJwt(res.data).login,
+          dostep:parseJwt(res.data).dostep,
+
+          })
 
         header.style.display = "grid";
         navigate("/Panel");

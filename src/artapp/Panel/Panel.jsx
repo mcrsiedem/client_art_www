@@ -3,7 +3,7 @@ import {  useEffect } from "react";
 import style from '../Panel/Panel.module.css';
 import { useNavigate } from "react-router-dom";
 
-function Panel(){
+function Panel({user,setUser}){
         const navigate = useNavigate();
 
     useEffect(() => {

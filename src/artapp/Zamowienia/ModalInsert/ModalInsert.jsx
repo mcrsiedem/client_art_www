@@ -25,30 +25,19 @@ function ModalInsert({ openModalInsert, setOpenModalInsert }) {
 // const elmnt = useRef(null);
 const [daneZamowienia,setDaneZamowienia] = useState({
   nr: "",
-  rok: "",
+  rok: "2024",
   firma: _firma[0].id,
   klient: _klient[0].id,
   opiekun: _opiekun[0].id,
   tytul: "",
-  dataPrzyjecia: "",
+  dataPrzyjecia: "2024-01-30",
   dataMaterialow: "",
   dataSpedycji: "",
 
 })
-const [nr, setNr] = useState();
-const [rok, setRok] = useState();
-const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
-const [selected_firma, setSelected_firma] = useState(_firma[0].id);
-const [klient, setKlient] = useState(_klient[0].id);
-const [opiekun, setOpiekun] = useState(_opiekun[0].id);
 
-const [tytul, setTytul] = useState();
-const [dataPrzyjecia, setDataPrzyjecia] = useState();
-const [dataMaterialow, setDataMaterialow] = useState();
-const [dataSpedycji, setDataSpedycji] = useState();
-
-const [elementy, setElementy] = useState(initialElementy);
 const [produkty, setProdukty] = useState(initialProdukty);
+const [elementy, setElementy] = useState(initialElementy);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
 const [zestawy, setZestawy] = useState(_zestawy);
 const [uszlachetnienia, setUszlachetnienia] = useState();
@@ -70,6 +59,7 @@ const [selected_wykonczenie, setSelected_wykonczenie] = useState();
 const[isEdit,setIsEdit]= useState(false);
 const[isOK,setIsOK]= useState(false);
 
+const[showElementyProcesyInsert,setShowElementyProcesyInsert] = useState(false);
 const[check_data_wejscia,setCheck_data_wejscia]= useState(false);
 
 async function fechListy() {
@@ -109,24 +99,8 @@ useEffect(()=>{
         />
 
         <Dane
-          selected_firma={selected_firma}
-          klient={klient}
-          opiekun={opiekun}
-          setOpiekun={setOpiekun}
-          setSelected_firma={(firma) => setSelected_firma(firma)}
-          setKlient={(kl) => setKlient(kl)}
-          dataPrzyjecia={dataPrzyjecia}
-          setDataPrzyjecia={setDataPrzyjecia}
-          dataMaterialow={dataMaterialow}
-          setDataMaterialow={setDataMaterialow}
-          dataSpedycji={dataSpedycji}
-          setDataSpedycji={setDataSpedycji}
-          nr={nr}
-          setNr={setNr}
-          rok={rok}
-          setRok={setRok}
-          tytul={tytul}
-          setTytul={setTytul}
+          daneZamowienia={daneZamowienia}
+          setDaneZamowienia={setDaneZamowienia}
           
         />
 
@@ -212,7 +186,7 @@ useEffect(()=>{
 //----------------------------------
 function sprawdzPoprawnoscZamowienia(){
   // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji
-  if(dataPrzyjecia && dataMaterialow && dataSpedycji!== "") {
+  if(daneZamowienia.dataPrzyjecia && daneZamowienia.dataMaterialow && daneZamowienia.dataSpedycji!== "") {
     console.log("Daty poprawne!")
     setCheck_data_wejscia(true);
 
@@ -223,15 +197,15 @@ function sprawdzPoprawnoscZamowienia(){
 
       async function postZamowienie() {
         const res = await axios.post(ip + "zamowienie", {
-          nr,
-          rok,
-          firma_id: selected_firma,
-          klient_id: klient,
-          tytul: tytul,
-          data_przyjecia: dataPrzyjecia,
-          data_materialow: dataMaterialow,
-          data_spedycji: dataSpedycji,
-          // opiekun_zamowienia_id: 
+          nr: daneZamowienia.nr,
+          rok: daneZamowienia.rok,
+          firma_id: daneZamowienia.firma,
+          klient_id: daneZamowienia.klient,
+          tytul: daneZamowienia.tytul,
+          data_przyjecia: daneZamowienia.dataPrzyjecia,
+          data_materialow: daneZamowienia.dataMaterialow,
+          data_spedycji: daneZamowienia.dataSpedycji,
+          opiekun: daneZamowienia.opiekun,
 
         });
     

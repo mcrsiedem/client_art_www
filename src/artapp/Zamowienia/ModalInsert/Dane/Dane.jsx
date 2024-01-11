@@ -4,51 +4,29 @@ import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun } from "../ap
 export default function Dane({
   selected_firma,setSelected_firma,
   klient,setKlient,
-  opiekun, setOpiekun,
-  dataPrzyjecia, setDataPrzyjecia,
-  dataMaterialow, setDataMaterialow,
-  dataSpedycji, setDataSpedycji,
-  rok,setRok,
-  nr,setNr,
-  tytul,setTytul
+
+  daneZamowienia,setDaneZamowienia
 }) {
   return (
     <>
       <div className={style.dane}>
         <div className={style.row1}>
-          <Firma
-            selected_firma={selected_firma}
-            setSelected_firma={setSelected_firma}
-          />
+          <Firma daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
           <div className={style.klientContainer}>
-            <Klient klient={klient} setKlient={setKlient} />
+            <Klient daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
           </div>
 
-          <DataPrzyjecia
-            dataPrzyjecia={dataPrzyjecia}
-            setDataPrzyjecia={setDataPrzyjecia}
-          />
-          <DataMeterialow
-            dataMaterialow={dataMaterialow}
-            setDataMaterialow={setDataMaterialow}
-          />
-          <DataSpedycji
-            dataSpedycji={dataSpedycji}
-            setDataSpedycji={setDataSpedycji}
-          />
+          <DataPrzyjecia daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <DataMeterialow daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <DataSpedycji daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
         </div>
         <div className={style.row2}>
-          <Nr nr={nr} setNr={setNr} />
-          <Rok rok={rok} setRok={setRok} />
-          <Tytul
-            tytul={tytul}
-            setTytul={setTytul}
+          <Nr daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <Rok daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia} />
+          <Tytul daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}
           />
 
-          <Opiekun
-            opiekun={opiekun}
-            setOpiekun={setOpiekun}
-          />
+          <Opiekun daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
         </div>
       </div>
     </>
@@ -56,15 +34,15 @@ export default function Dane({
 }
 
 
-function Firma({ selected_firma, setSelected_firma }) {
+function Firma({ daneZamowienia,setDaneZamowienia }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Firma </label>
       <select
         className={style.firma}
-        value={selected_firma}
+        value={daneZamowienia.firma}
         onChange={(event) => {
-          setSelected_firma(event.target.value);
+          setDaneZamowienia({...daneZamowienia, firma: event.target.value});
         }}
       >
         {_firma.map((option) => (
@@ -77,15 +55,15 @@ function Firma({ selected_firma, setSelected_firma }) {
   );
 }
 
-function Klient({ klient, setKlient }) {
+function Klient({ daneZamowienia,setDaneZamowienia }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
       <select
         className={style.klient}
-        value={klient}
+        value={daneZamowienia.klient}
         onChange={(event) => {
-          setKlient(event.target.value);
+          setDaneZamowienia({...daneZamowienia, klient: event.target.value});
         }}
       >
         {_klient.map((option) => (
@@ -99,55 +77,55 @@ function Klient({ klient, setKlient }) {
 }
 
 
-function DataMeterialow({dataMaterialow,setDataMaterialow}){
+function DataMeterialow({daneZamowienia,setDaneZamowienia}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
         <input className={style.data} type="date"
-             defaultValue={dataMaterialow}
+             defaultValue={daneZamowienia.dataMaterialow}
              onChange={(event) => {
-               setDataMaterialow(event.target.value);
+              setDaneZamowienia({...daneZamowienia, dataMaterialow: event.target.value});
              }}></input>
       </div>
     );
 }
 
-function DataPrzyjecia({dataPrzyjecia,setDataPrzyjecia}){
+function DataPrzyjecia({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
       <input className={style.data} type="date"
-         defaultValue={dataPrzyjecia}
+         defaultValue={daneZamowienia.dataPrzyjecia}
          onChange={(event) => {
-           setDataPrzyjecia(event.target.value);
+          setDaneZamowienia({...daneZamowienia, dataPrzyjecia: event.target.value});
            if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
     </div>
   );
 }
 
-function DataSpedycji({dataSpedycji,setDataSpedycji}){
+function DataSpedycji({daneZamowienia,setDaneZamowienia}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
         <input className={style.data} type="date"
-        defaultValue={dataSpedycji}
+        defaultValue={daneZamowienia.dataSpedycji}
         onChange={(event) => {
-          setDataSpedycji(event.target.value);
+          setDaneZamowienia({...daneZamowienia, dataSpedycji: event.target.value});
         }}></input>
       </div>
     );
 }
 
-function Opiekun({ opiekun, setOpiekun }) {
+function Opiekun({ daneZamowienia,setDaneZamowienia }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={opiekun}
+        value={daneZamowienia.opiekun}
         onChange={(event) => {
-          setOpiekun(event.target.value);
+          setDaneZamowienia({...daneZamowienia, opiekun: event.target.value});
         }}
       >
         {_opiekun.map((option) => (
@@ -160,40 +138,40 @@ function Opiekun({ opiekun, setOpiekun }) {
   );
 }
 
-function Tytul({tytul,setTytul}){
+function Tytul({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
       <input className={style.data} type="text"
-      value={tytul}
+      value={daneZamowienia.tytul}
       onChange={(event) => {
-        setTytul(event.target.value);
+        setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
       }}></input>
     </div>
   );
 }
 
-function Nr({nr,setNr}){
+function Nr({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
       <input className={style.data} type="text"
-      value={nr}
+      value={daneZamowienia.nr}
       onChange={(event) => {
-        setNr(event.target.value);
+        setDaneZamowienia({...daneZamowienia, nr: event.target.value});
       }}></input>
     </div>
   );
 }
 
-function Rok({rok,setRok}){
+function Rok({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>
       <input className={style.data} type="text"
-            value={rok}
+            value={daneZamowienia.rok}
             onChange={(event) => {
-              setRok(event.target.value);
+              setDaneZamowienia({...daneZamowienia, rok: event.target.value});
             }}></input>
     </div>
   );

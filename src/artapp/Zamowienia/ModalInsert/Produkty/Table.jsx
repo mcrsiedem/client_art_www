@@ -1,13 +1,13 @@
 // import iconCopy from "../../../../../svg/copy.svg";
 // import iconTrash from "../../../../../svg/trash2.svg";
-import style from "./PrduktTable.module.css";
+import style from "./Table.module.css";
 import { _papiery,_typ_produktu } from "../api"
 
 // import ProduktTableHeader from "./ProduktTableHeader"
 
 
 
-export default function ProduktTable({produkty}) {
+export default function Table({produkty}) {
   return (
     <div className={style.produkt}>
         

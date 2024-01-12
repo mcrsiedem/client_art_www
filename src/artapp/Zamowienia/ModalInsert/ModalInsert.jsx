@@ -10,12 +10,11 @@ import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
 import {ip} from "../../../Host"
 import ElementyTable from './Elementy/ElementyTable';
-import ProduktyTable from './Produkty/ProduktyTable';
 import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from '../../Login/DecodeToken';
-import ProduktyCard from './Produkty/ProduktyCard';
+import Produkty from './Produkty/Produkty';
 
 function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
     useEffect(()=>{
@@ -109,19 +108,12 @@ useEffect(()=>{
         />
 
         <div>
-          {isTable ? (
-            <ProduktyCard
+            <Produkty
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
+              isTable={isTable}
             />
-          ) : (
-            <ProduktyTable
-              produkty={produkty}
-              handleChangeCardProdukty={handleChangeCardProdukty}
-              _typ_produktu={_typ_produktu}
-            />
-          )}
 
           {isTable ? (
             <Elementy

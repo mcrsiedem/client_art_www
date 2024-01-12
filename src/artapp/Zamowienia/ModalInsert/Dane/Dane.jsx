@@ -11,29 +11,64 @@ export default function Dane({
     <>
       <div className={style.dane}>
         <div className={style.row1}>
-          <Firma daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <Firma
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
           <div className={style.klientContainer}>
-            <Klient daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+            <Klient
+              daneZamowienia={daneZamowienia}
+              setDaneZamowienia={setDaneZamowienia}
+            />
+            
           </div>
 
-          <DataPrzyjecia daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
-          <DataMeterialow daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
-          <DataSpedycji daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <DataPrzyjecia
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+          <DataMeterialow
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+          <DataSpedycji
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
         </div>
         <div className={style.row2}>
-          <Nr daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
-          <Rok daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia} />
-          <Tytul daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}
+          <Nr
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+          <Rok
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+          <Tytul
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
           />
 
-          <Opiekun daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <Opiekun
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
         </div>
         <div className={style.row3}>
-        <Status daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
-          <Uwagi daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}
+          <Status
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+          <Uwagi
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
           />
 
-          <Stan daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <Stan
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
         </div>
       </div>
     </>

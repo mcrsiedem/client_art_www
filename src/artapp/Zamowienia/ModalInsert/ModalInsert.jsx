@@ -1,14 +1,9 @@
 import style from './ModalInsert.module.css';
 import React, { useEffect,useState,useContext } from "react";
 import { useCookies } from "react-cookie";
-
 import Header from './Header/Header';
-
-
-import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
-import Produkty from './Produkty/Produkty';
 import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun,_status,_stan,_typ_produktu} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
@@ -20,6 +15,7 @@ import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from '../../Login/DecodeToken';
+import ProduktyCard from './Produkty/ProduktyCard';
 
 function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
     useEffect(()=>{
@@ -114,7 +110,7 @@ useEffect(()=>{
 
         <div>
           {isTable ? (
-            <Produkty
+            <ProduktyCard
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}

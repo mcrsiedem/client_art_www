@@ -1,8 +1,8 @@
 
-import style from './Produkty.module.css'
+import style from './ProduktyCard.module.css'
 
 
-export default function Produkty({produkty,handleChangeCardProdukty}){
+export default function ProduktyCard({produkty,handleChangeCardProdukty}){
 
 
     return (

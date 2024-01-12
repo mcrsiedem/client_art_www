@@ -43,7 +43,7 @@ export default function App() {
     
     <BrowserRouter basename={''} >
     
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected }}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,user, setUser}}>
         <Header />
         
         <Routes >
@@ -51,7 +51,7 @@ export default function App() {
           <Route path='/xl' element={<XL />} />
           <Route path='/H1' element={<H1 />} />
           <Route path='/H3' element={<H3 />} />
-          <Route path='/login' element={<Login user={user} setUser={setUser}/>} />
+          <Route path='/login' element={<Login />} />
           <Route path='/okladki' element={<Notes />} />
           <Route path='/info' element={<Info />} />
           <Route path='/falc' element={<Falc />} />
@@ -60,9 +60,9 @@ export default function App() {
           <Route path='/drukplanxl' element={<DrukPlanXL />} />
           <Route path='/Print' element={<Print />} />
           <Route path='/History' element={<History />} />
-          <Route path='/Panel' element={<Panel user={user} setUser={setUser}/>} />
+          <Route path='/Panel' element={<Panel />} />
           {/* <Route path='*' element={<History />} /> */}
-          <Route path='/zamowienia' element={<Zamowienia user={user} setUser={setUser}/>} />
+          <Route path='/zamowienia' element={<Zamowienia />} />
         </Routes>
       </TokenContext.Provider>
     </BrowserRouter>

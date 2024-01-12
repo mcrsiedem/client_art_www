@@ -1,5 +1,6 @@
 import style from './ModalInsert.module.css';
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState,useContext } from "react";
+import { useCookies } from "react-cookie";
 
 import Header from './Header/Header';
 
@@ -17,12 +18,16 @@ import ElementyTable from './Elementy/ElementyTable';
 import ProduktyTable from './Produkty/ProduktyTable';
 import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
+import TokenContext from "../../Context/tokenContext";
+import DecodeToken from '../../Login/DecodeToken';
+
 function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
         // dragElement(elmnt.current);
        },[])
 // const elmnt = useRef(null);
+const context = useContext(TokenContext);
 const [daneZamowienia,setDaneZamowienia] = useState({
   nr: "",
   rok: "2024",
@@ -35,7 +40,7 @@ const [daneZamowienia,setDaneZamowienia] = useState({
   dataSpedycji: "",
 
 })
-
+const [cookies, setCookie] = useCookies();
 const [produkty, setProdukty] = useState(initialProdukty);
 const [elementy, setElementy] = useState(initialElementy);
 const [fragmenty, setFragmenty] = useState(initialFragmenty);
@@ -206,7 +211,7 @@ function sprawdzPoprawnoscZamowienia(){
           data_materialow: daneZamowienia.dataMaterialow,
           data_spedycji: daneZamowienia.dataSpedycji,
           opiekun: daneZamowienia.opiekun,
-          user: user.id
+          user: DecodeToken(cookies.token).id
 
         });
     

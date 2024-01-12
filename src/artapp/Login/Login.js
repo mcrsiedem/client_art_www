@@ -8,6 +8,7 @@ import axios from "axios";
 import { ip } from "../../Host";
 import TokenContext from "../Context/tokenContext";
 import { useCookies } from "react-cookie";
+import DecodeToken from "./DecodeToken";
 
 var header;
 
@@ -54,15 +55,18 @@ function Login({user,setUser}) {
         // localStorage.setItem('header', true)
         setCookie("token", res.data, { path: "/" });
 
-        sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
-        setUser({
-          id:parseJwt(res.data).id,
-          imie:parseJwt(res.data).imie,
-          nazwisko:parseJwt(res.data).nazwisko,
-          login:parseJwt(res.data).login,
-          dostep:parseJwt(res.data).dostep,
+        // sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
+        sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
 
-          })
+        // przechowuje usera w contexcie ale po odswieżeniu context jest pusty
+        // token.setUser({
+        //   id:parseJwt(res.data).id,
+        //   imie:parseJwt(res.data).imie,
+        //   nazwisko:parseJwt(res.data).nazwisko,
+        //   login:parseJwt(res.data).login,
+        //   dostep:parseJwt(res.data).dostep,
+
+        //   })
 
         header.style.display = "grid";
         navigate("/Panel");

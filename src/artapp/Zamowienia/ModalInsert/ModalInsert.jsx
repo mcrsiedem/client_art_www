@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
 import Produkty from './Produkty/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun} from './api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun,_status,_stan} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
@@ -38,8 +38,11 @@ const [daneZamowienia,setDaneZamowienia] = useState({
   dataPrzyjecia: "2024-01-30",
   dataMaterialow: "",
   dataSpedycji: "",
-
+  stan: _stan[0].id,
+  status: _status[0].id,
+  uwagi:""
 })
+
 const [cookies, setCookie] = useCookies();
 const [produkty, setProdukty] = useState(initialProdukty);
 const [elementy, setElementy] = useState(initialElementy);
@@ -211,7 +214,10 @@ function sprawdzPoprawnoscZamowienia(){
           data_materialow: daneZamowienia.dataMaterialow,
           data_spedycji: daneZamowienia.dataSpedycji,
           opiekun: daneZamowienia.opiekun,
-          user: DecodeToken(cookies.token).id
+          user: DecodeToken(cookies.token).id,
+          stan: daneZamowienia.stan,
+          status: daneZamowienia.status,
+          uwagi: daneZamowienia.uwagi,
 
         });
     

@@ -1,5 +1,5 @@
 import style from "./Dane.module.css";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun } from "../api";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan } from "../api";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -27,6 +27,13 @@ export default function Dane({
           />
 
           <Opiekun daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+        </div>
+        <div className={style.row3}>
+        <Status daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
+          <Uwagi daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}
+          />
+
+          <Stan daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
         </div>
       </div>
     </>
@@ -138,6 +145,48 @@ function Opiekun({ daneZamowienia,setDaneZamowienia }) {
   );
 }
 
+function Status({ daneZamowienia,setDaneZamowienia }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Status </label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.status}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, status: event.target.value});
+        }}
+      >
+        {_status.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function Stan({ daneZamowienia,setDaneZamowienia }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Stan </label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.stan}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, stan: event.target.value});
+        }}
+      >
+        {_stan.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 function Tytul({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
@@ -146,6 +195,18 @@ function Tytul({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.tytul}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
+      }}></input>
+    </div>
+  );
+}
+function Uwagi({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Uwagi </label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.uwagi}
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
       }}></input>
     </div>
   );

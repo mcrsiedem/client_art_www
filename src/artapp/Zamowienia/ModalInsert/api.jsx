@@ -317,8 +317,27 @@ const _wykonczenie = [
   }
 ]
 
+const _status = [
+  {
+    id: 1,
+    nazwa: "Wstępne"
 
+  },{
+    id: 2,
+    nazwa: "Do weryfikacji",
+  }
+]
 
+const _stan = [
+  {
+    id: 1,
+    nazwa: "Aktywne"
+
+  },{
+    id: 2,
+    nazwa: "Nieaktywne",
+  }
+]
 
   const _oprawa = [
     {
@@ -355,4 +374,4 @@ const _wykonczenie = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan};

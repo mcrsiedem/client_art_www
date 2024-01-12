@@ -73,19 +73,19 @@ const initialProdukty = [
     naklad: "1000",
     index: 0
   },
-  {
-    id: 2,
-    zamowienie_id: 1,
-    typ: "Magazyn",
-    tytul: "Tytul 2",
-    wersja: "",
-    ilosc_stron: "84",
-    format_x: "210",
-    format_y: "297",
-    oprawa: "PUR",
-    naklad: "1000",
-    index: 1
-  }
+  // {
+  //   id: 2,
+  //   zamowienie_id: 1,
+  //   typ: "Magazyn",
+  //   tytul: "Tytul 2",
+  //   wersja: "",
+  //   ilosc_stron: "84",
+  //   format_x: "210",
+  //   format_y: "297",
+  //   oprawa: "PUR",
+  //   naklad: "1000",
+  //   index: 1
+  // }
   
   
 ];
@@ -126,43 +126,43 @@ const initialElementy = [
 
     index: 1
   },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 2,
-    typ: "Okładka",
-    nazwa: "PL",
-    ilosc_stron: "4",
-    kolory: "CMYK + CMYK",
+  // {
+  //   id: 3,
+  //   zamowienie_id: 1,
+  //   produkt_id: 2,
+  //   typ: "Okładka",
+  //   nazwa: "PL",
+  //   ilosc_stron: "4",
+  //   kolory: "CMYK + CMYK",
    
-    format_x: "210",
-    format_y: "297",
-    papier_id: 7,
-    papier_info:"",
-    gramatura_id: 0,
-    naklad: "1000",
+  //   format_x: "210",
+  //   format_y: "297",
+  //   papier_id: 7,
+  //   papier_info:"",
+  //   gramatura_id: 0,
+  //   naklad: "1000",
 
-    index: 2
-  },
-  {
-    id: 4,
-    zamowienie_id: 1,
-    produkt_id: 2,
-    typ: "Środek",
-    nazwa: "PL",
-    ilosc_stron: "80",
-    kolor_front: "4",
-    kolor_back: "4",
-    kolory: "CMYK + CMYK",
-    format_x: "210",
-    format_y: "297",
-    papier_id: 7,
-    papier_info:"",
-    gramatura_id: 0,
-    naklad: "1000",
+  //   index: 2
+  // },
+  // {
+  //   id: 4,
+  //   zamowienie_id: 1,
+  //   produkt_id: 2,
+  //   typ: "Środek",
+  //   nazwa: "PL",
+  //   ilosc_stron: "80",
+  //   kolor_front: "4",
+  //   kolor_back: "4",
+  //   kolory: "CMYK + CMYK",
+  //   format_x: "210",
+  //   format_y: "297",
+  //   papier_id: 7,
+  //   papier_info:"",
+  //   gramatura_id: 0,
+  //   naklad: "1000",
 
-    index: 3
-  }
+  //   index: 3
+  // }
 
   
 ];
@@ -186,33 +186,33 @@ const initialFragmenty=[
     info:"",
     index:1
   },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 2,
-    element_id: 3, 
-    naklad: "1000",
-    info:"",
-    index:2
-  },
-  {
-    id: 4,
-    zamowienie_id: 1,
-    produkt_id: 2,
-    element_id: 4, 
-    naklad: "1000",
-    info:"",
-    index:3
-  },
-  {
-    id: 5,
-    zamowienie_id: 1,
-    produkt_id: 2,
-    element_id: 3, 
-    naklad: "1000",
-    info:"",
-    index:4
-  }
+  // {
+  //   id: 3,
+  //   zamowienie_id: 1,
+  //   produkt_id: 2,
+  //   element_id: 3, 
+  //   naklad: "1000",
+  //   info:"",
+  //   index:2
+  // },
+  // {
+  //   id: 4,
+  //   zamowienie_id: 1,
+  //   produkt_id: 2,
+  //   element_id: 4, 
+  //   naklad: "1000",
+  //   info:"",
+  //   index:3
+  // },
+  // {
+  //   id: 5,
+  //   zamowienie_id: 1,
+  //   produkt_id: 2,
+  //   element_id: 3, 
+  //   naklad: "1000",
+  //   info:"",
+  //   index:4
+  // }
 
   
 ]
@@ -339,6 +339,16 @@ const _stan = [
   }
 ]
 
+const _typ_produktu = [
+  {
+    id: 1,
+    nazwa: "Magazyn"
+
+  },{
+    id: 2,
+    nazwa: "Plakat",
+  }
+]
   const _oprawa = [
     {
       id: 1,
@@ -374,4 +384,4 @@ const _stan = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu};

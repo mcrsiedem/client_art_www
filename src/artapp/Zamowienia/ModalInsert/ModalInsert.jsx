@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import Dane from './Dane/Dane';
 import Elementy from './Elementy/Elementy';
 import Produkty from './Produkty/Produkty';
-import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun,_status,_stan} from './api';
+import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun,_status,_stan,_typ_produktu} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
@@ -117,11 +117,13 @@ useEffect(()=>{
             <Produkty
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
+              _typ_produktu={_typ_produktu}
             />
           ) : (
             <ProduktyTable
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
+              _typ_produktu={_typ_produktu}
             />
           )}
 
@@ -146,10 +148,6 @@ useEffect(()=>{
               setFragmenty={setFragmenty}
               info={info}
               setInfo={setInfo}
-              // listaWykonczenia={listaWykonczenia}
-              // setListaWykonczenia={setListaWykonczenia}
-              // selected_wykonczenie={selected_wykonczenie}
-              // setSelected_wykonczenie={setSelected_wykonczenie}
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
               listaUszlachetnien={listaUszlachetnien}

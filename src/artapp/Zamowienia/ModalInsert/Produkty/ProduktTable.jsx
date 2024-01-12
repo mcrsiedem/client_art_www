@@ -1,7 +1,7 @@
 // import iconCopy from "../../../../../svg/copy.svg";
 // import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./PrduktTable.module.css";
-import { _papiery } from "../api"
+import { _papiery,_typ_produktu } from "../api"
 
 // import ProduktTableHeader from "./ProduktTableHeader"
 
@@ -28,7 +28,7 @@ export default function ProduktTable({produkty}) {
    
             <th className={style.col2}>#</th>
             <th className={style.col3}>Typ</th>
-            <th className={style.col4}>Tytuł</th>
+            <th className={style.col4}>Nazwa</th>
             <th className={style.col5}>Wersja</th>
             <th className={style.col6}>Ilość stron</th>
             <th className={style.col7}>Netto X</th>
@@ -88,7 +88,46 @@ export default function ProduktTable({produkty}) {
     </div>
   );
 }
-
+function Typ({
+  row,
+  handleChangeCardElementy,
+  listaPapierow,
+  setListaGramatur,
+  listaGramatur,
+  listaDostepnychWykonczen,
+  setListaDostepnychWykonczen,
+  listaDostepnychGramatur,
+  setListaDostepnychGrmatur,
+}) {
+  return (
+    <td>
+      <select
+        //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
+        //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
+        //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
+        // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
+        className={style.select}
+        defaultValue={row.papier_id}
+        onChange={(e) => {
+          setListaDostepnychGrmatur(
+            listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+          );
+          handleChangeCardElementy({
+            ...row,
+            papier_id: e.target.value,
+          });
+        }}
+      >
+        {}
+        {_typ_produktu.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
+}
 
 function ProduktTableHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
     const handleRemoveItem = (index) => {

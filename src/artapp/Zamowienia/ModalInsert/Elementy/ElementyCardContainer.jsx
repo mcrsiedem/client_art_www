@@ -1,6 +1,6 @@
 import style from "./Elementy.module.css";
 
-import ElementCard from "./ElementCard/ElementCard";
+import Card from "./ElementCard/Card";
 
 export default function Elementy({ elementy,setElementy,handleChangeCardElementy,selected_papier,setSelected_papier,fragmenty,setFragmenty }) {
 
@@ -9,11 +9,11 @@ export default function Elementy({ elementy,setElementy,handleChangeCardElementy
   return (
     <>
       <div className={style.elementy}>
-
+ś
         {
             
         elementy.map(((card) => (
-          <ElementCard key={card.id}
+          <Card key={card.id}
             card={card}
             elementy={elementy}
             setElementy={setElementy}

@@ -3,13 +3,13 @@ import React, { useEffect,useState,useContext } from "react";
 import { useCookies } from "react-cookie";
 import Header from './Header/Header';
 import Dane from './Dane/Dane';
-import Elementy from './Elementy/Elementy';
+import ElementyCardContainer from './Elementy/ElementyCardContainer';
 import {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,initialFragmenty,_uszlachetnienia, initialProcesy, _opiekun,_status,_stan,_typ_produktu} from './api';
 import Warianty from './Warianty/Warianty';
 import Introligatornia from './Introligatornia/Introligatornia';
 import axios from "axios";
 import {ip} from "../../../Host"
-import ElementyTable from './Elementy/ElementyTable';
+import ElementyTableContainer from './Elementy/ElementyTableContainer';
 import IntroligatorniaTable from './Introligatornia/IntroligatorniaTable';
 import ElementyProcesInsert from './Elementy/ElementyProcesInsert'
 import TokenContext from "../../Context/tokenContext";
@@ -116,7 +116,7 @@ useEffect(()=>{
             />
 
           {isTable ? (
-            <Elementy
+            <ElementyCardContainer
               elementy={elementy}
               setElementy={setElementy}
               handleChangeCardElementy={handleChangeCardElementy}
@@ -126,7 +126,7 @@ useEffect(()=>{
               setFragmenty={setFragmenty}
             />
           ) : (
-            <ElementyTable
+            <ElementyTableContainer
               elementy={elementy}
               setElementy={setElementy}
               handleChangeCardElementy={handleChangeCardElementy}

@@ -1,6 +1,7 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../../svg/settings.svg";
 import { useState } from "react";
+import { _typ_elementu} from "../../api"
 export default function ElementTableCenter({
   elementy,
   handleChangeCardElementy,
@@ -31,7 +32,7 @@ export default function ElementTableCenter({
 
             <th className={style.col_papier}>Papier</th>
             <th className={style.col_gramatura}>g/m2</th>
-            <th className={style.col_papierInfo}>Uwagi</th>
+            <th className={style.col_papierInfo}>Uwagi do papieru</th>
    
 
             <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
@@ -87,7 +88,7 @@ function RowElement({
   return (
     <tr key={row.id}>
       <td>{i + 1}</td>
-      <Typ row={row} />
+      <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
       <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
@@ -147,6 +148,30 @@ function RowElement({
         handleChangeCardElementy={handleChangeCardElementy}
       />
     </tr>
+  );
+}
+
+function Typ({ row, handleChangeCardElementy }) {
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.typ}
+        onChange={(e) => {
+          handleChangeCardElementy({
+            ...row,
+            row: e.target.value,
+          });
+        }}
+      >
+        {}
+        {_typ_elementu.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
   );
 }
 
@@ -268,9 +293,7 @@ function Nazwa({ row, handleChangeCardElementy }) {
   );
 }
 
-function Typ({ row }) {
-  return <td>{row.typ}</td>;
-}
+
 
 function Strony({ row, handleChangeCardElementy }) {
   return (

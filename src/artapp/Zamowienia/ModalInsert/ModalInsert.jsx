@@ -215,7 +215,8 @@ function sprawdzPoprawnoscZamowienia(){
                   nazwa: produkt.nazwa,
                   zamowienie_id: zamowienie_id,
                   typ: produkt.typ,
-                  wersja: produkt.wersja
+                  wersja: produkt.wersja,
+                  uwagi: produkt.uwagi,
                   
                 });
                 let produkt_id = res.data.insertId;

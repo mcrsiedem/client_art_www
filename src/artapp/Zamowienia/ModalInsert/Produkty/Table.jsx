@@ -35,6 +35,7 @@ export default function Table({produkty,handleChangeCardProdukty}) {
             <th className={style.col6}>Ilość stron</th>
             <th className={style.col7}>Netto X</th>
             <th className={style.col8}>Netto Y</th>
+            <th className={style.col8}>Uwagi</th>
 
           </tr>
 
@@ -67,6 +68,7 @@ export default function Table({produkty,handleChangeCardProdukty}) {
                                 
                                             <td>{row.format_x}</td>
                                             <td>{row.format_y}</td>
+                                            <Uwagi row={row} handleChangeCardProdukty={handleChangeCardProdukty}/>
                              
                                            {/* <td><button onClick={()=> setInfo("OK")}>OK</button></td> */}
                                       
@@ -117,6 +119,22 @@ function Nazwa({ row, handleChangeCardProdukty }) {
           handleChangeCardProdukty({
             ...row,
             nazwa: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+function Uwagi({ row, handleChangeCardProdukty }) {
+  return (
+    <td>
+      <input
+      className={style.in}
+        defaultValue={row.uwagi}
+        onChange={(e) =>
+          handleChangeCardProdukty({
+            ...row,
+            uwagi: e.target.value,
           })
         }
       ></input>

@@ -63,7 +63,7 @@ const initialProdukty = [
   {
     id: 1,
     zamowienie_id: 1,
-    typ: "Magazyn",
+    typ: 1,
     nazwa: "Tytul 1",
     wersja: "",
     ilosc_stron: "",
@@ -71,7 +71,8 @@ const initialProdukty = [
     format_y: "",
     oprawa: "PUR",
     naklad: "1000",
-    index: 0
+    index: 0,
+    uwagi: "",
   },
   // {
   //   id: 2,
@@ -96,7 +97,7 @@ const initialElementy = [
     id: 1,
     zamowienie_id: 1,
     produkt_id: 1,
-    typ: "Okładka",
+    typ: 1,
     nazwa: "PL",
     ilosc_stron: "4",
     kolory: "CMYK PANTONE 666 / CMYK PANTONE 666 ",
@@ -113,7 +114,7 @@ const initialElementy = [
     id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
-    typ: "Środek",
+    typ: 2,
     nazwa: "PL",
     ilosc_stron: "80",
     kolory: "CMYK + CMYK",
@@ -349,6 +350,25 @@ const _typ_produktu = [
     nazwa: "Plakat",
   }
 ]
+const _typ_elementu = [
+  {
+    id: 1,
+    nazwa: "Okładka"
+
+  },{
+    id: 2,
+    nazwa: "Środek",
+  },
+  ,{
+    id: 3,
+    nazwa: "Wklejka",
+  },
+  ,{
+    id: 4,
+    nazwa: "Insert",
+  }
+]
+
   const _oprawa = [
     {
       id: 1,
@@ -384,4 +404,4 @@ const _typ_produktu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu};
+export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};

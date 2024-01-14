@@ -180,6 +180,7 @@ function ProduktTableHeader({ card, elementy, setElementy, fragmenty, setFragmen
   
                     return (
                       <div className={style.header}>
+                        Produkty
                         <div className={style.typ}>
                           {/* <img
                             onClick={() => {

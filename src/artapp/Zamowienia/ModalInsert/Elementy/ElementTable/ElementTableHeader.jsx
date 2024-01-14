@@ -24,6 +24,7 @@ export default function ElementTableHeader({ card, elementy, setElementy, fragme
   
                     return (
                       <div className={style.header}>
+                        Elementy produktu
                         <div className={style.typ}>
                           {/* <img
                             onClick={() => {

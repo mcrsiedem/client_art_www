@@ -11,9 +11,11 @@
   
 
   .header{
-    display: grid;
+        display: flex;
+    align-items: center;
+    justify-content: left;
     grid-template-columns: 20px 1fr 20px;
-    padding-left: 10px;
+    padding-left: 30px;
     padding-right: 10px;
     background-image: linear-gradient(rgb(95, 186, 21) 0%,rgb(110, 209, 29) 50%,rgb(95, 186, 21) 100%); 
   

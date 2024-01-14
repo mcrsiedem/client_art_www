@@ -9,7 +9,7 @@ export default function ProduktyTableContainer({produkty,handleChangeCardProdukt
     return (
       <>
         <div id="Produkty" className={style.produkty}>
-          <Table produkty={produkty}/>
+          <Table produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty}/>
         </div>
       </>
     );

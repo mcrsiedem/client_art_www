@@ -212,8 +212,11 @@ function sprawdzPoprawnoscZamowienia(){
     
         produkty.map(async (produkt, i) => {
                 let res = await axios.post(ip + "produkty", {
-                  tytul: produkt.tytul,
+                  nazwa: produkt.nazwa,
                   zamowienie_id: zamowienie_id,
+                  typ: produkt.typ,
+                  wersja: produkt.wersja
+                  
                 });
                 let produkt_id = res.data.insertId;
     

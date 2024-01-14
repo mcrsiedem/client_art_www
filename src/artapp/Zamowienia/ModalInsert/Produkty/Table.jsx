@@ -7,7 +7,7 @@ import { _papiery,_typ_produktu } from "../api"
 
 
 
-export default function Table({produkty}) {
+export default function Table({produkty,handleChangeCardProdukty}) {
   return (
     <div className={style.produkt}>
         
@@ -28,13 +28,13 @@ export default function Table({produkty}) {
    
             <th className={style.col2}>#</th>
             <th className={style.col3}>Typ</th>
+            <th className={style.col10}>Nakład</th>
+            <th className={style.col9}>Oprawa</th>
             <th className={style.col4}>Nazwa</th>
-            <th className={style.col5}>Wersja</th>
+            {/* <th className={style.col5}>Wersja</th> */}
             <th className={style.col6}>Ilość stron</th>
             <th className={style.col7}>Netto X</th>
             <th className={style.col8}>Netto Y</th>
-            <th className={style.col9}>Oprawa</th>
-            <th className={style.col10}>Nakład</th>
 
           </tr>
 
@@ -54,17 +54,19 @@ export default function Table({produkty}) {
                                             <td>{row.zamowienie_id}</td>
                             
                                             <td>{row.id}</td>
-                                            <td>{row.typ}</td>
-                                            <td>{row.tytul}</td>
-                                            <td>{row.wersja}</td>
+                                            <Typ row={row} handleChangeCardProdukty={handleChangeCardProdukty}/>
+                                            <td>{row.naklad}</td>
+                                            <td>{row.oprawa}</td>
+                                 
+                                            <Nazwa row={row} handleChangeCardProdukty={handleChangeCardProdukty}/>
+                                            {/* <Wersja row={row} handleChangeCardProdukty={handleChangeCardProdukty}/> */}
+                                   
                                             {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td> */}
                                             <td>{row.ilosc_stron}</td>
                                 
                                             <td>{row.format_x}</td>
                                             <td>{row.format_y}</td>
-                                            <td>{row.oprawa}</td>
-                                            <td>{row.naklad}</td>
                              
                                            {/* <td><button onClick={()=> setInfo("OK")}>OK</button></td> */}
                                       
@@ -77,44 +79,20 @@ export default function Table({produkty}) {
 
    
       </div>
-      {/* <CardCenter
-        card={card}
-        setElementy={setElementy}
-        handleChangeCardElementy={handleChangeCardElementy}
-        selected_papier={selected_papier}
-        setSelected_papier={setSelected_papier}
-      /> */}
 
     </div>
   );
 }
-function Typ({
-  row,
-  handleChangeCardElementy,
-  listaPapierow,
-  setListaGramatur,
-  listaGramatur,
-  listaDostepnychWykonczen,
-  setListaDostepnychWykonczen,
-  listaDostepnychGramatur,
-  setListaDostepnychGrmatur,
-}) {
+function Typ({ row, handleChangeCardProdukty }) {
   return (
     <td>
       <select
-        //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
-        //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
-        //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
-        // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
         className={style.select}
-        defaultValue={row.papier_id}
+        defaultValue={row.typ}
         onChange={(e) => {
-          setListaDostepnychGrmatur(
-            listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
-          );
-          handleChangeCardElementy({
+          handleChangeCardProdukty({
             ...row,
-            papier_id: e.target.value,
+            typ: e.target.value,
           });
         }}
       >
@@ -129,6 +107,38 @@ function Typ({
   );
 }
 
+function Nazwa({ row, handleChangeCardProdukty }) {
+  return (
+    <td>
+      <input
+      className={style.in}
+        defaultValue={row.nazwa}
+        onChange={(e) =>
+          handleChangeCardProdukty({
+            ...row,
+            nazwa: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+function Wersja({ row, handleChangeCardProdukty }) {
+  return (
+    <td>
+      <input
+      className={style.in}
+        defaultValue={row.wersja}
+        onChange={(e) =>
+          handleChangeCardProdukty({
+            ...row,
+            wersja: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
 function ProduktTableHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
     const handleRemoveItem = (index) => {
       if (elementy.length !== 1) {

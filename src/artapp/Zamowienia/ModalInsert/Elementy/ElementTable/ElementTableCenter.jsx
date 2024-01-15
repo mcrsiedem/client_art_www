@@ -43,6 +43,7 @@ export default function ElementTableCenter({
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
             <th className={style.col_kolory}>Uwagi </th>
+            <th className={style.col_kolory}>Fragmenty </th>
           </tr>
         </thead>
         <tbody>
@@ -63,6 +64,8 @@ export default function ElementTableCenter({
                 listaDostepnychProcesow={listaDostepnychProcesow}
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
                 fragmenty={fragmenty}
+                expand={expand}
+                setExpand={setExpand}
               />
 
           
@@ -118,7 +121,8 @@ function RowElement({
   setProcesyElementow,
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
-  fragmenty
+  fragmenty,
+  expand,setExpand
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
@@ -173,6 +177,7 @@ function RowElement({
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
       />
+      <button onClick={()=>setExpand(!expand)}>Rozwiń</button>
     </tr>
   );
 }

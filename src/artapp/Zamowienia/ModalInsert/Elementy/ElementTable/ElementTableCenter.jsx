@@ -160,7 +160,7 @@ function Typ({ row, handleChangeCardElementy }) {
         onChange={(e) => {
           handleChangeCardElementy({
             ...row,
-            row: e.target.value,
+            typ: e.target.value,
           });
         }}
       >

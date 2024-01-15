@@ -62,7 +62,7 @@ export default function ElementTableCenter({
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
                 fragmenty={fragmenty}
               />
-
+{/* rozwijane fragmenty do każdego elementy. Gdy środek trzeba podzielić na więcej części widać je poniżej jako fragmenty */}
 {fragmenty
 .filter((el) => el.element_id === row.id)
 .map((row, i) => {

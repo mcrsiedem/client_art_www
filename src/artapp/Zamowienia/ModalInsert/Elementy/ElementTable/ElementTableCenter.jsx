@@ -1,7 +1,8 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../../svg/settings.svg";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { _typ_elementu} from "../../api"
+import RowFragment from "./RowFragment";
 export default function ElementTableCenter({
   elementy,
   fragmenty,
@@ -45,6 +46,7 @@ export default function ElementTableCenter({
         <tbody>
           {elementy.map((row, i) => {
             return (
+              <>
               <RowElement
                 i={i}
                 row={row}
@@ -60,6 +62,36 @@ export default function ElementTableCenter({
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
                 fragmenty={fragmenty}
               />
+
+{fragmenty
+.filter((el) => el.element_id === row.id)
+.map((row, i) => {
+            return (
+              <>
+
+
+              <RowFragment
+              i={i}
+              row={row}
+              handleChangeCardElementy={handleChangeCardElementy}
+              listaPapierow={listaPapierow}
+              listaGramatur={listaGramatur}
+              setListaGramatur={setListaGramatur}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
+              procesyElementow={procesyElementow}
+              setProcesyElementow={setProcesyElementow}
+              listaDostepnychProcesow={listaDostepnychProcesow}
+              setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+              fragmenty={fragmenty}
+              
+            />
+            </>
+            );
+          })}
+              
+            .
+            </>
             );
           })}
         </tbody>

@@ -178,6 +178,7 @@ const initialFragmenty=[
     element_id: 1, 
     naklad: "1000",
     info:"",
+    typ: "okładka",
     index:0
   },
   {
@@ -187,6 +188,7 @@ const initialFragmenty=[
     element_id: 1, 
     naklad: "1000",
     info:"",
+    typ:"środek",
     index:1
   },
   {

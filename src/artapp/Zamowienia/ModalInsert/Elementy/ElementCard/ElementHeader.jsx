@@ -71,6 +71,7 @@ export default function CardHeader({ card, elementy, setElementy, fragmenty, set
         produkt_id: card.produkt_id,
         naklad: card.naklad,
         index: Math.max(...newElementy.map((f) => f.index)) + 1,
+        typ: card.typ
       });
   
       newElementy.sort((a, b) => a.index - b.index);

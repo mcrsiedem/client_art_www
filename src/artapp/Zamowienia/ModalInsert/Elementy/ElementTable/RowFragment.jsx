@@ -31,6 +31,7 @@ export default function RowFragment({
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
+
   
         <PapierSelect
           row={row}
@@ -43,57 +44,14 @@ export default function RowFragment({
           listaDostepnychGramatur={listaDostepnychGramatur}
           setListaDostepnychGrmatur={setListaDostepnychGrmatur}
         />
-        <Gramatura
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
-        />
-        <PapierInfo
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        />
-    
-  
-        <td className={style.procesy} id="procesy">
-          <img
-            className={style.icon}
-            src={Logo_ustawienia}
-            onClick={() => {setShowElementyProcesyInsert(true)}}
-            alt="Procesy"
-          />
-          {procesyElementow
-            .filter((frag) => frag.element_id === row.id)
-            .map((pr) => pr.proces)}
-        </td>
-  
-        <Uwagi
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        />
+
       </tr>
     );
   }
   function Typ({ row, handleChangeCardElementy }) {
     return (
       <td>
-        <select
-          className={style.select}
-          defaultValue={row.typ}
-          onChange={(e) => {
-            handleChangeCardElementy({
-              ...row,
-              typ: e.target.value,
-            });
-          }}
-        >
-          {}
-          {_typ_elementu.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
+{row.naklad}
       </td>
     );
   }
@@ -111,11 +69,8 @@ export default function RowFragment({
   }) {
     return (
       <td>
-        <select
-          //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
-          //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
-          //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
-          // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
+        ...
+        {/* <select
           className={style.select}
           defaultValue={row.papier_id}
           onChange={(e) => {
@@ -134,7 +89,7 @@ export default function RowFragment({
               {option.nazwa}
             </option>
           ))}
-        </select>
+        </select> */}
       </td>
     );
   }
@@ -147,7 +102,8 @@ export default function RowFragment({
   }) {
     return (
       <td>
-        <select
+        ...
+        {/* <select
           className={style.select}
           defaultValue={row.gramatura_id}
           onChange={(e) =>
@@ -175,11 +131,11 @@ export default function RowFragment({
                 </option>
               ) : (
                 <option key={option.id} value={option.id}>
-                  {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
+
                 </option>
               )
             )}
-        </select>
+        </select> */}
       </td>
     );
   }
@@ -221,7 +177,8 @@ export default function RowFragment({
   function Strony({ row, handleChangeCardElementy }) {
     return (
       <td>
-        <input
+        ...
+        {/* <input
           defaultValue={row.ilosc_stron}
           onChange={(e) =>
             handleChangeCardElementy({
@@ -229,14 +186,14 @@ export default function RowFragment({
               ilosc_stron: e.target.value,
             })
           }
-        ></input>
+        ></input> */}
       </td>
     );
   }
   function NettoX({ row, handleChangeCardElementy }) {
     return (
       <td className={style.col_format}>
-        <input
+        {/* <input
           defaultValue={row.format_x}
           onChange={(e) =>
             handleChangeCardElementy({
@@ -244,14 +201,16 @@ export default function RowFragment({
               format_x: e.target.value,
             })
           }
-        ></input>
+        ></input> */}
+        ...
       </td>
     );
   }
   function NettoY({ row, handleChangeCardElementy }) {
     return (
       <td className={style.col_format}>
-        <input
+        ...
+        {/* <input
           defaultValue={row.format_y}
           onChange={(e) =>
             handleChangeCardElementy({
@@ -259,7 +218,7 @@ export default function RowFragment({
               format_y: e.target.value,
             })
           }
-        ></input>
+        ></input> */}
       </td>
     );
   }

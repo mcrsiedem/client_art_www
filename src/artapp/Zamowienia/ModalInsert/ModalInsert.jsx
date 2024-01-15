@@ -281,6 +281,7 @@ function sprawdzPoprawnoscZamowienia(){
                             zamowienie_id: zamowienie_id,
                             element_id: element_id,
                             produkt_id: produkt_id,
+                            typ: fragment.typ
                           });
                           let fragment_id = res.data.insertId;
     

@@ -17,6 +17,8 @@ export default function ElementTableCenter({
   listaDostepnychProcesow,
   setShowElementyProcesyInsert
 }) {
+
+  const [expand,setExpand] =useState(true);
   return (
     <div className={style.main}>
       <table className={style.table2}>
@@ -62,8 +64,10 @@ export default function ElementTableCenter({
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
                 fragmenty={fragmenty}
               />
+
+          
 {/* rozwijane fragmenty do każdego elementy. Gdy środek trzeba podzielić na więcej części widać je poniżej jako fragmenty */}
-{fragmenty
+{expand ? fragmenty
 .filter((el) => el.element_id === row.id)
 .map((row, i) => {
             return (
@@ -88,12 +92,12 @@ export default function ElementTableCenter({
             />
             </>
             );
-          })}
+          }):<></>}
               
             .
             </>
             );
-          })}
+          }) }
         </tbody>
       </table>
     </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { _typ_elementu} from "../../api"
 export default function ElementTableCenter({
   elementy,
+  fragmenty,
   handleChangeCardElementy,
   listaPapierow,
   listaGramatur,
@@ -57,6 +58,7 @@ export default function ElementTableCenter({
                 setProcesyElementow={setProcesyElementow}
                 listaDostepnychProcesow={listaDostepnychProcesow}
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+                fragmenty={fragmenty}
               />
             );
           })}
@@ -79,7 +81,8 @@ function RowElement({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
-  setShowElementyProcesyInsert
+  setShowElementyProcesyInsert,
+  fragmenty
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
@@ -106,8 +109,6 @@ function RowElement({
         listaDostepnychGramatur={listaDostepnychGramatur}
         setListaDostepnychGrmatur={setListaDostepnychGrmatur}
       />
-      {/* <WykonczenieSelect  row={row} handleChangeCardElementy={handleChangeCardElementy} listaDostepnychWykonczen={listaDostepnychWykonczen} setListaDostepnychWykonczen={setListaDostepnychWykonczen} listaGramatur={listaGramatur}        isEdit={isEdit}
-              setIsEdit={setIsEdit}/> */}
       <Gramatura
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
@@ -119,17 +120,6 @@ function RowElement({
         handleChangeCardElementy={handleChangeCardElementy}
       />
   
-
-      {/* <td>
-        <img
-            className={style.icon}
-            src={Logo_ustawienia}
-            onClick={() => {
-            
-            }}
-            alt="React Logo"
-          />
-        </td> */}
 
       <td className={style.procesy} id="procesy">
         <img

@@ -38,6 +38,7 @@ export default function ElementTable({
       />
       <ElementTableCenter
         elementy={elementy}
+        fragmenty={fragmenty}
         handleChangeCardElementy={handleChangeCardElementy}
         listaPapierow={listaPapierow}
         listaGramatur={listaGramatur}

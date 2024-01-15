@@ -24,18 +24,18 @@ function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
 // const elmnt = useRef(null);
 const context = useContext(TokenContext);
 const [daneZamowienia,setDaneZamowienia] = useState({
-  nr: "",
+  nr: "20",
   rok: "2024",
   firma: _firma[0].id,
   klient: _klient[0].id,
   opiekun: _opiekun[0].id,
-  tytul: "",
+  tytul: "Tytuł zamówienia",
   dataPrzyjecia: "2024-01-30",
-  dataMaterialow: "",
-  dataSpedycji: "",
+  dataMaterialow: "2024-01-30",
+  dataSpedycji: "2024-01-30",
   stan: _stan[0].id,
   status: _status[0].id,
-  uwagi:""
+  uwagi:"uwagi do zamwówienia"
 })
 
 const [cookies, setCookie] = useCookies();
@@ -246,6 +246,8 @@ function sprawdzPoprawnoscZamowienia(){
                             format_y:element.format_y,
                             papier_id:element.papier_id,
                              gramatura_id:element.gramatura_id,
+                             papier_info: element.papier_info,
+                             uwagi: element.uwagi,
                             // wykonczenie:element.wykonczenie,
 
 

@@ -64,7 +64,7 @@ const initialProdukty = [
     id: 1,
     zamowienie_id: 1,
     typ: 1,
-    nazwa: "Tytul 1",
+    nazwa: "Nazwa produktu",
     wersja: "",
     ilosc_stron: "",
     format_x: "",
@@ -72,7 +72,7 @@ const initialProdukty = [
     oprawa: "PUR",
     naklad: "1000",
     index: 0,
-    uwagi: "",
+    uwagi: "uwagi do produktu",
   },
   // {
   //   id: 2,
@@ -104,11 +104,13 @@ const initialElementy = [
     format_x: "210",
     format_y: "297",
     papier_id: 7,
-    papier_info:"",
+    papier_info:"okł pap uwagi",
     gramatura_id: 0,
     naklad: "1000",
+    uwagi:"uwagi",
 
     index: 0
+
   },
   {
     id: 2,
@@ -121,10 +123,10 @@ const initialElementy = [
     format_x: "210",
     format_y: "297",
     papier_id: 7,
-    papier_info:"",
+    papier_info:"srd pap uwagi",
     gramatura_id: 0,
     naklad: "1000",
-
+    uwagi:"uwagis",
     index: 1
   },
   // {
@@ -229,16 +231,16 @@ const _zestawy = [
     oprawa: "PUR",
     naklad: "1000",
   },
-  {
-    id: 2,
-    typ: "Magazyn",
-    nazwa: "1",
-    ilosc_stron: "84",
-    format_x: "210",
-    format_y: "297",
-    oprawa: "PUR",
-    naklad: "1000",
-  }
+  // {
+  //   id: 2,
+  //   typ: "Magazyn",
+  //   nazwa: "1",
+  //   ilosc_stron: "84",
+  //   format_x: "210",
+  //   format_y: "297",
+  //   oprawa: "PUR",
+  //   naklad: "1000",
+  // }
 
 
   

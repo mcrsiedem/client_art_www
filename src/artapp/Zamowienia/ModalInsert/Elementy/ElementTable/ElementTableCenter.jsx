@@ -38,7 +38,7 @@ export default function ElementTableCenter({
             <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
-            <th className={style.col_kolory}>Dodatkowe informacje </th>
+            <th className={style.col_kolory}>Uwagi </th>
           </tr>
         </thead>
         <tbody>
@@ -143,7 +143,7 @@ function RowElement({
           .map((pr) => pr.proces)}
       </td>
 
-      <PapierInfo
+      <Uwagi
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
       />
@@ -371,6 +371,23 @@ function PapierInfo({ row, handleChangeCardElementy }) {
     </td>
   );
 }
+
+function Uwagi({ row, handleChangeCardElementy }) {
+  return (
+    <td>
+      <input
+        defaultValue={row.uwagi}
+        onChange={(e) =>
+          handleChangeCardElementy({
+            ...row,
+            uwagi: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
 
 // function WykonczenieSelect({row,handleChangeCardElementy,listaGramatur,listaDostepnychWykonczen,setListaDostepnychWykonczen,isEdit,setIsEdit}){
 //   return(

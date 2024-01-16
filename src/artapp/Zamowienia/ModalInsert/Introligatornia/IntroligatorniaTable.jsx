@@ -43,7 +43,7 @@ function Oprawa({ nr, zestawy, fragmenty }) {
               
               {/* tworzy tyle kolumn ile jest fragmentów */}
               {fragmenty.map((row) => {
-                return <th key={row.id}>{row.naklad}</th>;
+                return <th key={row.id}>{row.typ}</th>;
               })}
 
             </tr>

@@ -198,7 +198,7 @@ const initialFragmenty=[
     element_id: 2, 
     naklad: "1000",
     wersja:"",
-    typ:"Środek cz 2",
+    typ:"Środek cz 1",
     index:2
   },
 

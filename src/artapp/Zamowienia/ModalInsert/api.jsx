@@ -116,6 +116,24 @@ const initialElementy = [
     id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
+    typ: 1,
+    nazwa: "PL",
+    ilosc_stron: "80",
+    kolory: "CMYK + CMYK",
+    format_x: "210",
+    format_y: "297",
+    papier_id: 7,
+    papier_info:"srd pap uwagi",
+    gramatura_id: 0,
+    naklad: "1000",
+    uwagi:"uwagis",
+    index: 1
+  },
+  ,
+  {
+    id: 3,
+    zamowienie_id: 1,
+    produkt_id: 1,
     typ: 2,
     nazwa: "PL",
     ilosc_stron: "80",
@@ -129,43 +147,6 @@ const initialElementy = [
     uwagi:"uwagis",
     index: 1
   },
-  // {
-  //   id: 3,
-  //   zamowienie_id: 1,
-  //   produkt_id: 2,
-  //   typ: "Okładka",
-  //   nazwa: "PL",
-  //   ilosc_stron: "4",
-  //   kolory: "CMYK + CMYK",
-   
-  //   format_x: "210",
-  //   format_y: "297",
-  //   papier_id: 7,
-  //   papier_info:"",
-  //   gramatura_id: 0,
-  //   naklad: "1000",
-
-  //   index: 2
-  // },
-  // {
-  //   id: 4,
-  //   zamowienie_id: 1,
-  //   produkt_id: 2,
-  //   typ: "Środek",
-  //   nazwa: "PL",
-  //   ilosc_stron: "80",
-  //   kolor_front: "4",
-  //   kolor_back: "4",
-  //   kolory: "CMYK + CMYK",
-  //   format_x: "210",
-  //   format_y: "297",
-  //   papier_id: 7,
-  //   papier_info:"",
-  //   gramatura_id: 0,
-  //   naklad: "1000",
-
-  //   index: 3
-  // }
 
   
 ];
@@ -186,24 +167,37 @@ const initialFragmenty=[
     id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
-    element_id: 1, 
+    element_id: 2, 
     oprawa_id:2,
     naklad: "1000",
     wersja:"",
-    typ:"Okładka cz 2",
+    typ:"Okładka cz 1",
     index:1
   },
   {
     id: 3,
     zamowienie_id: 1,
     produkt_id: 1,
-    element_id: 2, 
+    element_id: 3, 
     oprawa_id:1,
     naklad: "1000",
     wersja:"",
     typ:"Środek cz 1",
     index:2
   },
+  ,
+  {
+    id: 4,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    element_id: 3, 
+    oprawa_id:2,
+    naklad: "1000",
+    wersja:"",
+    typ:"Środek cz 2",
+    index:3
+  },
+
 
 
   

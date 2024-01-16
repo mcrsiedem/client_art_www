@@ -107,7 +107,7 @@ useEffect(()=>{
           
         />
 
-        <div>
+       
             <Produkty
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
@@ -152,7 +152,7 @@ useEffect(()=>{
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
             />
           )}
-        </div>
+        
         {isTable ? 
         <Introligatornia
           zestawy={zestawy}

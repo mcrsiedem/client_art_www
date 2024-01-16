@@ -9,7 +9,7 @@ export default function Dane({
 }) {
   return (
     <>
-      <div className={style.dane}>
+      <div id="Dane" className={style.dane}>
         <div className={style.row1}>
           <Firma
             daneZamowienia={daneZamowienia}

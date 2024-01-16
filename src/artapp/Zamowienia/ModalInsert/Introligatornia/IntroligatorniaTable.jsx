@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import style from "./IntroligatorniaTable.module.css";
+import logoExpand from "../../../../svg/expand.svg";
 import { _oprawa } from "../api";
+import {  useState } from "react";
 
 export default function IntroligatorniaTable({
   zestawy,
@@ -8,6 +10,8 @@ export default function IntroligatorniaTable({
   fragmenty,
   setFragmenty,
 }) {
+
+  const [expand,setExpand] =useState(true);
   return (
     <>
       <div className={style.oprawy}>
@@ -40,11 +44,8 @@ function Oprawa({ nr, zestawy, fragmenty }) {
               <th className={style.col5}>Nakład</th>
               <th className={style.col6}>Data</th>
               <th className={style.col7}>Uwagi</th>
-              
-              {/* tworzy tyle kolumn ile jest fragmentów */}
-              {fragmenty.map((row) => {
-                return <th key={row.id}>{row.typ}</th>;
-              })}
+              <th className={style.col7}>Fragmenty</th>
+            
 
             </tr>
           </thead>
@@ -53,11 +54,6 @@ function Oprawa({ nr, zestawy, fragmenty }) {
               return (
                 <tr
                   key={row.id}
-                  // onDoubleClick={(node, event) => {
-
-                  //     setOpenModal(true);
-                  //     setRow({ id: row.id, user: row.user });
-                  // }}
                 >
                   <td>{row.zamowienie_id}</td>
                   <td>{row.produkt_id}</td>
@@ -66,10 +62,18 @@ function Oprawa({ nr, zestawy, fragmenty }) {
                   <td>{row.naklad}</td>
                   <td>{row.typ}</td>
                   <td>{row.ilosc_stron}</td>
-
-                  {fragmenty.map((row) => {
-                    return <td key={row.id}>{row.naklad}</td>;
-                  })}
+                  <img
+          className={style.icon}
+          src={logoExpand}
+          // onClick={() => {setShowElementyProcesyInsert(true)}}
+          alt="Procesy"
+        />
+{/* 
+                  {fragmenty
+                  .filter((el) => el.oprawa_id === row.id)
+                  .map((row) => {
+                    return <td key={row.id}>{row.typ} {row.naklad}</td>;
+                  })} */}
                 </tr>
               );
             })}
@@ -80,40 +84,7 @@ function Oprawa({ nr, zestawy, fragmenty }) {
   );
 }
 
-function FragmentElementu({ nazwa }) {
-  return (
-    <>
-      <div>{nazwa}</div>
-      <div>XX</div>
-    </>
-  );
-}
+
 function Header({ nr }) {
   return <div className={style.header}>Oprawa {nr}</div>;
-}
-function RodzajOprawy({ zestawy, setZestwy }) {
-  return (
-    <select
-      className={style.select}
-      valueDefault={zestawy}
-      onChange={setZestwy}
-    >
-      {_oprawa.map((option) => (
-        <option key={option.id} value={option.id}>
-          {option.nazwa}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function Naklad() {
-  return <input></input>;
-}
-function Spedycja() {
-  return (
-    <>
-      <input type="date"></input>
-    </>
-  );
 }

@@ -15,7 +15,7 @@ export default function IntroligatorniaTable({
   return (
     <>
       <div className={style.oprawy}>
-        <Oprawa zestawy={zestawy} fragmenty={fragmenty}>
+        <Oprawa zestawy={zestawy} fragmenty={fragmenty} expand={expand} setExpand={setExpand}>
           {" "}
         </Oprawa>
         {/* {zestawy.map((prod) => (
@@ -28,7 +28,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function Oprawa({ nr, zestawy, fragmenty }) {
+function Oprawa({ nr, zestawy, fragmenty,expand,setExpand }) {
   return (
     <div className={style.oprawaTable}>
       <Header nr={nr} />
@@ -52,6 +52,7 @@ function Oprawa({ nr, zestawy, fragmenty }) {
           <tbody>
             {zestawy.map((row) => {
               return (
+                <>
                 <tr
                   key={row.id}
                 >
@@ -65,16 +66,17 @@ function Oprawa({ nr, zestawy, fragmenty }) {
                   <img
           className={style.icon}
           src={logoExpand}
-          // onClick={() => {setShowElementyProcesyInsert(true)}}
+          onClick={() => {setExpand(!expand)}}
           alt="Procesy"
         />
-{/* 
-                  {fragmenty
+
+</tr>
+                  {expand ? fragmenty
                   .filter((el) => el.oprawa_id === row.id)
                   .map((row) => {
-                    return <td key={row.id}>{row.typ} {row.naklad}</td>;
-                  })} */}
-                </tr>
+                    return <tr key={row.id}>{row.typ} {row.naklad}</tr>;
+                  }):<></>}
+                </>
               );
             })}
           </tbody>

@@ -74,7 +74,16 @@ function Oprawa({ nr, zestawy, fragmenty,expand,setExpand }) {
                   {expand ? fragmenty
                   .filter((el) => el.oprawa_id === row.id)
                   .map((row) => {
-                    return <tr key={row.id}>{row.typ} {row.naklad}</tr>;
+                    return <tr key={row.id}>
+                      <td></td><td></td><td></td>
+                      <td>
+                      {row.typ} 
+                      </td>
+                      <td>
+                      {row.naklad}
+                      </td>
+                      <td></td><td></td><td></td>
+                     </tr>;
                   }):<></>}
                 </>
               );

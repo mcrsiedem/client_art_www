@@ -177,8 +177,8 @@ const initialFragmenty=[
     produkt_id: 1,
     element_id: 1, 
     naklad: "1000",
-    info:"",
-    typ: "okładka",
+    wersja:"",
+    typ: "Okładka cz 1",
     index:0
   },
   {
@@ -187,8 +187,8 @@ const initialFragmenty=[
     produkt_id: 1,
     element_id: 1, 
     naklad: "1000",
-    info:"",
-    typ:"środek",
+    wersja:"",
+    typ:"Okładka cz 2",
     index:1
   },
   {
@@ -197,36 +197,11 @@ const initialFragmenty=[
     produkt_id: 1,
     element_id: 2, 
     naklad: "1000",
-    info:"",
-    index:1
+    wersja:"",
+    typ:"Środek cz 2",
+    index:2
   },
-  // {
-  //   id: 3,
-  //   zamowienie_id: 1,
-  //   produkt_id: 2,
-  //   element_id: 3, 
-  //   naklad: "1000",
-  //   info:"",
-  //   index:2
-  // },
-  // {
-  //   id: 4,
-  //   zamowienie_id: 1,
-  //   produkt_id: 2,
-  //   element_id: 4, 
-  //   naklad: "1000",
-  //   info:"",
-  //   index:3
-  // },
-  // {
-  //   id: 5,
-  //   zamowienie_id: 1,
-  //   produkt_id: 2,
-  //   element_id: 3, 
-  //   naklad: "1000",
-  //   info:"",
-  //   index:4
-  // }
+
 
   
 ]

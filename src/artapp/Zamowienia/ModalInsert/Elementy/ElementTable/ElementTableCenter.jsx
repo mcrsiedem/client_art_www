@@ -189,6 +189,7 @@ function RowElement({
           onClick={() => {setExpand(!expand)}}
           alt="Procesy"
         />
+        {/* {fragmenty.lenght} */}
       </div>
   
     </tr>

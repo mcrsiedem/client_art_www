@@ -29,34 +29,24 @@ export default function RowFragment({
         <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
   
-        <PapierSelect
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychWykonczen={listaDostepnychWykonczen}
-          setListaDostepnychWykonczen={setListaDostepnychWykonczen}
-          listaPapierow={listaPapierow}
-          setListaGramatur={setListaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
-          setListaDostepnychGrmatur={setListaDostepnychGrmatur}
-        />
- <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
- <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
- <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
- <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
- <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
       </tr>
     );
   }
   function Typ({ row, handleChangeCardElementy }) {
     return (
       <td>
-{row.naklad}
+{/* {row.naklad} */}
       </td>
     );
   }

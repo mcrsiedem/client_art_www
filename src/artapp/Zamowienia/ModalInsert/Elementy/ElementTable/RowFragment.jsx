@@ -5,6 +5,7 @@ import { _typ_elementu} from "../../api"
 export default function RowFragment({
     row,
     handleChangeCardElementy,
+    handleChangeCardFragmenty,
     i,
     listaPapierow,
     setListaGramatur,

@@ -120,6 +120,7 @@ useEffect(()=>{
               elementy={elementy}
               setElementy={setElementy}
               handleChangeCardElementy={handleChangeCardElementy}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
               selected_papier={selected_papier}
               setSelected_papier={setSelected_papier}
               fragmenty={fragmenty}
@@ -130,6 +131,7 @@ useEffect(()=>{
               elementy={elementy}
               setElementy={setElementy}
               handleChangeCardElementy={handleChangeCardElementy}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
               selected_papier={selected_papier}
               setSelected_papier={setSelected_papier}
               fragmenty={fragmenty}
@@ -328,6 +330,17 @@ function sprawdzPoprawnoscZamowienia(){
   //   );
   // }
     
+  function handleChangeCardFragmenty(card) {
+    setFragmenty(
+      fragmenty.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })
+    );
+  }
   function handleChangeCardElementy(card) {
     setElementy(
       elementy.map((t) => {

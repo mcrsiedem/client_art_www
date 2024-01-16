@@ -5,6 +5,7 @@ export default function ElementyTable({
   elementy,
   setElementy,
   handleChangeCardElementy,
+  handleChangeCardFragmenty,
   selected_papier,
   setSelected_papier,
   fragmenty,
@@ -33,6 +34,7 @@ export default function ElementyTable({
           elementy={elementy}
           setElementy={setElementy}
           handleChangeCardElementy={handleChangeCardElementy}
+          handleChangeCardFragmenty={handleChangeCardFragmenty}
           selected_papier={selected_papier}
           setSelected_papier={setSelected_papier}
           fragmenty={fragmenty}

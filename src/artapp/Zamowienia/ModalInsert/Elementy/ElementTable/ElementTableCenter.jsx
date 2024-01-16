@@ -8,6 +8,7 @@ export default function ElementTableCenter({
   elementy,
   fragmenty,
   handleChangeCardElementy,
+  handleChangeCardFragmenty,
   listaPapierow,
   listaGramatur,
   setListaGramatur,
@@ -55,6 +56,7 @@ export default function ElementTableCenter({
                 i={i}
                 row={row}
                 handleChangeCardElementy={handleChangeCardElementy}
+                handleChangeCardFragmenty={handleChangeCardFragmenty}
                 listaPapierow={listaPapierow}
                 listaGramatur={listaGramatur}
                 setListaGramatur={setListaGramatur}
@@ -82,6 +84,7 @@ export default function ElementTableCenter({
               i={i}
               row={row}
               handleChangeCardElementy={handleChangeCardElementy}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
               setListaGramatur={setListaGramatur}
@@ -110,6 +113,7 @@ export default function ElementTableCenter({
 function RowElement({
   row,
   handleChangeCardElementy,
+  handleChangeCardFragmenty,
   i,
   listaPapierow,
   setListaGramatur,

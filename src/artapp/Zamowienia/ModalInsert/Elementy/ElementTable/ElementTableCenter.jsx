@@ -1,5 +1,6 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../../svg/settings.svg";
+import logoExpand from "../../../../../svg/expand.svg";
 import { Fragment, useState } from "react";
 import { _typ_elementu} from "../../api"
 import RowFragment from "./RowFragment";
@@ -97,7 +98,6 @@ export default function ElementTableCenter({
             );
           }):<></>}
               
-            .
             </>
             );
           }) }
@@ -177,7 +177,16 @@ function RowElement({
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
       />
-      <button onClick={()=>setExpand(!expand)}>Rozwiń</button>
+      {/* <button onClick={()=>setExpand(!expand)}>Rozwiń</button> */}
+      <div  >
+            <img
+         className={style.expand}
+          src={logoExpand}
+          onClick={() => {setExpand(!expand)}}
+          alt="Procesy"
+        />
+      </div>
+  
     </tr>
   );
 }

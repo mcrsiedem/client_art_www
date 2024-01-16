@@ -44,7 +44,11 @@ export default function RowFragment({
           listaDostepnychGramatur={listaDostepnychGramatur}
           setListaDostepnychGrmatur={setListaDostepnychGrmatur}
         />
-
+ <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+ <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
       </tr>
     );
   }

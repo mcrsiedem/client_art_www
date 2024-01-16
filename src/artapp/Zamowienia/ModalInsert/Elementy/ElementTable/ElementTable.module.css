@@ -119,10 +119,10 @@
 
 
 .icon:hover{
-  box-shadow:  1px 1px 1px rgb(159, 159, 159);;
+  box-shadow:  1px 1px 1px rgb(159, 159, 159);
 }
 .icon:active{
-  box-shadow:  2px 2px 2px rgb(159, 159, 159);;
+  box-shadow:  2px 2px 2px rgb(159, 159, 159);
 }
 
 
@@ -132,3 +132,11 @@
 
 }
 
+
+.expand{
+  height: 100%;
+  /* display: flex;
+  justify-content: left;
+  align-items: center;
+   */
+}

@@ -19,7 +19,9 @@ export default function ElementTableCenter({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
-  setShowElementyProcesyInsert
+  setShowElementyProcesyInsert,
+  setFragmenty,
+  setElementy
 }) {
 
   const [expand,setExpand] =useState(true);
@@ -73,6 +75,9 @@ export default function ElementTableCenter({
                 fragmenty={fragmenty}
                 expand={expand}
                 setExpand={setExpand}
+                elementy={elementy}
+                setFragmenty={setFragmenty}
+                setElementy={setElementy}
               />
 
           
@@ -99,6 +104,7 @@ export default function ElementTableCenter({
               listaDostepnychProcesow={listaDostepnychProcesow}
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
               fragmenty={fragmenty}
+      
               
             />
             </>
@@ -129,13 +135,89 @@ function RowElement({
   setProcesyElementow,
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
-  fragmenty,
-  expand,setExpand
+  fragmenty, setFragmenty,
+  expand,setExpand,
+  elementy, setElementy
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
   const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
     useState(listaGramatur);
+
+    const handleRemoveItem = (index) => {
+      if (elementy.length !== 1) {
+        setElementy(elementy.filter((x) => x.index !== index));
+      }
+    
+      setElementy((prev) =>
+        prev.map((t, a) => {
+          if (t.index > index) {
+            return {
+              ...t,
+              index: t.index--,
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+    };
+    
+    function handleAddCard(card) {
+      const newElementy = elementy.slice();
+    
+      newElementy.map((x) => {
+        if (x.index > card.index) {
+          return {
+            ...x,
+            //     index: x.index++,
+          };
+        } else {
+          return x;
+        }
+      });
+    
+      newElementy.push({
+        id: Math.max(...elementy.map((f) => f.id)) + 1,
+        zamowienie_id: card.zamowienie_id,
+        produkt_id: card.produkt_id,
+        naklad: card.naklad,
+        index: Math.max(...newElementy.map((f) => f.index)) + 1,
+        typ: card.typ
+      });
+    
+      newElementy.sort((a, b) => a.index - b.index);
+      setElementy(newElementy);
+      // setElementy((prev) =>prev.map((t)=> {return t}));
+    
+      //-------------------
+      const newFragmenty = fragmenty.slice();
+    
+      newFragmenty.map((x) => {
+        if (x.index > card.index) {
+          return {
+            ...x,
+            //     index: x.index++,
+          };
+        } else {
+          return x;
+        }
+      });
+    
+      //let nextId = Math.max(...fragmenty.map(f=>f.id));
+    
+      newFragmenty.push({
+        id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+        zamowienie_id: card.zamowienie_id,
+        produkt_id: card.produkt_id,
+        naklad: card.naklad,
+        element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+        index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+      });
+    
+      newFragmenty.sort((a, b) => a.index - b.index);
+      setFragmenty(newFragmenty);
+    }
   return (
     <tr key={row.id}>
       <td>{i + 1}</td>

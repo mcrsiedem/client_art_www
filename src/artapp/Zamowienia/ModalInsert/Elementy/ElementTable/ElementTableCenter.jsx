@@ -280,10 +280,12 @@ function RowElement({
       <Usun
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
+        handleRemoveItem={handleRemoveItem}
       />
-            <Usun
+            <Dodaj
         row={row}
         handleChangeCardElementy={handleChangeCardElementy}
+        handleAddCard={handleAddCard}
       />
   
     </tr>
@@ -291,19 +293,30 @@ function RowElement({
 }
 
 
-function Usun({ row, handleChangeCardElementy }) {
+function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   return (
     <td>
             <img
          className={style.expand}
           src={iconTrash}
-          // onClick={() => {setExpand(!expand)}}
+          onClick={() => {handleRemoveItem()}}
           alt="Procesy"
         />
     </td>
   );
 }
-
+function Dodaj({ row, handleChangeCardElementy ,handleAddCard}) {
+  return (
+    <td>
+            <img
+         className={style.expand}
+          src={iconCopy}
+          onClick={() => {handleAddCard(row)}}
+          alt="Procesy"
+        />
+    </td>
+  );
+}
 
 function Typ({ row, handleChangeCardElementy }) {
   return (

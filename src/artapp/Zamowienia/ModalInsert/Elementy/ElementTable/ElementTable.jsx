@@ -51,6 +51,8 @@ export default function ElementTable({
         setProcesyElementow={setProcesyElementow}
         listaDostepnychProcesow={listaDostepnychProcesow}
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+        setElementy={setElementy}
+        setFragmenty={setFragmenty}
 
       />
     </div>

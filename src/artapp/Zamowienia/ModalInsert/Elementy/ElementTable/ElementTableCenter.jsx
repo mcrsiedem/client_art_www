@@ -1,6 +1,8 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../../svg/settings.svg";
 import logoExpand from "../../../../../svg/expand.svg";
+import iconCopy from "../../../../../svg/copy.svg";
+import iconTrash from "../../../../../svg/trash2.svg";
 import {  useState } from "react";
 import { _typ_elementu} from "../../api"
 import RowFragment from "./RowFragment";
@@ -45,7 +47,9 @@ export default function ElementTableCenter({
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
             <th className={style.col_kolory}>Uwagi </th>
-            <th className={style.col_kolory}>Fragmenty </th>
+            <th className={style.col_kolory}> </th>
+            <th className={style.col_kolory}> </th>
+            <th className={style.col_kolory}> </th>
           </tr>
         </thead>
         <tbody>
@@ -191,10 +195,33 @@ function RowElement({
         />
         {/* {fragmenty.lenght} */}
       </div>
+      <Usun
+        row={row}
+        handleChangeCardElementy={handleChangeCardElementy}
+      />
+            <Usun
+        row={row}
+        handleChangeCardElementy={handleChangeCardElementy}
+      />
   
     </tr>
   );
 }
+
+
+function Usun({ row, handleChangeCardElementy }) {
+  return (
+    <td>
+            <img
+         className={style.expand}
+          src={iconTrash}
+          // onClick={() => {setExpand(!expand)}}
+          alt="Procesy"
+        />
+    </td>
+  );
+}
+
 
 function Typ({ row, handleChangeCardElementy }) {
   return (

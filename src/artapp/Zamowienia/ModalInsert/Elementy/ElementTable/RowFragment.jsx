@@ -21,7 +21,7 @@ export default function RowFragment({
         <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
   
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       </tr>
     );
   }

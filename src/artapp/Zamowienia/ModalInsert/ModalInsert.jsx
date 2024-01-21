@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useCookies } from "react-cookie";
 import Header from "./Header/Header";
 import Dane from "./Dane/Dane";
-import ElementyCardContainer from "./Elementy/ElementyCardContainer";
+
 import {
   _firma,
   initialProdukty,
@@ -20,7 +20,7 @@ import {
   _typ_produktu,
 } from "./api";
 import Warianty from "./Warianty/Warianty";
-import Introligatornia from "./Introligatornia/Introligatornia";
+
 import axios from "axios";
 import { ip } from "../../../Host";
 import ElementyTableContainer from "./Elementy/ElementyTableContainer";

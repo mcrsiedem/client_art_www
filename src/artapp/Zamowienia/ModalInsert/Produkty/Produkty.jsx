@@ -1,4 +1,4 @@
-import ProduktyCardContainer from "./ProduktyCardContainer";
+
 import ProduktyTableContainer from "./ProduktyTableContainer";
 export default function Produkty({produkty,handleChangeCardProdukty,_typ_produktu,isTable}){
     return (

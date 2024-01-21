@@ -4,19 +4,19 @@ export default function Produkty({produkty,handleChangeCardProdukty,_typ_produkt
     return (
       <div >
   
-  {isTable ? (
+  {/* {isTable ? (
             <ProduktyCardContainer
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
             />
-          ) : (
+          ) : ( */}
             <ProduktyTableContainer
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
             />
-          )}
+          {/* )} */}
   
   
       </div>

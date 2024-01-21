@@ -1,0 +1,17 @@
+
+
+
+{/* {isTable ? 
+        <Introligatornia
+          zestawy={zestawy}
+          setZestawy={setZestawy}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
+        /> :
+        <IntroligatorniaTable
+        zestawy={zestawy}
+        setZestawy={setZestawy}
+        fragmenty={fragmenty}
+        setFragmenty={setFragmenty}
+      />
+} */}

@@ -19,8 +19,8 @@ import {zamowienia_temp} from '../Zamowienia/zam';
 function Zamowienia({user,setUser}){
 
 
-
-        
+  const[listaGramatur,setListaGramatur]= useState();
+  const[listaPapierow,setListaPapierow]= useState();
     const [zamowienia, setZamowienia] = useState(zamowienia_temp);
     
     const gray = {color:'gray'
@@ -50,6 +50,11 @@ function Zamowienia({user,setUser}){
         setData(job);
 
         // setData(zamowienia);
+
+        const res3 = await axios.get(ip + 'lista-papierow');
+        setListaPapierow([...res3.data]);
+        const res4 = await axios.get(ip + 'lista-gramatur');
+        setListaGramatur([...res4.data]);
 
     };
 
@@ -141,6 +146,10 @@ function kolor(k){
             setOpenModalInsert={setOpenModalInsert}
             user={user} 
             setUser={setUser}
+            listaPapierow={listaPapierow}
+            setListPapierow={setListaPapierow}
+            listaGramatur={listaGramatur}
+            setListaGramatur={setListaGramatur}
           />
         )}
       </div>

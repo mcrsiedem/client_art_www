@@ -16,7 +16,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from '../../Login/DecodeToken';
 import Produkty from './Produkty/Produkty';
 
-function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser }) {
+function ModalInsert({ openModalInsert, setOpenModalInsert,user,setUser,listaPapierow,setListPapierow, listaGramatur,setListaGramatur}) {
     useEffect(()=>{
         // dragElement(document.getElementById("mydiv"));
         // dragElement(elmnt.current);
@@ -50,8 +50,8 @@ const[isTable,setIsTable] =useState(true);
 const[info,setInfo]= useState("napis")
 const[listaWykonczenia,setListaWykonczenia]= useState();
 const[listaUszlachetnien,setListaUszlachetnien]= useState();
-const[listaPapierow,setListaPapierow]= useState();
-const[listaGramatur,setListaGramatur]= useState();
+// const[listaPapierow,setListaPapierow]= useState();
+// const[listaGramatur,setListaGramatur]= useState();
 // lista wszystkich dostępnych procesów
 const[listaDostepnychProcesow, setListaDostepnychProcesow]= useState();
 
@@ -70,11 +70,11 @@ async function fechListy() {
   const res2 = await axios.get(ip + 'lista-uszlachetnien');
   setListaUszlachetnien([...res2.data]);
 
-  const res3 = await axios.get(ip + 'lista-papierow');
-  setListaPapierow([...res3.data]);
+  // const res3 = await axios.get(ip + 'lista-papierow');
+  // setListaPapierow([...res3.data]);
 
-  const res4 = await axios.get(ip + 'lista-gramatur');
-  setListaGramatur([...res4.data]);
+  // const res4 = await axios.get(ip + 'lista-gramatur');
+  // setListaGramatur([...res4.data]);
 
   const res5 = await axios.get(ip + 'lista-procesow');
   setListaDostepnychProcesow([...res5.data]);
@@ -115,7 +115,7 @@ useEffect(()=>{
               isTable={isTable}
             />
 
-          {isTable ? (
+          {/* {isTable ? (
             <ElementyCardContainer
               elementy={elementy}
               setElementy={setElementy}
@@ -126,7 +126,7 @@ useEffect(()=>{
               fragmenty={fragmenty}
               setFragmenty={setFragmenty}
             />
-          ) : (
+          ) : ( */}
             <ElementyTableContainer
               elementy={elementy}
               setElementy={setElementy}
@@ -151,7 +151,7 @@ useEffect(()=>{
               showElementyProcesyInsert={showElementyProcesyInsert}
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
             />
-          )}
+          {/* )} */}
         
         {isTable ? 
         <Introligatornia

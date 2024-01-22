@@ -1,7 +1,6 @@
 import style from "./ElementTable.module.css";
-import Logo_ustawienia from "../../../../../svg/settings.svg";
 import { useState } from "react";
-import { _typ_elementu} from "../../api"
+import { _typ_elementu} from "../api"
 export default function RowFragment({
     row,
     handleChangeCardElementy,

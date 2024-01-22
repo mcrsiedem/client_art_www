@@ -1,13 +1,13 @@
 // import iconCopy from "../../../../../svg/copy.svg";
 // import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./ElementTable.module.css";
-import { _papiery } from "../../api";
+import { _papiery } from "../api";
 import ElementTableHeader from "./ElementTableHeader";
 import ElementTableCenter from "./ElementTableCenter";
 
 
 
-export default function ElementTable({
+export default function Elementy({
   elementy,
   setElementy,
   handleChangeCardElementy,

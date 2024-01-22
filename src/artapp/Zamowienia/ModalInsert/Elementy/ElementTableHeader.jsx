@@ -1,5 +1,5 @@
-import iconCopy from "../../../../../svg/copy.svg";
-import iconTrash from "../../../../../svg/trash2.svg";
+// import iconCopy from "../../../../../svg/copy.svg";
+// import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./ElementTable.module.css";
 export default function ElementTableHeader({ card, elementy, setElementy, fragmenty, setFragmenty }) {
     const handleRemoveItem = (index) => {

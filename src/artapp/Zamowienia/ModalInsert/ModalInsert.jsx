@@ -23,7 +23,7 @@ import Warianty from "./Warianty/Warianty";
 
 import axios from "axios";
 import { ip } from "../../../Host";
-import ElementyTableContainer from "./Elementy/ElementyTableContainer";
+import Elementy from "./Elementy/Elementy";
 import IntroligatorniaTable from "./Introligatornia/IntroligatorniaTable";
 import ElementyProcesInsert from "./Elementy/ElementyProcesInsert";
 import TokenContext from "../../Context/tokenContext";
@@ -134,7 +134,7 @@ function ModalInsert({
         isTable={isTable}
       />
 
-      <ElementyTableContainer
+      <Elementy
         elementy={elementy}
         setElementy={setElementy}
         handleChangeCardElementy={handleChangeCardElementy}

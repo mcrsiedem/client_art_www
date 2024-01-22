@@ -161,6 +161,7 @@ const initialFragmenty=[
     naklad: "1000",
     wersja:"",
     typ: "Okładka cz 1",
+    info:"",
     index:0
   },
   {
@@ -172,6 +173,7 @@ const initialFragmenty=[
     naklad: "1000",
     wersja:"",
     typ:"Okładka cz 1",
+    info:"",
     index:1
   },
   {
@@ -183,6 +185,7 @@ const initialFragmenty=[
     naklad: "1000",
     wersja:"",
     typ:"Środek cz 1",
+    info:"",
     index:2
   },
   ,
@@ -195,6 +198,7 @@ const initialFragmenty=[
     naklad: "1000",
     wersja:"",
     typ:"Środek cz 2",
+    info:"",
     index:3
   },
 

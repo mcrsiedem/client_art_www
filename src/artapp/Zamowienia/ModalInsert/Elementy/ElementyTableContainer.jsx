@@ -1,4 +1,4 @@
-import style from "./ElementyTable.module.css";
+import style from "./Elementy.module.css";
 import ElementTable from "./ElementTable/ElementTable";
 
 export default function ElementyTable({

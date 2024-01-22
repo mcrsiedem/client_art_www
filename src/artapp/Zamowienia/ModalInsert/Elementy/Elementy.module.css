@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
 .elementy {
   background-color: transparent;
   display: flex;
@@ -7,7 +12,8 @@
   padding: 10px;
   gap: 20px;
   width: 100vw;
-  /* background-color: orange; */
+  height: 1200px;
+  background-color: red;
  
 }
 

@@ -27,13 +27,11 @@ function ProduktTable({produkty,handleChangeCardProdukty}) {
           <thead>
             <tr>
               <th className={style.col1}>Zam.</th>
-
               <th className={style.col2}>#</th>
               <th className={style.col3}>Typ</th>
               <th className={style.col10}>Nakład</th>
               <th className={style.col9}>Oprawa</th>
               <th className={style.col4}>Nazwa</th>
-              {/* <th className={style.col5}>Wersja</th> */}
               <th className={style.col6}>Ilość stron</th>
               <th className={style.col7}>Netto X</th>
               <th className={style.col8}>Netto Y</th>

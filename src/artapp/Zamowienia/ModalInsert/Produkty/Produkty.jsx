@@ -3,9 +3,11 @@ import { _papiery, _typ_produktu } from "../api";
 
 export default function Produkty({ produkty, handleChangeCardProdukty }) {
   return (
-    <div className={style.produkt}>
-      <ProduktTableHeader />
-      <ProduktTable produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty} />
+      <div className={style.container}>
+            <div className={style.produkt}>
+              <ProduktTableHeader />
+              <ProduktTable produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty} />
+            </div>
     </div>
   );
 }
@@ -20,7 +22,7 @@ function ProduktTableHeader() {
 
 function ProduktTable({produkty,handleChangeCardProdukty}) {
   return <div className={style.main}>
-          <div className={style.main}>
+      
         <table className={style.table}>
           <thead>
             <tr>
@@ -83,7 +85,7 @@ function ProduktTable({produkty,handleChangeCardProdukty}) {
           </tbody>
         </table>
       </div>
-  </div>;
+
 }
 
 function Typ({ row, handleChangeCardProdukty }) {

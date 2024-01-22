@@ -1,5 +1,14 @@
 @import url(/src/Color.module.css);
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
 .produkt{
+
   
     border-radius: 10px;
     width: calc(100vw - 40px);

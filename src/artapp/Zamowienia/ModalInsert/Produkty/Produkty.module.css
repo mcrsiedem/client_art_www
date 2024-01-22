@@ -2,20 +2,20 @@
 
 .container{
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 
 
 }
 .produkt{
 
-  
+
     border-radius: 10px;
     width: calc(100vw - 40px);
     /* height: 8rem; */
     box-shadow: 8px 8px 8px rgb(159, 159, 159);
     background-color: rgb(178, 196, 214);
-
+    height: 120px;
   }
   
 
@@ -35,12 +35,12 @@
     color: #fff;
     /* font-weight: bold; */
   }
- 
-  table{
-    /* margin: 10px; */
-/* background-color:  rgb(232, 245, 234); */
-/* background-color: rgb(0, 245, 0); */
-  }
+
+ .main{
+  overflow:auto;
+  height: 100px;
+ }
+
 
   .table input{
     background-color: transparent;

@@ -74,19 +74,35 @@ const initialProdukty = [
     index: 0,
     uwagi: "uwagi do produktu",
   },
-  // {
-  //   id: 2,
-  //   zamowienie_id: 1,
-  //   typ: "Magazyn",
-  //   tytul: "Tytul 2",
-  //   wersja: "",
-  //   ilosc_stron: "84",
-  //   format_x: "210",
-  //   format_y: "297",
-  //   oprawa: "PUR",
-  //   naklad: "1000",
-  //   index: 1
-  // }
+  {
+    id: 2,
+    zamowienie_id: 1,
+    typ: 1,
+    nazwa: "Nazwa produktu",
+    wersja: "",
+    ilosc_stron: "",
+    format_x: "",
+    format_y: "",
+    oprawa: "PUR",
+    naklad: "1000",
+    index: 1,
+    uwagi: "uwagi do produktu",
+  },
+  {
+    id: 1,
+    zamowienie_id: 1,
+    typ: 1,
+    nazwa: "Nazwa produktu",
+    wersja: "",
+    ilosc_stron: "",
+    format_x: "",
+    format_y: "",
+    oprawa: "PUR",
+    naklad: "1000",
+    index: 0,
+    uwagi: "uwagi do produktu",
+  },
+
   
   
 ];

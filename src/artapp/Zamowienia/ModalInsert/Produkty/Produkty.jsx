@@ -40,7 +40,7 @@ function ProduktTable({produkty,handleChangeCardProdukty}) {
               <th className={style.col8}>Uwagi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={style.center}>
             {produkty.map((row) => {
               return (
                 <tr

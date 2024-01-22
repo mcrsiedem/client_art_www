@@ -2,8 +2,8 @@
 // import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./ElementTable.module.css";
 import { _papiery } from "../api";
-import ElementTableHeader from "./ElementTableHeader";
-import ElementTableCenter from "./ElementTableCenter";
+
+import ElementTable from "./ElementTable";
 
 
 
@@ -37,7 +37,7 @@ export default function Elementy({
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
       />
-      <ElementTableCenter
+      <ElementTable
         elementy={elementy}
         fragmenty={fragmenty}
         handleChangeCardElementy={handleChangeCardElementy}
@@ -57,4 +57,16 @@ export default function Elementy({
       />
     </div>
   );
+}
+
+function ElementTableHeader() {
+  return (
+    <div className={style.header}>
+      Elementy produktu
+
+    </div>
+  );
+
+
+
 }

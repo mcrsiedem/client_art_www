@@ -25,7 +25,7 @@ import axios from "axios";
 import { ip } from "../../../Host";
 import Elementy from "./Elementy/Elementy";
 import IntroligatorniaTable from "./Introligatornia/IntroligatorniaTable";
-import ElementyProcesInsert from "./Elementy/ElementyProcesInsert";
+import ElementyProcesInsert from "./Elementy/ElementyProcesInsert/ElementyProcesInsert";
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";

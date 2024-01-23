@@ -138,7 +138,7 @@ export default function RowElement({
   
         <td className={style.procesy} id="procesy">
           <img
-            className={style.icon}
+            className={style.expand}
             src={Logo_ustawienia}
             onClick={() => {setShowElementyProcesyInsert(true)}}
             alt="Procesy"
@@ -153,13 +153,16 @@ export default function RowElement({
           handleChangeCardElementy={handleChangeCardElementy}
         />
         {/* <button onClick={()=>setExpand(!expand)}>Rozwiń</button> */}
-        <div  >
-              <img
-           className={style.expand}
+        <div  className={style.col_button}>
+      
+     <img
+          
             src={logoExpand}
             onClick={() => {setExpand(!expand)}}
             alt="Procesy"
           />
+ 
+         
           {/* {fragmenty.lenght} */}
         </div>
         <Usun
@@ -181,19 +184,22 @@ export default function RowElement({
   
 function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
-      <td>
-              <img
+      <td className={style.col_button}>
+        <div >
+                        <img
            className={style.expand}
             src={iconTrash}
             onClick={() => {handleRemoveItem()}}
             alt="Procesy"
           />
+        </div>
+
       </td>
     );
   }
   function Dodaj({ row, handleChangeCardElementy ,handleAddCard}) {
     return (
-      <td>
+      <td className={style.col_button} >
               <img
            className={style.expand}
             src={iconCopy}

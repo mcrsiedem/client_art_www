@@ -121,9 +121,9 @@ function ElementyTable({
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
             <th className={style.col_kolory}>Uwagi </th>
-            <th className={style.col_kolory}> </th>
-            <th className={style.col_kolory}> </th>
-            <th className={style.col_kolory}> </th>
+            <th className={style.col_button}> </th>
+            <th className={style.col_button}> </th>
+            <th className={style.col_button}> </th>
           </tr>
         </thead>
         <tbody>

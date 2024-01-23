@@ -28,7 +28,7 @@
 
 .main {
   overflow: auto;
-  height: 100px;
+  max-height: 200px;
 }
 
 .table input {

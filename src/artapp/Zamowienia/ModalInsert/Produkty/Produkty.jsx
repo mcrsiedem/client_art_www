@@ -5,8 +5,8 @@ export default function Produkty({ produkty, handleChangeCardProdukty }) {
   return (
       <div className={style.container}>
             <div className={style.produkt}>
-              <ProduktTableHeader />
-              <ProduktTable produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty} />
+              <ProduktyTableHeader />
+              <ProduktyTable produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty} />
             </div>
     </div>
   );
@@ -16,11 +16,11 @@ export default function Produkty({ produkty, handleChangeCardProdukty }) {
 
 
 
-function ProduktTableHeader() {
+function ProduktyTableHeader() {
   return <div className={style.header}>Produkty</div>;
 }
 
-function ProduktTable({produkty,handleChangeCardProdukty}) {
+function ProduktyTable({produkty,handleChangeCardProdukty}) {
   return <div className={style.main}>
       
         <table className={style.table}>

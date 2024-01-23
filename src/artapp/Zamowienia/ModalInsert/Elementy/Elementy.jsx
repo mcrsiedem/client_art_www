@@ -34,15 +34,15 @@ export default function Elementy({
     <div className={style.container}>
 
    
-    <div className={style.elementCard}>
-      <ElementTableHeader
+    <div className={style.element}>
+      <ElementyTableHeader
         // card={card}
         elementy={elementy}
         setElementy={setElementy}
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
       />
-      <ElementTable
+      <ElementyTable
         elementy={elementy}
         fragmenty={fragmenty}
         handleChangeCardElementy={handleChangeCardElementy}
@@ -65,7 +65,7 @@ export default function Elementy({
   );
 }
 
-function ElementTableHeader() {
+function ElementyTableHeader() {
   return (
     <div className={style.header}>
       Elementy produktu
@@ -78,7 +78,7 @@ function ElementTableHeader() {
 }
 
 
-function ElementTable({
+function ElementyTable({
   elementy,
   fragmenty,
   handleChangeCardElementy,

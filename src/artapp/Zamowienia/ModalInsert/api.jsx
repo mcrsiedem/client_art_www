@@ -101,26 +101,10 @@ const initialElementy = [
     index: 1
 
   },
-  {
-    id: 2,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    typ: 1,
-    nazwa: "PL",
-    ilosc_stron: "80",
-    kolory: "CMYK + CMYK",
-    format_x: "210",
-    format_y: "297",
-    papier_id: 7,
-    papier_info:"srd pap uwagi",
-    gramatura_id: 0,
-    naklad: "1000",
-    uwagi:"uwagis",
-    index: 2
-  },
+
   
   {
-    id: 3,
+    id: 2,
     zamowienie_id: 1,
     produkt_id: 1,
     typ: 2,
@@ -134,7 +118,7 @@ const initialElementy = [
     gramatura_id: 0,
     naklad: "1000",
     uwagi:"uwagis",
-    index: 3
+    index: 2
   },
 
   
@@ -158,24 +142,12 @@ const initialFragmenty=[
     zamowienie_id: 1,
     produkt_id: 1,
     element_id: 2, 
-    oprawa_id:2,
-    naklad: "1000",
-    wersja:"",
-    typ:"Okładka cz 1",
-    info:"",
-    index:1
-  },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 3, 
     oprawa_id:1,
     naklad: "1000",
     wersja:"",
     typ:"Środek cz 1",
     info:"",
-    index:2
+    index:1
   },
 
 
@@ -184,7 +156,7 @@ const initialFragmenty=[
   
 ]
 
-const _zestawy = [
+const _oprawa = [
   {
     id: 1,
     typ: "Magazyn",
@@ -195,16 +167,7 @@ const _zestawy = [
     oprawa: "PUR",
     naklad: "1000",
   },
-  {
-    id: 2,
-    typ: "Magazyn",
-    nazwa: "1",
-    ilosc_stron: "84",
-    format_x: "210",
-    format_y: "297",
-    oprawa: "Hotmelt",
-    naklad: "1000",
-  },
+
   // {
   //   id: 2,
   //   typ: "Magazyn",
@@ -345,7 +308,7 @@ const _typ_elementu = [
   }
 ]
 
-  const _oprawa = [
+  const _rodzaj_oprawy = [
     {
       id: 1,
       nazwa: "HotMelt"
@@ -380,4 +343,4 @@ const _typ_elementu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_zestawy,initialElementy,_papiery,_oprawa,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};
+export {_firma,initialProdukty,_klient,_oprawa,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};

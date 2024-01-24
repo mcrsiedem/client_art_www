@@ -9,7 +9,7 @@ import {
   _firma,
   initialProdukty,
   _klient,
-  _zestawy,
+  _oprawa,
   initialElementy,
   _papiery,
   initialFragmenty,
@@ -19,6 +19,7 @@ import {
   _status,
   _stan,
   _typ_produktu,
+  _rodzaj_oprawy,
 } from "./api";
 import Warianty from "./Warianty/Warianty";
 
@@ -83,7 +84,7 @@ function ModalInsert({
   ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
-  const [zestawy, setZestawy] = useState(_zestawy);
+  const [oprawa, setOprawa] = useState(_oprawa);
   const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
   const [idZamowienie, setIdZamowienia] = useState();
@@ -180,8 +181,8 @@ function ModalInsert({
       />
 
       <IntroligatorniaTable
-        zestawy={zestawy}
-        setZestawy={setZestawy}
+        oprawa={oprawa}
+        setOprawa={setOprawa}
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
       />

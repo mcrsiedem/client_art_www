@@ -5,8 +5,8 @@ import { _oprawa } from "../api";
 import {  useState } from "react";
 
 export default function IntroligatorniaTable({
-  zestawy,
-  setZestwy,
+  oprawa,
+  setOprawa,
   fragmenty,
   setFragmenty,
 }) {
@@ -15,7 +15,7 @@ export default function IntroligatorniaTable({
   return (
     <>
       <div className={style.oprawy}>
-        <Oprawa zestawy={zestawy} fragmenty={fragmenty} expand={expand} setExpand={setExpand}>
+        <Oprawa oprawa={oprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand}>
           {" "}
         </Oprawa>
         {/* {zestawy.map((prod) => (
@@ -28,7 +28,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function Oprawa({ nr, zestawy, fragmenty,expand,setExpand }) {
+function Oprawa({ nr, oprawa, fragmenty,expand,setExpand }) {
   return (
     <div className={style.oprawaTable}>
       <Header nr={nr} />
@@ -50,7 +50,7 @@ function Oprawa({ nr, zestawy, fragmenty,expand,setExpand }) {
             </tr>
           </thead>
           <tbody>
-            {zestawy.map((row) => {
+            {oprawa.map((row) => {
               return (
                 <>
                 <tr

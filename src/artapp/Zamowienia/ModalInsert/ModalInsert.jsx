@@ -243,10 +243,10 @@ function ModalInsert({
         .filter((el) => el.produkt_id === produkt.id)
         .map(async (element, m) => {
           let res = await axios.post(ip + "elementy", {
-            typ: element.typ,
-            nazwa: element.nazwa,
             zamowienie_id: zamowienie_id,
             produkt_id: produkt_id,
+            nazwa: element.nazwa,
+            typ: element.typ,
             naklad: element.naklad,
             strony: element.ilosc_stron,
             kolory: element.kolory,

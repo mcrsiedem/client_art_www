@@ -68,7 +68,14 @@ export default function RowElement({
           produkt_id: card.produkt_id,
           naklad: card.naklad,
           index: Math.max(...newElementy.map((f) => f.index)) + 1,
-          typ: card.typ
+          typ: card.typ,
+          nazwa: card.nazwa,
+          ilosc_stron: card.ilosc_stron,
+          format_x: card.format_x,
+          format_y: card.format_y,
+          papier_id: card.papier_id,
+          gramatura_id: card.gramatura_id
+        
         });
       
         newElementy.sort((a, b) => a.index - b.index);

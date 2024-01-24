@@ -139,9 +139,14 @@ div::-webkit-scrollbar-corner {
 }
 
 .element_typ{
-border-right: 1px solid rgb(173, 173, 173);
-
+width: 120px;
+font-weight: bold;
+font-size: 0.9rem;
 }
+.element_naklad{
+  width: 120px;
+  font-weight: bold;
+  }
 
 
 .icon {

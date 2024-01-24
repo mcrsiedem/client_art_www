@@ -16,11 +16,12 @@ export default function RowFragment({
     return (
       <tr  key={row.id}>
         <td >{i + 1}</td>
+        <td></td>
         <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
   
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       </tr>
     );
   }
@@ -38,7 +39,7 @@ export default function RowFragment({
     return (
       <td>
         <input
-          className={style.col_naklad}
+          className={style.element_naklad}
           defaultValue={row.naklad}
           onChange={(e) =>
             handleChangeCardElementy({

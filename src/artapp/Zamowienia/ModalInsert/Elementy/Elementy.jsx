@@ -96,7 +96,7 @@ function ElementyTable({
   setElementy
 }) {
 
-  const [expand,setExpand] =useState(true);
+  const [expand,setExpand] =useState(false);
   return (
     <div className={style.main}>
       <table className={style.table2}>

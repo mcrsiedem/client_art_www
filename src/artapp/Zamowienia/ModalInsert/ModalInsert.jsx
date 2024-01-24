@@ -134,10 +134,12 @@ function ModalInsert({
         isTable={isTable}
         setIsTable={setIsTable}
         info={info}
+        setInfo={setInfo}
         isOK={isOK}
         setIsOK={setIsOK}
         sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
         check_data_wejscia={check_data_wejscia}
+        elementy={elementy}
       />
 
       <Dane

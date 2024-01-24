@@ -7,7 +7,7 @@ const openInNewTab = (url) => {
     window.open(url, "_blank", "noreferrer");
   };
 
- function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable,info,sprawdzPoprawnoscZamowienia,check_data_wejscia}){
+ function Header({setOpenModalInsert,postZamowienie,id,isTable,setIsTable,info,setInfo,sprawdzPoprawnoscZamowienia,check_data_wejscia,elementy}){
     return(<>
     <div className={style.container}>
     {/* {check_data_wejscia ? (
@@ -33,7 +33,10 @@ const openInNewTab = (url) => {
         <div className={style.buttons}>
                 <img
                     onClick={() => {
-                        setIsTable(!isTable);
+                        // setIsTable(!isTable);
+
+setInfo( Math.max(...elementy.map(obj=>{ return obj.id})));
+
                     }}
                     className={style.icon}
                     src={iconTable}

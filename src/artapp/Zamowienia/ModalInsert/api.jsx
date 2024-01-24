@@ -118,7 +118,7 @@ const initialElementy = [
     uwagi:"uwagis",
     index: 1
   },
-  ,
+  
   {
     id: 3,
     zamowienie_id: 1,

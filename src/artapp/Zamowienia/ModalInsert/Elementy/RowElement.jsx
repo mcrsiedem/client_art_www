@@ -63,7 +63,7 @@ export default function RowElement({
         });
       
         newElementy.push({
-          id: Math.max(...elementy.map((f) => f.id)) + 1,
+          id: Math.max(...newElementy.map((f) => f.id)) + 1,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
@@ -74,7 +74,8 @@ export default function RowElement({
           format_x: card.format_x,
           format_y: card.format_y,
           papier_id: card.papier_id,
-          gramatura_id: card.gramatura_id
+          gramatura_id: card.gramatura_id,
+          papier_info: card.papier_info
         
         });
       

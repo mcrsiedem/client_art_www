@@ -166,6 +166,8 @@ const _oprawa = [
     format_y: "297",
     oprawa: "PUR",
     naklad: "1000",
+    uwagi: "uwagi do oprawy",
+    data_spedycji: "2024-01-30"
   },
 
   // {

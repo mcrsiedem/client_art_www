@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import Header from "./Header/Header";
 import Dane from "./Dane/Dane";
 
+
 import {
   _firma,
   initialProdukty,
@@ -45,6 +46,7 @@ function ModalInsert({
     // dragElement(elmnt.current);
   }, []);
   // const elmnt = useRef(null);
+  const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [daneZamowienia, setDaneZamowienia] = useState({
     nr: "20",
@@ -61,8 +63,24 @@ function ModalInsert({
     uwagi: "uwagi do zamwówienia",
   });
 
-  const [cookies, setCookie] = useCookies();
-  const [produkty, setProdukty] = useState(initialProdukty);
+  
+  const [produkty, setProdukty] = useState([
+    {
+      id: 1,
+      zamowienie_id: 1,
+      typ: 1,
+      nazwa: "Nazwa produktu",
+      wersja: "",
+      ilosc_stron: "",
+      format_x: "",
+      format_y: "",
+      oprawa: "PUR",
+      naklad: "1000",
+      index: 0,
+      uwagi: "uwagi do produktu",
+    },
+    
+  ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
   const [zestawy, setZestawy] = useState(_zestawy);
@@ -200,7 +218,7 @@ function ModalInsert({
   //----------------------------------
 
   async function postZamowienie() {
-    const res = await axios.post(ip + "zamowienie", {
+    let res = await axios.post(ip + "zamowienie", {
       nr: daneZamowienia.nr,
       rok: daneZamowienia.rok,
       firma_id: daneZamowienia.firma,
@@ -217,17 +235,17 @@ function ModalInsert({
     });
 
     const zamowienie_id = res.data.insertId;
-    setIdZamowienia(zamowienie_id);
+    // setIdZamowienia(zamowienie_id);
 
     produkty.map(async (produkt, i) => {
-      let res = await axios.post(ip + "produkty", {
+      let res2 = await axios.post(ip + "produkty", {
         nazwa: produkt.nazwa,
         zamowienie_id: zamowienie_id,
         typ: produkt.typ,
         wersja: produkt.wersja,
         uwagi: produkt.uwagi,
       });
-      let produkt_id = res.data.insertId;
+      let produkt_id = res2.data.insertId;
 
       setProdukty((prev) =>
         prev.map((t) => {
@@ -242,7 +260,7 @@ function ModalInsert({
       elementy
         .filter((el) => el.produkt_id === produkt.id)
         .map(async (element, m) => {
-          let res = await axios.post(ip + "elementy", {
+          let res3 = await axios.post(ip + "elementy", {
             zamowienie_id: zamowienie_id,
             produkt_id: produkt_id,
             nazwa: element.nazwa,
@@ -258,11 +276,12 @@ function ModalInsert({
             uwagi: element.uwagi,
             // wykonczenie:element.wykonczenie,
           });
-          let element_id = res.data.insertId;
+          let element_id = res3.data.insertId;
 
           setElementy((prev) =>
             prev.map((t, a) => {
-              if (t.index === a && t.index === element.index) {
+              // if (t.index === a && t.index === element.index) {
+                if (t.index ===  element.index) {
                 return {
                   ...t,
                   id: element_id,
@@ -279,7 +298,7 @@ function ModalInsert({
           fragmenty
             .filter((frag) => frag.element_id === element.id)
             .map(async (fragment, m) => {
-              let res = await axios.post(ip + "fragmenty", {
+              let res4 = await axios.post(ip + "fragmenty", {
                 naklad: fragment.naklad,
                 info: fragment.info,
                 index: fragment.index,
@@ -288,7 +307,7 @@ function ModalInsert({
                 produkt_id: produkt_id,
                 typ: fragment.typ,
               });
-              let fragment_id = res.data.insertId;
+              let fragment_id = res4.data.insertId;
 
               setFragmenty((prev) =>
                 prev.map((t, a) => {
@@ -306,15 +325,10 @@ function ModalInsert({
                 })
               );
 
-              // console.log("fragment produkt_id: "+fragment.produkt_id);
-              // console.log("fragment element id: "+fragment.element_id);
-              // console.log("zam: "+zamowienie_id);
-              // console.log("el: "+element_id);
-              // console.log("prod: "+produkt_id);
-              // console.log("---------------");
-            });
-        });
-    });
+
+            });   // fragmenty
+        });       //elementy
+    });           //produkty
   }
 
   //   function handleChangeCardElementy(card) {

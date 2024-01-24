@@ -134,7 +134,7 @@ const initialElementy = [
     gramatura_id: 0,
     naklad: "1000",
     uwagi:"uwagis",
-    index: 1
+    index: 2
   },
 
   
@@ -177,19 +177,7 @@ const initialFragmenty=[
     info:"",
     index:2
   },
-  ,
-  {
-    id: 4,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 3, 
-    oprawa_id:2,
-    naklad: "1000",
-    wersja:"",
-    typ:"Środek cz 2",
-    info:"",
-    index:3
-  },
+
 
 
 

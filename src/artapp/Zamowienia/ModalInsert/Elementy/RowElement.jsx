@@ -112,7 +112,8 @@ export default function RowElement({
       }
     return (
       <tr key={row.id}>
-        <td>{i + 1}</td>
+        <td>{row.id}</td>
+        <td>{row.index}</td>
         <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />

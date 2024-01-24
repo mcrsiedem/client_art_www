@@ -116,7 +116,7 @@ function DataSpedycji({daneZamowienia,setDaneZamowienia}){
 
 function RodzajOprawy({ oprawa,setOprawa }) {
   return (
-    <div className={style.col}>
+    <div className={style.select}>
 
       <select
         className={style.firma}

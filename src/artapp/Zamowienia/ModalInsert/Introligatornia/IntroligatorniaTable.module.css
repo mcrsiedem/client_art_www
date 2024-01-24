@@ -105,3 +105,8 @@
      outline-style: none;
    }
  
+
+   .table .select {
+    background-color: transparent;
+    box-shadow: none;
+  }

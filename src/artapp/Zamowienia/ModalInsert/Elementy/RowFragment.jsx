@@ -14,19 +14,19 @@ export default function RowFragment({
     const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
       useState(listaGramatur);
     return (
-      <tr key={row.id}>
-        <td>{i + 1}</td>
+      <tr  key={row.id}>
+        <td >{i + 1}</td>
         <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
   
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       </tr>
     );
   }
   function Typ({ row, handleChangeCardFragmenty }) {
     return (
-      <td>
+      <td className={style.element_typ}>
 {row.typ}
       </td>
     );

@@ -46,6 +46,8 @@ export default function RowElement({
             }
           })
         );
+
+        console.log("Usun")
       };
       
       function handleAddCard(card) {
@@ -75,7 +77,8 @@ export default function RowElement({
           format_y: card.format_y,
           papier_id: card.papier_id,
           gramatura_id: card.gramatura_id,
-          papier_info: card.papier_info
+          papier_info: card.papier_info,
+          uwagi: card.uwagi
         
         });
       
@@ -198,7 +201,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
                         <img
            className={style.expand}
             src={iconTrash}
-            onClick={() => {handleRemoveItem()}}
+            onClick={() => {handleRemoveItem(row.index)}}
             alt="Procesy"
           />
         </div>

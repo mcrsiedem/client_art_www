@@ -1,5 +1,5 @@
 
-import style from "./IntroligatorniaTable.module.css";
+import style from "./Introligatornia.module.css";
 import logoExpand from "../../../../svg/expand.svg";
 import { _rodzaj_oprawy } from "../api";
 import {  useState } from "react";

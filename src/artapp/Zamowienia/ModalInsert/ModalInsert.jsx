@@ -25,7 +25,7 @@ import Warianty from "./Warianty/Warianty";
 import axios from "axios";
 import { ip } from "../../../Host";
 import Elementy from "./Elementy/Elementy";
-import IntroligatorniaTable from "./Introligatornia/IntroligatorniaTable";
+import Introligatornia from "./Introligatornia/Introligatornia";
 import ElementyProcesInsert from "./Elementy/ElementyProcesInsert/ElementyProcesInsert";
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
@@ -190,7 +190,7 @@ function ModalInsert({
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
       />
 
-      <IntroligatorniaTable
+      <Introligatornia
         oprawa={oprawa}
         setOprawa={setOprawa}
         fragmenty={fragmenty}

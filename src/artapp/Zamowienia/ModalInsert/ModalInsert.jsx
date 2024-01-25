@@ -92,7 +92,8 @@ function ModalInsert({
       bok_oprawy: "297",
       naklad: "1000",
       uwagi: "uwagi do oprawy",
-      data_spedycji: "2024-01-30"
+      data_spedycji: "2024-01-30",
+      index: 0,
     },
     
   ]);

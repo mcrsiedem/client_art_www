@@ -135,3 +135,17 @@
     background-color: transparent;
     box-shadow: none;
   }
+
+  .icon {
+    height: 70%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  
+  }
+  .expand {
+    height: 60%;
+  
+  }
+  
+  

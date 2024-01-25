@@ -3,6 +3,7 @@ import style from "./Introligatornia.module.css";
 import logoExpand from "../../../../svg/expand.svg";
 import { _rodzaj_oprawy } from "../api";
 import {  useState } from "react";
+import iconCopy from "../../../../svg/copy.svg";
 
 export default function IntroligatorniaTable({
   oprawa,
@@ -18,7 +19,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
          <Header  />
-      <OprawaTable oprawa={oprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand}/>
+      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand}/>
 </div>
      
 
@@ -26,7 +27,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({oprawa,handleChangeCardOprawa, fragmenty, expand, setExpand}){
+function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand}){
   return (  <div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -39,6 +40,7 @@ function OprawaTable({oprawa,handleChangeCardOprawa, fragmenty, expand, setExpan
         <th className={style.col5}>Nakład</th>
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
+        <th className={style.col7}></th>
         <th className={style.col7}>Fragmenty</th>
       
 
@@ -61,9 +63,11 @@ function OprawaTable({oprawa,handleChangeCardOprawa, fragmenty, expand, setExpan
             <td>{row.bok_oprawy}</td>
             <td>{row.naklad}</td>
             <DataSpedycji row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
+
             {/* <td>{row.data_spedycji}</td> */}
           
             <td>{row.uwagi}</td>
+            <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row}/>
             <img
     className={style.icon}
     src={logoExpand}
@@ -82,9 +86,10 @@ function OprawaTable({oprawa,handleChangeCardOprawa, fragmenty, expand, setExpan
                 </td>
                 <td></td>
                 <td>
+                  
                 {row.naklad}
                 </td>
-                <td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td>
           </tr>;
             }):<></>}
           </>
@@ -131,4 +136,74 @@ function RodzajOprawy({ row,handleChangeCardOprawa }) {
       </select>
     </div>
   );
+}
+
+function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa}) {
+  return (
+    <td className={style.col_button} >
+            <img
+         className={style.expand}
+          src={iconCopy}
+          onClick={() => {handleAddRowOprawa(row,oprawa,setOprawa)}}
+          alt="Procesy"
+        />
+    </td>
+  );
+}
+
+function handleAddRowOprawa(card,oprawa,setOprawa) {
+  const newOprawa = oprawa.slice();
+
+  newOprawa.map((x) => {
+    if (x.index > card.index) {
+      return {
+        ...x,
+        //     index: x.index++,
+      };
+    } else {
+      return x;
+    }
+  });
+
+  newOprawa.push({
+    id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+    zamowienie_id: card.zamowienie_id,
+    produkt_id: card.produkt_id,
+    oprawa: card.oprawa,
+    bok_oprawy: "",
+    naklad: 0,
+    index: Math.max(...newOprawa.map((f) => f.index)) + 1,
+    uwagi: "",
+    data_spedycji: card.data_spedycji,
+  
+  });
+
+  newOprawa.sort((a, b) => a.index - b.index);
+  setOprawa(newOprawa);
+
+  // const newFragmenty = fragmenty.slice();
+
+  // newFragmenty.map((x) => {
+  //   if (x.index > card.index) {
+  //     return {
+  //       ...x,
+
+  //     };
+  //   } else {
+  //     return x;
+  //   }
+  // });
+
+
+  // newFragmenty.push({
+  //   id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+  //   zamowienie_id: card.zamowienie_id,
+  //   produkt_id: card.produkt_id,
+  //   naklad: card.naklad,
+  //   element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+  //   index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+  // });
+
+  // newFragmenty.sort((a, b) => a.index - b.index);
+  // setFragmenty(newFragmenty);
 }

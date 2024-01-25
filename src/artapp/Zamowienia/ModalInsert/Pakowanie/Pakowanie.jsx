@@ -37,6 +37,7 @@ function PakowanieTable({pakowanie,setPakowanie}) {
               <th className={style.col2}>#</th>
               <th className={style.col3}>Nazwa</th>
               <th className={style.col10}>Ilość szt.</th>
+              <th className={style.col10}>Sztuki w paczce</th>
               <th className={style.col10}>Uwagi</th>
 
             </tr>
@@ -52,6 +53,7 @@ function PakowanieTable({pakowanie,setPakowanie}) {
                   <td>{row.id}</td>
                   <td>{row.nazwa}</td>
                   <td>{row.naklad}</td>
+                  <td>{row.uwagi}</td>
                   <td>{row.uwagi}</td>
                 </tr>
               );

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import style from "./IntroligatorniaTable.module.css";
 import logoExpand from "../../../../svg/expand.svg";
-import { _rodzaj_oprawy,_oprawa } from "../api";
+import { _rodzaj_oprawy } from "../api";
 import {  useState } from "react";
 
 export default function IntroligatorniaTable({
@@ -9,13 +9,14 @@ export default function IntroligatorniaTable({
   setOprawa,
   fragmenty,
   setFragmenty,
+  handleChangeCardOprawa,
 }) {
 
   const [expand,setExpand] =useState(true);
   return (
     <>
       <div className={style.oprawy}>
-        <Oprawa oprawa={oprawa} setOprawa={setOprawa}fragmenty={fragmenty} expand={expand} setExpand={setExpand}>
+        <Oprawa handleChangeCardOprawa={handleChangeCardOprawa} oprawa={oprawa} setOprawa={setOprawa}fragmenty={fragmenty} expand={expand} setExpand={setExpand}>
           {" "}
         </Oprawa>
         {/* {zestawy.map((prod) => (
@@ -28,7 +29,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function Oprawa({ nr, oprawa, setOprawa,fragmenty,expand,setExpand }) {
+function Oprawa({ nr, oprawa, setOprawa,fragmenty,expand,setExpand,handleChangeCardOprawa }) {
   return (
     <div className={style.oprawaTable}>
       <Header nr={nr} />
@@ -50,7 +51,7 @@ function Oprawa({ nr, oprawa, setOprawa,fragmenty,expand,setExpand }) {
             </tr>
           </thead>
           <tbody>
-            {_oprawa.map((row) => {
+            {oprawa.map((row) => {
               return (
                 <>
                 <tr
@@ -59,9 +60,10 @@ function Oprawa({ nr, oprawa, setOprawa,fragmenty,expand,setExpand }) {
                   <td>{row.zamowienie_id}</td>
                   <td>{row.produkt_id}</td>
                   <td>{row.id}</td>
-                  <RodzajOprawy oprawa={oprawa} setOprawa={setOprawa}/>
+                  <RodzajOprawy row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
                   <td>{row.naklad}</td>
-                  <td>{row.data_spedycji}</td>
+                  <DataSpedycji row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
+                  {/* <td>{row.data_spedycji}</td> */}
                 
                   <td>{row.uwagi}</td>
                   <img
@@ -101,28 +103,27 @@ function Header({ nr }) {
   return <div className={style.header}>Oprawa {nr}</div>;
 }
 
-function DataSpedycji({daneZamowienia,setDaneZamowienia}){
+function DataSpedycji({row,handleChangeCardOprawa}){
   return(
       <div className={style.col}>
-      <label className={style.label}> Data spedycji </label>
       <input className={style.data} type="date"
-      defaultValue={daneZamowienia.dataSpedycji}
+      defaultValue={row.data_spedycji}
       onChange={(event) => {
-        setDaneZamowienia({...daneZamowienia, dataSpedycji: event.target.value});
+        handleChangeCardOprawa({...row, data_spedycji: event.target.value});
       }}></input>
     </div>
   );
 }
 
-function RodzajOprawy({ oprawa,setOprawa }) {
+function RodzajOprawy({ row,handleChangeCardOprawa }) {
   return (
     <div className={style.select}>
 
       <select
         className={style.firma}
-        value={oprawa.oprawa}
+        defaultValue={row.id}
         onChange={(event) => {
-          setOprawa({...oprawa, oprawa: event.target.value});
+          handleChangeCardOprawa({...row, oprawa: event.target.value});
         }}
       >
         {_rodzaj_oprawy.map((option) => (

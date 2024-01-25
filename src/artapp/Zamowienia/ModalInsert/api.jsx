@@ -156,34 +156,22 @@ const initialFragmenty=[
   
 ]
 
-const _oprawa = [
-  {
-    id: 1,
-    typ: "Magazyn",
-    nazwa: "1",
-    ilosc_stron: "84",
-    format_x: "210",
-    format_y: "297",
-    oprawa: "PUR",
-    naklad: "1000",
-    uwagi: "uwagi do oprawy",
-    data_spedycji: "2024-01-30"
-  },
-
-  // {
-  //   id: 2,
-  //   typ: "Magazyn",
-  //   nazwa: "1",
-  //   ilosc_stron: "84",
-  //   format_x: "210",
-  //   format_y: "297",
-  //   oprawa: "PUR",
-  //   naklad: "1000",
-  // }
-
-
+// przeniesione do modalinsert
+// const _oprawa = [
+//   {
+//     id: 1,
+//     typ: "Magazyn",
+//     nazwa: "1",
+//     ilosc_stron: "84",
+//     format_x: "210",
+//     format_y: "297",
+//     oprawa: "PUR",
+//     naklad: "1000",
+//     uwagi: "uwagi do oprawy",
+//     data: "2024-01-30"
+//   },
   
-];
+// ];
 
 const _papiery = [
   {
@@ -345,4 +333,4 @@ const _typ_elementu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,_oprawa,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};
+export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};

@@ -9,7 +9,6 @@ import {
   _firma,
   initialProdukty,
   _klient,
-  _oprawa,
   initialElementy,
   _papiery,
   initialFragmenty,
@@ -79,12 +78,23 @@ function ModalInsert({
       naklad: "1000",
       index: 0,
       uwagi: "uwagi do produktu",
-    },
+    }
     
   ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
-  const [oprawa, setOprawa] = useState(_oprawa);
+  const [oprawa, setOprawa] = useState([
+    {
+      id: 1,
+      zamowienie_id: 1,
+      produkt_id:1,
+      oprawa: "PUR",
+      naklad: "1000",
+      uwagi: "uwagi do oprawy",
+      data_spedycji: "2024-01-30"
+    },
+    
+  ]);
   const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
   const [idZamowienie, setIdZamowienia] = useState();
@@ -185,6 +195,7 @@ function ModalInsert({
         setOprawa={setOprawa}
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
+        handleChangeCardOprawa={handleChangeCardOprawa}
       />
 
       <Warianty />
@@ -328,10 +339,44 @@ function ModalInsert({
                 })
               );
 
+ 
+            });   // fragmenty end
+        });       //elementy end
 
-            });   // fragmenty
-        });       //elementy
-    });           //produkty
+
+    // zapis oprawy - start
+
+    oprawa.map(async (oprawa, i) => {
+      let res5 = await axios.post(ip + "oprawa", {
+        zamowienie_id: zamowienie_id,
+        produkt_id: produkt_id,
+        oprawa: oprawa.oprawa,
+        naklad: oprawa.naklad,
+        uwagi: oprawa.uwagi,
+        data_spedycji: oprawa.data_spedycji
+      });
+      let oprawa_id = res5.data.insertId;
+
+      setOprawa((prev) =>
+        prev.map((t) => {
+          if (t.index === i) {
+            return { ...t, id: oprawa_id,
+              produkt_id: produkt_id,
+               zamowienie_id: zamowienie_id };
+          } else {
+            return t;
+          }
+        })
+      );
+    }); 
+
+    // zapis oprawy - end
+
+
+    });           //produkty end
+
+
+
   }
 
   //   function handleChangeCardElementy(card) {
@@ -372,6 +417,18 @@ function ModalInsert({
   function handleChangeCardProdukty(card) {
     setProdukty(
       produkty.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+
+  function handleChangeCardOprawa(card) {
+    setOprawa(
+      oprawa.map((t) => {
         if (t.id === card.id) {
           return card;
         } else {

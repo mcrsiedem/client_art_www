@@ -89,6 +89,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       oprawa: 1,
+      bok_oprawy: "297",
       naklad: "1000",
       uwagi: "uwagi do oprawy",
       data_spedycji: "2024-01-30"
@@ -101,10 +102,41 @@ function ModalInsert({
       id: 1,
       zamowienie_id: 1,
       produkt_id:1,
-      oprawa: 1,
-      naklad: "1000",
-      uwagi: "uwagi do oprawy",
-      data_spedycji: "2024-01-30"
+      nazwa: "Poczta Główna",
+      naklad: "686",
+      uwagi: ""
+    },
+    {
+      id: 2,
+      zamowienie_id: 1,
+      produkt_id:1,
+      nazwa: "Desa Unicum ul. Piękna 1 A",
+      naklad: "124",
+      uwagi: ""
+    },
+    {
+      id: 3,
+      zamowienie_id: 1,
+      produkt_id:1,
+      nazwa: "Cosmopolitan",
+      naklad: "10",
+      uwagi: ""
+    },
+    {
+      id: 4,
+      zamowienie_id: 1,
+      produkt_id:1,
+      nazwa: "Promenoria",
+      naklad: "10",
+      uwagi: ""
+    },
+    {
+      id:5,
+      zamowienie_id: 1,
+      produkt_id:1,
+      nazwa: "Comforty",
+      naklad: "10",
+      uwagi: ""
     },
     
   ]);

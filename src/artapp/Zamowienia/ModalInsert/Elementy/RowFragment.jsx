@@ -17,6 +17,7 @@ export default function RowFragment({
       <tr  key={row.id}>
         <td >{i + 1}</td>
         <td></td>
+        
         <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
         <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />

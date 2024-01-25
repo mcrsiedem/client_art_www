@@ -20,7 +20,7 @@ import {
   _typ_produktu,
   _rodzaj_oprawy,
 } from "./api";
-import Warianty from "./Warianty/Warianty";
+import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";
 import { ip } from "../../../Host";
@@ -84,6 +84,19 @@ function ModalInsert({
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
   const [oprawa, setOprawa] = useState([
+    {
+      id: 1,
+      zamowienie_id: 1,
+      produkt_id:1,
+      oprawa: 1,
+      naklad: "1000",
+      uwagi: "uwagi do oprawy",
+      data_spedycji: "2024-01-30"
+    },
+    
+  ]);
+
+  const [pakowanie, setPakowanie] = useState([
     {
       id: 1,
       zamowienie_id: 1,
@@ -198,7 +211,7 @@ function ModalInsert({
         handleChangeCardOprawa={handleChangeCardOprawa}
       />
 
-      <Warianty />
+      <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
       {showElementyProcesyInsert && (
         <ElementyProcesInsert
           showElementyProcesyInsert={showElementyProcesyInsert}

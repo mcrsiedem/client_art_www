@@ -17,7 +17,7 @@ export default function Produkty({ produkty, handleChangeCardProdukty }) {
 
 
 function ProduktyTableHeader() {
-  return <div className={style.header}>Produkty</div>;
+  return <div className={style.header}>Produkt</div>;
 }
 
 function ProduktyTable({produkty,handleChangeCardProdukty}) {

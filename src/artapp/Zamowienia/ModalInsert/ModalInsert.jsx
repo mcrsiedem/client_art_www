@@ -88,7 +88,7 @@ function ModalInsert({
       id: 1,
       zamowienie_id: 1,
       produkt_id:1,
-      oprawa: "PUR",
+      oprawa: 1,
       naklad: "1000",
       uwagi: "uwagi do oprawy",
       data_spedycji: "2024-01-30"

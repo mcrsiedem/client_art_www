@@ -7,9 +7,11 @@
 .element {
   border-radius: 10px;
   width: calc(100vw - 40px);
+  height: calc(100% - 20px);
+  background-color: rgb(191, 209, 194);
   /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
   /* background-color: rgb(178, 196, 214); */
-  height: 130px;
+
 }
 
 .header {
@@ -27,8 +29,10 @@
 
 .main {
   overflow: auto;
-  max-height: 250px;
+  
+  
 }
+
 
 /* pasek przewijania */
 div::-webkit-scrollbar {
@@ -50,6 +54,10 @@ div::-webkit-scrollbar-corner {
 }
 
 
+.table2{
+
+  height: 1fr;
+}
 
 
 

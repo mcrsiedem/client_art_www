@@ -127,7 +127,7 @@ function ElementyTable({
             <th className={style.col_button}> </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {elementy.map((row, i) => {
             return (
               <>

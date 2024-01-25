@@ -12,7 +12,7 @@
    border-radius: 10px;
   z-index: 2;
   display: grid;
-  grid-template-rows: 45px 210px  150px 1fr 1fr 1fr ;
+  grid-template-rows: 45px 210px  1fr 1fr 1fr 1fr ;
  }
 
 .mydivheader {

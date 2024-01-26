@@ -153,6 +153,7 @@ function StanFragmenty({fragmenty}){
             <th className={style.col_id}>Fragment id</th>{" "}
             <th className={style.col_id} >Nakład</th>
             <th >Typ</th>
+            <th >Oprawa id</th>
             <th >Wersja</th>
           </tr>
         </thead>
@@ -174,6 +175,7 @@ function StanFragmenty({fragmenty}){
                 <td>{row.id} </td>
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
+                <td>{row.oprawa_id}</td>
                 <td>{row.wersja}</td>
               </tr>
             );
@@ -195,10 +197,10 @@ function StanOprawa({oprawa}){
       <table>
         <thead>
           <tr>
-            <th className={style.col_id}>Oprawa id</th>
             <th className={style.col_id}>Zamówienie id</th>
             <th className={style.col_id}>Produkt id</th>
-            <th className={style.col_id}>Oprawa</th>
+            <th className={style.col_id}>Oprawa id</th>
+            <th className={style.col_id}>Rodzaj oprawy</th>
             <th className={style.col_id}>Bok oprawy</th>{" "}
             <th className={style.col_id} >Nakład</th>
             <th >Uwagi</th>
@@ -217,9 +219,9 @@ function StanOprawa({oprawa}){
                   // setRow({ id: row.id, user: row.user });
                 }}
               >
-                <td>{row.id} </td>
                 <td>{row.zamowienie_id} </td>
-                <td>{row.produkt_id_id} </td>
+                <td>{row.produkt_id} </td>
+                <td>{row.id} </td>
                 <td>{row.oprawa}</td>
                 <td>{row.bok_oprawy} </td>
                 <td>{row.naklad}</td>

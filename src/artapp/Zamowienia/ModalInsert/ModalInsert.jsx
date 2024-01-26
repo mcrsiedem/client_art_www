@@ -97,6 +97,17 @@ function ModalInsert({
       data_spedycji: "2024-01-30",
       index: 0,
     },
+    {
+      id: 2,
+      zamowienie_id: 1,
+      produkt_id:1,
+      oprawa: 1,
+      bok_oprawy: "297",
+      naklad: "1000",
+      uwagi: "uwagi do oprawy",
+      data_spedycji: "2024-01-30",
+      index: 1,
+    },
     
   ]);
 
@@ -400,6 +411,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
     // zapis oprawy - start
 
     oprawa.map(async (oprawa, i) => {
+      let oprawa_id_przed  =oprawa.id;
+      // console.log(oprawa.id)
       let res5 = await axios.post(ip + "oprawa", {
         zamowienie_id: zamowienie_id,
         produkt_id: produkt_id,
@@ -421,6 +434,35 @@ const [openModalStany, setOpenModalStany] = useState(false);
           }
         })
       );
+
+      setFragmenty((prev) =>
+
+      prev.map((t, a) => {
+        // console.log("oprawa id" +prev)
+        if (t.oprawa_id === oprawa_id_przed) {
+          return {
+            ...t,
+            oprawa_id:oprawa_id,
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+
+    //   setFragmenty((prev) =>
+
+    //   prev.map((t, a) => {
+
+    //       return {
+    //         ...t,
+    //         oprawa_id:oprawa_id,
+    //       };
+        
+        
+    //   })
+    // );
+
     }); 
 
     // zapis oprawy - end

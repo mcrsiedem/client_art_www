@@ -171,6 +171,7 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     produkt_id: card.produkt_id,
     oprawa: card.oprawa,
     bok_oprawy: "",
+
     naklad: 0,
     index: Math.max(...newOprawa.map((f) => f.index)) + 1,
     uwagi: "",

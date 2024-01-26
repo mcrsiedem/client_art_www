@@ -117,6 +117,7 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
     produkt_id: card.produkt_id,
     typ: card.typ,
     naklad: card.naklad,
+    oprawa_id:card.oprawa_id,
     element_id: card.element_id,
     index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
   });

@@ -107,6 +107,7 @@ export default function RowElement({
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
+          typ: card.typ,
           element_id: Math.max(...elementy.map((f) => f.id)) + 1,
           index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
         });

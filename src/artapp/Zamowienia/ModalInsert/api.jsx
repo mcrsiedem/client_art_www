@@ -133,7 +133,7 @@ const initialFragmenty=[
     oprawa_id:1,
     naklad: "1000",
     wersja:"",
-    typ: "Okładka cz 1",
+    typ: "Okładka",
     info:"",
     index:0
   },
@@ -145,7 +145,7 @@ const initialFragmenty=[
     oprawa_id:1,
     naklad: "1000",
     wersja:"",
-    typ:"Środek cz 1",
+    typ:"Środek",
     info:"",
     index:1
   },

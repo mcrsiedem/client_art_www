@@ -177,6 +177,8 @@ function ElementyTable({
               listaDostepnychProcesow={listaDostepnychProcesow}
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
               fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              elementy={elementy}
       
               
             />

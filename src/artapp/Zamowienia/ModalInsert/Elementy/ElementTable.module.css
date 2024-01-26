@@ -29,6 +29,7 @@
 
 .main {
   overflow-y: scroll;
+  position: relative;
   height: 15vh;
   /*  */
 }

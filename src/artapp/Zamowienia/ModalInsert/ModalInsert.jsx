@@ -265,7 +265,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           
           </div> */}
                 {openModalStany && (
-        <Stany openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} />
+        <Stany openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} elementy={elementy} produkty={produkty} oprawa={oprawa} pakowanie={pakowanie}/>
       )}
     </div>
   );

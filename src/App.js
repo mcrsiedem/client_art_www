@@ -26,6 +26,7 @@ import {
 import TokenContext from "./artapp/Context/tokenContext";
 import Header from "./artapp/Header/Header";
 import Zamowienia from "./artapp/Zamowienia/Zamowienia";
+import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
 export default function App() {
 
@@ -63,6 +64,7 @@ export default function App() {
           <Route path='/Panel' element={<Panel />} />
           {/* <Route path='*' element={<History />} /> */}
           <Route path='/zamowienia' element={<Zamowienia />} />
+ 
         </Routes>
       </TokenContext.Provider>
     </BrowserRouter>

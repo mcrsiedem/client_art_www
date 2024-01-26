@@ -30,6 +30,7 @@ import ElementyProcesInsert from "./Elementy/ElementyProcesInsert/ElementyProces
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
+import Stany from "./Stany";
 
 function ModalInsert({
   openModalInsert,
@@ -48,6 +49,7 @@ function ModalInsert({
   // const elmnt = useRef(null);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
+
   const [daneZamowienia, setDaneZamowienia] = useState({
     nr: "20",
     rok: "2024",
@@ -163,7 +165,7 @@ function ModalInsert({
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
     useState(false);
   const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
-
+const [openModalStany, setOpenModalStany] = useState(false);
   async function fechListy() {
     const res2 = await axios.get(ip + "lista-uszlachetnien");
     setListaUszlachetnien([...res2.data]);
@@ -197,6 +199,8 @@ function ModalInsert({
         sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
         check_data_wejscia={check_data_wejscia}
         elementy={elementy}
+        openModalStany={openModalStany}
+        setOpenModalStany={setOpenModalStany}
       />
 
       <Dane
@@ -260,6 +264,9 @@ function ModalInsert({
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
           
           </div> */}
+                {openModalStany && (
+        <Stany openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} />
+      )}
     </div>
   );
   //----------------------------------

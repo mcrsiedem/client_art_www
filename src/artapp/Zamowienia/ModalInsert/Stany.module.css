@@ -1,0 +1,167 @@
+
+
+.body{
+
+   position: fixed;
+   top: 0px;
+   bottom: 0px;
+   left: 0px;
+   right: 0px;
+    padding-top: 50px;
+
+    background-color: rgb(143, 143, 143);
+    /* border: 1px solid red; */
+
+    display: grid;
+    min-height: calc(100vh - 5px);
+    grid-template-rows:  1fr 60px;
+    z-index: 5;
+
+}
+.szczegoly{
+   background-color: gray;
+  
+}
+
+.footer{
+    background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
+    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+    /* background-color: transparent; */
+    /* position: absolute; */
+    bottom: 0px;
+    height: 60px;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+ }
+
+
+ .myButton {
+	/* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
+
+	/* background-color:#f9f9f9; */
+   background-color:transparent;
+	border-radius:10px;
+	border: 1px solid #c4c4c4;
+	display:inline-block;
+	cursor:pointer;
+	color:#575656;
+   color:#ffffff;
+	
+	font-size:12px;
+	
+	padding:8px 50px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+   background-image: linear-gradient(#383838 0%, #444343 80%);
+	background-color:#e9e9e9;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.mod{
+   position: fixed;
+   top: 200px;
+   bottom: 200px;
+   left: 200px;
+   right: 200px;
+
+   /* left: calc(50vw - 150px); */
+
+   background-color: rgb(230, 230, 230);
+   border: 1px solid black;
+   border-radius: 10px;
+   display: flex;
+   z-index: 2;
+ }
+
+table{
+   color: #252422;
+   width: 100%;
+   background: #f4f3ef;
+
+}
+th{
+   font-size: 1rem;
+   position: sticky;
+   top:0;
+   background: #1d1d1d;
+   height: 2rem;
+   padding-left: 20px;
+   z-index: 2;
+   background: #b1b0ad;
+  
+}
+td{
+ font-size: 0.9rem;
+ height: 2rem; 
+ padding-left: 20px;
+ border-bottom: 1px solid #dbdad6;
+}
+
+tr:nth-of-type(2n){
+/* background: #dbdad6; */
+background: #ebe9e5;
+}
+
+.tableContainer{
+  height: calc(100vh - 110px);
+   /* max-height: 300px; */
+   overflow-y: scroll;
+
+
+
+}
+
+tr{
+   
+   outline: 1px solid #e7e6e3;
+}
+tr:hover{
+   /* outline: 1px solid gray; */
+   outline: 1px solid #a5a4a2;
+}
+
+.alert{
+   background:red;
+}
+
+.alert2{
+   background: green;
+}
+
+.bgdanger {
+   background-color: #e74a3b;
+   background-image: linear-gradient(180deg,#e74a3b 10%,#be2617 100%);
+   background-size: cover;
+}
+
+
+
+.col_id {
+   width: 50px;
+ }
+.col_nr {
+   width: 40px;
+ }
+
+ .col_rok {
+   width: 40px;
+ }
+
+ .col_firma {
+   width: 100px;
+ }
+ .col_utworzono {
+   width: 150px;
+ }

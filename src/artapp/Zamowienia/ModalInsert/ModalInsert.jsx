@@ -219,6 +219,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setDaneZamowienia={setDaneZamowienia}
       />
 
+<div className={style.main}> 
       <Produkty
         produkty={produkty}
         handleChangeCardProdukty={handleChangeCardProdukty}
@@ -260,6 +261,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
       />
 
       <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
+</div>
+
       {showElementyProcesyInsert && (
         <ElementyProcesInsert
           showElementyProcesyInsert={showElementyProcesyInsert}

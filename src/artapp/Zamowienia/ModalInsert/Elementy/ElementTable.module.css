@@ -2,6 +2,7 @@
   display: flex;
   align-items: start;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .element {
@@ -28,10 +29,7 @@
 }
 
 .main {
-  overflow-y: scroll;
-  position: relative;
-  height: 15vh;
-  /*  */
+  overflow: auto;
 }
 
 
@@ -46,7 +44,7 @@ div::-webkit-scrollbar-track {
 }
 
 div::-webkit-scrollbar-thumb {
-  background-color: rgb(191, 209, 194);
+  background-color: rgb(95, 186, 21)
   /* outline: 1px solid slategrey; */
 }
 

@@ -4,7 +4,7 @@ import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Zamowienia/Modal/Modal";
-import ModalInsert from "./ModalInsert/ModalInsert";
+import ModalInsert from "./ModalInsertRGB/ModalInsert";
 import style from "../Zamowienia/Zamowienia.module.css";
 
 function Zamowienia({ user, setUser }) {

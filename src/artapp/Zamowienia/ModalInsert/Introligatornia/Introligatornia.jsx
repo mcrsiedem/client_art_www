@@ -36,6 +36,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
         <th className={style.col2}>Prod.</th>
         <th className={style.col3}>#</th>
         <th className={style.col4}>Oprawa</th>
+        <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>
 
@@ -61,6 +62,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
             <td>{row.produkt_id}</td>
             <td>{row.id}</td>
             <RodzajOprawy row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
+            <td>{row.wersja}</td>
             <td>{row.naklad}</td>
             <td>{row.bok_oprawy}</td>
           
@@ -86,7 +88,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                 <td>
                 {row.typ} 
                 </td>
-                <td></td>
+                <td>{row.wersja}</td>
                 <td>
                   
                 {row.naklad}

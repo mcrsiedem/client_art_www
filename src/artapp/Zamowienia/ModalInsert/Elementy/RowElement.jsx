@@ -29,9 +29,11 @@ export default function RowElement({
     const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
       useState(listaGramatur);
   
-      const handleRemoveItem = (index) => {
+      const handleRemoveItem = (index,id) => {
+        // id = id elementu
         if (elementy.length !== 1) {
           setElementy(elementy.filter((x) => x.index !== index));
+          setFragmenty(fragmenty.filter((x) => x.element_id !== id));
         }
       
         setElementy((prev) =>
@@ -203,7 +205,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
                         <img
            className={style.expand}
             src={iconTrash}
-            onClick={() => {handleRemoveItem(row.index)}}
+            onClick={() => {handleRemoveItem(row.index, row.id)}}
             alt="Procesy"
           />
         </div>

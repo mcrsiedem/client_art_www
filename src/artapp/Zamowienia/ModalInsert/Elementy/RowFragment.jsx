@@ -26,7 +26,7 @@ export default function RowFragment({
         elementy={elementy}
         setFragmenty={setFragmenty}
       />
-      <td></td>
+      <td>{row.id}</td>
 
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />

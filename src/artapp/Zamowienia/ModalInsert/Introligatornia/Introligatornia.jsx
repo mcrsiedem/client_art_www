@@ -32,7 +32,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
   <table className={style.table}>
     <thead>
       <tr>
-        <th className={style.col1}>Zam.</th>
+        {/* <th className={style.col1}>Zam.</th> */}
         <th className={style.col2}>Prod.</th>
         <th className={style.col3}>#</th>
         <th className={style.col4}>Oprawa</th>
@@ -58,7 +58,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
           <tr
             key={row.id}
           >
-            <td>{row.zamowienie_id}</td>
+            {/* <td>{row.zamowienie_id}</td> */}
             <td>{row.produkt_id}</td>
             <td>{row.id}</td>
             <RodzajOprawy row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>

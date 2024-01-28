@@ -32,6 +32,7 @@ export default function RowFragment({
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         handleRemoveItem={handleRemoveItem}
         fragmenty={fragmenty}
+        elementy={elementy}
         setFragmenty={setFragmenty}
       />
       {/* function Usun({ row, fragmenty,setFragmenty,handleChangeCardElementy,handleRemoveItem }) { */}
@@ -135,14 +136,14 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
 }
 
 
-function Usun({ row, fragmenty,setFragmenty,handleRemoveItem }) {
+function Usun({ row, fragmenty,elementy,setFragmenty,handleRemoveItem }) {
   return (
     <td className={style.col_button}>
       <div >
                       <img
          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.index,fragmenty,setFragmenty)}}
+          onClick={() => {handleRemoveItem(row.index,row.id,fragmenty,elementy,setFragmenty)}}
           alt="Procesy"
         />
       </div>
@@ -151,10 +152,10 @@ function Usun({ row, fragmenty,setFragmenty,handleRemoveItem }) {
   );
 }
 
-const handleRemoveItem = (index,fragmenty,setFragmenty) => {
+const handleRemoveItem = (index,id,fragmenty,elementy,setFragmenty) => {
   // id = id elementu
-  if (fragmenty.length !== 1) {
-    setFragmenty(fragmenty.filter((x) => x.index !== index));
+  if (fragmenty.length > elementy.length) {
+    setFragmenty(fragmenty.filter((x) => x.id !== id));
     // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
   }
 

@@ -11,6 +11,7 @@
    grid-template-rows: 1fr 60px;
    z-index: 5;
 
+
 }
 .container{
     /* display: flex; 
@@ -18,14 +19,14 @@
    align-items: center;
    justify-content: start; 
    gap: 10px; */
+      
 }
 
 .tableContainer {
    /* height: calc(100vh - 110px); */
    /* max-height: 300px; */
    overflow-y: scroll;
-
-
+   margin-bottom: 30px;
 
 }
 

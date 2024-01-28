@@ -2,6 +2,7 @@ import style from "./ElementTable.module.css";
 import { useState } from "react";
 import { _typ_elementu } from "../api";
 import iconCopy from "../../../../svg/copy.svg";
+import iconTrash from "../../../../svg/trash2.svg";
 export default function RowFragment({
   row,
   handleChangeCardElementy,
@@ -26,7 +27,14 @@ export default function RowFragment({
         elementy={elementy}
         setFragmenty={setFragmenty}
       />
-      <td>{row.id}</td>
+           <Usun
+        row={row}
+        handleChangeCardFragmenty={handleChangeCardFragmenty}
+        handleRemoveItem={handleRemoveItem}
+        fragmenty={fragmenty}
+        setFragmenty={setFragmenty}
+      />
+      {/* function Usun({ row, fragmenty,setFragmenty,handleChangeCardElementy,handleRemoveItem }) { */}
 
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
@@ -125,3 +133,43 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
   newFragmenty.sort((a, b) => a.index - b.index);
   setFragmenty(newFragmenty);
 }
+
+
+function Usun({ row, fragmenty,setFragmenty,handleRemoveItem }) {
+  return (
+    <td className={style.col_button}>
+      <div >
+                      <img
+         className={style.expand}
+          src={iconTrash}
+          onClick={() => {handleRemoveItem(row.index,fragmenty,setFragmenty)}}
+          alt="Procesy"
+        />
+      </div>
+
+    </td>
+  );
+}
+
+const handleRemoveItem = (index,fragmenty,setFragmenty) => {
+  // id = id elementu
+  if (fragmenty.length !== 1) {
+    setFragmenty(fragmenty.filter((x) => x.index !== index));
+    // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+  }
+
+  setFragmenty((prev) =>
+    prev.map((t, a) => {
+      if (t.index > index) {
+        return {
+          ...t,
+          index: t.index--,
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+};

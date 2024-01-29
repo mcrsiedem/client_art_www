@@ -5,6 +5,7 @@ import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
+import iconUstawienia from "../../../../svg/settings.svg";
 
 export default function IntroligatorniaTable({
   oprawa,
@@ -12,7 +13,8 @@ export default function IntroligatorniaTable({
   fragmenty,
   setFragmenty,
   handleChangeCardOprawa,
-  handleChangeCardFragmenty
+  handleChangeCardFragmenty,
+  setShowOprawaElementyStage
 }) {
 
   const [expand,setExpand] =useState(true);
@@ -21,7 +23,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
          <Header  />
-      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty}/>
+      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
 </div>
      
 
@@ -29,12 +31,21 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty}){
+function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
   return (  <div className={style.main}>
   <table className={style.table}>
     <thead>
       <tr>
-      <th className={style.col7}></th>
+      <th className={style.col7}>
+      <img
+            className={style.expand}
+            src={iconUstawienia}
+            onClick={() => {
+              setShowOprawaElementyStage(true);
+            }}
+            alt="Procesy"
+          />
+      </th>
         {/* <th className={style.col1}>Zam.</th> */}
         {/* <th className={style.col2}>Prod.</th> */}
         <th className={style.col3}>#</th>
@@ -46,7 +57,9 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
         <th className={style.col7}></th>
-        <th className={style.col7}></th>
+        <th className={style.col7}>
+
+        </th>
         
       
 

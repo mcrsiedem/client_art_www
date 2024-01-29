@@ -1,5 +1,5 @@
 import style from "./ModalInsert.module.css";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext,useRef } from "react";
 import { useCookies } from "react-cookie";
 import Header from "./Header/Header";
 import Dane from "./Dane/Dane";
@@ -31,6 +31,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
+import OprawaElementyStage from "./Elementy/OprawaElementyStage/OprawaElementyStage";
 
 function ModalInsert({
   openModalInsert,
@@ -175,6 +176,10 @@ function ModalInsert({
 
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
     useState(false);
+  
+    const [showOprawaElementyStage, setShowOprawaElementyStage] =
+    useState(false);
+
   const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
   async function fechListy() {
@@ -261,6 +266,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setFragmenty={setFragmenty}
         handleChangeCardOprawa={handleChangeCardOprawa}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
+        setShowOprawaElementyStage={setShowOprawaElementyStage}
       />
 
       <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
@@ -270,6 +276,15 @@ const [openModalStany, setOpenModalStany] = useState(false);
         <ElementyProcesInsert
           showElementyProcesyInsert={showElementyProcesyInsert}
           setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+          procesyElementow={procesyElementow}
+          listaDostepnychProcesow={listaDostepnychProcesow}
+        />
+      )}
+
+{showOprawaElementyStage && (
+        <OprawaElementyStage
+        showOprawaElementyStage={showOprawaElementyStage}
+        setShowOprawaElementyStage={setShowOprawaElementyStage}
           procesyElementow={procesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
         />

@@ -79,7 +79,7 @@ function StanProdukty({produkty}){
                 <td>{row.fragmenty_id} </td>
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
-                <td>{row.wersja}</td>
+                <td>{row.nazwa}</td>
               </tr>
             );
           })}
@@ -127,7 +127,7 @@ function StanElementy({elementy}){
                 <td>{row.fragmenty_id} </td>
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
-                <td>{row.wersja}</td>
+                <td>{row.nazwa}</td>
               </tr>
             );
           })}

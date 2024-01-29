@@ -146,7 +146,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
 }
 
 function Header() {
-  return <div className={style.header}></div>;
+  return <div className={style.header}> Oprawa</div>;
 }
 
 function DataSpedycji({row,handleChangeCardOprawa}){

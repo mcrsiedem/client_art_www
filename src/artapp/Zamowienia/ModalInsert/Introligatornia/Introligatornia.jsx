@@ -252,11 +252,11 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     zamowienie_id: card.zamowienie_id,
     produkt_id: card.produkt_id,
     oprawa: card.oprawa,
-    bok_oprawy: "",
+    bok_oprawy: card.bok_oprawy,
 
     naklad: 0,
     index: Math.max(...newOprawa.map((f) => f.index)) + 1,
-    uwagi: "",
+    uwagi: card.uwagi,
     data_spedycji: card.data_spedycji,
   
   });

@@ -19,6 +19,7 @@ export default function RowFragment({
     useState(listaGramatur);
   return (
     <tr key={row.id}>
+            <td></td>
       <Dodaj
         row={row}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -35,13 +36,14 @@ export default function RowFragment({
         elementy={elementy}
         setFragmenty={setFragmenty}
       />
+   
       {/* function Usun({ row, fragmenty,setFragmenty,handleChangeCardElementy,handleRemoveItem }) { */}
 
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
 
-      <td></td>
+      
       <td></td>
       <td></td>
       <td></td>

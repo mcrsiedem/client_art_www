@@ -250,6 +250,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
         listaDostepnychProcesow={listaDostepnychProcesow}
         showElementyProcesyInsert={showElementyProcesyInsert}
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+        handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
+        handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
       />
 
       <Introligatornia
@@ -490,6 +492,50 @@ const [openModalStany, setOpenModalStany] = useState(false);
   //   );
   // }
 
+  function handleChangeCardFragmenty_i_Elementy(card) {
+    // zmienia typ fragmentów gdy typ elementu jest zmieniany
+    setElementy(
+      elementy.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })
+    );
+
+    setFragmenty((prev) =>
+
+    prev.map((t, a) => {
+      // console.log("oprawa id" +prev)
+      if (t.element_id === card.id) {
+        return {
+          ...t,
+          typ: 3,
+          naklad: 222
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+  }
+
+      //   setFragmenty((prev) =>
+
+    //   prev.map((t, a) => {
+
+    //       return {
+    //         ...t,
+    //         oprawa_id:oprawa_id,
+    //       };
+        
+        
+    //   })
+    // );
+
   function handleChangeCardFragmenty(card) {
     setFragmenty(
       fragmenty.map((t) => {
@@ -500,7 +546,37 @@ const [openModalStany, setOpenModalStany] = useState(false);
         }
       })
     );
+    
   }
+
+  
+  function handleChangeCardFragmentyWhenTypElementIsChange(card) {
+    // zmienia typ fragmentów gdy typ elementu jest zmieniany
+    setFragmenty(
+      fragmenty.map((t) => {
+        if (t.element_id === card.id) {
+          return {...t, typ: card.typ};
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+
+  function handleChangeCardFragmentyWhenTypElementIsChange2(card) {
+    // zmienia typ fragmentów gdy typ elementu jest zmieniany
+    setFragmenty(
+      fragmenty.map((t) => {
+        if (t.element_id === card.id) {
+          return {...t, typ: card.typ};
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+
+
   function handleChangeCardElementy(card) {
     setElementy(
       elementy.map((t) => {

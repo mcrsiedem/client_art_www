@@ -22,7 +22,9 @@ export default function RowElement({
     setShowElementyProcesyInsert,
     fragmenty, setFragmenty,
     expand,setExpand,
-    elementy, setElementy
+    elementy, setElementy,
+    handleChangeCardFragmentyWhenTypElementIsChange,
+    handleChangeCardFragmenty_i_Elementy
   }) {
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
@@ -131,7 +133,7 @@ export default function RowElement({
         </div>
         <td>{row.id}</td>
         <td>{row.index}</td>
-        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
@@ -222,18 +224,39 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     );
   }
   
-  function Typ({ row, handleChangeCardElementy }) {
+  function Typ({ row, handleChangeCardElementy,handleChangeCardFragmentyWhenTypElementIsChange,handleChangeCardFragmenty_i_Elementy }) {
+
+    //row - row element
     return (
       <td>
         <select
           className={style.select}
           defaultValue={row.typ}
           onChange={(e) => {
-            handleChangeCardElementy({
+    
+
+        //     handleChangeCardElementy({
+        //       ...row,
+        //       typ: e.target.value,
+        //     }
+        //     );
+        // handleChangeCardFragmentyWhenTypElementIsChange({
+        //       ...row,
+        //       typ: e.target.value,
+        //     });
+
+
+            handleChangeCardFragmenty_i_Elementy({
               ...row,
               typ: e.target.value,
-            });
+            }
+            );
+
           }}
+
+          
+
+
         >
           {}
           {_typ_elementu.map((option) => (

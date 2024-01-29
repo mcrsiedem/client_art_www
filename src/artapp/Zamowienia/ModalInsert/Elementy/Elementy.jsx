@@ -28,7 +28,9 @@ export default function Elementy({
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
-  setShowElementyProcesyInsert
+  setShowElementyProcesyInsert,
+  handleChangeCardFragmentyWhenTypElementIsChange,
+  handleChangeCardFragmenty_i_Elementy
 }) {
   return (
     <div className={style.container}>
@@ -58,6 +60,8 @@ export default function Elementy({
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
         setElementy={setElementy}
         setFragmenty={setFragmenty}
+        handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
+        handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
 
       />
     </div>
@@ -93,7 +97,9 @@ function ElementyTable({
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
   setFragmenty,
-  setElementy
+  setElementy,
+  handleChangeCardFragmentyWhenTypElementIsChange,
+  handleChangeCardFragmenty_i_Elementy
 }) {
 
   const [expand,setExpand] =useState(false);
@@ -152,6 +158,8 @@ function ElementyTable({
                 elementy={elementy}
                 setFragmenty={setFragmenty}
                 setElementy={setElementy}
+                handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
+                handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
               />
 
           
@@ -180,7 +188,8 @@ function ElementyTable({
               fragmenty={fragmenty}
               setFragmenty={setFragmenty}
               elementy={elementy}
-      
+              handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
+              handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
               
             />
             </>

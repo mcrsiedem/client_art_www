@@ -92,7 +92,7 @@ function Naklad({ row, handleChangeCardFragmenty }) {
     </td>
   );
 }
-function Wersja({ row, handleChangeCardFragmenty }) {
+function  Wersja({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input

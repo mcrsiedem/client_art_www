@@ -84,7 +84,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
             .filter((el) => el.oprawa_id === row.id)
             .map((row) => {
               return <tr key={row.id}>
-                <td></td><td></td><td></td>
+              <td></td><td></td>
                 <td>
                 {row.typ} 
                 </td>

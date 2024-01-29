@@ -53,60 +53,85 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
     <tbody>
       {oprawa.map((row) => {
         return (
-
-
-          
           <>
-          <tr
-            key={row.id}
-          >
-            {/* <td>{row.zamowienie_id}</td> */}
-            <div className={style.expand}>
-            <img
-    className={style.icon}
-    src={logoExpand}
-    onClick={() => {setExpand(!expand)}}
-    alt="Procesy"
-  />
-  </div>
-            <td>{row.produkt_id}</td>
-            <td>{row.id}</td>
-            <RodzajOprawy row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
-            <td>{row.wersja}</td>
-            <td>{row.naklad}</td>
-            <td>{row.bok_oprawy}</td>
-          
-            <DataSpedycji row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
-
-            {/* <td>{row.data_spedycji}</td> */}
-          
-            <td>{row.uwagi}</td>
-            <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row}/>
+            <tr key={row.id}>
+              {/* <td>{row.zamowienie_id}</td> */}
+              <div className={style.expand}>
+                <img
+                  className={style.icon}
+                  src={logoExpand}
+                  onClick={() => {
+                    setExpand(!expand);
+                  }}
+                  alt="Procesy"
+                />
+              </div>
+              <td>{row.produkt_id}</td>
+              <td>{row.id}</td>
+              <RodzajOprawy
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
 
 
-          </tr>
-            {expand ? fragmenty
-            .filter((el) => el.oprawa_id === row.id)
-            .map((row) => {
-              return <tr key={row.id}>
-                <td></td>
-              <td></td>
-              
-              <td></td>
-                <Typ row={row}  />
-                
-               
-                <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-              
-             
-              
-                <  NakladOprawaFregment row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-                <td> </td>
-                <td>
-                </td>
-                <td></td><td></td><td></td><td></td>
-          </tr>;
-            }):<></>}
+<WersjaOprawa
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
+                  <NakladOprawa
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
+              <BokOprawy
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
+
+              <DataSpedycji
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
+
+              {/* <td>{row.data_spedycji}</td> */}
+
+              <UwagiOprawa
+                row={row}
+                handleChangeCardOprawa={handleChangeCardOprawa}
+              />
+              <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
+            </tr>
+            {expand ? (
+              fragmenty
+                .filter((el) => el.oprawa_id === row.id)
+                .map((row) => {
+                  return (
+                    <tr key={row.id}>
+                      <td></td>
+                      <td></td>
+
+                      <td></td>
+                      <Typ row={row} />
+
+                      <WersjaOprawaFragment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      />
+
+                      <NakladOprawaFregment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      />
+                      <td> </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                 
+                    </tr>
+                  );
+                })
+            ) : (
+              <></>
+            )}
           </>
         );
       })}
@@ -244,10 +269,10 @@ function Typ({ row }) {
 }
 
 
-function  Wersja({ row, handleChangeCardFragmenty }) {
+function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
   return (
     <td>
-      <input className={style.test}
+      <input 
         value={row.wersja}
         onChange={(e) =>
           handleChangeCardFragmenty({
@@ -269,6 +294,70 @@ function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
           handleChangeCardFragmenty({
             ...row,
             naklad: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
+function  WersjaOprawa({ row, handleChangeCardOprawa }) {
+  return (
+    <td>
+      <input 
+        value={row.wersja}
+        onChange={(e) =>
+          handleChangeCardOprawa({
+            ...row,
+            wersja: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
+function  BokOprawy({ row, handleChangeCardOprawa }) {
+  return (
+    <td>
+      <input 
+        value={row.bok_oprawy}
+        onChange={(e) =>
+          handleChangeCardOprawa({
+            ...row,
+            bok_oprawy: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
+function  UwagiOprawa({ row, handleChangeCardOprawa }) {
+  return (
+    <td>
+      <input 
+        value={row.uwagi}
+        onChange={(e) =>
+          handleChangeCardOprawa({
+            ...row,
+            uwagi: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
+function  NakladOprawa({ row, handleChangeCardOprawa }) {
+  return (
+    <td>
+      <input 
+        defaultValue={row.naklad}
+        onChange={(e) =>
+          handleChangeCardOprawa({
+            ...row,
+            maklad: e.target.value,
           })
         }
       ></input>

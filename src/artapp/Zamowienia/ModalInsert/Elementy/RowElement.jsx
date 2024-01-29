@@ -135,7 +135,9 @@ export default function RowElement({
         <td>{row.index}</td>
         <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
+      
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <td></td>
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />

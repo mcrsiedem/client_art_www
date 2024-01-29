@@ -44,6 +44,7 @@ export default function RowFragment({
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
 
       
+      <td>{row.oprawa_id}</td>
       <td></td>
       <td></td>
       <td></td>

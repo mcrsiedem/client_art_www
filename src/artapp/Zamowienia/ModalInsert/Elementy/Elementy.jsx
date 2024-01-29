@@ -114,6 +114,8 @@ function ElementyTable({
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_wersja}>Wersja</th>
+            <th className={style.col_wersja}>Oprawa</th>
+
             <th className={style.col_strony}>Strony</th>
             <th className={style.col_format} colspan="2">
               {" "}

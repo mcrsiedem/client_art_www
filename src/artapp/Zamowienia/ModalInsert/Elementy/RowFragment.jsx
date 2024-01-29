@@ -60,9 +60,10 @@ export default function RowFragment({
 function Typ({ row }) {
   return (
     <td>
+      {/* {row.typ} */}
       <select
         className={style.select}
-        defaultValue={row.typ}
+        value={row.typ}
         disabled
       >
         {}
@@ -81,7 +82,7 @@ function Naklad({ row, handleChangeCardFragmenty }) {
     <td>
       <input
         className={style.element_naklad}
-        defaultValue={row.naklad}
+        value={row.naklad}
         onChange={(e) =>
           handleChangeCardFragmenty({
             ...row,
@@ -96,7 +97,7 @@ function  Wersja({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input
-        defaultValue={row.nazwa}
+        value={row.wersja}
         onChange={(e) =>
           handleChangeCardFragmenty({
             ...row,

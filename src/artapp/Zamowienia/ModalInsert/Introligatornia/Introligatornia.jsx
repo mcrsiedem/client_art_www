@@ -11,6 +11,7 @@ export default function IntroligatorniaTable({
   fragmenty,
   setFragmenty,
   handleChangeCardOprawa,
+  handleChangeCardFragmenty
 }) {
 
   const [expand,setExpand] =useState(true);
@@ -19,7 +20,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
          <Header  />
-      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand}/>
+      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty}/>
 </div>
      
 
@@ -27,7 +28,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand}){
+function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty}){
   return (  <div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -93,7 +94,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                 <td>
                 <Typ row={row}  />
                 </td>
-                <td>{row.wersja}</td>
+                <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
                 <td>
                   
                 {row.naklad}
@@ -132,7 +133,7 @@ function RodzajOprawy({ row,handleChangeCardOprawa }) {
 
       <select
         className={style.firma}
-        defaultValue={row.id}
+        value={row.id}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
         }}
@@ -223,7 +224,7 @@ function Typ({ row }) {
     <td>
       <select
         className={style.select}
-        defaultValue={row.typ}
+        value={row.typ}
         disabled
       >
         {}
@@ -233,6 +234,23 @@ function Typ({ row }) {
           </option>
         ))}
       </select>
+    </td>
+  );
+}
+
+
+function  Wersja({ row, handleChangeCardFragmenty }) {
+  return (
+    <td>
+      <input
+        value={row.wersja}
+        onChange={(e) =>
+          handleChangeCardFragmenty({
+            ...row,
+            wersja: e.target.value,
+          })
+        }
+      ></input>
     </td>
   );
 }

@@ -260,6 +260,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
         handleChangeCardOprawa={handleChangeCardOprawa}
+        handleChangeCardFragmenty={handleChangeCardFragmenty}
       />
 
       <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
@@ -504,15 +505,15 @@ const [openModalStany, setOpenModalStany] = useState(false);
       })
     );
 
-    setFragmenty((prev) =>
-
-    prev.map((t, a) => {
+    setFragmenty(
+      fragmenty.map((t, a) => {
       // console.log("oprawa id" +prev)
       if (t.element_id === card.id) {
         return {
           ...t,
-          typ: 3,
-          naklad: 222
+          typ: card.typ,
+          naklad: 222,
+          wersja:"OK"
         };
       } else {
         return t;

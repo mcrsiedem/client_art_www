@@ -511,9 +511,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
       if (t.element_id === card.id) {
         return {
           ...t,
-          typ: card.typ,
-          naklad: 222,
-          wersja:"OK"
+          typ: card.typ
+
         };
       } else {
         return t;

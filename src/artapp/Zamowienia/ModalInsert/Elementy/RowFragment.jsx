@@ -74,6 +74,23 @@ function Typ({ row }) {
         ))}
       </select>
     </td>
+
+    // <td>
+
+    //     {_typ_elementu
+    //     .filter((t) => t.id === row.id)
+    //     .map((option) => (
+    //             <option key={option.id} value={option.id}>
+    //               {option.nazwa}
+    //         </option>))
+            
+    //       }
+
+
+     
+    // </td>
+
+
   );
 }
 

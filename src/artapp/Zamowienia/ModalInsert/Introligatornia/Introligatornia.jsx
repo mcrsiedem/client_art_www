@@ -90,14 +90,19 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
             .map((row) => {
               return <tr key={row.id}>
                 <td></td>
-              <td></td><td></td>
-                <td>
+              <td></td>
+              
+              <td></td>
                 <Typ row={row}  />
-                </td>
+                
+               
                 <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
+              
+             
+              
+                <  NakladOprawaFregment row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
+                <td> </td>
                 <td>
-                  
-                {row.naklad}
                 </td>
                 <td></td><td></td><td></td><td></td>
           </tr>;
@@ -242,12 +247,28 @@ function Typ({ row }) {
 function  Wersja({ row, handleChangeCardFragmenty }) {
   return (
     <td>
-      <input
+      <input className={style.test}
         value={row.wersja}
         onChange={(e) =>
           handleChangeCardFragmenty({
             ...row,
             wersja: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
+function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
+  return (
+    <td>
+      <input
+        value={row.naklad}
+        onChange={(e) =>
+          handleChangeCardFragmenty({
+            ...row,
+            naklad: e.target.value,
           })
         }
       ></input>

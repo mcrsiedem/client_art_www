@@ -37,14 +37,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
     <thead>
       <tr>
       <th className={style.col7}>
-      <img
-            className={style.expand}
-            src={iconUstawienia}
-            onClick={() => {
-              setShowOprawaElementyStage(true);
-            }}
-            alt="Procesy"
-          />
+
       </th>
         {/* <th className={style.col1}>Zam.</th> */}
         {/* <th className={style.col2}>Prod.</th> */}
@@ -56,10 +49,9 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
 
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
+        <th className={style.col7}>Elementy</th>
         <th className={style.col7}></th>
-        <th className={style.col7}>
-
-        </th>
+        <th className={style.col7}></th>
         
       
 
@@ -113,6 +105,8 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
+
+                <PokazElementy setShowOprawaElementyStage={setShowOprawaElementyStage}/>    
               <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
             </tr>
@@ -138,6 +132,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                         handleChangeCardFragmenty={handleChangeCardFragmenty}
                       />
                       <td> </td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -223,6 +218,24 @@ function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }
     </td>
   );
 }
+function PokazElementy({ setShowOprawaElementyStage  }) {
+  return (
+    <td className={style.col_button}>
+      <div >
+      <img
+            className={style.pokaz_elementy_oprawy}
+            src={iconUstawienia}
+            onClick={() => {
+              setShowOprawaElementyStage(true);
+            }}
+            alt="Procesy"
+          />
+      </div>
+
+    </td>
+  );
+}
+
 const handleRemoveItem = (index,id,oprawa,setOprawa) => {
   // id = id elementu
   if (oprawa.length !== 1) {

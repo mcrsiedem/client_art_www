@@ -1,7 +1,7 @@
 
 import style from "./Introligatornia.module.css";
 import logoExpand from "../../../../svg/expand.svg";
-import { _rodzaj_oprawy } from "../api";
+import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
 import iconCopy from "../../../../svg/copy.svg";
 
@@ -86,14 +86,14 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
               return <tr key={row.id}>
               <td></td><td></td>
                 <td>
-                {row.typ} 
+                <Typ row={row}  />
                 </td>
                 <td>{row.wersja}</td>
                 <td>
                   
                 {row.naklad}
                 </td>
-                <td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td>
           </tr>;
             }):<></>}
           </>
@@ -211,4 +211,23 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
 
   // newFragmenty.sort((a, b) => a.index - b.index);
   // setFragmenty(newFragmenty);
+}
+
+function Typ({ row }) {
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.typ}
+        disabled
+      >
+        {}
+        {_typ_elementu.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
 }

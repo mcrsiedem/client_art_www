@@ -55,8 +55,23 @@ export default function RowFragment({
     </tr>
   );
 }
-function Typ({ row, handleChangeCardFragmenty }) {
-  return <td className={style.element_typ}>{row.typ}</td>;
+function Typ({ row }) {
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.typ}
+        disabled
+      >
+        {}
+        {_typ_elementu.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
 }
 
 function Naklad({ row, handleChangeCardFragmenty }) {

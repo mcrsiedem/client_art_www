@@ -42,6 +42,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
         {/* <th className={style.col1}>Zam.</th> */}
         {/* <th className={style.col2}>Prod.</th> */}
         <th className={style.col3}>#</th>
+        <th className={style.col7}></th>
         <th className={style.col4}>Oprawa</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
@@ -49,7 +50,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
 
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
-        <th className={style.col7}>Elementy</th>
+       
         <th className={style.col7}></th>
         <th className={style.col7}></th>
         
@@ -75,6 +76,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
               </div>
               {/* <td>{row.produkt_id}</td> */}
               <td>{row.id}</td>
+              <PokazElementy setShowOprawaElementyStage={setShowOprawaElementyStage}/>    
               <RodzajOprawy
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
@@ -106,7 +108,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
 
-                <PokazElementy setShowOprawaElementyStage={setShowOprawaElementyStage}/>    
+                
               <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
             </tr>
@@ -118,7 +120,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                     <tr key={row.id}>
       
                       <td></td>
-
+<td></td>
                       <td></td>
                       <Typ row={row} />
 
@@ -136,7 +138,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
+                      
                  
                     </tr>
                   );

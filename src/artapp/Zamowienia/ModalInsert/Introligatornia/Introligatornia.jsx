@@ -32,6 +32,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
   <table className={style.table}>
     <thead>
       <tr>
+      <th className={style.col7}></th>
         {/* <th className={style.col1}>Zam.</th> */}
         <th className={style.col2}>Prod.</th>
         <th className={style.col3}>#</th>
@@ -43,7 +44,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
         <th className={style.col7}></th>
-        <th className={style.col7}>Fragmenty</th>
+        
       
 
       </tr>
@@ -59,6 +60,14 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
             key={row.id}
           >
             {/* <td>{row.zamowienie_id}</td> */}
+            <div className={style.expand}>
+            <img
+    className={style.icon}
+    src={logoExpand}
+    onClick={() => {setExpand(!expand)}}
+    alt="Procesy"
+  />
+  </div>
             <td>{row.produkt_id}</td>
             <td>{row.id}</td>
             <RodzajOprawy row={row} handleChangeCardOprawa={handleChangeCardOprawa}/>
@@ -72,18 +81,14 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
           
             <td>{row.uwagi}</td>
             <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row}/>
-            <img
-    className={style.icon}
-    src={logoExpand}
-    onClick={() => {setExpand(!expand)}}
-    alt="Procesy"
-  />
+
 
           </tr>
             {expand ? fragmenty
             .filter((el) => el.oprawa_id === row.id)
             .map((row) => {
               return <tr key={row.id}>
+                <td></td>
               <td></td><td></td>
                 <td>
                 <Typ row={row}  />
@@ -93,7 +98,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                   
                 {row.naklad}
                 </td>
-                <td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td>
           </tr>;
             }):<></>}
           </>

@@ -109,6 +109,8 @@ div::-webkit-scrollbar-corner {
 
 .col_button {
   width: 20px;
+  margin-left: 10px;
+  
   /* background-color: red; */
 }
 
@@ -143,6 +145,7 @@ div::-webkit-scrollbar-corner {
 .table2 .select {
   background-color: transparent;
   box-shadow: none;
+  
 }
 
 .element_typ{
@@ -181,6 +184,8 @@ font-size: 0.9rem;
 
 .expand {
   height: 60%;
+  margin-right: 10px;
+  margin-right: 10px;
 
 }
 

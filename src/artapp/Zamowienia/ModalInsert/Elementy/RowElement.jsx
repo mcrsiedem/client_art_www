@@ -120,6 +120,15 @@ export default function RowElement({
       }
     return (
       <tr key={row.id}>
+                <div className={style.col_button}>
+          <img
+            src={logoExpand}
+            onClick={() => {
+              setExpand(!expand);
+            }}
+            alt="Procesy"
+          />
+        </div>
         <td>{row.id}</td>
         <td>{row.index}</td>
         <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} />
@@ -128,7 +137,7 @@ export default function RowElement({
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
-  
+
         <PapierSelect
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -150,48 +159,35 @@ export default function RowElement({
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
-    
-  
+
         <td className={style.procesy} id="procesy">
           <img
             className={style.expand}
             src={Logo_ustawienia}
-            onClick={() => {setShowElementyProcesyInsert(true)}}
+            onClick={() => {
+              setShowElementyProcesyInsert(true);
+            }}
             alt="Procesy"
           />
           {procesyElementow
             .filter((frag) => frag.element_id === row.id)
             .map((pr) => pr.proces)}
         </td>
-  
-        <Uwagi
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        />
-        {/* <button onClick={()=>setExpand(!expand)}>Rozwiń</button> */}
-        <div  className={style.col_button}>
-      
-     <img
-          
-            src={logoExpand}
-            onClick={() => {setExpand(!expand)}}
-            alt="Procesy"
-          />
- 
-         
-          {/* {fragmenty.lenght} */}
-        </div>
+
+        <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
+
+
+
         <Usun
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleRemoveItem={handleRemoveItem}
         />
-              <Dodaj
+        <Dodaj
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         />
-    
       </tr>
     );
   }

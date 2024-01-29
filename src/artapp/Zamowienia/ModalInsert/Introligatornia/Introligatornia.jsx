@@ -4,6 +4,7 @@ import logoExpand from "../../../../svg/expand.svg";
 import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
 import iconCopy from "../../../../svg/copy.svg";
+import iconTrash from "../../../../svg/trash2.svg";
 
 export default function IntroligatorniaTable({
   oprawa,
@@ -44,6 +45,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
 
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
+        <th className={style.col7}></th>
         <th className={style.col7}></th>
         
       
@@ -98,6 +100,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
+              <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
             </tr>
             {expand ? (
@@ -122,6 +125,7 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
                         handleChangeCardFragmenty={handleChangeCardFragmenty}
                       />
                       <td> </td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -190,6 +194,44 @@ function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOpra
     </td>
   );
 }
+
+function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }) {
+  return (
+    <td className={style.col_button}>
+      <div >
+                      <img
+         className={style.expand}
+          src={iconTrash}
+          onClick={() => {handleRemoveItem(row.index, row.id,oprawa,setOprawa)}}
+          alt="Procesy"
+        />
+      </div>
+
+    </td>
+  );
+}
+const handleRemoveItem = (index,id,oprawa,setOprawa) => {
+  // id = id elementu
+  if (oprawa.length !== 1) {
+    setOprawa(oprawa.filter((x) => x.index !== index));
+
+  }
+
+  setOprawa((prev) =>
+    prev.map((t, a) => {
+      if (t.index > index) {
+        return {
+          ...t,
+          index: t.index--,
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+};
 
 function handleAddRowOprawa(card,oprawa,setOprawa) {
   const newOprawa = oprawa.slice();

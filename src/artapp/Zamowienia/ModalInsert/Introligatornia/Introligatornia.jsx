@@ -141,7 +141,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                 
               <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
-              <PodzielOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
+              <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa={oprawa} setOprawa={setOprawa} row={row} />
             </tr>
             {expand ? (
               fragmenty
@@ -254,13 +254,13 @@ function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }
 }
 
 
-function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa}) {
+function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa,setShowOprawaElementyStage}) {
   return (
     <td className={style.col_button} >
             <img
          className={style.expand}
           src={iconTable}
-          onClick={() => {handleAddRowOprawa(row,oprawa,setOprawa)}}
+          onClick={() => {setShowOprawaElementyStage(true)}}
           alt="Procesy"
         />
     </td>

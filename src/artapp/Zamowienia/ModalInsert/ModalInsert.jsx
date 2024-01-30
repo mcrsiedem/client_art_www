@@ -255,8 +255,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
         listaDostepnychProcesow={listaDostepnychProcesow}
         showElementyProcesyInsert={showElementyProcesyInsert}
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-        handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
         handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
       />
 
       <Introligatornia
@@ -267,6 +267,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         handleChangeCardOprawa={handleChangeCardOprawa}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         setShowOprawaElementyStage={setShowOprawaElementyStage}
+        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
       />
 
       <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
@@ -495,18 +496,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
   }
 
-  //   function handleChangeCardElementy(card) {
-  //     setElementy(
-  //       elementy.map((tabl)=>{
-  //         tabl.map((t) => {
-  //       if (t.id === card.id) {
-  //         return card;
-  //       } else {
-  //         return t;
-  //       }
-  //     })
-  //   );
-  // }
+
 
   function handleChangeCardFragmenty_i_Elementy(card) {
     // zmienia typ fragmentów gdy typ elementu jest zmieniany
@@ -564,32 +554,23 @@ const [openModalStany, setOpenModalStany] = useState(false);
     
   }
 
-  
-  function handleChangeCardFragmentyWhenTypElementIsChange(card) {
-    // zmienia typ fragmentów gdy typ elementu jest zmieniany
+  function handleChangeCardFragmentyOprawaId(idFragmentu, idOprawy) {
+    console.log("Fragment id: "+idFragmentu);
+    console.log("Oprawa id: "+idOprawy);
     setFragmenty(
       fragmenty.map((t) => {
-        if (t.element_id === card.id) {
-          return {...t, typ: card.typ};
+        if (t.id === idFragmentu) {
+          return {...t,
+            oprawa_id:idOprawy}
         } else {
           return t;
         }
       })
     );
+    
   }
 
-  function handleChangeCardFragmentyWhenTypElementIsChange2(card) {
-    // zmienia typ fragmentów gdy typ elementu jest zmieniany
-    setFragmenty(
-      fragmenty.map((t) => {
-        if (t.element_id === card.id) {
-          return {...t, typ: card.typ};
-        } else {
-          return t;
-        }
-      })
-    );
-  }
+
 
 
   function handleChangeCardElementy(card) {

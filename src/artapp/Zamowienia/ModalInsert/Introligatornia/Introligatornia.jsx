@@ -14,13 +14,18 @@ export default function IntroligatorniaTable({
   setFragmenty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
-  setShowOprawaElementyStage
+  setShowOprawaElementyStage,
+  handleChangeCardFragmentyOprawaId
 }) {
 
   const [expand,setExpand] =useState(true);
-   function handleDrop(e){
-    // e.preventDefault()
-    console.log(      sessionStorage.getItem("idStart"));
+   function handleDrop(id){
+    let id_drag_element = sessionStorage.getItem("id_element_drag")
+    let id_drop_oprawa = id;
+    
+    handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
+//  console.log(id_drag_element);
+//      console.log(id_drop_oprawa);
   }
 
   function handleDragOver(e){
@@ -32,8 +37,8 @@ export default function IntroligatorniaTable({
   return (
     <div className={style.container}>
       <div className={style.oprawa}>
-         <Header  />
-      <OprawaTable handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
+      <Header  />
+      <OprawaTable handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
 </div>
      
 
@@ -41,7 +46,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
+function OprawaTable({handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -75,7 +80,7 @@ function OprawaTable({handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCa
             <tr draggable
          
              key={row.id}
-             onDrop={()=>handleDrop(row.naklad)}
+             onDrop={()=>handleDrop(row.id)}
             onDragOver={handleDragOver}
              
              

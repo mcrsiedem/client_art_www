@@ -29,8 +29,8 @@ export default function Elementy({
   setProcesyElementow,
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
-  handleChangeCardFragmentyWhenTypElementIsChange,
-  handleChangeCardFragmenty_i_Elementy
+    handleChangeCardFragmenty_i_Elementy,
+    handleChangeCardFragmentyOprawaId
 }) {
   return (
     <div className={style.container}>
@@ -60,8 +60,8 @@ export default function Elementy({
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
         setElementy={setElementy}
         setFragmenty={setFragmenty}
-        handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
         handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
 
       />
     </div>
@@ -98,8 +98,8 @@ function ElementyTable({
   setShowElementyProcesyInsert,
   setFragmenty,
   setElementy,
-  handleChangeCardFragmentyWhenTypElementIsChange,
-  handleChangeCardFragmenty_i_Elementy
+  handleChangeCardFragmenty_i_Elementy,
+  handleChangeCardFragmentyOprawaId
 }) {
 
   const [expand,setExpand] =useState(false);
@@ -160,8 +160,7 @@ function ElementyTable({
                 elementy={elementy}
                 setFragmenty={setFragmenty}
                 setElementy={setElementy}
-                handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
-                handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+                 handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
               />
 
           
@@ -190,8 +189,8 @@ function ElementyTable({
               fragmenty={fragmenty}
               setFragmenty={setFragmenty}
               elementy={elementy}
-              handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange}
               handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+              handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
               
             />
             </>

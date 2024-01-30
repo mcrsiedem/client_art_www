@@ -12,15 +12,16 @@ export default function RowFragment({
   fragmenty,
   setFragmenty,
   elementy,
+  handleChangeCardFragmentyOprawaId
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
   const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
     useState(listaGramatur);
 
-    function handleDragStart(e){
+    function handleDragStart(naklad){
       //  e.preventDefault()
-      sessionStorage.setItem("idStart", "OK");
+      sessionStorage.setItem("id_element_drag", row.id);
   
     }
   return (

@@ -18,7 +18,11 @@ export default function RowFragment({
   const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
     useState(listaGramatur);
   return (
-    <tr key={row.id}>
+    <tr draggable
+     onDragStart={()=> console.log(row.id )} 
+
+    
+     key={row.id}>
             <td></td>
       <Dodaj
         row={row}

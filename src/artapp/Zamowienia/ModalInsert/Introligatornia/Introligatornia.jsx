@@ -18,12 +18,21 @@ export default function IntroligatorniaTable({
 }) {
 
   const [expand,setExpand] =useState(true);
+   function handleDrop(naklad){
+    // e.preventDefault()
+    console.log(naklad);
+  }
 
+  function handleDragOver(e){
+    e.preventDefault()
+
+  }
+  
   return (
     <div className={style.container}>
       <div className={style.oprawa}>
          <Header  />
-      <OprawaTable oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
+      <OprawaTable handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
 </div>
      
 
@@ -31,8 +40,8 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
-  return (  <div className={style.main}>
+function OprawaTable({handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
+  return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
       <tr>
@@ -62,7 +71,14 @@ function OprawaTable({oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expan
       {oprawa.map((row) => {
         return (
           <>
-            <tr key={row.id}>
+            <tr draggable
+         
+             key={row.id}
+             onDrop={()=>handleDrop(row.naklad)}
+            onDragOver={handleDragOver}
+             
+             
+             >
               {/* <td>{row.zamowienie_id}</td> */}
               <div className={style.expand}>
                 <img

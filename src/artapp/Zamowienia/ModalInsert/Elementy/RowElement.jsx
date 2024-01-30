@@ -121,7 +121,7 @@ export default function RowElement({
         setFragmenty(newFragmenty);
       }
     return (
-      <tr key={row.id}>
+      <tr  key={row.id}>
                 <div className={style.col_button}>
           <img
             src={logoExpand}
@@ -133,7 +133,7 @@ export default function RowElement({
         </div>
         <td>{row.id}</td>
         <td>{row.index}</td>
-        <Typ row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
+        <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmentyWhenTypElementIsChange={handleChangeCardFragmentyWhenTypElementIsChange} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />

@@ -54,8 +54,8 @@ export default function RowFragment({
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
 
-      
-      <td>{row.oprawa_id}</td>
+    
+      <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -173,7 +173,7 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
     produkt_id: card.produkt_id,
     typ: card.typ,
     naklad: card.naklad,
-    // oprawa_id:card.oprawa_id,
+     oprawa_id: " ",
     element_id: card.element_id,
     index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
   });

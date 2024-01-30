@@ -358,7 +358,7 @@ function Typ({ row }) {
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
-          {row.id}   {option.nazwa}
+           {option.nazwa}
           </option>
         ))}
       </select>

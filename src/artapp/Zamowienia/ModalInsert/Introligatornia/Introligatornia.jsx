@@ -7,6 +7,7 @@ import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import iconTable from "../../../../svg/settings.svg";
 import iconUstawienia from "../../../../svg/settings.svg";
+import OprawaElementyStage from "../Elementy/OprawaElementyStage/OprawaElementyStage";
 
 export default function IntroligatorniaTable({
   oprawa,
@@ -15,10 +16,10 @@ export default function IntroligatorniaTable({
   setFragmenty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
-  setShowOprawaElementyStage,
   handleChangeCardFragmentyOprawaId
 }) {
-
+  const [showOprawaElementyStage, setShowOprawaElementyStage] =
+  useState(false);
   const [expand,setExpand] =useState(true);
    function handleDrop(id){
     let id_drag_element = sessionStorage.getItem("id_element_drag")
@@ -46,6 +47,12 @@ export default function IntroligatorniaTable({
       <div className={style.oprawa}>
       <Header  />
       <OprawaTable handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
+      {showOprawaElementyStage && (
+        <OprawaElementyStage
+        showOprawaElementyStage={showOprawaElementyStage}
+        setShowOprawaElementyStage={setShowOprawaElementyStage}
+        />
+      )}
 </div>
      
 
@@ -183,6 +190,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
       })}
     </tbody>
   </table>
+
 </div>)
 
 }

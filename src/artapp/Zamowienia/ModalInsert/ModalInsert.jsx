@@ -31,7 +31,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import OprawaElementyStage from "./Elementy/OprawaElementyStage/OprawaElementyStage";
+
 
 function ModalInsert({
   openModalInsert,
@@ -177,8 +177,7 @@ function ModalInsert({
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
     useState(false);
   
-    const [showOprawaElementyStage, setShowOprawaElementyStage] =
-    useState(false);
+ 
 
   const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
@@ -266,7 +265,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setFragmenty={setFragmenty}
         handleChangeCardOprawa={handleChangeCardOprawa}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
-        setShowOprawaElementyStage={setShowOprawaElementyStage}
         handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
       />
 
@@ -282,14 +280,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         />
       )}
 
-{showOprawaElementyStage && (
-        <OprawaElementyStage
-        showOprawaElementyStage={showOprawaElementyStage}
-        setShowOprawaElementyStage={setShowOprawaElementyStage}
-          procesyElementow={procesyElementow}
-          listaDostepnychProcesow={listaDostepnychProcesow}
-        />
-      )}
+
       {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
       {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>

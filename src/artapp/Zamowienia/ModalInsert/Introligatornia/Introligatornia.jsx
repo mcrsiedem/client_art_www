@@ -18,13 +18,14 @@ export default function IntroligatorniaTable({
 }) {
 
   const [expand,setExpand] =useState(true);
-   function handleDrop(naklad){
+   function handleDrop(e){
     // e.preventDefault()
-    console.log(naklad);
+    console.log(      sessionStorage.getItem("idStart"));
   }
 
   function handleDragOver(e){
-    e.preventDefault()
+     e.preventDefault()
+
 
   }
   

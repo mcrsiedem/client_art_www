@@ -17,9 +17,15 @@ export default function RowFragment({
     useState(listaGramatur);
   const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
     useState(listaGramatur);
+
+    function handleDragStart(e){
+      //  e.preventDefault()
+      sessionStorage.setItem("idStart", "OK");
+  
+    }
   return (
     <tr draggable
-     onDragStart={()=> console.log(row.id )} 
+     onDragStart={handleDragStart} 
 
     
      key={row.id}>

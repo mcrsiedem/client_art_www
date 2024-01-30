@@ -63,7 +63,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
         {/* <th className={style.col1}>Zam.</th> */}
         {/* <th className={style.col2}>Prod.</th> */}
         <th className={style.col3}>#</th>
-        <th className={style.col7}></th>
+
         <th className={style.col4}>Oprawa</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
@@ -104,7 +104,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
               </div>
               {/* <td>{row.produkt_id}</td> */}
               <td>{row.id}</td>
-              <PokazElementy setShowOprawaElementyStage={setShowOprawaElementyStage}/>    
+          
               <RodzajOprawy
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
@@ -148,7 +148,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                     <tr draggable  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
       
                       <td></td>
-<td></td>
+
                       <td></td>
                       <Typ row={row} />
 

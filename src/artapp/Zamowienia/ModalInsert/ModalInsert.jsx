@@ -559,6 +559,21 @@ const [openModalStany, setOpenModalStany] = useState(false);
     console.log("Oprawa id: "+idOprawy);
     setFragmenty(
       fragmenty.map((t) => {
+        if (t.id == idFragmentu) {
+          return {...t,
+            oprawa_id: idOprawy}
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+
+  function handleChangeCardFragmentyOprawaId_kopia(idFragmentu, idOprawy) {
+    console.log("Fragment id: "+idFragmentu);
+    console.log("Oprawa id: "+idOprawy);
+    setFragmenty(
+      fragmenty.map((t) => {
         if (t.id === idFragmentu) {
           return {...t,
             oprawa_id:idOprawy}
@@ -567,9 +582,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         }
       })
     );
-    
   }
-
 
 
 

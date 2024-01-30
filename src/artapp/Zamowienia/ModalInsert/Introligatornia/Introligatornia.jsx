@@ -33,12 +33,18 @@ export default function IntroligatorniaTable({
 
 
   }
+
+  function handleDragStart(id){
+   //   e.preventDefault();
+    sessionStorage.setItem("id_element_drag", id);
+
+  }
   
   return (
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
+      <OprawaTable handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage}/>
 </div>
      
 
@@ -46,7 +52,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
+function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage}){
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -77,7 +83,7 @@ function OprawaTable({handleChangeCardFragmentyOprawaId,handleDrop,handleDragOve
       {oprawa.map((row) => {
         return (
           <>
-            <tr draggable
+            <tr 
          
              key={row.id}
              onDrop={()=>handleDrop(row.id)}
@@ -139,7 +145,7 @@ function OprawaTable({handleChangeCardFragmentyOprawaId,handleDrop,handleDragOve
                 .filter((el) => el.oprawa_id === row.id)
                 .map((row) => {
                   return (
-                    <tr key={row.id}>
+                    <tr draggable  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
       
                       <td></td>
 <td></td>
@@ -352,7 +358,7 @@ function Typ({ row }) {
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa}
+          {row.id}   {option.nazwa}
           </option>
         ))}
       </select>

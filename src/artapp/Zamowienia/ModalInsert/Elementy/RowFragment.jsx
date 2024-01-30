@@ -19,7 +19,7 @@ export default function RowFragment({
   const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
     useState(listaGramatur);
 
-    function handleDragStart(naklad){
+    function handleDragStart(){
       //  e.preventDefault()
       sessionStorage.setItem("id_element_drag", row.id);
   

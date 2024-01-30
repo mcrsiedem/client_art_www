@@ -98,17 +98,17 @@ function ModalInsert({
       data_spedycji: "2024-01-30",
       index: 0,
     },
-    {
-      id: 2,
-      zamowienie_id: 1,
-      produkt_id:1,
-      oprawa: 1,
-      bok_oprawy: "297",
-      naklad: "1000",
-      uwagi: "uwagi do oprawy",
-      data_spedycji: "2024-01-30",
-      index: 1,
-    },
+    // {
+    //   id: 2,
+    //   zamowienie_id: 1,
+    //   produkt_id:1,
+    //   oprawa: 1,
+    //   bok_oprawy: "297",
+    //   naklad: "1000",
+    //   uwagi: "uwagi do oprawy",
+    //   data_spedycji: "2024-01-30",
+    //   index: 1,
+    // },
     
   ]);
 

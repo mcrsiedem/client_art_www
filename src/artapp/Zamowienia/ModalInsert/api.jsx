@@ -149,18 +149,18 @@ const initialFragmenty=[
     info:"",
     index:1
   },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 2, 
-    oprawa_id:2,
-    naklad: "1000",
-    wersja:"",
-    typ:2,
-    info:"",
-    index:1
-  },
+  // {
+  //   id: 3,
+  //   zamowienie_id: 1,
+  //   produkt_id: 1,
+  //   element_id: 2, 
+  //   oprawa_id:2,
+  //   naklad: "1000",
+  //   wersja:"",
+  //   typ:2,
+  //   info:"",
+  //   index:1
+  // },
 
 
 

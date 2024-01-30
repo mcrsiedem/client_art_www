@@ -5,6 +5,7 @@ import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
+import iconTable from "../../../../svg/settings.svg";
 import iconUstawienia from "../../../../svg/settings.svg";
 
 export default function IntroligatorniaTable({
@@ -74,6 +75,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
        
         <th className={style.col7}></th>
         <th className={style.col7}></th>
+        <th className={style.col7}></th>
         
       
 
@@ -139,6 +141,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                 
               <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
+              <PodzielOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
             </tr>
             {expand ? (
               fragmenty
@@ -162,6 +165,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                         handleChangeCardFragmenty={handleChangeCardFragmenty}
                       />
                       <td> </td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -245,6 +249,20 @@ function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }
         />
       </div>
 
+    </td>
+  );
+}
+
+
+function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa}) {
+  return (
+    <td className={style.col_button} >
+            <img
+         className={style.expand}
+          src={iconTable}
+          onClick={() => {handleAddRowOprawa(row,oprawa,setOprawa)}}
+          alt="Procesy"
+        />
     </td>
   );
 }

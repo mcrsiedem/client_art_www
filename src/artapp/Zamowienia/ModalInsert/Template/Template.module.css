@@ -35,7 +35,7 @@
   display: flex;
   align-items: end;
   justify-content: space-around;
-  margin: 20px;
+  margin: 10px;
 
 }
 .select {
@@ -51,7 +51,7 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
-
+height: 55px;
 
 }
 
@@ -75,4 +75,8 @@
   color: #fff;
   outline: whitesmoke 1px solid;
   
+}
+
+label{
+  font-size: 0.9rem;
 }

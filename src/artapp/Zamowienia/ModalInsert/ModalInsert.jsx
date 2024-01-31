@@ -55,12 +55,12 @@ function ModalInsert({
 
   const [preOrder, setPreOrder] = useState({
     oprawa: 1,
-    naklad: 1000,
-    strony_okl: 4,
-    strony_srd: 80,
-    format_x: 210,
-    format_y: 297,
-    bok_oprawy: 297
+    naklad: "",
+    strony_okl: "",
+    strony_srd: "",
+    format_x: "",
+    format_y: "",
+    bok_oprawy: ""
 
   });
 
@@ -180,7 +180,7 @@ function ModalInsert({
   const [selected_wykonczenie, setSelected_wykonczenie] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [isOK, setIsOK] = useState(false);
-  const [showParametryZamowienia, setShowParametreyZamowienia] = useState(false);
+  const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
 
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
@@ -282,6 +282,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
           <Template
           preOrder={preOrder}
           setPreOrder={setPreOrder}
+          setShowTemplate={setShowTemplate}
+          setShowParametryZamowienia={setShowParametryZamowienia}
 
       />
       

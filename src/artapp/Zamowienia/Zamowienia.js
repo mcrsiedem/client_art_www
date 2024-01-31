@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Zamowienia/Modal/Modal";
 import ModalInsert from "./ModalInsert/ModalInsert";
+import ModalInsertTemplate from "./ModalInsertTemplate/ModalInsertTemplate";
 import style from "../Zamowienia/Zamowienia.module.css";
 
 function Zamowienia({ user, setUser }) {
@@ -13,13 +14,16 @@ function Zamowienia({ user, setUser }) {
   const [row, setRow] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openModalInsert, setOpenModalInsert] = useState(false);
+  const [openModalInsertTemplate, setOpenModalInsertTemplate] = useState(true);
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   function dodaj_clikHandler() {
-    //    console.log("ok");
-    setOpenModalInsert(true);
+
+    // setOpenModalInsert(true);
+    setOpenModalInsertTemplate(true);
+
   }
 
   async function fechZamowienia() {
@@ -124,6 +128,16 @@ function Zamowienia({ user, setUser }) {
           setListaGramatur={setListaGramatur}
         />
       )}
+
+{openModalInsertTemplate && (
+        <ModalInsertTemplate
+          openModalInsertTemplate={openModalInsertTemplate}
+          setOpenModalInsertTemplate={setOpenModalInsertTemplate}
+          user={user}
+          setUser={setUser}
+        />
+      )}
+
     </div>
   );
 }

@@ -31,6 +31,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
+import Template from "./Template/Template"
 
 
 function ModalInsert({
@@ -50,6 +51,18 @@ function ModalInsert({
   // const elmnt = useRef(null);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
+
+
+  const [preOrder, setPreOrder] = useState({
+    oprawa: 1,
+    naklad: 1000,
+    strony_okl: 4,
+    strony_srd: 80,
+    format_x: 210,
+    format_y: 297,
+    bok_oprawy: 297
+
+  });
 
   const [daneZamowienia, setDaneZamowienia] = useState({
     nr: "20",
@@ -162,34 +175,24 @@ function ModalInsert({
   const [info, setInfo] = useState("napis");
   const [listaWykonczenia, setListaWykonczenia] = useState();
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
-  // const[listaPapierow,setListaPapierow]= useState();
-  // const[listaGramatur,setListaGramatur]= useState();
-  // lista wszystkich dostępnych procesów
   const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
-
-  //procesy dołączone do elementów
   const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-
   const [selected_wykonczenie, setSelected_wykonczenie] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [isOK, setIsOK] = useState(false);
+  const [showParametryZamowienia, setShowParametreyZamowienia] = useState(false);
+  const [showTemplate, setShowTemplate] = useState(true);
 
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
     useState(false);
   
  
 
-  const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
+const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
   async function fechListy() {
     const res2 = await axios.get(ip + "lista-uszlachetnien");
     setListaUszlachetnien([...res2.data]);
-
-    // const res3 = await axios.get(ip + 'lista-papierow');
-    // setListaPapierow([...res3.data]);
-
-    // const res4 = await axios.get(ip + 'lista-gramatur');
-    // setListaGramatur([...res4.data]);
 
     const res5 = await axios.get(ip + "lista-procesow");
     setListaDostepnychProcesow([...res5.data]);
@@ -223,8 +226,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setDaneZamowienia={setDaneZamowienia}
       />
 
-<div className={style.main}> 
-      <Produkty
+
+  <div className={style.main}> 
+  {showParametryZamowienia && ( 
+      <div>
+          <Produkty
         produkty={produkty}
         handleChangeCardProdukty={handleChangeCardProdukty}
         _typ_produktu={_typ_produktu}
@@ -269,7 +275,19 @@ const [openModalStany, setOpenModalStany] = useState(false);
       />
 
       <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
-</div>
+  </div> )}
+
+  {showTemplate && ( 
+      <div>
+          <Template
+          preOrder={preOrder}
+          setPreOrder={setPreOrder}
+
+      />
+      
+    </div> )}
+
+</div> 
 
       {showElementyProcesyInsert && (
         <ElementyProcesInsert

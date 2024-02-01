@@ -60,6 +60,7 @@ input {
 .tytul{
   text-align: left;
   height: 30px;
+  padding-left: 10px;
 }
 
 .klientContainer {
@@ -69,4 +70,5 @@ input {
 
 .firma, .klient, .data{
 height: 30px;
+padding-left: 10px;
 }

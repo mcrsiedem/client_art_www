@@ -20,14 +20,15 @@
 .header{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(128, 123, 123) 50%,rgb(81, 78, 78) 100%);
   background-image: linear-gradient(rgb(95, 82, 82) 0%,rgb(119, 103, 103) 50%,rgb(95, 82, 82) 100%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 2rem;
+  height: 1.6rem;
   color: #fff;
-
+  font-size: 0.9rem;
+  padding-left: 20px;
 }
 
 .main {

@@ -292,9 +292,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
           produkty={produkty}
+          setProdukty={setProdukty}
           handleChangeCardProdukty={handleChangeCardProdukty}
-          _typ_produktu={_typ_produktu}
-          isTable={isTable}
+
+        
       />
       
     </div> )}

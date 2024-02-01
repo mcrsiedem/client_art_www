@@ -292,7 +292,7 @@ function Cena({daneZamowienia,setDaneZamowienia}){
 function TerminPlatnosci({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
-      <label className={style.label}> Termin płatności (dni) </label>
+      <label className={style.label}> Płatność (dni) </label>
       <input className={style.data} type="text"
       value={daneZamowienia.terminPlatnosci}
       onChange={(event) => {

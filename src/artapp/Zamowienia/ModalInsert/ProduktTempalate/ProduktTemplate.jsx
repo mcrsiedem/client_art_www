@@ -5,8 +5,8 @@ export default function ProduktTemplate({ preOrder,setPreOrder,setShowTemplate,s
   return (
       <div className={style.container}>
             <div className={style.produkt}>
-              <ProduktyTableHeader />
-              <ProduktyTable preOrder={preOrder} setPreOrder={setPreOrder} setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia} />
+              <Header />
+              <Table preOrder={preOrder} setPreOrder={setPreOrder} setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia} />
             </div>
     </div>
   );
@@ -16,11 +16,11 @@ export default function ProduktTemplate({ preOrder,setPreOrder,setShowTemplate,s
 
 
 
-function ProduktyTableHeader() {
+function Header() {
   return <div className={style.header}>Produkt</div>;
 }
 
-function ProduktyTable({preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia}) {
+function Table({preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia}) {
   return <div className={style.main}>
       
         <table className={style.table}>

@@ -136,7 +136,7 @@ export default function RowElement({
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <td></td>
+      
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
@@ -179,7 +179,7 @@ export default function RowElement({
 
         <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
-
+        <td></td>
 
         <Usun
           row={row}

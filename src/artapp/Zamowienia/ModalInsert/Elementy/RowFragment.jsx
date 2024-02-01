@@ -55,15 +55,16 @@ export default function RowFragment({
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
 
     
+      
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
       <td></td>
     </tr>

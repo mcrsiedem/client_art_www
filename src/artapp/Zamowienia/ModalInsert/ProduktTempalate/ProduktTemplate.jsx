@@ -1,94 +1,81 @@
 import style from "./ProduktTemplate.module.css";
-import { _papiery, _typ_produktu,_rodzaj_oprawy } from "../api";
+import { _papiery, _typ_produktu, _rodzaj_oprawy } from "../api";
+// import { AddProduktTemplate } from "./AddProduktTemplate";
 
-export default function ProduktTemplate({ preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia }) {
+export default function ProduktTemplate({
+  preOrder,
+  setPreOrder,
+  setShowTemplate,
+  setShowParametryZamowienia,
+}) {
   return (
-      <div className={style.container}>
-            <div className={style.produkt}>
-              <Header />
-              <Table preOrder={preOrder} setPreOrder={setPreOrder} setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia} />
-            </div>
+    <div className={style.container}>
+      <div className={style.produkt}>
+        <Header />
+        <Table
+          preOrder={preOrder}
+          setPreOrder={setPreOrder}
+          setShowTemplate={setShowTemplate}
+          setShowParametryZamowienia={setShowParametryZamowienia}
+        />
+      </div>
     </div>
   );
 }
 
 //--------------------------
 
-
-
 function Header() {
   return <div className={style.header}>Produkt</div>;
 }
 
-function Table({preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia}) {
-  return <div className={style.main}>
-      
-        <table className={style.table}>
-          <thead>
-            <tr>
+function Table({
+  preOrder,
+  setPreOrder,
+  setShowTemplate,
+  setShowParametryZamowienia,
+}) {
+  return (
+    <div className={style.main}>
+      <table className={style.table}>
+        <thead>
+          <tr>
+            <th className={style.col3}>Typ</th>
+            <th className={style.col9}>Oprawa</th>
+            <th className={style.col10}>Nakład</th>
 
-              <th className={style.col3}>Typ</th>
-              <th className={style.col9}>Oprawa</th>
-              <th className={style.col10}>Nakład</th>
- 
-              <th className={style.col4}>Strony okładka</th>
-              <th className={style.col4}>Strony środek</th>
+            <th className={style.col4}>Strony okładka</th>
+            <th className={style.col4}>Strony środek</th>
 
-              <th className={style.col7}>Format x</th>
-              <th className={style.col8}>Format y</th>
-              <th className={style.col8}>Bok oprawy</th>
-              <th className={style.col8}></th>
-            </tr>
-          </thead>
-          <tbody className={style.center}>
-
-                <tr
-                 
-                >
-
-                  <Typ
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-                     <Oprawa
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-                 
-                 <Naklad
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-
-               
-
-<Okladka
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-                  <Srodek
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-                  {/* <Wersja row={row} handleChangeCardProdukty={handleChangeCardProdukty}/> */}
-
-                  {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
+            <th className={style.col7}>Format x</th>
+            <th className={style.col8}>Format y</th>
+            <th className={style.col8}>Bok oprawy</th>
+            <th className={style.col8}></th>
+          </tr>
+        </thead>
+        <tbody className={style.center}>
+          <tr>
+            <Typ preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Oprawa preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Naklad preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Okladka preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Srodek preOrder={preOrder} setPreOrder={setPreOrder} />
+            {/* <Wersja row={row} handleChangeCardProdukty={handleChangeCardProdukty}/> */}
+            {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td> */}
-        
-
-        <Formatx
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />       <Formaty
-                  preOrder={preOrder} setPreOrder={setPreOrder}
-                />
-                  <BokOprawy
-                    preOrder={preOrder} setPreOrder={setPreOrder}
-                  />
-
-                  <Dodaj setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia}/>
-
-  
-                </tr>
-    
-          </tbody>
-        </table>
-      </div>
-
+            <Formatx preOrder={preOrder} setPreOrder={setPreOrder} />{" "}
+            <Formaty preOrder={preOrder} setPreOrder={setPreOrder} />
+            <BokOprawy preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Dodaj
+              preOrder={preOrder}
+              setShowTemplate={setShowTemplate}
+              setShowParametryZamowienia={setShowParametryZamowienia}
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 function Typ({ preOrder, setPreOrder }) {
@@ -133,7 +120,7 @@ function Oprawa({ preOrder, setPreOrder }) {
   );
 }
 
-function Formatx({  preOrder, setPreOrder }) {
+function Formatx({ preOrder, setPreOrder }) {
   return (
     <td>
       <input
@@ -147,7 +134,7 @@ function Formatx({  preOrder, setPreOrder }) {
   );
 }
 
-function Formaty({  preOrder, setPreOrder }) {
+function Formaty({ preOrder, setPreOrder }) {
   return (
     <td>
       <input
@@ -160,7 +147,7 @@ function Formaty({  preOrder, setPreOrder }) {
     </td>
   );
 }
-function Okladka({  preOrder, setPreOrder }) {
+function Okladka({ preOrder, setPreOrder }) {
   return (
     <td>
       <input
@@ -173,7 +160,7 @@ function Okladka({  preOrder, setPreOrder }) {
     </td>
   );
 }
-function Srodek({  preOrder, setPreOrder }) {
+function Srodek({ preOrder, setPreOrder }) {
   return (
     <td>
       <input
@@ -186,7 +173,7 @@ function Srodek({  preOrder, setPreOrder }) {
     </td>
   );
 }
-function Naklad({  preOrder, setPreOrder }) {
+function Naklad({ preOrder, setPreOrder }) {
   return (
     <td className={style.td_naklad}>
       <input
@@ -200,8 +187,7 @@ function Naklad({  preOrder, setPreOrder }) {
   );
 }
 
-
-function BokOprawy({ preOrder, setPreOrder}) {
+function BokOprawy({ preOrder, setPreOrder }) {
   return (
     <td>
       <input
@@ -215,18 +201,25 @@ function BokOprawy({ preOrder, setPreOrder}) {
   );
 }
 
-
-
-function Dodaj({setShowTemplate,setShowParametryZamowienia }){
-  return(
-      <div className={style.kontrolka}>
-   
-      <button className={style.btn} type="text"
-    
-    onClick={() => {
-        setShowTemplate(false);
-         setShowParametryZamowienia(true);
-      }}> Dodaj</button>
+function Dodaj({ preOrder, setShowTemplate, setShowParametryZamowienia }) {
+  return (
+    <div className={style.kontrolka}>
+      <button
+        className={style.btn}
+        type="text"
+        onClick={() => {
+          setShowTemplate(false);
+          setShowParametryZamowienia(true);
+          AddProduktTemplate(preOrder);
+        }}
+      >
+        {" "}
+        Dodaj
+      </button>
     </div>
   );
+}
+
+function AddProduktTemplate(preOrder) {
+  console.log(preOrder.naklad);
 }

@@ -39,7 +39,7 @@ function Oprawa({ preOrder, setPreOrder }) {
     <div className={style.kontrolka}>
       <label className={style.label}> Oprawa </label>
       <select
-        className={style.select}
+        className={style.oprawa}
         value={preOrder.oprawa}
         onChange={(event) => {
           setPreOrder({ ...preOrder, oprawa: event.target.value });
@@ -59,7 +59,7 @@ function Naklad({preOrder,setPreOrder}){
   return(
       <div className={style.kontrolka}>
       <label className={style.label}> Nakład </label>
-      <input className={style.select} type="text"
+      <input className={style.naklad} type="text"
       value={preOrder.naklad}
       onChange={(event) => {
         setPreOrder({...preOrder, naklad: event.target.value});
@@ -126,7 +126,9 @@ function BokOprawy({preOrder,setPreOrder}){
       value={preOrder.bok_oprawy}
       onChange={(event) => {
         setPreOrder({...preOrder, bok_oprawy: event.target.value});
-      }}></input>
+      }}>
+        
+      </input>
     </div>
   );
 }

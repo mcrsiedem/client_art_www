@@ -25,7 +25,7 @@ function Header({
     <>
       <div className={style.container}>
         <div className={style.title}>
-          Dodaj zamówienie...id: {id} {info}
+          Dodaj zamówienie...
         </div>
         <div className={style.buttons}>
           <img

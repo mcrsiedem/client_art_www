@@ -12,7 +12,7 @@
   border-radius: 10px;
 /* margin-left: 20px; */
   width: calc(100vw - 40px);
-
+  /* height: 300px; */
   box-shadow: 8px 8px 8px rgb(159, 159, 159);
   background-color: rgb(178, 196, 214);
 
@@ -42,10 +42,27 @@
   background-color:  rgb(189, 204, 219);
   box-shadow: 2px 2px 2px grey;
   
-  width: 120px;
-
+  width: 80px;
+  font-size: 2rem;
+  text-align: center;
 }
 
+.naklad {
+  background-color:  rgb(189, 204, 219);
+  box-shadow: 2px 2px 2px grey;
+  
+  width: 200px;
+  font-size: 2rem;
+  text-align: center;
+}
+.oprawa {
+  background-color:  rgb(189, 204, 219);
+  box-shadow: 2px 2px 2px grey;
+  
+  width: 200px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 .kontrolka {
   display: flex;
   align-items: start;
@@ -78,5 +95,6 @@ height: 55px;
 }
 
 label{
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
+

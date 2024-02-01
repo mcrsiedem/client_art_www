@@ -5,7 +5,7 @@
  background-color: transparent;
 display: flex;
 flex-direction: column;
-gap:10px;
+gap:5px;
 width: 100vw;
 
 }
@@ -14,6 +14,7 @@ width: 100vw;
   display: grid;
   grid-template-columns: 230px 1fr 110px 110px 110px;
   gap: 10px;
+
 }
 .row2 {
   display: grid;
@@ -39,7 +40,7 @@ width: 100vw;
 }
 
 .label {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 select,
@@ -55,4 +56,8 @@ input {
 .klientContainer {
   display: flex;
   gap: 20px
+}
+
+.firma, .klient, .data{
+height: 30px;
 }

@@ -49,6 +49,22 @@ export default function Dane({
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
           />
+  <Cena
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+            <TerminPlatnosci
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+            <Vat
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
+            <Przedplata
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+          />
 
           <Opiekun
             daneZamowienia={daneZamowienia}
@@ -226,7 +242,7 @@ function Tytul({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
-      <input className={style.data} type="text"
+      <input className={style.tytul} type="text"
       value={daneZamowienia.tytul}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
@@ -238,7 +254,7 @@ function Uwagi({daneZamowienia,setDaneZamowienia}){
   return(
       <div className={style.col}>
       <label className={style.label}> Uwagi </label>
-      <input className={style.data} type="text"
+      <input className={style.tytul} type="text"
       value={daneZamowienia.uwagi}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
@@ -259,6 +275,59 @@ function Nr({daneZamowienia,setDaneZamowienia}){
     </div>
   );
 }
+
+function Cena({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Cena </label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.cena}
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, cena: event.target.value});
+      }}></input>
+    </div>
+  );
+}
+
+function TerminPlatnosci({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Termin płatności (dni) </label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.terminPlatnosci}
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, terminPlatnosci: event.target.value});
+      }}></input>
+    </div>
+  );
+}
+
+function Vat({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Stawka VAT %</label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.vat}
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, vat: event.target.value});
+      }}></input>
+    </div>
+  );
+}
+
+function Przedplata({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Przedpłata </label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.przedplata}
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+      }}></input>
+    </div>
+  );
+}
+
 
 function Rok({daneZamowienia,setDaneZamowienia}){
   return(

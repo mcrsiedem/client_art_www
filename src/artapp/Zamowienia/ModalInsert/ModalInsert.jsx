@@ -77,6 +77,11 @@ function ModalInsert({
     stan: _stan[0].id,
     status: _status[0].id,
     uwagi: "uwagi do zamwówienia",
+    cena:"za wysoka",
+    terminPlatnosci: " 30",
+    vat: " 23",
+    przedplata: "tak"
+
   });
 
   

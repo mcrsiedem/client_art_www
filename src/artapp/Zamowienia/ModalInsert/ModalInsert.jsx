@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext,useRef } from "react";
 import { useCookies } from "react-cookie";
 import Header from "./Header/Header";
 import Dane from "./Dane/Dane";
+import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
 
 import {
@@ -284,12 +285,15 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
   {showTemplate && ( 
       <div>
-          <Template
+          <ProduktTemplate
           preOrder={preOrder}
           setPreOrder={setPreOrder}
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
-
+          produkty={produkty}
+          handleChangeCardProdukty={handleChangeCardProdukty}
+          _typ_produktu={_typ_produktu}
+          isTable={isTable}
       />
       
     </div> )}

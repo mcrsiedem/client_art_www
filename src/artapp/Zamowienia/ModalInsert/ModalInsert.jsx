@@ -32,7 +32,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import Template from "./Template/Template"
+
 
 
 function ModalInsert({
@@ -55,6 +55,7 @@ function ModalInsert({
 
 
   const [preOrder, setPreOrder] = useState({
+    typ: 1,
     oprawa: 1,
     naklad: "",
     strony_okl: "",

@@ -32,6 +32,7 @@
 .main {
   overflow: auto;
   max-height: 200px;
+ 
 }
 
 /* pasek przewijania */
@@ -57,12 +58,14 @@ div::-webkit-scrollbar-corner {
 .table input {
   background-color: transparent;
   box-shadow: none;
+ 
 }
 
 .col1,
 .col2,
 .col5 {
   width: 50px;
+  
 }
 
 .col3 {
@@ -75,16 +78,24 @@ div::-webkit-scrollbar-corner {
   color: rgb(61, 61, 61);
   font-size: 0.9rem;
   outline-style: none;
+  
+  
 }
 
 .table tr:nth-child(odd) {
   background-color: rgb(212, 225, 238);
   outline-style: none;
+  
 }
+
+
+
+
 
 .select {
   background-color: transparent;
   box-shadow: none;
+
 }
 
 .btn{
@@ -109,3 +120,13 @@ div::-webkit-scrollbar-corner {
   outline: whitesmoke 1px solid;
   
 }
+
+.container input {
+  /* border-bottom: gray 1px dashed; */
+  align-items: center;
+  font-size: 1rem;
+  /* font-weight: bold; */
+  width: 100px;
+  /* text-align: center; */
+}
+

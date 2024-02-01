@@ -1,5 +1,5 @@
 import style from "./ProduktTemplate.module.css";
-import { _papiery, _typ_produktu } from "../api";
+import { _papiery, _typ_produktu,_rodzaj_oprawy } from "../api";
 
 export default function ProduktTemplate({ preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia }) {
   return (
@@ -30,11 +30,13 @@ function Table({preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia}
               <th className={style.col3}>Typ</th>
               <th className={style.col9}>Oprawa</th>
               <th className={style.col10}>Nakład</th>
-              <th className={style.col4}>Nazwa</th>
-              <th className={style.col6}>Ilość stron</th>
-              <th className={style.col7}>Netto X</th>
-              <th className={style.col8}>Netto Y</th>
-              <th className={style.col8}>Uwagi</th>
+ 
+              <th className={style.col4}>Strony okładka</th>
+              <th className={style.col4}>Strony środek</th>
+
+              <th className={style.col7}>Format x</th>
+              <th className={style.col8}>Format y</th>
+              <th className={style.col8}>Bok oprawy</th>
               <th className={style.col8}></th>
             </tr>
           </thead>
@@ -47,21 +49,34 @@ function Table({preOrder,setPreOrder,setShowTemplate,setShowParametryZamowienia}
                   <Typ
                     preOrder={preOrder} setPreOrder={setPreOrder}
                   />
-                  <td>{preOrder.oprawa}</td>
-                  <td>{preOrder.naklad}</td>
+                     <Oprawa
+                    preOrder={preOrder} setPreOrder={setPreOrder}
+                  />
+                 
+                 <Naklad
+                    preOrder={preOrder} setPreOrder={setPreOrder}
+                  />
 
-                  <Nazwa
+               
+
+<Okladka
+                    preOrder={preOrder} setPreOrder={setPreOrder}
+                  />
+                  <Srodek
                     preOrder={preOrder} setPreOrder={setPreOrder}
                   />
                   {/* <Wersja row={row} handleChangeCardProdukty={handleChangeCardProdukty}/> */}
 
                   {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td> */}
-                  <td>{preOrder.ilosc_stron}</td>
+        
 
-                  <td>{preOrder.format_x}</td>
-                  <td>{preOrder.format_y}</td>
-                  <Uwagi
+        <Formatx
+                    preOrder={preOrder} setPreOrder={setPreOrder}
+                  />       <Formaty
+                  preOrder={preOrder} setPreOrder={setPreOrder}
+                />
+                  <BokOprawy
                     preOrder={preOrder} setPreOrder={setPreOrder}
                   />
 
@@ -83,7 +98,7 @@ function Typ({ preOrder, setPreOrder }) {
         className={style.select}
         defaultValue={preOrder.typ}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, oprawa: e.target.value });
+          setPreOrder({ ...preOrder, typ: e.target.value });
         }}
       >
         {}
@@ -97,45 +112,109 @@ function Typ({ preOrder, setPreOrder }) {
   );
 }
 
-function Nazwa({  preOrder, setPreOrder }) {
+function Oprawa({ preOrder, setPreOrder }) {
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={preOrder.oprawa}
+        onChange={(e) => {
+          setPreOrder({ ...preOrder, oprawa: e.target.value });
+        }}
+      >
+        {}
+        {_rodzaj_oprawy.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
+}
+
+function Formatx({  preOrder, setPreOrder }) {
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.nazwa}
+        defaultValue={preOrder.format_x}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, nazwa: e.target.value });
+          setPreOrder({ ...preOrder, format_x: e.target.value });
         }}
       ></input>
     </td>
   );
 }
-function Uwagi({ preOrder, setPreOrder}) {
+
+function Formaty({  preOrder, setPreOrder }) {
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.uwagi}
+        defaultValue={preOrder.format_y}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, uwagi: e.target.value });
+          setPreOrder({ ...preOrder, format_y: e.target.value });
         }}
       ></input>
     </td>
   );
 }
-function Wersja({ preOrder, setPreOrder }) {
+function Okladka({  preOrder, setPreOrder }) {
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.wersja}
+        defaultValue={preOrder.strony_okl}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, wersja: e.target.value });
+          setPreOrder({ ...preOrder, strony_okl: e.target.value });
         }}
       ></input>
     </td>
   );
 }
+function Srodek({  preOrder, setPreOrder }) {
+  return (
+    <td>
+      <input
+        className={style.in}
+        defaultValue={preOrder.strony_srd}
+        onChange={(e) => {
+          setPreOrder({ ...preOrder, strony_srd: e.target.value });
+        }}
+      ></input>
+    </td>
+  );
+}
+function Naklad({  preOrder, setPreOrder }) {
+  return (
+    <td className={style.td_naklad}>
+      <input
+        className={style.naklad}
+        defaultValue={preOrder.naklad}
+        onChange={(e) => {
+          setPreOrder({ ...preOrder, naklad: e.target.value });
+        }}
+      ></input>
+    </td>
+  );
+}
+
+
+function BokOprawy({ preOrder, setPreOrder}) {
+  return (
+    <td>
+      <input
+        className={style.in}
+        defaultValue={preOrder.bok_oprawy}
+        onChange={(e) => {
+          setPreOrder({ ...preOrder, bok_oprawy: e.target.value });
+        }}
+      ></input>
+    </td>
+  );
+}
+
 
 
 function Dodaj({setShowTemplate,setShowParametryZamowienia }){

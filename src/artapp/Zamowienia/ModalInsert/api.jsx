@@ -325,6 +325,10 @@ const _typ_elementu = [
     {
       id: 4,
       nazwa: "Szyto klejona",
+    },
+    {
+      id: 5,
+      nazwa: "Kompletowanie",
     }
 
 ]

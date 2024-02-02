@@ -289,12 +289,6 @@ function AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
       }
     })
   );
-  // setElementy(
-  //   elementy.map((t) => {
-  //     return {...t,
-  //       naklad: preOrder.naklad}
-  //   })
-  // );
 
   setElementy(
     elementy.map((t) => {

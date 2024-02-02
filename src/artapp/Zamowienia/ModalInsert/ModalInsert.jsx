@@ -78,7 +78,7 @@ function ModalInsert({
     dataSpedycji: "2024-01-30",
     stan: _stan[0].id,
     status: _status[0].id,
-    uwagi: "uwagi do zamwówienia",
+    uwagi: "",
     cena:"za wysoka",
     terminPlatnosci: " 30",
     vat: " 23",
@@ -114,7 +114,7 @@ function ModalInsert({
 
       bok_oprawy: "297",
       naklad: "1000",
-      uwagi: "uwagi do oprawy",
+      uwagi: "",
       data_spedycji: "2024-01-30",
       index: 0,
     },

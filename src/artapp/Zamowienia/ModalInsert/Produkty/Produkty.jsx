@@ -1,5 +1,5 @@
 import style from "./Produkty.module.css";
-import { _papiery, _typ_produktu } from "../api";
+import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 
 export default function Produkty({ produkty, handleChangeCardProdukty }) {
   return (
@@ -57,7 +57,7 @@ function ProduktyTable({produkty,handleChangeCardProdukty}) {
                     handleChangeCardProdukty={handleChangeCardProdukty}
                   />
                   <td>{row.naklad}</td>
-                  <td>{row.oprawa}</td>
+                  <Oprawa row={row}/>
 
                   <Nazwa
                     row={row}
@@ -123,6 +123,19 @@ function Nazwa({ row, handleChangeCardProdukty }) {
           })
         }
       ></input>
+    </td>
+  );
+}
+function Oprawa({ row }) {
+  return (
+    <td>
+{ _rodzaj_oprawy.map((t) => {
+        if (t.id == row.oprawa) {
+          return t.nazwa;
+        
+        }
+      })}
+
     </td>
   );
 }

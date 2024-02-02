@@ -7,6 +7,14 @@ export default function ProduktTemplate({
   setPreOrder,
   setShowTemplate,
   setShowParametryZamowienia,
+  produkty,
+  setProdukty,
+  elementy,
+  setElementy,
+  fragmenty,
+  setFragmenty,
+  oprawa,
+  setOprawa
 }) {
   return (
     <div className={style.container}>
@@ -17,6 +25,15 @@ export default function ProduktTemplate({
           setPreOrder={setPreOrder}
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
+          produkty={produkty}
+          setProdukty={setProdukty}
+          elementy={elementy}
+          setElementy={setElementy}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
+          oprawa={oprawa}
+          setOprawa={setOprawa}
+
         />
       </div>
     </div>
@@ -34,6 +51,14 @@ function Table({
   setPreOrder,
   setShowTemplate,
   setShowParametryZamowienia,
+  produkty,
+  setProdukty,
+  elementy,
+  setElementy,
+  fragmenty,
+  setFragmenty,
+  oprawa,
+  setOprawa
 }) {
   return (
     <div className={style.main}>
@@ -70,6 +95,15 @@ function Table({
               preOrder={preOrder}
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
+              produkty={produkty}
+              setProdukty={setProdukty}
+              elementy={elementy}
+              setElementy={setElementy}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              oprawa={oprawa}
+              setOprawa={setOprawa}
+    
             />
           </tr>
         </tbody>
@@ -201,7 +235,19 @@ function BokOprawy({ preOrder, setPreOrder }) {
   );
 }
 
-function Dodaj({ preOrder, setShowTemplate, setShowParametryZamowienia }) {
+function Dodaj({
+  preOrder,
+  setShowTemplate,
+  setShowParametryZamowienia,
+  produkty,
+  setProdukty,
+  elementy,
+  setElementy,
+  fragmenty,
+  setFragmenty,
+  oprawa,
+  setOprawa
+}) {
   return (
     <div className={style.kontrolka}>
       <button
@@ -210,7 +256,12 @@ function Dodaj({ preOrder, setShowTemplate, setShowParametryZamowienia }) {
         onClick={() => {
           setShowTemplate(false);
           setShowParametryZamowienia(true);
-          AddProduktTemplate(preOrder);
+          AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
+            setElementy,
+            fragmenty,
+            setFragmenty,
+            oprawa,
+            setOprawa);
         }}
       >
         {" "}
@@ -220,6 +271,44 @@ function Dodaj({ preOrder, setShowTemplate, setShowParametryZamowienia }) {
   );
 }
 
-function AddProduktTemplate(preOrder) {
-  console.log(preOrder.naklad);
+function AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
+  setElementy,
+  fragmenty,
+  setFragmenty,
+  oprawa,
+  setOprawa) {
+  // console.log(preOrder.naklad);
+  setProdukty(
+    produkty.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+        format_x: preOrder.format_x,
+        format_y: preOrder.format_y,
+        oprawa: preOrder.oprawa,
+      }
+    })
+  );
+  setElementy(
+    elementy.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad}
+    })
+  );
+  setFragmenty(
+    fragmenty.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+      }
+    })
+  );
+
+  setOprawa(
+    oprawa.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+        oprawa: "PUR"}
+    })
+  );
+
+
 }

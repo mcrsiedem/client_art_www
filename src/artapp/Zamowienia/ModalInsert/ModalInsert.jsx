@@ -111,7 +111,7 @@ function ModalInsert({
       id: 1,
       zamowienie_id: 1,
       produkt_id:1,
-      oprawa: 1,
+
       bok_oprawy: "297",
       naklad: "1000",
       uwagi: "uwagi do oprawy",

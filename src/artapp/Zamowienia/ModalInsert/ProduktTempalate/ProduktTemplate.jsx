@@ -306,7 +306,7 @@ function AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
     oprawa.map((t) => {
       return {...t,
         naklad: preOrder.naklad,
-        oprawa: "PUR"}
+        oprawa: preOrder.oprawa}
     })
   );
 

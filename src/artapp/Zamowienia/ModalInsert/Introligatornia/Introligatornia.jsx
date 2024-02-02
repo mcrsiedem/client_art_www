@@ -217,7 +217,7 @@ function RodzajOprawy({ row,handleChangeCardOprawa }) {
 
       <select
         className={style.firma}
-        defaultValue={row.id}
+        defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
         }}

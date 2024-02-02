@@ -159,7 +159,7 @@
 
   }
 
-img:hover {
+  .icon:hover{
   border-top:  rgb(159, 159, 159) dashed 1px; 
     /* outline:  rgb(159, 159, 159) solid 1px; */
   }

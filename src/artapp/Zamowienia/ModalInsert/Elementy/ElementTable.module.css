@@ -161,18 +161,19 @@ font-size: 0.9rem;
   }
 
 
-.icon {
-  height: 70%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
+  .icon {
+    height: 70%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  
+  }
 
-}
 
-
-.icon:hover {
-  box-shadow: 1px 1px 1px rgb(159, 159, 159);
-}
+.icon:hover{
+  border-top:  rgb(159, 159, 159) dashed 1px; 
+    /* outline:  rgb(159, 159, 159) solid 1px; */
+  }
 
 .icon:active {
   box-shadow: 2px 2px 2px rgb(159, 159, 159);

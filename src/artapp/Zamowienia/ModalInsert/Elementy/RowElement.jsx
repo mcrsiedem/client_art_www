@@ -124,6 +124,7 @@ export default function RowElement({
                 <div className={style.col_button}>
           <img
             src={logoExpand}
+            className={style.icon}
             onClick={() => {
               setExpand(!expand);
             }}

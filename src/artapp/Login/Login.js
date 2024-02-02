@@ -10,9 +10,11 @@ import TokenContext from "../Context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
 
+import iconLogo from "../../svg/logo.svg";
+
 var header;
 
-function Login({user,setUser}) {
+export default function Login({user,setUser}) {
   function parseJwt(token) {
     //wyciaga payload z tokenu
     var base64Url = token.split(".")[1];
@@ -78,43 +80,63 @@ function Login({user,setUser}) {
   };
 
   return (
-    <div className={style.contener}>
-      <div className={style.loginPaine}>
-        <form onSubmit={handleSubmit} className={style.form}> 
-        
-        
-        <div >
-            <input
-              type="text"
-              name="login"
-              placeholder="Login"
-              onChange={(e) => setValues({ ...values, login: e.target.value })}
-              className={style.loginInput}
-           
-            />
-          </div>
-
-          <div >
-            <input
-              type="password"
-              name="haslo"
-              placeholder="Hasło"
-              onChange={(e) => setValues({ ...values, haslo: e.target.value })}
-              className={style.loginInput}
-             
-            />
-          </div>
-
-          <button type="submit"  className={style.myButton}           >
-            {" "}
-            Zaloguj
-          </button>
-
-
-        </form>
+    <div className={style.container}>
+      <div className={style.header}>
+        <Header/>
       </div>
+      <div className={style.center}>
+      <Center values={values} setValues={setValues} handleSubmit={handleSubmit}/>
+      </div>
+
     </div>
   );
 }
 
-export default Login;
+function Header(){
+ return (<>
+  
+  
+  </>)
+}
+
+
+function Center({values,setValues,handleSubmit}){
+  return(
+    <div className={style.loginPaine}>
+    <form onSubmit={handleSubmit} className={style.form}> 
+    <div>
+    <img className={style.icon2} src={iconLogo} alt="logo" />
+    </div>
+    
+    <div >
+        <input
+          type="text"
+          name="login"
+          placeholder="Login"
+          onChange={(e) => setValues({ ...values, login: e.target.value })}
+          className={style.loginInput}
+       
+        />
+      </div>
+
+      <div >
+        <input
+          type="password"
+          name="haslo"
+          placeholder="Hasło"
+          onChange={(e) => setValues({ ...values, haslo: e.target.value })}
+          className={style.loginInput}
+         
+        />
+      </div>
+
+      <button type="submit"  className={style.myButton}           >
+        {" "}
+        Zaloguj
+      </button>
+
+
+    </form>
+  </div>
+  )
+}

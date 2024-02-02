@@ -256,7 +256,7 @@ function Dodaj({
         onClick={() => {
           setShowTemplate(false);
           setShowParametryZamowienia(true);
-          AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
+          AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
             setElementy,
             fragmenty,
             setFragmenty,
@@ -271,7 +271,7 @@ function Dodaj({
   );
 }
 
-function AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
+function AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
   setElementy,
   fragmenty,
   setFragmenty,
@@ -285,15 +285,43 @@ function AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
         format_x: preOrder.format_x,
         format_y: preOrder.format_y,
         oprawa: preOrder.oprawa,
+        ilosc_stron: parseInt(preOrder.strony_srd) + parseInt(preOrder.strony_okl)
       }
     })
   );
+  // setElementy(
+  //   elementy.map((t) => {
+  //     return {...t,
+  //       naklad: preOrder.naklad}
+  //   })
+  // );
+
   setElementy(
     elementy.map((t) => {
-      return {...t,
-        naklad: preOrder.naklad}
+      if (t.typ == 1) {
+       return  {...t,
+          naklad: preOrder.naklad,
+          ilosc_stron: preOrder.strony_okl,
+          format_x: preOrder.format_x,
+          format_y: preOrder.format_y,
+        }
+      }
+      if (t.typ == 2) {
+        return  {...t,
+           naklad: preOrder.naklad,
+           ilosc_stron: preOrder.strony_srd,
+           format_x: preOrder.format_x,
+           format_y: preOrder.format_y,
+         }
+       }
     })
   );
+
+
+
+
+
+
   setFragmenty(
     fragmenty.map((t) => {
       return {...t,
@@ -306,7 +334,8 @@ function AddProduktTemplate(preOrder,produkty,setProdukty,  elementy,
     oprawa.map((t) => {
       return {...t,
         naklad: preOrder.naklad,
-        oprawa: preOrder.oprawa}
+        oprawa: preOrder.oprawa,
+        bok_oprawy:preOrder.bok_oprawy}
     })
   );
 

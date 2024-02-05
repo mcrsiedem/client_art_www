@@ -1,0 +1,62 @@
+.container{
+    /* fioletowe
+    background-image: linear-gradient(#764abc 0%,  #9a6be6 80%); */
+
+    /* niebieskie */
+    /* background-image: linear-gradient(#264f76 0%,  #4584be 80%); */
+
+    background-image: linear-gradient(#505050 0%,  #7a7a7a 80%);
+    /* background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
+    /* background-image: url(../../svg/tlo4.jpg); */
+
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+     
+}
+.kafle{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: grayscale(100%) blur(10px);
+
+
+    /* background-color: #2b2b2c; */
+
+    /* background-image: linear-gradient(#643ea0 0%,  #9a6be6 80%);
+    background-image: linear-gradient(#643ea0 0%,  #9a6be6 80%); */
+
+    color: whitesmoke;
+    border: 1px solid  rgb(255, 255, 255);
+    border-radius: 30px;
+    width: 250px;
+    height: 180px;
+    margin: 10px;
+  
+
+}
+
+.kafle:hover{
+    /* background-image: linear-gradient(#2b2b2c 0%, #38383a 80%); */
+    backdrop-filter: grayscale(40%) blur(10px);
+    /* backdrop-filter: none; */
+}
+
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

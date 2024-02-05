@@ -16,25 +16,71 @@ function Panel({user,setUser}){
 
     <div id="container" className={style.container} >
 
-            <div className={style.row}>
-                    <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
-                    <div className={style.kafle} >Zlecenia</div>
-                    <div className={style.kafle} >CTP</div>
-            </div>
+                        <div onClick={() => { navigate("/Zamowienia") }}className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  >Zamówienia</div>   
+                        </div>
 
-            <div className={style.row}>
-                    <div className={style.kafle} onClick={() => { navigate("/Print") }} >Druk</div> 
-                    <div className={style.kafle} >Falcowanie</div>
-                    <div className={style.kafle} >Oprawa</div>
-                 
-            </div>
 
-            <div className={style.row}>
-                    <div className={style.kafle} >Uszlachetnianie</div>
-                    <div className={style.kafle} >Magazyn</div>
-                    <div className={style.kafle} >Info</div>
                     
-            </div>
+                       <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>Zlecenie</div>   
+                        </div>
+
+
+
+                    
+                        <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>CTP</div>   
+                        </div>
+           
+
+           
+                        <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Print") }}>Druk</div>   
+                        </div>
+
+
+                       <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>Falcowanie</div>   
+                        </div>
+                        <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>Oprawa</div>   
+                        </div>
+                 
+    
+
+        
+                        <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>Uszlachetnianie</div>   
+                        </div>
+                        <div className={style.kafle}>
+                                <div className={style.magazyn}>
+                                        
+                                </div>
+                             <div  onClick={() => { navigate("/Zamowienia") }}>Magazyn</div>   
+                        </div>
+              
     
     </div>
     

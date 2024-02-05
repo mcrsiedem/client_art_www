@@ -58,6 +58,7 @@ export default function IntroligatorniaTable({
         fragmenty={fragmenty}
         setFragmenty={setFragmenty}
         oprawa_row={oprawa_row}
+        handleChangeCardOprawa={handleChangeCardOprawa}
 
         />
       )}

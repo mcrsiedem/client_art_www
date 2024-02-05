@@ -17,7 +17,8 @@ export default function OprawaElementyStage({
   setFrgmenty,
   oprawa,
   setOprawa,
-  oprawa_row
+  oprawa_row,
+  handleChangeCardOprawa
 })
 
 {
@@ -36,7 +37,18 @@ export default function OprawaElementyStage({
     //   }
     // });
   
-    newOprawa.push({
+    //     newOprawa
+    //     .map((t) => {
+    //   if (t.id == oprawa_row.id) {
+    //     // return {...t, uwagi: parseInt(t.naklad) - parseInt(wydziel)};
+    //      return {...t, uwagi: 100};
+    //   } else {
+    //     return t;
+    //   }
+    // })
+
+    newOprawa
+    .push({
       id: Math.max(...newOprawa.map((f) => f.id)) + 1,
       zamowienie_id: oprawa_row.zamowienie_id,
       produkt_id: oprawa_row.produkt_id,
@@ -62,12 +74,13 @@ export default function OprawaElementyStage({
     //   }
     // })
   
-//      setOprawa(newOprawa);
-  console.log("id: " +oprawa_row.naklad)
+    // handleChangeCardOprawa({...oprawa_row, uwagi:"88"})
+    setOprawa(newOprawa);
+  //  console.log("id: " +oprawa_row.id)
     setOprawa(
       newOprawa.map((t) => {
         if (t.id == oprawa_row.id) {
-          return {...t, naklad: parseInt(t.naklad) - parseInt(wydziel)};
+          return {...t, uwagi: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
         } else {
           return t;
         }

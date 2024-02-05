@@ -7,7 +7,7 @@ import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import iconTable from "../../../../svg/settings.svg";
 import iconUstawienia from "../../../../svg/settings.svg";
-import OprawaElementyStage from "../Elementy/OprawaElementyStage/OprawaElementyStage";
+import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 
 export default function IntroligatorniaTable({
   oprawa,

@@ -1,11 +1,11 @@
 .insertContainer{
   position: fixed;
-  top: calc(100vh/2 - 150px);
+  top: calc(100vh/2 - 175px);
 
   left: calc(100vw/2 - 150px);
 
   width: 300px;
-  height: 300px;
+  height: 250px;
 min-width: 250px;
   background-color: rgb(253, 227, 188);
   /* background-color: rgb(191, 209, 194); */
@@ -81,4 +81,26 @@ min-width: 250px;
     background-color: rgb(213, 230, 216);
     outline-style: none;
     font-size:1rem;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .label{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: gray;
+    text-align: center;
+  }
+
+
+  .data {
+background-color: transparent;
+margin: 10px;
+text-align: center;
+font-size: 1.5rem;
+height: 50px;
   }

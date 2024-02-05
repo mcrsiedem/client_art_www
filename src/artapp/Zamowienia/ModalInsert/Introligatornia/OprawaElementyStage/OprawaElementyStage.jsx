@@ -23,9 +23,14 @@ export default function OprawaElementyStage({
         {" "}
         <p className={style.title}>Podziel oprawę </p>
       </div>
+      <Wydziel/> 
+
       <div className={style.center}>
         
       </div>
+
+
+
       <div className={style.row}>
         <button
           className={style.btn}
@@ -38,6 +43,19 @@ export default function OprawaElementyStage({
 
         <button className={style.btn}>OK</button>
       </div>
+    </div>
+  );
+}
+function Wydziel({daneZamowienia,setDaneZamowienia}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Wydziel z nakładu:
+       </label>
+      <input className={style.data} type="text"
+       value="0"
+      onChange={(event) => {
+        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+      }}></input>
     </div>
   );
 }

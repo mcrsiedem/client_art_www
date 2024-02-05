@@ -49,9 +49,22 @@ export default function OprawaElementyStage({
       })
     );
 
-    let id_nowej_oprawy = Math.max(...fragmenty.map((f) => f.id)) + 1;
+    let id_nowej_oprawy = Math.max(...oprawa.map((f) => f.id)) + 1;
 
     const newFragmenty = fragmenty.slice();
+
+
+    
+    newFragmenty.map((t) => {
+      if (t.oprawa_id == oprawa_row.id) {
+        return {
+          ...t,
+          naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+        };
+      } else {
+        return t;
+      }
+    });
 
     newFragmenty.map((fragment) => {
       if (fragment.oprawa_id == oprawa_row.id) {
@@ -67,78 +80,20 @@ export default function OprawaElementyStage({
       }
     });
 
-    setFragmenty((prev) =>
-      prev.map((t) => {
-        if (t.oprawa_id == oprawa_row.id) {
-          return {
-            ...t,
-            naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-          };
-        } else {
-          return t;
-        }
-      })
-    );
+    // setFragmenty((prev) =>
+    //   prev.map((t) => {
+    //     if (t.oprawa_id == oprawa_row.id) {
+    //       return {
+    //         ...t,
+    //         naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+    //       };
+    //     } else {
+    //       return t;
+    //     }
+    //   })
+    // );
 
-    //  setFragmenty(newFragmenty);
-    //    setFragmenty((prev)=> prev.map((fragment) =>{
-    //     if (fragment.oprawa_id == oprawa_row.id) {
-    //     newFragmenty.push({
-    //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-    //       zamowienie_id: fragment.zamowienie_id,
-    //       element_id: fragment.element_id,
-    //       oprawa_id: id_nowej_oprawy,
-    //       naklad: wydziel,
-    //       typ: fragment.typ,
-    //       index: parseInt(fragment.index) + 1
-
-    //         })
-    //    }
-    //  }) )
-    //  setFragmenty(newFragmenty);
-
-    //   }
-    // }) )
-
-    // setFragmenty((prev) =>  prev.map((fragment) => {
-    //   if (fragment.oprawa_id == oprawa_row.id) {
-
-    //     newFragmenty.push({
-    //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-    //       zamowienie_id: fragment.zamowienie_id,
-    //       element_id: fragment.element_id,
-    //       oprawa_id: id_nowej_oprawy,
-    //       naklad: wydziel,
-    //       typ: fragment.typ,
-    //       index: parseInt(fragment.index) + 1
-
-    //     })
-    //   }
-    // }) )
-
-    // newFragmenty
-    // .map((t) => {
-    //   if (t.oprawa_id == oprawa_row.id) {
-    //     return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
-    //   } else {
-    //     return t;
-    //   }
-    // })
-    //   fragmenty.map((fragment) => {
-    //   if (fragment.oprawa_id == oprawa_row.id) {
-
-    //     newFragmenty.push({
-    //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-    //       zamowienie_id: fragment.zamowienie_id,
-    //       element_id: fragment.element_id,
-    //       oprawa_id: id_nowej_oprawy,
-    //       naklad: wydziel,
-    //       typ: fragment.typ,
-    //       index: parseInt(fragment.index) + 1
-
-    //     })
-    //   }
-    // })
+    setFragmenty(newFragmenty);
   }
 
   const [wydziel, setWdziel] = useState();

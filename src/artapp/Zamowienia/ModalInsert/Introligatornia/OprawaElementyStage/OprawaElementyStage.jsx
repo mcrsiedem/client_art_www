@@ -53,7 +53,7 @@ export default function OprawaElementyStage({
     newOprawa.sort((a, b) => a.index - b.index);
     setOprawa(newOprawa);
 
-    
+    // ss
   }
 
 

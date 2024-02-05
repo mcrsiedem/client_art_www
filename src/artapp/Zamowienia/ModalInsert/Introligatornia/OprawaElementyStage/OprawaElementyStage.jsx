@@ -77,41 +77,50 @@ export default function OprawaElementyStage({
         }
       })
     );
+
+
     const newFragmenty = fragmenty.slice();
 
-      fragmenty.map((t) => {
-        if (t.oprawa_id == oprawa_row.id) {
-          return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
-        } else {
-          return t;
-        }
-      })
-
-    fragmenty.map((t) => {
-      if (t.oprawa_id == oprawa_row.id) {
-     
-        newFragmenty.push({
-          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-          zamowienie_id: oprawa_row.zamowienie_id,
-          element_id: t.element_id,
-          oprawa_id: Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1,
-          naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-
-        })
-      } 
-    })
-
-    // setFragmenty(
-    //   fragmenty.map((t) => {
+    // newFragmenty.map((t) => {
     //     if (t.oprawa_id == oprawa_row.id) {
     //       return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
     //     } else {
     //       return t;
     //     }
     //   })
-    // );
 
-    setFragmenty(newFragmenty)
+    let id_nowej_oprawy = Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1
+      newFragmenty.map((fragment) => {
+      if (fragment.oprawa_id == oprawa_row.id) {
+   
+        newFragmenty.push({
+          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+          zamowienie_id: fragment.zamowienie_id,
+          element_id: fragment.element_id,
+          oprawa_id: id_nowej_oprawy,
+          naklad: wydziel,
+          typ: fragment.typ,
+
+        })
+      } 
+    })
+    //   newFragmenty.map((t) => {
+    //   if (t.oprawa_id == oprawa_row.id) {
+     
+    //     newFragmenty.push({
+    //       id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+    //       zamowienie_id: oprawa_row.zamowienie_id,
+    //       element_id: t.element_id,
+    //       oprawa_id: Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1,
+    //       naklad: wydziel,
+
+    //     })
+    //   } 
+    // })
+
+
+
+    setFragmenty(newFragmenty);
 
   }
 

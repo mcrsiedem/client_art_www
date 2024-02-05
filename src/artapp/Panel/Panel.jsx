@@ -44,11 +44,11 @@ function Panel({user,setUser}){
            
 
            
-                        <div className={style.kafle}>
+                        <div onClick={() => { navigate("/Print") }} className={style.kafle}>
                                 <div className={style.magazyn}>
                                         
                                 </div>
-                             <div  onClick={() => { navigate("/Print") }}>Druk</div>   
+                             <div  >Druk</div>   
                         </div>
 
 

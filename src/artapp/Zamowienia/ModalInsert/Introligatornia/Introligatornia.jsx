@@ -489,7 +489,7 @@ function  NakladOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
-        defaultValue={row.naklad}
+        value={row.naklad}
         onChange={(e) =>
           handleChangeCardOprawa({
             ...row,

@@ -80,7 +80,7 @@ export default function OprawaElementyStage({
     setOprawa(
       newOprawa.map((t) => {
         if (t.id == oprawa_row.id) {
-          return {...t, uwagi: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
+          return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
         } else {
           return t;
         }

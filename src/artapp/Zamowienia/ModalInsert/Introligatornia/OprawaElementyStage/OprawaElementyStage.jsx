@@ -64,24 +64,26 @@ export default function OprawaElementyStage({
       } else {
         return t;
       }
+
+
+
     });
 
     console.log(newFragmenty);
 
-    newFragmenty.map((fragment) => {
-      if (fragment.oprawa_id == oprawa_row.id) {
-        newFragmenty.push({
-          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-          zamowienie_id: fragment.zamowienie_id,
-          produkt_id: fragment.produkt_id,
-          element_id: fragment.element_id,
-          oprawa_id: id_nowej_oprawy,
-          naklad: wydziel,
-          typ: fragment.typ,
-          index: parseInt(fragment.index) + 1,
-        });
-      }
-    })
+        // newFragmenty.push({
+        //   id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+        //   zamowienie_id: t.zamowienie_id,
+        //   produkt_id: t.produkt_id,
+        //   element_id: t.element_id,
+        //   oprawa_id: id_nowej_oprawy,
+        //   naklad: wydziel,
+        //   typ: t.typ,
+        //   index: parseInt(t.index) + 1,
+        // });
+
+      
+    
 
     // setFragmenty((prev) =>
     //   prev.map((t) => {

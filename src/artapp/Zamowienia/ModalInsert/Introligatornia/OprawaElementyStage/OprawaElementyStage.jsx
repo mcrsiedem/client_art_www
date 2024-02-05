@@ -79,20 +79,75 @@ export default function OprawaElementyStage({
     );
 
 
-    const newFragmenty = fragmenty.slice();
 
-   setFragmenty((prev) =>  prev.map((t) => {
-        if (t.oprawa_id == oprawa_row.id) {
-          return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
-        } else {
-          return t;
-        }
-      })
-      
-      )
-
-    let id_nowej_oprawy = Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1
+    let id_nowej_oprawy = Math.max(...fragmenty.map((f) => f.id)) + 1
     
+
+         const newFragmenty = fragmenty.slice();
+         
+         newFragmenty.map((fragment) =>{
+          if (fragment.oprawa_id == oprawa_row.id) {
+          newFragmenty.push({
+            id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+            zamowienie_id: fragment.zamowienie_id,
+            element_id: fragment.element_id,
+            oprawa_id: id_nowej_oprawy,
+            naklad: wydziel,
+            typ: fragment.typ,
+            index: parseInt(fragment.index) + 1
+  
+          })
+         }}
+
+
+         )
+
+
+         setFragmenty((prev) =>  prev.map((t) => {
+          if (t.oprawa_id == oprawa_row.id) {
+            return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
+          } else {
+            return t;
+          }
+        })
+        )
+
+        //  setFragmenty(newFragmenty);
+      //    setFragmenty((prev)=> prev.map((fragment) =>{
+      //     if (fragment.oprawa_id == oprawa_row.id) {
+      //     newFragmenty.push({
+      //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+      //       zamowienie_id: fragment.zamowienie_id,
+      //       element_id: fragment.element_id,
+      //       oprawa_id: id_nowej_oprawy,
+      //       naklad: wydziel,
+      //       typ: fragment.typ,
+      //       index: parseInt(fragment.index) + 1
+  
+      //         })
+      //    } 
+      //  }) )
+        //  setFragmenty(newFragmenty);
+
+      //   } 
+      // }) )
+
+      // setFragmenty((prev) =>  prev.map((fragment) => {
+      //   if (fragment.oprawa_id == oprawa_row.id) {
+     
+      //     newFragmenty.push({
+      //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+      //       zamowienie_id: fragment.zamowienie_id,
+      //       element_id: fragment.element_id,
+      //       oprawa_id: id_nowej_oprawy,
+      //       naklad: wydziel,
+      //       typ: fragment.typ,
+      //       index: parseInt(fragment.index) + 1
+  
+      //     })
+      //   } 
+      // }) )
+ 
       // newFragmenty
       // .map((t) => {
       //   if (t.oprawa_id == oprawa_row.id) {
@@ -101,25 +156,25 @@ export default function OprawaElementyStage({
       //     return t;
       //   }
       // })
-      fragmenty.map((fragment) => {
-      if (fragment.oprawa_id == oprawa_row.id) {
+    //   fragmenty.map((fragment) => {
+    //   if (fragment.oprawa_id == oprawa_row.id) {
    
-        newFragmenty.push({
-          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-          zamowienie_id: fragment.zamowienie_id,
-          element_id: fragment.element_id,
-          oprawa_id: id_nowej_oprawy,
-          naklad: wydziel,
-          typ: fragment.typ,
-          index: parseInt(fragment.index) + 1
+    //     newFragmenty.push({
+    //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+    //       zamowienie_id: fragment.zamowienie_id,
+    //       element_id: fragment.element_id,
+    //       oprawa_id: id_nowej_oprawy,
+    //       naklad: wydziel,
+    //       typ: fragment.typ,
+    //       index: parseInt(fragment.index) + 1
 
-        })
-      } 
-    }) 
+    //     })
+    //   } 
+    // }) 
 
 
 
-    setFragmenty(newFragmenty);
+
 
   }
 

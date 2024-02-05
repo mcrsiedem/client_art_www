@@ -16,11 +16,56 @@ export default function OprawaElementyStage({
   fragmenty,
   setFrgmenty,
   oprawa,
-  setOprawa
-}) {
+  setOprawa,
+  oprawa_row
+})
+
+{
+  function wydzielOprawe(){
+
+    const newOprawa = oprawa.slice();
+
+    newOprawa.map((x) => {
+      if (x.index > oprawa_row.index) {
+        return {
+          ...x,
+          //     index: x.index++,
+        };
+      } else {
+        return x;
+      }
+    });
+  
+    newOprawa.push({
+      id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+      zamowienie_id: oprawa_row.zamowienie_id,
+      produkt_id: oprawa_row.produkt_id,
+      oprawa: oprawa_row.oprawa,
+      bok_oprawy: oprawa_row.bok_oprawy,
+  
+      naklad: 0,
+      index: Math.max(...newOprawa.map((f) => f.index)) + 1,
+      uwagi: oprawa_row.uwagi,
+      data_spedycji: oprawa_row.data_spedycji,
+    
+    });
+  
+    newOprawa.sort((a, b) => a.index - b.index);
+    setOprawa(newOprawa);
+
+    
+  }
+
+
+
+
+
+
 
   const [wydziel,setWdziel] =useState();
+  
   return (
+    
     <div className={style.insertContainer}>
       <div className={style.header}>
         {" "}
@@ -47,7 +92,7 @@ export default function OprawaElementyStage({
         <button
           className={style.btn}
           onClick={() => {
-            wydziel();
+            wydzielOprawe();
           }}
         >
           OK
@@ -57,6 +102,7 @@ export default function OprawaElementyStage({
   );
 }
 function Wydziel({wydziel,setWdziel}){
+  
   
   return(
       <div className={style.col}>
@@ -72,6 +118,4 @@ function Wydziel({wydziel,setWdziel}){
 }
 
 
-function wydziel(){
 
-}

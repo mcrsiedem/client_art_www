@@ -25,16 +25,16 @@ export default function OprawaElementyStage({
 
     const newOprawa = oprawa.slice();
 
-    newOprawa.map((x) => {
-      if (x.index > oprawa_row.index) {
-        return {
-          ...x,
-          //     index: x.index++,
-        };
-      } else {
-        return x;
-      }
-    });
+    // newOprawa.map((x) => {
+    //   if (x.index > oprawa_row.index) {
+    //     return {
+    //       ...x, 
+
+    //     };
+    //   } else {
+    //     return x;
+    //   }
+    // });
   
     newOprawa.push({
       id: Math.max(...newOprawa.map((f) => f.id)) + 1,
@@ -43,7 +43,7 @@ export default function OprawaElementyStage({
       oprawa: oprawa_row.oprawa,
       bok_oprawy: oprawa_row.bok_oprawy,
   
-      naklad: 0,
+      naklad: wydziel,
       index: Math.max(...newOprawa.map((f) => f.index)) + 1,
       uwagi: oprawa_row.uwagi,
       data_spedycji: oprawa_row.data_spedycji,
@@ -51,9 +51,28 @@ export default function OprawaElementyStage({
     });
   
     newOprawa.sort((a, b) => a.index - b.index);
-    setOprawa(newOprawa);
+    
 
-    // ss
+    // newOprawa.map((t) => {
+    //   if (t.id == oprawa_row.id) {
+    //     // return {...t, uwagi: parseInt(t.naklad) - parseInt(wydziel)};
+    //      return {...oprawa_row, uwagi: 100};
+    //   } else {
+    //     return t;
+    //   }
+    // })
+  
+//      setOprawa(newOprawa);
+  console.log("id: " +oprawa_row.naklad)
+    setOprawa(
+      newOprawa.map((t) => {
+        if (t.id == oprawa_row.id) {
+          return {...t, naklad: parseInt(t.naklad) - parseInt(wydziel)};
+        } else {
+          return t;
+        }
+      })
+    );
   }
 
 

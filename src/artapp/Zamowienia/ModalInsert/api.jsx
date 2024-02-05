@@ -130,12 +130,12 @@ const initialFragmenty=[
     zamowienie_id: 1,
     produkt_id: 1,
     element_id: 1, 
-    oprawa_id:1,
+    oprawa_id: 1,
     naklad: "1000",
-    wersja:"",
+    wersja: "",
     typ: 1,
-    info:"",
-    index:0
+    info: "",
+    index: 0
   },
   {
     id: 2,
@@ -144,10 +144,10 @@ const initialFragmenty=[
     element_id: 2, 
     oprawa_id:1,
     naklad: "1000",
-    wersja:"",
-    typ:2,
-    info:"",
-    index:1
+    wersja: "",
+    typ: 2,
+    info: "",
+    index: 1
   },
   // {
   //   id: 3,

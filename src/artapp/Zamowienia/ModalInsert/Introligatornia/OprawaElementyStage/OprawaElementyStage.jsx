@@ -51,54 +51,58 @@ export default function OprawaElementyStage({
 
     let id_nowej_oprawy = Math.max(...oprawa.map((f) => f.id)) + 1;
 
-    const newFragmenty = fragmenty.slice();
+    let newFragmenty = fragmenty.slice();
 
 
-    
+    console.log(oprawa_row.naklad);
    newFragmenty.map((t) => {
-      if (t.oprawa_id == oprawa_row.id) {
-        return ({
+      if (t.oprawa_id === 1) {
+        return {
           ...t,
-          wersja: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-        });
+          naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+          wersja: "OK"
+        };
       } else {
         return t;
       }
-
-
-
     });
 
-    console.log(newFragmenty);
+    // console.log(newFragmenty);
 
-        // newFragmenty.push({
-        //   id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-        //   zamowienie_id: t.zamowienie_id,
-        //   produkt_id: t.produkt_id,
-        //   element_id: t.element_id,
-        //   oprawa_id: id_nowej_oprawy,
-        //   naklad: wydziel,
-        //   typ: t.typ,
-        //   index: parseInt(t.index) + 1,
-        // });
+    let newFragmenty2 = newFragmenty.slice();
+    newFragmenty2.map((fragment) => {
+      if (fragment.oprawa_id == oprawa_row.id) {
+        newFragmenty2.push({
+          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+          zamowienie_id: fragment.zamowienie_id,
+          produkt_id: fragment.produkt_id,
+          element_id: fragment.element_id,
+          oprawa_id: id_nowej_oprawy,
+          naklad: wydziel,
+          typ: fragment.typ,
+          index: parseInt(fragment.index) + 1,
+        });
+      }
+    })
 
-      
+    setFragmenty((prev) =>
+      prev.map((t) => {
+        if (t.oprawa_id == oprawa_row.id) {
+          return {
+            ...t,
+            naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+            wersja: "OK"
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+    console.log("newFragmenty:" , newFragmenty);
+    console.log("newFragmenty2:" , newFragmenty2);
     
 
-    // setFragmenty((prev) =>
-    //   prev.map((t) => {
-    //     if (t.oprawa_id == oprawa_row.id) {
-    //       return {
-    //         ...t,
-    //         naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-    //       };
-    //     } else {
-    //       return t;
-    //     }
-    //   })
-    // );
-
-    setFragmenty(newFragmenty);
+    // setFragmenty(newFragmenty2);
   }
 
   const [wydziel, setWdziel] = useState();

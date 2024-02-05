@@ -88,6 +88,7 @@ export default function OprawaElementyStage({
           return t;
         }
       })
+      
       )
 
     let id_nowej_oprawy = Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1
@@ -100,7 +101,7 @@ export default function OprawaElementyStage({
       //     return t;
       //   }
       // })
-      newFragmenty.map((fragment) => {
+      fragmenty.map((fragment) => {
       if (fragment.oprawa_id == oprawa_row.id) {
    
         newFragmenty.push({
@@ -118,7 +119,7 @@ export default function OprawaElementyStage({
 
 
 
-    // setFragmenty(newFragmenty);
+    setFragmenty(newFragmenty);
 
   }
 

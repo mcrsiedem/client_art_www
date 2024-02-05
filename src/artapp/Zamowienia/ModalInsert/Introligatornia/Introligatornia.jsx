@@ -51,6 +51,11 @@ export default function IntroligatorniaTable({
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
         setShowOprawaElementyStage={setShowOprawaElementyStage}
+        oprawa={oprawa}
+        setOprawa={setOprawa}
+        fragmenty={fragmenty}
+        setFragmenty={setFragmenty}
+
         />
       )}
 </div>

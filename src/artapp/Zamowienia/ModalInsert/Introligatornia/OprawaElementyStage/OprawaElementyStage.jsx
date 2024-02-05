@@ -1,5 +1,6 @@
 // import iconCopy from "../../../../../svg/copy.svg";
 // import iconTrash from "../../../../../svg/trash2.svg";
+import { useState } from "react";
 import style from "./OprawaElementyStage.module.css";
 // import { _papiery } from "../../api";
 // import ElementTableHeader from "./ElementTableHeader";
@@ -12,18 +13,20 @@ import style from "./OprawaElementyStage.module.css";
 
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
-  showOprawaElementyStage,
-
-  procesyElementow,
-  listaDostepnychProcesow
+  fragmenty,
+  setFrgmenty,
+  oprawa,
+  setOprawa
 }) {
+
+  const [wydziel,setWdziel] =useState();
   return (
     <div className={style.insertContainer}>
       <div className={style.header}>
         {" "}
         <p className={style.title}>Podziel oprawę </p>
       </div>
-      <Wydziel/> 
+      <Wydziel wydziel={wydziel} setWdziel={setWdziel}/> 
 
       <div className={style.center}>
         
@@ -41,21 +44,34 @@ export default function OprawaElementyStage({
           Anuluj
         </button>
 
-        <button className={style.btn}>OK</button>
+        <button
+          className={style.btn}
+          onClick={() => {
+            wydziel();
+          }}
+        >
+          OK
+        </button>
       </div>
     </div>
   );
 }
-function Wydziel({daneZamowienia,setDaneZamowienia}){
+function Wydziel({wydziel,setWdziel}){
+  
   return(
       <div className={style.col}>
       <label className={style.label}> Wydziel z nakładu:
        </label>
-      <input className={style.data} type="text"
-       value="0"
+      <input placeholder="0 szt."className={style.data} type="text"
+      //  value="0"
       onChange={(event) => {
-        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+        setWdziel(event.target.value);
       }}></input>
     </div>
   );
+}
+
+
+function wydziel(){
+
 }

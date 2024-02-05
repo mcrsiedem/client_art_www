@@ -55,22 +55,21 @@ export default function OprawaElementyStage({
 
 
     
-    newFragmenty.map((t) => {
+   newFragmenty.map((t) => {
       if (t.oprawa_id == oprawa_row.id) {
-        return {
+        return ({
           ...t,
-          naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-        };
+          wersja: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+        });
       } else {
         return t;
       }
-    });
-
-    newFragmenty.map((fragment) => {
+    }).map((fragment) => {
       if (fragment.oprawa_id == oprawa_row.id) {
         newFragmenty.push({
           id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
           zamowienie_id: fragment.zamowienie_id,
+          produkt_id: fragment.produkt_id,
           element_id: fragment.element_id,
           oprawa_id: id_nowej_oprawy,
           naklad: wydziel,

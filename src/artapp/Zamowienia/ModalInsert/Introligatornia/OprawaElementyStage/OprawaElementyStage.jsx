@@ -64,7 +64,11 @@ export default function OprawaElementyStage({
       } else {
         return t;
       }
-    }).map((fragment) => {
+    });
+
+    console.log(newFragmenty);
+
+    newFragmenty.map((fragment) => {
       if (fragment.oprawa_id == oprawa_row.id) {
         newFragmenty.push({
           id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
@@ -77,7 +81,7 @@ export default function OprawaElementyStage({
           index: parseInt(fragment.index) + 1,
         });
       }
-    });
+    })
 
     // setFragmenty((prev) =>
     //   prev.map((t) => {

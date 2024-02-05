@@ -14,7 +14,7 @@ import style from "./OprawaElementyStage.module.css";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
   fragmenty,
-  setFrgmenty,
+  setFragmenty,
   oprawa,
   setOprawa,
   oprawa_row,
@@ -65,18 +65,9 @@ export default function OprawaElementyStage({
     newOprawa.sort((a, b) => a.index - b.index);
     
 
-    // newOprawa.map((t) => {
-    //   if (t.id == oprawa_row.id) {
-    //     // return {...t, uwagi: parseInt(t.naklad) - parseInt(wydziel)};
-    //      return {...oprawa_row, uwagi: 100};
-    //   } else {
-    //     return t;
-    //   }
-    // })
-  
-    // handleChangeCardOprawa({...oprawa_row, uwagi:"88"})
-    setOprawa(newOprawa);
-  //  console.log("id: " +oprawa_row.id)
+
+    // setOprawa(newOprawa);
+
     setOprawa(
       newOprawa.map((t) => {
         if (t.id == oprawa_row.id) {
@@ -86,6 +77,42 @@ export default function OprawaElementyStage({
         }
       })
     );
+    const newFragmenty = fragmenty.slice();
+
+      fragmenty.map((t) => {
+        if (t.oprawa_id == oprawa_row.id) {
+          return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
+        } else {
+          return t;
+        }
+      })
+
+    fragmenty.map((t) => {
+      if (t.oprawa_id == oprawa_row.id) {
+     
+        newFragmenty.push({
+          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+          zamowienie_id: oprawa_row.zamowienie_id,
+          element_id: t.element_id,
+          oprawa_id: Math.max(...fragmenty.map((f) => f.oprawa_id)) + 1,
+          naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+
+        })
+      } 
+    })
+
+    // setFragmenty(
+    //   fragmenty.map((t) => {
+    //     if (t.oprawa_id == oprawa_row.id) {
+    //       return {...t, naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)};
+    //     } else {
+    //       return t;
+    //     }
+    //   })
+    // );
+
+    setFragmenty(newFragmenty)
+
   }
 
 

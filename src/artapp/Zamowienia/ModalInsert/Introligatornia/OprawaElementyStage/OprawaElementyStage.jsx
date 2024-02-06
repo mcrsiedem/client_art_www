@@ -36,8 +36,8 @@ export default function OprawaElementyStage({
 
     newOprawa.sort((a, b) => a.index - b.index);
 
-    setOprawa(
-      newOprawa.map((t) => {
+    setOprawa(newOprawa
+      .map((t) => {
         if (t.id == oprawa_row.id) {
           return {
             ...t,

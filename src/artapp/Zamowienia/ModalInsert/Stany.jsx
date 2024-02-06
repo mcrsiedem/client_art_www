@@ -155,6 +155,7 @@ function StanFragmenty({fragmenty}){
             <th >Typ</th>
             <th >Oprawa id</th>
             <th >Wersja</th>
+            <th >index</th>
           </tr>
         </thead>
 
@@ -177,6 +178,7 @@ function StanFragmenty({fragmenty}){
                 <td>{row.typ}</td>
                 <td>{row.oprawa_id}</td>
                 <td>{row.wersja}</td>
+                <td>{row.index}</td>
               </tr>
             );
           })}

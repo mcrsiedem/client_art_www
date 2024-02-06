@@ -56,7 +56,7 @@ export default function OprawaElementyStage({
 
     newFragmenty
     .filter((frag) => frag.oprawa_id === oprawa_row.id)
-    .map((t)=>{
+    .map((t,i)=>{
 
       newFragmenty
       .push({
@@ -67,7 +67,7 @@ export default function OprawaElementyStage({
         oprawa_id: id_nowej_oprawy,
         naklad: wydziel,
         typ: t.typ,
-        index: parseInt(t.index) + 1,
+        index: parseInt(t.index) +2,
       })
 
     })

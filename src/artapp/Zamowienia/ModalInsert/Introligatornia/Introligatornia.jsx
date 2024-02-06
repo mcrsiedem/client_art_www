@@ -48,7 +48,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
+      <OprawaTable handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
@@ -69,7 +69,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -155,7 +155,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
               />
 
                 
-              <Usun oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
+              <Usun fragmenty={fragmenty} setFragmenty={setFragmenty} oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
               <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa={oprawa} setOprawa={setOprawa} row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
             </tr>
@@ -254,14 +254,14 @@ function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOpra
   );
 }
 
-function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }) {
+function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa ,fragmenty,setFragmenty}) {
   return (
     <td className={style.col_button}>
       <div >
                       <img
          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.index, row.id,oprawa,setOprawa)}}
+          onClick={() => {handleRemoveItem(row.index, row.id,oprawa,setOprawa,fragmenty,setFragmenty)}}
           alt="Procesy"
         />
       </div>
@@ -304,11 +304,13 @@ function PokazElementy({ setShowOprawaElementyStage  }) {
   );
 }
 
-const handleRemoveItem = (index,id,oprawa,setOprawa) => {
+const handleRemoveItem = (index,id,oprawa,setOprawa ,fragmenty,setFragmenty) => {
+
+  // kasowanie oprawy?
   // id = id elementu
   if (oprawa.length !== 1) {
     setOprawa(oprawa.filter((x) => x.index !== index));
-
+    setFragmenty(fragmenty.filter((x) => x.oprawa_id !== id));
   }
 
   setOprawa((prev) =>

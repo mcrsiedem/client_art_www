@@ -386,52 +386,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         })
       );
 
-        // oprawa start
-        oprawa.map(async (oprawa, i) => {
-          let oprawa_id_przed  =oprawa.id ;
-          // console.log(oprawa.id)
-          let res5 = await axios.post(ip + "oprawa", {
-            zamowienie_id: zamowienie_id,
-            produkt_id: produkt_id,
-            oprawa: oprawa.oprawa,
-            naklad: oprawa.naklad,
-            uwagi: oprawa.uwagi,
-            data_spedycji: oprawa.data_spedycji
-          });
-          let oprawa_id = res5.data.insertId;
-    
-          setOprawa((prev) =>
-            prev.map((t) => {
-              if (t.index == i) {
-                return { ...t, id: oprawa_id,
-                  produkt_id: produkt_id,
-                   zamowienie_id: zamowienie_id };
-              } else {
-                return t;
-              }
-            })
-          );
-    
-          setFragmenty((prev) =>
-    
-          prev
-          //  .sort((a, b) => a.typ - b.typ)
-          .map((t, a) => {
-              console.log(t.oprawa_id)
-            if (t.oprawa_id === oprawa.id  && oprawa.index <= a ) {
-              return {
-                ...t,
-                oprawa_id:oprawa_id,
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-    
-        }); 
 
-        // oprawa end
 
       elementy
         .filter((el) => el.produkt_id === produkt.id)
@@ -509,7 +464,52 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
     // zapis oprawy - start
 
+        // oprawa start
+        oprawa.map(async (opr, i) => {
+          let oprawa_id_przed  =opr.id ;
+          // console.log(oprawa.id)
+          let res5 = await axios.post(ip + "oprawa", {
+            zamowienie_id: zamowienie_id,
+            produkt_id: produkt_id,
+            oprawa: opr.oprawa,
+            naklad: opr.naklad,
+            uwagi: opr.uwagi,
+            data_spedycji: opr.data_spedycji
+          });
+          let oprawa_id = res5.data.insertId;
+    
+          setOprawa((prev) =>
+            prev.map((t) => {
+              if (t.index == i) {
+                return { ...t, id: oprawa_id,
+                  produkt_id: produkt_id,
+                   zamowienie_id: zamowienie_id };
+              } else {
+                return t;
+              }
+            })
+          );
+    
+          setFragmenty((prev) =>
+    
+          prev
+          //  .sort((a, b) => a.typ - b.typ)
+          .map((t, a) => {
+              console.log(t.oprawa_id)
+            if (t.oprawa_id === opr.id  && opr.index <= a ) {
+              return {
+                ...t,
+                oprawa_id:oprawa_id,
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+    
+        }); 
 
+        // oprawa end
     // zapis oprawy - end
 
 

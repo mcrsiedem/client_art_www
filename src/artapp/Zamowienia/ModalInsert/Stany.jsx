@@ -207,6 +207,8 @@ function StanOprawa({oprawa}){
             <th className={style.col_id} >Nakład</th>
             <th >Uwagi</th>
             <th >Data spedycji</th>
+            <th >Data spedycji</th>
+
           </tr>
         </thead>
 
@@ -229,6 +231,7 @@ function StanOprawa({oprawa}){
                 <td>{row.naklad}</td>
                 <td>{row.uwagi}</td>
                 <td>{row.data_spedycji}</td>
+                <td>{row.index}</td>
               </tr>
             );
           })}

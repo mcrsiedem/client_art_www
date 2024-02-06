@@ -489,7 +489,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
       prev.map((t, a) => {
         // console.log("oprawa id" +prev)
-        if (t.oprawa_id === oprawa_id_przed) {
+        if (t.oprawa_id == oprawa.id) {
           return {
             ...t,
             oprawa_id:oprawa_id,
@@ -500,23 +500,12 @@ const [openModalStany, setOpenModalStany] = useState(false);
       })
     );
 
-    //   setFragmenty((prev) =>
-
-    //   prev.map((t, a) => {
-
-    //       return {
-    //         ...t,
-    //         oprawa_id:oprawa_id,
-    //       };
-        
-        
-    //   })
-    // );
-
     }); 
-
     // zapis oprawy - end
 
+
+
+    
 
     });           //produkty end
 

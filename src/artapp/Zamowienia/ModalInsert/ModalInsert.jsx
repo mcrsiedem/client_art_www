@@ -388,7 +388,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
         // oprawa start
         oprawa.map(async (oprawa, i) => {
-          let oprawa_id_przed  =oprawa.id;
+          let oprawa_id_przed  =oprawa.id ;
           // console.log(oprawa.id)
           let res5 = await axios.post(ip + "oprawa", {
             zamowienie_id: zamowienie_id,
@@ -402,7 +402,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     
           setOprawa((prev) =>
             prev.map((t) => {
-              if (t.index === i) {
+              if (t.index == i) {
                 return { ...t, id: oprawa_id,
                   produkt_id: produkt_id,
                    zamowienie_id: zamowienie_id };
@@ -418,7 +418,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           //  .sort((a, b) => a.typ - b.typ)
           .map((t, a) => {
               console.log(t.oprawa_id)
-            if (t.oprawa_id === oprawa.id  ) {
+            if (t.oprawa_id === oprawa.id  && oprawa.index <= a ) {
               return {
                 ...t,
                 oprawa_id:oprawa_id,
@@ -482,6 +482,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
                 element_id: element_id,
                 produkt_id: produkt_id,
                 typ: fragment.typ,
+                oprawa_id: fragment.oprawa_id,
               });
               let fragment_id = res4.data.insertId;
 

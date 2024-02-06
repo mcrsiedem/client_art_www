@@ -55,16 +55,40 @@ export default function OprawaElementyStage({
 
     const newFragmenty = fragmenty.slice();
 
-    newFragmenty.push({
-      id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-      zamowienie_id: 1,
-      produkt_id: 1,
-      element_id: 1,
-      oprawa_id: id_nowej_oprawy,
-      naklad: wydziel,
-      typ: 1,
-      index: 2,
-    });
+
+
+    newFragmenty
+    .filter((frag) => frag.oprawa_id === oprawa_row.id)
+    .map((t)=>{
+
+      newFragmenty
+      .push({
+        id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+        zamowienie_id: t.zamowienie_id,
+        produkt_id: t.produkt_id,
+        element_id: t.element_id,
+        oprawa_id: id_nowej_oprawy,
+        naklad: wydziel,
+        typ: t.typ,
+        index: parseInt(t.index) + 1,
+      })
+
+    })
+
+
+
+
+    // newFragmenty
+    // .push({
+    //   id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+    //   zamowienie_id: 1,
+    //   produkt_id: 1,
+    //   element_id: 1,
+    //   oprawa_id: id_nowej_oprawy,
+    //   naklad: wydziel,
+    //   typ: 1,
+    //   index: 2,
+    // });
 
 
 

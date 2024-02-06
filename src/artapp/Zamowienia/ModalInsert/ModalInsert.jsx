@@ -506,14 +506,28 @@ const [openModalStany, setOpenModalStany] = useState(false);
             }
           })
         );
-    
+          
+        
         }); 
+
+        
 
         // oprawa end
     // zapis oprawy - end
 
-
-
+    // fragmenty
+    // .map(async (fragment, m) => {
+    //   let res4 = await axios.post(ip + "fragmenty", {
+    //     naklad: fragment.naklad,
+    //     info: fragment.info,
+    //     index: fragment.index,
+    //     zamowienie_id: zamowienie_id,
+    //     element_id: element_id,
+    //     produkt_id: produkt_id,
+    //     typ: fragment.typ,
+    //     oprawa_id: fragment.oprawa_id,
+    //   });
+    // })
 
 
     });           //produkty end
@@ -677,6 +691,149 @@ const [openModalStany, setOpenModalStany] = useState(false);
       document.onmousemove = null;
     }
   }
+
+
+
+//cos na probe
+async function postZamowienie2({daneZamowienia}) {
+
+  let res = await axios.post(ip + "zamowienie", {
+    nr: daneZamowienia.nr,
+    rok: daneZamowienia.rok,
+    firma_id: daneZamowienia.firma,
+    klient_id: daneZamowienia.klient,
+    tytul: daneZamowienia.tytul,
+    data_przyjecia: daneZamowienia.dataPrzyjecia,
+    data_materialow: daneZamowienia.dataMaterialow,
+    data_spedycji: daneZamowienia.dataSpedycji,
+    opiekun: daneZamowienia.opiekun,
+    user: DecodeToken(cookies.token).id,
+    stan: daneZamowienia.stan,
+    status: daneZamowienia.status,
+    uwagi: daneZamowienia.uwagi,
+  });
+
+  const zamowienie_id = res.data.insertId;
+
+  produkty.map(async (produkt, i) => {
+        let res2 = await axios.post(ip + "produkty", {
+          nazwa: produkt.nazwa,
+          zamowienie_id: zamowienie_id,
+          typ: produkt.typ,
+          wersja: produkt.wersja,
+          uwagi: produkt.uwagi,
+        });
+        let produkt_id = res2.data.insertId;
+
+            produkty.map((t)=>{
+              if (t.index === i){
+                return {
+                  ...t, id: produkt_id
+                }
+              }
+
+
+              elementy
+              .filter((el) => el.produkt_id === produkt.id)
+              .map(async (element, m) => {
+                let res3 = await axios.post(ip + "elementy", {
+                  zamowienie_id: zamowienie_id,
+                  produkt_id: produkt_id,
+                  nazwa: element.nazwa,
+                  typ: element.typ,
+                  naklad: element.naklad,
+                  strony: element.ilosc_stron,
+                  kolory: element.kolory,
+                  format_x: element.format_x,
+                  format_y: element.format_y,
+                  papier_id: element.papier_id,
+                  gramatura_id: element.gramatura_id,
+                  papier_info: element.papier_info,
+                  uwagi: element.uwagi,
+                  // wykonczenie:element.wykonczenie,
+                });
+                let element_id = res3.data.insertId;
+      
+                elementy.map((t)=>{
+                  if (t.index === m){
+                    return {
+                      ...t, id: produkt_id
+                    }
+                  }
+                })
+
+
+                setElementy((prev) =>
+                  prev.map((t, a) => {
+                    // if (t.index === a && t.index === element.index) {
+                      if (t.index ===  element.index) {
+                      return {
+                        ...t,
+                        id: element_id,
+                        zamowienie_id: zamowienie_id,
+                        produkt_id: produkt_id,
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
+      
+                //save fragmenty
+                fragmenty
+                  .filter((frag) => frag.element_id === element.id)
+                  .map(async (fragment, m) => {
+                    let res4 = await axios.post(ip + "fragmenty", {
+                      naklad: fragment.naklad,
+                      info: fragment.info,
+                      index: fragment.index,
+                      zamowienie_id: zamowienie_id,
+                      element_id: element_id,
+                      produkt_id: produkt_id,
+                      typ: fragment.typ,
+                      oprawa_id: fragment.oprawa_id,
+                    });
+                    let fragment_id = res4.data.insertId;
+      
+                    setFragmenty((prev) =>
+                      prev.map((t, a) => {
+                        if (t.index === fragment.index) {
+                          return {
+                            ...t,
+                            id: fragment_id,
+                            zamowienie_id: zamowienie_id,
+                            produkt_id: produkt_id,
+                            element_id: element_id,
+                          };
+                        } else {
+                          return t;
+                        }
+                      })
+                    );
+      
+       
+                  });   // fragmenty end
+              });       //elementy end
+
+
+
+
+
+
+            })
+
+
+            
+
+  }    
+    )
+
+
 }
 
+
+  }
+
 export default ModalInsert;
+
+

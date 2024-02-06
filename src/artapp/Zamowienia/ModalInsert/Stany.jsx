@@ -259,3 +259,4 @@ function  FragmentyID({ row, handleChangeCardFragmenty }) {
     </td>
   );
 }
+

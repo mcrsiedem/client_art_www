@@ -57,12 +57,12 @@ function ModalInsert({
   const [preOrder, setPreOrder] = useState({
     typ: 1,
     oprawa: 1,
-    naklad: "",
-    strony_okl: "",
-    strony_srd: "",
-    format_x: "",
-    format_y: "",
-    bok_oprawy: ""
+    naklad: "1000",
+    strony_okl: "4",
+    strony_srd: "4",
+    format_x: "4",
+    format_y: "4",
+    bok_oprawy: "4"
 
   });
 
@@ -113,11 +113,12 @@ function ModalInsert({
       produkt_id:1,
 
       bok_oprawy: "297",
-      naklad: "1000",
+      naklad: "500",
       uwagi: "",
       data_spedycji: "2024-01-30",
       index: 0,
     },
+
     // {
     //   id: 2,
     //   zamowienie_id: 1,
@@ -326,7 +327,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           
           </div> */}
                 {openModalStany && (
-        <Stany openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} elementy={elementy} produkty={produkty} oprawa={oprawa} pakowanie={pakowanie}/>
+        <Stany handleChangeCardFragmenty={handleChangeCardFragmenty} openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} elementy={elementy} produkty={produkty} oprawa={oprawa} pakowanie={pakowanie}/>
       )}
     </div>
   );
@@ -384,6 +385,53 @@ const [openModalStany, setOpenModalStany] = useState(false);
           }
         })
       );
+
+        // oprawa start
+        oprawa.map(async (oprawa, i) => {
+          let oprawa_id_przed  =oprawa.id;
+          // console.log(oprawa.id)
+          let res5 = await axios.post(ip + "oprawa", {
+            zamowienie_id: zamowienie_id,
+            produkt_id: produkt_id,
+            oprawa: oprawa.oprawa,
+            naklad: oprawa.naklad,
+            uwagi: oprawa.uwagi,
+            data_spedycji: oprawa.data_spedycji
+          });
+          let oprawa_id = res5.data.insertId;
+    
+          setOprawa((prev) =>
+            prev.map((t) => {
+              if (t.index === i) {
+                return { ...t, id: oprawa_id,
+                  produkt_id: produkt_id,
+                   zamowienie_id: zamowienie_id };
+              } else {
+                return t;
+              }
+            })
+          );
+    
+          setFragmenty((prev) =>
+    
+          prev
+          //  .sort((a, b) => a.typ - b.typ)
+          .map((t, a) => {
+              console.log(t.oprawa_id)
+            if (t.oprawa_id === oprawa.id  ) {
+              return {
+                ...t,
+                oprawa_id:oprawa_id,
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+    
+        }); 
+
+        // oprawa end
 
       elementy
         .filter((el) => el.produkt_id === produkt.id)
@@ -460,52 +508,12 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
     // zapis oprawy - start
 
-    oprawa.map(async (oprawa, i) => {
-      let oprawa_id_przed  =oprawa.id;
-      // console.log(oprawa.id)
-      let res5 = await axios.post(ip + "oprawa", {
-        zamowienie_id: zamowienie_id,
-        produkt_id: produkt_id,
-        oprawa: oprawa.oprawa,
-        naklad: oprawa.naklad,
-        uwagi: oprawa.uwagi,
-        data_spedycji: oprawa.data_spedycji
-      });
-      let oprawa_id = res5.data.insertId;
 
-      setOprawa((prev) =>
-        prev.map((t) => {
-          if (t.index === i) {
-            return { ...t, id: oprawa_id,
-              produkt_id: produkt_id,
-               zamowienie_id: zamowienie_id };
-          } else {
-            return t;
-          }
-        })
-      );
-
-      setFragmenty((prev) =>
-
-      prev.map((t, a) => {
-        // console.log("oprawa id" +prev)
-        if (t.oprawa_id == oprawa.id) {
-          return {
-            ...t,
-            oprawa_id:oprawa_id,
-          };
-        } else {
-          return t;
-        }
-      })
-    );
-
-    }); 
     // zapis oprawy - end
 
 
 
-    
+
 
     });           //produkty end
 

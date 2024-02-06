@@ -7,7 +7,7 @@ import Modal from "../Modal/Modal";
 import ModalInsert from "./ModalInsert";
 import style from "../ModalInsert/Stany.module.css";
 
-export default function  Stany({openModalStany,setOpenModalStany, user, daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie }) {
+export default function  Stany({handleChangeCardFragmenty,openModalStany,setOpenModalStany, user, daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie }) {
 
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function  Stany({openModalStany,setOpenModalStany, user, daneZamo
     <div className={style.container}>
       <StanProdukty produkty={produkty}/>
       <StanElementy elementy={elementy}/>
-      <StanFragmenty fragmenty={fragmenty}/>
+      <StanFragmenty fragmenty={fragmenty} handleChangeCardFragmenty={handleChangeCardFragmenty}/>
       <StanOprawa oprawa={oprawa}/>
       </div>
 
@@ -138,7 +138,7 @@ function StanElementy({elementy}){
 
   )
 }
-function StanFragmenty({fragmenty}){
+function StanFragmenty({fragmenty,handleChangeCardFragmenty}){
 
   return(
 
@@ -173,7 +173,8 @@ function StanFragmenty({fragmenty}){
                 <td>{row.zamowienie_id} </td>
                 <td>{row.produkt_id} </td>
                 <td>{row.element_id}</td>
-                <td>{row.id} </td>
+                {/* <td>{row.id} </td> */}
+                <td><FragmentyID row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}/></td>
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
                 <td>{row.oprawa_id}</td>
@@ -205,7 +206,7 @@ function StanOprawa({oprawa}){
             <th className={style.col_id}>Rodzaj oprawy</th>
             <th className={style.col_id}>Bok oprawy</th>{" "}
             <th className={style.col_id} >Nakład</th>
-            <th >Uwagi</th>
+            <th >Wersja</th>
             <th >Data spedycji</th>
             <th >Data spedycji</th>
 
@@ -229,7 +230,7 @@ function StanOprawa({oprawa}){
                 <td>{row.oprawa}</td>
                 <td>{row.bok_oprawy} </td>
                 <td>{row.naklad}</td>
-                <td>{row.uwagi}</td>
+                <td>{row.wersja}</td>
                 <td>{row.data_spedycji}</td>
                 <td>{row.index}</td>
               </tr>
@@ -241,4 +242,20 @@ function StanOprawa({oprawa}){
 
 
   )
+}
+
+function  FragmentyID({ row, handleChangeCardFragmenty }) {
+  return (
+    <td>
+      <input
+        defaultValue={row.id}
+        onChange={(e) =>
+          handleChangeCardFragmenty({
+            ...row,
+            id: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
 }

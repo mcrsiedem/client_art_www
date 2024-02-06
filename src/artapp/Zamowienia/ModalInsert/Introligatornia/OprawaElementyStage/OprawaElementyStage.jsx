@@ -88,7 +88,7 @@ export default function OprawaElementyStage({
 
   }
 
-  const [wydziel, setWdziel] = useState();
+  const [wydziel, setWdziel] = useState(500);
 
   return (
     <div className={style.insertContainer}>
@@ -114,6 +114,7 @@ export default function OprawaElementyStage({
           className={style.btn}
           onClick={() => {
             wydzielOprawe();
+            setShowOprawaElementyStage(false);
           }}
         >
           OK
@@ -128,6 +129,7 @@ function Wydziel({ wydziel, setWdziel }) {
       <label className={style.label}> Wydziel z nakładu:</label>
       <input
         placeholder="0 szt."
+        defaultValue={wydziel}
         className={style.data}
         type="text"
         //  value="0"

@@ -52,10 +52,7 @@ export default function OprawaElementyStage({
 
     //--------------------------------------------------
     let id_nowej_oprawy = Math.max(...oprawa.map((f) => f.id)) + 1;
-
     const newFragmenty = fragmenty.slice();
-
-
 
     newFragmenty
     .filter((frag) => frag.oprawa_id === oprawa_row.id)
@@ -76,44 +73,11 @@ export default function OprawaElementyStage({
     })
 
 
-
-
-    // newFragmenty
-    // .push({
-    //   id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-    //   zamowienie_id: 1,
-    //   produkt_id: 1,
-    //   element_id: 1,
-    //   oprawa_id: id_nowej_oprawy,
-    //   naklad: wydziel,
-    //   typ: 1,
-    //   index: 2,
-    // });
-
-
-
-    // let newFragmenty2 = newFragmenty.slice();
-    // newFragmenty2.map((fragment) => {
-    //   if (fragment.oprawa_id == oprawa_row.id) {
-    //     newFragmenty2.push({
-    //       id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-    //       zamowienie_id: fragment.zamowienie_id,
-    //       produkt_id: fragment.produkt_id,
-    //       element_id: fragment.element_id,
-    //       oprawa_id: id_nowej_oprawy,
-    //       naklad: wydziel,
-    //       typ: fragment.typ,
-    //       index: parseInt(fragment.index) + 1,
-    //     });
-    //   }
-    // })
-
     setFragmenty(newFragmenty.map((t) => {
         if (t.oprawa_id == oprawa_row.id) {
           return {
             ...t,
-            naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-            wersja: "OK"
+            naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel)
           };
         } else {
           return t;

@@ -387,6 +387,51 @@ const [openModalStany, setOpenModalStany] = useState(false);
       );
 
 
+
+    // zapis oprawy - start
+
+        // oprawa start
+        oprawa.map(async (opr, i) => {
+          let oprawa_id_przed  =opr.id ;
+          let res5 = await axios.post(ip + "oprawa", {
+            zamowienie_id: zamowienie_id,
+            produkt_id: produkt_id,
+            oprawa: opr.oprawa,
+            naklad: opr.naklad,
+            uwagi: opr.uwagi,
+            data_spedycji: opr.data_spedycji
+          });
+          let oprawa_id = res5.data.insertId;
+
+          setOprawa((prev) =>
+            prev.map((t) => {
+              if (t.index == i) {
+                return { ...t, id: oprawa_id,
+                  produkt_id: produkt_id,
+                   zamowienie_id: zamowienie_id };
+              } else {
+                return t;
+              }
+            })
+          );
+    
+          setFragmenty((prev) =>
+          prev.map((t, a) => {
+              console.log(t.oprawa_id)
+            if (t.oprawa_id === opr.id  && opr.index <= a ) {
+              return {
+                ...t,
+                oprawa_id:oprawa_id,
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        }); 
+
+
+
       elementy
         .filter((el) => el.produkt_id === produkt.id)
         .map(async (element, m) => {
@@ -458,47 +503,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         });       //elementy end
 
 
-    // zapis oprawy - start
 
-        // oprawa start
-        oprawa.map(async (opr, i) => {
-          let oprawa_id_przed  =opr.id ;
-          let res5 = await axios.post(ip + "oprawa", {
-            zamowienie_id: zamowienie_id,
-            produkt_id: produkt_id,
-            oprawa: opr.oprawa,
-            naklad: opr.naklad,
-            uwagi: opr.uwagi,
-            data_spedycji: opr.data_spedycji
-          });
-          let oprawa_id = res5.data.insertId;
-
-          setOprawa((prev) =>
-            prev.map((t) => {
-              if (t.index == i) {
-                return { ...t, id: oprawa_id,
-                  produkt_id: produkt_id,
-                   zamowienie_id: zamowienie_id };
-              } else {
-                return t;
-              }
-            })
-          );
-    
-          setFragmenty((prev) =>
-          prev.map((t, a) => {
-              console.log(t.oprawa_id)
-            if (t.oprawa_id === opr.id  && opr.index <= a ) {
-              return {
-                ...t,
-                oprawa_id:oprawa_id,
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        }); 
 
     });           //produkty end
 

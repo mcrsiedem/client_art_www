@@ -18,7 +18,7 @@ export default function Stany({
   fragmenty,
   oprawa,
   pakowanie,
-  fragi
+
 }) {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
@@ -50,8 +50,7 @@ export default function Stany({
           handleChangeCardFragmenty={handleChangeCardFragmenty}
         />
         <StanOprawa oprawa={oprawa} />
-        <StanFragi fragi={fragi} />
-
+    
       </div>
     </div>
   );
@@ -150,6 +149,8 @@ function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
             <th className={style.col_id}>Nakład</th>
             <th>Typ</th>
             <th>Oprawa id</th>
+            <th>Oprawa id prev</th>
+
             <th>Wersja</th>
             <th>index</th>
           </tr>
@@ -179,6 +180,8 @@ function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
                 <td>{row.oprawa_id}</td>
+                <td>{row.oprawa_id_prev}</td>
+
                 <td>{row.wersja}</td>
                 <td>{row.index}</td>
               </tr>

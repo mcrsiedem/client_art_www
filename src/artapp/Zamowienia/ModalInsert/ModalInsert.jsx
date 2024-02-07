@@ -107,12 +107,6 @@ function ModalInsert({
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
 
-  // fragi - tymczasowe fragmenty utworzone aby można było dopisać id oprawy w trakcie zapisu
-  const [fragi, setFragi] = useState([      {
-    oprawa_id_prev: 1,
-    oprawa_id_new: "1",
-    fragment_id: 2,
-}]);
 
   const [oprawa, setOprawa] = useState([
     {
@@ -346,7 +340,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           produkty={produkty}
           oprawa={oprawa}
           pakowanie={pakowanie}
-          fragi={fragi}
+        
           
         />
       )}
@@ -467,14 +461,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               });
               let fragment_id = res4.data.insertId;
 
-              setFragi([
-                ...fragi,
-                {
-                    oprawa_id_prev: fragment.oprawa_id,
-                    oprawa_id_new: "",
-                    fragment_id: fragment_id,
-                }
-              ])
+
               setFragmenty((prev) =>
                 prev.map((t, a) => {
                   if (t.index === fragment.index) {
@@ -484,6 +471,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
                       zamowienie_id: zamowienie_id,
                       produkt_id: produkt_id,
                       element_id: element_id,
+                       oprawa_id_prev: fragment.oprawa_id,
                     };
                   } else {
                     return t;
@@ -506,19 +494,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           });
           let oprawa_id = res5.data.insertId;
 
-          setFragi(fragi
-            .map((t) => {
-              if (t.oprawa_id_prev === oprawa_id_przed) {
-                return {
-                  ...t,
-                  oprawa_id_new: oprawa_id,
-                };
-              } else {
-                return t;
-              }
-            })
-          );
-      
+
 
           setOprawa((prev) =>
             prev.map((t) => {

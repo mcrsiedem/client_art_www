@@ -106,6 +106,7 @@ function ModalInsert({
   ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
+  const [fragi, setFragi] = useState();
 
 
   const [oprawa, setOprawa] = useState([
@@ -478,7 +479,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
                   }
                 })
               );
-            });   // fragmenty end
+            }); 
+            setFragi(fragmenty);
+            console.log(fragi)
+
+              // fragmenty end
         });       //elementy end
 
 
@@ -521,7 +526,21 @@ const [openModalStany, setOpenModalStany] = useState(false);
             }
           })
         );
+
+
+        fragmenty.map(async (f, i) => {
+          let res5 = await axios.put(ip + "fragmenty", {
+            idFragmentu: f.id,
+      
+            oprawa_id_new: oprawa_id,
+      
+          });
+        })
+
         }); 
+
+
+
 
 
     });           //produkty end

@@ -81,9 +81,9 @@ export default function Login({user,setUser}) {
 
   return (
     <div className={style.container}>
-      <div className={style.header}>
+      {/* <div className={style.header}>
         <Header/>
-      </div>
+      </div> */}
       <div className={style.center}>
       <Center values={values} setValues={setValues} handleSubmit={handleSubmit}/>
       </div>

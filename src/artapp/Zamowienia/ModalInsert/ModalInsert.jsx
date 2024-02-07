@@ -478,6 +478,12 @@ const [openModalStany, setOpenModalStany] = useState(false);
           });
           let oprawa_id = res5.data.insertId;
     
+
+
+          // edycja oprawy we fragmentach
+
+
+
           setOprawa((prev) =>
             prev.map((t) => {
               if (t.index == i) {

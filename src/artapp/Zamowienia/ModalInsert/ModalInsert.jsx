@@ -387,7 +387,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
       );
 
 
-
       elementy
         .filter((el) => el.produkt_id === produkt.id)
         .map(async (element, m) => {
@@ -424,7 +423,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
               }
             })
           );
-
           //save fragmenty
           fragmenty
             .filter((frag) => frag.element_id === element.id)
@@ -456,8 +454,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
                   }
                 })
               );
-
- 
             });   // fragmenty end
         });       //elementy end
 
@@ -467,7 +463,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
         // oprawa start
         oprawa.map(async (opr, i) => {
           let oprawa_id_przed  =opr.id ;
-          // console.log(oprawa.id)
           let res5 = await axios.post(ip + "oprawa", {
             zamowienie_id: zamowienie_id,
             produkt_id: produkt_id,
@@ -477,12 +472,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
             data_spedycji: opr.data_spedycji
           });
           let oprawa_id = res5.data.insertId;
-    
-
-
-          // edycja oprawy we fragmentach
-
-
 
           setOprawa((prev) =>
             prev.map((t) => {
@@ -497,10 +486,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           );
     
           setFragmenty((prev) =>
-    
-          prev
-          //  .sort((a, b) => a.typ - b.typ)
-          .map((t, a) => {
+          prev.map((t, a) => {
               console.log(t.oprawa_id)
             if (t.oprawa_id === opr.id  && opr.index <= a ) {
               return {
@@ -512,29 +498,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
             }
           })
         );
-          
-        
         }); 
-
-        
-
-        // oprawa end
-    // zapis oprawy - end
-
-    // fragmenty
-    // .map(async (fragment, m) => {
-    //   let res4 = await axios.post(ip + "fragmenty", {
-    //     naklad: fragment.naklad,
-    //     info: fragment.info,
-    //     index: fragment.index,
-    //     zamowienie_id: zamowienie_id,
-    //     element_id: element_id,
-    //     produkt_id: produkt_id,
-    //     typ: fragment.typ,
-    //     oprawa_id: fragment.oprawa_id,
-    //   });
-    // })
-
 
     });           //produkty end
 

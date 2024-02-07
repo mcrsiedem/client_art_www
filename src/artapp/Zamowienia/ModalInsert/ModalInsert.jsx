@@ -106,6 +106,14 @@ function ModalInsert({
   ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
+
+  // fragi - tymczasowe fragmenty utworzone aby można było dopisać id oprawy w trakcie zapisu
+  const [fragi, setFragi] = useState([      {
+    oprawa_id_prev: 1,
+    oprawa_id_new: "1",
+    fragment_id: 2,
+}]);
+
   const [oprawa, setOprawa] = useState([
     {
       id: 1,
@@ -234,80 +242,83 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setDaneZamowienia={setDaneZamowienia}
       />
 
+      <div className={style.main}>
+        {showParametryZamowienia && (
+          <div>
+            <Produkty
+              produkty={produkty}
+              handleChangeCardProdukty={handleChangeCardProdukty}
+              _typ_produktu={_typ_produktu}
+              isTable={isTable}
+            />
 
-  <div className={style.main}> 
-  {showParametryZamowienia && ( 
-      <div>
-          <Produkty
-        produkty={produkty}
-        handleChangeCardProdukty={handleChangeCardProdukty}
-        _typ_produktu={_typ_produktu}
-        isTable={isTable}
-      />
+            <Elementy
+              elementy={elementy}
+              setElementy={setElementy}
+              handleChangeCardElementy={handleChangeCardElementy}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
+              selected_papier={selected_papier}
+              setSelected_papier={setSelected_papier}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              info={info}
+              setInfo={setInfo}
+              listaPapierow={listaPapierow}
+              listaGramatur={listaGramatur}
+              listaUszlachetnien={listaUszlachetnien}
+              setListaUszlachetnien={setListaUszlachetnien}
+              setListaGramatur={setListaGramatur}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
+              procesyElementow={procesyElementow}
+              setProcesyElementow={setProcesyElementow}
+              listaDostepnychProcesow={listaDostepnychProcesow}
+              showElementyProcesyInsert={showElementyProcesyInsert}
+              setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+              handleChangeCardFragmenty_i_Elementy={
+                handleChangeCardFragmenty_i_Elementy
+              }
+              handleChangeCardFragmentyOprawaId={
+                handleChangeCardFragmentyOprawaId
+              }
+            />
 
-      <Elementy
-        elementy={elementy}
-        setElementy={setElementy}
-        handleChangeCardElementy={handleChangeCardElementy}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        selected_papier={selected_papier}
-        setSelected_papier={setSelected_papier}
-        fragmenty={fragmenty}
-        setFragmenty={setFragmenty}
-        info={info}
-        setInfo={setInfo}
-        listaPapierow={listaPapierow}
-        listaGramatur={listaGramatur}
-        listaUszlachetnien={listaUszlachetnien}
-        setListaUszlachetnien={setListaUszlachetnien}
-        setListaGramatur={setListaGramatur}
-        isEdit={isEdit}
-        setIsEdit={setIsEdit}
-        procesyElementow={procesyElementow}
-        setProcesyElementow={setProcesyElementow}
-        listaDostepnychProcesow={listaDostepnychProcesow}
-        showElementyProcesyInsert={showElementyProcesyInsert}
-        setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-        handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
-        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-      />
+            <Introligatornia
+              oprawa={oprawa}
+              setOprawa={setOprawa}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              handleChangeCardOprawa={handleChangeCardOprawa}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
+              handleChangeCardFragmentyOprawaId={
+                handleChangeCardFragmentyOprawaId
+              }
+            />
 
-      <Introligatornia
-        oprawa={oprawa}
-        setOprawa={setOprawa}
-        fragmenty={fragmenty}
-        setFragmenty={setFragmenty}
-        handleChangeCardOprawa={handleChangeCardOprawa}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-      />
+            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} />
+          </div>
+        )}
 
-      <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie}/>
-  </div> )}
-
-  {showTemplate && ( 
-      <div>
-          <ProduktTemplate
-          preOrder={preOrder}
-          setPreOrder={setPreOrder}
-          setShowTemplate={setShowTemplate}
-          setShowParametryZamowienia={setShowParametryZamowienia}
-          produkty={produkty}
-          setProdukty={setProdukty}
-          handleChangeCardProdukty={handleChangeCardProdukty}
-          elementy={elementy}
-          setElementy={setElementy}
-          fragmenty={fragmenty}
-          setFragmenty={setFragmenty}
-          oprawa={oprawa}
-          setOprawa={setOprawa}
-
-        
-      />
-      
-    </div> )}
-
-</div> 
+        {showTemplate && (
+          <div>
+            <ProduktTemplate
+              preOrder={preOrder}
+              setPreOrder={setPreOrder}
+              setShowTemplate={setShowTemplate}
+              setShowParametryZamowienia={setShowParametryZamowienia}
+              produkty={produkty}
+              setProdukty={setProdukty}
+              handleChangeCardProdukty={handleChangeCardProdukty}
+              elementy={elementy}
+              setElementy={setElementy}
+              fragmenty={fragmenty}
+              setFragmenty={setFragmenty}
+              oprawa={oprawa}
+              setOprawa={setOprawa}
+            />
+          </div>
+        )}
+      </div>
 
       {showElementyProcesyInsert && (
         <ElementyProcesInsert
@@ -318,7 +329,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
         />
       )}
 
-
       {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
 
       {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
@@ -326,8 +336,19 @@ const [openModalStany, setOpenModalStany] = useState(false);
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
           
           </div> */}
-                {openModalStany && (
-        <Stany handleChangeCardFragmenty={handleChangeCardFragmenty} openModalStany={openModalStany} setOpenModalStany={setOpenModalStany} fragmenty={fragmenty} elementy={elementy} produkty={produkty} oprawa={oprawa} pakowanie={pakowanie}/>
+      {openModalStany && (
+        <Stany
+          handleChangeCardFragmenty={handleChangeCardFragmenty}
+          openModalStany={openModalStany}
+          setOpenModalStany={setOpenModalStany}
+          fragmenty={fragmenty}
+          elementy={elementy}
+          produkty={produkty}
+          oprawa={oprawa}
+          pakowanie={pakowanie}
+          fragi={fragi}
+          
+        />
       )}
     </div>
   );
@@ -391,44 +412,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
     // zapis oprawy - start
 
         // oprawa start
-        oprawa.map(async (opr, i) => {
-          let oprawa_id_przed  =opr.id ;
-          let res5 = await axios.post(ip + "oprawa", {
-            zamowienie_id: zamowienie_id,
-            produkt_id: produkt_id,
-            oprawa: opr.oprawa,
-            naklad: opr.naklad,
-            uwagi: opr.uwagi,
-            data_spedycji: opr.data_spedycji
-          });
-          let oprawa_id = res5.data.insertId;
-
-          setOprawa((prev) =>
-            prev.map((t) => {
-              if (t.index == i) {
-                return { ...t, id: oprawa_id,
-                  produkt_id: produkt_id,
-                   zamowienie_id: zamowienie_id };
-              } else {
-                return t;
-              }
-            })
-          );
-    
-          setFragmenty((prev) =>
-          prev.map((t, a) => {
-              console.log(t.oprawa_id)
-            if (t.oprawa_id === opr.id  && opr.index <= a ) {
-              return {
-                ...t,
-                oprawa_id:oprawa_id,
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        }); 
 
 
 
@@ -484,6 +467,14 @@ const [openModalStany, setOpenModalStany] = useState(false);
               });
               let fragment_id = res4.data.insertId;
 
+              setFragi([
+                ...fragi,
+                {
+                    oprawa_id_prev: fragment.oprawa_id,
+                    oprawa_id_new: "",
+                    fragment_id: fragment_id,
+                }
+              ])
               setFragmenty((prev) =>
                 prev.map((t, a) => {
                   if (t.index === fragment.index) {
@@ -503,6 +494,58 @@ const [openModalStany, setOpenModalStany] = useState(false);
         });       //elementy end
 
 
+        oprawa.map(async (opr, i) => {
+          let oprawa_id_przed  =opr.id ;
+          let res5 = await axios.post(ip + "oprawa", {
+            zamowienie_id: zamowienie_id,
+            produkt_id: produkt_id,
+            oprawa: opr.oprawa,
+            naklad: opr.naklad,
+            uwagi: opr.uwagi,
+            data_spedycji: opr.data_spedycji
+          });
+          let oprawa_id = res5.data.insertId;
+
+          setFragi(fragi
+            .map((t) => {
+              if (t.oprawa_id_prev === oprawa_id_przed) {
+                return {
+                  ...t,
+                  oprawa_id_new: oprawa_id,
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+      
+
+          setOprawa((prev) =>
+            prev.map((t) => {
+              if (t.index == i) {
+                return { ...t, id: oprawa_id,
+                  produkt_id: produkt_id,
+                   zamowienie_id: zamowienie_id };
+              } else {
+                return t;
+              }
+            })
+          );
+    
+          setFragmenty((prev) =>
+          prev.map((t, a) => {
+              console.log(t.oprawa_id)
+            if (t.oprawa_id === opr.id  && opr.index <= a ) {
+              return {
+                ...t,
+                oprawa_id:oprawa_id,
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        }); 
 
 
     });           //produkty end
@@ -669,142 +712,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
 
-//cos na probe
-async function postZamowienie2({daneZamowienia}) {
-
-  let res = await axios.post(ip + "zamowienie", {
-    nr: daneZamowienia.nr,
-    rok: daneZamowienia.rok,
-    firma_id: daneZamowienia.firma,
-    klient_id: daneZamowienia.klient,
-    tytul: daneZamowienia.tytul,
-    data_przyjecia: daneZamowienia.dataPrzyjecia,
-    data_materialow: daneZamowienia.dataMaterialow,
-    data_spedycji: daneZamowienia.dataSpedycji,
-    opiekun: daneZamowienia.opiekun,
-    user: DecodeToken(cookies.token).id,
-    stan: daneZamowienia.stan,
-    status: daneZamowienia.status,
-    uwagi: daneZamowienia.uwagi,
-  });
-
-  const zamowienie_id = res.data.insertId;
-
-  produkty.map(async (produkt, i) => {
-        let res2 = await axios.post(ip + "produkty", {
-          nazwa: produkt.nazwa,
-          zamowienie_id: zamowienie_id,
-          typ: produkt.typ,
-          wersja: produkt.wersja,
-          uwagi: produkt.uwagi,
-        });
-        let produkt_id = res2.data.insertId;
-
-            produkty.map((t)=>{
-              if (t.index === i){
-                return {
-                  ...t, id: produkt_id
-                }
-              }
-
-
-              elementy
-              .filter((el) => el.produkt_id === produkt.id)
-              .map(async (element, m) => {
-                let res3 = await axios.post(ip + "elementy", {
-                  zamowienie_id: zamowienie_id,
-                  produkt_id: produkt_id,
-                  nazwa: element.nazwa,
-                  typ: element.typ,
-                  naklad: element.naklad,
-                  strony: element.ilosc_stron,
-                  kolory: element.kolory,
-                  format_x: element.format_x,
-                  format_y: element.format_y,
-                  papier_id: element.papier_id,
-                  gramatura_id: element.gramatura_id,
-                  papier_info: element.papier_info,
-                  uwagi: element.uwagi,
-                  // wykonczenie:element.wykonczenie,
-                });
-                let element_id = res3.data.insertId;
-      
-                elementy.map((t)=>{
-                  if (t.index === m){
-                    return {
-                      ...t, id: produkt_id
-                    }
-                  }
-                })
-
-
-                setElementy((prev) =>
-                  prev.map((t, a) => {
-                    // if (t.index === a && t.index === element.index) {
-                      if (t.index ===  element.index) {
-                      return {
-                        ...t,
-                        id: element_id,
-                        zamowienie_id: zamowienie_id,
-                        produkt_id: produkt_id,
-                      };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
-      
-                //save fragmenty
-                fragmenty
-                  .filter((frag) => frag.element_id === element.id)
-                  .map(async (fragment, m) => {
-                    let res4 = await axios.post(ip + "fragmenty", {
-                      naklad: fragment.naklad,
-                      info: fragment.info,
-                      index: fragment.index,
-                      zamowienie_id: zamowienie_id,
-                      element_id: element_id,
-                      produkt_id: produkt_id,
-                      typ: fragment.typ,
-                      oprawa_id: fragment.oprawa_id,
-                    });
-                    let fragment_id = res4.data.insertId;
-      
-                    setFragmenty((prev) =>
-                      prev.map((t, a) => {
-                        if (t.index === fragment.index) {
-                          return {
-                            ...t,
-                            id: fragment_id,
-                            zamowienie_id: zamowienie_id,
-                            produkt_id: produkt_id,
-                            element_id: element_id,
-                          };
-                        } else {
-                          return t;
-                        }
-                      })
-                    );
-      
-       
-                  });   // fragmenty end
-              });       //elementy end
-
-
-
-
-
-
-            })
-
-
-            
-
-  }    
-    )
-
-
-}
 
 
   }

@@ -7,16 +7,23 @@ import Modal from "../Modal/Modal";
 import ModalInsert from "./ModalInsert";
 import style from "../ModalInsert/Stany.module.css";
 
-export default function  Stany({handleChangeCardFragmenty,openModalStany,setOpenModalStany, user, daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie }) {
-
+export default function Stany({
+  handleChangeCardFragmenty,
+  openModalStany,
+  setOpenModalStany,
+  user,
+  daneZamowienia,
+  produkty,
+  elementy,
+  fragmenty,
+  oprawa,
+  pakowanie,
+  fragi
+}) {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
 
-
-  async function fechZamowienia() {
-
-
-  }
+  async function fechZamowienia() {}
 
   async function checkToken() {
     axios.get(ip + "/islogged/" + cookies.token).then((res) => {
@@ -33,23 +40,24 @@ export default function  Stany({handleChangeCardFragmenty,openModalStany,setOpen
     checkToken();
   }, []);
 
-
   return (
     <div className={style.body}>
-    <div className={style.container}>
-      <StanProdukty produkty={produkty}/>
-      <StanElementy elementy={elementy}/>
-      <StanFragmenty fragmenty={fragmenty} handleChangeCardFragmenty={handleChangeCardFragmenty}/>
-      <StanOprawa oprawa={oprawa}/>
-      </div>
+      <div className={style.container}>
+        <StanProdukty produkty={produkty} />
+        <StanElementy elementy={elementy} />
+        <StanFragmenty
+          fragmenty={fragmenty}
+          handleChangeCardFragmenty={handleChangeCardFragmenty}
+        />
+        <StanOprawa oprawa={oprawa} />
+        <StanFragi fragi={fragi} />
 
+      </div>
     </div>
   );
 }
-function StanProdukty({produkty}){
-
-  return(
-
+function StanProdukty({ produkty }) {
+  return (
     <div className={style.tableContainer}>
       <div className={style.title}>Produkty</div>
       <table>
@@ -59,20 +67,16 @@ function StanProdukty({produkty}){
             <th className={style.col_id}>Produkt id</th>
             <th className={style.col_id}>Element id</th>
             <th className={style.col_id}>Fragment id</th>{" "}
-            <th className={style.col_id} >Nakład</th>
-            <th >Typ</th>
-            <th >Wersja</th>
+            <th className={style.col_id}>Nakład</th>
+            <th>Typ</th>
+            <th>Wersja</th>
           </tr>
         </thead>
 
         <tbody>
           {produkty.map((row) => {
             return (
-              <tr
-                key={row.id}
-                onDoubleClick={(node, event) => {
-                }}
-              >
+              <tr key={row.id} onDoubleClick={(node, event) => {}}>
                 <td>{row.zamowienie_id} </td>
                 <td>{row.id} </td>
                 <td>{row.element_id}</td>
@@ -86,15 +90,11 @@ function StanProdukty({produkty}){
         </tbody>
       </table>
     </div>
-
-
-  )
+  );
 }
 
-function StanElementy({elementy}){
-
-  return(
-
+function StanElementy({ elementy }) {
+  return (
     <div className={style.tableContainer}>
       <div className={style.title}>Elementy</div>
       <table>
@@ -104,9 +104,9 @@ function StanElementy({elementy}){
             <th className={style.col_id}>Produkt id</th>
             <th className={style.col_id}>Element id</th>
             <th className={style.col_id}>Fragment id</th>{" "}
-            <th className={style.col_id} >Nakład</th>
-            <th >Typ</th>
-            <th >Wersja</th>
+            <th className={style.col_id}>Nakład</th>
+            <th>Typ</th>
+            <th>Wersja</th>
           </tr>
         </thead>
 
@@ -134,14 +134,10 @@ function StanElementy({elementy}){
         </tbody>
       </table>
     </div>
-
-
-  )
+  );
 }
-function StanFragmenty({fragmenty,handleChangeCardFragmenty}){
-
-  return(
-
+function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
+  return (
     <div className={style.tableContainer}>
       <div className={style.title}>Fragmenty</div>
       <table>
@@ -151,11 +147,11 @@ function StanFragmenty({fragmenty,handleChangeCardFragmenty}){
             <th className={style.col_id}>Produkt id</th>
             <th className={style.col_id}>Element id</th>
             <th className={style.col_id}>Fragment id</th>{" "}
-            <th className={style.col_id} >Nakład</th>
-            <th >Typ</th>
-            <th >Oprawa id</th>
-            <th >Wersja</th>
-            <th >index</th>
+            <th className={style.col_id}>Nakład</th>
+            <th>Typ</th>
+            <th>Oprawa id</th>
+            <th>Wersja</th>
+            <th>index</th>
           </tr>
         </thead>
 
@@ -174,7 +170,12 @@ function StanFragmenty({fragmenty,handleChangeCardFragmenty}){
                 <td>{row.produkt_id} </td>
                 <td>{row.element_id}</td>
                 {/* <td>{row.id} </td> */}
-                <td><FragmentyID row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}/></td>
+                <td>
+                  <FragmentyID
+                    row={row}
+                    handleChangeCardFragmenty={handleChangeCardFragmenty}
+                  />
+                </td>
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
                 <td>{row.oprawa_id}</td>
@@ -186,15 +187,11 @@ function StanFragmenty({fragmenty,handleChangeCardFragmenty}){
         </tbody>
       </table>
     </div>
-
-
-  )
+  );
 }
 
-function StanOprawa({oprawa}){
-
-  return(
-
+function StanOprawa({ oprawa }) {
+  return (
     <div className={style.tableContainer}>
       <div className={style.title}>Oprawa</div>
       <table>
@@ -205,11 +202,10 @@ function StanOprawa({oprawa}){
             <th className={style.col_id}>Oprawa id</th>
             <th className={style.col_id}>Rodzaj oprawy</th>
             <th className={style.col_id}>Bok oprawy</th>{" "}
-            <th className={style.col_id} >Nakład</th>
-            <th >Wersja</th>
-            <th >Data spedycji</th>
-            <th >Data spedycji</th>
-
+            <th className={style.col_id}>Nakład</th>
+            <th>Wersja</th>
+            <th>Data spedycji</th>
+            <th>Data spedycji</th>
           </tr>
         </thead>
 
@@ -239,12 +235,47 @@ function StanOprawa({oprawa}){
         </tbody>
       </table>
     </div>
+  );
+}
+function StanFragi({ fragi }) {
+  return (
+    <div className={style.tableContainer}>
+      <div className={style.title}>Fragi</div>
+      <table>
+        <thead>
+          <tr>
+            <th className={style.col_id}>oprawa_id_prev</th>
+            <th className={style.col_id}>oprawa_id_new</th>
+            <th className={style.col_id}>fragment_id</th>
 
+          </tr>
+        </thead>
 
-  )
+        <tbody>
+          {fragi.map((row) => {
+            return (
+              <tr
+                // className={row.id === 6 ? style.bgdanger : ""}
+                key={row.fragment_id}
+                onDoubleClick={(node, event) => {
+                  // setOpenModal(true);
+                  // setRow({ id: row.id, user: row.user });
+                }}
+              >
+                <td>{row.oprawa_id_prev} </td>
+                <td>{row.oprawa_id_new} </td>
+                <td>{row.fragment_id} </td>
+
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-function  FragmentyID({ row, handleChangeCardFragmenty }) {
+function FragmentyID({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input
@@ -259,4 +290,3 @@ function  FragmentyID({ row, handleChangeCardFragmenty }) {
     </td>
   );
 }
-

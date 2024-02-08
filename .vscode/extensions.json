@@ -1,5 +1,8 @@
 {
     "recommendations": [
-        "pnp.polacode"
+        "pnp.polacode",
+        "dzhavat.bracket-pair-toggler",
+        "jzmstrjp.color-the-tag-name",
+        "chriskruki.bracket-viz"
     ]
 }

@@ -359,7 +359,43 @@ const [openModalStany, setOpenModalStany] = useState(false);
       setCheck_data_wejscia(true);
     }
   }
+  //----------------------------------
 
+  async function postZamowienieObj(){
+    let res = await axios.post(ip + "zamowienie", {
+      nr: daneZamowienia.nr,
+      rok: daneZamowienia.rok,
+      firma_id: daneZamowienia.firma,
+      klient_id: daneZamowienia.klient,
+      tytul: daneZamowienia.tytul,
+      data_przyjecia: daneZamowienia.dataPrzyjecia,
+      data_materialow: daneZamowienia.dataMaterialow,
+      data_spedycji: daneZamowienia.dataSpedycji,
+      opiekun: daneZamowienia.opiekun,
+      user: DecodeToken(cookies.token).id,
+      stan: daneZamowienia.stan,
+      status: daneZamowienia.status,
+      uwagi: daneZamowienia.uwagi,
+    });
+
+    const zamowienie_id = res.data.insertId;
+
+    const produktyEdit = [...produkty]
+
+    produktyEdit.forEach(async (produkt, i) => {
+        let res2 = await axios.post(ip + "produkty", {
+          nazwa: produkt.nazwa,
+          zamowienie_id: zamowienie_id,
+          typ: produkt.typ,
+          wersja: produkt.wersja,
+          uwagi: produkt.uwagi,
+        });
+        let produkt_id = res2.data.insertId;
+
+
+  }); 
+
+  }
   //----------------------------------
 
   async function postZamowienie() {
@@ -404,7 +440,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
 
-    // zapis oprawy - start
+      // zapis oprawy - start
 
         // oprawa start
 
@@ -527,8 +563,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
           })
         );
 
+          setFragmenty((prev) => prev
+          )
 
-        fragmenty.map(async (f, i) => {
+
+        fragmenty.forEach(async (f, i) => {
           let res5 = await axios.put(ip + "fragmenty", {
             idFragmentu: f.id,
       

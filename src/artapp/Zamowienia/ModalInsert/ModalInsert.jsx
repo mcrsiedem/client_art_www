@@ -366,6 +366,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
   async function postZamowienieObj(){
    
 const produktyEdit = produkty.slice();
+const elementyEdit = elementy.slice();
+
 console.clear();
           let res = await axios.post(ip + "zamowienie", {
             nr: daneZamowienia.nr,
@@ -389,7 +391,7 @@ console.clear();
           
 
                   produktyEdit.forEach(async (produkt, index) => {
-                    console.log("index: " + index);
+                  
                     let res2 = await axios.post(ip + "produkty", {
                       nazwa: produkt.nazwa,
                       zamowienie_id: zamowienie_id,
@@ -399,15 +401,43 @@ console.clear();
                     });
                     let produkt_id = res2.data.insertId;
 
-                    console.log("produkt_id: " + produkt_id);
                     produktyEdit[index].id = produkt_id
                     produktyEdit[index].zamowienie_id = zamowienie_id
 
+                          elementyEdit
+                          .filter((el) => el.produkt_id === produkt.id)
+                          .forEach(async (element, index_element) => {
+                            let res3 = await axios.post(ip + "elementy", {
+                              zamowienie_id: zamowienie_id,
+                              produkt_id: produkt_id,
+                              nazwa: element.nazwa,
+                              typ: element.typ,
+                              naklad: element.naklad,
+                              strony: element.ilosc_stron,
+                              kolory: element.kolory,
+                              format_x: element.format_x,
+                              format_y: element.format_y,
+                              papier_id: element.papier_id,
+                              gramatura_id: element.gramatura_id,
+                              papier_info: element.papier_info,
+                              uwagi: element.uwagi,
+                              // wykonczenie:element.wykonczenie,
+                            });
+                            let element_id = res3.data.insertId;
+                            
+                            elementyEdit[index_element].id = element_id
+                            elementyEdit[index_element].zamowienie_id = zamowienie_id
+                            elementyEdit[index_element].produkt_id = produkt_id
 
-                    console.log("produkty: " + produkty.length);
-                    console.log(produkty);
-                    console.log("produkty: " + produktyEdit.length);
-                    console.log(produktyEdit[index].id);
+                          });
+
+
+
+                    // console.log("produkty: " + produkty.length);
+                    console.log(produktyEdit);
+                    console.log(elementyEdit);
+                    // console.log("produkty: " + produktyEdit.length);
+                    // console.log(produktyEdit[index].id);
 
                   }); 
 

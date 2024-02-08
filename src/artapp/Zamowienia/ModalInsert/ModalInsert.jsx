@@ -424,22 +424,22 @@ console.clear();
                             });
                             let element_id = res3.data.insertId;
                             
+
+
                             elementyEdit[index_element].id = element_id
                             elementyEdit[index_element].zamowienie_id = zamowienie_id
                             elementyEdit[index_element].produkt_id = produkt_id
-
+                            setElementy(elementyEdit);
                           });
 
-                          
+
+
                     produktyEdit[index].id = produkt_id
                     produktyEdit[index].zamowienie_id = zamowienie_id
+                    setProdukty(produktyEdit);
 
-
-                    // console.log("produkty: " + produkty.length);
                     console.log(produktyEdit);
                     console.log(elementyEdit);
-                    // console.log("produkty: " + produktyEdit.length);
-                    // console.log(produktyEdit[index].id);
 
                   }); 
 

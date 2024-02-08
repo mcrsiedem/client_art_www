@@ -401,8 +401,7 @@ console.clear();
                     });
                     let produkt_id = res2.data.insertId;
 
-                    produktyEdit[index].id = produkt_id
-                    produktyEdit[index].zamowienie_id = zamowienie_id
+                    
 
                           elementyEdit
                           .filter((el) => el.produkt_id === produkt.id)
@@ -431,6 +430,9 @@ console.clear();
 
                           });
 
+                          
+                    produktyEdit[index].id = produkt_id
+                    produktyEdit[index].zamowienie_id = zamowienie_id
 
 
                     // console.log("produkty: " + produkty.length);

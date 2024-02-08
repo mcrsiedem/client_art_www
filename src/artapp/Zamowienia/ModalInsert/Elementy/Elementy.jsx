@@ -102,7 +102,7 @@ function ElementyTable({
   handleChangeCardFragmentyOprawaId
 }) {
 
-  const [expand,setExpand] =useState(false);
+  const [expand,setExpand] =useState(true);
   return (
     <div className={style.main}>
       <table className={style.table2}>

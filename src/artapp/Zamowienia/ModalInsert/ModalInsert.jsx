@@ -32,6 +32,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 
 
@@ -363,7 +364,9 @@ const [openModalStany, setOpenModalStany] = useState(false);
   //----------------------------------
 
   async function postZamowienieObj(){
-    console.log("start");
+   
+const produktyEdit = produkty.slice();
+console.clear();
           let res = await axios.post(ip + "zamowienie", {
             nr: daneZamowienia.nr,
             rok: daneZamowienia.rok,
@@ -381,21 +384,43 @@ const [openModalStany, setOpenModalStany] = useState(false);
           });
 
           const zamowienie_id = res.data.insertId;
+              
 
-          const produktyEdit = [...produkty]
+          
 
-              produktyEdit.forEach(async (produkt, i) => {
-                        let res2 = await axios.post(ip + "produkty", {
-                          nazwa: produkt.nazwa,
+                  produktyEdit.forEach(async (produkt, index) => {
+                    console.log("index: " + index);
+                    let res2 = await axios.post(ip + "produkty", {
+                      nazwa: produkt.nazwa,
+                      zamowienie_id: zamowienie_id,
+                      typ: produkt.typ,
+                      wersja: produkt.wersja,
+                      uwagi: produkt.uwagi,
+                    });
+                    let produkt_id = res2.data.insertId;
+
+                    await produktyEdit.map((p) => {
+                      if (p.index == 0) {
+                        return {
+                          ...p,
+                          id: produkt_id,
                           zamowienie_id: zamowienie_id,
-                          typ: produkt.typ,
-                          wersja: produkt.wersja,
-                          uwagi: produkt.uwagi,
-                        });
-                        let produkt_id = res2.data.insertId;
+                        };
+                      }
+                    });
+
+                  }); 
 
 
-              }); 
+              // console.clear();
+              console.log("produkty: " + produkty.length);
+              console.log(produkty);
+                  
+ 
+
+                console.log("produkty: " + produktyEdit.length);
+                console.log(produktyEdit);
+
 
   }
   //----------------------------------
@@ -526,57 +551,61 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
         oprawa.map(async (opr, i) => {
-          let oprawa_id_przed  =opr.id ;
-          let res5 = await axios.post(ip + "oprawa", {
-            zamowienie_id: zamowienie_id,
-            produkt_id: produkt_id,
-            oprawa: opr.oprawa,
-            naklad: opr.naklad,
-            uwagi: opr.uwagi,
-            data_spedycji: opr.data_spedycji
-          });
-          let oprawa_id = res5.data.insertId;
+                  let oprawa_id_przed  =opr.id ;
+                  let res5 = await axios.post(ip + "oprawa", {
+                    zamowienie_id: zamowienie_id,
+                    produkt_id: produkt_id,
+                    oprawa: opr.oprawa,
+                    naklad: opr.naklad,
+                    uwagi: opr.uwagi,
+                    data_spedycji: opr.data_spedycji
+                  });
+                  let oprawa_id = res5.data.insertId;
 
 
 
-          setOprawa((prev) =>
-            prev.map((t) => {
-              if (t.index == i) {
-                return { ...t, id: oprawa_id,
-                  produkt_id: produkt_id,
-                   zamowienie_id: zamowienie_id };
-              } else {
-                return t;
-              }
-            })
-          );
-    
-          setFragmenty((prev) =>
-          prev.map((t, a) => {
-              // console.log(t.oprawa_id)
-            if (t.oprawa_id === opr.id  && opr.index <= a ) {
-              return {
-                ...t,
-                oprawa_id:oprawa_id,
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-
-          setFragmenty((prev) => prev
-          )
+                  setOprawa((prev) =>
+                    prev.map((t) => {
+                      if (t.index == i) {
+                        return { ...t, id: oprawa_id,
+                          produkt_id: produkt_id,
+                          zamowienie_id: zamowienie_id };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
+            
+         
+              
 
 
-        fragmenty.forEach(async (f, i) => {
-          let res5 = await axios.put(ip + "fragmenty", {
-            idFragmentu: f.id,
-      
-            oprawa_id_new: oprawa_id,
-      
-          });
-        })
+                fragmenty.map(async (f, i) => {
+                  let res5 = await axios.put(ip + "fragmenty", {
+                    idFragmentu: f.id,
+              
+                    oprawa_id_new: oprawa_id,
+              
+                  });
+
+                           setFragmenty((prev) =>
+                  prev.map((t, a) => {
+                      // console.log(t.oprawa_id)
+                    if (t.oprawa_id === opr.id  && opr.index <= a ) {
+                      return {
+                        ...t,
+                        oprawa_id:oprawa_id,
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
+
+
+
+                  
+                })
 
         }); 
 

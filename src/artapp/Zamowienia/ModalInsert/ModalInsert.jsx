@@ -369,6 +369,7 @@ const produktyEdit = produkty.slice();
 const elementyEdit = elementy.slice();
 const fragmentyEdit = fragmenty.slice();
 
+
 console.clear();
           let res = await axios.post(ip + "zamowienie", {
             nr: daneZamowienia.nr,
@@ -427,9 +428,9 @@ console.clear();
 
           
 
-                                          fragmentyEdit
+                                          fragmenty
                                         .filter((f) => f.element_id === element.id)
-                                        .map(async (fragment, index_fragmenty) => {
+                                        .forEach(async (fragment, index_fragmenty) => {
                                           let res4 = await axios.post(ip + "fragmenty", {
                                             naklad: fragment.naklad,
                                             info: fragment.info,
@@ -443,32 +444,40 @@ console.clear();
                                           let fragment_id = res4.data.insertId;
                                           
                                           fragmentyEdit[index_fragmenty].id = fragment_id
-
+                                          fragmentyEdit[index_fragmenty].zamowienie_id = zamowienie_id
+                                          fragmentyEdit[index_fragmenty].produkt_id = produkt_id
+                                          fragmentyEdit[index_fragmenty].element_id = element_id
+                                            setFragmenty(fragmentyEdit)
+                                  
+              
                                           });
 
 
 
 
-
+                                          elementyEdit[index_element].id = element_id
+                                          elementyEdit[index_element].zamowienie_id = zamowienie_id
+                                          elementyEdit[index_element].produkt_id = produkt_id
+                                          setElementy(elementyEdit)
                                     
-
-                            elementyEdit[index_element].id = element_id
-                            elementyEdit[index_element].zamowienie_id = zamowienie_id
-                            elementyEdit[index_element].produkt_id = produkt_id
-                            setElementy(elementyEdit);
+                                          
+                        
+                            
                           });
 
 
-                     
+                    
 
 
 
+
+                                         
 
 
                     produktyEdit[index].id = produkt_id
                     produktyEdit[index].zamowienie_id = zamowienie_id
                     setProdukty(produktyEdit);
-
+                    
                     console.log(produktyEdit);
                     console.log(elementyEdit);
                     console.log(fragmentyEdit);

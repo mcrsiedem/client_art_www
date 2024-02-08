@@ -218,6 +218,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
         postZamowienie={postZamowienie}
+        postZamowienieObj={postZamowienieObj}
         id={idZamowienie}
         isTable={isTable}
         setIsTable={setIsTable}
@@ -362,38 +363,39 @@ const [openModalStany, setOpenModalStany] = useState(false);
   //----------------------------------
 
   async function postZamowienieObj(){
-    let res = await axios.post(ip + "zamowienie", {
-      nr: daneZamowienia.nr,
-      rok: daneZamowienia.rok,
-      firma_id: daneZamowienia.firma,
-      klient_id: daneZamowienia.klient,
-      tytul: daneZamowienia.tytul,
-      data_przyjecia: daneZamowienia.dataPrzyjecia,
-      data_materialow: daneZamowienia.dataMaterialow,
-      data_spedycji: daneZamowienia.dataSpedycji,
-      opiekun: daneZamowienia.opiekun,
-      user: DecodeToken(cookies.token).id,
-      stan: daneZamowienia.stan,
-      status: daneZamowienia.status,
-      uwagi: daneZamowienia.uwagi,
-    });
+    console.log("start");
+          let res = await axios.post(ip + "zamowienie", {
+            nr: daneZamowienia.nr,
+            rok: daneZamowienia.rok,
+            firma_id: daneZamowienia.firma,
+            klient_id: daneZamowienia.klient,
+            tytul: daneZamowienia.tytul,
+            data_przyjecia: daneZamowienia.dataPrzyjecia,
+            data_materialow: daneZamowienia.dataMaterialow,
+            data_spedycji: daneZamowienia.dataSpedycji,
+            opiekun: daneZamowienia.opiekun,
+            user: DecodeToken(cookies.token).id,
+            stan: daneZamowienia.stan,
+            status: daneZamowienia.status,
+            uwagi: daneZamowienia.uwagi,
+          });
 
-    const zamowienie_id = res.data.insertId;
+          const zamowienie_id = res.data.insertId;
 
-    const produktyEdit = [...produkty]
+          const produktyEdit = [...produkty]
 
-    produktyEdit.forEach(async (produkt, i) => {
-        let res2 = await axios.post(ip + "produkty", {
-          nazwa: produkt.nazwa,
-          zamowienie_id: zamowienie_id,
-          typ: produkt.typ,
-          wersja: produkt.wersja,
-          uwagi: produkt.uwagi,
-        });
-        let produkt_id = res2.data.insertId;
+              produktyEdit.forEach(async (produkt, i) => {
+                        let res2 = await axios.post(ip + "produkty", {
+                          nazwa: produkt.nazwa,
+                          zamowienie_id: zamowienie_id,
+                          typ: produkt.typ,
+                          wersja: produkt.wersja,
+                          uwagi: produkt.uwagi,
+                        });
+                        let produkt_id = res2.data.insertId;
 
 
-  }); 
+              }); 
 
   }
   //----------------------------------
@@ -516,8 +518,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
                 })
               );
             }); 
-            setFragi(fragmenty);
-            console.log(fragi)
+            // setFragi(fragmenty);
+            // console.log(fragi)
 
               // fragmenty end
         });       //elementy end
@@ -551,7 +553,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     
           setFragmenty((prev) =>
           prev.map((t, a) => {
-              console.log(t.oprawa_id)
+              // console.log(t.oprawa_id)
             if (t.oprawa_id === opr.id  && opr.index <= a ) {
               return {
                 ...t,
@@ -647,8 +649,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
   }
 
   function handleChangeCardFragmentyOprawaId(idFragmentu, idOprawy) {
-    console.log("Fragment id: "+idFragmentu);
-    console.log("Oprawa id: "+idOprawy);
+    // console.log("Fragment id: "+idFragmentu);
+    // console.log("Oprawa id: "+idOprawy);
     setFragmenty(
       fragmenty.map((t) => {
         if (t.id == idFragmentu) {

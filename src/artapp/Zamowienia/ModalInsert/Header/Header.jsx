@@ -10,6 +10,7 @@ const openInNewTab = (url) => {
 function Header({
   setOpenModalInsert,
   postZamowienie,
+  postZamowienieObj,
   id,
   isTable,
   setIsTable,
@@ -61,7 +62,7 @@ function Header({
             Zapisz jako
           </button>
           <button
-            onClick={() => sprawdzPoprawnoscZamowienia()}
+            onClick={() => postZamowienieObj()}
             className={style.btn}
           >
             Sprawdź

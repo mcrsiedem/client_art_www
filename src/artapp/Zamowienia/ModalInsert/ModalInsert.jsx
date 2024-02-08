@@ -424,13 +424,14 @@ console.clear();
                               uwagi: element.uwagi,
                               // wykonczenie:element.wykonczenie,
                             });
+                         
                             let element_id = res3.data.insertId;
 
           
 
-                                          fragmenty
-                                        .filter((f) => f.element_id === element.id)
-                                        .forEach(async (fragment, index_fragmenty) => {
+                            fragmentyEdit
+                                        .filter((f) => f.element_id == element.id )
+                                        .forEach(async (fragment, index_f) => {
                                           let res4 = await axios.post(ip + "fragmenty", {
                                             naklad: fragment.naklad,
                                             info: fragment.info,
@@ -443,13 +444,14 @@ console.clear();
                                           });
                                           let fragment_id = res4.data.insertId;
                                           
-                                          fragmentyEdit[index_fragmenty].id = fragment_id
-                                          fragmentyEdit[index_fragmenty].zamowienie_id = zamowienie_id
-                                          fragmentyEdit[index_fragmenty].produkt_id = produkt_id
-                                          fragmentyEdit[index_fragmenty].element_id = element_id
-                                            setFragmenty(fragmentyEdit)
-                                  
-              
+
+                                          fragmentyEdit[index_f].id = fragment_id
+                                          fragmentyEdit[index_f].zamowienie_id = zamowienie_id
+                                          fragmentyEdit[index_f].produkt_id = produkt_id
+                                          fragmentyEdit[index_f].element_id = element_id
+                                          setFragmenty(fragmentyEdit)
+                  
+                                          
                                           });
 
 
@@ -460,7 +462,7 @@ console.clear();
                                           elementyEdit[index_element].produkt_id = produkt_id
                                           setElementy(elementyEdit)
                                     
-                                          
+                                         
                         
                             
                           });
@@ -473,11 +475,11 @@ console.clear();
 
                                          
 
-
+    
                     produktyEdit[index].id = produkt_id
                     produktyEdit[index].zamowienie_id = zamowienie_id
                     setProdukty(produktyEdit);
-                    
+
                     console.log(produktyEdit);
                     console.log(elementyEdit);
                     console.log(fragmentyEdit);

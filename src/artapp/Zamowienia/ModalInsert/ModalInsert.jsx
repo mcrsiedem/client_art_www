@@ -399,27 +399,21 @@ console.clear();
                     });
                     let produkt_id = res2.data.insertId;
 
-                    await produktyEdit.map((p) => {
-                      if (p.index == 0) {
-                        return {
-                          ...p,
-                          id: produkt_id,
-                          zamowienie_id: zamowienie_id,
-                        };
-                      }
-                    });
+                    console.log("produkt_id: " + produkt_id);
+                    produktyEdit[index].id = produkt_id
+                    produktyEdit[index].zamowienie_id = zamowienie_id
+
+
+                    console.log("produkty: " + produkty.length);
+                    console.log(produkty);
+                    console.log("produkty: " + produktyEdit.length);
+                    console.log(produktyEdit[index].id);
 
                   }); 
 
 
               // console.clear();
-              console.log("produkty: " + produkty.length);
-              console.log(produkty);
-                  
- 
-
-                console.log("produkty: " + produktyEdit.length);
-                console.log(produktyEdit);
+              
 
 
   }
@@ -579,19 +573,10 @@ console.clear();
          
               
 
-
-                fragmenty.map(async (f, i) => {
-                  let res5 = await axios.put(ip + "fragmenty", {
-                    idFragmentu: f.id,
-              
-                    oprawa_id_new: oprawa_id,
-              
-                  });
-
                            setFragmenty((prev) =>
                   prev.map((t, a) => {
                       // console.log(t.oprawa_id)
-                    if (t.oprawa_id === opr.id  && opr.index <= a ) {
+                    if (t.oprawa_id === opr.id ) {
                       return {
                         ...t,
                         oprawa_id:oprawa_id,
@@ -605,7 +590,7 @@ console.clear();
 
 
                   
-                })
+                
 
         }); 
 

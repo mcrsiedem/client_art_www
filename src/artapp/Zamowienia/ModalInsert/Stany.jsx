@@ -180,7 +180,7 @@ function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
                 <td>{row.naklad}</td>
                 <td>{row.typ}</td>
                 <td>{row.oprawa_id}</td>
-                <td>{row.oprawa_id_prev}</td>
+                <td>{row.id_prev}</td>
 
                 <td>{row.wersja}</td>
                 <td>{row.index}</td>

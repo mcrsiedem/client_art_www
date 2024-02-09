@@ -453,7 +453,7 @@ console.clear();
                                           .filter((f) => f.element_id == element.id )
                                           
                                           .forEach(async (fragment, index_f) => {
-                                      let o = oprawaEdit.filter(f => f.id_prev == fragment.oprawa_id)
+                                      let oprawa_id_ok = oprawaEdit.filter(f => f.id_prev === fragment.oprawa_id)[0].id
                                             let res4 = await axios.post(ip + "fragmenty", {
                                               naklad: fragment.naklad,
                                               info: fragment.info,
@@ -462,7 +462,7 @@ console.clear();
                                               element_id: element_id,
                                               produkt_id: produkt_id,
                                               typ: fragment.typ,
-                                              oprawa_id: o[0].id
+                                              oprawa_id: oprawa_id_ok
                                               // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
                                             });
                                             let fragment_id = res4.data.insertId;
@@ -477,7 +477,7 @@ console.clear();
 
                                             
                                
-                                            fragmentyEdit[indexof].oprawa_id = o[0].id
+                                            fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
                                             
                                       
                             

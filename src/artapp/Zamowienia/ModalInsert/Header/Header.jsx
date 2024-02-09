@@ -9,7 +9,7 @@ const openInNewTab = (url) => {
 
 function Header({
   setOpenModalInsert,
-  postZamowienie,
+  // postZamowienie,
   postZamowienieObj,
   id,
   isTable,
@@ -52,7 +52,7 @@ function Header({
           >
             Anuluj
           </button>
-          <button onClick={() => postZamowienie()} className={style.btn}>
+          <button onClick={() => postZamowienieObj()} className={style.btn}>
             Zapisz
           </button>
           <button
@@ -62,7 +62,7 @@ function Header({
             Zapisz jako
           </button>
           <button
-            onClick={() => postZamowienieObj()}
+            // onClick={() => postZamowienieObj()}
             className={style.btn}
           >
             Sprawdź

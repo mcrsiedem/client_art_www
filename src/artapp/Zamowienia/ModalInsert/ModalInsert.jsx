@@ -443,33 +443,32 @@ console.clear();
                                             let fragment_id = res4.data.insertId;
                                             
                                             let indexof = fragmenty.indexOf(fragment);
-                                  
                                             fragmentyEdit[indexof].id = fragment_id
                                             fragmentyEdit[indexof].zamowienie_id = zamowienie_id
                                             fragmentyEdit[indexof].produkt_id = produkt_id
                                             fragmentyEdit[indexof].element_id = element_id
                                             
                                 });
- 
-                          elementyEdit[index_element].id = element_id
-                          elementyEdit[index_element].zamowienie_id = zamowienie_id
-                          elementyEdit[index_element].produkt_id = produkt_id
+                                
+                          let indexof = elementy.indexOf(element);
+                          elementyEdit[indexof].id = element_id
+                          elementyEdit[indexof].zamowienie_id = zamowienie_id
+                          elementyEdit[indexof].produkt_id = produkt_id
                             
+                           
                           });
-
-
-    
-                    produktyEdit[index].id = produkt_id
-                    produktyEdit[index].zamowienie_id = zamowienie_id
-                    console.log(produktyEdit);
-                    console.log(elementyEdit);
-                    console.log(fragmentyEdit);
-                    setProdukty(produktyEdit);
-                    setElementy(elementyEdit)
-                    setFragmenty(fragmentyEdit) 
-                  
+                          
+                          let indexof = produkty.indexOf(produkt);
+                          produktyEdit[indexof].id = produkt_id
+                          produktyEdit[indexof].zamowienie_id = zamowienie_id
+                          
+                          setProdukty(produktyEdit);
+                          setElementy(elementyEdit)
+                          setFragmenty(fragmentyEdit)
                     
-                    
+                          console.log(produktyEdit);
+                          console.log(elementyEdit);
+                          console.log(fragmentyEdit);
               
                   }); 
 

@@ -447,14 +447,14 @@ console.clear();
                                             fragmentyEdit[indexof].zamowienie_id = zamowienie_id
                                             fragmentyEdit[indexof].produkt_id = produkt_id
                                             fragmentyEdit[indexof].element_id = element_id
-                                            
+                                            setFragmenty(fragmentyEdit.map((t)=>{return {...t, cos: "cos"}}))
                                 });
                                 
                           let indexof = elementy.indexOf(element);
                           elementyEdit[indexof].id = element_id
                           elementyEdit[indexof].zamowienie_id = zamowienie_id
                           elementyEdit[indexof].produkt_id = produkt_id
-                            
+                            setElementy(elementyEdit.map((t)=>{return {...t, cos: "cos"}}))
                            
                           });
                           
@@ -462,20 +462,16 @@ console.clear();
                           produktyEdit[indexof].id = produkt_id
                           produktyEdit[indexof].zamowienie_id = zamowienie_id
                           
-                          setProdukty(produktyEdit);
-                          setElementy(elementyEdit)
-                          setFragmenty(fragmentyEdit)
+                          
+                  }); 
+
+                          setProdukty(produktyEdit.map((t)=>{return {...t, cos: "cos"}}));
+                          
+                          
                     
                           console.log(produktyEdit);
                           console.log(elementyEdit);
                           console.log(fragmentyEdit);
-              
-                  }); 
-
-              // console.clear();
-              
-
-
   }
   //----------------------------------
 

@@ -111,7 +111,7 @@ export default function RowElement({
           produkt_id: card.produkt_id,
           naklad: card.naklad,
           typ: card.typ,
-          oprawa_id: " ",
+          oprawa_id: 0,
           element_id: Math.max(...elementy.map((f) => f.id)) + 1,
           index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
         });

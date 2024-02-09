@@ -369,7 +369,6 @@ const produktyEdit = produkty.slice();
 const elementyEdit = elementy.slice();
 const fragmentyEdit = fragmenty.slice();
 
-
 console.clear();
           let res = await axios.post(ip + "zamowienie", {
             nr: daneZamowienia.nr,
@@ -427,7 +426,7 @@ console.clear();
                          
                             let element_id = res3.data.insertId;
 
-          
+           
 
                             fragmentyEdit
                                         .filter((f) => f.element_id == element.id )
@@ -452,25 +451,24 @@ console.clear();
                                           fragmentyEdit[indexof].produkt_id = produkt_id
                                           fragmentyEdit[indexof].element_id = element_id
                                      
-                   
-                        
+                                         
+                      
                                           });
-
- setFragmenty(fragmentyEdit)
+ 
+                      
 
 
                                           elementyEdit[index_element].id = element_id
                                           elementyEdit[index_element].zamowienie_id = zamowienie_id
                                           elementyEdit[index_element].produkt_id = produkt_id
                                           
-                                    setElementy(elementyEdit)
-                                         
+                             
                         
                             
                           });
 
-   
-                    
+
+
 
 
 
@@ -480,14 +478,17 @@ console.clear();
     
                     produktyEdit[index].id = produkt_id
                     produktyEdit[index].zamowienie_id = zamowienie_id
+                    
                     setProdukty(produktyEdit);
-
+                    setElementy(elementyEdit)
+                    setFragmenty(fragmentyEdit) 
+                  
+                    
                     console.log(produktyEdit);
                     console.log(elementyEdit);
                     console.log(fragmentyEdit);
-
+              
                   }); 
-
 
               // console.clear();
               

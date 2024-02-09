@@ -433,7 +433,6 @@ console.clear();
                                         .filter((f) => f.element_id == element.id )
                                         .forEach(async (fragment, index_f) => {
                            
-
                                           let res4 = await axios.post(ip + "fragmenty", {
                                             naklad: fragment.naklad,
                                             info: fragment.info,
@@ -446,17 +445,18 @@ console.clear();
                                           });
                                           let fragment_id = res4.data.insertId;
                                           
-
-                                          fragmentyEdit[index_f].id = fragment_id
-                                          fragmentyEdit[index_f].zamowienie_id = zamowienie_id
-                                          fragmentyEdit[index_f].produkt_id = produkt_id
-                                          fragmentyEdit[index_f].element_id = element_id
+                                          let indexof = fragmenty.indexOf(fragment);
+                                 
+                                          fragmentyEdit[indexof].id = fragment_id
+                                          fragmentyEdit[indexof].zamowienie_id = zamowienie_id
+                                          fragmentyEdit[indexof].produkt_id = produkt_id
+                                          fragmentyEdit[indexof].element_id = element_id
                                      
-                    setFragmenty(fragmentyEdit)
+                   
                         
                                           });
 
-
+ setFragmenty(fragmentyEdit)
 
 
                                           elementyEdit[index_element].id = element_id

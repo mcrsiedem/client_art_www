@@ -113,6 +113,7 @@ function ModalInsert({
   const [oprawa, setOprawa] = useState([
     {
       id: 1,
+      id_prev: "",
       zamowienie_id: 1,
       produkt_id:1,
 
@@ -368,6 +369,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 const produktyEdit = produkty.slice();
 const elementyEdit = elementy.slice();
 const fragmentyEdit = fragmenty.slice();
+const oprawaEdit = oprawa.slice();
 
 console.clear();
           let res = await axios.post(ip + "zamowienie", {
@@ -402,9 +404,30 @@ console.clear();
                     });
                     let produkt_id = res2.data.insertId;
 
+                      oprawaEdit
+                            .forEach(async (opr, i) => {
+                              let oprawa_id_przed  =opr.id ;
+                              let res5 = await axios.post(ip + "oprawa", {
+                                zamowienie_id: zamowienie_id,
+                                produkt_id: produkt_id,
+                                oprawa: opr.oprawa,
+                                naklad: opr.naklad,
+                                uwagi: opr.uwagi,
+                                data_spedycji: opr.data_spedycji
+                              });
+                              let oprawa_id = res5.data.insertId;
+                                
+                              let indexof = oprawa.indexOf(opr);
+                              oprawaEdit[indexof].id = oprawa_id
+                              oprawaEdit[indexof].id_prev = oprawa_id_przed
+                              oprawaEdit[indexof].zamowienie_id = zamowienie_id
+                              oprawaEdit[indexof].produkt_id = produkt_id
+                              setOprawa(oprawaEdit)
+        
+                      });
                     
 
-                          elementy
+                          elementyEdit
                           .filter((el) => el.produkt_id === produkt.id)
                           .forEach(async (element, index_element) => {
                             let res3 = await axios.post(ip + "elementy", {
@@ -428,8 +451,9 @@ console.clear();
 
                               fragmentyEdit
                                           .filter((f) => f.element_id == element.id )
+                                          
                                           .forEach(async (fragment, index_f) => {
-                            
+                                      let o = oprawaEdit.filter(f => f.id_prev == fragment.oprawa_id)
                                             let res4 = await axios.post(ip + "fragmenty", {
                                               naklad: fragment.naklad,
                                               info: fragment.info,
@@ -438,15 +462,27 @@ console.clear();
                                               element_id: element_id,
                                               produkt_id: produkt_id,
                                               typ: fragment.typ,
-                                              oprawa_id: fragment.oprawa_id,
+                                              oprawa_id: o[0].id
+                                              // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
                                             });
                                             let fragment_id = res4.data.insertId;
+
+                                            
                                             
                                             let indexof = fragmenty.indexOf(fragment);
                                             fragmentyEdit[indexof].id = fragment_id
                                             fragmentyEdit[indexof].zamowienie_id = zamowienie_id
                                             fragmentyEdit[indexof].produkt_id = produkt_id
                                             fragmentyEdit[indexof].element_id = element_id
+
+                                            
+                               
+                                            fragmentyEdit[indexof].oprawa_id = o[0].id
+                                            
+                                      
+                            
+
+                                            //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
                                             setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
                                 });
                                 
@@ -454,21 +490,22 @@ console.clear();
                           elementyEdit[indexof].id = element_id
                           elementyEdit[indexof].zamowienie_id = zamowienie_id
                           elementyEdit[indexof].produkt_id = produkt_id
-                            setElementy(elementyEdit)
+                          setElementy(elementyEdit)
                            
                           });
                           
+
+                   
+
+
                           let indexof = produkty.indexOf(produkt);
                           produktyEdit[indexof].id = produkt_id
                           produktyEdit[indexof].zamowienie_id = zamowienie_id
-                          
+                          setProdukty(produktyEdit);
                           
                   }); 
 
-                          setProdukty(produktyEdit);
-                          
-                          
-                    
+
                           console.log(produktyEdit);
                           console.log(elementyEdit);
                           console.log(fragmentyEdit);

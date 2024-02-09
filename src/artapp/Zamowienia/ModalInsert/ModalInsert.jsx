@@ -422,7 +422,7 @@ console.clear();
                               oprawaEdit[indexof].id_prev = oprawa_id_przed
                               oprawaEdit[indexof].zamowienie_id = zamowienie_id
                               oprawaEdit[indexof].produkt_id = produkt_id
-                              setOprawa(oprawaEdit)
+                              // setOprawa(oprawaEdit)
         
                       });
                     
@@ -502,7 +502,7 @@ console.clear();
                           produktyEdit[indexof].id = produkt_id
                           produktyEdit[indexof].zamowienie_id = zamowienie_id
                           setProdukty(produktyEdit);
-                          
+                          setOprawa(oprawaEdit)
                   }); 
 
 

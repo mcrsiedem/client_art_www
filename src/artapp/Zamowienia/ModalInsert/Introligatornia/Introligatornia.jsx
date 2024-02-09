@@ -491,11 +491,11 @@ function  NakladOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
-        defaultValue={row.naklad} key={row.naklad}
+        defaultValue={row.naklad} 
         onChange={(e) =>
           handleChangeCardOprawa({
             ...row,
-            maklad: e.target.value,
+            naklad: e.target.value,
           })
         }
       ></input>

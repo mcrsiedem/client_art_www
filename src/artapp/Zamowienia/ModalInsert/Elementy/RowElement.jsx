@@ -108,7 +108,7 @@ export default function RowElement({
         .filter((f) => f.element_id == card.id )
         .forEach(x => {
           newFragmenty.push({
-            id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+            id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
             zamowienie_id: card.zamowienie_id,
             produkt_id: card.produkt_id,
             naklad: card.naklad,

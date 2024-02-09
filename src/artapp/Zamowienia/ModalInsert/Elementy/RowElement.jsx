@@ -91,7 +91,8 @@ export default function RowElement({
       
         //-------------------
         const newFragmenty = fragmenty.slice();
-      
+       
+
         newFragmenty.map((x) => {
           if (x.index > card.index) {
             return {
@@ -103,18 +104,35 @@ export default function RowElement({
           }
         });
       
+ newFragmenty 
+        .filter((f) => f.element_id == card.id )
+        .forEach(x => {
+          newFragmenty.push({
+            id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+            zamowienie_id: card.zamowienie_id,
+            produkt_id: card.produkt_id,
+            naklad: card.naklad,
+            typ: card.typ,
+            oprawa_id: x.oprawa_id,
+            element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+            index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+          });
+
+        });
+
+
         //let nextId = Math.max(...fragmenty.map(f=>f.id));
       
-        newFragmenty.push({
-          id: Math.max(...fragmenty.map((f) => f.id)) + 1,
-          zamowienie_id: card.zamowienie_id,
-          produkt_id: card.produkt_id,
-          naklad: card.naklad,
-          typ: card.typ,
-          oprawa_id: 0,
-          element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-          index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
-        });
+        // newFragmenty.push({
+        //   id: Math.max(...fragmenty.map((f) => f.id)) + 1,
+        //   zamowienie_id: card.zamowienie_id,
+        //   produkt_id: card.produkt_id,
+        //   naklad: card.naklad,
+        //   typ: card.typ,
+        //   oprawa_id: 0,
+        //   element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+        //   index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+        // });
       
         newFragmenty.sort((a, b) => a.index - b.index);
         setFragmenty(newFragmenty);

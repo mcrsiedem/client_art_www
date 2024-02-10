@@ -70,9 +70,9 @@ function ModalInsert({
   const [daneZamowienia, setDaneZamowienia] = useState({
     nr: "20",
     rok: "2024",
-    firma: _firma[0].id,
-    klient: _klient[0].id,
-    opiekun: _opiekun[0].id,
+    firma_id: _firma[0].id,
+    klient_id: _klient[0].id,
+    opiekun_id: _opiekun[0].id,
     tytul: "Tytuł zamówienia",
     dataPrzyjecia: "2024-01-30",
     dataMaterialow: "2024-01-30",
@@ -362,14 +362,31 @@ const [openModalStany, setOpenModalStany] = useState(false);
       setCheck_data_wejscia(true);
     }
   }
+  async function postZamowienieObj(){
+
+    console.clear();
+    const produktyEdit = produkty.slice();
+    const elementyEdit = elementy.slice();
+    const fragmentyEdit = fragmenty.slice();
+    const oprawaEdit = oprawa.slice();
+    const user =  DecodeToken(cookies.token).id;
+
+    console.log("user "+ user);
+
+    let res = await axios.post(ip + "zamowienieobj", {user,daneZamowienia,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+    console.log(res)
+  }
+
   //----------------------------------
 
-  async function postZamowienieObj(){
+  async function postZamowienieObj2(){
    
 const produktyEdit = produkty.slice();
 const elementyEdit = elementy.slice();
 const fragmentyEdit = fragmenty.slice();
 const oprawaEdit = oprawa.slice();
+
+
 
 console.clear();
           let res = await axios.post(ip + "zamowienie", {
@@ -423,6 +440,7 @@ console.clear();
                               oprawaEdit[indexof].zamowienie_id = zamowienie_id
                               oprawaEdit[indexof].produkt_id = produkt_id
                               // setOprawa(oprawaEdit)
+                              setOprawa(oprawaEdit)
         
                       });
                     
@@ -453,7 +471,7 @@ console.clear();
                                           .filter((f) => f.element_id == element.id )
                                           
                                           .forEach(async (fragment, index_f) => {
-                                      let oprawa_id_ok = oprawaEdit.filter(f => f.id_prev === fragment.oprawa_id)[0].id
+                                      let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
                                             let res4 = await axios.post(ip + "fragmenty", {
                                               naklad: fragment.naklad,
                                               info: fragment.info,
@@ -484,6 +502,7 @@ console.clear();
 
                                             //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
                                             setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                                            // setFragmenty(fragmentyEdit)
                                 });
                                 
                           let indexof = elementy.indexOf(element);
@@ -502,7 +521,7 @@ console.clear();
                           produktyEdit[indexof].id = produkt_id
                           produktyEdit[indexof].zamowienie_id = zamowienie_id
                           setProdukty(produktyEdit);
-                          setOprawa(oprawaEdit)
+                          
                   }); 
 
 

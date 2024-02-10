@@ -98,7 +98,7 @@ function Firma({ daneZamowienia,setDaneZamowienia }) {
       <label className={style.label}> Firma </label>
       <select
         className={style.firma}
-        value={daneZamowienia.firma}
+        value={daneZamowienia.firma_id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, firma: event.target.value});
         }}
@@ -119,7 +119,7 @@ function Klient({ daneZamowienia,setDaneZamowienia }) {
       <label className={style.label}> Klient </label>
       <select
         className={style.klient}
-        value={daneZamowienia.klient}
+        value={daneZamowienia.klient_id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, klient: event.target.value});
         }}
@@ -181,7 +181,7 @@ function Opiekun({ daneZamowienia,setDaneZamowienia }) {
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={daneZamowienia.opiekun}
+        value={daneZamowienia.opiekun_id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun: event.target.value});
         }}

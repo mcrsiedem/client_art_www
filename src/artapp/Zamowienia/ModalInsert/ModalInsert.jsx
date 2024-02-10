@@ -114,7 +114,7 @@ function ModalInsert({
     {
       id: 1,
       id_prev: "",
-      id_fragmentow: "",
+      id_fragmentow: "0",
       zamowienie_id: 1,
       produkt_id:1,
 
@@ -482,7 +482,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
                     oprawaEdit.forEach((t) => {
                       if (t.id_prev == fragment.oprawa_id) {
                  
-                        oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + "," +fragment_id
+                        oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
                         
                       }
                     })
@@ -524,12 +524,18 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                 oprawaEdit[indexof].id_prev = oprawa_id_przed
                                 oprawaEdit[indexof].zamowienie_id = zamowienie_id
                                 oprawaEdit[indexof].produkt_id = produkt_id
+                                oprawaEdit[indexof].id_fragmentow= "";
                                 // setOprawa(oprawaEdit)
                                 setOprawa(oprawaEdit)
           
                         });
     
                        
+                        oprawaEdit.forEach((t) => {
+                          const xx = t.id_fragmentow.split(" ");
+                          console.log(xx)
+
+                        })
     
     
                               let indexof = produkty.indexOf(produkt);

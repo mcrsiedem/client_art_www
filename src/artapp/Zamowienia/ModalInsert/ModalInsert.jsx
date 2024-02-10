@@ -114,7 +114,7 @@ function ModalInsert({
     {
       id: 1,
       id_prev: "",
-      id_fragmentow: "22",
+      id_fragmentow: "",
       zamowienie_id: 1,
       produkt_id:1,
 
@@ -478,11 +478,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
                                                 fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
                                               
-                                              
-                                                // oprawaEdit[0].id_fragmentow= fragment_id
-
-                                                // oprawaEdit[indexofoprawa].id_fragmentow= 1;
-                                            //                 setOprawa((prev) =>
+               
                     oprawaEdit.forEach((t) => {
                       if (t.id_prev == fragment.oprawa_id) {
                  

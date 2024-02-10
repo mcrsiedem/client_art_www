@@ -114,6 +114,7 @@ function ModalInsert({
     {
       id: 1,
       id_prev: "",
+      id_fragmentow: "",
       zamowienie_id: 1,
       produkt_id:1,
 
@@ -391,13 +392,13 @@ const [openModalStany, setOpenModalStany] = useState(false);
               let res = await axios.post(ip + "zamowienie", {
                 nr: daneZamowienia.nr,
                 rok: daneZamowienia.rok,
-                firma_id: daneZamowienia.firma,
-                klient_id: daneZamowienia.klient,
+                firma_id: daneZamowienia.firma_id,
+                klient_id: daneZamowienia.klient_id,
                 tytul: daneZamowienia.tytul,
                 data_przyjecia: daneZamowienia.dataPrzyjecia,
                 data_materialow: daneZamowienia.dataMaterialow,
                 data_spedycji: daneZamowienia.dataSpedycji,
-                opiekun: daneZamowienia.opiekun,
+                opiekun: daneZamowienia.opiekun_id,
                 user: DecodeToken(cookies.token).id,
                 stan: daneZamowienia.stan,
                 status: daneZamowienia.status,
@@ -420,28 +421,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
                         });
                         let produkt_id = res2.data.insertId;
     
-                          oprawaEdit
-                                .forEach(async (opr, i) => {
-                                  let oprawa_id_przed  =opr.id ;
-                                  let res5 = await axios.post(ip + "oprawa", {
-                                    zamowienie_id: zamowienie_id,
-                                    produkt_id: produkt_id,
-                                    oprawa: opr.oprawa,
-                                    naklad: opr.naklad,
-                                    uwagi: opr.uwagi,
-                                    data_spedycji: opr.data_spedycji
-                                  });
-                                  let oprawa_id = res5.data.insertId;
-                                    
-                                  let indexof = oprawa.indexOf(opr);
-                                  oprawaEdit[indexof].id = oprawa_id
-                                  oprawaEdit[indexof].id_prev = oprawa_id_przed
-                                  oprawaEdit[indexof].zamowienie_id = zamowienie_id
-                                  oprawaEdit[indexof].produkt_id = produkt_id
-                                  // setOprawa(oprawaEdit)
-                                  setOprawa(oprawaEdit)
-            
-                          });
+     
                         
     
                               elementyEdit
@@ -470,7 +450,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                               .filter((f) => f.element_id == element.id )
                                               
                                               .forEach(async (fragment, index_f) => {
-                                          let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
+                                          // let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
+                                          let oprawa_id_ok = fragment.oprawa_id
                                                 let res4 = await axios.post(ip + "fragmenty", {
                                                   naklad: fragment.naklad,
                                                   info: fragment.info,
@@ -492,17 +473,33 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                                 fragmentyEdit[indexof].produkt_id = produkt_id
                                                 fragmentyEdit[indexof].element_id = element_id
     
-                                                
+                                                let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
                                    
+
                                                 fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
-                                                
-                                          
+                                                // oprawaEdit[indexofoprawa].id_fragmentow.push({fragment_id})
+                                                // oprawaEdit[indexofoprawa].id_fragmentow= 1;
+                                            //                 setOprawa((prev) =>
+                    // oprawaEdit.map((t) => {
+                    //   if (t.id == fragment.oprawa_id) {
+                    //     return { ...t,
+                    //       // id_fragmentow: x=> x.push({id:fragment_id}),
+                    //       id_fragmentow: fragment_id,
+                    //        }
+                    //   } else {
+                    //     return t;
+                    //   }
+                    // })
+                  
                                 
     
                                                 //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
                                                 setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
                                                 // setFragmenty(fragmentyEdit)
                                     });
+
+
+
                                     
                               let indexof = elementy.indexOf(element);
                               elementyEdit[indexof].id = element_id
@@ -512,6 +509,29 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                
                               });
                               
+
+                              oprawaEdit
+                              .forEach(async (opr, i) => {
+                                let oprawa_id_przed  =opr.id ;
+                                let res5 = await axios.post(ip + "oprawa", {
+                                  zamowienie_id: zamowienie_id,
+                                  produkt_id: produkt_id,
+                                  oprawa: opr.oprawa,
+                                  naklad: opr.naklad,
+                                  uwagi: opr.uwagi,
+                                  data_spedycji: opr.data_spedycji
+                                });
+                                let oprawa_id = res5.data.insertId;
+                                  
+                                let indexof = oprawa.indexOf(opr);
+                                oprawaEdit[indexof].id = oprawa_id
+                                oprawaEdit[indexof].id_prev = oprawa_id_przed
+                                oprawaEdit[indexof].zamowienie_id = zamowienie_id
+                                oprawaEdit[indexof].produkt_id = produkt_id
+                                // setOprawa(oprawaEdit)
+                                setOprawa(oprawaEdit)
+          
+                        });
     
                        
     

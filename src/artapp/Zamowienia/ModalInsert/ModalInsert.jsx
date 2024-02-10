@@ -362,7 +362,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
       setCheck_data_wejscia(true);
     }
   }
-  async function postZamowienieObj(){
+  async function postZamowienieObj3(){
 
     console.clear();
     const produktyEdit = produkty.slice();
@@ -378,7 +378,157 @@ const [openModalStany, setOpenModalStany] = useState(false);
   }
 
   //----------------------------------
-
+  async function postZamowienieObj(){
+   // najnowszy pomysł zeby zapisywać w oprawie wszystkie idki fragmentow
+    const produktyEdit = produkty.slice();
+    const elementyEdit = elementy.slice();
+    const fragmentyEdit = fragmenty.slice();
+    const oprawaEdit = oprawa.slice();
+    
+    
+    
+    console.clear();
+              let res = await axios.post(ip + "zamowienie", {
+                nr: daneZamowienia.nr,
+                rok: daneZamowienia.rok,
+                firma_id: daneZamowienia.firma,
+                klient_id: daneZamowienia.klient,
+                tytul: daneZamowienia.tytul,
+                data_przyjecia: daneZamowienia.dataPrzyjecia,
+                data_materialow: daneZamowienia.dataMaterialow,
+                data_spedycji: daneZamowienia.dataSpedycji,
+                opiekun: daneZamowienia.opiekun,
+                user: DecodeToken(cookies.token).id,
+                stan: daneZamowienia.stan,
+                status: daneZamowienia.status,
+                uwagi: daneZamowienia.uwagi,
+              });
+    
+              const zamowienie_id = res.data.insertId;
+                  
+    
+              
+    
+                      produktyEdit.forEach(async (produkt, index) => {
+                      
+                        let res2 = await axios.post(ip + "produkty", {
+                          nazwa: produkt.nazwa,
+                          zamowienie_id: zamowienie_id,
+                          typ: produkt.typ,
+                          wersja: produkt.wersja,
+                          uwagi: produkt.uwagi,
+                        });
+                        let produkt_id = res2.data.insertId;
+    
+                          oprawaEdit
+                                .forEach(async (opr, i) => {
+                                  let oprawa_id_przed  =opr.id ;
+                                  let res5 = await axios.post(ip + "oprawa", {
+                                    zamowienie_id: zamowienie_id,
+                                    produkt_id: produkt_id,
+                                    oprawa: opr.oprawa,
+                                    naklad: opr.naklad,
+                                    uwagi: opr.uwagi,
+                                    data_spedycji: opr.data_spedycji
+                                  });
+                                  let oprawa_id = res5.data.insertId;
+                                    
+                                  let indexof = oprawa.indexOf(opr);
+                                  oprawaEdit[indexof].id = oprawa_id
+                                  oprawaEdit[indexof].id_prev = oprawa_id_przed
+                                  oprawaEdit[indexof].zamowienie_id = zamowienie_id
+                                  oprawaEdit[indexof].produkt_id = produkt_id
+                                  // setOprawa(oprawaEdit)
+                                  setOprawa(oprawaEdit)
+            
+                          });
+                        
+    
+                              elementyEdit
+                              .filter((el) => el.produkt_id === produkt.id)
+                              .forEach(async (element, index_element) => {
+                                let res3 = await axios.post(ip + "elementy", {
+                                  zamowienie_id: zamowienie_id,
+                                  produkt_id: produkt_id,
+                                  nazwa: element.nazwa,
+                                  typ: element.typ,
+                                  naklad: element.naklad,
+                                  strony: element.ilosc_stron,
+                                  kolory: element.kolory,
+                                  format_x: element.format_x,
+                                  format_y: element.format_y,
+                                  papier_id: element.papier_id,
+                                  gramatura_id: element.gramatura_id,
+                                  papier_info: element.papier_info,
+                                  uwagi: element.uwagi,
+                                  // wykonczenie:element.wykonczenie,
+                                });
+                             
+                                let element_id = res3.data.insertId;
+    
+                                  fragmentyEdit
+                                              .filter((f) => f.element_id == element.id )
+                                              
+                                              .forEach(async (fragment, index_f) => {
+                                          let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
+                                                let res4 = await axios.post(ip + "fragmenty", {
+                                                  naklad: fragment.naklad,
+                                                  info: fragment.info,
+                                                  index: fragment.index,
+                                                  zamowienie_id: zamowienie_id,
+                                                  element_id: element_id,
+                                                  produkt_id: produkt_id,
+                                                  typ: fragment.typ,
+                                                  oprawa_id: oprawa_id_ok
+                                                  // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
+                                                });
+                                                let fragment_id = res4.data.insertId;
+    
+                                                
+                                                
+                                                let indexof = fragmenty.indexOf(fragment);
+                                                fragmentyEdit[indexof].id = fragment_id
+                                                fragmentyEdit[indexof].zamowienie_id = zamowienie_id
+                                                fragmentyEdit[indexof].produkt_id = produkt_id
+                                                fragmentyEdit[indexof].element_id = element_id
+    
+                                                
+                                   
+                                                fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
+                                                
+                                          
+                                
+    
+                                                //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
+                                                setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                                                // setFragmenty(fragmentyEdit)
+                                    });
+                                    
+                              let indexof = elementy.indexOf(element);
+                              elementyEdit[indexof].id = element_id
+                              elementyEdit[indexof].zamowienie_id = zamowienie_id
+                              elementyEdit[indexof].produkt_id = produkt_id
+                              setElementy(elementyEdit)
+                               
+                              });
+                              
+    
+                       
+    
+    
+                              let indexof = produkty.indexOf(produkt);
+                              produktyEdit[indexof].id = produkt_id
+                              produktyEdit[indexof].zamowienie_id = zamowienie_id
+                              setProdukty(produktyEdit);
+                              
+                      }); 
+    
+    
+                              // console.log(produktyEdit);
+                              // console.log(elementyEdit);
+                              // console.log(fragmentyEdit);
+      }
+//------------
   async function postZamowienieObj2(){
    
 const produktyEdit = produkty.slice();

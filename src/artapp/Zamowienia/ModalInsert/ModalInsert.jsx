@@ -473,7 +473,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                                 fragmentyEdit[indexof].produkt_id = produkt_id
                                                 fragmentyEdit[indexof].element_id = element_id
     
-                                                let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
+                                                // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
                                    
 
                                                 fragmentyEdit[indexof].oprawa_id = oprawa_id_ok

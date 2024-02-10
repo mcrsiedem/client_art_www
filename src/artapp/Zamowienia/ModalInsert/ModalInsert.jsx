@@ -114,7 +114,7 @@ function ModalInsert({
     {
       id: 1,
       id_prev: "",
-      id_fragmentow: "",
+      id_fragmentow: "22",
       zamowienie_id: 1,
       produkt_id:1,
 
@@ -477,19 +477,19 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                    
 
                                                 fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
-                                                // oprawaEdit[indexofoprawa].id_fragmentow.push({fragment_id})
+                                              
+                                              
+                                                // oprawaEdit[0].id_fragmentow= fragment_id
+
                                                 // oprawaEdit[indexofoprawa].id_fragmentow= 1;
                                             //                 setOprawa((prev) =>
-                    // oprawaEdit.map((t) => {
-                    //   if (t.id == fragment.oprawa_id) {
-                    //     return { ...t,
-                    //       // id_fragmentow: x=> x.push({id:fragment_id}),
-                    //       id_fragmentow: fragment_id,
-                    //        }
-                    //   } else {
-                    //     return t;
-                    //   }
-                    // })
+                    oprawaEdit.forEach((t) => {
+                      if (t.id_prev == fragment.oprawa_id) {
+                 
+                        oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + "," +fragment_id
+                        
+                      }
+                    })
                   
                                 
     

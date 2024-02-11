@@ -11,6 +11,7 @@ function Header({
   setOpenModalInsert,
   // postZamowienie,
   postZamowienieObj,
+  idki,
   id,
   isTable,
   setIsTable,
@@ -52,7 +53,10 @@ function Header({
           >
             Anuluj
           </button>
-          <button onClick={() => postZamowienieObj()} className={style.btn}>
+          <button onClick={async () => {
+            
+              postZamowienieObj();
+          }} className={style.btn}>
             Zapisz
           </button>
           <button

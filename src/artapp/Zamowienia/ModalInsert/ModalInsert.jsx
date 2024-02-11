@@ -53,8 +53,8 @@ function ModalInsert({
   // const elmnt = useRef(null);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
-
-
+  const [nroprawy, setNroprawy] = useState();
+  const dane=[];
   const [preOrder, setPreOrder] = useState({
     typ: 1,
     oprawa: 1,
@@ -479,7 +479,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                                   if (t.id_prev == fragment.oprawa_id) {
                                             
                                                     oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
-            
+                                                    dane.push({
+                                                      oprawa_index: t.index,
+                                                      id_fragmentow:fragment_id,
+                                                      oprawa_id:fragment.oprawa_id,test:100})
                                                   }
                                                 })
                                
@@ -517,8 +520,19 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                 oprawaEdit[indexof].zamowienie_id = zamowienie_id
                                 oprawaEdit[indexof].produkt_id = produkt_id
                                 // oprawaEdit[indexof].id_fragmentow= "";
-           
-
+                                // dane.push({oprawa_index: t.index, id_fragmentow:fragment_id, oprawa_id:fragment.oprawa_id})
+                                // const oj = (element) => element == oprawa_id_przed
+                                // dane[x=>x.findIndex(oj)].oprawa_id=oprawa_id;
+                              //  dane.forEach((item) => {
+                              //     if( dane[item].oprawa_index == indexof) {
+                              //       dane[item].oprawa_id = oprawa_id
+                              //     }
+                              // })
+               
+                               dane.forEach((item) => {
+                                  item[0].test= 23;
+                             })
+             
                                 setOprawa(oprawaEdit)
               //     setOprawa(oprawaEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
                       // oprawaEdit.forEach((t) => {
@@ -558,7 +572,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
                               // console.log(produktyEdit);
                               // console.log(elementyEdit);
                               // console.log(fragmentyEdit);
-               idki()      
+                              console.clear()
+                              console.log(dane)
+                              console.log(nroprawy)
+                   
       }
 //------------
       function idki(){

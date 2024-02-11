@@ -448,66 +448,54 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
 
-                             //--------------------------- fragmenty     
-                             await     fragmentyEdit
-                                              .filter((f) => f.element_id == element.id )
-                                              
-                                              .forEach(async (fragment, index_f) => {
-                                          // let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
-                                          let oprawa_id_ok = fragment.oprawa_id
-                                                let res4 = await axios.post(ip + "fragmenty", {
-                                                  naklad: fragment.naklad,
-                                                  info: fragment.info,
-                                                  index: fragment.index,
-                                                  zamowienie_id: zamowienie_id,
-                                                  element_id: element_id,
-                                                  produkt_id: produkt_id,
-                                                  typ: fragment.typ,
-                                                  oprawa_id: oprawa_id_ok
-                                                  // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
-                                                });
-                                                let fragment_id = res4.data.insertId;
-    
-                                                
-                                                
-                                                let indexof = fragmenty.indexOf(fragment);
-                                                fragmentyEdit[indexof].id = fragment_id
-                                                fragmentyEdit[indexof].zamowienie_id = zamowienie_id
-                                                fragmentyEdit[indexof].produkt_id = produkt_id
-                                                fragmentyEdit[indexof].element_id = element_id
-    
-                                                // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
-                                   
-
-                                                fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
-                                              
-               
-                                          oprawaEdit.forEach((t) => {
-                                            if (t.id_prev == fragment.oprawa_id) {
-                                      
-                                              oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
-                                              
-                                            }
-                                          })
-                  
-                                
-    
-                                                //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
-                                                setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
-                                                // setFragmenty(fragmentyEdit)
-                                    });
-
-
-
-                                    
-                              let indexof = elementy.indexOf(element);
-                              elementyEdit[indexof].id = element_id
-                              elementyEdit[indexof].zamowienie_id = zamowienie_id
-                              elementyEdit[indexof].produkt_id = produkt_id
-                              setElementy(elementyEdit)
+                                  //--------------------------- fragmenty     
+                                  await     fragmentyEdit
+                                                    .filter((f) => f.element_id == element.id )
+                                                    .forEach(async (fragment, index_f) => {
+                                                // let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
+                                                let oprawa_id_ok = fragment.oprawa_id
+                                                      let res4 = await axios.post(ip + "fragmenty", {
+                                                        naklad: fragment.naklad,
+                                                        info: fragment.info,
+                                                        index: fragment.index,
+                                                        zamowienie_id: zamowienie_id,
+                                                        element_id: element_id,
+                                                        produkt_id: produkt_id,
+                                                        typ: fragment.typ,
+                                                        oprawa_id: oprawa_id_ok
+                                                        // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
+                                                      });
+                                                      let fragment_id = res4.data.insertId;
+          
+                                                      let indexof = fragmenty.indexOf(fragment);
+                                                      fragmentyEdit[indexof].id = fragment_id
+                                                      fragmentyEdit[indexof].zamowienie_id = zamowienie_id
+                                                      fragmentyEdit[indexof].produkt_id = produkt_id
+                                                      fragmentyEdit[indexof].element_id = element_id
+                                                      // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
+                                                      fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
+                                                    
+                                                oprawaEdit.forEach((t) => {
+                                                  if (t.id_prev == fragment.oprawa_id) {
+                                            
+                                                    oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
+            
+                                                  }
+                                                })
                                
-                              });
-                              //--------------------------- fragmenty end
+                                                      //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
+                                                      setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                                                      // setFragmenty(fragmentyEdit)
+                                          });
+                                          
+                                    let indexof = elementy.indexOf(element);
+                                    elementyEdit[indexof].id = element_id
+                                    elementyEdit[indexof].zamowienie_id = zamowienie_id
+                                    elementyEdit[indexof].produkt_id = produkt_id
+                                    setElementy(elementyEdit)
+                                    
+                                    });
+                                    //--------------------------- fragmenty end
                               
                       //--------------------------- oprawa
                               await oprawaEdit
@@ -529,27 +517,27 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                 oprawaEdit[indexof].zamowienie_id = zamowienie_id
                                 oprawaEdit[indexof].produkt_id = produkt_id
                                 // oprawaEdit[indexof].id_fragmentow= "";
-                                // setOprawa(oprawaEdit)
-                                console.log("t.id_fragmentow: "+opr.id_fragmentow )
+           
 
-                            //     oprawaEdit.forEach((t) => {
-                            //   const xx = t.id_fragmentow.split(" ");
-                            //   console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
-                    
-                            // })
                                 setOprawa(oprawaEdit)
-          
+              //     setOprawa(oprawaEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                      // oprawaEdit.forEach((t) => {
+                      //         const xx = t.id_fragmentow.split(" ");
+                      //         console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
+                    
+                      //       })
                         });
     
                        //--------------------------- oprawa end
                
-                            
-
-    
-    
+              
                               let indexof = produkty.indexOf(produkt);
                               produktyEdit[indexof].id = produkt_id
                               produktyEdit[indexof].zamowienie_id = zamowienie_id
+
+
+
+
                               setProdukty(produktyEdit);
 
                   // setOprawa((prev) =>
@@ -570,11 +558,13 @@ const [openModalStany, setOpenModalStany] = useState(false);
                               // console.log(produktyEdit);
                               // console.log(elementyEdit);
                               // console.log(fragmentyEdit);
-                     
+               idki()      
       }
 //------------
       function idki(){
-        oprawa.forEach((t) => {
+        setOprawa(prev=>prev.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+        const oprawaEdit = oprawa.slice();
+        oprawaEdit.forEach((t) => {
           const xx = t.id_fragmentow.split(" ");
           console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
 

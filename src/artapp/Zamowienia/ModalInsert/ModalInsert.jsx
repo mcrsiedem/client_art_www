@@ -54,7 +54,7 @@ function ModalInsert({
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
-  const dane=[];
+  const dane=[{test:1}];
   const [preOrder, setPreOrder] = useState({
     typ: 1,
     oprawa: 1,
@@ -428,118 +428,131 @@ const [openModalStany, setOpenModalStany] = useState(false);
                               .filter((el) => el.produkt_id === produkt.id)
                               .forEach(async (element, index_element) => {
                                 let res3 = await axios.post(ip + "elementy", {
-                                  zamowienie_id: zamowienie_id,
-                                  produkt_id: produkt_id,
-                                  nazwa: element.nazwa,
-                                  typ: element.typ,
-                                  naklad: element.naklad,
-                                  strony: element.ilosc_stron,
-                                  kolory: element.kolory,
-                                  format_x: element.format_x,
-                                  format_y: element.format_y,
-                                  papier_id: element.papier_id,
-                                  gramatura_id: element.gramatura_id,
-                                  papier_info: element.papier_info,
-                                  uwagi: element.uwagi,
-                                  // wykonczenie:element.wykonczenie,
-                                });
-                             
-                                let element_id = res3.data.insertId;
+                                      zamowienie_id: zamowienie_id,
+                                      produkt_id: produkt_id,
+                                      nazwa: element.nazwa,
+                                      typ: element.typ,
+                                      naklad: element.naklad,
+                                      strony: element.ilosc_stron,
+                                      kolory: element.kolory,
+                                      format_x: element.format_x,
+                                      format_y: element.format_y,
+                                      papier_id: element.papier_id,
+                                      gramatura_id: element.gramatura_id,
+                                      papier_info: element.papier_info,
+                                      uwagi: element.uwagi,
+                                      // wykonczenie:element.wykonczenie,
+                                      });
+                                  
+                                    let element_id = res3.data.insertId;
 
 
 
                                   //--------------------------- fragmenty     
-                                  await     fragmentyEdit
-                                                    .filter((f) => f.element_id == element.id )
-                                                    .forEach(async (fragment, index_f) => {
-                                                // let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
-                                                let oprawa_id_ok = fragment.oprawa_id
-                                                      let res4 = await axios.post(ip + "fragmenty", {
-                                                        naklad: fragment.naklad,
-                                                        info: fragment.info,
-                                                        index: fragment.index,
-                                                        zamowienie_id: zamowienie_id,
-                                                        element_id: element_id,
-                                                        produkt_id: produkt_id,
-                                                        typ: fragment.typ,
-                                                        oprawa_id: oprawa_id_ok
-                                                        // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
-                                                      });
-                                                      let fragment_id = res4.data.insertId;
-          
-                                                      let indexof = fragmenty.indexOf(fragment);
-                                                      fragmentyEdit[indexof].id = fragment_id
-                                                      fragmentyEdit[indexof].zamowienie_id = zamowienie_id
-                                                      fragmentyEdit[indexof].produkt_id = produkt_id
-                                                      fragmentyEdit[indexof].element_id = element_id
-                                                      // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
-                                                      fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
-                                                    
-                                                oprawaEdit.forEach((t) => {
-                                                  if (t.id_prev == fragment.oprawa_id) {
-                                            
-                                                    oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
-                                                    dane.push({
-                                                      oprawa_index: t.index,
-                                                      id_fragmentow:fragment_id,
-                                                      oprawa_id:fragment.oprawa_id,test:100})
-                                                  }
-                                                })
-                               
-                                                      //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
-                                                      setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
-                                                      // setFragmenty(fragmentyEdit)
-                                          });
+                                                fragmentyEdit
+                                                              .filter((f) => f.element_id == element.id )
+                                                              .forEach(async (fragment, index_f) => {
+                                                                    // let oprawa_id_ok = oprawaEdit.find(f => f.id_prev == fragment.oprawa_id).id
+                                                                    let oprawa_id_ok = fragment.oprawa_id
+                                                                          let res4 = await axios.post(ip + "fragmenty", {
+                                                                            naklad: fragment.naklad,
+                                                                            info: fragment.info,
+                                                                            index: fragment.index,
+                                                                            zamowienie_id: zamowienie_id,
+                                                                            element_id: element_id,
+                                                                            produkt_id: produkt_id,
+                                                                            typ: fragment.typ,
+                                                                            oprawa_id: oprawa_id_ok
+                                                                            // oprawa_id: oprawaEdit. filter((o) => o.id_prev == fragment.oprawa_id ).id,
+                                                                          });
+                                                                          let fragment_id = res4.data.insertId;
+                              
+                                                                          let indexof = fragmenty.indexOf(fragment);
+                                                                          fragmentyEdit[indexof].id = fragment_id
+                                                                          fragmentyEdit[indexof].zamowienie_id = zamowienie_id
+                                                                          fragmentyEdit[indexof].produkt_id = produkt_id
+                                                                          fragmentyEdit[indexof].element_id = element_id
+                                                                          // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
+                                                                          fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
+                                                                        
+                                                                    oprawaEdit.forEach((t) => {
+                                                                      if (t.id_prev == fragment.oprawa_id) {
+                                                                
+                                                                        oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
+                                                                        dane.push({
+                                                                          oprawa_index: t.index,
+                                                                          id_fragmentow:fragment_id,
+                                                                          oprawa_id:fragment.oprawa_id,test:100})
+                                                                      }
+                                                                    })
+                                                  
+                                                                          //dodany obiekt refresh do fragmentow bo nie chciał się odswiężać drugi obiekt
+                                                                          setFragmenty(fragmentyEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                                                                          // setFragmenty(fragmentyEdit)
+                                                                          console.log("Koniec fragmentow")
+                                                    });
                                           
-                                    let indexof = elementy.indexOf(element);
-                                    elementyEdit[indexof].id = element_id
-                                    elementyEdit[indexof].zamowienie_id = zamowienie_id
-                                    elementyEdit[indexof].produkt_id = produkt_id
-                                    setElementy(elementyEdit)
+                                        let indexof = elementy.indexOf(element);
+                                        elementyEdit[indexof].id = element_id
+                                        elementyEdit[indexof].zamowienie_id = zamowienie_id
+                                        elementyEdit[indexof].produkt_id = produkt_id
+                                        setElementy(elementyEdit)
                                     
                                     });
-                                    //--------------------------- fragmenty end
+                                    //--------------------------- element end
                               
                       //--------------------------- oprawa
-                              await oprawaEdit
+                               oprawaEdit
                               .forEach(async (opr, i) => {
                                 let oprawa_id_przed  =opr.id ;
                                 let res5 = await axios.post(ip + "oprawa", {
-                                  zamowienie_id: zamowienie_id,
-                                  produkt_id: produkt_id,
-                                  oprawa: opr.oprawa,
-                                  naklad: opr.naklad,
-                                  uwagi: opr.uwagi,
-                                  data_spedycji: opr.data_spedycji
-                                });
-                                let oprawa_id = res5.data.insertId;
+                                    zamowienie_id: zamowienie_id,
+                                    produkt_id: produkt_id,
+                                    oprawa: opr.oprawa,
+                                    naklad: opr.naklad,
+                                    uwagi: opr.uwagi,
+                                    data_spedycji: opr.data_spedycji
+                                  });
+                                    let oprawa_id = res5.data.insertId;
+                                      
+                                    let indexof = oprawa.indexOf(opr);
+                                    oprawaEdit[indexof].id = oprawa_id
+                                    oprawaEdit[indexof].id_prev = oprawa_id_przed
+                                    oprawaEdit[indexof].zamowienie_id = zamowienie_id
+                                    oprawaEdit[indexof].produkt_id = produkt_id
+                                                    // oprawaEdit[indexof].id_fragmentow= "";
+                                                    // dane.push({oprawa_index: t.index, id_fragmentow:fragment_id, oprawa_id:fragment.oprawa_id})
+                                                    // const oj = (element) => element == oprawa_id_przed
+                                                    // dane[x=>x.findIndex(oj)].oprawa_id=oprawa_id;
+                                                  //  dane.forEach((item) => {
+                                                  //     if( dane[item].oprawa_index == indexof) {
+                                                  //       dane[item].oprawa_id = oprawa_id
+                                                  //     }
+                                                  // })
                                   
-                                let indexof = oprawa.indexOf(opr);
-                                oprawaEdit[indexof].id = oprawa_id
-                                oprawaEdit[indexof].id_prev = oprawa_id_przed
-                                oprawaEdit[indexof].zamowienie_id = zamowienie_id
-                                oprawaEdit[indexof].produkt_id = produkt_id
-                                // oprawaEdit[indexof].id_fragmentow= "";
-                                // dane.push({oprawa_index: t.index, id_fragmentow:fragment_id, oprawa_id:fragment.oprawa_id})
-                                // const oj = (element) => element == oprawa_id_przed
-                                // dane[x=>x.findIndex(oj)].oprawa_id=oprawa_id;
-                              //  dane.forEach((item) => {
-                              //     if( dane[item].oprawa_index == indexof) {
-                              //       dane[item].oprawa_id = oprawa_id
-                              //     }
-                              // })
-               
-                               dane.forEach((item) => {
-                                  item[0].test= 23;
-                             })
-             
-                                setOprawa(oprawaEdit)
-              //     setOprawa(oprawaEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
-                      // oprawaEdit.forEach((t) => {
-                      //         const xx = t.id_fragmentow.split(" ");
-                      //         console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
-                    
-                      //       })
+                                                //    dane.forEach((item) => {
+                                                //       item[0].test= 23;
+                                                //  })
+
+                                
+                                                    setOprawa(oprawaEdit)
+                                  //     setOprawa(oprawaEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
+                                          // oprawaEdit.forEach((t) => {
+                                          //         const xx = t.id_fragmentow.split(" ");
+                                          //         console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
+                                        
+                                          //       })
+                                          console.log("Koniec oprawy")
+                                                //  dane.forEach((item) => {
+                                                //       item[0].test= 23;
+                                                //  })
+
+                                      //   dane.map((item) => {
+                                      //       return {...item, test:23}
+                                      //  })
+                                       dane[0].test = 23;
+                                       console.log( dane)
+
                         });
     
                        //--------------------------- oprawa end
@@ -554,27 +567,12 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
                               setProdukty(produktyEdit);
 
-                  // setOprawa((prev) =>
-                  //   prev.map((t) => {
-                  //     if (t.index == i) {
-                  //       return { ...t, id: oprawa_id,
-                  //         produkt_id: produkt_id,
-                  //         zamowienie_id: zamowienie_id };
-                  //     } else {
-                  //       return t;
-                  //     }
-                  //   })
-                  // );
                               
                       }); 
-               
-    
-                              // console.log(produktyEdit);
-                              // console.log(elementyEdit);
-                              // console.log(fragmentyEdit);
+
                               console.clear()
-                              console.log(dane)
-                              console.log(nroprawy)
+                             
+                    
                    
       }
 //------------

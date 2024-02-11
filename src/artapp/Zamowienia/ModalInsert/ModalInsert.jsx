@@ -475,9 +475,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                                                           // let indexofoprawa = oprawaEdit.indexOf(f => f.id == fragment.oprawa_id);
                                                                           fragmentyEdit[indexof].oprawa_id = oprawa_id_ok
                                                                         
+                                                                          console.log("Przystane 1")
                                                                     oprawaEdit.forEach((t) => {
                                                                       if (t.id_prev == fragment.oprawa_id) {
-                                                                
+                                                                        console.log("Przystane 2")
                                                                         oprawaEdit[t.index].id_fragmentow= oprawaEdit[t.index].id_fragmentow + " " +fragment_id
                                                                         dane.push({
                                                                           oprawa_index: t.index,
@@ -550,8 +551,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                       //   dane.map((item) => {
                                       //       return {...item, test:23}
                                       //  })
+                                      console.log("Przystane 3")
                                        dane[0].test = 23;
+                                       console.log("Przystane 4")
                                        console.log( dane)
+                                       console.log("Przystane 5")
 
                         });
     

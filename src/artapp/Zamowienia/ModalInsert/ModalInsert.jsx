@@ -377,9 +377,16 @@ const [openModalStany, setOpenModalStany] = useState(false);
     let res = await axios.post(ip + "zamowienieobj", {user,daneZamowienia,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
     console.log(res)
   }
-
   //----------------------------------
-  async function postZamowienieObj(){
+   function postZamowienieObj(){
+  zapis();
+  }
+
+  function postOprawa(){
+    
+  }
+  //----------------------------------
+  async function  zapis(){
    // najnowszy pomysł zeby zapisywać w oprawie wszystkie idki fragmentow
     const produktyEdit = produkty.slice();
     const elementyEdit = elementy.slice();
@@ -410,7 +417,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     
               
     
-                     await produktyEdit.forEach(async (produkt, index) => {
+                      produktyEdit.forEach(async (produkt, index) => {
                       
                         let res2 = await axios.post(ip + "produkty", {
                           nazwa: produkt.nazwa,
@@ -521,37 +528,12 @@ const [openModalStany, setOpenModalStany] = useState(false);
                                     oprawaEdit[indexof].id_prev = oprawa_id_przed
                                     oprawaEdit[indexof].zamowienie_id = zamowienie_id
                                     oprawaEdit[indexof].produkt_id = produkt_id
-                                                    // oprawaEdit[indexof].id_fragmentow= "";
-                                                    // dane.push({oprawa_index: t.index, id_fragmentow:fragment_id, oprawa_id:fragment.oprawa_id})
-                                                    // const oj = (element) => element == oprawa_id_przed
-                                                    // dane[x=>x.findIndex(oj)].oprawa_id=oprawa_id;
-                                                  //  dane.forEach((item) => {
-                                                  //     if( dane[item].oprawa_index == indexof) {
-                                                  //       dane[item].oprawa_id = oprawa_id
-                                                  //     }
-                                                  // })
-                                  
-                                                //    dane.forEach((item) => {
-                                                //       item[0].test= 23;
-                                                //  })
 
-                                
-                                                    setOprawa(oprawaEdit)
-                                  //     setOprawa(oprawaEdit.map((t)=>{return {...t, refresh: "refreshqqqq"}}))
-                                          // oprawaEdit.forEach((t) => {
-                                          //         const xx = t.id_fragmentow.split(" ");
-                                          //         console.log("t.id_fragmentow: "+t.id_fragmentow + " split : "+xx[1])
-                                        
-                                          //       })
-                                          console.log("Koniec oprawy")
-                                                //  dane.forEach((item) => {
-                                                //       item[0].test= 23;
-                                                //  })
-
-                                      //   dane.map((item) => {
-                                      //       return {...item, test:23}
-                                      //  })
-                                      console.log("Przystane 3")
+                                     setOprawa(oprawaEdit)
+         
+                                    console.log("Koniec oprawy")
+              
+                                    console.log("Przystane 3")
                                        dane[0].test = 23;
                                        console.log("Przystane 4")
                                        console.log( dane)

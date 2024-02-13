@@ -404,7 +404,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
   }
    function f2(){
     // setTimeout(()=>console.log("f2"),500)
-    console.log("f2")
+    setTimeout(()=>{
+
+      console.log("f2")
+    },500)
+
   }
    function f1(callback){
     setTimeout(()=>{
@@ -412,11 +416,9 @@ const [openModalStany, setOpenModalStany] = useState(false);
       callback();
     },2000)
     
+    
   }
 
-  async  function f3(){
-    setTimeout(()=>console.log("f3"),500)
-  }
 
   function postOprawa(){
 //     oprawaEdit

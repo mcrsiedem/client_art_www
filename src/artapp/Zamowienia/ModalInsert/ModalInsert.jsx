@@ -32,8 +32,9 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { clear } from "@testing-library/user-event/dist/clear";
-import { postOprawatest } from "./Actions";
+import { saveOrder } from "./Actions/Order";
+
+
 
 
 
@@ -396,10 +397,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
     function zmianStanow(){
     setElementy(elementyEdit)
   }
-   async function postZamowienieObj(){
+    function postZamowienieObj(){
     // await zapis();
-
-       f1(f2);
+    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies});
+      //  f1(f2);
 
   }
    function f2(){

@@ -26,13 +26,15 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
         status: daneZamowienia.status,
         uwagi: daneZamowienia.uwagi,
       });
-  const zamowienie_id = res.data.insertId;
+    let zamowienie_id = res.data.insertId;
 
-  console.log("zamowienie_id: " +zamowienie_id);
 
-    await saveProduct({produktyEdit,zamowienie_id});
+    console.log("zamowienie_id: " +zamowienie_id);
+
+    let produkt_id = await saveProduct({produktyEdit,zamowienie_id});
    
-  console.log("...from save order end");
+    console.log('...produkt_id from main '+ produkt_id)
+    console.log("...from save order end");
 }
 
 const saveProduct = ({produktyEdit,zamowienie_id}) =>{
@@ -50,7 +52,7 @@ const saveProduct = ({produktyEdit,zamowienie_id}) =>{
                           });
                           let produkt_id = res2.data.insertId;             
             console.log('...from produkt '+ produkt_id)
-            resolve();
+            resolve(produkt_id);
         })
 
 

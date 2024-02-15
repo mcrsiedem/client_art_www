@@ -6,6 +6,7 @@ import { ip } from "../../../../Host";
 
 export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies}){
 
+    let produktyEdit = produkty.slice();
     console.clear();
 
     console.log("...from save order start");
@@ -29,7 +30,32 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
   console.log("zamowienie_id: " +zamowienie_id);
 
-
+    await saveProduct({produktyEdit,zamowienie_id});
    
   console.log("...from save order end");
+}
+
+const saveProduct = ({produktyEdit,zamowienie_id}) =>{
+
+    return new Promise((resolve,reject)=>{
+
+        produktyEdit.forEach(async (produkt, index) => {
+
+         let res2 = await axios.post(ip + "produkty", {
+                          nazwa: produkt.nazwa,
+                          zamowienie_id: zamowienie_id,
+                          typ: produkt.typ,
+                          wersja: produkt.wersja,
+                          uwagi: produkt.uwagi,
+                          });
+                          let produkt_id = res2.data.insertId;             
+            console.log('...from produkt '+ produkt_id)
+            resolve();
+        })
+
+
+    
+
+        
+    })
 }

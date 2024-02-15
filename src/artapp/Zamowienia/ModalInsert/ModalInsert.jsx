@@ -107,6 +107,20 @@ function ModalInsert({
       naklad: "1000",
       index: 0,
       uwagi: "",
+    },
+    {
+      id: 2,
+      zamowienie_id: 1,
+      typ: 1,
+      nazwa: "",
+      wersja: "",
+      ilosc_stron: "",
+      format_x: "",
+      format_y: "",
+      oprawa: "PUR",
+      naklad: "1000",
+      index: 1,
+      uwagi: "",
     }
     
   ]);

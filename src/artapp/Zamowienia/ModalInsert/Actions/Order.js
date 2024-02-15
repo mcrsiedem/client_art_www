@@ -5,11 +5,86 @@ import { ip } from "../../../../Host";
 
 
 export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies}){
-
+            console.clear();
     let produktyEdit = produkty.slice();
-    console.clear();
 
-    console.log("...from save order start");
+
+            
+            console.log("...from save order start");
+    let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
+            console.log("zamowienie_id: " +zamowienie_id);
+
+            // produktyEdit.forEach(async (produkt, index) => {
+                
+            // })  
+
+    let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
+
+     savedProducts.forEach( x=>console.log(x.id) )
+            // console.log('...produkt_id from main '+ savedProducts[0].id)
+            console.log("...from save order end");
+}
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------
+const saveProducts = ({produktyEdit,zamowienie_id}) =>{
+    
+    return new Promise(async (resolve,reject)=>{
+        const data=[]
+
+        produktyEdit.map( (produkt, index) => {
+
+        axios.post(ip + "produkty", {
+                          nazwa: produkt.nazwa,
+                          zamowienie_id: zamowienie_id,
+                          typ: produkt.typ,
+                          wersja: produkt.wersja,
+                          uwagi: produkt.uwagi,
+                          }).then((res) =>{
+                             console.log("id z produktu:" + produkt.id)
+                             console.log("Id z odpowiedzi:" + res.data.insertId)
+                             produkt.id=res.data.insertId
+                             console.log("Id po przypisaniu:" + produkt.id)
+                            let id = res.data.insertId;  
+                            // data.push(produkt)
+                      
+                            
+                        })
+                        .then(()=>{
+
+                            produktyEdit.forEach( x=>console.log(x.index + " - "+x.id) ) 
+                        }).then(()=>{
+
+                           
+                        });
+                        
+
+                        
+                        
+                        //   let produkt_id = res2.data.insertId;             
+                        // console.log('...from produkt '+ produkt_id)
+                        // data[index].id= produkt_id
+                        
+                        //  produktyEdit.forEach( x=>console.log(x.index + " "+x.id) )
+                         
+                    })
+
+ resolve(produktyEdit);
+                     
+                }
+                )
+}
+//----------------------------------------------------------------------------------
+
+const saveDataOrder = ({daneZamowienia,cookies}) =>{
+
+    return new Promise(async(resolve,reject)=>{
 
     let res = await axios.post(ip + "zamowienie", {
         nr: daneZamowienia.nr,
@@ -28,36 +103,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
       });
     let zamowienie_id = res.data.insertId;
 
+        resolve(zamowienie_id)
 
-    console.log("zamowienie_id: " +zamowienie_id);
-
-    let produkt_id = await saveProduct({produktyEdit,zamowienie_id});
-   
-    console.log('...produkt_id from main '+ produkt_id)
-    console.log("...from save order end");
-}
-
-const saveProduct = ({produktyEdit,zamowienie_id}) =>{
-
-    return new Promise((resolve,reject)=>{
-
-        produktyEdit.forEach(async (produkt, index) => {
-
-         let res2 = await axios.post(ip + "produkty", {
-                          nazwa: produkt.nazwa,
-                          zamowienie_id: zamowienie_id,
-                          typ: produkt.typ,
-                          wersja: produkt.wersja,
-                          uwagi: produkt.uwagi,
-                          });
-                          let produkt_id = res2.data.insertId;             
-            console.log('...from produkt '+ produkt_id)
-            resolve(produkt_id);
-        })
-
-
-    
-
-        
     })
 }

@@ -20,8 +20,10 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
     let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
 
-     savedProducts.forEach( x=>console.log(x.id) )
+    //  savedProducts.forEach( x=>console.log(x.id) )
             // console.log('...produkt_id from main '+ savedProducts[0].id)
+
+            console.log(savedProducts);
             console.log("...from save order end");
 }
 
@@ -40,28 +42,33 @@ const data = [...produktyEdit]
 
         produktyEdit.map( (produkt, index) => {
 
-        const   save = axios.post(ip + "produkty", {
-                          nazwa: produkt.nazwa,
-                          zamowienie_id: zamowienie_id,
-                          typ: produkt.typ,
-                          wersja: produkt.wersja,
-                          uwagi: produkt.uwagi,
-                          })
-                save.then((res) =>{
-                            //  console.log("id z produktu:" + produkt.id)
-                             console.log("Id z odpowiedzi:" + res.data.insertId)
-                            //  produkt.id=res.data.insertId
-                            //  console.log("Id po przypisaniu:" + produkt.id)
-                            let id = res.data.insertId;  
-                            data[index].id =id;
-                            // data.push(produkt)
-                            
-                            resolve(data);   
-                        })
-                        
-                         
-                    })
-                    
+                    const   save = axios.post(ip + "produkty", {
+                                    nazwa: produkt.nazwa,
+                                    zamowienie_id: zamowienie_id,
+                                    typ: produkt.typ,
+                                    wersja: produkt.wersja,
+                                    uwagi: produkt.uwagi,
+                                    })
+
+
+                            save.then((res) =>{
+                                        //  console.log("id z produktu:" + produkt.id)
+                                        // console.log("Id z odpowiedzi:" + res.data.insertId)
+                                        //  produkt.id=res.data.insertId
+                                        //  console.log("Id po przypisaniu:" + produkt.id)
+                                        let id = res.data.insertId; 
+                                        // data[index].id = id 
+                                        //  data[index].id =id;
+                                        changeId(id,data,index)
+                                        
+                                           
+                                    })
+                                    
+                                    
+                                })
+                                // console.log(data)
+                                // resolve([{id: 200},{id: 300}]);
+                                resolve([...data]);
                 }
                 
                 )
@@ -70,7 +77,18 @@ const data = [...produktyEdit]
 }
 
 //----------------------------------------------------------------------------------
+const changeId = (id,data,index) =>{
 
+    return new Promise ((resolve,reject) =>{
+
+            data[index].id = id
+        // const produkt = data.find( produkt=> produkt.index === index)
+        // produkt
+        // console.log("id z changeId :" + id)
+        resolve();
+
+    })
+}
 
 
 //----------------------------------------------------------------------------------

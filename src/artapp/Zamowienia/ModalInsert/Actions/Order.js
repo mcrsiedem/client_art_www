@@ -34,52 +34,45 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
 //----------------------------------------------------------------------------------
 const saveProducts = ({produktyEdit,zamowienie_id}) =>{
-    
-    return new Promise(async (resolve,reject)=>{
-        const data=[]
+const data = [...produktyEdit]
+    return new Promise( (resolve,reject)=>{
+        
 
         produktyEdit.map( (produkt, index) => {
 
-        axios.post(ip + "produkty", {
+        const   save = axios.post(ip + "produkty", {
                           nazwa: produkt.nazwa,
                           zamowienie_id: zamowienie_id,
                           typ: produkt.typ,
                           wersja: produkt.wersja,
                           uwagi: produkt.uwagi,
-                          }).then((res) =>{
-                             console.log("id z produktu:" + produkt.id)
+                          })
+                save.then((res) =>{
+                            //  console.log("id z produktu:" + produkt.id)
                              console.log("Id z odpowiedzi:" + res.data.insertId)
-                             produkt.id=res.data.insertId
-                             console.log("Id po przypisaniu:" + produkt.id)
+                            //  produkt.id=res.data.insertId
+                            //  console.log("Id po przypisaniu:" + produkt.id)
                             let id = res.data.insertId;  
+                            data[index].id =id;
                             // data.push(produkt)
-                      
                             
+                            resolve(data);   
                         })
-                        .then(()=>{
-
-                            produktyEdit.forEach( x=>console.log(x.index + " - "+x.id) ) 
-                        }).then(()=>{
-
-                           
-                        });
                         
-
-                        
-                        
-                        //   let produkt_id = res2.data.insertId;             
-                        // console.log('...from produkt '+ produkt_id)
-                        // data[index].id= produkt_id
-                        
-                        //  produktyEdit.forEach( x=>console.log(x.index + " "+x.id) )
                          
                     })
-
- resolve(produktyEdit);
-                     
+                    
                 }
+                
                 )
+                
+
 }
+
+//----------------------------------------------------------------------------------
+
+
+
 //----------------------------------------------------------------------------------
 
 const saveDataOrder = ({daneZamowienia,cookies}) =>{

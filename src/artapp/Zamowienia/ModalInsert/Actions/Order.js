@@ -28,7 +28,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
 
     return new Promise( (resolve,reject)=>{
- 
+        let data = [{id:6}]
         //   roll({produktyEdit,zamowienie_id}).then(res => resolve (res))
 
         // setTimeout(()=>{
@@ -39,8 +39,12 @@ const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
         //    resolve (produktyEdit) 
         // },2000)
 
-
+// tutaj zrobić pętlę a zapis w roll
  
+produktyEdit.map(async (produkt, index) => {
+
+
+})
         roll(produktyEdit,zamowienie_id,resolve)
      
         // produktyEdit.forEach(element => {

@@ -7,6 +7,7 @@ import { ip } from "../../../../Host";
 export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies}){
             console.clear();
     let produktyEdit = produkty.slice();
+    let elementyEdit = elementy.slice();
 
 
             
@@ -20,36 +21,59 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 }
 
 
-const saveProducts = ({produktyEdit,zamowienie_id}) =>{
-
-    return new Promise( (resolve,reject)=>{
-
-       const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
-       let users = [];
-       let promises = [];
-       for (let i = 0; i < produktyEdit.length; i++) {
-         promises.push(
-            axios.post(ip + "produkty", {
-                nazwa: produktyEdit[i].nazwa,
-                zamowienie_id: zamowienie_id,
-                typ: produktyEdit[i].typ,
-                wersja: produktyEdit[i].wersja,
-                uwagi: produktyEdit[i].uwagi,
-                }).then(response => {
-             // do something with response
-             users.push({id:response.data.insertId});
-             produktyEdit[i].id=response.data.insertId
-             produktyEdit[i].zamowienie_id=zamowienie_id;
-           })
-         )
-       }
-       
-       Promise.all(promises).then(() => resolve(produktyEdit));
-        
-    })
 
 
-}
+const saveFragmets = ({ savedProducts,elementyEdit, zamowienie_id }) => {
+    return new Promise((resolve, reject) => {
+      let promises = [];
+      for (let i = 0; i < produktyEdit.length; i++) {
+        promises.push(
+          axios
+            .post(ip + "produkty", {
+              nazwa: produktyEdit[i].nazwa,
+              zamowienie_id: zamowienie_id,
+              typ: produktyEdit[i].typ,
+              wersja: produktyEdit[i].wersja,
+              uwagi: produktyEdit[i].uwagi,
+            })
+            .then((response) => {
+              // do something with response
+  
+              produktyEdit[i].id = response.data.insertId;
+              produktyEdit[i].zamowienie_id = zamowienie_id;
+            })
+        );
+      }
+  
+      Promise.all(promises).then(() => resolve(produktyEdit));
+    });
+  };
+
+const saveProducts = ({ produktyEdit, zamowienie_id }) => {
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let i = 0; i < produktyEdit.length; i++) {
+      promises.push(
+        axios
+          .post(ip + "produkty", {
+            nazwa: produktyEdit[i].nazwa,
+            zamowienie_id: zamowienie_id,
+            typ: produktyEdit[i].typ,
+            wersja: produktyEdit[i].wersja,
+            uwagi: produktyEdit[i].uwagi,
+          })
+          .then((response) => {
+            // do something with response
+
+            produktyEdit[i].id = response.data.insertId;
+            produktyEdit[i].zamowienie_id = zamowienie_id;
+          })
+      );
+    }
+
+    Promise.all(promises).then(() => resolve(produktyEdit));
+  });
+};
 
 
 

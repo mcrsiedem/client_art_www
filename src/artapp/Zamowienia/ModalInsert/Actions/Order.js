@@ -59,11 +59,12 @@ const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
                 }).then(response => {
              // do something with response
              users.push({id:response.data.insertId});
+             produktyEdit[i].id=response.data.insertId
            })
          )
        }
        
-       Promise.all(promises).then(() => resolve(users));
+       Promise.all(promises).then(() => resolve(produktyEdit));
 
 
 

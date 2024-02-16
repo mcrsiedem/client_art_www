@@ -8,8 +8,8 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
             console.clear();
     // const produktyEdit = produkty.slice();
     // const elementyEdit = elementy.slice();
-    const produktyEdit = [...produkty]
-    const elementyEdit = [...elementy]
+    const produktyEdit = JSON.parse(JSON.stringify(produkty))
+    const elementyEdit = JSON.parse(JSON.stringify(elementy))
 
             
             console.log("...from save order start");
@@ -19,8 +19,9 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     // let set2 = await setE({setElementy,savedProducts});
     // let set = await setP({setProdukty,savedProducts});
 
-    // setProdukty(savedProducts.produktyEdit)
-    // setElementy(savedProducts.elementyEdit)
+    setProdukty(savedProducts.produktyEdit)
+    setElementy(savedProducts.elementyEdit)
+
             console.log(savedProducts);
             console.log("...from save order end");
 }

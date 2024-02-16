@@ -415,26 +415,11 @@ const [openModalStany, setOpenModalStany] = useState(false);
     function postZamowienieObj(){
     // await zapis();
 
-    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies});
+    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy});
       //  f1(f2);
 
   }
-   function f2(){
-    // setTimeout(()=>console.log("f2"),500)
-    setTimeout(()=>{
 
-      console.log("f2")
-    },500)
-
-  }
-   function f1(callback){
-    setTimeout(()=>{
-      console.log("f1")
-      callback();
-    },2000)
-    
-    
-  }
 
 
   function postOprawa(){

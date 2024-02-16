@@ -28,31 +28,48 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
 
     return new Promise( (resolve,reject)=>{
-        let data = [{id:6}]
-        //   roll({produktyEdit,zamowienie_id}).then(res => resolve (res))
 
-        // setTimeout(()=>{
-        //     produktyEdit.map(element => {
-        //         element.id = 500;
-        //     });
-
-        //    resolve (produktyEdit) 
-        // },2000)
-
-// tutaj zrobić pętlę a zapis w roll
- 
-produktyEdit.map(async (produkt, index) => {
-
-
-})
-        roll(produktyEdit,zamowienie_id,resolve)
+       // roll(produktyEdit,zamowienie_id,resolve)
      
-        // produktyEdit.forEach(element => {
-        //     console.log(element)
-        // });
 
-        //   resolve ([{id:200},{id:300}])
-          
+    //    const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+    //    let users = [];
+    //    let promises = [];
+    //    for (i = 0; i < array.length; i++) {
+    //      promises.push(
+    //        axios.get('/user/' + array[i].id).then(response => {
+    //          // do something with response
+    //          users.push(response);
+    //        })
+    //      )
+    //    }
+       
+    //    Promise.all(promises).then(() => console.log(users));
+       const array = [{ id: 'asdf'}, { id: 'foo' }, { id: 'bar' }]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+       let users = [];
+       let promises = [];
+       for (let i = 0; i < produktyEdit.length; i++) {
+         promises.push(
+            axios.post(ip + "produkty", {
+                nazwa: produktyEdit[i].nazwa,
+                zamowienie_id: zamowienie_id,
+                typ: produktyEdit[i].typ,
+                wersja: produktyEdit[i].wersja,
+                uwagi: produktyEdit[i].uwagi,
+                }).then(response => {
+             // do something with response
+             users.push({id:response.data.insertId});
+           })
+         )
+       }
+       
+       Promise.all(promises).then(() => resolve(users));
+
+
+
+
+
+
 
         
     })

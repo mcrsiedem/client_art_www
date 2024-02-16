@@ -18,31 +18,86 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
                 
             // })  
 
-    let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
+            let savedProducts2 = await saveProducts2({produktyEdit,zamowienie_id});
+            // let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
 
     //  savedProducts.forEach( x=>console.log(x.id) )
             // console.log('...produkt_id from main '+ savedProducts[0].id)
 
-            console.log(savedProducts);
+              console.log(savedProducts2[1].id);
             console.log("...from save order end");
 }
 
 
+const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
+
+    return new Promise( (resolve,reject)=>{
+ 
+        //   roll({produktyEdit,zamowienie_id}).then(res => resolve (res))
+
+        produktyEdit.map(element => {
+            element.id = 500;
+        });
+        produktyEdit.forEach(element => {
+            console.log(element)
+        });
+
+        //   resolve ([{id:200},{id:300}])
+          resolve (produktyEdit)
+
+        
+    })
 
 
+}
+   async function roll(produktyEdit,zamowienie_id){
+
+    let data = produktyEdit.slice();
+    for await (const produkt of data){
+
+        const   save = axios.post(ip + "produkty", {
+            nazwa: produkt.nazwa,
+            zamowienie_id: zamowienie_id,
+            typ: produkt.typ,
+            wersja: produkt.wersja,
+            uwagi: produkt.uwagi,
+            })
+
+
+    save.then((res) =>{
+                //  console.log("id z produktu:" + produkt.id)
+                // console.log("Id z odpowiedzi:" + res.data.insertId)
+                data.id=res.data.insertId
+                //  console.log("Id po przypisaniu:" + produkt.id)
+                // let id = res.data.insertId; 
+                // data[index].id = id 
+                //  data[index].id =id;
+               
+                
+                   
+            })
+
+            
+
+    }
+ 
+ 
+
+
+   }
 
 
 
 
 //----------------------------------------------------------------------------------
 const saveProducts = ({produktyEdit,zamowienie_id}) =>{
-const data = [...produktyEdit]
     return new Promise( (resolve,reject)=>{
+        const data = [...produktyEdit]
         
 
-        produktyEdit.map( (produkt, index) => {
+        data.map(async (produkt, index) => {
 
-                    const   save = axios.post(ip + "produkty", {
+                    let   res = await axios.post(ip + "produkty", {
                                     nazwa: produkt.nazwa,
                                     zamowienie_id: zamowienie_id,
                                     typ: produkt.typ,
@@ -50,25 +105,15 @@ const data = [...produktyEdit]
                                     uwagi: produkt.uwagi,
                                     })
 
-
-                            save.then((res) =>{
-                                        //  console.log("id z produktu:" + produkt.id)
-                                        // console.log("Id z odpowiedzi:" + res.data.insertId)
-                                        //  produkt.id=res.data.insertId
-                                        //  console.log("Id po przypisaniu:" + produkt.id)
-                                        let id = res.data.insertId; 
-                                        // data[index].id = id 
-                                        //  data[index].id =id;
-                                        changeId(id,data,index)
-                                        
-                                           
-                                    })
-                                    
+                                    produkt.id =  res.data.insertId; 
+     
                                     
                                 })
-                                // console.log(data)
-                                // resolve([{id: 200},{id: 300}]);
-                                resolve([...data]);
+                                console.log("koniec mapowania") 
+
+                                //  console.log("okok "+data[0].id)
+                                resolve([{id: 200},{id: 300}]);
+                                // resolve([...data]);
                 }
                 
                 )

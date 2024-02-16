@@ -4,25 +4,44 @@ import { ip } from "../../../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy}){
             console.clear();
-    let produktyEdit = produkty.slice();
-    let elementyEdit = elementy.slice();
-
+    // const produktyEdit = produkty.slice();
+    // const elementyEdit = elementy.slice();
+    const produktyEdit = [...produkty]
+    const elementyEdit = [...elementy]
 
             
             console.log("...from save order start");
     let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
             console.log("zamowienie_id: " +zamowienie_id);
     let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id});
+    // let set2 = await setE({setElementy,savedProducts});
+    // let set = await setP({setProdukty,savedProducts});
 
+    // setProdukty(savedProducts.produktyEdit)
+    // setElementy(savedProducts.elementyEdit)
             console.log(savedProducts);
             console.log("...from save order end");
 }
 
 
 
+// const setP = ({ setProdukty,savedProducts}) => {
+//     return new Promise((resolve, reject) => {
 
+// setProdukty(savedProducts.produktyEdit)
+// resolve()
+
+//     })}
+
+//     const setE = ({ setElementy,savedProducts}) => {
+//         return new Promise((resolve, reject) => {
+    
+//             setElementy(savedProducts.elementyEdit)
+//     resolve()
+    
+//         })}
 
 
 const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id }) => {

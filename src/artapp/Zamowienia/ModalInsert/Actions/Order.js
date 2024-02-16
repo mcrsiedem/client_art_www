@@ -39,6 +39,7 @@ const saveProducts = ({produktyEdit,zamowienie_id}) =>{
              // do something with response
              users.push({id:response.data.insertId});
              produktyEdit[i].id=response.data.insertId
+             produktyEdit[i].zamowienie_id=zamowienie_id;
            })
          )
        }

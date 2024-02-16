@@ -14,17 +14,13 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
             console.log("zamowienie_id: " +zamowienie_id);
 
-            // produktyEdit.forEach(async (produkt, index) => {
-                
-            // })  
 
-            let savedProducts2 = await saveProducts2({produktyEdit,zamowienie_id});
+
+    let savedProducts2 = await saveProducts2({produktyEdit,zamowienie_id});
             // let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
 
-    //  savedProducts.forEach( x=>console.log(x.id) )
-            // console.log('...produkt_id from main '+ savedProducts[0].id)
 
-              console.log(savedProducts2[1].id);
+            console.log(savedProducts2[1].id);
             console.log("...from save order end");
 }
 
@@ -35,15 +31,20 @@ const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
  
         //   roll({produktyEdit,zamowienie_id}).then(res => resolve (res))
 
-        produktyEdit.map(element => {
-            element.id = 500;
-        });
+        setTimeout(()=>{
+            produktyEdit.map(element => {
+                element.id = 500;
+            });
+
+           resolve (produktyEdit) 
+        },2000)
+     
         produktyEdit.forEach(element => {
             console.log(element)
         });
 
         //   resolve ([{id:200},{id:300}])
-          resolve (produktyEdit)
+          
 
         
     })

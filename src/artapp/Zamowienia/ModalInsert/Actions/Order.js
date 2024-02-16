@@ -20,7 +20,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
             // let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
 
 
-            console.log(savedProducts2[1].id);
+            console.log(savedProducts2[0].id);
             console.log("...from save order end");
 }
 
@@ -31,17 +31,21 @@ const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
  
         //   roll({produktyEdit,zamowienie_id}).then(res => resolve (res))
 
-        setTimeout(()=>{
-            produktyEdit.map(element => {
-                element.id = 500;
-            });
+        // setTimeout(()=>{
+        //     produktyEdit.map(element => {
+        //         element.id = 500;
+        //     });
 
-           resolve (produktyEdit) 
-        },2000)
+        //    resolve (produktyEdit) 
+        // },2000)
+
+
+ 
+        roll(produktyEdit,zamowienie_id,resolve)
      
-        produktyEdit.forEach(element => {
-            console.log(element)
-        });
+        // produktyEdit.forEach(element => {
+        //     console.log(element)
+        // });
 
         //   resolve ([{id:200},{id:300}])
           
@@ -51,39 +55,38 @@ const saveProducts2 = ({produktyEdit,zamowienie_id}) =>{
 
 
 }
-   async function roll(produktyEdit,zamowienie_id){
+   async function roll(produktyEdit,zamowienie_id,callback){
+console.log("start roll") 
+     let data = [{id:6}]
 
-    let data = produktyEdit.slice();
-    for await (const produkt of data){
+                produktyEdit.map(async (prod, index) => {
+                                
+               let res = await  axios.post(ip + "produkty", {
+                    nazwa: prod.nazwa,
+                    zamowienie_id: zamowienie_id,
+                    typ: prod.typ,
+                    wersja: prod.wersja,
+                    uwagi: prod.uwagi,
+                    })
+                        //  console.log("to tu" +p.data.insertId)
+                        data.push({id:res.data.insertId})
+                        
+                        produktyEdit[index]=res.data.insertId
+                        
+                        console.log("map roll") 
+                    
+                    //   let produkt_id = res2.data.insertId;
+                    //   console.log(produkt_id)
+                    
+                    //   prod.id = 600;
+                    
+                })
 
-        const   save = axios.post(ip + "produkty", {
-            nazwa: produkt.nazwa,
-            zamowienie_id: zamowienie_id,
-            typ: produkt.typ,
-            wersja: produkt.wersja,
-            uwagi: produkt.uwagi,
-            })
 
-
-    save.then((res) =>{
-                //  console.log("id z produktu:" + produkt.id)
-                // console.log("Id z odpowiedzi:" + res.data.insertId)
-                data.id=res.data.insertId
-                //  console.log("Id po przypisaniu:" + produkt.id)
-                // let id = res.data.insertId; 
-                // data[index].id = id 
-                //  data[index].id =id;
-               
-                
-                   
-            })
-
-            
-
-    }
- 
- 
-
+    // console.log(data) 
+    console.log("end roll") 
+    callback(data)
+    // callback([{id:200},{id:300}])
 
    }
 

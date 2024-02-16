@@ -14,7 +14,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
             console.log("...from save order start");
     let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
             console.log("zamowienie_id: " +zamowienie_id);
-    let savedProducts = await saveProducts({produktyEdit,zamowienie_id});
+    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id});
 
             console.log(savedProducts);
             console.log("...from save order end");
@@ -23,60 +23,89 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
 
 
-const saveFragmets = ({ savedProducts,elementyEdit, zamowienie_id }) => {
-    return new Promise((resolve, reject) => {
-      let promises = [];
-      for (let i = 0; i < produktyEdit.length; i++) {
-        promises.push(
-          axios
-            .post(ip + "produkty", {
-              nazwa: produktyEdit[i].nazwa,
-              zamowienie_id: zamowienie_id,
-              typ: produktyEdit[i].typ,
-              wersja: produktyEdit[i].wersja,
-              uwagi: produktyEdit[i].uwagi,
-            })
-            .then((response) => {
-              // do something with response
-  
-              produktyEdit[i].id = response.data.insertId;
-              produktyEdit[i].zamowienie_id = zamowienie_id;
-            })
-        );
-      }
-  
-      Promise.all(promises).then(() => resolve(produktyEdit));
-    });
-  };
 
-const saveProducts = ({ produktyEdit, zamowienie_id }) => {
+
+const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
-    for (let i = 0; i < produktyEdit.length; i++) {
+    for (let produkt of produktyEdit) {
       promises.push(
         axios
           .post(ip + "produkty", {
-            nazwa: produktyEdit[i].nazwa,
+            nazwa: produkt.nazwa,
             zamowienie_id: zamowienie_id,
-            typ: produktyEdit[i].typ,
-            wersja: produktyEdit[i].wersja,
-            uwagi: produktyEdit[i].uwagi,
+            typ: produkt.typ,
+            wersja: produkt.wersja,
+            uwagi: produkt.uwagi,
           })
           .then((response) => {
-            // do something with response
+            // do something with response filter(element => element.produkt_id == produktyEdit[i].id)
+            let produkt_id = response.data.insertId;
 
-            produktyEdit[i].id = response.data.insertId;
-            produktyEdit[i].zamowienie_id = zamowienie_id;
+            for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {
+                promises.push(axios.post(ip + "elementy", {
+                    zamowienie_id: zamowienie_id,
+                    produkt_id: produkt_id,
+                    nazwa: element.nazwa,
+                    typ: element.typ,
+                    naklad: element.naklad,
+                    strony: element.ilosc_stron,
+                    kolory: element.kolory,
+                    format_x: element.format_x,
+                    format_y: element.format_y,
+                    papier_id: element.papier_id,
+                    gramatura_id: element.gramatura_id,
+                    papier_info: element.papier_info,
+                    uwagi: element.uwagi,
+    
+                    }).then((response)=>{
+                        element.id = response.data.insertId
+                        element.zamowienie_id = zamowienie_id
+                         element.produkt_id = produkt_id
+                    })
+                    
+                    )
+                    
+            }
+
+            produkt.id = response.data.insertId;
+            produkt.zamowienie_id = zamowienie_id;
           })
       );
+
+
     }
 
-    Promise.all(promises).then(() => resolve(produktyEdit));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit}));
   });
 };
 
 
-
+// const saveFragmets = ({ savedProducts,elementyEdit, zamowienie_id }) => {
+//     return new Promise((resolve, reject) => {
+//       let promises = [];
+//       for (let i = 0; i < produktyEdit.length; i++) {
+//         promises.push(
+//           axios
+//             .post(ip + "produkty", {
+//               nazwa: produktyEdit[i].nazwa,
+//               zamowienie_id: zamowienie_id,
+//               typ: produktyEdit[i].typ,
+//               wersja: produktyEdit[i].wersja,
+//               uwagi: produktyEdit[i].uwagi,
+//             })
+//             .then((response) => {
+//               // do something with response
+  
+//               produktyEdit[i].id = response.data.insertId;
+//               produktyEdit[i].zamowienie_id = zamowienie_id;
+//             })
+//         );
+//       }
+  
+//       Promise.all(promises).then(() => resolve(produktyEdit));
+//     });
+//   };
 
 
 //----------------------------------------------------------------------------------

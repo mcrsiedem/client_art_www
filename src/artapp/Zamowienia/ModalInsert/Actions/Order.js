@@ -63,8 +63,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
             wersja: produkt.wersja,
             uwagi: produkt.uwagi,
           })
-          .then((response) => {
-   
+          .then((response)=>{
             let produkt_id = response.data.insertId;
                           //------ oprawa
                           for (let oprawa of oprawaEdit) {
@@ -85,6 +84,17 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                 })
                                 )
                         }
+
+                 
+                  
+                          //------
+                        return ({response,produkt_id})
+          })
+          .then(({response,produkt_id}) => {
+   
+            
+                          //------ oprawa
+
                   
                           //------
 

@@ -63,35 +63,10 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
             wersja: produkt.wersja,
             uwagi: produkt.uwagi,
           })
-          .then((response)=>{
+
+          .then((response) => {
+
             let produkt_id = response.data.insertId;
-                          //------ oprawa
-                          for (let oprawa of oprawaEdit) {
-                            promises.push(axios.post(ip + "oprawa", {
-                              zamowienie_id: zamowienie_id,
-                                    produkt_id: produkt_id,
-                                    oprawa: oprawa.oprawa,
-                                    naklad: oprawa.naklad,
-                                    uwagi: oprawa.uwagi,
-                                    data_spedycji: oprawa.data_spedycji
-                
-                                }).then((response)=>{
-                                  oprawa.id_prev = oprawa.id
-                                    oprawa.id = response.data.insertId
-                                    oprawa.zamowienie_id = zamowienie_id
-                                    oprawa.produkt_id = produkt_id
-
-                                })
-                                )
-                        }
-
-                 
-                  
-                          //------
-                        return ({response,produkt_id})
-          })
-          .then(({response,produkt_id}) => {
-   
             
                           //------ oprawa
 
@@ -127,17 +102,23 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                 element_id: response.data.insertId,
                                 produkt_id: produkt_id,
                                 typ: fragment.typ,
-                                oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
+                                oprawa_id: fragment.oprawa_id,
+                                // oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
 
-                                // oprawa_id: oprawaEdit.filter(o => o.id_prev == fragment.oprawa_id)[0].id
+                
                   
                                   }).then((response)=>{
+
+                              //       const index = oprawaEdit.findIndex((x) => x.id == fragment.id )
+                              //  console.log("index: "+index)
                                       fragment.id = response.data.insertId
                                       fragment.element_id = element.id
                                       fragment.zamowienie_id = zamowienie_id
                                       fragment.produkt_id = produkt_id
-                                      fragment.oprawa_id= oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
-              // console.log( oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id)
+                                      // oprawaEdit= oprawaEdit.map( oprawa => {  if (oprawa.id == fragment.oprawa_id) {
+                                      //   return {...oprawa, id_fragmentow: fragment.id}
+                                      // }})
+                                      // oprawaEdit[0].id_fragmentow = response.data.insertId
                                   })
                                   )
                           }

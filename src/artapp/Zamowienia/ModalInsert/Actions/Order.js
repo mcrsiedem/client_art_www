@@ -117,7 +117,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                 element_id: response.data.insertId,
                                 produkt_id: produkt_id,
                                 typ: fragment.typ,
-                                oprawa_id: fragment.oprawa_id,
+                                oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
 
                                 // oprawa_id: oprawaEdit.filter(o => o.id_prev == fragment.oprawa_id)[0].id
                   

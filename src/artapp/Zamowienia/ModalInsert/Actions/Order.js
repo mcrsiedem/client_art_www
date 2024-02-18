@@ -104,7 +104,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                 typ: fragment.typ,
                                 oprawa_id: fragment.oprawa_id,
                                 // oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
-
+//s
                 
                   
                                   }).then((response)=>{

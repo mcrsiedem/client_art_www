@@ -109,7 +109,8 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                   
                                   }).then((response)=>{
 
-                              //       const index = oprawaEdit.findIndex((x) => x.id == fragment.id )
+                                    const index = oprawaEdit.map(e => e.id).indexOf(fragment.oprawa_id)
+                      
                               //  console.log("index: "+index)
                                       fragment.id = response.data.insertId
                                       fragment.element_id = element.id
@@ -118,7 +119,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                       // oprawaEdit= oprawaEdit.map( oprawa => {  if (oprawa.id == fragment.oprawa_id) {
                                       //   return {...oprawa, id_fragmentow: fragment.id}
                                       // }})
-                                      // oprawaEdit[0].id_fragmentow = response.data.insertId
+                                       oprawaEdit[0].id_fragmentow = oprawaEdit[0].id_fragmentow+","+response.data.insertId
                                   })
                                   )
                           }

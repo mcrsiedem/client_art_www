@@ -415,7 +415,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     function postZamowienieObj(){
     // await zapis();
 
-    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy});
+    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty});
       //  f1(f2);
 
   }

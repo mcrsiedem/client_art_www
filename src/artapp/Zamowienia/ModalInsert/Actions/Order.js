@@ -4,23 +4,26 @@ import { ip } from "../../../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty}){
             console.clear();
+
     // const produktyEdit = produkty.slice();
     // const elementyEdit = elementy.slice();
     const produktyEdit = JSON.parse(JSON.stringify(produkty))
     const elementyEdit = JSON.parse(JSON.stringify(elementy))
+    const fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
 
             
             console.log("...from save order start");
     let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
             console.log("zamowienie_id: " +zamowienie_id);
-    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id});
+    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id,fragmentyEdit});
     // let set2 = await setE({setElementy,savedProducts});
     // let set = await setP({setProdukty,savedProducts});
 
     setProdukty(savedProducts.produktyEdit)
-    setElementy(savedProducts.elementyEdit)
+     setElementy(savedProducts.elementyEdit)
+     setFragmenty(savedProducts.fragmentyEdit)
 
             console.log(savedProducts);
             console.log("...from save order end");
@@ -45,7 +48,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 //         })}
 
 
-const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id }) => {
+const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let produkt of produktyEdit) {
@@ -79,10 +82,35 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id }) => {
                     uwagi: element.uwagi,
     
                     }).then((response)=>{
-                        element.id = response.data.insertId
-                        element.zamowienie_id = zamowienie_id
-                         element.produkt_id = produkt_id
-                    })
+                            
+                            
+
+                            for (let fragment of fragmentyEdit.filter(e => e.element_id == element.id)) {
+                              promises.push(axios.post(ip + "fragmenty", {
+                                naklad: fragment.naklad,
+                                info: fragment.info,
+                                index: fragment.index,
+                                zamowienie_id: zamowienie_id,
+                                element_id: response.data.insertId,
+                                produkt_id: produkt_id,
+                                typ: fragment.typ,
+                                oprawa_id: fragment.oprawa_id,
+                  
+                                  }).then((response)=>{
+                                      fragment.id = response.data.insertId
+                                      fragment.element_id = element.id
+                                      fragment.zamowienie_id = zamowienie_id
+                                      fragment.produkt_id = produkt_id
+              
+                                  })
+                                  )
+                          }
+                            element.id = response.data.insertId
+                            element.zamowienie_id = zamowienie_id
+                            element.produkt_id = produkt_id
+
+
+                        })
                     
                     )
                     
@@ -96,7 +124,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id }) => {
 
     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit}));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit}));
   });
 };
 

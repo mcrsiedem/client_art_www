@@ -4,7 +4,7 @@ import { ip } from "../../../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty,setOprawa}){
             console.clear();
 
     // const produktyEdit = produkty.slice();
@@ -12,18 +12,20 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     const produktyEdit = JSON.parse(JSON.stringify(produkty))
     const elementyEdit = JSON.parse(JSON.stringify(elementy))
     const fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
+    const oprawaEdit = JSON.parse(JSON.stringify(oprawa))
 
             
             console.log("...from save order start");
     let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
             console.log("zamowienie_id: " +zamowienie_id);
-    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id,fragmentyEdit});
+    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id,fragmentyEdit,oprawaEdit});
     // let set2 = await setE({setElementy,savedProducts});
     // let set = await setP({setProdukty,savedProducts});
 
     setProdukty(savedProducts.produktyEdit)
      setElementy(savedProducts.elementyEdit)
      setFragmenty(savedProducts.fragmentyEdit)
+     setOprawa(savedProducts.oprawaEdit)
 
             console.log(savedProducts);
             console.log("...from save order end");
@@ -48,7 +50,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 //         })}
 
 
-const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }) => {
+const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,oprawaEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let produkt of produktyEdit) {
@@ -64,6 +66,27 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }
           .then((response) => {
    
             let produkt_id = response.data.insertId;
+                          //------ oprawa
+                          for (let oprawa of oprawaEdit) {
+                            promises.push(axios.post(ip + "oprawa", {
+                              zamowienie_id: zamowienie_id,
+                                    produkt_id: produkt_id,
+                                    oprawa: oprawa.oprawa,
+                                    naklad: oprawa.naklad,
+                                    uwagi: oprawa.uwagi,
+                                    data_spedycji: oprawa.data_spedycji
+                
+                                }).then((response)=>{
+                                  oprawa.id_prev = oprawa.id
+                                    oprawa.id = response.data.insertId
+                                    oprawa.zamowienie_id = zamowienie_id
+                                    oprawa.produkt_id = produkt_id
+
+                                })
+                                )
+                        }
+                  
+                          //------
 
             for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {
                 promises.push(axios.post(ip + "elementy", {
@@ -95,13 +118,16 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }
                                 produkt_id: produkt_id,
                                 typ: fragment.typ,
                                 oprawa_id: fragment.oprawa_id,
+
+                                // oprawa_id: oprawaEdit.filter(o => o.id_prev == fragment.oprawa_id)[0].id
                   
                                   }).then((response)=>{
                                       fragment.id = response.data.insertId
                                       fragment.element_id = element.id
                                       fragment.zamowienie_id = zamowienie_id
                                       fragment.produkt_id = produkt_id
-              
+                                      fragment.oprawa_id= oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
+              // console.log( oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id)
                                   })
                                   )
                           }
@@ -124,7 +150,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }
 
     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit}));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
   });
 };
 

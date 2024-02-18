@@ -62,7 +62,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit }
             uwagi: produkt.uwagi,
           })
           .then((response) => {
-            // do something with response filter(element => element.produkt_id == produktyEdit[i].id)
+   
             let produkt_id = response.data.insertId;
 
             for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {

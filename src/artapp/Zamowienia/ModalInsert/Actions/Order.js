@@ -35,13 +35,15 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     oprawaEdit = savedProducts.oprawaEdit
 
 
-     let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
-     oprawaEdit = savedBindings.oprawaEdit
+   
 
 
 
      let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedElements.fragmentyEdit
+
+     let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     fragmentyEdit = savedBindings.fragmentyEdit
 
 
       // setFragmenty(fragmentyEdit)
@@ -54,7 +56,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      setOprawa(oprawaEdit)
 
             // console.log(savedProducts);
-            console.log(savedElements);
+            // console.log(savedElements);
             console.log(savedBindings);
             console.log("...from save order end");
 }

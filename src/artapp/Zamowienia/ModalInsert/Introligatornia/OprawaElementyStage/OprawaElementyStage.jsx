@@ -19,7 +19,7 @@ export default function OprawaElementyStage({
   handleChangeCardOprawa,
 }) {
   function wydzielOprawe() {
-    const newOprawa = oprawa.slice();
+    const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
     newOprawa.push({
       id: Math.max(...newOprawa.map((f) => f.id)) + 1,
@@ -52,7 +52,7 @@ export default function OprawaElementyStage({
 
     //--------------------------------------------------
     let id_nowej_oprawy = Math.max(...oprawa.map((f) => f.id)) + 1;
-    const newFragmenty = fragmenty.slice();
+    const newFragmenty = JSON.parse(JSON.stringify(fragmenty))
 
     newFragmenty
     .filter((frag) => frag.oprawa_id === oprawa_row.id)

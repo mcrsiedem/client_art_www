@@ -7,15 +7,19 @@ import { ip } from "../../../../Host";
 export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty,setOprawa}){
             console.clear();
 
-    // const produktyEdit = produkty.slice();
-    // const elementyEdit = elementy.slice();
+
     let produktyEdit = JSON.parse(JSON.stringify(produkty))
     let elementyEdit = JSON.parse(JSON.stringify(elementy))
     let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
     let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
 
+
             
             console.log("...from save order start");
+
+            console.log(oprawaEdit);          
+            console.log(fragmentyEdit);
+
     let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit})
     produktyEdit = savedOrder.produktyEdit
     elementyEdit = savedOrder.elementyEdit
@@ -49,17 +53,14 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      fragmentyEdit = savedFragments.fragmentyEdit
 
 
-      // setFragmenty(fragmentyEdit)
 
-      // fragmentyEdit = savedBindings.fragmentyEdit
 
     setProdukty(produktyEdit)
      setElementy(elementyEdit)
      setFragmenty(fragmentyEdit)
      setOprawa(oprawaEdit)
 
-            // console.log(savedProducts);
-            // console.log(savedElements);
+
             console.log(savedBindings);
             console.log("...from save order end");
 }
@@ -83,101 +84,101 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 //         })}
 
 
-const saveProducts = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let produkt of produktyEdit) {
-      promises.push(
-        axios
-          .post(ip + "produkty", {
-            nazwa: produkt.nazwa,
-            zamowienie_id: produkt.zamowienie_id,
-            typ: produkt.typ,
-            wersja: produkt.wersja,
-            uwagi: produkt.uwagi,
-          })
+// const saveProducts = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let produkt of produktyEdit) {
+//       promises.push(
+//         axios
+//           .post(ip + "produkty", {
+//             nazwa: produkt.nazwa,
+//             zamowienie_id: produkt.zamowienie_id,
+//             typ: produkt.typ,
+//             wersja: produkt.wersja,
+//             uwagi: produkt.uwagi,
+//           })
 
-          .then((response) => {
+//           .then((response) => {
 
-            let produkt_id = response.data.insertId;
+//             let produkt_id = response.data.insertId;
             
-                          //------ oprawa
+//                           //------ oprawa
 
                   
-                          //------
+//                           //------
 
-            for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {
-                promises.push(axios.post(ip + "elementy", {
-                    zamowienie_id: element.zamowienie_id,
-                    produkt_id: produkt_id,
-                    nazwa: element.nazwa,
-                    typ: element.typ,
-                    naklad: element.naklad,
-                    strony: element.ilosc_stron,
-                    kolory: element.kolory,
-                    format_x: element.format_x,
-                    format_y: element.format_y,
-                    papier_id: element.papier_id,
-                    gramatura_id: element.gramatura_id,
-                    papier_info: element.papier_info,
-                    uwagi: element.uwagi,
+//             for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {
+//                 promises.push(axios.post(ip + "elementy", {
+//                     zamowienie_id: element.zamowienie_id,
+//                     produkt_id: produkt_id,
+//                     nazwa: element.nazwa,
+//                     typ: element.typ,
+//                     naklad: element.naklad,
+//                     strony: element.ilosc_stron,
+//                     kolory: element.kolory,
+//                     format_x: element.format_x,
+//                     format_y: element.format_y,
+//                     papier_id: element.papier_id,
+//                     gramatura_id: element.gramatura_id,
+//                     papier_info: element.papier_info,
+//                     uwagi: element.uwagi,
     
-                    }).then((response)=>{
+//                     }).then((response)=>{
                             
                             
 
-                            for (let fragment of fragmentyEdit.filter(e => e.element_id == element.id)) {
-                              promises.push(axios.post(ip + "fragmenty", {
-                                naklad: fragment.naklad,
-                                info: fragment.info,
-                                index: fragment.index,
-                                zamowienie_id: fragment.zamowienie_id,
-                                element_id: response.data.insertId,
-                                produkt_id: produkt_id,
-                                typ: fragment.typ,
-                                oprawa_id: fragment.oprawa_id,
-                                // oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
-//s
+//                             for (let fragment of fragmentyEdit.filter(e => e.element_id == element.id)) {
+//                               promises.push(axios.post(ip + "fragmenty", {
+//                                 naklad: fragment.naklad,
+//                                 info: fragment.info,
+//                                 index: fragment.index,
+//                                 zamowienie_id: fragment.zamowienie_id,
+//                                 element_id: response.data.insertId,
+//                                 produkt_id: produkt_id,
+//                                 typ: fragment.typ,
+//                                 oprawa_id: fragment.oprawa_id,
+//                                 // oprawa_id: oprawaEdit.find(o => o.id_prev == fragment.oprawa_id).id
+// //s
                 
                   
-                                  }).then((response)=>{
+//                                   }).then((response)=>{
 
-                                    const index = oprawaEdit.map(e => e.id).indexOf(fragment.oprawa_id)
+//                                     const index = oprawaEdit.map(e => e.id).indexOf(fragment.oprawa_id)
                       
-                              //  console.log("index: "+index)
-                                      fragment.id = response.data.insertId
-                                      fragment.element_id = element.id
-                                   //   fragment.zamowienie_id = zamowienie_id
-                                      fragment.produkt_id = produkt_id
-                                      // oprawaEdit= oprawaEdit.map( oprawa => {  if (oprawa.id == fragment.oprawa_id) {
-                                      //   return {...oprawa, id_fragmentow: fragment.id}
-                                      // }})
-                                       oprawaEdit[0].id_fragmentow = oprawaEdit[0].id_fragmentow+","+response.data.insertId
-                                  })
-                                  )
-                          }
-                            element.id = response.data.insertId
-                            // element.zamowienie_id = zamowienie_id
-                            element.produkt_id = produkt_id
+//                               //  console.log("index: "+index)
+//                                       fragment.id = response.data.insertId
+//                                       fragment.element_id = element.id
+//                                    //   fragment.zamowienie_id = zamowienie_id
+//                                       fragment.produkt_id = produkt_id
+//                                       // oprawaEdit= oprawaEdit.map( oprawa => {  if (oprawa.id == fragment.oprawa_id) {
+//                                       //   return {...oprawa, id_fragmentow: fragment.id}
+//                                       // }})
+//                                        oprawaEdit[0].id_fragmentow = oprawaEdit[0].id_fragmentow+","+response.data.insertId
+//                                   })
+//                                   )
+//                           }
+//                             element.id = response.data.insertId
+//                             // element.zamowienie_id = zamowienie_id
+//                             element.produkt_id = produkt_id
 
 
-                        })
+//                         })
                     
-                    )
+//                     )
                     
-            }
+//             }
 
-            produkt.id = response.data.insertId;
-      //      produkt.zamowienie_id = zamowienie_id;
-          })
-      );
+//             produkt.id = response.data.insertId;
+//       //      produkt.zamowienie_id = zamowienie_id;
+//           })
+//       );
 
 
-    }
+//     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
-  });
-};
+//     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+//   });
+// };
 
 
 
@@ -333,6 +334,8 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
 
 const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
   //oprawa
+  console.log("tu: ")
+  console.log(oprawaEdit)
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let oprawa of oprawaEdit) {
@@ -350,7 +353,7 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
             let new_oprawa_id = response.data.insertId;
 
             fragmentyEdit = fragmentyEdit.map((obj) => {
-              if (obj.oprawa_id == oprawa.id) {return {
+              if (obj.oprawa_id === oprawa.id) {return {
                 ...obj, oprawa_id : new_oprawa_id
               } }else {return obj} 
             })

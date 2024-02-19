@@ -330,35 +330,39 @@ const handleRemoveItem = (index,id,oprawa,setOprawa ,fragmenty,setFragmenty) => 
 };
 
 function handleAddRowOprawa(card,oprawa,setOprawa) {
-  const newOprawa = oprawa.slice();
+  const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
-  newOprawa.map((x) => {
-    if (x.index > card.index) {
-      return {
-        ...x,
-        //     index: x.index++,
-      };
-    } else {
-      return x;
-    }
-  });
+  // newOprawa.map((x) => {
+  //   if (x.index > card.index) {
+  //     return {
+  //       ...x,
+  //       //     index: x.index++,
+  //     };
+  //   } else {
+  //     return x;
+  //   }
+  // });
 
-  newOprawa.push({
+
+
+  // newOprawa.sort((a, b) => a.index - b.index);
+   newOprawa.push({
     id: Math.max(...newOprawa.map((f) => f.id)) + 1,
     zamowienie_id: card.zamowienie_id,
     produkt_id: card.produkt_id,
     oprawa: card.oprawa,
     bok_oprawy: card.bok_oprawy,
 
-    naklad: 0,
+    naklad: 20,
     index: Math.max(...newOprawa.map((f) => f.index)) + 1,
     uwagi: card.uwagi,
     data_spedycji: card.data_spedycji,
   
   });
 
-  newOprawa.sort((a, b) => a.index - b.index);
+  // console.log(newOprawa)
   setOprawa(newOprawa);
+
 
 }
 

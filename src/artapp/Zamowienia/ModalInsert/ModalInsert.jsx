@@ -134,11 +134,9 @@ function ModalInsert({
   const [oprawa, setOprawa] = useState([
     {
       id: 1,
-      id_prev: "",
-      id_fragmentow: "0",
       zamowienie_id: 1,
       produkt_id:1,
-
+      oprawa: 1,
       bok_oprawy: "297",
       naklad: "500",
       uwagi: "",

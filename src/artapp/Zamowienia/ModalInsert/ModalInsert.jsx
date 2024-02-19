@@ -73,6 +73,7 @@ function ModalInsert({
   });
 
   const [daneZamowienia, setDaneZamowienia] = useState({
+    id: 1,
     nr: "20",
     rok: "2024",
     firma_id: _firma[0].id,

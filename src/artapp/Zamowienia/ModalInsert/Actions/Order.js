@@ -9,16 +9,25 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
     // const produktyEdit = produkty.slice();
     // const elementyEdit = elementy.slice();
-    const produktyEdit = JSON.parse(JSON.stringify(produkty))
-    const elementyEdit = JSON.parse(JSON.stringify(elementy))
-    const fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
-    const oprawaEdit = JSON.parse(JSON.stringify(oprawa))
+    let produktyEdit = JSON.parse(JSON.stringify(produkty))
+    let elementyEdit = JSON.parse(JSON.stringify(elementy))
+    let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
+    let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
 
             
             console.log("...from save order start");
-    let zamowienie_id  = await saveDataOrder({daneZamowienia,cookies})
-            console.log("zamowienie_id: " +zamowienie_id);
-    let savedProducts = await saveProducts({produktyEdit,elementyEdit,zamowienie_id,fragmentyEdit,oprawaEdit});
+    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit})
+    produktyEdit = savedOrder.produktyEdit
+    elementyEdit = savedOrder.elementyEdit
+    fragmentyEdit = savedOrder.fragmentyEdit
+    oprawaEdit = savedOrder.oprawaEdit
+    daneZamowienia = savedOrder.daneZamowienia
+
+
+
+ 
+            console.log("zamowienie_id: " + savedOrder.zamowienie_id);
+    let savedProducts = await saveProducts({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
     // let set2 = await setE({setElementy,savedProducts});
     // let set = await setP({setProdukty,savedProducts});
 
@@ -58,7 +67,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
         axios
           .post(ip + "produkty", {
             nazwa: produkt.nazwa,
-            zamowienie_id: zamowienie_id,
+            zamowienie_id: produkt.zamowienie_id,
             typ: produkt.typ,
             wersja: produkt.wersja,
             uwagi: produkt.uwagi,
@@ -75,7 +84,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
 
             for (let element of elementyEdit.filter(e => e.produkt_id == produkt.id)) {
                 promises.push(axios.post(ip + "elementy", {
-                    zamowienie_id: zamowienie_id,
+                    zamowienie_id: element.zamowienie_id,
                     produkt_id: produkt_id,
                     nazwa: element.nazwa,
                     typ: element.typ,
@@ -98,7 +107,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                 naklad: fragment.naklad,
                                 info: fragment.info,
                                 index: fragment.index,
-                                zamowienie_id: zamowienie_id,
+                                zamowienie_id: fragment.zamowienie_id,
                                 element_id: response.data.insertId,
                                 produkt_id: produkt_id,
                                 typ: fragment.typ,
@@ -114,7 +123,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                               //  console.log("index: "+index)
                                       fragment.id = response.data.insertId
                                       fragment.element_id = element.id
-                                      fragment.zamowienie_id = zamowienie_id
+                                   //   fragment.zamowienie_id = zamowienie_id
                                       fragment.produkt_id = produkt_id
                                       // oprawaEdit= oprawaEdit.map( oprawa => {  if (oprawa.id == fragment.oprawa_id) {
                                       //   return {...oprawa, id_fragmentow: fragment.id}
@@ -124,7 +133,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
                                   )
                           }
                             element.id = response.data.insertId
-                            element.zamowienie_id = zamowienie_id
+                            // element.zamowienie_id = zamowienie_id
                             element.produkt_id = produkt_id
 
 
@@ -135,7 +144,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
             }
 
             produkt.id = response.data.insertId;
-            produkt.zamowienie_id = zamowienie_id;
+      //      produkt.zamowienie_id = zamowienie_id;
           })
       );
 
@@ -176,7 +185,7 @@ const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,o
 
 //----------------------------------------------------------------------------------
 
-const saveDataOrder = ({daneZamowienia,cookies}) =>{
+const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}) =>{
 
     return new Promise(async(resolve,reject)=>{
 
@@ -194,10 +203,38 @@ const saveDataOrder = ({daneZamowienia,cookies}) =>{
         stan: daneZamowienia.stan,
         status: daneZamowienia.status,
         uwagi: daneZamowienia.uwagi,
-      });
+      })
+      
     let zamowienie_id = res.data.insertId;
 
-        resolve(zamowienie_id)
+
+    produktyEdit = produktyEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
+
+    elementyEdit = elementyEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
+    fragmentyEdit = fragmentyEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
+    oprawaEdit = oprawaEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
+    daneZamowienia.id = zamowienie_id
+        resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia})
 
     })
 }

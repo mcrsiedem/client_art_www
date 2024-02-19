@@ -9,6 +9,9 @@ import style from "./OprawaElementyStage.module.css";
 
 // okienko do wydzielania części z oprawy
 
+import axios from "axios";
+
+import { ip } from "../../../../../Host";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
   fragmenty,
@@ -21,8 +24,19 @@ export default function OprawaElementyStage({
   function wydzielOprawe() {
     const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
+    // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id
+    axios.post(ip + "oprawa", {
+      zamowienie_id: 0,
+      produkt_id: 0,
+      oprawa: 0,
+      naklad:0,
+      uwagi: "oprawa temp",
+      data_spedycji: "2024-01-30 00:00:00"
+}).then((res) => {
+
     newOprawa.push({
-      id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+      // id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+      id: res.data.insertId,
       zamowienie_id: oprawa_row.zamowienie_id,
       produkt_id: oprawa_row.produkt_id,
       oprawa: oprawa_row.oprawa,
@@ -34,8 +48,7 @@ export default function OprawaElementyStage({
       data_spedycji: oprawa_row.data_spedycji,
     });
 
-    newOprawa.sort((a, b) => a.index - b.index);
-
+newOprawa.sort((a, b) => a.index - b.index);
     setOprawa(newOprawa
       .map((t) => {
         if (t.id == oprawa_row.id) {
@@ -48,6 +61,15 @@ export default function OprawaElementyStage({
         }
       })
     );
+
+})
+
+
+
+    
+
+
+
 
 
     //--------------------------------------------------

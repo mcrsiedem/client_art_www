@@ -3,6 +3,9 @@ import { useState } from "react";
 import { _typ_elementu } from "../api";
 import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
+import axios from "axios";
+
+import { ip } from "../../../../Host";
 export default function RowFragment({
   row,
   handleChangeCardElementy,
@@ -158,15 +161,27 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
   //-------------------
   const newFragmenty = fragmenty.slice();
 
-  newFragmenty.map((x) => {
-    if (x.index > card.index) {
-      return {
-        ...x,
-      };
-    } else {
-      return x;
-    }
-  });
+  // newFragmenty.map((x) => {
+  //   if (x.index > card.index) {
+  //     return {
+  //       ...x,
+  //     };
+  //   } else {
+  //     return x;
+  //   }
+  // });
+
+  axios.post(ip + "fragmenty", {
+    naklad: 0,
+    info: "fragment temp",
+    index: 0,
+    zamowienie_id:0,
+    element_id: 0,
+    produkt_id: 0,
+    typ: 0,
+    oprawa_id: 0,
+      
+}).then((res) => {
 
   newFragmenty.push({
     id: Math.max(...fragmenty.map((f) => f.id)) + 1,
@@ -181,6 +196,10 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
 
   newFragmenty.sort((a, b) => a.index - b.index);
   setFragmenty(newFragmenty);
+
+})
+
+
 }
 
 

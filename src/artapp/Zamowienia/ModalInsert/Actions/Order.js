@@ -27,16 +27,24 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
  
             console.log("zamowienie_id: " + savedOrder.zamowienie_id);
-    let savedProducts = await saveProducts({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
-    // let set2 = await setE({setElementy,savedProducts});
-    // let set = await setP({setProdukty,savedProducts});
+    let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
 
-    setProdukty(savedProducts.produktyEdit)
-     setElementy(savedProducts.elementyEdit)
-     setFragmenty(savedProducts.fragmentyEdit)
-     setOprawa(savedProducts.oprawaEdit)
 
-            console.log(savedProducts);
+    elementyEdit = savedProducts.elementyEdit
+    fragmentyEdit = savedProducts.fragmentyEdit
+    oprawaEdit = savedProducts.oprawaEdit
+
+     let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     fragmentyEdit = savedElements.fragmentyEdit
+
+
+    setProdukty(produktyEdit)
+     setElementy(elementyEdit)
+     setFragmenty(fragmentyEdit)
+     setOprawa(oprawaEdit)
+
+            // console.log(savedProducts);
+            console.log(savedElements);
             console.log("...from save order end");
 }
 
@@ -59,7 +67,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 //         })}
 
 
-const saveProducts = ({ produktyEdit,elementyEdit, zamowienie_id,fragmentyEdit,oprawaEdit }) => {
+const saveProducts = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let produkt of produktyEdit) {
@@ -234,7 +242,99 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
     })
 
     daneZamowienia.id = zamowienie_id
+
         resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia})
 
     })
 }
+
+
+const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let produkt of produktyEdit) {
+      promises.push(
+        axios
+          .post(ip + "produkty", {
+            nazwa: produkt.nazwa,
+            zamowienie_id: produkt.zamowienie_id,
+            typ: produkt.typ,
+            wersja: produkt.wersja,
+            uwagi: produkt.uwagi,
+          })
+
+          .then((response) => {
+
+            let produkt_id = response.data.insertId;
+   
+            elementyEdit = elementyEdit.map((obj) => {
+              if (obj.produkt_id == produkt.id) {return {
+                ...obj, produkt_id : produkt_id
+              } }else {return obj} 
+            })
+
+            fragmentyEdit = fragmentyEdit.map((obj) => {
+              if (obj.produkt_id == produkt.id) {return {
+                ...obj, produkt_id : produkt_id
+              } }else {return obj} 
+            })
+
+            oprawaEdit = oprawaEdit.map((obj) => {
+              if (obj.produkt_id == produkt.id) {return {
+                ...obj, produkt_id : produkt_id
+              } }else {return obj} 
+            })
+
+            produkt.id = response.data.insertId;
+      //      produkt.zamowienie_id = zamowienie_id;
+          })
+      );
+
+
+    }
+
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+  });
+};
+
+const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let element of elementyEdit) {
+      promises.push(axios.post(ip + "elementy", {
+        zamowienie_id: element.zamowienie_id,
+        produkt_id: element.produkt_id,
+        nazwa: element.nazwa,
+        typ: element.typ,
+        naklad: element.naklad,
+        strony: element.ilosc_stron,
+        kolory: element.kolory,
+        format_x: element.format_x,
+        format_y: element.format_y,
+        papier_id: element.papier_id,
+        gramatura_id: element.gramatura_id,
+        papier_info: element.papier_info,
+        uwagi: element.uwagi,
+          })
+
+          .then((response) => {
+
+            let new_element_id = response.data.insertId;
+
+            fragmentyEdit = fragmentyEdit.map((obj) => {
+              if (obj.element_id == element.id) {return {
+                ...obj, element_id : new_element_id
+              } }else {return obj} 
+            })
+
+            element.id = new_element_id
+      //      produkt.zamowienie_id = zamowienie_id;
+          })
+      );
+
+
+    }
+
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+  });
+};

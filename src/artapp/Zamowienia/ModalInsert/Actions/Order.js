@@ -355,10 +355,10 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
               } }else {return obj} 
             })
 
+            
             oprawa.id = new_oprawa_id
-
           })
-     
+          
           );
 
     }

@@ -8,6 +8,9 @@ import iconTrash from "../../../../svg/trash2.svg";
 import iconTable from "../../../../svg/settings.svg";
 import iconUstawienia from "../../../../svg/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
+import axios from "axios";
+
+import { ip } from "../../../../Host";
 
 export default function IntroligatorniaTable({
   oprawa,
@@ -332,17 +335,15 @@ const handleRemoveItem = (index,id,oprawa,setOprawa ,fragmenty,setFragmenty) => 
 function handleAddRowOprawa(card,oprawa,setOprawa) {
   const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
-  // newOprawa.map((x) => {
-  //   if (x.index > card.index) {
-  //     return {
-  //       ...x,
-  //       //     index: x.index++,
-  //     };
-  //   } else {
-  //     return x;
-  //   }
-  // });
-
+ // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id
+  axios.post(ip + "oprawa", {
+    zamowienie_id: 0,
+    produkt_id: 0,
+    oprawa: 0,
+    naklad:0,
+    uwagi: "oprawa temp",
+    data_spedycji: "2024-01-30 00:00:00"
+}).then((res) => {
 
 
   // newOprawa.sort((a, b) => a.index - b.index);
@@ -360,9 +361,9 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
   
   });
 
-  // console.log(newOprawa)
-  setOprawa(newOprawa);
 
+  setOprawa(newOprawa);
+})
 
 }
 

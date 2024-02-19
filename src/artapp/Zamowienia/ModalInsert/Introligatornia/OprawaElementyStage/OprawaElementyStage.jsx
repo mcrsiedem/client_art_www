@@ -48,19 +48,19 @@ export default function OprawaElementyStage({
       data_spedycji: oprawa_row.data_spedycji,
     });
 
-newOprawa.sort((a, b) => a.index - b.index);
-    setOprawa(newOprawa
-      .map((t) => {
-        if (t.id == oprawa_row.id) {
-          return {
-            ...t,
-            naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
-          };
-        } else {
-          return t;
-        }
-      })
-    );
+      newOprawa.sort((a, b) => a.index - b.index);
+          setOprawa(newOprawa
+            .map((t) => {
+              if (t.id == oprawa_row.id) {
+                return {
+                  ...t,
+                  naklad: parseInt(oprawa_row.naklad) - parseInt(wydziel),
+                };
+              } else {
+                return t;
+              }
+            })
+          );
 
 })
 

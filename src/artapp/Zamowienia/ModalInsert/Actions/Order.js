@@ -45,6 +45,9 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedBindings.fragmentyEdit
 
+     let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     fragmentyEdit = savedFragments.fragmentyEdit
+
 
       // setFragmenty(fragmentyEdit)
 
@@ -353,6 +356,45 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
             })
 
             oprawa.id = new_oprawa_id
+
+          })
+     
+          );
+
+    }
+
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+  });
+};
+
+
+const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+  //oprawa
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let fragment of fragmentyEdit) {
+      promises.push(axios.post(ip + "fragmenty", {
+        naklad: fragment.naklad,
+        info: fragment.info,
+        index: fragment.index,
+        zamowienie_id: fragment.zamowienie_id,
+        element_id: fragment.element_id,
+        produkt_id: fragment.produkt_id,
+        typ: fragment.typ,
+        oprawa_id: fragment.oprawa_id,
+          })
+
+          .then((response) => {
+
+            let new_fragment_id = response.data.insertId;
+
+            // fragmentyEdit = fragmentyEdit.map((obj) => {
+            //   if (obj.oprawa_id == oprawa.id) {return {
+            //     ...obj, oprawa_id : new_oprawa_id
+            //   } }else {return obj} 
+            // })
+
+            fragment.id = new_fragment_id
 
           })
      

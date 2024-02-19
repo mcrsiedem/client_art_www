@@ -34,9 +34,19 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     fragmentyEdit = savedProducts.fragmentyEdit
     oprawaEdit = savedProducts.oprawaEdit
 
+
+     let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     oprawaEdit = savedBindings.oprawaEdit
+
+
+
      let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedElements.fragmentyEdit
 
+
+      // setFragmenty(fragmentyEdit)
+
+      // fragmentyEdit = savedBindings.fragmentyEdit
 
     setProdukty(produktyEdit)
      setElementy(elementyEdit)
@@ -45,6 +55,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
             // console.log(savedProducts);
             console.log(savedElements);
+            console.log(savedBindings);
             console.log("...from save order end");
 }
 
@@ -164,31 +175,7 @@ const saveProducts = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
 };
 
 
-// const saveFragmets = ({ savedProducts,elementyEdit, zamowienie_id }) => {
-//     return new Promise((resolve, reject) => {
-//       let promises = [];
-//       for (let i = 0; i < produktyEdit.length; i++) {
-//         promises.push(
-//           axios
-//             .post(ip + "produkty", {
-//               nazwa: produktyEdit[i].nazwa,
-//               zamowienie_id: zamowienie_id,
-//               typ: produktyEdit[i].typ,
-//               wersja: produktyEdit[i].wersja,
-//               uwagi: produktyEdit[i].uwagi,
-//             })
-//             .then((response) => {
-//               // do something with response
-  
-//               produktyEdit[i].id = response.data.insertId;
-//               produktyEdit[i].zamowienie_id = zamowienie_id;
-//             })
-//         );
-//       }
-  
-//       Promise.all(promises).then(() => resolve(produktyEdit));
-//     });
-//   };
+
 
 
 //----------------------------------------------------------------------------------
@@ -332,6 +319,42 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
           })
       );
 
+
+    }
+
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+  });
+};
+
+const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+  //oprawa
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let oprawa of oprawaEdit) {
+      promises.push(axios.post(ip + "oprawa", {
+                           zamowienie_id: oprawa.zamowienie_id,
+                           produkt_id: oprawa.produkt_id,
+                           oprawa: oprawa.oprawa,
+                           naklad: oprawa.naklad,
+                           uwagi: oprawa.uwagi,
+                           data_spedycji: oprawa.data_spedycji
+          })
+
+          .then((response) => {
+
+            let new_oprawa_id = response.data.insertId;
+
+            fragmentyEdit = fragmentyEdit.map((obj) => {
+              if (obj.oprawa_id == oprawa.id) {return {
+                ...obj, oprawa_id : new_oprawa_id
+              } }else {return obj} 
+            })
+
+            oprawa.id = new_oprawa_id
+
+          })
+     
+          );
 
     }
 

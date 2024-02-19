@@ -5,6 +5,10 @@ import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import {  useState } from "react";
 import { _typ_elementu} from "../api"
+import axios from "axios";
+
+import { ip } from "../../../../Host";
+
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -56,18 +60,34 @@ export default function RowElement({
       function handleAddCard(card) {
         const newElementy = elementy.slice();
       
-        newElementy.map((x) => {
-          if (x.index > card.index) {
-            return {
-              ...x,
-              //     index: x.index++,
-            };
-          } else {
-            return x;
-          }
-        });
-      
-        newElementy.push({
+        // newElementy.map((x) => {
+        //   if (x.index > card.index) {
+        //     return {
+        //       ...x,
+        //       //     index: x.index++,
+        //     };
+        //   } else {
+        //     return x;
+        //   }
+        // });
+
+        axios.post(ip + "elementy", {
+          zamowienie_id: 0,
+          produkt_id: 0,
+          nazwa: 0,
+          typ: 0,
+          naklad: 0,
+          strony: 0,
+          kolory: 0,
+          format_x: 0,
+          format_y: 0,
+          papier_id: 0,
+          gramatura_id: 0,
+          papier_info: 0,
+          uwagi: "element temp",
+      }).then((res) => {
+
+      newElementy.push({
           id: Math.max(...newElementy.map((f) => f.id)) + 1,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
@@ -87,6 +107,13 @@ export default function RowElement({
       
         newElementy.sort((a, b) => a.index - b.index);
         setElementy(newElementy);
+
+
+      })
+
+
+      
+  
         // setElementy((prev) =>prev.map((t)=> {return t}));
       
         //-------------------

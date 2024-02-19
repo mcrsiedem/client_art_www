@@ -35,8 +35,8 @@ export default function OprawaElementyStage({
 }).then((res) => {
 
     newOprawa.push({
-      // id: Math.max(...newOprawa.map((f) => f.id)) + 1,
-      id: res.data.insertId,
+       id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+    
       zamowienie_id: oprawa_row.zamowienie_id,
       produkt_id: oprawa_row.produkt_id,
       oprawa: oprawa_row.oprawa,

@@ -349,6 +349,7 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
   // newOprawa.sort((a, b) => a.index - b.index);
    newOprawa.push({
     id: Math.max(...newOprawa.map((f) => f.id)) + 1,
+    
     zamowienie_id: card.zamowienie_id,
     produkt_id: card.produkt_id,
     oprawa: card.oprawa,

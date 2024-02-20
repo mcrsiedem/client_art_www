@@ -4,31 +4,34 @@ import { ip } from "../../../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,cookies,setProdukty,setElementy,setFragmenty,setOprawa}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie}){
             // console.clear();
 
     let produktyEdit = JSON.parse(JSON.stringify(produkty))
     let elementyEdit = JSON.parse(JSON.stringify(elementy))
     let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
     let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
+    let pakowanieEdit = JSON.parse(JSON.stringify(pakowanie))
             
             // console.log("...from save order start");
             // console.log(oprawaEdit);          
             // console.log(fragmentyEdit);
 
-    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit})
+    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit})
     produktyEdit = savedOrder.produktyEdit
     elementyEdit = savedOrder.elementyEdit
     fragmentyEdit = savedOrder.fragmentyEdit
     oprawaEdit = savedOrder.oprawaEdit
     daneZamowienia = savedOrder.daneZamowienia
+    pakowanieEdit = savedOrder.pakowanieEdit
  
             // console.log("zamowienie_id: " + savedOrder.zamowienie_id);
-    let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+    let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit});
 
     elementyEdit = savedProducts.elementyEdit
     fragmentyEdit = savedProducts.fragmentyEdit
     oprawaEdit = savedProducts.oprawaEdit
+    pakowanieEdit = savedProducts.pakowanieEdit
 
      let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedElements.fragmentyEdit
@@ -39,10 +42,13 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedFragments.fragmentyEdit
 
+
+
     setProdukty(produktyEdit)
      setElementy(elementyEdit)
      setFragmenty(fragmentyEdit)
      setOprawa(oprawaEdit)
+     setPakowanie(pakowanieEdit)
             // console.log(savedBindings);
             // console.log("...from save order end");
 }
@@ -52,7 +58,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
 //----------------------------------------------------------------------------------
 
-const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}) =>{
+const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit}) =>{
 
     return new Promise(async(resolve,reject)=>{
 
@@ -100,15 +106,22 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
       } }else {return obj} 
     })
 
+    pakowanieEdit = pakowanieEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
+
     daneZamowienia.id = zamowienie_id
 
-        resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia})
+        resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia,pakowanieEdit})
 
     })
 }
 
 
-const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let produkt of produktyEdit) {
@@ -144,6 +157,12 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
               } }else {return obj} 
             })
 
+            pakowanieEdit = pakowanieEdit.map((obj) => {
+              if (obj.produkt_id == produkt.id) {return {
+                ...obj, produkt_id : produkt_id
+              } }else {return obj} 
+            })
+
             produkt.id = response.data.insertId;
       //      produkt.zamowienie_id = zamowienie_id;
           })
@@ -152,7 +171,7 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
 
     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit}));
   });
 };
 

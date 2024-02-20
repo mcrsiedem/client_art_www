@@ -312,6 +312,11 @@ const savePacking = ({ pakowanieEdit }) => {
 
           .then((response) => {
 
+            // if(response.status == 400){
+            //   console.log(response.sqlMessage)
+            // }
+          
+
             let new_paczka_id = response.data.insertId;
 
             paczka.id = new_paczka_id

@@ -42,6 +42,8 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
      fragmentyEdit = savedFragments.fragmentyEdit
 
+     let savedPacking= await savePacking({pakowanieEdit});
+     pakowanieEdit = savedPacking.pakowanieEdit
 
 
     setProdukty(produktyEdit)
@@ -291,5 +293,35 @@ const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
     }
 
     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+  });
+};
+
+const savePacking = ({ pakowanieEdit }) => {
+  //pakowanie
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let paczka of pakowanieEdit) {
+      promises.push(axios.post(ip + "pakowanie", {
+        zamowienie_id: paczka.zamowienie_id,
+        produkt_id: paczka.produkt_id,
+        nazwa: paczka.nazwa,
+        naklad: paczka.naklad,
+        uwagi: paczka.uwagi,
+
+          })
+
+          .then((response) => {
+
+            let new_paczka_id = response.data.insertId;
+
+            paczka.id = new_paczka_id
+
+          })
+     
+          );
+
+    }
+
+    Promise.all(promises).then(() => resolve({pakowanieEdit}));
   });
 };

@@ -164,7 +164,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       nazwa: "Poczta Główna",
-      naklad: "686",
+      naklad: 10,
       uwagi: ""
     },
     {
@@ -172,7 +172,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       nazwa: "Desa Unicum ul. Piękna 1 A",
-      naklad: "124",
+      naklad: 124,
       uwagi: ""
     },
     {
@@ -180,7 +180,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       nazwa: "Cosmopolitan",
-      naklad: "10",
+      naklad: 10,
       uwagi: ""
     },
     {
@@ -188,7 +188,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       nazwa: "Promenoria",
-      naklad: "10",
+      naklad: 10,
       uwagi: ""
     },
     {
@@ -196,7 +196,7 @@ function ModalInsert({
       zamowienie_id: 1,
       produkt_id:1,
       nazwa: "Comforty",
-      naklad: "10",
+      naklad: 10,
       uwagi: ""
     },
     

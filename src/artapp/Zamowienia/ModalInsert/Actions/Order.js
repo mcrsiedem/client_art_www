@@ -78,9 +78,11 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         stan: daneZamowienia.stan,
         status: daneZamowienia.status,
         uwagi: daneZamowienia.uwagi,
+        final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       
     let zamowienie_id = res.data.insertId;
+    
 
 
     produktyEdit = produktyEdit.map((obj) => {
@@ -221,8 +223,8 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
 
 const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
   //oprawa
-  console.log("tu: ")
-  console.log(oprawaEdit)
+
+
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let oprawa of oprawaEdit) {

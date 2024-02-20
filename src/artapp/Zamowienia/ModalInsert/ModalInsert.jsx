@@ -8,7 +8,6 @@ import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
 import {
   _firma,
-  initialProdukty,
   _klient,
   initialElementy,
   _papiery,

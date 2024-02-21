@@ -121,12 +121,12 @@ function ElementyTable({
 
             <th className={style.col_papier}>Papier</th>
             <th className={style.col_gramatura}>g/m2</th>
-            <th className={style.col_papierInfo}>Uwagi do papieru</th>
+            <th className={style.col_papierInfo}>Papier info</th>
             <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
             <th className={style.col_kolory}>Uwagi </th>
-            <th className={style.col_wersja}>Do oprawy nr</th>
+            <th className={style.col_wersja}>Oprawa nr</th>
             <th className={style.col_button}> </th>
             <th className={style.col_button}> </th>
             

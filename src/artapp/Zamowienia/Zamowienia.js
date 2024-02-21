@@ -35,12 +35,8 @@ function Zamowienia({ user, setUser }) {
   async function fechZamowienia() {
     const res = await axios.get(ip + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
-  
-    // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
-    //                           .filter(row=> row.status !== "Nowe")
-    // setData(job);
-    setData(jobs);
 
+    setData(jobs);
 
 
     const res3 = await axios.get(ip + "lista-papierow");
@@ -139,6 +135,8 @@ function Zamowienia({ user, setUser }) {
           open={open}
           setOpen={setOpen}
           row={row}
+          data={data}
+          setData={setData}
         />
       )}
 

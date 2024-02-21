@@ -37,7 +37,7 @@ export default function ElementyProcesInsert({
             {
                 procesyElementow.map((row, i) => {
                   return (
-                  <tr>
+                  <tr key={row.id}>
                 <td>{row.id}</td>
                     <td>{row.proces_nazwa}</td>
                     <td>{row.proces_typ}</td>

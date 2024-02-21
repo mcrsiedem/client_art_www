@@ -14,6 +14,7 @@ function Zamowienia({ user, setUser }) {
   const [row, setRow] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openModalInsert, setOpenModalInsert] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
@@ -26,6 +27,11 @@ function Zamowienia({ user, setUser }) {
 
   }
 
+  const open2 = () =>{
+    setOpenModalInsert(true)
+    setOpen(true)
+
+  }
   async function fechZamowienia() {
     const res = await axios.get(ip + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
@@ -67,16 +73,15 @@ function Zamowienia({ user, setUser }) {
         <table>
           <thead>
             <tr>
-              <th className={style.col_id}>#</th>{" "}
+              <th className={style.col_id}>#</th>
               <th className={style.col_nr}>Nr</th>
-              <th className={style.col_rok}>Rok</th> <th>Klient</th>
-              <th>Praca</th>
+              <th className={style.col_rok}>Rok</th><th>Klient</th>
+              <th >Praca</th>
               <th className={style.col_firma}>Firma</th>
               <th className={style.col_utworzono}>Utworzono</th>
               <th className={style.col_utworzono}>Final</th>
             </tr>
           </thead>
-
           <tbody>
             {data.map((row) => {
               return (
@@ -84,8 +89,9 @@ function Zamowienia({ user, setUser }) {
                   // className={row.id === 6 ? style.bgdanger : ""}
                   key={row.id}
                   onDoubleClick={(node, event) => {
-                    setOpenModal(true);
-                    setRow({ id: row.id, user: row.user });
+                    open2(row.id);
+                    setRow({ id: row.id});
+                    // setRow({ id: row.id, user: row.user });
                   }}
                 >
                   <td>{row.id} </td>
@@ -96,7 +102,6 @@ function Zamowienia({ user, setUser }) {
                   <td>{row.firma}</td>
                   <td>{row.utworzono}</td>
                   <td>{row.final}</td>
-        
                 </tr>
               );
             })}
@@ -131,6 +136,9 @@ function Zamowienia({ user, setUser }) {
           setListPapierow={setListaPapierow}
           listaGramatur={listaGramatur}
           setListaGramatur={setListaGramatur}
+          open={open}
+          setOpen={setOpen}
+          row={row}
         />
       )}
 
@@ -141,3 +149,5 @@ function Zamowienia({ user, setUser }) {
 }
 
 export default Zamowienia;
+
+

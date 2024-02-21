@@ -46,19 +46,20 @@ function ModalInsert({
   setListPapierow,
   listaGramatur,
   setListaGramatur,
+  open,
+  setOpen,
+  row
 }) {
-  useEffect(() => {
-    // dragElement(document.getElementById("mydiv"));
-    // dragElement(elmnt.current);
-  }, []);
-  // const elmnt = useRef(null);
+
+
+  
+
 
 
 
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
-  const dane=[{test:1}];
   const [preOrder, setPreOrder] = useState({
     typ: 1,
     oprawa: 1,
@@ -127,9 +128,6 @@ function ModalInsert({
   ]);
   const [elementy, setElementy] = useState(initialElementy);
   const [fragmenty, setFragmenty] = useState(initialFragmenty);
-  const [fragi, setFragi] = useState();
-
-
   const [oprawa, setOprawa] = useState([
     {
       id: 1,
@@ -239,9 +237,43 @@ const [openModalStany, setOpenModalStany] = useState(false);
     setListaDostepnychProcesow([...res5.data]);
   }
 
+
+
   useEffect(() => {
-    fechListy();
+
+
+
+
+ 
+          fechListy();
+
+    if (open) {
+      setShowParametryZamowienia(true)
+      setShowTemplate(false)
+      setOpen(false)
+      fechparametry(row.id)
+    }
+
+    
+
+
+
+
+
+
+
+
   }, []);
+
+
+  async function fechparametry(idZamowienia) {
+
+
+           const res = await axios.get(ip + "parametry/"+idZamowienia);
+           setDaneZamowienia(res.data[0])
+           
+
+  }
 
   return (
     <div className={style.container}>

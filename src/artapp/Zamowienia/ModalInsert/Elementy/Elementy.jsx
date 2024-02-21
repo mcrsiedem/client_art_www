@@ -114,19 +114,14 @@ function ElementyTable({
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_wersja}>Wersja</th>
-
-
             <th className={style.col_strony}>Strony</th>
-            <th className={style.col_format} colspan="2">
-              {" "}
-              Netto{" "}
+            <th className={style.col_format} colSpan="2">
+              Netto
             </th>
 
             <th className={style.col_papier}>Papier</th>
             <th className={style.col_gramatura}>g/m2</th>
             <th className={style.col_papierInfo}>Uwagi do papieru</th>
-   
-
             <th className={style.col_uszlachetnianie}>Procesy dodatkowe</th>
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
@@ -142,6 +137,7 @@ function ElementyTable({
             return (
               <>
               <RowElement
+              key={row.id}
                 i={i}
                 row={row}
                 handleChangeCardElementy={handleChangeCardElementy}
@@ -174,6 +170,7 @@ function ElementyTable({
 
 
               <RowFragment
+              key={row.id}
               i={i}
               row={row}
               handleChangeCardElementy={handleChangeCardElementy}

@@ -106,6 +106,8 @@ function StanDane({ daneZamowienia }) {
             <th className={style.col_id}>klient</th>
             <th>opiekun</th>
             <th>tytul</th>
+            <th>Data materiałów</th>
+            <th>Data przyjęcia</th>
             <th>Data spedycji</th>
           </tr>
         </thead>
@@ -120,9 +122,12 @@ function StanDane({ daneZamowienia }) {
                 <td>{daneZamowienia.klient_id}</td>
                 <td>{daneZamowienia.opiekun_id}</td>
                 <td>{daneZamowienia.tytul}</td>
+                <td>{daneZamowienia.data_materialow}</td>
+                <td>{daneZamowienia.data_przyjecia}</td>
                 <td>{daneZamowienia.data_spedycji}</td>
               </tr>
             
+        
         
         </tbody>
       </table>

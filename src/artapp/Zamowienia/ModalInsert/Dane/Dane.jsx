@@ -183,7 +183,7 @@ function Opiekun({ daneZamowienia,setDaneZamowienia }) {
         className={style.firma}
         value={daneZamowienia.opiekun_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, opiekun: event.target.value});
+          setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
         }}
       >
         {_opiekun.map((option) => (

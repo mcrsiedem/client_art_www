@@ -80,9 +80,9 @@ function ModalInsert({
     klient_id: _klient[0].id,
     opiekun_id: _opiekun[0].id,
     tytul: "Tytuł zamówienia",
-    dataPrzyjecia: "2024-01-30",
-    dataMaterialow: "2024-01-30",
-    dataSpedycji: "2024-01-30",
+    data_przyjecia: "2024-01-30",
+    data_materialow: "2024-01-30",
+    data_spedycji: "2024-01-30",
     stan: _stan[0].id,
     status: _status[0].id,
     uwagi: "",
@@ -270,8 +270,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
            const res = await axios.get(ip + "parametry/"+idZamowienia);
+           console.log(res.data[0])
            setDaneZamowienia(res.data[0])
-           
+
+
 
   }
 
@@ -405,6 +407,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           produkty={produkty}
           oprawa={oprawa}
           pakowanie={pakowanie}
+          daneZamowienia={daneZamowienia}
         
           
         />

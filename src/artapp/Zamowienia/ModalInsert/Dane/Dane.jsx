@@ -140,9 +140,9 @@ function DataMeterialow({daneZamowienia,setDaneZamowienia}){
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
         <input className={style.data} type="date"
-             defaultValue={daneZamowienia.dataMaterialow}
+             value={daneZamowienia.data_materialow}
              onChange={(event) => {
-              setDaneZamowienia({...daneZamowienia, dataMaterialow: event.target.value});
+              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value});
              }}></input>
       </div>
     );
@@ -153,9 +153,9 @@ function DataPrzyjecia({daneZamowienia,setDaneZamowienia}){
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
       <input className={style.data} type="date"
-         defaultValue={daneZamowienia.dataPrzyjecia}
+         value={daneZamowienia.data_przyjecia}
          onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, dataPrzyjecia: event.target.value});
+          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value});
            if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
     </div>
@@ -167,9 +167,9 @@ function DataSpedycji({daneZamowienia,setDaneZamowienia}){
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
         <input className={style.data} type="date"
-        defaultValue={daneZamowienia.dataSpedycji}
+        value={daneZamowienia.data_spedycji}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, dataSpedycji: event.target.value});
+          setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value});
         }}></input>
       </div>
     );

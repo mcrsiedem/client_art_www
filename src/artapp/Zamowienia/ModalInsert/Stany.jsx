@@ -43,6 +43,7 @@ export default function Stany({
   return (
     <div className={style.body}>
       <div className={style.container}>
+        <StanDane daneZamowienia={daneZamowienia} />
         <StanProdukty produkty={produkty} />
         <StanElementy elementy={elementy} />
         <StanFragmenty
@@ -86,6 +87,43 @@ function StanProdukty({ produkty }) {
               </tr>
             );
           })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+function StanDane({ daneZamowienia }) {
+  return (
+    <div className={style.tableContainer}>
+      <div className={style.title}>Zamówienie</div>
+      <table>
+        <thead>
+          <tr>
+            <th className={style.col_id}>Zamowienie id</th>
+            <th className={style.col_id}>nr</th>
+            <th className={style.col_id}>rok </th>
+            <th className={style.col_id}>firma</th>{" "}
+            <th className={style.col_id}>klient</th>
+            <th>opiekun</th>
+            <th>tytul</th>
+            <th>Data spedycji</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+              <tr  onDoubleClick={(node, event) => {}}>
+                <td>{daneZamowienia.id} </td>
+                <td>{daneZamowienia.nr} </td>
+                <td>{daneZamowienia.rok}</td>
+                <td>{daneZamowienia.firma_id} </td>
+                <td>{daneZamowienia.klient_id}</td>
+                <td>{daneZamowienia.opiekun_id}</td>
+                <td>{daneZamowienia.tytul}</td>
+                <td>{daneZamowienia.data_spedycji}</td>
+              </tr>
+            
+        
         </tbody>
       </table>
     </div>

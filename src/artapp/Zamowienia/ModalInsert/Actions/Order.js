@@ -83,7 +83,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
       
     let zamowienie_id = res.data.insertId;
     
-
+      console.log("id firma: "+ daneZamowienia.firma_id)
 
     produktyEdit = produktyEdit.map((obj) => {
       if (obj.zamowienie_id == daneZamowienia.id) {return {

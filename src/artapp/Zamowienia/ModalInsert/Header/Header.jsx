@@ -56,6 +56,7 @@ function Header({
           </button>
           <button
             onClick={async () => {
+              setSaveAs(false)
               postZamowienieObj();
             }}
             className={style.btn}

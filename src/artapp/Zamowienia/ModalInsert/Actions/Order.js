@@ -64,6 +64,12 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
 
     return new Promise(async(resolve,reject)=>{
 
+      let final_0 = await axios.put(ip + "zamowienia_not_final", {
+        zamowienie_id: daneZamowienia.id,
+
+      })
+
+
     let res = await axios.post(ip + "zamowienie", {
         nr: daneZamowienia.nr,
         rok: daneZamowienia.rok,

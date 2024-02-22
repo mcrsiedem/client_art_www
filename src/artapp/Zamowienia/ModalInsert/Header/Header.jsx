@@ -21,14 +21,12 @@ function Header({
   check_data_wejscia,
   elementy,
   openModalStany,
-  setOpenModalStany
+  setOpenModalStany,
 }) {
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>
-          Dodaj zamówienie...
-        </div>
+        <div className={style.title}>Zamówienie...</div>
         <div className={style.buttons}>
           <img
             onClick={() => {
@@ -53,18 +51,25 @@ function Header({
           >
             Anuluj
           </button>
-          <button onClick={async () => {
-            
+          <button
+            onClick={async () => {
               postZamowienieObj();
-          }} className={style.btn}>
+            }}
+            className={style.btn}
+          >
             Zapisz
           </button>
+
+
+          <ZapiszJako postZamowienieObj={postZamowienieObj} />
+
           <button
             onClick={() => openInNewTab("/Zamowienia")}
             className={style.btn}
           >
-            Zapisz jako
+            Nowe...
           </button>
+
           <button
             // onClick={() => postZamowienieObj()}
             className={style.btn}
@@ -78,3 +83,17 @@ function Header({
 }
 
 export default Header;
+
+function ZapiszJako({postZamowienieObj}){
+
+  return(
+    <button
+    onClick={async () => {
+      postZamowienieObj();
+    }}
+    className={style.btn}
+  >
+    Zapisz jako...
+  </button>
+  )
+}

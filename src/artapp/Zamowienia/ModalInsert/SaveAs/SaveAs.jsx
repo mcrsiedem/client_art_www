@@ -1,6 +1,6 @@
 import style from "../SaveAs/SaveAs.module.css";
 
-export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,setShowSaveAs,postZamowienieObj }) {
+export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,setShowSaveAs,postZamowienieObj ,setSaveAs}) {
 //   useEffect(() => {}, []);
 
   return (
@@ -10,6 +10,7 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
       <Tytul
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
+        setSaveAs={setSaveAs}
       />
 
       <div className={style.center}></div>
@@ -28,7 +29,7 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
                     <button
                     className={style.btn}
                     onClick={() => {
-           
+                        setSaveAs(true)
                         postZamowienieObj();
                         setShowSaveAs(!showSaveAs)
                     }}

@@ -22,7 +22,9 @@ function Header({
   elementy,
   openModalStany,
   setOpenModalStany,
-  setShowSaveAs
+  setShowSaveAs,
+  saveAs,
+  setSaveAs
 }) {
   return (
     <>
@@ -62,7 +64,7 @@ function Header({
           </button>
 
 
-          <ZapiszJako postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} />
+          <ZapiszJako postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
 
           <button
             onClick={() => openInNewTab("/Zamowienia")}
@@ -85,12 +87,13 @@ function Header({
 
 export default Header;
 
-function ZapiszJako({postZamowienieObj,setShowSaveAs}){
+function ZapiszJako({postZamowienieObj,setShowSaveAs,setSaveAs}){
 
   return(
     <button
     onClick={async () => {
 setShowSaveAs(true)
+setSaveAs(true)
        
     }}
     className={style.btn}

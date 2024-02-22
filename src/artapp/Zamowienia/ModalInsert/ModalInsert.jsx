@@ -214,6 +214,7 @@ function ModalInsert({
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
   const [showSaveAs, setShowSaveAs] = useState(false);
+  const [saveAs, setSaveAs] = useState(false);
 
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
     useState(false);
@@ -299,6 +300,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
         openModalStany={openModalStany}
         setOpenModalStany={setOpenModalStany}
         setShowSaveAs={setShowSaveAs}
+        saveAs={saveAs}
+        setSaveAs={setSaveAs}
       />
 
       <Dane
@@ -419,6 +422,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
 {showSaveAs && (
         <SaveAs
           showSaveAs={showSaveAs}
+          setSaveAs={setSaveAs}
           setShowSaveAs={setShowSaveAs}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
@@ -447,7 +451,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     function postZamowienieObj(){
     // await zapis();
 
-    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie});
+    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs});
       //  f1(f2);
 
   }

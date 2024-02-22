@@ -99,8 +99,9 @@ function Firma({ daneZamowienia,setDaneZamowienia }) {
       <select
         className={style.firma}
         value={daneZamowienia.firma_id}
+
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, firma: event.target.value});
+          setDaneZamowienia({...daneZamowienia, firma_id: event.target.value});
         }}
       >
         {_firma.map((option) => (
@@ -121,7 +122,7 @@ function Klient({ daneZamowienia,setDaneZamowienia }) {
         className={style.klient}
         value={daneZamowienia.klient_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, klient: event.target.value});
+          setDaneZamowienia({...daneZamowienia, klient_id: event.target.value});
         }}
       >
         {_klient.map((option) => (

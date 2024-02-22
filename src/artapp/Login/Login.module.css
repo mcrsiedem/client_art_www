@@ -17,7 +17,7 @@
 .container{
 	display: grid;
 	grid-template-rows: 1fr  ;
-	background-color: rgb(224, 224, 224);
+	background-color: white
 }
 .header{
 
@@ -46,7 +46,7 @@
 	
 	/* background-color: #4584be; */
 	padding: 20px;
-	border: 1px solid rgb(228, 226, 226);
+	/* border: 1px solid rgb(228, 226, 226); */
 	border-radius: 10px;
 	width: 550px;
 	height: 350px;

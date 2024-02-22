@@ -4,7 +4,7 @@ import { ip } from "../../../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,final}){
             // console.clear();
 
     let produktyEdit = JSON.parse(JSON.stringify(produkty))
@@ -17,7 +17,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
             // console.log(oprawaEdit);          
             // console.log(fragmentyEdit);
 
-    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit})
+    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,final})
     produktyEdit = savedOrder.produktyEdit
     elementyEdit = savedOrder.elementyEdit
     fragmentyEdit = savedOrder.fragmentyEdit
@@ -60,14 +60,18 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
 //----------------------------------------------------------------------------------
 
-const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit}) =>{
+const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,final}) =>{
 
     return new Promise(async(resolve,reject)=>{
 
-      let final_0 = await axios.put(ip + "zamowienia_not_final", {
+      if(!final){
+              let final_0 = await axios.put(ip + "zamowienia_not_final", {
         zamowienie_id: daneZamowienia.id,
 
       })
+      }
+
+
 
 
     let res = await axios.post(ip + "zamowienie", {

@@ -1,6 +1,7 @@
 .insertContainer{
     position: fixed;
-    top: calc(100vh/2 - 175px);
+    /* top: calc(100vh/2 - 175px); */
+    top: 60px;
   
     left: calc(100vw/2 - 300px);
   
@@ -15,6 +16,8 @@
    z-index: 3;
    display: grid;
    grid-template-rows: 30px 1fr 1fr ;
+
+   box-shadow: 10px 10px 10px gray;
   
   }
   

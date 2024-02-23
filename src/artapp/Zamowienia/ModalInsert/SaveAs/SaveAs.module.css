@@ -38,10 +38,10 @@
     justify-content: start;
     align-items: center;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.9rem;
     /* font-weight: bold; */
-    padding-top: 2px;
-    padding-left: 10px;
+    padding-top: 3px;
+    padding-left: 7px;
   }
   
   .row{
@@ -82,7 +82,7 @@
     }
 
     .tytul{
-      width: 90%;
+      width: 95%;
     }
 
     .label{

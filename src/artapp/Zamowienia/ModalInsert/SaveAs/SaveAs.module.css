@@ -2,19 +2,19 @@
     position: fixed;
     top: calc(100vh/2 - 175px);
   
-    left: calc(100vw/2 - 150px);
+    left: calc(100vw/2 - 300px);
   
-    width: 300px;
-    height: 250px;
+    width: 600px;
+    height: 170px;
   min-width: 250px;
-    background-color: rgb(253, 227, 188);
+    background-color: rgb(143, 143, 143);
     /* background-color: rgb(191, 209, 194); */
   
     border: 1px solid rgb(143, 143, 143);
     border-radius: 10px;
    z-index: 3;
    display: grid;
-   grid-template-rows: 30px 1fr 45px ;
+   grid-template-rows: 30px 1fr 1fr ;
   
   }
   
@@ -24,7 +24,7 @@
   
     padding-left: 10px;
     padding-right: 10px;
-    background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
+    background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
   
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -46,20 +46,21 @@
   
   .row{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     color: #fff;
     font-size: 1.2rem;
     /* font-weight: bold; */
-    padding-top: 8px;
-    padding-left: 10px;
-  
+   
+    padding-right: 30px;
+    
+  padding-bottom: 10px;
     gap:20px;
-    padding-bottom: 20px;
+
   }
   
   .btn{
-    background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
+    background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
     width: 100px;
     height: 30px;
     border-radius: 10px;
@@ -69,39 +70,27 @@
   
   }
   
-  .table2 th, .table2 tr:nth-child(even){
-    /* background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%); */
-    background-color: rgb(191, 209, 194);
-    color: rgb(61, 61, 61);
-    font-size: 0.9rem;
-    outline-style: none;
-  
-    }
-    .table2 tr:nth-child(odd){
-      background-color: rgb(213, 230, 216);
-      outline-style: none;
-      font-size:1rem;
-    }
+
     .col {
+
       display: flex;
       flex-direction: column;
-      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px;
+  
     }
+
+    .tytul{
+      width: 90%;
+    }
+
     .label{
       margin-left: 20px;
       margin-top: 20px;
       font-weight: bold;
-      font-size: 1.5rem;
-      color: gray;
-      text-align: center;
+      font-size: 1.2rem;
+      color: whitesmoke;
+      text-align: left;
     }
   
-  
-    .data {
-  background-color: transparent;
-  margin: 10px;
-  text-align: center;
-  font-size: 1.5rem;
-  height: 50px;
-  color: gray;
-    }

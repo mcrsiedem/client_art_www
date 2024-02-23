@@ -34,7 +34,7 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
                         setShowSaveAs(!showSaveAs)
                     }}
                     >
-                    OK
+                    Zapisz
                     </button>
 
 
@@ -46,7 +46,7 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
 function Tytul({ daneZamowienia, setDaneZamowienia }) {
   return (
     <div className={style.col}>
-      <label className={style.label}> Tytul </label>
+      <label className={style.label}> </label>
       <input
         className={style.tytul}
         type="text"

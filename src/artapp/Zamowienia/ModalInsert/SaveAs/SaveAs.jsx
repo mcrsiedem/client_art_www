@@ -5,7 +5,9 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
 
   return (
     <div className={style.insertContainer}>
-      <Header />
+      <div className={style.saveas}>
+
+<Header />
 
       <Tytul
         daneZamowienia={daneZamowienia}
@@ -39,6 +41,8 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
 
 
             </div>
+      </div>
+      
     </div>
   );
 }

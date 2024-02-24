@@ -3,7 +3,7 @@ import axios from "axios";
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Zamowienia/Modal/Modal";
+
 import ModalInsert from "./ModalInsert/ModalInsert";
 
 import style from "../Zamowienia/Zamowienia.module.css";
@@ -119,9 +119,7 @@ function Zamowienia({ user, setUser }) {
         </button>
       </footer>
 
-      {openModal && (
-        <Modal openModal={openModal} setOpenModal={setOpenModal} row={row} />
-      )}
+
       {openModalInsert && (
         <ModalInsert
           openModalInsert={openModalInsert}

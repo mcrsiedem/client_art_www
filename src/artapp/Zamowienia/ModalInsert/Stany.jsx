@@ -3,8 +3,6 @@ import axios from "axios";
 import { ip } from "../../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Modal/Modal";
-import ModalInsert from "./ModalInsert";
 import style from "../ModalInsert/Stany.module.css";
 
 export default function Stany({

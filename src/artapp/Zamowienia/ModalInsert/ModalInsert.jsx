@@ -215,21 +215,16 @@ function ModalInsert({
   const [showTemplate, setShowTemplate] = useState(true);
   const [showSaveAs, setShowSaveAs] = useState(false);
   const [saveAs, setSaveAs] = useState(false);
-
-  const [showElementyProcesyInsert, setShowElementyProcesyInsert] =
-    useState(false);
-  
- 
-
+  const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 
 
   // do zapisu
-  let produktyEdit = produkty.slice();
-  let elementyEdit = elementy.slice();
-  let fragmentyEdit = fragmenty.slice();
-  let oprawaEdit = oprawa.slice();
+  // let produktyEdit = produkty.slice();
+  // let elementyEdit = elementy.slice();
+  // let fragmentyEdit = fragmenty.slice();
+  // let oprawaEdit = oprawa.slice();
   //-------------------------------------
 
   async function fechListy() {
@@ -243,11 +238,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
 
   useEffect(() => {
-
-
-
-
- 
           fechListy();
 
     if (open) {
@@ -256,28 +246,13 @@ const [openModalStany, setOpenModalStany] = useState(false);
       setOpen(false)
       fechparametry(row.id)
     }
-
-    
-
-
-
-
-
-
-
-
   }, []);
 
 
   async function fechparametry(idZamowienia) {
-
-
            const res = await axios.get(ip + "parametry/"+idZamowienia);
            console.log(res.data[0])
            setDaneZamowienia(res.data[0])
-
-
-
   }
 
   return (
@@ -320,6 +295,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
               isTable={isTable}
+              setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Elementy
@@ -351,6 +327,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
+              setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Introligatornia
@@ -363,9 +340,10 @@ const [openModalStany, setOpenModalStany] = useState(false);
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
+              setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
-            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} />
+            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled}/>
           </div>
         )}
 
@@ -385,6 +363,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               setFragmenty={setFragmenty}
               oprawa={oprawa}
               setOprawa={setOprawa}
+              setSaveButtonDisabled={setSaveButtonDisabled}
             />
           </div>
         )}
@@ -396,6 +375,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
           setShowElementyProcesyInsert={setShowElementyProcesyInsert}
           procesyElementow={procesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
+          setSaveButtonDisabled={setSaveButtonDisabled}
         />
       )}
 

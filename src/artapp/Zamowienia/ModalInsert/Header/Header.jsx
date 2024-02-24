@@ -1,6 +1,6 @@
 import iconTable from "../../../../svg/table.svg";
 import iconTableGreen from "../../../../svg/table_green.svg";
-
+import React, { useState } from "react";
 import style from "./Header.module.css";
 
 const openInNewTab = (url) => {
@@ -23,9 +23,11 @@ function Header({
   openModalStany,
   setOpenModalStany,
   setShowSaveAs,
-  saveAs,
-  setSaveAs
+  saveAs, setSaveAs,
+  isSaveButtonDisabled, setSaveButtonDisabled
 }) {
+
+  
   return (
     <>
       <div className={style.container}>
@@ -54,16 +56,22 @@ function Header({
           >
             Anuluj
           </button>
-          <button
-            onClick={async () => {
-              setSaveAs(false)
-              postZamowienieObj();
-            }}
-            className={style.btn}
-          >
-            Zapisz
-          </button>
 
+   
+              <button
+              
+                onClick={async () => {
+                  setSaveAs(false)
+                  postZamowienieObj();
+                  setSaveButtonDisabled(true)
+                }}
+                className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+                disabled={isSaveButtonDisabled}
+
+              >
+                Zapisz
+              </button>
+       
 
           <ZapiszJako postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
 

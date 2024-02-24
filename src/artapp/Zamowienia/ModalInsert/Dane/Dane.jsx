@@ -4,7 +4,7 @@ import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_sta
 export default function Dane({
   selected_firma,setSelected_firma,
   klient,setKlient,
-
+  setSaveButtonDisabled,
   daneZamowienia,setDaneZamowienia
 }) {
   return (
@@ -14,11 +14,13 @@ export default function Dane({
           <Firma
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <div className={style.klientContainer}>
             <Klient
               daneZamowienia={daneZamowienia}
               setDaneZamowienia={setDaneZamowienia}
+              setSaveButtonDisabled={setSaveButtonDisabled}
             />
             
           </div>
@@ -26,32 +28,39 @@ export default function Dane({
           <DataPrzyjecia
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <DataMeterialow
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <DataSpedycji
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
         </div>
         <div className={style.row2}>
           <Nr
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Rok
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Tytul
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
   <Cena
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
             <TerminPlatnosci
             daneZamowienia={daneZamowienia}
@@ -60,30 +69,36 @@ export default function Dane({
             <Vat
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
             <Przedplata
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Opiekun
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
         </div>
         <div className={style.row3}>
           <Status
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Uwagi
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Stan
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
         </div>
       </div>
@@ -92,7 +107,8 @@ export default function Dane({
 }
 
 
-function Firma({ daneZamowienia,setDaneZamowienia }) {
+
+function Firma({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Firma </label>
@@ -102,6 +118,7 @@ function Firma({ daneZamowienia,setDaneZamowienia }) {
 
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, firma_id: event.target.value});
+          setSaveButtonDisabled(false)
         }}
       >
         {_firma.map((option) => (
@@ -114,7 +131,7 @@ function Firma({ daneZamowienia,setDaneZamowienia }) {
   );
 }
 
-function Klient({ daneZamowienia,setDaneZamowienia }) {
+function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -123,6 +140,7 @@ function Klient({ daneZamowienia,setDaneZamowienia }) {
         value={daneZamowienia.klient_id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, klient_id: event.target.value});
+          setSaveButtonDisabled(false);
         }}
       >
         {_klient.map((option) => (
@@ -136,7 +154,7 @@ function Klient({ daneZamowienia,setDaneZamowienia }) {
 }
 
 
-function DataMeterialow({daneZamowienia,setDaneZamowienia}){
+function DataMeterialow({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
@@ -144,12 +162,13 @@ function DataMeterialow({daneZamowienia,setDaneZamowienia}){
              value={daneZamowienia.data_materialow}
              onChange={(event) => {
               setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value});
+              setSaveButtonDisabled(false)
              }}></input>
       </div>
     );
 }
 
-function DataPrzyjecia({daneZamowienia,setDaneZamowienia}){
+function DataPrzyjecia({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
@@ -157,13 +176,14 @@ function DataPrzyjecia({daneZamowienia,setDaneZamowienia}){
          value={daneZamowienia.data_przyjecia}
          onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value});
+          setSaveButtonDisabled(false)
            if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
     </div>
   );
 }
 
-function DataSpedycji({daneZamowienia,setDaneZamowienia}){
+function DataSpedycji({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
@@ -171,12 +191,13 @@ function DataSpedycji({daneZamowienia,setDaneZamowienia}){
         value={daneZamowienia.data_spedycji}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value});
+          setSaveButtonDisabled(false)
         }}></input>
       </div>
     );
 }
 
-function Opiekun({ daneZamowienia,setDaneZamowienia }) {
+function Opiekun({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
@@ -185,6 +206,7 @@ function Opiekun({ daneZamowienia,setDaneZamowienia }) {
         value={daneZamowienia.opiekun_id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
+          setSaveButtonDisabled(false)
         }}
       >
         {_opiekun.map((option) => (
@@ -197,7 +219,7 @@ function Opiekun({ daneZamowienia,setDaneZamowienia }) {
   );
 }
 
-function Status({ daneZamowienia,setDaneZamowienia }) {
+function Status({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Status </label>
@@ -206,6 +228,7 @@ function Status({ daneZamowienia,setDaneZamowienia }) {
         value={daneZamowienia.status}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value});
+          setSaveButtonDisabled(false)
         }}
       >
         {_status.map((option) => (
@@ -218,7 +241,7 @@ function Status({ daneZamowienia,setDaneZamowienia }) {
   );
 }
 
-function Stan({ daneZamowienia,setDaneZamowienia }) {
+function Stan({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Stan </label>
@@ -227,6 +250,7 @@ function Stan({ daneZamowienia,setDaneZamowienia }) {
         value={daneZamowienia.stan}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, stan: event.target.value});
+          setSaveButtonDisabled(false)
         }}
       >
         {_stan.map((option) => (
@@ -239,7 +263,7 @@ function Stan({ daneZamowienia,setDaneZamowienia }) {
   );
 }
 
-function Tytul({daneZamowienia,setDaneZamowienia}){
+function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
@@ -247,11 +271,12 @@ function Tytul({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.tytul}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
-function Uwagi({daneZamowienia,setDaneZamowienia}){
+function Uwagi({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Uwagi </label>
@@ -259,12 +284,13 @@ function Uwagi({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.uwagi}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
 
-function Nr({daneZamowienia,setDaneZamowienia}){
+function Nr({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
@@ -272,12 +298,13 @@ function Nr({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.nr}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, nr: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
 
-function Cena({daneZamowienia,setDaneZamowienia}){
+function Cena({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Cena </label>
@@ -285,12 +312,14 @@ function Cena({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.cena}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, cena: event.target.value});
+        setSaveButtonDisabled(false)
+        
       }}></input>
     </div>
   );
 }
 
-function TerminPlatnosci({daneZamowienia,setDaneZamowienia}){
+function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Płatność (dni) </label>
@@ -298,12 +327,13 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.terminPlatnosci}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, terminPlatnosci: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
 
-function Vat({daneZamowienia,setDaneZamowienia}){
+function Vat({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Stawka VAT %</label>
@@ -311,12 +341,13 @@ function Vat({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.vat}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, vat: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
 
-function Przedplata({daneZamowienia,setDaneZamowienia}){
+function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Przedpłata </label>
@@ -324,13 +355,14 @@ function Przedplata({daneZamowienia,setDaneZamowienia}){
       value={daneZamowienia.przedplata}
       onChange={(event) => {
         setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+        setSaveButtonDisabled(false)
       }}></input>
     </div>
   );
 }
 
 
-function Rok({daneZamowienia,setDaneZamowienia}){
+function Rok({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>
@@ -338,6 +370,7 @@ function Rok({daneZamowienia,setDaneZamowienia}){
             value={daneZamowienia.rok}
             onChange={(event) => {
               setDaneZamowienia({...daneZamowienia, rok: event.target.value});
+              setSaveButtonDisabled(false)
             }}></input>
     </div>
   );

@@ -57,7 +57,7 @@ function ModalInsert({
 
 
 
-
+  const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
@@ -302,11 +302,14 @@ const [openModalStany, setOpenModalStany] = useState(false);
         setShowSaveAs={setShowSaveAs}
         saveAs={saveAs}
         setSaveAs={setSaveAs}
+        isSaveButtonDisabled={isSaveButtonDisabled}
+        setSaveButtonDisabled={setSaveButtonDisabled}
       />
 
       <Dane
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
+        setSaveButtonDisabled={setSaveButtonDisabled}
       />
 
       <div className={style.main}>

@@ -54,7 +54,7 @@ function Tytul({ daneZamowienia, setDaneZamowienia }) {
       <input
         className={style.tytul}
         type="text"
-        value={daneZamowienia.tytul}
+        defaultValue={daneZamowienia.tytul}
         onChange={(event) => {
           setDaneZamowienia({ ...daneZamowienia, tytul: event.target.value });
         }}

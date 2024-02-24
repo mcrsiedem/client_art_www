@@ -251,8 +251,14 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
   async function fechparametry(idZamowienia) {
            const res = await axios.get(ip + "parametry/"+idZamowienia);
-           console.log(res.data[0])
-           setDaneZamowienia(res.data[0])
+          //  console.log("res 0" , res.data[0])
+           setDaneZamowienia(res.data[0][0])
+           setProdukty(res.data[1])
+           setElementy(res.data[2])
+           setFragmenty(res.data[3])
+           setOprawa(res.data[4])
+           setPakowanie(res.data[5])
+           console.log("res: ", res)
   }
 
   return (

@@ -112,7 +112,7 @@ const initialElementy = [
     naklad: "1000",
     uwagi:"uwagi",
 
-    index: 1
+    indeks: 1
 
   },
 
@@ -132,7 +132,7 @@ const initialElementy = [
     gramatura_id: 0,
     naklad: "1000",
     uwagi:"uwagis",
-    index: 2
+    indeks: 2
   },
 
   

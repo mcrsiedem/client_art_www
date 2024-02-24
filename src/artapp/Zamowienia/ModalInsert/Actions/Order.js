@@ -209,6 +209,7 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
         gramatura_id: element.gramatura_id,
         papier_info: element.papier_info,
         uwagi: element.uwagi,
+        indeks: element.indeks,
           })
 
           .then((response) => {

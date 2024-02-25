@@ -288,6 +288,7 @@ const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
         typ: fragment.typ,
         oprawa_id: fragment.oprawa_id,
         indeks: fragment.indeks,
+        wersja: fragment.wersja
 
           })
 

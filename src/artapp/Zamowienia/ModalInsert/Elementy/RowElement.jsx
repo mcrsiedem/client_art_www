@@ -34,19 +34,19 @@ export default function RowElement({
     const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
       useState(listaGramatur);
   
-      const handleRemoveItem = (index,id) => {
+      const handleRemoveItem = (indeks,id) => {
         // id = id elementu
         if (elementy.length !== 1) {
-          setElementy(elementy.filter((x) => x.index !== index));
+          setElementy(elementy.filter((x) => x.indeks !== indeks));
           setFragmenty(fragmenty.filter((x) => x.element_id !== id));
         }
       
         setElementy((prev) =>
           prev.map((t, a) => {
-            if (t.index > index) {
+            if (t.indeks > indeks) {
               return {
                 ...t,
-                index: t.index--,
+                indeks: t.indeks--,
               };
             } else {
               return t;
@@ -60,16 +60,6 @@ export default function RowElement({
       function handleAddCard(card) {
         const newElementy = elementy.slice();
       
-        // newElementy.map((x) => {
-        //   if (x.index > card.index) {
-        //     return {
-        //       ...x,
-        //       //     index: x.index++,
-        //     };
-        //   } else {
-        //     return x;
-        //   }
-        // });
 
         axios.post(ip + "elementy", {
           zamowienie_id: 0,
@@ -85,6 +75,7 @@ export default function RowElement({
           gramatura_id: 0,
           papier_info: 0,
           uwagi: "element temp",
+          indeks:0
       }).then((res) => {
 
       newElementy.push({
@@ -92,7 +83,7 @@ export default function RowElement({
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
-          index: Math.max(...newElementy.map((f) => f.index)) + 1,
+          indeks: Math.max(...newElementy.map((f) => f.indeks)) + 1,
           typ: card.typ,
           nazwa: card.nazwa,
           ilosc_stron: card.ilosc_stron,
@@ -105,7 +96,7 @@ export default function RowElement({
         
         });
       
-        newElementy.sort((a, b) => a.index - b.index);
+        newElementy.sort((a, b) => a.indeks - b.indeks);
         setElementy(newElementy);
 
 
@@ -121,10 +112,10 @@ export default function RowElement({
        
 
         newFragmenty.map((x) => {
-          if (x.index > card.index) {
+          if (x.indeks > card.indeks) {
             return {
               ...x,
-              //     index: x.index++,
+          
             };
           } else {
             return x;
@@ -142,26 +133,13 @@ export default function RowElement({
             typ: card.typ,
             oprawa_id: x.oprawa_id,
             element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-            index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+            indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
           });
 
         });
 
 
-        //let nextId = Math.max(...fragmenty.map(f=>f.id));
-      
-        // newFragmenty.push({
-        //   id: Math.max(...fragmenty.map((f) => f.id)) + 1,
-        //   zamowienie_id: card.zamowienie_id,
-        //   produkt_id: card.produkt_id,
-        //   naklad: card.naklad,
-        //   typ: card.typ,
-        //   oprawa_id: 0,
-        //   element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-        //   index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
-        // });
-      
-        newFragmenty.sort((a, b) => a.index - b.index);
+        newFragmenty.sort((a, b) => a.indeks - b.indeks);
         setFragmenty(newFragmenty);
       }
     return (
@@ -177,7 +155,7 @@ export default function RowElement({
           />
         </div>
         <td>{row.id}</td>
-        <td>{row.index}</td>
+        <td>{row.indeks}</td>
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
@@ -250,7 +228,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
                         <img
            className={style.expand}
             src={iconTrash}
-            onClick={() => {handleRemoveItem(row.index, row.id)}}
+            onClick={() => {handleRemoveItem(row.indeks, row.id)}}
             alt="Procesy"
           />
         </div>

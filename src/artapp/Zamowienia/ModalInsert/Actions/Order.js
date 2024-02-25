@@ -281,12 +281,14 @@ const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
       promises.push(axios.post(ip + "fragmenty", {
         naklad: fragment.naklad,
         info: fragment.info,
-        index: fragment.index,
+        indeks: fragment.indeks,
         zamowienie_id: fragment.zamowienie_id,
         element_id: fragment.element_id,
         produkt_id: fragment.produkt_id,
         typ: fragment.typ,
         oprawa_id: fragment.oprawa_id,
+        indeks: fragment.indeks,
+
           })
 
           .then((response) => {

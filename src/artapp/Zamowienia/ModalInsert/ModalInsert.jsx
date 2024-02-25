@@ -107,24 +107,10 @@ function ModalInsert({
       format_y: "",
       oprawa: "PUR",
       naklad: "1000",
-      index: 0,
+      indeks: 0,
       uwagi: "",
     }
-    // ,
-    // {
-    //   id: 2,
-    //   zamowienie_id: 1,
-    //   typ: 1,
-    //   nazwa: "",
-    //   wersja: "",
-    //   ilosc_stron: "",
-    //   format_x: "",
-    //   format_y: "",
-    //   oprawa: "PUR",
-    //   naklad: "1000",
-    //   index: 1,
-    //   uwagi: "",
-    // }
+  
     
   ]);
   const [elementy, setElementy] = useState(initialElementy);
@@ -139,20 +125,8 @@ function ModalInsert({
       naklad: "500",
       uwagi: "",
       data_spedycji: "2024-01-30",
-      index: 0,
-    },
-
-    // {
-    //   id: 2,
-    //   zamowienie_id: 1,
-    //   produkt_id:1,
-    //   oprawa: 1,
-    //   bok_oprawy: "297",
-    //   naklad: "1000",
-    //   uwagi: "uwagi do oprawy",
-    //   data_spedycji: "2024-01-30",
-    //   index: 1,
-    // },
+      indeks: 0,
+    }
     
   ]);
 

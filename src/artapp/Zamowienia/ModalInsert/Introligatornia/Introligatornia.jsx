@@ -264,7 +264,7 @@ function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa ,
                       <img
          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.index, row.id,oprawa,setOprawa,fragmenty,setFragmenty)}}
+          onClick={() => {handleRemoveItem(row.indeks, row.id,oprawa,setOprawa,fragmenty,setFragmenty)}}
           alt="Procesy"
         />
       </div>
@@ -307,21 +307,21 @@ function PokazElementy({ setShowOprawaElementyStage  }) {
   );
 }
 
-const handleRemoveItem = (index,id,oprawa,setOprawa ,fragmenty,setFragmenty) => {
+const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) => {
 
   // kasowanie oprawy?
   // id = id elementu
   if (oprawa.length !== 1) {
-    setOprawa(oprawa.filter((x) => x.index !== index));
+    setOprawa(oprawa.filter((x) => x.indeks !== indeks));
     setFragmenty(fragmenty.filter((x) => x.oprawa_id !== id));
   }
 
   setOprawa((prev) =>
     prev.map((t, a) => {
-      if (t.index > index) {
+      if (t.indeks > indeks) {
         return {
           ...t,
-          index: t.index--,
+          indeks: t.indeks--,
         };
       } else {
         return t;
@@ -346,7 +346,6 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
 }).then((res) => {
 
 
-  // newOprawa.sort((a, b) => a.index - b.index);
    newOprawa.push({
     id: Math.max(...newOprawa.map((f) => f.id)) + 1,
     
@@ -356,7 +355,7 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     bok_oprawy: card.bok_oprawy,
 
     naklad: 20,
-    index: Math.max(...newOprawa.map((f) => f.index)) + 1,
+    indeks: Math.max(...newOprawa.map((f) => f.indeks)) + 1,
     uwagi: card.uwagi,
     data_spedycji: card.data_spedycji,
   

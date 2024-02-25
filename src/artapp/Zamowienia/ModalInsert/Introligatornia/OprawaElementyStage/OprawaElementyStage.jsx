@@ -43,12 +43,12 @@ export default function OprawaElementyStage({
       bok_oprawy: oprawa_row.bok_oprawy,
 
       naklad: wydziel,
-      index: Math.max(...newOprawa.map((f) => f.index)) + 1,
+      indeks: Math.max(...newOprawa.map((f) => f.indeks)) + 1,
       uwagi: oprawa_row.uwagi,
       data_spedycji: oprawa_row.data_spedycji,
     });
 
-      newOprawa.sort((a, b) => a.index - b.index);
+      newOprawa.sort((a, b) => a.indeks - b.indeks);
           setOprawa(newOprawa
             .map((t) => {
               if (t.id == oprawa_row.id) {
@@ -89,7 +89,7 @@ export default function OprawaElementyStage({
         oprawa_id: id_nowej_oprawy,
         naklad: wydziel,
         typ: t.typ,
-        index: parseInt(t.index) +2,
+        indeks: parseInt(t.indeks) +2,
       })
 
     })

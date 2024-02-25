@@ -193,7 +193,7 @@ function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
             <th>Oprawa id prev</th>
 
             <th>Wersja</th>
-            <th>index</th>
+            <th>indeks</th>
           </tr>
         </thead>
 
@@ -224,7 +224,7 @@ function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
                 <td>{row.id_prev}</td>
 
                 <td>{row.wersja}</td>
-                <td>{row.index}</td>
+                <td>{row.indeks}</td>
               </tr>
             );
           })}
@@ -273,7 +273,7 @@ function StanOprawa({ oprawa }) {
                 <td>{row.naklad}</td>
                 <td>{row.wersja}</td>
                 <td>{row.data_spedycji}</td>
-                <td>{row.index}</td>
+                <td>{row.indeks}</td>
                 <td>{row.id_fragmentow}</td>
               </tr>
             );

@@ -158,23 +158,13 @@ function Dodaj({ row, handleAddFragment, fragmenty, setFragmenty, elementy }) {
 }
 
 function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
-  //-------------------
-  const newFragmenty = fragmenty.slice();
 
-  // newFragmenty.map((x) => {
-  //   if (x.index > card.index) {
-  //     return {
-  //       ...x,
-  //     };
-  //   } else {
-  //     return x;
-  //   }
-  // });
+  const newFragmenty = fragmenty.slice();
 
   axios.post(ip + "fragmenty", {
     naklad: 0,
     info: "fragment temp",
-    index: 0,
+    indeks: 0,
     zamowienie_id:0,
     element_id: 0,
     produkt_id: 0,
@@ -191,10 +181,10 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
     naklad: card.naklad,
      oprawa_id: card.oprawa_id,
     element_id: card.element_id,
-    index: Math.max(...newFragmenty.map((f) => f.index)) + 1,
+    indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
   });
 
-  newFragmenty.sort((a, b) => a.index - b.index);
+  newFragmenty.sort((a, b) => a.indeks - b.indeks);
   setFragmenty(newFragmenty);
 
 })
@@ -210,7 +200,7 @@ function Usun({ row, fragmenty,elementy,setFragmenty,handleRemoveItem }) {
                       <img
          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.index,row.id,fragmenty,elementy,setFragmenty)}}
+          onClick={() => {handleRemoveItem(row.indeks,row.id,fragmenty,elementy,setFragmenty)}}
           alt="Procesy"
         />
       </div>
@@ -219,7 +209,7 @@ function Usun({ row, fragmenty,elementy,setFragmenty,handleRemoveItem }) {
   );
 }
 
-const handleRemoveItem = (index,id,fragmenty,elementy,setFragmenty) => {
+const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
   // id = id elementu
   if (fragmenty.length > elementy.length) {
     setFragmenty(fragmenty.filter((x) => x.id !== id));
@@ -228,10 +218,10 @@ const handleRemoveItem = (index,id,fragmenty,elementy,setFragmenty) => {
 
   setFragmenty((prev) =>
     prev.map((t, a) => {
-      if (t.index > index) {
+      if (t.indeks > indeks) {
         return {
           ...t,
-          index: t.index--,
+          indeks: t.indeks--,
         };
       } else {
         return t;

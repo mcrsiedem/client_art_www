@@ -71,7 +71,7 @@ const initialProdukty = [
     format_y: "",
     oprawa: "PUR",
     naklad: "1000",
-    index: 0,
+    indeks: 0,
     uwagi: "uwagi do produktu",
   },
   {
@@ -85,7 +85,7 @@ const initialProdukty = [
     format_y: "",
     oprawa: "PUR",
     naklad: "1000",
-    index: 0,
+    indeks: 0,
     uwagi: "uwagi do produktu",
   },
   
@@ -149,7 +149,7 @@ const initialFragmenty=[
     wersja: "",
     typ: 1,
     info: "",
-    index: 0
+    indeks: 0
   },
   {
     id: 2,
@@ -161,42 +161,13 @@ const initialFragmenty=[
     wersja: "",
     typ: 2,
     info: "",
-    index: 1
-  },
-  // {
-  //   id: 3,
-  //   zamowienie_id: 1,
-  //   produkt_id: 1,
-  //   element_id: 2, 
-  //   oprawa_id:2,
-  //   naklad: "1000",
-  //   wersja:"",
-  //   typ:2,
-  //   info:"",
-  //   index:1
-  // },
-
-
+    indeks: 1
+  }
 
   
 ]
 
-// przeniesione do modalinsert
-// const _oprawa = [
-//   {
-//     id: 1,
-//     typ: "Magazyn",
-//     nazwa: "1",
-//     ilosc_stron: "84",
-//     format_x: "210",
-//     format_y: "297",
-//     oprawa: "PUR",
-//     naklad: "1000",
-//     uwagi: "uwagi do oprawy",
-//     data: "2024-01-30"
-//   },
-  
-// ];
+
 
 const _papiery = [
   {

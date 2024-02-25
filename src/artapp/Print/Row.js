@@ -47,8 +47,8 @@ const Row = forwardRef((props, ref) => {
     if (!selected) {
       token.setRowSelected([...token.rowSelected, props.id]);
     } else {
-      var index = token.rowSelected.indexOf(props.id)
-      token.rowSelected.splice(index, 1)
+      var indeks = token.rowSelected.indexOf(props.id)
+      token.rowSelected.splice(indeks, 1)
     
     }
     

@@ -144,10 +144,16 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pako
       promises.push(
         axios
           .post(ip + "produkty", {
-            nazwa: produkt.nazwa,
             zamowienie_id: produkt.zamowienie_id,
             typ: produkt.typ,
+            nazwa: produkt.nazwa,
             wersja: produkt.wersja,
+            ilosc_stron: produkt.ilosc_stron,
+            format_x: produkt.format_x,
+            format_y: produkt.format_y,
+            oprawa: produkt.oprawa,
+            naklad: produkt.naklad,
+            indeks: produkt.indeks,
             uwagi: produkt.uwagi,
           })
 

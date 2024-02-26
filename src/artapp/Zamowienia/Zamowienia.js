@@ -55,63 +55,24 @@ function Zamowienia({ user, setUser }) {
     checkToken();
   }, []);
 
-  function kolor(k) {
-    if (k === "6") return style.alert;
-  }
+
   return (
     <div className={style.body}>
       <div className={style.tableContainer}>
-        <table>
-          <thead>
-            <tr>
-              <th className={style.col_id}>#</th>
-              <th className={style.col_nr}>Nr</th>
-              <th className={style.col_rok}>Rok</th><th>Klient</th>
-              <th >Praca</th>
-              <th className={style.col_firma}>Firma</th>
-              <th className={style.col_utworzono}>Utworzono</th>
-              <th className={style.col_utworzono}>Final</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row) => {
-              return (
-                <tr
-                  // className={row.id === 6 ? style.bgdanger : ""}
-                  key={row.id}
-                  onDoubleClick={(node, event) => {
-                    open2(row.id);
-                    setRow({ id: row.id});
-                    // setRow({ id: row.id, user: row.user });
-                  }}
-                >
-                  <td>{row.id} </td>
-                  <td>{row.nr} </td>
-                  <td>{row.rok} </td>
-                  <td>{row.klient}</td>
-                  <td>{row.tytul}</td>
-                  <td>{row.firma}</td>
-                  <td>{row.utworzono}</td>
-                  <td>{row.final}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow}/>
       </div>
 
       <footer className={style.footer}>
-        {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-        <button className={style.myButton}>OK</button>
-        <button
-          className={style.myButton}
-          onClick={() => {
-            dodaj_clikHandler();
-          }}
-        >
-          {" "}
-          Dodaj{" "}
-        </button>
+              {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
+              <button className={style.myButton}>OK</button>
+              <button
+                className={style.myButton}
+                onClick={() => {
+                  dodaj_clikHandler();
+                }}
+              >
+                Dodaj
+              </button>
       </footer>
 
 
@@ -138,6 +99,83 @@ function Zamowienia({ user, setUser }) {
     </div>
   );
 }
+
+function ZamowieniaTable({zamowienia,open2,setRow}){
+ return         <table>
+  <thead>
+    <tr>
+      <th className={style.col_id}>#</th>
+      <th className={style.col_nr}>Nr</th>
+      <th className={style.col_rok}>Rok</th><th>Klient</th>
+      <th >Praca</th>
+      <th className={style.col_firma}>Firma</th>
+      <th className={style.col_utworzono}>Utworzono</th>
+      <th className={style.col_utworzono}>Final</th>
+    </tr>
+  </thead>
+  <tbody>
+    {zamowienia.map((row) => {
+      return (
+        <tr
+          key={row.id}
+          onDoubleClick={(node, event) => {
+            open2(row.id);
+            setRow({ id: row.id});
+          }}
+        >
+          <td>{row.id} </td>
+          <td>{row.nr} </td>
+          <td>{row.rok} </td>
+          <td>{row.klient}</td>
+          <td>{row.tytul}</td>
+          <td>{row.firma}</td>
+          <td>{row.utworzono}</td>
+          <td>{row.final}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+}
+
+
+function ProduktyTable({zamowienia,open2,setRow}){
+  return         <table>
+   <thead>
+     <tr>
+       <th className={style.col_id}>#</th>
+       <th className={style.col_nr}>Nr</th>
+       <th className={style.col_rok}>Rok</th><th>Klient</th>
+       <th >Praca</th>
+       <th className={style.col_firma}>Firma</th>
+       <th className={style.col_utworzono}>Utworzono</th>
+       <th className={style.col_utworzono}>Final</th>
+     </tr>
+   </thead>
+   <tbody>
+     {zamowienia.map((row) => {
+       return (
+         <tr
+           key={row.id}
+           onDoubleClick={(node, event) => {
+             open2(row.id);
+             setRow({ id: row.id});
+           }}
+         >
+           <td>{row.id} </td>
+           <td>{row.nr} </td>
+           <td>{row.rok} </td>
+           <td>{row.klient}</td>
+           <td>{row.tytul}</td>
+           <td>{row.firma}</td>
+           <td>{row.utworzono}</td>
+           <td>{row.final}</td>
+         </tr>
+       );
+     })}
+   </tbody>
+ </table>
+ }
 
 
 

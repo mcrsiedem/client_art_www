@@ -272,8 +272,13 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.tytul} type="text"
       value={daneZamowienia.tytul}
       onChange={(event) => {
+        
+        // const re = /^[']+$/;
+        // if (event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)
+        // }
+
       }}></input>
     </div>
   );

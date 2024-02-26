@@ -331,6 +331,8 @@ const savePacking = ({ pakowanieEdit }) => {
         nazwa: paczka.nazwa,
         naklad: paczka.naklad,
         uwagi: paczka.uwagi,
+        rodzaj_pakowania: paczka.rodzaj_pakowania,
+        sztuki_w_paczce: paczka.sztuki_w_paczce
 
           })
 

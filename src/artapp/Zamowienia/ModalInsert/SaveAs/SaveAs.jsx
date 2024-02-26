@@ -23,6 +23,7 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
                     className={style.btn}
                     onClick={() => {
                     setShowSaveAs(!showSaveAs)
+                    setSaveAs(false)
                     }}
                     >
                     Anuluj

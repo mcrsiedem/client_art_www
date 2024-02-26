@@ -137,6 +137,8 @@ function ModalInsert({
       produkt_id:1,
       nazwa: "Poczta Główna",
       naklad: 10,
+      sztuki_w_paczce: 10,
+      rodzaj_pakowania:"",
       uwagi: ""
     },
     {
@@ -145,6 +147,8 @@ function ModalInsert({
       produkt_id:1,
       nazwa: "Desa Unicum ul. Piękna 1 A",
       naklad: 124,
+      sztuki_w_paczce: 10,
+      rodzaj_pakowania:"",
       uwagi: ""
     },
     {
@@ -153,6 +157,8 @@ function ModalInsert({
       produkt_id:1,
       nazwa: "Cosmopolitan",
       naklad: 10,
+      sztuki_w_paczce: 10,
+      rodzaj_pakowania:"",
       uwagi: ""
     },
     {
@@ -161,6 +167,8 @@ function ModalInsert({
       produkt_id:1,
       nazwa: "Promenoria",
       naklad: 10,
+      sztuki_w_paczce: 10,
+      rodzaj_pakowania:"",
       uwagi: ""
     },
     {
@@ -169,6 +177,8 @@ function ModalInsert({
       produkt_id:1,
       nazwa: "Comforty",
       naklad: 10,
+      sztuki_w_paczce: 10,
+      rodzaj_pakowania:"",
       uwagi: ""
     },
     
@@ -323,7 +333,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
-            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled}/>
+            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 
@@ -508,6 +518,18 @@ const [openModalStany, setOpenModalStany] = useState(false);
   function handleChangeCardOprawa(card) {
     setOprawa(
       oprawa.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+
+  function handleChangeCardPakowanie(card) {
+    setPakowanie(
+      pakowanie.map((t) => {
         if (t.id === card.id) {
           return card;
         } else {

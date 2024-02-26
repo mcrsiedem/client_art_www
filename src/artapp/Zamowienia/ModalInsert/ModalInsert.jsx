@@ -34,10 +34,6 @@ import Stany from "./Stany";
 import { saveOrder } from "./Actions/Order";
 import SaveAs from "./SaveAs/SaveAs";
 
-
-
-
-
 function ModalInsert({
   openModalInsert,
   setOpenModalInsert,
@@ -52,11 +48,6 @@ function ModalInsert({
   row
 }) {
 
-
-  
-
-
-
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
@@ -66,10 +57,10 @@ function ModalInsert({
     oprawa: 1,
     naklad: "1000",
     strony_okl: "4",
-    strony_srd: "4",
-    format_x: "4",
-    format_y: "4",
-    bok_oprawy: "4"
+    strony_srd: "80",
+    format_x: "210",
+    format_y: "297",
+    bok_oprawy: "297"
 
   });
 

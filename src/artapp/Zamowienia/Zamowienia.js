@@ -12,22 +12,19 @@ function Zamowienia({ user, setUser }) {
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
   const [openModalInsert, setOpenModalInsert] = useState(false);
   const [open, setOpen] = useState(false);
-
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   function dodaj_clikHandler() {
-
     setOpenModalInsert(true);
-
-
   }
 
   const open2 = () =>{
+    //pokazuje OpenModal
+    // zmiena open na true, co oznacza dla modala, ze open istniejace zamowienie a nie insert new
     setOpenModalInsert(true)
     setOpen(true)
 
@@ -35,9 +32,7 @@ function Zamowienia({ user, setUser }) {
   async function fechZamowienia() {
     const res = await axios.get(ip + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
-
     setData(jobs);
-
 
     const res3 = await axios.get(ip + "lista-papierow");
     setListaPapierow([...res3.data]);
@@ -143,6 +138,8 @@ function Zamowienia({ user, setUser }) {
     </div>
   );
 }
+
+
 
 export default Zamowienia;
 

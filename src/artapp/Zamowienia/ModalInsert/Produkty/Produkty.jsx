@@ -56,7 +56,10 @@ function ProduktyTable({produkty,handleChangeCardProdukty}) {
                     row={row}
                     handleChangeCardProdukty={handleChangeCardProdukty}
                   />
-                  <td>{row.naklad}</td>
+                           <Naklad
+                    row={row}
+                    handleChangeCardProdukty={handleChangeCardProdukty}
+                  />
                   <Oprawa row={row}/>
 
                   <Nazwa
@@ -126,6 +129,24 @@ function Nazwa({ row, handleChangeCardProdukty }) {
     </td>
   );
 }
+
+function Naklad({ row, handleChangeCardProdukty }) {
+  return (
+    <td>
+      <input
+        className={style.in}
+        defaultValue={row.naklad}
+        onChange={(e) =>
+          handleChangeCardProdukty({
+            ...row,
+            naklad: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+
 function Oprawa({ row }) {
   return (
     <td>

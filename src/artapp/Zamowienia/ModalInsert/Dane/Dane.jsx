@@ -1,5 +1,6 @@
 import style from "./Dane.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan } from "../api";
+import { isNumberWalidation } from "../Actions/Walidacja";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -65,6 +66,7 @@ export default function Dane({
             <TerminPlatnosci
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
           />
             <Vat
             daneZamowienia={daneZamowienia}
@@ -297,8 +299,14 @@ function Nr({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.data} type="text"
       value={daneZamowienia.nr}
       onChange={(event) => {
-        setDaneZamowienia({...daneZamowienia, nr: event.target.value});
-        setSaveButtonDisabled(false)
+
+        const re = /^[0-9]+$/;
+        if (event.target.value === '' || re.test(event.target.value)) {
+          setDaneZamowienia({...daneZamowienia, nr: event.target.value});
+          setSaveButtonDisabled(false)
+        }
+        
+      
       }}></input>
     </div>
   );
@@ -324,11 +332,16 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
       <div className={style.col}>
       <label className={style.label}> Płatność (dni) </label>
       <input className={style.data} type="text"
-      value={daneZamowienia.terminPlatnosci}
+      value={daneZamowienia.termin_platnosci}
       onChange={(event) => {
-        setDaneZamowienia({...daneZamowienia, terminPlatnosci: event.target.value});
-        setSaveButtonDisabled(false)
-      }}></input>
+
+          setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value});
+          setSaveButtonDisabled(false)
+ 
+        
+
+      }}
+      ></input>
     </div>
   );
 }
@@ -368,9 +381,15 @@ function Rok({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <label className={style.label}> Rok </label>
       <input className={style.data} type="text"
             value={daneZamowienia.rok}
+
+            
             onChange={(event) => {
+
+              const re = /^[0-9]+$/;
+              if (event.target.value === '' || re.test(event.target.value)) {
               setDaneZamowienia({...daneZamowienia, rok: event.target.value});
               setSaveButtonDisabled(false)
+              }
             }}></input>
     </div>
   );

@@ -3,17 +3,17 @@ import style from "./Header.module.css";
 import LeftPane from "./LeftPane"
 import RightPane from "./RightPane"
 import logoGrid from "../../../../svg/grid.svg";
-import Icon from "./Icon";
+import IconNavigate from "./IconNavigate";
 export default function Header(){
 
     return (
       <header className={style.headerMain}>
         <LeftPane>
-          <Icon className={style.btn} logo={logoGrid} navi={"/Panel"} />
+          <IconNavigate className={style.btn} logo={logoGrid} navi={"/Panel"} />
         </LeftPane>
 
         <RightPane>
-          <Icon className={style.btn} logo={logoGrid} navi={"/Zamowienia"} />>
+          <IconNavigate className={style.btn} logo={logoGrid} navi={"/Zamowienia"} />>
         </RightPane>
 
         {/* <div className={style.leftHeaderContener}>

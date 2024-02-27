@@ -2,12 +2,14 @@
 import style from "./Header.module.css";
 import LeftPane from "./LeftPane"
 import RightPane from "./RightPane"
+import logoGrid from "../../../../svg/grid.svg";
+import Button from "./Button";
 export default function Header(){
 
     return (
       <header className={style.headerMain}>
         <LeftPane>
-        <p>left</p>
+        <Button className={style.btn} logo={logoGrid} navi={"/Panel"}/>
         </LeftPane>
 
 

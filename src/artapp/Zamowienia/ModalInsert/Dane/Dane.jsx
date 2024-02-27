@@ -1,6 +1,6 @@
 import style from "./Dane.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan } from "../api";
-import { isNumberWalidation } from "../Actions/Walidacja";
+import { isNumberWalidation } from "../../../Actions/Walidacja";
 
 export default function Dane({
   selected_firma,setSelected_firma,

@@ -9,13 +9,13 @@ export default function Header(){
     return (
       <header className={style.headerMain}>
         <LeftPane>
-        <Button className={style.btn} logo={logoGrid} navi={"/Panel"}/>
+          <Button className={style.btn} logo={logoGrid} navi={"/Panel"} />
         </LeftPane>
 
-
         <RightPane>
-        <p>right</p>
+          <Button className={style.btn} logo={logoGrid} navi={"/Zamowienia"} />>
         </RightPane>
+
         {/* <div className={style.leftHeaderContener}>
           <img
             className={style.icon}

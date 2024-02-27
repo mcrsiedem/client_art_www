@@ -1,0 +1,19 @@
+
+
+.headerMain{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+}
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px;
+}

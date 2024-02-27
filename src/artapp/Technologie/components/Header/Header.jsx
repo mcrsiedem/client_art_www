@@ -1,9 +1,19 @@
 
 import style from "./Header.module.css";
+import LeftPane from "./LeftPane"
+import RightPane from "./RightPane"
 export default function Header(){
 
-    return(
-        <header className={style.headerMain}>
+    return (
+      <header className={style.headerMain}>
+        <LeftPane>
+        <p>left</p>
+        </LeftPane>
+
+
+        <RightPane>
+        <p>right</p>
+        </RightPane>
         {/* <div className={style.leftHeaderContener}>
           <img
             className={style.icon}
@@ -48,5 +58,5 @@ export default function Header(){
           />
         </div> */}
       </header>
-    )
+    );
 }

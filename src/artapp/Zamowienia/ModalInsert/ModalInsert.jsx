@@ -31,7 +31,7 @@ import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "./Actions/Order";
+import { saveOrder } from "../../Actions/Order";
 import SaveAs from "./SaveAs/SaveAs";
 
 function ModalInsert({

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-export default function Button({className,logo,navi}){
+export default function Icon({className,logo,navi}){
     const navigate = useNavigate();
     return(
         <img

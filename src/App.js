@@ -10,7 +10,7 @@ import Falc from './components/Falc/Falc';
 import Papier from './components/Papier/Papier';
 import Historia from './components/Historia/Historia';
 import Wydany_papier from './components/Druk/Wydany_papier';
-
+import Technologie from './artapp/Technologie/Technologie'
 import Logowanie from './components/Logowanie/Logowanie';
 import Print from "./artapp/Print/Print";
 import Login from "./artapp/Login/Login";
@@ -62,6 +62,7 @@ export default function App() {
           <Route path='/Print' element={<Print />} />
           <Route path='/History' element={<History />} />
           <Route path='/Panel' element={<Panel />} />
+          <Route path='/Technologie' element={<Technologie />} />
           {/* <Route path='*' element={<History />} /> */}
           <Route path='/zamowienia' element={<Zamowienia />} />
  

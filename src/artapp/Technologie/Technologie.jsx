@@ -3,8 +3,11 @@
 
 export default function Technologie(){
 
-    return
+    return(
     <>
 
+
     </>
+    )
+    
 }

@@ -31,15 +31,7 @@ function Header() {
   }, []);
   //---------------------------------------------------------
 
-  const fullScrean = () => {
-    document
-      .querySelector("#root")
-      .requestFullscreen()
-      .then(function () {})
-      .catch(function (error) {
-        console.log(error.message);
-      });
-  };
+
 
   return (
     <header id="header" className={style.body}>
@@ -81,7 +73,7 @@ function Header() {
           className={style.icon}
           src={ReactLogo_full}
           onClick={() => {
-            fullScrean();
+            // fullScrean();
           }}
           alt="React Logo"
         />

@@ -236,6 +236,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       </td>
     );
   }
+  
   function Dodaj({ row, handleChangeCardElementy ,handleAddCard}) {
     return (
       <td className={style.col_button} >

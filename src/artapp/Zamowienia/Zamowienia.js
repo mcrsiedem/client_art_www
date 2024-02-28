@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import axios from "axios";
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import iconSettings from "../../svg/settings.svg";
 
 import ModalInsert from "./ModalInsert/ModalInsert";
 
@@ -17,6 +18,7 @@ function Zamowienia({ user, setUser }) {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -73,6 +75,17 @@ function Zamowienia({ user, setUser }) {
               >
                 Dodaj
               </button>
+
+              <button
+                className={style.myButton}
+                onClick={() => {
+                  console.log(row)
+                }}
+              >
+                Karta dla id:  {row}
+              </button>
+
+
       </footer>
 
 
@@ -111,6 +124,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_utworzono}>Utworzono</th>
       <th className={style.col_utworzono}>Final</th>
+      <th className={style.col_utworzono}>Zlecenie</th>
     </tr>
   </thead>
   <tbody>
@@ -119,9 +133,15 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
         <tr
           key={row.id}
           onDoubleClick={(node, event) => {
+            
             open2(row.id);
             setRow({ id: row.id});
           }}
+
+          onClick={()=>{
+            setRow(row.id)
+          }}
+
         >
           <td>{row.id} </td>
           <td>{row.nr} </td>
@@ -131,6 +151,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           <td>{row.firma}</td>
           <td>{row.utworzono}</td>
           <td>{row.final}</td>
+          <CreateTechnmologiaBtn row={row}/>
         </tr>
       );
     })}
@@ -139,44 +160,23 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
 }
 
 
-function ProduktyTable({zamowienia,open2,setRow}){
-  return         <table>
-   <thead>
-     <tr>
-       <th className={style.col_id}>#</th>
-       <th className={style.col_nr}>Nr</th>
-       <th className={style.col_rok}>Rok</th><th>Klient</th>
-       <th >Praca</th>
-       <th className={style.col_firma}>Firma</th>
-       <th className={style.col_utworzono}>Utworzono</th>
-       <th className={style.col_utworzono}>Final</th>
-     </tr>
-   </thead>
-   <tbody>
-     {zamowienia.map((row) => {
-       return (
-         <tr
-           key={row.id}
-           onDoubleClick={(node, event) => {
-             open2(row.id);
-             setRow({ id: row.id});
-           }}
-         >
-           <td>{row.id} </td>
-           <td>{row.nr} </td>
-           <td>{row.rok} </td>
-           <td>{row.klient}</td>
-           <td>{row.tytul}</td>
-           <td>{row.firma}</td>
-           <td>{row.utworzono}</td>
-           <td>{row.final}</td>
-         </tr>
-       );
-     })}
-   </tbody>
- </table>
- }
 
+
+ function CreateTechnmologiaBtn({ row, handleChangeCardElementy,handleRemoveItem }) {
+  return (
+    <td className={style.col_button}>
+      <div >
+                      <img
+         className={style.iconSettings}
+          src={iconSettings}
+          onClick={() => {handleRemoveItem(row.indeks, row.id)}}
+          alt="Procesy"
+        />
+      </div>
+
+    </td>
+  );
+}
 
 
 export default Zamowienia;

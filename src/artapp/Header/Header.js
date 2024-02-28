@@ -41,7 +41,7 @@ function Header() {
           src={ReactLogo}
           onClick={() => {
             navigate("/Panel");
-            console.log("z contextu :"+ token.rowSelected)
+            // console.log("z contextu :"+ token.rowSelected)
           //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
 
           }}

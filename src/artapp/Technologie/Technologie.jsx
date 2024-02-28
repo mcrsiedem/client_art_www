@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
 import { ip } from "../../Host";
-import TechTable from "./components/TechTable/TechTable";
+import TechnologiaTable from "./components/TechnologiaTable/TechnologiaTable";
 
 export default function Technologie(){
 
@@ -31,7 +31,7 @@ export default function Technologie(){
     return(
     <>
         <Header/>
-        <TechTable dataTechnologie={dataTechnologie}/>
+        <TechnologiaTable dataTechnologie={dataTechnologie}/>
         <Footer/>
 
       

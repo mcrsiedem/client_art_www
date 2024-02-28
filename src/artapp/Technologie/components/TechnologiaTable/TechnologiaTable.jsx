@@ -1,7 +1,7 @@
 // tableka z technologiami
 
-import style from "./TechTable.module.css";
-export default function TechTable({dataTechnologie}){
+import style from "./TechnologiaTable.module.css";
+export default function TechnologiaTable({dataTechnologie}){
 return(
     <table>
     <thead>

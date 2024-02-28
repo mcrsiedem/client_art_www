@@ -85,6 +85,7 @@ export default function Login({user,setUser}) {
         <Header/>
       </div> */}
       <div className={style.center}>
+      
       <Center values={values} setValues={setValues} handleSubmit={handleSubmit}/>
       </div>
 
@@ -132,7 +133,7 @@ function Center({values,setValues,handleSubmit}){
 
       <button type="submit"  className={style.myButton}           >
         {" "}
-        Zaloguj
+        Zaloguj ssl
       </button>
 
 

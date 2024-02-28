@@ -1,7 +1,7 @@
 // tableka z technologiami
 
 import style from "./TechnologiaTable.module.css";
-export default function TechnologiaTable({dataTechnologie,setStageTEchnologiaVisible,setActiveRowId}){
+export default function TechnologiaTable({dataTechnologie,setStageTechnologiaVisible,setActiveRowId}){
 return(
     <table>
     <thead>
@@ -21,7 +21,7 @@ return(
             key={row.id}
             onDoubleClick={(node, event) => {
               setActiveRowId(row.id)
-              setStageTEchnologiaVisible(true);
+              setStageTechnologiaVisible(true);
             }}
             onClick={()=> {
                 // setRow(row.id)

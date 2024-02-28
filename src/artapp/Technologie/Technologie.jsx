@@ -5,11 +5,13 @@ import Footer from "./components/Footer/Footer";
 import axios from "axios";
 import { ip } from "../../Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
+import TechnologiaStage from "../TechnologiaStage/TechnologiaStage"
+import style from "./Technologie.module.css";
 
 export default function Technologie(){
 
   const [dataTechnologie,setDataTechnologie] =useState([]);
-  const [isStageTechnologiaVisible,setStageTEchnologiaVisible] =useState(false);
+  const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
 
     const effectRan = useRef(false);
@@ -34,11 +36,14 @@ export default function Technologie(){
     return(
     <>
         <Header/>
-        <TechnologiaTable dataTechnologie={dataTechnologie} setStageTEchnologiaVisible={setStageTEchnologiaVisible} setActiveRowId={setActiveRowId}/>
+        <TechnologiaTable dataTechnologie={dataTechnologie} setStageTechnologiaVisible={setStageTechnologiaVisible} setActiveRowId={setActiveRowId}/>
         <Footer/>
 
-      
-
+        {isStageTechnologiaVisible && (
+        <TechnologiaStage
+    
+        />
+      )}
     </>
     )
     

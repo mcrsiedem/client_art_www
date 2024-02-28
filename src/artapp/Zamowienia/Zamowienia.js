@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
@@ -18,7 +18,6 @@ function Zamowienia({ user, setUser }) {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -76,16 +75,14 @@ function Zamowienia({ user, setUser }) {
                 Dodaj
               </button>
 
-              <button
+                         <button
                 className={style.myButton}
                 onClick={() => {
-                  console.log(row)
+                  dodaj_clikHandler();
                 }}
               >
-                Karta dla id:  {row}
+                Dodaj
               </button>
-
-
       </footer>
 
 
@@ -137,11 +134,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
             open2(row.id);
             setRow({ id: row.id});
           }}
-
-          onClick={()=>{
-            setRow(row.id)
+          onClick={()=> {setRow(row.id)
+          console.log(row.id)
           }}
-
         >
           <td>{row.id} </td>
           <td>{row.nr} </td>

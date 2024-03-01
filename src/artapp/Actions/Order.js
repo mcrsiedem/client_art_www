@@ -332,7 +332,8 @@ const savePacking = ({ pakowanieEdit }) => {
         naklad: paczka.naklad,
         uwagi: paczka.uwagi,
         rodzaj_pakowania: paczka.rodzaj_pakowania,
-        sztuki_w_paczce: paczka.sztuki_w_paczce
+        sztuki_w_paczce: paczka.sztuki_w_paczce,
+        indeks: paczka.indeks
 
           })
 

@@ -50,12 +50,7 @@ function Header({
             src={iconTable}
             alt="table"
           />
-          <button
-            onClick={() => setOpenModalInsert(false)}
-            className={style.btn}
-          >
-            Anuluj
-          </button>
+
 
    
               <button
@@ -87,6 +82,12 @@ function Header({
             className={style.btn}
           >
             Sprawdź
+          </button>
+          <button
+            onClick={() => setOpenModalInsert(false)}
+            className={style.btn}
+          >
+            Zamknij
           </button>
         </div>
       </div>

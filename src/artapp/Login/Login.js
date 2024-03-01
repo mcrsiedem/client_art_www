@@ -132,8 +132,8 @@ function Center({values,setValues,handleSubmit}){
       </div>
 
       <button type="submit"  className={style.myButton}           >
-        {" "}
-        Zaloguj ssl
+        
+        Zaloguj
       </button>
 
 

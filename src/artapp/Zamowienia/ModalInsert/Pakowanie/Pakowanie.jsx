@@ -1,3 +1,5 @@
+import { addNewPacking } from "../utils/addNewPacking";
+import iconCopy from "../../../../svg/copy.svg";
 import style from "./Pakowanie.module.css";
 
 export default function Pakowanie({ pakowanie,setPakowanie,handleChangeCardPakowanie}) {
@@ -36,11 +38,13 @@ function PakowanieTable({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
               <th className={style.col1}>#Zamówienie</th>
               <th className={style.col1}>#Produkt</th>
               <th className={style.col2}>#</th>
+              <th className={style.col2}>i</th>
               <th className={style.col3}>Nazwa</th>
               <th className={style.col10}>Ilość szt.</th>
               <th className={style.col10}>Sztuki w paczce</th>
               <th className={style.col10}>Rodzaj pakowania</th>
               <th className={style.col10}>Uwagi</th>
+              <th className={style.col10}>+</th>
 
             </tr>
           </thead>
@@ -54,13 +58,15 @@ function PakowanieTable({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
                   <td>{row.produkt_id}</td>
 
                   <td>{row.id}</td>
+                  <td>{row.indeks}</td>
                   <Nazwa row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <Ilosc row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <SztukiWpaczce row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <RodzajPakowania row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+                  <Dodaj row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
              
-    
+
                 </tr>
               );
             })}
@@ -163,6 +169,19 @@ function Uwagi({ row, handleChangeCardPakowanie }) {
           })
         }
       ></input>
+    </td>
+  );
+}
+
+function Dodaj({ row, pakowanie ,setPakowanie}) {
+  return (
+    <td className={style.col_button} >
+            <img
+         className={style.expand}
+          src={iconCopy}
+          onClick={() => {addNewPacking(row,pakowanie,setPakowanie)}}
+          alt="Procesy"
+        />
     </td>
   );
 }

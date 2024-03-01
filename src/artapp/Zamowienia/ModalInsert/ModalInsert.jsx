@@ -130,7 +130,8 @@ function ModalInsert({
       naklad: 10,
       sztuki_w_paczce: 10,
       rodzaj_pakowania:"",
-      uwagi: ""
+      uwagi: "",
+      indeks: 0
     },
     {
       id: 2,
@@ -140,7 +141,8 @@ function ModalInsert({
       naklad: 124,
       sztuki_w_paczce: 10,
       rodzaj_pakowania:"",
-      uwagi: ""
+      uwagi: "",
+      indeks: 1
     },
     {
       id: 3,
@@ -150,7 +152,8 @@ function ModalInsert({
       naklad: 10,
       sztuki_w_paczce: 10,
       rodzaj_pakowania:"",
-      uwagi: ""
+      uwagi: "",
+      indeks: 2
     },
     {
       id: 4,
@@ -160,7 +163,8 @@ function ModalInsert({
       naklad: 10,
       sztuki_w_paczce: 10,
       rodzaj_pakowania:"",
-      uwagi: ""
+      uwagi: "",
+      indeks: 3
     },
     {
       id:5,
@@ -170,7 +174,8 @@ function ModalInsert({
       naklad: 10,
       sztuki_w_paczce: 10,
       rodzaj_pakowania:"",
-      uwagi: ""
+      uwagi: "",
+      indeks: 4
     },
     
   ]);

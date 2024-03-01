@@ -237,8 +237,9 @@ const [openModalStany, setOpenModalStany] = useState(false);
            setElementy(res.data[2])
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
-           setPakowanie(res.data[5])
-           console.log("res: ", res)
+           setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
+          //  pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
+
   }
 
   return (

@@ -18,11 +18,12 @@ export function addNewPacking(row, pakowanie, setPakowanie) {
   }).then((res) => {
 
 
+    pakowanieEdit.map((p) => {
+        if (p.indeks > row.indeks) {
+          p.indeks++};
+        } 
+      )
 
-    // pakowanieEdit.map((p) => { p.indeks = 11
-
-    //   })
-  
     pakowanieEdit.push({
       id: Math.max(...pakowanie.map((f) => f.id)) + 1,
       zamowienie_id: row.zamowienie_id,
@@ -33,16 +34,10 @@ export function addNewPacking(row, pakowanie, setPakowanie) {
       rodzaj_pakowania: row.rodzaj_pakowania,
       uwagi: row.uwagi,
       indeks: row.indeks +1 
-    //  indeks: Math.max(...pakowanieEdit.map((f) => f.indeks)) + 1,
+
     });
   
-    pakowanieEdit.map((p) => {
-        if (p.indeks > row.indeks +1) {
-          return {...p, indeks: p.indeks +1};
-        } else {
-          return p;
-        }
-      })
+
     pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
     setPakowanie(pakowanieEdit);
   

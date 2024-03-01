@@ -120,6 +120,7 @@ div::-webkit-scrollbar-corner {
 
 .col_button {
   width: 20px;
+  padding-right: 10px;
   /* background-color: red; */
 }
 

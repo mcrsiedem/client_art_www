@@ -1,6 +1,8 @@
-import { addNewPacking } from "../utils/addNewPacking";
+import { addNewPacking } from "../../../Actions/Packing/addNewPacking";
 import iconCopy from "../../../../svg/copy.svg";
+import iconTrash from "../../../../svg/trash2.svg";
 import style from "./Pakowanie.module.css";
+import { deletePacking } from "../../../Actions/Packing/deletePacking";
 
 export default function Pakowanie({ pakowanie,setPakowanie,handleChangeCardPakowanie}) {
   
@@ -45,6 +47,7 @@ function PakowanieTable({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
               <th className={style.col10}>Rodzaj pakowania</th>
               <th className={style.col10}>Uwagi</th>
               <th className={style.col10}>+</th>
+              <th className={style.col10}>-</th>
 
             </tr>
           </thead>
@@ -65,6 +68,7 @@ function PakowanieTable({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
                   <RodzajPakowania row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                   <Dodaj row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
+                  <Usun row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
              
 
                 </tr>
@@ -182,6 +186,22 @@ function Dodaj({ row, pakowanie ,setPakowanie}) {
           onClick={() => {addNewPacking(row,pakowanie,setPakowanie)}}
           alt="Procesy"
         />
+    </td>
+  );
+}
+
+function Usun({ row, pakowanie ,setPakowanie}) {
+  return (
+    <td className={style.col_button}>
+      <div >
+                      <img
+         className={style.expand}
+          src={iconTrash}
+          onClick={() => {deletePacking(row, pakowanie ,setPakowanie)}}
+          alt="Procesy"
+        />
+      </div>
+
     </td>
   );
 }

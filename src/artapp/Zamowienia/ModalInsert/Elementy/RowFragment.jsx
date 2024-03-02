@@ -25,7 +25,7 @@ export default function RowFragment({
     function handleDragStart(){
       //  e.preventDefault()
       sessionStorage.setItem("id_element_drag", row.id);
-      sessionStorage.setItem("typ_drag", row.typ_drag);
+      sessionStorage.setItem("typ_drag", 'fragment');
   
     }
   return (

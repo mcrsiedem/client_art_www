@@ -33,7 +33,7 @@ export default function IntroligatorniaTable({
        let id_drag_element = sessionStorage.getItem("id_element_drag")
     let id_drop_oprawa = id;
     handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
-    console.log("oprawa drag ok")
+
     }
    
 

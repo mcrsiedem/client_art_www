@@ -20,7 +20,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
                 <th className={style.col10}>Uwagi</th>
                 <th className={style.col10}>+</th>
                 <th className={style.col10}>-</th>
-                <th className={style.col10}>typ</th>
+     
   
               </tr>
             </thead>
@@ -44,7 +44,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
                     <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Dodaj row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
                     <Usun row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
-                    <td>{row.typ_drag}</td>
+   
                
   
                   </tr>

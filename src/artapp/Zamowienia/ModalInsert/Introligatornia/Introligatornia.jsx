@@ -27,12 +27,16 @@ export default function IntroligatorniaTable({
   useState(false);
   const [expand,setExpand] =useState(true);
    function handleDrop(id){
-    let id_drag_element = sessionStorage.getItem("id_element_drag")
+
+    // sprawdza czy upuszczamy właściwy obiekt
+    if(sessionStorage.getItem("typ_drag") =='fragment'){
+       let id_drag_element = sessionStorage.getItem("id_element_drag")
     let id_drop_oprawa = id;
-    
     handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
-//  console.log(id_drag_element);
-//      console.log(id_drop_oprawa);
+    console.log("oprawa drag ok")
+    }
+   
+
   }
 
   function handleDragOver(e){

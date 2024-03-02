@@ -28,9 +28,9 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
                 return (
                   <tr draggable
                     key={row.id}
-                    onDragStart={()=>handleDragStart(row.indeks)} 
+                    onDragStart={()=>handleDragStart(row)} 
                     onDragOver={(handleDragOver)}
-                    onDrop={()=>handleDrop(row.indeks)}
+                    onDrop={()=>handleDrop(row,pakowanie,setPakowanie)}
                   >
                     <ZamowienieId row={row}/>
                     <ProduktId row={row}/>
@@ -204,15 +204,34 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
 
 
 
-  function handleDrop(indeks){
-    let drop_indeks = indeks
+  function handleDrop(row,pakowanie,setPakowanie){
+    let drop_indeks = row.indeks
     let drag_indeks = sessionStorage.getItem("indeks_paczka_drag")
-  
-     console.log("drag_indeks "+drag_indeks)
-     console.log("drop_indeks "+drop_indeks)
-    // handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
-//  console.log(id_drag_element);
-//      console.log(id_drop_oprawa);
+    let drag_id= sessionStorage.getItem("id_paczka_drag")
+
+
+     const pakowanieEdit = pakowanie.slice();
+
+     pakowanieEdit.map((p) => {
+      if (p.indeks > drag_indeks) {
+        p.indeks--
+      }
+    });
+
+    pakowanieEdit.map((p) => {
+      if (p.indeks >= drop_indeks) {
+        p.indeks++
+      }
+    });
+    pakowanieEdit.map((p) => {
+      if (p.id == drag_id) {
+        p.indeks =drop_indeks
+      }
+    });
+
+
+      pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
+      setPakowanie(pakowanieEdit);
   }
 
   function handleDragOver(e){
@@ -221,9 +240,10 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
 
   }
 
-  function handleDragStart(indeks){
+  function handleDragStart(row){
 
-    sessionStorage.setItem("indeks_paczka_drag", indeks);
+    sessionStorage.setItem("indeks_paczka_drag", row.indeks);
+    sessionStorage.setItem("id_paczka_drag", row.id);
     // console.log("drag_indeks "+indeks)
 
   }

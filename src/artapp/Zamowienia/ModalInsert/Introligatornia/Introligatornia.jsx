@@ -44,6 +44,7 @@ export default function IntroligatorniaTable({
   function handleDragStart(id){
    //   e.preventDefault();
     sessionStorage.setItem("id_element_drag", id);
+    sessionStorage.setItem("typ_drag", "fragment");
 
   }
   

@@ -20,6 +20,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
                 <th className={style.col10}>Uwagi</th>
                 <th className={style.col10}>+</th>
                 <th className={style.col10}>-</th>
+                <th className={style.col10}>typ</th>
   
               </tr>
             </thead>
@@ -43,6 +44,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
                     <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Dodaj row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
                     <Usun row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
+                    <td>{row.typ_drag}</td>
                
   
                   </tr>
@@ -204,34 +206,40 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
 
 
 
-  function handleDrop(row,pakowanie,setPakowanie){
-    let drop_indeks = row.indeks
-    let drag_indeks = sessionStorage.getItem("indeks_paczka_drag")
-    let drag_id= sessionStorage.getItem("id_paczka_drag")
+  function handleDrop(row, pakowanie, setPakowanie) {
+    let drop_indeks = row.indeks;
+    let drag_indeks = sessionStorage.getItem("indeks_drag");
+    let drag_id = sessionStorage.getItem("id_drag");
+    let typ_drag = sessionStorage.getItem("typ_drag");
+    if(typ_drag=="paczka"){
 
+          const pakowanieEdit = pakowanie.slice();
 
-     const pakowanieEdit = pakowanie.slice();
-
-     pakowanieEdit.map((p) => {
+    pakowanieEdit.map((p) => {
       if (p.indeks > drag_indeks) {
-        p.indeks--
+        p.indeks--;
       }
     });
 
     pakowanieEdit.map((p) => {
       if (p.indeks >= drop_indeks) {
-        p.indeks++
+        p.indeks++;
       }
     });
     pakowanieEdit.map((p) => {
       if (p.id == drag_id) {
-        p.indeks =drop_indeks
+        p.indeks = drop_indeks;
       }
     });
 
+    pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
+    setPakowanie(pakowanieEdit);
+    sessionStorage.setItem("indeks_drag", 0);
+    sessionStorage.setItem("id_drag", 0);
+    sessionStorage.setItem("typ_drag", 0);
+    }
 
-      pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
-      setPakowanie(pakowanieEdit);
+
   }
 
   function handleDragOver(e){
@@ -241,9 +249,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
   }
 
   function handleDragStart(row){
-
-    sessionStorage.setItem("indeks_paczka_drag", row.indeks);
-    sessionStorage.setItem("id_paczka_drag", row.id);
-    // console.log("drag_indeks "+indeks)
-
+    sessionStorage.setItem("indeks_drag", row.indeks);
+    sessionStorage.setItem("id_drag", row.id);
+    sessionStorage.setItem("typ_drag", "paczka");
   }

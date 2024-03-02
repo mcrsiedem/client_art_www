@@ -26,8 +26,11 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
             <tbody className={style.center}>
               {pakowanie.map((row) => {
                 return (
-                  <tr
+                  <tr draggable
                     key={row.id}
+                    onDragStart={()=>handleDragStart(row.indeks)} 
+                    onDragOver={(handleDragOver)}
+                    onDrop={()=>handleDrop(row.indeks)}
                   >
                     <ZamowienieId row={row}/>
                     <ProduktId row={row}/>
@@ -197,4 +200,30 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
   
       </td>
     );
+  }
+
+
+
+  function handleDrop(indeks){
+    let drop_indeks = indeks
+    let drag_indeks = sessionStorage.getItem("indeks_paczka_drag")
+  
+     console.log("drag_indeks "+drag_indeks)
+     console.log("drop_indeks "+drop_indeks)
+    // handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
+//  console.log(id_drag_element);
+//      console.log(id_drop_oprawa);
+  }
+
+  function handleDragOver(e){
+     e.preventDefault()
+
+
+  }
+
+  function handleDragStart(indeks){
+
+    sessionStorage.setItem("indeks_paczka_drag", indeks);
+    // console.log("drag_indeks "+indeks)
+
   }

@@ -37,13 +37,13 @@ function Header({
 
         <img
             onClick={() => {
-              // setIsTable(!isTable);
+       // wyłącza drag drop w tabelkach
               lockDragDrop(!isLockDragDrop);
             }}
             className={style.icon}
             src={iconTable}
           />
-          
+
           <img
             onClick={() => {
               // setIsTable(!isTable);

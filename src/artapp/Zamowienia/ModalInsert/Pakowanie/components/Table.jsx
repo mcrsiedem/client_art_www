@@ -3,7 +3,7 @@ import iconCopy from "../../../../../svg/copy.svg";
 import iconTrash from "../../../../../svg/trash2.svg"
 import { addNewPacking } from "../../../../Actions/Packing/addNewPacking";
 import { deletePacking } from "../../../../Actions/Packing/deletePacking";
-export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
+export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,isLockDragDrop}) {
     return <div className={style.main}>
         
           <table className={style.table2}>
@@ -27,7 +27,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}
             <tbody className={style.center}>
               {pakowanie.map((row) => {
                 return (
-                  <tr draggable
+                  <tr draggable={isLockDragDrop}
                     key={row.id}
                     onDragStart={()=>handleDragStart(row)} 
                     onDragOver={(handleDragOver)}

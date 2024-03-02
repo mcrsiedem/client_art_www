@@ -24,7 +24,8 @@ function Header({
   setOpenModalStany,
   setShowSaveAs,
   saveAs, setSaveAs,
-  isSaveButtonDisabled, setSaveButtonDisabled
+  isSaveButtonDisabled, setSaveButtonDisabled,
+  isLockDragDrop,lockDragDrop
 }) {
 
   
@@ -33,6 +34,16 @@ function Header({
       <div className={style.container}>
         <div className={style.title}>Zamówienie...</div>
         <div className={style.buttons}>
+
+        <img
+            onClick={() => {
+              // setIsTable(!isTable);
+              lockDragDrop(!isLockDragDrop);
+            }}
+            className={style.icon}
+            src={iconTable}
+          />
+          
           <img
             onClick={() => {
               // setIsTable(!isTable);

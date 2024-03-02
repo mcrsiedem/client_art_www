@@ -48,6 +48,7 @@ function ModalInsert({
   row
 }) {
 
+  const [isLockDragDrop, lockDragDrop] = useState(true);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
@@ -245,6 +246,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
   return (
     <div className={style.container}>
       <Header
+      isLockDragDrop={isLockDragDrop}
+      lockDragDrop={lockDragDrop}
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
         // postZamowienie={postZamowienie}
@@ -330,7 +333,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
               setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
-            <Pakowanie pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            <Pakowanie isLockDragDrop={isLockDragDrop} pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 

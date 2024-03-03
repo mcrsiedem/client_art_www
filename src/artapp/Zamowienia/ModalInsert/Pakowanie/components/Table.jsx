@@ -18,8 +18,8 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,
                 <th className={style.col10}>Sztuki w paczce</th>
                 <th className={style.col10}>Rodzaj pakowania</th>
                 <th className={style.col10}>Uwagi</th>
-                <th className={style.col10}>+</th>
-                <th className={style.col10}>-</th>
+                <th className={style.col10}></th>
+                <th className={style.col10}></th>
      
   
               </tr>
@@ -214,18 +214,20 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,
     if(typ_drag=="paczka"){
 
           const pakowanieEdit = pakowanie.slice();
-
+// kasowanie miejsca po przenoszonym przedmiocie
     pakowanieEdit.map((p) => {
       if (p.indeks > drag_indeks) {
         p.indeks--;
       }
     });
-
+// robienie miejsca na przenoszony przedmiot
     pakowanieEdit.map((p) => {
       if (p.indeks >= drop_indeks) {
         p.indeks++;
       }
     });
+
+    // nadanie przenoszonemu przedmiotowi odpowiedniego indexu, czyli dostaje index miejsca w które zostało coś wrzucone
     pakowanieEdit.map((p) => {
       if (p.id == drag_id) {
         p.indeks = drop_indeks;

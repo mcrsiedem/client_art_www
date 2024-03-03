@@ -65,7 +65,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
     return new Promise(async(resolve,reject)=>{
 
 
-      // saveAs domyślnie false, bo domyślnie nadpisujemy
+      // saveAs domyślnie false, bo domyślnie nadpisujemy.
       if(!saveAs){
               let final_0 = await axios.put(ip + "zamowienia_not_final", {
         zamowienie_id: daneZamowienia.id,

@@ -48,7 +48,7 @@ function ModalInsert({
   row
 }) {
 
-  const [isLockDragDrop, lockDragDrop] = useState(true);
+  const [isLockDragDrop, lockDragDrop] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);

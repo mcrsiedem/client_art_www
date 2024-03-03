@@ -273,11 +273,13 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       value={daneZamowienia.tytul}
       onChange={(event) => {
         
-        // const re = /^[']+$/;
-        // if (event.target.value === '' || re.test(event.target.value)) {
+
+        // const re2 = /^[0-9]+$/;
+        //  const re = /\w/;
+        // if ( re2.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)
-        // }
+    //  }
 
       }}></input>
     </div>
@@ -290,8 +292,15 @@ function Uwagi({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.tytul} type="text"
       value={daneZamowienia.uwagi}
       onChange={(event) => {
-        setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
-        setSaveButtonDisabled(false)
+
+        const re2 = /^[0-9]+$/;
+         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+        if ( event.target.value === '' || re.test(event.target.value)) {
+      
+          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
+          setSaveButtonDisabled(false)
+     }
+
       }}></input>
     </div>
   );
@@ -306,6 +315,7 @@ function Nr({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       onChange={(event) => {
 
         const re = /^[0-9]+$/;
+
         if (event.target.value === '' || re.test(event.target.value)) {
           setDaneZamowienia({...daneZamowienia, nr: event.target.value});
           setSaveButtonDisabled(false)

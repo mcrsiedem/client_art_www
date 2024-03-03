@@ -368,8 +368,13 @@ function Vat({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.data} type="text"
       value={daneZamowienia.vat}
       onChange={(event) => {
+
+        const re2 = /^[0-9]+$/;
+        const re = /^[0-9,]+$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, vat: event.target.value});
         setSaveButtonDisabled(false)
+       }
       }}></input>
     </div>
   );

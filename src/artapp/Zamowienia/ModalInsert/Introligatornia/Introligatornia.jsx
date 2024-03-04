@@ -89,7 +89,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
         {/* <th className={style.col2}>Prod.</th> */}
         <th className={style.col3}>#</th>
 
-        <th className={style.col4}>Kompletowanie do:</th>
+        <th className={style.col4}>Oprawa</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>

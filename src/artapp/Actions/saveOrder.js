@@ -258,7 +258,8 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
                            oprawa: oprawa.oprawa,
                            naklad: oprawa.naklad,
                            uwagi: oprawa.uwagi,
-                           data_spedycji: oprawa.data_spedycji
+                           data_spedycji: oprawa.data_spedycji,
+                           data_czystodrukow: oprawa.data_czystodrukow
           })
 
           .then((response) => {

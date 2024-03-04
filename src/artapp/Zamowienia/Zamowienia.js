@@ -51,6 +51,12 @@ function Zamowienia({ user, setUser }) {
     });
   }
 
+  async function refreshZamowienia() {
+    const res = await axios.get(ip + "zamowienia");
+    let jobs= [...res.data].filter(job => job.final == 1);
+    setData(jobs);
+  }
+
   useEffect(() => {
     document.getElementById("header").style.display = "grid";
     checkToken();
@@ -78,10 +84,10 @@ function Zamowienia({ user, setUser }) {
                          <button
                 className={style.myButton}
                 onClick={() => {
-                  dodaj_clikHandler();
+                  refreshZamowienia();
                 }}
               >
-                Dodaj
+                Odśwież
               </button>
       </footer>
 
@@ -101,6 +107,7 @@ function Zamowienia({ user, setUser }) {
           row={row}
           data={data}
           setData={setData}
+          refreshZamowienia={refreshZamowienia}
         />
       )}
 

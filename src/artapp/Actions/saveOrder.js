@@ -4,7 +4,7 @@ import { ip } from "../../Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia}){
             // console.clear();
 
     let produktyEdit = JSON.parse(JSON.stringify(produkty))
@@ -51,6 +51,9 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      setFragmenty(fragmentyEdit)
      setOprawa(oprawaEdit)
      setPakowanie(pakowanieEdit)
+
+     refreshZamowienia();
+     
             // console.log(savedBindings);
             // console.log("...from save order end");
 }

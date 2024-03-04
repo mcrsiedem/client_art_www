@@ -33,6 +33,7 @@ import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
 import { saveOrder } from "../../Actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
+import { today } from "../../Actions/today";
 
 function ModalInsert({
   openModalInsert,
@@ -45,7 +46,8 @@ function ModalInsert({
   setListaGramatur,
   open,
   setOpen,
-  row
+  row,
+  refreshZamowienia
 }) {
 
   const [isLockDragDrop, lockDragDrop] = useState(false);
@@ -73,9 +75,9 @@ function ModalInsert({
     klient_id: _klient[0].id,
     opiekun_id: _opiekun[0].id,
     tytul: "Tytuł zamówienia",
-    data_przyjecia: "2024-01-30",
-    data_materialow: "2024-01-30",
-    data_spedycji: "2024-01-30",
+    data_przyjecia: today(),
+    data_materialow: today(),
+    data_spedycji: today(),
     stan: _stan[0].id,
     status: _status[0].id,
     rodzaj: 1,
@@ -427,7 +429,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
     function postZamowienieObj(){
     // await zapis();
 
-    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs});
+    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia});
       //  f1(f2);
 
   }

@@ -243,14 +243,74 @@ const _wykonczenie = [
   }
 ]
 
+const _vat = [
+  {
+    id: 1,
+    stawka: 0
+  },
+  {
+    id: 2,
+    stawka: 5,
+  },
+  {
+    id: 3,
+    stawka: 8,
+  },
+  {
+    id: 4,
+    stawka: 23,
+  }
+]
+
+const _waluta = [
+  {
+    id: 1,
+    nazwa: "PLN"
+  },
+  {
+    id: 2,
+    nazwa: "EUR",
+  },
+  {
+    id: 3,
+    nazwa: "USD",
+  }
+]
+
+
+const _rodzaj = [
+  {
+    id: 1,
+    nazwa: "Szkic"
+
+  },
+  {
+    id: 2,
+    nazwa: "Wstępne",
+  },
+  {
+    id: 3,
+    nazwa: "Finalne",
+  }
+]
+
 const _status = [
   {
     id: 1,
-    nazwa: "Wstępne"
+    nazwa: "Edycja"
 
   },{
     id: 2,
     nazwa: "Do weryfikacji",
+  },{
+    id: 3,
+    nazwa: "Zweryfikowane",
+  },{
+    id: 4,
+    nazwa: "Do korekty",
+  },{
+    id: 5,
+    nazwa: "Do wyjaśnienia",
   }
 ]
 
@@ -262,7 +322,22 @@ const _stan = [
   },{
     id: 2,
     nazwa: "Nieaktywne",
+  },{
+    id: 3,
+    nazwa: "Anulowane",
+  },{
+    id: 4,
+    nazwa: "Wstrzymane",
+  },{
+    id: 5,
+    nazwa: "Oddane",
+  },{
+    id: 6,
+    nazwa: "Zwrócone",
   }
+
+
+
 ]
 
 const _typ_produktu = [
@@ -333,4 +408,4 @@ const _typ_elementu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu};
+export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu,_rodzaj,_vat,_waluta};

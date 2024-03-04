@@ -78,10 +78,12 @@ function ModalInsert({
     data_spedycji: "2024-01-30",
     stan: _stan[0].id,
     status: _status[0].id,
+    rodzaj: 1,
     uwagi: "",
-    cena:"za wysoka",
-    termin_platnosci: " 30",
-    vat: " 23",
+    cena:"",
+    waluta_id: 1,
+    termin_platnosci: 30,
+    vat_id: 4,
     przedplata: "tak"
 
   });

@@ -89,7 +89,12 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         user: DecodeToken(cookies.token).id,
         stan: daneZamowienia.stan,
         status: daneZamowienia.status,
+        rodzaj: daneZamowienia.rodzaj,  // szkic, wstępne, finalne
+        cena: daneZamowienia.cena,
+        waluta_id: daneZamowienia.waluta_id,
+        vat_id: daneZamowienia.vat_id,
         uwagi: daneZamowienia.uwagi,
+        przedplata: daneZamowienia.przedplata,
         final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       

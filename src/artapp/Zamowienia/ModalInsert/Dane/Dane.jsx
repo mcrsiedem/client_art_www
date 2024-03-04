@@ -1,5 +1,5 @@
 import style from "./Dane.module.css";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan } from "../api";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj } from "../api";
 import { isNumberWalidation } from "../../../Actions/Walidacja";
 
 export default function Dane({
@@ -58,7 +58,19 @@ export default function Dane({
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-  <Cena
+          <Cena
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+
+<Waluta
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+
+                 <Vat
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
@@ -68,11 +80,7 @@ export default function Dane({
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-            <Vat
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
+     
             <Przedplata
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
@@ -86,12 +94,19 @@ export default function Dane({
           />
         </div>
         <div className={style.row3}>
-          <Status
+                  <Rodzaj
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Uwagi
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+  
+
+                 <Status
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
@@ -243,6 +258,30 @@ function Status({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
+function Rodzaj({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Rodzaj </label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.rodzaj}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, rodzaj: event.target.value});
+          setSaveButtonDisabled(false)
+        }}
+      >
+        {_rodzaj.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+
 function Stan({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
@@ -273,13 +312,12 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       value={daneZamowienia.tytul}
       onChange={(event) => {
         
-
-        // const re2 = /^[0-9]+$/;
-        //  const re = /\w/;
-        // if ( re2.test(event.target.value)) {
+        const re2 = /^[0-9]+$/;
+         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+        if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)
-    //  }
+     }
 
       }}></input>
     </div>
@@ -334,8 +372,13 @@ function Cena({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.data} type="text"
       value={daneZamowienia.cena}
       onChange={(event) => {
+
+        const re = /^[0-9,]+$/;
+        // const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, cena: event.target.value});
         setSaveButtonDisabled(false)
+       }
         
       }}></input>
     </div>
@@ -350,10 +393,14 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
       value={daneZamowienia.termin_platnosci}
       onChange={(event) => {
 
+
+        const re2 = /^[0-9]+$/;
+        const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+       if ( event.target.value === '' || re2.test(event.target.value)) {
           setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value});
           setSaveButtonDisabled(false)
  
-        
+       }
 
       }}
       ></input>
@@ -361,24 +408,59 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
   );
 }
 
-function Vat({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Stawka VAT %</label>
-      <input className={style.data} type="text"
-      value={daneZamowienia.vat}
-      onChange={(event) => {
-
-        const re2 = /^[0-9]+$/;
-        const re = /^[0-9,]+$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, vat: event.target.value});
-        setSaveButtonDisabled(false)
-       }
-      }}></input>
+function Vat({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Stawka VAT % </label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.vat_id}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, vat_id: event.target.value});
+          setSaveButtonDisabled(false)
+        }}
+      >
+        {_vat.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.stawka}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
+
+function Waluta({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Waluta</label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.waluta_id}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, waluta_id: event.target.value});
+          setSaveButtonDisabled(false)
+        }}
+      >
+        {_waluta.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
 
 function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(

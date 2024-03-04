@@ -89,11 +89,12 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
         {/* <th className={style.col2}>Prod.</th> */}
         <th className={style.col3}>#</th>
 
-        <th className={style.col4}>Oprawa</th>
+        <th className={style.col4}>Kompletowanie do:</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>
 
+        <th className={style.col6}>Czystodruki</th>
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
        
@@ -150,12 +151,15 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
 
+<DataCzystodrukow
+  row={row}
+  handleChangeCardOprawa={handleChangeCardOprawa}
+/>
               <DataSpedycji
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
 
-              {/* <td>{row.data_spedycji}</td> */}
 
               <UwagiOprawa
                 row={row}
@@ -194,6 +198,7 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
                       <td></td>
                       <td></td>
                       <td></td>
+                      <td></td>
                       
                  
                     </tr>
@@ -213,24 +218,35 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
 }
 
 function Header() {
-  return <div className={style.header}> Oprawa</div>;
+  return <div className={style.header}> Introligatornia</div>;
 }
 
 function DataSpedycji({row,handleChangeCardOprawa}){
   return(
-      <div className={style.col}>
+      <td  className={style.col}>
       <input className={style.data} type="date"
       defaultValue={row.data_spedycji}
       onChange={(event) => {
         handleChangeCardOprawa({...row, data_spedycji: event.target.value});
       }}></input>
-    </div>
+    </td>
+  );
+}
+function DataCzystodrukow({row,handleChangeCardOprawa}){
+  return(
+      <td className={style.col}>
+      <input className={style.data} type="date"
+      defaultValue={row.data_czystodrukow}
+      onChange={(event) => {
+        handleChangeCardOprawa({...row, data_czystodrukow: event.target.value});
+      }}></input>
+    </td>
   );
 }
 
 function RodzajOprawy({ row,handleChangeCardOprawa }) {
   return (
-    <div className={style.select}>
+    <td className={style.select}>
 
       <select
         className={style.firma}
@@ -245,7 +261,7 @@ function RodzajOprawy({ row,handleChangeCardOprawa }) {
           </option>
         ))}
       </select>
-    </div>
+    </td>
   );
 }
 

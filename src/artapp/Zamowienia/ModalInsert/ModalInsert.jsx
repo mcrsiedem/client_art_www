@@ -119,6 +119,7 @@ function ModalInsert({
       naklad: "500",
       uwagi: "",
       data_spedycji: "2024-01-30",
+      data_czystodrukow: "2024-01-30",
       indeks: 0,
     }
     

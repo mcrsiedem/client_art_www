@@ -187,7 +187,7 @@ export default function RowElement({
           handleChangeCardElementy={handleChangeCardElementy}
         />
 
-        <td className={style.procesy} id="procesy">
+        <td className={style.col_button} id="procesy">
           <img
             className={style.expand}
             src={Logo_ustawienia}

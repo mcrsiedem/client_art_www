@@ -58,6 +58,12 @@ export default function Dane({
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
+                      <Przedplata
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+
           <Cena
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
@@ -81,11 +87,6 @@ export default function Dane({
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
      
-            <Przedplata
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
 
           <Opiekun
             daneZamowienia={daneZamowienia}
@@ -313,7 +314,7 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       onChange={(event) => {
         
         const re2 = /^[0-9]+$/;
-         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)
@@ -469,8 +470,13 @@ function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       <input className={style.data} type="text"
       value={daneZamowienia.przedplata}
       onChange={(event) => {
+
+        // const re = /^[0-9,]+$/;
+        const re = /^[a-zA-Z0-9_%]+$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
         setSaveButtonDisabled(false)
+       }
       }}></input>
     </div>
   );

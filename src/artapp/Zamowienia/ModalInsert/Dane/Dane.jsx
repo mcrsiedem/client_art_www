@@ -87,19 +87,21 @@ export default function Dane({
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
      
-
-          <Opiekun
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-        </div>
-        <div className={style.row3}>
                   <Rodzaj
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
+
+        </div>
+        <div className={style.row3}>
+        <Opiekun
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+
+          
           <Uwagi
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}

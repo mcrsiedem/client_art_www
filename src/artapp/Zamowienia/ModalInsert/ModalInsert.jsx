@@ -120,8 +120,8 @@ function ModalInsert({
       bok_oprawy: "297",
       naklad: "500",
       uwagi: "",
-      data_spedycji: "2024-01-30",
-      data_czystodrukow: "2024-01-30",
+      data_spedycji: today(),
+      data_czystodrukow: today(),
       indeks: 0,
     }
     

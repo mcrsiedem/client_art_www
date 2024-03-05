@@ -86,7 +86,7 @@ function ModalInsert({
     waluta_id: 1,
     termin_platnosci: 30,
     vat_id: 4,
-    przedplata: "tak"
+    przedplata: " "
 
   });
 

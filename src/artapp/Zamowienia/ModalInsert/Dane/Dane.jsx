@@ -323,6 +323,29 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
     </div>
   );
 }
+
+
+function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Przedpłata </label>
+      <input className={style.data} type="text"
+      value={daneZamowienia.przedplata}
+      onChange={(event) => {
+
+        // const re = /^[0-9,]+$/;
+        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ%]+$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+        setSaveButtonDisabled(false)
+       }
+      }}></input>
+    </div>
+  );
+}
+
+
+
 function Uwagi({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   return(
       <div className={style.col}>
@@ -455,31 +478,6 @@ function Waluta({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
 
 
 
-
-
-
-
-
-
-
-function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Przedpłata </label>
-      <input className={style.data} type="text"
-      value={daneZamowienia.przedplata}
-      onChange={(event) => {
-
-        // const re = /^[0-9,]+$/;
-        const re = /^[a-zA-Z0-9_%ł\s]+$/;
-       if ( event.target.value !== '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
-        setSaveButtonDisabled(false)
-       }
-      }}></input>
-    </div>
-  );
-}
 
 
 function Rok({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){

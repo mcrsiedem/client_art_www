@@ -330,6 +330,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
               setOprawa={setOprawa}
               fragmenty={fragmenty}
               setFragmenty={setFragmenty}
+              handleChangeCardProdukty={handleChangeCardProdukty} 
+              produkty={produkty} setProdukty={setProdukty}
               handleChangeCardOprawa={handleChangeCardOprawa}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
               handleChangeCardFragmentyOprawaId={

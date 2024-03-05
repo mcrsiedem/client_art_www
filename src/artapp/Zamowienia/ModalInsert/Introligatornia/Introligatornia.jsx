@@ -17,9 +17,11 @@ export default function IntroligatorniaTable({
   setOprawa,
   fragmenty,
   setFragmenty,
+  handleChangeCardProdukty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
-  handleChangeCardFragmentyOprawaId
+  handleChangeCardFragmentyOprawaId,
+  produkty,setProdukty
 }) {
 
   const[oprawa_row,setOprawa_row]=useState();
@@ -56,7 +58,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
+      <OprawaTable produkty={produkty} setProdukty={setProdukty} handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
@@ -77,7 +79,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -135,6 +137,8 @@ function OprawaTable({handleDragStart,handleChangeCardFragmentyOprawaId,handleDr
               <RodzajOprawy
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
+                handleChangeCardProdukty={handleChangeCardProdukty} 
+                produkty={produkty} setProdukty={setProdukty}
               />
 
 
@@ -244,7 +248,7 @@ function DataCzystodrukow({row,handleChangeCardOprawa}){
   );
 }
 
-function RodzajOprawy({ row,handleChangeCardOprawa }) {
+function RodzajOprawy({ row,handleChangeCardOprawa,produkty,setProdukty }) {
   return (
     <td className={style.select}>
 
@@ -253,6 +257,21 @@ function RodzajOprawy({ row,handleChangeCardOprawa }) {
         defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
+
+
+          if(row.indeks == 0){
+          setProdukty(
+            produkty.map((p) => {
+              if (p.id === row.produkt_id) {
+                return {...p, oprawa:event.target.value};
+              } else {
+                return p;
+              }
+            })
+          );
+           
+          }
+
         }}
       >
         {_rodzaj_oprawy.map((option) => (

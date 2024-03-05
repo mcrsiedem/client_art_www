@@ -98,6 +98,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         vat_id: daneZamowienia.vat_id,
         uwagi: daneZamowienia.uwagi,
         przedplata: daneZamowienia.przedplata,
+        termin_platnosci: daneZamowienia.termin_platnosci,
         final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       
@@ -262,7 +263,8 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
                            naklad: oprawa.naklad,
                            uwagi: oprawa.uwagi,
                            data_spedycji: oprawa.data_spedycji,
-                           data_czystodrukow: oprawa.data_czystodrukow
+                           data_czystodrukow: oprawa.data_czystodrukow,
+                           indeks: oprawa.indeks,
           })
 
           .then((response) => {

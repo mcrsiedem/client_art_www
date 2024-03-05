@@ -23,7 +23,6 @@ export default function Dane({
               setDaneZamowienia={setDaneZamowienia}
               setSaveButtonDisabled={setSaveButtonDisabled}
             />
-            
           </div>
 
           <DataPrzyjecia
@@ -58,11 +57,7 @@ export default function Dane({
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-                      <Przedplata
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
+   
 
           <Cena
             daneZamowienia={daneZamowienia}
@@ -70,56 +65,58 @@ export default function Dane({
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
-<Waluta
+          <Waluta
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
-                 <Vat
+          <Vat
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-            <TerminPlatnosci
+          <TerminPlatnosci
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-     
-                  <Rodzaj
+                 <Przedplata
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
+          <Rodzaj
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
         </div>
         <div className={style.row3}>
-        <Opiekun
+          <Opiekun
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
-          
           <Uwagi
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
-  
-
-                 <Status
+     <Stan
+            daneZamowienia={daneZamowienia}
+            setDaneZamowienia={setDaneZamowienia}
+            setSaveButtonDisabled={setSaveButtonDisabled}
+          />
+          <Status
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
-          <Stan
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
+     
         </div>
       </div>
     </>
@@ -393,7 +390,7 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
       <div className={style.col}>
       <label className={style.label}> Płatność (dni) </label>
       <input className={style.data} type="text"
-      value={daneZamowienia.termin_platnosci}
+      value={daneZamowienia.termin_platnosci} 
       onChange={(event) => {
 
 
@@ -414,7 +411,7 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
 function Vat({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   return (
     <div className={style.col}>
-      <label className={style.label}> Stawka VAT % </label>
+      <label className={style.label}> VAT</label>
       <select
         className={style.firma}
         value={daneZamowienia.vat_id}
@@ -425,7 +422,7 @@ function Vat({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
       >
         {_vat.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.stawka}
+          {option.stawka}%
           </option>
         ))}
       </select>
@@ -474,8 +471,8 @@ function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
       onChange={(event) => {
 
         // const re = /^[0-9,]+$/;
-        const re = /^[a-zA-Z0-9_%]+$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
+        const re = /^[a-zA-Z0-9_%ł\s]+$/;
+       if ( event.target.value !== '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
         setSaveButtonDisabled(false)
        }

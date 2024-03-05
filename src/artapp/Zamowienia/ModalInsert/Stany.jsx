@@ -250,7 +250,7 @@ function StanOprawa({ oprawa }) {
             <th>Wersja</th>
             <th>Data spedycji</th>
             <th>Data spedycji</th>
-            <th>idki</th>
+            <th>Indeks</th>
           </tr>
         </thead>
 
@@ -274,7 +274,7 @@ function StanOprawa({ oprawa }) {
                 <td>{row.wersja}</td>
                 <td>{row.data_spedycji}</td>
                 <td>{row.indeks}</td>
-                <td>{row.id_fragmentow}</td>
+                <td>{row.indeks}</td>
               </tr>
             );
           })}

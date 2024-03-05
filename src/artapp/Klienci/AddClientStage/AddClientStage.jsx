@@ -27,7 +27,7 @@ export default function AddClientStage({
           <Zamknij showAddClientStage={showAddClientStage} />
         </Stage>
 
-        
+
       </div>
     </div>
   );
@@ -42,7 +42,12 @@ function Header() {
 }
 
 function Stage({ children }) {
-  return <div className={style.stage}>{children}</div>;
+  return (
+  <div className={style.stage}>
+    {children}
+  </div>
+  )
+  
 }
 
 function Zamknij({ showAddClientStage }) {

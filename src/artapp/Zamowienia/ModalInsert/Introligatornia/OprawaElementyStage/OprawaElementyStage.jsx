@@ -91,6 +91,7 @@ export default function OprawaElementyStage({
         zamowienie_id: t.zamowienie_id,
         produkt_id: t.produkt_id,
         element_id: t.element_id,
+        wersja:t.wersja,
         oprawa_id: id_nowej_oprawy,
         naklad: wydziel,
         typ: t.typ,

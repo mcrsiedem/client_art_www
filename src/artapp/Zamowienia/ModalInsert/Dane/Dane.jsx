@@ -1,6 +1,7 @@
 import style from "./Dane.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj } from "../api";
 import { isNumberWalidation } from "../../../Actions/Walidacja";
+import iconTable from "../../../../svg/settings.svg";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -25,6 +26,8 @@ export default function Dane({
             />
           </div>
 
+
+ 
           <DataPrzyjecia
             daneZamowienia={daneZamowienia}
             setDaneZamowienia={setDaneZamowienia}
@@ -166,6 +169,15 @@ function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
           </option>
         ))}
       </select>
+      <img
+         className={style.dodaj_klienta}
+          src={iconTable}
+          onClick={() => {
+            // setShowOprawaElementyStage(true);
+            // setOprawa_row(row);
+          }}
+          alt="Procesy"
+        />
     </div>
   );
 }

@@ -7,7 +7,8 @@ export default function Dane({
   selected_firma,setSelected_firma,
   klient,setKlient,
   setSaveButtonDisabled,
-  daneZamowienia,setDaneZamowienia
+  daneZamowienia,setDaneZamowienia,
+  showAddClientStage
 }) {
   return (
     <>
@@ -23,6 +24,7 @@ export default function Dane({
               daneZamowienia={daneZamowienia}
               setDaneZamowienia={setDaneZamowienia}
               setSaveButtonDisabled={setSaveButtonDisabled}
+              showAddClientStage={showAddClientStage}
             />
           </div>
 
@@ -151,7 +153,7 @@ function Firma({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled,showAddClientStage }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -173,6 +175,7 @@ function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
          className={style.dodaj_klienta}
           src={iconTable}
           onClick={() => {
+            showAddClientStage(true)
             // setShowOprawaElementyStage(true);
             // setOprawa_row(row);
           }}

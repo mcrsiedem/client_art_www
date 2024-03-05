@@ -34,6 +34,7 @@ import Stany from "./Stany";
 import { saveOrder } from "../../Actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../Actions/today";
+import AddClientStage from "../../Klienci/AddClientStage/AddClientStage";
 
 function ModalInsert({
   openModalInsert,
@@ -51,6 +52,7 @@ function ModalInsert({
 }) {
 
   const [isLockDragDrop, lockDragDrop] = useState(false);
+  const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
@@ -280,6 +282,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
         setSaveButtonDisabled={setSaveButtonDisabled}
+        showAddClientStage={showAddClientStage}
       />
 
       <div className={style.main}>
@@ -411,7 +414,24 @@ const [openModalStany, setOpenModalStany] = useState(false);
           
         />
       )}
+
+{isShowAddClientStage && (
+        <AddClientStage
+        isShowAddClientStage={isShowAddClientStage}
+        showAddClientStage={showAddClientStage}
+
+        
+          
+        />
+      )}
+
+
+
     </div>
+
+    
+
+
   );
   //----------------------------------
   function sprawdzPoprawnoscZamowienia() {

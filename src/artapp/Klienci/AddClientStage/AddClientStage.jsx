@@ -36,7 +36,7 @@ export default function AddClientStage({
 function Header() {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj klienta... </p>
+      <p className={style.title}>Lista klientów </p>
     </div>
   );
 }

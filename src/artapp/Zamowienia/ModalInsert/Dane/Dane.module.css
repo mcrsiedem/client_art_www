@@ -75,12 +75,12 @@ padding-left: 10px;
 }
 
 .klient{
-  padding-left: 40px;
+  padding-left: 35px;
 }
 
 .dodaj_klienta {
   position: absolute;
-  top: 22px; left: 10px;
-  height: 20px;
+  top: 23px; left: 10px;
+  height: 18px;
 
 }

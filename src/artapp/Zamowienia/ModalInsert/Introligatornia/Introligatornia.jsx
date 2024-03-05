@@ -382,7 +382,9 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     oprawa: 0,
     naklad:0,
     uwagi: "oprawa temp",
-    data_spedycji: "2024-01-30 00:00:00"
+    data_spedycji: "2024-01-30 00:00:00",
+    data_czystodrukow: "2024-01-30 00:00:00",
+      indeks: 0,
 }).then((res) => {
 
 
@@ -398,6 +400,8 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     indeks: Math.max(...newOprawa.map((f) => f.indeks)) + 1,
     uwagi: card.uwagi,
     data_spedycji: card.data_spedycji,
+    data_czystodrukow: card.data_czystodrukow,
+      indeks: card.indeks + 1,
   
   });
 

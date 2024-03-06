@@ -23,6 +23,7 @@ export default function ClientStage({
     
   }, []);
 
+  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState(klienci);
 
   return (
     <div className={style.grayScaleBackground}>
@@ -65,7 +66,7 @@ function Szukaj({klienci,setKlienci}){
       // value={daneZamowienia.cena}
       onChange={(event) => {
 
-        const kl = [...klienciEdit].filter((k)=>   k.firma.includes(event.target.value) )
+        const kl = [...klienci].filter((k)=>   k.firma.includes(event.target.value) )
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
         setKlienci(kl  );
         // find(event.target.value)

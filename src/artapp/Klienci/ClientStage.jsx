@@ -3,6 +3,7 @@ import axios from "axios";
 import { ip } from "../../Host";
 import style from "./ClientStage.module.css";
 import TableClient from "./components/TableClient"
+import iconTable from "../../svg/add.png";
 export default function ClientStage({
   isShowAddClientStage,
   showAddClientStage,
@@ -36,6 +37,7 @@ export default function ClientStage({
         <Stage  klienci={klienci} setKlienci={setKlienci}>
             <Finder  klienci={klienci} setKlienci={setKlienci}>
                     <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
+                    <Dodaj/>
             </Finder>
           <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
           <Zamknij showAddClientStage={showAddClientStage} />
@@ -46,6 +48,23 @@ export default function ClientStage({
     </div>
   );
 }
+
+function Dodaj() {
+  return (
+    <img
+    className={style.dodaj_klienta}
+     src={iconTable}
+     onClick={() => {
+      //  showAddClientStage(true)
+       // setShowOprawaElementyStage(true);
+       // setOprawa_row(row);
+     }}
+     alt="Procesy"
+    />
+  );
+}
+
+
 
 function Header() {
   return (
@@ -64,8 +83,9 @@ function Szukaj({klienci,setKlienci,klienciWyszukiwarka,setKlienciWyszukiwarka})
   return(
 
    
-      <input className={style.data} type="text"
+      <input className={style.szukaj} type="text"
       // value={daneZamowienia.cena}
+      placeholder="Szukaj..."
       onChange={(event) => {
 
         const m = [...klienci]

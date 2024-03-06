@@ -33,13 +33,15 @@ export default function ClientStage({
       <div className={style.window}>
 
         <Header />
-  <Finder  klienci={klienci} setKlienci={setKlienci}>
+        <Finder  klienci={klienci} setKlienci={setKlienci}>
                     <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
                     <Dodaj/>
-            </Finder>
-          <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
-
-          <Zamknij showAddClientStage={showAddClientStage} />
+        </Finder>
+        <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
+<Footer>
+  <Zamknij showAddClientStage={showAddClientStage} />
+</Footer>
+          
 
 
       </div>
@@ -73,9 +75,6 @@ function Header() {
   );
 }
 
-const find =(txt,klienci,setKlienci) =>{
-  
-}
 
 function Szukaj({klienci,setKlienci,klienciWyszukiwarka,setKlienciWyszukiwarka}){
    const klienciEdit = JSON.parse(JSON.stringify(klienci))
@@ -107,8 +106,15 @@ function Finder({ children,klienci,setKlienci }) {
     {children}
   </div>
   )
-  
 }
+function Footer({ children}) {
+  return (
+  <div className={style.footer}>
+    {children}
+  </div>
+  )
+}
+
 function Stage({ children,klienci,setKlienci }) {
   return (
   <div className={style.stage}>

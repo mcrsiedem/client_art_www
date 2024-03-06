@@ -207,12 +207,12 @@ function ModalInsert({
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
-// const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
+ const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
 
 async function getClients() {
   const res = await axios.get(ip + "lista-klientow");
   setKlienci([...res.data]);
-  // setKlienciWyszukiwarka([...res.data]);
+   setKlienciWyszukiwarka([...res.data]);
 
 }
 
@@ -430,6 +430,9 @@ async function getClients() {
         <ClientStage
         klienci={klienci}
         setKlienci={setKlienci}
+        klienciWyszukiwarka={klienciWyszukiwarka}
+         setKlienciWyszukiwarka={setKlienciWyszukiwarka}
+
         getClients={getClients}
         setListaWykonczenia={setKlienci}
         isShowAddClientStage={isShowAddClientStage}

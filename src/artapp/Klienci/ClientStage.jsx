@@ -8,7 +8,8 @@ export default function ClientStage({
   showAddClientStage,
   daneZamowienia,
   setDaneZamowienia,
-  klienci, setKlienci
+  klienci, setKlienci,
+  klienciWyszukiwarka, setKlienciWyszukiwarka
 }) {
   //   useEffect(() => {}, []);
 
@@ -23,7 +24,7 @@ export default function ClientStage({
     
   }, []);
 
-  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState(klienci);
+  // const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState(klienci);
 
 
   return (

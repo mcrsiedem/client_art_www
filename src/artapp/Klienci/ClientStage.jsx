@@ -25,6 +25,7 @@ export default function ClientStage({
 
   const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState(klienci);
 
+
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
@@ -33,9 +34,9 @@ export default function ClientStage({
 
         <Stage  klienci={klienci} setKlienci={setKlienci}>
             <Finder  klienci={klienci} setKlienci={setKlienci}>
-                    <Szukaj klienci={klienci} setKlienci={setKlienci} />
+                    <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
             </Finder>
-          <TableClient klienci={klienci}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
+          <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
           <Zamknij showAddClientStage={showAddClientStage} />
         </Stage>
 
@@ -57,7 +58,7 @@ const find =(txt,klienci,setKlienci) =>{
   
 }
 
-function Szukaj({klienci,setKlienci}){
+function Szukaj({klienci,setKlienci,klienciWyszukiwarka,setKlienciWyszukiwarka}){
    const klienciEdit = JSON.parse(JSON.stringify(klienci))
   return(
 
@@ -66,9 +67,11 @@ function Szukaj({klienci,setKlienci}){
       // value={daneZamowienia.cena}
       onChange={(event) => {
 
-        const kl = [...klienci].filter((k)=>   k.firma.includes(event.target.value) )
+        const m = [...klienci]
+
+ 
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
-        setKlienci(kl  );
+        setKlienciWyszukiwarka(m.filter((k)=>   k.firma.includes(event.target.value) )  );
         // find(event.target.value)
         
 

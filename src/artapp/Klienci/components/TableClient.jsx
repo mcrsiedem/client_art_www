@@ -2,7 +2,7 @@ import style from "./TableClient.module.css";
 import iconCopy from "../../../svg/copy.svg";
 import iconTrash from "../../../svg/trash2.svg"
 
-export default function Table({klienci,  daneZamowienia,  setDaneZamowienia}) {
+export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia}) {
     return <div className={style.main}>
         
           <table className={style.table2}>
@@ -20,7 +20,7 @@ export default function Table({klienci,  daneZamowienia,  setDaneZamowienia}) {
               </tr>
             </thead>
             <tbody className={style.center}>
-              {klienci.map((row) => {
+              {klienciWyszukiwarka.map((row) => {
                 return (
                   <tr 
                     key={row.id}

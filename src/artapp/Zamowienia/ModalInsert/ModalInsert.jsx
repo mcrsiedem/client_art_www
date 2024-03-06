@@ -34,7 +34,7 @@ import Stany from "./Stany";
 import { saveOrder } from "../../Actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../Actions/today";
-import AddClientStage from "../../Klienci/AddClientStage/AddClientStage";
+import ClientStage from "../../Klienci/ClientStage";
 
 function ModalInsert({
   openModalInsert,
@@ -206,7 +206,13 @@ function ModalInsert({
   const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
+const [klienci, setKlienci] = useState([]);
 
+async function getClients() {
+  const res = await axios.get(ip + "lista-klientow");
+  setKlienci([...res.data]);
+
+}
 
   // do zapisu
   // let produktyEdit = produkty.slice();
@@ -221,6 +227,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
 
     const res5 = await axios.get(ip + "lista-procesow");
     setListaDostepnychProcesow([...res5.data]);
+    getClients()
+
   }
 
 
@@ -279,6 +287,7 @@ const [openModalStany, setOpenModalStany] = useState(false);
       />
 
       <Dane
+      klienci={klienci}
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
         setSaveButtonDisabled={setSaveButtonDisabled}
@@ -416,9 +425,14 @@ const [openModalStany, setOpenModalStany] = useState(false);
       )}
 
 {isShowAddClientStage && (
-        <AddClientStage
+        <ClientStage
+        klienci={klienci}
+        getClients={getClients}
+        setListaWykonczenia={setKlienci}
         isShowAddClientStage={isShowAddClientStage}
         showAddClientStage={showAddClientStage}
+        daneZamowienia={daneZamowienia}
+        setDaneZamowienia={setDaneZamowienia}
 
         
           

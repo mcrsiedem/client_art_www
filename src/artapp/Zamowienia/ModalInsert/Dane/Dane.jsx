@@ -6,7 +6,7 @@ import iconTable from "../../../../svg/add.png";
 
 export default function Dane({
   selected_firma,setSelected_firma,
-  klient,setKlient,
+  klienci,klient,setKlient,
   setSaveButtonDisabled,
   daneZamowienia,setDaneZamowienia,
   showAddClientStage
@@ -22,6 +22,7 @@ export default function Dane({
           />
           <div className={style.klientContainer}>
             <Klient
+            klienci={klienci}
               daneZamowienia={daneZamowienia}
               setDaneZamowienia={setDaneZamowienia}
               setSaveButtonDisabled={setSaveButtonDisabled}
@@ -154,7 +155,7 @@ function Firma({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled,showAddClientStage }) {
+function Klient({ klienci,daneZamowienia,setDaneZamowienia,setSaveButtonDisabled,showAddClientStage }) {
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -166,7 +167,7 @@ function Klient({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled,showAdd
           setSaveButtonDisabled(false);
         }}
       >
-        {_klient.map((option) => (
+        {klienci.map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}
           </option>

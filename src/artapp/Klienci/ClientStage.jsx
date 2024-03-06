@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ip } from "../../../Host";
-import style from "./AddClientStage.module.css";
-export default function AddClientStage({
+import { ip } from "../../Host";
+import style from "./ClientStage.module.css";
+import TableClient from "./components/TableClient"
+export default function ClientStage({
   isShowAddClientStage,
   showAddClientStage,
+  daneZamowienia,
+  setDaneZamowienia,
+  klienci, setKlienci
 }) {
   //   useEffect(() => {}, []);
-  const [klienci, setKlienci] = useState([]);
+
+
+  // async function getClients() {
+  //   const res = await axios.get(ip + "lista-klientow");
+  //   setKlienci([...res.data]);
+  // }
 
   useEffect(() => {
-    // getClients();
+    //  getClients();
   }, []);
 
-  async function getClients() {
-    const res = await axios.get(ip + "lista-klientow");
-    setKlienci([...res.data]);
-  }
 
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
+
         <Header />
 
         <Stage>
+          <TableClient klienci={klienci}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
           <Zamknij showAddClientStage={showAddClientStage} />
         </Stage>
 

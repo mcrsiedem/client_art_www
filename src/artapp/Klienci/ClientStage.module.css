@@ -48,8 +48,9 @@ min-width: 250px;
 }
   
   .header{
-   height: 100%;
-    display: grid;
+    
+   width: 100%;
+
     padding-left: 10px;
     padding-right: 10px;
     /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
@@ -70,19 +71,16 @@ min-width: 250px;
     padding-left: 7px;
   }
   
-  .row{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    color: #fff;
-    font-size: 1.2rem;
-    /* font-weight: bold; */
-   
-    padding-right: 30px;
-    
-  padding-bottom: 10px;
-    gap:20px;
+ 
 
+
+  .window{
+
+      display: grid;
+      grid-template-rows: 2rem 40px 1fr   40px ;
+      gap: 10px;
+    
+    
   }
   
   .btn{
@@ -99,28 +97,9 @@ min-width: 250px;
 
   
 
-    .col {
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 10px;
-  
-    }
 
-    .tytul{
-      width: 95%;
-    }
 
-    .label{
-      margin-left: 20px;
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: whitesmoke;
-      text-align: left;
-    }
     .dodaj_klienta {
 
       height: 25px;
@@ -138,5 +117,6 @@ min-width: 250px;
 
     .szukaj{
       width: 300px;
+      height: 35px;
       padding-left: 10px;
     }

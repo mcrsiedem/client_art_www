@@ -33,15 +33,13 @@ export default function ClientStage({
       <div className={style.window}>
 
         <Header />
-
-        <Stage  klienci={klienci} setKlienci={setKlienci}>
-            <Finder  klienci={klienci} setKlienci={setKlienci}>
+  <Finder  klienci={klienci} setKlienci={setKlienci}>
                     <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
                     <Dodaj/>
             </Finder>
           <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
+
           <Zamknij showAddClientStage={showAddClientStage} />
-        </Stage>
 
 
       </div>
@@ -70,6 +68,7 @@ function Header() {
   return (
     <div className={style.header}>
       <p className={style.title}>Lista klientów </p>
+      <p className={style.title}>X </p>
     </div>
   );
 }

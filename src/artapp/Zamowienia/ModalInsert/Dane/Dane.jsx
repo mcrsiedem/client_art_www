@@ -178,8 +178,6 @@ function Klient({ klienci,daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
           src={iconTable}
           onClick={() => {
             showAddClientStage(true)
-            // setShowOprawaElementyStage(true);
-            // setOprawa_row(row);
           }}
           alt="Procesy"
         />

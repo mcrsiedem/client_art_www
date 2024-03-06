@@ -34,8 +34,8 @@ export default function ClientStage({
 
         <Header />
         <Finder  klienci={klienci} setKlienci={setKlienci}>
-                    <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
                     <Dodaj/>
+                    <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
         </Finder>
         <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
 <Footer>
@@ -70,7 +70,7 @@ function Header() {
   return (
     <div className={style.header}>
       <p className={style.title}>Lista klientów </p>
-      <p className={style.title}>X </p>
+      
     </div>
   );
 }

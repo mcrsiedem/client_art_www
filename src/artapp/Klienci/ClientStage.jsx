@@ -70,11 +70,11 @@ function Szukaj({klienci,setKlienci,klienciWyszukiwarka,setKlienciWyszukiwarka})
 
         const m = [...klienci]
 
- 
+
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
-        setKlienciWyszukiwarka(m.filter((k)=>   k.firma.includes(event.target.value) )  );
-        // find(event.target.value)
-        
+        setKlienciWyszukiwarka(m.filter((k)=>   k.firma
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase()) )  );
 
         
       }}></input>

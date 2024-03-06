@@ -17,9 +17,10 @@ export default function ClientStage({
   //   const res = await axios.get(ip + "lista-klientow");
   //   setKlienci([...res.data]);
   // }
-
+  
   useEffect(() => {
     //  getClients();
+    
   }, []);
 
 
@@ -29,7 +30,10 @@ export default function ClientStage({
 
         <Header />
 
-        <Stage>
+        <Stage  klienci={klienci} setKlienci={setKlienci}>
+            <Finder  klienci={klienci} setKlienci={setKlienci}>
+                    <Szukaj klienci={klienci} setKlienci={setKlienci} />
+            </Finder>
           <TableClient klienci={klienci}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
           <Zamknij showAddClientStage={showAddClientStage} />
         </Stage>
@@ -48,7 +52,40 @@ function Header() {
   );
 }
 
-function Stage({ children }) {
+const find =(txt,klienci,setKlienci) =>{
+  
+}
+
+function Szukaj({klienci,setKlienci}){
+   const klienciEdit = JSON.parse(JSON.stringify(klienci))
+  return(
+
+   
+      <input className={style.data} type="text"
+      // value={daneZamowienia.cena}
+      onChange={(event) => {
+
+        const kl = [...klienciEdit].filter((k)=>   k.firma.includes(event.target.value) )
+        // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
+        setKlienci(kl  );
+        // find(event.target.value)
+        
+
+        
+      }}></input>
+
+  );
+}
+
+function Finder({ children,klienci,setKlienci }) {
+  return (
+  <div className={style.finder}>
+    {children}
+  </div>
+  )
+  
+}
+function Stage({ children,klienci,setKlienci }) {
   return (
   <div className={style.stage}>
     {children}

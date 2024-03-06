@@ -427,6 +427,7 @@ async function getClients() {
 {isShowAddClientStage && (
         <ClientStage
         klienci={klienci}
+        setKlienci={setKlienci}
         getClients={getClients}
         setListaWykonczenia={setKlienci}
         isShowAddClientStage={isShowAddClientStage}

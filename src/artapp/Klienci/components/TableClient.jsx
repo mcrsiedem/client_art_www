@@ -20,13 +20,13 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
               </tr>
             </thead>
             <tbody className={style.center}>
-              {klienciWyszukiwarka.map((row) => {
+              {klienciWyszukiwarka.map((row,index) => {
                 return (
                   <tr 
                     key={row.id}
                     onDoubleClick={()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)}
                   >
-                    <ID row={row}/>
+                    <ID row={row} index={index+1}/>
                     <Firma row={row}/>
                     <Adres row={row}/>
                     <Kod row={row}/>
@@ -59,9 +59,9 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
     );
   }
   
-  function ID({ row }) {
+  function ID({ row,index }) {
     return (
-      <td>{row.id}</td>
+      <td>{index}</td>
     );
   }
 

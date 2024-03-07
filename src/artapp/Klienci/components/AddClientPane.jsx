@@ -1,14 +1,25 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClientPane.module.css";
 import TokenContext from "../../Context/tokenContext";
+import axios from "axios";
+// import DecodeToken from "../Login/DecodeToken";
+import { ip } from "../../../Host"
 
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 export default function AddClientPane({
   isShowAddClientPane,
   setShowAddClientPane,
 }) {
-  const [daneKlienta, setDaneKlienta] = useState({firma: ""});
+  const [daneKlienta, setDaneKlienta] = useState({
+    firma: "",
+    adres: "",
+    kod: "",
+    nip: "",
+    opiekun_id: "",
+    utowrzyl_user_id: "",
   
+  });
+
   return (
     <div className={style.window}>
       <Header></Header>
@@ -16,19 +27,39 @@ export default function AddClientPane({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz/>
+      <Zapisz daneKlienta={daneKlienta} />
     </div>
   );
 }
+const  postKlient  = async (daneKlienta,context) =>{
+  
+await axios.post(ip + "klienci", {
+    firma: daneKlienta.firma,
+    adres: daneKlienta.adres,
+    kod: daneKlienta.kod,
+    nip: daneKlienta.nip,
+    opiekun_id: daneKlienta.opiekun_id,
+    utworzyl_user_id: daneKlienta.opiekun_id,
 
-function Zapisz() {
-    const context = useContext(TokenContext);
+  }).then((res2) => {getUserList2(context)})
+  
+// let zamowienie_id = res.data.insertId;
+}
+
+const getUserList2 = (context) => {
+  
+  context.getUsersList()
+}
+
+function Zapisz({daneKlienta}) {
+  const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-
-       context.getUsersList()
+            postKlient(daneKlienta,context)
+          //  context.getUsersList()
+          //  getUserList2(context)
         //   showAddClientStage(false);
         }}
       >
@@ -76,7 +107,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
           type="text"
           value={daneKlienta.adres}
           onChange={(event) => {
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.-]+$/;
             if (event.target.value === "" || re.test(event.target.value)) {
               setDaneKlienta({ ...daneKlienta, adres: event.target.value });
             }
@@ -135,13 +166,13 @@ function Adres({ daneKlienta, setDaneKlienta }) {
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={daneKlienta.opiekun_id}
+        value={daneKlienta.id}
         onChange={(event) => {
             setDaneKlienta({...daneKlienta, opiekun_id: event.target.value});
      
         }}
       >
-        {context.users.map((option) => (
+        {context.users.filter(x=> x.Dzial ==2).map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>

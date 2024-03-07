@@ -14,8 +14,6 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                 <th className={style.kod}>Kod</th>
                 <th className={style.nip}>NIP</th>
                 <th className={style.opiekun}>Opiekun</th>
-
-     
   
               </tr>
             </thead>

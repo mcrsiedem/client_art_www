@@ -4,6 +4,7 @@ import { ip } from "../../Host";
 import style from "./ClientStage.module.css";
 import TableClient from "./components/TableClient"
 import iconTable from "../../svg/add.png";
+import AddClientPane from "./components/AddClientPane";
 export default function ClientStage({
   isShowAddClientStage,
   showAddClientStage,
@@ -25,7 +26,7 @@ export default function ClientStage({
     
   }, []);
 
-  // const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState(klienci);
+   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
 
 
   return (
@@ -34,7 +35,7 @@ export default function ClientStage({
 
         <Header />
         <Finder  klienci={klienci} setKlienci={setKlienci}>
-                    <Dodaj/>
+                    <Dodaj isShowAddClientPane={isShowAddClientPane} setShowAddClientPane={setShowAddClientPane}/>
                     <Szukaj klienci={klienci} setKlienci={setKlienci} setKlienciWyszukiwarka={setKlienciWyszukiwarka} />
         </Finder>
         <TableClient klienciWyszukiwarka={klienciWyszukiwarka}   daneZamowienia={daneZamowienia}  setDaneZamowienia={setDaneZamowienia}/>
@@ -43,18 +44,31 @@ export default function ClientStage({
 </Footer>
           
 
+      {isShowAddClientPane && (
+        <AddClientPane isShowAddClientPane={isShowAddClientPane} setShowAddClientPane={setShowAddClientPane}
+
+        
+          
+        />
+      )}
 
       </div>
+
+
+
     </div>
+
+    
   );
 }
 
-function Dodaj() {
+function Dodaj({isShowAddClientPane, setShowAddClientPane}) {
   return (
     <img
     className={style.dodaj_klienta}
      src={iconTable}
      onClick={() => {
+      setShowAddClientPane(true)
       //  showAddClientStage(true)
        // setShowOprawaElementyStage(true);
        // setOprawa_row(row);

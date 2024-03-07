@@ -16,13 +16,13 @@ export default function ClientStage({
   //   useEffect(() => {}, []);
 
 
-  // async function getClients() {
-  //   const res = await axios.get(ip + "lista-klientow");
-  //   setKlienci([...res.data]);
-  // }
+  async function getClients() {
+    const res = await axios.get(ip + "lista-klientow");
+    setKlienci([...res.data]);
+  }
   
   useEffect(() => {
-    //  getClients();
+     getClients();
     
   }, []);
 

@@ -246,6 +246,10 @@ async function getClients() {
     }
   }, []);
 
+  useEffect(() => {
+    getClients()
+}, [isShowAddClientStage]);
+
 
   async function fechparametry(idZamowienia) {
            const res = await axios.get(ip + "parametry/"+idZamowienia);

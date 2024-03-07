@@ -22,13 +22,13 @@ export default function AddClientPane({
 }
 
 function Zapisz() {
-
+    const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
 
-       
+       context.getUsersList()
         //   showAddClientStage(false);
         }}
       >

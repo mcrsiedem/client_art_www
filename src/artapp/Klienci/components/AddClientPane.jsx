@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import style from "./AddClientPane.module.css";
+import TokenContext from "../../Context/tokenContext";
+
+import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 export default function AddClientPane({
   isShowAddClientPane,
   setShowAddClientPane,
 }) {
   const [daneKlienta, setDaneKlienta] = useState({firma: ""});
+  
   return (
     <div className={style.window}>
       <Header></Header>
@@ -18,10 +22,13 @@ export default function AddClientPane({
 }
 
 function Zapisz() {
+
     return (
       <button
         className={style.btn}
         onClick={() => {
+
+       
         //   showAddClientStage(false);
         }}
       >
@@ -84,6 +91,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
 
 
   function NIP({ daneKlienta, setDaneKlienta }) {
+    const context = useContext(TokenContext);
     return (
       <div className={style.labelinput_nip}>
 
@@ -122,6 +130,24 @@ function Adres({ daneKlienta, setDaneKlienta }) {
 
 
         </div>
+
+        <div className={style.labelinput}>
+      <label className={style.label}> Opiekun </label>
+      <select
+        className={style.firma}
+        value={daneKlienta.opiekun_id}
+        onChange={(event) => {
+            setDaneKlienta({...daneKlienta, opiekun_id: event.target.value});
+     
+        }}
+      >
+        {context.users.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.Imie} {option.Nazwisko} 
+          </option>
+        ))}
+      </select>
+    </div>
 
 
       </div>

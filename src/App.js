@@ -14,7 +14,7 @@ import Technologie from './artapp/Technologie/Technologie'
 import Logowanie from './components/Logowanie/Logowanie';
 import Print from "./artapp/Print/Print";
 import Login from "./artapp/Login/Login";
-import { useState, createContext } from "react";
+import { useState, createContext,useEffect } from "react";
 import History from "./artapp/History/History";
 import Panel from "./artapp/Panel/Panel";
 import {
@@ -28,6 +28,9 @@ import Header from "./artapp/Header/Header";
 import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
+import axios from "axios";
+import { ip } from "./Host";
+
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
@@ -38,13 +41,22 @@ export default function App() {
     login: "",
     dostep: ""
   }); 
+  const [users, setUsers] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
 
+  useEffect(() => {
+    getUsersList()
+}, []);
+
+  async function getUsersList() {
+    const res = await axios.get(ip + "lista-userow");
+    setUsers([...res.data]);
+  }
   return (
     
     <BrowserRouter basename={''} >
     
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,user, setUser}}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,user, setUser,users}}>
         <Header />
         
         <Routes >

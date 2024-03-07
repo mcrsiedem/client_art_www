@@ -3,7 +3,7 @@
     left:200px;
     top: 200px;
     width: 500px;
-    height: 350px;
+    height: 330px;
   min-width: 250px;
     background-color: rgb(198, 198, 198);
     border: 1px solid rgb(143, 143, 143);
@@ -50,11 +50,13 @@
     .labelinput_nip
     {
         display: grid;
-        grid-template-columns: 100px 1fr ;
+        grid-template-columns: 65px 1fr 1fr ;
       
     }
     .label{
         padding-left: 10px;
+        font-size: 13px;
+        padding-bottom: 3px;
     }
 
 
@@ -68,6 +70,9 @@
         color: #fff;
         font-size: 1rem;
         margin-top: 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 150px
       
       }
     .firma{

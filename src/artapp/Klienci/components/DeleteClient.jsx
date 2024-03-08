@@ -16,6 +16,7 @@ export default function DeleteClient({
     <div className={style.window}>
       <Header setShowDeleteClientPane={setShowDeleteClientPane}></Header>
       <Usun rowID={rowID} getClients={() => getClients()} setShowDeleteClientPane={setShowDeleteClientPane} />
+
     </div>
   );
 }
@@ -23,17 +24,16 @@ export default function DeleteClient({
 function Usun({ rowID, getClients,setShowDeleteClientPane}) {
   return (
     <button
-      className={style.btn}
+      className={style.btn_delete}
       onClick={() => {
         deleteClient(rowID, getClients,setShowDeleteClientPane);
-
-
       }}
     >
       Skasuj
     </button>
   );
 }
+
 
 function Header({ showAddClientStage }) {
   return (

@@ -3,7 +3,7 @@
     left:200px;
     top: 200px;
     width: 500px;
-    height: 330px;
+    height: 130px;
   min-width: 250px;
     background-color: rgb(198, 198, 198);
     border: 1px solid rgb(143, 143, 143);
@@ -25,7 +25,7 @@
       padding-left: 10px;
       padding-right: 10px;
       /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
-      background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+      background-image: linear-gradient(rgb(238, 15, 26) 0%, rgb(255, 87, 95) 50%, rgb(238, 15, 26) 100%);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       height: 2rem;
@@ -63,9 +63,10 @@
     }
 
 
-    .btn{
+    .btn_delete{
         /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
         background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+        background-image: linear-gradient(rgb(238, 15, 26) 0%, rgb(255, 87, 95) 50%, rgb(238, 15, 26) 100%);
         width:  200px;
         height: 35px;
         border-radius: 10px;
@@ -75,9 +76,11 @@
         margin-top: 10px;
         position: absolute;
         bottom: 10px;
-        left: 150px
-      
+        right: 150px
       }
+
+
+
     .firma{
         padding-left: 10px;
     }

@@ -27,25 +27,38 @@ export default function AddClient({
     <div className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
 
-      <Zapisz
-        daneKlienta={daneKlienta}
-        getClients={() => getClients()}
-        test={() => test()}
+      <Usun
+        // daneKlienta={daneKlienta}
+        // getClients={() => getClients()}
+        // test={() => test()}
       />
     </div>
   );
 }
-const postKlient = async (daneKlienta, context, getClients, test) => {
-  await axios
-    .post(ip + "klienci", {
-      firma: daneKlienta.firma,
-      adres: daneKlienta.adres,
-      kod: daneKlienta.kod,
-      nip: daneKlienta.nip,
-      opiekun_id: daneKlienta.opiekun_id,
-      utworzyl_user_id: daneKlienta.opiekun_id,
-    })
-    .then((res2) => {
-      getClients();
-    });
-};
+
+
+function Header({ showAddClientStage }) {
+  return (
+    <div className={style.header}>
+      <p className={style.title}>Lista klientów </p>
+  
+    </div>
+  );
+}
+
+
+function Usun() {
+
+    return (
+      <button
+        className={style.btn}
+        onClick={() => {
+            
+  
+
+        }}
+      >
+        Zapisz
+      </button>
+    );
+  }

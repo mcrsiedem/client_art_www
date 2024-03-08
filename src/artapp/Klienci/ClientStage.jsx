@@ -7,6 +7,7 @@ import iconDelete from "../../svg/trash.svg";
 import TableClient from "./components/TableClient";
 import iconTable from "../../svg/add.png";
 import AddClient from "./components/AddClient";
+import DeleteClient from "./components/DeleteClient";
 export default function ClientStage({
   isShowAddClientStage,
   showAddClientStage,
@@ -17,7 +18,6 @@ export default function ClientStage({
   klienciWyszukiwarka,
   setKlienciWyszukiwarka,
 }) {
-  //   useEffect(() => {}, []);
 
   async function getClients() {
     const res = await axios.get(ip + "lista-klientow");
@@ -25,17 +25,12 @@ export default function ClientStage({
     setKlienciWyszukiwarka([...res.data]);
   }
 
-  // function test(){
-  //   console.log("test ok")
-  // }
-
-
-
   useEffect(() => {
     getClients();
   }, []);
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
+  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
 
   return (
     <div className={style.grayScaleBackground}>
@@ -64,9 +59,16 @@ export default function ClientStage({
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
             getClients= {()=>getClients()}
-            test={()=>test()}
           />
         )}
+     {isShowDeleteClientPane && (
+          <DeleteClient
+          isShowDeleteClientPane={isShowDeleteClientPane}
+            setShowDeleteClientPane={setShowDeleteClientPane}
+            getClients= {()=>getClients()}
+          />
+        )}
+
       </div>
     </div>
   );

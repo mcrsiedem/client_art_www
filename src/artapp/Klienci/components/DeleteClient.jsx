@@ -6,7 +6,7 @@ import { ip } from "../../../Host";
 
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg";
-export default function AddClientPane({
+export default function AddClient({
   isShowAddClientPane,
   setShowAddClientPane,
   getClients,

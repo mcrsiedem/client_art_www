@@ -9,19 +9,19 @@ import iconDelete from "../../../svg/trash2.svg"
 export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients}) {
    
    
-  const  deleteKlient  = async (id) =>{
+  // const  deleteKlient  = async (id) =>{
   
-    await axios.put(ip + "klient", {
-        id: id,
+  //   await axios.put(ip + "klient", {
+  //       id: id,
   
-      })
-      .then((res2) => {
-         getClients()
+  //     })
+  //     .then((res2) => {
+  //        getClients()
       
-      })
+  //     })
        
     
-    }
+  //   }
    return <div className={style.main}>
         
           <table className={style.table2}>
@@ -50,7 +50,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
-                    <Delete row={row} deleteKlient={()=>deleteKlient(row.id)}/>
+                    <Delete row={row} />
 
   
                   </tr>
@@ -103,13 +103,15 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
   }
  
 
-  function Delete({ deleteKlient,row }) {
+  function Delete({ row }) {
     return (
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          deleteKlient(row.id);
+
+          //pokaż okienko kasowania
+          // deleteKlient(row.id);
         }}
         alt="Procesy"
       />

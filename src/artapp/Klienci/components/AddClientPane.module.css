@@ -17,7 +17,9 @@
   }
     
     .header{
-      
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
      width: 100%;
   
       padding-left: 10px;
@@ -36,7 +38,7 @@
       color: #fff;
       font-size: 0.9rem;
       /* font-weight: bold; */
-      padding-top: 6px;
+      padding-top: 12px;
       padding-left: 7px;
     }
 
@@ -54,6 +56,7 @@
       
     }
     .label{
+       
         padding-left: 10px;
         font-size: 13px;
         padding-bottom: 3px;
@@ -77,4 +80,9 @@
       }
     .firma{
         padding-left: 10px;
+    }
+
+    .zamknij_icon{
+
+      background-color: white;
     }

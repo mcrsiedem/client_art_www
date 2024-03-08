@@ -6,6 +6,7 @@ import axios from "axios";
 import { ip } from "../../../Host"
 
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
+import iconX from "../../../svg/x.svg"
 export default function AddClientPane({
   isShowAddClientPane,
   setShowAddClientPane,
@@ -22,7 +23,7 @@ export default function AddClientPane({
 
   return (
     <div className={style.window}>
-      <Header></Header>
+      <Header setShowAddClientPane={setShowAddClientPane}></Header>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
@@ -69,11 +70,27 @@ function Zapisz({daneKlienta}) {
   }
   
 
-function Header() {
+function Header({setShowAddClientPane}) {
   return (
     <div className={style.header}>
       <p className={style.title}>Dodaj klienta </p>
+      <Zamknij setShowAddClientPane={setShowAddClientPane}/>
     </div>
+  );
+}
+function Zamknij({setShowAddClientPane}) {
+  return (
+    <img
+    className={style.zamknij_icon}
+     src={iconX}
+     onClick={() => {
+      setShowAddClientPane(false)
+      //  showAddClientStage(true)
+       // setShowOprawaElementyStage(true);
+       // setOprawa_row(row);
+     }}
+     alt="Procesy"
+    />
   );
 }
 

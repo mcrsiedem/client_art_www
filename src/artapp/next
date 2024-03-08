@@ -1,0 +1,15 @@
+ModalInsert -   ModalInsert
+                Header
+                Dane
+                Produkty
+                Elementy
+                Introligatornia
+                Pakowanie
+
+Klienci -       ClientStage
+                Header
+                Finder
+                TableClient
+                Footer 
+
+

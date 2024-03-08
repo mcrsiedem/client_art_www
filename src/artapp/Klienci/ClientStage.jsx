@@ -62,7 +62,7 @@ export default function ClientStage({
   );
 }
 
-function Dodaj({isShowAddClientPane, setShowAddClientPane}) {
+function Dodaj({setShowAddClientPane}) {
   return (
     <img
     className={style.dodaj_klienta}

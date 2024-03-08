@@ -55,9 +55,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
-                    <Delete row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
-
-  
+                    <DeleteIcon row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
                   </tr>
                 );
               })}
@@ -66,10 +64,8 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
 
           {isShowDeleteClientPane && (
           <DeleteClient
-          isShowDeleteClientPane={isShowDeleteClientPane}
-            setShowDeleteClientPane={setShowDeleteClientPane}
+          setShowDeleteClientPane={setShowDeleteClientPane}
             getClients= {()=>getClients()}
-            selectedRow={selectedRow}
             rowID={rowID}
           />
         )}
@@ -79,7 +75,45 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
 
   const chooseClient = (daneZamowienia,setDaneZamowienia,id) => {
     setDaneZamowienia({...daneZamowienia, klient_id : id})
-    console.log("id klienta: ", id );
+
+  }
+  function DeleteIcon({ row,rowID,setShowDeleteClientPane }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconDelete}
+        onClick={() => {
+          rowID.current = row.id;
+          setShowDeleteClientPane(true)
+        }}
+        alt="Procesy"
+      />
+    );
+  }
+  function UseIcon({ showAddClientStage }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconX}
+        onClick={() => {
+          showAddClientStage(false);
+        }}
+        alt="Procesy"
+      />
+    );
+  }
+  
+  function EditIcon({ showAddClientStage }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconX}
+        onClick={() => {
+          showAddClientStage(false);
+        }}
+        alt="Procesy"
+      />
+    );
   }
   
   function Firma({ row }) {
@@ -118,46 +152,5 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
   }
  
 
-  function Delete({ row,rowID,setSelectedRow,setShowDeleteClientPane }) {
-    return (
-      <img
-        className={style.icon}
-        src={iconDelete}
-        onClick={() => {
-          rowID.current = row.id;
-
-           console.log(" rowID.current  "+  rowID.current );
-          //  setSelectedRow(row.id)
-           setShowDeleteClientPane(true)
   
-        }}
-        alt="Procesy"
-      />
-    );
-  }
-  function Use({ showAddClientStage }) {
-    return (
-      <img
-        className={style.icon}
-        src={iconX}
-        onClick={() => {
-          showAddClientStage(false);
-        }}
-        alt="Procesy"
-      />
-    );
-  }
-  
-  function Edit({ showAddClientStage }) {
-    return (
-      <img
-        className={style.icon}
-        src={iconX}
-        onClick={() => {
-          showAddClientStage(false);
-        }}
-        alt="Procesy"
-      />
-    );
-  }
 

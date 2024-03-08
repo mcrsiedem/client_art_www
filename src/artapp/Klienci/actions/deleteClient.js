@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ip } from "../../../Host";
 
-export   const deleteClient = async (rowID,getClients)=> {
+export   const deleteClient = async (rowID,getClients,setShowDeleteClientPane)=> {
 
     await axios
       .put(ip + "klient", {
@@ -9,5 +9,6 @@ export   const deleteClient = async (rowID,getClients)=> {
       })
       .then((res2) => {
         getClients();
+        setShowDeleteClientPane(false)
       });
   };

@@ -8,7 +8,6 @@ import { ip } from "../../../Host"
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg"
 export default function AddClientPane({
-  isShowAddClientPane,
   setShowAddClientPane,
   getClients,
   test
@@ -31,11 +30,11 @@ export default function AddClientPane({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} />
+      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} setShowAddClientPane={setShowAddClientPane} />
     </div>
   );
 }
-const  postKlient  = async (daneKlienta,context,getClients,test) =>{
+const  postKlient  = async (daneKlienta,context,getClients,test,setShowAddClientPane) =>{
   
 await axios.post(ip + "klienci", {
     firma: daneKlienta.firma,
@@ -48,6 +47,7 @@ await axios.post(ip + "klienci", {
   })
   .then((res2) => {
      getClients()
+     setShowAddClientPane(false)
   })
    
 
@@ -58,13 +58,13 @@ const getUserList2 = (context) => {
   context.getUsersList()
 }
 
-function Zapisz({daneKlienta,getClients,test}) {
+function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
   const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-              postKlient(daneKlienta,context,getClients,test)
+              postKlient(daneKlienta,context,getClients,test,setShowAddClientPane)
   
 
           //  context.getUsersList()

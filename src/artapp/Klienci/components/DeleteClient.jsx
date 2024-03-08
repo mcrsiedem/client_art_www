@@ -7,34 +7,27 @@ import { deleteClient } from "../actions/deleteClient";
 
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg";
-export default function AddClient({
-  isShowAddClientPane,
-  setShowAddClientPane,
+export default function DeleteClient({
+  setShowDeleteClientPane,
   getClients,
-  test,
-  selectedRow,
   rowID,
 }) {
   return (
     <div className={style.window}>
-      <Header setShowAddClientPane={setShowAddClientPane}></Header>
-
-      <Usun
-        selectedRow={selectedRow}
-        rowID={rowID}
-        getClients={() => getClients()}
-      />
+      <Header setShowDeleteClientPane={setShowDeleteClientPane}></Header>
+      <Usun rowID={rowID} getClients={() => getClients()} setShowDeleteClientPane={setShowDeleteClientPane} />
     </div>
   );
 }
 
-function Usun({ rowID, getClients }) {
-
+function Usun({ rowID, getClients,setShowDeleteClientPane}) {
   return (
     <button
       className={style.btn}
       onClick={() => {
-        deleteClient(rowID, getClients);
+        deleteClient(rowID, getClients,setShowDeleteClientPane);
+
+
       }}
     >
       Skasuj

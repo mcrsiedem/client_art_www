@@ -3,6 +3,7 @@ import axios from "axios";
 import { ip } from "../../Host";
 import style from "./ClientStage.module.css";
 import iconX from "../../svg/x.svg";
+import iconDelete from "../../svg/trash.svg";
 import TableClient from "./components/TableClient";
 import iconTable from "../../svg/add.png";
 import AddClient from "./components/AddClient";
@@ -21,7 +22,14 @@ export default function ClientStage({
   async function getClients() {
     const res = await axios.get(ip + "lista-klientow");
     setKlienci([...res.data]);
+    setKlienciWyszukiwarka([...res.data]);
   }
+
+  // function test(){
+  //   console.log("test ok")
+  // }
+
+
 
   useEffect(() => {
     getClients();
@@ -48,13 +56,15 @@ export default function ClientStage({
           klienciWyszukiwarka={klienciWyszukiwarka}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
+          getClients={()=>getClients()}
         />
 
         {isShowAddClientPane && (
           <AddClient
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
-            getClients= {()=>getClients}
+            getClients= {()=>getClients()}
+            test={()=>test()}
           />
         )}
       </div>
@@ -90,6 +100,11 @@ function Zamknij({ showAddClientStage }) {
     />
   );
 }
+
+
+
+
+
 
 function Header({ showAddClientStage }) {
   return (

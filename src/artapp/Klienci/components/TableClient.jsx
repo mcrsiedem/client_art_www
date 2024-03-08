@@ -1,9 +1,28 @@
 import style from "./TableClient.module.css";
 import iconCopy from "../../../svg/copy.svg";
-import iconTrash from "../../../svg/trash2.svg"
 
-export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia}) {
-    return <div className={style.main}>
+import axios from "axios";
+import { ip } from "../../../Host";
+
+import iconX from "../../../svg/x.svg";
+import iconDelete from "../../../svg/trash2.svg"
+export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients}) {
+   
+   
+  const  deleteKlient  = async (id) =>{
+  
+    await axios.put(ip + "klient", {
+        id: id,
+  
+      })
+      .then((res2) => {
+         getClients()
+      
+      })
+       
+    
+    }
+   return <div className={style.main}>
         
           <table className={style.table2}>
             <thead>
@@ -14,6 +33,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                 <th className={style.kod}>Kod</th>
                 <th className={style.nip}>NIP</th>
                 <th className={style.opiekun}>Opiekun</th>
+                <th className={style.opiekun}>-</th>
   
               </tr>
             </thead>
@@ -30,6 +50,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
+                    <Delete row={row} deleteKlient={()=>deleteKlient(row.id)}/>
 
   
                   </tr>
@@ -81,3 +102,50 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
     );
   }
  
+
+  function Delete({ deleteKlient,row }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconDelete}
+        onClick={() => {
+          deleteKlient(row.id);
+        }}
+        alt="Procesy"
+      />
+    );
+  }
+  function Use({ showAddClientStage }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconX}
+        onClick={() => {
+          showAddClientStage(false);
+        }}
+        alt="Procesy"
+      />
+    );
+  }
+  
+  function Edit({ showAddClientStage }) {
+    return (
+      <img
+        className={style.icon}
+        src={iconX}
+        onClick={() => {
+          showAddClientStage(false);
+        }}
+        alt="Procesy"
+      />
+    );
+  }
+
+  function ConfirmDelete({ deleteKlient,row }) {
+    return (
+    <div className={style.confirm_delte}>
+
+
+    </div>
+    );
+  }

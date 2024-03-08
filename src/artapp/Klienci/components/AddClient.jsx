@@ -10,7 +10,8 @@ import iconX from "../../../svg/x.svg"
 export default function AddClientPane({
   isShowAddClientPane,
   setShowAddClientPane,
-  getClients
+  getClients,
+  test
   
 }) {
   const [daneKlienta, setDaneKlienta] = useState({
@@ -30,11 +31,11 @@ export default function AddClientPane({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients} />
+      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} />
     </div>
   );
 }
-const  postKlient  = async (daneKlienta,context,getClients) =>{
+const  postKlient  = async (daneKlienta,context,getClients,test) =>{
   
 await axios.post(ip + "klienci", {
     firma: daneKlienta.firma,
@@ -44,9 +45,12 @@ await axios.post(ip + "klienci", {
     opiekun_id: daneKlienta.opiekun_id,
     utworzyl_user_id: daneKlienta.opiekun_id,
 
-  }).then((res2) => {getClients()})
-  
-// let zamowienie_id = res.data.insertId;
+  })
+  .then((res2) => {
+     getClients()
+  })
+   
+
 }
 
 const getUserList2 = (context) => {
@@ -54,13 +58,15 @@ const getUserList2 = (context) => {
   context.getUsersList()
 }
 
-function Zapisz({daneKlienta,getClients}) {
+function Zapisz({daneKlienta,getClients,test}) {
   const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-            postKlient(daneKlienta,context,getClients)
+              postKlient(daneKlienta,context,getClients,test)
+  
+
           //  context.getUsersList()
           //  getUserList2(context)
         //   showAddClientStage(false);

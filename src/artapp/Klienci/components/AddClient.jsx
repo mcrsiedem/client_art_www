@@ -1,5 +1,5 @@
 import React, { useState,useContext } from "react";
-import style from "./AddClientPane.module.css";
+import style from "./AddClient.module.css";
 import TokenContext from "../../Context/tokenContext";
 import axios from "axios";
 // import DecodeToken from "../Login/DecodeToken";
@@ -10,6 +10,8 @@ import iconX from "../../../svg/x.svg"
 export default function AddClientPane({
   isShowAddClientPane,
   setShowAddClientPane,
+  getClients
+  
 }) {
   const [daneKlienta, setDaneKlienta] = useState({
     firma: "",
@@ -28,11 +30,11 @@ export default function AddClientPane({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz daneKlienta={daneKlienta} />
+      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients} />
     </div>
   );
 }
-const  postKlient  = async (daneKlienta,context) =>{
+const  postKlient  = async (daneKlienta,context,getClients) =>{
   
 await axios.post(ip + "klienci", {
     firma: daneKlienta.firma,
@@ -42,7 +44,7 @@ await axios.post(ip + "klienci", {
     opiekun_id: daneKlienta.opiekun_id,
     utworzyl_user_id: daneKlienta.opiekun_id,
 
-  }).then((res2) => {getUserList2(context)})
+  }).then((res2) => {getClients()})
   
 // let zamowienie_id = res.data.insertId;
 }
@@ -52,13 +54,13 @@ const getUserList2 = (context) => {
   context.getUsersList()
 }
 
-function Zapisz({daneKlienta}) {
+function Zapisz({daneKlienta,getClients}) {
   const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-            postKlient(daneKlienta,context)
+            postKlient(daneKlienta,context,getClients)
           //  context.getUsersList()
           //  getUserList2(context)
         //   showAddClientStage(false);
@@ -85,9 +87,7 @@ function Zamknij({setShowAddClientPane}) {
      src={iconX}
      onClick={() => {
       setShowAddClientPane(false)
-      //  showAddClientStage(true)
-       // setShowOprawaElementyStage(true);
-       // setOprawa_row(row);
+
      }}
      alt="Procesy"
     />

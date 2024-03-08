@@ -7,7 +7,7 @@ import iconDelete from "../../svg/trash.svg";
 import TableClient from "./components/TableClient";
 import iconTable from "../../svg/add.png";
 import AddClient from "./components/AddClient";
-import DeleteClient from "./components/DeleteClient";
+
 export default function ClientStage({
   isShowAddClientStage,
   showAddClientStage,
@@ -30,8 +30,7 @@ export default function ClientStage({
   }, []);
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
-  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
-
+  
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
@@ -61,13 +60,7 @@ export default function ClientStage({
             getClients= {()=>getClients()}
           />
         )}
-     {isShowDeleteClientPane && (
-          <DeleteClient
-          isShowDeleteClientPane={isShowDeleteClientPane}
-            setShowDeleteClientPane={setShowDeleteClientPane}
-            getClients= {()=>getClients()}
-          />
-        )}
+
 
       </div>
     </div>

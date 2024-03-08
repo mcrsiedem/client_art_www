@@ -1,4 +1,7 @@
+import React, { useState,useRef } from "react";
 import style from "./TableClient.module.css";
+import DeleteClient from "./DeleteClient";
+
 import iconCopy from "../../../svg/copy.svg";
 
 import axios from "axios";
@@ -8,7 +11,9 @@ import iconX from "../../../svg/x.svg";
 import iconDelete from "../../../svg/trash2.svg"
 export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients}) {
    
-   
+  const [selectedRow, setSelectedRow] = useState('');
+  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
+  const rowID = useRef();
   // const  deleteKlient  = async (id) =>{
   
   //   await axios.put(ip + "klient", {
@@ -50,7 +55,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
-                    <Delete row={row} />
+                    <Delete row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
 
   
                   </tr>
@@ -58,6 +63,16 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
               })}
             </tbody>
           </table>
+
+          {isShowDeleteClientPane && (
+          <DeleteClient
+          isShowDeleteClientPane={isShowDeleteClientPane}
+            setShowDeleteClientPane={setShowDeleteClientPane}
+            getClients= {()=>getClients()}
+            selectedRow={selectedRow}
+            rowID={rowID}
+          />
+        )}
         </div>
   
   }
@@ -103,15 +118,18 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
   }
  
 
-  function Delete({ row }) {
+  function Delete({ row,rowID,setSelectedRow,setShowDeleteClientPane }) {
     return (
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
+          rowID.current = row.id;
 
-          //pokaż okienko kasowania
-          // deleteKlient(row.id);
+           console.log(" rowID.current  "+  rowID.current );
+          //  setSelectedRow(row.id)
+           setShowDeleteClientPane(true)
+  
         }}
         alt="Procesy"
       />
@@ -143,11 +161,3 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
     );
   }
 
-  function ConfirmDelete({ deleteKlient,row }) {
-    return (
-    <div className={style.confirm_delte}>
-
-
-    </div>
-    );
-  }

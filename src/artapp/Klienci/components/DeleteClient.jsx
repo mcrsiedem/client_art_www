@@ -11,54 +11,64 @@ export default function AddClient({
   setShowAddClientPane,
   getClients,
   test,
+  selectedRow,
+  rowID
 }) {
 
-  const deleteKlient = async (id) => {
-    await axios
-      .put(ip + "klient", {
-        id: id,
-      })
-      .then((res2) => {
-        getClients();
-      });
-  };
+
 
   return (
     <div className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
 
       <Usun
+      selectedRow={selectedRow}
+      // deleteKlient={()=>deleteKlient("dss")}
+      rowID={rowID}
         // daneKlienta={daneKlienta}
-        // getClients={() => getClients()}
+         getClients={() => getClients()}
         // test={() => test()}
       />
     </div>
   );
 }
 
+function Usun({selectedRow,rowID,getClients}) {
+  async function  deleteKlient(rowID) {
+    // console.log(" row id form deleteKlient ;" +rowID.current)
+    await axios
+      .put(ip + "klient", {
+        id: rowID.current,
+      })
+      .then((res2) => {
+        getClients();
+      });
+  };
+  return (
+    <button
+      className={style.btn}
+      onClick={() => {
+        // console.log("selectedRow"+ rowID.current);
+         deleteKlient(rowID)
+
+      }}
+    >
+      Skasuj
+    </button>
+  );
+}
+
+
+
+
 
 function Header({ showAddClientStage }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Lista klientów </p>
+      <p className={style.title}>Skasuj..</p>
   
     </div>
   );
 }
 
 
-function Usun() {
-
-    return (
-      <button
-        className={style.btn}
-        onClick={() => {
-            
-  
-
-        }}
-      >
-        Zapisz
-      </button>
-    );
-  }

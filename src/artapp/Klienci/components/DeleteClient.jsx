@@ -3,7 +3,7 @@ import style from "./DeleteClient.module.css";
 import TokenContext from "../../Context/tokenContext";
 import axios from "axios";
 import { ip } from "../../../Host";
-import { deleteKlient } from "../actions/deleteClient";
+import { deleteClient } from "../actions/deleteClient";
 
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg";
@@ -13,46 +13,28 @@ export default function AddClient({
   getClients,
   test,
   selectedRow,
-  rowID
+  rowID,
 }) {
-
-
-
   return (
     <div className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
 
       <Usun
-      selectedRow={selectedRow}
-      // deleteKlient={()=>deleteKlient("dss")}
-      rowID={rowID}
-        // daneKlienta={daneKlienta}
-         getClients={() => getClients()}
-        // test={() => test()}
+        selectedRow={selectedRow}
+        rowID={rowID}
+        getClients={() => getClients()}
       />
     </div>
   );
 }
 
-function Usun({selectedRow,rowID,getClients}) {
-  // const deleteKlient = async (rowID)=> {
-
-  //   await axios
-  //     .put(ip + "klient", {
-  //       id: rowID.current,
-  //     })
-  //     .then((res2) => {
-  //       getClients();
-  //     });
-  // };
+function Usun({ rowID, getClients }) {
 
   return (
     <button
       className={style.btn}
       onClick={() => {
-        // console.log("selectedRow"+ rowID.current);
-         deleteKlient(rowID,getClients)
-
+        deleteClient(rowID, getClients);
       }}
     >
       Skasuj
@@ -60,17 +42,10 @@ function Usun({selectedRow,rowID,getClients}) {
   );
 }
 
-
-
-
-
 function Header({ showAddClientStage }) {
   return (
     <div className={style.header}>
       <p className={style.title}>Skasuj..</p>
-  
     </div>
   );
 }
-
-

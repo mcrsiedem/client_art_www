@@ -30,6 +30,7 @@ export default function ClientStage({
   }, []);
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
+ 
   
   return (
     <div className={style.grayScaleBackground}>
@@ -51,6 +52,7 @@ export default function ClientStage({
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
           getClients={()=>getClients()}
+          setShowAddClientPane={setShowAddClientPane}
         />
 
         {isShowAddClientPane && (

@@ -1,6 +1,7 @@
 import React, { useState,useRef } from "react";
 import style from "./TableClient.module.css";
 import DeleteClient from "./DeleteClient";
+import EditClient from "./EditClient";
 
 
 
@@ -11,24 +12,13 @@ import iconX from "../../../svg/x.svg";
 import iconDelete from "../../../svg/trash2.svg"
 import iconEdit from "../../../svg/settings.svg"
 
-export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients}) {
+export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients,setShowAddClientPane}) {
    
   const [selectedRow, setSelectedRow] = useState('');
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const rowID = useRef();
-  // const  deleteKlient  = async (id) =>{
-  
-  //   await axios.put(ip + "klient", {
-  //       id: id,
-  
-  //     })
-  //     .then((res2) => {
-  //        getClients()
-      
-  //     })
-       
-    
-  //   }
+
    return <div className={style.main}>
         
           <table className={style.table2}>
@@ -59,8 +49,8 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
-                    <EditIcon row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
-                    <DeleteIcon row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
+                    <EditIcon row={row} rowID={rowID} setShowEdit={setShowEdit}/>
+                    <DeleteIcon daneZamowienia={daneZamowienia} row={row} rowID={rowID}  setShowDeleteClientPane={setShowDeleteClientPane}/>
                   </tr>
                 );
               })}
@@ -74,6 +64,14 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
             rowID={rowID}
           />
         )}
+
+{showEdit && (
+          <EditClient
+          setShowEdit={setShowEdit}
+            getClients= {()=>getClients()}
+            rowID={rowID}
+          />
+        )}
         </div>
   
   }
@@ -82,15 +80,20 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
     setDaneZamowienia({...daneZamowienia, klient_id : id})
 
   }
-  function DeleteIcon({ row,rowID,setShowDeleteClientPane }) {
+  function DeleteIcon({ row,rowID,setShowDeleteClientPane,daneZamowienia }) {
     return (
       <td>
+
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          rowID.current = {id:row.id, firma: row.firma};
-          setShowDeleteClientPane(true)
+          // nie mozna skasowac firmy, ktora jest aktualnie ustawiona jak klient
+          if(row.id != daneZamowienia.klient_id){
+              rowID.current = {id:row.id, firma: row.firma};
+              setShowDeleteClientPane(true)
+            }
+       
         }}
         alt="Procesy"
       />
@@ -112,14 +115,25 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
     );
   }
   
-  function EditIcon({ showAddClientStage }) {
+  function EditIcon({ row,rowID,setShowEdit }) {
     return (
       <td>
       <img
         className={style.icon}
         src={iconEdit}
         onClick={() => {
-          showAddClientStage(false);
+         
+          rowID.current = {
+            id:row.id,
+            firma: row.firma,
+            adres: row.adres,
+            kod: row.kod,
+            nip: row.nip,
+            opiekun_id: row.opiekun_id,
+            utworzyl_user_id: row.utworzyl_user_id,
+
+          };
+          setShowEdit(true);
         }}
         alt="Procesy"
       />

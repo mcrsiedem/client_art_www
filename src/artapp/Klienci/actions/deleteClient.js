@@ -7,7 +7,7 @@ export   const deleteClient = async (rowID,getClients,setShowDeleteClientPane)=>
       .put(ip + "klient", {
         id: rowID.current.id,
       })
-      .then((res2) => {
+      .then((res) => {
         getClients();
         setShowDeleteClientPane(false)
       });

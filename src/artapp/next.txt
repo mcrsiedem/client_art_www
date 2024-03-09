@@ -19,7 +19,7 @@ Klienci -
             - okno potwierdzające kasowanie                     V
             - zamykanie okna                                    V
             - edytowanie - ikonka edit obok kasowanie           V
-            - ikonki kasowanie -  edycja - użycie ( łapka )
+            - ikonki kasowanie -  edycja - użycie ( łapka )     V
             - user_id - domyślnie
             - opiekun_id - domyślnie
 

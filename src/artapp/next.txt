@@ -20,6 +20,8 @@ Klienci -
             - zamykanie okna                                    V
             - edytowanie - ikonka edit obok kasowanie           V
             - ikonki kasowanie -  edycja - użycie ( łapka )     V
+
+            userid z DecodeToken
             - user_id - domyślnie
             - opiekun_id - domyślnie
 

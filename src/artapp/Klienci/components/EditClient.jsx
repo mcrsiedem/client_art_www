@@ -137,7 +137,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
           type="text"
           value={daneKlienta.adres}
           onChange={(event) => {
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".-]+$/;
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
             if (event.target.value === "" || re.test(event.target.value)) {
               setDaneKlienta({ ...daneKlienta, adres: event.target.value });
             }
@@ -180,7 +180,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
             type="text"
             value={daneKlienta.nip}
             onChange={(event) => {
-                const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+                const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ-]+$/;
                 if (event.target.value === "" || re.test(event.target.value)) {
                 setDaneKlienta({ ...daneKlienta, nip: event.target.value });
                 }

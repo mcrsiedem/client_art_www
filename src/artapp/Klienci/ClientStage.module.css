@@ -22,9 +22,13 @@
   border-radius: 10px;
   z-index: 3;
   display: grid;
-  grid-template-rows: 30px 1fr 1fr;
+  grid-template-rows: 2rem 35px 1fr 1rem;
   box-shadow: 10px 10px 10px gray;
+  gap: 10px;
+
 }
+
+
 
 .header {
   display: flex;
@@ -51,11 +55,7 @@
   padding-left: 7px;
 }
 
-.window {
-  display: grid;
-  grid-template-rows: 2rem 35px 1fr 50px;
-  gap: 10px;
-}
+
 
 .btn {
   background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);

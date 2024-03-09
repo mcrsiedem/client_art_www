@@ -17,10 +17,10 @@ Klienci -       ClientStage
 Klienci - 
             - kasowanie klienta - zmiana parametru delete na 1  V
             - okno potwierdzające kasowanie                     V
-            - zamykanie okna i zablokowanie tla
+            - zamykanie okna                                    V
+            - ikonki kasowanie -  edycja - użycie ( łapka )
             - user_id - domyślnie
             - opiekun_id - domyślnie
-            - ikonki kasowanie -  edycja - użycie ( łapka )
 
             
 

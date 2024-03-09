@@ -14,7 +14,8 @@ export default function DeleteClient({
 }) {
   return (
     <div className={style.window}>
-      <Header setShowDeleteClientPane={setShowDeleteClientPane}></Header>
+      <Header setShowDeleteClientPane={setShowDeleteClientPane} rowID={rowID}></Header>
+      <p className={style.alert_label}>{rowID.current.firma}</p>
       <Usun rowID={rowID} getClients={() => getClients()} setShowDeleteClientPane={setShowDeleteClientPane} />
 
     </div>
@@ -29,16 +30,16 @@ function Usun({ rowID, getClients,setShowDeleteClientPane}) {
         deleteClient(rowID, getClients,setShowDeleteClientPane);
       }}
     >
-      OK
+      Skasuj
     </button>
   );
 }
 
 
-function Header({ setShowDeleteClientPane }) {
+function Header({ setShowDeleteClientPane,rowID }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Skasować ?</p>
+      <p className={style.title}>Skasować? </p>
       <Zamknij setShowDeleteClientPane={setShowDeleteClientPane}/>
     </div>
   );

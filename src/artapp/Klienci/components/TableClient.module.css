@@ -17,3 +17,7 @@
     padding-top: 3px;
     width: 15px;
 }
+
+.main{
+    overflow-y: auto;
+}

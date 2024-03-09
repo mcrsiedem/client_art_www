@@ -84,4 +84,7 @@
     .firma{
         padding-left: 10px;
     }
-
+.alert_label{
+  padding-left: 15px;
+  font-weight: bold;
+}

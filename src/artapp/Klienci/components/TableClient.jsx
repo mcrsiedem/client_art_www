@@ -2,13 +2,15 @@ import React, { useState,useRef } from "react";
 import style from "./TableClient.module.css";
 import DeleteClient from "./DeleteClient";
 
-import iconCopy from "../../../svg/copy.svg";
+
 
 import axios from "axios";
 import { ip } from "../../../Host";
 
 import iconX from "../../../svg/x.svg";
 import iconDelete from "../../../svg/trash2.svg"
+import iconEdit from "../../../svg/settings.svg"
+
 export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZamowienia, getClients}) {
    
   const [selectedRow, setSelectedRow] = useState('');
@@ -38,7 +40,9 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                 <th className={style.kod}>Kod</th>
                 <th className={style.nip}>NIP</th>
                 <th className={style.opiekun}>Opiekun</th>
-                <th className={style.opiekun}>-</th>
+                <th className={style.th_ustawienia}></th>
+                <th className={style.th_ustawienia}></th>
+               
   
               </tr>
             </thead>
@@ -55,6 +59,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
+                    <EditIcon row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
                     <DeleteIcon row={row} rowID={rowID} setSelectedRow={setSelectedRow} setShowDeleteClientPane={setShowDeleteClientPane}/>
                   </tr>
                 );
@@ -79,19 +84,22 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
   }
   function DeleteIcon({ row,rowID,setShowDeleteClientPane }) {
     return (
+      <td>
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          rowID.current = row.id;
+          rowID.current = {id:row.id, firma: row.firma};
           setShowDeleteClientPane(true)
         }}
         alt="Procesy"
       />
+      </td>
     );
   }
   function UseIcon({ showAddClientStage }) {
     return (
+      <td>
       <img
         className={style.icon}
         src={iconX}
@@ -100,19 +108,22 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
         }}
         alt="Procesy"
       />
+      </td>
     );
   }
   
   function EditIcon({ showAddClientStage }) {
     return (
+      <td>
       <img
         className={style.icon}
-        src={iconX}
+        src={iconEdit}
         onClick={() => {
           showAddClientStage(false);
         }}
         alt="Procesy"
       />
+      </td>
     );
   }
   

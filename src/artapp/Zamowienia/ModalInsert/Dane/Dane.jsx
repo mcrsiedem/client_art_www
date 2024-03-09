@@ -3,6 +3,7 @@ import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_sta
 import { isNumberWalidation } from "../../../Actions/Walidacja";
 // import iconTable from "../../../../svg/settings.svg";
 import iconTable from "../../../../svg/add.png";
+import addIcon2 from "../../../../svg/addIcon2.svg";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -175,7 +176,7 @@ function Klient({ klienci,daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
       </select>
       <img
          className={style.dodaj_klienta}
-          src={iconTable}
+          src={addIcon2}
           onClick={() => {
             showAddClientStage(true)
           }}

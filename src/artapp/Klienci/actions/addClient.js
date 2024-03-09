@@ -9,7 +9,7 @@ export const  addClient  = async (daneKlienta,context,getClients,test,setShowAdd
         kod: daneKlienta.kod,
         nip: daneKlienta.nip,
         opiekun_id: daneKlienta.opiekun_id,
-        utworzyl_user_id: daneKlienta.opiekun_id,
+        utworzyl_user_id: daneKlienta.utworzyl_user_id,
     
       })
       .then((res2) => {

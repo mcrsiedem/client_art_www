@@ -6,6 +6,8 @@ import iconX from "../../svg/x.svg";
 import iconDelete from "../../svg/trash.svg";
 import TableClient from "./components/TableClient";
 import iconTable from "../../svg/add.png";
+import addIcon2 from "../../svg/addIcon2.svg";
+
 import AddClient from "./components/AddClient";
 
 export default function ClientStage({
@@ -73,7 +75,7 @@ function Dodaj({ setShowAddClientPane }) {
   return (
     <img
       className={style.dodaj_klienta}
-      src={iconTable}
+      src={addIcon2}
       onClick={() => {
         setShowAddClientPane(true);
         //  showAddClientStage(true)

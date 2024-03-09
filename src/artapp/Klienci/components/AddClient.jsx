@@ -4,19 +4,23 @@ import TokenContext from "../../Context/tokenContext";
 import { addClient } from "../actions/addClient";
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg"
+import DecodeToken from "../../Login/DecodeToken";
+import { useCookies } from "react-cookie";
+
 export default function AddClientPane({
   setShowAddClientPane,
   getClients,
   test
   
 }) {
+  const [cookies, setCookie] = useCookies();
   const [daneKlienta, setDaneKlienta] = useState({
     firma: "",
     adres: "",
     kod: "",
     nip: "",
-    opiekun_id: "", // tutaj trzeba przekazać zalogowane usera
-    utworzyl_user_id: "", // tutaj trzeba przekazać zalogowane usera
+    opiekun_id: DecodeToken(cookies.token).id, // tutaj trzeba przekazać zalogowane usera
+    utworzyl_user_id: DecodeToken(cookies.token).id, // tutaj trzeba przekazać zalogowane usera
   
   });
 
@@ -34,12 +38,14 @@ export default function AddClientPane({
 
 
 function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
+ // const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-          addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
+           addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
+          //console.log("token id :"+ DecodeToken(cookies.token).id,)
         }}
       >
         Zapisz

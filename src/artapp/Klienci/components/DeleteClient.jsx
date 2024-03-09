@@ -29,16 +29,29 @@ function Usun({ rowID, getClients,setShowDeleteClientPane}) {
         deleteClient(rowID, getClients,setShowDeleteClientPane);
       }}
     >
-      Skasuj
+      OK
     </button>
   );
 }
 
 
-function Header({ showAddClientStage }) {
+function Header({ setShowDeleteClientPane }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Skasuj..</p>
+      <p className={style.title}>Skasować ?</p>
+      <Zamknij setShowDeleteClientPane={setShowDeleteClientPane}/>
     </div>
+  );
+}
+function Zamknij({ setShowDeleteClientPane }) {
+  return (
+    <img
+      className={style.zamknij_icon}
+      src={iconX}
+      onClick={() => {
+        setShowDeleteClientPane(false);
+      }}
+      alt="Procesy"
+    />
   );
 }

@@ -72,6 +72,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
   
   }
   const openEdit = (row,rowID,setShowEdit) => {
+    // otwiera edycję po dwukrotnym kliknięciu
     rowID.current = {
       id:row.id,
       firma: row.firma,

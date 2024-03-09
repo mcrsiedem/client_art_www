@@ -1,10 +1,7 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
 import TokenContext from "../../Context/tokenContext";
-import axios from "axios";
-// import DecodeToken from "../Login/DecodeToken";
-import { ip } from "../../../Host"
-
+import { addClient } from "../actions/addClient";
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg"
 export default function AddClientPane({
@@ -34,29 +31,7 @@ export default function AddClientPane({
     </div>
   );
 }
-const  postKlient  = async (daneKlienta,context,getClients,test,setShowAddClientPane) =>{
-  
-await axios.post(ip + "klienci", {
-    firma: daneKlienta.firma,
-    adres: daneKlienta.adres,
-    kod: daneKlienta.kod,
-    nip: daneKlienta.nip,
-    opiekun_id: daneKlienta.opiekun_id,
-    utworzyl_user_id: daneKlienta.opiekun_id,
 
-  })
-  .then((res2) => {
-     getClients()
-     setShowAddClientPane(false)
-  })
-   
-
-}
-
-const getUserList2 = (context) => {
-  
-  context.getUsersList()
-}
 
 function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
   const context = useContext(TokenContext);
@@ -64,12 +39,7 @@ function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
       <button
         className={style.btn}
         onClick={() => {
-              postKlient(daneKlienta,context,getClients,test,setShowAddClientPane)
-  
-
-          //  context.getUsersList()
-          //  getUserList2(context)
-        //   showAddClientStage(false);
+          addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
         }}
       >
         Zapisz

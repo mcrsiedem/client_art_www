@@ -2,13 +2,6 @@ import React, { useState,useRef } from "react";
 import style from "./TableClient.module.css";
 import DeleteClient from "./DeleteClient";
 import EditClient from "./EditClient";
-
-
-
-import axios from "axios";
-import { ip } from "../../../Host";
-
-import iconX from "../../../svg/x.svg";
 import iconDelete from "../../../svg/trash2.svg"
 import iconEdit from "../../../svg/settings.svg"
 
@@ -41,7 +34,10 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                 return (
                   <tr 
                     key={row.id}
-                    onDoubleClick={()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)}
+                    onDoubleClick={
+                      ()=>openEdit(row,rowID,setShowEdit)
+                      // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
+                    }
                   >
                     <ID row={row} index={index+1}/>
                     <Firma row={row}/>
@@ -49,7 +45,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
                     <Kod row={row}/>
                     <NIP row={row}/>
                     <Opiekun row={row}/>
-                    <EditIcon row={row} rowID={rowID} setShowEdit={setShowEdit}/>
+                    <UseIcon row={row} daneZamowienia={daneZamowienia} setDaneZamowienia={setDaneZamowienia}/>
                     <DeleteIcon daneZamowienia={daneZamowienia} row={row} rowID={rowID}  setShowDeleteClientPane={setShowDeleteClientPane}/>
                   </tr>
                 );
@@ -74,6 +70,20 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
         )}
         </div>
   
+  }
+  const openEdit = (row,rowID,setShowEdit) => {
+    rowID.current = {
+      id:row.id,
+      firma: row.firma,
+      adres: row.adres,
+      kod: row.kod,
+      nip: row.nip,
+      opiekun_id: row.opiekun_id,
+      utworzyl_user_id: row.utworzyl_user_id,
+
+    };
+    setShowEdit(true)
+
   }
 
   const chooseClient = (daneZamowienia,setDaneZamowienia,id) => {
@@ -100,22 +110,9 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
       </td>
     );
   }
-  function UseIcon({ showAddClientStage }) {
-    return (
-      <td>
-      <img
-        className={style.icon}
-        src={iconX}
-        onClick={() => {
-          showAddClientStage(false);
-        }}
-        alt="Procesy"
-      />
-      </td>
-    );
-  }
+
   
-  function EditIcon({ row,rowID,setShowEdit }) {
+  function UseIcon({ row,setDaneZamowienia,daneZamowienia}) {
     return (
       <td>
       <img
@@ -123,17 +120,7 @@ export default function Table({klienciWyszukiwarka,  daneZamowienia,  setDaneZam
         src={iconEdit}
         onClick={() => {
          
-          rowID.current = {
-            id:row.id,
-            firma: row.firma,
-            adres: row.adres,
-            kod: row.kod,
-            nip: row.nip,
-            opiekun_id: row.opiekun_id,
-            utworzyl_user_id: row.utworzyl_user_id,
-
-          };
-          setShowEdit(true);
+          setDaneZamowienia({...daneZamowienia, klient_id : row.id})
         }}
         alt="Procesy"
       />

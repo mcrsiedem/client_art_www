@@ -14,7 +14,7 @@ import Technologie from './artapp/Technologie/Technologie'
 import Logowanie from './components/Logowanie/Logowanie';
 import Print from "./artapp/Print/Print";
 import Login from "./artapp/Login/Login";
-import { useState, createContext,useEffect } from "react";
+import { useState, createContext,useEffect,useRef } from "react";
 import History from "./artapp/History/History";
 import Panel from "./artapp/Panel/Panel";
 import {
@@ -30,33 +30,33 @@ import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
 import axios from "axios";
 import { ip } from "./Host";
+import { getUsersList } from "./artapp/Actions/Start/usersList";
 
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
-  const [user, setUser] = useState({
-    id: "",
-    imie: "",
-    nazwisko: "",
-    login: "",
-    dostep: ""
-  }); 
+  // const [user, setUser] = useState([]); 
   const [users, setUsers] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
 
+  // raz startuje
+  const effectRan = useRef(false);
   useEffect(() => {
-    getUsersList()
-}, []);
+    if (effectRan.current === true) {
+    getUsersList(setUsers)
+    
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
 
-  async function getUsersList() {
-    const res = await axios.get(ip + "lista-userow");
-    setUsers([...res.data]);
-  }
+
   return (
     
     <BrowserRouter basename={''} >
     
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,user, setUser,users,getUsersList}}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList}}>
         <Header />
         
         <Routes >

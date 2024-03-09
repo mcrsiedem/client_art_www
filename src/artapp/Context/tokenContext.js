@@ -5,8 +5,8 @@ const TokenContext = React.createContext({
     setToken: ()=>{},
     rowSelected: [],
     setRowSelected: ()=>{},
-    user: '',
-    setUser: ()=>{},
+    // user: '',
+    // setUser: ()=>{},
     users:[], // wszyscy użytkownicy
     getUsersList: ()=> {} // pobiera użytkowników
 

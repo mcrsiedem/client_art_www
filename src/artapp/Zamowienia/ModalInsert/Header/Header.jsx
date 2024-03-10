@@ -68,8 +68,9 @@ function Header({
           />
 
 
-            {readOnly&&(
-              <>
+            {readOnly ? 
+            <> </> :
+              <> 
               <button
               
                 onClick={async () => {
@@ -87,7 +88,7 @@ function Header({
 
            <ZapiszJako isSaveButtonDisabled={isSaveButtonDisabled} postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
               </>
-            )}
+             }
               
 
           <button

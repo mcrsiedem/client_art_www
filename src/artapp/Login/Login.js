@@ -55,7 +55,7 @@ export default function Login({user,setUser}) {
       if (res.data.length > 0) {
        //   token.setToken(parseJwt(res.data).id);
         // localStorage.setItem('header', true)
-        setCookie("token", res.data, { path: "/" });
+        // setCookie("token", res.data, { path: "/" });
 
         // sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera

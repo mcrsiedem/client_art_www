@@ -252,6 +252,8 @@ async function getClients() {
 
 
   async function fechparametry(idZamowienia) {
+
+          // tu podpis zamowienia tokenem 
            const res = await axios.get(ip + "parametry/"+idZamowienia);
           //  console.log("res 0" , res.data[0])
            setDaneZamowienia(res.data[0][0])

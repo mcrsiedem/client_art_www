@@ -138,6 +138,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           key={row.id}
           onDoubleClick={(node, event) => {
             
+            
             open2(row.id);
             setRow({ id: row.id});
           }}

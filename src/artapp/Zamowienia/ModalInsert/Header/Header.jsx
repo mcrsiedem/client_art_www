@@ -25,14 +25,14 @@ function Header({
   setShowSaveAs,
   saveAs, setSaveAs,
   isSaveButtonDisabled, setSaveButtonDisabled,
-  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia
+  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,readOnly
 }) {
 
   
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie... {isSaveButtonDisabled && (
+        <div className={style.title}>Zamówienie... {!readOnly && (
           <div>
              otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
             
@@ -68,7 +68,8 @@ function Header({
           />
 
 
-   
+            {readOnly&&(
+              <>
               <button
               
                 onClick={async () => {
@@ -84,7 +85,10 @@ function Header({
               </button>
        
 
-          <ZapiszJako isSaveButtonDisabled={isSaveButtonDisabled} postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
+           <ZapiszJako isSaveButtonDisabled={isSaveButtonDisabled} postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
+              </>
+            )}
+              
 
           <button
             onClick={() => openInNewTab("/Zamowienia")}

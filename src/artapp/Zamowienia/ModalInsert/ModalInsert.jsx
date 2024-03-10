@@ -338,6 +338,7 @@ async function getClients() {
         isSaveButtonDisabled={isSaveButtonDisabled}
         setSaveButtonDisabled={setSaveButtonDisabled}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
+        readOnly={readOnly}
       />
 
       <Dane

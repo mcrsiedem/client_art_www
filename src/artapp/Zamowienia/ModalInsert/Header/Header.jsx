@@ -25,16 +25,16 @@ function Header({
   setShowSaveAs,
   saveAs, setSaveAs,
   isSaveButtonDisabled, setSaveButtonDisabled,
-  isLockDragDrop,lockDragDrop
+  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia
 }) {
 
   
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie...        {isSaveButtonDisabled && (
+        <div className={style.title}>Zamówienie... {isSaveButtonDisabled && (
           <div>
-             ...tylko do odczytu...
+             otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
             
           </div>
         )}</div>

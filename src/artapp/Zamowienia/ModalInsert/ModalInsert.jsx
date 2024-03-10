@@ -35,6 +35,7 @@ import { saveOrder } from "../../Actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../Actions/today";
 import ClientStage from "../../Klienci/ClientStage";
+import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
 function ModalInsert({
   openModalInsert,
@@ -54,6 +55,9 @@ function ModalInsert({
   const [isLockDragDrop, lockDragDrop] = useState(false);
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
+  const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
+  const [readOnly,setReadOnly] = useState(false);
+
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
@@ -282,11 +286,16 @@ async function getClients() {
           .then((res) => {
               // res.data =  OK - mozna bedzie zapisc / error - readonly
               // if res.data = error zablokuj guziki zapisu
-              if(res.data == "error"){
+              if(res.data.stan == "error"){
                 setSaveButtonDisabled(true)
+                setReadOnly(true)
               }
-              
-            console.log("Status otwarcia: ", res.data)
+              setStanOtwarciaZamowienia({
+                stan: res.data.stan,
+                user: res.data.user,
+                data: res.data.data
+              })
+
           });
 
 
@@ -328,6 +337,7 @@ async function getClients() {
         setSaveAs={setSaveAs}
         isSaveButtonDisabled={isSaveButtonDisabled}
         setSaveButtonDisabled={setSaveButtonDisabled}
+        stanOtwarciaZamowienia={stanOtwarciaZamowienia}
       />
 
       <Dane
@@ -487,9 +497,12 @@ async function getClients() {
           
         />
       )}
-
-
-
+{readOnly && (
+        <ReadOnlyAlert
+          setReadOnly={setReadOnly}
+          stanOtwarciaZamowienia={stanOtwarciaZamowienia}
+        />
+      )}
     </div>
 
     

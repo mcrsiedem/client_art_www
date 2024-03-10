@@ -26,7 +26,7 @@ import axios from "axios";
 import { ip } from "../../../Host";
 import Elementy from "./Elementy/Elementy";
 import Introligatornia from "./Introligatornia/Introligatornia";
-import ElementyProcesInsert from "./Elementy/ElementyProcesInsert/ElementyProcesInsert";
+import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import TokenContext from "../../Context/tokenContext";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
@@ -385,7 +385,7 @@ async function getClients() {
       </div>
 
       {showElementyProcesyInsert && (
-        <ElementyProcesInsert
+        <ProcesElement
           showElementyProcesyInsert={showElementyProcesyInsert}
           setShowElementyProcesyInsert={setShowElementyProcesyInsert}
           procesyElementow={procesyElementow}

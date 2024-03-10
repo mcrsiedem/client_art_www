@@ -235,16 +235,35 @@ async function getClients() {
 
 
 
-  useEffect(() => {
-          fechListy();
 
-    if (open) {
-      setShowParametryZamowienia(true)
-      setShowTemplate(false)
-      setOpen(false)
-      fechparametry(row.id)
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (effectRan.current === true) {
+
+
+
+      fechListy();
+
+      if (open) {
+        setShowParametryZamowienia(true)
+        setShowTemplate(false)
+        setOpen(false)
+        fechparametry(row.id)
+      }
+
+
     }
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
+
+
+
+
+
+
+  
 
   useEffect(() => {
     getClients()
@@ -254,15 +273,32 @@ async function getClients() {
   async function fechparametry(idZamowienia) {
 
           // tu podpis zamowienia tokenem 
+          await axios
+          .put(ip + "putTokenZamowienie", {
+            id: idZamowienia,
+            token: sessionStorage.getItem("token"),
+            user: DecodeToken(sessionStorage.getItem("token")).id,
+          })
+          .then((res) => {
+              // res.data =  OK - mozna bedzie zapisc / error - readonly
+              // if res.data = error zablokuj guziki zapisu
+              if(res.data == "error"){
+                setSaveButtonDisabled(true)
+              }
+              
+            console.log("Status otwarcia: ", res.data)
+          });
+
+
            const res = await axios.get(ip + "parametry/"+idZamowienia);
-          //  console.log("res 0" , res.data[0])
+
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
            setElementy(res.data[2])
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
-          //  pakowanieEdit.sort((a, b) => a.indeks - b.indeks);
+        
 
   }
 
@@ -427,6 +463,7 @@ async function getClients() {
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
           postZamowienieObj={postZamowienieObj}
+         
         
           
         />

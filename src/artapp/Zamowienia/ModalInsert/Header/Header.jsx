@@ -32,7 +32,12 @@ function Header({
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie...</div>
+        <div className={style.title}>Zamówienie...        {isSaveButtonDisabled && (
+          <div>
+             ...tylko do odczytu...
+            
+          </div>
+        )}</div>
         <div className={style.buttons}>
 
         <img
@@ -79,7 +84,7 @@ function Header({
               </button>
        
 
-          <ZapiszJako postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
+          <ZapiszJako isSaveButtonDisabled={isSaveButtonDisabled} postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
 
           <button
             onClick={() => openInNewTab("/Zamowienia")}
@@ -108,16 +113,17 @@ function Header({
 
 export default Header;
 
-function ZapiszJako({postZamowienieObj,setShowSaveAs,setSaveAs}){
+function ZapiszJako({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
 
   return(
     <button
+    disabled={isSaveButtonDisabled}
     onClick={async () => {
 setShowSaveAs(true)
 setSaveAs(true)
        
     }}
-    className={style.btn}
+    className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
   >
     Zapisz jako...
   </button>

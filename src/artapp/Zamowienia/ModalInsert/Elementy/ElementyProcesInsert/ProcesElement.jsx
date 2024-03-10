@@ -80,7 +80,7 @@ export default function ProcesElement({
                 procesyElementow={procesyElementow}
                 setProcesyElementow={setProcesyElementow}
                 listaDostepnychProcesow={listaDostepnychProcesow}
-                setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+                setShćalementyProcesyInsert={setShowElementyProcesyInsert}
               />
             );
           })} */}

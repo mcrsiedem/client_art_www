@@ -31,7 +31,7 @@ function History(){
     };
 
     async function checkToken() {
-        axios.get(ip + '/islogged/'+ cookies.token)
+        axios.get(ip + '/islogged/'+ sessionStorage.getItem("token"))
         .then(res=> {
           if(res.data.Status === "Success"){
             fechHistory();

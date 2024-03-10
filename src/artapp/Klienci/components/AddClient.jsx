@@ -19,8 +19,8 @@ export default function AddClientPane({
     adres: "",
     kod: "",
     nip: "",
-    opiekun_id: DecodeToken(cookies.token).id, // tutaj trzeba przekazać zalogowane usera
-    utworzyl_user_id: DecodeToken(cookies.token).id, // tutaj trzeba przekazać zalogowane usera
+    opiekun_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
+    utworzyl_user_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
   
   });
 
@@ -45,7 +45,7 @@ function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
         className={style.btn}
         onClick={() => {
            addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
-          //console.log("token id :"+ DecodeToken(cookies.token).id,)
+       
         }}
       >
         Zapisz

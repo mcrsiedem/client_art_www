@@ -137,32 +137,6 @@ props.zaznacz(props.id)
     'Nieaktywne': '15',
   }
   
-  // const handleEditStatusIn= (status) => {
-  //   //  event.preventDefault();
-  //   axios
-  //     .put(ip + "updateStatusWWW/", {
-  //       id: props.id,
-  //       value: statusList[status],
-  //       idzlecenia: props.id_zlecenia,
-  //       user_id: sessionStorage.getItem("id"),
-  //       token: cookies.token,
-  //     })
-  //     .then((res) => {
-  //       if (res.status === 201) {
-  //         // snackbarRef.current.show();
-  //       //  rowRef.current.confirm();
-  //       setStatusCombo(status);
-
-
-  //       } else {
-  //         if (res.data.Error === "Wrong token") {
-  //           navigate("/Login");
-  //         }
-  //         console.log("Błąd");
-  //       }
-
-  //     });
-  // };
 
   async function handleEditStatus(status) {
 
@@ -172,7 +146,7 @@ props.zaznacz(props.id)
       value: statusList[status],
       idzlecenia: props.id_zlecenia,
       user_id: sessionStorage.getItem("id"),
-      token: cookies.token,
+      token: sessionStorage.getItem("token")
     });
 
     if (res.status === 201) {

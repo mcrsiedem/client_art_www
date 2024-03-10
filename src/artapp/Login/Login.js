@@ -59,6 +59,7 @@ export default function Login({user,setUser}) {
 
         // sessionStorage.setItem("id", parseJwt(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
+        sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
 
         // przechowuje usera w contexcie ale po odswieżeniu context jest pusty
         // token.setUser({

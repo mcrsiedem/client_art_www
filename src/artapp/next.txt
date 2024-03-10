@@ -22,4 +22,4 @@ Klienci -
             - ikonki kasowanie -  edycja - użycie ( łapka )     V
             - user_id - domyślnie                               V
             - opiekun_id - domyślnie                            V
-            - user:  DecodeToken(cookies.token).id              V
+            - user:  DecodeToken(sessionStorage.getItem("token")).id              V

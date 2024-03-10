@@ -42,7 +42,7 @@ function Zamowienia({ user, setUser }) {
   }
 
   async function checkToken() {
-    axios.get(ip + "/islogged/" + cookies.token).then((res) => {
+    axios.get(ip + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
         fechZamowienia();
       } else {

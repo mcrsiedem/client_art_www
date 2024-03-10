@@ -78,7 +78,7 @@ const Jobs = forwardRef((props, ref) => {
             ilosc: sztuki,
             blacha_id: blacha_id,
             user_id: sessionStorage.getItem("id"),
-            token: cookies.token,
+            token: sessionStorage.getItem("token"),
           })
           .then((res) => {
             if (res.status === 201) {

@@ -89,7 +89,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         data_materialow: daneZamowienia.data_materialow,
         data_spedycji: daneZamowienia.data_spedycji,
         opiekun_id: daneZamowienia.opiekun_id,
-        user: DecodeToken(cookies.token).id,
+        user: DecodeToken(sessionStorage.getItem("token")).id,
         stan: daneZamowienia.stan,
         status: daneZamowienia.status,
         rodzaj: daneZamowienia.rodzaj,  // szkic, wstępne, finalne

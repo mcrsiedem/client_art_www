@@ -18,8 +18,8 @@ export default function Technologie(){
     const effectRan = useRef(false);
     useEffect(() => {
       if (effectRan.current === true) {
-         fetchTechnologie();
-
+        //  fetchTechnologie();
+         const socket = io.connect("http://localhost:3002")
       }
       return () => {
         effectRan.current = true;
@@ -33,7 +33,7 @@ export default function Technologie(){
       console.log(job)
     }
 
-const socket = io.connect("http://localhost:3002")
+
 const sendMessage = () => {
 // socket.emit()
 }

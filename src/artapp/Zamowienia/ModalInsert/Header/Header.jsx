@@ -2,6 +2,8 @@ import iconTable from "../../../../svg/table.svg";
 import iconTableGreen from "../../../../svg/table_green.svg";
 import React, { useState } from "react";
 import style from "./Header.module.css";
+import axios from "axios";
+import { ip } from "../../../../Host";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -25,14 +27,16 @@ function Header({
   setShowSaveAs,
   saveAs, setSaveAs,
   isSaveButtonDisabled, setSaveButtonDisabled,
-  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,readOnly
+  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,readOnly2,setReadOnly2,
+  row,
+  
 }) {
 
   
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie... {!readOnly && (
+        <div className={style.title}>READONLY: { readOnly2} Zamówienie... {!readOnly2 && (
           <div>
              otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
             
@@ -68,15 +72,20 @@ function Header({
           />
 
 
-            {readOnly ? 
+            {readOnly2 ? 
             <> </> :
               <> 
               <button
               
                 onClick={async () => {
+                
                   setSaveAs(false)
                   postZamowienieObj();
                   setSaveButtonDisabled(true)
+                
+                  // setOrderClosed
+
+
                 }}
                 className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
                 disabled={isSaveButtonDisabled}
@@ -105,7 +114,16 @@ function Header({
             Sprawdź
           </button>
           <button
-            onClick={() => setOpenModalInsert(false)}
+            onClick={async() => {
+              console.log(" readOnly: "+ readOnly2)
+            setOpenModalInsert(false)
+                   if (!readOnly2){
+                        const res = await axios.put(ip + "setOrderClosed",{
+                      id: row.id,
+                    });
+                   }
+                
+            }}
             className={style.btn}
           >
             Zamknij

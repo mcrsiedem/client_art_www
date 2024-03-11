@@ -56,7 +56,8 @@ function ModalInsert({
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
-  const [readOnly,setReadOnly] = useState(false);
+  const [readOnly2,setReadOnly2] = useState(false);
+  // const readOnly = useRef(false)
 
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
@@ -239,31 +240,6 @@ async function getClients() {
 
 
 
-  // taak nie bo nie działa na stronie www
-  // const effectRan = useRef(false);
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-
-
-
-  //     fechListy();
-
-  //     if (open.current) {
-  //       setShowParametryZamowienia(true)
-  //       setShowTemplate(false)
-  //       setOpen(false)
-  //       open.current =false
-  //       fechparametry(row.id)
-  //     }
-
-
-  //   }
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
-
-
   useEffect(() => {
 
 
@@ -286,17 +262,6 @@ async function getClients() {
 
 
 
-
-
-
-
-
-
-
-  
-
-  
-
   useEffect(() => {
     getClients()
 }, [isShowAddClientStage]);
@@ -304,9 +269,10 @@ async function getClients() {
 
   async function fechparametry(idZamowienia) {
 
-
+          // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
+          // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
-          .put(ip + "putTokenZamowienie", {
+          .put(ip + "setOrderOpen", {
             id: idZamowienia,
             token: sessionStorage.getItem("token"),
             user: DecodeToken(sessionStorage.getItem("token")).id,
@@ -314,8 +280,9 @@ async function getClients() {
           .then((res) => {
 
               if(res.data.stan == "error"){
-                setSaveButtonDisabled(true)
-                setReadOnly(true)
+              setSaveButtonDisabled(true)
+               setReadOnly2(true)
+                // readOnly.current = true
               }
               setStanOtwarciaZamowienia({
                 stan: res.data.stan,
@@ -365,7 +332,9 @@ async function getClients() {
         isSaveButtonDisabled={isSaveButtonDisabled}
         setSaveButtonDisabled={setSaveButtonDisabled}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-        readOnly={readOnly}
+        readOnly2={readOnly2}
+        setReadOnly2={setReadOnly2}
+        row={row}
       />
 
       <Dane
@@ -525,9 +494,10 @@ async function getClients() {
           
         />
       )}
-{readOnly && (
+{readOnly2 && (
         <ReadOnlyAlert
-          setReadOnly={setReadOnly}
+        // readOnly={readOnly}
+          setReadOnly2={setReadOnly2}
           stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         />
       )}

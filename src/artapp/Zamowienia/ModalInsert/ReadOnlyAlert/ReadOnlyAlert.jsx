@@ -1,6 +1,6 @@
 import style from "../ReadOnlyAlert/ReadOnlyAlert.module.css";
 
-export default function ReadOnlyAlert({ setReadOnly, stanOtwarciaZamowienia }) {
+export default function ReadOnlyAlert({ setReadOnly2, stanOtwarciaZamowienia }) {
   //   useEffect(() => {}, []);
 
   return (
@@ -20,7 +20,8 @@ export default function ReadOnlyAlert({ setReadOnly, stanOtwarciaZamowienia }) {
                 <button
                   className={style.btn}
                   onClick={() => {
-                    setReadOnly(false);
+                    setReadOnly2(false);
+                  
                   }}
                 >
                   OK

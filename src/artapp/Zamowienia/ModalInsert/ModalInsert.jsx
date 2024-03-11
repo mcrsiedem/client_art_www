@@ -56,12 +56,35 @@ function ModalInsert({
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
-  const [readOnly2,setReadOnly2] = useState(false);
+  const [readOnly,setReadOnly] = useState(false);
+
+  const [readAlert,setReadAlert] = useState(false);
   // const readOnly = useRef(false)
 
   const [cookies, setCookie] = useCookies();
   const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
+  const [uszlachetnienia, setUszlachetnienia] = useState();
+  const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
+  const [idZamowienie, setIdZamowienia] = useState();
+  const [isTable, setIsTable] = useState(true);
+  const [info, setInfo] = useState("napis");
+  const [listaWykonczenia, setListaWykonczenia] = useState();
+  const [listaUszlachetnien, setListaUszlachetnien] = useState();
+  const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
+  const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+  const [selected_wykonczenie, setSelected_wykonczenie] = useState();
+  const [isEdit, setIsEdit] = useState(false);
+  const [isOK, setIsOK] = useState(false);
+  const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
+  const [showTemplate, setShowTemplate] = useState(true);
+  const [showSaveAs, setShowSaveAs] = useState(false);
+  const [saveAs, setSaveAs] = useState(false);
+  const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
+const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
+const [openModalStany, setOpenModalStany] = useState(false);
+const [klienci, setKlienci] = useState([]);
+ const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
   const [preOrder, setPreOrder] = useState({
     typ: 1,
     oprawa: 1,
@@ -192,27 +215,7 @@ function ModalInsert({
     },
     
   ]);
-  const [uszlachetnienia, setUszlachetnienia] = useState();
-  const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
-  const [idZamowienie, setIdZamowienia] = useState();
-  const [isTable, setIsTable] = useState(true);
-  const [info, setInfo] = useState("napis");
-  const [listaWykonczenia, setListaWykonczenia] = useState();
-  const [listaUszlachetnien, setListaUszlachetnien] = useState();
-  const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
-  const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-  const [selected_wykonczenie, setSelected_wykonczenie] = useState();
-  const [isEdit, setIsEdit] = useState(false);
-  const [isOK, setIsOK] = useState(false);
-  const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
-  const [showTemplate, setShowTemplate] = useState(true);
-  const [showSaveAs, setShowSaveAs] = useState(false);
-  const [saveAs, setSaveAs] = useState(false);
-  const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
-const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
-const [openModalStany, setOpenModalStany] = useState(false);
-const [klienci, setKlienci] = useState([]);
- const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
+
 
 async function getClients() {
   const res = await axios.get(ip + "lista-klientow");
@@ -281,9 +284,15 @@ async function getClients() {
 
               if(res.data.stan == "error"){
               setSaveButtonDisabled(true)
-               setReadOnly2(true)
-                // readOnly.current = true
+
+               setReadOnly(true)   // zmien parametr
+               setReadAlert(true) //pokaż okno alert read only
+    
+              }else{
+                
               }
+
+            
               setStanOtwarciaZamowienia({
                 stan: res.data.stan,
                 user: res.data.user,
@@ -332,9 +341,12 @@ async function getClients() {
         isSaveButtonDisabled={isSaveButtonDisabled}
         setSaveButtonDisabled={setSaveButtonDisabled}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-        readOnly2={readOnly2}
-        setReadOnly2={setReadOnly2}
         row={row}
+        readAlert={readAlert}
+        setReadAlert={setReadAlert}
+        readOnly={readOnly}
+        setReadOnly={setReadOnly}
+    
       />
 
       <Dane
@@ -494,10 +506,11 @@ async function getClients() {
           
         />
       )}
-{readOnly2 && (
+{readAlert && (
         <ReadOnlyAlert
         // readOnly={readOnly}
-          setReadOnly2={setReadOnly2}
+        readAlert={readAlert}
+        setReadAlert={setReadAlert}
           stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         />
       )}

@@ -27,8 +27,9 @@ function Header({
   setShowSaveAs,
   saveAs, setSaveAs,
   isSaveButtonDisabled, setSaveButtonDisabled,
-  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,readOnly2,setReadOnly2,
-  row,
+  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,
+  row, 
+  readAlert,   setReadAlert ,   readOnly,  setReadOnly
   
 }) {
 
@@ -36,7 +37,7 @@ function Header({
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>READONLY: { readOnly2} Zamówienie... {!readOnly2 && (
+        <div className={style.title}>Zamówienie... {readOnly && (
           <div>
              otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
             
@@ -72,7 +73,7 @@ function Header({
           />
 
 
-            {readOnly2 ? 
+            {readOnly ? 
             <> </> :
               <> 
               <button
@@ -115,9 +116,10 @@ function Header({
           </button>
           <button
             onClick={async() => {
-              console.log(" readOnly: "+ readOnly2)
+             
             setOpenModalInsert(false)
-                   if (!readOnly2){
+            console.log("readOnly: "+ readOnly)
+                   if (!readOnly){
                         const res = await axios.put(ip + "setOrderClosed",{
                       id: row.id,
                     });

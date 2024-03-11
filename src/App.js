@@ -30,7 +30,7 @@ import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
 import axios from "axios";
 import { ip } from "./Host";
-import { getUsersList } from "./artapp/Actions/Start/usersList";
+ import { getUsersList } from "./artapp/Actions/Start/usersList";
 
 export default function App() {
 
@@ -39,17 +39,18 @@ export default function App() {
   const [users, setUsers] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
 
-  // raz startuje
-  const effectRan = useRef(false);
+
+
   useEffect(() => {
-    if (effectRan.current === true) {
-    getUsersList(setUsers)
+  
+
+
+     getUsersList(setUsers)
+
     
-    }
-    return () => {
-      effectRan.current = true;
-    };
+
   }, []);
+  //--
 
 
   return (

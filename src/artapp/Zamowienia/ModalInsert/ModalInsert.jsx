@@ -47,7 +47,7 @@ function ModalInsert({
   listaGramatur,
   setListaGramatur,
   open,
-  setOpen,
+  // setOpen,
   row,
   refreshZamowienia
 }) {
@@ -215,7 +215,7 @@ const [klienci, setKlienci] = useState([]);
 
 async function getClients() {
   const res = await axios.get(ip + "lista-klientow");
-  setKlienci([...res.data]);
+   setKlienci([...res.data]);  
    setKlienciWyszukiwarka([...res.data]);
 
 }
@@ -239,33 +239,61 @@ async function getClients() {
 
 
 
+  // taak nie bo nie działa na stronie www
+  // const effectRan = useRef(false);
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
 
-  const effectRan = useRef(false);
+
+
+  //     fechListy();
+
+  //     if (open.current) {
+  //       setShowParametryZamowienia(true)
+  //       setShowTemplate(false)
+  //       setOpen(false)
+  //       open.current =false
+  //       fechparametry(row.id)
+  //     }
+
+
+  //   }
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+
+
   useEffect(() => {
-    if (effectRan.current === true) {
+
 
 
 
       fechListy();
 
-      if (open) {
+      if (open.current) {
         setShowParametryZamowienia(true)
         setShowTemplate(false)
-        setOpen(false)
+        // setOpen(false)
+        open.current =false
         fechparametry(row.id)
       }
 
 
-    }
-    return () => {
-      effectRan.current = true;
-    };
+
+   
   }, []);
 
 
 
 
 
+
+
+
+
+
+  
 
   
 
@@ -276,7 +304,7 @@ async function getClients() {
 
   async function fechparametry(idZamowienia) {
 
-          // tu podpis zamowienia tokenem 
+
           await axios
           .put(ip + "putTokenZamowienie", {
             id: idZamowienia,
@@ -284,8 +312,7 @@ async function getClients() {
             user: DecodeToken(sessionStorage.getItem("token")).id,
           })
           .then((res) => {
-              // res.data =  OK - mozna bedzie zapisc / error - readonly
-              // if res.data = error zablokuj guziki zapisu
+
               if(res.data.stan == "error"){
                 setSaveButtonDisabled(true)
                 setReadOnly(true)

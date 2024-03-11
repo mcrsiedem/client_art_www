@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import { ip } from "../../Host";
 import { useCookies } from "react-cookie";
@@ -14,7 +14,8 @@ function Zamowienia({ user, setUser }) {
   const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState([]);
   const [openModalInsert, setOpenModalInsert] = useState(false);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const open = useRef(false);
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -27,7 +28,8 @@ function Zamowienia({ user, setUser }) {
     //pokazuje OpenModal
     // zmiena open na true, co oznacza dla modala, ze open istniejace zamowienie a nie insert new
     setOpenModalInsert(true)
-    setOpen(true)
+    // setOpen(true)
+    open.current = true
 
   }
   async function fechZamowienia() {
@@ -103,7 +105,7 @@ function Zamowienia({ user, setUser }) {
           listaGramatur={listaGramatur}
           setListaGramatur={setListaGramatur}
           open={open}
-          setOpen={setOpen}
+          // setOpen={setOpen}
           row={row}
           data={data}
           setData={setData}

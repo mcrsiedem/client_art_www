@@ -14,17 +14,27 @@ export default function Technologie(){
   const [dataTechnologie,setDataTechnologie] =useState([]);
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
-
+  const[message, setMessage] = useState("")
+  const[messageReceived, setMessageReceived] = useState("")
+  const socket = io.connect("http://localhost:3002")
     const effectRan = useRef(false);
     useEffect(() => {
       if (effectRan.current === true) {
         //  fetchTechnologie();
-         const socket = io.connect("http://localhost:3002")
+        // const socket = io.connect("http://localhost:3002")
+      
       }
       return () => {
         effectRan.current = true;
       };
     }, []);
+
+
+    useEffect(()=>{
+      socket.on("receive_message", (data)=>{
+     setMessageReceived(data.message)
+      })
+    },[socket])
 
    async function fetchTechnologie(){
       const res = await axios.get(ip + "technologie");
@@ -35,12 +45,14 @@ export default function Technologie(){
 
 
 const sendMessage = () => {
-// socket.emit()
+  socket.emit("send_mesage", {message})
 }
     return(
     <>
-    <input></input> 
+    <input onChange={(e)=>setMessage(e.target.value)}></input> 
     <button onClick={sendMessage}>Send</button>
+    <h1>Message:</h1>
+    {messageReceived}
             {/* <Header/>
             <TechnologiaTable dataTechnologie={dataTechnologie} setStageTechnologiaVisible={setStageTechnologiaVisible} setActiveRowId={setActiveRowId}/>
             <Footer/>

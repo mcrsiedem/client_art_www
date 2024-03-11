@@ -7,6 +7,7 @@ import { ip } from "../../Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
 import TechnologiaStage from "../TechnologiaStage/TechnologiaStage"
 import style from "./Technologie.module.css";
+import io from "socket.io-client"
 
 export default function Technologie(){
 
@@ -32,18 +33,23 @@ export default function Technologie(){
       console.log(job)
     }
 
-
+const socket = io.connect("http://localhost:3002")
+const sendMessage = () => {
+// socket.emit()
+}
     return(
     <>
-        <Header/>
-        <TechnologiaTable dataTechnologie={dataTechnologie} setStageTechnologiaVisible={setStageTechnologiaVisible} setActiveRowId={setActiveRowId}/>
-        <Footer/>
+    <input></input> 
+    <button onClick={sendMessage}>Send</button>
+            {/* <Header/>
+            <TechnologiaTable dataTechnologie={dataTechnologie} setStageTechnologiaVisible={setStageTechnologiaVisible} setActiveRowId={setActiveRowId}/>
+            <Footer/>
 
-        {isStageTechnologiaVisible && (
-        <TechnologiaStage
-    
-        />
-      )}
+            {isStageTechnologiaVisible && (
+            <TechnologiaStage
+        
+            />
+          )} */}
     </>
     )
     

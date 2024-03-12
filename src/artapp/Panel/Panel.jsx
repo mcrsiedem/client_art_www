@@ -1,12 +1,18 @@
 import React from "react";
-import {  useEffect } from "react";
+import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import { useNavigate } from "react-router-dom";
 
-function Panel({user,setUser}){
-        const navigate = useNavigate();
+import TokenContext from "../Context/tokenContext";
 
+function Panel({user,setUser}){
+
+
+        const navigate = useNavigate();
+   
     useEffect(() => {
+        
+
         document.getElementById("header").style.display = "none";
       }, []);
 

@@ -5,16 +5,20 @@ import style from './Login.module.css';
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { ip } from "../../Host";
+import { ip,ip_socket_io } from "../../Host";
 import TokenContext from "../Context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
 
 import iconLogo from "../../svg/logo.svg";
-
+import io from "socket.io-client"
 var header;
 
 export default function Login({user,setUser}) {
+
+  let socket;
+  const context = useContext(TokenContext);
+
   function parseJwt(token) {
     //wyciaga payload z tokenu
     var base64Url = token.split(".")[1];
@@ -32,11 +36,26 @@ export default function Login({user,setUser}) {
     return JSON.parse(jsonPayload);
   }
 
+
+
   useEffect(() => {
+    socket = io.connect(ip_socket_io)
+    context.setSocketStan(socket)
     header = document.getElementById("header");
     header.style.display = "none";
   }, []);
 
+
+
+  useEffect(()=>{
+    socket.on("receive_message", (data)=>{
+      //tu przychodzi odpowiedź i jest zapisana w contexcie
+      setSocketReceive(data.message)
+    })
+  },[socket])
+
+  const[socketReceive, setSocketReceive] = useState([])
+  const[socketStan, setSocketStan] = useState([])
   const token = useContext(TokenContext);
   const [cookies, setCookie] = useCookies([""]);
 
@@ -73,6 +92,9 @@ export default function Login({user,setUser}) {
 
         header.style.display = "grid";
         navigate("/Panel");
+
+        
+
       } else {
         console.log("Błąd");
       }

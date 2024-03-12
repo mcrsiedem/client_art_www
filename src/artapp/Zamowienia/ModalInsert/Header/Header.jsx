@@ -112,6 +112,7 @@ function Header({
 
 
           <ButtonSprawdz/>
+          <ButtonSprawdz2/>
 
 
 
@@ -175,3 +176,21 @@ Sprawdź {context.socketReceive}
 </button>
   )
 }
+
+function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
+  const context = useContext(TokenContext);
+
+  const sendMessage = () => {
+    context.socketStan.emit("send_mesage", {message:""})
+  }
+
+  return(
+<button
+ onClick={() => sendMessage()}
+className={style.btn}
+>
+Sprawdź {context.socketReceive}
+</button>
+  )
+}
+

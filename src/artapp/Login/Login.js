@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext, useEffect,useRef } from "react";
 
 import style from './Login.module.css';
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,8 @@ var header;
 
 export default function Login({user,setUser}) {
 
-  let socket;
+  
+ let socket;
   const context = useContext(TokenContext);
 
   function parseJwt(token) {
@@ -35,6 +36,21 @@ export default function Login({user,setUser}) {
 
     return JSON.parse(jsonPayload);
   }
+
+  // const effectRan = useRef(false);
+
+
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+      
+  //     context.setSocketStan(socket)
+  //     header = document.getElementById("header");
+  //     header.style.display = "none";
+  //   }
+  //   return () => {
+  //     effectRan.current = false;
+  //   };
+  // }, []);
 
 
 

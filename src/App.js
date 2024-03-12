@@ -40,10 +40,7 @@ export default function App() {
   const [users, setUsers] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
   const[socketReceive, setSocketReceive] = useState([])
-  const[socketStan, setSocketStan] = useState([])
-
-  let socket;
-
+  const[socketStan, setSocketStan] = useState([]) // tutaj przechowywany jest socekt utworzony na stronie login
 
   useEffect(() => {
   

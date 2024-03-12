@@ -9,8 +9,8 @@ const TokenContext = React.createContext({
     // setUser: ()=>{},
     users:[], // wszyscy użytkownicy
     getUsersList: ()=> {},
-    setSocketStan:()=>{},
-    socketStan: [],
+    setSocketStan:()=>{}, // dodawanie socketu do stanu
+    socketStan: [],  // stan przechowujący socket
     socketReceive:[] // w stanie jest socket io
 });
 

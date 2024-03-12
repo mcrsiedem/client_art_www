@@ -164,7 +164,8 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
   const context = useContext(TokenContext);
 
   const sendMessage = () => {
-    context.socketStan.emit("send_mesage", {message:"OK"})
+     context.socketStan.emit("send_mesage", {message:"OK"})
+
   }
 
   return(
@@ -181,7 +182,10 @@ function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,se
   const context = useContext(TokenContext);
 
   const sendMessage = () => {
-    context.socketStan.emit("send_mesage", {message:""})
+     console.log(context.socketReceive)
+    // context.socketStan.emit("send_mesage", {message:""})
+    // sessionStorage.getItem("socket").emit("send_mesage", {message:"OK"})
+  
   }
 
   return(

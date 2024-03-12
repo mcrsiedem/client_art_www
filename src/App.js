@@ -66,7 +66,7 @@ export default function App() {
     
     <BrowserRouter basename={''} >
     
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan,socketReceive,setSocketStan}}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
         
         <Routes >

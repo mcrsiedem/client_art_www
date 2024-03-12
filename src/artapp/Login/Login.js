@@ -37,42 +37,33 @@ export default function Login({user,setUser}) {
     return JSON.parse(jsonPayload);
   }
 
-  // const effectRan = useRef(false);
 
-
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-      
-  //     context.setSocketStan(socket)
-  //     header = document.getElementById("header");
-  //     header.style.display = "none";
-  //   }
-  //   return () => {
-  //     effectRan.current = false;
-  //   };
-  // }, []);
-
-
-
-  useEffect(() => {
-    socket = io.connect(ip_socket_io)
+  const pokazSocket = () =>{
     context.setSocketStan(socket)
+    console.log(context.socketStan)
+  }
+  useEffect(() => {
+    // socket = io();
+     socket = io.connect(ip_socket_io)
+     context.setSocketStan(socket)
+ 
     header = document.getElementById("header");
     header.style.display = "none";
   }, []);
 
 
-
+  const token = useContext(TokenContext);
   useEffect(()=>{
     socket.on("receive_message", (data)=>{
       //tu przychodzi odpowiedź i jest zapisana w contexcie
-      setSocketReceive(data.message)
+      token.setSocketReceive(data.message)
+       console.log("recive " +data.message)
     })
   },[socket])
 
   const[socketReceive, setSocketReceive] = useState([])
   const[socketStan, setSocketStan] = useState([])
-  const token = useContext(TokenContext);
+
   const [cookies, setCookie] = useCookies([""]);
 
   const [values, setValues] = useState({
@@ -84,7 +75,7 @@ export default function Login({user,setUser}) {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event,socekt) => {
     event.preventDefault();
     axios.get(ip + "users/" + values.login + "/" + values.haslo).then((res) => {
       if (res.data.length > 0) {
@@ -108,8 +99,8 @@ export default function Login({user,setUser}) {
 
         header.style.display = "grid";
         navigate("/Panel");
-
-        
+        // pokazSocket()
+        // socket.connect(ip_socket_io)
 
       } else {
         console.log("Błąd");

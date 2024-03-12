@@ -40,8 +40,8 @@ export default function App() {
   // const [user, setUser] = useState([]); 
   const [users, setUsers] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
-  const[message, setMessage] = useState("")
-  const[messageReceived, setMessageReceived] = useState("")
+  // const[message, setMessage] = useState("")
+  const[socketReceive, setSocketReceive] = useState([])
   const[socketStan, setSocketStan] = useState([])
 
   let socket;
@@ -49,7 +49,8 @@ export default function App() {
 
   useEffect(() => {
   
-     socket = io.connect("http://localhost:3002")
+      // socket = io.connect("http://localhost:3000")
+     socket = io.connect("https://printforce.pl:3443")
      setSocketStan(socket)
 
      getUsersList(setUsers)
@@ -60,19 +61,20 @@ export default function App() {
   //--
   useEffect(()=>{
     socket.on("receive_message", (data)=>{
-   setMessageReceived(data.message)
+      //tu przychodzi odpowiedź
+      setSocketReceive(data.message)
     })
   },[socket])
 
-  const sendMessage = () => {
-    socket.emit("send_mesage", {message})
-  }
+  // const sendMessage = () => {
+  //   socket.emit("send_mesage", {message})
+  // }
 
   return (
     
     <BrowserRouter basename={''} >
     
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan}}>
+      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan,socketReceive}}>
         <Header />
         
         <Routes >

@@ -171,7 +171,7 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
  onClick={() => sendMessage()}
 className={style.btn}
 >
-Sprawdź
+Sprawdź {context.socketReceive}
 </button>
   )
 }

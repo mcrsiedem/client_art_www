@@ -57,7 +57,7 @@ export default function Login({user,setUser}) {
     socket.on("receive_message", (data)=>{
       //tu przychodzi odpowiedź i jest zapisana w contexcie
       token.setSocketReceive(data.message)
-       console.log("recive " +data.message)
+
     })
   },[socket])
 

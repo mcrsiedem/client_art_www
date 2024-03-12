@@ -8,7 +8,8 @@ const TokenContext = React.createContext({
     // user: '',
     // setUser: ()=>{},
     users:[], // wszyscy użytkownicy
-    getUsersList: ()=> {} // pobiera użytkowników
+    getUsersList: ()=> {},
+    socketStan: [] // pobiera użytkowników
 
 });
 

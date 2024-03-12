@@ -1,9 +1,10 @@
 import iconTable from "../../../../svg/table.svg";
 import iconTableGreen from "../../../../svg/table_green.svg";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import style from "./Header.module.css";
 import axios from "axios";
 import { ip } from "../../../../Host";
+import TokenContext from "../../../Context/tokenContext";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -108,12 +109,13 @@ function Header({
             Nowe...
           </button>
 
-          <button
-            // onClick={() => postZamowienieObj()}
-            className={style.btn}
-          >
-            Sprawdź
-          </button>
+
+
+          <ButtonSprawdz/>
+
+
+
+
           <button
             onClick={async() => {
              
@@ -152,5 +154,24 @@ setSaveAs(true)
   >
     Zapisz jako...
   </button>
+  )
+}
+
+
+
+function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
+  const context = useContext(TokenContext);
+
+  const sendMessage = () => {
+    context.socketStan.emit("send_mesage", {message:"OK"})
+  }
+
+  return(
+<button
+ onClick={() => sendMessage()}
+className={style.btn}
+>
+Sprawdź
+</button>
   )
 }

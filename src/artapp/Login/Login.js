@@ -10,7 +10,7 @@ import DecodeToken from "./DecodeToken";
 import iconLogo from "../../svg/logo.svg";
 import io from "socket.io-client";
 var header;
-
+const newSocket = io.connect(IP_SOCKET);
 export default function Login( ) {
   // let socket;
   const [user,setUser] = useState(null);
@@ -21,7 +21,7 @@ export default function Login( ) {
 
   useEffect(() => {
 
-    const newSocket = io.connect(IP_SOCKET);
+    
      context.setSocketStan(newSocket);
      setSocket(newSocket)
     return ()=>{

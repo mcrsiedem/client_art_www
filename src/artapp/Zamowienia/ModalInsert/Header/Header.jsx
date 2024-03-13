@@ -164,6 +164,9 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
   const context = useContext(TokenContext);
 
   const sendMessage = () => {
+
+    console.log("context:" +context.socketStan.id)
+    if(context.socketStan === null) return;
      context.socketStan.emit("send_mesage", {message:"OK"})
 
   }

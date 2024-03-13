@@ -1,124 +1,112 @@
 import React from "react";
-import { useState, createContext, useContext, useEffect,useRef } from "react";
-
-import style from './Login.module.css';
+import { useState, createContext, useContext, useEffect, useRef } from "react";
+import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
-import { ip,ip_socket_io } from "../../Host";
+import { ip, IP_SOCKET } from "../../Host";
 import TokenContext from "../Context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
-
 import iconLogo from "../../svg/logo.svg";
-import io from "socket.io-client"
+import io from "socket.io-client";
 var header;
 
-export default function Login({user,setUser}) {
-
-  
- let socket;
+export default function Login( ) {
+  // let socket;
+  const [user,setUser] = useState(null);
+  const [socket,setSocket] = useState(null);
+  const [input, setInput] = useState({    login: "",    haslo: "",  });
   const context = useContext(TokenContext);
+  const navigate = useNavigate();
 
-  const pokazSocket = () =>{
-    context.setSocketStan(socket)
-    console.log(context.socketStan)
-  }
   useEffect(() => {
-  
-     socket = io.connect(ip_socket_io)
-     context.setSocketStan(socket)
+
+    const newSocket = io.connect(IP_SOCKET);
+     context.setSocketStan(newSocket);
+     setSocket(newSocket)
+    return ()=>{
+      console.log("exit")
+      // newSocket.disconnect();
+    }
+   }, [user]);
+
+  useEffect(() => {
+
     header = document.getElementById("header");
     header.style.display = "none";
   }, []);
 
-
-  const token = useContext(TokenContext);
-  useEffect(()=>{
-    socket.on("receive_message", (data)=>{
+   useEffect(() => {
+    if(socket === null) return;
+    socket.on("receive_message", (data) => {
       //tu przychodzi odpowiedź i jest zapisana w contexcie
-      token.setSocketReceive(data.message)
+      context.setSocketReceive(data.message);
+    });
+  }, [socket]);
 
-    })
-  },[socket])
 
-  const[socketReceive, setSocketReceive] = useState([])
-  const[socketStan, setSocketStan] = useState([])
-
-  const [cookies, setCookie] = useCookies([""]);
-
-  const [values, setValues] = useState({
-    login: "",
-    haslo: "",
-  });
-
-  const navigate = useNavigate();
   
-  const handleSubmit = (event,socekt) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    axios.get(ip + "users/" + values.login + "/" + values.haslo).then((res) => {
+    axios.get(ip + "users/" + input.login + "/" + input.haslo).then((res) => {
       if (res.data.length > 0) {
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
-
+        setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
         header.style.display = "grid";
         navigate("/Panel");
-
-
       } else {
         console.log("Błąd");
       }
-
     });
   };
 
   return (
     <div className={style.container}>
       <div className={style.center}>
-      <Center values={values} setValues={setValues} handleSubmit={handleSubmit}/>
+        <Center
+          input={input}
+          setInput={setInput}
+          handleSubmit={handleSubmit}
+        />
       </div>
     </div>
   );
 }
 
-
-function Center({values,setValues,handleSubmit}){
-  return(
+function Center({ input, setInput, handleSubmit }) {
+  return (
     <div className={style.loginPaine}>
-    <form onSubmit={handleSubmit} className={style.form}> 
-    <div>
-    <img className={style.icon2} src={iconLogo} alt="logo" />
+      <form onSubmit={handleSubmit} className={style.form}>
+        <div>
+          <img className={style.icon2} src={iconLogo} alt="logo" />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            name="login"
+            placeholder="Login"
+            onChange={(e) => setInput({ ...input, login: e.target.value })}
+            className={style.loginInput}
+          />
+        </div>
+
+        <div>
+          <input
+            type="password"
+            name="haslo"
+            placeholder="Hasło"
+            onChange={(e) => setInput({ ...input, haslo: e.target.value })}
+            className={style.loginInput}
+          />
+        </div>
+
+        <button type="submit" className={style.myButton}>
+          Zaloguj
+        </button>
+      </form>
     </div>
-    
-    <div >
-        <input
-          type="text"
-          name="login"
-          placeholder="Login"
-          onChange={(e) => setValues({ ...values, login: e.target.value })}
-          className={style.loginInput}
-       
-        />
-      </div>
-
-      <div >
-        <input
-          type="password"
-          name="haslo"
-          placeholder="Hasło"
-          onChange={(e) => setValues({ ...values, haslo: e.target.value })}
-          className={style.loginInput}
-         
-        />
-      </div>
-
-      <button type="submit"  className={style.myButton}           >
-        
-        Zaloguj
-      </button>
-
-
-    </form>
-  </div>
-  )
+  );
 }

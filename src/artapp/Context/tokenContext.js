@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 const TokenContext = React.createContext({
     token: '',
@@ -14,5 +15,6 @@ const TokenContext = React.createContext({
     socketStan: [],  // stan przechowujący socket
     socketReceive:[] // w stanie jest socket io
 });
+
 
 export default TokenContext;

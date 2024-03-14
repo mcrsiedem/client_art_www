@@ -5,6 +5,7 @@ import style from "./Header.module.css";
 import axios from "axios";
 import { ip } from "../../../../Host";
 import TokenContext from "../../../Context/tokenContext";
+import { useNavigate } from "react-router-dom";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -162,11 +163,12 @@ setSaveAs(true)
 
 function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
   const context = useContext(TokenContext);
-
+  const navigate = useNavigate();
   const sendMessage = () => {
 
     console.log("context:" +context.socketStan.id)
-    if(context.socketStan === null) return;
+   if(context.socketStan === null) return;
+
      context.socketStan.emit("send_mesage", {message:"OK"})
 
   }

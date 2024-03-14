@@ -10,7 +10,7 @@ import DecodeToken from "./DecodeToken";
 import iconLogo from "../../svg/logo.svg";
 import io from "socket.io-client";
 var header;
-const newSocket = io.connect(IP_SOCKET);
+const newSocket = io.connect(IP_SOCKET,{autoConnect: true});
 export default function Login( ) {
   // let socket;
   const [user,setUser] = useState(null);
@@ -26,7 +26,7 @@ export default function Login( ) {
      setSocket(newSocket)
     return ()=>{
       console.log("exit")
-      // newSocket.disconnect();
+      //  newSocket.disconnect();
     }
    }, [user]);
 
@@ -56,6 +56,7 @@ export default function Login( ) {
         setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
         header.style.display = "grid";
         navigate("/Panel");
+        // newSocket.connect()
       } else {
         console.log("Błąd");
       }

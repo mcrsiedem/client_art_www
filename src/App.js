@@ -34,10 +34,12 @@ import io from "socket.io-client"
 
  import { getUsersList } from "./artapp/Actions/Start/usersList";
  
+ import { AppContextProvider } from "./artapp/Context/AppContext";
 export default function App() {
 
   const [token, setToken] = useState('mr'); 
   const [users, setUsers] = useState([]); 
+  const [user, setUser] = useState([]); 
   const [rowSelected, setRowSelected] = useState([]); 
   const[socketReceive, setSocketReceive] = useState([])
   const[socketStan, setSocketStan] = useState([]) // tutaj przechowywany jest socekt utworzony na stronie login
@@ -65,7 +67,7 @@ export default function App() {
   return (
     
     <BrowserRouter basename={''} >
-    
+      <AppContextProvider user={user}>
       <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
         
@@ -90,6 +92,7 @@ export default function App() {
  
         </Routes>
       </TokenContext.Provider>
+      </AppContextProvider>
     </BrowserRouter>
   );
 }

@@ -13,7 +13,7 @@ export default function Header(){
         </LeftPane>
 
         <RightPane>
-          <IconNavigate className={style.btn} logo={logoGrid} navi={"/Zamowienia"} />>
+          <IconNavigate className={style.btn} logo={logoGrid} navi={"/Zamowienia"} />
         </RightPane>
 
         {/* <div className={style.leftHeaderContener}>

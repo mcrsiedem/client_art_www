@@ -34,7 +34,7 @@ import Stany from "./Stany";
 import { saveOrder } from "../../Actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../Actions/today";
-import ClientStage from "../../Klienci/ClientStage";
+import ClientStage from "../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
 function ModalInsert({

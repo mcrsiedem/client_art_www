@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import style from "./DeleteClient.module.css";
-import TokenContext from "../../Context/tokenContext";
+import TokenContext from "../../../Context/tokenContext";
 import axios from "axios";
-import { ip } from "../../../Host";
+import { ip } from "../../../../Host";
 import { deleteClient } from "../actions/deleteClient";
 
-import { _opiekun } from "../../Zamowienia/ModalInsert/api";
-import iconX from "../../../svg/x.svg";
+import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
+import iconX from "../../../../svg/x.svg";
 export default function DeleteClient({
   setShowDeleteClientPane,
   getClients,

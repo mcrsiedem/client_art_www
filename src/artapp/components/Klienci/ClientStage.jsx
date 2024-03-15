@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ip } from "../../Host";
+import { ip } from "../../../Host";
 import style from "./ClientStage.module.css";
-import iconX from "../../svg/x.svg";
-import iconDelete from "../../svg/trash.svg";
+import iconX from "../../../svg/x.svg";
+import iconDelete from "../../../svg/trash.svg";
 import TableClient from "./components/TableClient";
-import iconTable from "../../svg/add.png";
-import addIcon2 from "../../svg/addIcon2.svg";
+import iconTable from "../../../svg/add.png";
+import addIcon2 from "../../../svg/addIcon2.svg";
 
 import AddClient from "./components/AddClient";
 

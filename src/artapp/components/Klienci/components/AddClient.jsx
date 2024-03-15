@@ -1,10 +1,10 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
-import TokenContext from "../../Context/tokenContext";
+import TokenContext from "../../../Context/tokenContext";
 import { addClient } from "../actions/addClient";
-import { _opiekun } from "../../Zamowienia/ModalInsert/api";
-import iconX from "../../../svg/x.svg"
-import DecodeToken from "../../pages/Login/DecodeToken";
+import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
+import iconX from "../../../../svg/x.svg"
+import DecodeToken from "../../../pages/Login/DecodeToken";
 import { useCookies } from "react-cookie";
 
 export default function AddClientPane({

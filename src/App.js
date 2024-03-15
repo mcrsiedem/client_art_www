@@ -7,12 +7,7 @@ import Print from "./pages/Print/Print";
 import Login from "./pages/Login/Login";
 import History from "./pages/History/History";
 import Panel from "./pages/Panel/Panel";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import {  BrowserRouter,  Routes,  Route,  Link} from "react-router-dom";
 import TokenContext from "./context/tokenContext";
 import Header from "./components/Header/Header";
 import Zamowienia from "./pages/Zamowienia/Zamowienia";

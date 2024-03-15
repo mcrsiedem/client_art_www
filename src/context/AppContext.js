@@ -1,6 +1,6 @@
 import { useEffect,createContext,useState, useCallback } from "react";
 import { getUsers } from "../actions/Users/getUsers";
-import { getClients } from "../actions/getClients";
+import { getClients } from "../actions/Clients/getClients";
 
 
 export const AppContext = createContext(

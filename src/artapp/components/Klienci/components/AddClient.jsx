@@ -6,6 +6,7 @@ import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg"
 import DecodeToken from "../../../pages/Login/DecodeToken";
 import { useCookies } from "react-cookie";
+import { AppContext } from "../../../context/AppContext";
 
 export default function AddClientPane({
   setShowAddClientPane,
@@ -121,7 +122,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
 
 
   function NIP({ daneKlienta, setDaneKlienta }) {
-    const context = useContext(TokenContext);
+    const context = useContext(AppContext);
     return (
       <div className={style.labelinput_nip}>
 

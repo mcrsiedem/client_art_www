@@ -8,6 +8,7 @@ import axios from "axios";
 import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg"
 import { updateClient } from "../actions/updateClient";
+import { AppContext } from "../../../context/AppContext";
 export default function EditClient({
   setShowEdit,
   getClients,
@@ -152,7 +153,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
 
 
   function NIP({ daneKlienta, setDaneKlienta }) {
-    const context = useContext(TokenContext);
+    const context = useContext(AppContext);
     return (
       <div className={style.labelinput_nip}>
 

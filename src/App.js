@@ -27,7 +27,7 @@ import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 import { AppContextProvider } from "./artapp/context/AppContext";
 export default function App() {
 
-  // const [token, setToken] = useState('mr'); 
+
   const [users, setUsers] = useState([]); 
 
 
@@ -43,7 +43,7 @@ export default function App() {
     
     <BrowserRouter basename={''} >
       <AppContextProvider>
-      <TokenContext.Provider value={{ users,getUsers,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
+      <TokenContext.Provider value={{ socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
         <Routes >
           <Route path='/' element={<Login />} />

@@ -23,18 +23,18 @@ import {
 import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";
-import { IP } from "../../../Host";
+import { IP } from "../../../../Host";
 import Elementy from "./Elementy/Elementy";
 import Introligatornia from "./Introligatornia/Introligatornia";
 import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
-import TokenContext from "../../context/tokenContext";
-import DecodeToken from "../../pages/Login/DecodeToken";
+import TokenContext from "../../../context/tokenContext";
+import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "../../actions/saveOrder";
+import { saveOrder } from "../../../actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
-import { today } from "../../actions/today";
-import ClientStage from "../../components/Klienci/ClientStage";
+import { today } from "../../../actions/today";
+import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
 function ModalInsert({

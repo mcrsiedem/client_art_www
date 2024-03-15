@@ -1,16 +1,16 @@
 
 import style from "./Introligatornia.module.css";
-import logoExpand from "../../../../svg/expand.svg";
+import logoExpand from "../../../../../svg/expand.svg";
 import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
-import iconCopy from "../../../../svg/copy.svg";
-import iconTrash from "../../../../svg/trash2.svg";
-import iconTable from "../../../../svg/settings.svg";
-import iconUstawienia from "../../../../svg/settings.svg";
+import iconCopy from "../../../../../svg/copy.svg";
+import iconTrash from "../../../../../svg/trash2.svg";
+import iconTable from "../../../../../svg/settings.svg";
+import iconUstawienia from "../../../../../svg/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
 
-import { IP } from "../../../../Host";
+import { IP } from "../../../../../Host";
 
 export default function IntroligatorniaTable({
   oprawa,

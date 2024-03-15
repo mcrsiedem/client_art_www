@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 import TokenContext from "./artapp/context/tokenContext";
 import Header from "./artapp/components/Header/Header";
-import Zamowienia from "./artapp/Zamowienia/Zamowienia";
+import Zamowienia from "./artapp/pages/Zamowienia/Zamowienia";
 // import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
 // import axios from "axios";

@@ -1,7 +1,7 @@
 // import iconCopy from "../../../../../svg/copy.svg";
 // import iconTrash from "../../../../../svg/trash2.svg";
 import style from "./ProcesElement.module.css";
-import iconX from "../../../../../svg/xDark.svg"
+import iconX from "../../../../../../svg/xDark.svg"
 // import { _papiery } from "../../api";
 // import ElementTableHeader from "./ElementTableHeader";
 // import { useState } from "react";

@@ -1,9 +1,9 @@
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
-import { IP } from "../../Host";
+import { IP } from "../../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import iconSettings from "../../svg/settings.svg";
+import iconSettings from "../../../svg/settings.svg";
 
 import ModalInsert from "./ModalInsert/ModalInsert";
 

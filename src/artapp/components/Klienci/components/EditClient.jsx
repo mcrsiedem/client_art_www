@@ -5,7 +5,7 @@ import axios from "axios";
 // import DecodeToken from "../Login/DecodeToken";
 // import { IP } from "../../../../Host"
 
-import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
+import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg"
 import { updateClient } from "../actions/updateClient";
 import { AppContext } from "../../../context/AppContext";

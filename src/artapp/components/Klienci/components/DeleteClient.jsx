@@ -5,7 +5,7 @@ import axios from "axios";
 import { IP } from "../../../../Host";
 import { deleteClient } from "../actions/deleteClient";
 
-import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
+import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg";
 export default function DeleteClient({
   setShowDeleteClientPane,

@@ -164,9 +164,11 @@ setSaveAs(true)
 
 function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
   const context = useContext(TokenContext);
+  const context2 = useContext(AppContext);
   const navigate = useNavigate();
   const sendMessage = () => {
 
+    context2.updateClients()
     console.log("context:" +context.socketStan.id)
    if(context.socketStan === null) return;
 
@@ -186,13 +188,13 @@ Sprawdź {context.socketReceive}
 
 function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
   const context = useContext(TokenContext);
-  const context2 = useContext(AppContext);
+   const context2 = useContext(AppContext);
 
 
   const sendMessage = () => {
-
-     context.socketStan.emit("send_mesage", {message:""})
- console.log(context2.users)
+    // context2.updateClients()
+    //  context.socketStan.emit("send_mesage", {message:""})
+ console.log(context2.clients)
   
   }
 

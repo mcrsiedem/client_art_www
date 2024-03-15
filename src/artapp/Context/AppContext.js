@@ -1,23 +1,28 @@
-import { useEffect,createContext,useState } from "react";
+import { useEffect,createContext,useState, useCallback } from "react";
 import { getUsers } from "../Actions/Users/getUsers";
+import { getClients } from "../Actions/Clients/getClients";
 
-export const AppContext = createContext();
 
-
-export const AppContextProvider = ({children, user})=>{
+export const AppContext = createContext(
+     {getClients: ()=>{}}
+);
+export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
 
+    const updateClients = useCallback(()=>{
+     getClients(setClients)
+    },[])
+    
     useEffect(()=>{
         getUsers(setUsers) // lista wszystkich użytkowników
-        console.log("Context: AppContext")
-        // tutaj mozna pobrac liste klientow
+        getClients(setClients) // list wszystkich klientów
     },[])
     
     return  <AppContext.Provider 
                 value={{
-                    users, getUsers,clients,setClients
+                    users, getUsers,clients,setClients,setClients, updateClients
                 }}
             >
                 {children}

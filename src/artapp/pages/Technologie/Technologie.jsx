@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
 
 import style from "./Technologie.module.css";
@@ -32,7 +32,7 @@ export default function Technologie(){
 
 
    async function fetchTechnologie(){
-      const res = await axios.get(ip + "technologie");
+      const res = await axios.get(IP + "technologie");
       let job =[...res.data]
       setDataTechnologie(job)
       console.log(job)

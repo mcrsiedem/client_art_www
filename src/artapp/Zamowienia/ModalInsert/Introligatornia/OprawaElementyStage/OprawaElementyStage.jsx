@@ -11,7 +11,7 @@ import style from "./OprawaElementyStage.module.css";
 
 import axios from "axios";
 
-import { ip } from "../../../../../Host";
+import { IP } from "../../../../../Host";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
   fragmenty,
@@ -25,7 +25,7 @@ export default function OprawaElementyStage({
     const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
     // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id
-    axios.post(ip + "oprawa", {
+    axios.post(IP + "oprawa", {
       zamowienie_id: 0,
       produkt_id: 0,
       oprawa: 0,

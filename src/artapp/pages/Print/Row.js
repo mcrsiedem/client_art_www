@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from 
 import TokenContext from "../../context/tokenContext";
 
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -94,7 +94,7 @@ props.zaznacz(props.id)
     )
       return style.wydrukowane;
     if ((statusCombo === "RIP") ^ (statusCombo === "Zaświecone"))
-      return style.ripzaswiecone;
+      return style.rIPzaswiecone;
     if (statusCombo === "Akcept") return style.akcept;
     if (statusCombo === "Nowe") return style.nowe;
     if (statusCombo === "Pliki") return style.pliki;
@@ -141,7 +141,7 @@ props.zaznacz(props.id)
   async function handleEditStatus(status) {
 
 
-    const res = await axios.put(ip + "updateStatusWWW/", {
+    const res = await axios.put(IP + "updateStatusWWW/", {
       id: props.id,
       value: statusList[status],
       idzlecenia: props.id_zlecenia,

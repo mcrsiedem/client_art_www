@@ -13,7 +13,7 @@ const ResizableTable = ({ children, resizable, resizeOptions }) => {
 
       //@ts-ignore
       tableRef.current.className = tableRef.current?.className?.replace(
-        "grip-padding",
+        "grIP-padding",
         ""
       );
 

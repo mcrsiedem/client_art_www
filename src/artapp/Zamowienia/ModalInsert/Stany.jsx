@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import style from "../ModalInsert/Stany.module.css";
@@ -24,7 +24,7 @@ export default function Stany({
   async function fechZamowienia() {}
 
   async function checkToken() {
-    axios.get(ip + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
+    axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
         fechZamowienia();
       } else {

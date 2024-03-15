@@ -1,13 +1,13 @@
 import axios from "axios";
-import { ip } from "../../../../Host";
+import { IP } from "../../../../Host";
 
 export const  addClient  = async (daneKlienta,context,getClients,test,setShowAddClientPane) =>{
   
-    await axios.post(ip + "klienci", {
+    await axios.post(IP + "klienci", {
         firma: daneKlienta.firma,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
-        nip: daneKlienta.nip,
+        nIP: daneKlienta.nIP,
         opiekun_id: daneKlienta.opiekun_id,
         utworzyl_user_id: daneKlienta.utworzyl_user_id,
     

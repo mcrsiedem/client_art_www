@@ -28,7 +28,7 @@ export default function Table({
             <th className={style.firma}>Firma</th>
             <th className={style.adres}>Adres</th>
             <th className={style.kod}>Kod</th>
-            <th className={style.nip}>NIP</th>
+            <th className={style.nIP}>NIP</th>
             <th className={style.opiekun}>Opiekun</th>
             <th className={style.th_ustawienia}></th>
             <th className={style.th_ustawienia}></th>
@@ -104,7 +104,7 @@ const openEdit = (row, rowID, setShowEdit) => {
     firma: row.firma,
     adres: row.adres,
     kod: row.kod,
-    nip: row.nip,
+    nIP: row.nIP,
     opiekun_id: row.opiekun_id,
     utworzyl_user_id: row.utworzyl_user_id,
   };
@@ -166,7 +166,7 @@ function Kod({ row }) {
 }
 
 function NIP({ row }) {
-  return <td>{row.nip}</td>;
+  return <td>{row.nIP}</td>;
 }
 
 function Opiekun({ row }) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
-import { ip } from "../../Host";
+import { IP } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "../../svg/settings.svg";
@@ -33,18 +33,18 @@ function Zamowienia({ user, setUser }) {
 
   }
   async function fechZamowienia() {
-    const res = await axios.get(ip + "zamowienia");
+    const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
     setData(jobs);
 
-    const res3 = await axios.get(ip + "lista-papierow");
+    const res3 = await axios.get(IP + "lista-papierow");
     setListaPapierow([...res3.data]);
-    const res4 = await axios.get(ip + "lista-gramatur");
+    const res4 = await axios.get(IP + "lista-gramatur");
     setListaGramatur([...res4.data]);
   }
 
   async function checkToken() {
-    axios.get(ip + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
+    axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
         fechZamowienia();
       } else {
@@ -54,7 +54,7 @@ function Zamowienia({ user, setUser }) {
   }
 
   async function refreshZamowienia() {
-    const res = await axios.get(ip + "zamowienia");
+    const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
     setData(jobs);
   }

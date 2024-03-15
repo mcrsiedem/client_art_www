@@ -23,7 +23,7 @@ import {
 import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import Elementy from "./Elementy/Elementy";
 import Introligatornia from "./Introligatornia/Introligatornia";
 import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
@@ -218,7 +218,7 @@ const [klienci, setKlienci] = useState([]);
 
 
 async function getClients() {
-  const res = await axios.get(ip + "lista-klientow");
+  const res = await axios.get(IP + "lista-klientow");
    setKlienci([...res.data]);  
    setKlienciWyszukiwarka([...res.data]);
 
@@ -232,10 +232,10 @@ async function getClients() {
   //-------------------------------------
 
   async function fechListy() {
-    const res2 = await axios.get(ip + "lista-uszlachetnien");
+    const res2 = await axios.get(IP + "lista-uszlachetnien");
     setListaUszlachetnien([...res2.data]);
 
-    const res5 = await axios.get(ip + "lista-procesow");
+    const res5 = await axios.get(IP + "lista-procesow");
     setListaDostepnychProcesow([...res5.data]);
     getClients()
 
@@ -275,7 +275,7 @@ async function getClients() {
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
-          .put(ip + "setOrderOpen", {
+          .put(IP + "setOrderOpen", {
             id: idZamowienia,
             token: sessionStorage.getItem("token"),
             user: DecodeToken(sessionStorage.getItem("token")).id,
@@ -302,7 +302,7 @@ async function getClients() {
           });
 
 
-           const res = await axios.get(ip + "parametry/"+idZamowienia);
+           const res = await axios.get(IP + "parametry/"+idZamowienia);
 
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
@@ -455,7 +455,7 @@ async function getClients() {
 
       {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
             <div id="mydivheader" className={style.mydivheader}>Dodatkowe informacje</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+                    <p>Lorem IPsum dolor sit amet consectetur adIPisicing elit..</p>
           
           </div> */}
       {openModalStany && (

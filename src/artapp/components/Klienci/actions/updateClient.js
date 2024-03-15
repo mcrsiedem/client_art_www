@@ -1,15 +1,15 @@
 import axios from "axios";
-import { ip } from "../../../../Host";
+import { IP } from "../../../../Host";
 
 export   const updateClient = async (daneKlienta,getClients,setShowEdit)=> {
 
     await axios
-      .put(ip + "updateKlient", {
+      .put(IP + "updateKlient", {
         id: daneKlienta.id,
         firma: daneKlienta.firma,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
-        nip: daneKlienta.nip,
+        nIP: daneKlienta.nIP,
         opiekun_id: daneKlienta.opiekun_id,
       })
       .then((res) => {

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 export async function getUsers(setUsers) {
-    const res = await axios.get(ip + "lista-userow");
+    const res = await axios.get(IP + "lista-userow");
     setUsers([...res.data]);
   }

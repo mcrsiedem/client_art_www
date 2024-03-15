@@ -6,7 +6,7 @@ import ResizableTable from "./ResizableTable";
 import axios from "axios";
 
 import Table from 'react-bootstrap/Table';
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ function History(){
     const [data, setData] = useState([]);
 
     async function fechHistory() {
-        const res = await axios.get(ip + 'historia_short');
+        const res = await axios.get(IP + 'historia_short');
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
@@ -31,7 +31,7 @@ function History(){
     };
 
     async function checkToken() {
-        axios.get(ip + '/islogged/'+ sessionStorage.getItem("token"))
+        axios.get(IP + '/islogged/'+ sessionStorage.getItem("token"))
         .then(res=> {
           if(res.data.Status === "Success"){
             fechHistory();
@@ -55,7 +55,7 @@ function History(){
     <div className={style.body}>
 
 
-            {/* <Table striped bordered hover> */}
+            {/* <Table strIPed bordered hover> */}
                 <ResizableTable resizable={true} resizeOptions={{}}> 
                 <thead>
                     <tr>

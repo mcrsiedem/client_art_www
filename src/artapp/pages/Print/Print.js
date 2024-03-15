@@ -7,7 +7,7 @@ import Jobs from "./Jobs";
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import TokenContext from "../../context/tokenContext";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 
 import axios from "axios";
 
@@ -37,7 +37,7 @@ function Print(props) {
 
   useEffect(()=>{
     document.getElementById("header").style.display = "grid"; 
-    axios.get(ip + '/islogged/'+ sessionStorage.getItem("token"))
+    axios.get(IP + '/islogged/'+ sessionStorage.getItem("token"))
     .then(res=> {
       if(res.data.Status === "Success"){
 

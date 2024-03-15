@@ -3,7 +3,7 @@ import style from "./AddClient.module.css";
 import TokenContext from "../../../context/tokenContext";
 import axios from "axios";
 // import DecodeToken from "../Login/DecodeToken";
-// import { ip } from "../../../../Host"
+// import { IP } from "../../../../Host"
 
 import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg"
@@ -22,7 +22,7 @@ export default function EditClient({
     firma: rowID.current.firma,
     adres: rowID.current.adres,
     kod: rowID.current.kod,
-    nip: rowID.current.nip,
+    nIP: rowID.current.nIP,
     opiekun_id: rowID.current.opiekun_id,
     utworzyl_user_id: rowID.current.utworzyl_user_id,
   
@@ -41,11 +41,11 @@ export default function EditClient({
 }
 // const  editKlient  = async (daneKlienta,context,getClients,test,setShowEdit) =>{
   
-// await axios.put(ip + "klienci", {
+// await axios.put(IP + "klienci", {
 //     firma: daneKlienta.firma,
 //     adres: daneKlienta.adres,
 //     kod: daneKlienta.kod,
-//     nip: daneKlienta.nip,
+//     nIP: daneKlienta.nIP,
 //     opiekun_id: daneKlienta.opiekun_id,
 //     utworzyl_user_id: daneKlienta.opiekun_id,
 
@@ -155,7 +155,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
   function NIP({ daneKlienta, setDaneKlienta }) {
     const context = useContext(AppContext);
     return (
-      <div className={style.labelinput_nip}>
+      <div className={style.labelinput_nIP}>
 
         <div className={style.labelinput}>
                         <label className={style.label}> Kod </label>
@@ -179,11 +179,11 @@ function Adres({ daneKlienta, setDaneKlienta }) {
             <input
             className={style.firma}
             type="text"
-            value={daneKlienta.nip}
+            value={daneKlienta.nIP}
             onChange={(event) => {
                 const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ-]+$/;
                 if (event.target.value === "" || re.test(event.target.value)) {
-                setDaneKlienta({ ...daneKlienta, nip: event.target.value });
+                setDaneKlienta({ ...daneKlienta, nIP: event.target.value });
                 }
             }}
             >

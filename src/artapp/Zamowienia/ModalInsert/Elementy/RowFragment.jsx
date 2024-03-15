@@ -5,7 +5,7 @@ import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import axios from "axios";
 
-import { ip } from "../../../../Host";
+import { IP } from "../../../../Host";
 export default function RowFragment({
   row,
   handleChangeCardElementy,
@@ -162,7 +162,7 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
 
   const newFragmenty = fragmenty.slice();
 
-  axios.post(ip + "fragmenty", {
+  axios.post(IP + "fragmenty", {
     naklad: 0,
     info: "fragment temp",
     indeks: 0,

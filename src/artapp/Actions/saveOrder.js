@@ -1,6 +1,6 @@
 import axios from "axios";
 import DecodeToken from "../pages/Login/DecodeToken";
-import { ip } from "../../Host";
+import { IP } from "../../Host";
 
 
 
@@ -70,7 +70,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
 
       // saveAs domyślnie false, bo domyślnie nadpisujemy.
       if(!saveAs){
-              let final_0 = await axios.put(ip + "zamowienia_not_final", {
+              let final_0 = await axios.put(IP + "zamowienia_not_final", {
         zamowienie_id: daneZamowienia.id,
 
       })
@@ -79,7 +79,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
 
 
 
-    let res = await axios.post(ip + "zamowienie", {
+    let res = await axios.post(IP + "zamowienie", {
         nr: daneZamowienia.nr,
         rok: daneZamowienia.rok,
         firma_id: daneZamowienia.firma_id,
@@ -152,7 +152,7 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pako
     for (let produkt of produktyEdit) {
       promises.push(
         axios
-          .post(ip + "produkty", {
+          .post(IP + "produkty", {
             zamowienie_id: produkt.zamowienie_id,
             typ: produkt.typ,
             nazwa: produkt.nazwa,
@@ -210,7 +210,7 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let element of elementyEdit) {
-      promises.push(axios.post(ip + "elementy", {
+      promises.push(axios.post(IP + "elementy", {
         zamowienie_id: element.zamowienie_id,
         produkt_id: element.produkt_id,
         nazwa: element.nazwa,
@@ -256,7 +256,7 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let oprawa of oprawaEdit) {
-      promises.push(axios.post(ip + "oprawa", {
+      promises.push(axios.post(IP + "oprawa", {
                            zamowienie_id: oprawa.zamowienie_id,
                            produkt_id: oprawa.produkt_id,
                            oprawa: oprawa.oprawa,
@@ -295,7 +295,7 @@ const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let fragment of fragmentyEdit) {
-      promises.push(axios.post(ip + "fragmenty", {
+      promises.push(axios.post(IP + "fragmenty", {
         naklad: fragment.naklad,
         info: fragment.info,
         indeks: fragment.indeks,
@@ -336,7 +336,7 @@ const savePacking = ({ pakowanieEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let paczka of pakowanieEdit) {
-      promises.push(axios.post(ip + "pakowanie", {
+      promises.push(axios.post(IP + "pakowanie", {
         zamowienie_id: paczka.zamowienie_id,
         produkt_id: paczka.produkt_id,
         nazwa: paczka.nazwa,

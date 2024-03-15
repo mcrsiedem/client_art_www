@@ -7,7 +7,7 @@ import {  useState } from "react";
 import { _typ_elementu} from "../api"
 import axios from "axios";
 
-import { ip } from "../../../../Host";
+import { IP } from "../../../../Host";
 
 export default function RowElement({
     row,
@@ -61,7 +61,7 @@ export default function RowElement({
         const newElementy = elementy.slice();
       
 
-        axios.post(ip + "elementy", {
+        axios.post(IP + "elementy", {
           zamowienie_id: 0,
           produkt_id: 0,
           nazwa: 0,

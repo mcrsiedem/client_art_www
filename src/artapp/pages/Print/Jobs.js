@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,
 import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import TokenContext from "../../context/tokenContext";
 
 import { useCookies } from "react-cookie";
@@ -49,7 +49,7 @@ const Jobs = forwardRef((props, ref) => {
             break;
         }
 
-        const res = await axios.get(ip + 'druk/' + maszyna + '/1');
+        const res = await axios.get(IP + 'druk/' + maszyna + '/1');
         const job = [...res.data];
         // const notes =[...res.data].filter(row=> row.status !== "Wydrukowane")
         //                           .filter(row=> row.status !== "Nowe")
@@ -73,7 +73,7 @@ const Jobs = forwardRef((props, ref) => {
         //  event.preventDefault();
         setSztuki(sztuki);
         axios
-          .put(ip + "updatenaswietlenieprimewww/", {
+          .put(IP + "updatenaswietlenieprimewww/", {
             id: id,
             ilosc: sztuki,
             blacha_id: blacha_id,

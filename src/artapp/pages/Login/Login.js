@@ -3,7 +3,7 @@ import { useState, createContext, useContext, useEffect, useRef } from "react";
 import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ip, IP_SOCKET } from "../../../Host";
+import { IP, IP_SOCKET } from "../../../Host";
 import TokenContext from "../../context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
@@ -49,7 +49,7 @@ export default function Login( ) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.get(ip + "users/" + input.login + "/" + input.haslo).then((res) => {
+    axios.get(IP + "users/" + input.login + "/" + input.haslo).then((res) => {
       if (res.data.length > 0) {
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania

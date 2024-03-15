@@ -1,6 +1,6 @@
 import axios from "axios";
-import { ip } from "../../Host";
+import { IP } from "../../Host";
 export async function getClients(setClients) {
-    const res = await axios.get(ip + "lista-klientow");
+    const res = await axios.get(IP + "lista-klientow");
     setClients([...res.data]);
   }

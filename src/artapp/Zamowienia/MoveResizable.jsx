@@ -1,5 +1,5 @@
 
-// yotube Resizable and draggable div using JavaScript (Vanilla) - Part 2
+// yotube Resizable and draggable div using JavaScrIPt (Vanilla) - Part 2
 const el = document.querySelector(".item");
 
 let isResizing = false;

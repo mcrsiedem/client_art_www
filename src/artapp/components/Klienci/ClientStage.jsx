@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 import style from "./ClientStage.module.css";
 import iconX from "../../../svg/x.svg";
 import iconDelete from "../../../svg/trash.svg";
@@ -22,7 +22,7 @@ export default function ClientStage({
 }) {
 
   async function getClients() {
-    const res = await axios.get(ip + "lista-klientow");
+    const res = await axios.get(IP + "lista-klientow");
     setKlienci([...res.data]);
     setKlienciWyszukiwarka([...res.data]);
   }

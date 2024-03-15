@@ -3,7 +3,7 @@ import iconTableGreen from "../../../../svg/table_green.svg";
 import React, { useState,useContext } from "react";
 import style from "./Header.module.css";
 import axios from "axios";
-import { ip } from "../../../../Host";
+import { IP } from "../../../../Host";
 import TokenContext from "../../../context/tokenContext";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
@@ -125,7 +125,7 @@ function Header({
             setOpenModalInsert(false)
             console.log("readOnly: "+ readOnly)
                    if (!readOnly){
-                        const res = await axios.put(ip + "setOrderClosed",{
+                        const res = await axios.put(IP + "setOrderClosed",{
                       id: row.id,
                     });
                    }

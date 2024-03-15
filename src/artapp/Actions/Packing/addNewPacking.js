@@ -1,13 +1,13 @@
 import axios from "axios";
 
-import { ip } from "../../../Host";
+import { IP } from "../../../Host";
 
 
 export function addNewPacking(row, pakowanie, setPakowanie) {
 const pakowanieEdit = pakowanie.slice();
 
   axios
-    .post(ip + "pakowanie", {
+    .post(IP + "pakowanie", {
       zamowienie_id: 0,
       produkt_id: 0,
       nazwa: 0,

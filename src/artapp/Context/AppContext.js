@@ -22,7 +22,7 @@ export const AppContextProvider = ({children})=>{
     
     return  <AppContext.Provider 
                 value={{
-                    users, getUsers,clients,setClients,setClients, updateClients
+                    users,clients,updateClients
                 }}
             >
                 {children}

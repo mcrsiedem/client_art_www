@@ -1,10 +1,10 @@
 import React from "react";
+import { useState, createContext,useEffect,useRef } from "react";
 import './App.css';
 
 import Technologie from './artapp/pages/Technologie/Technologie'
 import Print from "./artapp/pages/Print/Print";
 import Login from "./artapp/pages/Login/Login";
-import { useState, createContext,useEffect,useRef } from "react";
 import History from "./artapp/pages/History/History";
 import Panel from "./artapp/pages/Panel/Panel";
 import {
@@ -16,21 +16,21 @@ import {
 import TokenContext from "./artapp/context/tokenContext";
 import Header from "./artapp/components/Header/Header";
 import Zamowienia from "./artapp/Zamowienia/Zamowienia";
-import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
+// import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
-import axios from "axios";
-import { ip } from "./Host";
-import io from "socket.io-client"
+// import axios from "axios";
+// import { ip } from "./Host";
+// import io from "socket.io-client"
 
  import { getUsers } from "./artapp/actions/Users/getUsers";
  
- import { AppContextProvider } from "./artapp/context/AppContext";
+import { AppContextProvider } from "./artapp/context/AppContext";
 export default function App() {
 
-  const [token, setToken] = useState('mr'); 
+  // const [token, setToken] = useState('mr'); 
   const [users, setUsers] = useState([]); 
 
-  const [rowSelected, setRowSelected] = useState([]); 
+
   const[socketReceive, setSocketReceive] = useState([])
   const[socketStan, setSocketStan] = useState([]) // tutaj przechowywany jest socekt utworzony na stronie login
 
@@ -43,7 +43,7 @@ export default function App() {
     
     <BrowserRouter basename={''} >
       <AppContextProvider>
-      <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsers,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
+      <TokenContext.Provider value={{ users,getUsers,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
         <Routes >
           <Route path='/' element={<Login />} />

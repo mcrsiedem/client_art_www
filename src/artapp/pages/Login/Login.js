@@ -4,7 +4,7 @@ import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ip, IP_SOCKET } from "../../../Host";
-import TokenContext from "../../Context/tokenContext";
+import TokenContext from "../../context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../../svg/logo.svg";

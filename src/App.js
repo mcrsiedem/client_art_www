@@ -15,8 +15,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import TokenContext from "./artapp/Context/tokenContext";
-import Header from "./artapp/Header/Header";
+import TokenContext from "./artapp/context/tokenContext";
+import Header from "./artapp/components/Header/Header";
 import Zamowienia from "./artapp/Zamowienia/Zamowienia";
 import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
@@ -26,7 +26,7 @@ import io from "socket.io-client"
 
  import { getUsersList } from "./artapp/Actions/Start/usersList";
  
- import { AppContextProvider } from "./artapp/Context/AppContext";
+ import { AppContextProvider } from "./artapp/context/AppContext";
 export default function App() {
 
   const [token, setToken] = useState('mr'); 

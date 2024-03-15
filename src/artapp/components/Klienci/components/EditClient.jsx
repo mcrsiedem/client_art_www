@@ -1,6 +1,6 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
-import TokenContext from "../../../Context/tokenContext";
+import TokenContext from "../../../context/tokenContext";
 import axios from "axios";
 // import DecodeToken from "../Login/DecodeToken";
 // import { ip } from "../../../../Host"

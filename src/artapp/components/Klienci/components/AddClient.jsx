@@ -1,6 +1,6 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
-import TokenContext from "../../../Context/tokenContext";
+import TokenContext from "../../../context/tokenContext";
 import { addClient } from "../actions/addClient";
 import { _opiekun } from "../../../Zamowienia/ModalInsert/api";
 import iconX from "../../../../svg/x.svg"

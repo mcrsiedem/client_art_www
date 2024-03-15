@@ -6,7 +6,7 @@ import Jobs from "./Jobs";
 
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import TokenContext from "../../Context/tokenContext";
+import TokenContext from "../../context/tokenContext";
 import { ip } from "../../../Host";
 
 import axios from "axios";

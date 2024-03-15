@@ -1,5 +1,5 @@
 import axios from "axios";
-import DecodeToken from "../Login/DecodeToken";
+import DecodeToken from "../pages/Login/DecodeToken";
 import { ip } from "../../Host";
 
 

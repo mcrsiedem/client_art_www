@@ -1,51 +1,82 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
 import TokenContext from "../../Context/tokenContext";
-import { addClient } from "../actions/addClient";
+import axios from "axios";
+// import DecodeToken from "../Login/DecodeToken";
+import { ip } from "../../../Host"
+
 import { _opiekun } from "../../Zamowienia/ModalInsert/api";
 import iconX from "../../../svg/x.svg"
-import DecodeToken from "../../pages/Login/DecodeToken";
-import { useCookies } from "react-cookie";
-
-export default function AddClientPane({
-  setShowAddClientPane,
+import { updateClient } from "../actions/updateClient";
+export default function EditClient({
+  setShowEdit,
   getClients,
-  test
+  test,
+  rowID
   
 }) {
-  const [cookies, setCookie] = useCookies();
   const [daneKlienta, setDaneKlienta] = useState({
-    firma: "",
-    adres: "",
-    kod: "",
-    nip: "",
-    opiekun_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
-    utworzyl_user_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
+   
+    id: rowID.current.id,
+    firma: rowID.current.firma,
+    adres: rowID.current.adres,
+    kod: rowID.current.kod,
+    nip: rowID.current.nip,
+    opiekun_id: rowID.current.opiekun_id,
+    utworzyl_user_id: rowID.current.utworzyl_user_id,
   
   });
 
   return (
     <div className={style.window}>
-      <Header setShowAddClientPane={setShowAddClientPane}></Header>
+      <Header setShowEdit={setShowEdit}></Header>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} setShowAddClientPane={setShowAddClientPane} />
+      <Zapisz rowID={rowID} daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} setShowEdit={setShowEdit} />
     </div>
   );
 }
+// const  editKlient  = async (daneKlienta,context,getClients,test,setShowEdit) =>{
+  
+// await axios.put(ip + "klienci", {
+//     firma: daneKlienta.firma,
+//     adres: daneKlienta.adres,
+//     kod: daneKlienta.kod,
+//     nip: daneKlienta.nip,
+//     opiekun_id: daneKlienta.opiekun_id,
+//     utworzyl_user_id: daneKlienta.opiekun_id,
 
+//   })
+//   .then((res2) => {
+//      getClients()
+//      setShowEdit(false)
+//   })
+   
 
-function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
- // const [cookies, setCookie] = useCookies();
+// }
+
+// const getUserList2 = (context) => {
+  
+//   context.getUsersList()
+// }
+
+function Zapisz({daneKlienta,getClients,test,setShowEdit}) {
   const context = useContext(TokenContext);
     return (
       <button
         className={style.btn}
         onClick={() => {
-           addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
-       
+          updateClient(daneKlienta,getClients,setShowEdit)
+          // console.log("opiekun_id:"+ daneKlienta.opiekun_id)
+          // console.log("utworzyl_user_id:"+ daneKlienta.utworzyl_user_id)
+          // editKlient(daneKlienta,context,getClients,test,setShowEdit)
+  
+
+          //  context.getUsersList()
+          //  getUserList2(context)
+        //   showAddClientStage(false);
         }}
       >
         Zapisz
@@ -54,21 +85,21 @@ function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
   }
   
 
-function Header({setShowAddClientPane}) {
+function Header({setShowEdit}) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj klienta </p>
-      <Zamknij setShowAddClientPane={setShowAddClientPane}/>
+      <p className={style.title}>Edytuj...</p>
+      <Zamknij setShowEdit={setShowEdit}/>
     </div>
   );
 }
-function Zamknij({setShowAddClientPane}) {
+function Zamknij({setShowEdit}) {
   return (
     <img
     className={style.zamknij_icon}
      src={iconX}
      onClick={() => {
-      setShowAddClientPane(false)
+      setShowEdit(false)
 
      }}
      alt="Procesy"

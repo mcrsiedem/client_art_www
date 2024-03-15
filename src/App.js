@@ -4,11 +4,11 @@ import './App.css';
 
 import Technologie from './artapp/Technologie/Technologie'
 
-import Print from "./artapp/Print/Print";
-import Login from "./artapp/Login/Login";
+import Print from "./artapp/pages/Print/Print";
+import Login from "./artapp/pages/Login/Login";
 import { useState, createContext,useEffect,useRef } from "react";
-import History from "./artapp/History/History";
-import Panel from "./artapp/Panel/Panel";
+import History from "./artapp/pages/History/History";
+import Panel from "./artapp/pages/Panel/Panel";
 import {
   BrowserRouter,
   Routes,
@@ -62,7 +62,6 @@ export default function App() {
       <AppContextProvider user={user}>
       <TokenContext.Provider value={{ token, setToken,rowSelected, setRowSelected,users,getUsersList,socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
-        
         <Routes >
           <Route path='/' element={<Login />} />
           <Route path='/login' element={<Login />} />
@@ -71,7 +70,6 @@ export default function App() {
           <Route path='/Panel' element={<Panel />} />
           <Route path='/Technologie' element={<Technologie />} />
           <Route path='/zamowienia' element={<Zamowienia />} />
- 
         </Routes>
       </TokenContext.Provider>
       </AppContextProvider>

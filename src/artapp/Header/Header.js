@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import TokenContext from "../Context/tokenContext";
 // import CloseButton from 'react-bootstrap/CloseButton';
 
-import Hisotry from "../History/History";
+import Hisotry from "../pages/History/History";
 
 function Header() {
   const [value, setValue] = useState("cos2");

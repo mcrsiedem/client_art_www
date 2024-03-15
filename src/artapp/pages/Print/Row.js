@@ -1,10 +1,10 @@
 import React from "react";
 import style from "../Print/Row.module.css";
 import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from "react";
-import TokenContext from "../Context/tokenContext";
+import TokenContext from "../../Context/tokenContext";
 
 import axios from "axios";
-import { ip } from "../../Host";
+import { ip } from "../../../Host";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";

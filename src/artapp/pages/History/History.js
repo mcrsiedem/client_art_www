@@ -6,7 +6,7 @@ import ResizableTable from "./ResizableTable";
 import axios from "axios";
 
 import Table from 'react-bootstrap/Table';
-import { ip } from "../../Host";
+import { ip } from "../../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 

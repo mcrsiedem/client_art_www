@@ -3,7 +3,7 @@ import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import { useNavigate } from "react-router-dom";
 
-import TokenContext from "../Context/tokenContext";
+import TokenContext from "../../Context/tokenContext";
 
 function Panel({user,setUser}){
 

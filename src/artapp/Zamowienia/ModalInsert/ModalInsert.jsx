@@ -28,7 +28,7 @@ import Elementy from "./Elementy/Elementy";
 import Introligatornia from "./Introligatornia/Introligatornia";
 import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import TokenContext from "../../Context/tokenContext";
-import DecodeToken from "../../Login/DecodeToken";
+import DecodeToken from "../../pages/Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
 import { saveOrder } from "../../Actions/saveOrder";

@@ -6,7 +6,7 @@ import axios from "axios";
 // import { IP } from "../../../../Host"
 
 import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
-import iconX from "../../../svg/x.svg"
+import iconX from "../../../assets/x.svg"
 import { updateClient } from "../actions/updateClient";
 import { AppContext } from "../../../context/AppContext";
 export default function EditClient({

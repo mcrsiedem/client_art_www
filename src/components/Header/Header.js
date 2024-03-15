@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./Header.module.css";
-import ReactLogo from "../../svg/grid.svg";
+import ReactLogo from "../../assets/grid.svg";
 import ReactLogo_ilosc from "./ilosc.svg";
 import ReactLogo_ustawienia from "./settings.svg";
 import ReactLogo_full from "./full.svg";

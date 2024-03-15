@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./ClientStage.module.css";
-import iconX from "../../svg/x.svg";
-import iconDelete from "../../svg/trash.svg";
+import iconX from "../../assets/x.svg";
+import iconDelete from "../../assets/trash.svg";
 import TableClient from "./components/TableClient";
-import iconTable from "../../svg/add.png";
-import addIcon2 from "../../svg/addIcon2.svg";
+import iconTable from "../../assets/add.png";
+import addIcon2 from "../../assets/addIcon2.svg";
 
 import AddClient from "./components/AddClient";
 

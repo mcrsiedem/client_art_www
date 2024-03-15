@@ -1,5 +1,5 @@
-import iconTable from "../../../../svg/table.svg";
-import iconTableGreen from "../../../../svg/table_green.svg";
+import iconTable from "../../../../assets/table.svg";
+import iconTableGreen from "../../../../assets/table_green.svg";
 import React, { useState,useContext } from "react";
 import style from "./Header.module.css";
 import axios from "axios";

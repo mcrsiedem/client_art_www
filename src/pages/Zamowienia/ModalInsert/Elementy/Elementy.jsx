@@ -1,5 +1,5 @@
-// import iconCopy from "../../../../../svg/copy.svg";
-// import iconTrash from "../../../../../svg/trash2.svg";
+// import iconCopy from "../../../../../assets/copy.svg";
+// import iconTrash from "../../../../../assets/trash2.svg";
 import style from "./ElementTable.module.css";
 import { _papiery } from "../api";
 import {  useState } from "react";

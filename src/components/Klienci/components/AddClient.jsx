@@ -3,7 +3,7 @@ import style from "./AddClient.module.css";
 import TokenContext from "../../../context/tokenContext";
 import { addClient } from "../actions/addClient";
 import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
-import iconX from "../../../svg/x.svg"
+import iconX from "../../../assets/x.svg"
 import DecodeToken from "../../../pages/Login/DecodeToken";
 import { useCookies } from "react-cookie";
 import { AppContext } from "../../../context/AppContext";

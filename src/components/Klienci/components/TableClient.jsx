@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import style from "./TableClient.module.css";
 import DeleteClient from "./DeleteClient";
 import EditClient from "./EditClient";
-import iconDelete from "../../../svg/trash2.svg";
-import iconEdit from "../../../svg/settings.svg";
+import iconDelete from "../../../assets/trash2.svg";
+import iconEdit from "../../../assets/settings.svg";
 import ChangeClient from "./ChangeClient";
 
 export default function Table({

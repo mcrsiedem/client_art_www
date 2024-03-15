@@ -1,8 +1,8 @@
 import style from "./ElementTable.module.css";
-import Logo_ustawienia from "../../../../svg/settings.svg";
-import logoExpand from "../../../../svg/expand.svg";
-import iconCopy from "../../../../svg/copy.svg";
-import iconTrash from "../../../../svg/trash2.svg";
+import Logo_ustawienia from "../../../../assets/settings.svg";
+import logoExpand from "../../../../assets/expand.svg";
+import iconCopy from "../../../../assets/copy.svg";
+import iconTrash from "../../../../assets/trash2.svg";
 import {  useState } from "react";
 import { _typ_elementu} from "../api"
 import axios from "axios";

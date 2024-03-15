@@ -7,7 +7,7 @@ import { IP, IP_SOCKET } from "../../utils/Host";
 import TokenContext from "../../context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";
-import iconLogo from "../../svg/logo.svg";
+import iconLogo from "../../assets/logo.svg";
 import io from "socket.io-client";
 var header;
 const newSocket = io.connect(IP_SOCKET,{autoConnect: true});

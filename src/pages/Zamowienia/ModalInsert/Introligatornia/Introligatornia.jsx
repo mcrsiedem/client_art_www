@@ -1,12 +1,12 @@
 
 import style from "./Introligatornia.module.css";
-import logoExpand from "../../../../svg/expand.svg";
+import logoExpand from "../../../../assets/expand.svg";
 import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
-import iconCopy from "../../../../svg/copy.svg";
-import iconTrash from "../../../../svg/trash2.svg";
-import iconTable from "../../../../svg/settings.svg";
-import iconUstawienia from "../../../../svg/settings.svg";
+import iconCopy from "../../../../assets/copy.svg";
+import iconTrash from "../../../../assets/trash2.svg";
+import iconTable from "../../../../assets/settings.svg";
+import iconUstawienia from "../../../../assets/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
 

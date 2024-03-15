@@ -1,6 +1,6 @@
 import { useEffect,createContext,useState, useCallback } from "react";
-import { getUsers } from "../Actions/Users/getUsers";
-import { getClients } from "../Actions/Clients/getClients";
+import { getUsers } from "../actions/Users/getUsers";
+import { getClients } from "../actions/getClients";
 
 
 export const AppContext = createContext(
@@ -14,6 +14,10 @@ export const AppContextProvider = ({children})=>{
     const updateClients = useCallback(()=>{
      getClients(setClients)
     },[])
+
+    const updateUsers = useCallback(()=>{
+        getClients(setClients)
+       },[])
     
     useEffect(()=>{
         getUsers(setUsers) // lista wszystkich użytkowników
@@ -22,7 +26,7 @@ export const AppContextProvider = ({children})=>{
     
     return  <AppContext.Provider 
                 value={{
-                    users,clients,updateClients
+                    users,clients,updateClients, updateUsers
                 }}
             >
                 {children}

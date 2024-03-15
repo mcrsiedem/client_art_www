@@ -31,9 +31,9 @@ import TokenContext from "../../context/tokenContext";
 import DecodeToken from "../../pages/Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "../../Actions/saveOrder";
+import { saveOrder } from "../../actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
-import { today } from "../../Actions/today";
+import { today } from "../../actions/today";
 import ClientStage from "../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 

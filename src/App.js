@@ -22,7 +22,7 @@ import axios from "axios";
 import { ip } from "./Host";
 import io from "socket.io-client"
 
- import { getUsers } from "./artapp/Actions/Users/getUsers";
+ import { getUsers } from "./artapp/actions/Users/getUsers";
  
  import { AppContextProvider } from "./artapp/context/AppContext";
 export default function App() {

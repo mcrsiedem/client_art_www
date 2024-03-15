@@ -2,29 +2,29 @@ import React from "react";
 import { useState, createContext,useEffect,useRef } from "react";
 import './App.css';
 
-import Technologie from './artapp/pages/Technologie/Technologie'
-import Print from "./artapp/pages/Print/Print";
-import Login from "./artapp/pages/Login/Login";
-import History from "./artapp/pages/History/History";
-import Panel from "./artapp/pages/Panel/Panel";
+import Technologie from './pages/Technologie/Technologie'
+import Print from "./pages/Print/Print";
+import Login from "./pages/Login/Login";
+import History from "./pages/History/History";
+import Panel from "./pages/Panel/Panel";
 import {
   BrowserRouter,
   Routes,
   Route,
   Link
 } from "react-router-dom";
-import TokenContext from "./artapp/context/tokenContext";
-import Header from "./artapp/components/Header/Header";
-import Zamowienia from "./artapp/pages/Zamowienia/Zamowienia";
+import TokenContext from "./context/tokenContext";
+import Header from "./components/Header/Header";
+import Zamowienia from "./pages/Zamowienia/Zamowienia";
 // import Stany from "./artapp/Zamowienia/ModalInsert/Stany";
 
 // import axios from "axios";
 // import { ip } from "./Host";
 // import io from "socket.io-client"
 
- import { getUsers } from "./artapp/actions/Users/getUsers";
+ import { getUsers } from "./actions/Users/getUsers";
  
-import { AppContextProvider } from "./artapp/context/AppContext";
+import { AppContextProvider } from "./context/AppContext";
 export default function App() {
 
 

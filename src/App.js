@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 
 
-import Technologie from './artapp/Technologie/Technologie'
+import Technologie from './artapp/pages/Technologie/Technologie'
 
 import Print from "./artapp/pages/Print/Print";
 import Login from "./artapp/pages/Login/Login";

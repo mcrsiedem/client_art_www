@@ -2,7 +2,7 @@
 import style from "./Header.module.css";
 import LeftPane from "./LeftPane"
 import RightPane from "./RightPane"
-import logoGrid from "../../../../svg/grid.svg";
+import logoGrid from "../../../../../svg/grid.svg";
 import IconNavigate from "./IconNavigate";
 export default function Header(){
 

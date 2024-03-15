@@ -3,9 +3,7 @@ import { getUsers } from "../actions/Users/getUsers";
 import { getClients } from "../actions/getClients";
 
 
-export const AppContext = createContext(
-    //  {getClients: ()=>{}}
-);
+export const SocketContext = createContext();
 export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
@@ -16,7 +14,7 @@ export const AppContextProvider = ({children})=>{
     },[])
 
     const updateUsers = useCallback(()=>{
-        getUsers(setUsers)
+        getClients(setClients)
        },[])
     
     useEffect(()=>{

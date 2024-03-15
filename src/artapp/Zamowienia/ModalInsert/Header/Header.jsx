@@ -170,7 +170,10 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
 
     context2.updateClients()
     console.log("context:" +context.socketStan.id)
-   if(context.socketStan === null) return;
+  //  if(context.socketStan === null) return;
+   if(context.socketStan == "undefined") {
+    navigate("/Panel");
+   };
 
      context.socketStan.emit("send_mesage", {message:"OK"})
 

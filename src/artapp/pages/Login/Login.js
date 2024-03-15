@@ -25,7 +25,7 @@ export default function Login( ) {
      context.setSocketStan(newSocket);
      setSocket(newSocket)
     return ()=>{
-      console.log("exit")
+      // console.log("exit")
       //  newSocket.disconnect();
     }
    }, [user]);

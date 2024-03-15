@@ -6,6 +6,7 @@ import axios from "axios";
 import { ip } from "../../../../Host";
 import TokenContext from "../../../context/tokenContext";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../context/AppContext";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -185,11 +186,13 @@ Sprawdź {context.socketReceive}
 
 function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
   const context = useContext(TokenContext);
+  const context2 = useContext(AppContext);
+
 
   const sendMessage = () => {
 
      context.socketStan.emit("send_mesage", {message:""})
-
+ console.log(context2.users)
   
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import style from "./DeleteClient.module.css";
 import TokenContext from "../../../context/tokenContext";
 import axios from "axios";
-import { IP } from "../../../Host";
+import { IP } from "../../../utils/Host";
 import { deleteClient } from "../actions/deleteClient";
 
 import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";

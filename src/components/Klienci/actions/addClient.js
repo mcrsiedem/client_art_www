@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "../../../Host";
+import { IP } from "../../../utils/Host";
 
 export const  addClient  = async (daneKlienta,context,getClients,test,setShowAddClientPane) =>{
   

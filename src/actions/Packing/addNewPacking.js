@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IP } from "../../Host";
+import { IP } from "../../utils/Host";
 
 
 export function addNewPacking(row, pakowanie, setPakowanie) {

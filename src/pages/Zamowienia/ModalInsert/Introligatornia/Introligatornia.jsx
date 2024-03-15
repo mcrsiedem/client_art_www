@@ -10,7 +10,7 @@ import iconUstawienia from "../../../../svg/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
 
-import { IP } from "../../../../Host";
+import { IP } from "../../../../utils/Host";
 
 export default function IntroligatorniaTable({
   oprawa,

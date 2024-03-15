@@ -5,7 +5,7 @@ import iconCopy from "../../../../svg/copy.svg";
 import iconTrash from "../../../../svg/trash2.svg";
 import axios from "axios";
 
-import { IP } from "../../../../Host";
+import { IP } from "../../../../utils/Host";
 export default function RowFragment({
   row,
   handleChangeCardElementy,

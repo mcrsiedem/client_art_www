@@ -11,7 +11,7 @@ import style from "./OprawaElementyStage.module.css";
 
 import axios from "axios";
 
-import { IP } from "../../../../../Host";
+import { IP } from "../../../../../utils/Host";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
   fragmenty,

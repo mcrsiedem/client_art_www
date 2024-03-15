@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,
 import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
-import { IP } from "../../Host";
+import { IP } from "../../utils/Host";
 import TokenContext from "../../context/tokenContext";
 
 import { useCookies } from "react-cookie";

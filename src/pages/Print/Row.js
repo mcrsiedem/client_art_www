@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from 
 import TokenContext from "../../context/tokenContext";
 
 import axios from "axios";
-import { IP } from "../../Host";
+import { IP } from "../../utils/Host";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";

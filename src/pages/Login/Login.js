@@ -3,7 +3,7 @@ import { useState, createContext, useContext, useEffect, useRef } from "react";
 import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { IP, IP_SOCKET } from "../../Host";
+import { IP, IP_SOCKET } from "../../utils/Host";
 import TokenContext from "../../context/tokenContext";
 import { useCookies } from "react-cookie";
 import DecodeToken from "./DecodeToken";

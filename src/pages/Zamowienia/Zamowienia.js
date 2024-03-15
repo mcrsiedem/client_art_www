@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
-import { IP } from "../../Host";
+import { IP } from "../../utils/Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "../../svg/settings.svg";

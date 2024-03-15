@@ -7,7 +7,7 @@ import {  useState } from "react";
 import { _typ_elementu} from "../api"
 import axios from "axios";
 
-import { IP } from "../../../../Host";
+import { IP } from "../../../../utils/Host";
 
 export default function RowElement({
     row,

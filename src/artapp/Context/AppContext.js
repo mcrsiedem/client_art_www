@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import {creatContex} from React;
+import { useEffect,createContext,useState } from "react";
 
-export const AppContext = creatContex();
+
+export const AppContext = createContext();
 
 
 export const AppContextProvider = ({children, user})=>{

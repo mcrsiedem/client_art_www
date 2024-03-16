@@ -1,9 +1,6 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
-import TokenContext from "../../../context/tokenContext";
-import axios from "axios";
-// import DecodeToken from "../Login/DecodeToken";
-// import { IP } from "../../../../Host"
+
 
 import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
 import iconX from "../../../assets/x.svg"
@@ -64,20 +61,12 @@ export default function EditClient({
 // }
 
 function Zapisz({daneKlienta,getClients,test,setShowEdit}) {
-  const context = useContext(TokenContext);
+
     return (
       <button
         className={style.btn}
         onClick={() => {
           updateClient(daneKlienta,getClients,setShowEdit)
-          // console.log("opiekun_id:"+ daneKlienta.opiekun_id)
-          // console.log("utworzyl_user_id:"+ daneKlienta.utworzyl_user_id)
-          // editKlient(daneKlienta,context,getClients,test,setShowEdit)
-  
-
-          //  context.getUsersList()
-          //  getUserList2(context)
-        //   showAddClientStage(false);
         }}
       >
         Zapisz

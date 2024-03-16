@@ -3,20 +3,12 @@ import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import { useNavigate } from "react-router-dom";
 
-import TokenContext from "../../context/tokenContext";
-
 function Panel({user,setUser}){
-
-
         const navigate = useNavigate();
    
     useEffect(() => {
-        
-
         document.getElementById("header").style.display = "none";
       }, []);
-
-
 
     return(<>
 

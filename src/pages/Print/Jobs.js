@@ -3,27 +3,18 @@ import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
 import { IP } from "../../utils/Host";
-import TokenContext from "../../context/tokenContext";
-
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import Dialog from "./Dialog";
 
-
-
 const Jobs = forwardRef((props, ref) => {
 
-
-
   const snackbarRef = useRef(null);
-  // const rowRef = useRef(null);
 
-  const [unSelectedAll, setUnSelectedAll] = useState(false);
     const [blacha_id, setBlacha_id] = useState();
     const [data, setData] = useState([]);
     const [sztuki, setSztuki] = useState();
 
-    const token = useContext(TokenContext)
 
     useImperativeHandle(ref, () => ({
         callChildFunction(maszyna) {
@@ -32,7 +23,6 @@ const Jobs = forwardRef((props, ref) => {
     }));
 
 
-    const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
   
 

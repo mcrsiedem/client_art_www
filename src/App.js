@@ -9,9 +9,10 @@ import Technologie from './pages/Technologie/Technologie'
 import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
 import {  BrowserRouter,Routes,Route} from "react-router-dom";
-import TokenContext from "./context/tokenContext";
+
 import { AppContextProvider } from "./context/AppContext";
 import { SocketContextProvider } from "./context/SocketContext";
+import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 
 export default function App() {
 
@@ -25,18 +26,18 @@ export default function App() {
     <BrowserRouter basename={''} >
       <SocketContextProvider>
       <AppContextProvider>
-      <TokenContext.Provider value={{ socketStan,socketReceive,setSocketStan,setSocketReceive}}>
-        <Header />
-        <Routes >
-          <Route path='/' element={<Login />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/Print' element={<Print />} />
-          <Route path='/History' element={<History />} />
-          <Route path='/Panel' element={<Panel />} />
-          <Route path='/Technologie' element={<Technologie />} />
-          <Route path='/zamowienia' element={<Zamowienia />} />
-        </Routes>
-      </TokenContext.Provider>
+      <ModalInsertContextProvider>
+            <Header />
+            <Routes >
+              <Route path='/' element={<Login />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/Print' element={<Print />} />
+              <Route path='/History' element={<History />} />
+              <Route path='/Panel' element={<Panel />} />
+              <Route path='/Technologie' element={<Technologie />} />
+              <Route path='/zamowienia' element={<Zamowienia />} />
+            </Routes>
+      </ModalInsertContextProvider>
       </AppContextProvider>
       </SocketContextProvider>
     </BrowserRouter>

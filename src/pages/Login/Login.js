@@ -3,14 +3,10 @@ import { useState, createContext, useContext, useEffect, useRef } from "react";
 import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { IP, IP_SOCKET } from "../../utils/Host";
-import TokenContext from "../../context/tokenContext";
-import { useCookies } from "react-cookie";
+import { IP } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo.svg";
-import io from "socket.io-client";
 var header;
-// const newSocket = io.connect(IP_SOCKET,{autoConnect: true});
 export default function Login( ) {
   // let socket;
   const [user,setUser] = useState(null);
@@ -22,11 +18,9 @@ export default function Login( ) {
   useEffect(() => {
 
     
-    //  context.setSocketStan(newSocket);
-    //  setSocket(newSocket)
+
     return ()=>{
-      // console.log("exit")
-      //  newSocket.disconnect();
+
     }
    }, [user]);
 

@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import style from './Print.module.css';
-
 import Jobs from "./Jobs";
-
 
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import TokenContext from "../../context/tokenContext";
 import { IP } from "../../utils/Host";
 
 import axios from "axios";
@@ -19,20 +16,15 @@ function Print(props) {
   const [maszyna, setMaszyna] = useState("");
   const ChildRef = useRef();
   const navigate = useNavigate();
-  const tokenContext = useContext(TokenContext);
+
 
   function giveMeJobs(maszyna) {
     setMaszyna(maszyna);
     ChildRef.current.callChildFunction(maszyna);
-    tokenContext.setRowSelected([]);
   }
 
 
 
-
-  // const token_z_contextu = tokenContext.token;
-  // const token_z_localStorge = localStorage.getItem('token');
-  // const token_z_cookie = Cookies.get('token');
 
 
   useEffect(()=>{

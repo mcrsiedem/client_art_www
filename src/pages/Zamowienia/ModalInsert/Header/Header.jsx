@@ -183,7 +183,7 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
  onClick={() => sendMessage()}
 className={style.btn}
 >
-Sprawdź {socketcontext.socketReceive}
+Sprawdź {socketcontext.socketReceiveMessage}
 </button>
   )
 }
@@ -195,7 +195,7 @@ function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,se
 
   const sendMessage = () => {
 
-    //  context.socketStan.emit("send_mesage", {message:""})
+    socketcontext.socket.emit("send_mesage", {message:""})
  console.log(appcontext.clients)
   
   }
@@ -205,7 +205,7 @@ function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,se
  onClick={() => sendMessage()}
 className={style.btn}
 >
-Sprawdź {socketcontext.socketReceive}
+Sprawdź {socketcontext.socketReceiveMessage}
 </button>
   )
 }

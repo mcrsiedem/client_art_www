@@ -29,15 +29,14 @@ const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);
         socket.on("receive_message", (data) => {
           //tu przychodzi odpowiedź i jest zapisana w contexcie
           setSocketReceiveMessage(data.message)
-        //   context.setSocketReceive(data.message);
         });
-        console.log("socket id 2: "+ newSocket.id)
+        
       }, [socket]);
     
     
     return  <SocketContext.Provider 
                 value={{
-                    user,socket,updateUser
+                    user,socket,updateUser,socketReceiveMessage
                 }}
             >
                 {children}

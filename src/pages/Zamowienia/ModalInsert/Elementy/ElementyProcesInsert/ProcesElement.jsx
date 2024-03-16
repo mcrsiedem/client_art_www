@@ -1,11 +1,5 @@
-// import iconCopy from "../../../../../assets/copy.svg";
-// import iconTrash from "../../../../../assets/trash2.svg";
 import style from "./ProcesElement.module.css";
-import iconX from "../../../../../assets/xDark.svg"
-// import { _papiery } from "../../api";
-// import ElementTableHeader from "./ElementTableHeader";
-// import { useState } from "react";
-// import Logo_ustawienia from "../../../../assets/settings.svg";
+import iconX from 'assets/xDark.svg'
 
 export default function ProcesElement({
   

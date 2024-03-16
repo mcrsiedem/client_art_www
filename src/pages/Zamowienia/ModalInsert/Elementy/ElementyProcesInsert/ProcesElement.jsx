@@ -1,12 +1,22 @@
+import React, { useEffect, useState, useContext,useRef } from "react";
 import style from "./ProcesElement.module.css";
-import iconX from 'assets/xDark.svg'
 
+import iconX from 'assets/xDark.svg'
+import { AppContext } from "context/AppContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
 export default function ProcesElement({
   
   setShowElementyProcesyInsert,
-  procesyElementow,
-  listaDostepnychProcesow
+  
+  
 }) {
+
+  const contexApp = useContext(AppContext);
+  const modalContext = useContext(ModalInsertContext);
+
+  const listaDostepnychProcesow = contexApp.process;
+  const procesyElementow = contexApp.process;
+
   return (
     <div className={style.window}>
       <Header setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>

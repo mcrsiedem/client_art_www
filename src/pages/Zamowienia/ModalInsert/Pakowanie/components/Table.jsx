@@ -1,8 +1,8 @@
 import style from "./../Pakowanie.module.css";
 import iconCopy from "../../../../../assets/copy.svg";
 import iconTrash from "../../../../../assets/trash2.svg"
-import { addNewPacking } from "../../../../../actions/Packing/addNewPacking";
-import { deletePacking } from "../../../../../actions/Packing/deletePacking";
+import { addNewPacking } from "../../../../../actions/addPacking";
+import { deletePacking } from "../../../../../actions/deletePacking";
 export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,isLockDragDrop}) {
     return <div className={style.main}>
         

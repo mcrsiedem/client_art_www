@@ -1,16 +1,19 @@
 import { useEffect,createContext,useState, useCallback } from "react";
-import { getUsers } from "../actions/Users/getUsers";
-import { getClients } from "../actions/Clients/getClients";
+import { getUsers } from "../actions/getUsers";
+import { getClients } from "../actions/getClients";
+import { getProcess } from 'actions/getProcess';
 
-
-export const AppContext = createContext(
-    //  {getClients: ()=>{}}
-);
+export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
-    const [rowSelected, setRowSelected] = useState(null); // druk
+    const [process, setProcess] = useState(null); 
+    const [rowSelected, setRowSelected] = useState(null); 
+
+    const updateProcess = useCallback(()=>{
+        getProcess(setProcess) 
+       },[])
 
     const updateClients = useCallback(()=>{
      getClients(setClients)
@@ -21,15 +24,23 @@ export const AppContextProvider = ({children})=>{
        },[])
     
     useEffect(()=>{
-        getUsers(setUsers) // lista wszystkich użytkowników
-        getClients(setClients) // list wszystkich klientów
+        getUsers(setUsers) 
+        getClients(setClients) 
+        getProcess(setProcess) 
     },[])
     
     return  <AppContext.Provider 
                 value={{
-                    users,clients,updateClients, updateUsers,rowSelected, setRowSelected
+                    users,updateUsers,          // wszystcy uzytkownicy
+                    clients,updateClients,      // wszyscy klienci
+                    process, updateProcess,     // lista dostępnych procesów
+                    rowSelected, setRowSelected // druk
                 }}
             >
                 {children}
             </AppContext.Provider>
+
+
+
+
 }

@@ -30,9 +30,9 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "../../../actions/Orders/saveOrder";
+import { saveOrder } from "../../../actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
-import { today } from "../../../actions/Date/today";
+import { today } from "../../../actions/today";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 

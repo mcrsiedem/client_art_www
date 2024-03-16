@@ -1,6 +1,7 @@
 import { useEffect,createContext,useState, useCallback } from "react";
-import { getUsers } from "../actions/Users/getUsers";
-import { getClients } from "../actions/Clients/getClients";
+import { getUsers } from "../actions/getUsers";
+import { getClients } from "../actions/getClients";
+import { getProcess } from "actions/getProcess";
 
 
 export const ModalInsertContext = createContext(
@@ -19,7 +20,6 @@ export const ModalInsertContextProvider = ({children})=>{
         bok_oprawy: "297"
     
       });
-    const [clients, setClients] = useState(null);
 
     // const updateClients = useCallback(()=>{
     //  getClients(setClients)
@@ -30,6 +30,7 @@ export const ModalInsertContextProvider = ({children})=>{
     //    },[])
     
     useEffect(()=>{
+        
         // getUsers(setUsers) // lista wszystkich użytkowników
         // getClients(setClients) // list wszystkich klientów
     },[])

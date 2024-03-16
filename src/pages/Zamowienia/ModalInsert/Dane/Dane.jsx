@@ -1,6 +1,6 @@
 import style from "./Dane.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj } from "../api";
-import { isNumberWalidation } from "../../../../actions/Validations/Walidacja";
+import { isNumberWalidation } from "../../../../actions/Walidacja";
 // import iconTable from "../../../../assets/settings.svg";
 import iconTable from "../../../../assets/add.png";
 import addIcon2 from "../../../../assets/addIcon2.svg";

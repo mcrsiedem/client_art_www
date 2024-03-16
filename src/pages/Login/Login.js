@@ -6,13 +6,14 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo.svg";
+import { SocketContext } from "../../context/SocketContext";
 var header;
 export default function Login( ) {
   // let socket;
   const [user,setUser] = useState(null);
   const [socket,setSocket] = useState(null);
   const [input, setInput] = useState({    login: "",    haslo: "",  });
-  const context = useContext(TokenContext);
+  const context = useContext(SocketContext);
   const navigate = useNavigate();
 
   useEffect(() => {

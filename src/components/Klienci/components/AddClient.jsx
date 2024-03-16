@@ -39,12 +39,12 @@ export default function AddClientPane({
 
 function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
  // const [cookies, setCookie] = useCookies();
-  const context = useContext(TokenContext);
+
     return (
       <button
         className={style.btn}
         onClick={() => {
-           addClient(daneKlienta,context,getClients,test,setShowAddClientPane)
+           addClient(daneKlienta,getClients,test,setShowAddClientPane)
        
         }}
       >

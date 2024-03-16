@@ -7,15 +7,12 @@ import ReactLogo_full from "./full.svg";
 import ReactLogo_history from "./history.svg";
 import { useNavigate } from "react-router-dom";
 
-// import CloseButton from 'react-bootstrap/CloseButton';
 
-import Hisotry from "../../pages/History/History";
 
 function Header() {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
-  const token = useContext(TokenContext);
 
   // aby useEffect załadował się tylko raz
   const effectRan = useRef(false);

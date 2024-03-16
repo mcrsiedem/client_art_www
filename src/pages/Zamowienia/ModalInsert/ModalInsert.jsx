@@ -61,7 +61,6 @@ function ModalInsert({
   // const readOnly = useRef(false)
 
   const [cookies, setCookie] = useCookies();
-  const context = useContext(TokenContext);
   const [nroprawy, setNroprawy] = useState();
   const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);

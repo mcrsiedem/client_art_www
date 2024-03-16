@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../Print/Row.module.css";
 import { useState, useEffect, forwardRef, useImperativeHandle,useContext } from "react";
-import TokenContext from "../../context/tokenContext";
+import {AppContext} from "../../context/AppContext";
 
 import axios from "axios";
 import { IP } from "../../utils/Host";
@@ -14,7 +14,7 @@ const Row = forwardRef((props, ref) => {
   const [statusCombo, setStatusCombo] = useState();
 
   const czas = props.czasDruku;
-  const token = useContext(TokenContext);
+  const token = useContext(AppContext);
 
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();

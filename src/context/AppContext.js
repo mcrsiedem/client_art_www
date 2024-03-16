@@ -10,6 +10,7 @@ export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
+    const [rowSelected, setRowSelected] = useState(null); // druk
 
     const updateClients = useCallback(()=>{
      getClients(setClients)
@@ -26,7 +27,7 @@ export const AppContextProvider = ({children})=>{
     
     return  <AppContext.Provider 
                 value={{
-                    users,clients,updateClients, updateUsers
+                    users,clients,updateClients, updateUsers,rowSelected, setRowSelected
                 }}
             >
                 {children}

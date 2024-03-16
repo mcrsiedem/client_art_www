@@ -11,6 +11,7 @@ import History from "./pages/History/History";
 import {  BrowserRouter,Routes,Route} from "react-router-dom";
 import TokenContext from "./context/tokenContext";
 import { AppContextProvider } from "./context/AppContext";
+import { SocketContextProvider } from "./context/SocketContext";
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
 
   return (
     <BrowserRouter basename={''} >
+      <SocketContextProvider>
       <AppContextProvider>
       <TokenContext.Provider value={{ socketStan,socketReceive,setSocketStan,setSocketReceive}}>
         <Header />
@@ -36,6 +38,7 @@ export default function App() {
         </Routes>
       </TokenContext.Provider>
       </AppContextProvider>
+      </SocketContextProvider>
     </BrowserRouter>
   );
 }

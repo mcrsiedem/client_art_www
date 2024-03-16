@@ -1,32 +1,45 @@
 import { useEffect,createContext,useState, useCallback } from "react";
+import io from "socket.io-client";
+import { IP_SOCKET } from "../utils/Host";
 import { getUsers } from "../actions/Users/getUsers";
 import { getClients } from "../actions/Clients/getClients";
-
+const newSocket = io.connect(IP_SOCKET,{autoConnect: true});
 
 export const SocketContext = createContext();
-export const AppContextProvider = ({children})=>{
+export const SocketContextProvider = ({children})=>{
 
-    const [users, setUsers] = useState(null);
-    const [clients, setClients] = useState(null);
+const [user,setUser] = useState(null);      // zalogowany user
+const [socket,setSocket] = useState(null);  
+const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);  
 
-    const updateClients = useCallback(()=>{
-     getClients(setClients)
+
+    const updateUser = useCallback(()=>{
+     setUser(user)
     },[])
 
-    const updateUsers = useCallback(()=>{
-        getClients(setClients)
-       },[])
     
     useEffect(()=>{
-        getUsers(setUsers) // lista wszystkich użytkowników
-        getClients(setClients) // list wszystkich klientów
+        setSocket(newSocket)
+        // if(socket === null) return;
+        console.log("socket id: "+ newSocket.id)
     },[])
+
+    useEffect(() => {
+        if(socket === null) return;
+        socket.on("receive_message", (data) => {
+          //tu przychodzi odpowiedź i jest zapisana w contexcie
+          setSocketReceiveMessage(data.message)
+        //   context.setSocketReceive(data.message);
+        });
+        console.log("socket id 2: "+ newSocket.id)
+      }, [socket]);
     
-    return  <AppContext.Provider 
+    
+    return  <SocketContext.Provider 
                 value={{
-                    users,clients,updateClients, updateUsers
+                    user,socket,updateUser
                 }}
             >
                 {children}
-            </AppContext.Provider>
+            </SocketContext.Provider>
 }

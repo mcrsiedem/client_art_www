@@ -5,6 +5,7 @@ import style from "./Header.module.css";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import TokenContext from "../../../../context/tokenContext";
+import { SocketContext } from "../../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
 
@@ -163,19 +164,17 @@ setSaveAs(true)
 
 
 function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
-  const context = useContext(TokenContext);
-  const context2 = useContext(AppContext);
+ 
+  const appcontext = useContext(AppContext);
+  const socketcontext = useContext(SocketContext);
+
   const navigate = useNavigate();
   const sendMessage = () => {
 
-    context2.updateClients()
-    console.log("context:" +context.socketStan.id)
-  //  if(context.socketStan === null) return;
-   if(context.socketStan == "undefined") {
-    navigate("/Panel");
-   };
+    appcontext.updateClients()
+    console.log("socketcontext id:" +socketcontext.socket.id)
 
-     context.socketStan.emit("send_mesage", {message:"OK"})
+    socketcontext.socket.emit("send_mesage", {message:"OK"})
 
   }
 
@@ -184,20 +183,20 @@ function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,set
  onClick={() => sendMessage()}
 className={style.btn}
 >
-Sprawdź {context.socketReceive}
+Sprawdź {socketcontext.socketReceive}
 </button>
   )
 }
 
 function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
-  const context = useContext(TokenContext);
-   const context2 = useContext(AppContext);
+  const appcontext = useContext(AppContext);
+  const socketcontext = useContext(SocketContext);
 
 
   const sendMessage = () => {
-    // context2.updateClients()
+
     //  context.socketStan.emit("send_mesage", {message:""})
- console.log(context2.clients)
+ console.log(appcontext.clients)
   
   }
 
@@ -206,7 +205,7 @@ function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,se
  onClick={() => sendMessage()}
 className={style.btn}
 >
-Sprawdź {context.socketReceive}
+Sprawdź {socketcontext.socketReceive}
 </button>
   )
 }

@@ -4,22 +4,19 @@ import style from "./ProcesElement.module.css";
 import iconX from 'assets/xDark.svg'
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
-export default function ProcesElement({
-  
-  setShowElementyProcesyInsert,
-  
-  
-}) {
+export default function ProcesElement() {
 
   const contexApp = useContext(AppContext);
   const procesyElementow = contexApp.process;
   
   const modalContext = useContext(ModalInsertContext);
   const listaDostepnychProcesow = contexApp.process;
+ 
+  const setShowElementyProcesyInsert= modalContext.setShowElementyProcesyInsert;
 
   return (
     <div className={style.window}>
-      <Header setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>
+      <Header />
       <div className={style.main}>
         <table className={style.table}>
           <thead>

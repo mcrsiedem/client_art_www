@@ -208,7 +208,7 @@ export default function RowElement({
     );
   }
   
-function Procesy({ row, procesyElementow,setShowElementyProcesyInsert}) {
+function Procesy({ row, procesyElementow}) {
   const contextModalInsert = useContext(ModalInsertContext);
     return (
       <td className={style.col_button} id="procesy">
@@ -216,7 +216,7 @@ function Procesy({ row, procesyElementow,setShowElementyProcesyInsert}) {
         className={style.expand}
         src={Logo_ustawienia}
         onClick={() => {
-          setShowElementyProcesyInsert(true);
+          contextModalInsert.setShowElementyProcesyInsert(true);
           contextModalInsert.setSelectedElementID(row.id)
           console.log("id: "+row.id)
         }}

@@ -53,7 +53,7 @@ function ModalInsert({
   refreshZamowienia
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
-
+const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isLockDragDrop, lockDragDrop] = useState(false);
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
@@ -81,7 +81,7 @@ function ModalInsert({
   const [showTemplate, setShowTemplate] = useState(true);
   const [showSaveAs, setShowSaveAs] = useState(false);
   const [saveAs, setSaveAs] = useState(false);
-  const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
+ 
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
@@ -390,8 +390,7 @@ async function getClients() {
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}
-              showElementyProcesyInsert={showElementyProcesyInsert}
-              setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+      
               handleChangeCardFragmenty_i_Elementy={
                 handleChangeCardFragmenty_i_Elementy
               }
@@ -444,8 +443,6 @@ async function getClients() {
 
       {showElementyProcesyInsert && (
         <ProcesElement
-          showElementyProcesyInsert={showElementyProcesyInsert}
-          setShowElementyProcesyInsert={setShowElementyProcesyInsert}
           procesyElementow={procesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
           setSaveButtonDisabled={setSaveButtonDisabled}

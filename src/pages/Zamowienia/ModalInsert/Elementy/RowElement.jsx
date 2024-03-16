@@ -3,12 +3,12 @@ import Logo_ustawienia from "../../../../assets/settings.svg";
 import logoExpand from "../../../../assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
-import {  useState } from "react";
+import {  useState,useContext } from "react";
 import { _typ_elementu} from "../api"
 import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
-
+import { ModalInsertContext } from "context/ModalInsertContext";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -187,20 +187,9 @@ export default function RowElement({
           handleChangeCardElementy={handleChangeCardElementy}
         />
 
-        <td className={style.col_button} id="procesy">
-          <img
-            className={style.expand}
-            src={Logo_ustawienia}
-            onClick={() => {
-              setShowElementyProcesyInsert(true);
-            }}
-            alt="Procesy"
-          />
-          {procesyElementow
-            .filter((frag) => frag.element_id === row.id)
-            .map((pr) => pr.proces)}
-        </td>
 
+
+        <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
         <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
         <td></td>
@@ -219,7 +208,26 @@ export default function RowElement({
     );
   }
   
-
+function Procesy({ row, procesyElementow,setShowElementyProcesyInsert}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+    return (
+      <td className={style.col_button} id="procesy">
+      <img
+        className={style.expand}
+        src={Logo_ustawienia}
+        onClick={() => {
+          setShowElementyProcesyInsert(true);
+          contextModalInsert.setSelectedElementID(row.id)
+          console.log("id: "+row.id)
+        }}
+        alt="Procesy"
+      />
+      {procesyElementow
+        .filter((frag) => frag.element_id === row.id)
+        .map((pr) => pr.proces)}
+    </td>
+    );
+  }
   
 function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (

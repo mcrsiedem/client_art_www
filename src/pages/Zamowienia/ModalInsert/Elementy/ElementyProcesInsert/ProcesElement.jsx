@@ -12,10 +12,10 @@ export default function ProcesElement({
 }) {
 
   const contexApp = useContext(AppContext);
-  const modalContext = useContext(ModalInsertContext);
-
-  const listaDostepnychProcesow = contexApp.process;
   const procesyElementow = contexApp.process;
+  
+  const modalContext = useContext(ModalInsertContext);
+  const listaDostepnychProcesow = contexApp.process;
 
   return (
     <div className={style.window}>
@@ -109,9 +109,11 @@ export default function ProcesElement({
 
 
 function Header({ setShowElementyProcesyInsert }) {
+  const modalContext = useContext(ModalInsertContext);
+  const idElementu = modalContext.selectedElementID;
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy </p>
+      <p className={style.title}>Procesy  {idElementu}</p>
       <Zamknij setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>
     </div>
   );
@@ -128,3 +130,41 @@ function Zamknij({ setShowElementyProcesyInsert }) {
     />
   );
 }
+
+// function ProcesSelect({
+//   row,
+//   handleChangeCardElementy,
+// })
+
+//  {
+//   const contexApp = useContext(AppContext);
+//   const listaDostepnychProcesow = contexApp.process;
+//   return (
+//     <td>
+//       <select
+//         //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
+//         //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
+//         //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
+//         // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
+//         className={style.select}
+//         defaultValue={row.papier_id}
+//         onChange={(e) => {
+//           setListaDostepnychGrmatur(
+//             listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+//           );
+//           handleChangeCardElementy({
+//             ...row,
+//             papier_id: e.target.value,
+//           });
+//         }}
+//       >
+//         {}
+//         {listaPapierow.map((option) => (
+//           <option key={option.id} value={option.id}>
+//             {option.nazwa}
+//           </option>
+//         ))}
+//       </select>
+//     </td>
+//   );
+// }

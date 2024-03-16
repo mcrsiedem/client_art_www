@@ -8,6 +8,9 @@ export const ModalInsertContext = createContext(
     //  {getClients: ()=>{}}
 );
 export const ModalInsertContextProvider = ({children})=>{
+    const[zamowieniaID,setZamowienieID] = useState(null)
+    const[selectedElementID,setSelectedElementID] = useState(null)
+    const[procesy,setProcesy] = useState(null)
 
     const [preOrder, setPreOrder] = useState({
         typ: 1,
@@ -21,9 +24,7 @@ export const ModalInsertContextProvider = ({children})=>{
     
       });
 
-    // const updateClients = useCallback(()=>{
-    //  getClients(setClients)
-    // },[])
+
 
     // const updateUsers = useCallback(()=>{
     //     getUsers(setUsers)
@@ -37,7 +38,8 @@ export const ModalInsertContextProvider = ({children})=>{
     
     return  <ModalInsertContext.Provider 
                 value={{
-                    preOrder, setPreOrder
+                    preOrder, setPreOrder,
+                    selectedElementID,setSelectedElementID
                 }}
             >
                 {children}

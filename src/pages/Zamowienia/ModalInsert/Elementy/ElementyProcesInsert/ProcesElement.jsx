@@ -12,11 +12,10 @@ export default function ProcesElement() {
   const modalContext = useContext(ModalInsertContext);
   const listaDostepnychProcesow = contexApp.process;
  
-  const setShowElementyProcesyInsert= modalContext.setShowElementyProcesyInsert;
 
   return (
     <div className={style.window}>
-      <Header />
+      <Header/>
       <div className={style.main}>
         <table className={style.table}>
           <thead>
@@ -89,15 +88,7 @@ export default function ProcesElement() {
         </table>
       </div>
       <div className={style.footer}>
-        {" "}
-        <button
-          className={style.btn}
-          onClick={() => {
-            setShowElementyProcesyInsert(false);
-          }}
-        >
-          Zapisz
-        </button>{" "}
+<Zapisz/>
       
       </div>
     </div>
@@ -111,23 +102,39 @@ function Header({ setShowElementyProcesyInsert }) {
   return (
     <div className={style.header}>
       <p className={style.title}>Procesy  {idElementu}</p>
-      <Zamknij setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>
+      <ZamknijX setShowElementyProcesyInsert={setShowElementyProcesyInsert}/>
     </div>
   );
 }
-function Zamknij({ setShowElementyProcesyInsert }) {
+function ZamknijX() {
+  const modalContext = useContext(ModalInsertContext);
   return (
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
-        setShowElementyProcesyInsert(false);
+        modalContext.setShowElementyProcesyInsert(false)
+        // setShowElementyProcesyInsert(false);
       }}
       alt="Procesy"
     />
   );
 }
 
+function Zapisz() {
+  const modalContext = useContext(ModalInsertContext);
+  return (
+    
+    <button
+      className={style.btn}
+      onClick={() => {
+        modalContext.setShowElementyProcesyInsert(false);
+      }}
+    >
+      Zapisz
+    </button>
+  );
+}
 // function ProcesSelect({
 //   row,
 //   handleChangeCardElementy,

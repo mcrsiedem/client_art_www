@@ -1,5 +1,7 @@
+import React, {useContext } from "react";
 import style from "./ProduktTemplate.module.css";
 import { _papiery, _typ_produktu, _rodzaj_oprawy } from "../api";
+import { ModalInsertContext } from "../../../../context/ModalInsertContext";
 // import { AddProduktTemplate } from "./AddProduktTemplate";
 
 export default function ProduktTemplate({
@@ -16,6 +18,8 @@ export default function ProduktTemplate({
   oprawa,
   setOprawa
 }) {
+
+ 
   return (
     <div className={style.container}>
       <div className={style.produkt}>
@@ -222,13 +226,14 @@ function Naklad({ preOrder, setPreOrder }) {
 }
 
 function BokOprawy({ preOrder, setPreOrder }) {
+  const contextModalInsert = useContext(ModalInsertContext);
   return (
     <td>
       <input
         className={style.in}
         defaultValue={preOrder.bok_oprawy}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, bok_oprawy: e.target.value });
+          contextModalInsert.setPreOrder({ ...contextModalInsert.preOrder, bok_oprawy: e.target.value });
         }}
       ></input>
     </td>
@@ -236,7 +241,7 @@ function BokOprawy({ preOrder, setPreOrder }) {
 }
 
 function Dodaj({
-  preOrder,
+
   setShowTemplate,
   setShowParametryZamowienia,
   produkty,
@@ -248,6 +253,9 @@ function Dodaj({
   oprawa,
   setOprawa
 }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+
+  const preOrder = contextModalInsert.preOrder;
   return (
     <div className={style.kontrolka}>
       <button
@@ -277,6 +285,7 @@ function AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
   setFragmenty,
   oprawa,
   setOprawa) {
+  
   // console.log(preOrder.naklad);
   setProdukty(
     produkty.map((t) => {
@@ -329,7 +338,9 @@ function AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
       return {...t,
         naklad: preOrder.naklad,
         oprawa: preOrder.oprawa,
-        bok_oprawy:preOrder.bok_oprawy}
+      
+        bok_oprawy:preOrder.bok_oprawy
+      }
     })
   );
 

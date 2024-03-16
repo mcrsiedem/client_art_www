@@ -36,6 +36,8 @@ import { today } from "../../../actions/Date/today";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
+import { ModalInsertContext } from "../../../context/ModalInsertContext";
+
 function ModalInsert({
   openModalInsert,
   setOpenModalInsert,
@@ -50,6 +52,7 @@ function ModalInsert({
   row,
   refreshZamowienia
 }) {
+  const contextModalInsert = useContext(ModalInsertContext);
 
   const [isLockDragDrop, lockDragDrop] = useState(false);
   const [isShowAddClientStage, showAddClientStage] = useState(false);

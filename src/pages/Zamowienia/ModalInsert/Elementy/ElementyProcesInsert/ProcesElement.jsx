@@ -10,7 +10,7 @@ export default function ProcesElement() {
    <Window>
       <Header />
       <Table />
-      <Zapisz />
+      <Footer />
    </Window>
   );
 }
@@ -48,7 +48,7 @@ function Zamknij() {
   );
 }
 
-function Zapisz() {
+function Footer() {
   const modalContext = useContext(ModalInsertContext);
   return (
     <div className={style.footer}>

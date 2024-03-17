@@ -8,8 +8,9 @@ import iconSettings from "../../assets/settings.svg";
 import ModalInsert from "./ModalInsert/ModalInsert";
 
 import style from "../Zamowienia/Zamowienia.module.css";
-
+import { useAuth } from "hooks/useAuth";
 function Zamowienia({ user, setUser }) {
+  const [auth,lookToken] = useAuth(false);
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState([]);

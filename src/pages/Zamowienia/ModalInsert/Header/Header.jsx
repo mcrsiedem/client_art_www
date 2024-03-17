@@ -7,6 +7,7 @@ import { IP } from "../../../../utils/Host";
 import { SocketContext } from "../../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
+import { useAuth } from "hooks/useAuth";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -34,14 +35,17 @@ function Header({
   row, 
   readAlert,   setReadAlert ,   readOnly,  setReadOnly
   
-}) {
+})
 
+{
+  const [auth,lookToken] = useAuth(false);
   
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie... {readOnly && (
+        <div className={style.title}>Zamówienie...   {auth&& <>ss</>} {readOnly && (
           <div>
+         
              otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
             
           </div>

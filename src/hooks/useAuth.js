@@ -1,12 +1,15 @@
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "utils/Host";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-export const useTogle = (initialVal = false) =>{
+export const useAuth = (initialVal = false) =>{
     const [auth,setAuth] = useState(initialVal);
 
-    const checkToken = () => {
+
+
+
+    const lookToken = () => {
       
         axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
             if (res.data.Status === "Success") {
@@ -17,11 +20,14 @@ export const useTogle = (initialVal = false) =>{
           });
         }
 
-    
+      useEffect(() => {
+        lookToken();
+    console.log("useAuth")
+  }, []);
 
 
     
-    return[auth,checkToken]
+    return[auth,lookToken]
 
 }
 //ss

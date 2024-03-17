@@ -4,7 +4,7 @@ import { IP } from "utils/Host";
 import { useState,useEffect,useRef } from "react";
 
 export const useAuth = (initialVal = false) =>{
-    // const [auth,setAuth] = useState(initialVal);
+    //  const [auth,setAuth] = useState(initialVal);
     let auth = useRef(false)
 
     
@@ -32,7 +32,6 @@ export const useAuth = (initialVal = false) =>{
   }, []);
 
 
-    
     return[auth,lookToken]
 
 }

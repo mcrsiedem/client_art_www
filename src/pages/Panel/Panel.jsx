@@ -30,7 +30,7 @@ function Panel({user,setUser}){
             <div className={style.row}>
                     <div className={style.kafle} >Uszlachetnianie</div>
                     <div className={style.kafle} >Magazyn</div>
-                    <div className={style.kafle} >Info</div>
+                    <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div>
                     
             </div>
     

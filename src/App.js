@@ -8,6 +8,8 @@ import Zamowienia from "./pages/Zamowienia/Zamowienia";
 import Technologie from './pages/Technologie/Technologie'
 import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
+import Info from "./pages/Info/Info";
+
 import {  BrowserRouter,Routes,Route} from "react-router-dom";
 
 import { AppContextProvider } from "./context/AppContext";
@@ -36,6 +38,7 @@ export default function App() {
               <Route path='/Panel' element={<Panel />} />
               <Route path='/Technologie' element={<Technologie />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
+              <Route path='/info' element={<Info />} />
             </Routes>
       </ModalInsertContextProvider>
       </AppContextProvider>

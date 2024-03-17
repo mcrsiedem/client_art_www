@@ -34,7 +34,7 @@ function Zamowienia({ user, setUser }) {
 
   }
   async function fechZamowienia() {
-
+    console.log("auth po stronie zamowien :",auth)
     const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
     setData(jobs);

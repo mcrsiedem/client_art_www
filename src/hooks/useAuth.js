@@ -33,7 +33,7 @@ export const useAuth = (initialVal = false) =>{
 
 
     
-    return[auth.current,lookToken]
+    return[auth,lookToken]
 
 }
 //ss

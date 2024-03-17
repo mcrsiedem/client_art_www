@@ -34,6 +34,9 @@ function Zamowienia({ user, setUser }) {
 
   }
   async function fechZamowienia() {
+    // if(auth){
+    //   console.log("TAKK")
+    // }
     console.log("auth po stronie zamowien :",auth)
     const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
@@ -64,6 +67,8 @@ function Zamowienia({ user, setUser }) {
   useEffect(() => {
     document.getElementById("header").style.display = "grid";
     checkToken();
+    // lookToken()
+    // fechZamowienia();
   }, []);
 
 

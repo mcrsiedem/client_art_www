@@ -1,33 +1,39 @@
 import axios from "axios";
 import { IP } from "utils/Host";
 
-import { useState,useEffect } from "react";
+import { useState,useEffect,useRef } from "react";
 
 export const useAuth = (initialVal = false) =>{
-    const [auth,setAuth] = useState(initialVal);
+    // const [auth,setAuth] = useState(initialVal);
+    let auth = useRef(false)
 
-
-
+    
 
     const lookToken = () => {
       
         axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
-            if (res.data.Status === "Success") {
-                setAuth(true)
+            console.log("axios")
+            if (res.data.Status =="Success") {
+                console.log("success")
+                auth.current=true
+       
             } else {
-                setAuth(false)
+                console.log("not succes")
+                auth.current=false
+         
             }
           });
         }
 
       useEffect(() => {
         lookToken();
-    console.log("useAuth")
+    
+   
   }, []);
 
 
     
-    return[auth,lookToken]
+    return[auth.current,lookToken]
 
 }
 //ss

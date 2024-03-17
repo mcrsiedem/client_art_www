@@ -43,7 +43,7 @@ function Header({
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie...   {auth&& <>ss</>} {readOnly && (
+        <div className={style.title}>Zamówienie...   {auth && <>ss</>} {readOnly && (
           <div>
          
              otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 

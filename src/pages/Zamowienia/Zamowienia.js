@@ -34,6 +34,7 @@ function Zamowienia({ user, setUser }) {
 
   }
   async function fechZamowienia() {
+
     const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
     setData(jobs);

@@ -9,8 +9,14 @@ export const useTest = (initialVal = false) =>{
 const togle = () => {
 // setTest((prev)=> !prev)
 lookToken()
+fun()
 }
 
+const fun = ()=> {
+  
+    console.log("test "+test)
+
+}
 const lookToken = () => {
       
   axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {

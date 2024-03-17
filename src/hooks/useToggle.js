@@ -5,6 +5,10 @@ export const useTogle = (initialVal = false) =>{
     const toggle = () => {
         setState((prev) => !prev)
     };
+
+
+
+    
     return[state,toggle]
 
 }

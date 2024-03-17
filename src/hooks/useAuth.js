@@ -17,8 +17,7 @@ export const useTogle = (initialVal = false) =>{
           });
         }
 
-    };
-
+    
 
 
     

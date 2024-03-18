@@ -14,7 +14,7 @@ function Zamowienia({ user, setUser }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
-  const [row, setRow] = useState([]);
+  const [row, setRow] = useState(null);
   const [openModalInsert, setOpenModalInsert] = useState(false);
   // const [open, setOpen] = useState(false);
   const open = useRef(false);
@@ -73,6 +73,10 @@ function Zamowienia({ user, setUser }) {
     // fechZamowienia();
   }, []);
 
+
+
+
+
   const onClose = useCallback(async(ev) => {  
 
     ev.preventDefault();
@@ -81,7 +85,9 @@ function Zamowienia({ user, setUser }) {
    await axios
      .put(IP + "setOrderClosed", {
 
-       id: sessionStorage.getItem("idzam"),
+        id: sessionStorage.getItem("idzam"),
+     
+
      })
      .then(() => {
        return (ev.returnValue = "Are you sure you want to close?");
@@ -193,9 +199,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
             open2(row.id);
             setRow({ id: row.id});
           }}
-          onClick={()=> {setRow(row.id)
-          console.log(row.id)
-          }}
+          // onClick={()=> {setRow(row.id)
+          // console.log(row.id)
+          // }}
         >
           <td>{row.id} </td>
           <td>{row.nr} </td>

@@ -41,7 +41,7 @@ export const ModalInsertContextProvider = ({children})=>{
                 value={{
                     preOrder, setPreOrder,
                     selectedElementID,setSelectedElementID,
-
+                    zamowieniaID,setZamowienieID,
                     showElementyProcesyInsert,setShowElementyProcesyInsert
                 }}
             >

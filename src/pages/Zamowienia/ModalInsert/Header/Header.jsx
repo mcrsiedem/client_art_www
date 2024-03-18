@@ -133,7 +133,7 @@ function Header({
                       id: row.id,
                     });
                    }
-                
+                   window.removeEventListener("beforeunload", ()=>{});
             }}
             className={style.btn}
           >

@@ -1,5 +1,5 @@
 import style from "./ModalInsert.module.css";
-import React, { useEffect, useState, useContext,useRef } from "react";
+import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
 import { useCookies } from "react-cookie";
 import Header from "./Header/Header";
 import Dane from "./Dane/Dane";
@@ -242,7 +242,15 @@ async function getClients() {
 
   }
 
-
+  const onClose = useCallback(async(ev) => {   
+     ev.preventDefault();
+    await axios
+      .put(IP + "setOrderClosed", {
+        id: row.id,
+      })
+      .then(() => {
+        return (ev.returnValue = "Are you sure you want to close?");
+      }); }, [])
 
   useEffect(() => {
 
@@ -259,6 +267,18 @@ async function getClients() {
         fechparametry(row.id)
       }
 
+      if (!readOnly) {
+        window.addEventListener("beforeunload", async (ev) => {
+          ev.preventDefault();
+          await axios
+            .put(IP + "setOrderClosed", {
+              id: row.id,
+            })
+            .then(() => {
+              return (ev.returnValue = "Are you sure you want to close?");
+            });
+        });
+      }
 
 
    

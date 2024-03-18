@@ -135,7 +135,6 @@ function Header({
                     });
                    }
                
-                  //  window.removeEventListener("beforeunload", contextModalInsert.onClose);
             }}
             className={style.btn}
           >

@@ -14,8 +14,6 @@ export const ModalInsertContextProvider = ({children})=>{
     const[selectedElementID,setSelectedElementID] = useState(null)
     const[procesy,setProcesy] = useState(null)
 
-    const[access,setAccess] = useState(false)
-
     const [preOrder, setPreOrder] = useState({
         typ: 1,
         oprawa: 1,
@@ -43,9 +41,9 @@ export const ModalInsertContextProvider = ({children})=>{
                 value={{
                     preOrder, setPreOrder,
                     selectedElementID,setSelectedElementID,
-                    zamowienieID,setZamowienieID,
+                    zamowienieID,setZamowienieID,  // id otwartego zamowienia
                     showElementyProcesyInsert,setShowElementyProcesyInsert,
-                    access, setAccess,
+    
                      
                    updateZamowienieID
                 }}

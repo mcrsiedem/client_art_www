@@ -242,17 +242,6 @@ async function getClients() {
 
   }
 
-  const onClose = useCallback(async(ev) => {   
-     ev.preventDefault();
-    await axios
-      .put(IP + "setOrderClosed", {
-        id: contextModalInsert.zamowienieID,
-      })
-      .then(() => {
-        return (ev.returnValue = "Are you sure you want to close?");
-      }); }, [])
-
-
 
   useEffect(() => {
     fechListy();
@@ -274,16 +263,7 @@ async function getClients() {
 }, [isShowAddClientStage]);
 
 
-// useEffect(() => {
-//   console.log("Use Effect on open Modal Insert: " + openModalInsert)
 
-//   if(openModalInsert) {
-//     window.addEventListener('beforeunload', onClose);
-//   } else {
-//     window.removeEventListener('beforeunload', onClose);
-//   }
-
-// }, [openModalInsert,setOpenModalInsert]);
 
 
   async function fechparametry(idZamowienia) {

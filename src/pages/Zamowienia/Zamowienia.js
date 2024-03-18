@@ -73,16 +73,22 @@ function Zamowienia({ user, setUser }) {
     // fechZamowienia();
   }, []);
 
-  const onClose = useCallback(async(ev) => {   
+  const onClose = useCallback(async(ev) => {  
+    // ev.preventDefault();
+    // console.log("onclose id: "+ contextModalInsert.zamowienieID  );
+    // console.log("onclose id: "+ sessionStorage.getItem("idzam")  );
     ev.preventDefault();
    await axios
      .put(IP + "setOrderClosed", {
-      //  id: row.id,
-       id: 3036,
+
+       id: sessionStorage.getItem("idzam"),
      })
      .then(() => {
        return (ev.returnValue = "Are you sure you want to close?");
-     }); }, [])
+     }
+
+     );
+     }, [])
 
 
   useEffect(() => {
@@ -183,6 +189,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           onDoubleClick={(node, event) => {
             
             contextModalInsert.updateZamowienieID(row.id);
+            sessionStorage.setItem("idzam",row.id )
             open2(row.id);
             setRow({ id: row.id});
           }}

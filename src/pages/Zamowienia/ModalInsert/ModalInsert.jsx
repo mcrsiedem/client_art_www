@@ -246,7 +246,7 @@ async function getClients() {
      ev.preventDefault();
     await axios
       .put(IP + "setOrderClosed", {
-        id: row.id,
+        id: contextModalInsert.zamowienieID,
       })
       .then(() => {
         return (ev.returnValue = "Are you sure you want to close?");

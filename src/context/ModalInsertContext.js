@@ -10,7 +10,7 @@ export const ModalInsertContext = createContext(
 );
 export const ModalInsertContextProvider = ({children})=>{
     const[showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
-    const[zamowieniaID,setZamowienieID] = useState(null)
+    const[zamowienieID,setZamowienieID] = useState(null)
     const[selectedElementID,setSelectedElementID] = useState(null)
     const[procesy,setProcesy] = useState(null)
 
@@ -33,38 +33,21 @@ export const ModalInsertContextProvider = ({children})=>{
         setZamowienieID(data)
        },[])
     
-    //   const onClose = useCallback(async(ev) => {   
-    //        ev.preventDefault();
-    //    await axios
-    //      .put(IP + "setOrderClosed", {
-    //        id: zamowieniaID,
-    //      })
-    //      .then(() => {
-    //         console.log("data: " +zamowieniaID)
-    //        return (ev.returnValue = "Are you sure you want to close?");
-    //      }); }, [])
-    
-
-
-     // const updateUsers = useCallback(()=>{
-    //     getUsers(setUsers)
-    //    },[])
     
     useEffect(()=>{
         
-        // getUsers(setUsers) // lista wszystkich użytkowników
-        // getClients(setClients) // list wszystkich klientów
+
     },[])
     
     return  <ModalInsertContext.Provider 
                 value={{
                     preOrder, setPreOrder,
                     selectedElementID,setSelectedElementID,
-                    zamowieniaID,setZamowienieID,
+                    zamowienieID,setZamowienieID,
                     showElementyProcesyInsert,setShowElementyProcesyInsert,
                     access, setAccess,
                      
-                    zamowieniaID,setZamowienieID,updateZamowienieID
+                   updateZamowienieID
                 }}
             >
                 {children}

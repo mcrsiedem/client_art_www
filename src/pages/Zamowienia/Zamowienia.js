@@ -78,6 +78,7 @@ function Zamowienia({ user, setUser }) {
 
 
   const onClose = useCallback(async(ev) => {  
+    console.log("row")
 
     ev.preventDefault();
     // console.log("onclose id: "+ contextModalInsert.zamowienieID  );
@@ -85,7 +86,8 @@ function Zamowienia({ user, setUser }) {
    await axios
      .put(IP + "setOrderClosed", {
 
-        id: sessionStorage.getItem("idzam"),
+        // id: sessionStorage.getItem("idzam"),
+        id: row.id,
      
 
      })
@@ -94,7 +96,7 @@ function Zamowienia({ user, setUser }) {
      }
 
      );
-     }, [])
+     }, [row])
 
 
   useEffect(() => {

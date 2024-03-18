@@ -188,7 +188,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           key={row.id}
           onDoubleClick={(node, event) => {
             
-            contextModalInsert.updateZamowienieID(row.id);
+            contextModalInsert.setZamowienieID(row.id);
             sessionStorage.setItem("idzam",row.id )
             open2(row.id);
             setRow({ id: row.id});

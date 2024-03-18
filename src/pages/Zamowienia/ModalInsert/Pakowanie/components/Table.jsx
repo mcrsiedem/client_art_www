@@ -33,7 +33,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,
                     onDragOver={(handleDragOver)}
                     onDrop={()=>handleDrop(row,pakowanie,setPakowanie)}
                   >
-                    <ZamowienieId row={row}/>
+                    <ZamId row={row}/>
                     <ProduktId row={row}/>
                     <Id row={row}/>
                     <Indeks row={row}/>
@@ -56,7 +56,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,
   
   }
   
-  function ZamowienieId({ row }) {
+  function ZamId({ row }) {
     return (
       <td>{row.zamowienie_id}</td>
     );

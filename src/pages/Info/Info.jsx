@@ -1,5 +1,4 @@
 import style from "./Info.module.css";
-import { useAuth } from "hooks/useAuth";
 import { useTest } from "hooks/useTest";
 import { useState } from "react";
 import { Button } from "react-bootstrap";

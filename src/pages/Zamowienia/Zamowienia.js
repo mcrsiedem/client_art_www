@@ -1,45 +1,37 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "../../assets/settings.svg";
-
 import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
-import { useAuth } from "hooks/useAuth";
 function Zamowienia({ user, setUser }) {
-  const [auth,lookToken] = useAuth(false);
-  const contextModalInsert = useContext(ModalInsertContext);
+
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState(null);
   const [openModalInsert, setOpenModalInsert] = useState(false);
-  // const [open, setOpen] = useState(false);
+
   const open = useRef(false);
-  const [cookies, setCookie] = useCookies();
+
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
-    // contextModalInsert
+
   }
 
   const open2 = () =>{
     //pokazuje OpenModal
     // zmiena open na true, co oznacza dla modala, ze open istniejace zamowienie a nie insert new
     setOpenModalInsert(true)
-    // setOpen(true)
     open.current = true
 
   }
   async function fechZamowienia() {
-    // if(auth){
-    //   console.log("TAKK")
-    // }
-    console.log("auth po stronie zamowien :",auth)
+
     const res = await axios.get(IP + "zamowienia");
     let jobs= [...res.data].filter(job => job.final == 1);
     setData(jobs);
@@ -69,16 +61,10 @@ function Zamowienia({ user, setUser }) {
   useEffect(() => {
     document.getElementById("header").style.display = "grid";
     checkToken();
-    // lookToken()
-    // fechZamowienia();
   }, []);
 
 
-
-
-
   const onClose = useCallback(async(ev) => {  
-    console.log("row")
 
     ev.preventDefault();
     // console.log("onclose id: "+ contextModalInsert.zamowienieID  );
@@ -100,8 +86,6 @@ function Zamowienia({ user, setUser }) {
 
 
   useEffect(() => {
-    console.log("Use Effect on open Modal Insert: " + openModalInsert)
-    // const handleWindowClick = () => setAlert(false)
     if(openModalInsert) {
       window.addEventListener('beforeunload', onClose);
     } else {
@@ -195,15 +179,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
         <tr
           key={row.id}
           onDoubleClick={(node, event) => {
-            
-            contextModalInsert.setZamowienieID(row.id);
-            sessionStorage.setItem("idzam",row.id )
             open2(row.id);
             setRow({ id: row.id});
           }}
-          // onClick={()=> {setRow(row.id)
-          // console.log(row.id)
-          // }}
         >
           <td>{row.id} </td>
           <td>{row.nr} </td>

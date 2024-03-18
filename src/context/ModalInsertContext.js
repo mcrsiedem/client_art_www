@@ -1,9 +1,10 @@
-import { useEffect,createContext,useState, useCallback } from "react";
+import { useEffect,createContext,useState, useCallback, useRef } from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcess } from "actions/getProcess";
 
-
+import axios from "axios";
+import { IP } from "utils/Host";
 export const ModalInsertContext = createContext(
     //  {getClients: ()=>{}}
 );
@@ -12,6 +13,8 @@ export const ModalInsertContextProvider = ({children})=>{
     const[zamowieniaID,setZamowienieID] = useState(null)
     const[selectedElementID,setSelectedElementID] = useState(null)
     const[procesy,setProcesy] = useState(null)
+
+    const[access,setAccess] = useState(false)
 
     const [preOrder, setPreOrder] = useState({
         typ: 1,
@@ -25,9 +28,25 @@ export const ModalInsertContextProvider = ({children})=>{
     
       });
 
+     const updateZamowienieID = useCallback((data)=>{
+        
+        setZamowienieID(data)
+       },[])
+    
+    //   const onClose = useCallback(async(ev) => {   
+    //        ev.preventDefault();
+    //    await axios
+    //      .put(IP + "setOrderClosed", {
+    //        id: zamowieniaID,
+    //      })
+    //      .then(() => {
+    //         console.log("data: " +zamowieniaID)
+    //        return (ev.returnValue = "Are you sure you want to close?");
+    //      }); }, [])
+    
 
 
-    // const updateUsers = useCallback(()=>{
+     // const updateUsers = useCallback(()=>{
     //     getUsers(setUsers)
     //    },[])
     
@@ -42,7 +61,10 @@ export const ModalInsertContextProvider = ({children})=>{
                     preOrder, setPreOrder,
                     selectedElementID,setSelectedElementID,
                     zamowieniaID,setZamowienieID,
-                    showElementyProcesyInsert,setShowElementyProcesyInsert
+                    showElementyProcesyInsert,setShowElementyProcesyInsert,
+                    access, setAccess,
+                     
+                    zamowieniaID,setZamowienieID,updateZamowienieID
                 }}
             >
                 {children}

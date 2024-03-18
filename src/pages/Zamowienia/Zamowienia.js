@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useCookies } from "react-cookie";
@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 import iconSettings from "../../assets/settings.svg";
 
 import ModalInsert from "./ModalInsert/ModalInsert";
-
+import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
 import { useAuth } from "hooks/useAuth";
 function Zamowienia({ user, setUser }) {
   const [auth,lookToken] = useAuth(false);
+  const contextModalInsert = useContext(ModalInsertContext);
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState([]);
@@ -23,6 +24,7 @@ function Zamowienia({ user, setUser }) {
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
+    // contextModalInsert
   }
 
   const open2 = () =>{
@@ -71,6 +73,28 @@ function Zamowienia({ user, setUser }) {
     // fechZamowienia();
   }, []);
 
+  const onClose = useCallback(async(ev) => {   
+    ev.preventDefault();
+   await axios
+     .put(IP + "setOrderClosed", {
+      //  id: row.id,
+       id: 3036,
+     })
+     .then(() => {
+       return (ev.returnValue = "Are you sure you want to close?");
+     }); }, [])
+
+
+  useEffect(() => {
+    console.log("Use Effect on open Modal Insert: " + openModalInsert)
+    // const handleWindowClick = () => setAlert(false)
+    if(openModalInsert) {
+      window.addEventListener('beforeunload', onClose);
+    } else {
+      window.removeEventListener('beforeunload', onClose);
+    }
+  
+  }, [openModalInsert,setOpenModalInsert]);
 
   return (
     <div className={style.body}>
@@ -97,6 +121,16 @@ function Zamowienia({ user, setUser }) {
                 }}
               >
                 Odśwież
+              </button>
+
+              <button
+                className={style.myButton}
+                onClick={() => {
+                  console.log('openModal '+openModalInsert)
+                  // refreshZamowienia();
+                }}
+              >
+                Sprawdz {openModalInsert&&(<>true</>)}
               </button>
       </footer>
 
@@ -127,6 +161,7 @@ function Zamowienia({ user, setUser }) {
 }
 
 function ZamowieniaTable({zamowienia,open2,setRow}){
+  const contextModalInsert = useContext(ModalInsertContext);
  return         <table>
   <thead>
     <tr>
@@ -147,7 +182,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           key={row.id}
           onDoubleClick={(node, event) => {
             
-            
+            contextModalInsert.updateZamowienieID(row.id);
             open2(row.id);
             setRow({ id: row.id});
           }}

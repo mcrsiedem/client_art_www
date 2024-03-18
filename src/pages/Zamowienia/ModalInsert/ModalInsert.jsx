@@ -252,36 +252,19 @@ async function getClients() {
         return (ev.returnValue = "Are you sure you want to close?");
       }); }, [])
 
+
+
   useEffect(() => {
+    fechListy();
+
+    if (open.current) {
+      setShowParametryZamowienia(true);
+      setShowTemplate(false);
+      open.current = false;
+      fechparametry(row.id);
+    }
 
 
-
-
-      fechListy();
-
-      if (open.current) {
-        setShowParametryZamowienia(true)
-        setShowTemplate(false)
-        // setOpen(false)
-        open.current =false
-        fechparametry(row.id)
-      }
-
-      if (!readOnly) {
-        window.addEventListener("beforeunload", async (ev) => {
-          ev.preventDefault();
-          await axios
-            .put(IP + "setOrderClosed", {
-              id: row.id,
-            })
-            .then(() => {
-              return (ev.returnValue = "Are you sure you want to close?");
-            });
-        });
-      }
-
-
-   
   }, []);
 
 
@@ -289,6 +272,18 @@ async function getClients() {
   useEffect(() => {
     getClients()
 }, [isShowAddClientStage]);
+
+
+// useEffect(() => {
+//   console.log("Use Effect on open Modal Insert: " + openModalInsert)
+
+//   if(openModalInsert) {
+//     window.addEventListener('beforeunload', onClose);
+//   } else {
+//     window.removeEventListener('beforeunload', onClose);
+//   }
+
+// }, [openModalInsert,setOpenModalInsert]);
 
 
   async function fechparametry(idZamowienia) {

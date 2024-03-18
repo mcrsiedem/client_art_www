@@ -8,6 +8,7 @@ import { SocketContext } from "../../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
 import { useAuth } from "hooks/useAuth";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -39,7 +40,7 @@ function Header({
 
 {
   const [auth,lookToken] = useAuth(false);
-  
+  const contextModalInsert = useContext(ModalInsertContext);
   return (
     <>
       <div className={style.container}>
@@ -127,13 +128,14 @@ function Header({
             onClick={async() => {
              
             setOpenModalInsert(false)
-            console.log("readOnly: "+ readOnly)
+ 
                    if (!readOnly){
                         const res = await axios.put(IP + "setOrderClosed",{
                       id: row.id,
                     });
                    }
-                   window.removeEventListener("beforeunload", ()=>{});
+               
+                  //  window.removeEventListener("beforeunload", contextModalInsert.onClose);
             }}
             className={style.btn}
           >

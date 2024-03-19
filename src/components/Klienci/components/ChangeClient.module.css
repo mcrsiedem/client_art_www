@@ -26,7 +26,8 @@
       padding-right: 10px;
       /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
       /* background-image: linear-gradient(rgb(238, 15, 26) 0%, rgb(255, 87, 95) 50%, rgb(238, 15, 26) 100%); */
-      background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%);
+      /* background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%); */
+      background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); 
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       height: 2rem;
@@ -67,7 +68,9 @@
     .btn_delete{
         /* background-image: linear-gradient(rgb(161, 161, 161) 0%,rgb(182, 182, 182) 50%,rgb(161, 161, 161) 100%); */
         /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
-        background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%);
+        /* background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%); */
+      background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); 
+
         width:  200px;
         height: 30px;
         border-radius: 10px;

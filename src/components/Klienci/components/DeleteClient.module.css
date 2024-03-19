@@ -26,8 +26,8 @@
       padding-right: 10px;
       /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
       /* background-image: linear-gradient(rgb(238, 15, 26) 0%, rgb(255, 87, 95) 50%, rgb(238, 15, 26) 100%); */
-      /* background-image: linear-gradient(rgb(255, 0, 13) 0%, rgb(249, 49, 59) 50%, rgb(255, 0, 13) 100%); */
-      background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%);
+      background-image: linear-gradient(rgb(255, 0, 0) 0%, rgb(223, 4, 4) 50%, rgb(255, 0, 0) 100%);
+      /* background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%); */
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       height: 2rem;

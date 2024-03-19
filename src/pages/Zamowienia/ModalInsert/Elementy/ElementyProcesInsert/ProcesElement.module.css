@@ -1,9 +1,9 @@
 .window{
   position: fixed;
-  top: 200px;
+  top: 230px;
   bottom: 200px;
-  left: 20px;
-  right: 20px;
+  left: 50px;
+  right: 50px;
   min-height: 300px;
   min-width: 300px;
   /* background-image: linear-gradient(135deg,rgb(221, 230, 223) 30%, rgb(191, 209, 194) 100%); */

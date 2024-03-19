@@ -3,7 +3,11 @@ import iconCopy from "../../../../../assets/copy.svg";
 import iconTrash from "../../../../../assets/trash2.svg"
 import { addNewPacking } from "../../../../../actions/addPacking";
 import { deletePacking } from "../../../../../actions/deletePacking";
-export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,isLockDragDrop}) {
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { useContext } from "react";
+export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
+
+  const contextModal = useContext(ModalInsertContext );
     return <div className={style.main}>
         
           <table className={style.table2}>
@@ -27,7 +31,7 @@ export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie,
             <tbody className={style.center}>
               {pakowanie.map((row) => {
                 return (
-                  <tr draggable={isLockDragDrop}
+                  <tr draggable={contextModal.lockDragDrop}
                     key={row.id}
                     onDragStart={()=>handleDragStart(row)} 
                     onDragOver={(handleDragOver)}

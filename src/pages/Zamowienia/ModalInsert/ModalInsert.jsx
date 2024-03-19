@@ -54,7 +54,7 @@ function ModalInsert({
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
 const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
-  const [isLockDragDrop, lockDragDrop] = useState(false);
+  // const [isLockDragDrop, lockDragDrop] = useState(false);
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
@@ -313,8 +313,8 @@ async function getClients() {
   return (
     <div className={style.container}>
       <Header
-      isLockDragDrop={isLockDragDrop}
-      lockDragDrop={lockDragDrop}
+      // isLockDragDrop={isLockDragDrop}
+      // lockDragDrop={lockDragDrop}
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
         // postZamowienie={postZamowienie}
@@ -410,7 +410,7 @@ async function getClients() {
               setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
-            <Pakowanie isLockDragDrop={isLockDragDrop} pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            <Pakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 

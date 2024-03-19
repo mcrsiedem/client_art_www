@@ -7,6 +7,7 @@ import axios from "axios";
 import { IP } from "utils/Host";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
+    const [lockDragDrop, setLockDragDrop] = useState(null);
     const[showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const[zamowienieID,setZamowienieID] = useState(null)
     const[selectedElementID,setSelectedElementID] = useState(null)
@@ -36,8 +37,8 @@ export const ModalInsertContextProvider = ({children})=>{
     return (
       <ModalInsertContext.Provider
         value={{
-          preOrder,
-          setPreOrder,
+        lockDragDrop, setLockDragDrop,
+        preOrder, setPreOrder,
           selectedElementID,
           setSelectedElementID,
           zamowienieID,

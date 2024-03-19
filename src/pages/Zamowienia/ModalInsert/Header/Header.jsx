@@ -32,7 +32,7 @@ function Header({
   setShowSaveAs,
   saveAs, setSaveAs,
   isSaveButtonDisabled, setSaveButtonDisabled,
-  isLockDragDrop,lockDragDrop,stanOtwarciaZamowienia,
+  stanOtwarciaZamowienia,
   row, 
   readAlert,   setReadAlert ,   readOnly,  setReadOnly
   
@@ -56,7 +56,7 @@ function Header({
         <img
             onClick={() => {
        // wyłącza drag drop w tabelkach
-              lockDragDrop(!isLockDragDrop);
+       contextModalInsert.setLockDragDrop(!contextModalInsert.lockDragDrop);
             }}
             className={style.icon}
             src={iconTable}

@@ -2,11 +2,11 @@ import React, {useContext } from "react";
 import style from "./ProduktTemplate.module.css";
 import { _papiery, _typ_produktu, _rodzaj_oprawy } from "../api";
 import { ModalInsertContext } from "../../../../context/ModalInsertContext";
+import { PreOrderContext } from "context/PreOrderContext";
 // import { AddProduktTemplate } from "./AddProduktTemplate";
 
 export default function ProduktTemplate({
-  preOrder,
-  setPreOrder,
+
   setShowTemplate,
   setShowParametryZamowienia,
   produkty,
@@ -25,8 +25,7 @@ export default function ProduktTemplate({
       <div className={style.produkt}>
         <Header />
         <Table
-          preOrder={preOrder}
-          setPreOrder={setPreOrder}
+    
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
           produkty={produkty}
@@ -47,12 +46,11 @@ export default function ProduktTemplate({
 //--------------------------
 
 function Header() {
-  return <div className={style.header}>Produkt</div>;
+  return <div className={style.header}>Product preset</div>;
 }
 
 function Table({
-  preOrder,
-  setPreOrder,
+
   setShowTemplate,
   setShowParametryZamowienia,
   produkty,
@@ -84,19 +82,19 @@ function Table({
         </thead>
         <tbody className={style.center}>
           <tr>
-            <Typ preOrder={preOrder} setPreOrder={setPreOrder} />
-            <Oprawa preOrder={preOrder} setPreOrder={setPreOrder} />
-            <Naklad preOrder={preOrder} setPreOrder={setPreOrder} />
-            <Okladka preOrder={preOrder} setPreOrder={setPreOrder} />
-            <Srodek preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Typ />
+            <Oprawa />
+            <Naklad />
+            <Okladka />
+            <Srodek />
             {/* <Wersja row={row} handleChangeCardProdukty={handleChangeCardProdukty}/> */}
             {/* <td><input defaultValue={row.naklad} onChange={(e)=>setInfo(e.target.value)}></input></td>
                                             <td><input defaultValue={row.nazwa} onChange={(e)=>setInfo(e.target.value)}></input></td> */}
-            <Formatx preOrder={preOrder} setPreOrder={setPreOrder} />{" "}
-            <Formaty preOrder={preOrder} setPreOrder={setPreOrder} />
-            <BokOprawy preOrder={preOrder} setPreOrder={setPreOrder} />
+            <Formatx />{" "}
+            <Formaty />
+            <BokOprawy />
             <Dodaj
-              preOrder={preOrder}
+              
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               produkty={produkty}
@@ -116,14 +114,15 @@ function Table({
   );
 }
 
-function Typ({ preOrder, setPreOrder }) {
+function Typ() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <select
         className={style.select}
-        defaultValue={preOrder.typ}
+        defaultValue={contextPreOrder.preOrder.typ}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, typ: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, typ: e.target.value });
         }}
       >
         {}
@@ -137,14 +136,15 @@ function Typ({ preOrder, setPreOrder }) {
   );
 }
 
-function Oprawa({ preOrder, setPreOrder }) {
+function Oprawa() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <select
         className={style.select}
-        defaultValue={preOrder.oprawa}
+        defaultValue={contextPreOrder.preOrder.oprawa}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, oprawa: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, oprawa: e.target.value });
         }}
       >
         {}
@@ -158,82 +158,87 @@ function Oprawa({ preOrder, setPreOrder }) {
   );
 }
 
-function Formatx({ preOrder, setPreOrder }) {
+function Formatx() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.format_x}
+        defaultValue={contextPreOrder.preOrder.format_x}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, format_x: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, format_x: e.target.value });
         }}
       ></input>
     </td>
   );
 }
 
-function Formaty({ preOrder, setPreOrder }) {
+function Formaty() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.format_y}
+        defaultValue={contextPreOrder.preOrder.format_y}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, format_y: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, format_y: e.target.value });
         }}
       ></input>
     </td>
   );
 }
-function Okladka({ preOrder, setPreOrder }) {
+function Okladka() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.strony_okl}
+        defaultValue={contextPreOrder.preOrder.strony_okl}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, strony_okl: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, strony_okl: e.target.value });
         }}
       ></input>
     </td>
   );
 }
-function Srodek({ preOrder, setPreOrder }) {
+function Srodek() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.strony_srd}
+        defaultValue={contextPreOrder.preOrder.strony_srd}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, strony_srd: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, strony_srd: e.target.value });
         }}
       ></input>
     </td>
   );
 }
-function Naklad({ preOrder, setPreOrder }) {
+function Naklad() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td className={style.td_naklad}>
       <input
         className={style.naklad}
-        defaultValue={preOrder.naklad}
+        defaultValue={contextPreOrder.preOrder.naklad}
         onChange={(e) => {
-          setPreOrder({ ...preOrder, naklad: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, naklad: e.target.value });
         }}
       ></input>
     </td>
   );
 }
 
-function BokOprawy({ preOrder, setPreOrder }) {
-  const contextModalInsert = useContext(ModalInsertContext);
+function BokOprawy() {
+  const contextPreOrder = useContext(PreOrderContext);
   return (
     <td>
       <input
         className={style.in}
-        defaultValue={preOrder.bok_oprawy}
+        defaultValue={contextPreOrder.preOrder.bok_oprawy}
         onChange={(e) => {
-          contextModalInsert.setPreOrder({ ...contextModalInsert.preOrder, bok_oprawy: e.target.value });
+          contextPreOrder.setPreOrder({ ...contextPreOrder.preOrder, bok_oprawy: e.target.value });
         }}
       ></input>
     </td>
@@ -253,9 +258,9 @@ function Dodaj({
   oprawa,
   setOprawa
 }) {
-  const contextModalInsert = useContext(ModalInsertContext);
+  const contextPreOrder = useContext(PreOrderContext);
 
-  const preOrder = contextModalInsert.preOrder;
+  const preOrder = contextPreOrder.preOrder;
   return (
     <div className={style.kontrolka}>
       <button

@@ -84,17 +84,7 @@ const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
-  const [preOrder, setPreOrder] = useState({
-    typ: 1,
-    oprawa: 1,
-    naklad: "1000",
-    strony_okl: "4",
-    strony_srd: "80",
-    format_x: "210",
-    format_y: "297",
-    bok_oprawy: "297"
 
-  });
 
   const [daneZamowienia, setDaneZamowienia] = useState({
     id: 1,
@@ -415,8 +405,7 @@ async function getClients() {
         {showTemplate && (
           <div>
             <ProduktTemplate
-              preOrder={preOrder}
-              setPreOrder={setPreOrder}
+     
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               produkty={produkty}

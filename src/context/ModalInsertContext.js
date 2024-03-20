@@ -13,16 +13,16 @@ export const ModalInsertContextProvider = ({children})=>{
     const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [procesy,setProcesy] = useState(null)
 
-    const [preOrder, setPreOrder] = useState({
-      typ: 1,
-      oprawa: 1,
-      naklad: "1000",
-      strony_okl: "4",
-      strony_srd: "80",
-      format_x: "210",
-      format_y: "297",
-      bok_oprawy: "297",
-    });
+    // const [preOrder, setPreOrder] = useState({
+    //   typ: 1,
+    //   oprawa: 1,
+    //   naklad: "1000",
+    //   strony_okl: "4",
+    //   strony_srd: "80",
+    //   format_x: "210",
+    //   format_y: "297",
+    //   bok_oprawy: "297",
+    // });
 
      const updateZamowienieID = useCallback((data) => {
        setZamowienieID(data);
@@ -38,7 +38,7 @@ export const ModalInsertContextProvider = ({children})=>{
       <ModalInsertContext.Provider
         value={{
         lockDragDrop, setLockDragDrop,
-        preOrder, setPreOrder,
+     
           selectedElementROW,
           setSelectedElementROW,
           zamowienieID,

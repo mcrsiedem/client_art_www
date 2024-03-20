@@ -125,7 +125,7 @@ function Szukaj({
     <input
       className={style.szukaj}
       type="text"
-      // value={daneZamowienia.cena}
+  
       placeholder="Szukaj..."
       onChange={(event) => {
         const m = [...klienci];

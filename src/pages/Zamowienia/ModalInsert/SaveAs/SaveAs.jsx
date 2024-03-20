@@ -1,17 +1,19 @@
+import { useContext} from "react";
 import style from "../SaveAs/SaveAs.module.css";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { PreOrderContext } from "context/PreOrderContext";
 
-export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,setShowSaveAs,postZamowienieObj ,setSaveAs}) {
+export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,setSaveAs}) {
 //   useEffect(() => {}, []);
 
   return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
 
-<Header />
+      <Header />
 
       <Tytul
-        daneZamowienia={daneZamowienia}
-        setDaneZamowienia={setDaneZamowienia}
+    
         setSaveAs={setSaveAs}
       />
 
@@ -48,7 +50,10 @@ export default function SaveAs({ daneZamowienia,setDaneZamowienia, showSaveAs,se
   );
 }
 
-function Tytul({ daneZamowienia, setDaneZamowienia }) {
+function Tytul() {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> </label>

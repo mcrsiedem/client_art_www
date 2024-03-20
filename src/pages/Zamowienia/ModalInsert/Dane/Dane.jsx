@@ -1,31 +1,32 @@
 import style from "./Dane.module.css";
+import { useContext} from "react";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj } from "../api";
 import { isNumberWalidation } from "../../../../actions/Walidacja";
 // import iconTable from "../../../../assets/settings.svg";
 import iconTable from "../../../../assets/add.png";
 import addIcon2 from "../../../../assets/addIcon2.svg";
+import { PreOrderContext } from "context/PreOrderContext";
+
 
 export default function Dane({
   selected_firma,setSelected_firma,
   klienci,klient,setKlient,
   setSaveButtonDisabled,
-  daneZamowienia,setDaneZamowienia,
   showAddClientStage
 }) {
+
   return (
     <>
       <div id="Dane" className={style.dane}>
         <div className={style.row1}>
           <Firma
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+           
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <div className={style.klientContainer}>
             <Klient
             klienci={klienci}
-              daneZamowienia={daneZamowienia}
-              setDaneZamowienia={setDaneZamowienia}
+            
               setSaveButtonDisabled={setSaveButtonDisabled}
               showAddClientStage={showAddClientStage}
             />
@@ -34,93 +35,77 @@ export default function Dane({
 
  
           <DataPrzyjecia
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+           
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <DataMeterialow
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+          
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <DataSpedycji
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+       
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
         </div>
         <div className={style.row2}>
           <Nr
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+       
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Rok
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+    
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Tytul
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+    
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
    
 
           <Cena
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+ 
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Waluta
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+   
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Vat
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <TerminPlatnosci
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+    
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
                  <Przedplata
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Rodzaj
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+    
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
         </div>
         <div className={style.row3}>
           <Opiekun
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+      
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
           <Uwagi
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+          
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
      <Stan
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
           <Status
-            daneZamowienia={daneZamowienia}
-            setDaneZamowienia={setDaneZamowienia}
+            
             setSaveButtonDisabled={setSaveButtonDisabled}
           />
 
@@ -133,7 +118,11 @@ export default function Dane({
 
 
 
-function Firma({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Firma({ setSaveButtonDisabled }) {
+  
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Firma </label>
@@ -156,7 +145,10 @@ function Firma({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Klient({ klienci,daneZamowienia,setDaneZamowienia,setSaveButtonDisabled,showAddClientStage }) {
+function Klient({ klienci,setSaveButtonDisabled,showAddClientStage }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -187,7 +179,10 @@ function Klient({ klienci,daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
 }
 
 
-function DataMeterialow({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function DataMeterialow({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
     return(
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
@@ -201,7 +196,10 @@ function DataMeterialow({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}
     );
 }
 
-function DataPrzyjecia({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function DataPrzyjecia({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
@@ -216,7 +214,10 @@ function DataPrzyjecia({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled})
   );
 }
 
-function DataSpedycji({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function DataSpedycji({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
@@ -230,7 +231,10 @@ function DataSpedycji({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
     );
 }
 
-function Opiekun({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Opiekun({setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
@@ -252,7 +256,10 @@ function Opiekun({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Status({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Status({ setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Status </label>
@@ -274,7 +281,10 @@ function Status({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Rodzaj({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Rodzaj({ setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Rodzaj </label>
@@ -298,7 +308,10 @@ function Rodzaj({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
 
 
 
-function Stan({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Stan({ setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Stan </label>
@@ -320,7 +333,10 @@ function Stan({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Tytul({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
@@ -341,7 +357,10 @@ function Tytul({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
 }
 
 
-function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Przedplata({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Przedpłata </label>
@@ -362,7 +381,10 @@ function Przedplata({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
 
 
 
-function Uwagi({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Uwagi({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Uwagi </label>
@@ -383,7 +405,10 @@ function Uwagi({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   );
 }
 
-function Nr({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Nr({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
@@ -404,7 +429,10 @@ function Nr({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   );
 }
 
-function Cena({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Cena({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Cena </label>
@@ -424,7 +452,10 @@ function Cena({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
   );
 }
 
-function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function TerminPlatnosci({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Płatność (dni) </label>
@@ -447,7 +478,10 @@ function TerminPlatnosci({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled
   );
 }
 
-function Vat({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Vat({ setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> VAT</label>
@@ -469,7 +503,10 @@ function Vat({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
   );
 }
 
-function Waluta({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
+function Waluta({ setSaveButtonDisabled }) {
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Waluta</label>
@@ -496,7 +533,10 @@ function Waluta({ daneZamowienia,setDaneZamowienia,setSaveButtonDisabled }) {
 
 
 
-function Rok({daneZamowienia,setDaneZamowienia,setSaveButtonDisabled}){
+function Rok({setSaveButtonDisabled}){
+  const contextPreOrder = useContext(PreOrderContext);
+  const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>

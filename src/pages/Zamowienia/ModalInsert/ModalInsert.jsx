@@ -86,28 +86,8 @@ const [klienci, setKlienci] = useState([]);
  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
 
 
-  const [daneZamowienia, setDaneZamowienia] = useState({
-    id: 1,
-    nr: "20",
-    rok: "2024",
-    firma_id: _firma[0].id,
-    klient_id: _klient[0].id,
-    opiekun_id: _opiekun[0].id,
-    tytul: "Tytuł zamówienia",
-    data_przyjecia: today(),
-    data_materialow: today(),
-    data_spedycji: today(),
-    stan: _stan[0].id,
-    status: _status[0].id,
-    rodzaj: 1,
-    uwagi: "",
-    cena:"",
-    waluta_id: 1,
-    termin_platnosci: 30,
-    vat_id: 4,
-    przedplata: " "
-
-  });
+const daneZamowienia = contextPreOrder.daneZamowienia;
+const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 
   
   const [produkty, setProdukty] = useState([
@@ -117,15 +97,14 @@ const [klienci, setKlienci] = useState([]);
       typ: 1,
       nazwa: "",
       wersja: "",
-      ilosc_stron: "",
+      ilosc_stron: "80",
       format_x: "",
       format_y: "",
-      oprawa: "PUR",
-      naklad: "1000",
+      oprawa: "",
+      naklad: "",
       indeks: 0,
       uwagi: "",
     }
-  
     
   ]);
   const [elementy, setElementy] = useState(initialElementy);
@@ -334,8 +313,7 @@ async function getClients() {
 
       <Dane
       klienci={klienci}
-        daneZamowienia={daneZamowienia}
-        setDaneZamowienia={setDaneZamowienia}
+       
         setSaveButtonDisabled={setSaveButtonDisabled}
         showAddClientStage={showAddClientStage}
       />

@@ -13,17 +13,25 @@ export const ModalInsertContextProvider = ({children})=>{
     const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [procesy,setProcesy] = useState(null)
 
-    // const [preOrder, setPreOrder] = useState({
-    //   typ: 1,
-    //   oprawa: 1,
-    //   naklad: "1000",
-    //   strony_okl: "4",
-    //   strony_srd: "80",
-    //   format_x: "210",
-    //   format_y: "297",
-    //   bok_oprawy: "297",
-    // });
 
+    const [produkty, setProdukty] = useState([
+      {
+        id: 1,
+        zamowienie_id: 1,
+        typ: 1,
+        nazwa: "",
+        wersja: "",
+        ilosc_stron: "",
+        format_x: "",
+        format_y: "",
+        oprawa: "",
+        naklad: "",
+        indeks: 0,
+        uwagi: "",
+      },
+    ]);
+
+    
      const updateZamowienieID = useCallback((data) => {
        setZamowienieID(data);
      }, []);

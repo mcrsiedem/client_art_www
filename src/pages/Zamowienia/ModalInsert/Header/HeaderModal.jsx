@@ -1,5 +1,7 @@
 import iconTable from "../../../../assets/table.svg";
 import iconTableGreen from "../../../../assets/table_green.svg";
+import iconLock from "assets/lock2.svg";
+import iconUnLock from "assets/unLock.svg";
 import React, { useState,useContext } from "react";
 import style from "./HeaderModal.module.css";
 import axios from "axios";
@@ -40,27 +42,31 @@ function Header({
   return (
     <>
       <div className={style.container}>
-        <div className={style.title}>Zamówienie...    {readOnly && (
-          <div>
-         
-             otwarte {stanOtwarciaZamowienia.data}  przez {stanOtwarciaZamowienia.user} 
-            
-          </div>
-        )}</div>
+        <div className={style.title}>
+          Zamówienie...{" "}
+          {readOnly && (
+            <div>
+              otwarte {stanOtwarciaZamowienia.data} przez{" "}
+              {stanOtwarciaZamowienia.user}
+            </div>
+          )}
+        </div>
         <div className={style.buttons}>
 
-        <img
-            onClick={() => {
-       // wyłącza drag drop w tabelkach
-       contextModalInsert.setLockDragDrop(!contextModalInsert.lockDragDrop);
-            }}
-            className={style.icon}
-            src={iconTable}
-          />
 
           <img
             onClick={() => {
-         
+              // wyłącza drag drop w tabelkach
+              contextModalInsert.setLockDragDrop(
+                !contextModalInsert.lockDragDrop
+              );
+            }}
+            className={style.icon}
+            src={contextModalInsert.lockDragDrop? iconUnLock: iconLock}
+          />
+          <img
+
+            onClick={() => {
               setOpenModalStany(!openModalStany);
 
               setInfo(
@@ -76,34 +82,34 @@ function Header({
             alt="table"
           />
 
-
-            {readOnly ? 
-            <> </> :
-              <> 
+          {readOnly ? (
+            <> </>
+          ) : (
+            <>
               <button
-              
                 onClick={async () => {
-                
-                  setSaveAs(false)
+                  setSaveAs(false);
                   postZamowienieObj();
-                  setSaveButtonDisabled(true)
-                
+                  setSaveButtonDisabled(true);
+
                   // setOrderClosed
-
-
                 }}
-                className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+                className={
+                  isSaveButtonDisabled ? style.btn_disabled : style.btn
+                }
                 disabled={isSaveButtonDisabled}
-
               >
                 Zapisz
               </button>
-       
 
-           <ZapiszJako isSaveButtonDisabled={isSaveButtonDisabled} postZamowienieObj={postZamowienieObj} setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}/>
-              </>
-             }
-              
+              <ZapiszJako
+                isSaveButtonDisabled={isSaveButtonDisabled}
+                postZamowienieObj={postZamowienieObj}
+                setShowSaveAs={setShowSaveAs}
+                setSaveAs={setSaveAs}
+              />
+            </>
+          )}
 
           <button
             onClick={() => openInNewTab("/Zamowienia")}
@@ -112,33 +118,22 @@ function Header({
             Nowe...
           </button>
 
-
-
-          <ButtonSprawdz/>
-          <ButtonSprawdz2/>
-
-
-
+          <ButtonSprawdz />
+          <ButtonSprawdz2 />
 
           <button
-            onClick={async() => {
-             
-            setOpenModalInsert(false)
- 
-                   if (!readOnly){
-                        const res = await axios.put(IP + "setOrderClosed",{
-                      id: row.id ,
-                    });
-                   }
-                
-            }
-           
-          }
+            onClick={async () => {
+              setOpenModalInsert(false);
 
-            
+              if (!readOnly) {
+                const res = await axios.put(IP + "setOrderClosed", {
+                  id: row.id,
+                });
+              }
+            }}
             className={style.btn}
           >
-            Zamknij 
+            Zamknij
           </button>
         </div>
       </div>

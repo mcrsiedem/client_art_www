@@ -219,7 +219,7 @@ function Procesy({ row, procesyElementow}) {
         src={Logo_ustawienia}
         onClick={() => {
           contextModalInsert.setShowElementyProcesyInsert(true);
-          contextModalInsert.setSelectedElementID(row.id)
+          contextModalInsert.setSelectedElementROW(row)
           console.log("id: "+row.id)
         }}
         alt="Procesy"

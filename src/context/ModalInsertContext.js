@@ -10,7 +10,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(null);
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
-    const [selectedElementID,setSelectedElementID] = useState(null)
+    const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [procesy,setProcesy] = useState(null)
 
     const [preOrder, setPreOrder] = useState({
@@ -39,8 +39,8 @@ export const ModalInsertContextProvider = ({children})=>{
         value={{
         lockDragDrop, setLockDragDrop,
         preOrder, setPreOrder,
-          selectedElementID,
-          setSelectedElementID,
+          selectedElementROW,
+          setSelectedElementROW,
           zamowienieID,
           setZamowienieID, // id otwartego zamowienia
           showElementyProcesyInsert,

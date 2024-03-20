@@ -26,10 +26,10 @@ function Window({children}) {
 }
 function Header() {
   const modalContext = useContext(ModalInsertContext);
-  const idElementu = modalContext.selectedElementID;
+  const rowElement = modalContext.selectedElementROW;
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy {idElementu}</p>
+      <p className={style.title}>Procesy {rowElement.id} {rowElement.typ} {rowElement.nazwa} </p>
       <Zamknij/>
     </div>
   );

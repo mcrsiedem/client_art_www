@@ -64,14 +64,14 @@ const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   // const [nroprawy, setNroprawy] = useState();
   // const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
-  const [idZamowienie, setIdZamowienia] = useState();
+  // const [idZamowienie, setIdZamowienia] = useState();
   const [info, setInfo] = useState("napis");
   // const [listaWykonczenia, setListaWykonczenia] = useState();
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
   const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
   const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   // const [selected_wykonczenie, setSelected_wykonczenie] = useState();
-  const [isEdit, setIsEdit] = useState(false);
+  // const [isEdit, setIsEdit] = useState(false);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
@@ -315,7 +315,7 @@ async function getClients() {
         setOpenModalInsert={setOpenModalInsert}
         // postZamowienie={postZamowienie}
         postZamowienieObj={postZamowienieObj}
-        id={idZamowienie}
+        // id={idZamowienie}
   
         info={info}
         setInfo={setInfo}
@@ -375,8 +375,8 @@ async function getClients() {
               listaUszlachetnien={listaUszlachetnien}
               setListaUszlachetnien={setListaUszlachetnien}
               setListaGramatur={setListaGramatur}
-              isEdit={isEdit}
-              setIsEdit={setIsEdit}
+              // isEdit={isEdit}
+              // setIsEdit={setIsEdit}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}

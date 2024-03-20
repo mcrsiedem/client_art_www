@@ -8,10 +8,10 @@ import { IP } from "utils/Host";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(null);
-    const[showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
-    const[zamowienieID,setZamowienieID] = useState(null)
-    const[selectedElementID,setSelectedElementID] = useState(null)
-    const[procesy,setProcesy] = useState(null)
+    const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
+    const [zamowienieID,setZamowienieID] = useState(null)
+    const [selectedElementID,setSelectedElementID] = useState(null)
+    const [procesy,setProcesy] = useState(null)
 
     const [preOrder, setPreOrder] = useState({
       typ: 1,

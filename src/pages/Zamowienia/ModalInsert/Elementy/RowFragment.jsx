@@ -57,6 +57,7 @@ export default function RowFragment({
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
+      {/* <IloscStron row={row}/> */}
 
     
       
@@ -64,11 +65,12 @@ export default function RowFragment({
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      
       <td></td>
       <td></td>
       <td></td>
       <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -108,6 +110,13 @@ function Typ({ row }) {
     // </td>
 
 
+  );
+}
+function IloscStron({ row }) {
+  return (
+    <td>
+      <p>{row.ilosc_stron}</p>
+    </td>
   );
 }
 
@@ -167,6 +176,7 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
     info: "fragment temp",
     indeks: 0,
     zamowienie_id:0,
+    ilosc_stron: 0,
     element_id: 0,
     produkt_id: 0,
     typ: 0,
@@ -177,6 +187,7 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
   newFragmenty.push({
     id: Math.max(...fragmenty.map((f) => f.id)) + 1,
     zamowienie_id: card.zamowienie_id,
+    ilosc_stron: card.ilosc_stron,
     produkt_id: card.produkt_id,
     typ: card.typ,
     naklad: card.naklad,

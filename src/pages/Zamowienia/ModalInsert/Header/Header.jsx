@@ -18,9 +18,7 @@ function Header({
   setOpenModalInsert,
   // postZamowienie,
   postZamowienieObj,
-  idki,
-  id,
-  info,
+
   setInfo,
   sprawdzPoprawnoscZamowienia,
   check_data_wejscia,

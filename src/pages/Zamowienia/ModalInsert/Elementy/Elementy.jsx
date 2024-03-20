@@ -23,8 +23,8 @@ export default function Elementy({
   listaPapierow,
   listaGramatur,
   setListaGramatur,
-  isEdit,
-  setIsEdit,
+  // isEdit,
+  // setIsEdit,
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
@@ -52,8 +52,8 @@ export default function Elementy({
         listaPapierow={listaPapierow}
         listaGramatur={listaGramatur}
         setListaGramatur={setListaGramatur}
-        isEdit={isEdit}
-        setIsEdit={setIsEdit}
+        // isEdit={isEdit}
+        // setIsEdit={setIsEdit}
         procesyElementow={procesyElementow}
         setProcesyElementow={setProcesyElementow}
         listaDostepnychProcesow={listaDostepnychProcesow}
@@ -90,8 +90,8 @@ function ElementyTable({
   listaPapierow,
   listaGramatur,
   setListaGramatur,
-  isEdit,
-  setIsEdit,
+  // isEdit,
+  // setIsEdit,
   procesyElementow,
   setProcesyElementow,
   listaDostepnychProcesow,
@@ -147,8 +147,8 @@ function ElementyTable({
                 listaPapierow={listaPapierow}
                 listaGramatur={listaGramatur}
                 setListaGramatur={setListaGramatur}
-                isEdit={isEdit}
-                setIsEdit={setIsEdit}
+                // isEdit={isEdit}
+                // setIsEdit={setIsEdit}
                 procesyElementow={procesyElementow}
                 setProcesyElementow={setProcesyElementow}
                 listaDostepnychProcesow={listaDostepnychProcesow}
@@ -180,8 +180,8 @@ function ElementyTable({
               listaPapierow={listaPapierow}
               listaGramatur={listaGramatur}
               setListaGramatur={setListaGramatur}
-              isEdit={isEdit}
-              setIsEdit={setIsEdit}
+              // isEdit={isEdit}
+              // setIsEdit={setIsEdit}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}

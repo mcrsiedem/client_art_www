@@ -90,6 +90,8 @@ export default function OprawaElementyStage({
         id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
         zamowienie_id: t.zamowienie_id,
         produkt_id: t.produkt_id,
+        ilosc_stron: t.ilosc_stron,
+
         element_id: t.element_id,
         wersja:t.wersja,
         oprawa_id: id_nowej_oprawy,

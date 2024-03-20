@@ -92,6 +92,7 @@ function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragSt
         <th className={style.col3}>#</th>
 
         <th className={style.col4}>Oprawa</th>
+        <th className={style.col4}>Ilość str</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>
@@ -133,14 +134,14 @@ function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragSt
               </div>
               {/* <td>{row.produkt_id}</td> */}
               <td>{row.id}</td>
-          
+
               <RodzajOprawy
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
                 handleChangeCardProdukty={handleChangeCardProdukty} 
                 produkty={produkty} setProdukty={setProdukty}
               />
-
+      <td></td>
 
 <WersjaOprawa
                 row={row}
@@ -186,7 +187,7 @@ function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragSt
 
                       <td></td>
                       <Typ row={row} />
-
+                      <td>{row.ilosc_stron} </td>
                       <WersjaOprawaFragment
                         row={row}
                         handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -196,7 +197,8 @@ function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragSt
                         row={row}
                         handleChangeCardFragmenty={handleChangeCardFragmenty}
                       />
-                      <td> </td>
+                      
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -448,6 +450,21 @@ function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
 }
 
 function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
+  return (
+    <td>
+      <input
+        value={row.naklad}
+        onChange={(e) =>
+          handleChangeCardFragmenty({
+            ...row,
+            naklad: e.target.value,
+          })
+        }
+      ></input>
+    </td>
+  );
+}
+function  IloscStronFragment({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input

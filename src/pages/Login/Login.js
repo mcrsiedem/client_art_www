@@ -49,6 +49,7 @@ export default function Login( ) {
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
         setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
+
         header.style.display = "grid";
         navigate("/Panel");
         // newSocket.connect()

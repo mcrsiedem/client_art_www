@@ -36,7 +36,8 @@ import { today } from "../../../actions/today";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
-import { ModalInsertContext } from "../../../context/ModalInsertContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { PreOrderContext } from "context/PreOrderContext";
 
 function ModalInsert({
   openModalInsert,
@@ -53,8 +54,9 @@ function ModalInsert({
   refreshZamowienia
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
-const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
+  const contextPreOrder = useContext(PreOrderContext);
 
+  const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});

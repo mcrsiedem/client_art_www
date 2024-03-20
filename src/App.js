@@ -14,6 +14,7 @@ import {  BrowserRouter,Routes,Route} from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
 import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
+import { PreOrderContextProvider } from "context/PreOrderContext";
 
 export default function App() {
 
@@ -27,6 +28,7 @@ export default function App() {
     <BrowserRouter basename={''} >
       <SocketContextProvider>
       <AppContextProvider>
+      <PreOrderContextProvider>
       <ModalInsertContextProvider>
             <Header />
             <Routes >
@@ -40,6 +42,7 @@ export default function App() {
               <Route path='/info' element={<Info />} />
             </Routes>
       </ModalInsertContextProvider>
+      </PreOrderContextProvider>
       </AppContextProvider>
       </SocketContextProvider>
     </BrowserRouter>

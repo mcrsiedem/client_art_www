@@ -54,27 +54,23 @@ function ModalInsert({
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
 const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
-  // const [isLockDragDrop, lockDragDrop] = useState(false);
+
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
   const [readOnly,setReadOnly] = useState(false);
-
   const [readAlert,setReadAlert] = useState(false);
-  // const readOnly = useRef(false)
-
   const [cookies, setCookie] = useCookies();
-  const [nroprawy, setNroprawy] = useState();
-  const [uszlachetnienia, setUszlachetnienia] = useState();
+  // const [nroprawy, setNroprawy] = useState();
+  // const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
   const [idZamowienie, setIdZamowienia] = useState();
-  const [isTable, setIsTable] = useState(true);
   const [info, setInfo] = useState("napis");
-  const [listaWykonczenia, setListaWykonczenia] = useState();
+  // const [listaWykonczenia, setListaWykonczenia] = useState();
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
   const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
   const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-  const [selected_wykonczenie, setSelected_wykonczenie] = useState();
+  // const [selected_wykonczenie, setSelected_wykonczenie] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
@@ -320,8 +316,7 @@ async function getClients() {
         // postZamowienie={postZamowienie}
         postZamowienieObj={postZamowienieObj}
         id={idZamowienie}
-        isTable={isTable}
-        setIsTable={setIsTable}
+  
         info={info}
         setInfo={setInfo}
         isOK={isOK}
@@ -360,7 +355,7 @@ async function getClients() {
               produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
-              isTable={isTable}
+
               setSaveButtonDisabled={setSaveButtonDisabled}
             />
 

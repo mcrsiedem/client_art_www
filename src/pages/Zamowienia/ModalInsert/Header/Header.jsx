@@ -20,8 +20,6 @@ function Header({
   postZamowienieObj,
   idki,
   id,
-  isTable,
-  setIsTable,
   info,
   setInfo,
   sprawdzPoprawnoscZamowienia,
@@ -64,7 +62,7 @@ function Header({
 
           <img
             onClick={() => {
-              // setIsTable(!isTable);
+         
               setOpenModalStany(!openModalStany);
 
               setInfo(

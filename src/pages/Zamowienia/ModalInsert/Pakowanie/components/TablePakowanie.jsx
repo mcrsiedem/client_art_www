@@ -5,7 +5,7 @@ import { addNewPacking } from "../../../../../actions/addPacking";
 import { deletePacking } from "../../../../../actions/deletePacking";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
-export default function Table({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
+export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
     return <div className={style.main}>

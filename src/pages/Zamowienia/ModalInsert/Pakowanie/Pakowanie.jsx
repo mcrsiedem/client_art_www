@@ -1,6 +1,6 @@
 import style from "./Pakowanie.module.css";
-import Header from "./components/Hader";
-import Table from "./components/Table";
+import HeaderPakowanie from "./components/HaderPakowanie";
+import TablePakowanie from "./components/TablePakowanie";
 
 export default function Pakowanie({ pakowanie,setPakowanie,handleChangeCardPakowanie,isLockDragDrop}) {
   
@@ -8,8 +8,8 @@ export default function Pakowanie({ pakowanie,setPakowanie,handleChangeCardPakow
     
       <div className={style.container}>
         <div className={style.pakowanie}>
-        <Header style={style}/>
-        <Table  pakowanie={pakowanie} setPakowanie={setPakowanie} handleChangeCardPakowanie={handleChangeCardPakowanie} />
+        <HeaderPakowanie style={style}/>
+        <TablePakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} handleChangeCardPakowanie={handleChangeCardPakowanie} />
         </div>
       
       </div>

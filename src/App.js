@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import { useState, createContext,useEffect,useRef } from "react";
+import { useState,useEffect,useRef } from "react";
 import Header from "./components/Header/Header";
 import Login from "./pages/Login/Login";
 import Panel from "./pages/Panel/Panel";
@@ -11,15 +11,14 @@ import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
 
 import {  BrowserRouter,Routes,Route} from "react-router-dom";
-
 import { AppContextProvider } from "./context/AppContext";
 import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 
 export default function App() {
 
-  const[socketReceive, setSocketReceive] = useState([])
-  const[socketStan, setSocketStan] = useState([]) // tutaj przechowywany jest socekt utworzony na stronie login
+  // const[socketReceive, setSocketReceive] = useState([])
+  // const[socketStan, setSocketStan] = useState([]) // tutaj przechowywany jest socekt utworzony na stronie login
 
   useEffect(() => {
   }, []);

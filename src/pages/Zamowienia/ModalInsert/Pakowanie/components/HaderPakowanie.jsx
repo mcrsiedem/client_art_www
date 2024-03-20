@@ -1,4 +1,4 @@
-export default function Header({style}) {
+export default function HeaderPakowanie({style}) {
     return (
       <div className={style.header}>
         Pakowanie

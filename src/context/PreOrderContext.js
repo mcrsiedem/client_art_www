@@ -44,6 +44,26 @@ export const PreOrderContextProvider = ({children})=>{
       });
 
 
+      const [presetTyp, setPresetTyp] = useState({
+        id: 1,
+        typ: 1, // katalog
+      },
+      {
+        id:2,
+        typ: 2 //ulotka
+      }
+      );
+
+      const [presetOprawa, setPresetOprawa] = useState({
+        id: 1,
+        oprawa: 1, // katalog
+      },
+      {
+        id:2,
+        oprawa: 2 //ulotka
+      }
+      );
+
 
     // const updateUser = useCallback(()=>{
     //  setUser(user)
@@ -60,7 +80,9 @@ export const PreOrderContextProvider = ({children})=>{
     return  <PreOrderContext.Provider 
                 value={{
                     daneZamowienia, setDaneZamowienia,
-                    preOrder, setPreOrder
+                    preOrder, setPreOrder,
+                    presetTyp, setPresetTyp,
+                    presetOprawa, setPresetOprawa
 
                 }}
             >

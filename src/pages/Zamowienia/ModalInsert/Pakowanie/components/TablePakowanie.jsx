@@ -13,10 +13,10 @@ export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardP
           <table className={style.table2}>
             <thead>
               <tr>
-                <th className={style.col1}>#Zamówienie</th>
+                {/* <th className={style.col1}>#Zamówienie</th>
                 <th className={style.col1}>#Produkt</th>
+                <th className={style.col2}>i</th> */}
                 <th className={style.col2}>#</th>
-                <th className={style.col2}>i</th>
                 <th className={style.col3}>Nazwa</th>
                 <th className={style.col10}>Ilość szt.</th>
                 <th className={style.col10}>Sztuki w paczce</th>
@@ -37,9 +37,9 @@ export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardP
                     onDragOver={(handleDragOver)}
                     onDrop={()=>handleDrop(row,pakowanie,setPakowanie)}
                   >
-                    <ZamId row={row}/>
+                    {/* <ZamId row={row}/>
                     <ProduktId row={row}/>
-                    <Id row={row}/>
+                    <Id row={row}/> */}
                     <Indeks row={row}/>
                     <Nazwa row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Ilosc row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>

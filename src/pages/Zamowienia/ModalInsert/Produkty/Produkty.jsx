@@ -26,8 +26,8 @@ function ProduktyTable({produkty,handleChangeCardProdukty}) {
         <table className={style.table}>
           <thead>
             <tr>
-              <th className={style.col1}>Zam.</th>
-              <th className={style.col2}>#</th>
+              {/* <th className={style.col1}>Zam.</th> */}
+              {/* <th className={style.col2}>#</th> */}
               <th className={style.col3}>Typ</th>
               <th className={style.col10}>Nakład</th>
               <th className={style.col9}>Oprawa</th>
@@ -49,9 +49,9 @@ function ProduktyTable({produkty,handleChangeCardProdukty}) {
                   //     setRow({ id: row.id, user: row.user });
                   // }}
                 >
-                  <td>{row.zamowienie_id}</td>
+                  {/* <td>{row.zamowienie_id}</td> */}
 
-                  <td>{row.id}</td>
+                  {/* <td>{row.id}</td> */}
                   <Typ
                     row={row}
                     handleChangeCardProdukty={handleChangeCardProdukty}

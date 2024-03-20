@@ -156,7 +156,7 @@ export default function RowElement({
             alt="Procesy"
           />
         </div>
-        <td>{row.id}</td>
+        {/* <td>{row.id}</td> */}
         <td>{row.indeks}</td>
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />

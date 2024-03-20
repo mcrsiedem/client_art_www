@@ -61,7 +61,7 @@ export default function RowFragment({
 
     
       
-      <td></td>
+      <td>{row.ilosc_stron}</td>
       <td></td>
       <td></td>
       <td></td>

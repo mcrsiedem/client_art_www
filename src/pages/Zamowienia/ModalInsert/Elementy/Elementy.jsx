@@ -112,7 +112,7 @@ function ElementyTable({
         <thead>
           <tr>
           <th className={style.col_button}> </th>
-            <th className={style.col1}>id</th>
+            {/* <th className={style.col1}>id</th> */}
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_naklad}>Nakład</th>

@@ -19,7 +19,7 @@ export default function ProcesElement() {
 function Window({children}) {
 
   return (
-    <div className={style.insertContainer}>
+    <div className={style.blurContainer}>
       <div className={style.window}>{children}</div>
     </div>
   );

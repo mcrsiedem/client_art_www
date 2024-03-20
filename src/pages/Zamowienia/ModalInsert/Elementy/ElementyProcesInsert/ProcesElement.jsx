@@ -19,8 +19,8 @@ export default function ProcesElement() {
 function Window({children}) {
 
   return (
-    <div className={style.window}>
-    {children}
+    <div className={style.insertContainer}>
+      <div className={style.window}>{children}</div>
     </div>
   );
 }

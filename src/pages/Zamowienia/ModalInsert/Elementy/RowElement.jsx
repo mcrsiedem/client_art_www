@@ -27,7 +27,8 @@ export default function RowElement({
     fragmenty, setFragmenty,
     expand,setExpand,
     elementy, setElementy,
-    handleChangeCardFragmenty_i_Elementy
+    handleChangeCardFragmenty_i_Elementy,
+    handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
@@ -162,7 +163,7 @@ export default function RowElement({
       
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
-        <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}/>
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
@@ -412,16 +413,24 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   
   
   
-  function Strony({ row, handleChangeCardElementy }) {
+  function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
     return (
       <td>
         <input
           defaultValue={row.ilosc_stron}
           onChange={(e) =>
-            handleChangeCardElementy({
+
+            handleChangeCardFragmenty_i_Elementy_IloscStron({
               ...row,
               ilosc_stron: e.target.value,
-            })
+            }
+            )
+
+
+            // handleChangeCardElementy({
+            //   ...row,
+            //   ilosc_stron: e.target.value,
+            // })
           }
         ></input>
       </td>

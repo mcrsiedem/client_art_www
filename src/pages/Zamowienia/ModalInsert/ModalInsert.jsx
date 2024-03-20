@@ -1,7 +1,7 @@
 import style from "./ModalInsert.module.css";
 import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
 import { useCookies } from "react-cookie";
-import Header from "./Header/Header";
+import HeaderModal from "./Header/HeaderModal";
 import Dane from "./Dane/Dane";
 import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
@@ -308,7 +308,7 @@ async function getClients() {
 
   return (
     <div className={style.container}>
-      <Header
+      <HeaderModal
       // isLockDragDrop={isLockDragDrop}
       // lockDragDrop={lockDragDrop}
         openModalInsert={openModalInsert}
@@ -384,6 +384,7 @@ async function getClients() {
               handleChangeCardFragmenty_i_Elementy={
                 handleChangeCardFragmenty_i_Elementy
               }
+              handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
@@ -564,9 +565,37 @@ async function getClients() {
       }
     })
   );
-
-
   }
+
+  function handleChangeCardFragmenty_i_Elementy_IloscStron(card) {
+    // zmienia typ fragmentów gdy typ elementu jest zmieniany
+    setElementy(
+      elementy.map((t) => {
+        if (t.id === card.id) {
+          return card;
+        } else {
+          return t;
+        }
+      })
+    );
+
+    setFragmenty(
+      fragmenty.map((t, a) => {
+      // console.log("oprawa id" +prev)
+      if (t.element_id === card.id) {
+        return {
+          ...t,
+          ilosc_stron: card.ilosc_stron
+
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+  }
+
+
 
   function handleChangeCardFragmenty(card) {
     setFragmenty(

@@ -1,7 +1,7 @@
 import iconTable from "../../../../assets/table.svg";
 import iconTableGreen from "../../../../assets/table_green.svg";
 import React, { useState,useContext } from "react";
-import style from "./Header.module.css";
+import style from "./HeaderModal.module.css";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { SocketContext } from "../../../../context/SocketContext";
@@ -127,14 +127,18 @@ function Header({
  
                    if (!readOnly){
                         const res = await axios.put(IP + "setOrderClosed",{
-                      id: row.id,
+                      id: row.id ,
                     });
                    }
-               
-            }}
+                
+            }
+           
+          }
+
+            
             className={style.btn}
           >
-            Zamknij
+            Zamknij 
           </button>
         </div>
       </div>

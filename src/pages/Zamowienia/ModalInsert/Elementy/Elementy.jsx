@@ -30,6 +30,7 @@ export default function Elementy({
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
     handleChangeCardFragmenty_i_Elementy,
+    handleChangeCardFragmenty_i_Elementy_IloscStron,
     handleChangeCardFragmentyOprawaId
 }) {
   return (
@@ -61,6 +62,7 @@ export default function Elementy({
         setElementy={setElementy}
         setFragmenty={setFragmenty}
         handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+        handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
         handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
 
       />
@@ -99,6 +101,7 @@ function ElementyTable({
   setFragmenty,
   setElementy,
   handleChangeCardFragmenty_i_Elementy,
+  handleChangeCardFragmenty_i_Elementy_IloscStron,
   handleChangeCardFragmentyOprawaId
 }) {
 
@@ -160,6 +163,7 @@ function ElementyTable({
                 setFragmenty={setFragmenty}
                 setElementy={setElementy}
                  handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
+                 handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
               />
 
           

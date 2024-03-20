@@ -10,7 +10,7 @@ function Zamowienia({ user, setUser }) {
 
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
-  const [row, setRow] = useState(null);
+  const [row, setRow] = useState({id:1});
   const [openModalInsert, setOpenModalInsert] = useState(false);
 
   const open = useRef(false);

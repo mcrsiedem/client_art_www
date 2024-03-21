@@ -5,7 +5,7 @@ import { getProcess } from "actions/getProcess";
 
 import axios from "axios";
 import { IP } from "utils/Host";
-import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "initial/initialvalue";
+import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(null);

@@ -19,6 +19,22 @@
   --text-color-light: rgb(233, 233, 233, 0.6); 
   --text-color-zielony: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
 
+      /* dane*/
+      --mr-gr-dane-background: #fff;
+      --mr-gr-dane-input: rgb(219, 219, 219);
+  
+      /* produkty*/
+      /* --mr-gr-produkty-background: #fff; */
+      --mr-gr-produkty-background: transparent;
+      --mr-gr-produktCard-background: rgb(209, 221, 233);
+      --mr-gr-produkt-input: rgb(231, 242, 250);
+      --mr-gr-produktCard-header: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  
+  
+  
+      
+  
+
 font-size: 15px;
 }
 body{

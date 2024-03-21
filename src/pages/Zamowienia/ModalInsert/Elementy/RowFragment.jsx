@@ -2,18 +2,14 @@ import style from "./ElementTable.module.css";
 import { useState,useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { _typ_elementu } from "../api";
-import iconCopy from "../../../../assets/copy.svg";
-import iconTrash from "../../../../assets/trash2.svg";
+import iconCopy from "assets/copy.svg";
+import iconTrash from "assets/trash2.svg";
 import axios from "axios";
-
-import { IP } from "../../../../utils/Host";
+import { IP } from "utils/Host";
 export default function RowFragment({
   row,
-  handleChangeCardElementy,
   handleChangeCardFragmenty,
-  i,
   listaGramatur,
-  handleChangeCardFragmentyOprawaId
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
     useState(listaGramatur);
@@ -27,54 +23,29 @@ export default function RowFragment({
   
     }
   return (
-    <tr draggable
-     onDragStart={handleDragStart} 
-
-    
-     key={row.id}>
-            
-      <Dodaj
-        row={row}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        handleAddFragment={handleAddFragment}
-
-      />
-           <Usun
-        row={row}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        handleRemoveItem={handleRemoveItem}
-   
-      />
-   
-      {/* function Usun({ row, fragmenty,setFragmenty,handleChangeCardElementy,handleRemoveItem }) { */}
-
+    <tr draggable onDragStart={handleDragStart} key={row.id}>
+      <Dodaj row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} handleAddFragment={handleAddFragment} />
+      <Usun row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}handleRemoveItem={handleRemoveItem} />
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-      {/* <IloscStron row={row}/> */}
-
-    
-      
       <td>{row.ilosc_stron}</td>
       <td></td>
-       <td></td>
       <td></td>
       <td></td>
-      
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
       <td></td>
       <td></td>
-
     </tr>
   );
 }
 function Typ({ row }) {
   return (
     <td>
-      {/* {row.typ} */}
       <select
         className={style.select}
         value={row.typ}
@@ -91,13 +62,6 @@ function Typ({ row }) {
 
 
 
-  );
-}
-function IloscStron({ row }) {
-  return (
-    <td>
-      <p>{row.ilosc_stron}</p>
-    </td>
   );
 }
 

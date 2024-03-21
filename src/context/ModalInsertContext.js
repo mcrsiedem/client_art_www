@@ -8,6 +8,7 @@ import { IP } from "utils/Host";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(null);
+    const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
@@ -55,6 +56,7 @@ export const ModalInsertContextProvider = ({children})=>{
           setShowElementyProcesyInsert,
 
           updateZamowienieID,
+          isSaveButtonDisabled, setSaveButtonDisabled
         }}
       >
         {children}

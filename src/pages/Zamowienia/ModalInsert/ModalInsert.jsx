@@ -58,7 +58,7 @@ function ModalInsert({
 
   const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isShowAddClientStage, showAddClientStage] = useState(false);
-  const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
+  // const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
   const [readOnly,setReadOnly] = useState(false);
   const [readAlert,setReadAlert] = useState(false);
@@ -88,6 +88,8 @@ const [klienci, setKlienci] = useState([]);
 
 const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const   isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+const   setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
   
   const [produkty, setProdukty] = useState([
@@ -233,7 +235,7 @@ async function getClients() {
 
 
 
-  async function fechparametry(idZamowienia) {
+  async function fechparametry(idZamowienia,setSaveButtonDisabled) {
 
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
@@ -300,8 +302,8 @@ async function getClients() {
         setShowSaveAs={setShowSaveAs}
         saveAs={saveAs}
         setSaveAs={setSaveAs}
-        isSaveButtonDisabled={isSaveButtonDisabled}
-        setSaveButtonDisabled={setSaveButtonDisabled}
+        // isSaveButtonDisabled={isSaveButtonDisabled}
+        // setSaveButtonDisabled={setSaveButtonDisabled}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         row={row}
         readAlert={readAlert}
@@ -314,7 +316,7 @@ async function getClients() {
       <Dane
       klienci={klienci}
        
-        setSaveButtonDisabled={setSaveButtonDisabled}
+        // setSaveButtonDisabled={setSaveButtonDisabled}
         showAddClientStage={showAddClientStage}
       />
 
@@ -326,7 +328,7 @@ async function getClients() {
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
 
-              setSaveButtonDisabled={setSaveButtonDisabled}
+              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Elementy
@@ -358,7 +360,7 @@ async function getClients() {
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
-              setSaveButtonDisabled={setSaveButtonDisabled}
+              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Introligatornia
@@ -373,10 +375,10 @@ async function getClients() {
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
-              setSaveButtonDisabled={setSaveButtonDisabled}
+              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
-            <Pakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} setSaveButtonDisabled={setSaveButtonDisabled} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            <Pakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 
@@ -395,7 +397,7 @@ async function getClients() {
               setFragmenty={setFragmenty}
               oprawa={oprawa}
               setOprawa={setOprawa}
-              setSaveButtonDisabled={setSaveButtonDisabled}
+              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
           </div>
         )}
@@ -405,7 +407,7 @@ async function getClients() {
         <ProcesElement
           procesyElementow={procesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
-          setSaveButtonDisabled={setSaveButtonDisabled}
+          // setSaveButtonDisabled={setSaveButtonDisabled}
         />
       )}
 

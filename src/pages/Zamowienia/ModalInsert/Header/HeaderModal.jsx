@@ -29,7 +29,7 @@ function Header({
   setOpenModalStany,
   setShowSaveAs,
   saveAs, setSaveAs,
-  isSaveButtonDisabled, setSaveButtonDisabled,
+  // isSaveButtonDisabled, setSaveButtonDisabled,
   stanOtwarciaZamowienia,
   row, 
   readAlert,   setReadAlert ,   readOnly,  setReadOnly
@@ -86,24 +86,10 @@ function Header({
             <> </>
           ) : (
             <>
-              <button
-                onClick={async () => {
-                  setSaveAs(false);
-                  postZamowienieObj();
-                  setSaveButtonDisabled(true);
-
-                  // setOrderClosed
-                }}
-                className={
-                  isSaveButtonDisabled ? style.btn_disabled : style.btn
-                }
-                disabled={isSaveButtonDisabled}
-              >
-                Zapisz
-              </button>
+              <Zapisz setShowSaveAs={setShowSaveAs} postZamowienieObj={postZamowienieObj} setSaveAs={setSaveAs} />
 
               <ZapiszJako
-                isSaveButtonDisabled={isSaveButtonDisabled}
+     
                 postZamowienieObj={postZamowienieObj}
                 setShowSaveAs={setShowSaveAs}
                 setSaveAs={setSaveAs}
@@ -144,7 +130,8 @@ function Header({
 export default Header;
 
 function ZapiszJako({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
-
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
     <button
     disabled={isSaveButtonDisabled}
@@ -159,6 +146,33 @@ setSaveAs(true)
   </button>
   )
 }
+
+
+function Zapisz({postZamowienieObj,setShowSaveAs,setSaveAs}){
+ 
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+
+  return(
+    <button
+    onClick={async () => {
+      setSaveAs(false);
+      postZamowienieObj();
+      setSaveButtonDisabled(true);
+
+      // setOrderClosed
+    }}
+    className={
+      isSaveButtonDisabled ? style.btn_disabled : style.btn
+    }
+    disabled={isSaveButtonDisabled}
+  >
+    Zapisz
+  </button>
+  )
+  }
+
 
 
 

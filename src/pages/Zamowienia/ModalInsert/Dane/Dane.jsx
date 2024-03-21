@@ -6,123 +6,65 @@ import { isNumberWalidation } from "../../../../actions/Walidacja";
 import iconTable from "../../../../assets/add.png";
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 export default function Dane({
   selected_firma,setSelected_firma,
   klienci,klient,setKlient,
-  setSaveButtonDisabled,
   showAddClientStage
 }) {
 
   return (
     <>
       <div id="Dane" className={style.dane}>
-        <div className={style.row1}>
-          <Firma
-           
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <div className={style.klientContainer}>
-            <Klient
-            klienci={klienci}
-            
-              setSaveButtonDisabled={setSaveButtonDisabled}
-              showAddClientStage={showAddClientStage}
-            />
-          </div>
+        <Row style={style.row1}>
+            <Firma />
+            <Klient klienci={klienci} showAddClientStage={showAddClientStage} />
+            <DataPrzyjecia />
+            <DataMeterialow />
+            <DataSpedycji />
+        </Row>
 
+        <Row style={style.row2}>
+            <Nr /> 
+            <Rok />
+            <Tytul />
+            <Cena />
+            <Waluta />
+            <Vat />
+            <TerminPlatnosci />
+            <Przedplata />
+            <Rodzaj />
+        </Row>
 
- 
-          <DataPrzyjecia
-           
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <DataMeterialow
-          
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <DataSpedycji
-       
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-        </div>
-        <div className={style.row2}>
-          <Nr
-       
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <Rok
-    
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <Tytul
-    
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-   
-
-          <Cena
- 
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-
-          <Waluta
-   
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-
-          <Vat
-
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <TerminPlatnosci
-    
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-                 <Przedplata
-
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-
-          <Rodzaj
-    
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-        </div>
-        <div className={style.row3}>
-          <Opiekun
-      
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-
-          <Uwagi
-          
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-     <Stan
-
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-          <Status
-            
-            setSaveButtonDisabled={setSaveButtonDisabled}
-          />
-
-     
-        </div>
+        <Row style={style.row3}>
+            <Opiekun />
+            <Uwagi />
+            <Stan />
+            <Status />
+        </Row>
       </div>
     </>
   );
 }
 
-
-
-function Firma({ setSaveButtonDisabled }) {
+function Row({children,style}) {
   
-  const contextPreOrder = useContext(PreOrderContext);
-  const daneZamowienia = contextPreOrder.daneZamowienia;
+    return (
+      <div className={style}>
+        {children}
+      </div>
+    );
+  }
+
+function Firma() {
+  
+const contextPreOrder = useContext(PreOrderContext);
+const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Firma </label>
@@ -145,10 +87,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Klient({ klienci,setSaveButtonDisabled,showAddClientStage }) {
+function Klient({ klienci,showAddClientStage }) {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -179,10 +123,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 }
 
 
-function DataMeterialow({setSaveButtonDisabled}){
+function DataMeterialow(){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     return(
         <div className={style.col}>
         <label className={style.label}> Data materiałów </label>
@@ -196,10 +142,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
     );
 }
 
-function DataPrzyjecia({setSaveButtonDisabled}){
+function DataPrzyjecia(){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
@@ -214,10 +162,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function DataSpedycji({setSaveButtonDisabled}){
+function DataSpedycji(){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
@@ -231,10 +181,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
     );
 }
 
-function Opiekun({setSaveButtonDisabled }) {
+function Opiekun() {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
@@ -256,10 +208,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Status({ setSaveButtonDisabled }) {
+function Status() {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Status </label>
@@ -281,10 +235,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Rodzaj({ setSaveButtonDisabled }) {
+function Rodzaj() {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Rodzaj </label>
@@ -308,10 +264,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 
 
 
-function Stan({ setSaveButtonDisabled }) {
+function Stan( ) {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Stan </label>
@@ -333,10 +291,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Tytul({setSaveButtonDisabled}){
+function Tytul( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
@@ -357,10 +317,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 }
 
 
-function Przedplata({setSaveButtonDisabled}){
+function Przedplata( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Przedpłata </label>
@@ -381,10 +343,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 
 
 
-function Uwagi({setSaveButtonDisabled}){
+function Uwagi( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Uwagi </label>
@@ -405,10 +369,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Nr({setSaveButtonDisabled}){
+function Nr( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
@@ -429,10 +395,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Cena({setSaveButtonDisabled}){
+function Cena( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Cena </label>
@@ -452,10 +420,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function TerminPlatnosci({setSaveButtonDisabled}){
+function TerminPlatnosci( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Płatność (dni) </label>
@@ -478,10 +448,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Vat({ setSaveButtonDisabled }) {
+function Vat( ) {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> VAT</label>
@@ -503,10 +475,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
   );
 }
 
-function Waluta({ setSaveButtonDisabled }) {
+function Waluta( ) {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Waluta</label>
@@ -533,10 +507,12 @@ const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 
 
 
-function Rok({setSaveButtonDisabled}){
+function Rok( ){
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>

@@ -1,5 +1,7 @@
 
 import style from "./Introligatornia.module.css";
+import { useContext } from "react";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import logoExpand from "../../../../assets/expand.svg";
 import { _rodzaj_oprawy,_typ_elementu } from "../api";
 import {  useState } from "react";
@@ -21,7 +23,7 @@ export default function IntroligatorniaTable({
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
   handleChangeCardFragmentyOprawaId,
-  produkty,setProdukty
+
 }) {
 
   const[oprawa_row,setOprawa_row]=useState();
@@ -58,7 +60,7 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable produkty={produkty} setProdukty={setProdukty} handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
+      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
@@ -79,7 +81,7 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -139,7 +141,7 @@ function OprawaTable({produkty,setProdukty,handleChangeCardProdukty,handleDragSt
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
                 handleChangeCardProdukty={handleChangeCardProdukty} 
-                produkty={produkty} setProdukty={setProdukty}
+              
               />
       <td></td>
 
@@ -250,7 +252,12 @@ function DataCzystodrukow({row,handleChangeCardOprawa}){
   );
 }
 
-function RodzajOprawy({ row,handleChangeCardOprawa,produkty,setProdukty }) {
+function RodzajOprawy({ row,handleChangeCardOprawa}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
+
+
   return (
     <td className={style.select}>
 

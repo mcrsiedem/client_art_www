@@ -1,12 +1,14 @@
 import style from "./Produkty.module.css";
+import { useContext } from "react";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 
-export default function Produkty({ produkty, handleChangeCardProdukty }) {
+export default function Produkty({  handleChangeCardProdukty }) {
   return (
       <div className={style.container}>
             <div className={style.produkt}>
               <ProduktyTableHeader />
-              <ProduktyTable produkty={produkty} handleChangeCardProdukty={handleChangeCardProdukty} />
+              <ProduktyTable  handleChangeCardProdukty={handleChangeCardProdukty} />
             </div>
     </div>
   );
@@ -20,7 +22,9 @@ function ProduktyTableHeader() {
   return <div className={style.header}>Produkt</div>;
 }
 
-function ProduktyTable({produkty,handleChangeCardProdukty}) {
+function ProduktyTable({handleChangeCardProdukty}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
   return <div className={style.main}>
       
         <table className={style.table}>

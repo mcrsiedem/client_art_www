@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import axios from "axios";
 import { IP } from "../../../utils/Host";
 import { useCookies } from "react-cookie";
@@ -11,7 +12,7 @@ export default function Stany({
   setOpenModalStany,
   user,
   daneZamowienia,
-  produkty,
+
   elementy,
   fragmenty,
   oprawa,
@@ -42,7 +43,7 @@ export default function Stany({
     <div className={style.body}>
       <div className={style.container}>
         <StanDane daneZamowienia={daneZamowienia} />
-        <StanProdukty produkty={produkty} />
+        <StanProdukty/>
         <StanElementy elementy={elementy} />
         <StanFragmenty
           fragmenty={fragmenty}
@@ -54,7 +55,10 @@ export default function Stany({
     </div>
   );
 }
-function StanProdukty({ produkty }) {
+function StanProdukty() {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const produkty = contextModalInsert.produkty;
+
   return (
     <div className={style.tableContainer}>
       <div className={style.title}>Produkty</div>

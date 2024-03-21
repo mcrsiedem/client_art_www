@@ -5,6 +5,7 @@ import { getProcess } from "actions/getProcess";
 
 import axios from "axios";
 import { IP } from "utils/Host";
+import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "initial/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(null);
@@ -15,22 +16,11 @@ export const ModalInsertContextProvider = ({children})=>{
     const [procesy,setProcesy] = useState(null)
 
 
-    const [produkty, setProdukty] = useState([
-      {
-        id: 1,
-        zamowienie_id: 1,
-        typ: 1,
-        nazwa: "",
-        wersja: "",
-        ilosc_stron: "",
-        format_x: "",
-        format_y: "",
-        oprawa: "",
-        naklad: "",
-        indeks: 0,
-        uwagi: "",
-      },
-    ]);
+    const [produkty, setProdukty] = useState(initialProdukty);
+    const [elementy, setElementy] = useState(initialElementy);
+    const [fragmenty, setFragmenty] = useState(initialFragmenty);
+    const [oprawa, setOprawa] = useState(initialOprawa);
+    const [pakowanie, setPakowanie] = useState(initalPakowanie);
 
     
      const updateZamowienieID = useCallback((data) => {
@@ -46,7 +36,13 @@ export const ModalInsertContextProvider = ({children})=>{
     return (
       <ModalInsertContext.Provider
         value={{
-        lockDragDrop, setLockDragDrop,
+          produkty, setProdukty,
+          elementy, setElementy,
+          fragmenty, setFragmenty,
+          oprawa, setOprawa,
+          pakowanie, setPakowanie,
+
+          lockDragDrop, setLockDragDrop,
      
           selectedElementROW,
           setSelectedElementROW,

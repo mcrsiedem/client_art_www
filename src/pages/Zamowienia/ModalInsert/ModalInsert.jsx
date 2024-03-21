@@ -88,103 +88,26 @@ const [klienci, setKlienci] = useState([]);
 
 const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
-const   isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-const   setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
-  
-  const [produkty, setProdukty] = useState([
-    {
-      id: 1,
-      zamowienie_id: 1,
-      typ: 1,
-      nazwa: "",
-      wersja: "",
-      ilosc_stron: "80",
-      format_x: "",
-      format_y: "",
-      oprawa: "",
-      naklad: "",
-      indeks: 0,
-      uwagi: "",
-    }
-    
-  ]);
-  const [elementy, setElementy] = useState(initialElementy);
-  const [fragmenty, setFragmenty] = useState(initialFragmenty);
-  const [oprawa, setOprawa] = useState([
-    {
-      id: 1,
-      zamowienie_id: 1,
-      produkt_id:1,
-      oprawa: 1,
-      bok_oprawy: "297",
-      naklad: "500",
-      uwagi: "",
-      data_spedycji: today(),
-      data_czystodrukow: today(),
-      indeks: 0,
-    }
-    
-  ]);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
 
-  const [pakowanie, setPakowanie] = useState([
-    {
-      id: 1,
-      zamowienie_id: 1,
-      produkt_id:1,
-      nazwa: "Poczta Główna",
-      naklad: 10,
-      sztuki_w_paczce: 10,
-      rodzaj_pakowania:"",
-      uwagi: "",
-      indeks: 0
-    },
-    {
-      id: 2,
-      zamowienie_id: 1,
-      produkt_id:1,
-      nazwa: "Desa Unicum ul. Piękna 1 A",
-      naklad: 124,
-      sztuki_w_paczce: 10,
-      rodzaj_pakowania:"",
-      uwagi: "",
-      indeks: 1
-    },
-    {
-      id: 3,
-      zamowienie_id: 1,
-      produkt_id:1,
-      nazwa: "Cosmopolitan",
-      naklad: 10,
-      sztuki_w_paczce: 10,
-      rodzaj_pakowania:"",
-      uwagi: "",
-      indeks: 2
-    },
-    {
-      id: 4,
-      zamowienie_id: 1,
-      produkt_id:1,
-      nazwa: "Promenoria",
-      naklad: 10,
-      sztuki_w_paczce: 10,
-      rodzaj_pakowania:"",
-      uwagi: "",
-      indeks: 3
-    },
-    {
-      id:5,
-      zamowienie_id: 1,
-      produkt_id:1,
-      nazwa: "Comforty",
-      naklad: 10,
-      sztuki_w_paczce: 10,
-      rodzaj_pakowania:"",
-      uwagi: "",
-      indeks: 4
-    },
-    
-  ]);
+const elementy = contextModalInsert.elementy;
+const setElementy = contextModalInsert.setElementy;
+
+const fragmenty = contextModalInsert.fragmenty;
+const setFragmenty = contextModalInsert.setFragmenty;
+
+const oprawa = contextModalInsert.oprawa;
+const setOprawa = contextModalInsert.setOprawa;
+
+const pakowanie = contextModalInsert.pakowanie;
+const setPakowanie = contextModalInsert.setPakowanie;
+// const contextModalInsert = useContext(ModalInsertContext);
+// const produkty = contextModalInsert.produkty;
+
+
+
 
 
 async function getClients() {
@@ -193,13 +116,6 @@ async function getClients() {
    setKlienciWyszukiwarka([...res.data]);
 
 }
-
-  // do zapisu
-  // let produktyEdit = produkty.slice();
-  // let elementyEdit = elementy.slice();
-  // let fragmentyEdit = fragmenty.slice();
-  // let oprawaEdit = oprawa.slice();
-  //-------------------------------------
 
   async function fechListy() {
     const res2 = await axios.get(IP + "lista-uszlachetnien");
@@ -324,11 +240,8 @@ async function getClients() {
         {showParametryZamowienia && (
           <div>
             <Produkty
-              produkty={produkty}
               handleChangeCardProdukty={handleChangeCardProdukty}
               _typ_produktu={_typ_produktu}
-
-              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Elementy
@@ -369,7 +282,7 @@ async function getClients() {
               fragmenty={fragmenty}
               setFragmenty={setFragmenty}
               handleChangeCardProdukty={handleChangeCardProdukty} 
-              produkty={produkty} setProdukty={setProdukty}
+             
               handleChangeCardOprawa={handleChangeCardOprawa}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
               handleChangeCardFragmentyOprawaId={
@@ -388,8 +301,7 @@ async function getClients() {
      
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
-              produkty={produkty}
-              setProdukty={setProdukty}
+    
               handleChangeCardProdukty={handleChangeCardProdukty}
               elementy={elementy}
               setElementy={setElementy}
@@ -425,7 +337,7 @@ async function getClients() {
           setOpenModalStany={setOpenModalStany}
           fragmenty={fragmenty}
           elementy={elementy}
-          produkty={produkty}
+       
           oprawa={oprawa}
           pakowanie={pakowanie}
           daneZamowienia={daneZamowienia}

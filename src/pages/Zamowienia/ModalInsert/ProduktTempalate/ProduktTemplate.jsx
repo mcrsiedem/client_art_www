@@ -9,8 +9,7 @@ export default function ProduktTemplate({
 
   setShowTemplate,
   setShowParametryZamowienia,
-  produkty,
-  setProdukty,
+
   elementy,
   setElementy,
   fragmenty,
@@ -28,8 +27,7 @@ export default function ProduktTemplate({
     
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
-          produkty={produkty}
-          setProdukty={setProdukty}
+    
           elementy={elementy}
           setElementy={setElementy}
           fragmenty={fragmenty}
@@ -53,8 +51,7 @@ function Table({
 
   setShowTemplate,
   setShowParametryZamowienia,
-  produkty,
-  setProdukty,
+
   elementy,
   setElementy,
   fragmenty,
@@ -97,8 +94,7 @@ function Table({
               
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
-              produkty={produkty}
-              setProdukty={setProdukty}
+         
               elementy={elementy}
               setElementy={setElementy}
               fragmenty={fragmenty}
@@ -249,8 +245,7 @@ function Dodaj({
 
   setShowTemplate,
   setShowParametryZamowienia,
-  produkty,
-  setProdukty,
+
   elementy,
   setElementy,
   fragmenty,
@@ -261,6 +256,10 @@ function Dodaj({
   const contextPreOrder = useContext(PreOrderContext);
 
   const preOrder = contextPreOrder.preOrder;
+
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
   return (
     <div className={style.kontrolka}>
       <button
@@ -277,7 +276,6 @@ function Dodaj({
             setOprawa);
         }}
       >
-        {" "}
         Dodaj
       </button>
     </div>

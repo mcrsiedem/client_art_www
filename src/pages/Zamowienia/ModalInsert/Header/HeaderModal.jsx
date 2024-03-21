@@ -2,7 +2,7 @@ import iconTable from "../../../../assets/table.svg";
 import iconTableGreen from "../../../../assets/table_green.svg";
 import iconLock from "assets/lock2.svg";
 import iconUnLock from "assets/unLock.svg";
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import style from "./HeaderModal.module.css";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
@@ -28,16 +28,17 @@ function Header({
   openModalStany,
   setOpenModalStany,
   setShowSaveAs,
-  saveAs, setSaveAs,
+  saveAs,
+  setSaveAs,
   // isSaveButtonDisabled, setSaveButtonDisabled,
   stanOtwarciaZamowienia,
-  row, 
-  readAlert,   setReadAlert ,   readOnly,  setReadOnly
-  
-})
-
-{
-  const [auth,lookToken] = useAuth(false);
+  row,
+  readAlert,
+  setReadAlert,
+  readOnly,
+  setReadOnly,
+}) {
+  const [auth, lookToken] = useAuth(false);
   const contextModalInsert = useContext(ModalInsertContext);
   return (
     <>
@@ -52,8 +53,6 @@ function Header({
           )}
         </div>
         <div className={style.buttons}>
-
-
           <img
             onClick={() => {
               // wyłącza drag drop w tabelkach
@@ -62,10 +61,9 @@ function Header({
               );
             }}
             className={style.icon}
-            src={contextModalInsert.lockDragDrop? iconUnLock: iconLock}
+            src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
           />
           <img
-
             onClick={() => {
               setOpenModalStany(!openModalStany);
 
@@ -86,10 +84,13 @@ function Header({
             <> </>
           ) : (
             <>
-              <Zapisz setShowSaveAs={setShowSaveAs} postZamowienieObj={postZamowienieObj} setSaveAs={setSaveAs} />
+              <Zapisz
+                setShowSaveAs={setShowSaveAs}
+                postZamowienieObj={postZamowienieObj}
+                setSaveAs={setSaveAs}
+              />
 
               <ZapiszJako
-     
                 postZamowienieObj={postZamowienieObj}
                 setShowSaveAs={setShowSaveAs}
                 setSaveAs={setSaveAs}
@@ -129,97 +130,91 @@ function Header({
 
 export default Header;
 
-function ZapiszJako({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
+function ZapiszJako({
+  isSaveButtonDisabled,
+  postZamowienieObj,
+  setShowSaveAs,
+  setSaveAs,
+}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return(
+  return (
     <button
-    disabled={isSaveButtonDisabled}
-    onClick={async () => {
-setShowSaveAs(true)
-setSaveAs(true)
-       
-    }}
-    className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
-  >
-    Zapisz jako...
-  </button>
-  )
+      disabled={isSaveButtonDisabled}
+      onClick={async () => {
+        setShowSaveAs(true);
+        setSaveAs(true);
+      }}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+    >
+      Zapisz jako...
+    </button>
+  );
 }
 
-
-function Zapisz({postZamowienieObj,setShowSaveAs,setSaveAs}){
- 
+function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
 
-  return(
+  return (
     <button
-    onClick={async () => {
-      setSaveAs(false);
-      postZamowienieObj();
-      setSaveButtonDisabled(true);
+      onClick={async () => {
+        setSaveAs(false);
+        postZamowienieObj();
+        setSaveButtonDisabled(true);
 
-      // setOrderClosed
-    }}
-    className={
-      isSaveButtonDisabled ? style.btn_disabled : style.btn
-    }
-    disabled={isSaveButtonDisabled}
-  >
-    Zapisz
-  </button>
-  )
-  }
+        // setOrderClosed
+      }}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      disabled={isSaveButtonDisabled}
+    >
+      Zapisz
+    </button>
+  );
+}
 
-
-
-
-function ButtonSprawdz({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
- 
+function ButtonSprawdz({
+  isSaveButtonDisabled,
+  postZamowienieObj,
+  setShowSaveAs,
+  setSaveAs,
+}) {
   const appcontext = useContext(AppContext);
   const socketcontext = useContext(SocketContext);
 
   const navigate = useNavigate();
   const sendMessage = () => {
+    appcontext.updateClients();
+    console.log("socketcontext id:" + socketcontext.socket.id);
 
-    appcontext.updateClients()
-    console.log("socketcontext id:" +socketcontext.socket.id)
+    socketcontext.socket.emit("send_mesage", { message: "OK" });
+  };
 
-    socketcontext.socket.emit("send_mesage", {message:"OK"})
-
-  }
-
-  return(
-<button
- onClick={() => sendMessage()}
-className={style.btn}
->
-Sprawdź {socketcontext.socketReceiveMessage}
-</button>
-  )
+  return (
+    <button onClick={() => sendMessage()} className={style.btn}>
+      Sprawdź {socketcontext.socketReceiveMessage}
+    </button>
+  );
 }
 
-function ButtonSprawdz2({isSaveButtonDisabled,postZamowienieObj,setShowSaveAs,setSaveAs}){
+function ButtonSprawdz2({
+  isSaveButtonDisabled,
+  postZamowienieObj,
+  setShowSaveAs,
+  setSaveAs,
+}) {
   const appcontext = useContext(AppContext);
   const socketcontext = useContext(SocketContext);
 
-
   const sendMessage = () => {
+    socketcontext.socket.emit("send_mesage", { message: "" });
+    console.log(appcontext.clients);
+  };
 
-    socketcontext.socket.emit("send_mesage", {message:""})
- console.log(appcontext.clients)
-  
-  }
-
-  return(
-<button
- onClick={() => sendMessage()}
-className={style.btn}
->
-Sprawdź {socketcontext.socketReceiveMessage}
-</button>
-  )
+  return (
+    <button onClick={() => sendMessage()} className={style.btn}>
+      Sprawdź {socketcontext.socketReceiveMessage}
+    </button>
+  );
 }
-

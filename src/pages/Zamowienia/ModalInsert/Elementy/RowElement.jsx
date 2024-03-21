@@ -425,7 +425,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
-          defaultValue={row.ilosc_stron}
+          defaultValue={row.col_strony}
           onChange={(e) =>
 
             handleChangeCardFragmenty_i_Elementy_IloscStron({

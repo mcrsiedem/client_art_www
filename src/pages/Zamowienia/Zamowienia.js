@@ -19,8 +19,8 @@ function Zamowienia({ user, setUser }) {
   const [data, setData] = useState([]);
 
   function dodaj_clikHandler() {
-    setOpenModalInsert(true);
-
+     setOpenModalInsert(true);
+    // open2()
   }
 
   const open2 = () =>{
@@ -106,7 +106,8 @@ function Zamowienia({ user, setUser }) {
               <button
                 className={style.myButton}
                 onClick={() => {
-                  dodaj_clikHandler();
+                  // open2()
+                   dodaj_clikHandler();
                 }}
               >
                 Dodaj

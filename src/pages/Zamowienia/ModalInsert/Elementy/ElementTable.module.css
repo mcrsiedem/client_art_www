@@ -67,7 +67,7 @@ div::-webkit-scrollbar-corner {
 }
 
 .col1 {
-  width: 40px;
+  width: 20px;
 }
 
 .col_kolory {
@@ -81,16 +81,18 @@ div::-webkit-scrollbar-corner {
 }
 
 .col_typ {
-  width: 100px;
+  width: 80px;
 }
 
 .col_naklad {
-  width: 85px;
+  width: 75px;
+
 }
 
 .col_strony {
 
-  width: 70px;
+  width: 60px;
+  background-color: red;
 }
 
 .col_gramatura {
@@ -110,7 +112,7 @@ div::-webkit-scrollbar-corner {
 }
 
 .col_button {
-  width: 20px;
+  width: 10px;
   margin-left: 10px;
   
   /* background-color: red; */

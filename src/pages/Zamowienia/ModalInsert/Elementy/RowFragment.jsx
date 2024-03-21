@@ -32,7 +32,7 @@ export default function RowFragment({
 
     
      key={row.id}>
-            <td></td>
+            
       <Dodaj
         row={row}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -57,6 +57,7 @@ export default function RowFragment({
       
       <td>{row.ilosc_stron}</td>
       <td></td>
+       <td></td>
       <td></td>
       <td></td>
       
@@ -66,7 +67,7 @@ export default function RowFragment({
       <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
       <td></td>
       <td></td>
-      <td></td>
+
     </tr>
   );
 }

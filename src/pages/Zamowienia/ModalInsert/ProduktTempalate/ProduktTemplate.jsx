@@ -8,8 +8,7 @@ import { PreOrderContext } from "context/PreOrderContext";
 export default function ProduktTemplate({
   setShowTemplate,
   setShowParametryZamowienia,
-  oprawa,
-  setOprawa
+ 
 }) {
 
  
@@ -20,8 +19,7 @@ export default function ProduktTemplate({
         <Table
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
-          oprawa={oprawa}
-          setOprawa={setOprawa}
+         
         />
       </div>
     </div>
@@ -37,16 +35,15 @@ function Header() {
 function Table({
   setShowTemplate,
   setShowParametryZamowienia,
-  oprawa,
-  setOprawa
+
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const elementy = contextModalInsert.elementy;
   const setElementy = contextModalInsert.setElementy;
-
-
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
+  const oprawa = contextModalInsert.oprawa;
+  const setOprawa = contextModalInsert.setOprawa;
 
   return (
     <div className={style.main}>
@@ -82,8 +79,7 @@ function Table({
             <Dodaj
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
-              oprawa={oprawa}
-              setOprawa={setOprawa}
+            
             />
           </tr>
         </tbody>
@@ -226,8 +222,7 @@ function BokOprawy() {
 function Dodaj({
   setShowTemplate,
   setShowParametryZamowienia,
-  oprawa,
-  setOprawa
+
 }) {
   const contextPreOrder = useContext(PreOrderContext);
   const preOrder = contextPreOrder.preOrder;
@@ -238,6 +233,8 @@ const elementy = contextModalInsert.elementy;
 const setElementy = contextModalInsert.setElementy;
 const fragmenty = contextModalInsert.fragmenty;
 const setFragmenty = contextModalInsert.setFragmenty;
+const oprawa = contextModalInsert.oprawa;
+const setOprawa = contextModalInsert.setOprawa;
 
   return (
     <div className={style.kontrolka}>

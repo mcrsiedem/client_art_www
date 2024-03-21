@@ -14,7 +14,7 @@ export default function Stany({
   daneZamowienia,
 
 
-  oprawa,
+
   pakowanie,
 
 }) {
@@ -47,7 +47,7 @@ export default function Stany({
         <StanFragmenty
           handleChangeCardFragmenty={handleChangeCardFragmenty}
         />
-        <StanOprawa oprawa={oprawa} />
+        <StanOprawa />
     
       </div>
     </div>
@@ -242,7 +242,10 @@ function StanFragmenty({ handleChangeCardFragmenty }) {
   );
 }
 
-function StanOprawa({ oprawa }) {
+function StanOprawa() {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const oprawa = contextModalInsert.oprawa;
+
   return (
     <div className={style.tableContainer}>
       <div className={style.title}>Oprawa</div>

@@ -258,8 +258,6 @@ async function getClients() {
             />
 
             <Introligatornia
-              oprawa={oprawa}
-              setOprawa={setOprawa}
               handleChangeCardProdukty={handleChangeCardProdukty} 
               handleChangeCardOprawa={handleChangeCardOprawa}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -278,8 +276,7 @@ async function getClients() {
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               handleChangeCardProdukty={handleChangeCardProdukty}
-              oprawa={oprawa}
-              setOprawa={setOprawa}
+       
             />
           </div>
         )}
@@ -298,7 +295,7 @@ async function getClients() {
           handleChangeCardFragmenty={handleChangeCardFragmenty}
           openModalStany={openModalStany}
           setOpenModalStany={setOpenModalStany}
-          oprawa={oprawa}
+        
           pakowanie={pakowanie}
           daneZamowienia={daneZamowienia}
         />

@@ -15,9 +15,6 @@ import axios from "axios";
 import { IP } from "../../../../utils/Host";
 
 export default function IntroligatorniaTable({
-  oprawa,
-  setOprawa,
-
   handleChangeCardProdukty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
@@ -59,14 +56,11 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
+      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver}  handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
         setShowOprawaElementyStage={setShowOprawaElementyStage}
-        oprawa={oprawa}
-        setOprawa={setOprawa}
-  
         oprawa_row={oprawa_row}
         handleChangeCardOprawa={handleChangeCardOprawa}
 
@@ -79,11 +73,14 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
+  const oprawa = contextModalInsert.oprawa;
+  const setOprawa = contextModalInsert.setOprawa;
+
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -176,9 +173,9 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
               />
 
                 
-              <Usun  oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
-              <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
-              <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa={oprawa} setOprawa={setOprawa} row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
+              <Usun  row={row} handleRemoveItem={handleRemoveItem}/>
+              <DodajOprawe row={row} />
+              <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
             </tr>
             {expand ? (
               fragmenty
@@ -308,10 +305,13 @@ function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOpra
   );
 }
 
-function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }) {
+function Usun({ row, handleChangeCardOprawa ,handleRemoveItem }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
+
+  const oprawa = contextModalInsert.oprawa;
+  const setOprawa = contextModalInsert.setOprawa;
 
   return (
     <td className={style.col_button}>
@@ -329,7 +329,10 @@ function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }
 }
 
 
-function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa,setShowOprawaElementyStage,oprawa_row,setOprawa_row}) {
+function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,setShowOprawaElementyStage,oprawa_row,setOprawa_row}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const oprawa = contextModalInsert.oprawa;
+  const setOprawa = contextModalInsert.setOprawa;
   return (
     <td className={style.col_button} >
             <img

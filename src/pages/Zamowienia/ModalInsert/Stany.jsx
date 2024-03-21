@@ -13,10 +13,6 @@ export default function Stany({
   user,
   daneZamowienia,
 
-
-
-  pakowanie,
-
 }) {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();

@@ -266,7 +266,7 @@ async function getClients() {
               }
             />
 
-            <Pakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 
@@ -295,8 +295,6 @@ async function getClients() {
           handleChangeCardFragmenty={handleChangeCardFragmenty}
           openModalStany={openModalStany}
           setOpenModalStany={setOpenModalStany}
-        
-          pakowanie={pakowanie}
           daneZamowienia={daneZamowienia}
         />
       )}

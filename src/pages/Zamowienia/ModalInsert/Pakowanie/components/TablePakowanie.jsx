@@ -5,9 +5,12 @@ import { addNewPacking } from "../../../../../actions/addPacking";
 import { deletePacking } from "../../../../../actions/deletePacking";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
-export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardPakowanie}) {
+export default function TablePakowanie({handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
+  const contextModalInsert = useContext(ModalInsertContext);
+  const pakowanie = contextModalInsert.pakowanie;
+  const setPakowanie = contextModalInsert.setPakowanie;
     return <div className={style.main}>
         
           <table className={style.table2}>
@@ -46,8 +49,8 @@ export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardP
                     <SztukiWpaczce row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <RodzajPakowania row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
-                    <Dodaj row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
-                    <Usun row={row} pakowanie={pakowanie} setPakowanie={setPakowanie}/>
+                    <Dodaj row={row} />
+                    <Usun row={row} />
    
                
   
@@ -179,7 +182,10 @@ export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardP
     );
   }
   
-  function Dodaj({ row, pakowanie ,setPakowanie}) {
+  function Dodaj({ row}) {
+    const contextModalInsert = useContext(ModalInsertContext);
+    const pakowanie = contextModalInsert.pakowanie;
+    const setPakowanie = contextModalInsert.setPakowanie;
     return (
       <td className={style.col_button} >
               <img
@@ -192,7 +198,10 @@ export default function TablePakowanie({pakowanie,setPakowanie,handleChangeCardP
     );
   }
   
-  function Usun({ row, pakowanie ,setPakowanie}) {
+  function Usun({ row}) {
+    const contextModalInsert = useContext(ModalInsertContext);
+    const pakowanie = contextModalInsert.pakowanie;
+    const setPakowanie = contextModalInsert.setPakowanie;
     return (
       <td className={style.col_button}>
         <div >

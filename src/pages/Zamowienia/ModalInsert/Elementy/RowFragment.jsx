@@ -1,5 +1,6 @@
 import style from "./ElementTable.module.css";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import { _typ_elementu } from "../api";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
@@ -12,9 +13,6 @@ export default function RowFragment({
   handleChangeCardFragmenty,
   i,
   listaGramatur,
-  fragmenty,
-  setFragmenty,
-  elementy,
   handleChangeCardFragmentyOprawaId
 }) {
   const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
@@ -39,17 +37,13 @@ export default function RowFragment({
         row={row}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         handleAddFragment={handleAddFragment}
-        fragmenty={fragmenty}
-        elementy={elementy}
-        setFragmenty={setFragmenty}
+
       />
            <Usun
         row={row}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         handleRemoveItem={handleRemoveItem}
-        fragmenty={fragmenty}
-        elementy={elementy}
-        setFragmenty={setFragmenty}
+   
       />
    
       {/* function Usun({ row, fragmenty,setFragmenty,handleChangeCardElementy,handleRemoveItem }) { */}
@@ -94,20 +88,6 @@ function Typ({ row }) {
       </select>
     </td>
 
-    // <td>
-
-    //     {_typ_elementu
-    //     .filter((t) => t.id === row.id)
-    //     .map((option) => (
-    //             <option key={option.id} value={option.id}>
-    //               {option.nazwa}
-    //         </option>))
-            
-    //       }
-
-
-     
-    // </td>
 
 
   );
@@ -152,7 +132,11 @@ function  Wersja({ row, handleChangeCardFragmenty }) {
   );
 }
 
-function Dodaj({ row, handleAddFragment, fragmenty, setFragmenty, elementy }) {
+function Dodaj({ row, handleAddFragment }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+  const elementy = contextModalInsert.elementy;
   return (
     <td className={style.col_button}>
       <img
@@ -205,7 +189,11 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
 }
 
 
-function Usun({ row, fragmenty,elementy,setFragmenty,handleRemoveItem }) {
+function Usun({ row,handleRemoveItem }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+  const elementy = contextModalInsert.elementy;
   return (
     <td className={style.col_button}>
       <div >

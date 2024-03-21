@@ -6,14 +6,8 @@ import { PreOrderContext } from "context/PreOrderContext";
 // import { AddProduktTemplate } from "./AddProduktTemplate";
 
 export default function ProduktTemplate({
-
   setShowTemplate,
   setShowParametryZamowienia,
-
-  elementy,
-  setElementy,
-  fragmenty,
-  setFragmenty,
   oprawa,
   setOprawa
 }) {
@@ -24,17 +18,10 @@ export default function ProduktTemplate({
       <div className={style.produkt}>
         <Header />
         <Table
-    
           setShowTemplate={setShowTemplate}
           setShowParametryZamowienia={setShowParametryZamowienia}
-    
-          elementy={elementy}
-          setElementy={setElementy}
-          fragmenty={fragmenty}
-          setFragmenty={setFragmenty}
           oprawa={oprawa}
           setOprawa={setOprawa}
-
         />
       </div>
     </div>
@@ -48,17 +35,19 @@ function Header() {
 }
 
 function Table({
-
   setShowTemplate,
   setShowParametryZamowienia,
-
-  elementy,
-  setElementy,
-  fragmenty,
-  setFragmenty,
   oprawa,
   setOprawa
 }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const elementy = contextModalInsert.elementy;
+  const setElementy = contextModalInsert.setElementy;
+
+
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -91,17 +80,10 @@ function Table({
             <Formaty />
             <BokOprawy />
             <Dodaj
-              
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
-         
-              elementy={elementy}
-              setElementy={setElementy}
-              fragmenty={fragmenty}
-              setFragmenty={setFragmenty}
               oprawa={oprawa}
               setOprawa={setOprawa}
-    
             />
           </tr>
         </tbody>
@@ -242,24 +224,21 @@ function BokOprawy() {
 }
 
 function Dodaj({
-
   setShowTemplate,
   setShowParametryZamowienia,
-
-  elementy,
-  setElementy,
-  fragmenty,
-  setFragmenty,
   oprawa,
   setOprawa
 }) {
   const contextPreOrder = useContext(PreOrderContext);
-
   const preOrder = contextPreOrder.preOrder;
-
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
 const setProdukty = contextModalInsert.setProdukty;
+const elementy = contextModalInsert.elementy;
+const setElementy = contextModalInsert.setElementy;
+const fragmenty = contextModalInsert.fragmenty;
+const setFragmenty = contextModalInsert.setFragmenty;
+
   return (
     <div className={style.kontrolka}>
       <button

@@ -1,23 +1,23 @@
 // import iconCopy from "../../../../../assets/copy.svg";
 // import iconTrash from "../../../../../assets/trash2.svg";
 import style from "./ElementTable.module.css";
+
+import { useContext } from "react";
 import { _papiery } from "../api";
 import {  useState } from "react";
 import RowElement from "./RowElement";
 import RowFragment from "./RowFragment";
+import { ModalInsertContext } from "context/ModalInsertContext";
 // import ElementTable from "./ElementTable";
 
 
 
 export default function Elementy({
-  elementy,
-  setElementy,
+
   handleChangeCardElementy,
   handleChangeCardFragmenty,
   selected_papier,
   setSelected_papier,
-  fragmenty,
-  setFragmenty,
   info,
   setInfo,
   listaPapierow,
@@ -39,15 +39,10 @@ export default function Elementy({
    
     <div className={style.element}>
       <ElementyTableHeader
-        // card={card}
-        elementy={elementy}
-        setElementy={setElementy}
-        fragmenty={fragmenty}
-        setFragmenty={setFragmenty}
+
       />
       <ElementyTable
-        elementy={elementy}
-        fragmenty={fragmenty}
+  
         handleChangeCardElementy={handleChangeCardElementy}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         listaPapierow={listaPapierow}
@@ -59,8 +54,8 @@ export default function Elementy({
         setProcesyElementow={setProcesyElementow}
         listaDostepnychProcesow={listaDostepnychProcesow}
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-        setElementy={setElementy}
-        setFragmenty={setFragmenty}
+
+
         handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
         handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
         handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
@@ -85,8 +80,7 @@ function ElementyTableHeader() {
 
 
 function ElementyTable({
-  elementy,
-  fragmenty,
+
   handleChangeCardElementy,
   handleChangeCardFragmenty,
   listaPapierow,
@@ -98,14 +92,20 @@ function ElementyTable({
   setProcesyElementow,
   listaDostepnychProcesow,
   setShowElementyProcesyInsert,
-  setFragmenty,
-  setElementy,
+
+
   handleChangeCardFragmenty_i_Elementy,
   handleChangeCardFragmenty_i_Elementy_IloscStron,
   handleChangeCardFragmentyOprawaId
 }) {
 
   const [expand,setExpand] =useState(false);
+  const contextModalInsert = useContext(ModalInsertContext);
+  const elementy = contextModalInsert.elementy;
+  const setElementy = contextModalInsert.setElementy;
+
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
   return (
     <div className={style.main}>
       <table className={style.table2}>
@@ -156,12 +156,12 @@ function ElementyTable({
                 setProcesyElementow={setProcesyElementow}
                 listaDostepnychProcesow={listaDostepnychProcesow}
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-                fragmenty={fragmenty}
+            
                 expand={expand}
                 setExpand={setExpand}
-                elementy={elementy}
-                setFragmenty={setFragmenty}
-                setElementy={setElementy}
+             
+          
+          
                  handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
                  handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
               />
@@ -190,8 +190,7 @@ function ElementyTable({
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-              fragmenty={fragmenty}
-              setFragmenty={setFragmenty}
+  
               elementy={elementy}
               handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
               handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}

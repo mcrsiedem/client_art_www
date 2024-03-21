@@ -24,12 +24,20 @@ export default function RowElement({
     setProcesyElementow,
     listaDostepnychProcesow,
     setShowElementyProcesyInsert,
-    fragmenty, setFragmenty,
+
     expand,setExpand,
-    elementy, setElementy,
+
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
+
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy;
+    const setElementy = contextModalInsert.setElementy;
+
+    const fragmenty = contextModalInsert.fragmenty;
+    const setFragmenty = contextModalInsert.setFragmenty;
+
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
     const [listaDostepnychGramatur, setListaDostepnychGrmatur] =

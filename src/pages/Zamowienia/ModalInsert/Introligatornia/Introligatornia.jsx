@@ -17,8 +17,7 @@ import { IP } from "../../../../utils/Host";
 export default function IntroligatorniaTable({
   oprawa,
   setOprawa,
-  fragmenty,
-  setFragmenty,
+
   handleChangeCardProdukty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
@@ -60,15 +59,14 @@ export default function IntroligatorniaTable({
     <div className={style.container}>
       <div className={style.oprawa}>
       <Header  />
-      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa} fragmenty={fragmenty} setFragmenty={setFragmenty} expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
+      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver} oprawa={oprawa} setOprawa={setOprawa} handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
         showOprawaElementyStage={showOprawaElementyStage}
         setShowOprawaElementyStage={setShowOprawaElementyStage}
         oprawa={oprawa}
         setOprawa={setOprawa}
-        fragmenty={fragmenty}
-        setFragmenty={setFragmenty}
+  
         oprawa_row={oprawa_row}
         handleChangeCardOprawa={handleChangeCardOprawa}
 
@@ -81,7 +79,11 @@ export default function IntroligatorniaTable({
   );
 }
 
-function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, fragmenty,setFragmenty, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,oprawa, setOprawa,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+  const elementy = contextModalInsert.elementy;
   return (  < div className={style.main}>
   <table className={style.table}>
     <thead>
@@ -174,7 +176,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
               />
 
                 
-              <Usun fragmenty={fragmenty} setFragmenty={setFragmenty} oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
+              <Usun  oprawa={oprawa} setOprawa={setOprawa} row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe oprawa={oprawa} setOprawa={setOprawa} row={row} />
               <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa={oprawa} setOprawa={setOprawa} row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
             </tr>
@@ -306,7 +308,11 @@ function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOpra
   );
 }
 
-function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa ,fragmenty,setFragmenty}) {
+function Usun({ row, handleChangeCardOprawa ,handleRemoveItem,oprawa,setOprawa }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+
   return (
     <td className={style.col_button}>
       <div >

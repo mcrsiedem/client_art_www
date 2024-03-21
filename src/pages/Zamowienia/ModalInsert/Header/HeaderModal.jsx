@@ -24,7 +24,7 @@ function Header({
   setInfo,
   sprawdzPoprawnoscZamowienia,
   check_data_wejscia,
-  elementy,
+
   openModalStany,
   setOpenModalStany,
   setShowSaveAs,
@@ -40,6 +40,9 @@ function Header({
 }) {
   const [auth, lookToken] = useAuth(false);
   const contextModalInsert = useContext(ModalInsertContext);
+
+  const elementy = contextModalInsert.elementy;
+
   return (
     <>
       <div className={style.container}>

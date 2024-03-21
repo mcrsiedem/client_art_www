@@ -198,41 +198,30 @@ async function getClients() {
   return (
     <div className={style.container}>
       <HeaderModal
-      // isLockDragDrop={isLockDragDrop}
-      // lockDragDrop={lockDragDrop}
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
-        // postZamowienie={postZamowienie}
         postZamowienieObj={postZamowienieObj}
-        // id={idZamowienie}
-  
         info={info}
         setInfo={setInfo}
         isOK={isOK}
         setIsOK={setIsOK}
         sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
         check_data_wejscia={check_data_wejscia}
-        elementy={elementy}
         openModalStany={openModalStany}
         setOpenModalStany={setOpenModalStany}
         setShowSaveAs={setShowSaveAs}
         saveAs={saveAs}
         setSaveAs={setSaveAs}
-        // isSaveButtonDisabled={isSaveButtonDisabled}
-        // setSaveButtonDisabled={setSaveButtonDisabled}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         row={row}
         readAlert={readAlert}
         setReadAlert={setReadAlert}
         readOnly={readOnly}
         setReadOnly={setReadOnly}
-    
       />
 
       <Dane
       klienci={klienci}
-       
-        // setSaveButtonDisabled={setSaveButtonDisabled}
         showAddClientStage={showAddClientStage}
       />
 
@@ -245,14 +234,10 @@ async function getClients() {
             />
 
             <Elementy
-              elementy={elementy}
-              setElementy={setElementy}
               handleChangeCardElementy={handleChangeCardElementy}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
               selected_papier={selected_papier}
               setSelected_papier={setSelected_papier}
-              fragmenty={fragmenty}
-              setFragmenty={setFragmenty}
               info={info}
               setInfo={setInfo}
               listaPapierow={listaPapierow}
@@ -260,12 +245,9 @@ async function getClients() {
               listaUszlachetnien={listaUszlachetnien}
               setListaUszlachetnien={setListaUszlachetnien}
               setListaGramatur={setListaGramatur}
-              // isEdit={isEdit}
-              // setIsEdit={setIsEdit}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
               listaDostepnychProcesow={listaDostepnychProcesow}
-      
               handleChangeCardFragmenty_i_Elementy={
                 handleChangeCardFragmenty_i_Elementy
               }
@@ -273,22 +255,17 @@ async function getClients() {
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
-              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Introligatornia
               oprawa={oprawa}
               setOprawa={setOprawa}
-              fragmenty={fragmenty}
-              setFragmenty={setFragmenty}
               handleChangeCardProdukty={handleChangeCardProdukty} 
-             
               handleChangeCardOprawa={handleChangeCardOprawa}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
-              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
 
             <Pakowanie  pakowanie={pakowanie} setPakowanie={setPakowanie} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
@@ -298,18 +275,11 @@ async function getClients() {
         {showTemplate && (
           <div>
             <ProduktTemplate
-     
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
-    
               handleChangeCardProdukty={handleChangeCardProdukty}
-              elementy={elementy}
-              setElementy={setElementy}
-              fragmenty={fragmenty}
-              setFragmenty={setFragmenty}
               oprawa={oprawa}
               setOprawa={setOprawa}
-              // setSaveButtonDisabled={setSaveButtonDisabled}
             />
           </div>
         )}
@@ -319,30 +289,18 @@ async function getClients() {
         <ProcesElement
           procesyElementow={procesyElementow}
           listaDostepnychProcesow={listaDostepnychProcesow}
-          // setSaveButtonDisabled={setSaveButtonDisabled}
+
         />
       )}
 
-      {/* <Footer openModalInsert={openModalInsert} setOpenModalInsert={setOpenModalInsert}/> */}
-
-      {/* <div id="mydiv" ref={elmnt} className={style.mydiv}>
-            <div id="mydivheader" className={style.mydivheader}>Dodatkowe informacje</div>
-                    <p>Lorem IPsum dolor sit amet consectetur adIPisicing elit..</p>
-          
-          </div> */}
       {openModalStany && (
         <Stany
           handleChangeCardFragmenty={handleChangeCardFragmenty}
           openModalStany={openModalStany}
           setOpenModalStany={setOpenModalStany}
-          fragmenty={fragmenty}
-          elementy={elementy}
-       
           oprawa={oprawa}
           pakowanie={pakowanie}
           daneZamowienia={daneZamowienia}
-        
-          
         />
       )}
 

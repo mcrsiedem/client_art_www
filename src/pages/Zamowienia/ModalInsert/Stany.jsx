@@ -13,8 +13,7 @@ export default function Stany({
   user,
   daneZamowienia,
 
-  elementy,
-  fragmenty,
+
   oprawa,
   pakowanie,
 
@@ -44,9 +43,8 @@ export default function Stany({
       <div className={style.container}>
         <StanDane daneZamowienia={daneZamowienia} />
         <StanProdukty/>
-        <StanElementy elementy={elementy} />
+        <StanElementy />
         <StanFragmenty
-          fragmenty={fragmenty}
           handleChangeCardFragmenty={handleChangeCardFragmenty}
         />
         <StanOprawa oprawa={oprawa} />
@@ -137,7 +135,10 @@ function StanDane({ daneZamowienia }) {
   );
 }
 
-function StanElementy({ elementy }) {
+function StanElementy() {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const elementy = contextModalInsert.elementy;
+
   return (
     <div className={style.tableContainer}>
       <div className={style.title}>Elementy</div>
@@ -180,7 +181,10 @@ function StanElementy({ elementy }) {
     </div>
   );
 }
-function StanFragmenty({ fragmenty, handleChangeCardFragmenty }) {
+function StanFragmenty({ handleChangeCardFragmenty }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const fragmenty = contextModalInsert.fragmenty;
+
   return (
     <div className={style.tableContainer}>
       <div className={style.title}>Fragmenty</div>

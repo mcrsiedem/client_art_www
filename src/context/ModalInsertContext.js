@@ -28,8 +28,58 @@ export const ModalInsertContextProvider = ({children})=>{
      }, []);
     
     
+     
+     // aktualizacja row w stanie produkty, elementy, fragmenty, oprawa, pakowanie
+      const handleUpdateRowProdukty = (row) => {
+      setProdukty(
+        produkty.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+    };
+
+    const handleUpdateRowElementy = (row) => {
+      setElementy(
+        elementy.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+    };
+
+    const handleUpdateRowFragmenty = (row) => {
+      setFragmenty(
+        fragmenty.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+    };
+
+    const handleUpdateRowPakowanie = (row) => {
+      setPakowanie(
+        pakowanie.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+    };
+
+
     useEffect(()=>{
-        
 
     },[])
     
@@ -52,7 +102,12 @@ export const ModalInsertContextProvider = ({children})=>{
           setShowElementyProcesyInsert,
 
           updateZamowienieID,
-          isSaveButtonDisabled, setSaveButtonDisabled
+          isSaveButtonDisabled, setSaveButtonDisabled,
+
+          handleUpdateRowProdukty,
+          handleUpdateRowElementy,
+          handleUpdateRowFragmenty,
+          handleUpdateRowPakowanie
         }}
       >
         {children}

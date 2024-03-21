@@ -85,6 +85,8 @@ const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
 
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled
+const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled
 
 const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
@@ -148,11 +150,7 @@ async function getClients() {
 }, [isShowAddClientStage]);
 
 
-
-
-
   async function fechparametry(idZamowienia,setSaveButtonDisabled) {
-
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
@@ -162,26 +160,18 @@ async function getClients() {
             user: DecodeToken(sessionStorage.getItem("token")).id,
           })
           .then((res) => {
-
               if(res.data.stan == "error"){
               setSaveButtonDisabled(true)
-
                setReadOnly(true)   // zmien parametr
                setReadAlert(true) //pokaż okno alert read only
-    
               }else{
-                
               }
-
-            
               setStanOtwarciaZamowienia({
                 stan: res.data.stan,
                 user: res.data.user,
                 data: res.data.data
               })
-
           });
-
 
            const res = await axios.get(IP + "parametry/"+idZamowienia);
 
@@ -191,8 +181,6 @@ async function getClients() {
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
-        
-
   }
 
   return (
@@ -228,11 +216,7 @@ async function getClients() {
       <div className={style.main}>
         {showParametryZamowienia && (
           <div>
-            <Produkty
-              handleChangeCardProdukty={handleChangeCardProdukty}
-              _typ_produktu={_typ_produktu}
-            />
-
+            <Produkty />
             <Elementy
               handleChangeCardElementy={handleChangeCardElementy}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -276,7 +260,6 @@ async function getClients() {
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               handleChangeCardProdukty={handleChangeCardProdukty}
-       
             />
           </div>
         )}
@@ -307,9 +290,6 @@ async function getClients() {
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
           postZamowienieObj={postZamowienieObj}
-         
-        
-          
         />
       )}
 
@@ -319,16 +299,12 @@ async function getClients() {
         setKlienci={setKlienci}
         klienciWyszukiwarka={klienciWyszukiwarka}
          setKlienciWyszukiwarka={setKlienciWyszukiwarka}
-
         getClients={getClients}
         setListaWykonczenia={setKlienci}
         isShowAddClientStage={isShowAddClientStage}
         showAddClientStage={showAddClientStage}
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
-
-        
-          
         />
       )}
 {readAlert && (
@@ -340,9 +316,6 @@ async function getClients() {
         />
       )}
     </div>
-
-    
-
 
   );
   //----------------------------------
@@ -359,19 +332,9 @@ async function getClients() {
   }
 
 
-
     function postZamowienieObj(){
-    // await zapis();
-
     saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia});
-      //  f1(f2);
-
   }
-
-
-
-
-  
 
 
 

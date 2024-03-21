@@ -56,6 +56,29 @@ const _opiekun = [
   },
 ];
 
+
+const initialDane = {
+  id: 1,
+  nr: "20",
+  rok: "2024",
+  firma_id: 0,
+  klient_id: 0,
+  opiekun_id: 0,
+  tytul: "Tytuł zamówienia",
+  data_przyjecia: today(),
+  data_materialow: today(),
+  data_spedycji: today(),
+  stan: 0,
+  status: 0,
+  rodzaj: 1,
+  uwagi: "",
+  cena:"",
+  waluta_id: 1,
+  termin_platnosci: 30,
+  vat_id: 4,
+  przedplata: " "
+
+};
 const initialProdukty = [
   {
     id: 1,
@@ -464,4 +487,5 @@ export {
   _rodzaj,
   _vat,
   _waluta,
+  initialDane
 };

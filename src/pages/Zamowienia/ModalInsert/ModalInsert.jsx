@@ -38,6 +38,7 @@ import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
+import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 
 function ModalInsert({
   openModalInsert,
@@ -131,17 +132,27 @@ async function getClients() {
 
 
   useEffect(() => {
-    fechListy();
+      fechListy();
 
     if (open.current) {
       setShowParametryZamowienia(true);
       setShowTemplate(false);
       open.current = false;
       fechparametry(row.id);
+    }else{
+      //zerowanie stanów
+      setDaneZamowienia(initialDane)
+      setProdukty(initialProdukty)
+      setElementy(initialElementy)
+      setFragmenty(initialFragmenty)
+      setOprawa(initialOprawa)
+      setPakowanie(initalPakowanie)
     }
 
 
-  }, []);
+
+
+  }, [open]);
 
 
 

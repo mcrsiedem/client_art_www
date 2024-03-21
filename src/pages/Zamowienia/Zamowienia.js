@@ -20,6 +20,7 @@ function Zamowienia({ user, setUser }) {
 
   function dodaj_clikHandler() {
      setOpenModalInsert(true);
+     open.current = false
     // open2()
   }
 

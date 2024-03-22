@@ -4,6 +4,7 @@ import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_sta
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { AppContext } from "context/AppContext";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -83,12 +84,16 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-function Klient({ klienci,showAddClientStage }) {
+function Klient({showAddClientStage }) {
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
 const contextModalInsert = useContext(ModalInsertContext);
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const contextApp = useContext(AppContext);
+
+
+
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -100,7 +105,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false);
         }}
       >
-        {klienci.map((option) => (
+        {contextApp.clients.map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}
           </option>

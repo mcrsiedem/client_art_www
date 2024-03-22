@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function Header() {
+function Header({ dodaj_clikHandler}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
@@ -40,7 +40,7 @@ function Header() {
           className={style.icon}
           src={iconAdd}
           onClick={() => {
-            navigate("/Panel");
+            dodaj_clikHandler()
             // console.log("z contextu :"+ token.rowSelected)
           //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
 

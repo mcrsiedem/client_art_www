@@ -112,7 +112,8 @@ background: #ebe9e5;
 }
 
 .tableContainer{
-  height: calc(100vh - 110px);
+   padding-top: 50px;
+  height: calc(100vh - 60px);
    /* max-height: 300px; */
    overflow-y: scroll;
 

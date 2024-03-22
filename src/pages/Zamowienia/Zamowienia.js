@@ -98,43 +98,13 @@ function Zamowienia({ user, setUser }) {
 
   return (
     <div className={style.body}>
+        <Header  dodaj_clikHandler={ dodaj_clikHandler}/>
       <div className={style.tableContainer}>
-        <Header/>
+      
       <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow}/>
       </div>
 
-      <footer className={style.footer}>
-              {/* <button className={style.myButton} onClick={()=>giveMeJobs('H1')}>H1</button> */}
-              <button className={style.myButton}>OK</button>
-              <button
-                className={style.myButton}
-                onClick={() => {
-                  // open2()
-                   dodaj_clikHandler();
-                }}
-              >
-                Dodaj
-              </button>
 
-                         <button
-                className={style.myButton}
-                onClick={() => {
-                  refreshZamowienia();
-                }}
-              >
-                Odśwież
-              </button>
-
-              <button
-                className={style.myButton}
-                onClick={() => {
-                  console.log('openModal '+openModalInsert)
-                  // refreshZamowienia();
-                }}
-              >
-                Sprawdz {openModalInsert&&(<>true</>)}
-              </button>
-      </footer>
 
 
       {openModalInsert && (

@@ -30,7 +30,7 @@ export default function App() {
       <AppContextProvider>
       <PreOrderContextProvider>
       <ModalInsertContextProvider>
-            <Header />
+            {/* <Header /> */}
             <Routes >
               <Route path='/' element={<Login />} />
               <Route path='/login' element={<Login />} />

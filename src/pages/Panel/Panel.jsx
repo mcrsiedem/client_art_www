@@ -7,7 +7,7 @@ function Panel({user,setUser}){
         const navigate = useNavigate();
    
     useEffect(() => {
-        document.getElementById("header").style.display = "none";
+        // document.getElementById("header").style.display = "none";
       }, []);
 
     return(<>

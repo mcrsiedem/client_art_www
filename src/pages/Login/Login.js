@@ -27,8 +27,8 @@ export default function Login( ) {
 
   useEffect(() => {
 
-    header = document.getElementById("header");
-    header.style.display = "none";
+    // header = document.getElementById("header");
+    // header.style.display = "none";
   }, []);
 
    useEffect(() => {
@@ -50,7 +50,7 @@ export default function Login( ) {
         sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
         setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
 
-        header.style.display = "grid";
+        // header.style.display = "grid";
         navigate("/Panel");
         // newSocket.connect()
       } else {

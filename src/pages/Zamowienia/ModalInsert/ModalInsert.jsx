@@ -58,79 +58,42 @@ function ModalInsert({
   const contextModalInsert = useContext(ModalInsertContext);
   const contextPreOrder = useContext(PreOrderContext);
   const contextApp = useContext(AppContext);
-
   const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isShowAddClientStage, showAddClientStage] = useState(false);
-  // const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
   const [readOnly,setReadOnly] = useState(false);
   const [readAlert,setReadAlert] = useState(false);
   const [cookies, setCookie] = useCookies();
-  // const [nroprawy, setNroprawy] = useState();
-  // const [uszlachetnienia, setUszlachetnienia] = useState();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
-  // const [idZamowienie, setIdZamowienia] = useState();
   const [info, setInfo] = useState("napis");
-  // const [listaWykonczenia, setListaWykonczenia] = useState();
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
-
   const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-  // const [selected_wykonczenie, setSelected_wykonczenie] = useState();
-  // const [isEdit, setIsEdit] = useState(false);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
   const [showSaveAs, setShowSaveAs] = useState(false);
   const [saveAs, setSaveAs] = useState(false);
- 
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
-
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled
 const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled
-
 const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
-
 const produkty = contextModalInsert.produkty;
 const setProdukty = contextModalInsert.setProdukty;
-
 const elementy = contextModalInsert.elementy;
 const setElementy = contextModalInsert.setElementy;
-
 const fragmenty = contextModalInsert.fragmenty;
 const setFragmenty = contextModalInsert.setFragmenty;
-
 const oprawa = contextModalInsert.oprawa;
 const setOprawa = contextModalInsert.setOprawa;
-
 const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
-// const contextModalInsert = useContext(ModalInsertContext);
-// const produkty = contextModalInsert.produkty;
-
-
-
-
-
-// async function getClients() {
-//   const res = await axios.get(IP + "lista-klientow");
-//    setKlienci([...res.data]);  
-//   //  setKlienciWyszukiwarka([...res.data]);
-
-// }
-
-//   async function fechListy() {
-
-//     getClients()
-
-//   }
 
 
   useEffect(() => {
-      // fechListy();
 
     if (open.current) {
       setShowParametryZamowienia(true);

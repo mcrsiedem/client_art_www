@@ -6,6 +6,7 @@ import iconSettings from "../../assets/settings.svg";
 import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
+import Header from "./components/Header";
 function Zamowienia({ user, setUser }) {
 
   const [listaGramatur, setListaGramatur] = useState();
@@ -60,7 +61,7 @@ function Zamowienia({ user, setUser }) {
   }
 
   useEffect(() => {
-    document.getElementById("header").style.display = "grid";
+    // document.getElementById("header").style.display = "grid";
     checkToken();
   }, []);
 
@@ -98,6 +99,7 @@ function Zamowienia({ user, setUser }) {
   return (
     <div className={style.body}>
       <div className={style.tableContainer}>
+        <Header/>
       <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow}/>
       </div>
 

@@ -22,4 +22,11 @@ Klienci -
             - ikonki kasowanie -  edycja - użycie ( łapka )     V
             - user_id - domyślnie                               V
             - opiekun_id - domyślnie                            V
-            - user:  DecodeToken(sessionStorage.getItem("token")).id              V
+            - user:  DecodeToken(sessionStorage.getItem("token")).id     
+
+    Zamówienia:        
+-   delete order
+-   X close
+-   yellow add icon od left
+-   searchbar and sorting by column
+-   select row color

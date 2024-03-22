@@ -2,6 +2,7 @@ import iconTable from "../../../../assets/table.svg";
 import iconTableGreen from "../../../../assets/table_green.svg";
 import iconLock from "assets/lock2.svg";
 import iconUnLock from "assets/unLock.svg";
+import iconX from "assets/x.svg";
 import React, { useState, useContext } from "react";
 import style from "./HeaderModal.module.css";
 import axios from "axios";
@@ -16,27 +17,14 @@ const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
 };
 
-function Header({
+export default function Header({
   setOpenModalInsert,
-  // postZamowienie,
   postZamowienieObj,
-
-  setInfo,
-  sprawdzPoprawnoscZamowienia,
-  check_data_wejscia,
-
-  openModalStany,
-  setOpenModalStany,
   setShowSaveAs,
-  saveAs,
   setSaveAs,
-  // isSaveButtonDisabled, setSaveButtonDisabled,
   stanOtwarciaZamowienia,
   row,
-  readAlert,
-  setReadAlert,
   readOnly,
-  setReadOnly,
 }) {
   const [auth, lookToken] = useAuth(false);
   const contextModalInsert = useContext(ModalInsertContext);
@@ -46,7 +34,9 @@ function Header({
   return (
     <>
       <div className={style.container}>
+     
         <div className={style.title}>
+        <LockDradDrop/>
           Zamówienie...{" "}
           {readOnly && (
             <div>
@@ -54,84 +44,89 @@ function Header({
               {stanOtwarciaZamowienia.user}
             </div>
           )}
+          
         </div>
         <div className={style.buttons}>
-          <img
-            onClick={() => {
-              // wyłącza drag drop w tabelkach
-              contextModalInsert.setLockDragDrop(
-                !contextModalInsert.lockDragDrop
-              );
-            }}
-            className={style.icon}
-            src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
-          />
-          <img
-            onClick={() => {
-              setOpenModalStany(!openModalStany);
-
-              setInfo(
-                Math.max(
-                  ...elementy.map((obj) => {
-                    return obj.id;
-                  })
-                )
-              );
-            }}
-            className={style.icon}
-            src={iconTable}
-            alt="table"
-          />
+              
+              {/* <ShowStany setOpenModalStany={setOpenModalStany} openModalStany={openModalStany} setInfo={setInfo} /> */}
 
           {readOnly ? (
-            <> </>
-          ) : (
-            <>
-              <Zapisz
-                setShowSaveAs={setShowSaveAs}
-                postZamowienieObj={postZamowienieObj}
-                setSaveAs={setSaveAs}
-              />
+                <> </>
+              ) :
+              (
+                <>
+                  <Zapisz
+                    setShowSaveAs={setShowSaveAs}
+                    postZamowienieObj={postZamowienieObj}
+                    setSaveAs={setSaveAs}
+                  />
 
-              <ZapiszJako
-                postZamowienieObj={postZamowienieObj}
-                setShowSaveAs={setShowSaveAs}
-                setSaveAs={setSaveAs}
-              />
-            </>
-          )}
+                  <ZapiszJako
+                    postZamowienieObj={postZamowienieObj}
+                    setShowSaveAs={setShowSaveAs}
+                    setSaveAs={setSaveAs}
+                  />
+                </>
+              )
+          }
 
-          <button
+          {/* <button
             onClick={() => openInNewTab("/Zamowienia")}
             className={style.btn}
           >
             Nowe...
-          </button>
+          </button> */}
 
-          <ButtonSprawdz />
-          <ButtonSprawdz2 />
+          {/* <ButtonSprawdz />
+          <ButtonSprawdz2 /> */}
 
-          <button
-            onClick={async () => {
-              setOpenModalInsert(false);
-
-              if (!readOnly) {
-                const res = await axios.put(IP + "setOrderClosed", {
-                  id: row.id,
-                });
-              }
-            }}
-            className={style.btn}
-          >
-            Zamknij
-          </button>
+          <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly}/>
         </div>
       </div>
     </>
   );
 }
 
-export default Header;
+
+
+const LockDradDrop = () =>{
+  const contextModalInsert = useContext(ModalInsertContext);
+  return(
+    <img
+    onClick={() => {
+      // wyłącza drag drop w tabelkach
+      contextModalInsert.setLockDragDrop(
+        !contextModalInsert.lockDragDrop
+      );
+    }}
+    className={style.icon}
+    src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
+  />
+  )
+}
+
+const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
+  const contextModalInsert = useContext(ModalInsertContext);
+  const elementy = contextModalInsert.elementy;
+  return(
+    <img
+    onClick={() => {
+      setOpenModalStany(!openModalStany);
+
+      setInfo(
+        Math.max(
+          ...elementy.map((obj) => {
+            return obj.id;
+          })
+        )
+      );
+    }}
+    className={style.icon}
+    src={iconTable}
+    alt="table"
+  />
+  )
+}
 
 function ZapiszJako({
   isSaveButtonDisabled,
@@ -154,6 +149,53 @@ function ZapiszJako({
     </button>
   );
 }
+
+
+
+function Zamknij({setOpenModalInsert,readOnly,row}) {
+  // const contextModalInsert = useContext(ModalInsertContext);
+  // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+
+  return (
+
+
+    <img
+      className={style.zamknij_icon}
+      src={iconX}
+      onClick={async() => {
+        
+      setOpenModalInsert(false);
+
+      if (!readOnly) {
+        const res = await axios.put(IP + "setOrderClosed", {
+          id: row.id,
+        });
+      }
+    }
+      }
+      alt="Procesy"
+    />
+
+
+
+  //   <button
+  //   onClick={async () => {
+  //     setOpenModalInsert(false);
+
+  //     if (!readOnly) {
+  //       const res = await axios.put(IP + "setOrderClosed", {
+  //         id: row.id,
+  //       });
+  //     }
+  //   }}
+  //   className={style.btn}
+  // >
+  //   Zamknij
+  // </button>
+  );
+}
+
 
 function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);

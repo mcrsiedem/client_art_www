@@ -138,7 +138,7 @@ async function getClients() {
       setShowParametryZamowienia(true);
       setShowTemplate(false);
       open.current = false;
-      fechparametry(row.id);
+      fechparametry(row.id,setSaveButtonDisabled);
     }else{
       //zerowanie stanów
       setDaneZamowienia(initialDane)

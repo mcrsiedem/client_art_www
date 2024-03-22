@@ -22,7 +22,7 @@ export default function RowElement({
     // setIsEdit,
     procesyElementow,
     setProcesyElementow,
-    listaDostepnychProcesow,
+
     setShowElementyProcesyInsert,
 
     expand,setExpand,

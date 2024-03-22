@@ -38,6 +38,7 @@ import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
+import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 
 function ModalInsert({
@@ -56,6 +57,7 @@ function ModalInsert({
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextPreOrder = useContext(PreOrderContext);
+  const contextApp = useContext(AppContext);
 
   const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isShowAddClientStage, showAddClientStage] = useState(false);
@@ -71,7 +73,7 @@ function ModalInsert({
   const [info, setInfo] = useState("napis");
   // const [listaWykonczenia, setListaWykonczenia] = useState();
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
-  const [listaDostepnychProcesow, setListaDostepnychProcesow] = useState();
+
   const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   // const [selected_wykonczenie, setSelected_wykonczenie] = useState();
   // const [isEdit, setIsEdit] = useState(false);
@@ -113,26 +115,22 @@ const setPakowanie = contextModalInsert.setPakowanie;
 
 
 
-async function getClients() {
-  const res = await axios.get(IP + "lista-klientow");
-   setKlienci([...res.data]);  
-   setKlienciWyszukiwarka([...res.data]);
+// async function getClients() {
+//   const res = await axios.get(IP + "lista-klientow");
+//    setKlienci([...res.data]);  
+//   //  setKlienciWyszukiwarka([...res.data]);
 
-}
+// }
 
-  async function fechListy() {
-    const res2 = await axios.get(IP + "lista-uszlachetnien");
-    setListaUszlachetnien([...res2.data]);
+//   async function fechListy() {
 
-    const res5 = await axios.get(IP + "lista-procesow");
-    setListaDostepnychProcesow([...res5.data]);
-    getClients()
+//     getClients()
 
-  }
+//   }
 
 
   useEffect(() => {
-      fechListy();
+      // fechListy();
 
     if (open.current) {
       setShowParametryZamowienia(true);
@@ -157,7 +155,7 @@ async function getClients() {
 
 
   useEffect(() => {
-    getClients()
+    contextApp.updateClients()
 }, [isShowAddClientStage]);
 
 
@@ -242,7 +240,7 @@ async function getClients() {
               setListaGramatur={setListaGramatur}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
-              listaDostepnychProcesow={listaDostepnychProcesow}
+            
               handleChangeCardFragmenty_i_Elementy={
                 handleChangeCardFragmenty_i_Elementy
               }
@@ -279,7 +277,7 @@ async function getClients() {
       {showElementyProcesyInsert && (
         <ProcesElement
           procesyElementow={procesyElementow}
-          listaDostepnychProcesow={listaDostepnychProcesow}
+
 
         />
       )}
@@ -310,7 +308,7 @@ async function getClients() {
         setKlienci={setKlienci}
         klienciWyszukiwarka={klienciWyszukiwarka}
          setKlienciWyszukiwarka={setKlienciWyszukiwarka}
-        getClients={getClients}
+        // getClients={getClients}
         setListaWykonczenia={setKlienci}
         isShowAddClientStage={isShowAddClientStage}
         showAddClientStage={showAddClientStage}

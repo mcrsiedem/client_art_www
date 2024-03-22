@@ -27,7 +27,7 @@ export default function Elementy({
   // setIsEdit,
   procesyElementow,
   setProcesyElementow,
-  listaDostepnychProcesow,
+
   setShowElementyProcesyInsert,
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron,
@@ -52,7 +52,7 @@ export default function Elementy({
         // setIsEdit={setIsEdit}
         procesyElementow={procesyElementow}
         setProcesyElementow={setProcesyElementow}
-        listaDostepnychProcesow={listaDostepnychProcesow}
+  
         setShowElementyProcesyInsert={setShowElementyProcesyInsert}
 
 
@@ -90,7 +90,7 @@ function ElementyTable({
   // setIsEdit,
   procesyElementow,
   setProcesyElementow,
-  listaDostepnychProcesow,
+
   setShowElementyProcesyInsert,
 
 
@@ -154,7 +154,7 @@ function ElementyTable({
                 // setIsEdit={setIsEdit}
                 procesyElementow={procesyElementow}
                 setProcesyElementow={setProcesyElementow}
-                listaDostepnychProcesow={listaDostepnychProcesow}
+         
                 setShowElementyProcesyInsert={setShowElementyProcesyInsert}
             
                 expand={expand}
@@ -188,7 +188,7 @@ function ElementyTable({
               // setIsEdit={setIsEdit}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
-              listaDostepnychProcesow={listaDostepnychProcesow}
+      
               setShowElementyProcesyInsert={setShowElementyProcesyInsert}
   
               elementy={elementy}

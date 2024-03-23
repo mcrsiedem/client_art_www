@@ -2,7 +2,7 @@ import React from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import logoutIcon from 'assets/logout.png'
-import userIcon from 'assets/user_m.svg'
+import userIcon from 'assets/user_m3.svg'
 import { useNavigate } from "react-router-dom";
 
 function Panel({user,setUser}){

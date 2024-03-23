@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 
-/Host.js
+src/Host.js
+/scr/ho.js

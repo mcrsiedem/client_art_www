@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState, forwardRef, useImperativeHandle,
 import Row from "./Row";
 import style from './Print.module.css';
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "../../Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import Dialog from "./Dialog";

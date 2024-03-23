@@ -23,7 +23,7 @@ import {
 import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";
-import { IP } from "../../../utils/Host";
+import { IP } from "../../../Host";
 import Elementy from "./Elementy/Elementy";
 import Introligatornia from "./Introligatornia/Introligatornia";
 import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";

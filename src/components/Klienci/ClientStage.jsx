@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "../../Host";
 import style from "./ClientStage.module.css";
 import iconX from "../../assets/x.svg";
 import iconDelete from "../../assets/trash.svg";

@@ -1,6 +1,6 @@
 import { useEffect,createContext,useState, useCallback } from "react";
 import io from "socket.io-client";
-import { IP_SOCKET } from "../utils/Host";
+import { IP_SOCKET } from "../Host";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 const newSocket = io.connect(IP_SOCKET,{autoConnect: true});

@@ -34,7 +34,7 @@ p{
 
     padding-right: 30px;
     padding-left: 30px;
-    border-bottom: 1px dashed rgb(216, 216, 216);
+    /* border-bottom: 1px dashed rgb(216, 216, 216); */
 }
 
 .kafleContainer{

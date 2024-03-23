@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
-import { IP } from "../../utils/Host2";
+import { IP } from "../../utils/Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
 
 import style from "./Technologie.module.css";

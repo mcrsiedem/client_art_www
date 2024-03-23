@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import axios from "axios";
-import { IP } from "../../utils/Host2";
+import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "../../assets/settings.svg";
 import ModalInsert from "./ModalInsert/ModalInsert";

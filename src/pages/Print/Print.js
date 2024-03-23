@@ -4,7 +4,7 @@ import Jobs from "./Jobs";
 
 import { useState, useRef,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import { IP } from "../../utils/Host2";
+import { IP } from "../../utils/Host";
 
 import axios from "axios";
 

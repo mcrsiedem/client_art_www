@@ -1,7 +1,7 @@
 import React, { useEffect, useState,useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import axios from "axios";
-import { IP } from "../../../utils/Host2";
+import { IP } from "../../../utils/Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import style from "../ModalInsert/Stany.module.css";

@@ -7,9 +7,9 @@ import { IP } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo.svg";
 import { SocketContext } from "../../context/SocketContext";
-var header;
+
 export default function Login( ) {
-  // let socket;
+
   const [user,setUser] = useState(null);
   const [socket,setSocket] = useState(null);
   const [input, setInput] = useState({    login: "",    haslo: "",  });
@@ -18,18 +18,9 @@ export default function Login( ) {
 
   useEffect(() => {
 
-    
-
     return ()=>{
-
     }
    }, [user]);
-
-  useEffect(() => {
-
-    // header = document.getElementById("header");
-    // header.style.display = "none";
-  }, []);
 
    useEffect(() => {
     if(socket === null) return;
@@ -40,8 +31,6 @@ export default function Login( ) {
   }, [socket]);
 
 
-  
-
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.get(IP + "users/" + input.login + "/" + input.haslo).then((res) => {
@@ -49,10 +38,7 @@ export default function Login( ) {
         sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
         sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
         setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
-
-        // header.style.display = "grid";
         navigate("/Panel");
-        // newSocket.connect()
       } else {
         console.log("Błąd");
       }

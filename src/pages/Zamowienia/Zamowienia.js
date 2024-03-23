@@ -61,7 +61,6 @@ function Zamowienia({ user, setUser }) {
   }
 
   useEffect(() => {
-    // document.getElementById("header").style.display = "grid";
     checkToken();
   }, []);
 

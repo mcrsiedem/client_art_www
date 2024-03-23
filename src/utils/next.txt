@@ -30,3 +30,9 @@ Klienci -
 -   yellow add icon od left
 -   searchbar and sorting by column
 -   select row color
+
+
+
+
+
+UWAGA: skasować z sessionStorage id usera - pobierać je ze zweryfikowanego tokenu

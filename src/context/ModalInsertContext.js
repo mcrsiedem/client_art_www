@@ -4,7 +4,7 @@ import { getClients } from "../actions/getClients";
 import { getProcess } from "actions/getProcess";
 
 import axios from "axios";
-import { IP } from "Host2";
+import { IP } from "utils/Host2";
 import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{

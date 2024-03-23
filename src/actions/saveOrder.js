@@ -1,7 +1,7 @@
 import axios from "axios";
 import DecodeToken from "../pages/Login/DecodeToken";
 
-import { IP } from "../Host2";
+import { IP } from "../utils/Host2";
 
 
 

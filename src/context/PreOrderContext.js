@@ -1,6 +1,6 @@
 import { useEffect,createContext,useState, useCallback } from "react";
 import io from "socket.io-client";
-import { IP_SOCKET } from "../Host2";
+import { IP_SOCKET } from "../utils/Host2";
 import { today } from "actions/today";
 import { initialDane } from "utils/initialvalue";
 

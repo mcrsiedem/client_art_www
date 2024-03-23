@@ -12,7 +12,7 @@ import iconUstawienia from "../../../../assets/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
 
-import { IP } from "../../../../Host2";
+import { IP } from "../../../../utils/Host2";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,

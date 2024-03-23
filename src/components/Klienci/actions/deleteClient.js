@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "../../../Host2";
+import { IP } from "../../../utils/Host2";
 
 export   const deleteClient = async (rowID,getClients,setShowDeleteClientPane)=> {
 

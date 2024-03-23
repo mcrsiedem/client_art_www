@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "Host";
+import { IP } from "Host2";
 
 import { useState,useEffect,useRef } from "react";
 

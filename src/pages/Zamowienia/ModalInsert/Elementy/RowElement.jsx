@@ -7,7 +7,7 @@ import {  useState,useContext } from "react";
 import { _typ_elementu} from "../api"
 import axios from "axios";
 
-import { IP } from "../../../../Host";
+import { IP } from "../../../../Host2";
 import { ModalInsertContext } from "context/ModalInsertContext";
 export default function RowElement({
     row,

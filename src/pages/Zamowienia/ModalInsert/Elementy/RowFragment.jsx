@@ -5,7 +5,7 @@ import { _typ_elementu } from "../api";
 import iconCopy from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg";
 import axios from "axios";
-import { IP } from "Host";
+import { IP } from "Host2";
 export default function RowFragment({
   row,
   handleChangeCardFragmenty,

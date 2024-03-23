@@ -24,3 +24,4 @@ yarn-error.log*
 
 
 src/utils/Host.js
+/Host.js

@@ -2,6 +2,7 @@ import React from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import logoutIcon from 'assets/logout.png'
+import userIcon from 'assets/user_m.svg'
 import { useNavigate } from "react-router-dom";
 
 function Panel({user,setUser}){
@@ -20,7 +21,11 @@ function Panel({user,setUser}){
 
         <div className={style.main}>
                 <div className={style.header}>
-                <p>Maciej Romiszewski</p>
+
+                        <div className={style.user}> 
+                                <img className={style.userIcon} src={userIcon} alt="Procesy" />
+                                <p>Maciej Romiszewski</p>
+                        </div>
                 <button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button>
                 </div>
                         <div className={style.kafleContainer} >

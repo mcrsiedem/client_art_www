@@ -3,6 +3,7 @@ import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import logoutIcon from 'assets/logout.png'
 import userIcon from 'assets/user_m3.svg'
+import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 
 function Panel({user,setUser}){
@@ -14,7 +15,7 @@ function Panel({user,setUser}){
 
       const logout = () => {
         navigate("/Login") 
-        sessionStorage.setItem("token", "logout")
+        sessionStorage.removeItem("token")
       }
 
     return(<>
@@ -24,7 +25,7 @@ function Panel({user,setUser}){
 
                         <div className={style.user}> 
                                 <img className={style.userIcon} src={userIcon} alt="Procesy" />
-                                <p>Maciej Romiszewski</p>
+                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                         </div>
                 <button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button>
                 </div>

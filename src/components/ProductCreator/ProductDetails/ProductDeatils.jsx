@@ -1,30 +1,38 @@
+import { useState,useContext,useEffect } from 'react';
 import style from './ProductDeatils.module.css'
+import { AppContext } from 'context/AppContext';
 export default function ProductDeatils(){
+
+    const contextApp = useContext(AppContext);
+
+    const[binding,setBinding] = useState(contextApp.bindingType.map((bind) => ( {...bind, isSelcted: false}))) // dodaje do obiektu pole isSelected
+
     return(
         <div className={style.container}>
 
             <row className={style.bindingContainer}>
-            <CardBinding binding={"PUR"}/>
-            <CardBinding binding={"Hotmelt"}/>
-            <CardBinding binding={"Zeszyt"}/>
-            <CardBinding binding={"Szystko-klejona"}/>
-            <CardBinding binding={"Twarda"}/>
+                {binding
+                .filter(bind1 => bind1.id !==1) // oprawa id 1 n/d
+                .map(((bind) => (
+                    <CardBinding bind={bind} binding={binding} setBinding={setBinding}/>
+                )))}
+
             </row>
 
             <row className={style.bindingContainer}>
-            <CardBinding binding={"Okładka"}/>
-            <CardBinding binding={"Srodek"}/>
+            {/* <CardBinding binding={"Okładka"}/>
+            <CardBinding binding={"Srodek"}/> */}
         
             </row>
 
             <row className={style.bindingContainer}>
-            <CardBinding binding={"210"}/>
-            <CardBinding binding={"297"}/>
+            {/* <CardBinding binding={"210"}/>
+            <CardBinding binding={"297"}/> */}
         
             </row>
 
             <row className={style.bindingContainer}>
-            <button>Dodaj</button>
+            <button className={style.btn}>Dodaj</button>
        
             </row>
            
@@ -35,11 +43,22 @@ export default function ProductDeatils(){
     )
 }
 
-const CardBinding = ({ binding }) => {
+const CardBinding = ({bind,binding,setBinding} ) => {
 
       return <div className={style.cardBinding}>
-                {binding}
-                <input className={style.cardInput} type="checkbox"></input>
+                {bind.nazwa}
+                <input checked={bind.isSelcted} className={style.cardInput} type="checkbox" onChange={()=>{
+                        setBinding(
+                            binding.map((t) => {
+                              if (t.id === bind.id) {
+                                return {...t, isSelcted: true};
+                              } else {
+                                return  {...t, isSelcted: false};
+                              }
+                            })
+                          );
+      
+                }}></input>
       </div>;
     
   };

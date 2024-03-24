@@ -1,16 +1,19 @@
 
 
-.body{
 
+.container{
+   display: flex;
+   flex-direction: column;
+   align-items: start;
+   justify-content: center;
+}
 
-    padding-top: 50px;
-
-    background-color: rgb(143, 143, 143);
-    /* border: 1px solid red; */
-
-    display: grid;
-    min-height: calc(100vh - 5px);
-    grid-template-rows:  1fr 60px;
+.tableContainer{
+   /* padding-top: 50px; */
+  height: calc(100vh - 60px);
+  width: 100vw;
+   /* max-height: 300px;  */
+   overflow-y: scroll;
 
 
 }
@@ -19,11 +22,10 @@
   
 }
 
-.footer{
+/* .footer{
     background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
     background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
-    /* background-color: transparent; */
-    /* position: absolute; */
+
     bottom: 0px;
     height: 60px;
     width: 100vw;
@@ -34,13 +36,10 @@
     align-items: center;
     gap: 20px;
     
- }
+ } */
 
 
- .myButton {
-	/* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
-
-	/* background-color:#f9f9f9; */
+ /* .myButton {
    background-color:transparent;
 	border-radius:10px;
 	border: 1px solid #c4c4c4;
@@ -63,31 +62,30 @@
 .myButton:active {
 	position:relative;
 	top:1px;
-}
+} */
 
-.mod{
+/* .mod{
    position: fixed;
    top: 200px;
    bottom: 200px;
    left: 200px;
    right: 200px;
 
-   /* left: calc(50vw - 150px); */
 
    background-color: rgb(230, 230, 230);
    border: 1px solid black;
    border-radius: 10px;
    display: flex;
    z-index: 2;
- }
+ } */
 
-table{
+/* table{
    color: #252422;
    width: 100%;
    background: #f4f3ef;
 
 
-}
+} */
 th{
    font-size: 1rem;
    position: sticky;
@@ -107,18 +105,11 @@ td{
 }
 
 tr:nth-of-type(2n){
-/* background: #dbdad6; */
+
 background: #ebe9e5;
 }
 
-.tableContainer{
-   padding-top: 50px;
-  height: calc(100vh - 60px);
-   /* max-height: 300px; */
-   overflow-y: scroll;
 
-
-}
 
 tr{
  outline: 1px solid #e7e6e3;

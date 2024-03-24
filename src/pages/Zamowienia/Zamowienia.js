@@ -96,44 +96,38 @@ function Zamowienia({ user, setUser }) {
   }, [openModalInsert,setOpenModalInsert]);
 
   return (
-    <div className={style.body}>
-        <Header  dodaj_clikHandler={ dodaj_clikHandler}/>
-      <div className={style.tableContainer}>
+    <div className={style.container}>
+      <Header dodaj_clikHandler={dodaj_clikHandler} />
+      <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow} />
+
+          {openModalInsert && (
+            <ModalInsert
+              openModalInsert={openModalInsert}
+              setOpenModalInsert={setOpenModalInsert}
+              user={user}
+              setUser={setUser}
+              listaPapierow={listaPapierow}
+              setListPapierow={setListaPapierow}
+              listaGramatur={listaGramatur}
+              setListaGramatur={setListaGramatur}
+              open={open}
+              // setOpen={setOpen}
+              row={row}
+              data={data}
+              setData={setData}
+              refreshZamowienia={refreshZamowienia}
+            />
+          )}
+
       
-      <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow}/>
-      </div>
-
-
-
-
-      {openModalInsert && (
-        <ModalInsert
-          openModalInsert={openModalInsert}
-          setOpenModalInsert={setOpenModalInsert}
-          user={user}
-          setUser={setUser}
-          listaPapierow={listaPapierow}
-          setListPapierow={setListaPapierow}
-          listaGramatur={listaGramatur}
-          setListaGramatur={setListaGramatur}
-          open={open}
-          // setOpen={setOpen}
-          row={row}
-          data={data}
-          setData={setData}
-          refreshZamowienia={refreshZamowienia}
-        />
-      )}
-
-
-
     </div>
   );
 }
 
 function ZamowieniaTable({zamowienia,open2,setRow}){
   const contextModalInsert = useContext(ModalInsertContext);
- return         <table>
+ return     <div className={style.tableContainer}>
+     <table>
   <thead>
     <tr>
       <th className={style.col_id}>#</th>
@@ -170,6 +164,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
     })}
   </tbody>
 </table>
+</div>
 }
 
 

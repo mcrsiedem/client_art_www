@@ -35,34 +35,36 @@ function Header({ dodaj_clikHandler}) {
 
   return (
     <header id="header" className={style.body}>
-      <div className={style.leftHeaderContener}>
-        <img
-          className={style.icon}
-          src={iconAdd}
-          onClick={() => {
-            dodaj_clikHandler()
-            // console.log("z contextu :"+ token.rowSelected)
-          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
-
-          }}
-          alt="React Logo"
-        />
-       
 
 
-      </div>
+          <div className={style.leftHeaderContener}>
+            <img
+              className={style.icon}
+              src={iconAdd}
+              onClick={() => {
+                dodaj_clikHandler();
+                // console.log("z contextu :"+ token.rowSelected)
+                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+              }}
+              alt="React Logo"
+            />
+          </div>
+          
+
       <div className={style.leftHeaderContener}></div>
-      <div className={style.rightHeaderContener}>
-        {/* <input></input> */}
-        <img
-          className={style.icon}
-          src={iconClose}
-          onClick={() => {
-            navigate("/Panel");
-          }}
-          alt="React Logo"
-        />
-      </div>
+        <div className={style.rightHeaderContener}>
+          {/* <input></input> */}
+          <img
+            className={style.icon}
+            src={iconClose}
+            onClick={() => {
+              navigate("/Panel");
+            }}
+            alt="React Logo"
+          />
+        </div>
+
+
     </header>
   );
 }

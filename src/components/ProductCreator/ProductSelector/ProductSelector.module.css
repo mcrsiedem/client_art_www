@@ -1,0 +1,17 @@
+/* .assets{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: grayscale(100%) blur(10px);
+    color: gray;
+    border-radius: 30px;
+    width: 250px;
+    height: 180px;
+    margin: 20px;
+    box-shadow: 5px 5px 15px gray ;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    backdrop-filter: grayscale(100%) blur(10px);
+} */
+

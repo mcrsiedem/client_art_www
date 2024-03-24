@@ -38,7 +38,13 @@ function Header({ dodaj_clikHandler}) {
 
 
           <div className={style.leftHeaderContener}>
-            <img
+          <p>Zamówienia</p>
+          </div>
+          
+
+      <div className={style.centerHeaderContener}>
+        
+        <img
               className={style.icon}
               src={iconAdd}
               onClick={() => {
@@ -48,11 +54,6 @@ function Header({ dodaj_clikHandler}) {
               }}
               alt="React Logo"
             />
-          </div>
-          
-
-      <div className={style.centerHeaderContener}>
-        <p>Zamówienia</p>
       </div>
         <div className={style.rightHeaderContener}>
           {/* <input></input> */}

@@ -228,11 +228,16 @@ const setPakowanie = contextModalInsert.setPakowanie;
 
         {showTemplate && (
           <div>
+
+            
             <ProduktTemplate
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               handleChangeCardProdukty={handleChangeCardProdukty}
             />
+
+
+
           </div>
         )}
       </div>

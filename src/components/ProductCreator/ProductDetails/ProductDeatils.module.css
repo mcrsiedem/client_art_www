@@ -15,3 +15,44 @@
     backdrop-filter: grayscale(100%) blur(10px);
 } */
 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 120px; */
+    /* width: 120px; */
+  
+    gap:50px;
+    
+    
+}
+.bindingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* height: 120px; */
+    /* width: 120px; */
+  
+    gap:50px;
+    
+    
+}
+
+.cardBinding{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 130px;
+    height: 100px;
+    border: 1px solid rgb(181, 181, 181) ;
+    border-radius: 10px;
+    color: gray;
+}
+.cardInput{
+
+    box-shadow: none;
+  
+}

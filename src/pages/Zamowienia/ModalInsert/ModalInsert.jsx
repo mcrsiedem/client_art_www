@@ -40,6 +40,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
 import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
+import ProductCreator from "components/ProductCreator/ProductCreator";
 
 function ModalInsert({
   openModalInsert,
@@ -229,14 +230,14 @@ const setPakowanie = contextModalInsert.setPakowanie;
         {showTemplate && (
           <div>
 
-            
-            <ProduktTemplate
+
+            {/* <ProduktTemplate
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               handleChangeCardProdukty={handleChangeCardProdukty}
-            />
+            /> */}
 
-
+            <ProductCreator/>
 
           </div>
         )}

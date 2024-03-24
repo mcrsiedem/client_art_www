@@ -51,7 +51,9 @@ function Header({ dodaj_clikHandler}) {
           </div>
           
 
-      <div className={style.leftHeaderContener}></div>
+      <div className={style.centerHeaderContener}>
+        <p>Zamówienia</p>
+      </div>
         <div className={style.rightHeaderContener}>
           {/* <input></input> */}
           <img

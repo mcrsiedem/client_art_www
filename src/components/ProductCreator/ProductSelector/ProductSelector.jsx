@@ -4,7 +4,9 @@ import CardType from './components/CardType'
 export default function ProductSelector(){
     return(
         <div className={style.container}>
-            <CardType/>
+            <CardType typ={"gazeta"}/>
+            <CardType typ={"ulotka"}/>
+            <CardType typ={"pudelko"}/>
         </div>
     )
 }

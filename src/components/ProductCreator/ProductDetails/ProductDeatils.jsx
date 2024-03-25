@@ -5,6 +5,7 @@ export default function ProductDeatils(){
 
     const contextApp = useContext(AppContext);
 
+const[showProduct,setShowProduct] = useState(false)
     const[binding,setBinding] = useState(contextApp.bindingType.map((bind) => ( {...bind, isSelcted: false}))) // dodaje do obiektu pole isSelected
     const[products,setProducts] = useState([
       {id : 1,
@@ -12,7 +13,7 @@ export default function ProductDeatils(){
       strony: 4},
       {id : 2,
         nazwa: "Środek",
-        strony: 80},
+        strony: null},
     ]) 
 
     return(
@@ -22,19 +23,20 @@ export default function ProductDeatils(){
                 {binding
                 .filter(bind1 => bind1.id !==1) // oprawa id 1 n/d
                 .map(((bind) => (
-                    <CardBinding bind={bind} binding={binding} setBinding={setBinding}/>
+                    <CardBinding bind={bind} binding={binding} setBinding={setBinding} setShowProduct={setShowProduct}/>
                 )))}
 
             </row>
 
-            <row className={style.bindingContainer}>
+{showProduct &&          <row className={style.bindingContainer}>
             {products
                 .map(((product) => (
-                    <CardProduct product={product} products={products} setProducts={setProducts}/>
+                    <CardProduct product={product} products={products} setProducts={setProducts}/> 
                 )))}
         
             </row>
-
+}
+   
             <row className={style.bindingContainer}>
             {/* <CardBinding binding={"210"}/>
             <CardBinding binding={"297"}/> */}
@@ -53,7 +55,8 @@ export default function ProductDeatils(){
     )
 }
 
-const clikBindingHandler = ({bind,binding,setBinding}) => {
+const clikBindingHandler = ({bind,binding,setBinding,setShowProduct}) => {
+  setShowProduct(true)
   setBinding(
     binding.map((t) => {
       if (t.id === bind.id) {
@@ -66,11 +69,11 @@ const clikBindingHandler = ({bind,binding,setBinding}) => {
 }
 
 
-const CardBinding = ({bind,binding,setBinding} ) => {
+const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
 
       return (
         <div
-          onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+          onClick={() => clikBindingHandler({ bind, binding, setBinding,setShowProduct })}
           className={bind.isSelcted ? style.cardBindingSelected : style.cardBinding }
         >
           {bind.nazwa}
@@ -91,15 +94,18 @@ const CardBinding = ({bind,binding,setBinding} ) => {
     return (
       <div
         // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-        className={style.cardBinding }
+        className={style.cardProduct}
       >
-        {product.nazwa}
-        {/* <input
-          checked={bind.isSelcted}
+         {product.nazwa} 
+        <input
+
           className={style.cardInput}
-          type="checkbox"
-          onChange={() => clikBindingHandler({ bind, binding, setBinding })}
-        ></input> */}
+          defaultValue={product.strony}
+          placeholder='...'
+          type="text"
+          // onChange={() => clikBindingHandler({ bind, binding, setBinding })}
+        ></input> str.
+         {/* <div className={style.strony} >strony</div> */}
       </div>
     );
   

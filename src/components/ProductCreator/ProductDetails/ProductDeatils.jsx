@@ -17,8 +17,8 @@ export default function ProductDeatils(){
     ]) 
 
     const[netto,setNetto] = useState([
-      {x : 210,
-      y:297,
+      {x : null,
+      y:null,
       }
     ]) 
 
@@ -133,7 +133,7 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
 };
 
 const CardNettoX = ({netto,setNetto} ) => {
-
+  
   return (
     <div
       // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
@@ -147,7 +147,7 @@ const CardNettoX = ({netto,setNetto} ) => {
         defaultValue={netto.x}
         placeholder='...'
         type="text"
-        //  onChange={() => changeProductHandler({ product, products, setProducts })}
+         onChange={(e) =>setNetto({ ...netto, x: e.target.value })}
       ></input> mm.
   
     </div>
@@ -170,7 +170,7 @@ const CardNettoY = ({netto,setNetto} ) => {
         defaultValue={netto.y}
         placeholder='...'
         type="text"
-        //  onChange={() => changeProductHandler({ product, products, setProducts })}
+        onChange={(e) =>setNetto({ ...netto, y: e.target.value })}
       ></input> mm.
   
     </div>

@@ -237,7 +237,8 @@ const setPakowanie = contextModalInsert.setPakowanie;
               handleChangeCardProdukty={handleChangeCardProdukty}
             /> */}
 
-            <ProductCreator/>
+            <ProductCreator setShowTemplate={setShowTemplate}
+              setShowParametryZamowienia={setShowParametryZamowienia}/>
 
           </div>
         )}

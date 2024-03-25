@@ -1,7 +1,7 @@
 import { useState,useContext,useEffect } from 'react';
 import style from './ProductDeatils.module.css'
 import { AppContext } from 'context/AppContext';
-export default function ProductDeatils(){
+export default function ProductDeatils({setShowTemplate,setShowParametryZamowienia}){
 
     const contextApp = useContext(AppContext);
 
@@ -52,7 +52,11 @@ export default function ProductDeatils(){
             </row>}
 
             <row className={style.bindingContainer}>
-            <button className={style.btn}>Dodaj</button>
+            <button onClick={()=>{
+
+setShowTemplate(false);
+setShowParametryZamowienia(true);
+            }} className={style.btn}>Dodaj</button>
        
             </row>
            
@@ -178,37 +182,70 @@ const CardNettoY = ({netto,setNetto} ) => {
 
 };
 
-// const CardBinding = ({ binding }) => {
-//   if (binding == "PUR") {
-//     return <div className={style.cardBinding}>
-//         {binding}
-//     </div>;
-//   }
+function AddProduktTemplate_okl_srd(preOrder,produkty,setProdukty,  elementy,
+  setElementy,
+  fragmenty,
+  setFragmenty,
+  oprawa,
+  setOprawa) {
+  
+  // console.log(preOrder.naklad);
+  setProdukty(
+    produkty.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+        format_x: preOrder.format_x,
+        format_y: preOrder.format_y,
+        oprawa: preOrder.oprawa,
+        ilosc_stron: parseInt(preOrder.strony_srd) + parseInt(preOrder.strony_okl)
+      }
+    })
+  );
 
-//   if (binding == "Hotmelt") {
-//     return <div className={style.cardBinding}>
-//         {binding}
-//     </div>;
-//   }
-
-//   if (binding == "Zeszyt") {
-//     return <div className={style.cardBinding}>
-//         {binding}
-//     </div>;
-//   }
-
-//   if (binding == "Szystko-klejona") {
-//     return <div className={style.cardBinding}>
-//         {binding}
-//     </div>;
-//   }
-
-//   if (binding == "Twarda") {
-//     return <div className={style.cardBinding}>
-//         {binding}
-//     </div>;
-//   }
+  setElementy(
+    elementy.map((t) => {
+      if (t.typ == 1) {
+       return  {...t,
+          naklad: preOrder.naklad,
+          ilosc_stron: preOrder.strony_okl,
+          format_x: preOrder.format_x,
+          format_y: preOrder.format_y,
+        }
+      }
+      if (t.typ == 2) {
+        return  {...t,
+           naklad: preOrder.naklad,
+           ilosc_stron: preOrder.strony_srd,
+           format_x: preOrder.format_x,
+           format_y: preOrder.format_y,
+         }
+       }
+    })
+  );
 
 
 
-// };
+
+
+
+  setFragmenty(
+    fragmenty.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+      }
+    })
+  );
+
+  setOprawa(
+    oprawa.map((t) => {
+      return {...t,
+        naklad: preOrder.naklad,
+        oprawa: preOrder.oprawa,
+      
+        bok_oprawy:preOrder.bok_oprawy
+      }
+    })
+  );
+
+
+}

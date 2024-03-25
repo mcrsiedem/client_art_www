@@ -64,7 +64,7 @@
     color: gray;
     font-weight: bold;
     font-size: 1.2rem;
-    outline:2px solid rgb(73, 182, 0)  ;
+    outline:2px solid rgb(107, 158, 224) ;
     background-color: rgb(212, 212, 212);
     /* background-image: linear-gradient(rgb(73, 182, 0) 0%,rgb(94, 202, 22) 50%,rgb(73, 182, 0) 100%); */
 }

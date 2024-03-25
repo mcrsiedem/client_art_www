@@ -1,12 +1,12 @@
 import style from './ProductCreator.module.css'
-import ProductDeatils from './ProductDetails/ProductDeatils'
+import BookMaker from './BookMaker/BookMaker'
 import ProductSelector from './ProductSelector/ProductSelector'
 
 export default function ProductCreator({setShowTemplate,setShowParametryZamowienia}){
     return(
         <div className={style.container}>
             <ProductSelector/>
-            <ProductDeatils setShowTemplate={setShowTemplate}
+            <BookMaker setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}/>
         </div>
     )

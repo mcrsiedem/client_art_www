@@ -147,9 +147,9 @@
     border-radius: 10px;
     color: gray;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     outline:2px solid rgb(107, 158, 224) ;
-    background-color: rgb(212, 212, 212);
+    background-color: rgb(233, 231, 231);
     /* background-color: rgb(234, 241, 249); */
     /* background-image: linear-gradient(rgb(209, 239, 254) 0%,rgb(212, 212, 212) 95%,rgb(212, 212, 212) 100%); */
 }
@@ -157,8 +157,8 @@
 
 .btn{
  
-    height: 30px;
-    width: 100px;
+    height: 40px;
+    width: 120px;
     border-radius: 10px;
     border: none;
     background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);

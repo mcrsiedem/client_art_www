@@ -1,8 +1,8 @@
-import style from "./CardType.module.css";
+import style from "./ProductTypeCard.module.css";
 import iconBook from "assets/book2.svg";
 import iconUlotka from "assets/ulotka.svg";
 import iconPudelko from "assets/box3.svg";
-export default function CardType({ typ }) {
+export default function CardProductType({ typ }) {
 
     if (typ== "gazeta"){
         return (

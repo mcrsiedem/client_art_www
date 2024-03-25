@@ -1,12 +1,12 @@
 
 import style from './ProductSelector.module.css'
-import CardType from './components/CardType'
+import ProductTypeCard from './components/ProductTypeCard'
 export default function ProductSelector(){
     return(
         <div className={style.container}>
-            <CardType typ={"gazeta"}/>
-            <CardType typ={"ulotka"}/>
-            <CardType typ={"pudelko"}/>
+            <ProductTypeCard typ={"gazeta"}/>
+            <ProductTypeCard typ={"ulotka"}/>
+            <ProductTypeCard typ={"pudelko"}/>
         </div>
     )
 }

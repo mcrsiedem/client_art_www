@@ -6,6 +6,14 @@ export default function ProductDeatils(){
     const contextApp = useContext(AppContext);
 
     const[binding,setBinding] = useState(contextApp.bindingType.map((bind) => ( {...bind, isSelcted: false}))) // dodaje do obiektu pole isSelected
+    const[products,setProducts] = useState([
+      {id : 1,
+      nazwa: "Okładka",
+      strony: 4},
+      {id : 2,
+        nazwa: "Środek",
+        strony: 80},
+    ]) 
 
     return(
         <div className={style.container}>
@@ -20,8 +28,10 @@ export default function ProductDeatils(){
             </row>
 
             <row className={style.bindingContainer}>
-            {/* <CardBinding binding={"Okładka"}/>
-            <CardBinding binding={"Srodek"}/> */}
+            {products
+                .map(((product) => (
+                    <CardProduct product={product} products={products} setProducts={setProducts}/>
+                )))}
         
             </row>
 
@@ -74,6 +84,26 @@ const CardBinding = ({bind,binding,setBinding} ) => {
       );
     
   };
+
+
+  const CardProduct = ({product,setProduct} ) => {
+
+    return (
+      <div
+        // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+        className={style.cardBinding }
+      >
+        {product.nazwa}
+        {/* <input
+          checked={bind.isSelcted}
+          className={style.cardInput}
+          type="checkbox"
+          onChange={() => clikBindingHandler({ bind, binding, setBinding })}
+        ></input> */}
+      </div>
+    );
+  
+};
 
 
 // const CardBinding = ({ binding }) => {

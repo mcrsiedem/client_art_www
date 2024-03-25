@@ -43,23 +43,35 @@ export default function ProductDeatils(){
     )
 }
 
+const clikBindingHandler = ({bind,binding,setBinding}) => {
+  setBinding(
+    binding.map((t) => {
+      if (t.id === bind.id) {
+        return {...t, isSelcted: true};
+      } else {
+        return  {...t, isSelcted: false};
+      }
+    })
+  );
+}
+
+
 const CardBinding = ({bind,binding,setBinding} ) => {
 
-      return <div className={style.cardBinding}>
-                {bind.nazwa}
-                <input checked={bind.isSelcted} className={style.cardInput} type="checkbox" onChange={()=>{
-                        setBinding(
-                            binding.map((t) => {
-                              if (t.id === bind.id) {
-                                return {...t, isSelcted: true};
-                              } else {
-                                return  {...t, isSelcted: false};
-                              }
-                            })
-                          );
-      
-                }}></input>
-      </div>;
+      return (
+        <div
+          onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+          className={bind.isSelcted ? style.cardBindingSelected : style.cardBinding }
+        >
+          {bind.nazwa}
+          {/* <input
+            checked={bind.isSelcted}
+            className={style.cardInput}
+            type="checkbox"
+            onChange={() => clikBindingHandler({ bind, binding, setBinding })}
+          ></input> */}
+        </div>
+      );
     
   };
 

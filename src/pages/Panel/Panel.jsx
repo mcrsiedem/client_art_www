@@ -25,7 +25,7 @@ function Panel({user,setUser}){
 
                         <div className={style.user}> 
                                 <img className={style.userIcon} src={userIcon} alt="Procesy" />
-                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} </p>
                         </div>
                 <button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button>
                 </div>

@@ -67,6 +67,18 @@ const clikBindingHandler = ({bind,binding,setBinding,setShowProduct}) => {
     })
   );
 }
+const changeProductHandler = ({product,products,setProducts}) => {
+
+  setProducts(
+    products.map((p) => {
+      if (p.id === product.id) {
+        return product;
+      } else {
+        return  p;
+      }
+    })
+  );
+}
 
 
 const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
@@ -89,7 +101,7 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
   };
 
 
-  const CardProduct = ({product,setProduct} ) => {
+  const CardProduct = ({product,products,setProducts} ) => {
 
     return (
       <div
@@ -103,9 +115,9 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
           defaultValue={product.strony}
           placeholder='...'
           type="text"
-          // onChange={() => clikBindingHandler({ bind, binding, setBinding })}
+           onChange={() => changeProductHandler({ product, products, setProducts })}
         ></input> str.
-         {/* <div className={style.strony} >strony</div> */}
+    
       </div>
     );
   

@@ -6,6 +6,8 @@ export default function ProductDeatils({setShowTemplate,setShowParametryZamowien
     const contextApp = useContext(AppContext);
 
     const[showProduct,setShowProduct] = useState(false)
+    const[naklad,setNaklad] = useState(null)
+    const[bokOprawy,setBokOprawy] = useState(null)
     const[binding,setBinding] = useState(contextApp.bindingType.map((bind) => ( {...bind, isSelcted: false}))) // dodaje do obiektu pole isSelected
     const[products,setProducts] = useState([
       {id : 1,
@@ -25,6 +27,13 @@ export default function ProductDeatils({setShowTemplate,setShowParametryZamowien
     return(
         <div className={style.container}>
 
+
+
+
+
+
+
+
             <row className={style.bindingContainer}>
                 {binding
                 .filter(bind1 => bind1.id !==1) // oprawa id 1 n/d
@@ -33,6 +42,14 @@ export default function ProductDeatils({setShowTemplate,setShowParametryZamowien
                 )))}
 
             </row>
+
+            {showProduct &&    <row className={style.bindingContainer}>
+      
+
+    <Naklad naklad={naklad} setNaklad={setNaklad}/>
+
+        
+            </row>}
 
 {showProduct &&          <row className={style.bindingContainer}>
             {products
@@ -50,6 +67,16 @@ export default function ProductDeatils({setShowTemplate,setShowParametryZamowien
   <CardNettoY netto={netto} setNetto={setNetto}/>
         
             </row>}
+
+            {/* {showProduct &&    <row className={style.bindingContainer}>
+      
+
+  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
+  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
+
+
+        
+            </row>} */}
 
             <row className={style.bindingContainer}>
             <button onClick={()=>{
@@ -176,6 +203,52 @@ const CardNettoY = ({netto,setNetto} ) => {
         type="text"
         onChange={(e) =>setNetto({ ...netto, y: e.target.value })}
       ></input> mm.
+  
+    </div>
+  );
+
+};
+
+const BokOprawy = ({bokOprawy,setBokOprawy} ) => {
+
+  return (
+    <div
+      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+      className={style.cardNetto}
+    >
+       {/* {product.nazwa}  */}
+       Bok oprawy
+      <input
+
+        className={style.cardInputNetto}
+        defaultValue={bokOprawy}
+        placeholder='...'
+        type="text"
+        onChange={(e) =>setBokOprawy( e.target.value )}
+      ></input> mm.
+  
+    </div>
+  );
+
+};
+
+const Naklad = ({naklad,setNaklad} ) => {
+
+  return (
+    <div
+      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+      className={style.cardNaklad}
+    >
+       {/* {product.nazwa}  */}
+       Nakład
+      <input
+
+        className={style.cardInputNaklad}
+        defaultValue={naklad}
+        placeholder='...'
+        type="text"
+        onChange={(e) =>setNaklad( e.target.value )}
+      ></input> szt.
   
     </div>
   );

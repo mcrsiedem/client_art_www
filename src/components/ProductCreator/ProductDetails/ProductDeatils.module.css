@@ -68,6 +68,20 @@
   
     /* background-color: red; */
 }
+.cardNaklad{ 
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 550px;
+    height: 50px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+  
+    /* background-color: red; */
+}
 
 
 .strony{
@@ -89,6 +103,18 @@
 
     box-shadow: none;
     width: 100px;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(107, 158, 224);
+    background-color: transparent;
+    /* background-color: green; */
+  
+}
+.cardInputNaklad{
+
+    box-shadow: none;
+    width: 170px;
     height: 2.5rem;
     text-align: center;
     font-size: 2rem;

@@ -5,7 +5,7 @@ export default function ProductDeatils(){
 
     const contextApp = useContext(AppContext);
 
-const[showProduct,setShowProduct] = useState(false)
+    const[showProduct,setShowProduct] = useState(false)
     const[binding,setBinding] = useState(contextApp.bindingType.map((bind) => ( {...bind, isSelcted: false}))) // dodaje do obiektu pole isSelected
     const[products,setProducts] = useState([
       {id : 1,
@@ -14,6 +14,12 @@ const[showProduct,setShowProduct] = useState(false)
       {id : 2,
         nazwa: "Środek",
         strony: null},
+    ]) 
+
+    const[netto,setNetto] = useState([
+      {x : 210,
+      y:297,
+      }
     ]) 
 
     return(
@@ -37,11 +43,13 @@ const[showProduct,setShowProduct] = useState(false)
             </row>
 }
    
-            <row className={style.bindingContainer}>
-            {/* <CardBinding binding={"210"}/>
-            <CardBinding binding={"297"}/> */}
+{showProduct &&    <row className={style.bindingContainer}>
+      
+
+  <CardNettoX netto={netto} setNetto={setNetto}/>
+  <CardNettoY netto={netto} setNetto={setNetto}/>
         
-            </row>
+            </row>}
 
             <row className={style.bindingContainer}>
             <button className={style.btn}>Dodaj</button>
@@ -67,18 +75,7 @@ const clikBindingHandler = ({bind,binding,setBinding,setShowProduct}) => {
     })
   );
 }
-const changeProductHandler = ({product,products,setProducts}) => {
 
-  setProducts(
-    products.map((p) => {
-      if (p.id === product.id) {
-        return product;
-      } else {
-        return  p;
-      }
-    })
-  );
-}
 
 
 const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
@@ -103,6 +100,18 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
 
   const CardProduct = ({product,products,setProducts} ) => {
 
+    const changeProductHandler = (product) => {
+
+      setProducts(
+        products.map((p) => {
+          if (p.id === product.id) {
+            return product;
+          } else {
+            return  p;
+          }
+        })
+      );
+    }
     return (
       <div
         // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
@@ -115,7 +124,7 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
           defaultValue={product.strony}
           placeholder='...'
           type="text"
-           onChange={() => changeProductHandler({ product, products, setProducts })}
+           onChange={(e) => changeProductHandler({ ...product, strony: e.target.value })}
         ></input> str.
     
       </div>
@@ -123,6 +132,51 @@ const CardBinding = ({bind,binding,setBinding,setShowProduct} ) => {
   
 };
 
+const CardNettoX = ({netto,setNetto} ) => {
+
+  return (
+    <div
+      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+      className={style.cardNetto}
+    >
+       {/* {product.nazwa}  */}
+       Format X
+      <input
+
+        className={style.cardInputNetto}
+        defaultValue={netto.x}
+        placeholder='...'
+        type="text"
+        //  onChange={() => changeProductHandler({ product, products, setProducts })}
+      ></input> mm.
+  
+    </div>
+  );
+
+};
+
+const CardNettoY = ({netto,setNetto} ) => {
+
+  return (
+    <div
+      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
+      className={style.cardNetto}
+    >
+       {/* {product.nazwa}  */}
+       Format Y
+      <input
+
+        className={style.cardInputNetto}
+        defaultValue={netto.y}
+        placeholder='...'
+        type="text"
+        //  onChange={() => changeProductHandler({ product, products, setProducts })}
+      ></input> mm.
+  
+    </div>
+  );
+
+};
 
 // const CardBinding = ({ binding }) => {
 //   if (binding == "PUR") {

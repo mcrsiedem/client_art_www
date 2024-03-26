@@ -29,8 +29,22 @@
 .container:hover{
     border-bottom: 1px solid rgb(181, 181, 181) ;
 }
+
+.containerSelected{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    width: 120px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
+}
 .icon{
     width: 60px;
+}
+.iconSelected{
+    width: 60px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
 }
 .title{
     font-size: 1rem;

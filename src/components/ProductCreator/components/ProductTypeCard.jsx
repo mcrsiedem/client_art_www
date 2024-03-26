@@ -2,15 +2,18 @@ import style from "./ProductTypeCard.module.css";
 import iconBook from "assets/book2.svg";
 import iconUlotka from "assets/ulotka.svg";
 import iconPudelko from "assets/box3.svg";
-export default function CardProductType({ typ,setShow }) {
+export default function CardProductType({ typ,show,setShow }) {
+
+
 
     if (typ== "gazeta"){
         return (
 
-            <div className={style.container}>
+            <div className={(show == 'BooKMaker') ? style.containerSelected : style.container}>
               <img
                 onClick={() => {
                   setShow('BooKMaker')
+
                 }}
                 className={style.icon}
                 // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
@@ -24,7 +27,7 @@ export default function CardProductType({ typ,setShow }) {
     if (typ== "ulotka"){
         return (
 
-            <div className={style.container}>
+          <div className={(show == 'Sheet') ? style.containerSelected : style.container}>
               <img
                 onClick={() => {
                   setShow('Sheet')
@@ -41,12 +44,12 @@ export default function CardProductType({ typ,setShow }) {
     if (typ== "pudelko"){
         return (
 
-            <div className={style.container}>
+          <div className={(show == 'Box') ? style.containerSelected : style.container}>
               <img
                onClick={() => {
                 setShow('Box')
               }}
-                className={style.icon}
+              className={style.icon}
                 // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
                 src={iconPudelko}
               />

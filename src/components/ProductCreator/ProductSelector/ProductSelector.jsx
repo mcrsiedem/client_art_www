@@ -1,12 +1,14 @@
 
 import style from './ProductSelector.module.css'
 import ProductTypeCard from '../components/ProductTypeCard'
-export default function ProductSelector({setShow}){
+import { useState } from 'react'
+export default function ProductSelector({show,setShow}){
+
     return(
         <div className={style.container}>
-            <ProductTypeCard typ={"gazeta"} setShow={setShow}/>
-            <ProductTypeCard typ={"ulotka"} setShow={setShow}/>
-            <ProductTypeCard typ={"pudelko"} setShow={setShow}/>
+            <ProductTypeCard typ={"gazeta"} show={show} setShow={setShow} />
+            <ProductTypeCard typ={"ulotka"} show={show} setShow={setShow} />
+            <ProductTypeCard typ={"pudelko"} show={show} setShow={setShow}/>
         </div>
     )
 }

@@ -10,7 +10,7 @@ export default function ProductCreator({setShowTemplate,setShowParametryZamowien
     const [show, setShow] = useState(null)
     return(
         <div className={style.container}>
-            <ProductSelector setShow={setShow}/>
+            <ProductSelector show={show }setShow={setShow}/>
 
             {(show == 'BooKMaker') && <BookMaker setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia}/> }
             {(show == 'Sheet') && <SheetMaker setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia}/> }

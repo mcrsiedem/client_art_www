@@ -9,17 +9,17 @@ export default function BookMaker({
 
   const [showProduct, setShowProduct] = useState(false);
   const [naklad, setNaklad] = useState(null);
-  const [bokOprawy, setBokOprawy] = useState(null);
   const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
   const [products, setProducts] = useState([
     { id: 1, nazwa: "Okładka", strony: 4 },
     { id: 2, nazwa: "Środek", strony: null },
   ]);
   const [netto, setNetto] = useState([{ x: null, y: null }]);
+ 
 
   return (
     <div className={style.container}>
-      <row className={style.bindingContainer}>
+      <div className={style.bindingContainer}>
         {binding
           .filter((bind1) => bind1.id !== 1) // oprawa id 1 n/d
           .map((bind) => (
@@ -30,16 +30,14 @@ export default function BookMaker({
               setShowProduct={setShowProduct}
             />
           ))}
-      </row>
+      </div>
 
       {showProduct && (
-        <row className={style.bindingContainer}>
           <Naklad naklad={naklad} setNaklad={setNaklad} />
-        </row>
       )}
 
       {showProduct && (
-        <row className={style.bindingContainer}>
+        <div className={style.bindingContainer}>
           {products.map((product) => (
             <CardProduct
               product={product}
@@ -47,14 +45,14 @@ export default function BookMaker({
               setProducts={setProducts}
             />
           ))}
-        </row>
+        </div>
       )}
 
       {showProduct && (
-        <row className={style.bindingContainer}>
+        <div className={style.bindingContainer}>
           <CardNettoX netto={netto} setNetto={setNetto} />
           <CardNettoY netto={netto} setNetto={setNetto} />
-        </row>
+        </div>
       )}
 
       {/* {showProduct &&    <row className={style.bindingContainer}>
@@ -67,7 +65,7 @@ export default function BookMaker({
         
             </row>} */}
 
-      <row className={style.bindingContainer}>
+      <div className={style.bindingContainer}>
         <button
           onClick={() => {
             setShowTemplate(false);
@@ -77,7 +75,7 @@ export default function BookMaker({
         >
           Dodaj
         </button>
-      </row>
+      </div>
     </div>
   );
 }
@@ -208,6 +206,7 @@ const BokOprawy = ({ bokOprawy, setBokOprawy }) => {
 
 const Naklad = ({ naklad, setNaklad }) => {
   return (
+    <div className={style.bindingContainer}>
     <div
       // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
       className={style.cardNaklad}
@@ -222,6 +221,7 @@ const Naklad = ({ naklad, setNaklad }) => {
         onChange={(e) => setNaklad(e.target.value)}
       ></input>{" "}
       szt.
+    </div>
     </div>
   );
 };

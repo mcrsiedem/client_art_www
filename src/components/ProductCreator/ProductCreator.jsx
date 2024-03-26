@@ -6,8 +6,7 @@ export default function ProductCreator({setShowTemplate,setShowParametryZamowien
     return(
         <div className={style.container}>
             <ProductSelector/>
-            <BookMaker setShowTemplate={setShowTemplate}
-              setShowParametryZamowienia={setShowParametryZamowienia}/>
+            <BookMaker setShowTemplate={setShowTemplate} setShowParametryZamowienia={setShowParametryZamowienia}/>
         </div>
     )
 }

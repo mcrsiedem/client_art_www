@@ -2,16 +2,16 @@ import style from "./ProductTypeCard.module.css";
 import iconBook from "assets/book2.svg";
 import iconUlotka from "assets/ulotka.svg";
 import iconPudelko from "assets/box3.svg";
-export default function CardProductType({ typ }) {
+export default function CardProductType({ typ,setShow }) {
 
     if (typ== "gazeta"){
         return (
 
             <div className={style.container}>
               <img
-                // onClick={() => {
-        
-                // }}
+                onClick={() => {
+                  setShow('BooKMaker')
+                }}
                 className={style.icon}
                 // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
                 src={iconBook}
@@ -26,9 +26,9 @@ export default function CardProductType({ typ }) {
 
             <div className={style.container}>
               <img
-                // onClick={() => {
-        
-                // }}
+                onClick={() => {
+                  setShow('Sheet')
+                }}
                 className={style.icon}
                 // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
                 src={iconUlotka}

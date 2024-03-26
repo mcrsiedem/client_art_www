@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import style from "./BookMaker.module.css";
+import style from "./SheetMaker.module.css";
 import { AppContext } from "context/AppContext";
-export default function BookMaker({
+export default function SheetMaker({
   setShowTemplate,
   setShowParametryZamowienia,
 }) {
@@ -19,64 +19,9 @@ export default function BookMaker({
 
   return (
     <div className={style.container}>
-      <div className={style.bindingContainer}>
-        {binding
-          .filter((bind1) => bind1.id !== 1) // oprawa id 1 n/d
-          .map((bind) => (
-            <CardBinding
-              bind={bind}
-              binding={binding}
-              setBinding={setBinding}
-              setShowElement={setShowElement}
-            />
-          ))}
-      </div>
-
-      {showElement && (
-          <Naklad naklad={naklad} setNaklad={setNaklad} />
-      )}
-
-      {showElement && (
-        <div className={style.bindingContainer}>
-          {elements.map((element) => (
-            <CardProduct
-            element={element}
-            elements={elements}
-              setElements={setElements}
-            />
-          ))}
-        </div>
-      )}
-
-      {showElement && (
-        <div className={style.bindingContainer}>
-          <CardNettoX netto={netto} setNetto={setNetto} />
-          <CardNettoY netto={netto} setNetto={setNetto} />
-        </div>
-      )}
-
-      {/* {showProduct &&    <row className={style.bindingContainer}>
-      
-
-  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
-  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
+      <div>Sheet</div>
 
 
-        
-            </row>} */}
-    {showElement && (
-      <div className={style.bindingContainer}>
-        <button
-          onClick={() => {
-            setShowTemplate(false);
-            setShowParametryZamowienia(true);
-          }}
-          className={style.btn}
-        >
-          Dodaj
-        </button>
-      </div>
-        )}
 
     </div>
   );

@@ -6,7 +6,7 @@ export default function ProductSelector({setShow}){
         <div className={style.container}>
             <ProductTypeCard typ={"gazeta"} setShow={setShow}/>
             <ProductTypeCard typ={"ulotka"} setShow={setShow}/>
-            <ProductTypeCard typ={"pudelko"}/>
+            <ProductTypeCard typ={"pudelko"} setShow={setShow}/>
         </div>
     )
 }

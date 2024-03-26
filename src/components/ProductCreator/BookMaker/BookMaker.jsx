@@ -55,15 +55,6 @@ export default function BookMaker({
         </div>
       )}
 
-      {/* {showProduct &&    <row className={style.bindingContainer}>
-      
-
-  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
-  <BokOprawy bokOprawy={bokOprawy} setBokOprawy={setBokOprawy}/>
-
-
-        
-            </row>} */}
     {showElement && (
       <div className={style.bindingContainer}>
         <button

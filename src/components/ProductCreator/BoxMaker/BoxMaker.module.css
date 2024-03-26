@@ -1,0 +1,179 @@
+/* .assets{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: grayscale(100%) blur(10px);
+    color: gray;
+    border-radius: 30px;
+    width: 250px;
+    height: 180px;
+    margin: 20px;
+    box-shadow: 5px 5px 15px gray ;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    backdrop-filter: grayscale(100%) blur(10px);
+} */
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 120px; */
+    /* width: 120px; */
+  
+    gap:30px;
+    
+    
+}
+.bindingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* height: 120px; */
+    /* width: 120px; */
+  
+    gap:50px;
+    
+    
+}
+.cardProduct{ 
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 250px;
+    height: 50px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+  
+    /* background-color: red; */
+}
+
+.cardNetto{ 
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 250px;
+    height: 50px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+  
+    /* background-color: red; */
+}
+.cardNaklad{ 
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 550px;
+    height: 50px;
+    border-bottom: 1px solid rgb(181, 181, 181) ;
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+  
+    /* background-color: red; */
+}
+
+
+.strony{
+    font-size: 0.8rem;
+}
+.cardInput{
+
+    box-shadow: none;
+    width: 100px;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(107, 158, 224);
+    background-color: transparent;
+    /* background-color: green; */
+  
+}
+.cardInputNetto{
+
+    box-shadow: none;
+    width: 100px;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(107, 158, 224);
+    background-color: transparent;
+    /* background-color: green; */
+  
+}
+.cardInputNaklad{
+
+    box-shadow: none;
+    width: 170px;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(107, 158, 224);
+    background-color: transparent;
+    /* background-color: green; */
+  
+}
+
+.cardBinding{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 120px;
+    height: 90px;
+    border: 1px solid rgb(181, 181, 181) ;
+    border-radius: 10px;
+    color: gray;
+    font-size: 1.2rem;
+}
+.cardBindingSelected{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 120px;
+    height: 90px;
+    border: 1px solid rgb(181, 181, 181) ;
+    border-radius: 10px;
+    color: gray;
+    font-weight: bold;
+    font-size: 1.1rem;
+    outline:2px solid rgb(107, 158, 224) ;
+    background-color: rgb(233, 231, 231);
+    /* background-color: rgb(234, 241, 249); */
+    /* background-image: linear-gradient(rgb(209, 239, 254) 0%,rgb(212, 212, 212) 95%,rgb(212, 212, 212) 100%); */
+}
+
+
+.btn{
+ 
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    color: #fff;
+    margin: 5px;
+  }
+  
+  .btn:hover{
+   
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    color: #fff;
+    outline: whitesmoke 1px solid;
+    
+  }

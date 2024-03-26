@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import style from "./SheetMaker.module.css";
+import style from "./BoxMaker.module.css";
 import { AppContext } from "context/AppContext";
-export default function SheetMaker({
+export default function BoxMaker({
   setShowTemplate,
   setShowParametryZamowienia,
 }) {
@@ -19,28 +19,6 @@ export default function SheetMaker({
 
   return (
     <div className={style.container}>
-        
-        <Naklad naklad={naklad} setNaklad={setNaklad} />
-        <div className={style.bindingContainer}>
-          <CardNettoX netto={netto} setNetto={setNetto} />
-          <CardNettoY netto={netto} setNetto={setNetto} />
-        </div>
-
-
-
-      <div className={style.bindingContainer}>
-        <button
-          onClick={() => {
-            setShowTemplate(false);
-            setShowParametryZamowienia(true);
-          }}
-          className={style.btn}
-        >
-          Dodaj
-        </button>
-      </div>
-
-
 
 
     </div>
@@ -121,7 +99,7 @@ const CardNettoX = ({ netto, setNetto }) => {
       Szerokość
       <input
         className={style.cardInputNetto}
-        defaultValue={210}
+        defaultValue={netto.x}
         placeholder="..."
         type="text"
         onChange={(e) => setNetto({ ...netto, x: e.target.value })}
@@ -141,9 +119,7 @@ const CardNettoY = ({ netto, setNetto }) => {
       Wysokość
       <input
         className={style.cardInputNetto}
-        defaultValue={297}
-        // defaultValue={netto.y}
-
+        defaultValue={netto.y}
         placeholder="..."
         type="text"
         onChange={(e) => setNetto({ ...netto, y: e.target.value })}

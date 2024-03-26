@@ -43,9 +43,9 @@ export default function CardProductType({ typ,setShow }) {
 
             <div className={style.container}>
               <img
-                // onClick={() => {
-        
-                // }}
+               onClick={() => {
+                setShow('Box')
+              }}
                 className={style.icon}
                 // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
                 src={iconPudelko}

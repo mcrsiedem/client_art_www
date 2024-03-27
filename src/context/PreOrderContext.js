@@ -13,13 +13,13 @@ export const PreOrderContextProvider = ({children})=>{
 
       const [preOrder, setPreOrder] = useState({
         typ: 1,
-        oprawa: 1,
-        naklad: "1000",
-        strony_okl: "4",
-        strony_srd: "80",
-        format_x: "210",
-        format_y: "297",
-        bok_oprawy: "297"
+        oprawa: null,
+        naklad: null,
+        strony_okl: 4,
+        strony_srd: null,
+        szerokosc: null,
+        wysokosc: null,
+        bok_oprawy: null
     
       });
 

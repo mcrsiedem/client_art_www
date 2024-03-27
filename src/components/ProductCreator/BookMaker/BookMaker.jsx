@@ -4,20 +4,18 @@ import { AppContext } from "context/AppContext";
 import { AddProductFromCreator } from "../actions/AddProductFromCreator";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import CardBinding from "./CardBinding";
-import CardProduct from "./CardProduct";
+
+import { PreOrderContext } from "context/PreOrderContext";
 export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
 }) {
   const contextApp = useContext(AppContext);
-
   const [showElement, setShowElement] = useState(false);
-  const [naklad, setNaklad] = useState(null);
+
+
   const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
-  const [elements, setElements] = useState([
-    { id: 1, nazwa: "Okładka", strony: 4 },
-    { id: 2, nazwa: "Środek", strony: null },
-  ]);
+  
   const [netto, setNetto] = useState([{ x: null, y: null }]);
   const mc = useContext(ModalInsertContext)
 
@@ -39,18 +37,17 @@ export default function BookMaker({
       {showElement && (
         <>
      
-          <Naklad  naklad={naklad} setNaklad={setNaklad} />
+          <Naklad />
 
           <div className={style.bindingContainer}>
-            {elements.map((element) => (
-              <CardProduct element={element} elements={elements} setElements={setElements} />
-            ))}
+            <Okladka/>
+            <Srodek/>
           </div>
     
 
           <div className={style.bindingContainer}>
-            <CardNettoX netto={netto} setNetto={setNetto} />
-            <CardNettoY netto={netto} setNetto={setNetto} />
+            <Szerokosc  />
+            <Wysokosc  />
           </div>
    
           <div className={style.bindingContainer}>
@@ -76,129 +73,99 @@ export default function BookMaker({
 
 
 
-const CardNettoX = ({ netto, setNetto }) => {
+const Szerokosc = () => {
+  const context = useContext(PreOrderContext)
   return (
-    <div
-      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-      className={style.cardNetto}
-    >
+    <div className={style.cardNetto} >
  
       Szerokość
       <input
         className={style.cardInputNetto}
-        defaultValue={netto.x}
+        defaultValue={context.preOrder.szerokosc}
         placeholder="..."
         type="text"
-        onChange={(e) => setNetto({ ...netto, x: e.target.value })}
-      ></input>{" "}
+        onChange={(e) => { context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) } }
+  
+      ></input>
       mm.
     </div>
   );
 };
 
-const CardNettoY = ({ netto, setNetto }) => {
+const Wysokosc = () => {
+  const context = useContext(PreOrderContext)
   return (
-    <div
-      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-      className={style.cardNetto}
-    >
-
-      Wysokość
+    <div className={style.cardNetto} >
+    Wysokość
       <input
         className={style.cardInputNetto}
-        defaultValue={netto.y}
+        defaultValue={context.preOrder.wysokosc}
         placeholder="..."
         type="text"
-        onChange={(e) => setNetto({ ...netto, y: e.target.value })}
+        onChange={(e) => { context.setPreOrder({...context.preOrder, wysokosc: e.target.value}) } }
       ></input>{" "}
       mm.
     </div>
   );
 };
 
-const BokOprawy = ({ bokOprawy, setBokOprawy }) => {
-  return (
-    <div
-      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-      className={style.cardNetto}
-    >
-      {/* {product.nazwa}  */}
-      Bok oprawy
-      <input
-        className={style.cardInputNetto}
-        defaultValue={bokOprawy}
-        placeholder="..."
-        type="text"
-        onChange={(e) => setBokOprawy(e.target.value)}
-      ></input>{" "}
-      mm.
-    </div>
-  );
-};
-
-const Naklad = ({ naklad, setNaklad }) => {
-  const mc = useContext(ModalInsertContext)
+const Naklad = () => {
+  const context = useContext(PreOrderContext)
   return (
     <div className={style.bindingContainer}>
-    <div
-      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-      className={style.cardNaklad}
-    >
-      {/* {product.nazwa}  */}
+      <div className={style.cardNaklad} >
+
       Nakład
       <input
         className={style.cardInputNaklad}
-        defaultValue={naklad}
+        defaultValue={context.preOrder.naklad}
         placeholder="..."
         type="text"
-        onChange={(e) => {
-          mc.setProdukty([{...mc.produkty, naklad : e.target.value}])
-          mc.setElementy(mc.elementy.map((t) => {
-            if (t.typ == 1) {
-              return {
-                ...t,
-                naklad: e.target.value
-              };
-            }
-            if (t.typ == 2) {
-              return {
-                ...t,
-                naklad: e.target.value
-              };
-            }
-          }))
-
-          mc.setFragmenty(mc.fragmenty.map((t) => {
-            if (t.typ == 1) {
-              return {
-                ...t,
-                naklad: e.target.value
-              };
-            }
-            if (t.typ == 2) {
-              return {
-                ...t,
-                naklad: e.target.value
-              };
-            }
-          }))
-
-          mc.setOprawa(mc.oprawa.map((t) => {
-   
-              return {
-                ...t,
-                naklad: e.target.value
-              };
-            
-
-          }))
-
-          setNaklad(e.target.value)}
-        }
-      ></input>{" "}
+        onChange={(e) => { context.setPreOrder({...context.preOrder, naklad: e.target.value}) } }
+      >  
+      </input>
       szt.
     </div>
     </div>
   );
 };
 
+const Okladka = () => {
+  const context = useContext(PreOrderContext)
+  return (
+    <div
+
+    className={style.cardProduct}
+  >
+  Okładka
+    <input
+      className={style.cardInput}
+      defaultValue={context.preOrder.strony_okl}
+      placeholder="..."
+      type="text"
+      onChange={(e) => { context.setPreOrder({...context.preOrder, strony_okl: e.target.value}) } }
+    ></input>{" "}
+    str.
+  </div>
+  );
+};
+
+const Srodek = () => {
+  const context = useContext(PreOrderContext)
+  return (
+    <div
+
+    className={style.cardProduct}
+  >
+  Środek
+    <input
+      className={style.cardInput}
+      defaultValue={context.preOrder.strony_srd}
+      placeholder="..."
+      type="text"
+      onChange={(e) => { context.setPreOrder({...context.preOrder, strony_srd: e.target.value}) } }
+    ></input>{" "}
+    str.
+  </div>
+  );
+};

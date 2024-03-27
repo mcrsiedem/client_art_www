@@ -20,7 +20,7 @@ export default function BoxMaker({
   return (
     <div className={style.container}>
 
-
+      <p> puste pudełko...</p>
     </div>
   );
 }

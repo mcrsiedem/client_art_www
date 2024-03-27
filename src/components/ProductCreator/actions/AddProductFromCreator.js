@@ -10,6 +10,10 @@ export function AddProductFromCreator(
     setFragmenty,
     oprawa,
     setOprawa
+
+
+
+    
   ) {
     // console.log(preOrder.naklad);
     setProdukty(

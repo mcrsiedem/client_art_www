@@ -12,13 +12,7 @@ export default function BookMaker({
 }) {
   const contextApp = useContext(AppContext);
   const [showElement, setShowElement] = useState(false);
-
-
   const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
-  
-  const [netto, setNetto] = useState([{ x: null, y: null }]);
-  const mc = useContext(ModalInsertContext)
-
   return (
     <div className={style.container}>
       <div className={style.bindingContainer}>

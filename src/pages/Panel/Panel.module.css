@@ -90,8 +90,16 @@ p{
     
     justify-content: center;
     align-items: center;
-    gap: 15px
+    gap: 15px;
+
+    
   }
+
+
+
+
 .userIcon{
     width: 40px;
+
 }
+

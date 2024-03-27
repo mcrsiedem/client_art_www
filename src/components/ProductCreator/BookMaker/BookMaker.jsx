@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import style from "./BookMaker.module.css";
 import { AppContext } from "context/AppContext";
+import { AddProductFromCreator } from "../actions/AddProductFromCreator";
 export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
@@ -16,6 +17,17 @@ export default function BookMaker({
   ]);
   const [netto, setNetto] = useState([{ x: null, y: null }]);
  
+  const [preOrder, setPreOrder] = useState({
+    typ: 1,
+    oprawa: 1,
+    naklad: "1000",
+    strony_okl: "4",
+    strony_srd: "80",
+    format_x: "210",
+    format_y: "297",
+    bok_oprawy: "297"
+
+  });
 
   return (
     <div className={style.container}>
@@ -33,7 +45,7 @@ export default function BookMaker({
       </div>
 
       {showElement && (
-          <Naklad naklad={naklad} setNaklad={setNaklad} />
+          <Naklad preOrder={preOrder} setPreOrder={setPreOrder} naklad={naklad} setNaklad={setNaklad} />
       )}
 
       {showElement && (
@@ -61,6 +73,7 @@ export default function BookMaker({
           onClick={() => {
             setShowTemplate(false);
             setShowParametryZamowienia(true);
+            AddProductFromCreator();
           }}
           className={style.btn}
         >
@@ -219,70 +232,3 @@ const Naklad = ({ naklad, setNaklad }) => {
   );
 };
 
-function AddProduktTemplate_okl_srd(
-  preOrder,
-  produkty,
-  setProdukty,
-  elementy,
-  setElementy,
-  fragmenty,
-  setFragmenty,
-  oprawa,
-  setOprawa
-) {
-  // console.log(preOrder.naklad);
-  setProdukty(
-    produkty.map((t) => {
-      return {
-        ...t,
-        naklad: preOrder.naklad,
-        format_x: preOrder.format_x,
-        format_y: preOrder.format_y,
-        oprawa: preOrder.oprawa,
-        ilosc_stron:
-          parseInt(preOrder.strony_srd) + parseInt(preOrder.strony_okl),
-      };
-    })
-  );
-
-  setElementy(
-    elementy.map((t) => {
-      if (t.typ == 1) {
-        return {
-          ...t,
-          naklad: preOrder.naklad,
-          ilosc_stron: preOrder.strony_okl,
-          format_x: preOrder.format_x,
-          format_y: preOrder.format_y,
-        };
-      }
-      if (t.typ == 2) {
-        return {
-          ...t,
-          naklad: preOrder.naklad,
-          ilosc_stron: preOrder.strony_srd,
-          format_x: preOrder.format_x,
-          format_y: preOrder.format_y,
-        };
-      }
-    })
-  );
-
-  setFragmenty(
-    fragmenty.map((t) => {
-      return { ...t, naklad: preOrder.naklad };
-    })
-  );
-
-  setOprawa(
-    oprawa.map((t) => {
-      return {
-        ...t,
-        naklad: preOrder.naklad,
-        oprawa: preOrder.oprawa,
-
-        bok_oprawy: preOrder.bok_oprawy,
-      };
-    })
-  );
-}

@@ -3,6 +3,8 @@ import style from "./BookMaker.module.css";
 import { AppContext } from "context/AppContext";
 import { AddProductFromCreator } from "../actions/AddProductFromCreator";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import CardBinding from "./CardBinding";
+import CardProduct from "./CardProduct";
 export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
@@ -35,110 +37,44 @@ export default function BookMaker({
       </div>
 
       {showElement && (
+        <>
+     
           <Naklad  naklad={naklad} setNaklad={setNaklad} />
-      )}
 
-      {showElement && (
-        <div className={style.bindingContainer}>
-          {elements.map((element) => (
-            <CardProduct
-            element={element}
-            elements={elements}
-              setElements={setElements}
-            />
-          ))}
-        </div>
-      )}
+          <div className={style.bindingContainer}>
+            {elements.map((element) => (
+              <CardProduct element={element} elements={elements} setElements={setElements} />
+            ))}
+          </div>
+    
 
-      {showElement && (
-        <div className={style.bindingContainer}>
-          <CardNettoX netto={netto} setNetto={setNetto} />
-          <CardNettoY netto={netto} setNetto={setNetto} />
-        </div>
-      )}
+          <div className={style.bindingContainer}>
+            <CardNettoX netto={netto} setNetto={setNetto} />
+            <CardNettoY netto={netto} setNetto={setNetto} />
+          </div>
+   
+          <div className={style.bindingContainer}>
+            <button
+              onClick={() => {
+                setShowTemplate(false);
+                setShowParametryZamowienia(true);
+                // AddProductFromCreator(naklad,binding,elements);
+              }}
+              className={style.btn}
+            >
+              Dodaj
+            </button>
+            
+          </div>
+      </>
 
-    {showElement && (
-      <div className={style.bindingContainer}>
-        <button
-          onClick={() => {
-            setShowTemplate(false);
-            setShowParametryZamowienia(true);
-            // AddProductFromCreator(naklad,binding,elements);
-          }}
-          className={style.btn}
-        >
-          Dodaj
-        </button>
-      </div>
         )}
 
     </div>
   );
 }
 
-const clikBindingHandler = ({ bind, binding, setBinding, setShowElement }) => {
-  setShowElement(true);
-  setBinding(
-    binding.map((t) => {
-      if (t.id === bind.id) {
-        return { ...t, isSelcted: true };
-      } else {
-        return { ...t, isSelcted: false };
-      }
-    })
-  );
-};
 
-const CardBinding = ({ bind, binding, setBinding, setShowElement }) => {
-  return (
-    <div
-      onClick={() =>
-        clikBindingHandler({ bind, binding, setBinding, setShowElement })
-      }
-      className={bind.isSelcted ? style.cardBindingSelected : style.cardBinding}
-    >
-      {bind.nazwa}
-      {/* <input
-            checked={bind.isSelcted}
-            className={style.cardInput}
-            type="checkbox"
-            onChange={() => clikBindingHandler({ bind, binding, setBinding })}
-          ></input> */}
-    </div>
-  );
-};
-
-const CardProduct = ({ element, elements, setElements }) => {
-  const changeProductHandler = (element) => {
-    setElements(
-      elements.map((e) => {
-        if (e.id === element.id) {
-          return element;
-        } else {
-          return e;
-        }
-      })
-    );
-  };
-  return (
-    <div
-      // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
-      className={style.cardProduct}
-    >
-      {element.nazwa}
-      <input
-        className={style.cardInput}
-        defaultValue={element.strony}
-        placeholder="..."
-        type="text"
-        onChange={(e) =>
-          changeProductHandler({ ...element, strony: e.target.value })
-        }
-      ></input>{" "}
-      str.
-    </div>
-  );
-};
 
 const CardNettoX = ({ netto, setNetto }) => {
   return (

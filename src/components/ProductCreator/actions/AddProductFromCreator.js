@@ -9,7 +9,11 @@ export function AddProductFromCreator(
     fragmenty,
     setFragmenty,
     oprawa,
-    setOprawa
+    setOprawa,
+
+    naklad,
+    binding,
+    elements
 
 
 

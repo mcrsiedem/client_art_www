@@ -1,10 +1,5 @@
-import { useEffect,createContext,useState, useCallback } from "react";
-import io from "socket.io-client";
-import { IP_SOCKET } from "../utils/Host";
-import { today } from "actions/today";
+import { useEffect,createContext,useState } from "react";
 import { initialDane } from "utils/initialvalue";
-
-const newSocket = io.connect(IP_SOCKET,{autoConnect: true});
 
 export const PreOrderContext = createContext();
 export const PreOrderContextProvider = ({children})=>{

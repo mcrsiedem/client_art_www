@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import style from "./BookMaker.module.css";
 import { AppContext } from "context/AppContext";
 import { AddProductFromCreator } from "../actions/AddProductFromCreator";
+import { ModalInsertContext } from "context/ModalInsertContext";
 export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
@@ -16,18 +17,7 @@ export default function BookMaker({
     { id: 2, nazwa: "Środek", strony: null },
   ]);
   const [netto, setNetto] = useState([{ x: null, y: null }]);
- 
-  const [preOrder, setPreOrder] = useState({
-    typ: 1,
-    oprawa: 1,
-    naklad: "1000",
-    strony_okl: "4",
-    strony_srd: "80",
-    format_x: "210",
-    format_y: "297",
-    bok_oprawy: "297"
-
-  });
+  const mc = useContext(ModalInsertContext)
 
   return (
     <div className={style.container}>
@@ -45,7 +35,7 @@ export default function BookMaker({
       </div>
 
       {showElement && (
-          <Naklad preOrder={preOrder} setPreOrder={setPreOrder} naklad={naklad} setNaklad={setNaklad} />
+          <Naklad  naklad={naklad} setNaklad={setNaklad} />
       )}
 
       {showElement && (
@@ -73,7 +63,7 @@ export default function BookMaker({
           onClick={() => {
             setShowTemplate(false);
             setShowParametryZamowienia(true);
-            AddProductFromCreator();
+            // AddProductFromCreator(naklad,binding,elements);
           }}
           className={style.btn}
         >
@@ -211,6 +201,7 @@ const BokOprawy = ({ bokOprawy, setBokOprawy }) => {
 };
 
 const Naklad = ({ naklad, setNaklad }) => {
+  const mc = useContext(ModalInsertContext)
   return (
     <div className={style.bindingContainer}>
     <div
@@ -224,7 +215,50 @@ const Naklad = ({ naklad, setNaklad }) => {
         defaultValue={naklad}
         placeholder="..."
         type="text"
-        onChange={(e) => setNaklad(e.target.value)}
+        onChange={(e) => {
+          mc.setProdukty([{...mc.produkty, naklad : e.target.value}])
+          mc.setElementy(mc.elementy.map((t) => {
+            if (t.typ == 1) {
+              return {
+                ...t,
+                naklad: e.target.value
+              };
+            }
+            if (t.typ == 2) {
+              return {
+                ...t,
+                naklad: e.target.value
+              };
+            }
+          }))
+
+          mc.setFragmenty(mc.fragmenty.map((t) => {
+            if (t.typ == 1) {
+              return {
+                ...t,
+                naklad: e.target.value
+              };
+            }
+            if (t.typ == 2) {
+              return {
+                ...t,
+                naklad: e.target.value
+              };
+            }
+          }))
+
+          mc.setOprawa(mc.oprawa.map((t) => {
+   
+              return {
+                ...t,
+                naklad: e.target.value
+              };
+            
+
+          }))
+
+          setNaklad(e.target.value)}
+        }
       ></input>{" "}
       szt.
     </div>

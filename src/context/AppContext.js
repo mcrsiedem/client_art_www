@@ -41,7 +41,8 @@ export const AppContextProvider = ({children})=>{
                     clients,updateClients,      // wszyscy klienci
                     process, updateProcess,     // lista dostępnych procesów
                     bindingType, setBindingTyp, // lista dostępnych opraw
-                    rowSelected, setRowSelected // druk
+                    rowSelected, setRowSelected, // druk
+                    _firma
                 }}
             >
                 {children}
@@ -51,3 +52,21 @@ export const AppContextProvider = ({children})=>{
 
 
 }
+
+const _firma = [
+    {
+      id: 1,
+      nazwa: "ArtDruk",
+      NIP: "123-111-22-33",
+    },
+    {
+      id: 2,
+      nazwa: "PrintStudio",
+      NIP: "123-111-22-33",
+    },
+    {
+      id: 3,
+      nazwa: "ArtDruk Sp. z o.o.",
+      NIP: "123-111-22-33",
+    },
+  ];

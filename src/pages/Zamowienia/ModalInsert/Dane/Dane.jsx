@@ -56,7 +56,7 @@ function Row({children,style}) {
   }
 
 function Firma() {
-  
+const contextApp = useContext(AppContext);
 const contextPreOrder = useContext(PreOrderContext);
 const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
@@ -74,7 +74,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false)
         }}
       >
-        {_firma.map((option) => (
+        {contextApp._firma.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa}
           </option>
@@ -183,6 +183,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 }
 
 function Opiekun() {
+  const contextApp = useContext(AppContext);
   const contextPreOrder = useContext(PreOrderContext);
   const daneZamowienia = contextPreOrder.daneZamowienia;
 const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
@@ -199,9 +200,9 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false)
         }}
       >
-        {_opiekun.map((option) => (
+        {contextApp.users.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.imie} {option.nazwisko} 
+          {option.Imie} {option.Nazwisko} 
           </option>
         ))}
       </select>

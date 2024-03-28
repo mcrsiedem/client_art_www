@@ -1,41 +1,41 @@
 import { today } from "actions/today";
 
-const _firma = [
-  {
-    id: 1,
-    nazwa: "ArtDruk",
-    NIP: "123-111-22-33",
-  },
-  {
-    id: 2,
-    nazwa: "PrintStudio",
-    NIP: "123-111-22-33",
-  },
-  {
-    id: 3,
-    nazwa: "ArtDruk Sp. z o.o.",
-    NIP: "123-111-22-33",
-  },
-];
+// const _firma = [
+//   {
+//     id: 1,
+//     nazwa: "ArtDruk",
+//     NIP: "123-111-22-33",
+//   },
+//   {
+//     id: 2,
+//     nazwa: "PrintStudio",
+//     NIP: "123-111-22-33",
+//   },
+//   {
+//     id: 3,
+//     nazwa: "ArtDruk Sp. z o.o.",
+//     NIP: "123-111-22-33",
+//   },
+// ];
 
-const _klient = [
-  {
-    id: 1,
-    firma: "DESA SDA",
-    user_id: "1",
-    nIP: "123-111-22-33",
-    data_dodania: "2023-10-20",
-    opiekun_user_id: "Katalog",
-  },
-  {
-    id: 2,
-    firma: "Nowa Era",
-    user_id: "1",
-    nIP: "123-111-22-33",
-    data_dodania: "2023-10-20",
-    opiekun_user_id: "Katalog",
-  },
-];
+// const _klient = [
+//   {
+//     id: 1,
+//     firma: "DESA SDA",
+//     user_id: "1",
+//     nIP: "123-111-22-33",
+//     data_dodania: "2023-10-20",
+//     opiekun_user_id: "Katalog",
+//   },
+//   {
+//     id: 2,
+//     firma: "Nowa Era",
+//     user_id: "1",
+//     nIP: "123-111-22-33",
+//     data_dodania: "2023-10-20",
+//     opiekun_user_id: "Katalog",
+//   },
+// ];
 
 const _opiekun = [
   {
@@ -482,9 +482,9 @@ const _typ_elementu = [
 // ]
 
 export {
-  _firma,
+  // _firma,
   initialProdukty,
-  _klient,
+  // _klient,
   initialElementy,
   _papiery,
   // _rodzaj_oprawy,

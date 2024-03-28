@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import style from "./BookMaker.module.css";
 import { AppContext } from "context/AppContext";
-import { AddProductFromCreator } from "../actions/AddProductFromCreator";
+import { AddBookFromCreator } from "../actions/AddBookFromCreator";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import CardBinding from "./CardBinding";
 
@@ -10,6 +10,7 @@ export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
 }) {
+  
   const contextApp = useContext(AppContext);
   const [showElement, setShowElement] = useState(false);
   const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
@@ -17,7 +18,7 @@ export default function BookMaker({
     <div className={style.container}>
       <div className={style.bindingContainer}>
         {binding
-          .filter((bind1) => bind1.id !== 1) // oprawa id 1 n/d
+          .filter((bind1) => bind1.id !== 6) // oprawa id 1 n/d
           .map((bind) => (
             <CardBinding
               bind={bind}
@@ -44,19 +45,7 @@ export default function BookMaker({
             <Wysokosc  />
           </div>
    
-          <div className={style.bindingContainer}>
-            <button
-              onClick={() => {
-                setShowTemplate(false);
-                setShowParametryZamowienia(true);
-                // AddProductFromCreator(naklad,binding,elements);
-              }}
-              className={style.btn}
-            >
-              Dodaj
-            </button>
-            
-          </div>
+          <AddBtn setShowTemplate={setShowTemplate}  setShowParametryZamowienia={ setShowParametryZamowienia}/>
       </>
 
         )}
@@ -163,3 +152,27 @@ const Srodek = () => {
   </div>
   );
 };
+
+
+const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
+
+  const poc = useContext(PreOrderContext)
+  const mic = useContext(ModalInsertContext)
+  return (
+    <div className={style.bindingContainer}>
+    <button
+      onClick={() => {
+        setShowTemplate(false);
+        setShowParametryZamowienia(true);
+        AddBookFromCreator(mic,poc) // przekazane contexty do funkcjis
+        // AddProductFromCreator(naklad,binding,elements);
+      }}
+      className={style.btn}
+    >
+      Dodaj
+    </button>
+    
+  </div>
+  );
+};
+

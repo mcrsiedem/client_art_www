@@ -1,23 +1,12 @@
 import { useEffect,createContext,useState } from "react";
-import { initialDane } from "utils/initialvalue";
+import { initialDane, initialPreOrder } from "utils/initialvalue";
 
 export const PreOrderContext = createContext();
 export const PreOrderContextProvider = ({children})=>{
 
-    const [daneZamowienia, setDaneZamowienia] = useState(initialDane);   
-
-      const [preOrder, setPreOrder] = useState({
-        typ: 1,
-        oprawa: null,
-        naklad: null,
-        strony_okl: 4,
-        strony_srd: null,
-        szerokosc: null,
-        wysokosc: null,
-        bok_oprawy: null
-    
-      });
-
+      const [daneZamowienia, setDaneZamowienia] = useState(initialDane);  
+       
+      const [preOrder, setPreOrder] = useState(initialPreOrder);
 
       const [presetTyp, setPresetTyp] = useState({
         id: 1,

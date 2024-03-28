@@ -1,7 +1,10 @@
 
 import style from "./BookMaker.module.css";
+import { PreOrderContext } from "context/PreOrderContext";
+import { useContext } from "react";
 export default function CardBinding ({ bind, binding, setBinding, setShowElement })  {
 
+  const context = useContext(PreOrderContext)
     const clikBindingHandler = ({ bind, binding, setBinding, setShowElement }) => {
         setShowElement(true);
         setBinding(
@@ -13,6 +16,10 @@ export default function CardBinding ({ bind, binding, setBinding, setShowElement
             }
           })
         );
+
+        context.setPreOrder({...context.preOrder, oprawa: bind.id})
+
+ 
       };
 
     return (

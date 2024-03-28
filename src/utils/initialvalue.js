@@ -57,6 +57,19 @@ const _opiekun = [
 ];
 
 
+const initialPreOrder =
+{
+  typ: 1,
+  oprawa: null,
+  naklad: null,
+  strony_okl: 4,
+  strony_srd: null,
+  szerokosc: null,
+  wysokosc: null,
+  bok_oprawy: null
+
+}
+
 const initialDane = {
   id: 1,
   nr: "20",
@@ -487,5 +500,6 @@ export {
   _rodzaj,
   _vat,
   _waluta,
-  initialDane
+  initialDane,
+  initialPreOrder
 };

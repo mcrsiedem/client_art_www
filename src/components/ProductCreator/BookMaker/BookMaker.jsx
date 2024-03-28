@@ -166,6 +166,7 @@ const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
         setShowParametryZamowienia(true);
         AddBookFromCreator(mic,poc) // przekazane contexty do funkcjis
         // AddProductFromCreator(naklad,binding,elements);
+        console.log("preorder", poc.preOrder)
       }}
       className={style.btn}
     >

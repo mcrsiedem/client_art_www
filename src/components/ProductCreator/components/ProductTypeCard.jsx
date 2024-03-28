@@ -1,6 +1,6 @@
 import style from "./ProductTypeCard.module.css";
 import iconBook from "assets/book_blue.svg";
-import iconUlotka from "assets/ulotka.svg";
+import iconUlotka from "assets/ulotka2.svg";
 import iconPudelko from "assets/box3.svg";
 export default function CardProductType({ typ,show,setShow }) {
 

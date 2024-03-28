@@ -444,28 +444,28 @@ const _typ_elementu = [
   },
 ];
 
-const _rodzaj_oprawy = [
-  {
-    id: 1,
-    nazwa: "HotMelt",
-  },
-  {
-    id: 2,
-    nazwa: "PUR",
-  },
-  {
-    id: 3,
-    nazwa: "Zeszyt",
-  },
-  {
-    id: 4,
-    nazwa: "Szyto klejona",
-  },
-  {
-    id: 5,
-    nazwa: "Kompletowanie",
-  },
-];
+// const _rodzaj_oprawy = [
+//   {
+//     id: 1,
+//     nazwa: "HotMelt",
+//   },
+//   {
+//     id: 2,
+//     nazwa: "PUR",
+//   },
+//   {
+//     id: 3,
+//     nazwa: "Zeszyt",
+//   },
+//   {
+//     id: 4,
+//     nazwa: "Szyto klejona",
+//   },
+//   {
+//     id: 5,
+//     nazwa: "Kompletowanie",
+//   },
+// ];
 
 // const _uszlachetnienia = [
 //   {
@@ -487,7 +487,7 @@ export {
   _klient,
   initialElementy,
   _papiery,
-  _rodzaj_oprawy,
+  // _rodzaj_oprawy,
   initialFragmenty,
   initialOprawa,
   initalPakowanie,

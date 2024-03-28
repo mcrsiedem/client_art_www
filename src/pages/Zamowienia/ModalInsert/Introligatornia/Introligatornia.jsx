@@ -3,7 +3,7 @@ import style from "./Introligatornia.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import logoExpand from "../../../../assets/expand.svg";
-import { _rodzaj_oprawy,_typ_elementu } from "../api";
+import { _typ_elementu } from "../api";
 import {  useState } from "react";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
@@ -13,6 +13,7 @@ import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
+import { AppContext } from "context/AppContext";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -255,7 +256,7 @@ function RodzajOprawy({ row,handleChangeCardOprawa}) {
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
 const setProdukty = contextModalInsert.setProdukty;
-
+const contextApp = useContext(AppContext);
 
   return (
     <td className={style.select}>
@@ -282,7 +283,7 @@ const setProdukty = contextModalInsert.setProdukty;
 
         }}
       >
-        {_rodzaj_oprawy.map((option) => (
+        {contextApp.bindingType.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>

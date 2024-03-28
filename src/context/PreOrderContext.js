@@ -4,7 +4,7 @@ import { initialDane, initialPreOrder } from "utils/initialvalue";
 export const PreOrderContext = createContext();
 export const PreOrderContextProvider = ({children})=>{
 
-      const [daneZamowienia, setDaneZamowienia] = useState(initialDane);  
+     
        
       const [preOrder, setPreOrder] = useState(initialPreOrder);
 
@@ -43,7 +43,7 @@ export const PreOrderContextProvider = ({children})=>{
     
     return  <PreOrderContext.Provider 
                 value={{
-                    daneZamowienia, setDaneZamowienia,
+                
                     preOrder, setPreOrder,
                     presetTyp, setPresetTyp,
                     presetOprawa, setPresetOprawa

@@ -2,6 +2,7 @@ import { useEffect,createContext,useState, useCallback, useRef } from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcess } from "actions/getProcess";
+import { initialDane } from "utils/initialvalue";
 
 import axios from "axios";
 import { IP } from "utils/Host";
@@ -16,6 +17,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [procesy,setProcesy] = useState(null)
 
 
+    const [daneZamowienia, setDaneZamowienia] = useState(initialDane);  
     const [produkty, setProdukty] = useState(initialProdukty);
     const [elementy, setElementy] = useState(initialElementy);
     const [fragmenty, setFragmenty] = useState(initialFragmenty);
@@ -86,6 +88,7 @@ export const ModalInsertContextProvider = ({children})=>{
     return (
       <ModalInsertContext.Provider
         value={{
+          daneZamowienia, setDaneZamowienia,
           produkty, setProdukty,
           elementy, setElementy,
           fragmenty, setFragmenty,

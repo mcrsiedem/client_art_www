@@ -32,7 +32,15 @@ Klienci -
 -   select row color
 
 
-
-
-
 UWAGA: skasować z sessionStorage id usera - pobierać je ze zweryfikowanego tokenu
+
+
+29/03/2024
+
+Dashboard  -    Zmienić awatara
+
+Zamówienia -    Wyszukiwarka
+                Kolor scrolla
+                
+ModalInsert -   Opiekun - dostępni tylko handlowcy
+                Walidacja wszystkich inputów

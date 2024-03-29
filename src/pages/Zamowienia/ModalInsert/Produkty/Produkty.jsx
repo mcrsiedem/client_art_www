@@ -35,9 +35,9 @@ const produkty = contextModalInsert.produkty;
               <th className={style.col10}>Nakład</th>
               <th className={style.col9}>Oprawa</th>
               <th className={style.col4}>Nazwa</th>
-              <th className={style.col6}>Ilość stron</th>
-              <th className={style.col7}>x</th>
-              <th className={style.col8}>y</th>
+              <th className={style.col6}>Strony</th>
+              <th className={style.col7}>Szerokość</th>
+              <th className={style.col8}>Wysokość</th>
               <th className={style.col8}>Uwagi</th>
             </tr>
           </thead>

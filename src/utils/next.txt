@@ -41,6 +41,12 @@ Dashboard  -    Zmienić awatara
 
 Zamówienia -    Wyszukiwarka
                 Kolor scrolla
-                
+
 ModalInsert -   Opiekun - dostępni tylko handlowcy
                 Walidacja wszystkich inputów
+                Wersja produktu = wersja fragmentu
+                Bok oprawy = wysokość produktu
+                Status - stan - rodzaj dodać do kontekstu 
+                FSC
+                Procesy
+                Skalowanie okienka

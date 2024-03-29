@@ -2,6 +2,7 @@ import style from "./Produkty.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
+import { AppContext } from "context/AppContext";
 
 export default function Produkty( ) {
   return (
@@ -131,9 +132,11 @@ const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
 }
 
 function Oprawa({ row }) {
+  const contextApp = useContext(AppContext);
+
   return (
     <td>
-{ _rodzaj_oprawy.map((t) => {
+{ contextApp.bindingType.map((t) => {
         if (t.id == row.oprawa) {
           return t.nazwa;
         

@@ -64,6 +64,8 @@ const produkty = contextModalInsert.produkty;
 
 function Typ({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
+  const contextApp = useContext(AppContext);
+
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
     <td>
@@ -78,7 +80,7 @@ function Typ({ row }) {
         }}
       >
         {}
-        {_typ_produktu.map((option) => (
+        {contextApp.productType.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

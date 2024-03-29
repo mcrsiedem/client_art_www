@@ -3,6 +3,7 @@ import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcess } from 'actions/getProcess';
 import { getBindingType } from "actions/getBindingType";
+import { getProductType } from "actions/getProductType";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
@@ -11,6 +12,8 @@ export const AppContextProvider = ({children})=>{
     const [clients, setClients] = useState(null);
     const [process, setProcess] = useState(null); 
     const [bindingType, setBindingTyp] = useState(null); 
+    const [productType, setProductType] = useState(null); 
+
     const [rowSelected, setRowSelected] = useState(null); 
 
     const updateProcess = useCallback(()=>{
@@ -26,12 +29,14 @@ export const AppContextProvider = ({children})=>{
        },[])
 
 
+
     
     useEffect(()=>{
         getUsers(setUsers) 
         getClients(setClients) 
         getProcess(setProcess) 
         getBindingType(setBindingTyp)
+        getProductType(setProductType)
 
     },[])
     
@@ -40,6 +45,7 @@ export const AppContextProvider = ({children})=>{
                     users,updateUsers,          // wszystcy uzytkownicy
                     clients,updateClients,      // wszyscy klienci
                     process, updateProcess,     // lista dostępnych procesów
+                    productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
                     _firma

@@ -11,8 +11,8 @@ export function AddBookFromCreator(mic,poc ) {
         return {
           ...t,
           naklad: poc.preOrder.naklad,
-          format_x: poc.preOrder.format_x,
-          format_y: poc.preOrder.format_y,
+          format_x: poc.preOrder.szerokosc,
+          format_y: poc.preOrder.wysokosc,
           oprawa: poc.preOrder.oprawa,
           ilosc_stron:
             parseInt(poc.preOrder.strony_srd) + parseInt(poc.preOrder.strony_okl),
@@ -27,8 +27,8 @@ export function AddBookFromCreator(mic,poc ) {
             ...t,
             naklad: poc.preOrder.naklad,
             ilosc_stron: poc.preOrder.strony_okl,
-            format_x: poc.preOrder.format_x,
-            format_y: poc.preOrder.format_y,
+            format_x: poc.preOrder.szerokosc,
+            format_y: poc.preOrder.wysokosc,
           };
         }
         if (t.typ == 2) {
@@ -36,8 +36,8 @@ export function AddBookFromCreator(mic,poc ) {
             ...t,
             naklad: poc.preOrder.naklad,
             ilosc_stron: poc.preOrder.strony_srd,
-            format_x: poc.preOrder.format_x,
-            format_y: poc.preOrder.format_y,
+            format_x: poc.preOrder.szerokosc,
+            format_y: poc.preOrder.wysokosc,
           };
         }
       })
@@ -45,7 +45,24 @@ export function AddBookFromCreator(mic,poc ) {
   
     mic.setFragmenty(
       mic.fragmenty.map((t) => {
-        return { ...t, naklad: poc.preOrder.naklad };
+        if (t.typ == 1) {
+          return {
+            ...t,
+            naklad: poc.preOrder.naklad,
+            ilosc_stron: poc.preOrder.strony_okl,
+            format_x: poc.preOrder.szerokosc,
+            format_y: poc.preOrder.wysokosc,
+          };
+        }
+        if (t.typ == 2) {
+          return {
+            ...t,
+            naklad: poc.preOrder.naklad,
+            ilosc_stron: poc.preOrder.strony_srd,
+            format_x: poc.preOrder.szerokosc,
+            format_y: poc.preOrder.wysokosc,
+          };
+        }
       })
     );
   

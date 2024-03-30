@@ -73,7 +73,7 @@ export function AddBookFromCreator(mic,poc ) {
           naklad: poc.preOrder.naklad,
           oprawa: poc.preOrder.oprawa,
   
-          bok_oprawy: poc.preOrder.format_y,
+          bok_oprawy: poc.preOrder.wysokosc,
         };
       })
     );

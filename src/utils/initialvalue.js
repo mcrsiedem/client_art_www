@@ -187,7 +187,7 @@ const initialOprawa = [
     zamowienie_id: 1,
     produkt_id: 1,
     oprawa: 1,
-    bok_oprawy: "297",
+    bok_oprawy: "",
     naklad: "500",
     uwagi: "",
     data_spedycji: today(),
@@ -202,56 +202,13 @@ const initalPakowanie = [
         zamowienie_id: 1,
         produkt_id:1,
         nazwa: "Poczta Główna",
-        naklad: 10,
-        sztuki_w_paczce: 10,
+        naklad: "",
+        sztuki_w_paczce: "",
         rodzaj_pakowania:"",
         uwagi: "",
         indeks: 0
       },
-      {
-        id: 2,
-        zamowienie_id: 1,
-        produkt_id:1,
-        nazwa: "Desa Unicum ul. Piękna 1 A",
-        naklad: 124,
-        sztuki_w_paczce: 10,
-        rodzaj_pakowania:"",
-        uwagi: "",
-        indeks: 1
-      },
-      {
-        id: 3,
-        zamowienie_id: 1,
-        produkt_id:1,
-        nazwa: "Cosmopolitan",
-        naklad: 10,
-        sztuki_w_paczce: 10,
-        rodzaj_pakowania:"",
-        uwagi: "",
-        indeks: 2
-      },
-      {
-        id: 4,
-        zamowienie_id: 1,
-        produkt_id:1,
-        nazwa: "Promenoria",
-        naklad: 10,
-        sztuki_w_paczce: 10,
-        rodzaj_pakowania:"",
-        uwagi: "",
-        indeks: 3
-      },
-      {
-        id:5,
-        zamowienie_id: 1,
-        produkt_id:1,
-        nazwa: "Comforty",
-        naklad: 10,
-        sztuki_w_paczce: 10,
-        rodzaj_pakowania:"",
-        uwagi: "",
-        indeks: 4
-      },
+
   ];
 
 const _papiery = [

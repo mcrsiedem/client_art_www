@@ -14,7 +14,7 @@ import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
-import { reg_txt } from "utils/initialvalue";
+import { reg_int, reg_txt } from "utils/initialvalue";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -521,10 +521,12 @@ function  BokOprawy({ row, handleChangeCardOprawa }) {
       <input 
         value={row.bok_oprawy}
         onChange={(e) =>
-          handleChangeCardOprawa({
+          {
+            if (e.target.value === '' || reg_int.test(e.target.value)) {
+            handleChangeCardOprawa({
             ...row,
             bok_oprawy: e.target.value,
-          })
+          })}}
         }
       ></input>
     </td>
@@ -553,12 +555,14 @@ function  NakladOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
-        defaultValue={row.naklad} 
+        value={row.naklad} 
         onChange={(e) =>
-          handleChangeCardOprawa({
+          {
+            if (e.target.value === '' || reg_int.test(e.target.value)) {
+            handleChangeCardOprawa({
             ...row,
             naklad: e.target.value,
-          })
+          })}}
         }
       ></input>
     </td>

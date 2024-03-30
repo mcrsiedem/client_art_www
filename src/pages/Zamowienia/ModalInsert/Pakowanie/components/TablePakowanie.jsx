@@ -110,7 +110,7 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
       <td>
         <input
           className={style.in}
-          defaultValue={row.naklad}
+          value={row.naklad}
           onChange={(e) => {
   
             const re = /^[0-9]+$/;
@@ -135,7 +135,7 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
       <td>
         <input
           className={style.in}
-          defaultValue={row.sztuki_w_paczce}
+          value={row.sztuki_w_paczce}
           onChange={(e) =>  {
             const re = /^[0-9]+$/;
             if (e.target.value === '' || re.test(e.target.value)) {

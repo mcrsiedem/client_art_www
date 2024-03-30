@@ -52,3 +52,4 @@ ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 Skalowanie okienka
                 Klient nie zapisuje się pomimo ze się wyświetla
                 Wersja oprawy nie zapisuje się w bazie
+                Bok oprawy nie zapisuje się

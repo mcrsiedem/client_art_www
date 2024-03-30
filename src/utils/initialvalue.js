@@ -60,13 +60,13 @@ const _opiekun = [
 const initialPreOrder =
 {
   typ: 1,
-  oprawa: null,
-  naklad: null,
-  strony_okl: 4,
-  strony_srd: null,
-  szerokosc: null,
-  wysokosc: null,
-  bok_oprawy: null
+  oprawa: '',
+  naklad: '',
+  strony_okl: '4',
+  strony_srd: '',
+  szerokosc: '',
+  wysokosc: '',
+  bok_oprawy: ''
 
 }
 

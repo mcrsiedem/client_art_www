@@ -44,7 +44,7 @@ Zamówienia -    Wyszukiwarka
 
 ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 Walidacja wszystkich inputów
-                Wersja produktu = wersja fragmentu
+                Wersja elementu = wersja fragmentu
                 Bok oprawy = wysokość produktu
                 Status - stan - rodzaj dodać do kontekstu 
                 FSC
@@ -53,3 +53,7 @@ ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 Klient nie zapisuje się pomimo ze się wyświetla
                 Wersja oprawy nie zapisuje się w bazie
                 Bok oprawy nie zapisuje się
+
+                Dodawanie ulotki z cratora
+
+                Walidacja netto i szerokosc

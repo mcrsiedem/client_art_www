@@ -50,6 +50,7 @@ ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 FSC
                 Procesy
                 Skalowanie okienka
+                Klient nie zapisuje się pomimo ze się wyświetla
 
 
                         if (event.target.value === '' || re.test(event.target.value)) {

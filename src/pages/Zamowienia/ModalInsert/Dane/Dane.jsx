@@ -5,6 +5,7 @@ import addIcon2 from "../../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -192,7 +193,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={daneZamowienia.opiekun_id}
+        value={DecodeToken(sessionStorage.getItem("token")).id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
           setSaveButtonDisabled(false)

@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import style from "./SheetMaker.module.css";
 import { AppContext } from "context/AppContext";
+import { PreOrderContext } from "context/PreOrderContext";
 export default function SheetMaker({
   setShowTemplate,
   setShowParametryZamowienia,
@@ -112,6 +113,7 @@ const CardProduct = ({ element, elements, setElements }) => {
 };
 
 const CardNettoX = ({ netto, setNetto }) => {
+  const context = useContext(PreOrderContext)
   return (
     <div
       // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
@@ -121,10 +123,15 @@ const CardNettoX = ({ netto, setNetto }) => {
       Szerokość
       <input
         className={style.cardInputNetto}
-        defaultValue={210}
+        value={context.preOrder.szerokosc}
         placeholder="..."
         type="text"
-        onChange={(e) => setNetto({ ...netto, x: e.target.value })}
+        onChange={(e) => {
+          const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
+        }
+          } }
       ></input>{" "}
       mm.
     </div>
@@ -132,6 +139,7 @@ const CardNettoX = ({ netto, setNetto }) => {
 };
 
 const CardNettoY = ({ netto, setNetto }) => {
+  const context = useContext(PreOrderContext)
   return (
     <div
       // onClick={() => clikBindingHandler({ bind, binding, setBinding })}
@@ -141,12 +149,17 @@ const CardNettoY = ({ netto, setNetto }) => {
       Wysokość
       <input
         className={style.cardInputNetto}
-        defaultValue={297}
+        value={context.preOrder.wysokosc}
         // defaultValue={netto.y}
 
         placeholder="..."
         type="text"
-        onChange={(e) => setNetto({ ...netto, y: e.target.value })}
+        onChange={(e) => {
+          const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, wysokosc: e.target.value}) 
+        }
+          } }
       ></input>{" "}
       mm.
     </div>
@@ -174,6 +187,7 @@ const BokOprawy = ({ bokOprawy, setBokOprawy }) => {
 };
 
 const Naklad = ({ naklad, setNaklad }) => {
+  const context = useContext(PreOrderContext)
   return (
     <div className={style.bindingContainer}>
     <div
@@ -184,10 +198,16 @@ const Naklad = ({ naklad, setNaklad }) => {
       Nakład
       <input
         className={style.cardInputNaklad}
-        defaultValue={naklad}
+        value={context.preOrder.naklad}
         placeholder="..."
         type="text"
-        onChange={(e) => setNaklad(e.target.value)}
+        onChange={(e) => {
+          const re = /^[0-9]+$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, naklad: e.target.value}) 
+          }
+
+          } }
       ></input>{" "}
       szt.
     </div>

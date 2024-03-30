@@ -64,10 +64,17 @@ const Szerokosc = () => {
       Szerokość
       <input
         className={style.cardInputNetto}
-        defaultValue={context.preOrder.szerokosc}
+        value={context.preOrder.szerokosc}
         placeholder="..."
         type="text"
-        onChange={(e) => { context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) } }
+        onChange={(e) => 
+          { 
+            const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+            if (e.target.value === '' || re.test(e.target.value)) {
+            context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
+            }
+          } 
+        }
   
       ></input>
       mm.
@@ -82,10 +89,15 @@ const Wysokosc = () => {
     Wysokość
       <input
         className={style.cardInputNetto}
-        defaultValue={context.preOrder.wysokosc}
+        value={context.preOrder.wysokosc}
         placeholder="..."
         type="text"
-        onChange={(e) => { context.setPreOrder({...context.preOrder, wysokosc: e.target.value}) } }
+        onChange={(e) => {
+          const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, wysokosc: e.target.value}) 
+        }
+          } }
       ></input>{" "}
       mm.
     </div>
@@ -101,10 +113,16 @@ const Naklad = () => {
       Nakład
       <input
         className={style.cardInputNaklad}
-        defaultValue={context.preOrder.naklad}
+        value={context.preOrder.naklad}
         placeholder="..."
         type="text"
-        onChange={(e) => { context.setPreOrder({...context.preOrder, naklad: e.target.value}) } }
+        onChange={(e) => {
+          const re = /^[0-9]+$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, naklad: e.target.value}) 
+          }
+
+          } }
       >  
       </input>
       szt.
@@ -123,10 +141,15 @@ const Okladka = () => {
   Okładka
     <input
       className={style.cardInput}
-      defaultValue={context.preOrder.strony_okl}
+      value={context.preOrder.strony_okl}
       placeholder="..."
       type="text"
-      onChange={(e) => { context.setPreOrder({...context.preOrder, strony_okl: e.target.value}) } }
+      onChange={(e) => { 
+        const re = /^[0-9]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+        context.setPreOrder({...context.preOrder, strony_okl: e.target.value})
+        }
+       } }
     ></input>{" "}
     str.
   </div>
@@ -143,10 +166,15 @@ const Srodek = () => {
   Środek
     <input
       className={style.cardInput}
-      defaultValue={context.preOrder.strony_srd}
+      value={context.preOrder.strony_srd}
       placeholder="..."
       type="text"
-      onChange={(e) => { context.setPreOrder({...context.preOrder, strony_srd: e.target.value}) } }
+      onChange={(e) => { 
+        const re = /^[0-9]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+        context.setPreOrder({...context.preOrder, strony_srd: e.target.value}) 
+        }
+      } }
     ></input>{" "}
     str.
   </div>

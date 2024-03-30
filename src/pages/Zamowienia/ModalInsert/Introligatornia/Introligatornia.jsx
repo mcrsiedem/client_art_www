@@ -14,6 +14,7 @@ import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
+import { reg_txt } from "utils/initialvalue";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -503,10 +504,11 @@ function  WersjaOprawa({ row, handleChangeCardOprawa }) {
       <input 
         value={row.wersja}
         onChange={(e) =>
-          handleChangeCardOprawa({
+          {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleChangeCardOprawa({
             ...row,
             wersja: e.target.value,
-          })
+          })}}
         }
       ></input>
     </td>
@@ -535,10 +537,12 @@ function  UwagiOprawa({ row, handleChangeCardOprawa }) {
       <input 
         value={row.uwagi}
         onChange={(e) =>
-          handleChangeCardOprawa({
+          {
+            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleChangeCardOprawa({
             ...row,
             uwagi: e.target.value,
-          })
+          })}}
         }
       ></input>
     </td>

@@ -6,6 +6,7 @@ import iconCopy from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg";
 import axios from "axios";
 import { IP } from "utils/Host";
+import { reg_txt } from "utils/initialvalue";
 export default function RowFragment({
   row,
   handleChangeCardFragmenty,
@@ -87,10 +88,12 @@ function  Wersja({ row, handleChangeCardFragmenty }) {
       <input
         value={row.wersja}
         onChange={(e) =>
-          handleChangeCardFragmenty({
+          {
+            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleChangeCardFragmenty({
             ...row,
             wersja: e.target.value,
-          })
+          })}}
         }
       ></input>
     </td>

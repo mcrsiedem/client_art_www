@@ -9,6 +9,7 @@ import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { reg_int, reg_txt } from "utils/initialvalue";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -392,12 +393,14 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       <td>
         <input
           className={style.col_naklad}
-          defaultValue={row.naklad}
+          value={row.naklad}
           onChange={(e) =>
-            handleChangeCardElementy({
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+              handleChangeCardElementy({
               ...row,
               naklad: e.target.value,
-            })
+            })}}
           }
         ></input>
       </td>
@@ -407,12 +410,15 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
-          defaultValue={row.nazwa}
+          value={row.nazwa}
           onChange={(e) =>
-            handleChangeCardElementy({
+
+ {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+             handleChangeCardElementy({
               ...row,
               nazwa: e.target.value,
-            })
+            })}
+          }
           }
         ></input>
       </td>
@@ -425,20 +431,17 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
-          defaultValue={row.col_strony}
+          value={row.ilosc_stron}
           onChange={(e) =>
 
-            handleChangeCardFragmenty_i_Elementy_IloscStron({
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+              handleChangeCardFragmenty_i_Elementy_IloscStron({
               ...row,
               ilosc_stron: e.target.value,
             }
-            )
+            )}}
 
-
-            // handleChangeCardElementy({
-            //   ...row,
-            //   ilosc_stron: e.target.value,
-            // })
           }
         ></input>
       </td>
@@ -494,12 +497,14 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
-          defaultValue={row.papier_info}
+          value={row.papier_info}
           onChange={(e) =>
-            handleChangeCardElementy({
+            {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleChangeCardElementy({
               ...row,
               papier_info: e.target.value,
             })
+            }}
           }
         ></input>
       </td>
@@ -510,12 +515,15 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
-          defaultValue={row.uwagi}
+          value={row.uwagi}
           onChange={(e) =>
-            handleChangeCardElementy({
+            {
+              if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleChangeCardElementy({
               ...row,
               uwagi: e.target.value,
-            })
+            })}
+          }
           }
         ></input>
       </td>

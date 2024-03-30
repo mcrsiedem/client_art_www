@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
+import { reg_int, reg_txt } from "utils/initialvalue";
 
 export default function Produkty( ) {
   return (
@@ -100,9 +101,9 @@ function Nazwa({ row }) {
         value={row.nazwa}
         onChange={(e) =>
           {
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
-            if ( e.target.value === '' || re.test(e.target.value)) {
-      handleUpdateRowProdukty({
+            
+            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleUpdateRowProdukty({
             ...row,
             nazwa: e.target.value,
           })
@@ -127,8 +128,8 @@ const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
         value={row.naklad}
         onChange={(e) =>{     
 
-          const re = /^[0-9]+$/;
-          if (e.target.value === '' || re.test(e.target.value)) {
+          // const re = /^[0-9]+$/;
+          if (e.target.value === '' || reg_int.test(e.target.value)) {
            handleUpdateRowProdukty({
                 ...row,
                 naklad: e.target.value,

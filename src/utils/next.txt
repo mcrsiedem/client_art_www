@@ -51,12 +51,4 @@ ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 Procesy
                 Skalowanie okienka
                 Klient nie zapisuje się pomimo ze się wyświetla
-
-
-                        if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value});
-          setSaveButtonDisabled(false)
-        }
-        const re = /^[0-9]+$/;
-        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/; - double
-        // const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+                Wersja oprawy nie zapisuje się w bazie

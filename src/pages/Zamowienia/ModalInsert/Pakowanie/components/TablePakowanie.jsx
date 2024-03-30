@@ -5,6 +5,7 @@ import { addNewPacking } from "../../../../../actions/addPacking";
 import { deletePacking } from "../../../../../actions/deletePacking";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
+import { reg_txt } from "utils/initialvalue";
 export default function TablePakowanie({handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
@@ -90,12 +91,14 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
       <td>
         <input
           className={style.in}
-          defaultValue={row.nazwa}
+          value={row.nazwa}
           onChange={(e) =>
-            handleChangeCardPakowanie({
+            {
+              if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleChangeCardPakowanie({
               ...row,
               nazwa: e.target.value,
-            })
+            })}}
           }
         ></input>
       </td>
@@ -153,12 +156,14 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
       <td>
         <input
           className={style.in}
-          defaultValue={row.rodzaj_pakowania}
+          value={row.rodzaj_pakowania}
           onChange={(e) =>
-            handleChangeCardPakowanie({
+            {
+              if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleChangeCardPakowanie({
               ...row,
               rodzaj_pakowania: e.target.value,
-            })
+            })}}
           }
         ></input>
       </td>
@@ -170,12 +175,14 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
       <td>
         <input
           className={style.in}
-          defaultValue={row.uwagi}
+          value={row.uwagi}
           onChange={(e) =>
-            handleChangeCardPakowanie({
+            {
+              if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleChangeCardPakowanie({
               ...row,
               uwagi: e.target.value,
-            })
+            })}}
           }
         ></input>
       </td>

@@ -1,6 +1,9 @@
 import { today } from "actions/today";
 import DecodeToken from "pages/Login/DecodeToken";
 
+const reg_txt = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+const reg_int = /^[0-9]+$/;
+
 // const _firma = [
 //   {
 //     id: 1,
@@ -117,7 +120,7 @@ const initialElementy = [
     produkt_id: 1,
     typ: 1,
     nazwa: "",
-    ilosc_stron: "4",
+    ilosc_stron: "",
     kolory: "CMYK PANTONE 666 / CMYK PANTONE 666 ",
     format_x: "210",
     format_y: "297",
@@ -483,6 +486,8 @@ const _typ_elementu = [
 // ]
 
 export {
+  reg_int,
+  reg_txt,
   // _firma,
   initialProdukty,
   // _klient,

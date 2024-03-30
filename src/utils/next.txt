@@ -42,7 +42,7 @@ Dashboard  -    Zmienić awatara
 Zamówienia -    Wyszukiwarka
                 Kolor scrolla
 
-ModalInsert -   Opiekun - dostępni tylko handlowcy
+ModalInsert -   Opiekun - dostępni tylko handlowcy V
                 Walidacja wszystkich inputów
                 Wersja produktu = wersja fragmentu
                 Bok oprawy = wysokość produktu
@@ -50,3 +50,12 @@ ModalInsert -   Opiekun - dostępni tylko handlowcy
                 FSC
                 Procesy
                 Skalowanie okienka
+
+
+                        if (event.target.value === '' || re.test(event.target.value)) {
+          setDaneZamowienia({...daneZamowienia, nr: event.target.value});
+          setSaveButtonDisabled(false)
+        }
+        const re = /^[0-9]+$/;
+        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/; - double
+        // const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;

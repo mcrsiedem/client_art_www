@@ -198,7 +198,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false)
         }}
       >
-        {contextApp.users.map((option) => (
+        {contextApp.users.filter(x => x.Dzial == 2).map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>
@@ -350,7 +350,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       value={daneZamowienia.uwagi}
       onChange={(event) => {
 
-        const re2 = /^[0-9]+$/;
+   
          const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
@@ -400,8 +400,9 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       value={daneZamowienia.cena}
       onChange={(event) => {
 
-        const re = /^[0-9,]+$/;
-        // const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
        if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, cena: event.target.value});
         setSaveButtonDisabled(false)

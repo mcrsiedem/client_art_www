@@ -97,12 +97,19 @@ function Nazwa({ row }) {
     <td>
       <input
         className={style.in}
-        defaultValue={row.nazwa}
+        value={row.nazwa}
         onChange={(e) =>
-          handleUpdateRowProdukty({
+          {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+            if ( e.target.value === '' || re.test(e.target.value)) {
+      handleUpdateRowProdukty({
             ...row,
             nazwa: e.target.value,
           })
+
+          }
+        }
+    
         }
       ></input>
     </td>
@@ -117,16 +124,20 @@ const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
     <td>
       <input
         className={style.in}
-        defaultValue={row.naklad}
-        onChange={(e) =>
-          handleUpdateRowProdukty({
-            ...row,
-            naklad: e.target.value,
-          })
-          // handleChangeCardProdukty({
-          //   ...row,
-          //   naklad: e.target.value,
-          // })
+        value={row.naklad}
+        onChange={(e) =>{     
+
+          const re = /^[0-9]+$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           handleUpdateRowProdukty({
+                ...row,
+                naklad: e.target.value,
+              })
+          }
+            
+            }
+        
+
         }
       ></input>
     </td>
@@ -155,12 +166,18 @@ function Uwagi({ row }) {
     <td>
       <input
         className={style.in}
-        defaultValue={row.uwagi}
+        value={row.uwagi}
         onChange={(e) =>
-          handleUpdateRowProdukty({
+          { 
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+            if ( e.target.value === '' || re.test(e.target.value)) { 
+              handleUpdateRowProdukty({
             ...row,
             uwagi: e.target.value,
           })
+        
+        }
+          }
         }
       ></input>
     </td>

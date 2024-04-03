@@ -45,14 +45,10 @@ import ProductCreator from "components/ProductCreator/ProductCreator";
 function ModalInsert({
   openModalInsert,
   setOpenModalInsert,
-  user,
-  setUser,
   listaPapierow,
-  setListPapierow,
   listaGramatur,
   setListaGramatur,
   open,
-  // setOpen,
   row,
   refreshZamowienia
 }) {

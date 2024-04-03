@@ -2,7 +2,7 @@ import React from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import logoutIcon from 'assets/logout.png'
-import userIcon from 'assets/user_m2.svg'
+import userIcon from 'assets/user_m.svg'
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
@@ -26,7 +26,7 @@ function Panel({user,setUser}){
 
                    {isOnline ? (     <div className={style.user}> 
                                 <img className={style.userIcon } src={userIcon} alt="Procesy" />
-                                <p>{DecodeToken(sessionStorage.getItem("token")).imie}  {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                         </div>) : (     <div className={isOnline ? style.user : style.userOffline}> 
                               
                                 <p>Offline</p>

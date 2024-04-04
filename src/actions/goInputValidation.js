@@ -10,7 +10,7 @@ switch(type){
         }
     break;
 
-    case 'price' :  //cena xxx,xx
+    case 'price' :  //cena 10,30
     const reg_price = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
     if (event.target.value === '' || reg_price.test(event.target.value)) {
         return true;

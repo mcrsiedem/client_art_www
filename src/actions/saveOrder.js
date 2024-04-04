@@ -67,18 +67,12 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,saveAs}) =>{
 
     return new Promise(async(resolve,reject)=>{
-
-
       // saveAs domyślnie false, bo domyślnie nadpisujemy.
       if(!saveAs){
               let final_0 = await axios.put(IP + "zamowienia_not_final", {
         zamowienie_id: daneZamowienia.id,
-
       })
       }
-
-
-
 
     let res = await axios.post(IP + "zamowienie", {
         nr: daneZamowienia.nr,
@@ -252,8 +246,6 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
 
 const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
   //oprawa
-
-
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let oprawa of oprawaEdit) {
@@ -262,7 +254,9 @@ const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
                            produkt_id: oprawa.produkt_id,
                            oprawa: oprawa.oprawa,
                            naklad: oprawa.naklad,
+                           bok_oprawy: oprawa.bok_oprawy,
                            uwagi: oprawa.uwagi,
+                           wersja: oprawa.wersja,
                            data_spedycji: oprawa.data_spedycji,
                            data_czystodrukow: oprawa.data_czystodrukow,
                            indeks: oprawa.indeks,

@@ -451,13 +451,17 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td className={style.col_format}>
         <input
-          defaultValue={row.format_x}
-          onChange={(e) =>
-            handleChangeCardElementy({
-              ...row,
-              format_x: e.target.value,
-            })
-          }
+          value={row.format_x}
+          onChange={(e) => {
+            const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+            if (e.target.value === "" || re.test(e.target.value)) {
+              handleChangeCardElementy({
+                ...row,
+                format_x: e.target.value,
+              });
+            }
+          }}
         ></input>
       </td>
     );
@@ -466,13 +470,17 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td className={style.col_format}>
         <input
-          defaultValue={row.format_y}
-          onChange={(e) =>
-            handleChangeCardElementy({
-              ...row,
-              format_y: e.target.value,
-            })
-          }
+          value={row.format_y}
+          onChange={(e) => {
+            const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+            if (e.target.value === "" || re.test(e.target.value)) {
+              handleChangeCardElementy({
+                ...row,
+                format_y: e.target.value,
+              });
+            }
+          }}
         ></input>
       </td>
     );

@@ -190,6 +190,7 @@ const initialOprawa = [
     bok_oprawy: "",
     naklad: "500",
     uwagi: "",
+    wersja: "",
     data_spedycji: today(),
     data_czystodrukow: today(),
     indeks: 0,
@@ -202,10 +203,10 @@ const initalPakowanie = [
         zamowienie_id: 1,
         produkt_id:1,
         nazwa: "Transport",
-        naklad: "",
-        sztuki_w_paczce: "",
-        rodzaj_pakowania:"",
-        uwagi: "",
+        naklad: 1,
+        sztuki_w_paczce: 1,
+        rodzaj_pakowania:1,
+        uwagi: "üwaga",
         indeks: 0
       },
 

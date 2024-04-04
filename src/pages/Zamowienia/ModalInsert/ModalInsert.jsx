@@ -30,7 +30,7 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "../../../actions/saveOrder";
+import { saveOrder } from "actions/saveOrder";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../../actions/today";
 import ClientStage from "../../../components/Klienci/ClientStage";
@@ -93,9 +93,17 @@ const setPakowanie = contextModalInsert.setPakowanie;
   useEffect(() => {
 
     if (open.current) {
+      // otwarcie zamówienia
+      
+      // pokazanie parametrow
       setShowParametryZamowienia(true);
+
+      // schowanie kreatora to tworzenia zamówienia
       setShowTemplate(false);
+
       open.current = false;
+
+      // pobranie szczegółów zamówienia
       fechparametry(row.id,setSaveButtonDisabled);
     }else{
       //zerowanie stanów

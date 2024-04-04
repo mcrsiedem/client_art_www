@@ -457,11 +457,13 @@ function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
       <input 
         value={row.wersja}
         onChange={(e) =>
+
+          {       if ( e.target.value === '' || reg_txt.test(e.target.value)) {
           handleChangeCardFragmenty({
             ...row,
             wersja: e.target.value,
           })
-        }
+        }}}
       ></input>
     </td>
   );
@@ -473,10 +475,17 @@ function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
       <input
         value={row.naklad}
         onChange={(e) =>
-          handleChangeCardFragmenty({
+
+          {
+
+            if (e.target.value === '' || reg_int.test(e.target.value)) {
+                        handleChangeCardFragmenty({
             ...row,
             naklad: e.target.value,
           })
+            }
+          }
+
         }
       ></input>
     </td>

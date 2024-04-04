@@ -176,7 +176,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
 
                 
               <Usun  row={row} handleRemoveItem={handleRemoveItem}/>
-              <DodajOprawe row={row} />
+              <DodajOprawe row={row} oprawa={oprawa} setOprawa={setOprawa} />
               <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
             </tr>
             {expand ? (
@@ -393,6 +393,8 @@ const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) =>
 };
 
 function handleAddRowOprawa(card,oprawa,setOprawa) {
+
+  console.log("oprawa", oprawa)
   const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
  // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id

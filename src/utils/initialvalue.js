@@ -93,7 +93,7 @@ const initialDane = {
   waluta_id: 1,
   termin_platnosci: 30,
   vat_id: 4,
-  przedplata: " "
+  przedplata: ""
 
 };
 const initialProdukty = [
@@ -202,11 +202,11 @@ const initalPakowanie = [
         id: 1,
         zamowienie_id: 1,
         produkt_id:1,
-        nazwa: "Transport",
+        nazwa: "Pakowanie",
         naklad: 1,
         sztuki_w_paczce: 1,
         rodzaj_pakowania:1,
-        uwagi: "üwaga",
+        uwagi: "...",
         indeks: 0
       },
 

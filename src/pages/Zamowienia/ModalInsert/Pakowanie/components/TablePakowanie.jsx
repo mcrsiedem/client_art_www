@@ -6,6 +6,7 @@ import { deletePacking } from "../../../../../actions/deletePacking";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
 import { reg_txt } from "utils/initialvalue";
+import { goInputValidation } from "actions/goInputValidation";
 export default function TablePakowanie({handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
@@ -137,12 +138,20 @@ export default function TablePakowanie({handleChangeCardPakowanie}) {
           className={style.in}
           value={row.sztuki_w_paczce}
           onChange={(e) =>  {
-            const re = /^[0-9]+$/;
-            if (e.target.value === '' || re.test(e.target.value)) {
-                 handleChangeCardPakowanie({
-              ...row,
-              sztuki_w_paczce: e.target.value,
-            })}
+
+
+            if(goInputValidation(e,'number')){
+              handleChangeCardPakowanie({
+                ...row,
+                sztuki_w_paczce: e.target.value,
+              })
+            }
+            // const re = /^[0-9]+$/;
+            // if (e.target.value === '' || re.test(e.target.value)) {
+            //      handleChangeCardPakowanie({
+            //   ...row,
+            //   sztuki_w_paczce: e.target.value,
+            // })}
           }
        
           }

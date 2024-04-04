@@ -6,7 +6,8 @@ import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
-import { useValidationText } from "hooks/useValidationText";
+import { goInputValidation } from "actions/goInputValidation";
+
 
 export default function Dane({
   selected_firma,setSelected_firma,
@@ -295,7 +296,7 @@ function Tytul( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const [val, setval] = useValidationText(null);
+
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
@@ -327,19 +328,10 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <input className={style.data} type="text"
       value={daneZamowienia.przedplata}
       onChange={(event) => {
-
-        // const re = /^[0-9,]+$/;
-
-
-        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
-
-        
-        // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ%]+$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
-        setSaveButtonDisabled(false)
-       }
+        if(goInputValidation(event,'price')){
+          setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+          setSaveButtonDisabled(false)
+        }
       }}></input>
     </div>
   );

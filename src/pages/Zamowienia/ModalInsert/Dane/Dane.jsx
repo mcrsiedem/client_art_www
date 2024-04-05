@@ -108,7 +108,12 @@ const contextApp = useContext(AppContext);
           setSaveButtonDisabled(false);
         }}
       >
-        {contextApp.clients.map((option) => (
+        <option key={1} value={"0"}> 
+           wybierz...
+          </option>
+        {contextApp.clients
+        // .unshift({id:0,firma:""})
+        .map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}
           </option>

@@ -1,18 +1,4 @@
-ModalInsert -   ModalInsert
-                Header
-                Dane
-                Produkty
-                Elementy
-                Introligatornia
-                Pakowanie
-
-Klienci -       ClientStage
-                Header
-                Finder
-                TableClient
-
-
-               
+ 
 
 Klienci - 
             - kasowanie klienta - zmiana parametru delete na 1  V
@@ -37,17 +23,10 @@ UWAGA: skasować z sessionStorage id usera - pobierać je ze zweryfikowanego tok
 
 29/03/2024
 
-Dashboard  -    Zmienić awatara
 Zamówienia -    Wyszukiwarka
                 Kolor scrolla
 ModalInsert -   
-                Wersja elementu = wersja fragmentu
                 Status - stan - rodzaj dodać do kontekstu 
-                FSC
                 Procesy
                 Skalowanie okienka
-                Klient nie zapisuje się pomimo ze się wyświetla
-                
-               
-
                 Dodawanie ulotki z cratora

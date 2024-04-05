@@ -43,7 +43,7 @@
 
 .main::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(142, 236, 65) 50%, rgb(95, 186, 21) 100%);
+
 }
 
 .main::-webkit-scrollbar-thumb {

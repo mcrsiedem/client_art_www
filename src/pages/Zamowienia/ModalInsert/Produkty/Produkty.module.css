@@ -35,22 +35,23 @@
 }
 
 /* pasek przewijania */
-.container::-webkit-scrollbar {
+.main::-webkit-scrollbar {
   width: 0.8em;
   height: 10px;
 }
 
-.container::-webkit-scrollbar-track {
+.main::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+
 }
 
-.container::-webkit-scrollbar-thumb {
-  background-color: rgb(191, 209, 194);
+.main::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
   /* outline: 1px solid slategrey; */
 }
 
-.container::-webkit-scrollbar-corner {
-  background-color: rgb(191, 209, 194);
+.main::-webkit-scrollbar-corner {
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
 }
 
 

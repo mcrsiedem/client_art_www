@@ -35,9 +35,29 @@
 
 .main {
   overflow: auto;
-  
-  
 }
+
+
+/* pasek przewijania */
+.main::-webkit-scrollbar {
+  width: 0.8em;
+  height: 10px;
+}
+
+.main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(252, 227, 198) 50%,rgb(240, 151, 50) 100%);
+}
+
+.main::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%);
+  /* outline: 1px solid slategrey; */
+}
+
+.main::-webkit-scrollbar-corner {
+  background-color: rgb(191, 209, 194);
+}
+
 
 
 .oprawy{

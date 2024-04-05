@@ -27,7 +27,7 @@ width: 100vw;
 .row3 {
   display: grid;
   
-  grid-template-columns:  230px  1fr 193px 230px  ;
+  grid-template-columns:  230px  1fr 75px 193px 230px  ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */

@@ -1,6 +1,6 @@
 import style from "./Dane.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj } from "../api";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj,_fsc } from "../api";
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -41,6 +41,7 @@ export default function Dane({
         <Row style={style.row3}>
             <Opiekun />
             <Uwagi />
+            <FSC />
             <Stan />
             <Status />
         </Row>
@@ -263,7 +264,31 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-
+function FSC( ) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return (
+    <div className={style.col}>
+      <label className={style.label}> FSC </label>
+      <select
+        className={style.firma}
+        value={daneZamowienia.fsc}
+        onChange={(event) => {
+          setDaneZamowienia({...daneZamowienia, fsc: event.target.value});
+          setSaveButtonDisabled(false)
+        }}
+      >
+        {_fsc.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 function Stan( ) {
   const contextModalInsert = useContext(ModalInsertContext);

@@ -342,6 +342,20 @@ const _stan = [
 
 ]
 
+const _fsc = [
+  {
+    id: 1,
+    nazwa: "Tak"
+
+  },{
+    id: 2,
+    nazwa: "Nie",
+  },
+
+
+
+]
+
 const _typ_produktu = [
   {
     id: 1,
@@ -410,4 +424,4 @@ const _typ_elementu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu,_rodzaj,_vat,_waluta};
+export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu,_rodzaj,_vat,_waluta, _fsc};

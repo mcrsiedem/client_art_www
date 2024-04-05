@@ -93,7 +93,8 @@ const initialDane = {
   waluta_id: 1,
   termin_platnosci: 30,
   vat_id: 4,
-  przedplata: ""
+  przedplata: "",
+  fsc: 2
 
 };
 const initialProdukty = [

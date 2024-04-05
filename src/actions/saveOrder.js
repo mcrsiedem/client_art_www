@@ -94,6 +94,8 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         uwagi: daneZamowienia.uwagi,
         przedplata: daneZamowienia.przedplata,
         termin_platnosci: daneZamowienia.termin_platnosci,
+        fsc: daneZamowienia.fsc,
+
         final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       

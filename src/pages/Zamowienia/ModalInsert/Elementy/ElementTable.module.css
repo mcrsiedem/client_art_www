@@ -46,7 +46,7 @@ div::-webkit-scrollbar-track {
 }
 
 div::-webkit-scrollbar-thumb {
-  background-color:rgb(97, 96, 96)
+  background-color:rgba(250, 174, 59, 0.89)
   /* outline: 1px solid slategrey; */
 }
 

@@ -382,6 +382,9 @@ const _typ_elementu = [
   ,{
     id: 4,
     nazwa: "Insert",
+  }  ,{
+    id: 5,
+    nazwa: "Ulotka",
   }
 ]
 

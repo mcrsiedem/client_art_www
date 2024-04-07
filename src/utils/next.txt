@@ -29,3 +29,5 @@ ModalInsert -
                 Procesy
                 Skalowanie okienka
                 Dodawanie ulotki z cratora
+
+Typy elementów oraz inne przenieśc do bazy danych z api

@@ -39,7 +39,7 @@ export function AddSheetFromCreator(mic,poc ) {
             id: 1,
             zamowienie_id: 1,
             produkt_id: 1,
-            typ: 4,
+            typ: 5,
             nazwa: "",
               ilosc_stron: 2,
             kolory: "",
@@ -61,19 +61,25 @@ export function AddSheetFromCreator(mic,poc ) {
 
     );
   
-    mic.setFragmenty(
-      mic.fragmenty.map((t) => {
-   
-          return {
-            ...t,
-            naklad: poc.preOrder.naklad,
-            ilosc_stron: 2,
-            format_x: poc.preOrder.szerokosc,
-            format_y: poc.preOrder.wysokosc,
-          };
-        
+    mic.setFragmenty([
+      {
+        id: 1,
+        zamowienie_id: 1,
+        produkt_id: 1,
+        element_id: 1,
+        oprawa_id: 1,
+        naklad: poc.preOrder.naklad,
+        ilosc_stron: 2,
+        wersja: " ",
+        typ: 5,
+        info: " ",
+        indeks: 0,
 
-      })
+      }
+    ]
+
+            
+
     );
   
     mic.setOprawa(

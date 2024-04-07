@@ -51,6 +51,7 @@
 
 .main::-webkit-scrollbar-thumb {
     background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%);
+    border-radius: 20px;
   /* outline: 1px solid slategrey; */
 }
 

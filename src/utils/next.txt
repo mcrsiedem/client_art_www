@@ -24,7 +24,6 @@ UWAGA: skasować z sessionStorage id usera - pobierać je ze zweryfikowanego tok
 29/03/2024
 
 Zamówienia -    Wyszukiwarka
-                Kolor scrolla
 ModalInsert -   
                 Status - stan - rodzaj dodać do kontekstu 
                 Procesy

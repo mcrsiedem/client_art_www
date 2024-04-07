@@ -137,7 +137,7 @@ function ElementyTable({
         </thead>
         <tbody >
           {elementy
-          .sort((a, b) => a.indeks - b.indeks)
+           .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => {
             return (
               <>

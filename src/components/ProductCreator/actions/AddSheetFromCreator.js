@@ -13,7 +13,7 @@ export function AddSheetFromCreator(mic,poc ) {
           naklad: poc.preOrder.naklad,
           format_x: poc.preOrder.szerokosc,
           format_y: poc.preOrder.wysokosc,
-          oprawa: 6,
+          oprawa: 10,
           ilosc_stron: 2,
           typ:2
         };
@@ -87,7 +87,7 @@ export function AddSheetFromCreator(mic,poc ) {
         return {
           ...t,
           naklad: poc.preOrder.naklad,
-          oprawa: 6,
+          oprawa: 10,
   
           bok_oprawy: poc.preOrder.wysokosc,
         };

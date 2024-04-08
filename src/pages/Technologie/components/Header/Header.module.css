@@ -1,6 +1,8 @@
+* {
+    margin: 0px;
+}
 
-
-.headerMain{
+.headerMain {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-image: linear-gradient(#dddddd 0%, #f6f6f6 80%);
@@ -12,21 +14,28 @@
     /* position: fixed; */
 }
 
-.left{
+.left {
+
     display: flex;
     align-items: center;
     justify-content: start;
-    padding: 10px;
+    padding-left: 10px;
+
     color: whitesmoke;
-    
+    height: 50px;
 }
-.right{
+
+
+
+.right {
+
     display: flex;
     align-items: center;
     justify-content: end;
-    padding: 5px;
+    height: 50px;
+    padding-right: 10px;
 }
 
-.btn{
+.btn {
     width: 30px;
 }

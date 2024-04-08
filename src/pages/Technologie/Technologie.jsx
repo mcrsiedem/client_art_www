@@ -1,13 +1,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import axios from "axios";
 import { IP } from "../../utils/Host";
-import TechnologiaTable from "./components/Table/TechnologiaTable";
 
-import style from "./Technologie.module.css";
-import io from "socket.io-client"
 
 export default function Technologie(){
 
@@ -15,7 +11,7 @@ export default function Technologie(){
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
 
-  // const socket = io.connect("http://localhost:3002")
+
     const effectRan = useRef(false);
     useEffect(() => {
       if (effectRan.current === true) {
@@ -42,20 +38,9 @@ export default function Technologie(){
 
     return(
     <>
-    Technologia
-    {/* <input onChange={(e)=>setMessage(e.target.value)}></input> 
-    <button onClick={sendMessage}>Send</button>
-    <h1>Message:</h1>
-    {messageReceived} */}
-            {/* <Header/>
-            <TechnologiaTable dataTechnologie={dataTechnologie} setStageTechnologiaVisible={setStageTechnologiaVisible} setActiveRowId={setActiveRowId}/>
-            <Footer/>
+ 
+      <Header/>
 
-            {isStageTechnologiaVisible && (
-            <TechnologiaStage
-        
-            />
-          )} */}
     </>
     )
     

@@ -62,6 +62,7 @@ export default function BookMaker({
 
 
 const Oprawa =({  binding, setBinding, setShowElement}) => {
+  const context = useContext(PreOrderContext)
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
 const setProdukty = contextModalInsert.setProdukty;
@@ -73,26 +74,26 @@ const contextApp = useContext(AppContext);
       <select
         className={style.oprawa}
         defaultValue={binding.oprawa}
-        // onChange={(event) => {
-        //   handleChangeCardOprawa({...row, oprawa: event.target.value});
+        onChange={(event) => {
+          setShowElement(true)
+          if(event.target.value==0){
+            setShowElement(false)
+          }else{
+
+            context.setPreOrder({...context.preOrder, oprawa: event.target.value})
 
 
-        //   if(row.indeks == 0){
-        //   setProdukty(
-        //     produkty.map((p) => {
-        //       if (p.id === row.produkt_id) {
-        //         return {...p, oprawa:event.target.value};
-        //       } else {
-        //         return p;
-        //       }
-        //     })
-        //   );
-           
-        //   }
+          }
+        }}
 
-        // }}
+
       >
+        <option key={1} value={0}> 
+           wybierz oprawę...
+          </option>
         {contextApp.bindingType.map((option) => (
+          
+          
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>

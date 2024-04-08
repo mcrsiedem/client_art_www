@@ -42,6 +42,7 @@ export default function Technologie(){
 
     return(
     <>
+    Technologia
     {/* <input onChange={(e)=>setMessage(e.target.value)}></input> 
     <button onClick={sendMessage}>Send</button>
     <h1>Message:</h1>

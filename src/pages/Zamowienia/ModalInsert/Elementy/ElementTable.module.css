@@ -110,7 +110,8 @@
 }
 
 .col_format {
-  width: 55px;
+  min-width: 50px;
+  width: 50px;
 }
 
 .col_button {

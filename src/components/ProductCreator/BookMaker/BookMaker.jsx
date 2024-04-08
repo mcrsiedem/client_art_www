@@ -17,8 +17,8 @@ export default function BookMaker({
   return (
     <div className={style.container}>
       <div className={style.bindingContainer}>
-        {binding
-          .filter((bind1) => bind1.id !== 6) // oprawa id 1 n/d
+        {/* {binding
+          .filter((bind1) => bind1.id !== 10) // oprawa id 1 n/d
           .map((bind) => (
             <CardBinding
               bind={bind}
@@ -26,13 +26,19 @@ export default function BookMaker({
               setBinding={setBinding}
               setShowElement={setShowElement}
             />
-          ))}
+          ))} */}
+
+          <Oprawa  
+              binding={binding}
+              setBinding={setBinding}
+              setShowElement={setShowElement}
+              />
       </div>
 
       {showElement && (
         <>
      
-          <Naklad />
+          <Naklad/>
 
           <div className={style.bindingContainer}>
             <Okladka/>
@@ -53,6 +59,51 @@ export default function BookMaker({
     </div>
   );
 }
+
+
+const Oprawa =({  binding, setBinding, setShowElement}) => {
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
+const contextApp = useContext(AppContext);
+
+  return (
+ 
+
+      <select
+        className={style.oprawa}
+        defaultValue={binding.oprawa}
+        // onChange={(event) => {
+        //   handleChangeCardOprawa({...row, oprawa: event.target.value});
+
+
+        //   if(row.indeks == 0){
+        //   setProdukty(
+        //     produkty.map((p) => {
+        //       if (p.id === row.produkt_id) {
+        //         return {...p, oprawa:event.target.value};
+        //       } else {
+        //         return p;
+        //       }
+        //     })
+        //   );
+           
+        //   }
+
+        // }}
+      >
+        {contextApp.bindingType.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+
+  );
+}
+
+
+
 
 
 

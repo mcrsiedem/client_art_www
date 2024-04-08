@@ -201,7 +201,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={DecodeToken(sessionStorage.getItem("token")).id}
+        valueDefault={DecodeToken(sessionStorage.getItem("token")).id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
           setSaveButtonDisabled(false)
@@ -335,7 +335,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
         
 
-         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)
@@ -382,7 +382,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
 
    
-         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ.\+\-\(\),]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
           setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});

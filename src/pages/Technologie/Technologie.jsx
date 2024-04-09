@@ -27,12 +27,12 @@ export default function Technologie(){
 
 
 
-   async function fetchTechnologie(){
-      const res = await axios.get(IP + "technologie");
-      let job =[...res.data]
-      setDataTechnologie(job)
-      console.log(job)
-    }
+  //  async function fetchTechnologie(){
+  //     const res = await axios.get(IP + "technologie");
+  //     let job =[...res.data]
+  //     setDataTechnologie(job)
+  //     console.log(job)
+  //   }
 
 
 

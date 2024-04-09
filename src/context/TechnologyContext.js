@@ -1,58 +1,34 @@
-import { useEffect,createContext,useState, useCallback } from "react";
-import { getUsers } from "../actions/getUsers";
-import { getClients } from "../actions/getClients";
-import { getProcess } from 'actions/getProcess';
-import { getBindingType } from "actions/getBindingType";
-import { getProductType } from "actions/getProductType";
+import { getTechnology } from "actions/getTechnolgy";
+import { useEffect,createContext,useState, useCallback } from "react";;
+
 
 export const TechnologyContext = createContext();
 export const TechnologyContextProvider = ({children})=>{
 
-    const [users, setUsers] = useState(null);
-    const [clients, setClients] = useState(null);
-    const [process, setProcess] = useState(null); 
-    const [bindingType, setBindingTyp] = useState(null); 
-    const [productType, setProductType] = useState(null); 
+    const [technology, setTechnology] = useState(null);
 
-    const [rowSelected, setRowSelected] = useState(null); 
 
-    const updateProcess = useCallback(()=>{
-        getProcess(setProcess) 
-       },[])
 
-    const updateClients = useCallback(()=>{
-     getClients(setClients)
-    },[])
-
-    const updateUsers = useCallback(()=>{
-        getUsers(setUsers)
+        const updateTechnology = useCallback(()=>{
+            getTechnology(setTechnology)
        },[])
 
 
 
     
     useEffect(()=>{
-        getUsers(setUsers) 
-        getClients(setClients) 
-        getProcess(setProcess) 
-        getBindingType(setBindingTyp)
-        getProductType(setProductType)
+    getTechnology(setTechnology)
 
     },[])
     
-    return  <AppContext.Provider 
+    return  <TechnologyContext.Provider 
                 value={{
-                    users,updateUsers,          // wszystcy uzytkownicy
-                    clients,updateClients,      // wszyscy klienci
-                    process, updateProcess,     // lista dostępnych procesów
-                    productType,
-                    bindingType, setBindingTyp, // lista dostępnych opraw
-                    rowSelected, setRowSelected, // druk
-                    _firma
+                    technology, setTechnology, updateTechnology
+
                 }}
             >
                 {children}
-            </AppContext.Provider>
+            </TechnologyContext.Provider>
 
 
 

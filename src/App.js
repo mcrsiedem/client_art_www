@@ -13,6 +13,7 @@ import { AppContextProvider } from "./context/AppContext";
 import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 import { PreOrderContextProvider } from "context/PreOrderContext";
+import { TechnologyContextProvider } from "context/TechnologyContext";
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
     <BrowserRouter basename={''} >
       <SocketContextProvider>
       <AppContextProvider>
+        <TechnologyContextProvider>
       <PreOrderContextProvider>
       <ModalInsertContextProvider>
             <Routes >
@@ -34,6 +36,7 @@ export default function App() {
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>
+      </TechnologyContextProvider>
       </AppContextProvider>
       </SocketContextProvider>
     </BrowserRouter>

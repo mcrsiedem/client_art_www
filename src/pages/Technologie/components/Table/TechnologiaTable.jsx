@@ -2,6 +2,21 @@
 
 import style from "./TechnologiaTable.module.css";
 export default function TechnologiaTable({dataTechnologie,setStageTechnologiaVisible,setActiveRowId}){
+
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (effectRan.current === true) {
+      //  fetchTechnologie();
+      // const socket = io.connect("http://localhost:3002")
+    
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
+
+
+  
 return(
     <table>
     <thead>

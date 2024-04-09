@@ -11,35 +11,10 @@ export default function Technologie(){
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
 
-
-    const effectRan = useRef(false);
-    useEffect(() => {
-      if (effectRan.current === true) {
-        //  fetchTechnologie();
-        // const socket = io.connect("http://localhost:3002")
-      
-      }
-      return () => {
-        effectRan.current = true;
-      };
-    }, []);
-
-
-
-
-  //  async function fetchTechnologie(){
-  //     const res = await axios.get(IP + "technologie");
-  //     let job =[...res.data]
-  //     setDataTechnologie(job)
-  //     console.log(job)
-  //   }
-
-
-
     return(
     <>
- 
       <Header/>
+      
 
     </>
     )

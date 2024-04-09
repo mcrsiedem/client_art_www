@@ -21,7 +21,7 @@ export default function App() {
     <BrowserRouter basename={''} >
       <SocketContextProvider>
       <AppContextProvider>
-        <TechnologyContextProvider>
+      <TechnologyContextProvider>
       <PreOrderContextProvider>
       <ModalInsertContextProvider>
             <Routes >

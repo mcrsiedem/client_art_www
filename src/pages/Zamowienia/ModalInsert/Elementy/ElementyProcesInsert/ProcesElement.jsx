@@ -17,13 +17,14 @@ export default function ProcesElement() {
 
 
 function Window({children}) {
-
   return (
     <div className={style.blurContainer}>
       <div className={style.window}>{children}</div>
     </div>
   );
 }
+
+
 function Header() {
   const modalContext = useContext(ModalInsertContext);
   const rowElement = modalContext.selectedElementROW;

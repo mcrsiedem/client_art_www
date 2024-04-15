@@ -1,7 +1,7 @@
 import { useEffect,createContext,useState, useCallback } from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
-import { getProcess } from 'actions/getProcess';
+import { getProcesList } from 'actions/getProcesList';
 import { getBindingType } from "actions/getBindingType";
 import { getProductType } from "actions/getProductType";
 
@@ -10,14 +10,14 @@ export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
-    const [process, setProcess] = useState(null); 
+    const [procesList, setProcesList] = useState(null); 
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
 
     const [rowSelected, setRowSelected] = useState(null); 
 
-    const updateProcess = useCallback(()=>{
-        getProcess(setProcess) 
+    const updateProcesList = useCallback(()=>{
+        getProcesList(setProcesList) 
        },[])
 
     const updateClients = useCallback(()=>{
@@ -34,7 +34,7 @@ export const AppContextProvider = ({children})=>{
     useEffect(()=>{
         getUsers(setUsers) 
         getClients(setClients) 
-        getProcess(setProcess) 
+        getProcesList(setProcesList) 
         getBindingType(setBindingTyp)
         getProductType(setProductType)
 
@@ -44,7 +44,7 @@ export const AppContextProvider = ({children})=>{
                 value={{
                     users,updateUsers,          // wszystcy uzytkownicy
                     clients,updateClients,      // wszyscy klienci
-                    process, updateProcess,     // lista dostępnych procesów
+                    procesList, updateProcesList,     // lista dostępnych procesów
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk

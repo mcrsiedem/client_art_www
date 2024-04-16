@@ -33,3 +33,6 @@ ModalInsert -
 Typy elementów oraz inne przenieśc do bazy danych z api
 
 dane - tytul i uwagi nowa walidacja tekstu z kropkami przecinkami i nawiasami
+
+
+Zapis domyślnych procesów i odczyt

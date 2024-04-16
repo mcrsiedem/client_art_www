@@ -74,7 +74,8 @@ function Table() {
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.col1}>#</th>
+            <th className={style.col_indeks}>#</th>
+            <th className={style.col_indeks}>id</th>
             <th className={style.col_typ}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_ilosc}>Front</th>
@@ -88,6 +89,7 @@ function Table() {
           {procesyElementow.map((row, i) => {
             return (
               <tr key={row.id}>
+                <td>{i+1}</td>
                 <td>{row.id}</td>
                 <td>{row.proces_nazwa}</td>
                 <td>{row.proces_typ}</td>

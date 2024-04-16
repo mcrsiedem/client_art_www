@@ -5,7 +5,8 @@ import { IP } from "../utils/Host";
 
 
 
-export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia}){
+export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,
+  procesyElementow}){
             // console.clear();
 
     let produktyEdit = JSON.parse(JSON.stringify(produkty))
@@ -13,31 +14,35 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
     let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
     let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
     let pakowanieEdit = JSON.parse(JSON.stringify(pakowanie))
+    let procesyElementowEdit = JSON.parse(JSON.stringify(procesyElementow))
             
             // console.log("...from save order start");
             // console.log(oprawaEdit);          
             // console.log(fragmentyEdit);
 
-    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,saveAs})
+    let savedOrder  = await saveDataOrder({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs})
     produktyEdit = savedOrder.produktyEdit
     elementyEdit = savedOrder.elementyEdit
     fragmentyEdit = savedOrder.fragmentyEdit
     oprawaEdit = savedOrder.oprawaEdit
     daneZamowienia = savedOrder.daneZamowienia
     pakowanieEdit = savedOrder.pakowanieEdit
+    procesyElementowEdit = savedOrder.procesyElementowEdit
  
             // console.log("zamowienie_id: " + savedOrder.zamowienie_id);
-    let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit});
+    let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit});
 
     elementyEdit = savedProducts.elementyEdit
     fragmentyEdit = savedProducts.fragmentyEdit
     oprawaEdit = savedProducts.oprawaEdit
     pakowanieEdit = savedProducts.pakowanieEdit
+    procesyElementowEdit = savedProducts.procesyElementowEdit
 
-     let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit});
      fragmentyEdit = savedElements.fragmentyEdit
+     procesyElementowEdit = savedElements.procesyElementowEdit
 
-     let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
+     let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,});
      fragmentyEdit = savedBindings.fragmentyEdit
 
      let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
@@ -52,6 +57,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      setFragmenty(fragmentyEdit)
      setOprawa(oprawaEdit)
      setPakowanie(pakowanieEdit)
+     setProcesyElementow(procesyElementowEdit)
 
      refreshZamowienia();
      
@@ -64,7 +70,7 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 
 //----------------------------------------------------------------------------------
 
-const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,saveAs}) =>{
+const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs}) =>{
 
     return new Promise(async(resolve,reject)=>{
       // saveAs domyślnie false, bo domyślnie nadpisujemy.
@@ -134,16 +140,22 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
       } }else {return obj} 
     })
 
+    procesyElementowEdit = procesyElementowEdit.map((obj) => {
+      if (obj.zamowienie_id == daneZamowienia.id) {return {
+        ...obj, zamowienie_id : zamowienie_id
+      } }else {return obj} 
+    })
+
 
     daneZamowienia.id = zamowienie_id
 
-        resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia,pakowanieEdit})
+        resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia,pakowanieEdit,procesyElementowEdit})
 
     })
 }
 
 
-const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit }) => {
+const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let produkt of produktyEdit) {
@@ -191,6 +203,12 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pako
               } }else {return obj} 
             })
 
+            procesyElementowEdit = procesyElementowEdit.map((obj) => {
+              if (obj.produkt_id == produkt.id) {return {
+                ...obj, produkt_id : produkt_id
+              } }else {return obj} 
+            })
+
             produkt.id = response.data.insertId;
       //      produkt.zamowienie_id = zamowienie_id;
           })
@@ -199,11 +217,11 @@ const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pako
 
     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit}));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit}));
   });
 };
 
-const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let element of elementyEdit) {
@@ -234,6 +252,12 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
               } }else {return obj} 
             })
 
+            procesyElementowEdit = procesyElementowEdit.map((obj) => {
+              if (obj.element_id == element.id) {return {
+                ...obj, element_id : new_element_id
+              } }else {return obj} 
+            })
+
             element.id = new_element_id
       //      produkt.zamowienie_id = zamowienie_id;
           })
@@ -242,7 +266,7 @@ const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =>
 
     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit}));
   });
 };
 
@@ -308,21 +332,10 @@ const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) =
           })
 
           .then((response) => {
-
             let new_fragment_id = response.data.insertId;
-
-            // fragmentyEdit = fragmentyEdit.map((obj) => {
-            //   if (obj.oprawa_id == oprawa.id) {return {
-            //     ...obj, oprawa_id : new_oprawa_id
-            //   } }else {return obj} 
-            // })
-
             fragment.id = new_fragment_id
-
           })
-     
           );
-
     }
 
     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
@@ -347,22 +360,11 @@ const savePacking = ({ pakowanieEdit }) => {
           })
 
           .then((response) => {
-
-            // if(response.status == 400){
-            //   console.log(response.sqlMessage)
-            // }
-          
-
             let new_paczka_id = response.data.insertId;
-
             paczka.id = new_paczka_id
-
           })
-     
           );
-
     }
-
     Promise.all(promises).then(() => resolve({pakowanieEdit}));
   });
 };

@@ -76,6 +76,9 @@ function Table() {
           <tr>
             <th className={style.col_indeks}>#</th>
             <th className={style.col_indeks}>id</th>
+            <th className={style.col_indeks}>zam</th>
+            <th className={style.col_indeks}>prod</th>
+            <th className={style.col_indeks}>element</th>
             <th className={style.col_typ}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_ilosc}>Front</th>
@@ -91,6 +94,9 @@ function Table() {
               <tr key={row.id}>
                 <td>{i+1}</td>
                 <td>{row.id}</td>
+                <td>{row.zamowienie_id}</td>
+                <td>{row.produkt_id}</td>
+                <td>{row.element_id}</td>
                 <td>{row.proces_nazwa}</td>
                 <td>{row.proces_typ}</td>
                 <td>{row.front_ilosc}</td>

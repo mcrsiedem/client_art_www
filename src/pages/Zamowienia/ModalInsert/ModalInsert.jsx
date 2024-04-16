@@ -318,9 +318,26 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
   }
 
 
-    function postZamowienieObj(){
-    saveOrder({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,cookies,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia});
-  }
+    function postZamowienieObj() {
+      saveOrder({
+        daneZamowienia,
+        produkty,
+        elementy,
+        fragmenty,
+        oprawa,
+        pakowanie,
+        cookies,
+        setProdukty,
+        setElementy,
+        setFragmenty,
+        setOprawa,
+        setPakowanie,
+        saveAs,
+        refreshZamowienia,
+        setProcesyElementow,
+        procesyElementow
+      });
+    }
 
 
 

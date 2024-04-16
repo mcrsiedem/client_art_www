@@ -51,6 +51,8 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
      let savedPacking= await savePacking({pakowanieEdit});
      pakowanieEdit = savedPacking.pakowanieEdit
 
+     let savedProcess= await saveProcess({procesyElementowEdit});
+     procesyElementowEdit = savedProcess.procesyElementowEdit
 
     setProdukty(produktyEdit)
      setElementy(elementyEdit)
@@ -366,5 +368,35 @@ const savePacking = ({ pakowanieEdit }) => {
           );
     }
     Promise.all(promises).then(() => resolve({pakowanieEdit}));
+  });
+};
+
+
+const saveProcess = ({ procesyElementowEdit }) => {
+  //pakowanie
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let process of procesyElementowEdit) {
+      promises.push(axios.post(IP + "procesyElementow", {
+        zamowienie_id: process.zamowienie_id,
+        produkt_id: process.produkt_id,
+        element_id: process.element_id,
+        proces_id: process.proces_id,
+        front_ilosc: process.front_ilosc,
+        back_ilosc: process.back_ilosc,
+        front_kolor: process.front_kolor,
+        back_kolor: process.back_kolor,
+        info: process.info,
+        indeks: process.indeks
+
+          })
+
+          .then((response) => {
+            let new_proces_id = response.data.insertId;
+            process.id = new_proces_id
+          })
+          );
+    }
+    Promise.all(promises).then(() => resolve({procesyElementowEdit}));
   });
 };

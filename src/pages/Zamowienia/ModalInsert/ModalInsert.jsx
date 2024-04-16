@@ -5,7 +5,7 @@ import HeaderModal from "./Header/HeaderModal";
 import Dane from "./Dane/Dane";
 import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
-
+import { initialProcesy } from "utils/initialvalue";
 import {
   _firma,
   _klient,
@@ -13,7 +13,6 @@ import {
   _papiery,
   initialFragmenty,
   _uszlachetnienia,
-  initialProcesy,
   _opiekun,
   _status,
   _stan,
@@ -64,7 +63,7 @@ function ModalInsert({
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
   const [info, setInfo] = useState("napis");
   const [listaUszlachetnien, setListaUszlachetnien] = useState();
-  const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+  // const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
@@ -88,6 +87,8 @@ const oprawa = contextModalInsert.oprawa;
 const setOprawa = contextModalInsert.setOprawa;
 const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
+const procesyElementow = contextModalInsert.procesyElementow;
+const setProcesyElementow = contextModalInsert.setProcesyElementow;
 
 
   useEffect(() => {
@@ -113,6 +114,7 @@ const setPakowanie = contextModalInsert.setPakowanie;
       setFragmenty(initialFragmenty)
       setOprawa(initialOprawa)
       setPakowanie(initalPakowanie)
+      setProcesyElementow(initialProcesy)
     }
 
 
@@ -158,6 +160,7 @@ const setPakowanie = contextModalInsert.setPakowanie;
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
+           setProcesyElementow(res.data[6])
   }
 
   return (

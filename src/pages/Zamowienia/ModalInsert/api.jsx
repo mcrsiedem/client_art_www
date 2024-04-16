@@ -188,48 +188,48 @@ const _papiery = [
 
 ];
 
-const initialProcesy = [
-  {
-    id: 1,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 1, 
-    proces_id: 2, 
-    proces_nazwa: "Druk",
-    proces_typ: "farba",
-    front:"CMYK",
-    back:"CMYK",
-    info:""
+// const initialProcesy = [
+//   {
+//     id: 1,
+//     zamowienie_id: 1,
+//     produkt_id: 1,
+//     element_id: 1, 
+//     proces_id: 2, 
+//     proces_nazwa: "Druk",
+//     proces_typ: "farba",
+//     front:"CMYK",
+//     back:"CMYK",
+//     info:""
 
-  },{
-    id: 2,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 1, 
-    proces_id: 2, 
-    proces_nazwa: "Uszlachetnienie",
-    proces_typ: "lakier",
-    front:"",
-    back:"",
-    info:""
+//   },{
+//     id: 2,
+//     zamowienie_id: 1,
+//     produkt_id: 1,
+//     element_id: 1, 
+//     proces_id: 2, 
+//     proces_nazwa: "Uszlachetnienie",
+//     proces_typ: "lakier",
+//     front:"",
+//     back:"",
+//     info:""
 
-  }
-  ,{
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 1, 
-    proces_id: 2, 
-    proces_nazwa: "Druk",
-    front:"",
-    back:"",
-    info:""
+//   }
+//   ,{
+//     id: 3,
+//     zamowienie_id: 1,
+//     produkt_id: 1,
+//     element_id: 1, 
+//     proces_id: 2, 
+//     proces_nazwa: "Druk",
+//     front:"",
+//     back:"",
+//     info:""
     
 
-  }
+//   }
 
 
-];
+// ];
 
 
 const _wykonczenie = [
@@ -427,4 +427,4 @@ const _typ_elementu = [
 // ]
 
 
-export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,initialProcesy,_opiekun,_status,_stan,_typ_produktu,_typ_elementu,_rodzaj,_vat,_waluta, _fsc};
+export {_firma,initialProdukty,_klient,initialElementy,_papiery,_rodzaj_oprawy,initialFragmenty,_opiekun,_status,_stan,_typ_produktu,_typ_elementu,_rodzaj,_vat,_waluta, _fsc};

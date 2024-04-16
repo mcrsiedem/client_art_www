@@ -2,7 +2,7 @@ import { useEffect,createContext,useState, useCallback, useRef } from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcess } from "actions/getProcesList";
-import { initialDane } from "utils/initialvalue";
+import { initialDane, initialProcesy } from "utils/initialvalue";
 
 import axios from "axios";
 import { IP } from "utils/Host";
@@ -14,7 +14,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
-    const [procesy,setProcesy] = useState(null)
+
 
 
     const [daneZamowienia, setDaneZamowienia] = useState(initialDane);  
@@ -23,6 +23,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [fragmenty, setFragmenty] = useState(initialFragmenty);
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
+    const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
 
     
      const updateZamowienieID = useCallback((data) => {
@@ -94,6 +95,7 @@ export const ModalInsertContextProvider = ({children})=>{
           fragmenty, setFragmenty,
           oprawa, setOprawa,
           pakowanie, setPakowanie,
+          procesyElementow, setProcesyElementow,
 
           lockDragDrop, setLockDragDrop,
      

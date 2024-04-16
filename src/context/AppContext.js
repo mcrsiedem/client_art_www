@@ -10,9 +10,10 @@ export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
-    const [procesList, setProcesList] = useState(null); 
+    const [procesList, setProcesList] = useState(null); // lista wszystkich dostępnych procesów
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
+
 
     const [rowSelected, setRowSelected] = useState(null); 
 
@@ -34,7 +35,7 @@ export const AppContextProvider = ({children})=>{
     useEffect(()=>{
         getUsers(setUsers) 
         getClients(setClients) 
-        getProcesList(setProcesList) 
+        getProcesList(setProcesList) // lista wszystkich dostępnych procesów
         getBindingType(setBindingTyp)
         getProductType(setProductType)
 
@@ -44,7 +45,7 @@ export const AppContextProvider = ({children})=>{
                 value={{
                     users,updateUsers,          // wszystcy uzytkownicy
                     clients,updateClients,      // wszyscy klienci
-                    procesList, updateProcesList,     // lista dostępnych procesów
+                    procesList, updateProcesList,     // lista wszystkich dostępnych proce
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk

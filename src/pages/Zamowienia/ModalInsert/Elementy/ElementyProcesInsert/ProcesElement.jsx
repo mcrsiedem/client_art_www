@@ -67,7 +67,8 @@ function Footer() {
 
 function Table() {
   const contexApp = useContext(AppContext);
-  const procesyElementow = contexApp.process;
+  const contexModal = useContext(ModalInsertContext);
+  const procesyElementow = contexModal.procesyElementow;
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -77,9 +78,9 @@ function Table() {
             <th className={style.col_typ}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_naklad}>Front</th>
-            <th className={style.col_naklad}>Nazwa</th>
             <th className={style.col_naklad}>Back</th>
-            <th className={style.col_naklad}>Nazwa</th>
+            <th className={style.col_naklad}>Front kolory</th>
+            <th className={style.col_naklad}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
           </tr>
         </thead>
@@ -90,10 +91,10 @@ function Table() {
                 <td>{row.id}</td>
                 <td>{row.proces_nazwa}</td>
                 <td>{row.proces_typ}</td>
-                <td>4</td>
-                <td>CMYK</td>
-                <td>CMYK</td>
-                <td>CMYK</td>
+                <td>{row.front_ilosc}</td>
+                <td>{row.back_ilosc}</td>
+                <td>{row.front_kolor}</td>
+                <td>{row.back_kolor}</td>
                 <td></td>
               </tr>
             );

@@ -1,14 +1,3 @@
- 
-
-Klienci - 
-            - kasowanie klienta - zmiana parametru delete na 1  V
-            - okno potwierdzające kasowanie                     V
-            - zamykanie okna                                    V
-            - edytowanie - ikonka edit obok kasowanie           V
-            - ikonki kasowanie -  edycja - użycie ( łapka )     V
-            - user_id - domyślnie                               V
-            - opiekun_id - domyślnie                            V
-            - user:  DecodeToken(sessionStorage.getItem("token")).id     
 
     Zamówienia:        
 -   delete order
@@ -34,5 +23,5 @@ Typy elementów oraz inne przenieśc do bazy danych z api
 
 dane - tytul i uwagi nowa walidacja tekstu z kropkami przecinkami i nawiasami
 
-
+16/04/2024
 Zapis domyślnych procesów i odczyt

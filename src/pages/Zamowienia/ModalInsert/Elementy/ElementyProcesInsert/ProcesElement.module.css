@@ -115,3 +115,10 @@
     outline-style: none;
     font-size:1rem;
   } */
+
+  .col_ilosc{
+    width: 50px;
+  }
+  .col_kolory{
+    width: 120px;
+  }

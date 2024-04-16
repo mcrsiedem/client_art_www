@@ -77,10 +77,10 @@ function Table() {
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Proces</th>
             <th className={style.col_typ}>Typ</th>
-            <th className={style.col_naklad}>Front</th>
-            <th className={style.col_naklad}>Back</th>
-            <th className={style.col_naklad}>Front kolory</th>
-            <th className={style.col_naklad}>Back kolory</th>
+            <th className={style.col_ilosc}>Front</th>
+            <th className={style.col_ilosc}>Back</th>
+            <th className={style.col_kolory}>Front kolory</th>
+            <th className={style.col_kolory}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
           </tr>
         </thead>

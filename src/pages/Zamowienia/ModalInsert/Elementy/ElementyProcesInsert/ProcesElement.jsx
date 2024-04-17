@@ -31,7 +31,7 @@ function Header() {
   const rowElement = modalContext.selectedElementROW;
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy  -  {appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} </p>
+      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} {rowElement.naklad} szt. {rowElement.nazwa}</p> </p> 
       <Zamknij/>
     </div>
   );

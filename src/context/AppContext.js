@@ -49,7 +49,7 @@ export const AppContextProvider = ({children})=>{
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
-                    _firma
+                    _firma,typ_elementu
                 }}
             >
                 {children}
@@ -77,3 +77,25 @@ const _firma = [
       NIP: "123-111-22-33",
     },
   ];
+
+  const typ_elementu = [
+    {
+      id: 1,
+      nazwa: "Okładka"
+  
+    },{
+      id: 2,
+      nazwa: "Środek",
+    },
+    ,{
+      id: 3,
+      nazwa: "Wklejka",
+    },
+    ,{
+      id: 4,
+      nazwa: "Insert",
+    }  ,{
+      id: 5,
+      nazwa: "Ulotka",
+    }
+  ]

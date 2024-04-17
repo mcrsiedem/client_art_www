@@ -27,10 +27,11 @@ function Window({children}) {
 
 function Header() {
   const modalContext = useContext(ModalInsertContext);
+  const appContext = useContext(AppContext);
   const rowElement = modalContext.selectedElementROW;
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy {rowElement.id} {rowElement.typ} {rowElement.nazwa} </p>
+      <p className={style.title}>Procesy {appContext.typ_elementu.filter(x => x.id != rowElement.id)[0].nazwa} {rowElement.typ} {rowElement.nazwa} </p>
       <Zamknij/>
     </div>
   );

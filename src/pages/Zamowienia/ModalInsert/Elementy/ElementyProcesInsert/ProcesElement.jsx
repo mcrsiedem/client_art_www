@@ -98,7 +98,8 @@ function Table() {
                 <td>{row.zamowienie_id}</td>
                 <td>{row.produkt_id}</td>
                 <td>{row.element_id}</td>
-                <td>{row.proces_nazwa}</td>
+                <td>{row.proces_id}</td>
+               {/* zrobić view_zamowienia_procesy proces_id join nazwa  - zamienić proces_id na nazwa_id*/}
                 <td>{row.proces_typ}</td>
                 <td>{row.front_ilosc}</td>
                 <td>{row.back_ilosc}</td>

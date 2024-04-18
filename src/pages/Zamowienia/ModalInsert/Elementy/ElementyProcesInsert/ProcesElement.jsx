@@ -98,7 +98,8 @@ function Table() {
                 <td>{row.zamowienie_id}</td>
                 <td>{row.produkt_id}</td>
                 <td>{row.element_id}</td>
-                <td>{row.proces_id}</td>
+                {/* <td>{row.proces_id}</td> */}
+                <Proces row={row}/>
                {/* zrobić view_zamowienia_procesy proces_id join nazwa  - zamienić proces_id na nazwa_id*/}
                 <td>{row.proces_typ}</td>
                 <td>{row.front_ilosc}</td>
@@ -112,5 +113,41 @@ function Table() {
         </tbody>
       </table>
     </div>
+  );
+}
+
+
+const Proces =({ row }) => {
+
+  const contexModal = useContext(ModalInsertContext);
+  const contexApp = useContext(AppContext);
+
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.id}
+        onChange={(e) => {
+
+          contexModal. handleUpdateRowProcesyElementow({
+            ...row,
+            id: e.target.value,
+          }
+          );
+
+        }}
+
+        
+
+
+      >
+        {}
+        {contexApp.procesListName.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
   );
 }

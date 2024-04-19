@@ -99,8 +99,9 @@ function Table() {
                 <td>{row.produkt_id}</td>
                 <td>{row.element_id}</td>
                 <ProcesName row={row}/>
+                <ProcessTyp row={row}/>
             
-                <td>{row.proces_typ}</td>
+      
                 <td>{row.front_ilosc}</td>
                 <td>{row.back_ilosc}</td>
                 <td>{row.front_kolor}</td>
@@ -130,7 +131,7 @@ const ProcesName = ({ row }) => {
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
-            nazwa_id: e.target.value,
+            proces_id: e.target.value,
           });
         }}
       >
@@ -162,9 +163,11 @@ const ProcessTyp = ({ row }) => {
         }}
       >
         {}
-        {contexApp.procesListName.map((option) => (
+        {contexApp.procesList
+        .filter(p=> p.proces_id == contexModal.procesyElementow[row.indeks].proces_id)
+        .map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa}
+            {option.typ}
           </option>
         ))}
       </select>

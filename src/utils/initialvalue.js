@@ -235,6 +235,7 @@ const initialProcesy = [
     produkt_id: 1,
     element_id: 1,
     proces_id: 1,
+    proces_nazwa_id: 1,
     proces_nazwa: "Druk",
     proces_typ: "offsetowy",
     proces_rodzaj: "perfector",

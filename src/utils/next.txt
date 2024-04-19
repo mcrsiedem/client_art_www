@@ -28,3 +28,5 @@ Zapis domyślnych procesów i odczyt
 
 19/04/2024
 Procesy - filtrowanie typów
+
+Do listy procesów trzeba dodać na stałe front i back

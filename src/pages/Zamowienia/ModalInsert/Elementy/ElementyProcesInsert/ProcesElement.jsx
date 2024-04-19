@@ -80,7 +80,7 @@ function Table() {
             <th className={style.col_indeks}>zam</th>
             <th className={style.col_indeks}>prod</th>
             <th className={style.col_indeks}>element</th>
-            <th className={style.col_typ}>Proces</th>
+            <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_ilosc}>Front</th>
             <th className={style.col_ilosc}>Back</th>
@@ -98,9 +98,8 @@ function Table() {
                 <td>{row.zamowienie_id}</td>
                 <td>{row.produkt_id}</td>
                 <td>{row.element_id}</td>
-                {/* <td>{row.proces_id}</td> */}
-                <Proces row={row}/>
-               {/* zrobić view_zamowienia_procesy proces_id join nazwa  - zamienić proces_id na nazwa_id*/}
+                <ProcesName row={row}/>
+            
                 <td>{row.proces_typ}</td>
                 <td>{row.front_ilosc}</td>
                 <td>{row.back_ilosc}</td>
@@ -117,8 +116,7 @@ function Table() {
 }
 
 
-const Proces =({ row }) => {
-
+const ProcesName = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
 
@@ -126,20 +124,15 @@ const Proces =({ row }) => {
     <td>
       <select
         className={style.select}
-        defaultValue={row.id}
+        defaultValue={row.nazwa_id}
         onChange={(e) => {
-
-          contexModal. handleUpdateRowProcesyElementow({
+          // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
+          // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
+          contexModal.handleUpdateRowProcesyElementow({
             ...row,
-            id: e.target.value,
-          }
-          );
-
+            nazwa_id: e.target.value,
+          });
         }}
-
-        
-
-
       >
         {}
         {contexApp.procesListName.map((option) => (
@@ -150,4 +143,31 @@ const Proces =({ row }) => {
       </select>
     </td>
   );
-}
+};
+
+const ProcessTyp = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const contexApp = useContext(AppContext);
+
+  return (
+    <td>
+      <select
+        className={style.select}
+        defaultValue={row.id}
+        onChange={(e) => {
+          contexModal.handleUpdateRowProcesyElementow({
+            ...row,
+            id: e.target.value,
+          });
+        }}
+      >
+        {}
+        {contexApp.procesListName.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );
+};

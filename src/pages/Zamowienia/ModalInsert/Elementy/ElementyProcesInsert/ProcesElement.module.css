@@ -122,11 +122,21 @@ margin-left: 15px;
     font-size:1rem;
   } */
   .col_indeks{
-    width: 50px;
+    width: 40px;
   }
   .col_ilosc{
     width: 50px;
   }
   .col_kolory{
     width: 120px;
+  }
+
+  .col_proces{
+    width: 100px;
+  }
+
+  .select{
+    background: transparent;
+    height: 25px;
+    box-shadow: none;
   }

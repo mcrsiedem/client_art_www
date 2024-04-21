@@ -159,11 +159,12 @@ const ProcessTyp = ({ row }) => {
     <td>
       <select
         className={style.select}
-        defaultValue={row.id}
+        defaultValue={row.proces_id}
         onChange={(e) => {
+          console.log(e.target.value)
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
-            id: e.target.value,
+            proces_id: e.target.value,
           });
         }}
       >

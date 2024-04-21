@@ -244,6 +244,22 @@ const initialProcesy = [
     back_kolor: "CMYK",
     info: "",
     indeks: 0
+  },
+  {
+    id: 2,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    element_id: 2,
+    proces_id: 1,
+    nazwa_id: 1,
+    proces_nazwa: 2,
+    proces_typ: 1,
+    front_ilosc: "4",
+    back_ilosc: "4",
+    front_kolor: "CMYK",
+    back_kolor: "CMYK",
+    info: "",
+    indeks: 0
   }
 ];
 

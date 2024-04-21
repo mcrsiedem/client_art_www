@@ -382,6 +382,7 @@ const saveProcess = ({ procesyElementowEdit }) => {
         produkt_id: process.produkt_id,
         element_id: process.element_id,
         proces_id: process.proces_id,
+        nazwa_id: process.nazwa_id,
         front_ilosc: process.front_ilosc,
         back_ilosc: process.back_ilosc,
         front_kolor: process.front_kolor,

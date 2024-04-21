@@ -131,7 +131,7 @@ const ProcesName = ({ row }) => {
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
-            proces_nazwa_id: e.target.value,
+            nazwa_id: e.target.value,
           });
         }}
       >
@@ -164,7 +164,7 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        .filter(p=> p.proces_id == contexModal.procesyElementow[row.indeks].proces_nazwa_id)
+        .filter(p=> p.proces_id == contexModal.procesyElementow[row.indeks].nazwa_id)
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}

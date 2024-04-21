@@ -258,7 +258,7 @@ const initialProcesy = [
     back_ilosc: "4",
     front_kolor: "CMYK",
     back_kolor: "CMYK",
-    info: "",
+    info: "d",
     indeks: 1
   }
 ];

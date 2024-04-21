@@ -70,6 +70,8 @@ function Table() {
   const contexApp = useContext(AppContext);
   const contexModal = useContext(ModalInsertContext);
   const procesyElementow = contexModal.procesyElementow;
+  const selectedElementROW = contexModal.selectedElementROW;
+
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -90,7 +92,9 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementow.map((row, i) => {
+          {procesyElementow
+          .filter(x => x.element_id == selectedElementROW.id)
+          .map((row, i) => {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
@@ -149,6 +153,7 @@ const ProcesName = ({ row }) => {
 const ProcessTyp = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
+  const selectedElementROW = contexModal.selectedElementROW;
 
   return (
     <td>
@@ -164,8 +169,8 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        .filter(p=> p.proces_id == contexModal.procesyElementow[row.indeks].nazwa_id)
-        .map((option) => (
+        .filter(p=> p.proces_id == contexModal.procesyElementow.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+               .map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}
           </option>

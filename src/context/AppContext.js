@@ -31,7 +31,10 @@ export const AppContextProvider = ({children})=>{
         getUsers(setUsers)
        },[])
 
+       const showMeProcessName = (id) =>{
 
+        return procesListName.filter(pln => pln.id == id)[0].nazwa
+       }
 
     
     useEffect(()=>{
@@ -53,7 +56,8 @@ export const AppContextProvider = ({children})=>{
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
-                    _firma,typ_elementu
+                    _firma,typ_elementu,
+                    showMeProcessName
                 }}
             >
                 {children}

@@ -10,6 +10,7 @@ import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
+import { AppContext } from "context/AppContext";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -219,8 +220,11 @@ export default function RowElement({
     );
   }
   
-function Procesy({ row, procesyElementow}) {
+function Procesy({ row}) {
   const contextModalInsert = useContext(ModalInsertContext);
+  const appContext = useContext(AppContext);
+
+  const procesyElementow =contextModalInsert.procesyElementow;
     return (
       <td className={style.col_button} id="procesy">
       <img
@@ -234,8 +238,9 @@ function Procesy({ row, procesyElementow}) {
         alt="Procesy"
       />
       {procesyElementow
-        .filter((frag) => frag.element_id === row.id)
-        .map((pr) => pr.proces)}
+        .filter((frag) => frag.element_id == row.id)
+        .map((pr) => appContext.showMeProcessName( pr.nazwa_id))}
+        
     </td>
     );
   }
@@ -250,6 +255,8 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
             onClick={() => {handleRemoveItem(row.indeks, row.id)}}
             alt="Procesy"
           />
+
+     
         </div>
 
       </td>

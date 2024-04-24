@@ -170,7 +170,7 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        .filter(p=> p.proces_id == contexModal.procesyElementow.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+        .filter(p=> p.nazwa_id == contexModal.procesyElementow.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
                .map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}

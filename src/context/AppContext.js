@@ -16,7 +16,7 @@ export const AppContextProvider = ({children})=>{
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
 
-
+//d
     const [rowSelected, setRowSelected] = useState(null); 
 
     const updateProcesList = useCallback(()=>{

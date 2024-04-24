@@ -233,7 +233,7 @@ function Procesy({ row}) {
         onClick={() => {
           contextModalInsert.setShowElementyProcesyInsert(true);
           contextModalInsert.setSelectedElementROW(row)
-          console.log("typ: "+row.typ)
+          console.log("typ: ",row)
         }}
         alt="Procesy"
       />

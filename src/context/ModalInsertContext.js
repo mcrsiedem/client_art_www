@@ -24,6 +24,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
     const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+    const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
 
     
      const updateZamowienieID = useCallback((data) => {
@@ -109,6 +110,7 @@ export const ModalInsertContextProvider = ({children})=>{
           oprawa, setOprawa,
           pakowanie, setPakowanie,
           procesyElementow, setProcesyElementow,
+          procesyElementowTemporary, setProcesyElementowTemporary,
 
           lockDragDrop, setLockDragDrop,
      

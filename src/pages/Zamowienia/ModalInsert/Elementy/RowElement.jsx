@@ -225,6 +225,8 @@ function Procesy({ row}) {
   const appContext = useContext(AppContext);
 
   const procesyElementow =contextModalInsert.procesyElementow;
+  const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
+
     return (
       <td className={style.col_button} id="procesy">
       <img
@@ -233,7 +235,9 @@ function Procesy({ row}) {
         onClick={() => {
           contextModalInsert.setShowElementyProcesyInsert(true);
           contextModalInsert.setSelectedElementROW(row)
-          console.log("typ: ",row)
+          //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
+          setProcesyElementowTemporary(procesyElementow)
+          // console.log("typ: ",row)
         }}
         alt="Procesy"
       />

@@ -83,8 +83,8 @@ export const ModalInsertContextProvider = ({children})=>{
     };
 
     const handleUpdateRowProcesyElementow = (row) => {
-      setProcesyElementow(
-        procesyElementow.map((t) => {
+      setProcesyElementowTemporary(
+        procesyElementowTemporary.map((t) => {
           if (t.id == row.id) {
             return row;
           } else {

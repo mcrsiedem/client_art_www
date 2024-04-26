@@ -38,12 +38,16 @@ function Header() {
 }
 function Zamknij() {
   const modalContext = useContext(ModalInsertContext);
+  const setProcesyElementow = modalContext.setProcesyElementow;
+  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+
   return (
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
         modalContext.setShowElementyProcesyInsert(false);
+        setProcesyElementow(procesyElementowTemporary)
       }}
       alt="Procesy"
     />
@@ -70,6 +74,8 @@ function Table() {
   const contexApp = useContext(AppContext);
   const contexModal = useContext(ModalInsertContext);
   const procesyElementow = contexModal.procesyElementow;
+  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
+
   const selectedElementROW = contexModal.selectedElementROW;
 
   return (
@@ -92,7 +98,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementow
+          {procesyElementowTemporary
           .filter(x => x.element_id == selectedElementROW.id)
           .map((row, i) => {
             return (
@@ -170,7 +176,7 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        .filter(p=> p.nazwa_id == contexModal.procesyElementow.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
                .map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}

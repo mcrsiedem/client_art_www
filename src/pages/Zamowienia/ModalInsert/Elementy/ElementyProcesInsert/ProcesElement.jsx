@@ -38,8 +38,7 @@ function Header() {
 }
 function Zamknij() {
   const modalContext = useContext(ModalInsertContext);
-  const setProcesyElementow = modalContext.setProcesyElementow;
-  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+
 
   return (
     <img
@@ -47,7 +46,7 @@ function Zamknij() {
       src={iconX}
       onClick={() => {
         modalContext.setShowElementyProcesyInsert(false);
-        setProcesyElementow(procesyElementowTemporary)
+ 
       }}
       alt="Procesy"
     />
@@ -56,12 +55,15 @@ function Zamknij() {
 
 function Footer() {
   const modalContext = useContext(ModalInsertContext);
+  const setProcesyElementow = modalContext.setProcesyElementow;
+  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
   return (
     <div className={style.footer}>
       <button
         className={style.btn}
         onClick={() => {
           modalContext.setShowElementyProcesyInsert(false);
+          setProcesyElementow(procesyElementowTemporary)
         }}
       >
         Zapisz

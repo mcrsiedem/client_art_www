@@ -243,7 +243,7 @@ function Procesy({ row}) {
       />
       {procesyElementow
         .filter((frag) => frag.element_id == row.id)
-        .map((pr) => appContext.showMeProcessName( pr.nazwa_id))}
+        .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" ")}
         
     </td>
     );

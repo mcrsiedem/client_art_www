@@ -89,10 +89,10 @@ function Table() {
         <thead>
           <tr>
             <th className={style.col_indeks}>#</th>
-            {/* <th className={style.col_indeks}>id</th>
+            <th className={style.col_indeks}>id</th>
             <th className={style.col_indeks}>zam</th>
             <th className={style.col_indeks}>prod</th>
-            <th className={style.col_indeks}>element</th> */}
+            <th className={style.col_indeks}>element</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_ilosc}>Front</th>
@@ -109,6 +109,10 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
+                <td>{row.id}</td>
+                <td>{row.zamowienie_id}</td>
+                <td>{row.produkt_id}</td>
+                <td>{row.element_id}</td>
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
                 <td>{row.front_ilosc}</td>
@@ -179,7 +183,9 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+        // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id && x.indeks == row.indeks)[0].nazwa_id)
+
                .map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}

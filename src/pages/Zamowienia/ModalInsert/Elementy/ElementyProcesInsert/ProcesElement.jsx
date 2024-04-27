@@ -3,6 +3,7 @@ import style from "./ProcesElement.module.css";
 import iconX from "assets/xDark.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { addNewProcess } from "actions/addProcess";
 export default function ProcesElement() {
 
 
@@ -77,6 +78,8 @@ function Table() {
   const contexModal = useContext(ModalInsertContext);
   const procesyElementow = contexModal.procesyElementow;
   const procesyElementowTemporary = contexModal.procesyElementowTemporary;
+  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+
 
   const selectedElementROW = contexModal.selectedElementROW;
 
@@ -119,7 +122,7 @@ function Table() {
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} >Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button>
       </div>
      
     </div>

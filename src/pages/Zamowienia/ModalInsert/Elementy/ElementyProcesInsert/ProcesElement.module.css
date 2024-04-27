@@ -83,6 +83,25 @@ margin-left: 15px;
 
 }
 
+.dodaj_proces_row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.btn_dodaj_proces{
+  background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%);
+  
+      
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  border-style: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
 .footer{
   display: flex;
   justify-content: center;
@@ -99,8 +118,11 @@ margin-left: 15px;
 
 .btn{
   background-image: linear-gradient(rgb(144, 144, 144) 0%, rgb(163, 163, 163) 50%, rgb(144, 144, 144) 100%);
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
+  
       
-  width: 200px;
+  width: 250px;
   height: 30px;
   border-radius: 10px;
   border-style: none;

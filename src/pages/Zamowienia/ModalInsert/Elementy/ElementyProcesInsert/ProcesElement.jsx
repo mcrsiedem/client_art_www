@@ -106,14 +106,8 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                {/* <td>{row.id}</td>
-                <td>{row.zamowienie_id}</td>
-                <td>{row.produkt_id}</td>
-                <td>{row.element_id}</td> */}
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
-            
-      
                 <td>{row.front_ilosc}</td>
                 <td>{row.back_ilosc}</td>
                 <td>{row.front_kolor}</td>
@@ -124,6 +118,10 @@ function Table() {
           })}
         </tbody>
       </table>
+      <div className={style.dodaj_proces_row}>
+         <button className={style.btn_dodaj_proces} >Dodaj nowy proces</button>
+      </div>
+     
     </div>
   );
 }

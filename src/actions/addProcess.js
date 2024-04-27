@@ -25,11 +25,7 @@ console.log("row", row)
       indeks: 0,
     })
     .then((res) => {
-      procesyElementowEditTemporary.map((p) => {
-        if (p.indeks > row.indeks) {
-          p.indeks++;
-        }
-      });
+
 
       procesyElementowEditTemporary.push({
         id: Math.max(...procesyElementowTemporary.map((f) => f.id)) + 1,
@@ -45,7 +41,7 @@ console.log("row", row)
         front_kolor: "",
         back_kolor: "",
         info: "",
-        indeks: row.indeks + 1,
+        indeks: Math.max(...procesyElementowTemporary.map((f) => f.indeks)) + 1,
       });
 
       procesyElementowEditTemporary.sort((a, b) => a.indeks - b.indeks);

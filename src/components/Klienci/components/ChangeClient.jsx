@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import style from "./ChangeClient.module.css";
 
-import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
+
 import iconX from "../../../assets/x.svg";
 export default function ChangeClient({
   setShowChange,

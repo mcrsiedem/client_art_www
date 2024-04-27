@@ -4,42 +4,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 const reg_txt = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
 const reg_int = /^[0-9]+$/;
 
-// const _firma = [
-//   {
-//     id: 1,
-//     nazwa: "ArtDruk",
-//     NIP: "123-111-22-33",
-//   },
-//   {
-//     id: 2,
-//     nazwa: "PrintStudio",
-//     NIP: "123-111-22-33",
-//   },
-//   {
-//     id: 3,
-//     nazwa: "ArtDruk Sp. z o.o.",
-//     NIP: "123-111-22-33",
-//   },
-// ];
 
-// const _klient = [
-//   {
-//     id: 1,
-//     firma: "DESA SDA",
-//     user_id: "1",
-//     nIP: "123-111-22-33",
-//     data_dodania: "2023-10-20",
-//     opiekun_user_id: "Katalog",
-//   },
-//   {
-//     id: 2,
-//     firma: "Nowa Era",
-//     user_id: "1",
-//     nIP: "123-111-22-33",
-//     data_dodania: "2023-10-20",
-//     opiekun_user_id: "Katalog",
-//   },
-// ];
 
 const _opiekun = [
   {
@@ -60,19 +25,16 @@ const _opiekun = [
   },
 ];
 
-
-const initialPreOrder =
-{
+const initialPreOrder = {
   typ: 1,
-  oprawa: '',
-  naklad: '',
-  strony_okl: '4',
-  strony_srd: '',
-  szerokosc: '',
-  wysokosc: '',
-  bok_oprawy: ''
-
-}
+  oprawa: "",
+  naklad: "",
+  strony_okl: "4",
+  strony_srd: "",
+  szerokosc: "",
+  wysokosc: "",
+  bok_oprawy: "",
+};
 
 const initialDane = {
   id: 1,
@@ -89,13 +51,12 @@ const initialDane = {
   status: 0,
   rodzaj: 1,
   uwagi: "",
-  cena:"",
+  cena: "",
   waluta_id: 1,
   termin_platnosci: 30,
   vat_id: 4,
   przedplata: "",
-  fsc: 2
-
+  fsc: 2,
 };
 const initialProdukty = [
   {
@@ -129,7 +90,7 @@ const initialElementy = [
     papier_info: "",
     gramatura_id: 0,
     naklad: "1000",
-    uwagi: "uwagi",
+    uwagi: "",
 
     indeks: 1,
   },
@@ -148,7 +109,7 @@ const initialElementy = [
     papier_info: "",
     gramatura_id: 0,
     naklad: "1000",
-    uwagi: "uwagis",
+    uwagi: "",
     indeks: 2,
   },
 ];
@@ -199,19 +160,18 @@ const initialOprawa = [
 ];
 
 const initalPakowanie = [
-    {
-        id: 1,
-        zamowienie_id: 1,
-        produkt_id:1,
-        nazwa: "Pakowanie",
-        naklad: "",
-        sztuki_w_paczce: "",
-        rodzaj_pakowania:"",
-        uwagi: "",
-        indeks: 0
-      },
-
-  ];
+  {
+    id: 1,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    nazwa: "Pakowanie",
+    naklad: "",
+    sztuki_w_paczce: "",
+    rodzaj_pakowania: "",
+    uwagi: "",
+    indeks: 0,
+  },
+];
 
 const _papiery = [
   {
@@ -243,7 +203,7 @@ const initialProcesy = [
     front_kolor: "CMYK",
     back_kolor: "CMYK",
     info: "",
-    indeks: 0
+    indeks: 0,
   },
   {
     id: 2,
@@ -259,8 +219,8 @@ const initialProcesy = [
     front_kolor: "CMYK",
     back_kolor: "CMYK",
     info: "d",
-    indeks: 0
-  }
+    indeks: 0,
+  },
 ];
 
 const _wykonczenie = [
@@ -404,6 +364,41 @@ const _typ_elementu = [
   },
 ];
 
+const _fsc = [
+  {
+    id: 1,
+    nazwa: "Tak",
+  },
+  {
+    id: 2,
+    nazwa: "Nie",
+  },
+];
+
+const _rodzaj_oprawy = [
+  {
+    id: 1,
+    nazwa: "HotMelt"
+  },
+  {
+    id: 2,
+    nazwa: "PUR",
+  },
+  {
+    id: 3,
+    nazwa: "Zeszyt",
+  },
+  {
+    id: 4,
+    nazwa: "Szyto klejona",
+  },
+  {
+    id: 5,
+    nazwa: "Kompletowanie",
+  }
+
+]
+
 // const _rodzaj_oprawy = [
 //   {
 //     id: 1,
@@ -461,7 +456,9 @@ export {
   _typ_elementu,
   _rodzaj,
   _vat,
+  _fsc,
   _waluta,
   initialDane,
-  initialPreOrder
+  initialPreOrder,
+  _rodzaj_oprawy
 };

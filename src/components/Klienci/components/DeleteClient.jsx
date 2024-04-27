@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import style from "./DeleteClient.module.css";
 import { deleteClient } from "../actions/deleteClient";
 
-import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
+
 import iconX from "../../../assets/x.svg";
 export default function DeleteClient({
   setShowDeleteClientPane,

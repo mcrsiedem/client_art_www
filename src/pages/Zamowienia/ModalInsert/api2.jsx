@@ -342,19 +342,7 @@ const _stan = [
 
 ]
 
-const _fsc = [
-  {
-    id: 1,
-    nazwa: "Tak"
 
-  },{
-    id: 2,
-    nazwa: "Nie",
-  },
-
-
-
-]
 
 const _typ_produktu = [
   {
@@ -366,27 +354,7 @@ const _typ_produktu = [
     nazwa: "Plakat",
   }
 ]
-const _typ_elementu = [
-  {
-    id: 1,
-    nazwa: "Okładka"
 
-  },{
-    id: 2,
-    nazwa: "Środek",
-  },
-  ,{
-    id: 3,
-    nazwa: "Wklejka",
-  },
-  ,{
-    id: 4,
-    nazwa: "Insert",
-  }  ,{
-    id: 5,
-    nazwa: "Ulotka",
-  }
-]
 
   const _rodzaj_oprawy = [
     {

@@ -3,7 +3,7 @@ import style from "./Introligatornia.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import logoExpand from "../../../../assets/expand.svg";
-import { _typ_elementu } from "../api";
+import { _typ_elementu} from "utils/initialvalue"
 import {  useState } from "react";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";

@@ -1,7 +1,7 @@
 import style from "./ElementTable.module.css";
 import { useState,useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { _typ_elementu } from "../api";
+import { _typ_elementu } from "utils/initialvalue"
 import iconCopy from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg";
 import axios from "axios";

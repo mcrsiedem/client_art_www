@@ -4,7 +4,7 @@ import logoExpand from "../../../../assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import {  useState,useContext } from "react";
-import { _typ_elementu} from "../api"
+import { _typ_elementu} from "utils/initialvalue"
 import axios from "axios";
 
 import { IP } from "../../../../utils/Host";

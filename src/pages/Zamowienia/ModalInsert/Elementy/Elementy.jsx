@@ -3,7 +3,7 @@
 import style from "./ElementTable.module.css";
 
 import { useContext } from "react";
-import { _papiery } from "../api";
+// import { _papiery } from "../api";
 import {  useState } from "react";
 import RowElement from "./RowElement";
 import RowFragment from "./RowFragment";

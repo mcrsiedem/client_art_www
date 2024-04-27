@@ -18,7 +18,7 @@ import {
   _stan,
   _typ_produktu,
   _rodzaj_oprawy,
-} from "./api";
+} from "utils/initialvalue";
 import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";

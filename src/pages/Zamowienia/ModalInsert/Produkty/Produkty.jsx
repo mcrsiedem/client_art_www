@@ -1,7 +1,7 @@
 import style from "./Produkty.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
+// import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 

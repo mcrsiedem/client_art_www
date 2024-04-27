@@ -1,8 +1,6 @@
 import React, { useState,useContext } from "react";
 import style from "./AddClient.module.css";
 
-
-import { _opiekun } from "../../../pages/Zamowienia/ModalInsert/api";
 import iconX from "../../../assets/x.svg"
 import { updateClient } from "../actions/updateClient";
 import { AppContext } from "../../../context/AppContext";

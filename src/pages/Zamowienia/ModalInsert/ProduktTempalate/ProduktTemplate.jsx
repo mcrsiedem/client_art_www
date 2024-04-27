@@ -1,6 +1,6 @@
 import React, {useContext } from "react";
 import style from "./ProduktTemplate.module.css";
-import { _papiery, _typ_produktu, _rodzaj_oprawy } from "../api";
+import { _papiery, _typ_produktu, _rodzaj_oprawy } from "utils/initialvalue";
 import { ModalInsertContext } from "../../../../context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
 // import { AddProduktTemplate } from "./AddProduktTemplate";

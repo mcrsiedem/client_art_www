@@ -204,7 +204,7 @@ export default function RowElement({
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
         <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
 
-        <td></td>
+        {/* <td></td> */}
 
         <Usun
           row={row}

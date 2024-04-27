@@ -38,7 +38,7 @@ export default function RowFragment({
       <td></td>
       <td></td>
       <td></td>
-      <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td>
+      {/* <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td> */}
       <td></td>
       <td></td>
     </tr>

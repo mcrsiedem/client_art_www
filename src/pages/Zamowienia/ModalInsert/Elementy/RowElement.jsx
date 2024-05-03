@@ -244,10 +244,30 @@ function Procesy({ row}) {
       {procesyElementow
         .filter((frag) => frag.element_id == row.id)
         .sort((a, b) => a.indeks - b.indeks)
-        .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" "+ pr.typ+" "+ pr.rodzaj+", ")
+        .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
+           
+
+        
+        
+
+ 
+        
+        )
       
         }
         {/* .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" ")} */}
+
+
+
+        {/* row.map((rank, i, row) => {
+  if (i + 1 === row.length) {
+    // Last one.
+  } else {
+    // Not last one.
+  }
+}) */}
+
+
 
         
     </td>

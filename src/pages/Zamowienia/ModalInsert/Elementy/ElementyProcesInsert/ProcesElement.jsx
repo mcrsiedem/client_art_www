@@ -109,8 +109,8 @@ function Table() {
           .map((row, i) => {
             return (
               <tr key={row.id}>
-                {/* <td>{i+1}</td> */}
-                <td>{row.indeks}</td>
+                <td>{i+1}</td>
+                {/* <td>{row.indeks}</td> */}
 
                 {/* <td>{row.id}</td>
                 <td>{row.zamowienie_id}</td>

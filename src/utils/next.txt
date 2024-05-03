@@ -30,3 +30,7 @@ Zapis domyślnych procesów i odczyt
 Procesy - filtrowanie typów
 
 Do listy procesów trzeba dodać na stałe front i back
+
+
+
+3/05/2024 ostatnie zmiant macbook

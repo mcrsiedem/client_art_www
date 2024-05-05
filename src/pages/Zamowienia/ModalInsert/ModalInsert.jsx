@@ -40,6 +40,7 @@ import { PreOrderContext } from "context/PreOrderContext";
 import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 import ProductCreator from "components/ProductCreator/ProductCreator";
+import { Button } from "react-bootstrap";
 
 function ModalInsert({
   openModalInsert,
@@ -105,7 +106,7 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
       open.current = false;
 
       // pobranie szczegółów zamówienia
-      fechparametry(row.id,setSaveButtonDisabled);
+      fechparametry(row.id,row.zestaw_id,setSaveButtonDisabled);
     }else{
       //zerowanie stanów
       setDaneZamowienia(initialDane)
@@ -129,12 +130,13 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
 }, [isShowAddClientStage]);
 
 
-  async function fechparametry(idZamowienia,setSaveButtonDisabled) {
+  async function fechparametry(idZamowienia,idZestawu,setSaveButtonDisabled) {
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
           .put(IP + "setOrderOpen", {
             id: idZamowienia,
+            zestaw_id: idZestawu,
             token: sessionStorage.getItem("token"),
             user: DecodeToken(sessionStorage.getItem("token")).id,
           })
@@ -161,6 +163,7 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
            setProcesyElementow(res.data[6])
+           // tutaj odebrać zestaw jeśli istnieje
   }
 
   return (
@@ -231,6 +234,8 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
             />
 
             <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            <button> Koszty dodatkowe </button>
+            <button> Dodaj do zestwu </button>
           </div>
         )}
 

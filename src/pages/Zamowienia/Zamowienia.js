@@ -11,7 +11,7 @@ function Zamowienia({ user, setUser }) {
 
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
-  const [row, setRow] = useState({id:1});
+  const [row, setRow] = useState({id:1, zestaw_id:0});
   const [openModalInsert, setOpenModalInsert] = useState(false);
 
   const open = useRef(false);
@@ -146,8 +146,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
         <tr
           key={row.id}
           onDoubleClick={(node, event) => {
-            open2(row.id);
-            setRow({ id: row.id});
+            open2();
+            // open2(row.id);
+            setRow({ id: row.id,zestaw_id:row.zestaw_id}); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
           }}
         >
           <td>{row.id} </td>

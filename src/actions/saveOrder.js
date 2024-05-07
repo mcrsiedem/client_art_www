@@ -83,7 +83,9 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
       }
 
     let res = await axios.post(IP + "zamowienie", {
-        nr: daneZamowienia.nr,
+       zamowienie_id: daneZamowienia.id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
+       prime_id: daneZamowienia.prime_id,
+       nr: daneZamowienia.nr,
         rok: daneZamowienia.rok,
         firma_id: daneZamowienia.firma_id,
         klient_id: daneZamowienia.klient_id,
@@ -107,49 +109,103 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
         final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       
-    let zamowienie_id = res.data.insertId;
+    let zamowienie_id = res.data[0].insertId;
+    let prime_id = res.data[1].prime_id;
+
     
-      console.log("id firma: "+ daneZamowienia.firma_id)
-
-    produktyEdit = produktyEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
-
-
-    elementyEdit = elementyEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
-
-    fragmentyEdit = fragmentyEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
-
-    oprawaEdit = oprawaEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
-
-    pakowanieEdit = pakowanieEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
-
-    procesyElementowEdit = procesyElementowEdit.map((obj) => {
-      if (obj.zamowienie_id == daneZamowienia.id) {return {
-        ...obj, zamowienie_id : zamowienie_id
-      } }else {return obj} 
-    })
+      // pierwszy zapis z nadaniem prime_id
+      if(prime_id != 0){
+            
+                produktyEdit = produktyEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
 
 
-    daneZamowienia.id = zamowienie_id
+                elementyEdit = elementyEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
+
+                fragmentyEdit = fragmentyEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
+
+                oprawaEdit = oprawaEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
+
+                pakowanieEdit = pakowanieEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
+
+                procesyElementowEdit = procesyElementowEdit.map((obj) => {
+                  if (obj.zamowienie_id == daneZamowienia.id) {return {
+                    ...obj, zamowienie_id : zamowienie_id, prime_id
+                  } }else {return obj} 
+                })
+
+
+                daneZamowienia.id = zamowienie_id
+                daneZamowienia.prime_id = prime_id
+      }
+
+
+
+            // kolejne zapisy bez zmiany prime_id
+            if(prime_id == 0){
+            
+              produktyEdit = produktyEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+
+              elementyEdit = elementyEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+              fragmentyEdit = fragmentyEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+              oprawaEdit = oprawaEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+              pakowanieEdit = pakowanieEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+              procesyElementowEdit = procesyElementowEdit.map((obj) => {
+                if (obj.zamowienie_id == daneZamowienia.id) {return {
+                  ...obj, zamowienie_id : zamowienie_id
+                } }else {return obj} 
+              })
+
+
+              daneZamowienia.id = zamowienie_id
+    }
+
+      
+
 
         resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia,pakowanieEdit,procesyElementowEdit})
 

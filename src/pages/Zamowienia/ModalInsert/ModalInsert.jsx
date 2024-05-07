@@ -41,6 +41,7 @@ import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import { Button } from "react-bootstrap";
+import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 
 function ModalInsert({
   openModalInsert,
@@ -234,8 +235,7 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
             />
 
             <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/>
-            <button> Koszty dodatkowe </button>
-            <button> Dodaj do zestwu </button>
+            <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/>
           </div>
         )}
 

@@ -281,6 +281,7 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
           postZamowienieObj={postZamowienieObj}
+          postZamowienieObjSaveAs={postZamowienieObjSaveAs}
         />
       )}
 
@@ -343,6 +344,28 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
         procesyElementow
       });
     }
+
+    function postZamowienieObjSaveAs() {
+      saveOrder({
+        daneZamowienia,
+        produkty,
+        elementy,
+        fragmenty,
+        oprawa,
+        pakowanie,
+        cookies,
+        setProdukty,
+        setElementy,
+        setFragmenty,
+        setOprawa,
+        setPakowanie,
+        saveAs,
+        refreshZamowienia,
+        setProcesyElementow,
+        procesyElementow
+      });
+    }
+
 
 
 

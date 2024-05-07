@@ -38,7 +38,7 @@ const initialPreOrder = {
 
 const initialDane = {
   id: 1,
-  prime_id: 0,
+  prime_id: 1,
   nr: "20",
   rok: "2024",
   firma_id: 0,

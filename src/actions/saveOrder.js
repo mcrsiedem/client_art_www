@@ -75,15 +75,22 @@ export async function saveOrder({daneZamowienia,produkty,elementy,fragmenty,opra
 const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs}) =>{
 
     return new Promise(async(resolve,reject)=>{
+
+      // przy SaveAs wymuszone zamowienie_id = 1 aby po stronie serwera napisał się prime id
+    let zamowienie_id_edit = 1;
       // saveAs domyślnie false, bo domyślnie nadpisujemy.
       if(!saveAs){
-              let final_0 = await axios.put(IP + "zamowienia_not_final", {
-        zamowienie_id: daneZamowienia.id,
-      })
+
+       zamowienie_id_edit =daneZamowienia.id
+
+              let final_0 = await axios.put(IP + "zamowienia_not_final", { zamowienie_id: daneZamowienia.id,  })
+          
       }
 
+        
     let res = await axios.post(IP + "zamowienie", {
-       zamowienie_id: daneZamowienia.id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
+       
+      zamowienie_id: zamowienie_id_edit, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
        prime_id: daneZamowienia.prime_id,
        nr: daneZamowienia.nr,
         rok: daneZamowienia.rok,
@@ -114,7 +121,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
 
     
       // pierwszy zapis z nadaniem prime_id
-      if(prime_id != 0){
+      if(prime_id != 1){
             
                 produktyEdit = produktyEdit.map((obj) => {
                   if (obj.zamowienie_id == daneZamowienia.id) {return {
@@ -161,7 +168,7 @@ const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmen
 
 
             // kolejne zapisy bez zmiany prime_id
-            if(prime_id == 0){
+            if(prime_id == 1){
             
               produktyEdit = produktyEdit.map((obj) => {
                 if (obj.zamowienie_id == daneZamowienia.id) {return {

@@ -3,9 +3,11 @@ import style from "../SaveAs/SaveAs.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
 
-export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,setSaveAs}) {
+export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,postZamowienieObjSaveAs,setSaveAs}) {
 //   useEffect(() => {}, []);
-
+const contextModal = useContext(ModalInsertContext);
+const daneZamowienia = contextModal.daneZamowienia;
+const setDaneZamowienia= contextModal.setDaneZamowienia;
   return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
@@ -34,8 +36,10 @@ export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,setS
                     <button
                     className={style.btn}
                     onClick={() => {
+                      // setDaneZamowienia({...daneZamowienia, prime_id: daneZamowienia.id} )
                         setSaveAs(true)
-                        postZamowienieObj();
+                        // postZamowienieObj();
+                        postZamowienieObjSaveAs();
                         setShowSaveAs(!showSaveAs)
                     }}
                     >
@@ -51,9 +55,9 @@ export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,setS
 }
 
 function Tytul() {
-  const contextPreOrder = useContext(PreOrderContext);
-  const daneZamowienia = contextPreOrder.daneZamowienia;
-const setDaneZamowienia= contextPreOrder.setDaneZamowienia;
+  const contextModal = useContext(ModalInsertContext);
+  const daneZamowienia = contextModal.daneZamowienia;
+const setDaneZamowienia= contextModal.setDaneZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> </label>

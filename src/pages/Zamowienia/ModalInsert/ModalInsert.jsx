@@ -91,6 +91,8 @@ const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
+const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
+const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
 
   useEffect(() => {
@@ -107,7 +109,7 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
       open.current = false;
 
       // pobranie szczegółów zamówienia
-      fechparametry(row.id,row.zestaw_id,setSaveButtonDisabled);
+      fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
     }else{
       //zerowanie stanów
       setDaneZamowienia(initialDane)
@@ -131,13 +133,13 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
 }, [isShowAddClientStage]);
 
 
-  async function fechparametry(idZamowienia,idZestawu,setSaveButtonDisabled) {
+  async function fechparametry(idZamowienia,zamowienie_prime_id,setSaveButtonDisabled) {
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
           .put(IP + "setOrderOpen", {
             id: idZamowienia,
-            zestaw_id: idZestawu,
+            // zestaw_id: idZestawu,
             token: sessionStorage.getItem("token"),
             user: DecodeToken(sessionStorage.getItem("token")).id,
           })
@@ -152,10 +154,10 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
                 stan: res.data.stan,
                 user: res.data.user,
                 data: res.data.data
-              })
+              }) 
           });
 
-           const res = await axios.get(IP + "parametry/"+idZamowienia);
+           const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
 
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
@@ -164,6 +166,9 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
            setProcesyElementow(res.data[6])
+           setKosztyDodatkowe(res.data[7])
+
+           console.log("Koszty",res.data[7])
            // tutaj odebrać zestaw jeśli istnieje
   }
 
@@ -235,7 +240,9 @@ const setProcesyElementow = contextModalInsert.setProcesyElementow;
             />
 
             <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/>
-            <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+
+       <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/>
+            
           </div>
         )}
 

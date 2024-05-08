@@ -8,8 +8,6 @@ export default function KosztyDodatkowe({ handleChangeCardPakowanie}) {
   const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
-
-// jeśli nie ma kosztów dodatkowych nie pokazuj komponenetu
 if(kosztyDodatkowe.length == 0){
   return null
 }

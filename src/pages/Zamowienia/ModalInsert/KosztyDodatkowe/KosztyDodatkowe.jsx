@@ -5,10 +5,10 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
 export default function KosztyDodatkowe({ handleChangeCardPakowanie}) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
-const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
+  const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
+const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 
-if(kosztyDodatkowe.length == 0){
+if(kosztyDodatkoweZamowienia.length == 0){
   return <>
   <button>Dodaj koszty dodatkowe...</button>
   </>

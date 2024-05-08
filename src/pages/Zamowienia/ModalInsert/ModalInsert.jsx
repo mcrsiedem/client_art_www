@@ -91,8 +91,8 @@ const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
-const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
-const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
+const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
+const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 
 
   useEffect(() => {
@@ -166,7 +166,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
            setOprawa(res.data[4])
            setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
            setProcesyElementow(res.data[6])
-           setKosztyDodatkowe(res.data[7])
+           setKosztyDodatkoweZamowienia(res.data[7])
 
            console.log("Koszty",res.data[7])
            // tutaj odebrać zestaw jeśli istnieje

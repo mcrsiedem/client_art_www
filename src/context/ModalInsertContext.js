@@ -24,8 +24,8 @@ export const ModalInsertContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
     const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-    const [kosztyDodatkowe, setKosztyDodatkowe] = useState([]); // koszty dodatkowe zmówienia - zestawienie - jeśli są 
-
+    const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]); // koszty dodatkowe zmówienia - zestawienie - jeśli są 
+    const [kosztyDodatkowe, setKosztyDodatkowe] = useState([]); // wszystkie koszty dodatkowe  pobierane wg id kosztów zamówienia
     // tymczasowe procesy aby mozna było zamknąć bez zapisywania
     const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
 
@@ -114,6 +114,7 @@ export const ModalInsertContextProvider = ({children})=>{
           pakowanie, setPakowanie,
           procesyElementow, setProcesyElementow,
           procesyElementowTemporary, setProcesyElementowTemporary,
+          kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia,
           kosztyDodatkowe, setKosztyDodatkowe,
 
           lockDragDrop, setLockDragDrop,

@@ -9,7 +9,9 @@ export default function KosztyDodatkowe({ handleChangeCardPakowanie}) {
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
 if(kosztyDodatkowe.length == 0){
-  return null
+  return <>
+  <button>Dodaj koszty dodatkowe...</button>
+  </>
 }
   return (
     

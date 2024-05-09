@@ -38,6 +38,19 @@
   padding-left: 20px;
 }
 
+.zestawienie_kosztow{
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.suma{
+  color: #3b3b3b;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
 .main {
   overflow: auto;
   

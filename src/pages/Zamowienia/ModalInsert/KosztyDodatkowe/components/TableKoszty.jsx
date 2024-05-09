@@ -63,8 +63,11 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
               })}
             </tbody>
           </table>
+                {/* zestawienie kosztów  - zamówienia_koszty-dodatkowe */}
+                <div className={style.zestawienie_kosztow }>
+                            <div className={style.suma }>Suma kosztów dodatkowych: {kosztyDodatkoweZamowienia[0].suma}</div>
+                </div>
 
-          <div>{kosztyDodatkoweZamowienia[0].nazwa}</div>
         </div>
   
   }

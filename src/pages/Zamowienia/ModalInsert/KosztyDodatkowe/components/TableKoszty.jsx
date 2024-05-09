@@ -10,9 +10,11 @@ import { goInputValidation } from "actions/goInputValidation";
 export default function TableKoszty({handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
-  const contextModalInsert = useContext(ModalInsertContext);
-  const pakowanie = contextModalInsert.pakowanie;
-  const setPakowanie = contextModalInsert.setPakowanie;
+  const kosztyDodatkowe = contextModal.kosztyDodatkowe;
+  const setKosztyDodatkowe = contextModal.setKosztyDodatkowe;
+  const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
+  const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
+  
     return <div className={style.main}>
         
           <table className={style.table2}>
@@ -23,9 +25,9 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
                 <th className={style.col2}>i</th> */}
                 <th className={style.col2}>#</th>
                 <th className={style.col3}>Nazwa</th>
-                <th className={style.col10}>Ilość szt.</th>
-                <th className={style.col10}>Sztuki w paczce</th>
-                <th className={style.col10}>Rodzaj pakowania</th>
+                <th className={style.col10}>Ilość</th>
+                <th className={style.col10}>Cena</th>
+                <th className={style.col10}>Suma</th>
                 <th className={style.col10}>Uwagi</th>
                 <th className={style.col10}></th>
                 <th className={style.col10}></th>
@@ -34,17 +36,17 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
               </tr>
             </thead>
             <tbody className={style.center}>
-              {pakowanie.map((row) => {
+
+              {kosztyDodatkowe.map((row) => {
                 return (
-                  <tr draggable={contextModal.lockDragDrop}
+                  <tr
                     key={row.id}
-                    onDragStart={()=>handleDragStart(row)} 
-                    onDragOver={(handleDragOver)}
-                    onDrop={()=>handleDrop(row,pakowanie,setPakowanie)}
+                    // draggable={contextModal.lockDragDrop}
+                    // onDragStart={()=>handleDragStart(row)} 
+                    // onDragOver={(handleDragOver)}
+                    // onDrop={()=>handleDrop(row,pakowanie,setPakowanie)}
                   >
-                    {/* <ZamId row={row}/>
-                    <ProduktId row={row}/>
-                    <Id row={row}/> */}
+
                     <Indeks row={row}/>
                     <Nazwa row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Ilosc row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
@@ -61,6 +63,8 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
               })}
             </tbody>
           </table>
+
+          <div>{kosztyDodatkoweZamowienia[0].nazwa}</div>
         </div>
   
   }

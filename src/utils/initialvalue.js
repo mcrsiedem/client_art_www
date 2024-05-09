@@ -165,7 +165,7 @@ const initalPakowanie = [
     id: 1,
     zamowienie_id: 1,
     produkt_id: 1,
-    nazwa: "Pakowanie",
+    nazwa: "Adres...",
     naklad: "",
     sztuki_w_paczce: "",
     rodzaj_pakowania: "",

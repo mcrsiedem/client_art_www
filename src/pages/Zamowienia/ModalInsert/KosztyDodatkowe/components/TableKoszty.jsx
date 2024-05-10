@@ -29,8 +29,8 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Suma</th>
                 <th className={style.col10}>Uwagi</th>
-                <th className={style.col10}></th>
-                <th className={style.col10}></th>
+                {/* <th className={style.col10}></th>
+                <th className={style.col10}></th> */}
      
   
               </tr>
@@ -53,8 +53,8 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
                     <SztukiWpaczce row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <RodzajPakowania row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
                     <Uwagi row={row} handleChangeCardPakowanie={handleChangeCardPakowanie}/>
-                    <Dodaj row={row} />
-                    <Usun row={row} />
+                    {/* <Dodaj row={row} />
+                    <Usun row={row} /> */}
    
                
   

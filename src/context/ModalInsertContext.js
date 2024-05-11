@@ -24,10 +24,17 @@ export const ModalInsertContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
     const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+   // tymczasowe procesy aby mozna było zamknąć bez zapisywania
+   const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
+
+
     const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]); // koszty dodatkowe zmówienia - zestawienie - jeśli są 
     const [kosztyDodatkowe, setKosztyDodatkowe] = useState([]); // wszystkie koszty dodatkowe  pobierane wg id kosztów zamówienia
-    // tymczasowe procesy aby mozna było zamknąć bez zapisywania
-    const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
+    const [kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary] = useState([]); // koszty dodatkowe  w trakcie edycji
+    const [showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit] =     useState(false);
+    const [selecetedKosztyDodatkoweZamowienia,setSelecetedKosztyDodatkoweZamowienia] = useState(null)
+
+ 
 
     
      const updateZamowienieID = useCallback((data) => {
@@ -133,7 +140,11 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowElementy,
           handleUpdateRowFragmenty,
           handleUpdateRowPakowanie,
-          handleUpdateRowProcesyElementow
+          handleUpdateRowProcesyElementow,
+          kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
+          showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
+          selecetedKosztyDodatkoweZamowienia,setSelecetedKosztyDodatkoweZamowienia
+
         }}
       >
         {children}

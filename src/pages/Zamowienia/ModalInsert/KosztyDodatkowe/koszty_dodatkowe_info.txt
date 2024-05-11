@@ -2,7 +2,9 @@
 * utworzenie stanów
 ModalInsertContext - kosztyDodatkowe, setKosztyDodatkowe
 ModalInsertContext - kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia
-                    
+ModalInsertContext - kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary - w trakcie edycji                  
+ModalInsertContext - showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit  - otwieranie okna
+ModalInsertContext - selecetedKosztyDodatkoweZamowienia,setSelecetedKosztyDodatkoweZamowienia -  aktualnie wybrane koszty
 
 
 * pobieranie z bazy

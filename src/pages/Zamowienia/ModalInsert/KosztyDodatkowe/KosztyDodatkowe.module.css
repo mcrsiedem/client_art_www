@@ -71,9 +71,10 @@
 }
 .status{
   width: 200px;
-  height: 40px;
+  height: 30px;
   border-radius: 10px;
   background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
+  text-align: center;
 }
 .status_label{
   font-size: 0.8rem;}
@@ -82,9 +83,19 @@
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+  .td_suma{
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .td_razem{
+    text-align: end;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 .btn_edytuj{
   width: 100px;
-  height: 40px;
+  height: 30px;
   border-radius: 10px;
   background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
 border: none;

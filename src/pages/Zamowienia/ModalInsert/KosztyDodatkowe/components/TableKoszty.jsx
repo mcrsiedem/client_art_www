@@ -42,10 +42,23 @@ export default function TableKoszty() {
                   </tr>
                 );
               })}
+                                <tr
+           
+                  >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className={style.td_razem}>Razem:</td>
+          
+                    <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0].suma}</td>
+                    <td></td>
+
+     
+                  </tr>
             </tbody>
           </table>
                 <div className={style.zestawienie_kosztow }>
-                     <EdytujKoszty/>     <div className={style.suma_label }>Suma kosztów dodatkowych: {kosztyDodatkoweZamowienia[0].suma}</div> <StatusKosztow/>
+                     <EdytujKoszty/>     <StatusKosztow/>
                 </div>
         </div>
   

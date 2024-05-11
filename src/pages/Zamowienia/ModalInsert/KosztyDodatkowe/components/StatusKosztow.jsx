@@ -11,7 +11,7 @@ export default function StatusKosztow() {
     const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
       return (
         <div className={style.col}>
-          <label className={style.status_label}> Stan </label>
+          <label className={style.status_label}> Status </label>
           <select
             className={style.status}
             value={kosztyDodatkoweZamowienia[0].status}

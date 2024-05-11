@@ -26,7 +26,6 @@ SELECT `koszt_dodatkowy`.`id`,
                         `koszt_dodatkowy`.`cena`,
                         `koszt_dodatkowy`.`suma`,
                         `koszt_dodatkowy`.`info`,
-                        `koszt_dodatkowy`.`status`,
                         `koszt_dodatkowy`.`zamowienia_koszty_id`,
                         `koszt_dodatkowy`.`autor_id`
                     FROM `artdruk`.`koszt_dodatkowy`;

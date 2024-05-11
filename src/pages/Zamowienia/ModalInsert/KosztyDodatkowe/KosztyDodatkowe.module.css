@@ -63,13 +63,17 @@
 .col {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   align-items: start;
+  gap: 15px;
 
 }
 .status{
-
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
 }
 .status_label{
   font-size: 0.8rem;}
@@ -78,7 +82,13 @@
     font-size: 1.2rem;
     font-weight: bold;
   }
-
+.btn_edytuj{
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
+border: none;
+}
 
 /* pasek przewijania */
 .container::-webkit-scrollbar {

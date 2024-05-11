@@ -7,6 +7,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
 import { reg_txt } from "utils/initialvalue";
 import { goInputValidation } from "actions/goInputValidation";
+import StatusKosztow from "./StatusKosztow";
 export default function TableKoszty({handleChangeCardPakowanie}) {
 
   const contextModal = useContext(ModalInsertContext );
@@ -65,7 +66,7 @@ export default function TableKoszty({handleChangeCardPakowanie}) {
           </table>
                 {/* zestawienie kosztów  - zamówienia_koszty-dodatkowe */}
                 <div className={style.zestawienie_kosztow }>
-                            <div className={style.suma }>Suma kosztów dodatkowych: {kosztyDodatkoweZamowienia[0].suma}</div>
+                     <button>Edytuj</button>       <div className={style.suma }>Suma kosztów dodatkowych: {kosztyDodatkoweZamowienia[0].suma}</div> <StatusKosztow/>
                 </div>
 
         </div>

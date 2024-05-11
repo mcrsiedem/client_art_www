@@ -56,7 +56,7 @@ export const AppContextProvider = ({children})=>{
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
-                    _firma,typ_elementu,
+                    _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName
                 }}
             >
@@ -107,3 +107,16 @@ const _firma = [
       nazwa: "Ulotka",
     }
   ]
+  
+  const _status_koszty_dodatkowe = [
+
+    {
+      id: 1,
+      nazwa: "W przygotowaniu",
+    },
+    {
+      id: 2,
+      nazwa: "Gotowe do faktury",
+    },
+
+  ];

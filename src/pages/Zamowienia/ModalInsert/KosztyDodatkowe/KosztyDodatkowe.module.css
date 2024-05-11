@@ -45,8 +45,8 @@
   justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .suma{
   color: #646464;
@@ -63,11 +63,21 @@
 .col {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   align-items: start;
-  gap: 10px;
+
 }
+.status{
+
+}
+.status_label{
+  font-size: 0.8rem;}
+
+  .suma_label{
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
 
 /* pasek przewijania */

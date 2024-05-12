@@ -8,6 +8,10 @@ ModalInsertContext - selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkow
 
 ModalInsertContext  -   handleUpdateKosztyDodatkoweTemporary - setKosztyDodatkoweTemporary - edycja kosztów
 
+EdytujKoszty - contextModalInsert.setSelectedKosztyDodatkoweZamowienia(
+            {id:kosztyDodatkoweZamowienia[0].id,
+              zamowienie_id:kosztyDodatkoweZamowienia[0].zamowienie_id,
+              zamowienie_prime_id:kosztyDodatkoweZamowienia[0].zamowienie_prime_id})
 
 * pobieranie z bazy
 ModalInsert         - fechparametry
@@ -18,6 +22,14 @@ ModalInsert         - fechparametry
 * statusy
     - w trakcie przygotowania
     - zamknięte
+
+* zapis kosztów dodatkowych:
+    - update koszty_dodatkowe set final= 0 where zamowienie_prime_id = X 
+        zapisKosztowDodatkowych.js
+        
+    - insert wszystko z przesłanej tablicy koszty_dodatkowe
+    - update kosztyDodatkoweZamowienia
+
 
 
 
@@ -32,6 +44,7 @@ SELECT `koszt_dodatkowy`.`id`,
                         `koszt_dodatkowy`.`info`,
                         `koszt_dodatkowy`.`zamowienia_koszty_id`,
                         `koszt_dodatkowy`.`autor_id`
+                        `koszt_dodatkowy`.`final`
                     FROM `artdruk`.`koszt_dodatkowy`;
 
 SELECT `zamowienia_koszty_dodatkowe`.`id`,

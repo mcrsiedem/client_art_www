@@ -5,6 +5,7 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
 import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
+import { zapisKosztowDodatkowych } from "actions/zapisKosztowDodatkowych";
 
 export default function KosztyDodatkoweEdit() {
 
@@ -61,14 +62,18 @@ function Footer() {
   const modalContext = useContext(ModalInsertContext);
   const setKosztyDodatkowe = modalContext.setKosztyDodatkowe;
   const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
+  const selectedKosztyDodatkoweZamowienia = modalContext.selectedKosztyDodatkoweZamowienia;
+
 
   return (
     <div className={style.footer}>
       <button
         className={style.btn}
         onClick={() => {
-          modalContext.setShowKosztyDodatkoweEdit(false);
-          setKosztyDodatkowe(kosztyDodatkoweTemporary)
+          // console.log("zamowienie_prime_id" +selectedKosztyDodatkoweZamowienia.zamowienie_prime_id)
+          zapisKosztowDodatkowych({selectedKosztyDodatkoweZamowienia});
+          // modalContext.setShowKosztyDodatkoweEdit(false);
+          // setKosztyDodatkowe(kosztyDodatkoweTemporary)
         }}
       >
         Zapisz
@@ -187,7 +192,7 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
             ...row,
             ilosc: e.target.value,
             // suma: parseFloat(row.cena) * Number(e.target.value)
-            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2)
+            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ",")
 
           })
         }
@@ -215,7 +220,7 @@ function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             cena: e.target.value,
-             suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2)
+             suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2).replace(".", ",")
      
 
           })

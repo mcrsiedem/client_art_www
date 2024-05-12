@@ -107,7 +107,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const handleUpdateKosztyDodatkoweTemporary = (row) => {
       setKosztyDodatkoweTemporary(
         kosztyDodatkoweTemporary.map((t) => {
-          if (t.id === row.id) {
+          if (t.id == row.id) {
             return row;
           } else {
             return t;

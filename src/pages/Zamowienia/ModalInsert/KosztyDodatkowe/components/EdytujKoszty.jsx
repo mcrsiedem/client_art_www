@@ -15,7 +15,6 @@ export default function EdytujKoszty() {
         <button className={style.btn_edytuj}
         onClick={() => {
           contextModalInsert.setShowKosztyDodatkoweEdit(true);
-          console.log('klik')
           contextModalInsert.setSelectedKosztyDodatkoweZamowienia(
             {id:kosztyDodatkoweZamowienia[0].id,
               zamowienie_id:kosztyDodatkoweZamowienia[0].zamowienie_id,

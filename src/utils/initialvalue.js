@@ -3,7 +3,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 const reg_txt = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
 const reg_int = /^[0-9]+$/;
-
+const reg_cena = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
 
 const _opiekun = [
@@ -440,6 +440,7 @@ const _rodzaj_oprawy = [
 export {
   reg_int,
   reg_txt,
+  reg_cena,
   // _firma,
   initialProdukty,
   // _klient,

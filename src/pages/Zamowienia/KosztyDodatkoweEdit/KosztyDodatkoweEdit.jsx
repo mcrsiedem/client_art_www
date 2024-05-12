@@ -4,7 +4,7 @@ import iconX from "assets/xDark.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
-import { reg_txt } from "utils/initialvalue";
+import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 
 export default function KosztyDodatkoweEdit() {
 
@@ -114,10 +114,10 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
                   >
                     <Indeks row={row}/>
                     <Nazwa row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} />
-                    <Ilosc row={row} />
-                    <Cena row={row} />
-                    <Suma row={row} />
-                    <Info row={row} />
+                    <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
+                    <Cena row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
+                    <Suma row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
+                    <Info row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
 
      
                   </tr>
@@ -171,14 +171,54 @@ function Nazwa({ row,handleUpdateKosztyDodatkoweTemporary }) {
     </td>
   );
 }
-function Ilosc({ row }) {
+function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
   return (
-    <td>{row.ilosc}</td>
+    <td>
+      <input
+        className={style.in}
+        value={row.ilosc}
+      
+        onChange={(e) => {
+
+          const re = /^[0-9]+$/;
+          if (e.target.value === '' || reg_int.test(e.target.value)) {
+          
+            handleUpdateKosztyDodatkoweTemporary({
+            ...row,
+            ilosc: e.target.value,
+          })
+        }
+      }
+
+          
+        }
+      ></input>
+    </td>
   );
 }
-function Cena({ row }) {
+function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
   return (
-    <td>{row.cena}</td>
+    <td>
+      <input
+        className={style.in}
+        value={row.cena}
+      
+        onChange={(e) => {
+
+   
+          if ( e.target.value === '' || reg_cena.test(e.target.value)) {
+          
+            handleUpdateKosztyDodatkoweTemporary({
+            ...row,
+            cena: e.target.value,
+          })
+        }
+      }
+
+          
+        }
+      ></input>
+    </td>
   );
 }
 function Suma({ row }) {

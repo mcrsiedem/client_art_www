@@ -92,7 +92,7 @@ export default function TableKoszty() {
   }
   function Info({ row }) {
     return (
-      <td>{row.cena}</td>
+      <td>{row.info}</td>
     );
   }
   

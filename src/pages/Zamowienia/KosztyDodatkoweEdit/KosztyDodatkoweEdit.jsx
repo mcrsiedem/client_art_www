@@ -226,8 +226,28 @@ function Suma({ row }) {
     <td>{row.cena}</td>
   );
 }
-function Info({ row }) {
+function Info({ row, handleUpdateKosztyDodatkoweTemporary }) {
   return (
-    <td>{row.cena}</td>
+    <td>
+      <input
+        className={style.in}
+        value={row.info}
+      
+        onChange={(e) => {
+
+   
+          if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+          
+            handleUpdateKosztyDodatkoweTemporary({
+            ...row,
+            info: e.target.value,
+          })
+        }
+      }
+
+          
+        }
+      ></input>
+    </td>
   );
 }

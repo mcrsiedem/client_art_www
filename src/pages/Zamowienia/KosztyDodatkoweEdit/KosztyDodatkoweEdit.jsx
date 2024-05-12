@@ -33,7 +33,7 @@ function Header() {
 
   return (
     <div className={style.header}>
-      <p className={style.title}>Koszty dodatkowe - <p className={style.title2}> ...</p> </p> 
+      <p className={style.title}>Koszty dodatkowe <p className={style.title2}> </p> </p> 
       <Zamknij/>
     </div>
   );
@@ -85,6 +85,7 @@ function Table() {
 const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
 const setKosztyDodatkoweTemporary = modalContext.setKosztyDodatkoweTemporary;
 const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
+const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -118,6 +119,20 @@ const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
                   </tr>
             );
           })}
+
+<tr
+           
+           >
+             <td></td>
+             <td></td>
+             <td></td>
+             <td className={style.td_razem}>Razem:</td>
+   
+             <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0].suma}</td>
+             <td></td>
+
+
+           </tr>
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>

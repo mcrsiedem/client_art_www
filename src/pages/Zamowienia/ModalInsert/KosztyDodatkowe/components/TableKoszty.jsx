@@ -87,7 +87,7 @@ export default function TableKoszty() {
   }
   function Suma({ row }) {
     return (
-      <td>{row.cena}</td>
+      <td>{row.suma}</td>
     );
   }
   function Info({ row }) {

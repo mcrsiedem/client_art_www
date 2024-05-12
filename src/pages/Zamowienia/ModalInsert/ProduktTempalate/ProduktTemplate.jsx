@@ -250,6 +250,7 @@ const setOprawa = contextModalInsert.setOprawa;
             setFragmenty,
             oprawa,
             setOprawa);
+
         }}
       >
         Dodaj

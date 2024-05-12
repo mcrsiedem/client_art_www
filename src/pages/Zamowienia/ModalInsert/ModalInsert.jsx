@@ -122,6 +122,8 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       setOprawa(initialOprawa)
       setPakowanie(initalPakowanie)
       setProcesyElementow(initialProcesy)
+      setKosztyDodatkowe([])
+      setKosztyDodatkoweZamowienia([])
     }
 
 

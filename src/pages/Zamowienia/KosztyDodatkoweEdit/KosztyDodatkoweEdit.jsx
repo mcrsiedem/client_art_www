@@ -62,7 +62,7 @@ function Footer() {
   const modalContext = useContext(ModalInsertContext);
   const setKosztyDodatkowe = modalContext.setKosztyDodatkowe;
   const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
-  const selectedKosztyDodatkoweZamowienia = modalContext.selectedKosztyDodatkoweZamowienia;
+  const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
 
 
   return (
@@ -71,7 +71,7 @@ function Footer() {
         className={style.btn}
         onClick={() => {
           // console.log("zamowienie_prime_id" +selectedKosztyDodatkoweZamowienia.zamowienie_prime_id)
-          zapisKosztowDodatkowych({selectedKosztyDodatkoweZamowienia});
+          zapisKosztowDodatkowych({kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia});
           // modalContext.setShowKosztyDodatkoweEdit(false);
           // setKosztyDodatkowe(kosztyDodatkoweTemporary)
         }}

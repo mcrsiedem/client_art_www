@@ -104,7 +104,17 @@ export const ModalInsertContextProvider = ({children})=>{
       )
     };
 
-
+    const handleUpdateKosztyDodatkoweTemporary = (row) => {
+      setKosztyDodatkoweTemporary(
+        kosztyDodatkoweTemporary.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+    };
 
     useEffect(()=>{
 
@@ -141,9 +151,11 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowFragmenty,
           handleUpdateRowPakowanie,
           handleUpdateRowProcesyElementow,
+          handleUpdateKosztyDodatkoweTemporary,
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
-          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia
+          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,
+          
 
         }}
       >

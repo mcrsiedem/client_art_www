@@ -4,6 +4,8 @@ import iconX from "assets/xDark.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
+import { reg_txt } from "utils/initialvalue";
+
 export default function KosztyDodatkoweEdit() {
 
 
@@ -86,6 +88,8 @@ const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
 const setKosztyDodatkoweTemporary = modalContext.setKosztyDodatkoweTemporary;
 const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
 const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
+const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDodatkoweTemporary;
+
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -109,7 +113,7 @@ const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
                     key={row.id}
                   >
                     <Indeks row={row}/>
-                    <Nazwa row={row} />
+                    <Nazwa row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} />
                     <Ilosc row={row} />
                     <Cena row={row} />
                     <Suma row={row} />
@@ -144,77 +148,27 @@ const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
 }
 
 
-const ProcesName = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const contexApp = useContext(AppContext);
-
-  return (
-    <td>
-      <select
-        className={style.select}
-        defaultValue={row.nazwa_id}
-        onChange={(e) => {
-          // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
-          // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
-          contexModal.handleUpdateRowProcesyElementow({
-            ...row,
-            nazwa_id: e.target.value,
-          });
-        }}
-      >
-        {}
-        {contexApp.procesListName.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-    </td>
-  );
-};
-
-const ProcessTyp = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const contexApp = useContext(AppContext);
-  const selectedElementROW = contexModal.selectedElementROW;
-
-  return (
-    <td>
-      <select
-        className={style.select}
-        defaultValue={row.proces_id}
-        onChange={(e) => {
-          console.log(e.target.value)
-          contexModal.handleUpdateRowProcesyElementow({
-            ...row,
-            proces_id: e.target.value,
-          });
-        }}
-      >
-        {}
-        {contexApp.procesList
-        // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
-        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id && x.indeks == row.indeks)[0].nazwa_id)
-
-               .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}
-          </option>
-        ))}
-      </select>
-    </td>
-  );
-};
-
-
 function Indeks({ row }) {
   return (
-    <td>{row.indeks}</td>
+    <td  className={style.col_indeks}>{row.indeks}</td>
   );
 }
-function Nazwa({ row }) {
+function Nazwa({ row,handleUpdateKosztyDodatkoweTemporary }) {
   return (
-    <td>{row.nazwa}</td>
+    <td>
+      <input
+        className={style.in}
+        value={row.nazwa}
+        onChange={(e) =>
+          {
+            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleUpdateKosztyDodatkoweTemporary({
+            ...row,
+            nazwa: e.target.value,
+          })}}
+        }
+      ></input>
+    </td>
   );
 }
 function Ilosc({ row }) {

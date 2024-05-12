@@ -6,6 +6,8 @@ ModalInsertContext - kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary - w t
 ModalInsertContext - showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit  - otwieranie okna
 ModalInsertContext - selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia -  aktualnie wybrane koszty
 
+ModalInsertContext  -   handleUpdateKosztyDodatkoweTemporary - setKosztyDodatkoweTemporary - edycja kosztów
+
 
 * pobieranie z bazy
 ModalInsert         - fechparametry

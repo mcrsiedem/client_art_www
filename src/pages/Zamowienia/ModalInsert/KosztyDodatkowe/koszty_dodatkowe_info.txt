@@ -25,10 +25,11 @@ ModalInsert         - fechparametry
 
 * zapis kosztów dodatkowych:
     - update koszty_dodatkowe set final= 0 where zamowienie_prime_id = X 
-        zapisKosztowDodatkowych.js
-        
     - insert wszystko z przesłanej tablicy koszty_dodatkowe
     - update kosztyDodatkoweZamowienia
+
+     zapisKosztowDodatkowych.js
+        let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych", { kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia})
 
 
 

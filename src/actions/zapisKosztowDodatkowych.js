@@ -17,27 +17,21 @@ export async function zapisKosztowDodatkowych({
   selectedKosztyDodatkoweZamowienia
 }) {
 
-    let zamowienie_prime_id = selectedKosztyDodatkoweZamowienia.zamowienie_prime_id;
+     let zapis = await   zapisKosztyDodatkowe(kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia);
 
-//     - update koszty_dodatkowe set final= 0 where zamowienie_prime_id = X 
-// console.log("zamowienie_prime_id" +zamowienie_prime_id)
-        updateKosztyDodatkowe(zamowienie_prime_id);
-
-
-//     - insert wszystko z przesłanej tablicy koszty_dodatkowe
-
-
-//     - update kosztyDodatkoweZamowienia
-
+     // jeśli ok to:
+    //  setShowKosztyDodatkoweEdit(false);
+    //  setKosztyDodatkowe(kosztyDodatkoweTemporary)
 
 }
 
-const updateKosztyDodatkowe = (zamowienie_prime_id) => {
+const zapisKosztyDodatkowe = (kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia) => {
 
     return new Promise(async(resolve,reject)=>{
 
+        let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych", { kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia})
         // console.log("zamowienie_prime_id" +zamowienie_prime_id)
-        // resolve({zamowienie_id,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,daneZamowienia,pakowanieEdit,procesyElementowEdit})
+         resolve({zapis})
     })
 
 }

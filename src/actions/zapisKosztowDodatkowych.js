@@ -13,15 +13,18 @@ export async function zapisKosztowDodatkowych({
     kosztyDodatkoweTemporary,
     kosztyDodatkoweZamowienia,
     setKosztyDodatkowe,
-    setShowKosztyDodatkoweEdit,
-  selectedKosztyDodatkoweZamowienia}
+    setShowKosztyDodatkoweEdit}
 ) {
 
      let zapis = await   zapisKosztyDodatkowe(kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia);
-console.log(kosztyDodatkoweTemporary[0])
+
+     if(zapis.zapis.status==201){
+        setShowKosztyDodatkoweEdit(false);
+     setKosztyDodatkowe(kosztyDodatkoweTemporary)
+     }
+// console.log(zapis.zapis.status)
      // jeśli ok to:
-    //  setShowKosztyDodatkoweEdit(false);
-    //  setKosztyDodatkowe(kosztyDodatkoweTemporary)
+
 
 }
 

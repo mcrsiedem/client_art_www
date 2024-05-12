@@ -60,9 +60,10 @@ function Zamknij() {
 
 function Footer() {
   const modalContext = useContext(ModalInsertContext);
-  const setKosztyDodatkowe = modalContext.setKosztyDodatkowe;
+  const setShowKosztyDodatkoweEdit = modalContext.setShowKosztyDodatkoweEdit;
   const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
   const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
+  const setKosztyDodatkowe = modalContext.setKosztyDodatkowe;
 
 
   return (
@@ -71,7 +72,7 @@ function Footer() {
         className={style.btn}
         onClick={() => {
           // console.log("zamowienie_prime_id" +selectedKosztyDodatkoweZamowienia.zamowienie_prime_id)
-          zapisKosztowDodatkowych({kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia});
+          zapisKosztowDodatkowych({kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia,setShowKosztyDodatkoweEdit,setKosztyDodatkowe});
           // modalContext.setShowKosztyDodatkoweEdit(false);
           // setKosztyDodatkowe(kosztyDodatkoweTemporary)
         }}

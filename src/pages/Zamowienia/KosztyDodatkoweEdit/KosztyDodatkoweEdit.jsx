@@ -186,6 +186,9 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             ilosc: e.target.value,
+            // suma: parseFloat(row.cena) * Number(e.target.value)
+            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2)
+
           })
         }
       }
@@ -197,6 +200,7 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
   );
 }
 function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
+
   return (
     <td>
       <input
@@ -211,6 +215,9 @@ function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             cena: e.target.value,
+             suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2)
+     
+
           })
         }
       }
@@ -223,7 +230,7 @@ function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
 }
 function Suma({ row }) {
   return (
-    <td>{row.cena}</td>
+    <td>{row.suma}</td>
   );
 }
 function Info({ row, handleUpdateKosztyDodatkoweTemporary }) {

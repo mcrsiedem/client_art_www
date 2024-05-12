@@ -32,7 +32,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [kosztyDodatkowe, setKosztyDodatkowe] = useState([]); // wszystkie koszty dodatkowe  pobierane wg id kosztów zamówienia
     const [kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary] = useState([]); // koszty dodatkowe  w trakcie edycji
     const [showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit] =     useState(false);
-    const [selecetedKosztyDodatkoweZamowienia,setSelecetedKosztyDodatkoweZamowienia] = useState(null)
+    const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
 
  
 
@@ -143,7 +143,7 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowProcesyElementow,
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
-          selecetedKosztyDodatkoweZamowienia,setSelecetedKosztyDodatkoweZamowienia
+          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia
 
         }}
       >

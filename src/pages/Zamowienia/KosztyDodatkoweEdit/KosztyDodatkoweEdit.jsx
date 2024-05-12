@@ -4,7 +4,7 @@ import iconX from "assets/xDark.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
-export default function ProcesElement() {
+export default function KosztyDodatkoweEdit() {
 
 
   return (
@@ -28,11 +28,12 @@ function Window({children}) {
 
 function Header() {
   const modalContext = useContext(ModalInsertContext);
-  const appContext = useContext(AppContext);
-  const rowElement = modalContext.selectedElementROW;
+
+  const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
+
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} {rowElement.naklad} szt. {rowElement.nazwa}</p> </p> 
+      <p className={style.title}>Koszty dodatkowe - <p className={style.title2}> ...</p> </p> 
       <Zamknij/>
     </div>
   );
@@ -46,7 +47,7 @@ function Zamknij() {
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
-        modalContext.setShowElementyProcesyInsert(false);
+        modalContext.setShowKosztyDodatkoweEdit(false);
  
       }}
       alt="Procesy"
@@ -56,15 +57,16 @@ function Zamknij() {
 
 function Footer() {
   const modalContext = useContext(ModalInsertContext);
-  const setProcesyElementow = modalContext.setProcesyElementow;
-  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+  const setKosztyDodatkowe = modalContext.setKosztyDodatkowe;
+  const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
+
   return (
     <div className={style.footer}>
       <button
         className={style.btn}
         onClick={() => {
-          modalContext.setShowElementyProcesyInsert(false);
-          setProcesyElementow(procesyElementowTemporary)
+          modalContext.setShowKosztyDodatkoweEdit(false);
+          setKosztyDodatkowe(kosztyDodatkoweTemporary)
         }}
       >
         Zapisz
@@ -74,62 +76,52 @@ function Footer() {
 }
 
 function Table() {
-  const contexApp = useContext(AppContext);
-  const contexModal = useContext(ModalInsertContext);
-  const procesyElementow = contexModal.procesyElementow;
-  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
-  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  const modalContext = useContext(ModalInsertContext);
 
+  // const procesyElementowTemporary = contexModal.procesyElementowTemporary;
+  // const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  // const selectedElementROW = contexModal.selectedElementROW;
 
-  const selectedElementROW = contexModal.selectedElementROW;
-
+const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
+const setKosztyDodatkoweTemporary = modalContext.setKosztyDodatkoweTemporary;
+const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
   return (
     <div className={style.main}>
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.col_indeks}>#</th>
-            {/* <th className={style.col_indeks}>id</th>
-            <th className={style.col_indeks}>zam</th>
-            <th className={style.col_indeks}>prod</th>
-            <th className={style.col_indeks}>element</th> */}
-            <th className={style.col_proces}>Proces</th>
-            <th className={style.col_typ}>Typ</th>
-            <th className={style.col_ilosc}>Front</th>
-            <th className={style.col_ilosc}>Back</th>
-            <th className={style.col_kolory}>Front kolory</th>
-            <th className={style.col_kolory}>Back kolory</th>
-            <th className={style.col_wersja}>Uwagi</th>
+          <th className={style.col2}>#</th>
+                <th className={style.col3}>Nazwa</th>
+                <th className={style.col10}>Ilość</th>
+                <th className={style.col10}>Cena</th>
+                <th className={style.col10}>Suma</th>
+                <th className={style.col10}>Uwagi</th>
           </tr>
         </thead>
         <tbody>
-          {procesyElementowTemporary
-          .filter(x => x.element_id == selectedElementROW.id)
-          .sort((a, b) => a.indeks - b.indeks)
+          {kosztyDodatkoweTemporary
+          // .filter(x => x.element_id == selectedElementROW.id)
+          // .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => {
             return (
-              <tr key={row.id}>
-                <td>{i+1}</td>
-                {/* <td>{row.indeks}</td> */}
+              <tr
+                    key={row.id}
+                  >
+                    <Indeks row={row}/>
+                    <Nazwa row={row} />
+                    <Ilosc row={row} />
+                    <Cena row={row} />
+                    <Suma row={row} />
+                    <Info row={row} />
 
-                {/* <td>{row.id}</td>
-                <td>{row.zamowienie_id}</td>
-                <td>{row.produkt_id}</td>
-                <td>{row.element_id}</td> */}
-                <ProcesName row={row}/>
-                <ProcessTyp row={row}/>
-                <td>{row.front_ilosc}</td>
-                <td>{row.back_ilosc}</td>
-                <td>{row.front_kolor}</td>
-                <td>{row.back_kolor}</td>
-                <td></td>
-              </tr>
+     
+                  </tr>
             );
           })}
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button>
+         {/* <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button> */}
       </div>
      
     </div>
@@ -198,3 +190,35 @@ const ProcessTyp = ({ row }) => {
     </td>
   );
 };
+
+
+function Indeks({ row }) {
+  return (
+    <td>{row.indeks}</td>
+  );
+}
+function Nazwa({ row }) {
+  return (
+    <td>{row.nazwa}</td>
+  );
+}
+function Ilosc({ row }) {
+  return (
+    <td>{row.ilosc}</td>
+  );
+}
+function Cena({ row }) {
+  return (
+    <td>{row.cena}</td>
+  );
+}
+function Suma({ row }) {
+  return (
+    <td>{row.cena}</td>
+  );
+}
+function Info({ row }) {
+  return (
+    <td>{row.cena}</td>
+  );
+}

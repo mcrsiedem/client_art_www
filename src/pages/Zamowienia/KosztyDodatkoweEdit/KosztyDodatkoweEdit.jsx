@@ -114,7 +114,7 @@ const handleDeleteKosztyDodatkoweTemporary = modalContext.handleDeleteKosztyDoda
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Suma</th>
                 <th className={style.col10}>Uwagi</th>
-                <th className={style.col10}>Uwagi</th>
+                <th className={style.col10}>Skasuj</th>
           </tr>
         </thead>
         <tbody>

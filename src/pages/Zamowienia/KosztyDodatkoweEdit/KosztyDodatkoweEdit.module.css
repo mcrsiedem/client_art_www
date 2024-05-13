@@ -163,3 +163,12 @@ margin-left: 15px;
     height: 25px;
     box-shadow: none;
   }
+
+  .td_razem{
+    font-weight: bold;
+    text-align: end;
+
+  }
+  .td_suma{
+    font-weight: bold;
+  }

@@ -28,6 +28,9 @@ const kosztyEdit = kosztyDodatkoweTemporary.slice();
         cena: "0",
         suma: "",
         info: "",
+        zamowienia_koszty_id: kosztyDodatkoweTemporary[0].zamowienia_koszty_id,
+        zamowienie_prime_id: kosztyDodatkoweTemporary[0].zamowienie_prime_id,
+
         indeks: Math.max(...kosztyDodatkoweTemporary.map((f) => f.indeks)) + 1
       });
 

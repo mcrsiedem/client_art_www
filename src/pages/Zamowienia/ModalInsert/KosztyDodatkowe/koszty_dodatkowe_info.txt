@@ -34,19 +34,21 @@ ModalInsert         - fechparametry
 
 
 
-SELECT `koszt_dodatkowy`.`id`,
-                        `koszt_dodatkowy`.`indeks`,
-                        `koszt_dodatkowy`.`utworzono`,
-                        `koszt_dodatkowy`.`zmodyfikowano`,
-                        `koszt_dodatkowy`.`nazwa`,
-                        `koszt_dodatkowy`.`ilosc`,
-                        `koszt_dodatkowy`.`cena`,
-                        `koszt_dodatkowy`.`suma`,
-                        `koszt_dodatkowy`.`info`,
-                        `koszt_dodatkowy`.`zamowienia_koszty_id`,
-                        `koszt_dodatkowy`.`autor_id`
-                        `koszt_dodatkowy`.`final`
-                    FROM `artdruk`.`koszt_dodatkowy`;
+SELECT `koszty_dodatkowe`.`id`,
+    `koszty_dodatkowe`.`indeks`,
+    `koszty_dodatkowe`.`utworzono`,
+    `koszty_dodatkowe`.`zmodyfikowano`,
+    `koszty_dodatkowe`.`nazwa`,
+    `koszty_dodatkowe`.`ilosc`,
+    `koszty_dodatkowe`.`cena`,
+    `koszty_dodatkowe`.`suma`,
+    `koszty_dodatkowe`.`info`,
+    `koszty_dodatkowe`.`zamowienia_koszty_id`,
+    `koszty_dodatkowe`.`autor_id`,
+    `koszty_dodatkowe`.`zamowienie_prime_id`,
+    `koszty_dodatkowe`.`final`
+FROM `artdruk`.`koszty_dodatkowe`;
+
 
 SELECT `zamowienia_koszty_dodatkowe`.`id`,
                     `zamowienia_koszty_dodatkowe`.`utworzono`,

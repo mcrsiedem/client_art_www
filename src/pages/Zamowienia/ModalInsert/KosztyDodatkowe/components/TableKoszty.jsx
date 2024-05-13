@@ -26,12 +26,12 @@ export default function TableKoszty() {
             </thead>
             <tbody className={style.center}>
 
-              {kosztyDodatkowe.map((row) => {
+              {kosztyDodatkowe.map((row,i) => {
                 return (
                   <tr
                     key={row.id}
                   >
-                    <Indeks row={row}/>
+                    <Indeks row={row} i={i+1}/>
                     <Nazwa row={row} />
                     <Ilosc row={row} />
                     <Cena row={row} />
@@ -65,9 +65,9 @@ export default function TableKoszty() {
   }
   
 
-  function Indeks({ row }) {
+  function Indeks({ row,i }) {
     return (
-      <td>{row.indeks}</td>
+      <td>{i}</td>
     );
   }
   function Nazwa({ row }) {

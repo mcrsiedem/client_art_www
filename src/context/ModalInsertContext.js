@@ -116,6 +116,12 @@ export const ModalInsertContextProvider = ({children})=>{
       )
     };
 
+    const handleDeleteKosztyDodatkoweTemporary = (row) => {
+      setKosztyDodatkoweTemporary(
+        kosztyDodatkoweTemporary.filter((t) => t.id != row.id)
+      )
+    };
+
     useEffect(() => {
       // gdy zmieniają sie koszty dodatkowe sumowany jest tutaj wynik
       let suma = 0.0;
@@ -165,6 +171,7 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowPakowanie,
           handleUpdateRowProcesyElementow,
           handleUpdateKosztyDodatkoweTemporary,
+          handleDeleteKosztyDodatkoweTemporary,
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,

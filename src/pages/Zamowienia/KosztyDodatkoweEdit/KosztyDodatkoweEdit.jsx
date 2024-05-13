@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import style from "./KosztyDodatkoweEdit.module.css";
 import iconX from "assets/xDark.svg";
+import iconTrash from "assets/trash2.svg"
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
@@ -99,6 +100,8 @@ const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
 const setKosztyDodatkoweZamowienia = modalContext.setKosztyDodatkoweZamowienia;
 
 const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDodatkoweTemporary;
+const handleDeleteKosztyDodatkoweTemporary = modalContext.handleDeleteKosztyDodatkoweTemporary;
+
 
   return (
     <div className={style.main}>
@@ -111,6 +114,7 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Suma</th>
                 <th className={style.col10}>Uwagi</th>
+                <th className={style.col10}>Uwagi</th>
           </tr>
         </thead>
         <tbody>
@@ -122,12 +126,14 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
               <tr
                     key={row.id}
                   >
-                    <Indeks row={row}/>
+                    <Indeks row={row} i={i+1}/>
                     <Nazwa row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} />
                     <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Cena row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Suma row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Info row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
+                    <Usun row={row} handleDeleteKosztyDodatkoweTemporary={handleDeleteKosztyDodatkoweTemporary}/>
+
 
      
                   </tr>
@@ -144,6 +150,7 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
    
              <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0].suma}</td>
              <td></td>
+             <td></td>
 
 
            </tr>
@@ -158,9 +165,9 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
 }
 
 
-function Indeks({ row }) {
+function Indeks({ row,i }) {
   return (
-    <td  className={style.col_indeks}>{row.indeks}</td>
+    <td  className={style.col_indeks}>{i}</td>
   );
 }
 function Nazwa({ row,handleUpdateKosztyDodatkoweTemporary }) {
@@ -269,6 +276,25 @@ function Info({ row, handleUpdateKosztyDodatkoweTemporary }) {
           
         }
       ></input>
+    </td>
+  );
+}
+
+function Usun({ row,handleDeleteKosztyDodatkoweTemporary}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const pakowanie = contextModalInsert.pakowanie;
+  const setPakowanie = contextModalInsert.setPakowanie;
+  return (
+    <td className={style.col_button}>
+      <div >
+                      <img
+         className={style.expand}
+          src={iconTrash}
+          onClick={() => {handleDeleteKosztyDodatkoweTemporary(row)}}
+          alt="Procesy"
+        />
+      </div>
+
     </td>
   );
 }

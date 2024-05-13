@@ -93,6 +93,13 @@
     font-weight: bold;
     font-size: 1.1rem;
   }
+
+  .td_indeks{
+width: 40px;
+  }
+  .td_ilosc{
+    width: 60px;
+      }
 .btn_edytuj{
   width: 100px;
   height: 30px;

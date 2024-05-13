@@ -16,7 +16,7 @@ export default function TableKoszty() {
           <table className={style.table2}>
             <thead>
               <tr>
-                <th className={style.col2}>#</th>
+                <th className={style.td_indeks}>#</th>
                 <th className={style.col3}>Nazwa</th>
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>

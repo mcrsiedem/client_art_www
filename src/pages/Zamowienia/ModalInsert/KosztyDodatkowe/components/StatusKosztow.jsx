@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../KosztyDodatkowe.module.css";
+import { zapisKosztowDodatkowychZamowienia } from "actions/zapisKosztowDodatkowychZamowienia";
 
 export default function StatusKosztow() {
     const contextApp = useContext(AppContext);
@@ -17,7 +18,9 @@ export default function StatusKosztow() {
             value={kosztyDodatkoweZamowienia[0].status}
     
             onChange={(event) => {
-                setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
+              setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
+              zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia)
+                
             //   setSaveButtonDisabled(false)
             }}
           >

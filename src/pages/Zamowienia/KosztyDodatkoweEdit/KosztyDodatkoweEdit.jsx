@@ -8,6 +8,7 @@ import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import { zapisKosztowDodatkowych } from "actions/zapisKosztowDodatkowych";
 import { addKosztDodatkowy } from "actions/addKosztDodatkowy";
 
+
 export default function KosztyDodatkoweEdit() {
 
 
@@ -95,6 +96,8 @@ const kosztyDodatkoweTemporary = modalContext.kosztyDodatkoweTemporary;
 const setKosztyDodatkoweTemporary = modalContext.setKosztyDodatkoweTemporary;
 const selectedKoszt = modalContext.selectedKosztyDodatkoweZamowienia;
 const kosztyDodatkoweZamowienia = modalContext.kosztyDodatkoweZamowienia;
+const setKosztyDodatkoweZamowienia = modalContext.setKosztyDodatkoweZamowienia;
+
 const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDodatkoweTemporary;
 
   return (
@@ -121,7 +124,7 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
                   >
                     <Indeks row={row}/>
                     <Nazwa row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} />
-                    <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
+                    <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} kosztyDodatkoweTemporary={kosztyDodatkoweTemporary} kosztyDodatkoweZamowienia={kosztyDodatkoweZamowienia} setKosztyDodatkoweZamowienia={setKosztyDodatkoweZamowienia}/>
                     <Cena row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Suma row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Info row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
@@ -178,7 +181,7 @@ function Nazwa({ row,handleUpdateKosztyDodatkoweTemporary }) {
     </td>
   );
 }
-function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
+function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary,kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,kosztyDodatkoweTemporary }) {
   return (
     <td>
       <input
@@ -196,6 +199,11 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
             suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ","),
 
           })
+
+          // addSumaKosztow({kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,kosztyDodatkoweTemporary})
+          //sumowanie RAZEM
+
+
         }
       }
           

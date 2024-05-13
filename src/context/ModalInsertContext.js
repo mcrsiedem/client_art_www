@@ -117,8 +117,21 @@ export const ModalInsertContextProvider = ({children})=>{
     };
 
     useEffect(()=>{
+// gdy zmieniają sie koszty dodatkowe sumowany jest tutaj wynik
+      let suma = 0;
+      kosztyDodatkoweTemporary.forEach(element => {
+         suma= suma + parseFloat(element.suma)
+      });
+        console.log("Wynik: "+suma)
 
-    },[])
+        setKosztyDodatkoweZamowienia(prev=> prev.map(x=>{
+          return {
+            ...x,suma: suma
+        
+          }
+        }))
+
+    },[kosztyDodatkoweTemporary])
     
     return (
       <ModalInsertContext.Provider

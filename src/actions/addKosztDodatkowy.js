@@ -4,6 +4,9 @@ import { IP } from "../utils/Host";
 
 
 export function addKosztDodatkowy(kosztyDodatkoweTemporary,setKosztyDodatkoweTemporary) {
+
+// dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
+
 const kosztyEdit = kosztyDodatkoweTemporary.slice();
 
   axios

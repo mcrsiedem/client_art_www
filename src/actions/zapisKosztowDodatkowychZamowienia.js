@@ -9,31 +9,33 @@ import { IP } from "../utils/Host";
 //     - update kosztyDodatkoweZamowienia
 
 
-export async function zapisKosztowDodatkowychZamowienia({
+export async function zapisKosztowDodatkowychZamowienia(
     
     kosztyDodatkoweZamowienia,
     setKosztyDodatkoweZamowienia,
-   }
+    value
+   
 ) {
-
-     let zapis = await   zapisKosztyDodatkoweZamowienia(kosztyDodatkoweZamowienia);
+// console.log("koszty :" +kosztyDodatkoweZamowienia[0].id)
+     let zapis = await   zapisKosztyDodatkoweZamowienia(kosztyDodatkoweZamowienia,value);
 
      if(zapis.zapis.status==201){
-         setKosztyDodatkoweZamowienia(zapis.kosztyDodatkoweZamowienia);
-    
+
+         setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: value});
      }
-// console.log(zapis.zapis.status)
-     // jeśli ok to:
+
 
 
 }
 
-const zapisKosztyDodatkoweZamowienia = (kosztyDodatkoweZamowienia) => {
+const zapisKosztyDodatkoweZamowienia = (kosztyDodatkoweZamowienia,value) => {
 
     return new Promise(async(resolve,reject)=>{
 
-        let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych-zamowienia", {
-            kosztyDodatkoweZamowienia})
+        let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych_zamowienia", {
+          id:  kosztyDodatkoweZamowienia[0].id,
+          value
+        })
 
          resolve({zapis,kosztyDodatkoweZamowienia})
     })

@@ -15,11 +15,12 @@ export default function StatusKosztow() {
           <label className={style.status_label}> Status </label>
           <select
             className={style.status}
-            value={kosztyDodatkoweZamowienia[0].status}
+            defaultValue={kosztyDodatkoweZamowienia[0].status}
     
             onChange={(event) => {
-              setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
-              zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia)
+              // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)
+              // setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
+              zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)
                 
             //   setSaveButtonDisabled(false)
             }}

@@ -157,7 +157,7 @@ const handleDeleteKosztyDodatkoweTemporary = modalContext.handleDeleteKosztyDoda
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addKosztDodatkowy(kosztyDodatkoweTemporary,setKosztyDodatkoweTemporary)}>Dodaj nowy koszt</button>
+         <button className={style.btn_dodaj_proces} onClick={()=>addKosztDodatkowy(kosztyDodatkoweTemporary,setKosztyDodatkoweTemporary,kosztyDodatkoweZamowienia)}>Dodaj nowy koszt</button>
       </div>
      
     </div>

@@ -124,7 +124,7 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
                   >
                     <Indeks row={row}/>
                     <Nazwa row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} />
-                    <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary} kosztyDodatkoweTemporary={kosztyDodatkoweTemporary} kosztyDodatkoweZamowienia={kosztyDodatkoweZamowienia} setKosztyDodatkoweZamowienia={setKosztyDodatkoweZamowienia}/>
+                    <Ilosc row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Cena row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Suma row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
                     <Info row={row} handleUpdateKosztyDodatkoweTemporary={handleUpdateKosztyDodatkoweTemporary}/>
@@ -181,7 +181,7 @@ function Nazwa({ row,handleUpdateKosztyDodatkoweTemporary }) {
     </td>
   );
 }
-function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary,kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,kosztyDodatkoweTemporary }) {
+function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary}) {
   return (
     <td>
       <input
@@ -196,7 +196,9 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary,kosztyDodatkoweZamowi
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             ilosc: e.target.value,
-            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ","),
+            // suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ","),
+            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2),
+
 
           })
 
@@ -226,7 +228,9 @@ function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             cena: e.target.value,
-             suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2).replace(".", ",")
+            //  suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2).replace(".", ",")
+             suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2)
+
     
           })
         }

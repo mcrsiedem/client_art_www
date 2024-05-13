@@ -60,3 +60,4 @@ SELECT `zamowienia_koszty_dodatkowe`.`id`,
                     `zamowienia_koszty_dodatkowe`.`status`,
                     `zamowienia_koszty_dodatkowe`.`stan`
                     FROM `artdruk`.`zamowienia_koszty_dodatkowe`;
+

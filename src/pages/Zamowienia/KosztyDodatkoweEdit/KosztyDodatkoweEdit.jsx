@@ -6,6 +6,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
 import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import { zapisKosztowDodatkowych } from "actions/zapisKosztowDodatkowych";
+import { addKosztDodatkowy } from "actions/addKosztDodatkowy";
 
 export default function KosztyDodatkoweEdit() {
 
@@ -146,7 +147,7 @@ const handleUpdateKosztyDodatkoweTemporary = modalContext.handleUpdateKosztyDoda
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         {/* <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button> */}
+         <button className={style.btn_dodaj_proces} onClick={()=>addKosztDodatkowy(kosztyDodatkoweTemporary,setKosztyDodatkoweTemporary)}>Dodaj nowy koszt</button>
       </div>
      
     </div>
@@ -192,13 +193,11 @@ function Ilosc({ row, handleUpdateKosztyDodatkoweTemporary }) {
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             ilosc: e.target.value,
-            // suma: parseFloat(row.cena) * Number(e.target.value)
-            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ",")
+            suma: parseFloat(+e.target.value* parseFloat(row.cena.replace(",", ".")) ).toFixed(2).replace(".", ","),
 
           })
         }
       }
-
           
         }
       ></input>
@@ -214,16 +213,13 @@ function Cena({ row, handleUpdateKosztyDodatkoweTemporary }) {
         value={row.cena}
       
         onChange={(e) => {
-
    
           if ( e.target.value === '' || reg_cena.test(e.target.value)) {
-          
             handleUpdateKosztyDodatkoweTemporary({
             ...row,
             cena: e.target.value,
              suma: parseFloat( parseFloat(e.target.value.replace(",", ".")) * +row.ilosc).toFixed(2).replace(".", ",")
-     
-
+    
           })
         }
       }

@@ -1,6 +1,7 @@
 // import iconCopy from "../../../../../assets/copy.svg";
 // import iconTrash from "../../../../../assets/trash2.svg";
-import { useState } from "react";
+import { useState,useContext } from "react";
+
 import style from "./OprawaElementyStage.module.css";
 // import { _papiery } from "../../api";
 // import ElementTableHeader from "./ElementTableHeader";
@@ -12,16 +13,21 @@ import style from "./OprawaElementyStage.module.css";
 import axios from "axios";
 
 import { IP } from "../../../../../utils/Host";
+import { ModalInsertContext } from "context/ModalInsertContext";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
-  fragmenty,
-  setFragmenty,
-  oprawa,
-  setOprawa,
   oprawa_row,
   handleChangeCardOprawa,
 }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+  const elementy = contextModalInsert.elementy;
+  const oprawa = contextModalInsert.oprawa;
+  const setOprawa = contextModalInsert.setOprawa;
   function wydzielOprawe() {
+    console.log("oprawa"+ oprawa)
     const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
     // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id

@@ -1,79 +1,79 @@
 
 
-export function AddBookFromCreator(mic,poc ) {
+export function AddBookFromCreator(modalInsertContext,preOrderContext ) {
 
 
 
 
-    //  console.log("mic ", mic.produkty);
-    mic.setProdukty(
-      mic.produkty.map((t) => {
+
+    modalInsertContext.setProdukty(
+      modalInsertContext.produkty.map((t) => {
         return {
           ...t,
-          naklad: poc.preOrder.naklad,
-          format_x: poc.preOrder.szerokosc,
-          format_y: poc.preOrder.wysokosc,
-          oprawa: poc.preOrder.oprawa,
+          naklad: preOrderContext.preOrder.naklad,
+          format_x: preOrderContext.preOrder.szerokosc,
+          format_y: preOrderContext.preOrder.wysokosc,
+          oprawa: preOrderContext.preOrder.oprawa,
           ilosc_stron:
-            parseInt(poc.preOrder.strony_srd) + parseInt(poc.preOrder.strony_okl),
+            parseInt(preOrderContext.preOrder.strony_srd) + parseInt(preOrderContext.preOrder.strony_okl),
         };
       })
     );
   
-    mic.setElementy(
-      mic.elementy.map((t) => {
+    modalInsertContext.setElementy(
+      modalInsertContext.elementy.map((t) => {
         if (t.typ == 1) {
           return {
             ...t,
-            naklad: poc.preOrder.naklad,
-            ilosc_stron: poc.preOrder.strony_okl,
-            format_x: poc.preOrder.szerokosc,
-            format_y: poc.preOrder.wysokosc,
+            naklad: preOrderContext.preOrder.naklad,
+            ilosc_stron: preOrderContext.preOrder.strony_okl,
+            format_x: preOrderContext.preOrder.szerokosc,
+            format_y: preOrderContext.preOrder.wysokosc,
           };
         }
         if (t.typ == 2) {
           return {
             ...t,
-            naklad: poc.preOrder.naklad,
-            ilosc_stron: poc.preOrder.strony_srd,
-            format_x: poc.preOrder.szerokosc,
-            format_y: poc.preOrder.wysokosc,
+            naklad: preOrderContext.preOrder.naklad,
+            ilosc_stron: preOrderContext.preOrder.strony_srd,
+            format_x: preOrderContext.preOrder.szerokosc,
+            format_y: preOrderContext.preOrder.wysokosc,
           };
         }
       })
     );
   
-    mic.setFragmenty(
-      mic.fragmenty.map((t) => {
+    modalInsertContext.setFragmenty(
+      modalInsertContext.fragmenty.map((t) => {
         if (t.typ == 1) {
           return {
             ...t,
-            naklad: poc.preOrder.naklad,
-            ilosc_stron: poc.preOrder.strony_okl,
-            format_x: poc.preOrder.szerokosc,
-            format_y: poc.preOrder.wysokosc,
+            naklad: preOrderContext.preOrder.naklad,
+            ilosc_stron: preOrderContext.preOrder.strony_okl,
+            format_x: preOrderContext.preOrder.szerokosc,
+            format_y: preOrderContext.preOrder.wysokosc,
           };
         }
         if (t.typ == 2) {
           return {
             ...t,
-            naklad: poc.preOrder.naklad,
-            ilosc_stron: poc.preOrder.strony_srd,
-            format_x: poc.preOrder.szerokosc,
-            format_y: poc.preOrder.wysokosc,
+            naklad: preOrderContext.preOrder.naklad,
+            ilosc_stron: preOrderContext.preOrder.strony_srd,
+            format_x: preOrderContext.preOrder.szerokosc,
+            format_y: preOrderContext.preOrder.wysokosc,
           };
         }
       })
     );
   
-    mic.setOprawa(
-      mic.oprawa.map((t) => {
+    modalInsertContext.setOprawa(
+      modalInsertContext.oprawa.map((t) => {
         return {
           ...t,
-          naklad: poc.preOrder.naklad,
-          oprawa: poc.preOrder.oprawa,
+          naklad: preOrderContext.preOrder.naklad,
+          oprawa: preOrderContext.preOrder.oprawa,
   
-          bok_oprawy: poc.preOrder.wysokosc,
+          bok_oprawy: preOrderContext.preOrder.wysokosc,
         };
       })
     );

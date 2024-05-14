@@ -34,6 +34,7 @@ const initialPreOrder = {
   szerokosc: "",
   wysokosc: "",
   bok_oprawy: "",
+  proces: [{id:1}]
 };
 
 const initialDane = {
@@ -220,7 +221,23 @@ const initialProcesy = [
     front_kolor: "CMYK",
     back_kolor: "CMYK",
     info: "d",
-    indeks: 0,
+    indeks: 1,
+  },
+  {
+    id: 3,
+    zamowienie_id: 1,
+    produkt_id: 1,
+    element_id: 2,
+    proces_id: 29,
+    nazwa_id: 3,
+    proces_nazwa: 29,
+    proces_typ: 29,
+    front_ilosc: "",
+    back_ilosc: "",
+    front_kolor: "",
+    back_kolor: "",
+    info: "d",
+    indeks: 2,
   },
 ];
 

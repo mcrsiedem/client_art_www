@@ -2,6 +2,14 @@
 .container {
   display: flex;
   align-items: start;
+  justify-content: left;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.container2 {
+  display: flex;
+  align-items: start;
   justify-content: center;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -107,6 +115,27 @@ width: 40px;
   background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
 border: none;
 }
+.btn_dodaj_koszty{
+  width: 220px;
+  height: 1.6rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
+  /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 190, 116) 50%,rgb(240, 151, 50) 100%); */
+  /* border-color: rgb(182, 182, 182); */
+  /* box-shadow: none; */
+/* border: none; */
+/* font-weight: bold; */
+border: none;
+}
+
+.btn_dodaj_koszty:hover{
+
+  /* box-shadow: none; */
+  border: 1px gray solid;
+}
+
+
 
 /* pasek przewijania */
 .container::-webkit-scrollbar {

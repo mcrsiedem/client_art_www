@@ -30,7 +30,14 @@ ModalInsert         - fechparametry
 
      zapisKosztowDodatkowych.js
         let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych", { kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia})
+        
+    addKosztDodatkowyZamowienia.js - dodaje koszty dodatkowe do zamowienia - wtedy pojawia się okno z kosztami w zamowieniu
+        .post(IP + "addKosztDodatkowyZamowienia", {
+        status: "1",
+        zamowienie_id: daneZamowienia.id,
+        zamowienie_prime_id: daneZamowienia.prime_id
 
+    }
 
 
 

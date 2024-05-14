@@ -50,7 +50,7 @@ export default function BookMaker({
             <Szerokosc  />
             <Wysokosc  />
           </div>
-   
+          <Falc/>
           <AddBtn setShowTemplate={setShowTemplate}  setShowParametryZamowienia={ setShowParametryZamowienia}/>
       </>
 
@@ -183,6 +183,33 @@ const Naklad = () => {
   );
 };
 
+const Falc = () => {
+  const context = useContext(PreOrderContext)
+  return (
+    <div className={style.bindingContainer}>
+      <div className={style.cardNaklad} >
+
+      Falcowanie
+      <input
+        className={style.cardInputNaklad}
+        value={context.preOrder.naklad}
+        placeholder="..."
+        type="text"
+        onChange={(e) => {
+          const re = /^[0-9]+$/;
+          if (e.target.value === '' || re.test(e.target.value)) {
+           context.setPreOrder({...context.preOrder, naklad: e.target.value}) 
+          }
+
+          } }
+      >  
+      </input>
+      szt.
+    </div>
+    </div>
+  );
+};
+
 const Okladka = () => {
   const context = useContext(PreOrderContext)
   return (
@@ -236,17 +263,17 @@ const Srodek = () => {
 
 const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
 
-  const poc = useContext(PreOrderContext)
-  const mic = useContext(ModalInsertContext)
+  const preOrderContext = useContext(PreOrderContext)
+  const modalInsertContext = useContext(ModalInsertContext)
   return (
     <div className={style.bindingContainer}>
     <button
       onClick={() => {
         setShowTemplate(false);
         setShowParametryZamowienia(true);
-        AddBookFromCreator(mic,poc) // przekazane contexty do funkcjis
+        AddBookFromCreator(modalInsertContext,preOrderContext) // przekazane contexty do funkcjis
         // AddProductFromCreator(naklad,binding,elements);
-        console.log("preorder", poc.preOrder)
+        // console.log("preorder", poc.preOrder)
       }}
       className={style.btn}
     >

@@ -50,7 +50,12 @@ export default function BookMaker({
             <Szerokosc  />
             <Wysokosc  />
           </div>
+          
+          <div className={style.bindingContainer}>
+  
           <Falc/>
+          </div>
+       
           <AddBtn setShowTemplate={setShowTemplate}  setShowParametryZamowienia={ setShowParametryZamowienia}/>
       </>
 
@@ -185,30 +190,38 @@ const Naklad = () => {
 
 const Falc = () => {
   const context = useContext(PreOrderContext)
+  const contexApp = useContext(AppContext)
+
   return (
     <div className={style.bindingContainer}>
-      <div className={style.cardNaklad} >
+      <div className={style.falc_druk} >
 
-      Falcowanie
-      <input
-        className={style.cardInputNaklad}
-        value={context.preOrder.naklad}
-        placeholder="..."
-        type="text"
+      Falcowanie:
+      <select
+        className={style.select}
+        defaultValue={context.preOrder.falc_skladka}
         onChange={(e) => {
-          const re = /^[0-9]+$/;
-          if (e.target.value === '' || re.test(e.target.value)) {
-           context.setPreOrder({...context.preOrder, naklad: e.target.value}) 
-          }
+          context.setPreOrder({...context.preOrder, falc_skladka: e.target.value}) 
+        }}
+      >
+        {}
+        {contexApp.procesList
+        // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
+        .filter(p=> p.nazwa_id == 3)
 
-          } }
-      >  
-      </input>
-      szt.
+               .map((option) => (
+          <option key={option.id} value={option.id}>
+         {option.rodzaj}   {option.typ} {option.wykonczenie} {option.obszar}
+          </option>
+        ))}
+      </select>
+ 
     </div>
     </div>
   );
 };
+
+
 
 const Okladka = () => {
   const context = useContext(PreOrderContext)

@@ -34,6 +34,9 @@ const initialPreOrder = {
   szerokosc: "",
   wysokosc: "",
   bok_oprawy: "",
+  falc_skladka: "29", // rodzaj legi
+  druk_skladka: "", // rodzaj  legi
+
   proces: [{id:1}]
 };
 

@@ -193,7 +193,7 @@ const Falc = () => {
   const contexApp = useContext(AppContext)
 
   return (
-    <div className={style.bindingContainer}>
+    <div className={style.bindingContainer_end}>
       <div className={style.falc_druk} >
 
       Falcowanie:

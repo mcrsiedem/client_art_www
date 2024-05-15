@@ -47,13 +47,24 @@
     align-items: end;
     flex-direction: row;
     /* height: 120px; */
-    width: 550px;
-  
-    gap:50px;
-    
-    
+   
 }
 
+.falc_druk{
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 250px;
+    height: 50px;
+    /* border-bottom: 1px solid rgb(181, 181, 181) ; */
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+    gap:20px
+  
+}
 .oprawa{
     width: 550px;
     height: 50px;
@@ -137,21 +148,7 @@
     /* background-color: green; */
   
 }
-.falc_druk{
 
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    flex-direction: row;
-    width: 250px;
-    height: 50px;
-    /* border-bottom: 1px solid rgb(181, 181, 181) ; */
-    /* border-radius: 10px; */
-    color: gray;
-    font-size: 1.2rem;
-    gap:20px
-  
-}
 .cardInputNaklad{
 
     box-shadow: none;
@@ -220,6 +217,7 @@
   }
 
   .select{
+    
 background: transparent;
 text-align: center;
 box-shadow: none;
@@ -228,6 +226,6 @@ border-radius: 0px;
 /* color:rgb(107, 158, 224); */
 color: rgb(148, 148, 148);
 font-size: 1.3rem;
-
+width: 350px;
 /* font-weight: bold; */
   }

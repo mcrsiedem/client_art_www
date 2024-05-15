@@ -135,9 +135,17 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_rok}>Rok</th><th>Klient</th>
       <th >Praca</th>
       <th className={style.col_firma}>Firma</th>
+      <th className={style.col_firma}>Nakład</th>
+      <th className={style.col_utworzono}>Strony</th>
+
       <th className={style.col_utworzono}>Utworzono</th>
+      <th className={style.col_utworzono}>Spedycja</th>
       <th className={style.col_utworzono}>Final</th>
+      <th className={style.col_utworzono}>Szerokość</th>
+      <th className={style.col_utworzono}>Wysokość</th>
+      <th className={style.col_utworzono}>Oprawa</th>
       <th className={style.col_utworzono}>Zlecenie</th>
+
     </tr>
   </thead>
   <tbody>
@@ -157,8 +165,17 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           <td>{row.klient}</td>
           <td>{row.tytul}</td>
           <td>{row.firma}</td>
+          <td>{row.naklad}</td>
+          <td>{row.ilosc_stron}</td>
+
+  
           <td>{row.utworzono}</td>
+          <td>{row.data_spedycji}</td>
+
           <td>{row.final}</td>
+          <td>{row.format_x}</td>
+          <td>{row.format_y}</td>
+          <td>{row.oprawa_nazwa}</td>
           <CreateTechnmologiaBtn row={row}/>
         </tr>
       );

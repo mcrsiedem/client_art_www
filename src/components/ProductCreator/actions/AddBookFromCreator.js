@@ -77,5 +77,20 @@ export function AddBookFromCreator(modalInsertContext,preOrderContext ) {
         };
       })
     );
+
+
+    // dodaje do środków falcowanie takie jak zostało wybrane w kreatorze
+    modalInsertContext.setProcesyElementow(
+      modalInsertContext.procesyElementow.map((t) => {
+        if (t.id == 3) {
+          return {
+            ...t,
+            proces_id: preOrderContext.preOrder.falc_skladka,
+
+          };
+        }else return t
+
+      })
+    );
   }
   

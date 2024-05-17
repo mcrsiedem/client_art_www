@@ -132,7 +132,8 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
     <tr>
       <th className={style.col_id}>#</th>
       <th className={style.col_nr}>Nr</th>
-      <th className={style.col_rok}>Rok</th><th>Klient</th>
+      <th className={style.col_rok}>Rok</th>
+      <th className={style.col_klient}>Klient</th>
       <th >Praca</th>
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_firma}>Nakład</th>
@@ -162,7 +163,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           <td>{row.id} </td>
           <td>{row.nr} </td>
           <td>{row.rok} </td>
-          <td>{row.klient}</td>
+          <td className={style.col_klient}>{row.klient}</td>
           <td>{row.tytul}</td>
           <td>{row.firma}</td>
           <td>{row.naklad}</td>

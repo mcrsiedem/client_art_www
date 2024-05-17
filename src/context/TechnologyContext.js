@@ -17,7 +17,7 @@ export const TechnologyContextProvider = ({children})=>{
 
     
     useEffect(()=>{
-    getTechnology(setTechnology)
+
 
     },[])
     

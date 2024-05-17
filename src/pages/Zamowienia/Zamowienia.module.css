@@ -12,9 +12,9 @@
 .tableContainer{
    /* padding-top: 50px; */
   height: calc(100vh - 60px);
-  width: 100vw;
+  min-width: 100vw;
    /* max-height: 300px;  */
-   overflow-y: scroll;
+   overflow: scroll;
 
 
 }
@@ -132,9 +132,17 @@ tr:hover{
 
 
 
-.col_id { width: 50px; }
+/* .col_id { width: 50px; }
 .col_nr { width: 40px; }
 .col_rok { width: 40px; }
 .col_firma { width: 100px; }
 .col_utworzono { width: 150px; }
-.iconSettings{ width: 15px; }
+
+/* .col_klient{
+    width:  100%; 
+   } */ 
+   .iconSettings{ width: 15px; }
+
+   .col_klient{
+      min-width: 100px;
+   }

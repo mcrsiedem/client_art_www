@@ -5,10 +5,13 @@ import { TechnologyContext } from "context/TechnologyContext";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
+import TechnologiaStage from "./TechnologiaStage/TechnologiaStage";
 
 
 export default function Technologie(){
   const technology = TechnologyContext.technology;
+  const showTechnologyStage = TechnologyContext.showTechnologyStage;
+
   const [dataTechnologie,setDataTechnologie] =useState([]);
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
@@ -29,8 +32,8 @@ export default function Technologie(){
     return(
     <>
       <Header/>
-     
       <TechnologiaTable/>
+      <TechnologiaStage/>
 
     </>
     )

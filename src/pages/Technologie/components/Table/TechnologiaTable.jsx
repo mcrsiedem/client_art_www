@@ -1,13 +1,18 @@
 // tableka z technologiami
-import { useRef,useEffect } from "react";
+import { useRef,useEffect,useContext } from "react";
 import style from "./TechnologiaTable.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
+import { AppContext } from "context/AppContext";
 import { getTechnology } from "actions/getTechnolgy";
 export default function TechnologiaTable(){
+  const techContext = useContext(TechnologyContext);
+  // const technology = TechnologyContext.technology;
+  // const setTechnology = TechnologyContext.setTechnology;
+  // const updateTechnology = TechnologyContext.updateTechnology;
+  const setShowTechnologyStage = techContext.setShowTechnologyStage;
+  const test = techContext.test;
 
-  const technology = TechnologyContext.technology;
-  const setTechnology = TechnologyContext.setTechnology;
-  const updateTechnology = TechnologyContext.updateTechnology;
+
 
   const effectRan = useRef(false);
   useEffect(() => {
@@ -15,7 +20,7 @@ export default function TechnologiaTable(){
       //  fetchTechnologie();
       // const socket = io.connect("http://localhost:3002")
       // console.log(technology)
-      getTechnology(setTechnology)
+      // getTechnology(setTechnology)
     }
     return () => {
       effectRan.current = true;
@@ -30,14 +35,26 @@ return(
       <tr>
         <th className={style.col_id}>#</th>
         <th className={style.col_nr}>Nr</th>
-        <th className={style.col_rok}>Rok</th>
+        <th className={style.col_rok}>Rok</th> 
         <th className={style.col_tytul}>tytul</th>
        
 
       </tr>
     </thead>
     <tbody>
-      {technology.map((row) => {
+      <tr             onDoubleClick={(node, event) => {
+        setShowTechnologyStage(true)
+        console.log(test)
+              // setActiveRowId(row.id)
+              // setStageTechnologiaVisible(true);
+            }}>
+         <td>1</td>
+    <td>1</td>
+    <td>2024</td>
+      </tr>
+   
+
+      {/* {technology.map((row) => {
         return (
           <tr 
             key={row.id}
@@ -58,7 +75,7 @@ return(
 
           </tr>
         );
-      })}
+      })} */}
     </tbody>
   </table>
 )

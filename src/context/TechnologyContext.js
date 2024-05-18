@@ -6,6 +6,8 @@ export const TechnologyContext = createContext();
 export const TechnologyContextProvider = ({children})=>{
 
     const [technology, setTechnology] = useState(null);
+    const [showTechnologyStage, setShowTechnologyStage] = useState(false);
+    const [test, setTest] = useState("test");
 
 
 
@@ -23,8 +25,10 @@ export const TechnologyContextProvider = ({children})=>{
     
     return  <TechnologyContext.Provider 
                 value={{
-                    technology, setTechnology, updateTechnology
-
+                    technology, setTechnology, updateTechnology,
+                    showTechnologyStage, setShowTechnologyStage,
+                    test, setTest
+       
                 }}
             >
                 {children}

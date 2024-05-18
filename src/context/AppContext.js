@@ -57,7 +57,8 @@ export const AppContextProvider = ({children})=>{
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
                     _firma,typ_elementu,_status_koszty_dodatkowe,
-                    showMeProcessName
+                    showMeProcessName,
+            
                 }}
             >
                 {children}

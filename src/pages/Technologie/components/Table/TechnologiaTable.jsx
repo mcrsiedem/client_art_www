@@ -44,7 +44,7 @@ return(
     <tbody>
       <tr             onDoubleClick={(node, event) => {
         setShowTechnologyStage(true)
-        console.log(test)
+ 
               // setActiveRowId(row.id)
               // setStageTechnologiaVisible(true);
             }}>

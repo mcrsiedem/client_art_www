@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./TechnologieStage.module.css";
+import Header from "components/TechnologiaStage/components/Header/Header";
+
 
 export default function TechnologiaStage(){
 
@@ -31,8 +33,9 @@ export default function TechnologiaStage(){
 if(showTechnologyStage) {
     return(
         <div className={style.container}>
-            Technologia
-            <button onClick={()=>setShowTechnologyStage(false)}>X</button>
+       <Header/>
+        
+      
         </div>
         ) 
 }

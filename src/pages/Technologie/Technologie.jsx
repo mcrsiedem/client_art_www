@@ -5,7 +5,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import TechnologiaTable from "./components/Table/TechnologiaTable";
-import TechnologiaStage from "./TechnologiaStage/TechnologiaStage";
+import TechnologiaStage from "../../components/TechnologiaStage/TechnologiaStage";
 
 
 export default function Technologie(){

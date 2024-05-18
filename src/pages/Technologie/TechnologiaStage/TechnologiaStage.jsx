@@ -8,6 +8,8 @@ export default function TechnologiaStage(){
 
     const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
+  const setShowTechnologyStage = techContext.setShowTechnologyStage;
+
 
   const [dataTechnologie,setDataTechnologie] =useState([]);
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
@@ -25,10 +27,12 @@ export default function TechnologiaStage(){
     };
   }, []);
 
+
 if(showTechnologyStage) {
     return(
         <div className={style.container}>
             Technologia
+            <button onClick={()=>setShowTechnologyStage(false)}>X</button>
         </div>
         ) 
 }

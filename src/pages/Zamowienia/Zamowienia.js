@@ -152,12 +152,28 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
   <tbody>
     {zamowienia.map((row) => {
       return (
+<Table_tr row={row} open2={open2} setRow={setRow}/>
+        
+      );
+    })}
+  </tbody>
+</table>
+</div>
+}
+function Table_tr({ row,open2,setRow}) {
+
+  const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
+  return (
+
+<>
         <tr
           key={row.id}
+          onClick={()=>            setShowKartaTechnologiczna(!showKartaTechnologiczna)}
           onDoubleClick={(node, event) => {
             open2();
             // open2(row.id);
             setRow({ id: row.id, prime_id:row.prime_id}); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+
           }}
         >
           <td>{row.id} </td>
@@ -179,13 +195,13 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
           <td>{row.oprawa_nazwa}</td>
           <CreateTechnmologiaBtn row={row}/>
         </tr>
-      );
-    })}
-  </tbody>
-</table>
-</div>
+        {showKartaTechnologiczna && (
+          <div>ok</div>
+        )}
+        
+        </>
+  );
 }
-
 
 
 

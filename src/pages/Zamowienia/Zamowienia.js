@@ -168,7 +168,7 @@ function Table_tr({ row,open2,setRow}) {
 <>
         <tr
           key={row.id}
-          onClick={()=>            setShowKartaTechnologiczna(!showKartaTechnologiczna)}
+        
           onDoubleClick={(node, event) => {
             open2();
             // open2(row.id);
@@ -193,10 +193,10 @@ function Table_tr({ row,open2,setRow}) {
           <td>{row.format_x}</td>
           <td>{row.format_y}</td>
           <td>{row.oprawa_nazwa}</td>
-          <CreateTechnmologiaBtn row={row}/>
+          <CreateTechnmologiaBtn row={row}setShowKartaTechnologiczna={setShowKartaTechnologiczna} showKartaTechnologiczna={showKartaTechnologiczna}/>
         </tr>
         {showKartaTechnologiczna && (
-          <div>ok</div>
+          <div> <button>Dodaj kartę</button></div> 
         )}
         
         </>
@@ -205,14 +205,14 @@ function Table_tr({ row,open2,setRow}) {
 
 
 
- function CreateTechnmologiaBtn({ row, handleChangeCardElementy,handleRemoveItem }) {
+ function CreateTechnmologiaBtn({ row, showKartaTechnologiczna,setShowKartaTechnologiczna }) {
   return (
     <td className={style.col_button}>
       <div >
                       <img
          className={style.iconSettings}
           src={iconSettings}
-          onClick={() => {handleRemoveItem(row.indeks, row.id)}}
+          onClick={() => { setShowKartaTechnologiczna(!showKartaTechnologiczna)}}
           alt="Procesy"
         />
       </div>

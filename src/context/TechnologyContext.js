@@ -7,7 +7,9 @@ export const TechnologyContextProvider = ({children})=>{
 
     const [technology, setTechnology] = useState(null);
     const [showTechnologyStage, setShowTechnologyStage] = useState(false);
-    const [test, setTest] = useState("test");
+
+    const [rowZamowienia, setRowZamowienia] = useState(null);  // row - dodaj kartę
+    const [rowTechnologia, setRowTechnologia] = useState(null);  // row - edytuj kartę
 
 
 
@@ -15,7 +17,10 @@ export const TechnologyContextProvider = ({children})=>{
             getTechnology(setTechnology)
        },[])
 
-
+       useEffect(() => {
+        console.log("open karta")
+          }, [rowZamowienia]);
+        
 
     
     useEffect(()=>{
@@ -27,7 +32,8 @@ export const TechnologyContextProvider = ({children})=>{
                 value={{
                     technology, setTechnology, updateTechnology,
                     showTechnologyStage, setShowTechnologyStage,
-                    test, setTest
+                    rowZamowienia, setRowZamowienia,
+                    rowTechnologia, setRowTechnologia
        
                 }}
             >

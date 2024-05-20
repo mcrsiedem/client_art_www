@@ -12,7 +12,9 @@ export default function Icon({className,logo,navi}){
         src={logo}
         onClick={() => {setShowTechnologyStage(false)
       
-     
+          techContext.setRowZamowienia(null)
+          techContext.setRowTechnologia(null)
+        
         
         }}
         alt="Logo"

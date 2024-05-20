@@ -7,6 +7,8 @@ import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
 import Header from "./components/Header";
+import { TechnologyContext } from "context/TechnologyContext";
+import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 function Zamowienia({ user, setUser }) {
 
   const [listaGramatur, setListaGramatur] = useState();
@@ -98,6 +100,7 @@ function Zamowienia({ user, setUser }) {
   return (
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
+      <TechnologiaStage/>
       <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow} />
 
           {openModalInsert && (
@@ -233,11 +236,14 @@ function Table_tr({ row,open2,setRow}) {
 }
 
 function CreateTechnmologiaBtn({ row }) {
-  
+  const techContext = useContext(TechnologyContext)
   return (
     <td >
       <button className={style.btn_dodaj_karte} 
-      onClick={()=> console.log(row)}
+      onClick={()=> {
+        techContext.setShowTechnologyStage(true)
+        techContext.setRowZamowienia(row)
+      }}
       >Dodaj kartę </button>
 
     </td>

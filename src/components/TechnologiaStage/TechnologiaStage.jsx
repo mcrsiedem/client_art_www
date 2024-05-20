@@ -17,6 +17,8 @@ export default function TechnologiaStage(){
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
   const [activeRowId,setActiveRowId] =useState();
 
+
+
   const effectRan = useRef(false);
   useEffect(() => {
     if (effectRan.current === true) {
@@ -28,6 +30,7 @@ export default function TechnologiaStage(){
       effectRan.current = true;
     };
   }, []);
+
 
 
 if(showTechnologyStage) {

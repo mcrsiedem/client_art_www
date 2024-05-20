@@ -18,8 +18,12 @@ export const TechnologyContextProvider = ({children})=>{
        },[])
 
        useEffect(() => {
-        console.log("open karta")
+        console.log("new karta")
           }, [rowZamowienia]);
+
+          useEffect(() => {
+            console.log("edit karta")
+              }, [rowTechnologia]);
         
 
     

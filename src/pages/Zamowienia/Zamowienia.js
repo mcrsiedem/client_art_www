@@ -133,6 +133,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_id}>#</th>
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
+      <th className={style.col_karta}>Karta</th>
       <th className={style.col_klient}>Klient</th>
       <th >Praca</th>
       <th className={style.col_firma}>Firma</th>
@@ -145,7 +146,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_utworzono}>Szerokość</th>
       <th className={style.col_utworzono}>Wysokość</th>
       <th className={style.col_utworzono}>Oprawa</th>
-      <th className={style.col_utworzono}>Zlecenie</th>
+      
 
     </tr>
   </thead>
@@ -179,6 +180,7 @@ function Table_tr({ row,open2,setRow}) {
           <td>{row.id} </td>
           <td>{row.nr} </td>
           <td>{row.rok} </td>
+          <ShowTechnmologiaBtn row={row}setShowKartaTechnologiczna={setShowKartaTechnologiczna} showKartaTechnologiczna={showKartaTechnologiczna}/>
           <td className={style.col_klient}>{row.klient}</td>
           <td>{row.tytul}</td>
           <td>{row.firma}</td>
@@ -193,11 +195,20 @@ function Table_tr({ row,open2,setRow}) {
           <td>{row.format_x}</td>
           <td>{row.format_y}</td>
           <td>{row.oprawa_nazwa}</td>
-          <CreateTechnmologiaBtn row={row}setShowKartaTechnologiczna={setShowKartaTechnologiczna} showKartaTechnologiczna={showKartaTechnologiczna}/>
+          
         </tr>
-        {showKartaTechnologiczna && (
-          <div> <button>Dodaj kartę</button></div> 
-        )}
+            {showKartaTechnologiczna && (
+            
+            <>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td> <CreateTechnmologiaBtn row={row}/></td> 
+            </>
+              
+            )}
         
         </>
   );
@@ -205,7 +216,7 @@ function Table_tr({ row,open2,setRow}) {
 
 
 
- function CreateTechnmologiaBtn({ row, showKartaTechnologiczna,setShowKartaTechnologiczna }) {
+ function ShowTechnmologiaBtn({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
   return (
     <td className={style.col_button}>
       <div >
@@ -220,6 +231,19 @@ function Table_tr({ row,open2,setRow}) {
     </td>
   );
 }
+
+function CreateTechnmologiaBtn({ row }) {
+  
+  return (
+    <td >
+      <button className={style.btn_dodaj_karte} 
+      onClick={()=> console.log(row)}
+      >Dodaj kartę </button>
+
+    </td>
+  );
+}
+
 
 
 export default Zamowienia;

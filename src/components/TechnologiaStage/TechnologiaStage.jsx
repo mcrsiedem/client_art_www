@@ -11,6 +11,8 @@ export default function TechnologiaStage(){
     const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
+  const openTechnologia = techContext.openTechnologia;
+
 
 
   const [dataTechnologie,setDataTechnologie] =useState([]);
@@ -19,18 +21,29 @@ export default function TechnologiaStage(){
 
 
 
-  const effectRan = useRef(false);
-  useEffect(() => {
-    if (effectRan.current === true) {
-      //  fetchTechnologie();
-      // const socket = io.connect("http://localhost:3002")
-    //   console.log("tech "+technology)
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
+  // const effectRan = useRef(false);
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+  //     if(openTechnologia){
+  //       console.log("open technologia")
+  //     }
 
+  //   }
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+
+
+
+  useEffect(() => {
+
+      if(openTechnologia){
+        console.log("open technologia")
+      }
+
+
+  }, []);
 
 
 if(showTechnologyStage) {

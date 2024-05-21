@@ -237,12 +237,16 @@ function Table_tr({ row,open2,setRow}) {
 
 function CreateTechnmologiaBtn({ row }) {
   const techContext = useContext(TechnologyContext)
+  const updateDane = techContext.updateDane;
   return (
     <td >
       <button className={style.btn_dodaj_karte} 
       onClick={()=> {
         techContext.setShowTechnologyStage(true)
         techContext.setRowZamowienia(row)
+        techContext.setOpenTechnologia(true)
+        // fechparametry(row.id, row.prime_id,updateDane )
+
       }}
       >Dodaj kartę </button>
 
@@ -250,7 +254,19 @@ function CreateTechnmologiaBtn({ row }) {
   );
 }
 
+async function fechparametry(idZamowienia,zamowienie_prime_id,updateDane) {
 
+  const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
+
+  updateDane(res.data[0][0])
+
+ //  setProdukty(res.data[1])
+ //  setElementy(res.data[2])
+ //  setFragmenty(res.data[3])
+ //  setOprawa(res.data[4])
+ //  setProcesyElementow(res.data[6])
+
+}
 
 export default Zamowienia;
 

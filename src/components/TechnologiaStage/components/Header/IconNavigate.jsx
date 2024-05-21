@@ -14,6 +14,8 @@ export default function Icon({className,logo,navi}){
       
           techContext.setRowZamowienia(null)
           techContext.setRowTechnologia(null)
+          // techContext.setOpenTechnologia(false)
+
         
         
         }}

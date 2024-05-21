@@ -8,7 +8,7 @@ import Header from "components/TechnologiaStage/components/Header/Header";
 
 export default function TechnologiaStage(){
 
-    const techContext = useContext(TechnologyContext);
+  const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const openTechnologia = techContext.openTechnologia;

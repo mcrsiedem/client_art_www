@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./TechnologieStage.module.css";
-import Header from "components/TechnologiaStage/components/Header/Header";
+import Header from "components/TechnologiaStage/components/HeaderTech/Header";
+import DaneTech from "./components/DaneTech/DaneTech";
 
 
 export default function TechnologiaStage(){
@@ -50,7 +51,7 @@ if(showTechnologyStage) {
     return(
         <div className={style.container}>
        <Header/>
-        
+        <DaneTech/>
       
         </div>
         ) 

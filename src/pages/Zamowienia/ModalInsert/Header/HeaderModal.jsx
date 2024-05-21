@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
 import { useAuth } from "hooks/useAuth";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
 
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -153,7 +154,7 @@ function ZapiszJako({
 
 
 function Zamknij({setOpenModalInsert,readOnly,row}) {
-  // const contextModalInsert = useContext(ModalInsertContext);
+  const contextModalInsert = useContext(ModalInsertContext);
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
 
@@ -172,6 +173,12 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
           id: row.id,
         });
       }
+      contextModalInsert.setDaneZamowienia(initialDane)
+      contextModalInsert.setProdukty(initialProdukty)
+      contextModalInsert.setElementy(initialElementy)
+      contextModalInsert.setFragmenty(initialFragmenty)
+      contextModalInsert.setOprawa(initialOprawa)
+      contextModalInsert.setProcesyElementow(initialProcesy)
     }
       }
       alt="Procesy"

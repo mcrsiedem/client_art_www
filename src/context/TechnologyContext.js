@@ -61,6 +61,7 @@ export const TechnologyContextProvider = ({children})=>{
      const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
 
      setDane(res.data[0][0])
+    //  console.log("dane: ", res.data[0][0])
  
      setProdukty(res.data[1])
      setElementy(res.data[2])

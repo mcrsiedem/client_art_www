@@ -14,8 +14,15 @@ export const TechnologyContextProvider = ({children})=>{
     const [rowZamowienia, setRowZamowienia] = useState(null);  // row - dodaj kartę
     const [rowTechnologia, setRowTechnologia] = useState(null);  // row - edytuj kartę
 
-    const [dane, setDane] = useState([{id: 11}]);
-    const [openTechnologia, setOpenTechnologia] = useState(false);
+    const [dane, setDane] = useState([]);
+
+    const [produkty, setProdukty] = useState([]);
+    const [elementy, setElementy] = useState([]);
+    const [fragmenty, setFragmenty] = useState([]);
+    const [oprawa, setOprawa] = useState([]);
+    const [procesyElementow, setProcesyElementow] = useState([]);
+
+    // const [openTechnologia, setOpenTechnologia] = useState(false);
 
 
 
@@ -23,10 +30,10 @@ export const TechnologyContextProvider = ({children})=>{
             getTechnology(setTechnology)
        },[])
 
-       const updateDane = useCallback((data) => {
-        console.log("data",data)
-        setDane(data);
-      }, []);
+    //    const updateDane = useCallback((data) => {
+    //     console.log("data",data)
+    //     setDane(data);
+    //   }, []);
 
        useEffect(() => {
         console.log("new karta")
@@ -55,11 +62,11 @@ export const TechnologyContextProvider = ({children})=>{
 
      setDane(res.data[0][0])
  
-    //  setProdukty(res.data[1])
-    //  setElementy(res.data[2])
-    //  setFragmenty(res.data[3])
-    //  setOprawa(res.data[4])
-    //  setProcesyElementow(res.data[6])
+     setProdukty(res.data[1])
+     setElementy(res.data[2])
+     setFragmenty(res.data[3])
+     setOprawa(res.data[4])
+     setProcesyElementow(res.data[6])
 
 }
     
@@ -69,8 +76,8 @@ export const TechnologyContextProvider = ({children})=>{
                     showTechnologyStage, setShowTechnologyStage,
                     rowZamowienia, setRowZamowienia,
                     rowTechnologia, setRowTechnologia,
-                    openTechnologia, setOpenTechnologia,
-                    updateDane,
+                    // openTechnologia, setOpenTechnologia,
+                    // updateDane,
                     dane, setDane
        
                 }}

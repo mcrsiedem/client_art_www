@@ -93,7 +93,12 @@ const contextModalInsert = useContext(ModalInsertContext);
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+
+const contextTech = useContext(TechnologyContext);
 const contextApp = useContext(AppContext);
+const dane = contextTech.dane
+const setDane = contextTech.setDane
 
 
 
@@ -102,31 +107,32 @@ const contextApp = useContext(AppContext);
       <label className={style.label}> Klient </label>
       <select
         className={style.klient}
-        value={daneZamowienia.klient_id}
+        value={dane?.klient_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, klient_id: event.target.value});
-          setSaveButtonDisabled(false);
+          // setDane({...dane, klient_id: event.target.value});
+        //  setSaveButtonDisabled(false);
         }}
       >
-        <option key={1} value={"0"}> 
-           wybierz...
-          </option>
+
+
+        
+
         {contextApp.clients
-        // .unshift({id:0,firma:""})
+        .filter(x=> x.id == dane?.klient_id)
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}
           </option>
         ))}
       </select>
-      <img
+      {/* <img
          className={style.dodaj_klienta}
           src={addIcon2}
           onClick={() => {
             showAddClientStage(true)
           }}
           alt="Procesy"
-        />
+        /> */}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import style from "./TechnologieStage.module.css";
 import Header from "components/TechnologiaStage/components/HeaderTech/Header";
 import DaneTech from "./components/DaneTech/DaneTech";
 import ProduktyTech from "./components/ProduktyTech/ProduktyTech";
+import ElementyTech from "./components/ElementyTech/ElementyTech";
 
 
 export default function TechnologiaStage(){
@@ -54,6 +55,7 @@ if(showTechnologyStage) {
        <Header/>
         <DaneTech/>
       <ProduktyTech/>
+      {/* <ElementyTech/> */}
       {/* <ProduktyTech/> */}
 
         </div>

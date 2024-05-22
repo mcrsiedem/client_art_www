@@ -19,7 +19,7 @@ width: 100vw;
 .row2 {
   display: grid;
   
-  grid-template-columns:  110px 110px 1fr  75px 75px 75px 75px 110px 230px  ;
+  grid-template-columns:  110px 110px 1fr  1fr 110px 110px 110px   ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */

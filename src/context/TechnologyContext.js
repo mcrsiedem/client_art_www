@@ -64,6 +64,7 @@ export const TechnologyContextProvider = ({children})=>{
     //  console.log("dane: ", res.data[0][0])
  
      setProdukty(res.data[1])
+        //   console.log("produkty: ", res.data[1][0])
      setElementy(res.data[2])
      setFragmenty(res.data[3])
      setOprawa(res.data[4])
@@ -79,7 +80,12 @@ export const TechnologyContextProvider = ({children})=>{
                     rowTechnologia, setRowTechnologia,
                     // openTechnologia, setOpenTechnologia,
                     // updateDane,
-                    dane, setDane
+                    dane, setDane,
+                    produkty, setProdukty,
+                    elementy, setElementy,
+                    fragmenty, setFragmenty,
+                    oprawa, setOprawa,
+                    procesyElementow, setProcesyElementow
        
                 }}
             >

@@ -5,6 +5,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import style from "./TechnologieStage.module.css";
 import Header from "components/TechnologiaStage/components/HeaderTech/Header";
 import DaneTech from "./components/DaneTech/DaneTech";
+import ProduktyTech from "./components/ProduktyTech/ProduktyTech";
 
 
 export default function TechnologiaStage(){
@@ -52,7 +53,9 @@ if(showTechnologyStage) {
         <div className={style.container}>
        <Header/>
         <DaneTech/>
-      
+      <ProduktyTech/>
+      {/* <ProduktyTech/> */}
+
         </div>
         ) 
 }

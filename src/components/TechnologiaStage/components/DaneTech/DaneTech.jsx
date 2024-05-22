@@ -29,21 +29,25 @@ export default function DaneTech({
             <Nr /> 
             <Rok />
             <Tytul />
-            <Cena />
+            <Uwagi />
+                     <Stan />
+            <Status />
+            <Opiekun />
+         
+            {/* <Cena />
             <Waluta />
             <Vat />
-            <TerminPlatnosci />
-            <Przedplata />
-            <Rodzaj />
+            <TerminPlatnosci /> */}
+            {/* <Przedplata /> */}
+            {/* <Rodzaj /> */}
+                     {/* <FSC /> */}
         </Row>
 
-        <Row style={style.row3}>
-            <Opiekun />
-            <Uwagi />
-            <FSC />
-            <Stan />
-            <Status />
-        </Row>
+        {/* <Row style={style.row3}>
+   
+   
+   
+        </Row> */}
       </div>
     </>
   );

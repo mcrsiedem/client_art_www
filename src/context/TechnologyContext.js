@@ -22,6 +22,9 @@ export const TechnologyContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState([]);
     const [procesyElementow, setProcesyElementow] = useState([]);
 
+    const[elementyTech,setElementyTech] =useState([])
+    const[procesyElementowTech,setProcesyElementowTech] = useState([])
+
     // const [openTechnologia, setOpenTechnologia] = useState(false);
 
 

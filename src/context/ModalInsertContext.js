@@ -33,7 +33,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary] = useState([]); // koszty dodatkowe  w trakcie edycji
     const [showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit] =     useState(false);
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
-    const [selectedCheckBoxZamowienia,setSelectedCheckBoxZamowienia] = useState([])
+
 
  
 
@@ -176,7 +176,7 @@ export const ModalInsertContextProvider = ({children})=>{
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,
-          selectedCheckBoxZamowienia,setSelectedCheckBoxZamowienia
+
           
 
         }}

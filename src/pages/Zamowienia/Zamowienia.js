@@ -150,7 +150,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_klient}>Klient</th>
       <th >Praca</th>
       <th className={style.col_firma}>Firma</th>
-      <th className={style.col_firma}>Nakład</th>
+      <th >Nakład</th>
       <th className={style.col_utworzono}>Strony</th>
 
       <th className={style.col_utworzono}>Utworzono</th>
@@ -180,7 +180,7 @@ function Table_tr({ row,open2,setRow}) {
   return (
 
 <>
-        <tr
+        <tr className={style.tr22}
           key={row.id}
         
           onDoubleClick={(node, event) => {
@@ -198,7 +198,7 @@ function Table_tr({ row,open2,setRow}) {
           <td className={style.col_klient}>{row.klient}</td>
           <td>{row.tytul}</td>
           <td>{row.firma}</td>
-          <td>{row.naklad}</td>
+          <td className={style.td_naklad}>{row.naklad}</td>
           <td>{row.ilosc_stron}</td>
 
   

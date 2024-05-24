@@ -42,14 +42,14 @@ function Header({ dodaj_clikHandler}) {
 
           <div className={style.leftHeaderContener}>
 
-{/* 
-          <p>Zamówienia </p> */}
-            // wywietla zaznaczone zamowienia
+
+          <p>Zamówienia </p> 
+            {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)
           .map((x=>{ return ( 
             <p> {x.id}, </p>
-          )})) }
+          )})) } */}
           </div>
           
 

@@ -159,14 +159,16 @@ tr:hover{
 /* .col_klient{
     width:  100%; 
    } */ 
-   .iconSettings{ width: 15px; }
+   .iconSettings{ width: 15px;
+      
+    }
 
    .col_klient{
       min-width: 100px;
    }
 
    .col_karta{
-      min-width: 20px;
+      min-width: 10px;
 
 
    }
@@ -175,4 +177,29 @@ tr:hover{
       display: flex;
       align-content: center;
       justify-content: center;
+      border: none;
+      /* padding-top: 10px; */
+
+     
+   }
+
+   .td_checkbox{
+
+      border: none;
+
+   }
+   .th_checkbox{
+ 
+
+   }
+
+
+   .td_karta{
+
+      border: none;
+
+   }
+   .th_karta{
+ 
+
    }

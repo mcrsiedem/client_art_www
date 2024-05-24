@@ -133,10 +133,13 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
      <table>
   <thead>
     <tr>
-      <th className={style.col_id}>#</th>
+      <th className={style.th_checkbox}></th>
+      <th className={style.col_id}># </th>
+      
+      
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
-      <th className={style.col_karta}>Karta</th>
+      <th className={style.th_karta}>Karta</th>
       <th className={style.col_klient}>Klient</th>
       <th >Praca</th>
       <th className={style.col_firma}>Firma</th>
@@ -180,6 +183,7 @@ function Table_tr({ row,open2,setRow}) {
 
           }}
         >
+          <SelectBox/>
           <td>{row.id} </td>
           <td>{row.nr} </td>
           <td>{row.rok} </td>
@@ -221,7 +225,7 @@ function Table_tr({ row,open2,setRow}) {
 
  function ShowTechnmologiaBtn({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
   return (
-    <td className={style.col_button}>
+    <td className={style.td_karta}>
       <div >
                       <img
          className={style.iconSettings}
@@ -229,6 +233,17 @@ function Table_tr({ row,open2,setRow}) {
           onClick={() => { setShowKartaTechnologiczna(!showKartaTechnologiczna)}}
           alt="Procesy"
         />
+      </div>
+
+    </td>
+  );
+}
+
+function SelectBox({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
+  return (
+    <td className={style.td_checkbox}>
+      <div >
+      <input type="checkbox"></input>
       </div>
 
     </td>

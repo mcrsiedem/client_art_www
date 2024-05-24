@@ -55,8 +55,8 @@ if(showTechnologyStage) {
        <Header/>
         <DaneTech/>
       <ProduktyTech/>
-      {/* <ElementyTech/> */}
-      {/* <ProduktyTech/> */}
+      <ElementyTech/>
+      <ElementyTech/>
 
         </div>
         ) 

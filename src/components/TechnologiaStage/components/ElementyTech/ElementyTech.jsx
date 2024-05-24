@@ -4,64 +4,19 @@ import style from "./ElementTable.module.css";
 
 import { useContext } from "react";
 // import { _papiery } from "../api";
-import {  useState } from "react";
+import { useState } from "react";
 import RowElement from "./RowElement";
 import RowFragment from "./RowFragment";
 import { ModalInsertContext } from "context/ModalInsertContext";
 // import ElementTable from "./ElementTable";
 
-
-
-export default function ElementyTech({
-
-  handleChangeCardElementy,
-  handleChangeCardFragmenty,
-  selected_papier,
-  setSelected_papier,
-  info,
-  setInfo,
-  listaPapierow,
-  listaGramatur,
-  setListaGramatur,
-  // isEdit,
-  // setIsEdit,
-  procesyElementow,
-  setProcesyElementow,
-
-  setShowElementyProcesyInsert,
-    handleChangeCardFragmenty_i_Elementy,
-    handleChangeCardFragmenty_i_Elementy_IloscStron,
-    handleChangeCardFragmentyOprawaId
-}) {
+export default function ElementyTech({}) {
   return (
     <div className={style.container}>
-
-   
-    <div className={style.element}>
-      <ElementyTableHeader
-
-      />
-      <ElementyTable
-  
-        handleChangeCardElementy={handleChangeCardElementy}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        listaPapierow={listaPapierow}
-        listaGramatur={listaGramatur}
-        setListaGramatur={setListaGramatur}
-        // isEdit={isEdit}
-        // setIsEdit={setIsEdit}
-        procesyElementow={procesyElementow}
-        setProcesyElementow={setProcesyElementow}
-  
-        setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-
-
-        handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
-        handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
-        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-
-      />
-    </div>
+      <div className={style.element}>
+        <ElementyTableHeader />
+        <ElementyTable />
+      </div>
     </div>
   );
 }
@@ -69,50 +24,23 @@ export default function ElementyTech({
 function ElementyTableHeader() {
   return (
     <div className={style.header}>
-          <div className={style.kropka}></div>
-    <p className={style.naglowek} > Produkt </p>
-
+      <div className={style.kropka}></div>
+      <p className={style.naglowek}> Elementy </p>
     </div>
   );
-
-
-
 }
 
-
-function ElementyTable({
-
-  handleChangeCardElementy,
-  handleChangeCardFragmenty,
-  listaPapierow,
-  listaGramatur,
-  setListaGramatur,
-  // isEdit,
-  // setIsEdit,
-  procesyElementow,
-  setProcesyElementow,
-
-  setShowElementyProcesyInsert,
-
-
-  handleChangeCardFragmenty_i_Elementy,
-  handleChangeCardFragmenty_i_Elementy_IloscStron,
-  handleChangeCardFragmentyOprawaId
-}) {
-
-  const [expand,setExpand] =useState(false);
+function ElementyTable({}) {
+  const [expand, setExpand] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
   const elementy = contextModalInsert.elementy;
-  const setElementy = contextModalInsert.setElementy;
 
-  const fragmenty = contextModalInsert.fragmenty;
-  const setFragmenty = contextModalInsert.setFragmenty;
   return (
     <div className={style.main}>
       <table className={style.table2}>
         <thead>
           <tr>
-          <th className={style.col_button}> </th>
+            <th className={style.col_button}> </th>
             {/* <th className={style.col1}>id</th> */}
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
@@ -133,27 +61,14 @@ function ElementyTable({
             {/* <th className={style.col_wersja}>Oprawa nr</th> */}
             <th className={style.col_button}> </th>
             <th className={style.col_button}> </th>
-            
           </tr>
         </thead>
-        <tbody >
-          {elementy
-           .sort((a, b) => a.indeks - b.indeks)
-          .map((row, i) => {
-            return (
-         
-              <RowElement
-              key={row.id}
-                i={i}
-                row={row}
-
-              />
-
-
-              
-  
-            );
-          }) }
+        <tbody>
+          {/* {elementy
+            .sort((a, b) => a.indeks - b.indeks)
+            .map((row, i) => {
+              return <RowElement key={row.id} i={i} row={row} />;
+            })} */}
         </tbody>
       </table>
     </div>

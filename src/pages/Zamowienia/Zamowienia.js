@@ -211,7 +211,7 @@ function Table_tr({ row,open2,setRow}) {
             <td></td>
             <td></td>
             <td></td>
-
+            <td></td>
             <td> <CreateTechnmologiaBtn row={row}/></td> 
             </>
               

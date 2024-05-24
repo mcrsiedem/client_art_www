@@ -3,6 +3,8 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "../../assets/settings.svg";
+import iconMenu from "assets/dots2.svg";
+
 import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
@@ -140,7 +142,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
      <table>
   <thead>
     <tr>
-      <th className={style.th_checkbox}></th>
+      <th className={style.th_checkbox}> <MenuBtn/></th>
       <th className={style.col_id}># </th>
       
       
@@ -305,6 +307,23 @@ function CreateTechnmologiaBtn({ row }) {
 
     </td>
   );
+}
+
+
+
+const MenuBtn = () => {
+  return (
+    <img
+              className={style.iconMenuBtn}
+              src={iconSettings}
+              onClick={() => {
+                // dodaj_clikHandler();
+                // console.log("z contextu :"+ token.rowSelected)
+                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+              }}
+              alt="x"
+            />
+  )
 }
 
 

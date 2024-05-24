@@ -7,7 +7,7 @@ import ReactLogo_full from "assets/full.svg";
 import ReactLogo_history from "assets/history.svg";
 import iconClose from "assets/x.svg";
 import iconAdd from "assets/addIcon2.svg";
-
+import iconSettings from "assets/dots2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 
@@ -50,6 +50,9 @@ function Header({ dodaj_clikHandler}) {
           .map((x=>{ return ( 
             <p> {x.id}, </p>
           )})) } */}
+
+
+
           </div>
           
 

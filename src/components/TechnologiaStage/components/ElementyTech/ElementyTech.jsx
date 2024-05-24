@@ -141,66 +141,17 @@ function ElementyTable({
            .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => {
             return (
-              <>
+         
               <RowElement
               key={row.id}
                 i={i}
                 row={row}
-                handleChangeCardElementy={handleChangeCardElementy}
-                handleChangeCardFragmenty={handleChangeCardFragmenty}
-                listaPapierow={listaPapierow}
-                listaGramatur={listaGramatur}
-                setListaGramatur={setListaGramatur}
-                // isEdit={isEdit}
-                // setIsEdit={setIsEdit}
-                procesyElementow={procesyElementow}
-                setProcesyElementow={setProcesyElementow}
-         
-                setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-            
-                expand={expand}
-                setExpand={setExpand}
-             
-          
-          
-                 handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
-                 handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
+
               />
 
-          
-{/* rozwijane fragmenty do każdego elementy. Gdy środek trzeba podzielić na więcej części widać je poniżej jako fragmenty */}
-{/* {expand ? fragmenty
-.filter((el) => el.element_id === row.id)
-.map((row, i) => {
-            return (
-              <>
 
-
-              <RowFragment
-              key={row.id}
-              i={i}
-              row={row}
-              handleChangeCardElementy={handleChangeCardElementy}
-              handleChangeCardFragmenty={handleChangeCardFragmenty}
-              listaPapierow={listaPapierow}
-              listaGramatur={listaGramatur}
-              setListaGramatur={setListaGramatur}
-
-              procesyElementow={procesyElementow}
-              setProcesyElementow={setProcesyElementow}
-      
-              setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+              
   
-              elementy={elementy}
-              handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}
-              handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-              
-            />
-            </>
-            );
-          }):<></>} */}
-              
-            </>
             );
           }) }
         </tbody>

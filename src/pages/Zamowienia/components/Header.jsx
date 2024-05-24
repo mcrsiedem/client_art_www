@@ -44,7 +44,7 @@ function Header({ dodaj_clikHandler}) {
 
 {/* 
           <p>Zamówienia </p> */}
-
+            // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)
           .map((x=>{ return ( 

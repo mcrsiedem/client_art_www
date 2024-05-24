@@ -15,6 +15,7 @@ export const AppContextProvider = ({children})=>{
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
+    const [zamowienia, setZamowienia] = useState([]); 
 
 //d
     const [rowSelected, setRowSelected] = useState(null); 
@@ -49,6 +50,7 @@ export const AppContextProvider = ({children})=>{
     
     return  <AppContext.Provider 
                 value={{
+                  zamowienia, setZamowienia,
                     users,updateUsers,          // wszystcy uzytkownicy
                     clients,updateClients,      // wszyscy klienci
                     procesList, updateProcesList,     // lista wszystkich dostępnych proce

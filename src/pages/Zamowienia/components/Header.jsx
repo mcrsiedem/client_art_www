@@ -9,6 +9,7 @@ import iconClose from "assets/x.svg";
 import iconAdd from "assets/addIcon2.svg";
 
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "context/AppContext";
 
 
 
@@ -16,6 +17,8 @@ function Header({ dodaj_clikHandler}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
+
+  const appContext = useContext(AppContext)
 
   // aby useEffect załadował się tylko raz
   const effectRan = useRef(false);
@@ -38,7 +41,15 @@ function Header({ dodaj_clikHandler}) {
 
 
           <div className={style.leftHeaderContener}>
-          <p>Zamówienia</p>
+
+{/* 
+          <p>Zamówienia </p> */}
+
+          {appContext.zamowienia
+          .filter(x=> x.select == true)
+          .map((x=>{ return ( 
+            <p> {x.id}, </p>
+          )})) }
           </div>
           
 

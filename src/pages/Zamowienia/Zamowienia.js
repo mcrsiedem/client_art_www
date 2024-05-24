@@ -9,7 +9,10 @@ import style from "../Zamowienia/Zamowienia.module.css";
 import Header from "./components/Header";
 import { TechnologyContext } from "context/TechnologyContext";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
+import { AppContext } from "context/AppContext";
 function Zamowienia({ user, setUser }) {
+
+  const contextApp = useContext(AppContext);
 
   const [listaGramatur, setListaGramatur] = useState();
   const [listaPapierow, setListaPapierow] = useState();
@@ -19,7 +22,11 @@ function Zamowienia({ user, setUser }) {
   const open = useRef(false);
 
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+
+  const data = contextApp.zamowienia
+  const setData = contextApp.setZamowienia
+
 
   function dodaj_clikHandler() {
      setOpenModalInsert(true);
@@ -183,7 +190,7 @@ function Table_tr({ row,open2,setRow}) {
 
           }}
         >
-          <SelectBox/>
+          <SelectBox row={row}/>
           <td>{row.id} </td>
           <td>{row.nr} </td>
           <td>{row.rok} </td>
@@ -239,17 +246,48 @@ function Table_tr({ row,open2,setRow}) {
   );
 }
 
-function SelectBox() {
-  
+function SelectBox({row}) {
+
+  const appContext = useContext(AppContext)
+  const zamowienia = appContext.zamowienia;
+  const setZamowienia = appContext.setZamowienia;
+
   return (
     <td className={style.td_checkbox}>
       <div >
-      <input type="checkbox"></input>
+      <input type="checkbox"
+      onChange={(event)=>{
+
+        console.log(" select"+ row.id +" "+event.target.checked)
+        setZamowienia(
+          zamowienia.map((t) => {
+            if (t.id == row.id) {
+              return {...row, select: event.target.checked }
+            } else {
+              return t;
+            }
+          })
+        )
+      }}
+     ></input>
       </div>
 
     </td>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function CreateTechnmologiaBtn({ row }) {
   const techContext = useContext(TechnologyContext)

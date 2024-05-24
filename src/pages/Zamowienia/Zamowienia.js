@@ -239,7 +239,8 @@ function Table_tr({ row,open2,setRow}) {
   );
 }
 
-function SelectBox({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
+function SelectBox() {
+  
   return (
     <td className={style.td_checkbox}>
       <div >

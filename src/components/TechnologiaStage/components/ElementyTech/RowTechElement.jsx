@@ -1,5 +1,5 @@
 import style from "./ElementTable.module.css";
-import Logo_ustawienia from "../../../../assets/settings.svg";
+import Logo_ustawienia from "assets/settings.svg";
 import logoExpand from "../../../../assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
@@ -11,6 +11,7 @@ import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
+import { TechnologyContext } from "context/TechnologyContext";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -226,8 +227,10 @@ export default function RowElement({
 function Procesy({ row}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
+  const techontext = useContext(TechnologyContext);
 
-  const procesyElementow =contextModalInsert.procesyElementow;
+
+  const procesyElementow =techontext.procesyElementow;
   const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
 
     return (

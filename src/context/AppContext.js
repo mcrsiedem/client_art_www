@@ -16,6 +16,8 @@ export const AppContextProvider = ({children})=>{
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
+    const [listaGramatur, setListaGramatur] = useState();
+    const [listaPapierow, setListaPapierow] = useState();
 
 //d
     const [rowSelected, setRowSelected] = useState(null); 
@@ -60,6 +62,9 @@ export const AppContextProvider = ({children})=>{
                     rowSelected, setRowSelected, // druk
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
+                    listaGramatur, setListaGramatur,
+                    listaPapierow, setListaPapierow
+
             
                 }}
             >

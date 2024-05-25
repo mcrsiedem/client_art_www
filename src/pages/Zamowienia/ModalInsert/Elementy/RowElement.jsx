@@ -341,14 +341,17 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   function PapierSelect({
     row,
     handleChangeCardElementy,
-    listaPapierow,
+    // listaPapierow,
     setListaGramatur,
-    listaGramatur,
+    // listaGramatur,
     listaDostepnychWykonczen,
     setListaDostepnychWykonczen,
     listaDostepnychGramatur,
     setListaDostepnychGrmatur,
   }) {
+    const appcontext = useContext(AppContext)
+    const listaPapierow = appcontext.listaPapierow;
+    const listaGramatur = appcontext.listaGramatur;
     return (
       <td>
         <select

@@ -5,9 +5,10 @@ import style from "./ElementTable.module.css";
 import { useContext } from "react";
 // import { _papiery } from "../api";
 import { useState } from "react";
-import RowElement from "./RowElement";
+import RowTechElement from "./RowTechElement";
 import RowFragment from "./RowFragment";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { TechnologyContext } from "context/TechnologyContext";
 // import ElementTable from "./ElementTable";
 
 export default function ElementyTech({}) {
@@ -33,7 +34,8 @@ function ElementyTableHeader() {
 function ElementyTable({}) {
   const [expand, setExpand] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
-  const elementy = contextModalInsert.elementy;
+  const techContext = useContext(TechnologyContext)
+  const elementy = techContext.elementy;
 
   return (
     <div className={style.main}>
@@ -64,11 +66,11 @@ function ElementyTable({}) {
           </tr>
         </thead>
         <tbody>
-          {/* {elementy
+          {elementy
             .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
-              return <RowElement key={row.id} i={i} row={row} />;
-            })} */}
+              return <RowTechElement key={row.id} i={i} row={row} />;
+            })}
         </tbody>
       </table>
     </div>

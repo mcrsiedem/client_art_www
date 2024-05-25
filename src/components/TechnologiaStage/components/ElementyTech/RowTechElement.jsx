@@ -18,7 +18,7 @@ export default function RowElement({
     i,
     listaPapierow,
     setListaGramatur,
-    listaGramatur,
+    
     setInfo,
     // isEdit,
     // setIsEdit,
@@ -33,6 +33,9 @@ export default function RowElement({
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
 
+    const appcontext = useContext(AppContext)
+
+    const listaGramatur = appcontext.listaGramatur;
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
     const setElementy = contextModalInsert.setElementy;
@@ -341,14 +344,11 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   function PapierSelect({
     row,
     handleChangeCardElementy,
-    listaPapierow,
-    setListaGramatur,
-    listaGramatur,
-    listaDostepnychWykonczen,
-    setListaDostepnychWykonczen,
-    listaDostepnychGramatur,
     setListaDostepnychGrmatur,
   }) {
+    const appcontext = useContext(AppContext)
+    const listaPapierow = appcontext.listaPapierow;
+    const listaGramatur = appcontext.listaGramatur;
     return (
       <td>
         <select
@@ -362,10 +362,10 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
             setListaDostepnychGrmatur(
               listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
             );
-            handleChangeCardElementy({
-              ...row,
-              papier_id: e.target.value,
-            });
+            // handleChangeCardElementy({
+            //   ...row,
+            //   papier_id: e.target.value,
+            // });
           }}
         >
           {}
@@ -382,9 +382,12 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   function Gramatura({
     row,
     handleChangeCardElementy,
-    listaGramatur,
+
     listaDostepnychGramatur,
   }) {
+    const appcontext = useContext(AppContext)
+    const listaPapierow = appcontext.listaPapierow;
+    const listaGramatur = appcontext.listaGramatur;
     return (
       <td>
         <select
@@ -415,7 +418,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
                 </option>
               ) : (
                 <option key={option.id} value={option.id}>
-                  {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
+                  {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie}
                 </option>
               )
             )}

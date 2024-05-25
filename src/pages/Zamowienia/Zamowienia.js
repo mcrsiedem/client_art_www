@@ -15,20 +15,17 @@ import { AppContext } from "context/AppContext";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
-
-  const [listaGramatur, setListaGramatur] = useState();
-  const [listaPapierow, setListaPapierow] = useState();
   const [row, setRow] = useState({id:1, prime_id:1});
   const [openModalInsert, setOpenModalInsert] = useState(false);
-
   const open = useRef(false);
-
   const navigate = useNavigate();
-  // const [data, setData] = useState([]);
-
+  
   const data = contextApp.zamowienia
   const setData = contextApp.setZamowienia
-
+const listaPapierow = contextApp.listaPapierow;
+const setListaPapierow = contextApp.setListaPapierow;
+const listaGramatur = contextApp.listaGramatur;
+const setListaGramatur = contextApp.setListaGramatur;
 
   function dodaj_clikHandler() {
      setOpenModalInsert(true);

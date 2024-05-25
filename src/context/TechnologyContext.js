@@ -14,19 +14,21 @@ export const TechnologyContextProvider = ({children})=>{
     const [rowZamowienia, setRowZamowienia] = useState(null);  // row - dodaj kartę
     const [rowTechnologia, setRowTechnologia] = useState(null);  // row - edytuj kartę
 
+    //dane z zamówienia
     const [dane, setDane] = useState([]);
-
     const [produkty, setProdukty] = useState([]);
     const [elementy, setElementy] = useState([]);
     const [fragmenty, setFragmenty] = useState([]);
     const [oprawa, setOprawa] = useState([]);
     const [procesyElementow, setProcesyElementow] = useState([]);
 
-    const[elementyTech,setElementyTech] =useState([])
-    const[procesyElementowTech,setProcesyElementowTech] = useState([])
-
-    // const [openTechnologia, setOpenTechnologia] = useState(false);
-
+        //dane z technologii
+        const [daneTech, setDaneTech] = useState([]);
+        const [produktyTech, setProduktyTech] = useState([]);
+        const [elementyTech, setElementyTech] = useState([]);
+        const [fragmentyTech, setFragmentyTech] = useState([]);
+        const [oprawaTech, setOprawaTech] = useState([]);
+        const [procesyElementowTech, setProcesyElementowTech] = useState([]);
 
 
         const updateTechnology = useCallback(()=>{
@@ -64,14 +66,18 @@ export const TechnologyContextProvider = ({children})=>{
      const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
 
      setDane(res.data[0][0])
-    //  console.log("dane: ", res.data[0][0])
- 
      setProdukty(res.data[1])
-        //   console.log("produkty: ", res.data[1][0])
      setElementy(res.data[2])
      setFragmenty(res.data[3])
      setOprawa(res.data[4])
      setProcesyElementow(res.data[6])
+
+     setDaneTech(res.data[0][0])
+     setProduktyTech(res.data[1])
+     setElementyTech(res.data[2])
+     setFragmentyTech(res.data[3])
+     setOprawaTech(res.data[4])
+     setProcesyElementowTech(res.data[6])
 
 }
     
@@ -88,7 +94,13 @@ export const TechnologyContextProvider = ({children})=>{
                     elementy, setElementy,
                     fragmenty, setFragmenty,
                     oprawa, setOprawa,
-                    procesyElementow, setProcesyElementow
+                    procesyElementow, setProcesyElementow,
+                    daneTech, setDaneTech,
+                    produktyTech, setProduktyTech,
+                    elementyTech, setElementyTech,
+                    fragmentyTech, setFragmentyTech,
+                    oprawaTech, setOprawaTech,
+                    procesyElementowTech, setProcesyElementowTech
        
                 }}
             >

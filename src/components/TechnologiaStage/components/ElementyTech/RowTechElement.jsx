@@ -164,7 +164,7 @@ export default function RowElement({
             src={logoExpand}
             className={style.icon}
             onClick={() => {
-              setExpand(!expand);
+              // setExpand(!expand);
             }}
             alt="Procesy"
           />

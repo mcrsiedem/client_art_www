@@ -35,6 +35,10 @@ export default function RowElement({
   }) {
 
     const appcontext = useContext(AppContext)
+    const techContext = useContext(TechnologyContext)
+    const menuElementyTech = techContext.menuElementyTech;
+    const setMenuElementyTech = techContext.setMenuElementyTech;
+
 
     const listaGramatur = appcontext.listaGramatur;
     const contextModalInsert = useContext(ModalInsertContext);
@@ -162,8 +166,8 @@ export default function RowElement({
       <tr  key={row.id}>
                 <div className={style.col_button}>
           <img
-            src={logoExpand}
-            className={style.icon}
+            src={Logo_ustawienia}
+            className={style.expand}
             onClick={() => {
               // setExpand(!expand);
             }}

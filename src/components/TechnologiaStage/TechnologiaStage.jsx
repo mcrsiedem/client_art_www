@@ -56,7 +56,8 @@ if(showTechnologyStage) {
         <DaneTech/>
       <ProduktyTech/>
       <ElementyTech/>
-      <ElementyTech/>
+      {/* <ElementyTech/> */}
+      {/* Komponent w którym będa legi i arkusze */}
 
         </div>
         ) 

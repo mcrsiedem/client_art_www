@@ -14,6 +14,11 @@ export const TechnologyContextProvider = ({children})=>{
     const [rowZamowienia, setRowZamowienia] = useState(null);  // row - dodaj kartę
     const [rowTechnologia, setRowTechnologia] = useState(null);  // row - edytuj kartę
 
+    // menu
+
+
+    const [menuElementyTech,setMenuElementyTech] = useState(false)
+
     //dane z zamówienia
     const [dane, setDane] = useState([]);
     const [produkty, setProdukty] = useState([]);
@@ -100,7 +105,8 @@ export const TechnologyContextProvider = ({children})=>{
                     elementyTech, setElementyTech,
                     fragmentyTech, setFragmentyTech,
                     oprawaTech, setOprawaTech,
-                    procesyElementowTech, setProcesyElementowTech
+                    procesyElementowTech, setProcesyElementowTech,
+                    menuElementyTech,setMenuElementyTech
        
                 }}
             >

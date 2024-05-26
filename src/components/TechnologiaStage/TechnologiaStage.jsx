@@ -56,6 +56,9 @@ if(showTechnologyStage) {
         <DaneTech/>
       <ProduktyTech/>
       <ElementyTech/>
+      <div className={style.container_legi_arkusze}>
+      
+      </div>
       {/* <ElementyTech/> */}
       {/* Komponent w którym będa legi i arkusze */}
 

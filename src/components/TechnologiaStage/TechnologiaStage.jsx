@@ -7,6 +7,7 @@ import Header from "components/TechnologiaStage/components/HeaderTech/Header";
 import DaneTech from "./components/DaneTech/DaneTech";
 import ProduktyTech from "./components/ProduktyTech/ProduktyTech";
 import ElementyTech from "./components/ElementyTech/ElementyTech";
+import LegiTech from "./components/LegiTech/LegiTech";
 
 
 export default function TechnologiaStage(){
@@ -57,6 +58,9 @@ if(showTechnologyStage) {
       <ProduktyTech/>
       <ElementyTech/>
       <div className={style.container_legi_arkusze}>
+
+        <LegiTech/>
+        <div className={style.legi}> arkusze</div>
       
       </div>
       {/* <ElementyTech/> */}

@@ -10,12 +10,20 @@
    border-radius: 10px;
    z-index: 10;
    display: grid;
-   grid-template-rows: 55px 120px 110px ;
+   grid-template-rows: 55px 120px 110px 1fr 2fr;
 
 }
 
 .container_legi_arkusze{
-   /* display: grid;
-   grid-template-columns: 300px 1fr;; */
+   display: grid;
+   grid-template-columns: 1fr  1fr;
+
+
+}
+
+.legi{
+   background-color: gray;
+   margin: 15px;
+   margin-top: 0px;
 
 }

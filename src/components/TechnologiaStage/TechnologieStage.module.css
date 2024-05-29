@@ -17,7 +17,8 @@
 .container_legi_arkusze{
    display: grid;
    grid-template-columns: 1fr  1fr;
-
+   /* background-color: aqua; */
+   gap:10px
 
 }
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
-import style from "./LegiTech.module.css";
+import style from "./ArkuszeTech.module.css";
 
-export default function LegiTech() {
+export default function ArkuszeTech() {
   //   const techContext = useContext(TechnologyContext);
   //   const showTechnologyStage = techContext.showTechnologyStage;
   //   const setShowTechnologyStage = techContext.setShowTechnologyStage;
@@ -40,7 +40,7 @@ const LegiHeader = () => {
   return (
     <div className={style.header}>
       <div className={style.kropka}></div>
-      <p className={style.naglowek}> Legi </p>
+      <p className={style.naglowek}> Arkusze </p>
     </div>
   );
 };

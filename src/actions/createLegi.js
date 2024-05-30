@@ -16,6 +16,8 @@ export function createLegi(row,legi,setLegi) {
   }
 
   setLegi(new_legi)
+
+  console.log(ilosc_leg)
   // setLegi([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:1,typ:1}])
 // dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
 

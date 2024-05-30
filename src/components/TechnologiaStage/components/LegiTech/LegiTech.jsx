@@ -66,11 +66,11 @@ const LegiTable = () => {
       <table className={style.table2}>
         <thead>
           <tr>
-            <th className={style.col_button}> </th>
-            {/* <th className={style.col1}>id</th> */}
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
+            <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
+            <th className={style.col_naklad}>Uwagi</th>
 
           </tr>
         </thead>

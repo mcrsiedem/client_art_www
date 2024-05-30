@@ -70,7 +70,7 @@
   
   .table2{
   
-    height: 1fr;
+   
   }
   
   
@@ -214,4 +214,8 @@
   }
   .alert2{
     background-color: none;
+  }
+
+  .tr_legi{
+    height: 2rem;
   }

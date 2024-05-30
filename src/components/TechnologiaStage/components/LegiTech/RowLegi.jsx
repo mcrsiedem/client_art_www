@@ -8,9 +8,13 @@ export default function RowLegi({
 
     
     return (
-      <tr  key={row.id}>
+      <tr  className={style.tr_legi} key={row.id}>
 
         <td>{row.indeks}</td> 
+        <td>{row.rodzaj_elementu}</td> 
+        <td>{row.typ_legi}</td> 
+        <td>{row.naklad}</td> 
+        <td>{row.uwagi}</td> 
 
       </tr>
     );

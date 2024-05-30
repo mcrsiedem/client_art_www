@@ -35,6 +35,9 @@ export const TechnologyContextProvider = ({children})=>{
         const [oprawaTech, setOprawaTech] = useState([]);
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
 
+        const [legi, setLegi] = useState([]);
+        const [arkusze, setArkusze] = useState([]);
+
 
         const updateTechnology = useCallback(()=>{
             getTechnology(setTechnology)
@@ -106,7 +109,9 @@ export const TechnologyContextProvider = ({children})=>{
                     fragmentyTech, setFragmentyTech,
                     oprawaTech, setOprawaTech,
                     procesyElementowTech, setProcesyElementowTech,
-                    menuElementyTech,setMenuElementyTech
+                    menuElementyTech,setMenuElementyTech,
+                    legi, setLegi,
+                    arkusze,setArkusze
        
                 }}
             >

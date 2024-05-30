@@ -10,7 +10,7 @@ export default function RowLegi({
     return (
       <tr  key={row.id}>
 
-        <td>{row.indeks}</td>
+        <td>{row.indeks}</td> 
 
       </tr>
     );

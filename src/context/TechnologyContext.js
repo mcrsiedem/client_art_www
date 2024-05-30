@@ -36,6 +36,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
 
         const [legi, setLegi] = useState([]);
+        // const [legi, setLegi] = useState([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:3,typ:1}]);
         const [arkusze, setArkusze] = useState([]);
 
 

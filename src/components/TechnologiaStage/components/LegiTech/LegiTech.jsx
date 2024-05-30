@@ -5,28 +5,6 @@ import style from "./LegiTech.module.css";
 import RowLegi from "./RowLegi";
 
 export default function LegiTech() {
-  //   const techContext = useContext(TechnologyContext);
-  //   const showTechnologyStage = techContext.showTechnologyStage;
-  //   const setShowTechnologyStage = techContext.setShowTechnologyStage;
-  //   const openTechnologia = techContext.openTechnologia;
-
-  //   const [dataTechnologie,setDataTechnologie] =useState([]);
-  //   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
-  //   const [activeRowId,setActiveRowId] =useState();
-
-  // const effectRan = useRef(false);
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-  //     if(openTechnologia){
-  //       console.log("open technologia")
-  //     }
-
-  //   }
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
-
   useEffect(() => {}, []);
 
   return (
@@ -46,19 +24,8 @@ const LegiHeader = () => {
   );
 };
 
-// const LegiTable2 = () => {
-//   return (
-//     <div className={style.table_legi}>
-// table
-//     </div>
-//   );
-// };
-
-
 const LegiTable = () => {
-
-
-  const techContext = useContext(TechnologyContext)
+  const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
 
   return (
@@ -71,17 +38,16 @@ const LegiTable = () => {
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_naklad}>Uwagi</th>
-
           </tr>
         </thead>
         <tbody>
           {legi
-            .sort((a, b) => a.indeks - b.indeks)
+            // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
-              return <RowLegi key={row.id} i={i} row={row} />;
+              return <RowLegi key={row.indeks} i={i} row={row} />;
             })}
         </tbody>
       </table>
     </div>
   );
-}
+};

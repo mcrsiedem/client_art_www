@@ -12,6 +12,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
+import { addArkusze } from "actions/addArkusze";
+import { createLegi } from "actions/createLegi";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -41,12 +43,15 @@ export default function RowElement({
 
 
     const listaGramatur = appcontext.listaGramatur;
-    const contextModalInsert = useContext(ModalInsertContext);
-    const elementy = contextModalInsert.elementy;
-    const setElementy = contextModalInsert.setElementy;
+    // const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = techContext.elementy;
+    const setElementy = techContext.setElementy;
 
-    const fragmenty = contextModalInsert.fragmenty;
-    const setFragmenty = contextModalInsert.setFragmenty;
+    const fragmenty = techContext.fragmenty;
+    const setFragmenty = techContext.setFragmenty;
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+
 
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
@@ -162,6 +167,8 @@ export default function RowElement({
         newFragmenty.sort((a, b) => a.indeks - b.indeks);
         setFragmenty(newFragmenty);
       }
+      const legi = techContext.legi;
+      const setLegi = techContext.setLegi;
     return (
       <tr  key={row.id}>
                 <div className={style.col_button}>
@@ -169,6 +176,8 @@ export default function RowElement({
             src={Logo_ustawienia}
             className={style.expand}
             onClick={() => {
+              // console.log(row.strony)
+              createLegi(row,legi,setLegi);
               // setExpand(!expand);
             }}
             alt="Procesy"

@@ -12,7 +12,7 @@ export function createLegi(row,legi,setLegi) {
   const ilosc_leg = row.ilosc_stron / 16;
 
   for (let i = 0; i < ilosc_leg; i++) {
-    new_legi.push({indeks:i+1,rodzaj_elementu:row.typ,typ_legi,naklad:row.naklad})
+    new_legi.push({indeks:i+1,rodzaj_elementu:row.typ,typ_legi,naklad:row.naklad,element_id:row.id})
   }
 
   setLegi(new_legi)

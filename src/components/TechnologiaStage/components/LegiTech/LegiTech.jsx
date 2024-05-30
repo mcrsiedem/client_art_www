@@ -38,6 +38,7 @@ const LegiTable = () => {
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_naklad}>Uwagi</th>
+            <th className={style.col_naklad}>element_id</th>
           </tr>
         </thead>
         <tbody>

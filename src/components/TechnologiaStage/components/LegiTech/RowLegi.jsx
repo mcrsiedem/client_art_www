@@ -15,6 +15,7 @@ export default function RowLegi({
         <td>{row.typ_legi}</td> 
         <td>{row.naklad}</td> 
         <td>{row.uwagi}</td> 
+        <td>{row.element_id}</td> 
 
       </tr>
     );

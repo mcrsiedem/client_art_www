@@ -27,6 +27,8 @@ const LegiHeader = () => {
 const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
+  const showErrorLegi = techContext.showErrorLegi;
+  const errorLegiInfo = techContext.errorLegiInfo;
 
   return (
     <div className={style.table_legi}>
@@ -39,6 +41,8 @@ const LegiTable = () => {
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_naklad}>Uwagi</th>
             <th className={style.col_naklad}>element_id</th>
+            <th className={style.col_naklad}>str</th>
+
           </tr>
         </thead>
         <tbody>
@@ -49,6 +53,9 @@ const LegiTable = () => {
             })}
         </tbody>
       </table>
+            {showErrorLegi &&(
+              <div>{errorLegiInfo[0] } {errorLegiInfo[1] }</div>
+            )}
     </div>
   );
 };

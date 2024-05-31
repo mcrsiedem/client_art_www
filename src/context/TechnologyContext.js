@@ -38,6 +38,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [legi, setLegi] = useState([]);
         // const [legi, setLegi] = useState([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:3,typ:1}]);
         const [arkusze, setArkusze] = useState([]);
+        const [showErrorLegi, setShowErrorLegi] = useState(false);
+        const [errorLegiInfo, setErrorLegiInfo] = useState([]);
 
 
         const updateTechnology = useCallback(()=>{
@@ -76,17 +78,22 @@ export const TechnologyContextProvider = ({children})=>{
               }, [rowTechnologia]);
         
        useEffect(() => {
-        const ilosc_stron = parseInt(legi[0].ilosc_stron);
+        const ilosc_stron = parseInt(legi[0]?.ilosc_stron);
         const suma_leg = parseInt(legi.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0))
 
         if( ilosc_stron == suma_leg){
             console.log("Legi OK")
+            setShowErrorLegi(false)
         }
 
         if(ilosc_stron > suma_leg){
+            setShowErrorLegi(true)
+            setErrorLegiInfo(["Dodaj", ilosc_stron-suma_leg])
             console.log("Dodaj", ilosc_stron-suma_leg)
         }
         if(ilosc_stron < suma_leg){
+            setShowErrorLegi(true)
+            setErrorLegiInfo(["Usun ", suma_leg-ilosc_stron])
             console.log("Usun ", suma_leg-ilosc_stron)
         }
           
@@ -144,7 +151,8 @@ export const TechnologyContextProvider = ({children})=>{
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,
                     arkusze,setArkusze,
-                    handleUpdateRowLegi
+                    handleUpdateRowLegi,
+                    showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo
        
                 }}
             >

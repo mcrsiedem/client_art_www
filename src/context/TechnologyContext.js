@@ -44,6 +44,19 @@ export const TechnologyContextProvider = ({children})=>{
             getTechnology(setTechnology)
        },[])
 
+       function handleUpdateRowLegi(card) {
+        // zmienia typ fragmentów gdy typ elementu jest zmieniany
+        setLegi(
+          legi.map((t) => {
+            if (t.id === card.id) {
+              return card;
+            } else {
+              return t;
+            }
+          })
+        );
+    
+      }
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
@@ -112,7 +125,8 @@ export const TechnologyContextProvider = ({children})=>{
                     procesyElementowTech, setProcesyElementowTech,
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,
-                    arkusze,setArkusze
+                    arkusze,setArkusze,
+                    handleUpdateRowLegi
        
                 }}
             >

@@ -1,0 +1,1 @@
+console.log( legi.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0))

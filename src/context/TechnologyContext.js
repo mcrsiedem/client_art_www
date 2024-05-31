@@ -76,11 +76,22 @@ export const TechnologyContextProvider = ({children})=>{
               }, [rowTechnologia]);
         
        useEffect(() => {
+        const ilosc_stron = parseInt(legi[0].ilosc_stron);
+        const suma_leg = parseInt(legi.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0))
+
+        if( ilosc_stron == suma_leg){
+            console.log("Legi OK")
+        }
+
+        if(ilosc_stron > suma_leg){
+            console.log("Dodaj", ilosc_stron-suma_leg)
+        }
+        if(ilosc_stron < suma_leg){
+            console.log("Usun ", suma_leg-ilosc_stron)
+        }
+          
 
 
-           console.log(
-            legi.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0)
-)
               }, [legi]);
         
     

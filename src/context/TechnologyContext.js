@@ -44,8 +44,8 @@ export const TechnologyContextProvider = ({children})=>{
             getTechnology(setTechnology)
        },[])
 
+
        function handleUpdateRowLegi(card) {
-        // zmienia typ fragmentów gdy typ elementu jest zmieniany
         setLegi(
           legi.map((t) => {
             if (t.id === card.id) {
@@ -75,7 +75,14 @@ export const TechnologyContextProvider = ({children})=>{
             console.log("edit karta")
               }, [rowTechnologia]);
         
+       useEffect(() => {
 
+
+           console.log(
+            legi.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0)
+)
+              }, [legi]);
+        
     
     useEffect(()=>{
 

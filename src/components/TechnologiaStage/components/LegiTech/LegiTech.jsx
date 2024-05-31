@@ -16,6 +16,19 @@ export default function LegiTech() {
 }
 
 const LegiHeader = () => {
+  const techContext = useContext(TechnologyContext);
+  const showErrorLegi = techContext.showErrorLegi;
+  const errorLegiInfo = techContext.errorLegiInfo;
+
+  if(showErrorLegi){
+    return(
+      <div className={style.headerAlert}>
+      <div className={style.kropka}></div>
+      <p className={style.naglowek}> Legi - {errorLegiInfo[0] } {errorLegiInfo[1] } </p>
+    </div>
+    )
+
+  }
   return (
     <div className={style.header}>
       <div className={style.kropka}></div>
@@ -27,8 +40,8 @@ const LegiHeader = () => {
 const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
-  const showErrorLegi = techContext.showErrorLegi;
-  const errorLegiInfo = techContext.errorLegiInfo;
+  // const showErrorLegi = techContext.showErrorLegi;
+  // const errorLegiInfo = techContext.errorLegiInfo;
 
   return (
     <div className={style.table_legi}>
@@ -53,9 +66,9 @@ const LegiTable = () => {
             })}
         </tbody>
       </table>
-            {showErrorLegi &&(
+            {/* {showErrorLegi &&(
               <div>{errorLegiInfo[0] } {errorLegiInfo[1] }</div>
-            )}
+            )} */}
     </div>
   );
 };

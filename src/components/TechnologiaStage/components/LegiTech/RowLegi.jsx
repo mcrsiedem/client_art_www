@@ -5,6 +5,7 @@ import { reg_int } from "utils/initialvalue";
 import { useContext } from "react";
 
 import iconTrash from "assets/trash2.svg"
+import UsunLege from "./components/UsunLege";
 
 export default function RowLegi({
     row,
@@ -23,7 +24,7 @@ export default function RowLegi({
         <td>{row.uwagi}</td> 
         <td>{row.element_id}</td> 
         <td>{row.ilosc_stron}</td> 
-        <Usun row={row}/>
+        <UsunLege row={row}/>
       </tr>
     );
   }
@@ -51,50 +52,7 @@ export default function RowLegi({
     );
   }
 
-  function Usun({ row }) {
-    const techContext = useContext(TechnologyContext)
-    const legi = techContext.legi;
-    const setLegi = techContext.setLegi;
 
-    const handleRemoveLega = (indeks,id,legi,setLegi) => {
-      // id = id elementu
-      if (legi.length !== 1) {
-        setLegi(legi.filter((x) => x.indeks !== indeks));
-        // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
-      }
-    
-      setLegi((prev) =>
-        prev.map((t, a) => {
-          if (t.indeks > indeks) {
-            return {
-              ...t,
-              indeks: t.indeks--,
-            };
-          } else {
-            return t;
-          }
-        })
-      );
-
-      console.log("Usun lege")
-    };
-
-    return (
-      <td className={style.col_button}>
-        <div>
-          <img
-            className={style.expand}
-            src={iconTrash}
-            onClick={() => {
-              handleRemoveLega(row.indeks, row.id,legi,setLegi)
-              // handleRemoveItem(row.indeks, row.id);
-            }}
-            alt="Procesy"
-          />
-        </div>
-      </td>
-    );
-  }
   
   // function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   //   return (

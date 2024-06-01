@@ -93,11 +93,22 @@ const RowLegi = ({ row }) => {
 
 
 const MenuBtn = () => {
+  const techContext = useContext(TechnologyContext)
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
   return (
     <img
               className={style.iconMenuBtn}
               src={iconSettings}
               onClick={() => {
+                setLegi(
+                  legi.map((t) => {
+             
+                      return {...t, select: true}
+            
+                    
+                  })
+                )
                 // dodaj_clikHandler();
                 // console.log("z contextu :"+ token.rowSelected)
                 //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})

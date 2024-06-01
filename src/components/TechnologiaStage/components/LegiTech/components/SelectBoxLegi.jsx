@@ -12,9 +12,10 @@ export default function SelectBoxLegi({row}) {
       <td className={style.td_checkbox}>
         <div >
         <input type="checkbox"
+        checked={row.select}
         onChange={(event)=>{
   
-        //   console.log(" select"+ row.id +" "+event.target.checked)
+          //  console.log(" select"+ row.id +" "+event.target.checked)
           setLegi(
             legi.map((t) => {
               if (t.id == row.id) {

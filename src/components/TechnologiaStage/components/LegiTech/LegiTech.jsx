@@ -55,6 +55,7 @@ const LegiTable = () => {
             <th className={style.col_naklad}>Uwagi</th>
             <th className={style.col_naklad}>element_id</th>
             <th className={style.col_naklad}>str</th>
+            <th className={style.col_naklad}></th>
 
           </tr>
         </thead>

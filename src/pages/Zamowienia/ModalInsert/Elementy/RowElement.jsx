@@ -274,36 +274,37 @@ function Procesy({ row}) {
     );
   }
   
-function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
-    return (
-      <td className={style.col_button}>
-        <div >
-                        <img
-           className={style.expand}
-            src={iconTrash}
-            onClick={() => {handleRemoveItem(row.indeks, row.id)}}
-            alt="Procesy"
-          />
+function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
+  return (
+    <td className={style.col_button}>
+      <div>
+        <img
+          className={style.expand}
+          src={iconTrash}
+          onClick={() => {
+            handleRemoveItem(row.indeks, row.id);
+          }}
+          alt="Procesy"
+        />
+      </div>
+    </td>
+  );
+}
 
-     
-        </div>
-
-      </td>
-    );
-  }
-  
-  function Dodaj({ row, handleChangeCardElementy ,handleAddCard}) {
-    return (
-      <td className={style.col_button} >
-              <img
-           className={style.expand}
-            src={iconCopy}
-            onClick={() => {handleAddCard(row)}}
-            alt="Procesy"
-          />
-      </td>
-    );
-  }
+function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
+  return (
+    <td className={style.col_button}>
+      <img
+        className={style.expand}
+        src={iconCopy}
+        onClick={() => {
+          handleAddCard(row);
+        }}
+        alt="Procesy"
+      />
+    </td>
+  );
+}
   
   function Typ({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
 

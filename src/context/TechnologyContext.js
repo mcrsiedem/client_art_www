@@ -48,17 +48,18 @@ export const TechnologyContextProvider = ({children})=>{
 
 
        function handleUpdateRowLegi(card) {
-        setLegi(
-          legi.map((t) => {
-            if (t.id === card.id) {
-              return card;
-            } else {
-              return t;
-            }
-          })
-        );
-    
-      }
+         setLegi(
+           legi.map((t) => {
+             if (t.id === card.id) {
+               return card;
+             } else {
+               return t;
+             }
+           })
+         );
+       }
+
+       
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);

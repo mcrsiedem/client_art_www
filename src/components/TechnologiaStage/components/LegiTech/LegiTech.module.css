@@ -256,3 +256,10 @@
     width: 16px;
     background: transparent;
  }
+
+ .menu_legi{
+
+  height: 50px;
+  width: 100px;
+  background-color: red;
+ }

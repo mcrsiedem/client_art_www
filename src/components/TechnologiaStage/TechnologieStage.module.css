@@ -18,9 +18,14 @@
    display: grid;
    grid-template-columns: 1fr  1fr;
    /* background-color: aqua; */
-   gap:10px
-
+   gap:10px;
+   overflow-y: auto;
 }
+
+/* .main{
+   overflow-y: auto;
+   
+ } */
 
 .legi{
    background-color: gray;

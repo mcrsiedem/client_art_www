@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React, {useContext, useState } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "./LegiTech.module.css";
 import UsunLege from "./components/UsunLege";
@@ -6,6 +6,7 @@ import TypLegi from "./components/TypLegi";
 import DodajLege from "./components/DodajLege";
 import iconSettings from "assets/settings.svg"
 import SelectBoxLegi from "./components/SelectBoxLegi";
+import MenuLegi from "./components/MenuLegi";
 
 export default function LegiTech() {
   return (
@@ -43,13 +44,15 @@ const LegiHeader = () => {
 const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
+  const [showMenuLegi,setShowMenuLegi] = useState(false)
 
   return (
     <div className={style.table_legi}>
+      <MenuLegi showMenuLegi={showMenuLegi}/>
       <table className={style.table2}>
         <thead>
           <tr>
-          <th className={style.th_checkbox}> <MenuBtn/></th>
+          <th className={style.th_checkbox}> <MenuBtn showMenuLegi={showMenuLegi} setShowMenuLegi={setShowMenuLegi}/></th>
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
@@ -92,7 +95,7 @@ const RowLegi = ({ row }) => {
 }
 
 
-const MenuBtn = () => {
+const MenuBtn = ({showMenuLegi,setShowMenuLegi}) => {
   const techContext = useContext(TechnologyContext)
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
@@ -101,14 +104,17 @@ const MenuBtn = () => {
               className={style.iconMenuBtn}
               src={iconSettings}
               onClick={() => {
-                setLegi(
-                  legi.map((t) => {
+                setShowMenuLegi(!showMenuLegi)
+                // setLegi(
+                //   legi.map((t) => {
              
-                      return {...t, select: true}
+                //       return {...t, select: true}
             
                     
-                  })
-                )
+                //   })
+                // )
+
+
                 // dodaj_clikHandler();
                 // console.log("z contextu :"+ token.rowSelected)
                 //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})

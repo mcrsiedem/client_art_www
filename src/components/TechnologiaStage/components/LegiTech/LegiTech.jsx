@@ -4,6 +4,8 @@ import style from "./LegiTech.module.css";
 import UsunLege from "./components/UsunLege";
 import TypLegi from "./components/TypLegi";
 import DodajLege from "./components/DodajLege";
+import iconSettings from "assets/settings.svg"
+import SelectBoxLegi from "./components/SelectBoxLegi";
 
 export default function LegiTech() {
   return (
@@ -47,6 +49,7 @@ const LegiTable = () => {
       <table className={style.table2}>
         <thead>
           <tr>
+          <th className={style.th_checkbox}> <MenuBtn/></th>
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
@@ -74,6 +77,7 @@ const LegiTable = () => {
 const RowLegi = ({ row }) => {
                 return (
                   <tr className={style.tr_legi} key={row.id}>
+                   <SelectBoxLegi row={row} />
                     <td>{row.indeks}</td>
                     <td>{row.rodzaj_elementu}</td>
                     <TypLegi row={row} />
@@ -85,4 +89,20 @@ const RowLegi = ({ row }) => {
                     <DodajLege row={row} />
                   </tr>
                 );
+}
+
+
+const MenuBtn = () => {
+  return (
+    <img
+              className={style.iconMenuBtn}
+              src={iconSettings}
+              onClick={() => {
+                // dodaj_clikHandler();
+                // console.log("z contextu :"+ token.rowSelected)
+                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+              }}
+              alt="x"
+            />
+  )
 }

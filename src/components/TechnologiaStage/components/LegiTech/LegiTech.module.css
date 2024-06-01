@@ -251,3 +251,8 @@
   .col_uwagi{
     width: 500px;
   }
+
+  .iconMenuBtn{
+    width: 16px;
+    background: transparent;
+ }

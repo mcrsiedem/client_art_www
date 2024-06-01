@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./LegiTech.module.css";
-import RowLegi from "./RowLegi";
+import UsunLege from "./components/UsunLege";
+import TypLegi from "./components/TypLegi";
+
 
 export default function LegiTech() {
   useEffect(() => {}, []);
@@ -16,32 +18,29 @@ export default function LegiTech() {
 }
 
 const LegiHeader = () => {
-  const techContext = useContext(TechnologyContext);
-  const showErrorLegi = techContext.showErrorLegi;
-  const errorLegiInfo = techContext.errorLegiInfo;
+          const techContext = useContext(TechnologyContext);
+          const showErrorLegi = techContext.showErrorLegi;
+          const errorLegiInfo = techContext.errorLegiInfo;
 
-  if(showErrorLegi){
-    return(
-      <div className={style.headerAlert}>
-      <div className={style.kropka}></div>
-      <p className={style.naglowek}> Legi - {errorLegiInfo[0] } {errorLegiInfo[1] } </p>
-    </div>
-    )
-
-  }
-  return (
-    <div className={style.header}>
-      <div className={style.kropka}></div>
-      <p className={style.naglowek}> Legi </p>
-    </div>
-  );
+          if (showErrorLegi) {
+            return (
+              <div className={style.headerAlert}>
+                <div className={style.kropka}></div>
+                <p className={style.naglowek}> Legi - {errorLegiInfo[0]} {errorLegiInfo[1]} </p>
+              </div>
+            );
+          }
+          return (
+            <div className={style.header}>
+              <div className={style.kropka}></div>
+              <p className={style.naglowek}> Legi </p>
+            </div>
+          );
 };
 
 const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
-  // const showErrorLegi = techContext.showErrorLegi;
-  // const errorLegiInfo = techContext.errorLegiInfo;
 
   return (
     <div className={style.table_legi}>
@@ -56,7 +55,6 @@ const LegiTable = () => {
             <th className={style.col_naklad}>element_id</th>
             <th className={style.col_naklad}>str</th>
             <th className={style.col_naklad}></th>
-
           </tr>
         </thead>
         <tbody>
@@ -67,9 +65,22 @@ const LegiTable = () => {
             })}
         </tbody>
       </table>
-            {/* {showErrorLegi &&(
-              <div>{errorLegiInfo[0] } {errorLegiInfo[1] }</div>
-            )} */}
     </div>
   );
 };
+
+
+const RowLegi = ({ row }) => {
+                return (
+                  <tr className={style.tr_legi} key={row.id}>
+                    <td>{row.indeks}</td>
+                    <td>{row.rodzaj_elementu}</td>
+                    <TypLegi row={row} />
+                    <td>{row.naklad}</td>
+                    <td>{row.uwagi}</td>
+                    <td>{row.element_id}</td>
+                    <td>{row.ilosc_stron}</td>
+                    <UsunLege row={row} />
+                  </tr>
+                );
+}

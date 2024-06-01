@@ -114,10 +114,10 @@
     width: 80px;
   }
   
-  .col_naklad {
+  /* .col_naklad {
     width: 75px;
   
-  }
+  } */
   
   .col_strony {
   
@@ -242,4 +242,12 @@
     margin-right: 10px;
   
   
+  }
+
+  .col_dodaj{
+    width: 10px;
+    
+  }
+  .col_uwagi{
+    width: 500px;
   }

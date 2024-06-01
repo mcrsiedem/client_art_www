@@ -51,11 +51,11 @@ const LegiTable = () => {
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
-            <th className={style.col_naklad}>Uwagi</th>
-            <th className={style.col_naklad}>element_id</th>
-            <th className={style.col_naklad}>str</th>
-            <th className={style.col_naklad}></th>
-            <th className={style.col_naklad}></th>
+            <th className={style.col_uwagi}>Uwagi</th>
+            {/* <th className={style.col_naklad}>element_id</th> */}
+            {/* <th className={style.col_naklad}>str</th> */}
+            <th className={style.col_doda3j}></th>
+            <th className={style.col_doda3j}></th>
           </tr>
         </thead>
         <tbody>
@@ -79,8 +79,8 @@ const RowLegi = ({ row }) => {
                     <TypLegi row={row} />
                     <td>{row.naklad}</td>
                     <td>{row.uwagi}</td>
-                    <td>{row.element_id}</td>
-                    <td>{row.ilosc_stron}</td>
+                    {/* <td>{row.element_id}</td> */}
+                    {/* <td>{row.ilosc_stron}</td> */}
                     <UsunLege row={row} />
                     <DodajLege row={row} />
                   </tr>

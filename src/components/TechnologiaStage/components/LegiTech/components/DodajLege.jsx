@@ -26,7 +26,7 @@ export default function DodajLege({ row }) {
   };
 
   return (
-    <td className={style.col_button}>
+    <td className={style.col_dodaj2}>
       <div>
         <img
           className={style.expand}

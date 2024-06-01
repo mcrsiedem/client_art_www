@@ -59,14 +59,14 @@ export const TechnologyContextProvider = ({children})=>{
          );
        }
 
-       
+
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
     //   }, []);
 
        useEffect(() => {
-        console.log("new karta")
+
     
 
         fechparametry(rowZamowienia?.id,rowZamowienia?.zamowienie_prime_id)
@@ -75,7 +75,7 @@ export const TechnologyContextProvider = ({children})=>{
           }, [rowZamowienia]);
 
           useEffect(() => {
-            console.log("edit karta")
+    
               }, [rowTechnologia]);
         
        useEffect(() => {
@@ -98,8 +98,6 @@ export const TechnologyContextProvider = ({children})=>{
             console.log("Usun ", suma_leg-ilosc_stron)
         }
           
-
-
               }, [legi]);
         
     

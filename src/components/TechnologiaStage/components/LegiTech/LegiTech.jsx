@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-
 import style from "./LegiTech.module.css";
 import UsunLege from "./components/UsunLege";
 import TypLegi from "./components/TypLegi";
-
+import DodajLege from "./components/DodajLege";
 
 export default function LegiTech() {
-  useEffect(() => {}, []);
-
   return (
     <div className={style.container}>
       <LegiHeader />
@@ -17,6 +14,8 @@ export default function LegiTech() {
   );
 }
 
+
+//------------------------------------------------------------
 const LegiHeader = () => {
           const techContext = useContext(TechnologyContext);
           const showErrorLegi = techContext.showErrorLegi;
@@ -38,6 +37,7 @@ const LegiHeader = () => {
           );
 };
 
+//------------------------------------------------------------
 const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
@@ -55,6 +55,7 @@ const LegiTable = () => {
             <th className={style.col_naklad}>element_id</th>
             <th className={style.col_naklad}>str</th>
             <th className={style.col_naklad}></th>
+            <th className={style.col_naklad}></th>
           </tr>
         </thead>
         <tbody>
@@ -69,7 +70,7 @@ const LegiTable = () => {
   );
 };
 
-
+//------------------------------------------------------------
 const RowLegi = ({ row }) => {
                 return (
                   <tr className={style.tr_legi} key={row.id}>
@@ -81,6 +82,7 @@ const RowLegi = ({ row }) => {
                     <td>{row.element_id}</td>
                     <td>{row.ilosc_stron}</td>
                     <UsunLege row={row} />
+                    <DodajLege row={row} />
                   </tr>
                 );
 }

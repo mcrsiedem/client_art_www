@@ -36,10 +36,13 @@ export const TechnologyContextProvider = ({children})=>{
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
 
         const [legi, setLegi] = useState([]);
-        // const [legi, setLegi] = useState([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:3,typ:1}]);
-        const [arkusze, setArkusze] = useState([]);
         const [showErrorLegi, setShowErrorLegi] = useState(false);
         const [errorLegiInfo, setErrorLegiInfo] = useState([]);
+        // const [legi, setLegi] = useState([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:3,typ:1}]);
+        const [arkusze, setArkusze] = useState([]);
+        const [showErrorArkusze, setShowErrorArkusze] = useState(false);
+        const [errorArkuszeInfo, setErrorArkuszeInfo] = useState([]);
+    
 
 
         const updateTechnology = useCallback(()=>{
@@ -151,7 +154,9 @@ export const TechnologyContextProvider = ({children})=>{
                     legi, setLegi,
                     arkusze,setArkusze,
                     handleUpdateRowLegi,
-                    showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo
+                    showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
+                    showErrorArkusze, setShowErrorArkusze,
+                    errorArkuszeInfo, setErrorArkuszeInfo
        
                 }}
             >

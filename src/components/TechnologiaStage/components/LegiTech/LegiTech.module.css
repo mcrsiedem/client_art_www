@@ -257,9 +257,36 @@
     background: transparent;
  }
 
- .menu_legi{
 
+ .table_legi{
+  position: relative;
+ }
+ .menu_legi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position:  absolute ;
+  top: 30px;
+  left: 45px;
+z-index: 100;
+
+  width: 200px;
+  height: 220px;
+ 
+  background-color: grey;
+  border-radius: 10px;
+ }
+
+ .menu_legi_btn{
   height: 50px;
-  width: 100px;
-  background-color: red;
+  width: 100%;
+  background-color: gray;
+  color: whitesmoke;
+  border: none;
+  border: 1px solid rgb(157, 157, 157);
+ }
+ .menu_legi_btn:hover{
+background-color: rgb(157, 157, 157);
  }

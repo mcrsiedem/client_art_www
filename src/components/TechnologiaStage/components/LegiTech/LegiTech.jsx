@@ -48,7 +48,7 @@ const LegiTable = () => {
 
   return (
     <div className={style.table_legi}>
-      <MenuLegi showMenuLegi={showMenuLegi}/>
+      <MenuLegi showMenuLegi={showMenuLegi} setShowMenuLegi={setShowMenuLegi}/>
       <table className={style.table2}>
         <thead>
           <tr>
@@ -105,14 +105,7 @@ const MenuBtn = ({showMenuLegi,setShowMenuLegi}) => {
               src={iconSettings}
               onClick={() => {
                 setShowMenuLegi(!showMenuLegi)
-                // setLegi(
-                //   legi.map((t) => {
-             
-                //       return {...t, select: true}
-            
-                    
-                //   })
-                // )
+  
 
 
                 // dodaj_clikHandler();

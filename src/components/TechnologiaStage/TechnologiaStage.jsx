@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./TechnologieStage.module.css";
@@ -10,68 +9,29 @@ import ElementyTech from "./components/ElementyTech/ElementyTech";
 import LegiTech from "./components/LegiTech/LegiTech";
 import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
 
-
-export default function TechnologiaStage(){
-
+export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
-  const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const openTechnologia = techContext.openTechnologia;
 
-
-
-  const [dataTechnologie,setDataTechnologie] =useState([]);
-  const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
-  const [activeRowId,setActiveRowId] =useState();
-
-
-
-  // const effectRan = useRef(false);
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-  //     if(openTechnologia){
-  //       console.log("open technologia")
-  //     }
-
-  //   }
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
-
-
-
   useEffect(() => {
-
-      if(openTechnologia){
-        console.log("open technologia")
-      }
-
-
+    if (openTechnologia) {
+      console.log("open technologia");
+    }
   }, []);
 
-
-if(showTechnologyStage) {
-    return(
-        <div className={style.container}>
-       <Header/>
-        <DaneTech/>
-      <ProduktyTech/>
-      <ElementyTech/>
-      <div className={style.container_legi_arkusze}>
-
-        <LegiTech/>
-        <ArkuszeTech/>
-
-      
-      </div>
-      {/* <ElementyTech/> */}
-      {/* Komponent w którym będa legi i arkusze */}
-
+  if (showTechnologyStage) {
+    return (
+      <div className={style.container}>
+        <Header />
+        <DaneTech />
+        <ProduktyTech />
+        <ElementyTech />
+        <div className={style.container_legi_arkusze}>
+          <ArkuszeTech />
+          <LegiTech />
         </div>
-        ) 
-}
-
-
-    
+      </div>
+    );
+  }
 }

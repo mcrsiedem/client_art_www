@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "../ArkuszeTech.module.css";
 import icon from "assets/copy.svg";
-export default function MenuLegi({ showMenuLegi, setShowMenuLegi }) {
+export default function MenuArkusze({ showMenu, setShowMenu }) {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
 
-  if (showMenuLegi) {
+  if (showMenu) {
     return (
       <div className={style.menu_legi}>
         <button
@@ -18,7 +18,7 @@ export default function MenuLegi({ showMenuLegi, setShowMenuLegi }) {
                 return { ...t, select: true };
               })
             );
-            setShowMenuLegi(!showMenuLegi);
+            setShowMenu(!showMenu);
           }}
         >
           Zaznacz wszystko
@@ -29,13 +29,13 @@ export default function MenuLegi({ showMenuLegi, setShowMenuLegi }) {
                 return { ...t, select: false };
               })
             );
-            setShowMenuLegi(!showMenuLegi);
+            setShowMenu(!showMenu);
           }}>Odznacz wszystko</button>
         <button className={style.menu_legi_btn}>Arkusze</button>
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-            setShowMenuLegi(!showMenuLegi);
+            setShowMenu(!showMenu);
           }}
         >
           Anuluj

@@ -5,7 +5,7 @@ import TypLegi from "./components/TypLegi";
 import DodajLege from "./components/DodajLege";
 import iconSettings from "assets/settings.svg"
 import SelectBoxLegi from "./components/SelectBoxLegi";
-import MenuLegi from "./components/MenuLegi";
+import MenuArkusze from "./components/MenuArkusze";
 import style from "./ArkuszeTech.module.css";
 
 export default function ArkuszeTech() {
@@ -43,15 +43,15 @@ const ArkuszeHeader = () => {
 const ArkuszeTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
-  const [showMenuLegi,setShowMenuLegi] = useState(false)
+  const [showMenu,setShowMenu] = useState(false)
 
   return (
     <div className={style.table_legi}>
-      <MenuLegi showMenuLegi={showMenuLegi} setShowMenuLegi={setShowMenuLegi}/>
+      <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu}/>
       <table className={style.table2}>
         <thead>
           <tr>
-          <th className={style.th_checkbox}> <MenuBtn showMenuLegi={showMenuLegi} setShowMenuLegi={setShowMenuLegi}/></th>
+          <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu}/></th>
             <th className={style.col1}>#</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
@@ -95,13 +95,13 @@ const RowLegi = ({ row }) => {
 }
 
 
-const MenuBtn = ({showMenuLegi,setShowMenuLegi}) => {
+const MenuBtn = ({showMenu,setShowMenu}) => {
 return (
 <img
 className={style.iconMenuBtn}
 src={iconSettings}
 onClick={() => {
-  setShowMenuLegi(!showMenuLegi)
+  setShowMenu(!showMenu)
 }}
 alt="x"
 />

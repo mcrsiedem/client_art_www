@@ -102,7 +102,27 @@ export const TechnologyContextProvider = ({children})=>{
         }
           
               }, [legi]);
+              useEffect(() => {
+                const ilosc_stron = parseInt(legi[0]?.ilosc_stron);
+                const suma_leg = parseInt(arkusze.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0))
         
+                if( ilosc_stron == suma_leg){
+                    console.log("Legi OK")
+                    setShowErrorArkusze(false)
+                }
+        
+                if(ilosc_stron > suma_leg){
+                    setShowErrorLegi(true)
+                    setErrorArkuszeInfo(["Dodaj", ilosc_stron-suma_leg])
+                    console.log("Dodaj", ilosc_stron-suma_leg)
+                }
+                if(ilosc_stron < suma_leg){
+                    setShowErrorLegi(true)
+                    setErrorArkuszeInfo(["Usun ", suma_leg-ilosc_stron])
+                    console.log("Usun ", suma_leg-ilosc_stron)
+                }
+                  
+                      }, [arkusze]);
     
     useEffect(()=>{
 

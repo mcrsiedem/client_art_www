@@ -14,6 +14,7 @@ import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { addArkusze } from "actions/addArkusze";
 import { createLegi } from "actions/createLegi";
+import { createArkusze } from "actions/createArkusze";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -49,8 +50,7 @@ export default function RowElement({
 
     const fragmenty = techContext.fragmenty;
     const setFragmenty = techContext.setFragmenty;
-    const arkusze = techContext.arkusze;
-    const setArkusze = techContext.setArkusze;
+
 
 
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
@@ -167,8 +167,8 @@ export default function RowElement({
         newFragmenty.sort((a, b) => a.indeks - b.indeks);
         setFragmenty(newFragmenty);
       }
-      const legi = techContext.legi;
-      const setLegi = techContext.setLegi;
+      const arkusze = techContext.arkusze;
+      const setArkusze = techContext.setArkusze;
     return (
       <tr  key={row.id}>
                 <div className={style.col_button}>
@@ -177,7 +177,8 @@ export default function RowElement({
             className={style.expand}
             onClick={() => {
               // console.log(row.strony)
-              createLegi(row,legi,setLegi);
+              // createLegi(row,legi,setLegi);
+              createArkusze(row,arkusze,setArkusze)
               // setExpand(!expand);
             }}
             alt="Procesy"

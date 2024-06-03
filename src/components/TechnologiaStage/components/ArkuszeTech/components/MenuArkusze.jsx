@@ -31,7 +31,7 @@ export default function MenuArkusze({ showMenu, setShowMenu }) {
             );
             setShowMenu(!showMenu);
           }}>Odznacz wszystko</button>
-        <button className={style.menu_legi_btn}>Arkusze</button>
+        <button className={style.menu_legi_btn}>Legi</button>
         <button
           className={style.menu_legi_btn}
           onClick={() => {

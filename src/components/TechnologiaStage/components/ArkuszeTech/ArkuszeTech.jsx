@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import UsunLege from "./components/UsunLege";
 
-import DodajLege from "./components/DodajLege";
+import DodajLege from "./components/DodajArkusz";
 import iconSettings from "assets/settings.svg";
 // import SelectBoxLegi from "./components/SelectBoxArkusze";
 import SelectBoxArkusze from "./components/SelectBoxArkusze";
 import MenuArkusze from "./components/MenuArkusze";
 import style from "./ArkuszeTech.module.css";
 import RodzajArkusza from "./components/RodzajArkusza";
+import DodajArkusz from "./components/DodajArkusz";
 export default function ArkuszeTech() {
   return (
     <div className={style.container}>
@@ -93,7 +94,7 @@ const RowArkusze = ({ row }) => {
       {/* <td>{row.element_id}</td> */}
       <td>{row.ilosc_stron}</td>
       <UsunLege row={row} />
-      <DodajLege row={row} />
+      <DodajArkusz row={row} />
     </tr>
   );
 };

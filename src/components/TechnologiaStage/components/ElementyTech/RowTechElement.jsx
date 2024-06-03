@@ -173,7 +173,7 @@ export default function RowElement({
             className={style.expand}
             onClick={() => {
               // console.log(row.strony)
-              // createLegi(row,legi,setLegi);
+              createLegi(row,legi,setLegi);
               createArkusze(row,arkusze,setArkusze)
               // setExpand(!expand);
             }}

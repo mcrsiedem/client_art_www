@@ -2,27 +2,27 @@ import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "../ArkuszeTech.module.css";
 import icon from "assets/copy.svg";
-export default function DodajLege({ row }) {
+export default function DodajArkusz({ row }) {
   const techContext = useContext(TechnologyContext);
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
 
-  const handleAddLega = (row, legi, setLegi) => {
+  const handleAddArkusz = (row, arkusze, setArkusze) => {
     // id = id elementu
-    const newLegi = legi.slice();
+    const newArkusze = arkusze.slice();
 
 
-    newLegi.push({
-      id: Math.max(...newLegi.map((f) => f.id)) + 1,
-      indeks: Math.max(...newLegi.map((f) => f.indeks)) + 1,
-      rodzaj_elementu: row.rodzaj_elementu,
-      typ_legi:row.typ_legi,
+    newArkusze.push({
+      id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+      indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+      typ_elementu: row.typ_elementu,
+      rodzaj_arkusza:row.rodzaj_arkusza,
       naklad: row.naklad,
-      element_id: row.element_id,
+      element_id: row.id,
       ilosc_stron: row.ilosc_stron,
     });
 
-    setLegi(newLegi);
+    setArkusze(newArkusze);
   };
 
   return (
@@ -32,7 +32,7 @@ export default function DodajLege({ row }) {
           className={style.expand}
           src={icon}
           onClick={() => {
-            handleAddLega(row, legi, setLegi);
+            handleAddArkusz(row, arkusze, setArkusze);
             // handleRemoveItem(row.indeks, row.id);
           }}
           alt="Procesy"

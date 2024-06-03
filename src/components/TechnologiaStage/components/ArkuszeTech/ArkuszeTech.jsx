@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import UsunLege from "./components/UsunLege";
+import UsunArkusz from "./components/UsunArkusz";
 
 import DodajLege from "./components/DodajArkusz";
 import iconSettings from "assets/settings.svg";
@@ -93,7 +93,7 @@ const RowArkusze = ({ row }) => {
       <td>{row.uwagi}</td>
       {/* <td>{row.element_id}</td> */}
       <td>{row.ilosc_stron}</td>
-      <UsunLege row={row} />
+      <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>
   );

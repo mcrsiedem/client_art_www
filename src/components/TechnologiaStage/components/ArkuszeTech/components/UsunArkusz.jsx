@@ -2,19 +2,19 @@ import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "../ArkuszeTech.module.css"
 import iconTrash from "assets/trash2.svg"
-export default function UsunLege({ row }) {
+export default function UsunArkusz({ row }) {
     const techContext = useContext(TechnologyContext)
-    const legi = techContext.legi;
-    const setLegi = techContext.setLegi;
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
 
-    const handleRemoveLega = (indeks,id,legi,setLegi) => {
+    const handleRemoveArkusz = (indeks,id,arkusze,setArkusze) => {
       // id = id elementu
-      if (legi.length !== 1) {
-        setLegi(legi.filter((x) => x.indeks !== indeks));
+      if (arkusze.length !== 1) {
+        setArkusze(arkusze.filter((x) => x.indeks !== indeks));
         // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
       }
     
-      setLegi((prev) =>
+      setArkusze((prev) =>
         prev.map((t, a) => {
           if (t.indeks > indeks) {
             return {
@@ -35,7 +35,7 @@ export default function UsunLege({ row }) {
             className={style.expand}
             src={iconTrash}
             onClick={() => {
-              handleRemoveLega(row.indeks, row.id,legi,setLegi)
+              handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze)
               // handleRemoveItem(row.indeks, row.id);
             }}
             alt="Procesy"

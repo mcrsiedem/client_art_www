@@ -4,8 +4,8 @@ import style from "../ArkuszeTech.module.css";
 export default function SelectBoxArkusze({row}) {
 
     const techContext = useContext(TechnologyContext)
-    const legi = techContext.legi;
-    const setLegi = techContext.setLegi;
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
 
   
     return (
@@ -18,8 +18,8 @@ export default function SelectBoxArkusze({row}) {
         onChange={(event)=>{
   
           //  console.log(" select"+ row.id +" "+event.target.checked)
-          setLegi(
-            legi.map((t) => {
+          setArkusze(
+            arkusze.map((t) => {
               if (t.id == row.id) {
                 return {...row, select: event.target.checked }
               } else {

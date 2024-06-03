@@ -50,7 +50,7 @@ const ArkuszeTable = () => {
   return (
     <div className={style.table_legi}>
       <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu} />
-      <table className={style.table2}>
+      <table className={style.table2} >
         <thead>
           <tr>
             <th className={style.th_checkbox}>
@@ -68,7 +68,7 @@ const ArkuszeTable = () => {
             <th className={style.col_doda3j}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody onClick={()=>{setShowMenu(false)}}>
           {arkusze
             // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {

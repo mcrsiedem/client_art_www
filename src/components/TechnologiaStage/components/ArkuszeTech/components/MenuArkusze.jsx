@@ -4,8 +4,8 @@ import style from "../ArkuszeTech.module.css";
 import icon from "assets/copy.svg";
 export default function MenuArkusze({ showMenu, setShowMenu }) {
   const techContext = useContext(TechnologyContext);
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
 
   if (showMenu) {
     return (
@@ -13,8 +13,8 @@ export default function MenuArkusze({ showMenu, setShowMenu }) {
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-            setLegi(
-              legi.map((t) => {
+            setArkusze(
+              arkusze.map((t) => {
                 return { ...t, select: true };
               })
             );
@@ -24,8 +24,8 @@ export default function MenuArkusze({ showMenu, setShowMenu }) {
           Zaznacz wszystko
         </button>
         <button className={style.menu_legi_btn}           onClick={() => {
-            setLegi(
-              legi.map((t) => {
+            setArkusze(
+              arkusze.map((t) => {
                 return { ...t, select: false };
               })
             );

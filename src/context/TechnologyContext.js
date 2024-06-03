@@ -62,6 +62,18 @@ export const TechnologyContextProvider = ({children})=>{
          );
        }
 
+       function handleUpdateRowArkusze(card) {
+        setArkusze(
+          arkusze.map((t) => {
+            if (t.id === card.id) {
+              return card;
+            } else {
+              return t;
+            }
+          })
+        );
+      }
+
 
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
@@ -102,9 +114,11 @@ export const TechnologyContextProvider = ({children})=>{
         }
           
               }, [legi]);
+
+
               useEffect(() => {
-                const ilosc_stron = parseInt(legi[0]?.ilosc_stron);
-                const suma_leg = parseInt(arkusze.map((f) => parseInt(f.typ_legi)).reduce((a, b) => a + b, 0))
+                const ilosc_stron = parseInt(arkusze[0]?.ilosc_stron);
+                const suma_leg = parseInt(arkusze.map((f) => parseInt(f.rodzaj_arkusza)).reduce((a, b) => a + b, 0))
         
                 if( ilosc_stron == suma_leg){
                     console.log("Legi OK")
@@ -112,12 +126,12 @@ export const TechnologyContextProvider = ({children})=>{
                 }
         
                 if(ilosc_stron > suma_leg){
-                    setShowErrorLegi(true)
+                    setShowErrorArkusze(true)
                     setErrorArkuszeInfo(["Dodaj", ilosc_stron-suma_leg])
                     console.log("Dodaj", ilosc_stron-suma_leg)
                 }
                 if(ilosc_stron < suma_leg){
-                    setShowErrorLegi(true)
+                  setShowErrorArkusze(true)
                     setErrorArkuszeInfo(["Usun ", suma_leg-ilosc_stron])
                     console.log("Usun ", suma_leg-ilosc_stron)
                 }
@@ -173,7 +187,7 @@ export const TechnologyContextProvider = ({children})=>{
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,
                     arkusze,setArkusze,
-                    handleUpdateRowLegi,
+                    handleUpdateRowLegi,handleUpdateRowArkusze,
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
                     showErrorArkusze, setShowErrorArkusze,
                     errorArkuszeInfo, setErrorArkuszeInfo

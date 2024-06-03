@@ -290,3 +290,7 @@ z-index: 100;
  .menu_legi_btn:hover{
 background-color: rgb(157, 157, 157);
  }
+
+ .td_checkbox{
+  width: 20px;
+}

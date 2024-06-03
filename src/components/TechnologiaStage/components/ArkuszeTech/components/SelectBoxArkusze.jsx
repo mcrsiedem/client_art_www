@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "../ArkuszeTech.module.css";
-export default function SelectBoxLegi({row}) {
+export default function SelectBoxArkusze({row}) {
 
     const techContext = useContext(TechnologyContext)
     const legi = techContext.legi;
@@ -11,7 +11,9 @@ export default function SelectBoxLegi({row}) {
     return (
       <td className={style.td_checkbox}>
         <div >
-        <input type="checkbox"
+        <input
+        className={style.ch_box} 
+        type="checkbox"
         checked={row.select}
         onChange={(event)=>{
   

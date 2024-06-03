@@ -2,20 +2,20 @@ import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { reg_int } from "utils/initialvalue";
 
-export default   function TypLegi ({row}) {
+export default   function RodzajArkusza ({row}) {
     const techContext = useContext(TechnologyContext)
-    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
       <td>
         <input
-          value={row.typ_legi}
+          value={row.rodzaj_arkusza}
           onChange={(e) =>
 
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
-                handleUpdateRowLegi({
+                handleUpdateRowArkusze({
               ...row,
-              typ_legi: e.target.value,
+              rodzaj_arkusza: e.target.value,
             }
             )}}
 

@@ -3,16 +3,18 @@
   align-items: start;
   justify-content: center;
   margin-bottom: 15px;
+  /* background-color: red; */
 }
 
 .element {
   border-radius: 10px;
   width: calc(100vw - 40px);
-  height: calc(100% - 20px);
+  /* height: calc(100% - 20px); */
   background-color: rgb(214, 214, 214);
   /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
   /* background-color: rgb(178, 196, 214); */
   box-shadow: 3px 3px 3px rgb(159, 159, 159);
+
 }
 
 .header {
@@ -44,6 +46,7 @@
 
 .main {
   overflow: auto;
+
 }
 .kropka2{
   /* background-color: red; */
@@ -83,7 +86,7 @@
 
 .table2{
 
-  height: 1fr;
+  /* height: 1fr; */
 }
 
 

@@ -25,13 +25,13 @@ export default function TechnologiaStage() {
       <div className={style.container}>
         <Header />
         <DaneTech />
-        <ProduktyTech />
-        <ElementyTech />
-        <div className={style.container_legi_arkusze}>
-        <ArkuszeTech />
-          <LegiTech />
-
-        
+        <div className={style.main}>
+              <ProduktyTech />
+              <ElementyTech />
+              <div className={style.container_legi_arkusze}>
+                <ArkuszeTech />
+                <LegiTech />
+              </div>
         </div>
       </div>
     );

@@ -39,15 +39,9 @@ export default function RowElement({
 
     const appcontext = useContext(AppContext)
     const techContext = useContext(TechnologyContext)
-    const menuElementyTech = techContext.menuElementyTech;
-    const setMenuElementyTech = techContext.setMenuElementyTech;
-
-
     const listaGramatur = appcontext.listaGramatur;
-    // const contextModalInsert = useContext(ModalInsertContext);
     const elementy = techContext.elementy;
     const setElementy = techContext.setElementy;
-
     const fragmenty = techContext.fragmenty;
     const setFragmenty = techContext.setFragmenty;
 

@@ -62,9 +62,11 @@ const ArkuszeTable = () => {
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
+            <th className={style.col_uwagi}>Ilość leg</th>
             <th className={style.col_uwagi}>Uwagi</th>
+    
             {/* <th className={style.col_naklad}>element_id</th> */}
-            <th className={style.col_naklad}>str</th>
+            {/* <th className={style.col_naklad}>str</th> */}
             <th className={style.col_doda3j}></th>
             <th className={style.col_doda3j}></th>
           </tr>
@@ -90,9 +92,10 @@ const RowArkusze = ({ row }) => {
       <td>{row.typ_elementu}</td>
       <RodzajArkusza row={row} />
       <td>{row.naklad}</td>
+      <td>{row.ilosc_leg}</td>
       <td>{row.uwagi}</td>
       {/* <td>{row.element_id}</td> */}
-      <td>{row.ilosc_stron}</td>
+      {/* <td>{row.ilosc_stron}</td> */}
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>

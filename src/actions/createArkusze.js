@@ -24,6 +24,7 @@ export function createArkusze(row, arkusze, setArkusze) {
           id: i + 1,
           indeks: i + 1,
           ...ark,
+          ilosc_leg: rodzaj_arkusza / rodzaj_arkusza
         });
       }
     }
@@ -34,6 +35,7 @@ export function createArkusze(row, arkusze, setArkusze) {
           id: i + 1,
           indeks: i + 1,
           ...ark,
+          ilosc_leg: rodzaj_arkusza/ 16
         });
       }
 
@@ -42,6 +44,7 @@ export function createArkusze(row, arkusze, setArkusze) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
+        ilosc_leg: rodzaj_arkusza/ 2
       });
 
       new_arkusze.push({
@@ -49,6 +52,7 @@ export function createArkusze(row, arkusze, setArkusze) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
+        ilosc_leg: rodzaj_arkusza/ 16
       });
 }
 
@@ -58,6 +62,7 @@ if (modulo == 4) {
       id: i + 1,
       indeks: i + 1,
       ...ark,
+      ilosc_leg: 1
     });
   }
 
@@ -66,6 +71,7 @@ if (modulo == 4) {
     indeks: generateMaxIndeks(new_arkusze),
     ...ark,
     rodzaj_arkusza: 4,
+    ilosc_leg: rodzaj_arkusza/ 4
   });
 
   new_arkusze.push({
@@ -73,6 +79,8 @@ if (modulo == 4) {
     indeks: generateMaxIndeks(new_arkusze),
     ...ark,
     rodzaj_arkusza: 16,
+    ilosc_leg: rodzaj_arkusza/ 16
+    
   });
 }
 
@@ -83,6 +91,7 @@ if (modulo == 6) {
       id: i + 1,
       indeks: i + 1,
       ...ark,
+      ilosc_leg: rodzaj_arkusza/ 16
     });
   }
 
@@ -91,12 +100,14 @@ if (modulo == 6) {
     indeks: generateMaxIndeks(new_arkusze),
     ...ark,
     rodzaj_arkusza: 2,
+    ilosc_leg: rodzaj_arkusza/ 2
   });
   new_arkusze.push({
     id: generateMaxID(new_arkusze),
     indeks: generateMaxIndeks(new_arkusze),
     ...ark,
     rodzaj_arkusza: 4,
+    ilosc_leg: rodzaj_arkusza/ 4
   });
 
   new_arkusze.push({
@@ -104,6 +115,7 @@ if (modulo == 6) {
     indeks: generateMaxIndeks(new_arkusze),
     ...ark,
     rodzaj_arkusza: 16,
+    ilosc_leg: rodzaj_arkusza/ 16
   });
 }
 
@@ -113,6 +125,7 @@ if (modulo == 6) {
                   id: i + 1,
                   indeks: i + 1,
                   ...ark,
+                  ilosc_leg: rodzaj_arkusza/ 16
                 });
               }
 
@@ -121,6 +134,7 @@ if (modulo == 6) {
                 indeks: generateMaxIndeks(new_arkusze),
                 ...ark,
                 rodzaj_arkusza: 8,
+                ilosc_leg: rodzaj_arkusza/ 8
               });
 
               new_arkusze.push({
@@ -128,6 +142,7 @@ if (modulo == 6) {
                 indeks: generateMaxIndeks(new_arkusze),
                 ...ark,
                 rodzaj_arkusza: 16,
+                ilosc_leg: rodzaj_arkusza/ 16
               });
     }
 
@@ -138,6 +153,7 @@ if (modulo == 6) {
           id: i + 1,
           indeks: i + 1,
           ...ark,
+          ilosc_leg: rodzaj_arkusza/ 16
         });
       }
     
@@ -146,12 +162,14 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
+        ilosc_leg: rodzaj_arkusza/ 2
       });
       new_arkusze.push({
         id: generateMaxID(new_arkusze),
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
+        ilosc_leg: rodzaj_arkusza/ 8
       });
     
       new_arkusze.push({
@@ -159,6 +177,7 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
+        ilosc_leg: rodzaj_arkusza/ 16
       });
     }
 
@@ -168,6 +187,7 @@ if (modulo == 6) {
           id: i + 1,
           indeks: i + 1,
           ...ark,
+          ilosc_leg: rodzaj_arkusza/ 16
         });
       }
     
@@ -176,12 +196,14 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
+        ilosc_leg: rodzaj_arkusza/ 4
       });
       new_arkusze.push({
         id: generateMaxID(new_arkusze),
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
+        ilosc_leg: rodzaj_arkusza/ 8
       });
     
       new_arkusze.push({
@@ -189,6 +211,7 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
+        ilosc_leg: rodzaj_arkusza/ 16
       });
     }
 
@@ -199,6 +222,7 @@ if (modulo == 6) {
           id: i + 1,
           indeks: i + 1,
           ...ark,
+          ilosc_leg: rodzaj_arkusza/ 16
         });
       }
       new_arkusze.push({
@@ -206,6 +230,7 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
+        ilosc_leg: rodzaj_arkusza/ 2
       });
     
       new_arkusze.push({
@@ -213,12 +238,14 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
+        ilosc_leg: rodzaj_arkusza/ 4
       });
       new_arkusze.push({
         id: generateMaxID(new_arkusze),
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
+        ilosc_leg: rodzaj_arkusza/ 8
       });
     
       new_arkusze.push({
@@ -226,6 +253,7 @@ if (modulo == 6) {
         indeks: generateMaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
+        ilosc_leg: rodzaj_arkusza/ 16
       });
     }
 

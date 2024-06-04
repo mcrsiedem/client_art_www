@@ -67,8 +67,7 @@ export default function RowElement({
 
       const arkusze = techContext.arkusze;
       const setArkusze = techContext.setArkusze;
-      const legi = techContext.legi;
-      const setLegi = techContext.setLegi;
+
     return (
       <tr  key={row.id}>
                 <div className={style.col_button}>

@@ -75,10 +75,8 @@ export default function RowElement({
             src={Logo_ustawienia}
             className={style.expand}
             onClick={() => {
-              // console.log(row.strony)
               // createLegi(row,legi,setLegi);
               createArkusze(row,arkusze,setArkusze)
-              // setExpand(!expand);
             }}
             alt="Procesy"
           />
@@ -86,14 +84,11 @@ export default function RowElement({
         {/* <td>{row.id}</td> */}
         <td>{row.indeks}</td>
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
-        <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
-      
-        <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
-      
-        <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}/>
-        <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
-
+        <Naklad row={row}/>
+        <Nazwa row={row}/>
+        <Strony row={row}/>
+        <NettoX row={row}/>
+        <NettoY row={row}/>
         <PapierSelect
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -119,7 +114,7 @@ export default function RowElement({
 
 
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
-        <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        <Uwagi row={row} />
 
         {/* <td></td> */}
 
@@ -432,7 +427,9 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     );
   }
   
-  function Naklad({ row, handleChangeCardElementy }) {
+  function Naklad({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td>
         <input
@@ -441,7 +438,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleChangeCardElementy({
+                handleUpdateRowElementyTech({
               ...row,
               naklad: e.target.value,
             })}}
@@ -450,7 +447,9 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       </td>
     );
   }
-  function Nazwa({ row, handleChangeCardElementy }) {
+  function Nazwa({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td>
         <input
@@ -458,7 +457,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
           onChange={(e) =>
 
  {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-             handleChangeCardElementy({
+  handleUpdateRowElementyTech({
               ...row,
               nazwa: e.target.value,
             })}
@@ -471,7 +470,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   
   
   
-  function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
+  function Strony({ row }) {
     const techContext = useContext(TechnologyContext);
     const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
@@ -494,7 +493,9 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       </td>
     );
   }
-  function NettoX({ row, handleChangeCardElementy }) {
+  function NettoX({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td className={style.col_format}>
         <input
@@ -503,7 +504,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
             if (e.target.value === "" || re.test(e.target.value)) {
-              handleChangeCardElementy({
+              handleUpdateRowElementyTech({
                 ...row,
                 format_x: e.target.value,
               });
@@ -514,6 +515,8 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     );
   }
   function NettoY({ row, handleChangeCardElementy }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td className={style.col_format}>
         <input
@@ -522,7 +525,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
             if (e.target.value === "" || re.test(e.target.value)) {
-              handleChangeCardElementy({
+              handleUpdateRowElementyTech({
                 ...row,
                 format_y: e.target.value,
               });
@@ -532,30 +535,17 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       </td>
     );
   }
-  function Kolory({ row, handleChangeCardElementy }) {
-    return (
-      <td>
-        <input
-          defaultValue={row.kolory}
-          onChange={(e) =>
-            handleChangeCardElementy({
-              ...row,
-              kolory: e.target.value,
-            })
-          }
-        ></input>
-      </td>
-    );
-  }
   
-  function PapierInfo({ row, handleChangeCardElementy }) {
+  function PapierInfo({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td>
         <input
           value={row.papier_info}
           onChange={(e) =>
             {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-              handleChangeCardElementy({
+              handleUpdateRowElementyTech({
               ...row,
               papier_info: e.target.value,
             })
@@ -566,7 +556,9 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     );
   }
   
-  function Uwagi({ row, handleChangeCardElementy }) {
+  function Uwagi({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td>
         <input
@@ -574,7 +566,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
           onChange={(e) =>
             {
               if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-              handleChangeCardElementy({
+                handleUpdateRowElementyTech({
               ...row,
               uwagi: e.target.value,
             })}

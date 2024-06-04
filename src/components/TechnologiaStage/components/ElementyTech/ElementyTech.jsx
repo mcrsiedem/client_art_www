@@ -35,7 +35,7 @@ function ElementyTable({}) {
   const [expand, setExpand] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
   const techContext = useContext(TechnologyContext)
-  const elementy = techContext.elementy;
+  const elementyTech = techContext.elementyTech;
 
   return (
     <div className={style.main}>
@@ -66,7 +66,7 @@ function ElementyTable({}) {
           </tr>
         </thead>
         <tbody>
-          {elementy
+          {elementyTech
             .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
               return <RowTechElement key={row.id} i={i} row={row} />;

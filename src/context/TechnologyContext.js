@@ -43,6 +43,10 @@ export const TechnologyContextProvider = ({children})=>{
         const [showErrorArkusze, setShowErrorArkusze] = useState(false);
         const [errorArkuszeInfo, setErrorArkuszeInfo] = useState([]);
     
+        // dane z najnowszej wersji zamówienia da prowównania z trzema powyższymi
+
+
+
 
 
         const updateTechnology = useCallback(()=>{
@@ -52,18 +56,6 @@ export const TechnologyContextProvider = ({children})=>{
        const handleUpdateRowElementyTech = (row) => {
         setElementyTech(
           elementyTech.map((t) => {
-            if (t.id === row.id) {
-              return row;
-            } else {
-              return t;
-            }
-          })
-        )
-      };
-
-      const handleUpdateRowElementy = (row) => {
-        setElementy(
-          elementy.map((t) => {
             if (t.id === row.id) {
               return row;
             } else {
@@ -215,7 +207,7 @@ export const TechnologyContextProvider = ({children})=>{
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
                     showErrorArkusze, setShowErrorArkusze,
                     errorArkuszeInfo, setErrorArkuszeInfo,
-                    handleUpdateRowElementyTech,handleUpdateRowElementy
+                    handleUpdateRowElementyTech
        
                 }}
             >

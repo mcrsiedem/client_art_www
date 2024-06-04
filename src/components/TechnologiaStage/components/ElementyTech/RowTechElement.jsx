@@ -18,21 +18,10 @@ import { createArkusze } from "actions/createArkusze";
 export default function RowElement({
     row,
     handleChangeCardElementy,
-    handleChangeCardFragmenty,
-    i,
     listaPapierow,
     setListaGramatur,
-    
-    setInfo,
-    // isEdit,
-    // setIsEdit,
     procesyElementow,
-    setProcesyElementow,
-
     setShowElementyProcesyInsert,
-
-    expand,setExpand,
-
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
@@ -75,92 +64,7 @@ export default function RowElement({
         console.log("Usun")
       };
       
-      function handleAddCard(card) {
-        const newElementy = elementy.slice();
-      
 
-        axios.post(IP + "elementy", {
-          zamowienie_id: 0,
-          produkt_id: 0,
-          nazwa: 0,
-          typ: 0,
-          naklad: 0,
-          strony: 0,
-          kolory: 0,
-          format_x: 0,
-          format_y: 0,
-          papier_id: 0,
-          gramatura_id: 0,
-          papier_info: 0,
-          uwagi: "element temp",
-          indeks:0
-      }).then((res) => {
-
-      newElementy.push({
-          id: Math.max(...newElementy.map((f) => f.id)) + 1,
-          zamowienie_id: card.zamowienie_id,
-          produkt_id: card.produkt_id,
-          naklad: card.naklad,
-          indeks: Math.max(...newElementy.map((f) => f.indeks)) + 1,
-          typ: card.typ,
-          nazwa: card.nazwa,
-          ilosc_stron: card.ilosc_stron,
-          format_x: card.format_x,
-          format_y: card.format_y,
-          papier_id: card.papier_id,
-          gramatura_id: card.gramatura_id,
-          papier_info: card.papier_info,
-          uwagi: card.uwagi
-        
-        });
-      
-        newElementy.sort((a, b) => a.indeks - b.indeks);
-        setElementy(newElementy);
-
-
-      })
-
-
-      
-  
-        // setElementy((prev) =>prev.map((t)=> {return t}));
-      
-        //-------------------
-        const newFragmenty = fragmenty.slice();
-       
-
-        newFragmenty.map((x) => {
-          if (x.indeks > card.indeks) {
-            return {
-              ...x,
-          
-            };
-          } else {
-            return x;
-          }
-        });
-      
- newFragmenty 
-        .filter((f) => f.element_id == card.id )
-        .forEach(x => {
-          newFragmenty.push({
-            id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-            zamowienie_id: card.zamowienie_id,
-            produkt_id: card.produkt_id,
-            ilosc_stron: card.ilosc_stron,
-            naklad: card.naklad,
-            typ: card.typ,
-            oprawa_id: x.oprawa_id,
-            element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-            indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
-          });
-
-        });
-
-
-        newFragmenty.sort((a, b) => a.indeks - b.indeks);
-        setFragmenty(newFragmenty);
-      }
       const arkusze = techContext.arkusze;
       const setArkusze = techContext.setArkusze;
       const legi = techContext.legi;
@@ -232,6 +136,95 @@ export default function RowElement({
         />
       </tr>
     );
+
+
+
+    function handleAddCard(card) {
+      const newElementy = elementy.slice();
+    
+
+      axios.post(IP + "elementy", {
+        zamowienie_id: 0,
+        produkt_id: 0,
+        nazwa: 0,
+        typ: 0,
+        naklad: 0,
+        strony: 0,
+        kolory: 0,
+        format_x: 0,
+        format_y: 0,
+        papier_id: 0,
+        gramatura_id: 0,
+        papier_info: 0,
+        uwagi: "element temp",
+        indeks:0
+    }).then((res) => {
+
+    newElementy.push({
+        id: Math.max(...newElementy.map((f) => f.id)) + 1,
+        zamowienie_id: card.zamowienie_id,
+        produkt_id: card.produkt_id,
+        naklad: card.naklad,
+        indeks: Math.max(...newElementy.map((f) => f.indeks)) + 1,
+        typ: card.typ,
+        nazwa: card.nazwa,
+        ilosc_stron: card.ilosc_stron,
+        format_x: card.format_x,
+        format_y: card.format_y,
+        papier_id: card.papier_id,
+        gramatura_id: card.gramatura_id,
+        papier_info: card.papier_info,
+        uwagi: card.uwagi
+      
+      });
+    
+      newElementy.sort((a, b) => a.indeks - b.indeks);
+      setElementy(newElementy);
+
+
+    })
+
+
+    
+
+      // setElementy((prev) =>prev.map((t)=> {return t}));
+    
+      //-------------------
+      const newFragmenty = fragmenty.slice();
+     
+
+      newFragmenty.map((x) => {
+        if (x.indeks > card.indeks) {
+          return {
+            ...x,
+        
+          };
+        } else {
+          return x;
+        }
+      });
+    
+newFragmenty 
+      .filter((f) => f.element_id == card.id )
+      .forEach(x => {
+        newFragmenty.push({
+          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+          zamowienie_id: card.zamowienie_id,
+          produkt_id: card.produkt_id,
+          ilosc_stron: card.ilosc_stron,
+          naklad: card.naklad,
+          typ: card.typ,
+          oprawa_id: x.oprawa_id,
+          element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+          indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
+        });
+
+      });
+
+
+      newFragmenty.sort((a, b) => a.indeks - b.indeks);
+      setFragmenty(newFragmenty);
+    }
   }
   
 function Procesy({ row}) {
@@ -481,7 +474,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   
   function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
     const techContext = useContext(TechnologyContext);
-    const handleUpdateRowElementy = techContext.handleUpdateRowElementy;
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
     return (
       <td>
@@ -491,7 +484,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
 
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
-                handleUpdateRowElementy({
+                handleUpdateRowElementyTech({
               ...row,
               ilosc_stron: e.target.value,
             }

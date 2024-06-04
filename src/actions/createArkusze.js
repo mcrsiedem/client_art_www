@@ -261,18 +261,18 @@ if (modulo == 6) {
 
 }
 
-const generateMaxID = (kosztyDodatkoweTemporary) => {
+const generateMaxID = (value) => {
   let maxID = null;
-  if (kosztyDodatkoweTemporary.length == 0) return (maxID = 1);
-  maxID = Math.max(...kosztyDodatkoweTemporary.map((f) => f.id)) + 1;
+  if (value.length == 0) return (maxID = 1);
+  maxID = Math.max(...value.map((f) => f.id)) + 1;
 
   return maxID;
 };
 
-const generateMaxIndeks = (kosztyDodatkoweTemporary) => {
+const generateMaxIndeks = (value) => {
   let maxIndeks = null;
-  if (kosztyDodatkoweTemporary.length == 0) return (maxIndeks = 1);
-  maxIndeks = Math.max(...kosztyDodatkoweTemporary.map((f) => f.indeks)) + 1;
+  if (value.length == 0) return (maxIndeks = 1);
+  maxIndeks = Math.max(...value.map((f) => f.indeks)) + 1;
 
   return maxIndeks;
 };

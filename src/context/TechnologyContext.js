@@ -49,6 +49,30 @@ export const TechnologyContextProvider = ({children})=>{
             getTechnology(setTechnology)
        },[])
 
+       const handleUpdateRowElementyTech = (row) => {
+        setElementyTech(
+          elementyTech.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
+
+      const handleUpdateRowElementy = (row) => {
+        setElementy(
+          elementy.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
+
 
        function handleUpdateRowLegi(card) {
          setLegi(
@@ -190,7 +214,8 @@ export const TechnologyContextProvider = ({children})=>{
                     handleUpdateRowLegi,handleUpdateRowArkusze,
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
                     showErrorArkusze, setShowErrorArkusze,
-                    errorArkuszeInfo, setErrorArkuszeInfo
+                    errorArkuszeInfo, setErrorArkuszeInfo,
+                    handleUpdateRowElementyTech,handleUpdateRowElementy
        
                 }}
             >

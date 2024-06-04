@@ -480,6 +480,9 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
   
   
   function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementy = techContext.handleUpdateRowElementy;
+
     return (
       <td>
         <input
@@ -488,7 +491,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
 
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleChangeCardFragmenty_i_Elementy_IloscStron({
+                handleUpdateRowElementy({
               ...row,
               ilosc_stron: e.target.value,
             }

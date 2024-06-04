@@ -8,27 +8,229 @@ export function createArkusze(row, arkusze, setArkusze) {
   const new_arkusze = [];
 
   const ilosc_arkuszy = row.ilosc_stron / 16;
+  const modulo = row.ilosc_stron % 16
 
-  for (let i = 0; i < ilosc_arkuszy; i++) {
+  const ark = {
+    typ_elementu: row.typ,
+    rodzaj_arkusza,
+    naklad: row.naklad,
+    element_id: row.id,
+    ilosc_stron: row.ilosc_stron,
+  };
+
+    if (modulo == 0) {
+      for (let i = 0; i < ilosc_arkuszy; i++) {
+        new_arkusze.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...ark,
+        });
+      }
+    }
+
+    if (modulo == 2) {
+      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+        new_arkusze.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...ark,
+        });
+      }
+
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 2,
+      });
+
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 16,
+      });
+}
+
+if (modulo == 4) {
+  for (let i = 0; i < ilosc_arkuszy - 2; i++) {
     new_arkusze.push({
       id: i + 1,
       indeks: i + 1,
-      typ_elementu: row.typ,
-      rodzaj_arkusza,
-      naklad: row.naklad,
-      element_id: row.id,
-      ilosc_stron: row.ilosc_stron,
+      ...ark,
     });
   }
 
+  new_arkusze.push({
+    id: generateMaxID(new_arkusze),
+    indeks: generateMaxIndeks(new_arkusze),
+    ...ark,
+    rodzaj_arkusza: 4,
+  });
+
+  new_arkusze.push({
+    id: generateMaxID(new_arkusze),
+    indeks: generateMaxIndeks(new_arkusze),
+    ...ark,
+    rodzaj_arkusza: 16,
+  });
+}
+
+
+if (modulo == 6) {
+  for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+    new_arkusze.push({
+      id: i + 1,
+      indeks: i + 1,
+      ...ark,
+    });
+  }
+
+  new_arkusze.push({
+    id: generateMaxID(new_arkusze),
+    indeks: generateMaxIndeks(new_arkusze),
+    ...ark,
+    rodzaj_arkusza: 2,
+  });
+  new_arkusze.push({
+    id: generateMaxID(new_arkusze),
+    indeks: generateMaxIndeks(new_arkusze),
+    ...ark,
+    rodzaj_arkusza: 4,
+  });
+
+  new_arkusze.push({
+    id: generateMaxID(new_arkusze),
+    indeks: generateMaxIndeks(new_arkusze),
+    ...ark,
+    rodzaj_arkusza: 16,
+  });
+}
+
+    if (modulo == 8) {
+              for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+                new_arkusze.push({
+                  id: i + 1,
+                  indeks: i + 1,
+                  ...ark,
+                });
+              }
+
+              new_arkusze.push({
+                id: generateMaxID(new_arkusze),
+                indeks: generateMaxIndeks(new_arkusze),
+                ...ark,
+                rodzaj_arkusza: 8,
+              });
+
+              new_arkusze.push({
+                id: generateMaxID(new_arkusze),
+                indeks: generateMaxIndeks(new_arkusze),
+                ...ark,
+                rodzaj_arkusza: 16,
+              });
+    }
+
+
+    if (modulo == 10) {
+      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+        new_arkusze.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...ark,
+        });
+      }
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 2,
+      });
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 8,
+      });
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 16,
+      });
+    }
+
+    if (modulo == 12) {
+      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+        new_arkusze.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...ark,
+        });
+      }
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 4,
+      });
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 8,
+      });
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 16,
+      });
+    }
+
+
+    if (modulo == 14) {
+      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+        new_arkusze.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...ark,
+        });
+      }
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 2,
+      });
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 4,
+      });
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 8,
+      });
+    
+      new_arkusze.push({
+        id: generateMaxID(new_arkusze),
+        indeks: generateMaxIndeks(new_arkusze),
+        ...ark,
+        rodzaj_arkusza: 16,
+      });
+    }
+
   setArkusze(new_arkusze);
 
-  // setLegi([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:1,typ:1}])
-  // dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
-
-  // kosztyEdit.sort((a, b) => a.indeks - b.indeks);
-  // setKosztyDodatkoweTemporary(kosztyEdit);
-  // console.log(legi[0].indeks)
 }
 
 const generateMaxID = (kosztyDodatkoweTemporary) => {

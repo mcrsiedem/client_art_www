@@ -91,11 +91,16 @@ const RowArkusze = ({ row }) => {
   const arkusze = techContext.arkusze;
   const setArkusze = techContext.setArkusze;
   const dragLegaId = techContext.dragLegaId;
+  const setDragLegaId = techContext.setDragLegaId;
   
 
 
   const setDropArkuszId = techContext.setDropArkuszId;
+  function handleDragStart(id){
+    //   e.preventDefault();
 
+    setDragLegaId(id)
+   }
   function handleDrop(id) {
     // sprawdza czy upuszczamy właściwy obiekt
     // if (sessionStorage.getItem("typ_drag") == "fragment") {
@@ -143,7 +148,7 @@ const RowArkusze = ({ row }) => {
       <DodajArkusz row={row} />
     </tr>
     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
-      return     <tr className={style.tr_legi_mini} key={l.id}>
+      return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
       <td></td>
       <td>{i+1}</td>
       <td>lega {l.indeks}</td>

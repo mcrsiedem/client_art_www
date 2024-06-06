@@ -103,11 +103,11 @@ const RowArkusze = ({ row }) => {
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>
-    {legi.filter(x=> x.arkusz_id == row.id).map( l => {
+    {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
       return     <tr className={style.tr_legi_mini} key={l.id}>
-      <td>lega</td>
       <td></td>
-      <td></td>
+      <td>{i+1}</td>
+      <td>lega {l.indeks}</td>
       <td></td>
       <td>{l.naklad}</td>
       <td>{l.ilosc_leg}</td>

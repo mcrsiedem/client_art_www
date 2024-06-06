@@ -67,6 +67,8 @@ export default function RowElement({
 
       const arkusze = techContext.arkusze;
       const setArkusze = techContext.setArkusze;
+      const legi = techContext.legi;
+      const setLegi = techContext.setLegi;
 
     return (
       <tr  key={row.id}>
@@ -76,7 +78,7 @@ export default function RowElement({
             className={style.expand}
             onClick={() => {
               // createLegi(row,legi,setLegi);
-              createArkusze(row,arkusze,setArkusze)
+              createArkusze(row,arkusze,setArkusze,legi, setLegi)
             }}
             alt="Procesy"
           />

@@ -8,14 +8,14 @@ export default   function TypLegi ({row}) {
     return (
       <td>
         <input
-          value={row.typ_legi}
+          value={row.rodzaj_legi}
           onChange={(e) =>
 
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
                 handleUpdateRowLegi({
               ...row,
-              typ_legi: e.target.value,
+              rodzaj_legi: e.target.value,
             }
             )}}
 

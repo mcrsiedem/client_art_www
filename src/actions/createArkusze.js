@@ -2,11 +2,14 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
-export function createArkusze(row, arkusze, setArkusze) {
+export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
+  // generuje arkusze i legi z ilości stron elementu
+
   const rodzaj_arkusza = 16;
+  const rodzaj_legi = 16;
 
   const new_arkusze = [];
-
+  const new_legi = []
   const ilosc_arkuszy = row.ilosc_stron / 16;
   const modulo = row.ilosc_stron % 16
 
@@ -18,6 +21,15 @@ export function createArkusze(row, arkusze, setArkusze) {
     ilosc_stron: row.ilosc_stron,
   };
 
+  const lega = {
+    typ_elementu: row.typ,
+    rodzaj_legi,
+    element_id: row.id,
+    ilosc_stron: row.ilosc_stron,
+    naklad: row.naklad,
+  };
+
+
     if (modulo == 0) {
       for (let i = 0; i < ilosc_arkuszy; i++) {
         new_arkusze.push({
@@ -25,6 +37,13 @@ export function createArkusze(row, arkusze, setArkusze) {
           indeks: i + 1,
           ...ark,
           ilosc_leg: rodzaj_arkusza / rodzaj_arkusza
+        });
+
+        new_legi.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...lega,
+          arkusz_id: i + 1
         });
       }
     }
@@ -258,8 +277,24 @@ if (modulo == 6) {
     }
 
   setArkusze(new_arkusze);
+  setLegi(new_legi)
+  // generateLegi(new_arkusze)
 
 }
+
+
+const generateLegi = (new_arkusze) => {
+  const new_legi = []
+
+  new_arkusze.forEach(ark => {
+
+    
+  });
+}
+
+
+
+
 
 const generateMaxID = (value) => {
   let maxID = null;

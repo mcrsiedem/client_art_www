@@ -90,7 +90,7 @@ const RowLegi = ({ row }) => {
     <tr className={style.tr_legi} key={row.id}>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
-      <td>{row.rodzaj_elementu}</td>
+      <td>{row.typ_elementu}</td>
       <TypLegi row={row} />
       <td>{row.naklad}</td>
       <td>{row.uwagi}</td>

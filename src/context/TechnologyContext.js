@@ -45,6 +45,8 @@ export const TechnologyContextProvider = ({children})=>{
     
         // dane z najnowszej wersji zamówienia da prowównania z trzema powyższymi
 
+        const [dragLegaId,setDragLegaId] = useState(null)
+        const [dropArkuszId,setDropArkuszId] = useState(null)
 
 
 
@@ -207,7 +209,9 @@ export const TechnologyContextProvider = ({children})=>{
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
                     showErrorArkusze, setShowErrorArkusze,
                     errorArkuszeInfo, setErrorArkuszeInfo,
-                    handleUpdateRowElementyTech
+                    handleUpdateRowElementyTech,
+                    dragLegaId,setDragLegaId,
+                    dropArkuszId,setDropArkuszId
        
                 }}
             >

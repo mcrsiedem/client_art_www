@@ -66,6 +66,7 @@ const LegiTable = () => {
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_uwagi}>Uwagi</th>
+            <th className={style.col_uwagi}>arkusz_id</th>
             {/* <th className={style.col_naklad}>element_id</th> */}
             {/* <th className={style.col_naklad}>str</th> */}
             <th className={style.col_doda3j}></th>
@@ -86,14 +87,25 @@ const LegiTable = () => {
 
 //------------------------------------------------------------
 const RowLegi = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const setDragLegaId = techContext.setDragLegaId;
+  function handleDragStart(id){
+    //   e.preventDefault();
+    //  sessionStorage.setItem("id_element_drag", id);
+    //  sessionStorage.setItem("typ_drag", "fragment");
+    // console.log("drag:"+ id)
+    setDragLegaId(id)
+   }
+
   return (
-    <tr className={style.tr_legi} key={row.id}>
+    <tr draggable  onDragStart={()=>handleDragStart(row.id)}  className={style.tr_legi} key={row.id}>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
       <td>{row.typ_elementu}</td>
       <TypLegi row={row} />
       <td>{row.naklad}</td>
       <td>{row.uwagi}</td>
+      <td>{row.arkusz_id}</td>
       {/* <td>{row.element_id}</td> */}
       {/* <td>{row.ilosc_stron}</td> */}
       <UsunLege row={row} />

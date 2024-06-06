@@ -87,10 +87,49 @@ const ArkuszeTable = () => {
 const RowArkusze = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const dragLegaId = techContext.dragLegaId;
+  
+
+
+  const setDropArkuszId = techContext.setDropArkuszId;
+
+  function handleDrop(id) {
+    // sprawdza czy upuszczamy właściwy obiekt
+    // if (sessionStorage.getItem("typ_drag") == "fragment") {
+    //   let id_drag_element = sessionStorage.getItem("id_element_drag");
+    //   let id_drop_oprawa = id;
+    //   handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+    // }
+    setLegi(
+      legi.map((t, a) => {
+      // console.log("oprawa id" +prev)
+      if (t.id === dragLegaId) {
+        return {
+          ...t,
+          arkusz_id: id
+
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+    console.log("drop: "+id)
+    setDropArkuszId(id)
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
     
-    <tr className={style.tr_legi} key={row.id}>
+    <tr              onDrop={()=>handleDrop(row.id)}
+            onDragOver={handleDragOver} className={style.tr_legi} key={row.id}>
       <SelectBoxArkusze row={row} />
       <td>{row.indeks}</td>
       <td>{row.typ_elementu}</td>

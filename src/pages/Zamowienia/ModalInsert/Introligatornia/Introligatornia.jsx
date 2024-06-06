@@ -28,24 +28,20 @@ export default function IntroligatorniaTable({
   const [showOprawaElementyStage, setShowOprawaElementyStage] =
   useState(false);
   const [expand,setExpand] =useState(true);
-   function handleDrop(id){
 
-    // sprawdza czy upuszczamy właściwy obiekt
-    if(sessionStorage.getItem("typ_drag") =='fragment'){
-       let id_drag_element = sessionStorage.getItem("id_element_drag")
-    let id_drop_oprawa = id;
-    handleChangeCardFragmentyOprawaId(id_drag_element,id_drop_oprawa)
+  
+   function handleDrop(id) {
+     // sprawdza czy upuszczamy właściwy obiekt
+     if (sessionStorage.getItem("typ_drag") == "fragment") {
+       let id_drag_element = sessionStorage.getItem("id_element_drag");
+       let id_drop_oprawa = id;
+       handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+     }
+   }
 
-    }
-   
-
-  }
-
-  function handleDragOver(e){
-     e.preventDefault()
-
-
-  }
+   function handleDragOver(e) {
+     e.preventDefault();
+   }
 
   function handleDragStart(id){
    //   e.preventDefault();

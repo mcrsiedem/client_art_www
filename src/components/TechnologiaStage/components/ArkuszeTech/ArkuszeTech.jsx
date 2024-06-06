@@ -85,7 +85,11 @@ const ArkuszeTable = () => {
 
 //------------------------------------------------------------
 const RowArkusze = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const legi = techContext.legi;
   return (
+    <>
+    
     <tr className={style.tr_legi} key={row.id}>
       <SelectBoxArkusze row={row} />
       <td>{row.indeks}</td>
@@ -99,6 +103,22 @@ const RowArkusze = ({ row }) => {
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>
+    {legi.filter(x=> x.arkusz_id == row.id).map( l => {
+      return     <tr className={style.tr_legi} key={l.id}>
+      <td></td>
+      <td>{l.indeks}</td>
+      <td>{l.typ_elementu}</td>
+      <td></td>
+      <td>{l.naklad}</td>
+      <td>{l.ilosc_leg}</td>
+      <td>{l.uwagi}</td>
+      {/* <td>{row.element_id}</td> */}
+      {/* <td>{row.ilosc_stron}</td> */}
+      <td></td>
+      <td></td>
+    </tr>
+    })}
+    </>
   );
 };
 

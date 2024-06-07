@@ -315,9 +315,11 @@ background-color: rgb(157, 157, 157);
   background-color: rgb(155, 210, 255);
 } */
 
-.tr_legi_mini td{
+.tr_legi_mini td {
   height: 1rem;
 
-  background-color: rgb(177, 220, 255);
-  /* border-radius: 10px; */
+  background-color: rgb(182, 210, 247);
+  /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
+
+  /* border-radius: 5px; */
 }

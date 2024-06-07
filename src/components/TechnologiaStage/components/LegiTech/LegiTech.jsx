@@ -7,6 +7,7 @@ import DodajLege from "./components/DodajLege";
 import iconSettings from "assets/settings.svg";
 import SelectBoxLegi from "./components/SelectBoxLegi";
 import MenuLegi from "./components/MenuLegi";
+import { _typ_elementu } from "utils/initialvalue";
 
 export default function LegiTech() {
   return (
@@ -101,7 +102,7 @@ const RowLegi = ({ row }) => {
     <tr draggable  onDragStart={()=>handleDragStart(row.id)}  className={style.tr_legi} key={row.id}>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
-      <td>{row.typ_elementu}</td>
+      <td>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}</td>
       <TypLegi row={row} />
       <td>{row.naklad}</td>
       <td>{row.uwagi}</td>

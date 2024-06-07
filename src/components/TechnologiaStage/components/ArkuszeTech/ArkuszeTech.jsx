@@ -12,6 +12,7 @@ import RodzajArkusza from "./components/RodzajArkusza";
 import DodajArkusz from "./components/DodajArkusz";
 
 import logoExpand from "assets/expand.svg"
+import TypElementu from "./components/TypElementu";
 export default function ArkuszeTech() {
   return (
     <div className={style.container}>
@@ -151,7 +152,9 @@ const RowArkusze = ({ row,showLegi }) => {
               <td></td>
       <SelectBoxArkusze row={row} />
       <td>{row.indeks}</td>
-      <td>{row.typ_elementu}</td>
+      {/* <td>{row.typ_elementu}</td> */}
+
+      <TypElementu row={row} />
       <RodzajArkusza row={row} />
       <td>{row.naklad}</td>
       <td>{row.ilosc_leg}</td>
@@ -165,7 +168,7 @@ const RowArkusze = ({ row,showLegi }) => {
       return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
       <td></td>
       <td></td>
-      <td>{i+1}</td>
+      <td  >{i+1}</td>
       <td>lega {l.indeks}</td>
       <td></td>
       <td>{l.naklad}</td>

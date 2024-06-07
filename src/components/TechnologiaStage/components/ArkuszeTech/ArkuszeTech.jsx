@@ -10,6 +10,8 @@ import MenuArkusze from "./components/MenuArkusze";
 import style from "./ArkuszeTech.module.css";
 import RodzajArkusza from "./components/RodzajArkusza";
 import DodajArkusz from "./components/DodajArkusz";
+
+import logoExpand from "assets/expand.svg"
 export default function ArkuszeTech() {
   return (
     <div className={style.container}>
@@ -47,6 +49,7 @@ const ArkuszeTable = () => {
   const techContext = useContext(TechnologyContext);
   const arkusze = techContext.arkusze;
   const [showMenu, setShowMenu] = useState(false);
+  const [showLegi, setShowLegi] = useState(false);
 
   return (
     <div className={style.table_legi}>
@@ -54,6 +57,16 @@ const ArkuszeTable = () => {
       <table className={style.table2} >
         <thead>
           <tr>
+          <th className={style.expand}>
+                <img
+                  className={style.icon}
+                  src={logoExpand}
+                  onClick={() => {
+                    setShowLegi(!showLegi);
+                  }}
+                  alt="Procesy"
+                />
+              </th>
             <th className={style.th_checkbox}>
               {" "}
               <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
@@ -75,7 +88,7 @@ const ArkuszeTable = () => {
           {arkusze
             // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row} />;
+              return <RowArkusze key={row.indeks} i={i} row={row} showLegi={showLegi} />;
             })}
         </tbody>
       </table>
@@ -84,7 +97,7 @@ const ArkuszeTable = () => {
 };
 
 //------------------------------------------------------------
-const RowArkusze = ({ row }) => {
+const RowArkusze = ({ row,showLegi }) => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
@@ -135,6 +148,7 @@ const RowArkusze = ({ row }) => {
     
     <tr              onDrop={()=>handleDrop(row.id)}
             onDragOver={handleDragOver} className={style.tr_legi} key={row.id}>
+              <td></td>
       <SelectBoxArkusze row={row} />
       <td>{row.indeks}</td>
       <td>{row.typ_elementu}</td>
@@ -147,8 +161,9 @@ const RowArkusze = ({ row }) => {
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>
-    {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
+    {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
       return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
+      <td></td>
       <td></td>
       <td>{i+1}</td>
       <td>lega {l.indeks}</td>
@@ -161,7 +176,8 @@ const RowArkusze = ({ row }) => {
       <td></td>
       <td></td>
     </tr>
-    })}
+    })}</>)}
+
     </>
   );
 };

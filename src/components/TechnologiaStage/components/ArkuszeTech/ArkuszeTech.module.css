@@ -161,21 +161,32 @@
   width: 300px;
 }
 
-.table2 th,
-.table2 tr:nth-child(even) {
-  /* background-image: linear-gradient(180deg,rgb(232, 245, 234) 20%, rgb(191, 209, 194) 100%); */
-  background-color: rgb(216, 216, 216);
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
+.table2 th
+{
+   background-color: rgb(216, 216, 216);
+   color: rgb(61, 61, 61);
+   font-size: 0.9rem;
+   outline-style: none;
+ 
+ }
 
-}
+ .table2 tr:nth-child(even) {
+   background-color:  rgb(238, 238, 238);
+   color: rgb(61, 61, 61);
+   font-size: 0.9rem;
+   outline-style: none;
+   border-bottom: 1px solid rgb(192, 191, 191)  ;
+ 
+ }
 
-.table2 tr:nth-child(odd) {
-  background-color: rgb(238, 238, 238);
-  outline-style: none;
-  font-size: 1rem;
-}
+
+ 
+ .table2 tr:nth-child(odd) {
+   background-color: rgb(238, 238, 238);
+   outline-style: none;
+   font-size: 1rem;
+   border-bottom: 1px solid rgb(192, 191, 191) ;
+ }
 
 .table2 .select {
   background-color: transparent;
@@ -238,10 +249,7 @@ font-size: 0.9rem;
   
 }
 
-.tr_legi_mini{
-  
-  height: 1rem;
-}
+
 
 .expand {
   height: 15px;
@@ -299,4 +307,17 @@ background-color: rgb(157, 157, 157);
 
 .td_checkbox{
   width: 20px;
+}
+
+/* .tr_legi_mini{
+  
+  height: 1rem;
+  background-color: rgb(155, 210, 255);
+} */
+
+.tr_legi_mini td{
+  height: 1rem;
+
+  background-color: rgb(177, 220, 255);
+  /* border-radius: 10px; */
 }

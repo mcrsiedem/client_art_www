@@ -48,6 +48,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [dragLegaId,setDragLegaId] = useState(null)
         const [dropArkuszId,setDropArkuszId] = useState(null)
 
+        const [wykonania, setWykonania] = useState([]);
 
 
 

@@ -13,16 +13,16 @@ import DodajArkusz from "./components/DodajArkusz";
 
 import logoExpand from "assets/expand.svg"
 import TypElementu from "./components/TypElementu";
-export default function ArkuszeTech() {
+export default function WykonaniaTech() {
   return (
     <div className={style.container}>
-      <ArkuszeHeader />
-      <ArkuszeTable />
+      <WykonaniaTechHeader />
+      <WykonaniaTechTable />
     </div>
   );
 }
 
-const ArkuszeHeader = () => {
+const WykonaniaTechHeader = () => {
   const techContext = useContext(TechnologyContext);
   const showErrorArkusze = techContext.showErrorArkusze;
   const errorArkuszeInfo = techContext.errorArkuszeInfo;
@@ -33,7 +33,7 @@ const ArkuszeHeader = () => {
         <div className={style.kropka}></div>
         <p className={style.naglowek}>
           {" "}
-          Arkusze - {errorArkuszeInfo[0]} {errorArkuszeInfo[1]}{" "}
+          Wykonania - {errorArkuszeInfo[0]} {errorArkuszeInfo[1]}{" "}
         </p>
       </div>
     );
@@ -46,7 +46,7 @@ const ArkuszeHeader = () => {
   );
 };
 
-const ArkuszeTable = () => {
+const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);
   const arkusze = techContext.arkusze;
   const [showMenu, setShowMenu] = useState(false);

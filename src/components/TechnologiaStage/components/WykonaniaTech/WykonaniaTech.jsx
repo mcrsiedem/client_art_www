@@ -72,7 +72,7 @@ const WykonaniaTechTable = () => {
               <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
             </th>
             <th className={style.col1}>#</th>
-            <th className={style.col_typ}>Typ</th>
+            <th className={style.col_typ}>Proces</th>
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_uwagi}>Ilość leg</th>
@@ -150,7 +150,7 @@ const RowGrupa = ({ row,showLegi }) => {
       {/* <SelectBoxArkusze row={row} /> */}
       <td>{row.indeks}</td>
 
-      <td></td>
+      <td>{row.nazwa}</td>
       <td></td>
       {/* <TypElementu row={row} />
       <RodzajArkusza row={row} /> */}

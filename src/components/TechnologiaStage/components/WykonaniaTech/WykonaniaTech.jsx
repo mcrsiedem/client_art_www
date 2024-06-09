@@ -48,7 +48,7 @@ const WykonaniaTechHeader = () => {
 
 const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);
-  const arkusze = techContext.arkusze;
+  const grupy = techContext.grupy;
   const [showMenu, setShowMenu] = useState(false);
   const [showLegi, setShowLegi] = useState(false);
 
@@ -69,7 +69,6 @@ const WykonaniaTechTable = () => {
                 />
               </th>
             <th className={style.th_checkbox}>
-              {" "}
               <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
             </th>
             <th className={style.col1}>#</th>
@@ -78,18 +77,15 @@ const WykonaniaTechTable = () => {
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_uwagi}>Ilość leg</th>
             <th className={style.col_uwagi}>Uwagi</th>
-    
-            {/* <th className={style.col_naklad}>element_id</th> */}
-            {/* <th className={style.col_naklad}>str</th> */}
-            <th className={style.col_doda3j}></th>
+              <th className={style.col_doda3j}></th>
             <th className={style.col_doda3j}></th>
           </tr>
         </thead>
         <tbody onClick={()=>{setShowMenu(false)}}>
-          {arkusze
+          {grupy
             // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row} showLegi={showLegi} />;
+              return <RowGrupa key={row.indeks} i={i} row={row} showLegi={showLegi} />;
             })}
         </tbody>
       </table>
@@ -98,7 +94,7 @@ const WykonaniaTechTable = () => {
 };
 
 //------------------------------------------------------------
-const RowArkusze = ({ row,showLegi }) => {
+const RowGrupa = ({ row,showLegi }) => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
@@ -149,18 +145,19 @@ const RowArkusze = ({ row,showLegi }) => {
     
     <tr              onDrop={()=>handleDrop(row.id)}
             onDragOver={handleDragOver} className={style.tr_legi} key={row.id}>
+      <td></td>
               <td></td>
-      <SelectBoxArkusze row={row} />
+      {/* <SelectBoxArkusze row={row} /> */}
       <td>{row.indeks}</td>
-      {/* <td>{row.typ_elementu}</td> */}
 
-      <TypElementu row={row} />
-      <RodzajArkusza row={row} />
+      <td></td>
+      <td></td>
+      {/* <TypElementu row={row} />
+      <RodzajArkusza row={row} /> */}
       <td>{row.naklad}</td>
       <td>{row.ilosc_leg}</td>
       <td>{row.uwagi}</td>
-      {/* <td>{row.element_id}</td> */}
-      {/* <td>{row.ilosc_stron}</td> */}
+
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>

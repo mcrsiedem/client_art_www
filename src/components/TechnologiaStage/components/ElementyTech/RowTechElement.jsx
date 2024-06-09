@@ -15,6 +15,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { addArkusze } from "actions/addArkusze";
 import { createLegi } from "actions/createLegi";
 import { createArkusze } from "actions/createArkusze";
+import { createGrupaWykonan } from "actions/createGrupaWykonan";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -69,6 +70,9 @@ export default function RowElement({
       const setArkusze = techContext.setArkusze;
       const legi = techContext.legi;
       const setLegi = techContext.setLegi;
+      const procesy = techContext.procesyElementow;
+      const grupy = techContext.grupy;
+      const setGrupy = techContext.setGrupy;
 
     return (
       <tr  key={row.id}>
@@ -79,6 +83,7 @@ export default function RowElement({
             onClick={() => {
               // createLegi(row,legi,setLegi);
               createArkusze(row,arkusze,setArkusze,legi, setLegi)
+              createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
             }}
             alt="Procesy"
           />

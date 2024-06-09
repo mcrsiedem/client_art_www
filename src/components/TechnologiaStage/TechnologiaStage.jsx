@@ -8,6 +8,7 @@ import ProduktyTech from "./components/ProduktyTech/ProduktyTech";
 import ElementyTech from "./components/ElementyTech/ElementyTech";
 import LegiTech from "./components/LegiTech/LegiTech";
 import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
+import WykonaniaTech from "./components/WykonaniaTech/WykonaniaTech";
 
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
@@ -32,6 +33,7 @@ export default function TechnologiaStage() {
                 <ArkuszeTech />
                 <LegiTech />
               </div>
+              <WykonaniaTech/>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import style from "../ArkuszeTech.module.css"
+import style from "../WykonaniaTech.module.css"
 import iconTrash from "assets/trash2.svg"
 export default function UsunArkusz({ row }) {
     const techContext = useContext(TechnologyContext)

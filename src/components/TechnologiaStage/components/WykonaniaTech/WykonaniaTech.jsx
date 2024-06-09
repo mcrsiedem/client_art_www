@@ -41,7 +41,7 @@ const WykonaniaTechHeader = () => {
   return (
     <div className={style.header}>
       <div className={style.kropka}></div>
-      <p className={style.naglowek}> Arkusze </p>
+      <p className={style.naglowek}> Wykonania </p>
     </div>
   );
 };

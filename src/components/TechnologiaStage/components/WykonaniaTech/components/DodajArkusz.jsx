@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import style from "../ArkuszeTech.module.css";
+import style from "../WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
 export default function DodajArkusz({ row }) {
   const techContext = useContext(TechnologyContext);

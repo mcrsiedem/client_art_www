@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import style from "../ArkuszeTech.module.css";
+import style from "../WykonaniaTech.module.css";
 export default function SelectBoxArkusze({row}) {
 
     const techContext = useContext(TechnologyContext)

@@ -121,6 +121,10 @@ export default function RowElement({
 
 
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
+        <NettoX row={row}/>
+        <NettoY row={row}/>
+        <Strony row={row}/>
+        <Strony row={row}/>
         <Uwagi row={row} />
 
         {/* <td></td> */}

@@ -5,9 +5,10 @@ import { IP } from "../utils/Host";
 export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
   // generuje arkusze i legi z ilości stron elementu
 
-  const rodzaj_arkusza = row.lega * row.ilosc_leg;
+
+  const ilosc_leg_na_arkuszu = row.ilosc_leg
   const rodzaj_legi = row.lega;
-  
+  const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu;
 
   const new_arkusze = [];
   const new_legi = []

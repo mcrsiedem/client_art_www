@@ -33,7 +33,10 @@ export default function TechnologiaStage() {
                 <ArkuszeTech />
                 <LegiTech />
               </div>
-              <WykonaniaTech/>
+              <div className={style.container_legi_arkusze}>
+              <WykonaniaTech/>    <WykonaniaTech/>
+              </div>
+          
         </div>
       </div>
     );

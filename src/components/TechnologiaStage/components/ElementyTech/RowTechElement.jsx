@@ -121,10 +121,10 @@ export default function RowElement({
 
 
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
-        <NettoX row={row}/>
-        <NettoY row={row}/>
-        <Strony row={row}/>
-        <Strony row={row}/>
+        <ArkuszSzerokosc row={row}/>
+        <ArkuszWysokosc row={row}/>
+        <Lega row={row}/>
+        <IloscLeg row={row}/>
         <Uwagi row={row} />
 
         {/* <td></td> */}
@@ -539,6 +539,96 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
               handleUpdateRowElementyTech({
                 ...row,
                 format_y: e.target.value,
+              });
+            }
+          }}
+        ></input>
+      </td>
+    );
+  }
+
+  function Lega({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+
+    return (
+      <td>
+        <input
+          value={row.lega}
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowElementyTech({
+              ...row,
+              lega: e.target.value,
+            }
+            )}}
+
+          }
+        ></input>
+      </td>
+    );
+  }
+  function IloscLeg({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+
+    return (
+      <td>
+        <input
+          value={row.ilosc_leg}
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowElementyTech({
+              ...row,
+              ilosc_leg: e.target.value,
+            }
+            )}}
+
+          }
+        ></input>
+      </td>
+    );
+  }
+  function ArkuszSzerokosc({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+    return (
+      <td className={style.col_format}>
+        <input
+          value={row.arkusz_szerokosc}
+          onChange={(e) => {
+            const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+            if (e.target.value === "" || re.test(e.target.value)) {
+              handleUpdateRowElementyTech({
+                ...row,
+                arkusz_szerokosc: e.target.value,
+              });
+            }
+          }}
+        ></input>
+      </td>
+    );
+  }
+
+  function ArkuszWysokosc({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+    return (
+      <td className={style.col_format}>
+        <input
+          value={row.arkusz_wysokosc}
+          onChange={(e) => {
+            const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+            if (e.target.value === "" || re.test(e.target.value)) {
+              handleUpdateRowElementyTech({
+                ...row,
+                arkusz_wysokosc: e.target.value,
               });
             }
           }}

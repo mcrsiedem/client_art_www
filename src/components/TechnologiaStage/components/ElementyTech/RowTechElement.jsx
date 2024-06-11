@@ -555,7 +555,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
       <td>
         <input
         className={style.td_lega_falc}
-        placeholder="0"
+        placeholder="..."
           value={row.lega}
           onChange={(e) =>
 
@@ -581,7 +581,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
         <input
         className={style.td_lega_falc}
           value={row.ilosc_leg}
-           placeholder="0"
+           placeholder="..."
           onChange={(e) =>
 
             {
@@ -605,7 +605,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
         <input  
           value={row.arkusz_szerokosc}
           className={style.td_lega_falc}
-           placeholder="0"
+           placeholder="..."
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -629,7 +629,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
         <input
           value={row.arkusz_wysokosc}
           className={style.td_lega_falc}
-           placeholder="0"
+           placeholder="..."
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 

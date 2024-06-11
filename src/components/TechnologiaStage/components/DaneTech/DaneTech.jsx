@@ -19,7 +19,7 @@ export default function DaneTech({
       <div id="Dane" className={style.dane}>
         <Row style={style.row1}>
             <Firma />
-            <Klient showAddClientStage={showAddClientStage} />
+            <Klient />
             <DataPrzyjecia />
             <DataMeterialow />
             <DataSpedycji />
@@ -65,8 +65,8 @@ function Row({children,style}) {
 function Firma() {
 const contextTech = useContext(TechnologyContext);
 const contextApp = useContext(AppContext);
-const dane = contextTech.dane
-const setDane = contextTech.setDane
+const daneTech = contextTech.daneTech
+const setDaneTech = contextTech.setDaneTech
 
 
   return (
@@ -74,10 +74,10 @@ const setDane = contextTech.setDane
       <label className={style.label}> Firma </label>
       <select
         className={style.firma}
-        value={dane?.firma_id}
+        value={daneTech?.firma_id}
 
         onChange={(event) => {
-          setDane({...dane, firma_id: event.target.value});
+          setDaneTech({...daneTech, firma_id: event.target.value});
           // setSaveButtonDisabled(false)
         }}
       >
@@ -91,74 +91,50 @@ const setDane = contextTech.setDane
   );
 }
 
-function Klient({showAddClientStage }) {
-
-const contextModalInsert = useContext(ModalInsertContext);
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-
-
-const contextTech = useContext(TechnologyContext);
-const contextApp = useContext(AppContext);
-const dane = contextTech.dane
-const setDane = contextTech.setDane
-
-
+function Klient() {
+  const contextTech = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const daneTech = contextTech.dane;
 
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
-      <select
-        className={style.klient}
-        value={dane?.klient_id}
-        onChange={(event) => {
-          // setDane({...dane, klient_id: event.target.value});
-        //  setSaveButtonDisabled(false);
-        }}
-      >
-
-
-        
-
+      <select className={style.klient} value={daneTech?.klient_id}>
         {contextApp.clients
-        .filter(x=> x.id == dane?.klient_id)
-        .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.firma}
-          </option>
-        ))}
+          .filter((x) => x.id == daneTech?.klient_id)
+          .map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.firma}
+            </option>
+          ))}
       </select>
-      {/* <img
-         className={style.dodaj_klienta}
-          src={addIcon2}
-          onClick={() => {
-            showAddClientStage(true)
-          }}
-          alt="Procesy"
-        /> */}
     </div>
   );
 }
 
 
-function DataMeterialow(){
-
+function DataMeterialow() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-    return(
-        <div className={style.col}>
-        <label className={style.label}> Data materiałów </label>
-        <input className={style.data} type="date"
-             value={daneZamowienia.data_materialow}
-             onChange={(event) => {
-              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value});
-              setSaveButtonDisabled(false)
-             }}></input>
-      </div>
-    );
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Data materiałów </label>
+      <input
+        className={style.data}
+        type="date"
+        value={daneZamowienia.data_materialow}
+        onChange={(event) => {
+          setDaneZamowienia({
+            ...daneZamowienia,
+            data_materialow: event.target.value,
+          });
+          setSaveButtonDisabled(false);
+        }}
+      ></input>
+    </div>
+  );
 }
 
 function DataPrzyjecia(){

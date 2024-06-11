@@ -139,6 +139,7 @@
 .col_format {
   min-width: 50px;
   width: 50px;
+  text-align: center;
 }
 
 .col_button {
@@ -151,6 +152,22 @@
 .col_papier {
   width: 150px;
 }
+.col_arkusze {
+  width: 80px;
+  text-align: center;
+}
+.col_lega_falc {
+  
+  width: 120px;
+  text-align: center;
+}
+
+.td_lega_falc {
+
+  text-align: center;
+}
+
+
 
 .col_papierInfo {
   width: 150px;

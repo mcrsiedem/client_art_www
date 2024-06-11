@@ -554,6 +554,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
+        className={style.td_lega_falc}
           value={row.lega}
           onChange={(e) =>
 
@@ -577,6 +578,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     return (
       <td>
         <input
+        className={style.td_lega_falc}
           value={row.ilosc_leg}
           onChange={(e) =>
 
@@ -598,7 +600,7 @@ function Usun({ row, handleChangeCardElementy,handleRemoveItem }) {
     const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
     return (
       <td className={style.col_format}>
-        <input
+        <input  
           value={row.arkusz_szerokosc}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;

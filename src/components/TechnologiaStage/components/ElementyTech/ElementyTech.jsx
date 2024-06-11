@@ -57,11 +57,11 @@ function ElementyTable({}) {
             <th className={style.col_gramatura}>g/m2</th>
             <th className={style.col_papierInfo}>Papier info</th>
             <th className={style.col_uszlachetnianie}>Procesy</th>
-            <th className={style.col_uszlachetnianie} colSpan="2">Arkusz</th>
+            <th className={style.col_arkusze} colSpan="2">Arkusz</th>
             {/* <th className={style.col_uszlachetnianie}>Uszlachetnianie tył</th> */}
 
-            <th className={style.col_kolory}>Lega do falcu</th>
-            <th className={style.col_kolory}>Ilość leg na ark </th>
+            <th className={style.col_lega_falc}>Lega</th>
+            <th className={style.col_lega_falc}>Ilość leg na ark </th>
 
             <th className={style.col_kolory}>Uwagi </th>
             {/* <th className={style.col_wersja}>Oprawa nr</th> */}

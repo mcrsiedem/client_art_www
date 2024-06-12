@@ -292,13 +292,32 @@ if (modulo == 6) {
 
 
     fragmentyTech.forEach((x,i)=>{
-      new_legiFragmenty.push({
-        id: i + 1,
-        indeks: i + 1,
-        ...legaFragment,
-        lega_id: i + 1,
-        naklad: x.naklad
-      });
+
+      // legi.
+      // filter(f=> f.element_id == x.element_id).
+      // forEach(l=>{
+
+      //             new_legiFragmenty.push({
+      //       id: i + 1,
+      //       indeks: i + 1,
+      //       ...legaFragment,
+      //       lega_id: i + 1,
+      //       naklad: x.naklad
+      //     });
+      // })
+
+
+
+
+                  new_legiFragmenty.push({
+            id: i + 1,
+            indeks: i + 1,
+            ...legaFragment,
+            lega_id: i + 1,
+            naklad: x.naklad
+          });
+
+console.log("legi",legi )
 
     })
 

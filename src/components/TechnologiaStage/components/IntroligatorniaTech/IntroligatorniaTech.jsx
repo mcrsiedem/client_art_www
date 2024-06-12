@@ -77,12 +77,14 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
   const techContext = useContext(TechnologyContext);
   const oprawaTech = techContext.oprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
+  const legiFragmenty = techContext.legiFragmenty;
 
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
+  const [showLegiFragmenty, setShowLegiFragmenty] = useState(true);
 
   return (  < div className={style.main}>
   <table className={style.table}>
@@ -185,6 +187,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                 .filter((el) => el.oprawa_id === row.id)
                 .map((row) => {
                   return (
+                    <>
                     <tr draggable  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
       
                       <td></td>
@@ -212,6 +215,23 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                       
                  
                     </tr>
+                    {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.element_id == row.element_id).map( (l,i) => {
+                      return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
+                      <td></td>
+                      <td></td>
+                      <td  >{i+1}</td>
+                      <td>lega {l.indeks}</td>
+                      <td></td>
+                      <td>{l.naklad}</td>
+                      <td>{l.ilosc_leg}</td>
+                      <td>{l.uwagi}</td>
+                      {/* <td>{row.element_id}</td> */}
+                      {/* <td>{row.ilosc_stron}</td> */}
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    })}</>)}
+                      </>
                   );
                 })
             ) : (
@@ -435,12 +455,16 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
 }
 
 function Typ({ row }) {
+  const techContext = useContext(TechnologyContext);
+
+
   return (
     <td>
       <select
         className={style.select}
         value={row.typ}
         disabled
+        onClick={()=>{setLegiFragmenty(!legiFragmenty)}}
       >
         {}
         {_typ_elementu.map((option) => (

@@ -75,6 +75,11 @@ export default function RowElement({
       const procesy = techContext.procesyElementow;
       const grupy = techContext.grupy;
       const setGrupy = techContext.setGrupy;
+      const oprawaTech = techContext.oprawaTech;
+      const setOprawaTech = techContext.setOprawaTech;
+      const fragmentyTech = techContext.fragmentyTech;
+      const setFragmentyTech = techContext.setFragmentyTech;
+      
 
     return (
       <tr  key={row.id}>
@@ -84,7 +89,7 @@ export default function RowElement({
             className={style.expand}
             onClick={() => {
               // createLegi(row,legi,setLegi);
-              createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty)
+              createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
               createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
             }}
             alt="Procesy"

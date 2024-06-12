@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
-export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragmenty,setLegiFragmenty) {
+export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech) {
   // generuje arkusze i legi z ilości stron elementu
 
 
@@ -57,12 +57,7 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
           ...lega,
           arkusz_id: i + 1
         });
-        new_legiFragmenty.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...legaFragment,
-          lega_id: i + 1
-        });
+
       }
     }
 
@@ -293,6 +288,18 @@ if (modulo == 6) {
         ilosc_leg: rodzaj_arkusza/ 16
       });
     }
+
+
+    // new_legiFragmenty.push({
+    //   id: i + 1,
+    //   indeks: i + 1,
+    //   ...legaFragment,
+    //   lega_id: i + 1
+    // });
+
+    fragmentyTech.forEach(x=>{})
+
+    // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
 
   setArkusze(new_arkusze);
   setLegi(new_legi)

@@ -48,6 +48,7 @@ const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
   const [showMenuLegi, setShowMenuLegi] = useState(false);
+  const [showLegiFragmenty, setShowLegiFragmenty] = useState(true);
 
   return (
     <div className={style.table_legi}>
@@ -78,7 +79,7 @@ const LegiTable = () => {
           {legi
             // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
-              return <RowLegi key={row.indeks} i={i} row={row} />;
+              return <RowLegi key={row.indeks} i={i} row={row} showLegiFragmenty={showLegiFragmenty} setShowLegiFragmenty={setShowLegiFragmenty} />;
             })}
         </tbody>
       </table>
@@ -87,9 +88,10 @@ const LegiTable = () => {
 };
 
 //------------------------------------------------------------
-const RowLegi = ({ row }) => {
+const RowLegi = ({ row,showLegiFragmenty,setShowLegiFragmenty }) => {
   const techContext = useContext(TechnologyContext);
   const setDragLegaId = techContext.setDragLegaId;
+  const legiFragmenty = techContext.legiFragmenty;
   function handleDragStart(id){
     //   e.preventDefault();
     //  sessionStorage.setItem("id_element_drag", id);
@@ -99,6 +101,10 @@ const RowLegi = ({ row }) => {
    }
 
   return (
+
+    <>
+    
+  
     <tr draggable  onDragStart={()=>handleDragStart(row.id)}  className={style.tr_legi} key={row.id}>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
@@ -112,6 +118,25 @@ const RowLegi = ({ row }) => {
       <UsunLege row={row} />
       <DodajLege row={row} />
     </tr>
+
+{showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
+  return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
+  <td></td>
+  <td></td>
+  <td  >{i+1}</td>
+  <td>lega {l.indeks}</td>
+  <td></td>
+  <td>{l.naklad}</td>
+  <td>{l.ilosc_leg}</td>
+  <td>{l.uwagi}</td>
+  {/* <td>{row.element_id}</td> */}
+  {/* <td>{row.ilosc_stron}</td> */}
+  <td></td>
+  <td></td>
+</tr>
+})}</>)}
+  </>
+    
   );
 };
 

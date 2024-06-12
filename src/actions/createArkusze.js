@@ -61,7 +61,7 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
           id: i + 1,
           indeks: i + 1,
           ...legaFragment,
-          lega: i + 1
+          lega_id: i + 1
         });
       }
     }

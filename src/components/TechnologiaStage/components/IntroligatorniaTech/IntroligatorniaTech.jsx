@@ -456,7 +456,8 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
 
 function Typ({ row }) {
   const techContext = useContext(TechnologyContext);
-
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
 
   return (
     <td>

@@ -37,7 +37,6 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
   const legaFragment = {
 
     wersja:"fr",
-    naklad: row.naklad,
     element_id: row.id
   };
 
@@ -290,14 +289,18 @@ if (modulo == 6) {
     }
 
 
-    // new_legiFragmenty.push({
-    //   id: i + 1,
-    //   indeks: i + 1,
-    //   ...legaFragment,
-    //   lega_id: i + 1
-    // });
 
-    fragmentyTech.forEach(x=>{})
+
+    fragmentyTech.forEach((x,i)=>{
+      new_legiFragmenty.push({
+        id: i + 1,
+        indeks: i + 1,
+        ...legaFragment,
+        lega_id: i + 1,
+        naklad: x.naklad
+      });
+
+    })
 
     // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
 

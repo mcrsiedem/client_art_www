@@ -15,8 +15,9 @@ import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
+import { TechnologyContext } from "context/TechnologyContext";
 
-export default function IntroligatorniaTable({
+export default function IntroligatorniaTech({
   handleChangeCardProdukty,
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
@@ -73,6 +74,10 @@ export default function IntroligatorniaTable({
 
 function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   const contextModalInsert = useContext(ModalInsertContext);
+  const techContext = useContext(TechnologyContext);
+  const oprawaTech = techContext.oprawaTech;
+  const fragmentyTech = techContext.fragmentyTech;
+
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
@@ -109,7 +114,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
       </tr>
     </thead>
     <tbody>
-      {oprawa.map((row) => {
+      {oprawaTech.map((row) => {
         return (
           <>
             <tr 
@@ -176,7 +181,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
               <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
             </tr>
             {expand ? (
-              fragmenty
+              fragmentyTech
                 .filter((el) => el.oprawa_id === row.id)
                 .map((row) => {
                   return (

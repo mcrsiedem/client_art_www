@@ -9,6 +9,7 @@ import ElementyTech from "./components/ElementyTech/ElementyTech";
 import LegiTech from "./components/LegiTech/LegiTech";
 import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
 import WykonaniaTech from "./components/WykonaniaTech/WykonaniaTech";
+import IntroligatorniaTech from "./components/IntroligatorniaTech/IntroligatorniaTech";
 
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
@@ -34,9 +35,10 @@ export default function TechnologiaStage() {
                 <LegiTech />
               </div>
               <div className={style.container_legi_arkusze}>
-              <WykonaniaTech/>    <WykonaniaTech/>
+              <WykonaniaTech/>    
+              <WykonaniaTech/>    
               </div>
-          
+              <IntroligatorniaTech/>
         </div>
       </div>
     );

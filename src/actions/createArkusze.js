@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
-export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
+export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragmenty,setLegiFragmenty) {
   // generuje arkusze i legi z ilości stron elementu
 
 
@@ -14,6 +14,9 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
   const new_legi = []
   const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
   const modulo = row.ilosc_stron % rodzaj_arkusza
+
+  const new_legiFragmenty =[];
+
 
   const ark = {
     typ_elementu: row.typ,
@@ -31,6 +34,13 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
     naklad: row.naklad,
   };
 
+  const legaFragment = {
+
+    wersja:"fr",
+    naklad: row.naklad,
+    element_id: row.id
+  };
+
 
     if (modulo == 0) {
       for (let i = 0; i < ilosc_arkuszy; i++) {
@@ -46,6 +56,12 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi) {
           indeks: i + 1,
           ...lega,
           arkusz_id: i + 1
+        });
+        new_legiFragmenty.push({
+          id: i + 1,
+          indeks: i + 1,
+          ...legaFragment,
+          lega: i + 1
         });
       }
     }
@@ -280,6 +296,7 @@ if (modulo == 6) {
 
   setArkusze(new_arkusze);
   setLegi(new_legi)
+  setLegiFragmenty(new_legiFragmenty)
   // generateLegi(new_arkusze)
 
 }

@@ -36,6 +36,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
 
         const [legi, setLegi] = useState([]);
+        const [legiFragmenty, setLegiFragmenty] = useState([]);
+
         const [showErrorLegi, setShowErrorLegi] = useState(false);
         const [errorLegiInfo, setErrorLegiInfo] = useState([]);
         // const [legi, setLegi] = useState([{indeks:1,typ:1},{indeks:2,typ:1},{indeks:3,typ:1}]);
@@ -208,6 +210,7 @@ export const TechnologyContextProvider = ({children})=>{
                     procesyElementowTech, setProcesyElementowTech,
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,
+                    legiFragmenty, setLegiFragmenty,
                     arkusze,setArkusze,
                     handleUpdateRowLegi,handleUpdateRowArkusze,
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,

@@ -36,9 +36,9 @@ export default function TechnologiaStage() {
               </div>
               <div className={style.container_legi_arkusze}>
               <WykonaniaTech/>    
-              <WykonaniaTech/>    
-              </div>
               <IntroligatorniaTech/>
+              </div>
+              
         </div>
       </div>
     );

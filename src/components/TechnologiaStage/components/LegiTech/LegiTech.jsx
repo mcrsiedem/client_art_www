@@ -8,6 +8,7 @@ import iconSettings from "assets/settings.svg";
 import SelectBoxLegi from "./components/SelectBoxLegi";
 import MenuLegi from "./components/MenuLegi";
 import { _typ_elementu } from "utils/initialvalue";
+import logoExpand from "assets/expand.svg"
 
 export default function LegiTech() {
   return (
@@ -56,6 +57,16 @@ const LegiTable = () => {
       <table className={style.table2}>
         <thead>
           <tr>
+          <th className={style.expand}>
+                <img
+                  className={style.icon}
+                  src={logoExpand}
+                  onClick={() => {
+                    setShowLegiFragmenty(!showLegiFragmenty);
+                  }}
+                  alt="Procesy"
+                />
+              </th>
             <th className={style.th_checkbox}>
               {" "}
               <MenuBtn
@@ -106,6 +117,7 @@ const RowLegi = ({ row,showLegiFragmenty,setShowLegiFragmenty }) => {
     
   
     <tr draggable  onDragStart={()=>handleDragStart(row.id)}  className={style.tr_legi} key={row.id}>
+      <td></td>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
       <td>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}</td>

@@ -53,7 +53,7 @@ export default function IntroligatorniaTech({
   
   return (
     <div className={style.container}>
-      <div className={style.oprawa}>
+   
       <Header  />
       <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver}  handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
@@ -65,7 +65,7 @@ export default function IntroligatorniaTech({
 
         />
       )}
-</div>
+
      
 
     </div>
@@ -86,7 +86,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
   const setOprawa = contextModalInsert.setOprawa;
   const [showLegiFragmenty, setShowLegiFragmenty] = useState(true);
 
-  return (  < div className={style.main}>
+  return (  < div className={style.table_legi}>
   <table className={style.table}>
     <thead>
       <tr>
@@ -284,7 +284,7 @@ const contextApp = useContext(AppContext);
     <td className={style.select}>
 
       <select
-        className={style.firma}
+        className={style.input_oprawa}
         defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
@@ -462,7 +462,7 @@ function Typ({ row }) {
   return (
     <td>
       <select
-        className={style.select}
+        className={style.input_oprawa}
         value={row.typ}
         disabled
         onClick={()=>{setLegiFragmenty(!legiFragmenty)}}
@@ -539,6 +539,7 @@ function  WersjaOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
+      
         value={row.wersja}
         onChange={(e) =>
           {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {

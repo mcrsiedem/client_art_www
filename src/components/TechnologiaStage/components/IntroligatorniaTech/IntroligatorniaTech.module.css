@@ -1,42 +1,69 @@
 .container {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  margin-bottom: 15px;
-}
+  background-color: rgb(214, 214, 214);
+  margin-right: 15px;
 
-
-.oprawa {
-  border-radius: 10px;
-  width: calc(100vw - 40px);
-  height: calc(100% - 20px);
-  background-color: rgb(253, 227, 188);
-  /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
-  /* background-color: rgb(178, 196, 214); */
-  box-shadow: 3px 3px 3px rgb(159, 159, 159);
-}
-
-.header{
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
-  gap:20px;
+  margin-top: 15px;
+  
+}
+
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
+  background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%);
+
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   height: 1.6rem;
   color: #fff;
   font-size: 0.9rem;
   padding-left: 20px;
 
+}
+.headerAlert {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
+  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
 
+  background-image: linear-gradient(rgb(174, 5, 5) 0%, rgb(203, 25, 25) 50%, rgb(174, 5, 5) 100%);
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 1.6rem;
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 20px;
+
+}
+
+.kropka{
+  /* background-color: red; */
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
+
+  border-radius: 10px;
+  height: 10px;
+  width: 10px;
 }
 
 .main {
   overflow: auto;
 }
 
+.naglowek{
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
 
 /* pasek przewijania */
 .main::-webkit-scrollbar {
@@ -50,9 +77,9 @@
 }
 
 .main::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%);
-    border-radius: 20px;
+  background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
   /* outline: 1px solid slategrey; */
+  border-radius: 20px;
 }
 
 .main::-webkit-scrollbar-corner {
@@ -60,108 +87,146 @@
 }
 
 
+.table2{
 
-.oprawy{
+ 
+}
+
+
+
+.table2 input {
+  width: 100%;
+}
+
+.col1 {
+  width: 20px;
+}
+
+.col_kolory {
+  width: 200px;
+  min-width: 150px;
+  max-width: 300px;
+}
+
+.col_id {
+  width: 120px;
+}
+
+.col_typ {
+  width: 80px;
+}
+
+/* .col_naklad {
+  width: 75px;
+
+} */
+
+.col_strony {
+
+  width: 60px;
+  background-color: red;
+}
+
+.col_gramatura {
+  width: 70px;
+}
+
+.col_wykonczenie {
+  width: 100px;
+}
+
+.col_wersja {
+  width: 100px;
+}
+
+.col_format {
+  min-width: 50px;
+  width: 50px;
+}
+
+.col_button {
+  width: 10px;
+  margin-left: 10px;
+  
+  /* background-color: red; */
+}
+
+.col_papier {
+  width: 150px;
+}
+
+.col_papierInfo {
+  width: 150px;
+}
+
+.col_uszlachetnianie {
+  width: 300px;
+}
+
+/* .table2 th,
+.table2 tr:nth-child(even) {
+  background-color: rgb(216, 216, 216);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+
+}
+
+.table2 tr:nth-child(odd) {
+  background-color: rgb(238, 238, 238);
+  outline-style: none;
+  font-size: 1rem;
+} */
+
+.table th
+{
+  background-color: rgb(216, 216, 216);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+
+}
+
+.table tr:nth-child(even) {
+  background-color:  rgb(238, 238, 238);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+  border-bottom: 1px solid rgb(192, 191, 191)  ;
+
+}
+
+
+
+.table tr:nth-child(odd) {
+  background-color: rgb(238, 238, 238);
+  outline-style: none;
+  font-size: 1rem;
+  border-bottom: 1px solid rgb(192, 191, 191) ;
+}
+
+
+
+
+
+
+
+.table .select {
   background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  width: 100vw;
-  }
+  box-shadow: none;
   
-  
-  .oprawaTable{
-    background-color: rgb(252, 244, 234);
-    border-radius: 10px;  
-    width: calc(100vw - 40px);
-    height: 10rem;
-    box-shadow: 8px 8px 8px rgb(159, 159, 159);
-  
-  
-  }
-  
-  
+}
 
-  
-  .row1{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 10px;
-    gap:10px
-  }
-  
-  .oprawaCard input{
-    
-    height: 1.8rem;
-    /* padding: 5px; */
-    /* font-size: 1rem; */
-    background-color: rgb(253, 237, 213);
-  }
-  
-  .oprawaCard select{
-  
-    height: 1.8rem;
-   
-    font-size: 1rem;
-    /* font-weight: bold; */
-    background-color: rgb(253, 237, 213);
-    /* background-color: transparent; */
-    /* box-shadow: none; */
-    color: gray;
-  
-  }
-  
-  .oprawaCard option{
-  
-    height: 1.8rem;
-   
-    font-size: 1rem;
-    /* font-weight: bold; */
-    background-color: rgb(240, 151, 50);
-    /* background-color: transparent; */
-    /* box-shadow: none;
-    color: white; */
-  
-  }
-  
-
-  table input{
-    background-color: transparent;
-    box-shadow: none;
-
+.element_typ{
+width: 120px;
+font-weight: bold;
+font-size: 0.9rem;
+}
+.element_naklad{
+  width: 120px;
+  font-weight: bold;
   }
 
-  .col1, .col2, .col5{
-    width: 50px;
-  }
-
-  .col3{
-    width: 100px;
-  }
-
-
-
-
-  .table th, .table tr:nth-child(even){
- /* background-image: linear-gradient(180deg,rgb(209, 221, 233) 20%, rgb(171, 183, 196) 100%); */
- background-color: rgb(253, 227, 188);
-   color: rgb(61, 61, 61);
-   font-size: 0.9rem;
-   outline-style: none;
- 
-   }
-   .table tr:nth-child(odd){
-     background-color: rgb(255, 238, 214);
-     outline-style: none;
-   }
- 
-
-   .table select {
-    background-color: transparent;
-    box-shadow: none;
-  }
 
   .icon {
     height: 70%;
@@ -170,24 +235,103 @@
     align-items: center;
   
   }
-  .expand {
-    height: 60%;
-    margin-left: 10px;
-  }
 
-  .pokaz_elementy_oprawy {
-    height: 20px;
 
-  }
-
-  .icon:hover{
+.icon:hover{
   border-top:  rgb(159, 159, 159) dashed 1px; 
     /* outline:  rgb(159, 159, 159) solid 1px; */
   }
-  
 
-  
+.icon:active {
+  box-shadow: 2px 2px 2px rgb(159, 159, 159);
+}
 
-  .test{
-    background-color: red;
-  }
+
+.procesy {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+}
+
+.expand {
+  height: 15px;
+  margin-right: 10px;
+
+
+}
+
+.alert2{
+  background-color: red;
+
+}
+.alert2{
+  background-color: none;
+}
+
+.tr_legi{
+  height: 2rem;
+}
+
+.expand {
+  height: 15px;
+  margin-right: 10px;
+
+
+}
+
+.col_dodaj{
+  width: 10px;
+  
+}
+.col_uwagi{
+  width: 500px;
+}
+
+.iconMenuBtn{
+  width: 16px;
+  background: transparent;
+}
+
+
+.table_legi{
+position: relative;
+}
+.menu_legi{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+position:  absolute ;
+top: 30px;
+left: 45px;
+z-index: 100;
+
+width: 200px;
+height: 220px;
+
+background-color: grey;
+border-radius: 10px;
+}
+
+.menu_legi_btn{
+height: 50px;
+width: 100%;
+background-color: gray;
+color: whitesmoke;
+border: none;
+border: 1px solid rgb(157, 157, 157);
+}
+.menu_legi_btn:hover{
+background-color: rgb(157, 157, 157);
+}
+
+.td_checkbox{
+width: 20px;
+}
+
+
+
+.input_oprawa{
+  background-color: transparent;
+  box-shadow: none;
+}

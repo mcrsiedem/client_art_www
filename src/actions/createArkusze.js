@@ -291,35 +291,38 @@ if (modulo == 6) {
 
 
 
-    fragmentyTech.forEach((x,i)=>{
+    fragmentyTech.forEach((frag,i)=>{
 
-      // legi.
-      // filter(f=> f.element_id == x.element_id).
-      // forEach(l=>{
-
-      //             new_legiFragmenty.push({
-      //       id: i + 1,
-      //       indeks: i + 1,
-      //       ...legaFragment,
-      //       lega_id: i + 1,
-      //       naklad: x.naklad
-      //     });
-      // })
-
-
-
+      new_legi.
+      filter(f=> frag.element_id == f.element_id).
+      map(l=>{
 
                   new_legiFragmenty.push({
             id: i + 1,
             indeks: i + 1,
             ...legaFragment,
-            lega_id: i + 1,
-            naklad: x.naklad
+            lega_id: l.id,
+            naklad: frag.naklad
           });
+      })
 
-console.log("legi",legi )
+
+
+
+          //         new_legiFragmenty.push({
+          //   id: i + 1,
+          //   indeks: i + 1,
+          //   ...legaFragment,
+          //   lega_id: i + 1,
+          //   naklad: x.naklad
+          // });
+
+
 
     })
+console.log("fragmentyTech",fragmentyTech )
+console.log("legi",new_legi )
+
 
     // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
 

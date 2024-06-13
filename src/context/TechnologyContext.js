@@ -145,7 +145,7 @@ export const TechnologyContextProvider = ({children})=>{
                 const suma_leg = parseInt(arkusze.map((f) => parseInt(f.rodzaj_arkusza)).reduce((a, b) => a + b, 0))
         
                 if( ilosc_stron == suma_leg){
-                    console.log("Legi OK")
+                    // console.log("Legi OK")
                     setShowErrorArkusze(false)
                 }
         

@@ -50,12 +50,18 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
           ilosc_leg: rodzaj_arkusza / rodzaj_arkusza
         });
 
-        new_legi.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...lega,
-          arkusz_id: i + 1
-        });
+     
+
+          for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
+            new_legi.push({
+              id: i + 1,
+              indeks: i + 1,
+              ...lega,
+              arkusz_id: i + 1
+            });
+          }
+
+
 
       }
     }
@@ -299,7 +305,7 @@ if (modulo == 6) {
 
                   new_legiFragmenty.push({
             id: i + 1,
-            indeks: i + 1,
+            indeks: l.indeks,
             ...legaFragment,
             lega_id: l.id,
             naklad: frag.naklad,

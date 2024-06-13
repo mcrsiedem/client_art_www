@@ -220,7 +220,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                       <td></td>
                       <td></td>
                       <td  >{i+1}</td>
-                      <td>lega {l.indeks}</td>
+                      <td>fragment {l.indeks}</td>
                       <td></td>
                       <td>{l.naklad}</td>
                       <td>{l.ilosc_leg}</td>

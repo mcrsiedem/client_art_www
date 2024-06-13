@@ -302,7 +302,8 @@ if (modulo == 6) {
             indeks: i + 1,
             ...legaFragment,
             lega_id: l.id,
-            naklad: frag.naklad
+            naklad: frag.naklad,
+            fragment_id: frag.id
           });
       })
 

@@ -215,7 +215,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                       
                  
                     </tr>
-                    {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.element_id == row.element_id).map( (l,i) => {
+                    {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.fragment_id == row.id).map( (l,i) => {
                       return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
                       <td></td>
                       <td></td>

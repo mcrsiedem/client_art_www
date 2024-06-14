@@ -1,5 +1,6 @@
 .container {
-    background-color: rgb(214, 214, 214);
+    /* background-color: rgb(214, 214, 214); */
+    background-color: white;
     margin-right: 15px;
  
     border-top-left-radius: 10px;
@@ -14,17 +15,21 @@
     align-items: center;
     justify-content: left;
     /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-    background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%);
-
+    /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
+  background-color: whitesmoke;
   
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 10px; 
+     border-top-right-radius: 10px;
     height: 1.6rem;
-    color: #fff;
+    color: black;
     font-size: 0.9rem;
     padding-left: 20px;
+    /* border-bottom: 1px solid rgb(197, 197, 197); */
+  
   
   }
+
+
   .headerAlert {
     display: flex;
     align-items: center;
@@ -57,11 +62,11 @@
     overflow: auto;
   }
 
-  .naglowek{
-    color: #fff;
-    font-size: 0.9rem;
-    padding-left: 10px;
-  }
+.naglowek{
+  color:gray;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
   
   /* pasek przewijania */
   .main::-webkit-scrollbar {
@@ -175,34 +180,40 @@
     outline-style: none;
     font-size: 1rem;
   } */
+
+  .typ_elementu{
+    font-weight: bold;
+  }
   
   .table2 th
- {
-    background-color: rgb(216, 216, 216);
-    color: rgb(61, 61, 61);
-    font-size: 0.9rem;
-    outline-style: none;
+  {
+     background-color: rgb(216, 216, 216);
+     background-color: whitesmoke;
+     color: gray;
+     font-size: 0.9rem;
+     outline-style: none;
+   
+   }
   
-  }
-
-  .table2 tr:nth-child(even) {
-    background-color:  rgb(238, 238, 238);
-    color: rgb(61, 61, 61);
-    font-size: 0.9rem;
-    outline-style: none;
-    border-bottom: 1px solid rgb(192, 191, 191)  ;
+   .table2 tr:nth-child(even) {
+     background-color:  rgb(238, 238, 238);
+     background-color: white;
+     color: rgb(61, 61, 61);
+     font-size: 0.9rem;
+     outline-style: none;
+     border-bottom: 1px dashed lightgray ;
+   
+   }
   
-  }
-
-
   
-  .table2 tr:nth-child(odd) {
-    background-color: rgb(238, 238, 238);
-    outline-style: none;
-    font-size: 1rem;
-    border-bottom: 1px solid rgb(192, 191, 191) ;
-  }
-  
+   
+   .table2 tr:nth-child(odd) {
+     background-color: rgb(238, 238, 238);
+     background-color: white;
+     outline-style: none;
+     font-size: 1rem;
+     border-bottom: 1px dashed lightgray ;
+   }
 
 
 

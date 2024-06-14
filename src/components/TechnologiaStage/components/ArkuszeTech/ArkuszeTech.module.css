@@ -1,5 +1,6 @@
 .container {
-  background-color: rgb(214, 214, 214);
+  /* background-color: rgb(214, 214, 214); */
+  background-color: white;
   margin-left: 20px;
 
   border-top-left-radius: 10px;
@@ -17,12 +18,15 @@
   /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
 background-color: whitesmoke;
 
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 10px; 
+   border-top-right-radius: 10px;
   height: 1.6rem;
-  /* color: black; */
+  color: black;
   font-size: 0.9rem;
   padding-left: 20px;
+  /* border-bottom: 1px solid rgb(197, 197, 197); */
+  /* border-bottom: 1px dashed lightgray; */
+
 
 }
 .headerAlert {
@@ -58,7 +62,7 @@ background-color: whitesmoke;
 }
 
 .naglowek{
-  color: #fff;
+  color:gray;
   font-size: 0.9rem;
   padding-left: 10px;
 }
@@ -85,10 +89,6 @@ background-color: whitesmoke;
 }
 
 
-.table2{
-
- 
-}
 
 
 
@@ -112,6 +112,11 @@ background-color: whitesmoke;
 
 .col_typ {
   width: 80px;
+
+}
+.col_typ_elementu {
+  width: 80px;
+  font-weight: bold;
 }
 
 /* .col_naklad {
@@ -161,10 +166,17 @@ background-color: whitesmoke;
   width: 300px;
 }
 
+.table2{
+
+
+}
+
+
 .table2 th
 {
    background-color: rgb(216, 216, 216);
-   color: rgb(61, 61, 61);
+   background-color: whitesmoke;
+   color: gray;
    font-size: 0.9rem;
    outline-style: none;
  
@@ -172,10 +184,12 @@ background-color: whitesmoke;
 
  .table2 tr:nth-child(even) {
    background-color:  rgb(238, 238, 238);
+   background-color: white;
    color: rgb(61, 61, 61);
    font-size: 0.9rem;
    outline-style: none;
-   border-bottom: 1px solid rgb(192, 191, 191)  ;
+   /* border-bottom: 1px solid rgb(192, 191, 191)  ; */
+   border-bottom: 1px dashed lightgray;
  
  }
 
@@ -183,9 +197,11 @@ background-color: whitesmoke;
  
  .table2 tr:nth-child(odd) {
    background-color: rgb(238, 238, 238);
+   background-color: white;
    outline-style: none;
    font-size: 1rem;
-   border-bottom: 1px solid rgb(192, 191, 191) ;
+   /* border-bottom: 1px solid rgb(192, 191, 191) ; */
+   border-bottom: 1px dashed lightgray;
  }
 
 .table2 .select {

@@ -73,7 +73,7 @@ const ArkuszeTable = () => {
               <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
             </th>
             <th className={style.col1}>#</th>
-            <th className={style.col_typ}>Typ</th>
+            <th className={style.col_typ_elementu}>Typ</th>
             <th className={style.col_typ}>Rodzaj</th>
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_uwagi}>Ilość leg</th>

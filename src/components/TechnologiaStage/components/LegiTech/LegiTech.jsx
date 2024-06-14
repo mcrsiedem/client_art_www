@@ -120,7 +120,7 @@ const RowLegi = ({ row,showLegiFragmenty,setShowLegiFragmenty }) => {
       <td></td>
       <SelectBoxLegi row={row} />
       <td>{row.indeks}</td>
-      <td>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}</td>
+      <td className={style.typ_elementu}>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}</td>
       <TypLegi row={row} />
       <td>{row.naklad}</td>
       <td>{row.uwagi}</td>

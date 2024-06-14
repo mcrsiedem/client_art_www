@@ -296,7 +296,7 @@
   }
 
   .iconMenuBtn{
-    width: 16px;
+    width: 15px;
     background: transparent;
  }
 
@@ -338,3 +338,7 @@ background-color: rgb(157, 157, 157);
   width: 20px;
 }
 
+.ch_box{
+
+  height: 12px;
+ }

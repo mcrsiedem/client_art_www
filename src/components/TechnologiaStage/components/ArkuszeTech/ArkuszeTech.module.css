@@ -283,7 +283,7 @@ font-size: 0.9rem;
 }
 
 .iconMenuBtn{
-  width: 16px;
+  width: 15px;
   background: transparent;
 }
 
@@ -338,4 +338,13 @@ background-color: rgb(157, 157, 157);
   /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
 
   /* border-radius: 5px; */
+}
+
+.td_checkbox{
+  width: 10px;
+}
+
+.ch_box{
+
+ height: 12px;
 }

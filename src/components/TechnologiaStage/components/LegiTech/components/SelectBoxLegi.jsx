@@ -11,7 +11,9 @@ export default function SelectBoxLegi({row}) {
     return (
       <td className={style.td_checkbox}>
         <div >
-        <input type="checkbox"
+        <input 
+        className={style.ch_box}
+        type="checkbox"
         checked={row.select}
         onChange={(event)=>{
   

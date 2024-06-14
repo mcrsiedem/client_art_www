@@ -286,6 +286,10 @@ font-size: 0.9rem;
   width: 500px;
 }
 
+.col_bok_oprawy{
+  width: 100px;
+}
+
 .iconMenuBtn{
   width: 16px;
   background: transparent;

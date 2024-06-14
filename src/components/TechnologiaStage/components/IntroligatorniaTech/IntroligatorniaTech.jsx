@@ -100,8 +100,8 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
         <th className={style.col4}>Oprawa</th>
         <th className={style.col4}>Ilość str</th>
         <th className={style.col4}>Wersja</th>
-        <th className={style.col4}>Naklad</th>
-        <th className={style.col4}>Bok oprawy</th>
+        <th className={style.col_bok_oprawy}>Naklad</th>
+        <th className={style.col_bok_oprawy}>Bok oprawy</th>
 
         <th className={style.col6}>Czystodruki</th>
         <th className={style.col6}>Data spedycji</th>

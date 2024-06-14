@@ -15,8 +15,8 @@
   align-items: center;
   justify-content: left;
   /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
-background-color: whitesmoke;
+  background-image: linear-gradient(rgb(211, 211, 211) 0%, rgb(228, 228, 228) 50%, rgb(211, 211, 211) 100%);
+/* background-color: whitesmoke; */
 
   border-top-left-radius: 10px; 
    border-top-right-radius: 10px;

@@ -1,10 +1,12 @@
 .container {
   background-color: rgb(214, 214, 214);
-  margin-left: 20px;
+  margin-right: 15px;
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
+  margin-top: 15px;
+  
 }
 
 
@@ -14,13 +16,13 @@
   align-items: center;
   justify-content: left;
   /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
-background-color: whitesmoke;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%);
+
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 1.6rem;
-  /* color: black; */
+  color: #fff;
   font-size: 0.9rem;
   padding-left: 20px;
 
@@ -161,34 +163,55 @@ background-color: whitesmoke;
   width: 300px;
 }
 
-.table2 th
+/* .table2 th,
+.table2 tr:nth-child(even) {
+  background-color: rgb(216, 216, 216);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+
+}
+
+.table2 tr:nth-child(odd) {
+  background-color: rgb(238, 238, 238);
+  outline-style: none;
+  font-size: 1rem;
+} */
+
+.table th
 {
-   background-color: rgb(216, 216, 216);
-   color: rgb(61, 61, 61);
-   font-size: 0.9rem;
-   outline-style: none;
- 
- }
+  background-color: rgb(216, 216, 216);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
 
- .table2 tr:nth-child(even) {
-   background-color:  rgb(238, 238, 238);
-   color: rgb(61, 61, 61);
-   font-size: 0.9rem;
-   outline-style: none;
-   border-bottom: 1px solid rgb(192, 191, 191)  ;
- 
- }
+}
+
+.table tr:nth-child(even) {
+  background-color:  rgb(238, 238, 238);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+  border-bottom: 1px solid rgb(192, 191, 191)  ;
+
+}
 
 
- 
- .table2 tr:nth-child(odd) {
-   background-color: rgb(238, 238, 238);
-   outline-style: none;
-   font-size: 1rem;
-   border-bottom: 1px solid rgb(192, 191, 191) ;
- }
 
-.table2 .select {
+.table tr:nth-child(odd) {
+  background-color: rgb(238, 238, 238);
+  outline-style: none;
+  font-size: 1rem;
+  border-bottom: 1px solid rgb(192, 191, 191) ;
+}
+
+
+
+
+
+
+
+.table .select {
   background-color: transparent;
   box-shadow: none;
   
@@ -246,10 +269,7 @@ font-size: 0.9rem;
 
 .tr_legi{
   height: 2rem;
-  
 }
-
-
 
 .expand {
   height: 15px;
@@ -264,6 +284,10 @@ font-size: 0.9rem;
 }
 .col_uwagi{
   width: 500px;
+}
+
+.col_bok_oprawy{
+  width: 100px;
 }
 
 .iconMenuBtn{
@@ -306,20 +330,12 @@ background-color: rgb(157, 157, 157);
 }
 
 .td_checkbox{
-  width: 20px;
+width: 20px;
 }
 
-/* .tr_legi_mini{
-  
-  height: 1rem;
-  background-color: rgb(155, 210, 255);
-} */
 
-.tr_legi_mini td {
-  height: 1rem;
 
-  background-color: rgb(182, 210, 247);
-  /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
-
-  /* border-radius: 5px; */
+.input_oprawa{
+  background-color: transparent;
+  box-shadow: none;
 }

@@ -1,38 +1,29 @@
 .container {
-  background-color: rgb(214, 214, 214);
-  margin-left: 20px;
-
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 15px;
+  /* background-color: red; */
 }
 
+.element {
+  border-radius: 10px;
+  width: calc(100vw - 40px);
+  /* height: calc(100% - 20px); */
+  background-color: rgb(214, 214, 214);
+  /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
+  /* background-color: rgb(178, 196, 214); */
+  box-shadow: 3px 3px 3px rgb(159, 159, 159);
 
+}
 
 .header {
   display: flex;
   align-items: center;
   justify-content: left;
   /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
-background-color: whitesmoke;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%);
 
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 1.6rem;
-  /* color: black; */
-  font-size: 0.9rem;
-  padding-left: 20px;
-
-}
-.headerAlert {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
-
-  background-image: linear-gradient(rgb(174, 5, 5) 0%, rgb(203, 25, 25) 50%, rgb(174, 5, 5) 100%);
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -55,8 +46,16 @@ background-color: whitesmoke;
 
 .main {
   overflow: auto;
-}
 
+}
+.kropka2{
+  /* background-color: red; */
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+
+  border-radius: 10px;
+  height: 10px;
+  width: 10px;
+}
 .naglowek{
   color: #fff;
   font-size: 0.9rem;
@@ -87,7 +86,7 @@ background-color: whitesmoke;
 
 .table2{
 
- 
+  /* height: 1fr; */
 }
 
 
@@ -114,10 +113,10 @@ background-color: whitesmoke;
   width: 80px;
 }
 
-/* .col_naklad {
+.col_naklad {
   width: 75px;
 
-} */
+}
 
 .col_strony {
 
@@ -140,6 +139,7 @@ background-color: whitesmoke;
 .col_format {
   min-width: 50px;
   width: 50px;
+  text-align: center;
 }
 
 .col_button {
@@ -152,6 +152,23 @@ background-color: whitesmoke;
 .col_papier {
   width: 150px;
 }
+.col_arkusze {
+  width: 80px;
+  text-align: center;
+}
+.col_lega_falc {
+  
+  width: 120px;
+  text-align: center;
+}
+
+.td_lega_falc {
+
+  text-align: center;
+  /* border-bottom: 1px solid gray; */
+}
+
+
 
 .col_papierInfo {
   width: 150px;
@@ -242,84 +259,4 @@ font-size: 0.9rem;
 }
 .alert2{
   background-color: none;
-}
-
-.tr_legi{
-  height: 2rem;
-  
-}
-
-
-
-.expand {
-  height: 15px;
-  margin-right: 10px;
-
-
-}
-
-.col_dodaj{
-  width: 10px;
-  
-}
-.col_uwagi{
-  width: 500px;
-}
-
-.iconMenuBtn{
-  width: 16px;
-  background: transparent;
-}
-
-
-.table_legi{
-position: relative;
-}
-.menu_legi{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-
-position:  absolute ;
-top: 30px;
-left: 45px;
-z-index: 100;
-
-width: 200px;
-height: 220px;
-
-background-color: grey;
-border-radius: 10px;
-}
-
-.menu_legi_btn{
-height: 50px;
-width: 100%;
-background-color: gray;
-color: whitesmoke;
-border: none;
-border: 1px solid rgb(157, 157, 157);
-}
-.menu_legi_btn:hover{
-background-color: rgb(157, 157, 157);
-}
-
-.td_checkbox{
-  width: 20px;
-}
-
-/* .tr_legi_mini{
-  
-  height: 1rem;
-  background-color: rgb(155, 210, 255);
-} */
-
-.tr_legi_mini td {
-  height: 1rem;
-
-  background-color: rgb(182, 210, 247);
-  /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
-
-  /* border-radius: 5px; */
 }

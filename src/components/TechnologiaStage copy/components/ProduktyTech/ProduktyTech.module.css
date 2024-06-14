@@ -1,0 +1,107 @@
+/* @import url(/src/Color.module.css); */
+
+.container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 15px;
+  /* height: 112px; */
+
+}
+
+.produkt {
+  border-radius: 10px;
+  width: calc(100vw - 40px);
+  box-shadow: 3px 3px 3px rgb(159, 159, 159);
+  background-color: rgb(178, 196, 214);
+
+  height: calc(100% - 20px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%);
+  /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 1.6rem;
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 20px;
+}
+
+.kropka{
+  /* background-color: red; */
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+
+  border-radius: 10px;
+  height: 10px;
+  width: 10px;
+}
+.naglowek{
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
+.main {
+  overflow: auto;
+  max-height: 200px;
+}
+
+/* pasek przewijania */
+.main::-webkit-scrollbar {
+  width: 0.8em;
+  height: 10px;
+}
+
+.main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  /* outline: 1px solid slategrey; */
+  border-radius: 20px;
+}
+
+.main::-webkit-scrollbar-corner {
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  
+}
+
+
+.table input {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.col1,
+.col2,
+.col5 {
+  width: 50px;
+}
+
+.col3 {
+  width: 100px;
+}
+
+.table th,
+.table tr:nth-child(even) {
+  background-color: rgb(216, 216, 216);
+  color: rgb(61, 61, 61);
+  font-size: 0.9rem;
+  outline-style: none;
+}
+
+.table tr:nth-child(odd) {
+  background-color: rgb(238, 238, 238);
+  outline-style: none;
+}
+
+.select {
+  background-color: transparent;
+  box-shadow: none;
+}

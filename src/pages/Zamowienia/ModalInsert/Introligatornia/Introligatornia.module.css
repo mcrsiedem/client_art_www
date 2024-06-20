@@ -130,7 +130,7 @@
   table input{
     background-color: transparent;
     box-shadow: none;
-
+    height: 20px;
   }
 
   .col1, .col2, .col5{

@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
+import { AppContext } from "context/AppContext";
 import style from "./MenuZamowienia.module.css";
 import icon from "assets/copy.svg";
 export default function MenuZamowienia({ showMenu, setShowMenu }) {
-  const techContext = useContext(TechnologyContext);
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
+
+
+  const appContext = useContext(AppContext)
+  const zamowienia = appContext.zamowienia;
+  const setZamowienia = appContext.setZamowienia;
 
   if (showMenu) {
     return (
@@ -14,6 +17,8 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
           className={style.menu_legi_btn}
           onClick={() => {
 
+            console.log( zamowienia.filter(x => x.select === true))  // zablica z zazdnaczonych objektów
+          //  zamowienia.filter(x => x.select === true).forEach(x=> console.log(x.id))
             setShowMenu(!showMenu);
           }}
         >

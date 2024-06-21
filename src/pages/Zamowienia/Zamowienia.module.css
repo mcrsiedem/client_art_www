@@ -45,15 +45,19 @@ th{
    font-size: 0.9rem;
    position: sticky;
    top:0;
-   background: #3f3f3f;
+   /* background: #3f3f3f; */
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
-   background: #b1b0ad;
+   background: #cccccc;
   color: #414040;
 }
 
 
+tr:nth-of-type(2n) {
+   /* background: #dbdad6; */
+   background: #f7f6f6;
+}
 
 
 /* tr{

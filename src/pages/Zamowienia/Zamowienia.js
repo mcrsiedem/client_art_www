@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import { TechnologyContext } from "context/TechnologyContext";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { AppContext } from "context/AppContext";
+import MenuZamowienia from "./components/MenuZamowienia";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -134,12 +135,14 @@ const setListaGramatur = contextApp.setListaGramatur;
 }
 
 function ZamowieniaTable({zamowienia,open2,setRow}){
+  const [showMenu, setShowMenu] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
  return     <div className={style.tableContainer}>
+    <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table>
   <thead>
     <tr>
-      <th className={style.th_checkbox}> <MenuBtn/></th>
+      <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
       <th className={style.col_id}># </th>
       
       
@@ -308,12 +311,13 @@ function CreateTechnmologiaBtn({ row }) {
 
 
 
-const MenuBtn = () => {
+const MenuBtn = ({ showMenu, setShowMenu }) => {
   return (
     <img
               className={style.iconMenuBtn}
               src={iconSettings}
               onClick={() => {
+                setShowMenu(!showMenu);
                 // dodaj_clikHandler();
                 // console.log("z contextu :"+ token.rowSelected)
                 //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})

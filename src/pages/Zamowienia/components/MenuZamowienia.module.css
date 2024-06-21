@@ -1,0 +1,350 @@
+.container {
+    /* background-color: rgb(214, 214, 214); */
+    background-color: white;
+    margin-left: 20px;
+  
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  
+  }
+  
+  
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
+    background-image: linear-gradient(rgb(211, 211, 211) 0%, rgb(228, 228, 228) 50%, rgb(211, 211, 211) 100%);
+  /* background-color: whitesmoke; */
+  
+    border-top-left-radius: 10px; 
+     border-top-right-radius: 10px;
+    height: 1.6rem;
+    color: black;
+    font-size: 0.9rem;
+    padding-left: 20px;
+    /* border-bottom: 1px solid rgb(197, 197, 197); */
+    /* border-bottom: 1px dashed lightgray; */
+  
+  
+  }
+  .headerAlert {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
+    /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
+  
+    background-image: linear-gradient(rgb(174, 5, 5) 0%, rgb(203, 25, 25) 50%, rgb(174, 5, 5) 100%);
+  
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 1.6rem;
+    color: #fff;
+    font-size: 0.9rem;
+    padding-left: 20px;
+  
+  }
+  
+  .kropka{
+    /* background-color: red; */
+    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
+  
+    border-radius: 10px;
+    height: 10px;
+    width: 10px;
+  }
+  
+  .main {
+    overflow: auto;
+  }
+  
+  .naglowek{
+    color:gray;
+    font-size: 0.9rem;
+    padding-left: 10px;
+  }
+  
+  /* pasek przewijania */
+  .main::-webkit-scrollbar {
+    width: 0.8em;
+    height: 10px;
+  }
+  
+  .main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  
+  }
+  
+  .main::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
+    /* outline: 1px solid slategrey; */
+    border-radius: 20px;
+  }
+  
+  .main::-webkit-scrollbar-corner {
+    background-color: rgb(191, 209, 194);
+  }
+  
+  
+  
+  
+  
+  .table2 input {
+    width: 100%;
+  }
+  
+  .col1 {
+    width: 20px;
+  }
+  
+  .col_kolory {
+    width: 200px;
+    min-width: 150px;
+    max-width: 300px;
+  }
+  
+  .col_id {
+    width: 120px;
+  }
+  
+  .col_typ {
+    width: 80px;
+  
+  }
+  .col_typ_elementu {
+    width: 80px;
+    font-weight: bold;
+  }
+  
+  /* .col_naklad {
+    width: 75px;
+  
+  } */
+  
+  .col_strony {
+  
+    width: 60px;
+    background-color: red;
+  }
+  
+  .col_gramatura {
+    width: 70px;
+  }
+  
+  .col_wykonczenie {
+    width: 100px;
+  }
+  
+  .col_wersja {
+    width: 100px;
+  }
+  
+  .col_format {
+    min-width: 50px;
+    width: 50px;
+  }
+  
+  .col_button {
+    width: 10px;
+    margin-left: 10px;
+    
+    /* background-color: red; */
+  }
+  
+  .col_papier {
+    width: 150px;
+  }
+  
+  .col_papierInfo {
+    width: 150px;
+  }
+  
+  .col_uszlachetnianie {
+    width: 300px;
+  }
+  
+  .table2{
+  
+  
+  }
+  
+  
+  .table2 th
+  {
+     background-color: rgb(216, 216, 216);
+     background-color: whitesmoke;
+     color: gray;
+     font-size: 0.9rem;
+     outline-style: none;
+   
+   }
+  
+   .table2 tr:nth-child(even) {
+     background-color:  rgb(238, 238, 238);
+     background-color: white;
+     color: rgb(61, 61, 61);
+     font-size: 0.9rem;
+     outline-style: none;
+     /* border-bottom: 1px solid rgb(192, 191, 191)  ; */
+     border-bottom: 1px dashed lightgray;
+   
+   }
+  
+  
+   
+   .table2 tr:nth-child(odd) {
+     background-color: rgb(238, 238, 238);
+     background-color: white;
+     outline-style: none;
+     font-size: 1rem;
+     /* border-bottom: 1px solid rgb(192, 191, 191) ; */
+     border-bottom: 1px dashed lightgray;
+   }
+  
+  .table2 .select {
+    background-color: transparent;
+    box-shadow: none;
+    
+  }
+  
+  .element_typ{
+  width: 120px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  }
+  .element_naklad{
+    width: 120px;
+    font-weight: bold;
+    }
+  
+  
+    .icon {
+      height: 70%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    
+    }
+  
+  
+  .icon:hover{
+    border-top:  rgb(159, 159, 159) dashed 1px; 
+      /* outline:  rgb(159, 159, 159) solid 1px; */
+    }
+  
+  .icon:active {
+    box-shadow: 2px 2px 2px rgb(159, 159, 159);
+  }
+  
+  
+  .procesy {
+    display: grid;
+    grid-template-columns: 25px 1fr;
+  }
+  
+  .expand {
+    height: 15px;
+    margin-right: 10px;
+  
+  
+  }
+  
+  .alert2{
+    background-color: red;
+  
+  }
+  .alert2{
+    background-color: none;
+  }
+  
+  .tr_legi{
+    height: 2rem;
+    
+  }
+  
+  
+  
+  .expand {
+    height: 15px;
+    margin-right: 10px;
+  
+  
+  }
+  
+  .col_dodaj{
+    width: 10px;
+    
+  }
+  .col_uwagi{
+    width: 500px;
+  }
+  
+  .iconMenuBtn{
+    width: 15px;
+    background: transparent;
+  }
+  
+  
+  .table_legi{
+  position: relative;
+  }
+  .menu_legi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  position:  absolute ;
+  top: 30px;
+  left: 45px;
+  z-index: 100;
+  
+  width: 200px;
+  height: 220px;
+  
+  background-color: grey;
+  border-radius: 10px;
+  }
+  
+  .menu_legi_btn{
+  height: 50px;
+  width: 100%;
+  background-color: gray;
+  color: whitesmoke;
+  border: none;
+  border: 1px solid rgb(157, 157, 157);
+  }
+  .menu_legi_btn:hover{
+  background-color: rgb(157, 157, 157);
+  }
+  
+  .td_checkbox{
+    width: 20px;
+  }
+  
+  /* .tr_legi_mini{
+    
+    height: 1rem;
+    background-color: rgb(155, 210, 255);
+  } */
+  
+  .tr_legi_mini td {
+    height: 1rem;
+  
+    background-color: rgb(182, 210, 247);
+    /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
+  
+    /* border-radius: 5px; */
+  }
+  
+  .td_checkbox{
+    width: 10px;
+  }
+  
+  .ch_box{
+  
+   height: 12px;
+  }

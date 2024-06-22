@@ -3,6 +3,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import style from "./MenuZamowienia.module.css";
 import icon from "assets/copy.svg";
+import { deleteZamowienie } from "actions/deleteZamowienie";
 export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
 
@@ -16,10 +17,11 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-
-            console.log( zamowienia.filter(x => x.select === true))  // zablica z zazdnaczonych objektów
+            const rowsToDelete =zamowienia.filter(x => x.select === true);
+              deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+            console.log(rowsToDelete )  // zablica z zazdnaczonych objektów
           //  zamowienia.filter(x => x.select === true).forEach(x=> console.log(x.id))
-            setShowMenu(!showMenu);
+            // setShowMenu(!showMenu);
           }}
         >
           Usuń

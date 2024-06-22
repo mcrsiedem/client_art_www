@@ -8,7 +8,7 @@ export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMe
 
 
   axios
-    .post(IP + "delete_zamowienie", rowsToDelete)
+    .delete(IP + "delete_zamowienie", rowsToDelete)
     .then((res) => {
 
 

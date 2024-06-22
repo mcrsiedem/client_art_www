@@ -17,18 +17,16 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-            const rowsToDelete =zamowienia.filter(x => x.select === true);
-              deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
-            console.log(rowsToDelete )  // zablica z zazdnaczonych objektów
-          //  zamowienia.filter(x => x.select === true).forEach(x=> console.log(x.id))
-            // setShowMenu(!showMenu);
+            
+
           }}
         >
           Usuń
         </button>
         <button className={style.menu_legi_btn}           onClick={() => {
-
-            setShowMenu(!showMenu);
+        const rowsToDelete =zamowienia.filter(x => x.select === true);
+        deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+ 
           }}>Usuń na zawsze...</button>
 
         <button

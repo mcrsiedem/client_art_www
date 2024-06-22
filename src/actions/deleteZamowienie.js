@@ -8,11 +8,11 @@ export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMe
 
 
   axios
-    .delete(IP + "delete_zamowienie", rowsToDelete)
+  .delete(IP + "delete_zamowienie", { data: { row: rowsToDelete } })
     .then((res) => {
 
 
-    console.log(res)
+    // console.log(res.status)
     setZamowienia( zamowienia.filter(x => x.select !== true))
     setShowMenu(false)
 

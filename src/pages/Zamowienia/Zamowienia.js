@@ -69,6 +69,12 @@ const setListaGramatur = contextApp.setListaGramatur;
     setData(jobs);
   }
 
+  async function refreshZamowieniaKosz() {
+    const res = await axios.get(IP + "zamowienia");
+    let jobs= [...res.data].filter(job => job.final == 2);
+    setData(jobs);
+  }
+
   useEffect(() => {
     checkToken();
   }, []);

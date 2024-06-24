@@ -49,7 +49,7 @@ const LegiTable = () => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
   const [showMenuLegi, setShowMenuLegi] = useState(false);
-  const [showLegiFragmenty, setShowLegiFragmenty] = useState(true);
+  const [showLegiFragmenty, setShowLegiFragmenty] = useState(false);
 
   return (
     <div className={style.table_legi}>

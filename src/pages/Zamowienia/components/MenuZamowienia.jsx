@@ -4,6 +4,7 @@ import { AppContext } from "context/AppContext";
 import style from "./MenuZamowienia.module.css";
 import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
+import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
 
@@ -17,7 +18,9 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-            
+            const rowsToDelete =zamowienia.filter(x => x.select === true);
+    
+            deleteZamowienieKosz(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
 
           }}
         >

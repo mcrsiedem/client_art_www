@@ -103,7 +103,7 @@ function OprawaTable({
 
   return (
     <div className={style.table_legi}>
-      <table className={style.table}>
+      <table className={style.table2}>
         <thead className={style.table_th}>
           <tr>
             <th className={style.col7}></th>

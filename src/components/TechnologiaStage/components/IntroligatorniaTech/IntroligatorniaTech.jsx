@@ -184,7 +184,7 @@ function OprawaTable({
                     handleChangeCardOprawa={handleChangeCardOprawa}
                   />
 
-                  <Usun row={row} handleRemoveItem={handleRemoveItem} />
+                  {/* <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe
                     row={row}
                     oprawa={oprawa}
@@ -195,7 +195,7 @@ function OprawaTable({
                     row={row}
                     oprawa_row={oprawa_row}
                     setOprawa_row={setOprawa_row}
-                  />
+                  /> */}
                 </tr>
                 {expand ? (
                   fragmentyTech

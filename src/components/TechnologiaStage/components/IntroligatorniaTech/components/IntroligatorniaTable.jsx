@@ -1,6 +1,8 @@
-import style from "./IntroligatorniaTech.module.css";
+import style from "./IntroligatorniaTable.module.css";
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { AppContext } from "context/AppContext";
 
 export default function IntroligatorniaTable() {
 
@@ -29,11 +31,7 @@ export default function IntroligatorniaTable() {
         </thead>
 
         <tbody>
-
-            {oprawaTech.map(row=>{
-
-
-            })}
+            {oprawaTech.map(row=>  <OprawaRow row={row} /> )}
         </tbody>
       </table>
     </div>
@@ -41,7 +39,73 @@ export default function IntroligatorniaTable() {
 }
 
 
-const OprawaRow = () => {
+const OprawaRow = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+    const legiFragmenty = techContext.legiFragmenty;
+  return (
+    <>
+    <tr key={row.id}>
+      <td></td>
+      <td></td>
+      <RodzajOprawy row={row} />
+      <td></td>
+      <td></td>
+      <td>{row.naklad}</td>
+    </tr>
+    {legiFragmenty.map(row=>  <LegaFragmentRow row={row} /> )}
+    </>
+  );
+};
 
-    
-}
+
+const LegaFragmentRow = ({ row }) => {
+  return (
+    <tr key={row.id}>
+      <td>{row.id}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  );
+};
+
+
+
+
+function RodzajOprawy({ row, handleChangeCardOprawa }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const produkty = contextModalInsert.produkty;
+  const setProdukty = contextModalInsert.setProdukty;
+  const contextApp = useContext(AppContext);
+
+  return (
+    <td className={style.select}>
+      <select
+        className={style.input_oprawa}
+        defaultValue={row.oprawa}
+        onChange={(event) => {
+          handleChangeCardOprawa({ ...row, oprawa: event.target.value });
+
+          if (row.indeks == 0) {
+            setProdukty(
+              produkty.map((p) => {
+                if (p.id === row.produkt_id) {
+                  return { ...p, oprawa: event.target.value };
+                } else {
+                  return p;
+                }
+              })
+            );
+          }
+        }}
+      >
+        {contextApp.bindingType.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </td>
+  );}

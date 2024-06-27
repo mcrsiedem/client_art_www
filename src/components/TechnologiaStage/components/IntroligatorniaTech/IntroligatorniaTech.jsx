@@ -15,6 +15,7 @@ import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { TechnologyContext } from "context/TechnologyContext";
+import IntroligatorniaTable from "./components/IntroligatorniaTable";
 
 export default function IntroligatorniaTech({
   handleChangeCardProdukty,
@@ -48,7 +49,8 @@ export default function IntroligatorniaTech({
   return (
     <div className={style.container}>
       <Header />
-      <OprawaTable
+      <IntroligatorniaTable/>
+      {/* <OprawaTable
         handleChangeCardProdukty={handleChangeCardProdukty}
         handleDragStart={handleDragStart}
         handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
@@ -61,7 +63,7 @@ export default function IntroligatorniaTech({
         setShowOprawaElementyStage={setShowOprawaElementyStage}
         oprawa_row={oprawa_row}
         setOprawa_row={setOprawa_row}
-      />
+      /> */}
       {showOprawaElementyStage && (
         <OprawaElementyStage
           showOprawaElementyStage={showOprawaElementyStage}

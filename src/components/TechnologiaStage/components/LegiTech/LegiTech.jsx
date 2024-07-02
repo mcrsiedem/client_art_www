@@ -136,7 +136,7 @@ const RowLegi = ({ row,showLegiFragmenty,setShowLegiFragmenty }) => {
   <td></td>
   <td></td>
   <td  >{i+1}</td>
-  <td>lega {l.indeks}</td>
+  <td>frag. {l.indeks}</td>
   <td></td>
   <td>{l.naklad}</td>
   <td>{l.ilosc_leg}</td>

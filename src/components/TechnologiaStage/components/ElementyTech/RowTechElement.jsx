@@ -91,6 +91,7 @@ export default function RowElement({
               // createLegi(row,legi,setLegi);
               createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
               createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
+              console.log("fragmenty tech: ", fragmentyTech)
             }}
             alt="Procesy"
           />

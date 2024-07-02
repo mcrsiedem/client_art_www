@@ -309,7 +309,8 @@ if (modulo == 6) {
             ...legaFragment,
             lega_id: l.id,
             naklad: frag.naklad,
-            fragment_id: frag.id
+            fragment_id: frag.id,
+            oprawa_id: frag.oprawa_id
           });
       })
 

@@ -52,7 +52,9 @@ const OprawaRow = ({ row }) => {
       <td></td>
       <td>{row.naklad}</td>
     </tr>
-    {legiFragmenty.map(row=>  <LegaFragmentRow row={row} /> )}
+    {legiFragmenty.
+    filter(f=> f.oprawa_id == row.id).
+    map(row=>  <LegaFragmentRow row={row} /> )}
     </>
   );
 };
@@ -61,10 +63,10 @@ const OprawaRow = ({ row }) => {
 const LegaFragmentRow = ({ row }) => {
   return (
     <tr key={row.id}>
-      <td>{row.id}</td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td>{row.indeks}</td>
+      <td>{row.oprawa_id}</td>
+      <td>{row.naklad}</td>
       <td></td>
       <td></td>
     </tr>

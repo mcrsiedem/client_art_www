@@ -16,7 +16,8 @@ import { addArkusze } from "actions/addArkusze";
 import { createLegi } from "actions/createLegi";
 import { createArkusze } from "actions/createArkusze";
 import { createGrupaWykonan } from "actions/createGrupaWykonan";
-export default function RowElement({
+import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+export default function RowTechElement({
     row,
     handleChangeCardElementy,
     listaPapierow,
@@ -79,6 +80,7 @@ export default function RowElement({
       const setOprawaTech = techContext.setOprawaTech;
       const fragmentyTech = techContext.fragmentyTech;
       const setFragmentyTech = techContext.setFragmentyTech;
+      const elementyTech = techContext.elementyTech;
       
 
     return (
@@ -89,8 +91,9 @@ export default function RowElement({
             className={style.expand}
             onClick={() => {
               // createLegi(row,legi,setLegi);
-              createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
-              createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
+              createArkuszeFromElemenets(arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech,elementyTech)
+              // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
+               createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
               console.log("fragmenty tech: ", fragmentyTech)
             }}
             alt="Procesy"

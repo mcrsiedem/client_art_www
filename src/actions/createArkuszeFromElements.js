@@ -2,22 +2,26 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
-export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech) {
+export function createArkuszeFromElemenets(arkusze, setArkusze, legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech,elementyTech) {
   // generuje arkusze i legi z ilości stron elementu
   // row to jest ElementyTechRow czyli np okładka lub środek
+
+
+const new_arkusze = [];
+const new_legi = []
+const new_legiFragmenty =[];
+console.log("elementyTech",elementyTech)
+
+  elementyTech.map(row => {
+    console.log("row: ",row)
 
   const ilosc_leg_na_arkuszu = row.ilosc_leg
   const rodzaj_legi = row.lega;
   const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu;
-
-  const new_arkusze = [];
-  const new_legi = []
-  // const new_arkusze = arkusze.slice();
-  // const new_legi = legi.slice()
   const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
   const modulo = row.ilosc_stron % rodzaj_arkusza
 
-  const new_legiFragmenty =[];
+  
 
 
   const ark = {
@@ -42,12 +46,17 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
     element_id: row.id
   };
 
+
+
+
+  
 //-----------------------
     if (modulo == 0) {
       for (let i = 0; i < ilosc_arkuszy; i++) {
+        const maxid = generateMaxID(new_arkusze)
         new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
+          id: maxid,
+          indeks: generateMaxIndeks(new_arkusze),
           ...ark,
           // ilosc_leg: rodzaj_arkusza / rodzaj_arkusza,
           ilosc_leg: ilosc_leg_na_arkuszu
@@ -56,10 +65,10 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
 
         for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
           new_legi.push({
-            id: i + 1,
-            indeks: i + 1,
+            id: generateMaxID(new_legi),
+            indeks: generateMaxIndeks(new_legi),
             ...lega,
-            arkusz_id: i + 1,
+            arkusz_id: maxid,
           });
         }
       }
@@ -324,7 +333,23 @@ if (modulo == 6) {
   setLegiFragmenty(new_legiFragmenty)
   // generateLegi(new_arkusze)
 
+
+})
+
+
+
+
+
+
+
+  //---tu 
 }
+
+
+
+
+
+
 
 
 const generateLegi = (new_arkusze) => {

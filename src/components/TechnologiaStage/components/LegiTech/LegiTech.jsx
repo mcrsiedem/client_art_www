@@ -135,12 +135,12 @@ const RowLegi = ({ row,showLegiFragmenty,setShowLegiFragmenty }) => {
   return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
   <td></td>
   <td></td>
-  <td  >{i+1}</td>
+  <td  >{l.id}</td>
   <td>frag. {l.indeks}</td>
   <td></td>
   <td>{l.naklad}</td>
   <td>{l.ilosc_leg}</td>
-  <td>{l.uwagi}</td>
+  <td>lega id{l.lega_id}</td>
   {/* <td>{row.element_id}</td> */}
   {/* <td>{row.ilosc_stron}</td> */}
   <td></td>

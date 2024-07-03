@@ -310,14 +310,14 @@ if (modulo == 6) {
 
     fragmentyTech.forEach((frag, i) => {
       new_legi
-        .filter((f) => frag.element_id == f.element_id)
+        .filter((f) => frag.element_id == f.element_id )
         .map((l) => {
           new_legiFragmenty.push({
             id: generateMaxID(new_legiFragmenty),
             // indeks: generateMaxIndeks(new_legiFragmenty),
             indeks: l.indeks,
             ...legaFragment,
-            lega_id: l.id,
+            lega_id: generateMaxID(new_legiFragmenty),
             naklad: frag.naklad,
             fragment_id: frag.id,
             oprawa_id: frag.oprawa_id,

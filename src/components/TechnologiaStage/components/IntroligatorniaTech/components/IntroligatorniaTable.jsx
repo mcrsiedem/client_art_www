@@ -40,6 +40,8 @@ export default function IntroligatorniaTable() {
 
 
 const OprawaRow = ({ row }) => {
+
+  // row to jest
   const techContext = useContext(TechnologyContext);
     const legiFragmenty = techContext.legiFragmenty;
   return (

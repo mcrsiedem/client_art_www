@@ -12,6 +12,8 @@ export function createArkusze(row, arkusze, setArkusze, legi, setLegi,legiFragme
 
   const new_arkusze = [];
   const new_legi = []
+  // const new_arkusze = arkusze.slice();
+  // const new_legi = legi.slice()
   const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
   const modulo = row.ilosc_stron % rodzaj_arkusza
 

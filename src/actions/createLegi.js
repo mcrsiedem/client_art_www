@@ -8,6 +8,7 @@ export function createLegi(row,legi,setLegi) {
   const typ_legi = 16;
 
   const new_legi = []
+  // const new_legi = legi.slice();
 
   const ilosc_leg = row.ilosc_stron / 16;
 

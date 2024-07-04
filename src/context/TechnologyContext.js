@@ -152,14 +152,14 @@ export const TechnologyContextProvider = ({children})=>{
                 if(ilosc_stron > suma_leg){
                     setShowErrorArkusze(true)
                     setErrorArkuszeInfo(["Dodaj", ilosc_stron-suma_leg])
-                    console.log("Dodaj", ilosc_stron-suma_leg)
+                    // console.log("Dodaj", ilosc_stron-suma_leg)
                 }
                 if(ilosc_stron < suma_leg){
                   setShowErrorArkusze(true)
                     setErrorArkuszeInfo(["Usun ", suma_leg-ilosc_stron])
-                    console.log("Usun ", suma_leg-ilosc_stron)
+                    // console.log("Usun ", suma_leg-ilosc_stron)
                 }
-                  
+                setShowErrorArkusze(false) // wył alert
                       }, [arkusze]);
     
     useEffect(()=>{

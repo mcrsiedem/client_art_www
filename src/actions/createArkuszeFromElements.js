@@ -317,7 +317,8 @@ if (modulo == 6) {
             // indeks: generateMaxIndeks(new_legiFragmenty),
             indeks: l.indeks,
             ...legaFragment,
-            lega_id: generateMaxID(new_legiFragmenty),
+            // lega_id: generateMaxID(new_legiFragmenty),
+            lega_id: l.id,
             naklad: frag.naklad,
             fragment_id: frag.id,
             oprawa_id: frag.oprawa_id,
@@ -326,7 +327,7 @@ if (modulo == 6) {
         });
     });
 
-
+    console.log("new_legiFragmenty :", new_legiFragmenty)
 
     // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
 

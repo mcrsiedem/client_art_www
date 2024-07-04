@@ -13,7 +13,7 @@ const new_legiFragmenty =[];
 console.log("elementyTech",elementyTech)
 
   elementyTech.map(row => {
-    console.log("row: ",row)
+    // console.log("row: ",row)
 
   const ilosc_leg_na_arkuszu = row.ilosc_leg
   const rodzaj_legi = row.lega;
@@ -58,12 +58,11 @@ console.log("elementyTech",elementyTech)
           id: maxid,
           indeks: generateMaxIndeks(new_arkusze),
           ...ark,
-          // ilosc_leg: rodzaj_arkusza / rodzaj_arkusza,
           ilosc_leg: ilosc_leg_na_arkuszu
         
         });
 
-        for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
+        for (let a = 0; a < ilosc_leg_na_arkuszu; a++) { // do każdego ark dodaje odpowiednią ilość leg
           new_legi.push({
             id: generateMaxID(new_legi),
             indeks: generateMaxIndeks(new_legi),
@@ -321,6 +320,7 @@ if (modulo == 6) {
             naklad: frag.naklad,
             fragment_id: frag.id,
             oprawa_id: frag.oprawa_id,
+            typ:frag.typ
           });
         });
     });

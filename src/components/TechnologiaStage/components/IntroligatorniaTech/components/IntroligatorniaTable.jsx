@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
+import { _typ_elementu } from "utils/initialvalue";
 
 export default function IntroligatorniaTable() {
 
@@ -65,7 +66,8 @@ const OprawaRow = ({ row }) => {
 const LegaFragmentRow = ({ row }) => {
   return (
     <tr key={row.id}>
-      <td></td>
+      <td className={style.typ_elementu}>{_typ_elementu.filter(x => x.id == row.typ)[0].nazwa}</td>
+     
       <td>{row.indeks}</td>
       <td>{row.oprawa_id}</td>
       <td>{row.naklad}</td>

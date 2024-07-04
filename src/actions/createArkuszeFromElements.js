@@ -305,11 +305,12 @@ if (modulo == 6) {
     }
 
 
-
+    
 
     fragmentyTech.forEach((frag, i) => {
       new_legi
         .filter((f) => frag.element_id == f.element_id )
+        .filter((f) => row.typ == frag.typ)
         .map((l) => {
           new_legiFragmenty.push({
             id: generateMaxID(new_legiFragmenty),

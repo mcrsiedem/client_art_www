@@ -21,7 +21,7 @@ export function createArkuszeFromElemenets(
   const new_arkusze = [];
   const new_legi = [];
   const new_legiFragmenty = [];
-  console.log("elementyTech", elementyTech);
+  // console.log("elementyTech", elementyTech);
 
   elementyTech.map((row) => {
     // console.log("row: ",row)
@@ -323,18 +323,22 @@ export function createArkuszeFromElemenets(
         });
     });
 
-    new_legiFragmenty
+    // new_legiFragmenty
     // .sort((a,c)=>a.id-c.id)
     // .sort((a,c)=>a.oprawa_id-c.oprawa_id)
-    .map((x)=>{return {...x, indeks:1}})
+    // .map((x)=>{return {...x, indeks:1}})
 
     // console.log("new_legiFragmenty :", new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id));
+    // console.log("new_legiFragmenty :", new_legiFragmenty);
 
     // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
 
     setArkusze(new_arkusze);
     setLegi(new_legi);
-    setLegiFragmenty(new_legiFragmenty);
+    // setLegiFragmenty(new_legiFragmenty);
+    setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
+
+
     // generateLegi(new_arkusze)
   });
 }

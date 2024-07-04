@@ -94,7 +94,7 @@ export default function RowTechElement({
               createArkuszeFromElemenets(arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech,elementyTech)
               // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
                createGrupaWykonan(row,procesy, grupy,setGrupy,legi,arkusze);
-              console.log("fragmenty tech: ", fragmentyTech)
+              // console.log("fragmenty tech: ", fragmentyTech)
             }}
             alt="Procesy"
           />

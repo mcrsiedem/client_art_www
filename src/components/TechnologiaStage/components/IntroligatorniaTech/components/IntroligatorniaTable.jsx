@@ -71,7 +71,7 @@ const LegaFragmentRow = ({ row }) => {
       <td>{row.indeks}</td>
       <td>{row.oprawa_id}</td>
       <td>{row.naklad}</td>
-      <td></td>
+      <td>idx {row.indeks}</td>
       <td></td>
     </tr>
   );

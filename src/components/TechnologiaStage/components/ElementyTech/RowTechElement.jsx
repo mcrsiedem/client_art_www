@@ -81,9 +81,10 @@ export default function RowTechElement({
       const fragmentyTech = techContext.fragmentyTech;
       const setFragmentyTech = techContext.setFragmentyTech;
       const elementyTech = techContext.elementyTech;
-      
+    
 
     return (
+      <>
       <tr  key={row.id}>
                 <div className={style.col_button}>
           <img
@@ -151,6 +152,14 @@ export default function RowTechElement({
           handleAddCard={handleAddCard}
         />
       </tr>
+      {/* <tr>
+              {arkusze
+
+            .map((row, i) => {
+              return <RowArkusze key={row.indeks} i={i} row={row} showLegi={showLegi} />;
+            })}
+      </tr> */}
+      </>
     );
 
 

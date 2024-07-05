@@ -153,15 +153,16 @@ export default function RowTechElement({
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         />
+        
       </tr>
-      <tr>
+      <>
               {arkusze
               .filter(x => x.element_id == row.id)
 
             .map((row, i) => {
               return <RowArkusze key={row.indeks} i={i} row={row} showLegi={showLegi} />;
             })}
-      </tr>
+      </>
       </>
     );
 

@@ -61,7 +61,7 @@ export default function RowArkusze  ({ row,showLegi })  {
       
       <tr              onDrop={()=>handleDrop(row.id)}
               onDragOver={handleDragOver} className={style.tr_legi} key={row.id}>
-                <td></td>
+              
         <SelectBoxArkusze row={row} />
         <td>{row.indeks}</td>
         {/* <td>{row.typ_elementu}</td> */}

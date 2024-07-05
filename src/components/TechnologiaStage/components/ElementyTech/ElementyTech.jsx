@@ -42,6 +42,7 @@ function ElementyTable({}) {
       <table className={style.table2}>
         <thead>
           <tr>
+        
             <th className={style.col_button}> </th>
             {/* <th className={style.col1}>id</th> */}
             <th className={style.col1}>#</th>
@@ -67,6 +68,7 @@ function ElementyTable({}) {
             {/* <th className={style.col_wersja}>Oprawa nr</th> */}
             <th className={style.col_button}> </th>
             <th className={style.col_button}> </th>
+            
           </tr>
         </thead>
         <tbody>

@@ -17,6 +17,8 @@ import { createLegi } from "actions/createLegi";
 import { createArkusze } from "actions/createArkusze";
 import { createGrupaWykonan } from "actions/createGrupaWykonan";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import RowArkusze from "../ArkuszeTech/components/RowArkusze";
+
 export default function RowTechElement({
     row,
     handleChangeCardElementy,
@@ -81,7 +83,7 @@ export default function RowTechElement({
       const fragmentyTech = techContext.fragmentyTech;
       const setFragmentyTech = techContext.setFragmentyTech;
       const elementyTech = techContext.elementyTech;
-    
+      const [showLegi, setShowLegi] = useState(false);
 
     return (
       <>
@@ -152,13 +154,14 @@ export default function RowTechElement({
           handleAddCard={handleAddCard}
         />
       </tr>
-      {/* <tr>
+      <tr>
               {arkusze
+              .filter(x => x.element_id == row.id)
 
             .map((row, i) => {
               return <RowArkusze key={row.indeks} i={i} row={row} showLegi={showLegi} />;
             })}
-      </tr> */}
+      </tr>
       </>
     );
 

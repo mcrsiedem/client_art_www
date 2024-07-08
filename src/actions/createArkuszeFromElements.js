@@ -336,6 +336,18 @@ export function createArkuszeFromElemenets(
     setArkusze(new_arkusze);
     setLegi(new_legi);
     // setLegiFragmenty(new_legiFragmenty);
+
+    // const poj = null
+
+    // new_legiFragmenty.forEach(x=> {
+    //   if (poj.some(z=> z.oprawa_id != x.oprawa_id)){
+    //       poj.push(x)
+    //   }
+    // })
+    // setLegiFragmenty(poj.forEach(p=> {
+
+    // }))
+    // const legi_oprawa  = new_legiFragmenty.map
     setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
 
 

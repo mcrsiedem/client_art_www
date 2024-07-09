@@ -301,6 +301,8 @@ export function createArkuszeFromElemenets(
       });
     }
 
+
+    //  tworzy fragmety leg w jedej tablicy
     fragmentyTech.forEach((frag, i) => {
       new_legi
         .filter((f) => frag.element_id == f.element_id)
@@ -308,12 +310,8 @@ export function createArkuszeFromElemenets(
         .map((l, indeks) => {
           new_legiFragmenty.push({
             id: generateMaxID(new_legiFragmenty),
-            // indeks: generateMaxIndeks(new_legiFragmenty),
-            // indeks: l.indeks,
             indeks: generateMaxIndeks(new_legiFragmenty),
-            // indeks: generateMaxIndeksOprawa(new_legiFragmenty,frag.oprawa_id),
             ...legaFragment,
-            // lega_id: generateMaxID(new_legiFragmenty),
             lega_id: l.id,
             naklad: frag.naklad,
             fragment_id: frag.id,
@@ -322,6 +320,10 @@ export function createArkuszeFromElemenets(
           });
         });
     });
+
+
+
+
 
     // new_legiFragmenty
     // .sort((a,c)=>a.id-c.id)

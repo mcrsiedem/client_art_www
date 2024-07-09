@@ -64,8 +64,37 @@ const OprawaRow = ({ row }) => {
 
 
 const LegaFragmentRow = ({ row }) => {
+
+  function handleDragStart(id){
+    //   e.preventDefault();
+console.log("drag start :", id)
+    // setDragLegaId(id)
+   }
+  function handleDrop(id) {
+
+  //   setLegi(
+  //     legi.map((t, a) => {
+  
+  //     if (t.id === dragLegaId) {
+  //       return {
+  //         ...t,
+  //         arkusz_id: id
+
+  //       };
+  //     } else {
+  //       return t;
+  //     }
+  //   })
+  // );
+  //   console.log("drop: "+id)
+  //   setDropArkuszId(id)
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
   return (
-    <tr key={row.id}>
+    <tr key={row.id} draggable  onDragStart={()=>handleDragStart(row.id)}>
       <td className={style.typ_elementu}>{_typ_elementu.filter(x => x.id == row.typ)[0].nazwa}</td>
      
       <td>{row.indeks}</td>

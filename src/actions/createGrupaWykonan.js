@@ -19,14 +19,26 @@ export function createGrupaWykonan(rowElement, procesy, grupy,setGrupy,legi,arku
   }
 
   procesy.map((proc,i)=> {
-        new_grupy.push({
-          id: i + 1,
-          indeks: i + 1,
-          nazwa: proc.nazwa
-        });
+    if(proc.nazwa_id==1){  // druk
+
+      new_grupy.push({
+        id: i + 1,
+        indeks: i + 1,
+        nazwa: proc.nazwa
+      });
+
+    }
+    if(proc.nazwa_id==3){ // falcowanie
+      new_grupy.push({
+        id: i + 1,
+        indeks: i + 1,
+        nazwa: proc.nazwa
+      });
+    }
+    
   })
 
-
+console.log("procesy: ", procesy)
     
 
    

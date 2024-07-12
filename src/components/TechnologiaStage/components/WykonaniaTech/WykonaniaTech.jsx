@@ -14,7 +14,7 @@ import DodajArkusz from "./components/DodajArkusz";
 import logoExpand from "assets/expand.svg"
 import TypElementu from "./components/TypElementu";
 import { _typ_elementu } from "utils/initialvalue";
-import { getTypElementu } from "actions/getTypElementu";
+
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>

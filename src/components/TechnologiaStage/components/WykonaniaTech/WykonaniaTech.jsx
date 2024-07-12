@@ -48,9 +48,9 @@ const WykonaniaTechHeader = () => {
 
 const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);
-  const grupy = techContext.grupy;
+  const grupaWykonan = techContext.grupaWykonan;
   const [showMenu, setShowMenu] = useState(false);
-  const [showLegi, setShowLegi] = useState(false);
+  const [showLegi, setShowLegi] = useState(true);
 
   return (
     <div className={style.table_legi}>
@@ -82,7 +82,7 @@ const WykonaniaTechTable = () => {
           </tr>
         </thead>
         <tbody onClick={()=>{setShowMenu(false)}}>
-          {grupy
+          {grupaWykonan
             // .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
               return <RowGrupa key={row.indeks} i={i} row={row} showLegi={showLegi} />;
@@ -97,6 +97,7 @@ const WykonaniaTechTable = () => {
 const RowGrupa = ({ row,showLegi }) => {
   const techContext = useContext(TechnologyContext);
   const legi = techContext.legi;
+  const wykonania = techContext.wykonania;
   const setLegi = techContext.setLegi;
   const arkusze = techContext.arkusze;
   const setArkusze = techContext.setArkusze;
@@ -161,12 +162,12 @@ const RowGrupa = ({ row,showLegi }) => {
       <UsunArkusz row={row} />
       <DodajArkusz row={row} />
     </tr>
-    {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
+    {showLegi &&(<>     {wykonania.filter(x=> x.id == row.id).map( (l,i) => {
       return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
       <td></td>
       <td></td>
       <td  >{i+1}</td>
-      <td>lega {l.indeks}</td>
+      <td>wyk. {l.indeks}</td>
       <td></td>
       <td>{l.naklad}</td>
       <td>{l.ilosc_leg}</td>

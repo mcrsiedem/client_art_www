@@ -2,10 +2,11 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
-export function createGrupaWykonan(rowElement, procesy, grupy,setGrupy,legi,arkusze) {
+export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWykonan,legi,arkusze,wykonania, setWykonania) {
 
 
   const new_grupy = [];
+  const new_wykonania = [];
 
   const grupa ={
     id:1,
@@ -27,6 +28,19 @@ export function createGrupaWykonan(rowElement, procesy, grupy,setGrupy,legi,arku
         nazwa: proc.nazwa
       });
 
+      arkusze
+      .filter(a => a.element_id == proc.element_id)
+      .map(a=>{
+        new_wykonania.push({
+          id: i + 1,
+          indeks: i + 1,
+          nazwa: proc.nazwa,
+          element_id: a.element_id,
+          arkusz_id: a.id,
+          proces_id: proc.id
+        });
+      })
+
     }
     if(proc.nazwa_id==3){ // falcowanie
       new_grupy.push({
@@ -34,16 +48,37 @@ export function createGrupaWykonan(rowElement, procesy, grupy,setGrupy,legi,arku
         indeks: i + 1,
         nazwa: proc.nazwa
       });
+
+      legi
+      .filter(a => a.element_id == proc.element_id)
+      .map(a=>{
+        new_wykonania.push({
+          id: i + 1,
+          indeks: i + 1,
+          nazwa: proc.nazwa,
+          element_id: a.element_id,
+          arkusz_id: a.id,
+          proces_id: proc.id
+        });
+      })
+
+
+
+
+
+
+
+
     }
     
   })
 
-console.log("procesy: ", procesy)
-    
+// console.log("procesy: ", procesy)
+// console.log("arkusze: ", arkusze) 
 
    
-  setGrupy(new_grupy);
-
+setGrupaWykonan(new_grupy);
+setWykonania(new_wykonania)
   // generateLegi(new_arkusze)
 
 }

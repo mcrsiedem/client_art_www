@@ -52,7 +52,7 @@ export const TechnologyContextProvider = ({children})=>{
 
         // grupa - zbiór wykonań jednego procesu
         // wykonanie - wykonanie jednego procesu na arkuszu albo ledze
-        const [grupy, setGrupy] = useState([]);
+        const [grupaWykonan, setGrupaWykonan] = useState([]);
         const [wykonania, setWykonania] = useState([]);
 
 
@@ -219,7 +219,7 @@ export const TechnologyContextProvider = ({children})=>{
                     handleUpdateRowElementyTech,
                     dragLegaId,setDragLegaId,
                     dropArkuszId,setDropArkuszId,
-                    grupy, setGrupy,
+                    grupaWykonan, setGrupaWykonan,
                     wykonania, setWykonania
        
                 }}

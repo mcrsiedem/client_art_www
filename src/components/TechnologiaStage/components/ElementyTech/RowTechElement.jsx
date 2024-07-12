@@ -72,8 +72,10 @@ export default function RowTechElement({
   const legiFragmenty = techContext.legiFragmenty;
   const setLegiFragmenty = techContext.setLegiFragmenty;
   const procesy = techContext.procesyElementow;
-  const grupy = techContext.grupy;
-  const setGrupy = techContext.setGrupy;
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
   const oprawaTech = techContext.oprawaTech;
   const setOprawaTech = techContext.setOprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
@@ -104,7 +106,7 @@ export default function RowTechElement({
                 elementyTech
               );
               // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
-              createGrupaWykonan(row, procesy, grupy, setGrupy, legi, arkusze);
+              createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
               // console.log("fragmenty tech: ", fragmentyTech)
             }}
             alt="Procesy"

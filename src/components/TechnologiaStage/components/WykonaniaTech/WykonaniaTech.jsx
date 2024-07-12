@@ -13,6 +13,8 @@ import DodajArkusz from "./components/DodajArkusz";
 
 import logoExpand from "assets/expand.svg"
 import TypElementu from "./components/TypElementu";
+import { _typ_elementu } from "utils/initialvalue";
+import { getTypElementu } from "actions/getTypElementu";
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>
@@ -171,7 +173,7 @@ const RowGrupa = ({ row,showLegi }) => {
       <td></td>
       <td>{l.naklad}</td>
       <td>{l.ilosc_leg}</td>
-      <td>{l.uwagi}</td>
+      <td>{ _typ_elementu.filter(x => x.id == l.typ_elementu)[0].nazwa}</td>
       {/* <td>{row.element_id}</td> */}
       {/* <td>{row.ilosc_stron}</td> */}
       <td></td>

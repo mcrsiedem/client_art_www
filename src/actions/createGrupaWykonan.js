@@ -37,7 +37,8 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
           nazwa: proc.nazwa,
           element_id: a.element_id,
           arkusz_id: a.id,
-          proces_id: proc.id
+          proces_id: proc.id,
+          typ_elementu: a.typ_elementu
         });
       })
 
@@ -58,7 +59,8 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
           nazwa: proc.nazwa,
           element_id: a.element_id,
           arkusz_id: a.id,
-          proces_id: proc.id
+          proces_id: proc.id,
+          typ_elementu: a.typ_elementu
         });
       })
 
@@ -73,8 +75,8 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
     
   })
 
-// console.log("procesy: ", procesy)
-// console.log("arkusze: ", arkusze) 
+console.log("procesy: ", procesy)
+console.log("arkusze: ", arkusze) 
 
    
 setGrupaWykonan(new_grupy);

@@ -22,7 +22,8 @@
     flex-direction: column;
     height: 100px;
     width: 120px;
-  
+    /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+
     
     
 }
@@ -37,7 +38,10 @@
     flex-direction: column;
     height: 100px;
     width: 120px;
-    border-bottom: 1px solid rgb(181, 181, 181) ;
+    /* border-bottom: 2px solid rgb(181, 181, 181) ; */
+    border-bottom: 2px solid rgb(126, 182, 255) ;
+    /* border: rgb(126, 182, 255) 1px dashed;
+    border-radius: 20px; */
 }
 .icon{
     width: 60px;
@@ -53,3 +57,13 @@
 
 }
 
+.btn{
+ 
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    color: #fff;
+    margin: 5px;
+  }

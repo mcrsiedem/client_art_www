@@ -17,16 +17,6 @@ export default function BookMaker({
   return (
     <div className={style.container}>
       <div className={style.bindingContainer}>
-        {/* {binding
-          .filter((bind1) => bind1.id !== 10) // oprawa id 1 n/d
-          .map((bind) => (
-            <CardBinding
-              bind={bind}
-              binding={binding}
-              setBinding={setBinding}
-              setShowElement={setShowElement}
-            />
-          ))} */}
 
           <Oprawa  
               binding={binding}

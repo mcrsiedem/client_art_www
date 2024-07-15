@@ -39,7 +39,7 @@
     height: 100px;
     width: 120px;
     /* border-bottom: 2px solid rgb(181, 181, 181) ; */
-    border-bottom: 2px solid rgb(126, 182, 255) ;
+    border-bottom: 1px solid rgb(126, 182, 255) ;
     /* border: rgb(126, 182, 255) 1px dashed;
     border-radius: 20px; */
 }

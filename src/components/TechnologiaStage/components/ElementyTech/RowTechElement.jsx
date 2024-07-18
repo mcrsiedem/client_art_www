@@ -103,10 +103,11 @@ export default function RowTechElement({
                 setOprawaTech,
                 fragmentyTech,
                 setFragmentyTech,
-                elementyTech
+                elementyTech,
+                row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
               );
               // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
-              createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
+              // createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
               // console.log("fragmenty tech: ", fragmentyTech)
             }}
             alt="Procesy"

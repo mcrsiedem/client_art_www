@@ -13,7 +13,8 @@ export function createArkuszeFromElemenets(
   setOprawaTech,
   fragmentyTech,
   setFragmentyTech,
-  elementyTech
+  elementyTech,
+  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania
 ) {
   // generuje arkusze i legi z ilości stron elementu
   // row to jest ElementyTechRow czyli np okładka lub środek
@@ -21,6 +22,20 @@ export function createArkuszeFromElemenets(
   const new_arkusze = [];
   const new_legi = [];
   const new_legiFragmenty = [];
+  const new_grupy = [];
+  const new_wykonania = [];
+
+  const grupa ={
+    id:1,
+    element_id:1,
+    proces_id:1,
+    produkt_id:1,
+    technologia_id:1,
+    zamowienie_id:1,
+    maszyna_id:1
+
+  }
+
   // console.log("elementyTech", elementyTech);
 
   elementyTech.map((row) => {
@@ -325,6 +340,7 @@ export function createArkuszeFromElemenets(
 
 
 
+
     // new_legiFragmenty
     // .sort((a,c)=>a.id-c.id)
     // .sort((a,c)=>a.oprawa_id-c.oprawa_id)
@@ -337,6 +353,8 @@ export function createArkuszeFromElemenets(
 
     setArkusze(new_arkusze);
     setLegi(new_legi);
+
+
     // setLegiFragmenty(new_legiFragmenty);
 
     // const poj = null
@@ -355,6 +373,65 @@ export function createArkuszeFromElemenets(
 
     // generateLegi(new_arkusze)
   });
+
+  procesy.map((proc,i)=> {
+    if(proc.nazwa_id==1){  // druk
+
+      new_grupy.push({
+        id: i + 1,
+        indeks: i + 1,
+        nazwa: proc.nazwa
+      });
+
+      new_arkusze
+      .filter(a => a.element_id == proc.element_id)
+      .map(a=>{
+        new_wykonania.push({
+          id: i + 1,
+          indeks: i + 1,
+          nazwa: proc.nazwa,
+          element_id: a.element_id,
+          arkusz_id: a.id,
+          proces_id: proc.id,
+          typ_elementu: a.typ_elementu
+        });
+      })
+
+    }
+    if(proc.nazwa_id==3){ // falcowanie
+      new_grupy.push({
+        id: i + 1,
+        indeks: i + 1,
+        nazwa: proc.nazwa
+      });
+
+      new_legi
+      .filter(a => a.element_id == proc.element_id)
+      .map(a=>{
+        new_wykonania.push({
+          id: i + 1,
+          indeks: i + 1,
+          nazwa: proc.nazwa,
+          element_id: a.element_id,
+          arkusz_id: a.id,
+          proces_id: proc.id,
+          typ_elementu: a.typ_elementu
+        });
+      })
+
+
+
+
+
+
+
+
+    }
+    
+  })
+  setGrupaWykonan(new_grupy);
+  setWykonania(new_wykonania)
+
 }
 
 

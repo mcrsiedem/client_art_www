@@ -380,7 +380,11 @@ export function createArkuszeFromElemenets(
       new_grupy.push({
         id: i + 1,
         indeks: i + 1,
-        nazwa: proc.nazwa
+        nazwa: proc.nazwa,
+        poczatek: 1,
+        czas: 1,
+        koniec: 1,
+        procesor_id:1
       });
 
       new_arkusze
@@ -393,7 +397,12 @@ export function createArkuszeFromElemenets(
           element_id: a.element_id,
           arkusz_id: a.id,
           proces_id: proc.id,
-          typ_elementu: a.typ_elementu
+          typ_elementu: a.typ_elementu,
+          poczatek: 1,
+          czas: 1,
+          koniec: 1,
+          procesor_id:1,
+          grupa_id:1
         });
       })
 
@@ -402,7 +411,11 @@ export function createArkuszeFromElemenets(
       new_grupy.push({
         id: i + 1,
         indeks: i + 1,
-        nazwa: proc.nazwa
+        nazwa: proc.nazwa,
+        poczatek: 1,
+        czas: 1,
+        koniec: 1,
+        procesor_id:1
       });
 
       new_legi
@@ -415,7 +428,12 @@ export function createArkuszeFromElemenets(
           element_id: a.element_id,
           arkusz_id: a.id,
           proces_id: proc.id,
-          typ_elementu: a.typ_elementu
+          typ_elementu: a.typ_elementu,
+          poczatek: 1,
+          czas: 1,
+          koniec: 1,
+          procesor_id:1,
+          grupa_id:1
         });
       })
 

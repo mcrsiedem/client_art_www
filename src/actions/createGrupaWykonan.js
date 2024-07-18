@@ -5,6 +5,8 @@ import { IP } from "../utils/Host";
 export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWykonan,legi,arkusze,wykonania, setWykonania) {
 
 
+  // fukncja przeniesiona do createArkuszeFromElements - do skasowania
+
   const new_grupy = [];
   const new_wykonania = [];
 

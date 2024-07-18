@@ -420,18 +420,12 @@ export function createArkuszeFromElemenets(
       })
 
 
-
-
-
-
-
-
     }
     
   })
   setGrupaWykonan(new_grupy);
   setWykonania(new_wykonania)
-
+  console.log("wykonania: ",new_wykonania)
 }
 
 

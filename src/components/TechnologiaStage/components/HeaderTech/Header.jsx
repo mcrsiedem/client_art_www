@@ -18,7 +18,16 @@ export default function Header(){
         <LeftPane>
          {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
          <p>Karta technologiczna...  {techContext.dane?.id}</p> <button onClick={()=>{
-            console.log(techContext.elementy)
+            console.clear()
+            console.log("Karta Technologiczna: ")
+            console.log("Produkt: ",techContext.produktyTech)
+            console.log("Elementy: ",techContext.elementyTech)
+            console.log("Procesy elementów: ",techContext.procesyElementowTech)
+            console.log("Arkusze: ",techContext.arkusze)
+            console.log("Legi: ",techContext.legi)
+            console.log("Grupy wykonan: ",techContext.grupaWykonan)
+            console.log("Wykonania: ",techContext.wykonania)
+
          }}>OK</button>
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}
         </LeftPane>

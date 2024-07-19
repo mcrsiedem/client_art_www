@@ -186,6 +186,13 @@ export default function RowTechElement({
   );
 
   function handleAddCard(card) {
+
+    
+  }
+
+  function handleAddCard2(card) {
+
+    //do skasowania
     const newElementy = elementy.slice();
 
     axios
@@ -227,9 +234,6 @@ export default function RowTechElement({
         setElementy(newElementy);
       });
 
-    // setElementy((prev) =>prev.map((t)=> {return t}));
-
-    //-------------------
     const newFragmenty = fragmenty.slice();
 
     newFragmenty.map((x) => {

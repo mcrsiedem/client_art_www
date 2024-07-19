@@ -93,7 +93,7 @@ const WykonaniaTechTable = () => {
             .map((row, i) => {
               return (
                 <RowGrupa
-                  key={row.indeks}
+                  key={row.indeks+"x"}
                   i={i}
                   row={row}
                   showLegi={showLegi}
@@ -187,7 +187,7 @@ const RowGrupa = ({ row, showLegi }) => {
                   draggable
                   onDragStart={() => handleDragStart(l.id)}
                   className={style.tr_legi_mini}
-                  key={l.id}
+                  key={l.id + i}
                 >
                   <td></td>
                   <td></td>

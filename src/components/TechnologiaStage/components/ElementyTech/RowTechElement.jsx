@@ -80,6 +80,8 @@ export default function RowTechElement({
   const setOprawaTech = techContext.setOprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
 
@@ -185,9 +187,31 @@ export default function RowTechElement({
     </>
   );
 
-  function handleAddCard(card) {
-
+  function handleAddCard(rowTechElement) {
+    const newElementyTech = elementyTech.slice();
     
+    newElementyTech.push({
+      id: Math.max(...newElementyTech.map((f) => f.id)) + 1,
+      zamowienie_id: rowTechElement.zamowienie_id,
+      produkt_id: rowTechElement.produkt_id,
+      naklad: rowTechElement.naklad,
+      indeks: Math.max(...newElementyTech.map((f) => f.indeks)) + 1,
+      typ: rowTechElement.typ,
+      nazwa: rowTechElement.nazwa,
+      ilosc_stron: rowTechElement.ilosc_stron,
+      format_x: rowTechElement.format_x,
+      format_y: rowTechElement.format_y,
+      papier_id: rowTechElement.papier_id,
+      gramatura_id: rowTechElement.gramatura_id,
+      papier_info: rowTechElement.papier_info,
+      uwagi: rowTechElement.uwagi,
+      lega: rowTechElement.lega,
+      ilosc_leg: rowTechElement.ilosc_leg,
+    });
+
+    newElementyTech.sort((a, b) => a.indeks - b.indeks);
+    setElementyTech(newElementyTech);
+
   }
 
   function handleAddCard2(card) {

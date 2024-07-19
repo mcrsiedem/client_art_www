@@ -99,6 +99,34 @@ export const TechnologyContextProvider = ({children})=>{
       }
 
 
+      function handleChangeCardFragmenty_i_Elementy_Tech(card) {
+        // zmienia typ fragmentów gdy typ elementu jest zmieniany
+        setElementyTech(
+          elementyTech.map((t) => {
+            if (t.id === card.id) {
+              return card;
+            } else {
+              return t;
+            }
+          })
+        );
+    
+        setFragmentyTech(
+          fragmentyTech.map((t, a) => {
+          // console.log("oprawa id" +prev)
+          if (t.element_id === card.id) {
+            return {
+              ...t,
+              typ: card.typ
+    
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+      }
+
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
@@ -220,7 +248,8 @@ export const TechnologyContextProvider = ({children})=>{
                     dragLegaId,setDragLegaId,
                     dropArkuszId,setDropArkuszId,
                     grupaWykonan, setGrupaWykonan,
-                    wykonania, setWykonania
+                    wykonania, setWykonania,
+                    handleChangeCardFragmenty_i_Elementy_Tech
        
                 }}
             >

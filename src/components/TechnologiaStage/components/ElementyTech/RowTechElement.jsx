@@ -44,12 +44,12 @@ export default function RowTechElement({
 
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
-    if (elementy.length !== 1) {
-      setElementy(elementy.filter((x) => x.indeks !== indeks));
-      setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+    if (elementyTech.length !== 1) {
+      setElementyTech(elementyTech.filter((x) => x.indeks !== indeks));
+      setFragmentyTech(fragmentyTech.filter((x) => x.element_id !== id));
     }
 
-    setElementy((prev) =>
+    setElementyTech((prev) =>
       prev.map((t, a) => {
         if (t.indeks > indeks) {
           return {
@@ -81,6 +81,7 @@ export default function RowTechElement({
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
+  const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
 
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
@@ -119,10 +120,7 @@ export default function RowTechElement({
         <td>{row.indeks}</td>
         <Typ
           row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          handleChangeCardFragmenty_i_Elementy={
-            handleChangeCardFragmenty_i_Elementy
-          }
+          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech }
         />
         <Naklad row={row} />
         <Nazwa row={row} />
@@ -365,8 +363,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
 
 function Typ({
   row,
-  handleChangeCardElementy,
-  handleChangeCardFragmenty_i_Elementy,
+  handleChangeCardFragmenty_i_Elementy_Tech,
 }) {
   //row - row element
   return (
@@ -375,7 +372,7 @@ function Typ({
         className={style.select}
         defaultValue={row.typ}
         onChange={(e) => {
-          handleChangeCardFragmenty_i_Elementy({
+          handleChangeCardFragmenty_i_Elementy_Tech({
             ...row,
             typ: e.target.value,
           });

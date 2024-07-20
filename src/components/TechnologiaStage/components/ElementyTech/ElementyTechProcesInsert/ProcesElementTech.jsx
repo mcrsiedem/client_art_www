@@ -5,6 +5,8 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
 import { TechnologyContext } from "context/TechnologyContext";
+import { reg_txt } from "utils/initialvalue";
+import { reg_int } from "utils/initialvalue";
 export default function ProcesElementTech() {
 
 
@@ -34,13 +36,13 @@ function Header() {
   const rowElement = techContext.selectedElementTechROW;
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} {rowElement.naklad} szt. {rowElement.nazwa}</p> </p> 
+      <p className={style.title}>Procesy Technologia - <p className={style.title2}>{appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} {rowElement.naklad} szt. {rowElement.nazwa}</p> </p> 
       <Zamknij/>
     </div>
   );
 }
 function Zamknij() {
-  const modalContext = useContext(ModalInsertContext);
+
   const techContext = useContext(TechnologyContext);
 
   return (
@@ -57,16 +59,18 @@ function Zamknij() {
 }
 
 function Footer() {
-  const modalContext = useContext(ModalInsertContext);
-  const setProcesyElementow = modalContext.setProcesyElementow;
-  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+  const techContext = useContext(TechnologyContext);
+
+
+  const setProcesyElementowTech = techContext.setProcesyElementowTech;
+  const procesyElementowTechTemporary = techContext.procesyElementowTechTemporary;
   return (
     <div className={style.footer}>
       <button
         className={style.btn}
         onClick={() => {
-          modalContext.setShowElementyProcesyInsert(false);
-          setProcesyElementow(procesyElementowTemporary)
+          techContext.setShowElementyTechProcesyInsert(false);
+          setProcesyElementowTech(procesyElementowTechTemporary)
         }}
       >
         Zapisz
@@ -114,19 +118,13 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                {/* <td>{row.indeks}</td> */}
-
-                {/* <td>{row.id}</td>
-                <td>{row.zamowienie_id}</td>
-                <td>{row.produkt_id}</td>
-                <td>{row.element_id}</td> */}
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
-                <td>{row.front_ilosc}</td>
-                <td>{row.back_ilosc}</td>
-                <td>{row.front_kolor}</td>
-                <td>{row.back_kolor}</td>
-                <td></td>
+                <FrontIlosc row={row}/>
+                <BackIlosc row={row}/>
+                <FrontKolor row={row}/>
+                <BackKolor row={row}/>
+                <Info row={row}/>
               </tr>
             );
           })}
@@ -203,3 +201,103 @@ const ProcessTyp = ({ row }) => {
     </td>
   );
 };
+
+const Info = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        defaultValue={row.info}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              info: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const BackKolor = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        defaultValue={row.back_kolor}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              back_kolor: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const FrontKolor = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        defaultValue={row.front_kolor}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              front_kolor: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const FrontIlosc = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        defaultValue={row.front_ilosc}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              front_ilosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const BackIlosc = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        defaultValue={row.back_ilosc}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              back_ilosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}

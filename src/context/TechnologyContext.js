@@ -130,6 +130,19 @@ export const TechnologyContextProvider = ({children})=>{
       );
       }
 
+
+      const handleUpdateRowProcesyElementowTech = (row) => {
+        setProcesyElementowTechTemporary(
+          procesyElementowTechTemporary.map((t) => {
+            if (t.id == row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
+
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
@@ -254,6 +267,7 @@ export const TechnologyContextProvider = ({children})=>{
                     grupaWykonan, setGrupaWykonan,
                     wykonania, setWykonania,
                     handleChangeCardFragmenty_i_Elementy_Tech,
+                    handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW
        

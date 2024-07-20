@@ -129,20 +129,13 @@ export default function RowTechElement({
         <NettoY row={row} />
         <PapierSelect
           row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychWykonczen={listaDostepnychWykonczen}
-          setListaDostepnychWykonczen={setListaDostepnychWykonczen}
-          listaPapierow={listaPapierow}
-          setListaGramatur={setListaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
-          setListaDostepnychGrmatur={setListaDostepnychGrmatur}
+          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+
         />
         <Gramatura
           row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
+          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+
         />
         <PapierInfo
           row={row}
@@ -391,14 +384,17 @@ function Typ({
 
 function PapierSelect({
   row,
-  handleChangeCardElementy,
-  setListaDostepnychGrmatur,
+  handleChangeCardFragmenty_i_Elementy_Tech,
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const listaGramatur = appcontext.listaGramatur;
   const listaGramaturSelect = appcontext.listaGramaturSelect;
   const setListaGramaturSelect = appcontext.setListaGramaturSelect;
+
+    // listaPapierów = wszystkie papiery
+  // listaGramatur = wszystkie gramatury
+  // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
     <td>
       <select
@@ -412,10 +408,10 @@ function PapierSelect({
           setListaGramaturSelect(
             listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
           );
-          // handleChangeCardElementy({
-          //   ...row,
-          //   papier_id: e.target.value,
-          // });
+          handleChangeCardFragmenty_i_Elementy_Tech({
+            ...row,
+            papier_id: e.target.value,
+          });
         }}
       >
         {}
@@ -431,21 +427,25 @@ function PapierSelect({
 
 function Gramatura({
   row,
-  handleChangeCardElementy,
-  listaDostepnychGramatur,
+  handleChangeCardFragmenty_i_Elementy_Tech,
+
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const listaGramatur = appcontext.listaGramatur;
   const listaGramaturSelect = appcontext.listaGramaturSelect;
   const setListaGramaturSelect = appcontext.setListaGramaturSelect;
+
+  // listaPapierów = wszystkie papiery
+  // listaGramatur = wszystkie gramatury
+  // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
     <td>
       <select
         className={style.select}
         defaultValue={row.gramatura_id}
         onChange={(e) =>
-          handleChangeCardElementy({
+          handleChangeCardFragmenty_i_Elementy_Tech({
             ...row,
             gramatura_id: e.target.value,
           })

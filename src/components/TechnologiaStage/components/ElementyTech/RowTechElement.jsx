@@ -290,9 +290,14 @@ function Procesy({ row }) {
   const appContext = useContext(AppContext);
   const techontext = useContext(TechnologyContext);
 
+
+
   const procesyElementow = techontext.procesyElementow;
-  const setProcesyElementowTemporary =
-    contextModalInsert.setProcesyElementowTemporary;
+  const setProcesyElementowTemporary =  contextModalInsert.setProcesyElementowTemporary;
+
+
+  const procesyElementowTech = techontext.procesyElementowTech;
+  const setProcesyElementowTechTemporary =  techontext.setProcesyElementowTechTemporary;
 
   return (
     <td className={style.col_button} id="procesy">
@@ -300,10 +305,10 @@ function Procesy({ row }) {
         className={style.expand}
         src={Logo_ustawienia}
         onClick={() => {
-          contextModalInsert.setShowElementyProcesyInsert(true);
-          contextModalInsert.setSelectedElementROW(row);
+          techontext.setShowElementyTechProcesyInsert(true);
+          techontext.setSelectedElementTechROW(row);
           //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
-          setProcesyElementowTemporary(procesyElementow);
+          setProcesyElementowTechTemporary(procesyElementowTech);
           // console.log("typ: ",row)
         }}
         alt="Procesy"

@@ -34,6 +34,9 @@ export const TechnologyContextProvider = ({children})=>{
         const [fragmentyTech, setFragmentyTech] = useState([]);
         const [oprawaTech, setOprawaTech] = useState([]);
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
+        const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState([]); // aby mozna było zamknąc bez zapisywania
+        const [showElementyTechProcesyInsert, setShowElementyTechProcesyInsert] =     useState(false);
+        const [selectedElementTechROW,setSelectedElementTechROW] = useState(null)
 
         const [legi, setLegi] = useState([]);
         const [legiFragmenty, setLegiFragmenty] = useState([]);
@@ -236,6 +239,7 @@ export const TechnologyContextProvider = ({children})=>{
                     fragmentyTech, setFragmentyTech,
                     oprawaTech, setOprawaTech,
                     procesyElementowTech, setProcesyElementowTech,
+                    procesyElementowTechTemporary, setProcesyElementowTechTemporary,
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,
                     legiFragmenty, setLegiFragmenty,
@@ -249,7 +253,9 @@ export const TechnologyContextProvider = ({children})=>{
                     dropArkuszId,setDropArkuszId,
                     grupaWykonan, setGrupaWykonan,
                     wykonania, setWykonania,
-                    handleChangeCardFragmenty_i_Elementy_Tech
+                    handleChangeCardFragmenty_i_Elementy_Tech,
+                    showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
+                    selectedElementTechROW,setSelectedElementTechROW
        
                 }}
             >

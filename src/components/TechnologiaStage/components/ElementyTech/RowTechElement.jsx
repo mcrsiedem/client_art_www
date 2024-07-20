@@ -22,12 +22,12 @@ import RowArkusze from "../ArkuszeTech/components/RowArkusze";
 export default function RowTechElement({
   row,
   handleChangeCardElementy,
-  listaPapierow,
-  setListaGramatur,
+  // listaPapierow,
+  // setListaGramatur,
   procesyElementow,
   setShowElementyProcesyInsert,
-  handleChangeCardFragmenty_i_Elementy,
-  handleChangeCardFragmenty_i_Elementy_IloscStron,
+  // handleChangeCardFragmenty_i_Elementy,
+  // handleChangeCardFragmenty_i_Elementy_IloscStron,
 }) {
   const appcontext = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
@@ -37,10 +37,33 @@ export default function RowTechElement({
   const fragmenty = techContext.fragmenty;
   const setFragmenty = techContext.setFragmenty;
 
-  const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
-    useState(listaGramatur);
-  const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-    useState(listaGramatur);
+  // const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
+  //   useState(listaGramatur);
+  // const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
+  //   useState(listaGramatur);
+
+
+
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const procesy = techContext.procesyElementow;
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
+  const oprawaTech = techContext.oprawaTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
+
+  const elementyTech = techContext.elementyTech;
+  const [showLegi, setShowLegi] = useState(false);
 
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
@@ -65,26 +88,6 @@ export default function RowTechElement({
     console.log("Usun");
   };
 
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const procesy = techContext.procesyElementow;
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const oprawaTech = techContext.oprawaTech;
-  const setOprawaTech = techContext.setOprawaTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const setFragmentyTech = techContext.setFragmentyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
-
-  const elementyTech = techContext.elementyTech;
-  const [showLegi, setShowLegi] = useState(false);
 
   return (
     <>

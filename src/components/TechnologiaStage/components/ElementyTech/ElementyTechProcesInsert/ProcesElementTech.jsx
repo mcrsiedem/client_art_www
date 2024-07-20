@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import style from "./ProcesElement.module.css";
+import style from "./ProcesElementTech.module.css";
 import iconX from "assets/xDark.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
-export default function ProcesElement() {
+import { TechnologyContext } from "context/TechnologyContext";
+export default function ProcesElementTech() {
 
 
   return (
@@ -27,9 +28,10 @@ function Window({children}) {
 
 
 function Header() {
+  const techContext = useContext(TechnologyContext);
   const modalContext = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
-  const rowElement = modalContext.selectedElementROW;
+  const rowElement = techContext.selectedElementTechROW;
   return (
     <div className={style.header}>
       <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu.filter(x => x.id == rowElement.typ)[0].nazwa} {rowElement.naklad} szt. {rowElement.nazwa}</p> </p> 
@@ -39,14 +41,14 @@ function Header() {
 }
 function Zamknij() {
   const modalContext = useContext(ModalInsertContext);
-
+  const techContext = useContext(TechnologyContext);
 
   return (
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
-        modalContext.setShowElementyProcesyInsert(false);
+        techContext.setShowElementyTechProcesyInsert(false);
  
       }}
       alt="Procesy"
@@ -74,14 +76,16 @@ function Footer() {
 }
 
 function Table() {
-  const contexApp = useContext(AppContext);
-  const contexModal = useContext(ModalInsertContext);
-  const procesyElementow = contexModal.procesyElementow;
-  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
-  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  const techContext = useContext(TechnologyContext);
+  // const contexApp = useContext(AppContext);
+  // const contexModal = useContext(ModalInsertContext);
+  // const procesyElementow = contexModal.procesyElementow;
+  const procesyElementowTechTemporary = techContext.procesyElementowTechTemporary;
+  const procesyElementowTech = techContext.procesyElementowTech;
+  const setProcesyElementowTechTemporary = techContext.setProcesyElementowTechTemporary;
 
 
-  const selectedElementROW = contexModal.selectedElementROW;
+  const selectedElementTechROW = techContext.selectedElementTechROW;
 
   return (
     <div className={style.main}>
@@ -103,8 +107,8 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementowTemporary
-          .filter(x => x.element_id == selectedElementROW.id)
+          {procesyElementowTech
+          .filter(x => x.element_id == selectedElementTechROW.id)
           .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => {
             return (
@@ -129,7 +133,7 @@ function Table() {
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)}>Dodaj nowy proces</button>
       </div>
      
     </div>
@@ -169,7 +173,8 @@ const ProcesName = ({ row }) => {
 const ProcessTyp = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
-  const selectedElementROW = contexModal.selectedElementROW;
+  const techContext = useContext(TechnologyContext);
+  const selectedElementTechROW = techContext.selectedElementTechROW;
 
   return (
     <td>
@@ -187,7 +192,7 @@ const ProcessTyp = ({ row }) => {
         {}
         {contexApp.procesList
         // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
-        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id && x.indeks == row.indeks)[0].nazwa_id)
+        .filter(p=> p.nazwa_id == techContext.procesyElementowTechTemporary.filter(x=> x.element_id == selectedElementTechROW.id && x.indeks == row.indeks)[0].nazwa_id)
 
                .map((option) => (
           <option key={option.id} value={option.id}>

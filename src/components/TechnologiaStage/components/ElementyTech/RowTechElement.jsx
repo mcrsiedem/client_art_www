@@ -305,6 +305,7 @@ function Procesy({ row }) {
         className={style.expand}
         src={Logo_ustawienia}
         onClick={() => {
+          
           techontext.setShowElementyTechProcesyInsert(true);
           techontext.setSelectedElementTechROW(row);
           //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
@@ -313,7 +314,7 @@ function Procesy({ row }) {
         }}
         alt="Procesy"
       />
-      {procesyElementow
+      {procesyElementowTech
         .filter((frag) => frag.element_id == row.id)
         .sort((a, b) => a.indeks - b.indeks)
         .map((pr, i) => appContext.showMeProcessName(pr.nazwa_id) + " ")}

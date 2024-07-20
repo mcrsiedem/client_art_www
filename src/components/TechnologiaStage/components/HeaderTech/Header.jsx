@@ -27,6 +27,8 @@ export default function Header(){
             console.log("Legi: ",techContext.legi)
             console.log("Grupy wykonan: ",techContext.grupaWykonan)
             console.log("Wykonania: ",techContext.wykonania)
+            console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
+            console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
 
          }}>OK</button>
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}

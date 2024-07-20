@@ -10,11 +10,14 @@ import LegiTech from "./components/LegiTech/LegiTech";
 import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
 import WykonaniaTech from "./components/WykonaniaTech/WykonaniaTech";
 import IntroligatorniaTech from "./components/IntroligatorniaTech/IntroligatorniaTech";
+import ProcesElementTech from "./components/ElementyTech/ElementyTechProcesInsert/ProcesElementTech";
 
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
   const openTechnologia = techContext.openTechnologia;
+  const showElementyTechProcesyInsert = techContext.showElementyTechProcesyInsert;
+  const procesyElementowTech = techContext.procesyElementowTech;
 
   useEffect(() => {
     if (openTechnologia) {
@@ -40,7 +43,15 @@ export default function TechnologiaStage() {
               </div>
               
         </div>
+        {showElementyTechProcesyInsert && (
+        <ProcesElementTech
+        procesyElementowTech={procesyElementowTech}
+
+
+        />
+      )}
       </div>
+      
     );
   }
 }

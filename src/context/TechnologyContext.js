@@ -1,7 +1,8 @@
 import axios from "axios";
 import { IP } from "utils/Host";
 import { getTechnology } from "actions/getTechnolgy";
-import { useEffect,createContext,useState, useCallback } from "react";;
+import { useEffect,createContext,useState, useCallback } from "react";import { initialProcesy } from "utils/initialvalue";
+;
 
 
 
@@ -34,7 +35,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [fragmentyTech, setFragmentyTech] = useState([]);
         const [oprawaTech, setOprawaTech] = useState([]);
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
-        const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState([]); // aby mozna było zamknąc bez zapisywania
+        const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState(initialProcesy); // aby mozna było zamknąc bez zapisywania
         const [showElementyTechProcesyInsert, setShowElementyTechProcesyInsert] =     useState(false);
         const [selectedElementTechROW,setSelectedElementTechROW] = useState(null)
 

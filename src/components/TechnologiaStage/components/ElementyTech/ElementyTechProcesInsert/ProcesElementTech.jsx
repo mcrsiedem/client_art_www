@@ -116,6 +116,7 @@ function Table() {
           .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => {
             return (
+              
               <tr key={row.id}>
                 <td>{i+1}</td>
                 <ProcesName row={row}/>
@@ -142,16 +143,17 @@ function Table() {
 const ProcesName = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
-
+  const techContext = useContext(TechnologyContext);
   return (
     <td>
       <select
         className={style.select}
         defaultValue={row.nazwa_id}
         onChange={(e) => {
+          console.log("proces "+ e.target.value)
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
-          contexModal.handleUpdateRowProcesyElementow({
+          techContext.handleUpdateRowProcesyElementowTech({
             ...row,
             nazwa_id: e.target.value,
           });
@@ -181,7 +183,7 @@ const ProcessTyp = ({ row }) => {
         defaultValue={row.proces_id}
         onChange={(e) => {
           console.log(e.target.value)
-          contexModal.handleUpdateRowProcesyElementow({
+          techContext.handleUpdateRowProcesyElementowTech({
             ...row,
             proces_id: e.target.value,
           });

@@ -397,6 +397,8 @@ function PapierSelect({
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const listaGramatur = appcontext.listaGramatur;
+  const listaGramaturSelect = appcontext.listaGramaturSelect;
+  const setListaGramaturSelect = appcontext.setListaGramaturSelect;
   return (
     <td>
       <select
@@ -407,7 +409,7 @@ function PapierSelect({
         className={style.select}
         defaultValue={row.papier_id}
         onChange={(e) => {
-          setListaDostepnychGrmatur(
+          setListaGramaturSelect(
             listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
           );
           // handleChangeCardElementy({
@@ -435,6 +437,8 @@ function Gramatura({
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const listaGramatur = appcontext.listaGramatur;
+  const listaGramaturSelect = appcontext.listaGramaturSelect;
+  const setListaGramaturSelect = appcontext.setListaGramaturSelect;
   return (
     <td>
       <select
@@ -448,7 +452,7 @@ function Gramatura({
         }
       >
         <option value="0">wybierz</option>
-        {listaDostepnychGramatur
+        {listaGramaturSelect
           .sort((a, c) => a.gramatura - c.gramatura)
           .map((option) =>
             row.papier_id !== 7 ? (
@@ -468,7 +472,7 @@ function Gramatura({
                 {option.gramatura} g/m2 vol. {option.bulk} {option.wykonczenie}
               </option>
             )
-          )}
+        )}
       </select>
     </td>
   );

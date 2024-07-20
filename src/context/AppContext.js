@@ -17,6 +17,7 @@ export const AppContextProvider = ({children})=>{
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
     const [listaGramatur, setListaGramatur] = useState();
+    const [listaGramaturSelect, setListaGramaturSelect] = useState([]);
     const [listaPapierow, setListaPapierow] = useState();
 
 //d
@@ -63,7 +64,8 @@ export const AppContextProvider = ({children})=>{
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
                     listaGramatur, setListaGramatur,
-                    listaPapierow, setListaPapierow
+                    listaPapierow, setListaPapierow,
+                    listaGramaturSelect, setListaGramaturSelect
 
             
                 }}

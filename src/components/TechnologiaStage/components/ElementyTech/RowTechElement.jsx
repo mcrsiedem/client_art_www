@@ -64,7 +64,7 @@ export default function RowTechElement({
 
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
-
+  const [listaGramaturSelect, setListaGramaturSelect] = useState([]);
 
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
@@ -134,11 +134,15 @@ export default function RowTechElement({
         <PapierSelect
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+          listaGramatur={listaGramatur}
+          listaGramaturSelect={listaGramaturSelect}
+          setListaGramaturSelect={setListaGramaturSelect}
 
         />
         <Gramatura
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+          listaGramaturSelect={listaGramaturSelect}
 
         />
         <PapierInfo
@@ -394,13 +398,13 @@ function Typ({
 
 function PapierSelect({
   row,
-  handleChangeCardFragmenty_i_Elementy_Tech,
+  handleChangeCardFragmenty_i_Elementy_Tech,listaGramatur,listaGramaturSelect,setListaGramaturSelect
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
-  const listaGramatur = appcontext.listaGramatur;
-  const listaGramaturSelect = appcontext.listaGramaturSelect;
-  const setListaGramaturSelect = appcontext.setListaGramaturSelect;
+
+  // const listaGramaturSelect = appcontext.listaGramaturSelect;
+  // const setListaGramaturSelect = appcontext.setListaGramaturSelect;
 
     // listaPapierów = wszystkie papiery
   // listaGramatur = wszystkie gramatury
@@ -416,7 +420,9 @@ function PapierSelect({
         defaultValue={row.papier_id}
         onChange={(e) => {
           setListaGramaturSelect(
-            listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+
+             listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+
           );
           handleChangeCardFragmenty_i_Elementy_Tech({
             ...row,
@@ -437,13 +443,13 @@ function PapierSelect({
 
 function Gramatura({
   row,
-  handleChangeCardFragmenty_i_Elementy_Tech,
+  handleChangeCardFragmenty_i_Elementy_Tech,listaGramaturSelect
 
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const listaGramatur = appcontext.listaGramatur;
-  const listaGramaturSelect = appcontext.listaGramaturSelect;
+  // const listaGramaturSelect = appcontext.listaGramaturSelect;
   const setListaGramaturSelect = appcontext.setListaGramaturSelect;
 
   // listaPapierów = wszystkie papiery

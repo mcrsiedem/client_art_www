@@ -32,6 +32,7 @@ export default function RowTechElement({
   const appcontext = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const listaGramatur = appcontext.listaGramatur;
+  
   const elementy = techContext.elementy;
   const setElementy = techContext.setElementy;
   const fragmenty = techContext.fragmenty;
@@ -64,7 +65,7 @@ export default function RowTechElement({
 
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
-  const [listaGramaturSelect, setListaGramaturSelect] = useState([]);
+  const [listaGramaturSelect, setListaGramaturSelect] = useState(listaGramatur.filter(x => x.papier_id == row.papier_id));
 
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu

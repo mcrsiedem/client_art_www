@@ -150,7 +150,7 @@ margin-left: 15px;
     width: 50px;
   }
   .col_kolory{
-    width: 120px;
+    width: 50px;
   }
 
   .col_proces{
@@ -161,4 +161,10 @@ margin-left: 15px;
     background: transparent;
     height: 25px;
     box-shadow: none;
+  }
+  .expand {
+    height: 15px;
+    margin-right: 10px;
+  
+  
   }

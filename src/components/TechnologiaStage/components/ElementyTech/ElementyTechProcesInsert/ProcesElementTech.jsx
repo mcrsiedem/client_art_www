@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import style from "./ProcesElementTech.module.css";
 import iconX from "assets/xDark.svg";
+import iconTrash from "assets/trash2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
@@ -8,6 +9,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { addNewProcessTech } from "actions/addNewProcessTech";
+import { deleteProcessTech } from "actions/deleteProcessTech";
 export default function ProcesElementTech() {
 
 
@@ -112,6 +114,7 @@ function Table() {
             <th className={style.col_kolory}>Front kolory</th>
             <th className={style.col_kolory}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
+            <th className={style.col_wersja}>Usun</th>
           </tr>
         </thead>
         <tbody>
@@ -119,7 +122,7 @@ function Table() {
           .filter(x => x.element_id == selectedElementTechROW.id)
           .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => { 
-            return <ProcesTechRow row={row} i={i}/>
+            return <ProcesTechRow row={row} i={i} procesyElementowTechTemporary={procesyElementowTechTemporary} setProcesyElementowTechTemporary={setProcesyElementowTechTemporary}/>
             })}
         </tbody>
       </table>
@@ -137,7 +140,8 @@ function Table() {
   );
 }
 
-const ProcesTechRow =({row,i})=>{
+const ProcesTechRow =({row,i,procesyElementowTechTemporary,
+  setProcesyElementowTechTemporary})=>{
   const [procesID, setProcesID] = useState(row.nazwa_id); 
   return(
     <tr key={row.id}>
@@ -149,6 +153,8 @@ const ProcesTechRow =({row,i})=>{
     <FrontKolor row={row}/>
     <BackKolor row={row}/>
     <Info row={row}/>
+    <Usun row={row} procesyElementowTechTemporary={procesyElementowTechTemporary} setProcesyElementowTechTemporary={setProcesyElementowTechTemporary}/>
+    
   </tr>
   )
 }
@@ -316,6 +322,24 @@ const BackIlosc = ({ row }) => {
           }
         }}
       ></input>
+    </td>
+  );
+}
+
+function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTemporary }) {
+  return (
+    <td className={style.col_button}>
+      <div>
+        <img
+          className={style.expand}
+          src={iconTrash}
+          onClick={() => {
+            deleteProcessTech(row,procesyElementowTechTemporary, setProcesyElementowTechTemporary )
+            // handleRemoveItem(row.indeks, row.id);
+          }}
+          alt="Procesy"
+        />
+      </div>
     </td>
   );
 }

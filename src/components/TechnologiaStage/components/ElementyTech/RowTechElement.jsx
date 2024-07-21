@@ -65,6 +65,7 @@ export default function RowTechElement({
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
 
+
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
     if (elementyTech.length !== 1) {

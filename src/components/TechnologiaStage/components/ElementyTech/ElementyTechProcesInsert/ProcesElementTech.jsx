@@ -69,8 +69,11 @@ function Footer() {
       <button
         className={style.btn}
         onClick={() => {
+        
+    
           techContext.setShowElementyTechProcesyInsert(false);
           setProcesyElementowTech(procesyElementowTechTemporary)
+
         }}
       >
         Zapisz
@@ -114,33 +117,42 @@ function Table() {
           {procesyElementowTech
           .filter(x => x.element_id == selectedElementTechROW.id)
           .sort((a, b) => a.indeks - b.indeks)
-          .map((row, i) => {
-            return (
-              
-              <tr key={row.id}>
-                <td>{i+1}</td>
-                <ProcesName row={row}/>
-                <ProcessTyp row={row}/>
-                <FrontIlosc row={row}/>
-                <BackIlosc row={row}/>
-                <FrontKolor row={row}/>
-                <BackKolor row={row}/>
-                <Info row={row}/>
-              </tr>
-            );
-          })}
+          .map((row, i) => { 
+            return <ProcesTechRow row={row} i={i}/>
+            })}
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={
+          // ()=>addNewProcess(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)
+()=>{
+  console.log("procesty temp",techContext.procesyElementowTechTemporary)
+  console.log("procesty ",techContext.procesyElementowTech)
+}
+          }>Dodaj nowy proces</button>
       </div>
      
     </div>
   );
 }
 
+const ProcesTechRow =({row,i})=>{
+  const [procesID, setProcesID] = useState(row.nazwa_id); 
+  return(
+    <tr key={row.id}>
+    <td>{i+1}</td>
+    <ProcesName row={row} setProcesID={setProcesID}/>
+    <ProcessTyp row={row} procesID={procesID}/>
+    <FrontIlosc row={row}/>
+    <BackIlosc row={row}/>
+    <FrontKolor row={row}/>
+    <BackKolor row={row}/>
+    <Info row={row}/>
+  </tr>
+  )
+}
 
-const ProcesName = ({ row }) => {
+const ProcesName = ({ row,setProcesID }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
@@ -150,7 +162,8 @@ const ProcesName = ({ row }) => {
         className={style.select}
         defaultValue={row.nazwa_id}
         onChange={(e) => {
-          console.log("proces "+ e.target.value)
+          // console.log("proces2 ",e.target.value)
+          setProcesID(e.target.value)
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
           techContext.handleUpdateRowProcesyElementowTech({
@@ -170,7 +183,7 @@ const ProcesName = ({ row }) => {
   );
 };
 
-const ProcessTyp = ({ row }) => {
+const ProcessTyp = ({ row,procesID }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
@@ -192,7 +205,9 @@ const ProcessTyp = ({ row }) => {
         {}
         {contexApp.procesList
         // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
-        .filter(p=> p.nazwa_id == techContext.procesyElementowTechTemporary.filter(x=> x.element_id == selectedElementTechROW.id && x.indeks == row.indeks)[0].nazwa_id)
+        // .filter(p=> p.nazwa_id == techContext.procesyElementowTechTemporary.filter(x=> x.element_id == selectedElementTechROW.id && x.indeks == row.indeks)[0].nazwa_id)
+        .filter(p=> p.nazwa_id == procesID)
+     
 
                .map((option) => (
           <option key={option.id} value={option.id}>

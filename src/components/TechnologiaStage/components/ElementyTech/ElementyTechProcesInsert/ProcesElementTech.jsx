@@ -115,7 +115,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementowTech
+          {procesyElementowTechTemporary
           .filter(x => x.element_id == selectedElementTechROW.id)
           .sort((a, b) => a.indeks - b.indeks)
           .map((row, i) => { 

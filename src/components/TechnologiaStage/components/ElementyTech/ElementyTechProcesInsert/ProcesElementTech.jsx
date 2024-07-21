@@ -7,6 +7,7 @@ import { addNewProcess } from "actions/addProcess";
 import { TechnologyContext } from "context/TechnologyContext";
 import { reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
+import { addNewProcessTech } from "actions/addNewProcessTech";
 export default function ProcesElementTech() {
 
 
@@ -124,11 +125,11 @@ function Table() {
       </table>
       <div className={style.dodaj_proces_row}>
          <button className={style.btn_dodaj_proces} onClick={
-          // ()=>addNewProcess(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)
-()=>{
-  console.log("procesty temp",techContext.procesyElementowTechTemporary)
-  console.log("procesty ",techContext.procesyElementowTech)
-}
+        ()=>addNewProcessTech(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)
+// ()=>{
+//   console.log("procesty temp",techContext.procesyElementowTechTemporary)
+//   console.log("procesty ",techContext.procesyElementowTech)
+// }
           }>Dodaj nowy proces</button>
       </div>
      

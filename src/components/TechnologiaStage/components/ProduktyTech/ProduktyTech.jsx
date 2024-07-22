@@ -69,17 +69,16 @@ const produktyTech = contextTech.produktyTech;
 }
 
 function Typ({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
-
-  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const techontext = useContext(TechnologyContext);
+  const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (
     <td>
       <select
         className={style.select}
         defaultValue={row.typ}
         onChange={(e) => {
-          handleUpdateRowProdukty({
+          updateRowProduktyTech({
             ...row,
             typ: e.target.value,
           });
@@ -98,7 +97,6 @@ function Typ({ row }) {
 
 function Nazwa({ row }) {
   const techontext = useContext(TechnologyContext);
-
   const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (
     <td>
@@ -174,8 +172,8 @@ function Oprawa({ row }) {
   );
 }
 function Uwagi({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const techontext = useContext(TechnologyContext);
+  const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (
     <td>
       <input
@@ -185,7 +183,7 @@ function Uwagi({ row }) {
           { 
             const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
             if ( e.target.value === '' || re.test(e.target.value)) { 
-              handleUpdateRowProdukty({
+              updateRowProduktyTech({
             ...row,
             uwagi: e.target.value,
           })

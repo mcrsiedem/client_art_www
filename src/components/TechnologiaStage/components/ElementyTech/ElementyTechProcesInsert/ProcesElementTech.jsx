@@ -231,7 +231,7 @@ const Info = ({ row }) => {
   return (
     <td>
       <input
-        defaultValue={row.info}
+        value={row.info}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
@@ -251,9 +251,9 @@ const BackKolor = ({ row }) => {
   return (
     <td>
       <input
-        defaultValue={row.back_kolor}
+        value={row.back_kolor}
         onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
               ...row,
               back_kolor: e.target.value,
@@ -291,7 +291,7 @@ const FrontIlosc = ({ row }) => {
   return (
     <td>
       <input
-        defaultValue={row.front_ilosc}
+        value={row.front_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
@@ -311,7 +311,7 @@ const BackIlosc = ({ row }) => {
   return (
     <td>
       <input
-        defaultValue={row.back_ilosc}
+        value={row.back_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({

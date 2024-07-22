@@ -9,7 +9,6 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { addNewProcessTech } from "actions/addNewProcessTech";
-import { deleteProcessTech } from "actions/deleteProcessTech";
 export default function ProcesElementTech() {
 
 
@@ -334,8 +333,8 @@ function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTempo
           className={style.expand}
           src={iconTrash}
           onClick={() => {
-            deleteProcessTech(row,procesyElementowTechTemporary, setProcesyElementowTechTemporary )
-            // handleRemoveItem(row.indeks, row.id);
+            setProcesyElementowTechTemporary(procesyElementowTechTemporary.filter((p) => p.id !== row.id));
+      
           }}
           alt="Procesy"
         />

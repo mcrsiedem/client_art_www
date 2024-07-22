@@ -31,7 +31,7 @@ function ProduktyTableHeader() {
 
 function ProduktyTable() {
   const contextTech = useContext(TechnologyContext);
-const produkty = contextTech.produkty;
+const produktyTech = contextTech.produktyTech;
   return <div className={style.main}>
       
         <table className={style.table}>
@@ -48,7 +48,7 @@ const produkty = contextTech.produkty;
             </tr>
           </thead>
           <tbody className={style.center}>
-            {produkty?.map((row) => {
+            {produktyTech?.map((row) => {
               return (
                 <tr key={row.id}>
                   <Typ row={row} />
@@ -97,8 +97,9 @@ function Typ({ row }) {
 }
 
 function Nazwa({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const techontext = useContext(TechnologyContext);
+
+  const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (
     <td>
       <input
@@ -106,9 +107,9 @@ function Nazwa({ row }) {
         value={row.nazwa}
         onChange={(e) =>
           {
-            
-            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-            handleUpdateRowProdukty({
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
+            if ( e.target.value === '' || re.test(e.target.value)) {
+              updateRowProduktyTech({
             ...row,
             nazwa: e.target.value,
           })
@@ -123,8 +124,8 @@ function Nazwa({ row }) {
 }
 
 function Naklad({ row }) {
-const contextModalInsert = useContext(ModalInsertContext);
-const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const techontext = useContext(TechnologyContext);
+  const updateRowProduktyTech = techontext.updateRowProduktyTech;
 
   return (
     <td>
@@ -133,14 +134,21 @@ const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
         value={row.naklad}
         onChange={(e) =>{     
 
-          // const re = /^[0-9]+$/;
-          if (e.target.value === '' || reg_int.test(e.target.value)) {
-           handleUpdateRowProdukty({
+           const re = /^[0-9]+$/;
+
+          //  updateRowProduktyTech({
+          //   ...row,
+          //   naklad: e.target.value,
+          // })
+
+          if (e.target.value === '' || re.test(e.target.value)) {
+            updateRowProduktyTech({
                 ...row,
                 naklad: e.target.value,
               })
           }
-            
+
+
             }
         
 

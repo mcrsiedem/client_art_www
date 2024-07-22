@@ -144,6 +144,17 @@ export const TechnologyContextProvider = ({children})=>{
         )
       };
 
+      const updateRowProduktyTech = (row) => {
+        setProduktyTech(
+          produktyTech.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
@@ -270,7 +281,8 @@ export const TechnologyContextProvider = ({children})=>{
                     handleChangeCardFragmenty_i_Elementy_Tech,
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
-                    selectedElementTechROW,setSelectedElementTechROW
+                    selectedElementTechROW,setSelectedElementTechROW,
+                    updateRowProduktyTech
        
                 }}
             >

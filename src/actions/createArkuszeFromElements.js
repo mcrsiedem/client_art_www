@@ -384,7 +384,9 @@ export function createArkuszeFromElemenets(
         poczatek: 1,
         czas: 1,
         koniec: 1,
-        procesor_id:1
+        procesor_id:1,
+        narzad: proc.narzad,
+        predkosc: proc.predkosc
       });
 
       new_arkusze
@@ -402,7 +404,9 @@ export function createArkuszeFromElemenets(
           czas: 1,
           koniec: 1,
           procesor_id:1,
-          grupa_id:1
+          grupa_id:1,
+          narzad: proc.narzad,
+          predkosc: proc.predkosc
         });
       })
 
@@ -415,7 +419,9 @@ export function createArkuszeFromElemenets(
         poczatek: 1,
         czas: 1,
         koniec: 1,
-        procesor_id:1
+        procesor_id:1,
+        narzad: proc.narzad,
+        predkosc: proc.predkosc
       });
 
       new_legi
@@ -433,7 +439,9 @@ export function createArkuszeFromElemenets(
           czas: 1,
           koniec: 1,
           procesor_id:1,
-          grupa_id:1
+          grupa_id:1,
+          narzad: proc.narzad,
+          predkosc: proc.predkosc
         });
       })
 

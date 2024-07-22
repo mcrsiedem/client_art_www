@@ -79,6 +79,9 @@ const WykonaniaTechTable = () => {
             <th className={style.col_naklad}>Nakład</th>
             <th className={style.col_uwagi}>Ilość leg</th>
             <th className={style.col_uwagi}>Uwagi</th>
+            <th className={style.col_uwagi}>Narząd</th>
+            <th className={style.col_uwagi}>akr/h</th>
+           
             <th className={style.col_doda3j}></th>
             <th className={style.col_doda3j}></th>
           </tr>
@@ -166,13 +169,15 @@ const RowGrupa = ({ row, showLegi }) => {
         {/* <td>{row.indeks}</td> */}
 
         <td className={style.td_nazwa}>{row.nazwa}</td>
+        <td>{row.typ_elementu}</td>
         <td></td>
         {/* <TypElementu row={row} />
       <RodzajArkusza row={row} /> */}
-        <td>{row.typ_elementu}</td>
-        <td>{row.ilosc_leg}</td>
+        
+        <td></td>
         <td>{row.uwagi}</td>
-
+        <td>{row.narzad}</td>
+        <td>{row.predkosc}</td>
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
       </tr>

@@ -27,7 +27,9 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
       new_grupy.push({
         id: i + 1,
         indeks: i + 1,
-        nazwa: proc.nazwa
+        nazwa: proc.nazwa,
+        narzad: proc.narzad,
+        predkosc: proc.predkosc
       });
 
       arkusze
@@ -40,7 +42,9 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
           element_id: a.element_id,
           arkusz_id: a.id,
           proces_id: proc.id,
-          typ_elementu: a.typ_elementu
+          typ_elementu: a.typ_elementu,
+          narzad: proc.narzad,
+          predkosc: proc.predkosc
         });
       })
 
@@ -49,7 +53,9 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
       new_grupy.push({
         id: i + 1,
         indeks: i + 1,
-        nazwa: proc.nazwa
+        nazwa: proc.nazwa,
+        narzad: proc.narzad,
+        predkosc: proc.predkosc
       });
 
       legi
@@ -62,7 +68,9 @@ export function createGrupaWykonan(rowElement, procesy, grupaWykonan,setGrupaWyk
           element_id: a.element_id,
           arkusz_id: a.id,
           proces_id: proc.id,
-          typ_elementu: a.typ_elementu
+          typ_elementu: a.typ_elementu,
+          narzad: proc.narzad,
+          predkosc: proc.predkosc
         });
       })
 

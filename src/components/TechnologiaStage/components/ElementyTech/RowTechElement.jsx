@@ -696,7 +696,7 @@ function PapierInfo({ row }) {
   return (
     <td>
       <input
-        defaultValue={row.papier_info}
+        value={row.papier_info}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowElementyTech({
@@ -716,7 +716,7 @@ function Uwagi({ row }) {
   return (
     <td>
       <input
-        defaultValue={row.uwagi}
+        value={row.uwagi}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowElementyTech({

@@ -4,17 +4,20 @@
 .container{
    display: flex;
    flex-direction: column;
-   align-items: start;
+   align-items: center;
    justify-content: center;
-
+/* background-color: lightcyan; */
+/* width: 700px; */
 }
 
 .tableContainer{
    /* padding-top: 50px; */
   height: calc(100vh - 60px);
-  min-width: 100vw;
+  /* min-width: 100vw; */
+  min-width: 90vw;
+
    /* max-height: 300px;  */
-   overflow: scroll;
+   overflow: auto;
 
 
 }
@@ -41,6 +44,7 @@
 }
 
 
+
 th{
    font-size: 0.9rem;
    position: sticky;
@@ -49,9 +53,13 @@ th{
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
-   background: #cccccc;
+   background: rgb(243, 243, 243);
   color: #414040;
+  /* border-radius: 30px; */
+  /* outline: 1px solid rgb(167, 0, 0); */
+
 }
+
 
 
 tr:nth-of-type(2n) {
@@ -156,3 +164,5 @@ tr:nth-of-type(2n) {
   font-size: 1rem;
   border-bottom: 1px solid rgb(192, 191, 191) ;
 }
+
+

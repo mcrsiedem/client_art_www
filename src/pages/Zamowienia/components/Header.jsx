@@ -6,6 +6,7 @@ import ReactLogo_ustawienia from "assets/settings.svg";
 import ReactLogo_full from "assets/full.svg";
 import ReactLogo_history from "assets/history.svg";
 import iconClose from "assets/x.svg";
+import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import iconSettings from "assets/dots2.svg";
 import { useNavigate } from "react-router-dom";
@@ -68,12 +69,13 @@ function Header({ dodaj_clikHandler}) {
               }}
               alt="React Logo"
             />
+       
       </div>
         <div className={style.rightHeaderContener}>
           {/* <input></input> */}
           <img
             className={style.icon}
-            src={iconClose}
+            src={iconClose2}
             onClick={() => {
               navigate("/Panel");
             }}

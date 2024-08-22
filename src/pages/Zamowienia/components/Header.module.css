@@ -43,6 +43,7 @@
 }
 
 .icon{
+    
     height: 90%;
     padding: 10px;
 
@@ -56,7 +57,9 @@
    
 
     /* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
-    background-image: linear-gradient(#383838 0%, #444343 80%);
+    /* background-image: linear-gradient(#383838 0%, #444343 80%); */
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
 
     
 }

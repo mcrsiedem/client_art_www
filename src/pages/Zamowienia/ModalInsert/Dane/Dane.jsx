@@ -66,7 +66,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   return (
-    <div className={style.col}>
+    <div className={style.col_dane}>
       <label className={style.label}> Firma </label>
       <select
         className={style.firma}

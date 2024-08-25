@@ -46,7 +46,7 @@ width: 100vw;
 
 select,
 input {
-  background-color: var(--mr-gr-dane-input);
+  /* background-color: var(--mr-gr-dane-input); */
   height: 2.5rem;
   border-radius: 5px;
   border-color: transparent;

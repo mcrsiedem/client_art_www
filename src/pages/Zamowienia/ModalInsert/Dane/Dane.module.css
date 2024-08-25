@@ -44,14 +44,23 @@ width: 100vw;
   font-size: 0.7rem;
 }
 
+.col_dane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 select,
 input {
-  background-color: var(--mr-gr-dane-input);
+  /* background-color: var(--mr-gr-dane-input); */
+
+  background-color:white;
   height: 2.5rem;
   border-radius: 5px;
   border-color: transparent;
-  /* outline: 1px solid gray; */
-  box-shadow: 2px 2px 3px rgb(159, 159, 159);
+  outline: 1px solid rgb(185, 185, 185);
+  /* box-shadow: 2px 2px 3px rgb(159, 159, 159); */
 }
 
 .data{
@@ -72,6 +81,7 @@ input {
 .firma, .klient, .data{
 height: 30px;
 padding-left: 10px;
+
 }
 
 .klient{

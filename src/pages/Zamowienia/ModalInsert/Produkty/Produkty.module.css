@@ -89,3 +89,17 @@
   background-color: transparent;
   box-shadow: none;
 }
+.main2{
+  padding: 5px 20px;
+  background-color: transparent;
+ display: flex;
+ flex-direction: column;
+ grid-template-columns: 230px 1fr   110px 110px 110px;
+ gap:5px;
+ width: 100vw;
+}
+.row1{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}

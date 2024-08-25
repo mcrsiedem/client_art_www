@@ -1,0 +1,72 @@
+
+* utworzenie stanów
+ModalInsertContext - kosztyDodatkowe, setKosztyDodatkowe
+ModalInsertContext - kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia
+ModalInsertContext - kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary - w trakcie edycji                  
+ModalInsertContext - showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit  - otwieranie okna
+ModalInsertContext - selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia -  aktualnie wybrane koszty
+
+ModalInsertContext  -   handleUpdateKosztyDodatkoweTemporary - setKosztyDodatkoweTemporary - edycja kosztów
+
+EdytujKoszty - contextModalInsert.setSelectedKosztyDodatkoweZamowienia(
+            {id:kosztyDodatkoweZamowienia[0].id,
+              zamowienie_id:kosztyDodatkoweZamowienia[0].zamowienie_id,
+              zamowienie_prime_id:kosztyDodatkoweZamowienia[0].zamowienie_prime_id})
+
+* pobieranie z bazy
+ModalInsert         - fechparametry
+                    const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
+                    setKosztyDodatkoweZamowienia(res.data[7])
+                    setKosztyDodatkowe(res.data[8])
+
+* statusy
+    - w trakcie przygotowania
+    - zamknięte
+
+* zapis kosztów dodatkowych:
+    - update koszty_dodatkowe set final= 0 where zamowienie_prime_id = X 
+    - insert wszystko z przesłanej tablicy koszty_dodatkowe
+    - update kosztyDodatkoweZamowienia
+
+     zapisKosztowDodatkowych.js
+        let zapis = await axios.post(IP + "zapis_kosztow_dodatkowych", { kosztyDodatkoweTemporary,kosztyDodatkoweZamowienia})
+        
+    addKosztDodatkowyZamowienia.js - dodaje koszty dodatkowe do zamowienia - wtedy pojawia się okno z kosztami w zamowieniu
+        .post(IP + "addKosztDodatkowyZamowienia", {
+        status: "1",
+        zamowienie_id: daneZamowienia.id,
+        zamowienie_prime_id: daneZamowienia.prime_id
+
+    }
+
+
+
+SELECT `koszty_dodatkowe`.`id`,
+    `koszty_dodatkowe`.`indeks`,
+    `koszty_dodatkowe`.`utworzono`,
+    `koszty_dodatkowe`.`zmodyfikowano`,
+    `koszty_dodatkowe`.`nazwa`,
+    `koszty_dodatkowe`.`ilosc`,
+    `koszty_dodatkowe`.`cena`,
+    `koszty_dodatkowe`.`suma`,
+    `koszty_dodatkowe`.`info`,
+    `koszty_dodatkowe`.`zamowienia_koszty_id`,
+    `koszty_dodatkowe`.`autor_id`,
+    `koszty_dodatkowe`.`zamowienie_prime_id`,
+    `koszty_dodatkowe`.`final`
+FROM `artdruk`.`koszty_dodatkowe`;
+
+
+SELECT `zamowienia_koszty_dodatkowe`.`id`,
+                    `zamowienia_koszty_dodatkowe`.`utworzono`,
+                    `zamowienia_koszty_dodatkowe`.`zmodyfikowano`,
+                    `zamowienia_koszty_dodatkowe`.`zamowienie_id`,
+                    `zamowienia_koszty_dodatkowe`.`zamowienie_prime_id`,
+                    `zamowienia_koszty_dodatkowe`.`indeks`,
+                    `zamowienia_koszty_dodatkowe`.`nazwa`,
+                    `zamowienia_koszty_dodatkowe`.`suma`,
+                    `zamowienia_koszty_dodatkowe`.`info`,
+                    `zamowienia_koszty_dodatkowe`.`status`,
+                    `zamowienia_koszty_dodatkowe`.`stan`
+                    FROM `artdruk`.`zamowienia_koszty_dodatkowe`;
+

@@ -10,8 +10,8 @@
 .produkt {
   border-radius: 10px;
   width: calc(100vw - 40px);
-  box-shadow: 3px 3px 3px rgb(159, 159, 159);
-  background-color: rgb(178, 196, 214);
+  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
+  /* background-color: rgb(178, 196, 214); */
 
   height: calc(100% - 20px);
 }
@@ -88,18 +88,20 @@
 .select {
   background-color: transparent;
   box-shadow: none;
+  width: 230px;
 }
 .main2{
-  padding: 5px 20px;
+  /* padding: 5px 20px; */
+  margin-top: 20px;
   background-color: transparent;
  display: flex;
  flex-direction: column;
- grid-template-columns: 230px 1fr   110px 110px 110px;
+ grid-template-columns: 220px 1fr   110px 110px 110px;
  gap:5px;
  width: 100vw;
 }
 .row1{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 230px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
 }

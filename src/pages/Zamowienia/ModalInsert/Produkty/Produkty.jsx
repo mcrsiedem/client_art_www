@@ -10,6 +10,9 @@ export default function Produkty( ) {
       <div className={style.container}>
             <div className={style.produkt}>
               {/* <ProduktyTableHeader /> */}
+              <hr></hr>
+              <p>Produkt</p>
+         
               <ProduktyTable2   />
             </div>
     </div>
@@ -29,8 +32,7 @@ function ProduktyTable2() {
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
   return <div className={style.main2}>
-      
-
+    
 
           <div className={style.row1}>
 

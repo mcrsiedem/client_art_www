@@ -117,11 +117,12 @@
  flex-direction: column;
  grid-template-columns: 220px 1fr   110px 110px 110px;
  gap:5px;
+ 
  /* width: 100vw; */
 }
 .row1{
   display: grid;
-  grid-template-columns: 110px 110px  50px 50px 50px 100px 310px 1fr;
+  grid-template-columns: 150px 90px  50px 50px 50px 100px 310px 1fr;
   gap: 10px;
 }
 

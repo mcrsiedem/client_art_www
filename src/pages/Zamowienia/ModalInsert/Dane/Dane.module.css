@@ -51,17 +51,10 @@ width: 100vw;
   width: 100%;
 }
 
-select,
-input {
-  /* background-color: var(--mr-gr-dane-input); */
 
-  background-color:white;
-  height: 2.5rem;
-  border-radius: 5px;
-  border-color: transparent;
-  outline: 1px solid rgb(185, 185, 185);
-  /* box-shadow: 2px 2px 3px rgb(159, 159, 159); */
-}
+
+
+
 
 .data{
   text-align: center;
@@ -84,8 +77,22 @@ padding-left: 10px;
 
 }
 
+.select,
+.input {
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+}
+
 .klient{
   padding-left: 35px;
+  background-color:rgb(245, 245, 245);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
 }
 
 .dodaj_klienta {

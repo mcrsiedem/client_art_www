@@ -37,14 +37,14 @@ const produkty = contextModalInsert.produkty;
 
           <div className={style.row1}>
 
-                  <Typ2 row={produkty[0]} />
-                  <Naklad2 row={produkty[0]} />
+                  <Typ row={produkty[0]} />
+                  <Naklad row={produkty[0]} />
                   <RodzajOprawy row={produkty[0]} />
-                  <Nazwa2 row={produkty[0]} />
+                  <Nazwa row={produkty[0]} />
                   <td>{produkty[0].ilosc_stron}</td>
                   <td>{produkty[0].format_x}</td>
                   <td>{produkty[0].format_y}</td>
-                  <Uwagi2 row={produkty[0]} />
+                  <Uwagi row={produkty[0]} />
            
    
           </div>
@@ -57,7 +57,7 @@ const produkty = contextModalInsert.produkty;
 
 
 
-function Typ2({ row }) {
+function Typ({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
 
@@ -86,13 +86,14 @@ function Typ2({ row }) {
   );
 }
 
-function Nazwa2({ row }) {
+function Nazwa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
-    <div>
+    <div  className={style.col_dane}>
+      <label className={style.label}> Nazwa </label>
       <input
-        className={style.in}
+        className={style.input}
         value={row.nazwa}
         onChange={(e) =>
           {
@@ -112,7 +113,7 @@ function Nazwa2({ row }) {
   );
 }
 
-function Naklad2({ row }) {
+function Naklad({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   
@@ -153,7 +154,7 @@ const contextApp = useContext(AppContext);
 
   return (
     <div className={style.col_dane}>
-<label className={style.label}> Typ </label>
+<label className={style.label}> Oprawa </label>
       <select
         disabled
         className={style.firma}
@@ -187,36 +188,14 @@ const contextApp = useContext(AppContext);
   );
 }
 
+
+
 function Uwagi({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
-    <td>
-      <input
-        className={style.in}
-        value={row.uwagi}
-        onChange={(e) =>
-          { 
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
-            if ( e.target.value === '' || re.test(e.target.value)) { 
-              handleUpdateRowProdukty({
-            ...row,
-            uwagi: e.target.value,
-          })
-        
-        }
-          }
-        }
-      ></input>
-    </td>
-  );
-}
-
-function Uwagi2({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-  return (
-    <div>
+    <div  className={style.col_dane}>
+      <label className={style.label}> Uwagi </label>
       <input
         className={style.in}
         value={row.uwagi}

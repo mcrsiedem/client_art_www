@@ -47,11 +47,11 @@ width: 100vw;
 select,
 input {
   /* background-color: var(--mr-gr-dane-input); */
-  height: 2.5rem;
+  /* height: 2.5rem;
   border-radius: 5px;
-  border-color: transparent;
+  border-color: transparent; */
   /* outline: 1px solid gray; */
-  box-shadow: 2px 2px 3px rgb(159, 159, 159);
+  /* box-shadow: 2px 2px 3px rgb(159, 159, 159); */
 }
 
 .data{

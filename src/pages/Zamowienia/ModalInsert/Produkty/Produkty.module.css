@@ -85,11 +85,22 @@
   outline-style: none;
 }
 
-.select {
-  background-color: transparent;
-  box-shadow: none;
-  width: 230px;
+
+
+
+.select,
+.input {
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
 }
+
+
+
+
+
 .main2{
   /* padding: 5px 20px; */
   /* margin-top: 20px; */
@@ -102,7 +113,7 @@
 }
 .row1{
   display: grid;
-  grid-template-columns: 230px 1fr 1fr 1fr 100px 100px 100px 1fr;
+  grid-template-columns: 230px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
 

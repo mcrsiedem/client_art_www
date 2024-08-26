@@ -38,10 +38,8 @@ export default function Elementy({
 
    
     <div className={style.element}>
-      <ElementyTableHeader
-
-      />
-      <ElementyTable
+      {/* <ElementyTableHeader/> */}
+      <ElementyTable2
   
         handleChangeCardElementy={handleChangeCardElementy}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
@@ -205,6 +203,66 @@ function ElementyTable({
           }) }
         </tbody>
       </table>
+    </div>
+  );
+}
+
+
+function ElementyTable2({
+  handleChangeCardElementy,
+  handleChangeCardFragmenty,
+  listaPapierow,
+  listaGramatur,
+  setListaGramatur,
+  procesyElementow,
+  setProcesyElementow,
+  setShowElementyProcesyInsert,
+  handleChangeCardFragmenty_i_Elementy,
+  handleChangeCardFragmenty_i_Elementy_IloscStron,
+}) {
+  const [expand, setExpand] = useState(false);
+  const contextModalInsert = useContext(ModalInsertContext);
+  const elementy = contextModalInsert.elementy;
+  const setElementy = contextModalInsert.setElementy;
+
+  const fragmenty = contextModalInsert.fragmenty;
+  const setFragmenty = contextModalInsert.setFragmenty;
+  return (
+    <div className={style.main}>
+  <div className={style.row1}>
+
+      
+          {elementy
+            .sort((a, b) => a.indeks - b.indeks)
+            .map((row, i) => {
+              return (
+                <>
+                  <RowElement
+                    key={row.id}
+                    i={i}
+                    row={row}
+                    handleChangeCardElementy={handleChangeCardElementy}
+                    handleChangeCardFragmenty={handleChangeCardFragmenty}
+                    listaPapierow={listaPapierow}
+                    listaGramatur={listaGramatur}
+                    setListaGramatur={setListaGramatur}
+                    procesyElementow={procesyElementow}
+                    setProcesyElementow={setProcesyElementow}
+                    setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+                    expand={expand}
+                    setExpand={setExpand}
+                    handleChangeCardFragmenty_i_Elementy={
+                      handleChangeCardFragmenty_i_Elementy
+                    }
+                    handleChangeCardFragmenty_i_Elementy_IloscStron={
+                      handleChangeCardFragmenty_i_Elementy_IloscStron
+                    }
+                  />
+                </>
+              );
+            })}
+       
+      </div>
     </div>
   );
 }

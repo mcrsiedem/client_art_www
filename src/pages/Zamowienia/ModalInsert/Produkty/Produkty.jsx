@@ -162,7 +162,7 @@ function FormatX({ row }) {
 
   return (
     <div className={style.col_dane}>
-      <label className={style.label}> Szer. </label>
+      <label className={style.label}> Szerokość </label>
       <input
       disabled
         className={style.input}
@@ -178,7 +178,7 @@ function FormatY({ row }) {
 
   return (
     <div className={style.col_dane}>
-      <label className={style.label}> Wys. </label>
+      <label className={style.label}> Wysokość </label>
       <input
       disabled
         className={style.input}

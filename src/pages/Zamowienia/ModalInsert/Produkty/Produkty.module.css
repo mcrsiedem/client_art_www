@@ -99,7 +99,14 @@
 }
 
 
-
+.select_oprawa {
+  background-color: rgb(240, 240, 240);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+}
 
 
 .main2{
@@ -114,7 +121,7 @@
 }
 .row1{
   display: grid;
-  grid-template-columns: 230px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 110px 110px 200px 100px 50px 50px 50px 1fr;
   gap: 10px;
 }
 

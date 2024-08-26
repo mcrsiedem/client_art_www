@@ -41,9 +41,10 @@ const produkty = contextModalInsert.produkty;
                   <Naklad row={produkty[0]} />
                   <RodzajOprawy row={produkty[0]} />
                   <Nazwa row={produkty[0]} />
-                  <td>{produkty[0].ilosc_stron}</td>
-                  <td>{produkty[0].format_x}</td>
-                  <td>{produkty[0].format_y}</td>
+                  <Strony row={produkty[0]} />
+                  <FormatX row={produkty[0]} />
+                  <FormatY row={produkty[0]} />
+
                   <Uwagi row={produkty[0]} />
            
    
@@ -116,33 +117,77 @@ function Nazwa({ row }) {
 function Naklad({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-  
-    return (
-      <div className={style.col_dane}>
-        <label className={style.label}> Nakład </label>
-        <input
-          className={style.in}
-          value={row.naklad}
-          onChange={(e) =>{     
-  
-            // const re = /^[0-9]+$/;
-            if (e.target.value === '' || reg_int.test(e.target.value)) {
-             handleUpdateRowProdukty({
-                  ...row,
-                  naklad: e.target.value,
-                })
-            }
-              
-              }
-          
-  
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Nakład </label>
+      <input
+        className={style.input}
+        value={row.naklad}
+        onChange={(e) => {
+          // const re = /^[0-9]+$/;
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              naklad: e.target.value,
+            });
           }
-        ></input>
-      </div>
-    );
-  }
+        }}
+      ></input>
+    </div>
+  );
+}
 
 
+function Strony({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Strony </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.ilosc_stron}
+
+      ></input>
+    </div>
+  );
+}
+
+function FormatX({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Szer. </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.format_x}
+
+      ></input>
+    </div>
+  );
+}
+function FormatY({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Wys. </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.format_y}
+
+      ></input>
+    </div>
+  );
+}
 
 
 
@@ -157,7 +202,7 @@ const contextApp = useContext(AppContext);
 <label className={style.label}> Oprawa </label>
       <select
         disabled
-        className={style.firma}
+        className={style.select_oprawa}
         defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
@@ -197,7 +242,7 @@ function Uwagi({ row }) {
     <div  className={style.col_dane}>
       <label className={style.label}> Uwagi </label>
       <input
-        className={style.in}
+        className={style.input}
         value={row.uwagi}
         onChange={(e) =>
           { 

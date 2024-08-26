@@ -98,15 +98,25 @@
  flex-direction: column;
  grid-template-columns: 220px 1fr   110px 110px 110px;
  gap:5px;
- width: 100vw;
+ /* width: 100vw; */
 }
 .row1{
   display: grid;
-  grid-template-columns: 230px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 230px 1fr 1fr 1fr 100px 100px 100px 1fr;
   gap: 10px;
 }
 
 hr{
   color: rgb(95, 95, 95);
 
+}
+
+.col_dane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.label {
+  font-size: 0.7rem;
 }

@@ -95,6 +95,7 @@
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
 }
 
 
@@ -130,4 +131,5 @@ hr{
 }
 .label {
   font-size: 0.7rem;
+  padding-left: 5px;
 }

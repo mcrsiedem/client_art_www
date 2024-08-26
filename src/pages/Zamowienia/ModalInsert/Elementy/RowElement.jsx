@@ -155,7 +155,7 @@ export default function RowElement({
         setFragmenty(newFragmenty);
       }
     return (
-      <tr  key={row.id}>
+      <div className={style.row3} key={row.id}>
                 {/* <div className={style.col_button}>
           <img
             src={logoExpand}
@@ -167,7 +167,7 @@ export default function RowElement({
           />
         </div> */}
         {/* <td>{row.id}</td> */}
-        <td>{row.indeks}</td>
+      
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
@@ -216,7 +216,7 @@ export default function RowElement({
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         />
-      </tr>
+      </div>
     );
   }
   
@@ -228,7 +228,7 @@ function Procesy({ row}) {
   const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
 
     return (
-      <td className={style.col_button} id="procesy">
+      <div id="procesy">
       <img
         className={style.expand}
         src={Logo_ustawienia}
@@ -270,13 +270,13 @@ function Procesy({ row}) {
 
 
         
-    </td>
+    </div>
     );
   }
   
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   return (
-    <td className={style.col_button}>
+    <div>
       <div>
         <img
           className={style.expand}
@@ -287,13 +287,13 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
           alt="Procesy"
         />
       </div>
-    </td>
+    </div>
   );
 }
 
 function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   return (
-    <td className={style.col_button}>
+    <div >
       <img
         className={style.expand}
         src={iconCopy}
@@ -302,7 +302,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
         }}
         alt="Procesy"
       />
-    </td>
+    </div>
   );
 }
   
@@ -310,7 +310,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
 
     //row - row element
     return (
-      <td>
+     
         <select
           className={style.select}
           defaultValue={row.typ}
@@ -335,7 +335,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             </option>
           ))}
         </select>
-      </td>
+      
     );
   }
   
@@ -430,9 +430,9 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   
   function Naklad({ row, handleChangeCardElementy }) {
     return (
-      <td>
+   
         <input
-          className={style.col_naklad}
+          className={style.input}
           value={row.naklad}
           onChange={(e) =>
             {
@@ -443,14 +443,15 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             })}}
           }
         ></input>
-      </td>
+    
     );
   }
   function Nazwa({ row, handleChangeCardElementy }) {
     return (
-      <td>
+     
         <input
           value={row.nazwa}
+          className={style.input}
           onChange={(e) =>
 
  {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
@@ -461,7 +462,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
           }
         ></input>
-      </td>
+
     );
   }
   
@@ -469,9 +470,10 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   
   function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
     return (
-      <td>
+ 
         <input
           value={row.ilosc_stron}
+          className={style.input}
           onChange={(e) =>
 
             {
@@ -484,13 +486,14 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
 
           }
         ></input>
-      </td>
+
     );
   }
   function NettoX({ row, handleChangeCardElementy }) {
     return (
-      <td className={style.col_format}>
+   
         <input
+        className={style.input}
           value={row.format_x}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -503,13 +506,14 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             }
           }}
         ></input>
-      </td>
+    
     );
   }
   function NettoY({ row, handleChangeCardElementy }) {
     return (
-      <td className={style.col_format}>
+  
         <input
+        className={style.input}
           value={row.format_y}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -522,7 +526,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             }
           }}
         ></input>
-      </td>
+    
     );
   }
   function Kolory({ row, handleChangeCardElementy }) {
@@ -543,8 +547,9 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   
   function PapierInfo({ row, handleChangeCardElementy }) {
     return (
-      <td>
+      <div>
         <input
+        className={style.input}
           value={row.papier_info}
           onChange={(e) =>
             {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
@@ -555,14 +560,15 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             }}
           }
         ></input>
-      </td>
+      </div>
     );
   }
   
   function Uwagi({ row, handleChangeCardElementy }) {
     return (
-      <td>
+      <div>
         <input
+        className={style.input}
           value={row.uwagi}
           onChange={(e) =>
             {
@@ -574,6 +580,6 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
           }
         ></input>
-      </td>
+      </div>
     );
   }

@@ -228,8 +228,8 @@ function ElementyTable2({
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   return (
-    <div className={style.main2}>
-  <div className={style.row1}>
+    <div className={style.main_elementy}>
+
 
       
           {elementy
@@ -263,6 +263,6 @@ function ElementyTable2({
             })}
        
       </div>
-    </div>
+   
   );
 }

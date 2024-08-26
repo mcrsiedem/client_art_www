@@ -228,7 +228,7 @@ function ElementyTable2({
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   return (
-    <div className={style.main}>
+    <div className={style.main2}>
   <div className={style.row1}>
 
       

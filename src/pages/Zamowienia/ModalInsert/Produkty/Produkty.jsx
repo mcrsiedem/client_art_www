@@ -23,12 +23,6 @@ export default function Produkty( ) {
 //--------------------------
 
 
-
-function ProduktyTableHeader() {
-  return <div className={style.header}>Produkt</div>;
-}
-
-
 function ProduktyTable2() {
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;

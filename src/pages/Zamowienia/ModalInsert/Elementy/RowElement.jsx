@@ -156,7 +156,7 @@ export default function RowElement({
       }
     return (
       <tr  key={row.id}>
-                <div className={style.col_button}>
+                {/* <div className={style.col_button}>
           <img
             src={logoExpand}
             className={style.icon}
@@ -165,7 +165,7 @@ export default function RowElement({
             }}
             alt="Procesy"
           />
-        </div>
+        </div> */}
         {/* <td>{row.id}</td> */}
         <td>{row.indeks}</td>
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>

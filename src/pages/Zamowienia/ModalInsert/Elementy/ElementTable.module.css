@@ -9,10 +9,27 @@
   border-radius: 10px;
   width: calc(100vw - 40px);
   height: calc(100% - 20px);
-  background-color: rgb(191, 209, 194);
+  /* background-color: rgb(191, 209, 194); */
   /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
   /* background-color: rgb(178, 196, 214); */
-  box-shadow: 3px 3px 3px rgb(159, 159, 159);
+  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
+}
+
+.main2{
+  /* padding: 5px 20px; */
+  /* margin-top: 20px; */
+  background-color: transparent;
+ display: flex;
+ flex-direction: column;
+ grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+ gap:5px;
+ /* width: 100vw; */
+}
+
+.row1{
+  display: grid;
+  grid-template-columns: 110px 110px 200px 100px 50px 100px 100px 1fr;
+  gap: 10px;
 }
 
 .header {

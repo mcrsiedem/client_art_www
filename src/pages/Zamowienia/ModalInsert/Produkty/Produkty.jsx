@@ -33,12 +33,14 @@ const produkty = contextModalInsert.produkty;
 
                   <Typ row={produkty[0]} />
                   <Naklad row={produkty[0]} />
-                  <RodzajOprawy row={produkty[0]} />
-                  <Nazwa row={produkty[0]} />
+                 
+                 
                   <Strony row={produkty[0]} />
                   <FormatX row={produkty[0]} />
                   <FormatY row={produkty[0]} />
-
+                  
+                  <Nazwa row={produkty[0]} />
+                  <RodzajOprawy row={produkty[0]} />
                   <Uwagi row={produkty[0]} />
            
    

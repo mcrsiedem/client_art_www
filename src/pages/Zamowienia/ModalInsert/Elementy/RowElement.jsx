@@ -171,12 +171,12 @@ export default function RowElement({
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
-        <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        
       
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}/>
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
-
+        <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <PapierSelect
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -354,7 +354,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
     const listaPapierow = appcontext.listaPapierow;
     const listaGramatur = appcontext.listaGramatur;
     return (
-      <td>
+     
         <select
           //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
           //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
@@ -379,7 +379,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             </option>
           ))}
         </select>
-      </td>
+   
     );
   }
   
@@ -390,7 +390,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
     listaDostepnychGramatur,
   }) {
     return (
-      <td>
+      
         <select
           className={style.select}
           defaultValue={row.gramatura_id}
@@ -424,7 +424,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
               )
             )}
         </select>
-      </td>
+     
     );
   }
   

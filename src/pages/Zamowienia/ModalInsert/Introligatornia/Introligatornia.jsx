@@ -83,8 +83,8 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
 
   return (  < div className={style.main}>
   <table className={style.table}>
-    <thead>
-      <tr>
+    <thead  >
+      <tr >
       <th className={style.col7}>
 
       </th>
@@ -114,7 +114,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
       {oprawa.map((row) => {
         return (
           <>
-            <tr 
+            <tr  
          
              key={row.id}
              onDrop={()=>handleDrop(row.id)}

@@ -228,7 +228,7 @@ function Procesy({ row}) {
   const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
 
     return (
-      <div id="procesy">
+      <div id="procesy" className={style.procesy} >
       <img
         className={style.expand}
         src={Logo_ustawienia}

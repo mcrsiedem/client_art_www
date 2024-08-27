@@ -52,8 +52,10 @@ export default function IntroligatorniaTable({
   
   return (
     <div className={style.container}>
+      
       <div className={style.oprawa}>
-      <Header  />
+      <p>Oprawa</p>
+      {/* <Header  /> */}
       <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver}  handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
       {showOprawaElementyStage && (
         <OprawaElementyStage
@@ -256,10 +258,10 @@ const setProdukty = contextModalInsert.setProdukty;
 const contextApp = useContext(AppContext);
 
   return (
-    <td className={style.select}>
+    <td >
 
       <select
-        className={style.firma}
+        className={style.select}
         defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
@@ -453,6 +455,7 @@ function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input 
+      className={style.input}
         value={row.wersja}
         onChange={(e) =>
 
@@ -471,6 +474,7 @@ function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input
+        className={style.input}
         value={row.naklad}
         onChange={(e) =>
 
@@ -509,6 +513,7 @@ function  WersjaOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
+        className={style.input}
         value={row.wersja}
         onChange={(e) =>
           {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
@@ -526,6 +531,7 @@ function  BokOprawy({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
+        className={style.input}
         value={row.bok_oprawy}
         onChange={(e) =>
           {
@@ -562,6 +568,7 @@ function  NakladOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
+        className={style.input}
         value={row.naklad} 
         onChange={(e) =>
           {

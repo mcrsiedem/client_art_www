@@ -14,7 +14,7 @@ export default function Produkty( ) {
               <p>Produkt</p>
          
               <ProduktyTable2   />
-           
+            
             </div>
     </div>
   );

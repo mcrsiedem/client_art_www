@@ -10,10 +10,11 @@
   border-radius: 10px;
   width: calc(100vw - 40px);
   height: calc(100% - 20px);
-  background-color: rgb(253, 227, 188);
+  /* background-color: rgb(253, 227, 188); */
+  background-color: transparent;
   /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
   /* background-color: rgb(178, 196, 214); */
-  box-shadow: 3px 3px 3px rgb(159, 159, 159);
+  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
 }
 
 .header{
@@ -127,11 +128,12 @@
   }
   
 
-  table input{
+  /* table input{
     background-color: transparent;
     box-shadow: none;
     height: 20px;
-  }
+    outline: none;
+  } */
 
   .col1, .col2, .col5{
     width: 50px;
@@ -146,14 +148,14 @@
 
   .table th, .table tr:nth-child(even){
  /* background-image: linear-gradient(180deg,rgb(209, 221, 233) 20%, rgb(171, 183, 196) 100%); */
- background-color: rgb(253, 227, 188);
+ /* background-color: rgb(253, 227, 188); */
    color: rgb(61, 61, 61);
    font-size: 0.9rem;
    outline-style: none;
  
    }
    .table tr:nth-child(odd){
-     background-color: rgb(255, 238, 214);
+     /* background-color: rgb(255, 238, 214); */
      outline-style: none;
    }
  
@@ -186,8 +188,13 @@
   }
   
 
-  
-
-  .test{
-    background-color: red;
+  .select,
+  .input {
+    background-color: white;
+    height: 2rem;
+    border-radius: 5px;
+    border-color: transparent;
+    /* outline: 1px solid rgb(185, 185, 185); */
+    padding-left: 10px;
+    
   }

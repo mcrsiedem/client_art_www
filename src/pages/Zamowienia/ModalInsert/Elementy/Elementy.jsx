@@ -261,8 +261,9 @@ function ElementyTable2({
                 </>
               );
             })}
-       
+       {/* <hr></hr> */}
       </div>
+      
    
   );
 }

@@ -237,7 +237,6 @@ function Procesy({ row}) {
           contextModalInsert.setSelectedElementROW(row)
           //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
           setProcesyElementowTemporary(procesyElementow)
-          // console.log("typ: ",row)
         }}
         alt="Procesy"
       />
@@ -245,31 +244,8 @@ function Procesy({ row}) {
         .filter((frag) => frag.element_id == row.id)
         .sort((a, b) => a.indeks - b.indeks)
         .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
-           
-
-        
-        
-
- 
-        
         )
-      
         }
-        {/* .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" ")} */}
-
-
-
-        {/* row.map((rank, i, row) => {
-  if (i + 1 === row.length) {
-    // Last one.
-  } else {
-    // Not last one.
-  }
-}) */}
-
-
-
-        
     </div>
     );
   }

@@ -202,7 +202,7 @@ export default function RowElement({
 
 
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
-        <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} />
+        {/* <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} /> */}
 
         {/* <td></td> */}
 

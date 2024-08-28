@@ -134,7 +134,7 @@
     color:rgb(107, 158, 224);
     background-color: transparent;
     /* background-color: green; */
-  
+    border: none;
 }
 .cardInputNetto{
 
@@ -146,7 +146,7 @@
     color:rgb(107, 158, 224);
     background-color: transparent;
     /* background-color: green; */
-  
+    border: none;
 }
 
 .cardInputNaklad{
@@ -159,6 +159,7 @@
     color:rgb(107, 158, 224);
     background-color: transparent;
     /* background-color: green; */
+    border: none;
   
 }
 
@@ -217,7 +218,7 @@
   }
 
   .select{
-    
+    border: none;
 background: transparent;
 text-align: center;
 box-shadow: none;
@@ -227,5 +228,6 @@ border-radius: 0px;
 color: rgb(148, 148, 148);
 font-size: 1.3rem;
 width: 350px;
+
 /* font-weight: bold; */
   }

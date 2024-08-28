@@ -45,7 +45,7 @@ const produkty = contextModalInsert.produkty;
            
    
           </div>
-     
+ 
       </div>
 
 }

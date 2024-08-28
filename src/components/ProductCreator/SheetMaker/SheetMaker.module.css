@@ -108,6 +108,7 @@
     font-size: 2rem;
     color:rgb(107, 158, 224);
     background-color: transparent;
+    border: none;
     /* background-color: green; */
   
 }
@@ -120,8 +121,9 @@
     font-size: 2rem;
     color:rgb(107, 158, 224);
     background-color: transparent;
+    border: none;
     /* background-color: green; */
-  
+    /* border-bottom: 1px solid rgb(181, 181, 181) ; */
 }
 
 .cardBinding{

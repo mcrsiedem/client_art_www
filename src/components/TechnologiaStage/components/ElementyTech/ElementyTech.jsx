@@ -15,21 +15,14 @@ export default function ElementyTech({}) {
   return (
     <div className={style.container}>
       <div className={style.element}>
-        <ElementyTableHeader />
+        {/* <ElementyTableHeader /> */}
         <ElementyTable />
       </div>
     </div>
   );
 }
 
-function ElementyTableHeader() {
-  return (
-    <div className={style.header}>
-      <div className={style.kropka}></div>
-      <p className={style.naglowek}> Elementy </p>
-    </div>
-  );
-}
+
 
 function ElementyTable({}) {
   const [expand, setExpand] = useState(false);

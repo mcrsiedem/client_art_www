@@ -25,29 +25,21 @@ export default function Produkty( ) {
 
 function ProduktyTable2() {
   const contextModalInsert = useContext(ModalInsertContext);
-const produkty = contextModalInsert.produkty;
-  return <div className={style.main2}>
-    
-
-          <div className={style.row1}>
-
-                  <Typ row={produkty[0]} />
-                  <Naklad row={produkty[0]} />
-                 
-                 
-                  <Strony row={produkty[0]} />
-                  <FormatX row={produkty[0]} />
-                  <FormatY row={produkty[0]} />
-                  
-                  <Nazwa row={produkty[0]} />
-                  <RodzajOprawy row={produkty[0]} />
-                  <Uwagi row={produkty[0]} />
-           
-   
-          </div>
- 
+  const produkty = contextModalInsert.produkty;
+  return (
+    <div className={style.main2}>
+      <div className={style.row1}>
+        <Typ row={produkty[0]} />
+        <Naklad row={produkty[0]} />
+        <Strony row={produkty[0]} />
+        <FormatX row={produkty[0]} />
+        <FormatY row={produkty[0]} />
+        <Nazwa row={produkty[0]} />
+        <RodzajOprawy row={produkty[0]} />
+        <Uwagi row={produkty[0]} />
       </div>
-
+    </div>
+  );
 }
 
 

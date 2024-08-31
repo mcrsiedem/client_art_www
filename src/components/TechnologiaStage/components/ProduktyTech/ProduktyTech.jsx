@@ -11,7 +11,8 @@ export default function ProduktyTech( ) {
       <div className={style.container}>
             <div className={style.produkt}>
               {/* <ProduktyTableHeader /> */}
-              <ProduktyTable   />
+              <p>Produkt</p>
+              <ProduktyTable2   />
             </div>
     </div>
   );
@@ -20,8 +21,277 @@ export default function ProduktyTech( ) {
 //--------------------------
 
 
+function ProduktyTable2() {
+  const contextTech = useContext(TechnologyContext);
+const produktyTech = contextTech.produktyTech;
+  return (
+    <div className={style.main2}>
+      <div className={style.row1}>
+        <Typ row={produktyTech[0]} />
+        <Naklad row={produktyTech[0]} />
+        <Strony row={produktyTech[0]} />
+        <FormatX row={produktyTech[0]} />
+        <FormatY row={produktyTech[0]} />
+        <Nazwa row={produktyTech[0]} />
+        <RodzajOprawy row={produktyTech[0]} />
+        <Uwagi row={produktyTech[0]} />
+      </div>
+    </div>
+  );
+}
 
 
+
+
+
+
+
+function Typ({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const contextApp = useContext(AppContext);
+
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  return (
+    <div className={style.col_dane}>
+       <label className={style.label}> Typ </label>
+      <select
+        className={style.select}
+        defaultValue={row.typ}
+        onChange={(e) => {
+          handleUpdateRowProdukty({
+            ...row,
+            typ: e.target.value,
+          });
+        }}
+      >
+        {}
+        {contextApp.productType.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function Nazwa({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  return (
+    <div  className={style.col_dane}>
+      <label className={style.label}> Nazwa </label>
+      <input
+        className={style.input}
+        value={row.nazwa}
+        onChange={(e) =>
+          {
+            
+            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleUpdateRowProdukty({
+            ...row,
+            nazwa: e.target.value,
+          })
+
+          }
+        }
+    
+        }
+      ></input>
+    </div>
+  );
+}
+
+function Naklad({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Nakład </label>
+      <input
+        className={style.input}
+        value={row.naklad}
+        onChange={(e) => {
+          // const re = /^[0-9]+$/;
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              naklad: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+}
+
+
+function Strony({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Strony </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.ilosc_stron}
+
+      ></input>
+    </div>
+  );
+}
+
+function FormatX({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Szer. </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.format_x}
+
+      ></input>
+    </div>
+  );
+}
+function FormatY({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Wys. </label>
+      <input
+      disabled
+        className={style.input}
+        value={row.format_y}
+
+      ></input>
+    </div>
+  );
+}
+
+
+
+function RodzajOprawy({ row,handleChangeCardOprawa}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
+const contextApp = useContext(AppContext);
+
+  return (
+    <div className={style.col_dane}>
+<label className={style.label}> Oprawa </label>
+      <select
+        disabled
+        className={style.select_oprawa}
+        defaultValue={row.oprawa}
+        onChange={(event) => {
+          handleChangeCardOprawa({...row, oprawa: event.target.value});
+
+
+          if(row.indeks == 0){
+          setProdukty(
+            produkty.map((p) => {
+              if (p.id === row.produkt_id) {
+                return {...p, oprawa:event.target.value};
+              } else {
+                return p;
+              }
+            })
+          );
+           
+          }
+
+        }}
+      >
+        {contextApp.bindingType.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+
+function Uwagi({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  return (
+    <div  className={style.col_dane}>
+      <label className={style.label}> Uwagi </label>
+      <input
+        className={style.input}
+        value={row.uwagi}
+        onChange={(e) =>
+          { 
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+            if ( e.target.value === '' || re.test(e.target.value)) { 
+              handleUpdateRowProdukty({
+            ...row,
+            uwagi: e.target.value,
+          })
+        
+        }
+          }
+        }
+      ></input>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------
 
 function ProduktyTable() {
   const contextTech = useContext(TechnologyContext);
@@ -45,14 +315,14 @@ const produktyTech = contextTech.produktyTech;
             {produktyTech?.map((row) => {
               return (
                 <tr key={row.id}>
-                  <Typ row={row} />
-                  <Naklad row={row} />
-                  <Oprawa row={row} />
-                  <Nazwa row={row} />
+                  <Typ3 row={row} />
+                  <Naklad3 row={row} />
+                  <Oprawa3 row={row} />
+                  <Nazwa3 row={row} />
                   <td>{row.ilosc_stron}</td>
                   <td>{row.format_x}</td>
                   <td>{row.format_y}</td>
-                  <Uwagi row={row} />
+                  <Uwagi3 row={row} />
                 </tr>
               );
             })}
@@ -62,7 +332,7 @@ const produktyTech = contextTech.produktyTech;
 
 }
 
-function Typ({ row }) {
+function Typ3({ row }) {
   const contextApp = useContext(AppContext);
   const techontext = useContext(TechnologyContext);
   const updateRowProduktyTech = techontext.updateRowProduktyTech;
@@ -89,7 +359,7 @@ function Typ({ row }) {
   );
 }
 
-function Nazwa({ row }) {
+function Nazwa3({ row }) {
   const techontext = useContext(TechnologyContext);
   const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (
@@ -115,7 +385,7 @@ function Nazwa({ row }) {
   );
 }
 
-function Naklad({ row }) {
+function Naklad3({ row }) {
   const techontext = useContext(TechnologyContext);
   const updateRowProduktyTech = techontext.updateRowProduktyTech;
 
@@ -150,7 +420,7 @@ function Naklad({ row }) {
   );
 }
 
-function Oprawa({ row }) {
+function Oprawa3({ row }) {
   const contextApp = useContext(AppContext);
 
   return (
@@ -165,7 +435,7 @@ function Oprawa({ row }) {
     </td>
   );
 }
-function Uwagi({ row }) {
+function Uwagi3({ row }) {
   const techontext = useContext(TechnologyContext);
   const updateRowProduktyTech = techontext.updateRowProduktyTech;
   return (

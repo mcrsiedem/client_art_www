@@ -5,15 +5,13 @@
   align-items: start;
   justify-content: center;
   margin-bottom: 15px;
-  /* height: 112px; */
-
 }
 
 .produkt {
   border-radius: 10px;
   width: calc(100vw - 40px);
   /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
-  background-color: rgb(178, 196, 214);
+  /* background-color: rgb(178, 196, 214); */
 
   height: calc(100% - 20px);
 }
@@ -22,10 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  /* background-image: linear-gradient(rgb(180, 180, 180) 0%, rgb(199, 199, 199) 50%, rgb(180, 180, 180) 100%); */
-  /* background-color: whitesmoke; */
-  background-image: linear-gradient(rgb(211, 211, 211) 0%, rgb(228, 228, 228) 50%, rgb(211, 211, 211) 100%);
-  /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 1.6rem;
@@ -34,19 +29,6 @@
   padding-left: 20px;
 }
 
-.kropka{
-  /* background-color: red; */
-  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
-
-  border-radius: 10px;
-  height: 10px;
-  width: 10px;
-}
-.naglowek{
-  color: gray;
-  font-size: 0.9rem;
-  padding-left: 10px;
-}
 .main {
   overflow: auto;
   max-height: 200px;
@@ -90,27 +72,72 @@
   width: 100px;
 }
 
-.table th{
-  background-color: whitesmoke;
-  color: gray;
-  font-size: 0.9rem;
-  outline-style: none;
-}
-
+.table th,
 .table tr:nth-child(even) {
-  background-color: white;
-  color: gray;
+  background-color: rgb(178, 196, 214);
+  color: rgb(61, 61, 61);
   font-size: 0.9rem;
   outline-style: none;
 }
 
 .table tr:nth-child(odd) {
-  background-color: white;
+  background-color: rgb(212, 225, 238);
   outline-style: none;
-  border-bottom: 1px dashed lightgray;
 }
 
-.select {
+
+
+
+.select,
+.input {
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+}
+
+
+.select_oprawa {
+  background-color: rgb(240, 240, 240);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+}
+
+
+.main2{
+  /* padding: 5px 20px; */
+  /* margin-top: 20px; */
   background-color: transparent;
-  box-shadow: none;
+ display: flex;
+ flex-direction: column;
+ grid-template-columns: 220px 1fr   110px 110px 110px;
+ gap:5px;
+ 
+ /* width: 100vw; */
+}
+.row1{
+  display: grid;
+  grid-template-columns: 150px 70px  50px 50px 50px 100px 310px 1fr;
+  gap: 10px;
+}
+
+hr{
+  color: rgb(95, 95, 95);
+
+}
+
+.col_dane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.label {
+  font-size: 0.7rem;
+  padding-left: 5px;
 }

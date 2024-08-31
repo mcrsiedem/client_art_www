@@ -62,7 +62,7 @@ export default function RowArkusze  ({ row,showLegi })  {
       <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
               onDragOver={handleDragOver}  key={row.id}>
               
-        <SelectBoxArkusze row={row} />
+       
         <td>{row.indeks}</td>
         {/* <td>{row.typ_elementu}</td> */}
   
@@ -76,6 +76,7 @@ export default function RowArkusze  ({ row,showLegi })  {
         {/* <td>{row.ilosc_stron}</td> */}
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
+        <SelectBoxArkusze row={row} />
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {

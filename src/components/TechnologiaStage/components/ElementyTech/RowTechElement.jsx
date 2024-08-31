@@ -93,8 +93,8 @@ export default function RowTechElement({
 
   return (
     <>
-      <tr key={row.id}>
-        <div className={style.col_button}>
+           <div className={style.row3} key={row.id}>
+        {/* <div className={style.col_button}>
           <img
             src={Logo_ustawienia}
             className={style.expand}
@@ -120,18 +120,19 @@ export default function RowTechElement({
             }}
             alt="Procesy"
           />
-        </div>
+        </div> */}
         {/* <td>{row.id}</td> */}
-        <td>{row.indeks}</td>
+        {/* <td>{row.indeks}</td> */}
         <Typ
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech }
         />
         <Naklad row={row} />
-        <Nazwa row={row} />
+      
         <Strony row={row} />
         <NettoX row={row} />
         <NettoY row={row} />
+        <Nazwa row={row} />
         <PapierSelect
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
@@ -146,10 +147,11 @@ export default function RowTechElement({
           listaGramaturSelect={listaGramaturSelect}
 
         />
-        <PapierInfo
+           <Uwagi row={row} />
+        {/* <PapierInfo
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-        />
+        /> */}
 
         <Procesy
           row={row}
@@ -161,7 +163,7 @@ export default function RowTechElement({
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
         <IloscLeg row={row} />
-        <Uwagi row={row} />
+     
 
         {/* <td></td> */}
 
@@ -175,7 +177,7 @@ export default function RowTechElement({
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         />
-      </tr>
+      </div>
       {/* <>
               {arkusze
               .filter(x => x.element_id == row.id)
@@ -375,7 +377,7 @@ function Typ({
 }) {
   //row - row element
   return (
-    <td>
+  
       <select
         className={style.select}
         defaultValue={row.typ}
@@ -393,7 +395,7 @@ function Typ({
           </option>
         ))}
       </select>
-    </td>
+   
   );
 }
 
@@ -411,7 +413,7 @@ function PapierSelect({
   // listaGramatur = wszystkie gramatury
   // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
-    <td>
+
       <select
         //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
         //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
@@ -438,7 +440,7 @@ function PapierSelect({
           </option>
         ))}
       </select>
-    </td>
+ 
   );
 }
 
@@ -457,7 +459,7 @@ function Gramatura({
   // listaGramatur = wszystkie gramatury
   // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
-    <td>
+
       <select
         className={style.select}
         defaultValue={row.gramatura_id}
@@ -491,7 +493,7 @@ function Gramatura({
             )
         )}
       </select>
-    </td>
+
   );
 }
 
@@ -499,9 +501,9 @@ function Naklad({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td>
+ 
       <input
-        className={style.col_naklad}
+        className={style.input}
         value={row.naklad}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -512,15 +514,16 @@ function Naklad({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 function Nazwa({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td>
+
       <input
+       className={style.input}
         value={row.nazwa}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -531,7 +534,7 @@ function Nazwa({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 
@@ -540,8 +543,9 @@ function Strony({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-    <td>
+
       <input
+         className={style.input}
         value={row.ilosc_stron}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -552,15 +556,16 @@ function Strony({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 function NettoX({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td className={style.col_format}>
+
       <input
+      className={style.input}
         value={row.format_x}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -573,15 +578,16 @@ function NettoX({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 function NettoY({ row, handleChangeCardElementy }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td className={style.col_format}>
+ 
       <input
+         className={style.input}
         value={row.format_y}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -594,7 +600,7 @@ function NettoY({ row, handleChangeCardElementy }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 
@@ -673,7 +679,7 @@ function ArkuszWysokosc({ row }) {
     <td className={style.col_format}>
       <input
         value={row.arkusz_wysokosc}
-        className={style.td_lega_falc}
+        className={style.input}
         placeholder="..."
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -714,8 +720,9 @@ function Uwagi({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td>
+
       <input
+      className={style.input}
         value={row.uwagi}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -726,6 +733,6 @@ function Uwagi({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }

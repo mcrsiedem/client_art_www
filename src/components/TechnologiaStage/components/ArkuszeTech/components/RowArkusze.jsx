@@ -58,24 +58,26 @@ export default function RowArkusze  ({ row,showLegi })  {
   
     return (
       <>
-      
-      <tr              onDrop={()=>handleDrop(row.id)}
-              onDragOver={handleDragOver} className={style.tr_legi} key={row.id}>
+        <div className={style.main2}>
+      <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
+              onDragOver={handleDragOver}  key={row.id}>
               
         <SelectBoxArkusze row={row} />
         <td>{row.indeks}</td>
         {/* <td>{row.typ_elementu}</td> */}
   
         <TypElementu row={row} />
-        <RodzajArkusza row={row} />
         <td>{row.naklad}</td>
+        <RodzajArkusza row={row} />
+   
         <td>{row.ilosc_leg}</td>
         <td>{row.uwagi}</td>
         {/* <td>{row.element_id}</td> */}
         {/* <td>{row.ilosc_stron}</td> */}
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
-      </tr>
+      </div>
+      </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
         return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
         <td></td>

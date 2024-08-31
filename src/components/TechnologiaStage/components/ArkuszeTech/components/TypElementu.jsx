@@ -10,7 +10,11 @@ export default   function TypElementu ({row}) {
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
       <td className={style.col_typ_elementu}>
-        <div>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa} </div>
+
+        {/* <div>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa} </div> */}
+        <div> arkusz </div>
+
+
         {/* <input
           value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}
           onChange={(e) =>

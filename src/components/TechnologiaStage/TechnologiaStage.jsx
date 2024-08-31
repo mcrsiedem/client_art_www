@@ -33,14 +33,15 @@ export default function TechnologiaStage() {
         <div className={style.main}>
               <ProduktyTech />
               <ElementyTech />
+                     <div className={style.container_legi_arkusze}>
+              <WykonaniaTech/>    
+              <IntroligatorniaTech/>
+              </div>
               <div className={style.container_legi_arkusze}>
                 <ArkuszeTech />
                 <LegiTech />
               </div>
-              <div className={style.container_legi_arkusze}>
-              <WykonaniaTech/>    
-              <IntroligatorniaTech/>
-              </div>
+       
               
         </div>
         {showElementyTechProcesyInsert && (

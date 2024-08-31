@@ -10,7 +10,7 @@ export default function ProduktyTech( ) {
   return (
       <div className={style.container}>
             <div className={style.produkt}>
-              <ProduktyTableHeader />
+              {/* <ProduktyTableHeader /> */}
               <ProduktyTable   />
             </div>
     </div>
@@ -21,13 +21,7 @@ export default function ProduktyTech( ) {
 
 
 
-function ProduktyTableHeader() {
-  return <div className={style.header}>
-    <div className={style.kropka}></div>
-    <p className={style.naglowek} > Produkt </p>
-    
-    </div>;
-}
+
 
 function ProduktyTable() {
   const contextTech = useContext(TechnologyContext);

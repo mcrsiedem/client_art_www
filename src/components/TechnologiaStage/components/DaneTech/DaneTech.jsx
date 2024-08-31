@@ -73,7 +73,7 @@ const setDaneTech = contextTech.setDaneTech
     <div className={style.col}>
       <label className={style.label}> Firma </label>
       <select
-        className={style.firma}
+        className={style.select}
         value={daneTech?.firma_id}
 
         onChange={(event) => {
@@ -122,7 +122,7 @@ function DataMeterialow() {
     <div className={style.col}>
       <label className={style.label}> Data materiałów </label>
       <input
-        className={style.data}
+        className={style.select}
         type="date"
         value={daneZamowienia.data_materialow}
         onChange={(event) => {
@@ -145,7 +145,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
-      <input className={style.data} type="date"
+      <input className={style.select} type="date"
          value={daneZamowienia.data_przyjecia}
          onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value});
@@ -165,7 +165,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
-        <input className={style.data} type="date"
+        <input className={style.select} type="date"
         value={daneZamowienia.data_spedycji}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value});
@@ -186,7 +186,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
       <select
-        className={style.firma}
+        className={style.select}
         valueDefault={DecodeToken(sessionStorage.getItem("token")).id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
@@ -212,7 +212,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     <div className={style.col}>
       <label className={style.label}> Status </label>
       <select
-        className={style.firma}
+        className={style.select}
         value={daneZamowienia.status}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value});
@@ -290,7 +290,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     <div className={style.col}>
       <label className={style.label}> Stan </label>
       <select
-        className={style.firma}
+        className={style.select}
         value={daneZamowienia.stan}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, stan: event.target.value});
@@ -316,7 +316,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
-      <input className={style.tytul} type="text"
+      <input className={style.input} type="text"
       value={daneZamowienia.tytul}
       onChange={(event) => {
         
@@ -363,7 +363,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Uwagi </label>
-      <input className={style.tytul} type="text"
+      <input className={style.input} type="text"
       value={daneZamowienia.uwagi}
       onChange={(event) => {
 
@@ -388,7 +388,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
-      <input className={style.data} type="text"
+      <input className={style.input} type="text"
       value={daneZamowienia.nr}
       onChange={(event) => {
 
@@ -522,7 +522,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>
-      <input className={style.data} type="text"
+      <input className={style.input} type="text"
             value={daneZamowienia.rok}
 
             

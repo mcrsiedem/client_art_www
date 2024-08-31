@@ -308,7 +308,7 @@ function Procesy({ row }) {
   const setProcesyElementowTechTemporary =  techontext.setProcesyElementowTechTemporary;
 
   return (
-    <td className={style.col_button} id="procesy">
+    <div id="procesy" className={style.procesy} >
       <img
         className={style.expand}
         src={Logo_ustawienia}
@@ -335,13 +335,13 @@ function Procesy({ row }) {
     // Not last one.
   }
 }) */}
-    </td>
+    </div>
   );
 }
 
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   return (
-    <td className={style.col_button}>
+
       <div>
         <img
           className={style.expand}
@@ -352,13 +352,13 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
           alt="Procesy"
         />
       </div>
-    </td>
+
   );
 }
 
 function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   return (
-    <td className={style.col_button}>
+    <div>
       <img
         className={style.expand}
         src={iconCopy}
@@ -367,7 +367,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
         }}
         alt="Procesy"
       />
-    </td>
+</div>
   );
 }
 
@@ -609,9 +609,9 @@ function Lega({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-    <td>
+ 
       <input
-        className={style.td_lega_falc}
+        className={style.input}
         placeholder="..."
         value={row.lega}
         onChange={(e) => {
@@ -623,7 +623,7 @@ function Lega({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 function IloscLeg({ row }) {
@@ -631,9 +631,9 @@ function IloscLeg({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-    <td>
+
       <input
-        className={style.td_lega_falc}
+        className={style.input}
         value={row.ilosc_leg}
         placeholder="..."
         onChange={(e) => {
@@ -645,17 +645,17 @@ function IloscLeg({ row }) {
           }
         }}
       ></input>
-    </td>
+
   );
 }
 function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td className={style.col_format}>
+
       <input
         value={row.arkusz_szerokosc}
-        className={style.td_lega_falc}
+        className={style.input}
         placeholder="..."
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -668,7 +668,7 @@ function ArkuszSzerokosc({ row }) {
           }
         }}
       ></input>
-    </td>
+  
   );
 }
 
@@ -676,7 +676,7 @@ function ArkuszWysokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-    <td className={style.col_format}>
+
       <input
         value={row.arkusz_wysokosc}
         className={style.input}
@@ -692,7 +692,7 @@ function ArkuszWysokosc({ row }) {
           }
         }}
       ></input>
-    </td>
+  
   );
 }
 

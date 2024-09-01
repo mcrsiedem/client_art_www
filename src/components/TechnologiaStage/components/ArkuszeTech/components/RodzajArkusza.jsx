@@ -9,7 +9,7 @@ export default   function RodzajArkusza ({row}) {
     return (
    
         <input
-        className={style.input}
+        className={style.input_ark}
           value={row.rodzaj_arkusza}
           onChange={(e) =>
 

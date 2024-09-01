@@ -67,7 +67,7 @@ export default function RowArkusze  ({ row,showLegi,i })  {
         {/* <td>{row.typ_elementu}</td> */}
   
         <TypElementu row={row} i={i+1}/>
-        <div className={style.input}>{row.naklad}</div>
+        <div className={style.input_ark}>{row.naklad}</div>
         <RodzajArkusza row={row} />
    
         <td>{row.ilosc_leg}</td>
@@ -84,6 +84,7 @@ export default function RowArkusze  ({ row,showLegi,i })  {
   
         {/* <td  >{i+1}</td> */}
         <td className={style.input2}>lega {l.indeks}</td>
+   
      
         <td className={style.input2}>{l.naklad}</td>
         <td>{l.ilosc_leg}</td>

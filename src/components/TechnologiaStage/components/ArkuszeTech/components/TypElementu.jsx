@@ -9,14 +9,17 @@ export default   function TypElementu ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-      <td className={style.col_typ_elementu}>
+  
 
-        {/* <div>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa} </div> */}
-        <div  className={style.input}> arkusz {i}</div>
+  
+        // <div  className={style.input_ark}> arkusz {i}</div>
 
 
-        {/* <input
-          value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}
+        <input
+        className={style.input_ark}
+        disabled
+          value={"arkusz " + i}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}
           onChange={(e) =>
 
             {
@@ -28,7 +31,7 @@ export default   function TypElementu ({row,i}) {
             )}}
 
           }
-        ></input> */}
-      </td>
+        ></input>
+
     );
   }

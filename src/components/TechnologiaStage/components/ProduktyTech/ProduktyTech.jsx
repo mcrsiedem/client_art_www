@@ -11,7 +11,11 @@ export default function ProduktyTech( ) {
       <div className={style.container}>
             <div className={style.produkt}>
               {/* <ProduktyTableHeader /> */}
-              <p>Produkt</p>
+              <div className={style.produkt_menu_button}> 
+                 <p>Produkt</p>
+                  {/* <button>Rozwiń</button>  */}
+              </div>
+            
               <ProduktyTable2   />
             </div>
     </div>

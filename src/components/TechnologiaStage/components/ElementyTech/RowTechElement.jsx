@@ -93,8 +93,9 @@ export default function RowTechElement({
 
   return (
     <>
+ 
            <div className={style.row3} key={row.id}>
-       
+           
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
         <Typ
@@ -181,12 +182,14 @@ export default function RowTechElement({
         </div>
       </div>
       <>
+     
               {arkusze
               .filter(x => x.element_id == row.id)
 
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row} showLegi={false} />;
+              return <RowArkusze key={row.indeks} i={i} row={row} setShowLegi={setShowLegi} showLegi={showLegi} />;
             })}
+              
       </>
     </>
   );

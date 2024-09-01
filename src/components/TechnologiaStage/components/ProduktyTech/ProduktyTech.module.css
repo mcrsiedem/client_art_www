@@ -16,6 +16,11 @@
   height: calc(100% - 20px);
 }
 
+.produkt_menu_button{
+  display: flex;
+  gap:10px
+}
+
 .header {
   display: flex;
   align-items: center;

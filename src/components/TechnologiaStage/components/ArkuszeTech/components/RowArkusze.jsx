@@ -7,10 +7,11 @@ import TypElementu from "./TypElementu";
 import RodzajArkusza from "./RodzajArkusza";
 import UsunArkusz from "./UsunArkusz";
 import DodajArkusz from "./DodajArkusz";
+import Rozwin from "./Rozwin";
 import style from "../ArkuszeTech.module.css";
 
 
-export default function RowArkusze  ({ row,showLegi,i })  {
+export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
     const setLegi = techContext.setLegi;
@@ -65,8 +66,9 @@ export default function RowArkusze  ({ row,showLegi,i })  {
 {/*        
         <div className={style.input2}>{row.indeks}</div> */}
         {/* <td>{row.typ_elementu}</td> */}
-  
+        <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
         <TypElementu row={row} i={i+1}/>
+        
         <div className={style.input_ark}>{row.naklad}</div>
         <RodzajArkusza row={row} />
    
@@ -76,6 +78,7 @@ export default function RowArkusze  ({ row,showLegi,i })  {
         {/* <td>{row.ilosc_stron}</td> */}
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
+
         <SelectBoxArkusze row={row} />
       </div>
       </div>

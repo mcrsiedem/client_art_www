@@ -10,7 +10,7 @@ import DodajArkusz from "./DodajArkusz";
 import style from "../ArkuszeTech.module.css";
 
 
-export default function RowArkusze  ({ row,showLegi })  {
+export default function RowArkusze  ({ row,showLegi,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
     const setLegi = techContext.setLegi;
@@ -62,11 +62,11 @@ export default function RowArkusze  ({ row,showLegi })  {
       <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
               onDragOver={handleDragOver}  key={row.id}>
               
-       
-        <td>{row.indeks}</td>
+{/*        
+        <div className={style.input2}>{row.indeks}</div> */}
         {/* <td>{row.typ_elementu}</td> */}
   
-        <TypElementu row={row} />
+        <TypElementu row={row} i={i+1}/>
         <td>{row.naklad}</td>
         <RodzajArkusza row={row} />
    

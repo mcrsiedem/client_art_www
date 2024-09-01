@@ -7,9 +7,9 @@ export default   function RodzajArkusza ({row}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-      <td>
+   
         <input
-        className={style.input}
+        className={style.input2}
           value={row.rodzaj_arkusza}
           onChange={(e) =>
 
@@ -23,6 +23,6 @@ export default   function RodzajArkusza ({row}) {
 
           }
         ></input>
-      </td>
+     
     );
   }

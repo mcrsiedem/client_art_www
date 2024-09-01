@@ -67,7 +67,7 @@ export default function RowArkusze  ({ row,showLegi,i })  {
         {/* <td>{row.typ_elementu}</td> */}
   
         <TypElementu row={row} i={i+1}/>
-        <td>{row.naklad}</td>
+        <div className={style.input2}>{row.naklad}</div>
         <RodzajArkusza row={row} />
    
         <td>{row.ilosc_leg}</td>
@@ -83,7 +83,8 @@ export default function RowArkusze  ({ row,showLegi,i })  {
         return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
         <td></td>
         <td></td>
-        <td  >{i+1}</td>
+        <td></td>
+        {/* <td  >{i+1}</td> */}
         <td>lega {l.indeks}</td>
         <td></td>
         <td>{l.naklad}</td>

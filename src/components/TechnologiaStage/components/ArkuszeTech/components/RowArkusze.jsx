@@ -67,7 +67,7 @@ export default function RowArkusze  ({ row,showLegi,i })  {
         {/* <td>{row.typ_elementu}</td> */}
   
         <TypElementu row={row} i={i+1}/>
-        <div className={style.input2}>{row.naklad}</div>
+        <div className={style.input}>{row.naklad}</div>
         <RodzajArkusza row={row} />
    
         <td>{row.ilosc_leg}</td>
@@ -80,21 +80,19 @@ export default function RowArkusze  ({ row,showLegi,i })  {
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
-        return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
-        <td></td>
-        <td></td>
-        <td></td>
+        return     <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
+  
         {/* <td  >{i+1}</td> */}
-        <td>lega {l.indeks}</td>
-        <td></td>
-        <td>{l.naklad}</td>
+        <td className={style.input2}>lega {l.indeks}</td>
+     
+        <td className={style.input2}>{l.naklad}</td>
         <td>{l.ilosc_leg}</td>
         <td>{l.uwagi}</td>
         {/* <td>{row.element_id}</td> */}
         {/* <td>{row.ilosc_stron}</td> */}
         <td></td>
         <td></td>
-      </tr>
+      </div>
       })}</>)}
   
       </>

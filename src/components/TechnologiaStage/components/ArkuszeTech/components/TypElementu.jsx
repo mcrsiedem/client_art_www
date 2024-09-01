@@ -12,7 +12,7 @@ export default   function TypElementu ({row,i}) {
       <td className={style.col_typ_elementu}>
 
         {/* <div>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa} </div> */}
-        <div  className={style.input2}> arkusz {i}</div>
+        <div  className={style.input}> arkusz {i}</div>
 
 
         {/* <input

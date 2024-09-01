@@ -304,7 +304,7 @@ function CreateTechnmologiaBtn({ row }) {
     <td >
       <button className={style.btn_dodaj_karte} 
       onClick={()=> {
-        techContext.setShowTechnologyStage(true)
+         techContext.setShowTechnologyStage(true)
         techContext.setRowZamowienia(row)
         // techContext.setOpenTechnologia(true)
 

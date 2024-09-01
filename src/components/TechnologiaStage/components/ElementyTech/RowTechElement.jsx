@@ -94,33 +94,7 @@ export default function RowTechElement({
   return (
     <>
            <div className={style.row3} key={row.id}>
-        {/* <div className={style.col_button}>
-          <img
-            src={Logo_ustawienia}
-            className={style.expand}
-            onClick={() => {
-              // createLegi(row,legi,setLegi);
-              createArkuszeFromElemenets(
-                arkusze,
-                setArkusze,
-                legi,
-                setLegi,
-                legiFragmenty,
-                setLegiFragmenty,
-                oprawaTech,
-                setOprawaTech,
-                fragmentyTech,
-                setFragmentyTech,
-                elementyTech,
-                row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-              );
-              // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
-              // createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
-              // console.log("fragmenty tech: ", fragmentyTech)
-            }}
-            alt="Procesy"
-          />
-        </div> */}
+       
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
         <Typ
@@ -177,6 +151,34 @@ export default function RowTechElement({
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         />
+
+<div className={style.col_button}>
+          <img
+            src={Logo_ustawienia}
+            className={style.expand}
+            onClick={() => {
+              // createLegi(row,legi,setLegi);
+              createArkuszeFromElemenets(
+                arkusze,
+                setArkusze,
+                legi,
+                setLegi,
+                legiFragmenty,
+                setLegiFragmenty,
+                oprawaTech,
+                setOprawaTech,
+                fragmentyTech,
+                setFragmentyTech,
+                elementyTech,
+                row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+              );
+              // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
+              // createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
+              // console.log("fragmenty tech: ", fragmentyTech)
+            }}
+            alt="Procesy"
+          />
+        </div>
       </div>
       <>
               {arkusze

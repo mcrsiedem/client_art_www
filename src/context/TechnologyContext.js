@@ -241,7 +241,7 @@ export const TechnologyContextProvider = ({children})=>{
      setFragmentyTech(res.data[3])
      setOprawaTech(res.data[4])
      setProcesyElementowTech(res.data[6])
-
+    //  setShowTechnologyStage(true)
 }
     
     return  <TechnologyContext.Provider 

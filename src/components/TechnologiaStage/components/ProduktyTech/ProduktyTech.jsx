@@ -56,7 +56,7 @@ function Typ({ row }) {
        <label className={style.label}> Typ </label>
       <select
         className={style.select}
-        defaultValue={row.typ}
+        defaultValue={row?.typ}
         onChange={(e) => {
           handleUpdateRowProdukty({
             ...row,
@@ -83,7 +83,7 @@ function Nazwa({ row }) {
       <label className={style.label}> Nazwa </label>
       <input
         className={style.input}
-        value={row.nazwa}
+        value={row?.nazwa}
         onChange={(e) =>
           {
             
@@ -111,7 +111,7 @@ function Naklad({ row }) {
       <label className={style.label}> Nakład </label>
       <input
         className={style.input}
-        value={row.naklad}
+        value={row?.naklad}
         onChange={(e) => {
           // const re = /^[0-9]+$/;
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -137,7 +137,7 @@ function Strony({ row }) {
       <input
       disabled
         className={style.input}
-        value={row.ilosc_stron}
+        value={row?.ilosc_stron}
 
       ></input>
     </div>
@@ -154,7 +154,7 @@ function FormatX({ row }) {
       <input
       disabled
         className={style.input}
-        value={row.format_x}
+        value={row?.format_x}
 
       ></input>
     </div>
@@ -170,7 +170,7 @@ function FormatY({ row }) {
       <input
       disabled
         className={style.input}
-        value={row.format_y}
+        value={row?.format_y}
 
       ></input>
     </div>
@@ -191,7 +191,7 @@ const contextApp = useContext(AppContext);
       <select
         disabled
         className={style.select_oprawa}
-        defaultValue={row.oprawa}
+        defaultValue={row?.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
 
@@ -231,7 +231,7 @@ function Uwagi({ row }) {
       <label className={style.label}> Uwagi </label>
       <input
         className={style.input}
-        value={row.uwagi}
+        value={row?.uwagi}
         onChange={(e) =>
           { 
             const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;

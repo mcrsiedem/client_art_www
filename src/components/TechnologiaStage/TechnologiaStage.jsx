@@ -18,7 +18,7 @@ export default function TechnologiaStage() {
   const openTechnologia = techContext.openTechnologia;
   const showElementyTechProcesyInsert = techContext.showElementyTechProcesyInsert;
   const procesyElementowTech = techContext.procesyElementowTech;
-
+  const [showPortal, setShowPortal] =     useState(false);
   useEffect(() => {
     if (openTechnologia) {
       console.log("open technologia");
@@ -28,7 +28,9 @@ export default function TechnologiaStage() {
   if (showTechnologyStage) {
     return (
       <div className={style.container}>
-        <Header />
+
+        <Header  setShowPortal={setShowPortal}/>
+   
         <DaneTech />
         <div className={style.main}>
               <ProduktyTech />
@@ -51,6 +53,9 @@ export default function TechnologiaStage() {
 
         />
       )}
+
+
+
       </div>
       
     );

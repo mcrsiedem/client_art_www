@@ -105,10 +105,16 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
   return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
   <td></td>
   <td></td>
-  <td  >idfrag{l.id}</td>
-  <td>frag.idx {l.indeks}</td>
   <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  {/* <td  >idfrag{l.id}</td>
+  <td>frag.idx {l.indeks}</td> */}
+
   <td>{l.naklad}</td>
+  <td> fragment</td>
   <td>{l.ilosc_leg}</td>
   <td>lega id{l.lega_id}</td>
   {/* <td>{row.element_id}</td> */}

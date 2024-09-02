@@ -159,6 +159,7 @@ export default function RowTechElement({
             className={style.expand}
             onClick={() => {
               // createLegi(row,legi,setLegi);
+
               createArkuszeFromElemenets(
                 arkusze,
                 setArkusze,

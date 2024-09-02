@@ -84,7 +84,7 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
-        return     <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
+        return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
   
         {/* <td  >{i+1}</td> */}
         <td className={style.input2}>lega {l.indeks}</td>
@@ -101,21 +101,7 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
       </div>
 
 
-
-
-
-
-
-
-
-
-
-
-      })}
-      
-      
-      {/* {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => { */}
-      {showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
+{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
   return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
   <td></td>
   <td></td>
@@ -131,6 +117,15 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
   <td></td>
 </tr>
 })}</>)}
+</> 
+
+      })
+      
+      }
+      
+      
+      {/* {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => { */}
+
       
       </>)}
   

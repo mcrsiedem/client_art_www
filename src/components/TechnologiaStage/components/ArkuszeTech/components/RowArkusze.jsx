@@ -19,6 +19,7 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
     const setArkusze = techContext.setArkusze;
     const dragLegaId = techContext.dragLegaId;
     const setDragLegaId = techContext.setDragLegaId;
+    const legiFragmenty = techContext.legiFragmenty;
     
   
   
@@ -90,14 +91,48 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
    
      
         <td className={style.input2}>{l.naklad}</td>
-        <td>{l.ilosc_leg}</td>
+        <td>{l.ilosc_stron}</td>
+        {/* <td>{l.ilosc_leg}</td> */}
         <td>{l.uwagi}</td>
         {/* <td>{row.element_id}</td> */}
         {/* <td>{row.ilosc_stron}</td> */}
         <td></td>
         <td></td>
       </div>
-      })}</>)}
+
+
+
+
+
+
+
+
+
+
+
+
+      })}
+      
+      
+      {/* {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => { */}
+      {showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
+  return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
+  <td></td>
+  <td></td>
+  <td  >idfrag{l.id}</td>
+  <td>frag.idx {l.indeks}</td>
+  <td></td>
+  <td>{l.naklad}</td>
+  <td>{l.ilosc_leg}</td>
+  <td>lega id{l.lega_id}</td>
+  {/* <td>{row.element_id}</td> */}
+  {/* <td>{row.ilosc_stron}</td> */}
+  <td></td>
+  <td></td>
+</tr>
+})}</>)}
+      
+      </>)}
   
       </>
     );

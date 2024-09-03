@@ -98,6 +98,10 @@ export default function RowTechElement({
            
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
+        <Id
+          row={row}
+   
+        />
         <Typ
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech }
@@ -511,6 +515,27 @@ function Naklad({ row }) {
       <input
         className={style.input}
         value={row.naklad}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowElementyTech({
+              ...row,
+              naklad: e.target.value,
+            });
+          }
+        }}
+      ></input>
+
+  );
+}
+function Id({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  return (
+ 
+      <input
+        className={style.input_id}
+        disabled
+        value={row.id}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowElementyTech({

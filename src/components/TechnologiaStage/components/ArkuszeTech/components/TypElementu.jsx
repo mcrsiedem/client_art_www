@@ -16,10 +16,10 @@ export default   function TypElementu ({row,i}) {
 
 
         <input
-        className={style.input_ark}
+        className={style.input_ark_typ}
         disabled
-          // value={"arkusz " + i}
-          value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          value={"arkusz "}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
             {

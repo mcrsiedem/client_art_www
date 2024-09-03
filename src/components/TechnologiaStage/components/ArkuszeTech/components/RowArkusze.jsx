@@ -9,6 +9,7 @@ import UsunArkusz from "./UsunArkusz";
 import DodajArkusz from "./DodajArkusz";
 import Rozwin from "./Rozwin";
 import style from "../ArkuszeTech.module.css";
+import NrArkusza from "./NrArkusza";
 
 
 export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
@@ -68,7 +69,9 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
         <div className={style.input2}>{row.indeks}</div> */}
         {/* <td>{row.typ_elementu}</td> */}
         <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
+        <NrArkusza row={row} />
         <TypElementu row={row} i={i+1}/>
+   
         
         <div className={style.input_ark}>{row.naklad}</div>
         <RodzajArkusza row={row} />

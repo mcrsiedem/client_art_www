@@ -5,7 +5,7 @@ import { _typ_elementu } from "utils/initialvalue";
 import style from "../ArkuszeTech.module.css";
 
 
-export default   function TypElementu ({row,i}) {
+export default   function NrArkusza ({row}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
@@ -16,17 +16,17 @@ export default   function TypElementu ({row,i}) {
 
 
         <input
-        className={style.input_ark}
-        disabled
+        className={style.input_ark_nr}
+        
           // value={"arkusz " + i}
-          value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          value={row.nr_arkusza}
           onChange={(e) =>
 
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
                 handleUpdateRowArkusze({
               ...row,
-              typ_elementu: e.target.value,
+              nr_arkusza: e.target.value,
             }
             )}}
 

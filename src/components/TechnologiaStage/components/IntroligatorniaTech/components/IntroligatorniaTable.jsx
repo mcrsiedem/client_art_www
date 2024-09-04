@@ -13,23 +13,7 @@ export default function IntroligatorniaTable() {
   return (
     <div className={style.container}>
       <table>
-        <thead className={style.table_th}>
-          <tr>
-            <th className={style.col7}></th>
-            <th className={style.col3}>#</th>
-            <th className={style.col4}>Oprawa</th>
-            <th className={style.col4}>Ilość str</th>
-            <th className={style.th_wersja}>Wersja</th>
-            <th className={style.col_bok_oprawy}>Naklad</th>
-            <th className={style.col_bok_oprawy}>Bok oprawy</th>
-            <th className={style.col6}>Czystodruki</th>
-            <th className={style.col6}>Data spedycji</th>
-            <th className={style.col7}>Uwagi</th>
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
-          </tr>
-        </thead>
+
 
         <tbody>
             {oprawaTech.map(row=>  <OprawaRow row={row} /> )}
@@ -77,9 +61,10 @@ const OprawaRow = ({ row }) => {
   return (
     <>
     <tr key={row.id}>
+    <RodzajOprawy row={row} />
       <td></td>
       <td></td>
-      <RodzajOprawy row={row} />
+    
       <td></td>
       <td></td>
       <td>{row.naklad}</td>
@@ -111,6 +96,7 @@ const LegaFragmentRow = ({ row }) => {
 
 
 
+
 function RodzajOprawy({ row, handleChangeCardOprawa }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const produkty = contextModalInsert.produkty;
@@ -118,9 +104,11 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
   const contextApp = useContext(AppContext);
 
   return (
-    <td className={style.select}>
+
+    <div className={style.col_dane}>
+      <label className={style.label}> Oprawa </label>
       <select
-        className={style.input_oprawa}
+        className={style.select}
         defaultValue={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({ ...row, oprawa: event.target.value });
@@ -144,5 +132,5 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
           </option>
         ))}
       </select>
-    </td>
+      </div>
   );}

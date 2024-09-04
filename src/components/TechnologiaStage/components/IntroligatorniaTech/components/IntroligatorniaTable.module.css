@@ -1,29 +1,29 @@
 .container {
-  background-color: white;
-  margin-right: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.header {
   display: flex;
-  align-items: center;
-  justify-content: left;
-  background-image: linear-gradient(rgb(211, 211, 211) 0%, rgb(228, 228, 228) 50%, rgb(211, 211, 211) 100%);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 1.6rem;
-  color: gray;
-  font-size: 0.9rem;
-  padding-left: 20px;
-  margin-top: 15px;
-
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 15px;
 }
-.input_oprawa{
-  background-color: transparent;
-  box-shadow: none;
 
+.select,
+.input {
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
 }
-.typ_elementu{
-  font-weight: bold;
+
+
+.col_dane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.7rem;
+  padding-left: 5px;
 }

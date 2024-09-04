@@ -10,18 +10,15 @@
 .produkt {
   border-radius: 10px;
   width: calc(100vw - 40px);
-  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
-  /* background-color: rgb(178, 196, 214); */
-
   height: calc(100% - 20px);
 }
 
-.produkt_menu_button{
+.introligatornia_menu_button{
   display: flex;
   gap:10px
 }
 
-.header {
+/* .header {
   display: flex;
   align-items: center;
   justify-content: left;
@@ -32,7 +29,7 @@
   color: #fff;
   font-size: 0.9rem;
   padding-left: 20px;
-}
+} */
 
 .main {
   overflow: auto;

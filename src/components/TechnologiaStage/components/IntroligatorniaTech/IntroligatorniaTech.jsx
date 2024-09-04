@@ -48,22 +48,20 @@ export default function IntroligatorniaTech({
 
   return (
     <div className={style.container}>
-      <Header />
-      <IntroligatorniaTable/>
-      {/* <OprawaTable
-        handleChangeCardProdukty={handleChangeCardProdukty}
-        handleDragStart={handleDragStart}
-        handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-        handleDrop={handleDrop}
-        handleDragOver={handleDragOver}
-        handleChangeCardOprawa={handleChangeCardOprawa}
-        expand={expand}
-        setExpand={setExpand}
-        handleChangeCardFragmenty={handleChangeCardFragmenty}
-        setShowOprawaElementyStage={setShowOprawaElementyStage}
-        oprawa_row={oprawa_row}
-        setOprawa_row={setOprawa_row}
-      /> */}
+
+<div className={style.introligatornia}>
+  
+              <div className={style.introligatornia_menu_button}> 
+              <p>Introligatornia</p>
+                
+              </div>
+             
+            <IntroligatorniaTable/>
+            </div>
+
+
+      
+
       {showOprawaElementyStage && (
         <OprawaElementyStage
           showOprawaElementyStage={showOprawaElementyStage}
@@ -76,215 +74,8 @@ export default function IntroligatorniaTech({
   );
 }
 
-function OprawaTable({
-  handleChangeCardProdukty,
-  handleDragStart,
-  handleChangeCardFragmentyOprawaId,
-  handleDrop,
-  handleDragOver,
-  handleChangeCardOprawa,
-  expand,
-  setExpand,
-  handleChangeCardFragmenty,
-  setShowOprawaElementyStage,
-  oprawa_row,
-  setOprawa_row,
-}) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const techContext = useContext(TechnologyContext);
-  const oprawaTech = techContext.oprawaTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const legiFragmenty = techContext.legiFragmenty;
 
-  const fragmenty = contextModalInsert.fragmenty;
-  const setFragmenty = contextModalInsert.setFragmenty;
-  const elementy = contextModalInsert.elementy;
-  const oprawa = contextModalInsert.oprawa;
-  const setOprawa = contextModalInsert.setOprawa;
-  const [showLegiFragmenty, setShowLegiFragmenty] = useState(true);
 
-  return (
-    <div className={style.table_legi}>
-      <table className={style.table2}>
-        <thead className={style.table_th}>
-          <tr>
-            <th className={style.col7}></th>
-            {/* <th className={style.col1}>Zam.</th> */}
-            {/* <th className={style.col2}>Prod.</th> */}
-            <th className={style.col3}>#</th>
-
-            <th className={style.col4}>Oprawa</th>
-            <th className={style.col4}>Ilość str</th>
-
-            <th className={style.th_wersja}>Wersja</th>
-            <th className={style.col_bok_oprawy}>Naklad</th>
-            <th className={style.col_bok_oprawy}>Bok oprawy</th>
-
-            <th className={style.col6}>Czystodruki</th>
-            <th className={style.col6}>Data spedycji</th>
-            <th className={style.col7}>Uwagi</th>
-
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {oprawaTech.map((row) => {
-            return (
-              <>
-                <tr
-                  key={row.id}
-                  onDrop={() => handleDrop(row.id)}
-                  onDragOver={handleDragOver}
-                >
-                  {/* <td>{row.zamowienie_id}</td> */}
-                  <div className={style.expand}>
-                    <img
-                      className={style.icon}
-                      src={logoExpand}
-                      onClick={() => {
-                        setExpand(!expand);
-                      }}
-                      alt="Procesy"
-                    />
-                  </div>
-                  {/* <td>{row.produkt_id}</td> */}
-                  <td>{row.id}</td>
-
-                  <RodzajOprawy
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                    handleChangeCardProdukty={handleChangeCardProdukty}
-                  />
-                  <td></td>
-
-                  <WersjaOprawa
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-                  <NakladOprawa
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-                  <BokOprawy
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-
-                  <DataCzystodrukow
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-                  <DataSpedycji
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-
-                  <UwagiOprawa
-                    row={row}
-                    handleChangeCardOprawa={handleChangeCardOprawa}
-                  />
-
-                  {/* <Usun row={row} handleRemoveItem={handleRemoveItem} />
-                  <DodajOprawe
-                    row={row}
-                    oprawa={oprawa}
-                    setOprawa={setOprawa}
-                  />
-                  <PodzielOprawe
-                    setShowOprawaElementyStage={setShowOprawaElementyStage}
-                    row={row}
-                    oprawa_row={oprawa_row}
-                    setOprawa_row={setOprawa_row}
-                  /> */}
-                </tr>
-                {expand ? (
-                  fragmentyTech
-                    .filter((el) => el.oprawa_id === row.id)
-                    .map((row) => {
-                      return (
-                        <>
-                          <tr
-                            draggable
-                            onDragStart={() => handleDragStart(row.id)}
-                            key={row.id}
-                          >
-                            <td></td>
-
-                            <td></td>
-                            <Typ row={row} />
-                            <td>{row.ilosc_stron} </td>
-                            <WersjaOprawaFragment
-                              row={row}
-                              handleChangeCardFragmenty={
-                                handleChangeCardFragmenty
-                              }
-                            />
-
-                            <NakladOprawaFregment
-                              row={row}
-                              handleChangeCardFragmenty={
-                                handleChangeCardFragmenty
-                              }
-                            />
-
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          {showLegiFragmenty && (
-                            <>
-                              {" "}
-                              {legiFragmenty
-                                .filter((x) => x.fragment_id == row.id)
-                                .map((l, i) => {
-                                  return (
-                                    <tr
-                                      draggable
-                                      onDragStart={() => handleDragStart(l.id)}
-                                      className={style.tr_legi_mini}
-                                      key={l.id}
-                                    >
-                                      <td></td>
-                                      <td></td>
-                                      <td>{i + 1}</td>
-                                      <td>fragment {l.indeks}</td>
-                                      <td></td>
-                                      <td>{l.naklad}</td>
-                                      <td>{l.ilosc_leg}</td>
-                                      <td>{l.uwagi}</td>
-                                      {/* <td>{row.element_id}</td> */}
-                                      {/* <td>{row.ilosc_stron}</td> */}
-                                      <td></td>
-                                      <td></td>
-                                    </tr>
-                                  );
-                                })}
-                            </>
-                          )}
-                        </>
-                      );
-                    })
-                ) : (
-                  <></>
-                )}
-              </>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function Header() {
-  return <div className={style.header}> Introligatornia</div>;
-}
 
 function DataSpedycji({ row, handleChangeCardOprawa }) {
   return (

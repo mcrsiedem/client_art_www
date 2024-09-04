@@ -10,12 +10,12 @@ export default function ProduktyTech( ) {
   return (
       <div className={style.container}>
             <div className={style.produkt}>
-              {/* <ProduktyTableHeader /> */}
+  
               <div className={style.produkt_menu_button}> 
-                 <p>Produkt</p>
-                  {/* <button>Rozwiń</button>  */}
+                <p>Produkt</p>
+                
               </div>
-            
+             
               <ProduktyTable2   />
             </div>
     </div>

@@ -191,7 +191,7 @@ export default function RowTechElement({
           />
         </div>
       </div>
-      <>
+      {showArkusze &&(<> 
      
               {arkusze
               .filter(x => x.element_id == row.id)
@@ -200,7 +200,7 @@ export default function RowTechElement({
               return <RowArkusze key={row.indeks} i={i} row={row} setShowLegi={setShowLegi} showLegi={showLegi} />;
             })}
               
-      </>
+              </>)}
     </>
   );
 

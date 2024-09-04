@@ -13,7 +13,7 @@ export default function ProduktyTech( ) {
   
               <div className={style.produkt_menu_button}> 
                 {/* <p>Produkt</p> */}
-                <p></p>
+                <p> Druk</p>
               </div>
              
               <ProduktyTable2   />

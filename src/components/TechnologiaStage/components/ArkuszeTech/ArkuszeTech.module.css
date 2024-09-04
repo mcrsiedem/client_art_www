@@ -49,7 +49,7 @@
  flex-direction: column;
  grid-template-columns:   15px 35px 55px 70px 50px 100px 150px 150px 200px 200px 100px 50px 50px  50px  50px  50px 50px   ;
  gap:10px;
- margin-left: 25px;
+ margin-left: 55px;
  /* margin-bottom: 10px; */
  /* width: 100vw; */
 }

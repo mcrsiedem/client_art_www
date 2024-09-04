@@ -65,6 +65,7 @@ export default function RowTechElement({
 
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
+  const [showArkusze, setShowArkusze] = useState(false);
   const [listaGramaturSelect, setListaGramaturSelect] = useState(listaGramatur.filter(x => x.papier_id == row.papier_id));
 
   const handleRemoveItem = (indeks, id) => {
@@ -98,6 +99,10 @@ export default function RowTechElement({
            
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
+        <Rozwin
+          row={row} showArkusze={showArkusze} setShowArkusze={setShowArkusze}
+   
+        />
         <Id
           row={row}
    
@@ -527,6 +532,26 @@ function Naklad({ row }) {
 
   );
 }
+
+function Rozwin({ row,showArkusze, setShowArkusze }) {
+
+  return (
+ 
+    <div>
+    <img
+      className={style.expand}
+      src={logoExpand}
+      onClick={() => {
+        
+        setShowArkusze(!showArkusze)
+      }}
+      alt="Procesy"
+    />
+  </div>
+
+  );
+}
+
 function Id({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;

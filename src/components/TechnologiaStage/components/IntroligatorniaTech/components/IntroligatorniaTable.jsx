@@ -12,13 +12,9 @@ export default function IntroligatorniaTable() {
 
   return (
     <div className={style.container}>
-      <table>
 
-
-        <tbody>
             {oprawaTech.map(row=>  <OprawaRow row={row} /> )}
-        </tbody>
-      </table>
+  
     </div>
   );
 }
@@ -60,19 +56,19 @@ const OprawaRow = ({ row }) => {
     }
   return (
     <>
-    <tr key={row.id}>
+      <div className={style.row1}>
     <RodzajOprawy row={row} />
-      <td></td>
-      <td></td>
-    
-      <td></td>
-      <td></td>
-      <td>{row.naklad}</td>
-    </tr>
-    {legiFragmenty.
-    filter(f=> f.oprawa_id == row.id).
-    map(row=>  <LegaFragmentRow row={row}  draggable  onDragStart={()=>handleDragStart(row.id)}/> )}
-    </>
+
+      <div>{row.naklad}</div>
+      </div>
+   
+          {legiFragmenty.
+          filter(f=> f.oprawa_id == row.id).
+          map(row=>  <LegaFragmentRow row={row}  draggable  onDragStart={()=>handleDragStart(row.id)}/> )}
+
+</>
+            
+
   );
 };
 

@@ -1,8 +1,26 @@
 .container {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  margin-bottom: 15px;
+  background-color: transparent;
+ display: grid;
+ flex-direction: row;
+ gap:5px;
+
+}
+.row1{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 10px;
+}
+.main2{
+  /* padding: 5px 20px; */
+  /* margin-top: 20px; */
+  background-color: transparent;
+ display: flex;
+ flex-direction: column;
+ grid-template-columns: 220px 1fr   110px 110px 110px;
+ gap:5px;
+margin-bottom: 0px;
+ 
+ /* width: 100vw; */
 }
 
 .select,

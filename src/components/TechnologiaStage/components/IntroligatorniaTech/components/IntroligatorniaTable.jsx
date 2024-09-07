@@ -4,6 +4,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { _typ_elementu } from "utils/initialvalue";
+import { reg_int } from "utils/initialvalue";
 
 export default function IntroligatorniaTable() {
 
@@ -58,8 +59,16 @@ const OprawaRow = ({ row }) => {
     <>
       <div className={style.row1}>
     <RodzajOprawy row={row} />
+    <Naklad row={row} />
+    <BokOprawy row={row} />
+    <Wersja row={row} />
+    <Uwagi row={row} />
+    <DataCzystodrukow row={row} />
+    <DataSpedycji row={row} />
+    
+ 
 
-      <div>{row.naklad}</div>
+      {/* <div>{row.naklad}</div> */}
       </div>
    
           {legiFragmenty.
@@ -130,3 +139,131 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
       </select>
       </div>
   );}
+
+const Naklad = ({ row }) => {
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+    return (
+      <div className={style.col_dane}>
+      <label className={style.label}> Nakład </label>
+        <input
+          className={style.input}
+          value={row.naklad}
+          onChange={(e) => {
+            if (e.target.value === "" || reg_int.test(e.target.value)) {
+              updateRowOprawaTech({
+                ...row,
+                naklad: e.target.value,
+              });
+            }
+          }}
+        ></input>
+    </div>
+    );
+  }
+
+  const Wersja = ({ row }) => {
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+    return (
+      <div className={style.col_dane}>
+      <label className={style.label}> Wersja </label>
+        <input
+          className={style.input}
+          value={row.wersja}
+          onChange={(e) => {
+            if (e.target.value === "" || reg_int.test(e.target.value)) {
+              updateRowOprawaTech({
+                ...row,
+                wersja: e.target.value,
+              });
+            }
+          }}
+        ></input>
+    </div>
+    );
+  }
+
+  const Uwagi = ({ row }) => {
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+    return (
+      <div className={style.col_dane}>
+      <label className={style.label}> Opis </label>
+        <input
+          className={style.input}
+          value={row.uwagi}
+          onChange={(e) => {
+            if (e.target.value === "" || reg_int.test(e.target.value)) {
+              updateRowOprawaTech({
+                ...row,
+                uwagi: e.target.value,
+              });
+            }
+          }}
+        ></input>
+    </div>
+    );
+  }
+  
+  const BokOprawy = ({ row }) => {
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+    return (
+      <div className={style.col_dane}>
+      <label className={style.label}> Bok oprawy </label>
+        <input
+          className={style.input}
+          value={row.bok_oprawy}
+          onChange={(e) => {
+            if (e.target.value === "" || reg_int.test(e.target.value)) {
+              updateRowOprawaTech({
+                ...row,
+                bok_oprawy: e.target.value,
+              });
+            }
+          }}
+        ></input>
+    </div>
+    );
+  }
+
+  const DataSpedycji =({ row })=>{
+
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+      return(
+        <div className={style.col_dane}>
+      <label className={style.label}> Spedycja </label>
+          <input className={style.select} type="date"
+          value={row.data_spedycji}
+          onChange={(e) => {
+            updateRowOprawaTech({
+              ...row,
+              data_spedycji: e.target.value,
+            });
+
+          }}></input>
+        </div>
+      );
+  }
+
+  const DataCzystodrukow =({ row })=>{
+
+    const techContext = useContext(TechnologyContext);
+    const updateRowOprawaTech = techContext.updateRowOprawaTech;
+      return(
+        <div className={style.col_dane}>
+      <label className={style.label}> Czystodruki </label>
+          <input className={style.select} type="date"
+          value={row.data_czystodrukow}
+          onChange={(e) => {
+            updateRowOprawaTech({
+              ...row,
+              data_czystodrukow: e.target.value,
+            });
+
+          }}></input>
+        </div>
+      );
+  }

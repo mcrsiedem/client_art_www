@@ -7,7 +7,7 @@
 }
 .row1{
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px 70px 110px 1fr 3fr 150px 150px;
   gap: 10px;
 }
 .main2{
@@ -16,7 +16,7 @@
   background-color: transparent;
  display: flex;
  flex-direction: column;
- grid-template-columns: 220px 1fr   110px 110px 110px;
+ grid-template-columns: 220px 2fr   110px 110px 110px;
  gap:5px;
 margin-bottom: 0px;
  

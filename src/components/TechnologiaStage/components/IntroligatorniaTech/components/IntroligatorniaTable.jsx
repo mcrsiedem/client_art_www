@@ -73,7 +73,7 @@ const OprawaRow = ({ row }) => {
    
           {legiFragmenty.
           filter(f=> f.oprawa_id == row.id).
-          map(row=>  <LegaFragmentRow row={row}  draggable  onDragStart={()=>handleDragStart(row.id)}/> )}
+          map((row,i)=>  <LegaFragmentRow row={row} i={i} draggable  onDragStart={()=>handleDragStart(row.id)}/> )}
 
 </>
             
@@ -82,16 +82,18 @@ const OprawaRow = ({ row }) => {
 };
 
 
-const LegaFragmentRow = ({ row }) => {
+const LegaFragmentRow = ({ row,i }) => {
 
 
   return (
     <tr key={row.id}>
-      <td className={style.typ_elementu}>{_typ_elementu.filter(x => x.id == row.typ)[0].nazwa}</td>
+      <td className={style.typ_elementu}>{row.element_id} {_typ_elementu.filter(x => x.id == row.typ)[0].nazwa}</td>
      
-      <td>{row.indeks}</td>
-      <td>{row.oprawa_id}</td>
+      <td>{i+1}</td>
+      {/* row.indeks */}
+      {/* <td>{row.oprawa_id}</td> */}
       <td>{row.naklad}</td>
+      {/* <td>{row.element_id}</td> */}
       <td>idx {row.indeks}</td>
       <td></td>
     </tr>

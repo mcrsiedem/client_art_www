@@ -5,7 +5,7 @@ import { _typ_elementu } from "utils/initialvalue";
 import style from "../ArkuszeTech.module.css";
 
 
-export default   function NrArkusza ({row}) {
+export default   function NrArkusza ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
@@ -18,7 +18,7 @@ export default   function NrArkusza ({row}) {
         <input
         className={style.input_ark_nr}
         
-          // value={"arkusz " + i}
+          // value={i}
           value={row.nr_arkusza}
           onChange={(e) =>
 

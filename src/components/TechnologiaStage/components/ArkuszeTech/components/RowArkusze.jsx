@@ -69,7 +69,7 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
         <div className={style.input2}>{row.indeks}</div> */}
         {/* <td>{row.typ_elementu}</td> */}
         <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
-        <NrArkusza row={row} />
+        <NrArkusza row={row} i={i+1}/>
         <TypElementu row={row} i={i+1}/>
    
         

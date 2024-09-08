@@ -63,10 +63,7 @@ export function createArkuszeFromElemenets(
       naklad: row.naklad,
     };
 
-    const legaFragment = {
-      wersja: "fr",
-      element_id: row.id,
-    };
+
 
     //-----------------------
     if (modulo == 0) {
@@ -318,27 +315,28 @@ export function createArkuszeFromElemenets(
 
 
     //  tworzy fragmety leg w jedej tablicy
-    fragmentyTech.forEach((frag, i) => {
-      new_legi
-        .filter((f) => frag.element_id == f.element_id)
-        .filter((f) => row.typ == frag.typ)
-        .map((l, indeks) => {
-          new_legiFragmenty.push({
-            id: generateMaxID(new_legiFragmenty),
-            indeks: generateMaxIndeks(new_legiFragmenty),
-            ...legaFragment,
-            lega_id: l.id,
-            naklad: frag.naklad,
-            fragment_id: frag.id,
-            oprawa_id: frag.oprawa_id,
-            typ: frag.typ,
-          });
-        });
-    });
+    // fragmentyTech.forEach((frag, i) => {
+    //   new_legi
+    //     .filter((f) => frag.element_id == f.element_id)
+    //     .filter((f) => row.typ == frag.typ)
+    //     .map((l, indeks) => {
+    //       new_legiFragmenty.push({
+    //         id: generateMaxID(new_legiFragmenty),
+    //         indeks: generateMaxIndeks(new_legiFragmenty),
+    //         ...legaFragment,
+    //         lega_id: l.id,
+    //         naklad: frag.naklad,
+    //         fragment_id: frag.id,
+    //         oprawa_id: frag.oprawa_id,
+    //         typ: frag.typ,
+    //       });
+    //     });
+    // });
 
 
 
 
+  
 
 
     // new_legiFragmenty
@@ -368,11 +366,32 @@ export function createArkuszeFromElemenets(
 
     // }))
     // const legi_oprawa  = new_legiFragmenty.map
-    setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
+    // setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
 
 
     // generateLegi(new_arkusze)
   });
+
+  // const legaFragment = {
+  //   wersja: "fr",
+  //   element_id: row.id,
+  // };
+  new_legi
+  .map((l, indeks) => {
+    new_legiFragmenty.push({
+      id: generateMaxID(new_legiFragmenty),
+      indeks: generateMaxIndeks(new_legiFragmenty),
+      // ...legaFragment,
+      lega_id: l.id,
+      naklad: l.naklad,
+      fragment_id: l.id,
+      oprawa_id: l.oprawa_id,
+      typ: l.typ_elementu,
+      wersja: "",
+      element_id: l.element_id,
+    });
+  });
+  setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
 
   procesy.map((proc,i)=> {
     if(proc.nazwa_id==1){  // druk

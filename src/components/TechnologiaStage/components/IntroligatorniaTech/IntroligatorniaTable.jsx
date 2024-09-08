@@ -110,7 +110,7 @@ const LegaFragmentRow = ({ row,i }) => {
 
   return (
     <tr key={row.id}>
-      <td className={style.typ_elementu}>{row.element_id} {_typ_elementu.filter(x => x.id == row.typ)[0].nazwa}</td>
+      <td className={style.typ_elementu}>{row.element_id} {_typ_elementu.filter(x => x.id == row.typ)[0]?.nazwa}</td>
      
       <td>{i+1}</td>
       {/* row.indeks */}

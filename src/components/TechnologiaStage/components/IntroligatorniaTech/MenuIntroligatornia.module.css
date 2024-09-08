@@ -13,7 +13,7 @@
   z-index: 100;
   
   width: 200px;
-  height: 220px;
+  height: 120px;
   
   background-color: grey;
   border-radius: 10px;
@@ -25,7 +25,7 @@
   background-color: gray;
   color: whitesmoke;
   border: none;
-  border: 1px solid rgb(157, 157, 157);
+  /* border: 1px solid rgb(157, 157, 157); */
   }
   .menu_legi_btn:hover{
   background-color: rgb(157, 157, 157);

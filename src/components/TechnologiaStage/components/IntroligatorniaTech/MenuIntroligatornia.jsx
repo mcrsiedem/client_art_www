@@ -24,13 +24,13 @@ export default function MenuIntroligatornia({ showMenu, setShowMenu }) {
 
           }}
         >
-          Usuń
+         Odłącz legi
         </button>
-        <button className={style.menu_legi_btn}           onClick={() => {
+        {/* <button className={style.menu_legi_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
         deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
  
-          }}>Usuń na zawsze...</button>
+          }}>Usuń na zawsze...</button> */}
 
         <button
           className={style.menu_legi_btn}

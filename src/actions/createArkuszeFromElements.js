@@ -385,7 +385,8 @@ export function createArkuszeFromElemenets(
       lega_id: l.id,
       naklad: l.naklad,
       fragment_id: l.id,
-      oprawa_id: l.oprawa_id,
+      // oprawa_id: l.oprawa_id,oprawaTech
+      oprawa_id: oprawaTech[0]?.id,
       typ: l.typ_elementu,
       wersja: "",
       element_id: l.element_id,

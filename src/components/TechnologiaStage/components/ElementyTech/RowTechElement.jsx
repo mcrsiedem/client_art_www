@@ -91,11 +91,19 @@ export default function RowTechElement({
     console.log("Usun");
   };
 
-
+  function handleDragElementStart(id){
+    //   e.preventDefault();
+     sessionStorage.setItem("id_element_drag", id);
+     sessionStorage.setItem("typ_drag", "element");
+   
+ 
+   }
   return (
     <>
  
-           <div className={style.row3} key={row.id}>
+           <div className={style.row3} key={row.id}
+           draggable
+           onDrag={()=>handleDragElementStart(row.id)}>
            
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}

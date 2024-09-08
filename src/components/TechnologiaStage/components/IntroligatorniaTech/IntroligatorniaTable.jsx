@@ -27,14 +27,36 @@ const OprawaRow = ({ row }) => {
   // row to jest
   const techContext = useContext(TechnologyContext);
     const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
 
     function handleDragStart(id){
       //   e.preventDefault();
-  console.log("drag start :", id)
+
       // setDragLegaId(id)
      }
     function handleDrop(id) {
   
+      if (sessionStorage.getItem("typ_drag") == "element") {
+        let id_drag_element = sessionStorage.getItem("id_element_drag");
+        let id_drop_oprawa = id;
+
+        setLegiFragmenty(
+          legiFragmenty.map((p) => {
+            if (p.element_id == id_drag_element) {
+              return { ...p, oprawa_id: id };
+            } else {
+              return p;
+            }
+          })
+        );
+        // console.log("typ_drag: "+sessionStorage.getItem("typ_drag"))
+        // console.log("id_element_drag: "+sessionStorage.getItem("id_element_drag"))
+        // console.log("id_drop_oprawa: "+sessionStorage.getItem("id_drop_oprawa"))
+        // handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+        console.log("drop :", id)
+      }
+
+
     //   setLegi(
     //     legi.map((t, a) => {
     
@@ -58,7 +80,7 @@ const OprawaRow = ({ row }) => {
     }
   return (
     <>
-      <div className={style.row1}>
+      <div className={style.row1} onDragOver={handleDragOver} onDrop={()=>handleDrop(row.id)}>
     <RodzajOprawy row={row} />
     <Naklad row={row} />
     <BokOprawy row={row} />

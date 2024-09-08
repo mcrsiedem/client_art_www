@@ -392,7 +392,7 @@ export function createArkuszeFromElemenets(
       element_id: l.element_id,
     });
   });
-  setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
+  setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
 
   procesy.map((proc,i)=> {
     if(proc.nazwa_id==1){  // druk

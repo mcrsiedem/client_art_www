@@ -53,7 +53,7 @@ const OprawaRow = ({ row }) => {
         // console.log("id_element_drag: "+sessionStorage.getItem("id_element_drag"))
         // console.log("id_drop_oprawa: "+sessionStorage.getItem("id_drop_oprawa"))
         // handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
-        console.log("drop :", id)
+        // console.log("drop :", id)
       }
 
 
@@ -112,7 +112,7 @@ const LegaFragmentRow = ({ row,i }) => {
     <tr key={row.id}>
       <td className={style.typ_elementu}>{row.element_id} {_typ_elementu.filter(x => x.id == row.typ)[0]?.nazwa}</td>
      
-      <td>{i+1}</td>
+      <td>{i}</td>
       {/* row.indeks */}
       {/* <td>{row.oprawa_id}</td> */}
       <td>{row.naklad}</td>

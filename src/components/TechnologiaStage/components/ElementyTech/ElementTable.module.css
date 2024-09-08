@@ -268,3 +268,7 @@ font-size: 0.9rem;
 .alert2{
   background-color: none;
 }
+
+.menu_rowtech{
+  position: relative;
+}

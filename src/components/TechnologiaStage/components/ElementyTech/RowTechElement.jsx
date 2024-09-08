@@ -18,33 +18,23 @@ import { createArkusze } from "actions/createArkusze";
 import { createGrupaWykonan } from "actions/createGrupaWykonan";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import RowArkusze from "../ArkuszeTech/components/RowArkusze";
+import MenuElementyTech from "./MenuElementyTech";
 
 export default function RowTechElement({
   row,
   handleChangeCardElementy,
-  // listaPapierow,
-  // setListaGramatur,
   procesyElementow,
   setShowElementyProcesyInsert,
-  // handleChangeCardFragmenty_i_Elementy,
-  // handleChangeCardFragmenty_i_Elementy_IloscStron,
+
+
 }) {
   const appcontext = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const listaGramatur = appcontext.listaGramatur;
-  
   const elementy = techContext.elementy;
   const setElementy = techContext.setElementy;
   const fragmenty = techContext.fragmenty;
   const setFragmenty = techContext.setFragmenty;
-
-  // const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
-  //   useState(listaGramatur);
-  // const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-  //   useState(listaGramatur);
-
-
-
   const arkusze = techContext.arkusze;
   const setArkusze = techContext.setArkusze;
   const legi = techContext.legi;
@@ -65,6 +55,7 @@ export default function RowTechElement({
 
   const elementyTech = techContext.elementyTech;
   const [showLegi, setShowLegi] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
   const [listaGramaturSelect, setListaGramaturSelect] = useState(listaGramatur.filter(x => x.papier_id == row.papier_id));
 
@@ -159,45 +150,19 @@ export default function RowTechElement({
 
         {/* <td></td> */}
 
-        <Usun
+        {/* <Usun
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleRemoveItem={handleRemoveItem}
-        />
-        <Dodaj
+        /> */}
+        {/* <Dodaj
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
-        />
+        /> */}
+         <MenuElementyBtn row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
 
-<div className={style.col_button}>
-          <img
-            src={Logo_ustawienia}
-            className={style.expand}
-            onClick={() => {
-              // createLegi(row,legi,setLegi);
 
-              createArkuszeFromElemenets(
-                arkusze,
-                setArkusze,
-                legi,
-                setLegi,
-                legiFragmenty,
-                setLegiFragmenty,
-                oprawaTech,
-                setOprawaTech,
-                fragmentyTech,
-                setFragmentyTech,
-                elementyTech,
-                row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-              );
-              // createArkusze(row,arkusze,setArkusze,legi, setLegi,legiFragmenty,setLegiFragmenty,oprawaTech,setOprawaTech,fragmentyTech,setFragmentyTech)
-              // createGrupaWykonan(row, procesy, grupaWykonan, setGrupaWykonan, legi, arkusze,wykonania, setWykonania);
-              // console.log("fragmenty tech: ", fragmentyTech)
-            }}
-            alt="Procesy"
-          />
-        </div>
       </div>
       {showArkusze &&(<> 
      
@@ -799,4 +764,25 @@ function Uwagi({ row }) {
       ></input>
 
   );
+}
+
+
+const MenuElementyBtn = ({ row,showMenu, setShowMenu}) => {
+
+  return (
+<div className={style.menu_rowtech}>
+    <img
+              className={style.iconMenuBtn}
+              src={Logo_ustawienia}
+              onClick={() => {
+                setShowMenu(!showMenu);
+                // dodaj_clikHandler();
+                // console.log("z contextu :"+ token.rowSelected)
+                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+              }}
+              alt="x"
+            />
+            <MenuElementyTech row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
+            </div>
+  )
 }

@@ -30,6 +30,7 @@ function ElementyTable({}) {
   const techContext = useContext(TechnologyContext)
   const elementyTech = techContext.elementyTech;
 
+
   return (
 
 

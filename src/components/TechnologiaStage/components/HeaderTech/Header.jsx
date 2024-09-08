@@ -30,6 +30,10 @@ export default function Header({setShowPortal}){
             console.log("Wykonania: ",techContext.wykonania)
             console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
             console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
+            console.log("Fragmenty Elementow Tech Temporary: ",techContext.fragmentyTech)
+            console.log("Fragmenty leg Tech Temporary: ",techContext.legiFragmenty)
+
+            
 
          }}>OK</button>
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}

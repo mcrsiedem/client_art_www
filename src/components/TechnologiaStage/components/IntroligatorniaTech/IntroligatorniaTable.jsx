@@ -66,7 +66,7 @@ const OprawaRow = ({ row }) => {
     <Uwagi row={row} />
     <DataCzystodrukow row={row} />
     <DataSpedycji row={row} />
-    <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
+    <MenuBtn row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
   
 
       {/* <div>{row.naklad}</div> */}
@@ -103,7 +103,7 @@ const LegaFragmentRow = ({ row,i }) => {
 
 
 
-const MenuBtn = ({ showMenu, setShowMenu }) => {
+const MenuBtn = ({ row,showMenu, setShowMenu }) => {
   return (
 <div className={style.menu_introligatornia}>
     <img
@@ -117,7 +117,7 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
               }}
               alt="x"
             />
-            <MenuIntroligatornia showMenu={showMenu} setShowMenu={setShowMenu} />
+            <MenuIntroligatornia row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
             </div>
   )
 }

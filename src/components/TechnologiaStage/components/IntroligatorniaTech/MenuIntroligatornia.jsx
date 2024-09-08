@@ -5,12 +5,14 @@ import style from "./MenuIntroligatornia.module.css";
 import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
-export default function MenuIntroligatornia({ showMenu, setShowMenu }) {
+export default function MenuIntroligatornia({ row,showMenu, setShowMenu }) {
 
-
-  const appContext = useContext(AppContext)
-  const zamowienia = appContext.zamowienia;
-  const setZamowienia = appContext.setZamowienia;
+  const techContext = useContext(TechnologyContext);
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  // const appContext = useContext(AppContext)
+  // const zamowienia = appContext.zamowienia;
+  // const setZamowienia = appContext.setZamowienia;
 
   if (showMenu) {
     return (
@@ -18,11 +20,25 @@ export default function MenuIntroligatornia({ showMenu, setShowMenu }) {
         <button
           className={style.menu_legi_btn}
           onClick={() => {
-            const rowsToDelete =zamowienia.filter(x => x.select === true);
+            // const rowsToDelete =zamowienia.filter(x => x.select === true);
     
-            deleteZamowienieKosz(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+            // deleteZamowienieKosz(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+            // odlaczFragmenty(oprawa_id,legiFragmenty)
+            setLegiFragmenty(
+              legiFragmenty.map((t) => {
+                if (t.oprawa_id === row.id) {
+                  return {...t,
+                    oprawa_id: 0}
+                } else {
+                  return t;
+                }
+              })
+            );
 
+      
+            setShowMenu(!showMenu);
           }}
+          
         >
          Odłącz legi
         </button>

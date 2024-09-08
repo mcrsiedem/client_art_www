@@ -1,11 +1,12 @@
 import style from "./IntroligatorniaTable.module.css";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { _typ_elementu } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
-
+import MenuIntroligatornia from "./MenuIntroligatornia";
+import iconSettings from "assets/settings.svg";
 export default function IntroligatorniaTable() {
 
     const techContext = useContext(TechnologyContext);
@@ -22,7 +23,7 @@ export default function IntroligatorniaTable() {
 
 
 const OprawaRow = ({ row }) => {
-
+  const [showMenu, setShowMenu] = useState(false);
   // row to jest
   const techContext = useContext(TechnologyContext);
     const legiFragmenty = techContext.legiFragmenty;
@@ -65,8 +66,8 @@ const OprawaRow = ({ row }) => {
     <Uwagi row={row} />
     <DataCzystodrukow row={row} />
     <DataSpedycji row={row} />
-    
- 
+    <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
+  
 
       {/* <div>{row.naklad}</div> */}
       </div>
@@ -101,6 +102,25 @@ const LegaFragmentRow = ({ row,i }) => {
 };
 
 
+
+const MenuBtn = ({ showMenu, setShowMenu }) => {
+  return (
+<div className={style.menu_introligatornia}>
+    <img
+              className={style.iconMenuBtn}
+              src={iconSettings}
+              onClick={() => {
+                setShowMenu(!showMenu);
+                // dodaj_clikHandler();
+                // console.log("z contextu :"+ token.rowSelected)
+                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+              }}
+              alt="x"
+            />
+            <MenuIntroligatornia showMenu={showMenu} setShowMenu={setShowMenu} />
+            </div>
+  )
+}
 
 
 

@@ -8,14 +8,14 @@ import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import iconTable from "../../../../assets/settings.svg";
 import iconUstawienia from "../../../../assets/settings.svg";
-import OprawaElementyStage from "./OprawaElementyStageTech/OprawaElementyStageTech";
+import OprawaElementyStage from "./OprawaElementyStageTech";
 import axios from "axios";
 
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { TechnologyContext } from "context/TechnologyContext";
-import IntroligatorniaTable from "./components/IntroligatorniaTable";
+import IntroligatorniaTable from "./IntroligatorniaTable";
 
 export default function IntroligatorniaTech({
   handleChangeCardProdukty,

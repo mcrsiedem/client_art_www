@@ -12,7 +12,7 @@ import style from "./OprawaElementyStageTech.module.css";
 
 import axios from "axios";
 
-import { IP } from "../../../../../utils/Host";
+import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,

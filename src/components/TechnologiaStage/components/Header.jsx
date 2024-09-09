@@ -8,7 +8,7 @@ import { AppContext } from "context/AppContext";
 // import logoGrid from "../../../../assets/grid.svg";
 // import IconNavigate from "./IconNavigate";
 import IconClose from "assets/x.svg"
-export default function Header({setShowPortal}){
+export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
   const appcontext = useContext(AppContext)
@@ -18,7 +18,7 @@ export default function Header({setShowPortal}){
         <LeftPane>
          {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
          <p>Karta technologiczna...  {techContext.dane?.id}</p> <button onClick={()=>{
-          setShowPortal(true)
+     
             console.clear()
             console.log("Karta Technologiczna: ")
             console.log("Produkt: ",techContext.produktyTech)

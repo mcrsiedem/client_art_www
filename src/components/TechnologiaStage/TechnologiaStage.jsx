@@ -6,9 +6,9 @@ import Header from "components/TechnologiaStage/components/Header";
 import DaneTech from "./components/DaneTech";
 import ProduktyTech from "./components/ProduktyTech";
 import ElementyTech from "./components/ElementyTech/ElementyTech";
-import LegiTech from "./components/LegiTech/LegiTech";
-import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
-import WykonaniaTech from "./components/WykonaniaTech/WykonaniaTech";
+
+
+import WykonaniaTech from "./components/WykonaniaTech";
 import IntroligatorniaTech from "./components/IntroligatorniaTech";
 import ProcesElementTech from "./components/ElementyTech/ElementyTechProcesInsert/ProcesElementTech";
 
@@ -18,7 +18,7 @@ export default function TechnologiaStage() {
   const openTechnologia = techContext.openTechnologia;
   const showElementyTechProcesyInsert = techContext.showElementyTechProcesyInsert;
   const procesyElementowTech = techContext.procesyElementowTech;
-  const [showPortal, setShowPortal] =     useState(false);
+
   useEffect(() => {
     if (openTechnologia) {
       console.log("open technologia");
@@ -29,22 +29,20 @@ export default function TechnologiaStage() {
     return (
       <div className={style.container}>
 
-        <Header  setShowPortal={setShowPortal}/>
+        <Header />
    
         <DaneTech />
         <div className={style.main}>
               <ProduktyTech />
               <ElementyTech />
               <IntroligatorniaTech/>
-                     {/* <div className={style.container_legi_arkusze}>
+                     <div className={style.container_legi_arkusze}>
               <WykonaniaTech/>    
-              <IntroligatorniaTech/>
-              </div> */}
-              {/* <div className={style.container_legi_arkusze}>
+ 
+     
        
-              </div> */}
-                {/* <ArkuszeTech />
-                <LegiTech /> */}
+              </div>
+     
               
         </div>
         {showElementyTechProcesyInsert && (

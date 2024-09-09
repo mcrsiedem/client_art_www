@@ -1,19 +1,12 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import UsunArkusz from "./components/UsunArkusz";
-
-import DodajLege from "./components/DodajArkusz";
 import iconSettings from "assets/settings.svg";
-// import SelectBoxLegi from "./components/SelectBoxArkusze";
-import SelectBoxArkusze from "./components/SelectBoxArkusze";
-import MenuArkusze from "./components/MenuArkusze";
 import style from "./WykonaniaTech.module.css";
-import RodzajArkusza from "./components/RodzajArkusza";
-import DodajArkusz from "./components/DodajArkusz";
-
+import icon from "assets/copy.svg";
+import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
-import TypElementu from "./components/TypElementu";
 import { _typ_elementu } from "utils/initialvalue";
+import { reg_int } from "utils/initialvalue";
 
 export default function WykonaniaTech() {
   return (
@@ -233,3 +226,212 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
     />
   );
 };
+
+
+function DodajArkusz({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+
+  const handleAddArkusz = (row, arkusze, setArkusze) => {
+    // id = id elementu
+    const newArkusze = arkusze.slice();
+
+
+    newArkusze.push({
+      id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+      indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+      typ_elementu: row.typ_elementu,
+      rodzaj_arkusza:row.rodzaj_arkusza,
+      naklad: row.naklad,
+      element_id: row.id,
+      ilosc_stron: row.ilosc_stron,
+    });
+
+    setArkusze(newArkusze);
+  };
+
+  return (
+    <td className={style.col_dodaj2}>
+      <div>
+        <img
+          className={style.expand}
+          src={icon}
+          onClick={() => {
+            handleAddArkusz(row, arkusze, setArkusze);
+            // handleRemoveItem(row.indeks, row.id);
+          }}
+          alt="Procesy"
+        />
+      </div>
+    </td>
+  );
+}
+
+
+function MenuArkusze({ showMenu, setShowMenu }) {
+  const techContext = useContext(TechnologyContext);
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+
+  if (showMenu) {
+    return (
+      <div className={style.menu_legi}>
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            setArkusze(
+              arkusze.map((t) => {
+                return { ...t, select: true };
+              })
+            );
+            setShowMenu(!showMenu);
+          }}
+        >
+          Zaznacz wszystko
+        </button>
+        <button className={style.menu_legi_btn}           onClick={() => {
+            setArkusze(
+              arkusze.map((t) => {
+                return { ...t, select: false };
+              })
+            );
+            setShowMenu(!showMenu);
+          }}>Odznacz wszystko</button>
+        <button className={style.menu_legi_btn}>Legi</button>
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
+          Anuluj
+        </button>
+      </div>
+    );
+  }
+}
+
+function RodzajArkusza ({row}) {
+  const techContext = useContext(TechnologyContext)
+  const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+  return (
+    <td>
+      <input
+        value={row.rodzaj_arkusza}
+        onChange={(e) =>
+
+          {
+            if (e.target.value === '' || reg_int.test(e.target.value)) {
+              handleUpdateRowArkusze({
+            ...row,
+            rodzaj_arkusza: e.target.value,
+          }
+          )}}
+
+        }
+      ></input>
+    </td>
+  );
+}
+
+function SelectBoxArkusze({row}) {
+
+  const techContext = useContext(TechnologyContext)
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+
+
+  return (
+    <td className={style.td_checkbox}>
+      <div >
+      <input
+      className={style.ch_box} 
+      type="checkbox"
+      checked={row.select}
+      onChange={(event)=>{
+
+        //  console.log(" select"+ row.id +" "+event.target.checked)
+        setArkusze(
+          arkusze.map((t) => {
+            if (t.id == row.id) {
+              return {...row, select: event.target.checked }
+            } else {
+              return t;
+            }
+          })
+        )
+      }}
+     ></input>
+      </div>
+
+    </td>
+  );
+}
+
+function TypElementu ({row}) {
+  const techContext = useContext(TechnologyContext)
+  const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+  return (
+    <td>
+      <div>{_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa} </div>
+      {/* <input
+        value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa}
+        onChange={(e) =>
+
+          {
+            if (e.target.value === '' || reg_int.test(e.target.value)) {
+              handleUpdateRowArkusze({
+            ...row,
+            typ_elementu: e.target.value,
+          }
+          )}}
+
+        }
+      ></input> */}
+    </td>
+  );
+}
+
+function UsunArkusz({ row }) {
+  const techContext = useContext(TechnologyContext)
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+
+  const handleRemoveArkusz = (indeks,id,arkusze,setArkusze) => {
+    // id = id elementu
+    if (arkusze.length !== 1) {
+      setArkusze(arkusze.filter((x) => x.indeks !== indeks));
+      // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+    }
+  
+    setArkusze((prev) =>
+      prev.map((t, a) => {
+        if (t.indeks > indeks) {
+          return {
+            ...t,
+            indeks: t.indeks--,
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+  };
+
+  return (
+    <td className={style.col_button}>
+      <div>
+        <img
+          className={style.expand}
+          src={iconTrash}
+          onClick={() => {
+            handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze)
+            // handleRemoveItem(row.indeks, row.id);
+          }}
+          alt="Procesy"
+        />
+      </div>
+    </td>
+  );
+}

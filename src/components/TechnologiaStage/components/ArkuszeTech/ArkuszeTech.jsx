@@ -1,18 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import UsunArkusz from "./components/UsunArkusz";
-
-import DodajLege from "./components/DodajArkusz";
 import iconSettings from "assets/settings.svg";
-// import SelectBoxLegi from "./components/SelectBoxArkusze";
-import SelectBoxArkusze from "./components/SelectBoxArkusze";
-import MenuArkusze from "./components/MenuArkusze";
 import style from "./ArkuszeTech.module.css";
-import RodzajArkusza from "./components/RodzajArkusza";
-import DodajArkusz from "./components/DodajArkusz";
-
 import logoExpand from "assets/expand.svg"
-import TypElementu from "./components/TypElementu";
 import RowArkusze from "./components/RowArkusze";
 export default function ArkuszeTech() {
   return (
@@ -55,7 +45,7 @@ const ArkuszeTable = () => {
 
   return (
     <div className={style.table_legi}>
-      <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu} />
+      {/* <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu} /> */}
       <table className={style.table2} >
         <thead>
           <tr>
@@ -113,3 +103,47 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
     />
   );
 };
+
+
+function MenuArkusze({ showMenu, setShowMenu }) {
+  const techContext = useContext(TechnologyContext);
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+
+  if (showMenu) {
+    return (
+      <div className={style.menu_legi}>
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            setArkusze(
+              arkusze.map((t) => {
+                return { ...t, select: true };
+              })
+            );
+            setShowMenu(!showMenu);
+          }}
+        >
+          Zaznacz wszystko
+        </button>
+        <button className={style.menu_legi_btn}           onClick={() => {
+            setArkusze(
+              arkusze.map((t) => {
+                return { ...t, select: false };
+              })
+            );
+            setShowMenu(!showMenu);
+          }}>Odznacz wszystko</button>
+        <button className={style.menu_legi_btn}>Legi</button>
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
+          Anuluj
+        </button>
+      </div>
+    );
+  }
+}

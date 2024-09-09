@@ -1,15 +1,20 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import SelectBoxArkusze from "./SelectBoxArkusze";
 
-import TypElementu from "./TypElementu";
-import RodzajArkusza from "./RodzajArkusza";
-import UsunArkusz from "./UsunArkusz";
-import DodajArkusz from "./DodajArkusz";
-import Rozwin from "./Rozwin";
+
+import logoExpand from "assets/expand.svg";
+import iconTrash from "assets/trash2.svg"
+import icon from "assets/copy.svg";
+// import TypElementu from "./TypElementu";
+// import RodzajArkusza from "./RodzajArkusza";
+// import { reg_int } from "utils/initialvalue";
+// import UsunArkusz from "./UsunArkusz";
+// import DodajArkusz from "./DodajArkusz";
+// import Rozwin from "./Rozwin";
 import style from "../ArkuszeTech.module.css";
-import NrArkusza from "./NrArkusza";
+import { reg_int } from "utils/initialvalue";
+// import NrArkusza from "./NrArkusza";
 
 
 export default function RowArkusze  ({ row,i })  {
@@ -141,3 +146,228 @@ export default function RowArkusze  ({ row,i })  {
       </>
     );
   };
+
+  function Rozwin({ showLegi,setShowLegi }) {
+    const techContext = useContext(TechnologyContext);
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+  
+  
+    return (
+  
+        <div>
+          <img
+            className={style.expand}
+            src={logoExpand}
+            onClick={() => {
+              setShowLegi(!showLegi)
+            }}
+            alt="Procesy"
+          />
+        </div>
+  
+    );
+  }
+
+  function UsunArkusz({ row }) {
+    const techContext = useContext(TechnologyContext)
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+
+    const handleRemoveArkusz = (indeks,id,arkusze,setArkusze) => {
+      // id = id elementu
+      if (arkusze.length !== 1) {
+        setArkusze(arkusze.filter((x) => x.indeks !== indeks));
+        // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+      }
+    
+      setArkusze((prev) =>
+        prev.map((t, a) => {
+          if (t.indeks > indeks) {
+            return {
+              ...t,
+              indeks: t.indeks--,
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+    };
+
+    return (
+      <td className={style.col_button}>
+        <div>
+          <img
+            className={style.expand}
+            src={iconTrash}
+            onClick={() => {
+              handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze)
+              // handleRemoveItem(row.indeks, row.id);
+            }}
+            alt="Procesy"
+          />
+        </div>
+      </td>
+    );
+  }
+
+  function DodajArkusz({ row }) {
+    const techContext = useContext(TechnologyContext);
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+  
+    const handleAddArkusz = (row, arkusze, setArkusze) => {
+      // id = id elementu
+      const newArkusze = arkusze.slice();
+  
+  
+      newArkusze.push({
+        id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+        indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+        typ_elementu: row.typ_elementu,
+        rodzaj_arkusza:row.rodzaj_arkusza,
+        naklad: row.naklad,
+        element_id: row.id,
+        ilosc_stron: row.ilosc_stron,
+      });
+  
+      setArkusze(newArkusze);
+    };
+  
+    return (
+      <td className={style.col_dodaj2}>
+        <div>
+          <img
+            className={style.expand}
+            src={icon}
+            onClick={() => {
+              handleAddArkusz(row, arkusze, setArkusze);
+              // handleRemoveItem(row.indeks, row.id);
+            }}
+            alt="Procesy"
+          />
+        </div>
+      </td>
+    );
+  }
+  function NrArkusza ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+  
+
+  
+        // <div  className={style.input_ark}> arkusz {i}</div>
+
+
+        <input
+        className={style.input_ark_nr}
+        
+          // value={i}
+          value={row.nr_arkusza}
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              nr_arkusza: e.target.value,
+            }
+            )}}
+
+          }
+        ></input>
+
+    );
+  }
+  
+  function RodzajArkusza ({row}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+   
+        <input
+        className={style.input_ark}
+          value={row.rodzaj_arkusza}
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              rodzaj_arkusza: e.target.value,
+            }
+            )}}
+
+          }
+        ></input>
+     
+    );
+  }
+
+
+  function SelectBoxArkusze({row}) {
+
+    const techContext = useContext(TechnologyContext)
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+
+  
+    return (
+      <td className={style.td_checkbox}>
+        <div >
+        <input
+        className={style.ch_box} 
+        type="checkbox"
+        checked={row.select}
+        onChange={(event)=>{
+  
+          //  console.log(" select"+ row.id +" "+event.target.checked)
+          setArkusze(
+            arkusze.map((t) => {
+              if (t.id == row.id) {
+                return {...row, select: event.target.checked }
+              } else {
+                return t;
+              }
+            })
+          )
+        }}
+       ></input>
+        </div>
+  
+      </td>
+    );
+  }
+
+  function TypElementu ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+  
+
+  
+        // <div  className={style.input_ark}> arkusz {i}</div>
+
+
+        <input
+        className={style.input_ark_typ}
+        disabled
+          value={"arkusz "}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              typ_elementu: e.target.value,
+            }
+            )}}
+
+          }
+        ></input>
+
+    );
+  }

@@ -5,7 +5,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { _typ_elementu } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
-import MenuIntroligatornia from "./MenuIntroligatornia";
+import MenuIntroligatornia from "./IntroligatorniaMenu";
 import iconSettings from "assets/settings.svg";
 export default function IntroligatorniaTable() {
 

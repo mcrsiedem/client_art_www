@@ -1,17 +1,17 @@
 import style from "./IntroligatorniaTech.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import logoExpand from "../../../../assets/expand.svg";
+// import logoExpand from "../../../../assets/expand.svg";
 import { _typ_elementu } from "utils/initialvalue";
 import { useState } from "react";
-import iconCopy from "../../../../assets/copy.svg";
-import iconTrash from "../../../../assets/trash2.svg";
-import iconTable from "../../../../assets/settings.svg";
-import iconUstawienia from "../../../../assets/settings.svg";
-import OprawaElementyStage from "./OprawaElementyStageTech";
+import iconCopy from "assets/copy.svg";
+import iconTrash from "assets/trash2.svg";
+import iconTable from "assets/settings.svg";
+import iconUstawienia from "assets/settings.svg";
+import OprawaElementyStage from "./IntroligatorniaElementyStageTech";
 import axios from "axios";
 
-import { IP } from "../../../../utils/Host";
+import { IP } from "../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { TechnologyContext } from "context/TechnologyContext";

@@ -13,8 +13,10 @@
   height: calc(100% - 20px);
 }
 
-.introligatornia_menu_button{
+.produkt_menu_button{
   display: flex;
+ flex-direction: row;
+ /* justify-content: space-between; */
   gap:10px
 }
 

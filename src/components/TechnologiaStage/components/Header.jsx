@@ -3,10 +3,10 @@ import style from "./Header.module.css";
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-import LeftPane from "./LeftPane"
-import RightPane from "./RightPane"
-import logoGrid from "../../../../assets/grid.svg";
-import IconNavigate from "./IconNavigate";
+// import LeftPane from "./LeftPane"
+// import RightPane from "./RightPane"
+// import logoGrid from "../../../../assets/grid.svg";
+// import IconNavigate from "./IconNavigate";
 import IconClose from "assets/x.svg"
 export default function Header({setShowPortal}){
 
@@ -47,3 +47,45 @@ export default function Header({setShowPortal}){
     );
 }
 
+const LeftPane =({children}) =>{
+
+  return(
+      <div className={style.left}>
+       {children}   
+      </div>
+      
+      
+  )
+}
+
+const RightPane =({children}) =>{
+
+  return(
+      <div className={style.right}>
+      {children}   
+     </div>
+  )
+}
+
+const IconNavigate = ({className,logo,navi})=>{
+
+  const techContext = useContext(TechnologyContext);
+
+  const setShowTechnologyStage = techContext.setShowTechnologyStage;
+  return(
+      <img
+      className={className}
+      src={logo}
+      onClick={() => {setShowTechnologyStage(false)
+    
+        techContext.setRowZamowienia(null)
+        techContext.setRowTechnologia(null)
+        // techContext.setOpenTechnologia(false)
+
+      
+      
+      }}
+      alt="Logo"
+    />
+  )
+}

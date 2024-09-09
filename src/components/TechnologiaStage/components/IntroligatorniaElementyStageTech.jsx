@@ -2,7 +2,7 @@
 // import iconTrash from "../../../../../assets/trash2.svg";
 import { useState,useContext } from "react";
 
-import style from "./OprawaElementyStageTech.module.css";
+import style from "./IntroligatorniaElementyStageTech.module.css";
 // import { _papiery } from "../../api";
 // import ElementTableHeader from "./ElementTableHeader";
 // import { useState } from "react";
@@ -12,7 +12,7 @@ import style from "./OprawaElementyStageTech.module.css";
 
 import axios from "axios";
 
-import { IP } from "../../../../utils/Host";
+import { IP } from "../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,

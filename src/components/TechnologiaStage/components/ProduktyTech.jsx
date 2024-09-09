@@ -14,6 +14,7 @@ export default function ProduktyTech( ) {
               <div className={style.produkt_menu_button}> 
                 {/* <p>Produkt</p> */}
                 <p> Druk</p>
+                <p>***</p>
               </div>
              
               <ProduktyTable2   />

@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./TechnologieStage.module.css";
-import Header from "components/TechnologiaStage/components/HeaderTech/Header";
-import DaneTech from "./components/DaneTech/DaneTech";
-import ProduktyTech from "./components/ProduktyTech/ProduktyTech";
+import Header from "components/TechnologiaStage/components/Header";
+import DaneTech from "./components/DaneTech";
+import ProduktyTech from "./components/ProduktyTech";
 import ElementyTech from "./components/ElementyTech/ElementyTech";
 import LegiTech from "./components/LegiTech/LegiTech";
 import ArkuszeTech from "./components/ArkuszeTech/ArkuszeTech";
 import WykonaniaTech from "./components/WykonaniaTech/WykonaniaTech";
-import IntroligatorniaTech from "./components/IntroligatorniaTech/IntroligatorniaTech";
+import IntroligatorniaTech from "./components/IntroligatorniaTech";
 import ProcesElementTech from "./components/ElementyTech/ElementyTechProcesInsert/ProcesElementTech";
 
 export default function TechnologiaStage() {

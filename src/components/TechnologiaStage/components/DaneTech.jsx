@@ -1,7 +1,7 @@
 import style from "./DaneTech.module.css";
 import { useContext} from "react";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
-import addIcon2 from "../../../../assets/addIcon2.svg";
+// import addIcon2 from "../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";

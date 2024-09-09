@@ -12,7 +12,7 @@ import icon from "assets/copy.svg";
 // import UsunArkusz from "./UsunArkusz";
 // import DodajArkusz from "./DodajArkusz";
 // import Rozwin from "./Rozwin";
-import style from "../ArkuszeTech.module.css";
+import style from "./RowArkusze.module.css";
 import { reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 

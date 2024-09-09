@@ -3,7 +3,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import iconSettings from "assets/settings.svg";
 import style from "./ArkuszeTech.module.css";
 import logoExpand from "assets/expand.svg"
-import RowArkusze from "./components/RowArkusze";
+import RowArkusze from "../RowArkusze";
 export default function ArkuszeTech() {
   return (
     <div className={style.container}>

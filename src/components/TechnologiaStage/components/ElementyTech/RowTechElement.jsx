@@ -17,7 +17,7 @@ import { createLegi } from "actions/createLegi";
 import { createArkusze } from "actions/createArkusze";
 import { createGrupaWykonan } from "actions/createGrupaWykonan";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
-import RowArkusze from "../ArkuszeTech/components/RowArkusze";
+import RowArkusze from "../RowArkusze";
 import MenuElementyTech from "./MenuElementyTech";
 
 export default function RowTechElement({

@@ -5,12 +5,12 @@ import style from "./TechnologieStage.module.css";
 import Header from "components/TechnologiaStage/components/Header";
 import DaneTech from "./components/DaneTech";
 import ProduktyTech from "./components/ProduktyTech";
-import ElementyTech from "./components/ElementyTech/ElementyTech";
+import ElementyTech from "./components/ElementyTech";
 
 
 import WykonaniaTech from "./components/WykonaniaTech";
 import IntroligatorniaTech from "./components/IntroligatorniaTech";
-import ProcesElementTech from "./components/ElementyTech/ElementyTechProcesInsert/ProcesElementTech";
+import ProcesElementTech from "./components/ElementTechProces";
 
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);

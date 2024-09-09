@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import style from "./ProcesElementTech.module.css";
+import style from "./ElementTechProces.module.css";
 import iconX from "assets/xDark.svg";
 import iconTrash from "assets/trash2.svg";
 import { AppContext } from "context/AppContext";

@@ -1,24 +1,24 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "assets/settings.svg";
-import logoExpand from "../../../../assets/expand.svg";
-import iconCopy from "../../../../assets/copy.svg";
-import iconTrash from "../../../../assets/trash2.svg";
+import logoExpand from "assets/expand.svg";
+import iconCopy from "assets/copy.svg";
+import iconTrash from "assets/trash2.svg";
 import { useState, useContext } from "react";
 import { _typ_elementu } from "utils/initialvalue";
 import axios from "axios";
 
-import { IP } from "../../../../utils/Host";
+import { IP } from "../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import { addArkusze } from "actions/addArkusze";
-import { createLegi } from "actions/createLegi";
-import { createArkusze } from "actions/createArkusze";
-import { createGrupaWykonan } from "actions/createGrupaWykonan";
-import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
-import RowArkusze from "../RowArkusze";
-import MenuElementyTech from "./MenuElementyTech";
+// import { addArkusze } from "actions/addArkusze";
+// import { createLegi } from "actions/createLegi";
+// import { createArkusze } from "actions/createArkusze";
+// import { createGrupaWykonan } from "actions/createGrupaWykonan";
+// import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import RowArkusze from "./RowArkusze";
+import MenuElementyTech from "./ElementyTechMenu";
 
 export default function RowTechElement({
   row,
@@ -34,18 +34,18 @@ export default function RowTechElement({
   const fragmenty = techContext.fragmenty;
   const setFragmenty = techContext.setFragmenty;
   const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const procesy = techContext.procesyElementow;
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const oprawaTech = techContext.oprawaTech;
-  const setOprawaTech = techContext.setOprawaTech;
+  // const setArkusze = techContext.setArkusze;
+  // const legi = techContext.legi;
+  // const setLegi = techContext.setLegi;
+  // const legiFragmenty = techContext.legiFragmenty;
+  // const setLegiFragmenty = techContext.setLegiFragmenty;
+  // const procesy = techContext.procesyElementow;
+  // const grupaWykonan = techContext.grupaWykonan;
+  // const setGrupaWykonan = techContext.setGrupaWykonan;
+  // const wykonania = techContext.wykonania;
+  // const setWykonania = techContext.setWykonania;
+  // const oprawaTech = techContext.oprawaTech;
+  // const setOprawaTech = techContext.setOprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;

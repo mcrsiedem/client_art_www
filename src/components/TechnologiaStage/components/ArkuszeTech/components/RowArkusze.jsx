@@ -12,7 +12,7 @@ import style from "../ArkuszeTech.module.css";
 import NrArkusza from "./NrArkusza";
 
 
-export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
+export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
     const setLegi = techContext.setLegi;
@@ -22,7 +22,7 @@ export default function RowArkusze  ({ row,setShowLegi,showLegi,i })  {
     const setDragLegaId = techContext.setDragLegaId;
     const legiFragmenty = techContext.legiFragmenty;
     
-  
+    const [showLegi, setShowLegi] = useState(false);
   
     const setDropArkuszId = techContext.setDropArkuszId;
     function handleDragStart(id){

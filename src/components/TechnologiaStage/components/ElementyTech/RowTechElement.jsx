@@ -54,7 +54,7 @@ export default function RowTechElement({
   const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
 
   const elementyTech = techContext.elementyTech;
-  const [showLegi, setShowLegi] = useState(false);
+
   const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
   const [listaGramaturSelect, setListaGramaturSelect] = useState(listaGramatur.filter(x => x.papier_id == row.papier_id));
@@ -170,7 +170,7 @@ export default function RowTechElement({
               .filter(x => x.element_id == row.id)
 
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row} setShowLegi={setShowLegi} showLegi={showLegi} />;
+              return <RowArkusze key={row.indeks} i={i} row={row}  />;
             })}
               
               </>)}

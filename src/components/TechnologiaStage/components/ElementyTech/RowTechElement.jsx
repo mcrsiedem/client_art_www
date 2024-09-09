@@ -25,8 +25,6 @@ export default function RowTechElement({
   handleChangeCardElementy,
   procesyElementow,
   setShowElementyProcesyInsert,
-
-
 }) {
   const appcontext = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
@@ -51,13 +49,16 @@ export default function RowTechElement({
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
-  const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
+  const handleChangeCardFragmenty_i_Elementy_Tech =
+    techContext.handleChangeCardFragmenty_i_Elementy_Tech;
 
   const elementyTech = techContext.elementyTech;
 
   const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
-  const [listaGramaturSelect, setListaGramaturSelect] = useState(listaGramatur.filter(x => x.papier_id == row.papier_id));
+  const [listaGramaturSelect, setListaGramaturSelect] = useState(
+    listaGramatur.filter((x) => x.papier_id == row.papier_id)
+  );
 
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
@@ -82,55 +83,55 @@ export default function RowTechElement({
     console.log("Usun");
   };
 
-  function handleDragElementStart(id){
+  function handleDragElementStart(id) {
     //   e.preventDefault();
-     sessionStorage.setItem("id_element_drag", id);
-     sessionStorage.setItem("typ_drag", "element");
-   
- 
-   }
+    sessionStorage.setItem("id_element_drag", id);
+    sessionStorage.setItem("typ_drag", "element");
+  }
   return (
     <>
- 
-           <div className={style.row3} key={row.id}
-           draggable
-           onDrag={()=>handleDragElementStart(row.id)}>
-           
+      <div
+        className={style.row3}
+        key={row.id}
+        draggable
+        onDrag={() => handleDragElementStart(row.id)}
+      >
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
         <Rozwin
-          row={row} showArkusze={showArkusze} setShowArkusze={setShowArkusze}
-   
-        />
-        <Id
           row={row}
-   
+          showArkusze={showArkusze}
+          setShowArkusze={setShowArkusze}
         />
+        <Id row={row} />
         <Typ
           row={row}
-          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech }
+          handleChangeCardFragmenty_i_Elementy_Tech={
+            handleChangeCardFragmenty_i_Elementy_Tech
+          }
         />
         <Naklad row={row} />
-      
         <Strony row={row} />
         <NettoX row={row} />
         <NettoY row={row} />
         <Nazwa row={row} />
         <PapierSelect
           row={row}
-          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+          handleChangeCardFragmenty_i_Elementy_Tech={
+            handleChangeCardFragmenty_i_Elementy_Tech
+          }
           listaGramatur={listaGramatur}
           listaGramaturSelect={listaGramaturSelect}
           setListaGramaturSelect={setListaGramaturSelect}
-
         />
         <Gramatura
           row={row}
-          handleChangeCardFragmenty_i_Elementy_Tech={handleChangeCardFragmenty_i_Elementy_Tech}
+          handleChangeCardFragmenty_i_Elementy_Tech={
+            handleChangeCardFragmenty_i_Elementy_Tech
+          }
           listaGramaturSelect={listaGramaturSelect}
-
         />
-           <Uwagi row={row} />
+        <Uwagi row={row} />
         {/* <PapierInfo
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -146,7 +147,6 @@ export default function RowTechElement({
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
         <IloscLeg row={row} />
-     
 
         {/* <td></td> */}
 
@@ -160,26 +160,28 @@ export default function RowTechElement({
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
         /> */}
-         <MenuElementyBtn row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-
-
+        <MenuElementyBtn
+          row={row}
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+        />
       </div>
-      {showArkusze &&(<> 
-     
-              {arkusze
-              .filter(x => x.element_id == row.id)
+      {showArkusze && (
+        <>
+          {arkusze
+            .filter((x) => x.element_id == row.id)
 
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row}  />;
+              return <RowArkusze key={row.indeks} i={i} row={row} />;
             })}
-              
-              </>)}
+        </>
+      )}
     </>
   );
 
   function handleAddCard(rowTechElement) {
     const newElementyTech = elementyTech.slice();
-    
+
     newElementyTech.push({
       id: Math.max(...newElementyTech.map((f) => f.id)) + 1,
       zamowienie_id: rowTechElement.zamowienie_id,
@@ -201,11 +203,9 @@ export default function RowTechElement({
 
     newElementyTech.sort((a, b) => a.indeks - b.indeks);
     setElementyTech(newElementyTech);
-
   }
 
   function handleAddCard2(card) {
-
     //do skasowania
     const newElementy = elementy.slice();
 
@@ -286,22 +286,20 @@ function Procesy({ row }) {
   const appContext = useContext(AppContext);
   const techontext = useContext(TechnologyContext);
 
-
-
   const procesyElementow = techontext.procesyElementow;
-  const setProcesyElementowTemporary =  contextModalInsert.setProcesyElementowTemporary;
-
+  const setProcesyElementowTemporary =
+    contextModalInsert.setProcesyElementowTemporary;
 
   const procesyElementowTech = techontext.procesyElementowTech;
-  const setProcesyElementowTechTemporary =  techontext.setProcesyElementowTechTemporary;
+  const setProcesyElementowTechTemporary =
+    techontext.setProcesyElementowTechTemporary;
 
   return (
-    <div id="procesy" className={style.procesy} >
+    <div id="procesy" className={style.procesy}>
       <img
         className={style.expand}
         src={Logo_ustawienia}
         onClick={() => {
-          
           techontext.setShowElementyTechProcesyInsert(true);
           techontext.setSelectedElementTechROW(row);
           //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
@@ -329,18 +327,16 @@ function Procesy({ row }) {
 
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   return (
-
-      <div>
-        <img
-          className={style.expand}
-          src={iconTrash}
-          onClick={() => {
-            handleRemoveItem(row.indeks, row.id);
-          }}
-          alt="Procesy"
-        />
-      </div>
-
+    <div>
+      <img
+        className={style.expand}
+        src={iconTrash}
+        onClick={() => {
+          handleRemoveItem(row.indeks, row.id);
+        }}
+        alt="Procesy"
+      />
+    </div>
   );
 }
 
@@ -355,41 +351,39 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
         }}
         alt="Procesy"
       />
-</div>
+    </div>
   );
 }
 
-function Typ({
-  row,
-  handleChangeCardFragmenty_i_Elementy_Tech,
-}) {
+function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
   //row - row element
   return (
-  
-      <select
-        className={style.select}
-        defaultValue={row.typ}
-        onChange={(e) => {
-          handleChangeCardFragmenty_i_Elementy_Tech({
-            ...row,
-            typ: e.target.value,
-          });
-        }}
-      >
-        {}
-        {_typ_elementu.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-   
+    <select
+      className={style.select}
+      defaultValue={row.typ}
+      onChange={(e) => {
+        handleChangeCardFragmenty_i_Elementy_Tech({
+          ...row,
+          typ: e.target.value,
+        });
+      }}
+    >
+      {}
+      {_typ_elementu.map((option) => (
+        <option key={option.id} value={option.id}>
+          {option.nazwa}
+        </option>
+      ))}
+    </select>
   );
 }
 
 function PapierSelect({
   row,
-  handleChangeCardFragmenty_i_Elementy_Tech,listaGramatur,listaGramaturSelect,setListaGramaturSelect
+  handleChangeCardFragmenty_i_Elementy_Tech,
+  listaGramatur,
+  listaGramaturSelect,
+  setListaGramaturSelect,
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
@@ -397,45 +391,41 @@ function PapierSelect({
   // const listaGramaturSelect = appcontext.listaGramaturSelect;
   // const setListaGramaturSelect = appcontext.setListaGramaturSelect;
 
-    // listaPapierów = wszystkie papiery
+  // listaPapierów = wszystkie papiery
   // listaGramatur = wszystkie gramatury
   // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
-
-      <select
-        //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
-        //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
-        //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
-        // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
-        className={style.select}
-        defaultValue={row.papier_id}
-        onChange={(e) => {
-          setListaGramaturSelect(
-
-             listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
-
-          );
-          handleChangeCardFragmenty_i_Elementy_Tech({
-            ...row,
-            papier_id: e.target.value,
-          });
-        }}
-      >
-        {}
-        {listaPapierow.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
- 
+    <select
+      //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
+      //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
+      //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
+      // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
+      className={style.select}
+      defaultValue={row.papier_id}
+      onChange={(e) => {
+        setListaGramaturSelect(
+          listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+        );
+        handleChangeCardFragmenty_i_Elementy_Tech({
+          ...row,
+          papier_id: e.target.value,
+        });
+      }}
+    >
+      {}
+      {listaPapierow.map((option) => (
+        <option key={option.id} value={option.id}>
+          {option.nazwa}
+        </option>
+      ))}
+    </select>
   );
 }
 
 function Gramatura({
   row,
-  handleChangeCardFragmenty_i_Elementy_Tech,listaGramaturSelect
-
+  handleChangeCardFragmenty_i_Elementy_Tech,
+  listaGramaturSelect,
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
@@ -447,41 +437,39 @@ function Gramatura({
   // listaGramatur = wszystkie gramatury
   // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
-
-      <select
-        className={style.select}
-        defaultValue={row.gramatura_id}
-        onChange={(e) =>
-          handleChangeCardFragmenty_i_Elementy_Tech({
-            ...row,
-            gramatura_id: e.target.value,
-          })
-        }
-      >
-        <option value="0">wybierz</option>
-        {listaGramaturSelect
-          .sort((a, c) => a.gramatura - c.gramatura)
-          .map((option) =>
-            row.papier_id !== 7 ? (
-              <option key={option.id} value={option.id}>
-                {option.gramatura}{" "}
-                {option.bulk !== 1 ? (
-                  <p>
-                    {" "}
-                    g/m2 vol. {option.bulk} {option.wykonczenie}
-                  </p>
-                ) : (
-                  <p>g/m2 </p>
-                )}
-              </option>
-            ) : (
-              <option key={option.id} value={option.id}>
-                {option.gramatura} g/m2 vol. {option.bulk} {option.wykonczenie}
-              </option>
-            )
+    <select
+      className={style.select}
+      defaultValue={row.gramatura_id}
+      onChange={(e) =>
+        handleChangeCardFragmenty_i_Elementy_Tech({
+          ...row,
+          gramatura_id: e.target.value,
+        })
+      }
+    >
+      <option value="0">wybierz</option>
+      {listaGramaturSelect
+        .sort((a, c) => a.gramatura - c.gramatura)
+        .map((option) =>
+          row.papier_id !== 7 ? (
+            <option key={option.id} value={option.id}>
+              {option.gramatura}{" "}
+              {option.bulk !== 1 ? (
+                <p>
+                  {" "}
+                  g/m2 vol. {option.bulk} {option.wykonczenie}
+                </p>
+              ) : (
+                <p>g/m2 </p>
+              )}
+            </option>
+          ) : (
+            <option key={option.id} value={option.id}>
+              {option.gramatura} g/m2 vol. {option.bulk} {option.wykonczenie}
+            </option>
+          )
         )}
-      </select>
-
+    </select>
   );
 }
 
@@ -489,39 +477,33 @@ function Naklad({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
- 
-      <input
-        className={style.input}
-        value={row.naklad}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              naklad: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input}
+      value={row.naklad}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            naklad: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
-function Rozwin({ row,showArkusze, setShowArkusze }) {
-
+function Rozwin({ row, showArkusze, setShowArkusze }) {
   return (
- 
     <div>
-    <img
-      className={style.expand}
-      src={logoExpand}
-      onClick={() => {
-        
-        setShowArkusze(!showArkusze)
-      }}
-      alt="Procesy"
-    />
-  </div>
-
+      <img
+        className={style.expand}
+        src={logoExpand}
+        onClick={() => {
+          setShowArkusze(!showArkusze);
+        }}
+        alt="Procesy"
+      />
+    </div>
   );
 }
 
@@ -529,41 +511,37 @@ function Id({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
- 
-      <input
-        className={style.input_id}
-        disabled
-        value={row.id}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              naklad: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input_id}
+      disabled
+      value={row.id}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            naklad: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 function Nazwa({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-
-      <input
-       className={style.input}
-        value={row.nazwa}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              nazwa: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input}
+      value={row.nazwa}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            nazwa: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
@@ -572,64 +550,58 @@ function Strony({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-
-      <input
-         className={style.input}
-        value={row.ilosc_stron}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              ilosc_stron: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input}
+      value={row.ilosc_stron}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            ilosc_stron: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 function NettoX({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-
-      <input
+    <input
       className={style.input}
-        value={row.format_x}
-        onChange={(e) => {
-          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+      value={row.format_x}
+      onChange={(e) => {
+        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
-          if (e.target.value === "" || re.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              format_x: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+        if (e.target.value === "" || re.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            format_x: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 function NettoY({ row, handleChangeCardElementy }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
- 
-      <input
-         className={style.input}
-        value={row.format_y}
-        onChange={(e) => {
-          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+    <input
+      className={style.input}
+      value={row.format_y}
+      onChange={(e) => {
+        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
-          if (e.target.value === "" || re.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              format_y: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+        if (e.target.value === "" || re.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            format_y: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
@@ -638,21 +610,19 @@ function Lega({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
- 
-      <input
-        className={style.input}
-        placeholder="..."
-        value={row.lega}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              lega: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input}
+      placeholder="..."
+      value={row.lega}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            lega: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 function IloscLeg({ row }) {
@@ -660,44 +630,40 @@ function IloscLeg({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-
-      <input
-        className={style.input}
-        value={row.ilosc_leg}
-        placeholder="..."
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              ilosc_leg: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+    <input
+      className={style.input}
+      value={row.ilosc_leg}
+      placeholder="..."
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            ilosc_leg: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
+    <input
+      value={row.arkusz_szerokosc}
+      className={style.input}
+      placeholder="..."
+      onChange={(e) => {
+        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
-      <input
-        value={row.arkusz_szerokosc}
-        className={style.input}
-        placeholder="..."
-        onChange={(e) => {
-          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
-          if (e.target.value === "" || re.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              arkusz_szerokosc: e.target.value,
-            });
-          }
-        }}
-      ></input>
-  
+        if (e.target.value === "" || re.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            arkusz_szerokosc: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
@@ -705,23 +671,21 @@ function ArkuszWysokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
+    <input
+      value={row.arkusz_wysokosc}
+      className={style.input}
+      placeholder="..."
+      onChange={(e) => {
+        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
-      <input
-        value={row.arkusz_wysokosc}
-        className={style.input}
-        placeholder="..."
-        onChange={(e) => {
-          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
-          if (e.target.value === "" || re.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              arkusz_wysokosc: e.target.value,
-            });
-          }
-        }}
-      ></input>
-  
+        if (e.target.value === "" || re.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            arkusz_wysokosc: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
@@ -749,40 +713,40 @@ function Uwagi({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
-
-      <input
+    <input
       className={style.input}
-        value={row.uwagi}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              uwagi: e.target.value,
-            });
-          }
-        }}
-      ></input>
-
+      value={row.uwagi}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            uwagi: e.target.value,
+          });
+        }
+      }}
+    ></input>
   );
 }
 
-
-const MenuElementyBtn = ({ row,showMenu, setShowMenu}) => {
-
+const MenuElementyBtn = ({ row, showMenu, setShowMenu }) => {
   return (
-<div className={style.menu_rowtech}>
-    <img
-              className={style.iconMenuBtn}
-              src={Logo_ustawienia}
-              onClick={() => {
-                setShowMenu(!showMenu);
-                // dodaj_clikHandler();
-                // console.log("z contextu :"+ token.rowSelected)
-                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
-              }}
-              alt="x"
-            />
-            <MenuElementyTech row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-            </div>
-  )
-}
+    <div className={style.menu_rowtech}>
+      <img
+        className={style.iconMenuBtn}
+        src={Logo_ustawienia}
+        onClick={() => {
+          setShowMenu(!showMenu);
+          // dodaj_clikHandler();
+          // console.log("z contextu :"+ token.rowSelected)
+          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+        }}
+        alt="x"
+      />
+      <MenuElementyTech
+        row={row}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      />
+    </div>
+  );
+};

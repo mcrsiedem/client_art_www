@@ -9,6 +9,8 @@ export default function MenuIntroligatornia({ row,showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
+  const addNewOprawa = techContext.addNewOprawa;
+  const deleteOprawa = techContext.deleteOprawa;
   const setLegiFragmenty = techContext.setLegiFragmenty;
   // const appContext = useContext(AppContext)
   // const zamowienia = appContext.zamowienia;
@@ -47,6 +49,44 @@ export default function MenuIntroligatornia({ row,showMenu, setShowMenu }) {
         deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
  
           }}>Usuń na zawsze...</button> */}
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            addNewOprawa(row)
+            setShowMenu(!showMenu);
+          }}
+        >
+          Dodaj oprawe
+        </button>
+
+
+
+
+        <button
+          className={style.menu_legi_btn}
+          onClick={() => {
+            // const rowsToDelete =zamowienia.filter(x => x.select === true);
+    
+            // deleteZamowienieKosz(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+            // odlaczFragmenty(oprawa_id,legiFragmenty)
+            setLegiFragmenty(
+              legiFragmenty.map((t) => {
+                if (t.oprawa_id === row.id) {
+                  return {...t,
+                    oprawa_id: 0}
+                } else {
+                  return t;
+                }
+              })
+            );
+
+            deleteOprawa(row)
+            setShowMenu(!showMenu);
+          }}
+          
+        >
+         Usuń oprawę 
+        </button>
 
         <button
           className={style.menu_legi_btn}

@@ -171,17 +171,44 @@ export const TechnologyContextProvider = ({children})=>{
       const deleteElementTech = (row) => {
 
         //kasowanie elementuTech razem ze wszystkim co jest z nim powiazane
-      
-
+        // jeden element musi zostać
+if(elementyTech.length>1){
         setProcesyElementowTech(procesyElementowTech.filter(e => e.element_id !== row.id))
         setLegiFragmenty(legiFragmenty.filter(e => e.element_id !== row.id))
         setArkusze(arkusze.filter(e => e.element_id !== row.id))
         setLegi(legi.filter(e => e.element_id !== row.id))
-            
         setWykonania(wykonania.filter(e => e.element_id !== row.id))
         setElementyTech(elementyTech.filter(e => e.id !== row.id))
+}
+
+    
       
+      }
+
+
       
+      const addNewOprawa = (row) => {
+        const newOprawaTech = oprawaTech.slice();
+        newOprawaTech.push({
+          id: Math.max(...newOprawaTech.map((f) => f.id)) + 1,
+          zamowienie_id: row.zamowienie_id,
+          produkt_id: row.produkt_id,
+          oprawa: row.oprawa,
+          bok_oprawy: row.bok_oprawy,
+          naklad: row.naklad,
+          indeks: Math.max(...newOprawaTech.map((f) => f.indeks)) + 1,
+          uwagi: row.uwagi,
+          data_spedycji: row.data_spedycji,
+          data_czystodrukow: row.data_czystodrukow,
+            indeks: row.indeks + 1,
+        })
+      setOprawaTech(newOprawaTech)
+      }
+
+
+      const deleteOprawa = (row) => {
+
+      setOprawaTech((oprawaTech.filter(e => e.id !== row.id)))
       }
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
@@ -189,16 +216,10 @@ export const TechnologyContextProvider = ({children})=>{
     //   }, []);
 
        useEffect(() => {
-
-    
-
         fechparametry(rowZamowienia?.id,rowZamowienia?.zamowienie_prime_id)
-
-
           }, [rowZamowienia]);
 
           useEffect(() => {
-    
               }, [rowTechnologia]);
         
        useEffect(() => {
@@ -310,7 +331,7 @@ export const TechnologyContextProvider = ({children})=>{
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa
        
                 }}
             >

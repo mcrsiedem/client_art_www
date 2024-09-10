@@ -83,6 +83,11 @@ const OprawaRow = ({ row }) => {
         className={style.row1}
         onDragOver={handleDragOver}
         onDrop={() => handleDrop(row.id)}
+        onContextMenu={(e) => {
+          e.preventDefault(); 
+           console.log("X: " +e.clientX +" Y: " +e.clientY);
+          // setShowMenu(true)
+        }}
       >
         <RodzajOprawy row={row} />
         <Naklad row={row} />

@@ -34,60 +34,18 @@ export default function RowTechElement({
   const fragmenty = techContext.fragmenty;
   const setFragmenty = techContext.setFragmenty;
   const arkusze = techContext.arkusze;
-  // const setArkusze = techContext.setArkusze;
-  // const legi = techContext.legi;
-  // const setLegi = techContext.setLegi;
-  // const legiFragmenty = techContext.legiFragmenty;
-  // const setLegiFragmenty = techContext.setLegiFragmenty;
-  // const procesy = techContext.procesyElementow;
-  // const grupaWykonan = techContext.grupaWykonan;
-  // const setGrupaWykonan = techContext.setGrupaWykonan;
-  // const wykonania = techContext.wykonania;
-  // const setWykonania = techContext.setWykonania;
-  // const oprawaTech = techContext.oprawaTech;
-  // const setOprawaTech = techContext.setOprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
-  const handleChangeCardFragmenty_i_Elementy_Tech =
-    techContext.handleChangeCardFragmenty_i_Elementy_Tech;
-
+  const handleChangeCardFragmenty_i_Elementy_Tech =  techContext.handleChangeCardFragmenty_i_Elementy_Tech;
   const elementyTech = techContext.elementyTech;
-
   const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
   const [listaGramaturSelect, setListaGramaturSelect] = useState(
     listaGramatur.filter((x) => x.papier_id == row.papier_id)
   );
 
-  const handleRemoveItem = (indeks, id) => {
-    // id = id elementu
-    if (elementyTech.length !== 1) {
-      setElementyTech(elementyTech.filter((x) => x.indeks !== indeks));
-      setFragmentyTech(fragmentyTech.filter((x) => x.element_id !== id));
-    }
 
-    setElementyTech((prev) =>
-      prev.map((t, a) => {
-        if (t.indeks > indeks) {
-          return {
-            ...t,
-            indeks: t.indeks--,
-          };
-        } else {
-          return t;
-        }
-      })
-    );
-
-    console.log("Usun");
-  };
-
-  function handleDragElementStart(id) {
-    //   e.preventDefault();
-    sessionStorage.setItem("id_element_drag", id);
-    sessionStorage.setItem("typ_drag", "element");
-  }
   return (
     <>
       <div
@@ -178,6 +136,35 @@ export default function RowTechElement({
       )}
     </>
   );
+
+  const handleRemoveItem = (indeks, id) => {
+    // id = id elementu
+    if (elementyTech.length !== 1) {
+      setElementyTech(elementyTech.filter((x) => x.indeks !== indeks));
+      setFragmentyTech(fragmentyTech.filter((x) => x.element_id !== id));
+    }
+
+    setElementyTech((prev) =>
+      prev.map((t, a) => {
+        if (t.indeks > indeks) {
+          return {
+            ...t,
+            indeks: t.indeks--,
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+
+    console.log("Usun");
+  };
+
+  function handleDragElementStart(id) {
+    //   e.preventDefault();
+    sessionStorage.setItem("id_element_drag", id);
+    sessionStorage.setItem("typ_drag", "element");
+  }
 
   function handleAddCard(rowTechElement) {
     const newElementyTech = elementyTech.slice();

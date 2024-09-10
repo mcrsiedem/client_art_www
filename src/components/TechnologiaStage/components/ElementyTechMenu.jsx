@@ -6,6 +6,7 @@ import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import { createNewElementTech } from "actions/createNewElementTech";
 export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -34,69 +35,81 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
   const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
-
   const elementyTech = techContext.elementyTech;
-  // const appContext = useContext(AppContext)
-  // const zamowienia = appContext.zamowienia;
-  // const setZamowienia = appContext.setZamowienia;
+
 
   if (showMenu) {
     return (
       <div className={style.menu_legi}>
-        <button
-          className={style.menu_legi_btn}
-          onClick={() => {
-            // const rowsToDelete =zamowienia.filter(x => x.select === true);
-    
-            // deleteZamowienieKosz(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
-            // odlaczFragmenty(oprawa_id,legiFragmenty)
-            // setLegiFragmenty(
-            //   legiFragmenty.map((t) => {
-            //     if (t.oprawa_id === row.id) {
-            //       return {...t,
-            //         oprawa_id: 0}
-            //     } else {
-            //       return t;
-            //     }
-            //   })
-            // );
+                <button
+                  className={style.menu_legi_btn}
+                  onClick={() => {
 
-            createArkuszeFromElemenets(
-              arkusze,
-              setArkusze,
-              legi,
-              setLegi,
-              legiFragmenty,
-              setLegiFragmenty,
-              oprawaTech,
-              setOprawaTech,
-              fragmentyTech,
-              setFragmentyTech,
-              elementyTech,
-              row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-            );
-      
-            setShowMenu(!showMenu);
-          }}
-          
-        >
-         Stwórz arkusze + legi
-        </button>
-        {/* <button className={style.menu_legi_btn}           onClick={() => {
-        const rowsToDelete =zamowienia.filter(x => x.select === true);
-        deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
- 
-          }}>Usuń na zawsze...</button> */}
+                    createArkuszeFromElemenets(
+                      arkusze,
+                      setArkusze,
+                      legi,
+                      setLegi,
+                      legiFragmenty,
+                      setLegiFragmenty,
+                      oprawaTech,
+                      setOprawaTech,
+                      fragmentyTech,
+                      setFragmentyTech,
+                      elementyTech,
+                      row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+                    );
+              
+                    setShowMenu(!showMenu);
+                  }}
+                  
+                >
+                Stwórz arkusze + legi
+                </button>
 
-        <button
-          className={style.menu_legi_btn}
-          onClick={() => {
-            setShowMenu(!showMenu);
-          }}
-        >
-          Anuluj
-        </button>
+
+        <DodajNowyElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Anuluj showMenu={showMenu} setShowMenu={setShowMenu} />
+
       </div>
     );
   }
+}
+
+
+
+const Anuluj = ({ showMenu, setShowMenu }) =>{
+
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+
+
+      setShowMenu(!showMenu);
+    }}
+  >
+    Anuluj
+  </button>
+  )
+}
+
+const DodajNowyElement = ({ row,showMenu, setShowMenu }) =>{
+  const techContext = useContext(TechnologyContext);
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+createNewElementTech(row,elementyTech,setElementyTech)
+
+      setShowMenu(!showMenu);
+    }}
+  >
+    Dodaj nowy element
+  </button>
+  )
 }

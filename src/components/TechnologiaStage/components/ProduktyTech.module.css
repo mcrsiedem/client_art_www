@@ -157,3 +157,9 @@ hr{
   font-size: 0.7rem;
   padding-left: 5px;
 }
+
+.menu_produkty{
+  padding-top: 18px;
+  width: 15px;
+  /* background-color: red; */
+}

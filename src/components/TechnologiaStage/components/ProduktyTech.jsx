@@ -5,6 +5,8 @@ import { TechnologyContext } from "context/TechnologyContext";
 // import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
+import Logo_ustawienia from "assets/settings.svg";
+import ProduktyTechMenu from "./ProduktyTechMenu";
 
 export default function ProduktyTech( ) {
   return (
@@ -14,7 +16,7 @@ export default function ProduktyTech( ) {
               <div className={style.produkt_menu_button}> 
                 {/* <p>Produkt</p> */}
                 <p> Druk</p>
-                <p>***</p>
+                {/* <MenuProduktyBtn/> */}
               </div>
              
               <ProduktyTable2   />
@@ -47,6 +49,29 @@ const produktyTech = contextTech.produktyTech;
 
 
 
+const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
+  return (
+    <div className={style.menu_produkty}>
+      
+      <img
+        className={style.iconMenuBtn}
+        src={Logo_ustawienia}
+        onClick={() => {
+          setShowMenu(!showMenu);
+          // dodaj_clikHandler();
+          // console.log("z contextu :"+ token.rowSelected)
+          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+        }}
+        alt="x"
+      />
+      <ProduktyTechMenu
+        row={row}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      />
+    </div>
+  );
+};
 
 
 

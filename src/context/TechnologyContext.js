@@ -167,6 +167,22 @@ export const TechnologyContextProvider = ({children})=>{
           })
         )
       };
+
+      const deleteElementTech = (row) => {
+
+        //kasowanie elementuTech razem ze wszystkim co jest z nim powiazane
+      
+
+        setProcesyElementowTech(procesyElementowTech.filter(e => e.element_id !== row.id))
+        setLegiFragmenty(legiFragmenty.filter(e => e.element_id !== row.id))
+        setArkusze(arkusze.filter(e => e.element_id !== row.id))
+        setLegi(legi.filter(e => e.element_id !== row.id))
+            
+        setWykonania(wykonania.filter(e => e.element_id !== row.id))
+        setElementyTech(elementyTech.filter(e => e.id !== row.id))
+      
+      
+      }
     //    const updateDane = useCallback((data) => {
     //     console.log("data",data)
     //     setDane(data);
@@ -294,7 +310,7 @@ export const TechnologyContextProvider = ({children})=>{
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech
        
                 }}
             >

@@ -69,6 +69,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
 
         <DodajNowyElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
+        <SkasujElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <Anuluj showMenu={showMenu} setShowMenu={setShowMenu} />
 
       </div>
@@ -110,6 +111,28 @@ createNewElementTech(row,elementyTech,setElementyTech)
     }}
   >
     Dodaj nowy element
+  </button>
+  )
+}
+
+
+const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
+  const techContext = useContext(TechnologyContext);
+  const deleteElementTech = techContext.deleteElementTech;
+
+
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+      deleteElementTech(row)
+// deleteElementTech(row,elementyTech,setElementyTech,procesyElementowTech, setProcesyElementowTech)
+
+      setShowMenu(!showMenu);
+    }}
+  >
+    Skasuj element
   </button>
   )
 }

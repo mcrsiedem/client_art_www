@@ -64,7 +64,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                   }}
                   
                 >
-                Stwórz arkusze + legi
+                Generuj legi
                 </button>
 
 

@@ -76,6 +76,7 @@ const OprawaRow = ({ row }) => {
 
   function handleDragOver(e) {
     e.preventDefault();
+  
   }
   return (
     <>

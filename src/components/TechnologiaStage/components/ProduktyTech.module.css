@@ -179,3 +179,14 @@ hr{
   rotate: 65deg;
 }
 
+.produkt_menu_button_sub{
+  display: flex;
+  gap:20px;
+  align-items: center;
+  
+  
+}
+
+.produkt_menu_button_sub_16{
+  height: 45px;
+}

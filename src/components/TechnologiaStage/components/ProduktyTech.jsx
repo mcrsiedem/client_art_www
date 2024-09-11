@@ -19,7 +19,15 @@ export default function ProduktyTech( ) {
               <div className={style.produkt_menu_button}> 
                 {/* <p>Produkt</p> */}
                 <p > Druk</p>
-                <MenuProduktyBtn/>
+                <div className={style.produkt_menu_button_sub}>
+                  <div className={style.produkt_menu_button_sub_16}>
+                    {/* <button >16</button> */}
+                    <p onClick={()=>{ }}>16</p>
+                  </div>
+                  
+                  <MenuProduktyBtn/>
+                </div>
+                
               </div>
              
               <ProduktyTable2   />
@@ -101,11 +109,11 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
         }}
         alt="x"
       />
-      <ProduktyTechMenu
+      {/* <ProduktyTechMenu
         row={row}
         showMenu={showMenu}
         setShowMenu={setShowMenu}
-      />
+      /> */}
     </div>
   );
 };

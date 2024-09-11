@@ -111,7 +111,7 @@ createNewElementTech(row,elementyTech,setElementyTech)
       setShowMenu(!showMenu);
     }}
   >
-    Dodaj nowy element
+    Dodaj
   </button>
   )
 }
@@ -133,7 +133,7 @@ const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
       setShowMenu(!showMenu);
     }}
   >
-    Skasuj element
+   Usuń
   </button>
   )
 }

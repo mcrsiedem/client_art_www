@@ -78,7 +78,7 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
       <img
         className={style.iconMenuBtn}
         src={Logo_ustawienia2}
-        title="Auto arkusze + legi"
+        title="Auto wszystkie arkusze + legi"
         onClick={() => {
           createArkuszeFromElemenets(
             arkusze,

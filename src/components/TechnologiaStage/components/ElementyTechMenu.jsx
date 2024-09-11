@@ -6,6 +6,7 @@ import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
+import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
 export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
@@ -57,7 +58,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                       fragmentyTech,
                       setFragmentyTech,
                       elementyTech,
-                       procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania,row
+                      row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
                     );
               
                     setShowMenu(!showMenu);

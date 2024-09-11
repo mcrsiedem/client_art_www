@@ -5,7 +5,7 @@ import style from "./ElementyTechMenu.module.css";
 import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
-import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { createNewElementTech } from "actions/createNewElementTech";
 export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
@@ -44,8 +44,8 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
-
-                    createArkuszeFromElemenets(
+                    console.log(" row id" + row.id);
+                    createArkuszeFromElemenetsOneRow(
                       arkusze,
                       setArkusze,
                       legi,
@@ -57,7 +57,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                       fragmentyTech,
                       setFragmentyTech,
                       elementyTech,
-                      row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+                       procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania,row
                     );
               
                     setShowMenu(!showMenu);

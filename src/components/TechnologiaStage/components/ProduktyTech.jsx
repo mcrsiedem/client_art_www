@@ -6,7 +6,10 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import Logo_ustawienia from "assets/settings.svg";
+import Logo_ustawienia2 from "assets/refresh.png";
 import ProduktyTechMenu from "./ProduktyTechMenu";
+
+import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 
 export default function ProduktyTech( ) {
   return (
@@ -15,8 +18,8 @@ export default function ProduktyTech( ) {
   
               <div className={style.produkt_menu_button}> 
                 {/* <p>Produkt</p> */}
-                <p> Druk</p>
-                {/* <MenuProduktyBtn/> */}
+                <p > Druk</p>
+                <MenuProduktyBtn/>
               </div>
              
               <ProduktyTable2   />
@@ -50,14 +53,48 @@ const produktyTech = contextTech.produktyTech;
 
 
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
+  const techContext = useContext(TechnologyContext);
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const procesy = techContext.procesyElementow;
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
+  const oprawaTech = techContext.oprawaTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const setFragmentyTech = techContext.setFragmentyTech;
+
+
+  const elementyTech = techContext.elementyTech;
   return (
     <div className={style.menu_produkty}>
-      
+
       <img
         className={style.iconMenuBtn}
-        src={Logo_ustawienia}
+        src={Logo_ustawienia2}
+        title="Auto arkusze + legi"
         onClick={() => {
-          setShowMenu(!showMenu);
+          createArkuszeFromElemenets(
+            arkusze,
+            setArkusze,
+            legi,
+            setLegi,
+            legiFragmenty,
+            setLegiFragmenty,
+            oprawaTech,
+            setOprawaTech,
+            fragmentyTech,
+            setFragmentyTech,
+            elementyTech,
+            row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+          );
+          // setShowMenu(!showMenu);
           // dodaj_clikHandler();
           // console.log("z contextu :"+ token.rowSelected)
           //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})

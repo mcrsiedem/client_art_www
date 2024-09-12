@@ -7,7 +7,7 @@
 }
 .row1{
   display: grid;
-  grid-template-columns: 200px 70px 110px 1fr 3fr 120px 120px 20px;
+  grid-template-columns: 20px 200px 70px 110px 1fr 3fr 120px 120px 20px;
   gap: 10px;
 }
 .main2{
@@ -56,4 +56,16 @@ margin-bottom: 0px;
 
 .menu_introligatornia{
   position: relative;
+  }
+
+  .expand {
+    
+    height: 15px;
+    /* margin-right: 10px; */
+  
+  
+  }
+  .expand_contener{
+display: block;
+margin: auto;
   }

@@ -7,6 +7,7 @@ import { _typ_elementu } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import MenuIntroligatornia from "./IntroligatorniaMenu";
 import iconSettings from "assets/settings.svg";
+import logoExpand from "assets/expand.svg";
 export default function IntroligatorniaTable() {
   const techContext = useContext(TechnologyContext);
   const oprawaTech = techContext.oprawaTech;
@@ -26,6 +27,7 @@ export default function IntroligatorniaTable() {
 
 const OprawaRow = ({ row }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [show, setShow] = useState(false);
   // row to jest
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
@@ -90,6 +92,7 @@ const OprawaRow = ({ row }) => {
           // setShowMenu(true)
         }}
       >
+        <Rozwin row={row} show={show} setShow={setShow}/>
         <RodzajOprawy row={row} />
         <Naklad row={row} />
         <BokOprawy row={row} />
@@ -101,8 +104,23 @@ const OprawaRow = ({ row }) => {
 
         {/* <div>{row.naklad}</div> */}
       </div>
+      {show && (
+                  legiFragmenty
+                  .filter((f) => f.oprawa_id == row.id)
+                  .map((row, i) => (
+                    <LegaFragmentRow
+                      row={row}
+                      i={i}
+                      draggable
+                      onDragStart={() => handleDragStart(row.id)}
+                    />
 
-      {legiFragmenty
+
+                  ))
+          
+        )}
+
+      {/* {legiFragmenty
         .filter((f) => f.oprawa_id == row.id)
         .map((row, i) => (
           <LegaFragmentRow
@@ -111,7 +129,10 @@ const OprawaRow = ({ row }) => {
             draggable
             onDragStart={() => handleDragStart(row.id)}
           />
-        ))}
+
+
+        ))} */}
+
     </>
   );
 };
@@ -158,6 +179,26 @@ const MenuBtn = ({ row, showMenu, setShowMenu }) => {
     </div>
   );
 };
+
+
+function Rozwin({  row,show, setShow }) {
+  const techContext = useContext(TechnologyContext);
+  const legiFragmenty = techContext.legiFragmenty;
+  if  (legiFragmenty
+  .filter((f) => f.oprawa_id == row.id).length !== 0){
+  return (
+    <div className={style.expand_contener}>
+      <img
+        className={style.expand}
+        src={logoExpand}
+        onClick={() => {
+          setShow(!show);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );}else return <p> </p>
+}
 
 function RodzajOprawy({ row, handleChangeCardOprawa }) {
   const contextModalInsert = useContext(ModalInsertContext);

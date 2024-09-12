@@ -57,6 +57,7 @@ export default function RowTechElement({
         {/* <td>{row.id}</td> */}
         {/* <td>{row.indeks}</td> */}
         <Rozwin
+        arkusze={arkusze}
           row={row}
           showArkusze={showArkusze}
           setShowArkusze={setShowArkusze}
@@ -479,7 +480,9 @@ function Naklad({ row }) {
   );
 }
 
-function Rozwin({ row, showArkusze, setShowArkusze }) {
+function Rozwin({ arkusze,row, showArkusze, setShowArkusze }) {
+  if  (arkusze
+    .filter((x) => x.element_id == row.id).length !== 0){
   return (
     <div>
       <img
@@ -491,7 +494,7 @@ function Rozwin({ row, showArkusze, setShowArkusze }) {
         alt="Procesy"
       />
     </div>
-  );
+  );}else return <p> </p>
 }
 
 function Id({ row }) {

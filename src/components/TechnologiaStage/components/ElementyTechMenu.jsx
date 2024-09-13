@@ -71,6 +71,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
         <DodajNowyElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <SkasujElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Ponumeruj row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <Anuluj showMenu={showMenu} setShowMenu={setShowMenu} />
 
       </div>
@@ -78,7 +79,23 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
   }
 }
 
+const Ponumeruj = ({ showMenu, setShowMenu }) =>{
+  const techContext = useContext(TechnologyContext);
+  const setNumerArkusza = techContext.setNumerArkusza;
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
 
+      setNumerArkusza()
+
+      setShowMenu(!showMenu);
+    }}
+  >
+    Ponumeruj
+  </button>
+  )
+}
 
 const Anuluj = ({ showMenu, setShowMenu }) =>{
 

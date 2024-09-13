@@ -186,6 +186,45 @@ if(elementyTech.length>1){
       }
 
 
+const setNumerArkusza = (row) => {
+
+ let elementy=  elementyTech
+  .map((f) => f.id)
+
+console.log(elementy)
+
+  setArkusze(prev => prev.map(e ))
+}
+
+const setNumerArkusza2 = (row) => {
+  // const arkuszeEdit = ar.slice();
+  // console.log(  elementyTech
+
+  elementyTech
+  .map((f) => f.id)
+  .forEach( (element,x) => {
+
+console.log(element)
+    setArkusze( prev=> prev
+      .map((ark,i) => {
+
+      if(ark.element_id == element){
+  
+        return {...ark, nr_arkusza: i}
+        
+      }else {return ark } 
+     
+      }
+    )
+    )
+  })
+
+}
+
+
+
+
+
       
       const addNewOprawa = (row) => {
         const newOprawaTech = oprawaTech.slice();
@@ -371,7 +410,7 @@ if(elementyTech.length>1){
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza
        
                 }}
             >

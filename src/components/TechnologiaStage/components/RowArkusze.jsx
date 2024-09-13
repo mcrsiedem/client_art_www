@@ -110,26 +110,20 @@ export default function RowArkusze  ({ row,i })  {
 
 
 {showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
-  return     <tr draggable  onDragStart={()=>handleDragStart(l.id)} className={style.tr_legi_mini} key={l.id}>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  return     <div draggable  onDragStart={()=>handleDragStart(l.id)} className={style.row5} key={l.id}>
+
   {/* <td  >idfrag{l.id}</td>
   <td>frag.idx {l.indeks}</td> */}
-
-  <td>{l.naklad}</td>
-  <td> fragment</td>
+<td className={style.input3}> fragment </td>
+  <td className={style.input3}>{l.naklad}</td>
+  
   <td>{l.ilosc_leg}</td>
   <td>lega id{l.lega_id}</td>
   {/* <td>{row.element_id}</td> */}
   {/* <td>{row.ilosc_stron}</td> */}
   <td></td>
   <td></td>
-</tr>
+</div>
 })}</>)}
 </> 
 
@@ -174,10 +168,19 @@ export default function RowArkusze  ({ row,i })  {
     const arkusze = techContext.arkusze;
     const setArkusze = techContext.setArkusze;
 
-    const handleRemoveArkusz = (indeks,id,arkusze,setArkusze) => {
+    const legi = techContext.legi;
+    const setLegi = techContext.setLegi;
+    const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
+
+
+    const handleRemoveArkusz = (indeks,id,arkusze,setArkusze,row) => {
       // id = id elementu
       if (arkusze.length !== 1) {
         setArkusze(arkusze.filter((x) => x.indeks !== indeks));
+        setLegi(legi.filter((x) => x.arkusz_id !== row.id));
+        setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
+
         // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
       }
     
@@ -202,7 +205,7 @@ export default function RowArkusze  ({ row,i })  {
             className={style.expand}
             src={iconTrash}
             onClick={() => {
-              handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze)
+              handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze,row)
               // handleRemoveItem(row.indeks, row.id);
             }}
             alt="Procesy"

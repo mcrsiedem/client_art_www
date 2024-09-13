@@ -26,12 +26,13 @@ export default function Header({}){
             console.log("Procesy elementów: ",techContext.procesyElementowTech)
             console.log("Arkusze: ",techContext.arkusze)
             console.log("Legi: ",techContext.legi)
+            console.log("Fragmenty leg: ",techContext.legiFragmenty)
             console.log("Grupy wykonan: ",techContext.grupaWykonan)
             console.log("Wykonania: ",techContext.wykonania)
-            console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
-            console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
-            console.log("Fragmenty Elementow Tech Temporary: ",techContext.fragmentyTech)
-            console.log("Fragmenty leg Tech Temporary: ",techContext.legiFragmenty)
+            // console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
+            // console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
+            // console.log("Fragmenty Elementow Tech Temporary: ",techContext.fragmentyTech)
+            // console.log("Fragmenty leg Tech Temporary: ",techContext.legiFragmenty)
 
             
 

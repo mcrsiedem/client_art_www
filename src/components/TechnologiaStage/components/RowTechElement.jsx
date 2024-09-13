@@ -133,8 +133,10 @@ export default function RowTechElement({
             .map((row, i) => {
               return <RowArkusze key={row.indeks} i={i} row={row} />;
             })}
+          
         </>
       )}
+      
     </>
   );
 

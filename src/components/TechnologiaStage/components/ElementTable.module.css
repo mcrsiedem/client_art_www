@@ -272,3 +272,14 @@ font-size: 0.9rem;
 .menu_rowtech{
   position: relative;
 }
+
+
+.btn_dodaj_arkusz{
+  margin-left: 80px;
+  margin-bottom: 10px;
+  width: 35px;
+  height: 25px;
+  background-color: transparent;
+  border: 1px solid gray;
+ border-radius: 5px;
+}

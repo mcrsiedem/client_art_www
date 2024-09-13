@@ -68,23 +68,23 @@ export function createArkuszeFromElemenets(
     //-----------------------
     if (modulo == 0) {
       for (let i = 0; i < ilosc_arkuszy; i++) {
-        const maxid = generateMaxID(new_arkusze);
-        new_arkusze.push({
-          id: maxid,
-          indeks: generateMaxIndeks(new_arkusze),
-          ...ark,
-          ilosc_leg: ilosc_leg_na_arkuszu,
-        });
+            const maxid = generateMaxID(new_arkusze);
+            new_arkusze.push({
+              id: maxid,
+              indeks: generateMaxIndeks(new_arkusze),
+              ...ark,
+              ilosc_leg: ilosc_leg_na_arkuszu,
+            });
 
-        for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-          // do każdego ark dodaje odpowiednią ilość leg
-          new_legi.push({
-            id: generateMaxID(new_legi),
-            indeks: generateMaxIndeks(new_legi),
-            ...lega,
-            arkusz_id: maxid,
-          });
-        }
+            for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
+              // do każdego ark dodaje odpowiednią ilość leg
+              new_legi.push({
+                id: generateMaxID(new_legi),
+                indeks: generateMaxIndeks(new_legi),
+                ...lega,
+                arkusz_id: maxid,
+              });
+            }
       }
     }
 
@@ -390,6 +390,7 @@ export function createArkuszeFromElemenets(
       typ: l.typ_elementu,
       wersja: "",
       element_id: l.element_id,
+      arkusz_id: l.arkusz_id
     });
   });
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));

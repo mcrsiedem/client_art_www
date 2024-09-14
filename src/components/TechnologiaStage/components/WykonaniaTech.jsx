@@ -11,37 +11,69 @@ import { reg_int } from "utils/initialvalue";
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>
-      <WykonaniaTechHeader />
+
+      <p>Procesy</p>
       <WykonaniaTechTable />
     </div>
   );
 }
-
-const WykonaniaTechHeader = () => {
-  const techContext = useContext(TechnologyContext);
-  const showErrorArkusze = techContext.showErrorArkusze;
-  const errorArkuszeInfo = techContext.errorArkuszeInfo;
-
-  if (showErrorArkusze) {
-    return (
-      <div className={style.headerAlert}>
-        <div className={style.kropka}></div>
-        <p className={style.naglowek}>
-          {" "}
-          Wykonania - {errorArkuszeInfo[0]} {errorArkuszeInfo[1]}{" "}
-        </p>
-      </div>
-    );
-  }
-  return (
-    <div className={style.header}>
-      <div className={style.kropka}></div>
-      <p className={style.naglowek}> Wykonania </p>
-    </div>
-  );
-};
-
 const WykonaniaTechTable = () => {
+  const techContext = useContext(TechnologyContext);
+  const procesyElementowTech = techContext.procesyElementowTech;
+
+  return (
+  <div className={style.container}>
+      {procesyElementowTech.map((rowProces) => (
+        <ProcesRow rowProces={rowProces} />
+      ))}
+
+  </div>
+  )
+}
+
+const ProcesRow = (rowProces) => {
+  const [show, setShow] = useState(false);
+  return (<div className={style.row1}>
+
+
+    <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
+    <p> {rowProces.proces_id}</p>
+    <p> 1</p>
+  </div>)
+}
+
+
+const Rozwin = ({  rowProces,show, setShow }) => {
+  const techContext = useContext(TechnologyContext);
+  const legiFragmenty = techContext.legiFragmenty;
+  if  (legiFragmenty
+  .filter((f) => f.oprawa_id == rowProces.id).length !== 0){
+  return (
+    <div className={style.expand_contener}>
+      <img
+        className={style.expand}
+        src={logoExpand}
+        onClick={() => {
+          setShow(!show);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );}else return <p> </p>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+const WykonaniaTechTable2 = () => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
   const [showMenu, setShowMenu] = useState(false);

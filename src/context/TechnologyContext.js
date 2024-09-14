@@ -193,7 +193,7 @@ const setNumerArkusza = (row) => {
 
 console.log(elementy)
 
-  setArkusze(prev => prev.map(e ))
+  // setArkusze(prev => prev.map(e ))
 }
 
 const setNumerArkusza2 = (row) => {

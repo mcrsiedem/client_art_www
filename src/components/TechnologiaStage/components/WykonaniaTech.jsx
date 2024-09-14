@@ -31,14 +31,16 @@ const WykonaniaTechTable = () => {
   )
 }
 
-const ProcesRow = (rowProces) => {
+const ProcesRow = ({rowProces}) => {
   const [show, setShow] = useState(false);
   return (<div className={style.row1}>
 
 
     <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
-    <p> {rowProces.proces_id}</p>
-    <p> 1</p>
+    <p> {rowProces.id}</p>
+    <p>{rowProces.nazwa}</p>
+    <p>proces</p>
+    
   </div>)
 }
 

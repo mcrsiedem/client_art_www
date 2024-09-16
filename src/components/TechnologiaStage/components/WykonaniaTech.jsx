@@ -5,7 +5,7 @@ import style from "./WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
-import { _typ_elementu } from "utils/initialvalue";
+import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 
 export default function WykonaniaTech() {
@@ -37,9 +37,11 @@ const ProcesRow = ({rowProces}) => {
 
 
     <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
-    <p> {rowProces.id}</p>
-    <p>{rowProces.nazwa}</p>
-    <p>proces</p>
+    {/* <p> {rowProces.id}</p> */}
+    {/* <p>{rowProces.nazwa}</p> */}
+
+    <Nazwa rowProces={rowProces} />
+    <Info rowProces={rowProces} />
     
   </div>)
 }
@@ -47,9 +49,9 @@ const ProcesRow = ({rowProces}) => {
 
 const Rozwin = ({  rowProces,show, setShow }) => {
   const techContext = useContext(TechnologyContext);
-  const legiFragmenty = techContext.legiFragmenty;
-  if  (legiFragmenty
-  .filter((f) => f.oprawa_id == rowProces.id).length !== 0){
+  const procesyElementowTech = techContext.procesyElementowTech;
+  // if  (procesyElementowTech
+  // .filter((f) => f.proces_id == rowProces.id).length !== 0){
   return (
     <div className={style.expand_contener}>
       <img
@@ -61,11 +63,55 @@ const Rozwin = ({  rowProces,show, setShow }) => {
         alt="Procesy"
       />
     </div>
-  );}else return <p> </p>
+  );
+// }else return <p> </p>
 }
 
+const Nazwa = ({ rowProces }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateRowProcesyElementowTech = techContext.updateRowProcesyElementowTech;
+  return (
+    <div className={style.col_dane}>
+      
+      <label className={style.label}> Proces </label>
+      <input
+      disabled
+        className={style.input}
+        value={rowProces.nazwa}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            updateRowProcesyElementowTech({
+              ...rowProces,
+              info: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
-
+const Info = ({ rowProces }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateRowProcesyElementowTech = techContext.updateRowProcesyElementowTech;
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Info </label>
+      <input
+        className={style.input}
+        value={rowProces.info}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            updateRowProcesyElementowTech({
+              ...rowProces,
+              info: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
 
 

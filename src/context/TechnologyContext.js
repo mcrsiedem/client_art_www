@@ -168,6 +168,19 @@ export const TechnologyContextProvider = ({children})=>{
         )
       };
 
+      const updateRowProcesyElementowTech = (row) => {
+        setProcesyElementow(
+          procesyElementow.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
+
+
       const deleteElementTech = (row) => {
 
         //kasowanie elementuTech razem ze wszystkim co jest z nim powiazane
@@ -410,8 +423,8 @@ console.log(element)
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza
-       
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
+                    updateRowProcesyElementowTech
                 }}
             >
                 {children}

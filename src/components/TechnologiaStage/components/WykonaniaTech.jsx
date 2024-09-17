@@ -40,7 +40,7 @@ const ProcesRow = ({rowProces}) => {
   <div className={style.row1}>
 
     
-          <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
+    <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
     <Nazwa rowProces={rowProces} />
     <Info rowProces={rowProces} />
     </div>

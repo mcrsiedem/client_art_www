@@ -407,7 +407,8 @@ export function createArkuszeFromElemenets(
         koniec: 1,
         procesor_id:1,
         narzad: proc.narzad,
-        predkosc: proc.predkosc
+        predkosc: proc.predkosc,
+        proces_id: proc.id
       });
 
       new_arkusze
@@ -442,7 +443,8 @@ export function createArkuszeFromElemenets(
         koniec: 1,
         procesor_id:1,
         narzad: proc.narzad,
-        predkosc: proc.predkosc
+        predkosc: proc.predkosc,
+        proces_id: proc.id
       });
 
       new_legi

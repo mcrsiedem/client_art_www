@@ -23,6 +23,7 @@ const WykonaniaTechTable = () => {
 
   return (
   <div className={style.container}>
+    
       {procesyElementowTech.map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))}
@@ -45,6 +46,8 @@ const ProcesRow = ({ rowProces }) => {
     
       {show &&
           <GrupaRow rowProces={rowProces} />}
+
+          <hr></hr>
     </>
   );
 };
@@ -64,7 +67,7 @@ const GrupaRow = ({ rowProces }) => {
           .filter((f) => f.proces_id == rowProces.id)
           .map((row, i) =>
             <div>
-<div> {row.nazwa}  </div>
+<div> Grupa {row.nazwa}  </div>
 
              
 {show &&
@@ -72,7 +75,7 @@ const GrupaRow = ({ rowProces }) => {
           .filter((f) => f.id == row.id)
           .map((row, i) =>
            
-<div> {row.nazwa}  </div>
+<div> Wykonanie {row.nazwa}  </div>
 
              
           
@@ -94,7 +97,7 @@ const Rozwin = ({  rowProces,show, setShow }) => {
   // if  (procesyElementowTech
   // .filter((f) => f.proces_id == rowProces.id).length !== 0){
   return (
-    <div className={style.expand_contener}>
+    <div style={{ display: "block", margin : "auto"}} >
       <img
         className={style.expand}
         src={logoExpand}

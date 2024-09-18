@@ -60,7 +60,7 @@ export default function IntroligatorniaTech({
             </div>
 
 
-      
+         
 
       {showOprawaElementyStage && (
         <OprawaElementyStage
@@ -70,7 +70,9 @@ export default function IntroligatorniaTech({
           handleChangeCardOprawa={handleChangeCardOprawa}
         />
       )}
+      
     </div>
+    
   );
 }
 

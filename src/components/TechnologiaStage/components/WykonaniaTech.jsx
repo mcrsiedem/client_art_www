@@ -67,15 +67,18 @@ const GrupaRow = ({ rowProces }) => {
           .filter((f) => f.proces_id == rowProces.id)
           .map((row, i) =>
             <div>
-<div> Grupa {row.nazwa}  </div>
+<div className={style.grupa_container}> Grupa {row.nazwa}  </div>
 
              
 {show &&
         wykonania
           .filter((f) => f.id == row.id)
           .map((row, i) =>
-           
-<div> Wykonanie {row.nazwa}  </div>
+           <div className={style.wykonania_container}>
+
+            <div > Wykonanie {row.nazwa}  </div>
+
+           </div>
 
              
           

@@ -3,6 +3,7 @@ export function today(element_id,elementy, typy_elementow){
 
     // pokaz nazwę elementu po jego id
 
+    let el = 1;
     var d = new Date(),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),

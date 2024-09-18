@@ -31,37 +31,61 @@ const WykonaniaTechTable = () => {
   )
 }
 
-const ProcesRow = ({rowProces}) => {
+const ProcesRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
   const [show, setShow] = useState(true);
   return (
     <>
-  <div className={style.row1}>
-
+      <div className={style.row1}>
+        <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
+        <Nazwa rowProces={rowProces} />
+        <Info rowProces={rowProces} />
+      </div>
     
-    <Rozwin rowProces={rowProces} show={show} setShow={setShow}/>
-    <Nazwa rowProces={rowProces} />
-    <Info rowProces={rowProces} />
-    </div>
+      {show &&
+          <GrupaRow rowProces={rowProces} />}
+    </>
+  );
+};
 
-    {show && (
-                  grupaWykonan
-                  .filter((f) => f.proces_id == rowProces.id)
-                  .map((row, i) => (
-          <div> <p>{row.nazwa}</p></div>
-                    
-                  ))
+
+const GrupaRow = ({ rowProces }) => {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
+  const [show, setShow] = useState(true);
+  return (
+    <>
+
+
+      {show &&
+        grupaWykonan
+          .filter((f) => f.proces_id == rowProces.id)
+          .map((row, i) =>
+            <div>
+<div> {row.nazwa}  </div>
+
+             
+{show &&
+        wykonania
+          .filter((f) => f.id == row.id)
+          .map((row, i) =>
+           
+<div> {row.nazwa}  </div>
+
+             
           
-        )}
-
-</>
-
+            
+            )}
 
 
-    
-  )
-}
+
+             </div>)}
+    </>
+  );
+};
+
 
 
 const Rozwin = ({  rowProces,show, setShow }) => {

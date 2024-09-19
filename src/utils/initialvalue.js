@@ -457,6 +457,31 @@ const _rodzaj_oprawy = [
 //   }
 // ]
 
+const _procesory = [
+  {
+    id: 1,
+    nazwa: "XL",
+    start: "2024-10-03 00:00:00",
+  },
+  {
+    id: 2,
+    nazwa: "SM_1",
+    start: "2024-10-03 00:00:00",
+  },
+  ,
+  {
+    id: 3,
+    nazwa: "SM_2",
+    start: "2024-10-03 00:00:00",
+  },
+  ,
+  {
+    id: 4,
+    nazwa: "PUR",
+    start: "2024-10-03 00:00:00",
+  },
+];
+
 export {
   reg_int,
   reg_txt,
@@ -482,5 +507,6 @@ export {
   _waluta,
   initialDane,
   initialPreOrder,
-  _rodzaj_oprawy
+  _rodzaj_oprawy,
+  _procesory
 };

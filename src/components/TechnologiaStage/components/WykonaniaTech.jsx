@@ -7,6 +7,7 @@ import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
 import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
+import { getNameOfElement } from "actions/getNameOfElement";
 
 export default function WykonaniaTech() {
   return (
@@ -35,13 +36,17 @@ const WykonaniaTechTable = () => {
 const ProcesRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
+  const elementyTech = techContext.elementyTech;
   const [show, setShow] = useState(true);
   return (
     <>
       <div className={style.row1}>
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
-        <Nazwa rowProces={rowProces} />
-        <Info rowProces={rowProces} />
+        <p>{rowProces.nazwa} </p>
+        {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
+        <p style={{ fontSize: "1rem", margin : "auto"}}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+        {/* <Nazwa rowProces={rowProces} />
+        <Info rowProces={rowProces} /> */}
       </div>
     
       {show &&

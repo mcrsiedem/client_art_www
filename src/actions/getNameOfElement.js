@@ -1,18 +1,9 @@
 
-export function today(element_id,elementy, typy_elementow){
+export function getNameOfElement(element_id,elementyTech,_typ_elementu){
 
-    // pokaz nazwę elementu po jego id
+    // sprawdza nazwę elemntu po id
+    let typ = elementyTech.filter(x => x.id == element_id)[0]?.typ;
+    let name = _typ_elementu.filter(x=> x.id == typ)[0]?.nazwa
 
-    let el = 1;
-    var d = new Date(),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-        if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-        return [year, month, day].join('-'); 
+        return name;
 }

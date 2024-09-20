@@ -7,3 +7,5 @@ export function getNameOfElement(element_id,elementyTech,_typ_elementu){
 
         return name;
 }
+// zmiana kolejność w obrębie grupy
+// kolejność wykonań fragmentów

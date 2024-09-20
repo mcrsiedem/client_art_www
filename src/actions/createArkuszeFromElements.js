@@ -465,7 +465,8 @@ export function createArkuszeFromElemenets(
           procesor_id:1,
           grupa_id:1,
           narzad: proc.narzad,
-          predkosc: proc.predkosc
+          predkosc: proc.predkosc,
+          naklad: a.naklad
         });
       })
 

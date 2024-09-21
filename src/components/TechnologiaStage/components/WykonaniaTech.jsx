@@ -62,7 +62,9 @@ const ProcesRow = ({ rowProces }) => {
 const GrupaRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
   const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
   const [show, setShow] = useState(true);
   return (
     <>
@@ -71,9 +73,13 @@ const GrupaRow = ({ rowProces }) => {
           .filter((f) => f.proces_id == rowProces.id)
           .map((row, i) => (
             <div>
-              <div className={style.grupa_container}>
-                 <p style={{ fontSize: "1rem"}}>Grupa {row.nazwa}</p>  
+              <div 
+                onDragOver={handleDragOver}
+                onDrop={() => handleDrop(row.id)}
+              className={style.grupa_container}>
+                 {/* <p style={{ fontSize: "1rem"}}>Grupa </p>   */}
                  <Procesor row={row}/>
+                 <DodajGrupeWykonan row={row}/>
               </div>
               
 
@@ -82,14 +88,73 @@ const GrupaRow = ({ rowProces }) => {
                   .filter((f) => f.id == row.id)
                   .map((row, i) => (
                     <div className={style.wykonania_container}>
-                      <div> Wykonanie {row.nazwa} </div>
+                      <WykonanieRow row={row}/>
                     </div>
                   ))}
             </div>
           ))}
     </>
   );
+  function handleDragOver(e) {
+    e.preventDefault();
+  
+  }
+
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+      let id_drop_grupa = id;
+
+      setWykonania(
+        wykonania.map((p) => {
+          if (p.id == id_drag_wykonania) {
+            return { ...p, grupa_id: id_drop_grupa };
+          } else {
+            return p;
+          }
+        })
+      );
+      // console.log("typ_drag: "+sessionStorage.getItem("typ_drag"))
+      // console.log("id_element_drag: "+sessionStorage.getItem("id_element_drag"))
+      // console.log("id_drop_oprawa: "+sessionStorage.getItem("id_drop_oprawa"))
+      // handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+      // console.log("drop :", id)
+    }
+
+    //   setLegi(
+    //     legi.map((t, a) => {
+
+    //     if (t.id === dragLegaId) {
+    //       return {
+    //         ...t,
+    //         arkusz_id: id
+
+    //       };
+    //     } else {
+    //       return t;
+    //     }
+    //   })
+    // );
+    //   console.log("drop: "+id)
+    //   setDropArkuszId(id)
+  }
 };
+
+const WykonanieRow = ({row}) => {
+
+
+  return(<div
+    draggable
+    onDrag={() => handleDragWykonanieStart(row.id)}>
+    <div> Wykonanie {row.nazwa} {row.id}  </div>
+  </div>)
+  
+  function handleDragWykonanieStart(id) {
+    //   e.preventDefault();
+    sessionStorage.setItem("id_wykonanie_drag", id);
+    sessionStorage.setItem("typ_drag", "wykonanie");
+  }
+}
 
 
 function Procesor({ row, handleChangeCardOprawa }) {
@@ -125,6 +190,49 @@ function Procesor({ row, handleChangeCardOprawa }) {
         ))}
       </select>
     </div>
+  );
+}
+function DodajGrupeWykonan({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+
+  const handleAddArkusz = (row, grupaWykonan, setGrupaWykonan) => {
+    // id = id elementu
+    const newGrupy = grupaWykonan.slice();
+
+
+    newGrupy.push({
+      id: Math.max(...newGrupy.map((f) => f.id)) + 1,
+      indeks: Math.max(...newGrupy.map((f) => f.indeks)) + 1,
+      nazwa: row.nazwa,
+      poczatek: row.poczatek,
+      czas: row.czas,
+      koniec: row.koniec,
+      procesor_id: row.procesor_id,
+      proces_id:row.proces_id,
+      narzad: row.narzad,
+      predkosc: row.predkosc,
+      przeloty: row.przeloty,
+    });
+
+    setGrupaWykonan(newGrupy);
+  };
+
+  return (
+ 
+      <div style={{ paddingTop: "13px"}}>
+        <img
+          className={style.expand}
+          src={icon}
+          onClick={() => {
+            handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
+            // handleRemoveItem(row.indeks, row.id);
+          }}
+          alt="Procesy"
+        />
+      </div>
+
   );
 }
 

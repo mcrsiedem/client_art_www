@@ -158,4 +158,10 @@ const _firma = [
       start: "2024-10-03 00:00:00",
       typ_procesora: 2,
     },
+    {
+      id: 5,
+      nazwa: "FALC_1",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
   ];

@@ -77,7 +77,7 @@ const GrupaRow = ({ rowProces }) => {
                 onDragOver={handleDragOver}
                 onDrop={() => handleDrop(row.id)}
               className={style.grupa_container}>
-                 {/* <p style={{ fontSize: "1rem"}}>Grupa </p>   */}
+                 <p style={{ fontSize: "1rem"}}>grupa id {row.id} </p>  
                  <Procesor row={row}/>
                  <DodajGrupeWykonan row={row}/>
               </div>
@@ -85,7 +85,7 @@ const GrupaRow = ({ rowProces }) => {
 
               {show &&
                 wykonania
-                  .filter((f) => f.id == row.id)
+                  .filter((f) => f.grupa_id == row.id)
                   .map((row, i) => (
                     <div className={style.wykonania_container}>
                       <WykonanieRow row={row}/>
@@ -146,7 +146,7 @@ const WykonanieRow = ({row}) => {
   return(<div
     draggable
     onDrag={() => handleDragWykonanieStart(row.id)}>
-    <div> Wykonanie {row.nazwa} {row.id}  </div>
+    <div> id {row.id}  Wykonanie {row.nazwa}   grupa id: {row.grupa_id}</div>
   </div>)
   
   function handleDragWykonanieStart(id) {

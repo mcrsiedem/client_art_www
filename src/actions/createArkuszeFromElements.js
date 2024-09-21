@@ -463,7 +463,7 @@ export function createArkuszeFromElemenets(
           czas: 1,
           koniec: 1,
           procesor_id:1,
-          grupa_id:1,
+          grupa_id:3,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad

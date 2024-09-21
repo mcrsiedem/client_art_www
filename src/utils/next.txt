@@ -43,3 +43,5 @@ Karta technologiczna - Elementy - dodawanie procesów
 
 - zmiana procesora w grupie
 - dodawanie grupy i umieszczanie w niej wykonan
+
+grupy id poprawić w generowanych wykonaniach

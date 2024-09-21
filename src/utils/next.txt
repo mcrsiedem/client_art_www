@@ -38,3 +38,8 @@ Do listy procesów trzeba dodać na stałe front i back
 20/08/2024
 Karta technologiczna - Elementy - zmiana papieru
 Karta technologiczna - Elementy - dodawanie procesów
+
+19/09/2024
+
+- zmiana procesora w grupie
+- dodawanie grupy i umieszczanie w niej wykonan

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
+import { AppContext } from "context/AppContext";
 import iconSettings from "assets/settings.svg";
 import style from "./WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
@@ -65,39 +66,67 @@ const GrupaRow = ({ rowProces }) => {
   const [show, setShow] = useState(true);
   return (
     <>
-
-
       {show &&
         grupaWykonan
           .filter((f) => f.proces_id == rowProces.id)
-          .map((row, i) =>
+          .map((row, i) => (
             <div>
-<div className={style.grupa_container}> Grupa {row.nazwa}  </div>
+              <div className={style.grupa_container}>
+                 <p style={{ fontSize: "1rem"}}>Grupa {row.nazwa}</p>  
+                 <Procesor row={row}/>
+              </div>
+              
 
-             
-{show &&
-        wykonania
-          .filter((f) => f.id == row.id)
-          .map((row, i) =>
-           <div className={style.wykonania_container}>
-
-            <div > Wykonanie {row.nazwa}  </div>
-
-           </div>
-
-             
-          
-            
-            )}
-
-
-
-             </div>)}
+              {show &&
+                wykonania
+                  .filter((f) => f.id == row.id)
+                  .map((row, i) => (
+                    <div className={style.wykonania_container}>
+                      <div> Wykonanie {row.nazwa} </div>
+                    </div>
+                  ))}
+            </div>
+          ))}
     </>
   );
 };
 
 
+function Procesor({ row, handleChangeCardOprawa }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const grupaWykonan = techContext.grupaWykonan
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Procesor </label>
+      <select
+        className={style.select}
+        defaultValue={row.nazwa}
+        onChange={(event) => {
+          // handleChangeCardOprawa({ ...row, oprawa: event.target.value });
+
+          // if (row.indeks == 0) {
+          //   setProdukty(
+          //     produkty.map((p) => {
+          //       if (p.id === row.produkt_id) {
+          //         return { ...p, oprawa: event.target.value };
+          //       } else {
+          //         return p;
+          //       }
+          //     })
+          //   );
+          // }
+        }}
+      >
+        {contextApp._procesory.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 const Rozwin = ({  rowProces,show, setShow }) => {
   const techContext = useContext(TechnologyContext);

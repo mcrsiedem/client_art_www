@@ -61,7 +61,7 @@ export const AppContextProvider = ({children})=>{
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
-                    _firma,typ_elementu,_status_koszty_dodatkowe,
+                    _firma,typ_elementu,_status_koszty_dodatkowe,_procesory,
                     showMeProcessName,
                     listaGramatur, setListaGramatur,
                     listaPapierow, setListaPapierow,
@@ -129,4 +129,33 @@ const _firma = [
       nazwa: "Gotowe do faktury",
     },
 
+  ];
+
+  const _procesory = [
+    {
+      id: 1,
+      nazwa: "XL",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 1,
+    },
+    {
+      id: 2,
+      nazwa: "SM_1",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 1,
+    },
+    ,
+    {
+      id: 3,
+      nazwa: "SM_2",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 1,
+    },
+    ,
+    {
+      id: 4,
+      nazwa: "PUR",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
   ];

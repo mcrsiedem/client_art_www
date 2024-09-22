@@ -68,10 +68,10 @@ export function createArkuszeFromElemenets(
     //-----------------------
     if (modulo == 0) {
       for (let i = 0; i < ilosc_arkuszy; i++) {
-            const maxid = generateMaxID(new_arkusze);
+            const maxid = MaxID(new_arkusze);
             new_arkusze.push({
               id: maxid,
-              indeks: generateMaxIndeks(new_arkusze),
+              indeks: MaxIndeks(new_arkusze),
               ...ark,
               ilosc_leg: ilosc_leg_na_arkuszu,
             });
@@ -79,8 +79,8 @@ export function createArkuszeFromElemenets(
             for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
               // do każdego ark dodaje odpowiednią ilość leg
               new_legi.push({
-                id: generateMaxID(new_legi),
-                indeks: generateMaxIndeks(new_legi),
+                id: MaxID(new_legi),
+                indeks: MaxIndeks(new_legi),
                 ...lega,
                 arkusz_id: maxid,
               });
@@ -100,16 +100,16 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
         ilosc_leg: rodzaj_arkusza / 2,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -127,16 +127,16 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
         ilosc_leg: rodzaj_arkusza / 4,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -154,23 +154,23 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
         ilosc_leg: rodzaj_arkusza / 2,
       });
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
         ilosc_leg: rodzaj_arkusza / 4,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -188,16 +188,16 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
         ilosc_leg: rodzaj_arkusza / 8,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -215,23 +215,23 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
         ilosc_leg: rodzaj_arkusza / 2,
       });
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
         ilosc_leg: rodzaj_arkusza / 8,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -249,23 +249,23 @@ export function createArkuszeFromElemenets(
       }
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
         ilosc_leg: rodzaj_arkusza / 4,
       });
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
         ilosc_leg: rodzaj_arkusza / 8,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -282,31 +282,31 @@ export function createArkuszeFromElemenets(
         });
       }
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 2,
         ilosc_leg: rodzaj_arkusza / 2,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 4,
         ilosc_leg: rodzaj_arkusza / 4,
       });
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 8,
         ilosc_leg: rodzaj_arkusza / 8,
       });
 
       new_arkusze.push({
-        id: generateMaxID(new_arkusze),
-        indeks: generateMaxIndeks(new_arkusze),
+        id: MaxID(new_arkusze),
+        indeks: MaxIndeks(new_arkusze),
         ...ark,
         rodzaj_arkusza: 16,
         ilosc_leg: rodzaj_arkusza / 16,
@@ -321,8 +321,8 @@ export function createArkuszeFromElemenets(
     //     .filter((f) => row.typ == frag.typ)
     //     .map((l, indeks) => {
     //       new_legiFragmenty.push({
-    //         id: generateMaxID(new_legiFragmenty),
-    //         indeks: generateMaxIndeks(new_legiFragmenty),
+    //         id: MaxID(new_legiFragmenty),
+    //         indeks: MaxIndeks(new_legiFragmenty),
     //         ...legaFragment,
     //         lega_id: l.id,
     //         naklad: frag.naklad,
@@ -379,8 +379,8 @@ export function createArkuszeFromElemenets(
   new_legi
   .map((l, indeks) => {
     new_legiFragmenty.push({
-      id: generateMaxID(new_legiFragmenty),
-      indeks: generateMaxIndeks(new_legiFragmenty),
+      id: MaxID(new_legiFragmenty),
+      indeks: MaxIndeks(new_legiFragmenty),
       // ...legaFragment,
       lega_id: l.id,
       naklad: l.naklad,
@@ -399,7 +399,7 @@ export function createArkuszeFromElemenets(
     if(proc.nazwa_id==1){  // druk
 
       new_grupy.push({
-        id: generateMaxID(new_grupy),
+        id: proc.id,
         indeks: i + 1,
         nazwa: proc.nazwa,
         poczatek: 1,
@@ -415,7 +415,7 @@ export function createArkuszeFromElemenets(
       .filter(a => a.element_id == proc.element_id)
       .map((a,i)=>{
         new_wykonania.push({
-          id: i + 1,
+          id: MaxID(new_wykonania),
           indeks: i + 1,
           nazwa: proc.nazwa,
           element_id: a.element_id,
@@ -426,7 +426,7 @@ export function createArkuszeFromElemenets(
           czas: 1,
           koniec: 1,
           procesor_id:1,
-          grupa_id:1,
+          grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad
@@ -436,7 +436,7 @@ export function createArkuszeFromElemenets(
     }
     if(proc.nazwa_id==3){ // falcowanie
       new_grupy.push({
-        id: i + 1,
+        id: proc.id,
         indeks: i + 1,
         nazwa: proc.nazwa,
         poczatek: 1,
@@ -452,7 +452,7 @@ export function createArkuszeFromElemenets(
       .filter(a => a.element_id == proc.element_id)
       .map(a=>{
         new_wykonania.push({
-          id: i + 1,
+          id: proc.id,
           indeks: i + 1,
           nazwa: proc.nazwa,
           element_id: a.element_id,
@@ -463,7 +463,7 @@ export function createArkuszeFromElemenets(
           czas: 1,
           koniec: 1,
           procesor_id:1,
-          grupa_id:3,
+          grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad
@@ -481,7 +481,7 @@ export function createArkuszeFromElemenets(
 
 
 
-const generateMaxID = (value) => {
+const MaxID = (value) => {
   let maxID = null;
   if (value.length == 0) return (maxID = 1);
   maxID = Math.max(...value.map((f) => f.id)) + 1;
@@ -489,7 +489,7 @@ const generateMaxID = (value) => {
   return maxID;
 };
 
-const generateMaxIndeks = (value) => {
+const MaxIndeks = (value) => {
   let maxIndeks = null;
   if (value.length == 0) return (maxIndeks = 1);
   maxIndeks = Math.max(...value.map((f) => f.indeks)) + 1;
@@ -497,7 +497,7 @@ const generateMaxIndeks = (value) => {
   return maxIndeks;
 };
 
-const generateMaxIndeksOprawa = (value,oprawa_id) => {
+const MaxIndeksOprawa = (value,oprawa_id) => {
   let maxIndeks = null;
   if (value.length == 0) return (maxIndeks = 1);
   maxIndeks = Math.max(...value

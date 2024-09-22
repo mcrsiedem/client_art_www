@@ -452,7 +452,7 @@ export function createArkuszeFromElemenets(
       .filter(a => a.element_id == proc.element_id)
       .map(a=>{
         new_wykonania.push({
-          id: proc.id,
+          id: MaxID(new_wykonania),
           indeks: i + 1,
           nazwa: proc.nazwa,
           element_id: a.element_id,

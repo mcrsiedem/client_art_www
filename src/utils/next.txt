@@ -45,7 +45,8 @@ Karta technologiczna - Elementy - dodawanie procesów
 - dodawanie grupy i umieszczanie w niej wykonan
 
 
-
+KAŻDY PROCES POWINIENE MIEĆ DOMYŚLNY PROCESOR - PROCESOR MA PRĘDKOŚĆ I CZAS NARZĄD ZAMIAST POROCESU
 
 - grupa dodanie daty - statusu
+- dodać do bazy procesory
 

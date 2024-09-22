@@ -44,6 +44,9 @@ const ProcesRow = ({ rowProces }) => {
       <div className={style.row1}>
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
         <p>{rowProces.nazwa} </p>
+        {/* <p>{rowProces.typ} </p> */}
+        <p>Prędkość: {rowProces.predkosc} </p>
+        <p>Narząd: {rowProces.narzad}  </p>
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p style={{ fontSize: "1rem", margin : "auto"}}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         {/* <Nazwa rowProces={rowProces} />

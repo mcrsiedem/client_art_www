@@ -163,6 +163,7 @@ const WykonanieRow = ({row}) => {
 function Procesor({ row, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
+  const procesory = contextApp.procesory
   const grupaWykonan = techContext.grupaWykonan
   return (
     <div className={style.col_dane}>
@@ -186,7 +187,7 @@ function Procesor({ row, handleChangeCardOprawa }) {
           // }
         }}
       >
-        {contextApp._procesory.map((option) => (
+        {procesory.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

@@ -5,6 +5,7 @@ import { getProcesList } from 'actions/getProcesList';
 import { getBindingType } from "actions/getBindingType";
 import { getProductType } from "actions/getProductType";
 import { getProcesListName } from "actions/getProcesListName";
+import { getProcesory } from "actions/getProcesory";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
@@ -19,6 +20,7 @@ export const AppContextProvider = ({children})=>{
     const [listaGramatur, setListaGramatur] = useState();
     const [listaGramaturSelect, setListaGramaturSelect] = useState([]);
     const [listaPapierow, setListaPapierow] = useState();
+    const [procesory, setProcesory] = useState();
 
 //d
     const [rowSelected, setRowSelected] = useState(null); 
@@ -48,6 +50,7 @@ export const AppContextProvider = ({children})=>{
         getBindingType(setBindingTyp)
         getProductType(setProductType)
         getProcesListName(setProcesListName)
+        getProcesory(setProcesory)
 
     },[])
     
@@ -65,7 +68,8 @@ export const AppContextProvider = ({children})=>{
                     showMeProcessName,
                     listaGramatur, setListaGramatur,
                     listaPapierow, setListaPapierow,
-                    listaGramaturSelect, setListaGramaturSelect
+                    listaGramaturSelect, setListaGramaturSelect,
+                    procesory
 
             
                 }}
@@ -161,6 +165,54 @@ const _firma = [
     {
       id: 5,
       nazwa: "FALC_1",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 6,
+      nazwa: "FALC_2",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 7,
+      nazwa: "FALC_3",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 8,
+      nazwa: "FALC_4",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 9,
+      nazwa: "FALC_5",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 10,
+      nazwa: "FALC_6",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 11,
+      nazwa: "FALC_7",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 12,
+      nazwa: "FALC_8",
+      start: "2024-10-03 00:00:00",
+      typ_procesora: 2,
+    },
+    {
+      id: 13,
+      nazwa: "FALC_9",
       start: "2024-10-03 00:00:00",
       typ_procesora: 2,
     },

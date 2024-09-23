@@ -170,7 +170,7 @@ function Procesor({ row, handleChangeCardOprawa }) {
       <label className={style.label}> Procesor </label>
       <select
         className={style.select}
-        defaultValue={row.nazwa}
+        defaultValue={row.procesor_id}
         onChange={(event) => {
           // handleChangeCardOprawa({ ...row, oprawa: event.target.value });
 

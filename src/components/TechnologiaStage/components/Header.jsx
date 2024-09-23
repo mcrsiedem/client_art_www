@@ -29,6 +29,9 @@ export default function Header({}){
             console.log("Fragmenty leg: ",techContext.legiFragmenty)
             console.log("Grupy wykonan: ",techContext.grupaWykonan)
             console.log("Wykonania: ",techContext.wykonania)
+            console.log("procesyElementowTech: ",techContext.procesyElementowTech)
+
+           
             // console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
             // console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
             // console.log("Fragmenty Elementow Tech Temporary: ",techContext.fragmentyTech)

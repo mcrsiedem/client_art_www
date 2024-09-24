@@ -54,8 +54,10 @@ const ProcesRow = ({ rowProces }) => {
         <p>Narząd: {rowProces.narzad}  </p>
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p style={{ fontSize: "1rem", margin : "auto"}}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+        <p style={{ fontSize: "1rem", margin : "auto"}}> Mnożnik: {rowProces.mnoznik}</p>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}
+
       </div>
     
       {show &&

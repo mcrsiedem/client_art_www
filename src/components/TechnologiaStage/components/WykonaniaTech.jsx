@@ -89,6 +89,7 @@ const GrupaRow = ({ rowProces }) => {
               className={style.grupa_container}>
                  <p style={{ fontSize: "1rem"}}>grupa id {row.id} </p>  
                  <Procesor row={row}/>
+                 <MnoznikPredkosci row={row}/>
                  <DodajGrupeWykonan row={row}/>
               </div>
               
@@ -171,7 +172,7 @@ function Procesor({ row, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
-  const grupaWykonan = techContext.grupaWykonan
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Procesor </label>
@@ -179,7 +180,7 @@ function Procesor({ row, handleChangeCardOprawa }) {
         className={style.select}
         defaultValue={row.procesor_id}
         onChange={(event) => {
-          // handleChangeCardOprawa({ ...row, oprawa: event.target.value });
+          updateGrupaWykonan({ ...row, procesor_id: event.target.value });
 
           // if (row.indeks == 0) {
           //   setProdukty(
@@ -203,6 +204,52 @@ function Procesor({ row, handleChangeCardOprawa }) {
     </div>
   );
 }
+
+function MnoznikPredkosci({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const mnozniki = contextApp.mnozniki
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Mnożnik </label>
+      <select 
+        className={style.select}
+        defaultValue={row.mnoznik}
+        onChange={(event) => {
+          updateGrupaWykonan({ ...row, mnoznik: event.target.value });
+
+          // if (row.indeks == 0) {
+          //   setProdukty(
+          //     produkty.map((p) => {
+          //       if (p.id === row.produkt_id) {
+          //         return { ...p, oprawa: event.target.value };
+          //       } else {
+          //         return p;
+          //       }
+          //     })
+          //   );
+          // }
+        }}
+      >
+        {mnozniki.map((option) => (
+          <option key={option.id} value={option.value}>
+            {option.value}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
 function DodajGrupeWykonan({ row }) {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;

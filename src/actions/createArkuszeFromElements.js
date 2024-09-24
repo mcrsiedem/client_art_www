@@ -408,7 +408,8 @@ export function createArkuszeFromElemenets(
         procesor_id:proc.procesor_domyslny,
         narzad: proc.narzad,
         predkosc: proc.predkosc,
-        proces_id: proc.id
+        proces_id: proc.id,
+        mnoznik: proc.mnoznik
       });
 
       new_arkusze
@@ -445,7 +446,8 @@ export function createArkuszeFromElemenets(
         procesor_id:proc.procesor_domyslny,
         narzad: proc.narzad,
         predkosc: proc.predkosc,
-        proces_id: proc.id
+        proces_id: proc.id,
+        mnoznik: proc.mnoznik
       });
 
       new_legi

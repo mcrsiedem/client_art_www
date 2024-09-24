@@ -69,7 +69,7 @@ export const AppContextProvider = ({children})=>{
                     listaGramatur, setListaGramatur,
                     listaPapierow, setListaPapierow,
                     listaGramaturSelect, setListaGramaturSelect,
-                    procesory
+                    procesory,mnozniki
 
             
                 }}
@@ -217,3 +217,28 @@ const _firma = [
       typ_procesora: 2,
     },
   ];
+
+ const  mnozniki = [   
+   {value: 0.1,},
+   {value: 0.2,},
+   {value: 0.3,},
+   {value: 0.4,},
+   {value: 0.5,},
+   {value: 0.6,},
+   {value: 0.7,},
+   {value: 0.8,},
+   {value: 0.9,},
+   {value: 1.0,},
+   {value: 1.1,},
+   {value: 1.2,},
+   {value: 1.3,},
+   {value: 1.4,},
+   {value: 1.5,},
+   {value: 1.6,},
+   {value: 1.7,},
+   {value: 1.8,},
+   {value: 1.9,},
+   {value: 2.0,},
+  
+  
+  ]

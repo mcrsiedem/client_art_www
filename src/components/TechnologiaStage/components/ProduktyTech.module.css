@@ -170,11 +170,11 @@ hr{
   width: 30px;
 
 }
-.iconMenuBtn:hover{
+/* .iconMenuBtn:hover{
   width: 30px;
   rotate: 45deg;
   
-}
+} */
 .iconMenuBtn:active{
   rotate: 65deg;
 }

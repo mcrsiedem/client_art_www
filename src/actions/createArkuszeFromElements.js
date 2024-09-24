@@ -460,7 +460,7 @@ export function createArkuszeFromElemenets(
           proces_id: proc.id,
           typ_elementu: a.typ_elementu,
           poczatek: 1,
-          czas: 1,
+          czas: 2,
           koniec: 1,
           procesor_id:proc.procesor_domyslny,
           grupa_id:proc.id,

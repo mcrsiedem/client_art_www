@@ -11,7 +11,7 @@ import ProduktyTechMenu from "./ProduktyTechMenu";
 
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 
-export default function ProduktyTech( ) {
+export default function ProduktyTech() {
   const contextTech = useContext(TechnologyContext);
   const input1632toElemnt = contextTech.input1632toElemnt;
   return (
@@ -21,26 +21,23 @@ export default function ProduktyTech( ) {
           {/* <p>Produkt</p> */}
           <p> Druk</p>
           <div className={style.produkt_menu_button_sub}>
-
-          <div className={style.produkt_menu_button_sub_16}>
-         
-         <p
-           onClick={() => {
-             input1632toElemnt(32);
-           }}
-         >
-           32
-         </p>
-   </div>
             <div className={style.produkt_menu_button_sub_16}>
-         
-                  <p
-                    onClick={() => {
-                      input1632toElemnt(16);
-                    }}
-                  >
-                    16
-                  </p>
+              <p
+                onClick={() => {
+                  input1632toElemnt(32);
+                }}
+              >
+                32
+              </p>
+            </div>
+            <div className={style.produkt_menu_button_sub_16}>
+              <p
+                onClick={() => {
+                  input1632toElemnt(16);
+                }}
+              >
+                16
+              </p>
             </div>
 
             <MenuProduktyBtn />

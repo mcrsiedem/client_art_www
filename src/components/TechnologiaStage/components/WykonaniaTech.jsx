@@ -6,6 +6,7 @@ import style from "./WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
+import Logo_ustawienia2 from "assets/refresh.png";
 import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
@@ -13,8 +14,12 @@ import { getNameOfElement } from "actions/getNameOfElement";
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>
+      <div className={style.procesy_menu_button}> 
 
-      <p>Procesy</p>
+       <p>Procesy</p> 
+       <ProcesBtn />
+      </div>
+      
       <WykonaniaTechTable />
     </div>
   );
@@ -149,7 +154,7 @@ const WykonanieRow = ({row}) => {
   return(<div
     draggable
     onDrag={() => handleDragWykonanieStart(row.id)}>
-    <div> id {row.id}  Wykonanie {row.nazwa}   grupa id: {row.grupa_id}</div>
+    <div> id {row.id}  Wykonanie {row.nazwa}   grupa id: {row.grupa_id} czas: {row.czas}</div>
   </div>)
   
   function handleDragWykonanieStart(id) {
@@ -708,3 +713,61 @@ function UsunArkusz({ row }) {
     </td>
   );
 }
+
+const ProcesBtn = ({ row, showMenu, setShowMenu }) => {
+  const techContext = useContext(TechnologyContext);
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const procesy = techContext.procesyElementow;
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
+  const oprawaTech = techContext.oprawaTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const setFragmentyTech = techContext.setFragmentyTech;
+
+
+  const elementyTech = techContext.elementyTech;
+  return (
+    <div className={style.menu_produkty}>
+
+      <img
+        className={style.iconMenuBtn}
+        src={Logo_ustawienia2}
+        title="Policz czasy wykonań"
+        onClick={() => {
+          // createArkuszeFromElemenets(
+          //   arkusze,
+          //   setArkusze,
+          //   legi,
+          //   setLegi,
+          //   legiFragmenty,
+          //   setLegiFragmenty,
+          //   oprawaTech,
+          //   setOprawaTech,
+          //   fragmentyTech,
+          //   setFragmentyTech,
+          //   elementyTech,
+          //   row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+          // );
+          // setShowMenu(!showMenu);
+          // dodaj_clikHandler();
+          // console.log("z contextu :"+ token.rowSelected)
+          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+        }}
+        alt="x"
+      />
+      {/* <ProduktyTechMenu
+        row={row}
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      /> */}
+    </div>
+  );
+};

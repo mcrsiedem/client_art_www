@@ -7,7 +7,30 @@
 }
 
 
+.procesy_menu_button{
+  display: flex;
+ flex-direction: row;
+ /* justify-content: space-between; */
+ padding-right: 30px;
+  gap:10px;
+  
+}
 
+.iconMenuBtn{
+  width: 20px;
+  /* padding-top: 20px; */
+  margin-top: 22px;
+  
+
+}
+/* .iconMenuBtn:hover{
+  width: 20px;
+  rotate: 45deg;
+  
+} */
+.iconMenuBtn:active{
+  rotate: 65deg;
+}
 
 .expand {
   height: 15px;

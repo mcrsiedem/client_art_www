@@ -424,13 +424,14 @@ export function createArkuszeFromElemenets(
           proces_id: proc.id,
           typ_elementu: a.typ_elementu,
           poczatek: 1,
-          czas: 1,
+          czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10),
           koniec: 1,
           procesor_id:proc.procesor_domyslny,
           grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
-          naklad: a.naklad
+          naklad: a.naklad,
+          mnoznik: proc.mnoznik,
         });
       })
 
@@ -462,13 +463,14 @@ export function createArkuszeFromElemenets(
           proces_id: proc.id,
           typ_elementu: a.typ_elementu,
           poczatek: 1,
-          czas: 2,
+          czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10) ,
           koniec: 1,
           procesor_id:proc.procesor_domyslny,
           grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
-          naklad: a.naklad
+          naklad: a.naklad,
+          mnoznik: proc.mnoznik,
         });
       })
 

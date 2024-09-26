@@ -409,7 +409,8 @@ export function createArkuszeFromElemenets(
         narzad: proc.narzad,
         predkosc: proc.predkosc,
         proces_id: proc.id,
-        mnoznik: proc.mnoznik
+        mnoznik: proc.mnoznik,
+        status:1
       });
 
       new_arkusze
@@ -432,6 +433,7 @@ export function createArkuszeFromElemenets(
           predkosc: proc.predkosc,
           naklad: a.naklad,
           mnoznik: proc.mnoznik,
+          status:1
         });
       })
 
@@ -448,7 +450,8 @@ export function createArkuszeFromElemenets(
         narzad: proc.narzad,
         predkosc: proc.predkosc,
         proces_id: proc.id,
-        mnoznik: proc.mnoznik
+        mnoznik: proc.mnoznik,
+        status:1
       });
 
       new_legi
@@ -471,6 +474,7 @@ export function createArkuszeFromElemenets(
           predkosc: proc.predkosc,
           naklad: a.naklad,
           mnoznik: proc.mnoznik,
+          status:1
         });
       })
 

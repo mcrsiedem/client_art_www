@@ -18,7 +18,7 @@ import { reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 
-export default function RowWykonanie  ({rowWykonanie})  {
+export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
 
 
   return(<div
@@ -48,7 +48,7 @@ function StatusWykonania({ rowWykonanie }) {
   const updateWykonanie = techContext.updateWykonanie
   return (
     <div className={style.col_dane}>
-      <label className={style.label}> Status </label>
+      {/* <label className={style.label}> Status </label> */}
       <select 
         className={style.select}
         defaultValue={rowWykonanie.status}
@@ -72,7 +72,7 @@ const CzasWykoniania = ({ rowWykonanie }) => {
   return (
     <div className={style.col_dane}>
       
-      <label className={style.label}> Czas </label>
+      {/* <label className={style.label}> Czas </label> */}
       <input
       disabled
         className={style.input}
@@ -98,7 +98,7 @@ const ID = ({ rowWykonanie }) => {
   return (
     <div className={style.col_dane}>
       
-      <label className={style.label}>  {rowWykonanie.nazwa} </label>
+      {/* <label className={style.label}>  {rowWykonanie.nazwa} </label> */}
       <input
       disabled
         className={style.input}

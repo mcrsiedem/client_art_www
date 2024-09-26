@@ -77,6 +77,7 @@ const GrupaRow = ({ rowProces }) => {
   const wykonania = techContext.wykonania;
   const setWykonania = techContext.setWykonania;
   const [show, setShow] = useState(true);
+  const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
   return (
     <>
       {show &&
@@ -92,7 +93,7 @@ const GrupaRow = ({ rowProces }) => {
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
-                 <StatusGrupy rowGrupa={rowGrupa}/>
+                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
                  <Stangrupy rowGrupa={rowGrupa}/>
                  
                  <DodajGrupeWykonan rowGrupa={rowGrupa}/>
@@ -105,7 +106,7 @@ const GrupaRow = ({ rowProces }) => {
                   .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
                       {/* <WykonanieRow row={row}/> */}
-                      <RowWykonanie rowWykonanie={rowWykonanie}/>
+                      <RowWykonanie rowWykonanie={rowWykonanie} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
 
                     </div>
                   ))}
@@ -236,11 +237,14 @@ function MnoznikPredkosci({ rowGrupa }) {
   );
 }
 
-function StatusGrupy({ rowGrupa }) {
+function StatusGrupy({ rowGrupa,updateWykonaniaWszystkie }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  // const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+  const wykonania = techContext.wykonania
+  const setWykonania = techContext.setWykonania
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Status </label>
@@ -248,7 +252,23 @@ function StatusGrupy({ rowGrupa }) {
         className={style.select}
         defaultValue={rowGrupa.status}
         onChange={(event) => {
-          updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+          // updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+          updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
+
+          // setWykonania(
+          //   wykonania.map((t) => {
+          //     if (t.grupa_id == rowGrupa.id) {
+          //       return {
+          //         ...t,
+          //         status: event.target.value
+        
+          //       };
+          //     } else {
+          //       return t;
+          //     }
+          //   })
+          // )
+  
         }}
       >
         {_status_wykonania.map((option) => (

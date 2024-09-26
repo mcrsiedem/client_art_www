@@ -155,6 +155,12 @@ export const TechnologyContextProvider = ({children})=>{
           })
         )
       };
+
+
+
+
+
+
       const updateGrupaWykonan = (row) => {
         setGrupaWykonan(
           grupaWykonan.map((t) => {
@@ -165,7 +171,43 @@ export const TechnologyContextProvider = ({children})=>{
             }
           })
         )
+
+
       };
+
+
+      function updateWykonaniaWszystkie(row) {
+        // zmienia typ fragmentów gdy typ elementu jest zmieniany
+        setGrupaWykonan(
+          grupaWykonan.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+    
+        setWykonania(
+          wykonania.map((t) => {
+            if (t.grupa_id == row.id) {
+              return {
+                ...t,
+                status: row.status
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        )
+
+
+
+
+      }
+
+
 
       const updateWykonanie = (row) => {
         setWykonania(
@@ -448,7 +490,7 @@ console.log(element)
                     selectedElementTechROW,setSelectedElementTechROW,
                     updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
                     updateRowProcesyElementowTech,
-                    updateGrupaWykonan,updateWykonanie
+                    updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie
                 }}
             >
                 {children}

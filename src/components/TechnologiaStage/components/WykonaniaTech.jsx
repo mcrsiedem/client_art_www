@@ -81,22 +81,23 @@ const GrupaRow = ({ rowProces }) => {
       {show &&
         grupaWykonan
           .filter((f) => f.proces_id == rowProces.id)
-          .map((row, i) => (
+          .map((rowGrupa, i) => (
             <div>
               <div 
                 onDragOver={handleDragOver}
-                onDrop={() => handleDrop(row.id)}
+                onDrop={() => handleDrop(rowGrupa.id)}
               className={style.grupa_container}>
-                 <p style={{ fontSize: "1rem"}}>grupa id {row.id} </p>  
-                 <Procesor row={row} rowProces={rowProces}/>
-                 <MnoznikPredkosci row={row}/>
-                 <DodajGrupeWykonan row={row}/>
+                 <p style={{ fontSize: "1rem"}}>grupa id {rowGrupa.id} </p>  
+                 <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
+                 <PredkoscGrupy rowGrupa={rowGrupa} />
+                 <MnoznikPredkosci rowGrupa={rowGrupa}/>
+                 <DodajGrupeWykonan rowGrupa={rowGrupa}/>
               </div>
               
 
               {show &&
                 wykonania
-                  .filter((f) => f.grupa_id == row.id)
+                  .filter((f) => f.grupa_id == rowGrupa.id)
                   .map((row, i) => (
                     <div className={style.wykonania_container}>
                       <WykonanieRow row={row}/>
@@ -168,7 +169,7 @@ const WykonanieRow = ({row}) => {
 }
 
 
-function Procesor({ row,rowProces, handleChangeCardOprawa }) {
+function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -178,9 +179,9 @@ function Procesor({ row,rowProces, handleChangeCardOprawa }) {
       <label className={style.label}> Procesor </label>
       <select
         className={style.select}
-        defaultValue={row.procesor_id}
+        defaultValue={rowGrupa.procesor_id}
         onChange={(event) => {
-          updateGrupaWykonan({ ...row, procesor_id: event.target.value });
+          updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
 
           // if (row.indeks == 0) {
           //   setProdukty(
@@ -207,7 +208,7 @@ function Procesor({ row,rowProces, handleChangeCardOprawa }) {
   );
 }
 
-function MnoznikPredkosci({ row }) {
+function MnoznikPredkosci({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const mnozniki = contextApp.mnozniki
@@ -217,9 +218,9 @@ function MnoznikPredkosci({ row }) {
       <label className={style.label}> Mnożnik </label>
       <select 
         className={style.select}
-        defaultValue={row.mnoznik}
+        defaultValue={rowGrupa.mnoznik}
         onChange={(event) => {
-          updateGrupaWykonan({ ...row, mnoznik: event.target.value });
+          updateGrupaWykonan({ ...rowGrupa, mnoznik: event.target.value });
 
           // if (row.indeks == 0) {
           //   setProdukty(
@@ -246,7 +247,29 @@ function MnoznikPredkosci({ row }) {
 
 
 
-
+const PredkoscGrupy = ({ rowGrupa }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      
+      <label className={style.label}> Prędkość </label>
+      <input
+      disabled
+        className={style.input}
+        value={rowGrupa.predkosc}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            updateGrupaWykonan({
+              ...rowGrupa,
+              predkosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
 
 

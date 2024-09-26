@@ -10,6 +10,7 @@ import Logo_ustawienia2 from "assets/refresh.png";
 import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
+import RowWykonanie from "./RowWykonanie";
 
 export default function WykonaniaTech() {
   return (
@@ -91,6 +92,9 @@ const GrupaRow = ({ rowProces }) => {
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
+                 <StatusGrupy rowGrupa={rowGrupa}/>
+                 <Stangrupy rowGrupa={rowGrupa}/>
+                 
                  <DodajGrupeWykonan rowGrupa={rowGrupa}/>
               </div>
               
@@ -98,9 +102,11 @@ const GrupaRow = ({ rowProces }) => {
               {show &&
                 wykonania
                   .filter((f) => f.grupa_id == rowGrupa.id)
-                  .map((row, i) => (
+                  .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
-                      <WykonanieRow row={row}/>
+                      {/* <WykonanieRow row={row}/> */}
+                      <RowWykonanie rowWykonanie={rowWykonanie}/>
+
                     </div>
                   ))}
             </div>
@@ -152,21 +158,6 @@ const GrupaRow = ({ rowProces }) => {
   }
 };
 
-const WykonanieRow = ({row}) => {
-
-
-  return(<div
-    draggable
-    onDrag={() => handleDragWykonanieStart(row.id)}>
-    <div> id {row.id}  Wykonanie {row.nazwa}   grupa id: {row.grupa_id} czas: {row.czas}</div>
-  </div>)
-  
-  function handleDragWykonanieStart(id) {
-    //   e.preventDefault();
-    sessionStorage.setItem("id_wykonanie_drag", id);
-    sessionStorage.setItem("typ_drag", "wykonanie");
-  }
-}
 
 
 function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
@@ -245,6 +236,56 @@ function MnoznikPredkosci({ rowGrupa }) {
   );
 }
 
+function StatusGrupy({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _status_wykonania = contextApp._status_wykonania
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Status </label>
+      <select 
+        className={style.select}
+        defaultValue={rowGrupa.status}
+        onChange={(event) => {
+          updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+        }}
+      >
+        {_status_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function Stangrupy({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _stan_wykonania = contextApp._stan_wykonania
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Stan </label>
+      <select 
+        className={style.select}
+        defaultValue={rowGrupa.stan}
+        onChange={(event) => {
+          updateGrupaWykonan({ ...rowGrupa, stan: event.target.value });
+        }}
+      >
+        {_stan_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 
 
 const PredkoscGrupy = ({ rowGrupa }) => {
@@ -255,11 +296,11 @@ const PredkoscGrupy = ({ rowGrupa }) => {
       
       <label className={style.label}> Prędkość </label>
       <input
-      disabled
+      
         className={style.input}
         value={rowGrupa.predkosc}
         onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          if (e.target.value == "" || reg_txt.test(e.target.value)) {
             updateGrupaWykonan({
               ...rowGrupa,
               predkosc: e.target.value,

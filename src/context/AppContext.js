@@ -64,12 +64,12 @@ export const AppContextProvider = ({children})=>{
                     productType,
                     bindingType, setBindingTyp, // lista dostępnych opraw
                     rowSelected, setRowSelected, // druk
-                    _firma,typ_elementu,_status_koszty_dodatkowe,_procesory,
+                    _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
                     listaGramatur, setListaGramatur,
                     listaPapierow, setListaPapierow,
                     listaGramaturSelect, setListaGramaturSelect,
-                    procesory,mnozniki
+                    procesory,mnozniki, _status_wykonania,_stan_wykonania
 
             
                 }}
@@ -135,88 +135,41 @@ const _firma = [
 
   ];
 
-  const _procesory = [
+  const _status_wykonania = [
+
     {
       id: 1,
-      nazwa: "XL",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 1,
+      nazwa: "Oczekujące",
     },
     {
       id: 2,
-      nazwa: "SM_1",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 1,
+      nazwa: "W trakcie",
     },
-    ,
     {
       id: 3,
-      nazwa: "SM_2",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 1,
+      nazwa: "Zakończone"
     },
-    ,
-    {
-      id: 4,
-      nazwa: "PUR",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 5,
-      nazwa: "FALC_1",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 6,
-      nazwa: "FALC_2",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 7,
-      nazwa: "FALC_3",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 8,
-      nazwa: "FALC_4",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 9,
-      nazwa: "FALC_5",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 10,
-      nazwa: "FALC_6",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 11,
-      nazwa: "FALC_7",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 12,
-      nazwa: "FALC_8",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
-    {
-      id: 13,
-      nazwa: "FALC_9",
-      start: "2024-10-03 00:00:00",
-      typ_procesora: 2,
-    },
+
   ];
+
+  const _stan_wykonania = [
+
+    {
+      id: 1,
+      nazwa: "Aktywne",
+    },
+    {
+      id: 2,
+      nazwa: "Wstrzymane",
+    },
+    {
+      id: 3,
+      nazwa: "Anulowane"
+    },
+
+  ];
+  
+
 
  const  mnozniki = [   
    {value: 0.1,},

@@ -167,6 +167,18 @@ export const TechnologyContextProvider = ({children})=>{
         )
       };
 
+      const updateWykonanie = (row) => {
+        setWykonania(
+          wykonania.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+      };
+
       const updateRowOprawaTech = (row) => {
         setOprawaTech(
           oprawaTech.map((t) => {
@@ -436,7 +448,7 @@ console.log(element)
                     selectedElementTechROW,setSelectedElementTechROW,
                     updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
                     updateRowProcesyElementowTech,
-                    updateGrupaWykonan
+                    updateGrupaWykonan,updateWykonanie
                 }}
             >
                 {children}

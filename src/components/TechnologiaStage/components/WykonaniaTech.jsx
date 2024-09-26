@@ -54,7 +54,7 @@ const ProcesRow = ({ rowProces }) => {
         <p>Narząd: {rowProces.narzad}  </p>
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p style={{ fontSize: "1rem", margin : "auto"}}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
-        <p style={{ fontSize: "1rem", margin : "auto"}}> Mnożnik: {rowProces.mnoznik}</p>
+        <p style={{ fontSize: "1rem", margin : "auto"}}> </p>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}
 
@@ -88,7 +88,7 @@ const GrupaRow = ({ rowProces }) => {
                 onDrop={() => handleDrop(row.id)}
               className={style.grupa_container}>
                  <p style={{ fontSize: "1rem"}}>grupa id {row.id} </p>  
-                 <Procesor row={row}/>
+                 <Procesor row={row} rowProces={rowProces}/>
                  <MnoznikPredkosci row={row}/>
                  <DodajGrupeWykonan row={row}/>
               </div>
@@ -168,7 +168,7 @@ const WykonanieRow = ({row}) => {
 }
 
 
-function Procesor({ row, handleChangeCardOprawa }) {
+function Procesor({ row,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -195,7 +195,9 @@ function Procesor({ row, handleChangeCardOprawa }) {
           // }
         }}
       >
-        {procesory.map((option) => (
+        {procesory
+        .filter(x => x.grupa == rowProces.nazwa_id )
+        .map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

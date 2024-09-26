@@ -177,6 +177,8 @@ export const TechnologyContextProvider = ({children})=>{
 
 
       function updateWykonaniaWszystkie(row) {
+       
+        // console.log("grupa:"+ row[0])
         // zmienia typ fragmentów gdy typ elementu jest zmieniany
         setGrupaWykonan(
           grupaWykonan.map((t) => {
@@ -189,7 +191,8 @@ export const TechnologyContextProvider = ({children})=>{
         )
     
         setWykonania(
-          wykonania.map((t) => {
+          wykonania
+          .map((t) => {
             if (t.grupa_id == row.id) {
               return {
                 ...t,

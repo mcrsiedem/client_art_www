@@ -237,12 +237,12 @@ function MnoznikPredkosci({ rowGrupa }) {
   );
 }
 
-function StatusGrupy({ rowGrupa,updateWykonaniaWszystkie }) {
+function StatusGrupy({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
-  // const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
   return (

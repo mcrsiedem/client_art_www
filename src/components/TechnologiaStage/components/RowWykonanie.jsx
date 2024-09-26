@@ -30,6 +30,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
+      status {rowWykonanie.status}
     </div>
   </div>)
   
@@ -51,7 +52,7 @@ function StatusWykonania({ rowWykonanie }) {
       {/* <label className={style.label}> Status </label> */}
       <select 
         className={style.select}
-        defaultValue={rowWykonanie.status}
+        value={rowWykonanie.status}
         onChange={(event) => {
           updateWykonanie({ ...rowWykonanie, status: event.target.value });
         }}

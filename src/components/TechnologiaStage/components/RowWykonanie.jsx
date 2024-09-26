@@ -30,7 +30,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
-      status {rowWykonanie.status}
+
     </div>
   </div>)
   

@@ -134,29 +134,10 @@ const GrupaRow = ({ rowProces }) => {
           }
         })
       );
-      // console.log("typ_drag: "+sessionStorage.getItem("typ_drag"))
-      // console.log("id_element_drag: "+sessionStorage.getItem("id_element_drag"))
-      // console.log("id_drop_oprawa: "+sessionStorage.getItem("id_drop_oprawa"))
-      // handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
-      // console.log("drop :", id)
+
     }
 
-    //   setLegi(
-    //     legi.map((t, a) => {
 
-    //     if (t.id === dragLegaId) {
-    //       return {
-    //         ...t,
-    //         arkusz_id: id
-
-    //       };
-    //     } else {
-    //       return t;
-    //     }
-    //   })
-    // );
-    //   console.log("drop: "+id)
-    //   setDropArkuszId(id)
   }
 };
 

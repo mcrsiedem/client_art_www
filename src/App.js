@@ -7,6 +7,7 @@ import Technologie from './pages/Technologie/Technologie'
 import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
+import Druk from "pages/Druk/Druk";
 
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
@@ -27,7 +28,7 @@ export default function App() {
             <Routes >
               <Route path='/' element={<Login />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/Print' element={<Print />} />
+              <Route path='/Print' element={<Druk />} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />
               <Route path='/Technologie' element={<Technologie />} />

@@ -18,6 +18,7 @@ import { TechnologyContextProvider } from "context/TechnologyContext";
 
 export default function App() {
 
+
   return (
     <BrowserRouter basename={''} >
       <SocketContextProvider>
@@ -40,6 +41,7 @@ export default function App() {
       </TechnologyContextProvider>
       </AppContextProvider>
       </SocketContextProvider>
+      
     </BrowserRouter>
   );
 }

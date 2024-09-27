@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import style from "./Druk.module.css";
 
-
+import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 
@@ -17,7 +17,11 @@ export default function Druk({ user, setUser }) {
   const wykonania = techContext.wykonania;
 
   const [selectedProcesor, setSelectedProcesor] = useState(1);
+  const [showWindowPortal, setShowWindowPortal] = useState(false);
 
+  function closeWindowPortal() {
+    setShowWindowPortal(false)
+  }
   async function fechZamowienia() {
 
     // const res = await axios.get(IP + "zamowienia");
@@ -56,12 +60,30 @@ export default function Druk({ user, setUser }) {
 
   return (
     <div className={style.container}>
+                {showWindowPortal && <DepWindow  closeWindowPortal={closeWindowPortal}>
+dddd
+    <p style={{ fontSize: "1rem", color : "black"}}>Even though I render in a different window, I share state!</p>
 
+     <button onClick={closeWindowPortal}>Close me!</button> */
+    </DepWindow>}
+    
+                <button
+            // onClick={() => openInNewTab("/BackStage")}
+            onClick={() =>  setShowWindowPortal(true)}
+
+            className={style.btn}
+          >
+            Nowe...
+          </button>
+<Procesor selectedProcesor={selectedProcesor} setSelectedProcesor={setSelectedProcesor}/>
       druk
       {grupaWykonan
             .filter((x) => x.procesor_id == selectedProcesor)
             .map((grup, i) => {
               return (
+          
+                 
+                
                 <tr
                   draggable
                   // onDragStart={() => handleDragStart(l.id)}
@@ -69,9 +91,11 @@ export default function Druk({ user, setUser }) {
                   key={grup.id + i}
                 >
                   <td>{grup.id}</td>
+                  <td>{grup.czas} min</td>
                   <td></td>
  
                 </tr>
+      
               );
             })}
       
@@ -82,5 +106,49 @@ export default function Druk({ user, setUser }) {
 
 
 
+function Procesor({ selectedProcesor,setSelectedProcesor}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesory = contextApp.procesory
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Procesor </label>
+      <select
+        className={style.select}
+        defaultValue={selectedProcesor}
+        onChange={(event) => {
+          setSelectedProcesor(event.target.value)
+  
+
+          // if (row.indeks == 0) {
+          //   setProdukty(
+          //     produkty.map((p) => {
+          //       if (p.id === row.produkt_id) {
+          //         return { ...p, oprawa: event.target.value };
+          //       } else {
+          //         return p;
+          //       }
+          //     })
+          //   );
+          // }
+        }}
+      >
+        {procesory
+        // .filter(x => x.grupa == rowProces.nazwa_id )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+const openInNewTab = (url) => {
+  window.open(url, "_blank", "noreferrer");
+};
 
 

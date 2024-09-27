@@ -437,7 +437,16 @@ export function createArkuszeFromElemenets(
         });
       })
 
+  new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
+  // console.log("czas:" , new_wykonania.filter(x=> x.grupa_id == 267).map(x => x.czas).reduce((a, b) => a + b, 0))
+  // console.log("czas:" , new_wykonania.filter(x=> x.grupa_id == 267).map(x => x.czas).reduce((a, b) => a + b, 0))
+      // new_grupa.map( ng => ng.czas+
+      //   new_wykonania.filter(x=> x.grupa_id == ng.id).czas
+      // )
+
+      // new_wykonania.forEach( nw => )
     }
+
     if(proc.nazwa_id==3){ // falcowanie
       new_grupy.push({
         id: proc.id,
@@ -482,9 +491,11 @@ export function createArkuszeFromElemenets(
     }
     
   })
-  setGrupaWykonan(new_grupy);
+  // setGrupaWykonan(new_grupy);
+  // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ));
+  setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng)}) ));
   setWykonania(new_wykonania)
-  console.log("wykonania: ",new_wykonania)
+
 }
 
 
@@ -513,4 +524,10 @@ const MaxIndeksOprawa = (value,oprawa_id) => {
     .map((f) => f.indeks)) + 1;
 
   return maxIndeks;
+};
+
+const SumaCzasow = (wykonania,grupa) => {
+  // sumuje wszystkie czasy z dowolnej grupy
+  let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  return suma;
 };

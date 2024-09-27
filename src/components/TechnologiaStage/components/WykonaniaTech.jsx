@@ -91,6 +91,7 @@ const GrupaRow = ({ rowProces }) => {
               className={style.grupa_container}>
                  <p style={{ fontSize: "1rem"}}>grupa id {rowGrupa.id} </p>  
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
+                 <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
@@ -307,6 +308,29 @@ function Stangrupy({ rowGrupa }) {
 }
 
 
+const CzasGrupy = ({ rowGrupa }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      
+      <label className={style.label}> Czas </label>
+      <input
+      disable
+        className={style.input}
+        value={rowGrupa.czas}
+        onChange={(e) => {
+          if (e.target.value == "" || reg_txt.test(e.target.value)) {
+            updateGrupaWykonan({
+              ...rowGrupa,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
 const PredkoscGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);

@@ -11,6 +11,7 @@ import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import RowWykonanie from "./RowWykonanie";
+import { zamienNaGodziny } from "actions/zamienNaGodziny";
 
 export default function WykonaniaTech() {
   return (
@@ -299,7 +300,7 @@ const CzasGrupy = ({ rowGrupa }) => {
       <input
       disable
         className={style.input}
-        value={rowGrupa.czas}
+        value={zamienNaGodziny(rowGrupa.czas)}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
             updateGrupaWykonan({

@@ -15,6 +15,7 @@ import { AppContext } from "context/AppContext";
 // import Rozwin from "./Rozwin";
 import style from "./RowWykonanie.module.css";
 import { reg_int } from "utils/initialvalue";
+import { zamienNaGodziny } from "actions/zamienNaGodziny";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 
@@ -77,7 +78,7 @@ const CzasWykoniania = ({ rowWykonanie }) => {
       <input
       disabled
         className={style.input}
-        value={rowWykonanie.czas}
+        value={zamienNaGodziny(rowWykonanie.czas)}
         onChange={(e) => {
 
 

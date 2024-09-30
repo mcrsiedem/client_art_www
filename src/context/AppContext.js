@@ -136,19 +136,24 @@ const _firma = [
   ];
 
   const _status_wykonania = [
-
     {
       id: 1,
+      nazwa: "Niedostępne"
+    },
+
+    {
+      id: 2,
       nazwa: "Oczekujące",
     },
     {
-      id: 2,
+      id: 3,
       nazwa: "W trakcie",
     },
     {
-      id: 3,
+      id: 4,
       nazwa: "Zakończone"
     },
+    
 
   ];
 

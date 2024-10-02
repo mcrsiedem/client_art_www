@@ -21,6 +21,7 @@ export default function Header({}){
      
             console.clear()
             console.log("Karta Technologiczna: ")
+            console.log("Dane: ",techContext.daneTech)
             console.log("Produkt: ",techContext.produktyTech)
             console.log("Elementy: ",techContext.elementyTech)
             console.log("Procesy elementów: ",techContext.procesyElementowTech)
@@ -40,6 +41,8 @@ export default function Header({}){
             
 
          }}>OK</button>
+
+         <button className={style.btn_zapis} onClick={()=>{ console.log("zapisz")}}>Zapisz</button>
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}
         </LeftPane>
 

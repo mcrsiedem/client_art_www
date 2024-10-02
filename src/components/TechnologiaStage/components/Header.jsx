@@ -42,18 +42,35 @@ export default function Header({}){
 
          }}>OK</button>
 
-         <button className={style.btn_zapis} onClick={()=>{ console.log("zapisz")}}>Zapisz</button>
+         
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}
         </LeftPane>
 
         <RightPane>
-          <IconNavigate className={style.btn} logo={IconClose} navi={"/Panel"} />
+          <ZapisBtn/>
+          <IconNavigate className={style.btn_x} logo={IconClose} navi={"/Panel"} />
         </RightPane>
 
       </header>
     );
 }
 
+const ZapisBtn = () =>{
+
+  const techContext = useContext(TechnologyContext);
+  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+  return(
+<button 
+disabled={isSaveButtonDisabled}
+className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+ onClick={()=>{ 
+  console.log("zapisz")
+  setSaveButtonDisabled(true);}
+  
+}>Zapisz</button>
+  )
+}
 const LeftPane =({children}) =>{
 
   return(

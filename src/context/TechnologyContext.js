@@ -8,7 +8,7 @@ import { useEffect,createContext,useState, useCallback } from "react";import { i
 
 export const TechnologyContext = createContext();
 export const TechnologyContextProvider = ({children})=>{
-
+     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
     const [technology, setTechnology] = useState(null); //lista technologii 
     const [showTechnologyStage, setShowTechnologyStage] = useState(false);
 
@@ -493,7 +493,8 @@ console.log(element)
                     selectedElementTechROW,setSelectedElementTechROW,
                     updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
                     updateRowProcesyElementowTech,
-                    updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie
+                    updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,
+                    isSaveButtonDisabled, setSaveButtonDisabled
                 }}
             >
                 {children}

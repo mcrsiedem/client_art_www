@@ -36,25 +36,44 @@
     padding-right: 10px;
 }
 
-.btn {
+.btn_x {
     width: 30px;
 }
 
-.btn_zapis{
-    width: 120px;
+.btn{
+    width: 150px;
     height: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(219, 219, 219);
+    border: 1.5px solid rgb(72, 72, 72);
     background-color: transparent;
-    box-shadow: none;
-    color:#dddddd;
-    border: none;
-    margin-left: 50px;
-    outline:  1px solid rgb(122, 122, 122);
     border-radius: 10px;
-    padding-left: 5px;
-    font-size: 0.9rem;
+    box-shadow: 3px 3px 3px rgb(29, 29, 29);
+    margin-right: 100px;
 }
 
 .btn_zapis:hover{
-    background-color: #383838;
+
 }
 
+.btn_disabled{
+    width: 125px;
+    height: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(129, 129, 129);
+    border: 1.5px solid rgb(72, 72, 72);
+    background-color: transparent;
+    border-radius: 10px;
+    margin-right: 100px;
+    /* box-shadow: 3px 3px 3px rgb(133, 133, 133); */
+  
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap:20px;
+  }

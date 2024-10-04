@@ -66,7 +66,8 @@ disabled={isSaveButtonDisabled}
 className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
  onClick={()=>{ 
   console.log("zapisz")
-  setSaveButtonDisabled(true);}
+  // setSaveButtonDisabled(true);
+}
   
 }>Zapisz</button>
   )

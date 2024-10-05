@@ -8,6 +8,7 @@ import { AppContext } from "context/AppContext";
 // import logoGrid from "../../../../assets/grid.svg";
 // import IconNavigate from "./IconNavigate";
 import IconClose from "assets/x.svg"
+import { saveTech } from "actions/saveTech";
 export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
@@ -60,12 +61,27 @@ const ZapisBtn = () =>{
   const techContext = useContext(TechnologyContext);
   const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
   const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+  const produktyTech = techContext.produktyTech;
+  const elementyTech = techContext.elementyTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const oprawaTech = techContext.oprawaTech;
+  const legi = techContext.legi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const arkusze = techContext.arkusze;
+  const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
+
   return(
 <button 
 disabled={isSaveButtonDisabled}
 className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
  onClick={()=>{ 
   console.log("zapisz")
+
+  saveTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania});
   // setSaveButtonDisabled(true);
 }
   

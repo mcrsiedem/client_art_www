@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
 import style from "./TechnologieStage.module.css";
-import Header from "components/TechnologiaStage/components/Header";
+import HeaderTech from "components/TechnologiaStage/components/HeaderTech";
 import DaneTech from "./components/DaneTech";
 import ProduktyTech from "./components/ProduktyTech";
 import ElementyTech from "./components/ElementyTech";
@@ -28,7 +28,7 @@ export default function TechnologiaStage() {
   if (showTechnologyStage) {
     return (
       <div className={style.container}>
-        <Header />
+        <HeaderTech />
 
         <DaneTech />
         <div className={style.main}>

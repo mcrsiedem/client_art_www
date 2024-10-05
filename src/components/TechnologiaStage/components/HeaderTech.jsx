@@ -65,6 +65,7 @@ const ZapisBtn = () =>{
   const daneTech = techContext.daneTech;
   const setDaneTech = techContext.setDaneTech;
   const produktyTech = techContext.produktyTech;
+  const setProduktyTech = techContext.setProduktyTech;
   const elementyTech = techContext.elementyTech;
   const fragmentyTech = techContext.fragmentyTech;
   const oprawaTech = techContext.oprawaTech;
@@ -81,7 +82,7 @@ className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
  onClick={()=>{ 
   console.log("zapisz")
 
-  saveTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania});
+  saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania});
   // setSaveButtonDisabled(true);
 }
   

@@ -5,29 +5,32 @@ import { IP } from "../utils/Host";
 
 
 
-export async function saveTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania}){
-//daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania
-let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
-    // let produktyEdit = JSON.parse(JSON.stringify(produkty))
-    // let elementyEdit = JSON.parse(JSON.stringify(elementy))
-    // let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
-    // let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
-    // let pakowanieEdit = JSON.parse(JSON.stringify(pakowanie))
-    // let procesyElementowEdit = JSON.parse(JSON.stringify(procesyElementow))
-            
+export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania}){
+// let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
 
-    let savedData  = await goSaveDataTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania})
-     daneTechEdit = savedData.daneTech
-    // produktyEdit = savedData.produktyEdit
-    // elementyEdit = savedData.elementyEdit
-    // fragmentyEdit = savedOrder.fragmentyEdit
-    // oprawaEdit = savedOrder.oprawaEdit
-    // daneZamowienia = savedOrder.daneZamowienia
-    // pakowanieEdit = savedOrder.pakowanieEdit
-    // procesyElementowEdit = savedOrder.procesyElementowEdit
+  let savedData  = await goSaveDataTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania})
+
+  //stany po dodaniu technologia_id
+  let daneTechEdit = savedData.daneTech
+
+  let produktyTechEdit =savedData.produktyTech
+  let elementyTechEdit =savedData.elementyTech
+  let fragmentyTechEdit =savedData.fragmentyTech
+  let oprawaTechEdit =savedData.oprawaTech
+  let legiEdit =savedData.legi
+  let legiFragmentyEdit =savedData.legiFragmenty 
+  let arkuszeEdit =savedData.arkusze 
+  let grupaWykonanEdit =savedData.grupaWykonan 
+  let wykonaniaEdit =savedData.wykonania 
+
+// console.log("legi tech po zapisie: ", legiEdit )
+
+
+  setProduktyTech(produktyTechEdit);
+  setDaneTech(daneTechEdit);
+
  
- 
-    // let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit});
+     let savedProducts = await goSaveRest({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit});
 
     // elementyEdit = savedProducts.elementyEdit
     // fragmentyEdit = savedProducts.fragmentyEdit
@@ -59,7 +62,7 @@ let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
     //  setProcesyElementow(procesyElementowEdit)
 
     //  refreshZamowienia();
-    setDaneTech(daneTechEdit);
+
 
 }
 
@@ -93,370 +96,294 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
         firma_id: daneTech.firma_id,
         klient_id: daneTech.klient_id,
         tytul: daneTech.tytul,
-        // data_przyjecia: daneTech.data_przyjecia,
-        // data_materialow: daneTech.data_materialow,
-        // data_spedycji: daneTech.data_spedycji,
-        // opiekun_id: daneTech.opiekun_id,
-        // user: DecodeToken(sessionStorage.getItem("token")).id,
-        // stan: daneTech.stan,
-        // status: daneTech.status,
-        // rodzaj: daneTech.rodzaj, 
-        // cena: daneTech.cena,
-        // waluta_id: daneTech.waluta_id,
-        // vat_id: daneTech.vat_id,
-        // uwagi: daneTech.uwagi,
-        // przedplata: daneTech.przedplata,
-        // termin_platnosci: daneTech.termin_platnosci,
-        // fsc: daneTech.fsc,
-
         final: 1 // ostateczna wersja zamówienia, którą widać na liście
       })
       
     let technologia_id_final = res.data[0].insertId;
     let prime_id = res.data[1].prime_id;
 
-    
-      // pierwszy zapis z nadaniem prime_id
-      // if(prime_id != 1){
-            
-      //           produktyEdit = produktyEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
+      // dodaje do wszystkiego id techologi
+      produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      oprawaTech = oprawaTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      legi = legi.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      arkusze = arkusze.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      wykonania = wykonania.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
 
-
-      //           elementyEdit = elementyEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
-
-      //           fragmentyEdit = fragmentyEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
-
-      //           oprawaEdit = oprawaEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
-
-      //           pakowanieEdit = pakowanieEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
-
-      //           procesyElementowEdit = procesyElementowEdit.map((obj) => {
-      //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-      //               ...obj, zamowienie_id : zamowienie_id, prime_id
-      //             } }else {return obj} 
-      //           })
-
-
-      //           daneZamowienia.id = zamowienie_id
-      //           daneZamowienia.prime_id = prime_id
-      // }
-
-
-
-            // kolejne zapisy bez zmiany prime_id
-    //         if(prime_id == 1){
-            
-    //           produktyEdit = produktyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-
-    //           elementyEdit = elementyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-    //           fragmentyEdit = fragmentyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-    //           oprawaEdit = oprawaEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-    //           pakowanieEdit = pakowanieEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-    //           procesyElementowEdit = procesyElementowEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id
-    //             } }else {return obj} 
-    //           })
-
-
-    //           daneZamowienia.id = zamowienie_id
-    // }
 
     daneTech.prime_id = prime_id
     daneTech.id = technologia_id_final
 
-        resolve({technologia_id_final,daneTech})
+        resolve({technologia_id_final,daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania})
 
     })
 }
 
 
-const saveProducts2 = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit }) => {
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let produkt of produktyEdit) {
-      promises.push(
-        axios
-          .post(IP + "produkty", {
-            zamowienie_id: produkt.zamowienie_id,
-            typ: produkt.typ,
-            nazwa: produkt.nazwa,
-            wersja: produkt.wersja,
-            ilosc_stron: produkt.ilosc_stron,
-            format_x: produkt.format_x,
-            format_y: produkt.format_y,
-            oprawa: produkt.oprawa,
-            naklad: produkt.naklad,
-            indeks: produkt.indeks,
-            uwagi: produkt.uwagi,
-          })
+//----------------------------------------------------------------------------------
 
-          .then((response) => {
+const goSaveRest = ({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit}) =>{
 
-            let produkt_id = response.data.insertId;
+  return new Promise(async(resolve,reject)=>{
+
+      
+  let res = await axios.post(IP + "technologie_rest", [produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit])
+    
+  let technologia_id_final = res.data[0].insertId;
+  // let prime_id = res.data[1].prime_id;
+
+
+      resolve({technologia_id_final})
+
+  })
+}
+
+//-----------------------
+
+// const saveProducts2 = ({ produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEditt }) => {
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let produkt of produktyEdit) {
+//       promises.push(
+//         axios
+//           .post(IP + "produkty", {
+//             zamowienie_id: produkt.zamowienie_id,
+//             typ: produkt.typ,
+//             nazwa: produkt.nazwa,
+//             wersja: produkt.wersja,
+//             ilosc_stron: produkt.ilosc_stron,
+//             format_x: produkt.format_x,
+//             format_y: produkt.format_y,
+//             oprawa: produkt.oprawa,
+//             naklad: produkt.naklad,
+//             indeks: produkt.indeks,
+//             uwagi: produkt.uwagi,
+//           })
+
+//           .then((response) => {
+
+//             let produkt_id = response.data.insertId;
    
-            elementyEdit = elementyEdit.map((obj) => {
-              if (obj.produkt_id == produkt.id) {return {
-                ...obj, produkt_id : produkt_id
-              } }else {return obj} 
-            })
+//             elementyEdit = elementyEdit.map((obj) => {
+//               if (obj.produkt_id == produkt.id) {return {
+//                 ...obj, produkt_id : produkt_id
+//               } }else {return obj} 
+//             })
 
-            fragmentyEdit = fragmentyEdit.map((obj) => {
-              if (obj.produkt_id == produkt.id) {return {
-                ...obj, produkt_id : produkt_id
-              } }else {return obj} 
-            })
+//             fragmentyEdit = fragmentyEdit.map((obj) => {
+//               if (obj.produkt_id == produkt.id) {return {
+//                 ...obj, produkt_id : produkt_id
+//               } }else {return obj} 
+//             })
 
-            oprawaEdit = oprawaEdit.map((obj) => {
-              if (obj.produkt_id == produkt.id) {return {
-                ...obj, produkt_id : produkt_id
-              } }else {return obj} 
-            })
+//             oprawaEdit = oprawaEdit.map((obj) => {
+//               if (obj.produkt_id == produkt.id) {return {
+//                 ...obj, produkt_id : produkt_id
+//               } }else {return obj} 
+//             })
 
-            pakowanieEdit = pakowanieEdit.map((obj) => {
-              if (obj.produkt_id == produkt.id) {return {
-                ...obj, produkt_id : produkt_id
-              } }else {return obj} 
-            })
+//             pakowanieEdit = pakowanieEdit.map((obj) => {
+//               if (obj.produkt_id == produkt.id) {return {
+//                 ...obj, produkt_id : produkt_id
+//               } }else {return obj} 
+//             })
 
-            procesyElementowEdit = procesyElementowEdit.map((obj) => {
-              if (obj.produkt_id == produkt.id) {return {
-                ...obj, produkt_id : produkt_id
-              } }else {return obj} 
-            })
+//             procesyElementowEdit = procesyElementowEdit.map((obj) => {
+//               if (obj.produkt_id == produkt.id) {return {
+//                 ...obj, produkt_id : produkt_id
+//               } }else {return obj} 
+//             })
 
-            produkt.id = response.data.insertId;
-      //      produkt.zamowienie_id = zamowienie_id;
-          })
-      );
-
-
-    }
-
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit}));
-  });
-};
-
-const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit }) => {
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let element of elementyEdit) {
-      promises.push(axios.post(IP + "elementy", {
-        zamowienie_id: element.zamowienie_id,
-        produkt_id: element.produkt_id,
-        nazwa: element.nazwa,
-        typ: element.typ,
-        naklad: element.naklad,
-        strony: element.ilosc_stron,
-        kolory: element.kolory,
-        format_x: element.format_x,
-        format_y: element.format_y,
-        papier_id: element.papier_id,
-        gramatura_id: element.gramatura_id,
-        papier_info: element.papier_info,
-        uwagi: element.uwagi,
-        indeks: element.indeks,
-          })
-
-          .then((response) => {
-
-            let new_element_id = response.data.insertId;
-
-            fragmentyEdit = fragmentyEdit.map((obj) => {
-              if (obj.element_id == element.id) {return {
-                ...obj, element_id : new_element_id
-              } }else {return obj} 
-            })
-
-            procesyElementowEdit = procesyElementowEdit.map((obj) => {
-              if (obj.element_id == element.id) {return {
-                ...obj, element_id : new_element_id
-              } }else {return obj} 
-            })
-
-            element.id = new_element_id
-      //      produkt.zamowienie_id = zamowienie_id;
-          })
-      );
+//             produkt.id = response.data.insertId;
+//       //      produkt.zamowienie_id = zamowienie_id;
+//           })
+//       );
 
 
-    }
+//     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit}));
-  });
-};
+//     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit}));
+//   });
+// };
 
-const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
-  //oprawa
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let oprawa of oprawaEdit) {
-      promises.push(axios.post(IP + "oprawa", {
-                           zamowienie_id: oprawa.zamowienie_id,
-                           produkt_id: oprawa.produkt_id,
-                           oprawa: oprawa.oprawa,
-                           naklad: oprawa.naklad,
-                           bok_oprawy: oprawa.bok_oprawy,
-                           uwagi: oprawa.uwagi,
-                           wersja: oprawa.wersja,
-                           data_spedycji: oprawa.data_spedycji,
-                           data_czystodrukow: oprawa.data_czystodrukow,
-                           indeks: oprawa.indeks,
-          })
+// const saveElements = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit }) => {
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let element of elementyEdit) {
+//       promises.push(axios.post(IP + "elementy", {
+//         zamowienie_id: element.zamowienie_id,
+//         produkt_id: element.produkt_id,
+//         nazwa: element.nazwa,
+//         typ: element.typ,
+//         naklad: element.naklad,
+//         strony: element.ilosc_stron,
+//         kolory: element.kolory,
+//         format_x: element.format_x,
+//         format_y: element.format_y,
+//         papier_id: element.papier_id,
+//         gramatura_id: element.gramatura_id,
+//         papier_info: element.papier_info,
+//         uwagi: element.uwagi,
+//         indeks: element.indeks,
+//           })
 
-          .then((response) => {
+//           .then((response) => {
 
-            let new_oprawa_id = response.data.insertId;
+//             let new_element_id = response.data.insertId;
 
-            fragmentyEdit = fragmentyEdit.map((obj) => {
-              if (obj.oprawa_id === oprawa.id) {return {
-                ...obj, oprawa_id : new_oprawa_id
-              } }else {return obj} 
-            })
+//             fragmentyEdit = fragmentyEdit.map((obj) => {
+//               if (obj.element_id == element.id) {return {
+//                 ...obj, element_id : new_element_id
+//               } }else {return obj} 
+//             })
+
+//             procesyElementowEdit = procesyElementowEdit.map((obj) => {
+//               if (obj.element_id == element.id) {return {
+//                 ...obj, element_id : new_element_id
+//               } }else {return obj} 
+//             })
+
+//             element.id = new_element_id
+//       //      produkt.zamowienie_id = zamowienie_id;
+//           })
+//       );
+
+
+//     }
+
+//     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit}));
+//   });
+// };
+
+// const saveBindings = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+//   //oprawa
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let oprawa of oprawaEdit) {
+//       promises.push(axios.post(IP + "oprawa", {
+//                            zamowienie_id: oprawa.zamowienie_id,
+//                            produkt_id: oprawa.produkt_id,
+//                            oprawa: oprawa.oprawa,
+//                            naklad: oprawa.naklad,
+//                            bok_oprawy: oprawa.bok_oprawy,
+//                            uwagi: oprawa.uwagi,
+//                            wersja: oprawa.wersja,
+//                            data_spedycji: oprawa.data_spedycji,
+//                            data_czystodrukow: oprawa.data_czystodrukow,
+//                            indeks: oprawa.indeks,
+//           })
+
+//           .then((response) => {
+
+//             let new_oprawa_id = response.data.insertId;
+
+//             fragmentyEdit = fragmentyEdit.map((obj) => {
+//               if (obj.oprawa_id === oprawa.id) {return {
+//                 ...obj, oprawa_id : new_oprawa_id
+//               } }else {return obj} 
+//             })
 
             
-            oprawa.id = new_oprawa_id
-          })
+//             oprawa.id = new_oprawa_id
+//           })
           
-          );
+//           );
 
-    }
+//     }
 
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
-  });
-};
-
-
-const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
-  //oprawa
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let fragment of fragmentyEdit) {
-      promises.push(axios.post(IP + "fragmenty", {
-        naklad: fragment.naklad,
-        ilosc_stron: fragment.ilosc_stron,
-        info: fragment.info,
-        indeks: fragment.indeks,
-        zamowienie_id: fragment.zamowienie_id,
-        element_id: fragment.element_id,
-        produkt_id: fragment.produkt_id,
-        typ: fragment.typ,
-        oprawa_id: fragment.oprawa_id,
-        indeks: fragment.indeks,
-        wersja: fragment.wersja
-
-          })
-
-          .then((response) => {
-            let new_fragment_id = response.data.insertId;
-            fragment.id = new_fragment_id
-          })
-          );
-    }
-
-    Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
-  });
-};
-
-const savePacking = ({ pakowanieEdit }) => {
-  //pakowanie
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let paczka of pakowanieEdit) {
-      promises.push(axios.post(IP + "pakowanie", {
-        zamowienie_id: paczka.zamowienie_id,
-        produkt_id: paczka.produkt_id,
-        nazwa: paczka.nazwa,
-        naklad: paczka.naklad,
-        uwagi: paczka.uwagi,
-        rodzaj_pakowania: paczka.rodzaj_pakowania,
-        sztuki_w_paczce: paczka.sztuki_w_paczce,
-        indeks: paczka.indeks
-
-          })
-
-          .then((response) => {
-            let new_paczka_id = response.data.insertId;
-            paczka.id = new_paczka_id
-          })
-          );
-    }
-    Promise.all(promises).then(() => resolve({pakowanieEdit}));
-  });
-};
+//     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+//   });
+// };
 
 
-const saveProcess = ({ procesyElementowEdit }) => {
-  //pakowanie
-  return new Promise((resolve, reject) => {
-    let promises = [];
-    for (let process of procesyElementowEdit) {
-      promises.push(axios.post(IP + "procesyElementow", {
-        zamowienie_id: process.zamowienie_id,
-        produkt_id: process.produkt_id,
-        element_id: process.element_id,
-        proces_id: process.proces_id,
-        nazwa_id: process.nazwa_id,
-        front_ilosc: process.front_ilosc,
-        back_ilosc: process.back_ilosc,
-        front_kolor: process.front_kolor,
-        back_kolor: process.back_kolor,
-        info: process.info,
-        indeks: process.indeks
+// const saveFragments = ({ produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit }) => {
+//   //oprawa
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let fragment of fragmentyEdit) {
+//       promises.push(axios.post(IP + "fragmenty", {
+//         naklad: fragment.naklad,
+//         ilosc_stron: fragment.ilosc_stron,
+//         info: fragment.info,
+//         indeks: fragment.indeks,
+//         zamowienie_id: fragment.zamowienie_id,
+//         element_id: fragment.element_id,
+//         produkt_id: fragment.produkt_id,
+//         typ: fragment.typ,
+//         oprawa_id: fragment.oprawa_id,
+//         indeks: fragment.indeks,
+//         wersja: fragment.wersja
 
-          })
+//           })
 
-          .then((response) => {
-            let new_proces_id = response.data.insertId;
-            process.id = new_proces_id
-          })
-          );
-    }
-    Promise.all(promises).then(() => resolve({procesyElementowEdit}));
-  });
-};
+//           .then((response) => {
+//             let new_fragment_id = response.data.insertId;
+//             fragment.id = new_fragment_id
+//           })
+//           );
+//     }
+
+//     Promise.all(promises).then(() => resolve({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit}));
+//   });
+// };
+
+// const savePacking = ({ pakowanieEdit }) => {
+//   //pakowanie
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let paczka of pakowanieEdit) {
+//       promises.push(axios.post(IP + "pakowanie", {
+//         zamowienie_id: paczka.zamowienie_id,
+//         produkt_id: paczka.produkt_id,
+//         nazwa: paczka.nazwa,
+//         naklad: paczka.naklad,
+//         uwagi: paczka.uwagi,
+//         rodzaj_pakowania: paczka.rodzaj_pakowania,
+//         sztuki_w_paczce: paczka.sztuki_w_paczce,
+//         indeks: paczka.indeks
+
+//           })
+
+//           .then((response) => {
+//             let new_paczka_id = response.data.insertId;
+//             paczka.id = new_paczka_id
+//           })
+//           );
+//     }
+//     Promise.all(promises).then(() => resolve({pakowanieEdit}));
+//   });
+// };
+
+
+// const saveProcess = ({ procesyElementowEdit }) => {
+//   //pakowanie
+//   return new Promise((resolve, reject) => {
+//     let promises = [];
+//     for (let process of procesyElementowEdit) {
+//       promises.push(axios.post(IP + "procesyElementow", {
+//         zamowienie_id: process.zamowienie_id,
+//         produkt_id: process.produkt_id,
+//         element_id: process.element_id,
+//         proces_id: process.proces_id,
+//         nazwa_id: process.nazwa_id,
+//         front_ilosc: process.front_ilosc,
+//         back_ilosc: process.back_ilosc,
+//         front_kolor: process.front_kolor,
+//         back_kolor: process.back_kolor,
+//         info: process.info,
+//         indeks: process.indeks
+
+//           })
+
+//           .then((response) => {
+//             let new_proces_id = response.data.insertId;
+//             process.id = new_proces_id
+//           })
+//           );
+//     }
+//     Promise.all(promises).then(() => resolve({procesyElementowEdit}));
+//   });
+// };

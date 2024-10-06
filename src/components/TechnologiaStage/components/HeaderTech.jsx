@@ -22,16 +22,16 @@ export default function Header({}){
      
             console.clear()
             console.log("Karta Technologiczna: ")
-            console.log("Dane: ",techContext.daneTech)
-            console.log("Produkt: ",techContext.produktyTech)
-            console.log("Elementy: ",techContext.elementyTech)
+            console.log("Dane Tech: ",techContext.daneTech)
+            console.log("Produkt Tech: ",techContext.produktyTech)
+            console.log("Elementy Tech: ",techContext.elementyTech)
             console.log("Procesy elementów: ",techContext.procesyElementowTech)
             console.log("Arkusze: ",techContext.arkusze)
             console.log("Legi: ",techContext.legi)
-            console.log("Fragmenty leg: ",techContext.legiFragmenty)
-            console.log("Grupy wykonan: ",techContext.grupaWykonan)
-            console.log("Wykonania: ",techContext.wykonania)
-            console.log("procesyElementowTech: ",techContext.procesyElementowTech)
+            console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
+            console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
+            console.log("Wykonania tech: ",techContext.wykonania)
+    
 
            
             // console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)

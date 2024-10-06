@@ -6,8 +6,8 @@ import { AppContext } from "context/AppContext";
 import { getTechnology } from "actions/getTechnolgy";
 export default function TechnologiaTable(){
   const techContext = useContext(TechnologyContext);
-  // const technology = TechnologyContext.technology;
-  // const setTechnology = TechnologyContext.setTechnology;
+  const technology = techContext.technology;
+  const setTechnology = techContext.setTechnology;
   // const updateTechnology = TechnologyContext.updateTechnology;
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const test = techContext.test;
@@ -20,7 +20,7 @@ export default function TechnologiaTable(){
       //  fetchTechnologie();
       // const socket = io.connect("http://localhost:3002")
       // console.log(technology)
-      // getTechnology(setTechnology)
+       getTechnology(setTechnology)
     }
     return () => {
       effectRan.current = true;
@@ -42,19 +42,18 @@ return(
       </tr>
     </thead>
     <tbody>
-      <tr             onDoubleClick={(node, event) => {
+      {/* <tr             onDoubleClick={(node, event) => {
         setShowTechnologyStage(true)
       techContext.setRowTechnologia({id: 2})  // zamienić na row
-              // setActiveRowId(row.id)
-              // setStageTechnologiaVisible(true);
+
             }}>
          <td>1</td>
     <td>1</td>
     <td>2024</td>
       </tr>
-   
+    */}
 
-      {/* {technology.map((row) => {
+      {technology.map((row) => {
         return (
           <tr 
             key={row.id}
@@ -75,7 +74,7 @@ return(
 
           </tr>
         );
-      })} */}
+      })}
     </tbody>
   </table>
 )

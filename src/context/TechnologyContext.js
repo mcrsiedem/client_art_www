@@ -455,6 +455,30 @@ console.log(element)
      setProcesyElementowTech(res.data[6])
     //  setShowTechnologyStage(true)
 }
+
+async function fechparametryTechnologii(idZamowienia,zamowienie_prime_id) {
+
+  const res = await axios.get(IP + "technologie_parametry/"+idZamowienia+"/"+zamowienie_prime_id);
+
+  // setDane(res.data[0][0])
+  // setProdukty(res.data[1])
+  // setElementy(res.data[2])
+  // setFragmenty(res.data[3])
+  // setOprawa(res.data[4])
+  // setProcesyElementow(res.data[6])
+
+ //  setDaneTech(res.data[0][0].map(x=> {return {...x, id:1}}))
+ // console.log("dane",res.data[0][0])
+ 
+  setDaneTech(res.data[0][0]) // kopiując dane z zamówienia do technologi nadpisuje id:1 
+  setProduktyTech(res.data[1])
+  setElementyTech(res.data[2])
+  setFragmentyTech(res.data[3])
+  setOprawaTech(res.data[4])
+  setProcesyElementowTech(res.data[6])
+ //  setShowTechnologyStage(true)
+}
+
     
     return  <TechnologyContext.Provider 
                 value={{

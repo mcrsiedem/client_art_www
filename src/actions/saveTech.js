@@ -5,10 +5,10 @@ import { IP } from "../utils/Host";
 
 
 
-export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania}){
+export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}){
 // let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
 
-  let savedData  = await goSaveDataTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania})
+  let savedData  = await goSaveDataTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
 
   //stany po dodaniu technologia_id
   let daneTechEdit = savedData.daneTech
@@ -22,6 +22,7 @@ export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTec
   let arkuszeEdit =savedData.arkusze 
   let grupaWykonanEdit =savedData.grupaWykonan 
   let wykonaniaEdit =savedData.wykonania 
+  let procesyElementowTechEdit =savedData.procesyElementowTech 
 
 // console.log("legi tech po zapisie: ", legiEdit )
 
@@ -30,7 +31,7 @@ export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTec
   setDaneTech(daneTechEdit);
 
  
-     let savedProducts = await goSaveRest({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit});
+     let savedProducts = await goSaveRest({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
 
     // elementyEdit = savedProducts.elementyEdit
     // fragmentyEdit = savedProducts.fragmentyEdit
@@ -71,7 +72,7 @@ export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTec
 
 //----------------------------------------------------------------------------------
 
-const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,saveAs}) =>{
+const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech,saveAs}) =>{
 
     return new Promise(async(resolve,reject)=>{
 
@@ -112,12 +113,14 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
       arkusze = arkusze.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
       grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
       wykonania = wykonania.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+      procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
+ 
 
 
     daneTech.prime_id = prime_id
     daneTech.id = technologia_id_final
 
-        resolve({technologia_id_final,daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania})
+        resolve({technologia_id_final,daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
 
     })
 }
@@ -125,12 +128,12 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
 
 //----------------------------------------------------------------------------------
 
-const goSaveRest = ({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit}) =>{
+const goSaveRest = ({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit}) =>{
 
   return new Promise(async(resolve,reject)=>{
 
       
-  let res = await axios.post(IP + "technologie_rest", [produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit])
+  let res = await axios.post(IP + "technologie_rest", [produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit])
     
   let technologia_id_final = res.data[0].insertId;
   // let prime_id = res.data[1].prime_id;

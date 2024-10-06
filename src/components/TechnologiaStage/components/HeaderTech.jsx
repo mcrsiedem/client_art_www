@@ -25,6 +25,7 @@ export default function Header({}){
             console.log("Dane Tech: ",techContext.daneTech)
             console.log("Produkt Tech: ",techContext.produktyTech)
             console.log("Elementy Tech: ",techContext.elementyTech)
+            console.log("Fragmenty Tech: ",techContext.fragmentyTech)
             console.log("Procesy elementów: ",techContext.procesyElementowTech)
             console.log("Arkusze: ",techContext.arkusze)
             console.log("Legi: ",techContext.legi)
@@ -74,6 +75,8 @@ const ZapisBtn = () =>{
   const arkusze = techContext.arkusze;
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;
+  const procesyElementowTech = techContext.procesyElementowTech;
+
 
   return(
 <button 
@@ -82,7 +85,7 @@ className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
  onClick={()=>{ 
   console.log("zapisz")
 
-  saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania});
+  saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech});
   // setSaveButtonDisabled(true);
 }
   

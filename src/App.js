@@ -7,6 +7,7 @@ import Technologie from './pages/Technologie/Technologie'
 import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
+import Info2 from "pages/Info/Info2";
 import Druk from "pages/Druk/Druk";
 
 import { BrowserRouter,Routes,Route} from "react-router-dom";
@@ -35,6 +36,7 @@ export default function App() {
               <Route path='/Technologie' element={<Technologie />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/info' element={<Info />} />
+              <Route path='/info2' element={<Info2 />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

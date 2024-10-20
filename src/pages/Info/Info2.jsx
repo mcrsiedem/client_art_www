@@ -1,8 +1,8 @@
-import style from "./Info.module.css";
+import style from "./Info2.module.css";
 import { useTest } from "hooks/useTest";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-export default function Info() {
+export default function Info2() {
   const [value, setValue] = useState("wartosc domyslna");
 
   const [test, togle] = useTest();

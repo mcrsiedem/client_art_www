@@ -39,27 +39,25 @@ function Panel({user,setUser}){
                 </div>
                         <div className={style.kafleContainer} >
 
-                                <div className={style.row}>
                                         <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
                                         <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }>Technologie</div>
                                         <div className={style.kafle} >CTP</div>
-                                </div>
-
-                                <div className={style.row}>
                                         <div className={style.kafle} onClick={() => { navigate("/Print") }} >Druk</div> 
                                         <div className={style.kafle} >Falcowanie</div>
                                         <div className={style.kafle} >Oprawa</div>
-                                        
-                                </div>
-
-                                <div className={style.row}>
                                         <div className={style.kafle} >Uszlachetnianie</div>
                                         <div className={style.kafle} >Magazyn</div>
                                         <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div>
+                                        <div className={style.kafle} >Ustawienia</div>
+                                        <div className={style.kafle} >Historia</div>
                                         
-                                </div>
+              
                         
                         </div>
+
+
+        
+                        
     
         </div>
     </>);

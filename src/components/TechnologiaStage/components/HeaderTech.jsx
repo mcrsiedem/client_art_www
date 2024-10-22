@@ -9,6 +9,7 @@ import { AppContext } from "context/AppContext";
 // import IconNavigate from "./IconNavigate";
 import IconClose from "assets/x.svg"
 import { saveTech } from "actions/saveTech";
+import { todayPlusDni } from "actions/todayPlusDni";
 export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
@@ -20,25 +21,22 @@ export default function Header({}){
          {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
          <p>Karta technologiczna...  {techContext.dane?.id}</p> <button onClick={()=>{
      
-            console.clear()
-            console.log("Karta Technologiczna: ")
-            console.log("Dane Tech: ",techContext.daneTech)
-            console.log("Produkt Tech: ",techContext.produktyTech)
-            console.log("Elementy Tech: ",techContext.elementyTech)
-            console.log("Fragmenty Tech: ",techContext.fragmentyTech)
-            console.log("Procesy elementów: ",techContext.procesyElementowTech)
-            console.log("Arkusze: ",techContext.arkusze)
-            console.log("Legi: ",techContext.legi)
-            console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
-            console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
-            console.log("Wykonania tech: ",techContext.wykonania)
+            // console.clear()
+            // console.log("Karta Technologiczna: ")
+            // console.log("Dane Tech: ",techContext.daneTech)
+            // console.log("Produkt Tech: ",techContext.produktyTech)
+            // console.log("Elementy Tech: ",techContext.elementyTech)
+            // console.log("Fragmenty Tech: ",techContext.fragmentyTech)
+            // console.log("Procesy elementów: ",techContext.procesyElementowTech)
+            // console.log("Arkusze: ",techContext.arkusze)
+            // console.log("Legi: ",techContext.legi)
+            // console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
+            // console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
+            // console.log("Wykonania tech: ",techContext.wykonania)
     
-
+console.log("Data: "+ todayPlusDni(5))
            
-            // console.log("Procesy Elementow Tech: ",techContext.procesyElementowTech)
-            // console.log("Procesy Elementow Tech Temporary: ",techContext.procesyElementowTechTemmporary)
-            // console.log("Fragmenty Elementow Tech Temporary: ",techContext.fragmentyTech)
-            // console.log("Fragmenty leg Tech Temporary: ",techContext.legiFragmenty)
+
 
             
 

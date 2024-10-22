@@ -1,4 +1,5 @@
 import { today } from "actions/today";
+import { todayPlusDni } from "actions/todayPlusDni";
 import DecodeToken from "pages/Login/DecodeToken";
 
 const reg_txt = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
@@ -51,7 +52,7 @@ const initialDane = {
   tytul: "Tytuł zamówienia",
   data_przyjecia: today(),
   data_materialow: today(),
-  data_spedycji: today(),
+  data_spedycji: todayPlusDni(5),
   stan: 0,
   status: 0,
   rodzaj: 1,

@@ -63,7 +63,7 @@ margin-right: 250px;
   gap:40px
 }
 
-@media only screen and (max-width: 800px) {
+@media  screen and (max-width: 800px) {
 
     .kafleContainer {
         background-color: white;
@@ -79,15 +79,15 @@ margin-right: 250px;
 
 
 
- @media only screen and (width >= 2000px) {
+ @media  screen and (width >= 2200px) {
 
     .kafleContainer {
         background-color: white;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         margin: 80px;
-        margin-left: 650px;
-        margin-right: 650px;
+        margin-left: 600px;
+        margin-right: 600px;
         justify-content: center;
         gap: 40px
     }

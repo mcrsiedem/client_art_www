@@ -36,13 +36,21 @@ export default function TechnologiaStage() {
           <ElementyTech />
           <IntroligatorniaTech />
          
-          <div className={style.container_legi_arkusze}>
-            <WykonaniaTech />
-          </div>
+              <div className={style.container_legi_arkusze}>
+                <WykonaniaTech />
+              </div>
         </div>
+
+
+
+
         {showElementyTechProcesyInsert && (
           <ProcesElementTech procesyElementowTech={procesyElementowTech} />
         )}
+
+
+
+
       </div>
     );
   }

@@ -34,7 +34,7 @@ export default function Header({}){
             // console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
             // console.log("Wykonania tech: ",techContext.wykonania)
     
-console.log("Data: "+ todayPlusDni(5))
+// console.log("Data: "+ todayPlusDni(5))
            
 
 

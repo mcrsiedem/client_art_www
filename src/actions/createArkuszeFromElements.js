@@ -39,7 +39,8 @@ export function createArkuszeFromElemenets(
     produkt_id:1,
     technologia_id:1,
     zamowienie_id:1,
-    maszyna_id:1
+    maszyna_id:1,
+    uwagi: ""
 
   }
 
@@ -69,6 +70,7 @@ export function createArkuszeFromElemenets(
       element_id: row.id,
       ilosc_stron: row.ilosc_stron,
       naklad: row.naklad,
+      uwagi: ""
     };
 
 
@@ -410,15 +412,17 @@ export function createArkuszeFromElemenets(
         id: proc.id,
         indeks: i + 1,
         nazwa: proc.nazwa,
-        poczatek: 1,
+        poczatek: "2024-10-30 10:00:00",
         czas: 1,
-        koniec: 1,
+        koniec: "2024-10-30 11:00:00",
         procesor_id:proc.procesor_domyslny,
         narzad: proc.narzad,
         predkosc: proc.predkosc,
         proces_id: proc.id,
         mnoznik: proc.mnoznik,
-        status:1
+        status:1,
+        stan:1,
+        uwagi: ""
       });
 
       new_arkusze
@@ -432,16 +436,18 @@ export function createArkuszeFromElemenets(
           arkusz_id: a.id,
           proces_id: proc.id,
           typ_elementu: a.typ_elementu,
-          poczatek: 1,
+          poczatek: "2024-10-30 10:00:00",
           czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10),
-          koniec: 1,
+          koniec: "2024-10-30 11:00:00",
           procesor_id:proc.procesor_domyslny,
           grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad,
           mnoznik: proc.mnoznik,
-          status:1
+          status:1,
+          stan:1,
+          uwagi: ""
         });
       })
 
@@ -460,15 +466,17 @@ export function createArkuszeFromElemenets(
         id: proc.id,
         indeks: i + 1,
         nazwa: proc.nazwa,
-        poczatek: 1,
+        poczatek: "2024-10-30 10:00:00",
         czas: 1,
-        koniec: 1,
+        koniec: "2024-10-30 11:00:00",
         procesor_id:proc.procesor_domyslny,
         narzad: proc.narzad,
         predkosc: proc.predkosc,
         proces_id: proc.id,
         mnoznik: proc.mnoznik,
-        status:1
+        status:1,
+        stan:1,
+        uwagi: ""
       });
 
       new_legi
@@ -482,16 +490,18 @@ export function createArkuszeFromElemenets(
           arkusz_id: a.id,
           proces_id: proc.id,
           typ_elementu: a.typ_elementu,
-          poczatek: 1,
+          poczatek: "2024-10-30 10:00:00",
           czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10) ,
-          koniec: 1,
+          koniec: "2024-10-30 11:00:00",
           procesor_id:proc.procesor_domyslny,
           grupa_id:proc.id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad,
           mnoznik: proc.mnoznik,
-          status:1
+          status:1,
+          stan:1,
+          uwagi: ""
         });
       })
 

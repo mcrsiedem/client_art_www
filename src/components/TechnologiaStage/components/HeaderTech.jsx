@@ -27,6 +27,7 @@ export default function Header({}){
             console.log("Produkt Tech: ",techContext.produktyTech)
             console.log("Elementy Tech: ",techContext.elementyTech)
             console.log("Fragmenty Tech: ",techContext.fragmentyTech)
+            console.log("Oprawa Tech: ",techContext.oprawaTech)
             console.log("Procesy elementów: ",techContext.procesyElementowTech)
             console.log("Arkusze: ",techContext.arkusze)
             console.log("Legi: ",techContext.legi)

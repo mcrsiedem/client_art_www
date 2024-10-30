@@ -19,11 +19,18 @@ export function createArkuszeFromElemenets(
   // generuje arkusze i legi z ilości stron elementu
   // row to jest ElementyTechRow czyli np okładka lub środek
 
-  const new_arkusze = [{id:0}];
-  const new_legi = [{id:0}];
-  const new_legiFragmenty = [{id:0}];
-  const new_grupy = [{id:0}];
-  const new_wykonania = [{id:0}];
+  // const new_arkusze = [{id:0, indeks:0}];
+  // const new_legi = [{id:0}];
+  // const new_legiFragmenty = [{id:0}];
+  // const new_grupy = [{id:0}];
+  // const new_wykonania = [{id:0}];
+
+
+  const new_arkusze = [];
+  const new_legi = [];
+  const new_legiFragmenty = [];
+  const new_grupy = [];
+  const new_wykonania = [];
 
   const grupa ={
     id:1,
@@ -53,6 +60,7 @@ export function createArkuszeFromElemenets(
       naklad: row.naklad,
       element_id: row.id,
       ilosc_stron: row.ilosc_stron,
+      uwagi: ""
     };
 
     const lega = {

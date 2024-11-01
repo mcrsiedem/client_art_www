@@ -8,6 +8,7 @@ export default function TechnologiaTable(){
   const techContext = useContext(TechnologyContext);
   const technology = techContext.technology;
   const setTechnology = techContext.setTechnology;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
   // const updateTechnology = TechnologyContext.updateTechnology;
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const test = techContext.test;
@@ -53,13 +54,14 @@ return(
       </tr>
     */}
 
-      {technology.map((row) => {
+      {technology?.map((row) => {
         return (
           <tr 
             key={row.id}
             onDoubleClick={(node, event) => {
+              fechparametryTechnologii(row.id)
               // setActiveRowId(row.id)
-              // setStageTechnologiaVisible(true);
+              setShowTechnologyStage(true);
             }}
             onClick={()=> {
                 // setRow(row.id)

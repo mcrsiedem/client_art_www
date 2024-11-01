@@ -59,7 +59,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [grupaWykonan, setGrupaWykonan] = useState([]);
         const [wykonania, setWykonania] = useState([]);
 
-
+        // id otwieranej technologi
+        const [openTechnologiaId,setOpenTechnologiaId] =useState();
 
         const updateTechnology = useCallback(()=>{
             getTechnology(setTechnology)
@@ -456,26 +457,23 @@ console.log(element)
     //  setShowTechnologyStage(true)
 }
 
-async function fechparametryTechnologii(idZamowienia,zamowienie_prime_id) {
+async function fechparametryTechnologii(idTechnologii) {
 
-  const res = await axios.get(IP + "technologie_parametry/"+idZamowienia+"/"+zamowienie_prime_id);
+  //pobierz wszystkie objekty do TECHNOLOGI nr... idTechnologii
+  // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
+  const res = await axios.get(IP + "technologie_parametry/"+idTechnologii);
 
-  // setDane(res.data[0][0])
-  // setProdukty(res.data[1])
-  // setElementy(res.data[2])
-  // setFragmenty(res.data[3])
-  // setOprawa(res.data[4])
-  // setProcesyElementow(res.data[6])
-
- //  setDaneTech(res.data[0][0].map(x=> {return {...x, id:1}}))
- // console.log("dane",res.data[0][0])
- 
-  setDaneTech(res.data[0][0]) // kopiując dane z zamówienia do technologi nadpisuje id:1 
+  setDaneTech(res.data[0][0]) 
   setProduktyTech(res.data[1])
   setElementyTech(res.data[2])
   setFragmentyTech(res.data[3])
   setOprawaTech(res.data[4])
-  setProcesyElementowTech(res.data[6])
+  setProcesyElementowTech(res.data[5])
+  setLegi(res.data[6])
+  setLegiFragmenty(res.data[7])
+  setArkusze(res.data[8])
+  setGrupaWykonan(res.data[9])
+  setWykonania(res.data[10])
  //  setShowTechnologyStage(true)
 }
 
@@ -521,7 +519,9 @@ async function fechparametryTechnologii(idZamowienia,zamowienie_prime_id) {
                     updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
                     updateRowProcesyElementowTech,
                     updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,
-                    isSaveButtonDisabled, setSaveButtonDisabled
+                    isSaveButtonDisabled, setSaveButtonDisabled,
+                    openTechnologiaId,setOpenTechnologiaId,
+                    fechparametryTechnologii
                 }}
             >
                 {children}

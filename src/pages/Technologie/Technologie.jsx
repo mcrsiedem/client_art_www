@@ -14,7 +14,7 @@ export default function Technologie(){
 
   const [dataTechnologie,setDataTechnologie] =useState([]);
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
-  const [activeRowId,setActiveRowId] =useState();
+
 
   const effectRan = useRef(false);
   useEffect(() => {
@@ -30,12 +30,15 @@ export default function Technologie(){
 
 
     return(
-    <>
+
+    <div>
       <Header/>
       <TechnologiaTable/>
       <TechnologiaStage/>
+    </div>
+   
 
-    </>
+
     )
     
 }

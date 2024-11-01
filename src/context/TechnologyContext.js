@@ -59,6 +59,10 @@ export const TechnologyContextProvider = ({children})=>{
         const [grupaWykonan, setGrupaWykonan] = useState([]);
         const [wykonania, setWykonania] = useState([]);
 
+        // wszsystkie grupy i wykonania
+        const [grupyWykonanAll, setGrupWykonanAll] = useState([]);
+        const [wykonaniaAll, setWykonaniaAll] = useState([]);
+
         // id otwieranej technologi
         const [openTechnologiaId,setOpenTechnologiaId] =useState();
 
@@ -477,6 +481,16 @@ async function fechparametryTechnologii(idTechnologii) {
  //  setShowTechnologyStage(true)
 }
 
+async function fechGrupyAndWykonaniaAll() {
+
+// wszystkie grupy 
+
+
+  // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
+  const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
+  setWykonaniaAll(res.data[0])
+  setGrupWykonanAll(res.data[1])
+}
     
     return  <TechnologyContext.Provider 
                 value={{
@@ -521,7 +535,8 @@ async function fechparametryTechnologii(idTechnologii) {
                     updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,
                     isSaveButtonDisabled, setSaveButtonDisabled,
                     openTechnologiaId,setOpenTechnologiaId,
-                    fechparametryTechnologii
+                    fechparametryTechnologii,
+                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll
                 }}
             >
                 {children}

@@ -14,6 +14,8 @@ export default function Druk({ user, setUser }) {
   const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
+  const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
   const wykonania = techContext.wykonania;
 
   const [selectedProcesor, setSelectedProcesor] = useState(1);
@@ -37,7 +39,7 @@ export default function Druk({ user, setUser }) {
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
-        fechZamowienia();
+        fechGrupyAndWykonaniaAll();
       } else {
         navigate("/Login");
       }
@@ -77,8 +79,7 @@ dddd
           </button>
 <Procesor selectedProcesor={selectedProcesor} setSelectedProcesor={setSelectedProcesor}/>
       druk
-      {grupaWykonan
-            .filter((x) => x.procesor_id == selectedProcesor)
+      {grupyWykonanAll?.filter((x) => x.procesor_id == selectedProcesor)
             .map((grup, i) => {
               return (
           
@@ -91,7 +92,14 @@ dddd
                   key={grup.id + i}
                 >
                   <td>{grup.id}</td>
+                  <td>{grup.nr}</td>
+                  <td>{grup.rok}</td>
+                  <td>{grup.klient}</td>
+                  <td>{grup.poczatek}</td>
                   <td>{grup.czas} min</td>
+                  <td>{grup.koniec} </td>
+                  <td>{grup.status} </td>
+                  <td>{grup.stan} </td>
                   <td></td>
  
                 </tr>

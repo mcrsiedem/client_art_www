@@ -42,7 +42,7 @@ export default function RowTechElement({
   const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
   const [listaGramaturSelect, setListaGramaturSelect] = useState(
-    listaGramatur.filter((x) => x.papier_id == row.papier_id)
+    listaGramatur?.filter((x) => x.papier_id == row.papier_id)
   );
 
 
@@ -127,8 +127,7 @@ export default function RowTechElement({
       </div>
       {showArkusze && (
         <>
-          {arkusze
-            .filter((x) => x.element_id == row.id)
+          {arkusze?.filter((x) => x.element_id == row.id)
 
             .map((row, i) => {
               return <RowArkusze key={row.indeks} i={i} row={row} />;
@@ -143,8 +142,8 @@ export default function RowTechElement({
   const handleRemoveItem = (indeks, id) => {
     // id = id elementu
     if (elementyTech.length !== 1) {
-      setElementyTech(elementyTech.filter((x) => x.indeks !== indeks));
-      setFragmentyTech(fragmentyTech.filter((x) => x.element_id !== id));
+      setElementyTech(elementyTech?.filter((x) => x.indeks !== indeks));
+      setFragmentyTech(fragmentyTech?.filter((x) => x.element_id !== id));
     }
 
     setElementyTech((prev) =>
@@ -173,11 +172,11 @@ export default function RowTechElement({
     const newElementyTech = elementyTech.slice();
 
     newElementyTech.push({
-      id: Math.max(...newElementyTech.map((f) => f.id)) + 1,
+      id: Math.max(...newElementyTech?.map((f) => f.id)) + 1,
       zamowienie_id: rowTechElement.zamowienie_id,
       produkt_id: rowTechElement.produkt_id,
       naklad: rowTechElement.naklad,
-      indeks: Math.max(...newElementyTech.map((f) => f.indeks)) + 1,
+      indeks: Math.max(...newElementyTech?.map((f) => f.indeks)) + 1,
       typ: rowTechElement.typ,
       nazwa: rowTechElement.nazwa,
       ilosc_stron: rowTechElement.ilosc_stron,
@@ -218,11 +217,11 @@ export default function RowTechElement({
       })
       .then((res) => {
         newElementy.push({
-          id: Math.max(...newElementy.map((f) => f.id)) + 1,
+          id: Math.max(...newElementy?.map((f) => f.id)) + 1,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
-          indeks: Math.max(...newElementy.map((f) => f.indeks)) + 1,
+          indeks: Math.max(...newElementy?.map((f) => f.indeks)) + 1,
           typ: card.typ,
           nazwa: card.nazwa,
           ilosc_stron: card.ilosc_stron,
@@ -250,8 +249,7 @@ export default function RowTechElement({
       }
     });
 
-    newFragmenty
-      .filter((f) => f.element_id == card.id)
+    newFragmenty?.filter((f) => f.element_id == card.id)
       .forEach((x) => {
         newFragmenty.push({
           id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
@@ -298,8 +296,7 @@ function Procesy({ row }) {
         }}
         alt="Procesy"
       />
-      {procesyElementowTech
-        .filter((frag) => frag.element_id == row.id)
+      {procesyElementowTech?.filter((frag) => frag.element_id == row.id)
         .sort((a, b) => a.indeks - b.indeks)
         .map((pr, i) => appContext.showMeProcessName(pr.nazwa_id) + " ")}
       {/* .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" ")} */}
@@ -394,7 +391,7 @@ function PapierSelect({
       defaultValue={row.papier_id}
       onChange={(e) => {
         setListaGramaturSelect(
-          listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+          listaGramatur?.filter((wyk) => wyk.papier_id == e.target.value)
         );
         handleChangeCardFragmenty_i_Elementy_Tech({
           ...row,
@@ -403,7 +400,7 @@ function PapierSelect({
       }}
     >
       {}
-      {listaPapierow.map((option) => (
+      {listaPapierow?.map((option) => (
         <option key={option.id} value={option.id}>
           {option.nazwa}
         </option>
@@ -438,8 +435,7 @@ function Gramatura({
       }
     >
       <option value="0">wybierz</option>
-      {listaGramaturSelect
-        .sort((a, c) => a.gramatura - c.gramatura)
+      {listaGramaturSelect?.sort((a, c) => a.gramatura - c.gramatura)
         .map((option) =>
           row.papier_id !== 7 ? (
             <option key={option.id} value={option.id}>
@@ -483,8 +479,7 @@ function Naklad({ row }) {
 }
 
 function Rozwin({ arkusze,row, showArkusze, setShowArkusze }) {
-  if  (arkusze
-    .filter((x) => x.element_id == row.id).length !== 0){
+  if  (arkusze?.filter((x) => x.element_id == row.id).length !== 0){
   return (
     <div>
       <img

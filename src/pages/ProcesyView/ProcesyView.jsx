@@ -8,6 +8,7 @@ import style from "./ProcesyView.module.css";
 import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
+import ProcesyHeader from "./ProcesyHeader";
 
 export default function Druk({ user, setUser }) {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function Druk({ user, setUser }) {
   const wykonania = techContext.wykonania;
 
   const [selectedProcesor, setSelectedProcesor] = useState(1);
+  const [selectedProces, setSelectedProces] = useState(1);
   const [showWindowPortal, setShowWindowPortal] = useState(false);
 
   async function checkToken() {
@@ -37,21 +39,18 @@ export default function Druk({ user, setUser }) {
 
 
   return (
-    <div className={style.container}>
-      <button
-        // onClick={() => openInNewTab("/BackStage")}
-        onClick={() => setShowWindowPortal(true)}
-        className={style.btn}
-      >
-        Nowe...
-      </button>
+    <div className={style.main}>
 
-      <Procesor
-        selectedProcesor={selectedProcesor}
-        setSelectedProcesor={setSelectedProcesor}
-      />
+        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor}/>
+        <WykonaniaTable selectedProcesor={selectedProcesor} />
 
-      <WykonaniaTable selectedProcesor={selectedProcesor} />
+      <div className={style.container}>
+
+        <Procesor
+          selectedProcesor={selectedProcesor}
+          setSelectedProcesor={setSelectedProcesor}
+        />
+      </div>
     </div>
   );
 }
@@ -60,6 +59,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
+    <div className={style.container}>
     <div className={style.tableContainer}>
 <table>
         <thead>
@@ -104,6 +104,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
         </tbody>
       </table>
       </div>
+      </div>
   )
 }
 
@@ -117,7 +118,7 @@ function Procesor({ selectedProcesor,setSelectedProcesor}) {
       <label className={style.label}> Procesor </label>
       <select
         className={style.select}
-        defaultValue={selectedProcesor}
+        value={selectedProcesor}
         onChange={(event) => {
           setSelectedProcesor(event.target.value)
 

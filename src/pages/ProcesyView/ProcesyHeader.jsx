@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./Header.module.css";
+import style from "./ProcesyHeader.module.css";
 
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
+import { TechnologyContext } from "context/TechnologyContext";
 
 
 
-function ProcesyHeader({ dodaj_clikHandler}) {
+function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
@@ -32,13 +33,14 @@ function ProcesyHeader({ dodaj_clikHandler}) {
 
 
   return (
+    <div className={style.container}>
     <header id="header" className={style.body}>
 
 
           <div className={style.leftHeaderContener}>
 
-
-          <p>Zamówienia </p> 
+<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor}/>
+          {/* <p>Procesy </p>  */}
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)
@@ -57,7 +59,7 @@ function ProcesyHeader({ dodaj_clikHandler}) {
               className={style.icon}
               src={iconAdd}
               onClick={() => {
-                dodaj_clikHandler();
+                // dodaj_clikHandler();
                 // console.log("z contextu :"+ token.rowSelected)
                 //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
               }}
@@ -79,7 +81,39 @@ function ProcesyHeader({ dodaj_clikHandler}) {
 
 
     </header>
+    </div>
   );
 }
 
 export default ProcesyHeader;
+
+
+function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesListName = contextApp.procesListName
+  const procesList = contextApp.procesList
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane}>
+      
+      <select
+        className={style.procesy_input}
+        defaultValue={selectedProces}
+        onChange={(event) => {
+          setSelectedProces(event.target.value)
+          // setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value).procesor_domyslny )
+          setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
+
+        }}
+      >
+        {procesListName
+        // .filter(x => x.grupa == rowProces.nazwa_id )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );}

@@ -18,7 +18,7 @@ import { reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 
-export default function RowDruk  ({rowWykonanie,updateWykonaniaWszystkie})  {
+export default function ViewRow  ({rowWykonanie,updateWykonaniaWszystkie})  {
 
 
   return(<div

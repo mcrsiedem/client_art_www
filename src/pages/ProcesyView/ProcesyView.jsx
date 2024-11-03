@@ -49,6 +49,7 @@ export default function Druk({ user, setUser }) {
         <Procesor
           selectedProcesor={selectedProcesor}
           setSelectedProcesor={setSelectedProcesor}
+          selectedProces={selectedProces}
         />
       </div>
     </div>
@@ -108,7 +109,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
   )
 }
 
-function Procesor({ selectedProcesor,setSelectedProcesor}) {
+function Procesor({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -125,7 +126,7 @@ function Procesor({ selectedProcesor,setSelectedProcesor}) {
         }}
       >
         {procesory
-        // .filter(x => x.grupa == rowProces.nazwa_id )
+         .filter(x => x.grupa == selectedProces )
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}

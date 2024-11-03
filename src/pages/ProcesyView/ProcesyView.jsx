@@ -46,7 +46,7 @@ export default function Druk({ user, setUser }) {
 
       <div className={style.container}>
 
-        <Procesor
+        <Procesor2
           selectedProcesor={selectedProcesor}
           setSelectedProcesor={setSelectedProcesor}
           selectedProces={selectedProces}
@@ -138,8 +138,39 @@ function Procesor({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 }
 
 
-const openInNewTab = (url) => {
-  window.open(url, "_blank", "noreferrer");
-};
+function Procesor2({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesory = contextApp.procesory
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.procesor_btn_container}>
 
+{procesory
+         .filter(x => x.grupa == selectedProces )
+        .map((option) => (
+          <button className={style.btn_procesor} key={option.id} value={option.id}>
+            {option.nazwa}
+          </button>
+        ))}
+      {/* <label className={style.label}> Procesor </label>
+      <select
+        className={style.select}
+        value={selectedProcesor}
+        onChange={(event) => {
+          setSelectedProcesor(event.target.value)
+
+        }}
+      >
+        {procesory
+         .filter(x => x.grupa == selectedProces )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select> */}
+    </div>
+  );
+}
 

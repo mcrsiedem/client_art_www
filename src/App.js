@@ -8,7 +8,7 @@ import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
 import Info2 from "pages/Info/Info2";
-import Druk from "pages/Druk/Druk";
+import Druk from "pages/ProcesyView/ProcesyView";
 
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";

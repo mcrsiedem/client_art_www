@@ -3,7 +3,7 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 
-import style from "./Druk.module.css";
+import style from "./ProcesyView.module.css";
 
 import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
@@ -51,12 +51,12 @@ export default function Druk({ user, setUser }) {
         setSelectedProcesor={setSelectedProcesor}
       />
 
-      <DrukTable selectedProcesor={selectedProcesor} />
+      <WykonaniaTable selectedProcesor={selectedProcesor} />
     </div>
   );
 }
 
-const DrukTable =({selectedProcesor}) =>{
+const WykonaniaTable =({selectedProcesor}) =>{
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
@@ -70,10 +70,10 @@ const DrukTable =({selectedProcesor}) =>{
   <th> nr</th>
   <th> rok</th>
   <th> Klient</th>
+  <th> Status</th>
+  <th> Stan</th>
   <th> id</th>
-  <th> id</th>
-  <th> id</th>
-  <th> id</th>
+
 </tr>
         </thead>
         <tbody>
@@ -95,7 +95,7 @@ const DrukTable =({selectedProcesor}) =>{
                   <td>{grup.status} </td>
                   <td>{grup.stan} </td>
                   <td>{grup.id}</td>
-                  <td></td>
+                 
  
                 </tr>
       
@@ -120,19 +120,7 @@ function Procesor({ selectedProcesor,setSelectedProcesor}) {
         defaultValue={selectedProcesor}
         onChange={(event) => {
           setSelectedProcesor(event.target.value)
-  
 
-          // if (row.indeks == 0) {
-          //   setProdukty(
-          //     produkty.map((p) => {
-          //       if (p.id === row.produkt_id) {
-          //         return { ...p, oprawa: event.target.value };
-          //       } else {
-          //         return p;
-          //       }
-          //     })
-          //   );
-          // }
         }}
       >
         {procesory

@@ -21,21 +21,6 @@ export default function Druk({ user, setUser }) {
   const [selectedProcesor, setSelectedProcesor] = useState(1);
   const [showWindowPortal, setShowWindowPortal] = useState(false);
 
-  function closeWindowPortal() {
-    setShowWindowPortal(false)
-  }
-  async function fechZamowienia() {
-
-    // const res = await axios.get(IP + "zamowienia");
-    // let jobs= [...res.data].filter(job => job.final == 1);
-    // setData(jobs);
-
-    // const res3 = await axios.get(IP + "lista-papierow");
-    // setListaPapierow([...res3.data]);
-    // const res4 = await axios.get(IP + "lista-gramatur");
-    // setListaGramatur([...res4.data]);
-  }
-
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
@@ -46,67 +31,81 @@ export default function Druk({ user, setUser }) {
     });
   }
 
-  async function refreshZamowienia() {
-    // const res = await axios.get(IP + "zamowienia");
-    // let jobs= [...res.data].filter(job => job.final == 1);
-    // setData(jobs);
-  }
-
-
-
   useEffect(() => {
     checkToken();
   }, []);
 
 
-
   return (
     <div className={style.container}>
+      <button
+        // onClick={() => openInNewTab("/BackStage")}
+        onClick={() => setShowWindowPortal(true)}
+        className={style.btn}
+      >
+        Nowe...
+      </button>
 
-                <button
-            // onClick={() => openInNewTab("/BackStage")}
-            onClick={() =>  setShowWindowPortal(true)}
+      <Procesor
+        selectedProcesor={selectedProcesor}
+        setSelectedProcesor={setSelectedProcesor}
+      />
 
-            className={style.btn}
-          >
-            Nowe...
-          </button>
-<Procesor selectedProcesor={selectedProcesor} setSelectedProcesor={setSelectedProcesor}/>
-      druk
-      {grupyWykonanAll?.filter((x) => x.procesor_id == selectedProcesor)
+      <DrukTable selectedProcesor={selectedProcesor} />
+    </div>
+  );
+}
+
+const DrukTable =({selectedProcesor}) =>{
+  const techContext = useContext(TechnologyContext);
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+  return(
+    <div className={style.tableContainer}>
+<table>
+        <thead>
+<tr>
+  <th> Początek</th>
+  <th> Czas</th>
+  <th> Koniec</th>
+  <th> nr</th>
+  <th> rok</th>
+  <th> Klient</th>
+  <th> id</th>
+  <th> id</th>
+  <th> id</th>
+  <th> id</th>
+</tr>
+        </thead>
+        <tbody>
+                {grupyWykonanAll?.filter((x) => x.procesor_id == selectedProcesor)
             .map((grup, i) => {
               return (
-          
-                 
-                
                 <tr
                   draggable
                   // onDragStart={() => handleDragStart(l.id)}
                   className={style.tr_legi_mini}
                   key={grup.id + i}
                 >
-                  <td>{grup.id}</td>
-                  <td>{grup.nr}</td>
-                  <td>{grup.rok}</td>
-                  <td>{grup.klient}</td>
                   <td>{grup.poczatek}</td>
                   <td>{grup.czas} min</td>
                   <td>{grup.koniec} </td>
+                  <td>{grup.nr}</td>
+                  <td>{grup.rok}</td>
+                  <td>{grup.klient}</td>
                   <td>{grup.status} </td>
                   <td>{grup.stan} </td>
+                  <td>{grup.id}</td>
                   <td></td>
  
                 </tr>
       
               );
             })}
-      
-    </div>
-  );
+        </tbody>
+      </table>
+      </div>
+  )
 }
-
-
-
 
 function Procesor({ selectedProcesor,setSelectedProcesor}) {
   const techContext = useContext(TechnologyContext);

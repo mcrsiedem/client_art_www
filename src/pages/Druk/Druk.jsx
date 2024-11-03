@@ -62,13 +62,7 @@ export default function Druk({ user, setUser }) {
 
   return (
     <div className={style.container}>
-                {showWindowPortal && <DepWindow  closeWindowPortal={closeWindowPortal}>
-dddd
-    <p style={{ fontSize: "1rem", color : "black"}}>Even though I render in a different window, I share state!</p>
 
-     <button onClick={closeWindowPortal}>Close me!</button> */
-    </DepWindow>}
-    
                 <button
             // onClick={() => openInNewTab("/BackStage")}
             onClick={() =>  setShowWindowPortal(true)}

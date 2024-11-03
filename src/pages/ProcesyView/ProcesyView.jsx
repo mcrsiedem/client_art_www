@@ -46,7 +46,7 @@ export default function Druk({ user, setUser }) {
 
       <div className={style.container}>
 
-        <Procesor2
+        <Procesory
           selectedProcesor={selectedProcesor}
           setSelectedProcesor={setSelectedProcesor}
           selectedProces={selectedProces}
@@ -138,7 +138,7 @@ function Procesor({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 }
 
 
-function Procesor2({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -149,28 +149,25 @@ function Procesor2({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 {procesory
          .filter(x => x.grupa == selectedProces )
         .map((option) => (
-          <button className={style.btn_procesor} key={option.id} value={option.id}>
-            {option.nazwa}
-          </button>
-        ))}
-      {/* <label className={style.label}> Procesor </label>
-      <select
-        className={style.select}
-        value={selectedProcesor}
-        onChange={(event) => {
-          setSelectedProcesor(event.target.value)
 
-        }}
-      >
-        {procesory
-         .filter(x => x.grupa == selectedProces )
-        .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
+          <Btn_procesor setSelectedProcesor={setSelectedProcesor} id={option.id} nazwa={option.nazwa}/>
+
         ))}
-      </select> */}
     </div>
   );
 }
 
+const Btn_procesor = ({setSelectedProcesor,id,nazwa}) =>{
+
+  return(
+    <button 
+
+    className={style.btn_procesor}
+    onClick={(event) => {
+     setSelectedProcesor(id)
+
+   }}>
+     {nazwa}
+   </button> 
+  )
+}

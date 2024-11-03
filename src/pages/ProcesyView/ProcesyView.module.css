@@ -188,3 +188,13 @@ tr:nth-of-type(2n) {
    font-size: 0.9rem;
    padding: 5px;;
 }
+
+.btn_procesor:hover{
+   background-color: #383838;
+   border-radius: 10px;
+   border: none;
+   width: 100px;
+   color: rgb(204, 203, 203);
+   font-size: 0.9rem;
+   padding: 5px;;
+}

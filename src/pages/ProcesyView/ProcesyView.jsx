@@ -9,6 +9,8 @@ import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./ProcesyHeader";
+import { _status } from "utils/initialvalue";
+
 
 export default function Druk({ user, setUser }) {
   const navigate = useNavigate();
@@ -93,7 +95,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   <td>{grup.nr}</td>
                   <td>{grup.rok}</td>
                   <td>{grup.klient}</td>
-                  <td>{grup.status} </td>
+                  <Status/>
                   <td>{grup.stan} </td>
                   <td>{grup.id}</td>
                  
@@ -109,14 +111,14 @@ const WykonaniaTable =({selectedProcesor}) =>{
   )
 }
 
-function Procesor({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
+  const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-    <div className={style.col_dane}>
-      <label className={style.label}> Procesor </label>
+
       <select
         className={style.select}
         value={selectedProcesor}
@@ -125,15 +127,15 @@ function Procesor({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 
         }}
       >
-        {procesory
-         .filter(x => x.grupa == selectedProces )
+        {_status_wykonania
+        //  .filter(x => x.grupa == selectedProces )
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
         ))}
       </select>
-    </div>
+
   );
 }
 

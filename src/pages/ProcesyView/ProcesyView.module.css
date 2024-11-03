@@ -198,3 +198,9 @@ tr:nth-of-type(2n) {
    font-size: 0.9rem;
    padding: 5px;;
 }
+
+.select{
+   border: none;
+   background-color: transparent;
+   padding-top: 3px;
+}

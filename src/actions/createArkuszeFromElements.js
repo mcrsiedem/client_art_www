@@ -411,6 +411,7 @@ export function createArkuszeFromElemenets(
       new_grupy.push({
         id: proc.id,
         indeks: i + 1,
+        element_id: proc.element_id,
         nazwa: proc.nazwa,
         poczatek: "2024-10-30 10:00:00",
         czas: 1,
@@ -465,6 +466,7 @@ export function createArkuszeFromElemenets(
       new_grupy.push({
         id: proc.id,
         indeks: i + 1,
+        element_id: proc.element_id,
         nazwa: proc.nazwa,
         poczatek: "2024-10-30 10:00:00",
         czas: 1,

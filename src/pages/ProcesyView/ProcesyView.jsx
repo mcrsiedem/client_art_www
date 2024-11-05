@@ -12,6 +12,8 @@ import ProcesyHeader from "./ProcesyHeader";
 import { _status } from "utils/initialvalue";
 
 
+
+
 export default function Druk({ user, setUser }) {
   const navigate = useNavigate();
   const contextApp = useContext(AppContext);
@@ -61,6 +63,8 @@ export default function Druk({ user, setUser }) {
 const WykonaniaTable =({selectedProcesor}) =>{
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
+  const appcontext = useContext(AppContext);
+  const typ_elementu = appcontext.typ_elementu;
   return(
     <div className={style.container}>
     <div className={style.tableContainer}>
@@ -73,9 +77,11 @@ const WykonaniaTable =({selectedProcesor}) =>{
   <th> nr</th>
   <th> rok</th>
   <th> Klient</th>
+  <th> Element</th>
+  <th> </th>
   <th> Status</th>
   <th> Stan</th>
-  <th> id</th>
+
 
 </tr>
         </thead>
@@ -95,10 +101,12 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   <td>{grup.nr}</td>
                   <td>{grup.rok}</td>
                   <td>{grup.klient}</td>
+                  <td>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
+                  <td>{grup.status_elementu}</td>
                   <Status/>
-                  <td>{grup.stan} </td>
-                  <td>{grup.id}</td>
-                 
+                  <Stan/>
+
+
  
                 </tr>
       
@@ -111,6 +119,8 @@ const WykonaniaTable =({selectedProcesor}) =>{
   )
 }
 
+
+
 function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
@@ -118,12 +128,12 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-
+<td>
       <select
         className={style.select}
         value={selectedProcesor}
         onChange={(event) => {
-          setSelectedProcesor(event.target.value)
+          // setSelectedProcesor(event.target.value)
 
         }}
       >
@@ -135,7 +145,36 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
           </option>
         ))}
       </select>
+      </td>
 
+  );
+}
+
+function Stan({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesory = contextApp.procesory
+  const _stan_wykonania = contextApp._stan_wykonania
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+<td>
+      <select
+        className={style.select}
+        value={selectedProcesor}
+        onChange={(event) => {
+          // setSelectedProcesor(event.target.value)
+
+        }}
+      >
+        {_stan_wykonania
+        //  .filter(x => x.grupa == selectedProces )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+</td>
   );
 }
 

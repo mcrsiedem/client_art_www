@@ -450,9 +450,9 @@ console.log(element)
      setProcesyElementow(res.data[6])
 
     //  setDaneTech(res.data[0][0].map(x=> {return {...x, id:1}}))
-    // console.log("dane",res.data[0][0])
-    
-     setDaneTech({...res.data[0][0],id:1,prime_id:1}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
+    // console.log("dane",res.data[0][0]?.id)
+    // console.log("id:   ",res.data[2])
+     setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
      setProduktyTech(res.data[1])
      setElementyTech(res.data[2])
      setFragmentyTech(res.data[3])

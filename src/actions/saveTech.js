@@ -97,7 +97,8 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
         firma_id: daneTech.firma_id,
         klient_id: daneTech.klient_id,
         tytul: daneTech.tytul,
-        final: 1 // ostateczna wersja zamówienia, którą widać na liście
+        final: 1, // ostateczna wersja zamówienia, którą widać na liście
+        zamowienie_id: daneTech.zamowienie_id,
       })
       
     let technologia_id_final = res.data[0].insertId;

@@ -83,7 +83,7 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
 
         technologia_id =daneTech.id
 
-              let final_0 = await axios.put(IP + "technologia_not_final", { technologia_id: daneTech.id,  })
+              // let final_0 = await axios.put(IP + "technologia_not_final", { technologia_id: daneTech.id,  })
           
       }
 

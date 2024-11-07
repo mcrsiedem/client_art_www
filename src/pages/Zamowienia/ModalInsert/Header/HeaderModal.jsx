@@ -56,6 +56,7 @@ export default function Header({
               ) :
               (
                 <>
+                <PokazStany/>
                   <Zapisz
                     setShowSaveAs={setShowSaveAs}
                     postZamowienieObj={postZamowienieObj}
@@ -202,7 +203,38 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
   // </button>
   );
 }
+function PokazStany({  }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const produkty = contextModalInsert.produkty;
+  const elementy = contextModalInsert.elementy;
+  const fragmenty = contextModalInsert.fragmenty;
+  const oprawa = contextModalInsert.oprawa;
+  const pakowanie = contextModalInsert.pakowanie;
+  const procesyElementow = contextModalInsert.procesyElementow;
+  const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
 
+  return (
+    <button
+      onClick={async () => {
+        console.clear()
+        console.log("Zamówienie: ")
+        console.log("Dane : ",daneZamowienia)
+        console.log("Produkt : ",produkty)
+        console.log("Elementy : ",elementy)
+        console.log("Fragmenty : ",fragmenty)
+        console.log("Oprawa : ",oprawa)
+        console.log("Procesy elementów: ",procesyElementow)
+        console.log("Pakowanie: ",pakowanie)
+        console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
+
+      }}
+      className={ style.btn}
+    >
+      Pokaż stany...
+    </button>
+  );
+}
 
 function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);

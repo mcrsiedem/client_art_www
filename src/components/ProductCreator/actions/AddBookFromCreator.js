@@ -1,4 +1,4 @@
-
+import DecodeToken from "pages/Login/DecodeToken";
 
 export function AddBookFromCreator(modalInsertContext,preOrderContext ) {
 
@@ -14,6 +14,7 @@ export function AddBookFromCreator(modalInsertContext,preOrderContext ) {
           format_x: preOrderContext.preOrder.szerokosc,
           format_y: preOrderContext.preOrder.wysokosc,
           oprawa: preOrderContext.preOrder.oprawa,
+          user: DecodeToken(sessionStorage.getItem("token")).id,
           ilosc_stron:
             parseInt(preOrderContext.preOrder.strony_srd) + parseInt(preOrderContext.preOrder.strony_okl),
         };

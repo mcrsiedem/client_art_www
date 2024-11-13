@@ -76,6 +76,8 @@ const initialProdukty = [
     format_y: "",
     oprawa: "",
     naklad: "",
+    stan:1,
+    status:1,
     indeks: 0,
     uwagi: "",
   },

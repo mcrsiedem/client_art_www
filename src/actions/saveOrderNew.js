@@ -120,13 +120,13 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,proce
   let zamowienie_id = res.data[1].id;
   let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
 
-  daneZamowienia = res.data[1];
-  produkty = res.data[2];
-  elementy = res.data[3];
-  fragmenty = res.data[4];
-  oprawa = res.data[5];
-  pakowanie = res.data[6];
-  procesyElementow = res.data[7];
+  daneZamowienia = res.data[0];
+  produkty = res.data[1];
+  elementy = res.data[2];
+  fragmenty = res.data[3];
+  oprawa = res.data[4];
+  pakowanie = res.data[5];
+  procesyElementow = res.data[6];
   // let prime_id = res.data[1].prime_id;
 
   // console.log("Dane zamowienie po zapisie id :" + zamowienie_id)

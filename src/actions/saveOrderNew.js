@@ -15,6 +15,7 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
     // let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
     // let pakowanieEdit = JSON.parse(JSON.stringify(pakowanie))
     // let procesyElementowEdit = JSON.parse(JSON.stringify(procesyElementow))
+    let daneZamowieniaEdit = {}
     let produktyEdit = []
     let elementyEdit = []
     let fragmentyEdit = []
@@ -26,17 +27,18 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
 
 
             let savedOrder  = await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
+            daneZamowieniaEdit = savedOrder.daneZamowienia
             produktyEdit = savedOrder.produkty
             elementyEdit = savedOrder.elementy
             fragmentyEdit = savedOrder.fragmenty
             oprawaEdit = savedOrder.oprawa
-            daneZamowienia = savedOrder.daneZamowienia
             pakowanieEdit = savedOrder.pakowanie
             procesyElementowEdit = savedOrder.procesyElementow
 
 
 
-
+            console.log("daneZamowienia :" , daneZamowieniaEdit)
+            console.log("produktyEdit :" , produktyEdit)
 
 
 
@@ -116,9 +118,19 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,proce
     }, produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow])
     
   let zamowienie_id = res.data[1].id;
+  let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
+
+  daneZamowienia = res.data[1];
+  produkty = res.data[2];
+  elementy = res.data[3];
+  fragmenty = res.data[4];
+  oprawa = res.data[5];
+  pakowanie = res.data[6];
+  procesyElementow = res.data[7];
   // let prime_id = res.data[1].prime_id;
 
-  console.log("Dane zamowienie po zapisie id :" + zamowienie_id)
+  // console.log("Dane zamowienie po zapisie id :" + zamowienie_id)
+  // console.log("Produkty zamowienie id :" + produkty_zamowienie_id)
 
     // if(prime_id != 1){
           

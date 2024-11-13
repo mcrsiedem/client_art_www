@@ -90,7 +90,7 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
         
     let res = await axios.post(IP + "technologie", {
        
-      technologia_id: technologia_id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
+       technologia_id: technologia_id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
        prime_id: daneTech.prime_id,
        nr: daneTech.nr,
         rok: daneTech.rok,

@@ -246,7 +246,7 @@ function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
       onClick={async () => {
         setSaveAs(false);
         postZamowienieObj();
-        setSaveButtonDisabled(true);
+        // setSaveButtonDisabled(true);
 
         // setOrderClosed
       }}

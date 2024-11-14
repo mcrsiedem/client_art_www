@@ -26,14 +26,14 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
 
 
 
-            let savedOrder  = await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
-            daneZamowieniaEdit = savedOrder.daneZamowienia
-            produktyEdit = savedOrder.produkty
-            elementyEdit = savedOrder.elementy
-            fragmentyEdit = savedOrder.fragmenty
-            oprawaEdit = savedOrder.oprawa
-            pakowanieEdit = savedOrder.pakowanie
-            procesyElementowEdit = savedOrder.procesyElementow
+            let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
+            daneZamowieniaEdit = savedDane.daneZamowienia
+            produktyEdit = savedDane.produkty
+            elementyEdit = savedDane.elementy
+            fragmentyEdit = savedDane.fragmenty
+            oprawaEdit = savedDane.oprawa
+            pakowanieEdit = savedDane.pakowanie
+            procesyElementowEdit = savedDane.procesyElementow
 
 
 
@@ -83,7 +83,7 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
 
 
 //----------------------------------------------------------------------------------
-const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs}) =>{
+const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs}) =>{
 
   return new Promise(async(resolve,reject)=>{
 

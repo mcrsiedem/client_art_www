@@ -10,11 +10,7 @@ export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,el
             // console.clear();
 
     // let produktyEdit = JSON.parse(JSON.stringify(produkty))
-    // let elementyEdit = JSON.parse(JSON.stringify(elementy))
-    // let fragmentyEdit = JSON.parse(JSON.stringify(fragmenty))
-    // let oprawaEdit = JSON.parse(JSON.stringify(oprawa))
-    // let pakowanieEdit = JSON.parse(JSON.stringify(pakowanie))
-    // let procesyElementowEdit = JSON.parse(JSON.stringify(procesyElementow))
+
     let daneZamowieniaEdit = {}
     let produktyEdit = []
     let elementyEdit = []
@@ -40,7 +36,7 @@ export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,el
             console.log("produktyEdit :" , produktyEdit)
 
 
-    //  refreshZamowienia();
+     refreshZamowienia();
 
 }
 

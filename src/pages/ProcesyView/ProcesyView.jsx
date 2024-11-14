@@ -77,6 +77,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
   <th> nr</th>
   <th> rok</th>
   <th> Klient</th>
+  <th> Praca</th>
   <th> Element</th>
   <th> </th>
   <th> Status</th>
@@ -101,6 +102,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   <td>{grup.nr}</td>
                   <td>{grup.rok}</td>
                   <td>{grup.klient}</td>
+                  <td>{grup.tytul}</td>
                   <td>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
                   <td>{grup.status_elementu}</td>
                   <Status/>

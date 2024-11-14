@@ -289,7 +289,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
      
         <select
           className={style.select}
-          defaultValue={row.typ}
+          value={row.typ}
           onChange={(e) => {
 
             handleChangeCardFragmenty_i_Elementy({
@@ -337,7 +337,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
           // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
           className={style.select}
-          defaultValue={row.papier_id}
+          value={row.papier_id}
           onChange={(e) => {
             setListaDostepnychGrmatur(
               listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
@@ -369,7 +369,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
       
         <select
           className={style.select}
-          defaultValue={row.gramatura_id}
+          value={row.gramatura_id}
           onChange={(e) =>
             handleChangeCardElementy({
               ...row,

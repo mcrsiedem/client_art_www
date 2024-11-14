@@ -29,7 +29,7 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrder } from "actions/saveOrder";
+// import { saveOrder } from "actions/saveOrder";
 import { saveOrderNew } from "actions/saveOrderNew";
 import SaveAs from "./SaveAs/SaveAs";
 import { today } from "../../../actions/today";
@@ -340,26 +340,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
 
     function postZamowienieObj() {
-      // saveOrder({
-      //   daneZamowienia,
-      //   produkty,
-      //   elementy,
-      //   fragmenty,
-      //   oprawa,
-      //   pakowanie,
-      //   cookies,
-      //   setProdukty,
-      //   setElementy,
-      //   setFragmenty,
-      //   setOprawa,
-      //   setPakowanie,
-      //   saveAs,
-      //   refreshZamowienia,
-      //   setProcesyElementow,
-      //   procesyElementow
-      // });
 
-  // nowy sposób zapisu
       saveOrderNew({
         daneZamowienia,
         setDaneZamowienia,
@@ -368,7 +349,6 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         fragmenty,
         oprawa,
         pakowanie,
-        cookies,
         setProdukty,
         setElementy,
         setFragmenty,
@@ -386,7 +366,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
     }
 
     function postZamowienieObjSaveAs() {
-      saveOrder({
+      saveOrderNew({
         daneZamowienia,
         produkty,
         elementy,

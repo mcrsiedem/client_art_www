@@ -12,28 +12,28 @@ export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,el
     // let produktyEdit = JSON.parse(JSON.stringify(produkty))
 
     let daneZamowieniaEdit = {}
-    let produktyEdit = []
-    let elementyEdit = []
-    let fragmentyEdit = []
-    let oprawaEdit = []
-    let pakowanieEdit = []
-    let procesyElementowEdit = []
+    // let produktyEdit = []
+    // let elementyEdit = []
+    // let fragmentyEdit = []
+    // let oprawaEdit = []
+    // let pakowanieEdit = []
+    // let procesyElementowEdit = []
             
 
 
             let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
             daneZamowieniaEdit = savedDane.daneZamowienia
-            produktyEdit = savedDane.produkty
-            elementyEdit = savedDane.elementy
-            fragmentyEdit = savedDane.fragmenty
-            oprawaEdit = savedDane.oprawa
-            pakowanieEdit = savedDane.pakowanie
-            procesyElementowEdit = savedDane.procesyElementow
+            // produktyEdit = savedDane.produkty
+            // elementyEdit = savedDane.elementy
+            // fragmentyEdit = savedDane.fragmenty
+            // oprawaEdit = savedDane.oprawa
+            // pakowanieEdit = savedDane.pakowanie
+            // procesyElementowEdit = savedDane.procesyElementow
 
 
             setDaneZamowienia(daneZamowieniaEdit)
-            console.log("daneZamowienia :" , daneZamowieniaEdit)
-            console.log("produktyEdit :" , produktyEdit)
+            // console.log("daneZamowienia :" , daneZamowieniaEdit)
+            // console.log("produktyEdit :" , produktyEdit)
 
 
      refreshZamowienia();
@@ -77,8 +77,8 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
       final: 1 // ostateczna wersja zamówienia, którą widać na liście
     }, produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow])
     
-  let zamowienie_id = res.data[1].id;
-  let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
+  // let zamowienie_id = res.data[1].id;
+  // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
 
   daneZamowienia = res.data[0];
   produkty = res.data[1];

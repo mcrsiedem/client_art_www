@@ -362,6 +362,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
   // nowy sposób zapisu
       saveOrderNew({
         daneZamowienia,
+        setDaneZamowienia,
         produkty,
         elementy,
         fragmenty,

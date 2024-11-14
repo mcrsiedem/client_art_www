@@ -5,7 +5,7 @@ import { IP } from "../utils/Host";
 
 
 
-export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,
+export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,
   procesyElementow}){
             // console.clear();
 
@@ -25,7 +25,6 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
             
 
 
-
             let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
             daneZamowieniaEdit = savedDane.daneZamowienia
             produktyEdit = savedDane.produkty
@@ -36,45 +35,10 @@ export async function saveOrderNew({daneZamowienia,produkty,elementy,fragmenty,o
             procesyElementowEdit = savedDane.procesyElementow
 
 
-
+            setDaneZamowienia(daneZamowieniaEdit)
             console.log("daneZamowienia :" , daneZamowieniaEdit)
             console.log("produktyEdit :" , produktyEdit)
 
-
-
-
-
-
-    // let savedProducts = await saveProducts2({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit});
-
-    // elementyEdit = savedProducts.elementyEdit
-    // fragmentyEdit = savedProducts.fragmentyEdit
-    // oprawaEdit = savedProducts.oprawaEdit
-    // pakowanieEdit = savedProducts.pakowanieEdit
-    // procesyElementowEdit = savedProducts.procesyElementowEdit
-
-    //  let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit});
-    //  fragmentyEdit = savedElements.fragmentyEdit
-    //  procesyElementowEdit = savedElements.procesyElementowEdit
-
-    //  let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,});
-    //  fragmentyEdit = savedBindings.fragmentyEdit
-
-    //  let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
-    //  fragmentyEdit = savedFragments.fragmentyEdit
-
-    //  let savedPacking= await savePacking({pakowanieEdit});
-    //  pakowanieEdit = savedPacking.pakowanieEdit
-
-    //  let savedProcess= await saveProcess({procesyElementowEdit});
-    //  procesyElementowEdit = savedProcess.procesyElementowEdit
-
-    // setProdukty(produktyEdit)
-    //  setElementy(elementyEdit)
-    //  setFragmenty(fragmentyEdit)
-    //  setOprawa(oprawaEdit)
-    //  setPakowanie(pakowanieEdit)
-    //  setProcesyElementow(procesyElementowEdit)
 
     //  refreshZamowienia();
 
@@ -127,100 +91,6 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
   oprawa = res.data[4];
   pakowanie = res.data[5];
   procesyElementow = res.data[6];
-  // let prime_id = res.data[1].prime_id;
-
-  // console.log("Dane zamowienie po zapisie id :" + zamowienie_id)
-  // console.log("Produkty zamowienie id :" + produkty_zamowienie_id)
-
-    // if(prime_id != 1){
-          
-    //           produktyEdit = produktyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-
-    //           elementyEdit = elementyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-    //           fragmentyEdit = fragmentyEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-    //           oprawaEdit = oprawaEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-    //           pakowanieEdit = pakowanieEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-    //           procesyElementowEdit = procesyElementowEdit.map((obj) => {
-    //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-    //               ...obj, zamowienie_id : zamowienie_id, prime_id
-    //             } }else {return obj} 
-    //           })
-
-
-    //           daneZamowienia.id = zamowienie_id
-    //           daneZamowienia.prime_id = prime_id
-    // }
-
-
-
-          // kolejne zapisy bez zmiany prime_id
-  //         if(prime_id == 1){
-          
-  //           produktyEdit = produktyEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-
-  //           elementyEdit = elementyEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-  //           fragmentyEdit = fragmentyEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-  //           oprawaEdit = oprawaEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-  //           pakowanieEdit = pakowanieEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-  //           procesyElementowEdit = procesyElementowEdit.map((obj) => {
-  //             if (obj.zamowienie_id == daneZamowienia.id) {return {
-  //               ...obj, zamowienie_id : zamowienie_id
-  //             } }else {return obj} 
-  //           })
-
-
-  //           daneZamowienia.id = zamowienie_id
-  // }
 
     
 

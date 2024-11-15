@@ -114,12 +114,6 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                {/* <td>{row.indeks}</td> */}
-
-                {/* <td>{row.id}</td>
-                <td>{row.zamowienie_id}</td>
-                <td>{row.produkt_id}</td>
-                <td>{row.element_id}</td> */}
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
                 <FrontIlosc row={row}/>
@@ -212,7 +206,7 @@ const BackKolor = ({ row }) => {
       <input
         value={row.back_kolor}
         onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementow({
               ...row,
               back_kolor: e.target.value,
@@ -230,7 +224,7 @@ const FrontKolor = ({ row }) => {
   return (
     <td>
       <input
-        defaultValue={row.front_kolor}
+        value={row.front_kolor}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementow({

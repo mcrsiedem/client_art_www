@@ -200,7 +200,7 @@ export default function RowElement({
           listaGramatur={listaGramatur}
           listaDostepnychGramatur={listaDostepnychGramatur}
         />
-        <PapierInfo
+        <Uwagi
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
@@ -538,7 +538,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   
   function PapierInfo({ row, handleChangeCardElementy }) {
     return (
-      <div>
+   
         <input
         className={style.input}
           value={row.papier_info}
@@ -551,13 +551,13 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
             }}
           }
         ></input>
-      </div>
+   
     );
   }
   
   function Uwagi({ row, handleChangeCardElementy }) {
     return (
-      <div>
+  
         <input
         className={style.input}
           value={row.uwagi}
@@ -571,6 +571,6 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
           }
         ></input>
-      </div>
+ 
     );
   }

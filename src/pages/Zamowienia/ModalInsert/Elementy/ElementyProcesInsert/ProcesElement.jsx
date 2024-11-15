@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import style from "./ProcesElement.module.css";
 import iconX from "assets/xDark.svg";
+import iconTrash from "assets/trash2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
+import { reg_int } from "utils/initialvalue";
+import { reg_txt } from "utils/initialvalue";
 export default function ProcesElement() {
 
 
@@ -100,6 +103,7 @@ function Table() {
             <th className={style.col_kolory}>Front kolory</th>
             <th className={style.col_kolory}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
+            <th className={style.col_wersja}>Uwagi</th>
           </tr>
         </thead>
         <tbody>
@@ -118,11 +122,12 @@ function Table() {
                 <td>{row.element_id}</td> */}
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
-                <td>{row.front_ilosc}</td>
-                <td>{row.back_ilosc}</td>
-                <td>{row.front_kolor}</td>
-                <td>{row.back_kolor}</td>
-                <td></td>
+                <FrontIlosc row={row}/>
+                <BackIlosc row={row}/>
+                <FrontKolor row={row}/>
+                <BackKolor row={row}/>
+                <Info row={row}/>
+                <Usun row={row}/>
               </tr>
             );
           })}
@@ -198,3 +203,124 @@ const ProcessTyp = ({ row }) => {
     </td>
   );
 };
+
+const BackKolor = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+        value={row.back_kolor}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              back_kolor: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const FrontKolor = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+        defaultValue={row.front_kolor}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              front_kolor: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const FrontIlosc = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+        value={row.front_ilosc}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              front_ilosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const BackIlosc = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+        value={row.back_ilosc}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              back_ilosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const Info = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+        value={row.info}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              info: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+function Usun({ row}) {
+  const contexModal = useContext(ModalInsertContext);
+  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
+  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  return (
+    <td className={style.col_button}>
+      <div>
+        <img
+          className={style.expand}
+          src={iconTrash}
+          onClick={() => {
+            setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
+      
+          }}
+          alt="Procesy"
+        />
+      </div>
+    </td>
+  );
+}

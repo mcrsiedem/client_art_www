@@ -22,8 +22,8 @@ export default function RowElement({
     setInfo,
     // isEdit,
     // setIsEdit,
-    procesyElementow,
-    setProcesyElementow,
+    // procesyElementow,
+    // setProcesyElementow,
 
     setShowElementyProcesyInsert,
 
@@ -39,6 +39,8 @@ export default function RowElement({
 
     const fragmenty = contextModalInsert.fragmenty;
     const setFragmenty = contextModalInsert.setFragmenty;
+    const procesyElementow = contextModalInsert.procesyElementow;
+    const setProcesyElementow = contextModalInsert.setProcesyElementow;
 
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
@@ -70,26 +72,8 @@ export default function RowElement({
       
       function handleAddCard(card) {
         const newElementy = elementy.slice();
-      
 
-        axios.post(IP + "elementy", {
-          zamowienie_id: 0,
-          produkt_id: 0,
-          nazwa: 0,
-          typ: 0,
-          naklad: 0,
-          strony: 0,
-          kolory: 0,
-          format_x: 0,
-          format_y: 0,
-          papier_id: 0,
-          gramatura_id: 0,
-          papier_info: 0,
-          uwagi: "element temp",
-          indeks:0
-      }).then((res) => {
-
-      newElementy.push({
+        newElementy.push({
           id: Math.max(...newElementy.map((f) => f.id)) + 1,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
@@ -103,56 +87,78 @@ export default function RowElement({
           papier_id: card.papier_id,
           gramatura_id: card.gramatura_id,
           papier_info: card.papier_info,
-          uwagi: card.uwagi
-        
+          uwagi: card.uwagi,
         });
-      
+
         newElementy.sort((a, b) => a.indeks - b.indeks);
         setElementy(newElementy);
 
-
-      })
-
-
-      
-  
-        // setElementy((prev) =>prev.map((t)=> {return t}));
-      
-        //-------------------
         const newFragmenty = fragmenty.slice();
-       
 
         newFragmenty.map((x) => {
           if (x.indeks > card.indeks) {
             return {
               ...x,
-          
             };
           } else {
             return x;
           }
         });
-      
- newFragmenty 
-        .filter((f) => f.element_id == card.id )
-        .forEach(x => {
-          newFragmenty.push({
-            id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-            zamowienie_id: card.zamowienie_id,
-            produkt_id: card.produkt_id,
-            ilosc_stron: card.ilosc_stron,
-            naklad: card.naklad,
-            typ: card.typ,
-            oprawa_id: x.oprawa_id,
-            element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-            indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
+
+        newFragmenty
+          .filter((f) => f.element_id == card.id)
+          .forEach((x) => {
+            newFragmenty.push({
+              id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+              zamowienie_id: card.zamowienie_id,
+              produkt_id: card.produkt_id,
+              ilosc_stron: card.ilosc_stron,
+              naklad: card.naklad,
+              typ: card.typ,
+              oprawa_id: x.oprawa_id,
+              element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+              indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
+            });
           });
-
-        });
-
 
         newFragmenty.sort((a, b) => a.indeks - b.indeks);
         setFragmenty(newFragmenty);
+
+        const newProcesyElementow = procesyElementow.slice();
+
+        procesyElementow
+        .filter((f) => f.element_id == card.id)
+        .forEach((proces) => {
+          newProcesyElementow.push({
+            id: Math.max(...newProcesyElementow.map((f) => f.id)) + 1,
+            zamowienie_id: proces.zamowienie_id,
+            back_ilosc: proces.back_ilosc,
+            back_kolor: proces.back_kolor,
+            element_id: Math.max(...newElementy.map((f) => f.id)),
+            front_ilosc: proces.front_ilosc,
+            front_kolor: proces.front_kolor,
+            info: proces.info,
+            infoproces: proces.infoproces,
+            mnoznik: proces.mnoznik,
+            narzad: proces.narzad,
+            nazwa: proces.nazwa,
+            nazwa_id: proces.nazwa_id,
+            obszar: proces.obszar,
+            predkosc: proces.predkosc,
+            proces_id: proces.proces_id,
+            procesor_domyslny: proces.procesor_domyslny,
+            produkt_id: proces.produkt_id,
+            rodzaj: proces.rodzaj,
+            typ: proces.typ,
+            wykonczenie: proces.wykonczenie,
+   
+            indeks: Math.max(...newProcesyElementow.map((f) => f.indeks)) + 1,
+          });
+        });
+
+        setProcesyElementow(newProcesyElementow);
+
+
       }
     return (
       <div className={style.row3} key={row.id}>
@@ -229,23 +235,32 @@ function Procesy({ row}) {
 
     return (
       <div id="procesy" className={style.procesy} >
-      <img
-        className={style.expand}
-        src={Logo_ustawienia}
-        onClick={() => {
-          contextModalInsert.setShowElementyProcesyInsert(true);
-          contextModalInsert.setSelectedElementROW(row)
-          //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
-          setProcesyElementowTemporary(procesyElementow)
-        }}
-        alt="Procesy"
-      />
-      {procesyElementow
-        .filter((frag) => frag.element_id == row.id)
-        .sort((a, b) => a.indeks - b.indeks)
-        .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
-        )
-        }
+
+      <div className={style.procesy_elementy}>
+                    <img
+            className={style.expand_procesy}
+            src={Logo_ustawienia}
+            onClick={() => {
+              contextModalInsert.setShowElementyProcesyInsert(true);
+              contextModalInsert.setSelectedElementROW(row)
+              //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
+              setProcesyElementowTemporary(procesyElementow)
+            }}
+            alt="Procesy"
+          />
+       </div>
+
+
+
+      <div className={style.procesy_elementy}>
+            {procesyElementow
+            .filter((frag) => frag.element_id == row.id)
+            .sort((a, b) => a.indeks - b.indeks)
+            .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
+            )
+            }
+      </div>
+ 
     </div>
     );
   }

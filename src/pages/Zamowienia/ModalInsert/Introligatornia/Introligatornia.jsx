@@ -392,42 +392,24 @@ const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) =>
 
 function handleAddRowOprawa(card,oprawa,setOprawa) {
 
-  console.log("oprawa", oprawa)
   const newOprawa = JSON.parse(JSON.stringify(oprawa))
-
- // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id
-  axios.post(IP + "oprawa", {
-    zamowienie_id: 0,
-    produkt_id: 0,
-    oprawa: 0,
-    naklad:0,
-    uwagi: "oprawa temp",
-    data_spedycji: "2024-01-30 00:00:00",
-    data_czystodrukow: "2024-01-30 00:00:00",
-      indeks: 0,
-}).then((res) => {
-
 
    newOprawa.push({
     id: Math.max(...newOprawa.map((f) => f.id)) + 1,
-    
     zamowienie_id: card.zamowienie_id,
     produkt_id: card.produkt_id,
     oprawa: card.oprawa,
     bok_oprawy: card.bok_oprawy,
-
     naklad: 20,
     indeks: Math.max(...newOprawa.map((f) => f.indeks)) + 1,
     uwagi: card.uwagi,
     data_spedycji: card.data_spedycji,
     data_czystodrukow: card.data_czystodrukow,
-      indeks: card.indeks + 1,
-  
+    indeks: card.indeks + 1,
+
   });
 
-
   setOprawa(newOprawa);
-})
 
 }
 

@@ -242,11 +242,26 @@ font-size: 0.9rem;
   grid-template-columns: 25px 1fr;
 }
 
+.procesy_elementy {
+
+ padding-top: 2px;
+}
+
 .expand {
   height: 15px;
   margin-right: 10px;
+}
 
 
+
+.expand_procesy {
+  height: 15px;
+  margin-right: 10px;
+}
+
+.expand_procesy:hover{
+  background-color: rgb(192, 250, 187);
+  border-radius: 10px;
 }
 
 .alert2{

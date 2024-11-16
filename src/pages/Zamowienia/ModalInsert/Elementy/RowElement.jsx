@@ -239,9 +239,24 @@ export default function RowElement({
           
         </>
       )}
+      <Add row={row} fragmenty={fragmenty}/>
       </>
     );
   }
+
+  function Add({ row, fragmenty}) {
+    if (fragmenty.filter(x=> x.element_id == row.id).length == 0){
+         return (
+    
+      
+        <button>dodaj fragment</button>
+        
+   
+   
+     );
+    }
+ 
+   }
   function Rozwin({ fragmenty,row, showFragmenty, setShowFragmenty }) {
     if  (fragmenty?.filter((x) => x.element_id == row.id).length !== 0){
     return (

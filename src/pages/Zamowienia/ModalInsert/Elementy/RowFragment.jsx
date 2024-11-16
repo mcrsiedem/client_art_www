@@ -14,6 +14,7 @@ export default function RowFragment({
 
     const contextModalInsert = useContext(ModalInsertContext);
     const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
+    const fragmenty = contextModalInsert.fragmenty;
 
 
     function handleDragStart(){
@@ -23,6 +24,7 @@ export default function RowFragment({
   
     }
   return (
+    <>
     <div className={style.row_fragmenty} draggable onDragStart={handleDragStart} key={row.id}>
       
       <Typ row={row} />
@@ -44,8 +46,16 @@ export default function RowFragment({
       <td></td>
       <td></td>
     </div>
+    
+    
+   
+    </>
   );
+
+
 }
+
+
 function Typ({ row }) {
   return (
  
@@ -164,11 +174,11 @@ function Usun({ row,handleRemoveItem }) {
 }
 
 const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
-  // id = id elementu
-  if (fragmenty.length > elementy.length) {
-    setFragmenty(fragmenty.filter((x) => x.id !== id));
-    // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
-  }
+
+  // if (fragmenty.length > elementy.length) {
+  //   setFragmenty(fragmenty.filter((x) => x.id !== id));
+  // }
+  setFragmenty(fragmenty.filter((x) => x.id !== id));
 
   setFragmenty((prev) =>
     prev.map((t, a) => {

@@ -8,14 +8,13 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { reg_txt } from "utils/initialvalue";
 export default function RowFragment({
-  row,
-  handleChangeCardFragmenty,
-  listaGramatur,
+  row
+
 }) {
-  const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
-    useState(listaGramatur);
-  const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-    useState(listaGramatur);
+
+    const contextModalInsert = useContext(ModalInsertContext);
+    const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
+
 
     function handleDragStart(){
       //  e.preventDefault()
@@ -24,14 +23,17 @@ export default function RowFragment({
   
     }
   return (
-    <div className={style.rowFragmenty} draggable onDragStart={handleDragStart} key={row.id}>
+    <div className={style.row_fragmenty} draggable onDragStart={handleDragStart} key={row.id}>
       
-      <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-      <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-      <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-      <td > <div  className={style.selectFragmenty}>{row.ilosc_stron}</div></td>
-      <Dodaj row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} handleAddFragment={handleAddFragment} />
-      <Usun row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}handleRemoveItem={handleRemoveItem} />
+      <Typ row={row} />
+      <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
+       <div  className={style.rowFragmenty_strony}>{row.ilosc_stron}</div>
+      <div disabled className={style.rowFragmenty_strony}> </div>
+      <div disabled className={style.rowFragmenty_strony}> </div>
+      
+      <Wersja row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
+      <Dodaj row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} handleAddFragment={handleAddFragment} />
+      <Usun row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty}handleRemoveItem={handleRemoveItem} />
       
       <td></td>
       <td></td>
@@ -46,7 +48,7 @@ export default function RowFragment({
 }
 function Typ({ row }) {
   return (
-    <td>
+ 
       <select
         className={style.rowFragmenty_typ}
         value={row.typ}
@@ -59,45 +61,45 @@ function Typ({ row }) {
           </option>
         ))}
       </select>
-    </td>
+
 
 
 
   );
 }
 
-function Naklad({ row, handleChangeCardFragmenty }) {
+function Naklad({ row, handleUpdateRowFragmenty }) {
   return (
-    <td>
+
       <input
-        className={style.selectFragmenty}
+        className={style.rowFragmenty_naklad}
         value={row.naklad}
         onChange={(e) =>
-          handleChangeCardFragmenty({
+          handleUpdateRowFragmenty({
             ...row,
             naklad: e.target.value,
           })
         }
       ></input>
-    </td>
+
   );
 }
-function  Wersja({ row, handleChangeCardFragmenty }) {
+function  Wersja({ row, handleUpdateRowFragmenty }) {
   return (
-    <td>
+  
       <input
        className={style.selectFragmenty}
         value={row.wersja}
         onChange={(e) =>
           {
             if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-            handleChangeCardFragmenty({
+              handleUpdateRowFragmenty({
             ...row,
             wersja: e.target.value,
           })}}
         }
       ></input>
-    </td>
+
   );
 }
 
@@ -107,7 +109,7 @@ function Dodaj({ row, handleAddFragment }) {
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
   return (
-    <td className={style.col_button}>
+<div>
       <img
         className={style.expand}
         src={iconCopy}
@@ -116,26 +118,12 @@ function Dodaj({ row, handleAddFragment }) {
         }}
         alt="Procesy"
       />
-    </td>
+</div>
   );
 }
 
-function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
-
+function handleAddFragment(card, fragmenty, setFragmenty) {
   const newFragmenty = fragmenty.slice();
-
-  axios.post(IP + "fragmenty", {
-    naklad: 0,
-    info: "fragment temp",
-    indeks: 0,
-    zamowienie_id:0,
-    ilosc_stron: 0,
-    element_id: 0,
-    produkt_id: 0,
-    typ: 0,
-    oprawa_id: 0,
-      
-}).then((res) => {
 
   newFragmenty.push({
     id: Math.max(...fragmenty.map((f) => f.id)) + 1,
@@ -143,18 +131,15 @@ function handleAddFragment(card, fragmenty, setFragmenty, elementy) {
     ilosc_stron: card.ilosc_stron,
     produkt_id: card.produkt_id,
     typ: card.typ,
+    wersja: card.wersja,
     naklad: card.naklad,
-     oprawa_id: card.oprawa_id,
+    oprawa_id: card.oprawa_id,
     element_id: card.element_id,
     indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
   });
 
   newFragmenty.sort((a, b) => a.indeks - b.indeks);
   setFragmenty(newFragmenty);
-
-})
-
-
 }
 
 
@@ -164,7 +149,7 @@ function Usun({ row,handleRemoveItem }) {
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
   return (
-    <td className={style.col_button}>
+   
       <div >
                       <img
          className={style.expand}
@@ -174,7 +159,7 @@ function Usun({ row,handleRemoveItem }) {
         />
       </div>
 
-    </td>
+
   );
 }
 

@@ -1,6 +1,7 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../assets/settings.svg";
-import logoExpand from "../../../../assets/expand.svg";
+// import logoExpand from "../../../../assets/expand.svg";
+import logoExpand from "assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import {  useState,useContext } from "react";
@@ -41,6 +42,7 @@ export default function RowElement({
     const setFragmenty = contextModalInsert.setFragmenty;
     const procesyElementow = contextModalInsert.procesyElementow;
     const setProcesyElementow = contextModalInsert.setProcesyElementow;
+    const [showFragmenty, setShowFragmenty] = useState(false);
 
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
@@ -173,7 +175,9 @@ export default function RowElement({
           />
         </div> */}
         {/* <td>{row.id}</td> */}
+    
       
+        <Rozwin  row={row} fragmenty={fragmenty} showFragmenty={showFragmenty} setShowFragmenty={setShowFragmenty} />
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
       
@@ -224,6 +228,21 @@ export default function RowElement({
         />
       </div>
     );
+  }
+  function Rozwin({ fragmenty,row, showFragmenty, setShowFragmenty }) {
+    if  (fragmenty?.filter((x) => x.element_id == row.id).length !== 0){
+    return (
+      <div>
+        <img
+          className={style.expand}
+          src={logoExpand}
+          onClick={() => {
+            setShowFragmenty(!showFragmenty);
+          }}
+          alt="Procesy"
+        />
+      </div>
+    );}else return <p> </p>
   }
   
 function Procesy({ row}) {

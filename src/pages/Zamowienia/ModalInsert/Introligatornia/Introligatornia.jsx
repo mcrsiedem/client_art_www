@@ -83,12 +83,12 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
 
   return (  < div className={style.main}>
   <table className={style.table}>
-    <thead  >
+    <thead  className={style.glowka}>
       <tr >
       <th className={style.col7}></th>
         <th className={style.col3}>#</th>
         <th className={style.col4}>Oprawa</th>
-        <th className={style.col4}>Ilość str</th>
+        <th className={style.col4}>Str</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>

@@ -85,29 +85,19 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
   <table className={style.table}>
     <thead  >
       <tr >
-      <th className={style.col7}>
-
-      </th>
-        {/* <th className={style.col1}>Zam.</th> */}
-        {/* <th className={style.col2}>Prod.</th> */}
+      <th className={style.col7}></th>
         <th className={style.col3}>#</th>
-
         <th className={style.col4}>Oprawa</th>
         <th className={style.col4}>Ilość str</th>
         <th className={style.col4}>Wersja</th>
         <th className={style.col4}>Naklad</th>
         <th className={style.col4}>Bok oprawy</th>
-
         <th className={style.col6}>Czystodruki</th>
         <th className={style.col6}>Data spedycji</th>
         <th className={style.col7}>Uwagi</th>
-       
         <th className={style.col7}></th>
         <th className={style.col7}></th>
         <th className={style.col7}></th>
-        
-      
-
       </tr>
     </thead>
     <tbody>
@@ -144,7 +134,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
               />
       <td></td>
 
-<WersjaOprawa
+              <WersjaOprawa
                 row={row}
                 handleChangeCardOprawa={handleChangeCardOprawa}
               />
@@ -231,7 +221,7 @@ function Header() {
 function DataSpedycji({row,handleChangeCardOprawa}){
   return(
       <td  className={style.col}>
-      <input className={style.data} type="date"
+      <input className={style.input} type="date"
       defaultValue={row.data_spedycji}
       onChange={(event) => {
         handleChangeCardOprawa({...row, data_spedycji: event.target.value});
@@ -242,7 +232,7 @@ function DataSpedycji({row,handleChangeCardOprawa}){
 function DataCzystodrukow({row,handleChangeCardOprawa}){
   return(
       <td className={style.col}>
-      <input className={style.data} type="date"
+      <input className={style.input} type="date"
       defaultValue={row.data_czystodrukow}
       onChange={(event) => {
         handleChangeCardOprawa({...row, data_czystodrukow: event.target.value});
@@ -532,6 +522,7 @@ function  UwagiOprawa({ row, handleChangeCardOprawa }) {
   return (
     <td>
       <input 
+      className={style.input}
         value={row.uwagi}
         onChange={(e) =>
           {

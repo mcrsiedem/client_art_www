@@ -92,10 +92,6 @@ function Table() {
         <thead>
           <tr>
             <th className={style.col_indeks}>#</th>
-            {/* <th className={style.col_indeks}>id</th>
-            <th className={style.col_indeks}>zam</th>
-            <th className={style.col_indeks}>prod</th>
-            <th className={style.col_indeks}>element</th> */}
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_ilosc}>Front</th>
@@ -204,6 +200,7 @@ const BackKolor = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
         value={row.back_kolor}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -224,6 +221,7 @@ const FrontKolor = ({ row }) => {
   return (
     <td>
       <input
+       className={style.select}
         value={row.front_kolor}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -244,6 +242,7 @@ const FrontIlosc = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
         value={row.front_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -264,6 +263,7 @@ const BackIlosc = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
         value={row.back_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -284,6 +284,7 @@ const Info = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
         value={row.info}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {

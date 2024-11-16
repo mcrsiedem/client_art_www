@@ -24,15 +24,15 @@ export default function RowFragment({
   
     }
   return (
-    <tr draggable onDragStart={handleDragStart} key={row.id}>
-      <Dodaj row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} handleAddFragment={handleAddFragment} />
-      <Usun row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}handleRemoveItem={handleRemoveItem} />
+    <div className={style.rowFragmenty} draggable onDragStart={handleDragStart} key={row.id}>
+      
       <Typ row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Naklad row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
       <Wersja row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} />
-      <td>{row.ilosc_stron}</td>
-      <td></td>
-      <td></td>
+      <td > <div  className={style.selectFragmenty}>{row.ilosc_stron}</div></td>
+      <Dodaj row={row} handleChangeCardFragmenty={handleChangeCardFragmenty} handleAddFragment={handleAddFragment} />
+      <Usun row={row} handleChangeCardFragmenty={handleChangeCardFragmenty}handleRemoveItem={handleRemoveItem} />
+      
       <td></td>
       <td></td>
       <td></td>
@@ -41,14 +41,14 @@ export default function RowFragment({
       {/* <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td> */}
       <td></td>
       <td></td>
-    </tr>
+    </div>
   );
 }
 function Typ({ row }) {
   return (
     <td>
       <select
-        className={style.select}
+        className={style.rowFragmenty_typ}
         value={row.typ}
         disabled
       >
@@ -70,7 +70,7 @@ function Naklad({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input
-        className={style.element_naklad}
+        className={style.selectFragmenty}
         value={row.naklad}
         onChange={(e) =>
           handleChangeCardFragmenty({
@@ -86,6 +86,7 @@ function  Wersja({ row, handleChangeCardFragmenty }) {
   return (
     <td>
       <input
+       className={style.selectFragmenty}
         value={row.wersja}
         onChange={(e) =>
           {

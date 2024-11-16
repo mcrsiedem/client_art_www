@@ -12,6 +12,7 @@ import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
+import RowFragment from "./RowFragment";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -163,6 +164,7 @@ export default function RowElement({
 
       }
     return (
+      <>
       <div className={style.row3} key={row.id}>
                 {/* <div className={style.col_button}>
           <img
@@ -227,6 +229,17 @@ export default function RowElement({
           handleAddCard={handleAddCard}
         />
       </div>
+      {showFragmenty && (
+        <>
+          {fragmenty?.filter((x) => x.element_id == row.id)
+
+            .map((row, i) => {
+              return <RowFragment key={row.indeks} i={i} row={row} />;
+            })}
+          
+        </>
+      )}
+      </>
     );
   }
   function Rozwin({ fragmenty,row, showFragmenty, setShowFragmenty }) {

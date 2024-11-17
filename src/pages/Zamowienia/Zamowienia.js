@@ -23,10 +23,11 @@ function Zamowienia({ user, setUser }) {
   
   const data = contextApp.zamowienia
   const setData = contextApp.setZamowienia
+
 const listaPapierow = contextApp.listaPapierow;
 const setListaPapierow = contextApp.setListaPapierow;
-const listaGramatur = contextApp.listaGramatur;
-const setListaGramatur = contextApp.setListaGramatur;
+const listaPapierowNazwy = contextApp.listaPapierowNazwy;
+const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
 
   function dodaj_clikHandler() {
      setOpenModalInsert(true);
@@ -49,8 +50,8 @@ const setListaGramatur = contextApp.setListaGramatur;
 
     const res3 = await axios.get(IP + "lista-papierow");
     setListaPapierow([...res3.data]);
-    const res4 = await axios.get(IP + "lista-gramatur");
-    setListaGramatur([...res4.data]);
+    const res4 = await axios.get(IP + "lista-papierow-nazwy");
+    setListaPapierowNazwy([...res4.data]);
   }
 
   async function checkToken() {
@@ -122,10 +123,10 @@ const setListaGramatur = contextApp.setListaGramatur;
               setOpenModalInsert={setOpenModalInsert}
               user={user}
               setUser={setUser}
-              listaPapierow={listaPapierow}
-              setListPapierow={setListaPapierow}
-              listaGramatur={listaGramatur}
-              setListaGramatur={setListaGramatur}
+              // listaPapierow={listaPapierow}
+              // setListPapierow={setListaPapierow}
+              // listaGramatur={listaGramatur}
+              // setListaGramatur={setListaGramatur}
               open={open}
               // setOpen={setOpen}
               row={row}

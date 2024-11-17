@@ -16,13 +16,13 @@ export default function Elementy({
 
   handleChangeCardElementy,
   handleChangeCardFragmenty,
-  selected_papier,
-  setSelected_papier,
-  info,
-  setInfo,
-  listaPapierow,
-  listaGramatur,
-  setListaGramatur,
+  // selected_papier,
+  // setSelected_papier,
+  // info,
+  // setInfo,
+  // listaPapierow,
+  // listaGramatur,
+  // setListaGramatur,
   // isEdit,
   // setIsEdit,
   procesyElementow,
@@ -43,9 +43,9 @@ export default function Elementy({
   
         handleChangeCardElementy={handleChangeCardElementy}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
-        listaPapierow={listaPapierow}
-        listaGramatur={listaGramatur}
-        setListaGramatur={setListaGramatur}
+        // listaPapierow={listaPapierow}
+        // listaGramatur={listaGramatur}
+        // setListaGramatur={setListaGramatur}
         // isEdit={isEdit}
         // setIsEdit={setIsEdit}
         procesyElementow={procesyElementow}
@@ -211,9 +211,9 @@ function ElementyTable({
 function ElementyTable2({
   handleChangeCardElementy,
   handleChangeCardFragmenty,
-  listaPapierow,
-  listaGramatur,
-  setListaGramatur,
+  // listaPapierow,
+  // listaGramatur,
+  // setListaGramatur,
   procesyElementow,
   setProcesyElementow,
   setShowElementyProcesyInsert,
@@ -227,6 +227,8 @@ function ElementyTable2({
 
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
+
+
   return (
     <div className={style.main_elementy}>
 
@@ -243,9 +245,9 @@ function ElementyTable2({
                     row={row}
                     handleChangeCardElementy={handleChangeCardElementy}
                     handleChangeCardFragmenty={handleChangeCardFragmenty}
-                    listaPapierow={listaPapierow}
-                    listaGramatur={listaGramatur}
-                    setListaGramatur={setListaGramatur}
+                    // listaPapierow={listaPapierow}
+                    // listaGramatur={listaGramatur}
+                    // setListaGramatur={setListaGramatur}
                     procesyElementow={procesyElementow}
                     setProcesyElementow={setProcesyElementow}
                     setShowElementyProcesyInsert={setShowElementyProcesyInsert}

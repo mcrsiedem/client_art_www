@@ -18,14 +18,17 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 export default function RowElement({
     row,
     handleChangeCardElementy,
-    listaPapierow,
     setShowElementyProcesyInsert,
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
     const appcontext = useContext(AppContext);
-    const listaGramatur = appcontext.listaGramatur;
-    const setListaGramatur = appcontext.setListaGramatur;
+    const listaPapierow = appcontext.listaPapierow;
+    const setListaPapierow = appcontext.setListaPapierow;
+    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+    const [listaPapierowSelect, setListaPapierSelect] = useState(listaPapierow?.filter((x) => x.papier_id == row.papier_id));
+
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
     const setElementy = contextModalInsert.setElementy;
@@ -35,14 +38,12 @@ export default function RowElement({
     const setProcesyElementow = contextModalInsert.setProcesyElementow;
     const [showFragmenty, setShowFragmenty] = useState(false);
 
-    const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
-      useState(listaGramatur);
-    const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-      useState(listaGramatur?.filter((x) => x.papier_id == row.papier_id));
+    // const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
+    //   useState(listaGramatur);
+    // const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
+    //   useState(listaGramatur?.filter((x) => x.papier_id == row.papier_id));
 
-      const [listaGramaturSelect, setListaGramaturSelect] = useState(
-        listaGramatur?.filter((x) => x.papier_id == row.papier_id)
-      );
+
   
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
@@ -186,22 +187,23 @@ export default function RowElement({
         <PapierSelect
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychWykonczen={listaDostepnychWykonczen}
-          setListaDostepnychWykonczen={setListaDostepnychWykonczen}
-          listaPapierow={listaPapierow}
-          setListaGramatur={setListaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
-          setListaDostepnychGrmatur={setListaDostepnychGrmatur}
-          listaGramaturSelect={listaGramaturSelect}
-          setListaGramaturSelect={setListaGramaturSelect}
+          listaPapierowSelect={listaPapierowSelect}
+          setListaPapierSelect={setListaPapierSelect}
+          // listaGramatur={listaGramatur}
+          // listaDostepnychWykonczen={listaDostepnychWykonczen}
+          // setListaDostepnychWykonczen={setListaDostepnychWykonczen}
+          // listaPapierow={listaPapierow}
+          // setListaGramatur={setListaGramatur}
+          // listaDostepnychGramatur={listaDostepnychGramatur}
+          // setListaDostepnychGrmatur={setListaDostepnychGrmatur}
+          // listaGramaturSelect={listaGramaturSelect}
+          // setListaGramaturSelect={setListaGramaturSelect}
         />
         <Gramatura
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-          listaGramatur={listaGramatur}
-          listaDostepnychGramatur={listaDostepnychGramatur}
-          listaGramaturSelect={listaGramaturSelect}
+          listaPapierowSelect={listaPapierowSelect}
+          setListaPapierSelect={setListaPapierSelect}
         />
         <Uwagi
           row={row}
@@ -392,21 +394,13 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
   }
   
   function PapierSelect({
-    row,
-    handleChangeCardElementy,
-    // listaPapierow,
-    setListaGramatur,
-    // listaGramatur,
-    listaDostepnychWykonczen,
-    setListaDostepnychWykonczen,
-    listaDostepnychGramatur,
-    setListaDostepnychGrmatur,
-    listaGramaturSelect,
-    setListaGramaturSelect,
+    row,handleChangeCardElementy, listaPapierowSelect, setListaPapierSelect
   }) {
-    const appcontext = useContext(AppContext)
+    const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
-    const listaGramatur = appcontext.listaGramatur;
+    const setListaPapierow = appcontext.setListaPapierow;
+    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     return (
      
         <select
@@ -417,8 +411,8 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           className={style.select}
           value={row.papier_id}
           onChange={(e) => {
-            setListaDostepnychGrmatur(
-              listaGramatur.filter((wyk) => wyk.papier_id == e.target.value)
+            setListaPapierSelect(
+              listaPapierow.filter((wyk) => wyk.nazwa_id == e.target.value)
             );
             handleChangeCardElementy({
               ...row,
@@ -427,7 +421,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }}
         >
           {}
-          {listaPapierow.map((option) => (
+          {listaPapierowNazwy.map((option) => (
             <option key={option.id} value={option.id}>
               {option.nazwa}
             </option>
@@ -437,12 +431,12 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
     );
   }
   
-  function Gramatura({
-    row,
-    handleChangeCardElementy,
-    listaGramatur,
-    listaDostepnychGramatur,
-  }) {
+  function Gramatura({  row, handleChangeCardElementy, listaPapierowSelect, setListaPapierSelect}) {
+    const appcontext = useContext(AppContext);
+    const listaPapierow = appcontext.listaPapierow;
+    const setListaPapierow = appcontext.setListaPapierow;
+    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     return (
       
         <select
@@ -456,7 +450,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
         >
           <option value="0">wybierz</option>
-          {listaDostepnychGramatur?.sort((a, c) => a.gramatura - c.gramatura)
+          {listaPapierowSelect?.sort((a, c) => a.gramatura - c.gramatura)
             .map((option) =>
               row.papier_id !== 7 ? (
                 <option key={option.id} value={option.id}>

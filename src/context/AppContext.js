@@ -17,9 +17,9 @@ export const AppContextProvider = ({children})=>{
     const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
-    const [listaGramatur, setListaGramatur] = useState();
-    const [listaGramaturSelect, setListaGramaturSelect] = useState([]);
     const [listaPapierow, setListaPapierow] = useState();
+    const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
+    const [listaPapierowSelect, setListaPapierowSelect] = useState([]);
     const [procesory, setProcesory] = useState();
 
 //d
@@ -66,9 +66,11 @@ export const AppContextProvider = ({children})=>{
                     rowSelected, setRowSelected, // druk
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
-                    listaGramatur, setListaGramatur,
+      
                     listaPapierow, setListaPapierow,
-                    listaGramaturSelect, setListaGramaturSelect,
+                    listaPapierowNazwy, setListaPapierowNazwy,
+                    listaPapierowSelect, setListaPapierowSelect,
+
                     procesory,mnozniki, _status_wykonania,_stan_wykonania
 
             
@@ -76,9 +78,6 @@ export const AppContextProvider = ({children})=>{
             >
                 {children}
             </AppContext.Provider>
-
-
-
 
 }
 

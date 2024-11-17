@@ -221,11 +221,11 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
               setSelected_papier={setSelected_papier}
               info={info}
               setInfo={setInfo}
-              listaPapierow={listaPapierow}
-              listaGramatur={listaGramatur}
-              listaUszlachetnien={listaUszlachetnien}
-              setListaUszlachetnien={setListaUszlachetnien}
-              setListaGramatur={setListaGramatur}
+              // listaPapierow={listaPapierow}
+              // listaGramatur={listaGramatur}
+              // listaUszlachetnien={listaUszlachetnien}
+              // setListaUszlachetnien={setListaUszlachetnien}
+              // setListaGramatur={setListaGramatur}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
             

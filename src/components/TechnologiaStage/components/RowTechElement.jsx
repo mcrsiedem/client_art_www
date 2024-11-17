@@ -26,9 +26,8 @@ export default function RowTechElement({
   procesyElementow,
   setShowElementyProcesyInsert,
 }) {
-  const appcontext = useContext(AppContext);
+
   const techContext = useContext(TechnologyContext);
-  const listaGramatur = appcontext.listaGramatur;
   const elementy = techContext.elementy;
   const setElementy = techContext.setElementy;
   const fragmenty = techContext.fragmenty;
@@ -41,9 +40,6 @@ export default function RowTechElement({
   const elementyTech = techContext.elementyTech;
   const [showMenu, setShowMenu] = useState(false);
   const [showArkusze, setShowArkusze] = useState(false);
-  const [listaGramaturSelect, setListaGramaturSelect] = useState(
-    listaGramatur?.filter((x) => x.papier_id == row.papier_id)
-  );
 
 
   return (
@@ -79,16 +75,14 @@ export default function RowTechElement({
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
-          listaGramatur={listaGramatur}
-          listaGramaturSelect={listaGramaturSelect}
-          setListaGramaturSelect={setListaGramaturSelect}
+
         />
         <Gramatura
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
-          listaGramaturSelect={listaGramaturSelect}
+
         />
         <Uwagi row={row} />
         {/* <PapierInfo
@@ -368,31 +362,19 @@ function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
 function PapierSelect({
   row,
   handleChangeCardFragmenty_i_Elementy_Tech,
-  listaGramatur,
-  listaGramaturSelect,
-  setListaGramaturSelect,
+
 }) {
+
   const appcontext = useContext(AppContext);
-  const listaPapierow = appcontext.listaPapierow;
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
 
-  // const listaGramaturSelect = appcontext.listaGramaturSelect;
-  // const setListaGramaturSelect = appcontext.setListaGramaturSelect;
-
-  // listaPapierów = wszystkie papiery
-  // listaGramatur = wszystkie gramatury
-  // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
     <select
-      //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
-      //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
-      //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
-      // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
+
       className={style.select}
       defaultValue={row.papier_id}
       onChange={(e) => {
-        setListaGramaturSelect(
-          listaGramatur?.filter((wyk) => wyk.papier_id == e.target.value)
-        );
+
         handleChangeCardFragmenty_i_Elementy_Tech({
           ...row,
           papier_id: e.target.value,
@@ -400,7 +382,7 @@ function PapierSelect({
       }}
     >
       {}
-      {listaPapierow?.map((option) => (
+      {listaPapierowNazwy?.map((option) => (
         <option key={option.id} value={option.id}>
           {option.nazwa}
         </option>
@@ -412,17 +394,10 @@ function PapierSelect({
 function Gramatura({
   row,
   handleChangeCardFragmenty_i_Elementy_Tech,
-  listaGramaturSelect,
+
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
-  const listaGramatur = appcontext.listaGramatur;
-  // const listaGramaturSelect = appcontext.listaGramaturSelect;
-  const setListaGramaturSelect = appcontext.setListaGramaturSelect;
-
-  // listaPapierów = wszystkie papiery
-  // listaGramatur = wszystkie gramatury
-  // listaGramaturSelect = tylko gramatury pasujące do wybranego papieru
   return (
     <select
       className={style.select}
@@ -435,7 +410,7 @@ function Gramatura({
       }
     >
       <option value="0">wybierz</option>
-      {listaGramaturSelect?.sort((a, c) => a.gramatura - c.gramatura)
+      {listaPapierow.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
         .map((option) =>
           row.papier_id !== 7 ? (
             <option key={option.id} value={option.id}>

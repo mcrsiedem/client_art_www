@@ -27,21 +27,11 @@ export default function OprawaElementyStage({
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
   function wydzielOprawe() {
-    console.log("oprawa"+ oprawa)
-    const newOprawa = JSON.parse(JSON.stringify(oprawa))
 
-    // do bazy dodawany jest jeden pusty wpis, aby zgadzała się kolejność id
-    axios.post(IP + "oprawa", {
-      zamowienie_id: 0,
-      produkt_id: 0,
-      oprawa: 0,
-      naklad:0,
-      uwagi: "oprawa temp",
-      data_spedycji: "2024-01-30 00:00:00",
-      data_czystodrukow: "2024-01-30 00:00:00",
-      indeks: 0,
-}).then((res) => {
 
+    if(parseInt(oprawa_row.naklad) - parseInt(wydziel)>0){
+      
+      const newOprawa = JSON.parse(JSON.stringify(oprawa))
     newOprawa.push({
        id: Math.max(...newOprawa.map((f) => f.id)) + 1,
     
@@ -49,7 +39,7 @@ export default function OprawaElementyStage({
       produkt_id: oprawa_row.produkt_id,
       oprawa: oprawa_row.oprawa,
       bok_oprawy: oprawa_row.bok_oprawy,
-
+      wersja: oprawa_row.wersja,
       naklad: wydziel,
       indeks: Math.max(...newOprawa.map((f) => f.indeks)) + 1,
       uwagi: oprawa_row.uwagi,
@@ -72,15 +62,6 @@ export default function OprawaElementyStage({
               }
             })
           );
-
-})
-
-
-
-    
-
-
-
 
 
     //--------------------------------------------------
@@ -121,10 +102,17 @@ export default function OprawaElementyStage({
       })
     );
 
+ 
+    }
+    
+
+
+
+
 
   }
 
-  const [wydziel, setWdziel] = useState(500);
+  const [wydziel, setWdziel] = useState(1);
 
   return (
     <div className={style.insertContainer}>

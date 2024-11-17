@@ -50,7 +50,7 @@ function Panel({user,setUser}){
                                         <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div>
                                         <div className={style.kafle} >Ustawienia</div>
                                         <div className={style.kafle} >Historia</div>
-                                        <div className={style.kafle} ></div>
+                                        {/* <div className={style.kafle} ></div> */}
                                         
               
                         

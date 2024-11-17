@@ -14,7 +14,7 @@ export default function RowFragment({
 
     const contextModalInsert = useContext(ModalInsertContext);
     const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
-    const fragmenty = contextModalInsert.fragmenty;
+   
 
 
     function handleDragStart(){

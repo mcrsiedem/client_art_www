@@ -13,6 +13,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
 import RowFragment from "./RowFragment";
+import { getMaxID } from "actions/getMaxID";
+import { getMaxIndeks } from "actions/getMaxIndeks";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -239,15 +241,37 @@ export default function RowElement({
           
         </>
       )}
-      <DodajFragment row={row} fragmenty={fragmenty}/>
+      <DodajFragment row={row} fragmenty={fragmenty} setFragmenty={setFragmenty}/>
       </>
     );
   }
 
-  function DodajFragment({ row, fragmenty}) {
+  function handleAddFirstFragment(card,fragmenty,setFragmenty) {
+    const newFragmenty = fragmenty.slice();
+  
+    newFragmenty.push({
+      id: getMaxID(fragmenty),
+      zamowienie_id: card.zamowienie_id,
+      ilosc_stron: card.ilosc_stron,
+      produkt_id: card.produkt_id,
+      typ: card.typ,
+      wersja: card.nazwa,
+      naklad: card.naklad,
+      oprawa_id: card.oprawa_id,
+      element_id: card.id,
+      indeks: getMaxIndeks(newFragmenty),
+    });
+  
+    newFragmenty.sort((a, b) => a.indeks - b.indeks);
+    setFragmenty(newFragmenty);
+  }
+
+  function DodajFragment({ row, fragmenty,setFragmenty}) {
+
     if (fragmenty.filter(x=> x.element_id == row.id).length == 0){
          return (
-        <button>dodaj fragment</button>
+        <button className={style.btn_dodaj_fragment} 
+        onClick={()=>{handleAddFirstFragment(row,fragmenty,setFragmenty)}}>+</button>
      );
     }
  

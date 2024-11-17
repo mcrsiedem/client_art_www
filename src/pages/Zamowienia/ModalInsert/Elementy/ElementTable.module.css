@@ -330,3 +330,10 @@ font-size: 0.9rem;
 .alert2{
   background-color: none;
 }
+
+.btn_dodaj_fragment{
+  margin-left: 90px;
+  width: 30px;
+  border: none;
+  border-radius: 5px;
+}

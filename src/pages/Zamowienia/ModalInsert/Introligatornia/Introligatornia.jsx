@@ -252,7 +252,7 @@ const contextApp = useContext(AppContext);
 
       <select
         className={style.select}
-        defaultValue={row.oprawa}
+        value={row.oprawa}
         onChange={(event) => {
           handleChangeCardOprawa({...row, oprawa: event.target.value});
 

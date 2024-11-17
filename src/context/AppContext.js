@@ -19,7 +19,6 @@ export const AppContextProvider = ({children})=>{
     const [zamowienia, setZamowienia] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
-    const [listaPapierowSelect, setListaPapierowSelect] = useState([]);
     const [procesory, setProcesory] = useState();
 
 //d
@@ -69,7 +68,6 @@ export const AppContextProvider = ({children})=>{
       
                     listaPapierow, setListaPapierow,
                     listaPapierowNazwy, setListaPapierowNazwy,
-                    listaPapierowSelect, setListaPapierowSelect,
 
                     procesory,mnozniki, _status_wykonania,_stan_wykonania
 

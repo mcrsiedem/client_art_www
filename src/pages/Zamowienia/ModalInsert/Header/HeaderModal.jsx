@@ -215,6 +215,10 @@ function PokazStany({  }) {
   const procesyElementow = contextModalInsert.procesyElementow;
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
 
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+  const listaPapierow = appcontext.listaPapierow;
+
   return (
     <button
       onClick={async () => {
@@ -228,6 +232,8 @@ function PokazStany({  }) {
         console.log("Procesy elementów: ",procesyElementow)
         console.log("Pakowanie: ",pakowanie)
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
+        console.log("Papiery_nazwy: ",listaPapierowNazwy)
+        console.log("Papiery: ",listaPapierow)
 
       }}
       className={ style.btn}

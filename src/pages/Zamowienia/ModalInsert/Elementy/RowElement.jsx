@@ -27,7 +27,7 @@ export default function RowElement({
     const setListaPapierow = appcontext.setListaPapierow;
     const listaPapierowNazwy = appcontext.listaPapierowNazwy;
     const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-    const [listaPapierowSelect, setListaPapierSelect] = useState(listaPapierow?.filter((x) => x.papier_id == row.papier_id));
+    const [listaPapierowSelect, setListaPapierSelect] = useState(listaPapierow.filter((x) => x.nazwa_id == row.papier_id));
 
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
@@ -226,6 +226,7 @@ export default function RowElement({
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
+          listaPapierowSelect={listaPapierowSelect}
         />
       </div>
       {showFragmenty && (
@@ -345,14 +346,15 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   );
 }
 
-function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
+function Dodaj({ row, handleChangeCardElementy, handleAddCard,listaPapierowSelect }) {
   return (
     <div >
       <img
         className={style.expand}
         src={iconCopy}
         onClick={() => {
-          handleAddCard(row);
+          // handleAddCard(row);
+          console.log("listaPapierowSelect:", listaPapierowSelect)
         }}
         alt="Procesy"
       />
@@ -412,7 +414,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           value={row.papier_id}
           onChange={(e) => {
             setListaPapierSelect(
-              listaPapierow.filter((wyk) => wyk.nazwa_id == e.target.value)
+              listaPapierow?.filter((wyk) => wyk.nazwa_id == e.target.value)
             );
             handleChangeCardElementy({
               ...row,
@@ -441,6 +443,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
       
         <select
           className={style.select}
+          
           value={row.gramatura_id}
           onChange={(e) =>
             handleChangeCardElementy({
@@ -450,7 +453,8 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
         >
           <option value="0">wybierz</option>
-          {listaPapierowSelect?.sort((a, c) => a.gramatura - c.gramatura)
+          {listaPapierow.filter((x) => x.nazwa_id == row.papier_id)
+         .sort((a, c) => a.gramatura - c.gramatura)
             .map((option) =>
               row.papier_id !== 7 ? (
                 <option key={option.id} value={option.id}>

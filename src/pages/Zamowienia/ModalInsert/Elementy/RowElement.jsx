@@ -22,13 +22,6 @@ export default function RowElement({
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
-    const appcontext = useContext(AppContext);
-    const listaPapierow = appcontext.listaPapierow;
-    const setListaPapierow = appcontext.setListaPapierow;
-    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-    const [listaPapierowSelect, setListaPapierSelect] = useState(listaPapierow.filter((x) => x.nazwa_id == row.papier_id));
-
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
     const setElementy = contextModalInsert.setElementy;
@@ -37,13 +30,6 @@ export default function RowElement({
     const procesyElementow = contextModalInsert.procesyElementow;
     const setProcesyElementow = contextModalInsert.setProcesyElementow;
     const [showFragmenty, setShowFragmenty] = useState(false);
-
-    // const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
-    //   useState(listaGramatur);
-    // const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-    //   useState(listaGramatur?.filter((x) => x.papier_id == row.papier_id));
-
-
   
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
@@ -161,25 +147,9 @@ export default function RowElement({
     return (
       <>
       <div className={style.row3} key={row.id}>
-                {/* <div className={style.col_button}>
-          <img
-            src={logoExpand}
-            className={style.icon}
-            onClick={() => {
-              setExpand(!expand);
-            }}
-            alt="Procesy"
-          />
-        </div> */}
-        {/* <td>{row.id}</td> */}
-    
-      
         <Rozwin  row={row} fragmenty={fragmenty} showFragmenty={showFragmenty} setShowFragmenty={setShowFragmenty} />
         <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
         <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
-      
-        
-      
         <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}/>
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
@@ -187,36 +157,17 @@ export default function RowElement({
         <PapierSelect
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-          listaPapierowSelect={listaPapierowSelect}
-          setListaPapierSelect={setListaPapierSelect}
-          // listaGramatur={listaGramatur}
-          // listaDostepnychWykonczen={listaDostepnychWykonczen}
-          // setListaDostepnychWykonczen={setListaDostepnychWykonczen}
-          // listaPapierow={listaPapierow}
-          // setListaGramatur={setListaGramatur}
-          // listaDostepnychGramatur={listaDostepnychGramatur}
-          // setListaDostepnychGrmatur={setListaDostepnychGrmatur}
-          // listaGramaturSelect={listaGramaturSelect}
-          // setListaGramaturSelect={setListaGramaturSelect}
         />
         <Gramatura
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-          listaPapierowSelect={listaPapierowSelect}
-          setListaPapierSelect={setListaPapierSelect}
         />
         <Uwagi
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
 
-
-
         <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
-        {/* <Uwagi row={row} handleChangeCardElementy={handleChangeCardElementy} /> */}
-
-        {/* <td></td> */}
-
         <Usun
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -226,7 +177,6 @@ export default function RowElement({
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           handleAddCard={handleAddCard}
-          listaPapierowSelect={listaPapierowSelect}
         />
       </div>
       {showFragmenty && (
@@ -346,15 +296,14 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   );
 }
 
-function Dodaj({ row, handleChangeCardElementy, handleAddCard,listaPapierowSelect }) {
+function Dodaj({ row, handleAddCard }) {
   return (
     <div >
       <img
         className={style.expand}
         src={iconCopy}
         onClick={() => {
-          // handleAddCard(row);
-          console.log("listaPapierowSelect:", listaPapierowSelect)
+          handleAddCard(row);
         }}
         alt="Procesy"
       />
@@ -396,26 +345,17 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard,listaPapierowSelec
   }
   
   function PapierSelect({
-    row,handleChangeCardElementy, listaPapierowSelect, setListaPapierSelect
+    row,handleChangeCardElementy
   }) {
     const appcontext = useContext(AppContext);
-    const listaPapierow = appcontext.listaPapierow;
-    const setListaPapierow = appcontext.setListaPapierow;
     const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+
     return (
      
         <select
-          //  listaPapierow pobierana po otwarciu okienka dodaj zmamowienie ModalInsert
-          //  po wybraniu papieru filtruje się lista gramatur i czeka do wybrania z osobnym selecie
-          //  jednocześnie aktualizuje się papier_id w odpowiednim row w stanie elementów
-          // następnie wybieramy gramaturę, która aktualizuje gramatura_id w odpowiednim row
           className={style.select}
           value={row.papier_id}
           onChange={(e) => {
-            setListaPapierSelect(
-              listaPapierow?.filter((wyk) => wyk.nazwa_id == e.target.value)
-            );
             handleChangeCardElementy({
               ...row,
               papier_id: e.target.value,
@@ -433,12 +373,9 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard,listaPapierowSelec
     );
   }
   
-  function Gramatura({  row, handleChangeCardElementy, listaPapierowSelect, setListaPapierSelect}) {
+  function Gramatura({  row, handleChangeCardElementy}) {
     const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
-    const setListaPapierow = appcontext.setListaPapierow;
-    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     return (
       
         <select

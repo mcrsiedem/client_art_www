@@ -15,6 +15,7 @@ export default function Header({}){
   const techContext = useContext(TechnologyContext)
   const appcontext = useContext(AppContext)
   const listaPapierow = appcontext.listaPapierow;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
     return (
       <header className={style.headerMain}>
         <LeftPane>
@@ -34,6 +35,7 @@ export default function Header({}){
             console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
             console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
             console.log("Wykonania tech: ",techContext.wykonania)
+            // fechparametryTechnologii(27)
     
 // console.log("Data: "+ todayPlusDni(5))
            

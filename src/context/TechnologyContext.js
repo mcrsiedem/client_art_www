@@ -478,7 +478,7 @@ async function fechparametryTechnologii(idTechnologii) {
   setArkusze(res.data[8])
   setGrupaWykonan(res.data[9])
   setWykonania(res.data[10])
- //  setShowTechnologyStage(true)
+   setShowTechnologyStage(true)
 }
 
 async function fechGrupyAndWykonaniaAll() {

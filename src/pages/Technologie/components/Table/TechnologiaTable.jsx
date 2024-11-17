@@ -61,7 +61,7 @@ return(
             onDoubleClick={(node, event) => {
               fechparametryTechnologii(row.id)
               // setActiveRowId(row.id)
-              setShowTechnologyStage(true);
+              // setShowTechnologyStage(true);
             }}
             onClick={()=> {
                 // setRow(row.id)

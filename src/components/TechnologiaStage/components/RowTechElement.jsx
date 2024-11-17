@@ -410,7 +410,7 @@ function Gramatura({
       }
     >
       <option value="0">wybierz</option>
-      {listaPapierow.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
+      {listaPapierow?.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
         .map((option) =>
           row.papier_id !== 7 ? (
             <option key={option.id} value={option.id}>

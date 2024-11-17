@@ -76,6 +76,7 @@ export default function IntroligatorniaTable({
 function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
+  const lockDragDrop = contextModalInsert.lockDragDrop;
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
   const oprawa = contextModalInsert.oprawa;
@@ -172,7 +173,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                 .filter((el) => el.oprawa_id === row.id)
                 .map((row) => {
                   return (
-                    <tr draggable  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
+                    <tr draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
       
                       <td></td>
 

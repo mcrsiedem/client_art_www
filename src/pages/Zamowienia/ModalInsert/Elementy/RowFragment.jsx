@@ -14,6 +14,7 @@ export default function RowFragment({
 
     const contextModalInsert = useContext(ModalInsertContext);
     const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
+    const lockDragDrop = contextModalInsert.lockDragDrop;
    
 
 
@@ -25,7 +26,7 @@ export default function RowFragment({
     }
   return (
     <>
-    <div className={style.row_fragmenty} draggable onDragStart={handleDragStart} key={row.id}>
+    <div className={style.row_fragmenty} draggable={lockDragDrop} onDragStart={handleDragStart} key={row.id}>
       
       <Typ row={row} />
       <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />

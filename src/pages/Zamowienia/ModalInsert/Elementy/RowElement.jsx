@@ -18,29 +18,17 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 export default function RowElement({
     row,
     handleChangeCardElementy,
-    handleChangeCardFragmenty,
-    i,
     listaPapierow,
-    setListaGramatur,
-    listaGramatur,
-    setInfo,
-    // isEdit,
-    // setIsEdit,
-    // procesyElementow,
-    // setProcesyElementow,
-
     setShowElementyProcesyInsert,
-
-    expand,setExpand,
-
     handleChangeCardFragmenty_i_Elementy,
     handleChangeCardFragmenty_i_Elementy_IloscStron
   }) {
-
+    const appcontext = useContext(AppContext);
+    const listaGramatur = appcontext.listaGramatur;
+    const setListaGramatur = appcontext.setListaGramatur;
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
     const setElementy = contextModalInsert.setElementy;
-
     const fragmenty = contextModalInsert.fragmenty;
     const setFragmenty = contextModalInsert.setFragmenty;
     const procesyElementow = contextModalInsert.procesyElementow;
@@ -50,7 +38,11 @@ export default function RowElement({
     const [listaDostepnychWykonczen, setListaDostepnychWykonczen] =
       useState(listaGramatur);
     const [listaDostepnychGramatur, setListaDostepnychGrmatur] =
-      useState(listaGramatur);
+      useState(listaGramatur?.filter((x) => x.papier_id == row.papier_id));
+
+      const [listaGramaturSelect, setListaGramaturSelect] = useState(
+        listaGramatur?.filter((x) => x.papier_id == row.papier_id)
+      );
   
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
@@ -201,12 +193,15 @@ export default function RowElement({
           setListaGramatur={setListaGramatur}
           listaDostepnychGramatur={listaDostepnychGramatur}
           setListaDostepnychGrmatur={setListaDostepnychGrmatur}
+          listaGramaturSelect={listaGramaturSelect}
+          setListaGramaturSelect={setListaGramaturSelect}
         />
         <Gramatura
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           listaGramatur={listaGramatur}
           listaDostepnychGramatur={listaDostepnychGramatur}
+          listaGramaturSelect={listaGramaturSelect}
         />
         <Uwagi
           row={row}
@@ -406,6 +401,8 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
     setListaDostepnychWykonczen,
     listaDostepnychGramatur,
     setListaDostepnychGrmatur,
+    listaGramaturSelect,
+    setListaGramaturSelect,
   }) {
     const appcontext = useContext(AppContext)
     const listaPapierow = appcontext.listaPapierow;
@@ -459,8 +456,7 @@ function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
           }
         >
           <option value="0">wybierz</option>
-          {listaDostepnychGramatur
-            .sort((a, c) => a.gramatura - c.gramatura)
+          {listaDostepnychGramatur?.sort((a, c) => a.gramatura - c.gramatura)
             .map((option) =>
               row.papier_id !== 7 ? (
                 <option key={option.id} value={option.id}>

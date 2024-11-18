@@ -62,7 +62,6 @@ export default function IntroligatorniaTable({
         showOprawaElementyStage={showOprawaElementyStage}
         setShowOprawaElementyStage={setShowOprawaElementyStage}
         oprawa_row={oprawa_row}
-        handleChangeCardOprawa={handleChangeCardOprawa}
 
         />
       )}
@@ -129,38 +128,37 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
 
               <RodzajOprawy
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
-                handleChangeCardProdukty={handleChangeCardProdukty} 
+       
               
               />
       <td></td>
 
               <WersjaOprawa
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
+          
               />
                   <NakladOprawa
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
+        
               />
               <BokOprawy
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
+           
               />
 
 <DataCzystodrukow
   row={row}
-  handleChangeCardOprawa={handleChangeCardOprawa}
+
 />
               <DataSpedycji
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
+            
               />
 
 
               <UwagiOprawa
                 row={row}
-                handleChangeCardOprawa={handleChangeCardOprawa}
+             
               />
 
                 
@@ -432,7 +430,9 @@ function Typ({ row }) {
 }
 
 
-function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
+function  WersjaOprawaFragment({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
     <td>
       <input 
@@ -441,7 +441,7 @@ function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
         onChange={(e) =>
 
           {       if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-          handleChangeCardFragmenty({
+            handleUpdateRowFragmenty({
             ...row,
             wersja: e.target.value,
           })
@@ -451,7 +451,9 @@ function  WersjaOprawaFragment({ row, handleChangeCardFragmenty }) {
   );
 }
 
-function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
+function  NakladOprawaFregment({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
     <td>
       <input
@@ -462,7 +464,7 @@ function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
           {
 
             if (e.target.value === '' || reg_int.test(e.target.value)) {
-                        handleChangeCardFragmenty({
+              handleUpdateRowFragmenty({
             ...row,
             naklad: e.target.value,
           })
@@ -474,13 +476,15 @@ function  NakladOprawaFregment({ row, handleChangeCardFragmenty }) {
     </td>
   );
 }
-function  IloscStronFragment({ row, handleChangeCardFragmenty }) {
+function  IloscStronFragment({ row,  }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
     <td>
       <input
         value={row.naklad}
         onChange={(e) =>
-          handleChangeCardFragmenty({
+          handleUpdateRowFragmenty({
             ...row,
             naklad: e.target.value,
           })

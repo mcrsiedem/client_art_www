@@ -17,7 +17,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 export default function OprawaElementyStage({
   setShowOprawaElementyStage,
   oprawa_row,
-  handleChangeCardOprawa,
+  
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
 

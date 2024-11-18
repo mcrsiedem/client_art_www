@@ -10,7 +10,7 @@ import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, inital
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(false);
-    const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
+    const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
@@ -55,6 +55,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
+      setSaveButtonDisabled(false)
     };
 
     const handleUpdateRowElementy = (row) => {
@@ -67,6 +68,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
+      setSaveButtonDisabled(false)
     };
 
     const handleUpdateRowFragmenty = (row) => {
@@ -79,6 +81,20 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
+      setSaveButtonDisabled(false)
+    };
+
+    const handleUpdateRowOprawa = (row) => {
+      setOprawa(
+        oprawa.map((t) => {
+          if (t.id === row.id) {
+            return row;
+          } else {
+            return t;
+          }
+        })
+      )
+      setSaveButtonDisabled(false)
     };
 
     const handleUpdateRowPakowanie = (row) => {
@@ -103,6 +119,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
+      setSaveButtonDisabled(false)
     };
 
     const handleUpdateKosztyDodatkoweTemporary = (row) => {
@@ -139,6 +156,7 @@ export const ModalInsertContextProvider = ({children})=>{
         })
       );
     }, [kosztyDodatkoweTemporary]);
+
     
     return (
       <ModalInsertContext.Provider
@@ -170,6 +188,7 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowElementy,
           handleUpdateRowFragmenty,
           handleUpdateRowPakowanie,
+          handleUpdateRowOprawa,
           handleUpdateRowProcesyElementow,
           handleUpdateKosztyDodatkoweTemporary,
           handleDeleteKosztyDodatkoweTemporary,

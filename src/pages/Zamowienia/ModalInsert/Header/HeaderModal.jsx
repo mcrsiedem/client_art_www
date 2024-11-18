@@ -130,15 +130,38 @@ const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
   />
   )
 }
+function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+
+  return (
+    <button
+
+      onClick={async () => {
+        setSaveAs(false);
+        postZamowienieObj();
+        setSaveButtonDisabled(true);
+
+        // setOrderClosed
+      }}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      disabled={isSaveButtonDisabled}
+    >
+      Zapisz
+    </button>
+  );
+}
 
 function ZapiszJako({
-  isSaveButtonDisabled,
+
   postZamowienieObj,
   setShowSaveAs,
   setSaveAs,
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   return (
     <button
       disabled={isSaveButtonDisabled}
@@ -243,27 +266,7 @@ function PokazStany({  }) {
   );
 }
 
-function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
 
-  return (
-    <button
-      onClick={async () => {
-        setSaveAs(false);
-        postZamowienieObj();
-        // setSaveButtonDisabled(true);
-
-        // setOrderClosed
-      }}
-      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
-      disabled={isSaveButtonDisabled}
-    >
-      Zapisz
-    </button>
-  );
-}
 
 function ButtonSprawdz({
   isSaveButtonDisabled,

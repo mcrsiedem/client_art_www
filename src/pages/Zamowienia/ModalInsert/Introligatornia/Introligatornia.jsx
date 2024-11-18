@@ -219,32 +219,39 @@ function Header() {
   return <div className={style.header}> Introligatornia</div>;
 }
 
-function DataSpedycji({row,handleChangeCardOprawa}){
+function DataSpedycji({row}){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  
+
   return(
       <td  className={style.col}>
       <input className={style.input} type="date"
       defaultValue={row.data_spedycji}
       onChange={(event) => {
-        handleChangeCardOprawa({...row, data_spedycji: event.target.value});
+        handleUpdateRowOprawa({...row, data_spedycji: event.target.value});
       }}></input>
     </td>
   );
 }
-function DataCzystodrukow({row,handleChangeCardOprawa}){
+function DataCzystodrukow({row,}){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return(
       <td className={style.col}>
       <input className={style.input} type="date"
       defaultValue={row.data_czystodrukow}
       onChange={(event) => {
-        handleChangeCardOprawa({...row, data_czystodrukow: event.target.value});
+        handleUpdateRowOprawa({...row, data_czystodrukow: event.target.value});
       }}></input>
     </td>
   );
 }
 
-function RodzajOprawy({ row,handleChangeCardOprawa}) {
+function RodzajOprawy({ row}) {
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
+const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
 const setProdukty = contextModalInsert.setProdukty;
 const contextApp = useContext(AppContext);
 
@@ -255,7 +262,7 @@ const contextApp = useContext(AppContext);
         className={style.select}
         value={row.oprawa}
         onChange={(event) => {
-          handleChangeCardOprawa({...row, oprawa: event.target.value});
+          handleUpdateRowOprawa({...row, oprawa: event.target.value});
 
 
           if(row.indeks == 0){
@@ -283,7 +290,7 @@ const contextApp = useContext(AppContext);
   );
 }
 
-function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOprawa}) {
+function DodajOprawe({ row,oprawa,setOprawa}) {
   return (
     <td className={style.col_button} >
             <img
@@ -296,7 +303,7 @@ function DodajOprawe({ row, handleChangeCardOprawa ,handleAddCard,oprawa,setOpra
   );
 }
 
-function Usun({ row, handleChangeCardOprawa ,handleRemoveItem }) {
+function Usun({ row ,handleRemoveItem }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
@@ -338,23 +345,23 @@ function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,setShowOpraw
     </td>
   );
 }
-function PokazElementy({ setShowOprawaElementyStage  }) {
-  return (
-    <td className={style.col_button}>
-      <div >
-      <img
-            className={style.pokaz_elementy_oprawy}
-            src={iconUstawienia}
-            onClick={() => {
-              setShowOprawaElementyStage(true);
-            }}
-            alt="Procesy"
-          />
-      </div>
+// function PokazElementy({ setShowOprawaElementyStage  }) {
+//   return (
+//     <td className={style.col_button}>
+//       <div >
+//       <img
+//             className={style.pokaz_elementy_oprawy}
+//             src={iconUstawienia}
+//             onClick={() => {
+//               setShowOprawaElementyStage(true);
+//             }}
+//             alt="Procesy"
+//           />
+//       </div>
 
-    </td>
-  );
-}
+//     </td>
+//   );
+// }
 
 const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) => {
 
@@ -483,7 +490,9 @@ function  IloscStronFragment({ row, handleChangeCardFragmenty }) {
   );
 }
 
-function  WersjaOprawa({ row, handleChangeCardOprawa }) {
+function  WersjaOprawa({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
       <input 
@@ -491,7 +500,7 @@ function  WersjaOprawa({ row, handleChangeCardOprawa }) {
         value={row.wersja}
         onChange={(e) =>
           {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-            handleChangeCardOprawa({
+            handleUpdateRowOprawa({
             ...row,
             wersja: e.target.value,
           })}}
@@ -501,7 +510,9 @@ function  WersjaOprawa({ row, handleChangeCardOprawa }) {
   );
 }
 
-function  BokOprawy({ row, handleChangeCardOprawa }) {
+function  BokOprawy({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
       <input 
@@ -510,7 +521,7 @@ function  BokOprawy({ row, handleChangeCardOprawa }) {
         onChange={(e) =>
           {
             if (e.target.value === '' || reg_int.test(e.target.value)) {
-            handleChangeCardOprawa({
+              handleUpdateRowOprawa({
             ...row,
             bok_oprawy: e.target.value,
           })}}
@@ -520,7 +531,9 @@ function  BokOprawy({ row, handleChangeCardOprawa }) {
   );
 }
 
-function  UwagiOprawa({ row, handleChangeCardOprawa }) {
+function  UwagiOprawa({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
       <input 
@@ -529,7 +542,7 @@ function  UwagiOprawa({ row, handleChangeCardOprawa }) {
         onChange={(e) =>
           {
             if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-            handleChangeCardOprawa({
+              handleUpdateRowOprawa({
             ...row,
             uwagi: e.target.value,
           })}}
@@ -539,7 +552,9 @@ function  UwagiOprawa({ row, handleChangeCardOprawa }) {
   );
 }
 
-function  NakladOprawa({ row, handleChangeCardOprawa }) {
+function  NakladOprawa({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
       <input 
@@ -548,7 +563,7 @@ function  NakladOprawa({ row, handleChangeCardOprawa }) {
         onChange={(e) =>
           {
             if (e.target.value === '' || reg_int.test(e.target.value)) {
-            handleChangeCardOprawa({
+              handleUpdateRowOprawa({
             ...row,
             naklad: e.target.value,
           })}}

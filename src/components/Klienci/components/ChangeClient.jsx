@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "./ChangeClient.module.css";
 
 
@@ -10,6 +11,8 @@ export default function ChangeClient({
   daneZamowienia, setDaneZamowienia
 
 }) {
+
+
   return (
     <div className={style.window}>
       <Header setShowChange={setShowChange} rowID={rowID}></Header>
@@ -21,6 +24,8 @@ export default function ChangeClient({
 }
 
 function Zmien({ rowID,setShowChange,daneZamowienia,setDaneZamowienia}) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <button
       className={style.btn_delete}
@@ -30,7 +35,7 @@ function Zmien({ rowID,setShowChange,daneZamowienia,setDaneZamowienia}) {
      
           setDaneZamowienia({ ...daneZamowienia, klient_id: rowID.current.id })
           setShowChange(false)
-        
+          setSaveButtonDisabled(false)
         
       }}
     >

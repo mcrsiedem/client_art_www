@@ -114,6 +114,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
       // pobranie szczegółów zamówienia
       fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
+      setSaveButtonDisabled(true)
     }else{
       //zerowanie stanów
       setDaneZamowienia(initialDane)
@@ -125,6 +126,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       setProcesyElementow(initialProcesy)
       setKosztyDodatkowe([])
       setKosztyDodatkoweZamowienia([])
+      setSaveButtonDisabled(true)
     }
 
 
@@ -175,7 +177,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
            setKosztyDodatkoweZamowienia(res.data[7])
            setKosztyDodatkowe(res.data[8])
 
-
+          //  setSaveButtonDisabled(true)
           //  console.log("Koszty",res.data[7])
            // tutaj odebrać zestaw jeśli istnieje
   }

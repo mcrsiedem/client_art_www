@@ -35,6 +35,7 @@ export default function Header({}){
             console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
             console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
             console.log("Wykonania tech: ",techContext.wykonania)
+            console.log("listaPapierow: ",appcontext.listaPapierow)
             // fechparametryTechnologii(27)
     
 // console.log("Data: "+ todayPlusDni(5))

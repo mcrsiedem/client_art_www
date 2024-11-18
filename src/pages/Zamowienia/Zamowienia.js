@@ -123,12 +123,8 @@ const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
               setOpenModalInsert={setOpenModalInsert}
               user={user}
               setUser={setUser}
-              // listaPapierow={listaPapierow}
-              // setListPapierow={setListaPapierow}
-              // listaGramatur={listaGramatur}
-              // setListaGramatur={setListaGramatur}
               open={open}
-              // setOpen={setOpen}
+
               row={row}
               data={data}
               setData={setData}

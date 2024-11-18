@@ -372,7 +372,7 @@ function PapierSelect({
     <select
 
       className={style.select}
-      defaultValue={row.papier_id}
+      value={row.papier_id}
       onChange={(e) => {
 
         handleChangeCardFragmenty_i_Elementy_Tech({
@@ -401,7 +401,7 @@ function Gramatura({
   return (
     <select
       className={style.select}
-      defaultValue={row.gramatura_id}
+      value={row.gramatura_id}
       onChange={(e) =>
         handleChangeCardFragmenty_i_Elementy_Tech({
           ...row,
@@ -412,7 +412,7 @@ function Gramatura({
       <option value="0">wybierz</option>
       {listaPapierow?.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
         .map((option) =>
-          row.papier_id !== 7 ? (
+      
             <option key={option.id} value={option.id}>
               {option.gramatura}{" "}
               {option.bulk !== 1 ? (
@@ -424,11 +424,7 @@ function Gramatura({
                 <p>g/m2 </p>
               )}
             </option>
-          ) : (
-            <option key={option.id} value={option.id}>
-              {option.gramatura} g/m2 vol. {option.bulk} {option.wykonczenie}
-            </option>
-          )
+          
         )}
     </select>
   );

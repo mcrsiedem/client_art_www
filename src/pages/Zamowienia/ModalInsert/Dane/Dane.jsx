@@ -401,7 +401,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
-      <label className={style.label}> Nr zlecenia </label>
+      <label className={style.label}> Nr zamówienia </label>
       <input className={style.input} type="text"
       value={daneZamowienia.nr}
       onChange={(event) => {

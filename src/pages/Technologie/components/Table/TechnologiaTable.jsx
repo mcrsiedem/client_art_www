@@ -4,16 +4,23 @@ import style from "./TechnologiaTable.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { getTechnology } from "actions/getTechnolgy";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { IP } from "utils/Host";
 export default function TechnologiaTable(){
   const techContext = useContext(TechnologyContext);
   const technology = techContext.technology;
   const setTechnology = techContext.setTechnology;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  // const updateTechnology = TechnologyContext.updateTechnology;
-  const setShowTechnologyStage = techContext.setShowTechnologyStage;
-  const test = techContext.test;
+  // const setShowTechnologyStage = techContext.setShowTechnologyStage;
+  // const test = techContext.test;
 
+  // const appContext = useContext(AppContext);
 
+  // const setListaPapierow =appContext.setListaPapierow;
+  // const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
+
+  // const navigate = useNavigate();
 
   const effectRan = useRef(false);
   useEffect(() => {
@@ -21,6 +28,7 @@ export default function TechnologiaTable(){
       //  fetchTechnologie();
       // const socket = io.connect("http://localhost:3002")
       // console.log(technology)
+      // checkToken()
        getTechnology(setTechnology)
     }
     return () => {
@@ -28,6 +36,28 @@ export default function TechnologiaTable(){
     };
   }, []);
 
+
+  // async function checkToken() {
+  //   axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
+  //     if (res.data.Status === "Success") {
+  //       // fechZamowienia();
+  //       // getTechnology(setTechnology)
+
+  //  start()
+        
+  //     } else {
+  //       navigate("/Login");
+  //     }
+  //   });
+  // }
+
+  // const start = async() => {
+  //   getTechnology(setTechnology)
+  //   const res3 = await axios.get(IP + "lista-papierow");
+  //   setListaPapierow([...res3.data]);
+  //   const res4 = await axios.get(IP + "lista-papierow-nazwy");
+  //   setListaPapierowNazwy([...res4.data]);
+  // }
 
   
 return(

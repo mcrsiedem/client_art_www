@@ -7,34 +7,13 @@ import { IP } from "../utils/Host";
 
 export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,
   procesyElementow}){
-            // console.clear();
-
-    // let produktyEdit = JSON.parse(JSON.stringify(produkty))
 
     let daneZamowieniaEdit = {}
-    // let produktyEdit = []
-    // let elementyEdit = []
-    // let fragmentyEdit = []
-    // let oprawaEdit = []
-    // let pakowanieEdit = []
-    // let procesyElementowEdit = []
-            
-
 
             let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
             daneZamowieniaEdit = savedDane.daneZamowienia
-            // produktyEdit = savedDane.produkty
-            // elementyEdit = savedDane.elementy
-            // fragmentyEdit = savedDane.fragmenty
-            // oprawaEdit = savedDane.oprawa
-            // pakowanieEdit = savedDane.pakowanie
-            // procesyElementowEdit = savedDane.procesyElementow
-
 
             setDaneZamowienia(daneZamowieniaEdit)
-            // console.log("daneZamowienia :" , daneZamowieniaEdit)
-            // console.log("produktyEdit :" , produktyEdit)
-
 
      refreshZamowienia();
 
@@ -73,6 +52,7 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
       przedplata: daneZamowienia.przedplata,
       termin_platnosci: daneZamowienia.termin_platnosci,
       fsc: daneZamowienia.fsc,
+      saveAs: saveAs,
 
       final: 1 // ostateczna wersja zamówienia, którą widać na liście
     }, produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow])
@@ -89,8 +69,6 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
   procesyElementow = res.data[6];
 
     
-
-
       resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,pakowanie,procesyElementow})
 
   })

@@ -39,7 +39,8 @@ const setDaneZamowienia= contextModal.setDaneZamowienia;
                       // setDaneZamowienia({...daneZamowienia, prime_id: daneZamowienia.id} )
                         setSaveAs(true)
                         // postZamowienieObj();
-                        postZamowienieObjSaveAs();
+                        // postZamowienieObjSaveAs();
+                        postZamowienieObj();
                         setShowSaveAs(!showSaveAs)
                     }}
                     >

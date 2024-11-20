@@ -180,6 +180,8 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
 </div>
 }
 function Table_tr({ row,open2,setRow}) {
+  const techContext = useContext(TechnologyContext)
+  const technology = techContext.technology; // technologie
 
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   return (
@@ -216,6 +218,7 @@ function Table_tr({ row,open2,setRow}) {
           <td>{row.oprawa_nazwa}</td>
           
         </tr>
+       
             {showKartaTechnologiczna && (
             
             <>
@@ -225,6 +228,16 @@ function Table_tr({ row,open2,setRow}) {
             <td></td>
             <td></td>
             <td> <CreateTechnmologiaBtn row={row}/></td> 
+            {technology?.filter(x=> x.zamowienie_id == row.id).map( (l,i) => {
+  return     <div draggable  className={style.row5} key={l.id}>
+
+<td className={style.input3}> fragment </td>
+<td className={style.input3}> fragment </td>
+<td className={style.input3}> fragment </td>
+<td className={style.input3}> fragment </td>
+
+</div>
+})}
             </>
               
             )}

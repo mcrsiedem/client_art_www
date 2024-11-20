@@ -37,10 +37,10 @@ const setDaneZamowienia= contextModal.setDaneZamowienia;
                     className={style.btn}
                     onClick={() => {
                       // setDaneZamowienia({...daneZamowienia, prime_id: daneZamowienia.id} )
-                        setSaveAs(true)
+                        // setSaveAs(true)
                         // postZamowienieObj();
                         // postZamowienieObjSaveAs();
-                        postZamowienieObj();
+                        postZamowienieObjSaveAs();
                         setShowSaveAs(!showSaveAs)
                     }}
                     >

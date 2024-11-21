@@ -462,7 +462,7 @@ console.log(element)
 }
 
 async function fechparametryTechnologii(idTechnologii) {
-
+  console.log("fechparametryTechnologii  -  pobieranie technologii")
   //pobierz wszystkie objekty do TECHNOLOGI nr... idTechnologii
   // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii);

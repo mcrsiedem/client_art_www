@@ -30,6 +30,7 @@ export default function TechnologiaTable(){
       // console.log(technology)
       // checkToken()
        getTechnology(setTechnology)
+
     }
     return () => {
       effectRan.current = true;

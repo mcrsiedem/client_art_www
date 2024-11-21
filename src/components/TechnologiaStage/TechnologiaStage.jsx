@@ -41,14 +41,9 @@ export default function TechnologiaStage() {
               </div>
         </div>
 
-
-
-
         {showElementyTechProcesyInsert && (
           <ProcesElementTech procesyElementowTech={procesyElementowTech} />
         )}
-
-
 
 
       </div>

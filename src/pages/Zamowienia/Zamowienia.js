@@ -171,7 +171,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
   <tbody>
     {zamowienia.map((row) => {
       return (
-<Table_tr key= {row.id} row={row} open2={open2} setRow={setRow}/>
+<Table_tr key= {row.id}row={row} open2={open2} setRow={setRow}/>
         
       );
     })}
@@ -179,70 +179,74 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
 </table>
 </div>
 }
-function Table_tr({ row,open2,setRow}) {
-  const techContext = useContext(TechnologyContext)
+function Table_tr({ row, open2, setRow }) {
+  const techContext = useContext(TechnologyContext);
   const technology = techContext.technology; // technologie
 
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   return (
+    <>
+      <tr
+        className={style.tr22}
+        key={row.id}
+        onDoubleClick={(node, event) => {
+          open2();
+          // open2(row.id);
+          setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+        }}
+      >
+        <SelectBox row={row} />
+        <td>{row.id} </td>
+        <td>{row.nr} </td>
+        <td>{row.rok} </td>
+        <ShowTechnmologiaBtn
+          row={row}
+          setShowKartaTechnologiczna={setShowKartaTechnologiczna}
+          showKartaTechnologiczna={showKartaTechnologiczna}
+        />
+        <td className={style.col_klient}>{row.klient}</td>
+        <td>{row.tytul}</td>
+        <td>{row.firma}</td>
+        <td className={style.td_naklad}>{row.naklad}</td>
+        <td>{row.ilosc_stron}</td>
 
-<>
-        <tr className={style.tr22}
-          key={row.id}
-        
-          onDoubleClick={(node, event) => {
-            open2();
-            // open2(row.id);
-            setRow({ id: row.id, prime_id:row.prime_id}); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+        <td>{row.utworzono}</td>
+        <td>{row.data_spedycji}</td>
 
-          }}
-        >
-          <SelectBox row={row}/>
-          <td>{row.id} </td>
-          <td>{row.nr} </td>
-          <td>{row.rok} </td>
-          <ShowTechnmologiaBtn row={row}setShowKartaTechnologiczna={setShowKartaTechnologiczna} showKartaTechnologiczna={showKartaTechnologiczna}/>
-          <td className={style.col_klient}>{row.klient}</td>
-          <td>{row.tytul}</td>
-          <td>{row.firma}</td>
-          <td className={style.td_naklad}>{row.naklad}</td>
-          <td>{row.ilosc_stron}</td>
+        <td>{row.final}</td>
+        <td>{row.format_x}</td>
+        <td>{row.format_y}</td>
+        <td>{row.oprawa_nazwa}</td>
+      </tr>
 
-  
-          <td>{row.utworzono}</td>
-          <td>{row.data_spedycji}</td>
+      {showKartaTechnologiczna && (
+        <>
+          <tr>
+            {technology
+              ?.filter((x) => x.zamowienie_id == row.id)
+              .map((l, i) => {
+                return (
+                  <tr draggable className={style.row5} key={l.id}>
+                    <td className={style.input3}> fragment </td>
+                  </tr>
+                );
+              })}
+          </tr>
 
-          <td>{row.final}</td>
-          <td>{row.format_x}</td>
-          <td>{row.format_y}</td>
-          <td>{row.oprawa_nazwa}</td>
-          
-        </tr>
-       
-            {showKartaTechnologiczna && (
-            
-            <>
+          <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td> <CreateTechnmologiaBtn row={row}/></td> 
-            {technology?.filter(x=> x.zamowienie_id == row.id).map( (l,i) => {
-  return     <div draggable  className={style.row5} key={l.id}>
-
-<td className={style.input3}> fragment </td>
-<td className={style.input3}> fragment </td>
-<td className={style.input3}> fragment </td>
-<td className={style.input3}> fragment </td>
-
-</div>
-})}
-            </>
-              
-            )}
-        
+            <td>
+              {" "}
+              <CreateTechnmologiaBtn row={row} />
+            </td>
+          </tr>
         </>
+      )}
+    </>
   );
 }
 

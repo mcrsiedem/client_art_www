@@ -69,6 +69,7 @@ return(
         <th className={style.col_nr}>Nr</th>
         <th className={style.col_rok}>Rok</th> 
         <th className={style.col_tytul}>tytul</th>
+        <th className={style.col_tytul}>zamowienie_id</th>
        
 
       </tr>
@@ -104,6 +105,7 @@ return(
             <td>{row.rok} </td>
    
             <td>{row.tytul}</td>
+            <td>{row.zamowienie_id}</td>
 
           </tr>
         );

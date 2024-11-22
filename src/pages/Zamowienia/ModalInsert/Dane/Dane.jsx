@@ -201,7 +201,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Opiekun </label>
       <select
         className={style.select}
-        valueDefault={DecodeToken(sessionStorage.getItem("token")).id}
+        value={DecodeToken(sessionStorage.getItem("token")).id}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
           setSaveButtonDisabled(false)

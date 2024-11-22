@@ -15,7 +15,7 @@ export default function IntroligatorniaTable() {
   return (
     <div className={style.container}>
       {oprawaTech.map((row) => (
-        <OprawaRow row={row} />
+        <OprawaRow key={row.id} row={row} />
       ))}
     </div>
   );

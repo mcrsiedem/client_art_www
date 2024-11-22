@@ -171,7 +171,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
   <tbody>
     {zamowienia.map((row) => {
       return (
-<Table_tr row={row} open2={open2} setRow={setRow}/>
+<Table_tr key= {row.id} row={row} open2={open2} setRow={setRow}/>
         
       );
     })}

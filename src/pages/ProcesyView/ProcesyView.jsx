@@ -39,6 +39,7 @@ export default function ProcesyView({ user, setUser }) {
 
   useEffect(() => {
     checkToken();
+
   }, []);
 
 
@@ -190,7 +191,7 @@ function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
     <div className={style.procesor_btn_container}>
 
 {procesory
-         .filter(x => x.grupa == selectedProces )
+         ?.filter(x => x.grupa == selectedProces )
         .map((option) => (
 
           <Btn_procesor setSelectedProcesor={setSelectedProcesor} id={option.id} nazwa={option.nazwa}/>

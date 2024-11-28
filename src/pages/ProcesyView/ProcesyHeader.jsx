@@ -107,9 +107,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
 
         }}
       >
-        {procesListName
-        // .filter(x => x.grupa == rowProces.nazwa_id )
-        .map((option) => (
+        {procesListName?.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

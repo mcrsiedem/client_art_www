@@ -14,10 +14,6 @@ export default function Technologie(){
   const techContext = useContext(TechnologyContext);
   const technology = TechnologyContext.technology;
   const fechTechnology = techContext.fechTechnology;
-  const showTechnologyStage = techContext.showTechnologyStage;
-
-  const [dataTechnologie,setDataTechnologie] =useState([]);
-  const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
 
 
   const appContext = useContext(AppContext);
@@ -33,6 +29,7 @@ export default function Technologie(){
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
         fechTechnology();
+        console.log("Succes fech technologie")
         // getTechnology(setTechnology)
 
    start()
@@ -43,16 +40,19 @@ export default function Technologie(){
     });
   }
 
+  // tutaj nie chciały się ładować technologie ale tylko na serwerze
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+  //     checkToken()
+  //   }
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+
   useEffect(() => {
-    if (effectRan.current === true) {
-      checkToken()
-    }
-    return () => {
-      effectRan.current = true;
-    };
+    checkToken();
   }, []);
-
-
 
 
   const start = async() => {

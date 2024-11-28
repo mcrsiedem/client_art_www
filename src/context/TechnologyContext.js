@@ -495,7 +495,10 @@ async function fechGrupyAndWykonaniaAll() {
 async function fechTechnology() {
 
   // wszystkie grupy 
+  const res = await axios.get(IP + "technologie");
+
   
+    setTechnology([...res.data]);
   
     // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
     // const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");

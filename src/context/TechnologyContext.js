@@ -491,6 +491,19 @@ async function fechGrupyAndWykonaniaAll() {
   setWykonaniaAll(res.data[0])
   setGrupWykonanAll(res.data[1])
 }
+
+async function fechTechnology() {
+
+  // wszystkie grupy 
+  
+  
+    // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
+    // const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
+    // setWykonaniaAll(res.data[0])
+    // setGrupWykonanAll(res.data[1])
+  }
+
+
     
     return  <TechnologyContext.Provider 
                 value={{
@@ -536,6 +549,7 @@ async function fechGrupyAndWykonaniaAll() {
                     isSaveButtonDisabled, setSaveButtonDisabled,
                     openTechnologiaId,setOpenTechnologiaId,
                     fechparametryTechnologii,
+                    fechTechnology,
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll
                 }}
             >

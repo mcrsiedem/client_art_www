@@ -41,7 +41,7 @@ function Panel({user,setUser}){
 
                                         <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
                                         <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }>Technologie</div>
-                                        <div className={style.kafle} onClick={() => { navigate("/Print") }} >Procesy </div> 
+                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} >Procesy </div> 
                                         <div className={style.kafle} >CTP</div>
                                         {/* <div className={style.kafle} >Falcowanie</div>
                                         <div className={style.kafle} >Oprawa</div>

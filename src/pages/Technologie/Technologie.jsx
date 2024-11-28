@@ -10,8 +10,11 @@ import TechnologiaStage from "../../components/TechnologiaStage/TechnologiaStage
 import { AppContext } from "context/AppContext";
 
 export default function Technologie(){
+
+  const techContext = useContext(TechnologyContext);
   const technology = TechnologyContext.technology;
-  const showTechnologyStage = TechnologyContext.showTechnologyStage;
+  const fechTechnology = techContext.fechTechnology;
+  const showTechnologyStage = techContext.showTechnologyStage;
 
   const [dataTechnologie,setDataTechnologie] =useState([]);
   const [isStageTechnologiaVisible,setStageTechnologiaVisible] =useState(false);
@@ -25,24 +28,11 @@ export default function Technologie(){
   const navigate = useNavigate();
 
   const effectRan = useRef(false);
-  useEffect(() => {
-    if (effectRan.current === true) {
-      //  fetchTechnologie();
-      // const socket = io.connect("http://localhost:3002")
-      // console.log(technology)
-      checkToken()
-      //  getTechnology(setTechnology)
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
-
 
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
-        // fechZamowienia();
+        fechTechnology();
         // getTechnology(setTechnology)
 
    start()
@@ -52,6 +42,18 @@ export default function Technologie(){
       }
     });
   }
+
+  useEffect(() => {
+    if (effectRan.current === true) {
+      checkToken()
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
+
+
+
 
   const start = async() => {
     // getTechnology(setTechnology)

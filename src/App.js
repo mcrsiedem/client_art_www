@@ -4,11 +4,10 @@ import Login from "./pages/Login/Login";
 import Panel from "./pages/Panel/Panel";
 import Zamowienia from "./pages/Zamowienia/Zamowienia";
 import Technologie from './pages/Technologie/Technologie'
-import Print from "./pages/Print/Print";
 import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
 import Info2 from "pages/Info/Info2";
-import Druk from "pages/ProcesyView/ProcesyView";
+import ProcesyView from "pages/ProcesyView/ProcesyView";
 
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
@@ -30,7 +29,7 @@ export default function App() {
             <Routes >
               <Route path='/' element={<Login />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/Print' element={<Druk />} />
+              <Route path='/ProcesyView' element={<ProcesyView />} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />
               <Route path='/Technologie' element={<Technologie />} />

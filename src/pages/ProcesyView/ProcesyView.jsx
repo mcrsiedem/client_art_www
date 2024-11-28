@@ -14,7 +14,7 @@ import { _status } from "utils/initialvalue";
 
 
 
-export default function Druk({ user, setUser }) {
+export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
   const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);

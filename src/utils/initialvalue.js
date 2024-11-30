@@ -48,7 +48,7 @@ const initialDane = {
   rok: "2024",
   firma_id: 0,
   klient_id: 0,
-  opiekun_id: 0,
+  opiekun_id:  0,
   tytul: "Tytuł zamówienia",
   data_przyjecia: today(),
   data_materialow: today(),

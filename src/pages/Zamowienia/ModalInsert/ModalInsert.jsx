@@ -117,7 +117,8 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       setSaveButtonDisabled(true)
     }else{
       //zerowanie stanów
-      setDaneZamowienia(initialDane)
+
+      setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})
       setProdukty(initialProdukty)
       setElementy(initialElementy)
       setFragmenty(initialFragmenty)

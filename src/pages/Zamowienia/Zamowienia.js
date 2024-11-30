@@ -13,6 +13,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { AppContext } from "context/AppContext";
 import MenuZamowienia from "./components/MenuZamowienia";
+import DecodeToken from "pages/Login/DecodeToken";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -29,7 +30,14 @@ const setListaPapierow = contextApp.setListaPapierow;
 const listaPapierowNazwy = contextApp.listaPapierowNazwy;
 const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
 
+const contextModalInsert = useContext(ModalInsertContext);
+
+const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
   function dodaj_clikHandler() {
+    // setDaneZamowienia({...daneZamowienia, opiekun_id:  DecodeToken(sessionStorage.getItem("token")).id})
+   
      setOpenModalInsert(true);
      open.current = false
     // open2()
@@ -151,19 +159,21 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
-      <th className={style.th_karta}>Karta</th>
+      <th className={style.th_karta}>Technologia</th>
       <th className={style.col_klient}>Klient</th>
-      <th >Praca</th>
-      <th className={style.col_firma}>Firma</th>
-      <th >Nakład</th>
-      <th className={style.col_utworzono}>Strony</th>
+      <th className={style.col_klient} >Praca</th>
+      <th className={style.col_klient} >Uwagi</th>
+      
+      <th className={style.col_klient} >Nakład</th>
+      <th className={style.col_klient}>Strony</th>
 
+      <th className={style.col_klient}>Spedycja</th>
+      {/* <th className={style.col_klient}>Final</th> */}
+      <th className={style.col_klient}>Szerokość</th>
+      <th className={style.col_klient}>Wysokość</th>
+      <th className={style.col_klient}>Oprawa</th>
+      <th className={style.col_firma}>Firma</th>
       <th className={style.col_utworzono}>Utworzono</th>
-      <th className={style.col_utworzono}>Spedycja</th>
-      <th className={style.col_utworzono}>Final</th>
-      <th className={style.col_utworzono}>Szerokość</th>
-      <th className={style.col_utworzono}>Wysokość</th>
-      <th className={style.col_utworzono}>Oprawa</th>
       
 
     </tr>
@@ -206,17 +216,20 @@ function Table_tr({ row, open2, setRow }) {
         />
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>
-        <td>{row.firma}</td>
+        <td>{row.uwagi}</td>
+       
         <td className={style.td_naklad}>{row.naklad}</td>
         <td>{row.ilosc_stron}</td>
 
-        <td>{row.utworzono}</td>
+
         <td>{row.data_spedycji}</td>
 
-        <td>{row.final}</td>
+        {/* <td>{row.final}</td> */}
         <td>{row.format_x}</td>
         <td>{row.format_y}</td>
         <td>{row.oprawa_nazwa}</td>
+        <td>{row.firma}</td>
+        <td>{row.utworzono}</td>
       </tr>
 
       {showKartaTechnologiczna && (

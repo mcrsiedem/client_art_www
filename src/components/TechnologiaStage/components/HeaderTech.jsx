@@ -10,6 +10,7 @@ import { AppContext } from "context/AppContext";
 import IconClose from "assets/x.svg"
 import { saveTech } from "actions/saveTech";
 import { todayPlusDni } from "actions/todayPlusDni";
+import { saveTechNew } from "actions/saveTechNew";
 export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
@@ -87,7 +88,7 @@ className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
  onClick={()=>{ 
   console.log("zapisz")
 
-  saveTech({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech});
+  saveTechNew({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech});
   // setSaveButtonDisabled(true);
 }
   

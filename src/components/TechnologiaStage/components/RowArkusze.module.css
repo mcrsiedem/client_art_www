@@ -107,7 +107,7 @@
 
 .select,
 .input {
-  background-color: white;
+  background-color: rgb(168, 168, 168);
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
@@ -117,7 +117,7 @@
 }
 
 .input_ark {
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(168, 168, 168);
   height: 1.5rem;
   border-radius: 5px;
   border-color: transparent;
@@ -127,7 +127,7 @@
   
 }
 .input_ark_typ {
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(168, 168, 168);
   height: 1.5rem;
   border-radius: 5px;
   border-color: transparent;
@@ -174,7 +174,11 @@
   padding-left: 10px;
   min-width:  max-content;
 }
-
+.ch_box{
+  /* margin-top: 10px; */
+  /* background: rgb(168, 168, 168); */
+  background-image: red;
+}
 /* .row1{
   display: grid;
   flex-direction: row;

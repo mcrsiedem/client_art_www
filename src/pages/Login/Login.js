@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
-import iconLogo from "../../assets/logo.svg";
+import iconLogo from "../../assets/logo_biale.svg";
 import { SocketContext } from "../../context/SocketContext";
-
+ import background from "assets/logowanie_1.jpg"
 export default function Login( ) {
 
   const [user,setUser] = useState(null);

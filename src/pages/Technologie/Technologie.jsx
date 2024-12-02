@@ -65,7 +65,7 @@ export default function Technologie(){
 
     return(
 
-    <div>
+    <div >
       <Header/>
       <TechnologiaTable/>
       <TechnologiaStage/>

@@ -52,10 +52,9 @@ export default function ProduktyTech() {
 
 //--------------------------
 
-
 function ProduktyTable2() {
   const contextTech = useContext(TechnologyContext);
-const produktyTech = contextTech.produktyTech;
+  const produktyTech = contextTech.produktyTech;
   return (
     <div className={style.main2}>
       <div className={style.row1}>
@@ -71,8 +70,6 @@ const produktyTech = contextTech.produktyTech;
     </div>
   );
 }
-
-
 
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
   const techContext = useContext(TechnologyContext);
@@ -92,11 +89,9 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
 
-
   const elementyTech = techContext.elementyTech;
   return (
     <div className={style.menu_produkty}>
-
       <img
         className={style.iconMenuBtn}
         src={Logo_ustawienia2}
@@ -114,7 +109,12 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
             fragmentyTech,
             setFragmentyTech,
             elementyTech,
-            row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+            row,
+            procesy,
+            grupaWykonan,
+            setGrupaWykonan,
+            wykonania,
+            setWykonania
           );
           // setShowMenu(!showMenu);
           // dodaj_clikHandler();
@@ -132,9 +132,6 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
   );
 };
 
-
-
-
 function Typ({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
@@ -142,7 +139,7 @@ function Typ({ row }) {
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
     <div className={style.col_dane}>
-       <label className={style.label}> Typ </label>
+      <label className={style.label}> Typ </label>
       <select
         className={style.select}
         defaultValue={row?.typ}
@@ -168,24 +165,19 @@ function Nazwa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
-    <div  className={style.col_dane}>
+    <div className={style.col_dane}>
       <label className={style.label}> Nazwa </label>
       <input
         className={style.input}
         value={row?.nazwa}
-        onChange={(e) =>
-          {
-            
-            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProdukty({
-            ...row,
-            nazwa: e.target.value,
-          })
-
+              ...row,
+              nazwa: e.target.value,
+            });
           }
-        }
-    
-        }
+        }}
       ></input>
     </div>
   );
@@ -215,7 +207,6 @@ function Naklad({ row }) {
   );
 }
 
-
 function Strony({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
@@ -223,12 +214,7 @@ function Strony({ row }) {
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Strony </label>
-      <input
-      disabled
-        className={style.input}
-        value={row?.ilosc_stron}
-
-      ></input>
+      <input disabled className={style.input} value={row?.ilosc_stron}></input>
     </div>
   );
 }
@@ -240,12 +226,7 @@ function FormatX({ row }) {
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Szer. </label>
-      <input
-      disabled
-        className={style.input}
-        value={row?.format_x}
-
-      ></input>
+      <input disabled className={style.input} value={row?.format_x}></input>
     </div>
   );
 }
@@ -256,53 +237,43 @@ function FormatY({ row }) {
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Wys. </label>
-      <input
-      disabled
-        className={style.input}
-        value={row?.format_y}
-
-      ></input>
+      <input disabled className={style.input} value={row?.format_y}></input>
     </div>
   );
 }
 
-
-
-function RodzajOprawy({ row,handleChangeCardOprawa}) {
+function RodzajOprawy({ row, handleChangeCardOprawa }) {
   const contextModalInsert = useContext(ModalInsertContext);
-const produkty = contextModalInsert.produkty;
-const setProdukty = contextModalInsert.setProdukty;
-const contextApp = useContext(AppContext);
+  const produkty = contextModalInsert.produkty;
+  const setProdukty = contextModalInsert.setProdukty;
+  const contextApp = useContext(AppContext);
 
   return (
     <div className={style.col_dane}>
-<label className={style.label}> Oprawa </label>
+      <label className={style.label}> Oprawa </label>
       <select
         disabled
         className={style.select_oprawa}
         defaultValue={row?.oprawa}
         onChange={(event) => {
-          handleChangeCardOprawa({...row, oprawa: event.target.value});
+          handleChangeCardOprawa({ ...row, oprawa: event.target.value });
 
-
-          if(row.indeks == 0){
-          setProdukty(
-            produkty.map((p) => {
-              if (p.id === row.produkt_id) {
-                return {...p, oprawa:event.target.value};
-              } else {
-                return p;
-              }
-            })
-          );
-           
+          if (row.indeks == 0) {
+            setProdukty(
+              produkty.map((p) => {
+                if (p.id === row.produkt_id) {
+                  return { ...p, oprawa: event.target.value };
+                } else {
+                  return p;
+                }
+              })
+            );
           }
-
         }}
       >
         {contextApp.bindingType.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.nazwa} 
+            {option.nazwa}
           </option>
         ))}
       </select>
@@ -310,115 +281,68 @@ const contextApp = useContext(AppContext);
   );
 }
 
-
-
 function Uwagi({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
-    <div  className={style.col_dane}>
+    <div className={style.col_dane}>
       <label className={style.label}> Uwagi </label>
       <input
         className={style.input}
         value={row?.uwagi}
-        onChange={(e) =>
-          { 
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
-            if ( e.target.value === '' || re.test(e.target.value)) { 
-              handleUpdateRowProdukty({
-            ...row,
-            uwagi: e.target.value,
-          })
-        
-        }
+        onChange={(e) => {
+          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+          if (e.target.value === "" || re.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              uwagi: e.target.value,
+            });
           }
-        }
+        }}
       ></input>
     </div>
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //--------------------
 
 function ProduktyTable() {
   const contextTech = useContext(TechnologyContext);
-const produktyTech = contextTech.produktyTech;
-  return <div className={style.main}>
-      
-        <table className={style.table}>
-          <thead>
-            <tr>
-              <th className={style.col3}>Typ</th>
-              <th className={style.col10}>Nakład</th>
-              <th className={style.col9}>Oprawa</th>
-              <th className={style.col4}>Nazwa</th>
-              <th className={style.col6}>Strony</th>
-              <th className={style.col7}>Szerokość</th>
-              <th className={style.col8}>Wysokość</th>
-              <th className={style.col8}>Uwagi</th>
-            </tr>
-          </thead>
-          <tbody className={style.center}>
-            {produktyTech?.map((row) => {
-              return (
-                <tr key={row.id}>
-                  <Typ3 row={row} />
-                  <Naklad3 row={row} />
-                  <Oprawa3 row={row} />
-                  <Nazwa3 row={row} />
-                  <td>{row.ilosc_stron}</td>
-                  <td>{row.format_x}</td>
-                  <td>{row.format_y}</td>
-                  <Uwagi3 row={row} />
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-
+  const produktyTech = contextTech.produktyTech;
+  return (
+    <div className={style.main}>
+      <table className={style.table}>
+        <thead>
+          <tr>
+            <th className={style.col3}>Typ</th>
+            <th className={style.col10}>Nakład</th>
+            <th className={style.col9}>Oprawa</th>
+            <th className={style.col4}>Nazwa</th>
+            <th className={style.col6}>Strony</th>
+            <th className={style.col7}>Szerokość</th>
+            <th className={style.col8}>Wysokość</th>
+            <th className={style.col8}>Uwagi</th>
+          </tr>
+        </thead>
+        <tbody className={style.center}>
+          {produktyTech?.map((row) => {
+            return (
+              <tr key={row.id}>
+                <Typ3 row={row} />
+                <Naklad3 row={row} />
+                <Oprawa3 row={row} />
+                <Nazwa3 row={row} />
+                <td>{row.ilosc_stron}</td>
+                <td>{row.format_x}</td>
+                <td>{row.format_y}</td>
+                <Uwagi3 row={row} />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 function Typ3({ row }) {
@@ -456,19 +380,15 @@ function Nazwa3({ row }) {
       <input
         className={style.in}
         value={row.nazwa}
-        onChange={(e) =>
-          {
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
-            if ( e.target.value === '' || re.test(e.target.value)) {
-              updateRowProduktyTech({
-            ...row,
-            nazwa: e.target.value,
-          })
-
+        onChange={(e) => {
+          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
+          if (e.target.value === "" || re.test(e.target.value)) {
+            updateRowProduktyTech({
+              ...row,
+              nazwa: e.target.value,
+            });
           }
-        }
-    
-        }
+        }}
       ></input>
     </td>
   );
@@ -483,27 +403,21 @@ function Naklad3({ row }) {
       <input
         className={style.in}
         value={row.naklad}
-        onChange={(e) =>{     
-
-           const re = /^[0-9]+$/;
+        onChange={(e) => {
+          const re = /^[0-9]+$/;
 
           //  updateRowProduktyTech({
           //   ...row,
           //   naklad: e.target.value,
           // })
 
-          if (e.target.value === '' || re.test(e.target.value)) {
+          if (e.target.value === "" || re.test(e.target.value)) {
             updateRowProduktyTech({
-                ...row,
-                naklad: e.target.value,
-              })
+              ...row,
+              naklad: e.target.value,
+            });
           }
-
-
-            }
-        
-
-        }
+        }}
       ></input>
     </td>
   );
@@ -514,13 +428,11 @@ function Oprawa3({ row }) {
 
   return (
     <td>
-{ contextApp.bindingType.map((t) => {
+      {contextApp.bindingType.map((t) => {
         if (t.id == row.oprawa) {
           return t.nazwa;
-        
         }
       })}
-
     </td>
   );
 }
@@ -532,18 +444,15 @@ function Uwagi3({ row }) {
       <input
         className={style.in}
         value={row.uwagi}
-        onChange={(e) =>
-          { 
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
-            if ( e.target.value === '' || re.test(e.target.value)) { 
-              updateRowProduktyTech({
-            ...row,
-            uwagi: e.target.value,
-          })
-        
-        }
+        onChange={(e) => {
+          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+          if (e.target.value === "" || re.test(e.target.value)) {
+            updateRowProduktyTech({
+              ...row,
+              uwagi: e.target.value,
+            });
           }
-        }
+        }}
       ></input>
     </td>
   );

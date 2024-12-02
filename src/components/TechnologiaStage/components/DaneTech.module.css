@@ -7,6 +7,7 @@ display: flex;
 flex-direction: column;
 gap:5px;
 width: 100vw;
+background-image: linear-gradient( 180deg,#0a0a0a 0%, #383838 80%);
 
 }
 
@@ -41,19 +42,25 @@ width: 100vw;
 }
 
 .label {
+  padding-left: 10px;
+  color: rgb(136, 136, 136);
   font-size: 0.7rem;
+  
 }
 
 
 
 .data{
   text-align: center;
+  
+  
 }
 
 .tytul{
   text-align: left;
   height: 30px;
   padding-left: 10px;
+  
 }
 
 .klientContainer {
@@ -64,6 +71,7 @@ width: 100vw;
 .firma, .klient, .data{
 height: 30px;
 padding-left: 10px;
+
 }
 
 .klient{
@@ -78,18 +86,19 @@ padding-left: 10px;
 
 .select,
 .input {
-  background-color: white;
+  background-color: rgb(221, 221, 221);
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
+  
   /* min-width: 50px; */
 }
 
 .klient{
   padding-left: 35px;
-  background-color:rgb(245, 245, 245);
+  background-color: rgb(221, 221, 221);
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;

@@ -120,14 +120,14 @@ export default function RowTechElement({
         />
       </div>
       {showArkusze && (
-        <>
+        <div className={style.container_for_arkusze}>
           {arkusze?.filter((x) => x.element_id == row.id)
 
             .map((row, i) => {
               return <RowArkusze key={row.indeks} i={i} row={row} />;
             })}
           
-        </>
+        </div>
       )}
       
     </>

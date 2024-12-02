@@ -21,37 +21,38 @@ export default function Header({}){
       <header className={style.headerMain}>
         <LeftPane>
          {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
-         <p>Karta technologiczna...  {techContext.dane?.id}</p> <button onClick={()=>{
-     
-            console.clear()
-            console.log("Karta Technologiczna: ")
-            console.log("Dane Tech: ",techContext.daneTech)
-            console.log("Produkt Tech: ",techContext.produktyTech)
-            console.log("Elementy Tech: ",techContext.elementyTech)
-            console.log("Fragmenty Tech: ",techContext.fragmentyTech)
-            console.log("Oprawa Tech: ",techContext.oprawaTech)
-            console.log("Procesy elementów: ",techContext.procesyElementowTech)
-            console.log("Arkusze: ",techContext.arkusze)
-            console.log("Legi: ",techContext.legi)
-            console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
-            console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
-            console.log("Wykonania tech: ",techContext.wykonania)
-            console.log("listaPapierow: ",appcontext.listaPapierow)
-            // fechparametryTechnologii(27)
-    
-// console.log("Data: "+ todayPlusDni(5))
-           
-
-
-            
-
-         }}>OK</button>
-
+         <p>Karta technologiczna...  {techContext.dane?.id}</p> 
          
          {/* <button onClick={()=> console.log(techContext.dane.id)}> OK</button> */}
         </LeftPane>
 
         <RightPane>
+        <button className={style.btn} onClick={()=>{
+     
+     console.clear()
+     console.log("Karta Technologiczna: ")
+     console.log("Dane Tech: ",techContext.daneTech)
+     console.log("Produkt Tech: ",techContext.produktyTech)
+     console.log("Elementy Tech: ",techContext.elementyTech)
+     console.log("Fragmenty Tech: ",techContext.fragmentyTech)
+     console.log("Oprawa Tech: ",techContext.oprawaTech)
+     console.log("Procesy elementów: ",techContext.procesyElementowTech)
+     console.log("Arkusze: ",techContext.arkusze)
+     console.log("Legi: ",techContext.legi)
+     console.log("Fragmenty leg tech: ",techContext.legiFragmenty)
+     console.log("Grupy wykonan tech: ",techContext.grupaWykonan)
+     console.log("Wykonania tech: ",techContext.wykonania)
+     console.log("listaPapierow: ",appcontext.listaPapierow)
+     // fechparametryTechnologii(27)
+
+// console.log("Data: "+ todayPlusDni(5))
+    
+
+
+     
+
+  }}>Pokaż</button>
+
           <ZapisBtn/>
           <IconNavigate className={style.btn_x} logo={IconClose} navi={"/Panel"} />
         </RightPane>

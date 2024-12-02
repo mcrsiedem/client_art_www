@@ -1,6 +1,6 @@
 import React from "react";
 import {  useEffect,useState,useContext  } from "react";
-import style from '../Panel/Panel.module.css';
+import style from './Panel2.module.css';
 import logoutIcon from 'assets/logout.png'
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'
@@ -9,7 +9,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
 
-function Panel({user,setUser}){
+function Panel2({user,setUser}){
         const navigate = useNavigate();
         const isOnline = useOnlineStatus();
     useEffect(() => {
@@ -47,7 +47,7 @@ function Panel({user,setUser}){
                                         <div className={style.kafle} >Oprawa</div>
                                         <div className={style.kafle} >Uszlachetnianie</div> */}
                                         <div className={style.kafle} >Magazyn</div>
-                                        {/* <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div> */}
+                                        <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div>
                                         <div className={style.kafle} >Ustawienia</div>
                                         <div className={style.kafle} >Historia</div>
                                         {/* <div className={style.kafle} ></div> */}
@@ -64,4 +64,4 @@ function Panel({user,setUser}){
     </>);
 }
 
-export default Panel;
+export default Panel2;

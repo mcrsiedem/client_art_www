@@ -16,12 +16,11 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>
-      <div className={style.procesy_menu_button}> 
-
-       <p>Procesy</p> 
-       <ProcesBtn />
+      <div className={style.procesy_menu_button}>
+        <p>Procesy</p>
+        <ProcesBtn />
       </div>
-      
+
       <WykonaniaTechTable />
     </div>
   );

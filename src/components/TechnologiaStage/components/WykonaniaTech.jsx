@@ -6,7 +6,8 @@ import style from "./WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
-import Logo_ustawienia2 from "assets/refresh.png";
+// import Logo_ustawienia2 from "assets/refresh.png";
+import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
@@ -16,8 +17,11 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 export default function WykonaniaTech() {
   return (
     <div className={style.container}>
-      <div className={style.procesy_menu_button}>
-        <p>Procesy</p>
+
+       <div  style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderBottom:" 1px solid gray"}}>
+      {/* <div className={style.procesy_menu_button}> */}
+      <p></p>
+        <p style={{ display: "flex", justifyContent:"center",alignItems:"center"}}>Procesy</p>
         <ProcesBtn />
       </div>
 
@@ -459,66 +463,66 @@ const Info = ({ rowProces }) => {
 
 
 
-const WykonaniaTechTable2 = () => {
-  const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
-  const [showMenu, setShowMenu] = useState(false);
-  const [showLegi, setShowLegi] = useState(true);
+// const WykonaniaTechTable2 = () => {
+//   const techContext = useContext(TechnologyContext);
+//   const grupaWykonan = techContext.grupaWykonan;
+//   const [showMenu, setShowMenu] = useState(false);
+//   const [showLegi, setShowLegi] = useState(true);
 
-  return (
-    <div className={style.table_legi}>
-      <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu} />
-      <table className={style.table2}>
-        <thead>
-          <tr>
-            <th className={style.expand}>
-              <img
-                className={style.icon}
-                src={logoExpand}
-                onClick={() => {
-                  setShowLegi(!showLegi);
-                }}
-                alt="Procesy"
-              />
-            </th>
-            <th className={style.th_checkbox}>
-              <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
-            </th>
-            <th className={style.col1}>#</th>
-            <th className={style.col_typ}>Proces</th>
-            <th className={style.col_typ}>Rodzaj</th>
-            <th className={style.col_naklad}>Nakład</th>
-            <th className={style.col_uwagi}>Ilość leg</th>
-            <th className={style.col_uwagi}>Uwagi</th>
-            <th className={style.col_uwagi}>Narząd</th>
-            <th className={style.col_uwagi}>akr/h</th>
+//   return (
+//     <div className={style.table_legi}>
+//       <MenuArkusze showMenu={showMenu} setShowMenu={setShowMenu} />
+//       <table className={style.table2}>
+//         <thead>
+//           <tr>
+//             <th className={style.expand}>
+//               <img
+//                 className={style.icon}
+//                 src={logoExpand}
+//                 onClick={() => {
+//                   setShowLegi(!showLegi);
+//                 }}
+//                 alt="Procesy"
+//               />
+//             </th>
+//             <th className={style.th_checkbox}>
+//               <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
+//             </th>
+//             <th className={style.col1}>#</th>
+//             <th className={style.col_typ}>Proces</th>
+//             <th className={style.col_typ}>Rodzaj</th>
+//             <th className={style.col_naklad}>Nakład</th>
+//             <th className={style.col_uwagi}>Ilość leg</th>
+//             <th className={style.col_uwagi}>Uwagi</th>
+//             <th className={style.col_uwagi}>Narząd</th>
+//             <th className={style.col_uwagi}>akr/h</th>
            
-            <th className={style.col_doda3j}></th>
-            <th className={style.col_doda3j}></th>
-          </tr>
-        </thead>
-        <tbody
-          onClick={() => {
-            setShowMenu(false);
-          }}
-        >
-          {grupaWykonan
-            // .sort((a, b) => a.indeks - b.indeks)
-            .map((row, i) => {
-              return (
-                <RowGrupa
-                  key={row.indeks+"x"}
-                  i={i}
-                  row={row}
-                  showLegi={showLegi}
-                />
-              );
-            })}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+//             <th className={style.col_doda3j}></th>
+//             <th className={style.col_doda3j}></th>
+//           </tr>
+//         </thead>
+//         <tbody
+//           onClick={() => {
+//             setShowMenu(false);
+//           }}
+//         >
+//           {grupaWykonan
+//             // .sort((a, b) => a.indeks - b.indeks)
+//             .map((row, i) => {
+//               return (
+//                 <RowGrupa
+//                   key={row.indeks+"x"}
+//                   i={i}
+//                   row={row}
+//                   showLegi={showLegi}
+//                 />
+//               );
+//             })}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
 //------------------------------------------------------------
 const RowGrupa = ({ row, showLegi }) => {
@@ -875,7 +879,7 @@ const ProcesBtn = ({ row, showMenu, setShowMenu }) => {
 
   const elementyTech = techContext.elementyTech;
   return (
-    <div className={style.menu_produkty}>
+    <div style={{ display: "flex", justifyContent:"end", alignItems:"center"}} >
 
       <img
         className={style.iconMenuBtn}

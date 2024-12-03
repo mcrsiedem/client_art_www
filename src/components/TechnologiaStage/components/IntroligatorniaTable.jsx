@@ -139,7 +139,7 @@ const OprawaRow = ({ row }) => {
 
 const LegaFragmentRow = ({ row, i }) => {
   return (
-    <tr key={row.id}>
+    <tr key={row.id} className={style.row_fragmentow}>
       <td>{i}</td>
       <td className={style.typ_elementu}>
         {" "}

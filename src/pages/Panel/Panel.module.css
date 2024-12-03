@@ -134,7 +134,10 @@ align-items: center;
     height: 60px;
     /* margin: 20px; */
   box-shadow: 2px 1px 9px gray ;
-  background-color: whitesmoke;
+
+  /* background-color: rgb(211, 211, 211); */
+  background-color: rgb(245, 245, 245);
+
   
 }
 

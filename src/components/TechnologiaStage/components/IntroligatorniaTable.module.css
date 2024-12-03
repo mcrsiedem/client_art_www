@@ -32,7 +32,7 @@ margin-bottom: 0px;
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
-  outline: 1px solid rgb(185, 185, 185);
+  /* outline: 1px solid rgb(185, 185, 185); */
   padding-left: 10px;
   /* font-size: 0.9rem; */
 }
@@ -91,7 +91,7 @@ margin: auto;
     /* width: 500px; */
     /* background: #64585d; */
   
-  
+  height: 1.8rem;
     background: #b3b3b3;
     border-radius: 5px;
     outline: 1px solid rgb(126, 126, 126);

@@ -18,7 +18,7 @@ export default function WykonaniaTech() {
   return (
     <div className={style.container}>
 
-       <div  style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderBottom:" 1px solid gray"}}>
+       <div  style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop:" 1px solid gray", borderBottom:" 1px solid gray",marginTop:"50px"}}>
       {/* <div className={style.procesy_menu_button}> */}
       <p></p>
         <p style={{ display: "flex", justifyContent:"center",alignItems:"center"}}>Procesy</p>

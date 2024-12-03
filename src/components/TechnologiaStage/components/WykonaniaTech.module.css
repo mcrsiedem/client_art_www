@@ -3,11 +3,12 @@
   flex-direction: column;*/
   justify-content: center; 
   align-items: center;
-  background-color: rgb(216, 216, 216);
+  /* background-color: rgb(216, 216, 216); */
   margin-left: 20px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-top: 15px;
+  margin-top: 40px;
+  /* width: 80vw; */
 }
 
 
@@ -76,10 +77,12 @@
 .label {
   font-size: 0.7rem;
   padding-left: 5px;
+  color:rgb(204, 204, 204);
+  padding-bottom: 3px;
 }
 .select,
 .input {
-  background-color: white;
+  background-color: rgb(175, 175, 175);
   height: 1.5rem;
   border-radius: 5px;
   border-color: transparent;

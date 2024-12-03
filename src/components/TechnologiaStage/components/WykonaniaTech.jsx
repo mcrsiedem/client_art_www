@@ -89,7 +89,7 @@ const GrupaRow = ({ rowProces }) => {
                 onDragOver={handleDragOver}
                 onDrop={() => handleDrop(rowGrupa.id)}
               className={style.grupa_container}>
-                 <p style={{ fontSize: "1rem"}}>grupa id {rowGrupa.id} </p>  
+                 <p style={{ fontSize: "1rem"}}>Grupa {rowGrupa.id} </p>  
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />

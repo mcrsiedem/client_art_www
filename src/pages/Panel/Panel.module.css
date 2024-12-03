@@ -6,6 +6,7 @@
     background: url(/src/assets/logowanie_1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 10px;
 }
 .btnWyloguj{
     width: 100px;
@@ -70,7 +71,7 @@ align-items: center;
   justify-content: center;
 
   gap:20px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
 }
 
 /* @media  screen and (max-width: 800px) {

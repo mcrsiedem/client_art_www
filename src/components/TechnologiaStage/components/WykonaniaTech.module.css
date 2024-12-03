@@ -31,11 +31,13 @@
   
 
 }
-/* .iconMenuBtn:hover{
-  width: 20px;
+
+.iconMenuBtn:hover{
   rotate: 45deg;
+  scale: 150%;
+ 
   
-} */
+}
 .iconMenuBtn:active{
   rotate: 65deg;
 }

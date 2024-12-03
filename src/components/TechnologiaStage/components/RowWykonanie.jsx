@@ -1,23 +1,12 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-
-
-import logoExpand from "assets/expand.svg";
-import iconTrash from "assets/trash2.svg"
-import icon from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
-// import TypElementu from "./TypElementu";
-// import RodzajArkusza from "./RodzajArkusza";
-// import { reg_int } from "utils/initialvalue";
-// import UsunArkusz from "./UsunArkusz";
-// import DodajArkusz from "./DodajArkusz";
-// import Rozwin from "./Rozwin";
+
 import style from "./RowWykonanie.module.css";
 import { reg_int } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
-// import NrArkusza from "./NrArkusza";
-// import { reg_int } from "utils/initialvalue";
+
 
 export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
 

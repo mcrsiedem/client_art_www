@@ -1,7 +1,7 @@
 .main {
    display: grid;
    grid-template-rows: 60px 1fr;
-   background-image: linear-gradient(0deg, #575555 0%, #272525 100%);
+   background-image: linear-gradient(0deg, #3d495f 0%, #1d232e 100%);
 
 }
 
@@ -107,7 +107,7 @@ tr:nth-of-type(2n) {
 .table tr:nth-child(even) {
    /* background-color:  rgb(83, 65, 65); */
    /* background-color:  rgb(80, 83, 90); */
-   background-color: #524f4f;
+   background-color: #444e61;
    color: #a5a5a5;
    font-size: 0.9rem;
    outline-style: none;
@@ -128,7 +128,7 @@ tr:nth-of-type(2n) {
 }
 
 .table th {
-   background-color: #3f3c3c;
+   background-color: #2c3648;
    color: #a5a5a5;
    font-size: 0.9rem;
    letter-spacing: 3px;

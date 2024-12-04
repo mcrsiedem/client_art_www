@@ -28,7 +28,7 @@ function Panel({user,setUser}){
 
                    {isOnline ? (     <div className={style.user}> 
                                 <img className={style.userIcon } src={userOnline} alt="Procesy" />
-                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                <p className={style.imie }>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                         </div>) : (     <div className={style.user}> 
                                 <img className={style.userIcon } src={userOffline} alt="Procesy" />
                                 <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>

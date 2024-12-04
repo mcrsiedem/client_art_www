@@ -10,6 +10,7 @@ import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./ProcesyHeader";
 import { _status } from "utils/initialvalue";
+import { zamienNaGodziny } from "actions/zamienNaGodziny";
 
 
 
@@ -80,9 +81,9 @@ const WykonaniaTable =({selectedProcesor}) =>{
   <th> Klient</th>
   <th> Praca</th>
   <th> Element</th>
-  <th> </th>
-  <th> Status</th>
   <th> Stan</th>
+  <th> Status</th>
+  <th> Uwagi</th>
 
 
 </tr>
@@ -97,17 +98,18 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   className={style.tr_legi_mini}
                   key={grup.id + i}
                 >
-                  <td>{grup.poczatek}</td>
-                  <td>{grup.czas} min</td>
-                  <td>{grup.koniec} </td>
-                  <td>{grup.nr}</td>
-                  <td>{grup.rok}</td>
-                  <td>{grup.klient}</td>
-                  <td>{grup.tytul}</td>
-                  <td>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
-                  <td>{grup.status_elementu}</td>
-                  <Status/>
+                  <td style={{width: "130px"}}>{grup.poczatek}</td>
+                  <td style={{width: "60px"}}>{zamienNaGodziny(grup.czas) } </td>
+                  <td style={{width: "140px"}}>{grup.koniec} </td>
+                  <td style={{width: "50px"}}>{grup.nr}</td>
+                  <td style={{width: "50px"}}>{grup.rok}</td>
+                  <td style={{width: "200px"}}>{grup.klient}</td>
+                  <td >{grup.tytul}</td>
+                  <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
                   <Stan/>
+                  <Status/>
+                  <td style={{width: "200px"}}>{grup.uwagi}</td>
+           
 
 
  
@@ -131,7 +133,7 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-<td>
+<td style={{width: "130px"}}>
       <select
         className={style.select}
         value={selectedProcesor}
@@ -160,7 +162,7 @@ function Stan({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const _stan_wykonania = contextApp._stan_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-<td>
+<td style={{width: "100px"}}>
       <select
         className={style.select}
         value={selectedProcesor}

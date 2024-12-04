@@ -39,17 +39,17 @@ function Panel({user,setUser}){
                 </div>
                         <div className={style.kafleContainer} >
 
-                                        <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>Zamówienia</div>
-                                        <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }>Technologie</div>
-                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} >Procesy </div> 
+                                        <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}>ZAMÓWIENIA</div>
+                                        <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }>TECHNOLOGIE</div>
+                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} >PROCESY </div> 
                                         <div className={style.kafle} >CTP</div>
                                         {/* <div className={style.kafle} >Falcowanie</div>
                                         <div className={style.kafle} >Oprawa</div>
                                         <div className={style.kafle} >Uszlachetnianie</div> */}
-                                        <div className={style.kafle} >Magazyn</div>
+                                        <div className={style.kafle} > MAGAZYN</div>
                                         {/* <div className={style.kafle} onClick={() => { navigate("/info") }}>Info</div> */}
-                                        <div className={style.kafle} >Ustawienia</div>
-                                        <div className={style.kafle} >Historia</div>
+                                        <div className={style.kafle} >USTAWIENIA</div>
+                                        <div className={style.kafle} >HISTORIA</div>
                                         {/* <div className={style.kafle} ></div> */}
                                         
               

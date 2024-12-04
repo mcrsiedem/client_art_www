@@ -1,78 +1,49 @@
-
-.main{
+.main {
    display: grid;
-   grid-template-rows: 60px 1fr 60px;
-   /* background-color: #e74a3b; */
-  
+   grid-template-rows: 60px 1fr;
+   background-image: linear-gradient(0deg, #989eb4 0%, #272525 100%);
+
 }
 
-.container{
+.container {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-/* background-color: lightcyan; */
-/* width: 700px; */
+   /* background-color: lightcyan; */
+   /* width: 700px; */
 }
 
-.tableContainer{
-   /* padding-top: 50px; */
-  height: calc(100vh - 120px);
-  /* min-width: 100vw; */
-  min-width: 95vw;
-
-   /* max-height: 300px;  */
+.tableContainer {
+   height: calc(100vh - 60px);
+   min-width: 95vw;
    overflow: auto;
-
-
-}
-
-.szczegoly{
-   background-color: gray;
-  
-}
-.btn_dodaj_karte{
-   width: 150px;
-   height: 30px;
-   font-size: 0.8rem;
-   font-weight: bold;
-   color: rgb(219, 219, 219);
-   border: 1.5px solid rgb(72, 72, 72);
-   background-color: rgb(72, 72, 72);
-   border-radius: 10px;
-   box-shadow: 3px 3px 3px rgb(29, 29, 29);
-   margin-top: 10px;
-   margin-bottom: 80px;
-}
-
-.btn_dodaj_karte:hover{
-   background-image: linear-gradient(#383838 0%, #3a3333 80%);
-
 }
 
 
 
-th{
+/* th {
    font-size: 0.9rem;
    position: sticky;
-   top:0;
-   /* background: #3f3f3f; */
+   top: 0;
+
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
-   background: rgb(243, 243, 243);
-  color: #414040;
-  /* border-radius: 30px; */
-  /* outline: 1px solid rgb(167, 0, 0); */
+   background: transparent;
+   color: #a5a5a5;
+   letter-spacing: 2px;
+
+   border: 1px solid rgb(165, 165, 165);
 
 }
 
 
 
 tr:nth-of-type(2n) {
-   /* background: #dbdad6; */
-   background: #f7f6f6;
-}
+ 
+   background: #7c7777;
+} */
 
 
 /* tr{
@@ -83,124 +54,87 @@ tr:nth-of-type(2n) {
    outline: 1px solid #a5a4a2;
 } */
 
-.alert{ background:red; }
 
-.alert2{ background: green; }
 
-.bgdanger {
-   background-color: #e74a3b;
-   background-image: linear-gradient(180deg,#e74a3b 10%,#be2617 100%);
-   background-size: cover;
+.col_klient {
+   min-width: 100px;
+}
+
+.col_karta {
+   min-width: 10px;
+
+
+}
+
+.col_button {
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   border: none;
+   /* padding-top: 10px; */
+
+
+}
+
+.td_checkbox {
+
+   border: none;
+
+}
+
+.th_checkbox {}
+
+
+.td_karta {
+
+   border: none;
+
+}
+
+.th_karta {
+   width: 30px;
+
 }
 
 
-   .iconSettings{ width: 15px;
-      
-    }
 
-   .col_klient{
-      min-width: 100px;
-   }
-
-   .col_karta{
-      min-width: 10px;
-
-
-   }
-
-   .col_button{
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      border: none;
-      /* padding-top: 10px; */
-
-     
-   }
-
-   .td_checkbox{
-
-      border: none;
-
-   }
-   .th_checkbox{
- 
-
-   }
-
-
-   .td_karta{
-
-      border: none;
-
-   }
-   .th_karta{
- width: 30px;
-
-   }
-
-
-
-.iconMenuBtn{
+.iconMenuBtn {
    width: 18px;
 }
 
-.table th
-{
-  /* background-color: rgb(216, 216, 216); */
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
 
-}
 
 .table tr:nth-child(even) {
-  /* background-color:  rgb(238, 238, 238); */
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
-  border-bottom: 1px solid rgb(192, 191, 191)  ;
+   /* background-color:  rgb(83, 65, 65); */
+   background-color:  rgb(105, 89, 89);
+   color: #a5a5a5;
+   font-size: 0.9rem;
+   outline-style: none;
+   /* border-bottom: 1px solid rgb(192, 191, 191); */
 
 }
 
 
 
 .table tr:nth-child(odd) {
-  /* background-color: red; */
-  outline-style: none;
-  font-size: 1rem;
-  border-bottom: 1px solid rgb(192, 191, 191) ;
+   background-color: transparent;
+   
+   outline-style: none;
+   font-size: 1rem;
+   /* border-bottom: 1px solid rgb(192, 191, 191); */
+   color: #a5a5a5;
 }
 
-.procesor_btn_container{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 15px;
-   width: 80vw;
-   /* background-color: antiquewhite; */
-   overflow: auto;
-}
-.btn_procesor{
-   border-radius: 10px;
-   border: none;
-   width: 100px;
-   color: gray;
+.table th {
+   background-color:  rgb(83, 65, 65);
+   color: #a5a5a5;
    font-size: 0.9rem;
-   padding: 5px;;
-}
+   letter-spacing: 3px;
+   outline-style: none;
+   /* border: 1px solid rgb(165, 165, 165); */
 
-.btn_procesor:hover{
-   background-color: #383838;
-   border-radius: 10px;
-   border: none;
-   width: 100px;
-   color: rgb(204, 203, 203);
-   font-size: 0.9rem;
-   padding: 5px;;
 }
-
-.select{
+.select {
    border: none;
    background-color: transparent;
    padding-top: 3px;

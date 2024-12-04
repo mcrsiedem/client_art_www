@@ -82,10 +82,10 @@ const WykonaniaTable =({selectedProcesor}) =>{
   return(
     <div className={style.container}>
     <div className={style.tableContainer}>
-<table>
+<table className={style.table}>
         <thead>
 <tr>
-  <th> Początek</th>
+  <th> #</th>
   <th> nr</th>
   <th> Rok</th>
   <th> Klient</th>

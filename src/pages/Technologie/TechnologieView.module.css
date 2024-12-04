@@ -107,7 +107,7 @@ tr:nth-of-type(2n) {
 .table tr:nth-child(even) {
    /* background-color:  rgb(83, 65, 65); */
    /* background-color:  rgb(80, 83, 90); */
-   background-color: #444e61;
+   background-color: #384050;
    color: #a5a5a5;
    font-size: 0.9rem;
    outline-style: none;
@@ -128,7 +128,7 @@ tr:nth-of-type(2n) {
 }
 
 .table th {
-   background-color: #2c3648;
+   background-color: #14171b;
    color: #a5a5a5;
    font-size: 0.9rem;
    letter-spacing: 3px;

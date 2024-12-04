@@ -87,8 +87,8 @@ const WykonaniaTable =({selectedProcesor}) =>{
 <tr>
   <th> #</th>
   <th> nr</th>
-  <th> Rok</th>
-  <th> Klient</th>
+  <th> ROK</th>
+  <th> KLIENT</th>
   <th> rok</th>
   <th> Czas</th>
   <th> Praca</th>

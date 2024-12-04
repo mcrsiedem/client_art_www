@@ -1,7 +1,0 @@
-
-Technologia
-
-* utworzenie stanów
-TechnologyContext - technology, setTechnology, updateTechnology - widok technology
-
-

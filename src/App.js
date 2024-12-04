@@ -3,7 +3,7 @@ import './App.css';
 import Login from "./pages/Login/Login";
 import Panel from "./pages/Panel/Panel"
 import Zamowienia from "./pages/Zamowienia/Zamowienia";
-import Technologie from './pages/Technologie/Technologie'
+
 import History from "./pages/History/History";
 import Info from "./pages/Info/Info";
 import Info2 from "pages/Info/Info2";
@@ -15,7 +15,7 @@ import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
-import TechnologieView from "pages/TechnologieNEW/TechnologieView";
+import TechnologieView from "pages/Technologie/TechnologieView";
 
 export default function App() {
 

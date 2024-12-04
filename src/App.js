@@ -15,6 +15,7 @@ import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
+import TechnologieView from "pages/TechnologieNEW/TechnologieView";
 
 export default function App() {
 
@@ -32,7 +33,7 @@ export default function App() {
               <Route path='/ProcesyView' element={<ProcesyView />} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />
-              <Route path='/Technologie' element={<Technologie />} />
+              <Route path='/Technologie' element={<TechnologieView />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/info' element={<Info />} />
               <Route path='/info2' element={<Info2 />} />

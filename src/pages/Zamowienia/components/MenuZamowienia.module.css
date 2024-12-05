@@ -315,7 +315,7 @@
   background-color: gray;
   color: whitesmoke;
   border: none;
-  border: 1px solid rgb(157, 157, 157);
+  /* border: 1px solid rgb(157, 157, 157); */
   }
   .menu_legi_btn:hover{
   background-color: rgb(157, 157, 157);

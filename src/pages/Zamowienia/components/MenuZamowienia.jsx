@@ -5,6 +5,7 @@ import style from "./MenuZamowienia.module.css";
 import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
+import { odblokujZamowienie } from "actions/odblokujZamowienie";
 export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
 
@@ -31,6 +32,12 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
  
           }}>Usuń na zawsze...</button>
+
+<button className={style.menu_legi_btn}           onClick={() => {
+        const rowsToDelete =zamowienia.filter(x => x.select === true);
+        odblokujZamowienie(rowsToDelete, setShowMenu)
+ 
+          }}>Odblokuj zamówienie</button>
 
         <button
           className={style.menu_legi_btn}

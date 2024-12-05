@@ -22,9 +22,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.header{
 
-}
 
 .icon2{
 
@@ -81,7 +79,7 @@
 	/* padding-left: 30px; */
 text-align: center;
 border: 1px solid rgb(219, 219, 219);
-background-color: transparent;
+background-color: rgb(219, 219, 219);;
 
 
 }

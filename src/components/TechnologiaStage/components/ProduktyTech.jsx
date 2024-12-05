@@ -6,7 +6,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import Logo_ustawienia from "assets/settings.svg";
-import Logo_ustawienia2 from "assets/refresh.png";
+import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import ProduktyTechMenu from "./ProduktyTechMenu";
 
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";

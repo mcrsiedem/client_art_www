@@ -50,7 +50,7 @@
   height: 1.7rem;
   border-radius: 5px;
   border-color: transparent;
-  outline: 1px solid rgb(206, 206, 206);
+  outline: 1px solid rgb(165, 165, 165);
   padding-left: 10px;
   
 }
@@ -61,7 +61,7 @@
   height: 1.7rem;
   border-radius: 10px;
   border-color: transparent;
-  /* outline: 1px solid rgb(185, 185, 185); */
+  outline: 1px solid rgb(165, 165, 165);
 
   font-size: 0.7rem;
   text-align: center;
@@ -74,7 +74,7 @@
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
-  outline: 1px solid rgb(206, 206, 206);
+  outline: 1px solid rgb(165, 165, 165);
   padding-left: 10px;
   min-width:  max-content;
 }

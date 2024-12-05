@@ -152,7 +152,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table>
   <thead className={style.th_head}>
-    <tr>
+    <tr >
       <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
       <th className={style.col_id}># </th>
       
@@ -197,7 +197,7 @@ function Table_tr({ row, open2, setRow }) {
   return (
     <>
       <tr
-        className={style.tr22}
+       className={style.row_zamowienia}
         key={row.id}
         onDoubleClick={(node, event) => {
           open2();

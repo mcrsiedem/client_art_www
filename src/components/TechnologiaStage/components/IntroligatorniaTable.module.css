@@ -2,7 +2,7 @@
   background-color: transparent;
  display: grid;
  flex-direction: row;
- gap:5px;
+ /* gap:5px; */
 
 }
 .row1{
@@ -11,6 +11,7 @@
   gap: 10px;
   margin-left: 70px;
   margin-right: 70px;
+  margin-bottom: 5px;
   
 }
 .main2{
@@ -28,7 +29,7 @@ margin-bottom: 0px;
 
 .select,
 .input {
-  background-color: rgb(141, 140, 140);
+  background-color: var(--art-input3);
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
@@ -79,13 +80,13 @@ margin: auto;
  
     /* background: #858482; */
     /* background: #a7a6a5; */
-    background: rgb(141, 140, 140);
-    border-radius: 5px;
-    outline: 1px solid rgb(126, 126, 126);
+    background-color: var(--art-input);
+    /* border-radius: 5px; */
+    /* outline: 1px solid rgb(197, 197, 197); */
     }
     
   .row_fragmentow{ 
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-left: 100px;
     margin-right:100px;
     /* width: 500px; */
@@ -93,7 +94,7 @@ margin: auto;
   
   height: 1.8rem;
     background: #b3b3b3;
-    border-radius: 5px;
-    outline: 1px solid rgb(126, 126, 126);
+    /* border-radius: 5px; */
+    /* outline: 1px solid rgb(126, 126, 126); */
   }
     

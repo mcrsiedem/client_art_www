@@ -19,10 +19,10 @@ export default function WykonaniaTech() {
     <div className={style.container}>
 
        {/* <div  style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr",marginTop:"50px",backgroundColor:"rgb(230,230,230)", borderRadius:"10px", height:"50px"}}> */}
-       <div  style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr",marginTop:"50px",backgroundColor:"rgb(245,245,245)"}}>
+       <div className={style.header_procesy}>
       {/* <div className={style.procesy_menu_button}> */}
       <p></p>
-        <p style={{ display: "flex", justifyContent:"center",alignItems:"center"}}>Procesy</p>
+        <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey"}}>Procesy</p>
         <ProcesBtn />
       </div>
 

@@ -31,19 +31,6 @@
 }
 
 
-/* .header {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 1.6rem;
-  color: #fff;
-  font-size: 0.9rem;
-  padding-left: 20px;
-} */
-
 .main {
   overflow: auto;
   max-height: 200px;
@@ -106,7 +93,7 @@
 
 .select,
 .input {
-  background-color: var(--art-input);
+  background-color: var(--art-input3);
   height: 1.7rem;
   border-radius: 5px;
   border-color: transparent;
@@ -116,7 +103,7 @@
 
 
 .input2 {
-  background-color: var(--art-input);
+  background-color: var(--art-input3);
   height: 2rem;
   height: 2rem;
   border-radius: 5px;
@@ -128,7 +115,7 @@
 
 
 .select_oprawa {
-  background-color: var(--art-input);
+  background-color: var(--art-input3);
   height: 1.7rem;
   border-radius: 5px;
   border-color: transparent;
@@ -170,7 +157,7 @@ hr{
 .label {
   font-size: 0.7rem;
   padding-left: 5px;
-  color: rgb(190, 190, 190);
+  color: var(--art-text-label);
   padding-bottom: 2px;
 }
 

@@ -11,18 +11,20 @@
 
 :root {
   /* Colors */
-
+  /* rgb(175, 175, 175); */
 
   /* Technologia Stage */
   --art-bg: white;
-  --art-input: rgb(238, 234, 230);  
+  --art-input: rgb(224, 224, 224);
   --art-input2: white;  
+  --art-input3: rgb(175, 175, 175);;  
+  --art-text-label: grey;
 
 
   /* Zestaw 1 */
-  --art-bg:  rgb(238, 234, 230);
+  /* --art-bg:  rgb(238, 234, 230);
   --art-input: rgb(255, 255, 255);  
-  --art-input2: rgb(238, 234, 230);  
+  --art-input2: rgb(238, 234, 230);   */
 
   /* -------------------------------------------------*/
 

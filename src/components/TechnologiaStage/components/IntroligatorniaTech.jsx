@@ -52,7 +52,7 @@ export default function IntroligatorniaTech({
 <div className={style.introligatornia}>
   
               <div className={style.introligatornia_menu_button}> 
-              <p>Introligatornia</p>
+              <p style={{color:"gray"}}>Introligatornia</p>
                 
               </div>
              

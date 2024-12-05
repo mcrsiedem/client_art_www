@@ -19,7 +19,7 @@ export default function ProduktyTech() {
       <div className={style.produkt}>
         <div className={style.produkt_menu_button}>
           {/* <p>Produkt</p> */}
-          <p> Druk</p>
+          <p style={{color:"gray"}}> Druk</p>
           <div className={style.produkt_menu_button_sub}>
             <div className={style.produkt_menu_button_sub_16}>
               <p

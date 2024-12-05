@@ -106,7 +106,7 @@
 
 .select,
 .input {
-  background-color: rgb(236, 236, 236);
+  background-color: var(--art-input);
   height: 1.7rem;
   border-radius: 5px;
   border-color: transparent;
@@ -116,7 +116,7 @@
 
 
 .input2 {
-  background-color: rgb(168, 168, 168);
+  background-color: var(--art-input);
   height: 2rem;
   height: 2rem;
   border-radius: 5px;
@@ -128,7 +128,7 @@
 
 
 .select_oprawa {
-  background-color: rgb(236, 236, 236);
+  background-color: var(--art-input);
   height: 1.7rem;
   border-radius: 5px;
   border-color: transparent;

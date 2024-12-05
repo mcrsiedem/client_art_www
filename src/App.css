@@ -11,6 +11,10 @@
 
 :root {
   /* Colors */
+  --art-bg: white;
+  --art-input: rgb(236, 236, 236);
+
+
   --ArtDruk-granat: #10207a;
   --ArtDruk-granat2: #32c56f;
   --ArtDruk-shadow: #b1b1b1;

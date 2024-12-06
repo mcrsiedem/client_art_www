@@ -19,10 +19,10 @@ export default function ProduktyTech() {
       <div className={style.produkt}>
         <div className={style.produkt_menu_button}>
           {/* <p>Produkt</p> */}
-          <p style={{color:"gray"}}> Druk</p>
+          <p style={{color:"grey"}}> Druk</p>
           <div className={style.produkt_menu_button_sub}>
             <div className={style.produkt_menu_button_sub_16}>
-              <p
+              <p style={{color:"grey"}}
                 onClick={() => {
                   input1632toElemnt(32);
                 }}
@@ -31,7 +31,7 @@ export default function ProduktyTech() {
               </p>
             </div>
             <div className={style.produkt_menu_button_sub_16}>
-              <p
+              <p style={{color:"grey"}}
                 onClick={() => {
                   input1632toElemnt(16);
                 }}

@@ -45,25 +45,17 @@
 
 }
 
-.kropka {
-  /* background-color: red; */
-  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
-  background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%);
 
-  border-radius: 10px;
-  height: 10px;
-  width: 10px;
-}
 
 .main {
   overflow: auto;
 }
 
-.naglowek {
+/* .naglowek {
   color: gray;
   font-size: 0.9rem;
   padding-left: 10px;
-}
+} */
 
 /* pasek przewijania */
 .main::-webkit-scrollbar {

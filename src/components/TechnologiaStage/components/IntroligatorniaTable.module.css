@@ -83,6 +83,7 @@ margin: auto;
     
   .row_fragmentow{ 
     background: var(--art-input2);
+    /* border-bottom: 1px solid gray; */
     margin-left: 100px;
     margin-right:100px;
     height: 1.8rem;

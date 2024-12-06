@@ -15,9 +15,10 @@
 
   /* Technologia Stage */
   --art-bg: rgb(224, 224, 224);
+  --art-bg-dane: rgb(119,119,119);
   --art-input: rgb(224, 224, 224);
   --art-input2: rgb(233, 233, 233);  
-  --art-input3: rgb(175, 175, 175);;  
+  --art-input3: rgb(175, 175, 175);
   --art-text-label: grey;
 
 

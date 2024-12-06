@@ -54,13 +54,13 @@ const ProcesRow = ({ rowProces }) => {
     <>
       <div className={style.row1}>
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
-        <p>{rowProces.nazwa} </p>
+        <p className={style.nazwy_procesow}>{rowProces.nazwa} </p>
         {/* <p>{rowProces.typ} </p> */}
-        <p>Prędkość: {rowProces.predkosc} </p>
-        <p>Narząd: {rowProces.narzad}  </p>
+        <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
+        <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
-        <p style={{ fontSize: "1rem", margin : "auto"}}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
-        <p style={{ fontSize: "1rem", margin : "auto"}}> </p>
+        <p  className={style.nazwy_procesow}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+        <p  className={style.nazwy_procesow}> </p>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}
 
@@ -94,7 +94,7 @@ const GrupaRow = ({ rowProces }) => {
                 onDragOver={handleDragOver}
                 onDrop={() => handleDrop(rowGrupa.id)}
               className={style.grupa_container}>
-                 <p style={{ fontSize: "1rem"}}>Grupa {rowGrupa.id} </p>  
+                 <p style={{ fontSize: "1rem", color:"grey"}}>Grupa {rowGrupa.id} </p>  
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />

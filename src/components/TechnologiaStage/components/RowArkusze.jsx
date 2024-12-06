@@ -104,8 +104,7 @@ export default function RowArkusze  ({ row,i })  {
         <td>{l.uwagi}</td>
         {/* <td>{row.element_id}</td> */}
         {/* <td>{row.ilosc_stron}</td> */}
-        <td></td>
-        <td></td>
+
       </div>
 
 
@@ -121,8 +120,7 @@ export default function RowArkusze  ({ row,i })  {
   <td>lega id{l.lega_id}</td>
   {/* <td>{row.element_id}</td> */}
   {/* <td>{row.ilosc_stron}</td> */}
-  <td></td>
-  <td></td>
+
 </div>
 })}</>)}
 </> 

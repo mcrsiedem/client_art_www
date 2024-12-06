@@ -10,7 +10,7 @@
 
 .select,
 .input {
-  background-color: rgb(224, 224, 224);
+  background-color: var(--art-input2);
   height: 1.5 rem;
   border-radius: 5px;
   border-color: transparent;

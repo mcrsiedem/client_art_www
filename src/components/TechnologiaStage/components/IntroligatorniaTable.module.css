@@ -30,8 +30,10 @@ margin-bottom: 0px;
 .select,
 .input {
   background-color: var(--art-input3);
-  height: 2rem;
-  border-radius: 5px;
+  height: 1.7rem;
+  /* border-radius: 5px; */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(119, 119, 119);
   padding-left: 10px;

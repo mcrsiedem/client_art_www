@@ -1,7 +1,8 @@
 .main {
    display: grid;
    grid-template-rows: 60px 1fr;
-   background-image: linear-gradient(0deg, #3d495f 0%, #1d232e 100%);
+   /* background-image: linear-gradient(0deg, #3d495f 0%, #1d232e 100%); */
+   /* background-color: var(--art-bg); */
 
 }
 
@@ -19,40 +20,6 @@
    min-width: 95vw;
    overflow: auto;
 }
-
-
-
-/* th {
-   font-size: 0.9rem;
-   position: sticky;
-   top: 0;
-
-   height: 2rem;
-   padding-left: 20px;
-   z-index: 2;
-   background: transparent;
-   color: #a5a5a5;
-   letter-spacing: 2px;
-
-   border: 1px solid rgb(165, 165, 165);
-
-}
-
-
-
-tr:nth-of-type(2n) {
- 
-   background: #7c7777;
-} */
-
-
-/* tr{
- outline: 1px solid #e7e6e3;
-} */
-/* tr:hover{
-
-   outline: 1px solid #a5a4a2;
-} */
 
 
 
@@ -107,10 +74,12 @@ tr:nth-of-type(2n) {
 .table tr:nth-child(even) {
    /* background-color:  rgb(83, 65, 65); */
    /* background-color:  rgb(80, 83, 90); */
-   background-color: #384050;
-   color: #a5a5a5;
+    /* background-color: var(--art-input3); */
+    background: #f7f6f6;
+    /* outline: 1px solid rgb(66, 66, 66); */
+   color: #000000;
    font-size: 0.9rem;
-   outline-style: none;
+   outline: 1px solid rgb(189, 189, 189);
    /* border-bottom: 1px solid rgb(192, 191, 191); */
 
 }
@@ -120,18 +89,18 @@ tr:nth-of-type(2n) {
 .table tr:nth-child(odd) {
    background-color: transparent;
    
-   outline-style: none;
+
    font-size: 1rem;
    /* border-bottom: 1px solid rgb(192, 191, 191); */
-   color: #a5a5a5;
+   color: #000000;
    /* color: black; */
 }
 
 .table th {
-   background-color: #14171b;
-   color: #a5a5a5;
+   background: rgb(243, 243, 243);
+   color: #000000;
    font-size: 0.9rem;
-   letter-spacing: 3px;
+   letter-spacing: 1px;
    outline-style: none;
    /* border: 1px solid rgb(165, 165, 165); */
 

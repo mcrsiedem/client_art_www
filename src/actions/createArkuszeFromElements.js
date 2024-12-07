@@ -410,6 +410,7 @@ export function createArkuszeFromElemenets(
 
       new_grupy.push({
         id: proc.id,
+        global_id:0,
         indeks: i + 1,
         element_id: proc.element_id,
         nazwa: proc.nazwa,
@@ -465,6 +466,7 @@ export function createArkuszeFromElemenets(
     if(proc.nazwa_id==3){ // falcowanie
       new_grupy.push({
         id: proc.id,
+        global_id:0,
         indeks: i + 1,
         element_id: proc.element_id,
         nazwa: proc.nazwa,

@@ -86,6 +86,9 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 
   useEffect(() => {
     checkToken();
+
+
+    
   }, []);
 
 

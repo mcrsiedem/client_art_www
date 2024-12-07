@@ -34,6 +34,12 @@ p{
 .icon{
     width: 25px;
 }
+
+.iconLock{
+    position: absolute;
+    right: 15px;
+    width: 15px;
+}
 .header{
    
     display: flex;
@@ -46,7 +52,7 @@ p{
 }
 
 .kafleContainer2{
-    background-color: white;
+    background-color: #ffffff;
     
     height: 90vh;
     display: flex;
@@ -129,7 +135,7 @@ align-items: start;
     display: flex;
     justify-content: start;
     align-items: center;
-    padding-left: 25px;
+    padding-left: 35px;
     backdrop-filter:  blur(30px);
     color: rgb(222, 230, 253);
     border-radius: 10px;
@@ -141,10 +147,10 @@ align-items: start;
     font-size: 0.9rem;
     /* padding-left: 50px; */
     /* margin: 20px; */
-  /* box-shadow: 2px 1px 9px rgb(255, 255, 255) ; */
+  /* box-shadow: 2px 1px 20px rgb(255, 255, 255) ; */
   font-weight: 600;
 
-  outline: 1px solid  rgb(222, 230, 253);
+  outline: 1px solid  rgb(66, 66, 66);
   gap: 25px
 
   /* background-color: rgb(211, 211, 211); */

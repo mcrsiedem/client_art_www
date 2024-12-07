@@ -27,6 +27,7 @@ export default function Login( ) {
     socket.on("receive_message", (data) => {
       //tu przychodzi odpowiedź i jest zapisana w contexcie
       context.setSocketReceive(data.message);
+      
     });
   }, [socket]);
 

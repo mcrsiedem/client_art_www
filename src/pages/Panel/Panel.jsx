@@ -11,6 +11,7 @@ import iconUstawienia from 'assets/iconUstawienia.svg'
 import iconMagazyn from 'assets/iconMagazyn.svg'
 import iconCTP from 'assets/iconCTP.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
+import iconLock from 'assets/iconLock.svg'
 
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ function Panel({user,setUser}){
         const navigate = useNavigate();
         const isOnline = useOnlineStatus();
     useEffect(() => {
+        window.onbeforeunload = function() { alert("STOP") };
         // document.getElementById("header").style.display = "none";
       }, []);
 
@@ -57,7 +59,7 @@ function Panel({user,setUser}){
                                         <div className={style.kafle} ><img className={style.icon } src={iconCTP} alt="CTP" /> <p>CTP</p></div>
                                         <div className={style.kafle} ><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p>MAGAZYN</p> </div>
                                         <div className={style.kafle} ><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p>USTAWIENIA</p></div>
-                                        <div className={style.kafle} ><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p>HISTORIA</p></div>
+                                        <div className={style.kafle} ><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
                                         {/* <div className={style.kafle} ></div> */}
                                         
               

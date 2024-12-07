@@ -22,7 +22,7 @@ export default function WykonaniaTech() {
        <div className={style.header_procesy}>
       {/* <div className={style.procesy_menu_button}> */}
       <p></p>
-        <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey"}}>Procesy</p>
+        <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey" , fontSize:"1.5rem"}}>Procesy</p>
         <ProcesBtn />
       </div>
 

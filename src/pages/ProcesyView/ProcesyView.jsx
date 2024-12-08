@@ -89,7 +89,10 @@ const WykonaniaTable =({selectedProcesor}) =>{
 </tr>
         </thead>
         <tbody>
-                {grupyWykonanAll?.filter((x) => x.procesor_id == selectedProcesor)
+                {grupyWykonanAll
+                ?.filter((x) => x.procesor_id == selectedProcesor)
+                // .map(x => {return{...x, poczatek: new Date(x.poczatek)}})
+                .sort((a, b) => b.poczatek - a.poczatek)
             .map((grup, i) => {
               return (
                 <tr

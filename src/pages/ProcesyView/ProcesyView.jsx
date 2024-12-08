@@ -47,7 +47,7 @@ export default function ProcesyView({ user, setUser }) {
   return (
     <div className={style.main}>
 
-        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor}/>
+        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} checkToken={checkToken}/>
         <WykonaniaTable selectedProcesor={selectedProcesor} />
 
       <div className={style.container}>
@@ -92,7 +92,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
                 {grupyWykonanAll
                 ?.filter((x) => x.procesor_id == selectedProcesor)
                 // .map(x => {return{...x, poczatek: new Date(x.poczatek)}})
-                .sort((a, b) => b.poczatek - a.poczatek)
+                // .sort((a, b) => b.poczatek - a.poczatek)
             .map((grup, i) => {
               return (
                 <tr

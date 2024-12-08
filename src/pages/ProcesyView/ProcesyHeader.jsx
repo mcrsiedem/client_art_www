@@ -9,7 +9,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 
 
 
-function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor}) {
+function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,checkToken}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
@@ -39,7 +39,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor}) 
 
           <div className={style.leftHeaderContener}>
 
-<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor}/>
+<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} checkToken={checkToken}/>
           {/* <p>Procesy </p>  */}
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
@@ -88,7 +88,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor}) 
 export default ProcesyHeader;
 
 
-function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
+function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,checkToken}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesListName = contextApp.procesListName
@@ -101,9 +101,11 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
         className={style.procesy_input}
         defaultValue={selectedProces}
         onChange={(event) => {
+          // checkToken()
           setSelectedProces(event.target.value)
           // setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value).procesor_domyslny )
           setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
+          
 
         }}
       >

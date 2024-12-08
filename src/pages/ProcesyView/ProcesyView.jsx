@@ -105,7 +105,8 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
-                  <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
+                  {/* <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td> */}
+                  <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                   <Stan/>
                   <Status/>
                   <td style={{width: "200px"}}>{grup.uwagi}</td>

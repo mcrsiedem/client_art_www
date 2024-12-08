@@ -11,6 +11,7 @@ import IconClose from "assets/x.svg"
 import { saveTech } from "actions/saveTech";
 import { todayPlusDni } from "actions/todayPlusDni";
 import { saveTechNew } from "actions/saveTechNew";
+import { today_teraz } from "actions/today_teraz";
 export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
@@ -45,7 +46,7 @@ export default function Header({}){
      console.log("listaPapierow: ",appcontext.listaPapierow)
      // fechparametryTechnologii(27)
 
-// console.log("Data: "+ todayPlusDni(5))
+ console.log("Teraz: "+ today_teraz())
     
 
 

@@ -12,6 +12,7 @@ import { saveTech } from "actions/saveTech";
 import { todayPlusDni } from "actions/todayPlusDni";
 import { saveTechNew } from "actions/saveTechNew";
 import { today_teraz } from "actions/today_teraz";
+import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
 export default function Header({}){
 
   const techContext = useContext(TechnologyContext)
@@ -46,7 +47,7 @@ export default function Header({}){
      console.log("listaPapierow: ",appcontext.listaPapierow)
      // fechparametryTechnologii(27)
 
- console.log("Teraz: "+ today_teraz())
+ console.log("Teraz: "+ today_dodaj_minuty())
     
 
 

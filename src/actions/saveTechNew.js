@@ -11,24 +11,31 @@ export async function saveTechNew({daneTech,setDaneTech,produktyTech,setProdukty
   let savedData  = await goSaveDataTech({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
 
   //stany po dodaniu technologia_id
-  let daneTechEdit = savedData.daneTech
-
+  
+  let daneTechEdit = savedData.daneTechEdit
   let produktyTechEdit =savedData.produktyTechEdit
-  let elementyTechEdit =savedData.elementyTechEdit
-  let fragmentyTechEdit =savedData.fragmentyTechEdit
-  let oprawaTechEdit =savedData.oprawaTechEdit
-  let legiEdit =savedData.legiEdit
-  let legiFragmentyEdit =savedData.legiFragmentyEdit 
-  let arkuszeEdit =savedData.arkuszeEdit 
   let grupaWykonanEdit =savedData.grupaWykonanEdit 
   let wykonaniaEdit =savedData.wykonaniaEdit 
-  let procesyElementowTechEdit =savedData.procesyElementowTechEdit 
+
+
+
+
+  // let elementyTechEdit =savedData.elementyTechEdit
+  // let fragmentyTechEdit =savedData.fragmentyTechEdit
+  // let oprawaTechEdit =savedData.oprawaTechEdit
+  // let legiEdit =savedData.legiEdit
+  // let legiFragmentyEdit =savedData.legiFragmentyEdit 
+  // let arkuszeEdit =savedData.arkuszeEdit 
+  // let procesyElementowTechEdit =savedData.procesyElementowTechEdit 
 
 // console.log("legi tech po zapisie: ", legiEdit )
+
+let savedGrupyWykonania = await saveGrupy({grupaWykonanEdit});
 
 
   setProduktyTech(produktyTechEdit);
   setDaneTech(daneTechEdit);
+
 
 }
 
@@ -102,3 +109,50 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
     })
 }
 
+
+const saveGrupy = ({ grupaWykonanEdit }) => {
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let grupa of grupaWykonanEdit) {
+      promises.push(axios.post(IP + "grupa", {
+        id: grupa.id,
+        indeks: grupa.indeks,
+        technologia_id: grupa.technologia_id,
+        mnoznik: grupa.mnoznik,
+        czas: grupa.czas,
+        koniec: grupa.koniec,
+        narzad: grupa.narzad,
+        nazwa: grupa.nazwa,
+        poczatek: grupa.poczatek,
+        predkosc: grupa.predkosc,
+        proces_id: grupa.proces_id,
+        procesor_id: grupa.procesor_id,
+        element_id: grupa.element_id,
+        status: grupa.status,
+        stan: grupa.stan,
+        uwagi: grupa.uwagi,
+        id: grupa.id,
+          })
+
+          .then((response) => {
+
+            let global_id = response.data.insertId;
+
+            grupaWykonanEdit = grupaWykonanEdit.map((obj) => {
+              if (obj.id == grupa.id) {return {
+                ...obj, global_id : global_id
+              } }else {return obj} 
+            })
+
+
+            // element.id = new_element_id
+      //      produkt.zamowienie_id = zamowienie_id;
+          })
+      );
+
+
+    }
+
+    Promise.all(promises).then(() => resolve({grupaWykonanEdit}));
+  });
+};

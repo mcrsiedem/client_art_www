@@ -12,12 +12,16 @@
 .input {
   background-color: var(--art-input2);
   height: 1.5 rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
   
 }
+/* 
+.input:last-child{
+  border-bottom-left-radius: 10px;
+} */
 .col_dane {
   position: relative;
   display: flex;

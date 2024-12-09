@@ -39,7 +39,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,se
 
           <div className={style.leftHeaderContener}>
 
-<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} />
+<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/>
           {/* <p>Procesy </p>  */}
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
@@ -88,12 +88,15 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,se
 export default ProcesyHeader;
 
 
-function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
+function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesListName = contextApp.procesListName
   const procesList = contextApp.procesList
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+
+  const procesory = contextApp.procesory
+  const setProcesory = contextApp.setProcesory
   return (
     <div className={style.col_dane}>
       
@@ -103,7 +106,22 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
         onChange={(event) => {
           setSelectedProces(event.target.value)
           setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-        
+           fechGrupyAndWykonaniaForProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
+
+
+           setProcesory(
+            procesory
+            .map((t) => {return{...t, select: false}})
+            .map((t) => {
+              if (t.id == procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny ) {
+                return {...t, select: true }
+              } else {
+                return t;
+              }
+            })
+          )
+
+
         }}
       >
         {procesListName?.map((option) => (

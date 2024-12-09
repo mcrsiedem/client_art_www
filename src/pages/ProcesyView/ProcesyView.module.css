@@ -31,24 +31,22 @@
    background-color: gray;
   
 }
-.btn_dodaj_karte{
-   width: 150px;
-   height: 30px;
-   font-size: 0.8rem;
+/* .btn_procesor{
+   width: 50px;
+   height: 35px;
+   font-size: 0.5rem;
    font-weight: bold;
    color: rgb(219, 219, 219);
    border: 1.5px solid rgb(72, 72, 72);
-   background-color: rgb(72, 72, 72);
+   background-color: var(--art-input);
    border-radius: 10px;
-   box-shadow: 3px 3px 3px rgb(29, 29, 29);
-   margin-top: 10px;
-   margin-bottom: 80px;
+
 }
 
-.btn_dodaj_karte:hover{
+.btn_procesor:hover{
    background-image: linear-gradient(#383838 0%, #3a3333 80%);
 
-}
+} */
 
 
 
@@ -181,16 +179,31 @@ tr:nth-of-type(2n) {
    /* background-color: antiquewhite; */
    overflow: auto;
 }
+
+
 .btn_procesor{
+   background-color: var(--art-input);
    border-radius: 10px;
    border: none;
    width: 100px;
+   font-size: bold;
    color: gray;
    font-size: 0.9rem;
    padding: 5px;;
 }
 
 .btn_procesor:hover{
+   background-color: #383838;
+   border-radius: 10px;
+   border: none;
+   width: 100px;
+   color: rgb(204, 203, 203);
+   font-size: 0.9rem;
+   padding: 5px;;
+}
+
+.btn_procesor_selected{
+
    background-color: #383838;
    border-radius: 10px;
    border: none;

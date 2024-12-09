@@ -166,27 +166,42 @@ function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 
 {procesory
          ?.filter(x => x.grupa == selectedProces )
-        .map((option) => (
+        .map((procesor) => (
 
-          <Btn_procesor setSelectedProcesor={setSelectedProcesor} id={option.id} nazwa={option.nazwa}/>
+          <Btn_procesor setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor}/>
 
         ))}
     </div>
   );
 }
 
-const Btn_procesor = ({setSelectedProcesor,id,nazwa}) =>{
+const Btn_procesor = ({setSelectedProcesor,id,nazwa,procesor}) =>{
+  const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const procesory = appContext.procesory
+  const setProcesory = appContext.setProcesory
   return(
     <button 
 
-    className={style.btn_procesor}
+    className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)
+
+     setProcesory(
+      procesory
+      .map((t) => {return{...t, select: false}})
+      .map((t) => {
+        if (t.id == id) {
+          return {...t, select: true }
+        } else {
+          return t;
+        }
+      })
+    )
    }}>
-     {nazwa}
+     {nazwa} 
    </button> 
   )
 }

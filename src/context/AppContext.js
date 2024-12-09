@@ -69,7 +69,7 @@ export const AppContextProvider = ({children})=>{
                     listaPapierow, setListaPapierow,
                     listaPapierowNazwy, setListaPapierowNazwy,
 
-                    procesory,mnozniki, _status_wykonania,_stan_wykonania
+                    procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory
 
             
                 }}

@@ -461,11 +461,11 @@ console.log(element)
     //  setShowTechnologyStage(true)
 }
 
-async function fechparametryTechnologii(idTechnologii) {
+async function fechparametryTechnologii(idTechnologii, prime_id) {
   console.log("fechparametryTechnologii  -  pobieranie technologii")
   //pobierz wszystkie objekty do TECHNOLOGI nr... idTechnologii
   // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
-  const res = await axios.get(IP + "technologie_parametry/"+idTechnologii);
+  const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+prime_id);
 
   setDaneTech(res.data[0][0]) 
   setProduktyTech(res.data[1])

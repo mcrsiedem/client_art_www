@@ -157,7 +157,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
     <div className={style.col_dane}>
       <label className={style.label}> Procesor </label>
       <select
-        className={style.select}
+        className={style.input}
         defaultValue={rowGrupa.procesor_id}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });

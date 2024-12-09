@@ -23,6 +23,8 @@ export async function saveTechNew({daneTech,setDaneTech,produktyTech,setProdukty
 // console.log("legi tech po zapisie: ", legiEdit )
 let savedGrupyWykonania = await saveGrupy({grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
 let savedWykonania = await saveWykonania({wykonaniaEdit});
+let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit});
+
 
   setProduktyTech(produktyTechEdit);
   setDaneTech(daneTechEdit);
@@ -88,22 +90,42 @@ const saveWykonania = ({ wykonaniaEdit }) => {
   });
 };
 
+//---------------------------------------------------------------------------------
+const saveProcesyElementow = ({ procesyElementowTechEdit }) => {
+  return new Promise((resolve, reject) => {
+    let promises = [];
+    for (let procesElementu of procesyElementowTechEdit) {
+      promises.push(axios.post(IP + "procesy_elementow", procesElementu
+
+          ) 
+          .then((response) => {
+            let global_id = response.data.insertId;
+            procesyElementowTechEdit = procesyElementowTechEdit.map((obj) => {
+              if (obj.id == procesElementu.id) {return {
+                ...obj, global_id : global_id
+              } }else {return obj} 
+            })
+          })
+      );
+    }
+    Promise.all(promises).then(() => resolve({procesyElementowTechEdit}));
+  });
+};
+
+//---------------------------------------
 const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech,saveAs}) =>{
 
   return new Promise(async(resolve,reject)=>{
 
     // przy SaveAs wymuszone zamowienie_id = 1 aby po stronie serwera napisał się prime id
      let id = 1;
-
     // saveAs domyślnie false, bo domyślnie nadpisujemy.
     if(!saveAs){
 
       id =daneTech.id
-            // let final_0 = await axios.put(IP + "technologia_not_final", { technologia_id: daneTech.id,  })
-        
     }
 
-      
+    
   let res = await axios.post(IP + "technologie_new", [{
      
      id: id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
@@ -130,22 +152,6 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
   let grupaWykonanEdit = res.data[8]
   let wykonaniaEdit = res.data[9]
   let procesyElementowTechEdit = res.data[10]
-    // dodaje do wszystkiego id techologi
-    // produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // oprawaTech = oprawaTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // legi = legi.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // arkusze = arkusze.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // wykonania = wykonania.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-    // procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id:technologia_id_final} })
-
-
-
-  // daneTech.prime_id = prime_id
-  // daneTech.id = technologia_id_final
 
       resolve({daneTechEdit,produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit})
 

@@ -47,7 +47,7 @@ export default function Header({}){
      console.log("listaPapierow: ",appcontext.listaPapierow)
      // fechparametryTechnologii(27)
 
- console.log("Teraz: "+ today_dodaj_minuty())
+//  console.log("Teraz: "+ today_dodaj_minuty())
     
 
 

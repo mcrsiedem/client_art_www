@@ -27,7 +27,7 @@ export default function IntroligatorniaTable() {
 
 const OprawaRow = ({ row }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   // row to jest
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;

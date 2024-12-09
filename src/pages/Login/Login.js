@@ -43,7 +43,7 @@ export default function Login( ) {
       } else {
         console.log("Błąd");
       }
-    });
+    })
   };
 
   return (

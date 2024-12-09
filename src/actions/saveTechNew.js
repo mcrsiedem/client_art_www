@@ -55,7 +55,6 @@ const goSaveDataTech = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawa
       if(!saveAs){
 
         id =daneTech.id
-
               // let final_0 = await axios.put(IP + "technologia_not_final", { technologia_id: daneTech.id,  })
           
       }
@@ -133,20 +132,14 @@ const saveGrupy = ({ grupaWykonanEdit }) => {
         uwagi: grupa.uwagi,
         id: grupa.id,
           })
-
           .then((response) => {
-
             let global_id = response.data.insertId;
-
             grupaWykonanEdit = grupaWykonanEdit.map((obj) => {
               if (obj.id == grupa.id) {return {
                 ...obj, global_id : global_id
               } }else {return obj} 
             })
 
-
-            // element.id = new_element_id
-      //      produkt.zamowienie_id = zamowienie_id;
           })
       );
 

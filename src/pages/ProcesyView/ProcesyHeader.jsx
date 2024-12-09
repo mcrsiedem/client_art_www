@@ -55,7 +55,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,se
 
       <div className={style.centerHeaderContener}>
         
-             <p>{selectedProcesor}</p>
+             {/* <p>{selectedProcesor}</p> */}
        
         {/* <img
               className={style.icon}

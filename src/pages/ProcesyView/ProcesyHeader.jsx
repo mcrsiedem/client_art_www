@@ -9,7 +9,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 
 
 
-function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,checkToken}) {
+function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
@@ -39,7 +39,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,ch
 
           <div className={style.leftHeaderContener}>
 
-<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} checkToken={checkToken}/>
+<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} />
           {/* <p>Procesy </p>  */}
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
@@ -55,16 +55,16 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,ch
 
       <div className={style.centerHeaderContener}>
         
-        <img
+             <p>{selectedProcesor}</p>
+       
+        {/* <img
               className={style.icon}
               src={iconAdd}
               onClick={() => {
-                // dodaj_clikHandler();
-                // console.log("z contextu :"+ token.rowSelected)
-                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+
               }}
               alt="React Logo"
-            />
+            /> */}
        
       </div>
         <div className={style.rightHeaderContener}>
@@ -88,7 +88,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,ch
 export default ProcesyHeader;
 
 
-function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,checkToken}) {
+function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesListName = contextApp.procesListName
@@ -101,12 +101,9 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,che
         className={style.procesy_input}
         defaultValue={selectedProces}
         onChange={(event) => {
-          // checkToken()
           setSelectedProces(event.target.value)
-          // setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value).procesor_domyslny )
           setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-          
-
+        
         }}
       >
         {procesListName?.map((option) => (

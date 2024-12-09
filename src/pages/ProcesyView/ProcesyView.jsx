@@ -2,31 +2,20 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-
 import style from "./ProcesyView.module.css";
-
-import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 
-
-
-
 export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
-  const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
   const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
-  const grupyWykonanAll = techContext.grupyWykonanAll;
-  const wykonania = techContext.wykonania;
-
   const [selectedProcesor, setSelectedProcesor] = useState(1);
   const [selectedProces, setSelectedProces] = useState(1);
-  const [showWindowPortal, setShowWindowPortal] = useState(false);
+
 
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
@@ -47,7 +36,7 @@ export default function ProcesyView({ user, setUser }) {
   return (
     <div className={style.main}>
 
-        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} checkToken={checkToken}/>
+        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/>
         <WykonaniaTable selectedProcesor={selectedProcesor} />
 
       <div className={style.container}>
@@ -73,26 +62,12 @@ const WykonaniaTable =({selectedProcesor}) =>{
 <table>
         <thead>
 <tr>
-  <th> Początek</th>
-  <th> Czas</th>
-  <th> Koniec</th>
-  <th> nr</th>
-  <th> rok</th>
-  <th> Klient</th>
-  <th> Praca</th>
-  <th> Element</th>
-  <th> Stan</th>
-  <th> Status</th>
-  <th> Uwagi</th>
-
-
+  <th> Początek</th>  <th> Czas</th>  <th> Koniec</th>  <th> nr</th>  <th> rok</th>  <th> Klient</th>  <th> Praca</th>  <th> Element</th>  <th> Stan</th>  <th> Status</th>  <th> Uwagi</th>
 </tr>
         </thead>
         <tbody>
                 {grupyWykonanAll
                 ?.filter((x) => x.procesor_id == selectedProcesor)
-                // .map(x => {return{...x, poczatek: new Date(x.poczatek)}})
-                // .sort((a, b) => b.poczatek - a.poczatek)
             .map((grup, i) => {
               return (
                 <tr
@@ -108,15 +83,10 @@ const WykonaniaTable =({selectedProcesor}) =>{
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
-                  {/* <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td> */}
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                   <Stan/>
                   <Status/>
                   <td style={{width: "200px"}}>{grup.uwagi}</td>
-           
-
-
- 
                 </tr>
       
               );
@@ -127,8 +97,6 @@ const WykonaniaTable =({selectedProcesor}) =>{
       </div>
   )
 }
-
-
 
 function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);
@@ -208,14 +176,15 @@ function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 }
 
 const Btn_procesor = ({setSelectedProcesor,id,nazwa}) =>{
-
+  const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   return(
     <button 
 
     className={style.btn_procesor}
     onClick={(event) => {
      setSelectedProcesor(id)
-
+     fechGrupyAndWykonaniaForProcesor(id)
    }}>
      {nazwa}
    </button> 

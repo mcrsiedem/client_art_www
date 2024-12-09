@@ -21,9 +21,12 @@ export async function saveTechNew({daneTech,setDaneTech,produktyTech,setProdukty
   // let legiFragmentyEdit =savedData.legiFragmentyEdit 
   // let arkuszeEdit =savedData.arkuszeEdit 
 // console.log("legi tech po zapisie: ", legiEdit )
+if(daneTech.id ==1) {
 let savedGrupyWykonania = await saveGrupy({grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
 let savedWykonania = await saveWykonania({wykonaniaEdit});
 let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit});
+}
+
 
 
   setProduktyTech(produktyTechEdit);

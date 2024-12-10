@@ -14,6 +14,7 @@ function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,se
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
 
+
   const appContext = useContext(AppContext)
 
   // aby useEffect załadował się tylko raz

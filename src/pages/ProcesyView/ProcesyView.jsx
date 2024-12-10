@@ -181,11 +181,16 @@ const Btn_procesor = ({setSelectedProcesor,id,nazwa,procesor}) =>{
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
+
+
+  const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button 
 
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {
+
+      console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)
 

@@ -18,6 +18,8 @@ function ProcesyHeader() {
   const setSelectedProces = techContext.setSelectedProces;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
+  const wykonaniaAll = techContext.wykonaniaAll;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
 
 
   const appContext = useContext(AppContext)
@@ -63,14 +65,17 @@ function ProcesyHeader() {
         
              {/* <p>{selectedProcesor}</p> */}
        
-        {/* <img
+        <img
               className={style.icon}
               src={iconAdd}
               onClick={() => {
-
+                // console.clear()
+                console.log("Procesy: ")
+                // console.log("Wykonania: ", wykonaniaAll)
+                console.log("grupy: ",grupyWykonanAll)
               }}
               alt="React Logo"
-            /> */}
+            />
        
       </div>
         <div className={style.rightHeaderContener}>

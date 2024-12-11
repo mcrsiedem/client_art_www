@@ -12,14 +12,39 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
   const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
+  // const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+  const setSelectedProcesor = techContext.setSelectedProcesor;
+
+
+  const appContext = useContext(AppContext)
+
+  const procesory = appContext.procesory
+  const setProcesory = appContext.setProcesory
+
+
+  // fechGrupyAndWykonaniaForProcesor
 
 
 
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
-        fechGrupyAndWykonaniaAll();
+     
+        fechGrupyAndWykonaniaForProcesor(1)
+        setSelectedProcesor(1)
+        
+     setProcesory(
+      procesory
+      .map((t) => {return{...t, select: false}})
+      .map((t) => {
+        if (t.id == 1) {
+          return {...t, select: true }
+        } else {
+          return t;
+        }
+      })
+    )
       } else {
         navigate("/Login");
       }
@@ -64,7 +89,7 @@ const WykonaniaTable =() =>{
         </thead>
         <tbody>
                 {grupyWykonanAll
-                ?.filter((x) => x.procesor_id == selectedProcesor)
+                .filter((x) => x.procesor_id == selectedProcesor)
             .map((grup, i) => {
               return (
                 <tr
@@ -181,7 +206,9 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll
   const setSelectedProcesor = techContext.setSelectedProcesor
+  // const selectedProcesor = techContext.selectedProcesor
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
 
@@ -193,9 +220,11 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {
 
+      console.log(" id: ", id)
       // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)
+    //  fechGrupyAndWykonaniaAll()
 
      setProcesory(
       procesory

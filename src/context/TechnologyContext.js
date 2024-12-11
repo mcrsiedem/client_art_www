@@ -492,6 +492,10 @@ async function fechGrupyAndWykonaniaAll() {
   const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
   setWykonaniaAll(res.data[0])
   setGrupWykonanAll(res.data[1])
+  console.clear()
+  console.log("Procesy: ")
+  // console.log("Wykonania: ", res.data[0])
+  console.log("grupy: ",res.data[1])
 }
 
 async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
@@ -500,13 +504,16 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
     // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
       setWykonaniaAll(res.data[0])
+      setGrupWykonanAll(res.data[1])
       return res
     }).then((res) =>{
       
-      setGrupWykonanAll(res.data[1])
+      setGrupWykonanAll(prev=>{return prev})
     });
     
-    
+    // console.log("wykoannia:",wykonaniaAll);
+    // console.log("grup:",grupyWykonanAll);
+
   }
 
 

@@ -13,8 +13,7 @@ export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
-  const [selectedProcesor, setSelectedProcesor] = useState(1);
-  const [selectedProces, setSelectedProces] = useState(1);
+
 
 
   async function checkToken() {
@@ -36,24 +35,22 @@ export default function ProcesyView({ user, setUser }) {
   return (
     <div className={style.main}>
 
-        <ProcesyHeader selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/>
-        <WykonaniaTable selectedProcesor={selectedProcesor} />
+        <ProcesyHeader />
+        <WykonaniaTable  />
 
       <div className={style.container}>
 
         <Procesory
-          selectedProcesor={selectedProcesor}
-          setSelectedProcesor={setSelectedProcesor}
-          selectedProces={selectedProces}
         />
       </div>
     </div>
   );
 }
 
-const WykonaniaTable =({selectedProcesor}) =>{
+const WykonaniaTable =() =>{
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
+  const selectedProcesor = techContext.selectedProcesor;
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
   return(
@@ -129,12 +126,13 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   );
 }
 
-function Stan({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+function Stan() {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
   const _stan_wykonania = contextApp._stan_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const selectedProcesor = techContext.updateGrupaWykonan
   return (
 <td style={{width: "100px"}}>
       <select
@@ -158,11 +156,13 @@ function Stan({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 }
 
 
-function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+function Procesory() {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const setSelectedProcesor = techContext.setSelectedProcesor
+  const selectedProces = techContext.selectedProces
   return (
     <div className={style.procesor_btn_container}>
 
@@ -177,15 +177,16 @@ function Procesory({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   );
 }
 
-const Btn_procesor = ({setSelectedProcesor,id,nazwa,procesor}) =>{
+const Btn_procesor = ({id,nazwa,procesor}) =>{
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const setSelectedProcesor = techContext.setSelectedProcesor
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
 
 
-  const grupyWykonanAll = techContext.grupyWykonanAll;
+  // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button 
 

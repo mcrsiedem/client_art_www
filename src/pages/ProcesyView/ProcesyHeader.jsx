@@ -9,10 +9,15 @@ import { TechnologyContext } from "context/TechnologyContext";
 
 
 
-function ProcesyHeader({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
+function ProcesyHeader() {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
+  const techContext = useContext(TechnologyContext);
+  const selectedProces = techContext.selectedProces;
+  const setSelectedProces = techContext.setSelectedProces;
+  const setSelectedProcesor = techContext.setSelectedProcesor;
+  const selectedProcesor = techContext.selectedProcesor;
 
 
   const appContext = useContext(AppContext)

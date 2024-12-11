@@ -66,6 +66,10 @@ export const TechnologyContextProvider = ({children})=>{
         // id otwieranej technologi
         const [openTechnologiaId,setOpenTechnologiaId] =useState();
 
+
+        const [selectedProcesor, setSelectedProcesor] = useState(1);
+        const [selectedProces, setSelectedProces] = useState(1);
+
         const updateTechnology = useCallback(()=>{
             getTechnology(setTechnology)
        },[])
@@ -567,7 +571,8 @@ async function fechTechnology() {
                     openTechnologiaId,setOpenTechnologiaId,
                     fechparametryTechnologii,
                     fechTechnology,
-                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor
+                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
+                    selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces
                 }}
             >
                 {children}

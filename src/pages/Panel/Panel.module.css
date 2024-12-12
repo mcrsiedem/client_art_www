@@ -31,6 +31,9 @@ p{
     font-size: 15px;
     padding-top: 15px;
 }
+p:hover{
+    color: white;
+}
 
 .icon{
     width: 25px;
@@ -171,7 +174,7 @@ align-items: start;
     /* background-color: rgb(229, 229, 229);  */
     background-color: red;
     /* background-color: rgb(75, 75, 75); */
-    color: white;
+    color: rgb(79, 250, 0);
         /* background-image: linear-gradient(90deg, rgb(75, 75, 75, 0.1) 0%, rgb(75, 75, 75,1) 80%); */
     /* outline: 1px white dashed; */
     

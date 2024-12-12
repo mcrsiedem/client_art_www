@@ -36,7 +36,7 @@ export default function ProcesyView({ user, setUser }) {
         
      setProcesory(
       procesory
-      .map((t) => {return{...t, select: false}})
+      ?.map((t) => {return{...t, select: false}})
       .map((t) => {
         if (t.id == 1) {
           return {...t, select: true }

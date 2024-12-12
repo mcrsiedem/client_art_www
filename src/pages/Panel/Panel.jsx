@@ -37,7 +37,7 @@ function Panel({user,setUser}){
 
                    {isOnline ? (     <div className={style.user}> 
                                 <img className={style.userIcon } src={userOnline} alt="Procesy" />
-                                <p className={style.imie }>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                         </div>) : (     <div className={style.user}> 
                                 <img className={style.userIcon } src={userOffline} alt="Procesy" />
                                 <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
@@ -55,13 +55,13 @@ function Panel({user,setUser}){
                                                 </div>
 
              
-                                        <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }><img className={style.icon } src={iconTechnolgie} alt="Technologie" /><p>TECHNOLOGIE</p></div>
-                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p>PROCESY</p> </div> 
-                                        <div className={style.kafle} ><img className={style.icon } src={iconCTP} alt="CTP" /> <p>CTP</p></div>
-                                        <div className={style.kafle} ><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p>MAGAZYN</p> </div>
-                                        <div className={style.kafle} ><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p>KALENDARZ</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                        <div className={style.kafle} ><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p>USTAWIENIA</p></div>
-                                        <div className={style.kafle} ><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                        <div className={style.kafle}  onClick={() => { navigate("/Technologie") } }><img className={style.icon } src={iconTechnolgie} alt="Technologie" /><p className={style.menu_txt}>TECHNOLOGIE</p></div>
+                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
+                                        <div className={style.kafle} ><img className={style.icon } src={iconCTP} alt="CTP" /> <p className={style.menu_txt}>CTP</p></div>
+                                        <div className={style.kafle} ><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div>
+                                        <div className={style.kafle} ><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                        <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
+                                        <div className={style.kafle} ><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
                                         {/* <div className={style.kafle} ></div> */}
                                         
               

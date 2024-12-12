@@ -15,6 +15,7 @@ import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
+import Ustawienia from "pages/Ustawienia/Ustawienia";
 import TechnologieView from "pages/Technologie/TechnologieView";
 
 export default function App() {
@@ -37,6 +38,8 @@ export default function App() {
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/info' element={<Info />} />
               <Route path='/info2' element={<Info2 />} />
+              <Route path='/info2' element={<Info2 />} />
+              <Route path='/ustawienia' element={<Ustawienia />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

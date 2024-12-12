@@ -47,8 +47,8 @@ function UstawieniaHeader() {
 
           <div className={style.leftHeaderContener}>
 
-<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/>
-          {/* <p>Procesy </p>  */}
+{/* <ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/> */}
+          <p className={style.ustawienia_txt}>Ustawienia </p> 
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)
@@ -65,7 +65,7 @@ function UstawieniaHeader() {
         
              {/* <p>{selectedProcesor}</p> */}
        
-        <img
+        {/* <img
               className={style.icon}
               src={iconAdd}
               onClick={() => {
@@ -75,7 +75,7 @@ function UstawieniaHeader() {
                 console.log("grupy: ",grupyWykonanAll)
               }}
               alt="React Logo"
-            />
+            /> */}
        
       </div>
         <div className={style.rightHeaderContener}>

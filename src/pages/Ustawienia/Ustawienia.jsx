@@ -8,43 +8,34 @@ import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./UstawieniaHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
+import UstawieniaHeader from "./UstawieniaHeader";
 
 export default function Ustawienia({ user, setUser }) {
   const navigate = useNavigate();
   const techContext = useContext(TechnologyContext);
-  // const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-  const setSelectedProcesor = techContext.setSelectedProcesor;
-
-
   const appContext = useContext(AppContext)
 
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
 
-
-  // fechGrupyAndWykonaniaForProcesor
-
-
-
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
      
-        fechGrupyAndWykonaniaForProcesor(1)
-        setSelectedProcesor(1)
+    //     fechGrupyAndWykonaniaForProcesor(1)
+    //     setSelectedProcesor(1)
         
-     setProcesory(
-      procesory
-      ?.map((t) => {return{...t, select: false}})
-      .map((t) => {
-        if (t.id == 1) {
-          return {...t, select: true }
-        } else {
-          return t;
-        }
-      })
-    )
+    //  setProcesory(
+    //   procesory
+    //   ?.map((t) => {return{...t, select: false}})
+    //   .map((t) => {
+    //     if (t.id == 1) {
+    //       return {...t, select: true }
+    //     } else {
+    //       return t;
+    //     }
+    //   })
+    // )
       } else {
         navigate("/Login");
       }
@@ -60,14 +51,16 @@ export default function Ustawienia({ user, setUser }) {
   return (
     <div className={style.main}>
 
-        <ProcesyHeader />
-        <WykonaniaTable  />
+        <UstawieniaHeader />
+    
 
-      <div className={style.container}>
+            <div className={style.container}>
 
-        <Procesory
-        />
-      </div>
+              ust
+
+            </div>
+
+
     </div>
   );
 }

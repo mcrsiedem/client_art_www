@@ -8,6 +8,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
+import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
 
 export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
@@ -88,7 +89,8 @@ const WykonaniaTable =() =>{
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       let id_drop_grupa_proces = id;
-     handleChangeCardFragmentyOprawaId(id_drag_grupa_proces, id_drop_grupa_proces);
+      dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces)
+    //  handleChangeCardFragmentyOprawaId(id_drag_grupa_proces, id_drop_grupa_proces);
     }
   }
 

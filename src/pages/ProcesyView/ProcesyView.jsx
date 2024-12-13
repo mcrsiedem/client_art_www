@@ -57,6 +57,9 @@ export default function ProcesyView({ user, setUser }) {
   }, []);
 
 
+
+
+
   return (
     <div className={style.main}>
 
@@ -78,6 +81,27 @@ const WykonaniaTable =() =>{
   const selectedProcesor = techContext.selectedProcesor;
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
+
+  
+  function handleDrop(id) {
+    // sprawdza czy upuszczamy właściwy obiekt
+    if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+      let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+      let id_drop_grupa_proces = id;
+      // handleChangeCardFragmentyOprawaId(id_drag_grupa_proces, id_drop_grupa_proces);
+    }
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+ function handleDragStart(id){
+  //   e.preventDefault();
+   sessionStorage.setItem("id_grupa_proces_drag", id);
+   sessionStorage.setItem("typ_drag", "grupa_proces");
+
+ }
   return(
     <div className={style.container}>
     <div className={style.tableContainer}>
@@ -94,7 +118,11 @@ const WykonaniaTable =() =>{
               return (
                 <tr
                   draggable
-                  // onDragStart={() => handleDragStart(l.id)}
+                  // key={row.id}
+                  onDrop={()=>handleDrop(grup.global_id)}
+                 onDragOver={handleDragOver}
+                  
+                  onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
                   key={grup.id + i}
                 >

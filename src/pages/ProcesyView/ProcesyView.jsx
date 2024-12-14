@@ -250,7 +250,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {
 
-      console.log(" id: ", id)
+      // console.log(" id: ", id)
       // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)

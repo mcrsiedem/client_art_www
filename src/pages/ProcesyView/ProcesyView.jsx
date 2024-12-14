@@ -89,7 +89,7 @@ const WykonaniaTable =() =>{
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       let id_drop_grupa_proces = id;
-      dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces)
+      dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
     }
   }
 

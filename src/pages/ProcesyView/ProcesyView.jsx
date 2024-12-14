@@ -82,15 +82,14 @@ const WykonaniaTable =() =>{
   const selectedProcesor = techContext.selectedProcesor;
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 
   
   function handleDrop(id) {
-    // sprawdza czy upuszczamy właściwy obiekt
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       let id_drop_grupa_proces = id;
       dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces)
-    //  handleChangeCardFragmentyOprawaId(id_drag_grupa_proces, id_drop_grupa_proces);
     }
   }
 
@@ -120,13 +119,13 @@ const WykonaniaTable =() =>{
               return (
                 <tr
                   draggable
-                  // key={row.id}
-                  onDrop={()=>handleDrop(grup.global_id)}
+                   key={grup.global_id}
+                  onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
                  onDragOver={handleDragOver}
                   
                   onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
-                  key={grup.id + i}
+                  // key={grup.id + i}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{zamienNaGodziny(grup.czas) } </td>
@@ -138,9 +137,10 @@ const WykonaniaTable =() =>{
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                  <Stan/>
-                  <Status/>
+                  <Stan grup={grup}/>
+                  <Status grup={grup}/>
                   <td style={{width: "200px"}}>{grup.uwagi}</td>
+                 
                 </tr>
       
               );
@@ -152,7 +152,7 @@ const WykonaniaTable =() =>{
   )
 }
 
-function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
+function Status(grup) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -162,7 +162,7 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
 <td style={{width: "130px"}}>
       <select
         className={style.select}
-        value={selectedProcesor}
+        value={grup.status}
         onChange={(event) => {
           // setSelectedProcesor(event.target.value)
 
@@ -181,7 +181,7 @@ function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   );
 }
 
-function Stan() {
+function Stan(grup) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -192,7 +192,7 @@ function Stan() {
 <td style={{width: "100px"}}>
       <select
         className={style.select}
-        value={selectedProcesor}
+        value={grup.stan}
         onChange={(event) => {
           // setSelectedProcesor(event.target.value)
 
@@ -225,7 +225,7 @@ function Procesory() {
          ?.filter(x => x.grupa == selectedProces )
         .map((procesor) => (
 
-          <Btn_procesor setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor}/>
+          <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
 
         ))}
     </div>
@@ -245,7 +245,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
 
   // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
-    <button 
+    <button  
 
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {

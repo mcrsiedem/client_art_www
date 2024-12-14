@@ -133,7 +133,7 @@ const WykonaniaTable =() =>{
                   <td style={{width: "140px"}}>{grup.koniec} </td>
                   <td style={{width: "140px"}}>{grup.proces_id} </td>
                   <td style={{width: "140px"}}>{grup.procesor_id} </td>
-                  <td style={{width: "50px"}}>{grup.nr}</td>
+                  <td style={{width: "50px"}}>{grup.global_id}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>

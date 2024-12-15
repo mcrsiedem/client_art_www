@@ -17,12 +17,14 @@ export default function ProcesyView({ user, setUser }) {
   // const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   const setSelectedProcesor = techContext.setSelectedProcesor;
+  const setSelectedProces = techContext.setSelectedProces;
 
 
   const appContext = useContext(AppContext)
 
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
+
 
 
   // fechGrupyAndWykonaniaForProcesor
@@ -35,6 +37,7 @@ export default function ProcesyView({ user, setUser }) {
      
         fechGrupyAndWykonaniaForProcesor(1)
         setSelectedProcesor(1)
+        setSelectedProces(1)
         
      setProcesory(
       procesory

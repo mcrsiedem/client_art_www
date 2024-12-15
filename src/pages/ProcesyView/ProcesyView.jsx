@@ -9,6 +9,7 @@ import ProcesyHeader from "./ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
+import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 
 export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
@@ -242,10 +243,27 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
 
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+      let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+      // let id_drop_grupa_proces = id;
+      dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+      
+    }
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
 
   // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button  
+    draggable
+    key={id}
+   onDrop={()=>handleDrop(id)}
+  onDragOver={handleDragOver}
+   
 
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {

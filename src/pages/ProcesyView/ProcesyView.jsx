@@ -80,11 +80,12 @@ export default function ProcesyView({ user, setUser }) {
 const WykonaniaTable =() =>{
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
+  const wykonaniaAll = techContext.wykonaniaAll;
   const selectedProcesor = techContext.selectedProcesor;
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-
+  const [expand, setExpand] = useState(true);
   
   function handleDrop(id) {
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
@@ -110,7 +111,7 @@ const WykonaniaTable =() =>{
 <table>
         <thead>
 <tr>
-  <th> Początek</th>  <th> Czas</th>  <th> Koniec</th>  <th> proces</th> <th> procesor</th> <th> nr</th>  <th> rok</th>  <th> Klient</th>  <th> Praca</th>  <th> Element</th>  <th> Stan</th>  <th> Status</th>  <th> Uwagi</th>
+  <th> Początek</th>  <th> Czas</th>  <th> Koniec</th>  <th> proces</th> <th> procesor</th> <th> nr</th>  <th> rok</th>  <th> Tech</th><th> Klient</th>  <th> Praca</th>  <th> Element</th>  <th> Stan</th>  <th> Status</th>  <th> Uwagi</th>
 </tr>
         </thead>
         <tbody>
@@ -118,6 +119,7 @@ const WykonaniaTable =() =>{
                 .filter((x) => x.procesor_id == selectedProcesor)
             .map((grup, i) => {
               return (
+                <>
                 <tr
                   draggable
                    key={grup.global_id}
@@ -129,12 +131,15 @@ const WykonaniaTable =() =>{
                   // key={grup.id + i}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>
-                  <td style={{width: "60px"}}>{zamienNaGodziny(grup.czas) } </td>
+                  <td style={{width: "60px"}}>{grup.czas } </td>
+                  {/* <td style={{width: "60px"}}>{zamienNaGodziny(grup.czas) } </td> */}
                   <td style={{width: "140px"}}>{grup.koniec} </td>
+                  <td style={{width: "140px"}}>element_id {grup.element_id} </td>
                   <td style={{width: "140px"}}>{grup.proces_id} </td>
                   <td style={{width: "140px"}}>{grup.procesor_id} </td>
-                  <td style={{width: "50px"}}>{grup.global_id}</td>
-                  <td style={{width: "50px"}}>{grup.rok}</td>
+                  <td style={{width: "50px"}}>global_id {grup.global_id}</td>
+                  <td style={{width: "50px"}}>id {grup.id}</td>
+                  <td style={{width: "50px"}}>technollgia {grup.technologia_id}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
@@ -143,7 +148,61 @@ const WykonaniaTable =() =>{
                   <td style={{width: "200px"}}>{grup.uwagi}</td>
                  
                 </tr>
+                {expand ? (
+              wykonaniaAll
+                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id)
+                .map((row) => {
+                  return (
+                    <tr  key={row.global_id}>
+                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
       
+                      <td>{row.id}</td>
+                      <td>{row.czas}</td>
+                      <td></td>
+
+                      <td>element_id {row.element_id}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                      <td>grupa_id {row.grupa_id}</td>
+                      {/* <Typ row={row} /> */}
+                      {/* <td>{row.ilosc_stron} </td> */}
+                      {/* <WersjaOprawaFragment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      /> */}
+
+                      {/* <NakladOprawaFregment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      />
+                       */}
+                  
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      
+                 
+                    </tr>
+                  );
+                })
+            ) : (
+              <></>
+            )}   
+
+
+
+</>
+
+
               );
             })}
         </tbody>
@@ -286,7 +345,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
       })
     )
    }}>
-     {nazwa} {id}
+     {nazwa} 
    </button> 
   )
 }

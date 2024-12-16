@@ -89,10 +89,10 @@ const WykonaniaTable =({selectedProcesor}) =>{
   <th> nr</th>
   <th> Rok</th>
   <th> Klient</th>
-  <th> rok</th>
-  <th> Czas</th>
-  <th> Praca</th>
-  <th> Element</th>
+  <th> Tytuł</th>
+  {/* <th> Czas</th> */}
+  {/* <th> Praca</th> */}
+  {/* <th> Element</th> */}
   <th> Stan</th>
   <th> Status</th>
   <th> Uwagi</th>
@@ -115,7 +115,7 @@ const WykonaniaTable =({selectedProcesor}) =>{
               // setShowTechnologyStage(true);
             }}
             onClick={()=> {
-              console.log("klik!")
+              // console.log("klik!")
                 // setRow(row.id)
             // console.log(row.id)
             }}
@@ -123,9 +123,10 @@ const WykonaniaTable =({selectedProcesor}) =>{
             <td>{row.id} </td>
             <td>{row.nr} </td>
             <td>{row.rok} </td>
+            <td>{row.klient} </td>
    
             <td>{row.tytul}</td>
-            <td>{row.zamowienie_id}</td>
+            {/* <td>{row.zamowienie_id}</td> */}
 
           </tr>
         );

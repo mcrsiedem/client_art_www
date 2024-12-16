@@ -94,12 +94,12 @@ const setDaneTech = contextTech.setDaneTech
 function Klient() {
   const contextTech = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const daneTech = contextTech.dane;
+  const daneTech = contextTech.daneTech;
 
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
-      <select className={style.klient} value={daneTech?.klient_id}>
+      <select className={style.klient} defaultValue={daneTech?.klient_id}>
         {contextApp.clients
           .filter((x) => x.id == daneTech?.klient_id)
           .map((option) => (
@@ -313,18 +313,23 @@ function Tytul( ){
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
+const contextTech = useContext(TechnologyContext);
+const contextApp = useContext(AppContext);
+const daneTech = contextTech.daneTech;
+const setDaneTech = contextTech.setDaneTech;
+
   return(
       <div className={style.col}>
       <label className={style.label}> Tytul </label>
       <input className={style.input} type="text"
-      value={daneZamowienia.tytul}
+      value={daneTech.tytul}
       onChange={(event) => {
         
 
          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
-        setSaveButtonDisabled(false)
+          setDaneTech({...daneTech, tytul: event.target.value});
+        // setSaveButtonDisabled(false)
      }
 
       }}></input>
@@ -381,22 +386,29 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 }
 
 function Nr( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  // const contextModalInsert = useContext(ModalInsertContext);
+  // const daneZamowienia = contextModalInsert.daneZamowienia;
+// const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+// const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+
+
+const contextTech = useContext(TechnologyContext);
+// const contextApp = useContext(AppContext);
+const daneTech = contextTech.daneTech;
+const setDaneTech = contextTech.setDaneTech;
+
   return(
       <div className={style.col}>
       <label className={style.label}> Nr zlecenia </label>
       <input className={style.input} type="text"
-      value={daneZamowienia.nr}
+      value={daneTech.nr}
       onChange={(event) => {
 
         const re = /^[0-9]+$/;
 
         if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value});
-          setSaveButtonDisabled(false)
+          setDaneTech({...daneTech, nr: event.target.value});
+          // setSaveButtonDisabled(false)
         }
         
       

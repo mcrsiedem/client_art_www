@@ -109,7 +109,8 @@ const WykonaniaTable =({selectedProcesor}) =>{
           <tr 
             key={row.id}
             onDoubleClick={(node, event) => {
-              fechparametryTechnologii(row.id,row.prime_id)
+              // fechparametryTechnologii(row.id,row.prime_id)
+              fechparametryTechnologii(row.id)
               // setActiveRowId(row.id)
               // setShowTechnologyStage(true);
             }}

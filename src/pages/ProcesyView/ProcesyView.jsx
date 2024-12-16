@@ -10,6 +10,8 @@ import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
+import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
+
 
 export default function ProcesyView({ user, setUser }) {
   const navigate = useNavigate();
@@ -72,7 +74,8 @@ export default function ProcesyView({ user, setUser }) {
         <WykonaniaTable  />
 
       <div className={style.container}>
-
+       
+      <TechnologiaStage/>
         <Procesory
         />
       </div>
@@ -88,7 +91,8 @@ const WykonaniaTable =() =>{
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-  const [expand, setExpand] = useState(true);
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const [expand, setExpand] = useState(false);
   
   function handleDrop(id) {
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
@@ -131,7 +135,13 @@ const WykonaniaTable =() =>{
                   
                   onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
-                  // key={grup.id + i}
+                  onDoubleClick={(node, event) => {
+                    // fechparametryTechnologii(row.id,row.prime_id)
+                    
+                    fechparametryTechnologii(grup.technologia_id)
+                    // setActiveRowId(row.id)
+                    // setShowTechnologyStage(true);
+                  }}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{grup.czas } </td>

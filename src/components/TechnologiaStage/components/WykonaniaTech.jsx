@@ -13,6 +13,7 @@ import { reg_int } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import RowWykonanie from "./RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
+import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 
 export default function WykonaniaTech() {
   return (
@@ -153,6 +154,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Procesor </label>
@@ -161,7 +163,8 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
         defaultValue={rowGrupa.procesor_id}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
-
+// dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
           // if (row.indeks == 0) {
           //   setProdukty(
           //     produkty.map((p) => {

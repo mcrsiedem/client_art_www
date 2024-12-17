@@ -121,7 +121,7 @@ const WykonaniaTable =() =>{
 <table>
         <thead>
 <tr>
-  <th> Początek</th>  <th> Czas</th>  <th> Koniec</th>  <th> nr</th>  <th> rok</th>  <th> Klient</th>  <th> Praca</th>  <th> Element</th>  <th> Stan</th>  <th> Status</th>  <th> Uwagi</th>
+  <th> Początek</th>  <th> Czas</th>  <th> Koniec</th>  <th> nr</th>  <th> rok</th>  <th> Klient</th>  <th> Praca</th>  <th> Element</th>  <th> Uwagi</th><th> Stan</th>  <th> Status</th>  
 </tr>
         </thead>
         <tbody>
@@ -159,9 +159,10 @@ const WykonaniaTable =() =>{
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
+                  <td style={{width: "200px"}}>{grup.uwagi}</td>
                   <Stan grup={grup}/>
                   <Status grup={grup}/>
-                  <td style={{width: "200px"}}>{grup.uwagi}</td>
+                  
                  
                 </tr>
                 {expand ? (

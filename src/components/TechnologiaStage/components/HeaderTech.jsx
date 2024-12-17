@@ -123,6 +123,13 @@ const IconNavigate = ({className,logo,navi})=>{
   const techContext = useContext(TechnologyContext);
 
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
+
+
+
+
+
+    const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+    const selectedProcesor = techContext.selectedProcesor
   return(
       <img
       className={className}
@@ -131,6 +138,7 @@ const IconNavigate = ({className,logo,navi})=>{
     
         techContext.setRowZamowienia(null)
         techContext.setRowTechnologia(null)
+        fechGrupyAndWykonaniaForProcesor(selectedProcesor)
         // techContext.setOpenTechnologia(false)
 
       

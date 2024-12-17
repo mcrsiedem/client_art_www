@@ -175,7 +175,7 @@ const WykonaniaTable =() =>{
       
                       <td>{row.id}</td>
                       <td>{row.czas}</td>
-                      <td></td>
+                      <td> global id {row.global_id}</td>
 
                       <td>element_id {row.element_id}</td>
                       <td></td>

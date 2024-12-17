@@ -14,6 +14,8 @@ import { getNameOfElement } from "actions/getNameOfElement";
 import RowWykonanie from "./RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
+import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
+
 
 export default function WykonaniaTech() {
   return (
@@ -100,8 +102,8 @@ const GrupaRow = ({ rowProces }) => {
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
-                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
                  <Stangrupy rowGrupa={rowGrupa}/>
+                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
                  
                  <DodajGrupeWykonan rowGrupa={rowGrupa}/>
               </div>
@@ -163,19 +165,8 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
         defaultValue={rowGrupa.procesor_id}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
-// dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
-dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
-          // if (row.indeks == 0) {
-          //   setProdukty(
-          //     produkty.map((p) => {
-          //       if (p.id === row.produkt_id) {
-          //         return { ...p, oprawa: event.target.value };
-          //       } else {
-          //         return p;
-          //       }
-          //     })
-          //   );
-          // }
+          dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
+    
         }}
       >
         {procesory
@@ -233,6 +224,7 @@ function StatusGrupy({ rowGrupa }) {
   const _status_wykonania = contextApp._status_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
    const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
   return (
@@ -242,8 +234,21 @@ function StatusGrupy({ rowGrupa }) {
         className={style.select}
         defaultValue={rowGrupa.status}
         onChange={(event) => {
-          // updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
-          updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
+  
+          // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
+          // technologia_id != 1 - zmiany bezpośrednio na serwerze
+          if(rowGrupa.technologia_id == 1){
+
+            updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
+            updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+          }else{
+
+            // 1 - status
+            // 2 - stan
+            updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
+
+          }
+          
 
           // setWykonania(
           //   wykonania.map((t) => {

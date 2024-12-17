@@ -41,6 +41,14 @@
     width: 30px;
 }
 
+
+.btn_x:hover {
+
+    background-color: rgb(70, 69, 69);
+    border-radius: 5px;
+
+}
+
 .btn{
     width: 150px;
     height: 25px;
@@ -54,8 +62,9 @@
     margin-right: 100px;
 }
 
-.btn_zapis:hover{
-
+.btn:hover{
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
 }
 
 .btn_disabled{

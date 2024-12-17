@@ -225,7 +225,7 @@ const WykonaniaTable =() =>{
   )
 }
 
-function Status(grup) {
+function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
@@ -241,9 +241,7 @@ function Status(grup) {
 
         }}
       >
-        {_status_wykonania
-        //  .filter(x => x.grupa == selectedProces )
-        .map((option) => (
+        {_status_wykonania.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
@@ -254,7 +252,7 @@ function Status(grup) {
   );
 }
 
-function Stan(grup) {
+function Stan({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory

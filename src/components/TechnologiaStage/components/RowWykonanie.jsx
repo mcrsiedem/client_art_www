@@ -19,6 +19,10 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
       <ID rowWykonanie={rowWykonanie}/>
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
+      <CzasWykoniania rowWykonanie={rowWykonanie}/>
+      <CzasWykoniania rowWykonanie={rowWykonanie}/>
+      <CzasWykoniania rowWykonanie={rowWykonanie}/>
+    
       <StatusWykonania rowWykonanie={rowWykonanie}/>
 
     </div>

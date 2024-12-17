@@ -74,7 +74,7 @@ function Header({ dodaj_clikHandler}) {
         <div className={style.rightHeaderContener}>
           {/* <input></input> */}
           <img
-            className={style.icon}
+            className={style.icon2}
             src={iconClose2}
             onClick={() => {
               navigate("/Panel");

@@ -11,6 +11,9 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
+import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+
+
 
 
 export default function ProcesyView({ user, setUser }) {
@@ -228,17 +231,17 @@ const WykonaniaTable =() =>{
 function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const procesory = contextApp.procesory
   const _status_wykonania = contextApp._status_wykonania
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
   return (
 <td style={{width: "130px"}}>
       <select
         className={style.select}
         value={grup.status}
         onChange={(event) => {
-          // setSelectedProcesor(event.target.value)
-
+   
+          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >
         {_status_wykonania.map((option) => (
@@ -255,10 +258,10 @@ function Status({grup}) {
 function Stan({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const procesory = contextApp.procesory
+
   const _stan_wykonania = contextApp._stan_wykonania
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
-  const selectedProcesor = techContext.updateGrupaWykonan
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
   return (
 <td style={{width: "100px"}}>
       <select
@@ -266,6 +269,7 @@ function Stan({grup}) {
         value={grup.stan}
         onChange={(event) => {
           // setSelectedProcesor(event.target.value)
+          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,2,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
 
         }}
       >

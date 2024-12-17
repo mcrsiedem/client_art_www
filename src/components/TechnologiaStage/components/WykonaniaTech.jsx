@@ -281,6 +281,8 @@ function Stangrupy({ rowGrupa }) {
   const contextApp = useContext(AppContext);
   const _stan_wykonania = contextApp._stan_wykonania
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Stan </label>
@@ -288,7 +290,26 @@ function Stangrupy({ rowGrupa }) {
         className={style.select}
         defaultValue={rowGrupa.stan}
         onChange={(event) => {
-          updateGrupaWykonan({ ...rowGrupa, stan: event.target.value });
+          
+
+
+
+          if(rowGrupa.technologia_id == 1){
+
+            updateWykonaniaWszystkie({ ...rowGrupa, stan: event.target.value });
+            updateGrupaWykonan({ ...rowGrupa, stan: event.target.value });
+          }else{
+
+            // 1 - status
+            // 2 - stan
+            updateWykonaniaOrazGrupa(rowGrupa.global_id,2,event.target.value,fechparametryTechnologii)
+
+          }
+
+
+
+
+
         }}
       >
         {_stan_wykonania.map((option) => (

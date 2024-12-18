@@ -139,12 +139,12 @@ const WykonaniaTable =() =>{
                   onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
                   onDoubleClick={(node, event) => {
-                    
+
                     fechparametryTechnologii(grup.technologia_id)
                   }}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>
-                  <td style={{width: "60px"}}>{grup.czas } </td>
+                  <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
                   <td style={{width: "140px"}}>{grup.koniec} </td>
                   <td style={{width: "50px"}}>{grup.nr}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>

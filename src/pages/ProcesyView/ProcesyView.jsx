@@ -164,8 +164,10 @@ const WykonaniaTable =() =>{
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                   <td style={{width: "200px"}}>{grup.uwagi}</td>
-                  <Stan grup={grup}/>
-                  <Status grup={grup}/>
+                  {grup.typ_grupy != 1 ?  <Stan grup={grup}/> :<></>}
+                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> :<></>}
+                  {/* <Stan grup={grup}/>
+                  <Status grup={grup}/> */}
                   
                  
                 </tr>

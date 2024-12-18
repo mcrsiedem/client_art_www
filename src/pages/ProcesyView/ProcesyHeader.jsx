@@ -3,6 +3,7 @@ import style from "./ProcesyHeader.module.css";
 
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
+import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
@@ -71,7 +72,7 @@ function ProcesyHeader() {
         <img
         onDragStart={() => handleDragStart()}
               className={style.icon}
-              src={iconAdd}
+              src={iconWC}
               onClick={() => {
               }}
               alt="React Logo"

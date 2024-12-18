@@ -38,7 +38,10 @@ function ProcesyHeader() {
   }, []);
   //---------------------------------------------------------
 
-
+  function handleDragStart(){
+     sessionStorage.setItem("typ_drag", "przerwa");
+  
+   }
 
   return (
     <div className={style.container}>
@@ -66,13 +69,10 @@ function ProcesyHeader() {
              {/* <p>{selectedProcesor}</p> */}
        
         <img
+        onDragStart={() => handleDragStart()}
               className={style.icon}
               src={iconAdd}
               onClick={() => {
-                // console.clear()
-                console.log("Procesy: ")
-                // console.log("Wykonania: ", wykonaniaAll)
-                console.log("grupy: ",grupyWykonanAll)
               }}
               alt="React Logo"
             />

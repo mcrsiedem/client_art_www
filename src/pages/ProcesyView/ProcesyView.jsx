@@ -12,6 +12,7 @@ import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 
 
 
@@ -103,6 +104,14 @@ const WykonaniaTable =() =>{
       let id_drop_grupa_proces = id;
       dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
     }
+
+
+    if (sessionStorage.getItem("typ_drag") == "przerwa") {
+      updateAddPrzerwa(id,fechGrupyAndWykonaniaForProcesor)
+    }
+
+
+    
   }
 
   function handleDragOver(e) {

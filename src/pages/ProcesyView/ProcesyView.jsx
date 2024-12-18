@@ -139,21 +139,13 @@ const WykonaniaTable =() =>{
                   onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
                   onDoubleClick={(node, event) => {
-                    // fechparametryTechnologii(row.id,row.prime_id)
                     
                     fechparametryTechnologii(grup.technologia_id)
-                    // setActiveRowId(row.id)
-                    // setShowTechnologyStage(true);
                   }}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{grup.czas } </td>
-                  {/* <td style={{width: "60px"}}>{zamienNaGodziny(grup.czas) } </td> */}
                   <td style={{width: "140px"}}>{grup.koniec} </td>
-                  {/* <td style={{width: "140px"}}>element_id {grup.element_id} </td> */}
-                  {/* <td style={{width: "140px"}}>{grup.proces_id} </td> */}
-                  {/* <td style={{width: "140px"}}>{grup.procesor_id} </td> */}
-                  {/* <td style={{width: "50px"}}>global_id {grup.global_id}</td> */}
                   <td style={{width: "50px"}}>{grup.nr}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>

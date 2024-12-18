@@ -16,6 +16,9 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
 import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgrupy";
+import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
+
+
 
 
 export default function WykonaniaTech() {
@@ -124,30 +127,7 @@ const GrupaRow = ({ rowProces }) => {
           ))}
     </>
   );
-  function handleDragOver(e) {
-    e.preventDefault();
-  
-  }
 
-  function handleDrop(id) {
-    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
-      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
-      let id_drop_grupa = id;
-
-      setWykonania(
-        wykonania.map((p) => {
-          if (p.id == id_drag_wykonania) {
-            return { ...p, grupa_id: id_drop_grupa };
-          } else {
-            return p;
-          }
-        })
-      );
-
-    }
-
-
-  }
 };
 
 
@@ -158,8 +138,13 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const procesory = contextApp.procesory
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const wykonania = techContext.wykonania;
   return (
-    <div className={style.col_dane}>
+    <div
+                onDragOver={handleDragOver}
+                onDrop={() => handleDrop(rowGrupa.id,rowProces.id,rowGrupa.id)}
+     className={style.col_dane}>
       <label className={style.label}> Procesor </label>
       <select
         className={style.input}
@@ -180,7 +165,69 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
       </select>
     </div>
   );
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  
+  }
+
+  function handleDrop(id,proces_id,grupa_id_drop) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id) {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+
+        if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length == 1){
+          // console.log("Ostatnie wykonanie w grupie")
+          updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, true)
+        }
+
+        if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length > 1){
+          // console.log("Nieostatnie wykonanie w grupie")
+        updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, false)
+        }
+    }
+  }
+
+
 }
+
+function DodajGrupeWykonan({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
+  return (
+    <div style={{ paddingTop: "13px" }}>
+      <img
+        onDragOver={handleDragOver}
+        onDrop={() => handleDrop(1)}
+        className={style.expand}
+        src={icon}
+        onClick={() => {
+          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
+          // handleRemoveItem(row.indeks, row.id);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+      // console.log("id: "+id_drag_wykonania)
+      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
+      // let id_drop_grupa = id;
+    }
+  }
+}
+
+
+
 
 function MnoznikPredkosci({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
@@ -376,78 +423,10 @@ const PredkoscGrupy = ({ rowGrupa }) => {
 
 
 
-function DodajGrupeWykonan({ row }) {
-  const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const fechparametryTechnologii = techContext.fechparametryTechnologii;
-
-  const handleAddArkusz = (row, grupaWykonan, setGrupaWykonan) => {
-
-
-  };
-
-  return (
- 
-      <div style={{ paddingTop: "13px"}}>
-        <img
-        onDragOver={handleDragOver}
-        onDrop={() => handleDrop(1)}
-          className={style.expand}
-          src={icon}
-          onClick={() => {
-            //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-            // handleRemoveItem(row.indeks, row.id);
-          }}
-          alt="Procesy"
-        />
-      </div>
-
-  );
-
-  function handleDragOver(e) {
-    e.preventDefault();
-  
-  }
-  
-  function handleDrop(id) {
-    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
-      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
-      // console.log("id: "+id_drag_wykonania)
-updateWydzielWykonanieZgrupy(id_drag_wykonania,fechparametryTechnologii)
-      // let id_drop_grupa = id;
-  
-  
-  
-    }
-  
-  
-  }
-  
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 
 const Rozwin = ({  rowProces,show, setShow }) => {
   const techContext = useContext(TechnologyContext);

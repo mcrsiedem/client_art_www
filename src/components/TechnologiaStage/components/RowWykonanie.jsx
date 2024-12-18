@@ -39,6 +39,8 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
     }
     sessionStorage.setItem("id_wykonanie_drag", id);
     sessionStorage.setItem("typ_drag", "wykonanie");
+    sessionStorage.setItem("id_proces_wykonanie_drag", rowWykonanie.proces_id);
+    sessionStorage.setItem("id_grupa_wykonanie_drag", rowWykonanie.grupa_id);
   }
 }
 

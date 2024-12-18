@@ -148,8 +148,11 @@ const WykonaniaTable =() =>{
                   onDragStart={() => handleDragStart(grup.global_id)}
                   className={style.tr_legi_mini}
                   onDoubleClick={(node, event) => {
-
-                    fechparametryTechnologii(grup.technologia_id)
+         
+                      if(grup.typ_grupy != 1 ){
+                        fechparametryTechnologii(grup.technologia_id)
+                      }
+                    
                   }}
                 >
                   <td style={{width: "130px"}}>{grup.poczatek}</td>

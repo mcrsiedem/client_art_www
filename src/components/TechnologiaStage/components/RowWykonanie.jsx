@@ -16,11 +16,12 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
     <div  className={style.container}> 
       
-      <ID rowWykonanie={rowWykonanie}/>
+      {/* <ID rowWykonanie={rowWykonanie}/> */}
+      <CzasWykoniania rowWykonanie={rowWykonanie}/>
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       {/* <CzasWykoniania rowWykonanie={rowWykonanie}/> */}
-      <CzasWykoniania rowWykonanie={rowWykonanie}/>
-      <CzasWykoniania rowWykonanie={rowWykonanie}/>
+      <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
+      <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
     
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
@@ -126,6 +127,58 @@ const CzasWykoniania = ({ rowWykonanie }) => {
       disabled
         className={style.input}
         value={zamienNaGodziny(rowWykonanie.czas)}
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+
+const MnoznikWykoniania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  return (
+    <div className={style.col_dane}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+        className={style.input}
+        value={rowWykonanie.mnoznik}
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+
+const PredkoscWykoniania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  return (
+    <div className={style.col_dane}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+        className={style.input}
+        value={rowWykonanie.predkosc}
         onChange={(e) => {
 
 

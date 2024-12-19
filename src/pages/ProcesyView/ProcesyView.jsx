@@ -341,11 +341,11 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const setProcesory = appContext.setProcesory
 
   function handleDrop(id) {
-    if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+    if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       // let id_drop_grupa_proces = id;
       dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
-      
+
     }
   }
 

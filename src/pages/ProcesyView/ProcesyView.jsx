@@ -118,10 +118,21 @@ const WykonaniaTable =() =>{
     e.preventDefault();
   }
 
- function handleDragStart(id){
+ function handleDragStart(id,typ_grupy){
   //   e.preventDefault();
-   sessionStorage.setItem("id_grupa_proces_drag", id);
-   sessionStorage.setItem("typ_drag", "grupa_proces");
+
+  if(typ_grupy == 1){
+    sessionStorage.setItem("id_grupa_proces_drag", id);
+   sessionStorage.setItem("typ_drag", "przerwa");
+  }
+
+  if(typ_grupy != 1){
+    sessionStorage.setItem("id_grupa_proces_drag", id);
+    sessionStorage.setItem("typ_drag", "grupa_proces");
+  }
+
+
+
 
  }
   return(
@@ -145,7 +156,7 @@ const WykonaniaTable =() =>{
                   onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
                  onDragOver={handleDragOver}
                   
-                  onDragStart={() => handleDragStart(grup.global_id)}
+                  onDragStart={() => handleDragStart(grup.global_id,grup.typ_grupy)}
                   className={style.tr_legi_mini}
                   onDoubleClick={(node, event) => {
          
@@ -163,7 +174,7 @@ const WykonaniaTable =() =>{
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                  <td style={{width: "200px"}}>{grup.uwagi}</td>
+                  <td style={{width: "200px"}}>{grup.global_id}</td>
                   {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
                   {/* <Stan grup={grup}/>

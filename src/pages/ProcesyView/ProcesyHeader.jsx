@@ -7,6 +7,7 @@ import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
+import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 
 
 
@@ -20,7 +21,7 @@ function ProcesyHeader() {
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
   const wykonaniaAll = techContext.wykonaniaAll;
-  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 
 
   const appContext = useContext(AppContext)
@@ -43,6 +44,26 @@ function ProcesyHeader() {
      sessionStorage.setItem("typ_drag", "przerwa");
   
    }
+
+     function handleDrop() {
+      //  if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+      //    let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+      //    let id_drop_grupa_proces = id;
+      //    dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
+      //  }
+   
+   
+       if (sessionStorage.getItem("typ_drag") == "przerwa") {
+        updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
+       }
+   
+   
+       
+     }
+
+     function handleDragOver(e) {
+      e.preventDefault();
+    }
 
   return (
     <div className={style.container}>
@@ -71,6 +92,8 @@ function ProcesyHeader() {
        
         <img
         onDragStart={() => handleDragStart()}
+        onDragOver={handleDragOver}
+        onDrop={()=>handleDrop()}
               className={style.icon}
               src={iconWC}
               onClick={() => {

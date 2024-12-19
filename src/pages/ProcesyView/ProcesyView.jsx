@@ -121,15 +121,20 @@ const WykonaniaTable =() =>{
  function handleDragStart(id,typ_grupy){
   //   e.preventDefault();
 
-  if(typ_grupy == 1){
-    sessionStorage.setItem("id_grupa_proces_drag", id);
-   sessionStorage.setItem("typ_drag", "przerwa");
-  }
 
-  if(typ_grupy != 1){
-    sessionStorage.setItem("id_grupa_proces_drag", id);
+  sessionStorage.setItem("id_grupa_proces_drag", id);
     sessionStorage.setItem("typ_drag", "grupa_proces");
-  }
+    sessionStorage.setItem("typ_grupy", typ_grupy);
+
+  // if(typ_grupy == 1){
+  //   sessionStorage.setItem("id_grupa_proces_drag", id);
+  //  sessionStorage.setItem("typ_drag", "przerwa");
+  // }
+
+  // if(typ_grupy != 1){
+  //   sessionStorage.setItem("id_grupa_proces_drag", id);
+  //   sessionStorage.setItem("typ_drag", "grupa_proces");
+  // }
 
 
 

@@ -53,7 +53,7 @@ function ProcesyHeader() {
       //  }
    
    
-       if (sessionStorage.getItem("typ_drag") == "przerwa") {
+       if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
         updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
        }
    

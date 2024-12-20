@@ -1,56 +1,85 @@
-
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 
-
-import logoExpand from "assets/expand.svg";
-import iconTrash from "assets/trash2.svg"
 import icon from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
-// import TypElementu from "./TypElementu";
-// import RodzajArkusza from "./RodzajArkusza";
-// import { reg_int } from "utils/initialvalue";
-// import UsunArkusz from "./UsunArkusz";
-// import DodajArkusz from "./DodajArkusz";
-// import Rozwin from "./Rozwin";
+
 import style from "./RowWykonanie.module.css";
 import { reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 
-export default function ViewRow  ({rowWykonanie,updateWykonaniaWszystkie})  {
 
+export default function ProcesViewRow({ rowWykonanie, updateWykonaniaWszystkie }) {
 
-  return(<div
-    draggable
-    onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
-    <div  className={style.container}> 
-      
-      <ID rowWykonanie={rowWykonanie}/>
-       {/* grupa id: {rowWykonanie.grupa_id}  */}
-      <CzasWykoniania rowWykonanie={rowWykonanie}/>
-      <StatusWykonania rowWykonanie={rowWykonanie}/>
-
+  return (
+    <div draggable onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
+      <div className={style.container}>
+        <ID rowWykonanie={rowWykonanie} />
+        {/* grupa id: {rowWykonanie.grupa_id}  */}
+        <CzasWykoniania rowWykonanie={rowWykonanie} />
+        <StatusWykonania rowWykonanie={rowWykonanie} />
+      </div>
     </div>
-  </div>)
-  
-  function handleDragWykonanieStart(id) {
-    //   e.preventDefault();
-    sessionStorage.setItem("id_wykonanie_drag", id);
-    sessionStorage.setItem("typ_drag", "wykonanie");
+  );
+
+
+
+
+  //--------------- Funkcje
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+      let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+      let id_drop_grupa_proces = id;
+      dragDropProcesGrupa(
+        id_drag_grupa_proces,
+        id_drop_grupa_proces,
+        fechGrupyAndWykonaniaForProcesor
+      );
+    }
+
+    if (sessionStorage.getItem("typ_drag") == "przerwa") {
+      updateAddPrzerwa(id, fechGrupyAndWykonaniaForProcesor);
+    }
   }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDragStart(id, typ_grupy) {
+    sessionStorage.setItem("id_grupa_proces_drag", id);
+    sessionStorage.setItem("typ_drag", "grupa_proces");
+    sessionStorage.setItem("typ_grupy", typ_grupy);
+  }
+//----------------- 
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
 
 
 function StatusWykonania({ rowWykonanie }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania
-  const updateWykonanie = techContext.updateWykonanie
+  const _status_wykonania = contextApp._status_wykonania;
+  const updateWykonanie = techContext.updateWykonanie;
   return (
     <div className={style.col_dane}>
       {/* <label className={style.label}> Status </label> */}
-      <select 
+      <select
         className={style.select}
         value={rowWykonanie.status}
         onChange={(event) => {
@@ -69,18 +98,15 @@ function StatusWykonania({ rowWykonanie }) {
 
 const CzasWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
-  const updateWykonanie = techContext.updateWykonanie
+  const updateWykonanie = techContext.updateWykonanie;
   return (
     <div className={style.col_dane}>
-      
       {/* <label className={style.label}> Czas </label> */}
       <input
-      disabled
+        disabled
         className={style.input}
         value={rowWykonanie.czas}
         onChange={(e) => {
-
-
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             updateWykonanie({
               ...rowWykonanie,
@@ -95,18 +121,15 @@ const CzasWykoniania = ({ rowWykonanie }) => {
 
 const ID = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
-  const updateWykonanie = techContext.updateWykonanie
+  const updateWykonanie = techContext.updateWykonanie;
   return (
     <div className={style.col_dane}>
-      
       {/* <label className={style.label}>  {rowWykonanie.nazwa} </label> */}
       <input
-      disabled
+        disabled
         className={style.input}
         value={rowWykonanie.id}
         onChange={(e) => {
-
-
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             updateWykonanie({
               ...rowWykonanie,

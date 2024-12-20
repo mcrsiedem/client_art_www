@@ -23,6 +23,7 @@ export default function ProcesyView({ user, setUser }) {
   const setProcesory = appContext.setProcesory
 
 
+
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -77,7 +78,7 @@ const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
   const selectedProcesor = techContext.selectedProcesor;
-  const [expand, setExpand] = useState(false);
+  const [unlockTable, setUnlockTable] = useState(true);
 
   return (
     <div className={style.container}>
@@ -85,14 +86,14 @@ const WykonaniaTable = () => {
         <table>
           <thead>
             <tr>
-              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> nr</th> <th> rok</th> <th> Klient</th> <th> Praca</th> <th> Element</th> <th> Uwagi</th> <th> Stan</th> <th> Status</th>
+              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> nr</th> <th> rok</th> <th> Klient</th> <th> Praca</th> <th> Element</th> <th> Uwagi</th>  <th> </th>
             </tr>
           </thead>
           <tbody>
             {grupyWykonanAll
               .filter((x) => x.procesor_id == selectedProcesor)
               .map((grup, i) => {
-                return <ProcesViewRow grup={grup} expand={expand} />;
+                return <ProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
               })}
           </tbody>
         </table>

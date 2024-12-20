@@ -25,51 +25,32 @@ import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 
 
 
-export default function ProcesViewRow({ grup,expand }) {
+export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     const navigate = useNavigate();
     const techContext = useContext(TechnologyContext);
-    // const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
     const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-    const setSelectedProcesor = techContext.setSelectedProcesor;
-    const setSelectedProces = techContext.setSelectedProces;
-  
-  
-    const appContext = useContext(AppContext)
-  
-    const procesory = appContext.procesory
-    const setProcesory = appContext.setProcesory
-
-
-  
-      const grupyWykonanAll = techContext.grupyWykonanAll;
-      const wykonaniaAll = techContext.wykonaniaAll;
-      const selectedProcesor = techContext.selectedProcesor;
-      const appcontext = useContext(AppContext);
-      const typ_elementu = appcontext.typ_elementu;
+    const wykonaniaAll = techContext.wykonaniaAll;
+    const appcontext = useContext(AppContext);
+    const typ_elementu = appcontext.typ_elementu;
 
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  
-
-  // return (
-  //   <tr draggable onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
-  //     <div className={style.container}>
-  //       <ID rowWykonanie={rowWykonanie} />
-  //       <CzasWykoniania rowWykonanie={rowWykonanie} />
-  //       <StatusWykonania rowWykonanie={rowWykonanie} />
-  //     </div>
-  //   </tr>
-  // );
-
+        const [expand, setExpand] = useState(false);
 
   return (
 <>
                 <tr
-                  draggable
+           
+                  draggable={unlockTable}
                    key={grup.global_id}
                   onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
                  onDragOver={handleDragOver}
                   
-                  onDragStart={() => handleDragStart(grup.global_id,grup.typ_grupy)}
+                  onDragStart={() => {
+                
+                      handleDragStart(grup.global_id,grup.typ_grupy)
+            
+                    
+                  }}
                   className={style.tr_legi_mini}
                   onDoubleClick={(node, event) => {
          
@@ -87,11 +68,11 @@ export default function ProcesViewRow({ grup,expand }) {
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td >{grup.tytul}</td>
                   <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                  <td style={{width: "200px"}}>{grup.global_id}</td>
-                  {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>}
+                  
+                  <td style={{width: "300px"}}>{grup.uwagi}</td>
+                  {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
-                  {/* <Stan grup={grup}/>
-                  <Status grup={grup}/> */}
+
                   
                  
                 </tr>
@@ -103,39 +84,22 @@ export default function ProcesViewRow({ grup,expand }) {
                     <tr  key={row.global_id}>
                        {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
       
-                      <td>{row.id}</td>
+                      <td></td>
                       <td>{row.czas}</td>
-                      <td> global id {row.global_id}</td>
-
-                      <td>element_id {row.element_id}</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-
-                      <td>grupa_id {row.grupa_id}</td>
-                      {/* <Typ row={row} /> */}
-                      {/* <td>{row.ilosc_stron} </td> */}
-                      {/* <WersjaOprawaFragment
-                        row={row}
-                        handleChangeCardFragmenty={handleChangeCardFragmenty}
-                      /> */}
-
-                      {/* <NakladOprawaFregment
-                        row={row}
-                        handleChangeCardFragmenty={handleChangeCardFragmenty}
-                      />
-                       */}
-                  
+                      {/* <td> global id {row.global_id}</td> */}
+                      {/* <td>element_id {row.element_id}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
+                      {/* <td>grupa_id {row.grupa_id}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
+                   
+           
                       
                  
                     </tr>
@@ -180,71 +144,13 @@ export default function ProcesViewRow({ grup,expand }) {
 //----------------- 
 
 
-
-
-
-
-
-
-
-
 }
 
 
 
 
 
-
-
-function StatusWykonania({ rowWykonanie }) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania;
-  const updateWykonanie = techContext.updateWykonanie;
-  return (
-    <div className={style.col_dane}>
-      {/* <label className={style.label}> Status </label> */}
-      <select
-        className={style.select}
-        value={rowWykonanie.status}
-        onChange={(event) => {
-          updateWykonanie({ ...rowWykonanie, status: event.target.value });
-        }}
-      >
-        {_status_wykonania.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
-
-const CzasWykoniania = ({ rowWykonanie }) => {
-  const techContext = useContext(TechnologyContext);
-  const updateWykonanie = techContext.updateWykonanie;
-  return (
-    <div className={style.col_dane}>
-      {/* <label className={style.label}> Czas </label> */}
-      <input
-        disabled
-        className={style.input}
-        value={rowWykonanie.czas}
-        onChange={(e) => {
-          if (e.target.value == "" || reg_int.test(e.target.value)) {
-            updateWykonanie({
-              ...rowWykonanie,
-              czas: e.target.value,
-            });
-          }
-        }}
-      ></input>
-    </div>
-  );
-};
-
-const ID = ({ rowWykonanie }) => {
+const KoniecGrupa = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie;
   return (

@@ -10,20 +10,107 @@ import { reg_int } from "utils/initialvalue";
 // import { reg_int } from "utils/initialvalue";
 
 
-export default function ProcesViewRow({ rowWykonanie, updateWykonaniaWszystkie }) {
+export default function ProcesViewRow({ grup }) {
+
+  // return (
+  //   <tr draggable onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
+  //     <div className={style.container}>
+  //       <ID rowWykonanie={rowWykonanie} />
+  //       <CzasWykoniania rowWykonanie={rowWykonanie} />
+  //       <StatusWykonania rowWykonanie={rowWykonanie} />
+  //     </div>
+  //   </tr>
+  // );
+
 
   return (
-    <div draggable onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
-      <div className={style.container}>
-        <ID rowWykonanie={rowWykonanie} />
-        {/* grupa id: {rowWykonanie.grupa_id}  */}
-        <CzasWykoniania rowWykonanie={rowWykonanie} />
-        <StatusWykonania rowWykonanie={rowWykonanie} />
-      </div>
-    </div>
+<>
+                <tr
+                  draggable
+                   key={grup.global_id}
+                  onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
+                 onDragOver={handleDragOver}
+                  
+                  onDragStart={() => handleDragStart(grup.global_id,grup.typ_grupy)}
+                  className={style.tr_legi_mini}
+                  onDoubleClick={(node, event) => {
+         
+                      if(grup.typ_grupy != 1 ){
+                        fechparametryTechnologii(grup.technologia_id)
+                      }
+                    
+                  }}
+                >
+                  <td style={{width: "130px"}}>{grup.poczatek}</td>
+                  <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
+                  <td style={{width: "140px"}}>{grup.koniec} </td>
+                  <td style={{width: "50px"}}>{grup.nr}</td>
+                  <td style={{width: "50px"}}>{grup.rok}</td>
+                  <td style={{width: "200px"}}>{grup.klient}</td>
+                  <td >{grup.tytul}</td>
+                  <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
+                  <td style={{width: "200px"}}>{grup.global_id}</td>
+                  {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>}
+                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
+                  {/* <Stan grup={grup}/>
+                  <Status grup={grup}/> */}
+                  
+                 
+                </tr>
+                {expand ? (
+              wykonaniaAll
+                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id)
+                .map((row) => {
+                  return (
+                    <tr  key={row.global_id}>
+                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
+      
+                      <td>{row.id}</td>
+                      <td>{row.czas}</td>
+                      <td> global id {row.global_id}</td>
+
+                      <td>element_id {row.element_id}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                      <td>grupa_id {row.grupa_id}</td>
+                      {/* <Typ row={row} /> */}
+                      {/* <td>{row.ilosc_stron} </td> */}
+                      {/* <WersjaOprawaFragment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      /> */}
+
+                      {/* <NakladOprawaFregment
+                        row={row}
+                        handleChangeCardFragmenty={handleChangeCardFragmenty}
+                      />
+                       */}
+                  
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      
+                 
+                    </tr>
+                  );
+                })
+            ) : (
+              <></>
+            )}   
+
+
+
+</>
   );
-
-
 
 
   //--------------- Funkcje

@@ -109,9 +109,6 @@ const WykonaniaTable =() =>{
     if (sessionStorage.getItem("typ_drag") == "przerwa") {
       updateAddPrzerwa(id,fechGrupyAndWykonaniaForProcesor)
     }
-
-
-    
   }
 
   function handleDragOver(e) {
@@ -123,7 +120,7 @@ const WykonaniaTable =() =>{
    sessionStorage.setItem("typ_drag", "grupa_proces");
    sessionStorage.setItem("typ_grupy", typ_grupy);
  }
- 
+
   return(
     <div className={style.container}>
     <div className={style.tableContainer}>

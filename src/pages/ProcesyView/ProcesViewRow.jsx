@@ -1,16 +1,54 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { TechnologyContext } from "context/TechnologyContext";
+
 
 import icon from "assets/copy.svg";
-import { AppContext } from "context/AppContext";
 
-import style from "./RowWykonanie.module.css";
+
+
 import { reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
+import axios from "axios";
+import { IP } from "../../utils/Host";
+import { useNavigate } from "react-router-dom";
+import style from "./ProcesViewRow.module.css";
+import { AppContext } from "context/AppContext";
+import { TechnologyContext } from "context/TechnologyContext";
+import ProcesyHeader from "./ProcesyHeader";
+import { _status } from "utils/initialvalue";
+import { zamienNaGodziny } from "actions/zamienNaGodziny";
+import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
+import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
+import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
+import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 
 
-export default function ProcesViewRow({ grup }) {
+
+export default function ProcesViewRow({ grup,expand }) {
+    const navigate = useNavigate();
+    const techContext = useContext(TechnologyContext);
+    // const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll;
+    const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+    const setSelectedProcesor = techContext.setSelectedProcesor;
+    const setSelectedProces = techContext.setSelectedProces;
+  
+  
+    const appContext = useContext(AppContext)
+  
+    const procesory = appContext.procesory
+    const setProcesory = appContext.setProcesory
+
+
+  
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const wykonaniaAll = techContext.wykonaniaAll;
+      const selectedProcesor = techContext.selectedProcesor;
+      const appcontext = useContext(AppContext);
+      const typ_elementu = appcontext.typ_elementu;
+
+      const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  
 
   // return (
   //   <tr draggable onDrag={() => handleDragWykonanieStart(rowWykonanie.id)}>
@@ -228,3 +266,63 @@ const ID = ({ rowWykonanie }) => {
     </div>
   );
 };
+
+
+function Status({grup}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _status_wykonania = contextApp._status_wykonania
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
+  return (
+<td style={{width: "130px"}}>
+      <select
+        className={style.select}
+        value={grup.status}
+        onChange={(event) => {
+   
+          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        }}
+      >
+        {_status_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+      </td>
+
+  );
+}
+
+function Stan({grup}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+
+  const _stan_wykonania = contextApp._stan_wykonania
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
+  return (
+<td style={{width: "100px"}}>
+      <select
+        className={style.select}
+        value={grup.stan}
+        onChange={(event) => {
+          // setSelectedProcesor(event.target.value)
+          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,2,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+
+        }}
+      >
+        {_stan_wykonania
+        //  .filter(x => x.grupa == selectedProces )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+</td>
+  );
+}
+
+

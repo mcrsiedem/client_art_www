@@ -144,8 +144,18 @@ const TimeSelect = ({show,setCzas,initTime,setInitTime,initMinuty,setInitMintuty
   if(show)
   return(<>
   <input  value={initTime} className={style.input} onChange={(event)=>{ 
-    setInitTime(event.target.value)
-    setCzas(initMinuty * event.target.value)}} ></input>
+
+const re = /^[0-9]+$/;
+
+if (event.target.value === '' || re.test(event.target.value)) {
+setInitTime(event.target.value)
+    setCzas(initMinuty * event.target.value)}} 
+}
+
+
+    >
+      
+    </input>
   <select className={style.select} defaultValue={initMinuty} onChange={(event)=>{
     setInitMintuty(event.target.value)
     setCzas(initTime * event.target.value)}}>

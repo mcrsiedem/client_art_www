@@ -60,16 +60,15 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                     
                   }}
                 >
-                  <td style={{width: "130px"}}>{grup.poczatek}</td>
+                  <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
-                  <td style={{width: "140px"}}>{grup.koniec} </td>
+                  <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td>
+                  <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                   <td style={{width: "50px"}}>{grup.nr}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
-                  <td >{grup.tytul}</td>
-                  <td style={{width: "100px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                  
-                  <td style={{width: "300px"}}>{grup.uwagi}</td>
+                  <td style={{minWidth: "130px"}}>{grup.tytul}</td>
+                  <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
 
@@ -181,7 +180,7 @@ function Status({grup}) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
   return (
-<td style={{width: "130px"}}>
+<td style={{width: "160px"}}>
       <select
         className={style.select}
         value={grup.status}

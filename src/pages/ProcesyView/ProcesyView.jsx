@@ -86,7 +86,7 @@ const WykonaniaTable = () => {
         <table>
           <thead>
             <tr>
-              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> nr</th> <th> rok</th> <th> Klient</th> <th> Praca</th> <th> Element</th> <th> Uwagi</th>  <th> </th>
+              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th> <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th> <th> Uwagi</th>  <th> </th>
             </tr>
           </thead>
           <tbody>

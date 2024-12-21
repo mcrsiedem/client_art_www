@@ -97,6 +97,7 @@ function ProcesyHeader() {
               className={style.icon}
               src={iconWC}
               onClick={() => {
+                console.log("data")
               }}
               alt="React Logo"
             />

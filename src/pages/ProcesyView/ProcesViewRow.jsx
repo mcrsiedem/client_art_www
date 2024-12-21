@@ -22,6 +22,7 @@ import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProc
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
 import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
+import { date_time } from "actions/date_time";
 
 
 
@@ -62,7 +63,9 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                 >
                   <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
-                  <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td>
+                  <KoniecGrupa grup={grup}/>
+                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
+                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                   <td style={{width: "50px"}}>{grup.nr}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>
@@ -149,26 +152,30 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
 
 
 
-const KoniecGrupa = ({ rowWykonanie }) => {
+const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie;
   return (
-    <div className={style.col_dane}>
-      {/* <label className={style.label}>  {rowWykonanie.nazwa} </label> */}
+    <td style={{minWidth: "140px",width: "140px"}}>
       <input
-        disabled
-        className={style.input}
-        value={rowWykonanie.id}
+        disabled= {false}
+        className={style.input2}
+        type="datetime-local"
+  //        min="2023-06-07T00:00"
+  // max="2023-06-14T00:00"
+       
+        date-
+        defaultValue={grup.koniec}
         onChange={(e) => {
-          if (e.target.value == "" || reg_int.test(e.target.value)) {
-            updateWykonanie({
-              ...rowWykonanie,
-              czas: e.target.value,
-            });
+
+
+          if (e.target.value != "" ) {
+
+            console.log("data: "+ date_time( e.target.value))
           }
         }}
       ></input>
-    </div>
+    </td>
   );
 };
 

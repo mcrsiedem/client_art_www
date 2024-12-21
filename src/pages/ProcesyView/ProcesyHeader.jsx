@@ -42,6 +42,7 @@ function ProcesyHeader() {
 
   function handleDragStart(){
      sessionStorage.setItem("typ_drag", "przerwa");
+     sessionStorage.setItem("czas_przerwy", 120);
   
    }
 
@@ -122,6 +123,27 @@ function ProcesyHeader() {
 }
 
 export default ProcesyHeader;
+
+
+function PrzerwaBTN({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesListName = contextApp.procesListName
+  const procesList = contextApp.procesList
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+
+  const procesory = contextApp.procesory
+  const setProcesory = contextApp.setProcesory
+  return (
+    <div className={style.col_dane}>
+      
+
+      
+
+    </div>
+  );}
+
+
 
 
 function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {

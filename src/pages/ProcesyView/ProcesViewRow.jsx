@@ -72,7 +72,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td style={{minWidth: "130px"}}>{grup.tytul}</td>
-                  <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
+                  <td style={{minWidth: "130px"}}>{grup.global_id}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
 
@@ -131,7 +131,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     }
 
     if (sessionStorage.getItem("typ_drag") == "przerwa") {
-      updateAddPrzerwa(id, fechGrupyAndWykonaniaForProcesor);
+      let czas = sessionStorage.getItem("czas_przerwy");
+      updateAddPrzerwa(id, czas,fechGrupyAndWykonaniaForProcesor);
     }
   }
 

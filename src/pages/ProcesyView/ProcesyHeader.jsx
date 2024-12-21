@@ -40,58 +40,54 @@ function ProcesyHeader() {
   }, []);
   //---------------------------------------------------------
 
-  function handleDragStart(){
-     sessionStorage.setItem("typ_drag", "przerwa");
-     sessionStorage.setItem("czas_przerwy", 120);
-  
-   }
 
-     function handleDrop() {
-      //  if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
-      //    let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
-      //    let id_drop_grupa_proces = id;
-      //    dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
-      //  }
-   
-   
-       if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
-        updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
-       }
-   
-   
-       
-     }
-
-     function handleDragOver(e) {
-      e.preventDefault();
-    }
 
   return (
     <div className={style.container}>
-    <header id="header" className={style.body}>
+      <header id="header" className={style.body}>
+        <div className={style.leftHeaderContener}>
+          <ProcesSelect
+            selectedProces={selectedProces}
+            setSelectedProces={setSelectedProces}
+            setSelectedProcesor={setSelectedProcesor}
+            selectedProcesor={selectedProcesor}
+          />
+        </div>
+
+        <div className={style.centerHeaderContener}>
+          <PrzerwaBTN />
+        </div>
+        <div className={style.rightHeaderContener}>
+     
+          <img
+            className={style.icon}
+            src={iconClose2}
+            onClick={() => {
+              navigate("/Panel");
+            }}
+            alt="React Logo"
+          />
+        </div>
+      </header>
+    </div>
+  );
+}
+
+export default ProcesyHeader;
 
 
-          <div className={style.leftHeaderContener}>
+function PrzerwaBTN() {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesListName = contextApp.procesListName
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
 
-<ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/>
-          {/* <p>Procesy </p>  */}
-            {/* // wywietla zaznaczone zamowienia
-          {appContext.zamowienia
-          .filter(x=> x.select == true)
-          .map((x=>{ return ( 
-            <p> {x.id}, </p>
-          )})) } */}
+  const [czas,setCzas] = useState(120)
+  const [show,setShow] = useState(false)
+  return (
 
-
-
-          </div>
-          
-
-      <div className={style.centerHeaderContener}>
-        
-             {/* <p>{selectedProcesor}</p> */}
-       
-        <img
+      
+      <img
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
         onDrop={()=>handleDrop()}
@@ -102,46 +98,38 @@ function ProcesyHeader() {
               }}
               alt="React Logo"
             />
-       
-      </div>
-        <div className={style.rightHeaderContener}>
-          {/* <input></input> */}
-          <img
-            className={style.icon}
-            src={iconClose2}
-            onClick={() => {
-              navigate("/Panel");
-            }}
-            alt="React Logo"
-          />
-        </div>
 
 
-    </header>
-    </div>
+  
   );
+
+  function handleDragStart(){
+    sessionStorage.setItem("typ_drag", "przerwa");
+    sessionStorage.setItem("czas_przerwy", czas);
+ 
+  }
+
+    function handleDrop() {
+     //  if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
+     //    let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+     //    let id_drop_grupa_proces = id;
+     //    dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
+     //  }
+  
+  
+      if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
+       updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
+      }
+  
+  
+      
+    }
+
+    function handleDragOver(e) {
+     e.preventDefault();
+   }
+
 }
-
-export default ProcesyHeader;
-
-
-function PrzerwaBTN({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const procesListName = contextApp.procesListName
-  const procesList = contextApp.procesList
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-
-  const procesory = contextApp.procesory
-  const setProcesory = contextApp.setProcesory
-  return (
-    <div className={style.col_dane}>
-      
-
-      
-
-    </div>
-  );}
 
 
 

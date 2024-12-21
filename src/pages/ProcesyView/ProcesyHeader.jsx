@@ -86,22 +86,27 @@ function PrzerwaBTN() {
   const [show,setShow] = useState(false)
   return (
 
-      
-      <img
+      <div >
+              <img
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
         onDrop={()=>handleDrop()}
               className={style.icon}
               src={iconWC}
               onClick={() => {
-                console.log("data")
+            setShow(!show)
               }}
               alt="React Logo"
             />
+           <TimeSelect show={show} setCzas={setCzas}/>
+      </div>
 
-
-  
+        
   );
+
+ 
+
+
 
   function handleDragStart(){
     sessionStorage.setItem("typ_drag", "przerwa");
@@ -131,7 +136,24 @@ function PrzerwaBTN() {
 
 }
 
-
+const TimeSelect = ({show,setCzas})=>{
+  const [initTime,setInitTime] = useState(1)
+  const [initMinuty,setInitMintuty] = useState(1)
+  if(show)
+  return(<>
+  <input  value={initTime} className={style.input} onChange={(event)=>{ 
+    setInitTime(event.target.value)
+    setCzas(initMinuty * event.target.value)}} ></input>
+  <select className={style.select} defaultValue={1} onChange={(event)=>{
+    setInitMintuty(event.target.value)
+    setCzas(initTime * event.target.value)}}>
+  <option key={1} value={1}> Minuty </option>
+  <option key={2} value={60}> Godziny </option>
+  <option key={3} value={1440}> Dni </option>
+  </select>
+  </>)
+  
+}
 
 
 function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {

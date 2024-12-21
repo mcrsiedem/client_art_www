@@ -82,8 +82,11 @@ function PrzerwaBTN() {
   const procesListName = contextApp.procesListName
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
 
-  const [czas,setCzas] = useState(120)
+  const [czas,setCzas] = useState(60)
   const [show,setShow] = useState(false)
+
+  const [initTime,setInitTime] = useState(1)
+  const [initMinuty,setInitMintuty] = useState(60)
   return (
 
       <div >
@@ -98,7 +101,7 @@ function PrzerwaBTN() {
               }}
               alt="React Logo"
             />
-           <TimeSelect show={show} setCzas={setCzas}/>
+           <TimeSelect show={show} setCzas={setCzas} initTime={initTime} setInitTime={setInitTime} initMinuty={initMinuty} setInitMintuty={setInitMintuty}/>
       </div>
 
         
@@ -136,20 +139,19 @@ function PrzerwaBTN() {
 
 }
 
-const TimeSelect = ({show,setCzas})=>{
-  const [initTime,setInitTime] = useState(1)
-  const [initMinuty,setInitMintuty] = useState(1)
+const TimeSelect = ({show,setCzas,initTime,setInitTime,initMinuty,setInitMintuty})=>{
+
   if(show)
   return(<>
   <input  value={initTime} className={style.input} onChange={(event)=>{ 
     setInitTime(event.target.value)
     setCzas(initMinuty * event.target.value)}} ></input>
-  <select className={style.select} defaultValue={1} onChange={(event)=>{
+  <select className={style.select} defaultValue={initMinuty} onChange={(event)=>{
     setInitMintuty(event.target.value)
     setCzas(initTime * event.target.value)}}>
-  <option key={1} value={1}> Minuty </option>
-  <option key={2} value={60}> Godziny </option>
-  <option key={3} value={1440}> Dni </option>
+  <option key={1} value={1}> min. </option>
+  <option key={2} value={60}> godz. </option>
+  <option key={3} value={1440}> dni </option>
   </select>
   </>)
   

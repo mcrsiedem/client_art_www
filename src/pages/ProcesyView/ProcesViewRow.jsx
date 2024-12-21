@@ -23,6 +23,7 @@ import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
 import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
+import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 
 
 
@@ -155,6 +156,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
 const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie;
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   return (
     <td style={{minWidth: "140px",width: "140px"}}>
       <input
@@ -170,7 +172,7 @@ const KoniecGrupa = ({ grup }) => {
 
 
           if (e.target.value != "" ) {
-
+updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyAndWykonaniaForProcesor)
             console.log("data: "+ date_time( e.target.value))
           }
         }}

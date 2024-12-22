@@ -285,14 +285,16 @@ function StatusGrupy({ rowGrupa }) {
   
           // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
           // technologia_id != 1 - zmiany bezpośrednio na serwerze
+     // 1 - status
+            // 2 - stan
+
           if(rowGrupa.technologia_id == 1){
 
             updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
             updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
           }else{
 
-            // 1 - status
-            // 2 - stan
+       
             updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
 
           }

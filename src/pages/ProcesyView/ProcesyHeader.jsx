@@ -89,7 +89,7 @@ function PrzerwaBTN() {
   const [initMinuty,setInitMintuty] = useState(60)
   return (
 
-      <div >
+      <div  className={style.przerwa_container}>
               <img
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
@@ -142,7 +142,7 @@ function PrzerwaBTN() {
 const TimeSelect = ({show,setCzas,initTime,setInitTime,initMinuty,setInitMintuty})=>{
 
   if(show)
-  return(<>
+  return(<div className={style.time_selec_container}>
   <input  value={initTime} className={style.input} onChange={(event)=>{ 
 
 const re = /^[0-9]+$/;
@@ -163,7 +163,7 @@ setInitTime(event.target.value)
   <option key={2} value={60}> godz. </option>
   <option key={3} value={1440}> dni </option>
   </select>
-  </>)
+  </div>)
   
 }
 

@@ -8,7 +8,7 @@ import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
-import { addArkusz } from "actions/ElementyTechEdit/addArkusz";
+import { addArkuszTech } from "actions/ElementyTechEdit/addArkuszTech";
 export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -144,7 +144,7 @@ const DodajArkusz= ({ row,showMenu, setShowMenu }) =>{
     onClick={() => {
 
 // createNewElementTech(row,elementyTech,setElementyTech)
-addArkusz(row,elementyTech,setElementyTech)
+addArkuszTech(row,elementyTech,setElementyTech)
 
       setShowMenu(!showMenu);
     }}

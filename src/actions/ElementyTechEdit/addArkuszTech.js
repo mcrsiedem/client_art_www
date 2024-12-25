@@ -3,7 +3,7 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 
 
-export function addArkusz(strony,arkusze,setArkusze) {
+export function addArkuszTech(strony,arkusze,setArkusze) {
 
 // dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
 

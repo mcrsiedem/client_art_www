@@ -100,19 +100,6 @@ export default function RowTechElement({
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
         <IloscLeg row={row} />
-
-        {/* <td></td> */}
-
-        {/* <Usun
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          handleRemoveItem={handleRemoveItem}
-        /> */}
-        {/* <Dodaj
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          handleAddCard={handleAddCard}
-        /> */}
         <MenuElementyBtn
           row={row}
           showMenu={showMenu}

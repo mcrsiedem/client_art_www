@@ -8,6 +8,7 @@ import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
+import { addArkusz } from "actions/arkusze/addArkusz";
 export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -70,6 +71,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
 
 
         <DodajNowyElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
+        <DodajArkusz row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <SkasujElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <Ponumeruj row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
         <Anuluj showMenu={showMenu} setShowMenu={setShowMenu} />
@@ -128,7 +130,26 @@ createNewElementTech(row,elementyTech,setElementyTech)
       setShowMenu(!showMenu);
     }}
   >
-    Dodaj
+    Kopiuj element
+  </button>
+  )
+}
+const DodajArkusz= ({ row,showMenu, setShowMenu }) =>{
+  const techContext = useContext(TechnologyContext);
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+// createNewElementTech(row,elementyTech,setElementyTech)
+addArkusz(row,elementyTech,setElementyTech)
+
+      setShowMenu(!showMenu);
+    }}
+  >
+    Dodaj Arkusz
   </button>
   )
 }

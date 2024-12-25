@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { IP } from "../utils/Host";
+import { IP } from "../../utils/Host";
 
 
-export function addArkusze(strony,arkusze,setArkusze) {
+export function addArkusz(strony,arkusze,setArkusze) {
 
 // dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
 

@@ -15,20 +15,21 @@
   width: 200px;
   height: 220px;
   
-  background-color: grey;
+  background-color: rgb(202, 202, 202);
   border-radius: 10px;
   }
   
   .menu_legi_btn{
   height: 50px;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(117, 196, 26);
   color: whitesmoke;
+  
   border: none;
   /* border: 1px solid rgb(157, 157, 157); */
   }
   .menu_legi_btn:hover{
-  background-color: rgb(157, 157, 157);
+  background-color: rgba(95, 158, 23);
   }
   
   .td_checkbox{

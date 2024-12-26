@@ -64,7 +64,7 @@ legiFragmenty.push({
 });
 
 
-
+// ok
       // kosztyEdit.sort((a, b) => a.indeks - b.indeks);
 
 

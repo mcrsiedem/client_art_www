@@ -43,6 +43,7 @@ export default function MenuElementyTech({ row }) {
   if (row.showMenu) {
     return (
       <div className={style.menu_legi}>
+         <DodajArkusz row={row}  />
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
@@ -75,7 +76,7 @@ export default function MenuElementyTech({ row }) {
 
 
         <DodajNowyElement row={row} />
-        <DodajArkusz row={row}  />
+       
         <SkasujElement row={row}  />
         <Ponumeruj row={row} />
         <Anuluj  row={row}/>

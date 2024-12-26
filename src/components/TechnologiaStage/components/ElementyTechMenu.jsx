@@ -9,7 +9,7 @@ import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromEleme
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
 import { addArkuszTech } from "actions/ElementyTechEdit/addArkuszTech";
-export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
+export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
@@ -40,7 +40,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
   const elementyTech = techContext.elementyTech;
 
 
-  if (showMenu) {
+  if (row.showMenu) {
     return (
       <div className={style.menu_legi}>
                 <button
@@ -61,8 +61,7 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                       elementyTech,
                       row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
                     );
-              
-                    setShowMenu(!showMenu);
+         
                   }}
                   
                 >
@@ -70,11 +69,11 @@ export default function MenuElementyTech({ row,showMenu, setShowMenu }) {
                 </button>
 
 
-        <DodajNowyElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-        <DodajArkusz row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-        <SkasujElement row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-        <Ponumeruj row={row} showMenu={showMenu} setShowMenu={setShowMenu} />
-        <Anuluj showMenu={showMenu} setShowMenu={setShowMenu} />
+        <DodajNowyElement row={row} />
+        <DodajArkusz row={row}  />
+        <SkasujElement row={row}  />
+        <Ponumeruj row={row} />
+        <Anuluj  row={row}/>
 
       </div>
     );
@@ -99,16 +98,24 @@ const Ponumeruj = ({ showMenu, setShowMenu }) =>{
   )
 }
 
-const Anuluj = ({ showMenu, setShowMenu }) =>{
-
+const Anuluj = ( ) =>{
+  const techContext = useContext(TechnologyContext)
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
 
+      setElementyTech(elementyTech.map((t) => {
+        return {...t,
+          showMenu: false}
+      })
+    )
 
 
-      setShowMenu(!showMenu);
+
+
     }}
   >
     Anuluj

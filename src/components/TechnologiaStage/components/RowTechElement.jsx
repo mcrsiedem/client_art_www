@@ -674,24 +674,36 @@ function Uwagi({ row }) {
   );
 }
 
-const MenuElementyBtn = ({ row, showMenu, setShowMenu }) => {
+const MenuElementyBtn = ({ row }) => {
+  const techContext = useContext(TechnologyContext)
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
   return (
     <div className={style.menu_rowtech}>
       <img
         className={style.iconMenuBtn}
         src={Logo_ustawienia}
         onClick={() => {
-          setShowMenu(!showMenu);
-          // dodaj_clikHandler();
-          // console.log("z contextu :"+ token.rowSelected)
-          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+
+          setElementyTech(elementyTech.map((t) => {
+            return {...t,
+              showMenu: false}
+          }).map((t) => {
+            if (t.id == row.id) {
+              return {...t,
+                showMenu: true};
+            } else {
+              return t;
+            }
+          })
+        )
+
+
         }}
         alt="x"
       />
       <MenuElementyTech
         row={row}
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
       />
     </div>
   );

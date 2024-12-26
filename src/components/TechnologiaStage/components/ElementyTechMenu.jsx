@@ -46,7 +46,7 @@ export default function MenuElementyTech({ row }) {
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
-                    console.log(" row id" + row.id);
+                
                     createArkuszeFromElemenetsOneRow(
                       arkusze,
                       setArkusze,
@@ -61,6 +61,11 @@ export default function MenuElementyTech({ row }) {
                       elementyTech,
                       row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
                     );
+
+                    setElementyTech(elementyTech.map((t) => {
+                      return {...t,
+                        showMenu: false}
+                    }));
          
                   }}
                   
@@ -80,17 +85,22 @@ export default function MenuElementyTech({ row }) {
   }
 }
 
-const Ponumeruj = ({ showMenu, setShowMenu }) =>{
+const Ponumeruj = ({ row}) =>{
   const techContext = useContext(TechnologyContext);
   const setNumerArkusza = techContext.setNumerArkusza;
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
 
       setNumerArkusza()
+      setElementyTech(elementyTech.map((t) => {
+        return {...t,
+          showMenu: false}
+      }));
 
-      setShowMenu(!showMenu);
     }}
   >
     Ponumeruj
@@ -110,8 +120,7 @@ const Anuluj = ( ) =>{
       setElementyTech(elementyTech.map((t) => {
         return {...t,
           showMenu: false}
-      })
-    )
+      }));
 
 
 
@@ -134,14 +143,17 @@ const DodajNowyElement = ({ row,showMenu, setShowMenu }) =>{
 
 createNewElementTech(row,elementyTech,setElementyTech)
 
-      setShowMenu(!showMenu);
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
     }}
   >
     Kopiuj element
   </button>
   )
 }
-const DodajArkusz= ({ row,showMenu, setShowMenu }) =>{
+const DodajArkusz= ({ row }) =>{
   const techContext = useContext(TechnologyContext);
   const elementyTech = techContext.elementyTech;
   const setElementyTech = techContext.setElementyTech;
@@ -153,7 +165,10 @@ const DodajArkusz= ({ row,showMenu, setShowMenu }) =>{
 // createNewElementTech(row,elementyTech,setElementyTech)
 addArkuszTech(row,elementyTech,setElementyTech)
 
-      setShowMenu(!showMenu);
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
     }}
   >
     Dodaj Arkusz
@@ -164,6 +179,8 @@ addArkuszTech(row,elementyTech,setElementyTech)
 
 const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
   const techContext = useContext(TechnologyContext);
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
   const deleteElementTech = techContext.deleteElementTech;
 
 
@@ -175,7 +192,10 @@ const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
       deleteElementTech(row)
 // deleteElementTech(row,elementyTech,setElementyTech,procesyElementowTech, setProcesyElementowTech)
 
-      setShowMenu(!showMenu);
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
     }}
   >
    Usuń

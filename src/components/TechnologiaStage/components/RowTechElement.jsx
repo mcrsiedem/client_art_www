@@ -38,7 +38,7 @@ export default function RowTechElement({
   const setElementyTech = techContext.setElementyTech;
   const handleChangeCardFragmenty_i_Elementy_Tech =  techContext.handleChangeCardFragmenty_i_Elementy_Tech;
   const elementyTech = techContext.elementyTech;
-  const [showMenu, setShowMenu] = useState(false);
+
   const [showArkusze, setShowArkusze] = useState(false);
 
 
@@ -102,8 +102,6 @@ export default function RowTechElement({
         <IloscLeg row={row} />
         <MenuElementyBtn
           row={row}
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
         />
       </div>
       {showArkusze && (

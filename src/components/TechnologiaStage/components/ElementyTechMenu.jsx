@@ -157,13 +157,20 @@ const DodajArkusz= ({ row }) =>{
   const techContext = useContext(TechnologyContext);
   const elementyTech = techContext.elementyTech;
   const setElementyTech = techContext.setElementyTech;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
 
 // createNewElementTech(row,elementyTech,setElementyTech)
-addArkuszTech(row,elementyTech,setElementyTech)
+ // row = row Element Tech
+addArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty)
 
 setElementyTech(elementyTech.map((t) => {
   return {...t,
@@ -171,7 +178,7 @@ setElementyTech(elementyTech.map((t) => {
 }));
     }}
   >
-    Dodaj Arkusz
+    Nowy arkusz
   </button>
   )
 }

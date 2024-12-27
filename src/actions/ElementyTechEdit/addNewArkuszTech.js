@@ -3,7 +3,7 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 
 
-export function addArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty) {
+export function addNewArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty) {
 
  // row = row Element Tech
 // dodaje nowy koszt i dodaje pusty wpis do bazy, aby zwiększyć id
@@ -54,12 +54,13 @@ legi.push({
 legiFragmenty.push({
   id: generateMaxID(legiFragmenty),
   indeks: generateMaxIndeks(legiFragmenty),
-  wersja:"fr",
+  wersja:"",
   element_id: row.id,
   lega_id: lega_id,
   naklad: row.naklad,
   arkusz_id: arkusz_id,
-  technologia_id: row.technologia_id
+  technologia_id: row.technologia_id,
+  oprawa_id: null
 
 });
 

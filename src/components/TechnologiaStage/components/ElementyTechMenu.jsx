@@ -8,7 +8,8 @@ import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
-import { addArkuszTech } from "actions/ElementyTechEdit/addArkuszTech";
+import { addNewElementTech } from "actions/ElementyTechEdit/addNewElementTech";
+import { addNewArkuszTech } from "actions/ElementyTechEdit/addNewArkuszTech";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
@@ -43,6 +44,7 @@ export default function MenuElementyTech({ row }) {
   if (row.showMenu) {
     return (
       <div className={style.menu_legi}>
+         <DodajNowyElement row={row}  />
          <DodajArkusz row={row}  />
                 <button
                   className={style.menu_legi_btn}
@@ -133,7 +135,7 @@ const Anuluj = ( ) =>{
   )
 }
 
-const DodajNowyElement = ({ row,showMenu, setShowMenu }) =>{
+const KopiujElement = ({ row,showMenu, setShowMenu }) =>{
   const techContext = useContext(TechnologyContext);
   const elementyTech = techContext.elementyTech;
   const setElementyTech = techContext.setElementyTech;
@@ -154,6 +156,43 @@ setElementyTech(elementyTech.map((t) => {
   </button>
   )
 }
+
+
+
+const DodajNowyElement= ({ row }) =>{
+  const techContext = useContext(TechnologyContext);
+  const elementyTech = techContext.elementyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+// createNewElementTech(row,elementyTech,setElementyTech)
+ // row = row Element Tech
+ addNewElementTech(row,elementyTech,setElementyTech)
+
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
+    }}
+  >
+    Nowy element
+  </button>
+  )
+}
+
+
+
+
+
 const DodajArkusz= ({ row }) =>{
   const techContext = useContext(TechnologyContext);
   const elementyTech = techContext.elementyTech;
@@ -171,7 +210,7 @@ const DodajArkusz= ({ row }) =>{
 
 // createNewElementTech(row,elementyTech,setElementyTech)
  // row = row Element Tech
-addArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty)
+ addNewArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty)
 
 setElementyTech(elementyTech.map((t) => {
   return {...t,

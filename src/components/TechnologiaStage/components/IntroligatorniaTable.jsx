@@ -53,6 +53,25 @@ const OprawaRow = ({ row }) => {
       );
 
     }
+
+    if (sessionStorage.getItem("typ_drag") == "fragmentlegi") {
+      let id_drag_element = sessionStorage.getItem("id_fragment_legi_drag");
+
+
+      setLegiFragmenty(
+        legiFragmenty.map((p) => {
+          if (p.id == id_drag_element) {
+            return { ...p, oprawa_id: id };
+          } else {
+            return p;
+          }
+        })
+      );
+
+    }
+
+
+
   }
 
   function handleDragOver(e) {

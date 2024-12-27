@@ -35,6 +35,14 @@ export default function RowArkusze  ({ row,i })  {
   
       setDragLegaId(id)
      }
+
+     function handleDragStartFragmnetLegi(id){
+      //   e.preventDefault();
+      sessionStorage.setItem("id_fragment_legi_drag", id);
+    sessionStorage.setItem("typ_drag", "fragmentlegi");
+ 
+     }
+   
     function handleDrop(id) {
       // sprawdza czy upuszczamy właściwy obiekt
       // if (sessionStorage.getItem("typ_drag") == "fragment") {
@@ -109,7 +117,7 @@ export default function RowArkusze  ({ row,i })  {
 
 
 {showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
-  return     <div draggable  onDragStart={()=>handleDragStart(l.id)} className={style.row5} key={l.id}>
+  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(l.id)} className={style.row5} key={l.id}>
 
   {/* <td  >idfrag{l.id}</td>
   <td>frag.idx {l.indeks}</td> */}

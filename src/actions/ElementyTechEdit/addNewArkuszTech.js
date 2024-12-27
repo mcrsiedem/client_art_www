@@ -60,7 +60,8 @@ legiFragmenty.push({
   naklad: row.naklad,
   arkusz_id: arkusz_id,
   technologia_id: row.technologia_id,
-  oprawa_id: null
+  oprawa_id: null,
+  typ: row.typ
 
 });
 

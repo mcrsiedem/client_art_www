@@ -86,7 +86,9 @@ export default function RowArkusze  ({ row,i })  {
         <TypElementu row={row} i={i+1}/>
    
         
-        <div className={style.input_ark}>{row.naklad}</div>
+        {/* <div className={style.input_ark}>{row.naklad}</div> */}
+
+        <NakladArkusza row={row} />
         <RodzajArkusza row={row} />
    
         <td>{row.ilosc_leg}</td>
@@ -354,12 +356,7 @@ export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-  
-
-  
         // <div  className={style.input_ark}> arkusz {i}</div>
-
-
         <input
         className={style.input_ark_typ}
         disabled
@@ -374,9 +371,33 @@ export default function RowArkusze  ({ row,i })  {
               typ_elementu: e.target.value,
             }
             )}}
-
           }
         ></input>
+    );
+  }
 
+
+  function NakladArkusza ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.naklad}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              naklad: e.target.value,
+            }
+            )}}
+          }
+        ></input>
     );
   }

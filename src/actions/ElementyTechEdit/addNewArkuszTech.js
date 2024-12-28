@@ -1,6 +1,8 @@
 import axios from "axios";
 
 import { IP } from "../../utils/Host";
+import { getMaxID } from "actions/getMaxID";
+import { getMaxIndeks } from "actions/getMaxIndeks";
 
 
 export function addNewArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty) {
@@ -23,12 +25,12 @@ export function addNewArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragme
 //   element_id: row.id,
 //   naklad: row.naklad,
 // };
-let arkusz_id = generateMaxID(arkusze);
-let lega_id = generateMaxID(legi);
+let arkusz_id = getMaxID(arkusze);
+let lega_id = getMaxID(legi);
 
 arkusze.push({
   id: arkusz_id,
-  indeks: generateMaxIndeks(arkusze),
+  indeks: getMaxIndeks(arkusze),
   typ_elementu: row.typ,
   rodzaj_arkusza: null,
   naklad: row.naklad,
@@ -42,7 +44,7 @@ arkusze.push({
 
 legi.push({
   id:  lega_id,
-  indeks: generateMaxIndeks(legi),
+  indeks: getMaxIndeks(legi),
   typ_elementu: row.typ,
   rodzaj_legi:null,
   element_id: row.id,
@@ -52,8 +54,8 @@ legi.push({
 });
 
 legiFragmenty.push({
-  id: generateMaxID(legiFragmenty),
-  indeks: generateMaxIndeks(legiFragmenty),
+  id: getMaxID(legiFragmenty),
+  indeks: getMaxIndeks(legiFragmenty),
   wersja:"",
   element_id: row.id,
   lega_id: lega_id,
@@ -77,19 +79,3 @@ legiFragmenty.push({
   // console.log(row.id)
 }
 
-
-const generateMaxID = (kosztyDodatkoweTemporary) => {
-  let maxID = null;
-  if(kosztyDodatkoweTemporary.length == 0) return maxID =1
-   maxID = Math.max(...kosztyDodatkoweTemporary.map((f) => f.id)) + 1
-
-  return maxID;
-}
-
-const generateMaxIndeks= (kosztyDodatkoweTemporary) => {
-  let maxIndeks = null;
-  if(kosztyDodatkoweTemporary.length == 0) return maxIndeks = 1
-   maxIndeks = Math.max(...kosztyDodatkoweTemporary.map((f) => f.indeks)) + 1
-
-  return maxIndeks;
-}

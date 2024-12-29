@@ -242,7 +242,6 @@ const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
 // }));
       deleteElementTech(row)
 
-// deleteElementTech(row,elementyTech,setElementyTech,procesyElementowTech, setProcesyElementowTech)
 
 
     }}

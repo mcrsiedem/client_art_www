@@ -109,8 +109,8 @@ const OprawaRow = ({ row }) => {
                     <LegaFragmentRow
                       row={row}
                       i={i}
-                      draggable
-                      onDragStart={() => handleDragStart(row.id)}
+                      // draggable
+                      // onDragStart={() => handleDragStart(row.id)}
                     />
 
 
@@ -118,26 +118,56 @@ const OprawaRow = ({ row }) => {
           
         )}
 
-      {/* {legiFragmenty
-        .filter((f) => f.oprawa_id == row.id)
-        .map((row, i) => (
-          <LegaFragmentRow
-            row={row}
-            i={i}
-            draggable
-            onDragStart={() => handleDragStart(row.id)}
-          />
-
-
-        ))} */}
 
     </>
   );
 };
 
 const LegaFragmentRow = ({ row, i }) => {
+  const techContext = useContext(TechnologyContext);
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const legiFragmenty = techContext.legiFragmenty;
+
+  function handleDragStart(id,oprawa_id) {
+    sessionStorage.setItem("id_fragment_lega_drag", id);
+    sessionStorage.setItem("id_oprawa_lega_drag", oprawa_id);
+    sessionStorage.setItem("typ_drag", "fragment_lega");
+  }
+  function handleDragOver(e) {
+    e.preventDefault();
+  
+  }
+
+  function handleDrop(id,oprawa_id) {
+    if (sessionStorage.getItem("typ_drag") == "fragment_lega") {
+      let id_drag_element = sessionStorage.getItem("id_fragment_lega_drag");
+      let id_drag_oprawa = sessionStorage.getItem("id_oprawa_lega_drag");
+
+      let id_drop_element = id;
+      let id_drop_oprawa= oprawa_id;
+
+      setLegiFragmenty(
+        legiFragmenty.map((p) => {
+          if (p.element_id == id_drag_element) {
+            return { ...p, oprawa_id: id };
+          } else {
+            return p;
+          }
+        })
+      );
+
+    }
+
+  }
+
+
   return (
-    <tr key={row.id} className={style.row_fragmentow}>
+    <tr key={row.id} className={style.row_fragmentow}
+    draggable
+    onDragStart={() => handleDragStart(row.id,row.oprawa_id)}
+    onDragOver={handleDragOver}
+        onDrop={() => handleDrop(row.id,row.oprawa_id)}
+    >
       <td>{i}</td>
       <td className={style.typ_elementu}>
         {" "}
@@ -198,9 +228,10 @@ function Rozwin({  row,show, setShow }) {
 }
 
 function RodzajOprawy({ row, handleChangeCardOprawa }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const produkty = contextModalInsert.produkty;
-  const setProdukty = contextModalInsert.setProdukty;
+  const techContext = useContext(TechnologyContext);
+  const setProduktyTech = techContext.setProduktyTech;
+  const produktyTech = techContext.produktyTech;
+  const updateRowOprawaTech = techContext.updateRowOprawaTech;
   const contextApp = useContext(AppContext);
 
   return (
@@ -210,11 +241,11 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
         className={style.select}
         defaultValue={row.oprawa}
         onChange={(event) => {
-          handleChangeCardOprawa({ ...row, oprawa: event.target.value });
+          updateRowOprawaTech({ ...row, oprawa: event.target.value });
 
           if (row.indeks == 0) {
-            setProdukty(
-              produkty.map((p) => {
+            setProduktyTech(
+              produktyTech.map((p) => {
                 if (p.id === row.produkt_id) {
                   return { ...p, oprawa: event.target.value };
                 } else {

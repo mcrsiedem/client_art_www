@@ -26,6 +26,8 @@ export default function RowArkusze  ({ row,i })  {
     const dragLegaId = techContext.dragLegaId;
     const setDragLegaId = techContext.setDragLegaId;
     const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
+    
     
     const [showLegi, setShowLegi] = useState(false);
   
@@ -64,6 +66,25 @@ export default function RowArkusze  ({ row,i })  {
         }
       })
     );
+
+    setLegiFragmenty(
+      legiFragmenty.map((t, a) => {
+      // console.log("oprawa id" +prev)
+      if (t.lega_id === dragLegaId) {
+        return {
+          ...t,
+          arkusz_id: id
+
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+
+
       console.log("drop: "+id)
       setDropArkuszId(id)
     }
@@ -118,18 +139,18 @@ export default function RowArkusze  ({ row,i })  {
       </div>
 
 
-{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (l,i) => {
-  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(l.id)} className={style.row5} key={l.id}>
+{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (lf,i) => {
+  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(lf.id)} className={style.row5} key={lf.id}>
 
   {/* <td  >idfrag{l.id}</td>
   <td>frag.idx {l.indeks}</td> */}
 <td className={style.input3}>  </td>
   {/* <td className={style.input3}>{l.naklad}</td> */}
-  <NakladFragment row={l}/>
+  <NakladFragment row={lf}/>
   
-  <td>{l.ilosc_leg}</td>
-  <WersjaFragment row={l}/>
-  <td>lega id{l.lega_id}</td>
+  <td>{lf.ilosc_leg}</td>
+  <WersjaFragment row={lf}/>
+  <td>lega id{lf.lega_id}</td>
   {/* <td>{row.element_id}</td> */}
   {/* <td>{row.ilosc_stron}</td> */}
 

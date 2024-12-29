@@ -275,13 +275,19 @@ export const TechnologyContextProvider = ({children})=>{
 
         //kasowanie elementuTech razem ze wszystkim co jest z nim powiazane
         // jeden element musi zostać
+
+        
 if(elementyTech.length>1){
-        setProcesyElementowTech(procesyElementowTech.filter(e => e.element_id !== row.id))
-        setLegiFragmenty(legiFragmenty.filter(e => e.element_id !== row.id))
-        setArkusze(arkusze.filter(e => e.element_id !== row.id))
-        setLegi(legi.filter(e => e.element_id !== row.id))
-        setWykonania(wykonania.filter(e => e.element_id !== row.id))
-        setElementyTech(elementyTech.filter(e => e.id !== row.id))
+
+  setProcesyElementowTech(procesyElementowTech.filter(e => e.element_id !== row.id))
+  setLegiFragmenty(legiFragmenty.filter(e => e.element_id !== row.id))
+  setArkusze(arkusze.filter(e => e.element_id !== row.id))
+  setLegi(legi.filter(e => e.element_id !== row.id))
+  setWykonania(wykonania.filter(e => e.element_id !== row.id))
+  setElementyTech(elementyTech.filter(e => e.id !== row.id).map((t) => {
+    return {...t,
+      showMenu: false}
+  }))
 }
 
     

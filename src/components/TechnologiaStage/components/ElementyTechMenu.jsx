@@ -236,13 +236,15 @@ const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
     className={style.menu_legi_btn}
     onClick={() => {
 
+// setElementyTech(elementyTech.map((t) => {
+//   return {...t,
+//     showMenu: false}
+// }));
       deleteElementTech(row)
+
 // deleteElementTech(row,elementyTech,setElementyTech,procesyElementowTech, setProcesyElementowTech)
 
-setElementyTech(elementyTech.map((t) => {
-  return {...t,
-    showMenu: false}
-}));
+
     }}
   >
    Usuń

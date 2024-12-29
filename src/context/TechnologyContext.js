@@ -111,6 +111,19 @@ export const TechnologyContextProvider = ({children})=>{
         );
       }
 
+      function handleUpdateLegiFragmentyTech(card) {
+        setLegiFragmenty(
+          legiFragmenty.map((t, a) => {
+          // console.log("oprawa id" +prev)
+          if (t.id == card.id) {
+            return card;
+          } else {
+            return t;
+          }
+        })
+      );
+      }
+
 
       function handleChangeCardFragmenty_i_Elementy_Tech(card) {
         // zmienia typ fragmentów gdy typ elementu jest zmieniany
@@ -558,7 +571,7 @@ async function fechTechnology() {
                     legi, setLegi,
                     legiFragmenty, setLegiFragmenty,
                     arkusze,setArkusze,
-                    handleUpdateRowLegi,handleUpdateRowArkusze,
+                    handleUpdateRowLegi,handleUpdateRowArkusze,handleUpdateLegiFragmentyTech,
                     showErrorLegi, setShowErrorLegi,errorLegiInfo, setErrorLegiInfo,
                     showErrorArkusze, setShowErrorArkusze,
                     errorArkuszeInfo, setErrorArkuszeInfo,

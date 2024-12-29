@@ -124,7 +124,8 @@ export default function RowArkusze  ({ row,i })  {
   {/* <td  >idfrag{l.id}</td>
   <td>frag.idx {l.indeks}</td> */}
 <td className={style.input3}> fragment </td>
-  <td className={style.input3}>{l.naklad}</td>
+  {/* <td className={style.input3}>{l.naklad}</td> */}
+  <NakladFragment row={l}/>
   
   <td>{l.ilosc_leg}</td>
   <td>lega id{l.lega_id}</td>
@@ -148,6 +149,33 @@ export default function RowArkusze  ({ row,i })  {
       </>
     );
   };
+
+
+  function NakladFragment ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateLegiFragmentyTech = techContext.handleUpdateLegiFragmentyTech;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.naklad}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateLegiFragmentyTech({
+              ...row,
+              naklad: e.target.value,
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
 
   function Rozwin({ showLegi,setShowLegi }) {
     const techContext = useContext(TechnologyContext);

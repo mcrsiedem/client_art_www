@@ -13,7 +13,7 @@ import icon from "assets/copy.svg";
 // import DodajArkusz from "./DodajArkusz";
 // import Rozwin from "./Rozwin";
 import style from "./RowArkusze.module.css";
-import { reg_int } from "utils/initialvalue";
+import { reg_int, reg_txt } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 
 
@@ -123,11 +123,12 @@ export default function RowArkusze  ({ row,i })  {
 
   {/* <td  >idfrag{l.id}</td>
   <td>frag.idx {l.indeks}</td> */}
-<td className={style.input3}> fragment </td>
+<td className={style.input3}>  </td>
   {/* <td className={style.input3}>{l.naklad}</td> */}
   <NakladFragment row={l}/>
   
   <td>{l.ilosc_leg}</td>
+  <WersjaFragment row={l}/>
   <td>lega id{l.lega_id}</td>
   {/* <td>{row.element_id}</td> */}
   {/* <td>{row.ilosc_stron}</td> */}
@@ -150,6 +151,31 @@ export default function RowArkusze  ({ row,i })  {
     );
   };
 
+  function WersjaFragment ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateLegiFragmentyTech = techContext.handleUpdateLegiFragmentyTech;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.wersja}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_txt.test(e.target.value)) {
+                handleUpdateLegiFragmentyTech({
+              ...row,
+              wersja: e.target.value,
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
 
   function NakladFragment ({row,i}) {
     const techContext = useContext(TechnologyContext)

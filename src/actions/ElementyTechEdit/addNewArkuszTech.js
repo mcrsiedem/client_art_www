@@ -46,11 +46,13 @@ legi.push({
   id:  lega_id,
   indeks: getMaxIndeks(legi),
   typ_elementu: row.typ,
-  rodzaj_legi:null,
+  rodzaj_legi:row.lega,
   element_id: row.id,
   ilosc_stron: row.ilosc_stron,
   naklad: row.naklad,
   arkusz_id: arkusz_id,
+  technologia_id: row.technologia_id,
+  uwagi:""
 });
 
 legiFragmenty.push({

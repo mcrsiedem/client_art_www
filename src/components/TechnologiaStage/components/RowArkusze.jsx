@@ -94,7 +94,7 @@ export default function RowArkusze  ({ row,i })  {
         <td>{row.ilosc_leg}</td>
         <td>{row.uwagi}</td>
         {/* <td>{row.element_id}</td> */}
-        {/* <td>{row.ilosc_stron}</td> */}
+        {/* <td>arkusz id {row.id}</td> */}
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
 
@@ -118,7 +118,7 @@ export default function RowArkusze  ({ row,i })  {
       </div>
 
 
-{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => {
+{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (l,i) => {
   return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(l.id)} className={style.row5} key={l.id}>
 
   {/* <td  >idfrag{l.id}</td>
@@ -414,7 +414,7 @@ export default function RowArkusze  ({ row,i })  {
         <input
         className={style.input_ark_typ}
         disabled
-          value={"arkusz "}
+          value={"ark id:  " + row.id}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 

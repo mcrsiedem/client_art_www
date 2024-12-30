@@ -156,20 +156,26 @@ const LegaFragmentRow = ({ row, i }) => {
           setLegiFragmenty(
             legiFragmenty
             .map((t) => {
+              if (t.indeks > indeks_drag_fragment) {
+                return {...t, indeks: t.indeks -1}
+              }else return t
+            })
+            .map((t) => {
               if (t.indeks >= indeks_drop_fragment) {
                 return {...t, indeks: t.indeks +1}
               }else return t
             })
-            .map((t) => {
-              if (t.indeks < indeks_drop_fragment && t.indeks >= indeks_drag_fragment) {
-                return {...t, indeks: t.indeks -1}
-              }else return t
-            })
+
             .map((t) => {
               if (t.id == id_drag_fragment) {
                 return {...t, indeks: indeks_drop_fragment}
               }else return t
             })
+            // .map((t) => {
+            //   if (t.indeks < indeks_drop_fragment && t.indeks >= indeks_drag_fragment) {
+            //     return {...t, indeks: t.indeks -1}
+            //   }else return t
+            // })
 
             .sort((a, b) => a.indeks - b.indeks)
 

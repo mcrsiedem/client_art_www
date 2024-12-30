@@ -219,16 +219,16 @@ const LegaFragmentRow = ({ row, i }) => {
     onDragOver={handleDragOver}
         onDrop={() => handleDrop(row.id,row.oprawa_id,row.indeks)}
     >
-      <td>{i}</td>
-      <td className={style.typ_elementu}>
-        {" "}
-        {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa}{" "}
-        {row.element_id}
+      <td>{row.indeks}</td>
+      <td style={{ width: "180px" }}>
+        {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa } {" "}
+        { row.element_id}
       </td>
 
 
-      <td>{row.naklad}</td>
-      <td> {row.wersja}</td>
+      <td style={{ width: "90px" }}>{row.naklad}</td>
+      <td style={{ width: "110px" }}> </td>
+      <td style={{ width: "90px" }}> {row.wersja}</td>
       <td>idx {row.indeks}</td>
       <td></td>
     </tr>

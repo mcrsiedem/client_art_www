@@ -104,7 +104,7 @@ const OprawaRow = ({ row }) => {
       </div>
       {show && (
                   legiFragmenty
-                  .filter((f) => f.oprawa_id == row.id)
+                  .filter((f) => f?.oprawa_id == row.id)
                   .map((row, i) => (
                     <LegaFragmentRow
                       row={row}
@@ -128,8 +128,9 @@ const LegaFragmentRow = ({ row, i }) => {
   const setLegiFragmenty = techContext.setLegiFragmenty;
   const legiFragmenty = techContext.legiFragmenty;
 
-  function handleDragStart(id,oprawa_id) {
+  function handleDragStart(id,oprawa_id,indeks) {
     sessionStorage.setItem("id_fragment_lega_drag", id);
+    sessionStorage.setItem("indeks_fragment_lega_drag", indeks);
     sessionStorage.setItem("id_oprawa_lega_drag", oprawa_id);
     sessionStorage.setItem("typ_drag", "fragment_lega");
   }
@@ -138,23 +139,72 @@ const LegaFragmentRow = ({ row, i }) => {
   
   }
 
-  function handleDrop(id,oprawa_id) {
+  function handleDrop(id,oprawa_id,indeks2) {
     if (sessionStorage.getItem("typ_drag") == "fragment_lega") {
-      let id_drag_element = sessionStorage.getItem("id_fragment_lega_drag");
+      let id_drag_fragment = sessionStorage.getItem("id_fragment_lega_drag");
       let id_drag_oprawa = sessionStorage.getItem("id_oprawa_lega_drag");
+      let indeks_drag_fragment = sessionStorage.getItem("indeks_fragment_lega_drag");
 
       let id_drop_element = id;
       let id_drop_oprawa= oprawa_id;
+      let indeks_drop_fragment= indeks2;
 
-      setLegiFragmenty(
-        legiFragmenty.map((p) => {
-          if (p.element_id == id_drag_element) {
-            return { ...p, oprawa_id: id };
-          } else {
-            return p;
-          }
-        })
-      );
+      if(indeks_drag_fragment <indeks_drop_fragment){
+          // z gróry na dół
+// console.log("INDEKS drag: "+indeks_drag_fragment)
+// console.log("INDEKS drop: "+indeks_drop_fragment)
+          setLegiFragmenty(
+            legiFragmenty
+            .map((t) => {
+              if (t.indeks >= indeks_drop_fragment) {
+                return {...t, indeks: t.indeks +1}
+              }else return t
+            })
+            .map((t) => {
+              if (t.indeks < indeks_drop_fragment && t.indeks >= indeks_drag_fragment) {
+                return {...t, indeks: t.indeks -1}
+              }else return t
+            })
+            .map((t) => {
+              if (t.id == id_drag_fragment) {
+                return {...t, indeks: indeks_drop_fragment}
+              }else return t
+            })
+
+            .sort((a, b) => a.indeks - b.indeks)
+
+
+          );
+          
+      // pakowanieEdit.map((p) => {
+      //   if (p.indeks > row.indeks) {
+      //     p.indeks++;
+      //   }
+      // });
+
+
+          // setLegiFragmenty(
+          //   legiFragmenty.map((t) => {
+          //     if (t.id == idFragmentu) {
+          //       return {...t,
+          //         oprawa_id: idOprawy}
+          //     } else {
+          //       return t;
+          //     }
+          //   })
+          // );
+
+
+      }
+
+
+      if(indeks_drag_fragment >indeks_drop_fragment){
+        // z dołu do góry
+        
+
+    }
+
+
 
     }
 
@@ -164,9 +214,9 @@ const LegaFragmentRow = ({ row, i }) => {
   return (
     <tr key={row.id} className={style.row_fragmentow}
     draggable
-    onDragStart={() => handleDragStart(row.id,row.oprawa_id)}
+    onDragStart={() => handleDragStart(row.id,row.oprawa_id,row.indeks)}
     onDragOver={handleDragOver}
-        onDrop={() => handleDrop(row.id,row.oprawa_id)}
+        onDrop={() => handleDrop(row.id,row.oprawa_id,row.indeks)}
     >
       <td>{i}</td>
       <td className={style.typ_elementu}>
@@ -212,7 +262,7 @@ function Rozwin({  row,show, setShow }) {
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
   if  (legiFragmenty
-  .filter((f) => f.oprawa_id == row.id).length !== 0){
+  .filter((f) => f?.oprawa_id == row.id).length !== 0){
   return (
     <div className={style.expand_contener}>
       <img

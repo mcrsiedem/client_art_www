@@ -129,7 +129,7 @@ const CenterPane = ({ children }) => {
 const AlertLega = () => {
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
-  const even = (element) => element.oprawa_id == null;
+  const even = (element) => element?.oprawa_id == null;
 
   if (legiFragmenty.some(even)) {
     return (

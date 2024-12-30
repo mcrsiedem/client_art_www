@@ -149,17 +149,16 @@ const LegaFragmentRow = ({ row, i }) => {
       let id_drop_oprawa= oprawa_id;
       let indeks_drop_fragment= indeks2;
 
-      if(indeks_drag_fragment <indeks_drop_fragment){
-          // z gróry na dół
-// console.log("INDEKS drag: "+indeks_drag_fragment)
-// console.log("INDEKS drop: "+indeks_drop_fragment)
+
           setLegiFragmenty(
             legiFragmenty
+
             .map((t) => {
               if (t.indeks > indeks_drag_fragment) {
                 return {...t, indeks: t.indeks -1}
               }else return t
             })
+
             .map((t) => {
               if (t.indeks >= indeks_drop_fragment) {
                 return {...t, indeks: t.indeks +1}
@@ -171,44 +170,40 @@ const LegaFragmentRow = ({ row, i }) => {
                 return {...t, indeks: indeks_drop_fragment}
               }else return t
             })
-            // .map((t) => {
-            //   if (t.indeks < indeks_drop_fragment && t.indeks >= indeks_drag_fragment) {
-            //     return {...t, indeks: t.indeks -1}
-            //   }else return t
-            // })
-
             .sort((a, b) => a.indeks - b.indeks)
-
 
           );
           
-      // pakowanieEdit.map((p) => {
-      //   if (p.indeks > row.indeks) {
-      //     p.indeks++;
-      //   }
-      // });
+      
 
 
-          // setLegiFragmenty(
-          //   legiFragmenty.map((t) => {
-          //     if (t.id == idFragmentu) {
-          //       return {...t,
-          //         oprawa_id: idOprawy}
-          //     } else {
-          //       return t;
-          //     }
-          //   })
-          // );
+    //   if(indeks_drag_fragment >indeks_drop_fragment){
+    //     // z dołu do góry
+    //     setLegiFragmenty(
+    //       legiFragmenty
 
+    //       .map((t) => {
+    //         if (t.indeks > indeks_drag_fragment) {
+    //           return {...t, indeks: t.indeks -1}
+    //         }else return t
+    //       })
 
-      }
+    //       .map((t) => {
+    //         if (t.indeks >= indeks_drop_fragment) {
+    //           return {...t, indeks: t.indeks +1}
+    //         }else return t
+    //       })
 
+    //       .map((t) => {
+    //         if (t.id == id_drag_fragment) {
+    //           return {...t, indeks: indeks_drop_fragment}
+    //         }else return t
+    //       })
+    //       .sort((a, b) => a.indeks - b.indeks)
 
-      if(indeks_drag_fragment >indeks_drop_fragment){
-        // z dołu do góry
-        
+    //     );
 
-    }
+    // }
 
 
 

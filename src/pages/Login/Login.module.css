@@ -26,8 +26,8 @@
 
 .icon2{
 
-	width: 200px;
-	margin: 50px;
+	width: 160px;
+	margin: 30px;
 
 }
 
@@ -49,8 +49,8 @@
 	padding: 20px;
 	/* border: 1px solid rgb(228, 226, 226); */
 	border-radius: 2%;
-	width: 500px;
-	height: 440px;
+	width: 400px;
+	height: 400px;
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -66,15 +66,15 @@
  	flex-direction: column;
 
  	gap: 20px;
-	width: 100%;
+	width: 80%;
 
 
 }
 
 
 .loginInput{
-	width: 400px; 
-	height: 3rem;;
+	width: 300px; 
+	height: 2.4rem;;
 	border-radius: 10px;
 	/* padding-left: 30px; */
 text-align: center;
@@ -85,37 +85,22 @@ background-color: rgb(219, 219, 219);;
 }
 
 .myButton {
-	/* box-shadow: 0px 0px 0px 2px #9fb4f2; */
-	/* background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%); */
-	/* background-image: linear-gradient(#0f92dd 0%, #54a0e7 80%);
-	background-image: linear-gradient(rgb(95, 82, 82) 0%,rgb(119, 103, 103) 50%,rgb(95, 82, 82) 100%); */
 	background-image: linear-gradient(#E30613 0%,#bd131e 50%,#E30613 100%);
-	
-	/* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
-  /* border-top-left-radius: 10px; */
-	/* background-color:#7892c2; */
-	/* border-radius:10px; */
-	/* border: 1px solid rgb(228, 226, 226); */
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:1rem;
-	padding:8px 20px;
+	padding:8px 10px;
 	text-decoration:none;
-	/* text-shadow:0px 1px 0px #283966; */
-	width: 400px; 
+	width: 300px; 
+	height: 2.4rem;
 	border-radius: 10px;
 	border: none;
 	margin-bottom: 40px;
 }
 .myButton:hover {
-	/* background-image: linear-gradient(#0f92dd 0%, #4584be 80%);
-	background-color:#476e9e; */
-	/* background-image: linear-gradient(rgb(119, 103, 103 )0%,rgb(95, 82, 82) 50%,rgb(119, 103, 103) 100%); */
-	/* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
 	background-image: linear-gradient(#E30613 0%,#bd131e 50%,#E30613 100%);
-	outline: 1px white solid;
+	outline: 1px rgb(255, 40, 40) solid;
 }
 .myButton:active {
 	position:relative;

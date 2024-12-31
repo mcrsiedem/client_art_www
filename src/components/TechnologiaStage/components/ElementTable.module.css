@@ -261,8 +261,18 @@ font-size: 0.9rem;
 
 
 .procesy {
-  display: grid;
-  grid-template-columns: 25px 1fr;
+  /* display: grid;
+  grid-template-columns: 25px 1fr; */
+
+display: flex;
+justify-items: center;
+align-items: center;
+gap:10px;
+  /* padding-top: 3px;/ */
+}
+
+.procesy2{
+  /* padding-top: 5px; */
 }
 
 .expand {

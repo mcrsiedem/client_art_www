@@ -276,18 +276,15 @@ function Procesy({ row }) {
         }}
         alt="Procesy"
       />
-      {procesyElementowTech?.filter((frag) => frag.element_id == row.id)
+      <div  className={style.procesy2}>
+              {procesyElementowTech?.filter((frag) => frag.element_id == row.id)
         .sort((a, b) => a.indeks - b.indeks)
         .map((pr, i) => appContext.showMeProcessName(pr.nazwa_id) + " ")}
       {/* .map((pr) => appContext.showMeProcessName( pr.nazwa_id)+" ")} */}
 
-      {/* row.map((rank, i, row) => {
-  if (i + 1 === row.length) {
-    // Last one.
-  } else {
-    // Not last one.
-  }
-}) */}
+      </div>
+
+
     </div>
   );
 }

@@ -143,7 +143,7 @@ const ProcesTechRow =({row,i,procesyElementowTechTemporary,
   setProcesyElementowTechTemporary})=>{
   const [procesID, setProcesID] = useState(row.nazwa_id); 
   return(
-    <tr key={row.id}>
+    <tr key={row.id +100}>
     <td>{i+1}</td>
     <ProcesName row={row} setProcesID={setProcesID}/>
     <ProcessTyp row={row} procesID={procesID}/>
@@ -231,7 +231,7 @@ const Info = ({ row }) => {
   return (
     <td>
       <input
-        value={row.info}
+        value={row.procesor_domyslny}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({

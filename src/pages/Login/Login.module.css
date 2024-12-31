@@ -73,7 +73,7 @@
 
 
 .loginInput{
-	width: 300px; 
+	width: 350px; 
 	height: 2.4rem;;
 	border-radius: 10px;
 	/* padding-left: 30px; */
@@ -92,7 +92,7 @@ background-color: rgb(219, 219, 219);;
 	font-family:Arial;
 	padding:8px 10px;
 	text-decoration:none;
-	width: 300px; 
+	width: 350px; 
 	height: 2.4rem;
 	border-radius: 10px;
 	border: none;

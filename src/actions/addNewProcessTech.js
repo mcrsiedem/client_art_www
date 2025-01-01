@@ -7,11 +7,12 @@ export function addNewProcessTech(row,procesyElementowTechTemporary, setProcesyE
 
 const procesyElementowEditTemporary = procesyElementowTechTemporary.slice();
 
-
+// row = selectedElementTechROW
 
     procesyElementowEditTemporary.push({
       id: Math.max(...procesyElementowTechTemporary.map((f) => f.id)) + 1,
       zamowienie_id: row.zamowienie_id,
+      technologia_id: row.technologia_id,
       produkt_id: row.produkt_id,
       element_id: row.id,
       proces_id: 14,

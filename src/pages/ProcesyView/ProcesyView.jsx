@@ -12,7 +12,7 @@ import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
 import ProcesViewRow from "./ProcesViewRow";
 
-export default function ProcesyView({ user, setUser }) {
+export default function ProcesyView( ) {
   const navigate = useNavigate();
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;

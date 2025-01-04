@@ -247,16 +247,6 @@ const initialProcesy = [
   },
 ];
 
-const _wykonczenie = [
-  {
-    id: 1,
-    nazwa: "MAT",
-  },
-  {
-    id: 2,
-    nazwa: "GLOSS",
-  },
-];
 
 const _vat = [
   {
@@ -357,6 +347,61 @@ const _stan = [
   },
 ];
 
+const _etap = [
+  {
+    id: 0,
+    nazwa: "Szkic",
+  },
+  {
+    id: 1,
+    nazwa: "Wstępne",
+  },
+  {
+    id: 2,
+    nazwa: "Zamówienie",
+  },
+  {
+    id: 3,
+    nazwa: "Pliki",
+  },
+  {
+    id: 4,
+    nazwa: "Akcept",
+  },
+  {
+    id: 5,
+    nazwa: "Impozycja",
+  },
+  {
+    id: 6,
+    nazwa: "RIP",
+  },  {
+    id: 7,
+    nazwa: "Naświetlanie",
+  },  {
+    id: 8,
+    nazwa: "Drukowanie",
+  },  {
+    id: 9,
+    nazwa: "Uszlachetnianie",
+  },  {
+    id: 10,
+    nazwa: "Falcowanie",
+  },  {
+    id: 11,
+    nazwa: "Kompl;etowanie",
+  },  {
+    id: 12,
+    nazwa: "Oprawa",
+  },  {
+    id: 13,
+    nazwa: "Pakowanie",
+  },  {
+    id: 14,
+    nazwa: "Spedycja",
+  },
+];
+
 const _typ_produktu = [
   {
     id: 1,
@@ -423,42 +468,6 @@ const _rodzaj_oprawy = [
 
 ]
 
-// const _rodzaj_oprawy = [
-//   {
-//     id: 1,
-//     nazwa: "HotMelt",
-//   },
-//   {
-//     id: 2,
-//     nazwa: "PUR",
-//   },
-//   {
-//     id: 3,
-//     nazwa: "Zeszyt",
-//   },
-//   {
-//     id: 4,
-//     nazwa: "Szyto klejona",
-//   },
-//   {
-//     id: 5,
-//     nazwa: "Kompletowanie",
-//   },
-// ];
-
-// const _uszlachetnienia = [
-//   {
-//     id: 1,
-//     nazwa: "UV"
-//   },{
-//     id: 2,
-//     nazwa: "Dyspersja",
-//   }
-//   ,{
-//     id: 3,
-//     nazwa: "Folia mat",
-//   }
-// ]
 
 
 
@@ -479,6 +488,7 @@ export {
   _opiekun,
   _status,
   _stan,
+  _etap,
   _typ_produktu,
   _typ_elementu,
   _rodzaj,

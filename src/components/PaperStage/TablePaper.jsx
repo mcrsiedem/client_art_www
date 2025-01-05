@@ -44,7 +44,6 @@ export default function TablePaper({
             <th className={style.opiekun}>Volumen</th>
             <th className={style.th_ustawienia}></th>
             <th className={style.th_ustawienia}></th>
-            <th className={style.th_ustawienia}></th>
           </tr>
         </thead>
         <tbody className={style.center}>
@@ -65,7 +64,7 @@ export default function TablePaper({
                 <Bulk row={row} />
     
 
-                <Opiekun row={row} />
+                {/* <Opiekun row={row} /> */}
                 <UseIcon
                   row={row}
                   rowID={rowID}

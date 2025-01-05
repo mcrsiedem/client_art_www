@@ -392,7 +392,7 @@ function Dodaj({ row, handleAddCard }) {
           }}
         >
           {   <option value = "0"  >
-             brak papieru
+             wybierz papier
             </option>}
        
           {listaPapierowNazwy.map((option) => (

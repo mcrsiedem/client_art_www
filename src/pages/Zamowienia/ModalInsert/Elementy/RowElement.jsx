@@ -377,7 +377,7 @@ function Dodaj({ row, handleAddCard }) {
     row,handleChangeCardElementy
   }) {
     const appcontext = useContext(AppContext);
-    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+    const listaPapierow = appcontext.listaPapierow;
 
     return (
      <div className={style.papier_input_container}>
@@ -395,9 +395,9 @@ function Dodaj({ row, handleAddCard }) {
              wybierz papier
             </option>}
        
-          {listaPapierowNazwy.map((option) => (
+          {listaPapierow.map((option) => (
             <option key={option.id} value={option.id}>
-              {option.nazwa}
+              {option.nazwa} {option.gramatura} g/m2 {option.wykonczenie}
             </option>
           ))}
         </select>

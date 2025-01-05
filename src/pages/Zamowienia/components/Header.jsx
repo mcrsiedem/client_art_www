@@ -44,7 +44,7 @@ function Header({ dodaj_clikHandler}) {
           <div className={style.leftHeaderContener}>
 
 
-          <p>Zamówienia </p> 
+          <p className={style.title}>Zamówienia </p> 
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)

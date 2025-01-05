@@ -21,7 +21,7 @@ export default function Header({}) {
     <header className={style.headerMain}>
       <LeftPane>
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
-        <p>Karta technologiczna {techContext.dane?.id}</p>
+        <p className={style.title}>Karta technologiczna {techContext.dane?.id}</p>
       </LeftPane>
 
       <CenterPane>

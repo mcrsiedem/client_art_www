@@ -37,7 +37,7 @@ function TechnologieViewHeader({ selectedProces,setSelectedProces,setSelectedPro
 
 
           <div className={style.leftHeaderContener}>
-<p>Technologie</p>
+<p className={style.title}>Technologie</p>
 
           </div>
           

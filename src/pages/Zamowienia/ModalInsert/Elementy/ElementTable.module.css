@@ -361,7 +361,8 @@ font-size: 0.9rem;
   
   
 }
-.select_papier_brak {
+
+.select_papier_brak{
   background-color: rgb(165, 243, 63);
   height: 2rem;
   width: max-content;
@@ -369,9 +370,11 @@ font-size: 0.9rem;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 35px;
-  
-  
 }
+.select_papier_brak > option {
+  background-color: whitesmoke;
+}
+
 
 /* .select_papier_brak {
   background: rgb(255, 5, 5);

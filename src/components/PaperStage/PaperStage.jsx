@@ -44,7 +44,8 @@ export default function PaperStage() {
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
         <Header />
-        {selectedElementROW.naklad}
+        {/* {selectedElementROW.naklad} */}
+       Ilość papierów {listaPapierow.length}
         <TablePaper/>
         {/* <Finder klienci={klienci} setKlienci={setKlienci}>
           <Dodaj

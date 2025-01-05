@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext} from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
 import iconDelete from "../../assets/trash.svg";
-import TableClient from "./components/TableClient";
+// import TableClient from "./components/TableClient";
 import iconTable from "../../assets/add.png";
 import addIcon2 from "../../assets/addIcon2.svg";
+import { AppContext } from "context/AppContext";
 
-import AddClient from "./components/AddClient";
+// import AddClient from "./components/AddClient";
 
 export default function PaperStage({
+  showPaperStage, setShowPaperStage,changePaper, row,
+
+
   isShowAddClientStage,
   showAddClientStage,
   daneZamowienia,
@@ -21,24 +25,27 @@ export default function PaperStage({
   setKlienciWyszukiwarka,
 }) {
 
-  async function getClients() {
-    const res = await axios.get(IP + "lista-klientow");
-    setKlienci([...res.data]);
-    setKlienciWyszukiwarka([...res.data]);
+  async function getPapier() {
+    const res = await axios.get(IP + "lista-papierow");
+    setListaPapierow([...res.data]);
+    // setKlienciWyszukiwarka([...res.data]);
   }
 
   useEffect(() => {
-    getClients();
+    getPapier();
   }, []);
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
- 
-  
+    const appcontext = useContext(AppContext);
+    const listaPapierow = appcontext.listaPapierow;
+    const setListaPapierow = appcontext.setListaPapierow;
+
+ if(showPaperStage){
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
         <Header showAddClientStage={showAddClientStage} />
-        <Finder klienci={klienci} setKlienci={setKlienci}>
+        {/* <Finder klienci={klienci} setKlienci={setKlienci}>
           <Dodaj
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
@@ -63,27 +70,24 @@ export default function PaperStage({
             setShowAddClientPane={setShowAddClientPane}
             getClients= {()=>getClients()}
           />
-        )}
+        )} */}
 
 
       </div>
     </div>
   );
+ }
+  
+
 }
 
-function Dodaj({ setShowAddClientPane }) {
+
+function Header({ showAddClientStage }) {
   return (
-    <img
-      className={style.dodaj_klienta}
-      src={addIcon2}
-      onClick={() => {
-        setShowAddClientPane(true);
-        //  showAddClientStage(true)
-        // setShowOprawaElementyStage(true);
-        // setOprawa_row(row);
-      }}
-      alt="Procesy"
-    />
+    <div className={style.header}>
+      <p className={style.title}>Papiery </p>
+      <Zamknij showAddClientStage={showAddClientStage} />
+    </div>
   );
 }
 
@@ -101,18 +105,29 @@ function Zamknij({ showAddClientStage }) {
 }
 
 
-
-
-
-
-function Header({ showAddClientStage }) {
+function Dodaj({ setShowAddClientPane }) {
   return (
-    <div className={style.header}>
-      <p className={style.title}>Lista klientów </p>
-      <Zamknij showAddClientStage={showAddClientStage} />
-    </div>
+    <img
+      className={style.dodaj_klienta}
+      src={addIcon2}
+      onClick={() => {
+        setShowAddClientPane(true);
+        //  showAddClientStage(true)
+        // setShowOprawaElementyStage(true);
+        // setOprawa_row(row);
+      }}
+      alt="Procesy"
+    />
   );
 }
+
+
+
+
+
+
+
+
 
 function Szukaj({
   klienci,

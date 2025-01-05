@@ -43,6 +43,7 @@ import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "ut
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import { Button } from "react-bootstrap";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
+import PaperStage from "components/PaperStage/PaperStage";
 
 function ModalInsert({
   openModalInsert,
@@ -303,7 +304,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         />
       )}
 
-{isShowAddClientStage && (
+
         <ClientStage
         klienci={klienci}
         setKlienci={setKlienci}
@@ -316,7 +317,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         daneZamowienia={daneZamowienia}
         setDaneZamowienia={setDaneZamowienia}
         />
-      )}
+   
 {readAlert && (
         <ReadOnlyAlert
         // readOnly={readOnly}
@@ -325,7 +326,10 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
           stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         />
       )}
+
+        <PaperStage showPaperStage={false}/>
     </div>
+
 
   );
   //----------------------------------

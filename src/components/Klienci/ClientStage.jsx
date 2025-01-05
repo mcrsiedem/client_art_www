@@ -32,9 +32,8 @@ export default function ClientStage({
   }, []);
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
- 
-  
-  return (
+  if(isShowAddClientStage){
+      return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
         <Header showAddClientStage={showAddClientStage} />
@@ -69,6 +68,9 @@ export default function ClientStage({
       </div>
     </div>
   );
+  }
+  
+
 }
 
 function Dodaj({ setShowAddClientPane }) {

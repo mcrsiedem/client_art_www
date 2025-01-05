@@ -9,26 +9,16 @@ import iconTable from "../../assets/add.png";
 import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import TablePaper from "./TablePaper";
 
 // import AddClient from "./components/AddClient";
 
-export default function PaperStage({
-  changePaper, row,
-
-
-  isShowAddClientStage,
-  showAddClientStage,
-  daneZamowienia,
-  setDaneZamowienia,
-  klienci,
-  setKlienci,
-  klienciWyszukiwarka,
-  setKlienciWyszukiwarka,
-}) {
+export default function PaperStage() {
 
   async function getPapier() {
     const res = await axios.get(IP + "lista-papierow");
     setListaPapierow([...res.data]);
+    setListaPapierowWyszukiwarka([...res.data]);
     // setKlienciWyszukiwarka([...res.data]);
   }
 
@@ -40,6 +30,7 @@ export default function PaperStage({
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
     const listaPapierow = appcontext.listaPapierow;
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const setListaPapierow = appcontext.setListaPapierow;
     const showPaperStage = modalcontext.showPaperStage;
     const setShowPaperStage = modalcontext.setShowPaperStage;
@@ -54,6 +45,7 @@ export default function PaperStage({
       <div className={style.window}>
         <Header />
         {selectedElementROW.naklad}
+        <TablePaper/>
         {/* <Finder klienci={klienci} setKlienci={setKlienci}>
           <Dodaj
             isShowAddClientPane={isShowAddClientPane}

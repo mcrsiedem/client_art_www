@@ -159,10 +159,10 @@ export default function RowElement({
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
-        <Gramatura
+        {/* <Gramatura
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
-        />
+        /> */}
         <Uwagi
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}

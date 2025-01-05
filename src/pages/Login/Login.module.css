@@ -26,7 +26,7 @@
 
 .icon2{
 
-	width: 160px;
+	width: 180px;
 	margin: 30px;
 
 }
@@ -74,7 +74,7 @@
 
 .loginInput{
 	width: 350px; 
-	height: 2.4rem;;
+	height: 2.8rem;;
 	border-radius: 10px;
 	/* padding-left: 30px; */
 text-align: center;
@@ -93,7 +93,7 @@ background-color: rgb(219, 219, 219);;
 	padding:8px 10px;
 	text-decoration:none;
 	width: 350px; 
-	height: 2.4rem;
+	height: 2.8rem;
 	border-radius: 10px;
 	border: none;
 	margin-bottom: 40px;

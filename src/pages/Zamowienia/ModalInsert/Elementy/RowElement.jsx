@@ -4,6 +4,7 @@ import Logo_ustawienia from "../../../../assets/settings.svg";
 import logoExpand from "assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
+import addIcon2 from "assets/addIcon2.svg"
 import {  useState,useContext } from "react";
 import { _typ_elementu} from "utils/initialvalue"
 import axios from "axios";
@@ -154,7 +155,7 @@ export default function RowElement({
         <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
         <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <PapierSelect
+        <PapierSelect2
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
@@ -372,6 +373,60 @@ function Dodaj({ row, handleAddCard }) {
    
     );
   }
+  function PapierSelect2({
+    row,handleChangeCardElementy
+  }) {
+    const appcontext = useContext(AppContext);
+    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+
+    return (
+     <div className={style.papier_input_container}>
+        <select
+          className={row.papier_id =="0" ? style.select_papier_brak : style.select_papier }
+          defaultValue={row.papier_id}
+          onChange={(e) => {
+            handleChangeCardElementy({
+              ...row,
+              papier_id: e.target.value,
+            });
+          }}
+        >
+          {   <option value = "0"  >
+             brak papieru
+            </option>}
+       
+          {listaPapierowNazwy.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nazwa}
+            </option>
+          ))}
+        </select>
+<img
+         className={style.dodaj_klienta}
+          src={addIcon2}
+          onClick={() => {
+            // showAddClientStage(true)
+          }}
+          alt="Procesy"
+        />
+     </div>
+
+   
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   function Gramatura({  row, handleChangeCardElementy}) {
     const appcontext = useContext(AppContext);

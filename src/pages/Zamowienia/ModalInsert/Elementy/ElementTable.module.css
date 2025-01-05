@@ -338,3 +338,52 @@ font-size: 0.9rem;
   border: none;
   border-radius: 5px;
 }
+
+
+.dodaj_klienta {
+  position: absolute;
+  top: 5px; left: 10px;
+  height: 20px;
+}
+
+.papier_input_container{
+  position: relative;
+}
+
+.select_papier {
+  /* background-color: rgb(165, 243, 63); */
+  height: 2rem;
+  width: max-content;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 35px;
+  
+  
+}
+.select_papier_brak {
+  background-color: rgb(165, 243, 63);
+  height: 2rem;
+  width: max-content;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 35px;
+  
+  
+}
+
+/* .select_papier_brak {
+  background: rgb(255, 5, 5);
+  font-weight: bold;
+
+  
+} */
+
+/* [value=1] {
+  background-color: rgb(255, 0, 0);
+
+  
+  
+} */
+/* .select_papier > option[value="0"]:checked  { background: rgb(6, 255, 89); } */

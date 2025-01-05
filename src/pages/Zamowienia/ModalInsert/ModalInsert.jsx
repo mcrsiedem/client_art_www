@@ -327,7 +327,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         />
       )}
 
-        <PaperStage showPaperStage={false}/>
+        <PaperStage />
     </div>
 
 

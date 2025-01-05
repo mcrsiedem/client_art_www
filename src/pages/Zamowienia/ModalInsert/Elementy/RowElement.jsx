@@ -379,6 +379,10 @@ function Dodaj({ row, handleAddCard }) {
     const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
 
+      const modalcontext = useContext(ModalInsertContext);
+      const setShowPaperStage = modalcontext.setShowPaperStage;
+      const setSelectedElementROW = modalcontext.setSelectedElementROW;
+
     return (
      <div className={style.papier_input_container}>
         <select
@@ -405,6 +409,8 @@ function Dodaj({ row, handleAddCard }) {
          className={style.dodaj_klienta}
           src={addIcon2}
           onClick={() => {
+            setShowPaperStage(true)
+            setSelectedElementROW(row)
             // showAddClientStage(true)
           }}
           alt="Procesy"

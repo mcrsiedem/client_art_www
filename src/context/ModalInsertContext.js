@@ -34,8 +34,11 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit] =     useState(false);
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
 
+    const [showPaperStage, setShowPaperStage] =useState(false);
 
- 
+
+
+    
 
     
      const updateZamowienieID = useCallback((data) => {
@@ -194,7 +197,7 @@ export const ModalInsertContextProvider = ({children})=>{
           handleDeleteKosztyDodatkoweTemporary,
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
-          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,
+          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage
 
           
 

@@ -8,11 +8,12 @@ import iconDelete from "../../assets/trash.svg";
 import iconTable from "../../assets/add.png";
 import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 // import AddClient from "./components/AddClient";
 
 export default function PaperStage({
-  showPaperStage, setShowPaperStage,changePaper, row,
+  changePaper, row,
 
 
   isShowAddClientStage,
@@ -37,14 +38,22 @@ export default function PaperStage({
 
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
     const appcontext = useContext(AppContext);
+    const modalcontext = useContext(ModalInsertContext);
     const listaPapierow = appcontext.listaPapierow;
     const setListaPapierow = appcontext.setListaPapierow;
+    const showPaperStage = modalcontext.showPaperStage;
+    const setShowPaperStage = modalcontext.setShowPaperStage;
+    const selectedElementROW = modalcontext.selectedElementROW;
+
+
+
 
  if(showPaperStage){
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
-        <Header showAddClientStage={showAddClientStage} />
+        <Header />
+        {selectedElementROW.naklad}
         {/* <Finder klienci={klienci} setKlienci={setKlienci}>
           <Dodaj
             isShowAddClientPane={isShowAddClientPane}
@@ -82,22 +91,24 @@ export default function PaperStage({
 }
 
 
-function Header({ showAddClientStage }) {
+function Header() {
   return (
     <div className={style.header}>
       <p className={style.title}>Papiery </p>
-      <Zamknij showAddClientStage={showAddClientStage} />
+      <Zamknij/>
     </div>
   );
 }
 
-function Zamknij({ showAddClientStage }) {
+function Zamknij() {
+  const modalcontext = useContext(ModalInsertContext);
+  const setShowPaperStage = modalcontext.setShowPaperStage;
   return (
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
-        showAddClientStage(false);
+        setShowPaperStage(false);
       }}
       alt="Procesy"
     />

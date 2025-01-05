@@ -383,7 +383,7 @@ function Dodaj({ row, handleAddCard }) {
      <div className={style.papier_input_container}>
         <select
           className={row.papier_id =="0" ? style.select_papier_brak : style.select_papier }
-          defaultValue={row.papier_id}
+          value={row.papier_id}
           onChange={(e) => {
             handleChangeCardElementy({
               ...row,

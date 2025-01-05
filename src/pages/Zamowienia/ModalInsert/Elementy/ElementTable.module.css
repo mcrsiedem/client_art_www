@@ -363,7 +363,7 @@ font-size: 0.9rem;
 }
 
 .select_papier_brak{
-  background-color: rgb(165, 243, 63);
+  background-color: rgb(255, 0, 0);
   height: 2rem;
   width: max-content;
   border-radius: 5px;

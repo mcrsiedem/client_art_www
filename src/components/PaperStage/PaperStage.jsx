@@ -48,7 +48,14 @@ export default function PaperStage() {
        {/* Ilość papierów {listaPapierow.length} */}
       
         <Finder >
-          <p>Finder</p>
+          <PapierNazwaGrupa/>
+          {/* <div className={style.btnContainer}>
+          <p>Papier</p>
+          <p>Nazwa</p>
+          <p>Grupa</p>
+          <p>Wykonczenie</p>
+          </div> */}
+
           {/* <Dodaj
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
@@ -83,6 +90,31 @@ export default function PaperStage() {
 
 }
 
+function PapierNazwaGrupa() {
+  const contextApp = useContext(AppContext);
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+    return (
+      <div className={style.col_dane}>
+        <select
+          className={style.select_papier}
+          value={daneZamowienia.firma_id}
+  
+          onChange={(event) => {
+            // setDaneZamowienia({...daneZamowienia, firma_id: event.target.value});
+            // setSaveButtonDisabled(false)
+          }}
+        >
+          {             <option value = "0"  >    Papier   </option>            }
+          {             <option value = "0"  >    Nazwa   </option>            }
+          {             <option value = "0"  >    Grupa   </option>            }
+        </select>
+      </div>
+    );
+  }
+
 function Zapisz() {
   const appcontext = useContext(AppContext);
   const isBtnZapiszPapierDisabled = appcontext.isBtnZapiszPapierDisabled;
@@ -114,7 +146,7 @@ function Zapisz() {
 function Header() {
   return (
     <div className={style.header}>
-      <p className={style.title}>Papiery </p>
+      <p className={style.title}> </p>
       <Zamknij/>
     </div>
   );
@@ -123,12 +155,18 @@ function Header() {
 function Zamknij() {
   const modalcontext = useContext(ModalInsertContext);
   const setShowPaperStage = modalcontext.setShowPaperStage;
+
+  const appcontext = useContext(AppContext);
+
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
   return (
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
         setShowPaperStage(false);
+        setBtnZapiszPapierDisabled(true)
+
       }}
       alt="Procesy"
     />

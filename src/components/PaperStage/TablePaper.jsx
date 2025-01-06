@@ -135,7 +135,6 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          // nie mozna skasowac firmy, ktora jest aktualnie ustawiona jak klient
           if (row.id != daneZamowienia.klient_id) {
             rowID.current = { id: row.id, firma: row.firma };
             setShowDeleteClientPane(true);

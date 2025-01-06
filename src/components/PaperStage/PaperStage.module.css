@@ -46,6 +46,25 @@
   color: #fff;
 }
 
+.btnContainer{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap:20px;
+}
+
+.select_papier {
+  background-color: #eeeeee;
+  height: 1.8rem;
+width: 200px;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 30px;
+  /* border:none; */
+  color: gray;
+}
+
 .title {
   display: flex;
   justify-content: start;
@@ -104,11 +123,11 @@ background:rgb(212, 212, 212);
 .szukaj {
   background-color: #eeeeee;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
+  outline: 1px solid rgb(185, 185, 185);
 
-
-  width: 300px;
-  height: 30px;
+  width: 200px;
+  height: 1.8rem;
   padding-left: 10px;
 }
 

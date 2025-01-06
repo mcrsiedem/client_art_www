@@ -16,15 +16,14 @@ import { updatePaper } from "./actions/updatePaper";
 
 export default function PaperStage() {
 
-  const [isShowAddClientPane, setShowAddClientPane] = useState(false);
+
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
-    const listaPapierow = appcontext.listaPapierow;
+
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const setListaPapierow = appcontext.setListaPapierow;
     const showPaperStage = modalcontext.showPaperStage;
-    const setShowPaperStage = modalcontext.setShowPaperStage;
-    const selectedElementROW = modalcontext.selectedElementROW;
+
 
   async function getPapier() {
     const res = await axios.get(IP + "lista-papierow");
@@ -56,7 +55,7 @@ export default function PaperStage() {
           /> */}
           <Szukaj           />
         </Finder>
-        <TablePaper/>
+        <TablePaper />
         {/* <TableClient
           klienciWyszukiwarka={klienciWyszukiwarka}
           daneZamowienia={daneZamowienia}
@@ -72,8 +71,8 @@ export default function PaperStage() {
             getClients= {()=>getClients()}
           />
         )} */}
-  <div>
-    <Zapisz/>
+  <div className={style.footer}>
+    <Zapisz  />
   </div>
 
       </div>
@@ -85,21 +84,29 @@ export default function PaperStage() {
 }
 
 function Zapisz() {
-  const modalcontext = useContext(ModalInsertContext);
-  const setShowPaperStage = modalcontext.setShowPaperStage;
-      const appcontext = useContext(AppContext);
-      const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-      const setListaPapierow = appcontext.setListaPapierow;
-      const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const appcontext = useContext(AppContext);
+  const isBtnZapiszPapierDisabled = appcontext.isBtnZapiszPapierDisabled;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
 
 
-  return (
 
-    <button onClick={() => {
-      updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy)
 
-    }}>Zapisz</button>
+      return (
+    <button 
+    
+    className={style.btn} 
+    onClick={() => {
+       updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
+// console.log(isBtnZapiszPapierDisabled)
+    }}
+    
+    disabled={isBtnZapiszPapierDisabled}
+    >
+      Zapisz</button>
 
   );
 }

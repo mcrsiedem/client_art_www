@@ -9,11 +9,11 @@ import ChangePaper from "./ChangePaper";
 
 
 export default function TablePaper({
-  klienciWyszukiwarka,
+  btnZapisz,
+  setBtnZapisz,
   daneZamowienia,
   setDaneZamowienia,
-  getClients,
-  setShowAddClientPane,
+
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
@@ -64,7 +64,7 @@ export default function TablePaper({
                 <Gramatura row={row} />
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
-                <Info row={row} />
+                <Info row={row} setBtnZapisz={setBtnZapisz}/>
     
 
                 {/* <Opiekun row={row} /> */}
@@ -194,10 +194,13 @@ function Opiekun({ row }) {
 }
 
 
-function Info({ row}) {
+function Info({ row,setBtnZapisz}) {
     const appcontext = useContext(AppContext);
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+      const modalcontext = useContext(ModalInsertContext);
+      // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+      const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
   return (
     <td className={style.labelinput}>
 
@@ -209,7 +212,7 @@ function Info({ row}) {
           const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
           if (event.target.value === "" || re.test(event.target.value)) {
             // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
-            
+           
             setListaPapierowWyszukiwarka(
               listaPapierowWyszukiwarka.map((t, a) => {
               // console.log("oprawa id" +prev)
@@ -225,7 +228,7 @@ function Info({ row}) {
               }
             })
           );
-
+          setBtnZapiszPapierDisabled(false)
 
           }
         }}

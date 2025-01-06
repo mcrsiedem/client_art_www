@@ -38,11 +38,11 @@ export default function TablePaper({
         <thead>
           <tr>
             <th className={style.id}>#</th>
-            <th className={style.firma}>Grupa</th>
-            <th className={style.adres}>Nazwa</th>
-            <th className={style.kod}>Gramatura</th>
-            <th className={style.nIP}>Wykończenie</th>
-            <th className={style.opiekun}>Volumen</th>
+            <th className={style.grupa}>Grupa</th>
+            <th className={style.nazwa}>Nazwa</th>
+            <th className={style.gramatura}>g/m2</th>
+            <th className={style.wykonczenie}></th>
+            <th className={style.opiekun}>Bulk</th>
             <th className={style.th_ustawienia}>Ustaw</th>
             <th className={style.th_ustawienia}></th>
           </tr>
@@ -174,8 +174,8 @@ function Gramatura({ row, index }) {
   return <td>{row.gramatura}</td>;
 }
 
-function ID({ row }) {
-  return <td>{row.id}</td>;
+function ID({ row,index}) {
+  return <td>{index}</td>;
 }
 
 function Wykonczenie({ row }) {

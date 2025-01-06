@@ -45,20 +45,18 @@ export default function PaperStage() {
       <div className={style.window}>
         <Header />
         {/* {selectedElementROW.naklad} */}
-       Ilość papierów {listaPapierow.length}
-        <TablePaper/>
-        {/* <Finder klienci={klienci} setKlienci={setKlienci}>
-          <Dodaj
+       {/* Ilość papierów {listaPapierow.length} */}
+      
+        <Finder >
+          <p>Finder</p>
+          {/* <Dodaj
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
-          />
-          <Szukaj
-            klienci={klienci}
-            setKlienci={setKlienci}
-            setKlienciWyszukiwarka={setKlienciWyszukiwarka}
-          />
+          /> */}
+          <Szukaj           />
         </Finder>
-        <TableClient
+        <TablePaper/>
+        {/* <TableClient
           klienciWyszukiwarka={klienciWyszukiwarka}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
@@ -133,13 +131,20 @@ function Dodaj({ setShowAddClientPane }) {
 
 
 
-function Szukaj({
-  klienci,
-  setKlienci,
-  klienciWyszukiwarka,
-  setKlienciWyszukiwarka,
-}) {
-  const klienciEdit = JSON.parse(JSON.stringify(klienci));
+function Szukaj() {
+  // const klienciEdit = JSON.parse(JSON.stringify(klienci));
+
+
+
+
+  const appcontext = useContext(AppContext);
+  const modalcontext = useContext(ModalInsertContext);
+  const listaPapierow = appcontext.listaPapierow;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const showPaperStage = modalcontext.showPaperStage;
+  const setShowPaperStage = modalcontext.setShowPaperStage;
+  const selectedElementROW = modalcontext.selectedElementROW;
   return (
     <input
       className={style.szukaj}
@@ -147,12 +152,12 @@ function Szukaj({
   
       placeholder="Szukaj..."
       onChange={(event) => {
-        const m = [...klienci];
+        const m = [...listaPapierow];
 
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
-        setKlienciWyszukiwarka(
+        setListaPapierowWyszukiwarka(
           m.filter((k) =>
-            k.firma.toLowerCase().includes(event.target.value.toLowerCase())
+            k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
           )
         );
       }}
@@ -160,7 +165,7 @@ function Szukaj({
   );
 }
 
-function Finder({ children, klienci, setKlienci }) {
+function Finder({ children }) {
   return <div className={style.finder}>{children}</div>;
 }
 function Footer({ children }) {

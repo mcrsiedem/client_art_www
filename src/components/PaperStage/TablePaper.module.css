@@ -2,14 +2,23 @@
     width: 10px;
 }
 
-.kod{
-    width: 10px;
-}
-.nIP{
-    width: 40px;
+.gramatura{
+    width: 6%;
+    text-align: center;
+
 }
 
-.opiekun{
+.nazwa{
+    width: 20%;
+
+
+}
+.wykonczenie{
+    width: 60px;
+    text-align: center;
+}
+
+.grupa{
     width: 150px;
 }
 

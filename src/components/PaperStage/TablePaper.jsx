@@ -5,6 +5,7 @@ import iconDelete from "assets/trash2.svg";
 import iconEdit from "assets/settings.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import ChangePaper from "./ChangePaper";
 
 
 export default function TablePaper({
@@ -14,7 +15,7 @@ export default function TablePaper({
   getClients,
   setShowAddClientPane,
 }) {
-  const [selectedRow, setSelectedRow] = useState("");
+  const [selectedPaperRow, setSelectedPaperRow] = useState();
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showChange, setShowChange] = useState(false);
@@ -71,6 +72,7 @@ export default function TablePaper({
                   daneZamowienia={daneZamowienia}
                   setDaneZamowienia={setDaneZamowienia}
                   setShowChange={setShowChange}
+                  setSelectedPaperRow={setSelectedPaperRow}
 
                 />
                 <DeleteIcon
@@ -99,16 +101,11 @@ export default function TablePaper({
           getClients={() => getClients()}
           rowID={rowID}
         />
-      )}
-
-{showChange&& (
-        <ChangeClient
-        setDaneZamowienia={setDaneZamowienia}
-        daneZamowienia={daneZamowienia}
-          setShowChange={setShowChange}
-          rowID={rowID}
-        />
       )} */}
+
+
+        <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} />
+      
     </div>
   );
 }
@@ -148,7 +145,7 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
   );
 }
 
-function UseIcon({ row, rowID,setDaneZamowienia, daneZamowienia,setShowChange }) {
+function UseIcon({ row, rowID,setDaneZamowienia, daneZamowienia,setShowChange ,setSelectedPaperRow}) {
   return (
     <td>
       <img
@@ -156,8 +153,9 @@ function UseIcon({ row, rowID,setDaneZamowienia, daneZamowienia,setShowChange })
         src={iconEdit}
         onClick={() => {
           // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          rowID.current = { id: row.id, firma: row.firma };
+          // rowID.current = { id: row.id, firma: row.firma };
           setShowChange(true)
+          setSelectedPaperRow(row)
         }}
         alt="Procesy"
       />

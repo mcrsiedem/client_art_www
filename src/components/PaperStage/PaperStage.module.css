@@ -23,7 +23,7 @@
   border-radius: 10px;
   z-index: 3;
   display: grid;
-  grid-template-rows: 2rem 35px 1fr 1rem;
+  grid-template-rows: 2rem 35px 1fr 2rem;
   box-shadow: 10px 10px 10px gray;
   gap: 10px;
 

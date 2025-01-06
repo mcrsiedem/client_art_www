@@ -15,17 +15,6 @@ import TablePaper from "./TablePaper";
 
 export default function PaperStage() {
 
-  async function getPapier() {
-    const res = await axios.get(IP + "lista-papierow");
-    setListaPapierow([...res.data]);
-    setListaPapierowWyszukiwarka([...res.data]);
-    // setKlienciWyszukiwarka([...res.data]);
-  }
-
-  useEffect(() => {
-    getPapier();
-  }, []);
-
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
@@ -35,6 +24,17 @@ export default function PaperStage() {
     const showPaperStage = modalcontext.showPaperStage;
     const setShowPaperStage = modalcontext.setShowPaperStage;
     const selectedElementROW = modalcontext.selectedElementROW;
+
+  async function getPapier() {
+    const res = await axios.get(IP + "lista-papierow");
+    setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    // setKlienciWyszukiwarka([...res.data]);
+  }
+
+  useEffect(() => {
+    getPapier();
+  }, []);
 
 
 
@@ -71,7 +71,9 @@ export default function PaperStage() {
             getClients= {()=>getClients()}
           />
         )} */}
-
+  <div>
+    <button>Zapisz</button>
+  </div>
 
       </div>
     </div>

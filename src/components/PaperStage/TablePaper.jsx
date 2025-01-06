@@ -43,6 +43,7 @@ export default function TablePaper({
             <th className={style.gramatura}>g/m2</th>
             <th className={style.wykonczenie}></th>
             <th className={style.opiekun}>Bulk</th>
+            <th className={style.info}>Info</th>
             <th className={style.th_ustawienia}>Ustaw</th>
             <th className={style.th_ustawienia}></th>
           </tr>
@@ -63,6 +64,7 @@ export default function TablePaper({
                 <Gramatura row={row} />
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
+                <Info row={row} />
     
 
                 {/* <Opiekun row={row} /> */}
@@ -184,7 +186,52 @@ function Wykonczenie({ row }) {
 function Bulk({ row }) {
   return <td>{row.bulk}</td>;
 }
-
+function Info2({ row }) {
+  return <td>{row.info}</td>;
+}
 function Opiekun({ row }) {
   return <td>{row.opiekun_nazwa}</td>;
+}
+
+
+function Info({ row}) {
+    const appcontext = useContext(AppContext);
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  return (
+    <td className={style.labelinput}>
+
+      <input
+        className={style.input_info}
+        type="text"
+        value={row.info}
+        onChange={(event) => {
+          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
+          if (event.target.value === "" || re.test(event.target.value)) {
+            // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
+            
+            setListaPapierowWyszukiwarka(
+              listaPapierowWyszukiwarka.map((t, a) => {
+              // console.log("oprawa id" +prev)
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  info: event.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+
+          }
+        }}
+      >
+
+      </input>
+    </td>
+  );
 }

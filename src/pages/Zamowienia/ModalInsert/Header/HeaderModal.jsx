@@ -242,6 +242,7 @@ function PokazStany({  }) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
   const listaPapierow = appcontext.listaPapierow;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
   return (
     <button
@@ -257,7 +258,7 @@ function PokazStany({  }) {
         console.log("Pakowanie: ",pakowanie)
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
         console.log("Papiery_nazwy: ",listaPapierowNazwy)
-        console.log("Papiery: ",listaPapierow)
+        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
 
       }}
       className={ style.btn}

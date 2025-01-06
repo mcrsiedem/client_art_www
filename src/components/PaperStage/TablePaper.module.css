@@ -45,3 +45,8 @@
   .main::-webkit-scrollbar-thumb:hover {
     background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(137, 188, 254) 50%, rgb(107, 158, 224) 100%);
   }
+
+  .input_info{
+    border: none;
+    background-color: transparent;
+}

@@ -345,43 +345,16 @@ function Dodaj({ row, handleAddCard }) {
     );
   }
   
-  function PapierSelect({
-    row,handleChangeCardElementy
-  }) {
-    const appcontext = useContext(AppContext);
-    const listaPapierowNazwy = appcontext.listaPapierowNazwy;
 
-    return (
-     
-        <select
-          className={style.select}
-          value={row.papier_id}
-          onChange={(e) => {
-            handleChangeCardElementy({
-              ...row,
-              papier_id: e.target.value,
-            });
-          }}
-        >
-          {}
-          {listaPapierowNazwy.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
-   
-    );
-  }
   function PapierSelect2({
     row,handleChangeCardElementy
   }) {
     const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
-
-      const modalcontext = useContext(ModalInsertContext);
-      const setShowPaperStage = modalcontext.setShowPaperStage;
-      const setSelectedElementROW = modalcontext.setSelectedElementROW;
+    const modalcontext = useContext(ModalInsertContext);
+    const setShowPaperStage = modalcontext.setShowPaperStage;
+    const setSelectedElementROW = modalcontext.setSelectedElementROW;
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
 
     return (
      <div className={style.papier_input_container}>
@@ -411,6 +384,7 @@ function Dodaj({ row, handleAddCard }) {
           onClick={() => {
             setShowPaperStage(true)
             setSelectedElementROW(row)
+            setListaPapierowWyszukiwarka(listaPapierow)
             // showAddClientStage(true)
           }}
           alt="Procesy"

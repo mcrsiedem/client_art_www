@@ -51,7 +51,7 @@ export default function TablePaper({
         <tbody className={style.center}>
           {listaPapierowWyszukiwarka?.map((row, index) => {
             return (
-              <tr
+              <tr className={style.tr}
                 key={row.id}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)

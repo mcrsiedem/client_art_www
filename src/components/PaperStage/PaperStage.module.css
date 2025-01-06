@@ -93,7 +93,7 @@ background:rgb(126, 182, 255);
 }
 
 .btn[disabled]{
-background:rgb(212, 212, 212);
+  background: #cccccc;
 
 }
 

@@ -1,4 +1,10 @@
+
+.tr:hover{
+    background-color: rgb(233, 244, 253);
+}
+
 .id{
+
     width: 10px;
 }
 

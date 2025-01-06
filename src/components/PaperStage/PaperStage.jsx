@@ -144,9 +144,12 @@ function Zapisz() {
 }
 
 function Header() {
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+
   return (
     <div className={style.header}>
-      <p className={style.title}> </p>
+      <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
       <Zamknij/>
     </div>
   );

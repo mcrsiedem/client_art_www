@@ -10,6 +10,7 @@ import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
+import { updatePaper } from "./actions/updatePaper";
 
 // import AddClient from "./components/AddClient";
 
@@ -72,7 +73,7 @@ export default function PaperStage() {
           />
         )} */}
   <div>
-    <button>Zapisz</button>
+    <Zapisz/>
   </div>
 
       </div>
@@ -83,6 +84,21 @@ export default function PaperStage() {
 
 }
 
+function Zapisz() {
+  const modalcontext = useContext(ModalInsertContext);
+  const setShowPaperStage = modalcontext.setShowPaperStage;
+      const appcontext = useContext(AppContext);
+      const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  return (
+
+    <button onClick={() => {
+      updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka)
+
+    }}>Zapisz</button>
+
+  );
+}
 
 function Header() {
   return (

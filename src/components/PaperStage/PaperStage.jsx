@@ -48,13 +48,13 @@ export default function PaperStage() {
        {/* Ilość papierów {listaPapierow.length} */}
       
         <Finder >
-          <PapierNazwaGrupa/>
-          {/* <div className={style.btnContainer}>
+          {/* <PapierNazwaGrupa/> */}
+          <div className={style.btnContainer}>
           <p>Papier</p>
           <p>Nazwa</p>
           <p>Grupa</p>
           <p>Wykonczenie</p>
-          </div> */}
+          </div>
 
           {/* <Dodaj
             isShowAddClientPane={isShowAddClientPane}

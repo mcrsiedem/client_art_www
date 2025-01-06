@@ -43,8 +43,8 @@ export default function TablePaper({
             <th className={style.gramatura}>g/m2</th>
             <th className={style.wykonczenie}></th>
             <th className={style.opiekun}>Bulk</th>
-            <th className={style.info}>Info</th>
-            <th className={style.th_ustawienia}>Ustaw</th>
+            <th className={style.info}>Opis</th>
+            <th className={style.th_ustawienia}>Zmień</th>
             <th className={style.th_ustawienia}></th>
           </tr>
         </thead>
@@ -165,10 +165,55 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
 }
 
 function Grupa({ row }) {
-  return <td>{row.grupa}</td>;
+  return <td>
+
+    
+    {row.grupa}</td>;
 }
 function Nazwa({ row }) {
-  return <td>{row.nazwa}</td>;
+
+  const appcontext = useContext(AppContext);
+
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  return <td>
+            <select
+          className={ style.select_papier }
+          value={row.nazwa_id}
+          onChange={(e) => {
+            setListaPapierowWyszukiwarka(
+              listaPapierowWyszukiwarka.map((t, a) => {
+              // console.log("oprawa id" +prev)
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  nazwa_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+          setBtnZapiszPapierDisabled(false)
+          }}
+        >
+          {   <option value = "0"  >
+             wybierz papier
+            </option>}
+       
+          {listaPapierowNazwy.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nazwa}
+            </option>
+          ))}
+        </select>
+    </td>;
 }
 
 function Gramatura({ row, index }) {

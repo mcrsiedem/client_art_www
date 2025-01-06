@@ -90,10 +90,14 @@ function Zapisz() {
       const appcontext = useContext(AppContext);
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
       const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+      const setListaPapierow = appcontext.setListaPapierow;
+      const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+
+
   return (
 
     <button onClick={() => {
-      updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka)
+      updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy)
 
     }}>Zapisz</button>
 

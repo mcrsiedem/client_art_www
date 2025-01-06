@@ -12,7 +12,7 @@ if(showChange){
     return (
     <div className={style.window}>
       <Header setShowChange={setShowChange}></Header>
-      <p className={style.alert_label}>Wstawić nazwę elementu: {selectedPaperRow.nazwa} :{selectedPaperRow.id}</p>
+      <p className={style.alert_label}> {selectedPaperRow.nazwa} {selectedPaperRow.gramatura} g/m2 {selectedPaperRow.wykonczenie}</p>
       <Zmien setShowChange={setShowChange} selectedPaperRow={selectedPaperRow}/>
 
     </div>
@@ -27,8 +27,7 @@ function Zmien({ setShowChange,selectedPaperRow}) {
   const elementy = contextModalInsert.elementy;
   const setElementy = contextModalInsert.setElementy;
   const selectedElementROW = contextModalInsert.selectedElementROW;
-
-
+  const setShowPaperStage = contextModalInsert.setShowPaperStage;
 
 
   return (
@@ -59,6 +58,7 @@ function Zmien({ setShowChange,selectedPaperRow}) {
           
           setShowChange(false)
           setSaveButtonDisabled(false)
+          setShowPaperStage(false)
         
       }}
     >

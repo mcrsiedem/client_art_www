@@ -43,7 +43,7 @@ export default function TablePaper({
             <th className={style.kod}>Gramatura</th>
             <th className={style.nIP}>Wykończenie</th>
             <th className={style.opiekun}>Volumen</th>
-            <th className={style.th_ustawienia}></th>
+            <th className={style.th_ustawienia}>Ustaw</th>
             <th className={style.th_ustawienia}></th>
           </tr>
         </thead>
@@ -145,7 +145,7 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
   );
 }
 
-function UseIcon({ row, rowID,setDaneZamowienia, daneZamowienia,setShowChange ,setSelectedPaperRow}) {
+function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
   return (
     <td>
       <img

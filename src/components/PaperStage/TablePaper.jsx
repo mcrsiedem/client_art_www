@@ -178,6 +178,10 @@ function DeleteIcon({ row }) {
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
+
+
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+
   return (
     <td>
       <img
@@ -199,7 +203,10 @@ function DeleteIcon({ row }) {
             }
           })
         );
-        }}
+        setBtnZapiszPapierDisabled(false)
+        }
+        
+      }
 
         onDoubleClick={() => {
           setListaPapierowWyszukiwarka(
@@ -217,6 +224,7 @@ function DeleteIcon({ row }) {
             }
           })
         );
+        setBtnZapiszPapierDisabled(false)
         }}
         alt="Procesy"
       />

@@ -75,7 +75,19 @@ width: 200px;
   padding-left: 7px;
 }
 
+.btnPaper{
+  border:none;
+  background: transparent;
+  color: grey;
+  font-size: 0.9rem;
+  padding: 5px;
+  border-radius: 5px;
 
+}
+
+.btnPaper:hover{
+  background-color: #eeeeee;
+}
 
 .btn {
   background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);

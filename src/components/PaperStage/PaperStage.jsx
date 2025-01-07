@@ -13,6 +13,7 @@ import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
 import { dragElement } from "actions/dragDrop";
 import { insertPaper } from "./actions/insertPaper";
+import TablePaperNazwa from "./TablePaperNazwa";
 
 // import AddClient from "./components/AddClient";
 
@@ -24,14 +25,26 @@ export default function PaperStage() {
 
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const setListaPapierow = appcontext.setListaPapierow;
+    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+    const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
+const [paperSelectView, setPaperSelectView] = useState([
+  {id:1,nazwa:"papier",view:false},
+  {id:2,nazwa:"nazwa",view:true},
+  {id:3,nazwa:"grupa",view:false}
+]);
 
 
   async function getPapier() {
     const res = await axios.get(IP + "lista-papierow");
     setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    // setKlienciWyszukiwarka([...res.data]);
+
+    const res2 = await axios.get(IP + "lista-papierow-nazwy");
+    setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+
+    // axios.get(IP + "lista-papierow-nazwy").then(res =>{  setListaPapierowNazwy([...res.data]);})
   }
 
   useEffect(() => {
@@ -47,40 +60,20 @@ export default function PaperStage() {
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
         <Header />
-        {/* {selectedElementROW.naklad} */}
-       {/* Ilość papierów {listaPapierow.length} */}
-      
         <Finder >
-          {/* <PapierNazwaGrupa/> */}
           <div className={style.btnContainer}>
-          <p>Papier</p>
-          <p>Nazwa</p>
-          <p>Grupa</p>
-          <p>Wykonczenie</p>
+            <button className={style.btnPaper}>Papier</button>
+            <button className={style.btnPaper}>Nazwa</button>
+            <button className={style.btnPaper}>Grupa</button>
+        
+
+
           </div>
 
-          {/* <Dodaj
-            isShowAddClientPane={isShowAddClientPane}
-            setShowAddClientPane={setShowAddClientPane}
-          /> */}
-          <Szukaj           />
+        <Szukaj           />
         </Finder>
-        <TablePaper />
-        {/* <TableClient
-          klienciWyszukiwarka={klienciWyszukiwarka}
-          daneZamowienia={daneZamowienia}
-          setDaneZamowienia={setDaneZamowienia}
-          getClients={()=>getClients()}
-          setShowAddClientPane={setShowAddClientPane}
-        />
-
-        {isShowAddClientPane && (
-          <AddClient
-            isShowAddClientPane={isShowAddClientPane}
-            setShowAddClientPane={setShowAddClientPane}
-            getClients= {()=>getClients()}
-          />
-        )} */}
+        <TablePaper paperSelectView={paperSelectView}/>
+        <TablePaperNazwa paperSelectView={paperSelectView} />
   <div className={style.footer}>
     <Zapisz  />
   </div>

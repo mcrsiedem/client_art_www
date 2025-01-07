@@ -1,5 +1,5 @@
 import React, { useState, useRef,useContext } from "react";
-import style from "./TablePaper.module.css";
+import style from "./TablePaperNazwa.module.css";
 
 import iconDelete from "assets/trash2.svg";
 import iconEdit from "assets/settings.svg";
@@ -10,7 +10,7 @@ import ChangePaper from "./ChangePaper";
 import { getMaxID } from "actions/getMaxID";
 
 
-export default function TablePaper({
+export default function TablePaperNazwa({
   paperSelectView,
   btnZapisz,
   setBtnZapisz,
@@ -29,13 +29,8 @@ export default function TablePaper({
 
       const appcontext = useContext(AppContext);
       const modalcontext = useContext(ModalInsertContext);
-      const listaPapierow = appcontext.listaPapierow;
-      const setListaPapierow = appcontext.setListaPapierow;
-      const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-      const showPaperStage = modalcontext.showPaperStage;
-      const setShowPaperStage = modalcontext.setShowPaperStage;
-      const selectedElementROW = modalcontext.selectedElementROW;
+
+      const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
 
 
       const scrollTable = () => {
@@ -56,26 +51,22 @@ export default function TablePaper({
         return style.tr;
       };
 
-if(paperSelectView[0].view == true){
+      if(paperSelectView[1].view == true){
   return (
     <div ref={inputElement} className={style.main}>
       <table  className={style.table2}>
         <thead>
           <tr>
             <th className={style.id}>#</th>
-            <th className={style.grupa}>Grupa</th>
-            <th className={style.nazwa}>Nazwa</th>
-            <th className={style.gramatura}>g/m2</th>
-            <th className={style.wykonczenie}></th>
-            <th className={style.opiekun}>Bulk</th>
-            <th className={style.info}>Opis</th>
-            <th className={style.th_ustawienia}>Zmień</th>
+
+            <th className={style.info}>Nazwa papieru</th>
+            {/* <th className={style.th_ustawienia}>Zmień</th> */}
             <th className={style.th_ustawienia}></th>
             <th className={style.th_ustawienia}></th>
           </tr>
         </thead>
         <tbody   className={style.center}>
-          {listaPapierowWyszukiwarka?.map((row, index) => {
+          {listaPapierowNazwyWyszukiwarka?.map((row, index) => {
             return (
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <tr className={color(row)}
@@ -86,16 +77,11 @@ if(paperSelectView[0].view == true){
                 }
               >
                 <ID row={row} index={index + 1} />
-                <Grupa row={row} />
-                <Nazwa row={row} />
-                <Gramatura row={row} />
-                <Wykonczenie row={row} />
-                <Bulk row={row} />
-                <Info row={row} setBtnZapisz={setBtnZapisz}/>
+                <Nazwa row={row} setBtnZapisz={setBtnZapisz}/>
     
 
                 {/* <Opiekun row={row} /> */}
-                <UseIcon
+                {/* <UseIcon
                   row={row}
                   rowID={rowID}
                   daneZamowienia={daneZamowienia}
@@ -103,7 +89,7 @@ if(paperSelectView[0].view == true){
                   setShowChange={setShowChange}
                   setSelectedPaperRow={setSelectedPaperRow}
 
-                />
+                /> */}
 
                 <CopyIcon row={row} scrollTable={scrollTable}/>
                 <DeleteIcon
@@ -119,29 +105,11 @@ if(paperSelectView[0].view == true){
         </tbody>
       </table>
 
-      {/* {isShowDeleteClientPane && (
-        <DeleteClient
-          setShowDeleteClientPane={setShowDeleteClientPane}
-          getClients={() => getClients()}
-          rowID={rowID}
-        />
-      )}
-
-      {showEdit && (
-        <EditClient
-        setShowEdit={setShowEdit}
-          getClients={() => getClients()}
-          rowID={rowID}
-        />
-      )} */}
-
-
-        <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} />
+        {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} /> */}
       
     </div>
   );
 }
-
 }
 const openEdit = (row, rowID, setShowEdit) => {
   // otwiera edycję po dwukrotnym kliknięciu
@@ -294,7 +262,7 @@ function Grupa({ row }) {
     
     {row.grupa}</td>;
 }
-function Nazwa({ row }) {
+function Nazwa2({ row }) {
 
   const appcontext = useContext(AppContext);
 
@@ -306,7 +274,7 @@ function Nazwa({ row }) {
   return <td>
             <select
           className={ style.select_papier }
-          value={row.nazwa_id}
+          value={row.nazwa}
           onChange={(e) => {
             setListaPapierowWyszukiwarka(
               listaPapierowWyszukiwarka.map((t, a) => {
@@ -362,7 +330,7 @@ function Opiekun({ row }) {
 }
 
 
-function Info({ row,setBtnZapisz}) {
+function Nazwa({ row,setBtnZapisz}) {
     const appcontext = useContext(AppContext);
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -375,7 +343,7 @@ function Info({ row,setBtnZapisz}) {
       <input
         className={style.input_info}
         type="text"
-        value={row.info}
+        value={row.nazwa}
         onChange={(event) => {
           const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
           if (event.target.value === "" || re.test(event.target.value)) {

@@ -53,12 +53,16 @@ export default function TablePaper({
       };
 
       const color = (row) => {
+        if(row.delete){
+          return style.tr_delete
+        }
 if(row.insert){
        return style.tr_insert
 }
 if(row.update){
   return style.tr_update
 }
+
 
 return style.tr
    
@@ -167,18 +171,52 @@ const openEdit = (row, rowID, setShowEdit) => {
 const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
   setDaneZamowienia({ ...daneZamowienia, klient_id: id });
 };
-function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia,  scrollTable }) {
+function DeleteIcon({ row }) {
+  const appcontext = useContext(AppContext);
+  const modalcontext = useContext(ModalInsertContext);
+
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+
   return (
     <td>
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          scrollTable()
-          // if (row.id != daneZamowienia.klient_id) {
-          //   rowID.current = { id: row.id, firma: row.firma };
-          //   setShowDeleteClientPane(true);
-          // }
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == row.id) {
+              return {
+                ...t,
+         
+                delete: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        }}
+
+        onDoubleClick={() => {
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == row.id) {
+              return {
+                ...t,
+         
+                delete: false
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
         }}
         alt="Procesy"
       />

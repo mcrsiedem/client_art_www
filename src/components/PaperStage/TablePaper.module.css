@@ -17,6 +17,13 @@
   background-color: rgb(242, 243, 160);
 }
 
+.tr_delete{
+  background-color: rgb(243, 160, 160);
+}
+.tr_delete:nth-of-type(2n){
+  background-color: rgb(243, 160, 160);
+}
+
 
 
 .select_papier {

@@ -51,6 +51,18 @@ export default function TablePaper({
           // element.scrollTo(0, element.scrollHeight);
 
       };
+
+      const color = (row) => {
+if(row.insert){
+       return style.tr_insert
+}
+if(row.update){
+  return style.tr_update
+}
+
+return style.tr
+   
+      }
   return (
     <div ref={inputElement} className={style.main}>
       <table  className={style.table2}>
@@ -71,7 +83,8 @@ export default function TablePaper({
         <tbody   className={style.center}>
           {listaPapierowWyszukiwarka?.map((row, index) => {
             return (
-              <tr className={row.insert ? style.tr_insert : style.tr }
+              // <tr className={row.insert ? style.tr_insert : style.tr}
+              <tr className={color(row)}
                 key={row.id}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)

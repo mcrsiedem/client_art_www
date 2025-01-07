@@ -12,6 +12,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
 import { dragElement } from "actions/dragDrop";
+import { insertPaper } from "./actions/insertPaper";
 
 // import AddClient from "./components/AddClient";
 
@@ -135,6 +136,7 @@ function Zapisz() {
     className={style.btn} 
     onClick={() => {
        updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
+       insertPaper(listaPapierowWyszukiwarka.filter(x => x.insert == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
 // console.log(isBtnZapiszPapierDisabled)
     }}
     

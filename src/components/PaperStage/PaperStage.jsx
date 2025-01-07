@@ -135,8 +135,8 @@ function Zapisz() {
     
     className={style.btn} 
     onClick={() => {
-       updatePaper(listaPapierowWyszukiwarka.filter(x => x.update == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
-       insertPaper(listaPapierowWyszukiwarka.filter(x => x.insert == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
+       updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
+      // insertPaper(listaPapierowWyszukiwarka.filter(x => x.insert == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
 // console.log(isBtnZapiszPapierDisabled)
     }}
     

@@ -332,8 +332,8 @@ function Opiekun({ row }) {
 
 function Nazwa({ row,setBtnZapisz}) {
     const appcontext = useContext(AppContext);
-    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+    const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+    const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
       const modalcontext = useContext(ModalInsertContext);
       // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
       const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
@@ -349,13 +349,13 @@ function Nazwa({ row,setBtnZapisz}) {
           if (event.target.value === "" || re.test(event.target.value)) {
             // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
            
-            setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
+            setListaPapierowNazwyWyszukiwarka(
+              listaPapierowNazwyWyszukiwarka.map((t, a) => {
               // console.log("oprawa id" +prev)
               if (t.id == row.id) {
                 return {
                   ...t,
-                  info: event.target.value,
+                  nazwa: event.target.value,
                   update: true
         
                 };

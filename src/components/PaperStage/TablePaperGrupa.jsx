@@ -12,10 +12,8 @@ import { getMaxID } from "actions/getMaxID";
 
 export default function TablePaperGrupa({
   paperSelectView,
-  btnZapisz,
   setBtnZapisz,
-  daneZamowienia,
-  setDaneZamowienia,
+  daneZamowienia
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -25,13 +23,8 @@ export default function TablePaperGrupa({
   const rowID = useRef();
 
   const inputElement = useRef();
-
-
       const appcontext = useContext(AppContext);
-      const modalcontext = useContext(ModalInsertContext);
-
       const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
-
 
       const scrollTable = () => {
         inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
@@ -58,9 +51,7 @@ export default function TablePaperGrupa({
         <thead>
           <tr>
             <th className={style.id}>#</th>
-
             <th className={style.info}>Grupa papieru</th>
-            {/* <th className={style.th_ustawienia}>Zmień</th> */}
             <th className={style.th_ustawienia}></th>
             <th className={style.th_ustawienia}></th>
           </tr>
@@ -77,20 +68,7 @@ export default function TablePaperGrupa({
                 }
               >
                 <ID row={row} index={index + 1} />
-                <Nazwa row={row} setBtnZapisz={setBtnZapisz}/>
-    
-
-                {/* <Opiekun row={row} /> */}
-                {/* <UseIcon
-                  row={row}
-                  rowID={rowID}
-                  daneZamowienia={daneZamowienia}
-                  setDaneZamowienia={setDaneZamowienia}
-                  setShowChange={setShowChange}
-                  setSelectedPaperRow={setSelectedPaperRow}
-
-                /> */}
-
+                <Grupa row={row} setBtnZapisz={setBtnZapisz}/>
                 <CopyIcon row={row} scrollTable={scrollTable}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
@@ -125,19 +103,11 @@ const openEdit = (row, rowID, setShowEdit) => {
   setShowEdit(true);
 };
 
-const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
-  setDaneZamowienia({ ...daneZamowienia, klient_id: id });
-};
 function DeleteIcon({ row }) {
   const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
-
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-
-
-
-    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
 
   return (
     <td>
@@ -189,35 +159,13 @@ function DeleteIcon({ row }) {
   );
 }
 
-function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
-  return (
-    <td>
-      <img
-        className={style.icon}
-        src={iconEdit}
-        onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
-          setShowChange(true)
-          setSelectedPaperRow(row)
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
-}
 
 function CopyIcon({ row,scrollTable}) {
 
   const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
-  const listaPapierow = appcontext.listaPapierow;
-  const setListaPapierow = appcontext.setListaPapierow;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-  const showPaperStage = modalcontext.showPaperStage;
-  const setShowPaperStage = modalcontext.setShowPaperStage;
-  const selectedElementROW = modalcontext.selectedElementROW;
+
   return (
     <td>
       <img
@@ -256,83 +204,17 @@ function CopyIcon({ row,scrollTable}) {
   );
 }
 
-function Grupa({ row }) {
-  return <td>
 
-    
-    {row.grupa}</td>;
-}
-function Nazwa2({ row }) {
 
-  const appcontext = useContext(AppContext);
-
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-  return <td>
-            <select
-          className={ style.select_papier }
-          value={row.nazwa}
-          onChange={(e) => {
-            setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
-              // console.log("oprawa id" +prev)
-              if (t.id == row.id) {
-                return {
-                  ...t,
-                  nazwa_id: e.target.value,
-                  update: true
-        
-                };
-              } else {
-                return t;
-              }
-            })
-          );
-
-          setBtnZapiszPapierDisabled(false)
-          }}
-        >
-          {   <option value = "0"  >
-             wybierz papier
-            </option>}
-       
-          {listaPapierowNazwy.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
-    </td>;
-}
-
-function Gramatura({ row, index }) {
-  return <td>{row.gramatura}</td>;
-}
 
 function ID({ row,index}) {
   return <td>{index}</td>;
 }
 
-function Wykonczenie({ row }) {
-  return <td>{row.wykonczenie}</td>;
-}
-function Bulk({ row }) {
-  return <td>{row.bulk}</td>;
-}
-function Info2({ row }) {
-  return <td>{row.info}</td>;
-}
-function Opiekun({ row }) {
-  return <td>{row.opiekun_nazwa}</td>;
-}
-
-
-function Nazwa({ row,setBtnZapisz}) {
+function Grupa({ row,setBtnZapisz}) {
     const appcontext = useContext(AppContext);
-    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+    const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+    const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
     const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
       const modalcontext = useContext(ModalInsertContext);
       // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
@@ -347,15 +229,13 @@ function Nazwa({ row,setBtnZapisz}) {
         onChange={(event) => {
           const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
           if (event.target.value === "" || re.test(event.target.value)) {
-            // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
-           
-            setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
-              // console.log("oprawa id" +prev)
+
+            setListaPapierowGrupaWyszukiwarka(
+              listaPapierowGrupaWyszukiwarka.map((t, a) => {
               if (t.id == row.id) {
                 return {
                   ...t,
-                  info: event.target.value,
+                  grupa: event.target.value,
                   update: true
         
                 };

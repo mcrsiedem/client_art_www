@@ -37,7 +37,7 @@ export default function TablePaper({
       const selectedElementROW = modalcontext.selectedElementROW;
 
 
-      const focusInput = () => {
+      const scrollTable = () => {
         // inputElement.current.focus();
         inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
         // inputElement.current.scrollTo(inputElement.scrollHeight,0)
@@ -101,9 +101,9 @@ export default function TablePaper({
 
 
 
-                <CopyIcon row={row} focusInput={focusInput}/>
+                <CopyIcon row={row} scrollTable={scrollTable}/>
                 <DeleteIcon
-                  focusInput={  focusInput}
+                  scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
                   row={row}
                   rowID={rowID}
@@ -154,14 +154,14 @@ const openEdit = (row, rowID, setShowEdit) => {
 const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
   setDaneZamowienia({ ...daneZamowienia, klient_id: id });
 };
-function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia,  focusInput }) {
+function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia,  scrollTable }) {
   return (
     <td>
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          focusInput()
+          scrollTable()
           // if (row.id != daneZamowienia.klient_id) {
           //   rowID.current = { id: row.id, firma: row.firma };
           //   setShowDeleteClientPane(true);
@@ -191,7 +191,7 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
   );
 }
 
-function CopyIcon({ row,focusInput}) {
+function CopyIcon({ row,scrollTable}) {
 
   const appcontext = useContext(AppContext);
   const modalcontext = useContext(ModalInsertContext);
@@ -226,7 +226,7 @@ function CopyIcon({ row,focusInput}) {
             resolve(777);
           });
      
-          promiseA.then(res => focusInput())
+          promiseA.then(res => scrollTable())
           
           // const element = document.getElementById("table_paper");
           // element.scrollTop = element.scrollHeight;

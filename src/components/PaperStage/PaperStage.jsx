@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext} from "react";
+import React, { useEffect, useState,useContext,useRef} from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./PaperStage.module.css";
@@ -11,6 +11,7 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
+import { dragElement } from "actions/dragDrop";
 
 // import AddClient from "./components/AddClient";
 
@@ -34,6 +35,7 @@ export default function PaperStage() {
 
   useEffect(() => {
     getPapier();
+  
   }, []);
 
 
@@ -148,7 +150,7 @@ function Header() {
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
 
   return (
-    <div className={style.header}>
+    <div  className={style.header}>
       <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
       <Zamknij/>
     </div>

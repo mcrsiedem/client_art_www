@@ -99,7 +99,6 @@ const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
 
-
   useEffect(() => {
 
     if (open.current) {
@@ -116,6 +115,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       // pobranie szczegółów zamówienia
       fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
+      
     }else{
       //zerowanie stanów
 
@@ -327,7 +327,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         />
       )}
 
-        <PaperStage />
+        <PaperStage  />
     </div>
 
 

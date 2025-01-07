@@ -14,6 +14,7 @@ import { updatePaper } from "./actions/updatePaper";
 import { dragElement } from "actions/dragDrop";
 import { insertPaper } from "./actions/insertPaper";
 import TablePaperNazwa from "./TablePaperNazwa";
+import TablePaperGrupa from "./TablePaperGrupa";
 
 // import AddClient from "./components/AddClient";
 
@@ -27,6 +28,8 @@ export default function PaperStage() {
     const setListaPapierow = appcontext.setListaPapierow;
     const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+    const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+    const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
 const [paperSelectView, setPaperSelectView] = useState([
   {id:1,nazwa:"papier",view:true},
@@ -43,6 +46,11 @@ const [paperSelectView, setPaperSelectView] = useState([
     const res2 = await axios.get(IP + "lista-papierow-nazwy");
     setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+
+    const res3 = await axios.get(IP + "lista-papierow-grupa");
+    setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+
 
     // axios.get(IP + "lista-papierow-nazwy").then(res =>{  setListaPapierowNazwy([...res.data]);})
   }
@@ -64,21 +72,16 @@ const [paperSelectView, setPaperSelectView] = useState([
           <div className={style.btnContainer}>
             <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
             <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
-
-            <button className={style.btnPaper}>Grupa</button>
-        
-
-
+            <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
           </div>
-
-        <Szukaj           />
+        <Szukaj/>
         </Finder>
         <TablePaper paperSelectView={paperSelectView}/>
         <TablePaperNazwa paperSelectView={paperSelectView} />
+        <TablePaperGrupa paperSelectView={paperSelectView} />
   <div className={style.footer}>
     <Zapisz  />
   </div>
-
       </div>
     </div>
   );
@@ -87,30 +90,7 @@ const [paperSelectView, setPaperSelectView] = useState([
 
 }
 
-function PapierNazwaGrupa() {
-  const contextApp = useContext(AppContext);
-  const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-    return (
-      <div className={style.col_dane}>
-        <select
-          className={style.select_papier}
-          value={daneZamowienia.firma_id}
-  
-          onChange={(event) => {
-            // setDaneZamowienia({...daneZamowienia, firma_id: event.target.value});
-            // setSaveButtonDisabled(false)
-          }}
-        >
-          {             <option value = "0"  >    Papier   </option>            }
-          {             <option value = "0"  >    Nazwa   </option>            }
-          {             <option value = "0"  >    Grupa   </option>            }
-        </select>
-      </div>
-    );
-  }
+
 
 function Zapisz() {
   const appcontext = useContext(AppContext);
@@ -191,6 +171,29 @@ onClick={() => {
 );
 }
 
+function GrupaBTN({paperSelectView, setPaperSelectView}) {
+  return (
+<button 
+
+className={style.btnPaper} 
+onClick={() => {
+  setPaperSelectView(
+    paperSelectView.map((t) => {  return{...t,view:false}      })
+    .map((t) => {          if (t.nazwa == "grupa") {
+      return {...t,
+        view: true}
+    } else {
+      return t;
+    }  })
+  );
+}}
+
+
+>
+  Grupa</button>
+
+);
+}
 
 
 function Header() {

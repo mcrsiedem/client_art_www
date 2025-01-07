@@ -21,6 +21,8 @@ export const AppContextProvider = ({children})=>{
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
     const [listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka] = useState();
+    const [listaPapierowGrupa,setListaPapierowGrupa] = useState();
+    const [listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka] = useState();
     const [procesory, setProcesory] = useState();
       const [isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled] = useState(true);
 
@@ -72,6 +74,8 @@ export const AppContextProvider = ({children})=>{
                     listaPapierow, setListaPapierow,
                     listaPapierowNazwy, setListaPapierowNazwy,
                     listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka,
+                    listaPapierowGrupa,setListaPapierowGrupa,
+                    listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka,
 
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,

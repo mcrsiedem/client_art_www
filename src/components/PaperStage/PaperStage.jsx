@@ -29,8 +29,8 @@ export default function PaperStage() {
     const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
 const [paperSelectView, setPaperSelectView] = useState([
-  {id:1,nazwa:"papier",view:false},
-  {id:2,nazwa:"nazwa",view:true},
+  {id:1,nazwa:"papier",view:true},
+  {id:2,nazwa:"nazwa",view:false},
   {id:3,nazwa:"grupa",view:false}
 ]);
 
@@ -59,11 +59,12 @@ const [paperSelectView, setPaperSelectView] = useState([
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
-        <Header />
+        <Header setPaperSelectView={setPaperSelectView}/>
         <Finder >
           <div className={style.btnContainer}>
-            <button className={style.btnPaper}>Papier</button>
-            <button className={style.btnPaper}>Nazwa</button>
+            <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
+            <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
+
             <button className={style.btnPaper}>Grupa</button>
         
 
@@ -139,6 +140,58 @@ function Zapisz() {
 
   );
 }
+
+function PapierBTN({paperSelectView, setPaperSelectView}) {
+      return (
+    <button 
+    
+    className={style.btnPaper} 
+    onClick={() => {
+      setPaperSelectView(
+        paperSelectView.map((t) => {  return{...t,view:false}      })
+        .map((t) => {          if (t.nazwa == "papier") {
+          return {...t,
+            view: true}
+        } else {
+          return t;
+        }  })
+      );
+    }}
+    
+
+    >
+      Papier</button>
+
+  );
+}
+
+
+
+function NazwaBTN({paperSelectView, setPaperSelectView}) {
+  return (
+<button 
+
+className={style.btnPaper} 
+onClick={() => {
+  setPaperSelectView(
+    paperSelectView.map((t) => {  return{...t,view:false}      })
+    .map((t) => {          if (t.nazwa == "nazwa") {
+      return {...t,
+        view: true}
+    } else {
+      return t;
+    }  })
+  );
+}}
+
+
+>
+  Nazwa</button>
+
+);
+}
+
+
 
 function Header() {
   const appcontext = useContext(AppContext);

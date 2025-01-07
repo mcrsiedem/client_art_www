@@ -75,13 +75,12 @@
 
 
 table {
-   color: #252422;
+  
    width: 100%;
-   /* background: #f4f3ef; */
 
 }
 
-th {
+/* th {
    font-size: 1rem;
    position: sticky;
    top: 0;
@@ -91,7 +90,7 @@ th {
    z-index: 2;
    background-color: rgb(197, 145, 48);
 
-}
+} */
 
 td {
    font-size: 0.9rem;
@@ -101,7 +100,7 @@ td {
 }
 
 tr:nth-of-type(2n) {
-   /* background: #dbdad6; */
+
    background: #f7f6f6;
 }
 

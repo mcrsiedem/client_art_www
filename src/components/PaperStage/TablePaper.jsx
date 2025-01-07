@@ -3,9 +3,11 @@ import style from "./TablePaper.module.css";
 
 import iconDelete from "assets/trash2.svg";
 import iconEdit from "assets/settings.svg";
+import iconCopy from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import ChangePaper from "./ChangePaper";
+import { getMaxID } from "actions/getMaxID";
 
 
 export default function TablePaper({
@@ -21,6 +23,8 @@ export default function TablePaper({
   const [showChange, setShowChange] = useState(false);
   const rowID = useRef();
 
+  const inputElement = useRef();
+
 
       const appcontext = useContext(AppContext);
       const modalcontext = useContext(ModalInsertContext);
@@ -32,9 +36,24 @@ export default function TablePaper({
       const setShowPaperStage = modalcontext.setShowPaperStage;
       const selectedElementROW = modalcontext.selectedElementROW;
 
+
+      const focusInput = () => {
+        // inputElement.current.focus();
+        inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
+        // inputElement.current.scrollTo(inputElement.scrollHeight,0)
+        // inputElement.current.scrollIntoView({
+        //   behavior: "smooth",
+        //   block: "start"
+        // })
+
+        // const element = document.getElementById("table_paper");
+          // element.scrollTop = element.scrollHeight;
+          // element.scrollTo(0, element.scrollHeight);
+
+      };
   return (
-    <div className={style.main}>
-      <table className={style.table2}>
+    <div ref={inputElement} className={style.main}>
+      <table  className={style.table2}>
         <thead>
           <tr>
             <th className={style.id}>#</th>
@@ -46,12 +65,13 @@ export default function TablePaper({
             <th className={style.info}>Opis</th>
             <th className={style.th_ustawienia}>Zmień</th>
             <th className={style.th_ustawienia}></th>
+            <th className={style.th_ustawienia}></th>
           </tr>
         </thead>
-        <tbody className={style.center}>
+        <tbody   className={style.center}>
           {listaPapierowWyszukiwarka?.map((row, index) => {
             return (
-              <tr className={style.tr}
+              <tr className={row.insert ? style.tr_insert : style.tr }
                 key={row.id}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)
@@ -77,7 +97,13 @@ export default function TablePaper({
                   setSelectedPaperRow={setSelectedPaperRow}
 
                 />
+
+
+
+
+                <CopyIcon row={row} focusInput={focusInput}/>
                 <DeleteIcon
+                  focusInput={  focusInput}
                   daneZamowienia={daneZamowienia}
                   row={row}
                   rowID={rowID}
@@ -128,17 +154,18 @@ const openEdit = (row, rowID, setShowEdit) => {
 const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
   setDaneZamowienia({ ...daneZamowienia, klient_id: id });
 };
-function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
+function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia,  focusInput }) {
   return (
     <td>
       <img
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          if (row.id != daneZamowienia.klient_id) {
-            rowID.current = { id: row.id, firma: row.firma };
-            setShowDeleteClientPane(true);
-          }
+          focusInput()
+          // if (row.id != daneZamowienia.klient_id) {
+          //   rowID.current = { id: row.id, firma: row.firma };
+          //   setShowDeleteClientPane(true);
+          // }
         }}
         alt="Procesy"
       />
@@ -157,6 +184,55 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
           // rowID.current = { id: row.id, firma: row.firma };
           setShowChange(true)
           setSelectedPaperRow(row)
+        }}
+        alt="Procesy"
+      />
+    </td>
+  );
+}
+
+function CopyIcon({ row,focusInput}) {
+
+  const appcontext = useContext(AppContext);
+  const modalcontext = useContext(ModalInsertContext);
+  const listaPapierow = appcontext.listaPapierow;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const showPaperStage = modalcontext.showPaperStage;
+  const setShowPaperStage = modalcontext.setShowPaperStage;
+  const selectedElementROW = modalcontext.selectedElementROW;
+  return (
+    <td>
+      <img
+        className={style.icon}
+        src={iconCopy}
+        onClick={() => {
+          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
+          // rowID.current = { id: row.id, firma: row.firma };
+          // setShowChange(true)
+          // setSelectedPaperRow(row)
+          const promiseA = new Promise((resolve, reject) => {
+
+                 const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
+          newlistaPapierowWyszukiwarka.push({
+            ...row,
+            id: getMaxID(listaPapierowWyszukiwarka),
+            insert: true
+
+          })
+
+          setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
+            resolve(777);
+          });
+     
+          promiseA.then(res => focusInput())
+          
+          // const element = document.getElementById("table_paper");
+          // element.scrollTop = element.scrollHeight;
+          // element.scrollTo(0, element.scrollHeight);
+
+
         }}
         alt="Procesy"
       />

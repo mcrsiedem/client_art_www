@@ -15,7 +15,8 @@ export default function TablePaperGrupa({
   paperSelectView,
   setBtnZapisz,
   daneZamowienia,
-  scrollTable
+  scrollTable,
+  setSelectTable
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -69,6 +70,7 @@ export default function TablePaperGrupa({
                 key={row.id}
                 onClick={()=>{
                   setSelectRow(row)
+                  setSelectTable(inputElement)
                   setListaPapierowGrupaWyszukiwarka(
                     prev=>prev.map((t, a) => {
                       return {

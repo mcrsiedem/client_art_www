@@ -3,6 +3,7 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
+import iconDelete from "assets/trash2.svg";
 import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -26,6 +27,7 @@ export default function PaperStage() {
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
     const [selectRow, setSelectRow] = useState(null);
+    const [selectTable, setSelectTable] = useState(null);
 const [paperSelectView, setPaperSelectView] = useState([
   {id:1,nazwa:"papier",view:true},
   {id:2,nazwa:"nazwa",view:false},
@@ -73,14 +75,18 @@ const scrollTable = (table) => {
           </div>
         <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
-        <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
-        <TablePaperNazwa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
-        <TablePaperGrupa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
+        <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
+        <TablePaperNazwa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
+        <TablePaperGrupa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
   <div className={style.footer}>
     <div className={style.container_in_footer}>  </div>
     <div className={style.container_in_footer}>   <Zapisz  /></div>
-    {/* <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow}/> </div> */}
+    <div className={style.container_in_footer}>
+       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}/>  </div>
+    <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}/>  </div>
  
+    </div>
+   
 
   </div>
       </div>
@@ -90,7 +96,7 @@ const scrollTable = (table) => {
   
 }
 
-function CopyBTN({ selectRow,scrollTable}) {
+function CopyBTN({ selectRow,scrollTable,selectTable}) {
 
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
@@ -102,10 +108,7 @@ function CopyBTN({ selectRow,scrollTable}) {
         className={style.icon}
         src={iconCopy}
         onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
-          // setShowChange(true)
-          // setSelectedPaperRow(row)
+
           const promiseA = new Promise((resolve, reject) => {
 
                  const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
@@ -113,20 +116,67 @@ function CopyBTN({ selectRow,scrollTable}) {
             ...selectRow,
             id: getMaxID(listaPapierowWyszukiwarka),
             insert: true
-
           })
 
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
           });
      
-          promiseA.then(res => scrollTable())
-          
-          // const element = document.getElementById("table_paper");
-          // element.scrollTop = element.scrollHeight;
-          // element.scrollTo(0, element.scrollHeight);
+          promiseA.then(res => scrollTable(selectTable))
+        
+        }}
+        alt="Procesy"
+      />
+    </td>
+  );
+}
 
 
+function DeleteBTN({ selectRow,scrollTable,selectTable }) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+
+  return (
+    <td>
+      <img
+        className={style.icon}
+        src={iconDelete}
+        onClick={() => {
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            if (t.id == selectRow.id) {
+              return {
+                ...t,
+                delete: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        setBtnZapiszPapierDisabled(false)
+        }
+        
+      }
+
+        onDoubleClick={() => {
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == selectRow.id) {
+              return {
+                ...t,
+                delete: false
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        setBtnZapiszPapierDisabled(false)
         }}
         alt="Procesy"
       />

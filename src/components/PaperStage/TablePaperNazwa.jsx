@@ -17,7 +17,8 @@ export default function TablePaperNazwa({
   setBtnZapisz,
   daneZamowienia,
   setDaneZamowienia,
-  scrollTable
+  scrollTable,
+  setSelectTable
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -79,6 +80,7 @@ export default function TablePaperNazwa({
                 key={row.id}
                 onClick={()=>{
                   setSelectRow(row)
+                  setSelectTable(inputElement)
                   setListaPapierowNazwyWyszukiwarka(
                     prev=>prev.map((t, a) => {
                       return {

@@ -15,6 +15,7 @@ export default function TablePaper({selectRow,setSelectRow,
   setBtnZapisz,
   daneZamowienia,
   setDaneZamowienia,
+  scrollTable,
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -37,11 +38,14 @@ export default function TablePaper({selectRow,setSelectRow,
       const selectedElementROW = modalcontext.selectedElementROW;
 
 
-      const scrollTable = () => {
-        inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
-      };
+      // const scrollTable = () => {
+      //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
+      // };
 
       const color = (row) => {
+        if (row.select) {
+          return style.tr_select;
+        }
         if (row.delete) {
           return style.tr_delete;
         }
@@ -51,9 +55,7 @@ export default function TablePaper({selectRow,setSelectRow,
         if (row.update) {
           return style.tr_update;
         }
-        if (row.select) {
-          return style.tr_select;
-        }
+ 
 
         return style.tr;
       };
@@ -85,12 +87,10 @@ if(paperSelectView[0].view == true){
                 onClick={()=>{
                   setSelectRow(row)
                   setListaPapierowWyszukiwarka(
-                    listaPapierowWyszukiwarka.map((t, a) => {
-                    
+                    prev=>prev.map((t, a) => {
                       return {
                         ...t,
                         select: false
-              
                       };
                 
                     
@@ -99,22 +99,16 @@ if(paperSelectView[0].view == true){
                       return {
                         ...t,
                         select: true
-              
                       };
                     } else {
                       return t;
                     }
                   })
 
-
-
-
-
                 );
                 }}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)
-                  // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
                 }
               >
                 <ID row={row} index={index + 1} />
@@ -124,9 +118,6 @@ if(paperSelectView[0].view == true){
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
-    
-
-                {/* <Opiekun row={row} /> */}
                 <UseIcon
                   row={row}
                   rowID={rowID}
@@ -137,7 +128,7 @@ if(paperSelectView[0].view == true){
 
                 />
 
-                <CopyIcon row={row} scrollTable={scrollTable}/>
+                <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
@@ -269,7 +260,7 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
   );
 }
 
-function CopyIcon({ row,scrollTable}) {
+function CopyIcon({ row,scrollTable,inputElement}) {
 
   const appcontext = useContext(AppContext);
   const modalcontext = useContext(ModalInsertContext);
@@ -304,7 +295,7 @@ function CopyIcon({ row,scrollTable}) {
             resolve(777);
           });
      
-          promiseA.then(res => scrollTable())
+          promiseA.then(res => scrollTable(inputElement))
           
           // const element = document.getElementById("table_paper");
           // element.scrollTop = element.scrollHeight;

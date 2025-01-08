@@ -10,6 +10,8 @@ import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
+import iconCopy from "assets/copy.svg";
+import { getMaxID } from "actions/getMaxID";
 
 export default function PaperStage() {
 
@@ -30,6 +32,9 @@ const [paperSelectView, setPaperSelectView] = useState([
   {id:3,nazwa:"grupa",view:false}
 ]);
 
+const scrollTable = (table) => {
+  table.current.scrollTo({ top: 10000, behavior: "smooth" })
+};
 
   async function getPapier() {
     const res = await axios.get(IP + "lista-papierow");
@@ -68,17 +73,65 @@ const [paperSelectView, setPaperSelectView] = useState([
           </div>
         <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
-        <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} />
-        <TablePaperNazwa paperSelectView={paperSelectView} />
-        <TablePaperGrupa paperSelectView={paperSelectView} />
+        <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
+        <TablePaperNazwa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
+        <TablePaperGrupa paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable}/>
   <div className={style.footer}>
-    <Zapisz  />
+    <div className={style.container_in_footer}>  </div>
+    <div className={style.container_in_footer}>   <Zapisz  /></div>
+    {/* <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow}/> </div> */}
+ 
+
   </div>
       </div>
     </div>
   );
  }
   
+}
+
+function CopyBTN({ selectRow,scrollTable}) {
+
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+
+  return (
+    <td>
+      <img
+        className={style.icon}
+        src={iconCopy}
+        onClick={() => {
+          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
+          // rowID.current = { id: row.id, firma: row.firma };
+          // setShowChange(true)
+          // setSelectedPaperRow(row)
+          const promiseA = new Promise((resolve, reject) => {
+
+                 const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
+          newlistaPapierowWyszukiwarka.push({
+            ...selectRow,
+            id: getMaxID(listaPapierowWyszukiwarka),
+            insert: true
+
+          })
+
+          setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
+            resolve(777);
+          });
+     
+          promiseA.then(res => scrollTable())
+          
+          // const element = document.getElementById("table_paper");
+          // element.scrollTop = element.scrollHeight;
+          // element.scrollTo(0, element.scrollHeight);
+
+
+        }}
+        alt="Procesy"
+      />
+    </td>
+  );
 }
 
 

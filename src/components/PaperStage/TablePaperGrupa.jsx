@@ -11,9 +11,11 @@ import { getMaxID } from "actions/getMaxID";
 
 
 export default function TablePaperGrupa({
+  selectRow,setSelectRow,
   paperSelectView,
   setBtnZapisz,
-  daneZamowienia
+  daneZamowienia,
+  scrollTable
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -25,10 +27,11 @@ export default function TablePaperGrupa({
   const inputElement = useRef();
       const appcontext = useContext(AppContext);
       const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
+      const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
 
-      const scrollTable = () => {
-        inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
-      };
+      // const scrollTable = () => {
+      //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
+      // };
 
       const color = (row) => {
         if (row.delete) {
@@ -40,7 +43,9 @@ export default function TablePaperGrupa({
         if (row.update) {
           return style.tr_update;
         }
-
+        if (row.select) {
+          return style.tr_select;
+        }
         return style.tr;
       };
 
@@ -62,6 +67,30 @@ export default function TablePaperGrupa({
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <tr className={color(row)}
                 key={row.id}
+                onClick={()=>{
+                  setSelectRow(row)
+                  setListaPapierowGrupaWyszukiwarka(
+                    prev=>prev.map((t, a) => {
+                      return {
+                        ...t,
+                        select: false
+                      };
+                
+                    
+                  }).map((t, a) => {
+                    if (t.id == row.id) {
+                      return {
+                        ...t,
+                        select: true
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+
+                );
+                }}
+
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
@@ -69,7 +98,7 @@ export default function TablePaperGrupa({
               >
                 <ID row={row} index={index + 1} />
                 <Grupa row={row} setBtnZapisz={setBtnZapisz}/>
-                <CopyIcon row={row} scrollTable={scrollTable}/>
+                <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
@@ -160,7 +189,7 @@ function DeleteIcon({ row }) {
 }
 
 
-function CopyIcon({ row,scrollTable}) {
+function CopyIcon({ row,scrollTable,inputElement}) {
 
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
@@ -190,7 +219,7 @@ function CopyIcon({ row,scrollTable}) {
             resolve(777);
           });
      
-          promiseA.then(res => scrollTable())
+          promiseA.then(res => scrollTable(inputElement))
           
           // const element = document.getElementById("table_paper");
           // element.scrollTop = element.scrollHeight;

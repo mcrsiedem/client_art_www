@@ -11,11 +11,13 @@ import { getMaxID } from "actions/getMaxID";
 
 
 export default function TablePaperNazwa({
+  selectRow,setSelectRow,
   paperSelectView,
   btnZapisz,
   setBtnZapisz,
   daneZamowienia,
   setDaneZamowienia,
+  scrollTable
 
 }) {
   const [selectedPaperRow, setSelectedPaperRow] = useState();
@@ -31,11 +33,12 @@ export default function TablePaperNazwa({
       const modalcontext = useContext(ModalInsertContext);
 
       const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+      const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+      
 
-
-      const scrollTable = () => {
-        inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
-      };
+      // const scrollTable = () => {
+      //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
+      // };
 
       const color = (row) => {
         if (row.delete) {
@@ -46,6 +49,9 @@ export default function TablePaperNazwa({
         }
         if (row.update) {
           return style.tr_update;
+        }
+        if (row.select) {
+          return style.tr_select;
         }
 
         return style.tr;
@@ -71,6 +77,29 @@ export default function TablePaperNazwa({
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <tr className={color(row)}
                 key={row.id}
+                onClick={()=>{
+                  setSelectRow(row)
+                  setListaPapierowNazwyWyszukiwarka(
+                    prev=>prev.map((t, a) => {
+                      return {
+                        ...t,
+                        select: false
+                      };
+                
+                    
+                  }).map((t, a) => {
+                    if (t.id == row.id) {
+                      return {
+                        ...t,
+                        select: true
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+
+                );
+                }}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
@@ -91,7 +120,7 @@ export default function TablePaperNazwa({
 
                 /> */}
 
-                <CopyIcon row={row} scrollTable={scrollTable}/>
+                <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
@@ -207,7 +236,7 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
   );
 }
 
-function CopyIcon({ row,scrollTable}) {
+function CopyIcon({ row,scrollTable,inputElement}) {
 
   const appcontext = useContext(AppContext);
   const modalcontext = useContext(ModalInsertContext);
@@ -242,7 +271,7 @@ function CopyIcon({ row,scrollTable}) {
             resolve(777);
           });
      
-          promiseA.then(res => scrollTable())
+          promiseA.then(res => scrollTable(inputElement))
           
           // const element = document.getElementById("table_paper");
           // element.scrollTop = element.scrollHeight;

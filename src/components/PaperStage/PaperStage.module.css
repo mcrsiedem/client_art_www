@@ -124,11 +124,21 @@ background:rgb(126, 182, 255);
 }
 
 .footer {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* background-color: aqua; */
+  
+  
+}
+
+.container_in_footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: aqua; */
-  
+
   
 }
 

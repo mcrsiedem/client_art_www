@@ -22,7 +22,7 @@ export default function TablePaper({selectRow,setSelectRow,
   const [selectedPaperRow, setSelectedPaperRow] = useState();
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [showChange, setShowChange] = useState(false);
+
   const rowID = useRef();
 
   const inputElement = useRef();
@@ -74,7 +74,7 @@ if(paperSelectView[0].view == true){
             <th className={style.wykonczenie}></th>
             <th className={style.opiekun}>Bulk</th>
             <th className={style.info}>Opis</th>
-            <th className={style.th_ustawienia}>Zmień</th>
+
          
             {/* <th className={style.th_ustawienia}></th> */}
           </tr>
@@ -120,15 +120,7 @@ if(paperSelectView[0].view == true){
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
-                <UseIcon
-                  row={row}
-                  rowID={rowID}
-                  daneZamowienia={daneZamowienia}
-                  setDaneZamowienia={setDaneZamowienia}
-                  setShowChange={setShowChange}
-                  setSelectedPaperRow={setSelectedPaperRow}
 
-                />
 
 
               </tr>
@@ -137,7 +129,7 @@ if(paperSelectView[0].view == true){
         </tbody>
       </table>
 
-        <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} />
+        {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} /> */}
       
     </div>
   );

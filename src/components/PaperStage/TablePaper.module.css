@@ -33,6 +33,15 @@
   background-image: linear-gradient( rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
 }
 
+/* .tr_select{
+  background-color: rgb(176, 221, 255);
+  
+}
+.tr_select:nth-of-type(2n){
+  background-color: rgb(176, 221, 255);
+} */
+
+
 
 .select_papier {
     background-color: transparent;

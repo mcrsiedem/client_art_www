@@ -3,7 +3,8 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
-import iconDelete from "assets/trash2.svg";
+import iconDelete from "assets/trashgray.svg";
+import iconEdit from "assets/settings_grey.svg";
 import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -11,9 +12,9 @@ import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
-import iconCopy from "assets/copy.svg";
+import iconCopy from "assets/copygrey.svg";
 import { getMaxID } from "actions/getMaxID";
-
+import ChangePaper from "./ChangePaper";
 export default function PaperStage() {
 
     const appcontext = useContext(AppContext);
@@ -33,6 +34,7 @@ const [paperSelectView, setPaperSelectView] = useState([
   {id:2,nazwa:"nazwa",view:false},
   {id:3,nazwa:"grupa",view:false}
 ]);
+
 
 const scrollTable = (table) => {
   table.current.scrollTo({ top: 10000, behavior: "smooth" })
@@ -81,20 +83,52 @@ const scrollTable = (table) => {
   <div className={style.footer}>
     <div className={style.container_in_footer}>  </div>
     <div className={style.container_in_footer}>   <Zapisz  /></div>
-    <div className={style.container_in_footer}>
+    <div className={style.container_in_footer_right}>
+       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} />  </div>
        <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}/>  </div>
-    <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}/>  </div>
+       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}   />   </div>
  
     </div>
    
 
   </div>
       </div>
+
+              {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} /> */}
     </div>
   );
  }
   
 }
+function UseBTN({ selectRow, setSelectedPaperRow}) {
+  const [showChange, setShowChange] = useState(false);
+  return (
+    <td>
+      <img
+        className={style.icon}
+        src={iconEdit}
+        onClick={() => {
+          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
+          // rowID.current = { id: row.id, firma: row.firma };
+          setShowChange(true)
+          // setSelectedPaperRow(selectRow)
+        }}
+        alt="Procesy"
+      />
+
+<ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
+    </td>
+  );
+}
+
+
+
+
+
+
+
+
+
 
 function CopyBTN({ selectRow,scrollTable,selectTable}) {
 

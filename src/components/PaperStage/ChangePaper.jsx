@@ -4,7 +4,7 @@ import style from "./ChangePaper.module.css";
 
 
 import iconX from "assets/x.svg";
-export default function ChangePaper({showChange,setShowChange,selectedPaperRow}) {
+export default function ChangePaper({showChange,setShowChange,selectRow}) {
       const modalcontext = useContext(ModalInsertContext);
       const selectedElementROW = modalcontext.selectedElementROW;
 
@@ -12,8 +12,8 @@ if(showChange){
     return (
     <div className={style.window}>
       <Header setShowChange={setShowChange}></Header>
-      <p className={style.alert_label}> {selectedPaperRow.nazwa} {selectedPaperRow.gramatura} g/m2 {selectedPaperRow.wykonczenie}</p>
-      <Zmien setShowChange={setShowChange} selectedPaperRow={selectedPaperRow}/>
+      <p className={style.alert_label}> {selectRow.nazwa} {selectRow.gramatura} g/m2 {selectRow.wykonczenie}</p>
+      <Zmien setShowChange={setShowChange} selectRow={selectRow}/>
 
     </div>
   );
@@ -21,7 +21,7 @@ if(showChange){
 
 }
 
-function Zmien({ setShowChange,selectedPaperRow}) {
+function Zmien({ setShowChange,selectRow}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const elementy = contextModalInsert.elementy;
@@ -45,7 +45,7 @@ function Zmien({ setShowChange,selectedPaperRow}) {
             if (t.id == selectedElementROW.id) {
               return {
                 ...t,
-                papier_id: selectedPaperRow.id
+                papier_id: selectRow.id
       
               };
             } else {

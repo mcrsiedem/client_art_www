@@ -138,8 +138,13 @@ background:rgb(126, 182, 255);
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  
+.container_in_footer_right{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 40px;
 }
 
 .szukaj {
@@ -154,5 +159,5 @@ background:rgb(126, 182, 255);
 }
 
 .icon{
-  width: 20px;
+  width: 18px;
 }

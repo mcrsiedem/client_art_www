@@ -44,12 +44,15 @@ export default function TablePaper({selectRow,setSelectRow,
       // };
 
       const color = (row) => {
+
         if (row.select) {
           return style.tr_select;
         }
         if (row.delete) {
           return style.tr_delete;
         }
+
+
         if (row.insert) {
           return style.tr_insert;
         }

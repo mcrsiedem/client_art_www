@@ -165,3 +165,22 @@ background:rgb(126, 182, 255);
   width: 18px;
 
 }
+
+
+.window{
+  overflow-y: auto;
+}
+
+.window::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.window::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+}
+
+/* Handle on hover */
+.window::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(137, 188, 254) 50%, rgb(107, 158, 224) 100%);
+}

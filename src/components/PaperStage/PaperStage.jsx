@@ -3,20 +3,14 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
-import iconDelete from "../../assets/trash.svg";
-// import TableClient from "./components/TableClient";
-import iconTable from "../../assets/add.png";
 import addIcon2 from "../../assets/addIcon2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
-import { dragElement } from "actions/dragDrop";
-import { insertPaper } from "./actions/insertPaper";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
 
-// import AddClient from "./components/AddClient";
 
 export default function PaperStage() {
 
@@ -52,7 +46,6 @@ const [paperSelectView, setPaperSelectView] = useState([
     setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
 
-    // axios.get(IP + "lista-papierow-nazwy").then(res =>{  setListaPapierowNazwy([...res.data]);})
   }
 
   useEffect(() => {
@@ -74,7 +67,7 @@ const [paperSelectView, setPaperSelectView] = useState([
             <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
             <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
           </div>
-        <Szukaj/>
+        <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
         <TablePaper paperSelectView={paperSelectView}/>
         <TablePaperNazwa paperSelectView={paperSelectView} />
@@ -254,13 +247,7 @@ function Dodaj({ setShowAddClientPane }) {
 
 
 
-
-
-
-
-
-
-function Szukaj() {
+function Szukaj({paperSelectView}) {
   // const klienciEdit = JSON.parse(JSON.stringify(klienci));
 
 
@@ -270,10 +257,12 @@ function Szukaj() {
   const modalcontext = useContext(ModalInsertContext);
   const listaPapierow = appcontext.listaPapierow;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setListaPapierow = appcontext.setListaPapierow;
-  const showPaperStage = modalcontext.showPaperStage;
-  const setShowPaperStage = modalcontext.setShowPaperStage;
-  const selectedElementROW = modalcontext.selectedElementROW;
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const listaPapierowGrupa = appcontext.listaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+
   return (
     <input
       className={style.szukaj}
@@ -281,15 +270,37 @@ function Szukaj() {
   
       placeholder="Szukaj..."
       onChange={(event) => {
-        const m = [...listaPapierow];
 
-        // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
+
+if(paperSelectView[0].view == true){
+          const m = [...listaPapierow];
         setListaPapierowWyszukiwarka(
           m.filter((k) =>
             k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
           )
         );
-      }}
+}
+
+if(paperSelectView[1].view == true){
+  const m = [...listaPapierowNazwy];
+  setListaPapierowNazwyWyszukiwarka(
+  m.filter((k) =>
+    k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+  )
+);
+}
+
+if(paperSelectView[2].view == true){
+  const m = [...listaPapierowGrupa];
+  setListaPapierowGrupaWyszukiwarka(
+  m.filter((k) =>
+    k.grupa.toLowerCase().includes(event.target.value.toLowerCase())
+  )
+);
+}
+
+      }
+    }
     ></input>
   );
 }

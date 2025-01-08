@@ -107,27 +107,30 @@ const _firma = [
     },
   ];
 
-  const typ_elementu = [
+const typ_elementu=[
     {
       id: 1,
-      nazwa: "Okładka"
-  
-    },{
+      nazwa: "Okładka",
+    },
+    {
       id: 2,
       nazwa: "Środek",
     },
-    ,{
+    ,
+    {
       id: 3,
       nazwa: "Wklejka",
     },
-    ,{
+    ,
+    {
       id: 4,
       nazwa: "Insert",
-    }  ,{
+    },
+    {
       id: 5,
       nazwa: "Ulotka",
-    }
-  ]
+    },
+  ];
   
   const _status_koszty_dodatkowe = [
 

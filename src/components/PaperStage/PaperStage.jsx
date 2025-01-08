@@ -11,9 +11,7 @@ import { updatePaper } from "./actions/updatePaper";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
 
-
 export default function PaperStage() {
-
 
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
@@ -25,6 +23,7 @@ export default function PaperStage() {
     const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
+    const [selectRow, setSelectRow] = useState(null);
 const [paperSelectView, setPaperSelectView] = useState([
   {id:1,nazwa:"papier",view:true},
   {id:2,nazwa:"nazwa",view:false},
@@ -60,7 +59,7 @@ const [paperSelectView, setPaperSelectView] = useState([
   return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
-        <Header setPaperSelectView={setPaperSelectView}/>
+        <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow}/>
         <Finder >
           <div className={style.btnContainer}>
             <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
@@ -69,7 +68,7 @@ const [paperSelectView, setPaperSelectView] = useState([
           </div>
         <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
-        <TablePaper paperSelectView={paperSelectView}/>
+        <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} />
         <TablePaperNazwa paperSelectView={paperSelectView} />
         <TablePaperGrupa paperSelectView={paperSelectView} />
   <div className={style.footer}>
@@ -80,9 +79,7 @@ const [paperSelectView, setPaperSelectView] = useState([
   );
  }
   
-
 }
-
 
 
 function Zapisz() {
@@ -94,17 +91,12 @@ function Zapisz() {
   const setListaPapierow = appcontext.setListaPapierow;
   const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
 
-
-
-
       return (
     <button 
     
     className={style.btn} 
     onClick={() => {
        updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled,setListaPapierowWyszukiwarka)
-      // insertPaper(listaPapierowWyszukiwarka.filter(x => x.insert == true),setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
-// console.log(isBtnZapiszPapierDisabled)
     }}
     
     disabled={isBtnZapiszPapierDisabled}
@@ -114,54 +106,54 @@ function Zapisz() {
   );
 }
 
-function PapierBTN({paperSelectView, setPaperSelectView}) {
-      return (
-    <button 
-    
-    className={style.btnPaper} 
-    onClick={() => {
-      setPaperSelectView(
-        paperSelectView.map((t) => {  return{...t,view:false}      })
-        .map((t) => {          if (t.nazwa == "papier") {
-          return {...t,
-            view: true}
-        } else {
-          return t;
-        }  })
-      );
-    }}
-    
-
+function PapierBTN({ paperSelectView, setPaperSelectView }) {
+  return (
+    <button
+      className={style.btnPaper}
+      onClick={() => {
+        setPaperSelectView(
+          paperSelectView
+            .map((t) => {
+              return { ...t, view: false };
+            })
+            .map((t) => {
+              if (t.nazwa == "papier") {
+                return { ...t, view: true };
+              } else {
+                return t;
+              }
+            })
+        );
+      }}
     >
-      Papier</button>
-
+      Papier
+    </button>
   );
 }
 
-
-
-function NazwaBTN({paperSelectView, setPaperSelectView}) {
+function NazwaBTN({ paperSelectView, setPaperSelectView }) {
   return (
-<button 
-
-className={style.btnPaper} 
-onClick={() => {
-  setPaperSelectView(
-    paperSelectView.map((t) => {  return{...t,view:false}      })
-    .map((t) => {          if (t.nazwa == "nazwa") {
-      return {...t,
-        view: true}
-    } else {
-      return t;
-    }  })
+    <button
+      className={style.btnPaper}
+      onClick={() => {
+        setPaperSelectView(
+          paperSelectView
+            .map((t) => {
+              return { ...t, view: false };
+            })
+            .map((t) => {
+              if (t.nazwa == "nazwa") {
+                return { ...t, view: true };
+              } else {
+                return t;
+              }
+            })
+        );
+      }}
+    >
+      Nazwa
+    </button>
   );
-}}
-
-
->
-  Nazwa</button>
-
-);
 }
 
 function GrupaBTN({paperSelectView, setPaperSelectView}) {
@@ -189,7 +181,7 @@ onClick={() => {
 }
 
 
-function Header() {
+function Header({selectRow}) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
   const listaPapierow = appcontext.listaPapierow;
@@ -201,6 +193,7 @@ function Header() {
     <div  className={style.header}>
       <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
       <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p>
+      <p className={style.title}>       Zaznaczone:  {selectRow?.id}</p>
       {/* <p className={style.title}>         Ilość papierów: {listaPapierow[0].nazwa} </p> */}
       <Zamknij/>
     </div>
@@ -247,60 +240,48 @@ function Dodaj({ setShowAddClientPane }) {
 
 
 
-function Szukaj({paperSelectView}) {
-  // const klienciEdit = JSON.parse(JSON.stringify(klienci));
-
-
-
-
+function Szukaj({ paperSelectView }) {
   const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
   const listaPapierow = appcontext.listaPapierow;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka =    appcontext.setListaPapierowNazwyWyszukiwarka;
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;
-  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-
+  const setListaPapierowGrupaWyszukiwarka =     appcontext.setListaPapierowGrupaWyszukiwarka;
 
   return (
     <input
       className={style.szukaj}
       type="text"
-  
       placeholder="Szukaj..."
       onChange={(event) => {
-
-
-if(paperSelectView[0].view == true){
+        if (paperSelectView[0].view == true) {
           const m = [...listaPapierow];
-        setListaPapierowWyszukiwarka(
-          m.filter((k) =>
-            k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
-          )
-        );
-}
+          setListaPapierowWyszukiwarka(
+            m.filter((k) =>
+              k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+            )
+          );
+        }
 
-if(paperSelectView[1].view == true){
-  const m = [...listaPapierowNazwy];
-  setListaPapierowNazwyWyszukiwarka(
-  m.filter((k) =>
-    k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
-  )
-);
-}
+        if (paperSelectView[1].view == true) {
+          const m = [...listaPapierowNazwy];
+          setListaPapierowNazwyWyszukiwarka(
+            m.filter((k) =>
+              k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+            )
+          );
+        }
 
-if(paperSelectView[2].view == true){
-  const m = [...listaPapierowGrupa];
-  setListaPapierowGrupaWyszukiwarka(
-  m.filter((k) =>
-    k.grupa.toLowerCase().includes(event.target.value.toLowerCase())
-  )
-);
-}
-
-      }
-    }
+        if (paperSelectView[2].view == true) {
+          const m = [...listaPapierowGrupa];
+          setListaPapierowGrupaWyszukiwarka(
+            m.filter((k) =>
+              k.grupa.toLowerCase().includes(event.target.value.toLowerCase())
+            )
+          );
+        }
+      }}
     ></input>
   );
 }
@@ -308,10 +289,4 @@ if(paperSelectView[2].view == true){
 function Finder({ children }) {
   return <div className={style.finder}>{children}</div>;
 }
-function Footer({ children }) {
-  return <div className={style.footer}>{children}</div>;
-}
 
-function Stage({ children, klienci, setKlienci }) {
-  return <div className={style.stage}>{children}</div>;
-}

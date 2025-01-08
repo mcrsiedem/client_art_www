@@ -10,9 +10,8 @@ import ChangePaper from "./ChangePaper";
 import { getMaxID } from "actions/getMaxID";
 
 
-export default function TablePaper({
+export default function TablePaper({selectRow,setSelectRow,
   paperSelectView,
-  btnZapisz,
   setBtnZapisz,
   daneZamowienia,
   setDaneZamowienia,
@@ -52,6 +51,9 @@ export default function TablePaper({
         if (row.update) {
           return style.tr_update;
         }
+        if (row.select) {
+          return style.tr_select;
+        }
 
         return style.tr;
       };
@@ -80,6 +82,36 @@ if(paperSelectView[0].view == true){
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <tr className={color(row)}
                 key={row.id}
+                onClick={()=>{
+                  setSelectRow(row)
+                  setListaPapierowWyszukiwarka(
+                    listaPapierowWyszukiwarka.map((t, a) => {
+                    
+                      return {
+                        ...t,
+                        select: false
+              
+                      };
+                
+                    
+                  }).map((t, a) => {
+                    if (t.id == row.id) {
+                      return {
+                        ...t,
+                        select: true
+              
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+
+
+
+
+
+                );
+                }}
                 onDoubleClick={
                   () => openEdit(row, rowID, setShowEdit)
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
@@ -179,11 +211,9 @@ function DeleteIcon({ row }) {
         onClick={() => {
           setListaPapierowWyszukiwarka(
             listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
             if (t.id == row.id) {
               return {
                 ...t,
-         
                 delete: true
       
               };

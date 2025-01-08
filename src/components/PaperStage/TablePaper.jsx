@@ -1,47 +1,24 @@
 import React, { useState, useRef,useContext } from "react";
 import style from "./TablePaper.module.css";
-
-import iconDelete from "assets/trash2.svg";
-import iconEdit from "assets/settings.svg";
-import iconCopy from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import ChangePaper from "./ChangePaper";
-import { getMaxID } from "actions/getMaxID";
+import { _wykonczenie } from "utils/initialvalue";
 
-
-export default function TablePaper({selectRow,setSelectRow,
+export default function TablePaper({setSelectRow,
   paperSelectView,
   setBtnZapisz,
-  daneZamowienia,
-  setDaneZamowienia,
-  scrollTable,
   setSelectTable
 
 }) {
-  const [selectedPaperRow, setSelectedPaperRow] = useState();
-  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
+
   const [showEdit, setShowEdit] = useState(false);
 
   const rowID = useRef();
-
   const inputElement = useRef();
 
-
       const appcontext = useContext(AppContext);
-      const modalcontext = useContext(ModalInsertContext);
-      const listaPapierow = appcontext.listaPapierow;
-      const setListaPapierow = appcontext.setListaPapierow;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
       const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-      const showPaperStage = modalcontext.showPaperStage;
-      const setShowPaperStage = modalcontext.setShowPaperStage;
-      const selectedElementROW = modalcontext.selectedElementROW;
-
-
-      // const scrollTable = () => {
-      //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
-      // };
 
       const color = (row) => {
 
@@ -51,8 +28,6 @@ export default function TablePaper({selectRow,setSelectRow,
         if (row.delete) {
           return style.tr_delete;
         }
-
-
         if (row.insert) {
           return style.tr_insert;
         }
@@ -77,9 +52,6 @@ if(paperSelectView[0].view == true){
             <th className={style.wykonczenie}></th>
             <th className={style.opiekun}>Bulk</th>
             <th className={style.info}>Opis</th>
-
-         
-            {/* <th className={style.th_ustawienia}></th> */}
           </tr>
         </thead>
         <tbody   className={style.center}>
@@ -98,7 +70,6 @@ if(paperSelectView[0].view == true){
                         select: false
                       };
                 
-                    
                   }).map((t, a) => {
                     if (t.id == row.id) {
                       return {
@@ -123,16 +94,11 @@ if(paperSelectView[0].view == true){
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
-
-
-
               </tr>
             );
           })}
         </tbody>
       </table>
-
-        {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} /> */}
       
     </div>
   );
@@ -153,40 +119,93 @@ const openEdit = (row, rowID, setShowEdit) => {
   setShowEdit(true);
 };
 
+function Wykonczenie({ row }) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowGrupa = appcontext.listaPapierowGrupa;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  return <td>
+            <select
+          className={ style.select_papier_wykonczenie }
+          value={row.wykonczenie_id}
+          onChange={(e) => {
+            setListaPapierowWyszukiwarka(
+              listaPapierowWyszukiwarka.map((t, a) => {
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  wykonczenie_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
 
-
-function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
-  return (
-    <td>
-      <img
-        className={style.icon}
-        src={iconEdit}
-        onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
-          setShowChange(true)
-          setSelectedPaperRow(row)
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
+          setBtnZapiszPapierDisabled(false)
+          }}
+        >
+          {/* {   <option value = "0"  >
+             wybierz papier
+            </option>}
+        */}
+          {_wykonczenie.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nazwa}
+            </option>
+          ))}
+        </select>
+    </td>;
 }
-
-
 
 function Grupa({ row }) {
-  return <td>
-
-    
-    {row.grupa}</td>;
-}
-function Nazwa({ row }) {
-
   const appcontext = useContext(AppContext);
+  const listaPapierowGrupa = appcontext.listaPapierowGrupa;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  return <td>
+            <select
+          className={ style.select_papier_grupa }
+          value={row.grupa_id}
+          onChange={(e) => {
+            setListaPapierowWyszukiwarka(
+              listaPapierowWyszukiwarka.map((t, a) => {
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  grupa_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
 
+          setBtnZapiszPapierDisabled(false)
+          }}
+        >
+          {/* {   <option value = "0"  >
+             wybierz papier
+            </option>}
+        */}
+          {listaPapierowGrupa.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.grupa}
+            </option>
+          ))}
+        </select>
+    </td>;
+}
+
+function Nazwa({ row }) {
+  const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
@@ -197,7 +216,6 @@ function Nazwa({ row }) {
           onChange={(e) => {
             setListaPapierowWyszukiwarka(
               listaPapierowWyszukiwarka.map((t, a) => {
-              // console.log("oprawa id" +prev)
               if (t.id == row.id) {
                 return {
                   ...t,
@@ -235,9 +253,7 @@ function ID({ row,index}) {
   return <td>{index}</td>;
 }
 
-function Wykonczenie({ row }) {
-  return <td>{row.wykonczenie}</td>;
-}
+
 function Bulk({ row }) {
   return <td>{row.bulk}</td>;
 }

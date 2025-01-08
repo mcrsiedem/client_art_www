@@ -247,6 +247,20 @@ const initialProcesy = [
   },
 ];
 
+const _wykonczenie = [
+  {
+    id: 1,
+    nazwa: "matt",
+  },
+  {
+    id: 2,
+    nazwa: "gloss",
+  },
+  {
+    id: 3,
+    nazwa: "silk",
+  }
+];
 
 const _vat = [
   {
@@ -498,5 +512,6 @@ export {
   initialDane,
   initialPreOrder,
   _rodzaj_oprawy,
+  _wykonczenie
 
 };

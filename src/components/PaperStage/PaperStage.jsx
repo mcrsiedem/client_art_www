@@ -17,6 +17,7 @@ import { getMaxID } from "actions/getMaxID";
 import ChangePaper from "./ChangePaper";
 export default function PaperStage() {
 
+  const start = useRef();
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
 
@@ -28,7 +29,7 @@ export default function PaperStage() {
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const showPaperStage = modalcontext.showPaperStage;
     const [selectRow, setSelectRow] = useState(null);
-    const [selectTable, setSelectTable] = useState(null);
+    const [selectTable, setSelectTable] = useState(start);
 const [paperSelectView, setPaperSelectView] = useState([
   {id:1,nazwa:"papier",view:true},
   {id:2,nazwa:"nazwa",view:false},
@@ -58,7 +59,7 @@ const scrollTable = (table) => {
 
   useEffect(() => {
     getPapier();
-  
+   
   }, []);
 
 
@@ -67,8 +68,8 @@ const scrollTable = (table) => {
  if(showPaperStage){
   return (
     <div className={style.grayScaleBackground}>
-      <div className={style.window}>
-        <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow}/>
+      <div ref={start} className={style.window}>
+        <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
           <div className={style.btnContainer}>
             <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
@@ -94,7 +95,7 @@ const scrollTable = (table) => {
   </div>
       </div>
 
-              {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} /> */}
+   
     </div>
   );
  }
@@ -103,21 +104,21 @@ const scrollTable = (table) => {
 function UseBTN({ selectRow, setSelectedPaperRow}) {
   const [showChange, setShowChange] = useState(false);
   return (
-    <td>
+    <div >
       <img
+      title="Użyj"
         className={style.icon}
         src={iconEdit}
         onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
+          if(selectRow!= null){
           setShowChange(true)
-          // setSelectedPaperRow(selectRow)
+          }
         }}
-        alt="Procesy"
+        alt="Użyj"
       />
 
 <ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
-    </td>
+    </div>
   );
 }
 
@@ -135,14 +136,17 @@ function CopyBTN({ selectRow,scrollTable,selectTable}) {
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
 
   return (
-    <td>
+    <div>
       <img
+      title="Skopiuj znaznaczony papier"
         className={style.icon}
         src={iconCopy}
         onClick={() => {
 
+          if(selectRow!= null){
           const promiseA = new Promise((resolve, reject) => {
 
                  const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
@@ -157,11 +161,13 @@ function CopyBTN({ selectRow,scrollTable,selectTable}) {
           });
      
           promiseA.then(res => scrollTable(selectTable))
-        
+          setBtnZapiszPapierDisabled(false)
+          }
+
         }}
         alt="Procesy"
       />
-    </td>
+    </div>
   );
 }
 
@@ -173,11 +179,14 @@ function DeleteBTN({ selectRow,scrollTable,selectTable }) {
     const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
 
   return (
-    <td>
+    <div>
       <img
+      title="Skasuj zaznaczony papier"
         className={style.icon}
         src={iconDelete}
         onClick={() => {
+
+          if(selectRow!= null){
           setListaPapierowWyszukiwarka(
             listaPapierowWyszukiwarka.map((t, a) => {
             if (t.id == selectRow.id) {
@@ -193,7 +202,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable }) {
         );
         setBtnZapiszPapierDisabled(false)
         }
-        
+      }
       }
 
         onDoubleClick={() => {
@@ -214,7 +223,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable }) {
         }}
         alt="Procesy"
       />
-    </td>
+    </div>
   );
 }
 
@@ -318,7 +327,7 @@ onClick={() => {
 }
 
 
-function Header({selectRow}) {
+function Header({selectRow,setSelectRow}) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
   const listaPapierow = appcontext.listaPapierow;
@@ -332,12 +341,12 @@ function Header({selectRow}) {
       <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p>
       <p className={style.title}>       Zaznaczone:  {selectRow?.id}</p>
       {/* <p className={style.title}>         Ilość papierów: {listaPapierow[0].nazwa} </p> */}
-      <Zamknij/>
+      <Zamknij setSelectRow={setSelectRow}/>
     </div>
   );
 }
 
-function Zamknij() {
+function Zamknij({setSelectRow}) {
   const modalcontext = useContext(ModalInsertContext);
   const setShowPaperStage = modalcontext.setShowPaperStage;
 
@@ -351,6 +360,7 @@ function Zamknij() {
       onClick={() => {
         setShowPaperStage(false);
         setBtnZapiszPapierDisabled(true)
+        setSelectRow(null)
 
       }}
       alt="Procesy"

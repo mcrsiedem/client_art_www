@@ -145,7 +145,10 @@ background:rgb(126, 182, 255);
   justify-content: end;
   align-items: center;
   padding-right: 40px;
+  padding-bottom: 10px;
+  gap:15px
 }
+
 
 .szukaj {
   background-color: #eeeeee;
@@ -160,4 +163,5 @@ background:rgb(126, 182, 255);
 
 .icon{
   width: 18px;
+
 }

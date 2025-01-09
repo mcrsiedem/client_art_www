@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext } from "react";
 import style from "./TableClient.module.css";
 import DeleteClient from "./DeleteClient";
 import EditClient from "./EditClient";
 import iconDelete from "../../../assets/trash2.svg";
 import iconEdit from "../../../assets/settings.svg";
 import ChangeClient from "./ChangeClient";
+import { AppContext } from "context/AppContext";
 
 export default function Table({
   klienciWyszukiwarka,
@@ -115,6 +116,19 @@ const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
   setDaneZamowienia({ ...daneZamowienia, klient_id: id });
 };
 function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
+    const contextApp = useContext(AppContext);
+  const data = contextApp.zamowienia
+  const setData = contextApp.setZamowienia
+  const even = (element) => element?.klient_id == row.id;
+
+  // if (legiFragmenty.some(even)) {
+  //   return (
+  //     <div className={style.center}>
+  //       <p style={{ color: "red" }}>UWAGA: bezdomna lega!</p>
+  //     </div>
+  //   );
+  // }
+
   return (
     <td>
       <img
@@ -122,10 +136,16 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
         src={iconDelete}
         onClick={() => {
           // nie mozna skasowac firmy, ktora jest aktualnie ustawiona jak klient
-          if (row.id != daneZamowienia.klient_id) {
+
+          if(!data.some(even)){
+
+    if (row.id != daneZamowienia.klient_id) {
             rowID.current = { id: row.id, firma: row.firma };
             setShowDeleteClientPane(true);
           }
+
+          }
+      
         }}
         alt="Procesy"
       />

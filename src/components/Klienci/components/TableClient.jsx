@@ -118,16 +118,9 @@ const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
 function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
     const contextApp = useContext(AppContext);
   const data = contextApp.zamowienia
-  const setData = contextApp.setZamowienia
+
   const even = (element) => element?.klient_id == row.id;
 
-  // if (legiFragmenty.some(even)) {
-  //   return (
-  //     <div className={style.center}>
-  //       <p style={{ color: "red" }}>UWAGA: bezdomna lega!</p>
-  //     </div>
-  //   );
-  // }
 
   return (
     <td>
@@ -136,10 +129,11 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
         src={iconDelete}
         onClick={() => {
           // nie mozna skasowac firmy, ktora jest aktualnie ustawiona jak klient
+          // nie można skasować klienta, który jest dodany do jakiegokolwiek zamówienia
 
           if(!data.some(even)){
 
-    if (row.id != daneZamowienia.klient_id) {
+          if (row.id != daneZamowienia.klient_id) {
             rowID.current = { id: row.id, firma: row.firma };
             setShowDeleteClientPane(true);
           }

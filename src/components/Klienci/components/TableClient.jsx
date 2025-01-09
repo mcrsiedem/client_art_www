@@ -138,6 +138,8 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
             setShowDeleteClientPane(true);
           }
 
+          }else{
+            alert(" Klient użyty w jakimkolwiek zleceniu, nie może zostać skasowany! Zadzwoń do Maciek...")
           }
       
         }}

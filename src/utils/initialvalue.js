@@ -45,17 +45,17 @@ const initialDane = {
   id: 1,
   prime_id: 1,
   nr: "",
-  rok: "2024",
+  rok: "2025",
   firma_id: 0,
   klient_id: 0,
   opiekun_id:  0,
-  tytul: "Tytuł zamówienia",
+  tytul: "",
   data_przyjecia: today(),
   data_materialow: today(),
   data_spedycji: todayPlusDni(5),
   stan: 0,
   status: 0,
-  rodzaj: 1,
+  rodzaj: 3,
   uwagi: "",
   cena: "",
   waluta_id: 1,
@@ -63,6 +63,7 @@ const initialDane = {
   vat_id: 4,
   przedplata: "",
   fsc: 2,
+  zgoda_na_zapis: false
 };
 const initialProdukty = [
   {
@@ -75,7 +76,7 @@ const initialProdukty = [
     format_x: "",
     format_y: "",
     oprawa: "",
-    naklad: "",
+    naklad: 0,
     stan:1,
     status:1,
     indeks: 0,
@@ -322,20 +323,16 @@ const _status = [
   },
   {
     id: 2,
-    nazwa: "Do weryfikacji",
+    nazwa: "Do przyjęcia",
   },
   {
     id: 3,
-    nazwa: "Zweryfikowane",
+    nazwa: "Przyjęte",
   },
   {
     id: 4,
     nazwa: "Do korekty",
-  },
-  {
-    id: 5,
-    nazwa: "Do wyjaśnienia",
-  },
+  }
 ];
 
 const _stan = [

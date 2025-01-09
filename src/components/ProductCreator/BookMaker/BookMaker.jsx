@@ -268,6 +268,8 @@ const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
 
   const preOrderContext = useContext(PreOrderContext)
   const modalInsertContext = useContext(ModalInsertContext)
+  const setDaneZamowienia= modalInsertContext.setDaneZamowienia;
+  const daneZamowienia= modalInsertContext.daneZamowienia;
   return (
     <div className={style.bindingContainer}>
     <button
@@ -277,6 +279,7 @@ const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
         AddBookFromCreator(modalInsertContext,preOrderContext) // przekazane contexty do funkcjis
         // AddProductFromCreator(naklad,binding,elements);
         // console.log("preorder", poc.preOrder)
+        // setDaneZamowienia({...daneZamowienia, zgoda_na_zapis: true});
       }}
       className={style.btn}
     >

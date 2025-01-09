@@ -13,10 +13,12 @@ import { AppContext } from "../../../../context/AppContext";
 import { useAuth } from "hooks/useAuth";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
-
+// import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
 };
+
+
 
 export default function Header({
   setOpenModalInsert,
@@ -31,7 +33,6 @@ export default function Header({
   const contextModalInsert = useContext(ModalInsertContext);
 
   const elementy = contextModalInsert.elementy;
-
   return (
     <>
       <div className={style.container}>
@@ -39,7 +40,7 @@ export default function Header({
         <div className={style.title}>
         <LockDradDrop/>
      
-         ID: {row.id} - Zamówienie...{" "}
+        Zamówienie...{" "}
           {readOnly && (
             <div>
               otwarte {stanOtwarciaZamowienia.data} przez{" "}
@@ -72,16 +73,6 @@ export default function Header({
                 </>
               )
           }
-
-          {/* <button
-            onClick={() => openInNewTab("/Zamowienia")}
-            className={style.btn}
-          >
-            Nowe...
-          </button> */}
-
-          {/* <ButtonSprawdz />
-          <ButtonSprawdz2 /> */}
 
           <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly}/>
         </div>
@@ -134,14 +125,21 @@ function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+  const produkty= contextModalInsert.produkty;
+
+
 
   return (
     <button
 
       onClick={async () => {
-        setSaveAs(false);
+
+        if(produkty[0].naklad != 0){
+                 setSaveAs(false);
         postZamowienieObj();
         setSaveButtonDisabled(true);
+        }
+ 
 
         // setOrderClosed
       }}

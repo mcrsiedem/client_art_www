@@ -336,7 +336,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
         
 
-         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
         setSaveButtonDisabled(false)

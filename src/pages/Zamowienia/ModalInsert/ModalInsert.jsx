@@ -19,7 +19,6 @@ import {
   _typ_produktu,
   _rodzaj_oprawy,
 } from "utils/initialvalue";
-import Pakowanie from "./Pakowanie/Pakowanie";
 
 import axios from "axios";
 import { IP } from "../../../utils/Host";
@@ -29,10 +28,8 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-// import { saveOrder } from "actions/saveOrder";
 import { saveOrderNew } from "actions/saveOrderNew";
 import SaveAs from "./SaveAs/SaveAs";
-import { today } from "../../../actions/today";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 
@@ -41,16 +38,11 @@ import { PreOrderContext } from "context/PreOrderContext";
 import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 import ProductCreator from "components/ProductCreator/ProductCreator";
-import { Button } from "react-bootstrap";
-import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 import PaperStage from "components/PaperStage/PaperStage";
 
 function ModalInsert({
   openModalInsert,
   setOpenModalInsert,
-  listaPapierow,
-  listaGramatur,
-  setListaGramatur,
   open,
   row,
   refreshZamowienia
@@ -66,7 +58,6 @@ function ModalInsert({
   const [cookies, setCookie] = useCookies();
   const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
   const [info, setInfo] = useState("napis");
-  const [listaUszlachetnien, setListaUszlachetnien] = useState();
   // const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
@@ -78,7 +69,6 @@ const [openModalStany, setOpenModalStany] = useState(false);
 const [klienci, setKlienci] = useState([]);
  const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled
-const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const produkty = contextModalInsert.produkty;
@@ -93,9 +83,7 @@ const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
-const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
-const kosztyDodatkowe = contextModalInsert.kosztyDodatkowe;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 
 

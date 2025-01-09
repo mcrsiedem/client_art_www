@@ -11,6 +11,7 @@ export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
     const [lockDragDrop, setLockDragDrop] = useState(false);
     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
+
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
@@ -37,7 +38,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showPaperStage, setShowPaperStage] =useState(false);
 
 
-
+  
     
 
     
@@ -197,7 +198,8 @@ export const ModalInsertContextProvider = ({children})=>{
           handleDeleteKosztyDodatkoweTemporary,
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
-          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage
+          selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
+         
 
           
 

@@ -61,8 +61,7 @@ export default function TablePaperGrupa({
           <tr>
             <th className={style.id}>#</th>
             <th className={style.info}>Grupa papieru</th>
-            <th className={style.th_ustawienia}></th>
-            <th className={style.th_ustawienia}></th>
+
           </tr>
         </thead>
         <tbody   className={style.center}>
@@ -103,14 +102,14 @@ export default function TablePaperGrupa({
               >
                 <ID row={row} index={index + 1} />
                 <Grupa row={row} setBtnZapisz={setBtnZapisz}/>
-                <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
+                {/* <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
                   row={row}
                   rowID={rowID}
                   setShowDeleteClientPane={setShowDeleteClientPane}
-                />
+                /> */}
               </tr>
             );
           })}

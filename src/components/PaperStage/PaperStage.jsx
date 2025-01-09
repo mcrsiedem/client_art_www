@@ -10,6 +10,7 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
 import { updatePaper } from "./actions/updatePaper";
+import { updatePaperNazwy } from "./actions/updatePaperNazwy";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
 import iconCopy from "assets/copygrey.svg";
@@ -91,7 +92,7 @@ const scrollTable = (table) => {
     <div className={style.container_in_footer}>  </div>
     <div className={style.container_in_footer}>   <Zapisz  /></div>
     <div className={style.container_in_footer_right}>
-       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} />  </div>
+       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
        <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
        <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
  
@@ -107,9 +108,11 @@ const scrollTable = (table) => {
  }
   
 }
-function UseBTN({ selectRow, setSelectedPaperRow}) {
+function UseBTN({ selectRow, setSelectedPaperRow,paperSelectView}) {
   const [showChange, setShowChange] = useState(false);
-  return (
+
+  if(paperSelectView[0].view == true){
+      return (
     <div >
       <img
       title="Użyj"
@@ -126,6 +129,8 @@ function UseBTN({ selectRow, setSelectedPaperRow}) {
 <ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
     </div>
   );
+  }
+
 }
 
 
@@ -367,6 +372,8 @@ function Zapisz() {
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const setListaPapierow = appcontext.setListaPapierow;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
 
       return (
@@ -374,7 +381,8 @@ function Zapisz() {
     
     className={style.btn} 
     onClick={() => {
-       updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierow,setListaPapierowNazwy,setBtnZapiszPapierDisabled,setListaPapierowWyszukiwarka)
+       updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,setListaPapierow,setBtnZapiszPapierDisabled)
+       updatePaperNazwy(listaPapierowNazwyWyszukiwarka,setListaPapierowNazwyWyszukiwarka,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
     }}
     
     disabled={isBtnZapiszPapierDisabled}

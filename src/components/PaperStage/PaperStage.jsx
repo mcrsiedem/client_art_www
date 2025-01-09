@@ -495,7 +495,8 @@ function Header({selectRow,setSelectRow}) {
   return (
     <div  className={style.header}>
       <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
-      <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p>
+      {selectedElementROW.length!=null ? (<p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p>):(<p></p>)}
+      {/* <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p> */}
       {/* <p className={style.title}>       Zaznaczone:  {selectRow?.id}</p> */}
       {/* <p className={style.title}>         Ilość papierów: {listaPapierow[0].nazwa} </p> */}
       <Zamknij setSelectRow={setSelectRow}/>

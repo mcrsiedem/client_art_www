@@ -259,6 +259,10 @@ const _wykonczenie = [
   {
     id: 3,
     nazwa: "silk",
+  },
+  {
+    id:4,
+    nazwa: "",
   }
 ];
 

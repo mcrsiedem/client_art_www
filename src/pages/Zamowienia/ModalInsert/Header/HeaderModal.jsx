@@ -38,17 +38,23 @@ export default function Header({
       <div className={style.container}>
      
         <div className={style.title}>
-        <LockDradDrop/>
-     
-        Zamówienie...{" "}
-          {readOnly && (
-            <div>
-              otwarte {stanOtwarciaZamowienia.data} przez{" "}
-              {stanOtwarciaZamowienia.user}
-            </div>
-          )}
-          
+            <LockDradDrop/>
+        
+            Zamówienie...{" "}
+              {readOnly && (
+                <div>
+                  otwarte {stanOtwarciaZamowienia.data} przez{" "}
+                  {stanOtwarciaZamowienia.user}
+                </div>
+              )}
+              
         </div>
+
+
+        <div className={style.center}>
+
+        </div>
+
         <div className={style.buttons}>
               
               {/* <ShowStany setOpenModalStany={setOpenModalStany} openModalStany={openModalStany} setInfo={setInfo} /> */}
@@ -58,18 +64,18 @@ export default function Header({
               ) :
               (
                 <>
-                <PokazStany/>
+                {/* <PokazStany/> */}
                   <Zapisz
                     setShowSaveAs={setShowSaveAs}
                     postZamowienieObj={postZamowienieObj}
                     setSaveAs={setSaveAs}
                   />
 
-                  <ZapiszJako
+                  {/* <ZapiszJako
                     postZamowienieObj={postZamowienieObj}
                     setShowSaveAs={setShowSaveAs}
                     setSaveAs={setSaveAs}
-                  />
+                  /> */}
                 </>
               )
           }

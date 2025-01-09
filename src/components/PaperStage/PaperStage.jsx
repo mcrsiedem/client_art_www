@@ -16,6 +16,7 @@ import TablePaperGrupa from "./TablePaperGrupa";
 import iconCopy from "assets/copygrey.svg";
 import { getMaxID } from "actions/getMaxID";
 import ChangePaper from "./ChangePaper";
+import { updatePaperGrupy } from "./actions/updatePaperGrupy";
 export default function PaperStage() {
 
   const start = useRef();
@@ -268,7 +269,9 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
             if(paperSelectView[1].view == true){
               setListaPapierowNazwyWyszukiwarka(
                 listaPapierowNazwyWyszukiwarka.map((t, a) => {
-                if (t.id == selectRow.id) {
+
+                  if(listaPapierowWyszukiwarka.filter(x=> x.nazwa_id == selectRow.id).length ==0){
+                           if (t.id == selectRow.id) {
                   return {
                     ...t,
                     delete: true
@@ -276,6 +279,10 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
                 } else {
                   return t;
                 }
+                  }else{
+                    return t
+                  }
+         
               })
             );
         }
@@ -283,6 +290,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
         if(paperSelectView[2].view == true){
           setListaPapierowGrupaWyszukiwarka(
             listaPapierowGrupaWyszukiwarka.map((t, a) => {
+              if(listaPapierowWyszukiwarka.filter(x=> x.grupa_id == selectRow.id).length ==0){
             if (t.id == selectRow.id) {
               return {
                 ...t,
@@ -291,6 +299,11 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
             } else {
               return t;
             }
+          }else{
+            return t
+          }
+
+
           })
         );
 
@@ -375,6 +388,9 @@ function Zapisz() {
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
 
       return (
     <button 
@@ -383,6 +399,7 @@ function Zapisz() {
     onClick={() => {
        updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,setListaPapierow,setBtnZapiszPapierDisabled)
        updatePaperNazwy(listaPapierowNazwyWyszukiwarka,setListaPapierowNazwyWyszukiwarka,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
+       updatePaperGrupy(listaPapierowGrupaWyszukiwarka,setListaPapierowGrupaWyszukiwarka,setListaPapierowGrupa,setBtnZapiszPapierDisabled)
     }}
     
     disabled={isBtnZapiszPapierDisabled}

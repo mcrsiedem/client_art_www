@@ -169,6 +169,7 @@ function Grupa({ row }) {
   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
   return <td>
             <select
+          
           className={ style.select_papier_grupa }
           value={row.grupa_id}
           onChange={(e) => {
@@ -179,7 +180,6 @@ function Grupa({ row }) {
                   ...t,
                   grupa_id: e.target.value,
                   update: true
-        
                 };
               } else {
                 return t;
@@ -245,18 +245,14 @@ function Nazwa({ row }) {
     </td>;
 }
 
-function Gramatura({ row, index }) {
-  return <td>{row.gramatura}</td>;
-}
+
 
 function ID({ row,index}) {
   return <td>{index}</td>;
 }
 
 
-function Bulk({ row }) {
-  return <td>{row.bulk}</td>;
-}
+
 function Info2({ row }) {
   return <td>{row.info}</td>;
 }
@@ -265,7 +261,101 @@ function Opiekun({ row }) {
 }
 
 
-function Info({ row,setBtnZapisz}) {
+function Gramatura({ row}) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+    const modalcontext = useContext(ModalInsertContext);
+    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+return (
+  <td className={style.labelinput}>
+
+    <input
+    
+      className={style.select_papier_gramatura}
+      // type="text"
+      value={row.gramatura}
+      onChange={(event) => {
+        const re = /^[0-9]+$/;
+        const re2 = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+        if (event.target.value === "" || re.test(event.target.value)) {
+          // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
+         
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == row.id) {
+              return {
+                ...t,
+                gramatura: event.target.value,
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        setBtnZapiszPapierDisabled(false)
+
+        }
+      }}
+    >
+
+    </input>
+  </td>
+);
+}
+
+function Bulk({ row}) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+    const modalcontext = useContext(ModalInsertContext);
+    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+return (
+  <td className={style.labelinput}>
+
+    <input
+    
+      className={style.select_papier_bulk}
+      // type="text"
+      value={row.bulk}
+      onChange={(event) => {
+        // const re = /^[0-9]+$/;
+        const re = /^\d{0,6}(?:\.\d{0,2}){0,1}$/;
+        if (event.target.value === "" || re.test(event.target.value)) {
+          // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
+         
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == row.id) {
+              return {
+                ...t,
+                bulk: event.target.value,
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        setBtnZapiszPapierDisabled(false)
+
+        }
+      }}
+    >
+
+    </input>
+  </td>
+);
+}
+
+function Info({ row}) {
     const appcontext = useContext(AppContext);
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -276,7 +366,7 @@ function Info({ row,setBtnZapisz}) {
     <td className={style.labelinput}>
 
       <input
-        className={style.input_info}
+        className={style.select_papier_info}
         type="text"
         value={row.info}
         onChange={(event) => {

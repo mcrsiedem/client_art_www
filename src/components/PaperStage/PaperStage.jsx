@@ -26,7 +26,13 @@ export default function PaperStage() {
     const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
     const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+
+    const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+
+
+
     const showPaperStage = modalcontext.showPaperStage;
     const [selectRow, setSelectRow] = useState(null);
     const [selectTable, setSelectTable] = useState(start);
@@ -54,7 +60,6 @@ const scrollTable = (table) => {
     setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
-
   }
 
   useEffect(() => {
@@ -68,7 +73,7 @@ const scrollTable = (table) => {
  if(showPaperStage){
   return (
     <div className={style.grayScaleBackground}>
-      <div ref={start} className={style.window}>
+      <div  resizable ref={start} className={style.window}>
         <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
           <div className={style.btnContainer}>
@@ -86,7 +91,7 @@ const scrollTable = (table) => {
     <div className={style.container_in_footer}>   <Zapisz  /></div>
     <div className={style.container_in_footer_right}>
        <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} />  </div>
-       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}/>  </div>
+       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
        <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}   />   </div>
  
     </div>
@@ -131,12 +136,18 @@ function UseBTN({ selectRow, setSelectedPaperRow}) {
 
 
 
-function CopyBTN({ selectRow,scrollTable,selectTable}) {
+function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
 
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+  const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
+
+
 
   return (
     <div>
@@ -147,21 +158,57 @@ function CopyBTN({ selectRow,scrollTable,selectTable}) {
         onClick={() => {
 
           if(selectRow!= null){
-          const promiseA = new Promise((resolve, reject) => {
 
-                 const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
+            if(paperSelectView[0].view == true){
+          const promiseA = new Promise((resolve, reject) => {
+          const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
           newlistaPapierowWyszukiwarka.push({
             ...selectRow,
             id: getMaxID(listaPapierowWyszukiwarka),
             insert: true
           })
-
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
           });
-     
           promiseA.then(res => scrollTable(selectTable))
           setBtnZapiszPapierDisabled(false)
+
+            }
+
+            if(paperSelectView[1].view == true){
+              const promiseA = new Promise((resolve, reject) => {
+              const newlistaPapierowNazwyWyszukiwarka = listaPapierowNazwyWyszukiwarka.slice();
+              newlistaPapierowNazwyWyszukiwarka.push({
+                ...selectRow,
+                id: getMaxID(listaPapierowNazwyWyszukiwarka),
+                insert: true
+              })
+              setListaPapierowNazwyWyszukiwarka(newlistaPapierowNazwyWyszukiwarka)
+                resolve(777);
+              });
+              promiseA.then(res => scrollTable(selectTable))
+              setBtnZapiszPapierDisabled(false)
+    
+                }
+
+                if(paperSelectView[2].view == true){
+                  const promiseA = new Promise((resolve, reject) => {
+                  const newlistaPapierowGrupaWyszukiwarka = listaPapierowGrupaWyszukiwarka.slice();
+                  newlistaPapierowGrupaWyszukiwarka.push({
+                    ...selectRow,
+                    id: getMaxID(listaPapierowGrupaWyszukiwarka),
+                    insert: true
+                  })
+                  setListaPapierowGrupaWyszukiwarka(newlistaPapierowGrupaWyszukiwarka)
+                    resolve(777);
+                  });
+                  promiseA.then(res => scrollTable(selectTable))
+                  setBtnZapiszPapierDisabled(false)
+        
+                    }
+
+
+
           }
 
         }}

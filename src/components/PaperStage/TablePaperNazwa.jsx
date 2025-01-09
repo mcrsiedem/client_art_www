@@ -42,6 +42,10 @@ export default function TablePaperNazwa({
       // };
 
       const color = (row) => {
+
+        if (row.select) {
+          return style.tr_select;
+        }
         if (row.delete) {
           return style.tr_delete;
         }
@@ -51,9 +55,7 @@ export default function TablePaperNazwa({
         if (row.update) {
           return style.tr_update;
         }
-        if (row.select) {
-          return style.tr_select;
-        }
+ 
 
         return style.tr;
       };
@@ -68,8 +70,7 @@ export default function TablePaperNazwa({
 
             <th className={style.info}>Nazwa papieru</th>
             {/* <th className={style.th_ustawienia}>Zmień</th> */}
-            <th className={style.th_ustawienia}></th>
-            <th className={style.th_ustawienia}></th>
+
           </tr>
         </thead>
         <tbody   className={style.center}>
@@ -122,14 +123,14 @@ export default function TablePaperNazwa({
 
                 /> */}
 
-                <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
+                {/* <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
                 <DeleteIcon
                   scrollTable={  scrollTable}
                   daneZamowienia={daneZamowienia}
                   row={row}
                   rowID={rowID}
                   setShowDeleteClientPane={setShowDeleteClientPane}
-                />
+                /> */}
               </tr>
             );
           })}

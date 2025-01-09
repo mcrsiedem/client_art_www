@@ -43,6 +43,7 @@ const [paperSelectView, setPaperSelectView] = useState([
 ]);
 
 
+
 const scrollTable = (table) => {
   table.current.scrollTo({ top: 10000, behavior: "smooth" })
 };
@@ -92,7 +93,7 @@ const scrollTable = (table) => {
     <div className={style.container_in_footer_right}>
        <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} />  </div>
        <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
-       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}   />   </div>
+       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
  
     </div>
    
@@ -219,11 +220,20 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
 }
 
 
-function DeleteBTN({ selectRow,scrollTable,selectTable }) {
+function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
     const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+
+    const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+    const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+
+    const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+    const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
+
+
+
 
   return (
     <div>
@@ -234,28 +244,96 @@ function DeleteBTN({ selectRow,scrollTable,selectTable }) {
         onClick={() => {
 
           if(selectRow!= null){
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
+            if(paperSelectView[0].view == true){
+                  setListaPapierowWyszukiwarka(
+                    listaPapierowWyszukiwarka.map((t, a) => {
+                    if (t.id == selectRow.id) {
+                      return {
+                        ...t,
+                        delete: true
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
+
+            }
+
+            if(paperSelectView[1].view == true){
+              setListaPapierowNazwyWyszukiwarka(
+                listaPapierowNazwyWyszukiwarka.map((t, a) => {
+                if (t.id == selectRow.id) {
+                  return {
+                    ...t,
+                    delete: true
+                  };
+                } else {
+                  return t;
+                }
+              })
+            );
+        }
+
+        if(paperSelectView[2].view == true){
+          setListaPapierowGrupaWyszukiwarka(
+            listaPapierowGrupaWyszukiwarka.map((t, a) => {
             if (t.id == selectRow.id) {
               return {
                 ...t,
                 delete: true
-      
               };
             } else {
               return t;
             }
           })
         );
+
+    }
+
         setBtnZapiszPapierDisabled(false)
+
+
         }
       }
       }
 
         onDoubleClick={() => {
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
+          if(selectRow!= null){
+            if(paperSelectView[0].view == true){
+                  setListaPapierowWyszukiwarka(
+                    listaPapierowWyszukiwarka.map((t, a) => {
+                    if (t.id == selectRow.id) {
+                      return {
+                        ...t,
+                        delete: false
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+                );
+
+            }
+
+            if(paperSelectView[1].view == true){
+              setListaPapierowNazwyWyszukiwarka(
+                listaPapierowNazwyWyszukiwarka.map((t, a) => {
+                if (t.id == selectRow.id) {
+                  return {
+                    ...t,
+                    delete: false
+                  };
+                } else {
+                  return t;
+                }
+              })
+            );
+        }
+
+        if(paperSelectView[2].view == true){
+          setListaPapierowGrupaWyszukiwarka(
+            listaPapierowGrupaWyszukiwarka.map((t, a) => {
             if (t.id == selectRow.id) {
               return {
                 ...t,
@@ -266,8 +344,15 @@ function DeleteBTN({ selectRow,scrollTable,selectTable }) {
             }
           })
         );
+
+    }
+
         setBtnZapiszPapierDisabled(false)
         }}
+      
+      
+      
+      }
         alt="Procesy"
       />
     </div>

@@ -35,6 +35,10 @@ export default function TablePaperGrupa({
       // };
 
       const color = (row) => {
+
+        if (row.select) {
+          return style.tr_select;
+        }
         if (row.delete) {
           return style.tr_delete;
         }
@@ -44,9 +48,8 @@ export default function TablePaperGrupa({
         if (row.update) {
           return style.tr_update;
         }
-        if (row.select) {
-          return style.tr_select;
-        }
+ 
+
         return style.tr;
       };
 

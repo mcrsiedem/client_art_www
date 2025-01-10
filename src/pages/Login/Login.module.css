@@ -18,7 +18,9 @@
 	display: grid;
 	grid-template-rows: 1fr  ;
 	/* background-color: white; */
-	background: url(/src/assets/logowanie_4.jpg);
+	/* background: url(/src/assets/logowanie_4.jpg); */
+    background: url(/src/assets/m5.jpg);
+
   background-repeat: no-repeat;
   background-size: cover;
 }

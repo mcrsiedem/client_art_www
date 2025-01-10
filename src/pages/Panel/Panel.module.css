@@ -3,7 +3,11 @@
     grid-template-rows: 60px 1fr;
     background-color: rgba(89, 131, 252, 1);
     background-image: linear-gradient(0deg, rgba(89, 131, 252, 1) 0%, rgba(41, 53, 86, 1) 100%);
-    background: url(/src/assets/logowanie_4.jpg);
+    /* background: url(/src/assets/logowanie_4.jpg); */
+    background: url(/src/assets/m5.jpg );
+    /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
+    /* background: url(/src/assets/m3.png); */
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10px;
@@ -28,7 +32,7 @@
 }
 
 .menu_txt{
-    color: rgb(190, 190, 190);
+    color: rgb(255, 255, 255);
     font-size: 13px;
     padding-top: 15px;
 }
@@ -38,7 +42,7 @@
 
 
 p{
-    color: rgb(190, 190, 190);
+    color: rgb(255, 255, 255);
     font-size: 13px;
     padding-top: 15px;
 }
@@ -149,8 +153,8 @@ align-items: start;
     justify-content: start;
     align-items: center;
     padding-left: 40px;
-    backdrop-filter:  blur(30px);
-    color: rgb(222, 230, 253);
+    backdrop-filter:  blur(10px);
+    color: rgb(255, 255, 255);
     border-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
@@ -160,10 +164,12 @@ align-items: start;
     font-size: 0.9rem;
     /* padding-left: 50px; */
     /* margin: 20px; */
-  /* box-shadow: 2px 1px 20px rgb(255, 255, 255) ; */
+  /* box-shadow: 1px 1px 15px rgb(255, 255, 255) ; */
   font-weight: 600;
 
-  outline: 1px solid  rgb(66, 66, 66);
+  border: 1px solid  rgb(146, 146, 146);
+  /* border-left: 1px solid  rgb(146, 146, 146);
+  border-bottom: 1px solid  rgb(146, 146, 146); */
   gap: 25px
 
   /* background-color: rgb(211, 211, 211); */
@@ -183,7 +189,8 @@ align-items: start;
     /* background-color: rgb(229, 229, 229);  */
     /* background-color: red; */
     /* background-color: rgb(75, 75, 75); */
-    color: rgb(255, 255, 255);
+    color: rgb(204, 204, 204);
+   
         /* background-image: linear-gradient(90deg, rgb(75, 75, 75, 0.1) 0%, rgb(75, 75, 75,1) 80%); */
     /* outline: 1px white dashed; */
     
@@ -197,7 +204,7 @@ align-items: start;
 
 .kafle:hover {
     background-color: rgba(128, 128, 128, 0.2);
-
+    /* box-shadow: 1px 1px 15px rgb(255, 255, 255) ; */
 
 }
 .znak{

@@ -1,41 +1,19 @@
 import React, { useState, useRef,useContext } from "react";
 import style from "./TablePaperGrupa.module.css";
-
-import iconDelete from "assets/trash2.svg";
-import iconEdit from "assets/settings.svg";
-import iconCopy from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
-import { ModalInsertContext } from "context/ModalInsertContext";
-import ChangePaper from "./ChangePaper";
-import { getMaxID } from "actions/getMaxID";
-
 
 export default function TablePaperGrupa({
   paperSelectView,setPaperSelectView,selectRow,
   setSelectRow,
   setBtnZapisz,
-  daneZamowienia,
-  scrollTable,
   setSelectTable
-
 }) {
-  const [selectedPaperRow, setSelectedPaperRow] = useState();
-  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showChange, setShowChange] = useState(false);
-  const rowID = useRef();
-
   const inputElement = useRef();
       const appcontext = useContext(AppContext);
       const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
       const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-      // const setPaperSelectView = appcontext.setPaperSelectView;
       const listaPapierow = appcontext.listaPapierow;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-
-      // const scrollTable = () => {
-      //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
-      // };
 
       const color = (row) => {
 
@@ -52,7 +30,6 @@ export default function TablePaperGrupa({
           return style.tr_update;
         }
  
-
         return style.tr;
       };
 
@@ -70,7 +47,6 @@ export default function TablePaperGrupa({
         <tbody   className={style.center}>
           {listaPapierowGrupaWyszukiwarka?.map((row, index) => {
             return (
-              // <tr className={row.insert ? style.tr_insert : style.tr}
               <tr className={color(row)}
                 key={row.id}
                 onClick={()=>{
@@ -82,8 +58,6 @@ export default function TablePaperGrupa({
                         ...t,
                         select: false
                       };
-                
-                    
                   }).map((t, a) => {
                     if (t.id == row.id) {
                       return {
@@ -99,12 +73,7 @@ export default function TablePaperGrupa({
                 }}
 
                 onDoubleClick={
-                  
-
-
                   () => {
-
-
                     setPaperSelectView(
                       paperSelectView
                         .map((t) => {
@@ -118,68 +87,34 @@ export default function TablePaperGrupa({
                           }
                         })
                     );
-
                     const m = [...listaPapierow];
                     setListaPapierowWyszukiwarka(
                       m.filter((k) =>
                         k.grupa_id == selectRow.id)
-            
                     );
-
-
                   }
-
-
                 }
               >
                 <ID row={row} index={index + 1} />
                 <Grupa row={row} setBtnZapisz={setBtnZapisz}/>
-                {/* <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
-                <DeleteIcon
-                  scrollTable={  scrollTable}
-                  daneZamowienia={daneZamowienia}
-                  row={row}
-                  rowID={rowID}
-                  setShowDeleteClientPane={setShowDeleteClientPane}
-                /> */}
               </tr>
             );
           })}
         </tbody>
       </table>
-
-        {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} /> */}
-      
     </div>
   );
 }
 }
-const openEdit = (row, rowID, setShowEdit) => {
-  // otwiera edycję po dwukrotnym kliknięciu
-  rowID.current = {
-    id: row.id,
-    firma: row.firma,
-    adres: row.adres,
-    kod: row.kod,
-    nIP: row.nIP,
-    opiekun_id: row.opiekun_id,
-    utworzyl_user_id: row.utworzyl_user_id,
-  };
-  setShowEdit(true);
-};
-
 
 function ID({ row,index}) {
   return <td>{index}</td>;
 }
-
-function Grupa({ row,setBtnZapisz}) {
+function Grupa({ row}) {
     const appcontext = useContext(AppContext);
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
-    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-      const modalcontext = useContext(ModalInsertContext);
-      // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+
       const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
   return (
     <td className={style.labelinput}>
@@ -211,7 +146,6 @@ function Grupa({ row,setBtnZapisz}) {
           }
         }}
       >
-
       </input>
     </td>
   );

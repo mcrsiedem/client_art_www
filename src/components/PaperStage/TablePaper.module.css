@@ -45,7 +45,7 @@
 
 .select_papier {
   background-color: transparent;
-  outline: 1px rgb(207, 207, 207) solid;
+  /* outline: 1px rgb(207, 207, 207) solid; */
   border-radius: 5px;
   border-radius: 5px;
     height: 1.8rem;
@@ -56,7 +56,7 @@
   .select_papier_wykonczenie {
     /* background-color: rgb(236, 236, 236); */
     background-color: transparent;
-    outline: 1px rgb(207, 207, 207) solid;
+    /* outline: 1px rgb(207, 207, 207) solid; */
     border-radius: 5px;
     
     height: 1.8rem;
@@ -68,7 +68,7 @@
   .select_papier_gramatura {
     background-color: rgb(236, 236, 236);
     background-color: transparent;
-    outline: 1px rgb(207, 207, 207) solid;
+    /* outline: 1px rgb(207, 207, 207) solid; */
     border-radius: 5px;
     height: 1.8rem;
   width: 50px;
@@ -79,7 +79,7 @@ text-align: center;
   .select_papier_bulk {
     background-color: rgb(236, 236, 236);
     background-color: transparent;
-    outline: 1px rgb(207, 207, 207) solid;
+    /* outline: 1px rgb(207, 207, 207) solid; */
     border-radius: 5px;
     height: 1.8rem;
   width: 50px;
@@ -100,7 +100,7 @@ text-align: center;
   
   .select_papier_grupa {
     background-color: transparent;
-    outline: 1px rgb(207, 207, 207) solid;
+    /* outline: 1px rgb(207, 207, 207) solid; */
     border-radius: 5px;
     height: 1.8rem;
   width: 150px;

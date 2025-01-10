@@ -11,8 +11,8 @@ import { getMaxID } from "actions/getMaxID";
 
 
 export default function TablePaperGrupa({
-  selectRow,setSelectRow,
-  paperSelectView,
+  paperSelectView,setPaperSelectView,selectRow,
+  setSelectRow,
   setBtnZapisz,
   daneZamowienia,
   scrollTable,
@@ -29,6 +29,9 @@ export default function TablePaperGrupa({
       const appcontext = useContext(AppContext);
       const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
       const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+      // const setPaperSelectView = appcontext.setPaperSelectView;
+      const listaPapierow = appcontext.listaPapierow;
+      const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
 
       // const scrollTable = () => {
       //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
@@ -96,8 +99,37 @@ export default function TablePaperGrupa({
                 }}
 
                 onDoubleClick={
-                  () => openEdit(row, rowID, setShowEdit)
-                  // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
+                  
+
+
+                  () => {
+
+
+                    setPaperSelectView(
+                      paperSelectView
+                        .map((t) => {
+                          return { ...t, view: false };
+                        })
+                        .map((t) => {
+                          if (t.nazwa == "papier") {
+                            return { ...t, view: true };
+                          } else {
+                            return t;
+                          }
+                        })
+                    );
+
+                    const m = [...listaPapierow];
+                    setListaPapierowWyszukiwarka(
+                      m.filter((k) =>
+                        k.grupa_id == selectRow.id)
+            
+                    );
+
+
+                  }
+
+
                 }
               >
                 <ID row={row} index={index + 1} />

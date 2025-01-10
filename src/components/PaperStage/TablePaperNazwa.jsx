@@ -13,6 +13,7 @@ import { getMaxID } from "actions/getMaxID";
 export default function TablePaperNazwa({
   selectRow,setSelectRow,
   paperSelectView,
+  setPaperSelectView,
   btnZapisz,
   setBtnZapisz,
   daneZamowienia,
@@ -35,6 +36,9 @@ export default function TablePaperNazwa({
 
       const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
       const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+      const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+      const listaPapierow = appcontext.listaPapierow;
       
 
       // const scrollTable = () => {
@@ -104,8 +108,40 @@ export default function TablePaperNazwa({
                 );
                 }}
                 onDoubleClick={
-                  () => openEdit(row, rowID, setShowEdit)
+                  () => {
+
+
+                    setPaperSelectView(
+                      paperSelectView
+                        .map((t) => {
+                          return { ...t, view: false };
+                        })
+                        .map((t) => {
+                          if (t.nazwa == "papier") {
+                            return { ...t, view: true };
+                          } else {
+                            return t;
+                          }
+                        })
+                    );
+
+                    const m = [...listaPapierow];
+                    setListaPapierowWyszukiwarka(
+                      m.filter((k) =>
+                        k.nazwa_id == selectRow.id)
+            
+                    );
+
+
+                  }
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
+               
+// const [paperSelectView, setPaperSelectView] = useState([
+//   {id:1,nazwa:"papier",view:true},
+//   {id:2,nazwa:"nazwa",view:false},
+//   {id:3,nazwa:"grupa",view:false}
+// ]);
+                
                 }
               >
                 <ID row={row} index={index + 1} />

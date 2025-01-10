@@ -87,7 +87,7 @@ function Center({ input, setInput, handleSubmit }) {
           />
         </div>
 
-        <button type="submit" className={style.myButton}>
+        <button onClick={()=>handleSubmit}type="submit" className={style.myButton}>
           Zaloguj
         </button>
       </form>

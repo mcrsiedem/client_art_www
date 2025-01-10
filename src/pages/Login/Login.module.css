@@ -74,6 +74,7 @@
 }
 
 
+
 .loginInput{
 	width: 350px; 
 	height: 2.5rem;;
@@ -82,9 +83,11 @@
 text-align: center;
 border: 1px solid rgb(219, 219, 219);
 background-color: rgb(219, 219, 219);;
+/* background: transparent; */
 
 
 }
+
 
 .myButton {
 	background-image: linear-gradient(#E30613 0%,#bd131e 50%,#E30613 100%);

@@ -410,6 +410,9 @@ function Zapisz() {
 }
 
 function PapierBTN({ paperSelectView, setPaperSelectView }) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierow = appcontext.listaPapierow;
   return (
     <button
       className={style.btnPaper}
@@ -427,6 +430,9 @@ function PapierBTN({ paperSelectView, setPaperSelectView }) {
               }
             })
         );
+
+        setListaPapierowWyszukiwarka(listaPapierow)
+
       }}
     >
       Papier

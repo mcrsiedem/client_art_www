@@ -97,7 +97,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
         <th className={style.col7}>Uwagi</th>
         <th className={style.col7}></th>
         <th className={style.col7}></th>
-        <th className={style.col7}></th>
+        {/* <th className={style.col7}></th> */}
       </tr>
     </thead>
     <tbody>
@@ -164,7 +164,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                 
               <Usun  row={row} handleRemoveItem={handleRemoveItem}/>
               <DodajOprawe row={row} oprawa={oprawa} setOprawa={setOprawa} />
-              <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  />
+              {/* <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  /> */}
             </tr>
             {expand ? (
               fragmenty
@@ -194,7 +194,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
+                      {/* <td></td> */}
                       
                  
                     </tr>

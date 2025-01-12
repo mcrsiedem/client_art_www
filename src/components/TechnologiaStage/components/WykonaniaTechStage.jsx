@@ -71,10 +71,18 @@ const RowProces = ({rowProcesy}) => {
   const techContext = useContext(TechnologyContext);
   const procesyElementowTech = techContext.procesyElementowTech;
   const elementyTech = techContext.elementyTech;
+  const grupaWykonan = techContext.grupaWykonan;
+  
 
   return (
     <div>
     <p2>{rowProcesy.nazwa}</p2>
+    {grupaWykonan
+      .filter((x) => x.proces_id == rowProcesy.id)
+      .map((rowGrupa) => (
+        <p2>{rowGrupa.procesor_id}</p2>
+      ))}
+
   </div>
 
   );

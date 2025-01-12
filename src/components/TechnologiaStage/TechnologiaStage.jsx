@@ -8,6 +8,7 @@ import ProduktyTech from "./components/ProduktyTech";
 import ElementyTech from "./components/ElementyTech";
 
 import WykonaniaTech from "./components/WykonaniaTech";
+import WykonaniaTechStage from "./components/WykonaniaTechStage";
 import IntroligatorniaTech from "./components/IntroligatorniaTech";
 import ProcesElementTech from "./components/ElementTechProces";
 
@@ -37,7 +38,8 @@ export default function TechnologiaStage() {
           <IntroligatorniaTech />
          
               <div className={style.container_legi_arkusze}>
-                <WykonaniaTech />
+                {/* <WykonaniaTech /> */}
+                <WykonaniaTechStage />
               </div>
         </div>
 

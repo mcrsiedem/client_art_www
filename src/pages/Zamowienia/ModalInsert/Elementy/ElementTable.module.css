@@ -347,7 +347,9 @@ font-size: 0.9rem;
 }
 
 .papier_input_container{
+
   position: relative;
+  /* min-width:  max-content; */
   /* background-color: red; */
  
 }
@@ -355,7 +357,7 @@ font-size: 0.9rem;
 .select_papier {
   /* background-color: rgb(165, 243, 63); */
   height: 2rem;
-width: 100%;
+  min-width: 400px;
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
@@ -367,7 +369,7 @@ width: 100%;
 .select_papier_brak{
   /* background-color: rgb(253, 199, 186); */
   height: 2rem;
-
+  min-width: 400px;
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);

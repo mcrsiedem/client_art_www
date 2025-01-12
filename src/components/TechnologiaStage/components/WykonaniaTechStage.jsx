@@ -18,9 +18,6 @@ import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
 import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgrupy";
 import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
 
-
-
-
 export default function WykonaniaTechStage() {
   return (
     <div className={style.container}>
@@ -28,16 +25,9 @@ export default function WykonaniaTechStage() {
       <WykonaniaTechPane />
     </div>
   );
-
-  
 }
 
-
-
 const WykonaniaTechPane = () => {
-  const techContext = useContext(TechnologyContext);
-  const procesyElementowTech = techContext.procesyElementowTech;
-
   return (
   <div className={style.pane}>
     <MenuPane/> <ContentPane/>
@@ -49,20 +39,48 @@ const WykonaniaTechPane = () => {
 const MenuPane = () => {
   const techContext = useContext(TechnologyContext);
   const procesyElementowTech = techContext.procesyElementowTech;
+  const elementyTech = techContext.elementyTech;
 
   return (
-  <div className={style.menu_pane}>
-    
+    <div className={style.menu_pane}>
+      {elementyTech.map((rowElement) => (
+        <RowElement rowElement={rowElement}/>
+      ))}
+    </div>
+  );
+};
 
-    menu
-    
-      {/* {procesyElementowTech.map((rowProces) => (
-        <ProcesRow rowProces={rowProces} />
-      ))} */}
+const RowElement = ({rowElement}) => {
+  const techContext = useContext(TechnologyContext);
+  const procesyElementowTech = techContext.procesyElementowTech;
+  return (
 
+    <div>
+      <p2>{rowElement.typ_nazwa}</p2>
+    {procesyElementowTech
+      .filter((x) => x.element_id == rowElement.id)
+      .map((rowProcesy) => (
+        <RowProces rowProcesy={rowProcesy}/>
+      ))}
   </div>
-  )
-}
+
+  );
+};
+
+const RowProces = ({rowProcesy}) => {
+  const techContext = useContext(TechnologyContext);
+  const procesyElementowTech = techContext.procesyElementowTech;
+  const elementyTech = techContext.elementyTech;
+
+  return (
+    <div>
+    <p2>{rowProcesy.nazwa}</p2>
+  </div>
+
+  );
+};
+
+
 
 const ContentPane = () => {
   const techContext = useContext(TechnologyContext);
@@ -71,7 +89,7 @@ const ContentPane = () => {
   return (
   <div className={style.content_pane}>
     
-    content
+    
       {/* {procesyElementowTech.map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))} */}

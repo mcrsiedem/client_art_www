@@ -15,8 +15,8 @@
 }
 
         .menu_pane {
-          display: grid;
-          grid-template-columns: 1fr 1fr ;
+          justify-content: center; 
+          align-items: center;
           /* background-color: red; */
         }
 

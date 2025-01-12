@@ -30,9 +30,10 @@ export default function RowFragment({
       
       <Typ row={row} />
       <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
-       <div  className={style.rowFragmenty_strony}>{row.ilosc_stron}</div>
-      <div disabled className={style.rowFragmenty_strony}> </div>
-      <div disabled className={style.rowFragmenty_strony}> </div>
+       {/* <div  className={style.rowFragmenty_strony}>{row.ilosc_stron}</div> */}
+       <div ></div>
+      <div disabled > </div>
+      <div disabled > </div>
       
       <Wersja row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
       <Dodaj row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} handleAddFragment={handleAddFragment} />

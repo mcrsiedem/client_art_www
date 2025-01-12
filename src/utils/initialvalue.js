@@ -100,7 +100,10 @@ const initialElementy = [
     gramatura_id: 0,
     naklad: "1000",
     uwagi: "",
-
+    stan:0,
+    status:0,
+    info:"",
+    tytul:"",
     indeks: 1,
   },
 
@@ -119,6 +122,10 @@ const initialElementy = [
     gramatura_id: 0,
     naklad: "1000",
     uwagi: "",
+    stan:0,
+    status:0,
+    info:"",
+    tytul:"",
     indeks: 2,
   },
 ];

@@ -64,7 +64,7 @@ export default function Header({
               ) :
               (
                 <>
-                {/* <PokazStany/> */}
+                <PokazStany/>
                   <Zapisz
                     setShowSaveAs={setShowSaveAs}
                     postZamowienieObj={postZamowienieObj}

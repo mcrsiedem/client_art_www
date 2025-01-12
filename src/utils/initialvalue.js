@@ -132,9 +132,9 @@ const initialFragmenty = [
     oprawa_id: 1,
     naklad: "1000",
     ilosc_stron: "4",
-    wersja: " ",
+    wersja: "",
     typ: 1,
-    info: " ",
+    info: "",
     indeks: 0,
   },
   {
@@ -145,9 +145,9 @@ const initialFragmenty = [
     oprawa_id: 1,
     naklad: "1000",
     ilosc_stron: "80",
-    wersja: " ",
+    wersja: "",
     typ: 2,
-    info: " ",
+    info: "",
     indeks: 1,
   },
 ];

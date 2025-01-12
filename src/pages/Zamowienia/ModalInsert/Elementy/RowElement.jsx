@@ -99,6 +99,8 @@ export default function RowElement({
               produkt_id: card.produkt_id,
               ilosc_stron: card.ilosc_stron,
               naklad: card.naklad,
+              wersja: x.wersja,
+              info:x.info,
               typ: card.typ,
               oprawa_id: x.oprawa_id,
               element_id: Math.max(...elementy.map((f) => f.id)) + 1,

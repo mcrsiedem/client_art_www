@@ -60,7 +60,7 @@ const RowElement = ({rowElement}) => {
     {procesyElementowTech
       .filter((x) => x.element_id == rowElement.id)
       .map((rowProcesy) => (
-        <RowProces rowProcesy={rowProcesy}/>
+        <RowProces  rowProcesy={rowProcesy}/>
       ))}
   </div>
 
@@ -76,12 +76,13 @@ const RowProces = ({rowProcesy}) => {
 
   return (
     <div className={style.proces_row}>
-    <p2 className={style.procesy_tekst}>{rowProcesy.nazwa}</p2>
+
     {grupaWykonan
       .filter((x) => x.proces_id == rowProcesy.id)
       .map((rowGrupa) => (
 
         <div className={style.grupa_row}>
+              <p2 className={style.procesy_tekst}>{rowProcesy.nazwa}</p2>
           <Procesor rowProces={rowProcesy} rowGrupa={rowGrupa}/>
           <CzasGrupy rowGrupa={rowGrupa}/>
               {/* <p2 className={style.grupa_tekst}>{rowGrupa.procesor_id}</p2> */}

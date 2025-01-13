@@ -70,7 +70,10 @@
           font-size: 0.9rem;
         background-color: rgb(186, 222, 255);
         background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
-        border-radius: 10px;
+        /* border-radius: 10px; */
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        /* border-bottom-left-radius: 10px; */
         }
 
         .grupa_tekst{

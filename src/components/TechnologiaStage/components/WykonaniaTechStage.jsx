@@ -90,6 +90,7 @@ const RowProces = ({rowProcesy}) => {
           <PredkoscGrupy rowGrupa={rowGrupa}/>
           <MnoznikPredkosci rowGrupa={rowGrupa}/>
           <StatusGrupy rowGrupa={rowGrupa}/>
+          <DodajGrupeWykonan rowGrupa={rowGrupa}/>
 
           
           
@@ -113,7 +114,7 @@ const ContentPane = () => {
   
   return (
   <div className={style.content_pane}>
-    
+    Wykonania
     {               wykonania
                   .filter((f) => f.grupa_id == selectedGrupaTechROW.id)
                   .map((rowWykonanie, i) => (
@@ -154,6 +155,43 @@ const PredkoscGrupy = ({ rowGrupa }) => {
     </div>
   );
 };
+
+function DodajGrupeWykonan({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
+  return (
+    <div style={{ paddingLeft: "10px" }}>
+      <img
+        onDragOver={handleDragOver}
+        onDrop={() => handleDrop(1)}
+        className={style.expand}
+        src={icon}
+        onClick={() => {
+          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
+          // handleRemoveItem(row.indeks, row.id);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+      // console.log("id: "+id_drag_wykonania)
+      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
+      // let id_drop_grupa = id;
+    }
+  }
+}
+
 
 function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);

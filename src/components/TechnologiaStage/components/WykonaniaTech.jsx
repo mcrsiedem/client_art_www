@@ -242,18 +242,6 @@ function MnoznikPredkosci({ rowGrupa }) {
         defaultValue={rowGrupa.mnoznik}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, mnoznik: event.target.value });
-
-          // if (row.indeks == 0) {
-          //   setProdukty(
-          //     produkty.map((p) => {
-          //       if (p.id === row.produkt_id) {
-          //         return { ...p, oprawa: event.target.value };
-          //       } else {
-          //         return p;
-          //       }
-          //     })
-          //   );
-          // }
         }}
       >
         {mnozniki.map((option) => (
@@ -298,22 +286,7 @@ function StatusGrupy({ rowGrupa }) {
             updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
 
           }
-          
 
-          // setWykonania(
-          //   wykonania.map((t) => {
-          //     if (t.grupa_id == rowGrupa.id) {
-          //       return {
-          //         ...t,
-          //         status: event.target.value
-        
-          //       };
-          //     } else {
-          //       return t;
-          //     }
-          //   })
-          // )
-  
         }}
       >
         {_status_wykonania.map((option) => (

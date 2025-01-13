@@ -17,6 +17,7 @@ import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProc
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
 import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgrupy";
 import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
+import RowWykonanieStage from "./RowWykonanieStage";
 
 export default function WykonaniaTechStage() {
   return (
@@ -72,6 +73,7 @@ const RowProces = ({rowProcesy}) => {
   const procesyElementowTech = techContext.procesyElementowTech;
   const elementyTech = techContext.elementyTech;
   const grupaWykonan = techContext.grupaWykonan;
+  const setSelectedGrupaTechROW = techContext.setSelectedGrupaTechROW;
   
 
   return (
@@ -81,16 +83,18 @@ const RowProces = ({rowProcesy}) => {
       .filter((x) => x.proces_id == rowProcesy.id)
       .map((rowGrupa) => (
 
-        <div className={style.grupa_row}>
+        <div onClick={()=> {setSelectedGrupaTechROW(rowGrupa)}}className={style.grupa_row}>
               <p2 className={style.procesy_tekst}>{rowProcesy.nazwa}</p2>
           <Procesor rowProces={rowProcesy} rowGrupa={rowGrupa}/>
           <CzasGrupy rowGrupa={rowGrupa}/>
-              {/* <p2 className={style.grupa_tekst}>{rowGrupa.procesor_id}</p2> */}
+          <PredkoscGrupy rowGrupa={rowGrupa}/>
+          <MnoznikPredkosci rowGrupa={rowGrupa}/>
+          <StatusGrupy rowGrupa={rowGrupa}/>
 
+          
+          
            </div>
     
-
-
       ))}
 
   </div>
@@ -103,11 +107,22 @@ const RowProces = ({rowProcesy}) => {
 const ContentPane = () => {
   const techContext = useContext(TechnologyContext);
   const procesyElementowTech = techContext.procesyElementowTech;
-
+  const wykonania = techContext.wykonania;
+  const selectedGrupaTechROW = techContext.selectedGrupaTechROW;
+  const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+  
   return (
   <div className={style.content_pane}>
     
-    
+    {               wykonania
+                  .filter((f) => f.grupa_id == selectedGrupaTechROW.id)
+                  .map((rowWykonanie, i) => (
+                    <div className={style.wykonania_container}>
+                      {/* <WykonanieRow row={row}/> */}
+                      <RowWykonanieStage rowWykonanie={rowWykonanie} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
+
+                    </div>
+                  ))}
       {/* {procesyElementowTech.map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))} */}
@@ -115,6 +130,30 @@ const ContentPane = () => {
   </div>
   )
 }
+
+const PredkoscGrupy = ({ rowGrupa }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.grupa_tekst}>
+      
+   
+      <input
+      
+        className={style.input_czas}
+        value={rowGrupa.predkosc}
+        onChange={(e) => {
+          if (e.target.value == "" || reg_txt.test(e.target.value)) {
+            updateGrupaWykonan({
+              ...rowGrupa,
+              predkosc: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
 function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
@@ -131,7 +170,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
      className={style.grupa_tekst}>
       {/* <label className={style.label}> Procesor </label> */}
       <select
-        className={style.input}
+        className={style.input_procesor}
         defaultValue={rowGrupa.procesor_id}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
@@ -173,6 +212,78 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
 
 
 }
+
+function StatusGrupy({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _status_wykonania = contextApp._status_wykonania
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const wykonania = techContext.wykonania
+  const setWykonania = techContext.setWykonania
+  return (
+    <div className={style.grupa_tekst}>
+
+      <select 
+        className={style.input_procesor}
+        defaultValue={rowGrupa.status}
+        onChange={(event) => {
+  
+          // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
+          // technologia_id != 1 - zmiany bezpośrednio na serwerze
+     // 1 - status
+            // 2 - stan
+
+          if(rowGrupa.technologia_id == 1){
+
+            updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
+            updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+          }else{
+
+       
+            updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
+
+          }
+
+        }}
+      >
+        {_status_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+function MnoznikPredkosci({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const mnozniki = contextApp.mnozniki
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.grupa_tekst}>
+      {/* <label className={style.label}> Mnożnik </label> */}
+      <select 
+        className={style.input_mnoznik}
+        defaultValue={rowGrupa.mnoznik}
+        onChange={(event) => {
+          updateGrupaWykonan({ ...rowGrupa, mnoznik: event.target.value });
+        }}
+      >
+        {mnozniki.map((option) => (
+          <option key={option.id} value={option.value}>
+            {option.value}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 
 const CzasGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);

@@ -17,6 +17,8 @@
         .menu_pane {
           justify-content: center; 
           align-items: center;
+          /* outline: 1px dashed rgb(182, 182, 182); */
+          /* border-right: 1px dashed rgb(189, 189, 189); */
           /* width: 400px; */
         
           /* background-color: rgb(218, 218, 218); */
@@ -32,10 +34,11 @@
           /* background-color: rgb(255, 15, 15); */
           /* width: 45vw; */
           /* background-color: rgb(241, 241, 241); */
-          border-bottom: 1px solid rgb(201, 201, 201);
+          border-bottom: 1px dashed rgb(201, 201, 201);
           /* border-radius: 10px; */
           padding-top: 5px;
           padding-bottom: 20px;
+          /* margin-right: 20px; */
         }
         .elementy_tekst{
           font-size: 1rem;
@@ -56,7 +59,7 @@
           margin-left: 5px;
           /* padding-left: 100px; */
           /* background-color: red; */
-          width: 150px;
+          /* width: 150px; */
         }
 
 
@@ -66,6 +69,7 @@
           justify-content: center; 
           align-items: start;
           padding-top: 5px;
+          margin-right: 20px;
           /* background-color: rgb(255, 15, 15); */
           /* width: 45vw; */
         }
@@ -76,14 +80,15 @@
           justify-content: center; 
           align-items: start;
           margin-left: 45px;
+          /* background-color: red; */
           /* padding-top: 5px; */
           /* background-color: rgb(255, 15, 15); */
           /* width: 45vw; */
         }
 
                   .content_pane {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr ;
+                    justify-content: center; 
+                    align-items: center;
                     /* background-color: red; */
                   }
 
@@ -106,21 +111,43 @@
                     height: 1.3rem;
                     width: 60px;
                     text-align: center;
-                    /* border-top-left-radius: 5px;
-                    border-top-right-radius: 5px; */
                     border-radius: 5px;
                     border-color: transparent;
                     outline: 1px solid rgb(185, 185, 185);
-                    /* padding-left: 10px; */
                     font-size: 0.8rem;
+                  }
 
+                  .input_procesor{
+                    background-color: rgb(235, 235, 235);
+                    height: 1.3rem;
+                    width: 120px;
+                    text-align: center;
+                    border-radius: 5px;
+                    border-color: transparent;
+                    outline: 1px solid rgb(185, 185, 185);
+                    font-size: 0.8rem;
+                  }
+                  .input_mnoznik{
+                    background-color: rgb(235, 235, 235);
+                    height: 1.3rem;
+                    width: 50px;
+                    text-align: center;
+                    border-radius: 5px;
+                    border-color: transparent;
+                    outline: 1px solid rgb(185, 185, 185);
+                    font-size: 0.8rem;
                   }
 
 .header_procesy{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 /* margin-top: 10px; */
-border-bottom: 1px solid rgb(182, 182, 182);
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+/* border: 1px dashed rgb(182, 182, 182); */
+
+border-bottom: 1px dashed rgb(182, 182, 182);
+/* background-color: rgb(168, 168, 168); */
 }
 
 .nazwy_procesow{

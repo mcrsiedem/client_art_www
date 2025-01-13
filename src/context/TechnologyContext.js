@@ -38,6 +38,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState(initialProcesy); // aby mozna było zamknąc bez zapisywania
         const [showElementyTechProcesyInsert, setShowElementyTechProcesyInsert] =     useState(false);
         const [selectedElementTechROW,setSelectedElementTechROW] = useState(null)
+        const [selectedGrupaTechROW,setSelectedGrupaTechROW] = useState({id:1})
 
         const [legi, setLegi] = useState([]);
         const [legiFragmenty, setLegiFragmenty] = useState([]);
@@ -590,6 +591,7 @@ async function fechTechnology() {
                     handleUpdateRowProcesyElementowTech,
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
+                    selectedGrupaTechROW,setSelectedGrupaTechROW,
                     updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
                     updateRowProcesyElementowTech,
                     updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,

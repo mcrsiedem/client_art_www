@@ -17,7 +17,51 @@
         .menu_pane {
           justify-content: center; 
           align-items: center;
-          /* background-color: red; */
+          width: 400px;
+        
+          /* background-color: rgb(218, 218, 218); */
+          /* width: 45vw; */
+        }
+        .element_row {
+          margin-top: 15px;
+          /* display: flex;
+          flex-direction: column;
+          justify-content: center; 
+          align-items: start;
+          padding-top: 5px; */
+          /* background-color: rgb(255, 15, 15); */
+          /* width: 45vw; */
+          background-color: rgb(228, 228, 228);
+          border-radius: 10px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+        .elementy_tekst{
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: grey;
+          margin-left: 30px;
+          /* margin-top: 10px;           */
+        }
+        .procesy_tekst{
+          padding-left: 50px;
+          font-weight: bold;
+          color: grey;
+        }
+
+        .grupa_tekst{
+          padding-left: 50px;
+        }
+
+
+        .proces_row {
+          display: flex;
+          flex-direction: column;
+          justify-content: center; 
+          align-items: start;
+          padding-top: 5px;
+          /* background-color: rgb(255, 15, 15); */
+          /* width: 45vw; */
         }
 
                   .content_pane {

@@ -18,6 +18,13 @@ border-bottom: 1px solid rgb(182, 182, 182);
   text-align: center;
   
 }
+.nazwy_procesow2{
+  color: var(--art-text-label);
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  
+}
 .procesy_menu_button{
   display: flex;
  flex-direction: row;

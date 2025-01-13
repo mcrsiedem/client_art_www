@@ -66,7 +66,7 @@ const ProcesRow = ({ rowProces }) => {
         <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
         <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
-        <p  className={style.nazwy_procesow}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+        <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow}> </p>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}

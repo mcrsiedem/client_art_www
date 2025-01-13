@@ -55,8 +55,8 @@ const RowElement = ({rowElement}) => {
   const procesyElementowTech = techContext.procesyElementowTech;
   return (
 
-    <div>
-      <p2>{rowElement.typ_nazwa}</p2>
+    <div  className={style.element_row}>
+      <p2 className={style.elementy_tekst}>{rowElement.typ_nazwa} {rowElement.nazwa}</p2>
     {procesyElementowTech
       .filter((x) => x.element_id == rowElement.id)
       .map((rowProcesy) => (
@@ -75,12 +75,12 @@ const RowProces = ({rowProcesy}) => {
   
 
   return (
-    <div>
-    <p2>{rowProcesy.nazwa}</p2>
+    <div className={style.proces_row}>
+    <p2 className={style.procesy_tekst}>{rowProcesy.nazwa}</p2>
     {grupaWykonan
       .filter((x) => x.proces_id == rowProcesy.id)
       .map((rowGrupa) => (
-        <p2>{rowGrupa.procesor_id}</p2>
+        <p2 className={style.grupa_tekst}>{rowGrupa.procesor_id}</p2>
       ))}
 
   </div>

@@ -22,6 +22,9 @@
   font-size: 0.8rem;
   
 }
+
+
+
 /* 
 .input:last-child{
   border-bottom-left-radius: 10px;
@@ -32,4 +35,9 @@
   flex-direction: column;
   /* width: 100%;width: 200px; */
   /* gap: 20px; */
+}
+.expand {
+  height: 15px;
+  /* padding-bottom: 1px; */
+  /* margin-right: 10px; */
 }

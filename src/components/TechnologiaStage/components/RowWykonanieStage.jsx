@@ -7,7 +7,8 @@ import style from "./RowWykonanieStage.module.css";
 import { reg_int } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { updateWykonania } from "actions/updateWykonania";
-
+import {updateWydzielWykonanieZgrupy} from "actions/updateWydzielWykonanieZgrupy"
+import icon from "assets/copy.svg";
 export default function RowWykonanieStage  ({rowWykonanie,updateWykonaniaWszystkie})  {
 
 
@@ -22,6 +23,8 @@ export default function RowWykonanieStage  ({rowWykonanie,updateWykonaniaWszystk
   
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
+      <DodajGrupeWykonan row={rowWykonanie}/>
+      
 
     </div>
   </div>)
@@ -76,6 +79,38 @@ function StanWykonania({ rowWykonanie }) {
   );
 }
 
+function DodajGrupeWykonan({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
+  return (
+    <div style={{ paddingLeft: "10px" }}>
+      <img
+        onDragOver={handleDragOver}
+        onDrop={() => handleDrop(1)}
+        className={style.expand}
+        src={icon}
+        onClick={() => {
+          updateWydzielWykonanieZgrupy(row.id, fechparametryTechnologii);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
+    }
+  }
+}
 
 
 function StatusWykonania({ rowWykonanie }) {

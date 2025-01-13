@@ -89,6 +89,7 @@
                   .content_pane {
                     justify-content: center; 
                     align-items: center;
+                    padding-top: 30px;
                     /* background-color: red; */
                   }
 
@@ -138,6 +139,12 @@
                     font-size: 0.8rem;
                   }
 
+                  .wykonania_title{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  
+                  }
 .header_procesy{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;

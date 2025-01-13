@@ -90,7 +90,7 @@ const RowProces = ({rowProcesy}) => {
           <PredkoscGrupy rowGrupa={rowGrupa}/>
           <MnoznikPredkosci rowGrupa={rowGrupa}/>
           <StatusGrupy rowGrupa={rowGrupa}/>
-          <DodajGrupeWykonan rowGrupa={rowGrupa}/>
+          {/* <DodajGrupeWykonan rowGrupa={rowGrupa}/> */}
 
           
           
@@ -114,7 +114,12 @@ const ContentPane = () => {
   
   return (
   <div className={style.content_pane}>
-    Wykonania
+    <div className={style.wykonania_title}>
+
+   
+    <p className={style. elementy_tekst}>Wykonania</p>
+    </div>
+    <div>
     {               wykonania
                   .filter((f) => f.grupa_id == selectedGrupaTechROW.id)
                   .map((rowWykonanie, i) => (
@@ -124,9 +129,9 @@ const ContentPane = () => {
 
                     </div>
                   ))}
-      {/* {procesyElementowTech.map((rowProces) => (
-        <ProcesRow rowProces={rowProces} />
-      ))} */}
+    </div>
+  
+
 
   </div>
   )
@@ -170,8 +175,6 @@ function DodajGrupeWykonan({ row }) {
         className={style.expand}
         src={icon}
         onClick={() => {
-          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-          // handleRemoveItem(row.indeks, row.id);
         }}
         alt="Procesy"
       />
@@ -185,9 +188,7 @@ function DodajGrupeWykonan({ row }) {
   function handleDrop(id) {
     if (sessionStorage.getItem("typ_drag") == "wykonanie") {
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
-      // console.log("id: "+id_drag_wykonania)
       updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
-      // let id_drop_grupa = id;
     }
   }
 }

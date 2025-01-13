@@ -57,7 +57,7 @@ const RowElement = ({rowElement}) => {
   return (
 
     <div  className={style.element_row}>
-      <p2 className={style.elementy_tekst}>{rowElement.typ_nazwa} {rowElement.nazwa}</p2>
+      <p2 className={style.elementy_tekst2}>{rowElement.typ_nazwa} {rowElement.nazwa}</p2>
     {procesyElementowTech
       .filter((x) => x.element_id == rowElement.id)
       .map((rowProcesy) => (
@@ -73,18 +73,48 @@ const RowProces = ({rowProcesy}) => {
   const procesyElementowTech = techContext.procesyElementowTech;
   const elementyTech = techContext.elementyTech;
   const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  
   const setSelectedGrupaTechROW = techContext.setSelectedGrupaTechROW;
   
 
   return (
     <div className={style.proces_row}>
-
+    {/* <div className={row.insert ? style.tr_insert : style.tr }> */}
+{/* className={row.insert ? style.tr_insert : style.tr */}
     {grupaWykonan
       .filter((x) => x.proces_id == rowProcesy.id)
       .map((rowGrupa) => (
 
-        <div onClick={()=> {setSelectedGrupaTechROW(rowGrupa)}}className={style.grupa_row}>
-              <p2 className={style.procesy_tekst}>{rowProcesy.nazwa}</p2>
+        <div onClick={()=> {setSelectedGrupaTechROW(rowGrupa)
+
+          setGrupaWykonan(
+            prev=>prev.map((t, a) => {
+              return {
+                ...t,
+                select: false
+              };
+        
+          }).map((t, a) => {
+            if (t.id == rowGrupa.id) {
+              return {
+                ...t,
+                select: true
+              };
+            } else {
+              return t;
+            }
+          })
+
+        );
+        }
+        
+        
+        }
+        
+        className={style.grupa_row}
+        >
+              <p2 className={rowGrupa.select ? style.procesy_tekst_select : style.procesy_tekst}>{rowProcesy.nazwa}</p2>
           <Procesor rowProces={rowProcesy} rowGrupa={rowGrupa}/>
           <CzasGrupy rowGrupa={rowGrupa}/>
           <PredkoscGrupy rowGrupa={rowGrupa}/>

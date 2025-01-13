@@ -40,19 +40,37 @@
           padding-bottom: 20px;
           /* margin-right: 20px; */
         }
-        .elementy_tekst{
+        .elementy_tekst2{
           font-size: 1rem;
           font-weight: bold;
-          color: grey;
+          color: rgb(165, 165, 165);
           margin-left: 30px;
           /* margin-top: 10px;           */
         }
+        .elementy_tekst{
+          font-size: 1rem;
+          /* font-weight: bold; */
+          color: rgb(255, 255, 255);
+          margin-left: 30px;
+          /* margin-top: 10px;           */
+        }
+
         .procesy_tekst{
           width: 150px;
           padding-left: 50px;
-          font-weight: bold;
+          /* font-weight: bold; */
           color: grey;
           font-size: 0.9rem;
+        }
+        .procesy_tekst_select{
+          width: 150px;
+          padding-left: 50px;
+          /* font-weight: bold; */
+          color: rgb(255, 255, 255);
+          font-size: 0.9rem;
+        background-color: rgb(186, 222, 255);
+        background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+        border-radius: 10px;
         }
 
         .grupa_tekst{
@@ -80,11 +98,9 @@
           justify-content: center; 
           align-items: start;
           margin-left: 45px;
-          /* background-color: red; */
-          /* padding-top: 5px; */
-          /* background-color: rgb(255, 15, 15); */
-          /* width: 45vw; */
         }
+
+
 
                   .content_pane {
                     justify-content: center; 
@@ -143,7 +159,13 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                  
+                    background-color: rgb(255, 227, 186);
+                    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+                    /* border-radius: 10px; */
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    height: 2rem;
+                  margin-bottom: 10px;
                   }
 .header_procesy{
 display: grid;

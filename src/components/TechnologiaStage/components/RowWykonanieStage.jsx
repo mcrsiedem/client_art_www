@@ -9,6 +9,7 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { updateWykonania } from "actions/updateWykonania";
 import {updateWydzielWykonanieZgrupy} from "actions/updateWydzielWykonanieZgrupy"
 import icon from "assets/copy.svg";
+import extract from "assets/extract.svg";
 export default function RowWykonanieStage  ({rowWykonanie,updateWykonaniaWszystkie})  {
 
 
@@ -23,6 +24,8 @@ export default function RowWykonanieStage  ({rowWykonanie,updateWykonaniaWszystk
   
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
+      <DuplikujWykonanie rowWykonanie={rowWykonanie}/>
+      
       <DodajGrupeWykonan row={rowWykonanie}/>
       
 
@@ -86,8 +89,43 @@ function DodajGrupeWykonan({ row }) {
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
   return (
-    <div style={{ paddingLeft: "10px" }}>
+    <div style={{ paddingLeft: "00px" }}>
       <img
+      title="Wydziel wykonanie do oddzielnej grupy"
+        onDragOver={handleDragOver}
+        onDrop={() => handleDrop(1)}
+        className={style.expand}
+        src={extract}
+        onClick={() => {
+          updateWydzielWykonanieZgrupy(row.id, fechparametryTechnologii);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrop(id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
+    }
+  }
+}
+
+function DuplikujWykonanie({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
+  return (
+    <div style={{ paddingLeft: "0px" }}>
+      <img
+      title="Duplikuj wykonanie"
         onDragOver={handleDragOver}
         onDrop={() => handleDrop(1)}
         className={style.expand}

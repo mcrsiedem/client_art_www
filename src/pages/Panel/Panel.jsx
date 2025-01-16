@@ -35,18 +35,20 @@ function Panel({user,setUser}){
         <div className={style.main}>
                 <div className={style.header}>
 
-                   {isOnline ? (     <div className={style.user}> 
-                                <img className={style.userIcon } src={userOnline} alt="Procesy" />
-                                <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
-                        </div>) : (     <div className={style.user}> 
-                                <img className={style.userIcon } src={userOffline} alt="Procesy" />
-                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
-                        </div>) }
-                   
-               { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )}
+                                                {isOnline ? (     <div className={style.user}> 
+                                                                <img className={style.userIcon } src={userOnline} alt="Procesy" />
+                                                                <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                                        </div>) : (     <div className={style.user}> 
+                                                                <img className={style.userIcon } src={userOffline} alt="Procesy" />
+                                                                <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                                        </div>) }
+                                                
+                                        { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )}
                
                 </div>
-                        <div className={style.kafleContainer} >
+
+
+                        <div className={style.container} >
                             
                             
                                         <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p>

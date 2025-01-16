@@ -11,6 +11,7 @@
 .pane {
   display: grid;
   grid-template-columns: 1fr 1fr ;
+  margin-bottom: 50px;
   /* background-color: red; */
 }
 

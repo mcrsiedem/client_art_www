@@ -126,8 +126,8 @@ function DuplikujWykonanie({ row }) {
     <div style={{ paddingLeft: "0px" }}>
       <img
       title="Duplikuj wykonanie"
-        onDragOver={handleDragOver}
-        onDrop={() => handleDrop(1)}
+        // onDragOver={handleDragOver}
+        // onDrop={() => handleDrop(1)}
         className={style.expand}
         src={icon}
         onClick={() => {

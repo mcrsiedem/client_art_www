@@ -24,6 +24,7 @@ export const AppContextProvider = ({children})=>{
     const [listaPapierowGrupa,setListaPapierowGrupa] = useState();
     const [listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka] = useState();
     const [procesory, setProcesory] = useState();
+    const [mobile, setMobile] = useState(false);
       const [isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled] = useState(true);
 
 //d
@@ -79,7 +80,8 @@ export const AppContextProvider = ({children})=>{
 
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
-                    isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled
+                    isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
+                    mobile, setMobile
 
             
                 }}

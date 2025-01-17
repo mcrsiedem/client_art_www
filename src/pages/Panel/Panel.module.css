@@ -1,46 +1,63 @@
 .main{
     display: grid;
     grid-template-rows: 60px 1fr;
-    /* background-color: rgba(89, 131, 252, 1);
-    background-image: linear-gradient(0deg, rgba(89, 131, 252, 1) 0%, rgba(41, 53, 86, 1) 100%); */
-    /* background: url(/src/assets/logowanie_4.jpg); */
     background: url(/src/assets/m5.jpg );
-    /* -webkit-transform: scaleX(-1);
-    transform: scaleX(-1); */
-    /* background: url(/src/assets/m3.png); */
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10px;
 }
-.btnWyloguj{
-    width: 100px;
-    height: 35px;
-    border-radius: 10px;
-    color: gray;
-    border: none;
-    box-shadow: 5px 2px 5px gray ;
-    /* background-color: rgb(179, 179, 179); */
-    background-color: rgba(216, 216, 216,0.2);
-}
-.btnWyloguj:hover{
-    width: 100px;
-    border-radius: 10px;
-    color: gray;
-    border: none;
-    background-color: red;
 
-    color: white;
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 30px;
 }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+      gap:20px;
+      height: calc(100vh - 70px);
+      /* padding-left: 250px; */
+    }
+
+    @media only screen and (min-width :700px) {
+        /* Styles */
+        .container{
+            /* display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+              gap:20px;
+              height: calc(100vh - 70px); */
+              align-items: start;
+              padding-left: 250px;
+            }
+    }
+
+
+    
+    .container_btn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+          gap:20px;
+          /* background-color: rgb(143, 143, 143); */
+          /* height: calc(100vh - 70px); */
+          /* padding-left: 250px; */
+        }
+
 
 .menu_txt{
     color: rgb(221, 221, 221);
     font-size: 13px;
     padding-top: 15px;
 }
-/* .menu_txt:hover{
-    color: white;
-} */
-
 
 p{
     color: rgb(221, 221, 221);
@@ -49,51 +66,11 @@ p{
 }
 
 
-.icon{
-    width: 20px;
-}
-
-.iconLock{
-    position: absolute;
-    right: 15px;
-    width: 12px;
-}
-.header{
-   
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-right: 30px;
-    padding-left: 30px;
-    /* background-color: rgb(10, 10, 10,0.3); */
-    /* border-bottom: 1px dashed rgb(216, 216, 216); */
-}
-
-.kafleContainer2{
-    background-color: #ffffff;
-    
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.container{
-display: flex;
-flex-direction: column;
-align-items: start;
-justify-content: center;
-  gap:20px;
-  height: calc(100vh - 70px);
-  padding-left: 250px;
-}
 
 
-.row2{
-    display: flex;
-     
-}
+
+
+
 .kafle{
     display: flex;
     justify-content: start;
@@ -109,36 +86,20 @@ justify-content: center;
     letter-spacing: 6px;
     font-size: 0.9rem;
     background-color: rgba(216, 216, 216,0.2);
-    /* background-color: rgba(255, 0, 0, 0.3); */
-    /* padding-left: 50px; */
-    /* margin: 20px; */
-  /* box-shadow: 1px 1px 15px rgb(255, 255, 255) ; */
   font-weight: 600;
+  gap: 25px;
 
-  /* border: 1px solid  rgb(146, 146, 146); */
-  /* border-left: 1px solid  rgb(146, 146, 146);
-  border-bottom: 1px solid  rgb(146, 146, 146); */
-  gap: 25px
-
-  /* background-color: rgb(211, 211, 211); */
-  /* background-color: rgb(154, 157, 165); */
-  /* background-color: rgb(189, 2, 2); */
-
-  
 }
 
 
 .kafle:hover > p{
-
     color: rgb(255, 255, 255);
-   
 }
 
 
 
 .kafle:hover {
     background-color: rgba(255, 0, 0, 0.6);
-    /* box-shadow: 1px 1px 15px rgb(255, 255, 255) ; */
 
 }
 .znak{
@@ -147,12 +108,8 @@ justify-content: center;
     top:18px;
     width: 15px;
     height: 15px;
-    
     border-radius: 20px;
- 
-
 }
-
 
 
 .center{
@@ -179,3 +136,31 @@ justify-content: center;
 
 }
 
+.icon{
+    width: 20px;
+}
+
+.iconLock{
+    position: absolute;
+    right: 15px;
+    width: 12px;
+}
+
+.btnWyloguj{
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    color: gray;
+    border: none;
+    box-shadow: 5px 2px 5px gray ;
+    background-color: rgba(216, 216, 216,0.2);
+}
+.btnWyloguj:hover{
+    width: 100px;
+    border-radius: 10px;
+    color: gray;
+    border: none;
+    background-color: red;
+
+    color: white;
+}

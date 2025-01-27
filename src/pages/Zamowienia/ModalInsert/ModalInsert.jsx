@@ -239,9 +239,9 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
               }
             />
 
-            {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
+                {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
 
-       {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
+              {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
             
           </div>
         )}

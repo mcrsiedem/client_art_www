@@ -41,7 +41,7 @@ export default function App() {
               <Route path='/info2' element={<Info2 />} />
               <Route path='/info2' element={<Info2 />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
-              <Route path='/zamowienie_stage' element={<ZamowienieStage />} />
+              <Route path='/zamowienie' element={<ZamowienieStage />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

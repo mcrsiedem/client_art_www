@@ -164,6 +164,9 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
     <div className={style.container}>
       <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly}/>
       <Dane showAddClientStage={showAddClientStage}/>
+      <div className={style.main}>
+        {showParametryZamowienia && (
+          <div>
        <Produkty />
                   <Elementy
                     handleChangeCardElementy={handleChangeCardElementy}
@@ -196,7 +199,10 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
                 handleChangeCardFragmentyOprawaId
               }
             />
+                  </div>
+        )}
 
+    </div>
     </div>
 
 

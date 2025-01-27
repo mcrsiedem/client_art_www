@@ -207,7 +207,7 @@ function Table_tr({ row, open2, setRow }) {
         onDoubleClick={(node, event) => {
           // open2();
           setSelectedZamowienie(row)
-          navigate("/zamowienie_stage");
+          navigate("/zamowienie");
           // open2(row.id);
           // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}

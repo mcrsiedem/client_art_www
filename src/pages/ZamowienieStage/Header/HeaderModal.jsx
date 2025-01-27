@@ -24,6 +24,7 @@ export default function Header({
   stanOtwarciaZamowienia,
   row,
   readOnly,
+  setReadOnly
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
 
@@ -75,7 +76,7 @@ export default function Header({
               )
           }
 
-          <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly}/>
+          <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly} setReadOnly={setReadOnly}/>
         </div>
       </div>
     </>
@@ -178,7 +179,7 @@ function ZapiszJako({
 
 
 
-function Zamknij({readOnly}) {
+function Zamknij({readOnly,setReadOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const selectedZamowienie = contextModalInsert.selectedZamowienie;
   const navigate = useNavigate();
@@ -192,9 +193,12 @@ function Zamknij({readOnly}) {
       if (!readOnly) {
         const res = await axios.put(IP + "setOrderClosed", {
           id: selectedZamowienie.id,
+        }).then(res=>{
+          // setReadOnly(true)
+          navigate("/Zamowienia");
         });
 
-        navigate("/Zamowienia");
+        
       }
       contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)

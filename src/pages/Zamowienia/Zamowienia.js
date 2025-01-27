@@ -204,6 +204,9 @@ function Table_tr({ row, open2, setRow }) {
       <tr
        className={style.row_zamowienia}
         key={row.id}
+        onClick={(node, event) => {
+          setSelectedZamowienie(row)
+        }}
         onDoubleClick={(node, event) => {
           // open2();
           setSelectedZamowienie(row)
@@ -211,6 +214,8 @@ function Table_tr({ row, open2, setRow }) {
           // open2(row.id);
           // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
+
+
       >
         <SelectBox row={row} />
         <td>{row.id} </td>

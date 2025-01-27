@@ -166,7 +166,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
   return (
     <div className={style.container}>
-      <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly}/>
+      <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly} setReadOnly={setReadOnly}/>
       <Dane showAddClientStage={showAddClientStage}/>
       <div className={style.main}>
         {showParametryZamowienia && (

@@ -3,6 +3,9 @@ import React, { useEffect, useState, useContext,useRef,useCallback } from "react
 import { useCookies } from "react-cookie";
 import HeaderModal from "./Header/HeaderModal";
 import Dane from "./Dane/Dane";
+import Elementy from "./Elementy/Elementy";
+import Produkty from "./Produkty/Produkty";
+import Introligatornia from "./Introligatornia/Introligatornia";
 
 import { initialProcesy } from "utils/initialvalue";
 import {
@@ -160,9 +163,39 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
   return (
     <div className={style.container}>
       <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly}/>
-      <Dane showAddClientStage={showAddClientStage}
-      />
-
+      <Dane showAddClientStage={showAddClientStage}/>
+       <Produkty />
+                  <Elementy
+                    handleChangeCardElementy={handleChangeCardElementy}
+                    handleChangeCardFragmenty={handleChangeCardFragmenty}
+                    selected_papier={selected_papier}
+                    setSelected_papier={setSelected_papier}
+                    info={info}
+                    setInfo={setInfo}
+                    // listaPapierow={listaPapierow}
+                    // listaGramatur={listaGramatur}
+                    // listaUszlachetnien={listaUszlachetnien}
+                    // setListaUszlachetnien={setListaUszlachetnien}
+                    // setListaGramatur={setListaGramatur}
+                    procesyElementow={procesyElementow}
+                    setProcesyElementow={setProcesyElementow}
+                  
+                    handleChangeCardFragmenty_i_Elementy={
+                      handleChangeCardFragmenty_i_Elementy
+                    }
+                    handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
+                    handleChangeCardFragmentyOprawaId={
+                      handleChangeCardFragmentyOprawaId
+                    }
+                  />
+            <Introligatornia
+              handleChangeCardProdukty={handleChangeCardProdukty} 
+              handleChangeCardOprawa={handleChangeCardOprawa}
+              handleChangeCardFragmenty={handleChangeCardFragmenty}
+              handleChangeCardFragmentyOprawaId={
+                handleChangeCardFragmentyOprawaId
+              }
+            />
 
     </div>
 

@@ -17,6 +17,7 @@ import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
 import Ustawienia from "pages/Ustawienia/Ustawienia";
 import TechnologieView from "pages/Technologie/TechnologieView";
+import ZamowienieStage from "pages/ZamowienieStage/ZamowienieStage";
 
 export default function App() {
 
@@ -40,6 +41,7 @@ export default function App() {
               <Route path='/info2' element={<Info2 />} />
               <Route path='/info2' element={<Info2 />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
+              <Route path='/zamowienie_stage' element={<ZamowienieStage />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

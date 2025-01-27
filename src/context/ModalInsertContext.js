@@ -15,6 +15,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
+    const [selectedZamowienie,setSelectedZamowienie] = useState(null)
 
 
 
@@ -199,7 +200,7 @@ export const ModalInsertContextProvider = ({children})=>{
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
-         
+          selectedZamowienie,setSelectedZamowienie
 
           
 

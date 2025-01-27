@@ -194,8 +194,10 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
 }
 function Table_tr({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
+    const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
-
+  const navigate = useNavigate();
+  const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   return (
     <>
@@ -203,9 +205,11 @@ function Table_tr({ row, open2, setRow }) {
        className={style.row_zamowienia}
         key={row.id}
         onDoubleClick={(node, event) => {
-          open2();
+          // open2();
+          setSelectedZamowienie(row)
+          navigate("/zamowienie_stage");
           // open2(row.id);
-          setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
       >
         <SelectBox row={row} />
@@ -216,6 +220,7 @@ function Table_tr({ row, open2, setRow }) {
           row={row}
           setShowKartaTechnologiczna={setShowKartaTechnologiczna}
           showKartaTechnologiczna={showKartaTechnologiczna}
+          
         />
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>

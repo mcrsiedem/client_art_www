@@ -25,7 +25,6 @@ export default function Header({
   row,
   readOnly,
 }) {
-  const [auth, lookToken] = useAuth(false);
   const contextModalInsert = useContext(ModalInsertContext);
 
   const elementy = contextModalInsert.elementy;
@@ -179,8 +178,11 @@ function ZapiszJako({
 
 
 
-function Zamknij({setOpenModalInsert,readOnly,row}) {
+function Zamknij({readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
+  const selectedZamowienie = contextModalInsert.selectedZamowienie;
+  
+    const navigate = useNavigate();
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
 
@@ -192,12 +194,14 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
       src={iconX}
       onClick={async() => {
         
-      setOpenModalInsert(false);
+      // setOpenModalInsert(false);
 
       if (!readOnly) {
         const res = await axios.put(IP + "setOrderClosed", {
-          id: row.id,
+          id: selectedZamowienie.id,
         });
+
+        navigate("/Zamowienia");
       }
       contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)

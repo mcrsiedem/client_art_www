@@ -73,11 +73,12 @@ const procesyElementow = contextModalInsert.procesyElementow;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
+const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
 
   useEffect(() => {
 
-    if (open.current) {
+    if (selectedZamowienie != null) {
       // otwarcie zamówienia
       
       // pokazanie parametrow
@@ -86,10 +87,10 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       // schowanie kreatora to tworzenia zamówienia
       setShowTemplate(false);
 
-      open.current = false;
+      // open.current = false;
 
       // pobranie szczegółów zamówienia
-      fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
+      fechparametry(selectedZamowienie.id,selectedZamowienie.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
       
     }else{

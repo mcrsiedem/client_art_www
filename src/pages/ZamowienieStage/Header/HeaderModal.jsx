@@ -181,21 +181,14 @@ function ZapiszJako({
 function Zamknij({readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const selectedZamowienie = contextModalInsert.selectedZamowienie;
-  
-    const navigate = useNavigate();
-  // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+  const navigate = useNavigate();
 
   return (
-
-
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={async() => {
         
-      // setOpenModalInsert(false);
-
       if (!readOnly) {
         const res = await axios.put(IP + "setOrderClosed", {
           id: selectedZamowienie.id,
@@ -214,22 +207,6 @@ function Zamknij({readOnly}) {
       alt="Procesy"
     />
 
-
-
-  //   <button
-  //   onClick={async () => {
-  //     setOpenModalInsert(false);
-
-  //     if (!readOnly) {
-  //       const res = await axios.put(IP + "setOrderClosed", {
-  //         id: row.id,
-  //       });
-  //     }
-  //   }}
-  //   className={style.btn}
-  // >
-  //   Zamknij
-  // </button>
   );
 }
 function PokazStany({  }) {

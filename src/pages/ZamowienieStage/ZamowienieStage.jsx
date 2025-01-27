@@ -2,6 +2,7 @@ import style from "./ZamowienieStage.module.css";
 import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
 import { useCookies } from "react-cookie";
 import HeaderModal from "./Header/HeaderModal";
+import Dane from "./Dane/Dane";
 
 import { initialProcesy } from "utils/initialvalue";
 import {
@@ -158,27 +159,8 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
   return (
     <div className={style.container}>
-      <HeaderModal
-        openModalInsert={openModalInsert}
-        setOpenModalInsert={setOpenModalInsert}
-        postZamowienieObj={postZamowienieObj}
-        info={info}
-        setInfo={setInfo}
-        isOK={isOK}
-        setIsOK={setIsOK}
-        sprawdzPoprawnoscZamowienia={sprawdzPoprawnoscZamowienia}
-        check_data_wejscia={check_data_wejscia}
-        openModalStany={openModalStany}
-        setOpenModalStany={setOpenModalStany}
-        setShowSaveAs={setShowSaveAs}
-        saveAs={saveAs}
-        setSaveAs={setSaveAs}
-        stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-        row={row}
-        readAlert={readAlert}
-        setReadAlert={setReadAlert}
-        readOnly={readOnly}
-        setReadOnly={setReadOnly}
+      <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly}/>
+      <Dane showAddClientStage={showAddClientStage}
       />
 
 
@@ -186,6 +168,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
 
   );
+
   //----------------------------------
   function sprawdzPoprawnoscZamowienia() {
     // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji

@@ -7,7 +7,7 @@ import { IP } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo_biale.svg";
 import { SocketContext } from "../../context/SocketContext";
- import background from "assets/logowanie_1.jpg"
+//  import background from "assets/logowanie_1.jpg" 
  import { AppContext } from "context/AppContext";
 export default function Login( ) {
 

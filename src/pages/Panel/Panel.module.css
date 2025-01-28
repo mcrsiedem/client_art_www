@@ -1,7 +1,7 @@
 .main{
     display: grid;
     grid-template-rows: 60px 1fr;
-    background: url(/src/assets/m5.jpg );
+    background: url(/src/assets/m7.jpg );
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10px;

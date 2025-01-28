@@ -2,14 +2,14 @@ import axios from "axios";
 import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
 
-export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,
+export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,setData,
   procesyElementow}){
 
     let daneZamowieniaEdit = {}
             let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
             daneZamowieniaEdit = savedDane.daneZamowienia
             setDaneZamowienia(daneZamowieniaEdit)
-            refreshZamowienia();
+            refreshZamowienia(setData);
 
 }
 

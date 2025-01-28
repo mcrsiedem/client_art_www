@@ -35,17 +35,18 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { PreOrderContext } from "context/PreOrderContext";
 import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
+import { refreshZamowienia } from "actions/refreshZamowienia";
 
 function ZamowienieStage({
   openModalInsert,
   setOpenModalInsert,
   open,
-  row,
-  refreshZamowienia
+  row
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextPreOrder = useContext(PreOrderContext);
   const contextApp = useContext(AppContext);
+  const setData = contextApp.setZamowienia; //zamówienia
   const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
   const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
@@ -89,26 +90,13 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
     if (effectRan.current === true) {
 
-// console.log("Zamowienie stage enter")
-
     if (selectedZamowienie != null) {
-      // otwarcie zamówienia
-      
-      // pokazanie parametrow
       setShowParametryZamowienia(true);
-
-      // schowanie kreatora to tworzenia zamówienia
       setShowTemplate(false);
-
-      // open.current = false;
-
-      // pobranie szczegółów zamówienia
       fechparametry(selectedZamowienie.id,selectedZamowienie.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
       
     }else{
-      //zerowanie stanów
-
       setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})
       setProdukty(initialProdukty)
       setElementy(initialElementy)
@@ -121,22 +109,12 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
       setSaveButtonDisabled(true)
     }
 
-
-
     }
     return () => {
       effectRan.current = true;
-      // console.log("Zamowienie stage exit")
     };
 
-
-
-
-
-
   }, []);
-
-
 
 
 
@@ -181,7 +159,8 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
   return (
     <div className={style.container}>
-      <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly} setReadOnly={setReadOnly}/>
+      <HeaderModal stanOtwarciaZamowienia={stanOtwarciaZamowienia} readOnly={readOnly} setReadOnly={setReadOnly}     saveAs={saveAs}
+        setSaveAs={setSaveAs}         postZamowienieObj={postZamowienieObj}/>
       <Dane showAddClientStage={showAddClientStage}/>
       <div className={style.main}>
         {showParametryZamowienia && (
@@ -297,7 +276,8 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
         saveAs,
         refreshZamowienia,
         setProcesyElementow,
-        procesyElementow
+        procesyElementow,
+        setData
       });
 
 

@@ -282,23 +282,23 @@ function ButtonSprawdz({
   );
 }
 
-function ButtonSprawdz2({
-  isSaveButtonDisabled,
-  postZamowienieObj,
-  setShowSaveAs,
-  setSaveAs,
-}) {
-  const appcontext = useContext(AppContext);
-  const socketcontext = useContext(SocketContext);
+// function ButtonSprawdz2({
+//   isSaveButtonDisabled,
+//   postZamowienieObj,
+//   setShowSaveAs,
+//   setSaveAs,
+// }) {
+//   const appcontext = useContext(AppContext);
+//   const socketcontext = useContext(SocketContext);
 
-  const sendMessage = () => {
-    socketcontext.socket.emit("send_mesage", { message: "" });
-    console.log(appcontext.clients);
-  };
+//   const sendMessage = () => {
+//     socketcontext.socket.emit("send_mesage", { message: "" });
+//     console.log(appcontext.clients);
+//   };
 
-  return (
-    <button onClick={() => sendMessage()} className={style.btn}>
-      Sprawdź {socketcontext.socketReceiveMessage}
-    </button>
-  );
-}
+//   return (
+//     <button onClick={() => sendMessage()} className={style.btn}>
+//       Sprawdź {socketcontext.socketReceiveMessage}
+//     </button>
+//   );
+// }

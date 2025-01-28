@@ -83,8 +83,13 @@ const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowi
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
-
+  const effectRan = useRef(false);
   useEffect(() => {
+
+
+    if (effectRan.current === true) {
+
+
 
     if (selectedZamowienie != null) {
       // otwarcie zamówienia
@@ -115,6 +120,15 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
     }
+
+
+
+    }
+    return () => {
+      effectRan.current = true;
+    };
+
+
 
 
 

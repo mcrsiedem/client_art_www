@@ -199,13 +199,16 @@ function Zamknij({readOnly,setReadOnly}) {
         });
 
         
-      }
-      contextModalInsert.setDaneZamowienia(initialDane)
+      } else{
+              contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)
       contextModalInsert.setElementy(initialElementy)
       contextModalInsert.setFragmenty(initialFragmenty)
       contextModalInsert.setOprawa(initialOprawa)
       contextModalInsert.setProcesyElementow(initialProcesy)
+      navigate("/Zamowienia");
+      }
+
     }
       }
       alt="Procesy"

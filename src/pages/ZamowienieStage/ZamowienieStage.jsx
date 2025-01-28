@@ -89,7 +89,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
     if (effectRan.current === true) {
 
-
+// console.log("Zamowienie stage enter")
 
     if (selectedZamowienie != null) {
       // otwarcie zamówienia
@@ -126,6 +126,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
     }
     return () => {
       effectRan.current = true;
+      // console.log("Zamowienie stage exit")
     };
 
 

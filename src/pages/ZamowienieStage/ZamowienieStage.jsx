@@ -10,6 +10,7 @@ import ProductCreator from "components/ProductCreator/ProductCreator";
 import ClientStage from "components/Klienci/ClientStage";
 import PaperStage from "components/PaperStage/PaperStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
+import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 
 import { initialProcesy } from "utils/initialvalue";
 import {
@@ -217,6 +218,13 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
                   </div>
                 )}
 
+      {showElementyProcesyInsert && (
+        <ProcesElement
+          procesyElementow={procesyElementow}
+
+
+        />
+      )}
         <ClientStage
         klienci={klienci}
         setKlienci={setKlienci}

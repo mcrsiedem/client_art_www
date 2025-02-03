@@ -138,7 +138,7 @@ margin-bottom: 0px;
 }
 .row1{
   display: grid;
-  grid-template-columns: 200px 70px  50px 50px 50px 100px 310px 1fr;
+  grid-template-columns: 200px 70px  50px 50px 50px 100px 400px 1fr;
   gap: 10px;
   background: transparent;
 }

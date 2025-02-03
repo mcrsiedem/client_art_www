@@ -7,17 +7,11 @@ import iconTrash from "assets/trash2.svg";
 import { useState, useContext } from "react";
 import { _typ_elementu } from "utils/initialvalue";
 import axios from "axios";
-
 import { IP } from "../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-// import { addArkusze } from "actions/addArkusze";
-// import { createLegi } from "actions/createLegi";
-// import { createArkusze } from "actions/createArkusze";
-// import { createGrupaWykonan } from "actions/createGrupaWykonan";
-// import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import RowArkusze from "./RowArkusze";
 import MenuElementyTech from "./ElementyTechMenu";
 

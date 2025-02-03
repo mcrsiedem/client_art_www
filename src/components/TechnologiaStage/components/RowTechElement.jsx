@@ -1,5 +1,6 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "assets/settings.svg";
+import addIcon2 from "assets/addIcon2.svg"
 import logoExpand from "assets/expand.svg";
 import iconCopy from "assets/copy.svg";
 import iconTrash from "assets/trash2.svg";
@@ -70,20 +71,20 @@ export default function RowTechElement({
         <NettoX row={row} />
         <NettoY row={row} />
         <Nazwa row={row} />
-        <PapierSelect
+        <PapierSelect2
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
 
         />
-        <Gramatura
+        {/* <Gramatura
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
 
-        />
+        /> */}
         <Uwagi row={row} />
         {/* <PapierInfo
           row={row}
@@ -373,6 +374,64 @@ function PapierSelect({
     </select>
   );
 }
+
+
+
+function PapierSelect2({
+  row,handleChangeCardFragmenty_i_Elementy_Tech
+}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierow = appcontext.listaPapierow;
+  const modalcontext = useContext(ModalInsertContext);
+  const setShowPaperStage = modalcontext.setShowPaperStage;
+  const setSelectedElementROW = modalcontext.setSelectedElementROW;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+
+  return (
+   <div className={style.papier_input_container}>
+      <select
+        className={row.papier_id =="0" ? style.select_papier_brak : style.select_papier }
+        value={row.papier_id}
+        onChange={(e) => {
+          handleChangeCardFragmenty_i_Elementy_Tech({
+            ...row,
+            papier_id: e.target.value,
+          });
+        }}
+      >
+        {   <option value = "0"  >
+           wybierz papier
+          </option>}
+     
+        {listaPapierow.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa} {option.gramatura} g/m2 {option.wykonczenie}
+          </option>
+        ))}
+      </select>
+<img
+       className={style.dodaj_klienta}
+        src={addIcon2}
+        onClick={() => {
+          setShowPaperStage(true)
+          setSelectedElementROW(row)
+          setListaPapierowWyszukiwarka(listaPapierow)
+          // showAddClientStage(true)
+        }}
+        alt="Procesy"
+      />
+   </div>
+
+ 
+  );
+}
+
+
+
+
+
+
+
 
 function Gramatura({
   row,

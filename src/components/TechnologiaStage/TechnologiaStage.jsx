@@ -38,8 +38,8 @@ export default function TechnologiaStage() {
           <IntroligatorniaTech />
          
               <div className={style.container_legi_arkusze}>
-                {/* <WykonaniaTech /> */}
-                <WykonaniaTechStage />
+                <WykonaniaTech />
+                {/* <WykonaniaTechStage /> */}
               </div>
         </div>
 

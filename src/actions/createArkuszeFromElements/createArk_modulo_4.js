@@ -49,24 +49,25 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
 
 }
 
-new_arkusze.push({
-  id: getMaxID(new_arkusze),
-  indeks: getMaxIndeks(new_arkusze),
-  ...ark,
-  rodzaj_arkusza: 4,
-  ilosc_leg: 1,
-  naklad: ark.naklad / 4
-});
+    new_arkusze.push({
+      id: getMaxID(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze),
+      ...ark,
+      rodzaj_arkusza: 4,
+      ilosc_leg: 1,
+      naklad: ark.naklad / 4
+    });
 
-for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-  // do każdego ark dodaje odpowiednią ilość leg
-  new_legi.push({
-    id: getMaxID(new_legi),
-    indeks: getMaxIndeks(new_legi),
-    ...lega,
-    arkusz_id: getMaxID(new_arkusze),
-  });
-}
+    for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
+      // do każdego ark dodaje odpowiednią ilość leg
+      new_legi.push({
+        id: getMaxID(new_legi),
+        indeks: getMaxIndeks(new_legi),
+        ...lega,
+        arkusz_id: getMaxID(new_arkusze)-1,
+        naklad: ark.naklad / 4
+      });
+    }
 
 
 new_arkusze.push({
@@ -83,7 +84,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     id: getMaxID(new_legi),
     indeks: getMaxIndeks(new_legi),
     ...lega,
-    arkusz_id: getMaxID(new_arkusze),
+    arkusz_id: getMaxID(new_arkusze)-1,
   });
 }
 

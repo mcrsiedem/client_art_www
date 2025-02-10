@@ -6,6 +6,9 @@ import { createArk_modulo_4 } from "./createArkuszeFromElements16/createArk_modu
 import { createArk_modulo_2 } from "./createArkuszeFromElements16/createArk_modulo_2";
 import { createArk_modulo_6 } from "./createArkuszeFromElements16/createArk_modulo_6";
 import { createArk_modulo_8 } from "./createArkuszeFromElements16/createArk_modulo_8";
+import { createArk_modulo_10 } from "./createArkuszeFromElements16/createArk_modulo_10";
+import { createArk_modulo_12 } from "./createArkuszeFromElements16/createArk_modulo_12";
+import { createArk_modulo_14 } from "./createArkuszeFromElements16/createArk_modulo_14";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -89,144 +92,20 @@ export function createArkuszeFromElemenets(
       createArk_modulo_6(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
-
-
-
     if (modulo == 8) {
       createArk_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
-      // for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-      //   new_arkusze.push({
-      //     id: i + 1,
-      //     indeks: i + 1,
-      //     ...ark,
-      //     ilosc_leg: rodzaj_arkusza / 16,
-      //   });
-      // }
-
-      // new_arkusze.push({
-      //   id: MaxID(new_arkusze),
-      //   indeks: MaxIndeks(new_arkusze),
-      //   ...ark,
-      //   rodzaj_arkusza: 8,
-      //   ilosc_leg: rodzaj_arkusza / 8,
-      // });
-
-      // new_arkusze.push({
-      //   id: MaxID(new_arkusze),
-      //   indeks: MaxIndeks(new_arkusze),
-      //   ...ark,
-      //   rodzaj_arkusza: 16,
-      //   ilosc_leg: rodzaj_arkusza / 16,
-      // });
     }
 
     if (modulo == 10) {
-      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-        new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...ark,
-          ilosc_leg: rodzaj_arkusza / 16,
-        });
-      }
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 2,
-        ilosc_leg: rodzaj_arkusza / 2,
-      });
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 8,
-        ilosc_leg: rodzaj_arkusza / 8,
-      });
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 16,
-        ilosc_leg: rodzaj_arkusza / 16,
-      });
+      createArk_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
     if (modulo == 12) {
-      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-        new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...ark,
-          ilosc_leg: rodzaj_arkusza / 16,
-        });
-      }
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 4,
-        ilosc_leg: rodzaj_arkusza / 4,
-      });
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 8,
-        ilosc_leg: rodzaj_arkusza / 8,
-      });
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 16,
-        ilosc_leg: rodzaj_arkusza / 16,
-      });
+      createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
     if (modulo == 14) {
-      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-        new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...ark,
-          ilosc_leg: rodzaj_arkusza / 16,
-        });
-      }
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 2,
-        ilosc_leg: rodzaj_arkusza / 2,
-      });
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 4,
-        ilosc_leg: rodzaj_arkusza / 4,
-      });
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 8,
-        ilosc_leg: rodzaj_arkusza / 8,
-      });
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 16,
-        ilosc_leg: rodzaj_arkusza / 16,
-      });
+      createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
 
@@ -248,12 +127,6 @@ export function createArkuszeFromElemenets(
     //       });
     //     });
     // });
-
-
-
-
-  
-
 
     // new_legiFragmenty
     // .sort((a,c)=>a.id-c.id)

@@ -5,6 +5,7 @@ import { createArk_modulo_0 } from "./createArkuszeFromElements/createArk_modulo
 import { createArk_modulo_4 } from "./createArkuszeFromElements/createArk_modulo_4";
 import { createArk_modulo_2 } from "./createArkuszeFromElements/createArk_modulo_2";
 import { createArk_modulo_6 } from "./createArkuszeFromElements/createArk_modulo_6";
+import { createArk_modulo_8 } from "./createArkuszeFromElements/createArk_modulo_8";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -92,30 +93,31 @@ export function createArkuszeFromElemenets(
 
 
     if (modulo == 8) {
-      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-        new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...ark,
-          ilosc_leg: rodzaj_arkusza / 16,
-        });
-      }
+      createArk_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      // for (let i = 0; i < ilosc_arkuszy - 2; i++) {
+      //   new_arkusze.push({
+      //     id: i + 1,
+      //     indeks: i + 1,
+      //     ...ark,
+      //     ilosc_leg: rodzaj_arkusza / 16,
+      //   });
+      // }
 
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 8,
-        ilosc_leg: rodzaj_arkusza / 8,
-      });
+      // new_arkusze.push({
+      //   id: MaxID(new_arkusze),
+      //   indeks: MaxIndeks(new_arkusze),
+      //   ...ark,
+      //   rodzaj_arkusza: 8,
+      //   ilosc_leg: rodzaj_arkusza / 8,
+      // });
 
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 16,
-        ilosc_leg: rodzaj_arkusza / 16,
-      });
+      // new_arkusze.push({
+      //   id: MaxID(new_arkusze),
+      //   indeks: MaxIndeks(new_arkusze),
+      //   ...ark,
+      //   rodzaj_arkusza: 16,
+      //   ilosc_leg: rodzaj_arkusza / 16,
+      // });
     }
 
     if (modulo == 10) {

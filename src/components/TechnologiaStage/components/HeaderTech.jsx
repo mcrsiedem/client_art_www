@@ -56,6 +56,26 @@ export default function Header({}) {
           Pokaż
         </button>
 
+        <button
+          className={style.btn}
+          onClick={() => {
+
+            techContext.setArkusze([])
+            techContext.setLegi([])
+            techContext.setLegiFragmenty([])
+            techContext.setGrupaWykonan([])
+            techContext.setWykonania([])
+            // console.log("Arkusze: ", techContext.arkusze);
+            // console.log("Legi: ", techContext.legi);
+            // console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
+            // console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
+            // console.log("Wykonania tech: ", techContext.wykonania);
+
+          }}
+        >
+          Clear
+        </button>
+
         <ZapisBtn />
         <IconNavigate
           className={style.btn_x}

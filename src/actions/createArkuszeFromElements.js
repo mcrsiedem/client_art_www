@@ -1,6 +1,8 @@
 import axios from "axios";
 
 import { IP } from "../utils/Host";
+import { createArk_modulo_0 } from "./createArkuszeFromElements/createArk_modulo_0";
+import { createArk_modulo_4 } from "./createArkuszeFromElements/createArk_modulo_4";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -16,14 +18,7 @@ export function createArkuszeFromElemenets(
   elementyTech,
   rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania
 ) {
-  // generuje arkusze i legi z ilości stron elementu
-  // row to jest ElementyTechRow czyli np okładka lub środek
 
-  // const new_arkusze = [{id:0, indeks:0}];
-  // const new_legi = [{id:0}];
-  // const new_legiFragmenty = [{id:0}];
-  // const new_grupy = [{id:0}];
-  // const new_wykonania = [{id:0}];
 
 
   const new_arkusze = [];
@@ -77,25 +72,7 @@ export function createArkuszeFromElemenets(
 
     //-----------------------
     if (modulo == 0) {
-      for (let i = 0; i < ilosc_arkuszy; i++) {
-            const maxid = MaxID(new_arkusze);
-            new_arkusze.push({
-              id: maxid,
-              indeks: MaxIndeks(new_arkusze),
-              ...ark,
-              ilosc_leg: ilosc_leg_na_arkuszu,
-            });
-
-            for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-              // do każdego ark dodaje odpowiednią ilość leg
-              new_legi.push({
-                id: MaxID(new_legi),
-                indeks: MaxIndeks(new_legi),
-                ...lega,
-                arkusz_id: maxid,
-              });
-            }
-      }
+      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
     //-----------------------
@@ -127,30 +104,7 @@ export function createArkuszeFromElemenets(
     }
 
     if (modulo == 4) {
-      for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-        new_arkusze.push({
-          id: i + 1,
-          indeks: i + 1,
-          ...ark,
-          ilosc_leg: 1,
-        });
-      }
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 4,
-        ilosc_leg: rodzaj_arkusza / 4,
-      });
-
-      new_arkusze.push({
-        id: MaxID(new_arkusze),
-        indeks: MaxIndeks(new_arkusze),
-        ...ark,
-        rodzaj_arkusza: 16,
-        ilosc_leg: rodzaj_arkusza / 16,
-      });
+      createArk_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
     if (modulo == 6) {

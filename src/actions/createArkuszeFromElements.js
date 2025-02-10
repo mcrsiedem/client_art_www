@@ -1,11 +1,11 @@
 import axios from "axios";
 
 import { IP } from "../utils/Host";
-import { createArk_modulo_0 } from "./createArkuszeFromElements/createArk_modulo_0";
-import { createArk_modulo_4 } from "./createArkuszeFromElements/createArk_modulo_4";
-import { createArk_modulo_2 } from "./createArkuszeFromElements/createArk_modulo_2";
-import { createArk_modulo_6 } from "./createArkuszeFromElements/createArk_modulo_6";
-import { createArk_modulo_8 } from "./createArkuszeFromElements/createArk_modulo_8";
+import { createArk_modulo_0 } from "./createArkuszeFromElements16/createArk_modulo_0";
+import { createArk_modulo_4 } from "./createArkuszeFromElements16/createArk_modulo_4";
+import { createArk_modulo_2 } from "./createArkuszeFromElements16/createArk_modulo_2";
+import { createArk_modulo_6 } from "./createArkuszeFromElements16/createArk_modulo_6";
+import { createArk_modulo_8 } from "./createArkuszeFromElements16/createArk_modulo_8";
 
 export function createArkuszeFromElemenets(
   arkusze,

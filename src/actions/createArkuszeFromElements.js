@@ -75,8 +75,9 @@ export function createArkuszeFromElemenets(
     };
 
 
-
-    if (modulo == 0) {
+if(rodzaj_legi == 16) {
+  
+  if (modulo == 0) {
       createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
 
@@ -107,6 +108,8 @@ export function createArkuszeFromElemenets(
     if (modulo == 14) {
       createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
     }
+}
+    
 
 
     //  tworzy fragmety leg w jedej tablicy

@@ -48,6 +48,8 @@ const WykonaniaTechTable = () => {
         <ProcesRow rowProces={rowProces} />
       ))}
 
+      
+
   </div>
   )
 }

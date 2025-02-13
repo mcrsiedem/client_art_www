@@ -171,7 +171,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
                 .filter((el) => el.oprawa_id === row.id)
                 .map((row) => {
                   return (
-                    <tr draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
+                    <tr key={row.id} draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)}  >
       
                       <td></td>
 

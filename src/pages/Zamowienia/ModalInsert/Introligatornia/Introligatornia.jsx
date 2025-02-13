@@ -81,7 +81,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
 
-  return (  < div className={style.main}>
+  return (  < div className={style.main} >
   <table className={style.table}>
     <thead  className={style.glowka}>
       <tr >
@@ -103,10 +103,10 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
     <tbody>
       {oprawa.map((row) => {
         return (
-          <>
+          <div >
             <tr  
          
-             key={row.id}
+         key={row.id}
              onDrop={()=>handleDrop(row.id)}
             onDragOver={handleDragOver}
              
@@ -203,7 +203,7 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
             ) : (
               <></>
             )}
-          </>
+          </div>
         );
       })}
     </tbody>

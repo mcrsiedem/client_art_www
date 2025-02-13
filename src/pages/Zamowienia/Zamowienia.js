@@ -208,11 +208,52 @@ function Table_tr({ row, open2, setRow }) {
           setSelectedZamowienie(row)
         }}
         onDoubleClick={(node, event) => {
-          // open2();
-          setSelectedZamowienie(row)
-          navigate("/zamowienie");
-          // open2(row.id);
-          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+        //  open2();
+          // setSelectedZamowienie(row)
+          // navigate("/zamowienie");
+
+
+
+
+
+
+          // const promiseA = new Promise((resolve, reject) => {
+          //   setSelectedZamowienie(row)
+
+          //   resolve(777);
+          // });
+          // promiseA.then(res =>  navigate("/zamowienie"))
+
+          // setBtnZapiszPapierDisabled(false)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          open2(row.id);
+         setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
 
 

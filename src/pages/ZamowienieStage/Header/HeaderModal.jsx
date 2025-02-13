@@ -27,7 +27,7 @@ export default function Header({
   setReadOnly
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
-
+  const selectedZamowienie = contextModalInsert.selectedZamowienie;
   const elementy = contextModalInsert.elementy;
   return (
     <>
@@ -35,12 +35,12 @@ export default function Header({
      
         <div className={style.title}>
             <LockDradDrop/>
-        
-            Zamówienie...{" "}
+
+        {selectedZamowienie.id} Zamówienie...{" "}
               {readOnly && (
                 <div>
                   otwarte {stanOtwarciaZamowienia.data} przez{" "}
-                  {stanOtwarciaZamowienia.user}
+                  {stanOtwarciaZamowienia.user}    
                 </div>
               )}
               

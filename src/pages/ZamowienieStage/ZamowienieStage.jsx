@@ -96,6 +96,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
       setShowTemplate(false);
       fechparametry(selectedZamowienie.id,selectedZamowienie.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
+      console.log("Open zamowienie")
       
     }else{
       setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})

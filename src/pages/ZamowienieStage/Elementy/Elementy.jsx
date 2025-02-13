@@ -64,7 +64,7 @@ function ElementyTable2({
             .sort((a, b) => a.indeks - b.indeks)
             .map((row, i) => {
               return (
-                <>
+                
                   <RowElement
                     key={row.id}
                     i={i}
@@ -83,7 +83,7 @@ function ElementyTable2({
                       handleChangeCardFragmenty_i_Elementy_IloscStron
                     }
                   />
-                </>
+                
               );
             })}
       </div>

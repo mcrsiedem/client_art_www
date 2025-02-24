@@ -152,6 +152,23 @@ export const TechnologyContextProvider = ({children})=>{
           }
         })
       );
+
+
+      setLegiFragmenty(
+        legiFragmenty.map((t) => {
+          if (t.element_id === card.id) {
+            return {
+              ...t,
+              typ: card.typ
+    
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+
+
       }
 
 

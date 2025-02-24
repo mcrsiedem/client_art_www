@@ -9,6 +9,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import { addNewProcessTech } from "actions/addNewProcessTech";
+import { getNameOfProces } from "actions/getNameOfProces";
 export default function ProcesElementTech() {
 
 
@@ -162,6 +163,7 @@ const ProcesName = ({ row,setProcesID }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
+  const procesListName = contexApp.procesListName;
   return (
     <td>
       <select
@@ -175,6 +177,7 @@ const ProcesName = ({ row,setProcesID }) => {
           techContext.handleUpdateRowProcesyElementowTech({
             ...row,
             nazwa_id: e.target.value,
+            nazwa: getNameOfProces(e.target.value,procesListName)
           });
         }}
       >

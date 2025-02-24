@@ -6,7 +6,7 @@ import { IP } from "../utils/Host";
 export function addNewProcess(row,procesyElementowTemporary, setProcesyElementowTemporary) {
 
 const procesyElementowEditTemporary = procesyElementowTemporary.slice();
-console.log("row", row)
+console.log("row11", row)
   axios
     .post(IP + "procesyElementow", {
       id:0,

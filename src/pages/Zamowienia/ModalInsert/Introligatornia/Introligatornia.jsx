@@ -1,10 +1,9 @@
-
 import style from "./Introligatornia.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import logoExpand from "../../../../assets/expand.svg";
-import { _typ_elementu} from "utils/initialvalue"
-import {  useState } from "react";
+import { _typ_elementu } from "utils/initialvalue";
+import { useState } from "react";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import iconTable from "../../../../assets/settings.svg";
@@ -21,58 +20,75 @@ export default function IntroligatorniaTable({
   handleChangeCardOprawa,
   handleChangeCardFragmenty,
   handleChangeCardFragmentyOprawaId,
-
 }) {
+  const [oprawa_row, setOprawa_row] = useState();
+  const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
+  const [expand, setExpand] = useState(true);
 
-  const[oprawa_row,setOprawa_row]=useState();
-  const [showOprawaElementyStage, setShowOprawaElementyStage] =
-  useState(false);
-  const [expand,setExpand] =useState(true);
+  function handleDrop(id) {
+    // sprawdza czy upuszczamy właściwy obiekt
+    if (sessionStorage.getItem("typ_drag") == "fragment") {
+      let id_drag_element = sessionStorage.getItem("id_element_drag");
+      let id_drop_oprawa = id;
+      handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+    }
+  }
 
-  
-   function handleDrop(id) {
-     // sprawdza czy upuszczamy właściwy obiekt
-     if (sessionStorage.getItem("typ_drag") == "fragment") {
-       let id_drag_element = sessionStorage.getItem("id_element_drag");
-       let id_drop_oprawa = id;
-       handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
-     }
-   }
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
 
-   function handleDragOver(e) {
-     e.preventDefault();
-   }
-
-  function handleDragStart(id){
-   //   e.preventDefault();
+  function handleDragStart(id) {
+    //   e.preventDefault();
     sessionStorage.setItem("id_element_drag", id);
     sessionStorage.setItem("typ_drag", "fragment");
-
   }
-  
+
   return (
     <div className={style.container}>
-      
       <div className={style.oprawa}>
-      <p>Oprawa</p>
-      {/* <Header  /> */}
-      <OprawaTable  handleChangeCardProdukty={handleChangeCardProdukty}  handleDragStart={handleDragStart} handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId} handleDrop={handleDrop} handleDragOver={handleDragOver}  handleChangeCardOprawa={handleChangeCardOprawa}  expand={expand} setExpand={setExpand} handleChangeCardFragmenty={handleChangeCardFragmenty } setShowOprawaElementyStage={setShowOprawaElementyStage} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}/>
-      {showOprawaElementyStage && (
-        <OprawaElementyStage
-        showOprawaElementyStage={showOprawaElementyStage}
-        setShowOprawaElementyStage={setShowOprawaElementyStage}
-        oprawa_row={oprawa_row}
-
+        <p>Oprawa</p>
+        {/* <Header  /> */}
+        <OprawaTable
+          handleChangeCardProdukty={handleChangeCardProdukty}
+          handleDragStart={handleDragStart}
+          handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
+          handleDrop={handleDrop}
+          handleDragOver={handleDragOver}
+          handleChangeCardOprawa={handleChangeCardOprawa}
+          expand={expand}
+          setExpand={setExpand}
+          handleChangeCardFragmenty={handleChangeCardFragmenty}
+          setShowOprawaElementyStage={setShowOprawaElementyStage}
+          oprawa_row={oprawa_row}
+          setOprawa_row={setOprawa_row}
         />
-      )}
-</div>
-     
-
+        {showOprawaElementyStage && (
+          <OprawaElementyStage
+            showOprawaElementyStage={showOprawaElementyStage}
+            setShowOprawaElementyStage={setShowOprawaElementyStage}
+            oprawa_row={oprawa_row}
+          />
+        )}
+      </div>
     </div>
   );
 }
 
-function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardFragmentyOprawaId,handleDrop,handleDragOver,handleChangeCardOprawa, expand, setExpand,handleChangeCardFragmenty,setShowOprawaElementyStage,oprawa_row,setOprawa_row}){
+function OprawaTable({
+  handleChangeCardProdukty,
+  handleDragStart,
+  handleChangeCardFragmentyOprawaId,
+  handleDrop,
+  handleDragOver,
+  handleChangeCardOprawa,
+  expand,
+  setExpand,
+  handleChangeCardFragmenty,
+  setShowOprawaElementyStage,
+  oprawa_row,
+  setOprawa_row,
+}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const lockDragDrop = contextModalInsert.lockDragDrop;
@@ -81,206 +97,192 @@ function OprawaTable({handleChangeCardProdukty,handleDragStart,handleChangeCardF
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
 
-  return (  < div className={style.main} >
-  <table className={style.table}>
-    <thead  className={style.glowka}>
-      <tr >
-      <th className={style.col7}></th>
-        <th className={style.col3}>#</th>
-        <th className={style.col4}>Oprawa</th>
-        <th className={style.col4}>Str</th>
-        <th className={style.col4}>Wersja</th>
-        <th className={style.col4}>Naklad</th>
-        <th className={style.col4}>Bok oprawy</th>
-        <th className={style.col6}>Czystodruki</th>
-        <th className={style.col6}>Data spedycji</th>
-        <th className={style.col7}>Uwagi</th>
-        <th className={style.col7}></th>
-        <th className={style.col7}></th>
-        {/* <th className={style.col7}></th> */}
-      </tr>
-    </thead>
-    <tbody>
-      {oprawa.map((row) => {
-        return (
-          <div >
-            <tr  
-         
-         key={row.id}
-             onDrop={()=>handleDrop(row.id)}
-            onDragOver={handleDragOver}
-             
-             
-             >
-              {/* <td>{row.zamowienie_id}</td> */}
-              <div className={style.expand}>
-                <img
-                  className={style.icon}
-                  src={logoExpand}
-                  onClick={() => {
-                    setExpand(!expand);
-                  }}
-                  alt="Procesy"
-                />
-              </div>
-              {/* <td>{row.produkt_id}</td> */}
-              <td>{row.id}</td>
+  return (
+    <div className={style.main}>
+      <table className={style.table}>
+        <thead className={style.glowka}>
+          <tr>
+            <th className={style.col7}></th>
+            <th className={style.col3}>#</th>
+            <th className={style.col4}>Oprawa</th>
+            <th className={style.col4}>Str</th>
+            <th className={style.col4}>Wersja</th>
+            <th className={style.col4}>Naklad</th>
+            <th className={style.col4}>Bok oprawy</th>
+            <th className={style.col6}>Czystodruki</th>
+            <th className={style.col6}>Data spedycji</th>
+            <th className={style.col7}>Uwagi</th>
+            <th className={style.col7}></th>
+            <th className={style.col7}></th>
+            {/* <th className={style.col7}></th> */}
+          </tr>
+        </thead>
+        <tbody>
+          {oprawa.map((row) => {
+            return (
+              <>
+                <tr
+                  key={row.id}
+                  onDrop={() => handleDrop(row.id)}
+                  onDragOver={handleDragOver}
+                >
+                  {/* <td>{row.zamowienie_id}</td> */}
+                  <div className={style.expand}>
+                    <img
+                      className={style.icon}
+                      src={logoExpand}
+                      onClick={() => {
+                        setExpand(!expand);
+                      }}
+                      alt="Procesy"
+                    />
+                  </div>
+                  {/* <td>{row.produkt_id}</td> */}
+                  <td>{row.id}</td>
 
-              <RodzajOprawy
-                row={row}
-       
-              
-              />
-      <td></td>
+                  <RodzajOprawy row={row} />
+                  <td></td>
 
-              <WersjaOprawa
-                row={row}
-          
-              />
-                  <NakladOprawa
-                row={row}
-        
-              />
-              <BokOprawy
-                row={row}
-           
-              />
+                  <WersjaOprawa row={row} />
+                  <NakladOprawa row={row} />
+                  <BokOprawy row={row} />
 
-<DataCzystodrukow
-  row={row}
+                  <DataCzystodrukow row={row} />
+                  <DataSpedycji row={row} />
 
-/>
-              <DataSpedycji
-                row={row}
-            
-              />
+                  <UwagiOprawa row={row} />
 
+                  <Usun row={row} handleRemoveItem={handleRemoveItem} />
+                  <DodajOprawe
+                    row={row}
+                    oprawa={oprawa}
+                    setOprawa={setOprawa}
+                  />
+                  {/* <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  /> */}
+                </tr>
+                {expand ? (
+                  fragmenty
+                    .filter((el) => el.oprawa_id === row.id)
+                    .map((row) => {
+                      return (
+                        <tr
+                          draggable={lockDragDrop}
+                          onDragStart={() => handleDragStart(row.id)}
+                          key={row.id}
+                        >
+                          <td></td>
 
-              <UwagiOprawa
-                row={row}
-             
-              />
+                          <td></td>
+                          <Typ row={row} />
+                          <td>{row.ilosc_stron} </td>
+                          <WersjaOprawaFragment
+                            row={row}
+                            handleChangeCardFragmenty={
+                              handleChangeCardFragmenty
+                            }
+                          />
 
-                
-              <Usun  row={row} handleRemoveItem={handleRemoveItem}/>
-              <DodajOprawe row={row} oprawa={oprawa} setOprawa={setOprawa} />
-              {/* <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  /> */}
-            </tr>
-            {expand ? (
-              fragmenty
-                .filter((el) => el.oprawa_id === row.id)
-                .map((row) => {
-                  return (
-                    <tr draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)}  key={row.id}>
-      
-                      <td></td>
+                          <NakladOprawaFregment
+                            row={row}
+                            handleChangeCardFragmenty={
+                              handleChangeCardFragmenty
+                            }
+                          />
 
-                      <td></td>
-                      <Typ row={row} />
-                      <td>{row.ilosc_stron} </td>
-                      <WersjaOprawaFragment
-                        row={row}
-                        handleChangeCardFragmenty={handleChangeCardFragmenty}
-                      />
-
-                      <NakladOprawaFregment
-                        row={row}
-                        handleChangeCardFragmenty={handleChangeCardFragmenty}
-                      />
-                      
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      {/* <td></td> */}
-                      
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                  
-                    </tr>
-                  );
-                })
-            ) : (
-              <></>
-            )}
-          </div>
-        );
-      })}
-    </tbody>
-  </table>
-
-</div>)
-
+                        </tr>
+                      );
+                    })
+                ) : (
+                  <></>
+                )}
+              </>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 function Header() {
   return <div className={style.header}> Introligatornia</div>;
 }
 
-function DataSpedycji({row}){
+function DataSpedycji({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-  
-
-  return(
-      <td  className={style.col}>
-      <input className={style.input} type="date"
-      defaultValue={row.data_spedycji}
-      onChange={(event) => {
-        handleUpdateRowOprawa({...row, data_spedycji: event.target.value});
-      }}></input>
-    </td>
-  );
-}
-function DataCzystodrukow({row,}){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-  return(
-      <td className={style.col}>
-      <input className={style.input} type="date"
-      defaultValue={row.data_czystodrukow}
-      onChange={(event) => {
-        handleUpdateRowOprawa({...row, data_czystodrukow: event.target.value});
-      }}></input>
-    </td>
-  );
-}
-
-function RodzajOprawy({ row}) {
-  const contextModalInsert = useContext(ModalInsertContext);
-const produkty = contextModalInsert.produkty;
-const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-const setProdukty = contextModalInsert.setProdukty;
-const contextApp = useContext(AppContext);
 
   return (
-    <td >
+    <td className={style.col}>
+      <input
+        className={style.input}
+        type="date"
+        defaultValue={row.data_spedycji}
+        onChange={(event) => {
+          handleUpdateRowOprawa({ ...row, data_spedycji: event.target.value });
+        }}
+      ></input>
+    </td>
+  );
+}
+function DataCzystodrukow({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  return (
+    <td className={style.col}>
+      <input
+        className={style.input}
+        type="date"
+        defaultValue={row.data_czystodrukow}
+        onChange={(event) => {
+          handleUpdateRowOprawa({
+            ...row,
+            data_czystodrukow: event.target.value,
+          });
+        }}
+      ></input>
+    </td>
+  );
+}
 
+function RodzajOprawy({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const produkty = contextModalInsert.produkty;
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const setProdukty = contextModalInsert.setProdukty;
+  const contextApp = useContext(AppContext);
+
+  return (
+    <td>
       <select
         className={style.select}
         value={row.oprawa}
         onChange={(event) => {
-          handleUpdateRowOprawa({...row, oprawa: event.target.value});
+          handleUpdateRowOprawa({ ...row, oprawa: event.target.value });
 
-
-          if(row.indeks == 0){
-          setProdukty(
-            produkty.map((p) => {
-              if (p.id === row.produkt_id) {
-                return {...p, oprawa:event.target.value};
-              } else {
-                return p;
-              }
-            })
-          );
-           
+          if (row.indeks == 0) {
+            setProdukty(
+              produkty.map((p) => {
+                if (p.id === row.produkt_id) {
+                  return { ...p, oprawa: event.target.value };
+                } else {
+                  return p;
+                }
+              })
+            );
           }
-
         }}
       >
         {contextApp.bindingType.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.nazwa} 
+            {option.nazwa}
           </option>
         ))}
       </select>
@@ -288,20 +290,22 @@ const contextApp = useContext(AppContext);
   );
 }
 
-function DodajOprawe({ row,oprawa,setOprawa}) {
+function DodajOprawe({ row, oprawa, setOprawa }) {
   return (
-    <td className={style.col_button} >
-            <img
-         className={style.expand}
-          src={iconCopy}
-          onClick={() => {handleAddRowOprawa(row,oprawa,setOprawa)}}
-          alt="Procesy"
-        />
+    <td className={style.col_button}>
+      <img
+        className={style.expand}
+        src={iconCopy}
+        onClick={() => {
+          handleAddRowOprawa(row, oprawa, setOprawa);
+        }}
+        alt="Procesy"
+      />
     </td>
   );
 }
 
-function Usun({ row ,handleRemoveItem }) {
+function Usun({ row, handleRemoveItem }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
@@ -311,35 +315,49 @@ function Usun({ row ,handleRemoveItem }) {
 
   return (
     <td className={style.col_button}>
-      <div >
-                      <img
-         className={style.expand}
+      <div>
+        <img
+          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.indeks, row.id,oprawa,setOprawa,fragmenty,setFragmenty)}}
+          onClick={() => {
+            handleRemoveItem(
+              row.indeks,
+              row.id,
+              oprawa,
+              setOprawa,
+              fragmenty,
+              setFragmenty
+            );
+          }}
           alt="Procesy"
         />
       </div>
-
     </td>
   );
 }
 
-
-function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,setShowOprawaElementyStage,oprawa_row,setOprawa_row}) {
+function PodzielOprawe({
+  row,
+  handleChangeCardOprawa,
+  handleAddCard,
+  setShowOprawaElementyStage,
+  oprawa_row,
+  setOprawa_row,
+}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
   return (
-    <td className={style.col_button} >
-            <img
-         className={style.expand}
-          src={iconTable}
-          onClick={() => {
-            setShowOprawaElementyStage(true);
-            setOprawa_row(row);
-          }}
-          alt="Procesy"
-        />
+    <td className={style.col_button}>
+      <img
+        className={style.expand}
+        src={iconTable}
+        onClick={() => {
+          setShowOprawaElementyStage(true);
+          setOprawa_row(row);
+        }}
+        alt="Procesy"
+      />
     </td>
   );
 }
@@ -361,8 +379,14 @@ function PodzielOprawe({ row, handleChangeCardOprawa ,handleAddCard,setShowOpraw
 //   );
 // }
 
-const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) => {
-
+const handleRemoveItem = (
+  indeks,
+  id,
+  oprawa,
+  setOprawa,
+  fragmenty,
+  setFragmenty
+) => {
   // kasowanie oprawy?
   // id = id elementu
   if (oprawa.length !== 1) {
@@ -382,15 +406,12 @@ const handleRemoveItem = (indeks,id,oprawa,setOprawa ,fragmenty,setFragmenty) =>
       }
     })
   );
-
-
 };
 
-function handleAddRowOprawa(card,oprawa,setOprawa) {
+function handleAddRowOprawa(card, oprawa, setOprawa) {
+  const newOprawa = JSON.parse(JSON.stringify(oprawa));
 
-  const newOprawa = JSON.parse(JSON.stringify(oprawa))
-
-   newOprawa.push({
+  newOprawa.push({
     id: Math.max(...newOprawa.map((f) => f.id)) + 1,
     zamowienie_id: card.zamowienie_id,
     produkt_id: card.produkt_id,
@@ -403,25 +424,19 @@ function handleAddRowOprawa(card,oprawa,setOprawa) {
     data_spedycji: card.data_spedycji,
     data_czystodrukow: card.data_czystodrukow,
     indeks: card.indeks + 1,
-
   });
 
   setOprawa(newOprawa);
-
 }
 
 function Typ({ row }) {
   return (
     <td>
-      <select
-        className={style.select}
-        value={row.typ}
-        disabled
-      >
+      <select className={style.select} value={row.typ} disabled>
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
-           {option.nazwa}
+            {option.nazwa}
           </option>
         ))}
       </select>
@@ -429,29 +444,28 @@ function Typ({ row }) {
   );
 }
 
-
-function  WersjaOprawaFragment({ row }) {
+function WersjaOprawaFragment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
     <td>
-      <input 
-      className={style.input}
+      <input
+        className={style.input}
         value={row.wersja}
-        onChange={(e) =>
-
-          {       if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowFragmenty({
-            ...row,
-            wersja: e.target.value,
-          })
-        }}}
+              ...row,
+              wersja: e.target.value,
+            });
+          }
+        }}
       ></input>
     </td>
   );
 }
 
-function  NakladOprawaFregment({ row }) {
+function NakladOprawaFregment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
@@ -459,24 +473,19 @@ function  NakladOprawaFregment({ row }) {
       <input
         className={style.input}
         value={row.naklad}
-        onChange={(e) =>
-
-          {
-
-            if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleUpdateRowFragmenty({
-            ...row,
-            naklad: e.target.value,
-          })
-            }
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowFragmenty({
+              ...row,
+              naklad: e.target.value,
+            });
           }
-
-        }
+        }}
       ></input>
     </td>
   );
 }
-function  IloscStronFragment({ row,  }) {
+function IloscStronFragment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   return (
@@ -494,84 +503,85 @@ function  IloscStronFragment({ row,  }) {
   );
 }
 
-function  WersjaOprawa({ row }) {
+function WersjaOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
-      <input 
+      <input
         className={style.input}
         value={row.wersja}
-        onChange={(e) =>
-          {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowOprawa({
-            ...row,
-            wersja: e.target.value,
-          })}}
-        }
+              ...row,
+              wersja: e.target.value,
+            });
+          }
+        }}
       ></input>
     </td>
   );
 }
 
-function  BokOprawy({ row }) {
+function BokOprawy({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
-      <input 
+      <input
         className={style.input}
         value={row.bok_oprawy}
-        onChange={(e) =>
-          {
-            if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleUpdateRowOprawa({
-            ...row,
-            bok_oprawy: e.target.value,
-          })}}
-        }
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowOprawa({
+              ...row,
+              bok_oprawy: e.target.value,
+            });
+          }
+        }}
       ></input>
     </td>
   );
 }
 
-function  UwagiOprawa({ row }) {
+function UwagiOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   return (
     <td>
-      <input 
-      className={style.input}
-        value={row.uwagi}
-        onChange={(e) =>
-          {
-            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-              handleUpdateRowOprawa({
-            ...row,
-            uwagi: e.target.value,
-          })}}
-        }
-      ></input>
-    </td>
-  );
-}
-
-function  NakladOprawa({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-  return (
-    <td>
-      <input 
+      <input
         className={style.input}
-        value={row.naklad} 
-        onChange={(e) =>
-          {
-            if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleUpdateRowOprawa({
-            ...row,
-            naklad: e.target.value,
-          })}}
-        }
+        value={row.uwagi}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+            handleUpdateRowOprawa({
+              ...row,
+              uwagi: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+function NakladOprawa({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  return (
+    <td>
+      <input
+        className={style.input}
+        value={row.naklad}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowOprawa({
+              ...row,
+              naklad: e.target.value,
+            });
+          }
+        }}
       ></input>
     </td>
   );

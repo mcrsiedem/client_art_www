@@ -17,7 +17,7 @@ const procesyElementowEditTemporary = procesyElementowTechTemporary.slice();
       element_id: row.id,
       proces_id: 14,
       nazwa_id: 2,
-      proces_nazwa: 2,
+      nazwa: "Uszlachetnianie",
       proces_typ: 1,
       front_ilosc: 1,
       back_ilosc: 0,

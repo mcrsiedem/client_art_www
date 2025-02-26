@@ -77,13 +77,11 @@ const ProcesRow = ({ rowProces }) => {
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow}> </p>
-        <button onClick={()=>{
-          
-          
-console.log("wykonania2: ", wykonania)
-          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania)}}>dodaj grupe</button>
-        {/* <Nazwa rowProces={rowProces} />
-        <Info rowProces={rowProces} /> */}
+
+        { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&         <button onClick={()=>{
+          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania)}}>dodaj grupe</button>)}
+
+    
 
       </div>
     

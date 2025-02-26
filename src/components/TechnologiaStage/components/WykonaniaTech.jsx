@@ -17,6 +17,7 @@ import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProc
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
 import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgrupy";
 import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
+import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 
 
 
@@ -57,7 +58,10 @@ const WykonaniaTechTable = () => {
 const ProcesRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
   const elementyTech = techContext.elementyTech;
+  const appcontext = useContext(AppContext);
+  const procesList =appcontext.procesList  // wszystkie procesy
   const [show, setShow] = useState(true);
   return (
     <>
@@ -70,7 +74,7 @@ const ProcesRow = ({ rowProces }) => {
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow}> </p>
-        <button>dodaj grupe</button>
+        <button onClick={()=>{createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan)}}>dodaj grupe</button>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}
 

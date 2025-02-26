@@ -114,3 +114,9 @@ border-bottom: 1px solid rgb(182, 182, 182);
   /* font-size: 0.9rem; */
 }
 
+.btn_dodaj_grupe{
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  padding: 10px;
+}

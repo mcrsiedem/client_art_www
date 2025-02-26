@@ -31,7 +31,7 @@ export default function WykonaniaTech() {
       {/* <div className={style.procesy_menu_button}> */}
       <p></p>
         <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey" , fontSize:"1.5rem"}}>Procesy</p>
-        <ProcesBtn />
+       
       </div>
 
       <WykonaniaTechTable />
@@ -64,7 +64,7 @@ const ProcesRow = ({ rowProces }) => {
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const elementyTech = techContext.elementyTech;
   const appcontext = useContext(AppContext);
-  const procesList =appcontext.procesList  // wszystkie procesy
+
   const [show, setShow] = useState(true);
   return (
     <>
@@ -77,11 +77,10 @@ const ProcesRow = ({ rowProces }) => {
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow}> </p>
+        {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
+        { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
 
-        { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&         <button onClick={()=>{
-          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania)}}>dodaj grupe</button>)}
 
-    
 
       </div>
     
@@ -919,8 +918,9 @@ function UsunArkusz({ row }) {
   );
 }
 
-const ProcesBtn = ({ row, showMenu, setShowMenu }) => {
+const ProcesBtn = ({ rowProces,row, showMenu, setShowMenu }) => {
   const techContext = useContext(TechnologyContext);
+  const appcontext = useContext(AppContext);
   const legiFragmenty = techContext.legiFragmenty;
   const setLegiFragmenty = techContext.setLegiFragmenty;
   const arkusze = techContext.arkusze;
@@ -936,7 +936,7 @@ const ProcesBtn = ({ row, showMenu, setShowMenu }) => {
   const setOprawaTech = techContext.setOprawaTech;
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
-
+  const procesList =appcontext.procesList  // wszystkie procesy
 
   const elementyTech = techContext.elementyTech;
   return (
@@ -947,6 +947,8 @@ const ProcesBtn = ({ row, showMenu, setShowMenu }) => {
         src={Logo_ustawienia2}
         title="Policz czasy wykonań"
         onClick={() => {
+
+          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania)
           // createArkuszeFromElemenets(
           //   arkusze,
           //   setArkusze,

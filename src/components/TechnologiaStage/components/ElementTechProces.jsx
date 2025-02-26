@@ -329,6 +329,11 @@ const BackIlosc = ({ row }) => {
 }
 
 function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTemporary }) {
+    const techContext = useContext(TechnologyContext);
+    const grupaWykonan = techContext.grupaWykonan;
+    const setGrupaWykonan = techContext.setGrupaWykonan;
+    const wykonania = techContext.wykonania;
+    const setWykonania = techContext.setWykonania;
   return (
     <td className={style.col_button}>
       <div>
@@ -337,7 +342,8 @@ function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTempo
           src={iconTrash}
           onClick={() => {
             setProcesyElementowTechTemporary(procesyElementowTechTemporary.filter((p) => p.id !== row.id));
-      
+            setGrupaWykonan(grupaWykonan.filter((p) => p.proces_id !== row.id))
+            setWykonania(wykonania.filter((p) => p.proces_id !== row.id))
           }}
           alt="Procesy"
         />

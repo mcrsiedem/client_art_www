@@ -51,8 +51,7 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
     proces_id: rowProces.id,
     stan:1,
     status:1,
-
-    czas: 1,
+    czas: parseInt((lega.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
     uwagi: ""
   });
   
@@ -63,6 +62,8 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
 
 setWykonania(wykonaniaEdit)
 
+setGrupaWykonan(prev=> prev.map( ng => ({...ng,czas:wykonaniaEdit.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ))
+// new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
   // const new_wykonania = [];
 
   // const grupa ={

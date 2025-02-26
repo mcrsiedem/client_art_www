@@ -259,6 +259,7 @@ function Procesy({ row }) {
   return (
     <div id="procesy" className={style.procesy}>
     {/* <div id="procesy" style={{paddingTop:"3px"}}> */}
+
       <img
         className={style.expand}
         src={Logo_ustawienia}

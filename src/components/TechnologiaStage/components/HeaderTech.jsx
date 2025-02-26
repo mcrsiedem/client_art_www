@@ -48,6 +48,7 @@ export default function Header({}) {
             console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
             console.log("Wykonania tech: ", techContext.wykonania);
             console.log("listaPapierow: ", appcontext.listaPapierow);
+            console.log("lista wszystkich procesów appcontext.procesList: ", appcontext.procesList);
             // fechparametryTechnologii(27)
 
             //  console.log("Teraz: "+ today_dodaj_minuty())

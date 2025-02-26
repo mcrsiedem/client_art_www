@@ -70,6 +70,7 @@ const ProcesRow = ({ rowProces }) => {
         {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow}> </p>
+        <button>dodaj grupe</button>
         {/* <Nazwa rowProces={rowProces} />
         <Info rowProces={rowProces} /> */}
 
@@ -94,8 +95,7 @@ const GrupaRow = ({ rowProces }) => {
   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
   return (
     <>
-      {show &&
-        grupaWykonan
+      {show && grupaWykonan
           .filter((f) => f.proces_id == rowProces.id)
           .map((rowGrupa, i) => (
             <div>
@@ -126,7 +126,16 @@ const GrupaRow = ({ rowProces }) => {
                     </div>
                   ))}
             </div>
-          ))}
+          ))
+        
+
+          
+
+
+          
+          }
+
+
     </>
   );
 

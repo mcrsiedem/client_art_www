@@ -4,18 +4,17 @@ import { IP } from "../utils/Host";
 import { getMaxID } from "./getMaxID";
 import { getMaxIndeks } from "./getMaxIndeks";
 
-export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,arkusze,wykonania, setWykonania) {
+export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania, setWykonania) {
   
   // funkcja dodaje grupe wykonan i wykonania do pojedynczego procesu
   // rowProces - proces przypisany do elementu z którego mają być wykonania i grupa
   // procesList - wszystkie dostępne procesy
 
-  const proces = procesList.filter(p => p.id == rowProces.proces_id )
+  // const proces = procesList.filter(p => p.id == rowProces.proces_id )Z
   
-  console.log("proces :",proces)
-  const new_grupy = [];
 
-  grupaWykonan.push({
+  const grupaWykonanEdit = grupaWykonan.slice();
+  grupaWykonanEdit.push({
     id: getMaxID(grupaWykonan),
     indeks: getMaxIndeks(grupaWykonan),
     element_id: rowProces.element_id,
@@ -30,10 +29,39 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
     uwagi: ""
   });
 
-   setGrupaWykonan(grupaWykonan);
+   setGrupaWykonan(grupaWykonanEdit);
 
 
+const wykonaniaEdit = wykonania.slice();
 
+if(procesList.filter(p => p.id == rowProces.proces_id )[0].lega == 1){
+
+legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
+  wykonaniaEdit.push({
+    id: getMaxID(wykonania),
+    indeks: getMaxIndeks(wykonania),
+    element_id: lega.element_id,
+    grupa_id: getMaxID(grupaWykonan),
+
+    nazwa: rowProces.nazwa,
+    narzad: procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,
+    predkosc: procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc,
+    mnoznik:1,
+    procesor_id: procesList.filter(p => p.id == rowProces.proces_id )[0].procesor_domyslny,
+    proces_id: rowProces.id,
+    stan:1,
+    status:1,
+
+    czas: 1,
+    uwagi: ""
+  });
+  
+});
+
+
+}
+
+setWykonania(wykonaniaEdit)
 
   // const new_wykonania = [];
 

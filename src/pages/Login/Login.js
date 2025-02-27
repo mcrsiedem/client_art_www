@@ -45,18 +45,41 @@ export default function Login( ) {
   }, [socket]);
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.get(IP + "users/" + input.login + "/" + input.haslo).then((res) => {
-      if (res.data.length > 0) {
-        sessionStorage.setItem("id", DecodeToken(res.data).id); // tymczasowo zapisje id usera
-        sessionStorage.setItem("token", res.data); // token w sesionStorage aby kazda karta przegladarki wymagala zalogowania
-        setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
-        navigate("/Panel");
-      } else {
-        console.log("Błąd");
-      }
-    })
+    // console.log("log: -" +IP + "users/" + input.login + "/" + input.haslo)
+
+    // axios.get(IP + "users/" + input.login + "/" + input.haslo).then((res) => {
+
+    //   console.log("odpowiedz", res)
+    //   console.log("data", res.data)
+    //   console.log("status", res.status)
+
+    //   if (res.data.length > 0) {
+    //     sessionStorage.setItem("id", DecodeToken(res.data).id); 
+    //     sessionStorage.setItem("token", res.data); 
+    //     setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
+    //     navigate("/Panel");
+    //   } else {
+    //     console.log("Błąd");
+    //   }
+
+
+    // }
+    // )
+    const res = await axios.get(IP + "users/" + input.login + "/" + input.haslo)
+// console.log("login: ",res)
+
+if (res.data.length > 0) {
+  sessionStorage.setItem("id", DecodeToken(res.data).id); 
+  sessionStorage.setItem("token", res.data); 
+  setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
+  navigate("/Panel");
+} else {
+  console.log("Błąd");
+}
+
+
   };
 
   return (

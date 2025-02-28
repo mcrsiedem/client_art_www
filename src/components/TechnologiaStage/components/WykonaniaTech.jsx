@@ -948,33 +948,11 @@ const ProcesBtn = ({ rowProces,row, showMenu, setShowMenu }) => {
         title="Policz czasy wykonań"
         onClick={() => {
 
-          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania)
-          // createArkuszeFromElemenets(
-          //   arkusze,
-          //   setArkusze,
-          //   legi,
-          //   setLegi,
-          //   legiFragmenty,
-          //   setLegiFragmenty,
-          //   oprawaTech,
-          //   setOprawaTech,
-          //   fragmentyTech,
-          //   setFragmentyTech,
-          //   elementyTech,
-          //   row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-          // );
-          // setShowMenu(!showMenu);
-          // dodaj_clikHandler();
-          // console.log("z contextu :"+ token.rowSelected)
-          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania,arkusze,setArkusze)
         }}
         alt="x"
       />
-      {/* <ProduktyTechMenu
-        row={row}
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-      /> */}
+
     </div>
   );
 };

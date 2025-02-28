@@ -4,7 +4,7 @@ import { IP } from "../utils/Host";
 import { getMaxID } from "./getMaxID";
 import { getMaxIndeks } from "./getMaxIndeks";
 
-export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania, setWykonania) {
+export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania, setWykonania,arkusze,setArkusze) {
   
   // funkcja dodaje grupe wykonan i wykonania do pojedynczego procesu
   // rowProces - proces przypisany do elementu z którego mają być wykonania i grupa
@@ -34,6 +34,8 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
 
 const wykonaniaEdit = wykonania.slice();
 
+
+// jeżli aktualny proces ma w kolumnie lega = 1 to gereuje wykonania z leg danego alementu
 if(procesList.filter(p => p.id == rowProces.proces_id )[0].lega == 1){
 
 legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
@@ -42,7 +44,6 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
     indeks: getMaxIndeks(wykonania),
     element_id: lega.element_id,
     grupa_id: getMaxID(grupaWykonan),
-
     nazwa: rowProces.nazwa,
     narzad: procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,
     predkosc: procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc,
@@ -57,11 +58,38 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
   
 });
 
-
 }
 
-setWykonania(wykonaniaEdit)
+// jeżli aktualny proces ma w kolumnie arkusz = 1 to gereuje wykonania z arkuszy danego alementu
+if(procesList.filter(p => p.id == rowProces.proces_id )[0].arkusz == 1){
 
+  arkusze.filter(arkusz => arkusz.element_id == rowProces.element_id).forEach(arkusz => {
+    wykonaniaEdit.push({
+      id: getMaxID(wykonania),
+      indeks: getMaxIndeks(wykonania),
+      element_id: arkusz.element_id,
+      grupa_id: getMaxID(grupaWykonan),
+      nazwa: rowProces.nazwa,
+      narzad: procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,
+      predkosc: procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc,
+      mnoznik:1,
+      procesor_id: procesList.filter(p => p.id == rowProces.proces_id )[0].procesor_domyslny,
+      proces_id: rowProces.id,
+      stan:1,
+      status:1,
+      czas: parseInt((arkusz.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
+      uwagi: ""
+    });
+    
+  });
+  
+  }
+
+
+
+
+
+setWykonania(wykonaniaEdit)
 setGrupaWykonan(prev=> prev.map( ng => ({...ng,czas:wykonaniaEdit.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ))
 // new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
   // const new_wykonania = [];

@@ -224,6 +224,7 @@ function ElementyTable2({
       
           {elementy
             .sort((a, b) => a.indeks - b.indeks)
+            .filter((x) => x.delete != true)
             .map((row, i) => {
               return (
                 

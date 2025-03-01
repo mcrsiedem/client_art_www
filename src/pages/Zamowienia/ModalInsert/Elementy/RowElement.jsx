@@ -35,8 +35,37 @@ export default function RowElement({
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
         if (elementy.length !== 1) {
-          setElementy(elementy.filter((x) => x.indeks !== indeks));
-          setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+          // setElementy(elementy.filter((x) => x.indeks !== indeks));
+          // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
+
+          setElementy((prev) =>
+            prev.map((t, a) => {
+              if (t.id == id) {
+                return {
+                  ...t,
+                  delete: true
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+          setFragmenty((prev) =>
+            prev.map((t, a) => {
+              if (t.element_id == id) {
+                return {
+                  ...t,
+                  delete: true
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+
+
         }
       
         setElementy((prev) =>
@@ -45,6 +74,7 @@ export default function RowElement({
               return {
                 ...t,
                 indeks: t.indeks--,
+                update: true
               };
             } else {
               return t;
@@ -333,13 +363,13 @@ function Dodaj({ row, handleAddCard }) {
             handleChangeCardFragmenty_i_Elementy({
               ...row,
               typ: e.target.value,
+              update: true
             }
             );
 
           }}
 
-          
-
+    
 
         >
           {}
@@ -405,60 +435,6 @@ function Dodaj({ row, handleAddCard }) {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  function Gramatura({  row, handleChangeCardElementy}) {
-    const appcontext = useContext(AppContext);
-    const listaPapierow = appcontext.listaPapierow;
-    return (
-      
-        <select
-          className={style.select}
-          
-          value={row.gramatura_id}
-          onChange={(e) =>
-            handleChangeCardElementy({
-              ...row,
-              gramatura_id: e.target.value,
-            })
-          }
-        >
-          <option value="0">wybierz</option>
-          {listaPapierow.filter((x) => x.nazwa_id == row.papier_id)
-         .sort((a, c) => a.gramatura - c.gramatura)
-            .map((option) =>
-              row.papier_id !== 7 ? (
-                <option key={option.id} value={option.id}>
-                  {option.gramatura}{" "}
-                  {option.bulk !== 1 ? (
-                    <p>
-                      {" "}
-                      g/m2 vol. {option.bulk} {option.wykonczenie}
-                    </p>
-                  ) : (
-                    <p>g/m2 </p>
-                  )}
-                </option>
-              ) : (
-                <option key={option.id} value={option.id}>
-                  {/* {option.gramatura} g/m2 vol. {option.bulk}  {option.wykonczenie} */}
-                </option>
-              )
-            )}
-        </select>
-     
-    );
-  }
   
   function Naklad({ row, handleChangeCardElementy }) {
     return (
@@ -472,6 +448,7 @@ function Dodaj({ row, handleAddCard }) {
               handleChangeCardElementy({
               ...row,
               naklad: e.target.value,
+              update: true
             })}}
           }
         ></input>
@@ -490,6 +467,7 @@ function Dodaj({ row, handleAddCard }) {
              handleChangeCardElementy({
               ...row,
               nazwa: e.target.value,
+              update: true
             })}
           }
           }
@@ -513,6 +491,7 @@ function Dodaj({ row, handleAddCard }) {
               handleChangeCardFragmenty_i_Elementy_IloscStron({
               ...row,
               ilosc_stron: e.target.value,
+              update: true
             }
             )}}
 
@@ -563,40 +542,8 @@ function Dodaj({ row, handleAddCard }) {
     
     );
   }
-  function Kolory({ row, handleChangeCardElementy }) {
-    return (
-      <td>
-        <input
-          defaultValue={row.kolory}
-          onChange={(e) =>
-            handleChangeCardElementy({
-              ...row,
-              kolory: e.target.value,
-            })
-          }
-        ></input>
-      </td>
-    );
-  }
-  
-  function PapierInfo({ row, handleChangeCardElementy }) {
-    return (
-   
-        <input
-        className={style.input}
-          value={row.papier_info}
-          onChange={(e) =>
-            {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-              handleChangeCardElementy({
-              ...row,
-              papier_info: e.target.value,
-            })
-            }}
-          }
-        ></input>
-   
-    );
-  }
+
+
   
   function Uwagi({ row, handleChangeCardElementy }) {
     return (

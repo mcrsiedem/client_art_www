@@ -22,7 +22,7 @@ export default function TechnologiaStage() {
 
   useEffect(() => {
     if (openTechnologia) {
-      console.log("open technologia");
+    
     }
   }, []);
 

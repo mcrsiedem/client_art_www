@@ -47,7 +47,8 @@ export const AppContextProvider = ({children})=>{
         return procesListName.filter(pln => pln.id == id)[0].nazwa
        }
 
-    
+
+
     useEffect(()=>{
         getUsers(setUsers) 
         getClients(setClients) 

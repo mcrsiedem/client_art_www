@@ -1,27 +1,33 @@
 import axios from "axios";
 import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
+import { refreshZamowienia } from "./refreshZamowienia";
 
-export async function saveOrderNew({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,setProdukty,setElementy,setFragmenty,setOprawa,setPakowanie,saveAs,refreshZamowienia,setProcesyElementow,setData,
+export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,
   procesyElementow}){
 
-    let daneZamowieniaEdit = {}
-            let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs})
-            daneZamowieniaEdit = savedDane.daneZamowienia
-            setDaneZamowienia(daneZamowieniaEdit)
-            refreshZamowienia(setData);
+
+
+          let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
+
+           setDaneZamowienia(savedDane.daneZamowienia)
+           setProdukty(savedDane.produkty)
+           setElementy(savedDane.elementy)
+           setFragmenty(savedDane.fragmenty)
+           setOprawa(savedDane.oprawa)
+           setProcesyElementow(savedDane.procesyElementow)
+           
+          refreshZamowienia(setZamowienia);
 
 }
 
 //----------------------------------------------------------------------------------
-const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,saveAs}) =>{
+const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
-  let res = await axios.post(IP + "zamowienie_new",[ {
+  let res = await axios.post(IP + "zapiszZamowienie",[ {
      
-    id:  daneZamowienia.id, // id zamówienia przed zapisem - gdy jest to pierwszy zapis to id = 1 wtedy po stronie serwera nowe id zostanie także przypisane do prime_id potrzebne do indentyfikacji całej grupy zamówień
-     prime_id: daneZamowienia.prime_id,
      nr: daneZamowienia.nr,
       rok: daneZamowienia.rok,
       firma_id: daneZamowienia.firma_id,
@@ -41,11 +47,10 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
       uwagi: daneZamowienia.uwagi,
       przedplata: daneZamowienia.przedplata,
       termin_platnosci: daneZamowienia.termin_platnosci,
-      fsc: daneZamowienia.fsc,
-      saveAs: saveAs,
+      fsc: daneZamowienia.fsc
 
-      final: 1 // ostateczna wersja zamówienia, którą widać na liście
-    }, produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow])
+
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
@@ -55,10 +60,9 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,p
   elementy = res.data[2];
   fragmenty = res.data[3];
   oprawa = res.data[4];
-  pakowanie = res.data[5];
-  procesyElementow = res.data[6];
+  procesyElementow = res.data[5];
 
-      resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,pakowanie,procesyElementow})
+      resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,procesyElementow})
 
   })
 }

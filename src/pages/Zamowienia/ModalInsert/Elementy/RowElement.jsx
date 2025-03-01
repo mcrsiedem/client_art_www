@@ -373,6 +373,7 @@ function Dodaj({ row, handleAddCard }) {
             handleChangeCardElementy({
               ...row,
               papier_id: e.target.value,
+              update: true
             });
           }}
         >
@@ -533,6 +534,7 @@ function Dodaj({ row, handleAddCard }) {
               handleChangeCardElementy({
                 ...row,
                 format_x: e.target.value,
+                update: true
               });
             }
           }}
@@ -553,6 +555,7 @@ function Dodaj({ row, handleAddCard }) {
               handleChangeCardElementy({
                 ...row,
                 format_y: e.target.value,
+                update: true
               });
             }
           }}

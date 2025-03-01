@@ -25,6 +25,7 @@ function Zamowienia({ user, setUser }) {
   const data = contextApp.zamowienia
   const setData = contextApp.setZamowienia
 
+
 const listaPapierow = contextApp.listaPapierow;
 const setListaPapierow = contextApp.setListaPapierow;
 const listaPapierowNazwy = contextApp.listaPapierowNazwy;
@@ -53,7 +54,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   async function fechZamowienia() {
 
     const res = await axios.get(IP + "zamowienia");
-    let jobs= [...res.data].filter(job => job.final == 1);
+    let jobs= [...res.data]
     setData(jobs);
 
     const res3 = await axios.get(IP + "lista-papierow");
@@ -74,7 +75,8 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 
   async function refreshZamowienia() {
     const res = await axios.get(IP + "zamowienia");
-    let jobs= [...res.data].filter(job => job.final == 1);
+    // let jobs= [...res.data].filter(job => job.final == 1);
+    let jobs= [...res.data]
     setData(jobs);
   }
 

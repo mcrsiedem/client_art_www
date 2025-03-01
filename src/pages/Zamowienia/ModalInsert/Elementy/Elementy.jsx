@@ -16,15 +16,7 @@ export default function Elementy({
 
   handleChangeCardElementy,
   handleChangeCardFragmenty,
-  // selected_papier,
-  // setSelected_papier,
-  // info,
-  // setInfo,
-  // listaPapierow,
-  // listaGramatur,
-  // setListaGramatur,
-  // isEdit,
-  // setIsEdit,
+
   procesyElementow,
   setProcesyElementow,
 
@@ -38,16 +30,12 @@ export default function Elementy({
 
    
     <div className={style.element}>
-      {/* <ElementyTableHeader/> */}
+
       <ElementyTable2
   
         handleChangeCardElementy={handleChangeCardElementy}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
-        // listaPapierow={listaPapierow}
-        // listaGramatur={listaGramatur}
-        // setListaGramatur={setListaGramatur}
-        // isEdit={isEdit}
-        // setIsEdit={setIsEdit}
+
         procesyElementow={procesyElementow}
         setProcesyElementow={setProcesyElementow}
   

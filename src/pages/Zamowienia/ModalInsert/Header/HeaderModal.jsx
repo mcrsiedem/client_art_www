@@ -13,6 +13,9 @@ import { AppContext } from "../../../../context/AppContext";
 import { useAuth } from "hooks/useAuth";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
+import { zapiszZamowienie } from "actions/zapiszZamowienie";
+import { refreshZamowienia } from "actions/refreshZamowienia";
+import { zapiszZamowienieUpdate } from "actions/zapiszZamowienieUpdate";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -22,7 +25,6 @@ const openInNewTab = (url) => {
 
 export default function Header({
   setOpenModalInsert,
-  postZamowienieObj,
   setShowSaveAs,
   setSaveAs,
   stanOtwarciaZamowienia,
@@ -67,7 +69,6 @@ export default function Header({
                 <PokazStany/>
                   <Zapisz
                     setShowSaveAs={setShowSaveAs}
-                    postZamowienieObj={postZamowienieObj}
                     setSaveAs={setSaveAs}
                   />
 
@@ -127,25 +128,74 @@ const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
   />
   )
 }
-function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
+function Zapisz({ setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty= contextModalInsert.produkty;
+  const daneZamowienia= contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+  const elementy= contextModalInsert.elementy;
+  const fragmenty= contextModalInsert.fragmenty;
+  const oprawa= contextModalInsert.oprawa;
+  const setProdukty= contextModalInsert.setProdukty;
+  const setElementy= contextModalInsert.setElementy;
+  const setFragmenty= contextModalInsert.setFragmenty;
+  const setOprawa= contextModalInsert.setOprawa;
+  const setProcesyElementow= contextModalInsert.setProcesyElementow;
+  const procesyElementow= contextModalInsert.procesyElementow;
 
-
+  const contextApp = useContext(AppContext);
+  const setZamowienia = contextApp.setZamowienia
 
   return (
     <button
 
       onClick={async () => {
 
-        if(produkty[0].naklad != 0){
+        if(produkty[0].naklad != 0 && daneZamowienia.id == 1){
                  setSaveAs(false);
-        postZamowienieObj();
+     
+        zapiszZamowienie({
+                daneZamowienia,
+                setDaneZamowienia,
+                produkty,
+                elementy,
+                fragmenty,
+                oprawa,
+                setProdukty,
+                setElementy,
+                setFragmenty,
+                setOprawa,
+                setProcesyElementow,
+                procesyElementow,
+                setZamowienia
+              });
+        
+
+
         setSaveButtonDisabled(true);
         }
  
+        if(produkty[0].naklad != 0 && daneZamowienia.id != 1){
+                  setSaveAs(false);
+                  zapiszZamowienieUpdate({
+                    daneZamowienia,
+                    setDaneZamowienia,
+                    produkty,
+                    elementy,
+                    fragmenty,
+                    oprawa,
+                    setProdukty,
+                    setElementy,
+                    setFragmenty,
+                    setOprawa,
+                    setProcesyElementow,
+                    procesyElementow,
+                    setZamowienia
+                  });
+        setSaveButtonDisabled(true);
+        }
 
         // setOrderClosed
       }}
@@ -159,7 +209,6 @@ function Zapisz({ postZamowienieObj, setShowSaveAs, setSaveAs }) {
 
 function ZapiszJako({
 
-  postZamowienieObj,
   setShowSaveAs,
   setSaveAs,
 }) {
@@ -300,7 +349,6 @@ function ButtonSprawdz({
 
 function ButtonSprawdz2({
   isSaveButtonDisabled,
-  postZamowienieObj,
   setShowSaveAs,
   setSaveAs,
 }) {

@@ -28,7 +28,6 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import { saveOrderNew } from "actions/saveOrderNew";
 import SaveAs from "./SaveAs/SaveAs";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
@@ -39,6 +38,7 @@ import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import PaperStage from "components/PaperStage/PaperStage";
+import { zapiszZamowienie } from "actions/zapiszZamowienie";
 
 function ModalInsert({
   openModalInsert,
@@ -177,7 +177,6 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       <HeaderModal
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
-        postZamowienieObj={postZamowienieObj}
         info={info}
         setInfo={setInfo}
         isOK={isOK}
@@ -287,7 +286,6 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
           setShowSaveAs={setShowSaveAs}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
-          postZamowienieObj={postZamowienieObj}
           postZamowienieObjSaveAs={postZamowienieObjSaveAs}
         />
       )}
@@ -334,51 +332,10 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
   }
 
 
-    function postZamowienieObj() {
 
-      saveOrderNew({
-        daneZamowienia,
-        setDaneZamowienia,
-        produkty,
-        elementy,
-        fragmenty,
-        oprawa,
-        pakowanie,
-        setProdukty,
-        setElementy,
-        setFragmenty,
-        setOprawa,
-        setPakowanie,
-        saveAs,
-        refreshZamowienia,
-        setProcesyElementow,
-        procesyElementow
-      });
-
-
-
-
-    }
 
     function postZamowienieObjSaveAs() {
-      saveOrderNew({
-        daneZamowienia,
-        produkty,
-        elementy,
-        fragmenty,
-        oprawa,
-        pakowanie,
-        cookies,
-        setProdukty,
-        setElementy,
-        setFragmenty,
-        setOprawa,
-        setPakowanie,
-        saveAs,
-        refreshZamowienia,
-        setProcesyElementow,
-        procesyElementow
-      });
+
     }
 
 

@@ -73,7 +73,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
         value={daneZamowienia.firma_id}
 
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, firma_id: event.target.value});
+          setDaneZamowienia({...daneZamowienia, firma_id: event.target.value,update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -104,7 +104,7 @@ const contextApp = useContext(AppContext);
         className={style.klient}
         value={daneZamowienia.klient_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, klient_id: event.target.value});
+          setDaneZamowienia({...daneZamowienia, klient_id: event.target.value,update: true});
           setSaveButtonDisabled(false);
         }}
       >
@@ -144,7 +144,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         <input className={style.select} type="date"
              value={daneZamowienia.data_materialow}
              onChange={(event) => {
-              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value});
+              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value, update: true});
               setSaveButtonDisabled(false)
              }}></input>
       </div>
@@ -162,7 +162,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <input className={style.select} type="date"
          value={daneZamowienia.data_przyjecia}
          onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value});
+          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, update: true});
           setSaveButtonDisabled(false)
            if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
@@ -182,7 +182,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         <input className={style.select} type="date"
         value={daneZamowienia.data_spedycji}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value});
+          setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}></input>
       </div>
@@ -204,7 +204,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         // value={DecodeToken(sessionStorage.getItem("token")).id}
         value={daneZamowienia.opiekun_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value});
+          setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -230,7 +230,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.status}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, status: event.target.value});
+          setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -256,7 +256,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.rodzaj}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, rodzaj: event.target.value});
+          setDaneZamowienia({...daneZamowienia, rodzaj: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -282,7 +282,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.fsc}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, fsc: event.target.value});
+          setDaneZamowienia({...daneZamowienia, fsc: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -308,7 +308,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.stan}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, stan: event.target.value});
+          setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -338,7 +338,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, tytul: event.target.value});
+        setDaneZamowienia({...daneZamowienia, tytul: event.target.value, update: true});
         setSaveButtonDisabled(false)
      }
 
@@ -360,7 +360,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       value={daneZamowienia.przedplata}
       onChange={(event) => {
         if(goInputValidation(event,'price')){
-          setDaneZamowienia({...daneZamowienia, przedplata: event.target.value});
+          setDaneZamowienia({...daneZamowienia, przedplata: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }
       }}></input>
@@ -386,7 +386,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
          const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ.\+\-\(\),]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
-          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value});
+          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, update: true});
           setSaveButtonDisabled(false)
      }
 
@@ -410,7 +410,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         const re = /^[0-9]+$/;
 
         if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value});
+          setDaneZamowienia({...daneZamowienia, nr: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }
         
@@ -436,7 +436,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
        if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, cena: event.target.value});
+        setDaneZamowienia({...daneZamowienia, cena: event.target.value, update: true});
         setSaveButtonDisabled(false)
        }
         
@@ -461,7 +461,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         const re2 = /^[0-9]+$/;
         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
        if ( event.target.value === '' || re2.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value});
+          setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value, update: true});
           setSaveButtonDisabled(false)
  
        }
@@ -484,7 +484,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.vat_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, vat_id: event.target.value});
+          setDaneZamowienia({...daneZamowienia, vat_id: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -510,7 +510,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.waluta_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, waluta_id: event.target.value});
+          setDaneZamowienia({...daneZamowienia, waluta_id: event.target.value, update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -545,7 +545,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
               const re = /^[0-9]+$/;
               if (event.target.value === '' || re.test(event.target.value)) {
-              setDaneZamowienia({...daneZamowienia, rok: event.target.value});
+              setDaneZamowienia({...daneZamowienia, rok: event.target.value, update: true});
               setSaveButtonDisabled(false)
               }
             }}></input>

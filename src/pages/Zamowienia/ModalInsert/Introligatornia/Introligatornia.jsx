@@ -118,7 +118,9 @@ function OprawaTable({
           </tr>
         </thead>
         <tbody>
-          {oprawa.map((row) => {
+          {oprawa
+           .filter((x) => x.delete != true)
+          .map((row) => {
             return (
               <>
                 <tr
@@ -226,7 +228,7 @@ function DataSpedycji({ row }) {
         type="date"
         defaultValue={row.data_spedycji}
         onChange={(event) => {
-          handleUpdateRowOprawa({ ...row, data_spedycji: event.target.value });
+          handleUpdateRowOprawa({ ...row, data_spedycji: event.target.value, update:true });
         }}
       ></input>
     </td>
@@ -245,6 +247,7 @@ function DataCzystodrukow({ row }) {
           handleUpdateRowOprawa({
             ...row,
             data_czystodrukow: event.target.value,
+            update:true
           });
         }}
       ></input>
@@ -265,13 +268,13 @@ function RodzajOprawy({ row }) {
         className={style.select}
         value={row.oprawa}
         onChange={(event) => {
-          handleUpdateRowOprawa({ ...row, oprawa: event.target.value });
+          handleUpdateRowOprawa({ ...row, oprawa: event.target.value,update:true });
 
           if (row.indeks == 0) {
             setProdukty(
               produkty.map((p) => {
                 if (p.id === row.produkt_id) {
-                  return { ...p, oprawa: event.target.value };
+                  return { ...p, oprawa: event.target.value,update:true };
                 } else {
                   return p;
                 }
@@ -390,22 +393,55 @@ const handleRemoveItem = (
   // kasowanie oprawy?
   // id = id elementu
   if (oprawa.length !== 1) {
-    setOprawa(oprawa.filter((x) => x.indeks !== indeks));
-    setFragmenty(fragmenty.filter((x) => x.oprawa_id !== id));
-  }
 
-  setOprawa((prev) =>
+      setOprawa((prev) =>
     prev.map((t, a) => {
-      if (t.indeks > indeks) {
+      if (t.id == id) {
         return {
           ...t,
-          indeks: t.indeks--,
+          delete: true
         };
       } else {
         return t;
       }
     })
   );
+
+
+  setFragmenty((prev) =>
+    prev.map((t, a) => {
+      if (t.oprawa_id == id) {
+        return {
+          ...t,
+          oprawa_id: 1,
+          update: true
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+
+  }
+
+
+
+
+
+  // setOprawa((prev) =>
+  //   prev.map((t, a) => {
+  //     if (t.indeks > indeks) {
+  //       return {
+  //         ...t,
+  //         indeks: t.indeks--,
+  //       };
+  //     } else {
+  //       return t;
+  //     }
+  //   })
+  // );
 };
 
 function handleAddRowOprawa(card, oprawa, setOprawa) {
@@ -424,6 +460,7 @@ function handleAddRowOprawa(card, oprawa, setOprawa) {
     data_spedycji: card.data_spedycji,
     data_czystodrukow: card.data_czystodrukow,
     indeks: card.indeks + 1,
+    insert: true
   });
 
   setOprawa(newOprawa);
@@ -457,6 +494,7 @@ function WersjaOprawaFragment({ row }) {
             handleUpdateRowFragmenty({
               ...row,
               wersja: e.target.value,
+              update:true
             });
           }
         }}
@@ -478,6 +516,7 @@ function NakladOprawaFregment({ row }) {
             handleUpdateRowFragmenty({
               ...row,
               naklad: e.target.value,
+              update:true
             });
           }
         }}
@@ -496,6 +535,7 @@ function IloscStronFragment({ row }) {
           handleUpdateRowFragmenty({
             ...row,
             naklad: e.target.value,
+            update:true
           })
         }
       ></input>
@@ -516,6 +556,7 @@ function WersjaOprawa({ row }) {
             handleUpdateRowOprawa({
               ...row,
               wersja: e.target.value,
+              update:true
             });
           }
         }}
@@ -537,6 +578,7 @@ function BokOprawy({ row }) {
             handleUpdateRowOprawa({
               ...row,
               bok_oprawy: e.target.value,
+              update:true
             });
           }
         }}
@@ -558,6 +600,7 @@ function UwagiOprawa({ row }) {
             handleUpdateRowOprawa({
               ...row,
               uwagi: e.target.value,
+              update:true
             });
           }
         }}
@@ -579,6 +622,7 @@ function NakladOprawa({ row }) {
             handleUpdateRowOprawa({
               ...row,
               naklad: e.target.value,
+              update:true
             });
           }
         }}

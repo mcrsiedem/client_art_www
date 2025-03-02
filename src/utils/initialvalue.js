@@ -63,7 +63,9 @@ const initialDane = {
   vat_id: 4,
   przedplata: "",
   fsc: 2,
-  zgoda_na_zapis: false
+  zgoda_na_zapis: false,
+  update: false
+
 };
 const initialProdukty = [
   {

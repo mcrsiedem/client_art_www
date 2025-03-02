@@ -56,11 +56,12 @@ function Typ({ row }) {
        <label className={style.label}> Typ </label>
       <select
         className={style.select}
-        defaultValue={row?.typ}
+        value={row?.typ}
         onChange={(e) => {
           handleUpdateRowProdukty({
             ...row,
             typ: e.target.value,
+            update: true
           });
         }}
       >
@@ -91,6 +92,7 @@ function Nazwa({ row }) {
             handleUpdateRowProdukty({
             ...row,
             nazwa: e.target.value,
+            update: true
           })
 
           }
@@ -118,6 +120,7 @@ function Naklad({ row }) {
             handleUpdateRowProdukty({
               ...row,
               naklad: e.target.value,
+              update: true
             });
           }
         }}
@@ -193,14 +196,14 @@ const contextApp = useContext(AppContext);
         className={style.select_oprawa}
         value={row?.oprawa}
         onChange={(event) => {
-          handleChangeCardOprawa({...row, oprawa: event.target.value});
+          handleChangeCardOprawa({...row, oprawa: event.target.value,update: true});
 
 
           if(row.indeks == 0){
           setProdukty(
             produkty.map((p) => {
               if (p.id === row.produkt_id) {
-                return {...p, oprawa:event.target.value};
+                return {...p, oprawa:event.target.value,update: true};
               } else {
                 return p;
               }
@@ -239,6 +242,7 @@ function Uwagi({ row }) {
               handleUpdateRowProdukty({
             ...row,
             uwagi: e.target.value,
+            update: true
           })
         
         }

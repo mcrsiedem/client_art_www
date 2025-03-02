@@ -106,6 +106,7 @@ function Table() {
           {procesyElementowTemporary
           .filter(x => x.element_id == selectedElementROW.id)
           .sort((a, b) => a.indeks - b.indeks)
+          .filter((x) => x.delete != true)
           .map((row, i) => {
             return (
               <tr key={row.id}>
@@ -147,6 +148,7 @@ const ProcesName = ({ row }) => {
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
             nazwa_id: e.target.value,
+            update: true
           });
         }}
       >
@@ -176,6 +178,7 @@ const ProcessTyp = ({ row }) => {
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
             proces_id: e.target.value,
+            update: true
           });
         }}
       >
@@ -207,6 +210,7 @@ const BackKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               back_kolor: e.target.value,
+              update: true
             });
           }
         }}
@@ -228,6 +232,7 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_kolor: e.target.value,
+              update: true
             });
           }
         }}
@@ -249,6 +254,7 @@ const FrontIlosc = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_ilosc: e.target.value,
+              update: true
             });
           }
         }}
@@ -270,6 +276,7 @@ const BackIlosc = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               back_ilosc: e.target.value,
+              update: true
             });
           }
         }}
@@ -311,7 +318,20 @@ function Usun({ row}) {
           className={style.expand}
           src={iconTrash}
           onClick={() => {
-            setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
+            // setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
+
+            setProcesyElementowTemporary((prev) =>
+              prev.map((t, a) => {
+                if (t.id == row.id) {
+                  return {
+                    ...t,
+                    delete: true
+                  };
+                } else {
+                  return t;
+                }
+              })
+            );
       
           }}
           alt="Procesy"

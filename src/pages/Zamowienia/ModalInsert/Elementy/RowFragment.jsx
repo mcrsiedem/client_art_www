@@ -90,6 +90,7 @@ function Naklad({ row, handleUpdateRowFragmenty }) {
           handleUpdateRowFragmenty({
             ...row,
             naklad: e.target.value,
+            update: true
           })
         }
       ></input>
@@ -108,6 +109,7 @@ function  Wersja({ row, handleUpdateRowFragmenty }) {
               handleUpdateRowFragmenty({
             ...row,
             wersja: e.target.value,
+            update: true
           })}}
         }
       ></input>
@@ -148,6 +150,7 @@ function handleAddFragment(card, fragmenty, setFragmenty) {
     oprawa_id: card.oprawa_id,
     element_id: card.element_id,
     indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
+    insert: true
   });
 
   newFragmenty.sort((a, b) => a.indeks - b.indeks);
@@ -180,20 +183,32 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
   // if (fragmenty.length > elementy.length) {
   //   setFragmenty(fragmenty.filter((x) => x.id !== id));
   // }
-  setFragmenty(fragmenty.filter((x) => x.id !== id));
+  // setFragmenty(fragmenty.filter((x) => x.id !== id));
 
   setFragmenty((prev) =>
     prev.map((t, a) => {
-      if (t.indeks > indeks) {
+      if (t.id == id) {
         return {
           ...t,
-          indeks: t.indeks--,
+          delete: true
         };
       } else {
         return t;
       }
     })
   );
+  // setFragmenty((prev) =>
+  //   prev.map((t, a) => {
+  //     if (t.indeks > indeks) {
+  //       return {
+  //         ...t,
+  //         indeks: t.indeks--,
+  //       };
+  //     } else {
+  //       return t;
+  //     }
+  //   })
+  // );
 
 
 };

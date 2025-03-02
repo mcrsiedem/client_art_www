@@ -48,7 +48,9 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
       uwagi: daneZamowienia.uwagi,
       przedplata: daneZamowienia.przedplata,
       termin_platnosci: daneZamowienia.termin_platnosci,
-      fsc: daneZamowienia.fsc
+      fsc: daneZamowienia.fsc,
+      update: daneZamowienia.update
+
 
 
     }, produkty,elementy,fragmenty,oprawa,procesyElementow])

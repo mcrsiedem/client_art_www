@@ -133,7 +133,8 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty= contextModalInsert.produkty;
-  const daneZamowienia= contextModalInsert.daneZamowienia;
+  // const daneZamowienia= contextModalInsert.daneZamowienia;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   const elementy= contextModalInsert.elementy;
   const fragmenty= contextModalInsert.fragmenty;

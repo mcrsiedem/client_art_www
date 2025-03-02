@@ -82,6 +82,20 @@ export default function RowElement({
           })
         );
 
+
+        setProcesyElementow((prev) =>
+          prev.map((t, a) => {
+            if (t.element_id == id) {
+              return {
+                ...t,
+                delete: true
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+
         console.log("Usun")
       };
       
@@ -224,7 +238,7 @@ export default function RowElement({
       {showFragmenty && (
         <>
           {fragmenty?.filter((x) => x.element_id == row.id)
-
+.filter((x) => x.delete != true)      
             .map((row, i) => {
               return <RowFragment key={row.indeks} i={i} row={row} />;
             })}
@@ -312,6 +326,7 @@ function Procesy({ row}) {
             {procesyElementow
             .filter((frag) => frag.element_id == row.id)
             .sort((a, b) => a.indeks - b.indeks)
+            .filter((x) => x.delete != true)
             .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
             )
             }

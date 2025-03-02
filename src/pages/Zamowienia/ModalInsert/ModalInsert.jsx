@@ -417,7 +417,9 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       fragmenty.map((t) => {
         if (t.id == idFragmentu) {
           return {...t,
-            oprawa_id: idOprawy}
+            oprawa_id: idOprawy,
+            update: true
+          }
         } else {
           return t;
         }

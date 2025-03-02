@@ -291,6 +291,7 @@ const Info = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               info: e.target.value,
+              update: true
             });
           }
         }}

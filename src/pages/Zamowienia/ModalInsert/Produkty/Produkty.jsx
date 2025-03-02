@@ -138,9 +138,19 @@ function Strony({ row }) {
     <div className={style.col_dane}>
       <label className={style.label}> Strony </label>
       <input
-      disabled
+      // disabled
         className={style.input}
         value={row?.ilosc_stron}
+        onChange={(e) => {
+          // const re = /^[0-9]+$/;
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              ilosc_stron: e.target.value,
+              update: true
+            });
+          }
+        }}
 
       ></input>
     </div>
@@ -155,10 +165,20 @@ function FormatX({ row }) {
     <div className={style.col_dane}>
       <label className={style.label}> Szer. </label>
       <input
-      disabled
+      // disabled
         className={style.input}
         value={row?.format_x}
+        onChange={(e) => {
+          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
+          if (e.target.value === "" || re.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              format_x: e.target.value,
+              update: true
+            });
+          }
+        }}
       ></input>
     </div>
   );
@@ -171,10 +191,20 @@ function FormatY({ row }) {
     <div className={style.col_dane}>
       <label className={style.label}> Wys. </label>
       <input
-      disabled
+      // disabled
         className={style.input}
         value={row?.format_y}
+        onChange={(e) => {
+          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
+          if (e.target.value === "" || re.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...row,
+              format_x: e.target.value,
+              update: true
+            });
+          }
+        }}
       ></input>
     </div>
   );

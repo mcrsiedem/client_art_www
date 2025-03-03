@@ -234,9 +234,7 @@ function ElementyTable2({
                     row={row}
                     handleChangeCardElementy={handleChangeCardElementy}
                     handleChangeCardFragmenty={handleChangeCardFragmenty}
-                    // listaPapierow={listaPapierow}
-                    // listaGramatur={listaGramatur}
-                    // setListaGramatur={setListaGramatur}
+            
                     procesyElementow={procesyElementow}
                     setProcesyElementow={setProcesyElementow}
                     setShowElementyProcesyInsert={setShowElementyProcesyInsert}

@@ -34,7 +34,7 @@ export default function RowElement({
   
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
-        if (elementy.length !== 1) {
+        if (elementy.filter((x) => x.delete != true).length != 1) {
           // setElementy(elementy.filter((x) => x.indeks !== indeks));
           // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
 
@@ -66,9 +66,7 @@ export default function RowElement({
 
 
 
-        }
-      
-        setElementy((prev) =>
+                  setElementy((prev) =>
           prev.map((t, a) => {
             if (t.indeks > indeks) {
               return {
@@ -95,6 +93,10 @@ export default function RowElement({
             }
           })
         );
+
+        }
+      
+
 
         console.log("Usun")
       };

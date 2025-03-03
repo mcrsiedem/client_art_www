@@ -392,7 +392,7 @@ const handleRemoveItem = (
 ) => {
   // kasowanie oprawy?
   // id = id elementu
-  if (oprawa.length !== 1) {
+  if (oprawa.filter((x) => x.delete != true).length !== 1) {
 
       setOprawa((prev) =>
     prev.map((t, a) => {

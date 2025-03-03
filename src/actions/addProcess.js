@@ -6,25 +6,7 @@ import { IP } from "../utils/Host";
 export function addNewProcess(row,procesyElementowTemporary, setProcesyElementowTemporary) {
 
 const procesyElementowEditTemporary = procesyElementowTemporary.slice();
-console.log("row11", row)
-  axios
-    .post(IP + "procesyElementow", {
-      id:0,
-      zamowienie_id: 0,
-      produkt_id: 0,
-      element_id: 1,
-      proces_id: 1,
-      nazwa_id: 1,
-      proces_nazwa: 2,
-      proces_typ: 1,
-      front_ilosc: "",
-      back_ilosc: "4",
-      front_kolor: "CMYK",
-      back_kolor: "CMYK",
-      info: "",
-      indeks: 0,
-    })
-    .then((res) => {
+
 
 
       procesyElementowEditTemporary.push({
@@ -42,9 +24,10 @@ console.log("row11", row)
         back_kolor: "",
         info: "",
         indeks: Math.max(...procesyElementowTemporary.map((f) => f.indeks)) + 1,
+        insert:true
       });
 
       procesyElementowEditTemporary.sort((a, b) => a.indeks - b.indeks);
       setProcesyElementowTemporary(procesyElementowEditTemporary);
-    });
+
 }

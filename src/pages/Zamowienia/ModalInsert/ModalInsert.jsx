@@ -155,17 +155,18 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
               }) 
           });
 
-           const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+zamowienie_prime_id);
+           const res = await axios.get(IP + "parametry/"+idZamowienia);
 
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
            setElementy(res.data[2])
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
-           setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
-           setProcesyElementow(res.data[6])
-           setKosztyDodatkoweZamowienia(res.data[7])
-           setKosztyDodatkowe(res.data[8])
+           setProcesyElementow(res.data[5])
+          //  setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
+           
+          //  setKosztyDodatkoweZamowienia(res.data[7])
+          //  setKosztyDodatkowe(res.data[8])
 
           //  setSaveButtonDisabled(true)
           //  console.log("Koszty",res.data[7])

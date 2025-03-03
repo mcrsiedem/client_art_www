@@ -10,12 +10,22 @@ export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkt
 
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
-           setDaneZamowienia(savedDane.daneZamowienia)
-           setProdukty(savedDane.produkty)
-           setElementy(savedDane.elementy)
-           setFragmenty(savedDane.fragmenty)
-           setOprawa(savedDane.oprawa)
-           setProcesyElementow(savedDane.procesyElementow)
+          let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id);
+
+
+          setDaneZamowienia(res.data[0][0])
+          setProdukty(res.data[1])
+          setElementy(res.data[2])
+          setFragmenty(res.data[3])
+          setOprawa(res.data[4])
+          setProcesyElementow(res.data[5])
+        
+          //  setDaneZamowienia(savedDane.daneZamowienia)
+          //  setProdukty(savedDane.produkty)
+          //  setElementy(savedDane.elementy)
+          //  setFragmenty(savedDane.fragmenty)
+          //  setOprawa(savedDane.oprawa)
+          //  setProcesyElementow(savedDane.procesyElementow)
            
           refreshZamowienia(setZamowienia);
 
@@ -66,6 +76,10 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
 
   })
 }
+
+
+
+
 //----------------------------------------------------------------------------------
 
 // const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs}) =>{

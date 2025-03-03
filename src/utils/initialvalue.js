@@ -310,6 +310,8 @@ const _waluta = [
   },
 ];
 
+
+// do skasowania
 const _rodzaj = [
   {
     id: 1,
@@ -325,37 +327,48 @@ const _rodzaj = [
   },
 ];
 
-const _status = [
+
+
+
+const _status_dokumentu = [
   {
     id: 1,
-    nazwa: "Edycja",
+    nazwa: "Szkic",
   },
   {
     id: 2,
+    nazwa: "Planowane",
+  },
+  {
+    id: 3,
     nazwa: "Do przyjęcia",
   },
   {
-    id: 3,
+    id: 4,
     nazwa: "Przyjęte",
   },
   {
-    id: 4,
-    nazwa: "Do korekty",
+    id: 5,
+    nazwa: "Zakończone",
+  },
+  {
+    id: 6,
+    nazwa: "Oddane",
   }
 ];
 
-const _stan = [
+const _status = [
   {
     id: 1,
-    nazwa: "Aktywne",
+    nazwa: "Niedostępne",
   },
   {
     id: 2,
-    nazwa: "Nieaktywne",
+    nazwa: "Oczekujące",
   },
   {
     id: 3,
-    nazwa: "Anulowane",
+    nazwa: "W trakcie",
   },
   {
     id: 4,
@@ -363,26 +376,49 @@ const _stan = [
   },
   {
     id: 5,
-    nazwa: "Oddane",
+    nazwa: "Zakończone",
+  }
+];
+
+const _stan = [
+  {
+    id: 1,
+    nazwa: "Nieaktywne",
+  },
+  {
+    id:2,
+    nazwa: "Aktywne",
+  },
+  {
+    id:3,
+    nazwa: "Do korekty",
+  },
+  {
+    id: 4,
+    nazwa: "Po korekcie",
+  },
+  {
+    id: 5,
+    nazwa: "Skorygowane",
   },
   {
     id: 6,
-    nazwa: "Zwrócone",
+    nazwa: "Wstrzymane",
+  },
+  {
+    id: 7,
+    nazwa: "Anulowane",
   },
 ];
 
-const _etap = [
-  {
-    id: 0,
-    nazwa: "Szkic",
-  },
+const _etapy = [
   {
     id: 1,
-    nazwa: "Wstępne",
+    nazwa: "Harmonogram",
   },
   {
     id: 2,
-    nazwa: "Zamówienie",
+    nazwa: "Nowe zamówienie",
   },
   {
     id: 3,
@@ -413,10 +449,10 @@ const _etap = [
     nazwa: "Falcowanie",
   },  {
     id: 11,
-    nazwa: "Kompl;etowanie",
+    nazwa: "Oprawa",
   },  {
     id: 12,
-    nazwa: "Oprawa",
+    nazwa: "Procesy dodatkowe",
   },  {
     id: 13,
     nazwa: "Pakowanie",
@@ -512,7 +548,7 @@ export {
   _opiekun,
   _status,
   _stan,
-  _etap,
+  _etapy,
   _typ_produktu,
   _typ_elementu,
   _rodzaj,

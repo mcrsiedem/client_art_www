@@ -659,7 +659,7 @@ async function fechTechnology() {
                     fechparametryTechnologii,
                     fechTechnology,
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
-                    selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces
+                    selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry
                 }}
             >
                 {children}

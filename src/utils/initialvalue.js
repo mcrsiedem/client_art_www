@@ -7,24 +7,24 @@ const reg_int = /^[0-9]+$/;
 const reg_cena = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
 
-const _opiekun = [
-  {
-    id: 1,
-    imie: "Maciej",
-    nazwisko: "Romiszewski",
-    login: "Maciek",
-    haslo: "mcr",
-    dostep: "7",
-  },
-  {
-    id: 2,
-    imie: "Piotr",
-    nazwisko: "Hołowicz",
-    login: "Piotr",
-    haslo: "p",
-    dostep: "7",
-  },
-];
+// const _opiekun2 = [
+//   {
+//     id: 1,
+//     imie: "Maciej",
+//     nazwisko: "Romiszewski",
+//     login: "Maciek",
+//     haslo: "mcr",
+//     dostep: "7",
+//   },
+//   {
+//     id: 2,
+//     imie: "Piotr",
+//     nazwisko: "Hołowicz",
+//     login: "Piotr",
+//     haslo: "p",
+//     dostep: "7",
+//   },
+// ];
 
 const initialPreOrder = {
   typ: 1,
@@ -53,9 +53,9 @@ const initialDane = {
   data_przyjecia: today(),
   data_materialow: today(),
   data_spedycji: todayPlusDni(5),
-  stan: 0,
-  status: 0,
-  rodzaj: 3,
+  stan: 2,
+  status: 1,
+  etap_produkcji: 2,
   uwagi: "",
   cena: "",
   waluta_id: 1,
@@ -191,20 +191,7 @@ const initalPakowanie = [
   },
 ];
 
-const _papiery = [
-  {
-    id: 1,
-    nazwa: "Kreda",
-    wykonczenie: "Mat",
-    gramatura: "90",
-  },
-  {
-    id: 2,
-    nazwa: "Offset",
-    wykonczenie: "-",
-    gramatura: "150",
-  },
-];
+
 
 const initialProcesy = [
   {
@@ -558,17 +545,13 @@ export {
   reg_int,
   reg_txt,
   reg_cena,
-  // _firma,
   initialProdukty,
-  // _klient,
   initialElementy,
-  _papiery,
-  // _rodzaj_oprawy,
   initialFragmenty,
   initialOprawa,
   initalPakowanie,
   initialProcesy,
-  _opiekun,
+
   _status_dokumentu,
   _stan_dokumentu,
   _status_wykonania,

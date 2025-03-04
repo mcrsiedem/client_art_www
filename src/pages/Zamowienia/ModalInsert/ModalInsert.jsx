@@ -7,10 +7,8 @@ import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
 import { initialProcesy } from "utils/initialvalue";
 import {
-  _firma,
-  _klient,
+
   initialElementy,
-  _papiery,
   initialFragmenty,
   _uszlachetnienia,
   _opiekun,
@@ -56,7 +54,7 @@ function ModalInsert({
   const [readOnly,setReadOnly] = useState(false);
   const [readAlert,setReadAlert] = useState(false);
   const [cookies, setCookie] = useCookies();
-  const [selected_papier, setSelected_papier] = useState(_papiery[0].nazwa);
+  const [selected_papier, setSelected_papier] = useState();
   const [info, setInfo] = useState("napis");
   // const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   const [isOK, setIsOK] = useState(false);

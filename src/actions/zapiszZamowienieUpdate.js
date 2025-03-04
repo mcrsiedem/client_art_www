@@ -41,7 +41,7 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
       user: DecodeToken(sessionStorage.getItem("token")).id,
       stan: daneZamowienia.stan,
       status: daneZamowienia.status,
-      rodzaj: daneZamowienia.rodzaj,  // szkic, wstępne, finalne
+      etap_produkcji: daneZamowienia.etap_produkcji,  
       cena: daneZamowienia.cena,
       waluta_id: daneZamowienia.waluta_id,
       vat_id: daneZamowienia.vat_id,

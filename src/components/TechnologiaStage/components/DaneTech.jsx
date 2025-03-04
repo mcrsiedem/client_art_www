@@ -1,6 +1,6 @@
 import style from "./DaneTech.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status,_stan,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
 // import addIcon2 from "../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -219,7 +219,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false)
         }}
       >
-        {_status.map((option) => (
+        {_status_dokumentu.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>
@@ -297,7 +297,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
           setSaveButtonDisabled(false)
         }}
       >
-        {_stan.map((option) => (
+        {_stan_dokumentu.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>

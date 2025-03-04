@@ -357,7 +357,7 @@ const _status_dokumentu = [
   }
 ];
 
-const _status = [
+const _status_wykonania = [
   {
     id: 1,
     nazwa: "Niedostępne",
@@ -380,7 +380,7 @@ const _status = [
   }
 ];
 
-const _stan = [
+const _stan_dokumentu = [
   {
     id: 1,
     nazwa: "Nieaktywne",
@@ -411,7 +411,26 @@ const _stan = [
   },
 ];
 
-const _etapy = [
+const _stan_wykonania = [
+  {
+    id: 1,
+    nazwa: "Nieaktywne",
+  },
+  {
+    id:2,
+    nazwa: "Aktywne",
+  },
+
+  {
+    id: 3,
+    nazwa: "Wstrzymane",
+  },
+  {
+    id: 4,
+    nazwa: "Anulowane",
+  },
+];
+const _etapy_produkcji = [
   {
     id: 1,
     nazwa: "Harmonogram",
@@ -440,7 +459,7 @@ const _etapy = [
     nazwa: "Naświetlanie",
   },  {
     id: 8,
-    nazwa: "Drukowanie",
+    nazwa: "Druk",
   },  {
     id: 9,
     nazwa: "Uszlachetnianie",
@@ -458,6 +477,10 @@ const _etapy = [
     nazwa: "Pakowanie",
   },  {
     id: 14,
+    nazwa: "Magazyn",
+  },
+    {
+    id: 15,
     nazwa: "Spedycja",
   },
 ];
@@ -546,9 +569,11 @@ export {
   initalPakowanie,
   initialProcesy,
   _opiekun,
-  _status,
-  _stan,
-  _etapy,
+  _status_dokumentu,
+  _stan_dokumentu,
+  _status_wykonania,
+  _stan_wykonania,
+  _etapy_produkcji,
   _typ_produktu,
   _typ_elementu,
   _rodzaj,

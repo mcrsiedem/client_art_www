@@ -57,9 +57,9 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
     let jobs= [...res.data]
     setData(jobs);
 
-    const res3 = await axios.get(IP + "lista-papierow");
+    const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
     setListaPapierow([...res3.data]);
-    const res4 = await axios.get(IP + "lista-papierow-nazwy");
+    const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
     setListaPapierowNazwy([...res4.data]);
   }
 

@@ -51,15 +51,15 @@ const scrollTable = (table) => {
 };
 
   async function getPapier() {
-    const res = await axios.get(IP + "lista-papierow");
+    const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
     setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
-    const res2 = await axios.get(IP + "lista-papierow-nazwy");
+    const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
     setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
-    const res3 = await axios.get(IP + "lista-papierow-grupa");
+    const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
     setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 

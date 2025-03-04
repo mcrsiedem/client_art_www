@@ -53,7 +53,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   }
   async function fechZamowienia() {
 
-    const res = await axios.get(IP + "zamowienia");
+    const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
     let jobs= [...res.data]
     setData(jobs);
 
@@ -74,14 +74,14 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   }
 
   async function refreshZamowienia() {
-    const res = await axios.get(IP + "zamowienia");
+    const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
     // let jobs= [...res.data].filter(job => job.final == 1);
     let jobs= [...res.data]
     setData(jobs);
   }
 
   async function refreshZamowieniaKosz() {
-    const res = await axios.get(IP + "zamowienia");
+    const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
     let jobs= [...res.data].filter(job => job.final == 2);
     setData(jobs);
   }

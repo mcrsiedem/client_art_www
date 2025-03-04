@@ -10,7 +10,7 @@ export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkt
 
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
-          let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id);
+          let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
 
           setDaneZamowienia(res.data[0][0])
@@ -36,7 +36,7 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
 
   return new Promise(async(resolve,reject)=>{
       
-  let res = await axios.post(IP + "zapiszZamowienie",[ {
+  let res = await axios.post(IP + "zapiszZamowienie/" + sessionStorage.getItem("token"),[ {
      
      nr: daneZamowienia.nr,
       rok: daneZamowienia.rok,

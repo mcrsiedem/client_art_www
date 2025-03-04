@@ -26,7 +26,7 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
 
   return new Promise(async(resolve,reject)=>{
       
-  let res = await axios.put(IP + "zapiszZamowienieUpdate",[ {
+  let res = await axios.put(IP + "zapiszZamowienieUpdate/" + sessionStorage.getItem("token"),[ {
      
      id: daneZamowienia.id,
      nr: daneZamowienia.nr,

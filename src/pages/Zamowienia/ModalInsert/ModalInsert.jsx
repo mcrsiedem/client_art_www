@@ -155,7 +155,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
               }) 
           });
 
-           const res = await axios.get(IP + "parametry/"+idZamowienia);
+           const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
 
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])

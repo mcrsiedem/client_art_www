@@ -421,12 +421,15 @@ console.log(element)
     //     setDane(data);
     //   }, []);
 
-       useEffect(() => {
-        fechparametry(rowZamowienia?.id,rowZamowienia?.zamowienie_prime_id)
-          }, [rowZamowienia]);
 
-          useEffect(() => {
-              }, [rowTechnologia]);
+
+
+      //  useEffect(() => {
+      //   fechparametry(rowZamowienia?.id)
+      //     }, [rowZamowienia]);
+
+          // useEffect(() => {
+          //     }, [rowTechnologia]);
         
        useEffect(() => {
         const ilosc_stron = parseInt(legi[0]?.ilosc_stron);
@@ -481,7 +484,7 @@ console.log(element)
 
     async function refreshOpenZamowienie(idZamowienia) {
 
-      const res = await axios.get(IP + "parametry/"+idZamowienia);
+      const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
  
       setDane(res.data[0][0])
       setProdukty(res.data[1])
@@ -493,10 +496,34 @@ console.log(element)
  }
 
 
+
+//  const  fechparametry = useCallback(async(idZamowienia)=>{
+//   const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
+
+//   setDane(res.data[0][0])
+//   setProdukty(res.data[1])
+//   setElementy(res.data[2])
+//   setFragmenty(res.data[3])
+//   setOprawa(res.data[4])
+//   setProcesyElementow(res.data[5])
+
+//  //  setDaneTech(res.data[0][0].map(x=> {return {...x, id:1}}))
+//  // console.log("dane",res.data[0][0]?.id)
+//  // console.log("id:   ",res.data[2])
+//   setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
+//   setProduktyTech(res.data[1])
+//   setElementyTech(res.data[2])
+//   setFragmentyTech(res.data[3])
+//   setOprawaTech(res.data[4])
+//   setProcesyElementowTech(res.data[5])
+//  //  setShowTechnologyStage(true)
+
+  
+//  },[])
     
   async function fechparametry(idZamowienia) {
 
-     const res = await axios.get(IP + "parametry/"+idZamowienia);
+     const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
 
      setDane(res.data[0][0])
      setProdukty(res.data[1])

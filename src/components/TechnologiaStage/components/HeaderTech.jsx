@@ -12,6 +12,8 @@ import { todayPlusDni } from "actions/todayPlusDni";
 import { saveTechNew } from "actions/saveTechNew";
 import { today_teraz } from "actions/today_teraz";
 import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
+import { zapiszZamowienie } from "actions/zapiszZamowienie";
+import { zapiszTechnologie } from "actions/zapiszTechnologie";
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
   const appcontext = useContext(AppContext);
@@ -114,7 +116,7 @@ const ZapisBtn = () => {
       onClick={() => {
         console.log("zapisz");
 
-        saveTechNew({
+        zapiszTechnologie({
           daneTech,
           setDaneTech,
           produktyTech,
@@ -129,6 +131,9 @@ const ZapisBtn = () => {
           wykonania,
           procesyElementowTech,
         });
+
+
+        
         // setSaveButtonDisabled(true);
       }}
     >

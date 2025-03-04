@@ -4,24 +4,24 @@ import { IP } from "../utils/Host";
 export async function zapiszTechnologie({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}){
 // let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
 
-  let savedDane  = await saveDane({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
+  let savedData  = await saveDane({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
 
   
 
 
   //stany po dodaniu technologia_id
-  // let daneTechEdit = savedData.daneTechEdit
-  // let produktyTechEdit =savedData.produktyTechEdit
-  // let grupaWykonanEdit =savedData.grupaWykonanEdit 
-  // let wykonaniaEdit =savedData.wykonaniaEdit 
-  // let procesyElementowTechEdit =savedData.procesyElementowTechEdit 
+  let daneTechEdit = savedData.daneTechEdit
+  let produktyTechEdit =savedData.produktyTechEdit
+  let grupaWykonanEdit =savedData.grupaWykonanEdit 
+  let wykonaniaEdit =savedData.wykonaniaEdit 
+  let procesyElementowTechEdit =savedData.procesyElementowTechEdit 
 
-  // let elementyTechEdit =savedData.elementyTechEdit
-  // let fragmentyTechEdit =savedData.fragmentyTechEdit
-  // let oprawaTechEdit =savedData.oprawaTechEdit
-  // let legiEdit =savedData.legiEdit
-  // let legiFragmentyEdit =savedData.legiFragmentyEdit 
-  // let arkuszeEdit =savedData.arkuszeEdit 
+  let elementyTechEdit =savedData.elementyTechEdit
+  let fragmentyTechEdit =savedData.fragmentyTechEdit
+  let oprawaTechEdit =savedData.oprawaTechEdit
+  let legiEdit =savedData.legiEdit
+  let legiFragmentyEdit =savedData.legiFragmentyEdit 
+  let arkuszeEdit =savedData.arkuszeEdit 
 // console.log("legi tech po zapisie: ", legiEdit )
 // if(daneTech.id ==1) {
 let savedGrupyWykonania = await saveGrupy({grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
@@ -29,10 +29,10 @@ let savedWykonania = await saveWykonania({wykonaniaEdit});
 let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit});
 
 
-let res = await axios.get(IP + "technologie_parametry/"+savedDane.daneTech.id+"/"+ sessionStorage.getItem("token"));
+// let res = await axios.get(IP + "technologie_parametry/"+savedData.daneTech.id+"/"+ sessionStorage.getItem("token"));
 
-  setDaneTech(res.data[0][0]);
-  setProduktyTech(res.data[1]);
+//   setDaneTech(res.data[0][0]);
+//   setProduktyTech(res.data[1]);
 
 // }
 
@@ -41,7 +41,7 @@ let res = await axios.get(IP + "technologie_parametry/"+savedDane.daneTech.id+"/
 
 }
 //----------------------------------------------------------------------------------
-const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech,saveAs}) =>{
+const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}) =>{
 
   return new Promise(async(resolve,reject)=>{
 
@@ -81,7 +81,7 @@ const saveGrupy = ({ grupaWykonanEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let grupa of grupaWykonanEdit) {
-      promises.push(axios.post(IP + "grupa/" + sessionStorage.getItem("token"), {
+      promises.push(axios.post(IP + "zapiszTechnologieGrupy/" + sessionStorage.getItem("token"), {
         id: grupa.id,
         indeks: grupa.indeks,
         technologia_id: grupa.technologia_id,
@@ -119,7 +119,7 @@ const saveWykonania = ({ wykonaniaEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let wykonanie of wykonaniaEdit) {
-      promises.push(axios.post(IP + "wykonania/" + sessionStorage.getItem("token"), wykonanie
+      promises.push(axios.post(IP + "zapiszTechnologieWykonania/" + sessionStorage.getItem("token"), wykonanie
 
           ) 
           .then((response) => {
@@ -141,7 +141,7 @@ const saveProcesyElementow = ({ procesyElementowTechEdit }) => {
   return new Promise((resolve, reject) => {
     let promises = [];
     for (let procesElementu of procesyElementowTechEdit) {
-      promises.push(axios.post(IP + "procesy_elementow/" + sessionStorage.getItem("token"), procesElementu
+      promises.push(axios.post(IP + "zapiszTechnologieProcesyElementow/" + sessionStorage.getItem("token"), procesElementu
 
           ) 
           .then((response) => {

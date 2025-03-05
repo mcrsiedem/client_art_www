@@ -41,6 +41,10 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
     tytul: daneTech.tytul,
     zamowienie_id: daneTech.zamowienie_id,
     opiekun_id: daneTech.opiekun_id,
+    autor_id: daneTech.autor_id,
+    data_przyjecia:daneTech.data_przyjecia,
+    data_spedycji:daneTech.data_spedycji,
+    data_materialow: daneTech.data_materialow,
       user: DecodeToken(sessionStorage.getItem("token")).id,
       update: daneTech.update
 

@@ -1,7 +1,14 @@
 import axios from "axios";
 import { IP } from "../utils/Host";
 
-export async function zapiszTechnologie({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}){
+export async function zapiszTechnologie({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech,setElementyTech,
+  setFragmentyTech,
+  setOprawaTech,
+  setLegi,
+  setLegiFragmenty,
+  setArkusze,
+  setGrupaWykonan,
+  setWykonania,setProcesyElementowTech}){
 // let daneTechEdit = JSON.parse(JSON.stringify(daneTech))
 
   let savedData  = await saveDane({daneTech,setDaneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
@@ -22,19 +29,29 @@ export async function zapiszTechnologie({daneTech,setDaneTech,produktyTech,setPr
   let legiEdit =savedData.legiEdit
   let legiFragmentyEdit =savedData.legiFragmentyEdit 
   let arkuszeEdit =savedData.arkuszeEdit 
-// console.log("legi tech po zapisie: ", legiEdit )
-// if(daneTech.id ==1) {
+
 let savedGrupyWykonania = await saveGrupy({grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
 let savedWykonania = await saveWykonania({wykonaniaEdit});
 let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit});
 
 
-// let res = await axios.get(IP + "technologie_parametry/"+savedData.daneTech.id+"/"+ sessionStorage.getItem("token"));
 
-//   setDaneTech(res.data[0][0]);
-//   setProduktyTech(res.data[1]);
+console.log("id technologi po zapisaniu: ", daneTechEdit)
+const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));
 
-// }
+
+setDaneTech(res.data[0][0]) 
+setProduktyTech(res.data[1])
+setElementyTech(res.data[2])
+setFragmentyTech(res.data[3])
+setOprawaTech(res.data[4])
+setProcesyElementowTech(res.data[5])
+setLegi(res.data[6])
+setLegiFragmenty(res.data[7])
+setArkusze(res.data[8])
+setGrupaWykonan(res.data[9])
+setWykonania(res.data[10])
+
 
 
 

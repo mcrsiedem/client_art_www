@@ -109,6 +109,16 @@ const ZapisBtn = () => {
   const wykonania = techContext.wykonania;
   const procesyElementowTech = techContext.procesyElementowTech;
 
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const setLegi = techContext.setLegi;
+  const setArkusze = techContext.setArkusze;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const setWykonania = techContext.setWykonania;
+  const setProcesyElementowTech = techContext.setProcesyElementowTech;
+
   return (
     <button
       disabled={isSaveButtonDisabled}
@@ -130,8 +140,31 @@ const ZapisBtn = () => {
           grupaWykonan,
           wykonania,
           procesyElementowTech,
+          setElementyTech,
+          setFragmentyTech,
+          setOprawaTech,
+          setLegi,
+          setLegiFragmenty,
+          setArkusze,
+          setGrupaWykonan,
+          setWykonania,
+          setProcesyElementowTech
+
         });
 
+
+
+//         setDaneTech(res.data[0][0]) 
+// setProduktyTech(res.data[1])
+// setElementyTech(res.data[2])
+// setFragmentyTech(res.data[3])
+// setOprawaTech(res.data[4])
+// setProcesyElementowTech(res.data[5])
+// setLegi(res.data[6])
+// setLegiFragmenty(res.data[7])
+// setArkusze(res.data[8])
+// setGrupaWykonan(res.data[9])
+// setWykonania(res.data[10])
 
         
         // setSaveButtonDisabled(true);

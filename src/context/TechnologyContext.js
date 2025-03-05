@@ -599,7 +599,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 async function fechTechnology() {
 
   // wszystkie grupy 
-  const res = await axios.get(IP + "technologie");
+  const res = await axios.get(IP + "technologie/" + sessionStorage.getItem("token"));
 
   
     setTechnology([...res.data]);

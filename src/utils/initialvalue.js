@@ -51,7 +51,7 @@ const initialDane = {
   opiekun_id:  0,
   tytul: "",
   data_przyjecia: today(),
-  data_materialow: today(),
+  data_materialow: null,
   data_spedycji: todayPlusDni(5),
   stan: 2,
   status: 1,

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { IP } from "../utils/Host";
 
+import DecodeToken from "pages/Login/DecodeToken";
+
 export async function zapiszTechnologie({daneTech,setDaneTech,produktyTech,setProduktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech,setElementyTech,
   setFragmentyTech,
   setOprawaTech,
@@ -69,6 +71,8 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
       klient_id: daneTech.klient_id,
       tytul: daneTech.tytul,
       zamowienie_id: daneTech.zamowienie_id,
+      opiekun_id: daneTech.opiekun_id,
+      autor_id: DecodeToken(sessionStorage.getItem("token")).id,
     }, produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech])
     
   // let technologia_id_final = res.data[0].insertId;

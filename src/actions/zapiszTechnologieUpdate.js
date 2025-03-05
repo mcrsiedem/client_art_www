@@ -40,6 +40,7 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
     klient_id: daneTech.klient_id,
     tytul: daneTech.tytul,
     zamowienie_id: daneTech.zamowienie_id,
+    opiekun_id: daneTech.opiekun_id,
       user: DecodeToken(sessionStorage.getItem("token")).id,
       update: daneTech.update
 

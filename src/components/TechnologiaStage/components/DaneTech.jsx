@@ -147,6 +147,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Data przyjęcia </label>
       <input className={style.select} type="date"
          value={daneZamowienia.data_przyjecia}
+         disabled
          onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value});
           setSaveButtonDisabled(false)

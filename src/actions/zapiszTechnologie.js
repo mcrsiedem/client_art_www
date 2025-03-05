@@ -36,7 +36,6 @@ let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit
 
 
 
-console.log("id technologi po zapisaniu: ", daneTechEdit)
 const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));
 
 

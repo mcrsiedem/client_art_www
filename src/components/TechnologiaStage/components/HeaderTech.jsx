@@ -14,6 +14,7 @@ import { today_teraz } from "actions/today_teraz";
 import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
+import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
   const appcontext = useContext(AppContext);
@@ -23,7 +24,7 @@ export default function Header({}) {
     <header className={style.headerMain}>
       <LeftPane>
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
-        <p className={style.title}>Karta technologiczna {techContext.dane?.id}</p>
+        <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p>
       </LeftPane>
 
       <CenterPane>
@@ -126,31 +127,76 @@ const ZapisBtn = () => {
       onClick={() => {
         console.log("zapisz");
 
-        zapiszTechnologie({
-          daneTech,
-          setDaneTech,
-          produktyTech,
-          setProduktyTech,
-          elementyTech,
-          fragmentyTech,
-          oprawaTech,
-          legi,
-          legiFragmenty,
-          arkusze,
-          grupaWykonan,
-          wykonania,
-          procesyElementowTech,
-          setElementyTech,
-          setFragmentyTech,
-          setOprawaTech,
-          setLegi,
-          setLegiFragmenty,
-          setArkusze,
-          setGrupaWykonan,
-          setWykonania,
-          setProcesyElementowTech
+if(daneTech.id == 1){
+                //  setSaveAs(false);
+     
+                zapiszTechnologie({
+                  daneTech,
+                  setDaneTech,
+                  produktyTech,
+                  setProduktyTech,
+                  elementyTech,
+                  fragmentyTech,
+                  oprawaTech,
+                  legi,
+                  legiFragmenty,
+                  arkusze,
+                  grupaWykonan,
+                  wykonania,
+                  procesyElementowTech,
+                  setElementyTech,
+                  setFragmentyTech,
+                  setOprawaTech,
+                  setLegi,
+                  setLegiFragmenty,
+                  setArkusze,
+                  setGrupaWykonan,
+                  setWykonania,
+                  setProcesyElementowTech
+        
+                });
+        
 
-        });
+
+        // setSaveButtonDisabled(true);
+        }
+
+
+        if(daneTech.id != 1){
+          //  setSaveAs(false);
+
+          zapiszTechnologieUpdate({
+            daneTech,
+            setDaneTech,
+            produktyTech,
+            setProduktyTech,
+            elementyTech,
+            fragmentyTech,
+            oprawaTech,
+            legi,
+            legiFragmenty,
+            arkusze,
+            grupaWykonan,
+            wykonania,
+            procesyElementowTech,
+            setElementyTech,
+            setFragmentyTech,
+            setOprawaTech,
+            setLegi,
+            setLegiFragmenty,
+            setArkusze,
+            setGrupaWykonan,
+            setWykonania,
+            setProcesyElementowTech
+  
+          });
+  
+
+
+  // setSaveButtonDisabled(true);
+  }
+
+
 
 
 

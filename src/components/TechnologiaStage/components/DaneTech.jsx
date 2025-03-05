@@ -77,7 +77,7 @@ const setDaneTech = contextTech.setDaneTech
         value={daneTech?.firma_id}
 
         onChange={(event) => {
-          setDaneTech({...daneTech, firma_id: event.target.value});
+          setDaneTech({...daneTech, firma_id: event.target.value,update: true});
           // setSaveButtonDisabled(false)
         }}
       >

@@ -14,6 +14,7 @@ import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import RowArkusze from "./RowArkusze";
 import MenuElementyTech from "./ElementyTechMenu";
+import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
 export default function RowTechElement({
   row,
@@ -430,44 +431,7 @@ function PapierSelect2({
 
 
 
-// function Gramatura({
-//   row,
-//   handleChangeCardFragmenty_i_Elementy_Tech,
 
-// }) {
-//   const appcontext = useContext(AppContext);
-//   const listaPapierow = appcontext.listaPapierow;
-//   return (
-//     <select
-//       className={style.select}
-//       value={row.gramatura_id}
-//       onChange={(e) =>
-//         handleChangeCardFragmenty_i_Elementy_Tech({
-//           ...row,
-//           gramatura_id: e.target.value,
-//         })
-//       }
-//     >
-//       <option value="0">wybierz</option>
-//       {listaPapierow?.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
-//         .map((option) =>
-      
-//             <option key={option.id} value={option.id}>
-//               {option.gramatura}{" "}
-//               {option.bulk !== 1 ? (
-//                 <p>
-//                   {" "}
-//                   g/m2 vol. {option.bulk} {option.wykonczenie}
-//                 </p>
-//               ) : (
-//                 <p>g/m2 </p>
-//               )}
-//             </option>
-          
-//         )}
-//     </select>
-//   );
-// }
 
 function Naklad({ row }) {
   const techContext = useContext(TechnologyContext);
@@ -480,7 +444,7 @@ function Naklad({ row }) {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            naklad: e.target.value,
+            naklad: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -556,7 +520,7 @@ function Strony({ row }) {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            ilosc_stron: e.target.value,
+            ilosc_stron: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -577,7 +541,7 @@ function NettoX({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            format_x: e.target.value,
+            format_x: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -598,7 +562,7 @@ function NettoY({ row, handleChangeCardElementy }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            format_y: e.target.value,
+            format_y: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -620,7 +584,7 @@ function Lega({ row }) {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            lega: e.target.value,
+            lega: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -641,7 +605,7 @@ function IloscLeg({ row }) {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            ilosc_leg: e.target.value,
+            ilosc_leg: ifNoTextSetNull(e.target.value),
             update: true
           });
         }
@@ -663,7 +627,7 @@ function ArkuszSzerokosc({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            arkusz_szerokosc: e.target.value,
+            arkusz_szerokosc: ifNoTextSetNull(e.target.value) ,
             update: true
           });
         }
@@ -686,7 +650,7 @@ function ArkuszWysokosc({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            arkusz_wysokosc: e.target.value,
+            arkusz_wysokosc: ifNoTextSetNull(e.target.value),
             update: true
           });
         }

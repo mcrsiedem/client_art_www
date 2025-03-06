@@ -14,6 +14,7 @@ import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
+import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -226,7 +227,7 @@ function DataSpedycji({ row }) {
       <input
         className={style.input}
         type="date"
-        defaultValue={row.data_spedycji}
+        value={row.data_spedycji}
         onChange={(event) => {
           handleUpdateRowOprawa({ ...row, data_spedycji: event.target.value, update:true });
         }}
@@ -242,7 +243,7 @@ function DataCzystodrukow({ row }) {
       <input
         className={style.input}
         type="date"
-        defaultValue={row.data_czystodrukow}
+        value={row.data_czystodrukow}
         onChange={(event) => {
           handleUpdateRowOprawa({
             ...row,
@@ -621,7 +622,7 @@ function NakladOprawa({ row }) {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowOprawa({
               ...row,
-              naklad: e.target.value,
+              naklad:  ifNoTextSetNull(e.target.value) ,
               update:true
             });
           }

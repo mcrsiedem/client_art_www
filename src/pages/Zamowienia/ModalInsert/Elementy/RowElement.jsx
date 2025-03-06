@@ -16,6 +16,7 @@ import { AppContext } from "context/AppContext";
 import RowFragment from "./RowFragment";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
+import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -467,7 +468,7 @@ function Dodaj({ row, handleAddCard }) {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
               handleChangeCardElementy({
               ...row,
-              naklad: e.target.value,
+              naklad: ifNoTextSetNull(e.target.value),
               update: true
             })}}
           }
@@ -510,7 +511,7 @@ function Dodaj({ row, handleAddCard }) {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
               handleChangeCardFragmenty_i_Elementy_IloscStron({
               ...row,
-              ilosc_stron: e.target.value,
+              ilosc_stron: ifNoTextSetNull(e.target.value),
               update: true
             }
             )}}
@@ -525,7 +526,7 @@ function Dodaj({ row, handleAddCard }) {
    
         <input
         className={style.input}
-          value={row.format_x}
+        defaultValue={row.format_x}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -546,7 +547,7 @@ function Dodaj({ row, handleAddCard }) {
   
         <input
         className={style.input}
-          value={row.format_y}
+          defaultValue={row.format_y}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -577,6 +578,7 @@ function Dodaj({ row, handleAddCard }) {
               handleChangeCardElementy({
               ...row,
               uwagi: e.target.value,
+              update: true
             })}
           }
           }

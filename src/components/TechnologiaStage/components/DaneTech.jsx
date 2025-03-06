@@ -1,6 +1,6 @@
 import style from "./DaneTech.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_etapy_produkcji,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
 // import addIcon2 from "../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -32,7 +32,8 @@ export default function DaneTech({
             <Uwagi />
              <Stan />
             <Status />
-            <Opiekun />
+            {/* <Opiekun /> */}
+            <Etap />
         </Row>
       </div>
     </>
@@ -188,6 +189,7 @@ const setDaneTech = contextTech.setDaneTechch
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
       <select
+      disabled
         className={style.select}
         value={daneTech.opiekun_id}
         onChange={(event) => {
@@ -220,7 +222,7 @@ const contextTech = useContext(TechnologyContext);
         className={style.select}
         value={daneTech.status}
         onChange={(event) => {
-          setDaneTech({...daneTech, status: event.target.value,update: true});
+          setDaneTech({...daneTech, status: parseInt(event.target.value),update: true});
           setSaveButtonDisabled(false)
         }}
       >
@@ -252,11 +254,40 @@ const contextTech = useContext(TechnologyContext);
         className={style.select}
         value={daneTech.stan}
         onChange={(event) => {
-          setDaneTech({...daneTech, stan: event.target.value,update: true});
+          setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
           setSaveButtonDisabled(false)
         }}
       >
         {_stan_dokumentu.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.nazwa} 
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function Etap( ) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const contextTech = useContext(TechnologyContext);  
+  const daneTech = contextTech.daneTech
+  const setDaneTech = contextTech.setDaneTech
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Stan </label>
+      <select
+        className={style.select}
+        value={daneTech.etap}
+        onChange={(event) => {
+          setDaneTech({...daneTech, etap: parseInt(event.target.value) ,update: true});
+          setSaveButtonDisabled(false)
+        }}
+      >
+        {_etapy_produkcji.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>

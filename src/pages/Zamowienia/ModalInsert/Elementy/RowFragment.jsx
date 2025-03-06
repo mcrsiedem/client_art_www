@@ -7,6 +7,7 @@ import iconTrash from "assets/trash2.svg";
 import axios from "axios";
 import { IP } from "utils/Host";
 import { reg_txt } from "utils/initialvalue";
+import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 export default function RowFragment({
   row
 
@@ -89,7 +90,7 @@ function Naklad({ row, handleUpdateRowFragmenty }) {
         onChange={(e) =>
           handleUpdateRowFragmenty({
             ...row,
-            naklad: e.target.value,
+            naklad: ifNoTextSetNull(e.target.value) ,
             update: true
           })
         }

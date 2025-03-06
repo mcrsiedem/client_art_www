@@ -257,7 +257,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.etap}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, etap: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
           setSaveButtonDisabled(false)
         }}
       >

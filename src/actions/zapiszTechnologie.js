@@ -70,6 +70,7 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
       firma_id: daneTech.firma_id,
       klient_id: daneTech.klient_id,
       tytul: daneTech.tytul,
+      uwagi: daneTech.uwagi,
       zamowienie_id: daneTech.zamowienie_id,
       opiekun_id: daneTech.opiekun_id,
       data_przyjecia:daneTech.data_przyjecia,

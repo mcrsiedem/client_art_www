@@ -75,6 +75,9 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
       data_przyjecia:daneTech.data_przyjecia,
       data_spedycji:daneTech.data_spedycji,
       data_materialow: daneTech.data_materialow,
+      stan: daneTech.stan,
+      status: daneTech.status,
+      etap: daneTech.etap,
       autor_id: DecodeToken(sessionStorage.getItem("token")).id,
     }, produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech])
     

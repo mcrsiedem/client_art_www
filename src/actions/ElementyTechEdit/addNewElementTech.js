@@ -11,7 +11,8 @@ export function addNewElementTech(row,elementyTech,setElementyTech) {
 elementyTech.push({
   ...row,
   id: generateMaxID(elementyTech),
-  indeks: generateMaxIndeks(elementyTech)
+  indeks: generateMaxIndeks(elementyTech),
+  insert: true
 });
 
   setElementyTech(elementyTech);

@@ -200,7 +200,7 @@ function FormatY({ row }) {
           if (e.target.value === "" || re.test(e.target.value)) {
             handleUpdateRowProdukty({
               ...row,
-              format_x: e.target.value,
+              format_y: e.target.value,
               update: true
             });
           }

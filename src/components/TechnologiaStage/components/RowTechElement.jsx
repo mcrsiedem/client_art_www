@@ -113,28 +113,28 @@ export default function RowTechElement({
     </>
   );
 
-  const handleRemoveItem = (indeks, id) => {
-    // id = id elementu
-    if (elementyTech.length !== 1) {
-      setElementyTech(elementyTech?.filter((x) => x.indeks !== indeks));
-      setFragmentyTech(fragmentyTech?.filter((x) => x.element_id !== id));
-    }
+  // const handleRemoveItem = (indeks, id) => {
+  //   // id = id elementu
+  //   if (elementyTech.length !== 1) {
+  //     setElementyTech(elementyTech?.filter((x) => x.indeks !== indeks));
+  //     setFragmentyTech(fragmentyTech?.filter((x) => x.element_id !== id));
+  //   }
 
-    setElementyTech((prev) =>
-      prev.map((t, a) => {
-        if (t.indeks > indeks) {
-          return {
-            ...t,
-            indeks: t.indeks--,
-          };
-        } else {
-          return t;
-        }
-      })
-    );
+  //   setElementyTech((prev) =>
+  //     prev.map((t, a) => {
+  //       if (t.indeks > indeks) {
+  //         return {
+  //           ...t,
+  //           indeks: t.indeks--,
+  //         };
+  //       } else {
+  //         return t;
+  //       }
+  //     })
+  //   );
 
-    console.log("Usun");
-  };
+  //   console.log("Usun");
+  // };
 
   function handleDragElementStart(id) {
     //   e.preventDefault();
@@ -142,105 +142,105 @@ export default function RowTechElement({
     sessionStorage.setItem("typ_drag", "element");
   }
 
-  function handleAddCard(rowTechElement) {
-    const newElementyTech = elementyTech.slice();
+  // function handleAddCard(rowTechElement) {
+  //   const newElementyTech = elementyTech.slice();
 
-    newElementyTech.push({
-      id: Math.max(...newElementyTech?.map((f) => f.id)) + 1,
-      zamowienie_id: rowTechElement.zamowienie_id,
-      produkt_id: rowTechElement.produkt_id,
-      naklad: rowTechElement.naklad,
-      indeks: Math.max(...newElementyTech?.map((f) => f.indeks)) + 1,
-      typ: rowTechElement.typ,
-      nazwa: rowTechElement.nazwa,
-      ilosc_stron: rowTechElement.ilosc_stron,
-      format_x: rowTechElement.format_x,
-      format_y: rowTechElement.format_y,
-      papier_id: rowTechElement.papier_id,
-      gramatura_id: rowTechElement.gramatura_id,
-      papier_info: rowTechElement.papier_info,
-      uwagi: rowTechElement.uwagi,
-      lega: rowTechElement.lega,
-      ilosc_leg: rowTechElement.ilosc_leg,
-    });
+  //   newElementyTech.push({
+  //     id: Math.max(...newElementyTech?.map((f) => f.id)) + 1,
+  //     zamowienie_id: rowTechElement.zamowienie_id,
+  //     produkt_id: rowTechElement.produkt_id,
+  //     naklad: rowTechElement.naklad,
+  //     indeks: Math.max(...newElementyTech?.map((f) => f.indeks)) + 1,
+  //     typ: rowTechElement.typ,
+  //     nazwa: rowTechElement.nazwa,
+  //     ilosc_stron: rowTechElement.ilosc_stron,
+  //     format_x: rowTechElement.format_x,
+  //     format_y: rowTechElement.format_y,
+  //     papier_id: rowTechElement.papier_id,
+  //     gramatura_id: rowTechElement.gramatura_id,
+  //     papier_info: rowTechElement.papier_info,
+  //     uwagi: rowTechElement.uwagi,
+  //     lega: rowTechElement.lega,
+  //     ilosc_leg: rowTechElement.ilosc_leg,
+  //   });
 
-    newElementyTech.sort((a, b) => a.indeks - b.indeks);
-    setElementyTech(newElementyTech);
-  }
+  //   newElementyTech.sort((a, b) => a.indeks - b.indeks);
+  //   setElementyTech(newElementyTech);
+  // }
 
-  function handleAddCard2(card) {
-    //do skasowania
-    const newElementy = elementy.slice();
+  // function handleAddCard2(card) {
+  //   //do skasowania
+  //   const newElementy = elementy.slice();
 
-    axios
-      .post(IP + "elementy", {
-        zamowienie_id: 0,
-        produkt_id: 0,
-        nazwa: 0,
-        typ: 0,
-        naklad: 0,
-        strony: 0,
-        kolory: 0,
-        format_x: 0,
-        format_y: 0,
-        papier_id: 0,
-        gramatura_id: 0,
-        papier_info: 0,
-        uwagi: "element temp",
-        indeks: 0,
-      })
-      .then((res) => {
-        newElementy.push({
-          id: Math.max(...newElementy?.map((f) => f.id)) + 1,
-          zamowienie_id: card.zamowienie_id,
-          produkt_id: card.produkt_id,
-          naklad: card.naklad,
-          indeks: Math.max(...newElementy?.map((f) => f.indeks)) + 1,
-          typ: card.typ,
-          nazwa: card.nazwa,
-          ilosc_stron: card.ilosc_stron,
-          format_x: card.format_x,
-          format_y: card.format_y,
-          papier_id: card.papier_id,
-          gramatura_id: card.gramatura_id,
-          papier_info: card.papier_info,
-          uwagi: card.uwagi,
-        });
+  //   axios
+  //     .post(IP + "elementy", {
+  //       zamowienie_id: 0,
+  //       produkt_id: 0,
+  //       nazwa: 0,
+  //       typ: 0,
+  //       naklad: 0,
+  //       strony: 0,
+  //       kolory: 0,
+  //       format_x: 0,
+  //       format_y: 0,
+  //       papier_id: 0,
+  //       gramatura_id: 0,
+  //       papier_info: 0,
+  //       uwagi: "element temp",
+  //       indeks: 0,
+  //     })
+  //     .then((res) => {
+  //       newElementy.push({
+  //         id: Math.max(...newElementy?.map((f) => f.id)) + 1,
+  //         zamowienie_id: card.zamowienie_id,
+  //         produkt_id: card.produkt_id,
+  //         naklad: card.naklad,
+  //         indeks: Math.max(...newElementy?.map((f) => f.indeks)) + 1,
+  //         typ: card.typ,
+  //         nazwa: card.nazwa,
+  //         ilosc_stron: card.ilosc_stron,
+  //         format_x: card.format_x,
+  //         format_y: card.format_y,
+  //         papier_id: card.papier_id,
+  //         gramatura_id: card.gramatura_id,
+  //         papier_info: card.papier_info,
+  //         uwagi: card.uwagi,
+  //       });
 
-        newElementy.sort((a, b) => a.indeks - b.indeks);
-        setElementy(newElementy);
-      });
+  //       newElementy.sort((a, b) => a.indeks - b.indeks);
+  //       setElementy(newElementy);
+  //     });
 
-    const newFragmenty = fragmenty.slice();
+  //   const newFragmenty = fragmenty.slice();
 
-    newFragmenty.map((x) => {
-      if (x.indeks > card.indeks) {
-        return {
-          ...x,
-        };
-      } else {
-        return x;
-      }
-    });
+  //   newFragmenty.map((x) => {
+  //     if (x.indeks > card.indeks) {
+  //       return {
+  //         ...x,
+  //       };
+  //     } else {
+  //       return x;
+  //     }
+  //   });
 
-    newFragmenty?.filter((f) => f.element_id == card.id)
-      .forEach((x) => {
-        newFragmenty.push({
-          id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
-          zamowienie_id: card.zamowienie_id,
-          produkt_id: card.produkt_id,
-          ilosc_stron: card.ilosc_stron,
-          naklad: card.naklad,
-          typ: card.typ,
-          oprawa_id: x.oprawa_id,
-          element_id: Math.max(...elementy.map((f) => f.id)) + 1,
-          indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
-        });
-      });
+  //   newFragmenty?.filter((f) => f.element_id == card.id)
+  //     .forEach((x) => {
+  //       newFragmenty.push({
+  //         id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
+  //         zamowienie_id: card.zamowienie_id,
+  //         produkt_id: card.produkt_id,
+  //         ilosc_stron: card.ilosc_stron,
+  //         naklad: card.naklad,
+  //         typ: card.typ,
+  //         oprawa_id: x.oprawa_id,
+  //         element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+  //         indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
+  //       });
+  //     });
 
-    newFragmenty.sort((a, b) => a.indeks - b.indeks);
-    setFragmenty(newFragmenty);
-  }
+  //   newFragmenty.sort((a, b) => a.indeks - b.indeks);
+  //   setFragmenty(newFragmenty);
+  // }
 }
 
 function Procesy({ row }) {
@@ -285,35 +285,35 @@ function Procesy({ row }) {
   );
 }
 
-function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
-  return (
-    <div>
-      <img
-        className={style.expand}
-        src={iconTrash}
-        onClick={() => {
-          handleRemoveItem(row.indeks, row.id);
-        }}
-        alt="Procesy"
-      />
-    </div>
-  );
-}
+// function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
+//   return (
+//     <div>
+//       <img
+//         className={style.expand}
+//         src={iconTrash}
+//         onClick={() => {
+//           handleRemoveItem(row.indeks, row.id);
+//         }}
+//         alt="Procesy"
+//       />
+//     </div>
+//   );
+// }
 
-function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
-  return (
-    <div>
-      <img
-        className={style.expand}
-        src={iconCopy}
-        onClick={() => {
-          handleAddCard(row);
-        }}
-        alt="Procesy"
-      />
-    </div>
-  );
-}
+// function Dodaj({ row, handleChangeCardElementy, handleAddCard }) {
+//   return (
+//     <div>
+//       <img
+//         className={style.expand}
+//         src={iconCopy}
+//         onClick={() => {
+//           handleAddCard(row);
+//         }}
+//         alt="Procesy"
+//       />
+//     </div>
+//   );
+// }
 
 function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
   //row - row element
@@ -325,6 +325,7 @@ function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
         handleChangeCardFragmenty_i_Elementy_Tech({
           ...row,
           typ: e.target.value,
+          update: true
         });
       }}
     >
@@ -338,37 +339,37 @@ function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
   );
 }
 
-function PapierSelect({
-  row,
-  handleChangeCardFragmenty_i_Elementy_Tech,
+// function PapierSelect({
+//   row,
+//   handleChangeCardFragmenty_i_Elementy_Tech,
 
-}) {
+// }) {
 
-  const appcontext = useContext(AppContext);
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+//   const appcontext = useContext(AppContext);
+//   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
 
-  return (
-    <select
+//   return (
+//     <select
 
-      className={style.select}
-      value={row.papier_id}
-      onChange={(e) => {
+//       className={style.select}
+//       value={row.papier_id}
+//       onChange={(e) => {
 
-        handleChangeCardFragmenty_i_Elementy_Tech({
-          ...row,
-          papier_id: e.target.value,
-        });
-      }}
-    >
-      {}
-      {listaPapierowNazwy?.map((option) => (
-        <option key={option.id} value={option.id}>
-          {option.nazwa}
-        </option>
-      ))}
-    </select>
-  );
-}
+//         handleChangeCardFragmenty_i_Elementy_Tech({
+//           ...row,
+//           papier_id: e.target.value,
+//         });
+//       }}
+//     >
+//       {}
+//       {listaPapierowNazwy?.map((option) => (
+//         <option key={option.id} value={option.id}>
+//           {option.nazwa}
+//         </option>
+//       ))}
+//     </select>
+//   );
+// }
 
 
 
@@ -391,6 +392,7 @@ function PapierSelect2({
           handleChangeCardFragmenty_i_Elementy_Tech({
             ...row,
             papier_id: e.target.value,
+            update: true
           });
         }}
       >
@@ -428,44 +430,44 @@ function PapierSelect2({
 
 
 
-function Gramatura({
-  row,
-  handleChangeCardFragmenty_i_Elementy_Tech,
+// function Gramatura({
+//   row,
+//   handleChangeCardFragmenty_i_Elementy_Tech,
 
-}) {
-  const appcontext = useContext(AppContext);
-  const listaPapierow = appcontext.listaPapierow;
-  return (
-    <select
-      className={style.select}
-      value={row.gramatura_id}
-      onChange={(e) =>
-        handleChangeCardFragmenty_i_Elementy_Tech({
-          ...row,
-          gramatura_id: e.target.value,
-        })
-      }
-    >
-      <option value="0">wybierz</option>
-      {listaPapierow?.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
-        .map((option) =>
+// }) {
+//   const appcontext = useContext(AppContext);
+//   const listaPapierow = appcontext.listaPapierow;
+//   return (
+//     <select
+//       className={style.select}
+//       value={row.gramatura_id}
+//       onChange={(e) =>
+//         handleChangeCardFragmenty_i_Elementy_Tech({
+//           ...row,
+//           gramatura_id: e.target.value,
+//         })
+//       }
+//     >
+//       <option value="0">wybierz</option>
+//       {listaPapierow?.filter((x) => x.nazwa_id == row.papier_id).sort((a, c) => a.gramatura - c.gramatura)
+//         .map((option) =>
       
-            <option key={option.id} value={option.id}>
-              {option.gramatura}{" "}
-              {option.bulk !== 1 ? (
-                <p>
-                  {" "}
-                  g/m2 vol. {option.bulk} {option.wykonczenie}
-                </p>
-              ) : (
-                <p>g/m2 </p>
-              )}
-            </option>
+//             <option key={option.id} value={option.id}>
+//               {option.gramatura}{" "}
+//               {option.bulk !== 1 ? (
+//                 <p>
+//                   {" "}
+//                   g/m2 vol. {option.bulk} {option.wykonczenie}
+//                 </p>
+//               ) : (
+//                 <p>g/m2 </p>
+//               )}
+//             </option>
           
-        )}
-    </select>
-  );
-}
+//         )}
+//     </select>
+//   );
+// }
 
 function Naklad({ row }) {
   const techContext = useContext(TechnologyContext);
@@ -479,6 +481,7 @@ function Naklad({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             naklad: e.target.value,
+            update: true
           });
         }
       }}
@@ -533,6 +536,7 @@ function Nazwa({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             nazwa: e.target.value,
+            update: true
           });
         }
       }}
@@ -553,6 +557,7 @@ function Strony({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             ilosc_stron: e.target.value,
+            update: true
           });
         }
       }}
@@ -573,6 +578,7 @@ function NettoX({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             format_x: e.target.value,
+            update: true
           });
         }
       }}
@@ -593,6 +599,7 @@ function NettoY({ row, handleChangeCardElementy }) {
           handleUpdateRowElementyTech({
             ...row,
             format_y: e.target.value,
+            update: true
           });
         }
       }}
@@ -614,6 +621,7 @@ function Lega({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             lega: e.target.value,
+            update: true
           });
         }
       }}
@@ -634,6 +642,7 @@ function IloscLeg({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             ilosc_leg: e.target.value,
+            update: true
           });
         }
       }}
@@ -655,6 +664,7 @@ function ArkuszSzerokosc({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             arkusz_szerokosc: e.target.value,
+            update: true
           });
         }
       }}
@@ -677,6 +687,7 @@ function ArkuszWysokosc({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             arkusz_wysokosc: e.target.value,
+            update: true
           });
         }
       }}
@@ -684,25 +695,25 @@ function ArkuszWysokosc({ row }) {
   );
 }
 
-function PapierInfo({ row }) {
-  const techContext = useContext(TechnologyContext);
-  const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
-  return (
-    <td>
-      <input
-        value={row.papier_info}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowElementyTech({
-              ...row,
-              papier_info: e.target.value,
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
+// function PapierInfo({ row }) {
+//   const techContext = useContext(TechnologyContext);
+//   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+//   return (
+//     <td>
+//       <input
+//         value={row.papier_info}
+//         onChange={(e) => {
+//           if (e.target.value === "" || reg_txt.test(e.target.value)) {
+//             handleUpdateRowElementyTech({
+//               ...row,
+//               papier_info: e.target.value,
+//             });
+//           }
+//         }}
+//       ></input>
+//     </td>
+//   );
+// }
 
 function Uwagi({ row }) {
   const techContext = useContext(TechnologyContext);
@@ -716,6 +727,7 @@ function Uwagi({ row }) {
           handleUpdateRowElementyTech({
             ...row,
             uwagi: e.target.value,
+            update: true
           });
         }
       }}

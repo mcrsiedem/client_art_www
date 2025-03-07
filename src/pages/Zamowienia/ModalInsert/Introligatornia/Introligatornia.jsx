@@ -166,6 +166,7 @@ function OprawaTable({
                 {expand ? (
                   fragmenty
                     .filter((el) => el.oprawa_id === row.id)
+                    .filter((x) => x.delete != true)
                     .map((row) => {
                       return (
                         <tr

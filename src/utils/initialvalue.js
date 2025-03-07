@@ -54,8 +54,8 @@ const initialDane = {
   data_materialow: null,
   // data_spedycji: todayPlusDni(5),
   data_spedycji: null,
-  stan: 2,
-  status: 1,
+  stan: 1,
+  status: 2,
   etap: 2,
   uwagi: "",
   cena: "",
@@ -319,9 +319,45 @@ const _rodzaj = [
 ];
 
 
+const _stan_technologi = [
+  {
+    id: 1,
+    nazwa: "Wstępna",
+  },
+  {
+    id: 2,
+    nazwa: "Finalna",
+  },
+  {
+    id: 3,
+    nazwa: "Korketa",
+  },
+  {
+    id: 4,
+    nazwa: "Zakończone",
+  }
+];
 
+const _status_technologi = [
+  {
+    id: 1,
+    nazwa: "Nieaktywna",
+  },
+  {
+    id: 2,
+    nazwa: "Aktywna",
+  },
+  {
+    id: 3,
+    nazwa: "Wstrzymana",
+  },
+  {
+    id: 4,
+    nazwa: "Anulowana",
+  }
+];
 
-const _status_dokumentu = [
+const _stan_dokumentu = [
   {
     id: 1,
     nazwa: "Szkic",
@@ -348,7 +384,7 @@ const _status_dokumentu = [
   }
 ];
 
-const _status_wykonania = [
+const _stan_wykonania = [
   {
     id: 1,
     nazwa: "Niedostępne",
@@ -371,7 +407,7 @@ const _status_wykonania = [
   }
 ];
 
-const _stan_dokumentu = [
+const _status_dokumentu = [
   {
     id: 1,
     nazwa: "Nieaktywne",
@@ -402,7 +438,7 @@ const _stan_dokumentu = [
   },
 ];
 
-const _stan_wykonania = [
+const _status_wykonania = [
   {
     id: 1,
     nazwa: "Nieaktywne",
@@ -570,6 +606,8 @@ export {
   initialDane,
   initialPreOrder,
   _rodzaj_oprawy,
-  _wykonczenie
+  _wykonczenie,
+  _stan_technologi,
+  _status_technologi
 
 };

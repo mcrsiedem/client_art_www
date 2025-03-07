@@ -106,7 +106,7 @@ export default function RowElement({
         const newElementy = elementy.slice();
 
         newElementy.push({
-          id: Math.max(...newElementy.filter((x) => x.delete != true).map((f) => f.id)) + 1,
+          id: Math.max(...newElementy.map((f) => f.id)) + 1,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
@@ -120,6 +120,7 @@ export default function RowElement({
           papier_id: card.papier_id,
           stan: card.stan,
           status: card.status,
+          etap: card.etap,
           info: card.info,
           tytul: card.tytul,
           papier_id: card.papier_id,
@@ -148,7 +149,7 @@ export default function RowElement({
           .filter((f) => f.element_id == card.id)
           .forEach((x) => {
             newFragmenty.push({
-              id: Math.max(...newFragmenty.filter((x) => x.delete != true).map((f) => f.id)) + 1,
+              id: Math.max(...newFragmenty.map((f) => f.id)) + 1,
               zamowienie_id: card.zamowienie_id,
               produkt_id: card.produkt_id,
               ilosc_stron: card.ilosc_stron,
@@ -157,7 +158,7 @@ export default function RowElement({
               info:x.info,
               typ: card.typ,
               oprawa_id: x.oprawa_id,
-              element_id: Math.max(...elementy.filter((x) => x.delete != true).map((f) => f.id)) + 1,
+              element_id: Math.max(...elementy.map((f) => f.id)) + 1,
               indeks: Math.max(...newFragmenty.filter((x) => x.delete != true).map((f) => f.indeks)) + 1,
               insert: true
             });
@@ -172,11 +173,11 @@ export default function RowElement({
         .filter((f) => f.element_id == card.id)
         .forEach((proces) => {
           newProcesyElementow.push({
-            id: Math.max(...newProcesyElementow.filter((x) => x.delete != true).map((f) => f.id)) + 1,
+            id: Math.max(...newProcesyElementow.map((f) => f.id)) + 1,
             zamowienie_id: proces.zamowienie_id,
             back_ilosc: proces.back_ilosc,
             back_kolor: proces.back_kolor,
-            element_id: Math.max(...newElementy.filter((x) => x.delete != true).map((f) => f.id)),
+            element_id: Math.max(...newElementy.map((f) => f.id)),
             front_ilosc: proces.front_ilosc,
             front_kolor: proces.front_kolor,
             info: proces.info,

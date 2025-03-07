@@ -1,6 +1,6 @@
 import style from "./DaneTech.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_etapy_produkcji,_vat,_waluta,_rodzaj,_fsc } from "utils/initialvalue";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_etapy_produkcji,_vat,_waluta,_rodzaj,_fsc,_stan_technologi,_status_technologi } from "utils/initialvalue";
 // import addIcon2 from "../../../assets/addIcon2.svg";
 import { PreOrderContext } from "context/PreOrderContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -217,7 +217,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Status </label>
+      <label className={style.label}> Status technolgi</label>
       <select
         className={style.select}
         value={daneTech.status}
@@ -226,7 +226,7 @@ const contextTech = useContext(TechnologyContext);
           setSaveButtonDisabled(false)
         }}
       >
-        {_status_dokumentu.map((option) => (
+        {_status_technologi.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>
@@ -249,7 +249,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Stan </label>
+      <label className={style.label}> Stan technologi </label>
       <select
         className={style.select}
         value={daneTech.stan}
@@ -258,7 +258,7 @@ const contextTech = useContext(TechnologyContext);
           setSaveButtonDisabled(false)
         }}
       >
-        {_stan_dokumentu.map((option) => (
+        {_stan_technologi.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>
@@ -278,7 +278,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Stan </label>
+      <label className={style.label}> Etap produkcji </label>
       <select
         className={style.select}
         value={daneTech.etap}

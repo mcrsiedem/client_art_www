@@ -217,7 +217,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Status technolgi</label>
+      <label className={style.label}> Status </label>
       <select
         className={style.select}
         value={daneTech.status}
@@ -249,7 +249,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Stan technologi </label>
+      <label className={style.label}> Stan </label>
       <select
         className={style.select}
         value={daneTech.stan}
@@ -278,7 +278,7 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Etap produkcji </label>
+      <label className={style.label}> Stan </label>
       <select
         className={style.select}
         value={daneTech.etap}

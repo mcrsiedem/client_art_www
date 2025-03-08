@@ -340,37 +340,7 @@ function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
   );
 }
 
-// function PapierSelect({
-//   row,
-//   handleChangeCardFragmenty_i_Elementy_Tech,
 
-// }) {
-
-//   const appcontext = useContext(AppContext);
-//   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-
-//   return (
-//     <select
-
-//       className={style.select}
-//       value={row.papier_id}
-//       onChange={(e) => {
-
-//         handleChangeCardFragmenty_i_Elementy_Tech({
-//           ...row,
-//           papier_id: e.target.value,
-//         });
-//       }}
-//     >
-//       {}
-//       {listaPapierowNazwy?.map((option) => (
-//         <option key={option.id} value={option.id}>
-//           {option.nazwa}
-//         </option>
-//       ))}
-//     </select>
-//   );
-// }
 
 
 
@@ -541,7 +511,7 @@ function NettoX({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            format_x: ifNoTextSetNull(e.target.value),
+            format_x: e.target.value,
             update: true
           });
         }
@@ -562,7 +532,7 @@ function NettoY({ row, handleChangeCardElementy }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            format_y: ifNoTextSetNull(e.target.value),
+            format_y: e.target.value,
             update: true
           });
         }
@@ -627,7 +597,7 @@ function ArkuszSzerokosc({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            arkusz_szerokosc: ifNoTextSetNull(e.target.value) ,
+            arkusz_szerokosc: e.target.value ,
             update: true
           });
         }
@@ -650,7 +620,7 @@ function ArkuszWysokosc({ row }) {
         if (e.target.value === "" || re.test(e.target.value)) {
           handleUpdateRowElementyTech({
             ...row,
-            arkusz_wysokosc: ifNoTextSetNull(e.target.value),
+            arkusz_wysokosc: e.target.value,
             update: true
           });
         }

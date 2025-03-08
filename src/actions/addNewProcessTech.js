@@ -24,6 +24,7 @@ const procesyElementowEditTemporary = procesyElementowTechTemporary.slice();
       back_kolor: "",
       info: "",
       indeks: Math.max(...procesyElementowTechTemporary.map((f) => f.indeks)) + 1,
+      insert: true
     });
 
     procesyElementowEditTemporary.sort((a, b) => a.indeks - b.indeks);

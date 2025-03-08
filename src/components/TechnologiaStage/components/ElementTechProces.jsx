@@ -177,7 +177,8 @@ const ProcesName = ({ row,setProcesID }) => {
           techContext.handleUpdateRowProcesyElementowTech({
             ...row,
             nazwa_id: e.target.value,
-            nazwa: getNameOfProces(e.target.value,procesListName)
+            nazwa: getNameOfProces(e.target.value,procesListName),
+            update:true
           });
         }}
       >
@@ -208,6 +209,7 @@ const ProcessTyp = ({ row,procesID }) => {
           techContext.handleUpdateRowProcesyElementowTech({
             ...row,
             proces_id: e.target.value,
+            update:true
           });
         }}
       >
@@ -234,12 +236,13 @@ const Info = ({ row }) => {
   return (
     <td>
       <input
-        value={row.procesor_domyslny}
+        value={row.info}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
               ...row,
               info: e.target.value,
+              update:true
             });
           }
         }}
@@ -260,6 +263,7 @@ const BackKolor = ({ row }) => {
             handleUpdateRowProcesyElementowTech({
               ...row,
               back_kolor: e.target.value,
+              update:true
             });
           }
         }}
@@ -280,6 +284,7 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementowTech({
               ...row,
               front_kolor: e.target.value,
+              update:true
             });
           }
         }}
@@ -300,6 +305,7 @@ const FrontIlosc = ({ row }) => {
             handleUpdateRowProcesyElementowTech({
               ...row,
               front_ilosc: e.target.value,
+              update:true
             });
           }
         }}
@@ -320,6 +326,7 @@ const BackIlosc = ({ row }) => {
             handleUpdateRowProcesyElementowTech({
               ...row,
               back_ilosc: e.target.value,
+              update:true
             });
           }
         }}
@@ -341,6 +348,8 @@ function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTempo
           className={style.expand}
           src={iconTrash}
           onClick={() => {
+
+            // przed pierwszym zapisem
             setProcesyElementowTechTemporary(procesyElementowTechTemporary.filter((p) => p.id !== row.id));
             setGrupaWykonan(grupaWykonan.filter((p) => p.proces_id !== row.id))
             setWykonania(wykonania.filter((p) => p.proces_id !== row.id))

@@ -24,15 +24,22 @@ export async function zapiszTechnologieUpdate({daneTech,setDaneTech,produktyTech
           //  setProcesyElementow(savedDane.procesyElementow)
            
           // refreshZamowienia(setZamowienia);
-
+          alert(savedDane.data.sqlMessage + "\n \n " +savedDane.data.sql)
+          console.log(savedDane)
+          //sqlMessage: "Unknown column 'id1' in 'field list'", sql:
+          
+          // savedDane .catch( err => console.log(err))
 }
 
 //----------------------------------------------------------------------------------
 const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}) =>{
 
   return new Promise(async(resolve,reject)=>{
+
+
+
       
-  let res = await axios.put(IP + "zapiszTechnologieUpdate/" + sessionStorage.getItem("token"),[ {
+   let res = await axios.put(IP + "zapiszTechnologieUpdate/" + sessionStorage.getItem("token"),[ {
      id: daneTech.id,
     nr: daneTech.nr,
     rok: daneTech.rok,
@@ -56,17 +63,13 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
 
     }, produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech])
     
-  // let zamowienie_id = res.data[1].id;
-  // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
 
-  // daneZamowienia = res.data[0];
-  // produkty = res.data[1];
-  // elementy = res.data[2];
-  // fragmenty = res.data[3];
-  // oprawa = res.data[4];
-  // procesyElementow = res.data[5];
 
-      resolve({produktyTech})
+   
+resolve(res)
+   
+
+
 
   })
 }

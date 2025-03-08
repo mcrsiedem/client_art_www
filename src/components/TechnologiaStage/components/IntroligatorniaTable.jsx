@@ -45,7 +45,7 @@ const OprawaRow = ({ row }) => {
       setLegiFragmenty(
         legiFragmenty.map((p) => {
           if (p.element_id == id_drag_element) {
-            return { ...p, oprawa_id: id };
+            return { ...p, oprawa_id: id ,update: true};
           } else {
             return p;
           }
@@ -61,7 +61,7 @@ const OprawaRow = ({ row }) => {
       setLegiFragmenty(
         legiFragmenty.map((p) => {
           if (p.id == id_drag_element) {
-            return { ...p, oprawa_id: id };
+            return { ...p, oprawa_id: id,update: true };
           } else {
             return p;
           }
@@ -155,19 +155,19 @@ const LegaFragmentRow = ({ row, i }) => {
 
             .map((t) => {
               if (t.indeks > indeks_drag_fragment) {
-                return {...t, indeks: t.indeks -1}
+                return {...t, indeks: t.indeks -1,update: true}
               }else return t
             })
 
             .map((t) => {
               if (t.indeks >= indeks_drop_fragment) {
-                return {...t, indeks: t.indeks +1}
+                return {...t, indeks: t.indeks +1,update: true}
               }else return t
             })
 
             .map((t) => {
               if (t.id == id_drag_fragment) {
-                return {...t, indeks: indeks_drop_fragment}
+                return {...t, indeks: indeks_drop_fragment,update: true}
               }else return t
             })
             .sort((a, b) => a.indeks - b.indeks)

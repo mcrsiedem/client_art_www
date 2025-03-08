@@ -58,7 +58,8 @@ export default function RowArkusze  ({ row,i })  {
         if (t.id === dragLegaId) {
           return {
             ...t,
-            arkusz_id: id
+            arkusz_id: id,
+            update: true
   
           };
         } else {
@@ -73,7 +74,8 @@ export default function RowArkusze  ({ row,i })  {
       if (t.lega_id === dragLegaId) {
         return {
           ...t,
-          arkusz_id: id
+          arkusz_id: id,
+          update: true
 
         };
       } else {
@@ -128,11 +130,13 @@ export default function RowArkusze  ({ row,i })  {
         {/* <td  >{i+1}</td> */}
         <td className={style.input2}>lega {l.indeks}</td>
    
-     
-        <td className={style.input2}>{l.naklad}</td>
+        
+        <NakladLegi row={l} />
+        {/* <td className={style.input2}>{l.naklad}</td> */}
         <td>{l.ilosc_stron}</td>
         {/* <td>{l.ilosc_leg}</td> */}
-        <td>{l.uwagi}</td>
+        <UwagiLegi row={l} />
+  
         {/* <td>{row.element_id}</td> */}
         {/* <td>{row.ilosc_stron}</td> */}
 
@@ -191,6 +195,7 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateLegiFragmentyTech({
               ...row,
               wersja: e.target.value,
+              update: true
             }
             )}}
           }
@@ -217,6 +222,7 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateLegiFragmentyTech({
               ...row,
               naklad: e.target.value,
+              update: true
             }
             )}}
           }
@@ -316,6 +322,7 @@ export default function RowArkusze  ({ row,i })  {
         naklad: row.naklad,
         element_id: row.id,
         ilosc_stron: row.ilosc_stron,
+        insert: true
       });
   
       setArkusze(newArkusze);
@@ -359,6 +366,7 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateRowArkusze({
               ...row,
               nr_arkusza: e.target.value,
+              update: true
             }
             )}}
 
@@ -383,6 +391,7 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateRowArkusze({
               ...row,
               rodzaj_arkusza: e.target.value,
+              update: true
             }
             )}}
 
@@ -444,6 +453,7 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateRowArkusze({
               ...row,
               typ_elementu: e.target.value,
+              update: true
             }
             )}}
           }
@@ -470,6 +480,61 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateRowArkusze({
               ...row,
               naklad: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
+
+  function NakladLegi ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.naklad}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowLegi({
+              ...row,
+              naklad: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
+
+
+  function UwagiLegi ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.uwagi}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_txt.test(e.target.value)) {
+                handleUpdateRowLegi({
+              ...row,
+              uwagi: e.target.value,
+              update: true
             }
             )}}
           }

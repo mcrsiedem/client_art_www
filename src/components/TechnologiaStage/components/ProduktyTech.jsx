@@ -306,7 +306,7 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
       <select
         disabled
         className={style.select_oprawa}
-        defaultValue={row?.oprawa}
+        value={row?.oprawa}
 
       >
         {contextApp.bindingType.map((option) => (

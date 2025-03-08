@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
-import { _typ_elementu } from "utils/initialvalue";
+import { _typ_elementu, reg_cena, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
 import MenuIntroligatornia from "./IntroligatorniaMenu";
 import iconSettings from "assets/settings.svg";
@@ -292,13 +292,13 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
         className={style.select}
         defaultValue={row.oprawa}
         onChange={(event) => {
-          updateRowOprawaTech({ ...row, oprawa: event.target.value });
+          updateRowOprawaTech({ ...row, oprawa: event.target.value, update: true});
 
           if (row.indeks == 0) {
             setProduktyTech(
               produktyTech.map((p) => {
                 if (p.id === row.produkt_id) {
-                  return { ...p, oprawa: event.target.value };
+                  return { ...p, oprawa: event.target.value, update: true };
                 } else {
                   return p;
                 }
@@ -331,6 +331,7 @@ const Naklad = ({ row }) => {
             updateRowOprawaTech({
               ...row,
               naklad: e.target.value,
+              update: true
             });
           }
         }}
@@ -349,10 +350,12 @@ const Wersja = ({ row }) => {
         className={style.input}
         value={row.wersja}
         onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
+
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             updateRowOprawaTech({
               ...row,
               wersja: e.target.value,
+              update: true
             });
           }
         }}
@@ -371,10 +374,12 @@ const Uwagi = ({ row }) => {
         className={style.input}
         value={row.uwagi}
         onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
+
+          if (e.target.value === "" || reg_txt.test(e.target.value)) {
             updateRowOprawaTech({
               ...row,
               uwagi: e.target.value,
+              update: true
             });
           }
         }}
@@ -393,10 +398,11 @@ const BokOprawy = ({ row }) => {
         className={style.input}
         value={row.bok_oprawy}
         onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
+          if (e.target.value === "" || reg_cena.test(e.target.value)) {
             updateRowOprawaTech({
               ...row,
               bok_oprawy: e.target.value,
+              update: true
             });
           }
         }}
@@ -419,6 +425,7 @@ const DataSpedycji = ({ row }) => {
           updateRowOprawaTech({
             ...row,
             data_spedycji: e.target.value,
+            update: true
           });
         }}
       ></input>
@@ -440,6 +447,7 @@ const DataCzystodrukow = ({ row }) => {
           updateRowOprawaTech({
             ...row,
             data_czystodrukow: e.target.value,
+            update: true
           });
         }}
       ></input>

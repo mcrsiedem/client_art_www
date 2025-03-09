@@ -105,6 +105,7 @@ const OprawaRow = ({ row }) => {
       {show && (
                   legiFragmenty
                   .filter((f) => f?.oprawa_id == row.id)
+                  .sort((a, b) => a.indeks - b.indeks)
                   .map((row, i) => (
                     <LegaFragmentRow
                       row={row}

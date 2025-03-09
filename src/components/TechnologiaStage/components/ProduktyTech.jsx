@@ -68,6 +68,10 @@ function ProduktyTable2() {
         <Nazwa row={produktyTech[0]} />
         <RodzajOprawy row={produktyTech[0]} />
         <Uwagi row={produktyTech[0]} />
+        <OpisSzerokoscArkusza row={produktyTech[0]} />
+        <OpisWysokoscArkusza row={produktyTech[0]} />
+        <OpisRodzajLegi row={produktyTech[0]} />
+        <OpisIloscLeg row={produktyTech[0]} />
       </div>
     </div>
   );
@@ -212,6 +216,60 @@ function Naklad({ row }) {
     </div>
   );
 }
+function OpisSzerokoscArkusza({ row }) {
+
+  const contextApp = useContext(AppContext);
+  const contextTech = useContext(TechnologyContext);  
+  const updateRowProduktyTech = contextTech.updateRowProduktyTech;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> ark. szer. </label>
+      <input
+      disabled
+        className={style.input}
+      ></input>
+    </div>
+  );
+}
+
+function OpisWysokoscArkusza({ row }) {
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> ark. wys. </label>
+      <input
+      disabled
+        className={style.input}
+      ></input>
+    </div>
+  );
+}
+
+function OpisRodzajLegi({ row }) {
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> lega  </label>
+      <input
+      disabled
+        className={style.input}
+      ></input>
+    </div>
+  );
+}
+
+
+function OpisIloscLeg({ row }) {
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> ilosc</label>
+      <input
+      disabled
+        className={style.input}
+      ></input>
+    </div>
+  );
+}
+
 
 function Strony({ row }) {
   const contextApp = useContext(AppContext);

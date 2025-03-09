@@ -121,7 +121,7 @@ export default function RowArkusze  ({ row,i })  {
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
 
-        <SelectBoxArkusze row={row} />
+        {/* <SelectBoxArkusze row={row} /> */}
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
@@ -362,7 +362,7 @@ export default function RowArkusze  ({ row,i })  {
           onChange={(e) =>
 
             {
-              if (e.target.value === '' || reg_int.test(e.target.value)) {
+              if (e.target.value === '' || reg_txt.test(e.target.value)) {
                 handleUpdateRowArkusze({
               ...row,
               nr_arkusza: e.target.value,

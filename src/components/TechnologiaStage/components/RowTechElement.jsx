@@ -35,7 +35,7 @@ export default function RowTechElement({
   const handleChangeCardFragmenty_i_Elementy_Tech =  techContext.handleChangeCardFragmenty_i_Elementy_Tech;
   const elementyTech = techContext.elementyTech;
 
-  const [showArkusze, setShowArkusze] = useState(false);
+  const [showArkusze, setShowArkusze] = useState(true);
 
 
   return (
@@ -587,6 +587,7 @@ function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
+
     <input
       value={row.arkusz_szerokosc}
       className={style.input}
@@ -603,6 +604,8 @@ function ArkuszSzerokosc({ row }) {
         }
       }}
     ></input>
+  
+
   );
 }
 

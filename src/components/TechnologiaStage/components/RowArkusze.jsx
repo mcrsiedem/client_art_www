@@ -62,10 +62,11 @@ export default function RowArkusze  ({ row,i })  {
 
 
 <td className={style.input3}>  </td>
+<td className={style.lega_fragment_text}> fragment</td>
   <NakladFragment row={lf}/>
   <td>{lf.ilosc_leg}</td>
   <WersjaFragment row={lf}/>
-  <td>lega id{lf.lega_id}</td>
+ 
 </div>
 })}</>)}
 </> 

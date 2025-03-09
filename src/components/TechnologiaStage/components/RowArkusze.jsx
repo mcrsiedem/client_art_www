@@ -329,7 +329,7 @@ export default function RowArkusze  ({ row,i })  {
     return (
         <input
         className={style.input_ark_nr}
-        value={row.arkusz_szerokosc}
+        defaultValue={row.arkusz_szerokosc}
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_cena.test(e.target.value)) {
@@ -410,7 +410,7 @@ export default function RowArkusze  ({ row,i })  {
 
             handleUpdateRowArkusze({
               ...row,
-              papier_id: e.target.value,
+              papier_id: parseInt(e.target.value),
               update: true
             })
             
@@ -634,7 +634,7 @@ export default function RowArkusze  ({ row,i })  {
 
   function UwagiArkusz ({row,i}) {
     const techContext = useContext(TechnologyContext)
-    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         
@@ -648,7 +648,7 @@ export default function RowArkusze  ({ row,i })  {
 
             {
               if (e.target.value === '' || reg_txt.test(e.target.value)) {
-                handleUpdateRowLegi({
+                handleUpdateRowArkusze({
               ...row,
               uwagi: e.target.value,
               update: true

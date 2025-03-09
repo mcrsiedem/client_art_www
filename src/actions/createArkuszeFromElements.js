@@ -63,7 +63,12 @@ export function createArkuszeFromElemenets(
       naklad: row.naklad,
       element_id: row.id,
       ilosc_stron: row.ilosc_stron,
-      uwagi: ""
+      uwagi: "",
+      nr_arkusza: "",
+      arkusz_szerokosc: "",
+      arkusz_wysokosc: "",
+      papier_id: row.papier_id,
+      insert: true
     };
 
     const lega = {
@@ -72,7 +77,9 @@ export function createArkuszeFromElemenets(
       element_id: row.id,
       ilosc_stron: row.ilosc_stron,
       naklad: row.naklad,
-      uwagi: ""
+      uwagi: "",
+      nr_legi: "",
+      insert: true
     };
 
 

@@ -81,6 +81,9 @@ export default function MenuElementyTech({ row }) {
        
         <SkasujElement row={row}  />
         <Ponumeruj row={row} />
+        <KopiujFormatPapieru row={row} />
+
+        
         <Anuluj  row={row}/>
 
       </div>
@@ -110,6 +113,49 @@ const Ponumeruj = ({ row}) =>{
   </button>
   )
 }
+
+const KopiujFormatPapieru = ({ row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const setArkusze = techContext.setArkusze;
+  const arkusze = techContext.arkusze;
+  const setElementyTech = techContext.setElementyTech;
+  const elementyTech = techContext.elementyTech;
+
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+setArkusze(
+  arkusze.map((arkusz) => {
+    if (arkusz.element_id === row.id) {
+      return {
+        ...arkusz,
+        arkusz_szerokosc: row.arkusz_szerokosc,
+        arkusz_wysokosc: row.arkusz_wysokosc,
+        update: true
+
+      };
+    } else {
+      return arkusz;
+    }
+  })
+);
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
+
+    }}
+  >
+    Rozdaj format papieru ark.
+  </button>
+  )
+}
+
+
+
+
 
 const Anuluj = ( ) =>{
   const techContext = useContext(TechnologyContext)

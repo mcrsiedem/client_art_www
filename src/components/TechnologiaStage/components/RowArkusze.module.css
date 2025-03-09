@@ -47,7 +47,7 @@
   background-color: transparent;
  display: grid;
  flex-direction: column;
- grid-template-columns:   15px 35px 55px 70px 50px 100px 150px 150px 200px 200px 100px 50px 50px  50px  50px  50px 50px   ;
+ grid-template-columns:   15px 35px 55px 70px 50px 50px 50px 100px 300px 1fr 50px 50px 50px 50px 40px  ;
  gap:10px;
  margin-left: 55px;
  
@@ -61,9 +61,9 @@
   background-color: transparent;
  display: grid;
  flex-direction: column;
- grid-template-columns:   60px 70px 30px 50px 10px 150px 150px   50px  50px 50px   ;
+ grid-template-columns:   35px 55px 70px 50px 220px   ;
  gap:10px;
- margin-left:125px;
+ margin-left:80px;
  /* margin-bottom: 10px; */
  /* width: 100vw; */
 }
@@ -88,8 +88,8 @@
   /* border-radius: 5px; */
   border-color: transparent;
   /* outline: 1px dashed rgb(185, 185, 185); */
-  border-right: 1px solid rgb(143, 142, 142); ;
-  padding-left: 5px;
+  /* border-right: 1px solid rgb(143, 142, 142); ; */
+  padding-left: 15px;
   
 }
 
@@ -374,4 +374,46 @@ font-size: 0.9rem;
 }
 .alert2{
   background-color: none;
+}
+
+
+.papier_input_container{
+
+  position: relative;
+  /* min-width:  max-content; */
+  /* background-color: red; */
+ 
+}
+
+.select_papier_brak{
+  /* background-color: rgb(253, 199, 186); */
+  background-color: var(--art-input2);
+
+  height: 1.7rem;
+  min-width: 300px;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 35px;
+}
+.select_papier_brak > option {
+  background-color: whitesmoke;
+}
+
+.select_papier {
+  /* background-color: rgb(165, 243, 63); */
+  background-color: var(--art-input2);
+  height: 1.7rem;
+  min-width: 300px;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 35px;
+  
+  
+}
+.dodaj_klienta {
+  position: absolute;
+  top: 3px; left: 10px;
+  height: 20px;
 }

@@ -24,16 +24,9 @@ export default function RowTechElement({
 }) {
 
   const techContext = useContext(TechnologyContext);
-  const elementy = techContext.elementy;
-  const setElementy = techContext.setElementy;
-  const fragmenty = techContext.fragmenty;
-  const setFragmenty = techContext.setFragmenty;
   const arkusze = techContext.arkusze;
-  const fragmentyTech = techContext.fragmentyTech;
-  const setFragmentyTech = techContext.setFragmentyTech;
-  const setElementyTech = techContext.setElementyTech;
   const handleChangeCardFragmenty_i_Elementy_Tech =  techContext.handleChangeCardFragmenty_i_Elementy_Tech;
-  const elementyTech = techContext.elementyTech;
+
 
   const [showArkusze, setShowArkusze] = useState(true);
 
@@ -353,6 +346,9 @@ function PapierSelect2({
   const setShowPaperStage = modalcontext.setShowPaperStage;
   const setSelectedElementROW = modalcontext.setSelectedElementROW;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+   const techContext = useContext(TechnologyContext)
+      const arkusze = techContext.arkusze;
+      const setArkusze = techContext.setArkusze;
 
   return (
    <div className={style.papier_input_container}>
@@ -365,6 +361,24 @@ function PapierSelect2({
             papier_id: e.target.value,
             update: true
           });
+
+          setArkusze(
+            arkusze.map((arkusz) => {
+              if (arkusz.element_id === row.id) {
+                return {
+                  ...arkusz,
+                  papier_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return arkusz;
+              }
+            })
+          );
+
+
+          
         }}
       >
         {   <option value = "0"  >
@@ -586,6 +600,8 @@ function IloscLeg({ row }) {
 function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
   return (
 
     <input
@@ -602,6 +618,22 @@ function ArkuszSzerokosc({ row }) {
             update: true
           });
         }
+
+
+        // setArkusze(
+        //   arkusze.map((arkusz) => {
+        //     if (arkusz.element_id === row.id) {
+        //       return {
+        //         ...arkusz,
+        //         arkusz_szerokosc: e.target.value,
+        //         update: true
+      
+        //       };
+        //     } else {
+        //       return arkusz;
+        //     }
+        //   })
+        // );
       }}
     ></input>
   

@@ -1,21 +1,14 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-
-
+import { AppContext } from "context/AppContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import logoExpand from "assets/expand.svg";
 import iconTrash from "assets/trash2.svg"
 import icon from "assets/copy.svg";
-// import TypElementu from "./TypElementu";
-// import RodzajArkusza from "./RodzajArkusza";
-// import { reg_int } from "utils/initialvalue";
-// import UsunArkusz from "./UsunArkusz";
-// import DodajArkusz from "./DodajArkusz";
-// import Rozwin from "./Rozwin";
 import style from "./RowArkusze.module.css";
-import { reg_int, reg_txt } from "utils/initialvalue";
-// import NrArkusza from "./NrArkusza";
-
+import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
+import addIcon2 from "assets/addIcon2.svg"
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -27,31 +20,74 @@ export default function RowArkusze  ({ row,i })  {
     const setDragLegaId = techContext.setDragLegaId;
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
-    
-    
     const [showLegi, setShowLegi] = useState(false);
-  
     const setDropArkuszId = techContext.setDropArkuszId;
+  
+    return (
+      <>
+        <div className={style.main2}>
+      <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
+              onDragOver={handleDragOver}  key={row.id}>
+
+        <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
+        <NrArkusza row={row} i={i+1}/>
+        <TypElementu row={row} i={i+1}/>
+        <NakladArkusza row={row} />
+        <RodzajArkusza row={row} />
+         <td></td>
+         <td></td>
+         <td></td>
+        <PapierSelectArkusze row={row} />
+        <UwagiArkusz row={row} />
+        <ArkuszSzerokosc row={row} />
+        <ArkuszWysokosc row={row} />
+        <UsunArkusz row={row} />
+        <DodajArkusz row={row} />
+      </div>
+      </div>
+      {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
+        return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
+           <NrLegi row={l} />
+        <td className={style.input2}>lega</td>
+       
+        <NakladLegi row={l} />
+        <RodzajLegi row={l} />
+        {/* <td>{l.rodzaj_legi}</td> */}
+        <UwagiLegi row={l} />
+      </div>
+
+
+{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (lf,i) => {
+  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(lf.id)} className={style.row5} key={lf.id}>
+
+
+<td className={style.input3}>  </td>
+  <NakladFragment row={lf}/>
+  <td>{lf.ilosc_leg}</td>
+  <WersjaFragment row={lf}/>
+  <td>lega id{lf.lega_id}</td>
+</div>
+})}</>)}
+</> 
+      })
+      }
+      </>)}
+      </>
+    );
+
+
     function handleDragStart(id){
       //   e.preventDefault();
-  
       setDragLegaId(id)
      }
 
      function handleDragStartFragmnetLegi(id){
-      //   e.preventDefault();
       sessionStorage.setItem("id_fragment_legi_drag", id);
     sessionStorage.setItem("typ_drag", "fragmentlegi");
  
      }
    
     function handleDrop(id) {
-      // sprawdza czy upuszczamy właściwy obiekt
-      // if (sessionStorage.getItem("typ_drag") == "fragment") {
-      //   let id_drag_element = sessionStorage.getItem("id_element_drag");
-      //   let id_drop_oprawa = id;
-      //   handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
-      // }
       setLegi(
         legi.map((t, a) => {
         // console.log("oprawa id" +prev)
@@ -70,7 +106,6 @@ export default function RowArkusze  ({ row,i })  {
 
     setLegiFragmenty(
       legiFragmenty.map((t, a) => {
-      // console.log("oprawa id" +prev)
       if (t.lega_id === dragLegaId) {
         return {
           ...t,
@@ -83,97 +118,20 @@ export default function RowArkusze  ({ row,i })  {
       }
     })
   );
-
-
-
-
-      console.log("drop: "+id)
       setDropArkuszId(id)
     }
   
     function handleDragOver(e) {
       e.preventDefault();
     }
-  
-    return (
-      <>
-        <div className={style.main2}>
-      <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
-              onDragOver={handleDragOver}  key={row.id}>
-              
-{/*        
-        <div className={style.input2}>{row.indeks}</div> */}
-        {/* <td>{row.typ_elementu}</td> */}
-        <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
-        <NrArkusza row={row} i={i+1}/>
-        <TypElementu row={row} i={i+1}/>
-   
-        
-        {/* <div className={style.input_ark}>{row.naklad}</div> */}
-
-        <NakladArkusza row={row} />
-        <RodzajArkusza row={row} />
-   
-        <td>{row.ilosc_leg}</td>
-        <td>{row.uwagi}</td>
-        {/* <td>{row.element_id}</td> */}
-        {/* <td>arkusz id {row.id}</td> */}
-        <UsunArkusz row={row} />
-        <DodajArkusz row={row} />
-
-        {/* <SelectBoxArkusze row={row} /> */}
-      </div>
-      </div>
-      {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
-        return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
-  
-        {/* <td  >{i+1}</td> */}
-        <td className={style.input2}>lega {l.indeks}</td>
-   
-        
-        <NakladLegi row={l} />
-        {/* <td className={style.input2}>{l.naklad}</td> */}
-        <td>{l.ilosc_stron}</td>
-        {/* <td>{l.ilosc_leg}</td> */}
-        <UwagiLegi row={l} />
-  
-        {/* <td>{row.element_id}</td> */}
-        {/* <td>{row.ilosc_stron}</td> */}
-
-      </div>
 
 
-{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (lf,i) => {
-  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(lf.id)} className={style.row5} key={lf.id}>
 
-  {/* <td  >idfrag{l.id}</td>
-  <td>frag.idx {l.indeks}</td> */}
-<td className={style.input3}>  </td>
-  {/* <td className={style.input3}>{l.naklad}</td> */}
-  <NakladFragment row={lf}/>
-  
-  <td>{lf.ilosc_leg}</td>
-  <WersjaFragment row={lf}/>
-  <td>lega id{lf.lega_id}</td>
-  {/* <td>{row.element_id}</td> */}
-  {/* <td>{row.ilosc_stron}</td> */}
 
-</div>
-})}</>)}
-</> 
 
-      })
-      
-      }
-      
-      
-      {/* {showLegiFragmenty &&(<>     {legiFragmenty.filter(x=> x.lega_id == row.id).map( (l,i) => { */}
 
-      
-      </>)}
-  
-      </>
-    );
+
+
   };
 
   function WersjaFragment ({row,i}) {
@@ -348,19 +306,10 @@ export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-  
-
-  
-        // <div  className={style.input_ark}> arkusz {i}</div>
-
-
         <input
         className={style.input_ark_nr}
-        
-          // value={i}
           value={row.nr_arkusza}
           onChange={(e) =>
-
             {
               if (e.target.value === '' || reg_txt.test(e.target.value)) {
                 handleUpdateRowArkusze({
@@ -369,12 +318,53 @@ export default function RowArkusze  ({ row,i })  {
               update: true
             }
             )}}
-
           }
         ></input>
-
     );
   }
+  function ArkuszSzerokosc ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+        <input
+        className={style.input_ark_nr}
+        value={row.arkusz_szerokosc}
+          onChange={(e) =>
+            {
+              if (e.target.value === '' || reg_cena.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              arkusz_szerokosc: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
+
+  function ArkuszWysokosc ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+        <input
+        className={style.input_ark_nr}
+          value={row.arkusz_wysokosc}
+          onChange={(e) =>
+            {
+              if (e.target.value === '' || reg_cena.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              arkusz_wysokosc: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
+
+
   
   function RodzajArkusza ({row}) {
     const techContext = useContext(TechnologyContext)
@@ -398,6 +388,57 @@ export default function RowArkusze  ({ row,i })  {
           }
         ></input>
      
+    );
+  }
+  function PapierSelectArkusze({  row}) {
+    const appcontext = useContext(AppContext);
+    const listaPapierow = appcontext.listaPapierow;
+    const modalcontext = useContext(ModalInsertContext);
+    const setShowPaperStage = modalcontext.setShowPaperStage;
+    const setSelectedElementROW = modalcontext.setSelectedElementROW;
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+     const techContext = useContext(TechnologyContext)
+        const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+  
+    return (
+     <div className={style.papier_input_container}>
+        <select
+          className={row.papier_id =="0" ? style.select_papier_brak : style.select_papier }
+          value={row.papier_id}
+          onChange={(e) => {
+
+            handleUpdateRowArkusze({
+              ...row,
+              papier_id: e.target.value,
+              update: true
+            })
+            
+          }}
+        >
+          {   <option value = "0"  >
+             wybierz papier
+            </option>}
+       
+          {listaPapierow.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nazwa} {option.gramatura} g/m2 {option.wykonczenie}
+            </option>
+          ))}
+        </select>
+  <img
+         className={style.dodaj_klienta}
+          src={addIcon2}
+          onClick={() => {
+            setShowPaperStage(true)
+            setSelectedElementROW(row)
+            setListaPapierowWyszukiwarka(listaPapierow)
+         
+          }}
+          alt="Procesy"
+        />
+     </div>
+  
+   
     );
   }
 
@@ -444,7 +485,7 @@ export default function RowArkusze  ({ row,i })  {
         <input
         className={style.input_ark_typ}
         disabled
-          value={"ark id:  " + row.id}
+          value={"arkusz"}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
@@ -487,7 +528,31 @@ export default function RowArkusze  ({ row,i })  {
         ></input>
     );
   }
+  function NrLegi ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.nr_legi}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
 
+            {
+              if (e.target.value === '' || reg_txt.test(e.target.value)) {
+                handleUpdateRowLegi({
+              ...row,
+              nr_legi: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
   function NakladLegi ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
@@ -513,9 +578,60 @@ export default function RowArkusze  ({ row,i })  {
         ></input>
     );
   }
+  function RodzajLegi ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.rodzaj_legi}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
 
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowLegi({
+              ...row,
+              rodzaj_legi: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
 
   function UwagiLegi ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.uwagi}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_txt.test(e.target.value)) {
+                handleUpdateRowLegi({
+              ...row,
+              uwagi: e.target.value,
+              update: true
+            }
+            )}}
+          }
+        ></input>
+    );
+  }
+
+  function UwagiArkusz ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
     return (

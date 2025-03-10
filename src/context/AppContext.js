@@ -6,6 +6,7 @@ import { getBindingType } from "actions/getBindingType";
 import { getProductType } from "actions/getProductType";
 import { getProcesListName } from "actions/getProcesListName";
 import { getProcesory } from "actions/getProcesory";
+import { getNadkomplety } from "actions/getNadkomplety";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
@@ -18,6 +19,7 @@ export const AppContextProvider = ({children})=>{
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
+    const [nadkomplety, setNadkomplety] = useState();
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
     const [listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka] = useState();
@@ -51,12 +53,13 @@ export const AppContextProvider = ({children})=>{
 
     useEffect(()=>{
         getUsers(setUsers) 
-        getClients(setClients) 
+       
         getProcesList(setProcesList) // lista wszystkich dostępnych procesów
         getBindingType(setBindingTyp)
         getProductType(setProductType)
         getProcesListName(setProcesListName)
         getProcesory(setProcesory)
+       
 
     },[])
     
@@ -64,7 +67,7 @@ export const AppContextProvider = ({children})=>{
                 value={{
                   zamowienia, setZamowienia,
                     users,updateUsers,          // wszystcy uzytkownicy
-                    clients,updateClients,      // wszyscy klienci
+                    clients,updateClients,  setClients,    // wszyscy klienci
                     procesList, updateProcesList,     // lista wszystkich dostępnych proce
                     procesListName,
                     productType,
@@ -82,7 +85,7 @@ export const AppContextProvider = ({children})=>{
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
-                    mobile, setMobile
+                    mobile, setMobile,setNadkomplety
 
             
                 }}

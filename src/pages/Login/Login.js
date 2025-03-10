@@ -9,6 +9,8 @@ import iconLogo from "../../assets/logo_biale.svg";
 import { SocketContext } from "../../context/SocketContext";
 //  import background from "assets/logowanie_1.jpg" 
  import { AppContext } from "context/AppContext";
+import { getNadkomplety } from "actions/getNadkomplety";
+import { getClients } from "actions/getClients";
 export default function Login( ) {
 
   const [user,setUser] = useState(null);
@@ -16,6 +18,9 @@ export default function Login( ) {
   const [input, setInput] = useState({    login: "",    haslo: "",  });
   const context = useContext(SocketContext);
   const navigate = useNavigate();
+
+
+  
   //  const appcontext = useContext(AppContext);
   //       const setMobile = appcontext.setMobile;
 
@@ -75,6 +80,8 @@ if (res.data.length > 0) {
   sessionStorage.setItem("token", res.data); 
   setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
   navigate("/Panel");
+ 
+
 } else {
   console.log("Błąd");
 }

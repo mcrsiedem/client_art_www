@@ -62,6 +62,7 @@ function ProduktyTable2() {
       <div className={style.row1}>
         <Typ row={produktyTech[0]} />
         <Naklad row={produktyTech[0]} />
+        <Nadkomplet row={produktyTech[0]} />
         <Strony row={produktyTech[0]} />
         <FormatX row={produktyTech[0]} />
         <FormatY row={produktyTech[0]} />
@@ -293,6 +294,33 @@ function Strony({ row }) {
             });
           }
         }}
+
+      ></input>
+    </div>
+  );
+}
+function Nadkomplet({ row }) {
+  const contextApp = useContext(AppContext);
+  const contextTech = useContext(TechnologyContext);  
+  const updateRowProduktyTech = contextTech.updateRowProduktyTech;
+
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Nadkomplet </label>
+      <input
+      disabled
+        className={style.input}
+        // value={row?.ilosc_stron}
+        // onChange={(e) => {
+      
+        //   if (e.target.value === "" || reg_int.test(e.target.value)) {
+        //     updateRowProduktyTech({
+        //       ...row,
+        //       ilosc_stron: ifNoTextSetNull(e.target.value),
+        //       update: true
+        //     });
+        //   }
+        // }}
 
       ></input>
     </div>

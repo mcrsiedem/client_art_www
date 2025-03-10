@@ -18,18 +18,25 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
+import { getNadkomplety } from "actions/getNadkomplety";
+import { getClients } from "actions/getClients";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
   const isOnline = useOnlineStatus();
+  const appcontext = useContext(AppContext);
+  const setNadkomplety = appcontext.setNadkomplety;
+  const setClients = appcontext.setClients;
 
+  useEffect(() => {
+    // window.onbeforeunload = function () {
+    //   alert("STOP");
+    // };
+    
+    getNadkomplety(setNadkomplety)
+    getClients(setClients )
 
-//   useEffect(() => {
-//     window.onbeforeunload = function () {
-//       alert("STOP");
-//     };
-
-//   }, []);
+  }, []);
 
   const logout = () => {
     navigate("/Login");

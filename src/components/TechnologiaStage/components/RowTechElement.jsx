@@ -55,6 +55,7 @@ export default function RowTechElement({
           }
         />
         <Naklad row={row} />
+        <NadkompletElement row={row} />
         <Strony row={row} />
         <NettoX row={row} />
         <NettoY row={row} />
@@ -436,6 +437,28 @@ function Naklad({ row }) {
     ></input>
   );
 }
+
+function NadkompletElement({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  return (
+    <input
+    disabled
+      className={style.input}
+      // value={row.naklad}
+      // onChange={(e) => {
+      //   if (e.target.value === "" || reg_int.test(e.target.value)) {
+      //     handleUpdateRowElementyTech({
+      //       ...row,
+      //       naklad: ifNoTextSetNull(e.target.value),
+      //       update: true
+      //     });
+      //   }
+      // }}
+    ></input>
+  );
+}
+
 
 function Rozwin({ arkusze,row, showArkusze, setShowArkusze }) {
   if  (arkusze?.filter((x) => x.element_id == row.id).length !== 0){

@@ -1,3 +1,14 @@
+.row3{
+
+  background-color: transparent;
+ display: grid;
+ flex-direction: column;
+ grid-template-columns: 20px 40px 100px  70px 70px 50px 50px 50px 150px 1fr 1fr 1fr 50px 50px 50px  50px  15px  15px   ;
+ gap:10px;
+ margin-left: 0px;
+ 
+}
+
 .container {
   display: flex;
   align-items: start;
@@ -37,19 +48,7 @@
  gap:5px;
  /* width: 100vw; */
 }
-.row3{
-  /* padding: 5px 20px; */
-  /* margin-top: 20px; */
-  background-color: transparent;
- display: grid;
- flex-direction: column;
- grid-template-columns: 20px 40px 100px  70px 50px 50px 50px 100px 300px 1fr 2fr 50px 50px 50px 50px  15px  15px   ;
- gap:10px;
- margin-left: 0px;
- 
- /* margin-bottom: 10px; */
- /* width: 100vw; */
-}
+
 .select,
 .input {
   background-color: var(--art-input2);

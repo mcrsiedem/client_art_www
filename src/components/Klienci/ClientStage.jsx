@@ -22,7 +22,7 @@ export default function ClientStage({
 }) {
 
   async function getClients() {
-    const res = await axios.get(IP + "lista-klientow");
+    const res = await axios.get(IP + "lista-klientow/"+ sessionStorage.getItem("token"));
     setKlienci([...res.data]);
     setKlienciWyszukiwarka([...res.data]);
   }

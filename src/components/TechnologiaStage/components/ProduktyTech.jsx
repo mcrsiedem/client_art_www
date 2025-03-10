@@ -66,13 +66,15 @@ function ProduktyTable2() {
         <Strony row={produktyTech[0]} />
         <FormatX row={produktyTech[0]} />
         <FormatY row={produktyTech[0]} />
-        <Nazwa row={produktyTech[0]} />
         <RodzajOprawy row={produktyTech[0]} />
-        <Uwagi row={produktyTech[0]} />
+      
+        
         <OpisSzerokoscArkusza row={produktyTech[0]} />
         <OpisWysokoscArkusza row={produktyTech[0]} />
         <OpisRodzajLegi row={produktyTech[0]} />
         <OpisIloscLeg row={produktyTech[0]} />
+        <Nazwa row={produktyTech[0]} />
+        <Uwagi row={produktyTech[0]} />
       </div>
     </div>
   );

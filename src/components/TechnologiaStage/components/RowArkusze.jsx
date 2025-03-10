@@ -9,6 +9,7 @@ import icon from "assets/copy.svg";
 import style from "./RowArkusze.module.css";
 import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import addIcon2 from "assets/addIcon2.svg"
+import { findClosest } from "actions/findCosest";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -33,14 +34,17 @@ export default function RowArkusze  ({ row,i })  {
         <NrArkusza row={row} i={i+1}/>
         <TypElementu row={row} i={i+1}/>
         <NakladArkusza row={row} />
+        <NadkompletArkusz row={row} />
         <RodzajArkusza row={row} />
          <td></td>
          <td></td>
-         <td></td>
         <PapierSelectArkusze row={row} />
-        <UwagiArkusz row={row} />
+        
+       
         <ArkuszSzerokosc row={row} />
         <ArkuszWysokosc row={row} />
+        <td></td>
+        <UwagiArkusz row={row} />
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
       </div>
@@ -48,10 +52,13 @@ export default function RowArkusze  ({ row,i })  {
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
         return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
            <NrLegi row={l} />
-        <td className={style.input2}>lega</td>
-       
+        <TypLega row={l} />
         <NakladLegi row={l} />
+        <td></td>
+
         <RodzajLegi row={l} />
+        <td></td>
+        <td></td>
         {/* <td>{l.rodzaj_legi}</td> */}
         <UwagiLegi row={l} />
       </div>
@@ -62,11 +69,15 @@ export default function RowArkusze  ({ row,i })  {
 
 
 <td className={style.input3}>  </td>
-<td className={style.lega_fragment_text}> fragment</td>
+{/* <td className={style.lega_fragment_text}> fragment</td> */}
+  <TypFragment row={lf}/>
   <NakladFragment row={lf}/>
-  <td>{lf.ilosc_leg}</td>
+  
+  <td></td>
+  <td></td>
+
   <WersjaFragment row={lf}/>
- 
+ {/* <hr></hr> */}
 </div>
 })}</>)}
 </> 
@@ -503,10 +514,35 @@ export default function RowArkusze  ({ row,i })  {
     );
   }
 
+  function TypLega ({row,i}) {
+    return (
+
+        <input
+        className={style.input_ark_typ}
+        disabled
+          value={"lega"}
+        ></input>
+    );
+  }
+  function TypFragment ({row,i}) {
+    return (
+
+        <input
+        className={style.input_fragment_typ}
+        disabled
+          value={"fragment"}
+        ></input>
+    );
+  }
 
   function NakladArkusza ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+
+    const contextApp = useContext(AppContext);
+
+const nadkomplety = contextApp.nadkomplety;
+
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         <input
@@ -522,6 +558,36 @@ export default function RowArkusze  ({ row,i })  {
                 handleUpdateRowArkusze({
               ...row,
               naklad: e.target.value,
+               nadkomplet: findClosest(nadkomplety,e.target.value),
+              update: true
+            }
+            )}
+   
+          }
+          }
+        ></input>
+    );
+  }
+
+
+  function NadkompletArkusz ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+    return (
+        // <div  className={style.input_ark}> arkusz {i}</div>
+        <input
+        className={style.input_ark_typ}
+        // disabled
+        
+          defaultValue={row.nadkomplet}
+          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          onChange={(e) =>
+
+            {
+              if (e.target.value === '' || reg_int.test(e.target.value)) {
+                handleUpdateRowArkusze({
+              ...row,
+              nadkomplet: e.target.value,
               update: true
             }
             )}}
@@ -529,6 +595,7 @@ export default function RowArkusze  ({ row,i })  {
         ></input>
     );
   }
+
   function NrLegi ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
@@ -579,6 +646,7 @@ export default function RowArkusze  ({ row,i })  {
         ></input>
     );
   }
+
   function RodzajLegi ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;

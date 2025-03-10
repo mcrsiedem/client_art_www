@@ -86,7 +86,7 @@ const OprawaRow = ({ row }) => {
         onDrop={() => handleDrop(row.id)}
         onContextMenu={(e) => {
           e.preventDefault(); 
-           console.log("X: " +e.clientX +" Y: " +e.clientY);
+           console.log("X: " +e.clientX +" Y: " +e.clientY +" e:" );
           // setShowMenu(true)
         }}
       >

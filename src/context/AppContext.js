@@ -85,7 +85,7 @@ export const AppContextProvider = ({children})=>{
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
-                    mobile, setMobile,setNadkomplety
+                    mobile, setMobile,setNadkomplety,nadkomplety
 
             
                 }}

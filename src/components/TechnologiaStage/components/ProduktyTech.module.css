@@ -2,7 +2,7 @@
 
 .row1{
   display: grid;
-  grid-template-columns: 200px 70px  70px 50px 50px 50px 300px 1fr 1fr 50px 50px 50px 50px 25px;
+  grid-template-columns: 200px 70px  70px 50px 50px 50px 300px 50px 50px 50px 50px 100px 2fr 25px ;
   gap: 10px;
   background: transparent;
 }

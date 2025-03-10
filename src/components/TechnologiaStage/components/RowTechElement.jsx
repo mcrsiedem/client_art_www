@@ -59,37 +59,26 @@ export default function RowTechElement({
         <Strony row={row} />
         <NettoX row={row} />
         <NettoY row={row} />
-        <Nazwa row={row} />
         <PapierSelect2
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
-
         />
-        {/* <Gramatura
-          row={row}
-          handleChangeCardFragmenty_i_Elementy_Tech={
-            handleChangeCardFragmenty_i_Elementy_Tech
-          }
+         
 
-        /> */}
+        <ArkuszSzerokosc row={row} />
+        <ArkuszWysokosc row={row} />
+        <Lega row={row} />
+        <IloscLeg row={row} />
+        <Nazwa row={row} />
         <Uwagi row={row} />
-        {/* <PapierInfo
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        /> */}
-
         <Procesy
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
           setShowElementyProcesyInsert={setShowElementyProcesyInsert}
           procesyElementow={procesyElementow}
         />
-        <ArkuszSzerokosc row={row} />
-        <ArkuszWysokosc row={row} />
-        <Lega row={row} />
-        <IloscLeg row={row} />
         <MenuElementyBtn
           row={row}
         />

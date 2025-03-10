@@ -11,6 +11,7 @@ return nadkomplet
   }
 
 
+
 // console.log(arr[47])
 // console.log(arr.length)
 // console.log(arr[arr.length-1].naklad)

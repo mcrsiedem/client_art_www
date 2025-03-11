@@ -69,6 +69,7 @@ export function createArkuszeFromElemenets(
       arkusz_szerokosc: "",
       arkusz_wysokosc: "",
       papier_id: row.papier_id,
+      technologia_id: row.technologia_id,
       insert: true
     };
 
@@ -80,6 +81,7 @@ export function createArkuszeFromElemenets(
       naklad: row.naklad,
       uwagi: "",
       nr_legi: "",
+      technologia_id: row.technologia_id,
       insert: true
     };
 
@@ -138,7 +140,8 @@ export function createArkuszeFromElemenets(
       typ: l.typ_elementu,
       wersja: "",
       element_id: l.element_id,
-      arkusz_id: l.arkusz_id
+      arkusz_id: l.arkusz_id,
+      insert: true
     });
   });
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));

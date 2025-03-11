@@ -579,7 +579,7 @@ const nadkomplety = contextApp.nadkomplety;
         className={style.input_ark_typ}
         // disabled
         
-          defaultValue={row.nadkomplet}
+          value={row.nadkomplet}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 

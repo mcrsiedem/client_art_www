@@ -129,6 +129,9 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
             setWykonania,
             nadkomplety
           );
+
+      
+
           // setShowMenu(!showMenu);
           // dodaj_clikHandler();
           // console.log("z contextu :"+ token.rowSelected)

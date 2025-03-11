@@ -121,10 +121,38 @@ export function createArkuszeFromElemenets(
     
 
 
-
-
+//------------------ włączyć to jak nie będzie potrzeba tu automatycznie numerować arkuszy
     setArkusze(new_arkusze);
     setLegi(new_legi);
+
+
+//----------------- numerowanie arkuszy i leg
+    // let m = 0;
+    // setArkusze( new_arkusze
+    //     .map((ark,i) => {
+    //     if(ark.element_id == row.id){
+    //      m++;
+    //       return {...ark, nr_arkusza: m, update: true}
+    //     }else {return ark } 
+       
+    //     }
+    //   )
+    //   )
+    //   let n = 0;
+    //   setLegi( new_legi
+    //     .map((ark,i) => {
+    //     if(ark.element_id == row.id){
+    //     n++;
+    //       return {...ark, nr_legi: n, update: true}
+    //     }else {return ark } 
+       
+    //     }
+    //   )
+    //   )
+//----------------- numerowanie arkuszy i leg
+
+
+
 
   });
 
@@ -135,6 +163,7 @@ export function createArkuszeFromElemenets(
       indeks: MaxIndeks(new_legiFragmenty),
       // ...legaFragment,
       lega_id: l.id,
+      nr_legi: l.nr_legi,
       naklad: l.naklad,
       fragment_id: l.id,
       // oprawa_id: l.oprawa_id,oprawaTech

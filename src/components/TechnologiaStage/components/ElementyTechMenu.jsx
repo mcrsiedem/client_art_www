@@ -99,13 +99,15 @@ const Ponumeruj = ({ row}) =>{
   const setElementyTech = techContext.setElementyTech;
   const setArkusze = techContext.setArkusze;
   const arkusze = techContext.arkusze;
+  const legi = techContext.legi;
+  const setLegi = techContext.setLegi;
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
 
       // setNumerArkusza2(row)
-      ponumerArkusze(row,elementyTech,setArkusze,arkusze)
+      ponumerArkusze(row,setArkusze,arkusze,legi,setLegi)
       setElementyTech(elementyTech.map((t) => {
         return {...t,
           showMenu: false}

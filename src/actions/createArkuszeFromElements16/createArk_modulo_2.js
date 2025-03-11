@@ -8,7 +8,6 @@ export function createArk_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
 
 
 
-
 for (let i = 0; i < ilosc_arkuszy - 2; i++) {
   const maxid = getMaxID(new_arkusze);
   new_arkusze.push({

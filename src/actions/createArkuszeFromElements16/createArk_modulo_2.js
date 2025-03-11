@@ -57,7 +57,8 @@ new_arkusze.push({
   indeks: getMaxIndeks(new_arkusze),
   ...ark,
   rodzaj_arkusza: 16,
-  ilosc_leg: ilosc_leg_na_arkuszu
+  ilosc_leg: ilosc_leg_na_arkuszu,
+  nadkomplet: findNadkomplet(nadkomplety,ark.naklad) 
   
 });
 

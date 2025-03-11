@@ -313,40 +313,6 @@ if(elementyTech.length>1){
       }
 
 
-const setNumerArkusza = (row) => {
-
- let elementy=  elementyTech
-  .map((f) => f.id)
-
-console.log(elementy)
-
-  // setArkusze(prev => prev.map(e ))
-}
-
-const setNumerArkusza2 = (row) => {
-  // const arkuszeEdit = ar.slice();
-  // console.log(  elementyTech
-
-  elementyTech
-  .map((f) => f.id)
-  .forEach( (element,x) => {
-
-console.log(element)
-    setArkusze( prev=> prev
-      .map((ark,i) => {
-
-      if(ark.element_id == element){
-  
-        return {...ark, nr_arkusza: i}
-        
-      }else {return ark } 
-     
-      }
-    )
-    )
-  })
-
-}
 
 
 
@@ -651,7 +617,7 @@ async function fechTechnology() {
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
                     selectedGrupaTechROW,setSelectedGrupaTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,setNumerArkusza,
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,
                     updateRowProcesyElementowTech,
                     updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,
                     isSaveButtonDisabled, setSaveButtonDisabled,

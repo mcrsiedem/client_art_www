@@ -15,6 +15,12 @@ export default function Dane({
   showAddClientStage
 }) {
 
+
+
+
+
+
+  
   return (
     <>
       <div id="Dane" className={style.dane}>

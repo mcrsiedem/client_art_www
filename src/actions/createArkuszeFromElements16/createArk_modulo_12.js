@@ -1,9 +1,9 @@
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 
+import { findNadkomplet } from "actions/findNadkomplet";
 
-
-export function createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega) {
+export function createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
 
 
 
@@ -15,6 +15,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
     indeks: getMaxIndeks(new_arkusze),
     ...ark,
     ilosc_leg: ilosc_leg_na_arkuszu,
+    nadkomplet: findNadkomplet(nadkomplety,ark.naklad), 
   });
   for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     // do każdego ark dodaje odpowiednią ilość leg
@@ -34,7 +35,9 @@ new_arkusze.push({
   ...ark,
   rodzaj_arkusza: 4,
   ilosc_leg: lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu,
-  naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)
+  naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu),
+  nadkomplet: findNadkomplet(nadkomplety,ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)), 
+  
 });
 
 for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
@@ -44,7 +47,8 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     indeks: getMaxIndeks(new_legi),
     ...lega,
     arkusz_id: getMaxID(new_arkusze)-1,
-    naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)
+    naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu),
+    
   });
 }
 
@@ -56,7 +60,10 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     ...ark,
     rodzaj_arkusza: 8,
     ilosc_leg: lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu,
-    naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)
+    naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu),
+    nadkomplet: findNadkomplet(nadkomplety,ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)),
+   
+    
   });
 
   for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
@@ -76,7 +83,8 @@ id: getMaxID(new_arkusze),
 indeks: getMaxIndeks(new_arkusze),
 ...ark,
 rodzaj_arkusza: 16,
-ilosc_leg: ilosc_leg_na_arkuszu
+ilosc_leg: ilosc_leg_na_arkuszu,
+nadkomplet: findNadkomplet(nadkomplety,ark.naklad), 
 });
 
 for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {

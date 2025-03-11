@@ -14,6 +14,7 @@ import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { AppContext } from "context/AppContext";
 import MenuZamowienia from "./components/MenuZamowienia";
 import DecodeToken from "pages/Login/DecodeToken";
+import { getClients } from "actions/getClients";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -30,6 +31,8 @@ const listaPapierow = contextApp.listaPapierow;
 const setListaPapierow = contextApp.setListaPapierow;
 const listaPapierowNazwy = contextApp.listaPapierowNazwy;
 const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
+const setClients = contextApp.setClients;
+
 
 const contextModalInsert = useContext(ModalInsertContext);
 
@@ -61,6 +64,8 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
     setListaPapierow([...res3.data]);
     const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
     setListaPapierowNazwy([...res4.data]);
+         getClients(setClients )
+        
   }
 
   async function checkToken() {

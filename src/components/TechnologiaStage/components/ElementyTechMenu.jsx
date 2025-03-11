@@ -10,6 +10,7 @@ import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
 import { addNewElementTech } from "actions/ElementyTechEdit/addNewElementTech";
 import { addNewArkuszTech } from "actions/ElementyTechEdit/addNewArkuszTech";
+import { ponumerArkusze } from "actions/ponumerArkusze";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
@@ -93,15 +94,18 @@ export default function MenuElementyTech({ row }) {
 
 const Ponumeruj = ({ row}) =>{
   const techContext = useContext(TechnologyContext);
-  const setNumerArkusza = techContext.setNumerArkusza;
+
   const elementyTech = techContext.elementyTech;
   const setElementyTech = techContext.setElementyTech;
+  const setArkusze = techContext.setArkusze;
+  const arkusze = techContext.arkusze;
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
 
-      setNumerArkusza()
+      // setNumerArkusza2(row)
+      ponumerArkusze(row,elementyTech,setArkusze,arkusze)
       setElementyTech(elementyTech.map((t) => {
         return {...t,
           showMenu: false}

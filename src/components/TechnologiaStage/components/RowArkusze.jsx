@@ -9,7 +9,7 @@ import icon from "assets/copy.svg";
 import style from "./RowArkusze.module.css";
 import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import addIcon2 from "assets/addIcon2.svg"
-import { findClosest } from "actions/findCosest";
+import { findNadkomplet } from "actions/findNadkomplet";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -544,25 +544,21 @@ export default function RowArkusze  ({ row,i })  {
 const nadkomplety = contextApp.nadkomplety;
 
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
         <input
         className={style.input_ark_typ}
         // disabled
-        
           defaultValue={row.naklad}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
-
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
                 handleUpdateRowArkusze({
               ...row,
               naklad: e.target.value,
-               nadkomplet: findClosest(nadkomplety,e.target.value),
+               nadkomplet: findNadkomplet(nadkomplety,e.target.value),
               update: true
             }
             )}
-   
           }
           }
         ></input>
@@ -574,15 +570,11 @@ const nadkomplety = contextApp.nadkomplety;
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
         <input
         className={style.input_ark_typ}
-        // disabled
-        
           value={row.nadkomplet}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
-
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
                 handleUpdateRowArkusze({

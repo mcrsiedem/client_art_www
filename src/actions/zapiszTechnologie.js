@@ -40,8 +40,8 @@ let savedProcesyElementow = await saveProcesyElementow({procesyElementowTechEdit
 
 const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));
 
-
 setDaneTech(res.data[0][0]) 
+
 setProduktyTech(res.data[1])
 setElementyTech(res.data[2])
 setFragmentyTech(res.data[3])
@@ -60,7 +60,7 @@ setWykonania(res.data[10])
 }
 //----------------------------------------------------------------------------------
 const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}) =>{
-
+console.log("ddd:" +daneTech.klient_id )
   return new Promise(async(resolve,reject)=>{
 
   let res = await axios.post(IP + "zapiszTechnologie/" + sessionStorage.getItem("token"), [{

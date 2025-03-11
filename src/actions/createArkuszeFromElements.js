@@ -23,7 +23,7 @@ export function createArkuszeFromElemenets(
   fragmentyTech,
   setFragmentyTech,
   elementyTech,
-  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania
+  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
 ) {
 
 
@@ -61,6 +61,7 @@ export function createArkuszeFromElemenets(
       typ_elementu: row.typ,
       rodzaj_arkusza,
       naklad: row.naklad,
+      nadkomplet: "",
       element_id: row.id,
       ilosc_stron: row.ilosc_stron,
       uwagi: "",
@@ -86,35 +87,35 @@ export function createArkuszeFromElemenets(
 // if(rodzaj_legi == 16) {
   
   if (modulo == 0) {
-      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 2) {
-      createArk_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 4) {
-      createArk_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 6) {
-      createArk_modulo_6(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_6(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 8) {
-      createArk_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 10) {
-      createArk_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 12) {
-      createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 14) {
-      createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega)
+      createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 // }
     

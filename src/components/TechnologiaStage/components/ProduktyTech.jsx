@@ -98,6 +98,9 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
 
+ const contextApp = useContext(AppContext);
+ const nadkomplety = contextApp.nadkomplety;
+
   const elementyTech = techContext.elementyTech;
   return (
     <div className={style.menu_produkty}>
@@ -123,7 +126,8 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
             grupaWykonan,
             setGrupaWykonan,
             wykonania,
-            setWykonania
+            setWykonania,
+            nadkomplety
           );
           // setShowMenu(!showMenu);
           // dodaj_clikHandler();

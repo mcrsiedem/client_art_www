@@ -52,7 +52,7 @@ export default function Header({}) {
             console.log("Wykonania tech: ", techContext.wykonania);
             console.log("listaPapierow: ", appcontext.listaPapierow);
             console.log("lista wszystkich procesów appcontext.procesList: ", appcontext.procesList);
-            console.log("nadkomplety: ", appcontext.nadkomplety);
+            // console.log("nadkomplety: ", appcontext.nadkomplety);
             // fechparametryTechnologii(27)
 
             //  console.log("Teraz: "+ today_dodaj_minuty())

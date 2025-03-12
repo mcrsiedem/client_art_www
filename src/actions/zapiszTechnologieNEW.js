@@ -3,14 +3,42 @@ import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
-export async function NOWE_zapiszTechnologieUpdate({arkusze, setArkusze}){
+export async function zapiszTechnologieNEW({daneTech,arkusze,legi,legiFragmenty}){
 
 
 
-    // let savedDane  = await saveDane({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
-    let savedArkusze  = await saveArkusze({arkusze})
+     let savedDane  = await saveDane({daneTech})
+   
+    let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
+    let technologia_id = savedDane.data[0][1].technologia_id;  // nr id pod jakim zapisała sietechnologia
 
-    console.log("Status: ",savedArkusze)
+
+
+    if(zapis){
+      arkusze = arkusze.map((obj) => {return{...obj, technologia_id} })
+      legi = legi.map((obj) => {return{...obj, technologia_id} })
+      legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id} })
+      // produktyTechEdit = produktyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // elementyTechEdit = elementyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // fragmentyTechEdit = fragmentyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // oprawaTechEdit = oprawaTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // legiEdit = legiEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // legiFragmentyEdit = legiFragmentyEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // arkuszeEdit = arkuszeEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // grupaWykonanEdit = grupaWykonanEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // wykonaniaEdit = wykonaniaEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      // procesyElementowTechEdit = procesyElementowTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+
+    let savedArkusze  = await saveArkusze({arkusze,legi,legiFragmenty})
+      console.log(savedArkusze.data) // potwierdzenia zapisów ew. error
+
+
+
+
+
+    }else{
+      // cleaner()
+    }
     // setArkusze(savedArkusze.arkusze)
           //  setDaneZamowienia(savedDane.daneZamowienia)
           //  setProdukty(savedDane.produkty)
@@ -29,14 +57,45 @@ export async function NOWE_zapiszTechnologieUpdate({arkusze, setArkusze}){
 
 //----------------------------------------------------------------------------------
 
-const saveArkusze = ({arkusze}) =>{
+const saveDane = ({daneTech}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "arkusze/" + sessionStorage.getItem("token"),[arkusze])
+   let res = await axios.post(IP + "zapiszTechnologieInsertDane/" + sessionStorage.getItem("token"),[daneTech])
+resolve(res)
+  })
+}
+const saveArkusze = ({arkusze,legi,legiFragmenty}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieNEW/" + sessionStorage.getItem("token"),[arkusze,legi,legiFragmenty])
   
 resolve(res)
   })
 }
+// const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}) =>{
 
+//   return new Promise(async(resolve,reject)=>{
+//    let res = await axios.put(IP + "zapiszTechnologieUpdate/" + sessionStorage.getItem("token"),[ {
+//      id: daneTech.id,
+//     nr: daneTech.nr,
+//     rok: daneTech.rok,
+//     firma_id: daneTech.firma_id,
+//     klient_id: daneTech.klient_id,
+//     tytul: daneTech.tytul,
+//     uwagi: daneTech.uwagi,
+//     zamowienie_id: daneTech.zamowienie_id,
+//     opiekun_id: daneTech.opiekun_id,
+//     autor_id: daneTech.autor_id,
+//     data_przyjecia:daneTech.data_przyjecia,
+//     data_spedycji:daneTech.data_spedycji,
+//     data_materialow: daneTech.data_materialow,
+//     stan: daneTech.stan,
+//     status: daneTech.status,
+//     etap: daneTech.etap,
+//       user: DecodeToken(sessionStorage.getItem("token")).id,
+//       update: daneTech.update
+//     }, produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech])
+// resolve(res)
+//   })
+// }
 //----------------------------------------------------------------------------------
 
 // const saveArkusze = ({ arkusze }) => {

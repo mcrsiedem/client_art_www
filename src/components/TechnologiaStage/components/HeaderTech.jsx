@@ -15,7 +15,7 @@ import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
-import { NOWE_zapiszTechnologieUpdate } from "actions/NOWE_zapiszTechnologie_arkusze";
+import { zapiszTechnologieNEW } from "actions/zapiszTechnologieNEW";
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
   const appcontext = useContext(AppContext);
@@ -235,7 +235,7 @@ const ZapisBtnPromise = () => {
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
         console.log("zapisz prmise");
-        NOWE_zapiszTechnologieUpdate({arkusze,setArkusze})
+        zapiszTechnologieNEW({daneTech,arkusze,legi,legiFragmenty})
 
 
       }}

@@ -15,6 +15,7 @@ import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
+import { NOWE_zapiszTechnologieUpdate } from "actions/NOWE_zapiszTechnologie_arkusze";
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
   const appcontext = useContext(AppContext);
@@ -80,7 +81,7 @@ export default function Header({}) {
         >
           Clear
         </button>
-
+<ZapisBtnPromise />
         <ZapisBtn />
         <IconNavigate
           className={style.btn_x}
@@ -129,8 +130,7 @@ const ZapisBtn = () => {
         console.log("zapisz");
 
 if(daneTech.id == 1){
-                //  setSaveAs(false);
-     
+                   
                 zapiszTechnologie({
                   daneTech,
                   setDaneTech,
@@ -156,17 +156,11 @@ if(daneTech.id == 1){
                   setProcesyElementowTech
         
                 });
-        
-
-
-        // setSaveButtonDisabled(true);
-        }
+                }
 
 
         if(daneTech.id != 1){
-          //  setSaveAs(false);
-
-          zapiszTechnologieUpdate({
+             zapiszTechnologieUpdate({
             daneTech,
             setDaneTech,
             produktyTech,
@@ -191,27 +185,10 @@ if(daneTech.id == 1){
             setProcesyElementowTech
   
           });
-  
 
-
-  // setSaveButtonDisabled(true);
   }
 
 
-
-
-
-//         setDaneTech(res.data[0][0]) 
-// setProduktyTech(res.data[1])
-// setElementyTech(res.data[2])
-// setFragmentyTech(res.data[3])
-// setOprawaTech(res.data[4])
-// setProcesyElementowTech(res.data[5])
-// setLegi(res.data[6])
-// setLegiFragmenty(res.data[7])
-// setArkusze(res.data[8])
-// setGrupaWykonan(res.data[9])
-// setWykonania(res.data[10])
 
         
         // setSaveButtonDisabled(true);
@@ -221,6 +198,53 @@ if(daneTech.id == 1){
     </button>
   );
 };
+
+//----
+const ZapisBtnPromise = () => {
+  const techContext = useContext(TechnologyContext);
+  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+  const produktyTech = techContext.produktyTech;
+  const setProduktyTech = techContext.setProduktyTech;
+  const elementyTech = techContext.elementyTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const oprawaTech = techContext.oprawaTech;
+  const legi = techContext.legi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const arkusze = techContext.arkusze;
+  const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
+  const procesyElementowTech = techContext.procesyElementowTech;
+
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const setLegi = techContext.setLegi;
+  const setArkusze = techContext.setArkusze;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const setWykonania = techContext.setWykonania;
+  const setProcesyElementowTech = techContext.setProcesyElementowTech;
+
+  return (
+    <button
+      disabled={isSaveButtonDisabled}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      onClick={() => {
+        console.log("zapisz prmise");
+        NOWE_zapiszTechnologieUpdate({arkusze,setArkusze})
+
+
+      }}
+    >
+      Zapisz Promise
+    </button>
+  );
+};
+//----
 const LeftPane = ({ children }) => {
   return <div className={style.left}>{children}</div>;
 };

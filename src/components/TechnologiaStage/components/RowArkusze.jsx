@@ -234,27 +234,42 @@ export default function RowArkusze  ({ row,i })  {
 
 
     const handleRemoveArkusz = (indeks,id,arkusze,setArkusze,row) => {
-      // id = id elementu
-      if (arkusze.length !== 1) {
-        setArkusze(arkusze.filter((x) => x.indeks !== indeks));
-        setLegi(legi.filter((x) => x.arkusz_id !== row.id));
-        setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
 
-        // setFragmenty(fragmenty.filter((x) => x.element_id !== id));
-      }
+      // if (arkusze.length !== 1) {
+      //   setArkusze(arkusze.filter((x) => x.indeks !== indeks));
+      //   setLegi(legi.filter((x) => x.arkusz_id !== row.id));
+      //   setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
+
+      // }
     
+      // setArkusze((prev) =>
+      //   prev.map((t, a) => {
+      //     if (t.indeks > indeks) {
+      //       return {
+      //         ...t,
+      //         indeks: t.indeks--,
+      //       };
+      //     } else {
+      //       return t;
+      //     }
+      //   })
+      // );
       setArkusze((prev) =>
         prev.map((t, a) => {
-          if (t.indeks > indeks) {
+          if (t.id == row.id) {
             return {
               ...t,
-              indeks: t.indeks--,
+              id: null,
             };
           } else {
             return t;
           }
         })
       );
+
+
+
+
     };
 
     return (
@@ -283,17 +298,44 @@ export default function RowArkusze  ({ row,i })  {
       // id = id elementu
       const newArkusze = arkusze.slice();
   
-  
+      for (let step = 0; step < 100; step++) {
+
       newArkusze.push({
         id: Math.max(...newArkusze.map((f) => f.id)) + 1,
         indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+        technologia_id: row.technologia_id,
         typ_elementu: row.typ_elementu,
-        rodzaj_arkusza:row.rodzaj_arkusza,
-        naklad: row.naklad,
-        element_id: row.id,
+        rodzaj_arkusza: row.rodzaj_arkusza,
+        element_id: row.element_id,
         ilosc_stron: row.ilosc_stron,
+        ilosc_leg: row.ilosc_leg,
+        naklad: row.naklad,
+        nadkomplet: row.nadkomplet,
+        papier_id: row.papier_id,
+        nr_arkusza: row.nr_arkusza,
+        arkusz_szerokosc: row.arkusz_szerokosc,
+        arkusz_wysokosc: row.arkusz_wysokosc,
+        uwagi: row.uwagi,
         insert: true
+
+
+
+
+
+
+
+
+
       });
+
+
+
+
+      }
+
+
+
+
   
       setArkusze(newArkusze);
     };

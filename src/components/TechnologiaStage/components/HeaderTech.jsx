@@ -13,9 +13,9 @@ import { saveTechNew } from "actions/saveTechNew";
 import { today_teraz } from "actions/today_teraz";
 import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
-import { zapiszTechnologie } from "actions/zapiszTechnologie";
+// import { zapiszTechnologie } from "actions/stare_zapiszTechnologie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
-import { zapiszTechnologieNEW } from "actions/zapiszTechnologieNEW";
+import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import DecodeToken from "pages/Login/DecodeToken";
 
 export default function Header({}) {
@@ -84,7 +84,7 @@ export default function Header({}) {
           Clear
         </button>
 <ZapisBtnPromise />
-        <ZapisBtn />
+        {/* <ZapisBtn /> */}
         <IconNavigate
           className={style.btn_x}
           logo={IconClose}
@@ -250,11 +250,34 @@ const ZapisBtnPromise = () => {
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
 
-        
+
         if(daneTech.id == 1){
         console.log("zapis 1st ");
         daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
-        zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech})
+        zapiszTechnologie({
+          daneTech,
+          produktyTech,
+          elementyTech,
+          fragmentyTech,
+          oprawaTech,
+          arkusze,
+          legi,
+          legiFragmenty,
+          grupaWykonan,
+          wykonania,
+          procesyElementowTech,
+          setProduktyTech,
+          setDaneTech,
+          setElementyTech,
+          setFragmentyTech,
+          setOprawaTech,
+          setLegi,
+          setLegiFragmenty,
+          setArkusze,
+          setGrupaWykonan,
+          setWykonania,
+          setProcesyElementowTech
+        });
        
       }
 

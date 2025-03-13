@@ -259,7 +259,7 @@ export default function RowArkusze  ({ row,i })  {
           if (t.id == row.id) {
             return {
               ...t,
-              id: "ssss",
+              id: 6,
             };
           } else {
             return t;

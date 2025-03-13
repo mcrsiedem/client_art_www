@@ -4,14 +4,36 @@ import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
 export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,
-  procesyElementow}){
+  procesyElementow,setSaveButtonDisabled}){
 
 
-
+          let response = [];
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
-          let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
+          let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
+          let zamowienie_id = savedDane.data[0][1].zamowienie_id;  // nr id pod jakim zapisała sietechnologia
+          // let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
+
+          if(zapis){
+              produkty = produkty.map((obj) => {return{...obj, zamowienie_id} })
+              elementy = elementy.map((obj) => {return{...obj, zamowienie_id} })
+              fragmenty = fragmenty.map((obj) => {return{...obj, zamowienie_id} })
+              oprawa = oprawa.map((obj) => {return{...obj, zamowienie_id} })
+              procesyElementow = procesyElementow.map((obj) => {return{...obj, zamowienie_id} })
+
+         
+
+          let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow})
+
+          response.push(savedParametry.data)
+
+          if(isSavedCorrect(response).status) {
+            setSaveButtonDisabled(true)
+            alert("Zamowienie zapisana...")
+        
+          let res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
+        
 
           setDaneZamowienia(res.data[0][0])
           setProdukty(res.data[1])
@@ -19,24 +41,26 @@ export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkt
           setFragmenty(res.data[3])
           setOprawa(res.data[4])
           setProcesyElementow(res.data[5])
+
+
+           }
         
-          //  setDaneZamowienia(savedDane.daneZamowienia)
-          //  setProdukty(savedDane.produkty)
-          //  setElementy(savedDane.elementy)
-          //  setFragmenty(savedDane.fragmenty)
-          //  setOprawa(savedDane.oprawa)
-          //  setProcesyElementow(savedDane.procesyElementow)
+           }else{
+            alert(" Coś poszło nie tak." + isSavedCorrect(response).error.sqlMessage +"\n sql: "+isSavedCorrect(response).error.sql)
+            console.log("Uwaga : " ,isSavedCorrect(response).error.sqlMessage +" sql: ",isSavedCorrect(response).error.sql) ;
+           }
+
            
-          refreshZamowienia(setZamowienia);
+           refreshZamowienia(setZamowienia);
 
 }
 
 //----------------------------------------------------------------------------------
-const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow}) =>{
+const saveDane = ({daneZamowienia}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
-  let res = await axios.post(IP + "zapiszZamowienie/" + sessionStorage.getItem("token"),[ {
+  let res = await axios.post(IP + "zamowienieInsertDane/" + sessionStorage.getItem("token"),[ {
      
      nr: daneZamowienia.nr,
       rok: daneZamowienia.rok,
@@ -60,26 +84,35 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
       fsc: daneZamowienia.fsc
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow])
+    }])
     
-  // let zamowienie_id = res.data[1].id;
-  // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
 
-  daneZamowienia = res.data[0];
-  produkty = res.data[1];
-  elementy = res.data[2];
-  fragmenty = res.data[3];
-  oprawa = res.data[4];
-  procesyElementow = res.data[5];
-
-      resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,procesyElementow})
+      resolve(res)
 
   })
 }
 
+const saveParametry = ({produkty,elementy,fragmenty,oprawa,procesyElementow}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zamowienieInsertParametry/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow])
+resolve(res)
+  })
+}
 
+const isSavedCorrect = (response) =>{
 
+  // sprawdza wszystkie statusy z opowiedzi
+  // jeśli chociaż jednej jest false to cały zapis trzeba anulować 
 
+  for( let val of response){
+    for( let value of val){
+      if (value[0].zapis == false) return {status: false, error: value[1] }
+    }
+  }
+
+  return {status: true }
+  
+}
 //----------------------------------------------------------------------------------
 
 // const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs}) =>{

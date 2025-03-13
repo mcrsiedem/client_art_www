@@ -83,6 +83,7 @@ export default function Header({}) {
         >
           Clear
         </button>
+<SprawdzBTN />
 <ZapisBtnPromise />
         {/* <ZapisBtn /> */}
         <IconNavigate
@@ -95,113 +96,26 @@ export default function Header({}) {
   );
 }
 
-const ZapisBtn = () => {
+
+//----
+const SprawdzBTN = () => {
   const techContext = useContext(TechnologyContext);
   const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
   const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
 
-  const daneTech = techContext.daneTech;
-  const setDaneTech = techContext.setDaneTech;
-  const produktyTech = techContext.produktyTech;
-  const setProduktyTech = techContext.setProduktyTech;
-  const elementyTech = techContext.elementyTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const oprawaTech = techContext.oprawaTech;
-  const legi = techContext.legi;
-  const legiFragmenty = techContext.legiFragmenty;
-  const arkusze = techContext.arkusze;
-  const grupaWykonan = techContext.grupaWykonan;
-  const wykonania = techContext.wykonania;
-  const procesyElementowTech = techContext.procesyElementowTech;
-
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const setFragmentyTech = techContext.setFragmentyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const setOprawaTech = techContext.setOprawaTech;
-  const setLegi = techContext.setLegi;
-  const setArkusze = techContext.setArkusze;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const setWykonania = techContext.setWykonania;
-  const setProcesyElementowTech = techContext.setProcesyElementowTech;
-
   return (
     <button
-      disabled={isSaveButtonDisabled}
-      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      // disabled={isSaveButtonDisabled}
+      className={ style.btn}
       onClick={() => {
-        console.log("zapisz");
 
-if(daneTech.id == 1){
-                   
-                zapiszTechnologie({
-                  daneTech,
-                  setDaneTech,
-                  produktyTech,
-                  setProduktyTech,
-                  elementyTech,
-                  fragmentyTech,
-                  oprawaTech,
-                  legi,
-                  legiFragmenty,
-                  arkusze,
-                  grupaWykonan,
-                  wykonania,
-                  procesyElementowTech,
-                  setElementyTech,
-                  setFragmentyTech,
-                  setOprawaTech,
-                  setLegi,
-                  setLegiFragmenty,
-                  setArkusze,
-                  setGrupaWykonan,
-                  setWykonania,
-                  setProcesyElementowTech
-        
-                });
-                }
-
-
-        if(daneTech.id != 1){
-             zapiszTechnologieUpdate({
-            daneTech,
-            setDaneTech,
-            produktyTech,
-            setProduktyTech,
-            elementyTech,
-            fragmentyTech,
-            oprawaTech,
-            legi,
-            legiFragmenty,
-            arkusze,
-            grupaWykonan,
-            wykonania,
-            procesyElementowTech,
-            setElementyTech,
-            setFragmentyTech,
-            setOprawaTech,
-            setLegi,
-            setLegiFragmenty,
-            setArkusze,
-            setGrupaWykonan,
-            setWykonania,
-            setProcesyElementowTech
-  
-          });
-
-  }
-
-
-
-        
-        // setSaveButtonDisabled(true);
+        setSaveButtonDisabled(false)
       }}
     >
-      Zapisz
+      Sprawdź 
     </button>
   );
 };
-
-//----
 const ZapisBtnPromise = () => {
   const techContext = useContext(TechnologyContext);
   const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
@@ -232,17 +146,6 @@ const ZapisBtnPromise = () => {
   const setProcesyElementowTech = techContext.setProcesyElementowTech;
 
 
-  // let daneTechEdit = req.body[0]
-  // let produktyTechEdit = req.body[1]
-  // let elementyTechEdit = req.body[2]
-  // let fragmentyTechEdit = req.body[3]
-  // let oprawaTechEdit = req.body[4]
-  // let arkusze = req.body[5]
-  // let legi = req.body[6]
-  // let legiFragmenty= req.body[7]
-  // let grupaWykonanEdit = req.body[8]
-  // let wykonaniaEdit = req.body[9]
-  // let procesyElementowTechEdit = req.body[10]
 
   return (
     <button
@@ -276,7 +179,7 @@ const ZapisBtnPromise = () => {
           setArkusze,
           setGrupaWykonan,
           setWykonania,
-          setProcesyElementowTech
+          setProcesyElementowTech,setSaveButtonDisabled
         });
        
       }
@@ -307,7 +210,8 @@ const ZapisBtnPromise = () => {
          setArkusze,
          setGrupaWykonan,
          setWykonania,
-         setProcesyElementowTech
+         setProcesyElementowTech,
+         setSaveButtonDisabled
 
        });
 
@@ -318,7 +222,7 @@ const ZapisBtnPromise = () => {
 
       }}
     >
-      Zapisz Promise
+      Zapisz 
     </button>
   );
 };

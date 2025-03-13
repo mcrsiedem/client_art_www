@@ -170,12 +170,13 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
                 setOprawa,
                 setProcesyElementow,
                 procesyElementow,
-                setZamowienia
+                setZamowienia,
+                setSaveButtonDisabled
               });
         
 
 
-        setSaveButtonDisabled(true);
+        // setSaveButtonDisabled(true);
         }
  
         if(produkty[0].naklad != 0 && daneZamowienia.id != 1){

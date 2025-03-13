@@ -301,12 +301,13 @@ function Tytul( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+
 
 const contextTech = useContext(TechnologyContext);
 const contextApp = useContext(AppContext);
 const daneTech = contextTech.daneTech;
 const setDaneTech = contextTech.setDaneTech;
+const setSaveButtonDisabled = contextTech.setSaveButtonDisabled;
 
   return(
       <div className={style.col}>
@@ -319,7 +320,7 @@ const setDaneTech = contextTech.setDaneTech;
          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
           setDaneTech({...daneTech, tytul: event.target.value,update: true});
-        // setSaveButtonDisabled(false)
+         setSaveButtonDisabled(false)
      }
 
       }}></input>

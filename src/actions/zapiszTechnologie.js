@@ -12,7 +12,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
   setArkusze,
   setGrupaWykonan,
   setWykonania,
-  setProcesyElementowTech}){
+  setProcesyElementowTech,setSaveButtonDisabled}){
 
     let response = [];
     let savedDane  = await saveDane({daneTech})
@@ -57,6 +57,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
 
    
    if(isSavedCorrect(response).status) {
+    setSaveButtonDisabled(true)
     alert("Technologia zapisana...")
 
 

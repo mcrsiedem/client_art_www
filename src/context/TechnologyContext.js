@@ -8,7 +8,7 @@ import { useEffect,createContext,useState, useCallback } from "react";import { i
 
 export const TechnologyContext = createContext();
 export const TechnologyContextProvider = ({children})=>{
-     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(false);
+     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
     const [technology, setTechnology] = useState(null); //lista technologii 
     const [showTechnologyStage, setShowTechnologyStage] = useState(false);
 

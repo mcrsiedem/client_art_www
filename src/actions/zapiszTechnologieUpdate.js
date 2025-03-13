@@ -10,12 +10,12 @@ export async function zapiszTechnologieUpdate({daneTech,setDaneTech,produktyTech
   setLegiFragmenty,
   setArkusze,
   setGrupaWykonan,
-  setWykonania,setProcesyElementowTech}){
+  setWykonania,setProcesyElementowTech,setSaveButtonDisabled}){
 
 
 
           let savedDane  = await saveDane({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
-
+          setSaveButtonDisabled(true)
           //  setDaneZamowienia(savedDane.daneZamowienia)
           //  setProdukty(savedDane.produkty)
           //  setElementy(savedDane.elementy)
@@ -24,7 +24,7 @@ export async function zapiszTechnologieUpdate({daneTech,setDaneTech,produktyTech
           //  setProcesyElementow(savedDane.procesyElementow)
            
           // refreshZamowienia(setZamowienia);
-          alert(savedDane.data.sqlMessage + "\n \n " +savedDane.data.sql)
+          // alert(savedDane.data.sqlMessage + "\n \n " +savedDane.data.sql)
           console.log(savedDane)
           //sqlMessage: "Unknown column 'id1' in 'field list'", sql:
           

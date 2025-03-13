@@ -3,58 +3,67 @@ import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
-export async function zapiszTechnologieNEW({daneTech,arkusze,legi,legiFragmenty}){
+export async function zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech}){
 
-
-
-     let savedDane  = await saveDane({daneTech})
+    let savedDane  = await saveDane({daneTech})
    
     let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
     let technologia_id = savedDane.data[0][1].technologia_id;  // nr id pod jakim zapisała sietechnologia
-
-
-
+    // console.log(savedDane.data) // potwierdzenia zapisów ew. error
     if(zapis){
+
+      produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id} })
+      elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id} })
+      fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id} })
+      oprawaTech = oprawaTech.map((obj) => {return{...obj, technologia_id} })
       arkusze = arkusze.map((obj) => {return{...obj, technologia_id} })
       legi = legi.map((obj) => {return{...obj, technologia_id} })
       legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id} })
-      // produktyTechEdit = produktyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // elementyTechEdit = elementyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // fragmentyTechEdit = fragmentyTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // oprawaTechEdit = oprawaTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // legiEdit = legiEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // legiFragmentyEdit = legiFragmentyEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // arkuszeEdit = arkuszeEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // grupaWykonanEdit = grupaWykonanEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // wykonaniaEdit = wykonaniaEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
-      // procesyElementowTechEdit = procesyElementowTechEdit.map((obj) => {return{...obj, technologia_id:result.insertId} })
+      grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id} })
+      wykonania = wykonania.map((obj) => {return{...obj, technologia_id} })
+      procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id} })
 
-    let savedArkusze  = await saveArkusze({arkusze,legi,legiFragmenty})
-      console.log(savedArkusze.data) // potwierdzenia zapisów ew. error
+    let savedProdukty  = await saveProdukty({produktyTech})
+    let savedElementy = await saveElementy({elementyTech})
+    let savedFragmenty = await saveFragmenty({fragmentyTech})
+    let savedOprawa = await saveOprawa({oprawaTech})
+    let savedArkusze  = await saveArkusze({arkusze})
+    let savedLegi  = await saveLegi({legi})
+    let savedLegiFragmenty  = await saveLegiFragmenty({legiFragmenty})
+    let savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
+    let savedWykonania = await saveWykonania({wykonania})
+    let savedProcesyElementow = await saveProcesyElementow({procesyElementowTech})
+
+      // console.log(savedDane.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedProdukty.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedElementy.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedFragmenty.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedOprawa.data[0][0]) // potwierdzenia zapisów ew. error
+      console.log(savedArkusze.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedLegi.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedLegiFragmenty.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedGrupaWykonan.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedWykonania.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedProcesyElementow.data[0][0]) // potwierdzenia zapisów ew. error
 
 
-
-
-
+      // const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));
+      // setDaneTech(res.data[0][0]) 
+      // setProduktyTech(res.data[1])
+      // setElementyTech(res.data[2])
+      // setFragmentyTech(res.data[3])
+      // setOprawaTech(res.data[4])
+      // setProcesyElementowTech(res.data[5])
+      // setLegi(res.data[6])
+      // setLegiFragmenty(res.data[7])
+      // setArkusze(res.data[8])
+      // setGrupaWykonan(res.data[9])
+      // setWykonania(res.data[10])
     }else{
+      alert(" "+savedDane.data[0][1].sqlMessage+ "\n" +savedDane.data[0][1].sql)
       // cleaner()
     }
-    // setArkusze(savedArkusze.arkusze)
-          //  setDaneZamowienia(savedDane.daneZamowienia)
-          //  setProdukty(savedDane.produkty)
-          //  setElementy(savedDane.elementy)
-          //  setFragmenty(savedDane.fragmenty)
-          //  setOprawa(savedDane.oprawa)
-          //  setProcesyElementow(savedDane.procesyElementow)
-           
-          // refreshZamowienia(setZamowienia);
-          // alert(savedDane.data.sqlMessage + "\n \n " +savedDane.data.sql)
-          // console.log(savedDane)
-          //sqlMessage: "Unknown column 'id1' in 'field list'", sql:
-          
-          // savedDane .catch( err => console.log(err))
 }
-
 //----------------------------------------------------------------------------------
 
 const saveDane = ({daneTech}) =>{
@@ -63,13 +72,75 @@ const saveDane = ({daneTech}) =>{
 resolve(res)
   })
 }
-const saveArkusze = ({arkusze,legi,legiFragmenty}) =>{
+
+const saveProdukty = ({produktyTech}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "zapiszTechnologieNEW/" + sessionStorage.getItem("token"),[arkusze,legi,legiFragmenty])
-  
+   let res = await axios.post(IP + "zapiszTechnologieInsertProdukty/" + sessionStorage.getItem("token"),[produktyTech])
 resolve(res)
   })
 }
+
+const saveElementy = ({elementyTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertElementy/" + sessionStorage.getItem("token"),[elementyTech])
+resolve(res)
+  })
+}
+
+const saveFragmenty = ({fragmentyTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertFragmenty/" + sessionStorage.getItem("token"),[fragmentyTech])
+resolve(res)
+  })
+}
+
+const saveOprawa = ({oprawaTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertOprawa/" + sessionStorage.getItem("token"),[oprawaTech])
+resolve(res)
+  })
+}
+const saveArkusze = ({arkusze}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertArkusze/" + sessionStorage.getItem("token"),[arkusze])
+resolve(res)
+  })
+}
+const saveLegi = ({legi}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertLegi/" + sessionStorage.getItem("token"),[legi])
+resolve(res)
+  })
+}
+
+const saveLegiFragmenty = ({legiFragmenty}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertLegiFragmenty/" + sessionStorage.getItem("token"),[legiFragmenty])
+resolve(res)
+  })
+}
+
+const saveGrupaWykonan = ({grupaWykonan}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupy/" + sessionStorage.getItem("token"),[grupaWykonan])
+resolve(res)
+  })
+}
+const saveWykonania = ({wykonania}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertWykonania/" + sessionStorage.getItem("token"),[wykonania])
+resolve(res)
+  })
+}
+
+const saveProcesyElementow = ({procesyElementowTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertProcesyElementow/" + sessionStorage.getItem("token"),[procesyElementowTech])
+resolve(res)
+  })
+}
+
+
 // const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech}) =>{
 
 //   return new Promise(async(resolve,reject)=>{

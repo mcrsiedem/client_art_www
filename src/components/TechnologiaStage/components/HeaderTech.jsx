@@ -16,6 +16,8 @@ import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 import { zapiszTechnologieNEW } from "actions/zapiszTechnologieNEW";
+import DecodeToken from "pages/Login/DecodeToken";
+
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
   const appcontext = useContext(AppContext);
@@ -229,13 +231,27 @@ const ZapisBtnPromise = () => {
   const setWykonania = techContext.setWykonania;
   const setProcesyElementowTech = techContext.setProcesyElementowTech;
 
+
+  // let daneTechEdit = req.body[0]
+  // let produktyTechEdit = req.body[1]
+  // let elementyTechEdit = req.body[2]
+  // let fragmentyTechEdit = req.body[3]
+  // let oprawaTechEdit = req.body[4]
+  // let arkusze = req.body[5]
+  // let legi = req.body[6]
+  // let legiFragmenty= req.body[7]
+  // let grupaWykonanEdit = req.body[8]
+  // let wykonaniaEdit = req.body[9]
+  // let procesyElementowTechEdit = req.body[10]
+
   return (
     <button
       disabled={isSaveButtonDisabled}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
         console.log("zapisz prmise");
-        zapiszTechnologieNEW({daneTech,arkusze,legi,legiFragmenty})
+        daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id
+        zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech})
 
 
       }}

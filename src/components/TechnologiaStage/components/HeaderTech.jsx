@@ -249,12 +249,13 @@ const ZapisBtnPromise = () => {
       disabled={isSaveButtonDisabled}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
-   console.log("zapis 1st ");
+
+        
+        if(daneTech.id == 1){
+        console.log("zapis 1st ");
         daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
         zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech})
        
-        if(daneTech.id == 1){
-     
       }
 
 

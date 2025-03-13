@@ -5,13 +5,13 @@ import { refreshZamowienia } from "./refreshZamowienia";
 
 export async function zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech}){
 
+    let response = [];
     let savedDane  = await saveDane({daneTech})
    
     let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
     let technologia_id = savedDane.data[0][1].technologia_id;  // nr id pod jakim zapisała sietechnologia
-    // console.log(savedDane.data) // potwierdzenia zapisów ew. error
-    if(zapis){
 
+    if(zapis){
       produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id} })
       elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id} })
       fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id} })
@@ -34,19 +34,25 @@ export async function zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,f
     let savedWykonania = await saveWykonania({wykonania})
     let savedProcesyElementow = await saveProcesyElementow({procesyElementowTech})
 
-      // console.log(savedDane.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedProdukty.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedElementy.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedFragmenty.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedOprawa.data ) // potwierdzenia zapisów ew. error
-      console.log(savedArkusze.data) // potwierdzenia zapisów ew. error
-      // console.log(savedLegi.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedLegiFragmenty.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedGrupaWykonan.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedWykonania.data ) // potwierdzenia zapisów ew. error
-      // console.log(savedProcesyElementow.data ) // potwierdzenia zapisów ew. error
+    response.push(savedProdukty.data)
+    response.push(savedElementy.data)
+    response.push(savedFragmenty.data)
+    response.push(savedOprawa.data)
+    response.push(savedArkusze.data)
+    response.push(savedLegi.data)
+    response.push(savedLegiFragmenty.data)
+    response.push(savedGrupaWykonan.data)
+    response.push(savedGrupaWykonan.data)
+    response.push(savedWykonania.data)
+    response.push(savedProcesyElementow.data)
 
-
+   console.log("Czy zapisało się poprawnie : " +isSavedCorrect(response)) ;
+   if(isSavedCorrect(response)) {
+    alert("Technologia zapisana...")
+   }else{
+    alert(" Coś poszło nie tak.")
+   }
+   
       // const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));
       // setDaneTech(res.data[0][0]) 
       // setProduktyTech(res.data[1])
@@ -63,6 +69,21 @@ export async function zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,f
       alert(" "+savedDane.data[0][1].sqlMessage+ "\n" +savedDane.data[0][1].sql)
       // cleaner()
     }
+}
+//---------------------------------------------------------------------------------
+const isSavedCorrect = (response) =>{
+
+  // sprawdza wszystkie statusy z opowiedzi
+  // jeśli chociaż jednej jest false to cały zapis trzeba anulować 
+
+  for( let val of response){
+    for( let value of val){
+      if (value[0].zapis == false) return false
+    }
+  }
+
+  return true;
+  
 }
 //----------------------------------------------------------------------------------
 

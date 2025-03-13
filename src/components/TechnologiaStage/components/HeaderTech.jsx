@@ -249,9 +249,47 @@ const ZapisBtnPromise = () => {
       disabled={isSaveButtonDisabled}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
-        console.log("zapisz prmise");
-        daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id
+   console.log("zapis 1st ");
+        daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
         zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,arkusze,legi,legiFragmenty,grupaWykonan,wykonania,procesyElementowTech})
+       
+        if(daneTech.id == 1){
+     
+      }
+
+
+
+
+        if(daneTech.id != 1){
+          zapiszTechnologieUpdate({
+         daneTech,
+         setDaneTech,
+         produktyTech,
+         setProduktyTech,
+         elementyTech,
+         fragmentyTech,
+         oprawaTech,
+         legi,
+         legiFragmenty,
+         arkusze,
+         grupaWykonan,
+         wykonania,
+         procesyElementowTech,
+         setElementyTech,
+         setFragmentyTech,
+         setOprawaTech,
+         setLegi,
+         setLegiFragmenty,
+         setArkusze,
+         setGrupaWykonan,
+         setWykonania,
+         setProcesyElementowTech
+
+       });
+
+}
+       
+        
 
 
       }}

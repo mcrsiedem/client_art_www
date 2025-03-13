@@ -34,17 +34,17 @@ export async function zapiszTechnologieNEW({daneTech,produktyTech,elementyTech,f
     let savedWykonania = await saveWykonania({wykonania})
     let savedProcesyElementow = await saveProcesyElementow({procesyElementowTech})
 
-      // console.log(savedDane.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedProdukty.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedElementy.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedFragmenty.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedOprawa.data[0][0]) // potwierdzenia zapisów ew. error
-      console.log(savedArkusze.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedLegi.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedLegiFragmenty.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedGrupaWykonan.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedWykonania.data[0][0]) // potwierdzenia zapisów ew. error
-      // console.log(savedProcesyElementow.data[0][0]) // potwierdzenia zapisów ew. error
+      // console.log(savedDane.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedProdukty.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedElementy.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedFragmenty.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedOprawa.data ) // potwierdzenia zapisów ew. error
+      console.log(savedArkusze.data) // potwierdzenia zapisów ew. error
+      // console.log(savedLegi.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedLegiFragmenty.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedGrupaWykonan.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedWykonania.data ) // potwierdzenia zapisów ew. error
+      // console.log(savedProcesyElementow.data ) // potwierdzenia zapisów ew. error
 
 
       // const res = await axios.get(IP + "technologie_parametry/"+daneTechEdit.id+"/"+ sessionStorage.getItem("token"));

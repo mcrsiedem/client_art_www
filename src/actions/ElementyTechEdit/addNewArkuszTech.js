@@ -67,6 +67,7 @@ legiFragmenty.push({
   id: getMaxID(legiFragmenty),
   indeks: getMaxIndeks(legiFragmenty),
   wersja:"",
+  nr_legi: "",
   element_id: row.id,
   lega_id: lega_id,
   naklad: row.naklad,

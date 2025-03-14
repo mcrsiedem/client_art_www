@@ -47,8 +47,13 @@ export default function TechnologieView({ user, setUser }) {
     });
   }
 
+  const test = () =>{
+    console.log("test")
+   }
+
   useEffect(() => {
     checkToken();
+    test()
 
   }, []);
 

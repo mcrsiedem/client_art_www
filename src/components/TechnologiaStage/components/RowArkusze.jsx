@@ -153,7 +153,7 @@ export default function RowArkusze  ({ row,i })  {
         // <div  className={style.input_ark}> arkusz {i}</div>
         
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.wersja}
@@ -180,7 +180,7 @@ export default function RowArkusze  ({ row,i })  {
         // <div  className={style.input_ark}> arkusz {i}</div>
         
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.naklad}
@@ -561,7 +561,7 @@ export default function RowArkusze  ({ row,i })  {
     return (
 
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         disabled
           value={"lega"}
         ></input>
@@ -571,7 +571,7 @@ export default function RowArkusze  ({ row,i })  {
     return (
 
         <input
-        className={style.input_fragment_typ}
+        className={style.input_legi}
         disabled
           value={"fragment"}
         ></input>
@@ -639,7 +639,7 @@ const nadkomplety = contextApp.nadkomplety;
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.nr_legi}
@@ -682,7 +682,7 @@ const nadkomplety = contextApp.nadkomplety;
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.naklad}
@@ -708,7 +708,7 @@ const nadkomplety = contextApp.nadkomplety;
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.rodzaj_legi}
@@ -735,7 +735,7 @@ const nadkomplety = contextApp.nadkomplety;
         // <div  className={style.input_ark}> arkusz {i}</div>
         
         <input
-        className={style.input_ark_typ}
+        className={style.input_legi}
         // disabled
         
           defaultValue={row.uwagi}

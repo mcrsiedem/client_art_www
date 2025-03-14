@@ -11,6 +11,9 @@ import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProc
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
 import ProcesViewRow from "./ProcesViewRow";
+import { getClients } from "actions/getClients";
+import { getPapiery } from "actions/getPapiery";
+import { getPapieryNazwy } from "actions/getPapieryNazwy";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -21,9 +24,11 @@ export default function ProcesyView( ) {
   const appContext = useContext(AppContext)
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
+  const setClients = appContext.setClients
 
-
-
+  const setListaPapierow =appContext.setListaPapierow;
+  const setNadkomplety =appContext.setNadkomplety;
+  const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -46,6 +51,16 @@ export default function ProcesyView( ) {
                 }
               })
           );
+
+            getClients(setClients)
+            getPapiery(setListaPapierow)
+            getPapieryNazwy(setListaPapierowNazwy)
+        
+
+
+
+
+
         } else {
           navigate("/Login");
         }

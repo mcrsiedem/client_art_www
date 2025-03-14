@@ -15,6 +15,8 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
+import { getPapiery } from "actions/getPapiery";
+import { getPapieryNazwy } from "actions/getPapieryNazwy";
 
 
 export default function TechnologieView({ user, setUser }) {
@@ -52,12 +54,14 @@ export default function TechnologieView({ user, setUser }) {
 
   const start = async() => {
     // getTechnology(setTechnology)
-    const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res3.data]);
-    const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-    setListaPapierowNazwy([...res4.data]);
-     getClients(setClients )
-    getNadkomplety(setNadkomplety)
+    // const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
+    // setListaPapierow([...res3.data]);
+    // const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
+    // setListaPapierowNazwy([...res4.data]);
+      getPapiery(setListaPapierow)
+      getPapieryNazwy(setListaPapierowNazwy)
+      getClients(setClients )
+      getNadkomplety(setNadkomplety)
 
   }
 

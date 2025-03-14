@@ -55,7 +55,9 @@ function ProcesyHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
-          <PrzerwaBTN />
+        <PrzerwaBTN />
+        <PokazStany />
+
         </div>
         <div className={style.rightHeaderContener}>
      
@@ -212,3 +214,24 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       </select>
     </div>
   );}
+
+
+  function PokazStany({  }) {
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll
+    return (
+      <button
+        onClick={async () => {
+          console.clear()
+          console.log("Prces Viev: ")
+          console.log("GrupyAll : ",grupyWykonanAll)
+
+  
+        }}
+        className={ style.btn}
+      >
+        Stany...
+      </button>
+    );
+  }
+  

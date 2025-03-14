@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./ProcesyHeader.module.css";
-
+import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import iconWC from "assets/wc.svg";
@@ -55,8 +55,8 @@ function ProcesyHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
-        <PrzerwaBTN />
         <PokazStany />
+        <PrzerwaBTN />
 
         </div>
         <div className={style.rightHeaderContener}>
@@ -216,7 +216,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
   );}
 
 
-  function PokazStany({  }) {
+  function PokazStany2({  }) {
     const techContext = useContext(TechnologyContext);
     const grupyWykonanAll = techContext.grupyWykonanAll
     return (
@@ -234,4 +234,26 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       </button>
     );
   }
+
+  const PokazStany = () => {
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll
+    return (
+      <div className={style.menu_produkty}>
+        <img
+          className={style.iconMenuBtn}
+          src={Logo_ustawienia2}
+          title="Auto wszystkie arkusze + legi"
+          onClick={() => {
+
+            console.clear()
+            console.log("Prces Viev: ")
+            console.log("GrupyAll : ",grupyWykonanAll)
+
+          }}
+          alt="x"
+        />
+      </div>
+    );
+  };
   

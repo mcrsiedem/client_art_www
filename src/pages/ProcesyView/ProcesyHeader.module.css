@@ -113,3 +113,16 @@
 .procesy_input:focus{
 outline: none;
 }
+
+
+.iconMenuBtn{
+    width: 25px;
+  
+  }
+  .iconMenuBtn:hover{
+  scale: 125%
+    
+  }
+  .iconMenuBtn:active{
+    rotate: 65deg;
+  }

@@ -174,7 +174,7 @@ function Grupa({ row }) {
           value={row.grupa_id}
           onChange={(e) => {
             setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
+              listaPapierowWyszukiwarka?.map((t, a) => {
               if (t.id == row.id) {
                 return {
                   ...t,

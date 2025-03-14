@@ -345,7 +345,7 @@ function Nazwa2({ row }) {
           value={row.nazwa}
           onChange={(e) => {
             setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
+              listaPapierowWyszukiwarka?.map((t, a) => {
               // console.log("oprawa id" +prev)
               if (t.id == row.id) {
                 return {

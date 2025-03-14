@@ -10,6 +10,7 @@ import { createArk_modulo_10 } from "./createArkuszeFromElements16/createArk_mod
 import { createArk_modulo_12 } from "./createArkuszeFromElements16/createArk_modulo_12";
 import { createArk_modulo_14 } from "./createArkuszeFromElements16/createArk_modulo_14";
 import { getMaxIndeks } from "./getMaxIndeks";
+import { getMaxID } from "./getMaxID";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -147,10 +148,10 @@ export function createArkuszeFromElemenets(
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
 
   procesy.map((proc,i)=> {
-    if(proc.nazwa_id==1){  // druk
-
+    if(proc.arkusz==1){ 
+let grupa_id = MaxID(new_grupy)
       new_grupy.push({
-        id: proc.id,
+        id: grupa_id,
         global_id:0,
         indeks: i + 1,
         element_id: proc.element_id,
@@ -183,7 +184,7 @@ export function createArkuszeFromElemenets(
           czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10),
           koniec: "2024-10-30 11:00:00",
           procesor_id:proc.procesor_domyslny,
-          grupa_id:proc.id,
+          grupa_id:grupa_id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad,
@@ -195,18 +196,13 @@ export function createArkuszeFromElemenets(
       })
 
   new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
-  // console.log("czas:" , new_wykonania.filter(x=> x.grupa_id == 267).map(x => x.czas).reduce((a, b) => a + b, 0))
-  // console.log("czas:" , new_wykonania.filter(x=> x.grupa_id == 267).map(x => x.czas).reduce((a, b) => a + b, 0))
-      // new_grupa.map( ng => ng.czas+
-      //   new_wykonania.filter(x=> x.grupa_id == ng.id).czas
-      // )
 
-      // new_wykonania.forEach( nw => )
     }
 
-    if(proc.nazwa_id==3){ // falcowanie
+    if(proc.lega==1){ 
+      let grupa_id = MaxID(new_grupy)
       new_grupy.push({
-        id: proc.id,
+        id: grupa_id,
         global_id:0,
         indeks: i + 1,
         element_id: proc.element_id,
@@ -239,7 +235,7 @@ export function createArkuszeFromElemenets(
           czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10) ,
           koniec: "2024-10-30 11:00:00",
           procesor_id:proc.procesor_domyslny,
-          grupa_id:proc.id,
+          grupa_id:grupa_id,
           narzad: proc.narzad,
           predkosc: proc.predkosc,
           naklad: a.naklad,
@@ -251,53 +247,7 @@ export function createArkuszeFromElemenets(
       })
 
     }
-    if(proc.nazwa_id==2){ // uszlachetnianie
-      new_grupy.push({
-        id: proc.id,
-        global_id:0,
-        indeks: i + 1,
-        element_id: proc.element_id,
-        nazwa: proc.nazwa,
-        poczatek: "2024-10-30 10:00:00",
-        czas: 1,
-        koniec: "2024-10-30 11:00:00",
-        procesor_id:proc.procesor_domyslny,
-        narzad: proc.narzad,
-        predkosc: proc.predkosc,
-        proces_id: proc.id,
-        mnoznik: proc.mnoznik,
-        status:1,
-        stan:1,
-        uwagi: ""
-      });
-
-      new_legi
-      .filter(a => a.element_id == proc.element_id)
-      .map(a=>{
-        new_wykonania.push({
-          id: MaxID(new_wykonania),
-          indeks: i + 1,
-          nazwa: proc.nazwa,
-          element_id: a.element_id,
-          arkusz_id: a.id,
-          proces_id: proc.id,
-          typ_elementu: a.typ_elementu,
-          poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10) ,
-          koniec: "2024-10-30 11:00:00",
-          procesor_id:proc.procesor_domyslny,
-          grupa_id:proc.id,
-          narzad: proc.narzad,
-          predkosc: proc.predkosc,
-          naklad: a.naklad,
-          mnoznik: proc.mnoznik,
-          status:1,
-          stan:1,
-          uwagi: ""
-        });
-      })
-
-    }
+ 
     
 
   })

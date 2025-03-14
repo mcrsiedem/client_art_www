@@ -32,13 +32,19 @@ arkusze.push({
   id: arkusz_id,
   indeks: getMaxIndeks(arkusze),
   typ_elementu: row.typ,
-  rodzaj_arkusza: null,
+  rodzaj_arkusza: row.lega,
   naklad: row.naklad,
   element_id: row.id,
   ilosc_stron: row.ilosc_stron,
-  ilosc_leg: null,
+  ilosc_leg: 1,
+  papier_id: row.papier_id,
+  nadkomplet: "",
+  nr_arkusza: "",
+  arkusz_szerokosc: "",
+  arkusz_wysokosc: "",
   uwagi:"",
-  technolologia_id: row.technologia_id
+  technologia_id: row.technologia_id,
+  insert: true
   // ilosc_leg: rodzaj_arkusza/ 4
 });
 
@@ -52,7 +58,9 @@ legi.push({
   naklad: row.naklad,
   arkusz_id: arkusz_id,
   technologia_id: row.technologia_id,
-  uwagi:""
+  nr_legi: "",
+  uwagi:"",
+  insert: true
 });
 
 legiFragmenty.push({
@@ -65,7 +73,8 @@ legiFragmenty.push({
   arkusz_id: arkusz_id,
   technologia_id: row.technologia_id,
   oprawa_id: null,
-  typ: row.typ
+  typ: row.typ,
+  insert: true
 
 });
 

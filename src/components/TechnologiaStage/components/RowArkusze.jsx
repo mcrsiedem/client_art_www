@@ -194,7 +194,8 @@ export default function RowArkusze  ({ row,i })  {
               naklad: e.target.value,
               update: true
             }
-            )}}
+            )}
+          }
           }
         ></input>
     );
@@ -633,6 +634,8 @@ const nadkomplety = contextApp.nadkomplety;
   function NrLegi ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
+    const legiFragmenty = techContext.legiFragmenty;
     return (
         // <div  className={style.input_ark}> arkusz {i}</div>
         <input
@@ -650,7 +653,25 @@ const nadkomplety = contextApp.nadkomplety;
               nr_legi: e.target.value,
               update: true
             }
-            )}}
+            )
+          
+            setLegiFragmenty(
+              legiFragmenty.map((t, a) => {
+              // console.log("oprawa id" +prev)
+              if (t.lega_id == row.id) {
+                return {
+                  ...t,
+                  nr_legi: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+          }}
           }
         ></input>
     );

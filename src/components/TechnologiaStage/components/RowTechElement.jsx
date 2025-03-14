@@ -39,8 +39,6 @@ export default function RowTechElement({
         draggable
         onDrag={() => handleDragElementStart(row.id)}
       >
-        {/* <td>{row.id}</td> */}
-        {/* <td>{row.indeks}</td> */}
         <Rozwin
         arkusze={arkusze}
           row={row}
@@ -65,8 +63,6 @@ export default function RowTechElement({
             handleChangeCardFragmenty_i_Elementy_Tech
           }
         />
-         
-
         <ArkuszSzerokosc row={row} />
         <ArkuszWysokosc row={row} />
         <Lega row={row} />

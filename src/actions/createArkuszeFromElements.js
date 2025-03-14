@@ -147,48 +147,48 @@ export function createArkuszeFromElemenets(
   });
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
 
-  procesy.map((proc,i)=> {
-    if(proc.arkusz==1){ 
+  procesy.map((proces,i)=> {
+    if(proces.arkusz==1){ 
 let grupa_id = MaxID(new_grupy)
       new_grupy.push({
         id: grupa_id,
         global_id:0,
         indeks: i + 1,
-        element_id: proc.element_id,
-        nazwa: proc.nazwa,
+        element_id: proces.element_id,
+        nazwa: proces.nazwa,
         poczatek: "2024-10-30 10:00:00",
         czas: 1,
         koniec: "2024-10-30 11:00:00",
-        procesor_id:proc.procesor_domyslny,
-        narzad: proc.narzad,
-        predkosc: proc.predkosc,
-        proces_id: proc.id,
-        mnoznik: proc.mnoznik,
+        procesor_id:proces.procesor_domyslny,
+        narzad: proces.narzad,
+        predkosc: proces.predkosc,
+        proces_id: proces.id,
+        mnoznik: proces.mnoznik,
         status:1,
         stan:1,
         uwagi: ""
       });
 
       new_arkusze
-      .filter(a => a.element_id == proc.element_id)
+      .filter(a => a.element_id == proces.element_id)
       .map((a,i)=>{
         new_wykonania.push({
           id: MaxID(new_wykonania),
           indeks: i + 1,
-          nazwa: proc.nazwa,
+          nazwa: proces.nazwa,
           element_id: a.element_id,
           arkusz_id: a.id,
-          proces_id: proc.id,
+          proces_id: proces.id,
           typ_elementu: a.typ_elementu,
           poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10),
+          czas: parseInt((a.naklad / proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10),
           koniec: "2024-10-30 11:00:00",
-          procesor_id:proc.procesor_domyslny,
+          procesor_id:proces.procesor_domyslny,
           grupa_id:grupa_id,
-          narzad: proc.narzad,
-          predkosc: proc.predkosc,
+          narzad: proces.narzad,
+          predkosc: proces.predkosc,
           naklad: a.naklad,
-          mnoznik: proc.mnoznik,
+          mnoznik: proces.mnoznik,
           status:1,
           stan:1,
           uwagi: ""
@@ -199,47 +199,47 @@ let grupa_id = MaxID(new_grupy)
 
     }
 
-    if(proc.lega==1){ 
+    if(proces.lega==1){ 
       let grupa_id = MaxID(new_grupy)
       new_grupy.push({
         id: grupa_id,
         global_id:0,
         indeks: i + 1,
-        element_id: proc.element_id,
-        nazwa: proc.nazwa,
+        element_id: proces.element_id,
+        nazwa: proces.nazwa,
         poczatek: "2024-10-30 10:00:00",
         czas: 1,
         koniec: "2024-10-30 11:00:00",
-        procesor_id:proc.procesor_domyslny,
-        narzad: proc.narzad,
-        predkosc: proc.predkosc,
-        proces_id: proc.id,
-        mnoznik: proc.mnoznik,
+        procesor_id:proces.procesor_domyslny,
+        narzad: proces.narzad,
+        predkosc: proces.predkosc,
+        proces_id: proces.id,
+        mnoznik: proces.mnoznik,
         status:1,
         stan:1,
         uwagi: ""
       });
 
       new_legi
-      .filter(a => a.element_id == proc.element_id)
+      .filter(a => a.element_id == proces.element_id)
       .map(a=>{
         new_wykonania.push({
           id: MaxID(new_wykonania),
           indeks: i + 1,
-          nazwa: proc.nazwa,
+          nazwa: proces.nazwa,
           element_id: a.element_id,
           arkusz_id: a.id,
-          proces_id: proc.id,
+          proces_id: proces.id,
           typ_elementu: a.typ_elementu,
           poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad / proc.predkosc * proc.mnoznik) * 60 + proc.narzad,10) ,
+          czas: parseInt((a.naklad / proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10) ,
           koniec: "2024-10-30 11:00:00",
-          procesor_id:proc.procesor_domyslny,
+          procesor_id:proces.procesor_domyslny,
           grupa_id:grupa_id,
-          narzad: proc.narzad,
-          predkosc: proc.predkosc,
+          narzad: proces.narzad,
+          predkosc: proces.predkosc,
           naklad: a.naklad,
-          mnoznik: proc.mnoznik,
+          mnoznik: proces.mnoznik,
           status:1,
           stan:1,
           uwagi: ""

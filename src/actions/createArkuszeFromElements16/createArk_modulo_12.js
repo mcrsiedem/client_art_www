@@ -51,7 +51,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     indeks: getMaxIndeks(new_legi),
     ...lega,nr_legi,
     arkusz_id: getMaxID(new_arkusze)-1,
-    naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu),
+    naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) * 4
     
   });
 }
@@ -79,7 +79,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
       indeks: getMaxIndeks(new_legi),
       ...lega,nr_legi,
       arkusz_id: getMaxID(new_arkusze)-1,
-      naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)
+      naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) * 2
     });
   }
 //--------------

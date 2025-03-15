@@ -54,7 +54,7 @@ nr_arkusza++
         ...lega,
         nr_legi,
         arkusz_id: getMaxID(new_arkusze)-1,
-        naklad: ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu)
+        naklad: ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu) *8
       });
     }
 

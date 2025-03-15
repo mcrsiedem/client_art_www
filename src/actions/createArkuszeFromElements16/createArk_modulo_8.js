@@ -57,8 +57,9 @@ nr_arkusza++
         indeks: getMaxIndeks(new_legi),
         ...lega,
         nr_legi,
+        rodzaj_legi:8,
         arkusz_id: getMaxID(new_arkusze)-1,
-        naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)
+        naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) *2
       });
     }
 //--------------

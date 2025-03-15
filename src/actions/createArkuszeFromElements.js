@@ -54,7 +54,7 @@ export function createArkuszeFromElemenets(
 
     const ilosc_leg_na_arkuszu = row.ilosc_leg;
     const rodzaj_legi = row.lega;
-    const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu;
+    const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // podzieliłem dodatkowo prze ilosc leg
     const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
     const modulo = row.ilosc_stron % rodzaj_arkusza;
 
@@ -90,7 +90,7 @@ export function createArkuszeFromElemenets(
 // if(rodzaj_legi == 16) {
   
   if (modulo == 0) {
-      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     }
 
     if (modulo == 2) {

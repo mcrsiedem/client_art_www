@@ -95,8 +95,9 @@ export function createArkuszeFromElemenets(
 
 
 // if(rodzaj_legi == 16) {
-  
-  if (modulo == 0) {
+  if( modulo == 0 && ilosc_leg_na_arkuszu == 1){
+
+    if (modulo == 0) {
       createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     }
 
@@ -127,6 +128,17 @@ export function createArkuszeFromElemenets(
     if (modulo == 14) {
       createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
+  }
+  
+  //podwójna lega na arkuszu automatycznie tylko jeśli wychodzi równa ilosc pełenych leg
+  // w przeciwnym wypadku trzeba arkusze i legi stworzyć ręcznie
+  if( modulo == 0 && ilosc_leg_na_arkuszu == 2)
+    {
+      if (modulo == 0) {
+        createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+      }
+    }
+
 // }
     
     setArkusze(new_arkusze);

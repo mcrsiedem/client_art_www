@@ -51,10 +51,17 @@ export function createArkuszeFromElemenets(
 
   elementyTech.map((row) => {
     // console.log("row: ",row)
-
+    
     const ilosc_leg_na_arkuszu = row.ilosc_leg;
     const rodzaj_legi = row.lega;
-    const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // podzieliłem dodatkowo prze ilosc leg
+    let rodzaj_arkusza = 0;
+    if(row.ilosc_stron == row.lega ){
+    rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // wszystkie legi na rkuszu są takie same
+    } else{
+      rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu // rózne legi na arkuszu
+    }
+
+    // const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // podzieliłem dodatkowo prze ilosc leg
     const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
     const modulo = row.ilosc_stron % rodzaj_arkusza;
 

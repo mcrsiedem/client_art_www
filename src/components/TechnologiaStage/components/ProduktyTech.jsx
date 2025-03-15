@@ -271,7 +271,7 @@ function OpisRodzajLegi({ row }) {
 function OpisIloscLeg({ row }) {
   return (
     <div className={style.col_dane}>
-      <label className={style.label}> ilosc</label>
+      <label className={style.label}> ilosc leg</label>
       <input
       disabled
         className={style.input}

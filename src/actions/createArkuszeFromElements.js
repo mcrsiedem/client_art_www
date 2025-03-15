@@ -95,7 +95,7 @@ export function createArkuszeFromElemenets(
 
 
 // if(rodzaj_legi == 16) {
-  if( modulo == 0 && ilosc_leg_na_arkuszu ==1 ^ ilosc_leg_na_arkuszu ==4 ){
+  if( ilosc_leg_na_arkuszu == 1 ^ ilosc_leg_na_arkuszu ==4 ){   // zeby dało się 4 legi okłądki wygenerować
 
     if (modulo == 0) {
       createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
@@ -210,6 +210,7 @@ let grupa_id = MaxID(new_grupy)
           mnoznik: proces.mnoznik,
           status:1,
           stan:1,
+          przeloty: a.naklad + a.nadkomplet,
           uwagi: ""
         });
       })
@@ -261,6 +262,7 @@ let grupa_id = MaxID(new_grupy)
           mnoznik: proces.mnoznik,
           status:1,
           stan:1,
+          przeloty: a.naklad,
           uwagi: ""
         });
       })

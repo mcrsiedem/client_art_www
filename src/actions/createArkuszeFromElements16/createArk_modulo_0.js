@@ -21,7 +21,7 @@ export function createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
     nr_arkusza,
     naklad: ark.naklad /  ilosc_leg_na_arkuszu,
     ilosc_leg: ilosc_leg_na_arkuszu,
-    nadkomplet: findNadkomplet(nadkomplety,ark.naklad) 
+    nadkomplet: findNadkomplet(nadkomplety,ark.naklad /  ilosc_leg_na_arkuszu) 
   });
 
 

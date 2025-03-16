@@ -252,7 +252,7 @@ let grupa_id = MaxID(new_grupy)
           proces_id: proces.id,
           typ_elementu: a.typ_elementu,
           poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad / proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10) ,
+          czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
           koniec: "2024-10-30 11:00:00",
           procesor_id:proces.procesor_domyslny,
           grupa_id:grupa_id,
@@ -262,7 +262,7 @@ let grupa_id = MaxID(new_grupy)
           mnoznik: proces.mnoznik,
           status:1,
           stan:1,
-          przeloty: a.naklad,
+          przeloty: a.naklad / proces.ilosc_uzytkow,
           uwagi: ""
         });
       })

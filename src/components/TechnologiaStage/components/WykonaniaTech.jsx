@@ -70,13 +70,10 @@ const ProcesRow = ({ rowProces }) => {
     <>
       <div className={style.row1}>
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
-        <p className={style.nazwy_procesow}>{rowProces.nazwa} </p>
-        {/* <p>{rowProces.typ} </p> */}
+        <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
         <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
         <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
-        {/* <p>{getNameOfElement(rowProces.element_id,elementyTech)}</p> */}
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
-        <p  className={style.nazwy_procesow}> </p>
         {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
         { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
 
@@ -255,10 +252,10 @@ function MnoznikPredkosci({ rowGrupa }) {
   const mnozniki = contextApp.mnozniki
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       <label className={style.label}> Mnożnik </label>
       <select 
-        className={style.select}
+        className={style.select_mnoznik}
         defaultValue={rowGrupa.mnoznik}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, mnoznik: event.target.value });
@@ -370,7 +367,7 @@ const CzasGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       
       <label className={style.label}> Czas </label>
       <input
@@ -394,7 +391,7 @@ const PredkoscGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       
       <label className={style.label}> Prędkość </label>
       <input

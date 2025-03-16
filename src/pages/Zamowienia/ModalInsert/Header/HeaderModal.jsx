@@ -299,6 +299,8 @@ function PokazStany({  }) {
   const listaPapierow = appcontext.listaPapierow;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
+  const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
+
   return (
     <button
       onClick={async () => {
@@ -314,6 +316,7 @@ function PokazStany({  }) {
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
         console.log("Papiery_nazwy: ",listaPapierowNazwy)
         console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+        console.log("procesy wszsytkieg: ",procesyElementowTemporary)
 
       }}
       className={ style.btn}

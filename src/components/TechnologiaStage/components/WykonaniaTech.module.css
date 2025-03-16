@@ -1,3 +1,12 @@
+
+.row1{
+  display: grid;
+  /* height: 10px; */
+  grid-template-columns: 20px 220px 210px 220px  1fr 50px ;
+  gap: px;
+  /* margin-bottom: 0px; */
+}
+
 .container {
   justify-content: center; 
   align-items: center;
@@ -15,15 +24,25 @@ border-bottom: 1px solid rgb(182, 182, 182);
 
 .nazwy_procesow{
   color: var(--art-text-label);
-  text-align: center;
-  
+  text-align: center; 
 }
+
+
+
 .nazwy_procesow2{
+  color: var(--art-text-label);
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-right: 10px;
+}
+
+.nazwy_procesow3{
   color: var(--art-text-label);
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
-  
+  font-size: 1.2rem;
+
 }
 .procesy_menu_button{
   display: flex;
@@ -63,13 +82,7 @@ border-bottom: 1px solid rgb(182, 182, 182);
 }
 
 
-.row1{
-  display: grid;
-  /* height: 10px; */
-  grid-template-columns: 20px 220px 210px 220px  120px 120px 1fr;
-  gap: px;
-  /* margin-bottom: 0px; */
-}
+
 
 .grupa_container{
   margin-left: 30px;
@@ -126,6 +139,19 @@ border-bottom: 1px solid rgb(182, 182, 182);
   text-align: center;
     
   }
+
+  .select_mnoznik{
+    background-color: rgb(175, 175, 175);
+    height: 1.5rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: transparent;
+    outline: 1px solid rgb(185, 185, 185);
+    padding-left: 20px;
+    
+    text-align: center;
+  }
+  
 
 .btn_dodaj_grupe{
   height: 2rem;

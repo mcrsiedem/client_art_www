@@ -122,7 +122,7 @@ const CzasWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input
@@ -148,7 +148,7 @@ const MnoznikWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input
@@ -174,7 +174,7 @@ const PredkoscWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
   return (
-    <div className={style.col_dane}>
+    <div className={style.col_dane_przeloty}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input

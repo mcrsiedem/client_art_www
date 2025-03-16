@@ -82,6 +82,8 @@ function Table() {
   const procesyElementow = contexModal.procesyElementow;
   const procesyElementowTemporary = contexModal.procesyElementowTemporary;
   const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  const procesList = contexApp.procesList;
+
 
 
   const selectedElementROW = contexModal.selectedElementROW;
@@ -125,7 +127,7 @@ function Table() {
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary)}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary,procesList)}>Dodaj nowy proces</button>
       </div>
      
     </div>

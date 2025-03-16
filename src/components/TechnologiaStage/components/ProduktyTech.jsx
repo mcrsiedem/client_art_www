@@ -20,36 +20,13 @@ export default function ProduktyTech() {
   return (
     <div className={style.container}>
       <div className={style.produkt}>
-        <div className={style.produkt_menu_button}>
-          {/* <p>Produkt</p> */}
-          <p style={{color:"grey" , fontSize:"1.5rem"}}> Druk</p>
-          <div className={style.produkt_menu_button_sub}>
-            <div className={style.produkt_menu_button_sub_16}>
-              <p style={{color:"grey", fontSize:"1.5rem"} }
-                onClick={() => {
 
-                  input1632toElement(32,elementyTech,setElementyTech)
-                  // input1632toElemnt(32);
-                }}
-              >
-                32
-              </p>
-            </div>
-            <div className={style.produkt_menu_button_sub_16}>
-              <p style={{color:"grey" , fontSize:"1.5rem"}}
-                onClick={() => {
-                  input1632toElement(16,elementyTech,setElementyTech)
-                 
-                }}
-              >
-                16
-              </p>
-            </div>
-
-            <MenuProduktyBtn />
-          </div>
-        </div>
-
+      <div className={style.produkt_menu_button}>
+    {/* <p>Produkt</p> */}
+    <p style={{color:"grey" , fontSize:"1.5rem"}}> Druk</p>
+<Generuj/>
+  </div>
+   
         <ProduktyTable2 />
       </div>
     </div>
@@ -57,6 +34,48 @@ export default function ProduktyTech() {
 }
 
 //--------------------------
+
+function Generuj() {
+  const contextTech = useContext(TechnologyContext);
+  const arkusze = contextTech.arkusze;
+  const elementyTech = contextTech.elementyTech;
+  const setElementyTech = contextTech.setElementyTech;
+
+
+  if(arkusze.length ==0) {  return (
+
+
+    <div className={style.produkt_menu_button_sub}>
+      <div className={style.produkt_menu_button_sub_16}>
+        <p style={{color:"grey", fontSize:"1.5rem"} }
+          onClick={() => {
+
+            input1632toElement(32,elementyTech,setElementyTech)
+            // input1632toElemnt(32);
+          }}
+        >
+          32
+        </p>
+      </div>
+      <div className={style.produkt_menu_button_sub_16}>
+        <p style={{color:"grey" , fontSize:"1.5rem"}}
+          onClick={() => {
+            input1632toElement(16,elementyTech,setElementyTech)
+           
+          }}
+        >
+          16
+        </p>
+      </div>
+
+      <MenuProduktyBtn />
+    </div>
+
+
+  );}
+
+}
+
 
 function ProduktyTable2() {
   const contextTech = useContext(TechnologyContext);
@@ -107,10 +126,13 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
  const nadkomplety = contextApp.nadkomplety;
 
   const elementyTech = techContext.elementyTech;
-  return (
+ 
+      return (
+    
     <div className={style.menu_produkty}>
       <img
-        className={style.iconMenuBtn}
+
+        className={ style.iconMenuBtn}
         src={Logo_ustawienia2}
         title="Auto wszystkie arkusze + legi"
         onClick={() => {
@@ -151,6 +173,8 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
       /> */}
     </div>
   );
+  
+
 };
 
 function Typ({ row }) {

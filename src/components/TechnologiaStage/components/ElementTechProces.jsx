@@ -109,6 +109,7 @@ function Table() {
             <th className={style.col_indeks}>element</th> */}
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
+            <th className={style.col_typ}>Ilość użytków</th>
             <th className={style.col_ilosc}>Front</th>
             <th className={style.col_ilosc}>Back</th>
             <th className={style.col_kolory}>Front kolory</th>
@@ -148,6 +149,7 @@ const ProcesTechRow =({row,i,procesyElementowTechTemporary,
     <td>{i+1}</td>
     <ProcesName row={row} setProcesID={setProcesID}/>
     <ProcessTyp row={row} procesID={procesID}/>
+    <IloscUzytkow row={row} procesID={procesID}/>
     <FrontIlosc row={row}/>
     <BackIlosc row={row}/>
     <FrontKolor row={row}/>
@@ -272,6 +274,7 @@ const BackKolor = ({ row }) => {
   );
 }
 
+
 const FrontKolor = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
@@ -284,6 +287,28 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementowTech({
               ...row,
               front_kolor: e.target.value,
+              update:true
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+
+const IloscUzytkow = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        value={row.ilosc_uzytkow}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              ilosc_uzytkow: e.target.value,
               update:true
             });
           }

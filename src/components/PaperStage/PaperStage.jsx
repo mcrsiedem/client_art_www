@@ -47,7 +47,10 @@ const [paperSelectView, setPaperSelectView] = useState([
 
 
 const scrollTable = (table) => {
-  table.current.scrollTo({ top: 10000, behavior: "smooth" })
+  if(table.current != null) {
+      table.current.scrollTo({ top: 10000, behavior: "smooth" })
+  }
+
 };
 
   async function getPapier() {
@@ -80,9 +83,9 @@ const scrollTable = (table) => {
         <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
           <div className={style.btnContainer}>
-            <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
-            <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
-            <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView}/>
+            <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+            <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+            <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
           </div>
         <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
@@ -91,7 +94,8 @@ const scrollTable = (table) => {
         <TablePaperGrupa paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
   <div className={style.footer}>
     <div className={style.container_in_footer}>  </div>
-    <div className={style.container_in_footer}>   <Zapisz  /></div>
+    <div className={style.container_in_footer}>   <Zapisz  /> </div>
+    {/* <div className={style.container_in_footer}>   <Zapisz  /> <Pokaz selectRow={selectRow}></Pokaz></div> */}
     <div className={style.container_in_footer_right}>
        <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
        <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
@@ -169,11 +173,26 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
             if(paperSelectView[0].view == true){
           const promiseA = new Promise((resolve, reject) => {
           const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
+
+        if(Object.values(selectRow).length > 5){
+            // wtedy kopiuje bo ma zaznaczony papier a nie grupe lub nazwe
+                    newlistaPapierowWyszukiwarka.push({
+            ...selectRow,
+            id: getMaxID(listaPapierowWyszukiwarka),
+            insert: true
+          })
+        } 
+        else{
           newlistaPapierowWyszukiwarka.push({
             ...selectRow,
             id: getMaxID(listaPapierowWyszukiwarka),
             insert: true
           })
+        }
+
+
+
+
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
           });
@@ -409,7 +428,37 @@ function Zapisz() {
   );
 }
 
-function PapierBTN({ paperSelectView, setPaperSelectView }) {
+
+function Pokaz({selectRow}) {
+  const appcontext = useContext(AppContext);
+  const isBtnZapiszPapierDisabled = appcontext.isBtnZapiszPapierDisabled;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
+
+      return (
+    <button 
+    
+    className={style.btn} 
+    onClick={() => {
+        console.clear()
+        console.log("Papiery: ")
+        console.log("listaPapierowWyszukiwarka : ",listaPapierowWyszukiwarka)
+        console.log("listaPapierowNazwyWyszukiwarka : ",listaPapierowNazwyWyszukiwarka)
+        console.log("listaPapierowGrupaWyszukiwarka : ",listaPapierowGrupaWyszukiwarka)
+        // console.log("selectRow  lenght: "+ Object.values(selectRow).length      )
+        console.log("selectRow : ",selectRow)
+    }}
+    
+    disabled={isBtnZapiszPapierDisabled}
+    >
+      Pokaz</button>
+
+  );
+}
+
+
+function PapierBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierow = appcontext.listaPapierow;
@@ -432,6 +481,7 @@ function PapierBTN({ paperSelectView, setPaperSelectView }) {
         );
 
         setListaPapierowWyszukiwarka(listaPapierow)
+        setSelectRow(null)
 
       }}
     >
@@ -440,7 +490,7 @@ function PapierBTN({ paperSelectView, setPaperSelectView }) {
   );
 }
 
-function NazwaBTN({ paperSelectView, setPaperSelectView }) {
+function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
   return (
     <button
       className={style.btnPaper}
@@ -458,6 +508,8 @@ function NazwaBTN({ paperSelectView, setPaperSelectView }) {
               }
             })
         );
+
+        setSelectRow(null)
       }}
     >
       Nazwa
@@ -465,7 +517,7 @@ function NazwaBTN({ paperSelectView, setPaperSelectView }) {
   );
 }
 
-function GrupaBTN({paperSelectView, setPaperSelectView}) {
+function GrupaBTN({paperSelectView, setPaperSelectView,setSelectRow}) {
   return (
 <button 
 
@@ -480,6 +532,8 @@ onClick={() => {
       return t;
     }  })
   );
+
+  setSelectRow(null)
 }}
 
 

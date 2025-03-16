@@ -74,8 +74,8 @@ export function createArkuszeFromElemenets(
       ilosc_stron: row.ilosc_stron,
       uwagi: "",
       nr_arkusza: "",
-      arkusz_szerokosc: "",
-      arkusz_wysokosc: "",
+      arkusz_szerokosc: row.arkusz_szerokosc,
+      arkusz_wysokosc: row.arkusz_wysokosc,
       papier_id: row.papier_id,
       technologia_id: row.technologia_id,
       insert: true

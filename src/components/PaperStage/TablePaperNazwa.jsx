@@ -108,10 +108,11 @@ export default function TablePaperNazwa({
                 );
                 }}
                 onDoubleClick={
-                  () => {
+                  (x) => {
 
+                    if(document.onkeydown = x.ctrlKey){
 
-                    setPaperSelectView(
+                   setPaperSelectView(
                       paperSelectView
                         .map((t) => {
                           return { ...t, view: false };
@@ -132,7 +133,10 @@ export default function TablePaperNazwa({
             
                     );
 
+                    }
+ 
 
+                    setSelectRow(null)
                   }
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
                

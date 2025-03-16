@@ -96,6 +96,7 @@ function Table() {
             <th className={style.col_indeks}>#</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
+            <th className={style.col_typ}>Ilość użytków</th>
             <th className={style.col_ilosc}>Front</th>
             <th className={style.col_ilosc}>Back</th>
             <th className={style.col_kolory}>Front kolory</th>
@@ -115,6 +116,7 @@ function Table() {
                 <td>{i+1}</td>
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
+                <IloscUzytkow row={row}/>
                 <FrontIlosc row={row}/>
                 <BackIlosc row={row}/>
                 <FrontKolor row={row}/>
@@ -234,6 +236,28 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_kolor: e.target.value,
+              update: true
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+
+const IloscUzytkow = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+      className={style.select}
+        value={row.ilosc_uzytkow}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              ilosc_uzytkow: e.target.value,
               update: true
             });
           }

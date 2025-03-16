@@ -73,8 +73,10 @@ export default function TablePaperGrupa({
                 }}
 
                 onDoubleClick={
-                  () => {
-                    setPaperSelectView(
+                  (x) => {
+                    if(document.onkeydown = x.ctrlKey){
+                 
+                                          setPaperSelectView(
                       paperSelectView
                         .map((t) => {
                           return { ...t, view: false };
@@ -92,6 +94,10 @@ export default function TablePaperGrupa({
                       m.filter((k) =>
                         k.grupa_id == selectRow.id)
                     );
+
+                    setSelectRow(null)
+                    }
+
                   }
                 }
               >

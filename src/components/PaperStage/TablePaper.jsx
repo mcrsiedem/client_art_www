@@ -46,11 +46,11 @@ if(paperSelectView[0].view == true){
         <thead>
           <tr>
             <th className={style.id}>#</th>
-            <th className={style.grupa}>Grupa</th>
             <th className={style.nazwa}>Nazwa</th>
             <th className={style.gramatura}>g/m2</th>
             <th className={style.wykonczenie}></th>
             <th className={style.opiekun}>Bulk</th>
+            <th className={style.grupa}>Grupa</th>
             <th className={style.info}>Opis</th>
           </tr>
         </thead>
@@ -88,11 +88,11 @@ if(paperSelectView[0].view == true){
                 }
               >
                 <ID row={row} index={index + 1} />
-                <Grupa row={row} />
                 <Nazwa row={row} />
                 <Gramatura row={row} />
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
+                <Grupa row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
               </tr>
             );

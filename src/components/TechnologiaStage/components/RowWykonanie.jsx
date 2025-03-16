@@ -21,6 +21,8 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       {/* <CzasWykoniania rowWykonanie={rowWykonanie}/> */}
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
+      <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
+      
       <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
     
       <StanWykonania rowWykonanie={rowWykonanie}/>
@@ -179,6 +181,32 @@ const PredkoscWykoniania = ({ rowWykonanie }) => {
       disabled
         className={style.input}
         value={rowWykonanie.predkosc}
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+
+const PrzelotyWykonania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  return (
+    <div className={style.col_dane_przeloty}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+        className={style.input}
+        value={rowWykonanie.przeloty}
         onChange={(e) => {
 
 

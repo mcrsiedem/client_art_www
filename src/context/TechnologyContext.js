@@ -344,42 +344,7 @@ if(elementyTech.length>1){
       }
 
 
-      const input1632toElemnt = (l) => {
 
-        setElementyTech(
-          elementyTech.map((t) => {
-
-            if(l==16){
-                          if (t.typ == 1) {
-                return {...t,
-                  lega: 4,ilosc_leg:1}
-              }
-              if (t.typ == 2) {
-                return {...t,
-                  lega: 16,ilosc_leg:1}
-              } else {
-                return t;
-              }
-            }
-  
-            if(l==32){
-                          if (t.typ == 1) {
-                return {...t,
-                  lega: 4,ilosc_leg:1}
-              }
-              if (t.typ == 2) {
-                return {...t,
-                  lega: 32,ilosc_leg:1}
-              } else {
-                return t;
-              }
-            }
-
-
-          })
-        )
-
-        }
   
 
     //    const updateDane = useCallback((data) => {
@@ -617,7 +582,7 @@ async function fechTechnology() {
                     showElementyTechProcesyInsert, setShowElementyTechProcesyInsert,
                     selectedElementTechROW,setSelectedElementTechROW,
                     selectedGrupaTechROW,setSelectedGrupaTechROW,
-                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,input1632toElemnt,
+                    updateRowProduktyTech,updateRowOprawaTech,deleteElementTech,addNewOprawa,deleteOprawa,
                     updateRowProcesyElementowTech,
                     updateGrupaWykonan,updateWykonanie,updateWykonaniaWszystkie,
                     isSaveButtonDisabled, setSaveButtonDisabled,

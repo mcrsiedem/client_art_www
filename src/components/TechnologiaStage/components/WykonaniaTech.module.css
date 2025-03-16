@@ -96,11 +96,20 @@ border-bottom: 1px solid rgb(182, 182, 182);
   /* width: 100%; */width: 200px;
   /* gap: 20px; */
 }
+
+.col_dane_przeloty {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  
+}
 .label {
   font-size: 0.7rem;
   padding-left: 5px;
   color: var(--art-text-label);
   padding-bottom: 3px;
+  text-align: center;
 }
 .select,
 .input {
@@ -113,6 +122,10 @@ border-bottom: 1px solid rgb(182, 182, 182);
   padding-left: 10px;
   /* font-size: 0.9rem; */
 }
+.input {
+  text-align: center;
+    
+  }
 
 .btn_dodaj_grupe{
   height: 2rem;

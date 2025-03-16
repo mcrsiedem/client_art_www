@@ -18,6 +18,13 @@
   padding-left: 10px;
   
 }
+
+
+.input {
+text-align: center;
+  
+}
+
 /* 
 .input:last-child{
   border-bottom-left-radius: 10px;
@@ -28,4 +35,11 @@
   flex-direction: column;
   /* width: 100%; */width: 200px;
   /* gap: 20px; */
+}
+.col_dane_przeloty {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  
 }

@@ -11,10 +11,12 @@ import ProduktyTechMenu from "./ProduktyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
 import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import { input1632toElement } from "actions/input1632toElement";
 
 export default function ProduktyTech() {
   const contextTech = useContext(TechnologyContext);
-  const input1632toElemnt = contextTech.input1632toElemnt;
+  const elementyTech = contextTech.elementyTech;
+  const setElementyTech = contextTech.setElementyTech;
   return (
     <div className={style.container}>
       <div className={style.produkt}>
@@ -25,7 +27,9 @@ export default function ProduktyTech() {
             <div className={style.produkt_menu_button_sub_16}>
               <p style={{color:"grey", fontSize:"1.5rem"} }
                 onClick={() => {
-                  input1632toElemnt(32);
+
+                  input1632toElement(32,elementyTech,setElementyTech)
+                  // input1632toElemnt(32);
                 }}
               >
                 32
@@ -34,7 +38,8 @@ export default function ProduktyTech() {
             <div className={style.produkt_menu_button_sub_16}>
               <p style={{color:"grey" , fontSize:"1.5rem"}}
                 onClick={() => {
-                  input1632toElemnt(16);
+                  input1632toElement(16,elementyTech,setElementyTech)
+                 
                 }}
               >
                 16

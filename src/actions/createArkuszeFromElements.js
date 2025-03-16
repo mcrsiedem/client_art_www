@@ -215,7 +215,7 @@ let grupa_id = MaxID(new_grupy)
         });
       })
 
-  new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
+  // new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
 
     }
 
@@ -299,7 +299,7 @@ let grupa_id = MaxID(new_grupy)
   
   // setGrupaWykonan(new_grupy);
   // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ));
-  setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng)}) ));
+  setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
   setWykonania(new_wykonania)
 
 }
@@ -336,5 +336,11 @@ const MaxIndeksOprawa = (value,oprawa_id) => {
 const SumaCzasow = (wykonania,grupa) => {
   // sumuje wszystkie czasy z dowolnej grupy
   let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  return suma;
+};
+
+const SumaPrzelotow = (wykonania,grupa) => {
+  // sumuje wszystkie czasy z dowolnej grupy
+  let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
   return suma;
 };

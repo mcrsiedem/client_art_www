@@ -27,7 +27,7 @@ export default function TablePaperNazwa({
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showChange, setShowChange] = useState(false);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const rowID = useRef();
 
   const inputElement = useRef();
@@ -198,8 +198,8 @@ export default function TablePaperNazwa({
 {listaPapierowWyszukiwarka?.filter(x => x.nazwa_id == row2.id).map((row, index) => {
   if(show){
       return (
-              // <tr className={row.insert ? style.tr_insert : style.tr}
-              <tr className={color2(row)}
+          <div className={style2.row_papier}>
+              <div className={color2(row)}
                 key={row.id}
                 onClick={()=>{
                   setSelectTable(inputElement)
@@ -235,7 +235,10 @@ export default function TablePaperNazwa({
                 <Bulk row={row} />
                 <Grupa row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
-              </tr>
+              </div>
+
+              </div>
+
             );
   }
             

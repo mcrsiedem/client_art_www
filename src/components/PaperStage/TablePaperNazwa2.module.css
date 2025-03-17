@@ -1,7 +1,8 @@
-
+.row_papier{
+margin-left: 50px;
+}
 .tr:hover{
     background-color: rgb(224, 98, 98);
-    padding-left: 50px;
 }
 
 .tr_insert{

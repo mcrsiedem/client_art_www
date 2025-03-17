@@ -140,7 +140,8 @@ function Table() {
 const ProcesName = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
-
+  // daneTechEdit = JSON.parse(JSON.stringify(daneTech))
+  const procesListEdit = JSON.parse(JSON.stringify(contexApp.procesList))
   return (
     <td>
       <select
@@ -152,6 +153,7 @@ const ProcesName = ({ row }) => {
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
             nazwa_id: e.target.value,
+             proces_id: procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id,
             update: true
           });
         }}
@@ -176,7 +178,7 @@ const ProcessTyp = ({ row }) => {
     <td>
       <select
         className={style.select}
-        defaultValue={row.proces_id}
+        value={row.proces_id}
         onChange={(e) => {
           console.log(e.target.value)
           contexModal.handleUpdateRowProcesyElementow({
@@ -188,7 +190,6 @@ const ProcessTyp = ({ row }) => {
       >
         {}
         {contexApp.procesList
-        // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
         .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id && x.indeks == row.indeks)[0].nazwa_id)
 
                .map((option) => (
@@ -344,9 +345,12 @@ function Usun({ row}) {
           className={style.expand}
           src={iconTrash}
           onClick={() => {
-            // setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
 
-            setProcesyElementowTemporary((prev) =>
+            if(row.zamowienie_id == 1){
+              setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
+
+            }else{
+           setProcesyElementowTemporary((prev) =>
               prev.map((t, a) => {
                 if (t.id == row.id) {
                   return {
@@ -358,6 +362,10 @@ function Usun({ row}) {
                 }
               })
             );
+
+            }
+          
+ 
       
           }}
           alt="Procesy"

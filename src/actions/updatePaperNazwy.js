@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "../../../utils/Host";
+import { IP } from "utils/Host";
 
 export   const updatePaperNazwy = async (rows,setListaPapierowNazwyWyszukiwarka,setListaPapierowNazwy,setBtnZapiszPapierDisabled)=> {
 

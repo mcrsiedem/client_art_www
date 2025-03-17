@@ -1,5 +1,6 @@
 import axios from "axios";
-import { IP } from "../../../utils/Host";
+import { IP } from "utils/Host";
+
 
 export   const updatePaperGrupy = async (rows,setListaPapierowGrupaWyszukiwarka,setListaPapierowGrupa,setBtnZapiszPapierDisabled)=> {
 

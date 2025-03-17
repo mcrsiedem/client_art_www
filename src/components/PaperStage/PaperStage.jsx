@@ -88,6 +88,12 @@ const scrollTable = (table) => {
             <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
             <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
           </div>
+          <div className={style.container_in_footer_right}>
+       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
+       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
+       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
+ 
+    </div>
         <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
         <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
@@ -98,9 +104,9 @@ const scrollTable = (table) => {
     <div className={style.container_in_footer}>   <Zapisz  /> </div>
     {/* <div className={style.container_in_footer}>   <Zapisz  /> <Pokaz selectRow={selectRow}></Pokaz></div> */}
     <div className={style.container_in_footer_right}>
-       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
+       {/* <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
        <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
-       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
+       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div> */}
  
     </div>
    

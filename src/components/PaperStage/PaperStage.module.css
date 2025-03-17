@@ -6,7 +6,8 @@
   width: 100%;
   height: 100%;
   z-index: 3;
-  backdrop-filter: grayscale(100%);
+  /* backdrop-filter: grayscale(100%); */
+  backdrop-filter: blur(100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +15,8 @@
 
 .window {
   position: relative;
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   min-width: 250px;
   background-color: rgb(255, 255, 255);
   /* background-color: rgb(198, 198, 198); */
@@ -39,7 +40,7 @@
 
   padding-left: 10px;
   padding-right: 10px;
-  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 2rem;
@@ -91,6 +92,7 @@ width: 200px;
 
 .btn {
   background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
   width: 200px;
   height: 30px;
   border-radius: 10px;
@@ -101,7 +103,7 @@ width: 200px;
 }
 
 .btn:hover{
-background:rgb(126, 182, 255);
+  background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(123, 119, 119) 50%,rgb(81, 78, 78) 100%);
 }
 
 .btn[disabled]{
@@ -142,11 +144,11 @@ background:rgb(126, 182, 255);
 
 .container_in_footer_right{
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  gap:15px
+  /* padding-right: 40px;
+  padding-bottom: 10px; */
+  gap:20px
 }
 
 
@@ -162,8 +164,14 @@ background:rgb(126, 182, 255);
 }
 
 .icon{
-  width: 18px;
+  padding: 5px;
+  width: 32px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
 
+.icon:hover{
+background-color: rgb(224, 224, 224);
 }
 
 

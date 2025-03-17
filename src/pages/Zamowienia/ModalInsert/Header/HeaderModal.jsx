@@ -33,11 +33,40 @@ export default function Header({
 }) {
   const [auth, lookToken] = useAuth(false);
   const contextModalInsert = useContext(ModalInsertContext);
-
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const produkty = contextModalInsert.produkty;
   const elementy = contextModalInsert.elementy;
+  const fragmenty = contextModalInsert.fragmenty;
+  const oprawa = contextModalInsert.oprawa;
+  const pakowanie = contextModalInsert.pakowanie;
+  const procesyElementow = contextModalInsert.procesyElementow;
+  const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
+
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+  const listaPapierow = appcontext.listaPapierow;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+
+  const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
+
   return (
     <>
-      <div className={style.container}>
+      <div onDoubleClick={ () => {
+        console.clear()
+        console.log("Zamówienie: ")
+        console.log("Dane : ",daneZamowienia)
+        console.log("Produkt : ",produkty)
+        console.log("Elementy : ",elementy)
+        console.log("Fragmenty : ",fragmenty)
+        console.log("Oprawa : ",oprawa)
+        console.log("Procesy elementów: ",procesyElementow)
+        console.log("Pakowanie: ",pakowanie)
+        console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
+        console.log("Papiery_nazwy: ",listaPapierowNazwy)
+        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+        console.log("procesy wszsytkieg: ",procesyElementowTemporary)
+
+      }} className={style.container}>
      
         <div className={style.title}>
             <LockDradDrop/>
@@ -66,17 +95,18 @@ export default function Header({
               ) :
               (
                 <>
-                <PokazStany/>
-                  <Zapisz
+                {/* <PokazStany/> */}
+              
+
+                  <ZapiszJako
+                    // postZamowienieObj={postZamowienieObj}
                     setShowSaveAs={setShowSaveAs}
                     setSaveAs={setSaveAs}
                   />
-
-                  {/* <ZapiszJako
-                    postZamowienieObj={postZamowienieObj}
+                      <Zapisz
                     setShowSaveAs={setShowSaveAs}
                     setSaveAs={setSaveAs}
-                  /> */}
+                  />
                 </>
               )
           }
@@ -217,10 +247,28 @@ function ZapiszJako({
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+  const produkty= contextModalInsert.produkty;
+  // const daneZamowienia= contextModalInsert.daneZamowienia;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+  const elementy= contextModalInsert.elementy;
+  const fragmenty= contextModalInsert.fragmenty;
+  const oprawa= contextModalInsert.oprawa;
+  const setProdukty= contextModalInsert.setProdukty;
+  const setElementy= contextModalInsert.setElementy;
+  const setFragmenty= contextModalInsert.setFragmenty;
+  const setOprawa= contextModalInsert.setOprawa;
+  const setProcesyElementow= contextModalInsert.setProcesyElementow;
+  const procesyElementow= contextModalInsert.procesyElementow;
+
+  const contextApp = useContext(AppContext);
+  const setZamowienia = contextApp.setZamowienia
   return (
     <button
       disabled={isSaveButtonDisabled}
       onClick={async () => {
+
+
         setShowSaveAs(true);
         setSaveAs(true);
         

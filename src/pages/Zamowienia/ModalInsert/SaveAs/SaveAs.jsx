@@ -1,13 +1,33 @@
 import { useContext} from "react";
 import style from "../SaveAs/SaveAs.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { AppContext } from "context/AppContext";
 import { PreOrderContext } from "context/PreOrderContext";
+import { zapiszZamowienie } from "actions/zapiszZamowienie";
 
 export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,postZamowienieObjSaveAs,setSaveAs}) {
 //   useEffect(() => {}, []);
 const contextModal = useContext(ModalInsertContext);
-const daneZamowienia = contextModal.daneZamowienia;
-const setDaneZamowienia= contextModal.setDaneZamowienia;
+
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+  const produkty= contextModalInsert.produkty;
+  // const daneZamowienia= contextModalInsert.daneZamowienia;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+  const elementy= contextModalInsert.elementy;
+  const fragmenty= contextModalInsert.fragmenty;
+  const oprawa= contextModalInsert.oprawa;
+  const setProdukty= contextModalInsert.setProdukty;
+  const setElementy= contextModalInsert.setElementy;
+  const setFragmenty= contextModalInsert.setFragmenty;
+  const setOprawa= contextModalInsert.setOprawa;
+  const setProcesyElementow= contextModalInsert.setProcesyElementow;
+  const procesyElementow= contextModalInsert.procesyElementow;
+
+  const contextApp = useContext(AppContext);
+  const setZamowienia = contextApp.setZamowienia
   return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
@@ -36,11 +56,23 @@ const setDaneZamowienia= contextModal.setDaneZamowienia;
                     <button
                     className={style.btn}
                     onClick={() => {
-                      // setDaneZamowienia({...daneZamowienia, prime_id: daneZamowienia.id} )
-                        // setSaveAs(true)
-                        // postZamowienieObj();
-                        // postZamowienieObjSaveAs();
-                        postZamowienieObjSaveAs();
+
+              zapiszZamowienie({
+                daneZamowienia,
+                setDaneZamowienia,
+                produkty,
+                elementy,
+                fragmenty,
+                oprawa,
+                setProdukty,
+                setElementy,
+                setFragmenty,
+                setOprawa,
+                setProcesyElementow,
+                procesyElementow,
+                setZamowienia,
+                setSaveButtonDisabled
+              });
                         setShowSaveAs(!showSaveAs)
                     }}
                     >

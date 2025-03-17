@@ -240,15 +240,18 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
   const contextApp = useContext(AppContext);
 
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const produkty = contextModalInsert.produkty;
   // const setZamowienia = contextApp.setZamowienia
 
   return (
     <button
 
       onClick={async () => {
-
+        if(produkty[0].naklad){
+          setSaveButtonDisabled(false);
+        }
    
-                setSaveButtonDisabled(false);
+                
 
       }}
       className={style.btn}
@@ -287,9 +290,12 @@ function ZapiszJako({
       disabled={isSaveButtonDisabled}
       onClick={async () => {
 
+        if(produkty[0].naklad){
+          setShowSaveAs(true);
 
-        setShowSaveAs(true);
         setSaveAs(true);
+        }
+        
         
       }}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}

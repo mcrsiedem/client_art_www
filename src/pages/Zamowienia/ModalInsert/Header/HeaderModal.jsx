@@ -84,22 +84,13 @@ export default function Header({
 
         <div className={style.center}>
 
-        </div>
-
-        <div className={style.buttons}>
-              
-              {/* <ShowStany setOpenModalStany={setOpenModalStany} openModalStany={openModalStany} setInfo={setInfo} /> */}
-
           {readOnly ? (
                 <> </>
               ) :
               (
                 <>
-                {/* <PokazStany/> */}
-              
-
+                             <Sprawdz  />
                   <ZapiszJako
-                    // postZamowienieObj={postZamowienieObj}
                     setShowSaveAs={setShowSaveAs}
                     setSaveAs={setSaveAs}
                   />
@@ -110,6 +101,12 @@ export default function Header({
                 </>
               )
           }
+
+        </div>
+
+        <div className={style.buttons}>
+              
+
 
           <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly}/>
         </div>
@@ -238,7 +235,29 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
     </button>
   );
 }
+function Sprawdz({ setShowSaveAs, setSaveAs }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const contextApp = useContext(AppContext);
 
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  // const setZamowienia = contextApp.setZamowienia
+
+  return (
+    <button
+
+      onClick={async () => {
+
+   
+                setSaveButtonDisabled(false);
+
+      }}
+      className={style.btn}
+      // disabled={isSaveButtonDisabled}
+    >
+      Sprawdź
+    </button>
+  );
+}
 function ZapiszJako({
 
   setShowSaveAs,

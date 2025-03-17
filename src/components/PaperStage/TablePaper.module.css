@@ -1,6 +1,7 @@
 
 .tr:hover{
-    background-color: rgb(233, 244, 253);
+    /* background-color: rgb(233, 244, 253); */
+    background-color: rgb(210, 210, 210);
 }
 
 .tr_insert{
@@ -27,13 +28,14 @@
 
 .tr_select{
   /* background-image: linear-gradient( rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
-  background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
-
+  /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
+background-color: rgb(183, 183, 183);
   
 }
 .tr_select:nth-of-type(2n){
   /* background-image: linear-gradient( rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
-  background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+  /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
+  background-color: rgb(183, 183, 183);
 }
 
 /* .tr_select{

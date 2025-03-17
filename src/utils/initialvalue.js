@@ -261,7 +261,7 @@ const _wykonczenie = [
     nazwa: "silk",
   },
   {
-    id:4,
+    id: 4,
     nazwa: "",
   }
 ];

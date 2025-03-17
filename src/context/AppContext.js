@@ -7,6 +7,7 @@ import { getProductType } from "actions/getProductType";
 import { getProcesListName } from "actions/getProcesListName";
 import { getProcesory } from "actions/getProcesory";
 import { getNadkomplety } from "actions/getNadkomplety";
+import { _wykonczenie } from "utils/initialvalue";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
@@ -25,6 +26,7 @@ export const AppContextProvider = ({children})=>{
     const [listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka] = useState();
     const [listaPapierowGrupa,setListaPapierowGrupa] = useState();
     const [listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka] = useState();
+    const [wykonczenieEdit, setWykonczenieEdit] = useState(_wykonczenie);
     const [procesory, setProcesory] = useState();
     const [mobile, setMobile] = useState(false);
       const [isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled] = useState(true);
@@ -86,7 +88,7 @@ export const AppContextProvider = ({children})=>{
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
-                    mobile, setMobile,setNadkomplety,nadkomplety
+                    mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit
 
             
                 }}

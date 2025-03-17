@@ -12,6 +12,7 @@ export default function TablePaper({setSelectRow,
 }) {
 
   const [showEdit, setShowEdit] = useState(false);
+    
 
   const rowID = useRef();
   const inputElement = useRef();
@@ -48,7 +49,7 @@ if(paperSelectView[0].view == true){
             <th className={style.id}>#</th>
             <th className={style.nazwa}>Nazwa</th>
             <th className={style.gramatura}>g/m2</th>
-            <th className={style.wykonczenie}></th>
+            <th className={style.wykonczenie}>Wykonczenie</th>
             <th className={style.opiekun}>Bulk</th>
             <th className={style.grupa}>Grupa</th>
             <th className={style.info}>Opis</th>
@@ -119,7 +120,9 @@ const openEdit = (row, rowID, setShowEdit) => {
   setShowEdit(true);
 };
 
-function Wykonczenie({ row }) {
+
+
+function Wykonczenie2({ row }) {
   const appcontext = useContext(AppContext);
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -161,7 +164,7 @@ function Wykonczenie({ row }) {
     </td>;
 }
 
-function Grupa({ row }) {
+function Grupa2({ row }) {
   const appcontext = useContext(AppContext);
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -203,7 +206,25 @@ function Grupa({ row }) {
     </td>;
 }
 
-function Nazwa({ row }) {
+function Grupa({ row,index}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowGrupa = appcontext.listaPapierowGrupa;
+  return <td>{listaPapierowGrupa.filter(x => x.id == row.grupa_id)[0].grupa}</td>;
+}
+
+function Wykonczenie({ row,index}) {
+  const appcontext = useContext(AppContext);
+  const wykonczenieEdit = appcontext.wykonczenieEdit;
+  // return <td>{_wykonczenie.filter(x => x.id != row.wykonczenie_id).nazwa}</td>;
+  // return <td>{row.wykonczenie_id}</td>;
+  return <td>          {_wykonczenie.filter(x => x.id == row.wykonczenie_id).map((option) => (
+    <option key={option.id} value={option.id}>
+      {option.nazwa}
+    </option>
+  ))}</td>;
+}
+
+function Nazwa2({ row }) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -251,17 +272,27 @@ function ID({ row,index}) {
   return <td>{index}</td>;
 }
 
+function Nazwa({ row,index}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+  return <td>{listaPapierowNazwy.filter(x => x.id == row.nazwa_id)[0].nazwa}</td>;
+}
 
-
-function Info2({ row }) {
+function Gramatura({ row,index}) {
+  return <td>{row.gramatura}</td>;
+}
+function Bulk({ row,index}) {
+  return <td>{row.bulk}</td>;
+}
+function Info({ row }) {
   return <td>{row.info}</td>;
 }
-function Opiekun({ row }) {
-  return <td>{row.opiekun_nazwa}</td>;
-}
+// function Opiekun({ row }) {
+//   return <td>{row.opiekun_nazwa}</td>;
+// }
 
 
-function Gramatura({ row}) {
+function Gramatura2({ row}) {
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -308,7 +339,7 @@ return (
 );
 }
 
-function Bulk({ row}) {
+function Bulk2({ row}) {
   const appcontext = useContext(AppContext);
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
@@ -355,7 +386,7 @@ return (
 );
 }
 
-function Info({ row}) {
+function Info2({ row}) {
     const appcontext = useContext(AppContext);
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;

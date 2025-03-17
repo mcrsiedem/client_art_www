@@ -1,5 +1,6 @@
 import React, { useState, useRef,useContext } from "react";
 import style from "./TablePaperNazwa.module.css";
+import style2 from "./TablePaperNazwa2.module.css";
 
 import iconDelete from "assets/trash2.svg";
 import iconEdit from "assets/settings.svg";
@@ -26,6 +27,7 @@ export default function TablePaperNazwa({
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showChange, setShowChange] = useState(false);
+  const [show, setShow] = useState(true);
   const rowID = useRef();
 
   const inputElement = useRef();
@@ -64,6 +66,25 @@ export default function TablePaperNazwa({
         return style.tr;
       };
 
+      const color2 = (row) => {
+
+        if (row.select) {
+          return style2.tr_select;
+        }
+        if (row.delete) {
+          return style2.tr_delete;
+        }
+        if (row.insert) {
+          return style2.tr_insert;
+        }
+        if (row.update) {
+          return style2.tr_update;
+        }
+ 
+
+        return style2.tr;
+      };
+
       if(paperSelectView[1].view == true){
   return (
     <div ref={inputElement} className={style.main}>
@@ -78,13 +99,14 @@ export default function TablePaperNazwa({
           </tr>
         </thead>
         <tbody   className={style.center}>
-          {listaPapierowNazwyWyszukiwarka?.map((row, index) => {
+          {listaPapierowNazwyWyszukiwarka?.map((row2, index) => {
             return (
               // <tr className={row.insert ? style.tr_insert : style.tr}
-              <tr className={color(row)}
-                key={row.id}
+              <>
+              <tr  className={color(row2)}
+                key={row2.id}
                 onClick={()=>{
-                  setSelectRow(row)
+                  setSelectRow(row2)
                   setSelectTable(inputElement)
                   setListaPapierowNazwyWyszukiwarka(
                     prev=>prev.map((t, a) => {
@@ -95,7 +117,7 @@ export default function TablePaperNazwa({
                 
                     
                   }).map((t, a) => {
-                    if (t.id == row.id) {
+                    if (t.id == row2.id) {
                       return {
                         ...t,
                         select: true
@@ -148,8 +170,8 @@ export default function TablePaperNazwa({
                 
                 }
               >
-                <ID row={row} index={index + 1} />
-                <Nazwa row={row} setBtnZapisz={setBtnZapisz}/>
+                <ID row={row2} index={index + 1} />
+                <Nazwa row={row2} setBtnZapisz={setBtnZapisz}/>
     
 
                 {/* <Opiekun row={row} /> */}
@@ -172,6 +194,55 @@ export default function TablePaperNazwa({
                   setShowDeleteClientPane={setShowDeleteClientPane}
                 /> */}
               </tr>
+
+{listaPapierowWyszukiwarka?.filter(x => x.nazwa_id == row2.id).map((row, index) => {
+  if(show){
+      return (
+              // <tr className={row.insert ? style.tr_insert : style.tr}
+              <tr className={color2(row)}
+                key={row.id}
+                onClick={()=>{
+                  setSelectTable(inputElement)
+                  setSelectRow(row)
+                  setListaPapierowWyszukiwarka(
+                    prev=>prev.map((t, a) => {
+                      return {
+                        ...t,
+                        select: false
+                      };
+                
+                  }).map((t, a) => {
+                    if (t.id == row.id) {
+                      return {
+                        ...t,
+                        select: true
+                      };
+                    } else {
+                      return t;
+                    }
+                  })
+
+                );
+                }}
+                onDoubleClick={
+                  () => openEdit(row, rowID, setShowEdit)
+                }
+              >
+                <ID row={row} index={index + 1} />
+                <Nazwa row={row} />
+                <Gramatura row={row} />
+                <Wykonczenie row={row} />
+                <Bulk row={row} />
+                <Grupa row={row} />
+                <Info row={row} setBtnZapisz={setBtnZapisz}/>
+              </tr>
+            );
+  }
+            
+
+          })}
+
+              </>
             );
           })}
         </tbody>
@@ -445,4 +516,51 @@ function Nazwa({ row,setBtnZapisz}) {
       </input>
     </td>
   );
+}
+
+
+//-------------------------------- tu
+function Info({ row}) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+    const modalcontext = useContext(ModalInsertContext);
+    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+return (
+  <td className={style.labelinput}>
+
+    <input
+      className={style.select_papier_info}
+      type="text"
+      value={row.info}
+      onChange={(event) => {
+        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
+        if (event.target.value === "" || re.test(event.target.value)) {
+          // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
+         
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            // console.log("oprawa id" +prev)
+            if (t.id == row.id) {
+              return {
+                ...t,
+                info: event.target.value,
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+        setBtnZapiszPapierDisabled(false)
+
+        }
+      }}
+    >
+
+    </input>
+  </td>
+);
 }

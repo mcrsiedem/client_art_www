@@ -1,4 +1,4 @@
-import { useEffect,createContext,useState, useCallback } from "react";
+import { useEffect,createContext,useState, useCallback ,useRef} from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcesList } from 'actions/getProcesList';
@@ -52,19 +52,34 @@ export const AppContextProvider = ({children})=>{
        }
 
 
-
-
-    useEffect(()=>{
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (effectRan.current === true) {
+      
         getUsers(setUsers) 
-       
         getProcesList(setProcesList) // lista wszystkich dostępnych procesów
         getBindingType(setBindingTyp)
         getProductType(setProductType)
         getProcesListName(setProcesListName)
         getProcesory(setProcesory)
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
+
+    // useEffect(()=>{
+    //   console.log("app context22")
+    //     getUsers(setUsers) 
+       
+    //     getProcesList(setProcesList) 
+    //     getBindingType(setBindingTyp)
+    //     getProductType(setProductType)
+    //     getProcesListName(setProcesListName)
+    //     getProcesory(setProcesory)
        
 
-    },[])
+    // },[])
     
     return  <AppContext.Provider 
                 value={{

@@ -67,14 +67,21 @@ const scrollTable = (table) => {
     setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
     setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
+
   }
 
+
+//-----------
+  const effectRan = useRef(false);
   useEffect(() => {
-    getPapier();
-   
+    if (effectRan.current === true) {
+      getPapier();
+
+    }
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
-
-
 
 
  if(showPaperStage){
@@ -492,7 +499,7 @@ function PapierBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
 
       }}
     >
-      Papier
+      Wszystkie
     </button>
   );
 }

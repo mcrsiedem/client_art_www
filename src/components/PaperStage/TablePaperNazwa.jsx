@@ -1,17 +1,9 @@
 import React, { useState, useRef,useContext } from "react";
 import style from "./TablePaperNazwa.module.css";
-import style2 from "./TablePaperNazwa2.module.css";
 import logoExpand from "assets/expand.svg";
-
-import iconDelete from "assets/trash2.svg";
-import iconEdit from "assets/settings.svg";
-import iconCopy from "assets/copy.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import ChangePaper from "./ChangePaper";
-import { getMaxID } from "actions/getMaxID";
 import PaperRow from "./PaperRow";
-
 
 export default function TablePaperNazwa({
   selectRow,setSelectRow,
@@ -34,23 +26,66 @@ export default function TablePaperNazwa({
 
   const inputElement = useRef();
 
-
       const appcontext = useContext(AppContext);
       const modalcontext = useContext(ModalInsertContext);
-
       const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
       const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
       const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
       const listaPapierow = appcontext.listaPapierow;
       
-
       // const scrollTable = () => {
       //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
       // };
+      const handleClick = (rowPapierNazwy) => {
+        setSelectRow(rowPapierNazwy);
+        setSelectTable(inputElement);
+        setListaPapierowNazwyWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+            .map((t, a) => {
+              if (t.id == rowPapierNazwy.id) {
+                return {
+                  ...t,
+                  select: true,
+                };
+              } else {
+                return t;
+              }
+            })
+        );
+      }
+      
+      const handleDoubleClik = (ev) =>{
+        if ((document.onkeydown = ev.ctrlKey)) {
+          setPaperSelectView(
+            paperSelectView
+              .map((t) => {
+                return { ...t, view: false };
+              })
+              .map((t) => {
+                if (t.nazwa == "papier") {
+                  return { ...t, view: true };
+                } else {
+                  return t;
+                }
+              })
+          );
+      
+          const m = [...listaPapierow];
+          setListaPapierowWyszukiwarka(
+            m.filter((k) => k.nazwa_id == selectRow.id)
+          );
+        }
+        setSelectRow(null);
+      }
 
-
-
+      
       if(paperSelectView[1].view == true){
   return (
     <div ref={inputElement} className={style.main}>
@@ -58,84 +93,42 @@ export default function TablePaperNazwa({
         <thead>
           <tr>
             <th className={style.id}></th>
-
             <th className={style.info}>#</th>
             <th className={style.info}>Nazwa papieru</th>
-            {/* <th className={style.th_ustawienia}>Zmień</th> */}
-
           </tr>
         </thead>
         <tbody   className={style.center}>
-          {listaPapierowNazwyWyszukiwarka?.map((row2, index) => {
+          {listaPapierowNazwyWyszukiwarka?.map((rowPapierNazwy, index) => {
             return (
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <>
                 <tr
-                  className={color(row2)}
-                  key={row2.id}
+                  className={color(rowPapierNazwy)}
+                  key={rowPapierNazwy.id}
                   onClick={() => {
-                    setSelectRow(row2);
-                    setSelectTable(inputElement);
-                    setListaPapierowNazwyWyszukiwarka((prev) =>
-                      prev
-                        .map((t, a) => {
-                          return {
-                            ...t,
-                            select: false,
-                          };
-                        })
-                        .map((t, a) => {
-                          if (t.id == row2.id) {
-                            return {
-                              ...t,
-                              select: true,
-                            };
-                          } else {
-                            return t;
-                          }
-                        })
-                    );
+                    handleClick(rowPapierNazwy);
                   }}
-                  onDoubleClick={(x) => {
-                    if ((document.onkeydown = x.ctrlKey)) {
-                      setPaperSelectView(
-                        paperSelectView
-                          .map((t) => {
-                            return { ...t, view: false };
-                          })
-                          .map((t) => {
-                            if (t.nazwa == "papier") {
-                              return { ...t, view: true };
-                            } else {
-                              return t;
-                            }
-                          })
-                      );
-
-                      const m = [...listaPapierow];
-                      setListaPapierowWyszukiwarka(
-                        m.filter((k) => k.nazwa_id == selectRow.id)
-                      );
-                    }
-
-                    setSelectRow(null);
+                  onDoubleClick={(ev) => {
+                    handleDoubleClik(ev);
                   }}
                 >
-                  <Rozwin row={row2} />
-                  <ID row={row2} index={index + 1} />
-                  <Nazwa row={row2} setBtnZapisz={setBtnZapisz} />
-                  {/* <EXPAND row={row2}  /> */}
+                  <Rozwin row={rowPapierNazwy} />
+                  <ID row={rowPapierNazwy} index={index + 1} />
+                  <Nazwa row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                 </tr>
 
                 {listaPapierowWyszukiwarka
-                  ?.filter((x) => x.nazwa_id == row2.id)
+                  ?.filter((x) => x.nazwa_id == rowPapierNazwy.id)
                   .map((row, index) => {
-                    if (row2.isExpand) {
+                    if (rowPapierNazwy.isExpand) {
                       return (
-                        <PaperRow row={row} inputElement={inputElement} setSelectTable={setSelectTable} setSelectRow={setSelectRow}/>
-                      )
-                     
-
+                        <PaperRow
+                          row={row}
+                          inputElement={inputElement}
+                          setSelectTable={setSelectTable}
+                          setSelectRow={setSelectRow}
+                        />
+                      );
                     }
                   })}
               </>
@@ -144,11 +137,17 @@ export default function TablePaperNazwa({
         </tbody>
       </table>
 
-        {/* <ChangePaper showChange={showChange} setShowChange={setShowChange} selectedPaperRow={selectedPaperRow} /> */}
       
     </div>
   );
 }
+
+
+
+
+
+
+
 }
 const openEdit = (row, rowID, setShowEdit) => {
   // otwiera edycję po dwukrotnym kliknięciu
@@ -167,84 +166,8 @@ const openEdit = (row, rowID, setShowEdit) => {
 const chooseClient = (daneZamowienia, setDaneZamowienia, id) => {
   setDaneZamowienia({ ...daneZamowienia, klient_id: id });
 };
-function DeleteIcon({ row }) {
-  const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
-
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
 
-
-    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-
-  return (
-    <td>
-      <img
-        className={style.icon}
-        src={iconDelete}
-        onClick={() => {
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
-            if (t.id == row.id) {
-              return {
-                ...t,
-         
-                delete: true
-      
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        setBtnZapiszPapierDisabled(false)
-        }
-        
-      }
-
-        onDoubleClick={() => {
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
-            if (t.id == row.id) {
-              return {
-                ...t,
-         
-                delete: false
-      
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        setBtnZapiszPapierDisabled(false)
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
-}
-
-function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
-  return (
-    <td>
-      <img
-        className={style.icon}
-        src={iconEdit}
-        onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
-          setShowChange(true)
-          setSelectedPaperRow(row)
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
-}
 
 function Rozwin({ row }) {
   const appcontext = useContext(AppContext);
@@ -281,61 +204,8 @@ function Rozwin({ row }) {
 // }else return <p> </p>
 }
 
-function CopyIcon({ row,scrollTable,inputElement}) {
-
-  const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
-  const listaPapierow = appcontext.listaPapierow;
-  const setListaPapierow = appcontext.setListaPapierow;
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-  const showPaperStage = modalcontext.showPaperStage;
-  const setShowPaperStage = modalcontext.setShowPaperStage;
-  const selectedElementROW = modalcontext.selectedElementROW;
-  return (
-    <td>
-      <img
-        className={style.icon}
-        src={iconCopy}
-        onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
-          // rowID.current = { id: row.id, firma: row.firma };
-          // setShowChange(true)
-          // setSelectedPaperRow(row)
-          const promiseA = new Promise((resolve, reject) => {
-
-                 const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
-          newlistaPapierowWyszukiwarka.push({
-            ...row,
-            id: getMaxID(listaPapierowWyszukiwarka),
-            insert: true
-
-          })
-
-          setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
-            resolve(777);
-          });
-     
-          promiseA.then(res => scrollTable(inputElement))
-          
-          // const element = document.getElementById("table_paper");
-          // element.scrollTop = element.scrollHeight;
-          // element.scrollTo(0, element.scrollHeight);
 
 
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
-}
-
-function Grupa({ row }) {
-  return <td>
-
-    
-    {row.grupa}</td>;
-}
 function Nazwa2({ row }) {
 
   const appcontext = useContext(AppContext);

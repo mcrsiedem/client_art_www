@@ -91,8 +91,7 @@ function ProduktyTable2() {
         <FormatX row={produktyTech[0]} />
         <FormatY row={produktyTech[0]} />
         <RodzajOprawy row={produktyTech[0]} />
-      
-        
+        <OpisPostacPapieru row={produktyTech[0]} />
         <OpisSzerokoscArkusza row={produktyTech[0]} />
         <OpisWysokoscArkusza row={produktyTech[0]} />
         <OpisRodzajLegi row={produktyTech[0]} />
@@ -255,12 +254,22 @@ function Naklad({ row }) {
     </div>
   );
 }
+
+
+function OpisPostacPapieru({ row }) {
+  return (
+    <div className={style.col_dane}>
+      <label className={style.label}> Papier </label>
+      <input
+      disabled
+        className={style.input}
+      ></input>
+    </div>
+  );
+}
+
+
 function OpisSzerokoscArkusza({ row }) {
-
-  const contextApp = useContext(AppContext);
-  const contextTech = useContext(TechnologyContext);  
-  const updateRowProduktyTech = contextTech.updateRowProduktyTech;
-
   return (
     <div className={style.col_dane}>
       <label className={style.label}> ark. szer. </label>

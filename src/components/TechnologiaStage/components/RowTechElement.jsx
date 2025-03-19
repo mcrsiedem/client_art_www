@@ -63,6 +63,12 @@ export default function RowTechElement({
             handleChangeCardFragmenty_i_Elementy_Tech
           }
         />
+                <PapierPostac
+          row={row}
+          handleChangeCardFragmenty_i_Elementy_Tech={
+            handleChangeCardFragmenty_i_Elementy_Tech
+          }
+        />
         <ArkuszSzerokosc row={row} />
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
@@ -347,7 +353,6 @@ function PapierSelect2({
             papier_id: e.target.value,
             update: true
           });
-
           setArkusze(
             arkusze.map((arkusz) => {
               if (arkusz.element_id === row.id) {
@@ -362,15 +367,11 @@ function PapierSelect2({
               }
             })
           );
-
-
-          
         }}
       >
         {   <option value = "0"  >
            wybierz papier
           </option>}
-     
         {listaPapierow.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa} {option.gramatura} g/m2 {option.wykonczenie}
@@ -384,16 +385,69 @@ function PapierSelect2({
           setShowPaperStage(true)
           setSelectedElementROW(row)
           setListaPapierowWyszukiwarka(listaPapierow)
-          // showAddClientStage(true)
         }}
         alt="Procesy"
       />
    </div>
-
- 
   );
 }
 
+function PapierPostac({
+  row,handleChangeCardFragmenty_i_Elementy_Tech
+}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierow = appcontext.listaPapierow;
+  const modalcontext = useContext(ModalInsertContext);
+  const setShowPaperStage = modalcontext.setShowPaperStage;
+  const setSelectedElementROW = modalcontext.setSelectedElementROW;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowPostac = appcontext.listaPapierowPostac;
+
+   const techContext = useContext(TechnologyContext)
+      const arkusze = techContext.arkusze;
+      const setArkusze = techContext.setArkusze;
+
+  return (
+   <div className={style.papier_input_container}>
+      <select
+        className={row.papier_id =="0" ? style.select_papier_postac : style.select_papier_postac }
+        value={row.papier_postac_id}
+        onChange={(e) => {
+          handleChangeCardFragmenty_i_Elementy_Tech({
+            ...row,
+            papier_postac_id: e.target.value,
+            update: true
+          });
+          setArkusze(
+            arkusze.map((arkusz) => {
+              if (arkusz.element_id === row.id) {
+                return {
+                  ...arkusz,
+                  papier_postac_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return arkusz;
+              }
+            })
+          );
+        }}
+      >
+        {/* {  
+         <option value = "0"  >
+           wybierz
+          </option>} */}
+        {listaPapierowPostac.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.postac}
+          </option>
+        ))}
+      </select>
+
+   </div>
+  );
+}
 
 
 

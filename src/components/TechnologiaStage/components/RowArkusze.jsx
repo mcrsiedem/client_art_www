@@ -39,6 +39,7 @@ export default function RowArkusze  ({ row,i })  {
          <td></td>
          <td></td>
         <PapierSelectArkusze row={row} />
+        <PapierPostacArkusze row={row} />
         
        
         <ArkuszSzerokosc row={row} />
@@ -497,6 +498,46 @@ export default function RowArkusze  ({ row,i })  {
     );
   }
 
+  function PapierPostacArkusze({  row}) {
+    const appcontext = useContext(AppContext);
+    const listaPapierow = appcontext.listaPapierow;
+    const modalcontext = useContext(ModalInsertContext);
+    const setShowPaperStage = modalcontext.setShowPaperStage;
+    const setSelectedElementROW = modalcontext.setSelectedElementROW;
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+     const techContext = useContext(TechnologyContext)
+        const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+        const listaPapierowPostac = appcontext.listaPapierowPostac;
+  
+    return (
+     <div className={style.papier_input_container}>
+        <select
+          className={row.papier_id =="0" ? style.select_papier_postac : style.select_papier_postac }
+          value={row.papier_postac_id}
+          onChange={(e) => {
+
+            handleUpdateRowArkusze({
+              ...row,
+              papier_postac_id: parseInt(e.target.value),
+              update: true
+            })
+            
+          }}
+        >
+
+       
+          {listaPapierowPostac.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.postac}
+            </option>
+          ))}
+        </select>
+
+     </div>
+  
+   
+    );
+  }
 
   function SelectBoxArkusze({row}) {
 

@@ -8,54 +8,51 @@ import { AppContext } from "context/AppContext";
 
 export default function PaperRow({row,inputElement,setSelectTable,setSelectRow}) {
       const modalcontext = useContext(ModalInsertContext);
-        const appcontext = useContext(AppContext);
+      const appcontext = useContext(AppContext);
       const selectedElementROW = modalcontext.selectedElementROW;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
 
 
       return (
-
-        <div className={style2.row_papier}>
-          <tr
-            className={color2(row)}
-            key={row.id}
-            onClick={() => {
-              setSelectTable(inputElement);
-              setSelectRow(row);
-              setListaPapierowWyszukiwarka((prev) =>
-                prev
-                  .map((t, a) => {
+        <tr
+          className={color2(row)}
+          key={row.id}
+          onClick={() => {
+            setSelectTable(inputElement);
+            setSelectRow(row);
+            setListaPapierowWyszukiwarka((prev) =>
+              prev
+                .map((t, a) => {
+                  return {
+                    ...t,
+                    select: false,
+                  };
+                })
+                .map((t, a) => {
+                  if (t.id == row.id) {
                     return {
                       ...t,
-                      select: false,
+                      select: true,
                     };
-                  })
-                  .map((t, a) => {
-                    if (t.id == row.id) {
-                      return {
-                        ...t,
-                        select: true,
-                      };
-                    } else {
-                      return t;
-                    }
-                  })
-              );
-            }}
-            // onDoubleClick={() =>
-            //   openEdit(row, rowID, setShowEdit)
-            // }
-          >
-            <ID row={row} />
-            {/* <Nazwa row={row} /> */}
-            <Gramatura row={row} />
-            <Wykonczenie row={row} />
-            <Bulk row={row} />
-            {/* <Grupa row={row} />  */}
-         
-            <Info row={row}  />
-          </tr>
-        </div>
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          }}
+          // onDoubleClick={() =>
+          //   openEdit(row, rowID, setShowEdit)
+          // }
+        >
+          <ID row={row} />
+          {/* <Nazwa row={row} /> */}
+          <Gramatura row={row} />
+          <Wykonczenie row={row} />
+          <Bulk row={row} />
+          {/* <Grupa row={row} />  */}
+
+          <Info row={row} />
+        </tr>
       );
 
 

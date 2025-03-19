@@ -160,43 +160,18 @@ export default function TablePaperNazwa({
 
                     setSelectRow(null)
                   }
-                  // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
-               
-// const [paperSelectView, setPaperSelectView] = useState([
-//   {id:1,nazwa:"papier",view:true},
-//   {id:2,nazwa:"nazwa",view:false},
-//   {id:3,nazwa:"grupa",view:false}
-// ]);
+
                 
                 }
               >
                 <ID row={row2} index={index + 1} />
                 <Nazwa row={row2} setBtnZapisz={setBtnZapisz}/>
-    
-
-                {/* <Opiekun row={row} /> */}
-                {/* <UseIcon
-                  row={row}
-                  rowID={rowID}
-                  daneZamowienia={daneZamowienia}
-                  setDaneZamowienia={setDaneZamowienia}
-                  setShowChange={setShowChange}
-                  setSelectedPaperRow={setSelectedPaperRow}
-
-                /> */}
-
-                {/* <CopyIcon row={row} scrollTable={scrollTable} inputElement={inputElement}/>
-                <DeleteIcon
-                  scrollTable={  scrollTable}
-                  daneZamowienia={daneZamowienia}
-                  row={row}
-                  rowID={rowID}
-                  setShowDeleteClientPane={setShowDeleteClientPane}
-                /> */}
+                {/* <EXPAND row={row2}  /> */}
+  
               </tr>
 
 {listaPapierowWyszukiwarka?.filter(x => x.nazwa_id == row2.id).map((row, index) => {
-  if(show){
+  if(row2.isExpand){
       return (
           <div className={style2.row_papier}>
               <div className={color2(row)}
@@ -460,6 +435,9 @@ function Gramatura({ row, index }) {
 
 function ID({ row,index}) {
   return <td>{index}</td>;
+}
+function EXPAND({ row,index}) {
+  return <td>{row.isExpand}s</td>;
 }
 
 function Wykonczenie({ row }) {

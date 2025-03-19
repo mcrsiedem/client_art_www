@@ -48,10 +48,12 @@ if(paperSelectView[0].view == true){
           <tr>
             <th className={style.id}>#</th>
             <th className={style.nazwa}>Nazwa</th>
-            <th className={style.gramatura}>g/m2</th>
-            <th className={style.wykonczenie}>Wykonczenie</th>
-            <th className={style.opiekun}>Bulk</th>
+            <th className={style.bulk}>g/m2</th>
+            <th className={style.bulk}>Wykonczenie</th>
+            <th className={style.bulk}>Bulk</th>
+            <th className={style.grupa}>Powleczenie</th>
             <th className={style.grupa}>Grupa</th>
+            <th className={style.grupa}>Rodzaj</th>
             <th className={style.info}>Opis</th>
           </tr>
         </thead>
@@ -93,7 +95,9 @@ if(paperSelectView[0].view == true){
                 <Gramatura row={row} />
                 <Wykonczenie row={row} />
                 <Bulk row={row} />
+                <Powleczenie row={row} />
                 <Grupa row={row} />
+                <Rodzaj row={row} />
                 <Info row={row} setBtnZapisz={setBtnZapisz}/>
               </tr>
             );
@@ -210,6 +214,16 @@ function Grupa({ row,index}) {
   const appcontext = useContext(AppContext);
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;
   return <td>{listaPapierowGrupa.filter(x => x.id == row.grupa_id)[0].grupa}</td>;
+}
+function Rodzaj({ row,index}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowRodzaj = appcontext.listaPapierowRodzaj;
+  return <td>{row.rodzaj}</td>;
+}
+function Powleczenie({ row,index}) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowRodzaj = appcontext.listaPapierowRodzaj;
+  return <td>{row.powleczenie}</td>;
 }
 
 function Wykonczenie({ row,index}) {

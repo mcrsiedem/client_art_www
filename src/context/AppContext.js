@@ -21,11 +21,22 @@ export const AppContextProvider = ({children})=>{
     const [zamowienia, setZamowienia] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
     const [nadkomplety, setNadkomplety] = useState();
+
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
     const [listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka] = useState();
     const [listaPapierowGrupa,setListaPapierowGrupa] = useState();
     const [listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka] = useState();
+    const [listaPapierowPostac,setListaPapierowPostac] = useState();
+    const [listaPapierowPostacWyszukiwarka, setListaPapierowPostacWyszukiwarka] = useState();
+    const [listaPapierowRodzaj,setListaPapierowRodzaj] = useState();
+    const [listaPapierowRodzajWyszukiwarka, setListaPapierowRodzajWyszukiwarka] = useState();
+    const [listaPapierowWykonczenia,setListaPapierowWykonczenia] = useState();
+    const [listaPapierowWykonczeniaWyszukiwarka, setListaPapierowWykonczeniaWyszukiwarka] = useState();
+
+    const [listaPapierowPowleczenieWyszukiwarka,setListaPapierowPowleczenieWyszukiwarka] = useState();
+    const [listaPapierowPowleczenie, setListaPapierowPowleczenie] = useState();
+
     const [wykonczenieEdit, setWykonczenieEdit] = useState(_wykonczenie);
     const [procesory, setProcesory] = useState();
     const [mobile, setMobile] = useState(false);
@@ -93,25 +104,26 @@ export const AppContextProvider = ({children})=>{
                     rowSelected, setRowSelected, // druk
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
-      
                     listaPapierow, setListaPapierow,
                     listaPapierowNazwy, setListaPapierowNazwy,
                     listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka,
                     listaPapierowGrupa,setListaPapierowGrupa,
                     listaPapierowGrupaWyszukiwarka, setListaPapierowGrupaWyszukiwarka,
-
+                    listaPapierowPostac,setListaPapierowPostac,listaPapierowPostacWyszukiwarka, setListaPapierowPostacWyszukiwarka,
+                    listaPapierowRodzaj,setListaPapierowRodzaj,listaPapierowRodzajWyszukiwarka, setListaPapierowRodzajWyszukiwarka,
+                    listaPapierowWykonczenia,setListaPapierowWykonczenia,listaPapierowWykonczeniaWyszukiwarka, setListaPapierowWykonczeniaWyszukiwarka,
+                    listaPapierowPowleczenie, setListaPapierowPowleczenie,listaPapierowPowleczenieWyszukiwarka,setListaPapierowPowleczenieWyszukiwarka,
+                    
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
-                    mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit
-
-            
+                    mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                 }}
             >
                 {children}
             </AppContext.Provider>
-
 }
+
 
 const _firma = [
     {

@@ -64,6 +64,9 @@
 
 
 }
+
+
+
 .wykonczenie{
     width: 60px;
     text-align: center;
@@ -100,4 +103,5 @@
   .input_info{
     border: none;
     background-color: transparent;
+    width: 50%;
 }

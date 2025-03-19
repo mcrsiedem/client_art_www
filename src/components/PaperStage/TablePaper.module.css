@@ -118,7 +118,13 @@ text-align: center;
 
 .gramatura{
     width: 6%;
-    text-align: center;
+    text-align: left;
+
+}
+
+.bulk{
+  width: 60px;
+  /* text-align: left; */
 
 }
 

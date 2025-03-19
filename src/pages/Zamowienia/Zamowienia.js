@@ -16,6 +16,7 @@ import MenuZamowienia from "./components/MenuZamowienia";
 import DecodeToken from "pages/Login/DecodeToken";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
+import { getPapieryPostac } from "actions/getPapieryPostac";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -34,6 +35,8 @@ const listaPapierowNazwy = contextApp.listaPapierowNazwy;
 const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
 const setClients = contextApp.setClients;
 const setNadkomplety = contextApp.setNadkomplety;
+const setListaPapierowPostac = contextApp.setListaPapierowPostac;
+const setListaPapierowPostacWyszukiwarka = contextApp.setListaPapierowPostacWyszukiwarka;
 
 
 
@@ -68,6 +71,11 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
     setListaPapierow([...res3.data]);
     const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
     setListaPapierowNazwy([...res4.data]);
+
+
+
+getPapieryPostac(setListaPapierowPostac,setListaPapierowPostacWyszukiwarka)
+
          getClients(setClients )
          getNadkomplety(setNadkomplety)
         

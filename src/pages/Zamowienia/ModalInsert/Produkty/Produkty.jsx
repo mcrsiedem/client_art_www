@@ -36,6 +36,7 @@ function ProduktyTable2() {
         <FormatY row={produkty[0]} />
         <Nazwa row={produkty[0]} />
         <RodzajOprawy row={produkty[0]} />
+        <PostacPapieru row={produkty[0]} />
         <Uwagi row={produkty[0]} />
       </div>
     </div>
@@ -250,6 +251,26 @@ const contextApp = useContext(AppContext);
           </option>
         ))}
       </select>
+    </div>
+  );
+}
+
+function PostacPapieru({ row,handleChangeCardOprawa}) {
+  //rola arkusz
+  const contextModalInsert = useContext(ModalInsertContext);
+const produkty = contextModalInsert.produkty;
+const setProdukty = contextModalInsert.setProdukty;
+const contextApp = useContext(AppContext);
+
+  return (
+    <div className={style.col_dane}>
+<label className={style.label}> Papier </label>
+      <input
+        disabled
+        className={style.select_oprawa}
+      >
+
+      </input>
     </div>
   );
 }

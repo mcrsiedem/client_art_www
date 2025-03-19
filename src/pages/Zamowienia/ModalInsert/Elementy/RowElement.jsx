@@ -218,10 +218,8 @@ export default function RowElement({
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
         />
-        {/* <Gramatura
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        /> */}
+        <PapierPostacElement  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
+
         <Uwagi
           row={row}
           handleChangeCardElementy={handleChangeCardElementy}
@@ -373,26 +371,19 @@ function Dodaj({ row, handleAddCard }) {
 }
   
   function Typ({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
-
     //row - row element
     return (
-     
         <select
           className={style.select}
           value={row.typ}
           onChange={(e) => {
-
             handleChangeCardFragmenty_i_Elementy({
               ...row,
               typ: e.target.value,
               update: true
             }
             );
-
           }}
-
-    
-
         >
           {}
           {_typ_elementu.map((option) => (
@@ -401,9 +392,36 @@ function Dodaj({ row, handleAddCard }) {
             </option>
           ))}
         </select>
-      
     );
   }
+
+  
+  function PapierPostacElement({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
+    //row - row element
+const contextApp = useContext(AppContext);
+    return (
+        <select
+          className={style.select}
+          value={row.papier_postac_id}
+          onChange={(e) => {
+            handleChangeCardFragmenty_i_Elementy({
+              ...row,
+              papier_postac_id: e.target.value,
+              update: true
+            }
+            );
+          }}
+        >
+          {}
+          {contextApp.listaPapierowPostac.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.postac}
+            </option>
+          ))}
+        </select>
+    );
+  }
+
   
 
   function PapierSelect2({

@@ -29,10 +29,16 @@ export default function PaperStage() {
     const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
     const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
     const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-
-    const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
 
+    const setListaPapierowPostac = appcontext.setListaPapierowPostac;
+    const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
+    const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
+    const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
+    const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
+    const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
+    const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
+    const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
 
 
 
@@ -56,16 +62,45 @@ const scrollTable = (table) => {
 
   async function getPapier() {
     const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    setListaPapierow([...res.data]  );
+    setListaPapierowWyszukiwarka([...res.data] );
 
     const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-    setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false}}  ));
+    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false}}  ));
+
 
     const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-    setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    setListaPapierowGrupa([...res3.data]);
+    setListaPapierowGrupaWyszukiwarka([...res3.data]);
+
+    const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
+    setListaPapierowPostac([...res4.data]);
+    setListaPapierowPostacWyszukiwarka([...res4.data]);
+
+    const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
+    setListaPapierowRodzaj([...res5.data]);
+    setListaPapierowRodzajWyszukiwarka([...res5.data]);
+    
+    const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
+    setListaPapierowWykonczenia([...res6.data]);
+    setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
+
+    const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
+    setListaPapierowPowleczenie([...res7.data]);
+    setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
+
+    // const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
+    // setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    // setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+
+    // const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
+    // setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    // setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+
+    // const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
+    // setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
+    // setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
 
 
   }

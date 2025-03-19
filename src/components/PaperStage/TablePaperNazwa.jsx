@@ -48,43 +48,7 @@ export default function TablePaperNazwa({
       //   inputElement.current.scrollTo({ top: 10000, behavior: "smooth" })
       // };
 
-      const color = (row) => {
 
-        if (row.select) {
-          return style.tr_select;
-        }
-        if (row.delete) {
-          return style.tr_delete;
-        }
-        if (row.insert) {
-          return style.tr_insert;
-        }
-        if (row.update) {
-          return style.tr_update;
-        }
- 
-
-        return style.tr;
-      };
-
-      const color2 = (row) => {
-
-        if (row.select) {
-          return style2.tr_select;
-        }
-        if (row.delete) {
-          return style2.tr_delete;
-        }
-        if (row.insert) {
-          return style2.tr_insert;
-        }
-        if (row.update) {
-          return style2.tr_update;
-        }
- 
-
-        return style2.tr;
-      };
 
       if(paperSelectView[1].view == true){
   return (
@@ -92,8 +56,9 @@ export default function TablePaperNazwa({
       <table  className={style.table2}>
         <thead>
           <tr>
-            <th className={style.id}>#</th>
+            <th className={style.id}></th>
 
+            <th className={style.info}>#</th>
             <th className={style.info}>Nazwa papieru</th>
             {/* <th className={style.th_ustawienia}>Zmień</th> */}
 
@@ -104,124 +69,114 @@ export default function TablePaperNazwa({
             return (
               // <tr className={row.insert ? style.tr_insert : style.tr}
               <>
-              <tr  className={color(row2)}
-                key={row2.id}
-                onClick={()=>{
-                  setSelectRow(row2)
-                  setSelectTable(inputElement)
-                  setListaPapierowNazwyWyszukiwarka(
-                    prev=>prev.map((t, a) => {
-                      return {
-                        ...t,
-                        select: false
-                      };
-                
-                    
-                  }).map((t, a) => {
-                    if (t.id == row2.id) {
-                      return {
-                        ...t,
-                        select: true
-                      };
-                    } else {
-                      return t;
-                    }
-                  })
-
-                );
-                }}
-                onDoubleClick={
-                  (x) => {
-
-                    if(document.onkeydown = x.ctrlKey){
-
-                   setPaperSelectView(
-                      paperSelectView
-                        .map((t) => {
-                          return { ...t, view: false };
+                <tr
+                  className={color(row2)}
+                  key={row2.id}
+                  onClick={() => {
+                    setSelectRow(row2);
+                    setSelectTable(inputElement);
+                    setListaPapierowNazwyWyszukiwarka((prev) =>
+                      prev
+                        .map((t, a) => {
+                          return {
+                            ...t,
+                            select: false,
+                          };
                         })
-                        .map((t) => {
-                          if (t.nazwa == "papier") {
-                            return { ...t, view: true };
+                        .map((t, a) => {
+                          if (t.id == row2.id) {
+                            return {
+                              ...t,
+                              select: true,
+                            };
                           } else {
                             return t;
                           }
                         })
                     );
+                  }}
+                  onDoubleClick={(x) => {
+                    if ((document.onkeydown = x.ctrlKey)) {
+                      setPaperSelectView(
+                        paperSelectView
+                          .map((t) => {
+                            return { ...t, view: false };
+                          })
+                          .map((t) => {
+                            if (t.nazwa == "papier") {
+                              return { ...t, view: true };
+                            } else {
+                              return t;
+                            }
+                          })
+                      );
 
-                    const m = [...listaPapierow];
-                    setListaPapierowWyszukiwarka(
-                      m.filter((k) =>
-                        k.nazwa_id == selectRow.id)
-            
-                    );
-
+                      const m = [...listaPapierow];
+                      setListaPapierowWyszukiwarka(
+                        m.filter((k) => k.nazwa_id == selectRow.id)
+                      );
                     }
- 
 
-                    setSelectRow(null)
-                  }
+                    setSelectRow(null);
+                  }}
+                >
+                  <Rozwin row={row2} />
+                  <ID row={row2} index={index + 1} />
+                  <Nazwa row={row2} setBtnZapisz={setBtnZapisz} />
+                  {/* <EXPAND row={row2}  /> */}
+                </tr>
 
-                
-                }
-              >
-                <Rozwin row={row2}  />
-                <ID row={row2} index={index + 1} />
-                <Nazwa row={row2} setBtnZapisz={setBtnZapisz}/>
-                {/* <EXPAND row={row2}  /> */}
-  
-              </tr>
+                {listaPapierowWyszukiwarka
+                  ?.filter((x) => x.nazwa_id == row2.id)
+                  .map((row, index) => {
+                    if (row2.isExpand) {
 
-{listaPapierowWyszukiwarka?.filter(x => x.nazwa_id == row2.id).map((row, index) => {
-  if(row2.isExpand){
-      return (
-          <div className={style2.row_papier}>
-              <div className={color2(row)}
-                key={row.id}
-                onClick={()=>{
-                  setSelectTable(inputElement)
-                  setSelectRow(row)
-                  setListaPapierowWyszukiwarka(
-                    prev=>prev.map((t, a) => {
-                      return {
-                        ...t,
-                        select: false
-                      };
-                
-                  }).map((t, a) => {
-                    if (t.id == row.id) {
-                      return {
-                        ...t,
-                        select: true
-                      };
-                    } else {
-                      return t;
+                      
+                      return (
+
+                        <div className={style2.row_papier}>
+                          <tr
+                            className={color2(row)}
+                            key={row.id}
+                            onClick={() => {
+                              setSelectTable(inputElement);
+                              setSelectRow(row);
+                              setListaPapierowWyszukiwarka((prev) =>
+                                prev
+                                  .map((t, a) => {
+                                    return {
+                                      ...t,
+                                      select: false,
+                                    };
+                                  })
+                                  .map((t, a) => {
+                                    if (t.id == row.id) {
+                                      return {
+                                        ...t,
+                                        select: true,
+                                      };
+                                    } else {
+                                      return t;
+                                    }
+                                  })
+                              );
+                            }}
+                            onDoubleClick={() =>
+                              openEdit(row, rowID, setShowEdit)
+                            }
+                          >
+                            <ID row={row} index={index + 1} />
+                            <Nazwa row={row} />
+                            <Gramatura row={row} />
+                            <Wykonczenie row={row} />
+                            <Bulk row={row} />
+                            <Grupa row={row} />
+                            <Info row={row} setBtnZapisz={setBtnZapisz} />
+                          </tr>
+                        </div>
+                      );
                     }
-                  })
-
-                );
-                }}
-                onDoubleClick={
-                  () => openEdit(row, rowID, setShowEdit)
-                }
-              >
-                <ID row={row} index={index + 1} />
-                <Nazwa row={row} />
-                <Gramatura row={row} />
-                <Wykonczenie row={row} />
-                <Bulk row={row} />
-                <Grupa row={row} />
-                <Info row={row} setBtnZapisz={setBtnZapisz}/>
-              </div>
-
-              </div>
-
-            );
-  }
-            
-
-          })}
-
+                  })}
               </>
             );
           })}
@@ -582,3 +537,41 @@ return (
   </td>
 );
 }
+
+const color = (row) => {
+
+  if (row.select) {
+    return style.tr_select;
+  }
+  if (row.delete) {
+    return style.tr_delete;
+  }
+  if (row.insert) {
+    return style.tr_insert;
+  }
+  if (row.update) {
+    return style.tr_update;
+  }
+
+
+  return style.tr;
+};
+
+const color2 = (row) => {
+
+  if (row.select) {
+    return style2.tr_select;
+  }
+  if (row.delete) {
+    return style2.tr_delete;
+  }
+  if (row.insert) {
+    return style2.tr_insert;
+  }
+  if (row.update) {
+    return style2.tr_update;
+  }
+
+
+  return style2.tr;
+};

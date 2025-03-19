@@ -118,6 +118,7 @@ export default function RowElement({
           format_x: card.format_x,
           format_y: card.format_y,
           papier_id: card.papier_id,
+          papier_postac_id: card.papier_postac_id,
           stan: card.stan,
           status: card.status,
           etap: card.etap,

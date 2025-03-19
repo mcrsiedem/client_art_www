@@ -1,6 +1,7 @@
 import React, { useState, useRef,useContext } from "react";
 import style from "./TablePaperNazwa.module.css";
 import style2 from "./TablePaperNazwa2.module.css";
+import logoExpand from "assets/expand.svg";
 
 import iconDelete from "assets/trash2.svg";
 import iconEdit from "assets/settings.svg";
@@ -164,6 +165,7 @@ export default function TablePaperNazwa({
                 
                 }
               >
+                <Rozwin row={row2}  />
                 <ID row={row2} index={index + 1} />
                 <Nazwa row={row2} setBtnZapisz={setBtnZapisz}/>
                 {/* <EXPAND row={row2}  /> */}
@@ -326,6 +328,41 @@ function UseIcon({ row,setShowChange ,setSelectedPaperRow}) {
       />
     </td>
   );
+}
+
+function Rozwin({ row }) {
+  const appcontext = useContext(AppContext);
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+
+  // if  (fragmenty?.filter((x) => x.element_id == row.id).length !== 0){
+  return (
+    <div>
+      <img
+        className={style.expand}
+        src={logoExpand}
+        onClick={() => {
+
+          setListaPapierowNazwyWyszukiwarka(
+            listaPapierowNazwyWyszukiwarka.map((t) => {
+              if (t.id == row.id) {
+                return {...t,
+                  isExpand: !t.isExpand
+                
+                }
+              } else {
+                return t;
+              }
+            })
+          );
+ 
+          
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+// }else return <p> </p>
 }
 
 function CopyIcon({ row,scrollTable,inputElement}) {

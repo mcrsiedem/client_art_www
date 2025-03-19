@@ -210,6 +210,8 @@ function Grupa2({ row }) {
     </td>;
 }
 
+
+
 function Grupa({ row,index}) {
   const appcontext = useContext(AppContext);
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;

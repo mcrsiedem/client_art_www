@@ -77,6 +77,7 @@ export function createArkuszeFromElemenets(
       arkusz_szerokosc: row.arkusz_szerokosc,
       arkusz_wysokosc: row.arkusz_wysokosc,
       papier_id: row.papier_id,
+      papier_postac_id: row.papier_postac_id,
       technologia_id: row.technologia_id,
       insert: true
     };

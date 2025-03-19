@@ -524,7 +524,10 @@ export default function RowArkusze  ({ row,i })  {
             
           }}
         >
-
+     {/* {  
+         <option value = "0"  >
+           wybierz
+          </option>} */}
        
           {listaPapierowPostac.map((option) => (
             <option key={option.id} value={option.id}>

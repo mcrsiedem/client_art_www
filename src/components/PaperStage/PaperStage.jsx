@@ -92,19 +92,6 @@ const scrollTable = (table) => {
     setListaPapierowPowleczenie([...res7.data]);
     setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
 
-    // const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    // setListaPapierow([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    // setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-
-    // const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-    // setListaPapierowNazwy([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    // setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-
-    // const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-    // setListaPapierowGrupa([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-    // setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, update:null,insert:null,delete:null}}  ));
-
-
   }
 
 
@@ -244,7 +231,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
           });
-          promiseA.then(res => scrollTable(selectTable))
+          // promiseA.then(res => scrollTable(selectTable))
           setBtnZapiszPapierDisabled(false)
 
             }
@@ -277,7 +264,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
                   setListaPapierowGrupaWyszukiwarka(newlistaPapierowGrupaWyszukiwarka)
                     resolve(777);
                   });
-                  promiseA.then(res => scrollTable(selectTable))
+                  // promiseA.then(res => scrollTable(selectTable))
                   setBtnZapiszPapierDisabled(false)
         
                     }
@@ -316,13 +303,13 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
         onClick={() => {
 
           if(selectRow!= null){
-            if(paperSelectView[0].view == true){
+            if(selectRow.typ_row == 1){
                   setListaPapierowWyszukiwarka(
                     listaPapierowWyszukiwarka.map((t, a) => {
                     if (t.id == selectRow.id) {
                       return {
                         ...t,
-                        delete: true
+                        delete: !t.delete
                       };
                     } else {
                       return t;
@@ -332,7 +319,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
 
             }
 
-            if(paperSelectView[1].view == true){
+            if(selectRow.typ_row == 2){
               setListaPapierowNazwyWyszukiwarka(
                 listaPapierowNazwyWyszukiwarka.map((t, a) => {
 
@@ -340,7 +327,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
                            if (t.id == selectRow.id) {
                   return {
                     ...t,
-                    delete: true
+                    delete: !t.delete
                   };
                 } else {
                   return t;
@@ -353,14 +340,14 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
             );
         }
 
-        if(paperSelectView[2].view == true){
+        if(selectRow.typ_row == 3){
           setListaPapierowGrupaWyszukiwarka(
             listaPapierowGrupaWyszukiwarka.map((t, a) => {
               if(listaPapierowWyszukiwarka.filter(x=> x.grupa_id == selectRow.id).length ==0){
             if (t.id == selectRow.id) {
               return {
                 ...t,
-                delete: true
+                delete: !t.delete
               };
             } else {
               return t;

@@ -82,7 +82,10 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
                   <ID row={rowPapierNazwy} index={index + 1} />
                   <Nazwa row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                   <td></td>
-                  <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          
                 </tr>
 
                 {listaPapierowWyszukiwarka

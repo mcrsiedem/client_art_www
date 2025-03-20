@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import style from "./ChangePaper.module.css";
-import style2 from "./TablePaperNazwa2.module.css";
+import style from "./PaperRow.module.css";
 import { AppContext } from "context/AppContext";
 
 
@@ -44,8 +43,11 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
           //   openEdit(row, rowID, setShowEdit)
           // }
         >
-          <ID row={row} />
+          {/* <ID row={row} /> */}
           {/* <Nazwa row={row} /> */}
+          <td></td>
+          <td></td>
+          <td className={ style.nazwa }>{row.nazwa}</td>
           <Gramatura row={row} />
           <Wykonczenie row={row} />
           <Bulk row={row} />
@@ -122,18 +124,18 @@ return (
 const color2 = (row) => {
 
   if (row.select) {
-    return style2.tr_select;
+    return style.tr_select;
   }
   if (row.delete) {
-    return style2.tr_delete;
+    return style.tr_delete;
   }
   if (row.insert) {
-    return style2.tr_insert;
+    return style.tr_insert;
   }
   if (row.update) {
-    return style2.tr_update;
+    return style.tr_update;
   }
 
 
-  return style2.tr;
+  return style.tr;
 };

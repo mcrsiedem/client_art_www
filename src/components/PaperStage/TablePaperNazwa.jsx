@@ -29,8 +29,10 @@ export default function TablePaperNazwa({
             <th className={style.id}></th>
             <th className={style.info}>#</th>
             <th className={style.info}>Nazwa papieru</th>
-            <th className={style.info}>Nazwa papieru</th>
-            <th className={style.info}>Nazwa papieru</th>
+            <th className={style.info}>Gramatura</th>
+            <th className={style.info}>Wykonczenie</th>
+            <th className={style.info}>Bulk</th>
+            <th className={style.info}>Uwagi</th>
 
           </tr>
         </thead>

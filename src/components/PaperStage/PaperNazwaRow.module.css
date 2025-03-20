@@ -1,0 +1,96 @@
+.rozwin{
+  width: 10px;
+}
+
+.id{
+  width: 10px;
+}
+
+.nazwa{
+  width: 20%;
+}
+
+
+.expand{
+  width: 15px;
+  padding-bottom: 5px;
+  rotate: 270deg;
+}
+
+.expand_down{
+  width: 15px;
+  padding-bottom: 5px;
+}
+
+
+.input_info{
+  border: none;
+background-color: transparent;
+  width: 500px;
+}
+
+.icon{
+  padding-top: 3px;
+  width: 15px;
+  margin-right: 10px;
+}
+
+
+.tr:hover{
+  background-color: rgb(210, 210, 210);
+
+}
+
+.tr_insert{
+  background-color: rgb(196, 255, 206);
+}
+.tr_insert:nth-of-type(2n){
+  background-color: rgb(196, 255, 206);
+}
+
+.tr_update{
+  background-color: rgb(242, 243, 160);
+}
+.tr_update:nth-of-type(2n){
+  background-color: rgb(242, 243, 160);
+}
+
+.tr_delete{
+  background-color: rgb(243, 160, 160);
+}
+.tr_delete:nth-of-type(2n){
+  background-color: rgb(243, 160, 160);
+}
+
+.tr_select{
+  /* background-image: linear-gradient( rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+  background-color: rgb(183, 183, 183);
+  
+}
+.tr_select:nth-of-type(2n){
+  /* background-image: linear-gradient( rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+  background-color: rgb(183, 183, 183);
+}
+
+
+
+
+
+.main{
+    overflow-y: auto;
+}
+
+.main::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+
+  .main::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  }
+  
+
+  .main::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(137, 188, 254) 50%, rgb(107, 158, 224) 100%);
+  }
+

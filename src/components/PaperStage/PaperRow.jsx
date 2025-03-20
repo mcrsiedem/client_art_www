@@ -10,7 +10,8 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
       const appcontext = useContext(AppContext);
       const selectedElementROW = modalcontext.selectedElementROW;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-
+      const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+      
 
       return (
         <tr
@@ -38,6 +39,27 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
                   }
                 })
             );
+
+
+            setListaPapierowNazwyWyszukiwarka((prev) =>
+              prev
+                .map((t, a) => {
+                  return {
+                    ...t,
+                    select: false,
+                  };
+                })
+          
+            );
+
+
+
+
+
+
+
+
+
           }}
           // onDoubleClick={() =>
           //   openEdit(row, rowID, setShowEdit)

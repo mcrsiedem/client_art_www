@@ -38,6 +38,20 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
               }
             })
         );
+
+
+        setListaPapierowWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+        );
+        
+
+
       }
       
       const handleDoubleClik = (ev) =>{

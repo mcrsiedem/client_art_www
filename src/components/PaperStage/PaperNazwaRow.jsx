@@ -164,55 +164,55 @@ function Rozwin({ row }) {
 
 
 
-function Nazwa2({ row }) {
+// function Nazwa2({ row }) {
 
-  const appcontext = useContext(AppContext);
+//   const appcontext = useContext(AppContext);
 
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+//   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
 
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-  return <td>
-            <select
-          className={ style.select_papier }
-          value={row.nazwa}
-          onChange={(e) => {
-            setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka?.map((t, a) => {
-              // console.log("oprawa id" +prev)
-              if (t.id == row.id) {
-                return {
-                  ...t,
-                  nazwa_id: e.target.value,
-                  update: true
+//   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+//   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+//   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+//   return <td>
+//             <select
+//           className={ style.select_papier }
+//           value={row.nazwa}
+//           onChange={(e) => {
+//             setListaPapierowWyszukiwarka(
+//               listaPapierowWyszukiwarka?.map((t, a) => {
+//               // console.log("oprawa id" +prev)
+//               if (t.id == row.id) {
+//                 return {
+//                   ...t,
+//                   nazwa_id: e.target.value,
+//                   update: true
         
-                };
-              } else {
-                return t;
-              }
-            })
-          );
+//                 };
+//               } else {
+//                 return t;
+//               }
+//             })
+//           );
 
-          setBtnZapiszPapierDisabled(false)
-          }}
-        >
-          {   <option value = "0"  >
-             wybierz papier
-            </option>}
+//           setBtnZapiszPapierDisabled(false)
+//           }}
+//         >
+//           {   <option value = "0"  >
+//              wybierz papier
+//             </option>}
        
-          {listaPapierowNazwy.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
-    </td>;
-}
+//           {listaPapierowNazwy.map((option) => (
+//             <option key={option.id} value={option.id}>
+//               {option.nazwa}
+//             </option>
+//           ))}
+//         </select>
+//     </td>;
+// }
 
 
 function ID({ row,index}) {
-  return <td>{index}</td>;
+  return <td  className={style.id}>{index}</td>;
 }
 
 
@@ -225,7 +225,7 @@ function Nazwa({ row,setBtnZapisz}) {
       // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
       const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
   return (
-    <td className={style.id}>
+    <td className={style.nazwa}>
 
       <input
         className={style.input_info}

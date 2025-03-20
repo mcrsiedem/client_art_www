@@ -11,7 +11,6 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
       const selectedElementROW = modalcontext.selectedElementROW;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
       const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-      
 
       return (
         <tr
@@ -40,7 +39,6 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
                 })
             );
 
-
             setListaPapierowNazwyWyszukiwarka((prev) =>
               prev
                 .map((t, a) => {
@@ -51,14 +49,6 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
                 })
           
             );
-
-
-
-
-
-
-
-
 
           }}
           // onDoubleClick={() =>
@@ -109,7 +99,7 @@ return (
   <td className={style.labelinput}>
 
     <input
-      className={style.select_papier_info}
+      className={style.uwagi}
       type="text"
       value={row.info}
       onChange={(event) => {

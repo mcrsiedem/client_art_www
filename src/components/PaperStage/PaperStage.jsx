@@ -546,7 +546,7 @@ function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
         setSelectRow(null)
       }}
     >
-      Nazwa
+      Nazwy
     </button>
   );
 }
@@ -572,7 +572,7 @@ onClick={() => {
 
 
 >
-  Grupa</button>
+  Grupy</button>
 
 );
 }

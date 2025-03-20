@@ -1,3 +1,21 @@
+.id{
+  width: 10px;
+}
+
+.nazwa{
+  width: 400px;
+}
+
+.gramatura{
+  width: 100px;
+}
+
+.wykonczenie{
+  width: 100px;
+}
+.bulk{
+  width: 100px;
+}
 
 .tr:hover{
   background-color: rgb(210, 210, 210);
@@ -35,55 +53,13 @@
   background-color: rgb(183, 183, 183);
 }
 
-.select_papier {
-     background-color: #eeeeee;
-    height: 1.8rem;
-  width: 200px;
-    /* border-radius: 5px;
-    border-color: transparent;
-    outline: 1px solid rgb(185, 185, 185);
-    padding-left: 30px; */
-    border:none;
-    /* border-left: 1px solid rgb(185, 185, 185);
-    border-right: 1px solid rgb(185, 185, 185); */
-    /* color: gray; */
-    /* outline: 1px solid rgb(185, 185, 185); */
-    
-  }
-
-.id{
-
-    width: 10px;
-}
-
-.gramatura{
-    width: 6%;
-    text-align: center;
-
-}
-
-.nazwa{
-    width: 20%;
-
-
-}
 
 
 
-.wykonczenie{
-    width: 60px;
-    text-align: center;
-}
 
-.grupa{
-    width: 150px;
-}
 
-.icon{
-    padding-top: 3px;
-    width: 15px;
-    margin-right: 10px;
-}
+
+
 
 .main{
     overflow-y: auto;

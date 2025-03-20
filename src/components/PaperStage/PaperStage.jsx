@@ -17,6 +17,8 @@ import ChangePaper from "./ChangePaper";
 import { updatePaper } from "actions/updatePaper";
 import { updatePaperGrupy } from "actions/updatePaperGrupy";
 import { updatePaperNazwy } from "actions/updatePaperNazwy";
+import { usePapier } from "hooks/usePapier";
+import { getPapieryParametry } from "actions/getPapieryParametry";
 
 export default function PaperStage() {
 
@@ -60,52 +62,61 @@ const scrollTable = (table) => {
 
 };
 
-  async function getPapier() {
-
-    // typ row  papier : 1  nazwa : 2   grupa: 3
-    const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-
-    const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
 
 
-    const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-    setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+  // async function getPapier() {
 
-    const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
-    setListaPapierowPostac([...res4.data]);
-    setListaPapierowPostacWyszukiwarka([...res4.data]);
+  //   // typ row  papier : 1  nazwa : 2   grupa: 3
+  //   const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
+  //   setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
+  //   setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
 
-    const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
-    setListaPapierowRodzaj([...res5.data]);
-    setListaPapierowRodzajWyszukiwarka([...res5.data]);
+  //   const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
+  //       setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+  //   setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+
+
+  //   const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
+  //   setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+  //   setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+
+  //   const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
+  //   setListaPapierowPostac([...res4.data]);
+  //   setListaPapierowPostacWyszukiwarka([...res4.data]);
+
+  //   const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
+  //   setListaPapierowRodzaj([...res5.data]);
+  //   setListaPapierowRodzajWyszukiwarka([...res5.data]);
     
-    const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
-    setListaPapierowWykonczenia([...res6.data]);
-    setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
+  //   const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
+  //   setListaPapierowWykonczenia([...res6.data]);
+  //   setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
 
-    const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
-    setListaPapierowPowleczenie([...res7.data]);
-    setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
+  //   const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
+  //   setListaPapierowPowleczenie([...res7.data]);
+  //   setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
 
-  }
+  // }
 
 
-//-----------
-  const effectRan = useRef(false);
   useEffect(() => {
-    if (effectRan.current === true) {
-      getPapier();
-
-    }
-    return () => {
-      effectRan.current = true;
-    };
+      getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+        setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+        setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
   }, []);
+
+//----------- nie działa sprawdzić
+  // const effectRan = useRef(false);
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+  //     getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+  //       setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+  //       setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
+  //   }
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
 
 
  if(showPaperStage){
@@ -118,6 +129,8 @@ const scrollTable = (table) => {
             <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
             <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
             <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+            <NazwaBTNget paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+            
           </div>
           <div className={style.container_in_footer_right}>
        <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
@@ -547,6 +560,77 @@ function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
       }}
     >
       Nazwy
+    </button>
+  );
+}
+
+function NazwaBTNget({ paperSelectView, setPaperSelectView,setSelectRow }) {
+
+  const appcontext = useContext(AppContext);
+  const modalcontext = useContext(ModalInsertContext);
+
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
+  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
+  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
+  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
+  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
+  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
+  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
+  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+
+  return (
+    <button
+      className={style.btnPaper}
+      onClick={async() => {
+
+
+        
+
+    // typ row  papier : 1  nazwa : 2   grupa: 3
+    const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
+    setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
+    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
+
+    const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
+        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+
+
+    const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
+    setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+
+    const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
+    setListaPapierowPostac([...res4.data]);
+    setListaPapierowPostacWyszukiwarka([...res4.data]);
+
+    const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
+    setListaPapierowRodzaj([...res5.data]);
+    setListaPapierowRodzajWyszukiwarka([...res5.data]);
+    
+    const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
+    setListaPapierowWykonczenia([...res6.data]);
+    setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
+
+    const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
+    setListaPapierowPowleczenie([...res7.data]);
+    setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
+
+
+
+
+        
+
+      }}
+    >
+      Odśwież
     </button>
   );
 }

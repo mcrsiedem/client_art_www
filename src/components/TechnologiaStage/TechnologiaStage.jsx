@@ -20,6 +20,8 @@ export default function TechnologiaStage() {
     techContext.showElementyTechProcesyInsert;
   const procesyElementowTech = techContext.procesyElementowTech;
 
+  
+
   useEffect(() => {
     if (openTechnologia) {
     

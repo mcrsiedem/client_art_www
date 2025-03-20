@@ -215,7 +215,7 @@ function Grupa2({ row }) {
 function Grupa({ row,index}) {
   const appcontext = useContext(AppContext);
   const listaPapierowGrupa = appcontext.listaPapierowGrupa;
-  return <td>{listaPapierowGrupa.filter(x => x.id == row.grupa_id)[0].grupa}</td>;
+  return <td>{listaPapierowGrupa?.filter(x => x.id == row.grupa_id)[0].grupa}</td>;
 }
 function Rodzaj({ row,index}) {
   const appcontext = useContext(AppContext);

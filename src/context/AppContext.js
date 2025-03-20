@@ -59,38 +59,38 @@ export const AppContextProvider = ({children})=>{
 
        const showMeProcessName = (id) =>{
 
-        return procesListName.filter(pln => pln.id == id)[0].nazwa
+        return procesListName?.filter(pln => pln.id == id)[0].nazwa
        }
 
 
-  const effectRan = useRef(false);
-  useEffect(() => {
-    if (effectRan.current === true) {
+  // const effectRan = useRef(false);
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
       
+  //       getUsers(setUsers) 
+  //       getProcesList(setProcesList) // lista wszystkich dostępnych procesów
+  //       getBindingType(setBindingTyp)
+  //       getProductType(setProductType)
+  //       getProcesListName(setProcesListName)
+  //       getProcesory(setProcesory)
+  //   }
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+
+    useEffect(()=>{
+      console.log("app context22")
         getUsers(setUsers) 
-        getProcesList(setProcesList) // lista wszystkich dostępnych procesów
+       
+        getProcesList(setProcesList) 
         getBindingType(setBindingTyp)
         getProductType(setProductType)
         getProcesListName(setProcesListName)
         getProcesory(setProcesory)
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
-
-    // useEffect(()=>{
-    //   console.log("app context22")
-    //     getUsers(setUsers) 
-       
-    //     getProcesList(setProcesList) 
-    //     getBindingType(setBindingTyp)
-    //     getProductType(setProductType)
-    //     getProcesListName(setProcesListName)
-    //     getProcesory(setProcesory)
        
 
-    // },[])
+    },[])
     
     return  <AppContext.Provider 
                 value={{

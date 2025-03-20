@@ -17,6 +17,8 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getPapiery } from "actions/getPapiery";
 import { getPapieryNazwy } from "actions/getPapieryNazwy";
+import { getPapieryPostac } from "actions/getPapieryPostac";
+import { getPapieryParametry } from "actions/getPapieryParametry";
 
 
 export default function TechnologieView({ user, setUser }) {
@@ -29,12 +31,30 @@ export default function TechnologieView({ user, setUser }) {
   const [selectedProcesor, setSelectedProcesor] = useState(1);
   const [selectedProces, setSelectedProces] = useState(1);
 
-  const appContext = useContext(AppContext);
+  const appcontext = useContext(AppContext);
 
-  const setListaPapierow =appContext.setListaPapierow;
-  const setClients =appContext.setClients;
-  const setNadkomplety =appContext.setNadkomplety;
-  const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
+
+  const setClients =appcontext.setClients;
+  const setNadkomplety =appcontext.setNadkomplety;
+
+
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
+  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
+  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
+  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
+  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
+  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
+  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
+  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+
+  
 
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
@@ -47,24 +67,16 @@ export default function TechnologieView({ user, setUser }) {
     });
   }
 
-  const test = () =>{
-    console.log("test")
-   }
-
   useEffect(() => {
     checkToken();
-    test()
-
   }, []);
 
   const start = async() => {
-    // getTechnology(setTechnology)
-    // const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    // setListaPapierow([...res3.data]);
-    // const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-    // setListaPapierowNazwy([...res4.data]);
-      getPapiery(setListaPapierow)
-      getPapieryNazwy(setListaPapierowNazwy)
+;
+    getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+      setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+      setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
+
       getClients(setClients )
       getNadkomplety(setNadkomplety)
 

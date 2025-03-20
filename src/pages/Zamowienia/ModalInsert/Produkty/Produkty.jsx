@@ -67,7 +67,7 @@ function Typ({ row }) {
         }}
       >
         {}
-        {contextApp.productType.map((option) => (
+        {contextApp.productType?.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
@@ -245,7 +245,7 @@ const contextApp = useContext(AppContext);
 
         }}
       >
-        {contextApp.bindingType.map((option) => (
+        {contextApp.bindingType?.map((option) => (
           <option key={option.id} value={option.id}>
           {option.nazwa} 
           </option>

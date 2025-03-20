@@ -61,18 +61,20 @@ const scrollTable = (table) => {
 };
 
   async function getPapier() {
+
+    // typ row  papier : 1  nazwa : 2   grupa: 3
     const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res.data]  );
-    setListaPapierowWyszukiwarka([...res.data] );
+    setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
+    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
 
     const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false}}  ));
-    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false}}  ));
+        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
 
 
     const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-    setListaPapierowGrupa([...res3.data]);
-    setListaPapierowGrupaWyszukiwarka([...res3.data]);
+    setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
 
     const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
     setListaPapierowPostac([...res4.data]);
@@ -219,7 +221,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
 
           if(selectRow!= null){
 
-            if(paperSelectView[0].view == true){
+            if(selectRow.typ_row == 1){
           const promiseA = new Promise((resolve, reject) => {
           const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
 
@@ -239,9 +241,6 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
           })
         }
 
-
-
-
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
           });
@@ -250,7 +249,8 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
 
             }
 
-            if(paperSelectView[1].view == true){
+  
+            if(selectRow.typ_row == 2){
               const promiseA = new Promise((resolve, reject) => {
               const newlistaPapierowNazwyWyszukiwarka = listaPapierowNazwyWyszukiwarka.slice();
               newlistaPapierowNazwyWyszukiwarka.push({
@@ -266,7 +266,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
     
                 }
 
-                if(paperSelectView[2].view == true){
+                if(selectRow.typ_row == 3){
                   const promiseA = new Promise((resolve, reject) => {
                   const newlistaPapierowGrupaWyszukiwarka = listaPapierowGrupaWyszukiwarka.slice();
                   newlistaPapierowGrupaWyszukiwarka.push({
@@ -281,8 +281,6 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
                   setBtnZapiszPapierDisabled(false)
         
                     }
-
-
 
           }
 

@@ -17,11 +17,7 @@ export default function TablePaperNazwa({
   setSelectTable
 
 }) {
-  const [selectedPaperRow, setSelectedPaperRow] = useState();
-  const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showChange, setShowChange] = useState(false);
-  const [show, setShow] = useState(false);
+
   const rowID = useRef();
 
   const inputElement = useRef();

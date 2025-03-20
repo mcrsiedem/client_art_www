@@ -62,43 +62,6 @@ const scrollTable = (table) => {
 
 };
 
-
-
-  // async function getPapier() {
-
-  //   // typ row  papier : 1  nazwa : 2   grupa: 3
-  //   const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-  //   setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-  //   setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-
-  //   const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-  //       setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-  //   setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-
-
-  //   const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-  //   setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-  //   setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-
-  //   const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
-  //   setListaPapierowPostac([...res4.data]);
-  //   setListaPapierowPostacWyszukiwarka([...res4.data]);
-
-  //   const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
-  //   setListaPapierowRodzaj([...res5.data]);
-  //   setListaPapierowRodzajWyszukiwarka([...res5.data]);
-    
-  //   const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
-  //   setListaPapierowWykonczenia([...res6.data]);
-  //   setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
-
-  //   const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
-  //   setListaPapierowPowleczenie([...res7.data]);
-  //   setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
-
-  // }
-
-
   useEffect(() => {
       getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
         setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
@@ -126,7 +89,7 @@ const scrollTable = (table) => {
         <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
           <div className={style.btnContainer}>
-            <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+            {/* <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
             <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
             <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
             <NazwaBTNget paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
@@ -559,7 +522,7 @@ function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
         setSelectRow(null)
       }}
     >
-      Nazwy
+      Wszystkie
     </button>
   );
 }

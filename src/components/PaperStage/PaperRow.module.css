@@ -3,11 +3,27 @@
   /* width: 10px; */
 }
 
-.gramatura{
-  /* width: 6%; */
+.select_papier_gramatura {
+  background-color: transparent;
+  border: none;
   text-align: center;
+  width: 100px;
+}
+.select_papier_wykonczenie {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  width: 50px;
+}
+.select_papier_bulk {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  width: 50px;
 
 }
+
+
 
 .nazwa{
   /* background-color: red; */

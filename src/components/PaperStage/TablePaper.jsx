@@ -203,7 +203,7 @@ function Grupa2({ row }) {
         */}
           {listaPapierowGrupa.map((option) => (
             <option key={option.id} value={option.id}>
-              {option.grupa}
+            {option.grupa}
             </option>
           ))}
         </select>
@@ -240,47 +240,47 @@ function Wykonczenie({ row,index}) {
   ))}</td>;
 }
 
-function Nazwa2({ row }) {
-  const appcontext = useContext(AppContext);
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-  return <td>
-            <select
-          className={ style.select_papier }
-          value={row.nazwa_id}
-          onChange={(e) => {
-            setListaPapierowWyszukiwarka(
-              listaPapierowWyszukiwarka.map((t, a) => {
-              if (t.id == row.id) {
-                return {
-                  ...t,
-                  nazwa_id: e.target.value,
-                  update: true
+// function Nazwa2({ row }) {
+//   const appcontext = useContext(AppContext);
+//   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+//   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+//   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+//   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+//   return <td>
+//             <select
+//           className={ style.select_papier }
+//           value={row.nazwa_id}
+//           onChange={(e) => {
+//             setListaPapierowWyszukiwarka(
+//               listaPapierowWyszukiwarka.map((t, a) => {
+//               if (t.id == row.id) {
+//                 return {
+//                   ...t,
+//                   nazwa_id: e.target.value,
+//                   update: true
         
-                };
-              } else {
-                return t;
-              }
-            })
-          );
+//                 };
+//               } else {
+//                 return t;
+//               }
+//             })
+//           );
 
-          setBtnZapiszPapierDisabled(false)
-          }}
-        >
-          {   <option value = "0"  >
-             wybierz papier
-            </option>}
+//           setBtnZapiszPapierDisabled(false)
+//           }}
+//         >
+//           {   <option value = "0"  >
+//              wybierz papier
+//             </option>}
        
-          {listaPapierowNazwy.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
-    </td>;
-}
+//           {listaPapierowNazwy.map((option) => (
+//             <option key={option.id} value={option.id}>
+//               {option.nazwa}
+//             </option>
+//           ))}
+//         </select>
+//     </td>;
+// }
 
 
 
@@ -308,99 +308,9 @@ function Info({ row }) {
 // }
 
 
-function Gramatura2({ row}) {
-  const appcontext = useContext(AppContext);
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-    const modalcontext = useContext(ModalInsertContext);
-    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
-    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-return (
-  <td className={style.labelinput}>
 
-    <input
-    
-      className={style.select_papier_gramatura}
-      // type="text"
-      value={row.gramatura}
-      onChange={(event) => {
-        const re = /^[0-9]+$/;
-        const re2 = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-        if (event.target.value === "" || re.test(event.target.value)) {
-          // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
-         
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
-            if (t.id == row.id) {
-              return {
-                ...t,
-                gramatura: event.target.value,
-                update: true
-      
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        setBtnZapiszPapierDisabled(false)
 
-        }
-      }}
-    >
 
-    </input>
-  </td>
-);
-}
-
-function Bulk2({ row}) {
-  const appcontext = useContext(AppContext);
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-    const modalcontext = useContext(ModalInsertContext);
-    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
-    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-return (
-  <td className={style.labelinput}>
-
-    <input
-    
-      className={style.select_papier_bulk}
-      // type="text"
-      value={row.bulk}
-      onChange={(event) => {
-        // const re = /^[0-9]+$/;
-        const re = /^\d{0,6}(?:\.\d{0,2}){0,1}$/;
-        if (event.target.value === "" || re.test(event.target.value)) {
-          // setListaPapierowWyszukiwarka({ ...daneKlienta, firma: event.target.value });
-         
-          setListaPapierowWyszukiwarka(
-            listaPapierowWyszukiwarka.map((t, a) => {
-            // console.log("oprawa id" +prev)
-            if (t.id == row.id) {
-              return {
-                ...t,
-                bulk: event.target.value,
-                update: true
-      
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-        setBtnZapiszPapierDisabled(false)
-
-        }
-      }}
-    >
-
-    </input>
-  </td>
-);
-}
 
 function Info2({ row}) {
     const appcontext = useContext(AppContext);

@@ -8,13 +8,17 @@
 
 .gramatura{
   width: 100px;
+  text-align: center;
 }
 
 .wykonczenie{
+  text-align: center;
   width: 100px;
 }
 .bulk{
   width: 100px;
+  text-align: center;
+
 }
 
 .tr:hover{

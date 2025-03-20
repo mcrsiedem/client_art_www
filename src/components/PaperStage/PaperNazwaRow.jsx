@@ -38,8 +38,6 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
               }
             })
         );
-
-
         setListaPapierowWyszukiwarka((prev) =>
           prev
             .map((t, a) => {
@@ -49,9 +47,6 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
               };
             })
         );
-        
-
-
       }
       
       const handleDoubleClik = (ev) =>{
@@ -78,8 +73,6 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
         setSelectRow(null);
       }
 
-
-
       return (
               <>
                 <tr
@@ -96,9 +89,11 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
                   <ID row={rowPapierNazwy} index={index + 1} />
                   <Nazwa row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                   <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
           
                 </tr>
 

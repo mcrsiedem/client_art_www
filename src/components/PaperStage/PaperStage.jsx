@@ -6,6 +6,8 @@ import iconX from "../../assets/x.svg";
 import iconDelete from "assets/trashgray.svg";
 import iconEdit from "assets/settings_grey.svg";
 import addIcon2 from "../../assets/addIcon2.svg";
+import Logo_ustawienia2 from "assets/refresh_green2.svg";
+
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import TablePaper from "./TablePaper";
@@ -48,8 +50,8 @@ export default function PaperStage() {
     const [selectRow, setSelectRow] = useState(null);
     const [selectTable, setSelectTable] = useState(start);
 const [paperSelectView, setPaperSelectView] = useState([
-  {id:1,nazwa:"papier",view:true},
-  {id:2,nazwa:"nazwa",view:false},
+  {id:1,nazwa:"papier",view:false},
+  {id:2,nazwa:"nazwa",view:true},
   {id:3,nazwa:"grupa",view:false}
 ]);
 
@@ -88,20 +90,21 @@ const scrollTable = (table) => {
       <div  resizable ref={start} className={style.window}>
         <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
-          <div className={style.btnContainer}>
-            {/* <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
-            <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
-            <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
-            <NazwaBTNget paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
-            
-          </div>
-          <div className={style.container_in_footer_right}>
-       <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
-       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
-       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
- 
-    </div>
-        <Szukaj paperSelectView={paperSelectView}/>
+                <div className={style.btnContainer}>
+                  <RefreshBTN/>
+                
+                  {/* <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
+                  {/* <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
+                  {/* <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
+                  
+                </div>
+                <div className={style.container_in_footer_right}>
+                    <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
+                    <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
+                    <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
+              
+                </div>
+              <Szukaj paperSelectView={paperSelectView}/>
         </Finder>
         <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
         <TablePaperNazwa paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
@@ -109,11 +112,7 @@ const scrollTable = (table) => {
   <div className={style.footer}>
     <div className={style.container_in_footer}>  </div>
     <div className={style.container_in_footer}>   <Zapisz  /> </div>
-    {/* <div className={style.container_in_footer}>   <Zapisz  /> <Pokaz selectRow={selectRow}></Pokaz></div> */}
     <div className={style.container_in_footer_right}>
-       {/* <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
-       <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
-       <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div> */}
  
     </div>
    
@@ -188,21 +187,14 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
           const promiseA = new Promise((resolve, reject) => {
           const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
 
-        if(Object.values(selectRow).length > 5){
-            // wtedy kopiuje bo ma zaznaczony papier a nie grupe lub nazwe
+    
                     newlistaPapierowWyszukiwarka.push({
             ...selectRow,
             id: getMaxID(listaPapierowWyszukiwarka),
             insert: true
           })
-        } 
-        else{
-          newlistaPapierowWyszukiwarka.push({
-            ...selectRow,
-            id: getMaxID(listaPapierowWyszukiwarka),
-            insert: true
-          })
-        }
+        
+      
 
           setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
             resolve(777);
@@ -218,7 +210,9 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
               const newlistaPapierowNazwyWyszukiwarka = listaPapierowNazwyWyszukiwarka.slice();
               newlistaPapierowNazwyWyszukiwarka.push({
                 ...selectRow,
-                id: getMaxID(listaPapierowNazwyWyszukiwarka),
+                nazwa: "Nowy papier",
+                id: null,
+                // id: getMaxID(listaPapierowNazwyWyszukiwarka),
                 insert: true
               })
               setListaPapierowNazwyWyszukiwarka(newlistaPapierowNazwyWyszukiwarka)
@@ -527,10 +521,8 @@ function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
   );
 }
 
-function NazwaBTNget({ paperSelectView, setPaperSelectView,setSelectRow }) {
-
+const RefreshBTN = ({ row, showMenu, setShowMenu }) => {
   const appcontext = useContext(AppContext);
-  const modalcontext = useContext(ModalInsertContext);
 
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const setListaPapierow = appcontext.setListaPapierow;
@@ -547,56 +539,29 @@ function NazwaBTNget({ paperSelectView, setPaperSelectView,setSelectRow }) {
   const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
   const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
   const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
-
-  return (
-    <button
-      className={style.btnPaper}
-      onClick={async() => {
-
-
-        
-
-    // typ row  papier : 1  nazwa : 2   grupa: 3
-    const res = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-    setListaPapierowWyszukiwarka([...res.data].map(x => {return {...x, typ_row: 1}}  )  );
-
-    const res2 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-        setListaPapierowNazwy([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-    setListaPapierowNazwyWyszukiwarka([...res2.data].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-
-
-    const res3 = await axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token"));
-    setListaPapierowGrupa([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-    setListaPapierowGrupaWyszukiwarka([...res3.data].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-
-    const res4 = await axios.get(IP + "lista-papierow-postac/" + sessionStorage.getItem("token"));
-    setListaPapierowPostac([...res4.data]);
-    setListaPapierowPostacWyszukiwarka([...res4.data]);
-
-    const res5 = await axios.get(IP + "lista-papierow-rodzaj/" + sessionStorage.getItem("token"));
-    setListaPapierowRodzaj([...res5.data]);
-    setListaPapierowRodzajWyszukiwarka([...res5.data]);
+      return (
     
-    const res6 = await axios.get(IP + "lista-papierow-wykonczenia/" + sessionStorage.getItem("token"));
-    setListaPapierowWykonczenia([...res6.data]);
-    setListaPapierowWykonczeniaWyszukiwarka([...res6.data]);
+    <div className={style.menu_produkty}>
+      <img
 
-    const res7 = await axios.get(IP + "lista-papierow-powleczenie/" + sessionStorage.getItem("token"));
-    setListaPapierowPowleczenie([...res7.data]);
-    setListaPapierowPowleczenieWyszukiwarka([...res7.data]);
+        className={ style.iconMenuBtn}
+        src={Logo_ustawienia2}
+        title="Odśwież papiery"
+        onClick={() => {
 
-
-
-
-        
-
-      }}
-    >
-      Odśwież
-    </button>
+          getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+            setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+            setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
+        }}
+        alt="x"
+      />
+    </div>
   );
-}
+  
+};
+
+
+
 
 function GrupaBTN({paperSelectView, setPaperSelectView,setSelectRow}) {
   return (
@@ -628,15 +593,31 @@ onClick={() => {
 function Header({selectRow,setSelectRow}) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const listaPapierow = appcontext.listaPapierow;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
   const modalcontext = useContext(ModalInsertContext);
 
   const selectedElementROW = modalcontext.selectedElementROW;
 
+
+
+
+
+  // const listaPapierowNazwy = appcontext.listaPapierowNazwy;
+  // const listaPapierow = appcontext.listaPapierow;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+
   return (
-    <div  className={style.header}>
+    <div  className={style.header} onDoubleClick={ () => {
+      console.clear()
+      console.log("Papiery: ")
+
+      console.log("Papiery_nazwy: ",listaPapierowNazwyWyszukiwarka)
+      console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+      
+
+    }}>
       <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
-      {<p className={style.title}>       Wybrany papier:  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.nazwa}  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.gramatura} {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.wykonczenie}</p>}
+      {/* {<p className={style.title}>       Wybrany papier:  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.nazwa}  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.gramatura} {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.wykonczenie}</p>} */}
       {/* <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p> */}
       {/* <p className={style.title}>       Zaznaczone:  {selectRow?.id}</p> */}
       {/* <p className={style.title}>         Ilość papierów: {listaPapierow[0].nazwa} </p> */}

@@ -3,8 +3,10 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "./PaperNazwaRow.module.css";
 import { AppContext } from "context/AppContext";
 import logoExpand from "assets/expand.svg";
+import add from "assets/add2.svg";
 
 import PaperRow from "./PaperRow";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSelectView,selectRow,index,setBtnZapisz,setSelectRow,inputElement,setSelectTable}) {
@@ -126,10 +128,14 @@ function Rozwin({ row }) {
   const appcontext = useContext(AppContext);
   const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
   // if  (fragmenty?.filter((x) => x.element_id == row.id).length !== 0){
   return (
     <td className={style.rozwin}>
+      
+
+      {listaPapierowWyszukiwarka?.filter((x) => x.nazwa_id == row.id).length != 0 ? 
       <img
         className={row.isExpand ?  style.expand_down :style.expand}
         src={logoExpand}
@@ -152,6 +158,11 @@ function Rozwin({ row }) {
         }}
         alt="Procesy"
       />
+      
+      :<></>
+      }
+
+      
     </td>
   );
 // }else return <p> </p>
@@ -219,9 +230,12 @@ function Nazwa({ row,setBtnZapisz}) {
       const modalcontext = useContext(ModalInsertContext);
       // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
       const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+
+      
   return (
     <td className={style.nazwa}>
-
+      <div className={style.nazwa_papier_container}>
       <input
         className={style.input_info}
         type="text"
@@ -253,6 +267,11 @@ function Nazwa({ row,setBtnZapisz}) {
       >
 
       </input>
+      {/* {row.id == null ?<button>Zapisz aby dodać papier</button> :<></>} */}
+      {listaPapierowWyszukiwarka
+                  ?.filter((x) => x.nazwa_id == row.id).length == 0 && row.id !=null ?<AddPapierBTN rowNazwaPapieru={row}/> :<></>}
+      
+      </div>
     </td>
   );
 }
@@ -280,3 +299,70 @@ const color = (row) => {
   return style.tr;
 };
 
+
+
+const AddPapierBTN = ({ rowNazwaPapieru, showMenu, setShowMenu }) => {
+  const appcontext = useContext(AppContext);
+
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+
+      return (
+    
+    <div className={style.menu_produkty}>
+      <img
+
+        className={ style.iconMenuBtn}
+        src={add}
+        title="Dodaj papier"
+        onClick={() => {
+
+          const newlistaPapierowWyszukiwarka = listaPapierowWyszukiwarka.slice();
+
+    
+                    newlistaPapierowWyszukiwarka.push({
+            
+
+            id: null,
+            nazwa_id: rowNazwaPapieru.id,
+            bulk:1,
+            gramatura:0,
+            powleczenie_id:1,
+            info:"",
+            wykonczenie_id:1,
+            dodal: DecodeToken(sessionStorage.getItem("token")).id,
+            zmienil: DecodeToken(sessionStorage.getItem("token")).id,
+            grupa_id: rowNazwaPapieru.grupa_id,
+            insert: true
+          })
+        
+      
+
+          setListaPapierowWyszukiwarka(newlistaPapierowWyszukiwarka)
+         
+          setListaPapierowNazwyWyszukiwarka(
+            listaPapierowNazwyWyszukiwarka.map((t) => {
+              if (t.id == rowNazwaPapieru.id) {
+                return {...t,
+                  isExpand: true,
+                }
+              } else {
+                return t;
+              }
+            })
+          );
+          
+        }
+
+        
+      
+      
+      }
+        alt="x"
+      />
+    </div>
+  );
+  
+};

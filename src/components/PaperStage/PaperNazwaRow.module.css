@@ -94,3 +94,14 @@
     background-image: linear-gradient(90deg, rgb(107, 158, 224) 0%, rgb(137, 188, 254) 50%, rgb(107, 158, 224) 100%);
   }
 
+  .iconMenuBtn{
+    width: 20px;
+  
+  }
+
+  .nazwa_papier_container{
+    display: flex;
+    gap :10px;
+    /* justify-content: center;
+    align-items: center; */
+  }

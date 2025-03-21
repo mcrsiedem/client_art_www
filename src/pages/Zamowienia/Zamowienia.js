@@ -17,6 +17,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getPapieryPostac } from "actions/getPapieryPostac";
+import { getPapieryParametry } from "actions/getPapieryParametry";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -30,13 +31,10 @@ function Zamowienia({ user, setUser }) {
 
 
 const listaPapierow = contextApp.listaPapierow;
-const setListaPapierow = contextApp.setListaPapierow;
 const listaPapierowNazwy = contextApp.listaPapierowNazwy;
-const setListaPapierowNazwy = contextApp.setListaPapierowNazwy;
 const setClients = contextApp.setClients;
 const setNadkomplety = contextApp.setNadkomplety;
-const setListaPapierowPostac = contextApp.setListaPapierowPostac;
-const setListaPapierowPostacWyszukiwarka = contextApp.setListaPapierowPostacWyszukiwarka;
+
 
 
 
@@ -45,6 +43,24 @@ const contextModalInsert = useContext(ModalInsertContext);
 
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+  const appcontext = useContext(AppContext);
+
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
+  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
+  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
+  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
+  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
+  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
+  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
+  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
 
   function dodaj_clikHandler() {
     // setDaneZamowienia({...daneZamowienia, opiekun_id:  DecodeToken(sessionStorage.getItem("token")).id})
@@ -67,14 +83,19 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
     let jobs= [...res.data]
     setData(jobs);
 
-    const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-    setListaPapierow([...res3.data]);
-    const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-    setListaPapierowNazwy([...res4.data]);
+
+         getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+            setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+            setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
+
+//     const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
+//     setListaPapierow([...res3.data]);
+//     const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
+//     setListaPapierowNazwy([...res4.data]);
 
 
 
-getPapieryPostac(setListaPapierowPostac,setListaPapierowPostacWyszukiwarka)
+// getPapieryPostac(setListaPapierowPostac,setListaPapierowPostacWyszukiwarka)
 
          getClients(setClients )
          getNadkomplety(setNadkomplety)

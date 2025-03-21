@@ -7,7 +7,7 @@ export   const updatePaperGrupy = async (rows,setListaPapierowGrupaWyszukiwarka,
     await axios
       .put(IP + "updatePaperGrupa/" + sessionStorage.getItem("token"), rows )
       .then((res) => {
-        axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token")).then(res => { setListaPapierowGrupa([...res.data]);setListaPapierowGrupaWyszukiwarka([...res.data]);})
+        axios.get(IP + "lista-papierow-grupa/" + sessionStorage.getItem("token")).then(res => { setListaPapierowGrupa([...res.data].map(x => {return {...x, isExpand:false, typ_row: 3, delete:false}}  ));setListaPapierowGrupaWyszukiwarka([...res.data].map(x => {return {...x, isExpand:false, typ_row: 3, delete:false}}  ));})
       }).then(res => {
            setBtnZapiszPapierDisabled(true)
       });

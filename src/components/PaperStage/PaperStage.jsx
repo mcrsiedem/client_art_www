@@ -21,6 +21,7 @@ import { updatePaperGrupy } from "actions/updatePaperGrupy";
 import { updatePaperNazwy } from "actions/updatePaperNazwy";
 import { usePapier } from "hooks/usePapier";
 import { getPapieryParametry } from "actions/getPapieryParametry";
+import { onDeletePaperRow } from "./onDeletePaperRow";
 
 export default function PaperStage() {
 
@@ -129,15 +130,16 @@ const scrollTable = (table) => {
 function UseBTN({ selectRow, setSelectedPaperRow,paperSelectView}) {
   const [showChange, setShowChange] = useState(false);
 
-  if(paperSelectView[0].view == true){
+
       return (
     <div >
       <img
       title="Użyj"
-        className={style.icon}
+      
+        className={selectRow?.typ_row == 1 ? style.icon : style.iconDisabled}
         src={iconEdit}
         onClick={() => {
-          if(selectRow!= null){
+          if(selectRow!= null && selectRow.typ_row == 1){
           setShowChange(true)
           }
         }}
@@ -147,7 +149,7 @@ function UseBTN({ selectRow, setSelectedPaperRow,paperSelectView}) {
 <ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
     </div>
   );
-  }
+  
 
 }
 
@@ -249,20 +251,15 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
 }
 
 
-function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
-  const appcontext = useContext(AppContext);
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+function DeleteBTN({ selectRow }) {
+    const appcontext = useContext(AppContext);
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
     const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
-
     const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
     const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
-
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
-
-
-
 
   return (
     <div>
@@ -271,128 +268,10 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-
-          if(selectRow!= null){
-            if(selectRow.typ_row == 1){
-                  setListaPapierowWyszukiwarka(
-                    listaPapierowWyszukiwarka.map((t, a) => {
-                    if (t.id == selectRow.id) {
-                      return {
-                        ...t,
-                        delete:  !t.delete
-                      };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
-
-            }
-
-            if(selectRow.typ_row == 2){
-              setListaPapierowNazwyWyszukiwarka(
-                listaPapierowNazwyWyszukiwarka.map((t, a) => {
-
-                  if(listaPapierowWyszukiwarka.filter(x=> x.nazwa_id == selectRow.id).length ==0){
-                           if (t.id == selectRow.id) {
-                  return {
-                    ...t,
-                    delete:  !t.delete
-                  };
-                } else {
-                  return t;
-                }
-                  }else{
-                    return t
-                  }
-         
-              })
-            );
-        }
-
-        if(selectRow.typ_row == 3){
-          setListaPapierowGrupaWyszukiwarka(
-            listaPapierowGrupaWyszukiwarka.map((t, a) => {
-              if(listaPapierowWyszukiwarka.filter(x=> x.grupa_id == selectRow.id).length ==0){
-            if (t.id == selectRow.id) {
-              return {
-                ...t,
-                delete:  !t.delete
-              };
-            } else {
-              return t;
-            }
-          }else{
-            return t
-          }
-
-
-          })
-        );
-
-    }
-
-        setBtnZapiszPapierDisabled(false)
-
-
-        }
+          onDeletePaperRow(selectRow,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setBtnZapiszPapierDisabled,setListaPapierowNazwyWyszukiwarka,
+            listaPapierowNazwyWyszukiwarka,setListaPapierowGrupaWyszukiwarka,listaPapierowGrupaWyszukiwarka
+          )
       }
-      }
-
-        onDoubleClick={() => {
-          if(selectRow!= null){
-            if(paperSelectView[0].view == true){
-                  setListaPapierowWyszukiwarka(
-                    listaPapierowWyszukiwarka.map((t, a) => {
-                    if (t.id == selectRow.id) {
-                      return {
-                        ...t,
-                        delete: false
-                      };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
-
-            }
-
-            if(paperSelectView[1].view == true){
-              setListaPapierowNazwyWyszukiwarka(
-                listaPapierowNazwyWyszukiwarka.map((t, a) => {
-                if (t.id == selectRow.id) {
-                  return {
-                    ...t,
-                    delete: false
-                  };
-                } else {
-                  return t;
-                }
-              })
-            );
-        }
-
-        if(paperSelectView[2].view == true){
-          setListaPapierowGrupaWyszukiwarka(
-            listaPapierowGrupaWyszukiwarka.map((t, a) => {
-            if (t.id == selectRow.id) {
-              return {
-                ...t,
-                delete: false
-              };
-            } else {
-              return t;
-            }
-          })
-        );
-
-    }
-
-        setBtnZapiszPapierDisabled(false)
-        }}
-      
-      
-      
       }
         alt="Procesy"
       />

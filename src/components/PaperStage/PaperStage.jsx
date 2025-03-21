@@ -279,7 +279,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
                     if (t.id == selectRow.id) {
                       return {
                         ...t,
-                        delete: !t.delete
+                        delete:  !t.delete
                       };
                     } else {
                       return t;
@@ -297,7 +297,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
                            if (t.id == selectRow.id) {
                   return {
                     ...t,
-                    delete: !t.delete
+                    delete:  !t.delete
                   };
                 } else {
                   return t;
@@ -317,7 +317,7 @@ function DeleteBTN({ selectRow,scrollTable,selectTable,paperSelectView }) {
             if (t.id == selectRow.id) {
               return {
                 ...t,
-                delete: !t.delete
+                delete:  !t.delete
               };
             } else {
               return t;

@@ -8,14 +8,14 @@ export async function getPapieryParametry(setListaPapierow,setListaPapierowWyszu
     const res = await axios.get(IP + "papiery-parametry/" + sessionStorage.getItem("token"));
 
 
-    setListaPapierow(res.data[0].map(x => {return {...x, typ_row: 1}}  )  );
-    setListaPapierowWyszukiwarka(res.data[0].map(x => {return {...x, typ_row: 1}}  )  );
+    setListaPapierow(res.data[0].map(x => {return {...x, typ_row: 1, delete:false}}  )  );
+    setListaPapierowWyszukiwarka(res.data[0].map(x => {return {...x, typ_row: 1, delete:false}}  )  );
 
-    setListaPapierowNazwy(res.data[1].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
-    setListaPapierowNazwyWyszukiwarka(res.data[1].map(x => {return {...x, isExpand:false, typ_row: 2}}  ));
+    setListaPapierowNazwy(res.data[1].map(x => {return {...x, isExpand:false, typ_row: 2, delete:false}}  ));
+    setListaPapierowNazwyWyszukiwarka(res.data[1].map(x => {return {...x, isExpand:false, typ_row: 2, delete:false}}  ));
 
-    setListaPapierowGrupa(res.data[2].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
-    setListaPapierowGrupaWyszukiwarka(res.data[2].map(x => {return {...x, isExpand:false, typ_row: 3}}  ));
+    setListaPapierowGrupa(res.data[2].map(x => {return {...x, isExpand:false, typ_row: 3, delete:false}}  ));
+    setListaPapierowGrupaWyszukiwarka(res.data[2].map(x => {return {...x, isExpand:false, typ_row: 3, delete:false}}  ));
 
     setListaPapierowPostac(res.data[3]);
     setListaPapierowPostacWyszukiwarka(res.data[3]);

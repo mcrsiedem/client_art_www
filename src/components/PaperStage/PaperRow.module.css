@@ -12,13 +12,13 @@
 .select_papier_wykonczenie {
   background-color: transparent;
   border: none;
-  text-align: center;
+  text-align: left;
   width: 50px;
 }
 .select_papier_bulk {
   background-color: transparent;
   border: none;
-  text-align: center;
+  text-align: right;
   width: 50px;
 
 }

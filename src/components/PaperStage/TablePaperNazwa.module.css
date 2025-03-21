@@ -4,6 +4,7 @@
 
 .nazwa{
   width: 400px;
+ 
 }
 
 .gramatura{
@@ -18,6 +19,12 @@
 .bulk{
   width: 100px;
   text-align: center;
+
+}
+
+.powleczenie{
+  width: 100px;
+  text-align: left;
 
 }
 

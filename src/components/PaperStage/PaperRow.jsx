@@ -63,7 +63,8 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
           <Gramatura row={row} />
           <Wykonczenie row={row} />
           <Bulk row={row} />
-          <td className={ style.nazwa }>{row.powleczenie}</td>
+          {/* <td className={ style.nazwa }>{row.powleczenie}</td> */}
+          <Powleczenie row={row} />
 
           {/* <Grupa row={row} />  */}
 
@@ -287,6 +288,51 @@ const listaPapierowWykonczenia = appcontext.listaPapierowWykonczenia;
           {listaPapierowWykonczenia.map((option) => (
             <option key={option.id} value={option.id}>
               {option.wykonczenie}
+            </option>
+          ))}
+        </select>
+    </td>;
+}
+
+
+
+function Powleczenie({ row }) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowGrupa = appcontext.listaPapierowGrupa;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+const listaPapierowPowleczenie = appcontext.listaPapierowPowleczenie;
+  return <td>
+            <select
+          className={ style.select_papier_powleczenie }
+          value={row.powleczenie_id}
+          onChange={(e) => {
+            setListaPapierowWyszukiwarka(
+              listaPapierowWyszukiwarka.map((t, a) => {
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  powleczenie_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+          setBtnZapiszPapierDisabled(false)
+          }}
+        >
+          {/* {   <option value = "0"  >
+             wybierz papier
+            </option>}
+        */}
+          {listaPapierowPowleczenie.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.powleczenie}
             </option>
           ))}
         </select>

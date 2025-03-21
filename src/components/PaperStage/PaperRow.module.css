@@ -15,6 +15,15 @@
   text-align: left;
   width: 50px;
 }
+
+.select_papier_powleczenie {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  width: 150px;
+}
+
+
 .select_papier_bulk {
   background-color: transparent;
   border: none;

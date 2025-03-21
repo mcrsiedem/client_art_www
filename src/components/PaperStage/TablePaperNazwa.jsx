@@ -32,7 +32,7 @@ export default function TablePaperNazwa({
             <th className={style.gramatura}>Gramatura</th>
             <th className={style.wykonczenie}>Wykonczenie</th>
             <th className={style.bulk}>Bulk</th>
-            <th className={style.bulk}>Powleczenie</th>
+            <th className={style.powleczenie}>Powleczenie</th>
             <th className={style.info}>Uwagi</th>
 
           </tr>

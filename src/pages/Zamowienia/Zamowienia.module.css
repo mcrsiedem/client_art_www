@@ -90,7 +90,8 @@ th{
 
 
    .iconSettings{ width: 15px;
-      
+
+    
     }
 
    .col_klient{
@@ -127,7 +128,7 @@ th{
    .td_karta{
 
       border: none;
-
+         text-align: center;
    }
    .th_karta{
  width: 30px;

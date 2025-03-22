@@ -22,6 +22,7 @@ import { updatePaperNazwy } from "actions/updatePaperNazwy";
 import { usePapier } from "hooks/usePapier";
 import { getPapieryParametry } from "actions/getPapieryParametry";
 import { onDeletePaperRow } from "./onDeletePaperRow";
+import { onDeletePaperRowCheckUse } from "components/PaperStage/onDeletePaperRowCheckUse";
 
 export default function PaperStage() {
 
@@ -268,9 +269,9 @@ function DeleteBTN({ selectRow }) {
         className={style.icon}
         src={iconDelete}
         onClick={() => {
-          onDeletePaperRow(selectRow,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setBtnZapiszPapierDisabled,setListaPapierowNazwyWyszukiwarka,
-            listaPapierowNazwyWyszukiwarka,setListaPapierowGrupaWyszukiwarka,listaPapierowGrupaWyszukiwarka
-          )
+            onDeletePaperRowCheckUse(setBtnZapiszPapierDisabled,selectRow,setListaPapierowWyszukiwarka,listaPapierowWyszukiwarka,setListaPapierowNazwyWyszukiwarka,
+              listaPapierowNazwyWyszukiwarka,setListaPapierowGrupaWyszukiwarka,listaPapierowGrupaWyszukiwarka
+            )
       }
       }
         alt="Procesy"

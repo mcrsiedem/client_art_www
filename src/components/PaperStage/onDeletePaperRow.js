@@ -1,8 +1,8 @@
 export function onDeletePaperRow(
+  setBtnZapiszPapierDisabled,
   selectRow,
   setListaPapierowWyszukiwarka,
   listaPapierowWyszukiwarka,
-  setBtnZapiszPapierDisabled,
   setListaPapierowNazwyWyszukiwarka,
   listaPapierowNazwyWyszukiwarka,
   setListaPapierowGrupaWyszukiwarka,

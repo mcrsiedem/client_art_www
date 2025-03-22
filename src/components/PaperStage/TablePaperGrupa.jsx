@@ -20,6 +20,9 @@ export default function TablePaperGrupa({
   const listaPapierow = appcontext.listaPapierow;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+
+  
 
   
 
@@ -86,6 +89,58 @@ export default function TablePaperGrupa({
                           }
                         })
                     );
+
+
+
+
+
+
+
+                    setListaPapierowWyszukiwarka((prev) =>
+                      prev
+                        .map((t, a) => {
+                          return {
+                            ...t,
+                            select: false,
+                          };
+                        })
+      
+                    );
+        
+                    setListaPapierowNazwyWyszukiwarka((prev) =>
+                      prev
+                        .map((t, a) => {
+                          return {
+                            ...t,
+                            select: false,
+                          };
+                        })
+                  
+                    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   }}
 
                 >

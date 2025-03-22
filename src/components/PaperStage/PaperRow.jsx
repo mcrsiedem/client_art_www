@@ -11,6 +11,7 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
       const selectedElementROW = modalcontext.selectedElementROW;
       const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
       const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+      const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
       const listaPapierowPowleczenie = appcontext.listaPapierowPowleczenie;
 
       return (
@@ -50,6 +51,20 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
                 })
           
             );
+
+            setListaPapierowGrupaWyszukiwarka((prev) =>
+              prev
+                .map((t, a) => {
+                  return {
+                    ...t,
+                    select: false,
+                  };
+                })
+          
+            );
+
+
+
 
           }}
           // onDoubleClick={() =>

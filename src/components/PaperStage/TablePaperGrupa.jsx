@@ -19,6 +19,7 @@ export default function TablePaperGrupa({
     appcontext.setListaPapierowGrupaWyszukiwarka;
   const listaPapierow = appcontext.listaPapierow;
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
   const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
@@ -43,6 +44,20 @@ export default function TablePaperGrupa({
       setListaPapierowNazwyWyszukiwarka(
         listaPapierowNazwyWyszukiwarka.map((t) => {
           if (t.id == id_drag_element) {
+            return {...t,
+              grupa_id: id_drop_oprawa,
+              update: true
+            
+            }
+          } else {
+            return t;
+          }
+        })
+      );
+
+      setListaPapierowWyszukiwarka(
+        listaPapierowWyszukiwarka.map((t) => {
+          if (t.nazwa_id == id_drag_element) {
             return {...t,
               grupa_id: id_drop_oprawa,
               update: true
@@ -129,12 +144,6 @@ export default function TablePaperGrupa({
                         })
                     );
 
-
-
-
-
-
-
                     setListaPapierowWyszukiwarka((prev) =>
                       prev
                         .map((t, a) => {
@@ -143,7 +152,6 @@ export default function TablePaperGrupa({
                             select: false,
                           };
                         })
-      
                     );
         
                     setListaPapierowNazwyWyszukiwarka((prev) =>
@@ -154,9 +162,7 @@ export default function TablePaperGrupa({
                             select: false,
                           };
                         })
-                  
                     );
-
 
                   }}
 

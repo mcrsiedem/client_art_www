@@ -50,7 +50,7 @@ export function onDeletePaperRow(
       setListaPapierowGrupaWyszukiwarka(
         listaPapierowGrupaWyszukiwarka.map((t, a) => {
           if (
-            listaPapierowWyszukiwarka.filter((x) => x.grupa_id == selectRow.id)
+            listaPapierowNazwyWyszukiwarka.filter((x) => x.grupa_id == selectRow.id)
               .length == 0
           ) {
             if (t.id == selectRow.id) {

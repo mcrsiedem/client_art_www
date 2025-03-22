@@ -38,7 +38,35 @@ export const onDeletePaperRowCheckUse = async (
         }
       })
       .then((res) => {
-        //  setBtnZapiszPapierDisabled(false)
+        setListaPapierowGrupaWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+        );
+    
+        setListaPapierowWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+        );
+    
+        setListaPapierowNazwyWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+        );
       });
   } else {
     onDeletePaperRow(
@@ -51,5 +79,39 @@ export const onDeletePaperRowCheckUse = async (
       setListaPapierowGrupaWyszukiwarka,
       listaPapierowGrupaWyszukiwarka
     );
+
+
+    setListaPapierowGrupaWyszukiwarka((prev) =>
+      prev
+        .map((t, a) => {
+          return {
+            ...t,
+            select: false,
+          };
+        })
+    );
+
+    setListaPapierowWyszukiwarka((prev) =>
+      prev
+        .map((t, a) => {
+          return {
+            ...t,
+            select: false,
+          };
+        })
+    );
+
+    setListaPapierowNazwyWyszukiwarka((prev) =>
+      prev
+        .map((t, a) => {
+          return {
+            ...t,
+            select: false,
+          };
+        })
+    );
+
+
+
   }
 };

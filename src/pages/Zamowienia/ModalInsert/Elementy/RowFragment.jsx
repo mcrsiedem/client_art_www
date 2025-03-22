@@ -27,7 +27,7 @@ export default function RowFragment({
     }
   return (
     <>
-    <div className={style.row_fragmenty} draggable={lockDragDrop} onDragStart={handleDragStart} key={row.id}>
+    <div className={style.row_fragmenty} draggable={lockDragDrop} onDragStart={()=>handleDragStart} key={row.id}>
       
       <Typ row={row} />
       <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />

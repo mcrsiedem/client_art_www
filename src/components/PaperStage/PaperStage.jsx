@@ -1,6 +1,9 @@
 import React, { useEffect, useState,useContext,useRef} from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
+
+import iconLock from "assets/lock2.svg";
+import iconUnLock from "assets/unLock.svg";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
 import iconDelete from "assets/trashgray.svg";
@@ -52,9 +55,9 @@ export default function PaperStage() {
     const [selectRow, setSelectRow] = useState(null);
     const [selectTable, setSelectTable] = useState(start);
 const [paperSelectView, setPaperSelectView] = useState([
-  {id:1,nazwa:"papier",view:false},
-  {id:2,nazwa:"nazwa",view:false},
-  {id:3,nazwa:"grupa",view:true}
+  {id:1,nazwa:"papier",wyswietlanie:"Papiery",view:false},
+  {id:2,nazwa:"nazwa",wyswietlanie:"Nazwy",view:false},
+  {id:3,nazwa:"grupa",wyswietlanie:"Grupy",view:true}
 ]);
 
 
@@ -90,32 +93,40 @@ const scrollTable = (table) => {
   return (
     <div className={style.grayScaleBackground}>
       <div  resizable ref={start} className={style.window}>
-        <Header setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
+        <Header  setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
-                <div className={style.btnContainer}>
-                  <RefreshBTN/>
-                
+                <div className={style.btnContainer_left}>
+              
+                {/* <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+                <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+                  */}
                   {/* <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
-                  <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
-                  <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+                  {/* <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+                  <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
                   
                 </div>
-                <div className={style.container_in_footer_right}>
+                <div className={style.btnContainer_left_center}>
                     <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
                     <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
                     <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
               
                 </div>
+                <div className={style.btnContainer_right}>
+                <ViewSelect paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} />
               <Szukaj paperSelectView={paperSelectView}/>
+                <RefreshBTN/>
+              
+                </div>
+                
         </Finder>
         <TablePaper paperSelectView={paperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
         <TablePaperNazwa paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
         <TablePaperGrupa paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow} scrollTable={scrollTable} setSelectTable={setSelectTable}/>
   <div className={style.footer}>
-    <div className={style.container_in_footer}>  </div>
+    <div className={style.container_in_footer}>    </div>
     <div className={style.container_in_footer}>   <Zapisz  /> </div>
     <div className={style.container_in_footer_right}>
- 
+    {/* <LockDradDrop/> */}
     </div>
    
 
@@ -232,7 +243,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
                   const newlistaPapierowGrupaWyszukiwarka = listaPapierowGrupaWyszukiwarka.slice();
                   newlistaPapierowGrupaWyszukiwarka.push({
                     ...selectRow,
-                    id: getMaxID(listaPapierowGrupaWyszukiwarka),
+                    // id: getMaxID(listaPapierowGrupaWyszukiwarka),
                     insert: true
                   })
                   setListaPapierowGrupaWyszukiwarka(newlistaPapierowGrupaWyszukiwarka)
@@ -442,7 +453,60 @@ const RefreshBTN = ({ row, showMenu, setShowMenu }) => {
 };
 
 
+function ViewSelect({ paperSelectView, setPaperSelectView }) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+    const modalcontext = useContext(ModalInsertContext);
+    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+
+const listaPapierowPowleczenie = appcontext.listaPapierowPowleczenie;
+
+// const [paperSelectView, setPaperSelectView] = useState([
+//   {id:1,nazwa:"papier",view:false},
+//   {id:2,nazwa:"nazwa",view:false},
+//   {id:3,nazwa:"grupa",view:true}
+// ]);
+
+// paperSelectView, setPaperSelectView
+  return (            <select
+          className={ style.viewSelect }
+          value={paperSelectView.filter(x=>x.view==true)[0].id}
+          onChange={(e) => {
+
+            setPaperSelectView(
+              paperSelectView.map((t) => {
+                if (t.id == e.target.value) {
+                  return {...t,
+                    view: true,
+                   
+                  }
+                } else {
+                  return {...t,
+                    view: false,
+                   
+                  }
+                }
+              })
+            );
+
+
+          }}
+        >
+ 
+          {paperSelectView.filter(x=> x.id !=1).map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.wyswietlanie}
+            </option>
+          ))}
+        </select>)
+
+  
+}
 
 function GrupaBTN({paperSelectView, setPaperSelectView,setSelectRow}) {
   return (
@@ -499,6 +563,7 @@ function Header({selectRow,setSelectRow}) {
       
 
     }}>
+      <LockDradDrop/>
       <p className={style.title}>         Ilość papierów: {listaPapierowNazwy.length} </p>
       {/* {<p className={style.title}>       Wybrany papier:  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.nazwa}  {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.gramatura} {listaPapierow?.filter(x=> x.id == selectedElementROW?.papier_id)[0]?.wykonczenie}</p>} */}
       {/* <p className={style.title}>       Wybrany papier:  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].nazwa}  {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].gramatura} {listaPapierow.filter(x=> x.id == selectedElementROW.papier_id)[0].wykonczenie}</p> */}
@@ -507,6 +572,24 @@ function Header({selectRow,setSelectRow}) {
       <Zamknij setSelectRow={setSelectRow}/>
     </div>
   );
+}
+
+const LockDradDrop = () =>{
+  // const contextModalInsert = useContext(ModalInsertContext);
+  const appcontext = useContext(AppContext);
+
+  return(
+    <img
+    onClick={() => {
+      // wyłącza drag drop w tabelkach
+      appcontext.setLockDragDropPapier(
+        !appcontext.lockDragDropPapier
+      );
+    }}
+    className={style.icon2}
+    src={appcontext.lockDragDropPapier ? iconUnLock : iconLock}
+  />
+  )
 }
 
 function Zamknij({setSelectRow}) {

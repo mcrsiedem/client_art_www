@@ -7,6 +7,8 @@ import add from "assets/add2.svg";
 
 import PaperRow from "./PaperRow";
 import DecodeToken from "pages/Login/DecodeToken";
+import Logo_ustawienia2 from "assets/hand.svg";
+
 
 
 export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSelectView,selectRow,index,setBtnZapisz,setSelectRow,inputElement,setSelectTable}) {
@@ -17,7 +19,9 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
       const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
       const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
       const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+      const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
       const listaPapierow = appcontext.listaPapierow;
+      const lockDragDropPapier = appcontext.lockDragDropPapier;
       const handleClick = (rowPapierNazwy) => {
         setSelectRow(rowPapierNazwy);
         setSelectTable(inputElement);
@@ -49,49 +53,53 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
               };
             })
         );
+
+
+        setListaPapierowGrupaWyszukiwarka((prev) =>
+          prev
+            .map((t, a) => {
+              return {
+                ...t,
+                select: false,
+              };
+            })
+      
+        );
       }
       
-      const handleDoubleClik = (ev) =>{
-        if ((document.onkeydown = ev.ctrlKey)) {
-          setPaperSelectView(
-            paperSelectView
-              .map((t) => {
-                return { ...t, view: false };
-              })
-              .map((t) => {
-                if (t.nazwa == "papier") {
-                  return { ...t, view: true };
-                } else {
-                  return t;
-                }
-              })
-          );
-      
-          const m = [...listaPapierow];
-          setListaPapierowWyszukiwarka(
-            m.filter((k) => k.nazwa_id == selectRow.id)
-          );
-        }
-        setSelectRow(null);
+
+
+      function handleDragStart(){
+    
+                 //  e.preventDefault()
+        sessionStorage.setItem("id_element_drag", rowPapierNazwy.id);
+        sessionStorage.setItem("typ_drag", 'paper_row');
+
+ 
+    
       }
 
       return (
               <>
                 <tr
+                draggable={lockDragDropPapier}
+                  onDragStart={handleDragStart}
                   className={color(rowPapierNazwy)}
                   key={rowPapierNazwy.id}
                   onClick={() => {
                     handleClick(rowPapierNazwy);
                   }}
-                  onDoubleClick={(ev) => {
-                    handleDoubleClik(ev);
-                  }}
+                  // onDoubleClick={(ev) => {
+                  //   handleDoubleClik(ev);
+                  // }}
                 >
-                  <td></td>
+                  <td><HandBTN paperSelectView={paperSelectView}/></td>
                   
 
                   <Rozwin row={rowPapierNazwy} />
-                  <ID row={rowPapierNazwy} index={index + 1} />
+                  <td></td>
+
+                  {/* <ID row={rowPapierNazwy} index={index + 1} /> */}
                   <Nazwa row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                   <td></td>
                   <td></td>
@@ -123,7 +131,49 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
 }
 
 
+const HandBTN = ({ paperSelectView }) => {
+  const appcontext = useContext(AppContext);
 
+  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+  const setListaPapierow = appcontext.setListaPapierow;
+  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+
+  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
+  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
+  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
+  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
+  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
+  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
+  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
+  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+  const lockDragDropPapier = appcontext.lockDragDropPapier;
+
+  if(lockDragDropPapier & paperSelectView[2].view == true){
+          return (
+    
+    <div className={style.menu_produkty}>
+      <img
+
+        className={ style.iconMenuBtn}
+        src={Logo_ustawienia2}
+        title="Odśwież papiery"
+        onClick={() => {
+
+   
+        }}
+        alt="x"
+      />
+    </div>
+  );
+  } else return(    <div className={style.menu_produkty}>
+
+  </div>)
+
+  
+};
 
 
 
@@ -220,9 +270,9 @@ function Rozwin({ row }) {
 // }
 
 
-function ID({ row,index}) {
-  return <td  className={style.id}>{index}</td>;
-}
+// function ID({ row,index}) {
+//   return <td  className={style.id}>{index}</td>;
+// }
 
 function Powleczenie({ row }) {
   const appcontext = useContext(AppContext);

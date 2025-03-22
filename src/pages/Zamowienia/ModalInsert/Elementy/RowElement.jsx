@@ -168,41 +168,6 @@ export default function RowElement({
         newFragmenty.sort((a, b) => a.indeks - b.indeks);
         setFragmenty(newFragmenty);
 
-        // const newProcesyElementow = procesyElementow.slice();
-
-        // procesyElementow
-        // .filter((f) => f.element_id == card.id)
-        // .forEach((proces) => {
-        //   newProcesyElementow.push({
-        //     id: Math.max(...newProcesyElementow.map((f) => f.id)) + 1,
-        //     zamowienie_id: proces.zamowienie_id,
-        //     back_ilosc: proces.back_ilosc,
-        //     back_kolor: proces.back_kolor,
-        //     element_id: Math.max(...newElementy.map((f) => f.id)),
-        //     front_ilosc: proces.front_ilosc,
-        //     front_kolor: proces.front_kolor,
-        //     info: proces.info,
-        //     infoproces: proces.infoproces,
-        //     mnoznik: proces.mnoznik,
-        //     narzad: proces.narzad,
-        //     nazwa: proces.nazwa,
-        //     nazwa_id: proces.nazwa_id,
-        //     obszar: proces.obszar,
-        //     predkosc: proces.predkosc,
-        //     proces_id: proces.proces_id,
-        //     procesor_domyslny: proces.procesor_domyslny,
-        //     produkt_id: proces.produkt_id,
-        //     rodzaj: proces.rodzaj,
-        //     typ: proces.typ,
-        //     wykonczenie: proces.wykonczenie,
-        //     insert:true,
-   
-        //     indeks: Math.max(...newProcesyElementow.filter((x) => x.delete != true).map((f) => f.indeks)) + 1,
-        //   });
-        // });
-
-        // setProcesyElementow(newProcesyElementow);
-
 
       }
     return (

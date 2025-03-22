@@ -47,12 +47,35 @@
   color: #fff;
 }
 
-.btnContainer{
+.btnContainer_left{
   display: flex;
-  justify-content: start;
+  justify-content: left;
   align-items: center;
   gap:20px;
+  padding-left: 20px;
 }
+
+.btnContainer_left_center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding-right: 50px; */
+  /* padding-right: 40px;
+  padding-bottom: 10px; */
+  gap:20px;
+}
+
+
+.btnContainer_right{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap:20px;
+
+  padding-right: 20px;
+}
+
+
 
 .select_papier {
   background-color: #eeeeee;
@@ -64,6 +87,7 @@ width: 200px;
   padding-left: 30px;
   /* border:none; */
   color: gray;
+  
 }
 
 .title {
@@ -73,16 +97,17 @@ width: 200px;
   color: #fff;
   font-size: 0.9rem;
   padding-top: 12px;
-  padding-left: 7px;
+  /* padding-left: 7px; */
 }
 
 .btnPaper{
-  border:none;
-  background: transparent;
+  /* border:none; */
+  background-color: #eeeeee;
   color: grey;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 5px;
   border-radius: 5px;
+  border: 1px solid rgb(171, 171, 171);
 
 }
 
@@ -117,12 +142,11 @@ width: 200px;
 }
 
 .finder {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* gap: 20px;
   padding: 10px;
-  padding-left: 20px;
+  padding-left: 20px; */
   /* background-color: red; */
 
 }
@@ -148,6 +172,7 @@ width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 50px;
   /* padding-right: 40px;
   padding-bottom: 10px; */
   gap:20px;
@@ -160,9 +185,27 @@ width: 200px;
   border-radius: 5px;
   outline: 1px solid rgb(185, 185, 185);
 
-  width: 200px;
+  width: 100px;
   height: 1.8rem;
   padding-left: 10px;
+  font-size: 0.8rem;
+}
+
+.viewSelect{
+  background-color: #eeeeee;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid rgb(185, 185, 185);
+ color: gray;
+  width: 100px;
+  height: 1.8rem;
+  padding-left: 10px;
+  font-size: 0.8rem;
+}
+
+.icon2{
+  padding-left: 12px;
+  height: 20px;
 }
 
 .icon{

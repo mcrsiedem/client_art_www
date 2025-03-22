@@ -22,6 +22,7 @@ export const AppContextProvider = ({children})=>{
     const [listaPapierow, setListaPapierow] = useState();
     const [nadkomplety, setNadkomplety] = useState();
 
+    const [lockDragDropPapier, setLockDragDropPapier] = useState(false);
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
     const [listaPapierowNazwyWyszukiwarka, setListaPapierowNazwyWyszukiwarka] = useState();
@@ -113,7 +114,7 @@ export const AppContextProvider = ({children})=>{
                     listaPapierowRodzaj,setListaPapierowRodzaj,listaPapierowRodzajWyszukiwarka, setListaPapierowRodzajWyszukiwarka,
                     listaPapierowWykonczenia,setListaPapierowWykonczenia,listaPapierowWykonczeniaWyszukiwarka, setListaPapierowWykonczeniaWyszukiwarka,
                     listaPapierowPowleczenie, setListaPapierowPowleczenie,listaPapierowPowleczenieWyszukiwarka,setListaPapierowPowleczenieWyszukiwarka,
-                    
+                    lockDragDropPapier, setLockDragDropPapier,
                     procesory,mnozniki, _status_wykonania,_stan_wykonania, setProcesory,
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,

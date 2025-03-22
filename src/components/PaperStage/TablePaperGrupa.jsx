@@ -21,10 +21,46 @@ export default function TablePaperGrupa({
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-
+  const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+  const lockDragDropPapier = appcontext.lockDragDropPapier;
   
-
+  function handleDragOver(e) {
+    if(lockDragDropPapier){
+        e.preventDefault();
+    }
   
+  }
+  function handleDrop(id) {
+
+
+    console.log(id)
+    // sprawdza czy upuszczamy właściwy obiekt
+    if (sessionStorage.getItem("typ_drag") == "paper_row") {
+      let id_drag_element = sessionStorage.getItem("id_element_drag"); // nazwa_id
+      let id_drop_oprawa = id;
+
+
+      setListaPapierowNazwyWyszukiwarka(
+        listaPapierowNazwyWyszukiwarka.map((t) => {
+          if (t.id == id_drag_element) {
+            return {...t,
+              grupa_id: id_drop_oprawa,
+              update: true
+            
+            }
+          } else {
+            return t;
+          }
+        })
+      );
+
+     setBtnZapiszPapierDisabled(false)
+      // handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
+    }
+
+    
+
+  }
 
   const color = (row) => {
     if (row.select) {
@@ -58,6 +94,7 @@ export default function TablePaperGrupa({
               <th className={style.bulk}>Bulk</th>
               <th className={style.powleczenie}>Powleczenie</th>
               <th className={style.info}>Uwagi</th>
+              
             </tr>
           </thead>
           <tbody className={style.center}>
@@ -67,6 +104,8 @@ export default function TablePaperGrupa({
                                 <tr
                   className={color(row)}
                   key={row.id}
+                  onDrop={() => handleDrop(row.id)}
+                  onDragOver={handleDragOver}
                   onClick={() => {
                     setSelectRow(row);
                     setSelectTable(inputElement);
@@ -119,32 +158,12 @@ export default function TablePaperGrupa({
                     );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                   }}
 
                 >
-                  <ID row={row} index={index + 1} />
+                  <td></td>
+
+                  {/* <ID row={row} index={index + 1} /> */}
                   <Grupa row={row} setBtnZapisz={setBtnZapisz} />
                   <td></td>
                   <td></td>

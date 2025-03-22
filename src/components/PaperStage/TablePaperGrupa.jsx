@@ -172,7 +172,6 @@ export default function TablePaperGrupa({
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td></td>
 
                 </tr>
 

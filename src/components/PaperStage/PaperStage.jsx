@@ -96,7 +96,9 @@ const scrollTable = (table) => {
         <Header  setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
                 <div className={style.btnContainer_left}>
-              
+                <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
+                    <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
+                    <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
                 {/* <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
                 <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
                   */}
@@ -106,9 +108,7 @@ const scrollTable = (table) => {
                   
                 </div>
                 <div className={style.btnContainer_left_center}>
-                    <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
-                    <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
-                    <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
+                  
               
                 </div>
                 <div className={style.btnContainer_right}>
@@ -190,7 +190,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
   return (
     <div>
       <img
-      title="Skopiuj znaznaczony papier"
+      title="Kopiuj"
         className={style.icon}
         src={iconCopy}
         onClick={() => {
@@ -243,7 +243,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
                   const newlistaPapierowGrupaWyszukiwarka = listaPapierowGrupaWyszukiwarka.slice();
                   newlistaPapierowGrupaWyszukiwarka.push({
                     ...selectRow,
-                    // id: getMaxID(listaPapierowGrupaWyszukiwarka),
+                    id: null,
                     insert: true
                   })
                   setListaPapierowGrupaWyszukiwarka(newlistaPapierowGrupaWyszukiwarka)
@@ -277,7 +277,7 @@ function DeleteBTN({ selectRow }) {
   return (
     <div>
       <img
-      title="Skasuj zaznaczony papier"
+      title="Skasuj"
         className={style.icon}
         src={iconDelete}
         onClick={() => {

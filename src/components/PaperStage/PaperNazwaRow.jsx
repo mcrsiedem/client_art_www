@@ -106,7 +106,6 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
                   <td></td>
                   <Powleczenie row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                   <td></td>
-                  <td></td>
           
                 </tr>
 

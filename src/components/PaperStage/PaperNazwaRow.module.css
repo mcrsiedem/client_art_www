@@ -106,3 +106,10 @@
     /* justify-content: center;
     align-items: center; */
   }
+
+  .select_papier_powleczenie {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    width: 150px;
+  }

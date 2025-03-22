@@ -36,10 +36,9 @@ export const onDeletePaperRowCheckUse = async (
             listaPapierowGrupaWyszukiwarka
           );
         }
-        // console.log(res.data)
       })
       .then((res) => {
-        //  setBtnZapiszPapierDisabled(true)
+        //  setBtnZapiszPapierDisabled(false)
       });
   } else {
     onDeletePaperRow(

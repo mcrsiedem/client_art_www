@@ -5,16 +5,19 @@ import style from "./ChangePaper.module.css";
 
 import iconX from "assets/x.svg";
 export default function ChangePaper({showChange,setShowChange,selectRow}) {
-      const modalcontext = useContext(ModalInsertContext);
+      const modalcontext = useContext(ModalInsertContext);                                                      
       const selectedElementROW = modalcontext.selectedElementROW;
 
 if(showChange){
     return (
+    <div className={style.grayScaleBackground}>
+
     <div className={style.window}>
       <Header setShowChange={setShowChange}></Header>
       <p className={style.alert_label}> {selectRow.nazwa} {selectRow.gramatura} g/m2 {selectRow.wykonczenie}</p>
       <Zmien setShowChange={setShowChange} selectRow={selectRow}/>
 
+    </div>
     </div>
   );
 }
@@ -32,15 +35,11 @@ function Zmien({ setShowChange,selectRow}) {
 
   return (
     <button
-      className={style.btn_delete}
+      className={style.btn_zmien}
       onClick={() => {
-       
-        // deleteClient(rowID, getClients,setShowDeleteClientPane)
-     
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: rowID.current.id })
 
-
-          setElementy(
+          if(selectRow.typ_row==1){
+              setElementy(
             elementy.map((t, a) => {
             if (t.id == selectedElementROW.id) {
               return {
@@ -54,12 +53,12 @@ function Zmien({ setShowChange,selectRow}) {
           })
         );
 
-
-          
-          setShowChange(false)
           setSaveButtonDisabled(false)
           setShowPaperStage(false)
         
+   }
+
+
       }}
     >
       Zmień

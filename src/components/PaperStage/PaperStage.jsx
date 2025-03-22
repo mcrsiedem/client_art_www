@@ -215,6 +215,7 @@ function CopyBTN({ selectRow,scrollTable,selectTable,paperSelectView}) {
                 ...selectRow,
                 nazwa: "Nowy papier",
                 id: null,
+                powleczenie_id:1,
                 // id: getMaxID(listaPapierowNazwyWyszukiwarka),
                 insert: true
               })
@@ -474,6 +475,7 @@ function Header({selectRow,setSelectRow}) {
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
   const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const listaPapierowPowleczenie = appcontext.listaPapierowPowleczenie;
   const modalcontext = useContext(ModalInsertContext);
 
   const selectedElementROW = modalcontext.selectedElementROW;
@@ -493,6 +495,7 @@ function Header({selectRow,setSelectRow}) {
 
       console.log("Papiery_nazwy: ",listaPapierowNazwyWyszukiwarka)
       console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+      console.log("powleczenie: ",listaPapierowPowleczenie)
       
 
     }}>

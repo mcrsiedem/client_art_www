@@ -93,7 +93,7 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td></td>
+                  <Powleczenie row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />
                   <td></td>
                   <td></td>
           
@@ -221,7 +221,69 @@ function ID({ row,index}) {
   return <td  className={style.id}>{index}</td>;
 }
 
+function Powleczenie({ row }) {
+  const appcontext = useContext(AppContext);
+  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+    const modalcontext = useContext(ModalInsertContext);
+    // const isBtnZapiszPapierAvtive = modalcontext.isBtnZapiszPapierAvtive;
+    const setBtnZapiszPapierDisabled = appcontext.setBtnZapiszPapierDisabled;
+    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
+    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+
+const listaPapierowPowleczenie = appcontext.listaPapierowPowleczenie;
+  return <td>
+            <select
+          className={ style.select_papier_powleczenie }
+          value={row.powleczenie_id}
+          onChange={(e) => {
+            setListaPapierowNazwyWyszukiwarka(
+              listaPapierowNazwyWyszukiwarka.map((t, a) => {
+              if (t.id == row.id) {
+                return {
+                  ...t,
+                  powleczenie_id: e.target.value,
+                  update: true
+        
+                };
+              } else {
+                return t;
+              }
+            })
+          );
+
+
+          setListaPapierowWyszukiwarka(
+            listaPapierowWyszukiwarka.map((t, a) => {
+            if (t.nazwa_id == row.id) {
+              return {
+                ...t,
+                powleczenie_id: e.target.value,
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+        );
+
+          setBtnZapiszPapierDisabled(false)
+          }}
+        >
+          {/* {   <option value = "0"  >
+             wybierz papier
+            </option>}
+        */}
+          {listaPapierowPowleczenie.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.powleczenie}
+            </option>
+          ))}
+        </select>
+    </td>;
+}
 
 function Nazwa({ row,setBtnZapisz}) {
     const appcontext = useContext(AppContext);

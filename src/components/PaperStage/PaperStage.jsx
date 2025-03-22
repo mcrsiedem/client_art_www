@@ -53,8 +53,8 @@ export default function PaperStage() {
     const [selectTable, setSelectTable] = useState(start);
 const [paperSelectView, setPaperSelectView] = useState([
   {id:1,nazwa:"papier",view:false},
-  {id:2,nazwa:"nazwa",view:true},
-  {id:3,nazwa:"grupa",view:false}
+  {id:2,nazwa:"nazwa",view:false},
+  {id:3,nazwa:"grupa",view:true}
 ]);
 
 
@@ -96,8 +96,8 @@ const scrollTable = (table) => {
                   <RefreshBTN/>
                 
                   {/* <PapierBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
-                  {/* <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
-                  {/* <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/> */}
+                  <GrupaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
+                  <NazwaBTN paperSelectView={paperSelectView} setPaperSelectView={setPaperSelectView} setSelectRow={setSelectRow}/>
                   
                 </div>
                 <div className={style.container_in_footer_right}>
@@ -397,7 +397,7 @@ function NazwaBTN({ paperSelectView, setPaperSelectView,setSelectRow }) {
         setSelectRow(null)
       }}
     >
-      Wszystkie
+      Papiery
     </button>
   );
 }

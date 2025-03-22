@@ -1,4 +1,32 @@
+.id{
+  width: 10px;
+}
 
+.nazwa{
+  width: 400px;
+ 
+}
+
+.gramatura{
+  width: 100px;
+  text-align: center;
+}
+
+.wykonczenie{
+  text-align: center;
+  width: 100px;
+}
+.bulk{
+  width: 100px;
+  text-align: center;
+
+}
+
+.powleczenie{
+  width: 100px;
+  text-align: left;
+
+}
 .tr:hover{
   background-color: rgb(210, 210, 210);
 

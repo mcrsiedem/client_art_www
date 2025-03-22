@@ -56,8 +56,10 @@ export default function PaperRow({row,inputElement,setSelectTable,setSelectRow})
           //   openEdit(row, rowID, setShowEdit)
           // }
         >
+                  <td></td>
           <td></td>
           <td></td>
+
           <td className={ style.nazwa }>{row.nazwa}</td>
           <Gramatura row={row} />
           <Wykonczenie row={row} />

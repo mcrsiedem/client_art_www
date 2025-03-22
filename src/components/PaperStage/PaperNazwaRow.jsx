@@ -87,6 +87,9 @@ export default function PaperNazwaRow({rowPapierNazwy,setPaperSelectView,paperSe
                     handleDoubleClik(ev);
                   }}
                 >
+                  <td></td>
+                  
+
                   <Rozwin row={rowPapierNazwy} />
                   <ID row={rowPapierNazwy} index={index + 1} />
                   <Nazwa row={rowPapierNazwy} setBtnZapisz={setBtnZapisz} />

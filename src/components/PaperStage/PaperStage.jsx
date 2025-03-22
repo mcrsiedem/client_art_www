@@ -486,32 +486,40 @@ function Szukaj({ paperSelectView }) {
       type="text"
       placeholder="Szukaj..."
       onChange={(event) => {
-        if (paperSelectView[0].view == true) {
-          const m = [...listaPapierow];
-          setListaPapierowWyszukiwarka(
-            m.filter((k) =>
-              k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
-            )
-          );
-        }
 
-        if (paperSelectView[1].view == true) {
-          const m = [...listaPapierowNazwy];
-          setListaPapierowNazwyWyszukiwarka(
-            m.filter((k) =>
-              k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
-            )
-          );
-        }
+        const m = [...listaPapierowNazwy];
+        setListaPapierowNazwyWyszukiwarka(
+          m.filter((k) =>
+            k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+          )
+        );
 
-        if (paperSelectView[2].view == true) {
-          const m = [...listaPapierowGrupa];
-          setListaPapierowGrupaWyszukiwarka(
-            m.filter((k) =>
-              k.grupa.toLowerCase().includes(event.target.value.toLowerCase())
-            )
-          );
-        }
+        // if (paperSelectView[0].view == true) {
+        //   const m = [...listaPapierow];
+        //   setListaPapierowWyszukiwarka(
+        //     m.filter((k) =>
+        //       k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+        //     )
+        //   );
+        // }
+
+        // if (paperSelectView[1].view == true) {
+        //   const m = [...listaPapierowNazwy];
+        //   setListaPapierowNazwyWyszukiwarka(
+        //     m.filter((k) =>
+        //       k.nazwa.toLowerCase().includes(event.target.value.toLowerCase())
+        //     )
+        //   );
+        // }
+
+        // if (paperSelectView[2].view == true) {
+        //   const m = [...listaPapierowGrupa];
+        //   setListaPapierowGrupaWyszukiwarka(
+        //     m.filter((k) =>
+        //       k.grupa.toLowerCase().includes(event.target.value.toLowerCase())
+        //     )
+        //   );
+        // }
       }}
     ></input>
   );

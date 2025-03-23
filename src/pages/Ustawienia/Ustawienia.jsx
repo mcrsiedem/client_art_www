@@ -18,6 +18,7 @@ import UstawieniaHeader from "./UstawieniaHeader";
 import iconZamowienia from "assets/iconZamowienia.svg";
 import PaperStage from "components/PaperStage/PaperStage";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import ClientStage from "components/Klienci/ClientStage";
 
 export default function Ustawienia({ user, setUser }) {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ export default function Ustawienia({ user, setUser }) {
                   className={style.pane}
                   onClick={() => {
                     // navigate("/Zamowienia");
+                 
                     setShowPaperStage(true)
                   }}
                 >
@@ -72,6 +74,7 @@ export default function Ustawienia({ user, setUser }) {
                 <div
                   className={style.pane}
                   onClick={() => {
+                    modalContext.showAddClientStage(true)
                     // navigate("/Zamowienia");
                   }}
                 >
@@ -105,6 +108,7 @@ export default function Ustawienia({ user, setUser }) {
 
       
                   <PaperStage parent={"ustawienia"}/>
+                  <ClientStage parent={"ustawienia"}/>
 
     </div>
   );

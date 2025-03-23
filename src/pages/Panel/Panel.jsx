@@ -27,6 +27,7 @@ export default function Panel({ user, setUser }) {
   const appcontext = useContext(AppContext);
   const setNadkomplety = appcontext.setNadkomplety;
   const setClients = appcontext.setClients;
+  const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
 
   useEffect(() => {
     // window.onbeforeunload = function () {
@@ -34,7 +35,7 @@ export default function Panel({ user, setUser }) {
     // };
     
     getNadkomplety(setNadkomplety)
-    getClients(setClients )
+    getClients(setClients,setClientsWyszukiwarka )
 
   }, []);
 

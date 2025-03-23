@@ -8,11 +8,10 @@ import ChangeClient from "./ChangeClient";
 import { AppContext } from "context/AppContext";
 
 export default function Table({
-  klienciWyszukiwarka,
+
   daneZamowienia,
   setDaneZamowienia,
-  getClients,
-  setShowAddClientPane,
+  parent
 }) {
   const [selectedRow, setSelectedRow] = useState("");
   const [isShowDeleteClientPane, setShowDeleteClientPane] = useState(false);
@@ -56,6 +55,7 @@ export default function Table({
                 <NIP row={row} />
                 <Opiekun row={row} />
                 <UseIcon
+                parent={parent}
                   row={row}
                   rowID={rowID}
                   daneZamowienia={daneZamowienia}
@@ -78,7 +78,6 @@ export default function Table({
       {isShowDeleteClientPane && (
         <DeleteClient
           setShowDeleteClientPane={setShowDeleteClientPane}
-          getClients={() => getClients()}
           rowID={rowID}
         />
       )}
@@ -86,7 +85,7 @@ export default function Table({
       {showEdit && (
         <EditClient
         setShowEdit={setShowEdit}
-          getClients={() => getClients()}
+  
           rowID={rowID}
         />
       )}
@@ -153,16 +152,20 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
   );
 }
 
-function UseIcon({ row, rowID,setDaneZamowienia, daneZamowienia,setShowChange }) {
+function UseIcon({ parent,row, rowID,setDaneZamowienia, daneZamowienia,setShowChange }) {
   return (
     <td>
       <img
         className={style.icon}
         src={iconEdit}
         onClick={() => {
-          // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
+
+          if(parent="modalinsert"){
+                 // setDaneZamowienia({ ...daneZamowienia, klient_id: row.id });
           rowID.current = { id: row.id, firma: row.firma };
           setShowChange(true)
+          }
+     
         }}
         alt="Procesy"
       />

@@ -44,7 +44,7 @@ export default function ClientStage({parent}) {
           <Szukaj/>
         </Finder>
         <TableClient
-       
+          parent={parent}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
           setShowAddClientPane={setShowAddClientPane}

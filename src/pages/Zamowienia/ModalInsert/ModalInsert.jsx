@@ -285,7 +285,7 @@ const showAddClientStage = contextModalInsert.showAddClientStage;
       )}
 
 
-        <ClientStage/>
+        <ClientStage parent={"modalinsert"}/>
    
 {readAlert && (
         <ReadOnlyAlert

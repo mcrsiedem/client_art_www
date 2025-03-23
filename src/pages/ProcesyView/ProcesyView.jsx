@@ -71,8 +71,8 @@ export default function ProcesyView( ) {
                 setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
                 setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
           
-            getClients(setClients)
-                  getNadkomplety(setNadkomplety,setClientsWyszukiwarka)
+            getClients(setClients,setClientsWyszukiwarka)
+                  getNadkomplety(setNadkomplety)
             
             // getPapiery(setListaPapierow)
             // getPapieryNazwy(setListaPapierowNazwy)

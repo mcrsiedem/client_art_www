@@ -42,7 +42,7 @@ function UstawieniaHeader() {
           <div className={style.leftHeaderContener}>
 
 {/* <ProcesSelect selectedProces={selectedProces} setSelectedProces={setSelectedProces} setSelectedProcesor={setSelectedProcesor} selectedProcesor={selectedProcesor}/> */}
-          <p className={style.ustawienia_txt}>Ustawienia </p> 
+          <p className={style.ustawienia_txt}> </p> 
             {/* // wywietla zaznaczone zamowienia
           {appContext.zamowienia
           .filter(x=> x.select == true)

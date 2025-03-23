@@ -395,6 +395,7 @@ const contextApp = useContext(AppContext);
   }) {
     const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
+    const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
     const modalcontext = useContext(ModalInsertContext);
     const setShowPaperStage = modalcontext.setShowPaperStage;
     const setSelectedElementROW = modalcontext.setSelectedElementROW;
@@ -417,9 +418,9 @@ const contextApp = useContext(AppContext);
              wybierz papier
             </option>}
        
-          {listaPapierow.map((option) => (
+          {listaPapierowWyszukiwarka.map((option) => (
             <option key={option.id} value={option.id}>
-              {option.nazwa} {option.gramatura} g/m2 {option.wykonczenie}
+              {option.nazwa} {option.gramatura}  {option.wykonczenie}
             </option>
           ))}
         </select>

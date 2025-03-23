@@ -62,6 +62,9 @@ const Oprawa =({  binding, setBinding, setShowElement}) => {
 const produkty = contextModalInsert.produkty;
 const setProdukty = contextModalInsert.setProdukty;
 const contextApp = useContext(AppContext);
+const procesList = contextApp.procesList;
+const procesListName = contextApp.procesListName;
+
 
   return (
  
@@ -86,11 +89,11 @@ const contextApp = useContext(AppContext);
         <option key={1} value={0}> 
            wybierz oprawę...
           </option>
-        {contextApp.bindingType.map((option) => (
+        {contextApp.procesList.filter(x=>x.nazwa_id==6).map((option) => (
           
           
           <option key={option.id} value={option.id}>
-          {option.nazwa} 
+          {option.typ} {option.rodzaj} 
           </option>
         ))}
       </select>

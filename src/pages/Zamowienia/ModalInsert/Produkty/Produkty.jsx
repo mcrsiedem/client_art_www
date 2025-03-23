@@ -245,9 +245,9 @@ const contextApp = useContext(AppContext);
 
         }}
       >
-        {contextApp.bindingType?.map((option) => (
+        {contextApp.procesList?.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.nazwa} 
+            {option.nazwa} {option.rodzaj} 
           </option>
         ))}
       </select>

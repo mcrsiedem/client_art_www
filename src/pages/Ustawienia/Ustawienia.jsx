@@ -90,6 +90,16 @@ export default function Ustawienia({ user, setUser }) {
                   <p className={style.podpis_icon}>PROCESY</p>
                 </div>
 
+                <div
+                  className={style.pane}
+                  onClick={() => {
+                    // navigate("/Zamowienia");
+                  }}
+                >
+                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <p className={style.podpis_icon}>MASZYNY</p>
+                </div>
+
 
       </div>
 

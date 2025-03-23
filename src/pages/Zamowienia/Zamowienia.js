@@ -198,7 +198,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
   <thead className={style.th_head}>
     <tr >
       <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
-      <th className={style.col_id}># </th>
+      {/* <th className={style.col_id}># </th> */}
       
       
       <th className={style.col_nr}>Nr</th>
@@ -270,7 +270,7 @@ function Table_tr({ row, open2, setRow }) {
 
       >
         <SelectBox row={row} />
-        <td>{row.id} </td>
+        {/* <td>{row.id} </td> */}
         <td>{row.nr} </td>
         <td>{row.rok} </td>
         <ShowTechnmologiaBtn

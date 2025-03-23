@@ -1,18 +1,4 @@
-/* .insertContainer{
-  position: fixed;
-  top: calc(100vh/2 - 175px);
-  left: calc(100vw/2 - 300px);
-  width: 600px;
-  height: 170px;
-  min-width: 250px;
-  background-color: rgb(143, 143, 143);
-  border: 1px solid rgb(143, 143, 143);
-  border-radius: 10px;
- z-index: 3;
- display: grid;
- grid-template-rows: 30px 1fr 1fr ;
- box-shadow: 10px 10px 10px gray;
-} */
+
 
 
 .insertContainer{
@@ -53,7 +39,9 @@ min-width: 250px;
     padding-left: 10px;
     padding-right: 10px;
     /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
-    background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+    background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 2rem;
@@ -83,11 +71,14 @@ min-width: 250px;
   padding-bottom: 10px;
     gap:20px;
 
+
   }
   
   .btn{
     /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
     background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+    background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+
     width: 100px;
     height: 30px;
     border-radius: 10px;
@@ -110,7 +101,12 @@ min-width: 250px;
     }
 
     .tytul{
+      border:none;
       width: 95%;
+      border-radius: 5px;
+      padding-left: 10px;
+      font-size: 1rem;
+      height: 2.5rem;
     }
 
     .label{

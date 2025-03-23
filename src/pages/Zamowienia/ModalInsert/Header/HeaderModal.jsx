@@ -248,7 +248,40 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
 
       onClick={async () => {
         if(produkty[0].naklad){
-          setSaveButtonDisabled(false);
+
+          // alert("Data przyjecia: brak")
+          if(contextModalInsert.daneZamowienia.data_spedycji == null ^ 
+            contextModalInsert.daneZamowienia.data_spedycji =='' 
+       
+  
+          
+          ){
+            alert("Brak daty")
+          }else{
+             setSaveButtonDisabled(false);
+          }
+
+          // contextModalInsert.daneZamowienia
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
    
                 

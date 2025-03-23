@@ -2,7 +2,6 @@ import { useEffect,createContext,useState, useCallback ,useRef} from "react";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
 import { getProcesList } from 'actions/getProcesList';
-import { getBindingType } from "actions/getBindingType";
 import { getProductType } from "actions/getProductType";
 import { getProcesListName } from "actions/getProcesListName";
 import { getProcesory } from "actions/getProcesory";
@@ -16,7 +15,6 @@ export const AppContextProvider = ({children})=>{
     const [clients, setClients] = useState(null);
     const [procesList, setProcesList] = useState(null); // lista wszystkich dostępnych procesów
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
-    const [bindingType, setBindingTyp] = useState(null); 
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
@@ -85,7 +83,7 @@ export const AppContextProvider = ({children})=>{
         getUsers(setUsers) 
        
         getProcesList(setProcesList) 
-        getBindingType(setBindingTyp)
+        // getBindingType(setBindingTyp)
         getProductType(setProductType)
         getProcesListName(setProcesListName)
         getProcesory(setProcesory)
@@ -101,7 +99,7 @@ export const AppContextProvider = ({children})=>{
                     procesList, updateProcesList,     // lista wszystkich dostępnych proce
                     procesListName,
                     productType,
-                    bindingType, setBindingTyp, // lista dostępnych opraw
+                   
                     rowSelected, setRowSelected, // druk
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,

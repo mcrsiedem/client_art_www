@@ -14,12 +14,6 @@ function UstawieniaHeader() {
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
   const techContext = useContext(TechnologyContext);
-  const selectedProces = techContext.selectedProces;
-  const setSelectedProces = techContext.setSelectedProces;
-  const setSelectedProcesor = techContext.setSelectedProcesor;
-  const selectedProcesor = techContext.selectedProcesor;
-  const wykonaniaAll = techContext.wykonaniaAll;
-  const grupyWykonanAll = techContext.grupyWykonanAll;
 
 
   const appContext = useContext(AppContext)
@@ -81,7 +75,7 @@ function UstawieniaHeader() {
         <div className={style.rightHeaderContener}>
           {/* <input></input> */}
           <img
-            className={style.icon}
+            className={style.iconClose}
             src={iconClose2}
             onClick={() => {
               navigate("/Panel");
@@ -99,47 +93,3 @@ function UstawieniaHeader() {
 export default UstawieniaHeader;
 
 
-function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const procesListName = contextApp.procesListName
-  const procesList = contextApp.procesList
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-
-  const procesory = contextApp.procesory
-  const setProcesory = contextApp.setProcesory
-  return (
-    <div className={style.col_dane}>
-      
-      <select
-        className={style.procesy_input}
-        defaultValue={selectedProces}
-        onChange={(event) => {
-          setSelectedProces(event.target.value)
-          setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-           fechGrupyAndWykonaniaForProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-
-
-           setProcesory(
-            procesory
-            .map((t) => {return{...t, select: false}})
-            .map((t) => {
-              if (t.id == procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny ) {
-                return {...t, select: true }
-              } else {
-                return t;
-              }
-            })
-          )
-
-
-        }}
-      >
-        {procesListName?.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-    </div>
-  );}

@@ -55,23 +55,31 @@
     height: 50px;
 }
 
-.icon{
+.iconClose{
     
     height: 90%;
     padding: 10px;
+
+/* background-color: rgb(255, 255, 255,0.9); */
+border-radius: 10px;
+/* border: 1px solid rgb(142, 142, 142); */
+
+backdrop-filter:  blur(30px);
+background-color: rgba(134, 134, 134, 0.4);
 
 
     
 }
 
-.icon:hover{
+.iconClose:hover{
 
     /* outline:1px solid #ff0000; */
    
 
     /* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
     /* background-image: linear-gradient(#383838 0%, #444343 80%); */
-    background-color: rgb(230, 230, 230);
+    /* background-color: rgb(230, 230, 230); */
+    background-color: red;
     border-radius: 5px;
 
     

@@ -14,21 +14,34 @@ import ProcesViewRow from "./ProcesViewRow";
 import { getClients } from "actions/getClients";
 import { getPapiery } from "actions/getPapiery";
 import { getPapieryNazwy } from "actions/getPapieryNazwy";
+import { getNadkomplety } from "actions/getNadkomplety";
+import { getPapieryParametry } from "actions/getPapieryParametry";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
+  const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const setSelectedProces = techContext.setSelectedProces;
-  const appContext = useContext(AppContext)
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
   const setClients = appContext.setClients
-
   const setListaPapierow =appContext.setListaPapierow;
   const setNadkomplety =appContext.setNadkomplety;
   const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
+  const setListaPapierowNazwyWyszukiwarka = appContext.setListaPapierowNazwyWyszukiwarka;
+  const setListaPapierowGrupa = appContext.setListaPapierowGrupa;
+  const setListaPapierowGrupaWyszukiwarka = appContext.setListaPapierowGrupaWyszukiwarka;
+  const setListaPapierowPostac = appContext.setListaPapierowPostac;
+  const setListaPapierowPostacWyszukiwarka = appContext.setListaPapierowPostacWyszukiwarka;
+  const setListaPapierowRodzaj = appContext.setListaPapierowRodzaj;
+  const setListaPapierowRodzajWyszukiwarka = appContext.setListaPapierowRodzajWyszukiwarka;
+  const setListaPapierowWykonczenia = appContext.setListaPapierowWykonczenia;
+  const setListaPapierowWykonczeniaWyszukiwarka = appContext.setListaPapierowWykonczeniaWyszukiwarka;
+  const setListaPapierowPowleczenie = appContext.setListaPapierowPowleczenie;
+  const setListaPapierowPowleczenieWyszukiwarka = appContext.setListaPapierowPowleczenieWyszukiwarka;
+  const setListaPapierowWyszukiwarka = appContext.setListaPapierowWyszukiwarka;
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -52,9 +65,16 @@ export default function ProcesyView( ) {
               })
           );
 
+
+              getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
+                setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
+                setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
+          
             getClients(setClients)
-            getPapiery(setListaPapierow)
-            getPapieryNazwy(setListaPapierowNazwy)
+                  getNadkomplety(setNadkomplety)
+            
+            // getPapiery(setListaPapierow)
+            // getPapieryNazwy(setListaPapierowNazwy)
         
 
 

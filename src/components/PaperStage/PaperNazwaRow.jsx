@@ -8,6 +8,7 @@ import add from "assets/add2.svg";
 import PaperRow from "./PaperRow";
 import DecodeToken from "pages/Login/DecodeToken";
 import Logo_ustawienia2 from "assets/hand.svg";
+import { getMaxID } from "actions/getMaxID";
 
 
 
@@ -438,8 +439,7 @@ const AddPapierBTN = ({ rowNazwaPapieru, showMenu, setShowMenu }) => {
     
                     newlistaPapierowWyszukiwarka.push({
             
-
-            id: null,
+            id: getMaxID(listaPapierowWyszukiwarka),
             nazwa_id: rowNazwaPapieru.id,
             nazwa: rowNazwaPapieru.nazwa,
             bulk:1,
@@ -447,6 +447,7 @@ const AddPapierBTN = ({ rowNazwaPapieru, showMenu, setShowMenu }) => {
             powleczenie_id:1,
             info:"",
             wykonczenie_id:4,
+            typ_row:1,
             dodal: DecodeToken(sessionStorage.getItem("token")).id,
             zmienil: DecodeToken(sessionStorage.getItem("token")).id,
             grupa_id: rowNazwaPapieru.grupa_id,

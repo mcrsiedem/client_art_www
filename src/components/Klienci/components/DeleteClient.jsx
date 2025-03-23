@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import style from "./DeleteClient.module.css";
 import { deleteClient } from "../actions/deleteClient";
 
-
 import iconX from "../../../assets/x.svg";
+import { AppContext } from "context/AppContext";
 export default function DeleteClient({
   setShowDeleteClientPane,
   getClients,
@@ -14,19 +14,22 @@ export default function DeleteClient({
     <div className={style.window}>
       <Header setShowDeleteClientPane={setShowDeleteClientPane} rowID={rowID}></Header>
       <p className={style.alert_label}>{rowID.current.firma}</p>
-      <Usun  rowID={rowID} getClients={() => getClients()} setShowDeleteClientPane={setShowDeleteClientPane} />
+      <Usun  rowID={rowID}  setShowDeleteClientPane={setShowDeleteClientPane} />
 
     </div>
   );
 }
 
-function Usun({ rowID, getClients,setShowDeleteClientPane,daneZamowienia}) {
+function Usun({ rowID,setShowDeleteClientPane}) {
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   return (
     <button
       className={style.btn_delete}
       onClick={() => {
        
-        deleteClient(rowID, getClients,setShowDeleteClientPane)
+        deleteClient(rowID, setClients,setClientsWyszukiwarka ,setShowDeleteClientPane)
         
         
       }}

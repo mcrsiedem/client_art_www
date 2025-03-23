@@ -11,7 +11,7 @@ import { goInputValidation } from "actions/goInputValidation";
 
 export default function Dane({
   selected_firma,setSelected_firma,
-  klienci,klient,setKlient,
+
   showAddClientStage
 }) {
 
@@ -26,7 +26,7 @@ export default function Dane({
       <div id="Dane" className={style.dane}>
         <Row style={style.row1}>
             <Firma />
-            <Klient klienci={klienci} showAddClientStage={showAddClientStage} />
+            <Klient  showAddClientStage={showAddClientStage} />
             <DataPrzyjecia />
             <DataMeterialow />
             <DataSpedycji />

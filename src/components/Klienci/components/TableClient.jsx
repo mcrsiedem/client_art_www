@@ -20,6 +20,10 @@ export default function Table({
   const [showChange, setShowChange] = useState(false);
   const rowID = useRef();
 
+    const contextApp = useContext(AppContext);
+    const setClients = contextApp.setClients;
+    const clientsWyszukiwarka = contextApp.clientsWyszukiwarka;
+
   return (
     <div className={style.main}>
       <table className={style.table2}>
@@ -36,7 +40,7 @@ export default function Table({
           </tr>
         </thead>
         <tbody className={style.center}>
-          {klienciWyszukiwarka.map((row, index) => {
+          {clientsWyszukiwarka.map((row, index) => {
             return (
               <tr
                 key={row.id}

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { IP } from "../../../utils/Host";
+import { getClients } from "actions/getClients";
 
-export   const updateClient = async (daneKlienta,getClients,setShowEdit)=> {
+export   const updateClient = async (daneKlienta,setClients,setClientsWyszukiwarka,setShowEdit)=> {
 
     await axios
       .put(IP + "updateKlient", {
@@ -13,7 +14,7 @@ export   const updateClient = async (daneKlienta,getClients,setShowEdit)=> {
         opiekun_id: daneKlienta.opiekun_id,
       })
       .then((res) => {
-        getClients();
+        getClients(setClients,setClientsWyszukiwarka )
         setShowEdit(false)
       });
   };

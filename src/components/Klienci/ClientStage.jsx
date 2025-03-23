@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import style from "./ClientStage.module.css";
@@ -9,50 +9,44 @@ import iconTable from "../../assets/add.png";
 import addIcon2 from "../../assets/addIcon2.svg";
 
 import AddClient from "./components/AddClient";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { getClients } from "actions/getClients";
+import { AppContext } from "context/AppContext";
 
-export default function ClientStage({
-  isShowAddClientStage,
-  showAddClientStage,
-  daneZamowienia,
-  setDaneZamowienia,
-  klienci,
-  setKlienci,
-  klienciWyszukiwarka,
-  setKlienciWyszukiwarka,
-}) {
+export default function ClientStage({parent}) {
 
-  async function getClients() {
-    const res = await axios.get(IP + "lista-klientow/"+ sessionStorage.getItem("token"));
-    setKlienci([...res.data]);
-    setKlienciWyszukiwarka([...res.data]);
-  }
+  const contextModalInsert = useContext(ModalInsertContext);
+  const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
+  const showAddClientStage = contextModalInsert.showAddClientStage;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
 
   useEffect(() => {
-    getClients();
+ getClients(setClients,setClientsWyszukiwarka )
   }, []);
 
+
   const [isShowAddClientPane, setShowAddClientPane] = useState(false);
+
   if(isShowAddClientStage){
       return (
     <div className={style.grayScaleBackground}>
       <div className={style.window}>
         <Header showAddClientStage={showAddClientStage} />
-        <Finder klienci={klienci} setKlienci={setKlienci}>
+        <Finder >
           <Dodaj
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
           />
-          <Szukaj
-            klienci={klienci}
-            setKlienci={setKlienci}
-            setKlienciWyszukiwarka={setKlienciWyszukiwarka}
-          />
+          <Szukaj/>
         </Finder>
         <TableClient
-          klienciWyszukiwarka={klienciWyszukiwarka}
+       
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
-          getClients={()=>getClients()}
           setShowAddClientPane={setShowAddClientPane}
         />
 
@@ -60,7 +54,6 @@ export default function ClientStage({
           <AddClient
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
-            getClients= {()=>getClients()}
           />
         )}
 
@@ -116,13 +109,11 @@ function Header({ showAddClientStage }) {
   );
 }
 
-function Szukaj({
-  klienci,
-  setKlienci,
-  klienciWyszukiwarka,
-  setKlienciWyszukiwarka,
-}) {
-  const klienciEdit = JSON.parse(JSON.stringify(klienci));
+function Szukaj() {
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
     <input
       className={style.szukaj}
@@ -130,10 +121,10 @@ function Szukaj({
   
       placeholder="Szukaj..."
       onChange={(event) => {
-        const m = [...klienci];
+        const m = [...setClients];
 
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
-        setKlienciWyszukiwarka(
+        setClientsWyszukiwarka(
           m.filter((k) =>
             k.firma.toLowerCase().includes(event.target.value.toLowerCase())
           )
@@ -143,13 +134,13 @@ function Szukaj({
   );
 }
 
-function Finder({ children, klienci, setKlienci }) {
+function Finder({ children }) {
   return <div className={style.finder}>{children}</div>;
 }
 function Footer({ children }) {
   return <div className={style.footer}>{children}</div>;
 }
 
-function Stage({ children, klienci, setKlienci }) {
+function Stage({ children }) {
   return <div className={style.stage}>{children}</div>;
 }

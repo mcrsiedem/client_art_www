@@ -35,6 +35,8 @@ export default function TechnologieView({ user, setUser }) {
 
 
   const setClients =appcontext.setClients;
+  const setClientsWyszukiwarka =appcontext.setClientsWyszukiwarka;
+  
   const setNadkomplety =appcontext.setNadkomplety;
 
 
@@ -77,7 +79,7 @@ export default function TechnologieView({ user, setUser }) {
       setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
       setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
 
-      getClients(setClients )
+      getClients(setClients,setClientsWyszukiwarka )
       getNadkomplety(setNadkomplety)
 
   }

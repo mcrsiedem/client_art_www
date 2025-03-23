@@ -9,8 +9,6 @@ import { AppContext } from "../../../context/AppContext";
 
 export default function AddClientPane({
   setShowAddClientPane,
-  getClients,
-  test
   
 }) {
   const [cookies, setCookie] = useCookies();
@@ -31,20 +29,22 @@ export default function AddClientPane({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} setShowAddClientPane={setShowAddClientPane} />
+      <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} />
     </div>
   );
 }
 
 
-function Zapisz({daneKlienta,getClients,test,setShowAddClientPane}) {
+function Zapisz({daneKlienta,setShowAddClientPane}) {
  // const [cookies, setCookie] = useCookies();
-
+    const contextApp = useContext(AppContext);
+    const setClients = contextApp.setClients;
+    const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
     return (
       <button
         className={style.btn}
         onClick={() => {
-           addClient(daneKlienta,getClients,test,setShowAddClientPane)
+           addClient(daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane)
        
         }}
       >

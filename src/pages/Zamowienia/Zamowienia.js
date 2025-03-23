@@ -33,6 +33,7 @@ function Zamowienia({ user, setUser }) {
 const listaPapierow = contextApp.listaPapierow;
 const listaPapierowNazwy = contextApp.listaPapierowNazwy;
 const setClients = contextApp.setClients;
+const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
 const setNadkomplety = contextApp.setNadkomplety;
 
 
@@ -97,7 +98,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 
 // getPapieryPostac(setListaPapierowPostac,setListaPapierowPostacWyszukiwarka)
 
-         getClients(setClients )
+         getClients(setClients,setClientsWyszukiwarka )
          getNadkomplety(setNadkomplety)
         
   }

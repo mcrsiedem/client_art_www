@@ -49,7 +49,6 @@ function ModalInsert({
   const contextPreOrder = useContext(PreOrderContext);
   const contextApp = useContext(AppContext);
   const showElementyProcesyInsert= contextModalInsert.showElementyProcesyInsert;
-  const [isShowAddClientStage, showAddClientStage] = useState(false);
   const [stanOtwarciaZamowienia, setStanOtwarciaZamowienia] = useState({});
   const [readOnly,setReadOnly] = useState(false);
   const [readAlert,setReadAlert] = useState(false);
@@ -64,8 +63,7 @@ function ModalInsert({
   const [saveAs, setSaveAs] = useState(false);
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
-const [klienci, setKlienci] = useState([]);
- const [klienciWyszukiwarka, setKlienciWyszukiwarka] = useState([]);
+
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
@@ -83,6 +81,8 @@ const procesyElementow = contextModalInsert.procesyElementow;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
+const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
+const showAddClientStage = contextModalInsert.showAddClientStage;
 
 
   useEffect(() => {
@@ -196,7 +196,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       />
 
       <Dane
-      klienci={klienci}
+ 
         showAddClientStage={showAddClientStage}
       />
 
@@ -285,18 +285,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
       )}
 
 
-        <ClientStage
-        klienci={klienci}
-        setKlienci={setKlienci}
-        klienciWyszukiwarka={klienciWyszukiwarka}
-         setKlienciWyszukiwarka={setKlienciWyszukiwarka}
-        // getClients={getClients}
-        setListaWykonczenia={setKlienci}
-        isShowAddClientStage={isShowAddClientStage}
-        showAddClientStage={showAddClientStage}
-        daneZamowienia={daneZamowienia}
-        setDaneZamowienia={setDaneZamowienia}
-        />
+        <ClientStage/>
    
 {readAlert && (
         <ReadOnlyAlert

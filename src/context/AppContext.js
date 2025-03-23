@@ -13,6 +13,7 @@ export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
+    const [clientsWyszukiwarka, setClientsWyszukiwarka] = useState(null);
     const [procesList, setProcesList] = useState(null); // lista wszystkich dostępnych procesów
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
     const [productType, setProductType] = useState(null); 
@@ -49,7 +50,7 @@ export const AppContextProvider = ({children})=>{
        },[])
 
     const updateClients = useCallback(()=>{
-     getClients(setClients)
+     getClients(setClients,setClientsWyszukiwarka)
     },[])
 
     const updateUsers = useCallback(()=>{
@@ -96,6 +97,7 @@ export const AppContextProvider = ({children})=>{
                   zamowienia, setZamowienia,
                     users,updateUsers,          // wszystcy uzytkownicy
                     clients,updateClients,  setClients,    // wszyscy klienci
+                    clientsWyszukiwarka, setClientsWyszukiwarka,
                     procesList, updateProcesList,     // lista wszystkich dostępnych proce
                     procesListName,
                     productType,

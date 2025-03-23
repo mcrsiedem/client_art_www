@@ -27,6 +27,7 @@ export default function ProcesyView( ) {
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
   const setClients = appContext.setClients
+  const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka
   const setListaPapierow =appContext.setListaPapierow;
   const setNadkomplety =appContext.setNadkomplety;
   const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
@@ -71,7 +72,7 @@ export default function ProcesyView( ) {
                 setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
           
             getClients(setClients)
-                  getNadkomplety(setNadkomplety)
+                  getNadkomplety(setNadkomplety,setClientsWyszukiwarka)
             
             // getPapiery(setListaPapierow)
             // getPapieryNazwy(setListaPapierowNazwy)

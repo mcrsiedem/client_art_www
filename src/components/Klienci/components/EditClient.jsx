@@ -6,8 +6,6 @@ import { updateClient } from "../actions/updateClient";
 import { AppContext } from "../../../context/AppContext";
 export default function EditClient({
   setShowEdit,
-  getClients,
-  test,
   rowID
   
 }) {
@@ -30,7 +28,7 @@ export default function EditClient({
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-      <Zapisz rowID={rowID} daneKlienta={daneKlienta} getClients={()=>getClients()} test={()=>test()} setShowEdit={setShowEdit} />
+      <Zapisz rowID={rowID} daneKlienta={daneKlienta} setShowEdit={setShowEdit} />
     </div>
   );
 }
@@ -58,13 +56,15 @@ export default function EditClient({
 //   context.getUsersList()
 // }
 
-function Zapisz({daneKlienta,getClients,test,setShowEdit}) {
-
+function Zapisz({daneKlienta,setShowEdit}) {
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
     return (
       <button
         className={style.btn}
         onClick={() => {
-          updateClient(daneKlienta,getClients,setShowEdit)
+          updateClient(daneKlienta,setClients,setClientsWyszukiwarka,setShowEdit)
         }}
       >
         Zapisz

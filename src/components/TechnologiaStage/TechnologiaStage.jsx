@@ -11,6 +11,7 @@ import WykonaniaTech from "./components/WykonaniaTech";
 import WykonaniaTechStage from "./components/WykonaniaTechStage";
 import IntroligatorniaTech from "./components/IntroligatorniaTech";
 import ProcesElementTech from "./components/ElementTechProces";
+import PaperStage from "components/PaperStage/PaperStage";
 
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
@@ -49,6 +50,7 @@ export default function TechnologiaStage() {
           <ProcesElementTech procesyElementowTech={procesyElementowTech} />
         )}
 
+ <PaperStage parent={"technologia"} />
 
       </div>
     );

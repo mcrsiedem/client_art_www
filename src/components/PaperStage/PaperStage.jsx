@@ -27,8 +27,9 @@ import { getPapieryParametry } from "actions/getPapieryParametry";
 import { onDeletePaperRow } from "./onDeletePaperRow";
 import { onDeletePaperRowCheckUse } from "components/PaperStage/onDeletePaperRowCheckUse";
 
-export default function PaperStage() {
+export default function PaperStage({parent}) {
 
+  // parent oznacza pochodzenie komponentu - zamowienia / technologia
   const start = useRef();
     const appcontext = useContext(AppContext);
     const modalcontext = useContext(ModalInsertContext);
@@ -96,7 +97,7 @@ const scrollTable = (table) => {
         <Header  setPaperSelectView={setPaperSelectView} selectRow={selectRow} setSelectRow={setSelectRow}/>
         <Finder >
                 <div className={style.btnContainer_left}>
-                <div className={style.container_in_footer}>  <UseBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
+                <div className={style.container_in_footer}>  <UseBTN parent={parent} selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView}/>  </div>
                     <div className={style.container_in_footer}>  <CopyBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable} paperSelectView={paperSelectView} /> </div>
                     <div className={style.container_in_footer}>  <DeleteBTN selectRow={selectRow} scrollTable={scrollTable} selectTable={selectTable}  paperSelectView={paperSelectView}  />   </div>
                 </div>
@@ -124,7 +125,7 @@ const scrollTable = (table) => {
 }
 
 
-function UseBTN({ selectRow, setSelectedPaperRow,paperSelectView}) {
+function UseBTN({ parent,selectRow, setSelectedPaperRow,paperSelectView}) {
   const [showChange, setShowChange] = useState(false);
       return (
     <div >
@@ -140,7 +141,7 @@ function UseBTN({ selectRow, setSelectedPaperRow,paperSelectView}) {
         alt="Użyj"
       />
 
-<ChangePaper showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
+<ChangePaper parent={parent} showChange={showChange} setShowChange={setShowChange} selectRow={selectRow} />
     </div>
   );
   

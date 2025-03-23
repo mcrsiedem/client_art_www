@@ -307,7 +307,7 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
         />
       )}
 
-        <PaperStage  />
+        <PaperStage parent={"zamowienia"}  />
     </div>
 
 

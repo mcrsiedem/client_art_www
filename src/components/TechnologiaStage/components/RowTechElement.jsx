@@ -336,11 +336,14 @@ function PapierSelect2({
   const listaPapierow = appcontext.listaPapierow;
   const modalcontext = useContext(ModalInsertContext);
   const setShowPaperStage = modalcontext.setShowPaperStage;
-  const setSelectedElementROW = modalcontext.setSelectedElementROW;
+
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
    const techContext = useContext(TechnologyContext)
       const arkusze = techContext.arkusze;
       const setArkusze = techContext.setArkusze;
+
+      const setSelectedElementTechROW = techContext.setSelectedElementTechROW;
+      const setSelectedElementTechArkusz = techContext.setSelectedElementTechArkusz;
 
   return (
    <div className={style.papier_input_container}>
@@ -383,7 +386,10 @@ function PapierSelect2({
         src={addIcon2}
         onClick={() => {
           setShowPaperStage(true)
-          setSelectedElementROW(row)
+          //albo element zaznaczony, albo arkusz - po to zeby było wiadomo gdzie zmienić papier w PaperStage USE
+          setSelectedElementTechROW(row)
+          setSelectedElementTechArkusz(null)
+
           setListaPapierowWyszukiwarka(listaPapierow)
         }}
         alt="Procesy"

@@ -15,7 +15,7 @@
 
 .window {
   position: relative;
-  width: 85%;
+  width: 90%;
   height: 85%;
   min-width: 250px;
   background-color: rgb(255, 255, 255);
@@ -210,7 +210,7 @@ width: 200px;
 
 .icon{
   padding: 5px;
-  height: 2rem;
+  height: 1.8rem;
   border: 1px solid gray;
   border-radius: 5px;
 }
@@ -221,7 +221,7 @@ background-color: rgb(224, 224, 224);
 
 .iconDisabled{
   padding: 5px;
-  height: 2rem;
+  height: 1.8rem;
   border: 1px solid gray;
   border-radius: 5px;
   opacity: 0.2;

@@ -451,10 +451,13 @@ export default function RowArkusze  ({ row,i })  {
     const listaPapierow = appcontext.listaPapierow;
     const modalcontext = useContext(ModalInsertContext);
     const setShowPaperStage = modalcontext.setShowPaperStage;
-    const setSelectedElementROW = modalcontext.setSelectedElementROW;
+
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
      const techContext = useContext(TechnologyContext)
         const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
+
+        const setSelectedElementTechROW = techContext.setSelectedElementTechROW;
+        const setSelectedElementTechArkusz = techContext.setSelectedElementTechArkusz;
   
     return (
      <div className={style.papier_input_container}>
@@ -486,14 +489,15 @@ export default function RowArkusze  ({ row,i })  {
           src={addIcon2}
           onClick={() => {
             setShowPaperStage(true)
-            setSelectedElementROW(row)
+            setSelectedElementTechROW(null)
+            setSelectedElementTechArkusz(row)
             setListaPapierowWyszukiwarka(listaPapierow)
+            
          
           }}
           alt="Procesy"
         />
      </div>
-  
    
     );
   }

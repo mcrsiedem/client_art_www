@@ -60,7 +60,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
-      setSaveButtonDisabled(false)
+       
     };
 
     const handleUpdateRowElementy = (row) => {
@@ -73,7 +73,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
-      setSaveButtonDisabled(false)
+       
     };
 
     const handleUpdateRowFragmenty = (row) => {
@@ -86,7 +86,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
-      setSaveButtonDisabled(false)
+       
     };
 
     const handleUpdateRowOprawa = (row) => {
@@ -99,7 +99,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
-      setSaveButtonDisabled(false)
+       
     };
 
     const handleUpdateRowPakowanie = (row) => {
@@ -124,7 +124,7 @@ export const ModalInsertContextProvider = ({children})=>{
           }
         })
       )
-      setSaveButtonDisabled(false)
+       
     };
 
     const handleUpdateKosztyDodatkoweTemporary = (row) => {

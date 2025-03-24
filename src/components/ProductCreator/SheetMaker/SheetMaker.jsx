@@ -12,7 +12,6 @@ export default function SheetMaker({
 
   const [showElement, setShowElement] = useState(false);
   const [naklad, setNaklad] = useState(null);
-  const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
   const [elements, setElements] = useState([
     { id: 1, nazwa: "Ulotka", strony: 2 },
 

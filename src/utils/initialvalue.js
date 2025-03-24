@@ -546,6 +546,10 @@ const _typ_elementu = [
     id: 5,
     nazwa: "Samolep",
   },
+  {
+    id: 6,
+    nazwa: "Ulotka",
+  },
 ];
 
 const _fsc = [

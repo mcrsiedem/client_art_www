@@ -245,6 +245,9 @@ const contextApp = useContext(AppContext);
 
         }}
       >
+                  {   <option value = "0"  >
+             brak oprawy
+            </option>}
         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} 

@@ -182,6 +182,9 @@ function DataSpedycji(){
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+
+const oprawa = contextModalInsert.oprawa;
+const setOprawa = contextModalInsert.setOprawa;
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
@@ -189,8 +192,29 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         value={daneZamowienia.data_spedycji}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
-           
-        }}></input>
+
+
+          setOprawa(
+            oprawa.map((t,i) => {
+              if (i == 0) {
+                return {...t,
+                  data_spedycji: event.target.value,
+                  update: true
+                }
+              } else {
+                return t;
+              }
+            })
+          );
+
+
+
+
+
+
+
+        }
+        }></input>
       </div>
     );
 }
@@ -214,7 +238,8 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
            
         }}
       >
-        {contextApp.users?.filter(x => x.Dzial == 2).map((option) => (
+        {/* {contextApp.users?.filter(x => x.Dzial == 2).map((option) => ( */}
+        {contextApp.users?.map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>

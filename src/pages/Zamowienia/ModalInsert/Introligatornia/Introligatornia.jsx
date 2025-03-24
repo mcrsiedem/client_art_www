@@ -121,7 +121,7 @@ function OprawaTable({
         <tbody>
           {oprawa
            .filter((x) => x.delete != true)
-          .map((row) => {
+          .map((row,index_oprawy) => {
             return (
               <>
                 <tr
@@ -151,7 +151,7 @@ function OprawaTable({
                   <BokOprawy row={row} />
 
                   <DataCzystodrukow row={row} />
-                  <DataSpedycji row={row} />
+                  <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
 
@@ -219,9 +219,11 @@ function Header() {
   return <div className={style.header}> Introligatornia</div>;
 }
 
-function DataSpedycji({ row }) {
+function DataSpedycji({ row,index_oprawy }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
 
   return (
     <td className={style.col}>
@@ -231,6 +233,11 @@ function DataSpedycji({ row }) {
         value={row.data_spedycji}
         onChange={(event) => {
           handleUpdateRowOprawa({ ...row, data_spedycji: event.target.value, update:true });
+          if(index_oprawy==0){
+
+            setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
+          }
+
         }}
       ></input>
     </td>
@@ -285,6 +292,9 @@ function RodzajOprawy({ row }) {
           }
         }}
       >
+                {   <option value = "0"  >
+             brak oprawy
+            </option>}
         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} 

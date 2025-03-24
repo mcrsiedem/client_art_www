@@ -38,6 +38,10 @@ export const ModalInsertContextProvider = ({children})=>{
 
     const [showPaperStage, setShowPaperStage] =useState(false);
 
+    
+    useEffect(() => {
+      setSaveButtonDisabled(true)
+    }, [daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,procesyElementowTemporary]);
 
   
     
@@ -144,6 +148,11 @@ export const ModalInsertContextProvider = ({children})=>{
         kosztyDodatkoweTemporary.filter((t) => t.id != row.id)
       )
     };
+
+
+
+
+
 
     useEffect(() => {
       // gdy zmieniają sie koszty dodatkowe sumowany jest tutaj wynik

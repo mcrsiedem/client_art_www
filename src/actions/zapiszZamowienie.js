@@ -27,7 +27,7 @@ export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkt
           let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow})
 
           response.push(savedParametry.data)
-
+console.log(response)
           if(isSavedCorrect(response).status) {
             setSaveButtonDisabled(true)
             alert("Zamowienie zapisana...")

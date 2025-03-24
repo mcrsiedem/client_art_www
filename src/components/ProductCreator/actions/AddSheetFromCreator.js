@@ -1,7 +1,7 @@
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export function AddSheetFromCreator(mic,poc ) {
-
 
 
 
@@ -13,9 +13,11 @@ export function AddSheetFromCreator(mic,poc ) {
           naklad: poc.preOrder.naklad,
           format_x: poc.preOrder.szerokosc,
           format_y: poc.preOrder.wysokosc,
-          oprawa: 10,
+          oprawa: 0,
           ilosc_stron: 2,
-          typ:2
+          typ:2,
+          opiekun_zamowienia_id: DecodeToken(sessionStorage.getItem("token")).id,
+     
         };
       })
     );
@@ -39,20 +41,26 @@ export function AddSheetFromCreator(mic,poc ) {
             id: 1,
             zamowienie_id: 1,
             produkt_id: 1,
-            typ: 5,
+            typ: 6,
             nazwa: "",
               ilosc_stron: 2,
             kolory: "",
             format_x: poc.preOrder.szerokosc,
             format_y: poc.preOrder.wysokosc,
-            papier_id: 7,
+            papier_id: 0,
             papier_info: "",
             gramatura_id: 0,
               naklad: poc.preOrder.naklad,
             uwagi: "",
         
+            stan:0,
+            status:0,
+            etap:1,
+            info:"",
+            tytul:"",
             indeks: 1,
-
+            papier_postac_id:1
+     
 
 
       
@@ -70,11 +78,11 @@ export function AddSheetFromCreator(mic,poc ) {
         oprawa_id: 1,
         naklad: poc.preOrder.naklad,
         ilosc_stron: 2,
-        wersja: " ",
-        typ: 5,
-        info: " ",
+        wersja: "",
+        typ: 6,
+        info: "",
         indeks: 0,
-
+       
       }
     ]
 
@@ -87,9 +95,10 @@ export function AddSheetFromCreator(mic,poc ) {
         return {
           ...t,
           naklad: poc.preOrder.naklad,
-          oprawa: 10,
+          oprawa: 0,
   
-          bok_oprawy: poc.preOrder.wysokosc,
+          bok_oprawy: "",
+    
         };
       })
     );

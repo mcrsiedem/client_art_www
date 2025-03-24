@@ -7,15 +7,7 @@ export default function BoxMaker({
 }) {
   const contextApp = useContext(AppContext);
 
-  const [showElement, setShowElement] = useState(false);
-  const [naklad, setNaklad] = useState(null);
-  const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
-  const [elements, setElements] = useState([
-    { id: 1, nazwa: "Okładka", strony: 4 },
-    { id: 2, nazwa: "Środek", strony: null },
-  ]);
-  const [netto, setNetto] = useState([{ x: null, y: null }]);
- 
+
 
   return (
     <div className={style.container}>

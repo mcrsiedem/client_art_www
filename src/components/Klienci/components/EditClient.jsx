@@ -22,13 +22,21 @@ export default function EditClient({
   });
 
   return (
+    <div className={style.grayScaleBackground}>
     <div className={style.window}>
       <Header setShowEdit={setShowEdit}></Header>
+
+      <div className={style.center}>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
+    </div>
+    <div className={style.footer}>
       <Zapisz rowID={rowID} daneKlienta={daneKlienta} setShowEdit={setShowEdit} />
+      </div>
+
+    </div>
     </div>
   );
 }

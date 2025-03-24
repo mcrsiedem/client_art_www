@@ -92,6 +92,7 @@ export default function Table({
 
 {showChange&& (
         <ChangeClient
+        parent={parent}
         setDaneZamowienia={setDaneZamowienia}
         daneZamowienia={daneZamowienia}
           setShowChange={setShowChange}

@@ -11,11 +11,23 @@ export default function DeleteClient({
 
 }) {
   return (
+    <div className={style.grayScaleBackground}>
     <div className={style.window}>
       <Header setShowDeleteClientPane={setShowDeleteClientPane} rowID={rowID}></Header>
-      <p className={style.alert_label}>{rowID.current.firma}</p>
-      <Usun  rowID={rowID}  setShowDeleteClientPane={setShowDeleteClientPane} />
+      <div className={style.footer}>
+        <p className={style.alert_label}>{rowID.current.firma}</p> 
+      </div>
+     
 
+
+            <div className={style.footer}>
+            <Usun  rowID={rowID}  setShowDeleteClientPane={setShowDeleteClientPane} />
+
+          </div>
+
+
+
+    </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import style from "./ChangeClient.module.css";
 
 import iconX from "../../../assets/x.svg";
 export default function ChangeClient({
+  parent,
   setShowChange,
 
   rowID,
@@ -14,29 +15,40 @@ export default function ChangeClient({
 
 
   return (
+    <div className={style.grayScaleBackground}>
     <div className={style.window}>
       <Header setShowChange={setShowChange} rowID={rowID}></Header>
-      <p className={style.alert_label}>{rowID.current.firma}</p>
-      <Zmien  rowID={rowID} setDaneZamowienia={setDaneZamowienia} daneZamowienia={daneZamowienia} setShowChange={setShowChange} />
+      <div className={style.footer}>
 
+      <p className={style.alert_label}>{rowID.current.firma}</p>
+    </div>
+    <div className={style.footer}>
+      <Zmien parent={parent} rowID={rowID} setDaneZamowienia={setDaneZamowienia} daneZamowienia={daneZamowienia} setShowChange={setShowChange} />
+
+    </div>
+    </div>
     </div>
   );
 }
 
-function Zmien({ rowID,setShowChange,daneZamowienia,setDaneZamowienia}) {
+function Zmien({ parent,rowID,setShowChange,daneZamowienia,setDaneZamowienia}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <button
       className={style.btn_delete}
+
       onClick={() => {
        
-        // deleteClient(rowID, getClients,setShowDeleteClientPane)
+        if(parent=="modalinsert"){
+               // deleteClient(rowID, getClients,setShowDeleteClientPane)
      
           setDaneZamowienia({ ...daneZamowienia, klient_id: rowID.current.id })
           setShowChange(false)
           setSaveButtonDisabled(false)
         
+        }
+   
       }}
     >
       Zmień

@@ -24,13 +24,21 @@ export default function AddClientPane({
   });
 if(isShowAddClientPane){
     return (
+    <div className={style.grayScaleBackground}>
     <div className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
+
+      <div className={style.center}>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
-
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
+      </div>
+
+        <div className={style.footer}>
       <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} />
+      </div>
+      
+    </div>
     </div>
   );
 }

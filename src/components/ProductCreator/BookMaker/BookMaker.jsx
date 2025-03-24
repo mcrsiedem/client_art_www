@@ -13,14 +13,14 @@ export default function BookMaker({
   
   const contextApp = useContext(AppContext);
   const [showElement, setShowElement] = useState(false);
-  const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
+  // const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
   return (
     <div className={style.container}>
       <div className={style.bindingContainer}>
 
           <Oprawa  
-              binding={binding}
-              setBinding={setBinding}
+              // binding={binding}
+              // setBinding={setBinding}
               setShowElement={setShowElement}
               />
       </div>
@@ -56,7 +56,7 @@ export default function BookMaker({
 }
 
 
-const Oprawa =({  binding, setBinding, setShowElement}) => {
+const Oprawa =({ setShowElement}) => {
   const context = useContext(PreOrderContext)
   const contextModalInsert = useContext(ModalInsertContext);
 const produkty = contextModalInsert.produkty;
@@ -71,7 +71,7 @@ const procesListName = contextApp.procesListName;
 
       <select
         className={style.oprawa}
-        defaultValue={binding.oprawa}
+        defaultValue={context.preOrder.oprawa}
         onChange={(event) => {
           setShowElement(true)
           if(event.target.value==0){

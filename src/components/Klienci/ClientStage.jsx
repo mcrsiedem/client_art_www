@@ -112,7 +112,9 @@ function Header({ showAddClientStage }) {
 function Szukaj() {
   const contextApp = useContext(AppContext);
   const setClients = contextApp.setClients;
+  const clients = contextApp.clients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
+  const clientsWyszukiwarka = contextApp.clientsWyszukiwarka;
   // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
     <input
@@ -121,7 +123,7 @@ function Szukaj() {
   
       placeholder="Szukaj..."
       onChange={(event) => {
-        const m = [...setClients];
+        const m = [...clients];
 
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
         setClientsWyszukiwarka(

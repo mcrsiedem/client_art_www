@@ -421,16 +421,13 @@ const contextApp = useContext(AppContext);
 
 addHistoria(
   {
-    user_id: 1,
     kategoria: "Papier",
-    event: " Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
-    // event: listaPapierowWyszukiwarka.filter((x) => x.id == e.target.value)[0].nazwa ,
+    event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
   },
   historiaZamowienia,
   setHistoriaZamowienia
 );
-            // addHistoria({user_id:1, targer:" Zmiana papieru", event: listaPapierowWyszukiwarka.filter(x=>x.id ==e.target.value )[0].nazwa})
-            // addHistoria({user_id:1, target:" Zmiana papieru", event: ""})
+            
           }}
         >
           {   <option value = "0"  >

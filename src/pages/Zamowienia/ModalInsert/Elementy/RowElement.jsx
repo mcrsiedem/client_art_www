@@ -17,6 +17,8 @@ import RowFragment from "./RowFragment";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
+import { addHistoria } from "actions/addHisotria";
+import { getNameOfPapier } from "actions/getNameOfPapier";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -400,6 +402,10 @@ const contextApp = useContext(AppContext);
     const setShowPaperStage = modalcontext.setShowPaperStage;
     const setSelectedElementROW = modalcontext.setSelectedElementROW;
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
+    // const addHistoria = modalcontext.addHistoria;
+    const historiaZamowienia = modalcontext.historiaZamowienia;
+    const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
+
 
     return (
      <div className={style.papier_input_container}>
@@ -412,6 +418,19 @@ const contextApp = useContext(AppContext);
               papier_id: e.target.value,
               update: true
             });
+
+addHistoria(
+  {
+    user_id: 1,
+    kategoria: "Papier",
+    event: " Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+    // event: listaPapierowWyszukiwarka.filter((x) => x.id == e.target.value)[0].nazwa ,
+  },
+  historiaZamowienia,
+  setHistoriaZamowienia
+);
+            // addHistoria({user_id:1, targer:" Zmiana papieru", event: listaPapierowWyszukiwarka.filter(x=>x.id ==e.target.value )[0].nazwa})
+            // addHistoria({user_id:1, target:" Zmiana papieru", event: ""})
           }}
         >
           {   <option value = "0"  >

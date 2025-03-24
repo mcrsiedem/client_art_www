@@ -41,6 +41,7 @@ export default function Header({
   const pakowanie = contextModalInsert.pakowanie;
   const procesyElementow = contextModalInsert.procesyElementow;
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
+  const historiaZamowienia = contextModalInsert.historiaZamowienia;
 
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
@@ -63,8 +64,10 @@ export default function Header({
         console.log("Pakowanie: ",pakowanie)
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
         console.log("Papiery_nazwy: ",listaPapierowNazwy)
-        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
-        console.log("procesy wszsytkieg: ",procesyElementowTemporary)
+        console.log("Historia zamówienia: ",historiaZamowienia)
+        
+        // console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+        // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
 
       }} className={style.container}>
      

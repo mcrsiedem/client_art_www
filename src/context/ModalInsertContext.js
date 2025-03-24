@@ -19,6 +19,7 @@ export const ModalInsertContextProvider = ({children})=>{
 
 
 
+    const [historiaZamowienia, setHistoriaZamowienia] = useState([]);  
     const [daneZamowienia, setDaneZamowienia] = useState(initialDane);  
     const [produkty, setProdukty] = useState(initialProdukty);
     const [elementy, setElementy] = useState(initialElementy);
@@ -52,6 +53,14 @@ export const ModalInsertContextProvider = ({children})=>{
      }, []);
     
     
+
+     const addHistoria = (row) => {
+      const new_historia = historiaZamowienia.splice()
+      new_historia.push(row)
+      // const his = historiaZamowienia.push({id:1})
+       setHistoriaZamowienia(new_historia)
+      // console.log(row)
+    };
      
      // aktualizacja row w stanie produkty, elementy, fragmenty, oprawa, pakowanie
       const handleUpdateRowProdukty = (row) => {
@@ -209,7 +218,7 @@ export const ModalInsertContextProvider = ({children})=>{
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
-          selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage
+          selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia
 
           
 

@@ -41,6 +41,7 @@ const initialPreOrder = {
   proces: [{id:1}]
 };
 
+
 const initialDane = {
   id: 1,
   prime_id: 1,

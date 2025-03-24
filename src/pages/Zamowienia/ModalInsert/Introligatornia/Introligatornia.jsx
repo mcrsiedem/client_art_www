@@ -285,9 +285,9 @@ function RodzajOprawy({ row }) {
           }
         }}
       >
-        {contextApp.procesList?.map((option) => (
+        {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa} {option.rodzaj} 
+            {option.typ} {option.rodzaj} 
        
           </option>
         ))}

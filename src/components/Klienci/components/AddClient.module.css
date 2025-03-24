@@ -1,7 +1,7 @@
 .window{
-    position: absolute;
-    left:200px;
-    top: 200px;
+    position: relative;
+    /* left:200px;
+    top: 200px; */
     width: 500px;
     height: 330px;
   min-width: 250px;
@@ -25,7 +25,8 @@
       padding-left: 10px;
       padding-right: 10px;
       /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
-      background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+      /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+      background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       height: 2rem;
@@ -66,6 +67,7 @@
     .btn{
         /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
         background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+        background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
         width:  200px;
         height: 35px;
         border-radius: 10px;

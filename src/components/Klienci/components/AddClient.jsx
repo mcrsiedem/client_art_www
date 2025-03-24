@@ -9,6 +9,7 @@ import { AppContext } from "../../../context/AppContext";
 
 export default function AddClientPane({
   setShowAddClientPane,
+  isShowAddClientPane
   
 }) {
   const [cookies, setCookie] = useCookies();
@@ -21,8 +22,8 @@ export default function AddClientPane({
     utworzyl_user_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
   
   });
-
-  return (
+if(isShowAddClientPane){
+    return (
     <div className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
@@ -32,6 +33,8 @@ export default function AddClientPane({
       <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} />
     </div>
   );
+}
+
 }
 
 

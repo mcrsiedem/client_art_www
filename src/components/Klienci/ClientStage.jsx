@@ -50,12 +50,12 @@ export default function ClientStage({parent}) {
           setShowAddClientPane={setShowAddClientPane}
         />
 
-        {isShowAddClientPane && (
+
           <AddClient
             isShowAddClientPane={isShowAddClientPane}
             setShowAddClientPane={setShowAddClientPane}
           />
-        )}
+     
 
 
       </div>

@@ -55,10 +55,7 @@ export default function ProcesyView( ) {
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)
                   getNadkomplety(setNadkomplety)
-            
-            // getPapiery(setListaPapierow)
-            // getPapieryNazwy(setListaPapierowNazwy)
-        
+
 
 
 

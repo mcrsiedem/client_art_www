@@ -5,8 +5,7 @@ import Panel from "./pages/Panel/Panel"
 import Zamowienia from "./pages/Zamowienia/Zamowienia";
 
 import History from "./pages/History/History";
-import Info from "./pages/Info/Info";
-import Info2 from "pages/Info/Info2";
+
 import ProcesyView from "pages/ProcesyView/ProcesyView";
 
 import { BrowserRouter,Routes,Route} from "react-router-dom";
@@ -36,9 +35,6 @@ export default function App() {
               <Route path='/Panel' element={<Panel />} />
               <Route path='/Technologie' element={<TechnologieView />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
-              <Route path='/info' element={<Info />} />
-              <Route path='/info2' element={<Info2 />} />
-              <Route path='/info2' element={<Info2 />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
             </Routes>
       </ModalInsertContextProvider>

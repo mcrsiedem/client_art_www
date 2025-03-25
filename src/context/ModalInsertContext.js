@@ -13,7 +13,6 @@ export const ModalInsertContextProvider = ({children})=>{
     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
   const [isShowAddClientStage, showAddClientStage] = useState(false);
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
-    const [zamowienieID,setZamowienieID] = useState(null)
     const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [selectedZamowienie,setSelectedZamowienie] = useState(1)
 
@@ -46,14 +45,6 @@ export const ModalInsertContextProvider = ({children})=>{
 
   
     
-
-    
-     const updateZamowienieID = useCallback((data) => {
-       setZamowienieID(data);
-     }, []);
-    
-    
-
      const addHistoria = (row) => {
       const new_historia = historiaZamowienia.splice()
       new_historia.push(row)
@@ -199,14 +190,9 @@ export const ModalInsertContextProvider = ({children})=>{
      
           selectedElementROW,
           setSelectedElementROW,
-          zamowienieID,
-          setZamowienieID, // id otwartego zamowienia
           showElementyProcesyInsert,
           setShowElementyProcesyInsert,
-
-          updateZamowienieID,
           isSaveButtonDisabled, setSaveButtonDisabled,
-
           handleUpdateRowProdukty,
           handleUpdateRowElementy,
           handleUpdateRowFragmenty,

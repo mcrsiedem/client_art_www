@@ -1,19 +1,13 @@
 import React, { useEffect, useState,useContext,useRef} from "react";
-import axios from "axios";
-import { IP } from "../../utils/Host";
-
 import iconLock from "assets/lock2.svg";
 import iconUnLock from "assets/unLock.svg";
 import style from "./PaperStage.module.css";
 import iconX from "../../assets/x.svg";
 import iconDelete from "assets/trashgray.svg";
 import iconEdit from "assets/settings_grey.svg";
-import addIcon2 from "../../assets/addIcon2.svg";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
-
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import TablePaper from "./TablePaper";
 import TablePaperNazwa from "./TablePaperNazwa";
 import TablePaperGrupa from "./TablePaperGrupa";
 import iconCopy from "assets/copygrey.svg";
@@ -22,35 +16,17 @@ import ChangePaper from "./ChangePaper";
 import { updatePaper } from "actions/updatePaper";
 import { updatePaperGrupy } from "actions/updatePaperGrupy";
 import { updatePaperNazwy } from "actions/updatePaperNazwy";
-import { usePapier } from "hooks/usePapier";
-import { getPapieryParametry } from "actions/getPapieryParametry";
-import { onDeletePaperRow } from "./onDeletePaperRow";
+import { useApiPapier, usePapier } from "hooks/useApiPapier";
+
 import { onDeletePaperRowCheckUse } from "components/PaperStage/onDeletePaperRowCheckUse";
 
 export default function PaperStage({parent}) {
 
   // parent oznacza pochodzenie komponentu - zamowienia / technologia
   const start = useRef();
-    const appcontext = useContext(AppContext);
+
     const modalcontext = useContext(ModalInsertContext);
-
-    const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-    const setListaPapierow = appcontext.setListaPapierow;
-    const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-    const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-    const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-    const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-
-    const setListaPapierowPostac = appcontext.setListaPapierowPostac;
-    const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
-    const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
-    const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
-    const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
-    const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
-    const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
-    const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
-
-
+    const [callForPaper] = useApiPapier();
 
     const showPaperStage = modalcontext.showPaperStage;
     const [selectRow, setSelectRow] = useState(null);
@@ -61,8 +37,6 @@ const [paperSelectView, setPaperSelectView] = useState([
   {id:3,nazwa:"grupa",wyswietlanie:"Grupy",view:true}
 ]);
 
-
-
 const scrollTable = (table) => {
   if(table.current != null) {
       table.current.scrollTo({ top: 10000, behavior: "smooth" })
@@ -71,23 +45,8 @@ const scrollTable = (table) => {
 };
 
   useEffect(() => {
-      getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-        setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-        setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
-  }, []);
-
-//----------- nie działa sprawdzić
-  // const effectRan = useRef(false);
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-  //     getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-  //       setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-  //       setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
-  //   }
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
+      callForPaper()
+      }, []);
 
 
  if(showPaperStage){
@@ -339,38 +298,18 @@ function Pokaz({selectRow}) {
 
 
 
-const RefreshBTN = ({ row, showMenu, setShowMenu }) => {
-  const appcontext = useContext(AppContext);
+const RefreshBTN = () => {
 
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setListaPapierow = appcontext.setListaPapierow;
-  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-
-  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
-  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
-  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
-  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
-  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
-  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
-  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
-  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+  const [callForPaper] = useApiPapier();
       return (
-    
     <div className={style.menu_produkty}>
       <img
-
         className={ style.iconMenuBtn}
         src={Logo_ustawienia2}
         title="Odśwież papiery"
         onClick={() => {
-
-          getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-            setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-            setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
-        }}
+          callForPaper()
+          }}
         alt="x"
       />
     </div>

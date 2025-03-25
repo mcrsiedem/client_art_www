@@ -3,8 +3,6 @@ import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import iconSettings from "assets/iconUstawieniaDark.svg";
-import iconMenu from "assets/dots2.svg";
-
 import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
@@ -13,11 +11,10 @@ import { TechnologyContext } from "context/TechnologyContext";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { AppContext } from "context/AppContext";
 import MenuZamowienia from "./components/MenuZamowienia";
-import DecodeToken from "pages/Login/DecodeToken";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
-import { getPapieryPostac } from "actions/getPapieryPostac";
-import { getPapieryParametry } from "actions/getPapieryParametry";
+
+import { useApiPapier } from "hooks/useApiPapier";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -29,39 +26,12 @@ function Zamowienia({ user, setUser }) {
   const data = contextApp.zamowienia
   const setData = contextApp.setZamowienia
 
-
-const listaPapierow = contextApp.listaPapierow;
-const listaPapierowNazwy = contextApp.listaPapierowNazwy;
 const setClients = contextApp.setClients;
 const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
 const setNadkomplety = contextApp.setNadkomplety;
 
 
-
-
-
-const contextModalInsert = useContext(ModalInsertContext);
-
-const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-
-  const appcontext = useContext(AppContext);
-
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setListaPapierow = appcontext.setListaPapierow;
-  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-
-  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
-  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
-  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
-  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
-  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
-  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
-  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
-  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+    const [callForPaper] = useApiPapier();
 
   function dodaj_clikHandler() {
     // setDaneZamowienia({...daneZamowienia, opiekun_id:  DecodeToken(sessionStorage.getItem("token")).id})
@@ -84,20 +54,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
     let jobs= [...res.data]
     setData(jobs);
 
-
-         getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-            setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-            setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
-
-//     const res3 = await axios.get(IP + "lista-papierow/" + sessionStorage.getItem("token"));
-//     setListaPapierow([...res3.data]);
-//     const res4 = await axios.get(IP + "lista-papierow-nazwy/" + sessionStorage.getItem("token"));
-//     setListaPapierowNazwy([...res4.data]);
-
-
-
-// getPapieryPostac(setListaPapierowPostac,setListaPapierowPostacWyszukiwarka)
-
+         callForPaper()
          getClients(setClients,setClientsWyszukiwarka )
          getNadkomplety(setNadkomplety)
         

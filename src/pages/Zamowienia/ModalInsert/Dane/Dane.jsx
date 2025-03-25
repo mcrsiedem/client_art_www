@@ -268,15 +268,6 @@ const [add] = useHistoria()
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
-          // addHistoria(
-          //   {
-          //     kategoria: "Status zamówienia",
-          //     event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-          //   },
-          //   historiaZamowienia,
-          //   setHistoriaZamowienia
-          // );
-
           add(   {
             kategoria: "Status zamówienia",
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
@@ -301,6 +292,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const historiaZamowienia = contextModalInsert.historiaZamowienia;
 const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
+const [add] = useHistoria()
 // etap produkcji tj pliki akcept druk etc
   return (
     <div className={style.col}>
@@ -312,13 +304,8 @@ const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
           if(daneZamowienia.etap < 3 && event.target.value <3 ){
             setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
 
-            addHistoria(
-              {
-                kategoria: "Etap zamówienia",
-                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
-              },
-              historiaZamowienia,
-              setHistoriaZamowienia
+            add({kategoria: "Etap zamówienia",
+                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa}
             );
           }
           
@@ -366,8 +353,7 @@ function Stan( ) {
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const historiaZamowienia = contextModalInsert.historiaZamowienia;
-const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
+const [add] = useHistoria()
   return (
     <div className={style.col}>
       <label className={style.label}> Stan zamówienia </label>
@@ -376,13 +362,9 @@ const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
         value={daneZamowienia.stan}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
-                  addHistoria(
-                    {
+                  add(                    {
                       kategoria: "Stan zamówienia",
-                      event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-                    },
-                    historiaZamowienia,
-                    setHistoriaZamowienia
+                      event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa}
                   );
 
   

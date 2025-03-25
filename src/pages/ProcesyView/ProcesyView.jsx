@@ -12,10 +12,8 @@ import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
 import ProcesViewRow from "./ProcesViewRow";
 import { getClients } from "actions/getClients";
-import { getPapiery } from "actions/getPapiery";
-import { getPapieryNazwy } from "actions/getPapieryNazwy";
 import { getNadkomplety } from "actions/getNadkomplety";
-import { getPapieryParametry } from "actions/getPapieryParametry";
+import { useApiPapier } from "hooks/useApiPapier";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -28,21 +26,9 @@ export default function ProcesyView( ) {
   const setProcesory = appContext.setProcesory
   const setClients = appContext.setClients
   const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka
-  const setListaPapierow =appContext.setListaPapierow;
   const setNadkomplety =appContext.setNadkomplety;
-  const setListaPapierowNazwy =appContext.setListaPapierowNazwy;
-  const setListaPapierowNazwyWyszukiwarka = appContext.setListaPapierowNazwyWyszukiwarka;
-  const setListaPapierowGrupa = appContext.setListaPapierowGrupa;
-  const setListaPapierowGrupaWyszukiwarka = appContext.setListaPapierowGrupaWyszukiwarka;
-  const setListaPapierowPostac = appContext.setListaPapierowPostac;
-  const setListaPapierowPostacWyszukiwarka = appContext.setListaPapierowPostacWyszukiwarka;
-  const setListaPapierowRodzaj = appContext.setListaPapierowRodzaj;
-  const setListaPapierowRodzajWyszukiwarka = appContext.setListaPapierowRodzajWyszukiwarka;
-  const setListaPapierowWykonczenia = appContext.setListaPapierowWykonczenia;
-  const setListaPapierowWykonczeniaWyszukiwarka = appContext.setListaPapierowWykonczeniaWyszukiwarka;
-  const setListaPapierowPowleczenie = appContext.setListaPapierowPowleczenie;
-  const setListaPapierowPowleczenieWyszukiwarka = appContext.setListaPapierowPowleczenieWyszukiwarka;
-  const setListaPapierowWyszukiwarka = appContext.setListaPapierowWyszukiwarka;
+
+      const [callForPaper] = useApiPapier();
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -66,12 +52,8 @@ export default function ProcesyView( ) {
               })
           );
 
-
-              getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-                setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-                setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
-          
-            getClients(setClients,setClientsWyszukiwarka)
+         callForPaper()
+         getClients(setClients,setClientsWyszukiwarka)
                   getNadkomplety(setNadkomplety)
             
             // getPapiery(setListaPapierow)

@@ -2,62 +2,32 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-
 import style from "./TechnologieView.module.css";
-
-import { DepWindow } from "pages/DeepWindow/dep-window";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import ProcesyHeader from "./TechnologieViewHeader";
 import { _status } from "utils/initialvalue";
-import { zamienNaGodziny } from "actions/zamienNaGodziny";
 
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
-import { getPapiery } from "actions/getPapiery";
-import { getPapieryNazwy } from "actions/getPapieryNazwy";
-import { getPapieryPostac } from "actions/getPapieryPostac";
-import { getPapieryParametry } from "actions/getPapieryParametry";
+
+import { useApiPapier } from "hooks/useApiPapier";
 
 
 export default function TechnologieView({ user, setUser }) {
   const navigate = useNavigate();
 
   const techContext = useContext(TechnologyContext);
-
   const fechTechnology = techContext.fechTechnology;
- 
   const [selectedProcesor, setSelectedProcesor] = useState(1);
   const [selectedProces, setSelectedProces] = useState(1);
-
   const appcontext = useContext(AppContext);
-
-
   const setClients =appcontext.setClients;
   const setClientsWyszukiwarka =appcontext.setClientsWyszukiwarka;
-  
   const setNadkomplety =appcontext.setNadkomplety;
-
-
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-  const setListaPapierow = appcontext.setListaPapierow;
-  const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
-  const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
-
-  const setListaPapierowPostac = appcontext.setListaPapierowPostac;
-  const setListaPapierowPostacWyszukiwarka = appcontext.setListaPapierowPostacWyszukiwarka;
-  const setListaPapierowRodzaj = appcontext.setListaPapierowRodzaj;
-  const setListaPapierowRodzajWyszukiwarka = appcontext.setListaPapierowRodzajWyszukiwarka;
-  const setListaPapierowWykonczenia = appcontext.setListaPapierowWykonczenia;
-  const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
-  const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
-  const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
-
   
-
+    const [callForPaper] = useApiPapier();
   async function checkToken() {
     axios.get(IP + "/islogged/" + sessionStorage.getItem("token")).then((res) => {
       if (res.data.Status === "Success") {
@@ -75,10 +45,8 @@ export default function TechnologieView({ user, setUser }) {
 
   const start = async() => {
 ;
-    getPapieryParametry(setListaPapierow,setListaPapierowWyszukiwarka,setListaPapierowNazwy,setListaPapierowNazwyWyszukiwarka,
-      setListaPapierowGrupa,setListaPapierowGrupaWyszukiwarka,setListaPapierowPostac,setListaPapierowPostacWyszukiwarka,setListaPapierowRodzaj,setListaPapierowRodzajWyszukiwarka,
-      setListaPapierowWykonczenia,setListaPapierowWykonczeniaWyszukiwarka,setListaPapierowPowleczenie,setListaPapierowPowleczenieWyszukiwarka)
 
+      callForPaper()
       getClients(setClients,setClientsWyszukiwarka )
       getNadkomplety(setNadkomplety)
 

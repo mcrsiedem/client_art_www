@@ -65,6 +65,9 @@ export default function Header({
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
         console.log("Papiery_nazwy: ",listaPapierowNazwy)
         console.log("Historia zamówienia: ",historiaZamowienia)
+        // console.log("Selected zamówienie: ",contextModalInsert.selectedZamowienie)
+
+
         
         // console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
         // console.log("procesy wszsytkieg: ",procesyElementowTemporary)

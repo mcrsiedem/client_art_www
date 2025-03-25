@@ -19,6 +19,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { addHistoria } from "actions/addHisotria";
 import { getNameOfPapier } from "actions/getNameOfPapier";
+import { useHistoria } from "hooks/useHistoria";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -402,10 +403,8 @@ const contextApp = useContext(AppContext);
     const setShowPaperStage = modalcontext.setShowPaperStage;
     const setSelectedElementROW = modalcontext.setSelectedElementROW;
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-    // const addHistoria = modalcontext.addHistoria;
     const historiaZamowienia = modalcontext.historiaZamowienia;
     const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
-
 
     return (
      <div className={style.papier_input_container}>
@@ -419,14 +418,20 @@ const contextApp = useContext(AppContext);
               update: true
             });
 
-addHistoria(
-  {
-    kategoria: "Papier",
-    event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
-  },
-  historiaZamowienia,
-  setHistoriaZamowienia
-);
+            // addHis(
+            //   {
+            //     kategoria: "Papier",
+            //     event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+            //   }
+            // )
+        addHistoria(
+          {
+            kategoria: "Papier",
+            event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+          },
+          historiaZamowienia,
+          setHistoriaZamowienia
+        );
             
           }}
         >

@@ -7,6 +7,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { goInputValidation } from "actions/goInputValidation";
+import { addHistoria } from "actions/addHisotria";
 
 
 export default function Dane({
@@ -333,6 +334,8 @@ function Stan( ) {
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const historiaZamowienia = contextModalInsert.historiaZamowienia;
+const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Stan zamówienia </label>
@@ -341,6 +344,16 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         value={daneZamowienia.stan}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
+                  addHistoria(
+                    {
+                      kategoria: "Stan zamówienia",
+                      event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                    },
+                    historiaZamowienia,
+                    setHistoriaZamowienia
+                  );
+
+  
            
         }}
       >

@@ -7,21 +7,25 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 
 
-export function useHistoria( initialValue){
+export function useHistoria(row){
 const modalcontext = useContext(ModalInsertContext);
 const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
 
-const [value, setValue] = useState(initialValue);
 
-function handleChange(e) {
-    setValue(e.target.value);
-  }
+function add(row) {
 
-  const inputProps = {
-    value: value,
-    onChange: handleChange
-  };
+const new_historia = historiaZamowienia.slice();
 
-  return inputProps;
+new_historia.push({...row, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
+
+      setHistoriaZamowienia(new_historia)
+
+      // console.log("add")
+}
+
+
+
+
+  return [add];
 }

@@ -8,6 +8,7 @@ import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { goInputValidation } from "actions/goInputValidation";
 import { addHistoria } from "actions/addHisotria";
+import { useHistoria } from "hooks/useHistoria";
 
 
 export default function Dane({
@@ -251,12 +252,13 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 }
 
 function Status() {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
+const contextModalInsert = useContext(ModalInsertContext);
+const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const historiaZamowienia = contextModalInsert.historiaZamowienia;
-const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
+
+
+const [add] = useHistoria()
   return (
     <div className={style.col}>
       <label className={style.label}> Status zamówienia</label>
@@ -266,14 +268,19 @@ const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
-          addHistoria(
-            {
-              kategoria: "Status zamówienia",
-              event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-            },
-            historiaZamowienia,
-            setHistoriaZamowienia
-          );
+          // addHistoria(
+          //   {
+          //     kategoria: "Status zamówienia",
+          //     event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+          //   },
+          //   historiaZamowienia,
+          //   setHistoriaZamowienia
+          // );
+
+          add(   {
+            kategoria: "Status zamówienia",
+            event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+          })
            
         }}
       >
@@ -292,6 +299,8 @@ function Etap() {
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const historiaZamowienia = contextModalInsert.historiaZamowienia;
+const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
 // etap produkcji tj pliki akcept druk etc
   return (
     <div className={style.col}>
@@ -302,6 +311,15 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         onChange={(event) => {
           if(daneZamowienia.etap < 3 && event.target.value <3 ){
             setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
+
+            addHistoria(
+              {
+                kategoria: "Etap zamówienia",
+                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
+              },
+              historiaZamowienia,
+              setHistoriaZamowienia
+            );
           }
           
            

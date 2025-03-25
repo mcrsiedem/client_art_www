@@ -375,14 +375,6 @@ const _stan_dokumentu = [
   {
     id: 4,
     nazwa: "Przyjęte",
-  },
-  {
-    id: 5,
-    nazwa: "Zakończone",
-  },
-  {
-    id: 6,
-    nazwa: "Oddane",
   }
 ];
 
@@ -511,6 +503,10 @@ const _etapy_produkcji = [
     {
     id: 15,
     nazwa: "Spedycja",
+  },
+    {
+    id: 16,
+    nazwa: "Oddane",
   },
 ];
 

@@ -255,6 +255,8 @@ function Status() {
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const historiaZamowienia = contextModalInsert.historiaZamowienia;
+const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
   return (
     <div className={style.col}>
       <label className={style.label}> Status zamówienia</label>
@@ -263,6 +265,15 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         value={daneZamowienia.status}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+
+          addHistoria(
+            {
+              kategoria: "Status zamówienia",
+              event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+            },
+            historiaZamowienia,
+            setHistoriaZamowienia
+          );
            
         }}
       >
@@ -289,7 +300,10 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.etap}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
+          if(daneZamowienia.etap < 3 && event.target.value <3 ){
+            setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
+          }
+          
            
         }}
       >

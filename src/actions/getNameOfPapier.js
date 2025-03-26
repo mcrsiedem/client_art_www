@@ -2,9 +2,9 @@
 export function getNameOfPapier(listaPapierowWyszukiwarka,id){
 
 
-let nazwa =    listaPapierowWyszukiwarka.filter((x) => x.id == id)[0].nazwa
-let gramatura =    listaPapierowWyszukiwarka.filter((x) => x.id == id)[0].gramatura
-let wykonczenie =    listaPapierowWyszukiwarka.filter((x) => x.id == id)[0].wykonczenie
+let nazwa =    listaPapierowWyszukiwarka?.filter((x) => x.id == id)[0]?.nazwa || "brak"
+let gramatura =    listaPapierowWyszukiwarka?.filter((x) => x.id == id)[0]?.gramatura || ""
+let wykonczenie =    listaPapierowWyszukiwarka?.filter((x) => x.id == id)[0]?.wykonczenie|| ""
 
 
 

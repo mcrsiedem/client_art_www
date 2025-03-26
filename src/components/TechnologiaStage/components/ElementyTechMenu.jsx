@@ -45,7 +45,7 @@ export default function MenuElementyTech({ row }) {
   if (row.showMenu) {
     return (
       <div className={style.menu_legi}>
-         <DodajNowyElement row={row}  />
+         {/* <DodajNowyElement row={row}  /> */}
          <DodajArkusz row={row}  />
                 <button
                   className={style.menu_legi_btn}
@@ -78,9 +78,9 @@ export default function MenuElementyTech({ row }) {
                 </button>
 
 
-        <DodajNowyElement row={row} />
+        {/* <DodajNowyElement row={row} /> */}
        
-        <SkasujElement row={row}  />
+        {/* <SkasujElement row={row}  /> */}
         <Ponumeruj row={row} />
         <KopiujFormatPapieru row={row} />
 

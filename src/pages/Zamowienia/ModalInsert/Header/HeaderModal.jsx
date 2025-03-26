@@ -50,6 +50,8 @@ export default function Header({
 
   const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
 
+  const technologieID = contextModalInsert.technologieID;
+
   return (
     <>
       <div onDoubleClick={ () => {
@@ -65,11 +67,13 @@ export default function Header({
         console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
         console.log("Papiery_nazwy: ",listaPapierowNazwy)
         console.log("Historia zamówienia: ",historiaZamowienia)
+        console.log("Technologie do zamówienia: ",technologieID)
         // console.log("Selected zamówienie: ",contextModalInsert.selectedZamowienie)
 
 
         
-        // console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
+        console.log("listaPapierowNazwy: ",listaPapierowNazwy)
         // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
 
       }} className={style.container}>
@@ -178,6 +182,7 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
   const setOprawa= contextModalInsert.setOprawa;
   const setProcesyElementow= contextModalInsert.setProcesyElementow;
   const procesyElementow= contextModalInsert.procesyElementow;
+  const technologieID= contextModalInsert.technologieID;
 
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
@@ -227,7 +232,8 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
                     setOprawa,
                     setProcesyElementow,
                     procesyElementow,
-                    setZamowienia
+                    setZamowienia,
+                    technologieID
                   });
         setSaveButtonDisabled(true);
         }

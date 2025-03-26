@@ -366,14 +366,10 @@ const _stan_dokumentu = [
   },
   {
     id: 2,
-    nazwa: "Planowane",
-  },
-  {
-    id: 3,
     nazwa: "Do przyjęcia",
   },
   {
-    id: 4,
+    id: 3,
     nazwa: "Przyjęte",
   }
 ];

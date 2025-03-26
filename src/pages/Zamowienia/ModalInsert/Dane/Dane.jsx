@@ -282,7 +282,7 @@ const [add] = useHistoria()
   );
 }
 
-function Etap() {
+function  Etap() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
@@ -291,6 +291,7 @@ const historiaZamowienia = contextModalInsert.historiaZamowienia;
 const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
 const [add] = useHistoria()
 // etap produkcji tj pliki akcept druk etc
+// po każdej zmianie etapu z harmonogram / nowe zamówienie stan zmienia się na do przyjęcia
   return (
     <div className={style.col}>
       <label className={style.label}> Etap produkcji </label>
@@ -299,7 +300,7 @@ const [add] = useHistoria()
         value={daneZamowienia.etap}
         onChange={(event) => {
           if(daneZamowienia.etap < 3 && event.target.value <3 ){
-            setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
+            setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , stan:2, update: true});
 
             add({kategoria: "Etap zamówienia",
                 event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa}

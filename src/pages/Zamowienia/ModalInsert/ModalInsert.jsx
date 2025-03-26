@@ -78,6 +78,8 @@ const setOprawa = contextModalInsert.setOprawa;
 const pakowanie = contextModalInsert.pakowanie;
 const setPakowanie = contextModalInsert.setPakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
+const technologieID = contextModalInsert.technologieID;
+const setTechnologieID = contextModalInsert.setTechnologieID;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
@@ -161,6 +163,7 @@ const showAddClientStage = contextModalInsert.showAddClientStage;
            setFragmenty(res.data[3])
            setOprawa(res.data[4])
            setProcesyElementow(res.data[5])
+           setTechnologieID(res.data[6])
           //  setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
            
           //  setKosztyDodatkoweZamowienia(res.data[7])

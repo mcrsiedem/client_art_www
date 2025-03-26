@@ -4,11 +4,11 @@ import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
 export async function zapiszZamowienieUpdate({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,
-  procesyElementow}){
+  procesyElementow,technologieID}){
 
 
 
-          let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
+          let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID})
 
            setDaneZamowienia(savedDane.daneZamowienia)
            setProdukty(savedDane.produkty)
@@ -22,7 +22,7 @@ export async function zapiszZamowienieUpdate({daneZamowienia,setDaneZamowienia,p
 }
 
 //----------------------------------------------------------------------------------
-const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow}) =>{
+const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
@@ -53,7 +53,7 @@ const saveDane = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElem
 
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow])
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;

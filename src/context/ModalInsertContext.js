@@ -26,6 +26,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
     const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
+    const [technologieID, setTechnologieID] = useState(null); // nr id technologi wygenerowanych zamówienia
    // tymczasowe procesy aby mozna było zamknąć bez zapisywania
    const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
 
@@ -185,6 +186,7 @@ export const ModalInsertContextProvider = ({children})=>{
           procesyElementowTemporary, setProcesyElementowTemporary,
           kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia,
           kosztyDodatkowe, setKosztyDodatkowe,
+          technologieID, setTechnologieID,
 
           lockDragDrop, setLockDragDrop,
      

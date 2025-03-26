@@ -21,16 +21,16 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
     let technologia_id = savedDane.data[0][1].technologia_id;  // nr id pod jakim zapisała sietechnologia
 
     if(zapis){
-      produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id} })
-      elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id} })
-      fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id} })
-      oprawaTech = oprawaTech.map((obj) => {return{...obj, technologia_id} })
-      arkusze = arkusze.map((obj) => {return{...obj, technologia_id} })
-      legi = legi.map((obj) => {return{...obj, technologia_id} })
-      legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id} })
-      grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id} })
-      wykonania = wykonania.map((obj) => {return{...obj, technologia_id} })
-      procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id} })
+      produktyTech = produktyTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      elementyTech = elementyTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      fragmentyTech = fragmentyTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      oprawaTech = oprawaTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      arkusze = arkusze.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      legi = legi.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      legiFragmenty = legiFragmenty.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      wykonania = wykonania.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
 
     let savedProdukty  = await saveProdukty({produktyTech})
     let savedElementy = await saveElementy({elementyTech})

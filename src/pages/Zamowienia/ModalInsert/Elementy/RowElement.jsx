@@ -1,15 +1,11 @@
 import style from "./ElementTable.module.css";
 import Logo_ustawienia from "../../../../assets/settings.svg";
-// import logoExpand from "../../../../assets/expand.svg";
 import logoExpand from "assets/expand.svg";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import addIcon2 from "assets/addIcon2.svg"
 import {  useState,useContext } from "react";
 import { _typ_elementu} from "utils/initialvalue"
-import axios from "axios";
-
-import { IP } from "../../../../utils/Host";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
@@ -17,7 +13,6 @@ import RowFragment from "./RowFragment";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
-import { addHistoria } from "actions/addHisotria";
 import { getNameOfPapier } from "actions/getNameOfPapier";
 import { useHistoria } from "hooks/useHistoria";
 export default function RowElement({
@@ -405,7 +400,7 @@ const contextApp = useContext(AppContext);
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const historiaZamowienia = modalcontext.historiaZamowienia;
     const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
-
+    const [add] = useHistoria()
     return (
      <div className={style.papier_input_container}>
         <select
@@ -418,20 +413,13 @@ const contextApp = useContext(AppContext);
               update: true
             });
 
-            // addHis(
-            //   {
-            //     kategoria: "Papier",
-            //     event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
-            //   }
-            // )
-        addHistoria(
-          {
-            kategoria: "Papier",
-            event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
-          },
-          historiaZamowienia,
-          setHistoriaZamowienia
-        );
+
+            add(         {
+              kategoria: "Papier",
+              event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+            })
+
+
             
           }}
         >

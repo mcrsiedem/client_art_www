@@ -17,6 +17,8 @@ import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import DecodeToken from "pages/Login/DecodeToken";
+import iconError from "assets/error.svg";
+
 
 export default function Header({}) {
   const techContext = useContext(TechnologyContext);
@@ -26,14 +28,19 @@ export default function Header({}) {
   return (
     <header className={style.headerMain}>
       <LeftPane>
+      <IconError/>
+
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
-        <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p>
+        {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
+        <p className={style.title}>Karta technologiczna </p>
+        {/* <IconError/> */}
       </LeftPane>
 
       <CenterPane>
         <AlertLega />
       </CenterPane>
       <RightPane>
+    
         <button
           className={style.btn}
           onClick={() => {
@@ -85,6 +92,7 @@ export default function Header({}) {
         </button>
 <SprawdzBTN />
 <ZapisBtnPromise />
+
         {/* <ZapisBtn /> */}
         <IconNavigate
           className={style.btn_x}
@@ -92,9 +100,35 @@ export default function Header({}) {
           navi={"/Panel"}
         />
       </RightPane>
+
+
+
+
     </header>
   );
 }
+
+const IconError = () =>{
+  const techContext = useContext(TechnologyContext);
+
+  // const listaPapierow = appcontext.listaPapierow;
+  const daneTech = techContext.daneTech;
+  if(daneTech.korekta_zamowienia_alert ==1){
+    return(
+    <img
+       className={style.iconError}
+        src={iconError}
+        onClick={() => {
+
+        }}
+        alt="Procesy"
+      />
+  )
+  }
+  
+}
+
+
 
 
 //----

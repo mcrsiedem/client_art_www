@@ -97,3 +97,9 @@
     align-items: center;
     gap:20px;
   }
+
+
+  .iconError{
+    margin: 20px;
+    width: 30px;
+  }

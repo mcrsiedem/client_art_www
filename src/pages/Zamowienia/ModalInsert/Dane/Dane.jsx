@@ -352,11 +352,20 @@ function Stan( ) {
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const [add] = useHistoria()
+const selectColor = (stan) =>{
+  if (stan==1) return style.select_stan_1
+  if (stan==2) return style.select_stan_2
+  if (stan==3) return style.select_stan_3
+   return style.select
+
+
+}
   return (
     <div className={style.col}>
       <label className={style.label}> Stan zamówienia </label>
       <select
-        className={style.select}
+        // className={daneZamowienia.stan == 3 ? style.select3:style.select}
+        className={selectColor(daneZamowienia.stan) }
         value={daneZamowienia.stan}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});

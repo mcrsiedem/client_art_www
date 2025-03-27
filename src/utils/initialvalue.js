@@ -56,7 +56,7 @@ const initialDane = {
   // data_spedycji: todayPlusDni(5),
   data_spedycji: null,
   stan: 1,
-  status: 2,
+  status: 1,
   etap: 2,
   uwagi: "",
   cena: "",

@@ -253,14 +253,22 @@ const contextModalInsert = useContext(ModalInsertContext);
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const selectColor = (stan) =>{
+  if (stan==2) return style.select_stan_3
+  if (stan==3) return style.select_status_345
+  if (stan==4) return style.select_status_345
+  if (stan==5) return style.select_status_345
+   return style.select
 
+
+}
 
 const [add] = useHistoria()
   return (
     <div className={style.col}>
       <label className={style.label}> Status zamówienia</label>
       <select
-        className={style.select}
+        className={selectColor(daneZamowienia.status)}
         value={daneZamowienia.status}
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});

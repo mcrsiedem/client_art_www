@@ -16,88 +16,79 @@ export default function Header({}) {
   const listaPapierow = appcontext.listaPapierow;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   return (
-    <header className={style.headerMain}>
+    <header
+      className={style.headerMain}
+      onDoubleClick={() => {
+        console.clear();
+        console.log("Karta Technologiczna: ");
+        console.log("Dane Tech: ", techContext.daneTech);
+        console.log("Produkt Tech: ", techContext.produktyTech);
+        console.log("Elementy Tech: ", techContext.elementyTech);
+        console.log("Fragmenty Tech: ", techContext.fragmentyTech);
+        console.log("Oprawa Tech: ", techContext.oprawaTech);
+        console.log("Procesy elementów: ", techContext.procesyElementowTech);
+        console.log("Arkusze: ", techContext.arkusze);
+        console.log("Legi: ", techContext.legi);
+        console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
+        console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
+        console.log("Wykonania tech: ", techContext.wykonania);
+        console.log("listaPapierow: ", appcontext.listaPapierow);
+        console.log(
+          "lista wszystkich procesów appcontext.procesList: ",
+          appcontext.procesList
+        );
+      }}
+    >
       <LeftPane>
-      <IconError/>
+        <IconError />
 
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
         {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
         <p className={style.title}>Karta technologiczna </p>
         {/* <IconError/> */}
       </LeftPane>
-
       <CenterPane>
         <AlertLega />
       </CenterPane>
       <RightPane>
-<PotwierdzKorekteZamowieniaBTN />
-    
-        <button
-          className={style.btn}
-          onClick={() => {
-            console.clear();
-            console.log("Karta Technologiczna: ");
-            console.log("Dane Tech: ", techContext.daneTech);
-            console.log("Produkt Tech: ", techContext.produktyTech);
-            console.log("Elementy Tech: ", techContext.elementyTech);
-            console.log("Fragmenty Tech: ", techContext.fragmentyTech);
-            console.log("Oprawa Tech: ", techContext.oprawaTech);
-            console.log(
-              "Procesy elementów: ",
-              techContext.procesyElementowTech
-            );
-            console.log("Arkusze: ", techContext.arkusze);
-            console.log("Legi: ", techContext.legi);
-            console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
-            console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
-            console.log("Wykonania tech: ", techContext.wykonania);
-            console.log("listaPapierow: ", appcontext.listaPapierow);
-            console.log("lista wszystkich procesów appcontext.procesList: ", appcontext.procesList);
-            // console.log("nadkomplety: ", appcontext.nadkomplety);
-            // fechparametryTechnologii(27)
-
-            //  console.log("Teraz: "+ today_dodaj_minuty())
-          }}
-        >
-          Pokaż
-        </button>
-
-        <button
-          className={style.btn}
-          onClick={() => {
-
-            techContext.setArkusze([])
-            techContext.setLegi([])
-            techContext.setLegiFragmenty([])
-            techContext.setGrupaWykonan([])
-            techContext.setWykonania([])
-            // console.log("Arkusze: ", techContext.arkusze);
-            // console.log("Legi: ", techContext.legi);
-            // console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
-            // console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
-            // console.log("Wykonania tech: ", techContext.wykonania);
-
-          }}
-        >
-          Clear
-        </button>
-<SprawdzBTN />
-<ZapisBtnPromise />
-
-        {/* <ZapisBtn /> */}
+        <PotwierdzKorekteZamowieniaBTN />
+        <ClearBTN />
+        <SprawdzBTN />
+        <ZapisBtnPromise />
         <IconNavigate
           className={style.btn_x}
           logo={IconClose}
           navi={"/Panel"}
         />
       </RightPane>
-
-
-
-
     </header>
   );
 }
+
+
+const ClearBTN = () => {
+  const techContext = useContext(TechnologyContext);
+
+if(DecodeToken(sessionStorage.getItem("token")).id ==1){
+    return (
+    <button
+      // disabled={isSaveButtonDisabled}
+      className={ style.btn}
+      onClick={() => {
+        techContext.setArkusze([])
+        techContext.setLegi([])
+        techContext.setLegiFragmenty([])
+        techContext.setGrupaWykonan([])
+        techContext.setWykonania([])
+        
+      }}
+    >
+      Clear 
+    </button>
+  );
+}
+
+};
 
 const IconError = () =>{
   const techContext = useContext(TechnologyContext);

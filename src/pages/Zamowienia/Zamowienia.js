@@ -13,6 +13,8 @@ import { AppContext } from "context/AppContext";
 import MenuZamowienia from "./components/MenuZamowienia";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
+import iconError from "assets/error.svg";
+
 
 import { useApiPapier } from "hooks/useApiPapier";
 function Zamowienia({ user, setUser }) {
@@ -155,8 +157,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
      <table>
   <thead className={style.th_head}>
     <tr >
+      <th style={{textAlign: "center"}}>!</th>
       <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
-      {/* <th className={style.col_id}># </th> */}
+
       
       
       <th className={style.col_nr}>Nr</th>
@@ -227,8 +230,13 @@ function Table_tr({ row, open2, setRow }) {
 
 
       >
+               <IconErrorTable
+          row={row}
+
+        />
         <SelectBox row={row} />
-        {/* <td>{row.id} </td> */}
+   
+ 
         <td>{row.nr} </td>
         <td>{row.rok} </td>
         <ShowTechnmologiaBtn
@@ -237,6 +245,7 @@ function Table_tr({ row, open2, setRow }) {
           showKartaTechnologiczna={showKartaTechnologiczna}
           
         />
+               
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>
         <td>{row.uwagi}</td>
@@ -286,7 +295,23 @@ function Table_tr({ row, open2, setRow }) {
   );
 }
 
-
+const IconErrorTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  if(row.status >2){
+    return(
+      <td  style={{width: "30px"}}> 
+    <img
+       className={style.iconErrorTable}
+        src={iconError}
+        onClick={() => {
+        }}
+        alt="Procesy"
+      />
+      </td>
+  )
+  }else return <td></td>
+}
 
  function ShowTechnmologiaBtn({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
   return (

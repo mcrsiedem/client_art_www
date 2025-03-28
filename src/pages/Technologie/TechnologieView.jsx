@@ -83,9 +83,9 @@ const WykonaniaTable =({selectedProcesor}) =>{
     <div className={style.tableContainer}>
 <table className={style.table}>
         <thead>
-<tr>
-  <th> </th>
-  <th> nr</th>
+<tr >
+  <th style={{textAlign: "center"}}> !</th>
+  <th> Nr</th>
   <th> Rok</th>
   <th> Klient</th>
   <th> Tytuł</th>

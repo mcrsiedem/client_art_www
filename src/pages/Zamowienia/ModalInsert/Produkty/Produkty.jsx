@@ -4,6 +4,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 // import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
+import { useStatus } from "hooks/useStatus";
 
 export default function Produkty( ) {
   return (
@@ -50,7 +51,7 @@ function ProduktyTable2() {
 function Typ({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
-
+const [setStatus] = useStatus()
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   return (
     <div className={style.col_dane}>
@@ -64,6 +65,9 @@ function Typ({ row }) {
             typ: e.target.value,
             update: true
           });
+
+           // 
+           setStatus(3)
         }}
       >
         {}
@@ -80,6 +84,7 @@ function Typ({ row }) {
 function Nazwa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const [setStatus] = useStatus()
   return (
     <div  className={style.col_dane}>
       <label className={style.label}> Nazwa </label>
@@ -95,7 +100,8 @@ function Nazwa({ row }) {
             nazwa: e.target.value,
             update: true
           })
-
+ // 
+ setStatus(3)
           }
         }
     
@@ -108,6 +114,7 @@ function Nazwa({ row }) {
 function Naklad({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const [setStatus] = useStatus()
 
   return (
     <div className={style.col_dane}>
@@ -123,6 +130,9 @@ function Naklad({ row }) {
               naklad: e.target.value,
               update: true
             });
+
+            // const [setStatus] = useStatus()
+            setStatus(3)
           }
         }}
       ></input>
@@ -134,7 +144,7 @@ function Naklad({ row }) {
 function Strony({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-
+const [setStatus] = useStatus()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Strony </label>
@@ -150,7 +160,13 @@ function Strony({ row }) {
               ilosc_stron: e.target.value,
               update: true
             });
+
+             // 
+             setStatus(3)
           }
+
+
+
         }}
 
       ></input>
@@ -161,7 +177,7 @@ function Strony({ row }) {
 function FormatX({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-
+const [setStatus] = useStatus()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Szer. </label>
@@ -178,6 +194,9 @@ function FormatX({ row }) {
               format_x: e.target.value,
               update: true
             });
+
+             // 
+             setStatus(3)
           }
         }}
       ></input>
@@ -187,7 +206,7 @@ function FormatX({ row }) {
 function FormatY({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-
+const [setStatus] = useStatus()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Wys. </label>
@@ -204,6 +223,9 @@ function FormatY({ row }) {
               format_y: e.target.value,
               update: true
             });
+
+             // 
+             setStatus(3)
           }
         }}
       ></input>
@@ -283,6 +305,7 @@ const contextApp = useContext(AppContext);
 function Uwagi({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const [setStatus] = useStatus()
   return (
     <div  className={style.col_dane}>
       <label className={style.label}> Uwagi </label>
@@ -299,6 +322,8 @@ function Uwagi({ row }) {
             update: true
           })
         
+           // 
+           setStatus(3)
         }
           }
         }

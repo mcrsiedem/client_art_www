@@ -15,6 +15,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { getNameOfPapier } from "actions/getNameOfPapier";
 import { useHistoria } from "hooks/useHistoria";
+import { useStatus } from "hooks/useStatus";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -237,11 +238,15 @@ export default function RowElement({
   }
 
   function DodajFragment({ row, fragmenty,setFragmenty}) {
-
+const [setStatus] = useStatus()
     if (fragmenty.filter(x=> x.element_id == row.id).length == 0){
          return (
         <button className={style.btn_dodaj_fragment} 
-        onClick={()=>{handleAddFirstFragment(row,fragmenty,setFragmenty)}}>+</button>
+        onClick={()=>{
+          handleAddFirstFragment(row,fragmenty,setFragmenty)
+                     // 
+                     setStatus(3)
+        }}>+</button>
      );
     }
  
@@ -303,6 +308,7 @@ function Procesy({ row}) {
   }
   
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
+  const [setStatus] = useStatus()
   return (
     <div>
       <div>
@@ -311,6 +317,8 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
           src={iconTrash}
           onClick={() => {
             handleRemoveItem(row.indeks, row.id);
+                       // const [setStatus] = useStatus()
+                       setStatus(3)
           }}
           alt="Procesy"
         />
@@ -320,6 +328,7 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
 }
 
 function Dodaj({ row, handleAddCard }) {
+  const [setStatus] = useStatus()
   return (
     <div >
       <img
@@ -327,6 +336,8 @@ function Dodaj({ row, handleAddCard }) {
         src={iconCopy}
         onClick={() => {
           handleAddCard(row);
+                     // 
+                     setStatus(3)
         }}
         alt="Procesy"
       />
@@ -336,6 +347,7 @@ function Dodaj({ row, handleAddCard }) {
   
   function Typ({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
     //row - row element
+    const [setStatus] = useStatus()
     return (
         <select
           className={style.select}
@@ -347,6 +359,10 @@ function Dodaj({ row, handleAddCard }) {
               update: true
             }
             );
+
+ // 
+ setStatus(3)
+
           }}
         >
           {}
@@ -363,6 +379,8 @@ function Dodaj({ row, handleAddCard }) {
   function PapierPostacElement({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
     //row - row element
 const contextApp = useContext(AppContext);
+const [setStatus] = useStatus()
+
     return (
         <select
           className={style.select}
@@ -374,6 +392,8 @@ const contextApp = useContext(AppContext);
               update: true
             }
             );
+             // 
+             setStatus(3)
           }}
         >
           {}
@@ -401,6 +421,7 @@ const contextApp = useContext(AppContext);
     const historiaZamowienia = modalcontext.historiaZamowienia;
     const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
     const [add] = useHistoria()
+    const [setStatus] = useStatus()
     return (
      <div className={style.papier_input_container}>
         <select
@@ -413,7 +434,8 @@ const contextApp = useContext(AppContext);
               update: true
             });
 
-
+ // 
+          setStatus(3)
             add(         {
               kategoria: "Papier",
               event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
@@ -453,6 +475,7 @@ const contextApp = useContext(AppContext);
 
   
   function Naklad({ row, handleChangeCardElementy }) {
+    const [setStatus] = useStatus()
     return (
    
         <input
@@ -465,13 +488,18 @@ const contextApp = useContext(AppContext);
               ...row,
               naklad: ifNoTextSetNull(e.target.value),
               update: true
-            })}}
+            })
+           // 
+           setStatus(3)
+          
+          }}
           }
         ></input>
     
     );
   }
   function Nazwa({ row, handleChangeCardElementy }) {
+    const [setStatus] = useStatus()
     return (
      
         <input
@@ -484,7 +512,12 @@ const contextApp = useContext(AppContext);
               ...row,
               nazwa: e.target.value,
               update: true
-            })}
+            })
+
+           // 
+            setStatus(3)
+
+          }
           }
           }
         ></input>
@@ -495,6 +528,7 @@ const contextApp = useContext(AppContext);
   
   
   function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
+    const [setStatus] = useStatus()
     return (
  
         <input
@@ -509,7 +543,11 @@ const contextApp = useContext(AppContext);
               ilosc_stron: ifNoTextSetNull(e.target.value),
               update: true
             }
-            )}}
+            )}
+                     // 
+                     setStatus(3)
+          
+          }
 
           }
         ></input>
@@ -517,6 +555,7 @@ const contextApp = useContext(AppContext);
     );
   }
   function NettoX({ row, handleChangeCardElementy }) {
+    const [setStatus] = useStatus()
     return (
    
         <input
@@ -531,13 +570,18 @@ const contextApp = useContext(AppContext);
                 format_x: e.target.value,
                 update: true
               });
+
+
+                         // 
+            setStatus(3)
             }
           }}
         ></input>
     
     );
   }
-  function NettoY({ row, handleChangeCardElementy }) {
+  function NettoY({ row, handleChangeCardElementy }) 
+  {const [setStatus] = useStatus()
     return (
   
         <input
@@ -552,6 +596,9 @@ const contextApp = useContext(AppContext);
                 format_y: e.target.value,
                 update: true
               });
+
+                         // 
+            setStatus(3)
             }
           }}
         ></input>
@@ -562,6 +609,7 @@ const contextApp = useContext(AppContext);
 
   
   function Uwagi({ row, handleChangeCardElementy }) {
+    const [setStatus] = useStatus()
     return (
   
         <input
@@ -574,7 +622,12 @@ const contextApp = useContext(AppContext);
               ...row,
               uwagi: e.target.value,
               update: true
-            })}
+            })
+                     // 
+                     setStatus(3)
+          
+          
+          }
           }
           }
         ></input>

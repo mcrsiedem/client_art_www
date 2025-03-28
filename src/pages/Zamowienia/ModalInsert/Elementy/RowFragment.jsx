@@ -8,6 +8,7 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
+import { useStatus } from "hooks/useStatus";
 export default function RowFragment({
   row
 
@@ -82,23 +83,34 @@ function Typ({ row }) {
 }
 
 function Naklad({ row, handleUpdateRowFragmenty }) {
+  const [setStatus] = useStatus()
+
   return (
 
       <input
         className={style.rowFragmenty_naklad}
         value={row.naklad}
-        onChange={(e) =>
-          handleUpdateRowFragmenty({
+        onChange={(e) => {
+
+            handleUpdateRowFragmenty({
             ...row,
             naklad: ifNoTextSetNull(e.target.value) ,
             update: true
           })
+
+           // 
+           setStatus(3)
+        }
+        
+
+          
         }
       ></input>
 
   );
 }
 function  Wersja({ row, handleUpdateRowFragmenty }) {
+  const [setStatus] = useStatus()
   return (
   
       <input
@@ -111,7 +123,11 @@ function  Wersja({ row, handleUpdateRowFragmenty }) {
             ...row,
             wersja: e.target.value,
             update: true
-          })}}
+          })}
+         // 
+         setStatus(3)
+        
+        }
         }
       ></input>
 
@@ -185,7 +201,7 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
   //   setFragmenty(fragmenty.filter((x) => x.id !== id));
   // }
   // setFragmenty(fragmenty.filter((x) => x.id !== id));
-
+  if (fragmenty.length > elementy.length) {
   setFragmenty((prev) =>
     prev.map((t, a) => {
       if (t.id == id) {
@@ -198,6 +214,7 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
       }
     })
   );
+}
   // setFragmenty((prev) =>
   //   prev.map((t, a) => {
   //     if (t.indeks > indeks) {

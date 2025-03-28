@@ -15,6 +15,7 @@ import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
+import { useStatus } from "hooks/useStatus";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -224,6 +225,7 @@ function DataSpedycji({ row,index_oprawy }) {
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
   const daneZamowienia = contextModalInsert.daneZamowienia;
+  const [setStatus] = useStatus()
 
   return (
     <td className={style.col}>
@@ -238,6 +240,8 @@ function DataSpedycji({ row,index_oprawy }) {
             setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
           }
 
+                     // 
+                     setStatus(3)
         }}
       ></input>
     </td>
@@ -246,6 +250,7 @@ function DataSpedycji({ row,index_oprawy }) {
 function DataCzystodrukow({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const [setStatus] = useStatus()
   return (
     <td className={style.col}>
       <input
@@ -258,6 +263,9 @@ function DataCzystodrukow({ row }) {
             data_czystodrukow: event.target.value,
             update:true
           });
+
+                     // 
+                     setStatus(3)
         }}
       ></input>
     </td>
@@ -270,6 +278,7 @@ function RodzajOprawy({ row }) {
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const setProdukty = contextModalInsert.setProdukty;
   const contextApp = useContext(AppContext);
+const [setStatus] = useStatus()
 
   return (
     <td>
@@ -290,6 +299,11 @@ function RodzajOprawy({ row }) {
               })
             );
           }
+
+           // 
+           setStatus(3)
+
+
         }}
       >
                 {   <option value = "0"  >
@@ -307,6 +321,7 @@ function RodzajOprawy({ row }) {
 }
 
 function DodajOprawe({ row, oprawa, setOprawa }) {
+  const [setStatus] = useStatus()
   return (
     <td className={style.col_button}>
       <img
@@ -314,6 +329,8 @@ function DodajOprawe({ row, oprawa, setOprawa }) {
         src={iconCopy}
         onClick={() => {
           handleAddRowOprawa(row, oprawa, setOprawa);
+                     // 
+                     setStatus(3)
         }}
         alt="Procesy"
       />
@@ -328,7 +345,7 @@ function Usun({ row, handleRemoveItem }) {
 
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
-
+const [setStatus] = useStatus()
   return (
     <td className={style.col_button}>
       <div>
@@ -344,6 +361,9 @@ function Usun({ row, handleRemoveItem }) {
               fragmenty,
               setFragmenty
             );
+
+                       // 
+                       setStatus(3)
           }}
           alt="Procesy"
         />
@@ -377,23 +397,7 @@ function PodzielOprawe({
     </td>
   );
 }
-// function PokazElementy({ setShowOprawaElementyStage  }) {
-//   return (
-//     <td className={style.col_button}>
-//       <div >
-//       <img
-//             className={style.pokaz_elementy_oprawy}
-//             src={iconUstawienia}
-//             onClick={() => {
-//               setShowOprawaElementyStage(true);
-//             }}
-//             alt="Procesy"
-//           />
-//       </div>
 
-//     </td>
-//   );
-// }
 
 const handleRemoveItem = (
   indeks,
@@ -435,26 +439,8 @@ const handleRemoveItem = (
     })
   );
 
-
-
   }
 
-
-
-
-
-  // setOprawa((prev) =>
-  //   prev.map((t, a) => {
-  //     if (t.indeks > indeks) {
-  //       return {
-  //         ...t,
-  //         indeks: t.indeks--,
-  //       };
-  //     } else {
-  //       return t;
-  //     }
-  //   })
-  // );
 };
 
 function handleAddRowOprawa(card, oprawa, setOprawa) {
@@ -497,6 +483,7 @@ function Typ({ row }) {
 function WersjaOprawaFragment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
+  const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -509,6 +496,8 @@ function WersjaOprawaFragment({ row }) {
               wersja: e.target.value,
               update:true
             });
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>
@@ -519,6 +508,7 @@ function WersjaOprawaFragment({ row }) {
 function NakladOprawaFregment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
+  const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -531,34 +521,20 @@ function NakladOprawaFregment({ row }) {
               naklad: e.target.value,
               update:true
             });
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>
     </td>
   );
 }
-function IloscStronFragment({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
-  return (
-    <td>
-      <input
-        value={row.naklad}
-        onChange={(e) =>
-          handleUpdateRowFragmenty({
-            ...row,
-            naklad: e.target.value,
-            update:true
-          })
-        }
-      ></input>
-    </td>
-  );
-}
+
 
 function WersjaOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -571,6 +547,9 @@ function WersjaOprawa({ row }) {
               wersja: e.target.value,
               update:true
             });
+
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>
@@ -581,6 +560,7 @@ function WersjaOprawa({ row }) {
 function BokOprawy({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -593,6 +573,9 @@ function BokOprawy({ row }) {
               bok_oprawy: e.target.value,
               update:true
             });
+
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>
@@ -603,6 +586,7 @@ function BokOprawy({ row }) {
 function UwagiOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -615,6 +599,9 @@ function UwagiOprawa({ row }) {
               uwagi: e.target.value,
               update:true
             });
+
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>
@@ -625,6 +612,7 @@ function UwagiOprawa({ row }) {
 function NakladOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const [setStatus] = useStatus()
   return (
     <td>
       <input
@@ -637,6 +625,9 @@ function NakladOprawa({ row }) {
               naklad:  ifNoTextSetNull(e.target.value) ,
               update:true
             });
+
+                       // 
+                       setStatus(3)
           }
         }}
       ></input>

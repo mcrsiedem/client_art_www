@@ -15,9 +15,9 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
   if (showMenu) {
     return (
-      <div className={style.menu_legi}>
+      <div className={style.container_menu}>
         <button
-          className={style.menu_legi_btn}
+          className={style.menu_btn}
           onClick={() => {
             const rowsToDelete =zamowienia.filter(x => x.select === true);
     
@@ -27,20 +27,20 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         >
           Usuń
         </button>
-        <button className={style.menu_legi_btn}           onClick={() => {
+        <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
         deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
  
           }}>Usuń na zawsze...</button>
 
-<button className={style.menu_legi_btn}           onClick={() => {
+<button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
         odblokujZamowienie(rowsToDelete, setShowMenu)
  
           }}>Odblokuj zamówienie</button>
 
         <button
-          className={style.menu_legi_btn}
+          className={style.menu_btn}
           onClick={() => {
             setShowMenu(!showMenu);
           }}

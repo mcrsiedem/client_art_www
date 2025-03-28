@@ -234,12 +234,12 @@ function Naklad({ row }) {
   const contextApp = useContext(AppContext);
   const contextTech = useContext(TechnologyContext);  
   const updateRowProduktyTech = contextTech.updateRowProduktyTech;
-
+  const produkty = contextTech.produkty
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Nakład </label>
       <input
-        className={style.input}
+        className={produkty[0].naklad == row.naklad ?style.input :style.inputError} title={"W zamówienie: "+produkty[0].naklad } type="text"
         value={row?.naklad}
         onChange={(e) => {
           // const re = /^[0-9]+$/;
@@ -323,13 +323,14 @@ function Strony({ row }) {
   const contextApp = useContext(AppContext);
   const contextTech = useContext(TechnologyContext);  
   const updateRowProduktyTech = contextTech.updateRowProduktyTech;
+  const produkty = contextTech.produkty
 
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Strony </label>
       <input
       // disabled
-        className={style.input}
+                className={produkty[0].ilosc_stron == row.ilosc_stron ?style.input :style.inputError} title={"W zamówienie: "+produkty[0].ilosc_stron } type="text"
         value={row?.ilosc_stron}
         onChange={(e) => {
           // const re = /^[0-9]+$/;

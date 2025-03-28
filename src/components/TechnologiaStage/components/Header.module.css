@@ -49,12 +49,13 @@
 
 .btn_x {
     width: 30px;
+
 }
 
 
 .btn_x:hover {
 
-    background-color: rgb(70, 69, 69);
+    background-color: red;
     border-radius: 5px;
 
 }

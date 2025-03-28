@@ -161,12 +161,14 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const contextTech = useContext(TechnologyContext);  
   const daneTech = contextTech.daneTech
+  const dane = contextTech.dane
   const setDaneTech = contextTech.setDaneTech
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
-        <input className={style.select} type="date"
-        value={daneTech.data_spedycji}
+        <input className={daneTech.data_spedycji == dane.data_spedycji ?style.select :style.selectError} title={dane.data_spedycji} type="date"
+        
+        value={daneTech.data_spedycji} 
         onChange={(event) => {
           setDaneTech({...daneTech, data_spedycji: event.target.value,update: true});
           setSaveButtonDisabled(false)
@@ -398,11 +400,12 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const contextTech = useContext(TechnologyContext);  
   const daneTech = contextTech.daneTech
+  const dane = contextTech.dane
   const setDaneTech = contextTech.setDaneTech
   return(
       <div className={style.col}>
       <label className={style.label}> Rok </label>
-      <input className={style.input} type="text"
+      <input className={daneTech.rok == dane.rok ?style.input :style.inputError} title={dane.rok} type="text"
             value={daneTech.rok}
 
             

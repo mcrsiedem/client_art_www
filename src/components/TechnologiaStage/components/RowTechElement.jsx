@@ -18,9 +18,7 @@ import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
 export default function RowTechElement({
   row,
-  handleChangeCardElementy,
-  procesyElementow,
-  setShowElementyProcesyInsert,
+  indeks
 }) {
 
   const techContext = useContext(TechnologyContext);
@@ -52,7 +50,7 @@ export default function RowTechElement({
             handleChangeCardFragmenty_i_Elementy_Tech
           }
         />
-        <Naklad row={row} />
+        <Naklad row={row} indeks={indeks}/>
         <NadkompletElement row={row} />
         <Strony row={row} />
         <NettoX row={row} />
@@ -77,9 +75,9 @@ export default function RowTechElement({
         <Uwagi row={row} />
         <Procesy
           row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-          procesyElementow={procesyElementow}
+          // handleChangeCardElementy={handleChangeCardElementy}
+          // setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+          // procesyElementow={procesyElementow}
         />
         <MenuElementyBtn
           row={row}
@@ -463,12 +461,13 @@ function PapierPostac({
 
 
 
-function Naklad({ row }) {
+function Naklad({ row ,indeks}) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const elementy = techContext.elementy;
   return (
     <input
-      className={style.input}
+      className={elementy[indeks].naklad == row.naklad ?style.input :style.inputError} title={"W zamówieniu"+elementy[indeks].naklad} type="text"
       value={row.naklad}
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {

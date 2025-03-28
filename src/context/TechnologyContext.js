@@ -476,11 +476,21 @@ if(elementyTech.length>1){
     //  setShowTechnologyStage(true)
 }
 
-async function fechparametryTechnologii(idTechnologii) {
+async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   console.log("fechparametryTechnologii  -  pobieranie technologii")
   //pobierz wszystkie objekty do TECHNOLOGI nr... idTechnologii
   // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
+
+  const res_zam = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
+  setDane(res_zam.data[0][0])
+     setProdukty(res_zam.data[1])
+     setElementy(res_zam.data[2])
+     setFragmenty(res_zam.data[3])
+     setOprawa(res_zam.data[4])
+     setProcesyElementow(res_zam.data[5])
+
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
+
 
   setDaneTech(res.data[0][0]) 
   setProduktyTech(res.data[1])

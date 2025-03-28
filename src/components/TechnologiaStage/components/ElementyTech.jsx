@@ -37,8 +37,8 @@ function ElementyTable({}) {
         <div className={style.main_elementy}>
           {elementyTech
             .sort((a, b) => a.indeks - b.indeks)
-            .map((row, i) => {
-              return <RowTechElement key={row.id} i={i} row={row} />;
+            .map((row, indeks) => {
+              return <RowTechElement key={row.id} indeks={indeks} row={row} />;
             })}
         </div>
 

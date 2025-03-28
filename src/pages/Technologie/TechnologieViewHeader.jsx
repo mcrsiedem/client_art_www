@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./TechnologieViewHeader.module.css";
 
-import iconClose2 from "assets/x2.svg";
+import iconClose2 from "assets/x.svg";
 import iconAdd from "assets/addIcon2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";

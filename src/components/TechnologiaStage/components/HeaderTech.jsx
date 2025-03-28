@@ -2,18 +2,8 @@ import style from "./Header.module.css";
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-// import LeftPane from "./LeftPane"
-// import RightPane from "./RightPane"
-// import logoGrid from "../../../../assets/grid.svg";
-// import IconNavigate from "./IconNavigate";
+
 import IconClose from "assets/x.svg";
-import { saveTech } from "actions/saveTech";
-import { todayPlusDni } from "actions/todayPlusDni";
-import { saveTechNew } from "actions/saveTechNew";
-import { today_teraz } from "actions/today_teraz";
-import { today_dodaj_minuty } from "actions/today_dodaj_minuty";
-import { zapiszZamowienie } from "actions/zapiszZamowienie";
-// import { zapiszTechnologie } from "actions/stare_zapiszTechnologie";
 import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import DecodeToken from "pages/Login/DecodeToken";
@@ -40,6 +30,7 @@ export default function Header({}) {
         <AlertLega />
       </CenterPane>
       <RightPane>
+<PotwierdzKorekteZamowieniaBTN />
     
         <button
           className={style.btn}
@@ -110,8 +101,6 @@ export default function Header({}) {
 
 const IconError = () =>{
   const techContext = useContext(TechnologyContext);
-
-  // const listaPapierow = appcontext.listaPapierow;
   const daneTech = techContext.daneTech;
   if(daneTech.korekta_zamowienia_alert ==1){
     return(
@@ -119,13 +108,11 @@ const IconError = () =>{
        className={style.iconError}
         src={iconError}
         onClick={() => {
-
         }}
         alt="Procesy"
       />
   )
   }
-  
 }
 
 
@@ -150,6 +137,28 @@ const SprawdzBTN = () => {
     </button>
   );
 };
+const PotwierdzKorekteZamowieniaBTN = () => {
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+
+
+    return (
+    <button
+      disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
+      className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
+      onClick={() => {
+        // daneTech.korekta_zamowienia_alert= null
+        setDaneTech({...daneTech, korekta_zamowienia_alert: null})
+      
+      }}
+    >
+      Potwierdź korekty
+    </button>
+  );
+
+};
+
 const ZapisBtnPromise = () => {
   const techContext = useContext(TechnologyContext);
   const isSaveButtonDisabled = techContext.isSaveButtonDisabled;

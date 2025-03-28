@@ -13,7 +13,7 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 
 import { useApiPapier } from "hooks/useApiPapier";
-
+import iconError from "assets/error.svg";
 
 export default function TechnologieView({ user, setUser }) {
   const navigate = useNavigate();
@@ -77,13 +77,14 @@ const WykonaniaTable =({selectedProcesor}) =>{
   const appcontext = useContext(AppContext);
   const typ_elementu = appcontext.typ_elementu;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const fechparametry = techContext.fechparametry;
   return(
     <div className={style.container}>
     <div className={style.tableContainer}>
 <table className={style.table}>
         <thead>
 <tr>
-  <th> #</th>
+  <th> </th>
   <th> nr</th>
   <th> Rok</th>
   <th> Klient</th>
@@ -108,7 +109,8 @@ const WykonaniaTable =({selectedProcesor}) =>{
             key={row.id}
             onDoubleClick={(node, event) => {
               // fechparametryTechnologii(row.id,row.prime_id)
-              fechparametryTechnologii(row.id)
+              fechparametryTechnologii(row.zamowienie_id,row.id)
+           
               // setActiveRowId(row.id)
               // setShowTechnologyStage(true);
             }}
@@ -118,9 +120,9 @@ const WykonaniaTable =({selectedProcesor}) =>{
             // console.log(row.id)
             }}
           >
-            <td>{row.id} </td>
-            <td>{row.nr} </td>
-            <td>{row.rok} </td>
+            <IconErrorTable row={row}/>
+            <td style={{width: "50px"}}>{row.nr} </td>
+            <td style={{width: "50px"}}>{row.rok} </td>
             <td>{row.klient} </td>
    
             <td>{row.tytul}</td>
@@ -136,7 +138,23 @@ const WykonaniaTable =({selectedProcesor}) =>{
   )
 }
 
-
+const IconErrorTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  if(row.korekta_zamowienia_alert ==1){
+    return(
+      <td  style={{width: "30px"}}> 
+    <img
+       className={style.iconErrorTable}
+        src={iconError}
+        onClick={() => {
+        }}
+        alt="Procesy"
+      />
+      </td>
+  )
+  }else return <td></td>
+}
 
 function Status({ selectedProcesor,setSelectedProcesor,selectedProces}) {
   const techContext = useContext(TechnologyContext);

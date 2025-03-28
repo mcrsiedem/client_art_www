@@ -273,32 +273,13 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
              setSaveButtonDisabled(false);
           }
 
-          // contextModalInsert.daneZamowienia
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-   
-                
 
-      }}
+
+      }
+    
+    
+    }
       className={style.btn}
       // disabled={isSaveButtonDisabled}
     >

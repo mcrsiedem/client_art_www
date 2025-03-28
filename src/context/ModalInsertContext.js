@@ -41,6 +41,9 @@ export const ModalInsertContextProvider = ({children})=>{
 
     
     useEffect(() => {
+     
+
+
       setSaveButtonDisabled(true)
     }, [daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,procesyElementowTemporary]);
 

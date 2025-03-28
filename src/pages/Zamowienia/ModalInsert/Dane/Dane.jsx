@@ -78,7 +78,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
         value={daneZamowienia.firma_id}
 
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, firma_id: event.target.value,update: true});
+          setDaneZamowienia({...daneZamowienia, firma_id: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
         }}
       >
@@ -101,7 +101,6 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const contextApp = useContext(AppContext);
 
 
-
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -109,7 +108,14 @@ const contextApp = useContext(AppContext);
         className={style.klient}
         value={daneZamowienia.klient_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, klient_id: event.target.value,update: true});
+          setDaneZamowienia({
+            ...daneZamowienia,
+            klient_id: event.target.value,
+            status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,
+            update: true,
+          });
+            // 
+      // setStaus(3)
            ;
         }}
       >
@@ -149,7 +155,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         <input className={style.select} type="date"
              value={daneZamowienia.data_materialow}
              onChange={(event) => {
-              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value, update: true});
+              setDaneZamowienia({...daneZamowienia, data_materialow: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status, update: true});
                
              }}></input>
       </div>
@@ -167,7 +173,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <input className={style.select} type="date"
          value={daneZamowienia.data_przyjecia}
          onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
            if( event.target.value ==="" )   console.log("Nie ma")
          }}></input>
@@ -184,13 +190,21 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
 const oprawa = contextModalInsert.oprawa;
 const setOprawa = contextModalInsert.setOprawa;
+
+
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
         <input className={style.select} type="date"
         value={daneZamowienia.data_spedycji}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
+    
+          setDaneZamowienia({
+            ...daneZamowienia,
+            data_spedycji: event.target.value,
+            status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,
+            update: true,
+          });
 
 
           setOprawa(
@@ -205,11 +219,6 @@ const setOprawa = contextModalInsert.setOprawa;
               }
             })
           );
-
-
-
-
-
 
 
         }
@@ -233,7 +242,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         // value={DecodeToken(sessionStorage.getItem("token")).id}
         value={daneZamowienia.opiekun_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, opiekun_id: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
         }}
       >
@@ -340,7 +349,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.fsc}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, fsc: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, fsc: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status, update: true});
            
         }}
       >
@@ -412,7 +421,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, tytul: event.target.value, update: true});
+        setDaneZamowienia({...daneZamowienia, tytul: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
      }
 
@@ -434,7 +443,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       value={daneZamowienia.przedplata}
       onChange={(event) => {
         if(goInputValidation(event,'price')){
-          setDaneZamowienia({...daneZamowienia, przedplata: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, przedplata: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
         }
       }}></input>
@@ -460,7 +469,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
          const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ.\+\-\(\),]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
-          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
      }
 
@@ -484,7 +493,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         const re = /^[0-9]+$/;
 
         if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, nr: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status, update: true});
            
         }
         
@@ -510,7 +519,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
        if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, cena: event.target.value, update: true});
+        setDaneZamowienia({...daneZamowienia, cena: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
        }
         
@@ -535,7 +544,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         const re2 = /^[0-9]+$/;
         const re = /^[a-zA-Z0-9_+\sZąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
        if ( event.target.value === '' || re2.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, termin_platnosci: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
  
        }
@@ -558,7 +567,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.vat_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, vat_id: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, vat_id: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
         }}
       >
@@ -584,7 +593,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         className={style.select}
         value={daneZamowienia.waluta_id}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, waluta_id: event.target.value, update: true});
+          setDaneZamowienia({...daneZamowienia, waluta_id: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            
         }}
       >
@@ -619,7 +628,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
               const re = /^[0-9]+$/;
               if (event.target.value === '' || re.test(event.target.value)) {
-              setDaneZamowienia({...daneZamowienia, rok: event.target.value, update: true});
+              setDaneZamowienia({...daneZamowienia, rok: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
                
               }
             }}></input>

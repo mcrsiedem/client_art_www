@@ -16,7 +16,8 @@
   height: 220px;
   
   background-color: grey;
-  background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
+  /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+  background-color: rgb(63, 77, 97);
   /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
   
 
@@ -26,7 +27,7 @@
   .menu_btn{
   height: 50px;
   width: 100%;
-  background-color: rgb(107, 158, 224);
+  background-color: rgb(63, 77, 97);
   color: whitesmoke;
   border: none
 
@@ -35,7 +36,7 @@
   /* border: 1px solid rgb(157, 157, 157); */
   }
   .menu_btn:hover{
-  background-color: rgb(115, 163, 226);
+    background-color: rgb(52, 64, 80);
   }
 
 

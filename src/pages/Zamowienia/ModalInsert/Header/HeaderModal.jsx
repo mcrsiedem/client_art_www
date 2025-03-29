@@ -76,6 +76,7 @@ export default function Header({
         console.log("listaPapierowNazwy: ",listaPapierowNazwy)
         // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
 
+  
       }} className={style.container}>
      
         <div className={style.title}>

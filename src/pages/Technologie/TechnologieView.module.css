@@ -1,23 +1,18 @@
 .main {
    display: grid;
    grid-template-rows: 60px 1fr;
-   /* background-image: linear-gradient(0deg, #3d495f 0%, #1d232e 100%); */
-   /* background-color: var(--art-bg); */
-
 }
 
-.container {
+/* .container {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   /* background-color: lightcyan; */
-   /* width: 700px; */
-}
+} */
 
 .tableContainer {
    height: calc(100vh - 60px);
-   min-width: 95vw;
+   min-width: 100vw;
    overflow: auto;
 }
 

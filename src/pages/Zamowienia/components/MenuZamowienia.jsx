@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { TechnologyContext } from "context/TechnologyContext";
+
 import { AppContext } from "context/AppContext";
 import style from "./MenuZamowienia.module.css";
-import icon from "assets/copy.svg";
+
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { odblokujZamowienie } from "actions/odblokujZamowienie";

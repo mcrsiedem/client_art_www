@@ -211,6 +211,7 @@ export const ModalInsertContextProvider = ({children})=>{
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
           selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia
 
+
           
 
         }}

@@ -79,12 +79,6 @@ const setNadkomplety = contextApp.setNadkomplety;
     setData(jobs);
   }
 
-  async function refreshZamowieniaKosz() {
-    const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
-    let jobs= [...res.data].filter(job => job.final == 2);
-    setData(jobs);
-  }
-
   useEffect(() => {
     checkToken();
 
@@ -186,7 +180,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
   <tbody>
     {zamowienia.map((row) => {
       return (
-<Table_tr key= {row.id}row={row} open2={open2} setRow={setRow}/>
+<TABLE_TR key= {row.id}row={row} open2={open2} setRow={setRow}/>
         
       );
     })}
@@ -194,7 +188,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
 </table>
 </div>
 }
-function Table_tr({ row, open2, setRow }) {
+function TABLE_TR({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
     const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie

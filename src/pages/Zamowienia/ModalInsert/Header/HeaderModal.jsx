@@ -16,6 +16,7 @@ import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOpr
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { refreshZamowienia } from "actions/refreshZamowienia";
 import { zapiszZamowienieUpdate } from "actions/zapiszZamowienieUpdate";
+import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -100,6 +101,7 @@ export default function Header({
               ) :
               (
                 <>
+                             <HISTORIA_ZAMOWIENIA_BTN  />
                              <Sprawdz  />
                   <ZapiszJako
                     setShowSaveAs={setShowSaveAs}
@@ -184,10 +186,14 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
   const setProcesyElementow= contextModalInsert.setProcesyElementow;
   const procesyElementow= contextModalInsert.procesyElementow;
   const technologieID= contextModalInsert.technologieID;
+  const historiaZamowienia= contextModalInsert.historiaZamowienia?.filter(x=>x.insert == true );
+  const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
+
+
 
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
-
+ const [saveZamowienieUpdate] = useZamowienieUpdate();
   return (
     <button
 
@@ -213,31 +219,17 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
                 setSaveButtonDisabled
               });
         
+        }
+
+                  if(produkty[0].naklad != 0 && daneZamowienia.id != 1){
+                    saveZamowienieUpdate()
+                  }
 
 
-        // setSaveButtonDisabled(true);
-        }
- 
-        if(produkty[0].naklad != 0 && daneZamowienia.id != 1){
-                  setSaveAs(false);
-                  zapiszZamowienieUpdate({
-                    daneZamowienia,
-                    setDaneZamowienia,
-                    produkty,
-                    elementy,
-                    fragmenty,
-                    oprawa,
-                    setProdukty,
-                    setElementy,
-                    setFragmenty,
-                    setOprawa,
-                    setProcesyElementow,
-                    procesyElementow,
-                    setZamowienia,
-                    technologieID
-                  });
-        setSaveButtonDisabled(true);
-        }
+
+
+
+
 
         // setOrderClosed
       }}
@@ -258,29 +250,19 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
 
   return (
     <button
-
       onClick={async () => {
-        if(produkty[0].naklad){
-
+        if (produkty[0].naklad) {
           // alert("Data przyjecia: brak")
-          if(contextModalInsert.daneZamowienia.data_spedycji == null ^ 
-            contextModalInsert.daneZamowienia.data_spedycji =='' 
-       
-  
-          
-          ){
-            alert("Brak daty")
-          }else{
-             setSaveButtonDisabled(false);
+          if (
+            (contextModalInsert.daneZamowienia.data_spedycji == null) ^
+            (contextModalInsert.daneZamowienia.data_spedycji == "")
+          ) {
+            alert("Brak daty");
+          } else {
+            setSaveButtonDisabled(false);
           }
-
         }
-
-
-      }
-    
-    
-    }
+      }}
       className={style.btn}
       // disabled={isSaveButtonDisabled}
     >
@@ -288,6 +270,39 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
     </button>
   );
 }
+
+
+function HISTORIA_ZAMOWIENIA_BTN() {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const contextApp = useContext(AppContext);
+
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const produkty = contextModalInsert.produkty;
+  // const setZamowienia = contextApp.setZamowienia
+
+  return (
+    <button
+      onClick={async () => {
+        if (produkty[0].naklad) {
+          // alert("Data przyjecia: brak")
+          if (
+            (contextModalInsert.daneZamowienia.data_spedycji == null) ^
+            (contextModalInsert.daneZamowienia.data_spedycji == "")
+          ) {
+            alert("Brak daty");
+          } else {
+            setSaveButtonDisabled(false);
+          }
+        }
+      }}
+      className={style.btn}
+      // disabled={isSaveButtonDisabled}
+    >
+      Historia
+    </button>
+  );
+}
+
 function ZapiszJako({
 
   setShowSaveAs,

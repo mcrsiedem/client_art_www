@@ -14,6 +14,9 @@ import MenuZamowienia from "./components/MenuZamowienia";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import iconError from "assets/error.svg";
+import iconLockRed2 from 'assets/iconLockRed.svg'
+import iconLockRed from "assets/lock2.svg";
+
 
 
 import { useApiPapier } from "hooks/useApiPapier";
@@ -78,7 +81,6 @@ const setNadkomplety = contextApp.setNadkomplety;
     let jobs= [...res.data]
     setData(jobs);
   }
-
   useEffect(() => {
     checkToken();
 
@@ -159,6 +161,8 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
       <th className={style.th_karta}>Technologia</th>
+  
+
       <th className={style.col_klient}>Klient</th>
       <th className={style.col_klient} >Praca</th>
       <th className={style.col_klient} >Uwagi</th>
@@ -173,7 +177,8 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_klient}>Oprawa</th>
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_utworzono}>Utworzono</th>
-      
+      <th style={{textAlign: "center"}}></th>
+      {/* <IconLockTable row={{open_stan:2}}/> */}
 
     </tr>
   </thead>
@@ -239,7 +244,7 @@ function TABLE_TR({ row, open2, setRow }) {
           showKartaTechnologiczna={showKartaTechnologiczna}
           
         />
-               
+              
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>
         <td>{row.uwagi}</td>
@@ -256,6 +261,7 @@ function TABLE_TR({ row, open2, setRow }) {
         <td>{row.oprawa_nazwa}</td>
         <td>{row.firma}</td>
         <td>{row.utworzono}</td>
+        <IconLockTable  row={row}/>
       </tr>
 
       {showKartaTechnologiczna && (
@@ -305,6 +311,23 @@ const IconErrorTable = ({row}) =>{
       </td>
   )
   }else return <td></td>
+}
+const IconLockTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  if(row.open_stan ==1){
+    return(
+      <td  style={{width: "30px"}}> 
+    <img
+       className={style.iconLockTable}
+        src={iconLockRed}
+        onClick={() => {
+        }}
+        alt="Procesy"
+      />
+      </td>
+  )
+  }return <td></td>
 }
 
  function ShowTechnmologiaBtn({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {

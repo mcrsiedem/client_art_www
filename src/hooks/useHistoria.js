@@ -8,7 +8,7 @@ const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
 
 function add(row) {
-const   new_historia = historiaZamowienia.slice();
+const   new_historia = historiaZamowienia?.slice() || [];
         new_historia.push({...row, zamowienie_id:modalcontext.selectedZamowienie.id, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
         setHistoriaZamowienia(new_historia)
 }

@@ -85,6 +85,8 @@ const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowi
 const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
+const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
+
 
 
   useEffect(() => {
@@ -164,6 +166,7 @@ const showAddClientStage = contextModalInsert.showAddClientStage;
            setOprawa(res.data[4])
            setProcesyElementow(res.data[5])
            setTechnologieID(res.data[6])
+           setHistoriaZamowienia(res.data[7])
           //  setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
            
           //  setKosztyDodatkoweZamowienia(res.data[7])

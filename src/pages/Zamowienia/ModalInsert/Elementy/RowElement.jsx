@@ -16,6 +16,7 @@ import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { getNameOfPapier } from "actions/getNameOfPapier";
 import { useHistoria } from "hooks/useHistoria";
 import { useStatus } from "hooks/useStatus";
+import { getNameOfElement } from "actions/getNameOfElement";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -420,6 +421,7 @@ const [setStatus] = useStatus()
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const historiaZamowienia = modalcontext.historiaZamowienia;
     const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
+    const elementy = modalcontext.elementy;
     const [add] = useHistoria()
     const [setStatus] = useStatus()
     return (
@@ -434,11 +436,10 @@ const [setStatus] = useStatus()
               update: true
             });
 
- // 
           setStatus(3)
             add(         {
               kategoria: "Papier",
-              event: "Zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+" : zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
             })
 
 

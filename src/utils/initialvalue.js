@@ -530,7 +530,7 @@ const _typ_elementu = [
     id: 3,
     nazwa: "Wklejka",
   },
-  ,
+  
   {
     id: 4,
     nazwa: "Insert",

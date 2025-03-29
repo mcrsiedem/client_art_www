@@ -8,7 +8,7 @@ const daneZamowienia = modalcontext.daneZamowienia;
 const setDaneZamowienia = modalcontext.setDaneZamowienia;
 
 function setStatus(status_id) {
-
+// zmienia status zamówienia na do koretky przy każdej edycji gdy zamówienie jest przyjęte czyli ma stan 3
   if(daneZamowienia.stan ==3 ){
     setDaneZamowienia({...daneZamowienia, status:status_id, update:true })
   }

@@ -1,212 +1,73 @@
-import style from "./Introligatornia.module.css";
+import style from "./HistoriaZamowienia.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import logoExpand from "../../../../assets/expand.svg";
+
 import { _typ_elementu } from "utils/initialvalue";
 import { useState } from "react";
 import iconCopy from "../../../../assets/copy.svg";
 import iconTrash from "../../../../assets/trash2.svg";
 import iconTable from "../../../../assets/settings.svg";
-import iconUstawienia from "../../../../assets/settings.svg";
-import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
-import axios from "axios";
 
-import { IP } from "../../../../utils/Host";
+
+
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 
-export default function IntroligatorniaTable({
-  handleChangeCardProdukty,
-  handleChangeCardOprawa,
-  handleChangeCardFragmenty,
-  handleChangeCardFragmentyOprawaId,
-}) {
+export default function HistoriaZamowienia() {
   const [oprawa_row, setOprawa_row] = useState();
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
 
-  function handleDrop(id) {
-    // sprawdza czy upuszczamy właściwy obiekt
-    if (sessionStorage.getItem("typ_drag") == "fragment") {
-      let id_drag_element = sessionStorage.getItem("id_element_drag");
-      let id_drop_oprawa = id;
-      handleChangeCardFragmentyOprawaId(id_drag_element, id_drop_oprawa);
-    }
-  }
-
-  function handleDragOver(e) {
-    e.preventDefault();
-  }
-
-  function handleDragStart(id) {
-    //   e.preventDefault();
-    sessionStorage.setItem("id_element_drag", id);
-    sessionStorage.setItem("typ_drag", "fragment");
-  }
 
   return (
     <div className={style.container}>
-      <div className={style.oprawa}>
-        <p>Oprawa</p>
-        {/* <Header  /> */}
-        <OprawaTable
-          handleChangeCardProdukty={handleChangeCardProdukty}
-          handleDragStart={handleDragStart}
-          handleChangeCardFragmentyOprawaId={handleChangeCardFragmentyOprawaId}
-          handleDrop={handleDrop}
-          handleDragOver={handleDragOver}
-          handleChangeCardOprawa={handleChangeCardOprawa}
-          expand={expand}
-          setExpand={setExpand}
-          handleChangeCardFragmenty={handleChangeCardFragmenty}
-          setShowOprawaElementyStage={setShowOprawaElementyStage}
-          oprawa_row={oprawa_row}
-          setOprawa_row={setOprawa_row}
-        />
-        {showOprawaElementyStage && (
-          <OprawaElementyStage
-            showOprawaElementyStage={showOprawaElementyStage}
-            setShowOprawaElementyStage={setShowOprawaElementyStage}
-            oprawa_row={oprawa_row}
-          />
-        )}
+      <div className={style.historia}>
+        <HISTORIA_HEADER/>
+        <HISTORIA_TABLE/>
       </div>
     </div>
   );
 }
 
-function OprawaTable({
-  handleChangeCardProdukty,
-  handleDragStart,
-  handleChangeCardFragmentyOprawaId,
-  handleDrop,
-  handleDragOver,
-  handleChangeCardOprawa,
-  expand,
-  setExpand,
-  handleChangeCardFragmenty,
-  setShowOprawaElementyStage,
-  oprawa_row,
-  setOprawa_row,
-}) {
+
+const HISTORIA_HEADER = () => {
+  return(
+    <p>Historia</p>
+  )
+}
+function HISTORIA_TABLE() {
   const contextModalInsert = useContext(ModalInsertContext);
-  const fragmenty = contextModalInsert.fragmenty;
-  const lockDragDrop = contextModalInsert.lockDragDrop;
-  const setFragmenty = contextModalInsert.setFragmenty;
-  const elementy = contextModalInsert.elementy;
-  const oprawa = contextModalInsert.oprawa;
-  const setOprawa = contextModalInsert.setOprawa;
+  const historiaZamowienia = contextModalInsert.historiaZamowienia;
 
   return (
     <div className={style.main}>
       <table className={style.table}>
         <thead className={style.glowka}>
           <tr>
-            <th className={style.col7}></th>
-            <th className={style.col3}>#</th>
-            <th className={style.col4}>Oprawa</th>
-            <th className={style.col4}>Str</th>
-            <th className={style.col4}>Wersja</th>
-            <th className={style.col4}>Naklad</th>
-            <th className={style.col4}>Bok oprawy</th>
-            <th className={style.col6}>Czystodruki</th>
-            <th className={style.col6}>Data spedycji</th>
-            <th className={style.col7}>Uwagi</th>
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
-            {/* <th className={style.col7}></th> */}
+            <th className={style.col4}>Data</th>
+            <th className={style.col4}>Użytkownik</th>
+            <th className={style.col4}>Kategoria</th>
+            <th className={style.col4}>Zdarzenie</th>
           </tr>
         </thead>
         <tbody>
-          {oprawa
-           .filter((x) => x.delete != true)
-          .map((row,index_oprawy) => {
+          {historiaZamowienia
+          //  .filter((x) => x.delete != true)
+          .map((row) => {
             return (
               <>
                 <tr
                   key={row.id}
-                  onDrop={() => handleDrop(row.id)}
-                  onDragOver={handleDragOver}
                 >
-                  {/* <td>{row.zamowienie_id}</td> */}
-                  <div className={style.expand}>
-                    <img
-                      className={style.icon}
-                      src={logoExpand}
-                      onClick={() => {
-                        setExpand(!expand);
-                      }}
-                      alt="Procesy"
-                    />
-                  </div>
-                  {/* <td>{row.produkt_id}</td> */}
-                  <td>{row.id}</td>
+     
+                  <td>{row.data}</td>
+                  <td>{row.user}</td>
+                  <td>{row.kategoria}</td>
+                  <td>{row.event}</td>
 
-                  <RodzajOprawy row={row} />
-                  <td></td>
-
-                  <WersjaOprawa row={row} />
-                  <NakladOprawa row={row} />
-                  <BokOprawy row={row} />
-
-                  <DataCzystodrukow row={row} />
-                  <DataSpedycji row={row} index_oprawy={index_oprawy} />
-
-                  <UwagiOprawa row={row} />
-
-                  <Usun row={row} handleRemoveItem={handleRemoveItem} />
-                  <DodajOprawe
-                    row={row}
-                    oprawa={oprawa}
-                    setOprawa={setOprawa}
-                  />
-                  {/* <PodzielOprawe setShowOprawaElementyStage={setShowOprawaElementyStage}  row={row} oprawa_row={oprawa_row} setOprawa_row={setOprawa_row}  /> */}
                 </tr>
-                {expand ? (
-                  fragmenty
-                    .filter((el) => el.oprawa_id === row.id)
-                    .filter((x) => x.delete != true)
-                    .map((row) => {
-                      return (
-                        <tr
-                          draggable={lockDragDrop}
-                          onDragStart={() => handleDragStart(row.id)}
-                          key={row.id}
-                        >
-                          <td></td>
-
-                          <td></td>
-                          <Typ row={row} />
-                          <td>{row.ilosc_stron} </td>
-                          <WersjaOprawaFragment
-                            row={row}
-                            handleChangeCardFragmenty={
-                              handleChangeCardFragmenty
-                            }
-                          />
-
-                          <NakladOprawaFregment
-                            row={row}
-                            handleChangeCardFragmenty={
-                              handleChangeCardFragmenty
-                            }
-                          />
-
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                 
-                        </tr>
-                      );
-                    })
-                ) : (
-                  <></>
-                )}
               </>
             );
           })}
@@ -216,9 +77,7 @@ function OprawaTable({
   );
 }
 
-function Header() {
-  return <div className={style.header}> Introligatornia</div>;
-}
+
 
 function DataSpedycji({ row,index_oprawy }) {
   const contextModalInsert = useContext(ModalInsertContext);

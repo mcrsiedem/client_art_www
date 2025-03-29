@@ -37,6 +37,7 @@ import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "ut
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import PaperStage from "components/PaperStage/PaperStage";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
+import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
 
 function ModalInsert({
   openModalInsert,
@@ -237,6 +238,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
                 handleChangeCardFragmentyOprawaId
               }
             />
+            <HistoriaZamowienia/>
 
                 {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
 

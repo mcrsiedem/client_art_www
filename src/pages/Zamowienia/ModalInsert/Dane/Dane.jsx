@@ -280,13 +280,21 @@ const [add] = useHistoria()
         className={selectColor(daneZamowienia.status)}
         value={daneZamowienia.status}
         onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+
+          if(event.target.value != 2){
+                      setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
           add(   {
             kategoria: "Status zamówienia",
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
           })
            
+          }
+
+
+
+
+
         }}
       >
         {_status_dokumentu.map((option) => (
@@ -392,11 +400,7 @@ const selectColor = (stan) =>{
                       event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa}
                   );
 
-
           }
-
-  
-           
         }}
       >
         {_stan_dokumentu.map((option) => (

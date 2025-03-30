@@ -140,7 +140,7 @@ const PotwierdzKorekteZamowieniaBTN = () => {
       className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
       onClick={() => {
         // daneTech.korekta_zamowienia_alert= null
-        setDaneTech({...daneTech, korekta_zamowienia_alert: null})
+        setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
       
       }}
     >

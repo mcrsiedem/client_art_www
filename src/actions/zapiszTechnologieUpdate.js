@@ -57,7 +57,8 @@ const saveDane = ({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,l
     status: daneTech.status,
     etap: daneTech.etap,
       user: DecodeToken(sessionStorage.getItem("token")).id,
-      update: daneTech.update
+      update: daneTech.update,
+      alert: daneTech.alert || false
 
 
 

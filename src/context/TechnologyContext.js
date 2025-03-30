@@ -467,14 +467,34 @@ if(elementyTech.length>1){
     //  setDaneTech(res.data[0][0].map(x=> {return {...x, id:1}}))
     // console.log("dane",res.data[0][0]?.id)
     // console.log("id:   ",res.data[2])
+    setDaneTech([]) 
+    setProduktyTech([])
+    setElementyTech([])
+    setFragmentyTech([])
+    setOprawaTech([])
+    setProcesyElementowTech([])
+    setLegi([])
+     setLegiFragmenty([])
+     setArkusze([])
+     setGrupaWykonan([])
+     setWykonania([])
      setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia,stan:res.data[0][0].etap}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
      setProduktyTech(res.data[1])
      setElementyTech(res.data[2].map(element => { return {...element, arkusz_szerokosc: "", arkusz_wysokosc: ""}}))
      setFragmentyTech(res.data[3])
      setOprawaTech(res.data[4])
      setProcesyElementowTech(res.data[5])
+
     //  setShowTechnologyStage(true)
 }
+
+
+
+
+
+
+
+
 
 async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   console.log("fechparametryTechnologii  -  pobieranie technologii")

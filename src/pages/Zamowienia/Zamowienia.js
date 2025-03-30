@@ -372,7 +372,7 @@ const IconLockTable = ({row}) =>{
 
    const fechparametryTechnologii = techContext.fechparametryTechnologii;
    if (row.technologia_id == null) {
-     if (row.stan == 2) {
+    
        return (
          <td className={style.td_karta}>
            <div>
@@ -389,9 +389,7 @@ const IconLockTable = ({row}) =>{
            </div>
          </td>
        );
-     } else {
-       return <td></td>;
-     }
+
    } else {
      return (
        <td className={style.td_karta}>

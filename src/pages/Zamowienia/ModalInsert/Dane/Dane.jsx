@@ -281,7 +281,7 @@ const [add] = useHistoria()
         value={daneZamowienia.status}
         onChange={(event) => {
 
-          if(event.target.value != 2){
+     
                       setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
           add(   {
@@ -289,7 +289,7 @@ const [add] = useHistoria()
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
           })
            
-          }
+        
 
 
 

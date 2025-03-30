@@ -3,38 +3,32 @@
   align-items: start;
   justify-content: center;
   margin-bottom: 15px;
+
+
+
+}
+
+.header_title{
+  color: rgb(157, 157, 157);
+  padding-left: 5px;
 }
 
 
-.oprawa {
+.historia {
   border-radius: 10px;
   width: calc(100vw - 40px);
-  height: calc(100% - 20px);
-  /* background-color: rgb(253, 227, 188); */
-  background-color: transparent;
-  /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
-  /* background-color: rgb(178, 196, 214); */
-  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
-}
+  /* height: calc(100% - 20px);
+   */
 
-.header{
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 176, 85) 50%,rgb(240, 151, 50) 100%);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-
-  gap:20px;
-  height: 1.6rem;
-  color: #fff;
-  font-size: 0.9rem;
-  padding-left: 20px;
-
+   background-color: transparent;
+  
 
 }
+
+
 
 .main {
+  height: 150px;
   overflow: auto;
 }
 
@@ -51,7 +45,8 @@
 }
 
 .main::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%);
+    /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%); */
+    background-color: rgb(180, 179, 179);
     border-radius: 20px;
   /* outline: 1px solid slategrey; */
 }
@@ -62,91 +57,15 @@
 
 
 
-.oprawy{
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  width: 100vw;
-  }
-  
-  
-  .oprawaTable{
-    background-color: rgb(252, 244, 234);
-    border-radius: 10px;  
-    width: calc(100vw - 40px);
-    height: 10rem;
-    box-shadow: 8px 8px 8px rgb(159, 159, 159);
-  
-  
-  }
-  
   
 
-  
-  .row1{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 10px;
-    gap:10px
-  }
-  
-  .oprawaCard input{
-    
-    height: 1.8rem;
-    /* padding: 5px; */
-    /* font-size: 1rem; */
-    background-color: rgb(253, 237, 213);
-  }
-  
-  .oprawaCard select{
-  
-    height: 1.8rem;
-   
-    font-size: 1rem;
-    /* font-weight: bold; */
-    background-color: rgb(253, 237, 213);
-    /* background-color: transparent; */
-    /* box-shadow: none; */
-    color: gray;
-  
-  }
-  
-  .oprawaCard option{
-  
-    height: 1.8rem;
-   
-    font-size: 1rem;
-    /* font-weight: bold; */
-    background-color: rgb(240, 151, 50);
-    /* background-color: transparent; */
-    /* box-shadow: none;
-    color: white; */
-  
-  }
-  
+  .table_historia_body{
 
-  /* table input{
-    background-color: transparent;
-    box-shadow: none;
-    height: 20px;
-    outline: none;
-  } */
 
-  .col1, .col2, .col5{
-    width: 50px;
-  }
-
-  .col3{
-    width: 100px;
   }
 
 
-
-
-  .table th, .table tr:nth-child(even){
+  .table_historia th, .table tr:nth-child(even){
  /* background-image: linear-gradient(180deg,rgb(209, 221, 233) 20%, rgb(171, 183, 196) 100%); */
  /* background-color: rgb(253, 227, 188); */
    color: rgb(109, 109, 109);
@@ -154,53 +73,13 @@
    outline-style: none;
  
    }
-   .table th{
+   .table_historia th{
     background-color: rgb(231, 231, 231);
    }
-   .table tr:nth-child(odd){
+   .table_historia tr:nth-child(odd){
      /* background-color: rgb(255, 238, 214); */
      outline-style: none;
    }
  
 
-   .table select {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-  .icon {
-    height: 70%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  
-  }
-  .expand {
-    height: 60%;
-    margin-left: 10px;
-  }
-
-  .pokaz_elementy_oprawy {
-    height: 20px;
-
-  }
-
-  .icon:hover{
-  border-top:  rgb(159, 159, 159) dashed 1px; 
-    /* outline:  rgb(159, 159, 159) solid 1px; */
-  }
-  
-
-  .select,
-  .input {
-    background-color: transparent;
-    height: 2rem;
-    border-radius: 5px;
-    border-color: transparent;
-    /* outline: 1px solid rgb(185, 185, 185); */
-    padding-left: 10px;
-    
-  }
-
-  .glowka{background-image: red;
-  }
+   

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
+import { getMaxID } from "actions/getMaxID";
 
 export function useHistoria(row){
 const modalcontext = useContext(ModalInsertContext);
@@ -9,7 +10,7 @@ const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
 
 function add(row) {
 const   new_historia = historiaZamowienia?.slice() || [];
-        new_historia.push({...row, zamowienie_id:modalcontext.selectedZamowienie.id, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
+        new_historia.push({...row, id:getMaxID(historiaZamowienia),zamowienie_id:modalcontext.selectedZamowienie.id, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
         setHistoriaZamowienia(new_historia)
 }
   return [add];

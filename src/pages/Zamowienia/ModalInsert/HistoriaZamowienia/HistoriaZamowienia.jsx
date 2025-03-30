@@ -34,7 +34,7 @@ export default function HistoriaZamowienia() {
 
 const HISTORIA_HEADER = () => {
   return(
-    <p>Historia</p>
+    <p title={" Historia zmian"} className={style.header_title}>Historia zmian</p>
   )
 }
 function HISTORIA_TABLE() {
@@ -43,29 +43,30 @@ function HISTORIA_TABLE() {
 
   return (
     <div className={style.main}>
-      <table className={style.table}>
+      <table className={style.table_historia}>
         <thead className={style.glowka}>
           <tr>
             <th className={style.col4}>Data</th>
-            <th className={style.col4}>Użytkownik</th>
             <th className={style.col4}>Kategoria</th>
             <th className={style.col4}>Zdarzenie</th>
+            <th className={style.col4}>Użytkownik</th>
           </tr>
         </thead>
-        <tbody>
-          {historiaZamowienia
+        <tbody className={style.table_historia_body}>
+          {historiaZamowienia.sort((a, b) => b.id - a.id)
           //  .filter((x) => x.delete != true)
           .map((row) => {
             return (
               <>
                 <tr
                   key={row.id}
+                  
                 >
      
                   <td>{row.data}</td>
-                  <td>{row.user}</td>
                   <td>{row.kategoria}</td>
                   <td>{row.event}</td>
+                  <td>{row.user}</td>
 
                 </tr>
               </>

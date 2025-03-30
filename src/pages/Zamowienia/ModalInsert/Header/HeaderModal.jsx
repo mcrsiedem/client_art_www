@@ -353,7 +353,8 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
   const contextModalInsert = useContext(ModalInsertContext);
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-
+  const contextApp = useContext(AppContext);
+  const setZamowienia = contextApp.setZamowienia
   return (
 
 
@@ -368,6 +369,7 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
         const res = await axios.put(IP + "setOrderClosed", {
           id: row.id,
         });
+        refreshZamowienia(setZamowienia)
       }
       contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)

@@ -6,12 +6,13 @@ import style from "./MenuZamowienia.module.css";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { odblokujZamowienie } from "actions/odblokujZamowienie";
+import { refreshZamowienia } from "actions/refreshZamowienia";
 export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
 
   const appContext = useContext(AppContext)
-  const zamowienia = appContext.zamowienia;
   const setZamowienia = appContext.setZamowienia;
+  const zamowienia = appContext.zamowienia;
 
   if (showMenu) {
     return (
@@ -35,7 +36,8 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
 
 <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
-        odblokujZamowienie(rowsToDelete, setShowMenu)
+        odblokujZamowienie(rowsToDelete, setShowMenu,refreshZamowienia,setZamowienia,zamowienia)
+        
  
           }}>Odblokuj zamówienie</button>
 

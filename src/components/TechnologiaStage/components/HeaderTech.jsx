@@ -8,6 +8,7 @@ import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import DecodeToken from "pages/Login/DecodeToken";
 import iconError from "assets/error.svg";
+import { refreshZamowienia } from "actions/refreshZamowienia";
 
 
 export default function Header({}) {
@@ -288,7 +289,7 @@ const AlertLega = () => {
 
 const IconNavigate = ({ className, logo, navi }) => {
   const techContext = useContext(TechnologyContext);
-
+  const appContext = useContext(AppContext)
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
 
   const fechGrupyAndWykonaniaForProcesor =
@@ -304,6 +305,7 @@ const IconNavigate = ({ className, logo, navi }) => {
         techContext.setRowZamowienia(null);
         techContext.setRowTechnologia(null);
         fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+        refreshZamowienia(appContext.setZamowienia)
         // techContext.setOpenTechnologia(false)
       }}
       alt="Logo"

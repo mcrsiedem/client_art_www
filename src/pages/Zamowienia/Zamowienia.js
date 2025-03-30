@@ -418,6 +418,7 @@ function SelectBox({row}) {
     <td className={style.td_checkbox}>
       <div >
       <input type="checkbox"
+      checked={row.select}
       onChange={(event)=>{
 
         console.log(" select"+ row.id +" "+event.target.checked)

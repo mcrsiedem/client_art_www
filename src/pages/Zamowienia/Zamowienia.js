@@ -23,7 +23,7 @@ import iconAdd from "assets/add2.svg";
 
 
 import { useApiPapier } from "hooks/useApiPapier";
-import { _etapy_produkcji, _stan_dokumentu } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -181,6 +181,7 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_klient}>Oprawa</th>
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_firma}>Stan</th>
+      <th className={style.col_firma}>Status</th>
       <th className={style.col_firma}>Etap</th>
       <th className={style.col_utworzono}>Utworzono</th>
       <th style={{textAlign: "center"}}></th>
@@ -267,6 +268,7 @@ function TABLE_TR({ row, open2, setRow }) {
         <td>{row.oprawa_nazwa}</td>
         <td>{row.firma}</td>
         <StanZamowieniaTable  row={row}/>
+        <StatusZamowieniaTable  row={row}/>
         <EtapZamowieniaTable  row={row}/>
 
         <td>{row.utworzono}</td>
@@ -308,6 +310,14 @@ const StanZamowieniaTable = ({row}) =>{
   const daneTech = techContext.daneTech;
     // return(  <td>{row.stan}</td>
       return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_stan_dokumentu.filter(s=>s.id == row.stan).map(x=> ( x.nazwa))}</td>
+  )
+}
+const StatusZamowieniaTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+    // return(  <td>{row.stan}</td>
+      // return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
+      return(  <td >{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
   )
 }
 
@@ -353,66 +363,52 @@ const IconLockTable = ({row}) =>{
   }return <td></td>
 }
 
- function ShowTechnmologiaBtn({ row,showKartaTechnologiczna,setShowKartaTechnologiczna }) {
-    const techContext = useContext(TechnologyContext);
-  
-  const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  if(row.technologia_id == null){
-      if(row.stan ==2){
-              return (
-    <td className={style.td_karta}>
-      <div >
-                      <img
-         className={style.iconSettings}
-          src={iconAdd}
-          onClick={() => { 
-            
-            
-            techContext.setShowTechnologyStage(true)
-            techContext.setRowZamowienia(row)
-            techContext.fechparametry(row?.id)
-       }
-          
-          
-          }
-          alt="Procesy"
-        />
-      </div>
+ function ShowTechnmologiaBtn({
+   row,
+   showKartaTechnologiczna,
+   setShowKartaTechnologiczna,
+ }) {
+   const techContext = useContext(TechnologyContext);
 
-    </td>
-  );
-      }else{ return <td></td>}
-
-
-
-  }else{
-
-    return (
-      <td className={style.td_karta}>
-        <div >
-                        <img
-           className={style.iconSettings}
-            src={iconSettings}
-            onClick={() => {
-
-              fechparametryTechnologii(row.id,row.technologia_id)
-
-              //  setShowKartaTechnologiczna(!showKartaTechnologiczna)
-
-
-
-              }}
-            alt="Procesy"
-          />
-        </div>
-  
-      </td>
-    );
-
-    
-  }
-
-}
+   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+   if (row.technologia_id == null) {
+     if (row.stan == 2) {
+       return (
+         <td className={style.td_karta}>
+           <div>
+             <img
+               className={style.iconSettings}
+               src={iconAdd}
+               onClick={() => {
+                 techContext.setShowTechnologyStage(true);
+                 techContext.setRowZamowienia(row);
+                 techContext.fechparametry(row?.id);
+               }}
+               alt="Procesy"
+             />
+           </div>
+         </td>
+       );
+     } else {
+       return <td></td>;
+     }
+   } else {
+     return (
+       <td className={style.td_karta}>
+         <div>
+           <img
+             className={style.iconSettings}
+             src={iconSettings}
+             onClick={() => {
+               fechparametryTechnologii(row.id, row.technologia_id);
+             }}
+             alt="Procesy"
+           />
+         </div>
+       </td>
+     );
+   }
+ }
 
 function SelectBox({row}) {
 

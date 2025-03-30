@@ -393,7 +393,7 @@ const selectColor = (stan) =>{
         className={selectColor(daneZamowienia.stan) }
         value={daneZamowienia.stan}
         onChange={(event) => {
-          if(daneZamowienia.stan != 3 && event.target.value !=3){
+          if(daneZamowienia.stan != 3){
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true, status:  event.target.value>2 ? 2: 1 });
                   add(                    {
                       kategoria: "Stan zamówienia",

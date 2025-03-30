@@ -16,6 +16,9 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import iconError from "assets/error.svg";
 import iconLockRed2 from 'assets/iconLockRed.svg'
 import iconLockRed from "assets/lock2.svg";
+import iconAdd from "assets/add2.svg";
+
+
 
 
 
@@ -350,20 +353,65 @@ const IconLockTable = ({row}) =>{
   }return <td></td>
 }
 
- function ShowTechnmologiaBtn({ showKartaTechnologiczna,setShowKartaTechnologiczna }) {
-  return (
+ function ShowTechnmologiaBtn({ row,showKartaTechnologiczna,setShowKartaTechnologiczna }) {
+    const techContext = useContext(TechnologyContext);
+  
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  if(row.technologia_id == null){
+      if(row.stan ==2){
+              return (
     <td className={style.td_karta}>
       <div >
                       <img
          className={style.iconSettings}
-          src={iconSettings}
-          onClick={() => { setShowKartaTechnologiczna(!showKartaTechnologiczna)}}
+          src={iconAdd}
+          onClick={() => { 
+            
+            
+            techContext.setShowTechnologyStage(true)
+            techContext.setRowZamowienia(row)
+            techContext.fechparametry(row?.id)
+       }
+          
+          
+          }
           alt="Procesy"
         />
       </div>
 
     </td>
   );
+      }else{ return <td></td>}
+
+
+
+  }else{
+
+    return (
+      <td className={style.td_karta}>
+        <div >
+                        <img
+           className={style.iconSettings}
+            src={iconSettings}
+            onClick={() => {
+
+              fechparametryTechnologii(row.id,row.technologia_id)
+
+              //  setShowKartaTechnologiczna(!showKartaTechnologiczna)
+
+
+
+              }}
+            alt="Procesy"
+          />
+        </div>
+  
+      </td>
+    );
+
+    
+  }
+
 }
 
 function SelectBox({row}) {

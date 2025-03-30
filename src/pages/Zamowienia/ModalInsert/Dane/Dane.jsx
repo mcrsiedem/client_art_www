@@ -281,13 +281,22 @@ const [add] = useHistoria()
         value={daneZamowienia.status}
         onChange={(event) => {
 
-     
-                      setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+            if(event.target.value ==2  & daneZamowienia.technologia_id !=null){
+
+            }
+            else{
+
+
+                                    setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
           add(   {
             kategoria: "Status zamówienia",
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
           })
+
+
+            }
+
            
         
 

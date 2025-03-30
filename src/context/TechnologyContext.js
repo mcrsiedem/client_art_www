@@ -2,6 +2,7 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { getTechnology } from "actions/getTechnolgy";
 import { useEffect,createContext,useState, useCallback } from "react";import { initialProcesy } from "utils/initialvalue";
+import DecodeToken from "pages/Login/DecodeToken";
 ;
 
 
@@ -455,6 +456,24 @@ if(elementyTech.length>1){
     
   async function fechparametry(idZamowienia) {
 
+    await axios
+    .put(IP + "setOrderOpen", {
+      id: idZamowienia,
+      // zestaw_id: idZestawu,
+      token: sessionStorage.getItem("token"),
+      user: DecodeToken(sessionStorage.getItem("token")).id,
+    })
+    .then(async(res) => {
+        if(res.data.stan == "error"){
+          setShowTechnologyStage(false);
+          // alert("W trakcie edycji....")
+        // setSaveButtonDisabled(true)
+        //  setReadOnly(true)   // zmien parametr
+        //  setReadAlert(true) //pokaż okno alert read only
+        }else{
+
+
+
      const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
 
      setDane(res.data[0][0])
@@ -484,6 +503,22 @@ if(elementyTech.length>1){
      setFragmentyTech(res.data[3])
      setOprawaTech(res.data[4])
      setProcesyElementowTech(res.data[5])
+
+
+
+        }
+        // setStanOtwarciaZamowienia({
+        //   stan: res.data.stan,
+        //   user: res.data.user,
+        //   data: res.data.data
+        // 
+        
+    });
+
+
+
+
+
 
     //  setShowTechnologyStage(true)
 }

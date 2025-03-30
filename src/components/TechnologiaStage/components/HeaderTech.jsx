@@ -44,7 +44,7 @@ export default function Header({}) {
 
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
         {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
-        <p className={style.title}>Karta technologiczna </p>
+        <p className={style.title}>Technologia </p>
         {/* <IconError/> */}
       </LeftPane>
       <CenterPane>

@@ -239,7 +239,7 @@ function Naklad({ row }) {
     <div className={style.col_dane}>
       <label className={style.label}> Nakład </label>
       <input
-        className={produkty[0].naklad == row.naklad ?style.input :style.inputError} title={"W zamówienie: "+produkty[0].naklad } type="text"
+        className={produkty[0]?.naklad == row?.naklad ? style.input :style.inputError} title={"W zamówienie: "+produkty[0]?.naklad } type="text"
         value={row?.naklad}
         onChange={(e) => {
           // const re = /^[0-9]+$/;
@@ -330,7 +330,7 @@ function Strony({ row }) {
       <label className={style.label}> Strony </label>
       <input
       // disabled
-                className={produkty[0].ilosc_stron == row.ilosc_stron ?style.input :style.inputError} title={"W zamówienie: "+produkty[0].ilosc_stron } type="text"
+                className={produkty[0]?.ilosc_stron == row?.ilosc_stron ?style.input :style.inputError} title={"W zamówienie: "+produkty[0]?.ilosc_stron } type="text"
         value={row?.ilosc_stron}
         onChange={(e) => {
           // const re = /^[0-9]+$/;

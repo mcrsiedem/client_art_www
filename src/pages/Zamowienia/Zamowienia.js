@@ -416,7 +416,7 @@ function CreateTechnmologiaBtn({ row }) {
     <div style={{width:"100%",textAlign:"center"}}>
       <button className={style.btn_dodaj_karte} 
       onClick={()=> {
-         techContext.setShowTechnologyStage(true)
+        techContext.setShowTechnologyStage(true)
         techContext.setRowZamowienia(row)
         techContext.fechparametry(row?.id)
         

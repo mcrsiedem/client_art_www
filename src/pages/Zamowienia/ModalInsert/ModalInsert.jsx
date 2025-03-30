@@ -120,6 +120,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       setKosztyDodatkowe([])
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
+      setHistoriaZamowienia([])
     }
 
 

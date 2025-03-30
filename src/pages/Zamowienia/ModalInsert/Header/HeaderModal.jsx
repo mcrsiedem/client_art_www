@@ -101,7 +101,7 @@ export default function Header({
               ) :
               (
                 <>
-                             <HISTORIA_ZAMOWIENIA_BTN  />
+                             {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
                              <Sprawdz  />
                   <ZapiszJako
                     setShowSaveAs={setShowSaveAs}

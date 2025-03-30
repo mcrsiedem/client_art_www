@@ -184,6 +184,7 @@ const initialOprawa = [
   },
 ];
 
+
 const initalPakowanie = [
   {
     id: 1,

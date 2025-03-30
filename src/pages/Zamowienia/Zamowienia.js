@@ -20,6 +20,7 @@ import iconLockRed from "assets/lock2.svg";
 
 
 import { useApiPapier } from "hooks/useApiPapier";
+import { _etapy_produkcji, _stan_dokumentu } from "utils/initialvalue";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -176,6 +177,8 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_klient}>Wysokość</th>
       <th className={style.col_klient}>Oprawa</th>
       <th className={style.col_firma}>Firma</th>
+      <th className={style.col_firma}>Stan</th>
+      <th className={style.col_firma}>Etap</th>
       <th className={style.col_utworzono}>Utworzono</th>
       <th style={{textAlign: "center"}}></th>
       {/* <IconLockTable row={{open_stan:2}}/> */}
@@ -260,6 +263,9 @@ function TABLE_TR({ row, open2, setRow }) {
         <td>{row.format_y}</td>
         <td>{row.oprawa_nazwa}</td>
         <td>{row.firma}</td>
+        <StanZamowieniaTable  row={row}/>
+        <EtapZamowieniaTable  row={row}/>
+
         <td>{row.utworzono}</td>
         <IconLockTable  row={row}/>
       </tr>
@@ -285,7 +291,6 @@ function TABLE_TR({ row, open2, setRow }) {
             <td></td>
             <td></td>
             <td>
-              {" "}
               <CreateTechnmologiaBtn row={row} />
             </td>
           </tr>
@@ -295,6 +300,21 @@ function TABLE_TR({ row, open2, setRow }) {
   );
 }
 
+const StanZamowieniaTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+    // return(  <td>{row.stan}</td>
+      return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_stan_dokumentu.filter(s=>s.id == row.stan).map(x=> ( x.nazwa))}</td>
+  )
+}
+
+const EtapZamowieniaTable = ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+    // return(  <td>{row.stan}</td>
+      return(  <td >{_etapy_produkcji.filter(s=>s.id == row.etap).map(x=> ( x.nazwa))}</td>
+  )
+}
 const IconErrorTable = ({row}) =>{
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
@@ -393,7 +413,7 @@ function CreateTechnmologiaBtn({ row }) {
   const techContext = useContext(TechnologyContext)
   const updateDane = techContext.updateDane;
   return (
-    <td >
+    <div style={{width:"100%",textAlign:"center"}}>
       <button className={style.btn_dodaj_karte} 
       onClick={()=> {
          techContext.setShowTechnologyStage(true)
@@ -405,7 +425,7 @@ function CreateTechnmologiaBtn({ row }) {
       }}
       >Dodaj kartę </button>
 
-    </td>
+    </div>
   );
 }
 

@@ -7,12 +7,17 @@ export function useHistoria(row){
 const modalcontext = useContext(ModalInsertContext);
 const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
+const daneZamowienia = modalcontext.daneZamowienia;
 
 function add(row) {
-const   new_historia = historiaZamowienia?.slice() || [];
+  if(daneZamowienia.id !=1){
+
+    const   new_historia = historiaZamowienia?.slice() || [];
         new_historia.push({...row, id:getMaxID(historiaZamowienia),zamowienie_id:modalcontext.selectedZamowienie.id, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
         setHistoriaZamowienia(new_historia)
 }
+  }
+
   return [add];
 }
 

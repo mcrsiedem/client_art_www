@@ -421,6 +421,7 @@ const [setStatus] = useStatus()
     const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
     const historiaZamowienia = modalcontext.historiaZamowienia;
     const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
+    const daneZamowienia = modalcontext.daneZamowienia;
     const elementy = modalcontext.elementy;
     const [add] = useHistoria()
     const [setStatus] = useStatus()
@@ -440,6 +441,7 @@ const [setStatus] = useStatus()
             add(         {
               kategoria: "Papier",
               event: getNameOfElement(row.typ,elementy,_typ_elementu)+" : zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+              zamowienie_id: daneZamowienia.id
             })
 
 

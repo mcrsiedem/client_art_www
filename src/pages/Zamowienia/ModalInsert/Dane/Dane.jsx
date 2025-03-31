@@ -292,6 +292,7 @@ const [add] = useHistoria()
           add(   {
             kategoria: "Status zamówienia",
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+            zamowienie_id: daneZamowienia.id
           })
 
 
@@ -337,7 +338,8 @@ const [add] = useHistoria()
             setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , stan:2, update: true});
 
             add({kategoria: "Etap zamówienia",
-                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa}
+                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
+                zamowienie_id: daneZamowienia.id}
             );
           }
           

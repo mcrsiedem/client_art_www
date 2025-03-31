@@ -6,6 +6,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { goInputValidation } from "actions/goInputValidation";
 import { useHistoria } from "hooks/useHistoria";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export default function Dane({
@@ -334,14 +335,49 @@ const [add] = useHistoria()
         className={style.select}
         value={daneZamowienia.etap}
         onChange={(event) => {
+          //------------------------------------------
+          // etap można zmieniać ponieżej plików
           if(daneZamowienia.etap < 3 && event.target.value <3 ){
-            setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , stan:2, update: true});
 
-            add({kategoria: "Etap zamówienia",
+            //jeśli stan poniżej przyjęte, zmiana etapu nie zmienia stanu
+            if(daneZamowienia.stan < 3){
+                setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value), update: true});
+                add({kategoria: "Etap zamówienia",
+                    event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
+                    zamowienie_id: daneZamowienia.id}
+                );
+
+            }
+            // jeśli etap zamówienia wraca na harmonogram stan się nie zmienia
+            if(event.target.value ==1){
+              setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value), update: true});
+              add({kategoria: "Etap zamówienia",
+                  event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
+                  zamowienie_id: daneZamowienia.id}
+              );
+            }
+          
+
+            // jeśli etap zamówienia było przyjęte i zmienia się z harmonogramu na nowe zamówienie, stan zmienia się na do przyjęcia
+            if(event.target.value ==2 && daneZamowienia.stan > 2){
+              setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , stan:2, update: true});
+               add({kategoria: "Etap zamówienia",
                 event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
                 zamowienie_id: daneZamowienia.id}
             );
+              
+            }
+   
+
+
+
+
+
+
+
+
           }
+          //------------------------------------------
           
            
         }}
@@ -387,6 +423,8 @@ function Stan( ) {
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+
+const zamowienie_odrzuc = true;
 const [add] = useHistoria()
 const selectColor = (stan) =>{
   if (stan==1) return style.select_stan_1
@@ -414,6 +452,19 @@ const selectColor = (stan) =>{
                   );
 
           }
+            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+
+              setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
+              add(                    {
+                  kategoria: "Stan zamówienia",
+                  event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                  zamowienie_id: daneZamowienia.id
+              }
+              );
+
+            }
+
+
         }}
       >
         {_stan_dokumentu.map((option) => (

@@ -12,6 +12,7 @@ import AddClient from "./components/AddClient";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { getClients } from "actions/getClients";
 import { AppContext } from "context/AppContext";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function ClientStage({parent}) {
 
@@ -72,7 +73,11 @@ function Dodaj({ setShowAddClientPane }) {
       className={style.dodaj_klienta}
       src={addIcon2}
       onClick={() => {
-        setShowAddClientPane(true);
+        if(DecodeToken(sessionStorage.getItem("token")).klienci_zapis==1){
+          setShowAddClientPane(true);
+        }
+
+        
 
       }}
       alt="Procesy"

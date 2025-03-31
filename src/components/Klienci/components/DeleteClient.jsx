@@ -4,12 +4,15 @@ import { deleteClient } from "../actions/deleteClient";
 
 import iconX from "../../../assets/x.svg";
 import { AppContext } from "context/AppContext";
+import DecodeToken from "pages/Login/DecodeToken";
 export default function DeleteClient({
   setShowDeleteClientPane,
   getClients,
   rowID,
 
 }) {
+
+  
   return (
     <div className={style.grayScaleBackground}>
     <div className={style.window}>
@@ -36,12 +39,14 @@ function Usun({ rowID,setShowDeleteClientPane}) {
   const contextApp = useContext(AppContext);
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
-  return (
+
+      return (
     <button
       className={style.btn_delete}
       onClick={() => {
-       
-        deleteClient(rowID, setClients,setClientsWyszukiwarka ,setShowDeleteClientPane)
+      deleteClient(rowID, setClients,setClientsWyszukiwarka ,setShowDeleteClientPane)
+  
+        
         
         
       }}
@@ -49,6 +54,9 @@ function Usun({ rowID,setShowDeleteClientPane}) {
       Skasuj
     </button>
   );
+  
+ 
+
 }
 
 

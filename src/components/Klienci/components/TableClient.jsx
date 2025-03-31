@@ -6,7 +6,7 @@ import iconDelete from "../../../assets/trash2.svg";
 import iconEdit from "../../../assets/settings.svg";
 import ChangeClient from "./ChangeClient";
 import { AppContext } from "context/AppContext";
-
+import DecodeToken from "pages/Login/DecodeToken";
 export default function Table({
 
   daneZamowienia,
@@ -23,6 +23,14 @@ export default function Table({
     const setClients = contextApp.setClients;
     const clientsWyszukiwarka = contextApp.clientsWyszukiwarka;
 
+const sprawdzDostep = (c) => {
+  if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy==1){
+    return true
+  }else{
+   return c.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id
+  }
+
+}
   return (
     <div className={style.main}>
       <table className={style.table2}>
@@ -39,12 +47,24 @@ export default function Table({
           </tr>
         </thead>
         <tbody className={style.center}>
-          {clientsWyszukiwarka.map((row, index) => {
+          {clientsWyszukiwarka
+          .filter(c=>sprawdzDostep(c))
+          .map((row, index) => {
             return (
               <tr
                 key={row.id}
                 onDoubleClick={
-                  () => openEdit(row, rowID, setShowEdit)
+
+                  
+                  () =>{
+
+                    if(DecodeToken(sessionStorage.getItem("token")).klienci_zapis==1)
+                      {
+
+                        openEdit(row, rowID, setShowEdit)
+                      }
+
+                  } 
                   // ()=>chooseClient(daneZamowienia,setDaneZamowienia,row.id)
                 }
               >
@@ -125,6 +145,7 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
 
   const even = (element) => element?.klient_id == row.id;
 
+  if(DecodeToken(sessionStorage.getItem("token")).klienci_usun==1){
 
   return (
     <td>
@@ -151,6 +172,7 @@ function DeleteIcon({ row, rowID, setShowDeleteClientPane, daneZamowienia }) {
       />
     </td>
   );
+}
 }
 
 function UseIcon({ parent,row, rowID,setDaneZamowienia, daneZamowienia,setShowChange }) {

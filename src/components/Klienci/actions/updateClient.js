@@ -10,7 +10,7 @@ export   const updateClient = async (daneKlienta,setClients,setClientsWyszukiwar
         firma: daneKlienta.firma,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
-        nIP: daneKlienta.nIP,
+        nip: daneKlienta.nip,
         opiekun_id: daneKlienta.opiekun_id,
       })
       .then((res) => {

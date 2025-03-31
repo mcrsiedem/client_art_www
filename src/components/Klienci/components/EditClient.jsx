@@ -15,7 +15,7 @@ export default function EditClient({
     firma: rowID.current.firma,
     adres: rowID.current.adres,
     kod: rowID.current.kod,
-    nIP: rowID.current.nIP,
+    nip: rowID.current.nip,
     opiekun_id: rowID.current.opiekun_id,
     utworzyl_user_id: rowID.current.utworzyl_user_id,
   
@@ -46,7 +46,7 @@ export default function EditClient({
 //     firma: daneKlienta.firma,
 //     adres: daneKlienta.adres,
 //     kod: daneKlienta.kod,
-//     nIP: daneKlienta.nIP,
+//     nip: daneKlienta.nip,
 //     opiekun_id: daneKlienta.opiekun_id,
 //     utworzyl_user_id: daneKlienta.opiekun_id,
 
@@ -150,7 +150,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
   function NIP({ daneKlienta, setDaneKlienta }) {
     const context = useContext(AppContext);
     return (
-      <div className={style.labelinput_nIP}>
+      <div className={style.labelinput_nip}>
 
         <div className={style.labelinput}>
                         <label className={style.label}> Kod </label>
@@ -174,11 +174,11 @@ function Adres({ daneKlienta, setDaneKlienta }) {
             <input
             className={style.firma}
             type="text"
-            value={daneKlienta.nIP}
+            value={daneKlienta.nip}
             onChange={(event) => {
                 const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ-]+$/;
                 if (event.target.value === "" || re.test(event.target.value)) {
-                setDaneKlienta({ ...daneKlienta, nIP: event.target.value });
+                setDaneKlienta({ ...daneKlienta, nip: event.target.value });
                 }
             }}
             >

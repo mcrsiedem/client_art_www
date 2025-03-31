@@ -17,7 +17,7 @@ export default function AddClientPane({
     firma: "",
     adres: "",
     kod: "",
-    nIP: "",
+    nip: "",
     opiekun_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
     utworzyl_user_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
   
@@ -134,7 +134,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
   function NIP({ daneKlienta, setDaneKlienta }) {
     const context = useContext(AppContext);
     return (
-      <div className={style.labelinput_nIP}>
+      <div className={style.labelinput_nip}>
 
         <div className={style.labelinput}>
                         <label className={style.label}> Kod </label>
@@ -158,11 +158,11 @@ function Adres({ daneKlienta, setDaneKlienta }) {
             <input
             className={style.firma}
             type="text"
-            value={daneKlienta.nIP}
+            value={daneKlienta.nip}
             onChange={(event) => {
                 const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ-]+$/;
                 if (event.target.value === "" || re.test(event.target.value)) {
-                setDaneKlienta({ ...daneKlienta, nIP: event.target.value });
+                setDaneKlienta({ ...daneKlienta, nip: event.target.value });
                 }
             }}
             >

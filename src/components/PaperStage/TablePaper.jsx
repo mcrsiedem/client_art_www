@@ -117,7 +117,7 @@ const openEdit = (row, rowID, setShowEdit) => {
     firma: row.firma,
     adres: row.adres,
     kod: row.kod,
-    nIP: row.nIP,
+    nip: row.nip,
     opiekun_id: row.opiekun_id,
     utworzyl_user_id: row.utworzyl_user_id,
   };

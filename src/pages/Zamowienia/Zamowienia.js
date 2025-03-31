@@ -159,23 +159,15 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
     <tr >
       <th style={{textAlign: "center"}}>!</th>
       <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
-
-      
-      
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
       <th className={style.th_karta}>Technologia</th>
-  
-
       <th className={style.col_klient}>Klient</th>
       <th className={style.col_klient} >Praca</th>
       <th className={style.col_klient} >Uwagi</th>
-      
       <th className={style.col_klient} >Nakład</th>
       <th className={style.col_klient}>Strony</th>
-
       <th className={style.col_klient}>Spedycja</th>
-      {/* <th className={style.col_klient}>Final</th> */}
       <th className={style.col_klient}>Szerokość</th>
       <th className={style.col_klient}>Wysokość</th>
       <th className={style.col_klient}>Oprawa</th>
@@ -185,7 +177,6 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
       <th className={style.col_firma}>Etap</th>
       <th className={style.col_utworzono}>Utworzono</th>
       <th style={{textAlign: "center"}}></th>
-      {/* <IconLockTable row={{open_stan:2}}/> */}
 
     </tr>
   </thead>

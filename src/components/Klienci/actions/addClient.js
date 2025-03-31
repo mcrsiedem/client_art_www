@@ -8,7 +8,7 @@ export const  addClient  = async (daneKlienta,setClients,setClientsWyszukiwarka,
         firma: daneKlienta.firma,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
-        nIP: daneKlienta.nIP,
+        nip: daneKlienta.nip,
         opiekun_id: daneKlienta.opiekun_id,
         utworzyl_user_id: daneKlienta.utworzyl_user_id,
     

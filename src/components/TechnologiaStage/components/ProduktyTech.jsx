@@ -379,13 +379,16 @@ function FormatX({ row }) {
   const contextApp = useContext(AppContext);
   const contextTech = useContext(TechnologyContext);  
   const updateRowProduktyTech = contextTech.updateRowProduktyTech;
+  const produkty = contextTech.produkty
 
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Szer. </label>
       <input
       // disabled
-        className={style.input}
+    
+        className={produkty[0]?.format_x == row?.format_x ?style.input :style.inputError} title={"W zamówienie: "+produkty[0]?.format_x } type="text"
+        
         value={row?.format_x}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -406,13 +409,15 @@ function FormatY({ row }) {
   const contextApp = useContext(AppContext);
   const contextTech = useContext(TechnologyContext);  
   const updateRowProduktyTech = contextTech.updateRowProduktyTech;
+  const produkty = contextTech.produkty
 
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Wys. </label>
       <input
       // disabled
-        className={style.input}
+      className={produkty[0]?.format_y == row?.format_y ?style.input :style.inputError} title={"W zamówienie: "+produkty[0]?.format_y } type="text"
+
         value={row?.format_y}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -433,19 +438,24 @@ function FormatY({ row }) {
 function RodzajOprawy({ row, handleChangeCardOprawa }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
+  const contextTech = useContext(TechnologyContext);  
+
+  const produkty = contextTech.produkty
 
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Oprawa </label>
       <select
         disabled
-        className={style.select_oprawa}
+        // className={style.select_oprawa}
+      className={produkty[0]?.oprawa == row?.oprawa ?style.input :style.inputError} title={"W zamówienie: "+produkty[0]?.oprawa } type="text"
+
         value={row?.oprawa}
 
       >
-        {contextApp.procesList?.map((option) => (
+         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa} {option.rodzaj} 
+            {option.typ} {option.rodzaj} 
           </option>
         ))}
       </select>

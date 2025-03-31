@@ -16,6 +16,7 @@ import RowArkusze from "./RowArkusze";
 import MenuElementyTech from "./ElementyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { getNameOfPapier } from "actions/getNameOfPapier";
+import { getNameOfPapierPostac } from "actions/getNameOfPapierPostac";
 
 export default function RowTechElement({
   row,
@@ -53,9 +54,9 @@ export default function RowTechElement({
         />
         <Naklad row={row} indeks={indeks}/>
         <NadkompletElement row={row} />
-        <Strony row={row} />
-        <NettoX row={row} />
-        <NettoY row={row} />
+        <Strony row={row} indeks={indeks} />
+        <NettoX row={row} indeks={indeks}/>
+        <NettoY row={row} indeks={indeks}/>
         <PapierSelect2
           row={row}
           handleChangeCardFragmenty_i_Elementy_Tech={
@@ -68,13 +69,14 @@ export default function RowTechElement({
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
+          indeks={indeks} 
         />
         <ArkuszSzerokosc row={row} />
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
         <IloscLeg row={row} />
-        <Nazwa row={row} />
-        <Uwagi row={row} />
+        <Nazwa row={row} indeks={indeks} />
+        <Uwagi row={row}indeks={indeks} />
         <Procesy
           row={row}
           // handleChangeCardElementy={handleChangeCardElementy}
@@ -400,24 +402,23 @@ function  PapierSelect2({
 }
 
 function PapierPostac({
-  row,handleChangeCardFragmenty_i_Elementy_Tech
+  row,handleChangeCardFragmenty_i_Elementy_Tech,indeks
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
-  const modalcontext = useContext(ModalInsertContext);
-  const setShowPaperStage = modalcontext.setShowPaperStage;
-  const setSelectedElementROW = modalcontext.setSelectedElementROW;
-  const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowPostac = appcontext.listaPapierowPostac;
+  const techContext = useContext(TechnologyContext);
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const elementy = techContext.elementy;
 
-   const techContext = useContext(TechnologyContext)
-      const arkusze = techContext.arkusze;
-      const setArkusze = techContext.setArkusze;
 
   return (
    <div className={style.papier_input_container}>
       <select
-        className={row.papier_id =="0" ? style.select_papier_postac : style.select_papier_postac }
+        className={elementy[indeks].papier_postac_id == row.papier_postac_id ?style.select_papier_postac :style.select_papier_postacError} title={"W zamówieniu "+getNameOfPapierPostac(listaPapierowPostac, elementy[indeks].papier_postac_id)}
+      
+        // className={row.papier_id =="0" ? style.select_papier_postac : style.select_papier_postac }
         value={row.papier_postac_id}
         onChange={(e) => {
           handleChangeCardFragmenty_i_Elementy_Tech({
@@ -470,7 +471,7 @@ function Naklad({ row ,indeks}) {
   const elementy = techContext.elementy;
   return (
     <input
-      className={elementy[indeks].naklad == row.naklad ?style.input :style.inputError} title={"W zamówieniu"+elementy[indeks].naklad} type="text"
+      className={elementy[indeks].naklad == row.naklad ?style.input :style.inputError} title={"W zamówieniu :"+elementy[indeks].naklad} type="text"
       value={row.naklad}
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -492,16 +493,6 @@ function NadkompletElement({ row }) {
     <input
     disabled
       className={style.input}
-      // value={row.naklad}
-      // onChange={(e) => {
-      //   if (e.target.value === "" || reg_int.test(e.target.value)) {
-      //     handleUpdateRowElementyTech({
-      //       ...row,
-      //       naklad: ifNoTextSetNull(e.target.value),
-      //       update: true
-      //     });
-      //   }
-      // }}
     ></input>
   );
 }
@@ -562,13 +553,15 @@ function Nazwa({ row }) {
   );
 }
 
-function Strony({ row }) {
+function Strony({ row,indeks }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const elementy = techContext.elementy;
 
   return (
     <input
-      className={style.input}
+    className={elementy[indeks].ilosc_stron == row.ilosc_stron ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].ilosc_stron} type="text"
+
       value={row.ilosc_stron}
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -582,12 +575,16 @@ function Strony({ row }) {
     ></input>
   );
 }
-function NettoX({ row }) {
+function NettoX({ row,indeks }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const elementy = techContext.elementy;
+
   return (
     <input
-      className={style.input}
+    className={elementy[indeks].format_x == row.format_x ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].format_x} type="text"
+
+      // className={style.input}
       value={row.format_x}
       onChange={(e) => {
         const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
@@ -603,12 +600,15 @@ function NettoX({ row }) {
     ></input>
   );
 }
-function NettoY({ row, handleChangeCardElementy }) {
+function NettoY({ row, indeks }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const elementy = techContext.elementy;
+
   return (
     <input
-      className={style.input}
+    className={elementy[indeks].format_y == row.format_y ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].format_y} type="text"
+
       value={row.format_y}
       onChange={(e) => {
         const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;

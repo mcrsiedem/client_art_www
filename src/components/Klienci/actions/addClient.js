@@ -2,7 +2,7 @@ import axios from "axios";
 import { IP } from "../../../utils/Host";
 import { getClients } from "actions/getClients";
 
-export const  addClient  = async (daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane) =>{
+export const  addClient  = async ({daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane,setDaneKlienta,initialKlient}) =>{
   
     await axios.post(IP + "klienci", {
         firma: daneKlienta.firma,
@@ -16,6 +16,8 @@ export const  addClient  = async (daneKlienta,setClients,setClientsWyszukiwarka,
       .then((res2) => {
         
          getClients(setClients,setClientsWyszukiwarka )
+         console.log("initialKlient",initialKlient)
+         setDaneKlienta(initialKlient)
          setShowAddClientPane(false)
       })
        

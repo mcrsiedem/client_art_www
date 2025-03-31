@@ -73,9 +73,7 @@ function Dodaj({ setShowAddClientPane }) {
       src={addIcon2}
       onClick={() => {
         setShowAddClientPane(true);
-        //  showAddClientStage(true)
-        // setShowOprawaElementyStage(true);
-        // setOprawa_row(row);
+
       }}
       alt="Procesy"
     />

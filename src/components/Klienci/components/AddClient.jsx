@@ -12,8 +12,8 @@ export default function AddClientPane({
   isShowAddClientPane
   
 }) {
-  const [cookies, setCookie] = useCookies();
-  const [daneKlienta, setDaneKlienta] = useState({
+
+  const initialKlient ={
     firma: "",
     adres: "",
     kod: "",
@@ -21,11 +21,19 @@ export default function AddClientPane({
     opiekun_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
     utworzyl_user_id: DecodeToken(sessionStorage.getItem("token")).id, // tutaj trzeba przekazać zalogowane usera
   
-  });
+}
+  const [cookies, setCookie] = useCookies();
+  const [daneKlienta, setDaneKlienta] = useState(initialKlient);
 if(isShowAddClientPane){
     return (
     <div className={style.grayScaleBackground}>
-    <div className={style.window}>
+    <div onDoubleClick={()=>{
+        console.clear()
+  
+        console.log("daneKlienta : ",daneKlienta)
+     
+
+    }} className={style.window}>
       <Header setShowAddClientPane={setShowAddClientPane}></Header>
 
       <div className={style.center}>
@@ -35,7 +43,7 @@ if(isShowAddClientPane){
       </div>
 
         <div className={style.footer}>
-      <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} />
+      <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} setDaneKlienta={setDaneKlienta} initialKlient={initialKlient} />
       </div>
       
     </div>
@@ -46,7 +54,7 @@ if(isShowAddClientPane){
 }
 
 
-function Zapisz({daneKlienta,setShowAddClientPane}) {
+function Zapisz({daneKlienta,setShowAddClientPane,setDaneKlienta,initialKlient}) {
  // const [cookies, setCookie] = useCookies();
     const contextApp = useContext(AppContext);
     const setClients = contextApp.setClients;
@@ -55,8 +63,8 @@ function Zapisz({daneKlienta,setShowAddClientPane}) {
       <button
         className={style.btn}
         onClick={() => {
-           addClient(daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane)
-       
+           addClient({daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane,setDaneKlienta,initialKlient})
+        
         }}
       >
         Zapisz
@@ -94,7 +102,7 @@ function Firma({ daneKlienta, setDaneKlienta }) {
       <input
         className={style.firma}
         type="text"
-        value={daneKlienta.firma}
+        value={daneKlienta?.firma}
         onChange={(event) => {
           const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
           if (event.target.value === "" || re.test(event.target.value)) {
@@ -115,7 +123,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
         <input
           className={style.firma}
           type="text"
-          value={daneKlienta.adres}
+          value={daneKlienta?.adres}
           onChange={(event) => {
             const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
             if (event.target.value === "" || re.test(event.target.value)) {
@@ -141,7 +149,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
                 <input
                 className={style.firma}
                 type="text"
-                value={daneKlienta.kod}
+                value={daneKlienta?.kod}
                 onChange={(event) => {
                     const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
                     if (event.target.value === "" || re.test(event.target.value)) {
@@ -158,7 +166,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
             <input
             className={style.firma}
             type="text"
-            value={daneKlienta.nip}
+            value={daneKlienta?.nip}
             onChange={(event) => {
                 const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ-]+$/;
                 if (event.target.value === "" || re.test(event.target.value)) {
@@ -176,14 +184,14 @@ function Adres({ daneKlienta, setDaneKlienta }) {
       <label className={style.label}> Opiekun </label>
       <select
         className={style.firma}
-        value={daneKlienta.opiekun_id}
+        value={daneKlienta?.opiekun_id}
         onChange={(event) => {
             setDaneKlienta({...daneKlienta, opiekun_id: event.target.value});
      
         }}
       >
         {context.users
-        .filter(x => x.Dzial == 2)
+        // .filter(x => x.Dzial == 2)
         .map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 

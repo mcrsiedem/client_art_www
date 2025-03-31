@@ -24,7 +24,10 @@ const reg_cena = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 //     haslo: "p",
 //     dostep: "7",
 //   },
-// ];
+// ];initialKlient
+
+
+
 
 const initialPreOrder = {
   typ: 1,

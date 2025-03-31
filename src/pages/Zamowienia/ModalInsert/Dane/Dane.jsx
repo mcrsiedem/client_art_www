@@ -406,7 +406,9 @@ const selectColor = (stan) =>{
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true, status:  event.target.value>2 ? 2: 1 });
                   add(                    {
                       kategoria: "Stan zamówienia",
-                      event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa}
+                      event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                      zamowienie_id: daneZamowienia.id
+                  }
                   );
 
           }

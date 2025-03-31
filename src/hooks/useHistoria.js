@@ -13,7 +13,7 @@ function add(row) {
   if(daneZamowienia.id !=1){
 
     const   new_historia = historiaZamowienia?.slice() || [];
-        new_historia.push({...row, id:getMaxID(historiaZamowienia),zamowienie_id:modalcontext.selectedZamowienie.id, user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
+        new_historia.push({...row, id:getMaxID(historiaZamowienia), user_id: DecodeToken(sessionStorage.getItem("token")).id,insert:true})
         setHistoriaZamowienia(new_historia)
 }
   }

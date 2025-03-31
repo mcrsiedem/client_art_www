@@ -134,6 +134,9 @@ function Szukaj() {
   );
 }
 
+
+
+
 function Finder({ children }) {
   return <div className={style.finder}>{children}</div>;
 }

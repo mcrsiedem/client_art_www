@@ -190,7 +190,7 @@ function Kod({ row }) {
 }
 
 function NIP({ row }) {
-  return <td>{row.nip}</td>;
+  return <td >{row.nip}</td>;
 }
 
 function Opiekun({ row }) {

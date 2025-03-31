@@ -15,6 +15,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import RowArkusze from "./RowArkusze";
 import MenuElementyTech from "./ElementyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
+import { getNameOfPapier } from "actions/getNameOfPapier";
 
 export default function RowTechElement({
   row,
@@ -60,6 +61,7 @@ export default function RowTechElement({
           handleChangeCardFragmenty_i_Elementy_Tech={
             handleChangeCardFragmenty_i_Elementy_Tech
           }
+          indeks={indeks}
         />
                 <PapierPostac
           row={row}
@@ -327,26 +329,27 @@ function Typ({ row, handleChangeCardFragmenty_i_Elementy_Tech }) {
 
 
 
-function PapierSelect2({
-  row,handleChangeCardFragmenty_i_Elementy_Tech
+function  PapierSelect2({
+  row,handleChangeCardFragmenty_i_Elementy_Tech,indeks
 }) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const modalcontext = useContext(ModalInsertContext);
   const setShowPaperStage = modalcontext.setShowPaperStage;
-
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
-   const techContext = useContext(TechnologyContext)
-      const arkusze = techContext.arkusze;
-      const setArkusze = techContext.setArkusze;
+  const techContext = useContext(TechnologyContext);
+  const arkusze = techContext.arkusze;
+  const setArkusze = techContext.setArkusze;
+  const setSelectedElementTechROW = techContext.setSelectedElementTechROW;
+  const setSelectedElementTechArkusz = techContext.setSelectedElementTechArkusz;
+  const elementy = techContext.elementy;
 
-      const setSelectedElementTechROW = techContext.setSelectedElementTechROW;
-      const setSelectedElementTechArkusz = techContext.setSelectedElementTechArkusz;
+  
 
   return (
    <div className={style.papier_input_container}>
       <select
-        className={row.papier_id =="0" ? style.select_papier_brak : style.select_papier }
+        className={elementy[indeks].papier_id == row.papier_id ?style.select_papier :style.select_papierError} title={"W zamówieniu "+getNameOfPapier(listaPapierow, elementy[indeks].papier_id)}
         value={row.papier_id}
         onChange={(e) => {
           handleChangeCardFragmenty_i_Elementy_Tech({

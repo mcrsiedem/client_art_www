@@ -24,6 +24,7 @@ import iconAdd from "assets/add2.svg";
 
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
+import DecodeToken from "pages/Login/DecodeToken";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -152,6 +153,18 @@ const setNadkomplety = contextApp.setNadkomplety;
 function ZamowieniaTable({zamowienia,open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
+
+
+const sprawdzDostep = (c) => {
+  if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
+    return true
+  }else{
+   return c.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id
+  }
+
+}
+
+
  return     <div className={style.tableContainer}>
     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table>
@@ -181,7 +194,9 @@ function ZamowieniaTable({zamowienia,open2,setRow}){
     </tr>
   </thead>
   <tbody>
-    {zamowienia.map((row) => {
+    {zamowienia
+    .filter(c=>sprawdzDostep(c))
+    .map((row) => {
       return (
 <TABLE_TR key= {row.id}row={row} open2={open2} setRow={setRow}/>
         

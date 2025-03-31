@@ -55,7 +55,7 @@ function ProcesyHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
-        <PokazStany />
+        {/* <PokazStany /> */}
         <PrzerwaBTN />
 
         </div>

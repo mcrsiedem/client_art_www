@@ -101,7 +101,14 @@ const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const contextApp = useContext(AppContext);
 
+const sprawdzDostep = (c) => {
+  if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy==1){
+    return true
+  }else{
+   return c.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id
+  }
 
+}
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>
@@ -124,7 +131,7 @@ const contextApp = useContext(AppContext);
            wybierz...
           </option>
         {contextApp.clients
-        // .unshift({id:0,firma:""})
+        .filter(c=>sprawdzDostep(c))
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}

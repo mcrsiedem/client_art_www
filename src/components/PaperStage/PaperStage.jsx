@@ -19,6 +19,7 @@ import { updatePaperNazwy } from "actions/updatePaperNazwy";
 import { useApiPapier, usePapier } from "hooks/useApiPapier";
 
 import { onDeletePaperRowCheckUse } from "components/PaperStage/onDeletePaperRowCheckUse";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function PaperStage({parent}) {
 
@@ -215,7 +216,7 @@ function DeleteBTN({ selectRow }) {
     const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
     const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
     const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
-
+    if (DecodeToken(sessionStorage.getItem("token")).papier_usun == 1) {
   return (
     <div>
       <img
@@ -233,6 +234,7 @@ function DeleteBTN({ selectRow }) {
     </div>
   );
 }
+}
 
 
 function Zapisz() {
@@ -242,28 +244,46 @@ function Zapisz() {
   const setListaPapierowWyszukiwarka = appcontext.setListaPapierowWyszukiwarka;
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const setListaPapierow = appcontext.setListaPapierow;
-  const listaPapierowNazwyWyszukiwarka = appcontext.listaPapierowNazwyWyszukiwarka;
-  const setListaPapierowNazwyWyszukiwarka = appcontext.setListaPapierowNazwyWyszukiwarka;
+  const listaPapierowNazwyWyszukiwarka =
+    appcontext.listaPapierowNazwyWyszukiwarka;
+  const setListaPapierowNazwyWyszukiwarka =
+    appcontext.setListaPapierowNazwyWyszukiwarka;
   const setListaPapierowNazwy = appcontext.setListaPapierowNazwy;
-  const listaPapierowGrupaWyszukiwarka = appcontext.listaPapierowGrupaWyszukiwarka;
-  const setListaPapierowGrupaWyszukiwarka = appcontext.setListaPapierowGrupaWyszukiwarka;
+  const listaPapierowGrupaWyszukiwarka =
+    appcontext.listaPapierowGrupaWyszukiwarka;
+  const setListaPapierowGrupaWyszukiwarka =
+    appcontext.setListaPapierowGrupaWyszukiwarka;
   const setListaPapierowGrupa = appcontext.setListaPapierowGrupa;
-
-      return (
-    <button 
-    
-    className={style.btn} 
-    onClick={() => {
-       updatePaper(listaPapierowWyszukiwarka,setListaPapierowWyszukiwarka,setListaPapierow,setBtnZapiszPapierDisabled)
-       updatePaperNazwy(listaPapierowNazwyWyszukiwarka,setListaPapierowNazwyWyszukiwarka,setListaPapierowNazwy,setBtnZapiszPapierDisabled)
-       updatePaperGrupy(listaPapierowGrupaWyszukiwarka,setListaPapierowGrupaWyszukiwarka,setListaPapierowGrupa,setBtnZapiszPapierDisabled)
-    }}
-    
-    disabled={isBtnZapiszPapierDisabled}
-    >
-      Zapisz</button>
-
-  );
+  if (DecodeToken(sessionStorage.getItem("token")).papier_zapis == 1) {
+    return (
+      <button
+        className={style.btn}
+        onClick={() => {
+          updatePaper(
+            listaPapierowWyszukiwarka,
+            setListaPapierowWyszukiwarka,
+            setListaPapierow,
+            setBtnZapiszPapierDisabled
+          );
+          updatePaperNazwy(
+            listaPapierowNazwyWyszukiwarka,
+            setListaPapierowNazwyWyszukiwarka,
+            setListaPapierowNazwy,
+            setBtnZapiszPapierDisabled
+          );
+          updatePaperGrupy(
+            listaPapierowGrupaWyszukiwarka,
+            setListaPapierowGrupaWyszukiwarka,
+            setListaPapierowGrupa,
+            setBtnZapiszPapierDisabled
+          );
+        }}
+        disabled={isBtnZapiszPapierDisabled}
+      >
+        Zapisz
+      </button>
+    );
+  }
 }
 
 

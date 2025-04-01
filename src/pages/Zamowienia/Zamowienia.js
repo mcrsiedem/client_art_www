@@ -169,7 +169,7 @@ const sprawdzDostep = (c) => {
     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table>
   <thead className={style.th_head}>
-    <tr >
+    <tr  className={style.table_tr}>
       <th style={{textAlign: "center"}}>!</th>
       <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
       <th className={style.col_nr}>Nr</th>
@@ -187,6 +187,9 @@ const sprawdzDostep = (c) => {
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_firma}>Stan</th>
       <th className={style.col_firma}>Status</th>
+      <th className={style.col_firma}>Etap</th>
+      <th className={style.col_firma}>Etap</th>
+      <th className={style.col_firma}>Etap</th>
       <th className={style.col_firma}>Etap</th>
       <th className={style.col_utworzono}>Utworzono</th>
       <th style={{textAlign: "center"}}></th>
@@ -270,6 +273,9 @@ function TABLE_TR({ row, open2, setRow }) {
         <td>{row.firma}</td>
         <StanZamowieniaTable  row={row}/>
         <StatusZamowieniaTable  row={row}/>
+        <EtapZamowieniaTable  row={row}/>
+        <EtapZamowieniaTable  row={row}/>
+        <EtapZamowieniaTable  row={row}/>
         <EtapZamowieniaTable  row={row}/>
 
         <td>{row.utworzono}</td>

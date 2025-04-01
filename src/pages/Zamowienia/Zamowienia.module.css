@@ -14,13 +14,18 @@
    /* padding-top: 50px; */
   height: calc(100vh - 60px);
   /* min-width: 100vw; */
-  min-width: 95vw;
+  width: 95vw;
 
    /* max-height: 300px;  */
    overflow: auto;
 
 
 }
+
+/* .table_tr{
+ width: 95vw;
+} */
+
 .szczegoly{
    background-color: gray;
   

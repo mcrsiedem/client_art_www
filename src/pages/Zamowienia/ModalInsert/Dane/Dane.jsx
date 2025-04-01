@@ -471,6 +471,24 @@ const selectColor = (stan) =>{
 
             }
 
+            if(event.target.value == 3){
+              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
+                      // add(                    {
+                      //   kategoria: "Status zamówienia",
+                      //   event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == 2)[0].nazwa,
+                      //   zamowienie_id: daneZamowienia.id
+                      // }
+                      // );
+
+                      add(                    {
+                        kategoria: "Stan zamówienia",
+                        event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                        zamowienie_id: daneZamowienia.id
+                    }
+                    );
+    
+              }
+
 
         }}
       >

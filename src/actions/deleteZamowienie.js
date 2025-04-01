@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { IP } from "../utils/Host";
+import { refreshZamowienia } from "./refreshZamowienia";
 
 
 export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMenu) {
@@ -13,7 +14,8 @@ export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMe
 
 
     // console.log(res.status)
-    setZamowienia( zamowienia.filter(x => x.select !== true))
+    // setZamowienia( zamowienia.filter(x => x.select !== true))
+    refreshZamowienia(setZamowienia)
     setShowMenu(false)
 
 

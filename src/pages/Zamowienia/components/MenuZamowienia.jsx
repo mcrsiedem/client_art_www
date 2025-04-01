@@ -17,7 +17,7 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
   if (showMenu) {
     return (
       <div className={style.container_menu}>
-        <button
+        {/* <button
           className={style.menu_btn}
           onClick={() => {
             const rowsToDelete =zamowienia.filter(x => x.select === true);
@@ -27,12 +27,12 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
           }}
         >
           Usuń
-        </button>
+        </button> */}
         <button className={style.menu_btn}           onClick={() => {
-        const rowsToDelete =zamowienia.filter(x => x.select === true);
+        const rowsToDelete =zamowienia.filter(x => x.select === true && x.stan <3);
         deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
  
-          }}>Usuń na zawsze...</button>
+          }}>Usuń</button>
 
 <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);

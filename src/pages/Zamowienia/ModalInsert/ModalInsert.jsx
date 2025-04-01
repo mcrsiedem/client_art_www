@@ -209,6 +209,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       />
 
       <div className={style.main}>
+
+        
         {showParametryZamowienia && (
           <div>
             <Produkty />

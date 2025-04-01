@@ -13,6 +13,8 @@ export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
     const [clients, setClients] = useState(null);
+    const [uzytkownicy, setUzytkownicy] = useState(null);
+    const [uzytkownicyGrupy, setUzytkownicyGrupy] = useState(null);
     const [clientsWyszukiwarka, setClientsWyszukiwarka] = useState(null);
     const [procesList, setProcesList] = useState(null); // lista wszystkich dostępnych procesów
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
@@ -119,6 +121,8 @@ export const AppContextProvider = ({children})=>{
                     listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka,
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
+                    uzytkownicy, setUzytkownicy,
+                    uzytkownicyGrupy, setUzytkownicyGrupy
                 }}
             >
                 {children}

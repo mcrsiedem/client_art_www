@@ -449,45 +449,54 @@ const selectColor = (stan) =>{
         className={selectColor(daneZamowienia.stan) }
         value={daneZamowienia.stan}
         onChange={(event) => {
-          if(daneZamowienia.stan != 3){
-          setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true, status:  event.target.value>2 ? 2: 1 });
+
+
+          if(event.target.value == 2 && daneZamowienia.stan == 1){
+          setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
                   add(                    {
                       kategoria: "Stan zamówienia",
                       event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
                       zamowienie_id: daneZamowienia.id
                   }
                   );
-
           }
-            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
 
-              setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
-              add(                    {
-                  kategoria: "Stan zamówienia",
-                  event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-                  zamowienie_id: daneZamowienia.id
-              }
-              );
-
+          if(event.target.value == 1 && daneZamowienia.stan == 2){
+            setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
+                    add(                    {
+                        kategoria: "Stan zamówienia",
+                        event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                        zamowienie_id: daneZamowienia.id
+                    }
+                    );
             }
 
-            if(event.target.value == 3){
-              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
-                      // add(                    {
-                      //   kategoria: "Status zamówienia",
-                      //   event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == 2)[0].nazwa,
-                      //   zamowienie_id: daneZamowienia.id
-                      // }
-                      // );
+        
 
+
+            if(event.target.value == 2 && daneZamowienia.stan == 3){
+              if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 1, update: true});
                       add(                    {
                         kategoria: "Stan zamówienia",
                         event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
                         zamowienie_id: daneZamowienia.id
                     }
                     );
-    
               }
+            }
+
+            if(event.target.value == 3){
+              if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
+                      add(                    {
+                        kategoria: "Stan zamówienia",
+                        event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                        zamowienie_id: daneZamowienia.id
+                    }
+                    );
+              }
+            }
 
 
         }}

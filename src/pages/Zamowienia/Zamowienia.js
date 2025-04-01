@@ -261,17 +261,12 @@ function TABLE_TR({ row, open2, setRow }) {
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>
         <td>{row.uwagi}</td>
-       
-        <td className={style.td_naklad}>{row.naklad}</td>
+        <NakladTableZamowienia  row={row}/>
         <td>{row.ilosc_stron}</td>
-
-
         <td>{row.data_spedycji}</td>
-
-        {/* <td>{row.final}</td> */}
         <td>{row.format_x}</td>
         <td>{row.format_y}</td>
-        <td>{row.oprawa_nazwa}</td>
+        <OprawaTableZamowienia  row={row}/>
         <td>{row.firma}</td>
         <StanZamowieniaTable  row={row}/>
         <StatusZamowieniaTable  row={row}/>
@@ -311,10 +306,28 @@ function TABLE_TR({ row, open2, setRow }) {
   );
 }
 
+
+const OprawaTableZamowienia= ({row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+    
+    return(
+      <>
+     <td>{row.oprawa}  </td> 
+      </>
+    )
+}
+
+const NakladTableZamowienia= ({row}) =>{
+    return(
+     <td> {row.naklad} </td>
+    )
+}
+
+
 const StanZamowieniaTable = ({row}) =>{
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
-    // return(  <td>{row.stan}</td>
       return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_stan_dokumentu.filter(s=>s.id == row.stan).map(x=> ( x.nazwa))}</td>
   )
 }
@@ -323,7 +336,7 @@ const StatusZamowieniaTable = ({row}) =>{
   const daneTech = techContext.daneTech;
     // return(  <td>{row.stan}</td>
       // return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
-      return(  <td >{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
+      return(  <td style={row.status>2?{backgroundColor:"rgb(246, 85, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
   )
 }
 

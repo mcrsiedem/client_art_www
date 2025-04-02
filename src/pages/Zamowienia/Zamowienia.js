@@ -217,6 +217,7 @@ function TABLE_TR({ row, open2, setRow }) {
   return (
     <>
       <tr
+        title= {"Zamówienie id: " +row.id}
        className={style.row_zamowienia}
         key={row.id}
         onClick={(node, event) => {

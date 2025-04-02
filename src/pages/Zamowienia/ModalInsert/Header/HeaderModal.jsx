@@ -53,11 +53,8 @@ export default function Header({
 
   const technologieID = contextModalInsert.technologieID;
 
-  return (
-    <>
-      <div
-        onDoubleClick={() => {
-          console.clear();
+  const dbClikHandle = () => {
+              console.clear();
           console.log("Zamówienie: ");
           console.log("Dane : ", daneZamowienia);
           console.log("Produkt : ", produkty);
@@ -75,6 +72,13 @@ export default function Header({
           console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
           console.log("listaPapierowNazwy: ", listaPapierowNazwy);
           // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
+  }
+
+  return (
+    <>
+      <div
+        onDoubleClick={() => {
+          dbClikHandle();
         }}
         className={style.container}
       >

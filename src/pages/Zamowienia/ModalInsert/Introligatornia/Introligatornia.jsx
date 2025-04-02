@@ -311,7 +311,7 @@ const [setStatus] = useStatus()
             </option>}
         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
-            {option.typ} {option.rodzaj} 
+            {option.typ} {option.rodzaj + " "+row.naklad +" szt."} 
        
           </option>
         ))}
@@ -468,11 +468,11 @@ function handleAddRowOprawa(card, oprawa, setOprawa) {
 function Typ({ row }) {
   return (
     <td>
-      <select className={style.select} value={row.typ} disabled>
+      <select className={style.select} value={row.typ } disabled>
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa}
+            {option.nazwa +" "+row.wersja+" "+row.naklad +" szt."}
           </option>
         ))}
       </select>

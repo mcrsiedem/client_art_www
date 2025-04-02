@@ -61,6 +61,7 @@ function Header({ dodaj_clikHandler}) {
       <div className={style.centerHeaderContener}>
         
         <img
+        title="Dodaj nowe zamówienie..."
               className={style.icon}
               src={iconAdd}
               onClick={() => {

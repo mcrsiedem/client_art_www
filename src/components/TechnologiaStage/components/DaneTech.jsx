@@ -374,8 +374,8 @@ const setDaneTech = contextTech.setDaneTech;
 
   return(
       <div className={style.col}>
-      <label className={style.label}> Nr zlecenia </label>
-      <input className={style.input} type="text"
+      <label className={style.label}> Nr produktu </label>
+      <input className={style.input} type="text" title="Numer produktu"
       value={daneTech.nr}
       onChange={(event) => {
 

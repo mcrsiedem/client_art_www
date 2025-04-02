@@ -188,9 +188,7 @@ const sprawdzDostep = (c) => {
       <th className={style.col_firma}>Stan</th>
       <th className={style.col_firma}>Status</th>
       <th className={style.col_firma}>Etap</th>
-      <th className={style.col_firma}>Etap</th>
-      <th className={style.col_firma}>Etap</th>
-      <th className={style.col_firma}>Etap</th>
+
       <th className={style.col_utworzono}>Utworzono</th>
       <th style={{textAlign: "center"}}></th>
 
@@ -274,9 +272,7 @@ function TABLE_TR({ row, open2, setRow }) {
         <StanZamowieniaTable  row={row}/>
         <StatusZamowieniaTable  row={row}/>
         <EtapZamowieniaTable  row={row}/>
-        <EtapZamowieniaTable  row={row}/>
-        <EtapZamowieniaTable  row={row}/>
-        <EtapZamowieniaTable  row={row}/>
+
 
         <td>{row.utworzono}</td>
         <IconLockTable  row={row}/>

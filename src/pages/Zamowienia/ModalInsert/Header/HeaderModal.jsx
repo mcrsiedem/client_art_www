@@ -55,73 +55,59 @@ export default function Header({
 
   return (
     <>
-      <div onDoubleClick={ () => {
-        console.clear()
-        console.log("Zamówienie: ")
-        console.log("Dane : ",daneZamowienia)
-        console.log("Produkt : ",produkty)
-        console.log("Elementy : ",elementy)
-        console.log("Fragmenty : ",fragmenty)
-        console.log("Oprawa : ",oprawa)
-        console.log("Procesy elementów: ",procesyElementow)
-        console.log("Pakowanie: ",pakowanie)
-        console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
-        console.log("Papiery_nazwy: ",listaPapierowNazwy)
-        console.log("Historia zamówienia: ",historiaZamowienia)
-        console.log("Technologie do zamówienia: ",technologieID)
-        // console.log("Selected zamówienie: ",contextModalInsert.selectedZamowienie)
+      <div
+        onDoubleClick={() => {
+          console.clear();
+          console.log("Zamówienie: ");
+          console.log("Dane : ", daneZamowienia);
+          console.log("Produkt : ", produkty);
+          console.log("Elementy : ", elementy);
+          console.log("Fragmenty : ", fragmenty);
+          console.log("Oprawa : ", oprawa);
+          console.log("Procesy elementów: ", procesyElementow);
+          console.log("Pakowanie: ", pakowanie);
+          console.log("Koszty dodatkowe: ", kosztyDodatkoweZamowienia);
+          console.log("Papiery_nazwy: ", listaPapierowNazwy);
+          console.log("Historia zamówienia: ", historiaZamowienia);
+          console.log("Technologie do zamówienia: ", technologieID);
+          // console.log("Selected zamówienie: ",contextModalInsert.selectedZamowienie)
 
-
-        
-        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
-        console.log("listaPapierowNazwy: ",listaPapierowNazwy)
-        // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
-
-  
-      }} className={style.container}>
-     
+          console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
+          console.log("listaPapierowNazwy: ", listaPapierowNazwy);
+          // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
+        }}
+        className={style.container}
+      >
         <div className={style.title}>
-            <LockDradDrop/>
-        
-            Produkt
-              {readOnly && (
-                <div>
-                  otwarte {stanOtwarciaZamowienia.data} przez{" "}
-                  {stanOtwarciaZamowienia.user}
-                </div>
-              )}
-              
+          <LockDradDrop />
+          Produkt
+          {readOnly && (
+            <div>
+              otwarte {stanOtwarciaZamowienia.data} przez{" "}
+              {stanOtwarciaZamowienia.user}
+            </div>
+          )}
         </div>
 
-
         <div className={style.center}>
-
           {readOnly ? (
-                <> </>
-              ) :
-              (
-                <>
-                             {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
-                             <Sprawdz  />
-                  <ZapiszJako
-                    setShowSaveAs={setShowSaveAs}
-                    setSaveAs={setSaveAs}
-                  />
-                      <Zapisz
-                    setShowSaveAs={setShowSaveAs}
-                    setSaveAs={setSaveAs}
-                  />
-                </>
-              )
-          }
-
+            <> </>
+          ) : (
+            <>
+              {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
+              <Sprawdz />
+              <ZapiszJako setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
+              <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
+            </>
+          )}
         </div>
 
         <div className={style.buttons}>
-              
-
-
-          <Zamknij row={row} setOpenModalInsert={setOpenModalInsert} readOnly={readOnly}/>
+          <Zamknij
+            row={row}
+            setOpenModalInsert={setOpenModalInsert}
+            readOnly={readOnly}
+          />
         </div>
       </div>
     </>
@@ -136,9 +122,7 @@ const LockDradDrop = () =>{
     <img
     onClick={() => {
       // wyłącza drag drop w tabelkach
-      contextModalInsert.setLockDragDrop(
-        !contextModalInsert.lockDragDrop
-      );
+      contextModalInsert.setLockDragDrop(!contextModalInsert.lockDragDrop);
     }}
     className={style.icon}
     src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
@@ -203,26 +187,26 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
                  setSaveAs(false);
      
         zapiszZamowienie({
-                daneZamowienia,
-                setDaneZamowienia,
-                produkty,
-                elementy,
-                fragmenty,
-                oprawa,
-                setProdukty,
-                setElementy,
-                setFragmenty,
-                setOprawa,
-                setProcesyElementow,
-                procesyElementow,
-                setZamowienia,
-                setSaveButtonDisabled
-              });
+          daneZamowienia,
+          setDaneZamowienia,
+          produkty,
+          elementy,
+          fragmenty,
+          oprawa,
+          setProdukty,
+          setElementy,
+          setFragmenty,
+          setOprawa,
+          setProcesyElementow,
+          procesyElementow,
+          setZamowienia,
+          setSaveButtonDisabled,
+        });
         
         }
 
-                  if(produkty[0].naklad != 0 && daneZamowienia.id != 1){
-                    saveZamowienieUpdate()
+                  if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
+                    saveZamowienieUpdate();
                   }
 
 

@@ -594,6 +594,11 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
       <input className={style.input} type="text" title="Numer zamówienia"
+      disabled
+      onDoubleClick={()=>{
+
+        contextModalInsert.setShowInputNrZamowienie(true)
+      }}
       value={daneZamowienia.nr}
       onChange={(event) => {
 

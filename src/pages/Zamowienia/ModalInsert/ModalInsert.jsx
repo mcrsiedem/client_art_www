@@ -203,14 +203,9 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         setReadOnly={setReadOnly}
       />
 
-      <Dane
- 
-        showAddClientStage={showAddClientStage}
-      />
+      <Dane showAddClientStage={showAddClientStage} />
 
       <div className={style.main}>
-
-        
         {showParametryZamowienia && (
           <div>
             <Produkty />
@@ -223,56 +218,51 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
               setInfo={setInfo}
               procesyElementow={procesyElementow}
               setProcesyElementow={setProcesyElementow}
-            
               handleChangeCardFragmenty_i_Elementy={
                 handleChangeCardFragmenty_i_Elementy
               }
-              handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}
+              handleChangeCardFragmenty_i_Elementy_IloscStron={
+                handleChangeCardFragmenty_i_Elementy_IloscStron
+              }
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
             />
 
             <Introligatornia
-              handleChangeCardProdukty={handleChangeCardProdukty} 
+              handleChangeCardProdukty={handleChangeCardProdukty}
               handleChangeCardOprawa={handleChangeCardOprawa}
               handleChangeCardFragmenty={handleChangeCardFragmenty}
               handleChangeCardFragmentyOprawaId={
                 handleChangeCardFragmentyOprawaId
               }
             />
-            <HistoriaZamowienia/>
+            <HistoriaZamowienia />
 
-                {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
+            {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
 
-              {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
-            
+            {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
           </div>
         )}
 
         {showTemplate && (
           <div>
-
-
             {/* <ProduktTemplate
               setShowTemplate={setShowTemplate}
               setShowParametryZamowienia={setShowParametryZamowienia}
               handleChangeCardProdukty={handleChangeCardProdukty}
             /> */}
 
-            <ProductCreator setShowTemplate={setShowTemplate}
-              setShowParametryZamowienia={setShowParametryZamowienia}/>
-
+            <ProductCreator
+              setShowTemplate={setShowTemplate}
+              setShowParametryZamowienia={setShowParametryZamowienia}
+            />
           </div>
         )}
       </div>
 
       {showElementyProcesyInsert && (
-        <ProcesElement
-          procesyElementow={procesyElementow}
-
-
-        />
+        <ProcesElement procesyElementow={procesyElementow} />
       )}
 
       {openModalStany && (
@@ -284,7 +274,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         />
       )}
 
-{showSaveAs && (
+      {showSaveAs && (
         <SaveAs
           showSaveAs={showSaveAs}
           setSaveAs={setSaveAs}
@@ -295,22 +285,19 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         />
       )}
 
+      <ClientStage parent={"modalinsert"} />
 
-        <ClientStage parent={"modalinsert"}/>
-   
-{readAlert && (
+      {readAlert && (
         <ReadOnlyAlert
-        // readOnly={readOnly}
-        readAlert={readAlert}
-        setReadAlert={setReadAlert}
+          // readOnly={readOnly}
+          readAlert={readAlert}
+          setReadAlert={setReadAlert}
           stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         />
       )}
 
-        <PaperStage parent={"zamowienia"}  />
+      <PaperStage parent={"zamowienia"} />
     </div>
-
-
   );
   //----------------------------------
   function sprawdzPoprawnoscZamowienia() {

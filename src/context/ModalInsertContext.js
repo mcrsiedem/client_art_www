@@ -38,6 +38,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
 
     const [showPaperStage, setShowPaperStage] =useState(false);
+    const [showInputNrZamowienie, setShowInputNrZamowienie] =useState(false);
 
     
     useEffect(() => {
@@ -209,7 +210,8 @@ export const ModalInsertContextProvider = ({children})=>{
           kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
           showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
-          selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia
+          selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia,
+          showInputNrZamowienie, setShowInputNrZamowienie
 
 
           

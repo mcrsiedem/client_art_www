@@ -2,7 +2,9 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-import iconSettings from "assets/iconUstawieniaDark.svg";
+import iconSettings from "assets/grid_dark.svg";
+import iconFile from "assets/iconTechnologieDark.svg";
+
 import ModalInsert from "./ModalInsert/ModalInsert";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Zamowienia/Zamowienia.module.css";
@@ -171,25 +173,33 @@ const sprawdzDostep = (c) => {
   <thead className={style.th_head}>
     <tr  className={style.table_tr}>
       <th style={{textAlign: "center"}}>!</th>
-      <th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
+      
       <th className={style.col_nr}>Nr</th>
       <th className={style.col_rok}>Rok</th>
-      <th className={style.th_karta}>Technologia</th>
+      <th title="Technologia" className={style.th_karta}>           <img
+             className={style.iconSettings}
+           
+             src={iconFile}
+             onClick={() => {
+  
+             }}
+             alt="Procesy"
+           /></th>
       <th className={style.col_klient}>Klient</th>
-      <th className={style.col_klient} >Praca</th>
-      <th className={style.col_klient} >Uwagi</th>
-      <th className={style.col_klient} >Nakład</th>
-      <th className={style.col_klient}>Strony</th>
-      <th className={style.col_klient}>Spedycja</th>
-      <th className={style.col_klient}>Szerokość</th>
-      <th className={style.col_klient}>Wysokość</th>
-      <th className={style.col_klient}>Oprawa</th>
+      <th className={style.col_klient2} >Praca</th>
+      <th className={style.col_uwagi} >Uwagi</th>
+      <th className={style.naklad} >Nakład</th>
+      <th className={style.col_strony2}>Strony</th>
+      <th className={style.col_spedycja}>Spedycja</th>
+      <th className={style.col_szerokosc}>Netto</th>
+      {/* <th className={style.col_wysokosc}>Wys.</th> */}
+      <th className={style.col_oprawa}>Oprawa</th>
       <th className={style.col_firma}>Firma</th>
       <th className={style.col_firma}>Stan</th>
-      <th className={style.col_firma}>Status</th>
+      <th className={style.col_status}>Status</th>
       <th className={style.col_firma}>Etap</th>
-
-      <th className={style.col_utworzono}>Utworzono</th>
+      <th className={style.col_firma}>Opiekun</th>
+<th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
       <th style={{textAlign: "center"}}></th>
 
     </tr>
@@ -217,7 +227,7 @@ function TABLE_TR({ row, open2, setRow }) {
   return (
     <>
       <tr
-        title= {"Zamówienie id: " +row.id}
+        title= {"Zamówienie id: " +row.id +" utworzono: "+ row.utworzono}
        className={style.row_zamowienia}
         key={row.id}
         onClick={(node, event) => {
@@ -248,7 +258,7 @@ function TABLE_TR({ row, open2, setRow }) {
           row={row}
 
         />
-        <SelectBox row={row} />
+       
    
  
         <td>{row.nr} </td>
@@ -262,21 +272,24 @@ function TABLE_TR({ row, open2, setRow }) {
               
         <td className={style.col_klient}>{row.klient}</td>
         <td>{row.tytul}</td>
-        <td>{row.uwagi}</td>
+        <td className={style.col_uwagi}> {row.uwagi}</td>
         <NakladTableZamowienia  row={row}/>
         <td>{row.ilosc_stron}</td>
         <td>{row.data_spedycji}</td>
-        <td>{row.format_x}</td>
-        <td>{row.format_y}</td>
+        <td>{row.format_x +"x"+ row.format_y}</td>
+        {/* <td>{row.format_y}</td> */}
         <OprawaTableZamowienia  row={row}/>
         <td>{row.firma}</td>
         <StanZamowieniaTable  row={row}/>
         <StatusZamowieniaTable  row={row}/>
         <EtapZamowieniaTable  row={row}/>
+        <td>{row.opiekun}</td>
 
 
-        <td>{row.utworzono}</td>
+        {/* <td>{row.utworzono}</td> */}
+        <SelectBox row={row} />
         <IconLockTable  row={row}/>
+
       </tr>
 
       {showKartaTechnologiczna && (
@@ -339,7 +352,7 @@ const StatusZamowieniaTable = ({row}) =>{
   const daneTech = techContext.daneTech;
     // return(  <td>{row.stan}</td>
       // return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
-      return(  <td style={row.status>2?{backgroundColor:"rgb(246, 85, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
+      return(  <td style={row.status>2?{backgroundColor:"rgb(246, 85, 45)", paddingRight:"10px", width:"fitContent"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
   )
 }
 
@@ -418,7 +431,8 @@ const IconLockTable = ({row}) =>{
          <div>
            <img
              className={style.iconSettings}
-             src={iconSettings}
+            //  src={iconSettings}
+             src={iconFile}
              onClick={() => {
                fechparametryTechnologii(row.id, row.technologia_id);
              }}
@@ -437,7 +451,7 @@ function SelectBox({row}) {
   const setZamowienia = appContext.setZamowienia;
 
   return (
-    <td className={style.td_checkbox}>
+    <td className={style.td_checkbox3}>
       <div >
       <input type="checkbox"
       checked={row.select}

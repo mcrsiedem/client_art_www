@@ -115,13 +115,25 @@ th{
     }
 
    .col_klient{
-      min-width: 100px;
+     width:250px;
    }
-
+   .col_rok{
+      width:30px;
+    }
    .col_karta{
       min-width: 10px;
+  
 
 
+   }
+
+   .col_uwagi{
+      /* background-color: red; */
+      max-width: 100px;
+      max-height: 50px;
+      word-wrap: break-word;
+      /* width: 120px; */
+ /* max-width: fit-content; */
    }
 
    .col_button{
@@ -135,12 +147,13 @@ th{
    }
 
    .td_checkbox{
-
+      align-items: center;
       border: none;
-
+ padding-right: 5px;
    }
-   .th_checkbox{
- 
+   .th_checkbox2{
+      align-items: center;
+      /* padding-right: 5px; */
 
    }
 
@@ -159,6 +172,7 @@ th{
 
 .iconMenuBtn{
    width: 18px;
+  
 }
 
 .table th

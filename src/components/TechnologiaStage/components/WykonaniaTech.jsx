@@ -4,6 +4,9 @@ import { AppContext } from "context/AppContext";
 import iconSettings from "assets/settings.svg";
 import style from "./WykonaniaTech.module.css";
 import icon from "assets/copy.svg";
+import iconDelete from "assets/trash2.svg";
+
+
 import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
 // import Logo_ustawienia2 from "assets/refresh.png";
@@ -18,6 +21,7 @@ import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
 import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgrupy";
 import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
+import { updateSkasujGrupe } from "actions/updateSkasujGrupe";
 
 
 
@@ -105,6 +109,7 @@ const GrupaRow = ({ rowProces }) => {
           .map((rowGrupa, i) => (
             <div>
               <div 
+              title={"grupa_globa_id :"+rowGrupa.global_id}
                 // onDragOver={handleDragOver}
                 // onDrop={() => handleDrop(rowGrupa.id)}
               className={style.grupa_container}>
@@ -118,6 +123,7 @@ const GrupaRow = ({ rowProces }) => {
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
                  
                  <DodajGrupeWykonan rowGrupa={rowGrupa}/>
+                 <SkasujGrupeWykonan rowGrupa={rowGrupa}/>
               </div>
               
 
@@ -243,8 +249,28 @@ function DodajGrupeWykonan({ row }) {
   }
 }
 
+function SkasujGrupeWykonan({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  // const global_id_grupa = row.global_id
+  return (
+    <div style={{ paddingTop: "13px" }}>
+      <img
+        title="Skasuj grupę"
+        className={style.expand}
+        src={iconDelete} 
+        onClick={() => {
+          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
+          // handleRemoveItem(row.indeks, row.id);
+          // console.log(rowGrupa)
+          updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
 
-
+}
 
 function MnoznikPredkosci({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);

@@ -41,7 +41,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
   return (
 <>
                 <tr
-           
+                  title={"Grupa id: " +grup.global_id}
                   draggable={unlockTable}
                    key={grup.global_id}
                   onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
@@ -57,7 +57,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){
-                        fechparametryTechnologii(grup.technologia_id)
+                        fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
                       }
                     
                   }}

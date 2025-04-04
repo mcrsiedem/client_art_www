@@ -39,7 +39,7 @@ function Header({ dodaj_clikHandler}) {
 
 
   return (
-    <header id="header" className={style.body}>
+    <header id="header" className={style.headerZamowieniaContainer}>
 
 
           <div className={style.leftHeaderContener}>

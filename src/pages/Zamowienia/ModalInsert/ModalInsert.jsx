@@ -179,7 +179,9 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
            // tutaj odebrać zestaw jeśli istnieje
   }
 
+
   return (
+    
     <div className={style.container}>
       <HeaderModal
         openModalInsert={openModalInsert}
@@ -299,6 +301,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       <PaperStage parent={"zamowienia"} />
     </div>
   );
+
+  
   //----------------------------------
   function sprawdzPoprawnoscZamowienia() {
     // daty przyjęcia zlecenia - data spodziewanych materiałów - data spedycji

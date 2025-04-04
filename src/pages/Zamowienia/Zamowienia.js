@@ -27,6 +27,10 @@ import iconAdd from "assets/add2.svg";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
+import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
+import TableMini from "./components/TableMini";
+import TableZamowienia from "./components/TableZamowienia";
+import TABLE_ROW_ZAMOWIENIA from "./components/TABLE_ROW_ZAMOWIENIA";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -46,30 +50,21 @@ const setNadkomplety = contextApp.setNadkomplety;
     const [callForPaper] = useApiPapier();
 
   function dodaj_clikHandler() {
-    // setDaneZamowienia({...daneZamowienia, opiekun_id:  DecodeToken(sessionStorage.getItem("token")).id})
-   
      setOpenModalInsert(true);
      open.current = false
-    // open2()
   }
 
   const open2 = () =>{
-    //pokazuje OpenModal
-    // zmiena open na true, co oznacza dla modala, ze open istniejace zamowienie a nie insert new
     setOpenModalInsert(true)
     open.current = true
-
   }
   async function fechZamowienia() {
-
     const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
     let jobs= [...res.data]
     setData(jobs);
-
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka )
          getNadkomplety(setNadkomplety)
-        
   }
 
   async function checkToken() {
@@ -84,30 +79,19 @@ const setNadkomplety = contextApp.setNadkomplety;
 
   async function refreshZamowienia() {
     const res = await axios.get(IP + "zamowienia/" + sessionStorage.getItem("token"));
-    // let jobs= [...res.data].filter(job => job.final == 1);
     let jobs= [...res.data]
     setData(jobs);
   }
   useEffect(() => {
     checkToken();
-
-
-    
   }, []);
 
 
   const onClose = useCallback(async(ev) => {  
-
     ev.preventDefault();
-    // console.log("onclose id: "+ contextModalInsert.zamowienieID  );
-    // console.log("onclose id: "+ sessionStorage.getItem("idzam")  );
    await axios
      .put(IP + "setOrderClosed", {
-
-        // id: sessionStorage.getItem("idzam"),
         id: row.id,
-     
-
      })
      .then(() => {
        return (ev.returnValue = "Are you sure you want to close?");
@@ -129,8 +113,12 @@ const setNadkomplety = contextApp.setNadkomplety;
   return (
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
-      <TechnologiaStage/>
-      <ZamowieniaTable zamowienia={data} open2={open2} setRow={setRow} />
+      
+      <div className={style.multiTableContainer}>
+        <TableZamowienia  open2={open2} setRow={setRow}  header={false}/>
+        <TableMini  open2={open2} setRow={setRow}  header={false}/>
+      </div>
+
 
           {openModalInsert && (
             <ModalInsert
@@ -148,76 +136,80 @@ const setNadkomplety = contextApp.setNadkomplety;
           )}
 
       
+      <TechnologiaStage/>
     </div>
   );
 }
 
-function ZamowieniaTable({zamowienia,open2,setRow}){
+function ZamowieniaTable({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextModalInsert = useContext(ModalInsertContext);
+  const contextApp = useContext(AppContext);
+  const zamowienia = contextApp.zamowienia
 
 
-const sprawdzDostep = (c) => {
-  if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
-    return true
-  }else{
-   return c.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id
-  }
 
-}
-
-
- return     <div className={style.tableContainer}>
-    <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
+ return (
+   <div className={style.tableContainer}>
+     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table>
-  <thead className={style.th_head}>
-    <tr  className={style.table_tr}>
-      <th style={{textAlign: "center"}}>!</th>
-      
-      <th className={style.col_nr}>Nr</th>
-      <th className={style.col_rok}>Rok</th>
-      <th title="Technologia" className={style.th_karta}>           <img
-             className={style.iconSettings}
-           
-             src={iconFile}
-             onClick={() => {
+       <thead className={style.th_head}>
   
-             }}
-             alt="Procesy"
-           /></th>
-      <th className={style.col_klient}>Klient</th>
-      <th className={style.col_klient2} >Praca</th>
-      <th className={style.col_uwagi} >Uwagi</th>
-      <th className={style.naklad} >Nakład</th>
-      <th className={style.col_strony2}>Strony</th>
-      <th className={style.col_spedycja}>Spedycja</th>
-      <th className={style.col_szerokosc}>Netto</th>
-      {/* <th className={style.col_wysokosc}>Wys.</th> */}
-      <th className={style.col_oprawa}>Oprawa</th>
-      <th className={style.col_firma}>Firma</th>
-      <th className={style.col_firma}>Stan</th>
-      <th className={style.col_status}>Status</th>
-      <th className={style.col_firma}>Etap</th>
-      <th className={style.col_firma}>Opiekun</th>
-<th className={style.th_checkbox}> <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /></th>
-      <th style={{textAlign: "center"}}></th>
+         <tr className={style.table_tr}>
+           <th style={{ textAlign: "center" }}>!</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    {zamowienia
-    .filter(c=>sprawdzDostep(c))
-    .map((row) => {
-      return (
-<TABLE_TR key= {row.id}row={row} open2={open2} setRow={setRow}/>
-        
-      );
-    })}
-  </tbody>
-</table>
-</div>
+           <th className={style.col_nr}>Nr</th>
+           <th className={style.col_rok}>Rok</th>
+           <th title="Technologia" className={style.th_karta}>
+             {" "}
+             <img
+               className={style.iconSettings}
+               src={iconFile}
+               onClick={() => {}}
+               alt="Procesy"
+             />
+           </th>
+           <th className={style.col_klient}>Klient</th>
+           <th className={style.col_klient2}>Praca</th>
+           <th className={style.col_uwagi}>Uwagi</th>
+           <th className={style.naklad}>Nakład</th>
+           <th className={style.col_strony2}>Strony</th>
+           <th className={style.col_spedycja}>Spedycja</th>
+           <th className={style.col_szerokosc}>Netto</th>
+           <th className={style.col_oprawa}>Oprawa</th>
+           <th className={style.col_firma}>Firma</th>
+           <th className={style.col_firma}>Stan</th>
+           <th className={style.col_status}>Status</th>
+           <th className={style.col_firma}>Etap</th>
+           <th className={style.col_firma}>Opiekun</th>
+           <th className={style.th_checkbox}>
+             <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
+           </th>
+           <th style={{ textAlign: "center" }}></th>
+         </tr>
+       </thead>
+       <tbody className={style.bodyContainer}>
+         {zamowienia
+           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+           .filter(zamowienie => zamowienie.stan ==3)
+           .map((row) => {
+             return (
+               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />
+             );
+           })}
+       </tbody>
+     </table>
+   </div>
+ );
 }
-function TABLE_TR({ row, open2, setRow }) {
+
+
+
+
+
+
+
+function TABLE_ROW_ZAMOWIENIA2({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
     const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
@@ -231,28 +223,12 @@ function TABLE_TR({ row, open2, setRow }) {
        className={style.row_zamowienia}
         key={row.id}
         onClick={(node, event) => {
-          setSelectedZamowienie(row)
+        setSelectedZamowienie(row)
         }}
         onDoubleClick={(node, event) => {
-        //  open2();
-          // setSelectedZamowienie(row)
-          // navigate("/zamowienie");
-
-
-          // const promiseA = new Promise((resolve, reject) => {
-          //   setSelectedZamowienie(row)
-
-          //   resolve(777);
-          // });
-          // promiseA.then(res =>  navigate("/zamowienie"))
-
-          // setBtnZapiszPapierDisabled(false)
-
-          open2(row.id);
-         setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+        open2(row.id);
+        setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
-
-
       >
                <IconErrorTable
           row={row}
@@ -517,9 +493,7 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
               src={iconSettings}
               onClick={() => {
                 setShowMenu(!showMenu);
-                // dodaj_clikHandler();
-                // console.log("z contextu :"+ token.rowSelected)
-                //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+                
               }}
               alt="x"
             />

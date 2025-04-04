@@ -36,7 +36,8 @@ export default function ClientStage({parent}) {
   if(isShowAddClientStage){
       return (
     <div id="mydiv" className={style.grayScaleBackground}>
-      <div draggable={ ()=>dragElement(document.getElementById("mydiv"))} id="mydivheader" className={style.window}>
+      {/* <div draggable={ ()=>dragElement(document.getElementById("mydiv"))} id="mydivheader" className={style.window}> */}
+      <div  className={style.window}>
         <Header showAddClientStage={showAddClientStage} />
         <Finder >
           <Dodaj

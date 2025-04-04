@@ -8,7 +8,9 @@ import ReactLogo_full from "assets/full.svg";
 import ReactLogo_history from "assets/history.svg";
 import iconClose from "assets/x.svg";
 import iconClose2 from "assets/x2.svg";
-import iconAdd from "assets/addIcon2.svg";
+// import iconAdd from "assets/addIcon2.svg";
+import iconAdd from "assets/add2.svg";
+
 import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import iconError from "assets/error.svg";

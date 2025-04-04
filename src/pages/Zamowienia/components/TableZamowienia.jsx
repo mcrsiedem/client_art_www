@@ -61,7 +61,7 @@ export default function TableZamowienia({open2,setRow}){
        <tbody className={style.tableZam}>
          {zamowienia
            .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-          //  .filter(z => z.stan ==3)
+           .filter(z => z.stan ==3)
            .map((row) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />

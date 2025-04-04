@@ -1,7 +1,7 @@
 .tableContainer {
    width: 100vw;
    /* height: fit-content; */
-   background-color: rgb(255, 229, 226);
+   /* background-color: rgb(255, 229, 226); */
    /* display: flex;
    flex-grow: 1; */
    overflow: auto;
@@ -14,7 +14,7 @@
 
 
 /* .table_tr{
- width: 95vw;
+ background-color: red;
 } */
 
 .szczegoly {
@@ -42,19 +42,17 @@
 }
 
 
-
-th {
+.table_tr > th {
    font-size: 0.9rem;
    position: sticky;
    top: 0;
-   /* background: #3f3f3f; */
+
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
-   background: rgb(243, 243, 243);
-   color: #414040;
-   /* border-radius: 30px; */
-   /* outline: 1px solid rgb(167, 0, 0); */
+   background: rgb(246, 212, 45);
+   color: #525151;
+
 
 }
 

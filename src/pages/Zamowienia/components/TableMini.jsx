@@ -22,7 +22,7 @@ export default function TableMini({open2,setRow}){
 
  return (
    <div className={style.tableContainer}>
-     {/* <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} /> */}
+     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table >
        <thead className={style.th_head}>
   

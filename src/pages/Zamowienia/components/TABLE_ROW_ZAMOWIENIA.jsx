@@ -31,14 +31,22 @@ import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/init
     const navigate = useNavigate();
     const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
     const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
+
+    
     return (
       <>
         <tr
           title= {"Zamówienie id: " +row.id +" utworzono: "+ row.utworzono}
          className={style.row_zamowienia}
           key={row.id}
+          onmousedown={(event)=>{
+            if (event.ctrlKey) {
+              console.log("db")
+            }
+           }}
           onClick={(node, event) => {
           setSelectedZamowienie(row)
+
           }}
           onDoubleClick={(node, event) => {
           open2(row.id);

@@ -114,7 +114,9 @@
 }
 
 .col_klient {
-   width: 250px;
+   width: 150px;
+
+   /* background-color: #be2617; */
 }
 
 .col_rok {

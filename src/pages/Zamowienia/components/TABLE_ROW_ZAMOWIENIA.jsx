@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "../Zamowienia.module.css";
+import style from "./TABLE_ROW_ZAMOWIENIA.module.css";
 
 import ReactLogo from "assets/grid.svg";
 import ReactLogo_ilosc from "assets/ilosc.svg";
@@ -61,7 +61,9 @@ import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/init
             
           />
                 
-          <td className={style.col_klient}>{row.klient}</td>
+          {/* <td className={style.col_klient}>{row.klient}</td> */}
+          <KlientTableZamowienia  row={row}/>
+
           <td>{row.tytul}</td>
           <td className={style.col_uwagi}> {row.uwagi}</td>
           <NakladTableZamowienia  row={row}/>
@@ -130,6 +132,15 @@ import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/init
        <td> {row.naklad} </td>
       )
   }
+
+  const KlientTableZamowienia= ({row}) =>{
+    return(
+      <input  disaled title={row.klient} className={style.klientInput} value={row.klient}/>
+
+
+    //  <td> {row.klient} </td>
+    )
+}
   
   
   const StanZamowieniaTable = ({row}) =>{

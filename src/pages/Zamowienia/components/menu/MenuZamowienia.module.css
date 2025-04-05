@@ -13,12 +13,12 @@
   z-index: 100;
   
   width: 200px;
-  height: 180px;
+  height: 120px;
   
   /* background-color: grey; */
   /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
   background-color: rgb(246, 212, 45);
-  background-color: rgb(165, 165, 165);
+  background-color: rgb(31, 31, 31);
   /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
   
 
@@ -26,18 +26,28 @@
   }
   
   .menu_btn{
-  height: 50px;
+  height: 40px;
   width: 100%;
   background-color: rgb(165, 165, 165);
-  color: whitesmoke;
-  border: none
-
- 
-  
-  /* border: 1px solid rgb(157, 157, 157); */
+  background-color: rgb(31, 31, 31);
+  color: rgb(209, 209, 209);
+  /* border: none */
+  border: 1px solid rgb(39, 39, 39);
   }
+
+
+  .menu_btn:first-child{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .menu_btn:last-child{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
   .menu_btn:hover{
-    background-color: rgb(124, 124, 124);
+    background-color: rgb(38, 101, 183);
 
 
   }

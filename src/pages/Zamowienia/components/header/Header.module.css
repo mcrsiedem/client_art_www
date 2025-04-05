@@ -67,7 +67,7 @@
     background: transparent;
     color: rgb(212, 212, 212);
     border-radius: 5px;
-    height: 30px;
+    height: 25px;
     padding-left: 10px;
     /* padding-right: 5px; */
     /* font-weight: 500; */
@@ -76,7 +76,9 @@
     /* border: none; */
 }
 .select_opiekun_zamowienia > option{
-    color:rgb(38, 38, 38);
+    background-color: rgb(31, 31, 31);
+    color: rgb(209, 209, 209);
+    /* color:rgb(38, 38, 38); */
 }
 
 .select_opiekun_zamowienia:focus{

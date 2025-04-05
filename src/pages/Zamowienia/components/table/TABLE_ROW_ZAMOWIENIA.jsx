@@ -19,11 +19,25 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
+  const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
+
+  const onMenuHandle = (event) =>{
+    event.preventDefault();
+
+    console.log(event)
+    console.log(event.pageX)
+    console.log(event.pageY)
+    console.log(event.screenX)
+    console.log(event.screenY)
+    console.log(row.tytul)
+    setShowMenuZamowienia(true)
+  }
 
   return (
     <>
       <tr
+      onContextMenu={(event)=>{ onMenuHandle(event)}}
         title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono}
         className={style.row_zamowienia}
         key={row.id}

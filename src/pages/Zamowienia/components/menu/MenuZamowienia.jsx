@@ -7,14 +7,18 @@ import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { odblokujZamowienie } from "actions/odblokujZamowienie";
 import { refreshZamowienia } from "actions/refreshZamowienia";
-export default function MenuZamowienia({ showMenu, setShowMenu }) {
+import { ModalInsertContext } from "context/ModalInsertContext";
+export default function MenuZamowienia() {
 
+  const contextModalInsert = useContext(ModalInsertContext);
 
   const appContext = useContext(AppContext)
   const setZamowienia = appContext.setZamowienia;
   const zamowienia = appContext.zamowienia;
+  const showMenuZamowienia = contextModalInsert.showMenuZamowienia;
+  const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
 
-  if (showMenu) {
+  if (showMenuZamowienia) {
     return (
       <div className={style.container_menu}>
         {/* <button
@@ -30,13 +34,13 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         </button> */}
         <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true && x.stan <3);
-        deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenu)
+        deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenuZamowienia)
  
           }}>Usuń</button>
 
 <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
-        odblokujZamowienie(rowsToDelete, setShowMenu,refreshZamowienia,setZamowienia,zamowienia)
+        odblokujZamowienie(rowsToDelete, setShowMenuZamowienia,refreshZamowienia,setZamowienia,zamowienia)
         
  
           }}>Odblokuj zamówienie</button>
@@ -44,7 +48,7 @@ export default function MenuZamowienia({ showMenu, setShowMenu }) {
         <button
           className={style.menu_btn}
           onClick={() => {
-            setShowMenu(!showMenu);
+            setShowMenuZamowienia(!showMenuZamowienia);
           }}
         >
           Anuluj

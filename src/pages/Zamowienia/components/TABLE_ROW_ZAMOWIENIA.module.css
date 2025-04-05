@@ -28,7 +28,7 @@
   width: 150px;
 }
 
-.klientInput:focus, input:focus{
+.klientInput:focus{
   outline: none;
 }
 

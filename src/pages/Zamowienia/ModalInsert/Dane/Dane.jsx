@@ -594,7 +594,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
       <input className={style.input} type="text" title="Numer zamówienia"
-      disabled
+      
       onDoubleClick={()=>{
 
         contextModalInsert.setShowInputNrZamowienie(true)
@@ -605,7 +605,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         const re = /^[0-9]+$/;
 
         if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status, update: true});
+          setDaneZamowienia({...daneZamowienia, nr: event.target.value,update: true});
            
         }
         
@@ -615,27 +615,33 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-function NR_PRODUKTU( ){
+function NR_PRODUKTU() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return(
-      <div className={style.col}>
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return (
+    <div className={style.col}>
       <label className={style.label}> Produkt </label>
-      <input className={style.input} type="text" title="Numer produktu"
-      value={daneZamowienia.produkt_nr}
-      onChange={(event) => {
-
-        const re = /^[0-9]+$/;
-
-        if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, produkt_nr: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status, update: true});
-           
-        }
-        
-      
-      }}></input>
+      <input
+        className={style.input}
+        type="text"
+        title="Numer produktu"
+        value={daneZamowienia.produkt_nr}
+        disabled
+      //   onChange={(event) => {
+      //     const re = /^[0-9]+$/;
+      //     if (event.target.value === "" || re.test(event.target.value)) {
+      //       setDaneZamowienia({
+      //         ...daneZamowienia,
+      //         produkt_nr: event.target.value,
+      //         status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+      //         update: true,
+      //       });
+      //     }
+      //   }
+      // }
+      ></input>
     </div>
   );
 }

@@ -112,6 +112,14 @@
 
 
 }
+.col_nr{
+   width: 30px;
+   /* background-color: red; */
+      /* padding-top: 10px; */
+
+     
+   }
+
 
 .col_klient {
    width: 150px;

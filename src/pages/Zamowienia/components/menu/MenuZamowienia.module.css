@@ -29,7 +29,8 @@
   height: 40px;
   width: 100%;
   background-color: rgb(33, 33, 33);
-
+/* text-align: left;
+padding-left: 20px; */
   color: rgb(209, 209, 209);
   border: none
   }

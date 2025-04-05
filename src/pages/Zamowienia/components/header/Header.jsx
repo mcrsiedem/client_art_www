@@ -61,10 +61,8 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const setSelectedUser= contextApp.setSelectedUser;
   if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
         return (
-      <div className={style.col_dane}>
-        <label className={style.label}> Firma </label>
         <select
-        className={style.firma}
+        className={style.select_opiekun_zamowienia}
         value={selectedUser}
         onChange={(event) => {
           setSelectedUser(event.target.value)
@@ -73,7 +71,7 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         }}
       >
                   {   <option value = "0"  >
-             wszyscy
+             Wszyscy 
             </option>}
         {contextApp.users
         .map((option) => (
@@ -82,7 +80,6 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
           </option>
         ))}
       </select>
-      </div>
     );
   }
 

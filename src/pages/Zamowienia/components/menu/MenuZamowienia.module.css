@@ -28,11 +28,10 @@
   .menu_btn{
   height: 40px;
   width: 100%;
-  background-color: rgb(165, 165, 165);
-  background-color: rgb(31, 31, 31);
+  background-color: rgb(33, 33, 33);
+
   color: rgb(209, 209, 209);
-  /* border: none */
-  border: 1px solid rgb(39, 39, 39);
+  border: none
   }
 
 
@@ -47,7 +46,7 @@
   }
 
   .menu_btn:hover{
-    background-color: rgb(38, 101, 183);
+    background-color: rgb(55, 121, 207);
 
 
   }

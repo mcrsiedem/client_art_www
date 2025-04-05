@@ -53,7 +53,7 @@ export default function TableMini({open2,setRow}){
            <th className={style.col_firma}>Etap</th>
            <th className={style.col_firma}>Opiekun</th>
            <th className={style.th_checkbox}>
-             <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} />
+             {/* <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /> */}
            </th>
            <th style={{ textAlign: "center" }}></th>
          </tr>

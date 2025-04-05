@@ -73,8 +73,8 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
                   {   <option value = "0"  >
              Wszyscy 
             </option>}
-        {contextApp.users
-        .map((option) => (
+     
+    {contextApp.users?.map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>

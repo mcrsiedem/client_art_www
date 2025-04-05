@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import MenuZamowienia from "./MenuZamowienia";
+import MenuZamowienia from "../menu/MenuZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import { TechnologyContext } from "context/TechnologyContext";
 
@@ -17,7 +17,7 @@ export default function TableZamowienia({open2,setRow}){
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
-
+  const selectedUser= contextApp.selectedUser;
 
  return (
    <div className={style.tableContainer} >
@@ -61,6 +61,13 @@ export default function TableZamowienia({open2,setRow}){
        <tbody className={style.tableZam}>
          {zamowienia
            .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+           .filter((zam) => {
+            if (selectedUser == 0) {
+              return true;
+            } else {
+             return  zam.opiekun_id == selectedUser;
+            }
+          })
            .filter(z => z.stan ==3)
            .map((row) => {
              return (

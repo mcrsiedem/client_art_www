@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import MenuZamowienia from "./MenuZamowienia";
+import MenuZamowienia from "../menu/MenuZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import { TechnologyContext } from "context/TechnologyContext";
 
@@ -18,14 +18,13 @@ export default function TableMini({open2,setRow}){
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
-
+  const selectedUser= contextApp.selectedUser;
 
  return (
    <div className={style.tableContainer}>
      <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
-     <table >
+     <table>
        <thead className={style.th_head}>
-  
          <tr className={style.table_tr}>
            <th style={{ textAlign: "center" }}>!</th>
 
@@ -62,10 +61,22 @@ export default function TableMini({open2,setRow}){
        <tbody className={style.bodyContainer}>
          {zamowienia
            .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-           .filter(z => z.stan !=3)
+           .filter((zam) => {
+             if (selectedUser == 0) {
+               return true;
+             } else {
+              return  zam.opiekun_id == selectedUser;
+             }
+           })
+           .filter((z) => z.stan != 3)
            .map((row) => {
              return (
-               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />
+               <TABLE_ROW_ZAMOWIENIA
+                 key={row.id}
+                 row={row}
+                 open2={open2}
+                 setRow={setRow}
+               />
              );
            })}
        </tbody>

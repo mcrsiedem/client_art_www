@@ -120,7 +120,7 @@ const NakladTableZamowienia = ({ row }) => {
 const KlientTableZamowienia = ({ row }) => {
   return (
     <input
-      disaled
+      
       title={row.klient}
       className={style.klientInput}
       value={row.klient}

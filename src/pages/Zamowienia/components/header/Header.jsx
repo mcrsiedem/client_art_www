@@ -54,9 +54,6 @@ export default function Header({ dodaj_clikHandler}) {
 
 function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const contextApp = useContext(AppContext);
-  const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  const daneZamowienia = contextModalInsert.daneZamowienia;
   const selectedUser= contextApp.selectedUser;
   const setSelectedUser= contextApp.setSelectedUser;
   if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
@@ -66,8 +63,6 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         value={selectedUser}
         onChange={(event) => {
           setSelectedUser(event.target.value)
-            // setDaneKlienta({...daneKlienta, opiekun_id: event.target.value});
-     
         }}
       >
                   {   <option value = "0"  >

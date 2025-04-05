@@ -17,6 +17,7 @@ export default function TableZamowienia({open2,setRow}){
   const contextModalInsert = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
+  const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
 
  return (
@@ -42,11 +43,15 @@ export default function TableZamowienia({open2,setRow}){
            <th className={style.col_klient}>Klient</th>
            <th className={style.col_klient2}>Praca</th>
            <th className={style.col_uwagi}>Uwagi</th>
-           <th className={style.naklad}>Nakład</th>
+           <th onClick={()=>{
+            setZamowienia(zamowienia.sort((a, b) => a.naklad - b.naklad))
+            }} className={style.naklad}>Nakład</th>
            <th className={style.col_strony2}>Strony</th>
-           <th className={style.col_spedycja}>Spedycja</th>
+           <th  className={style.col_spedycja}>Spedycja</th>
            <th className={style.col_szerokosc}>Netto</th>
-           <th className={style.col_oprawa}>Oprawa</th>
+           <th onClick={()=>{
+            setZamowienia(zamowienia.sort((a, b) => a.oprawa_id - b.oprawa_id))
+            }}className={style.col_oprawa}>Oprawa</th>
            <th className={style.col_firma}>Firma</th>
            <th className={style.col_firma}>Stan</th>
            <th className={style.col_status}>Status</th>

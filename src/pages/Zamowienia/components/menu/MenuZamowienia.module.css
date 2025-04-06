@@ -1,27 +1,31 @@
 
 
-
+.grayScaleBackground {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  /* backdrop-filter: grayscale(100%); */
+  backdrop-filter: grayscale(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container_menu{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
   position:  absolute ;
-  top: 30px;
-  right: 55px;
+  /* top: 30px;
+  right: 55px; */
   z-index: 100;
-  
   width: 200px;
   height: 120px;
-  
-  /* background-color: grey; */
-  /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
   background-color: rgb(246, 212, 45);
   background-color: rgb(31, 31, 31);
-  /* background-image: linear-gradient(rgb(95, 186, 21) 0%, rgb(110, 209, 29) 50%, rgb(95, 186, 21) 100%); */
-  
-
   border-radius: 10px;
   }
   

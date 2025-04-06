@@ -17,10 +17,25 @@ export default function MenuZamowienia() {
   const zamowienia = appContext.zamowienia;
   const showMenuZamowienia = contextModalInsert.showMenuZamowienia;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
-
+  const container_menu = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    position:  "absolute",
+    top: "30px",
+    right: "55px",
+    zIindex: "100",
+    width: "200px",
+    height: "120px",
+    backgroundColor: "rgb(31, 31, 31)",
+    borderRadius: "10px"
+    }
   if (showMenuZamowienia) {
     return (
+      <div className={style.grayScaleBackground}>
       <div className={style.container_menu}>
+      {/* <div style={container_menu}> */}
         {/* <button
           className={style.menu_btn}
           onClick={() => {
@@ -48,11 +63,19 @@ export default function MenuZamowienia() {
         <button
           className={style.menu_btn}
           onClick={() => {
+            setZamowienia(
+              zamowienia.map((t) => {
+          
+                  return {...t, select: false }
+                
+              })
+            )
             setShowMenuZamowienia(!showMenuZamowienia);
           }}
         >
           Anuluj
         </button>
+      </div>
       </div>
     );
   }

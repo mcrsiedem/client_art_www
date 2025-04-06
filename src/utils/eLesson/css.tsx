@@ -1,5 +1,29 @@
 import React from "react";
 
+
+var styles = {
+    root: {
+      display: "block"
+    },
+    item: {
+      color: "black",
+  
+      complete: {
+        textDecoration: "line-through"
+      },
+  
+      due: {
+        color: "red"
+      }
+    },
+  }
+
+
+
+
+
+
+
 const red ={
     color: 'red'
 }

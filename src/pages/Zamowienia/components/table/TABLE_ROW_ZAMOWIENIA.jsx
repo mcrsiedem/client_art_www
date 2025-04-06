@@ -21,6 +21,10 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
+    const contextApp = useContext(AppContext);
+  
+  const zamowienia = contextApp.zamowienia
+  const setZamowienia = contextApp.setZamowienia
 
   const onMenuHandle = (event) =>{
     event.preventDefault();
@@ -31,6 +35,16 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
     console.log(event.screenX)
     console.log(event.screenY)
     console.log(row.tytul)
+    setZamowienia(
+      zamowienia.map((t) => {
+        if (t.id == row.id) {
+          return { ...row, select: true };
+          // return { ...row, select: event.target.checked };
+        } else {
+          return t;
+        }
+      })
+    );
     setShowMenuZamowienia(true)
   }
 
@@ -48,6 +62,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         }}
         onClick={(node, event) => {
           setSelectedZamowienie(row);
+
         }}
         onDoubleClick={(node, event) => {
           open2(row.id);

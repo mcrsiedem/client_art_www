@@ -6,6 +6,7 @@ export const  addClient  = async ({daneKlienta,setClients,setClientsWyszukiwarka
   
     await axios.post(IP + "klienci", {
         firma: daneKlienta.firma,
+        firma_nazwa: daneKlienta.firma_nazwa,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
         nip: daneKlienta.nip,

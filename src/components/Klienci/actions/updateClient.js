@@ -8,6 +8,7 @@ export   const updateClient = async (daneKlienta,setClients,setClientsWyszukiwar
       .put(IP + "updateKlient", {
         id: daneKlienta.id,
         firma: daneKlienta.firma,
+        firma_nazwa: daneKlienta.firma_nazwa,
         adres: daneKlienta.adres,
         kod: daneKlienta.kod,
         nip: daneKlienta.nip,

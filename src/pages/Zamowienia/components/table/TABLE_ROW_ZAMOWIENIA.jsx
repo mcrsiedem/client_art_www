@@ -149,10 +149,10 @@ const NakladTableZamowienia = ({ row }) => {
 const KlientTableZamowienia = ({ row }) => {
   return (
     <input
-      
+      //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
       className={style.klientInput}
-      value={row.klient}
+      value={row.firma_nazwa}
     />
 
     //  <td> {row.klient} </td>

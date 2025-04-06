@@ -38,6 +38,7 @@ const sprawdzDostep = (c) => {
           <tr>
             <th className={style.id}>#</th>
             <th className={style.firma}>Firma</th>
+            <th className={style.firma}>Nazwa skrócona</th>
             <th className={style.adres}>Adres</th>
             <th className={style.kod}>Kod</th>
             <th className={style.nip}>NIP</th>
@@ -70,6 +71,7 @@ const sprawdzDostep = (c) => {
               >
                 <ID row={row} index={index + 1} />
                 <Firma row={row} />
+                <FirmaNazwaSkrocona row={row} />
                 <Adres row={row} />
                 <Kod row={row} />
                 <NIP row={row} />
@@ -127,6 +129,7 @@ const openEdit = (row, rowID, setShowEdit) => {
   rowID.current = {
     id: row.id,
     firma: row.firma,
+    firma_nazwa: row.firma_nazwa,
     adres: row.adres,
     kod: row.kod,
     nip: row.nip,
@@ -198,6 +201,9 @@ function UseIcon({ parent,row, rowID,setDaneZamowienia, daneZamowienia,setShowCh
 
 function Firma({ row }) {
   return <td>{row.firma}</td>;
+}
+function FirmaNazwaSkrocona({ row }) {
+  return <td>{row.firma_nazwa}</td>;
 }
 function Adres({ row }) {
   return <td>{row.adres}</td>;

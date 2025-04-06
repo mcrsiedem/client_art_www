@@ -13,6 +13,7 @@ export default function EditClient({
    
     id: rowID.current.id,
     firma: rowID.current.firma,
+    firma_nazwa: rowID.current.firma_nazwa,
     adres: rowID.current.adres,
     kod: rowID.current.kod,
     nip: rowID.current.nip,
@@ -28,6 +29,8 @@ export default function EditClient({
 
       <div className={style.center}>
       <Firma daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
+      <Firma_nazwa_skrocona daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
+
       <Adres daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
 
       <NIP daneKlienta={daneKlienta} setDaneKlienta={setDaneKlienta} />
@@ -115,6 +118,28 @@ function Firma({ daneKlienta, setDaneKlienta }) {
           const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
           if (event.target.value === "" || re.test(event.target.value)) {
             setDaneKlienta({ ...daneKlienta, firma: event.target.value });
+          }
+        }}
+      >
+
+      </input>
+    </div>
+  );
+}
+
+function Firma_nazwa_skrocona({ daneKlienta, setDaneKlienta }) {
+  return (
+    <div className={style.labelinput}>
+      <label className={style.label}> Nazwa skrócona </label>
+      <input
+        className={style.firma}
+        title="Nazwa skrócona klienta"
+        type="text"
+        value={daneKlienta?.firma_nazwa}
+        onChange={(event) => {
+          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
+          if (event.target.value === "" || re.test(event.target.value)) {
+            setDaneKlienta({ ...daneKlienta, firma_nazwa: event.target.value });
           }
         }}
       >

@@ -63,6 +63,16 @@ padding-left: 40px;
   
   
 }
+.input_alert{
+  background-color: rgb(255, 252, 177);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  
+}
+
 /* .rowFragmenty{
   margin-left: 20px;
 } */

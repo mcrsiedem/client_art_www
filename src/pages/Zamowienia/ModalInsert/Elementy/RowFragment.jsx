@@ -207,6 +207,7 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
       if (t.id == id) {
         return {
           ...t,
+          naklad: 0,
           delete: true
         };
       } else {
@@ -215,18 +216,7 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
     })
   );
 }
-  // setFragmenty((prev) =>
-  //   prev.map((t, a) => {
-  //     if (t.indeks > indeks) {
-  //       return {
-  //         ...t,
-  //         indeks: t.indeks--,
-  //       };
-  //     } else {
-  //       return t;
-  //     }
-  //   })
-  // );
+
 
 
 };

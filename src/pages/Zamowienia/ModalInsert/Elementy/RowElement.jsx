@@ -17,6 +17,7 @@ import { getNameOfPapier } from "actions/getNameOfPapier";
 import { useHistoria } from "hooks/useHistoria";
 import { useStatus } from "hooks/useStatus";
 import { getNameOfElement } from "actions/getNameOfElement";
+import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -479,10 +480,42 @@ const [setStatus] = useStatus()
   
   function Naklad({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
+   const contextModalInsert = useContext(ModalInsertContext);
+    const fragmenty = contextModalInsert.fragmenty
+
+      const sprawdzSume = () => {
+
+        let suma_nakladow = fragmenty
+          .filter((x) => x.element_id == row.id)
+          .map((x) => parseInt(x.naklad))
+          .reduce((a, b) => a + b, 0);
+
+        if (suma_nakladow != row.naklad) {
+          return style.input_alert;
+        }
+        return style.input;
+      };
+
+      const ilezostalo = () => {
+
+        let suma_nakladow = fragmenty
+          .filter((x) => x.element_id == row.id)
+          .map((x) => parseInt(x.naklad))
+          .reduce((a, b) => a + b, 0);
+          if(parseInt(row.naklad)-suma_nakladow == 0){
+            return "Suma nakładów OK"
+          }else{
+             return "Brakuje "+(parseInt(row.naklad)-suma_nakladow)+" szt.";
+          }
+       
+      };
+
     return (
-   
+
+  
         <input
-          className={style.input}
+          className={sprawdzSume()}
+          title={ilezostalo()}
           value={row.naklad}
           onChange={(e) =>
             {

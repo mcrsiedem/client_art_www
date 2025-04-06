@@ -81,8 +81,9 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
         {/* <td className={style.col_klient}>{row.klient}</td> */}
         <KlientTableZamowienia row={row} />
+        <PracaTableZamowienia row={row} />
 
-        <td>{row.tytul}</td>
+        {/* <td>{row.tytul}</td> */}
         <td className={style.col_uwagi}> {row.uwagi}</td>
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
@@ -148,14 +149,28 @@ const NakladTableZamowienia = ({ row }) => {
 
 const KlientTableZamowienia = ({ row }) => {
   return (
-    <input
+    <td>
+       <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
       className={style.klientInput}
       value={row.firma_nazwa}
     />
+    </td>
+   
+  );
+};
 
-    //  <td> {row.klient} </td>
+const PracaTableZamowienia = ({ row }) => {
+  return (
+    <td>
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.tytulInput}
+      value={row.tytul}
+    />
+    </td>
   );
 };
 

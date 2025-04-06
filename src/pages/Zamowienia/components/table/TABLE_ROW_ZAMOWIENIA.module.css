@@ -23,12 +23,29 @@
 .klientInput{
   border: none;
   background: transparent;
-  margin-left: 10px;
-  padding-left: 10px;
-  width: 150px;
+  /* margin-left: 10px; */
+  /* padding-left: 10px; */
+  /* width: 110px; */
   font-size: 0.9rem;
   padding-top: 5px;
+  /* background-color: #9df450; */
+  width: 100%;
 }
+
+.tytulInput{
+  border: none;
+  background: transparent;
+  /* margin-left: 10px; */
+  /* padding-left: 10px; */
+  /* width: 200px; */
+  font-size: 0.9rem;
+  /* padding-top: 5px;
+  background-color: #9df450; */
+  width: 100%;
+
+}
+
+
 
 .klientInput:focus{
   outline: none;

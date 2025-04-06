@@ -40,7 +40,7 @@ export default function TableMini({open2,setRow}){
              />
            </th>
            <th className={style.col_klient}>Klient</th>
-           <th className={style.col_klient2}>Praca</th>
+           <th className={style.col_praca}>Praca</th>
            <th className={style.col_uwagi}>Uwagi</th>
            <th className={style.naklad}>Nakład</th>
            <th className={style.col_strony2}>Strony</th>

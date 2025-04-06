@@ -41,7 +41,7 @@ export default function TableZamowienia({open2,setRow}){
              />
            </th>
            <th className={style.col_klient}>Klient</th>
-           <th className={style.col_klient2}>Praca</th>
+           <th className={style.col_praca}>Praca</th>
            <th className={style.col_uwagi}>Uwagi</th>
            <th onClick={()=>{
             setZamowienia(zamowienia.sort((a, b) => a.naklad - b.naklad))

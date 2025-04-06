@@ -113,7 +113,12 @@
 }
 
 .col_klient {
-   width: 150px;
+   width: 100px;
+}
+.col_praca {
+   width: 200px;
+
+   /* background-color: #be2617; */
 }
 
 .col_rok {

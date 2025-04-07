@@ -305,7 +305,7 @@ const IconNavigate = ({ className, logo, navi }) => {
         techContext.setRowZamowienia(null);
         techContext.setRowTechnologia(null);
         fechGrupyAndWykonaniaForProcesor(selectedProcesor);
-        refreshZamowienia(appContext.setZamowienia)
+        refreshZamowienia(appContext.setZamowienia,appContext.setZamowieniaWyszukiwarka)
         // techContext.setOpenTechnologia(false)
       }}
       alt="Logo"

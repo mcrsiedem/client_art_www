@@ -28,6 +28,8 @@ const contextModal = useContext(ModalInsertContext);
 
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
+  
   return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
@@ -71,6 +73,7 @@ const contextModal = useContext(ModalInsertContext);
                 setProcesyElementow,
                 procesyElementow,
                 setZamowienia,
+                setZamowieniaWyszukiwarka,
                 setSaveButtonDisabled
               });
                         setShowSaveAs(!showSaveAs)

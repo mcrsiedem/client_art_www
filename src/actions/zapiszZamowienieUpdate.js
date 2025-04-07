@@ -19,7 +19,7 @@ import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
-export async function zapiszZamowienieUpdate({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,
+export async function zapiszZamowienieUpdate({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,setZamowieniaWyszukiwarka,
   procesyElementow,technologieID,historiaZamowienia,setHistoriaZamowienia}){
 
 
@@ -34,7 +34,7 @@ export async function zapiszZamowienieUpdate({daneZamowienia,setDaneZamowienia,p
            setProcesyElementow(savedDane.procesyElementow)
            setHistoriaZamowienia(savedDane.historiaZamowienia)
            
-          refreshZamowienia(setZamowienia);
+          refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka);
 
 }
 

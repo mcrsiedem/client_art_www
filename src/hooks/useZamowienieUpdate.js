@@ -25,6 +25,8 @@ export  function useZamowienieUpdate(){
   const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
+
 const setTechnologieID = contextModalInsert.setTechnologieID;
 
 
@@ -54,7 +56,7 @@ const setTechnologieID = contextModalInsert.setTechnologieID;
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
 
-  refreshZamowienia(setZamowienia);
+  refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka);
   setSaveButtonDisabled(true)
 
 }

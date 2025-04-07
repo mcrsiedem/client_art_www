@@ -3,7 +3,7 @@ import DecodeToken from "../pages/Login/DecodeToken";
 import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
-export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,
+export async function zapiszZamowienie({daneZamowienia,setDaneZamowienia,produkty,elementy,fragmenty,oprawa,setProdukty,setElementy,setFragmenty,setOprawa,setProcesyElementow,setZamowienia,setZamowieniaWyszukiwarka,
   procesyElementow,setSaveButtonDisabled}){
 
 
@@ -51,7 +51,7 @@ console.log(response)
            }
 
            
-           refreshZamowienia(setZamowienia);
+           refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka);
 
 }
 

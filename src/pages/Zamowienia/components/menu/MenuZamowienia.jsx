@@ -14,6 +14,7 @@ export default function MenuZamowienia() {
 
   const appContext = useContext(AppContext)
   const setZamowienia = appContext.setZamowienia;
+  const setZamowieniaWyszukiwarka = appContext.setZamowieniaWyszukiwarka;
   const zamowienia = appContext.zamowienia;
   const showMenuZamowienia = contextModalInsert.showMenuZamowienia;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
@@ -33,7 +34,7 @@ export default function MenuZamowienia() {
     }
   if (showMenuZamowienia) {
     return (
-      <div className={style.grayScaleBackground}>
+      <div onContextMenu={(event)=>{  event.preventDefault()}} className={style.grayScaleBackground}>
       <div className={style.container_menu}>
       {/* <div style={container_menu}> */}
         {/* <button
@@ -49,13 +50,13 @@ export default function MenuZamowienia() {
         </button> */}
         <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true && x.stan <3);
-        deleteZamowienie(zamowienia,setZamowienia,rowsToDelete, setShowMenuZamowienia)
+        deleteZamowienie(zamowienia,setZamowienia,setZamowieniaWyszukiwarka,rowsToDelete, setShowMenuZamowienia)
  
           }}>Usuń</button>
 
 <button className={style.menu_btn}           onClick={() => {
         const rowsToDelete =zamowienia.filter(x => x.select === true);
-        odblokujZamowienie(rowsToDelete, setShowMenuZamowienia,refreshZamowienia,setZamowienia,zamowienia)
+        odblokujZamowienie(rowsToDelete, setShowMenuZamowienia,refreshZamowienia,setZamowienia,setZamowieniaWyszukiwarka,zamowienia)
         
  
           }}>Odblokuj zamówienie</button>

@@ -9,6 +9,7 @@ export function useUzytnownicy() {
   const contextApp = useContext(AppContext);
   const setUzytkownicy = contextApp.setUzytkownicy;
   const setUzytkownicyGrupy = contextApp.setUzytkownicyGrupy;
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka;
 
   async function getUzytnownicy() {
     const res = await axios.get(
@@ -17,7 +18,7 @@ export function useUzytnownicy() {
 
     setUzytkownicy(res.data[0]);
     setUzytkownicyGrupy(res.data[1]);
-    refreshZamowienia(setZamowienia);
+    refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka);
     setSaveButtonDisabled(true);
 
     // let savedDane  = await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})

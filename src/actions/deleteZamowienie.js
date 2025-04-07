@@ -4,7 +4,7 @@ import { IP } from "../utils/Host";
 import { refreshZamowienia } from "./refreshZamowienia";
 
 
-export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMenuZamowienia) {
+export function deleteZamowienie(zamowienia,setZamowienia,setZamowieniaWyszukiwarka,rowsToDelete,setShowMenuZamowienia) {
 
 
 
@@ -15,7 +15,7 @@ export function deleteZamowienie(zamowienia,setZamowienia,rowsToDelete,setShowMe
 
     // console.log(res.status)
     // setZamowienia( zamowienia.filter(x => x.select !== true))
-    refreshZamowienia(setZamowienia)
+    refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka)
     setShowMenuZamowienia(false)
 
 

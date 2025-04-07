@@ -181,6 +181,7 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
 
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
  const [saveZamowienieUpdate] = useZamowienieUpdate();
   return (
     <button
@@ -204,6 +205,7 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
           setProcesyElementow,
           procesyElementow,
           setZamowienia,
+          setZamowieniaWyszukiwarka,
           setSaveButtonDisabled,
         });
         
@@ -343,6 +345,7 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
   // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
   return (
 
 
@@ -357,7 +360,7 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
         const res = await axios.put(IP + "setOrderClosed", {
           id: row.id,
         });
-        refreshZamowienia(setZamowienia)
+        refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka)
       }
       contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)

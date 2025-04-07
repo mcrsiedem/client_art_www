@@ -1,12 +1,12 @@
 import axios from "axios";
 import { IP } from "../utils/Host";
 
-export function odblokujZamowienie(rowsToDelete,setShowMenuZamowienia,refreshZamowienia,setZamowienia,zamowienia) {
+export function odblokujZamowienie(rowsToDelete,setShowMenuZamowienia,refreshZamowienia,setZamowienia,setZamowieniaWyszukiwarka,zamowienia) {
   axios
   .delete(IP + "odblokuj_zamowienie", { data: { row: rowsToDelete } })
     .then((res) => {
       setShowMenuZamowienia(false)
-    refreshZamowienia(setZamowienia)
+    refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka)
     setZamowienia(
       zamowienia.map((t) => {
   

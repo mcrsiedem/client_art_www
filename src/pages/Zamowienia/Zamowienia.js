@@ -13,6 +13,7 @@ import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
 import TableMini from "./components/table/TableMini";
 import TableZamowienia from "./components/table/TableZamowienia";
+import { useZamowienia } from "hooks/useZamowienia";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -21,13 +22,12 @@ function Zamowienia({ user, setUser }) {
   const open = useRef(false);
   const navigate = useNavigate();
   const data = contextApp.zamowienia;
-  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka;
   const setData = contextApp.setZamowienia;
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   const setNadkomplety = contextApp.setNadkomplety;
   const [callForPaper] = useApiPapier();
-
+const [refreshZamowienia] = useZamowienia()
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
     open.current = false;
@@ -37,40 +37,28 @@ function Zamowienia({ user, setUser }) {
     setOpenModalInsert(true);
     open.current = true;
   };
-  async function fechZamowienia() {
-    const res = await axios.get(
-      IP + "zamowienia/" + sessionStorage.getItem("token")
-    );
-    let jobs = [...res.data];
-    setData(jobs);
-    setZamowieniaWyszukiwarka(jobs)
-    callForPaper();
-    getClients(setClients, setClientsWyszukiwarka);
-    getNadkomplety(setNadkomplety);
-  }
+
 
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechZamowienia();
+          refreshZamowienia();
+          callForPaper();
+          getClients(setClients, setClientsWyszukiwarka);
+          getNadkomplety(setNadkomplety);
         } else {
           navigate("/Login");
         }
       });
   }
 
-  // async function refreshZamowienia() {
-  //   const res = await axios.get(
-  //     IP + "zamowienia/" + sessionStorage.getItem("token")
-  //   );
-  //   let jobs = [...res.data];
-  //   setData(jobs);
-  // }
-  // useEffect(() => {
-  //   checkToken();
-  // }, []);
+
+
+  useEffect(() => {
+    checkToken();
+  }, []);
 
 
   const onClose = useCallback(

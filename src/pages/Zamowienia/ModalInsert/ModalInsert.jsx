@@ -36,7 +36,6 @@ import { AppContext } from "context/AppContext";
 import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "utils/initialvalue";
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import PaperStage from "components/PaperStage/PaperStage";
-import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
 
 function ModalInsert({

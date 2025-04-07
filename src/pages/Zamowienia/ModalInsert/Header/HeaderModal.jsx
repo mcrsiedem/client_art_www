@@ -1,5 +1,4 @@
 import iconTable from "../../../../assets/table.svg";
-import iconTableGreen from "../../../../assets/table_green.svg";
 import iconLock from "assets/lock2.svg";
 import iconUnLock from "assets/unLock.svg";
 import iconX from "assets/x.svg";
@@ -7,16 +6,13 @@ import React, { useState, useContext } from "react";
 import style from "./HeaderModal.module.css";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
-import { SocketContext } from "../../../../context/SocketContext";
-import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
-import { useAuth } from "hooks/useAuth";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
-import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
+import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -115,72 +111,26 @@ const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
   />
   )
 }
-function Zapisz({ setShowSaveAs, setSaveAs }) {
+function Zapisz({ setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-  const produkty= contextModalInsert.produkty;
-  // const daneZamowienia= contextModalInsert.daneZamowienia;
+  const produkty = contextModalInsert.produkty;
   const daneZamowienia = contextModalInsert.daneZamowienia;
-  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-  const elementy= contextModalInsert.elementy;
-  const fragmenty= contextModalInsert.fragmenty;
-  const oprawa= contextModalInsert.oprawa;
-  const setProdukty= contextModalInsert.setProdukty;
-  const setElementy= contextModalInsert.setElementy;
-  const setFragmenty= contextModalInsert.setFragmenty;
-  const setOprawa= contextModalInsert.setOprawa;
-  const setProcesyElementow= contextModalInsert.setProcesyElementow;
-  const procesyElementow= contextModalInsert.procesyElementow;
-  const technologieID= contextModalInsert.technologieID;
-  const historiaZamowienia= contextModalInsert.historiaZamowienia?.filter(x=>x.insert == true );
-  const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
-
-
 
   const contextApp = useContext(AppContext);
-  const setZamowienia = contextApp.setZamowienia
-  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
- const [saveZamowienieUpdate] = useZamowienieUpdate();
+  const [saveZamowienieUpdate] = useZamowienieUpdate();
+  const [zapiszZamowienie] = useZamowienieZapisz();
   return (
     <button
-
       onClick={async () => {
-
-        if(produkty[0].naklad != 0 && daneZamowienia.id == 1){
-                 setSaveAs(false);
-     
-        zapiszZamowienie({
-          daneZamowienia,
-          setDaneZamowienia,
-          produkty,
-          elementy,
-          fragmenty,
-          oprawa,
-          setProdukty,
-          setElementy,
-          setFragmenty,
-          setOprawa,
-          setProcesyElementow,
-          procesyElementow,
-          setZamowienia,
-          setZamowieniaWyszukiwarka,
-          setSaveButtonDisabled,
-        });
-        
+        if (produkty[0].naklad != 0 && daneZamowienia.id == 1) {
+          setSaveAs(false);
+          zapiszZamowienie();
         }
 
-                  if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
-                    saveZamowienieUpdate();
-                  }
-
-
-
-
-
-
-
-        // setOrderClosed
+        if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
+          saveZamowienieUpdate();
+        }
       }}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       disabled={isSaveButtonDisabled}
@@ -189,19 +139,15 @@ function Zapisz({ setShowSaveAs, setSaveAs }) {
     </button>
   );
 }
+
 function Sprawdz({ setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const contextApp = useContext(AppContext);
-
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const produkty = contextModalInsert.produkty;
-  // const setZamowienia = contextApp.setZamowienia
-
   return (
     <button
       onClick={async () => {
         if (produkty[0].naklad) {
-          // alert("Data przyjecia: brak")
           if (
             (contextModalInsert.daneZamowienia.data_spedycji == null) ^
             (contextModalInsert.daneZamowienia.data_spedycji == "")
@@ -213,7 +159,6 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
         }
       }}
       className={style.btn}
-      // disabled={isSaveButtonDisabled}
     >
       Sprawdź
     </button>

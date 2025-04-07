@@ -2,8 +2,7 @@ import { useContext} from "react";
 import style from "../SaveAs/SaveAs.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
-import { PreOrderContext } from "context/PreOrderContext";
-import { zapiszZamowienie } from "actions/zapiszZamowienie";
+import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 
 export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,postZamowienieObjSaveAs,setSaveAs}) {
 //   useEffect(() => {}, []);
@@ -29,7 +28,7 @@ const contextModal = useContext(ModalInsertContext);
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
   const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
-  
+    const [zapiszZamowienie] = useZamowienieZapisz();
   return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
@@ -58,25 +57,8 @@ const contextModal = useContext(ModalInsertContext);
                     <button
                     className={style.btn}
                     onClick={() => {
-
-              zapiszZamowienie({
-                daneZamowienia,
-                setDaneZamowienia,
-                produkty,
-                elementy,
-                fragmenty,
-                oprawa,
-                setProdukty,
-                setElementy,
-                setFragmenty,
-                setOprawa,
-                setProcesyElementow,
-                procesyElementow,
-                setZamowienia,
-                setZamowieniaWyszukiwarka,
-                setSaveButtonDisabled
-              });
-                        setShowSaveAs(!showSaveAs)
+                      zapiszZamowienie();
+                      setShowSaveAs(!showSaveAs)
                     }}
                     >
                     Zapisz

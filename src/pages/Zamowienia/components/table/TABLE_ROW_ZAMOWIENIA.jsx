@@ -95,7 +95,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <StanZamowieniaTable row={row} />
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
-        <td>{row.opiekun}</td>
+        <td className={style.col_opiekun}>{row.opiekun}</td>
 
         {/* <td>{row.utworzono}</td> */}
         <SelectBox row={row} />

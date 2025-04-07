@@ -231,3 +231,29 @@
    width: 25px;
    padding: 2px;
 }
+
+.select_opiekun_zamowienia{
+   background: transparent;
+   color: rgb(61, 61, 61);
+   font-weight: bold;
+   font-size: 0.7rem;
+   outline-style: none;
+   border: none;
+   border-radius: 5px;
+   height: 25px;
+   padding-left: 10px;
+   /* padding-right: 5px; */
+   /* font-weight: 500; */
+   /* margin-right: 15px; */
+   font-size: 0.9rem;
+   /* border: none; */
+}
+.select_opiekun_zamowienia > option{
+   background-color: rgb(31, 31, 31);
+   color: rgb(209, 209, 209);
+   /* color:rgb(38, 38, 38); */
+}
+
+.select_opiekun_zamowienia:focus{
+   outline: none;
+}

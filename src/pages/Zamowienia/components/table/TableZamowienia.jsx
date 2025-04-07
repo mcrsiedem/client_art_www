@@ -11,6 +11,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import MenuZamowienia from "../menu/MenuZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import { TechnologyContext } from "context/TechnologyContext";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function TableZamowienia({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
@@ -23,6 +24,7 @@ export default function TableZamowienia({open2,setRow}){
  return (
    <div className={style.tableContainer} >
      <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
+ 
      <table className={style.tableZam}>
        <thead className={style.th_head}>
   
@@ -56,7 +58,7 @@ export default function TableZamowienia({open2,setRow}){
            <th className={style.col_firma}>Stan</th>
            <th className={style.col_status}>Status</th>
            <th className={style.col_firma}>Etap</th>
-           <th className={style.col_firma}>Opiekun</th>
+           <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
            <th className={style.th_checkbox}>
              {/* <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /> */}
            </th>
@@ -98,3 +100,31 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
             />
   )
 }
+
+function SELECT_OPIEKUN_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedUser= contextApp.selectedUser;
+  const setSelectedUser= contextApp.setSelectedUser;
+  if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
+        return (
+        <select
+        className={style.select_opiekun_zamowienia}
+        value={selectedUser}
+        onChange={(event) => {
+          setSelectedUser(event.target.value)
+        }}
+      >
+                  {   <option value = "0"  >
+             Wszyscy 
+            </option>}
+     
+    {contextApp.users?.map((option) => (
+          <option key={option.id} value={option.id}>
+          {option.Imie} {option.Nazwisko} 
+          </option>
+        ))}
+      </select>
+    );
+  }
+
+  }

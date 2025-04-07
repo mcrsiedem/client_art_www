@@ -4,9 +4,6 @@ import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
-import { ModalInsertContext } from "context/ModalInsertContext";
-import { sprawdzDostepUzytkownicy } from "actions/sprawdzDostepUzytkownicy";
-import DecodeToken from "pages/Login/DecodeToken";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -37,7 +34,7 @@ export default function Header({ dodaj_clikHandler}) {
         />
       </div>
       <div className={style.rightHeaderContener}>
-        <SELECT_OPIEKUN_ZAMOWWIENIA/>
+        <Szukaj/>
         <img
           className={style.icon2}
           src={iconClose2}
@@ -52,30 +49,31 @@ export default function Header({ dodaj_clikHandler}) {
 }
 
 
-function SELECT_OPIEKUN_ZAMOWWIENIA() {
+function Szukaj() {
   const contextApp = useContext(AppContext);
-  const selectedUser= contextApp.selectedUser;
-  const setSelectedUser= contextApp.setSelectedUser;
-  if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
-        return (
-        <select
-        className={style.select_opiekun_zamowienia}
-        value={selectedUser}
-        onChange={(event) => {
-          setSelectedUser(event.target.value)
-        }}
-      >
-                  {   <option value = "0"  >
-             Wszyscy 
-            </option>}
-     
-    {contextApp.users?.map((option) => (
-          <option key={option.id} value={option.id}>
-          {option.Imie} {option.Nazwisko} 
-          </option>
-        ))}
-      </select>
-    );
-  }
+  const setClients = contextApp.setClients;
+  const clients = contextApp.clients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
+  const zamowienia = contextApp.zamowienia;
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const setZamowienia = contextApp.setZamowienia;
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+  return (
+    <input
+      className={style.szukajInput}
+      type="text"
+      title="Znajdź tytuł pracy..."
+      placeholder="Praca..."
+      onChange={(event) => {
+        const m = [...zamowieniaWyszukiwarka];
 
-  }
+        // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
+        setZamowienia(
+          m.filter((k) =>
+            k.tytul.toLowerCase().includes(event.target.value.toLowerCase())
+          )
+        );
+      }}
+    ></input>
+  );
+}

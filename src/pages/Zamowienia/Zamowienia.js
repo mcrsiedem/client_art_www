@@ -21,6 +21,7 @@ function Zamowienia({ user, setUser }) {
   const open = useRef(false);
   const navigate = useNavigate();
   const data = contextApp.zamowienia;
+  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka;
   const setData = contextApp.setZamowienia;
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
@@ -42,6 +43,7 @@ function Zamowienia({ user, setUser }) {
     );
     let jobs = [...res.data];
     setData(jobs);
+    setZamowieniaWyszukiwarka(jobs)
     callForPaper();
     getClients(setClients, setClientsWyszukiwarka);
     getNadkomplety(setNadkomplety);

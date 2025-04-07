@@ -63,24 +63,21 @@
     border-radius: 5px;
 }
 
-.select_opiekun_zamowienia{
+.szukajInput{
     background: transparent;
-    color: rgb(212, 212, 212);
-    border-radius: 5px;
-    height: 25px;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+   
     padding-left: 10px;
-    /* padding-right: 5px; */
-    /* font-weight: 500; */
-    margin-right: 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+}
+.szukajInput::placeholder{
+    color: rgb(110, 110, 110);
     font-size: 0.9rem;
-    /* border: none; */
 }
-.select_opiekun_zamowienia > option{
-    background-color: rgb(31, 31, 31);
-    color: rgb(209, 209, 209);
-    /* color:rgb(38, 38, 38); */
-}
-
-.select_opiekun_zamowienia:focus{
+.szukajInput:focus{
     outline: none;
 }

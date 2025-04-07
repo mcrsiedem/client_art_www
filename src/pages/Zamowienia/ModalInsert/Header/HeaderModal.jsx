@@ -15,8 +15,9 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
 import { refreshZamowienia } from "actions/refreshZamowienia";
-import { zapiszZamowienieUpdate } from "actions/zapiszZamowienieUpdate";
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
+import { useZamowienia } from "hooks/useZamowienia";
+import { useStanyZamowienia } from "hooks/useStanyZamowienia";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -32,53 +33,12 @@ export default function Header({
   row,
   readOnly,
 }) {
-  const [auth, lookToken] = useAuth(false);
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const produkty = contextModalInsert.produkty;
-  const elementy = contextModalInsert.elementy;
-  const fragmenty = contextModalInsert.fragmenty;
-  const oprawa = contextModalInsert.oprawa;
-  const pakowanie = contextModalInsert.pakowanie;
-  const procesyElementow = contextModalInsert.procesyElementow;
-  const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
-  const historiaZamowienia = contextModalInsert.historiaZamowienia;
-
-  const appcontext = useContext(AppContext);
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const listaPapierow = appcontext.listaPapierow;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-
-  const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
-
-  const technologieID = contextModalInsert.technologieID;
-
-  const dbClikHandle = () => {
-              console.clear();
-          console.log("Zamówienie: ");
-          console.log("Dane : ", daneZamowienia);
-          console.log("Produkt : ", produkty);
-          console.log("Elementy : ", elementy);
-          console.log("Fragmenty : ", fragmenty);
-          console.log("Oprawa : ", oprawa);
-          console.log("Procesy elementów: ", procesyElementow);
-          console.log("Pakowanie: ", pakowanie);
-          console.log("Koszty dodatkowe: ", kosztyDodatkoweZamowienia);
-          console.log("Papiery_nazwy: ", listaPapierowNazwy);
-          console.log("Historia zamówienia: ", historiaZamowienia);
-          console.log("Technologie do zamówienia: ", technologieID);
-          // console.log("Selected zamówienie: ",contextModalInsert.selectedZamowienie)
-
-          console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
-          console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-          // console.log("procesy wszsytkieg: ",procesyElementowTemporary)
-  }
-
+  const[pokazStanyZamowienia] = useStanyZamowienia()
   return (
     <>
       <div
         onDoubleClick={() => {
-          dbClikHandle();
+          pokazStanyZamowienia()
         }}
         className={style.container}
       >
@@ -262,58 +222,14 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
 }
 
 
-function HISTORIA_ZAMOWIENIA_BTN() {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const contextApp = useContext(AppContext);
-
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  const produkty = contextModalInsert.produkty;
-  // const setZamowienia = contextApp.setZamowienia
-
-  return (
-    <button
-      onClick={async () => {
-        if (produkty[0].naklad) {
-          // alert("Data przyjecia: brak")
-          if (
-            (contextModalInsert.daneZamowienia.data_spedycji == null) ^
-            (contextModalInsert.daneZamowienia.data_spedycji == "")
-          ) {
-            alert("Brak daty");
-          } else {
-            setSaveButtonDisabled(false);
-          }
-        }
-      }}
-      className={style.btn}
-      // disabled={isSaveButtonDisabled}
-    >
-      Historia
-    </button>
-  );
-}
-
 function ZapiszJako({
 
   setShowSaveAs,
   setSaveAs,
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty= contextModalInsert.produkty;
-  // const daneZamowienia= contextModalInsert.daneZamowienia;
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-  const elementy= contextModalInsert.elementy;
-  const fragmenty= contextModalInsert.fragmenty;
-  const oprawa= contextModalInsert.oprawa;
-  const setProdukty= contextModalInsert.setProdukty;
-  const setElementy= contextModalInsert.setElementy;
-  const setFragmenty= contextModalInsert.setFragmenty;
-  const setOprawa= contextModalInsert.setOprawa;
-  const setProcesyElementow= contextModalInsert.setProcesyElementow;
-  const procesyElementow= contextModalInsert.procesyElementow;
 
   const contextApp = useContext(AppContext);
   const setZamowienia = contextApp.setZamowienia
@@ -323,11 +239,9 @@ function ZapiszJako({
       onClick={async () => {
 
         if(produkty[0].naklad){
-          setShowSaveAs(true);
-
+        setShowSaveAs(true);
         setSaveAs(true);
         }
-        
         
       }}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
@@ -341,26 +255,20 @@ function ZapiszJako({
 
 function Zamknij({setOpenModalInsert,readOnly,row}) {
   const contextModalInsert = useContext(ModalInsertContext);
-  // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  // const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-  const contextApp = useContext(AppContext);
-  const setZamowienia = contextApp.setZamowienia
-  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
+  const [refreshZamowienia] = useZamowienia()
   return (
-
-
     <img
       className={style.zamknij_icon}
       src={iconX}
       onClick={async() => {
-        
       setOpenModalInsert(false);
 
       if (!readOnly) {
-        const res = await axios.put(IP + "setOrderClosed", {
+        await axios.put(IP + "setOrderClosed", {
           id: row.id,
         });
-        refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka)
+        refreshZamowienia();
+
       }
       contextModalInsert.setDaneZamowienia(initialDane)
       contextModalInsert.setProdukty(initialProdukty)
@@ -373,109 +281,7 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
       alt="Procesy"
     />
 
-
-
-  //   <button
-  //   onClick={async () => {
-  //     setOpenModalInsert(false);
-
-  //     if (!readOnly) {
-  //       const res = await axios.put(IP + "setOrderClosed", {
-  //         id: row.id,
-  //       });
-  //     }
-  //   }}
-  //   className={style.btn}
-  // >
-  //   Zamknij
-  // </button>
-  );
-}
-function PokazStany({  }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const produkty = contextModalInsert.produkty;
-  const elementy = contextModalInsert.elementy;
-  const fragmenty = contextModalInsert.fragmenty;
-  const oprawa = contextModalInsert.oprawa;
-  const pakowanie = contextModalInsert.pakowanie;
-  const procesyElementow = contextModalInsert.procesyElementow;
-  const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
-
-  const appcontext = useContext(AppContext);
-  const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const listaPapierow = appcontext.listaPapierow;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
-
-  const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
-
-  return (
-    <button
-      onClick={async () => {
-        console.clear()
-        console.log("Zamówienie: ")
-        console.log("Dane : ",daneZamowienia)
-        console.log("Produkt : ",produkty)
-        console.log("Elementy : ",elementy)
-        console.log("Fragmenty : ",fragmenty)
-        console.log("Oprawa : ",oprawa)
-        console.log("Procesy elementów: ",procesyElementow)
-        console.log("Pakowanie: ",pakowanie)
-        console.log("Koszty dodatkowe: ",kosztyDodatkoweZamowienia)
-        console.log("Papiery_nazwy: ",listaPapierowNazwy)
-        console.log("listaPapierowWyszukiwarka: ",listaPapierowWyszukiwarka)
-        console.log("procesy wszsytkieg: ",procesyElementowTemporary)
-
-      }}
-      className={ style.btn}
-    >
-      Pokaż stany...
-    </button>
+  
   );
 }
 
-
-
-function ButtonSprawdz({
-  isSaveButtonDisabled,
-  postZamowienieObj,
-  setShowSaveAs,
-  setSaveAs,
-}) {
-  const appcontext = useContext(AppContext);
-  const socketcontext = useContext(SocketContext);
-
-  const navigate = useNavigate();
-  const sendMessage = () => {
-    appcontext.updateClients();
-    console.log("socketcontext id:" + socketcontext.socket.id);
-
-    socketcontext.socket.emit("send_mesage", { message: "OK" });
-  };
-
-  return (
-    <button onClick={() => sendMessage()} className={style.btn}>
-      Sprawdź {socketcontext.socketReceiveMessage}
-    </button>
-  );
-}
-
-function ButtonSprawdz2({
-  isSaveButtonDisabled,
-  setShowSaveAs,
-  setSaveAs,
-}) {
-  const appcontext = useContext(AppContext);
-  const socketcontext = useContext(SocketContext);
-
-  const sendMessage = () => {
-    socketcontext.socket.emit("send_mesage", { message: "" });
-    console.log(appcontext.clients);
-  };
-
-  return (
-    <button onClick={() => sendMessage()} className={style.btn}>
-      Sprawdź {socketcontext.socketReceiveMessage}
-    </button>
-  );
-}

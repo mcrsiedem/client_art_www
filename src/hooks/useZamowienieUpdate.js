@@ -3,8 +3,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import axios from "axios";
 import { IP } from "../utils/Host";
-import { AppContext } from "context/AppContext";
-import { refreshZamowienia } from "actions/refreshZamowienia";
+
+import { useZamowienia } from "./useZamowienia";
 export  function useZamowienieUpdate(){
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
@@ -23,13 +23,11 @@ export  function useZamowienieUpdate(){
   const technologieID= contextModalInsert.technologieID;
   const historiaZamowienia= contextModalInsert.historiaZamowienia?.filter(x=>x.insert == true );
   const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
-  const contextApp = useContext(AppContext);
-  const setZamowienia = contextApp.setZamowienia
-  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
+
 
 const setTechnologieID = contextModalInsert.setTechnologieID;
 
-
+const [refreshZamowienia] = useZamowienia()
 
   async function saveZamowienieUpdate(){
 
@@ -56,7 +54,7 @@ const setTechnologieID = contextModalInsert.setTechnologieID;
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
 
-  refreshZamowienia(setZamowienia,setZamowieniaWyszukiwarka);
+  refreshZamowienia();
   setSaveButtonDisabled(true)
 
 }

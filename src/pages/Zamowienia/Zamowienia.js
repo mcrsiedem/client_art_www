@@ -61,16 +61,16 @@ function Zamowienia({ user, setUser }) {
       });
   }
 
-  async function refreshZamowienia() {
-    const res = await axios.get(
-      IP + "zamowienia/" + sessionStorage.getItem("token")
-    );
-    let jobs = [...res.data];
-    setData(jobs);
-  }
-  useEffect(() => {
-    checkToken();
-  }, []);
+  // async function refreshZamowienia() {
+  //   const res = await axios.get(
+  //     IP + "zamowienia/" + sessionStorage.getItem("token")
+  //   );
+  //   let jobs = [...res.data];
+  //   setData(jobs);
+  // }
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
 
   const onClose = useCallback(
@@ -112,7 +112,7 @@ function Zamowienia({ user, setUser }) {
               row={row}
               data={data}
               setData={setData}
-              refreshZamowienia={refreshZamowienia}
+     
             />
           )}
       <TechnologiaStage/>

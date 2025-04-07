@@ -14,7 +14,6 @@ import { useAuth } from "hooks/useAuth";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOprawa,initialProcesy } from "utils/initialvalue";
 import { zapiszZamowienie } from "actions/zapiszZamowienie";
-import { refreshZamowienia } from "actions/refreshZamowienia";
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
@@ -267,6 +266,7 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
         await axios.put(IP + "setOrderClosed", {
           id: row.id,
         });
+        // const [refreshZamowienia] = useZamowienia()
         refreshZamowienia();
 
       }

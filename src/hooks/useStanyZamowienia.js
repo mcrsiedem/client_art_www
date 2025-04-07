@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import DecodeToken from "pages/Login/DecodeToken";
-import axios from "axios";
-import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
-import { refreshZamowienia } from "actions/refreshZamowienia";
 export function useStanyZamowienia() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
@@ -19,10 +15,8 @@ export function useStanyZamowienia() {
 
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
-  const listaPapierow = appcontext.listaPapierow;
-  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
-  const procesyElementowTemporary = contextModalInsert.procesyElementowTemporary;
+  const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const technologieID = contextModalInsert.technologieID;
   const pokazStanyZamowienia = () => {
 console.clear();

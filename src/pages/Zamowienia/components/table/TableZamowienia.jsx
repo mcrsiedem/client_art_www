@@ -148,7 +148,7 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
   // if (DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1) {
     return (
       <select
-        className={style.select_opiekun_zamowienia}
+        className={style.select_klient_zamowienia}
         value={selectedKlient}
         onChange={(event) => {
           setSelectedKlient(event.target.value);

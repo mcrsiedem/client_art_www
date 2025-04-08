@@ -146,6 +146,7 @@ outline: 1px solid #e7e6e3;
 
   .col_klient{
     width:250px;
+    /* padding-left: 15px; */
   }
 
 
@@ -160,7 +161,8 @@ outline: 1px solid #e7e6e3;
   }
 
   .col_opiekun{
-    /* padding-left: 35px; */
+    /* background-color: rebeccapurple; */
+    padding-left: 25px;
   }
 
   .col_uwagi{

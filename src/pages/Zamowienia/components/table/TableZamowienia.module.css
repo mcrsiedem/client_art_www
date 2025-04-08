@@ -271,10 +271,13 @@
 
 
 
-
+.select_opiekun_zamowienia::-webkit-scrollbar {
+   display: none;
+   /* height: 10px; */
+ }
 
 .select_klient_zamowienia::-webkit-scrollbar {
-   width:0.5rem;
+   display: none;
    /* height: 10px; */
  }
  

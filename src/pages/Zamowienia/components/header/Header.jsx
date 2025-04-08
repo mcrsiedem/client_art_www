@@ -8,6 +8,11 @@ import { AppContext } from "context/AppContext";
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
+
+   const contextApp = useContext(AppContext);
+    const selectedUser = contextApp.selectedUser
+    const selectedKlient = contextApp.selectedKlient
+
   useEffect(() => {
     if (effectRan.current === true) {
     }
@@ -17,7 +22,10 @@ export default function Header({ dodaj_clikHandler}) {
   }, []);
 
   return (
-    <header id="header" className={style.headerZamowieniaContainer}>
+    <header onDoubleClick={()=>{  
+      console.log("selectedUser: "+ selectedUser)
+      console.log("selectedKlient: "+ selectedKlient)
+     }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <p className={style.title}>Zamówienia </p>
       </div>

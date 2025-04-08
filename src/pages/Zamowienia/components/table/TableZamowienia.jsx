@@ -121,9 +121,7 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         value={selectedUser}
         onChange={(event) => {
           setSelectedUser(event.target.value);
-          if(event.target.value ==0){
-            // setSelectedKlient(0)
-          }
+             setSelectedKlient(0)
         }}
       >
         {<option value="0">Wszyscy</option>}

@@ -140,7 +140,6 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
           await axios
           .put(IP + "setOrderOpen", {
             id: idZamowienia,
-            // zestaw_id: idZestawu,
             token: sessionStorage.getItem("token"),
             user: DecodeToken(sessionStorage.getItem("token")).id,
           })

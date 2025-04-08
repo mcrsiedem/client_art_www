@@ -1,10 +1,6 @@
 .tableContainer {
    position: relative;
    width: 100vw;
-   /* height: max-content; */
-   /* background-color: rgb(252, 255, 226); */
-   /* display: flex;
-   flex-grow: 3; */
    overflow: auto;
 }
 
@@ -12,18 +8,8 @@
    overflow: auto;
 }
 
-.tableZam{
-   /* overflow: auto; */
-   /* height: 300px; */
-}
-
-/* .table_tr{
- width: 95vw;
-} */
-
 .szczegoly {
    background-color: gray;
-
 }
 
 .btn_dodaj_karte {
@@ -45,24 +31,7 @@
 
 }
 
-
-
-/* th {
-   font-size: 0.9rem;
-   position: sticky;
-   top: 0;
-   height: 2rem;
-   padding-left: 20px;
-   z-index: 2;
-   background: rgb(243, 243, 243);
-   color: #414040;
-
-} */
-
-
-
 .row_zamowienia:nth-of-type(2n) {
-   /* background: #dbdad6; */
    background: #f7f6f6;
    outline: 1px solid rgb(189, 189, 189);
 }
@@ -78,19 +47,7 @@
    background-color: #9df450;
    background-color: #b3b3b3;
    color: white;
-
-
-
 }
-
-
-/* tr{
- outline: 1px solid #e7e6e3;
-} */
-/* tr:hover{
-
-   outline: 1px solid #a5a4a2;
-} */
 
 .alert {
    background: red;
@@ -109,59 +66,8 @@
 
 .iconSettings {
    width: 15px;
-
-
-}
-.col_nr{
-   width: 30px;
-   /* background-color: red; */
-      /* padding-top: 10px; */
-
-     
-   }
-
-
-.col_klient {
-   width: 100px;
-
-   /* background-color: #be2617; */
-}
-.col_praca {
-   width: 200px;
-
-   /* background-color: #be2617; */
 }
 
-
-.col_rok {
-   width: 30px;
-}
-
-.col_karta {
-   min-width: 10px;
-
-
-
-}
-
-.col_uwagi {
-   /* background-color: red; */
-   max-width: 100px;
-   max-height: 50px;
-   word-wrap: break-word;
-   /* width: 120px; */
-   /* max-width: fit-content; */
-}
-
-.col_button {
-   display: flex;
-   align-content: center;
-   justify-content: center;
-   border: none;
-   /* padding-top: 10px; */
-
-
-}
 
 .td_checkbox {
    align-items: center;
@@ -171,15 +77,6 @@
 
 .th_checkbox2 {
    align-items: center;
-   /* padding-right: 5px; */
-
-}
-
-
-.td_karta {
-
-   border: none;
-   text-align: center;
 }
 
 .th_karta {
@@ -187,11 +84,8 @@
 
 }
 
-
-
 .iconMenuBtn {
    width: 18px;
-
 }
 
 .table th {
@@ -222,18 +116,11 @@
 }
 
 
-.iconErrorTable {
-   width: 20px;
-}
 
 
-.iconLockTable {
-   width: 25px;
-   padding: 2px;
-}
-
-.select_opiekun_zamowienia{
+.select_opiekun_zamowienia {
    background: transparent;
+   width: 100px;
    color: rgb(61, 61, 61);
    font-weight: bold;
    font-size: 0.7rem;
@@ -244,15 +131,17 @@
    font-size: 0.9rem;
 
 }
-.select_opiekun_zamowienia > option{
+
+.select_opiekun_zamowienia>option {
    background-color: rgb(31, 31, 31);
    color: rgb(209, 209, 209);
- 
+
 }
 
 
-.select_klient_zamowienia{
+.select_klient_zamowienia {
    background: transparent;
+   width: 100px;
    color: rgb(61, 61, 61);
    font-weight: bold;
    font-size: 0.7rem;
@@ -263,10 +152,11 @@
    font-size: 0.9rem;
 
 }
-.select_klient_zamowienia > option{
+
+.select_klient_zamowienia>option {
    background-color: rgb(31, 31, 31);
    color: rgb(209, 209, 209);
- 
+
 }
 
 
@@ -274,24 +164,107 @@
 .select_opiekun_zamowienia::-webkit-scrollbar {
    display: none;
    /* height: 10px; */
- }
+}
 
 .select_klient_zamowienia::-webkit-scrollbar {
    display: none;
    /* height: 10px; */
- }
- 
- .select_klient_zamowienia::-webkit-scrollbar-track {
+}
+
+.select_klient_zamowienia::-webkit-scrollbar-track {
    /* -webkit-box-shadow: inset transparent */
- /* background: transparent; */
- }
- 
- .select_klient_zamowienia::-webkit-scrollbar-thumb {
-     /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%); */
-     /* border-radius: 5px; */
+   /* background: transparent; */
+}
+
+.select_klient_zamowienia::-webkit-scrollbar-thumb {
+   /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(250, 187, 114) 50%,rgb(240, 151, 50) 100%); */
+   /* border-radius: 5px; */
    /* outline: 1px solid slategrey; */
- }
- 
- /* .select_opiekun_zamowienia::-webkit-scrollbar-corner {
+}
+
+/* .select_opiekun_zamowienia::-webkit-scrollbar-corner {
    background-color: rgb(191, 209, 194);
  } */
+.iconErrorTable {
+   width: 20px;
+}
+
+.col_alert{
+   text-align: center;
+   width: 50px;
+}
+.col_etap {
+   width: 130px;
+}
+
+.iconLockTable {
+   width: 25px;
+   padding: 2px;
+}
+
+
+.col_nr {
+   width: 30px;
+
+
+}
+
+.col_checkbox {
+   width: 50px;
+}
+
+
+.col_klient {
+   width: 100px;
+}
+
+.col_praca {
+   width: 200px;
+}
+
+.col_rok {
+   width: 30px;
+}
+
+.col_karta {
+   min-width: 10px;
+}
+
+.col_firma {
+   width: 100px;
+}
+
+.col_status {
+   width: 100px;
+}
+
+.col_netto {
+   width: 100px;
+}
+
+.col_strony{
+   width: 50px;
+}
+
+.col_spedycja{
+   width: 90px;
+}
+
+.col_uwagi {
+   /* background-color: red; */
+   max-width: 100px;
+   max-height: 50px;
+   word-wrap: break-word;
+   /* width: 120px; */
+   /* max-width: fit-content; */
+}
+
+.col_button {
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   border: none;
+   /* padding-top: 10px; */
+
+
+}

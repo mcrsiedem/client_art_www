@@ -1,11 +1,6 @@
 .tableContainer {
    position: relative;
-
    width: 100vw;
-   /* height: fit-content; */
-   /* background-color: rgb(255, 229, 226); */
-   /* display: flex;
-   flex-grow: 1; */
    overflow: auto;
 }
 
@@ -13,15 +8,8 @@
    overflow: auto;
 }
 
-
-
-/* .table_tr{
- background-color: red;
-} */
-
 .szczegoly {
    background-color: gray;
-
 }
 
 .btn_dodaj_karte {
@@ -40,28 +28,20 @@
 
 .btn_dodaj_karte:hover {
    background-image: linear-gradient(#383838 0%, #3a3333 80%);
-
 }
 
-
-.table_tr > th {
+.table_tr>th {
    font-size: 0.9rem;
    position: sticky;
    top: 0;
-
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
    background: rgb(246, 212, 45);
    color: #525151;
-
-
 }
 
-
-
 .row_zamowienia:nth-of-type(2n) {
-   /* background: #dbdad6; */
    background: #f7f6f6;
    outline: 1px solid rgb(189, 189, 189);
 }
@@ -70,26 +50,13 @@
    background-color: #9df450;
    background-color: #b3b3b3;
    color: white;
-
 }
 
 .row_zamowienia:nth-of-type(2n):hover {
    background-color: #9df450;
    background-color: #b3b3b3;
    color: white;
-
-
-
 }
-
-
-/* tr{
- outline: 1px solid #e7e6e3;
-} */
-/* tr:hover{
-
-   outline: 1px solid #a5a4a2;
-} */
 
 .alert {
    background: red;
@@ -105,51 +72,12 @@
    background-size: cover;
 }
 
-
 .iconSettings {
    width: 15px;
-
-
 }
 
-.col_klient {
-   width: 100px;
-}
-.col_praca {
-   width: 200px;
-
-   /* background-color: #be2617; */
-}
-
-.col_rok {
-   width: 30px;
-}
-
-.col_karta {
-   min-width: 10px;
 
 
-
-}
-
-.col_uwagi {
-   /* background-color: red; */
-   max-width: 100px;
-   max-height: 50px;
-   word-wrap: break-word;
-   /* width: 120px; */
-   /* max-width: fit-content; */
-}
-
-.col_button {
-   display: flex;
-   align-content: center;
-   justify-content: center;
-   border: none;
-   /* padding-top: 10px; */
-
-
-}
 
 .td_checkbox {
    align-items: center;
@@ -179,19 +107,15 @@
 
 .iconMenuBtn {
    width: 18px;
-
 }
 
 .table th {
-   /* background-color: rgb(216, 216, 216); */
    color: rgb(61, 61, 61);
    font-size: 0.9rem;
    outline-style: none;
-
 }
 
 .table tr:nth-child(even) {
-   /* background-color:  rgb(238, 238, 238); */
    color: rgb(61, 61, 61);
    font-size: 0.9rem;
    outline-style: none;
@@ -200,10 +124,7 @@
 
 }
 
-
-
 .table tr:nth-child(odd) {
-   /* background-color: red; */
    outline-style: none;
    font-size: 1rem;
    border-bottom: 1px solid rgb(192, 191, 191);
@@ -218,4 +139,89 @@
 .iconLockTable {
    width: 25px;
    padding: 2px;
+}
+
+
+.iconErrorTable {
+   width: 20px;
+}
+
+.col_alert{
+   text-align: center;
+   width: 50px;
+}
+.col_etap {
+   width: 130px;
+}
+
+.iconLockTable {
+   width: 25px;
+   padding: 2px;
+}
+
+
+.col_nr {
+   width: 30px;
+
+
+}
+
+.col_checkbox {
+   width: 50px;
+}
+
+
+.col_klient {
+   width: 100px;
+}
+
+.col_praca {
+   width: 200px;
+}
+
+.col_rok {
+   width: 30px;
+}
+
+.col_karta {
+   min-width: 10px;
+}
+
+.col_firma {
+   width: 100px;
+}
+
+.col_status {
+   width: 100px;
+}
+
+.col_netto {
+   width: 100px;
+}
+
+.col_strony{
+   width: 50px;
+}
+
+.col_spedycja{
+   width: 90px;
+}
+
+.col_uwagi {
+   /* background-color: red; */
+   max-width: 100px;
+   max-height: 50px;
+   word-wrap: break-word;
+   /* width: 120px; */
+   /* max-width: fit-content; */
+}
+
+.col_button {
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   border: none;
+   /* padding-top: 10px; */
+
+
 }

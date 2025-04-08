@@ -91,7 +91,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <td>{row.format_x + "x" + row.format_y}</td>
         {/* <td>{row.format_y}</td> */}
         <OprawaTableZamowienia row={row} />
-        <td>{row.firma}</td>
+        <td>{row.firma_id}</td>
         <StanZamowieniaTable row={row} />
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />

@@ -157,7 +157,7 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
         {<option value="0">Klient</option>}
 
         {contextApp.clients?.filter(kl=> {
-          if(selectedUser==0) {return true}else{ return kl.opiekun_id == selectedUser} 
+          if(selectedUser!=0) {return kl.opiekun_id == selectedUser}else{ return 0} 
         }
           // if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
           // if(selectedUser==0){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}

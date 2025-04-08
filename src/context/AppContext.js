@@ -140,11 +140,13 @@ const _firma = [
     {
       id: 1,
       nazwa: "ArtDruk",
+      nazwa_skrocona: "ArtDruk",
       NIP: "123-111-22-33",
     },
     {
       id: 2,
       nazwa: "ArtDruk Sp. z o.o.",
+      nazwa_skrocona: "ArtDruk Sp.",
       NIP: "123-111-22-33",
     },
   ];

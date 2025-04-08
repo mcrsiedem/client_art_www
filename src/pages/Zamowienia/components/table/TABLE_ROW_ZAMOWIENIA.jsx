@@ -87,11 +87,14 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <td className={style.col_uwagi}> {row.uwagi}</td>
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
-        <td>{row.data_spedycji}</td>
+        <SpedycjaTableZamowienia row={row} />
+
         <td>{row.format_x + "x" + row.format_y}</td>
         {/* <td>{row.format_y}</td> */}
         <OprawaTableZamowienia row={row} />
-        <td>{row.firma_id}</td>
+        <FirmaZamowieniaTable row={row} />
+
+        
         <StanZamowieniaTable row={row} />
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
@@ -137,9 +140,15 @@ const OprawaTableZamowienia = ({ row }) => {
   const contextApp = useContext(AppContext);
 
   return (
-    <>
-      <td>{row.oprawa} </td>
-    </>
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.oprawa}
+      className={style.klientInput}
+      value={row.oprawa}
+    />
+    </td>
+   
   );
 };
 
@@ -155,6 +164,20 @@ const KlientTableZamowienia = ({ row }) => {
       title={row.klient}
       className={style.klientInput}
       value={row.firma_nazwa}
+    />
+    </td>
+   
+  );
+};
+
+const SpedycjaTableZamowienia = ({ row }) => {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.data_spedycji}
+      className={style.klientInput}
+      value={row.data_spedycji}
     />
     </td>
    
@@ -217,7 +240,26 @@ const EtapZamowieniaTable = ({ row }) => {
   // return(  <td>{row.stan}</td>
   return (
     <td>
-      {_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.tytulInput}
+      value={_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}
+    />
+    </td>
+  );
+};
+
+const FirmaZamowieniaTable = ({ row }) => {
+  const appContext = useContext(AppContext);
+  const _firma = appContext._firma;
+  return (
+    <td>
+    <input
+      title={row.klient}
+      className={style.tytulInput}
+      value={_firma.filter((s) => s.id == row.firma_id).map((x) => x.nazwa_skrocona)}
+    />
     </td>
   );
 };

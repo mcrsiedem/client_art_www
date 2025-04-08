@@ -12,7 +12,8 @@ export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
     const [users, setUsers] = useState(null);
-      const [selectedUser, setSelectedUser] = useState("0");
+    const [selectedUser, setSelectedUser] = useState("0");
+    const [selectedKlient, setSelectedKlient] = useState("0");
     const [clients, setClients] = useState(null);
     const [uzytkownicy, setUzytkownicy] = useState(null);
     const [uzytkownicyGrupy, setUzytkownicyGrupy] = useState(null);
@@ -102,6 +103,7 @@ export const AppContextProvider = ({children})=>{
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy
                     selectedUser, setSelectedUser,
+                    selectedKlient, setSelectedKlient,
                     clients,updateClients,  setClients,    // wszyscy klienci
                     clientsWyszukiwarka, setClientsWyszukiwarka,
                     procesList, updateProcesList,     // lista wszystkich dostępnych proce

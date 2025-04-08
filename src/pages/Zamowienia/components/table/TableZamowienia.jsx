@@ -20,6 +20,7 @@ export default function TableZamowienia({open2,setRow}){
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
+  const selectedKlient= contextApp.selectedKlient;
 
  return (
    <div className={style.tableContainer} >
@@ -42,7 +43,7 @@ export default function TableZamowienia({open2,setRow}){
                alt="Procesy"
              />
            </th>
-           <th className={style.col_klient}>Klient</th>
+           <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
            <th className={style.col_praca}>Praca</th>
            <th className={style.col_uwagi}>Uwagi</th>
            <th onClick={()=>{
@@ -76,6 +77,13 @@ export default function TableZamowienia({open2,setRow}){
             }
           })
            .filter(z => z.stan ==3)
+           .filter((zam) => {
+            if (selectedKlient == 0) {
+              return true;
+            } else {
+             return  zam.klient_id == selectedKlient;
+            }
+          })
            .map((row) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />
@@ -103,28 +111,60 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
 
 function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const contextApp = useContext(AppContext);
-  const selectedUser= contextApp.selectedUser;
-  const setSelectedUser= contextApp.setSelectedUser;
-  if(DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie==1){
-        return (
-        <select
+  const selectedUser = contextApp.selectedUser;
+  const setSelectedUser = contextApp.setSelectedUser;
+  if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
+    return (
+      <select
         className={style.select_opiekun_zamowienia}
         value={selectedUser}
         onChange={(event) => {
-          setSelectedUser(event.target.value)
+          setSelectedUser(event.target.value);
         }}
       >
-                  {   <option value = "0"  >
-             Wszyscy 
-            </option>}
-     
-    {contextApp.users?.map((option) => (
+        {<option value="0">Wszyscy</option>}
+
+        {contextApp.users?.map((option) => (
           <option key={option.id} value={option.id}>
-          {option.Imie} {option.Nazwisko} 
+            {option.Imie} {option.Nazwisko}
           </option>
         ))}
       </select>
     );
+  }else{
+    return  <th className={style.col_firma}>Opiekun</th>
   }
+}
 
-  }
+function SELECT_KLIENT_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedKlient = contextApp.selectedKlient;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+  const clients = contextApp.setSclientselectedKlient;
+  // if (DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1) {
+    return (
+      <select
+        className={style.select_opiekun_zamowienia}
+        value={selectedKlient}
+        onChange={(event) => {
+          setSelectedKlient(event.target.value);
+        }}
+      >
+        {<option value="0">Klient</option>}
+
+        {contextApp.clients?.filter(kl=>{
+          if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
+         })
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma_nazwa} 
+          </option>
+        ))}
+      </select>
+    );
+  
+
+
+
+
+}

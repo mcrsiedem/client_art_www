@@ -56,7 +56,8 @@ function Zmien({ parent, setShowChange,selectRow}) {
             if (t.id == selectedElementROW.id) {
               return {
                 ...t,
-                papier_id: selectRow.id
+                papier_id: selectRow.id,
+                update:true
       
               };
             } else {

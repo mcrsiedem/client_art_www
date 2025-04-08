@@ -173,48 +173,92 @@ export default function RowElement({
       }
     return (
       <>
-      <div className={style.row3} key={row.id}>
-        <Rozwin  row={row} fragmenty={fragmenty} showFragmenty={showFragmenty} setShowFragmenty={setShowFragmenty} />
-        <Typ  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
-        <Naklad row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <Strony row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy_IloscStron={handleChangeCardFragmenty_i_Elementy_IloscStron}/>
-        <NettoX row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <NettoY row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <Nazwa row={row} handleChangeCardElementy={handleChangeCardElementy} />
-        <PapierSelect2
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        />
-        <PapierPostacElement  row={row} handleChangeCardElementy={handleChangeCardElementy} handleChangeCardFragmenty_i_Elementy={handleChangeCardFragmenty_i_Elementy}/>
+        <div className={style.row3} key={row.id}>
+          <Rozwin
+            row={row}
+            fragmenty={fragmenty}
+            showFragmenty={showFragmenty}
+            setShowFragmenty={setShowFragmenty}
+          />
+          <Typ
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            handleChangeCardFragmenty_i_Elementy={
+              handleChangeCardFragmenty_i_Elementy
+            }
+          />
+          <Naklad
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
+          <Strony
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            handleChangeCardFragmenty_i_Elementy_IloscStron={
+              handleChangeCardFragmenty_i_Elementy_IloscStron
+            }
+          />
+          <NettoX
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
+          <NettoY
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
+          <Nazwa
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
+          <PapierSelect2
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
+          <PapierPostacElement
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            handleChangeCardFragmenty_i_Elementy={
+              handleChangeCardFragmenty_i_Elementy
+            }
+          />
 
-        <Uwagi
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-        />
+          <Uwagi
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+          />
 
-        <Procesy row={row} handleChangeCardElementy={handleChangeCardElementy} setShowElementyProcesyInsert={setShowElementyProcesyInsert} procesyElementow={procesyElementow}/>
-        <Usun
+          <Procesy
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            setShowElementyProcesyInsert={setShowElementyProcesyInsert}
+            procesyElementow={procesyElementow}
+          />
+          <Usun
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            handleRemoveItem={handleRemoveItem}
+          />
+          <Dodaj
+            row={row}
+            handleChangeCardElementy={handleChangeCardElementy}
+            handleAddCard={handleAddCard}
+          />
+        </div>
+        {showFragmenty && (
+          <>
+            {fragmenty
+              ?.filter((x) => x.element_id == row.id)
+              .filter((x) => x.delete != true)
+              .map((row, i) => {
+                return <RowFragment key={row.indeks} i={i} row={row} />;
+              })}
+          </>
+        )}
+        <DodajFragment
           row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          handleRemoveItem={handleRemoveItem}
+          fragmenty={fragmenty}
+          setFragmenty={setFragmenty}
         />
-        <Dodaj
-          row={row}
-          handleChangeCardElementy={handleChangeCardElementy}
-          handleAddCard={handleAddCard}
-        />
-      </div>
-      {showFragmenty && (
-        <>
-          {fragmenty?.filter((x) => x.element_id == row.id)
-.filter((x) => x.delete != true)      
-            .map((row, i) => {
-              return <RowFragment key={row.indeks} i={i} row={row} />;
-            })}
-          
-        </>
-      )}
-      <DodajFragment row={row} fragmenty={fragmenty} setFragmenty={setFragmenty}/>
       </>
     );
   }
@@ -511,24 +555,30 @@ const [setStatus] = useStatus()
       };
 
     return (
-
-  
         <input
+          // disabled={row.zamowienie_id >1}
+          onDoubleClick={()=>{console.log("db")}}
+        
           className={sprawdzSume()}
           title={ilezostalo()}
           value={row.naklad}
           onChange={(e) =>
             {
-              if (e.target.value === '' || reg_int.test(e.target.value)) {
-              handleChangeCardElementy({
-              ...row,
-              naklad: ifNoTextSetNull(e.target.value),
-              update: true
-            })
-           // 
-           setStatus(3)
-          
-          }}
+
+              if(row.zamowienie_id == 1){
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+                handleChangeCardElementy({
+                  ...row,
+                  naklad: ifNoTextSetNull(e.target.value),
+                  update: true,
+                });
+                setStatus(3);
+              }
+              }
+      
+        
+        
+        }
           }
         ></input>
     

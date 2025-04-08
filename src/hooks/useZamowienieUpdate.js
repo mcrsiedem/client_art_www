@@ -30,6 +30,7 @@ const setTechnologieID = contextModalInsert.setTechnologieID;
 const [refreshZamowienia] = useZamowienia()
 
   async function saveZamowienieUpdate(){
+  setSaveButtonDisabled(true)
 
   let savedDane  = await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
   
@@ -55,8 +56,7 @@ const [refreshZamowienia] = useZamowienia()
   setHistoriaZamowienia(res.data[7])
 
   refreshZamowienia();
-  setSaveButtonDisabled(true)
-
+    alert("OK")
 }
 
 return[saveZamowienieUpdate]

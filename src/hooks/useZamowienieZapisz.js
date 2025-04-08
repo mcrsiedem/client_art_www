@@ -25,7 +25,7 @@ const [refreshZamowienia] = useZamowienia()
 
  async function zapiszZamowienie(){
 
-
+  setSaveButtonDisabled(true)
           let response = [];
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
@@ -46,9 +46,9 @@ const [refreshZamowienia] = useZamowienia()
           let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow})
 
           response.push(savedParametry.data)
-console.log(response)
+          console.log(response)
           if(isSavedCorrect(response).status) {
-            setSaveButtonDisabled(true)
+            
             alert("Zamowienie zapisana...")
         
           let res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
@@ -67,6 +67,7 @@ console.log(response)
            }else{
             alert(" Coś poszło nie tak." + isSavedCorrect(response).error.sqlMessage +"\n sql: "+isSavedCorrect(response).error.sql)
             console.log("Uwaga : " ,isSavedCorrect(response).error.sqlMessage +" sql: ",isSavedCorrect(response).error.sql) ;
+            setSaveButtonDisabled(false)
            }
 
            

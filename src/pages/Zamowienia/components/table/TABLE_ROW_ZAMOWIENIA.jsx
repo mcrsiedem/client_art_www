@@ -271,7 +271,7 @@ const FirmaZamowieniaTable = ({ row }) => {
     <td>
     <input
       title={row.klient}
-      className={style.tytulInput}
+      className={style.tytulfirma}
       value={_firma.filter((s) => s.id == row.firma_id).map((x) => x.nazwa_skrocona)}
     />
     </td>

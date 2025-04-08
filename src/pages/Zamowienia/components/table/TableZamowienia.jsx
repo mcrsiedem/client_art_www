@@ -45,7 +45,7 @@ export default function TableZamowienia({open2,setRow}){
            <th onClick={()=>{
             setZamowienia(zamowienia.sort((a, b) => a.oprawa_id - b.oprawa_id))
             }}className={style.col_netto}>Oprawa</th>
-           <th className={style.col_firma}>Firma</th>
+           <th className={style.col_firma2}>Firma</th>
            <th className={style.col_status}>Stan</th>
            <th className={style.col_status}>Status</th>
            <th className={style.col_etap}>Etap</th>

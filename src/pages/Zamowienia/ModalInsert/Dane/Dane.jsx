@@ -289,29 +289,29 @@ const [add] = useHistoria()
         className={selectColor(daneZamowienia.status)}
         value={daneZamowienia.status}
         onChange={(event) => {
-
-            if(event.target.value ==2  & daneZamowienia.technologia_id !=null){
-
+            if(daneZamowienia.stan ==3  || daneZamowienia.technologia_id !=null){
             }
             else{
-
-
-                                    setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+                    setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
           add(   {
             kategoria: "Status zamówienia",
             event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
             zamowienie_id: daneZamowienia.id
           })
-
-
             }
 
-           
-        
 
+            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
 
+              setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
+          add(   {
+            kategoria: "Status zamówienia",
+            event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+            zamowienie_id: daneZamowienia.id
+          })
+            }
 
 
         }}
@@ -432,7 +432,7 @@ function Stan( ) {
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
-const zamowienie_odrzuc = true;
+// const zamowienie_odrzuc = true;
 const [add] = useHistoria()
 const selectColor = (stan) =>{
   if (stan==1) return style.select_stan_1

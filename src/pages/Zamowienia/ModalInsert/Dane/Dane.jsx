@@ -78,7 +78,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
       <select
         className={style.select}
         value={daneZamowienia.firma_id}
-    disabled
+    // disabled
         onChange={(event) => {
           setDaneZamowienia({...daneZamowienia, firma_id: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            

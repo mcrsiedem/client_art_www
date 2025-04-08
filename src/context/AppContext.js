@@ -144,11 +144,6 @@ const _firma = [
     },
     {
       id: 2,
-      nazwa: "PrintStudio",
-      NIP: "123-111-22-33",
-    },
-    {
-      id: 3,
       nazwa: "ArtDruk Sp. z o.o.",
       NIP: "123-111-22-33",
     },

@@ -9,12 +9,13 @@ export default function TableMini({open2,setRow}){
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
   const selectedUser= contextApp.selectedUser;
+  const selectedKlient= contextApp.selectedKlient;
  return (
    <div className={style.tableContainer}>
      <table>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
-           <th className={style.col_alert}>!</th>
+           {/* <th className={style.col_alert}>!</th> */}
 
            <th className={style.col_nr}>Nr</th>
            <th className={style.col_rok}>Rok</th>
@@ -26,11 +27,13 @@ export default function TableMini({open2,setRow}){
                alt="Procesy"
              />
            </th>
-           <th className={style.col_klient}>Klient</th>
+           <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
+
            <th className={style.col_praca}>Praca</th>
            <th className={style.col_uwagi}>Uwagi</th>
            <th className={style.col_strony}>Nakład</th>
            <th className={style.col_strony}>Strony</th>
+           <th  className={style.col_spedycja}>Przyjęcie</th>
            <th className={style.col_spedycja}>Spedycja</th>
            <th className={style.col_strony}>Netto</th>
            <th className={style.col_netto}>Oprawa</th>
@@ -49,21 +52,23 @@ export default function TableMini({open2,setRow}){
          {zamowienia
            .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
            .filter((zam) => {
-             if (selectedUser == 0) {
-               return true;
-             } else {
-              return  zam.opiekun_id == selectedUser;
-             }
-           })
-           .filter((z) => z.stan != 3)
+            if (selectedUser == 0) {
+              return true;
+            } else {
+             return  zam.opiekun_id == selectedUser;
+            }
+          })
+           .filter(z => z.stan !=3)
+           .filter((zam) => {
+            if (selectedKlient == 0) {
+              return true;
+            } else {
+             return  zam.klient_id == selectedKlient;
+            }
+          })
            .map((row) => {
              return (
-               <TABLE_ROW_ZAMOWIENIA
-                 key={row.id}
-                 row={row}
-                 open2={open2}
-                 setRow={setRow}
-               />
+               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />
              );
            })}
        </tbody>
@@ -84,4 +89,33 @@ const MenuBtn = ({ showMenu, setShowMenu }) => {
               alt="x"
             />
   )
+}
+
+
+function SELECT_KLIENT_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedKlient = contextApp.selectedKlient;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+  const selectedUser = contextApp.selectedUser;
+    return (
+      <select
+        className={style.select_klient_zamowienia}
+        value={selectedKlient}
+        onChange={(event) => {
+          setSelectedKlient(event.target.value);
+        }}
+      >
+        {<option value="0">Klient</option>}
+
+        {contextApp.clients?.filter(kl=>  {
+          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
+        }
+         )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma_nazwa} 
+          </option>
+        ))}
+      </select>
+    );
 }

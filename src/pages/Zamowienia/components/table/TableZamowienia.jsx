@@ -21,7 +21,7 @@ export default function TableZamowienia({open2,setRow}){
      <table className={style.tableZam}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
-           <th className={style.col_alert}>!</th>
+           {/* <th className={style.col_alert}>!</th> */}
            <th className={style.col_nr}>Nr</th>
            <th className={style.col_rok}>Rok</th>
            <th title="Technologia" className={style.th_karta}>
@@ -39,6 +39,7 @@ export default function TableZamowienia({open2,setRow}){
             setZamowienia(zamowienia.sort((a, b) => a.naklad - b.naklad))
             }} className={style.col_strony}>Nakład</th>
            <th className={style.col_strony}>Strony</th>
+           <th  className={style.col_spedycja}>Przyjęcie</th>
            <th  className={style.col_spedycja}>Spedycja</th>
            <th className={style.col_strony}>Netto</th>
            <th onClick={()=>{
@@ -131,7 +132,6 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
   const selectedKlient = contextApp.selectedKlient;
   const setSelectedKlient = contextApp.setSelectedKlient;
   const selectedUser = contextApp.selectedUser;
-  // if (DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1) {
     return (
       <select
         className={style.select_klient_zamowienia}
@@ -153,9 +153,4 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
         ))}
       </select>
     );
-  
-
-
-
-
 }

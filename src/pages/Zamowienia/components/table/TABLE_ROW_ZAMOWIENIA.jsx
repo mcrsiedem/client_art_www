@@ -69,7 +69,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
           setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
       >
-        <IconErrorTable row={row} />
+        {/* <IconErrorTable row={row} /> */}
 
         <td>{row.nr} </td>
         <td>{row.rok} </td>
@@ -87,6 +87,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <td className={style.col_uwagi}> {row.uwagi}</td>
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
+        <DataPrzyjeciaTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
 
         <td>{row.format_x + "x" + row.format_y}</td>
@@ -178,6 +179,19 @@ const SpedycjaTableZamowienia = ({ row }) => {
       title={row.data_spedycji}
       className={style.klientInput}
       value={row.data_spedycji}
+    />
+    </td>
+   
+  );
+};
+const DataPrzyjeciaTableZamowienia = ({ row }) => {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.data_przyjecia}
+      className={style.klientInput}
+      value={row.data_przyjecia}
     />
     </td>
    

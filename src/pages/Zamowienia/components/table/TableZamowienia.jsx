@@ -122,7 +122,7 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         onChange={(event) => {
           setSelectedUser(event.target.value);
           if(event.target.value ==0){
-            setSelectedKlient(0)
+            // setSelectedKlient(0)
           }
         }}
       >
@@ -156,12 +156,9 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
       >
         {<option value="0">Klient</option>}
 
-        {contextApp.clients?.filter(kl=> {
-          if(selectedUser!=0) {return kl.opiekun_id == selectedUser}else{ return 0} 
+        {contextApp.clients?.filter(kl=>  {
+          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
         }
-          // if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
-          // if(selectedUser==0){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
-          // if(selectedUser==0) {return 0}else{kl.opiekun_id == selectedUser}  
          )
         .map((option) => (
           <option key={option.id} value={option.id}>

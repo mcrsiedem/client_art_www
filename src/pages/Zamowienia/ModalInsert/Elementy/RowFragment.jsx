@@ -10,8 +10,8 @@ import { reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 export default function RowFragment({
-  row
-
+  row,
+  rowElement
 }) {
 
     const contextModalInsert = useContext(ModalInsertContext);
@@ -29,30 +29,22 @@ export default function RowFragment({
   return (
     <>
     <div className={style.row_fragmenty} draggable={lockDragDrop} onDragStart={()=>handleDragStart} key={row.id}>
-      
       <Typ row={row} />
       <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
-       {/* <div  className={style.rowFragmenty_strony}>{row.ilosc_stron}</div> */}
        <div ></div>
       <div disabled > </div>
       <div disabled > </div>
-      
       <Wersja row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
       <Dodaj row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} handleAddFragment={handleAddFragment} />
-      <Usun row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty}handleRemoveItem={handleRemoveItem} />
-      
+      <Usun row={row} rowElement={rowElement} handleUpdateRowFragmenty={handleUpdateRowFragmenty}handleRemoveItem={handleRemoveItem} />
       <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
-      {/* <td className={row.oprawa_id==" " ? style.alert2 :style.alert3 }>{row.oprawa_id}</td> */}
       <td></td>
       <td></td>
     </div>
-    
-    
-   
     </>
   );
 
@@ -175,7 +167,7 @@ function handleAddFragment(card, fragmenty, setFragmenty) {
 }
 
 
-function Usun({ row,handleRemoveItem }) {
+function Usun({ row,rowElement,handleRemoveItem }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
@@ -186,7 +178,7 @@ function Usun({ row,handleRemoveItem }) {
                       <img
          className={style.expand}
           src={iconTrash}
-          onClick={() => {handleRemoveItem(row.indeks,row.id,fragmenty,elementy,setFragmenty)}}
+          onClick={() => {handleRemoveItem(rowElement,row.indeks,row.id,fragmenty,elementy,setFragmenty)}}
           alt="Procesy"
         />
       </div>
@@ -195,13 +187,13 @@ function Usun({ row,handleRemoveItem }) {
   );
 }
 
-const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
+const handleRemoveItem = (rowElement,indeks,id,fragmenty,elementy,setFragmenty) => {
 
   // if (fragmenty.length > elementy.length) {
   //   setFragmenty(fragmenty.filter((x) => x.id !== id));
   // }
   // setFragmenty(fragmenty.filter((x) => x.id !== id));
-  if (fragmenty.length > elementy.length) {
+  if (fragmenty.filter(fr => fr.element_id == rowElement.id).length != 1) {
   setFragmenty((prev) =>
     prev.map((t, a) => {
       if (t.id == id) {
@@ -217,6 +209,6 @@ const handleRemoveItem = (indeks,id,fragmenty,elementy,setFragmenty) => {
   );
 }
 
-
+// .length != 1
 
 };

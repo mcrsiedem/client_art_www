@@ -249,8 +249,8 @@ export default function RowElement({
             {fragmenty
               ?.filter((x) => x.element_id == row.id)
               .filter((x) => x.delete != true)
-              .map((row, i) => {
-                return <RowFragment key={row.indeks} i={i} row={row} />;
+              .map((rowFragment, i) => {
+                return <RowFragment key={row.indeks} i={i} row={rowFragment}  rowElement={row}/>;
               })}
           </>
         )}

@@ -113,6 +113,7 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const contextApp = useContext(AppContext);
   const selectedUser = contextApp.selectedUser;
   const setSelectedUser = contextApp.setSelectedUser;
+  const setSelectedKlient = contextApp.setSelectedKlient;
   if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
     return (
       <select
@@ -120,6 +121,9 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         value={selectedUser}
         onChange={(event) => {
           setSelectedUser(event.target.value);
+          if(event.target.value ==0){
+            setSelectedKlient(0)
+          }
         }}
       >
         {<option value="0">Wszyscy</option>}
@@ -140,7 +144,7 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
   const contextApp = useContext(AppContext);
   const selectedKlient = contextApp.selectedKlient;
   const setSelectedKlient = contextApp.setSelectedKlient;
-  const clients = contextApp.setSclientselectedKlient;
+  const selectedUser = contextApp.selectedUser;
   // if (DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1) {
     return (
       <select
@@ -152,9 +156,13 @@ function SELECT_KLIENT_ZAMOWWIENIA() {
       >
         {<option value="0">Klient</option>}
 
-        {contextApp.clients?.filter(kl=>{
-          if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
-         })
+        {contextApp.clients?.filter(kl=> {
+          if(selectedUser==0) {return true}else{ return kl.opiekun_id == selectedUser} 
+        }
+          // if(DecodeToken(sessionStorage.getItem("token")).klienci_wszyscy == 1){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
+          // if(selectedUser==0){ return true} else { return kl.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id}
+          // if(selectedUser==0) {return 0}else{kl.opiekun_id == selectedUser}  
+         )
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma_nazwa} 

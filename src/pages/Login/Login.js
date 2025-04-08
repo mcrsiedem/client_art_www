@@ -19,6 +19,7 @@ export default function Login( ) {
   const context = useContext(SocketContext);
   const navigate = useNavigate();
 
+  const contextApp = useContext(AppContext);
 
   
   //  const appcontext = useContext(AppContext);
@@ -80,6 +81,11 @@ if (res.data.length > 0) {
   sessionStorage.setItem("token", res.data); 
   setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
   navigate("/Panel");
+
+
+ contextApp.setSelectedKlient(0);
+ contextApp.setSelectedUser(0);
+
  
 
 } else {

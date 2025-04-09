@@ -48,8 +48,29 @@
   background: transparent;
   font-size: 0.9rem;
   width: 100%;
+}
+
+
+.inputStan{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.inputStan:focus{
+  outline: none;
 
 }
+
+
+
+.td_stan{
+  background: transparent
+}
+.td_stan_yellow{
+  background: rgb(246, 212, 45);
+}
+
 
 
 

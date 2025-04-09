@@ -211,21 +211,7 @@ const PracaTableZamowienia = ({ row }) => {
   );
 };
 
-const StanZamowieniaTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  return (
-    <td
-      style={
-        row.stan == 2
-          ? { backgroundColor: "rgb(246, 212, 45)", paddingRight: "10px" }
-          : { backgroundColor: "" }
-      }
-    >
-      {_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}
-    </td>
-  );
-};
+
 const StatusZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
@@ -248,6 +234,20 @@ const StatusZamowieniaTable = ({ row }) => {
   );
 };
 
+const StanZamowieniaTable = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  return (
+    <td  className={row.stan == 2 ? style.td_stan_yellow :style.td_stan}>
+    <input
+      title={row.klient}
+      className={style.inputStan}
+      value={_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}
+    />
+    </td>
+  );
+};
+
 const EtapZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
@@ -255,7 +255,6 @@ const EtapZamowieniaTable = ({ row }) => {
   return (
     <td>
     <input
-      //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
       className={style.tytulEtap}
       value={_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}

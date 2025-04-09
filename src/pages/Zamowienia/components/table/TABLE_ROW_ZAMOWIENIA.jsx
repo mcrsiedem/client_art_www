@@ -257,7 +257,7 @@ const EtapZamowieniaTable = ({ row }) => {
     <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.tytulInput}
+      className={style.tytulEtap}
       value={_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}
     />
     </td>

@@ -28,7 +28,8 @@ export default function Header({ dodaj_clikHandler}) {
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <p className={style.title}>Zamówienia : {contextApp.zamowienia           .filter((zam) => zam.stan==3).length} przyjętych, {contextApp.zamowienia           .filter((zam) => zam.stan==2).length} do przyjęcia </p> */}
-        <p className={style.title}>Zamówienia : {contextApp.zamowienia.length} </p>
+        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title}>Zamówienia </p>
+        
       </div>
 
       <div className={style.centerHeaderContener}>

@@ -27,7 +27,14 @@ export default function Header({ dodaj_clikHandler}) {
       console.log("selectedKlient: "+ selectedKlient)
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
-        <p className={style.title}>Zamówienia {contextApp.zamowienia.length} </p>
+        <p className={style.title}>Zamówienia : {contextApp.zamowienia           .filter((zam) => {
+            if (contextApp.selectedKlient == 0) {
+              return true;
+            } else {
+             return  zam.klient_id == contextApp.selectedKlient;
+            }
+          }).length} </p>
+        {/* <p className={style.title}>Zamówienia : {contextApp.zamowienia.length} </p> */}
       </div>
 
       <div className={style.centerHeaderContener}>

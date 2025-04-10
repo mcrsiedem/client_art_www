@@ -34,7 +34,7 @@ export default function Dane({
 
         <Row style={style.row2}>
             <NR_ZAMOWIENIA /> 
-            <NR_PRODUKTU /> 
+
             <Rok />
             <Tytul />
             <Cena />
@@ -615,36 +615,6 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-function NR_PRODUKTU() {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return (
-    <div className={style.col}>
-      <label className={style.label}> Praca </label>
-      <input
-        className={style.input}
-        type="text"
-        title="Numer produktu"
-        value={daneZamowienia.praca_nr}
-        disabled
-      //   onChange={(event) => {
-      //     const re = /^[0-9]+$/;
-      //     if (event.target.value === "" || re.test(event.target.value)) {
-      //       setDaneZamowienia({
-      //         ...daneZamowienia,
-      //         praca_nr: event.target.value,
-      //         status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
-      //         update: true,
-      //       });
-      //     }
-      //   }
-      // }
-      ></input>
-    </div>
-  );
-}
 
 
 function Cena( ){

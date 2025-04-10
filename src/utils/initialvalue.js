@@ -49,7 +49,6 @@ const initialDane = {
   id: 1,
   prime_id: 1,
   nr: "",
-  praca_nr: "",
   rok: "2025",
   firma_id: 1,
   klient_id: 0,

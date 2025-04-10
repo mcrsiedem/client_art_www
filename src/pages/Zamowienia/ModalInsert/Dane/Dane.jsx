@@ -622,19 +622,19 @@ function NR_PRODUKTU() {
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
-      <label className={style.label}> Produkt </label>
+      <label className={style.label}> Praca </label>
       <input
         className={style.input}
         type="text"
         title="Numer produktu"
-        value={daneZamowienia.produkt_nr}
+        value={daneZamowienia.praca_nr}
         disabled
       //   onChange={(event) => {
       //     const re = /^[0-9]+$/;
       //     if (event.target.value === "" || re.test(event.target.value)) {
       //       setDaneZamowienia({
       //         ...daneZamowienia,
-      //         produkt_nr: event.target.value,
+      //         praca_nr: event.target.value,
       //         status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
       //         update: true,
       //       });

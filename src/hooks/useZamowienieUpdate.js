@@ -75,7 +75,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
      
      id: daneZamowienia.id,
      nr: daneZamowienia.nr,
-     produkt_nr: daneZamowienia.produkt_nr,
+     praca_nr: daneZamowienia.praca_nr,
       rok: daneZamowienia.rok,
       firma_id: daneZamowienia.firma_id,
       klient_id: daneZamowienia.klient_id,

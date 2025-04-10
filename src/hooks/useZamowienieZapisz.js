@@ -84,7 +84,7 @@ const saveDane = ({daneZamowienia}) =>{
      
      nr: daneZamowienia.nr,
       rok: daneZamowienia.rok,
-     produkt_nr: daneZamowienia.produkt_nr,
+      praca_nr: daneZamowienia.praca_nr,
       firma_id: daneZamowienia.firma_id,
       klient_id: daneZamowienia.klient_id,
       tytul: daneZamowienia.tytul,

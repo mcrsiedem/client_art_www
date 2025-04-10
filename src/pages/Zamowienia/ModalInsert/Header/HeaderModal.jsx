@@ -13,6 +13,8 @@ import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
+import { useZamowienieZapiszDuzo } from "hooks/useZamowienieZapiszDuzo";
+import DecodeToken from "pages/Login/DecodeToken";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -57,6 +59,7 @@ export default function Header({
               <Sprawdz />
               <ZapiszJako setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
               <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
+              <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
             </>
           )}
         </div>
@@ -125,11 +128,14 @@ function Zapisz({ setSaveAs }) {
       onClick={async () => {
         if (produkty[0].naklad != 0 && daneZamowienia.id == 1) {
           setSaveAs(false);
-          zapiszZamowienie();
+            zapiszZamowienie();
         }
 
         if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
-          saveZamowienieUpdate();
+         
+           saveZamowienieUpdate();
+          
+       
         }
       }}
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
@@ -139,6 +145,41 @@ function Zapisz({ setSaveAs }) {
     </button>
   );
 }
+
+
+
+function ZapiszDuzo({ setSaveAs }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
+  const produkty = contextModalInsert.produkty;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+
+  const contextApp = useContext(AppContext);
+  const [zapiszZamowienieDuzo] = useZamowienieZapiszDuzo();
+  if(DecodeToken(sessionStorage.getItem("token")).id==1){
+  return (
+    <button
+      onClick={async () => {
+        if (produkty[0].naklad != 0) {
+          setSaveAs(false);
+          for(let i=0; i<50; i++){
+            zapiszZamowienieDuzo();
+          }
+          
+        }
+      }}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      disabled={isSaveButtonDisabled}
+    >
+      Zapisz dużo
+    </button>
+  );
+  }
+
+}
+
+
+
 
 function Sprawdz({ setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);

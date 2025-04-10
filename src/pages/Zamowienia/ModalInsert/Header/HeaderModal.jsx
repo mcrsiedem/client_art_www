@@ -59,7 +59,7 @@ export default function Header({
               <Sprawdz />
               <ZapiszJako setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
               <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
-              <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
+              {/* <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} /> */}
             </>
           )}
         </div>
@@ -149,12 +149,10 @@ function Zapisz({ setSaveAs }) {
 
 
 function ZapiszDuzo({ setSaveAs }) {
+  // Uwaga zapisuje 50 szt zamówień w ramach testów obciążenia
   const contextModalInsert = useContext(ModalInsertContext);
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty = contextModalInsert.produkty;
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-
-  const contextApp = useContext(AppContext);
   const [zapiszZamowienieDuzo] = useZamowienieZapiszDuzo();
   if(DecodeToken(sessionStorage.getItem("token")).id==1){
   return (

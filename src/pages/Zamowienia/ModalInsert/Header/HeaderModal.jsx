@@ -58,9 +58,9 @@ export default function Header({
           ) : (
             <>
               {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
-              <Sprawdz />
-              <ZapiszJako setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
-              <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} dialogBox={dialogBox} />
+              <SprawdzBTN />
+              <ZapiszJakoBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}  />
+              <ZapiszBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} dialogBox={dialogBox} />
               {/* <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} /> */}
             </>
           )}
@@ -118,7 +118,7 @@ const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
   />
   )
 }
-function Zapisz({ setSaveAs,dialogBox }) {
+function ZapiszBTN({ setSaveAs,dialogBox }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty = contextModalInsert.produkty;
@@ -132,7 +132,7 @@ function Zapisz({ setSaveAs,dialogBox }) {
       onClick={async () => {
         if (produkty[0].naklad != 0 && daneZamowienia.id == 1) {
           setSaveAs(false);
-            zapiszZamowienie();
+            zapiszZamowienie({dialogBox});
         }
 
         if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
@@ -184,10 +184,12 @@ function ZapiszDuzo({ setSaveAs }) {
 
 
 
-function Sprawdz({ setShowSaveAs, setSaveAs }) {
+function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const produkty = contextModalInsert.produkty;
+  const isSprawdzButtonDisabled = contextModalInsert.isSprawdzButtonDisabled;
+
   return (
     <button
       onClick={async () => {
@@ -203,6 +205,7 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
         }
       }}
       className={style.btn}
+
     >
       Sprawdź
     </button>
@@ -210,7 +213,7 @@ function Sprawdz({ setShowSaveAs, setSaveAs }) {
 }
 
 
-function ZapiszJako({
+function ZapiszJakoBTN({
 
   setShowSaveAs,
   setSaveAs,

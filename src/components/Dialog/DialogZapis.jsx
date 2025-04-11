@@ -1,10 +1,12 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import style from "../Dialog/DialogZapis.module.css"
+import iconOK from "../../assets/ok.svg";
 
 export default function DialogZapis({dialogBox})  {
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [showOK, setShowOK] = useState(false);
 
-  const stylowanie = [style.dialog]
+  const stylowanie = [style.grayScaleBackground]
   useImperativeHandle(dialogBox, () => ({
     show() {
       setShowSnackbar(true);
@@ -13,52 +15,27 @@ export default function DialogZapis({dialogBox})  {
       setTimeout(() => {
         setShowSnackbar(false);
       }, 2000);
+    },
+    showOK() {
+      setShowOK(true);
     }
-
-
 
   }));
 if(showSnackbar){
     return (
-    <div className={ stylowanie.join(' ') } >
-      <div style={{
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "row",
+    // <div className={ stylowanie.join(' ') } >
+    <div className={style.grayScaleBackground} >
+    <div className={style.window} >
 
-      }}>
-
-<div style={{
-          position: "absolute",
-          left:"0",
-          background: "#a5cc52",
-          height: "50px",
-          width: "25px",
-
-        }}></div>
-
-        <div style={{
-          // position: "absolute",
-          // right:"0",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "250px",
-        }}> szt. </div>
-
-        {/* <div style={{
-          position: "absolute",
-          right:"0",
-          background: "#a5cc52",
-          height: "50px",
-          width: "20px",
-          borderTopRightRadius: "10px",
-          borderBottomRightRadius: "10px"
-        }}></div> */}
-        
-      </div>
+    <p className={style.title}>Zapis zamówienia...</p>
+    {showOK ?  <img
+      className={style.ok_icon}
+      src={iconOK}
+      alt="Procesy"
+    /> : <></>}
+   
+      
+    </div>
     </div>
   );
 }

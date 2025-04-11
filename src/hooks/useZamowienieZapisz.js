@@ -23,9 +23,10 @@ export  function useZamowienieZapisz(){
 
 const [refreshZamowienia] = useZamowienia()
 
- async function zapiszZamowienie(){
+ async function zapiszZamowienie({dialogBox}){
 
   setSaveButtonDisabled(true)
+  dialogBox.current.show();
           let response = [];
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
@@ -49,7 +50,8 @@ const [refreshZamowienia] = useZamowienia()
           console.log(response)
           if(isSavedCorrect(response).status) {
             
-            alert("Zamowienie zapisana...")
+            // alert("Zamowienie zapisana...")
+            dialogBox.current.showOK();
         
           let res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
         
@@ -72,7 +74,7 @@ const [refreshZamowienia] = useZamowienia()
 
            
            refreshZamowienia();
-
+           dialogBox.current.hide();
 }
 
 //----------------------------------------------------------------------------------

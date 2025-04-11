@@ -8,6 +8,8 @@ import { useZamowienia } from "./useZamowienia";
 export  function useZamowienieUpdate(){
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  const setSprawdzButtonDisabled= contextModalInsert.setSprawdzButtonDisabled;
+
   const produkty= contextModalInsert.produkty;
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
@@ -31,11 +33,11 @@ const [refreshZamowienia] = useZamowienia()
 
   async function saveZamowienieUpdate({dialogBox}){
   setSaveButtonDisabled(true)
-  dialogBox.current.show();
-   await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
-  
-  const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
+  dialogBox.current.show();
+  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
+  dialogBox.current.showOK();
+  const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
   setDaneZamowienia(res.data[0][0])
   setProdukty(res.data[1])
@@ -45,6 +47,7 @@ const [refreshZamowienia] = useZamowienia()
   setProcesyElementow(res.data[5])
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
+
   refreshZamowienia();
   dialogBox.current.hide();
 

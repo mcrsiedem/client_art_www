@@ -4,7 +4,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 
-export default function SaveAs({showSaveAs,setShowSaveAs,postZamowienieObj ,postZamowienieObjSaveAs,setSaveAs}) {
+export default function SaveAs({showSaveAs,setShowSaveAs,setSaveAs,dialogBox}) {
 //   useEffect(() => {}, []);
 const contextModal = useContext(ModalInsertContext);
 
@@ -29,7 +29,8 @@ const contextModal = useContext(ModalInsertContext);
   const setZamowienia = contextApp.setZamowienia
   const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
     const [zapiszZamowienie] = useZamowienieZapisz();
-  return (
+    if(showSaveAs){
+        return (
     <div className={style.insertContainer}>
       <div className={style.saveas}>
 
@@ -57,7 +58,7 @@ const contextModal = useContext(ModalInsertContext);
                     <button
                     className={style.btn}
                     onClick={() => {
-                      zapiszZamowienie();
+                      zapiszZamowienie({dialogBox});
                       setShowSaveAs(!showSaveAs)
                     }}
                     >
@@ -70,6 +71,8 @@ const contextModal = useContext(ModalInsertContext);
       
     </div>
   );
+    }
+
 }
 
 function Tytul() {

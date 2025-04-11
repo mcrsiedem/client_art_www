@@ -16,6 +16,7 @@ import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 import { useZamowienieZapiszDuzo } from "hooks/useZamowienieZapiszDuzo";
 import DialogZapis from "components/Dialog/DialogZapis";
 import DecodeToken from "pages/Login/DecodeToken";
+import SaveAs from "../SaveAs/SaveAs";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -25,14 +26,14 @@ const openInNewTab = (url) => {
 
 export default function Header({
   setOpenModalInsert,
-  setShowSaveAs,
-  setSaveAs,
   stanOtwarciaZamowienia,
   row,
   readOnly,
 }) {
   const[pokazStanyZamowienia] = useStanyZamowienia()
   const dialogBox = useRef(null);
+   const [showSaveAs, setShowSaveAs] = useState(false);
+   const [saveAs, setSaveAs] = useState(false);
   return (
     <>
       <div
@@ -75,6 +76,13 @@ export default function Header({
         </div>
       </div>
       <DialogZapis dialogBox={dialogBox}/>
+       <SaveAs
+                showSaveAs={showSaveAs}
+                setSaveAs={setSaveAs}
+                setShowSaveAs={setShowSaveAs}
+                dialogBox={dialogBox}
+  
+              />
 
     </>
   );
@@ -276,4 +284,6 @@ function Zamknij({setOpenModalInsert,readOnly,row}) {
   
   );
 }
+
+
 

@@ -60,8 +60,7 @@ function ModalInsert({
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
-  const [showSaveAs, setShowSaveAs] = useState(false);
-  const [saveAs, setSaveAs] = useState(false);
+
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
 
@@ -195,9 +194,6 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         check_data_wejscia={check_data_wejscia}
         openModalStany={openModalStany}
         setOpenModalStany={setOpenModalStany}
-        setShowSaveAs={setShowSaveAs}
-        saveAs={saveAs}
-        setSaveAs={setSaveAs}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
         row={row}
         readAlert={readAlert}
@@ -277,16 +273,15 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         />
       )}
 
-      {showSaveAs && (
+      {/* {showSaveAs && (
         <SaveAs
           showSaveAs={showSaveAs}
           setSaveAs={setSaveAs}
           setShowSaveAs={setShowSaveAs}
           daneZamowienia={daneZamowienia}
           setDaneZamowienia={setDaneZamowienia}
-          postZamowienieObjSaveAs={postZamowienieObjSaveAs}
         />
-      )}
+      )} */}
 
       <ClientStage parent={"modalinsert"} />
 

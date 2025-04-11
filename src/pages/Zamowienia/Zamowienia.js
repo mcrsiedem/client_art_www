@@ -38,6 +38,8 @@ const [refreshZamowienia] = useZamowienia()
     open.current = true;
   };
 
+  
+
 
   async function checkToken() {
     axios
@@ -104,6 +106,8 @@ const [refreshZamowienia] = useZamowienia()
             />
           )}
       <TechnologiaStage/>
+    
+      
     </div>
   );
 }

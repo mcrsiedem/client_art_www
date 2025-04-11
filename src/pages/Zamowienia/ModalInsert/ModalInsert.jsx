@@ -37,6 +37,7 @@ import { initalPakowanie, initialDane, initialOprawa, initialProdukty } from "ut
 import ProductCreator from "components/ProductCreator/ProductCreator";
 import PaperStage from "components/PaperStage/PaperStage";
 import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
+import DialogZapis from "components/Dialog/DialogZapis";
 
 function ModalInsert({
   openModalInsert,
@@ -87,6 +88,8 @@ const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 
+
+const dialogBox = useRef(null);
 
 
   useEffect(() => {
@@ -297,6 +300,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       )}
 
       <PaperStage parent={"zamowienia"} />
+      <DialogZapis dialogBox={dialogBox}/>
+      
     </div>
   );
 

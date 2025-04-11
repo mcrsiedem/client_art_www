@@ -225,6 +225,25 @@
 
 
 }
+.select_opiekun_zamowienia {
+   background: transparent;
+   width: 100px;
+   color: rgb(61, 61, 61);
+   font-weight: bold;
+   font-size: 0.7rem;
+   outline-style: none;
+   border: none;
+   border-radius: 5px;
+   height: 25px;
+   font-size: 0.9rem;
+
+}
+
+.select_opiekun_zamowienia>option {
+   background-color: rgb(31, 31, 31);
+   color: rgb(209, 209, 209);
+
+}
 
 .select_klient_zamowienia {
    background: transparent;

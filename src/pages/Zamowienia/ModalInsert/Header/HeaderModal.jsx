@@ -2,7 +2,7 @@ import iconTable from "../../../../assets/table.svg";
 import iconLock from "assets/lock2.svg";
 import iconUnLock from "assets/unLock.svg";
 import iconX from "assets/x.svg";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useRef } from "react";
 import style from "./HeaderModal.module.css";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
@@ -14,6 +14,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 import { useZamowienieZapiszDuzo } from "hooks/useZamowienieZapiszDuzo";
+import DialogZapis from "components/Dialog/DialogZapis";
 import DecodeToken from "pages/Login/DecodeToken";
 // import { useState } from "react";
 const openInNewTab = (url) => {
@@ -23,7 +24,6 @@ const openInNewTab = (url) => {
 
 
 export default function Header({
-  dialogBox,
   setOpenModalInsert,
   setShowSaveAs,
   setSaveAs,
@@ -32,6 +32,7 @@ export default function Header({
   readOnly,
 }) {
   const[pokazStanyZamowienia] = useStanyZamowienia()
+  const dialogBox = useRef(null);
   return (
     <>
       <div
@@ -73,6 +74,8 @@ export default function Header({
           />
         </div>
       </div>
+      <DialogZapis dialogBox={dialogBox}/>
+
     </>
   );
 }

@@ -89,7 +89,7 @@ const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 
 
-const dialogBox = useRef(null);
+
 
 
   useEffect(() => {
@@ -185,7 +185,6 @@ const dialogBox = useRef(null);
     
     <div className={style.container}>
       <HeaderModal
-      dialogBox={dialogBox}
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
         info={info}
@@ -301,7 +300,6 @@ const dialogBox = useRef(null);
       )}
 
       <PaperStage parent={"zamowienia"} />
-      <DialogZapis dialogBox={dialogBox}/>
       
     </div>
   );

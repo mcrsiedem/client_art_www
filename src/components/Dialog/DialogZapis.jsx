@@ -4,25 +4,30 @@ import style from "../Dialog/DialogZapis.module.css"
 export default function DialogZapis({dialogBox})  {
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const s = [style.dialog,style.dialog2]
+  const stylowanie = [style.dialog]
   useImperativeHandle(dialogBox, () => ({
     show() {
       setShowSnackbar(true);
+    },
+    hide(){
       setTimeout(() => {
         setShowSnackbar(false);
-      }, 3000);
-    },
-  }));
+      }, 2000);
+    }
 
-  return (
-    <div className={s.join(' ')} >
+
+
+  }));
+if(showSnackbar){
+    return (
+    <div className={ stylowanie.join(' ') } >
       <div style={{
         color: "white",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
-        
+
       }}>
 
 <div style={{
@@ -56,5 +61,7 @@ export default function DialogZapis({dialogBox})  {
       </div>
     </div>
   );
+}
+
 };
 

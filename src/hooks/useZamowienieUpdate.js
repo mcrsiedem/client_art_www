@@ -29,22 +29,13 @@ const setTechnologieID = contextModalInsert.setTechnologieID;
 
 const [refreshZamowienia] = useZamowienia()
 
-  async function saveZamowienieUpdate(){
+  async function saveZamowienieUpdate({dialogBox}){
   setSaveButtonDisabled(true)
-
-  let savedDane  = await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
+  dialogBox.current.show();
+   await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
   
   const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
-  
-
-  // setDaneZamowienia(savedDane.daneZamowienia)
-  // setProdukty(savedDane.produkty)
-  // setElementy(savedDane.elementy)
-  // setFragmenty(savedDane.fragmenty)
-  // setOprawa(savedDane.oprawa)
-  // setProcesyElementow(savedDane.procesyElementow)
-  // setHistoriaZamowienia(savedDane.historiaZamowienia)
 
   setDaneZamowienia(res.data[0][0])
   setProdukty(res.data[1])
@@ -54,9 +45,9 @@ const [refreshZamowienia] = useZamowienia()
   setProcesyElementow(res.data[5])
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
-
   refreshZamowienia();
-    alert("OK")
+  dialogBox.current.hide();
+
 }
 
 return[saveZamowienieUpdate]

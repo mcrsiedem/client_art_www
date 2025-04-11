@@ -23,6 +23,7 @@ const openInNewTab = (url) => {
 
 
 export default function Header({
+  dialogBox,
   setOpenModalInsert,
   setShowSaveAs,
   setSaveAs,
@@ -58,7 +59,7 @@ export default function Header({
               {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
               <Sprawdz />
               <ZapiszJako setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
-              <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} />
+              <Zapisz setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} dialogBox={dialogBox} />
               {/* <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} /> */}
             </>
           )}
@@ -114,7 +115,7 @@ const ShowStany = ({setOpenModalStany,openModalStany,setInfo}) =>{
   />
   )
 }
-function Zapisz({ setSaveAs }) {
+function Zapisz({ setSaveAs,dialogBox }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty = contextModalInsert.produkty;
@@ -133,7 +134,8 @@ function Zapisz({ setSaveAs }) {
 
         if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
          
-           saveZamowienieUpdate();
+           saveZamowienieUpdate({dialogBox});
+          //  dialogBox.current.show();
           
        
         }

@@ -185,6 +185,7 @@ const dialogBox = useRef(null);
     
     <div className={style.container}>
       <HeaderModal
+      dialogBox={dialogBox}
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
         info={info}

@@ -330,7 +330,6 @@ function Procesy({ row}) {
             onClick={() => {
               contextModalInsert.setShowElementyProcesyInsert(true);
               contextModalInsert.setSelectedElementROW(row)
-              //kopia procesów do procesyElementowTemporary, aby mozna bylo zamknąć bez zapisywania
               setProcesyElementowTemporary(procesyElementow)
             }}
             alt="Procesy"
@@ -339,12 +338,12 @@ function Procesy({ row}) {
 
 
 
-      <div className={style.procesy_elementy}>
+      <div className={style.procesy_elementy_dol}>
             {procesyElementow
             .filter((frag) => frag.element_id == row.id)
             .sort((a, b) => a.indeks - b.indeks)
             .filter((x) => x.delete != true)
-            .map((pr,i) =>  appContext.showMeProcessName( pr.nazwa_id)+" "
+            .map((pr,i) => <p className={style.procesy_list}> {appContext.showMeProcessName( pr.nazwa_id)+" "+pr.typ+" "+pr.rodzaj+" - "}</p> 
             )
             }
       </div>

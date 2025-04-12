@@ -312,11 +312,27 @@ font-size: 0.9rem;
 }
 
 .procesy_elementy {
-
+  /* background-color: greenyellow; */
  padding-top: 2px;
  padding-right: 5px;
 }
+.procesy_elementy_dol {
 
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+flex-wrap: wrap;
+
+ background-color: red;
+}
+.procesy_list{
+  color:black;
+  font-size: 0.7rem;
+  padding: 0px;
+  margin: 0px;
+  /* height:30px; */
+
+}
 .expand {
   height: 15px;
   margin-right: 10px;

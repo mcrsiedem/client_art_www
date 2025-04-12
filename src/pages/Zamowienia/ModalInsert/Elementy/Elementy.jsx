@@ -18,7 +18,7 @@ export default function Elementy({
   return (
     <div className={style.container}>
     <div className={style.element}>
-      <ElementyTable2
+      <ElementyTable
         handleChangeCardElementy={handleChangeCardElementy}
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         procesyElementow={procesyElementow}
@@ -34,7 +34,7 @@ export default function Elementy({
 }
 
 
-function ElementyTable2({
+function ElementyTable({
   handleChangeCardElementy,
   handleChangeCardFragmenty,
   procesyElementow,

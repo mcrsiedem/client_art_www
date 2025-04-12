@@ -49,7 +49,7 @@ export default function IntroligatorniaTable({
   return (
     <div className={style.container}>
       <div className={style.oprawa}>
-        <p>Oprawa</p>
+        <p className={style.produkt_txt}>Oprawa</p>
         {/* <Header  /> */}
         <OprawaTable
           handleChangeCardProdukty={handleChangeCardProdukty}

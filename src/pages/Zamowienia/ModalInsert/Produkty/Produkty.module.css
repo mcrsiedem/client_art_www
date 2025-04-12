@@ -10,10 +10,11 @@
 .produkt {
   border-radius: 10px;
   width: calc(100vw - 40px);
-  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
-  /* background-color: rgb(178, 196, 214); */
-
   height: calc(100% - 20px);
+}
+
+.produkt_txt{
+  color: rgb(53, 53, 53);
 }
 
 .header {

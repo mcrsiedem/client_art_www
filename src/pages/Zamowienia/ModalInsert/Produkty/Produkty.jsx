@@ -12,7 +12,7 @@ export default function Produkty( ) {
             <div className={style.produkt}>
               {/* <ProduktyTableHeader /> */}
     
-              <p>Produkt</p>
+              <p className={style.row1}>Produkt</p>
          
               <ProduktyTable2   />
             

@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 4;
 }
 
 .window {
@@ -25,7 +26,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:20px
+  gap:20px;
+  
   /* background-color: rgb(198, 198, 198); */
   /* border: 1px solid rgb(143, 143, 143);
   border-radius: 10px;
@@ -40,6 +42,7 @@
 
 .title{
   color: rgb(224, 224, 224);
+  padding-top: 10px;
   /* font-size: 1.1rem; */
 }
 

@@ -31,7 +31,7 @@ export default function Header({ dodaj_clikHandler}) {
       <div className={style.leftHeaderContener}>
         {/* <p className={style.title}>Zamówienia : {contextApp.zamowienia           .filter((zam) => zam.stan==3).length} przyjętych, {contextApp.zamowienia           .filter((zam) => zam.stan==2).length} do przyjęcia </p> */}
         <REFRESH_ZAMOWIENIA_BTN/>
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title}>Zamówienia </p>
+        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
       </div>
 
       <div className={style.centerHeaderContener}>

@@ -13,9 +13,11 @@
 
 }
 
-.title {
-    font-size: 1.3rem;
+.title2 {
+    padding-top: 15px;
+    font-size: 1.2rem;
     color: rgb(201, 201, 201);
+    font-family: Poppins;
 }
 
 

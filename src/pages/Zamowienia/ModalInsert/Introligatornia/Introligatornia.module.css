@@ -10,11 +10,8 @@
   border-radius: 10px;
   width: calc(100vw - 40px);
   height: calc(100% - 20px);
-  /* background-color: rgb(253, 227, 188); */
   background-color: transparent;
-  /* box-shadow: 8px 8px 8px rgb(159, 159, 159); */
-  /* background-color: rgb(178, 196, 214); */
-  /* box-shadow: 3px 3px 3px rgb(159, 159, 159); */
+
 }
 
 .header{
@@ -34,6 +31,9 @@
 
 }
 
+.produkt_txt{
+  color: rgb(53, 53, 53);
+}
 .main {
   /* overflow: auto; */
 }

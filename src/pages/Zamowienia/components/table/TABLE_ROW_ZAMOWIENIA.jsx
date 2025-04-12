@@ -82,26 +82,18 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         {/* <td className={style.col_klient}>{row.klient}</td> */}
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} />
-
-        {/* <td>{row.tytul}</td> */}
-        <td className={style.col_uwagi}> {row.uwagi}</td>
+        <UwagiTableZamowienia row={row} />
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
         <DataPrzyjeciaTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
-
         <td>{row.format_x + "x" + row.format_y}</td>
-        {/* <td>{row.format_y}</td> */}
         <OprawaTableZamowienia row={row} />
         <FirmaZamowieniaTable row={row} />
-
-        
         <StanZamowieniaTable row={row} />
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
-        <td className={style.col_opiekun}>{row.opiekun}</td>
-
-        {/* <td>{row.utworzono}</td> */}
+        <OpiekunZamowieniaTable row={row} />
         <SelectBox row={row} />
         <IconLockTable row={row} />
       </tr>
@@ -211,6 +203,17 @@ const PracaTableZamowienia = ({ row }) => {
   );
 };
 
+const UwagiTableZamowienia = ({ row }) => {
+  return (
+    <td>
+    <input
+      title={row.uwagi}
+      className={style.tytulInput}
+      value={row.uwagi}
+    />
+    </td>
+  );
+};
 
 const StatusZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
@@ -258,6 +261,21 @@ const EtapZamowieniaTable = ({ row }) => {
       title={row.klient}
       className={style.tytulEtap}
       value={_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}
+    />
+    </td>
+  );
+};
+
+
+const OpiekunZamowieniaTable = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  return (
+    <td>
+    <input
+      title={row.klient}
+      className={style.tytulEtap}
+      value={row.opiekun}
     />
     </td>
   );

@@ -625,17 +625,17 @@ function NR_ZAMOWIENIA( ){
          setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,stan:3,status:2,update: true})
  
       }}>
-        dodaj numer
+        utwórz numer
       </button>
     </div>
   );
    
   }
 
-  if(daneZamowienia.stan==2 && daneZamowienia.etap==1 && DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1){
+  if(daneZamowienia.stan==2 && daneZamowienia.etap==1 && DecodeToken(sessionStorage.getItem("token")).harmonogram_przyjmij==1){
     return(
          <div className={style.col}>
-         <label className={style.label}> Zamówienie </label>
+         <label className={style.label}> Harmonogram </label>
          <button className={style.btn_przujmij_do_harmonogramu} onClick={async()=>{
 
             setDaneZamowienia({...daneZamowienia,stan:3,status:2,update: true})

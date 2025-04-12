@@ -595,7 +595,7 @@ function NR_ZAMOWIENIA( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  if(daneZamowienia.stan==2 && daneZamowienia.etap==2){
+  if(daneZamowienia.stan==2 && daneZamowienia.etap==2 && DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc==1){
  return(
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
@@ -619,16 +619,14 @@ function NR_ZAMOWIENIA( ){
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
       <input className={style.input} type="text" title="Numer zamówienia"
+      
       onDoubleClick={()=>{
         contextModalInsert.setShowInputNrZamowienie(true)
       }}
       value={daneZamowienia.nr}
-      onChange={(event) => {
-        const re = /^[0-9]+$/;
-        if (event.target.value === '' || re.test(event.target.value)) {
-          setDaneZamowienia({...daneZamowienia, nr: event.target.value,update: true});
-        }
-      }}></input>
+>
+
+      </input>
     </div>
   );
   }

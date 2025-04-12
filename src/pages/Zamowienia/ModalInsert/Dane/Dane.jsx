@@ -8,7 +8,9 @@ import { goInputValidation } from "actions/goInputValidation";
 import { useHistoria } from "hooks/useHistoria";
 import DecodeToken from "pages/Login/DecodeToken";
 
+import axios from "axios";
 
+import { IP } from "utils/Host";
 export default function Dane({
   selected_firma,setSelected_firma,
 
@@ -34,7 +36,6 @@ export default function Dane({
 
         <Row style={style.row2}>
             <NR_ZAMOWIENIA /> 
-
             <Rok />
             <Tytul />
             <Cena />
@@ -594,11 +595,20 @@ function NR_ZAMOWIENIA( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  if(daneZamowienia.stan==2){
+  if(daneZamowienia.stan==2 && daneZamowienia.etap==2){
  return(
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
-      <button className={style.btn_nadajNr}>
+      <button className={style.btn_nadajNr} onClick={async()=>{
+      let  res = await axios.post(IP + "zamowienieNumer/" + sessionStorage.getItem("token"),[{
+          zamowienie_id: daneZamowienia.id,
+          user_id: DecodeToken(sessionStorage.getItem("token")).id
+         }])
+         let zapis = res.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
+         let zamowienie_nr = res.data[0][1].zamowienie_nr;  // nr id pod jakim zapisała sietechnologia
+         setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,stan:3,update: true})
+ 
+      }}>
         dodaj numer
       </button>
     </div>

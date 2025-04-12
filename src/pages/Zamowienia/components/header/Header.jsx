@@ -4,6 +4,8 @@ import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
+import { useZamowienia } from "hooks/useZamowienia";
+import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -28,8 +30,8 @@ export default function Header({ dodaj_clikHandler}) {
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <p className={style.title}>Zamówienia : {contextApp.zamowienia           .filter((zam) => zam.stan==3).length} przyjętych, {contextApp.zamowienia           .filter((zam) => zam.stan==2).length} do przyjęcia </p> */}
+        <REFRESH_ZAMOWIENIA_BTN/>
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title}>Zamówienia </p>
-        
       </div>
 
       <div className={style.centerHeaderContener}>
@@ -87,3 +89,6 @@ function Szukaj() {
     ></input>
   );
 }
+
+
+

@@ -215,7 +215,7 @@ padding-left: 40px;
 .col_strony {
 
   width: 60px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .col_gramatura {
@@ -323,7 +323,7 @@ font-size: 0.9rem;
   flex-direction: row;
 flex-wrap: wrap;
 
- background-color: red;
+ /* background-color: red; */
 }
 .procesy_list{
   color:black;

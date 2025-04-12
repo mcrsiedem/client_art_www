@@ -451,8 +451,9 @@ const selectColor = (stan) =>{
         value={daneZamowienia.stan}
         onChange={(event) => {
 
+          if(event.target.value != 3){
 
-          if(event.target.value == 2 && daneZamowienia.stan == 1){
+                      if(event.target.value == 2 && daneZamowienia.stan == 1){
           setDaneZamowienia({...daneZamowienia, stan: event.target.value, update: true});
                   add(                    {
                       kategoria: "Stan zamówienia",
@@ -472,32 +473,35 @@ const selectColor = (stan) =>{
                     );
             }
 
+          }
+
+
         
 
 
-            if(event.target.value == 2 && daneZamowienia.stan == 3){
-              if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
-              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 1, update: true});
-                      add(                    {
-                        kategoria: "Stan zamówienia",
-                        event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-                        zamowienie_id: daneZamowienia.id
-                    }
-                    );
-              }
-            }
+            // if(event.target.value == 2 && daneZamowienia.stan == 3){
+            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+            //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 1, update: true});
+            //           add(                    {
+            //             kategoria: "Stan zamówienia",
+            //             event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+            //             zamowienie_id: daneZamowienia.id
+            //         }
+            //         );
+            //   }
+            // }
 
-            if(event.target.value == 3){
-              if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
-              setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
-                      add(                    {
-                        kategoria: "Stan zamówienia",
-                        event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-                        zamowienie_id: daneZamowienia.id
-                    }
-                    );
-              }
-            }
+            // if(event.target.value == 3){
+            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+            //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
+            //           add(                    {
+            //             kategoria: "Stan zamówienia",
+            //             event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+            //             zamowienie_id: daneZamowienia.id
+            //         }
+            //         );
+            //   }
+            // }
 
 
         }}
@@ -588,31 +592,40 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 function NR_ZAMOWIENIA( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return(
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+  // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  if(daneZamowienia.stan==2){
+ return(
+      <div className={style.col}>
+      <label className={style.label}> Zamówienie </label>
+      <button className={style.btn_nadajNr}>
+        dodaj numer
+      </button>
+    </div>
+  );
+   
+  }else {
+    return(
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
       <input className={style.input} type="text" title="Numer zamówienia"
-      
       onDoubleClick={()=>{
-
         contextModalInsert.setShowInputNrZamowienie(true)
       }}
       value={daneZamowienia.nr}
       onChange={(event) => {
-
         const re = /^[0-9]+$/;
-
         if (event.target.value === '' || re.test(event.target.value)) {
           setDaneZamowienia({...daneZamowienia, nr: event.target.value,update: true});
-           
         }
-        
-      
       }}></input>
     </div>
   );
+  }
+
+
+
+
 }
 
 

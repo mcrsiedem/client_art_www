@@ -79,6 +79,22 @@ padding-left: 10px;
 
 }
 
+
+.btn_nadajNr {
+  background-color: rgb(234, 234, 234);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  /* outline: 1px solid rgb(185, 185, 185); */
+  padding-left: 0px;
+  font-size: 0.8rem;
+  border: 1.5px solid rgb(72, 72, 72);
+    /* border-radius: 10px; */
+    /* box-shadow: 3px 3px 3px rgb(29, 29, 29); */
+  /* min-width: 50px; */
+}
+
+
 .select,
 .input {
   background-color: white;

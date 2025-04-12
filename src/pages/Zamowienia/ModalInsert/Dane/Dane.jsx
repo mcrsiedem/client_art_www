@@ -303,7 +303,7 @@ const [add] = useHistoria()
             }
 
 
-            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
 
               setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
 
@@ -433,7 +433,7 @@ function Stan( ) {
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
-// const zamowienie_odrzuc = true;
+// const zamowienie_przyjmij = true;
 const [add] = useHistoria()
 const selectColor = (stan) =>{
   if (stan==1) return style.select_stan_1
@@ -481,7 +481,7 @@ const selectColor = (stan) =>{
 
 
             // if(event.target.value == 2 && daneZamowienia.stan == 3){
-            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
             //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 1, update: true});
             //           add(                    {
             //             kategoria: "Stan zamówienia",
@@ -493,7 +493,7 @@ const selectColor = (stan) =>{
             // }
 
             // if(event.target.value == 3){
-            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc == 1){
+            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
             //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
             //           add(                    {
             //             kategoria: "Stan zamówienia",
@@ -595,7 +595,23 @@ function NR_ZAMOWIENIA( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  if(daneZamowienia.stan==2 && daneZamowienia.etap==2 && DecodeToken(sessionStorage.getItem("token")).zamowienie_odrzuc==1){
+
+
+  if (daneZamowienia.stan == 1 && daneZamowienia.stan == 3) {
+    return (
+      <div className={style.col}>
+        <label className={style.label}> Zamówienie </label>
+        <input
+          className={style.input}
+          type="text"
+          title="Numer zamówienia"
+          value={daneZamowienia.nr}
+        ></input>
+      </div>
+    );
+  }
+
+  if(daneZamowienia.stan==2 && daneZamowienia.etap==2 && DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1){
  return(
       <div className={style.col}>
       <label className={style.label}> Zamówienie </label>
@@ -606,7 +622,7 @@ function NR_ZAMOWIENIA( ){
          }])
          let zapis = res.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
          let zamowienie_nr = res.data[0][1].zamowienie_nr;  // nr id pod jakim zapisała sietechnologia
-         setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,stan:3,update: true})
+         setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,stan:3,status:2,update: true})
  
       }}>
         dodaj numer
@@ -614,25 +630,34 @@ function NR_ZAMOWIENIA( ){
     </div>
   );
    
-  }else {
-    return(
-      <div className={style.col}>
-      <label className={style.label}> Zamówienie </label>
-      <input className={style.input} type="text" title="Numer zamówienia"
-      
-      onDoubleClick={()=>{
-        contextModalInsert.setShowInputNrZamowienie(true)
-      }}
-      value={daneZamowienia.nr}
->
-
-      </input>
-    </div>
-  );
   }
 
+  if(daneZamowienia.stan==2 && daneZamowienia.etap==1 && DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1){
+    return(
+         <div className={style.col}>
+         <label className={style.label}> Zamówienie </label>
+         <button className={style.btn_przujmij_do_harmonogramu} onClick={async()=>{
 
+            setDaneZamowienia({...daneZamowienia,stan:3,status:2,update: true})
+         }}>
+           przyjmij
+         </button>
+       </div>
+     );
+      
+     }
 
+     return (
+      <div className={style.col}>
+        <label className={style.label}> Zamówienie </label>
+        <input
+          className={style.input}
+          type="text"
+          title="Numer zamówienia"
+          value={daneZamowienia.nr}
+        ></input>
+      </div>
+    );
 
 }
 

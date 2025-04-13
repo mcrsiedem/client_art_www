@@ -342,7 +342,7 @@ function Procesy({ row}) {
             .filter((frag) => frag.element_id == row.id)
             .sort((a, b) => a.indeks - b.indeks)
             .filter((x) => x.delete != true)
-            .map((pr,i) => appContext.showMeProcessName( pr.nazwa_id)+" "+pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+"  \n "
+            .map((pr,i) => pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar
             )
             } className={style.procesy_elementy_dol}>
             {procesyElementow
@@ -539,10 +539,12 @@ const [setStatus] = useStatus()
           .map((x) => parseInt(x.naklad))
           .reduce((a, b) => a + b, 0);
 
-        if (suma_nakladow != row.naklad) {
+        if (suma_nakladow == row.naklad) {
+          return style.input;
+        }else{
           return style.input_alert;
         }
-        return style.input;
+   
       };
 
       const ilezostalo = () => {

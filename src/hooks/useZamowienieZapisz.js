@@ -20,6 +20,8 @@ export  function useZamowienieZapisz(){
   let setOprawa= contextModalInsert.setOprawa;
   let setProcesyElementow= contextModalInsert.setProcesyElementow;
   let procesyElementow= contextModalInsert.procesyElementow;
+  let pakowanie= contextModalInsert.pakowanie;
+  let setPakowanie= contextModalInsert.setPakowanie;
 
 const [refreshZamowienia] = useZamowienia()
 
@@ -41,10 +43,11 @@ const [refreshZamowienia] = useZamowienia()
               fragmenty = fragmenty.map((obj) => {return{...obj, zamowienie_id} })
               oprawa = oprawa.map((obj) => {return{...obj, zamowienie_id} })
               procesyElementow = procesyElementow.map((obj) => {return{...obj, zamowienie_id} })
+              pakowanie = pakowanie.map((obj) => {return{...obj, zamowienie_id} })
 
          
 
-          let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow})
+          let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie})
 
           response.push(savedParametry.data)
           console.log(response)
@@ -62,6 +65,7 @@ const [refreshZamowienia] = useZamowienia()
           setFragmenty(res.data[3])
           setOprawa(res.data[4])
           setProcesyElementow(res.data[5])
+          setPakowanie(res.data[6])
 
 
            }
@@ -114,9 +118,9 @@ const saveDane = ({daneZamowienia}) =>{
   })
 }
 
-const saveParametry = ({produkty,elementy,fragmenty,oprawa,procesyElementow}) =>{
+const saveParametry = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "zamowienieInsertParametry/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow])
+   let res = await axios.post(IP + "zamowienieInsertParametry/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie])
 resolve(res)
   })
 }

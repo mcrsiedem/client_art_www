@@ -169,7 +169,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
            setProcesyElementow(res.data[5])
            setTechnologieID(res.data[6])
            setHistoriaZamowienia(res.data[7])
-          //  setPakowanie(res.data[5].sort((a, b) => a.indeks - b.indeks))
+           setPakowanie(res.data[8].sort((a, b) => a.indeks - b.indeks))
            
           //  setKosztyDodatkoweZamowienia(res.data[7])
           //  setKosztyDodatkowe(res.data[8])

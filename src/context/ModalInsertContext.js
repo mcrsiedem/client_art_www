@@ -100,6 +100,9 @@ export const ModalInsertContextProvider = ({children})=>{
        
     };
 
+    
+
+
     const handleUpdateRowOprawa = (row) => {
       setOprawa(
         oprawa.map((t) => {

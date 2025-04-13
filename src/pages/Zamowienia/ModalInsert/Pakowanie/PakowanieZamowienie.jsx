@@ -72,17 +72,22 @@ function PAKOWANIE_TABLE() {
 
 
 function Uwagi( {row}){
-
+  const contextModalInsert = useContext(ModalInsertContext);
+  const handleUpdateRowPakowanie = contextModalInsert.handleUpdateRowPakowanie;
   return(
       <td className={style.col}>
       <textarea className={style.input_textarea} rows="3" type="text"
-      value={row.uwagi}
+      defaultValue={row.uwagi}
       onChange={(event) => {
         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
- 
+      
           // setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-           
+          handleUpdateRowPakowanie({
+            ...row,
+            uwagi: event.target.value,
+            update:true
+          });
      }
 
       }}></textarea>

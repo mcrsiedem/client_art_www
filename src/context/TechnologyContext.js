@@ -444,6 +444,17 @@ if(elementyTech.length>1){
 
      const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
 
+
+     setDane([])
+     setProdukty([])
+     setElementy([])
+     setFragmenty([])
+     setOprawa([])
+     setProcesyElementow([])
+     setHistoriaZamowienia([])
+     setPakowanie([])
+
+
      setDane(res.data[0][0])
      setProdukty(res.data[1])
      setElementy(res.data[2])
@@ -507,18 +518,35 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
 
   const res_zam = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
+  setDane([])
+  setProdukty([])
+  setElementy([])
+  setFragmenty([])
+  setOprawa([])
+  setProcesyElementow([])
+  setHistoriaZamowienia([])
+  setPakowanie([])
   setDane(res_zam.data[0][0])
      setProdukty(res_zam.data[1])
      setElementy(res_zam.data[2])
      setFragmenty(res_zam.data[3])
      setOprawa(res_zam.data[4])
      setProcesyElementow(res_zam.data[5])
-
      setHistoriaZamowienia(res_zam.data[7])
-           setPakowanie(res_zam.data[8].sort((a, b) => a.indeks - b.indeks))
+     setPakowanie(res_zam.data[8].sort((a, b) => a.indeks - b.indeks))
 
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
-
+  setDaneTech([]) 
+  setProduktyTech([])
+  setElementyTech([])
+  setFragmentyTech([])
+  setOprawaTech([])
+  setProcesyElementowTech([])
+  setLegi([])
+   setLegiFragmenty([])
+   setArkusze([])
+   setGrupaWykonan([])
+   setWykonania([])
 
   setDaneTech(res.data[0][0]) 
   setProduktyTech(res.data[1])

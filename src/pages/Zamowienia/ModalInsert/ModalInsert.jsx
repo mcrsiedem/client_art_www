@@ -161,6 +161,15 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
           });
 
            const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
+           setDaneZamowienia([])
+           setProdukty([])
+           setElementy([])
+           setFragmenty([])
+           setOprawa([])
+           setProcesyElementow([])
+           setTechnologieID([])
+           setHistoriaZamowienia([])
+           setPakowanie([])
 
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])

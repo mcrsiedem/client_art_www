@@ -5,10 +5,11 @@ import BoxMaker from './BoxMaker/BoxMaker'
 import ProductSelector from './ProductSelector/ProductSelector'
 import { useState } from 'react'
 
-export default function ProductCreator({setShowTemplate,setShowParametryZamowienia}){
+export default function ProductCreator({showTemplate,setShowTemplate,setShowParametryZamowienia}){
 
     const [show, setShow] = useState(null)
-    return(
+    if(showTemplate){
+            return(
         <div className={style.container}>
             <ProductSelector show={show }setShow={setShow}/>
 
@@ -18,5 +19,7 @@ export default function ProductCreator({setShowTemplate,setShowParametryZamowien
 
         </div>
     )
+    }
+
 }
 

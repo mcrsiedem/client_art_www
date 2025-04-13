@@ -7,16 +7,18 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
 import { reg_int } from "utils/initialvalue";
 import { reg_txt } from "utils/initialvalue";
-export default function ProcesElement() {
+export default function ProcesElement({showElementyProcesyInsert}) {
 
-
-  return (
+if(showElementyProcesyInsert){
+    return (
    <Window>
       <Header />
       <Table />
       <Footer />
    </Window>
   );
+}
+
 }
 
 

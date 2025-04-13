@@ -34,7 +34,8 @@ export default function Stany({
     checkToken();
   }, []);
 
-  return (
+  if(openModalStany){
+      return (
     <div className={style.body}>
       <div className={style.container}>
         <StanDane daneZamowienia={daneZamowienia} />
@@ -48,6 +49,8 @@ export default function Stany({
       </div>
     </div>
   );
+  }
+
 }
 function StanProdukty() {
   const contextModalInsert = useContext(ModalInsertContext);

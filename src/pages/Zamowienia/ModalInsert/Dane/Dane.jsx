@@ -290,30 +290,45 @@ const [add] = useHistoria()
         className={selectColor(daneZamowienia.status)}
         value={daneZamowienia.status}
         onChange={(event) => {
-            if(daneZamowienia.stan ==3  || daneZamowienia.technologia_id !=null){
-            }
-            else{
-                    setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+          //   if(daneZamowienia.stan ==3  || daneZamowienia.technologia_id !=null){
 
-          add(   {
-            kategoria: "Status zamówienia",
-            event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-            zamowienie_id: daneZamowienia.id
-          })
-            }
+          //   }
+          //   else{
+          //           setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+
+          // add(   {
+          //   kategoria: "Status zamówienia",
+          //   event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+          //   zamowienie_id: daneZamowienia.id
+          // })
+          //   }
 
 
-            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
-
+            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1 && daneZamowienia.technologia_id ==null){
               setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
-
-          add(   {
-            kategoria: "Status zamówienia",
-            event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-            zamowienie_id: daneZamowienia.id
-          })
+              add({
+                    kategoria: "Status zamówienia",
+                    event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                    zamowienie_id: daneZamowienia.id
+                  })
+            }
+            if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1 && event.target.value==5){
+              setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+              add({
+                    kategoria: "Status zamówienia",
+                    event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                    zamowienie_id: daneZamowienia.id
+                  })
             }
 
+            if(event.target.value==3 || event.target.value==4){
+              setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
+              add({
+                    kategoria: "Status zamówienia",
+                    event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
+                    zamowienie_id: daneZamowienia.id
+                  })
+            }
 
         }}
       >

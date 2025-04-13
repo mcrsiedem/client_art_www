@@ -181,7 +181,6 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 
 
   return (
-    
     <div className={style.container}>
       <HeaderModal
         openModalInsert={openModalInsert}
@@ -239,63 +238,31 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
             <HistoriaZamowienia />
 
             {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
-
             {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
           </div>
         )}
 
-        {showTemplate && (
-          <div>
-            {/* <ProduktTemplate
-              setShowTemplate={setShowTemplate}
-              setShowParametryZamowienia={setShowParametryZamowienia}
-              handleChangeCardProdukty={handleChangeCardProdukty}
-            /> */}
-
-            <ProductCreator
-              setShowTemplate={setShowTemplate}
-              setShowParametryZamowienia={setShowParametryZamowienia}
-            />
-          </div>
-        )}
+        <ProductCreator
+          showTemplate={showTemplate}
+          setShowTemplate={setShowTemplate}
+          setShowParametryZamowienia={setShowParametryZamowienia}
+        />
       </div>
-
-      {showElementyProcesyInsert && (
-        <ProcesElement procesyElementow={procesyElementow} />
-      )}
-
-      {openModalStany && (
-        <Stany
-          handleChangeCardFragmenty={handleChangeCardFragmenty}
-          openModalStany={openModalStany}
-          setOpenModalStany={setOpenModalStany}
-          daneZamowienia={daneZamowienia}
-        />
-      )}
-
-      {/* {showSaveAs && (
-        <SaveAs
-          showSaveAs={showSaveAs}
-          setSaveAs={setSaveAs}
-          setShowSaveAs={setShowSaveAs}
-          daneZamowienia={daneZamowienia}
-          setDaneZamowienia={setDaneZamowienia}
-        />
-      )} */}
+      <ProcesElement showElementyProcesyInsert={showElementyProcesyInsert} />
+      <Stany
+        handleChangeCardFragmenty={handleChangeCardFragmenty}
+        openModalStany={openModalStany}
+        setOpenModalStany={setOpenModalStany}
+        daneZamowienia={daneZamowienia}
+      />
 
       <ClientStage parent={"modalinsert"} />
-
-      {readAlert && (
-        <ReadOnlyAlert
-          // readOnly={readOnly}
-          readAlert={readAlert}
-          setReadAlert={setReadAlert}
-          stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-        />
-      )}
-
+      <ReadOnlyAlert
+        readAlert={readAlert}
+        setReadAlert={setReadAlert}
+        stanOtwarciaZamowienia={stanOtwarciaZamowienia}
+      />
       <PaperStage parent={"zamowienia"} />
-      
     </div>
   );
 

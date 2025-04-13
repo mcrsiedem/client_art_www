@@ -3,7 +3,8 @@ import style from "../ReadOnlyAlert/ReadOnlyAlert.module.css";
 export default function ReadOnlyAlert({ readAlert, setReadAlert, stanOtwarciaZamowienia }) {
   //   useEffect(() => {}, []);
 
-  return (
+  if(readAlert){
+      return (
     <div className={style.window}>
       
       <div className={style.readonly}>
@@ -31,6 +32,8 @@ export default function ReadOnlyAlert({ readAlert, setReadAlert, stanOtwarciaZam
       </div>
     </div>
   );
+  }
+
 }
 
 function Header() {

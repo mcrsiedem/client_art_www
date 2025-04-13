@@ -533,7 +533,7 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
      setOprawa(res_zam.data[4])
      setProcesyElementow(res_zam.data[5])
      setHistoriaZamowienia(res_zam.data[7])
-     setPakowanie(res_zam.data[8].sort((a, b) => a.indeks - b.indeks))
+     setPakowanie(res_zam.data[8])
 
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
   setDaneTech([]) 

@@ -25,6 +25,8 @@ export  function useZamowienieUpdate(){
   const technologieID= contextModalInsert.technologieID;
   const historiaZamowienia= contextModalInsert.historiaZamowienia?.filter(x=>x.insert == true );
   const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
+  const pakowanie= contextModalInsert.pakowanie;
+  const setPakowanie= contextModalInsert.setPakowanie;
 
 
 const setTechnologieID = contextModalInsert.setTechnologieID;
@@ -35,7 +37,7 @@ const [refreshZamowienia] = useZamowienia()
   setSaveButtonDisabled(true)
 
   dialogBox.current.show();
-  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia})
+  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie})
   dialogBox.current.showOK();
   const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
@@ -47,6 +49,7 @@ const [refreshZamowienia] = useZamowienia()
   setProcesyElementow(res.data[5])
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
+  setPakowanie(res.data[8])
 
   refreshZamowienia();
   dialogBox.current.hide();
@@ -61,7 +64,7 @@ return[saveZamowienieUpdate]
 
 
 //----------------------------------------------------------------------------------
-const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia}) =>{
+const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
@@ -92,7 +95,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
 
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia])
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
@@ -104,8 +107,10 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
   oprawa = res.data[4];
   procesyElementow = res.data[5];
   historiaZamowienia = res.data[6];
+  pakowanie = res.data[7];
+  
 
-      resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,procesyElementow,historiaZamowienia})
+      resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,procesyElementow,historiaZamowienia,pakowanie})
 
   })
 }

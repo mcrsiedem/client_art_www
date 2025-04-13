@@ -65,7 +65,7 @@ const [refreshZamowienia] = useZamowienia()
           setFragmenty(res.data[3])
           setOprawa(res.data[4])
           setProcesyElementow(res.data[5])
-          setPakowanie(res.data[6])
+          setPakowanie(res.data[8].sort((a, b) => a.indeks - b.indeks))
 
 
            }

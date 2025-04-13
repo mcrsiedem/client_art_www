@@ -54,6 +54,7 @@ const sprawdzDostep = (c) => {
             return (
               <tr
                 key={row.id}
+                className={style.row_klient}
                 onDoubleClick={
 
                   

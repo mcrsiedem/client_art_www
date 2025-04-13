@@ -55,6 +55,8 @@
   }
   
   .podpis_icon{
+   color: rgb(199, 199, 199);
    letter-spacing: 6px;
    font-size: 0.9rem;
+   padding-top: 10px;
   }

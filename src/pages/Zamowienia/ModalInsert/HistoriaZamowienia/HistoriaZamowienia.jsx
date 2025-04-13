@@ -59,6 +59,7 @@ function HISTORIA_TABLE() {
             return (
               <>
                 <tr
+                className={style.row_zamowienia}
                   key={row.id}
                   
                 >

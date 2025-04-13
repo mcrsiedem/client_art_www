@@ -57,6 +57,7 @@
   /* background-color: rgb(253, 227, 188); */
   color: rgb(109, 109, 109);
   font-size: 0.9rem;
+  font-weight: 600;
   outline-style: none;
 
 }
@@ -72,9 +73,14 @@
 
 
 .input_textarea {
-  border: none;
   padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 10px;
+}
+
+.input_textarea:focus{
+outline: none;
 }

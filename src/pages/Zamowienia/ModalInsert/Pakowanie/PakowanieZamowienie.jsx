@@ -24,7 +24,7 @@ export default function PakowanieZamowienie() {
   return (
     <div className={style.container}>
       <div className={style.historia}>
-        {/* <PAKOWANIE_HEADER/> */}
+        <PAKOWANIE_HEADER/>
         <PAKOWANIE_TABLE/>
       </div>
     </div>
@@ -45,9 +45,9 @@ function PAKOWANIE_TABLE() {
     <div className={style.main}>
       <table className={style.table_historia}>
         <thead className={style.glowka}>
-          <tr>
+          {/* <tr>
             <th className={style.col4}>Uwagi do pakowania</th>
-          </tr>
+          </tr> */}
         </thead>
         <tbody className={style.table_historia_body}>
           {pakowanie.sort((a, b) => b.id - a.id)

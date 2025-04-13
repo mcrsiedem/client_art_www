@@ -92,12 +92,12 @@ table {
 
 } */
 
-td {
+/* td {
    font-size: 0.9rem;
    height: 2rem;
    padding-left: 20px;
    border-bottom: 1px solid #dbdad6;
-}
+} */
 
 tr:nth-of-type(2n) {
 

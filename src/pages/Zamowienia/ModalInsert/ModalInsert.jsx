@@ -38,6 +38,7 @@ import ProductCreator from "components/ProductCreator/ProductCreator";
 import PaperStage from "components/PaperStage/PaperStage";
 import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
 import DialogZapis from "components/Dialog/DialogZapis";
+import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 
 function ModalInsert({
   openModalInsert,
@@ -235,9 +236,10 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
                 handleChangeCardFragmentyOprawaId
               }
             />
+            <PakowanieZamowienie/>
             <HistoriaZamowienia />
 
-            {/* <Pakowanie handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
+   
             {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
           </div>
         )}

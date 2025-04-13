@@ -167,3 +167,10 @@
   box-shadow: none;
   border: none;
 }
+
+.table  td {
+  font-size: 0.9rem;
+  height: 2rem;
+  padding-left: 20px;
+  border-bottom: 1px solid #dbdad6;
+}

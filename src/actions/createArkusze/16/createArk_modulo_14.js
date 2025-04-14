@@ -39,7 +39,7 @@ new_arkusze.push({
   ...ark, nr_arkusza,
   rodzaj_arkusza: 2,
   ilosc_leg: lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu,
-  naklad: ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu),
+  naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu)),
   nadkomplet: findNadkomplet(nadkomplety, ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu)), 
   
 });
@@ -51,8 +51,9 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     id: getMaxID(new_legi),
     indeks: getMaxIndeks(new_legi),
     ...lega,nr_legi,
+    rodzaj_legi: 2,
     arkusz_id: getMaxID(new_arkusze)-1,
-    naklad: ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu) * 8
+    naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu) * 8)
   });
 }
 //--------
@@ -63,7 +64,7 @@ new_arkusze.push({
   ...ark,nr_arkusza,
   rodzaj_arkusza: 4,
   ilosc_leg: lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu,
-  naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu),
+  naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)),
   nadkomplet: findNadkomplet(nadkomplety,ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)), 
 
 });
@@ -75,8 +76,9 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     id: getMaxID(new_legi),
     indeks: getMaxIndeks(new_legi),
     ...lega,nr_legi,
+    rodzaj_legi: 4,
     arkusz_id: getMaxID(new_arkusze)-1,
-    naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) * 4
+    naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) * 4)
   });
 }
 
@@ -89,7 +91,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     ...ark,nr_arkusza,
     rodzaj_arkusza: 8,
     ilosc_leg: lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu,
-    naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu),
+    naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)),
     nadkomplet: findNadkomplet(nadkomplety,ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)), 
     
   });
@@ -101,8 +103,9 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
       id: getMaxID(new_legi),
       indeks: getMaxIndeks(new_legi),
       ...lega,nr_legi,
+      rodzaj_legi: 8,
       arkusz_id: getMaxID(new_arkusze)-1,
-      naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) * 2
+      naklad: Math.ceil(ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) * 2)
     });
   }
 //--------------

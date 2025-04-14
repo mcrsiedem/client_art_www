@@ -45,7 +45,7 @@ nr_arkusza++
       nr_arkusza,
       rodzaj_arkusza: 8,
       ilosc_leg: lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu,
-      naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu),
+      naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu)),
       nadkomplet: findNadkomplet(nadkomplety, ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) )
     });
 
@@ -59,7 +59,7 @@ nr_arkusza++
         nr_legi,
         rodzaj_legi:8,
         arkusz_id: getMaxID(new_arkusze)-1,
-        naklad: ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) *2
+        naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) *2)
       });
     }
 //--------------

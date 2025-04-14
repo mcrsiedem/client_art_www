@@ -190,7 +190,8 @@
 }
 
 .col_firma {
-   width: 100px;
+   background-color: transparent;
+   width: 140px;
 }
 
 .col_status {

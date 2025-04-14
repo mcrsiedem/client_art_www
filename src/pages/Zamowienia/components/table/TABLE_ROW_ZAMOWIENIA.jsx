@@ -13,6 +13,7 @@ import {
   _stan_dokumentu,
   _status_dokumentu,
 } from "utils/initialvalue";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
@@ -336,7 +337,9 @@ function ShowTechnmologiaBtn({
   const techContext = useContext(TechnologyContext);
 
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  if (row.technologia_id == null) {
+
+
+  if (row.technologia_id == null ) {
     return (
       <td className={style.td_karta}>
         <div>
@@ -344,9 +347,12 @@ function ShowTechnmologiaBtn({
             className={style.iconSettings}
             src={iconAdd}
             onClick={() => {
+              if ( DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
               techContext.setShowTechnologyStage(true);
               techContext.setRowZamowienia(row);
               techContext.fechparametry(row?.id);
+              }
+         
             }}
             alt="Procesy"
           />
@@ -362,7 +368,10 @@ function ShowTechnmologiaBtn({
             //  src={iconSettings}
             src={iconFile}
             onClick={() => {
-              fechparametryTechnologii(row.id, row.technologia_id);
+              if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+
+                fechparametryTechnologii(row.id, row.technologia_id);
+              }
             }}
             alt="Procesy"
           />

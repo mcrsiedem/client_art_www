@@ -34,7 +34,9 @@ export default function PakowanieZamowienie() {
 
 const PAKOWANIE_HEADER = () => {
   return(
-    <p title={" Uwagi do pakowania"} className={style.header_title}>Uwagi do pakowania</p>
+    <div className={style.header_container}>
+      <p title={" Uwagi do pakowania"} className={style.header_title}>Uwagi do pakowania</p>
+    </div>
   )
 }
 function PAKOWANIE_TABLE() {

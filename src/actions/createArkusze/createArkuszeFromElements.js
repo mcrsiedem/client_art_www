@@ -15,6 +15,10 @@ import { createArk_32_K_modulo_16 } from "./32/createArk_32_K_modulo_16";
 import { createArk_32_K_modulo_24 } from "./32/createArk_32_K_modulo_24";
 import { createArk_32_K_modulo_28 } from "./32/createArk_32_K_modulo_28";
 import { createArk_32_K_modulo_30 } from "./32/createArk_32_K_modulo_30";
+import { createArk_32_K_modulo_26 } from "./32/createArk_32_K_modulo_26";
+import { createArk_32_K_modulo_22 } from "./32/createArk_32_K_modulo_22";
+import { createArk_32_K_modulo_20 } from "./32/createArk_32_K_modulo_20";
+import { createArk_32_K_modulo_18 } from "./32/createArk_32_K_modulo_18";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -161,13 +165,27 @@ if(rodzaj_legi == 32) {
   if (modulo == 0) {
     createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
+  // if (modulo == 2) {
+  //   createArk_32_K_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  // }
 
   if (modulo == 16) {
     createArk_32_K_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
-
+  if (modulo == 18) {
+    createArk_32_K_modulo_18(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+  if (modulo == 20) {
+    createArk_32_K_modulo_20(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+  if (modulo == 22) {
+    createArk_32_K_modulo_22(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
   if (modulo == 24) {
     createArk_32_K_modulo_24(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+  if (modulo == 26) {
+    createArk_32_K_modulo_26(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
 
   if (modulo == 28) {

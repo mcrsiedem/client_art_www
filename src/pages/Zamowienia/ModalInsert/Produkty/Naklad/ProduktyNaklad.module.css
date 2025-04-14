@@ -1,0 +1,75 @@
+
+.grayScaleBackground {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 13;
+  backdrop-filter: grayscale(100%);
+  /* backdrop-filter: blur(10px); */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window {
+  position: absolute;
+  width:300px;
+  height: 50px;
+  bottom:50px;
+  border-radius: 10px;
+  /* min-width: 250px; */
+  background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+
+}
+
+.col_dane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.7rem;
+  padding-left: 5px;
+}
+
+.input_container_img{
+  position: relative;
+  width: 100%;
+}
+
+.input_naklad_disabled{
+
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  width: 100%;
+
+}
+.show{
+display: none;
+}
+.input_naklad_disabled:hover + .show {
+  position: absolute;
+  display: flex;
+  width: 15px;
+  top:6px;
+  right: 5px;
+  /* z-index: 10px; */
+}
+
+.logoEdit{
+  width: 20px;
+}
+

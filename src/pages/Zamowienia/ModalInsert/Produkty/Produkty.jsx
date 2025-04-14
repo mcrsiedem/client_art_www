@@ -6,6 +6,7 @@ import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { useStatus } from "hooks/useStatus";
 import iconCopy from "assets/edit.svg";
+import ProduktyNaklad from "./Naklad/ProduktyNaklad";
 
 export default function Produkty( ) {
   return (
@@ -32,7 +33,7 @@ function ProduktyTable2() {
     <div className={style.main2}>
       <div className={style.row1}>
         <Typ row={produkty[0]} />
-        <Naklad row={produkty[0]} />
+        <ProduktyNaklad row={produkty[0]} />
         <Strony row={produkty[0]} />
         <FormatX row={produkty[0]} />
         <FormatY row={produkty[0]} />
@@ -110,57 +111,6 @@ function Nazwa({ row }) {
       ></input>
     </div>
   );
-}
-
-function Naklad({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-  const [setStatus] = useStatus();
-
-  if (row.zamowienie_id > 1) {
-    return (
-      <div className={style.col_dane}>
-        <label className={style.label}> Nakład </label>
-        <div className={style.input_container_img}>
-          <input
-            className={style.input_naklad_disabled}
-            disabled
-            value={row?.naklad}
-          ></input>
-          <img
-            className={style.show}
-            src={iconCopy}
-            onClick={() => {
-              console.log(row)
-            }}
-            alt="Procesy"
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (row.zamowienie_id == 1) {
-    return (
-      <div className={style.col_dane}>
-        <label className={style.label}> Nakład </label>
-        <input
-          className={style.input}
-          value={row?.naklad}
-          onChange={(e) => {
-            if (e.target.value === "" || reg_int.test(e.target.value)) {
-              handleUpdateRowProdukty({
-                ...row,
-                naklad: e.target.value,
-                update: true,
-              });
-              setStatus(3);
-            }
-          }}
-        ></input>
-      </div>
-    );
-  }
 }
 
 

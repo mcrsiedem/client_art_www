@@ -5,7 +5,7 @@ import style from "./ProduktyTechMenu.module.css";
 import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
-import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
 export default function ProduktyTechMenu({ row,showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);

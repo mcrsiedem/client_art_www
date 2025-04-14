@@ -10,7 +10,7 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import ProduktyTechMenu from "./ProduktyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
-import { createArkuszeFromElemenets } from "actions/createArkuszeFromElements";
+import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
 import { input1632toElement } from "actions/input1632toElement";
 
 export default function ProduktyTech() {
@@ -23,7 +23,7 @@ export default function ProduktyTech() {
 
       <div className={style.produkt_menu_button}>
     {/* <p>Produkt</p> */}
-    <p style={{color:"grey" , fontSize:"1.5rem"}}> Druk</p>
+    <p style={{color:"grey" , fontSize:"1.5rem", paddingTop:"10px"}}> Druk</p>
 <Generuj/>
   </div>
    

@@ -230,6 +230,7 @@ const LegaFragmentRow = ({ row, i }) => {
       <td style={{ width: "90px" }}>{row.naklad}</td>
       <td style={{ width: "200px" }}> </td>
       <td style={{ width: "90px" }}> {row.wersja}</td>
+      <td style={{ width: "90px" }}> {row.rodzaj_legi}</td>
       {/* <td>idx {row.indeks}</td> */}
       <td></td>
     </tr>

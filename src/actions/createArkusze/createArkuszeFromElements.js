@@ -1,16 +1,16 @@
 import axios from "axios";
 
-import { IP } from "../utils/Host";
-import { createArk_modulo_0 } from "./createArkuszeFromElements16/createArk_modulo_0";
-import { createArk_modulo_4 } from "./createArkuszeFromElements16/createArk_modulo_4";
-import { createArk_modulo_2 } from "./createArkuszeFromElements16/createArk_modulo_2";
-import { createArk_modulo_6 } from "./createArkuszeFromElements16/createArk_modulo_6";
-import { createArk_modulo_8 } from "./createArkuszeFromElements16/createArk_modulo_8";
-import { createArk_modulo_10 } from "./createArkuszeFromElements16/createArk_modulo_10";
-import { createArk_modulo_12 } from "./createArkuszeFromElements16/createArk_modulo_12";
-import { createArk_modulo_14 } from "./createArkuszeFromElements16/createArk_modulo_14";
-import { getMaxIndeks } from "./getMaxIndeks";
-import { getMaxID } from "./getMaxID";
+import { IP } from "../../utils/Host";
+import { createArk_modulo_0 } from "./16/createArk_modulo_0";
+import { createArk_modulo_4 } from "./16/createArk_modulo_4";
+import { createArk_modulo_2 } from "./16/createArk_modulo_2";
+import { createArk_modulo_6 } from "./16/createArk_modulo_6";
+import { createArk_modulo_8 } from "./16/createArk_modulo_8";
+import { createArk_modulo_10 } from "./16/createArk_modulo_10";
+import { createArk_modulo_12 } from "./16/createArk_modulo_12";
+import { createArk_modulo_14 } from "./16/createArk_modulo_14";
+import { getMaxIndeks } from "../getMaxIndeks";
+import { getMaxID } from "../getMaxID";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -71,7 +71,7 @@ export function createArkuszeFromElemenets(
       naklad: row.naklad,
       nadkomplet: "",
       element_id: row.id,
-      ilosc_stron: row.ilosc_stron,
+      ilosc_stron: row.lega,
       uwagi: "",
       nr_arkusza: "",
       arkusz_szerokosc: row.arkusz_szerokosc,
@@ -86,7 +86,7 @@ export function createArkuszeFromElemenets(
       typ_elementu: row.typ,
       rodzaj_legi,
       element_id: row.id,
-      ilosc_stron: row.ilosc_stron,
+      ilosc_stron: row.lega,
       naklad: row.naklad,
       uwagi: "",
       nr_legi: "",
@@ -156,6 +156,7 @@ export function createArkuszeFromElemenets(
       nr_legi: l.nr_legi,
       naklad: l.naklad,
       fragment_id: l.id,
+      rodzaj_legi: l.rodzaj_legi,
       // oprawa_id: l.oprawa_id,oprawaTech
       oprawa_id: oprawaTech[0]?.id,
       typ: l.typ_elementu,

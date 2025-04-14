@@ -280,9 +280,10 @@ const contextTech = useContext(TechnologyContext);
   const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
-      <label className={style.label}> Stan </label>
+      <label className={style.label}> Etap </label>
       <select
         className={style.select}
+        disabled
         value={daneTech.etap}
         onChange={(event) => {
           setDaneTech({...daneTech, etap: parseInt(event.target.value) ,update: true});

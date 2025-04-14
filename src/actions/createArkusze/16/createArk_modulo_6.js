@@ -49,6 +49,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
     id: getMaxID(new_legi),
     indeks: getMaxIndeks(new_legi),
     ...lega,nr_legi,
+    rodzaj_legi: 2,
     arkusz_id: getMaxID(new_arkusze)-1,
     naklad: ark.naklad / (lega.rodzaj_legi / 2 * ilosc_leg_na_arkuszu) * 8
   });
@@ -73,6 +74,7 @@ nr_arkusza++
         id: getMaxID(new_legi),
         indeks: getMaxIndeks(new_legi),
         ...lega,nr_legi,
+        rodzaj_legi: 4,
         arkusz_id: getMaxID(new_arkusze)-1,
         naklad: ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) *4
       });

@@ -27,7 +27,7 @@ export default function PakowanieZamowienie() {
         <PAKOWANIE_HEADER/>
         <PAKOWANIE_TABLE/>
       </div>
-    </div>
+    </div>  
   );
 }
 

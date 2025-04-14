@@ -5,6 +5,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { useStatus } from "hooks/useStatus";
+import iconCopy from "assets/edit.svg";
 
 export default function Produkty( ) {
   return (
@@ -114,30 +115,52 @@ function Nazwa({ row }) {
 function Naklad({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
-  const [setStatus] = useStatus()
+  const [setStatus] = useStatus();
 
-  return (
-    <div className={style.col_dane}>
-      <label className={style.label}> Nakład </label>
-      <input
-        className={style.input}
-        value={row?.naklad}
-        onChange={(e) => {
-          // const re = /^[0-9]+$/;
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowProdukty({
-              ...row,
-              naklad: e.target.value,
-              update: true
-            });
+  if (row.zamowienie_id > 1) {
+    return (
+      <div className={style.col_dane}>
+        <label className={style.label}> Nakład </label>
+        <div className={style.input_container_img}>
+          <input
+            className={style.input_naklad_disabled}
+            disabled
+            value={row?.naklad}
+          ></input>
+          <img
+            className={style.show}
+            src={iconCopy}
+            onClick={() => {
+              console.log(row)
+            }}
+            alt="Procesy"
+          />
+        </div>
+      </div>
+    );
+  }
 
-            // const [setStatus] = useStatus()
-            setStatus(3)
-          }
-        }}
-      ></input>
-    </div>
-  );
+  if (row.zamowienie_id == 1) {
+    return (
+      <div className={style.col_dane}>
+        <label className={style.label}> Nakład </label>
+        <input
+          className={style.input}
+          value={row?.naklad}
+          onChange={(e) => {
+            if (e.target.value === "" || reg_int.test(e.target.value)) {
+              handleUpdateRowProdukty({
+                ...row,
+                naklad: e.target.value,
+                update: true,
+              });
+              setStatus(3);
+            }
+          }}
+        ></input>
+      </div>
+    );
+  }
 }
 
 

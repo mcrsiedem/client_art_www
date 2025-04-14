@@ -100,6 +100,39 @@
 }
 
 
+.input_container_img{
+  position: relative;
+  width: 100%;
+}
+
+.input_naklad_disabled{
+
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  width: 100%;
+
+}
+.show{
+display: none;
+}
+.input_naklad_disabled:hover + .show {
+  position: absolute;
+  display: flex;
+  width: 17px;
+  top:5px;
+  right: 5px;
+  /* z-index: 10px; */
+}
+
+.logoEdit{
+  width: 20px;
+}
+
+
 .select_oprawa {
   background-color: rgb(240, 240, 240);
   height: 2rem;

@@ -13,6 +13,8 @@ import { getMaxIndeks } from "../getMaxIndeks";
 import { getMaxID } from "../getMaxID";
 import { createArk_32_K_modulo_16 } from "./32/createArk_32_K_modulo_16";
 import { createArk_32_K_modulo_24 } from "./32/createArk_32_K_modulo_24";
+import { createArk_32_K_modulo_28 } from "./32/createArk_32_K_modulo_28";
+import { createArk_32_K_modulo_30 } from "./32/createArk_32_K_modulo_30";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -166,6 +168,15 @@ if(rodzaj_legi == 32) {
 
   if (modulo == 24) {
     createArk_32_K_modulo_24(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+  if (modulo == 28) {
+    createArk_32_K_modulo_28(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+  if (modulo == 30) {
+    createArk_32_K_modulo_30(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    
   }
 
 }

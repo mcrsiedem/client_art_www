@@ -13,34 +13,34 @@ export default function ProduktyNaklad({ row }) {
   const [setStatus] = useStatus();
   const [showEdit, setShowEdit] = useState(false);
 
-  if (row.zamowienie_id > 1) {
-    return (
-      <div className={style.col_dane}>
-        <label className={style.label}> Nakład </label>
-        <div className={style.input_container_img}>
-          <input
-            className={style.input_naklad_disabled}
-            disabled
-            value={row?.naklad}
-          ></input>
-          <img
-            className={style.show}
-            src={iconCopy}
-            onClick={() => {
-              console.log("s",row);
-              setShowEdit(true)
-            }}
-            alt="Procesy"
-          />
-        </div>
-      <EDIT_PRODUKTY showEdit={showEdit}/>
+  // if (row.zamowienie_id > 1) {
+  //   return (
+  //     <div className={style.col_dane}>
+  //       <label className={style.label}> Nakład </label>
+  //       <div className={style.input_container_img}>
+  //         <input
+  //           className={style.input_naklad_disabled}
+  //           disabled
+  //           value={row?.naklad}
+  //         ></input>
+  //         <img
+  //           className={style.show}
+  //           src={iconCopy}
+  //           onClick={() => {
+  //             console.log("s",row);
+  //             setShowEdit(true)
+  //           }}
+  //           alt="Procesy"
+  //         />
+  //       </div>
+  //     <EDIT_PRODUKTY showEdit={showEdit} setShowEdit={setShowEdit}/>
 
-      </div>
+  //     </div>
       
-    );
-  }
+  //   );
+  // }
 
-  if (row.zamowienie_id == 1) {
+
     return (
       <div className={style.col_dane}>
         <label className={style.label}> Nakład </label>
@@ -60,7 +60,7 @@ export default function ProduktyNaklad({ row }) {
         ></input>
       </div>
     );
-  }
+  
 }
 
 
@@ -71,16 +71,8 @@ if(showEdit){
       return (
     <div className={style.grayScaleBackground}>
     <div className={style.window}>
-      <Header ></Header>
-
-      <div className={style.center}>
-
-      </div>
-
-        <div className={style.footer}>
-      {/* <Zapisz daneKlienta={daneKlienta} setShowAddClientPane={setShowAddClientPane} setDaneKlienta={setDaneKlienta} initialKlient={initialKlient} /> */}
-      </div>
-      
+     {/* <Header/> */}
+CEnter
     </div>
     </div>
   );
@@ -92,7 +84,7 @@ if(showEdit){
 function Header() {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj klienta </p>
+      <p className={style.title}> Nakład </p>
       {/* <Zamknij setShowAddClientPane={setShowAddClientPane}/> */}
     </div>
   );

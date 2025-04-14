@@ -572,7 +572,7 @@ const [setStatus] = useStatus()
           onChange={(e) =>
             {
 
-              if(row.zamowienie_id == 1){
+         
         if (e.target.value === "" || reg_int.test(e.target.value)) {
                 handleChangeCardElementy({
                   ...row,
@@ -581,7 +581,7 @@ const [setStatus] = useStatus()
                 });
                 setStatus(3);
               }
-              }
+         
       
         
         

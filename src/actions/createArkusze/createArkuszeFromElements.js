@@ -2,15 +2,16 @@ import axios from "axios";
 
 import { IP } from "../../utils/Host";
 import { createArk_modulo_0 } from "./16/createArk_modulo_0";
-import { createArk_modulo_4 } from "./16/createArk_modulo_4";
-import { createArk_modulo_2 } from "./16/createArk_modulo_2";
-import { createArk_modulo_6 } from "./16/createArk_modulo_6";
-import { createArk_modulo_8 } from "./16/createArk_modulo_8";
-import { createArk_modulo_10 } from "./16/createArk_modulo_10";
-import { createArk_modulo_12 } from "./16/createArk_modulo_12";
-import { createArk_modulo_14 } from "./16/createArk_modulo_14";
+import { createArk_16_K_modulo_4 } from "./16/createArk_16_K_modulo_4";
+import { createArk_16_K_modulo_2 } from "./16/createArk_16_K_modulo_2";
+import { createArk_16_K_modulo_6 } from "./16/createArk_16_K_modulo_6";
+import { createArk_16_K_modulo_8 } from "./16/createArk_16_K_modulo_8";
+import { createArk_16_K_modulo_10 } from "./16/createArk_16_K_modulo_10";
+import { createArk_16_K_modulo_12 } from "./16/createArk_16_K_modulo_12";
+import { createArk_16_K_modulo_14 } from "./16/createArk_16_K_modulo_14";
 import { getMaxIndeks } from "../getMaxIndeks";
 import { getMaxID } from "../getMaxID";
+import { createArk_32_K_modulo_16 } from "./32/createArk_32_K_modulo_16";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -95,7 +96,7 @@ export function createArkuszeFromElemenets(
     };
 
 
-// if(rodzaj_legi == 16) {
+if(rodzaj_legi == 16) {
   if( ilosc_leg_na_arkuszu == 1 ^ ilosc_leg_na_arkuszu ==4 ){   // zeby dało się 4 legi okłądki wygenerować
 
     if (modulo == 0) {
@@ -103,31 +104,31 @@ export function createArkuszeFromElemenets(
     }
 
     if (modulo == 2) {
-      createArk_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 4) {
-      createArk_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 6) {
-      createArk_modulo_6(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_6(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 8) {
-      createArk_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 10) {
-      createArk_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 12) {
-      createArk_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
 
     if (modulo == 14) {
-      createArk_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+      createArk_16_K_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
   }
   
@@ -138,9 +139,37 @@ export function createArkuszeFromElemenets(
       if (modulo == 0) {
         createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
       }
+      
     }
 
-// }
+}
+
+if(rodzaj_legi == 4) {
+
+  if (modulo == 0) {
+    createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+}
+
+
+if(rodzaj_legi == 32) {
+
+  if (modulo == 0) {
+    createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+  if (modulo == 16) {
+    createArk_32_K_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+}
+
+
+
+
+
+
     
     setArkusze(new_arkusze);
     setLegi(new_legi);
@@ -212,7 +241,7 @@ let grupa_id = MaxID(new_grupy)
           mnoznik: proces.mnoznik,
           status:1,
           stan:1,
-          przeloty: a.naklad + a.nadkomplet,
+          przeloty: parseInt(a.naklad) + parseInt(a.nadkomplet) ,
           uwagi: ""
         });
       })

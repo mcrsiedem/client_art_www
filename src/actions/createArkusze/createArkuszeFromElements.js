@@ -32,6 +32,9 @@ import { createArk_32_Z_modulo_28 } from "./32/Z/createArk_32_Z_modulo_28";
 import { createArk_32_Z_modulo_24 } from "./32/Z/createArk_32_Z_modulo_24";
 import { createArk_32_Z_modulo_20 } from "./32/Z/createArk_32_Z_modulo_20";
 import { createArk_32_Z_modulo_16 } from "./32/Z/createArk_32_Z_modulo_16";
+import { createArk_32_Z_modulo_12 } from "./32/Z/createArk_32_Z_modulo_12";
+import { createArk_32_Z_modulo_8 } from "./32/Z/createArk_32_Z_modulo_8";
+import { createArk_32_Z_modulo_4 } from "./32/Z/createArk_32_Z_modulo_4";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -256,8 +259,17 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
     if(row.ilosc_stron >28){ 
 
       if (modulo == 0) {
-        createArk_32_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-    } 
+        createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }
+    if (modulo == 4) {
+      createArk_32_Z_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  } 
+    if (modulo == 8) {
+      createArk_32_Z_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  } 
+    if (modulo == 12) {
+      createArk_32_Z_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  } 
     if (modulo == 16) {
         createArk_32_Z_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     } 
@@ -268,6 +280,9 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
     if (modulo == 24) {
         createArk_32_Z_modulo_24(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     } 
+    if (modulo == 28) {
+      createArk_32_Z_modulo_28(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
     }else{
       createArk_32_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     

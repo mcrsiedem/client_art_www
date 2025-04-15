@@ -27,6 +27,7 @@ import { createArk_32_K_modulo_6 } from "./32/createArk_32_K_modulo_6";
 import { createArk_32_K_modulo_4 } from "./32/createArk_32_K_modulo_4";
 import { createArk_32_K_modulo_2 } from "./32/createArk_32_K_modulo_2";
 import { createArk_32_K_single_ark } from "./32/createArk_32_K_single_ark";
+import { createArk_16_K_single_ark } from "./16/createArk_16_K_single_ark";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -111,14 +112,11 @@ export function createArkuszeFromElemenets(
     };
 
 
+
+
 if(rodzaj_legi == 16) {
   if(row.ilosc_stron >14){ 
-
-    
-  }
-  if( ilosc_leg_na_arkuszu == 1 ^ ilosc_leg_na_arkuszu ==4 ){   // zeby dało się 4 legi okłądki wygenerować
-
-    if (modulo == 0) {
+   if (modulo == 0) {
       createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     }
 
@@ -149,8 +147,9 @@ if(rodzaj_legi == 16) {
     if (modulo == 14) {
       createArk_16_K_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
-  }
-  
+
+
+      
   //podwójna lega na arkuszu automatycznie tylko jeśli wychodzi równa ilosc pełenych leg
   // w przeciwnym wypadku trzeba arkusze i legi stworzyć ręcznie
   if( modulo == 0 && ilosc_leg_na_arkuszu == 2)
@@ -158,17 +157,20 @@ if(rodzaj_legi == 16) {
       if (modulo == 0) {
         createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
       }
-      
     }
+  }else{
+    createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  
+  }
+ 
+   
 
 }
 
 if(rodzaj_legi == 4) {
-
   if (modulo == 0) {
     createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
-
 }
 
 

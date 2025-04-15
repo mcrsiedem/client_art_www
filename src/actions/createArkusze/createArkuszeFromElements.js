@@ -28,6 +28,10 @@ import { createArk_32_K_modulo_4 } from "./32/K/createArk_32_K_modulo_4";
 import { createArk_32_K_modulo_2 } from "./32/K/createArk_32_K_modulo_2";
 import { createArk_32_K_single_ark } from "./32/K/createArk_32_K_single_ark";
 import { createArk_16_K_single_ark } from "./16/createArk_16_K_single_ark";
+import { createArk_32_Z_modulo_28 } from "./32/Z/createArk_32_Z_modulo_28";
+import { createArk_32_Z_modulo_24 } from "./32/Z/createArk_32_Z_modulo_24";
+import { createArk_32_Z_modulo_20 } from "./32/Z/createArk_32_Z_modulo_20";
+import { createArk_32_Z_modulo_16 } from "./32/Z/createArk_32_Z_modulo_16";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -64,7 +68,7 @@ export function createArkuszeFromElemenets(
 
   }
 
-  console.log("Oprawa: " +oprawaTech[0].oprawa)
+  // console.log("Oprawa: " +oprawaTech[0].oprawa)
 
   // console.log("elementyTech", elementyTech);
 
@@ -247,7 +251,30 @@ if(rodzaj_legi == 32) {
 let OPRAWY_ZESZYTOWE = [54,55,56,57,58,59]
 if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
 
+  if(rodzaj_legi == 32) {
 
+    if(row.ilosc_stron >28){ 
+
+      if (modulo == 0) {
+        createArk_32_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    } 
+    if (modulo == 16) {
+        createArk_32_Z_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    } 
+    if (modulo == 20) {
+        createArk_32_Z_modulo_20(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    } 
+
+    if (modulo == 24) {
+        createArk_32_Z_modulo_24(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    } 
+    }else{
+      createArk_32_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    
+    }
+  
+  
+  }
 
 }
 

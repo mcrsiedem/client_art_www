@@ -3,48 +3,20 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_32_K_modulo_30(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_32_Z_modulo_20(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
 
 let nr_arkusza = 0;
 let nr_legi = 0;
 
-pierwsza_32(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-ark_2(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+
 ark_4(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-ark_8(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
 ark_16(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-ostatnia_32(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+ostatnia_32(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
 }
 
 
 
-const pierwsza_32 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
-  for (let i = 0; i < ilosc_arkuszy - 2; i++) {
-    const maxid = getMaxID(new_arkusze);
-    nr_arkusza++
-    new_arkusze.push({
-      id: maxid,
-      indeks: getMaxIndeks(new_arkusze),
-      ...ark,
-      nr_arkusza,
-      ilosc_leg: ilosc_leg_na_arkuszu,
-          nadkomplet: findNadkomplet(nadkomplety,ark.naklad) 
-    });
-    for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-      // do każdego ark dodaje odpowiednią ilość leg
-      nr_legi++;
-      new_legi.push({
-        id: getMaxID(new_legi),
-        indeks: getMaxIndeks(new_legi),
-        ...lega,
-        nr_legi,
-        arkusz_id: maxid,
-      });
-    }
-  
-  }
 
-}
 
 const ark_2 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
   nr_arkusza++
@@ -166,7 +138,39 @@ const ark_16 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_l
 }
 
 
-const ostatnia_32 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+const ostatnia_32x = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+  for (let i = 0; i < Math.floor(ilosc_arkuszy); i++) {
+    const maxid = getMaxID(new_arkusze);
+    nr_arkusza++
+    new_arkusze.push({
+      id: maxid,
+      indeks: getMaxIndeks(new_arkusze),
+      ...ark,
+      nr_arkusza,
+      ilosc_leg: ilosc_leg_na_arkuszu,
+          nadkomplet: findNadkomplet(nadkomplety,ark.naklad) 
+    });
+    for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
+      // do każdego ark dodaje odpowiednią ilość leg
+      nr_legi++;
+      new_legi.push({
+        id: getMaxID(new_legi),
+        indeks: getMaxIndeks(new_legi),
+        ...lega,
+        nr_legi,
+        arkusz_id: maxid,
+      });
+    }
+  
+  }
+
+}
+
+
+
+
+const ostatnia_32 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+  for (let i = 0; i < Math.floor(ilosc_arkuszy); i++) {
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
@@ -189,5 +193,5 @@ const ostatnia_32 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu
       arkusz_id: getMaxID(new_arkusze)-1,
     });
   }
-
+  }
 }

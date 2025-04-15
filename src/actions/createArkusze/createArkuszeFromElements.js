@@ -38,6 +38,7 @@ import { createArk_32_Z_modulo_4 } from "./32Z/createArk_32_Z_modulo_4";
 import { createArk_16_Z_modulo_12 } from "./16Z/createArk_16_Z_modulo_12";
 import { createArk_16_Z_modulo_8 } from "./16Z/createArk_16_Z_modulo_8";
 import { createArk_16_Z_modulo_4 } from "./16Z/createArk_16_Z_modulo_4";
+import { createArk_16_K_8ka } from "./16K/createArk_16_K_8ka";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -170,8 +171,17 @@ if( OPRAWY_KLEJONE.includes(parseInt( oprawaTech[0].oprawa))) {
         createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
       }
     }
-  }else{
-    createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+  
+
+  else{
+    if(row.ilosc_stron ==8){
+      createArk_16_K_8ka(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }else{
+      //jak coś innego niż 8ka to zwykła 16stka, bo tylko 8ke chciało mi się teraz zrobić hihi
+      createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }
+    
   
   }
  

@@ -56,13 +56,15 @@ export function createArkuszeFromElemenets(
     id:1,
     element_id:1,
     proces_id:1,
-    produkt_id:1,
+    produkt_id:1, 
     technologia_id:1,
     zamowienie_id:1,
     maszyna_id:1,
     uwagi: ""
 
   }
+
+  console.log("Oprawa: " +oprawaTech[0].oprawa)
 
   // console.log("elementyTech", elementyTech);
 
@@ -111,10 +113,10 @@ export function createArkuszeFromElemenets(
       insert: true
     };
 
+let OPRAWY_KLEJONE = [50,51,52]
+if( OPRAWY_KLEJONE.includes(parseInt( oprawaTech[0].oprawa))) {
 
-
-
-if(rodzaj_legi == 16) {
+  if(rodzaj_legi == 16) {
   if(row.ilosc_stron >14){ 
    if (modulo == 0) {
       createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
@@ -237,9 +239,19 @@ if(rodzaj_legi == 32) {
 
 
 }
+}
+// --- koniec oprawy klejonej
+
+
+//---zeszyt
+let OPRAWY_ZESZYTOWE = [54,55,56,57,58,59]
+if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
 
 
 
+}
+
+// -- koniec zeszyt
 
 
 

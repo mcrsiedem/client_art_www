@@ -26,6 +26,7 @@ import { createArk_32_K_modulo_8 } from "./32/createArk_32_K_modulo_8";
 import { createArk_32_K_modulo_6 } from "./32/createArk_32_K_modulo_6";
 import { createArk_32_K_modulo_4 } from "./32/createArk_32_K_modulo_4";
 import { createArk_32_K_modulo_2 } from "./32/createArk_32_K_modulo_2";
+import { createArk_32_K_single_ark } from "./32/createArk_32_K_single_ark";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -111,6 +112,10 @@ export function createArkuszeFromElemenets(
 
 
 if(rodzaj_legi == 16) {
+  if(row.ilosc_stron >14){ 
+
+    
+  }
   if( ilosc_leg_na_arkuszu == 1 ^ ilosc_leg_na_arkuszu ==4 ){   // zeby dało się 4 legi okłądki wygenerować
 
     if (modulo == 0) {
@@ -169,7 +174,8 @@ if(rodzaj_legi == 4) {
 
 if(rodzaj_legi == 32) {
 
-  if (modulo == 0) {
+  if(row.ilosc_stron >30){ 
+     if (modulo == 0) {
     createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
 
@@ -221,8 +227,12 @@ if(rodzaj_legi == 32) {
 
   if (modulo == 30) {
     createArk_32_K_modulo_30(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-    
+  } 
+  }else{
+    createArk_32_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  
   }
+
 
 }
 

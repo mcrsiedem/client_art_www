@@ -1,6 +1,3 @@
-import axios from "axios";
-
-import { IP } from "../../utils/Host";
 import { createArk_modulo_0 } from "./createArk_modulo_0";
 import { createArk_16_K_modulo_4 } from "./16K/createArk_16_K_modulo_4";
 import { createArk_16_K_modulo_2 } from "./16K/createArk_16_K_modulo_2";
@@ -9,8 +6,6 @@ import { createArk_16_K_modulo_8 } from "./16K/createArk_16_K_modulo_8";
 import { createArk_16_K_modulo_10 } from "./16K/createArk_16_K_modulo_10";
 import { createArk_16_K_modulo_12 } from "./16K/createArk_16_K_modulo_12";
 import { createArk_16_K_modulo_14 } from "./16K/createArk_16_K_modulo_14";
-import { getMaxIndeks } from "../getMaxIndeks";
-import { getMaxID } from "../getMaxID";
 import { createArk_32_K_modulo_16 } from "./32K/createArk_32_K_modulo_16";
 import { createArk_32_K_modulo_24 } from "./32K/createArk_32_K_modulo_24";
 import { createArk_32_K_modulo_28 } from "./32K/createArk_32_K_modulo_28";
@@ -38,21 +33,14 @@ import { createArk_32_Z_modulo_4 } from "./32Z/createArk_32_Z_modulo_4";
 import { createArk_16_Z_modulo_12 } from "./16Z/createArk_16_Z_modulo_12";
 import { createArk_16_Z_modulo_8 } from "./16Z/createArk_16_Z_modulo_8";
 import { createArk_16_Z_modulo_4 } from "./16Z/createArk_16_Z_modulo_4";
-import { createArk_16_K_8ka } from "./16K/createArk_16_K_8ka";
 
 export function createArkuszeFromElemenets(
-  arkusze,
   setArkusze,
-  legi,
   setLegi,
-  legiFragmenty,
   setLegiFragmenty,
   oprawaTech,
-  setOprawaTech,
-  fragmentyTech,
-  setFragmentyTech,
   elementyTech,
-  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
+   procesy, setGrupaWykonan, setWykonania,nadkomplety
 ) {
 
 
@@ -285,15 +273,6 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
       createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     
     }
-
-
-
-
-
-
-
-
-
 
   }
   //--------

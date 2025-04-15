@@ -70,10 +70,9 @@ export default function Header({}) {
 const ClearBTN = () => {
   const techContext = useContext(TechnologyContext);
 
-if(DecodeToken(sessionStorage.getItem("token")).id ==1){
+// if(DecodeToken(sessionStorage.getItem("token")).id ==1){
     return (
     <button
-      // disabled={isSaveButtonDisabled}
       className={ style.btn}
       onClick={() => {
         techContext.setArkusze([])
@@ -87,7 +86,7 @@ if(DecodeToken(sessionStorage.getItem("token")).id ==1){
       Clear 
     </button>
   );
-}
+// }
 
 };
 

@@ -216,9 +216,6 @@ function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
                   } else{
                     setSaveButtonDisabled(false);
                   }
-
-
-
                   
                 if( OPRAWY_ZESZYTOWE.includes(parseInt( produkty[0].oprawa))) {
 
@@ -238,15 +235,9 @@ function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
                           setSaveButtonDisabled(false);
                         }
                     
-                    
                   }
                 }
-
-               
-
         }
-
-
 
       }}
       className={style.btn}

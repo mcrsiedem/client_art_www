@@ -33,14 +33,27 @@ import { createArk_32_Z_modulo_4 } from "./32Z/createArk_32_Z_modulo_4";
 import { createArk_16_Z_modulo_12 } from "./16Z/createArk_16_Z_modulo_12";
 import { createArk_16_Z_modulo_8 } from "./16Z/createArk_16_Z_modulo_8";
 import { createArk_16_Z_modulo_4 } from "./16Z/createArk_16_Z_modulo_4";
+import { createArk_24_K_modulo_22 } from "./24K/createArk_24_K_modulo_22";
+import { createArk_24_K_modulo_20 } from "./24K/createArk_24_K_modulo_20";
+import { createArk_24_K_modulo_18 } from "./24K/createArk_24_K_modulo_18";
+import { createArk_24_K_modulo_16 } from "./24K/createArk_24_K_modulo_16";
+import { createArk_24_K_modulo_14 } from "./24K/createArk_24_K_modulo_14";
+import { createArk_24_K_modulo_12 } from "./24K/createArk_24_K_modulo_12";
+import { createArk_24_K_modulo_10 } from "./24K/createArk_24_K_modulo_10";
 
 export function createArkuszeFromElemenets(
+  arkusze,
   setArkusze,
+  legi,
   setLegi,
+  legiFragmenty,
   setLegiFragmenty,
   oprawaTech,
+  setOprawaTech,
+  fragmentyTech,
+  setFragmentyTech,
   elementyTech,
-   procesy, setGrupaWykonan, setWykonania,nadkomplety
+  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
 ) {
 
 
@@ -168,9 +181,37 @@ if( OPRAWY_KLEJONE.includes(parseInt( oprawaTech[0].oprawa))) {
   
   }
  
-   
+  
+}
+
+
+if(rodzaj_legi == 24) {
+  if(row.ilosc_stron >22){ 
+    if (modulo == 10) {
+      createArk_24_K_modulo_10(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 12) {
+      createArk_24_K_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 14) {
+      createArk_24_K_modulo_14(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 16) {
+      createArk_24_K_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 18) {
+      createArk_24_K_modulo_18(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 20) {
+      createArk_24_K_modulo_20(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+    if (modulo == 22) {
+      createArk_24_K_modulo_22(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
+    }
+  }
 
 }
+
 
 if(rodzaj_legi == 4) {
   if (modulo == 0) {

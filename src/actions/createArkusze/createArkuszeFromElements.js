@@ -175,13 +175,8 @@ if( OPRAWY_KLEJONE.includes(parseInt( oprawaTech[0].oprawa))) {
   
 
   else{
-    if(row.ilosc_stron ==8){
-      createArk_16_K_8ka(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-    }else{
-      //jak coś innego niż 8ka to zwykła 16stka, bo tylko 8ke chciało mi się teraz zrobić hihi
-      createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-    }
     
+    createArk_16_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   
   }
  

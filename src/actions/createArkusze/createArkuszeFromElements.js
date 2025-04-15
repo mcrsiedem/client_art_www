@@ -50,6 +50,7 @@ import { createArk_12_K_modulo_6 } from "./12K/createArk_12_K_modulo_6";
 import { createArk_12_K_modulo_4 } from "./12K/createArk_12_K_modulo_4";
 import { createArk_12_K_modulo_2 } from "./12K/createArk_12_K_modulo_2";
 import { createArk_12_K_single_ark } from "./12K/createArk_12_K_single_ark";
+import { createArk_24_K_single_ark } from "./24K/createArk_24_K_single_ark";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -272,7 +273,11 @@ if(rodzaj_legi == 24) {
       createArk_24_K_modulo_22(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety)
     }
   }
-
+  else{
+    
+    createArk_24_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  
+  }
 }
 
 

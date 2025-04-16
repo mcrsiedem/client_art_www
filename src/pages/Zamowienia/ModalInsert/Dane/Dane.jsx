@@ -183,10 +183,10 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Data przyjęcia </label>
       <input className={style.select} type="date"
          value={daneZamowienia.data_przyjecia}
+         disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
          onChange={(event) => {
-          setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-           
-           if( event.target.value ==="" )   console.log("Nie ma")
+            setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+        
          }}></input>
     </div>
   );

@@ -54,7 +54,7 @@ const initialDane = {
   klient_id: 0,
   opiekun_id:  0,
   tytul: "",
-  data_przyjecia: today(),
+  data_przyjecia: null,
   data_materialow: null,
   // data_spedycji: todayPlusDni(5),
   data_spedycji: null,

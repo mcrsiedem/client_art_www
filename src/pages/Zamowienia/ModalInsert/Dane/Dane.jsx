@@ -11,6 +11,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import axios from "axios";
 
 import { IP } from "utils/Host";
+import { today } from "actions/today";
 export default function Dane({
   selected_firma,setSelected_firma,
 
@@ -640,7 +641,7 @@ function NR_ZAMOWIENIA( ){
          }])
          let zapis = res.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
          let zamowienie_nr = res.data[0][1].zamowienie_nr;  // nr id pod jakim zapisała sietechnologia
-         setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,stan:3,status:2,update: true})
+         setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,data_przyjecia: today() ,stan:3,status:2,update: true})
  
       }}>
         utwórz numer

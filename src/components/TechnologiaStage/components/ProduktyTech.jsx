@@ -10,7 +10,7 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import ProduktyTechMenu from "./ProduktyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
-import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
+import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArkuszeFromElements";
 import { input1632toElement } from "actions/input1632toElement";
 import { useArkusze } from "hooks/useArkusze";
 
@@ -117,28 +117,8 @@ function ProduktyTable2() {
 }
 
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
-  const techContext = useContext(TechnologyContext);
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const procesy = techContext.procesyElementow;
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const oprawaTech = techContext.oprawaTech;
-  const setOprawaTech = techContext.setOprawaTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const setFragmentyTech = techContext.setFragmentyTech;
 
- const contextApp = useContext(AppContext);
- const nadkomplety = contextApp.nadkomplety;
-
-  const elementyTech = techContext.elementyTech;
-  const [createArk] = useArkusze()
+  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
  
       return (
     
@@ -149,46 +129,11 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
         src={Logo_ustawienia2}
         title="Auto wszystkie arkusze + legi"
         onClick={() => {
-
-          console.log("s")
-
-          createArk()
-
-          // createArkuszeFromElemenets(
-          //   arkusze,
-          //   setArkusze,
-          //   legi,
-          //   setLegi,
-          //   legiFragmenty,
-          //   setLegiFragmenty,
-          //   oprawaTech,
-          //   setOprawaTech,
-          //   fragmentyTech,
-          //   setFragmentyTech,
-          //   elementyTech,
-      
-          //   procesy,
-          //   grupaWykonan,
-          //   setGrupaWykonan,
-          //   wykonania,
-          //   setWykonania,
-          //   nadkomplety
-          // );
-
-      // ponumerujArkusze()
-
-          // setShowMenu(!showMenu);
-          // dodaj_clikHandler();
-          // console.log("z contextu :"+ token.rowSelected)
-          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
+          createArkuszeFromElemenets()
         }}
         alt="x"
       />
-      {/* <ProduktyTechMenu
-        row={row}
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-      /> */}
+
     </div>
   );
   

@@ -18,7 +18,7 @@ export default function Header({}) {
   const listaPapierow = appcontext.listaPapierow;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   
-  const [createArk,ponumerujArkusze] = useArkusze()
+  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
   return (
     <header
       className={style.headerMain}

@@ -17,7 +17,8 @@ import MenuElementyTech from "./ElementyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { getNameOfPapier } from "actions/getNameOfPapier";
 import { getNameOfPapierPostac } from "actions/getNameOfPapierPostac";
-import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
+import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArkuszeFromElements";
+import { useArkusze } from "hooks/useArkusze";
 
 export default function RowTechElement({
   row,
@@ -559,26 +560,7 @@ function Strony({ row,indeks }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   const elementy = techContext.elementy;
 
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const procesy = techContext.procesyElementow;
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const oprawaTech = techContext.oprawaTech;
-  const setOprawaTech = techContext.setOprawaTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const setFragmentyTech = techContext.setFragmentyTech;
-
- const contextApp = useContext(AppContext);
- const nadkomplety = contextApp.nadkomplety;
-
-  const elementyTech = techContext.elementyTech;
+  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
 
   const handleKeyPress= (e)=> {
     if (e.key === 'Enter') {
@@ -592,26 +574,7 @@ function Strony({ row,indeks }) {
       techContext.setWykonania([])
           resolve(777);
         })
-        promiseA.then(res =>   createArkuszeFromElemenets(
-          arkusze,
-          setArkusze,
-          legi,
-          setLegi,
-          legiFragmenty,
-          setLegiFragmenty,
-          oprawaTech,
-          setOprawaTech,
-          fragmentyTech,
-          setFragmentyTech,
-          elementyTech,
-          row,
-          procesy,
-          grupaWykonan,
-          setGrupaWykonan,
-          wykonania,
-          setWykonania,
-          nadkomplety
-        ))
+        promiseA.then(res => createArkuszeFromElemenets()  )
 
               
     }

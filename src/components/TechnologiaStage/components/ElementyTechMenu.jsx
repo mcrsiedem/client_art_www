@@ -6,7 +6,7 @@ import icon from "assets/copy.svg";
 import { deleteZamowienie } from "actions/deleteZamowienie";
 import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
-import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
+import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArkuszeFromElements";
 import { createNewElementTech } from "actions/createNewElementTech";
 import { addNewElementTech } from "actions/ElementyTechEdit/addNewElementTech";
 import { addNewArkuszTech } from "actions/ElementyTechEdit/addNewArkuszTech";

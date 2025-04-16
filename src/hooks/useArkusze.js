@@ -128,20 +128,7 @@ function ponumerujArkusze() {
 
 }
 
-// function createArkuszeFromElemenets(
-//   arkusze,
-//   setArkusze,
-//   legi,
-//   setLegi,
-//   legiFragmenty,
-//   setLegiFragmenty,
-//   oprawaTech,
-//   setOprawaTech,
-//   fragmentyTech,
-//   setFragmentyTech,
-//   elementyTech,
-//   rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
-// ) {
+
   function createArkuszeFromElemenets(
   ) {
 
@@ -567,12 +554,67 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
 
 // -- koniec zeszyt
 
+//numerowanie akruszy
+let m = 0;
+let n = 0;    
+    // setArkusze(new_arkusze);
+    // setLegi(new_legi);
+
+    setArkusze(new_arkusze.map((ark,i) => {
+      if(ark.element_id == row.id){
+       m++;
+        return {...ark, nr_arkusza: m, update: true}
+      }else {return ark } 
+     
+      }
+    ));
+    setLegi(new_legi.map((ark,i) => {
+      if(ark.element_id == row.id){
+      n++;
+        return {...ark, nr_legi: n, update: true}
+      }else {return ark } 
+     
+      }
+    ));
 
 
-    
-    setArkusze(new_arkusze);
-    setLegi(new_legi);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   new_legi
   .map((l, indeks) => {
@@ -778,31 +820,9 @@ const SumaPrzelotow = (wykonania,grupa) => {
   return suma;
 };
 
-const createArk = () => {
-  const promiseA = new Promise((resolve, reject) => {
 
-    createArkuszeFromElemenets()
-    console.log("1")
-      // resolve(777);
-      })
-      
-      const promiseB = new Promise((resolve, reject) => {
+  return [createArkuszeFromElemenets,ponumerujArkusze];
 
-        console.log("2")
-
-        // ponumerujArkusze() 
-          // resolve(777);
-          })
-      
-          Promise.all([promiseA, promiseB]).then((values) => {
-            console.log("koniec");
-          });
-};
-
-
-  // return [createArk,ponumerujArkusze];
-  return [createArk,ponumerujArkusze];
-  // return [ponumerujArkusze,createArkuszeFromElemenets];
 }
 
 

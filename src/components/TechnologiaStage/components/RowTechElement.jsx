@@ -583,31 +583,37 @@ function Strony({ row,indeks }) {
   const handleKeyPress= (e)=> {
     if (e.key === 'Enter') {
 
+      const promiseA = new Promise((resolve, reject) => {
+
       techContext.setArkusze([])
       techContext.setLegi([])
       techContext.setLegiFragmenty([])
       techContext.setGrupaWykonan([])
       techContext.setWykonania([])
-                createArkuszeFromElemenets(
-                  arkusze,
-                  setArkusze,
-                  legi,
-                  setLegi,
-                  legiFragmenty,
-                  setLegiFragmenty,
-                  oprawaTech,
-                  setOprawaTech,
-                  fragmentyTech,
-                  setFragmentyTech,
-                  elementyTech,
-                  row,
-                  procesy,
-                  grupaWykonan,
-                  setGrupaWykonan,
-                  wykonania,
-                  setWykonania,
-                  nadkomplety
-                );
+          resolve(777);
+        })
+        promiseA.then(res =>   createArkuszeFromElemenets(
+          arkusze,
+          setArkusze,
+          legi,
+          setLegi,
+          legiFragmenty,
+          setLegiFragmenty,
+          oprawaTech,
+          setOprawaTech,
+          fragmentyTech,
+          setFragmentyTech,
+          elementyTech,
+          row,
+          procesy,
+          grupaWykonan,
+          setGrupaWykonan,
+          wykonania,
+          setWykonania,
+          nadkomplety
+        ))
+
+              
     }
   }
   return (

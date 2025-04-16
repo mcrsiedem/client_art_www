@@ -201,21 +201,26 @@ scale: 125%
 }
 
 .produkt_menu_button_sub_16{
-  padding-top: 20px;
+  padding-top: 15px;
   height: 45px;
 }
 
 
 .BTN_12_24_16_32{
-  width: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
+  font-size: 0.9rem;
   background: transparent;
-  border: 1px solid gray;
-  box-shadow: 2px 2px 2px rgb(141, 141, 141);
+  border: 1px solid rgb(214, 214, 214);
+  /* border: none; */
+  /* background-color: rgb(230, 240, 253); */
+  box-shadow: 1px 1px 1px rgb(141, 141, 141);
 }
 .BTN_12_24_16_32:hover{
-  background-color: rgb(180, 180, 180);
+  background-color: rgb(215, 215, 215);
 }
 .BTN_12_24_16_32:active{
   box-shadow: none;
+  /* box-shadow: 2px 2px 2px rgb(141, 141, 141) */
 }

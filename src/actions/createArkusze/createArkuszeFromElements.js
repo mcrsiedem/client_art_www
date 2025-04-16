@@ -447,6 +447,7 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
     
 
     }else{
+      createArk_24_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     
     }
 
@@ -487,6 +488,13 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
     }
   }
 
+
+
+  if(rodzaj_legi == 4) {
+    if (modulo == 0) {
+      createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }
+  }
 }
 
 // -- koniec zeszyt

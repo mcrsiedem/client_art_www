@@ -73,7 +73,7 @@ export function createArkuszeFromElemenets(
   fragmentyTech,
   setFragmentyTech,
   elementyTech,
-  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
+   procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
 ) {
 
 

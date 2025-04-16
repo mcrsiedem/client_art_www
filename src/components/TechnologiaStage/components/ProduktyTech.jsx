@@ -152,28 +152,28 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
 
           console.log("s")
 
-          // createArk()
+          createArk()
 
-          createArkuszeFromElemenets(
-            arkusze,
-            setArkusze,
-            legi,
-            setLegi,
-            legiFragmenty,
-            setLegiFragmenty,
-            oprawaTech,
-            setOprawaTech,
-            fragmentyTech,
-            setFragmentyTech,
-            elementyTech,
-            row,
-            procesy,
-            grupaWykonan,
-            setGrupaWykonan,
-            wykonania,
-            setWykonania,
-            nadkomplety
-          );
+          // createArkuszeFromElemenets(
+          //   arkusze,
+          //   setArkusze,
+          //   legi,
+          //   setLegi,
+          //   legiFragmenty,
+          //   setLegiFragmenty,
+          //   oprawaTech,
+          //   setOprawaTech,
+          //   fragmentyTech,
+          //   setFragmentyTech,
+          //   elementyTech,
+      
+          //   procesy,
+          //   grupaWykonan,
+          //   setGrupaWykonan,
+          //   wykonania,
+          //   setWykonania,
+          //   nadkomplety
+          // );
 
       // ponumerujArkusze()
 

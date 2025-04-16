@@ -732,6 +732,9 @@ let grupa_id = MaxID(new_grupy)
   setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
   setWykonania(new_wykonania)
 
+
+  // ponumerujArkusze()
+
 }
 
 
@@ -779,16 +782,26 @@ const createArk = () => {
   const promiseA = new Promise((resolve, reject) => {
 
     createArkuszeFromElemenets()
-    console.log("s2")
-        resolve(777);
+    console.log("1")
+      // resolve(777);
       })
+      
+      const promiseB = new Promise((resolve, reject) => {
 
-        promiseA.then(res =>  ponumerujArkusze())
+        console.log("2")
 
+        // ponumerujArkusze() 
+          // resolve(777);
+          })
+      
+          Promise.all([promiseA, promiseB]).then((values) => {
+            console.log("koniec");
+          });
 };
 
 
-  return [createArk];
+  // return [createArk,ponumerujArkusze];
+  return [createArk,ponumerujArkusze];
   // return [ponumerujArkusze,createArkuszeFromElemenets];
 }
 

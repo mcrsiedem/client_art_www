@@ -18,7 +18,7 @@ export default function Header({}) {
   const listaPapierow = appcontext.listaPapierow;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   
-  const [ponumerujArkusze] = useArkusze()
+  const [createArk,ponumerujArkusze] = useArkusze()
   return (
     <header
       className={style.headerMain}
@@ -41,7 +41,8 @@ export default function Header({}) {
         //   "lista wszystkich procesów appcontext.procesList: ",
         //   appcontext.procesList
         // );
-        // ponumerujArkusze();
+         ponumerujArkusze();
+        //  ponumerujArkusze();
 
 
       }}

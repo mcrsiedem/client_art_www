@@ -46,6 +46,44 @@ function Generuj() {
 
 
     <div className={style.produkt_menu_button_sub}>
+
+<div className={style.produkt_menu_button_sub_16}>
+        <p style={{color:"grey" , fontSize:"1.5rem"}}
+          onClick={() => {
+            input1632toElement(12,elementyTech,setElementyTech)
+           
+          }}
+        >
+          12
+        </p>
+      </div>
+
+      <div className={style.produkt_menu_button_sub_16}>
+        <p style={{color:"grey" , fontSize:"1.5rem"}}
+          onClick={() => {
+            input1632toElement(24,elementyTech,setElementyTech)
+           
+          }}
+        >
+          24
+        </p>
+      </div>
+
+
+
+
+
+      <div className={style.produkt_menu_button_sub_16}>
+        <p style={{color:"grey" , fontSize:"1.5rem"}}
+          onClick={() => {
+            input1632toElement(16,elementyTech,setElementyTech)
+           
+          }}
+        >
+          16
+        </p>
+      </div>
+
       <div className={style.produkt_menu_button_sub_16}>
         <p style={{color:"grey", fontSize:"1.5rem"} }
           onClick={() => {
@@ -57,16 +95,11 @@ function Generuj() {
           32
         </p>
       </div>
-      <div className={style.produkt_menu_button_sub_16}>
-        <p style={{color:"grey" , fontSize:"1.5rem"}}
-          onClick={() => {
-            input1632toElement(16,elementyTech,setElementyTech)
-           
-          }}
-        >
-          16
-        </p>
-      </div>
+
+
+
+
+
 
       <MenuProduktyBtn />
     </div>

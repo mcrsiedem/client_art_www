@@ -384,6 +384,32 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
     }
 
   }
+
+  if(rodzaj_legi == 12) {
+
+    if(row.ilosc_stron >10){ 
+
+      if (modulo == 0) {
+        createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }
+
+
+    if (modulo == 4) {
+      createArk_16_Z_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    if (modulo == 8) {
+      createArk_16_Z_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    
+    if (modulo == 12) {
+      createArk_16_Z_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    }else{
+     
+    
+    }
+
+  }
   //--------
   if(rodzaj_legi == 32) {
 

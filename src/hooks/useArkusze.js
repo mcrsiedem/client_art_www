@@ -63,6 +63,7 @@ import { createArk_32_Z_modulo_16 } from "actions/createArkusze/32Z/createArk_32
 import { createArk_32_Z_modulo_20 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_20";
 import { createArk_32_Z_modulo_24 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_24";
 import { createArk_32_Z_modulo_28 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_28";
+import { AppContext } from "context/AppContext";
 
 
 export function useArkusze(status_id){
@@ -77,10 +78,25 @@ export function useArkusze(status_id){
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
 
+    const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
+
+    const procesy = techContext.procesyElementow;
+    const grupaWykonan = techContext.grupaWykonan;
+    const setGrupaWykonan = techContext.setGrupaWykonan;
+    const wykonania = techContext.wykonania;
+    const setWykonania = techContext.setWykonania;
+    const oprawaTech = techContext.oprawaTech;
+    const setOprawaTech = techContext.setOprawaTech;
+    const fragmentyTech = techContext.fragmentyTech;
+    const setFragmentyTech = techContext.setFragmentyTech;
+  
+   const contextApp = useContext(AppContext);
+   const nadkomplety = contextApp.nadkomplety;
+
+
 function ponumerujArkusze() {
-  // console.clear();
-  // console.log("Ponumeruj: ");
- 
+
   for(let element of elementyTech){
  let m = 0;
 
@@ -112,21 +128,22 @@ function ponumerujArkusze() {
 
 }
 
-function createArkuszeFromElemenets(
-  arkusze,
-  setArkusze,
-  legi,
-  setLegi,
-  legiFragmenty,
-  setLegiFragmenty,
-  oprawaTech,
-  setOprawaTech,
-  fragmentyTech,
-  setFragmentyTech,
-  elementyTech,
-  rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
-) {
-
+// function createArkuszeFromElemenets(
+//   arkusze,
+//   setArkusze,
+//   legi,
+//   setLegi,
+//   legiFragmenty,
+//   setLegiFragmenty,
+//   oprawaTech,
+//   setOprawaTech,
+//   fragmentyTech,
+//   setFragmentyTech,
+//   elementyTech,
+//   rowElement, procesy, grupaWykonan,setGrupaWykonan,wykonania, setWykonania,nadkomplety
+// ) {
+  function createArkuszeFromElemenets(
+  ) {
 
 
   const new_arkusze = [];
@@ -758,8 +775,21 @@ const SumaPrzelotow = (wykonania,grupa) => {
   return suma;
 };
 
+const createArk = () => {
+  const promiseA = new Promise((resolve, reject) => {
 
-  return [ponumerujArkusze,createArkuszeFromElemenets];
+    createArkuszeFromElemenets()
+    console.log("s2")
+        resolve(777);
+      })
+
+        promiseA.then(res =>  ponumerujArkusze())
+
+};
+
+
+  return [createArk];
+  // return [ponumerujArkusze,createArkuszeFromElemenets];
 }
 
 

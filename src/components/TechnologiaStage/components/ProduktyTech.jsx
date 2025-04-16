@@ -138,7 +138,7 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
  const nadkomplety = contextApp.nadkomplety;
 
   const elementyTech = techContext.elementyTech;
-  const [ponumerujArkusze] = useArkusze()
+  const [createArk] = useArkusze()
  
       return (
     
@@ -150,9 +150,9 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
         title="Auto wszystkie arkusze + legi"
         onClick={() => {
 
+          console.log("s")
 
-
-
+          // createArk()
 
           createArkuszeFromElemenets(
             arkusze,

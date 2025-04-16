@@ -12,6 +12,7 @@ import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 
 import { createArkuszeFromElemenets } from "actions/createArkusze/createArkuszeFromElements";
 import { input1632toElement } from "actions/input1632toElement";
+import { useArkusze } from "hooks/useArkusze";
 
 export default function ProduktyTech() {
   const contextTech = useContext(TechnologyContext);
@@ -137,6 +138,7 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
  const nadkomplety = contextApp.nadkomplety;
 
   const elementyTech = techContext.elementyTech;
+  const [ponumerujArkusze] = useArkusze()
  
       return (
     
@@ -147,6 +149,11 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
         src={Logo_ustawienia2}
         title="Auto wszystkie arkusze + legi"
         onClick={() => {
+
+
+
+
+
           createArkuszeFromElemenets(
             arkusze,
             setArkusze,
@@ -168,7 +175,7 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
             nadkomplety
           );
 
-      
+      // ponumerujArkusze()
 
           // setShowMenu(!showMenu);
           // dodaj_clikHandler();

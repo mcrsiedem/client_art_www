@@ -47,58 +47,37 @@ function Generuj() {
 
     <div className={style.produkt_menu_button_sub}>
 
-<div className={style.produkt_menu_button_sub_16}>
-        <p style={{color:"grey" , fontSize:"1.5rem"}}
-          onClick={() => {
-            input1632toElement(12,elementyTech,setElementyTech)
-           
-          }}
-        >
-          12
-        </p>
-      </div>
-
-      <div className={style.produkt_menu_button_sub_16}>
-        <p style={{color:"grey" , fontSize:"1.5rem"}}
-          onClick={() => {
-            input1632toElement(24,elementyTech,setElementyTech)
-           
-          }}
-        >
-          24
-        </p>
-      </div>
-
 
 
 
 
       <div className={style.produkt_menu_button_sub_16}>
-        <p style={{color:"grey" , fontSize:"1.5rem"}}
-          onClick={() => {
-            input1632toElement(16,elementyTech,setElementyTech)
-           
-          }}
-        >
-          16
-        </p>
+        <button className={style.BTN_12_24_16_32} onClick={() => {
+              input1632toElement(12,elementyTech,setElementyTech)
+            
+        }}>12</button>
       </div>
 
       <div className={style.produkt_menu_button_sub_16}>
-        <p style={{color:"grey", fontSize:"1.5rem"} }
-          onClick={() => {
-
-            input1632toElement(32,elementyTech,setElementyTech)
-            // input1632toElemnt(32);
-          }}
-        >
-          32
-        </p>
+        <button className={style.BTN_12_24_16_32} onClick={() => {
+              input1632toElement(16,elementyTech,setElementyTech)
+            
+        }}>16</button>
       </div>
 
+      <div className={style.produkt_menu_button_sub_16}>
+        <button className={style.BTN_12_24_16_32} onClick={() => {
+              input1632toElement(24,elementyTech,setElementyTech)
+            
+        }}>24</button>
+      </div>
 
-
-
+      <div className={style.produkt_menu_button_sub_16}>
+        <button className={style.BTN_12_24_16_32} onClick={() => {
+              input1632toElement(32,elementyTech,setElementyTech)
+            
+        }}>32</button>
+      </div>
 
 
       <MenuProduktyBtn />

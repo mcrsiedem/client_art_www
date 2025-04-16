@@ -55,6 +55,11 @@ import { createArk_12_Z_modulo_8 } from "./12Z/createArk_12_Z_modulo_8";
 import { createArk_12_Z_modulo_4 } from "./12Z/createArk_12_Z_modulo_4";
 import { createArk_16_Z_single_ark } from "./16Z/createArk_16_Z_single_ark";
 import { createArk_12_Z_single_ark } from "./12Z/createArk_12_Z_single_ark";
+import { createArk_24_Z_modulo_20 } from "./24Z/createArk_24_Z_modulo_20";
+import { createArk_24_Z_modulo_16 } from "./24Z/createArk_24_Z_modulo_16";
+import { createArk_24_Z_modulo_12 } from "./24Z/createArk_24_Z_modulo_12";
+import { createArk_24_Z_modulo_8 } from "./24Z/createArk_24_Z_modulo_8";
+import { createArk_24_Z_modulo_4 } from "./24Z/createArk_24_Z_modulo_4";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -408,6 +413,40 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
 
     }else{
       createArk_12_Z_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    
+    }
+
+  }
+
+  //----------
+
+  if(rodzaj_legi == 24) {
+
+    if(row.ilosc_stron >22){ 
+
+      if (modulo == 0) {
+        createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+    }
+
+    if (modulo == 4) {
+      createArk_24_Z_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+
+    if (modulo == 8) {
+      createArk_24_Z_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    if (modulo == 12) {
+      createArk_24_Z_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    if (modulo == 16) {
+      createArk_24_Z_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    if (modulo == 20) {
+      createArk_24_Z_modulo_20(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+    
+
+    }else{
     
     }
 

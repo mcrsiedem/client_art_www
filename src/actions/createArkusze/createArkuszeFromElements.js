@@ -51,6 +51,10 @@ import { createArk_12_K_modulo_4 } from "./12K/createArk_12_K_modulo_4";
 import { createArk_12_K_modulo_2 } from "./12K/createArk_12_K_modulo_2";
 import { createArk_12_K_single_ark } from "./12K/createArk_12_K_single_ark";
 import { createArk_24_K_single_ark } from "./24K/createArk_24_K_single_ark";
+import { createArk_12_Z_modulo_8 } from "./12Z/createArk_12_Z_modulo_8";
+import { createArk_12_Z_modulo_4 } from "./12Z/createArk_12_Z_modulo_4";
+import { createArk_16_Z_single_ark } from "./16Z/createArk_16_Z_single_ark";
+import { createArk_12_Z_single_ark } from "./12Z/createArk_12_Z_single_ark";
 
 export function createArkuszeFromElemenets(
   arkusze,
@@ -395,17 +399,15 @@ if( OPRAWY_ZESZYTOWE.includes(parseInt( oprawaTech[0].oprawa))) {
 
 
     if (modulo == 4) {
-      createArk_16_Z_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+      createArk_12_Z_modulo_4(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
     if (modulo == 8) {
-      createArk_16_Z_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+      createArk_12_Z_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
   }
     
-    if (modulo == 12) {
-      createArk_16_Z_modulo_12(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-  }
+
     }else{
-     
+      createArk_12_Z_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
     
     }
 

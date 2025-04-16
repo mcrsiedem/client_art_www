@@ -10,8 +10,7 @@ let nr_legi = 0;
 
 pierwsza_12(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
 ark_2(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-// ark_4(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-// ark_8(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+
 ostatnia_12(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
 }
 
@@ -75,65 +74,8 @@ const ark_2 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_le
 }
 
 
-const ark_4 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
-  nr_arkusza++
-  new_arkusze.push({
-    id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
-    ...ark,
-    nr_arkusza,
-    rodzaj_arkusza: 4,
-    ilosc_leg: lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu,
-    naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu)),
-    nadkomplet: findNadkomplet(nadkomplety, ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) )
-  });
-
-  for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-    // do każdego ark dodaje odpowiednią ilość leg
-    nr_legi++
-    new_legi.push({
-      id: getMaxID(new_legi),
-      indeks: getMaxIndeks(new_legi),
-      ...lega,
-      nr_legi,
-      rodzaj_legi:4,
-      arkusz_id: getMaxID(new_arkusze)-1,
-      naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) *3)
-    });
-  }
-
-}
 
 
-
-const ark_8 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
-  nr_arkusza++
-  new_arkusze.push({
-    id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
-    ...ark,
-    nr_arkusza,
-    rodzaj_arkusza: 8,
-    ilosc_leg: lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu,
-    naklad: Math.ceil( ark.naklad ),
-    nadkomplet: findNadkomplet(nadkomplety, ark.naklad / (lega.rodzaj_legi / 8 * ilosc_leg_na_arkuszu) )
-  });
-
-  for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
-    // do każdego ark dodaje odpowiednią ilość leg
-    nr_legi++
-    new_legi.push({
-      id: getMaxID(new_legi),
-      indeks: getMaxIndeks(new_legi),
-      ...lega,
-      nr_legi,
-      rodzaj_legi:8,
-      arkusz_id: getMaxID(new_arkusze)-1,
-      naklad: Math.ceil( ark.naklad ) 
-    });
-  }
-
-}
 
 
 

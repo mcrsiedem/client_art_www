@@ -582,6 +582,12 @@ function Strony({ row,indeks }) {
 
   const handleKeyPress= (e)=> {
     if (e.key === 'Enter') {
+
+      techContext.setArkusze([])
+      techContext.setLegi([])
+      techContext.setLegiFragmenty([])
+      techContext.setGrupaWykonan([])
+      techContext.setWykonania([])
                 createArkuszeFromElemenets(
                   arkusze,
                   setArkusze,

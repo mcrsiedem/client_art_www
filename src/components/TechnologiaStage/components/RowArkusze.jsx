@@ -300,8 +300,7 @@ export default function RowArkusze  ({ row,i })  {
       // id = id elementu
       const newArkusze = arkusze.slice();
   
-      for (let step = 0; step < 100; step++) {
-
+      // for (let step = 0; step < 100; step++) {
       newArkusze.push({
         id: Math.max(...newArkusze.map((f) => f.id)) + 1,
         indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
@@ -319,27 +318,17 @@ export default function RowArkusze  ({ row,i })  {
         arkusz_wysokosc: row.arkusz_wysokosc,
         uwagi: row.uwagi,
         insert: true
-
-
-
-
-
-
-
-
-
       });
-
-
-
-
-      }
-
-
-
-
-  
-      setArkusze(newArkusze);
+      // }
+      let m = 0;
+      setArkusze(newArkusze      .map((ark,i) => {
+        if(ark.element_id == row.element_id){
+         m++;
+          return {...ark, nr_arkusza: m, update: true}
+        }else {return ark } 
+       
+        }
+      ));
     };
   
     return (
@@ -358,6 +347,9 @@ export default function RowArkusze  ({ row,i })  {
       </td>
     );
   }
+
+
+
   function NrArkusza ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;

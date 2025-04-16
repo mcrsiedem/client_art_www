@@ -30,12 +30,23 @@ const [refreshZamowienia] = useZamowienia()
   setSaveButtonDisabled(true)
   dialogBox.current.show();
           let response = [];
+          // przy zapisz jako kasują się statusy przyjęcia
+          if(daneZamowienia.etap==1){
+            daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:1}
+            }
+            if(daneZamowienia.etap==2){
+              daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
+              }
+          if(daneZamowienia.etap>2){
+            daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
+            }
+
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 
           let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
           let zamowienie_id = savedDane.data[0][1].zamowienie_id;  // nr id pod jakim zapisała sietechnologia
           // let res = await axios.get(IP + "parametry/"+savedDane.daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
-
+       
 
           if(zapis){
               produkty = produkty.map((obj) => {return{...obj, zamowienie_id} })

@@ -5,29 +5,7 @@ import { AppContext } from "context/AppContext";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 
 export default function SaveAs({showSaveAs,setShowSaveAs,setSaveAs,dialogBox}) {
-//   useEffect(() => {}, []);
-const contextModal = useContext(ModalInsertContext);
 
-  const contextModalInsert = useContext(ModalInsertContext);
-  const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-  const produkty= contextModalInsert.produkty;
-  // const daneZamowienia= contextModalInsert.daneZamowienia;
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-  const elementy= contextModalInsert.elementy;
-  const fragmenty= contextModalInsert.fragmenty;
-  const oprawa= contextModalInsert.oprawa;
-  const setProdukty= contextModalInsert.setProdukty;
-  const setElementy= contextModalInsert.setElementy;
-  const setFragmenty= contextModalInsert.setFragmenty;
-  const setOprawa= contextModalInsert.setOprawa;
-  const setProcesyElementow= contextModalInsert.setProcesyElementow;
-  const procesyElementow= contextModalInsert.procesyElementow;
-
-  const contextApp = useContext(AppContext);
-  const setZamowienia = contextApp.setZamowienia
-  const setZamowieniaWyszukiwarka = contextApp.setZamowieniaWyszukiwarka
     const [zapiszZamowienie] = useZamowienieZapisz();
     if(showSaveAs){
         return (

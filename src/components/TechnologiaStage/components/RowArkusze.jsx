@@ -62,7 +62,6 @@ export default function RowArkusze  ({ row,i })  {
         <RodzajLegi row={l} />
         <td></td>
         <td></td>
-        {/* <td>{l.rodzaj_legi}</td> */}
         <UwagiLegi row={l} />
       </div>
 
@@ -80,7 +79,6 @@ export default function RowArkusze  ({ row,i })  {
   <td></td>
 
   <WersjaFragment row={lf}/>
- {/* <hr></hr> */}
 </div>
 })}</>)}
 </> 
@@ -878,7 +876,7 @@ const nadkomplety = contextApp.nadkomplety;
         className={style.input_ark_typ}
         // disabled
         
-          defaultValue={row.uwagi}
+          value={"indeks:  "+row.indeks}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 

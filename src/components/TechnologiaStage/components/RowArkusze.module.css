@@ -445,6 +445,7 @@ font-size: 0.9rem;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 35px;
   font-size: 0.9rem;
+  padding-bottom: 2px;
   
   
 }
@@ -468,7 +469,7 @@ font-size: 0.9rem;
 .dodaj_klienta {
   position: absolute;
   top: 3px; left: 10px;
-  height: 20px;
+  height: 17px;
 }
 
 .papier_input_container{

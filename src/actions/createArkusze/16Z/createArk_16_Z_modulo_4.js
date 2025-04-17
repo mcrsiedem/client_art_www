@@ -39,7 +39,7 @@ const ark_4 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_le
       nr_legi,
       rodzaj_legi:4,
       arkusz_id: getMaxID(new_arkusze)-1,
-      naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) *8)
+      naklad: Math.ceil( ark.naklad / (lega.rodzaj_legi / 4 * ilosc_leg_na_arkuszu) *4)
     });
   }
 

@@ -169,6 +169,7 @@ function ponumerujArkusze() {
 
     // const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // podzieliłem dodatkowo prze ilosc leg
     const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza /ilosc_leg_na_arkuszu;
+    // const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
     const modulo = row.ilosc_stron % rodzaj_arkusza;
 
     const ark = {

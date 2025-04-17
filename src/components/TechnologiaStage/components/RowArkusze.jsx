@@ -304,12 +304,12 @@ export default function RowArkusze  ({ row,i })  {
   
     const handleAddArkusz = (row, arkusze, setArkusze) => {
 
-
+      let new_arkusz_id = Math.max(...arkusze.map((f) => f.id)) + 1
       //------------------- akrusz
     const newArkusze = arkusze.slice();
     newArkusze.push({
       ...row,
-      id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+      id: new_arkusz_id,
       indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
       insert: true,
     });
@@ -337,7 +337,7 @@ export default function RowArkusze  ({ row,i })  {
                 ...lega,
                 id: getMaxID(newLegi),
                 indeks: getMaxIndeks(newLegi),
-                arkusz_id: Math.max(...newArkusze.map((f) => f.id)),
+                arkusz_id: new_arkusz_id,
                 insert: true,
               });
             });
@@ -345,7 +345,7 @@ export default function RowArkusze  ({ row,i })  {
           let n = 0;
           setLegi(
             newLegi.map((lega, i) => {
-              if (lega.arkusz_id == row.id) {
+              if (lega.element_id == row.element_id) {
                 n++;
                 return { ...lega, nr_legi: n, update: true };
               } else {

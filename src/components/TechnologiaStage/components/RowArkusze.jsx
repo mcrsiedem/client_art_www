@@ -10,6 +10,8 @@ import style from "./RowArkusze.module.css";
 import { reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import addIcon2 from "assets/addIcon2.svg"
 import { findNadkomplet } from "actions/findNadkomplet";
+import { getMaxID } from "actions/getMaxID";
+import { getMaxIndeks } from "actions/getMaxIndeks";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -295,40 +297,65 @@ export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
     const arkusze = techContext.arkusze;
     const setArkusze = techContext.setArkusze;
+    const legi = techContext.legi;
+    const setLegi = techContext.setLegi;
   
     const handleAddArkusz = (row, arkusze, setArkusze) => {
-      // id = id elementu
-      const newArkusze = arkusze.slice();
-  
-      // for (let step = 0; step < 100; step++) {
-      newArkusze.push({
-        id: Math.max(...newArkusze.map((f) => f.id)) + 1,
-        indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
-        technologia_id: row.technologia_id,
-        typ_elementu: row.typ_elementu,
-        rodzaj_arkusza: row.rodzaj_arkusza,
-        element_id: row.element_id,
-        ilosc_stron: row.ilosc_stron,
-        ilosc_leg: row.ilosc_leg,
-        naklad: row.naklad,
-        nadkomplet: row.nadkomplet,
-        papier_id: row.papier_id,
-        nr_arkusza: row.nr_arkusza,
-        arkusz_szerokosc: row.arkusz_szerokosc,
-        arkusz_wysokosc: row.arkusz_wysokosc,
-        uwagi: row.uwagi,
-        insert: true
-      });
-      // }
-      let m = 0;
-      setArkusze(newArkusze      .map((ark,i) => {
-        if(ark.element_id == row.element_id){
-         m++;
-          return {...ark, nr_arkusza: m, update: true}
-        }else {return ark } 
-       
-        }
-      ));
+    const newArkusze = arkusze.slice();
+          newArkusze.push({
+            ...row,
+            id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+            indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+            // technologia_id: row.technologia_id,
+            // typ_elementu: row.typ_elementu,
+            // rodzaj_arkusza: row.rodzaj_arkusza,
+            // element_id: row.element_id,
+            // ilosc_stron: row.ilosc_stron,
+            // ilosc_leg: row.ilosc_leg,
+            // naklad: row.naklad,
+            // nadkomplet: row.nadkomplet,
+            // papier_id: row.papier_id,
+            // nr_arkusza: row.nr_arkusza,
+            // arkusz_szerokosc: row.arkusz_szerokosc,
+            // arkusz_wysokosc: row.arkusz_wysokosc,
+            uwagi: row.uwagi,
+            insert: true
+          });
+
+    let m = 0;
+          setArkusze(newArkusze      .map((ark,i) => {
+            if(ark.element_id == row.element_id){
+            m++;
+              return {...ark, nr_arkusza: m, update: true}
+            }else {return ark } 
+            }
+          ));
+
+
+          const newLegi = legi.slice();
+          legi.filter(l=> l.arkusz_id ==row.id).map(lega => {
+
+            newLegi.push({
+              ...lega,
+                id: getMaxID(newLegi),
+                indeks: getMaxIndeks(newLegi),
+                arkusz_id: Math.max(...newArkusze.map((f) => f.id)) 
+
+            })
+           })
+
+           let n = 0;
+           setLegi( newLegi
+             .map((ark,i) => {
+             if(ark.element_id == row.id){
+             n++;
+               return {...ark, nr_legi: n, update: true}
+             }else {return ark } 
+            
+             }
+           )
+           )
+
     };
   
     return (
@@ -682,7 +709,7 @@ const nadkomplety = contextApp.nadkomplety;
         className={style.input_legi}
         // disabled
         
-          defaultValue={row.nr_legi}
+          value={row.nr_legi}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 

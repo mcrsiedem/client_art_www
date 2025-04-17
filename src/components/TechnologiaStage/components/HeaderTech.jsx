@@ -41,7 +41,7 @@ export default function Header({}) {
         //   "lista wszystkich procesów appcontext.procesList: ",
         //   appcontext.procesList
         // );
-        //  ponumerujArkusze();
+         ponumerujArkusze();
         //  ponumerujArkusze();
 
 

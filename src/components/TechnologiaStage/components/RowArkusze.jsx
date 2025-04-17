@@ -299,63 +299,89 @@ export default function RowArkusze  ({ row,i })  {
     const setArkusze = techContext.setArkusze;
     const legi = techContext.legi;
     const setLegi = techContext.setLegi;
+    const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
   
     const handleAddArkusz = (row, arkusze, setArkusze) => {
+
+
+      //------------------- akrusz
     const newArkusze = arkusze.slice();
-          newArkusze.push({
-            ...row,
-            id: Math.max(...newArkusze.map((f) => f.id)) + 1,
-            indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
-            // technologia_id: row.technologia_id,
-            // typ_elementu: row.typ_elementu,
-            // rodzaj_arkusza: row.rodzaj_arkusza,
-            // element_id: row.element_id,
-            // ilosc_stron: row.ilosc_stron,
-            // ilosc_leg: row.ilosc_leg,
-            // naklad: row.naklad,
-            // nadkomplet: row.nadkomplet,
-            // papier_id: row.papier_id,
-            // nr_arkusza: row.nr_arkusza,
-            // arkusz_szerokosc: row.arkusz_szerokosc,
-            // arkusz_wysokosc: row.arkusz_wysokosc,
-            // uwagi: row.uwagi,
-            insert: true
-          });
+    newArkusze.push({
+      ...row,
+      id: Math.max(...newArkusze.map((f) => f.id)) + 1,
+      indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+      insert: true,
+    });
 
     let m = 0;
-          setArkusze(newArkusze      .map((ark,i) => {
-            if(ark.element_id == row.element_id){
-            m++;
-              return {...ark, nr_arkusza: m, update: true}
-            }else {return ark } 
-            }
-          ));
+    setArkusze(
+      newArkusze.map((ark, i) => {
+        if (ark.element_id == row.element_id) {
+          m++;
+          return { ...ark, nr_arkusza: m, update: true };
+        } else {
+          return ark;
+        }
+      })
+    );
 
 
+
+//------------ legi
           const newLegi = legi.slice();
-          legi.filter(l=> l.arkusz_id ==row.id).map(lega => {
-
-            newLegi.push({
-              ...lega,
+          legi
+            .filter((l) => l.arkusz_id == row.id)
+            .map((lega) => {
+              newLegi.push({
+                ...lega,
                 id: getMaxID(newLegi),
                 indeks: getMaxIndeks(newLegi),
                 arkusz_id: Math.max(...newArkusze.map((f) => f.id)),
-                insert: true
+                insert: true,
+              });
+            });
 
+          let n = 0;
+          setLegi(
+            newLegi.map((lega, i) => {
+              if (lega.arkusz_id == row.id) {
+                n++;
+                return { ...lega, nr_legi: n, update: true };
+              } else {
+                return lega;
+              }
             })
-           })
+          );
 
-           let n = 0;
-           setLegi( newLegi
-             .map((ark,i) => {
-             if(ark.element_id == row.id){
-             n++;
-               return {...ark, nr_legi: n, update: true}
-             }else {return ark } 
-            
-             }
-           )
-           )
+          // ------------------------------- fragmenty
+
+          //  const new_legiFragmenty = legiFragmenty.slice();
+
+          //  legiFragmenty
+          //    .filter((l) => l.arkusz_id == row.id)
+          //    .map((fragmentLegi) => {
+          //      new_legiFragmenty.push({
+          //        ...fragmentLegi,
+          //        id: getMaxID(new_legiFragmenty),
+          //        indeks: getMaxIndeks(new_legiFragmenty),
+          //        arkusz_id: Math.max(...newArkusze.map((f) => f.id)),
+          //        lega_id: Math.max(...newLegi.map((f) => f.id)),
+          //        insert: true,
+          //      });
+          //    });
+
+          //  setLegiFragmenty(
+          //    new_legiFragmenty
+          //      .sort((a, c) => a.id - c.id)
+          //      .sort((a, c) => a.oprawa_id - c.oprawa_id)
+          //      .map((x, i) => {
+          //        return { ...x, indeks: i };
+          //      })
+          //  );
+
+
+
 
     };
   

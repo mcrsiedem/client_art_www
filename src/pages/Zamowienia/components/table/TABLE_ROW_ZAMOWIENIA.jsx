@@ -224,7 +224,7 @@ const StatusZamowieniaTable = ({ row }) => {
   return (
     <td
       style={
-        row.status > 2
+        row.status > 2  && row.status != 5
           ? {
               backgroundColor: "rgb(246, 85, 45)",
               paddingRight: "10px",

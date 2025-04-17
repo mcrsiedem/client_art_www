@@ -301,6 +301,7 @@ export default function RowArkusze  ({ row,i })  {
     const setLegi = techContext.setLegi;
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
+    const oprawaTech = techContext.oprawaTech;
   
     const handleAddArkusz = (row, arkusze, setArkusze) => {
 
@@ -330,6 +331,7 @@ export default function RowArkusze  ({ row,i })  {
 
 //------------ legi
           const newLegi = legi.slice();
+          const new_legiFragmenty = legiFragmenty.slice();
           legi
             .filter((l) => l.arkusz_id == row.id)
             .map((lega) => {
@@ -340,6 +342,22 @@ export default function RowArkusze  ({ row,i })  {
                 arkusz_id: new_arkusz_id,
                 insert: true,
               });
+              new_legiFragmenty.push({
+                id: getMaxID(new_legiFragmenty),
+                indeks: getMaxIndeks(new_legiFragmenty),
+                lega_id: getMaxID(newLegi)-1,
+                nr_legi: lega.nr_legi,
+                naklad: lega.naklad,
+                fragment_id: lega.id,
+                rodzaj_legi: lega.rodzaj_legi,
+                oprawa_id: oprawaTech[0]?.id,
+                typ: lega.typ_elementu,
+                wersja: "",
+                element_id: lega.element_id,
+                arkusz_id: lega.arkusz_id,
+                insert: true
+              });
+
             });
 
           let n = 0;
@@ -354,31 +372,32 @@ export default function RowArkusze  ({ row,i })  {
             })
           );
 
-          // ------------------------------- fragmenty
+          //------------------------------- fragmenty
 
           //  const new_legiFragmenty = legiFragmenty.slice();
 
           //  legiFragmenty
           //    .filter((l) => l.arkusz_id == row.id)
           //    .map((fragmentLegi) => {
+
           //      new_legiFragmenty.push({
           //        ...fragmentLegi,
           //        id: getMaxID(new_legiFragmenty),
           //        indeks: getMaxIndeks(new_legiFragmenty),
-          //        arkusz_id: Math.max(...newArkusze.map((f) => f.id)),
+          //        arkusz_id:new_arkusz_id,
           //        lega_id: Math.max(...newLegi.map((f) => f.id)),
           //        insert: true,
           //      });
           //    });
 
-          //  setLegiFragmenty(
-          //    new_legiFragmenty
-          //      .sort((a, c) => a.id - c.id)
-          //      .sort((a, c) => a.oprawa_id - c.oprawa_id)
-          //      .map((x, i) => {
-          //        return { ...x, indeks: i };
-          //      })
-          //  );
+           setLegiFragmenty(
+             new_legiFragmenty
+               .sort((a, c) => a.id - c.id)
+               .sort((a, c) => a.oprawa_id - c.oprawa_id)
+               .map((x, i) => {
+                 return { ...x, indeks: i };
+               })
+           );
 
 
 

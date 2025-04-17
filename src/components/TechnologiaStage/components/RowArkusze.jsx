@@ -318,7 +318,7 @@ export default function RowArkusze  ({ row,i })  {
             // nr_arkusza: row.nr_arkusza,
             // arkusz_szerokosc: row.arkusz_szerokosc,
             // arkusz_wysokosc: row.arkusz_wysokosc,
-            uwagi: row.uwagi,
+            // uwagi: row.uwagi,
             insert: true
           });
 
@@ -339,7 +339,8 @@ export default function RowArkusze  ({ row,i })  {
               ...lega,
                 id: getMaxID(newLegi),
                 indeks: getMaxIndeks(newLegi),
-                arkusz_id: Math.max(...newArkusze.map((f) => f.id)) 
+                arkusz_id: Math.max(...newArkusze.map((f) => f.id)),
+                insert: true
 
             })
            })

@@ -614,7 +614,7 @@ function NR_ZAMOWIENIA( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
   // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-
+  const [add] = useHistoria();
 
   if (daneZamowienia.stan == 1 && daneZamowienia.stan == 3) {
     return (
@@ -642,7 +642,14 @@ function NR_ZAMOWIENIA( ){
          let zapis = res.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
          let zamowienie_nr = res.data[0][1].zamowienie_nr;  // nr id pod jakim zapisała sietechnologia
          setDaneZamowienia({...daneZamowienia, nr: zamowienie_nr,data_przyjecia: today() ,stan:3,status:2,update: true})
- 
+         
+         add(                    {
+          kategoria: "Stan zamówienia",
+          event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == 3 )[0].nazwa,
+          zamowienie_id: daneZamowienia.id
+      }
+      );
+
       }}>
         utwórz numer
       </button>

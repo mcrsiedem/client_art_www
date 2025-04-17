@@ -229,6 +229,8 @@ const StatusZamowieniaTable = ({ row }) => {
               backgroundColor: "rgb(246, 85, 45)",
               paddingRight: "10px",
               width: "fitContent",
+              // fontWeight:"bold",
+              // color:"rgb(121, 32, 10)"
             }
           : { backgroundColor: "" }
       }

@@ -220,7 +220,7 @@ const LegaFragmentRow = ({ row, i }) => {
     onDragOver={handleDragOver}
         onDrop={() => handleDrop(row.id,row.oprawa_id,row.indeks)}
     >
-      <td>{row.nr_legi}</td>
+      <td>{row.indeks}</td>
       <td style={{ width: "180px" }}>
         {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa } {" "}
         { row.element_id}

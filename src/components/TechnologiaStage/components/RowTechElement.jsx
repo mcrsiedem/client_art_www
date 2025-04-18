@@ -94,7 +94,7 @@ export default function RowTechElement({
           {arkusze?.filter((x) => x.element_id == row.id && x.delete != true)
 
             .map((row, i) => {
-              return <RowArkusze key={row.indeks} i={i} row={row} />;
+              return <RowArkusze key={row.id} i={i} row={row} />;
             })}
           
         </div>

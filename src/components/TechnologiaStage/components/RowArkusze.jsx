@@ -52,7 +52,7 @@ export default function RowArkusze  ({ row,i })  {
         <DodajArkusz row={row} />
       </div>
       </div>
-      {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id).map( (l,i) => {
+      {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id && x.delete != true).map( (l,i) => {
         return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
            <NrLegi row={l} />
         <TypLega row={l} />
@@ -235,39 +235,88 @@ export default function RowArkusze  ({ row,i })  {
     const setLegiFragmenty = techContext.setLegiFragmenty;
 
 
-    const handleRemoveArkusz = (indeks,id,arkusze,setArkusze,row) => {
+    const handleRemoveArkusz = () => {
 
-      // if (arkusze.length !== 1) {
-      //   setArkusze(arkusze.filter((x) => x.indeks !== indeks));
-      //   setLegi(legi.filter((x) => x.arkusz_id !== row.id));
-      //   setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
+      if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
+        // setArkusze(arkusze.filter((x) => x.id !== row.id));
+        // setLegi(legi.filter((x) => x.arkusz_id !== row.id));
+        // setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
 
-      // }
-    
-      // setArkusze((prev) =>
-      //   prev.map((t, a) => {
-      //     if (t.indeks > indeks) {
-      //       return {
-      //         ...t,
-      //         indeks: t.indeks--,
-      //       };
-      //     } else {
-      //       return t;
-      //     }
-      //   })
-      // );
+
       setArkusze((prev) =>
         prev.map((t, a) => {
           if (t.id == row.id) {
             return {
               ...t,
-              id: 6,
+              delete: true,
+            };
+          }
+          if (t.indeks > row.indeks) {
+            return {
+              ...t,
+              indeks: t.indeks--,
             };
           } else {
             return t;
           }
         })
       );
+
+
+      setLegi((prev) =>
+        prev.map((t, a) => {
+          if (t.id == row.id) {
+            return {
+              ...t,
+              delete: true,
+            };
+          }
+          if (t.indeks > row.indeks) {
+            return {
+              ...t,
+              indeks: t.indeks--,
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+
+
+      setLegiFragmenty((prev) =>
+        prev.map((t, a) => {
+          if (t.id == row.id) {
+            return {
+              ...t,
+              delete: true,
+            };
+          }
+          if (t.indeks > row.indeks) {
+            return {
+              ...t,
+              indeks: t.indeks--,
+            };
+          } else {
+            return t;
+          }
+        })
+      );
+
+      }
+    
+
+      // setArkusze((prev) =>
+      //   prev.map((t, a) => {
+      //     if (t.id == row.id) {
+      //       return {
+      //         ...t,
+      //         id: 6,
+      //       };
+      //     } else {
+      //       return t;
+      //     }
+      //   })
+      // );
 
 
 
@@ -281,8 +330,7 @@ export default function RowArkusze  ({ row,i })  {
             className={style.expand}
             src={iconTrash}
             onClick={() => {
-              handleRemoveArkusz(row.indeks, row.id,arkusze,setArkusze,row)
-              // handleRemoveItem(row.indeks, row.id);
+              handleRemoveArkusz()
             }}
             alt="Procesy"
           />

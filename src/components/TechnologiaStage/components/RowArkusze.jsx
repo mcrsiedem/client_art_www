@@ -281,7 +281,7 @@ export default function RowArkusze  ({ row,i })  {
         // setArkusze(newArkusze)
         // setLegi(newLegi)
         // setLegiFragmenty(newLegiFragmenty)
-
+        let m = 0;
       setArkusze((prev) =>
         prev.map((t, a) => {
           if (t.id == row.id) {
@@ -295,10 +295,21 @@ export default function RowArkusze  ({ row,i })  {
               ...t,
               indeks: t.indeks--,
             };
-          } else {
-            return t;
-          }
+          } 
+
+          if(t.element_id == row.element_id && t.delete != true){
+            m++;
+             return {...t, nr_arkusza: m, update: true}
+           }
+          //  else {return t } 
+
+
+           return t 
         })
+
+
+
+
       );
 
 

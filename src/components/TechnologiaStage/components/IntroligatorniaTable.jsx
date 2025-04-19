@@ -232,7 +232,7 @@ const LegaFragmentRow = ({ row, i }) => {
       <FRAGMENT_NR_LEGI row={row}/>
       <td style={{ width: "180px" }}>
         {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa } {" "}
-        { row.element_id}
+    
       </td>
 
 

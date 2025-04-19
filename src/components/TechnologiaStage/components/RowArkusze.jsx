@@ -72,6 +72,7 @@ export default function RowArkusze  ({ row,i })  {
 
 <td className={style.input3}>  </td>
 {/* <td className={style.lega_fragment_text}> fragment</td> */}
+  <NrLegiFragment row={lf}/>
   <TypFragment row={lf}/>
   <NakladFragment row={lf}/>
   
@@ -340,7 +341,7 @@ export default function RowArkusze  ({ row,i })  {
         newLegiFragmenty2.map((frag, i) => {
           if (frag.element_id == row.element_id  && frag.delete != true) {
             k++;
-            return { ...frag, indeks: k, update: true };
+            return { ...frag,nr_legi:k, indeks: k, update: true };
           } else {
             return frag;
           }
@@ -776,6 +777,16 @@ export default function RowArkusze  ({ row,i })  {
         className={style.input_legi}
         disabled
           value={"lega"}
+        ></input>
+    );
+  }
+  function NrLegiFragment ({row,i}) {
+    return (
+
+        <input
+        className={style.input__nr_legi_fragment}
+        disabled
+          value={row.nr_legi}
         ></input>
     );
   }

@@ -174,6 +174,14 @@ const LegaFragmentRow = ({ row, i }) => {
             })
             .sort((a, b) => a.indeks - b.indeks)
 
+            .map((frag, i) => {
+              if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
+                // k++;
+                return { ...frag,nr_legi:i, update: true };
+              } else  return frag;
+              
+            })
+
           );
           
       
@@ -221,7 +229,7 @@ const LegaFragmentRow = ({ row, i }) => {
     onDragOver={handleDragOver}
         onDrop={() => handleDrop(row.id,row.oprawa_id,row.indeks)}
     >
-      <td>{row.typ==2 ? row.indeks:"-"}</td>
+      <FRAGMENT_NR_LEGI row={row}/>
       <td style={{ width: "180px" }}>
         {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa } {" "}
         { row.element_id}
@@ -232,11 +240,15 @@ const LegaFragmentRow = ({ row, i }) => {
       <td style={{ width: "200px" }}> </td>
       <td style={{ width: "90px" }}> {row.wersja}</td>
       <td style={{ width: "90px" }}> {row.rodzaj_legi}</td>
-      {/* <td>idx {row.indeks}</td> */}
+      <td>idx {row.indeks}</td>
       <td></td>
     </tr>
   );
 };
+
+const FRAGMENT_NR_LEGI = ({row}) =>{
+  return <td>{row.typ==2 ? row.nr_legi:"-"}</td>
+}
 
 const MenuBtn = ({ row, showMenu, setShowMenu }) => {
   return (

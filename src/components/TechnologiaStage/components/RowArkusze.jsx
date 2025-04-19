@@ -237,19 +237,14 @@ export default function RowArkusze  ({ row,i })  {
 
     const handleRemoveArkusz = () => {
 
-      let newArkusze = [...arkusze]
+
       let newLegi = [...legi]
       let newLegiFragmenty = [...legiFragmenty]
 
-      console.log("arkusz id "+row.id )
       if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
 
-        console.log("row indeks "+row.indeks)
-
-        // let newArkusze = arkusze.slice();
-        let newArkusze = [...arkusze];
-
-       let newArkusze2 =  newArkusze.map((t, a) => {
+      let newArkusze = [...arkusze];
+      let newArkusze2 =  newArkusze.map((t, a) => {
           if (t.id == row.id) {
             return {
               ...t,
@@ -261,7 +256,6 @@ export default function RowArkusze  ({ row,i })  {
         })
         
         newArkusze2.map((t, a) => {
-          // if (t.element_id== row.element_id  && t.indeks > row.indeks) {
             if ( t.indeks > row.indeks) {
             return {
               ...t,
@@ -273,7 +267,7 @@ export default function RowArkusze  ({ row,i })  {
         })
 
 
-        let m = 0;
+      let m = 0;
       setArkusze(
         newArkusze2.map((ark, i) => {
           if (ark.element_id == row.element_id && ark.delete != true) {
@@ -283,7 +277,6 @@ export default function RowArkusze  ({ row,i })  {
             return ark;
           }
         })
-
       );
 
 
@@ -386,7 +379,7 @@ export default function RowArkusze  ({ row,i })  {
     let m = 0;
     setArkusze(
       newArkusze.map((ark, i) => {
-        if (ark.element_id == row.element_id) {
+        if (ark.element_id == row.element_id && ark.delete != true) {
           m++;
           return { ...ark, nr_arkusza: m, update: true };
         } else {

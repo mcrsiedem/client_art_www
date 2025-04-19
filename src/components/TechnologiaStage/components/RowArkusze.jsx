@@ -243,72 +243,46 @@ export default function RowArkusze  ({ row,i })  {
 
       console.log("arkusz id "+row.id )
       if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
-        // setArkusze(arkusze.filter((x) => x.id !== row.id));
-        // setLegi(legi.filter((x) => x.arkusz_id !== row.id));
-        // setLegiFragmenty(legiFragmenty.filter((x) => x.arkusz_id !== row.id));
 
+        console.log("row indeks "+row.indeks)
 
-        // for( let ark of newArkusze){
+        // let newArkusze = arkusze.slice();
+        let newArkusze = [...arkusze];
 
-        //     if (ark.id === row.id)  {
-        //       ark ={ ...ark, delete: ark.delete =true } 
-
-        //     }
-        //     if (ark.indeks > row.indeks) {
-        //       ark = { ...ark, indeks: ark.indeks-- }
-        //     }
-               
-
-        //     for( let lega of newLegi.filter(x=>x.arkusz_id ==row.id)){
-        //       if (lega.arkusz_id == ark.id)  lega = {...lega,delete: lega.delete= true}
-
-
-        //         for(let frag of newLegiFragmenty){
-
-        //           if(frag.lega_id == lega.id){
-        //             frag = {...frag,delete: frag.delete= true}
-
-        //           }
-
-
-
-        //     }}
-
-
-
-        // }
-
-        // setArkusze(newArkusze)
-        // setLegi(newLegi)
-        // setLegiFragmenty(newLegiFragmenty)
-        let m = 0;
-      setArkusze((prev) =>
-        prev.map((t, a) => {
+       let newArkusze2 =  newArkusze.map((t, a) => {
           if (t.id == row.id) {
             return {
               ...t,
               delete: true,
             };
+          }else {
+            return t;
           }
-          if (t.indeks > row.indeks) {
+        })
+        
+        newArkusze2.map((t, a) => {
+          // if (t.element_id== row.element_id  && t.indeks > row.indeks) {
+            if ( t.indeks > row.indeks) {
             return {
               ...t,
               indeks: t.indeks--,
             };
-          } 
-
-          if(t.element_id == row.element_id && t.delete != true){
-            m++;
-             return {...t, nr_arkusza: m, update: true}
-           }
-          //  else {return t } 
-
-
-           return t 
+          }else {
+            return t;
+          }
         })
 
 
-
+        let m = 0;
+      setArkusze(
+        newArkusze2.map((ark, i) => {
+          if (ark.element_id == row.element_id && ark.delete != true) {
+            m++;
+            return { ...ark, nr_arkusza: m, update: true };
+          } else {
+            return ark;
+          }
+        })
 
       );
 

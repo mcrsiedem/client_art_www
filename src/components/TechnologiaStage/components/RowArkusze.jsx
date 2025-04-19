@@ -236,11 +236,7 @@ export default function RowArkusze  ({ row,i })  {
 
 
     const handleRemoveArkusz = () => {
-
-
-      let newLegi = [...legi]
-      let newLegiFragmenty = [...legiFragmenty]
-
+     
       if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
 
       let newArkusze = [...arkusze];
@@ -278,52 +274,94 @@ export default function RowArkusze  ({ row,i })  {
           }
         })
       );
+//----------------
+      let newLegi = [...legi]
 
-
-      setLegi((prev) =>
-        prev.map((t, a) => {
-          if (t.arkusz_id == row.id) {
-            return {
-              ...t,
-              delete: true,
-            };
-          }
-          
-          if (t.id > row.arkusz_id) {
-            return {
-              ...t,
-              indeks: t.indeks--,
-            };
-          } 
-
-          
+      let n = 0;
+      
+    let newLegi2 =  newLegi.map((t, a) => {
+        if (t.arkusz_id == row.id) {
+          return {
+            ...t,
+            delete: true,
+          };
+        }else {
           return t;
         }
-      
-      )
+      }
+    
+    )
 
-        
-      );
+    newLegi2.map((t, a) => {
+      if ( t.indeks > row.indeks) {
+      return {
+        ...t,
+        indeks: t.indeks--,
+      };
+    }else {
+      return t;
+    }
+  })
 
-      
-      setLegiFragmenty((prev) =>
-        prev.map((t, a) => {
-          for(let lega of legi.filter(x=>x.arkusz_id == row.id)){
-
-       if (t.lega_id == lega.id) {
-            return {
-              ...t,
-              delete: true,
-            }
-          }else {
-            return t;
+      setLegi(
+        newLegi2.map((lega, i) => {
+          if (lega.element_id == row.element_id && lega.delete != true) {
+            n++;
+            return { ...lega, nr_legi: n, update: true };
+          } else {
+            return lega;
           }
-          }
-
-   
-
         })
       );
+
+
+//----------
+
+    let newLegiFragmenty = [...legiFragmenty]
+
+    // for(let lega of legi.filter(x=>x.arkusz_id == row.id)){}
+
+    let newLegiFragmenty2 =  newLegiFragmenty.map((t, a) => {
+        for(let lega of legi.filter(x=>x.arkusz_id == row.id)){
+
+     if (t.lega_id == lega.id) {
+          return {
+            ...t,
+            delete: true,
+          }
+        }
+        }
+        return t;
+
+      })
+
+      let k = 0;
+      setLegiFragmenty(
+        newLegiFragmenty2.map((frag, i) => {
+          if (frag.element_id == row.element_id  && frag.delete != true) {
+            k++;
+            return { ...frag, indeks: k, update: true };
+          } else {
+            return frag;
+          }
+        })
+      );
+      
+      // setLegiFragmenty((prev) =>
+      //   prev.map((t, a) => {
+      //     for(let lega of legi.filter(x=>x.arkusz_id == row.id)){
+
+      //  if (t.lega_id == lega.id) {
+      //       return {
+      //         ...t,
+      //         delete: true,
+      //       }
+      //     }
+      //     }
+      //     return t;
+
+      //   })
+      // );
 
 
 

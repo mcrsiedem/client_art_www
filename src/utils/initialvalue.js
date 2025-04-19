@@ -1,31 +1,7 @@
-import { today } from "actions/today";
-import { todayPlusDni } from "actions/todayPlusDni";
-import DecodeToken from "pages/Login/DecodeToken";
 
 const reg_txt = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
 const reg_int = /^[0-9]+$/;
 const reg_cena = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
-
-// const _opiekun2 = [
-//   {
-//     id: 1,
-//     imie: "Maciej",
-//     nazwisko: "Romiszewski",
-//     login: "Maciek",
-//     haslo: "mcr",
-//     dostep: "7",
-//   },
-//   {
-//     id: 2,
-//     imie: "Piotr",
-//     nazwisko: "Hołowicz",
-//     login: "Piotr",
-//     haslo: "p",
-//     dostep: "7",
-//   },
-// ];initialKlient
-
 
 
 
@@ -529,7 +505,7 @@ const _typ_elementu = [
     id: 2,
     nazwa: "Środek",
   },
-  ,
+  
   {
     id: 3,
     nazwa: "Wklejka",

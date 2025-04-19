@@ -16,6 +16,7 @@ import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { TechnologyContext } from "context/TechnologyContext";
 import IntroligatorniaTable from "./IntroligatorniaTable";
+import { useIntroligatornia } from "hooks/useIntroligatornia";
 
 export default function IntroligatorniaTech({
   handleChangeCardProdukty,
@@ -26,7 +27,7 @@ export default function IntroligatorniaTech({
   const [oprawa_row, setOprawa_row] = useState();
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
-
+  const [rozdzielOprawe] = useIntroligatornia()
   function handleDrop(id) {
     // sprawdza czy upuszczamy właściwy obiekt
     if (sessionStorage.getItem("typ_drag") == "fragment") {
@@ -52,8 +53,9 @@ export default function IntroligatorniaTech({
 <div className={style.introligatornia}>
   
               <div className={style.introligatornia_menu_button}> 
-              <p style={{color:"gray" , fontSize:"1.5rem"}}>Introligatornia</p>
-                
+              <p onClick={()=>{
+              rozdzielOprawe()
+              }} style={{color:"gray" , fontSize:"1.5rem"}}>Introligatornia</p>
               </div>
              
             <IntroligatorniaTable/>

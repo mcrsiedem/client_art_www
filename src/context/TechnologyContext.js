@@ -9,7 +9,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 export const TechnologyContext = createContext();
 export const TechnologyContextProvider = ({children})=>{
-     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
+    const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
     const [technology, setTechnology] = useState(null); //lista technologii 
     const [showTechnologyStage, setShowTechnologyStage] = useState(false);
 

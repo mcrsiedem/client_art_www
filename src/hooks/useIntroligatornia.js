@@ -17,10 +17,10 @@ export function useIntroligatornia() {
 
     let newFragmentyLeg = [];
 
-    for (let fragmentTech of fragmentyTech) {
-      
 
-      for (let legaFregment of legiFragmenty) {
+    for (let legaFregment of legiFragmenty) {
+
+      for (let fragmentTech of fragmentyTech.filter(x=>x.element_id == legaFregment.element_id)) {
         newFragmentyLeg.push({
           ...legaFregment,
           oprawa_id: fragmentTech.oprawa_id,
@@ -28,8 +28,8 @@ export function useIntroligatornia() {
         });
       }
 
-
     }
+
 
     setLegiFragmenty(newFragmentyLeg);
   };

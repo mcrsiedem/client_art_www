@@ -13,9 +13,9 @@ export function useIntroligatornia() {
   const fragmentyTech = techContext.fragmentyTech;
   const legiFragmenty = techContext.legiFragmenty;
   const setLegiFragmenty = techContext.setLegiFragmenty;
+  const oprawaTech = techContext.oprawaTech;
 
   const rozdzielOprawe = () => {
-
     let newFragmentyLeg = [];
     for (let legaFregment of legiFragmenty) {
 
@@ -30,10 +30,49 @@ export function useIntroligatornia() {
         });
       }
     }
-
-
     setLegiFragmenty(newFragmentyLeg);
   };
 
-  return [rozdzielOprawe];
+  const ponumerujFregmentyLeg2 = () => {
+    let newFragmentyLeg = [];
+
+    for (let oprawa of oprawaTech) {
+
+   let nr= 0;
+   
+      for (let fragmentTech of legiFragmenty.filter(x=>x.oprawa_id == oprawa.id)) {
+     
+        newFragmentyLeg.push({
+          ...fragmentTech,
+          nr_legi: nr,
+          update: true
+        });
+        nr++;
+      }
+    }
+
+    // for (let fragmentTech of fragmentyTech.filter(x=>x.oprawa_id == 1)) {
+
+    //   let nr= 0;
+    //     newFragmentyLeg.push({
+    //       ...fragmentTech,
+    //       nr_legi: nr,
+    //       update: true
+    //     });
+    //     nr++;
+    //   }
+
+// console.log("ilosc fragmentow: "+ fragmentyTech.filter(x=>x.oprawa_id == 1).lenght)
+// console.log("ilosc fragmentow: ")
+
+
+
+    setLegiFragmenty(newFragmentyLeg);
+
+
+
+  }
+
+
+  return [rozdzielOprawe,ponumerujFregmentyLeg2];
 }

@@ -27,7 +27,8 @@ export default function IntroligatorniaTech({
   const [oprawa_row, setOprawa_row] = useState();
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
-  const [rozdzielOprawe] = useIntroligatornia()
+  // const [rozdzielOprawe] = useIntroligatornia()
+  const [rozdzielOprawe,ponumerujFregmentyLeg] = useIntroligatornia()
   function handleDrop(id) {
     // sprawdza czy upuszczamy właściwy obiekt
     if (sessionStorage.getItem("typ_drag") == "fragment") {
@@ -56,7 +57,7 @@ export default function IntroligatorniaTech({
               <p onClick={()=>{
               rozdzielOprawe()
               }} style={{color:"gray" , fontSize:"1.5rem"}}>Introligatornia</p>
-              <button className={style.introligatornia_header_btn}>Ponumeruj</button>
+              <button onClick={()=>{ponumerujFregmentyLeg()}} className={style.introligatornia_header_btn}>Ponumeruj</button>
               </div>
              
             <IntroligatorniaTable/>

@@ -244,6 +244,7 @@ let k= 0;
       <td style={{ width: "190px" }}> {row.wersja}</td>
       
       <td>idx {row.indeks}</td>
+      <td>oprawa_id {row.oprawa_id}</td>
       <td></td>
     </tr>
   );

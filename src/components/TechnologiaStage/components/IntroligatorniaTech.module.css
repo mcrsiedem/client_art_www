@@ -11,7 +11,22 @@
   height: calc(100% - 20px);
 }
 
-
+.introligatornia_menu_button{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap:20px
+}
+.introligatornia_header_btn{
+margin-top: 5px;
+width: 120px;
+background-color: transparent;
+border: 1px solid rgb(179, 179, 179);
+border-radius: 5px;
+}
+.introligatornia_header_btn:hover{
+  background-color: rgb(222, 222, 222);
+  }
 /* .header {
   display: flex;
   align-items: center;

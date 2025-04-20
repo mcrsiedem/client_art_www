@@ -56,6 +56,7 @@ export default function IntroligatorniaTech({
               <p onClick={()=>{
               rozdzielOprawe()
               }} style={{color:"gray" , fontSize:"1.5rem"}}>Introligatornia</p>
+              <button className={style.introligatornia_header_btn}>Ponumeruj</button>
               </div>
              
             <IntroligatorniaTable/>

@@ -80,6 +80,9 @@ export default function RowArkusze  ({ row,i })  {
   <td></td>
 
   <WersjaFragment row={lf}/>
+  <WersjaFragmentZaznacz row={lf}/>
+
+  
 </div>
 })}</>)}
 </> 
@@ -158,7 +161,7 @@ export default function RowArkusze  ({ row,i })  {
         className={style.input_legi}
         // disabled
         
-          defaultValue={row.wersja}
+          value={row.wersja}
           // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
@@ -170,6 +173,26 @@ export default function RowArkusze  ({ row,i })  {
               update: true
             }
             )}}
+          }
+        ></input>
+    );
+  }
+  function WersjaFragmentZaznacz ({row,i}) {
+    const techContext = useContext(TechnologyContext)
+    const handleUpdateLegiFragmentyTech = techContext.handleUpdateLegiFragmentyTech;
+    return (
+        <input
+        title={"Zaznacz i szukaj zołtego pola na dole"}
+        className={style.fragment_checkbox}
+        type="checkbox"
+          checked={row.select}
+          onChange={(e) =>
+            {
+                handleUpdateLegiFragmentyTech({
+              ...row,
+              select: e.target.checked
+            }
+            )}
           }
         ></input>
     );

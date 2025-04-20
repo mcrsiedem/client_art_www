@@ -151,7 +151,7 @@ const LegaFragmentRow = ({ row, i }) => {
       let id_drop_oprawa= oprawa_id;
       let indeks_drop_fragment= indeks2;
 
-
+let k= 0;
           setLegiFragmenty(
             legiFragmenty
 
@@ -173,14 +173,16 @@ const LegaFragmentRow = ({ row, i }) => {
               }else return t
             })
             .sort((a, b) => a.indeks - b.indeks)
+            // .sort((a, b) => a.oprawa_id - b.oprawa_id)
 
             .map((frag, i) => {
               if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
-                // k++;
-                return { ...frag,nr_legi:i, update: true };
+                k++;
+                return { ...frag,nr_legi:k, update: true };
               } else  return frag;
               
             })
+          
 
           );
           
@@ -230,16 +232,17 @@ const LegaFragmentRow = ({ row, i }) => {
         onDrop={() => handleDrop(row.id,row.oprawa_id,row.indeks)}
     >
       <FRAGMENT_NR_LEGI row={row}/>
-      <td style={{ width: "180px" }}>
+      <td style={row.select?{ width: "180px" , backgroundColor:"yellow", borderRadius:"10px",paddingTop:"5px"}:{ width: "180px",paddingTop:"5px" }}>
         {_typ_elementu.filter((x) => x.id == row.typ)[0]?.nazwa } {" "}
-    
+    {/* {row.id} */}
       </td>
 
 
       <td style={{ width: "90px" }}>{row.naklad}</td>
-      <td style={{ width: "200px" }}> </td>
-      <td style={{ width: "90px" }}> {row.wersja}</td>
+      {/* <td style={{ width: "200px" }}> </td> */}
       <td style={{ width: "90px" }}> {row.rodzaj_legi}</td>
+      <td style={{ width: "190px" }}> {row.wersja}</td>
+      
       <td>idx {row.indeks}</td>
       <td></td>
     </tr>

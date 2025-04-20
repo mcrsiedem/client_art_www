@@ -38,39 +38,21 @@ export function useIntroligatornia() {
 
     for (let oprawa of oprawaTech) {
 
-   let nr= 0;
+   let nr= 1;
    
       for (let fragmentTech of legiFragmenty.filter(x=>x.oprawa_id == oprawa.id)) {
-     
-        newFragmentyLeg.push({
+     if(fragmentTech.typ !=1){
+              newFragmentyLeg.push({
           ...fragmentTech,
           nr_legi: nr,
           update: true
         });
         nr++;
+     }else newFragmentyLeg.push({...fragmentTech,nr_legi:0})
+
       }
     }
-
-    // for (let fragmentTech of fragmentyTech.filter(x=>x.oprawa_id == 1)) {
-
-    //   let nr= 0;
-    //     newFragmentyLeg.push({
-    //       ...fragmentTech,
-    //       nr_legi: nr,
-    //       update: true
-    //     });
-    //     nr++;
-    //   }
-
-// console.log("ilosc fragmentow: "+ fragmentyTech.filter(x=>x.oprawa_id == 1).lenght)
-// console.log("ilosc fragmentow: ")
-
-
-
     setLegiFragmenty(newFragmentyLeg);
-
-
-
   }
 
 

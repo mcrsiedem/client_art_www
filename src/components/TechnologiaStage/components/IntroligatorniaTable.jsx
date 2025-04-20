@@ -185,40 +185,6 @@ let k= 0;
           
 
           );
-          
-      
-
-
-    //   if(indeks_drag_fragment >indeks_drop_fragment){
-    //     // z dołu do góry
-    //     setLegiFragmenty(
-    //       legiFragmenty
-
-    //       .map((t) => {
-    //         if (t.indeks > indeks_drag_fragment) {
-    //           return {...t, indeks: t.indeks -1}
-    //         }else return t
-    //       })
-
-    //       .map((t) => {
-    //         if (t.indeks >= indeks_drop_fragment) {
-    //           return {...t, indeks: t.indeks +1}
-    //         }else return t
-    //       })
-
-    //       .map((t) => {
-    //         if (t.id == id_drag_fragment) {
-    //           return {...t, indeks: indeks_drop_fragment}
-    //         }else return t
-    //       })
-    //       .sort((a, b) => a.indeks - b.indeks)
-
-    //     );
-
-    // }
-
-
-
     }
 
   }
@@ -243,8 +209,8 @@ let k= 0;
       <td style={{ width: "90px" }}> {row.rodzaj_legi}</td>
       <td style={{ width: "190px" }}> {row.wersja}</td>
       
-      <td>idx {row.indeks}</td>
-      <td>oprawa_id {row.oprawa_id}</td>
+      {/* <td>idx {row.indeks}</td> */}
+      {/* <td>oprawa_id {row.oprawa_id}</td> */}
       <td></td>
     </tr>
   );
@@ -262,9 +228,6 @@ const MenuBtn = ({ row, showMenu, setShowMenu }) => {
         src={iconSettings}
         onClick={() => {
           setShowMenu(!showMenu);
-          // dodaj_clikHandler();
-          // console.log("z contextu :"+ token.rowSelected)
-          //  sessionStorage.setItem("us",{id:1,imie:"Maciek"})
         }}
         alt="x"
       />

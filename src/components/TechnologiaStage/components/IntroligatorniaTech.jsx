@@ -55,8 +55,9 @@ export default function IntroligatorniaTech({
   
               <div className={style.introligatornia_menu_button}> 
               <p onClick={()=>{
-              rozdzielOprawe()
+              // rozdzielOprawe()
               }} style={{color:"gray" , fontSize:"1.5rem"}}>Introligatornia</p>
+              <button onClick={()=>{rozdzielOprawe()}} className={style.introligatornia_header_btn}>Rozdziel</button>
               <button onClick={()=>{ponumerujFregmentyLeg()}} className={style.introligatornia_header_btn}>Ponumeruj</button>
               </div>
              

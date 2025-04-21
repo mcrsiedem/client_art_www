@@ -6,7 +6,6 @@ import { useContext } from "react";
 // import { _papiery } from "../api";
 import { useState } from "react";
 import RowTechElement from "./RowTechElement";
-import RowFragment from "./RowFragment";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
 // import ElementTable from "./ElementTable";

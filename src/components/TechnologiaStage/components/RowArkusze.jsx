@@ -53,39 +53,55 @@ export default function RowArkusze  ({ row,i })  {
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id && x.delete != true).map( (l,i) => {
-        return  <>  <div draggable  onDragStart={()=>handleDragStart(l.id)}  className={style.row4} key={l.id}>
-           <NrLegi row={l} />
-        <TypLega row={l} />
-        <NakladLegi row={l} />
-        <td></td>
+        return (
+          <>
+            {" "}
+            <div
+              draggable
+              onDragStart={() => handleDragStart(l.id)}
+              className={style.row4}
+              key={l.id}
+            >
+              <NrLegi row={l} />
+              <TypLega row={l} />
+              <NakladLegi row={l} />
+              <td></td>
 
-        <RodzajLegi row={l} />
-        <td></td>
-        <td></td>
-        <UwagiLegi row={l} />
-      </div>
+              <RodzajLegi row={l} />
+              <td></td>
+              <td></td>
+              <UwagiLegi row={l} />
+            </div>
 
-
-{showLegi &&(<>     {legiFragmenty.filter(x=> x.lega_id == l.id).map( (lf,i) => {
-  return     <div draggable  onDragStart={()=>handleDragStartFragmnetLegi(lf.id)} className={style.row5} key={lf.id}>
-
-
-<td className={style.input3}>  </td>
-{/* <td className={style.lega_fragment_text}> fragment</td> */}
-  <NrLegiFragment row={lf}/>
-  <TypFragment row={lf}/>
-  <NakladFragment row={lf}/>
-  
-  <td></td>
-  <td></td>
-
-  <WersjaFragment row={lf}/>
-  <WersjaFragmentZaznacz row={lf}/>
-
-  
-</div>
-})}</>)}
-</> 
+            {showLegi && (
+              <>
+             
+                {legiFragmenty
+                  .filter((x) => x.lega_id == l.id)
+                  .map((lf, i) => {
+                    return (
+                      <div
+                        draggable
+                        onDragStart={() => handleDragStartFragmnetLegi(lf.id)}
+                        className={style.row5}
+                        key={lf.id}
+                      >
+                        <td className={style.input3}> </td>
+                        <NrLegiFragment row={lf} />
+                        <TypFragment row={lf} />
+                        <NakladFragment row={lf} />
+                        <td></td>
+                        <td></td>
+                        <WersjaFragment row={lf} />
+                        <WersjaFragmentZaznacz row={lf} />
+                      </div>
+                    );
+                  })}
+              </>
+            )}
+            
+          </>
+        ); 
       })
       }
       </>)}

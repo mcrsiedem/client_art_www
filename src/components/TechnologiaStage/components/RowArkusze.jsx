@@ -951,9 +951,7 @@ const nadkomplety = contextApp.nadkomplety;
     return (
         <input
         className={style.input_ark_typ}
-        // disabled
           defaultValue={row.naklad}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
@@ -978,7 +976,6 @@ const nadkomplety = contextApp.nadkomplety;
         <input
         className={style.input_ark_typ}
           value={row.nadkomplet}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_int.test(e.target.value)) {
@@ -999,13 +996,9 @@ const nadkomplety = contextApp.nadkomplety;
     const setLegiFragmenty = techContext.setLegiFragmenty;
     const legiFragmenty = techContext.legiFragmenty;
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
         <input
         className={style.input_legi}
-        // disabled
-        
           value={row.nr_legi}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
             {
@@ -1019,7 +1012,6 @@ const nadkomplety = contextApp.nadkomplety;
           
             setLegiFragmenty(
               legiFragmenty.map((t, a) => {
-              // console.log("oprawa id" +prev)
               if (t.lega_id == row.id) {
                 return {
                   ...t,
@@ -1042,13 +1034,9 @@ const nadkomplety = contextApp.nadkomplety;
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
         <input
         className={style.input_legi}
-        // disabled
-        
           defaultValue={row.naklad}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
             {
@@ -1068,13 +1056,9 @@ const nadkomplety = contextApp.nadkomplety;
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
         <input
         className={style.input_legi}
-        // disabled
-        
           defaultValue={row.rodzaj_legi}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
           onChange={(e) =>
 
             {
@@ -1115,16 +1099,10 @@ const nadkomplety = contextApp.nadkomplety;
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowArkusze = techContext.handleUpdateRowArkusze;
     return (
-        // <div  className={style.input_ark}> arkusz {i}</div>
-        
         <input
         className={style.input_ark_typ}
-        // disabled
-        
-          value={"indeks:  "+row.indeks}
-          // value={_typ_elementu.filter(x => x.id == row.typ_elementu)[0].nazwa }
+          value={row.uwagi}
           onChange={(e) =>
-
             {
               if (e.target.value === '' || reg_txt.test(e.target.value)) {
                 handleUpdateRowArkusze({

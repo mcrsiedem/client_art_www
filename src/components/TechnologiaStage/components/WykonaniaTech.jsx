@@ -74,10 +74,15 @@ const ProcesRow = ({ rowProces }) => {
     <>
       <div className={style.row1}>
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
+        <div className={style.procesy_container}>
         <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
+        <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+
+        </div>
+        
+
         <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
         <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
-        <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
         { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
 

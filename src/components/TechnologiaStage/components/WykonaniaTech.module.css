@@ -44,6 +44,12 @@ border-bottom: 1px solid rgb(182, 182, 182);
   font-size: 1.2rem;
 
 }
+
+.procesy_container{
+  padding-left: 20px;
+  display: flex;
+  gap:10px
+}
 .procesy_menu_button{
   display: flex;
  flex-direction: row;

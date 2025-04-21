@@ -17,6 +17,8 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
     <div  className={style.container}> 
       
       {/* <ID rowWykonanie={rowWykonanie}/> */}
+      <ArkuszWykonania rowWykonanie={rowWykonanie}/>
+      <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
        {/* grupa id: {rowWykonanie.grupa_id}  */}
       {/* <CzasWykoniania rowWykonanie={rowWykonanie}/> */}
@@ -129,6 +131,58 @@ const CzasWykoniania = ({ rowWykonanie }) => {
       disabled
         className={style.input}
         value={zamienNaGodziny(rowWykonanie.czas)}
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+const ArkuszWykonania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  const arkusze = techContext.arkusze
+  return (
+    <div className={style.col_dane_arkusz}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+        className={style.input}
+        value={"ark. "+arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].nr_arkusza + " - "+arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].rodzaj_arkusza+"ka"}
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+
+const NakladWykonanie = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  return (
+    <div className={style.col_dane_przeloty}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+        className={style.input}
+        value={rowWykonanie.naklad}
         onChange={(e) => {
 
 

@@ -216,9 +216,76 @@ let k= 0;
   );
 };
 
-const FRAGMENT_NR_LEGI = ({row}) =>{
+const FRAGMENT_NR_LEGI2 = ({row}) =>{
   return <td>{row.typ==2 ? row.nr_legi:"-"}</td>
 }
+
+function FRAGMENT_NR_LEGI ({row,i}) {
+  const techContext = useContext(TechnologyContext)
+  const handleUpdateLegiFragmentyTech = techContext.handleUpdateLegiFragmentyTech;
+  // return (
+  //   <td>
+  //     <input
+  //     className={style.input_nr_legi}
+  //       value={row.nr_legi}
+  //       onChange={(e) =>
+  //         {
+  //           if (e.target.value === '' || reg_txt.test(e.target.value)) {
+  //             handleUpdateLegiFragmentyTech({
+  //           ...row,
+  //           nr_legi: e.target.value,
+  //           update: true
+  //         }
+  //         )}}
+  //       }
+  //     ></input></td>
+  // );
+  if(row.typ !=1) {
+  return (
+    <td>
+      <input
+      className={style.input_nr_legi}
+        value={row.nr_legi}
+        onChange={(e) =>
+          {
+            if (e.target.value === '' || reg_txt.test(e.target.value)) {
+              handleUpdateLegiFragmentyTech({
+            ...row,
+            nr_legi: e.target.value,
+            update: true
+          }
+          )}}
+        }
+      ></input></td>
+  );
+  }else {
+    return (
+    <td>
+    <input
+    className={style.input_nr_legi}
+      // value={row.nr_legi}
+      onChange={(e) =>
+        {
+          if (e.target.value === '' || reg_txt.test(e.target.value)) {
+            handleUpdateLegiFragmentyTech({
+          ...row,
+          nr_legi: e.target.value,
+          update: true
+        }
+        )}}
+      }
+    ></input></td>)
+  }
+
+}
+
+
+
+
+
+
+
+
 
 const MenuBtn = ({ row, showMenu, setShowMenu }) => {
   return (

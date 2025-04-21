@@ -106,3 +106,9 @@ border-bottom-right-radius: 10px;
   }
   
     
+
+  .input_nr_legi{
+    width: 20px;
+    background-color: transparent;
+    border: none;
+  }

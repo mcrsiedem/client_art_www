@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import iconSettings from "assets/settings.svg";
-import style from "./WykonaniaTech.module.css";
+import style from "./GrupaRow.module.css";
 import icon from "assets/copy.svg";
 import iconDelete from "assets/trash2.svg";
 
 
 import iconTrash from "assets/trash2.svg"
 import logoExpand from "assets/expand.svg";
-// import Logo_ustawienia2 from "assets/refresh.png";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { reg_int } from "utils/initialvalue";
@@ -26,65 +25,7 @@ import { updateSkasujGrupe } from "actions/updateSkasujGrupe";
 
 
 
-export default function WykonaniaTech() {
-  return (
-    <div className={style.container}>
-       <div className={style.header_procesy}>
-      <p></p>
-        <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey" , fontSize:"1.5rem"}}>Procesy</p>
-      </div>
-      <WykonaniaTechTable />
-    </div>
-  );
-}
-const WykonaniaTechTable = () => {
-  const techContext = useContext(TechnologyContext);
-  const procesyElementowTech = techContext.procesyElementowTech;
-
-  return (
-  <div className={style.container}>
-    
-      {procesyElementowTech.map((rowProces) => (
-        <ProcesRow rowProces={rowProces} />
-      ))}
-
-  </div>
-  )
-}
-
-const ProcesRow = ({ rowProces }) => {
-  const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const legi = techContext.legi;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const elementyTech = techContext.elementyTech;
-  const appcontext = useContext(AppContext);
-
-  const [show, setShow] = useState(true);
-  return (
-    <>
-      <div className={style.row1}>
-        <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
-        <div className={style.procesy_container}>
-        <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
-        <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
-        </div>
-        <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
-        <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
-        {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
-        { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
-      </div>
-      {show &&
-          <GrupaRow rowProces={rowProces} />}
-          <hr></hr>
-    </>
-  );
-};
-
-
-const GrupaRow = ({ rowProces }) => {
+export default  GrupaRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
   const setGrupaWykonan = techContext.setGrupaWykonan;

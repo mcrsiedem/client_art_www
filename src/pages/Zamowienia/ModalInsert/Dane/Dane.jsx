@@ -495,35 +495,6 @@ const selectColor = (stan) =>{
 
           }
 
-
-        
-
-
-            // if(event.target.value == 2 && daneZamowienia.stan == 3){
-            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
-            //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 1, update: true});
-            //           add(                    {
-            //             kategoria: "Stan zamówienia",
-            //             event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-            //             zamowienie_id: daneZamowienia.id
-            //         }
-            //         );
-            //   }
-            // }
-
-            // if(event.target.value == 3){
-            //   if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1){
-            //   setDaneZamowienia({...daneZamowienia, stan: event.target.value,status: 2, update: true});
-            //           add(                    {
-            //             kategoria: "Stan zamówienia",
-            //             event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-            //             zamowienie_id: daneZamowienia.id
-            //         }
-            //         );
-            //   }
-            // }
-
-
         }}
       >
         {_stan_dokumentu.map((option) => (

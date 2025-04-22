@@ -8,6 +8,20 @@
   /* padding-bottom: 20px; */
 }
 
+
+.col_dane_arkusz {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+}
+.col_dane_rodzaj_arkusza {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+}
+
 .select,
 .input {
   background-color: var(--art-input2);
@@ -42,12 +56,5 @@ text-align: center;
   display: flex;
   flex-direction: column;
   width: 100px;
-  
-}
-.col_dane_arkusz {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
   
 }

@@ -12,6 +12,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
     <div  className={style.container}> 
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
+      <RodzajArkuszaWykonania rowWykonanie={rowWykonanie}/>
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
@@ -143,7 +144,32 @@ const ArkuszWykonania = ({ rowWykonanie }) => {
       <input
       disabled
         className={style.input}
-        value={"ark. "+arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].nr_arkusza + " - "+arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].rodzaj_arkusza+"ka"}
+        value={"ark. "+arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].nr_arkusza }
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              czas: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+const RodzajArkuszaWykonania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  const arkusze = techContext.arkusze
+  return (
+    <div className={style.col_dane_rodzaj_arkusza}>
+      
+      <input
+      disabled
+        className={style.input}
+        value={arkusze.filter(x=>x.id == rowWykonanie.arkusz_id)[0].rodzaj_arkusza+"ka"}
         onChange={(e) => {
 
 

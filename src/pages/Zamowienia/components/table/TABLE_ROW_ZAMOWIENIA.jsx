@@ -219,21 +219,19 @@ const UwagiTableZamowienia = ({ row }) => {
 const StatusZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
-  // return(  <td>{row.stan}</td>
-  // return(  <td style={row.stan==2?{backgroundColor:"rgb(246, 212, 45)", paddingRight:"10px"}:{backgroundColor:""}}>{_status_dokumentu.filter(s=>s.id == row.status).map(x=> ( x.nazwa))}</td>
+  const selectColor = (status) =>{
+    if (status==1) return style.td_status
+    if (status==2) return style.td_status
+    if (status==3) return style.td_status_red
+    if (status==4) return style.td_status_red
+    if (status==5) return style.td_status
+    if (status==6) return style.td_status_red
+    if (status==7) return style.td_status_red
+     return style.td_status
+  }
   return (
     <td
-      style={
-        row.status > 2  && row.status != 5
-          ? {
-              backgroundColor: "rgb(246, 85, 45)",
-              paddingRight: "10px",
-              width: "fitContent",
-              // fontWeight:"bold",
-              // color:"rgb(121, 32, 10)"
-            }
-          : { backgroundColor: "" }
-      }
+      className={selectColor(row.status) }
     >
       {_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}
     </td>
@@ -243,8 +241,18 @@ const StatusZamowieniaTable = ({ row }) => {
 const StanZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
+  const selectColor = (stan) =>{
+    if (stan==1) return style.td_stan_blue
+    if (stan==2) return style.td_stan_yellow
+    if (stan==3) return style.td_stan
+     return style.td_stan
+  }
+
   return (
-    <td  className={row.stan == 2 ? style.td_stan_yellow :style.td_stan}>
+    <td
+    className={selectColor(row.stan) }
+      // className={row.stan == 2 ? style.td_stan_yellow :style.td_stan}
+      >
     <input
       title={row.klient}
       className={style.inputStan}

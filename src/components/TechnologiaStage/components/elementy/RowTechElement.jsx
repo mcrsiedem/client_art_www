@@ -12,7 +12,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import RowArkusze from "../RowArkusze";
+import RowArkusze from "./RowArkusze";
 import MenuElementyTech from "./ElementyTechMenu";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { getNameOfPapier } from "actions/getNameOfPapier";

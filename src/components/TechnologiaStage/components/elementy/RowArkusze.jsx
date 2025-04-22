@@ -360,9 +360,6 @@ export default function RowArkusze  ({ row,i })  {
 //----------
 
     let newLegiFragmenty = [...legiFragmenty]
-
-    // for(let lega of legi.filter(x=>x.arkusz_id == row.id)){}
-
     let newLegiFragmenty2 =  newLegiFragmenty.map((t, a) => {
         for(let lega of legi.filter(x=>x.arkusz_id == row.id)){
 
@@ -389,33 +386,7 @@ export default function RowArkusze  ({ row,i })  {
         })
       );
       
-      // setLegiFragmenty((prev) =>
-      //   prev.map((t, a) => {
-      //     for(let lega of legi.filter(x=>x.arkusz_id == row.id)){
-
-      //  if (t.lega_id == lega.id) {
-      //       return {
-      //         ...t,
-      //         delete: true,
-      //       }
-      //     }
-      //     }
-      //     return t;
-
-      //   })
-      // );
-
-
-
-
       }
-    
-
-
-
-
-
-
     };
 
     return (

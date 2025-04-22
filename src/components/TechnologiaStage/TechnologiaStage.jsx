@@ -4,11 +4,11 @@ import { TechnologyContext } from "context/TechnologyContext";
 import style from "./TechnologieStage.module.css";
 import HeaderTech from "components/TechnologiaStage/components/header/HeaderTech";
 import DaneTech from "./components/dane/DaneTech";
-import ProduktyTech from "./components/ProduktyTech";
+import ProduktyTech from "./components/produkty/ProduktyTech";
 import ElementyTech from "./components/elementy/ElementyTech";
 
-import WykonaniaTech from "./components/WykonaniaTech";
-import WykonaniaTechStage from "./components/WykonaniaTechStage";
+import WykonaniaTech from "./components/wykonania/WykonaniaTech";
+import WykonaniaTechStage from "./components/wykonania/WykonaniaTechStage";
 
 import ProcesElementTech from "./components/elementy/ElementTechProces";
 import PaperStage from "components/PaperStage/PaperStage";

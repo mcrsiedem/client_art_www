@@ -1,35 +1,24 @@
-
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-
 import style from "./RowWykonanie.module.css";
 import { reg_int } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { updateWykonania } from "actions/updateWykonania";
 
 export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
-
-
   return(<div
     draggable
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
     <div  className={style.container}> 
-      
-      {/* <ID rowWykonanie={rowWykonanie}/> */}
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
-       {/* grupa id: {rowWykonanie.grupa_id}  */}
-      {/* <CzasWykoniania rowWykonanie={rowWykonanie}/> */}
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
-      
       <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
-    
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
-
     </div>
   </div>)
   
@@ -82,8 +71,6 @@ function StanWykonania({ rowWykonanie }) {
     </div>
   );
 }
-
-
 
 function StatusWykonania({ rowWykonanie }) {
   const techContext = useContext(TechnologyContext);
@@ -276,28 +263,3 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
   );
 };
 
-const ID = ({ rowWykonanie }) => {
-  const techContext = useContext(TechnologyContext);
-  const updateWykonanie = techContext.updateWykonanie
-  return (
-    <div className={style.col_dane}>
-      
-      {/* <label className={style.label}>  {rowWykonanie.nazwa} </label> */}
-      <input
-      disabled
-        className={style.input}
-        value={rowWykonanie.global_id}
-        onChange={(e) => {
-
-
-          if (e.target.value == "" || reg_int.test(e.target.value)) {
-            updateWykonanie({
-              ...rowWykonanie,
-              czas: e.target.value,
-            });
-          }
-        }}
-      ></input>
-    </div>
-  );
-};

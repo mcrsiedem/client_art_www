@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import iconSettings from "assets/settings.svg";
-import style from "./GrupaRow.module.css";
+import style from "./GRUPA_WYKONAN.module.css";
 import icon from "assets/copy.svg";
 import iconDelete from "assets/trash2.svg";
 
@@ -25,7 +25,7 @@ import { updateSkasujGrupe } from "actions/updateSkasujGrupe";
 
 
 
-export default  GrupaRow = ({ rowProces }) => {
+export default  function GRUPA_WYKONAN ({ rowProces }) {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
   const setGrupaWykonan = techContext.setGrupaWykonan;

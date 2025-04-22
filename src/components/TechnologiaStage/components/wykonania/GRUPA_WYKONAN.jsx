@@ -294,7 +294,6 @@ function Stangrupy({ rowGrupa }) {
   );
 }
 
-
 const CzasGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan

@@ -96,7 +96,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <EtapZamowieniaTable row={row} />
         <OpiekunZamowieniaTable row={row} />
         <SelectBox row={row} />
-        <IconLockTable row={row} />
+        {/* <IconLockTable row={row} /> */}
       </tr>
 
       {showKartaTechnologiczna && (
@@ -347,7 +347,21 @@ function ShowTechnmologiaBtn({
   const techContext = useContext(TechnologyContext);
 
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  if (row.open_stan==1 ) {
+    return (
+      <td className={style.td_karta}>
+        <div>
+         <img
+            className={style.iconSettings}
+            src={iconLockRed}
+            alt="Procesy"
+          />
+         
+        </div>
+      </td>
+    );
 
+  }
 
   if (row.technologia_id == null ) {
     return (

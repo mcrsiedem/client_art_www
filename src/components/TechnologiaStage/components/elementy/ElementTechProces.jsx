@@ -11,15 +11,18 @@ import { reg_int } from "utils/initialvalue";
 import { addNewProcessTech } from "actions/addNewProcessTech";
 import { getNameOfProces } from "actions/getNameOfProces";
 export default function ProcesElementTech() {
+  const techContext = useContext(TechnologyContext);
 
-
-  return (
+if( techContext.showElementyTechProcesyInsert){
+    return (
    <Window>
       <Header />
       <Table />
       <Footer />
    </Window>
   );
+}
+
 }
 
 

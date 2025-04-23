@@ -81,14 +81,15 @@ padding-left: 10px;
 
 
 .btn_nadajNr {
-  background: rgb(246, 212, 45);
+  /* background: rgb(125, 248, 114); */
+  background-image: linear-gradient(rgb(95, 186, 21,0.3) 0%, rgb(110, 209, 29,0.3) 50%, rgb(95, 186, 21,0.3) 100%);
 
   /* background-image: linear-gradient(rgba(241, 216, 48, 0.4) 0%, rgba(222, 195, 17, 0.4) 50%, rgb(241, 216, 48,0.4) 100%); */
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;
-  padding-left: 0px;
-  font-size: 0.8rem;
+  padding: 2px;
+  font-size: 0.7rem;
   outline: 1px solid rgb(185, 185, 185);
 }
 

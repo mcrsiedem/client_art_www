@@ -628,7 +628,7 @@ function NR_ZAMOWIENIA( ){
       );
 
       }}>
-        utwórz numer
+        dodaj nr
       </button>
     </div>
   );

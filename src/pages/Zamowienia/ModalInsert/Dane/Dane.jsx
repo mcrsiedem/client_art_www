@@ -30,15 +30,19 @@ export default function Dane({
         <Row style={style.row1}>
             <Firma />
             <Klient  showAddClientStage={showAddClientStage} />
+            <NR_ZAMOWIENIA_KLIENTA />
             <DataPrzyjecia />
             <DataMeterialow />
             <DataSpedycji />
         </Row>
 
         <Row style={style.row2}>
+            <NR_ZAMOWIENIA_stary /> 
             <NR_ZAMOWIENIA /> 
             <Rok />
             <Tytul />
+            <KODA_PRACY />
+            <ISBN />
             <Cena />
             <Waluta />
             <Vat />
@@ -601,6 +605,8 @@ function NR_ZAMOWIENIA( ){
     );
   }
 
+  
+
   if(daneZamowienia.stan==2 && daneZamowienia.etap==2 && DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1){
  return(
       <div className={style.col}>
@@ -657,7 +663,108 @@ function NR_ZAMOWIENIA( ){
     );
 
 }
+//--
+function NR_ZAMOWIENIA_stary( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 
+    return (
+      <div className={style.col}>
+        <label className={style.label}> Stary nr </label>
+        <input
+          className={style.input}
+          type="text"
+          title="Stary nr zamówienia"
+          value={daneZamowienia.nr_stary}
+          onChange={(event) => {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+            if ( event.target.value === '' || re.test(event.target.value)) {
+              setDaneZamowienia({...daneZamowienia, nr_stary: event.target.value,update: true});
+         }
+          }}
+        ></input>
+      </div>
+    );
+  
+}
+//---
+function KODA_PRACY( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+    return (
+      <div className={style.col}>
+        <label className={style.label}> Kod pracy</label>
+        <input
+          className={style.input}
+          type="text"
+          title="Kod pracy"
+          value={daneZamowienia.kod_pracy}
+          onChange={(event) => {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+            if ( event.target.value === '' || re.test(event.target.value)) {
+              setDaneZamowienia({...daneZamowienia, kod_pracy: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+         }
+          }}
+        ></input>
+      </div>
+    );
+  
+}
+//---
+function NR_ZAMOWIENIA_KLIENTA( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+    return (
+      <div className={style.col}>
+        <label className={style.label}> Nr zamówienia klienta</label>
+        <input
+          className={style.input}
+          type="text"
+          title="Numer zamówienia klienta"
+          value={daneZamowienia.nr_zamowienia_klienta}
+          onChange={(event) => {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+            if ( event.target.value === '' || re.test(event.target.value)) {
+              setDaneZamowienia({...daneZamowienia, nr_zamowienia_klienta: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+         }
+          }}
+        ></input>
+      </div>
+    );
+  
+}
+//---
+
+function ISBN( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+    return (
+      <div className={style.col}>
+        <label className={style.label}> ISBN</label>
+        <input
+          className={style.input}
+          type="text"
+          title="ISBN"
+          value={daneZamowienia.isbn}
+          onChange={(event) => {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+            if ( event.target.value === '' || re.test(event.target.value)) {
+              setDaneZamowienia({...daneZamowienia, isbn: event.target.value,status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+         }
+          }}
+        ></input>
+      </div>
+    );
+  
+}
+//---
 
 
 function Cena( ){

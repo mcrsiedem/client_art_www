@@ -13,7 +13,7 @@ width: 100vw;
 
 .row1 {
   display: grid;
-  grid-template-columns: 230px 1fr 245px  110px 110px 110px;
+  grid-template-columns: 230px 1fr 160px  110px 110px 110px;
   gap: 10px;
 
 }

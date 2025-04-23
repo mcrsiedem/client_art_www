@@ -101,7 +101,12 @@ const saveDane = ({daneZamowienia}) =>{
       uwagi: daneZamowienia.uwagi,
       przedplata: daneZamowienia.przedplata,
       termin_platnosci: daneZamowienia.termin_platnosci,
-      fsc: daneZamowienia.fsc
+      fsc: daneZamowienia.fsc,
+      nr_stary: daneZamowienia.nr_stary,
+      kod_pracy: daneZamowienia.kod_pracy,
+      nr_zamowienia_klienta: daneZamowienia.nr_zamowienia_klienta,
+      isbn: daneZamowienia.isbn,
+
 
 
     }])

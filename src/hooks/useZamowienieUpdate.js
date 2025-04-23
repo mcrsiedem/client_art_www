@@ -91,7 +91,11 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
       przedplata: daneZamowienia.przedplata,
       termin_platnosci: daneZamowienia.termin_platnosci,
       fsc: daneZamowienia.fsc,
-      update: daneZamowienia.update
+      update: daneZamowienia.update,
+      nr_stary: daneZamowienia.nr_stary,
+      kod_pracy: daneZamowienia.kod_pracy,
+      nr_zamowienia_klienta: daneZamowienia.nr_zamowienia_klienta,
+      isbn: daneZamowienia.isbn,
 
 
 

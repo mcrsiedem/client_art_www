@@ -45,7 +45,11 @@ const initialDane = {
   przedplata: "",
   fsc: 2,
   zgoda_na_zapis: false,
-  update: false
+  update: false,
+  nr_stary:"",
+  kod_pracy:"",
+  nr_zamowienia_klienta:"",
+  isbn:""
 
 };
 const initialProdukty = [

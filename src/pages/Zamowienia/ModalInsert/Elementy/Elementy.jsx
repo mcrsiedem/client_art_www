@@ -50,7 +50,7 @@ function ElementyTable({
   return (
     <div className={style.main_elementy}>
           {elementy
-            .sort((a, b) => a.typ - b.typ)
+            .sort((a, b) => b.typ - a.typ)
             .filter((x) => x.delete != true)
             .map((row, i) => {
               return (

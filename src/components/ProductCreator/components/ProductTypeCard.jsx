@@ -21,7 +21,7 @@ export default function CardProductType({ typ, show, setShow }) {
           // src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
           src={iconBook2}
         />
-        <div className={style.title}>Gazeta</div>
+        <div className={style.title}>Broszura</div>
       </div>
     );
   }

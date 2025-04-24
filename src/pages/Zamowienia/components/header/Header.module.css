@@ -70,12 +70,47 @@
     box-shadow: none;
     border: 1px solid rgb(88, 88, 88);
     color: rgb(167, 167, 167);
-   
     padding-left: 10px;
     border-radius: 5px;
     margin-right: 10px;
     height: 27px;
 }
+
+.szukajInputSort{
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    width: 200px;
+    
+}
+.szukajInputSort:focus{
+    outline: none;
+}
+.szukajInputSortBlue{
+    background: rgb(0, 157, 255);
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    border: none;
+    color: rgb(243, 243, 243);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    width: 200px;
+    /* font-size: 1.2rem; */
+}
+
+.szukajInputSortBlue:focus{
+    outline: none;
+}
+
+
+
 .szukajInput::placeholder{
     color: rgb(110, 110, 110);
     font-size: 0.9rem;

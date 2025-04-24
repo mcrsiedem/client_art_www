@@ -99,7 +99,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
     return (
   
         <select
-          className={style.szukajInput}
+          className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaEtap}
           onChange={(event) => {
             setSortowanieZamowieniaEtap(event.target.value)

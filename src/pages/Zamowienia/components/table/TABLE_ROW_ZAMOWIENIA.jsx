@@ -53,7 +53,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
     <>
       <tr
       onContextMenu={(event)=>{ onMenuHandle(event)}}
-        title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono}
+        title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono + " Zmodyfikowano: " +row.zmodyfikowano}
         className={style.row_zamowienia}
         key={row.id}
         onmousedown={(event) => {

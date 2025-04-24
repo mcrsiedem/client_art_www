@@ -11,6 +11,8 @@ import { _wykonczenie } from "utils/initialvalue";
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
+    const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(1);
+    const [sortowanieZamowienia, setSortowanieZamowienia] = useState(0);
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
     const [selectedKlient, setSelectedKlient] = useState("0");
@@ -99,6 +101,8 @@ export const AppContextProvider = ({children})=>{
     
     return  <AppContext.Provider 
                 value={{
+                  sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
+                  sortowanieZamowienia, setSortowanieZamowienia,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy
@@ -111,6 +115,7 @@ export const AppContextProvider = ({children})=>{
                     productType,
                    
                     rowSelected, setRowSelected, // druk
+                    _sortowanieZamowienieEtap,
                     _firma,typ_elementu,_status_koszty_dodatkowe,
                     showMeProcessName,
                     listaPapierow, setListaPapierow,
@@ -148,6 +153,22 @@ const _firma = [
       nazwa: "ArtDruk Sp. z o.o.",
       nazwa_skrocona: "ArtDruk Sp.",
       NIP: "123-111-22-33",
+    },
+  ];
+
+  const _sortowanieZamowienieEtap = [
+
+    {
+      id: 1,
+      nazwa: "Zamówienia",
+    },
+    {
+      id: 2,
+      nazwa: "Harmonogram",
+    },
+    {
+      id: 3,
+      nazwa: "Wszystkie",
     },
   ];
 

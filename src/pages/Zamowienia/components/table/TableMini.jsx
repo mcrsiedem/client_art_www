@@ -6,11 +6,14 @@ import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 export default function TableMini({open2,setRow}){
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
+    const [sortWgEtapu] = useSortowanieZamowienia()
+  
  return (
    <div className={style.tableContainer}>
      <table>
@@ -68,6 +71,8 @@ export default function TableMini({open2,setRow}){
              return  zam.klient_id == selectedKlient;
             }
           })
+          .filter((zamowienie) => sortWgEtapu({zamowienie}))
+
            .map((row) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />

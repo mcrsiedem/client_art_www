@@ -25,8 +25,8 @@ export default function Header({ dodaj_clikHandler}) {
 
   return (
     <header onDoubleClick={()=>{  
-      console.log("selectedUser: "+ selectedUser)
-      console.log("selectedKlient: "+ selectedKlient)
+      // console.log("selectedUser: "+ selectedUser)
+      // console.log("selectedKlient: "+ selectedKlient)
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <p className={style.title}>Zamówienia : {contextApp.zamowienia           .filter((zam) => zam.stan==3).length} przyjętych, {contextApp.zamowienia           .filter((zam) => zam.stan==2).length} do przyjęcia </p> */}
@@ -46,6 +46,7 @@ export default function Header({ dodaj_clikHandler}) {
         />
       </div>
       <div className={style.rightHeaderContener}>
+        <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
         <img
           className={style.icon2}
@@ -89,6 +90,29 @@ function Szukaj() {
     ></input>
   );
 }
+
+
+function SORTOWANIE_ZAMOWIENIA_ETAP() {
+  const contextApp = useContext(AppContext);
+  const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
+  const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
+    return (
+  
+        <select
+          className={style.szukajInput}
+          value={sortowanieZamowieniaEtap}
+          onChange={(event) => {
+            setSortowanieZamowieniaEtap(event.target.value)
+          }}
+        >
+          {contextApp._sortowanieZamowienieEtap.map((option) => (
+            <option key={option.id} value={option.id}>
+            {option.nazwa}
+            </option>
+          ))}
+        </select>
+    );
+  }
 
 
 

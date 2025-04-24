@@ -7,6 +7,7 @@ import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import MenuZamowienia from "../menu/MenuZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 export default function TableZamowienia({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
@@ -14,6 +15,8 @@ export default function TableZamowienia({open2,setRow}){
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
+  const [sortWgEtapu] = useSortowanieZamowienia()
+ 
 
  return (
    <div className={style.tableContainer} >
@@ -73,6 +76,8 @@ export default function TableZamowienia({open2,setRow}){
              return  zam.klient_id == selectedKlient;
             }
           })
+          .filter((zamowienie) => sortWgEtapu({zamowienie}))
+
            .map((row) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />

@@ -81,7 +81,7 @@ function Uwagi( {row}){
       <textarea className={style.input_textarea} rows="3" type="text"
       value={row.uwagi}
       onChange={(event) => {
-        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
           // setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});

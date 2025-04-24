@@ -642,6 +642,13 @@ function NR_ZAMOWIENIA( ){
          <button className={style.btn_przujmij_do_harmonogramu} onClick={async()=>{
 
             setDaneZamowienia({...daneZamowienia,stan:3,status:2,update: true})
+            add(                    {
+              kategoria: "Stan zamówienia",
+              event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == 3 )[0].nazwa+" do Harmonogramu",
+              zamowienie_id: daneZamowienia.id
+          }
+          );
+
          }}>
            przyjmij
          </button>

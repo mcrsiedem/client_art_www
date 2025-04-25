@@ -287,7 +287,7 @@ function Uwagi({ row }) {
         value={row?.uwagi}
         onChange={(e) =>
           { 
-            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ]+$/;
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
             if ( e.target.value === '' || re.test(e.target.value)) { 
               handleUpdateRowProdukty({
             ...row,

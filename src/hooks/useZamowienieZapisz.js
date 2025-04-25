@@ -123,6 +123,7 @@ const saveDane = ({daneZamowienia}) =>{
       kod_pracy: daneZamowienia.kod_pracy,
       nr_zamowienia_klienta: daneZamowienia.nr_zamowienia_klienta,
       isbn: daneZamowienia.isbn,
+      wartosc_zamowienia: daneZamowienia.wartosc_zamowienia,
 
 
     }])

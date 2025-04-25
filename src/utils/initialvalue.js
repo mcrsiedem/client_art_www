@@ -49,7 +49,8 @@ const initialDane = {
   nr_stary:"",
   kod_pracy:"",
   nr_zamowienia_klienta:"",
-  isbn:""
+  isbn:"",
+  wartosc_zamowienia:""
 
 };
 const initialProdukty = [

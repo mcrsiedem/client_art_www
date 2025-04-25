@@ -44,6 +44,7 @@ export default function Dane({
             <KODA_PRACY />
             <ISBN />
             <Cena />
+            <WARTOSC_ZAMOWIENIA/>
             <Waluta />
             <Vat />
             <TerminPlatnosci />
@@ -544,7 +545,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
-      <label className={style.label}> Przedpłata </label>
+      <label className={style.label}> Przedpłata %</label>
       <input className={style.input} type="text"
       value={daneZamowienia.przedplata}
       onChange={(event) => {
@@ -572,7 +573,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
 
    
-        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
           setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
@@ -781,7 +782,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
-      <label className={style.label}> Cena </label>
+      <label className={style.label}> Cena szt. </label>
       <input className={style.input} type="text"
       value={daneZamowienia.cena}
       onChange={(event) => {
@@ -791,6 +792,31 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
        if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, cena: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+         
+       }
+        
+      }}></input>
+    </div>
+  );
+}
+
+function WARTOSC_ZAMOWIENIA( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Wartość </label>
+      <input className={style.input} type="text"
+      value={daneZamowienia.wartosc_zamowienia}
+      onChange={(event) => {
+
+
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
        }
         

@@ -319,7 +319,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       if (t.element_id === card.id) {
         return {
           ...t,
-          typ: card.typ
+          typ: card.typ,
+          update: true
 
         };
       } else {

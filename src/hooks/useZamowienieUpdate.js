@@ -97,6 +97,8 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
       nr_zamowienia_klienta: daneZamowienia.nr_zamowienia_klienta,
       isbn: daneZamowienia.isbn,
       wartosc_zamowienia: daneZamowienia.wartosc_zamowienia,
+      skonto: daneZamowienia.skonto,
+      nr_kalkulacji: daneZamowienia.nr_kalkulacji,
 
 
 

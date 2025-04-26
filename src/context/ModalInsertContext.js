@@ -100,7 +100,64 @@ export const ModalInsertContextProvider = ({children})=>{
        
     };
 
-    
+    function handleChangeCardFragmenty_i_Elementy_naklad(card) {
+      // zmienia typ fragmentów gdy typ elementu jest zmieniany
+      setElementy(
+        elementy.map((t) => {
+          if (t.id === card.id) {
+            return card;
+          } else {
+            return t;
+          }
+        })
+      );
+  
+      setFragmenty(
+        fragmenty.map((t, a) => {
+        // console.log("oprawa id" +prev)
+        if (t.element_id === card.id) {
+          return {
+            ...t,
+            naklad: card.naklad,
+            update:true
+  
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+    }
+
+    function handleChangeCardFragmenty_i_Elementy_nazwa(card) {
+      // zmienia typ fragmentów gdy typ elementu jest zmieniany
+      setElementy(
+        elementy.map((t) => {
+          if (t.id === card.id) {
+            return card;
+          } else {
+            return t;
+          }
+        })
+      );
+  
+      setFragmenty(
+        fragmenty.map((t, a) => {
+        // console.log("oprawa id" +prev)
+        if (t.element_id === card.id) {
+          return {
+            ...t,
+            wersja: card.nazwa,
+            update:true
+  
+          };
+        } else {
+          return t;
+        }
+      })
+    );
+    }
+
 
 
     const handleUpdateRowOprawa = (row) => {
@@ -218,6 +275,8 @@ export const ModalInsertContextProvider = ({children})=>{
           selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia,
           showInputNrZamowienie, setShowInputNrZamowienie,
           showMenuZamowienia, setShowMenuZamowienia,
+          handleChangeCardFragmenty_i_Elementy_naklad,
+          handleChangeCardFragmenty_i_Elementy_nazwa
 
 
 

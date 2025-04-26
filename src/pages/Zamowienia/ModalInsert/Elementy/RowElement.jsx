@@ -531,6 +531,7 @@ const [setStatus] = useStatus()
     const [setStatus] = useStatus()
    const contextModalInsert = useContext(ModalInsertContext);
     const fragmenty = contextModalInsert.fragmenty
+    const handleChangeCardFragmenty_i_Elementy_naklad = contextModalInsert.handleChangeCardFragmenty_i_Elementy_naklad
 
       const sprawdzSume = () => {
 
@@ -574,7 +575,7 @@ const [setStatus] = useStatus()
 
          
         if (e.target.value === "" || reg_int.test(e.target.value)) {
-                handleChangeCardElementy({
+          handleChangeCardFragmenty_i_Elementy_naklad({
                   ...row,
                   naklad: ifNoTextSetNull(e.target.value),
                   update: true,
@@ -593,6 +594,8 @@ const [setStatus] = useStatus()
   }
   function Nazwa({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
+    const modalcontext = useContext(ModalInsertContext);
+    const handleChangeCardFragmenty_i_Elementy_nazwa = modalcontext.handleChangeCardFragmenty_i_Elementy_nazwa;
     return (
      
         <input
@@ -601,7 +604,7 @@ const [setStatus] = useStatus()
           onChange={(e) =>
 
  {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
-             handleChangeCardElementy({
+  handleChangeCardFragmenty_i_Elementy_nazwa({
               ...row,
               nazwa: e.target.value,
               update: true

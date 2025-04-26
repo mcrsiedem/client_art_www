@@ -51,11 +51,11 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
   const onMenuHandle2 = (event) =>{
     event.preventDefault();
-    setShowBTN(true)
+    setShowBTN(!showBTN)
     setZamowienia(
       zamowienia.map((t) => {
         if (t.id == row.id) {
-          return { ...row, select: true};
+          return { ...row, select: !t.select};
         } else {
           return t;
         }
@@ -128,13 +128,13 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
               setZamowienia(
                 zamowienia.map((t) => {
                   if (t.id == row.id) {
-                    return { ...row, select: false };
+                    return { ...row, select: !t.select };
                   } else {
                     return t;
                   }
                 })
               );
-          setShowBTN(false)}}className={style.btn_zamowienia_menu_row} >OK</button>
+          setShowBTN(!showBTN)}}className={style.btn_zamowienia_menu_row} >OK</button>
       </div>
           
     </td>

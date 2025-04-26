@@ -42,10 +42,7 @@ export default function Dane({
             <NR_ZAMOWIENIA /> 
             <Rok />
             <Tytul />
-            {/* <KODA_PRACY />
-            <ISBN /> */}
             <Waluta />
-
             <Cena />
             <WARTOSC_ZAMOWIENIA/>
             <Vat />
@@ -55,8 +52,8 @@ export default function Dane({
         </Row>
 
         <Row style={style.row3}>
-            <Opiekun />
-            {/* <Uwagi /> */}
+        <NR_KALKULACJI />
+
             <KODA_PRACY />
             <ISBN />
             <FSC />
@@ -65,6 +62,8 @@ export default function Dane({
             <Etap />
         </Row>
         <Row style={style.row4}>
+        <Opiekun />
+
         <Uwagi />
 
         </Row>
@@ -722,6 +721,31 @@ function NR_ZAMOWIENIA_stary( ){
     );
   
 }
+
+function NR_KALKULACJI( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+    return (
+      <div className={style.col}>
+        <label className={style.label}> Nr kalkulacji </label>
+        <input
+          className={style.input}
+          type="text"
+          title="Nr kalkulacji"
+          value={daneZamowienia.nr_kalkulacji}
+          onChange={(event) => {
+            const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+            if ( event.target.value === '' || re.test(event.target.value)) {
+              setDaneZamowienia({...daneZamowienia, nr_kalkulacji: event.target.value,update: true});
+         }
+          }}
+        ></input>
+      </div>
+    );
+  
+}
 //---
 function KODA_PRACY( ){
   const contextModalInsert = useContext(ModalInsertContext);
@@ -858,7 +882,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
-      <label className={style.label}> Skonto </label>
+      <label className={style.label}> Skonto %</label>
       <input className={style.input} type="text"
       value={daneZamowienia.skonto}
       onChange={(event) => {

@@ -2,7 +2,7 @@
 
 .dane {
   padding: 5px 20px;
- background-color: transparent;
+ background-color: rgb(233, 233, 233);
 display: flex;
 flex-direction: column;
 gap:5px;
@@ -20,7 +20,7 @@ width: 100vw;
 .row2 {
   display: grid;
   
-  grid-template-columns:  70px 70px  70px 3fr  75px 75px 110px 55px 45px 110px 110px   ;
+  grid-template-columns:  70px 70px  70px 3fr  75px 110px 110px 110px 110px 110px 110px   ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */
@@ -36,9 +36,11 @@ width: 100vw;
 .row4 {
   display: grid;
   
-  grid-template-columns:  1fr  ;
+  grid-template-columns:  230px 1fr  ;
   gap: 10px;
-  margin-left: 240px;
+  /* height: 2rem; */
+  /* margin-left: 240px; */
+  /* margin-right: 240px; */
 }
 .col {
   position: relative;
@@ -136,6 +138,7 @@ padding-left: 10px;
   border-color: transparent;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
+  padding-top: 5px;
   z-index: 3;
 }
 .select_stan_3

@@ -13,18 +13,21 @@ export function useZamowienia() {
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
   };
 
-  function odblokujZamowienie(rowsToDelete
-  ) {
-    axios
-      .delete(IP + "odblokuj_zamowienie", { data: { row: rowsToDelete } })
+  const odblokujZamowienie = (rowsToDelete) =>{
+    axios.delete(IP + "odblokuj_zamowienie", { data: { row: rowsToDelete } })
       .then((res) => {
         refreshZamowienia();
       });
   }
 
 
+  const deleteZamowienie = (rowsToDelete) => {
+    axios.delete(IP + "delete_zamowienie", { data: { row: rowsToDelete } })
+      .then((res) => {
+      refreshZamowienia()
+      });
+  }
 
 
-
-  return [refreshZamowienia,odblokujZamowienie];
+  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie];
 }

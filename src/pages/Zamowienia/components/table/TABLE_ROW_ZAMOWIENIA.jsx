@@ -27,7 +27,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
-  const [refreshZamowienia,odblokujZamowienie] = useZamowienia();
+  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
 
   // const onMenuHandle = (event) =>{
   //   event.preventDefault();
@@ -151,15 +151,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
 
 <button onClick={()=>{
-              setZamowienia(
-                zamowienia.map((t) => {
-                  if (t.id == row.id) {
-                    return { ...row, select: false,show:false};
-                  } else {
-                    return t;
-                  }
-                })
-              );
+
+deleteZamowienie([row])
         }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>
       </div>
           

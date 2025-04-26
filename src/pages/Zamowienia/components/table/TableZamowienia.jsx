@@ -4,7 +4,6 @@ import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
-import MenuZamowienia from "../menu/MenuZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
@@ -20,7 +19,6 @@ export default function TableZamowienia({open2,setRow}){
 
  return (
    <div className={style.tableContainer} >
-     <MenuZamowienia showMenu={showMenu} setShowMenu={setShowMenu} />
      <table className={style.tableZam}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>

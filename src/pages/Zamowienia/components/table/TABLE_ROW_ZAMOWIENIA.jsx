@@ -14,6 +14,7 @@ import {
   _status_dokumentu,
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useZamowienia } from "hooks/useZamowienia";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
@@ -26,6 +27,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
+  const [refreshZamowienia,odblokujZamowienie] = useZamowienia();
 
   // const onMenuHandle = (event) =>{
   //   event.preventDefault();
@@ -128,16 +130,9 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
 
       <button onClick={()=>{
-              setZamowienia(
-                zamowienia.map((t) => {
-                  if (t.id == row.id) {
-                    return { ...row, select: false,show:false};
-                  } else {
-                    return t;
-                  }
-                })
-              );
-          // setShowBTN(false)
+
+      odblokujZamowienie([row])
+
           }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>
 
         <button onClick={()=>{

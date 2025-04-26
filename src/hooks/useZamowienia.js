@@ -13,5 +13,18 @@ export function useZamowienia() {
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
   };
 
-  return [refreshZamowienia];
+  function odblokujZamowienie(rowsToDelete
+  ) {
+    axios
+      .delete(IP + "odblokuj_zamowienie", { data: { row: rowsToDelete } })
+      .then((res) => {
+        refreshZamowienia();
+      });
+  }
+
+
+
+
+
+  return [refreshZamowienia,odblokujZamowienie];
 }

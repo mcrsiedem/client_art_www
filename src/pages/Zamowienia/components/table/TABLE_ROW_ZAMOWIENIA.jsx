@@ -22,7 +22,6 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
-  const [showBTN, setShowBTN] = useState(false);
   const contextApp = useContext(AppContext);
   
   const zamowienia = contextApp.zamowienia
@@ -51,11 +50,12 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
   const onMenuHandle2 = (event) =>{
     event.preventDefault();
-    setShowBTN(!showBTN)
     setZamowienia(
-      zamowienia.map((t) => {
+      zamowienia
+      .map(x => {return { ...x, select: false, show:false}})
+      .map((t) => {
         if (t.id == row.id) {
-          return { ...row, select: !t.select};
+          return { ...row, select: true,show:true};
         } else {
           return t;
         }
@@ -73,7 +73,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
        
         }
         title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono + " Zmodyfikowano: " +row.zmodyfikowano}
-        className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
+        // className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
+        className={ style.row_zamowienia}
         key={row.id}
         onmousedown={(event) => {
           if (event.ctrlKey) {
@@ -99,7 +100,6 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
           showKartaTechnologiczna={showKartaTechnologiczna}
         />
 
-        {/* <td className={style.col_klient}>{row.klient}</td> */}
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} />
         <UwagiTableZamowienia row={row} />
@@ -118,23 +118,53 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         {/* <IconLockTable row={row} /> */}
       </tr>
 
-{showBTN &&(
+{row.show &&(
 
   
     <tr >
     <td colSpan={19}>
       <div className={style.zamowienia_menu_row}>
-        <button onClick={()=>{
+
+
+      <button onClick={()=>{
               setZamowienia(
                 zamowienia.map((t) => {
                   if (t.id == row.id) {
-                    return { ...row, select: !t.select };
+                    return { ...row, select: false,show:false};
                   } else {
                     return t;
                   }
                 })
               );
-          setShowBTN(!showBTN)}}className={style.btn_zamowienia_menu_row} >OK</button>
+          // setShowBTN(false)
+          }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>
+
+        <button onClick={()=>{
+              setZamowienia(
+                zamowienia.map((t) => {
+                  if (t.id == row.id) {
+                    return { ...row, select: false,show:false};
+                  } else {
+                    return t;
+                  }
+                })
+              );
+          }}className={style.btn_zamowienia_menu_row} >Zamknij</button>
+
+
+
+
+<button onClick={()=>{
+              setZamowienia(
+                zamowienia.map((t) => {
+                  if (t.id == row.id) {
+                    return { ...row, select: false,show:false};
+                  } else {
+                    return t;
+                  }
+                })
+              );
+        }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>
       </div>
           
     </td>

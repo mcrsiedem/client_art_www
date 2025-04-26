@@ -22,39 +22,58 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
-    const contextApp = useContext(AppContext);
+  const [showBTN, setShowBTN] = useState(false);
+  const contextApp = useContext(AppContext);
   
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
 
-  const onMenuHandle = (event) =>{
-    event.preventDefault();
+  // const onMenuHandle = (event) =>{
+  //   event.preventDefault();
 
-    console.log(event)
-    console.log(event.pageX)
-    console.log(event.pageY)
-    console.log(event.screenX)
-    console.log(event.screenY)
-    console.log(row.tytul)
+  //   console.log(event)
+  //   console.log(event.pageX)
+  //   console.log(event.pageY)
+  //   console.log(event.screenX)
+  //   console.log(event.screenY)
+  //   console.log(row.tytul)
+  //   setZamowienia(
+  //     zamowienia.map((t) => {
+  //       if (t.id == row.id) {
+  //         return { ...row, select: true };
+  //       } else {
+  //         return t;
+  //       }
+  //     })
+  //   );
+  //   setShowMenuZamowienia(true)
+  // }
+
+  const onMenuHandle2 = (event) =>{
+    event.preventDefault();
+    setShowBTN(true)
     setZamowienia(
       zamowienia.map((t) => {
         if (t.id == row.id) {
-          return { ...row, select: true };
-          // return { ...row, select: event.target.checked };
+          return { ...row, select: true};
         } else {
           return t;
         }
       })
     );
-    setShowMenuZamowienia(true)
   }
 
   return (
     <>
       <tr
-      onContextMenu={(event)=>{ onMenuHandle(event)}}
+      onContextMenu={(event)=>{
+    
+         onMenuHandle2(event)
+        }
+       
+        }
         title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono + " Zmodyfikowano: " +row.zmodyfikowano}
-        className={style.row_zamowienia}
+        className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
         key={row.id}
         onmousedown={(event) => {
           if (event.ctrlKey) {
@@ -99,6 +118,45 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         {/* <IconLockTable row={row} /> */}
       </tr>
 
+{showBTN &&(
+
+  
+    <tr >
+    <td colSpan={19}>
+      <div className={style.zamowienia_menu_row}>
+        <button onClick={()=>{
+              setZamowienia(
+                zamowienia.map((t) => {
+                  if (t.id == row.id) {
+                    return { ...row, select: false };
+                  } else {
+                    return t;
+                  }
+                })
+              );
+          setShowBTN(false)}}className={style.btn_zamowienia_menu_row} >OK</button>
+      </div>
+          
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+
+   </tr>
+
+  
+  
+
+)}
       {showKartaTechnologiczna && (
         <>
           <tr>

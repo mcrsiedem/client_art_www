@@ -73,8 +73,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
        
         }
         title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono + " Zmodyfikowano: " +row.zmodyfikowano}
-        // className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
-        className={ style.row_zamowienia}
+        className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
+        // className={ style.row_zamowienia}
         key={row.id}
         onmousedown={(event) => {
           if (event.ctrlKey) {
@@ -116,6 +116,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <OpiekunZamowieniaTable row={row} />
         <SelectBox row={row} />
         {/* <IconLockTable row={row} /> */}
+        <td></td>
       </tr>
 
 {row.show &&(

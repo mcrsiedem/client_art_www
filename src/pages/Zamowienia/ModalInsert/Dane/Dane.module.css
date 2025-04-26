@@ -13,14 +13,14 @@ width: 100vw;
 
 .row1 {
   display: grid;
-  grid-template-columns: 230px 1fr 160px  110px 110px 110px;
+  grid-template-columns: 230px 1fr 230px 110px 110px 110px 110px;
   gap: 10px;
 
 }
 .row2 {
   display: grid;
   
-  grid-template-columns:  70px 70px  70px 3fr 1fr 150px 75px 75px 75px 75px 75px 110px 230px  ;
+  grid-template-columns:  70px 70px  70px 3fr  75px 75px 110px 55px 45px 110px 110px   ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */
@@ -28,12 +28,18 @@ width: 100vw;
 .row3 {
   display: grid;
   
-  grid-template-columns:  230px  1fr 75px 193px 230px  ;
+  grid-template-columns:  230px  1fr 1fr 75px 230px 230px 230px ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */
 }
-
+.row4 {
+  display: grid;
+  
+  grid-template-columns:  1fr  ;
+  gap: 10px;
+  margin-left: 240px;
+}
 .col {
   position: relative;
   display: flex;

@@ -31,6 +31,7 @@ export default function Dane({
             <Firma />
             <Klient  showAddClientStage={showAddClientStage} />
             <NR_ZAMOWIENIA_KLIENTA />
+            <DataUwtorzenia />
             <DataPrzyjecia />
             <DataMeterialow />
             <DataSpedycji />
@@ -41,23 +42,31 @@ export default function Dane({
             <NR_ZAMOWIENIA /> 
             <Rok />
             <Tytul />
-            <KODA_PRACY />
-            <ISBN />
+            {/* <KODA_PRACY />
+            <ISBN /> */}
+            <Waluta />
+
             <Cena />
             <WARTOSC_ZAMOWIENIA/>
-            <Waluta />
             <Vat />
+            <SKONTO />
             <TerminPlatnosci />
             <Przedplata />
-            <Etap />
         </Row>
 
         <Row style={style.row3}>
             <Opiekun />
-            <Uwagi />
+            {/* <Uwagi /> */}
+            <KODA_PRACY />
+            <ISBN />
             <FSC />
             <Stan />
             <Status />
+            <Etap />
+        </Row>
+        <Row style={style.row4}>
+        <Uwagi />
+
         </Row>
       </div>
     </>
@@ -196,7 +205,24 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     </div>
   );
 }
-
+function DataUwtorzenia(){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Data utworzenia </label>
+      <input className={style.select} type="date"
+         value={daneZamowienia.data_utworzenia}
+         disabled
+         onChange={(event) => {
+            setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+        
+         }}></input>
+    </div>
+  );
+}
 function DataSpedycji(){
 
   const contextModalInsert = useContext(ModalInsertContext);
@@ -825,6 +851,31 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
+function SKONTO( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+// const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Skonto </label>
+      <input className={style.input} type="text"
+      value={daneZamowienia.skonto}
+      onChange={(event) => {
+
+
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, skonto: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+         
+       }
+        
+      }}></input>
+    </div>
+  );
+}
+
 function TerminPlatnosci( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
@@ -877,6 +928,8 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     </div>
   );
 }
+
+
 
 function Waluta( ) {
   const contextModalInsert = useContext(ModalInsertContext);

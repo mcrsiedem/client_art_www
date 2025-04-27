@@ -809,7 +809,7 @@ const [setStatus] = useStatus()
             if(valueIN != e.target.value){
             add(         {
               kategoria: "Uwagi",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - Uwagi:  "+e.target.value,
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - Uwagi:  "+e.target.value,
               zamowienie_id: daneZamowienia.id
             })
             }

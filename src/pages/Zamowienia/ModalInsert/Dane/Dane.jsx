@@ -63,9 +63,7 @@ export default function Dane({
         </Row>
         <Row style={style.row4}>
         <Opiekun />
-
         <Uwagi />
-
         </Row>
       </div>
     </>
@@ -271,10 +269,8 @@ const setOprawa = contextModalInsert.setOprawa;
 function Opiekun() {
   const contextApp = useContext(AppContext);
   const contextModalInsert = useContext(ModalInsertContext);
-
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return (
     <div className={style.col}>
       <label className={style.label}> Opiekun </label>
@@ -287,8 +283,8 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
            
         }}
       >
-        {/* {contextApp.users?.filter(x => x.Dzial == 2).map((option) => ( */}
-        {contextApp.users?.map((option) => (
+        {contextApp.users?.filter(x => x.zamowienie_zapis == 1).map((option) => (
+        // {contextApp.users?.map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>
@@ -861,13 +857,9 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <input className={style.input} type="text"
       value={daneZamowienia.wartosc_zamowienia}
       onChange={(event) => {
-
-
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
        if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-         
        }
         
       }}></input>

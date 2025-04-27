@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { useZamowienia } from "hooks/useZamowienia";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function Header({ dodaj_clikHandler}) {
       </div>
 
       <div className={style.centerHeaderContener}>
-        <img
+        {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
           title="Dodaj nowe zamówienie..."
           className={style.icon}
           src={iconAdd}
@@ -43,7 +44,8 @@ export default function Header({ dodaj_clikHandler}) {
             dodaj_clikHandler();
           }}
           alt="React Logo"
-        />
+        /> : <></>}
+
       </div>
       <div className={style.rightHeaderContener}>
         <SORTOWANIE_ZAMOWIENIA_ETAP/>

@@ -531,8 +531,15 @@ const [setStatus] = useStatus()
     const [setStatus] = useStatus()
    const contextModalInsert = useContext(ModalInsertContext);
     const fragmenty = contextModalInsert.fragmenty
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
     const handleChangeCardFragmenty_i_Elementy_naklad = contextModalInsert.handleChangeCardFragmenty_i_Elementy_naklad
+    const [add] = useHistoria()
+    const [value,setValue] = useState(null)
 
+    const onFocuseHandle = (dataIN) => {
+    setValue(dataIN)
+    }
       const sprawdzSume = () => {
 
         let suma_nakladow = fragmenty
@@ -572,7 +579,6 @@ const [setStatus] = useStatus()
           value={row.naklad}
           onChange={(e) =>
             {
-
          
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleChangeCardFragmenty_i_Elementy_naklad({
@@ -588,6 +594,19 @@ const [setStatus] = useStatus()
         
         }
           }
+          onFocus={()=>{ onFocuseHandle(row.naklad)}}
+          onBlur={(e)=>{
+
+            if(value != e.target.value){
+                        setStatus(3)
+            add(         {
+              kategoria: "Naklad",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " Zmiana nakladu z : "+value + " na: "+e.target.value + " szt. ",
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+  
+          }}
         ></input>
     
     );

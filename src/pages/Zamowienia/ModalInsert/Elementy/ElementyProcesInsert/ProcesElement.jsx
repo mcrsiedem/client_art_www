@@ -5,8 +5,10 @@ import iconTrash from "assets/trash2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addNewProcess } from "actions/addProcess";
-import { reg_int } from "utils/initialvalue";
+import { _typ_elementu, reg_int } from "utils/initialvalue";
 import { reg_txt } from "utils/initialvalue";
+import { useHistoria } from "hooks/useHistoria";
+import { getNameOfElement } from "actions/getNameOfElement";
 export default function ProcesElement({showElementyProcesyInsert}) {
 
 if(showElementyProcesyInsert){
@@ -63,6 +65,11 @@ function Footer() {
   const modalContext = useContext(ModalInsertContext);
   const setProcesyElementow = modalContext.setProcesyElementow;
   const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
+
   return (
     <div className={style.footer}>
       <button
@@ -70,6 +77,24 @@ function Footer() {
         onClick={() => {
           modalContext.setShowElementyProcesyInsert(false);
           setProcesyElementow(procesyElementowTemporary)
+
+
+procesyElementowTemporary.filter(x=>x.delete== true).forEach(row => {
+            add(         {
+            kategoria: "Procesy",
+            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu - "+row.nazwa+" "+row.rodzaj + " "+row.typ,
+            zamowienie_id: daneZamowienia.id
+          })
+});
+
+procesyElementowTemporary.filter(x=>x.insert== true).forEach(row => {
+  add(         {
+  kategoria: "Procesy",
+  event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu - "+row.nazwa+" "+row.rodzaj + " "+row.typ,
+  zamowienie_id: daneZamowienia.id
+})
+});
+
         }}
       >
         Zapisz
@@ -340,6 +365,9 @@ function Usun({ row}) {
   const contexModal = useContext(ModalInsertContext);
   const procesyElementowTemporary = contexModal.procesyElementowTemporary;
   const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  const elementy = contexModal.elementy;
+  const daneZamowienia = contexModal.daneZamowienia;
+    const [add] = useHistoria()
   return (
     <td className={style.col_button}>
       <div>
@@ -364,6 +392,8 @@ function Usun({ row}) {
                 }
               })
             );
+
+      
 
             }
           

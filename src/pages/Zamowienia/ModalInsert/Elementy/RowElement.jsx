@@ -31,10 +31,11 @@ export default function RowElement({
     const setElementy = contextModalInsert.setElementy;
     const fragmenty = contextModalInsert.fragmenty;
     const setFragmenty = contextModalInsert.setFragmenty;
+    const daneZamowienia = contextModalInsert.daneZamowienia;
     const procesyElementow = contextModalInsert.procesyElementow;
     const setProcesyElementow = contextModalInsert.setProcesyElementow;
     const [showFragmenty, setShowFragmenty] = useState(false);
-  
+    const [add] = useHistoria()
       const handleRemoveItem = (indeks,id) => {
         // id = id elementu
         if (elementy.filter((x) => x.delete != true).length != 1) {
@@ -97,9 +98,15 @@ export default function RowElement({
           })
         );
 
+
+
         }
       
-
+        add(         {
+          kategoria: "Element",
+          event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - skasowano ",
+          zamowienie_id: daneZamowienia.id
+        })
 
         console.log("Usun")
       };
@@ -361,6 +368,8 @@ function Procesy({ row}) {
   
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+
   return (
     <div>
       <div>
@@ -369,7 +378,6 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
           src={iconTrash}
           onClick={() => {
             handleRemoveItem(row.indeks, row.id);
-                       // const [setStatus] = useStatus()
                        setStatus(3)
           }}
           alt="Procesy"
@@ -381,6 +389,12 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
 
 function Dodaj({ row, handleAddCard }) {
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const contextModalInsert = useContext(ModalInsertContext);
+
+  const daneZamowienia = contextModalInsert.daneZamowienia
+  const elementy = contextModalInsert.elementy
+
   return (
     <div >
       <img
@@ -388,6 +402,12 @@ function Dodaj({ row, handleAddCard }) {
         src={iconCopy}
         onClick={() => {
           handleAddCard(row);
+
+          add(         {
+            kategoria: "Element",
+            event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - dodano ",
+            zamowienie_id: daneZamowienia.id
+          })
                      // 
                      setStatus(3)
         }}

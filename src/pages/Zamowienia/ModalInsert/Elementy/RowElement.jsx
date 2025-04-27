@@ -419,7 +419,7 @@ function Dodaj({ row, handleAddCard }) {
                 setStatus(3) 
             add(         {
               kategoria: "Typ elementu",
-              event: getNameOfElement(valueIN,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
               zamowienie_id: daneZamowienia.id
             })
             handleChangeCardFragmenty_i_Elementy({
@@ -479,7 +479,7 @@ function Dodaj({ row, handleAddCard }) {
           setStatus(3)
             add(         {
               kategoria: "Papier",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+" : zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+" : zmiana papieru z "+ getNameOfPapier(listaPapierowWyszukiwarka,row.papier_id) + " na "+getNameOfPapier(listaPapierowWyszukiwarka,e.target.value),
               zamowienie_id: daneZamowienia.id
             })
 
@@ -608,7 +608,7 @@ const [setStatus] = useStatus()
                         setStatus(3)
             add(         {
               kategoria: "Naklad",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
               zamowienie_id: daneZamowienia.id
             })
             }
@@ -635,7 +635,7 @@ const [setStatus] = useStatus()
             if(valueIN != e.target.value){
             add(         {
               kategoria: "Nazwa",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - Nazwa elementu z "+valueIN + " na "+e.target.value,
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - Nazwa elementu z "+valueIN + " na "+e.target.value,
               zamowienie_id: daneZamowienia.id
             })
             }
@@ -682,7 +682,7 @@ const [setStatus] = useStatus()
             if(valueIN != e.target.value){
             add(         {
               kategoria: "Ilość stron",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana ilości stron z "+valueIN + " na "+e.target.value,
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana ilości stron z "+valueIN + " na "+e.target.value,
               zamowienie_id: daneZamowienia.id
             })
             }
@@ -725,7 +725,7 @@ const [setStatus] = useStatus()
           if(valueIN != e.target.value){
           add(         {
             kategoria: "Format",
-            event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana szerokości z "+valueIN + " na "+e.target.value,
+            event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana szerokości z "+valueIN + " na "+e.target.value,
             zamowienie_id: daneZamowienia.id
           })
           }
@@ -766,7 +766,7 @@ const [setStatus] = useStatus()
             if(valueIN != e.target.value){
             add(         {
               kategoria: "Format",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana wysokości z "+valueIN + " na "+e.target.value,
+              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana wysokości z "+valueIN + " na "+e.target.value,
               zamowienie_id: daneZamowienia.id
             })
             }

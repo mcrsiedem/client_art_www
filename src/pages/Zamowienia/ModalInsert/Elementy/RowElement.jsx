@@ -18,6 +18,7 @@ import { useHistoria } from "hooks/useHistoria";
 import { useStatus } from "hooks/useStatus";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
+import { getNameOfElementTyp } from "actions/getNameOfElementTyp";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -399,20 +400,37 @@ function Dodaj({ row, handleAddCard }) {
   function Typ({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
     //row - row element
     const [setStatus] = useStatus()
+    const [valueIN,setValueIN] = useState(null)
+    
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
+
     return (
         <select
           className={style.select}
           value={row.typ}
+          onFocus={()=>{ setValueIN(row.typ)}}
+
           onChange={(e) => {
+            // console.log("e.target.value"+e.target.value)
+
+                setStatus(3) 
+            add(         {
+              kategoria: "Typ elementu",
+              event: getNameOfElement(valueIN,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,elementy,_typ_elementu),
+              zamowienie_id: daneZamowienia.id
+            })
             handleChangeCardFragmenty_i_Elementy({
               ...row,
               typ: e.target.value,
               update: true
             }
             );
-
+        
  // 
- setStatus(3)
+
 
           }}
         >
@@ -426,36 +444,7 @@ function Dodaj({ row, handleAddCard }) {
     );
   }
 
-  
-  function PapierPostacElement({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
-    //row - row element
-const contextApp = useContext(AppContext);
-const [setStatus] = useStatus()
 
-    return (
-        <select
-          className={style.select}
-          value={row.papier_postac_id}
-          onChange={(e) => {
-            handleChangeCardFragmenty_i_Elementy({
-              ...row,
-              papier_postac_id: e.target.value,
-              update: true
-            }
-            );
-             // 
-             setStatus(3)
-          }}
-        >
-          {}
-          {contextApp.listaPapierowPostac.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.postac}
-            </option>
-          ))}
-        </select>
-    );
-  }
 
   
 
@@ -525,9 +514,38 @@ const [setStatus] = useStatus()
     );
   }
 
-
   
-  function Naklad({ row, handleChangeCardElementy }) {
+  function PapierPostacElement({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
+    //row - row element
+const contextApp = useContext(AppContext);
+const [setStatus] = useStatus()
+
+    return (
+        <select
+          className={style.select}
+          value={row.papier_postac_id}
+          onChange={(e) => {
+            handleChangeCardFragmenty_i_Elementy({
+              ...row,
+              papier_postac_id: e.target.value,
+              update: true
+            }
+            );
+             // 
+             setStatus(3)
+          }}
+        >
+          {}
+          {contextApp.listaPapierowPostac.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.postac}
+            </option>
+          ))}
+        </select>
+    );
+  }
+  
+  function Naklad({ row }) {
     const [setStatus] = useStatus()
    const contextModalInsert = useContext(ModalInsertContext);
     const fragmenty = contextModalInsert.fragmenty
@@ -535,11 +553,8 @@ const [setStatus] = useStatus()
     const daneZamowienia = contextModalInsert.daneZamowienia
     const handleChangeCardFragmenty_i_Elementy_naklad = contextModalInsert.handleChangeCardFragmenty_i_Elementy_naklad
     const [add] = useHistoria()
-    const [value,setValue] = useState(null)
+    const [valueIN,setValueIN] = useState(null)
 
-    const onFocuseHandle = (dataIN) => {
-    setValue(dataIN)
-    }
       const sprawdzSume = () => {
 
         let suma_nakladow = fragmenty
@@ -556,7 +571,6 @@ const [setStatus] = useStatus()
       };
 
       const ilezostalo = () => {
-
         let suma_nakladow = fragmenty
           .filter((x) => x.element_id == row.id)
           .map((x) => parseInt(x.naklad))
@@ -571,9 +585,7 @@ const [setStatus] = useStatus()
 
     return (
         <input
-          // disabled={row.zamowienie_id >1}
           onDoubleClick={()=>{console.log("db")}}
-        
           className={sprawdzSume()}
           title={ilezostalo()}
           value={row.naklad}
@@ -588,24 +600,18 @@ const [setStatus] = useStatus()
                 });
                 setStatus(3);
               }
-         
-      
-        
-        
         }
           }
-          onFocus={()=>{ onFocuseHandle(row.naklad)}}
+          onFocus={()=>{ setValueIN(row.naklad)}}
           onBlur={(e)=>{
-
-            if(value != e.target.value){
+            if(valueIN != e.target.value){
                         setStatus(3)
             add(         {
               kategoria: "Naklad",
-              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " Zmiana nakladu z : "+value + " na: "+e.target.value + " szt. ",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
               zamowienie_id: daneZamowienia.id
             })
             }
-  
           }}
         ></input>
     
@@ -614,11 +620,26 @@ const [setStatus] = useStatus()
   function Nazwa({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
     const modalcontext = useContext(ModalInsertContext);
+    const [valueIN,setValueIN] = useState(null)
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
     const handleChangeCardFragmenty_i_Elementy_nazwa = modalcontext.handleChangeCardFragmenty_i_Elementy_nazwa;
     return (
      
         <input
           value={row.nazwa}
+          onFocus={()=>{ setValueIN(row.nazwa)}}
+          onBlur={(e)=>{
+            if(valueIN != e.target.value){
+            add(         {
+              kategoria: "Nazwa",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - Nazwa elementu z "+valueIN + " na "+e.target.value,
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
           className={style.input}
           onChange={(e) =>
 
@@ -642,13 +663,30 @@ const [setStatus] = useStatus()
   
   
   
-  function Strony({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
+  function Strony({ row,handleChangeCardFragmenty_i_Elementy_IloscStron }) {
     const [setStatus] = useStatus()
+    const [valueIN,setValueIN] = useState(null)
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
+
+
     return (
  
         <input
           value={row.ilosc_stron}
           className={style.input}
+          onFocus={()=>{ setValueIN(row.ilosc_stron)}}
+          onBlur={(e)=>{
+            if(valueIN != e.target.value){
+            add(         {
+              kategoria: "Ilość stron",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana ilości stron z "+valueIN + " na "+e.target.value,
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
           onChange={(e) =>
 
             {
@@ -671,11 +709,27 @@ const [setStatus] = useStatus()
   }
   function NettoX({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
+    const [valueIN,setValueIN] = useState(null)
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
+
     return (
    
         <input
         className={style.input}
-        defaultValue={row.format_x}
+        value={row.format_x}
+        onFocus={()=>{ setValueIN(row.format_x)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+          add(         {
+            kategoria: "Format",
+            event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana szerokości z "+valueIN + " na "+e.target.value,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -697,11 +751,26 @@ const [setStatus] = useStatus()
   }
   function NettoY({ row, handleChangeCardElementy }) 
   {const [setStatus] = useStatus()
+    const [valueIN,setValueIN] = useState(null)
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
     return (
   
         <input
         className={style.input}
-          defaultValue={row.format_y}
+          value={row.format_y}
+          onFocus={()=>{ setValueIN(row.format_y)}}
+          onBlur={(e)=>{
+            if(valueIN != e.target.value){
+            add(         {
+              kategoria: "Format",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana wysokości z "+valueIN + " na "+e.target.value,
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
           onChange={(e) => {
             const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -725,11 +794,26 @@ const [setStatus] = useStatus()
   
   function Uwagi({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
+    const [valueIN,setValueIN] = useState(null)
+    const contextModalInsert = useContext(ModalInsertContext);
+    const elementy = contextModalInsert.elementy
+    const daneZamowienia = contextModalInsert.daneZamowienia
+    const [add] = useHistoria()
     return (
   
         <input
         className={style.input}
           value={row.uwagi}
+          onFocus={()=>{ setValueIN(row.uwagi)}}
+          onBlur={(e)=>{
+            if(valueIN != e.target.value){
+            add(         {
+              kategoria: "Uwagi",
+              event: getNameOfElement(row.typ,elementy,_typ_elementu)+ " "+row.nazwa+" - Uwagi:  "+e.target.value,
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
           onChange={(e) =>
             {
               if ( e.target.value === '' || reg_txt.test(e.target.value)) {

@@ -419,7 +419,7 @@ function Dodaj({ row, handleAddCard }) {
                 setStatus(3) 
             add(         {
               kategoria: "Typ elementu",
-              event: getNameOfElement(valueIN,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,elementy,_typ_elementu),
+              event: getNameOfElement(valueIN,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
               zamowienie_id: daneZamowienia.id
             })
             handleChangeCardFragmenty_i_Elementy({

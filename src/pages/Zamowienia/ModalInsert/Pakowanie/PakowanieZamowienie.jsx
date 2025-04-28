@@ -14,6 +14,7 @@ import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
+import { useHistoria } from "hooks/useHistoria";
 
 export default function PakowanieZamowienie() {
   const [oprawa_row, setOprawa_row] = useState();
@@ -76,10 +77,25 @@ function PAKOWANIE_TABLE() {
 function Uwagi( {row}){
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowPakowanie = contextModalInsert.handleUpdateRowPakowanie;
+    const [setStatus] = useStatus()
+    const [add] = useHistoria()
+    const [valueIN,setValueIN] = useState(null)
+    const daneZamowienia = contextModalInsert.daneZamowienia
   return(
       <td className={style.col}>
       <textarea className={style.input_textarea} rows="3" type="text"
       value={row.uwagi}
+      onFocus={()=>{ setValueIN(row.uwagi)}}
+      onBlur={(e)=>{
+        if(valueIN != e.target.value){
+               
+        add(         {
+          kategoria: "Pakowanie",
+          event: " Nowe uwagi : "+e.target.value ,
+          zamowienie_id: daneZamowienia.id
+        })
+        }
+      }}
       onChange={(event) => {
         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
@@ -91,6 +107,7 @@ function Uwagi( {row}){
             update:true
           });
      }
+     setStatus(3)
 
       }}></textarea>
     </td>

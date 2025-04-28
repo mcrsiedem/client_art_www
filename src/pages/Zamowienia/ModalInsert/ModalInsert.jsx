@@ -88,30 +88,15 @@ const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 
-
-
-
-
   useEffect(() => {
 
     if (open.current) {
-      // otwarcie zamówienia
-      
-      // pokazanie parametrow
       setShowParametryZamowienia(true);
-
-      // schowanie kreatora to tworzenia zamówienia
       setShowTemplate(false);
-
       open.current = false;
-
-      // pobranie szczegółów zamówienia
       fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
-      
     }else{
-      //zerowanie stanów
-
       setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})
       setProdukty(initialProdukty)
       setElementy(initialElementy)
@@ -125,17 +110,11 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       setHistoriaZamowienia([])
     }
 
-
-
-
   }, [open]);
-
-
 
   useEffect(() => {
     contextApp.updateClients()
 }, [isShowAddClientStage]);
-
 
   async function fechparametry(idZamowienia,zamowienie_prime_id,setSaveButtonDisabled) {
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
@@ -170,7 +149,6 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
            setTechnologieID([])
            setHistoriaZamowienia([])
            setPakowanie([])
-
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
            setElementy(res.data[2])

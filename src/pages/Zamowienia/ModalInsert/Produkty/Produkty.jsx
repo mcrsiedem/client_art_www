@@ -1,5 +1,5 @@
 import style from "./Produkty.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 // import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
@@ -7,6 +7,7 @@ import { reg_int, reg_txt } from "utils/initialvalue";
 import { useStatus } from "hooks/useStatus";
 import iconCopy from "assets/edit.svg";
 import ProduktyNaklad from "./Naklad/ProduktyNaklad";
+import { useHistoria } from "hooks/useHistoria";
 
 export default function Produkty( ) {
   return (
@@ -87,12 +88,27 @@ function Nazwa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
+
   return (
     <div  className={style.col_dane}>
       <label className={style.label}> Nazwa </label>
       <input
         className={style.input}
         value={row?.nazwa}
+        onFocus={()=>{ setValueIN(row.nazwa)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Nazwa",
+            event: " Produkt - zmiana nazwy : "+e.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) =>
           {
             
@@ -118,6 +134,9 @@ function Strony({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
 const [setStatus] = useStatus()
+      const [add] = useHistoria()
+      const [valueIN,setValueIN] = useState(null)
+      const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Strony </label>
@@ -125,6 +144,17 @@ const [setStatus] = useStatus()
       // disabled
         className={style.input}
         value={row?.ilosc_stron}
+        onFocus={()=>{ setValueIN(row.ilosc_stron)}}
+          onBlur={(e)=>{
+            if(valueIN != e.target.value){
+                      
+            add(         {
+              kategoria: "Ilość stron",
+              event: " Zmiana  z "+valueIN + " na "+e.target.value+" str." ,
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
         onChange={(e) => {
           // const re = /^[0-9]+$/;
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -151,6 +181,9 @@ function FormatX({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
 const [setStatus] = useStatus()
+const [add] = useHistoria()
+const [valueIN,setValueIN] = useState(null)
+const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Szer. </label>
@@ -158,6 +191,17 @@ const [setStatus] = useStatus()
       // disabled
         className={style.input}
         value={row?.format_x}
+        onFocus={()=>{ setValueIN(row.format_x)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                    
+          add(         {
+            kategoria: "Format",
+            event: " Zmiana szerokości  z "+valueIN + " na "+e.target.value+"  mm" ,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -180,6 +224,9 @@ function FormatY({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
 const [setStatus] = useStatus()
+const [add] = useHistoria()
+const [valueIN,setValueIN] = useState(null)
+const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Wys. </label>
@@ -187,6 +234,17 @@ const [setStatus] = useStatus()
       // disabled
         className={style.input}
         value={row?.format_y}
+        onFocus={()=>{ setValueIN(row.format_y)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                    
+          add(         {
+            kategoria: "Format",
+            event: " Zmiana wysokości  z "+valueIN + " na "+e.target.value+"  mm" ,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
@@ -279,12 +337,26 @@ function Uwagi({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <div  className={style.col_dane}>
       <label className={style.label}> Uwagi </label>
       <input
         className={style.input}
         value={row?.uwagi}
+        onFocus={()=>{ setValueIN(row.uwagi)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Uwagi",
+            event: " Produkt - nowe uwagi : "+e.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) =>
           { 
             const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;

@@ -20,8 +20,10 @@ export default function HistoriaZamowienia() {
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
 
-
-  return (
+  const contextModalInsert = useContext(ModalInsertContext);
+  const showHistoria= contextModalInsert.showHistoria;
+if(showHistoria){
+    return (
     <div className={style.container}>
       <div className={style.historia}>
         <HISTORIA_HEADER/>
@@ -29,6 +31,8 @@ export default function HistoriaZamowienia() {
       </div>
     </div>
   );
+}
+
 }
 
 

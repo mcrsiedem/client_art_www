@@ -176,3 +176,22 @@ hr{
   font-size: 0.7rem;
   padding-left: 5px;
 }
+
+
+.icon{
+  width: 30px;
+}
+
+.icon:hover{
+  background-color: rgb(232, 232, 232);
+  border-radius: 20px;
+}
+
+.produkt_menu_button{
+  display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ padding-right: 30px;
+  gap:10px;
+  /* background-color: red; */
+}

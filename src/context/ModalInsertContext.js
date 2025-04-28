@@ -16,6 +16,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [selectedZamowienie,setSelectedZamowienie] = useState(1)
+    const [showHistoria,setShowHistoria] = useState(false)
 
 
 
@@ -276,7 +277,8 @@ export const ModalInsertContextProvider = ({children})=>{
           showInputNrZamowienie, setShowInputNrZamowienie,
           showMenuZamowienia, setShowMenuZamowienia,
           handleChangeCardFragmenty_i_Elementy_naklad,
-          handleChangeCardFragmenty_i_Elementy_nazwa
+          handleChangeCardFragmenty_i_Elementy_nazwa,
+          showHistoria,setShowHistoria
 
 
 

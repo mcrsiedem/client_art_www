@@ -189,6 +189,8 @@ function DataPrzyjecia(){
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const [add] = useHistoria()
+
   return(
       <div className={style.col}>
       <label className={style.label}> Data przyjęcia </label>
@@ -198,6 +200,11 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
          onChange={(event) => {
             setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
         
+            add(         {
+              kategoria: "Data przyjęcia",
+              event: " Zmiana  z "+daneZamowienia.data_spedycji+ " na "+event.target.value ,
+              zamowienie_id: daneZamowienia.id
+            })
          }}></input>
     </div>
   );
@@ -229,6 +236,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
 const oprawa = contextModalInsert.oprawa;
 const setOprawa = contextModalInsert.setOprawa;
+const [add] = useHistoria()
 
 
     return(
@@ -258,7 +266,11 @@ const setOprawa = contextModalInsert.setOprawa;
               }
             })
           );
-
+          add(         {
+            kategoria: "Data spedycji",
+            event: " Zmiana  z "+daneZamowienia.data_spedycji+ " na "+event.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
 
         }
         }></input>

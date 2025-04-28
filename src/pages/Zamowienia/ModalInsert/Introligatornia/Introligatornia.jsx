@@ -227,6 +227,8 @@ function DataSpedycji({ row,index_oprawy }) {
   const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
   const daneZamowienia = contextModalInsert.daneZamowienia;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+
 
   return (
     <td className={style.col}>
@@ -240,7 +242,11 @@ function DataSpedycji({ row,index_oprawy }) {
 
             setDaneZamowienia({...daneZamowienia, data_spedycji: event.target.value, update: true});
           }
-
+          add(         {
+            kategoria: "Oprawa",
+            event: " Data spedycji zmiana  z "+row.data_czystodrukow+ " na "+event.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
                      // 
                      setStatus(3)
         }}
@@ -252,6 +258,9 @@ function DataCzystodrukow({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <td className={style.col}>
       <input
@@ -264,6 +273,12 @@ function DataCzystodrukow({ row }) {
             data_czystodrukow: event.target.value,
             update:true
           });
+
+          add(         {
+            kategoria: "Oprawa",
+            event: " Czystodruki zmiana daty z "+row.data_czystodrukow+ " na "+event.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
 
                      // 
                      setStatus(3)
@@ -544,11 +559,25 @@ function WersjaOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
 const [setStatus] = useStatus()
+const [add] = useHistoria()
+const [valueIN,setValueIN] = useState(null)
+const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <td>
       <input
         className={style.input}
         value={row.wersja}
+        onFocus={()=>{ setValueIN(row.wersja)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Oprawa",
+            event: " Wersja: "+valueIN + " na "+e.target.value ,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowOprawa({
@@ -570,11 +599,26 @@ function BokOprawy({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
+
   return (
     <td>
       <input
         className={style.input}
         value={row.bok_oprawy}
+        onFocus={()=>{ setValueIN(row.bok_oprawy)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Oprawa",
+            event: " Bok oprawy zmiana z "+valueIN + " na "+e.target.value + " mm ",
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowOprawa({
@@ -582,8 +626,6 @@ function BokOprawy({ row }) {
               bok_oprawy: e.target.value,
               update:true
             });
-
-                       // 
                        setStatus(3)
           }
         }}
@@ -596,11 +638,25 @@ function UwagiOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <td>
       <input
         className={style.input}
         value={row.uwagi}
+        onFocus={()=>{ setValueIN(row.uwagi)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Naklad",
+            event: " Oprawa - nowa uwaga "+e.target.value,
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowOprawa({
@@ -608,8 +664,6 @@ function UwagiOprawa({ row }) {
               uwagi: e.target.value,
               update:true
             });
-
-                       // 
                        setStatus(3)
           }
         }}
@@ -622,11 +676,25 @@ function NakladOprawa({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
   const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <td>
       <input
         className={style.input}
         value={row.naklad}
+        onFocus={()=>{ setValueIN(row.naklad)}}
+        onBlur={(e)=>{
+          if(valueIN != e.target.value){
+                 
+          add(         {
+            kategoria: "Naklad oprawy",
+            event: " Oprawa - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
+            zamowienie_id: daneZamowienia.id
+          })
+          }
+        }}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowOprawa({

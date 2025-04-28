@@ -76,24 +76,40 @@ function Footer() {
         className={style.btn}
         onClick={() => {
           modalContext.setShowElementyProcesyInsert(false);
-          setProcesyElementow(procesyElementowTemporary)
-
-
-procesyElementowTemporary.filter(x=>x.delete== true).forEach(row => {
-            add(         {
+          setProcesyElementow(procesyElementowTemporary.map(row => {
+            if(row.delete== true && row.historia != true){
+              add(         {
             kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu - "+row.nazwa+" "+row.rodzaj + " "+row.typ,
+            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu  ",
             zamowienie_id: daneZamowienia.id
           })
-});
 
-procesyElementowTemporary.filter(x=>x.insert== true).forEach(row => {
-  add(         {
-  kategoria: "Procesy",
-  event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu - "+row.nazwa+" "+row.rodzaj + " "+row.typ,
-  zamowienie_id: daneZamowienia.id
-})
-});
+          return {...row, historia: true}
+            } 
+      
+            if(row.insert== true && row.historia != true && row.update != true){
+              add(         {
+            kategoria: "Procesy",
+            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu  ",
+            zamowienie_id: daneZamowienia.id
+          })
+
+          return {...row, historia: true}
+            } 
+                  
+            if(row.update== true && row.historia == false){
+              add(         {
+            kategoria: "Procesy",
+            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - zmiana procesu  ",
+            zamowienie_id: daneZamowienia.id
+          })
+
+          return {...row, historia: true}
+            } else return row
+
+
+}))
+
 
         }}
       >
@@ -181,7 +197,8 @@ const ProcesName = ({ row }) => {
             ...row,
             nazwa_id: e.target.value,
              proces_id: procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id,
-            update: true
+            update: true,
+            historia: false
           });
         }}
       >
@@ -211,7 +228,8 @@ const ProcessTyp = ({ row }) => {
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
             proces_id: e.target.value,
-            update: true
+            update: true,
+            historia: false
           });
         }}
       >
@@ -242,7 +260,8 @@ const BackKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               back_kolor: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}
@@ -264,7 +283,8 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_kolor: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}
@@ -286,7 +306,8 @@ const IloscUzytkow = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               ilosc_uzytkow: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}
@@ -308,7 +329,8 @@ const FrontIlosc = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_ilosc: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}
@@ -330,7 +352,8 @@ const BackIlosc = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               back_ilosc: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}
@@ -352,7 +375,8 @@ const Info = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               info: e.target.value,
-              update: true
+              update: true,
+              historia: false
             });
           }
         }}

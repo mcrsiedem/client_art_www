@@ -104,7 +104,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} />
-        <UwagiTableZamowienia row={row} />
+     
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
         <DataPrzyjeciaTableZamowienia row={row} />
@@ -116,6 +116,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
         <OpiekunZamowieniaTable row={row} />
+           {/* <UwagiTableZamowienia row={row} /> */}
         <SelectBox row={row} />
         {/* <IconLockTable row={row} /> */}
         <td></td>

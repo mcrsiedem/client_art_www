@@ -35,7 +35,6 @@ export default function TableZamowienia({open2,setRow}){
            </th>
            <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
            <th className={style.col_praca}>Praca</th>
-           <th className={style.col_uwagi}>Uwagi</th>
            <th onClick={()=>{
             setZamowienia(zamowienia.sort((a, b) => a.naklad - b.naklad))
             }} className={style.col_strony}>Nakład</th>
@@ -51,6 +50,8 @@ export default function TableZamowienia({open2,setRow}){
            <th className={style.col_status}>Status</th>
            <th className={style.col_etap}>Etap</th>
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
+           {/* <th className={style.col_uwagi}>Uwagi</th> */}
+
            <th className={style.col_checkbox}>
            </th>
            <th className={style.col_alert}></th>

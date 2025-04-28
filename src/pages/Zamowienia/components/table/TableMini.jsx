@@ -16,7 +16,7 @@ export default function TableMini({open2,setRow}){
   
  return (
    <div className={style.tableContainer}>
-     <table>
+     <table className={style.tableZamMini}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
            {/* <th className={style.col_alert}>!</th> */}
@@ -34,7 +34,6 @@ export default function TableMini({open2,setRow}){
            <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
 
            <th className={style.col_praca}>Praca</th>
-           <th className={style.col_uwagi}>Uwagi</th>
            <th className={style.col_strony}>Nakład</th>
            <th className={style.col_strony}>Strony</th>
            <th  className={style.col_spedycja}>Przyjęcie</th>
@@ -46,6 +45,7 @@ export default function TableMini({open2,setRow}){
            <th className={style.col_status}>Status</th>
            <th className={style.col_etap}>Etap</th>
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
+           {/* <th className={style.col_uwagi}>Uwagi</th> */}
 
            <th className={style.col_checkbox}>
              {/* <MenuBtn showMenu={showMenu} setShowMenu={setShowMenu} /> */}

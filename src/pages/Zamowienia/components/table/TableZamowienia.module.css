@@ -12,6 +12,18 @@
    background-color: gray;
 }
 
+
+.tableZam th{
+   font-size: 0.9rem;
+   position: sticky;
+   top:0;
+   height: 2rem;
+   padding-left: 5px;
+   z-index: 2;
+   color: #414040;
+background: rgb(243, 243, 243);
+ }
+
 .btn_dodaj_karte {
    width: 150px;
    height: 30px;

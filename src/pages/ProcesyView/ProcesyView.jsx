@@ -98,9 +98,9 @@ const WykonaniaTable = () => {
   return (
     <div className={style.container}>
       <div className={style.tableContainer}>
-        <table>
+        <table className={style.tableProcesy}>
           <thead>
-            <tr>
+            <tr >
               <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th> <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th> <th> Uwagi</th> <th> Przeloty</th> <th> </th>
             </tr>
           </thead>

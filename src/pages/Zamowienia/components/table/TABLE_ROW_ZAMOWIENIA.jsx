@@ -126,7 +126,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
   
     <tr >
-    <td colSpan={19}>
+    <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>
 
 
@@ -158,17 +158,6 @@ deleteZamowienie([row])
       </div>
           
     </td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
 
 
    </tr>

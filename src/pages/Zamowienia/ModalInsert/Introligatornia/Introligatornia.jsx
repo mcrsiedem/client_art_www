@@ -16,6 +16,7 @@ import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
+import { useHistoria } from "hooks/useHistoria";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -279,6 +280,9 @@ function RodzajOprawy({ row }) {
   const setProdukty = contextModalInsert.setProdukty;
   const contextApp = useContext(AppContext);
 const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
 
   return (
     <td>
@@ -300,6 +304,11 @@ const [setStatus] = useStatus()
             );
           }
 
+          add(         {
+            kategoria: "Oprawa",
+            event: " Nowa oprawa : "+contextApp.procesList?.filter(x=>x.id==event.target.value )[0]?.typ || "brak oprawy",
+            zamowienie_id: daneZamowienia.id
+          })
            // 
            setStatus(3)
 

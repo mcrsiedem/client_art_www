@@ -263,7 +263,7 @@ const PracaTableZamowienia = ({ row }) => {
     <td>
     <input
       //firma_nazwa to skrocona nazwa klienta
-      title={row.klient}
+      title={row.Praca}
       className={style.tytulInput}
       value={row.tytul}
     />

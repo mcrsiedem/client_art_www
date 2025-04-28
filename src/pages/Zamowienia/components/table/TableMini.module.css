@@ -179,7 +179,7 @@
 }
 
 .col_praca {
-   width: 200px;
+   /* width: 400px; */
 }
 
 .col_rok {
@@ -208,7 +208,7 @@
 }
 
 .col_spedycja{
-   width: 100px;
+   width: 90px;
 }
 
 .col_uwagi {

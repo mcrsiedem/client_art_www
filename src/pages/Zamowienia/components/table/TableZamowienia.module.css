@@ -233,7 +233,7 @@ background: rgb(243, 243, 243);
 }
 
 .col_praca {
-   width: 200px;
+   /* width: 400px; */
 }
 
 .col_rok {
@@ -252,7 +252,7 @@ background: rgb(243, 243, 243);
    width: 85px;
 }
 .col_status {
-   width: 130px;
+   width: 90px;
 }
 
 .col_netto {
@@ -264,7 +264,7 @@ background: rgb(243, 243, 243);
 }
 
 .col_spedycja{
-   width: 100px;
+   width: 90px;
 }
 
 .col_uwagi {

@@ -93,8 +93,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         }}
       >
         {/* <IconErrorTable row={row} /> */}
+        <NrTableZamowienia row={row} />
 
-        <td>{row.nr} </td>
         <td>{row.rok} </td>
         <ShowTechnmologiaBtn
           row={row}
@@ -207,6 +207,21 @@ const OprawaTableZamowienia = ({ row }) => {
       title={row.oprawa}
       className={style.klientInput}
       value={row.oprawa}
+    />
+    </td>
+   
+  );
+};
+
+const NrTableZamowienia = ({ row }) => {
+  return (
+    <td>
+       <input
+       disabled
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.nr}
+      className={style.nrInput}
+      value={row.nr}
     />
     </td>
    

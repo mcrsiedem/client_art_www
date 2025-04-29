@@ -15,6 +15,7 @@ import { reg_txt } from "utils/initialvalue";
 import { getMaxID } from "actions/getMaxID";
 import { getSumaCzasow } from "actions/getSumaCzasow";
 import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
+import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 
 
 
@@ -88,6 +89,16 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const setWykonania = techContext.setWykonania;
   const daneTech = techContext.daneTech;
   const setGrupaWykonan = techContext.setGrupaWykonan;
+  const grupaWykonan = techContext.grupaWykonan;
+  const [sumuj] = useGrupyWykonan()
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+    return suma;
+  };
   return (
     <div
                 onDragOver={handleDragOver}
@@ -119,6 +130,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   
   }
 
+ 
   function handleDrop(id,proces_id,grupa_id_drop) {
     if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id) {
 
@@ -132,18 +144,20 @@ if(daneTech.technologia_id !=null){
         }
 }else{
 
-  console.log(grupa_id_drop)
-  setWykonania(
-    wykonania.map((t) => {
-      if (t.id == sessionStorage.getItem("id_wykonanie_drag")) {
-        return {...t,grupa_id: grupa_id_drop};
-      } else {
-        return t;
-      }
-    })
-  );
+  let new_wykonania;
+  // console.log(grupa_id_drop)
+  new_wykonania = wykonania.map((t) => {
+    if (t.id == sessionStorage.getItem("id_wykonanie_drag")) {
+      return {...t,grupa_id: grupa_id_drop};
+    } else {
+      return t;
+    }
+  })
+  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+  setWykonania(new_wykonania);
 
- 
+  // sumuj()
+  
 
 }
 

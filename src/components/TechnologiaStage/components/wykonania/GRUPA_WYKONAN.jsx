@@ -90,7 +90,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const daneTech = techContext.daneTech;
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const grupaWykonan = techContext.grupaWykonan;
-  const [sumuj] = useGrupyWykonan()
+  const [sumujGrupe] = useGrupyWykonan()
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
     return suma;
@@ -144,8 +144,8 @@ if(daneTech.technologia_id !=null){
         }
 }else{
 
+  // przed pierwszym zapisem
   let new_wykonania;
-  // console.log(grupa_id_drop)
   new_wykonania = wykonania.map((t) => {
     if (t.id == sessionStorage.getItem("id_wykonanie_drag")) {
       return {...t,grupa_id: grupa_id_drop};
@@ -153,10 +153,9 @@ if(daneTech.technologia_id !=null){
       return t;
     }
   })
-  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
-  setWykonania(new_wykonania);
 
-  // sumuj()
+  setWykonania(new_wykonania);
+  sumujGrupe(new_wykonania)
   
 
 }

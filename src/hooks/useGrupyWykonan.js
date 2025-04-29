@@ -9,26 +9,25 @@ export function useGrupyWykonan(row){
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const setWykonania = techContext.setWykonania;
   const grupaWykonan = techContext.grupaWykonan;
-  const wykonania = techContext.wykonania;
 
-  const SumaCzasow = (grupa) => {
-    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
     return suma;
   };
-  const SumaPrzelotow = (grupa) => {
-    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
     return suma;
   };
 
 
-function sumuj(row) {
+function sumujGrupe(new_wykonania) {
 
-  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa), przeloty: SumaPrzelotow(grupa)})))
+  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
   
 
   }
 
-  return [sumuj];
+  return [sumujGrupe];
 }
 
 

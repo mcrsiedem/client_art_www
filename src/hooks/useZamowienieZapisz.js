@@ -31,15 +31,25 @@ const [refreshZamowienia] = useZamowienia()
   dialogBox.current.show();
           let response = [];
           // przy zapisz jako kasują się statusy przyjęcia
-          if(daneZamowienia.etap==1){
-            daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:1}
+          // if(daneZamowienia.etap==1){
+          //   daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:1}
+          //   }
+          //   if(daneZamowienia.etap==2){
+          //     daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
+          //     }
+          if(daneZamowienia.etap<3){
+            if(daneZamowienia.stan==1){
+              daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1}
             }
-            if(daneZamowienia.etap==2){
+            if(daneZamowienia.stan==2 ||daneZamowienia.stan==3){
+              daneZamowienia = {...daneZamowienia, nr:"",stan:2,status:1}
+            }
+            
+           
+            }
+            if(daneZamowienia.etap>2){
               daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
               }
-          if(daneZamowienia.etap>2){
-            daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
-            }
 
           let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
 

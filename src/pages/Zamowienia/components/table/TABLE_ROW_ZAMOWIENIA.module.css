@@ -19,7 +19,14 @@
 
 }
 
-
+.nrInput{
+  border: none;
+  padding-left: 5px;
+  background: transparent;
+  /* padding-top: 15px; */
+  /* background-color: #5cb811; */
+  width: 40px;
+}
 .klientInput{
   border: none;
   background: transparent;
@@ -195,8 +202,8 @@ outline: 1px solid #e7e6e3;
 }
 
 
-  .iconSettings{ width: 15px;
-
+  .iconSettings{ width: 17px;
+padding-left: 2px;
    
    }
 

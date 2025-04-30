@@ -49,7 +49,7 @@ const ProcesRow = ({ rowProces }) => {
         <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
         <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
         {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
-        { (grupaWykonan.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
+        { (grupaWykonan?.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
       </div>
       {show &&
           <GRUPA_WYKONAN rowProces={rowProces} />}

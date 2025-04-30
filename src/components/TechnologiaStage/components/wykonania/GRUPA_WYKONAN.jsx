@@ -12,6 +12,12 @@ import { updateWydzielWykonanieZgrupy } from "actions/updateWydzielWykonanieZgru
 import { updatePrzeniesWykonanieDoInnejGrupy } from "actions/updatePrzeniesWykonanieDoInnejGrupy";
 import { updateSkasujGrupe } from "actions/updateSkasujGrupe";
 import { reg_txt } from "utils/initialvalue";
+import { getMaxID } from "actions/getMaxID";
+import { getSumaCzasow } from "actions/getSumaCzasow";
+import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
+import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+
+
 
 export default  function GRUPA_WYKONAN ({ rowProces }) {
   const techContext = useContext(TechnologyContext);
@@ -19,6 +25,17 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
   const wykonania = techContext.wykonania;
   const [show, setShow] = useState(true);
   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
+  const SumaCzasow = (wykonania,grupa) => {
+    // sumuje wszystkie czasy z dowolnej grupy
+    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  
+  const SumaPrzelotow = (wykonania,grupa) => {
+    // sumuje wszystkie czasy z dowolnej grupy
+    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+    return suma;
+  };
   return (
     <>
       {show && grupaWykonan
@@ -69,6 +86,19 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
+  const daneTech = techContext.daneTech;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const grupaWykonan = techContext.grupaWykonan;
+  const [sumujGrupe] = useGrupyWykonan()
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+    return suma;
+  };
   return (
     <div
                 onDragOver={handleDragOver}
@@ -100,30 +130,48 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   
   }
 
+ 
   function handleDrop(id,proces_id,grupa_id_drop) {
     if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id) {
-      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
 
+if(daneTech.technologia_id !=null){
+      let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
         if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length == 1){
-          // console.log("Ostatnie wykonanie w grupie")
           updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, true)
         }
-
         if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length > 1){
-          // console.log("Nieostatnie wykonanie w grupie")
         updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, false)
         }
+}else{
+
+  // przed pierwszym zapisem
+  let new_wykonania;
+  new_wykonania = wykonania.map((t) => {
+    if (t.id == sessionStorage.getItem("id_wykonanie_drag")) {
+      return {...t,grupa_id: grupa_id_drop};
+    } else {
+      return t;
+    }
+  })
+
+  setWykonania(new_wykonania);
+  sumujGrupe(new_wykonania)
+  
+
+}
+
     }
   }
 
 
 }
 
-function DodajGrupeWykonan({ row }) {
+function DodajGrupeWykonan({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
+  let grupaWykonan = techContext.grupaWykonan;
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const daneTech = techContext.daneTech;
 
   return (
     <div style={{ paddingTop: "13px" }}>
@@ -133,8 +181,12 @@ function DodajGrupeWykonan({ row }) {
         className={style.expand}
         src={icon}
         onClick={() => {
+          let newGrupa = [...grupaWykonan]
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);
+          newGrupa.push({...rowGrupa,id: getMaxID(grupaWykonan),czas:0,przeloty:0 })
+          setGrupaWykonan(newGrupa)
+          console.log(newGrupa)
         }}
         alt="Procesy"
       />
@@ -147,10 +199,20 @@ function DodajGrupeWykonan({ row }) {
 
   function handleDrop(id) {
     if (sessionStorage.getItem("typ_drag") == "wykonanie") {
+      if(daneTech.id!=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
       // console.log("id: "+id_drag_wykonania)
       updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
       // let id_drop_grupa = id;
+      }
+      if(daneTech.id==1){
+        let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
+        // console.log("id: "+id_drag_wykonania)
+        // let id_drop_grupa = id;
+        
+        }
+
+
     }
   }
 }

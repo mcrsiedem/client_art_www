@@ -26,10 +26,17 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
   function handleDragWykonanieStart(rowWykonanie) {
     //   e.preventDefault();
     let id = null;
-    if(rowWykonanie.technologia_id==1){
+    // if(rowWykonanie.technologia_id==1){
+    //   id= rowWykonanie.id
+    // }
+    // if(rowWykonanie.technologia_id!=1){
+    //   id= rowWykonanie.global_id
+    // }
+
+    if(rowWykonanie.technologia_id==null){
       id= rowWykonanie.id
     }
-    if(rowWykonanie.technologia_id!=1){
+    if(rowWykonanie.technologia_id>1){
       id= rowWykonanie.global_id
     }
     sessionStorage.setItem("id_wykonanie_drag", id);

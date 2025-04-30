@@ -25,22 +25,22 @@ export default function Header({}) {
       onDoubleClick={() => {
         console.clear();
         // console.log("Karta Technologiczna: ");
-        // console.log("Dane Tech: ", techContext.daneTech);
-        // console.log("Produkt Tech: ", techContext.produktyTech);
+        console.log("Dane Tech: ", techContext.daneTech);
+        console.log("Produkt Tech: ", techContext.produktyTech);
         console.log("Elementy Tech: ", techContext.elementyTech);
         console.log("Fragmenty Tech: ", techContext.fragmentyTech);
         console.log("Oprawa Tech: ", techContext.oprawaTech);
-        // console.log("Procesy elementów: ", techContext.procesyElementowTech);
+        console.log("Procesy elementów: ", techContext.procesyElementowTech);
         console.log("Arkusze: ", techContext.arkusze);
         console.log("Legi: ", techContext.legi);
         console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
         console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
         console.log("Wykonania tech: ", techContext.wykonania);
-        // console.log("listaPapierow: ", appcontext.listaPapierow);
-        // console.log(
-        //   "lista wszystkich procesów appcontext.procesList: ",
-        //   appcontext.procesList
-        // );
+        console.log("listaPapierow: ", appcontext.listaPapierow);
+        console.log(
+          "lista wszystkich procesów appcontext.procesList: ",
+          appcontext.procesList
+        );
         //  ponumerujArkusze();
         //  ponumerujArkusze();
 

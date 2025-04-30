@@ -559,7 +559,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
         
 
-         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
@@ -606,7 +606,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
 
    
-        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
+        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
       
           setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});

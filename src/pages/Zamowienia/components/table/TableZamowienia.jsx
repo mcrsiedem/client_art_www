@@ -7,6 +7,7 @@ import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
+import { useZamowienia } from "hooks/useZamowienia";
 export default function TableZamowienia({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
@@ -15,7 +16,7 @@ export default function TableZamowienia({open2,setRow}){
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
   const [sortWgEtapu] = useSortowanieZamowienia()
- 
+ const [refreshZamowienia] = useZamowienia()
 
  return (
    <div className={style.tableContainer} >
@@ -23,7 +24,11 @@ export default function TableZamowienia({open2,setRow}){
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
            {/* <th className={style.col_alert}>!</th> */}
-           <th className={style.col_nr}>Nr</th>
+           <th onClick={()=>{
+         contextApp.setSortowanieZamowienia("nr")
+         refreshZamowienia()
+
+            }} className={style.col_nr}>Nr</th>
            <th className={style.col_rok}>Rok</th>
            <th title="Technologia" className={style.th_karta}>
              <img
@@ -36,14 +41,28 @@ export default function TableZamowienia({open2,setRow}){
            <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
            <th className={style.col_praca}>Praca</th>
            <th onClick={()=>{
-            setZamowienia(zamowienia.sort((a, b) => a.naklad - b.naklad))
+         contextApp.setSortowanieZamowienia("naklad")
+         refreshZamowienia()
+
             }} className={style.col_strony}>Nakład</th>
-           <th className={style.col_strony}>Strony</th>
-           <th  className={style.col_spedycja}>Przyjęcie</th>
-           <th  className={style.col_spedycja}>Spedycja</th>
-           <th className={style.col_strony}>Netto</th>
            <th onClick={()=>{
-            setZamowienia(zamowienia.sort((a, b) => a.oprawa_id - b.oprawa_id))
+         contextApp.setSortowanieZamowienia("ilosc_stron")
+         refreshZamowienia()
+
+            }} className={style.col_strony}>Strony</th>
+           <th onClick={()=>{
+            contextApp.setSortowanieZamowienia("data_przyjecia")
+            refreshZamowienia()
+            }} className={style.col_spedycja}>Przyjęcie</th>
+           <th onClick={()=>{
+            contextApp.setSortowanieZamowienia("data_spedycji")
+            refreshZamowienia()
+            }} className={style.col_spedycja}>Spedycja</th>
+           <th className={style.col_strony}>Netto</th>
+           <th  onClick={()=>{
+         contextApp.setSortowanieZamowienia("oprawa_id")
+         refreshZamowienia()
+
             }}className={style.col_netto}>Oprawa</th>
            <th className={style.col_firma2}>Firma</th>
            <th className={style.col_status}>Stan</th>

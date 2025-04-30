@@ -12,7 +12,7 @@ export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(1);
-    const [sortowanieZamowienia, setSortowanieZamowienia] = useState(0);
+    const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
     const [selectedKlient, setSelectedKlient] = useState("0");

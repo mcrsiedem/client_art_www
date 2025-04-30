@@ -124,6 +124,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
 {row.show &&(
 
+
   
     <tr >
     <td colSpan={18}>
@@ -149,12 +150,12 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
           }}className={style.btn_zamowienia_menu_row} >Zamknij</button>
 
 
-
-
-<button onClick={()=>{
+ {row.stan ==1 || row.stan==2 ? <button onClick={()=>{
 
 deleteZamowienie([row])
-        }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>
+        }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
+ 
+    
       </div>
           
     </td>

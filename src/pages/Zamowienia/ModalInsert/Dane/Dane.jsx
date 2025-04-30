@@ -1,6 +1,6 @@
 import style from "./Dane.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji } from "utils/initialvalue";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt } from "utils/initialvalue";
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
@@ -559,7 +559,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
         
 
-         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
         if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
@@ -606,8 +606,8 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
 
    
-        const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
-        if ( event.target.value === '' || re.test(event.target.value)) {
+        // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
+        if ( event.target.value === '' || reg_txt.test(event.target.value)) {
       
           setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
            

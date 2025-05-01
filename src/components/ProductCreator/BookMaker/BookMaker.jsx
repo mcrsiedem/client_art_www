@@ -268,23 +268,44 @@ const Srodek = () => {
 };
 
 
-const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
+const AddBtn = ({ setShowTemplate, setShowParametryZamowienia }) => {
+  const context = useContext(PreOrderContext);
+  const [createBook] = useCreatorBook();
+  const isEmpty = () => {
+    if (
+      context.preOrder.naklad == null ||
+      context.preOrder.naklad == "" ||
+      context.preOrder.szerokosc == null ||
+      context.preOrder.szerokosc == ""
+      ||
+      context.preOrder.wysokosc == null ||
+      context.preOrder.wysokosc == ""
+      ||
+      context.preOrder.strony_okl == null ||
+      context.preOrder.strony_okl == ""
+      ||
+      context.preOrder.strony_srd == null ||
+      context.preOrder.strony_srd == ""
+    ) {
+      return true;
+    }
+    return false;
+  };
 
-  const [createBook] = useCreatorBook()
   return (
     <div className={style.bindingContainer}>
-    <button
-      onClick={() => {
-        setShowTemplate(false);
-        setShowParametryZamowienia(true);
-        createBook() 
-      }}
-      className={style.btn}
-    >
-      Dodaj
-    </button>
-    
-  </div>
+      <button
+        disabled={isEmpty()}
+        onClick={() => {
+          setShowTemplate(false);
+          setShowParametryZamowienia(true);
+          createBook();
+        }}
+        className={isEmpty() ? style.btn_disabled : style.btn}
+      >
+        Dodaj
+      </button>
+    </div>
   );
 };
 

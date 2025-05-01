@@ -86,20 +86,6 @@ function createBook() {
     );
 
 
-    // dodaje do środków falcowanie takie jak zostało wybrane w kreatorze
-    // modalInsertContext.setProcesyElementow(
-    //   modalInsertContext.procesyElementow.map((t) => {
-    //     if (t.id == 3) {
-    //       return {
-    //         ...t,
-    //         proces_id: preOrderContext.preOrder.falc_skladka,
-
-    //       };
-    //     }else return t
-
-    //   })
-    // );
-
     modalInsertContext.setProcesyElementow(
       modalInsertContext.procesyElementow.map((t) => {
         if (t.id != 3) {
@@ -128,55 +114,6 @@ function createBook() {
       })
     );
 
-
-
-const initialProcesyBook = [
-  {
-    id: 1,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 1,
-    proces_id: 1,
-    nazwa_id: 1,
-    front_ilosc: "4",
-    back_ilosc: "4",
-    front_kolor: "CMYK",
-    back_kolor: "CMYK",
-    ilosc_uzytkow: 1,
-    info: "",
-    indeks: 0,
-  },
-  {
-    id: 2,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 2,
-    proces_id: 1,
-    nazwa_id: 1,
-    front_ilosc: "4",
-    back_ilosc: "4",
-    front_kolor: "CMYK",
-    back_kolor: "CMYK",
-    ilosc_uzytkow: 1,
-    info: "",
-    indeks: 1,
-  },
-  {
-    id: 3,
-    zamowienie_id: 1,
-    produkt_id: 1,
-    element_id: 2,
-    proces_id: 29,
-    nazwa_id: 3,
-    front_ilosc: "",
-    back_ilosc: "",
-    front_kolor: "",
-    back_kolor: "",
-    ilosc_uzytkow: 1,
-    info: "",
-    indeks: 2,
-  },
-];
   }
   return [createBook];
 

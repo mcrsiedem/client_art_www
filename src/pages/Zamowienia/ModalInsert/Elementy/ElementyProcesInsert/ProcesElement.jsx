@@ -217,6 +217,7 @@ const ProcessTyp = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   const selectedElementROW = contexModal.selectedElementROW;
+  const procesList = contexApp.procesList;
 
   return (
     <td>
@@ -225,11 +226,14 @@ const ProcessTyp = ({ row }) => {
         value={row.proces_id}
         onChange={(e) => {
           console.log(e.target.value)
+          let proc = procesList.filter(x=> x.id == e.target.value).map(x=>{return x})
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
+            ...proc[0],
             proces_id: e.target.value,
             update: true,
-            historia: false
+            historia: false,
+            id:row.id
           });
         }}
       >

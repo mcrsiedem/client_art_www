@@ -66,7 +66,7 @@ export const AppContextProvider = ({children})=>{
 
        const showMeProcessName = (id) =>{
 
-        return procesListName?.filter(pln => pln.id == id)[0].nazwa
+        return  procesListName?.filter(pln => pln.id == id)[0].nazwa
        }
 
 

@@ -8,9 +8,10 @@ export function addNewProcess(row,procesyElementowTemporary, setProcesyElementow
 const procesyElementowEditTemporary = procesyElementowTemporary.slice();
 const procesListEdit = procesList.slice();
 
-
+let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
 
       procesyElementowEditTemporary.push({
+        ...proc[0],
         id: Math.max(...procesyElementowTemporary.map((f) => f.id)) + 1,
         zamowienie_id: row.zamowienie_id,
         produkt_id: row.produkt_id,

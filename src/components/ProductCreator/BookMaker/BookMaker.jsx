@@ -122,7 +122,13 @@ const Szerokosc = () => {
           { 
             const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
             if (e.target.value === '' || re.test(e.target.value)) {
-            context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
+            // context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
+
+            if(e.target.value > 160 && e.target.value <185){
+              context.setPreOrder({...context.preOrder, szerokosc: e.target.value,falc_skladka: 31})
+            }else{
+              context.setPreOrder({...context.preOrder,szerokosc: e.target.value, falc_skladka: 29})
+            }
             }
           } 
         }

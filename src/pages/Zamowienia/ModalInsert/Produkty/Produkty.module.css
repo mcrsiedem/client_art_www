@@ -157,7 +157,7 @@ display: none;
 }
 .row1{
   display: grid;
-  grid-template-columns: 150px 70px  50px 50px 50px 100px 400px 80px 1fr;
+  grid-template-columns: 150px 70px  50px 50px 50px 100px 400px 60px 1fr;
   gap: 10px;
 }
 

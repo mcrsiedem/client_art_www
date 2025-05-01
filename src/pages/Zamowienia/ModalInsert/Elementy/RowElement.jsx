@@ -357,7 +357,7 @@ function Procesy({ row}) {
             .filter((frag) => frag.element_id == row.id)
             .sort((a, b) => a.indeks - b.indeks)
             .filter((x) => x.delete != true)
-            .map((pr,i) => appContext.showMeProcessName( pr.nazwa_id)+" "
+            .map((pr,i) => (<><p className={style.procesy_elementy_bold}>{appContext.showMeProcessName( pr.nazwa_id)} </p> <p className={style.procesy_elementy_light}>  {pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+ " "}</p> </>) 
             )
             }
       </div>

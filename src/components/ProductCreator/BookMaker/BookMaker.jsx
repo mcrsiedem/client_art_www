@@ -6,6 +6,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import CardBinding from "./CardBinding";
 
 import { PreOrderContext } from "context/PreOrderContext";
+import { useCreatorBook } from "hooks/useCreatorBook";
 export default function BookMaker({
   setShowTemplate,
   setShowParametryZamowienia,
@@ -71,7 +72,7 @@ const procesListName = contextApp.procesListName;
 
       <select
         className={style.oprawa}
-        defaultValue={context.preOrder.oprawa}
+        value={context.preOrder.oprawa}
         onChange={(event) => {
           setShowElement(true)
           if(event.target.value==0){
@@ -192,7 +193,7 @@ const Falc = () => {
       Falcowanie:
       <select
         className={style.select}
-        defaultValue={context.preOrder.falc_skladka}
+        value={context.preOrder.falc_skladka}
         onChange={(e) => {
           context.setPreOrder({...context.preOrder, falc_skladka: e.target.value}) 
         }}
@@ -269,20 +270,14 @@ const Srodek = () => {
 
 const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
 
-  const preOrderContext = useContext(PreOrderContext)
-  const modalInsertContext = useContext(ModalInsertContext)
-  const setDaneZamowienia= modalInsertContext.setDaneZamowienia;
-  const daneZamowienia= modalInsertContext.daneZamowienia;
+  const [createBook] = useCreatorBook()
   return (
     <div className={style.bindingContainer}>
     <button
       onClick={() => {
         setShowTemplate(false);
         setShowParametryZamowienia(true);
-        AddBookFromCreator(modalInsertContext,preOrderContext) // przekazane contexty do funkcjis
-        // AddProductFromCreator(naklad,binding,elements);
-        // console.log("preorder", poc.preOrder)
-        // setDaneZamowienia({...daneZamowienia, zgoda_na_zapis: true});
+        createBook() 
       }}
       className={style.btn}
     >

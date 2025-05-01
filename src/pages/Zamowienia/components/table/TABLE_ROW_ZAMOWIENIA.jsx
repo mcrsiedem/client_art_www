@@ -78,7 +78,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
         // className={ style.row_zamowienia}
         key={row.id}
-        onmousedown={(event) => {
+        onMouseDown={(event) => {
           if (event.ctrlKey) {
             console.log("db");
           }
@@ -208,6 +208,7 @@ const OprawaTableZamowienia = ({ row }) => {
       title={row.oprawa}
       className={style.klientInput}
       value={row.oprawa}
+      readOnly
     />
     </td>
    
@@ -223,6 +224,8 @@ const NrTableZamowienia = ({ row }) => {
       title={row.nr}
       className={style.nrInput}
       value={row.nr}
+      readOnly
+
     />
     </td>
    
@@ -241,6 +244,8 @@ const KlientTableZamowienia = ({ row }) => {
       title={row.klient}
       className={style.klientInput}
       value={row.firma_nazwa}
+      readOnly
+
     />
     </td>
    
@@ -255,6 +260,8 @@ const SpedycjaTableZamowienia = ({ row }) => {
       title={row.data_spedycji}
       className={style.klientInput}
       value={row.data_spedycji}
+      readOnly
+
     />
     </td>
    
@@ -268,6 +275,8 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
       title={row.data_przyjecia}
       className={style.klientInput}
       value={row.data_przyjecia}
+      readOnly
+
     />
     </td>
    
@@ -282,6 +291,8 @@ const PracaTableZamowienia = ({ row }) => {
       title={row.Praca}
       className={style.tytulInput}
       value={row.tytul}
+      readOnly
+
     />
     </td>
   );
@@ -294,6 +305,8 @@ const UwagiTableZamowienia = ({ row }) => {
       title={row.uwagi}
       className={style.tytulInput}
       value={row.uwagi}
+      readOnly
+
     />
     </td>
   );
@@ -340,6 +353,8 @@ const StanZamowieniaTable = ({ row }) => {
       title={row.klient}
       className={style.inputStan}
       value={_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}
+      readOnly
+
     />
     </td>
   );
@@ -355,6 +370,8 @@ const EtapZamowieniaTable = ({ row }) => {
       title={row.klient}
       className={style.tytulEtap}
       value={_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}
+      readOnly
+
     />
     </td>
   );
@@ -370,6 +387,8 @@ const OpiekunZamowieniaTable = ({ row }) => {
       title={row.klient}
       className={style.tytulEtap}
       value={row.opiekun}
+      readOnly
+
     />
     </td>
   );
@@ -384,6 +403,8 @@ const FirmaZamowieniaTable = ({ row }) => {
       title={row.klient}
       className={style.tytulfirma}
       value={_firma.filter((s) => s.id == row.firma_id).map((x) => x.nazwa_skrocona)}
+      readOnly
+
     />
     </td>
   );

@@ -34,12 +34,6 @@ export const PreOrderContextProvider = ({children})=>{
     // },[])
 
     
-    useEffect(()=>{
-
-    },[])
-
-
-    
     
     return  <PreOrderContext.Provider 
                 value={{

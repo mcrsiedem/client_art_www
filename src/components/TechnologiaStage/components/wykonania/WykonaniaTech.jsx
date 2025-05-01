@@ -25,7 +25,7 @@ const WykonaniaTechTable = () => {
 
   return (
   <div className={style.main}>
-      {procesyElementowTech.map((rowProces) => (
+      {procesyElementowTech.sort((a, b) => a.element_id - b.element_id).map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))}
   </div>
@@ -63,7 +63,7 @@ const Rozwin = ({  rowProces,show, setShow }) => {
   // if  (procesyElementowTech
   // .filter((f) => f.proces_id == rowProces.id).length !== 0){
   return (
-    <div style={{ display: "block", margin : "auto"}} >
+    <div  >
       <img
                       
         className={style.expand}

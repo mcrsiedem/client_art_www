@@ -13,8 +13,7 @@ export default function WykonaniaTech() {
   return (
     <div className={style.container}>
        <div className={style.header_procesy}>
-      <p></p>
-        <p style={{ display: "flex", justifyContent:"center",alignItems:"center", color:"grey" , fontSize:"1.5rem"}}>Procesy</p>
+        <p className={style.header_txt}>PROCESY</p>
       </div>
       <WykonaniaTechTable />
     </div>
@@ -25,7 +24,7 @@ const WykonaniaTechTable = () => {
   const procesyElementowTech = techContext.procesyElementowTech;
 
   return (
-  <div className={style.container}>
+  <div className={style.main}>
       {procesyElementowTech.map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))}
@@ -46,8 +45,8 @@ const ProcesRow = ({ rowProces }) => {
         <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         </div>
-        <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p>
-        <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p>
+        {/* <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p> */}
+        {/* <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p> */}
         {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
         { (grupaWykonan?.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
       </div>

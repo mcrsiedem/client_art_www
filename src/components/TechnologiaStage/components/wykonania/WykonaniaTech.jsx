@@ -8,10 +8,16 @@ import { _typ_elementu, reg_txt } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
-
+import { useProcesy } from "hooks/useProcesy";
 export default function WykonaniaTech() {
+  const [createWykonaniaFromArkuszeLegi] = useProcesy()
+
+
   return (
-    <div className={style.container}>
+    <div onDoubleClick={()=>{
+      createWykonaniaFromArkuszeLegi()
+
+    }} className={style.container}>
        <div className={style.header_procesy}>
         <p className={style.header_txt}>PROCESY</p>
       </div>

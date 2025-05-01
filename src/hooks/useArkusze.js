@@ -651,63 +651,72 @@ let grupa_id = MaxID(new_grupy)
         });
       })
 
-  // new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
 
     }
+      // przeniesione do odzielnej funkcji useProcesy
+    // if(proces.lega==1){ 
+    //   let grupa_id = MaxID(new_grupy)
+    //   new_grupy.push({
+    //     id: grupa_id,
+    //     global_id:0,
+    //     indeks: i + 1,
+    //     element_id: proces.element_id,
+    //     nazwa: proces.nazwa,
+    //     poczatek: "2024-10-30 10:00:00",
+    //     czas: 1,
+    //     koniec: "2024-10-30 11:00:00",
+    //     procesor_id:proces.procesor_domyslny,
+    //     narzad: proces.narzad,
+    //     predkosc: proces.predkosc,
+    //     proces_id: proces.id,
+    //     mnoznik: proces.mnoznik,
+    //     status:1,
+    //     stan:1,
+    //     uwagi: ""
+    //   });
 
-    if(proces.lega==1){ 
-      let grupa_id = MaxID(new_grupy)
-      new_grupy.push({
-        id: grupa_id,
-        global_id:0,
-        indeks: i + 1,
-        element_id: proces.element_id,
-        nazwa: proces.nazwa,
-        poczatek: "2024-10-30 10:00:00",
-        czas: 1,
-        koniec: "2024-10-30 11:00:00",
-        procesor_id:proces.procesor_domyslny,
-        narzad: proces.narzad,
-        predkosc: proces.predkosc,
-        proces_id: proces.id,
-        mnoznik: proces.mnoznik,
-        status:1,
-        stan:1,
-        uwagi: ""
-      });
+    //   new_legi
+    //   .filter(a => a.element_id == proces.element_id)
+    //   .map(a=>{
+    //     new_wykonania.push({
+    //       id: MaxID(new_wykonania),
+    //       indeks: i + 1,
+    //       nazwa: proces.nazwa,
+    //       element_id: a.element_id,
+    //       arkusz_id: a.id,
+    //       proces_id: proces.id,
+    //       typ_elementu: a.typ_elementu,
+    //       poczatek: "2024-10-30 10:00:00",
+    //       czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
+    //       koniec: "2024-10-30 11:00:00",
+    //       procesor_id:proces.procesor_domyslny,
+    //       grupa_id:grupa_id,
+    //       narzad: proces.narzad,
+    //       predkosc: proces.predkosc,
+    //       naklad: a.naklad,
+    //       mnoznik: proces.mnoznik,
+    //       status:1,
+    //       stan:1,
+    //       przeloty: a.naklad / proces.ilosc_uzytkow,
+    //       uwagi: ""
+    //     });
+    //   })
 
-      new_legi
-      .filter(a => a.element_id == proces.element_id)
-      .map(a=>{
-        new_wykonania.push({
-          id: MaxID(new_wykonania),
-          indeks: i + 1,
-          nazwa: proces.nazwa,
-          element_id: a.element_id,
-          arkusz_id: a.id,
-          proces_id: proces.id,
-          typ_elementu: a.typ_elementu,
-          poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
-          koniec: "2024-10-30 11:00:00",
-          procesor_id:proces.procesor_domyslny,
-          grupa_id:grupa_id,
-          narzad: proces.narzad,
-          predkosc: proces.predkosc,
-          naklad: a.naklad,
-          mnoznik: proces.mnoznik,
-          status:1,
-          stan:1,
-          przeloty: a.naklad / proces.ilosc_uzytkow,
-          uwagi: ""
-        });
-      })
-
-    }
+    // }
  
     
 
   })
+  // przeniesione do odzielnej funkcji useProcesy
+  // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+  // setWykonania(new_wykonania)
+
+
+
+
+
+
+
   //oprawa
 
 //   oprawaTech.map(
@@ -735,9 +744,6 @@ let grupa_id = MaxID(new_grupy)
   
   // setGrupaWykonan(new_grupy);
   // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ));
-  setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
-  setWykonania(new_wykonania)
-
 
   // ponumerujArkusze()
 

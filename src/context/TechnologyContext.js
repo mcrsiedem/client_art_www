@@ -38,6 +38,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [elementyTech, setElementyTech] = useState([]);
         const [fragmentyTech, setFragmentyTech] = useState([]);
         const [oprawaTech, setOprawaTech] = useState([]);
+        const [grupaOprawaTech, setGrupaOprawaTech] = useState([]);
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
         const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState(initialProcesy); // aby mozna było zamknąc bez zapisywania
         const [showElementyTechProcesyInsert, setShowElementyTechProcesyInsert] =     useState(false);

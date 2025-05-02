@@ -159,6 +159,7 @@ if(daneTech.id == 1){
     <div>
       <div>
         <img
+        title="Skasuj procesy"
           className={style.expand2}
           src={iconTrash}
           onClick={() => {

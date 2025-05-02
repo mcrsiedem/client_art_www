@@ -56,6 +56,7 @@ export default function Header({}) {
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
         {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
         <p className={style.title2}>Technologia </p>
+        <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
         {/* <IconError/> */}
       </LeftPane>
       <CenterPane>
@@ -273,6 +274,7 @@ const ZapisBtnPromise = () => {
 };
 //----
 const LeftPane = ({ children }) => {
+
   return <div className={style.left}>{children}</div>;
 };
 

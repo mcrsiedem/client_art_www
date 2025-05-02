@@ -33,10 +33,10 @@ export default  function ROW_OPRAWA ({ grupaOprawa }) {
 
               className={style.grupa_container}>
                  <Procesor grupaOprawa={grupaOprawa} />
-                 <NakladGrupy rowGrupa={grupaOprawa} />
+                 <NakladGrupy grupaOprawa={grupaOprawa} />
                  <CzasGrupy rowGrupa={grupaOprawa} />
                  <PredkoscGrupy rowGrupa={grupaOprawa} />
-                 <PrzelotyGrupy rowGrupa={grupaOprawa} />
+                 <IloscZbieran grupaOprawa={grupaOprawa} />
                  <MnoznikPredkosci grupaOprawa={grupaOprawa}/>
                  <Stangrupy grupaOprawa={grupaOprawa}/>
                  <StatusGrupy grupaOprawa={grupaOprawa} />
@@ -338,7 +338,7 @@ const CzasGrupy = ({ rowGrupa }) => {
     </div>
   );
 };
-const NakladGrupy = ({ rowGrupa }) => {
+const NakladGrupy = ({ grupaOprawa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
@@ -348,15 +348,16 @@ const NakladGrupy = ({ rowGrupa }) => {
       <input
       disable
         className={style.input}
+        value={grupaOprawa.naklad}
         // value={zamienNaGodziny(rowGrupa.czas)}
-        onChange={(e) => {
-          if (e.target.value == "" || reg_txt.test(e.target.value)) {
-            updateGrupaWykonan({
-              ...rowGrupa,
-              czas: e.target.value,
-            });
-          }
-        }}
+        // onChange={(e) => {
+        //   if (e.target.value == "" || reg_txt.test(e.target.value)) {
+        //     updateGrupaWykonan({
+        //       ...rowGrupa,
+        //       czas: e.target.value,
+        //     });
+        //   }
+        // }}
       ></input>
     </div>
   );
@@ -387,17 +388,17 @@ const PredkoscGrupy = ({ rowGrupa }) => {
 };
 
 
-const PrzelotyGrupy = ({ rowGrupa }) => {
+const IloscZbieran = ({ grupaOprawa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   return (
     <div className={style.col_dane_przeloty}>
       
-      <label className={style.label}> Przeloty </label>
+      <label className={style.label}> Zbierania </label>
       <input
       
         className={style.input}
-        value={rowGrupa.przeloty}
+        value={grupaOprawa.ilosc_zbieran}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
             // updateGrupaWykonan({

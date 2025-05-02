@@ -21,7 +21,7 @@ const oprawaTech = techContext.oprawaTech;
 const procesList = contextApp.procesList;
 
 let czas;
-function getCzasOprawy(local_oprawa_id) {
+function czasOprawy(local_oprawa_id) {
 
 // let naklad = oprawaTech.filter(x=>x.id ==local_oprawa_id).map(x => { return x})[0].naklad
 let naklad = oprawaTech.filter(x=>x.id ==local_oprawa_id)[0].naklad
@@ -57,7 +57,38 @@ if(proces_id > 59 && proces_id <67){
   return  czas;
   }
 
-  return [getCzasOprawy];
+  const iloscZbieran = (local_oprawa_id) => {
+let proces_id = oprawaTech.filter(x=>x.id ==local_oprawa_id)[0].oprawa
+let ilosc_leg = legiFragmenty.filter(x=>x.oprawa_id ==local_oprawa_id&& x.typ!=1).length
+
+
+    let ilosc_zbieran;
+    if(proces_id == 50 || proces_id ==51 || proces_id ==52){
+      ilosc_zbieran= Math.ceil(ilosc_leg /16)
+      return  ilosc_zbieran
+    }
+    
+    
+    
+    if(proces_id > 53 && proces_id <60){
+    
+      ilosc_zbieran= Math.ceil(ilosc_leg /6) 
+      return  ilosc_zbieran
+    }
+    
+    if(proces_id > 59 && proces_id <67){
+    
+      ilosc_zbieran= Math.ceil(ilosc_leg /1) 
+      return  ilosc_zbieran
+    }
+
+
+
+    return ilosc_zbieran
+
+  }
+
+  return [czasOprawy,iloscZbieran];
 }
 
 

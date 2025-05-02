@@ -10,6 +10,9 @@ import DecodeToken from "pages/Login/DecodeToken";
 import iconError from "assets/error.svg";
 import { refreshZamowienia } from "actions/refreshZamowienia";
 import { useArkusze } from "hooks/useArkusze";
+import { useZamowienia } from "hooks/useZamowienia";
+import axios from "axios";
+import { IP } from "../../../../utils/Host";
 
 
 export default function Header({}) {
@@ -294,7 +297,7 @@ const AlertLega = () => {
   }
 };
 
-const IconNavigate = ({ className, logo, navi }) => {
+const IconNavigate =  ({ className, logo, navi }) => {
   const techContext = useContext(TechnologyContext);
   const appContext = useContext(AppContext)
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
@@ -302,17 +305,22 @@ const IconNavigate = ({ className, logo, navi }) => {
   const fechGrupyAndWykonaniaForProcesor =
     techContext.fechGrupyAndWykonaniaForProcesor;
   const selectedProcesor = techContext.selectedProcesor;
+  const [refreshZamowienia] = useZamowienia()
   return (
     <img
       className={className}
       src={logo}
-      onClick={() => {
+      onClick={ async() => {
         setShowTechnologyStage(false);
 
         techContext.setRowZamowienia(null);
         techContext.setRowTechnologia(null);
         fechGrupyAndWykonaniaForProcesor(selectedProcesor);
-        refreshZamowienia(appContext.setZamowienia,appContext.setZamowieniaWyszukiwarka)
+        // refreshZamowienia(appContext.setZamowienia,appContext.setZamowieniaWyszukiwarka)
+        await axios.put(IP + "setOrderClosed", {
+          id: techContext.daneTech.zamowienie_id,
+        });
+        refreshZamowienia();
         // techContext.setOpenTechnologia(false)
       }}
       alt="Logo"

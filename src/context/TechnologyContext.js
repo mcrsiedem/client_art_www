@@ -20,6 +20,7 @@ export const TechnologyContextProvider = ({children})=>{
 
 
     const [menuElementyTech,setMenuElementyTech] = useState(false)
+    const [showProcesy,setShowProcesy] = useState(false)
 
     //dane z zamówienia
     const [dane, setDane] = useState([]);
@@ -658,7 +659,8 @@ async function fechTechnology() {
                     fechparametryTechnologii,
                     fechTechnology,
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
-                    selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry
+                    selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
+                    showProcesy,setShowProcesy
                 }}
             >
                 {children}

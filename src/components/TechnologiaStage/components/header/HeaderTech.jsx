@@ -76,7 +76,7 @@ export default function Header({}) {
 
 const ClearBTN = () => {
   const techContext = useContext(TechnologyContext);
-
+  const setShowProcesy = techContext.setShowProcesy;
 // if(DecodeToken(sessionStorage.getItem("token")).id ==1){
     return (
     <button
@@ -87,6 +87,7 @@ const ClearBTN = () => {
         techContext.setLegiFragmenty([])
         techContext.setGrupaWykonan([])
         techContext.setWykonania([])
+        setShowProcesy(false)
         
       }}
     >

@@ -451,6 +451,8 @@ function ShowTechnmologiaBtn({
   const techContext = useContext(TechnologyContext);
 
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+ 
+    const setShowProcesy = techContext.setShowProcesy;
   if (row.open_stan==1 ) {
     return (
       <td className={style.td_karta}>
@@ -478,7 +480,7 @@ function ShowTechnmologiaBtn({
               techContext.setShowTechnologyStage(true);
               techContext.setRowZamowienia(row);
               techContext.fechparametry(row?.id);
-         
+              setShowProcesy(false)
             }}
             alt="Procesy"
           />:<></>}

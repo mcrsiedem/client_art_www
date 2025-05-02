@@ -11,9 +11,13 @@ import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 export default function WykonaniaTech() {
   const [createWykonaniaFromArkuszeLegi] = useProcesy()
+  const techContext = useContext(TechnologyContext);
+  const showProcesy = techContext.showProcesy;
+  const setShowProcesy = techContext.setShowProcesy;
+  const arkusze = techContext.arkusze;
 
-
-  return (
+  if(showProcesy){
+      return (
     <div onDoubleClick={()=>{
       createWykonaniaFromArkuszeLegi()
 
@@ -22,10 +26,27 @@ export default function WykonaniaTech() {
        <div className={style.header_procesy}>
         <p className={style.header_txt}>Procesy</p>
       </div>
-      
+
       <WykonaniaTechTable />
     </div>
   );
+  }
+  else {
+    if(arkusze.length !=0){
+      return (
+      <div  className={style.btn_show_procesy_container}>
+  <button className={style.btn_show_procesy} onClick={()=>{
+        createWykonaniaFromArkuszeLegi()
+        setShowProcesy(true)
+        console.log("wykonania")
+      }} >Wykonania</button>
+         
+      </div>
+    )
+    }
+    
+  }
+
 }
 const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);

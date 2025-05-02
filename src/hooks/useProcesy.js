@@ -6,6 +6,7 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
+import { useOprawa } from "./useOprawa";
 
 export function useProcesy(){
     const contextApp = useContext(AppContext);
@@ -19,40 +20,44 @@ export function useProcesy(){
     const setWykonania = techContext.setWykonania;
     const oprawaTech = techContext.oprawaTech;
     const legiFragmenty = techContext.legiFragmenty;
+    const grupaOprawaTech = techContext.grupaOprawaTech;
+    const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
     const procesList = contextApp.procesList;
     // procesList
-
+    const [getCzasOprawy] = useOprawa()
    function createWykonaniaFromArkuszeLegi(
   ) {
    const new_arkusze = [...arkusze.filter(x=>x.delete != true)];
    const new_legi = [...legi.filter(x=>x.delete != true)];
    const new_procesy = [...procesy.filter(x=>x.delete != true)];
+   const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
    const new_grupy = [];
    const new_wykonania = [];
 
    oprawaTech.map((oprawa,i)=> {
-    let grupa_id = MaxID(new_grupy)
-    new_grupy.push({
+    let grupa_id = MaxID(new_grupaOprawaTech)
+    new_grupaOprawaTech.push({
       id: grupa_id,
       global_id:0,
-      indeks: MaxIndeks(new_grupy),
-      element_id: oprawa.id,
+      indeks: MaxIndeks(new_grupaOprawaTech),
       nazwa:procesList.filter(x=>x.id == oprawa.oprawa)[0].nazwa,
       poczatek: "2024-10-30 10:00:00",
-      czas: 1,
+      czas: getCzasOprawy(oprawa.id),
       koniec: "2024-10-30 11:00:00",
       procesor_id: procesList.filter(x=>x.id == oprawa.oprawa)[0].procesor_domyslny,
       narzad: procesList.filter(x=>x.id == oprawa.oprawa)[0].narzad,
       predkosc: procesList.filter(x=>x.id == oprawa.oprawa)[0].predkosc,
-      proces_id: oprawa.id, 
-      oprawa_id: oprawa.oprawa,
+      proces_id: oprawa.oprawa, 
+      oprawa_id: oprawa.id, //lokalne id oprawy, w przypadku jednej == 1
       mnoznik: procesList.filter(x=>x.id == oprawa.oprawa)[0].mnoznik,
+      naklad: oprawa.naklad,
+      bok_oprawy:oprawa.bok_oprawy,
       status:1,
       stan:1,
       uwagi: ""
     });
    })
-
+   setGrupaOprawaTech(new_grupaOprawaTech)
 procesy.map((proces,i)=> {
   if(proces.arkusz==1){ 
 let grupa_id = MaxID(new_grupy)

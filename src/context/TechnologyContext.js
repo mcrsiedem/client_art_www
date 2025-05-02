@@ -480,6 +480,7 @@ if(elementyTech.length>1){
      setArkusze([])
      setGrupaWykonan([])
      setWykonania([])
+     setGrupaOprawaTech([])
      setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia,stan:res.data[0][0].etap}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
      setProduktyTech(res.data[1])
      setElementyTech(res.data[2].map(element => { return {...element, arkusz_szerokosc: "", arkusz_wysokosc: ""}}))
@@ -630,7 +631,7 @@ async function fechTechnology() {
                     produktyTech, setProduktyTech,
                     elementyTech, setElementyTech,
                     fragmentyTech, setFragmentyTech,
-                    oprawaTech, setOprawaTech,
+                    oprawaTech, setOprawaTech,grupaOprawaTech, setGrupaOprawaTech,
                     procesyElementowTech, setProcesyElementowTech,
                     procesyElementowTechTemporary, setProcesyElementowTechTemporary,
                     menuElementyTech,setMenuElementyTech,

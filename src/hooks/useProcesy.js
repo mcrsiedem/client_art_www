@@ -52,9 +52,11 @@ export function useProcesy(){
       mnoznik: procesList.filter(x=>x.id == oprawa.oprawa)[0].mnoznik,
       naklad: oprawa.naklad,
       bok_oprawy:oprawa.bok_oprawy,
+      wersja: oprawa.wersja,
+
       status:1,
       stan:1,
-      uwagi: ""
+      uwagi: oprawa.uwagi
     });
    })
    setGrupaOprawaTech(new_grupaOprawaTech)

@@ -10,6 +10,7 @@ import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 import iconTrash from "assets/trashgray.svg";
+import ROW_OPRAWA from "./ROW_OPRAWA";
 
 export default function WykonaniaTech() {
   const [createWykonaniaFromArkuszeLegi] = useProcesy()
@@ -54,15 +55,43 @@ export default function WykonaniaTech() {
 const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);
   const procesyElementowTech = techContext.procesyElementowTech;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
 
   return (
   <div className={style.main}>
       {procesyElementowTech.sort((a, b) => a.element_id - b.element_id).map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))}
+         {grupaOprawaTech.sort((a, b) => a.id - b.id).map((grupaOprawa) => (
+        <OprawaRow grupaOprawa={grupaOprawa} />
+      ))}
   </div>
   )
 }
+
+const OprawaRow = ({ grupaOprawa }) => {
+  const techContext = useContext(TechnologyContext);
+  const grupaWykonan = techContext.grupaWykonan;
+  const elementyTech = techContext.elementyTech;
+  const [show, setShow] = useState(true);
+  return (
+    <>
+      <div className={style.row1}>
+        {/* <Rozwin rowProces={rowProces} show={show} setShow={setShow} /> */}
+        <div className={style.procesy_container}>
+        {/* <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p> */}
+        {/* <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p> */}
+        </div>
+        {/* { (grupaWykonan?.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )} */}
+      </div>
+   <ROW_OPRAWA grupaOprawa={grupaOprawa}/>
+      {/* {show &&
+          <GRUPA_WYKONAN rowProces={rowProces} />} */}
+          <hr></hr>
+    </>
+  );
+};
+
 
 const ProcesRow = ({ rowProces }) => {
   const techContext = useContext(TechnologyContext);

@@ -64,6 +64,7 @@ import { createArk_32_Z_modulo_20 } from "actions/createArkusze/32Z/createArk_32
 import { createArk_32_Z_modulo_24 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_24";
 import { createArk_32_Z_modulo_28 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_28";
 import { AppContext } from "context/AppContext";
+import { useIntroligatornia } from "./useIntroligatornia";
 
 
 export function useArkusze(status_id){
@@ -93,7 +94,7 @@ export function useArkusze(status_id){
   
    const contextApp = useContext(AppContext);
    const nadkomplety = contextApp.nadkomplety;
-
+ const [rozdzielOprawe,ponumerujFregmentyLeg] = useIntroligatornia()
 
 function ponumerujArkusze() {
 
@@ -602,146 +603,9 @@ let n = 0;
   });
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
 
-  procesy.map((proces,i)=> {
-    if(proces.arkusz==1){ 
-let grupa_id = MaxID(new_grupy)
-      new_grupy.push({
-        id: grupa_id,
-        global_id:0,
-        indeks: i + 1,
-        element_id: proces.element_id,
-        nazwa: proces.nazwa,
-        poczatek: "2024-10-30 10:00:00",
-        czas: 1,
-        koniec: "2024-10-30 11:00:00",
-        procesor_id:proces.procesor_domyslny,
-        narzad: proces.narzad,
-        predkosc: proces.predkosc,
-        proces_id: proces.id,
-        mnoznik: proces.mnoznik,
-        status:1,
-        stan:1,
-        uwagi: ""
-      });
-
-      new_arkusze
-      .filter(a => a.element_id == proces.element_id)
-      .map((a,i)=>{
-        new_wykonania.push({
-          id: MaxID(new_wykonania),
-          indeks: i + 1,
-          nazwa: proces.nazwa,
-          element_id: a.element_id,
-          arkusz_id: a.id,
-          proces_id: proces.id,
-          typ_elementu: a.typ_elementu,
-          poczatek: "2024-10-30 10:00:00",
-          czas: parseInt((a.naklad / proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10),
-          koniec: "2024-10-30 11:00:00",
-          procesor_id:proces.procesor_domyslny,
-          grupa_id:grupa_id,
-          narzad: proces.narzad,
-          predkosc: proces.predkosc,
-          naklad: a.naklad,
-          mnoznik: proces.mnoznik,
-          status:1,
-          stan:1,
-          przeloty: parseInt(a.naklad) + parseInt(a.nadkomplet) ,
-          uwagi: ""
-        });
-      })
 
 
-    }
-
-    // if(proces.lega==1){ 
-    //   let grupa_id = MaxID(new_grupy)
-    //   new_grupy.push({
-    //     id: grupa_id,
-    //     global_id:0,
-    //     indeks: i + 1,
-    //     element_id: proces.element_id,
-    //     nazwa: proces.nazwa,
-    //     poczatek: "2024-10-30 10:00:00",
-    //     czas: 1,
-    //     koniec: "2024-10-30 11:00:00",
-    //     procesor_id:proces.procesor_domyslny,
-    //     narzad: proces.narzad,
-    //     predkosc: proces.predkosc,
-    //     proces_id: proces.id,
-    //     mnoznik: proces.mnoznik,
-    //     status:1,
-    //     stan:1,
-    //     uwagi: ""
-    //   });
-
-    //   new_legi
-    //   .filter(a => a.element_id == proces.element_id)
-    //   .map(a=>{
-    //     new_wykonania.push({
-    //       id: MaxID(new_wykonania),
-    //       indeks: i + 1,
-    //       nazwa: proces.nazwa,
-    //       element_id: a.element_id,
-    //       arkusz_id: a.id,
-    //       proces_id: proces.id,
-    //       typ_elementu: a.typ_elementu,
-    //       poczatek: "2024-10-30 10:00:00",
-    //       czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
-    //       koniec: "2024-10-30 11:00:00",
-    //       procesor_id:proces.procesor_domyslny,
-    //       grupa_id:grupa_id,
-    //       narzad: proces.narzad,
-    //       predkosc: proces.predkosc,
-    //       naklad: a.naklad,
-    //       mnoznik: proces.mnoznik,
-    //       status:1,
-    //       stan:1,
-    //       przeloty: a.naklad / proces.ilosc_uzytkow,
-    //       uwagi: ""
-    //     });
-    //   })
-
-    // }
- 
-    
-
-  })
-  // przeniesione do odzielnej funkcji use
-  // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
-  // setWykonania(new_wykonania)
-
-  //oprawa
-
-//   oprawaTech.map(
-//     opt => {
-// new_grupy.push({
-//     id: MaxID(new_grupy),
-//     global_id:0,
-//     indeks: getMaxIndeks(new_grupy),
-//     element_id: opt.element_id,
-//     nazwa: opt.nazwa,
-//     poczatek: "2024-10-30 10:00:00",
-//     czas: 1,
-//     koniec: "2024-10-30 11:00:00",
-//     procesor_id:opt.procesor_domyslny,
-//     narzad: opt.narzad,
-//     predkosc: opt.predkosc,
-//     proces_id: opt.id,
-//     mnoznik: opt.mnoznik,
-//     status:1,
-//     stan:1,
-//     uwagi: ""
-//   });
-//     }
-//   )
-  
-  // setGrupaWykonan(new_grupy);
-  // setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ));
-
-
-
-
+  // ponumerujFregmentyLeg()
 
   // ponumerujArkusze()
 

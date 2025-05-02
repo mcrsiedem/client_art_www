@@ -18,9 +18,11 @@ export default function WykonaniaTech() {
       createWykonaniaFromArkuszeLegi()
 
     }} className={style.container}>
+
        <div className={style.header_procesy}>
-        <p className={style.header_txt}>PROCESY</p>
+        <p className={style.header_txt}>Procesy</p>
       </div>
+      
       <WykonaniaTechTable />
     </div>
   );

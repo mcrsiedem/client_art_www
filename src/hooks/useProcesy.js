@@ -4,112 +4,54 @@
 
 
 import { useContext } from "react";
-import { ModalInsertContext } from "context/ModalInsertContext";
-import DecodeToken from "pages/Login/DecodeToken";
 import { TechnologyContext } from "context/TechnologyContext";
-import { createArk_modulo_0 } from "actions/createArkusze/createArk_modulo_0";
-import { createArk_16_K_modulo_2 } from "actions/createArkusze/16K/createArk_16_K_modulo_2";
-import { createArk_16_K_modulo_4 } from "actions/createArkusze/16K/createArk_16_K_modulo_4";
-import { createArk_16_K_modulo_6 } from "actions/createArkusze/16K/createArk_16_K_modulo_6";
-import { createArk_16_K_modulo_8 } from "actions/createArkusze/16K/createArk_16_K_modulo_8";
-import { createArk_16_K_modulo_10 } from "actions/createArkusze/16K/createArk_16_K_modulo_10";
-import { createArk_16_K_modulo_12 } from "actions/createArkusze/16K/createArk_16_K_modulo_12";
-import { createArk_16_K_modulo_14 } from "actions/createArkusze/16K/createArk_16_K_modulo_14";
-import { createArk_16_K_single_ark } from "actions/createArkusze/16K/createArk_16_K_single_ark";
-import { createArk_12_K_modulo_2 } from "actions/createArkusze/12K/createArk_12_K_modulo_2";
-import { createArk_12_K_modulo_4 } from "actions/createArkusze/12K/createArk_12_K_modulo_4";
-import { createArk_12_K_modulo_6 } from "actions/createArkusze/12K/createArk_12_K_modulo_6";
-import { createArk_12_K_modulo_8 } from "actions/createArkusze/12K/createArk_12_K_modulo_8";
-import { createArk_12_K_modulo_10 } from "actions/createArkusze/12K/createArk_12_K_modulo_10";
-import { createArk_12_K_single_ark } from "actions/createArkusze/12K/createArk_12_K_single_ark";
-import { createArk_24_K_modulo_2 } from "actions/createArkusze/24K/createArk_24_K_modulo_2";
-import { createArk_24_K_modulo_4 } from "actions/createArkusze/24K/createArk_24_K_modulo_4";
-import { createArk_24_K_modulo_6 } from "actions/createArkusze/24K/createArk_24_K_modulo_6";
-import { createArk_24_K_modulo_8 } from "actions/createArkusze/24K/createArk_24_K_modulo_8";
-import { createArk_24_K_modulo_10 } from "actions/createArkusze/24K/createArk_24_K_modulo_10";
-import { createArk_24_K_modulo_12 } from "actions/createArkusze/24K/createArk_24_K_modulo_12";
-import { createArk_24_K_modulo_14 } from "actions/createArkusze/24K/createArk_24_K_modulo_14";
-import { createArk_24_K_modulo_16 } from "actions/createArkusze/24K/createArk_24_K_modulo_16";
-import { createArk_24_K_modulo_18 } from "actions/createArkusze/24K/createArk_24_K_modulo_18";
-import { createArk_24_K_modulo_20 } from "actions/createArkusze/24K/createArk_24_K_modulo_20";
-import { createArk_24_K_modulo_22 } from "actions/createArkusze/24K/createArk_24_K_modulo_22";
-import { createArk_24_K_single_ark } from "actions/createArkusze/24K/createArk_24_K_single_ark";
-import { createArk_32_K_modulo_2 } from "actions/createArkusze/32K/createArk_32_K_modulo_2";
-import { createArk_32_K_modulo_4 } from "actions/createArkusze/32K/createArk_32_K_modulo_4";
-import { createArk_32_K_modulo_6 } from "actions/createArkusze/32K/createArk_32_K_modulo_6";
-import { createArk_32_K_modulo_8 } from "actions/createArkusze/32K/createArk_32_K_modulo_8";
-import { createArk_32_K_modulo_10 } from "actions/createArkusze/32K/createArk_32_K_modulo_10";
-import { createArk_32_K_modulo_12 } from "actions/createArkusze/32K/createArk_32_K_modulo_12";
-import { createArk_32_K_modulo_14 } from "actions/createArkusze/32K/createArk_32_K_modulo_14";
-import { createArk_32_K_modulo_16 } from "actions/createArkusze/32K/createArk_32_K_modulo_16";
-import { createArk_32_K_modulo_18 } from "actions/createArkusze/32K/createArk_32_K_modulo_18";
-import { createArk_32_K_modulo_20 } from "actions/createArkusze/32K/createArk_32_K_modulo_20";
-import { createArk_32_K_modulo_22 } from "actions/createArkusze/32K/createArk_32_K_modulo_22";
-import { createArk_32_K_modulo_24 } from "actions/createArkusze/32K/createArk_32_K_modulo_24";
-import { createArk_32_K_modulo_26 } from "actions/createArkusze/32K/createArk_32_K_modulo_26";
-import { createArk_32_K_modulo_28 } from "actions/createArkusze/32K/createArk_32_K_modulo_28";
-import { createArk_32_K_modulo_30 } from "actions/createArkusze/32K/createArk_32_K_modulo_30";
-import { createArk_32_K_single_ark } from "actions/createArkusze/32K/createArk_32_K_single_ark";
-import { createArk_16_Z_modulo_4 } from "actions/createArkusze/16Z/createArk_16_Z_modulo_4";
-import { createArk_16_Z_modulo_8 } from "actions/createArkusze/16Z/createArk_16_Z_modulo_8";
-import { createArk_16_Z_modulo_12 } from "actions/createArkusze/16Z/createArk_16_Z_modulo_12";
-import { createArk_12_Z_modulo_4 } from "actions/createArkusze/12Z/createArk_12_Z_modulo_4";
-import { createArk_12_Z_modulo_8 } from "actions/createArkusze/12Z/createArk_12_Z_modulo_8";
-import { createArk_12_Z_single_ark } from "actions/createArkusze/12Z/createArk_12_Z_single_ark";
-import { createArk_24_Z_modulo_4 } from "actions/createArkusze/24Z/createArk_24_Z_modulo_4";
-import { createArk_24_Z_modulo_8 } from "actions/createArkusze/24Z/createArk_24_Z_modulo_8";
-import { createArk_24_Z_modulo_12 } from "actions/createArkusze/24Z/createArk_24_Z_modulo_12";
-import { createArk_24_Z_modulo_16 } from "actions/createArkusze/24Z/createArk_24_Z_modulo_16";
-import { createArk_24_Z_modulo_20 } from "actions/createArkusze/24Z/createArk_24_Z_modulo_20";
-import { createArk_32_Z_modulo_4 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_4";
-import { createArk_32_Z_modulo_8 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_8";
-import { createArk_32_Z_modulo_12 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_12";
-import { createArk_32_Z_modulo_16 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_16";
-import { createArk_32_Z_modulo_20 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_20";
-import { createArk_32_Z_modulo_24 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_24";
-import { createArk_32_Z_modulo_28 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_28";
 import { AppContext } from "context/AppContext";
 
-
-export function useProcesy(status_id){
-// const modalcontext = useContext(ModalInsertContext);
-// const daneZamowienia = modalcontext.daneZamowienia;
-// const setDaneZamowienia = modalcontext.setDaneZamowienia;
+export function useProcesy(){
+    const contextApp = useContext(AppContext);
+  
 
   const techContext = useContext(TechnologyContext);
-  const elementyTech = techContext.elementyTech;
   const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
   const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-
-    const legiFragmenty = techContext.legiFragmenty;
-    const setLegiFragmenty = techContext.setLegiFragmenty;
-
     const procesy = techContext.procesyElementow;
-    const grupaWykonan = techContext.grupaWykonan;
     const setGrupaWykonan = techContext.setGrupaWykonan;
-    const wykonania = techContext.wykonania;
     const setWykonania = techContext.setWykonania;
     const oprawaTech = techContext.oprawaTech;
-    const setOprawaTech = techContext.setOprawaTech;
-    const fragmentyTech = techContext.fragmentyTech;
-    const setFragmentyTech = techContext.setFragmentyTech;
-  
-   const contextApp = useContext(AppContext);
-   const nadkomplety = contextApp.nadkomplety;
+    const legiFragmenty = techContext.legiFragmenty;
+    const procesList = contextApp.procesList;
+    // procesList
 
    function createWykonaniaFromArkuszeLegi(
   ) {
-
-
-
-
-   const new_arkusze = [...arkusze];
-   const new_legi = [...legi];
-   const new_legiFragmenty = [];
+   const new_arkusze = [...arkusze.filter(x=>x.delete != true)];
+   const new_legi = [...legi.filter(x=>x.delete != true)];
+   const new_procesy = [...procesy.filter(x=>x.delete != true)];
    const new_grupy = [];
    const new_wykonania = [];
+
+   oprawaTech.map((oprawa,i)=> {
+    let grupa_id = MaxID(new_grupy)
+    new_grupy.push({
+      id: grupa_id,
+      global_id:0,
+      indeks: MaxIndeks(new_grupy),
+      element_id: oprawa.id,
+      nazwa:procesList.filter(x=>x.id == oprawa.oprawa)[0].nazwa,
+      poczatek: "2024-10-30 10:00:00",
+      czas: 1,
+      koniec: "2024-10-30 11:00:00",
+      procesor_id: procesList.filter(x=>x.id == oprawa.oprawa)[0].procesor_domyslny,
+      narzad: procesList.filter(x=>x.id == oprawa.oprawa)[0].narzad,
+      predkosc: procesList.filter(x=>x.id == oprawa.oprawa)[0].predkosc,
+      proces_id: oprawa.id, 
+      oprawa_id: oprawa.oprawa,
+      mnoznik: procesList.filter(x=>x.id == oprawa.oprawa)[0].mnoznik,
+      status:1,
+      stan:1,
+      uwagi: ""
+    });
+   })
 
 procesy.map((proces,i)=> {
   if(proces.arkusz==1){ 

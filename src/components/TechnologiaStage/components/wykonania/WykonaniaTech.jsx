@@ -9,6 +9,8 @@ import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
+import iconTrash from "assets/trashgray.svg";
+
 export default function WykonaniaTech() {
   const [createWykonaniaFromArkuszeLegi] = useProcesy()
   const techContext = useContext(TechnologyContext);
@@ -25,6 +27,7 @@ export default function WykonaniaTech() {
 
        <div className={style.header_procesy}>
         <p className={style.header_txt}>Procesy</p>
+        <Usun/>
       </div>
 
       <WykonaniaTechTable />
@@ -39,7 +42,7 @@ export default function WykonaniaTech() {
         createWykonaniaFromArkuszeLegi()
         setShowProcesy(true)
         console.log("wykonania")
-      }} >Wykonania</button>
+      }} >Dodaj procesy</button>
          
       </div>
     )
@@ -145,3 +148,31 @@ const ProcesBtn = ({ rowProces,row, showMenu, setShowMenu }) => {
     </div>
   );
 };
+
+
+function Usun() {
+  const techContext = useContext(TechnologyContext);
+  const setShowProcesy = techContext.setShowProcesy;
+  const daneTech = techContext.daneTech;
+if(daneTech.id == 1){
+   return (
+    <div>
+      <div>
+        <img
+          className={style.expand2}
+          src={iconTrash}
+          onClick={() => {
+            techContext.setGrupaWykonan([])
+            techContext.setWykonania([])
+            setShowProcesy(false)
+            // handleRemoveItem(row.indeks, row.id);
+                      //  setStatus(3)
+          }}
+          alt="Procesy"
+        />
+      </div>
+    </div>
+  );
+}
+ 
+}

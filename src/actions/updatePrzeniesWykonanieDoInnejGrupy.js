@@ -3,7 +3,7 @@ import axios from "axios";
 import { IP } from "../utils/Host";
 
 
-export function updatePrzeniesWykonanieDoInnejGrupy(global_id_wykonania,grupa_id_drop,fechparametryTechnologii, ostatnie_wykonania) {
+export function updatePrzeniesWykonanieDoInnejGrupy(global_id_wykonania,grupa_id_drop,fechparametryTechnologii, ostatnie_wykonania,zamowienie_id) {
 
 // id = procesor id
 
@@ -11,7 +11,7 @@ export function updatePrzeniesWykonanieDoInnejGrupy(global_id_wykonania,grupa_id
     .then((res) => {
     // console.log("procesor " +res.data[0].mcr)
     // fechparametryTechnologii
-    fechparametryTechnologii(res.data[0].technologia_id)
+    fechparametryTechnologii(zamowienie_id,res.data[0].technologia_id)
 
     });
 }

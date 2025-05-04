@@ -134,13 +134,13 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   function handleDrop(id,proces_id,grupa_id_drop) {
     if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id) {
 
-if(daneTech.technologia_id !=null){
+if(daneTech.id !=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
         if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length == 1){
-          updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, true)
+          updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, true,daneTech.zamowienie_id)
         }
         if(wykonania.filter(x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length > 1){
-        updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, false)
+        updatePrzeniesWykonanieDoInnejGrupy(id_drag_wykonania, grupa_id_drop, fechparametryTechnologii, false,daneTech.zamowienie_id)
         }
 }else{
 
@@ -177,7 +177,7 @@ function DodajGrupeWykonan({ rowGrupa }) {
     <div style={{ paddingTop: "13px" }}>
       <img
         onDragOver={handleDragOver}
-        onDrop={() => handleDrop(1)}
+        onDrop={() => handleDrop()}
         className={style.expand}
         src={icon}
         onClick={() => {
@@ -197,12 +197,12 @@ function DodajGrupeWykonan({ rowGrupa }) {
     e.preventDefault();
   }
 
-  function handleDrop(id) {
+  function handleDrop() {
     if (sessionStorage.getItem("typ_drag") == "wykonanie") {
       if(daneTech.id!=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
       // console.log("id: "+id_drag_wykonania)
-      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii);
+      updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii,daneTech.zamowienie_id);
       // let id_drop_grupa = id;
       }
       if(daneTech.id==1){

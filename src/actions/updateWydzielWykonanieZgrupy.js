@@ -3,15 +3,17 @@ import axios from "axios";
 import { IP } from "../utils/Host";
 
 
-export function updateWydzielWykonanieZgrupy(global_id_wykonania,fechparametryTechnologii) {
+export function updateWydzielWykonanieZgrupy(global_id_wykonania,fechparametryTechnologii,zamowienie_id) {
 
 // id = procesor id
 
   axios.get(IP + "updateWydzielWykonanieZgrupy/"+global_id_wykonania)
     .then((res) => {
-    // console.log("procesor " +res.data[0].mcr)
+    console.log("technologia_id " +res.data[0].technologia_id)
     // fechparametryTechnologii
-    fechparametryTechnologii(res.data[0].technologia_id)
+
+    
+    fechparametryTechnologii(zamowienie_id,res.data[0].technologia_id)
 
     });
 }

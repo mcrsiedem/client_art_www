@@ -602,6 +602,7 @@ let n = 0;
     });
   });
   setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
+  // setLegiFragmenty(new_legiFragmenty);
 
 
 

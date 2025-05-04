@@ -601,7 +601,38 @@ let n = 0;
       insert: true
     });
   });
-  setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
+
+
+//---- numerowanie fragmentow leg siłowe
+let newFragmentyLeg = [];
+
+for (let oprawa of oprawaTech) {
+
+let nr= 1;
+
+  for (let fragmentTech of new_legiFragmenty.filter(x=>x.oprawa_id == oprawa.id)) {
+ if(fragmentTech.typ !=1){
+          newFragmentyLeg.push({
+      ...fragmentTech,
+      nr_legi: nr,
+      update: true
+    });
+    nr++;
+ }else newFragmentyLeg.push({...fragmentTech,nr_legi:0})
+
+  }
+}
+
+//---------------
+
+
+
+
+
+
+
+  setLegiFragmenty(newFragmentyLeg.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
+  // setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
   // setLegiFragmenty(new_legiFragmenty);
 
 

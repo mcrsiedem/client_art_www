@@ -39,7 +39,15 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
     let savedArkusze  = await saveArkusze({arkusze})
     let savedLegi  = await saveLegi({legi})
     let savedLegiFragmenty  = await saveLegiFragmenty({legiFragmenty})
-    let savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
+    let savedGrupaWykonan;
+    //wstępna
+    if(daneTech.stan==1){
+    savedGrupaWykonan  = await saveGrupaWykonanHarmonogram({grupaWykonan})
+    }
+    if(daneTech.stan==2){
+    savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
+    }
+    // let savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
     let savedWykonania = await saveWykonania({wykonania})
     let savedProcesyElementow = await saveProcesyElementow({procesyElementowTech})
 
@@ -51,7 +59,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
     response.push(savedLegi.data)
     response.push(savedLegiFragmenty.data)
     response.push(savedGrupaWykonan.data)
-    response.push(savedGrupaWykonan.data)
+    // response.push(savedGrupaWykonan.data)
     response.push(savedWykonania.data)
     response.push(savedProcesyElementow.data)
 
@@ -172,7 +180,14 @@ resolve(res)
 
 const saveGrupaWykonan = ({grupaWykonan}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "zapiszTechnologieInsertGrupy/" + sessionStorage.getItem("token"),[grupaWykonan])
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])
+resolve(res)
+  })
+}
+
+const saveGrupaWykonanHarmonogram = ({grupaWykonan}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupyHarmonogram/" + sessionStorage.getItem("token"),[grupaWykonan])
 resolve(res)
   })
 }

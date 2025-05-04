@@ -82,7 +82,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                 </tr>
                 {expand ? (
               wykonaniaAll
-                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id)
+                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
                 .map((row) => {
                   return (
                     <tr  key={row.global_id}>
@@ -160,7 +160,7 @@ const KoniecGrupa = ({ grup }) => {
   const updateWykonanie = techContext.updateWykonanie;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   return (
-    <td style={{minWidth: "140px",width: "140px"}}>
+    <td style={{minWidth: "150px",width: "150px"}}>
       <input
         disabled= {false}
         className={style.input2}

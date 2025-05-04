@@ -106,7 +106,7 @@ const WykonaniaTable = () => {
           </thead>
           <tbody>
             {grupyWykonanAll
-              .filter((x) => x.procesor_id == selectedProcesor)
+              .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
               .map((grup, i) => {
                 return <ProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
               })}
@@ -131,7 +131,7 @@ function Procesory() {
     <div className={style.procesor_btn_container}>
 
 {procesory
-         ?.filter(x => x.grupa == selectedProces )
+         ?.filter(x => x.grupa == selectedProces  )
         .map((procesor) => (
 
           <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />

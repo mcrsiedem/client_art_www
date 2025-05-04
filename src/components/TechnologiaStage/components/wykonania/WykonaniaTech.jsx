@@ -18,8 +18,9 @@ export default function WykonaniaTech() {
   const showProcesy = techContext.showProcesy;
   const setShowProcesy = techContext.setShowProcesy;
   const arkusze = techContext.arkusze;
+  const daneTech = techContext.daneTech;
 
-  if(showProcesy){
+  if(showProcesy || daneTech.id !=1 ){
       return (
     <div onDoubleClick={()=>{
       createWykonaniaFromArkuszeLegi()

@@ -389,7 +389,7 @@ const NakladGrupy = ({ rowGrupa }) => {
       <input
       disable
         className={style.input}
-        // value={zamienNaGodziny(rowGrupa.czas)}
+        // value={rowGrupa.nazwa}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
             updateGrupaWykonan({

@@ -194,6 +194,7 @@ if(daneTech.id == 1){
           onClick={() => {
             techContext.setGrupaWykonan([])
             techContext.setWykonania([])
+            techContext.setGrupaOprawaTech([])
             setShowProcesy(false)
             // handleRemoveItem(row.indeks, row.id);
                       //  setStatus(3)

@@ -92,6 +92,8 @@ const ClearBTN = () => {
         techContext.setLegiFragmenty([])
         techContext.setGrupaWykonan([])
         techContext.setWykonania([])
+        techContext.setGrupaOprawaTech([])
+
         setShowProcesy(false)
         
       }}

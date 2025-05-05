@@ -562,6 +562,7 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   setArkusze(res.data[8])
   setGrupaWykonan(res.data[9])
   setWykonania(res.data[10])
+  setGrupaOprawaTech(res.data[11])
    setShowTechnologyStage(true)
 }
 

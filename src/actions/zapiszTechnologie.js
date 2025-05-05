@@ -12,7 +12,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
   setArkusze,
   setGrupaWykonan,
   setWykonania,
-  setProcesyElementowTech,setSaveButtonDisabled}){
+  setProcesyElementowTech,setSaveButtonDisabled,grupaOprawaTech, setGrupaOprawaTech}){
 
     let response = [];
     let savedDane  = await saveDane({daneTech})
@@ -31,6 +31,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
       grupaWykonan = grupaWykonan.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
       wykonania = wykonania.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
       procesyElementowTech = procesyElementowTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
+      grupaOprawaTech = grupaOprawaTech.map((obj) => {return{...obj, technologia_id, zamowienie_id: daneTech.zamowienie_id} })
 
     let savedProdukty  = await saveProdukty({produktyTech})
     let savedElementy = await saveElementy({elementyTech})
@@ -47,6 +48,16 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
     if(daneTech.stan==2){
     savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
     }
+
+    let savedGrupaWykonanOprawa;
+
+    if(daneTech.stan==1){
+      savedGrupaWykonanOprawa  = await saveGrupaWykonanOprawaHarmonogram({grupaOprawaTech})
+      }
+      if(daneTech.stan==2){
+        savedGrupaWykonanOprawa  = await saveGrupaWykonanOprawa({grupaOprawaTech})
+      }
+
     // let savedGrupaWykonan  = await saveGrupaWykonan({grupaWykonan})
     let savedWykonania = await saveWykonania({wykonania})
     let savedProcesyElementow = await saveProcesyElementow({procesyElementowTech})
@@ -59,9 +70,9 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
     response.push(savedLegi.data)
     response.push(savedLegiFragmenty.data)
     response.push(savedGrupaWykonan.data)
-    // response.push(savedGrupaWykonan.data)
     response.push(savedWykonania.data)
     response.push(savedProcesyElementow.data)
+    response.push(savedGrupaWykonanOprawa.data)
 
    
    if(isSavedCorrect(response).status) {
@@ -81,6 +92,7 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
       setArkusze(res.data[8])
       setGrupaWykonan(res.data[9])
       setWykonania(res.data[10])
+      setGrupaOprawaTech(res.data[11])
 
 
 
@@ -188,6 +200,20 @@ resolve(res)
 const saveGrupaWykonanHarmonogram = ({grupaWykonan}) =>{
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertGrupyHarmonogram/" + sessionStorage.getItem("token"),[grupaWykonan])
+resolve(res)
+  })
+}
+
+const saveGrupaWykonanOprawa= ({grupaOprawaTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupyOprawa/" + sessionStorage.getItem("token"),[grupaOprawaTech])
+resolve(res)
+  })
+}
+
+const saveGrupaWykonanOprawaHarmonogram= ({grupaOprawaTech}) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupyOprawaHarmonogram/" + sessionStorage.getItem("token"),[grupaOprawaTech])
 resolve(res)
   })
 }

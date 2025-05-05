@@ -193,6 +193,10 @@ const ZapisBtnPromise = () => {
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const setWykonania = techContext.setWykonania;
   const setProcesyElementowTech = techContext.setProcesyElementowTech;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
+  const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
+
+
 
 
 
@@ -228,7 +232,8 @@ const ZapisBtnPromise = () => {
           setArkusze,
           setGrupaWykonan,
           setWykonania,
-          setProcesyElementowTech,setSaveButtonDisabled
+          setProcesyElementowTech,setSaveButtonDisabled,
+          grupaOprawaTech, setGrupaOprawaTech
         });
        
       }
@@ -260,7 +265,8 @@ const ZapisBtnPromise = () => {
          setGrupaWykonan,
          setWykonania,
          setProcesyElementowTech,
-         setSaveButtonDisabled
+         setSaveButtonDisabled,
+         grupaOprawaTech, setGrupaOprawaTech
 
        });
 

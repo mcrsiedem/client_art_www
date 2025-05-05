@@ -74,6 +74,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{minWidth: "130px"}}>{grup.tytul}</td>
                   <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
                   <td style={{minWidth: "130px"}}>{grup.przeloty}</td>
+                  <td style={{minWidth: "130px"}}>{grup.predkosc}</td>
+                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
 

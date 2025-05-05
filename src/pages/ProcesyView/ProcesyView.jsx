@@ -100,15 +100,25 @@ const WykonaniaTable = () => {
       <div className={style.tableContainer}>
         <table className={style.tableProcesy}>
           <thead>
-            <tr >
-              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th> <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th> <th> Uwagi</th> <th> Przeloty</th> <th> </th>
+            <tr>
+              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th>{" "}
+              <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th>{" "}
+              <th> Uwagi</th> <th> Przeloty</th> <th> Prędkość</th> <th> Papier</th><th> </th>
             </tr>
           </thead>
           <tbody>
             {grupyWykonanAll
-              .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
+              .filter(
+                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+              )
               .map((grup, i) => {
-                return <ProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
+                return (
+                  <ProcesViewRow
+                    grup={grup}
+                    unlockTable={unlockTable}
+                    setUnlockTable={setUnlockTable}
+                  />
+                );
               })}
           </tbody>
         </table>

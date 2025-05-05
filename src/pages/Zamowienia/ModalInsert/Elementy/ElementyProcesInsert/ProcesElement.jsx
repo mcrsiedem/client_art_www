@@ -185,6 +185,7 @@ const ProcesName = ({ row }) => {
   const contexApp = useContext(AppContext);
   // daneTechEdit = JSON.parse(JSON.stringify(daneTech))
   const procesListEdit = JSON.parse(JSON.stringify(contexApp.procesList))
+  const procesList = contexApp.procesList;
   return (
     <td>
       <select
@@ -193,13 +194,18 @@ const ProcesName = ({ row }) => {
         onChange={(e) => {
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
+          let proc = procesList.filter(x=> x.nazwa_id == e.target.value).map(x=>{return x})
           contexModal.handleUpdateRowProcesyElementow({
             ...row,
+            ...proc[0],
             nazwa_id: e.target.value,
              proces_id: procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id,
             update: true,
-            historia: false
+            historia: false,
+            id:row.id
           });
+
+          console.log("Proces1 NAME: "+procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id)
         }}
       >
         {}
@@ -235,6 +241,7 @@ const ProcessTyp = ({ row }) => {
             historia: false,
             id:row.id
           });
+          console.log("Proces1 TYP: "+e.target.value)
         }}
       >
         {}

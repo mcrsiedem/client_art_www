@@ -28,6 +28,7 @@ export default function RowElement({
   }) {
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy;
+    const oprawa = contextModalInsert.oprawa;
     const setElementy = contextModalInsert.setElementy;
     const fragmenty = contextModalInsert.fragmenty;
     const setFragmenty = contextModalInsert.setFragmenty;
@@ -271,7 +272,7 @@ export default function RowElement({
     );
   }
 
-  function handleAddFirstFragment(card,fragmenty,setFragmenty) {
+  function handleAddFirstFragment(card,fragmenty,setFragmenty,oprawa) {
     const newFragmenty = fragmenty.slice();
   
     newFragmenty.push({
@@ -282,9 +283,10 @@ export default function RowElement({
       typ: card.typ,
       wersja: card.nazwa,
       naklad: card.naklad,
-      oprawa_id: card.oprawa_id,
+      oprawa_id: oprawa.filter(x => x.delete != true)[0].id,
       element_id: card.id,
       indeks: getMaxIndeks(newFragmenty),
+      insert:true
     });
   
     newFragmenty.sort((a, b) => a.indeks - b.indeks);
@@ -293,11 +295,14 @@ export default function RowElement({
 
   function DodajFragment({ row, fragmenty,setFragmenty}) {
 const [setStatus] = useStatus()
+const contextModalInsert = useContext(ModalInsertContext);
+const oprawa = contextModalInsert.oprawa;
+
     if (fragmenty.filter(x=> x.element_id == row.id).length == 0){
          return (
         <button className={style.btn_dodaj_fragment} 
         onClick={()=>{
-          handleAddFirstFragment(row,fragmenty,setFragmenty)
+          handleAddFirstFragment(row,fragmenty,setFragmenty,oprawa)
                      // 
                      setStatus(3)
         }}>+</button>

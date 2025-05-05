@@ -17,7 +17,8 @@ export default function RowFragment({
     const contextModalInsert = useContext(ModalInsertContext);
     const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
     const lockDragDrop = contextModalInsert.lockDragDrop;
-   
+
+  const oprawa = contextModalInsert.oprawa;
 
 
     function handleDragStart(){
@@ -131,13 +132,14 @@ function Dodaj({ row, handleAddFragment }) {
   const fragmenty = contextModalInsert.fragmenty;
   const setFragmenty = contextModalInsert.setFragmenty;
   const elementy = contextModalInsert.elementy;
+  const oprawa = contextModalInsert.oprawa;
   return (
 <div>
       <img
         className={style.expand}
         src={iconCopy}
         onClick={() => {
-          handleAddFragment(row, fragmenty, setFragmenty, elementy);
+          handleAddFragment(row, fragmenty, setFragmenty, elementy,oprawa);
         }}
         alt="Procesy"
       />
@@ -145,9 +147,9 @@ function Dodaj({ row, handleAddFragment }) {
   );
 }
 
-function handleAddFragment(card, fragmenty, setFragmenty) {
+function handleAddFragment(card, fragmenty, setFragmenty,oprawa) {
   const newFragmenty = fragmenty.slice();
-
+ 
   newFragmenty.push({
     id: Math.max(...fragmenty.map((f) => f.id)) + 1,
     zamowienie_id: card.zamowienie_id,
@@ -156,7 +158,7 @@ function handleAddFragment(card, fragmenty, setFragmenty) {
     typ: card.typ,
     wersja: card.wersja,
     naklad: card.naklad,
-    oprawa_id: card.oprawa_id,
+    oprawa_id: oprawa.filter(x => x.delete != true)[0].id  ,
     element_id: card.element_id,
     indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,
     insert: true

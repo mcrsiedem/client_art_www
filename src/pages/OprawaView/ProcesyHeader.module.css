@@ -1,0 +1,128 @@
+
+.body{
+ /* background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+ background-image: linear-gradient(#0a0a0a 0%, #292929  50%,#0a0a0a  100%); */
+
+ /* top: 0px; */
+ height: 50px;
+ width: 95vw;
+ /* position: fixed;
+ z-index: 1; */
+
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ /* border-bottom:1px solid #bebdbd; */
+ /* margin-bottom: 10px; */
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+ /* width: 700px; */
+ }
+
+
+.leftHeaderContener{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+     
+}
+.przerwa_container{
+    position: relative;
+}
+
+.time_selec_container{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    display: flex;
+    gap:5px;
+}
+
+.select{
+    border: none;
+ font-size: 12px;
+ color: gray;
+     }
+
+     .input{
+        width: 30px;
+        border: none;
+        /* border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;*/
+     /* border-bottom: 1px solid rgb(216, 216, 216); */
+     font-size: 12px;
+     text-align: center;
+     /* margin-right: 10px; */
+     color: gray;
+         }
+
+.centerHeaderContener{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+}
+.rightHeaderContener{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+    height: 50px;
+}
+
+.icon{
+    
+    height: 43px;
+    padding: 10px;
+
+
+    
+}
+
+.icon:hover{
+
+    /* outline:1px solid #ff0000; */
+   
+
+    /* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
+    /* background-image: linear-gradient(#383838 0%, #444343 80%); */
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+
+    
+}
+
+.procesy_input{
+    color: rgb(190, 190, 190);
+    font-size: 20px;
+    padding-top: 15px;
+
+    border: none;
+    padding-bottom: 15px;
+    /* vertical-align: middle; */
+}
+.procesy_input:focus{
+outline: none;
+}
+
+
+.iconMenuBtn{
+    width: 25px;
+  
+  }
+  .iconMenuBtn:hover{
+  scale: 125%
+    
+  }
+  .iconMenuBtn:active{
+    rotate: 65deg;
+  }

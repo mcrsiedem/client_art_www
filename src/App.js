@@ -16,6 +16,7 @@ import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
 import Ustawienia from "pages/Ustawienia/Ustawienia";
 import TechnologieView from "pages/Technologie/TechnologieView";
+import OprawaView from "pages/OprawaView/OprawaView";
 
 export default function App() {
 
@@ -31,6 +32,7 @@ export default function App() {
               <Route path='/' element={<Login />} />
               <Route path='/login' element={<Login />} />
               <Route path='/ProcesyView' element={<ProcesyView />} />
+              <Route path='/OprawaView' element={<OprawaView/>} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />
               <Route path='/Technologie' element={<TechnologieView />} />

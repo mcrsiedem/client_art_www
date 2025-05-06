@@ -126,11 +126,12 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 {row.show &&(
 
   <>
+  
       <tr>
         <td></td>
         <td></td>
         <td></td>
-        <td>      {zamowieniaPliki.filter(x => x.zamowienie_id).map(x=> (<p> {x.element_id}</p>) )}
+        <td>      {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(x=> (<p> {x.element_id}</p>) )}
         </td>
       <td> </td>
       <td> </td>

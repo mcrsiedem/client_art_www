@@ -494,6 +494,33 @@ const _etapy_produkcji = [
   },
 ];
 
+const _etap_plikow = [
+  {
+    id: 1,
+    nazwa: "Brak",
+  },
+  {
+    id: 2,
+    nazwa: "Pliki",
+  },
+  {
+    id: 3,
+    nazwa: "Akcept",
+  },
+  {
+    id: 4,
+    nazwa: "Impozycja",
+  },
+  {
+    id: 5,
+    nazwa: "RIP",
+  },
+  {
+    id: 6,
+    nazwa: "Zaświecone",
+  },
+];
+
 const _typ_produktu = [
   {
     id: 1,
@@ -598,6 +625,7 @@ export {
   _rodzaj_oprawy,
   _wykonczenie,
   _stan_technologi,
-  _status_technologi
+  _status_technologi,
+  _etap_plikow
 
 };

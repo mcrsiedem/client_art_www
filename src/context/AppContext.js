@@ -24,6 +24,7 @@ export const AppContextProvider = ({children})=>{
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
+    const [zamowieniaPliki, setZamowieniaPliki] = useState([]); 
     const [zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
     const [nadkomplety, setNadkomplety] = useState();
@@ -133,7 +134,7 @@ export const AppContextProvider = ({children})=>{
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
-                    uzytkownicyGrupy, setUzytkownicyGrupy
+                    uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki
                 }}
             >
                 {children}

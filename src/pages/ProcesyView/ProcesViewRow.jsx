@@ -53,7 +53,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
             
                     
                   }}
-                  className={style.tr_legi_mini}
+                  className={style.procesRow_tr}
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){
@@ -78,6 +78,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
+                  <td></td>
+                  <td></td>
 
                   
                  
@@ -244,3 +246,31 @@ function Stan({grup}) {
 }
 
 
+
+
+function Etap({grup}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _status_wykonania = contextApp._status_wykonania
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
+  return (
+<td style={{width: "160px"}}>
+      <select
+        className={style.select}
+        value={grup.etap}
+        onChange={(event) => {
+   
+          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        }}
+      >
+        {_status_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+      </td>
+
+  );
+}

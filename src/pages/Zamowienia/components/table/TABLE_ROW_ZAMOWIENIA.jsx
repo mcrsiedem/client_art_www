@@ -27,6 +27,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
+  const zamowieniaPliki = contextApp.zamowieniaPliki
   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
 
   // const onMenuHandle = (event) =>{
@@ -124,13 +125,32 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
 {row.show &&(
 
+  <>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>      {zamowieniaPliki.filter(x => x.zamowienie_id).map(x=> (<p> {x.element_id}</p>) )}
+        </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
 
-  
+      </tr>
     <tr >
     <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>
-
-
       <button onClick={()=>{
 
       odblokujZamowienie([row])
@@ -162,6 +182,8 @@ deleteZamowienie([row])
 
 
    </tr>
+  </>
+
 
   
   

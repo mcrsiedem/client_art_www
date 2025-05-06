@@ -126,12 +126,12 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 {row.show &&(
 
   <>
-  
-      <tr>
+  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(x=> (
+    <tr>
         <td></td>
         <td></td>
         <td></td>
-        <td>      {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(x=> (<p> {x.element_id}</p>) )}
+        <td>      <p> {x.element_id}</p>
         </td>
       <td> </td>
       <td> </td>
@@ -149,6 +149,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
       <td> </td>
 
       </tr>
+   ))}
+      
     <tr >
     <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>

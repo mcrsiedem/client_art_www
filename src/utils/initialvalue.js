@@ -597,7 +597,6 @@ const _rodzaj_oprawy = [
 
 
 
-
 export {
   reg_int,
   reg_txt,

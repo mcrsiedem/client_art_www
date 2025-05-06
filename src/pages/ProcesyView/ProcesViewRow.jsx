@@ -5,7 +5,7 @@ import icon from "assets/copy.svg";
 
 
 
-import { reg_int } from "utils/initialvalue";
+import { _etap_plikow, reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 import axios from "axios";
@@ -78,7 +78,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
-                  <td></td>
+                  {grup.typ_grupy != 1 ?  <Etap grup={grup}/> : <></>}
+                  {/* <td> {grup.zamowienia_pliki_etap}</td> */}
                   <td></td>
 
                   
@@ -258,13 +259,13 @@ function Etap({grup}) {
 <td style={{width: "160px"}}>
       <select
         className={style.select}
-        value={grup.etap}
+        value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
    
-          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >
-        {_status_wykonania.map((option) => (
+        {_etap_plikow.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

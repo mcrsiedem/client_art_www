@@ -15,6 +15,7 @@ import {
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
+import TABLE_ROW_PLIKI from "./TABLE_ROW_PLIKI";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
@@ -126,29 +127,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 {row.show &&(
 
   <>
-  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(x=> (
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>      <p> {x.element_id}</p>
-        </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-
-      </tr>
+  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
+<TABLE_ROW_PLIKI plikiRow={plikiRow}/>
    ))}
       
     <tr >

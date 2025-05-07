@@ -21,17 +21,20 @@ export default function TABLE_ROW_PLIKI({plikiRow }) {
         <td></td>
         <td></td>
         <td>     <Element plikiRow={plikiRow} />     </td>
+        <td>     <Nazwa plikiRow={plikiRow} />     </td>
+      <td> </td>
+
         {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
+        <td>     <IloscStron plikiRow={plikiRow} />     </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+
+      <td> </td>
+      <td> </td>
+      <td> </td>
         <td>     <Etap plikiRow={plikiRow} />     </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -44,39 +47,13 @@ export default function TABLE_ROW_PLIKI({plikiRow }) {
 
 
   function Element({ plikiRow}) {
-    //row - row element
-    // const [setStatus] = useStatus()
-    // const [valueIN,setValueIN] = useState(null)
-    
-    const contextModalInsert = useContext(ModalInsertContext);
-    // const elementy = contextModalInsert.elementy
-    // const daneZamowienia = contextModalInsert.daneZamowienia
-    // const [add] = useHistoria()
-
     return (
         <select
           className={style.select_element}
-          value={plikiRow.element_id}
+          value={plikiRow.typ}
          
 disabled
           onChange={(e) => {
-            // console.log("e.target.value"+e.target.value)
-
-            //     setStatus(3) 
-            // add(         {
-            //   kategoria: "Typ elementu",
-            //   event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
-            //   zamowienie_id: daneZamowienia.id
-            // })
-            // handleChangeCardFragmenty_i_Elementy({
-            //   ...row,
-            //   typ: e.target.value,
-            //   update: true
-            // }
-            // );
-        
- // 
-
 
           }}
         >
@@ -91,6 +68,22 @@ disabled
   }
 
 
+  function Nazwa({ plikiRow }) {
+    return (
+      <input
+        className={style.select_element}
+        value={plikiRow.nazwa}
+        disabled
+        onChange={(e) => {}}
+      ></input>
+    );
+  }
+  function IloscStron({ plikiRow }) {
+    return (
+      <td className={style.select_strony}>{plikiRow.ilosc_stron}</td>
+    );
+  }
+
   function Etap({ plikiRow}) {
     //row - row element
     // const [setStatus] = useStatus()
@@ -99,7 +92,7 @@ disabled
     const contextModalInsert = useContext(ModalInsertContext);
     // const elementy = contextModalInsert.elementy
     // const daneZamowienia = contextModalInsert.daneZamowienia
-    // const [add] = useHistoria()
+    const [add] = useHistoria()
     const [etapPlikow] = usePliki()
 
     return (
@@ -116,7 +109,7 @@ disabled
 
             //     setStatus(3) 
             // add(         {
-            //   kategoria: "Typ elementu",
+            //   kategoria: "Pliki",
             //   event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
             //   zamowienie_id: daneZamowienia.id
             // })

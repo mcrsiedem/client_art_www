@@ -36,15 +36,12 @@ export function useZamowienia() {
       });
   }
 
-  const createPliki = async () => {
-    const res = await axios.get(
-      IP + "createPliki/" + sessionStorage.getItem("token")
-    );
+  // const createPliki = async () => {
+  //   const res = await axios.get(
+  //     IP + "createPliki/" + sessionStorage.getItem("token")
+  //   );
+  // };
 
 
-
-  };
-
-
-  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,createPliki];
+  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie];
 }

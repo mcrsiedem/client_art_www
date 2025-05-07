@@ -4,7 +4,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import style from "./REFRESH_ZAMOWIENIA_BTN.module.css";
 import { useState } from "react";
 export default function REFRESH_ZAMOWIENIA_BTN(){
-  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,createPliki] = useZamowienia()
+  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
     const [disabled, setDisabled] = useState(false);
   
 

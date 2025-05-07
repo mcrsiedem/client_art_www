@@ -4,7 +4,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import style from "./REFRESH_ZAMOWIENIA_BTN.module.css";
 import { useState } from "react";
 export default function REFRESH_ZAMOWIENIA_BTN(){
-  const [refreshZamowienia] = useZamowienia()
+  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,createPliki] = useZamowienia()
     const [disabled, setDisabled] = useState(false);
   
 
@@ -16,7 +16,9 @@ export default function REFRESH_ZAMOWIENIA_BTN(){
           src={iconRefresh}
           onClick={() => {
             if(!disabled){
-            refreshZamowienia()
+
+            // refreshZamowienia()
+            createPliki()
             setDisabled(true)
             // console.log("refresh")
             setTimeout(() => {

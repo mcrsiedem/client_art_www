@@ -17,8 +17,7 @@ export default function REFRESH_ZAMOWIENIA_BTN(){
           onClick={() => {
             if(!disabled){
 
-            // refreshZamowienia()
-            createPliki()
+            refreshZamowienia()
             setDisabled(true)
             // console.log("refresh")
             setTimeout(() => {

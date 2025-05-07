@@ -4,6 +4,9 @@ import { useContext } from "react";
 import { _etap_plikow, _typ_elementu } from "utils/initialvalue";
 import style from "./TABLE_ROW_PLIKI.module.css";
 import { usePliki } from "hooks/usePliki";
+import { getNameOfElement } from "actions/getNameOfElement";
+import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export default function TABLE_ROW_PLIKI({plikiRow }) {
@@ -92,7 +95,7 @@ disabled
     const contextModalInsert = useContext(ModalInsertContext);
     // const elementy = contextModalInsert.elementy
     // const daneZamowienia = contextModalInsert.daneZamowienia
-    const [add] = useHistoria()
+    const [add,dodajDoZamowienia] = useHistoria()
     const [etapPlikow] = usePliki()
 
     return (
@@ -108,11 +111,13 @@ disabled
             // console.log("e.target.value"+e.target.value)
 
             //     setStatus(3) 
-            // add(         {
-            //   kategoria: "Pliki",
-            //   event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana na  "+getNameOfElementTyp(e.target.value,_typ_elementu),
-            //   zamowienie_id: daneZamowienia.id
-            // })
+            dodajDoZamowienia(         {
+              kategoria: "Pliki",
+              event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
+              zamowienie_id: plikiRow.zamowienie_id,
+              user_id: DecodeToken(sessionStorage.getItem("token")).id
+
+            })
             // handleChangeCardFragmenty_i_Elementy({
             //   ...row,
             //   typ: e.target.value,

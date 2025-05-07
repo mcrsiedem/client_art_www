@@ -16,6 +16,7 @@ import {
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
 import TABLE_ROW_PLIKI from "./TABLE_ROW_PLIKI";
+import TABLE_ROW_PLIKI_EMPTY from "./TABLE_ROW_PLIKI_EMPTY";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
@@ -127,9 +128,9 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 {row.show &&(
 
   <>
-  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
-<TABLE_ROW_PLIKI plikiRow={plikiRow}/>
-   ))}
+  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).length !=0 ? zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
+  <TABLE_ROW_PLIKI plikiRow={plikiRow}/>
+   )) :<TABLE_ROW_PLIKI_EMPTY row={row}/>}
       
     <tr >
     <td colSpan={18}>

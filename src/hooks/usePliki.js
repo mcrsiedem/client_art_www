@@ -36,33 +36,11 @@ export   function usePliki() {
 
 
 
-        
-
-
-
-
-// let newPLiki = zamowieniaPliki.map((t) => {
-//   if (t.zamowienie_id == zamowienie_id && t.element_id == element_id) {
-//     return {...t,
-//       etap: etap
-//     }
-//   } else {
-//     return t;
-//   }
-// })
-
-
     const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
       zamowienie_id,
       etap: newEtap(zamowienie_id,res2.data ),
         });
 
-
-            // const res = await axios.get(
-            //   IP + "zamowienia/"+appcontext.sortowanieZamowienia+"/" + sessionStorage.getItem("token")
-            // );
-            // appcontext.setZamowienia([...res.data]);
-            // appcontext.setZamowieniaWyszukiwarka([...res.data]);
         setZamowienia(zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
@@ -74,7 +52,6 @@ export   function usePliki() {
         }))
 
 
-            // setZamowieniaPliki(newPLiki );
 
       }
 

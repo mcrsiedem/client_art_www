@@ -22,16 +22,15 @@ export   function usePliki() {
       const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
 
        
-      const etapPlikow = async (etap,zamowienie_id,element_id) =>{
-        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {
-          zamowienie_id,
-          element_id,
-          etap,
-            });
+      const etapPlikow = async (etap,plikiRow) =>{
+        const zamowienie_id = plikiRow.zamowienie_id
+        const element_id= plikiRow.element_id
 
-            const res2 = await axios.get(
-              IP + "zamowieniapliki/" + sessionStorage.getItem("token")
-            );
+   
+
+        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,});
+
+            const res2 = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
             appcontext.setZamowieniaPliki([...res2.data]);
 
 

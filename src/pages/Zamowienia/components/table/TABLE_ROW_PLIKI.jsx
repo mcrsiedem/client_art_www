@@ -107,7 +107,7 @@ disabled
           onChange={(e) => {
 
             // console.log(plikiRow.zamowienie_id)
-            etapPlikow(e.target.value,plikiRow.zamowienie_id,plikiRow.element_id)
+            etapPlikow(e.target.value,plikiRow)
             // console.log("e.target.value"+e.target.value)
 
             //     setStatus(3) 

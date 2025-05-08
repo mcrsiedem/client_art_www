@@ -42,6 +42,14 @@ export   function usePliki() {
           
         let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
 
+        const res_historia = await axios.put(IP + "updateHistoria/" + sessionStorage.getItem("token"), {
+          kategoria: "Pliki",
+          event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(etap),
+          zamowienie_id: plikiRow.zamowienie_id,
+          user_id: DecodeToken(sessionStorage.getItem("token")).id
+
+        });
+
     const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
       zamowienie_id,
       etap: new_etap
@@ -86,13 +94,7 @@ export   function usePliki() {
 
 
 
-        // const res_historia = await axios.put(IP + "updateHistoria/" + sessionStorage.getItem("token"), {
-        //   kategoria: "Pliki",
-        //   event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(etap),
-        //   zamowienie_id: plikiRow.zamowienie_id,
-        //   user_id: DecodeToken(sessionStorage.getItem("token")).id
 
-        // });
 
 
 

@@ -75,6 +75,10 @@
     margin-right: 10px;
     height: 27px;
 }
+.szukajInput:hover{
+background-color: azure;
+color: black;
+}
 
 .szukajInputSort{
     background: transparent;

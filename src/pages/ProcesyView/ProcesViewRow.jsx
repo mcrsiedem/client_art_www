@@ -256,9 +256,12 @@ function Stan({grup}) {
 function Etap({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania
+  const zamowieniaPliki = contextApp.zamowieniaPliki
+  const setZamowieniaPliki = contextApp.setZamowieniaPliki
+
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const selectedProcesor = techContext.selectedProcesor
+  const grupyWykonanAll = techContext.grupyWykonanAll
+  const setGrupWykonanAll = techContext.setGrupWykonanAll
   const [etapPlikow] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
   
@@ -278,6 +281,17 @@ function Etap({grup}) {
             user_id: DecodeToken(sessionStorage.getItem("token")).id
 
           })
+
+          setGrupWykonanAll(grupyWykonanAll.map((t) => {
+            if (t.global_id == grup.global_id  ) {
+              return {...t,
+                zamowienia_pliki_etap: event.target.value
+              }
+            } else {
+              return t;
+            }
+          }))
+
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >

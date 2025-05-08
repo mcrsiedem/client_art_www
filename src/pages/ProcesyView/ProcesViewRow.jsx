@@ -5,7 +5,7 @@ import icon from "assets/copy.svg";
 
 
 
-import { _etap_plikow, reg_int } from "utils/initialvalue";
+import { _etap_plikow, _typ_elementu, reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 import axios from "axios";
@@ -24,6 +24,10 @@ import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaO
 import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
 import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
+import { usePliki } from "hooks/usePliki";
+import { useHistoria } from "hooks/useHistoria";
+import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 
@@ -255,13 +259,25 @@ function Etap({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+  const [etapPlikow] = usePliki()
+      const [add,dodajDoZamowienia] = useHistoria()
+  
+
   return (
 <td style={{width: "160px"}}>
       <select
         className={style.select}
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-   
+          etapPlikow(event.target.value,grup.zamowienie_id,grup.element_id)
+
+          dodajDoZamowienia(         {
+            kategoria: "Pliki",
+            event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
+            zamowienie_id: grup.zamowienie_id,
+            user_id: DecodeToken(sessionStorage.getItem("token")).id
+
+          })
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >

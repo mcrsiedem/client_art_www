@@ -496,7 +496,7 @@ const _etapy_produkcji = [
 
 const _etap_plikow = [
   {
-    id: 1,
+    id: 2,
     nazwa: "Brak",
   },
   {

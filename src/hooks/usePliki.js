@@ -17,60 +17,71 @@ export   function usePliki() {
       const zamowieniaPliki = appcontext.zamowieniaPliki;
       const setZamowieniaPliki = appcontext.setZamowieniaPliki;
       const grupaWykonan = techContext.grupaWykonan;
-      const setGrupaWykonan = techContext.setGrupaWykonan;
+      const zamowienia = appcontext.zamowienia;
+      const setZamowienia = appcontext.setZamowienia;
       const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
 
        
       const etapPlikow = async (etap,zamowienie_id,element_id) =>{
-        const res = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {
+        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {
           zamowienie_id,
           element_id,
           etap,
             });
 
-let newPLiki = zamowieniaPliki.map((t) => {
-  if (t.zamowienie_id == zamowienie_id && t.element_id == element_id) {
-    return {...t,
-      etap: etap
-    }
-  } else {
-    return t;
-  }
-})
+            const res2 = await axios.get(
+              IP + "zamowieniapliki/" + sessionStorage.getItem("token")
+            );
+            appcontext.setZamowieniaPliki([...res2.data]);
 
-  if(sprawdzReszteEtapow(etap,zamowienie_id,element_id,newPLiki)){
-    const res2 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
+
+
+        
+
+
+
+
+// let newPLiki = zamowieniaPliki.map((t) => {
+//   if (t.zamowienie_id == zamowienie_id && t.element_id == element_id) {
+//     return {...t,
+//       etap: etap
+//     }
+//   } else {
+//     return t;
+//   }
+// })
+
+
+    const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
       zamowienie_id,
-      etap,
+      etap: newEtap(zamowienie_id,res2.data ),
         });
-  }
 
 
+            // const res = await axios.get(
+            //   IP + "zamowienia/"+appcontext.sortowanieZamowienia+"/" + sessionStorage.getItem("token")
+            // );
+            // appcontext.setZamowienia([...res.data]);
+            // appcontext.setZamowieniaWyszukiwarka([...res.data]);
+        setZamowienia(zamowienia.map((t) => {
+          if (t.id == zamowienie_id ) {
+            return {...t,
+              etap: newEtap(zamowienie_id,res2.data )
+            }
+          } else {
+            return t;
+          }
+        }))
 
-            setZamowieniaPliki(newPLiki );
+
+            // setZamowieniaPliki(newPLiki );
 
       }
 
-      const sprawdzReszteEtapow = (etap,zamowienie_id,element_id,newPLiki ) => {
-        let stan = true
-        // sprawdza czy reszta plików jest na takim samym etapie i czy zmiaenic etap zamowienia
-        newPLiki.filter(x=> x.zamowienie_id == zamowienie_id ).forEach(element => {
-          if(element.etap != etap ) {
-            // console.log(element.etap)
-            stan = false
-          }
-
-          if( etap < element.etap ) {
-            stan = true
-          }
-          
-          if( etap == element.etap ) {
-          
-            stan = true
-          }
-        });
-
-        return stan
+      const newEtap = (zamowienie_id,zamowieniaPliki ) => {
+        let new_etap;
+        new_etap = Math.min(...zamowieniaPliki.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
+        return new_etap
       }
 
     return [etapPlikow];

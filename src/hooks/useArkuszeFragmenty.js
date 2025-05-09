@@ -67,7 +67,7 @@ import { AppContext } from "context/AppContext";
 import { useIntroligatornia } from "./useIntroligatornia";
 
 
-export function useArkusze(status_id){
+export function useArkuszeFragmenty(status_id){
 // const modalcontext = useContext(ModalInsertContext);
 // const daneZamowienia = modalcontext.daneZamowienia;
 // const setDaneZamowienia = modalcontext.setDaneZamowienia;

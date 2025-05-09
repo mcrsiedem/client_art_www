@@ -272,7 +272,7 @@ function Etap({grup}) {
         className={style.select}
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-          etapPlikow(event.target.value,grup.zamowienie_id,grup.element_id)
+          etapPlikow(event.target.value,grup)
 
           dodajDoZamowienia(         {
             kategoria: "Pliki",

@@ -88,13 +88,8 @@ disabled
   }
 
   function Etap({ plikiRow}) {
-    //row - row element
-    // const [setStatus] = useStatus()
-    // const [valueIN,setValueIN] = useState(null)
     
     const contextModalInsert = useContext(ModalInsertContext);
-    // const elementy = contextModalInsert.elementy
-    // const daneZamowienia = contextModalInsert.daneZamowienia
     const [add,dodajDoZamowienia] = useHistoria()
     const [etapPlikow] = usePliki()
 
@@ -105,19 +100,13 @@ disabled
          
 // disabled
           onChange={(e) => {
-
-     
             etapPlikow(e.target.value,plikiRow)
-
-            // dodajDoZamowienia(         {
-            //   kategoria: "Pliki",
-            //   event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
-            //   zamowienie_id: plikiRow.zamowienie_id,
-            //   user_id: DecodeToken(sessionStorage.getItem("token")).id
-
-            // })
-
-
+            dodajDoZamowienia(         {
+              kategoria: "Pliki",
+              event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
+              zamowienie_id: plikiRow.zamowienie_id,
+              user_id: DecodeToken(sessionStorage.getItem("token")).id
+            })
 
           }}
         >

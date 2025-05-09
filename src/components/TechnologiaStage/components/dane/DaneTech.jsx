@@ -256,8 +256,15 @@ const contextTech = useContext(TechnologyContext);
         className={style.select}
         value={daneTech.stan}
         onChange={(event) => {
+          if(daneTech.id == 1 && event.target.value < 3){
           setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
           setSaveButtonDisabled(false)
+          }
+          if(daneTech.id != 1 && event.target.value > 1){
+            setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
+            setSaveButtonDisabled(false)
+            }
+          
         }}
       >
         {_stan_technologi.map((option) => (

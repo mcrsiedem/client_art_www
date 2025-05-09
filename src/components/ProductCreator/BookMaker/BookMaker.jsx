@@ -124,7 +124,7 @@ const Szerokosc = () => {
             if (e.target.value === '' || re.test(e.target.value)) {
             // context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
 
-            if(e.target.value > 160 && e.target.value <185){
+            if(e.target.value > 140 && e.target.value <172){
               context.setPreOrder({...context.preOrder, szerokosc: e.target.value,falc_skladka: 31})
             }else{
               context.setPreOrder({...context.preOrder,szerokosc: e.target.value, falc_skladka: 29})

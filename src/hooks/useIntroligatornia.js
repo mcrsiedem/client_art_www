@@ -26,7 +26,8 @@ export function useIntroligatornia() {
           naklad: fragmentTech.naklad,
           indeks: getMaxIndeks(newFragmentyLeg),
           id: getMaxID(newFragmentyLeg),
-          wersja: fragmentTech.wersja
+          wersja: fragmentTech.wersja,
+          fragment_id: fragmentTech.id // dodane na konińcu, moze nic sie nie spierdoli 
         });
       }
     }

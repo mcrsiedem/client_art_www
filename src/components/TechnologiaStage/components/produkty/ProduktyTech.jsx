@@ -119,6 +119,7 @@ function ProduktyTable2() {
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
 
   const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
+  // const [createArkuszeFromElemenets,ponumerujArkusze] = useArkuszeFragmenty()
  
       return (
     

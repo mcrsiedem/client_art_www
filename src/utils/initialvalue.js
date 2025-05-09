@@ -517,7 +517,11 @@ const _etap_plikow = [
   },
   {
     id: 7,
-    nazwa: "Zaświecone",
+    nazwa: "Naświetlanie",
+  },
+  {
+    id: 8,
+    nazwa: "Druk",
   },
 ];
 

@@ -259,15 +259,28 @@ export const TechnologyContextProvider = ({children})=>{
 
 
       const updateWykonanie = (row) => {
-        setWykonania(
-          wykonania.map((t) => {
-            if (t.id === row.id) {
-              return row;
-            } else {
-              return t;
-            }
-          })
-        )
+
+let new_wykonania =       wykonania.map((t) => {
+  if (t.id === row.id) {
+    return row;
+  } else {
+    return t;
+  }
+})
+
+        const SumaCzasow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+        const SumaPrzelotow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+
+        setWykonania(new_wykonania)
+
+
       };
 
       const updateRowOprawaTech = (row) => {

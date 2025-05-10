@@ -10,6 +10,7 @@ import { updateWykonania } from "actions/updateWykonania";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 import { getMaxID } from "actions/getMaxID";
 import { useWykonania } from "hooks/useWykonania";
+import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 
 export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
   return(<div
@@ -235,7 +236,19 @@ const NakladWykonanie = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
   const procesyElementowTech = techContext.procesyElementowTech
+  const wykonania = techContext.wykonania
   const [czasWykonania] = useWykonania()
+  const [sumujGrupe] = useGrupyWykonan()
+
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -256,6 +269,8 @@ const NakladWykonanie = ({ rowWykonanie }) => {
                   czas: czasWykonania(rowWykonanie,e.target.value,rowWykonanie.predkosc),
                   update:true
                 });
+
+           
               }else {
                             updateWykonanie({
               ...rowWykonanie,

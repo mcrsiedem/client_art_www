@@ -382,6 +382,7 @@ const CzasGrupy = ({ rowGrupa }) => {
 const NakladGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const [sumujGrupe] = useGrupyWykonan()
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -395,8 +396,11 @@ const NakladGrupy = ({ rowGrupa }) => {
             updateGrupaWykonan({
               ...rowGrupa,
               czas: e.target.value,
+              update:true
             });
           }
+
+          
         }}
       ></input>
     </div>

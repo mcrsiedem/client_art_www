@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import style from "./RowWykonanie.module.css";
+import icon from "assets/copy.svg";
+
 import { reg_int } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { updateWykonania } from "actions/updateWykonania";
+import { getMaxIndeks } from "actions/getMaxIndeks";
+import { getMaxID } from "actions/getMaxID";
 
 export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
   return(<div
@@ -20,6 +24,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
       <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie}/>
+      <DodajWykonanie rowWykonanie={rowWykonanie}/>
     </div>
   </div>)
   
@@ -44,6 +49,39 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
     sessionStorage.setItem("id_proces_wykonanie_drag", rowWykonanie.proces_id);
     sessionStorage.setItem("id_grupa_wykonanie_drag", rowWykonanie.grupa_id);
   }
+}
+
+function DodajWykonanie({ rowWykonanie }) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const _stan_wykonania = contextApp._stan_wykonania
+  const updateWykonanie = techContext.updateWykonanie
+  const daneTech = techContext.daneTech;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
+  return (
+    <div className={style.col_dane_kopiuj}>
+      <img
+        // onDragOver={handleDragOver}
+        // onDrop={() => handleDrop()}
+        className={style.expand}
+        src={icon}
+        onClick={() => {
+
+          if(daneTech.id == 1){
+          let newWykonania = [...wykonania]
+          newWykonania.push({...rowWykonanie,id: getMaxID(wykonania),index:getMaxIndeks(wykonania),naklad:0,przeloty:0,czas:0,insert:true })
+          setWykonania(newWykonania)
+          }
+          if(daneTech.id != 1){
+
+            }
+
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
 }
 
 function StanWykonania({ rowWykonanie }) {

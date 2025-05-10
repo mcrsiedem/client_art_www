@@ -238,16 +238,9 @@ const NakladWykonanie = ({ rowWykonanie }) => {
   const procesyElementowTech = techContext.procesyElementowTech
   const wykonania = techContext.wykonania
   const [czasWykonania] = useWykonania()
-  const [sumujGrupe] = useGrupyWykonan()
 
-  const SumaCzasow = (grupa,new_wykonania) => {
-    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
-    return suma;
-  };
-  const SumaPrzelotow = (grupa,new_wykonania) => {
-    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
-    return suma;
-  };
+
+
 
   return (
     <div className={style.col_dane_przeloty}>
@@ -260,6 +253,7 @@ const NakladWykonanie = ({ rowWykonanie }) => {
 
           // proces =  procesyElementowTech.filter(x=>x.id == rowWykonanie.proces_id)[0].ilosc_uzytkow
           if (e.target.value == "" || reg_int.test(e.target.value)) {
+            if(e.target.value == "" ) e.target.value =0
             if(rowWykonanie.nazwa=="Falcowanie")
               {
                 updateWykonanie({
@@ -359,6 +353,8 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
 
 
           if (e.target.value == "" || reg_int.test(e.target.value)) {
+            if(e.target.value == "" ) e.target.value =0
+
             updateWykonanie({
               ...rowWykonanie,
               przeloty: e.target.value,

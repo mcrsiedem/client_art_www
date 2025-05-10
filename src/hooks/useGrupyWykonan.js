@@ -15,7 +15,7 @@ export function useGrupyWykonan(row){
     return suma;
   };
   const SumaPrzelotow = (grupa,new_wykonania) => {
-    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
     return suma;
   };
 

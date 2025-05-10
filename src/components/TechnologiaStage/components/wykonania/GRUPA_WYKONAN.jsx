@@ -25,17 +25,17 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
   const wykonania = techContext.wykonania;
   const [show, setShow] = useState(true);
   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
-  const SumaCzasow = (wykonania,grupa) => {
-    // sumuje wszystkie czasy z dowolnej grupy
-    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
-    return suma;
-  };
+  // const SumaCzasow = (wykonania,grupa) => {
+  //   // sumuje wszystkie czasy z dowolnej grupy
+  //   let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  //   return suma;
+  // };
   
-  const SumaPrzelotow = (wykonania,grupa) => {
-    // sumuje wszystkie czasy z dowolnej grupy
-    let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
-    return suma;
-  };
+  // const SumaPrzelotow = (wykonania,grupa) => {
+  //   // sumuje wszystkie czasy z dowolnej grupy
+  //   let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+  //   return suma;
+  // };
   return (
     <>
       {show && grupaWykonan

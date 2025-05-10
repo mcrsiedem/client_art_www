@@ -23,7 +23,7 @@ export default function WykonaniaTech() {
   if(showProcesy || daneTech.id !=1 ){
       return (
     <div onDoubleClick={()=>{
-      createWykonaniaFromArkuszeLegi()
+      // createWykonaniaFromArkuszeLegi()
 
     }} className={style.container}>
 

@@ -9,6 +9,7 @@ import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { updateWykonania } from "actions/updateWykonania";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 import { getMaxID } from "actions/getMaxID";
+import { useWykonania } from "hooks/useWykonania";
 
 export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
   return(<div
@@ -233,22 +234,40 @@ const RodzajArkuszaWykonania = ({ rowWykonanie }) => {
 const NakladWykonanie = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
+  const procesyElementowTech = techContext.procesyElementowTech
+  const [czasWykonania] = useWykonania()
   return (
     <div className={style.col_dane_przeloty}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input
-      disabled
         className={style.input}
         value={rowWykonanie.naklad}
         onChange={(e) => {
 
-
+          // proces =  procesyElementowTech.filter(x=>x.id == rowWykonanie.proces_id)[0].ilosc_uzytkow
           if (e.target.value == "" || reg_int.test(e.target.value)) {
-            updateWykonanie({
+            if(rowWykonanie.nazwa=="Falcowanie")
+              {
+                updateWykonanie({
+                  ...rowWykonanie,
+                  naklad: e.target.value,
+                  przeloty:e.target.value,
+                  czas: czasWykonania(rowWykonanie,e.target.value,rowWykonanie.predkosc),
+                  update:true
+                });
+              }else {
+                            updateWykonanie({
               ...rowWykonanie,
-              czas: e.target.value,
+              naklad: e.target.value,
+              czas: czasWykonania(rowWykonanie,e.target.value,rowWykonanie.predkosc),
+              update:true
             });
+              }
+
+
+
+            
           }
         }}
       ></input>
@@ -285,12 +304,13 @@ const MnoznikWykoniania = ({ rowWykonanie }) => {
 const PredkoscWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
+  const [czasWykonania] = useWykonania()
+
   return (
     <div className={style.col_dane_przeloty}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input
-      disabled
         className={style.input}
         value={rowWykonanie.predkosc}
         onChange={(e) => {
@@ -299,7 +319,9 @@ const PredkoscWykoniania = ({ rowWykonanie }) => {
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             updateWykonanie({
               ...rowWykonanie,
-              czas: e.target.value,
+              predkosc:e.target.value,
+              czas: czasWykonania(rowWykonanie,rowWykonanie.naklad,e.target.value),
+              update: true
             });
           }
         }}
@@ -316,7 +338,6 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
       
       {/* <label className={style.label}> Czas </label> */}
       <input
-      disabled
         className={style.input}
         value={rowWykonanie.przeloty}
         onChange={(e) => {
@@ -325,7 +346,7 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             updateWykonanie({
               ...rowWykonanie,
-              czas: e.target.value,
+              przeloty: e.target.value,
             });
           }
         }}

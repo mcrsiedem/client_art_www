@@ -53,6 +53,13 @@ function sumujGrupe(new_wykonania) {
         console.log("Wszystie grupy zakonczone")
         // jesli wszystkie grupy zakonczone mozna zakonczyc proces i wyzwolic nastepny
 
+        // funkcja w sql
+        // zmiana procesu na zakonoczny, proces indeks+1 oczekujacy
+        // czyli po zakonczeniu
+
+
+
+
 
       }
           // console.log("takie same "+ czy_wszystkie_takie_same);

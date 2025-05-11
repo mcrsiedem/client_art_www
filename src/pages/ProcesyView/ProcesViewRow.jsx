@@ -28,6 +28,7 @@ import { usePliki } from "hooks/usePliki";
 import { useHistoria } from "hooks/useHistoria";
 import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 
 
 
@@ -199,14 +200,30 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+ const [sumujGrupe,statusGrupy] = useGrupyWykonan()
+
   return (
 <td style={{width: "160px"}}>
       <select
         className={style.select}
         value={grup.status}
         onChange={(event) => {
-   
+          // _status_wykonania z AppContext - Niedostępne Oczekujące W trakcie Zakończone
+
+          // zmiana statusu grupy
           updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+          
+          //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
+          // if(event.target.value==4){
+          //   statusGrupy({...grup, status: event.target.value})
+          // }
+          statusGrupy({...grup, status: event.target.value})
+
+          // zmiana procesu na najmiejszy status wszystich grup 
+
+          // zmiana elementu na w trakcie albo zakonczony
+
+   
         }}
       >
         {_status_wykonania.map((option) => (

@@ -106,6 +106,8 @@ function Table() {
         <thead>
           <tr>
             <th className={style.col_indeks}>#</th>
+            <th className={style.col_indeks}>id</th>
+            <th className={style.col_indeks}>index</th>
             {/* <th className={style.col_indeks}>id</th>
             <th className={style.col_indeks}>zam</th>
             <th className={style.col_indeks}>prod</th>
@@ -150,6 +152,8 @@ const ProcesTechRow =({row,i,procesyElementowTechTemporary,
   return(
     <tr key={row.id +100}>
     <td>{i+1}</td>
+    <td>{row.id}</td>
+    <td>{row.indeks}</td>
     <ProcesName row={row} setProcesID={setProcesID}/>
     <ProcessTyp row={row} procesID={procesID}/>
     <IloscUzytkow row={row} procesID={procesID}/>

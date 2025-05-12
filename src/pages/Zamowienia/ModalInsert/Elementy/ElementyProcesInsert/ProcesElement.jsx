@@ -137,6 +137,7 @@ function Table() {
         <thead>
           <tr>
             <th className={style.col_indeks}>#</th>
+            <th className={style.col_indeks}>indeks</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Ilość użytków</th>
@@ -157,6 +158,7 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
+                <td>{row.indeks}</td>
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
                 <IloscUzytkow row={row}/>

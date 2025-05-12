@@ -42,6 +42,18 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
+          const selectColor = (etapPlikow) =>{
+    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
+    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
+    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_DRUK
+
+     return style.procesRow_tr
+  }
 
   return (
 <>
@@ -58,7 +70,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
             
                     
                   }}
-                  className={style.procesRow_tr}
+                 className={selectColor(grup.zamowienia_pliki_etap) }
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){
@@ -202,11 +214,21 @@ function Status({grup}) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
  const [sumujGrupe,statusGrupy] = useGrupyWykonan()
-
+            const selectColor = (etap) =>{
+    if (etap==1) return style.select
+    if (etap==2) return style.select
+    if (etap==3) return style.select
+    if (etap==4) return style.select_AKCEPT
+    if (etap==5) return style.select_AKCEPT
+    if (etap==6) return style.select_RIP
+    if (etap==7) return style.select_RIP
+      if (etap==8) return style.select_DRUK
+     return style.procesRow_tr
+  }
   return (
 <td style={{width: "160px"}}>
       <select
-        className={style.select}
+       className={selectColor(grup.zamowienia_pliki_etap) }
         value={grup.status}
         onChange={(event) => {
           // _status_wykonania z AppContext - Niedostępne Oczekujące W trakcie Zakończone
@@ -282,16 +304,26 @@ function Etap({grup}) {
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const [etapPlikow] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
-  
+            const selectColor = (etap) =>{
+    if (etap==1) return style.select
+    if (etap==2) return style.select
+    if (etap==3) return style.select
+    if (etap==4) return style.select_AKCEPT
+    if (etap==5) return style.select_AKCEPT
+    if (etap==6) return style.select_RIP
+    if (etap==7) return style.select_RIP
+    if (etap==8) return style.select_DRUK
+     return style.procesRow_tr
+  }
 
   return (
 <td style={{width: "160px"}}>
       <select
-        className={style.select}
+        className={selectColor(grup.zamowienia_pliki_etap) }
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
           //etap pliku z zakresu brak do naświetlenia
-          if(event.target.value <8){
+          // if(event.target.value <8){
           etapPlikow(event.target.value,grup)
 
           dodajDoZamowienia(         {
@@ -314,7 +346,7 @@ function Etap({grup}) {
 
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         
-          }
+          // }
 
         }}
       >

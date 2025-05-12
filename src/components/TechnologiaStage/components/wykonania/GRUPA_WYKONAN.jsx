@@ -181,12 +181,15 @@ function DodajGrupeWykonan({ rowGrupa }) {
         className={style.expand}
         src={icon}
         onClick={() => {
-          let newGrupa = [...grupaWykonan]
+            if(daneTech.id==1){
+   let newGrupa = [...grupaWykonan]
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);
           newGrupa.push({...rowGrupa,id: getMaxID(grupaWykonan),czas:0,przeloty:0 })
           setGrupaWykonan(newGrupa)
           console.log(newGrupa)
+            }
+       
         }}
         alt="Procesy"
       />

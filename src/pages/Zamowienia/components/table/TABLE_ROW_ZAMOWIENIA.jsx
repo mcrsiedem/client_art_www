@@ -128,7 +128,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
   <>
   {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
-  <TABLE_ROW_PLIKI plikiRow={plikiRow}/>
+  <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row}/>
    )) }
       
     <tr >

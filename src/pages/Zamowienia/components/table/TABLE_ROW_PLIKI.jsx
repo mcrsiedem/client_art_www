@@ -9,7 +9,7 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 
 
-export default function TABLE_ROW_PLIKI({plikiRow }) {
+export default function TABLE_ROW_PLIKI({plikiRow,row }) {
     //row - row element
 
     
@@ -37,7 +37,7 @@ export default function TABLE_ROW_PLIKI({plikiRow }) {
       <td> </td>
       <td> </td>
       <td> </td>
-        <td>     <Etap plikiRow={plikiRow} />     </td>
+        <td>     <Etap plikiRow={plikiRow} row={row}/>     </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -87,19 +87,19 @@ disabled
     );
   }
 
-  function Etap({ plikiRow}) {
+  function Etap({ plikiRow,row}) {
     
     const contextModalInsert = useContext(ModalInsertContext);
     const [add,dodajDoZamowienia] = useHistoria()
     const [etapPlikow] = usePliki()
-
-    return (
+if(row.etap !=1){
+      return (
         <select
           className={style.select_etap}
           value={plikiRow.etap}
          
 // disabled
-          onChange={(e) => {
+          onChange={(e) => {  
             etapPlikow(e.target.value,plikiRow)
             dodajDoZamowienia(         {
               kategoria: "Pliki",
@@ -118,4 +118,6 @@ disabled
           ))}
         </select>
     );
+}
+
   }

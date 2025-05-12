@@ -202,7 +202,7 @@ const initialProcesy = [
     back_kolor: "CMYK",
     ilosc_uzytkow: 1,
     info: "",
-    indeks: 0,
+    indeks: 1,
   },
   {
     id: 2,

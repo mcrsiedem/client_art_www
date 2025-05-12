@@ -24,7 +24,7 @@ let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
         front_kolor: "",
         back_kolor: "",
         info: "",
-        indeks: Math.max(...procesyElementowTemporary.map((f) => f.indeks)) + 1,
+        indeks: Math.max(...procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).map((f) => f.indeks)) + 1, // kolejny indeks danego elementu
         insert:true
       });
 

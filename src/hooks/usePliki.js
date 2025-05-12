@@ -32,9 +32,10 @@ const [sumujGrupe,statusGrupy] = useGrupyWykonan()
       const etapPlikow = async (etap,plikiRow) =>{
         const zamowienie_id = plikiRow.zamowienie_id
         const element_id= plikiRow.element_id
+        const global_id_pliki_row= plikiRow.global_id
 
-
-        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,});
+        console.log("plikiRow: "+plikiRow.global_id)
+        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row});
         const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
           
         let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
@@ -55,7 +56,7 @@ const [sumujGrupe,statusGrupy] = useGrupyWykonan()
         console.log("Etap:"+etap)
         // zmiana etapu plikow na rip lub naswietlanie zmienia status grupy na oczekujace
         if(etap==6 || etap==7){
-                    updateWykonaniaOrazGrupaFromProcesView(plikiRow.global_id,1,2,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+                    // updateWykonaniaOrazGrupaFromProcesView(plikiRow.global_id,1,2,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
           
         }
         appcontext.setZamowieniaPliki([...res_new_pliki.data]);

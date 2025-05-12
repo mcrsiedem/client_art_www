@@ -305,6 +305,8 @@ function Etap({grup}) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const grupyWykonanAll = techContext.grupyWykonanAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
+  const selectedProcesor = techContext.selectedProcesor
+
   const [etapPlikow] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{

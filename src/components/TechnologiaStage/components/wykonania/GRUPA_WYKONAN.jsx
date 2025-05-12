@@ -274,6 +274,7 @@ function StatusGrupy({ rowGrupa }) {
    const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
+  const [sumujGrupe,statusGrupy] = useGrupyWykonan()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Status </label>
@@ -293,9 +294,9 @@ function StatusGrupy({ rowGrupa }) {
             updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
           }else{
 
-       
-            updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
-
+        
+            updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii,rowGrupa.zamowienie_id)
+            statusGrupy({...rowGrupa, status: event.target.value})
           }
 
         }}

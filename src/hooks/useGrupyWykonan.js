@@ -3,6 +3,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { getMaxID } from "actions/getMaxID";
 import { TechnologyContext } from "context/TechnologyContext";
+import { IP } from "utils/Host";
+import axios from "axios";
 
 export function useGrupyWykonan(row){
   const techContext = useContext(TechnologyContext);
@@ -29,7 +31,7 @@ function sumujGrupe(new_wykonania) {
 
 
 
-  function statusGrupy(grupa) {
+  async function  statusGrupy(grupa) {
   //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
     
  let grupy_wykonan_aktualnego_procesu = grupyWykonanAll.map((t) => {
@@ -51,6 +53,14 @@ function sumujGrupe(new_wykonania) {
       czy_wszystkie_takie_same = grupy_wykonan_aktualnego_procesu.every(x=> x.status==grupa.status)
       if(czy_wszystkie_takie_same){
         console.log("Wszystie grupy zakonczone")
+        
+    const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
+      technologia_id: grupa.technologia_id,
+      proces_id: grupa.proces_id,
+      element_id: grupa.element_id,
+      grupa_id: grupa.id,
+        });
+
         // jesli wszystkie grupy zakonczone mozna zakonczyc proces i wyzwolic nastepny
 
         // funkcja w sql

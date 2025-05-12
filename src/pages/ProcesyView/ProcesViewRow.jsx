@@ -39,7 +39,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     const wykonaniaAll = techContext.wykonaniaAll;
     const appcontext = useContext(AppContext);
     const typ_elementu = appcontext.typ_elementu;
-
+  const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
 
@@ -70,7 +70,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-                  {grup.typ_grupy != 1 ?  <Etap grup={grup}/> : <></>}
+            
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
@@ -83,7 +83,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{minWidth: "130px"}}>{grup.predkosc}</td>
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
-                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
+                        {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
+                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <td></td>}
                   {/* <td> {grup.zamowienia_pliki_etap}</td> */}
                   <td></td>
 
@@ -289,6 +290,8 @@ function Etap({grup}) {
         className={style.select}
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
+          //etap pliku z zakresu brak do naświetlenia
+          if(event.target.value <8){
           etapPlikow(event.target.value,grup)
 
           dodajDoZamowienia(         {
@@ -310,6 +313,9 @@ function Etap({grup}) {
           }))
 
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        
+          }
+
         }}
       >
         {_etap_plikow.map((option) => (

@@ -9,6 +9,8 @@ import { useZamowienia } from "./useZamowienia";
 import { _typ_elementu } from "utils/initialvalue";
 import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useGrupyWykonan } from "./useGrupyWykonan";
+import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
 export   function usePliki() {
 
 
@@ -23,8 +25,10 @@ export   function usePliki() {
       const zamowienia = appcontext.zamowienia;
       const setZamowienia = appcontext.setZamowienia;
       const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
+const [sumujGrupe,statusGrupy] = useGrupyWykonan()
+        const selectedProcesor = techContext.selectedProcesor
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
 
-       
       const etapPlikow = async (etap,plikiRow) =>{
         const zamowienie_id = plikiRow.zamowienie_id
         const element_id= plikiRow.element_id
@@ -48,7 +52,12 @@ export   function usePliki() {
       etap: new_etap
         });
 
-
+        console.log("Etap:"+etap)
+        // zmiana etapu plikow na rip lub naswietlanie zmienia status grupy na oczekujace
+        if(etap==6 || etap==7){
+                    updateWykonaniaOrazGrupaFromProcesView(plikiRow.global_id,1,2,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+          
+        }
         appcontext.setZamowieniaPliki([...res_new_pliki.data]);
         setZamowienia(zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {

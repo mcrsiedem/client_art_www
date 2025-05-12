@@ -106,6 +106,7 @@ const ProcesRow = ({ rowProces }) => {
         <div className={style.procesy_container}>
         <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
+        <p  className={style.nazwy_procesow2}> {rowProces.status}</p>
         </div>
         {/* <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p> */}
         {/* <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p> */}

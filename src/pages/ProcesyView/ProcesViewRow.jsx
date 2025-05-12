@@ -42,7 +42,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
-          const selectColor = (etapPlikow) =>{
+          const selectColor = (etapPlikow,status) =>{
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
@@ -50,7 +50,9 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
     if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
     if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
-    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_DRUK
+       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
+    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
+ 
 
      return style.procesRow_tr
   }
@@ -70,7 +72,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
             
                     
                   }}
-                 className={selectColor(grup.zamowienia_pliki_etap) }
+                 className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){
@@ -95,6 +97,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{minWidth: "130px"}}>{grup.predkosc}</td>
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
+                        {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> :  <EtapKolor grup={grup}/>} */}
                         {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <td></td>}
                   {/* <td> {grup.zamowienia_pliki_etap}</td> */}
@@ -304,7 +307,7 @@ function Etap({grup}) {
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const [etapPlikow] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
-            const selectColor = (etap) =>{
+            const selectColor = (etap,status) =>{
     if (etap==1) return style.select
     if (etap==2) return style.select
     if (etap==3) return style.select
@@ -312,14 +315,15 @@ function Etap({grup}) {
     if (etap==5) return style.select_AKCEPT
     if (etap==6) return style.select_RIP
     if (etap==7) return style.select_RIP
-    if (etap==8) return style.select_DRUK
+    if (etap==8 && status==4) return style.select_DRUK
+    if (etap==8 ) return style.select_RIP
      return style.procesRow_tr
   }
 
   return (
 <td style={{width: "160px"}}>
       <select
-        className={selectColor(grup.zamowienia_pliki_etap) }
+        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
           //etap pliku z zakresu brak do naświetlenia
@@ -333,6 +337,74 @@ function Etap({grup}) {
             user_id: DecodeToken(sessionStorage.getItem("token")).id
 
           })
+
+          setGrupWykonanAll(grupyWykonanAll.map((t) => {
+            if (t.global_id == grup.global_id  ) {
+              return {...t,
+                zamowienia_pliki_etap: event.target.value
+              }
+            } else {
+              return t;
+            }
+          }))
+
+          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        
+          // }
+
+        }}
+      >
+        {_etap_plikow.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+      </td>
+
+  );
+}
+
+function EtapKolor({grup}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const zamowieniaPliki = contextApp.zamowieniaPliki
+  const setZamowieniaPliki = contextApp.setZamowieniaPliki
+
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const grupyWykonanAll = techContext.grupyWykonanAll
+  const setGrupWykonanAll = techContext.setGrupWykonanAll
+  const [etapPlikow] = usePliki()
+      const [add,dodajDoZamowienia] = useHistoria()
+            const selectColor = (etap) =>{
+    if (etap==1) return style.select
+    if (etap==2) return style.select
+    if (etap==3) return style.select
+    if (etap==4) return style.select_AKCEPT
+    if (etap==5) return style.select_AKCEPT
+    if (etap==6) return style.select_RIP
+    if (etap==7) return style.select_RIP
+    if (etap==8) return style.select_DRUK
+     return style.select
+  }
+
+  return (
+<td style={{width: "160px"}}>
+      <select
+        className={selectColor(grup.zamowienia_pliki_etap) }
+        // value={grup.zamowienia_pliki_etap}
+        onChange={(event) => {
+          //etap pliku z zakresu brak do naświetlenia
+          // if(event.target.value <8){
+          etapPlikow(event.target.value,grup)
+
+          // dodajDoZamowienia(         {
+          //   kategoria: "Pliki",
+          //   event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
+          //   zamowienie_id: grup.zamowienie_id,
+          //   user_id: DecodeToken(sessionStorage.getItem("token")).id
+
+          // })
 
           setGrupWykonanAll(grupyWykonanAll.map((t) => {
             if (t.global_id == grup.global_id  ) {

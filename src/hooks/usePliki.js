@@ -53,12 +53,7 @@ const [sumujGrupe,statusGrupy] = useGrupyWykonan()
       etap: new_etap
         });
 
-        console.log("Etap:"+etap)
-        // zmiana etapu plikow na rip lub naswietlanie zmienia status grupy na oczekujace
-        if(etap==6 || etap==7){
-                    // updateWykonaniaOrazGrupaFromProcesView(plikiRow.global_id,1,2,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-          
-        }
+
         appcontext.setZamowieniaPliki([...res_new_pliki.data]);
         setZamowienia(zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {

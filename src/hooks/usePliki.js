@@ -81,7 +81,7 @@ export   function usePliki() {
 
         console.log("plikiRow: "+grupaWykonan.global_id)
         // zmiana etapu plików
-        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap});
+        const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap});
         //pobranie plikow po korecie etapu
         const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
         //sprawdzenie najmniejszego etapu

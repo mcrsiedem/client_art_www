@@ -31,13 +31,12 @@ export   function usePliki() {
       const setWykonaniaAll = techContext.setWykonaniaAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
 
-      const etapPlikow = async (etap,plikiRow) =>{
+      const etapPlikowZamowienia = async (etap,plikiRow) =>{
         const zamowienie_id = plikiRow.zamowienie_id
         const element_id= plikiRow.element_id
         const global_id_pliki_row= plikiRow.global_id
 
-        console.log("plikiRow: "+plikiRow.global_id)
-        const res1 = await axios.put(IP + "updatePlikiEtap/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row});
+        const res1 = await axios.put(IP + "updatePlikiEtapZamowienia/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row});
         const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
           
         let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
@@ -97,10 +96,10 @@ export   function usePliki() {
           
           setGrupWykonanAll(prev=>{return prev})
         });
-        // tu trzeba odświezyc grupe procesora
+        
       }
 
 //----------------------------------------------------------------
 
-    return [etapPlikow,etapPlikowGrupyWykonan];
+    return [etapPlikowZamowienia,etapPlikowGrupyWykonan];
   }

@@ -91,7 +91,7 @@ disabled
     
     const contextModalInsert = useContext(ModalInsertContext);
     const [add,dodajDoZamowienia] = useHistoria()
-    const [etapPlikow] = usePliki()
+    const [etapPlikowZamowienia,etapPlikowGrupyWykonan] = usePliki()
 if(row.etap !=1){
       return (
         <select
@@ -100,7 +100,7 @@ if(row.etap !=1){
          
 // disabled
           onChange={(e) => {  
-            etapPlikow(e.target.value,plikiRow)
+            etapPlikowZamowienia(e.target.value,plikiRow)
             dodajDoZamowienia(         {
               kategoria: "Pliki",
               event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),

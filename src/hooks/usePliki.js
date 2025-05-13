@@ -28,6 +28,8 @@ export   function usePliki() {
       const [sumujGrupe, statusGrupy] = useGrupyWykonan();
       const selectedProcesor = techContext.selectedProcesor;
       const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+      const setWykonaniaAll = techContext.setWykonaniaAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
 
       const etapPlikow = async (etap,plikiRow) =>{
         const zamowienie_id = plikiRow.zamowienie_id
@@ -75,7 +77,7 @@ export   function usePliki() {
         const zamowienie_id = grupaWykonan.zamowienie_id
         const element_id= grupaWykonan.element_id
         const global_id_grupa_row= grupaWykonan.global_id
-      
+
 
         console.log("plikiRow: "+grupaWykonan.global_id)
         // zmiana etapu plików
@@ -87,7 +89,14 @@ export   function usePliki() {
         // ustawienie etapu calego zamowienia na najmniejszy etap plikow
         const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {zamowienie_id,etap: new_etap});
 
-
+        await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor).then((res)=>{
+          setWykonaniaAll(res.data[0])
+          setGrupWykonanAll(res.data[1])
+          return res
+        }).then((res) =>{
+          
+          setGrupWykonanAll(prev=>{return prev})
+        });
         // tu trzeba odświezyc grupe procesora
       }
 

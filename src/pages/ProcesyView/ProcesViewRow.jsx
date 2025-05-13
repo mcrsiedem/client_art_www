@@ -96,11 +96,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td style={{minWidth: "130px"}}>{grup.przeloty}</td>
                   <td style={{minWidth: "130px"}}>{grup.predkosc}</td>
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
-                  {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
-                        {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> :  <EtapKolor grup={grup}/>} */}
-                        {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
+                  {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <td></td>}
-                  {/* <td> {grup.zamowienia_pliki_etap}</td> */}
                   <td></td>
 
                   
@@ -307,7 +304,7 @@ function Etap({grup}) {
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
 
-  const [etapPlikow] = usePliki()
+  const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{
     if (etap==1) return style.select
@@ -330,7 +327,7 @@ function Etap({grup}) {
         onChange={(event) => {
           //etap pliku z zakresu brak do naświetlenia
           // if(event.target.value <8){
-          etapPlikow(event.target.value,grup)
+            etapPlikowGrupyWykonan(event.target.value,grup)
 
           dodajDoZamowienia(         {
             kategoria: "Pliki",
@@ -340,15 +337,16 @@ function Etap({grup}) {
 
           })
 
-          setGrupWykonanAll(grupyWykonanAll.map((t) => {
-            if (t.global_id == grup.global_id  ) {
-              return {...t,
-                zamowienia_pliki_etap: event.target.value
-              }
-            } else {
-              return t;
-            }
-          }))
+          // setGrupWykonanAll(grupyWykonanAll.map((t) => {
+          //   if (t.global_id == grup.global_id  ) {
+          //     return {...t,
+          //       zamowienia_pliki_etap: event.target.value
+          //     }
+          //   } else {
+          //     return t;
+          //   }
+          // }))
+          fechGrupyAndWykonaniaForProcesor(selectedProcesor)
 
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         
@@ -374,6 +372,7 @@ function EtapKolor({grup}) {
   const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
   const grupyWykonanAll = techContext.grupyWykonanAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const [etapPlikow] = usePliki()
@@ -417,7 +416,7 @@ function EtapKolor({grup}) {
               return t;
             }
           }))
-
+          // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         
           // }

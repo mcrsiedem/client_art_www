@@ -35,7 +35,7 @@ function sumujGrupe(new_wykonania) {
   //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
     
  let grupy_wykonan_aktualnego_procesu = grupyWykonanAll.map((t) => {
-    if (t.id === grupa.id && t.technologia_id == grupa.technologia_id) {
+    if (t.id == grupa.id && t.technologia_id == grupa.technologia_id) {
       return grupa;
     } else {
       return t;

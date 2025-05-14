@@ -231,22 +231,8 @@ function Status({grup}) {
        className={selectColor(grup.zamowienia_pliki_etap) }
         value={grup.status}
         onChange={(event) => {
-          // _status_wykonania z AppContext - Niedostępne Oczekujące W trakcie Zakończone
-
-          // zmiana statusu grupy
-          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-          
-          //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
-          // if(event.target.value==4){
-          //   statusGrupy({...grup, status: event.target.value})
-          // }
+          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
           statusGrupy({...grup, status: event.target.value})
-
-          // zmiana procesu na najmiejszy status wszystich grup 
-
-          // zmiana elementu na w trakcie albo zakonczony
-
-   
         }}
       >
         {_status_wykonania.map((option) => (

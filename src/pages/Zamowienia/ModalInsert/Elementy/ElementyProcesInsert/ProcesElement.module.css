@@ -164,9 +164,19 @@
 .select {
   background: transparent;
   height: 25px;
+  
   box-shadow: none;
   border: none;
 }
+
+.select_indeks {
+  background: transparent;
+  height: 25px;
+    width: 40px;
+  box-shadow: none;
+  border: none;
+}
+
 
 .table  td {
   font-size: 0.9rem;

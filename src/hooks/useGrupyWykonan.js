@@ -13,7 +13,10 @@ export function useGrupyWykonan(row){
   const grupaWykonan = techContext.grupaWykonan;
   const procesyElementowTech = techContext.procesyElementowTech;
   const grupyWykonanAll = techContext.grupyWykonanAll;
-
+   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const selectedProcesor = techContext.selectedProcesor
+  const setWykonaniaAll = techContext.setWykonaniaAll
+  const setGrupWykonanAll = techContext.setGrupWykonanAll
 
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
@@ -29,8 +32,6 @@ function sumujGrupe(new_wykonania) {
   setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
   }
 
-
-
   async function  statusGrupy(grupa) {
   //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
     
@@ -40,59 +41,25 @@ function sumujGrupe(new_wykonania) {
               element_id: grupa.element_id,
               grupa_id: grupa.id,
               status: grupa.status,
+              global_id: grupa.global_id
                 });
-
-  
-        // let grupy_wykonan_aktualnego_procesu = grupyWykonanAll.map((t) => {
-        //     if (t.id == grupa.id && t.technologia_id == grupa.technologia_id) {
-        //       return grupa;
-        //     } else {
-        //       return t;
-        //     }
-        //   })
-        //   grupy_wykonan_aktualnego_procesu = grupy_wykonan_aktualnego_procesu.filter(x=>x.proces_id == grupa.proces_id)  
-          
-
-        //     let proces_grupy = procesyElementowTech.map(x=>x.id == grupa.proces_id)   // proces grupy
-        //     let czy_wszystkie_takie_same;
-
-        //     if(grupa.status == 4){
-        //       czy_wszystkie_takie_same = grupy_wykonan_aktualnego_procesu.every(x=> x.status==grupa.status)
-        //       if(czy_wszystkie_takie_same){
-        //         console.log("Wszystie grupy zakonczone")
-                
-       
-        //       }
-        //     }
-    
-
+  // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor).then((res)=>{
+      setWykonaniaAll(res.data[0])
+      setGrupWykonanAll(res.data[1])
+      return res
+    }).then((res) =>{
+      
+      setGrupWykonanAll(prev=>{return prev})
+    });
 
   
     }
 
 
 
-
-
   return [sumujGrupe,statusGrupy];
 }
 
-
-
 // użycie
-
 // const [add] = useHistoria()
-
-// add(   {
-//   kategoria: "Status zamówienia",
-//   event: "Zmiana statusu zamówienia z "+ _status_dokumentu.filter(x=>x.id == daneZamowienia.status )[0].nazwa + " na "+ _status_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa,
-// })
-
-// add(                    {
-//   kategoria: "Stan zamówienia",
-//   event: "Zmiana stanu zamówienia z "+ _stan_dokumentu.filter(x=>x.id == daneZamowienia.stan )[0].nazwa + " na "+ _stan_dokumentu.filter(x=>x.id == event.target.value )[0].nazwa}
-// );
-
-// add({kategoria: "Etap zamówienia",
-//   event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa}
-// );

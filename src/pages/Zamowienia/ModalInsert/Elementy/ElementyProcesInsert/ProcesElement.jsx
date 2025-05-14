@@ -158,7 +158,8 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                <td>{row.indeks}</td>
+                {/* <td>{row.indeks}</td> */}
+                <INDEKS row={row}/>
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
                 <IloscUzytkow row={row}/>
@@ -296,6 +297,28 @@ const FrontKolor = ({ row }) => {
             handleUpdateRowProcesyElementow({
               ...row,
               front_kolor: e.target.value,
+              update: true,
+              historia: false
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
+const INDEKS = ({ row }) => {
+  const contexModal = useContext(ModalInsertContext);
+  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  return (
+    <td>
+      <input
+      className={style.select_indeks}
+        value={row.indeks}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementow({
+              ...row,
+              indeks: e.target.value,
               update: true,
               historia: false
             });

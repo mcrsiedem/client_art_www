@@ -34,51 +34,40 @@ function sumujGrupe(new_wykonania) {
   async function  statusGrupy(grupa) {
   //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
     
- let grupy_wykonan_aktualnego_procesu = grupyWykonanAll.map((t) => {
-    if (t.id == grupa.id && t.technologia_id == grupa.technologia_id) {
-      return grupa;
-    } else {
-      return t;
-    }
-  })
-  grupy_wykonan_aktualnego_procesu = grupy_wykonan_aktualnego_procesu.filter(x=>x.proces_id == grupa.proces_id)  
-   
+     const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
+              technologia_id: grupa.technologia_id,
+              proces_id: grupa.proces_id,
+              element_id: grupa.element_id,
+              grupa_id: grupa.id,
+              status: grupa.status,
+                });
 
-  // tu potrzeba proces grupy z bazy
-    let proces_grupy = procesyElementowTech.map(x=>x.id == grupa.proces_id)   // proces grupy
-    // sprawdzamy czy wszystkie grupy z procesu mają status 4 czyli zakonczone
-    let czy_wszystkie_takie_same;
+  
+        // let grupy_wykonan_aktualnego_procesu = grupyWykonanAll.map((t) => {
+        //     if (t.id == grupa.id && t.technologia_id == grupa.technologia_id) {
+        //       return grupa;
+        //     } else {
+        //       return t;
+        //     }
+        //   })
+        //   grupy_wykonan_aktualnego_procesu = grupy_wykonan_aktualnego_procesu.filter(x=>x.proces_id == grupa.proces_id)  
+          
 
-    if(grupa.status == 4){
-      czy_wszystkie_takie_same = grupy_wykonan_aktualnego_procesu.every(x=> x.status==grupa.status)
-      if(czy_wszystkie_takie_same){
-        console.log("Wszystie grupy zakonczone")
-        
-    const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
-      technologia_id: grupa.technologia_id,
-      proces_id: grupa.proces_id,
-      element_id: grupa.element_id,
-      grupa_id: grupa.id,
-        });
+        //     let proces_grupy = procesyElementowTech.map(x=>x.id == grupa.proces_id)   // proces grupy
+        //     let czy_wszystkie_takie_same;
 
-        // jesli wszystkie grupy zakonczone mozna zakonczyc proces i wyzwolic nastepny
-
-        // funkcja w sql
-        // zmiana procesu na zakonoczny, proces indeks+1 oczekujacy
-        // czyli po zakonczeniu
-
-
-
-
-
-      }
-          // console.log("takie same "+ czy_wszystkie_takie_same);
-    }
+        //     if(grupa.status == 4){
+        //       czy_wszystkie_takie_same = grupy_wykonan_aktualnego_procesu.every(x=> x.status==grupa.status)
+        //       if(czy_wszystkie_takie_same){
+        //         console.log("Wszystie grupy zakonczone")
+                
+       
+        //       }
+        //     }
     
 
 
-    let indeks_nastepnego_procesu = proces_grupy.indeks+1
-    // console.log("status")
+  
     }
 
 

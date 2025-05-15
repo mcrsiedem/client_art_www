@@ -33,7 +33,7 @@ function sumujGrupe(new_wykonania) {
   setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
   }
 
-  async function  statusGrupy(grupa) {
+  async function  statusGrupyProcesView(grupa) {
   //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
     
      const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
@@ -75,8 +75,11 @@ fechparametryTechnologii(grupa.zamowienie_id,grupa.technologia_id)
 
 
 
-  return [sumujGrupe,statusGrupy,statusGrupyTechnologia];
+  return [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia];
 }
 
 // użycie
 // const [add] = useHistoria()
+
+
+

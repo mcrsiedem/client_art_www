@@ -213,7 +213,7 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
- const [sumujGrupe,statusGrupy,statusGrupyTechnologia] = useGrupyWykonan()
+ const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia] = useGrupyWykonan()
             const selectColor = (etap) =>{
     if (etap==1) return style.select
     if (etap==2) return style.select
@@ -232,7 +232,7 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-          statusGrupy({...grup, status: event.target.value})
+          statusGrupyProcesView({...grup, status: event.target.value})
         }}
       >
         {_status_wykonania.map((option) => (

@@ -138,7 +138,7 @@ function StatusWykonania({ rowWykonanie }) {
         onChange={(event) => {
 
           if(rowWykonanie.technologia_id==1){
-            updateWykonanie({ ...rowWykonanie, status: event.target.value });
+            // updateWykonanie({ ...rowWykonanie, status: event.target.value });
             }else{
               updateWykonania(rowWykonanie.global_id,1,event.target.value,fechparametryTechnologii)
             }

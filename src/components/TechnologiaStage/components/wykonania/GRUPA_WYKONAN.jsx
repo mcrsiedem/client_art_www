@@ -277,13 +277,13 @@ function StatusGrupy({ rowGrupa }) {
    const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
-  const [sumujGrupe,statusGrupy] = useGrupyWykonan()
+  const [sumujGrupe,statusGrupy,statusGrupyTechnologia] = useGrupyWykonan()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Status </label>
       <select 
         className={style.select}
-        defaultValue={rowGrupa.status}
+        value={rowGrupa.status}
         onChange={(event) => {
   
           // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
@@ -293,13 +293,13 @@ function StatusGrupy({ rowGrupa }) {
 
           if(rowGrupa.technologia_id == 1){
 
-            updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
-            updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
+            // updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
+            // updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
           }else{
 
-        
-            updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii,rowGrupa.zamowienie_id)
-            statusGrupy({...rowGrupa, status: event.target.value})
+         statusGrupyTechnologia({...rowGrupa, status: event.target.value})
+              // updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii,rowGrupa.zamowienie_id)
+           
           }
 
         }}

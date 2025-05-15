@@ -17,6 +17,7 @@ export function useGrupyWykonan(row){
   const selectedProcesor = techContext.selectedProcesor
   const setWykonaniaAll = techContext.setWykonaniaAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
@@ -56,9 +57,25 @@ function sumujGrupe(new_wykonania) {
   
     }
 
+      async function  statusGrupyTechnologia(grupa) {
+    
+     const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
+              technologia_id: grupa.technologia_id,
+              proces_id: grupa.proces_id,
+              element_id: grupa.element_id,
+              grupa_id: grupa.id,
+              status: grupa.status,
+              global_id: grupa.global_id
+                });
+
+fechparametryTechnologii(grupa.zamowienie_id,grupa.technologia_id)
+
+  
+    }
 
 
-  return [sumujGrupe,statusGrupy];
+
+  return [sumujGrupe,statusGrupy,statusGrupyTechnologia];
 }
 
 // użycie

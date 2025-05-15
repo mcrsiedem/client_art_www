@@ -213,7 +213,7 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
- const [sumujGrupe,statusGrupy] = useGrupyWykonan()
+ const [sumujGrupe,statusGrupy,statusGrupyTechnologia] = useGrupyWykonan()
             const selectColor = (etap) =>{
     if (etap==1) return style.select
     if (etap==2) return style.select

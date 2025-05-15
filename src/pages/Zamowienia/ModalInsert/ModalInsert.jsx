@@ -326,7 +326,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       if (t.element_id === card.id) {
         return {
           ...t,
-          ilosc_stron: card.ilosc_stron
+          ilosc_stron: card.ilosc_stron,
+          update:true
 
         };
       } else {

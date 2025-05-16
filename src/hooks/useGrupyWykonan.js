@@ -57,21 +57,24 @@ function sumujGrupe(new_wykonania) {
   
     }
 
-      async function  statusGrupyTechnologia(grupa) {
-    
-     const res= await axios.put(IP + "zakoncz_proces_elementu_uwolnij_nastepny/" + sessionStorage.getItem("token"), {
-              technologia_id: grupa.technologia_id,
-              proces_id: grupa.proces_id,
-              element_id: grupa.element_id,
-              grupa_id: grupa.id,
-              status: grupa.status,
-              global_id: grupa.global_id
-                });
+      async function statusGrupyTechnologia(grupa) {
+        const res = await axios.put(
+          IP +
+            "zakoncz_proces_elementu_uwolnij_nastepny/" +
+            sessionStorage.getItem("token"),
+          {
+            technologia_id: grupa.technologia_id,
+            proces_id: grupa.proces_id,
+            element_id: grupa.element_id,
+            grupa_id: grupa.id,
+            status: grupa.status,
+            global_id: grupa.global_id,
+          }
+        );
 
-fechparametryTechnologii(grupa.zamowienie_id,grupa.technologia_id)
+        fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
+      }
 
-  
-    }
 
 
 

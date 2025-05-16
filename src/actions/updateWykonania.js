@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { IP } from "../utils/Host";
 
+// do skasowania
 
 export function updateWykonania(global_id_wykonania,kolumna,wartosc,fechparametryTechnologii) {
 

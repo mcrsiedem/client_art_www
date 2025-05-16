@@ -15,6 +15,7 @@ const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
   const updateWykonanie = techContext.updateWykonanie
 
 const procesyElementowTech = techContext.procesyElementowTech;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
 function czasWykonania(wykonanie,naklad,predkosc) {
 //         czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
@@ -28,10 +29,27 @@ function czasWykonania(wykonanie,naklad,predkosc) {
   return newCzas
   }
 
+        async function statusWykonaniaTechnologia(wykonanieRow) {
+        const res = await axios.put(
+          IP +
+            "zakoncz_wykonanie_uwolnij_dalej/" +
+            sessionStorage.getItem("token"), wykonanieRow
+          // {
+          //   technologia_id: grupa.technologia_id,
+          //   proces_id: grupa.proces_id,
+          //   element_id: grupa.element_id,
+          //   grupa_id: grupa.id,
+          //   status: grupa.status,
+          //   global_id: grupa.global_id,
+          // }
+        );
+
+        fechparametryTechnologii(wykonanieRow.zamowienie_id, wykonanieRow.technologia_id);
+      }
 
 
 
-  return [czasWykonania];
+  return [czasWykonania,statusWykonaniaTechnologia];
 }
 
 

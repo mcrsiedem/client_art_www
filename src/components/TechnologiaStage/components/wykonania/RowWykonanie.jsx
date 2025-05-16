@@ -127,6 +127,7 @@ function StatusWykonania({ rowWykonanie }) {
   const updateWykonanie = techContext.updateWykonanie
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   
+  const [czasWykonania,statusWykonaniaTechnologia] = useWykonania(true);
 
 
   return (
@@ -140,7 +141,8 @@ function StatusWykonania({ rowWykonanie }) {
           if(rowWykonanie.technologia_id==1){
             // updateWykonanie({ ...rowWykonanie, status: event.target.value });
             }else{
-              updateWykonania(rowWykonanie.global_id,1,event.target.value,fechparametryTechnologii)
+              statusWykonaniaTechnologia(rowWykonanie)
+              // updateWykonania(rowWykonanie.global_id,1,event.target.value,fechparametryTechnologii)
             }
       
         }}

@@ -143,7 +143,7 @@ let grupa_id = MaxID(new_grupy)
         indeks: i + 1,
         nazwa: proces.nazwa,
         element_id: a.element_id,
-        arkusz_id: a.id,
+        arkusz_id: a.arkusz_id, // bylo a.id
         proces_id: proces.id,
         typ_elementu: a.typ_elementu,
         poczatek: "2024-10-30 10:00:00",
@@ -167,34 +167,10 @@ let grupa_id = MaxID(new_grupy)
   
 
 })
-//oprawa
 
-//   oprawaTech.map(
-//     opt => {
-// new_grupy.push({
-//     id: MaxID(new_grupy),
-//     global_id:0,
-//     indeks: getMaxIndeks(new_grupy),
-//     element_id: opt.element_id,
-//     nazwa: opt.nazwa,
-//     poczatek: "2024-10-30 10:00:00",
-//     czas: 1,
-//     koniec: "2024-10-30 11:00:00",
-//     procesor_id:opt.procesor_domyslny,
-//     narzad: opt.narzad,
-//     predkosc: opt.predkosc,
-//     proces_id: opt.id,
-//     mnoznik: opt.mnoznik,
-//     status:1,
-//     stan:1,
-//     uwagi: ""
-//   });
-//     }
-//   )
-
-// setGrupaWykonan(new_grupy);
-// setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ));
 setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+
+
 setWykonania(new_wykonania)
 }
 

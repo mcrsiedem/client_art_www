@@ -286,22 +286,10 @@ function StatusGrupy({ rowGrupa }) {
         value={rowGrupa.status}
         onChange={(event) => {
   
-          // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
-          // technologia_id != 1 - zmiany bezpośrednio na serwerze
-     // 1 - status
-            // 2 - stan
 
-          if(rowGrupa.technologia_id == 1){
-
-            // updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
-            // updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
-          }else{
-
-         statusGrupyTechnologia({...rowGrupa, status: event.target.value})
-              // updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii,rowGrupa.zamowienie_id)
-           
+          if(rowGrupa.technologia_id != 1){
+            statusGrupyTechnologia({...rowGrupa, status: event.target.value})
           }
-
         }}
       >
         {_status_wykonania.map((option) => (

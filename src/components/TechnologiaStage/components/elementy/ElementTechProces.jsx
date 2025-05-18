@@ -153,7 +153,7 @@ const ProcesTechRow =({row,i,procesyElementowTechTemporary,
     <tr key={row.id +100}>
     <td>{i+1}</td>
     <td>{row.id}</td>
-    <td>{row.indeks}</td>
+    <INDEKS row={row} procesID={procesID}/>
     <ProcesName row={row} setProcesID={setProcesID}/>
     <ProcessTyp row={row} procesID={procesID}/>
     <IloscUzytkow row={row} procesID={procesID}/>
@@ -303,6 +303,26 @@ const FrontKolor = ({ row }) => {
   );
 }
 
+const INDEKS = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowProcesyElementowTech = techContext.handleUpdateRowProcesyElementowTech;
+  return (
+    <td>
+      <input
+        value={row.indeks}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProcesyElementowTech({
+              ...row,
+              indeks: e.target.value,
+              update:true
+            });
+          }
+        }}
+      ></input>
+    </td>
+  );
+}
 
 const IloscUzytkow = ({ row }) => {
   const techContext = useContext(TechnologyContext);

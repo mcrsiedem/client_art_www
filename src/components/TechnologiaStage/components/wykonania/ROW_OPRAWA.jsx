@@ -238,7 +238,7 @@ function StatusGrupy({ grupaOprawa }) {
       <label className={style.label}> Status </label>
       <select 
         className={style.select}
-        defaultValue={grupaOprawa.status}
+        value={grupaOprawa.status}
     //     onChange={(event) => {
   
     //       // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
@@ -281,7 +281,7 @@ function Stangrupy({ grupaOprawa }) {
       <label className={style.label}> Stan </label>
       <select 
         className={style.select}
-        defaultValue={grupaOprawa.stan}
+        value={grupaOprawa.stan}
         // onChange={(event) => {
           
 

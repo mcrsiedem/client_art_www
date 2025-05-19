@@ -4,13 +4,14 @@ import { AppContext } from "context/AppContext";
 import style from "./WykonaniaTech.module.css";
 import logoExpand from "assets/expand.svg";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
-import { _typ_elementu, reg_txt } from "utils/initialvalue";
+import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 import iconTrash from "assets/trashgray.svg";
 import ROW_OPRAWA from "./ROW_OPRAWA";
+import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaTech() {
   const [createWykonaniaFromArkuszeLegi] = useProcesy()
@@ -106,7 +107,7 @@ const ProcesRow = ({ rowProces }) => {
         <div className={style.procesy_container}>
         <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
-        <p  className={style.nazwy_procesow2}> {rowProces.status}</p>
+        <p  className={style.nazwy_procesow4}>  { rowProces.status_nazwa}</p>
         </div>
         {/* <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p> */}
         {/* <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p> */}

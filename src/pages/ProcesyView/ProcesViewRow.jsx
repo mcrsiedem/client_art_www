@@ -215,7 +215,7 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
- const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia] = useGrupyWykonan()
+ const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
             const selectColor = (etap,status) =>{
     if (status==4) return style.select_DRUK
     if (etap==1) return style.select
@@ -234,8 +234,14 @@ function Status({grup}) {
        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
         onChange={(event) => {
+          if(grup.typ_grupy!=1){
+            statusGrupyProcesView({...grup, status: event.target.value})
+          }
+                if(grup.typ_grupy==1){
+                  //przerwa
+            statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+          }
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-          statusGrupyProcesView({...grup, status: event.target.value})
         }}
       >
         {_status_wykonania.map((option) => (

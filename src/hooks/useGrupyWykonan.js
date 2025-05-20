@@ -57,6 +57,33 @@ function sumujGrupe(new_wykonania) {
   
     }
 
+
+  async function  statusGrupyProcesViewPrzerwa(grupa) {
+  //jezeli wszystkie grupy z danego procesu będą zakończone to zakończ tez proces i zmien nastepny w kolejce przypisany do elementu na oczekujace
+    
+     const res= await axios.put(IP + "zmien_status_przerwy/" + sessionStorage.getItem("token"), {
+              status: grupa.status,
+              global_id: grupa.global_id
+                });
+  // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor).then((res)=>{
+      setWykonaniaAll(res.data[0])
+      setGrupWykonanAll(res.data[1])
+      return res
+    }).then((res) =>{
+      
+      setGrupWykonanAll(prev=>{return prev})
+    });
+
+  
+    }
+
+
+
+
+
+
+
       async function statusGrupyTechnologia(grupa) {
         const res = await axios.put(
           IP +
@@ -78,7 +105,7 @@ function sumujGrupe(new_wykonania) {
 
 
 
-  return [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia];
+  return [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa];
 }
 
 // użycie

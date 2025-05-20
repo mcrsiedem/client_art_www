@@ -169,7 +169,16 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 
 
   return (
-    <div className={style.container}>
+    <div className={style.container}
+        tabIndex="0"
+              onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              contextModalInsert.setShowElementyProcesyInsert(false);
+
+              // props.handleEditBlachy(event.target.value);
+              // document.activeElement.blur();
+            }
+          }}>
       <HeaderModal
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}

@@ -517,12 +517,8 @@ const _etap_plikow = [
   },
   {
     id: 7,
-    nazwa: "Naświetlanie",
-  },
-  {
-    id: 8,
-    nazwa: "Druk",
-  },
+    nazwa: "Blachy",
+  }
 ];
 
 const _typ_produktu = [

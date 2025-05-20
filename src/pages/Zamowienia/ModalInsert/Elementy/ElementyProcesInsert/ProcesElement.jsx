@@ -25,6 +25,7 @@ if(showElementyProcesyInsert){
 
 
 function Window({children}) {
+  const modalContext = useContext(ModalInsertContext);
   return (
     <div className={style.blurContainer}>
       <div className={style.window}>{children}</div>

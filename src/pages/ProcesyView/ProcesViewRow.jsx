@@ -200,7 +200,7 @@ const KoniecGrupa = ({ grup }) => {
 
           if (e.target.value != "" ) {
 updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyAndWykonaniaForProcesor)
-            console.log("data: "+ date_time( e.target.value))
+            // console.log("data: "+ date_time( e.target.value))
           }
         }}
       ></input>

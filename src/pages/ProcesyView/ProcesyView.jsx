@@ -14,6 +14,7 @@ import ProcesViewRow from "./ProcesViewRow";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
+import ProcesViewRowPrzerwa from "./ProcesViewRowPrzerwa";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -115,13 +116,27 @@ const WykonaniaTable = () => {
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )
               .map((grup, i) => {
-                return (
+                if(grup.typ_grupy!=1){
+                                 return (
                   <ProcesViewRow
                     grup={grup}
                     unlockTable={unlockTable}
                     setUnlockTable={setUnlockTable}
                   />
-                );
+                ); 
+                } else{
+                  return (
+                  <ProcesViewRowPrzerwa
+                    grup={grup}
+                    unlockTable={unlockTable}
+                    setUnlockTable={setUnlockTable}
+                  />
+                ); 
+                }
+      
+
+
+
               })}
           </tbody>
         </table>

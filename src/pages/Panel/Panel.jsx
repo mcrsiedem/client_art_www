@@ -44,7 +44,7 @@ export default function Panel({ user, setUser }) {
     sessionStorage.removeItem("token");
   };
 
-  if (window.innerWidth > 800) {
+  if (window.innerWidth > 900) {
     return (
       <>
         <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />

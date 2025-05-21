@@ -18,21 +18,14 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
     const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
-          const selectColor = (etapPlikow,status) =>{
-            if (status==4 ) return style.procesRow_tr_DRUK
-    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
-    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
-       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
-    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
- 
 
+                  const selectColor = (etap,status) =>{
+    if (status==4) return style.procesRow_tr_DRUK
+    if (status==2) return style.procesRow_tr_AKCEPT
+    if (status==3) return style.procesRow_tr_RIP
      return style.procesRow_tr
   }
+
 
   return (
     <>
@@ -126,21 +119,15 @@ updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyA
 function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania
+  const _status_wykonania_przerwy = contextApp._status_wykonania_przerwy
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
             const selectColor = (etap,status) =>{
     if (status==4) return style.select_DRUK
-    if (etap==1) return style.select
-    if (etap==2) return style.select
-    if (etap==3) return style.select
-    if (etap==4) return style.select_AKCEPT
-    if (etap==5) return style.select_AKCEPT
-    if (etap==6) return style.select_RIP
-    if (etap==7) return style.select_RIP
-      if (etap==8) return style.select_DRUK
-     return style.procesRow_tr
+    if (status==2) return style.select_AKCEPT
+    if (status==3) return style.select_RIP
+     return style.select
   }
   return (
 <td style={{width: "160px"}}>
@@ -148,17 +135,13 @@ function Status({grup}) {
        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
         onChange={(event) => {
-          if(grup.typ_grupy!=1){
-            statusGrupyProcesView({...grup, status: event.target.value})
-          }
-                if(grup.typ_grupy==1){
-                  //przerwa
+
             statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-          }
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+      
         }}
       >
-        {_status_wykonania.map((option) => (
+
+        {_status_wykonania_przerwy.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

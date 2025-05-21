@@ -134,7 +134,7 @@ export const AppContextProvider = ({children})=>{
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
-                    uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki
+                    uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy
                 }}
             >
                 {children}
@@ -224,6 +224,28 @@ const typ_elementu=[
     {
       id: 3,
       nazwa: "W trakcie",
+    },
+    {
+      id: 4,
+      nazwa: "Zakończone"
+    },
+    
+
+  ];
+
+    const _status_wykonania_przerwy = [
+    {
+      id: 1,
+      nazwa: "Brak"
+    },
+
+    {
+      id: 2,
+      nazwa: "Akcept",
+    },
+    {
+      id: 3,
+      nazwa: "RIP",
     },
     {
       id: 4,

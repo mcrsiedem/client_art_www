@@ -14,7 +14,8 @@
    display: grid;
    grid-template-rows: 2fr 1fr;
    height: calc(100vh - 50px);
-   gap:10px
+   gap:10px;
+   padding-bottom: 15px;
 
    /* height: 200px; */
 

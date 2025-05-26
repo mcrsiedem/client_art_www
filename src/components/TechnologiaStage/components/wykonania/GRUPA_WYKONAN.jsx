@@ -226,6 +226,9 @@ function SkasujGrupeWykonan({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const daneTech = techContext.daneTech;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const grupaWykonan = techContext.grupaWykonan;
+
   // const global_id_grupa = row.global_id
   return (
     <div style={{ paddingTop: "13px" }}>
@@ -237,6 +240,10 @@ function SkasujGrupeWykonan({ rowGrupa }) {
           if(daneTech.id !=1){
           updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
 
+          }else{
+        setGrupaWykonan(
+          grupaWykonan.filter(e => e.id != rowGrupa.id)
+        )
           }
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);

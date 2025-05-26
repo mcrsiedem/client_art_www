@@ -44,7 +44,7 @@ export default function WykonaniaTech() {
   <button className={style.btn_show_procesy} onClick={()=>{
         createWykonaniaFromArkuszeLegi()
         setShowProcesy(true)
-        console.log("wykonania")
+        // console.log("wykonania")
       }} >Dodaj procesy</button>
          
       </div>

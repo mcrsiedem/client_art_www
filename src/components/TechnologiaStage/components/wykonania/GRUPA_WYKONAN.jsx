@@ -16,6 +16,7 @@ import { getMaxID } from "actions/getMaxID";
 import { getSumaCzasow } from "actions/getSumaCzasow";
 import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
 
 
 
@@ -82,7 +83,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  // const updateGrupaWykonan = techContext.updateGrupaWykonan
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania;
@@ -91,6 +92,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const grupaWykonan = techContext.grupaWykonan;
   const [sumujGrupe] = useGrupyWykonan()
+  const [updateGrupaWykonan] = useGrupyWykonanFirst()
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
     return suma;

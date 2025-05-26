@@ -107,7 +107,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
       <label className={style.label}> Procesor </label>
       <select
         className={style.input}
-        defaultValue={rowGrupa.procesor_id}
+        value={rowGrupa.procesor_id}
         onChange={(event) => {
           updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
           dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
@@ -277,6 +277,7 @@ function StatusGrupy({ rowGrupa }) {
    const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
+  const daneTech = techContext.daneTech
   const [sumujGrupe,statusGrupy,statusGrupyTechnologia] = useGrupyWykonan()
   return (
     <div className={style.col_dane}>
@@ -287,7 +288,7 @@ function StatusGrupy({ rowGrupa }) {
         onChange={(event) => {
   
 
-          if(rowGrupa.technologia_id != 1){
+          if(daneTech.id != 1){
             statusGrupyTechnologia({...rowGrupa, status: event.target.value})
           }
         }}
@@ -309,6 +310,8 @@ function Stangrupy({ rowGrupa }) {
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const daneTech = techContext.daneTech
+
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Stan </label>
@@ -319,8 +322,7 @@ function Stangrupy({ rowGrupa }) {
           
 
 
-
-          if(rowGrupa.technologia_id == 1){
+   if(daneTech.id != 1){
 
             updateWykonaniaWszystkie({ ...rowGrupa, stan: event.target.value });
             updateGrupaWykonan({ ...rowGrupa, stan: event.target.value });

@@ -13,6 +13,7 @@ import { useArkusze } from "hooks/useArkusze";
 import { useZamowienia } from "hooks/useZamowienia";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
+import { skasujTechnologie } from "actions/skasujTechnologie";
 
 
 export default function Header({}) {
@@ -65,6 +66,8 @@ export default function Header({}) {
       </CenterPane>
       <RightPane>
         <PotwierdzKorekteZamowieniaBTN />
+        <SkasujTechnologieBTN />
+        
         <ClearBTN />
         <SprawdzBTN />
         <ZapisBtnPromise />
@@ -77,6 +80,7 @@ export default function Header({}) {
     </header>
   );
 }
+
 
 
 const ClearBTN = () => {
@@ -294,6 +298,9 @@ const CenterPane = ({ children }) => {
   return <div className={style.center}>{children}</div>;
 };
 
+
+
+
 const AlertLega = () => {
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
@@ -337,4 +344,39 @@ const IconNavigate =  ({ className, logo, navi }) => {
       alt="Logo"
     />
   );
+};
+
+
+const SkasujTechnologieBTN = () => {
+    const techContext = useContext(TechnologyContext);
+
+
+  const setShowTechnologyStage = techContext.setShowTechnologyStage;
+  const daneTech = techContext.daneTech;
+    const [refreshZamowienia] = useZamowienia()
+if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis ==1){
+if(techContext.grupaWykonan.length==0){
+      return (
+    <button
+      className={ style.btn}
+      onClick={() => {
+        skasujTechnologie(daneTech.id,daneTech.zamowienie_id,DecodeToken(sessionStorage.getItem("token")).id,refreshZamowienia,setShowTechnologyStage)
+        // techContext.setArkusze([])
+        // techContext.setLegi([])
+        // techContext.setLegiFragmenty([])
+        // techContext.setGrupaWykonan([])
+        // techContext.setWykonania([])
+        // techContext.setGrupaOprawaTech([])
+
+        // setShowProcesy(false)
+        
+      }}
+    >
+      Skasuj technologie
+    </button>
+  );
+}
+
+}
+
 };

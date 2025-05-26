@@ -223,6 +223,7 @@ function DodajGrupeWykonan({ rowGrupa }) {
 function SkasujGrupeWykonan({ rowGrupa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const daneTech = techContext.daneTech;
   // const global_id_grupa = row.global_id
   return (
     <div style={{ paddingTop: "13px" }}>
@@ -231,10 +232,13 @@ function SkasujGrupeWykonan({ rowGrupa }) {
         className={style.expand}
         src={iconDelete} 
         onClick={() => {
+          if(daneTech.id !=1){
+          updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+
+          }
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);
           // console.log(rowGrupa)
-          updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
         }}
         alt="Procesy"
       />

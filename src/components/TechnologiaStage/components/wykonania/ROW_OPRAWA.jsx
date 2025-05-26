@@ -16,6 +16,7 @@ import { getMaxID } from "actions/getMaxID";
 import { getSumaCzasow } from "actions/getSumaCzasow";
 import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { updateSkasujGrupeOprawa } from "actions/updateSkasujGrupeOprawa";
 
 
 
@@ -176,7 +177,7 @@ function DodajGrupeWykonan({ rowGrupa }) {
   }
 }
 
-function SkasujGrupeWykonan({ rowGrupa }) {
+function SkasujGrupeWykonan({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   // const global_id_grupa = row.global_id
@@ -189,8 +190,8 @@ function SkasujGrupeWykonan({ rowGrupa }) {
         onClick={() => {
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);
-          // console.log(rowGrupa)
-          updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+          // console.log(grupaOprawa)
+          updateSkasujGrupeOprawa(grupaOprawa.global_id, fechparametryTechnologii,grupaOprawa.zamowienie_id,grupaOprawa.technologia_id);
         }}
         alt="Procesy"
       />

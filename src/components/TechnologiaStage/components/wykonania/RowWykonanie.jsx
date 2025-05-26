@@ -354,14 +354,14 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
         onChange={(e) => {
 
 
-          if (e.target.value == "" || reg_int.test(e.target.value)) {
-            if(e.target.value == "" ) e.target.value =0
+          // if (e.target.value == "" || reg_int.test(e.target.value)) {
+          //   if(e.target.value == "" ) e.target.value =0
 
-            updateWykonanie({
-              ...rowWykonanie,
-              przeloty: e.target.value,
-            });
-          }
+          //   updateWykonanie({
+          //     ...rowWykonanie,
+          //     przeloty: e.target.value,
+          //   });
+          // }
         }}
       ></input>
     </div>

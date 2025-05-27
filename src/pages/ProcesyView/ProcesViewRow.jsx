@@ -82,18 +82,19 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                     
                   }}
                 >
-                  <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
+                  <td style={{paddingLeft:"5px",minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
                   <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
             
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
+                  <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
                   <td style={{width: "50px"}}>{grup.nr}</td>
                   <td style={{width: "50px"}}>{grup.rok}</td>
                   <td style={{width: "200px"}}>{grup.klient}</td>
-                  <td style={{minWidth: "130px"}}>{grup.tytul}</td>
-                  <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
+                  <td style={{minWidth: "130px"}}>{grup.tytul} {grup.nazwa_elementu}</td>
+                  <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
+                  {/* <td style={{minWidth: "130px"}}> {grup.uwagi_elementu} {grup.uwagi}</td> */}
                   <td style={{minWidth: "130px"}}>{grup.przeloty}</td>
                   <td style={{minWidth: "130px"}}>{grup.predkosc}</td>
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} style={{minWidth: "130px"}}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>

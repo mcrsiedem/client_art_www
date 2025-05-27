@@ -134,7 +134,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
 
  
   function handleDrop(id,proces_id,grupa_id_drop) {
-    if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id) {
+    if (sessionStorage.getItem("typ_drag") == "wykonanie" && sessionStorage.getItem("id_proces_wykonanie_drag") == proces_id && sessionStorage.getItem("id_grupa_wykonanie_drag") != grupa_id_drop) {
 
 if(daneTech.id !=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");

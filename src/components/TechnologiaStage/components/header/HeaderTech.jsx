@@ -355,7 +355,7 @@ const SkasujTechnologieBTN = () => {
   const daneTech = techContext.daneTech;
     const [refreshZamowienia] = useZamowienia()
 if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis ==1){
-if(techContext.grupaWykonan.length==0){
+if(techContext.grupaWykonan.length==0 & techContext.daneTech.id !=1){
       return (
     <button
       className={ style.btn}

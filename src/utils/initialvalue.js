@@ -309,6 +309,24 @@ const _rodzaj = [
 ];
 
 
+// const _stan_technologi = [
+//   {
+//     id: 1,
+//     nazwa: "Wstępna",
+//   },
+//   {
+//     id: 2,
+//     nazwa: "Finalna",
+//   },
+//   {
+//     id: 3,
+//     nazwa: "Korketa",
+//   },
+//   {
+//     id: 4,
+//     nazwa: "Zakończone",
+//   }
+// ];
 const _stan_technologi = [
   {
     id: 1,
@@ -318,14 +336,8 @@ const _stan_technologi = [
     id: 2,
     nazwa: "Finalna",
   },
-  {
-    id: 3,
-    nazwa: "Korketa",
-  },
-  {
-    id: 4,
-    nazwa: "Zakończone",
-  }
+
+  
 ];
 
 const _status_technologi = [

@@ -105,7 +105,8 @@ const WykonaniaTable = () => {
             <tr>
               <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th>{" "}
               <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th>{" "}
-              <th> Uwagi</th> <th> Przeloty</th> <th> Prędkość</th> <th> Papier</th>
+              <th> Uwagi</th> <th> Przeloty</th>  <th> Papier</th>
+              {/* <th> Uwagi</th> <th> Przeloty</th> <th> Prędkość</th> <th> Papier</th> */}
              {selectedProces==1? <th>Pliki </th>:<></>}
               <th> Status </th>
             </tr>

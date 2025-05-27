@@ -106,6 +106,7 @@ const ProcesRow = ({ rowProces }) => {
         <Rozwin rowProces={rowProces} show={show} setShow={setShow} />
         <div className={style.procesy_container}>
         <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p>
+        <p className={style.nazwy_procesow3}>{rowProces.rodzaj} {rowProces.typ} {rowProces.wykonczenie}</p>
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow4}>  { rowProces.status_nazwa}</p>
         </div>

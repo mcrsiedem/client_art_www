@@ -17,6 +17,7 @@ import { getSumaCzasow } from "actions/getSumaCzasow";
 import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 
@@ -237,6 +238,10 @@ function SkasujGrupeWykonan({ rowGrupa }) {
         className={style.expand}
         src={iconDelete} 
         onClick={() => {
+
+           if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis==1)
+            {
+
           if(daneTech.id !=1){
           updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
 
@@ -248,6 +253,9 @@ function SkasujGrupeWykonan({ rowGrupa }) {
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);
           // console.log(rowGrupa)
+
+            }
+
         }}
         alt="Procesy"
       />

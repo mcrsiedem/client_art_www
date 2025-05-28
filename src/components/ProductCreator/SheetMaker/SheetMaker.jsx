@@ -143,7 +143,7 @@ const CardNettoX = ({ netto, setNetto }) => {
         placeholder="..."
         type="text"
         onChange={(e) => {
-          const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+          const re = /^\d{0,4}(?:\,\d{0,2}){0,1}$/;
           if (e.target.value === '' || re.test(e.target.value)) {
            context.setPreOrder({...context.preOrder, szerokosc: e.target.value}) 
         }
@@ -171,7 +171,7 @@ const CardNettoY = ({ netto, setNetto }) => {
         placeholder="..."
         type="text"
         onChange={(e) => {
-          const re = /^\d{0,3}(?:\,\d{0,2}){0,1}$/;
+          const re = /^\d{0,4}(?:\,\d{0,2}){0,1}$/;
           if (e.target.value === '' || re.test(e.target.value)) {
            context.setPreOrder({...context.preOrder, wysokosc: e.target.value}) 
         }

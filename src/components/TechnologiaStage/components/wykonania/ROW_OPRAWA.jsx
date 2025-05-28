@@ -234,12 +234,22 @@ function StatusGrupy({ grupaOprawa }) {
    const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania
   const setWykonania = techContext.setWykonania
+  const daneTech = techContext.daneTech
+
+  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA] = useGrupyWykonan()
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Status </label>
       <select 
         className={style.select}
         value={grupaOprawa.status}
+                onChange={(event) => {
+  
+
+          if(daneTech.id != 1){
+            statusGrupyTechnologia_OPRAWA({...grupaOprawa, status: event.target.value})
+          }
+        }}
     //     onChange={(event) => {
   
     //       // technologia_id == 1 - przed pierwszym zapisem zmiany localnie

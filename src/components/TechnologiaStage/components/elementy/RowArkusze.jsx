@@ -468,6 +468,7 @@ export default function RowArkusze  ({ row,i })  {
                 wersja: "",
                 element_id: lega.element_id,
                 arkusz_id: lega.arkusz_id,
+                technologia_id: lega.technologia_id,
                 insert: true
               });
 
@@ -485,23 +486,6 @@ export default function RowArkusze  ({ row,i })  {
             })
           );
 
-          //------------------------------- fragmenty
-
-          //  const new_legiFragmenty = legiFragmenty.slice();
-
-          //  legiFragmenty
-          //    .filter((l) => l.arkusz_id == row.id)
-          //    .map((fragmentLegi) => {
-
-          //      new_legiFragmenty.push({
-          //        ...fragmentLegi,
-          //        id: getMaxID(new_legiFragmenty),
-          //        indeks: getMaxIndeks(new_legiFragmenty),
-          //        arkusz_id:new_arkusz_id,
-          //        lega_id: Math.max(...newLegi.map((f) => f.id)),
-          //        insert: true,
-          //      });
-          //    });
 
            setLegiFragmenty(
              new_legiFragmenty

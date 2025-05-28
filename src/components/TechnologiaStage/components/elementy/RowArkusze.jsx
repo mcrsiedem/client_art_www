@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import logoExtract from "assets/extract_green.svg";
 import logoExpand from "assets/expand.svg";
 import iconTrash from "assets/trash2.svg"
 import icon from "assets/copy.svg";
@@ -50,6 +51,8 @@ export default function RowArkusze  ({ row,i })  {
         <UwagiArkusz row={row} />
         <UsunArkusz row={row} />
         <DodajArkusz row={row} />
+        <GenerujWykonanieArkusz row={row} />
+        
       </div>
       </div>
       {showLegi &&(<>     {legi.filter(x=> x.arkusz_id == row.id && x.delete != true).map( (l,i) => {
@@ -265,6 +268,40 @@ export default function RowArkusze  ({ row,i })  {
   
     );
   }
+  function GenerujWykonanieArkusz({ row }) {
+    const techContext = useContext(TechnologyContext)
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+
+    const legi = techContext.legi;
+    const setLegi = techContext.setLegi;
+    const legiFragmenty = techContext.legiFragmenty;
+    const setLegiFragmenty = techContext.setLegiFragmenty;
+    const wykonania = techContext.wykonania;
+
+
+if(wykonania.some(x=> x.arkusz_id == row.id)){
+
+}else{
+      return (
+      <td className={style.col_button}>
+        <div>
+          <img
+            className={style.expand}
+            title="Stwórz wykonania do tego arkusza"
+            src={logoExtract}
+            onClick={() => {
+              // handleRemoveArkusz()
+            }}
+            alt="Procesy"
+          />
+        </div>
+      </td>
+    );
+}
+
+
+  }
 
   function UsunArkusz({ row }) {
     const techContext = useContext(TechnologyContext)
@@ -275,10 +312,15 @@ export default function RowArkusze  ({ row,i })  {
     const setLegi = techContext.setLegi;
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
+    const wykonania = techContext.wykonania;
 
 
     const handleRemoveArkusz = () => {
-     
+
+      
+if(wykonania.some(x=> x.arkusz_id == row.id)){
+      alert("Skasuj najpierw wykonanie do tego arkusza")
+}else{     
       if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
 
       let newArkusze = [...arkusze];
@@ -387,6 +429,8 @@ export default function RowArkusze  ({ row,i })  {
       );
       
       }
+
+    }// koniec sprawdzania czy do akrusza jest jakieś wykonanie
     };
 
     return (

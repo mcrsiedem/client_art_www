@@ -11,6 +11,7 @@ import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
 import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { updateZmienCzasTrwaniaGrupyPrzerwa } from "actions/updateZmienCzasTrwaniaGrupyPrzerwa";
 
 
 export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable }) {
@@ -106,7 +107,7 @@ const KoniecGrupa = ({ grup }) => {
 
 
           if (e.target.value != "" ) {
-updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyAndWykonaniaForProcesor)
+updateZmienCzasTrwaniaGrupyPrzerwa(grup.global_id,date_time( e.target.value),fechGrupyAndWykonaniaForProcesor)
             console.log("data: "+ date_time( e.target.value))
           }
         }}

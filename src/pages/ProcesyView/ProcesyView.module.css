@@ -228,7 +228,8 @@ tr:nth-of-type(2n) {
 
 .th_tableProcesy_czas{
    /* padding-left: 10px; */
-   padding-right: 5px;
+   width:10px;
+   background-color: red;
 
 }
 

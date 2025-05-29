@@ -93,7 +93,7 @@ const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   return (
-    <td style={{minWidth: "150px",width: "150px", fontSize:"0.9rem"}}>
+    <td className={style.td_tableProcesy_koniec}>
       <input
         disabled= {false}
         className={style.input2}

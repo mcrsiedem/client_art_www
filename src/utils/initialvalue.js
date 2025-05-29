@@ -529,7 +529,7 @@ const _etap_plikow = [
   },
   {
     id: 7,
-    nazwa: "Blachy",
+    nazwa: "Zaświecone",
   }
 ];
 

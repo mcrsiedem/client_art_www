@@ -41,11 +41,9 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
         }}
         className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
       >
-        <td style={{ minWidth: "130px", width: "130px" }}>{grup.poczatek}</td>
-        <td style={{ width: "60px" }}>{zamienNaGodziny(grup.czas)} </td>
+        <td style={{ paddingLeft:"5px",minWidth: "130px", width: "130px", fontSize:"0.9rem" }}>{grup.poczatek}</td>
+        <td style={{ width: "60px", fontSize:"0.9rem" }}>{zamienNaGodziny(grup.czas)} </td>
         <KoniecGrupa grup={grup} />
-        <td></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -93,7 +91,7 @@ const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   return (
-    <td style={{minWidth: "150px",width: "150px"}}>
+    <td style={{minWidth: "150px",width: "150px", fontSize:"0.9rem"}}>
       <input
         disabled= {false}
         className={style.input2}

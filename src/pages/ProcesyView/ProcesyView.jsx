@@ -103,11 +103,17 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th>{" "}
-              <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th>{" "}
-              <th> Uwagi</th> <th> Przeloty</th>  <th> Papier</th>
-              {/* <th> Uwagi</th> <th> Przeloty</th> <th> Prędkość</th> <th> Papier</th> */}
-             {selectedProces==1? <th>Pliki </th>:<></>}
+              <th> Początek</th>
+              <th> Czas</th>
+              <th> Koniec</th>
+              <th ></th>
+              <th className={style.th_tableProcesy_nr}>Nr</th>
+              <th> Klient</th>
+              <th> Praca</th>
+              <th> Uwagi</th>
+              <th> Przeloty</th>
+              <th> Papier</th>
+              {selectedProces == 1 ? <th>Pliki </th> : <></>}
               <th> Status </th>
             </tr>
           </thead>
@@ -117,27 +123,23 @@ const WykonaniaTable = () => {
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )
               .map((grup, i) => {
-                if(grup.typ_grupy!=1){
-                                 return (
-                  <ProcesViewRow
-                    grup={grup}
-                    unlockTable={unlockTable}
-                    setUnlockTable={setUnlockTable}
-                  />
-                ); 
-                } else{
+                if (grup.typ_grupy != 1) {
                   return (
-                  <ProcesViewRowPrzerwa
-                    grup={grup}
-                    unlockTable={unlockTable}
-                    setUnlockTable={setUnlockTable}
-                  />
-                ); 
+                    <ProcesViewRow
+                      grup={grup}
+                      unlockTable={unlockTable}
+                      setUnlockTable={setUnlockTable}
+                    />
+                  );
+                } else {
+                  return (
+                    <ProcesViewRowPrzerwa
+                      grup={grup}
+                      unlockTable={unlockTable}
+                      setUnlockTable={setUnlockTable}
+                    />
+                  );
                 }
-      
-
-
-
               })}
           </tbody>
         </table>

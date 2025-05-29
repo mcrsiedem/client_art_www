@@ -82,15 +82,15 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                     
                   }}
                 >
-                  <td style={{paddingLeft:"5px",minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
-                  <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
+                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+                  <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
             
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
-                  <td style={{width: "50px"}}>{grup.nr}</td>
-                  <td style={{width: "50px"}}>{grup.rok}</td>
+                  <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.nazwa}</td>
+                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
+                  {/* <td style={{width: "50px"}}>{grup.rok}</td> */}
                   <td style={{width: "200px"}}>{grup.klient}</td>
                   <td style={{minWidth: "130px"}}>{grup.tytul} {grup.nazwa_elementu}</td>
                   <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
@@ -186,7 +186,7 @@ const KoniecGrupa = ({ grup }) => {
   const updateWykonanie = techContext.updateWykonanie;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   return (
-    <td style={{minWidth: "150px",width: "150px"}}>
+    <td style={{minWidth: "120px",width: "120px", fontSize:"0.9rem"}}>
       <input
         disabled= {false}
         className={style.input2}

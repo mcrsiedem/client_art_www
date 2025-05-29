@@ -52,20 +52,18 @@
 
 
 
-th{
+/* th{
    font-size: 0.9rem;
    position: sticky;
    top:0;
-   /* background: #3f3f3f; */
    height: 2rem;
    padding-left: 20px;
    z-index: 2;
    background: rgb(243, 243, 243);
   color: #414040;
-  /* border-radius: 30px; */
-  /* outline: 1px solid rgb(167, 0, 0); */
 
-}
+
+} */
 
 
 

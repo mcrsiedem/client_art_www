@@ -11,6 +11,8 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   
+
 /* background-color: lightcyan; */
 /* width: 700px; */
 }
@@ -18,6 +20,8 @@
 .tableContainer{
    /* padding-top: 50px; */
   height: calc(100vh - 120px);
+ width: 98vw;
+
   /* min-width: 100vw; */
   min-width: 95vw;
 
@@ -216,3 +220,5 @@ tr:nth-of-type(2n) {
    background-color: transparent;
    padding-top: 3px;
 }
+
+

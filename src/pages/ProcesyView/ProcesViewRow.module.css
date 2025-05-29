@@ -177,3 +177,32 @@ background:linear-gradient(to bottom, #d7e6f5 5%, #abc4db 100%);  -fx-effect: in
 .procesy_input:focus{
 outline: none;
 }
+
+
+.td_tableProcesy_poczatek{
+   width: 120px;
+   min-width: 120px;
+   font-size: 0.9rem;
+   padding-left: 5px;
+   background-color: red;
+   /* padding-right: 10px; */
+}
+.td_tableProcesy_czas{
+   width: 60px;
+   min-width: 60px;
+   font-size: 0.9rem;
+   /* padding-left: 5px; */
+   /* padding-right: 10px; */
+}
+
+
+.td_tableProcesy_typ{
+   width: 20px;
+   font-size: 0.9rem;
+   padding-right: 10px;
+}
+.td_tableProcesy_nr{
+   width: 80px;
+   font-size: 0.9rem;
+
+}

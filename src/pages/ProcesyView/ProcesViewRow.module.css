@@ -67,7 +67,7 @@
  .input2{
     border: none;
     background-color: transparent;
-    width: 145px;
+    width: 115px;
  }
 
  .select{
@@ -183,16 +183,16 @@ outline: none;
    width: 120px;
    min-width: 120px;
    font-size: 0.9rem;
-   padding-left: 5px;
-   background-color: red;
+   padding-left: 10px;
+   /* background-color: red; */
    /* padding-right: 10px; */
 }
 .td_tableProcesy_czas{
-   width: 60px;
-   min-width: 60px;
-   font-size: 0.9rem;
+    width: 45px;
+   text-align: center;
+  /* min-width: 60px;*/
+   font-size: 0.9rem; 
    /* padding-left: 5px; */
-   /* padding-right: 10px; */
 }
 
 

@@ -222,3 +222,17 @@ tr:nth-of-type(2n) {
 }
 
 
+.th_tableProcesy_poczatek{
+   padding-left: 10px;
+}
+
+.th_tableProcesy_czas{
+   /* padding-left: 10px; */
+   padding-right: 5px;
+
+}
+
+.th_tableProcesy_koniec{
+   /* padding-left: 10px; */
+
+}

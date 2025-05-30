@@ -97,7 +97,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         {/* <IconErrorTable row={row} /> */}
         <NrTableZamowienia row={row} />
 
-        <td>{row.rok} </td>
+        {/* <td>{row.rok} </td> */}
         <ShowTechnmologiaBtn
           row={row}
           setShowKartaTechnologiczna={setShowKartaTechnologiczna}
@@ -228,7 +228,7 @@ const NrTableZamowienia = ({ row }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.nr}
       className={style.nrInput}
-      value={row.nr}
+      value={row.nr+" / "+row.rok.substring(2,4)}
       readOnly
 
     />

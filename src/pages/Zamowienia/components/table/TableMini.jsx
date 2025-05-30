@@ -22,7 +22,7 @@ export default function TableMini({open2,setRow}){
            {/* <th className={style.col_alert}>!</th> */}
 
            <th className={style.col_nr}>Nr</th>
-           <th className={style.col_rok}>Rok</th>
+           {/* <th className={style.col_rok}>Rok</th> */}
            <th title="Technologia" className={style.th_karta}>
              <img
                className={style.iconSettings}

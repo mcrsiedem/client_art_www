@@ -152,12 +152,7 @@ function ponumerujArkusze() {
 
   }
 
-  // console.log("Oprawa: " +oprawaTech[0].oprawa)
-
-  // console.log("elementyTech", elementyTech);
-
   elementyTech.map((row) => {
-    // console.log("row: ",row)
     
     const ilosc_leg_na_arkuszu = row.ilosc_leg;
     const rodzaj_legi = row.lega;
@@ -168,9 +163,7 @@ function ponumerujArkusze() {
       rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu // rózne legi na arkuszu
     }
 
-    // const rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // podzieliłem dodatkowo prze ilosc leg
     const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza /ilosc_leg_na_arkuszu;
-    // const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza;
     const modulo = row.ilosc_stron % rodzaj_arkusza;
 
     const ark = {

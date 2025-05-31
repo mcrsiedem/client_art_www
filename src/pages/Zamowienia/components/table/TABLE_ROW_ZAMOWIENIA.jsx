@@ -499,9 +499,9 @@ function ShowTechnmologiaBtn({
             className={style.iconSettings}
             src={iconAdd}
             onClick={() => {
-              techContext.setShowTechnologyStage(true);
-              techContext.setRowZamowienia(row);
               techContext.fechparametry(row?.id);
+              // techContext.setShowTechnologyStage(true);
+              techContext.setRowZamowienia(row);
               setShowProcesy(false)
             }}
             alt="Procesy"

@@ -487,6 +487,7 @@ if(elementyTech.length>1){
     setElementyTech([])
     setFragmentyTech([])
     setOprawaTech([])
+
     setProcesyElementowTech([])
     setLegi([])
      setLegiFragmenty([])
@@ -512,7 +513,7 @@ if(elementyTech.length>1){
         
     });
 
-
+setShowTechnologyStage(true);
 
 
 

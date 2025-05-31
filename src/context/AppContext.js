@@ -177,24 +177,29 @@ const typ_elementu=[
     {
       id: 1,
       nazwa: "Okładka",
+      skrot: "OKŁ",
     },
     {
       id: 2,
       nazwa: "Środek",
+      skrot: "SRD",
     },
     ,
     {
       id: 3,
       nazwa: "Wklejka",
+      skrot: "WKL",
     },
     ,
     {
       id: 4,
       nazwa: "Insert",
+      skrot: "INS",
     },
     {
       id: 5,
       nazwa: "Ulotka",
+      skrot: "ULO",
     },
   ];
   

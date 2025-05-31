@@ -112,6 +112,7 @@ const WykonaniaTable = () => {
               <th> Klient</th>
               <th> Praca</th>
               <th> Uwagi</th>
+              <th> Spedycja</th>
               <th> Przeloty</th>
               <th> Papier</th>
               {selectedProces == 1 ? <th>Pliki </th> : <></>}

@@ -245,6 +245,13 @@ outline: none;
    padding-right: 10px;
 }
 
+.td_tableProcesy_spedycja{
+   /* width: 20px; */
+   font-size: 0.9rem;
+   padding-right: 10px;
+   width: 80px;
+}
+
 .td_tableProcesy_papier{
    /* width: 20px; */
    font-size: 0.9rem;
@@ -256,3 +263,4 @@ outline: none;
    font-size: 0.9rem;
    padding-right: 10px;
 }
+

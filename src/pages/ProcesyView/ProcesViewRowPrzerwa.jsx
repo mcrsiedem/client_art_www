@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { _etap_plikow, _typ_elementu, reg_int } from "utils/initialvalue";
+import { _etap_plikow, _status_wykonania, _typ_elementu, reg_int } from "utils/initialvalue";
 import { useNavigate } from "react-router-dom";
 import style from "./ProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
@@ -125,6 +125,7 @@ function Status({grup}) {
   const _status_wykonania_przerwy = contextApp._status_wykonania_przerwy
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+    const _status_wykonania = contextApp._status_wykonania
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
             const selectColor = (etap,status) =>{
     if (status==4) return style.select_DRUK
@@ -143,12 +144,17 @@ function Status({grup}) {
       
         }}
       >
-
-        {_status_wykonania_przerwy.map((option) => (
+        {grup.typ_grupy==1 && selectedProcesor==1 ?_status_wykonania_przerwy.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
-        ))}
+        )) : _status_wykonania.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))
+      
+      }
       </select>
       </td>
 

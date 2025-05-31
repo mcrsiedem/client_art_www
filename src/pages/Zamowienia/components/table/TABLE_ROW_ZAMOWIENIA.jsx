@@ -221,11 +221,12 @@ const OprawaTableZamowienia = ({ row }) => {
 };
 
 const NrTableZamowienia = ({ row }) => {
-  return (
+  if(row.nr != null){
+    return (
     <td>
        <input
        disabled
-      //firma_nazwa to skrocona nazwa klienta
+      
       title={row.nr}
       className={style.nrInput}
       value={row.nr+" / "+row.rok.substring(2,4)}
@@ -235,6 +236,22 @@ const NrTableZamowienia = ({ row }) => {
     </td>
    
   );
+  }else{
+    return(
+          <td>
+       <input
+       disabled
+      
+      title={row.nr}
+      className={style.nrInput}
+      value={""}
+      readOnly
+
+    />
+    </td>
+    )
+  }
+  
 };
 
 const NakladTableZamowienia = ({ row }) => {

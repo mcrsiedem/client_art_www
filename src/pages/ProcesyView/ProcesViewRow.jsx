@@ -93,7 +93,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
                   {/* <td style={{width: "50px"}}>{grup.rok}</td> */}
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
-                  <td className={style.td_tableProcesy_praca}>{grup.tytul} {grup.nazwa_elementu}</td>
+                  <TytulProcesGrup grup={grup}/>
+                  {/* <td className={style.td_tableProcesy_praca}>{grup.tytul} {grup.nazwa_elementu}</td> */}
                   <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi_elementu} {grup.uwagi}</td> */}
@@ -179,6 +180,22 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
 
 }
 
+const TytulProcesGrup = ({ grup }) => {
+
+  //nazwa_elementu
+  return (
+    <td>
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={grup.Praca}
+      className={style.tytulInput}
+      value={grup.tytul +' '+grup.nazwa_elementu}
+      readOnly
+
+    />
+    </td>
+  );
+};
 
 
 

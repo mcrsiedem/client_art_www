@@ -13,23 +13,40 @@ import iconCTP from 'assets/iconCTP.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
 import iconLock from 'assets/iconLock.svg'
 import iconKalendarz from 'assets/iconKalendarz.svg'
-
+import axios from "axios";
+import { IP } from "../../utils/Host";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
+import { TechnologyContext } from "context/TechnologyContext";
 
-export default function PanelMini({ user, setUser,logout }) {
+export default function ProcesoryMini({ user, setUser,logout }) {
   const navigate = useNavigate();
   const isOnline = useOnlineStatus();
   const appcontext = useContext(AppContext);
+  const techContext = useContext(TechnologyContext);
   const setNadkomplety = appcontext.setNadkomplety;
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
+//   const setSelectedProcesor = appcontext.setSelectedProcesor
+   const setSelectedProcesor = techContext.setSelectedProcesor;
+  async function checkToken() {
+    axios
+      .get(IP + "/islogged/" + sessionStorage.getItem("token"))
+      .then((res) => {
+        if (res.data.Status === "Success") {
+        } else {
+          navigate("/Login");
+        }
+      });
+  }
 
-
+  useEffect(() => {
+    checkToken();
+  }, []);
 
 
 
@@ -40,15 +57,15 @@ export default function PanelMini({ user, setUser,logout }) {
                 
         
                                                         {isOnline ? (     <div className={style.user}> 
-                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" />
-                                                                        <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                                                        {/* <img className={style.userIcon } src={userOnline} alt="Procesy" /> */}
+                                                                        {/* <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p> */}
                                                                 </div>) : (     <div className={style.user}> 
                                                                         <img className={style.userIcon } src={userOffline} alt="Procesy" />
                                                                         <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko} </p>
                                                                         
                                                                 </div>) }
                                                         
-                                                { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>logout()}>X</button> )}
+                                                { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>navigate("/Panel") }>X</button> )}
                         </div>
         
                                 <div className={style.container} >
@@ -56,7 +73,9 @@ export default function PanelMini({ user, setUser,logout }) {
                                         
                                                                         {/* <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div> */}
                                                                         {/* <div className={style.kafle}  onClick={() => { navigate("/Zamowienia") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Technologie" /><p className={style.menu_txt}>TECHNOLOGIE</p></div> */}
-                                                                        <div className={style.kafle} onClick={() => { navigate("/Procesory") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
+                                                                        <div className={style.kafle} onClick={() => {setSelectedProcesor(1); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>XL</p> </div> 
+                                                                        <div className={style.kafle} onClick={() => { setSelectedProcesor(2);navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_1</p> </div> 
+                                                                        <div className={style.kafle} onClick={() => { setSelectedProcesor(3); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_3</p> </div> 
                                                                         {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconCTP} alt="CTP" /> <p className={style.menu_txt}>CTP</p></div> */}
                                                                         {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
                                                                         {/* <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div> */}

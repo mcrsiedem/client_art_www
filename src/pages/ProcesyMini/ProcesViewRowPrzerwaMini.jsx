@@ -42,9 +42,9 @@ export default function ProcesViewRowPrzerwaMini({ grup,unlockTable, setUnlockTa
         className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
       >
         {/* <td style={{ paddingLeft:"5px",minWidth: "130px", width: "130px", fontSize:"0.9rem" }}>{grup.poczatek}</td> */}
-                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+                  {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td> */}
 
-        <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td>
+        {/* <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td> */}
         {/* <KoniecGrupa grup={grup} /> */}
         <td></td>
         

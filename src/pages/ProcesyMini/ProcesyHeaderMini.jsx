@@ -16,13 +16,15 @@ function ProcesyHeaderMini() {
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
   const techContext = useContext(TechnologyContext);
+    const appcontext = useContext(AppContext);
+  
   const selectedProces = techContext.selectedProces;
   const setSelectedProces = techContext.setSelectedProces;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
   const wykonaniaAll = techContext.wykonaniaAll;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-
+const procesory = appcontext.procesory
 
   const appContext = useContext(AppContext)
 
@@ -46,17 +48,19 @@ function ProcesyHeaderMini() {
     <div className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
-          <ProcesSelect
+          {/* <ProcesSelect
             selectedProces={selectedProces}
             setSelectedProces={setSelectedProces}
             setSelectedProcesor={setSelectedProcesor}
             selectedProcesor={selectedProcesor}
-          />
+          /> */}
         </div>
 
         <div className={style.centerHeaderContener}>
+          
+          <p className={style.procesor_title}> {procesory.filter(x=> x.id == selectedProcesor)[0].nazwa} </p>
         {/* <PokazStany /> */}
-        <PrzerwaBTN />
+        {/* <PrzerwaBTN /> */}
 
         </div>
         <div className={style.rightHeaderContener}>
@@ -65,7 +69,7 @@ function ProcesyHeaderMini() {
             className={style.icon}
             src={iconClose2}
             onClick={() => {
-              navigate("/Panel");
+              navigate("/Procesory");
             }}
             alt="React Logo"
           />
@@ -216,44 +220,5 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
   );}
 
 
-  function PokazStany2({  }) {
-    const techContext = useContext(TechnologyContext);
-    const grupyWykonanAll = techContext.grupyWykonanAll
-    return (
-      <button
-        onClick={async () => {
-          console.clear()
-          console.log("Prces Viev: ")
-          console.log("GrupyAll : ",grupyWykonanAll)
 
-  
-        }}
-        className={ style.btn}
-      >
-        Stany...
-      </button>
-    );
-  }
-
-  const PokazStany = () => {
-    const techContext = useContext(TechnologyContext);
-    const grupyWykonanAll = techContext.grupyWykonanAll
-    return (
-      <div className={style.menu_produkty}>
-        <img
-          className={style.iconMenuBtn}
-          src={Logo_ustawienia2}
-          title="Auto wszystkie arkusze + legi"
-          onClick={() => {
-
-            console.clear()
-            console.log("Prces Viev: ")
-            console.log("GrupyAll : ",grupyWykonanAll)
-
-          }}
-          alt="x"
-        />
-      </div>
-    );
-  };
   

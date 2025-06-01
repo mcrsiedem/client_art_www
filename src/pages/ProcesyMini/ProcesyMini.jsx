@@ -22,6 +22,7 @@ export default function ProcesyMini( ) {
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   const setSelectedProcesor = techContext.setSelectedProcesor;
+  const selectedProcesor = techContext.selectedProcesor;
   const setSelectedProces = techContext.setSelectedProces;
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
@@ -35,9 +36,9 @@ export default function ProcesyMini( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechGrupyAndWykonaniaForProcesor(1);
-          setSelectedProcesor(1);
-          setSelectedProces(1);
+          fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+          setSelectedProcesor(selectedProcesor);
+          // setSelectedProces(1);
 
           setProcesory(
             procesory
@@ -83,8 +84,8 @@ export default function ProcesyMini( ) {
         <WykonaniaTable  />
       <div className={style.container}>
         {/* <TechnologiaStage/> */}
-        <Procesory
-        />
+        {/* <Procesory
+        /> */}
       </div>
     </div>
   );
@@ -103,13 +104,14 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              <th className={style.th_tableProcesy_poczatek}> Początek</th>
-              <th className={style.th_tableProcesy_czas}> Czas</th>
+              {/* <th className={style.th_tableProcesy_poczatek}> Początek</th> */}
+              {/* <th className={style.th_tableProcesy_czas}> Czas</th> */}
               {/* <th className={style.th_tableProcesy_koniec}> Koniec</th> */}
               <th ></th>
-              <th > </th>
+           
               <th >Nr</th>
               <th> Klient</th>
+                 <th > </th>
               <th> Praca</th>
               {/* <th> Uwagi</th> */}
               {/* <th> Spedycja</th> */}

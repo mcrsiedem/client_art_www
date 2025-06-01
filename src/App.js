@@ -18,6 +18,7 @@ import Ustawienia from "pages/Ustawienia/Ustawienia";
 import TechnologieView from "pages/Technologie/TechnologieView";
 import OprawaView from "pages/OprawaView/OprawaView";
 import ProcesyMini from "pages/ProcesyMini/ProcesyMini";
+import ProcesoryMini from "pages/Panel/PrcesoryMini";
 
 export default function App() {
 
@@ -34,6 +35,7 @@ export default function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/ProcesyView' element={<ProcesyView />} />
               <Route path='/ProcesyMini' element={<ProcesyMini />} />
+              <Route path='/Procesory' element={<ProcesoryMini />} />
               <Route path='/OprawaView' element={<OprawaView/>} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />

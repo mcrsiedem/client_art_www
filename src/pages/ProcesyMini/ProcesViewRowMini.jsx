@@ -82,15 +82,15 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                     
                   }}
                 >
-                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
-                  <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
+                  {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td> */}
+                  {/* <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td> */}
                   {/* <KoniecGrupa grup={grup}/> */}
             
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
-                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
+                  <td className={style.td_tableProcesy_nr}>{grup.nr} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+                  <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   {/* <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td> */}

@@ -210,18 +210,19 @@ outline: none;
 }
 
 .td_tableProcesy_typ{
-   /* width: 20px; */
+   width: 20px;
    font-size: 0.8rem;
    padding-right: 10px;
 }
 .td_tableProcesy_nr{
-   width: 70px;
+   width: 40px;
    /* font-weight: bold; */
    font-size: 0.9rem;
 
 }
 .td_tableProcesy_nr_stary{
    width: 35px;
+   padding-left: 5px;
    /* font-weight: bold; */
    font-size: 0.9rem;
 

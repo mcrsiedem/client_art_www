@@ -50,9 +50,20 @@ function Generuj() {
 
 
 
+  <div className={style.produkt_menu_button_sub_16}>
 
+
+
+        <button className={style.BTN_12_24_16_32} onClick={() => {
+              input1632toElement(2,elementyTech,setElementyTech)
+            
+        }}>2</button>
+      </div>
 
       <div className={style.produkt_menu_button_sub_16}>
+
+
+
         <button className={style.BTN_12_24_16_32} onClick={() => {
               input1632toElement(12,elementyTech,setElementyTech)
             

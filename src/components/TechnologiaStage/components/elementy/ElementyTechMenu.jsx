@@ -4,6 +4,7 @@ import style from "./ElementyTechMenu.module.css";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { ponumerArkusze } from "actions/ponumerArkusze";
 import { useArkuszeOne } from "hooks/useArkuszeOne";
+import { useProcesy } from "hooks/useProcesy";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
@@ -24,30 +25,36 @@ export default function MenuElementyTech({ row }) {
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
   const elementyTech = techContext.elementyTech;
+  const setShowProcesy = techContext.setShowProcesy;
 
+  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE] = useProcesy();
 
   if (row.showMenu) {
     return (
       <div className={style.menu_legi}>
          {/* <DodajNowyElement row={row}  /> */}
          <DodajArkusz row={row}  />
+        <Ponumeruj row={row} />
+
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
-                    createArkuszeFromElemenetsOneRow(
-                      arkusze,
-                      setArkusze,
-                      legi,
-                      setLegi,
-                      legiFragmenty,
-                      setLegiFragmenty,
-                      oprawaTech,
-                      setOprawaTech,
-                      fragmentyTech,
-                      setFragmentyTech,
-                      elementyTech,
-                      row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-                    );
+                    // createArkuszeFromElemenetsOneRow(
+                    //   arkusze,
+                    //   setArkusze,
+                    //   legi,
+                    //   setLegi,
+                    //   legiFragmenty,
+                    //   setLegiFragmenty,
+                    //   oprawaTech,
+                    //   setOprawaTech,
+                    //   fragmentyTech,
+                    //   setFragmentyTech,
+                    //   elementyTech,
+                    //   row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
+                    // );
+createProcesyFromArkuszONE()
+        setShowProcesy(true)
 
                     setElementyTech(elementyTech.map((t) => {
                       return {...t,
@@ -56,10 +63,9 @@ export default function MenuElementyTech({ row }) {
          
                   }}
                 >
-                Generuj legi
+                Dodaj procesy
                 </button>
 
-        <Ponumeruj row={row} />
         <KopiujFormatPapieru row={row} />
 
         

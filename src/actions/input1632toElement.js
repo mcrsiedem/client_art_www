@@ -48,6 +48,16 @@ export function input1632toElement(rodzaj_legi, elementyTech, setElementyTech) {
           return t;
         }
       }
+
+
+      if (rodzaj_legi == 2) {
+ 
+          return { ...t, lega: t.ilosc_stron, ilosc_leg: 1 };
+ 
+      }
+
+
+
     })
   );
 }

@@ -198,6 +198,11 @@ const typ_elementu=[
     },
     {
       id: 5,
+      nazwa: "Samoplet",
+      skrot: "NAK",
+    },
+     {
+      id: 6,
       nazwa: "Ulotka",
       skrot: "ULO",
     },

@@ -214,8 +214,7 @@ const KoniecGrupa = ({ grup }) => {
   //        min="2023-06-07T00:00"
   // max="2023-06-14T00:00"
        
-        date-
-        value={grup.koniec}
+        date-value={grup.koniec}
         onChange={(e) => {
 
 

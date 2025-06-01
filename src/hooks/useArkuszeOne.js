@@ -5,6 +5,7 @@ import { getMaxID } from "actions/getMaxID";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { getMaxIndeks } from "actions/getMaxIndeks";
+import { findNadkomplet } from "actions/findNadkomplet";
 
 export function useArkuszeOne(row){
 const modalcontext = useContext(ModalInsertContext);
@@ -29,7 +30,7 @@ const procesList = contextApp.procesList;
   const setLegi = techContext.setLegi;
   const legiFragmenty = techContext.legiFragmenty;
   const setLegiFragmenty = techContext.setLegiFragmenty;
-
+const nadkomplety = contextApp.nadkomplety;
 const dodajArkusz = (rowElement) =>{
 
   let arkusz_id = getMaxID(arkusze);
@@ -45,7 +46,8 @@ let lega_id = getMaxID(legi);
     ilosc_stron: rowElement.ilosc_stron,
     ilosc_leg: 1,
     papier_id: rowElement.papier_id,
-    nadkomplet: "",
+    papier_postac_id: rowElement.papier_postac_id,
+    nadkomplet: findNadkomplet(nadkomplety,rowElement.naklad) ,
     nr_arkusza: "",
     arkusz_szerokosc: "",
     arkusz_wysokosc: "",
@@ -76,11 +78,12 @@ let lega_id = getMaxID(legi);
     wersja:"",
     nr_legi: "",
     element_id: rowElement.id,
+    fragment_id: lega_id,
     lega_id: lega_id,
     naklad: rowElement.naklad,
     arkusz_id: arkusz_id,
     technologia_id: rowElement.technologia_id,
-    oprawa_id: null,
+    oprawa_id: oprawaTech[0]?.id || 0,
     typ: rowElement.typ,
     insert: true
   

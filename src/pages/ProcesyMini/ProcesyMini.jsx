@@ -36,23 +36,24 @@ export default function ProcesyMini( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
+
           fechGrupyAndWykonaniaForProcesor(selectedProcesor);
-          setSelectedProcesor(selectedProcesor);
+          // setSelectedProcesor(selectedProcesor);
           // setSelectedProces(1);
 
-          setProcesory(
-            procesory
-              ?.map((t) => {
-                return { ...t, select: false };
-              })
-              .map((t) => {
-                if (t.id == 1) {
-                  return { ...t, select: true };
-                } else {
-                  return t;
-                }
-              })
-          );
+          // setProcesory(
+          //   procesory
+          //     ?.map((t) => {
+          //       return { ...t, select: false };
+          //     })
+          //     .map((t) => {
+          //       if (t.id == 1) {
+          //         return { ...t, select: true };
+          //       } else {
+          //         return t;
+          //       }
+          //     })
+          // );
 
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)

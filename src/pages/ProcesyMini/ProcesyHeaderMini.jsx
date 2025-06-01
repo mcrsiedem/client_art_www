@@ -58,7 +58,7 @@ const procesory = appcontext.procesory
 
         <div className={style.centerHeaderContener}>
           
-          <p className={style.procesor_title}> {procesory.filter(x=> x.id == selectedProcesor)[0].nazwa} </p>
+          <p className={style.procesor_title}> {procesory?.filter(x=> x.id == selectedProcesor)[0]?.nazwa} </p>
         {/* <PokazStany /> */}
         {/* <PrzerwaBTN /> */}
 

@@ -1,33 +1,18 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import { AppContext } from "context/AppContext";
 import style from "./ElementyTechMenu.module.css";
-import icon from "assets/copy.svg";
-import { deleteZamowienie } from "actions/deleteZamowienie";
-import { deleteZamowienieKosz } from "actions/deleteZamowienieKosz";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
-import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArkuszeFromElements";
-import { createNewElementTech } from "actions/createNewElementTech";
-import { addNewElementTech } from "actions/ElementyTechEdit/addNewElementTech";
-import { addNewArkuszTech } from "actions/ElementyTechEdit/addNewArkuszTech";
 import { ponumerArkusze } from "actions/ponumerArkusze";
+import { useArkuszeOne } from "hooks/useArkuszeOne";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
   const legiFragmenty = techContext.legiFragmenty;
   const setLegiFragmenty = techContext.setLegiFragmenty;
-
-
-
-  const elementy = techContext.elementy;
-  const setElementy = techContext.setElementy;
-  const fragmenty = techContext.fragmenty;
-  const setFragmenty = techContext.setFragmenty;
   const arkusze = techContext.arkusze;
   const setArkusze = techContext.setArkusze;
   const legi = techContext.legi;
   const setLegi = techContext.setLegi;
-
   const procesy = techContext.procesyElementow;
   const grupaWykonan = techContext.grupaWykonan;
   const setGrupaWykonan = techContext.setGrupaWykonan;
@@ -38,7 +23,6 @@ export default function MenuElementyTech({ row }) {
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const setElementyTech = techContext.setElementyTech;
-  const handleChangeCardFragmenty_i_Elementy_Tech = techContext.handleChangeCardFragmenty_i_Elementy_Tech;
   const elementyTech = techContext.elementyTech;
 
 
@@ -50,7 +34,6 @@ export default function MenuElementyTech({ row }) {
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
-                
                     createArkuszeFromElemenetsOneRow(
                       arkusze,
                       setArkusze,
@@ -72,15 +55,10 @@ export default function MenuElementyTech({ row }) {
                     }));
          
                   }}
-                  
                 >
                 Generuj legi
                 </button>
 
-
-        {/* <DodajNowyElement row={row} /> */}
-       
-        {/* <SkasujElement row={row}  /> */}
         <Ponumeruj row={row} />
         <KopiujFormatPapieru row={row} />
 
@@ -171,14 +149,10 @@ const Anuluj = ( ) =>{
     <button
     className={style.menu_legi_btn}
     onClick={() => {
-
       setElementyTech(elementyTech.map((t) => {
         return {...t,
           showMenu: false}
       }));
-
-
-
 
     }}
   >
@@ -187,87 +161,14 @@ const Anuluj = ( ) =>{
   )
 }
 
-const KopiujElement = ({ row,showMenu, setShowMenu }) =>{
-  const techContext = useContext(TechnologyContext);
-  const elementyTech = techContext.elementyTech;
-  const setElementyTech = techContext.setElementyTech;
-  return(
-    <button
-    className={style.menu_legi_btn}
-    onClick={() => {
-
-createNewElementTech(row,elementyTech,setElementyTech)
-
-setElementyTech(elementyTech.map((t) => {
-  return {...t,
-    showMenu: false}
-}));
-    }}
-  >
-    Kopiuj element
-  </button>
-  )
-}
-
-
-
-const DodajNowyElement= ({ row }) =>{
-  const techContext = useContext(TechnologyContext);
-  const elementyTech = techContext.elementyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  return(
-    <button
-    className={style.menu_legi_btn}
-    onClick={() => {
-
-// createNewElementTech(row,elementyTech,setElementyTech)
- // row = row Element Tech
- addNewElementTech(row,elementyTech,setElementyTech)
-
-setElementyTech(elementyTech.map((t) => {
-  return {...t,
-    showMenu: false}
-}));
-    }}
-  >
-    Nowy element
-  </button>
-  )
-}
-
-
-
-
 
 const DodajArkusz= ({ row }) =>{
-  const techContext = useContext(TechnologyContext);
-  const elementyTech = techContext.elementyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const [dodajArkusz] = useArkuszeOne()
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
-
-// createNewElementTech(row,elementyTech,setElementyTech)
- // row = row Element Tech
- addNewArkuszTech(row,arkusze,setArkusze,legi, setLegi,legiFragmenty, setLegiFragmenty)
-
-setElementyTech(elementyTech.map((t) => {
-  return {...t,
-    showMenu: false}
-}));
+         dodajArkusz(row)
     }}
   >
     Nowy arkusz
@@ -276,29 +177,3 @@ setElementyTech(elementyTech.map((t) => {
 }
 
 
-const SkasujElement = ({ row,showMenu, setShowMenu }) =>{
-  const techContext = useContext(TechnologyContext);
-  const elementyTech = techContext.elementyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const deleteElementTech = techContext.deleteElementTech;
-
-
-  return(
-    <button
-    className={style.menu_legi_btn}
-    onClick={() => {
-
-// setElementyTech(elementyTech.map((t) => {
-//   return {...t,
-//     showMenu: false}
-// }));
-      deleteElementTech(row)
-
-
-
-    }}
-  >
-   Usuń
-  </button>
-  )
-}

@@ -6,7 +6,6 @@ import { IP } from "../utils/Host";
 export function addNewProcess(row,procesyElementowTemporary, setProcesyElementowTemporary,procesList) {
 
 const procesyElementowEditTemporary = procesyElementowTemporary.slice();
-const procesListEdit = procesList.slice();
 
 let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
 
@@ -24,15 +23,25 @@ let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
         front_kolor: "",
         back_kolor: "",
         info: "",
-        indeks: Math.max(...procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).map((f) => f.indeks)) + 1, // kolejny indeks danego elementu
+        indeks: newIndex(row,procesyElementowTemporary),
         insert:true
       });
-
-
-
-
 
       procesyElementowEditTemporary.sort((a, b) => a.indeks - b.indeks);
       setProcesyElementowTemporary(procesyElementowEditTemporary);
 
+}
+
+const newIndex = (row,procesyElementowTemporary) =>{
+
+  let index;
+
+  if(procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).length == 0){
+    index = 1
+  }else{
+    index = Math.max(...procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).map((f) => f.indeks)) + 1
+
+  }
+
+  return index
 }

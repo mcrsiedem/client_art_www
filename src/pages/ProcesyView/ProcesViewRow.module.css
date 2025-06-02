@@ -264,6 +264,12 @@ outline: none;
    padding-right: 10px;
 }
 
+.td_tableProcesy_ch_box{
+   /* width: 20px; */
+   font-size: 0.9rem;
+   padding-right: 10px;
+}
+
 .tytulInput{
   border: none;
   background: transparent;
@@ -272,3 +278,4 @@ outline: none;
   width: 300px;
 
 }
+

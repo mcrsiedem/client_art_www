@@ -103,6 +103,9 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
+                  <SelectBox grup={grup}/>
+
+                  
                    {/* <Status grup={grup}/> */}
                   <td></td>
 
@@ -198,7 +201,39 @@ const TytulProcesGrup = ({ grup }) => {
 };
 
 
+function SelectBox({ grup }) {
+  const appContext = useContext(AppContext);
+  const zamowienia = appContext.zamowienia;
+  const setZamowienia = appContext.setZamowienia;
+   const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+    const setGrupWykonanAll = techContext.setGrupWykonanAll;
+    
 
+  return (
+    <td className={style.td_tableProcesy_ch_box}>
+      <div>
+        <input
+        className={style.ch_box}
+          type="checkbox"
+          checked={grup.select}
+          onChange={(event) => {
+            console.log(" select" + grup.global_id + " " + event.target.checked);
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                if (t.global_id == grup.global_id) {
+                  return { ...grup, select: event.target.checked };
+                } else {
+                  return t;
+                }
+              })
+            );
+          }}
+        ></input>
+      </div>
+    </td>
+  );
+}
 
 const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);

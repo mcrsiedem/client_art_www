@@ -57,6 +57,9 @@ function ProcesyHeader() {
         <div className={style.centerHeaderContener}>
         {/* <PokazStany /> */}
         <PrzerwaBTN />
+        <ODZNACZ_BTN />
+        <KOPIUJ_ZAZNACZONE_BTN />
+        
 
         </div>
         <div className={style.rightHeaderContener}>
@@ -76,6 +79,58 @@ function ProcesyHeader() {
 }
 
 export default ProcesyHeader;
+
+const ODZNACZ_BTN = () =>{
+     const techContext = useContext(TechnologyContext);
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+  return(
+    <button 
+    onClick={(event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+          }
+    }
+    >Odznacz</button>
+  )
+}
+
+const KOPIUJ_ZAZNACZONE_BTN = () =>{
+     const techContext = useContext(TechnologyContext);
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+  return(
+    <button 
+    onClick={(event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+let mes='';
+
+            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
+              mes += grupa.poczatek+"\t"
+              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
+              mes += grupa.klient+"\t"
+              mes += grupa.tytul+"\t"
+              mes += grupa.przeloty+"\t"
+              mes += "\n"
+
+            }
+
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+
+            navigator.clipboard.writeText(mes);
+          }
+    }
+    >Kopiuj</button>
+  )
+}
 
 
 function PrzerwaBTN() {

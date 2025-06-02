@@ -97,6 +97,9 @@ const WykonaniaTable = () => {
   const selectedProces = techContext.selectedProces;
   const [unlockTable, setUnlockTable] = useState(true);
 
+
+        const setGrupWykonanAll = techContext.setGrupWykonanAll;
+
   return (
     <div className={style.container}>
       <div className={style.tableContainer}>
@@ -117,7 +120,15 @@ const WykonaniaTable = () => {
               <th> Papier</th>
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
               <th> Status </th>
-              <th>  </th>
+              <th     onClick={(event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+          }
+    }> * </th>
             </tr>
           </thead>
           <tbody>

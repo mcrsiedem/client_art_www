@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./ProcesyHeader.module.css";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
-import iconAdd from "assets/addIcon2.svg";
+import iconCopy from "assets/copy.svg";
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
@@ -57,7 +57,7 @@ function ProcesyHeader() {
         <div className={style.centerHeaderContener}>
         {/* <PokazStany /> */}
         <PrzerwaBTN />
-        <ODZNACZ_BTN />
+        {/* <ODZNACZ_BTN /> */}
         <KOPIUJ_ZAZNACZONE_BTN />
         
 
@@ -80,30 +80,32 @@ function ProcesyHeader() {
 
 export default ProcesyHeader;
 
-const ODZNACZ_BTN = () =>{
-     const techContext = useContext(TechnologyContext);
-      const grupyWykonanAll = techContext.grupyWykonanAll;
-      const setGrupWykonanAll = techContext.setGrupWykonanAll;
-  return(
-    <button 
-    onClick={(event) => {
-            // console.log(" select" + grup.global_id + " " + event.target.checked);
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-          }
-    }
-    >Odznacz</button>
-  )
-}
+// const ODZNACZ_BTN = () =>{
+//      const techContext = useContext(TechnologyContext);
+//       const grupyWykonanAll = techContext.grupyWykonanAll;
+//       const setGrupWykonanAll = techContext.setGrupWykonanAll;
+//   return(
+//     <button 
+//     onClick={(event) => {
+//             // console.log(" select" + grup.global_id + " " + event.target.checked);
+//             setGrupWykonanAll(
+//               grupyWykonanAll.map((t) => {
+//                   return { ...t, select: false};
+//               })
+//             );
+//           }
+//     }
+//     >Odznacz</button>
+//   )
+// }
 
-const KOPIUJ_ZAZNACZONE_BTN = () =>{
+const KOPIUJ_ZAZNACZONE_BTN2= () =>{
      const techContext = useContext(TechnologyContext);
       const grupyWykonanAll = techContext.grupyWykonanAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
   return(
+
+    
     <button 
     onClick={(event) => {
             // console.log(" select" + grup.global_id + " " + event.target.checked);
@@ -114,7 +116,12 @@ let mes='';
               mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
               mes += grupa.klient+"\t"
               mes += grupa.tytul+"\t"
-              mes += grupa.przeloty+"\t"
+              mes += grupa.nazwa_papieru+"\t"
+              mes += grupa.gramatura+"\t"
+              mes += grupa.wykonczenie+"\t"
+              mes += grupa.bulk+"\t"
+              mes += grupa.powleczenie+"\t"
+              mes += grupa.przeloty+ " ark. \t"
               mes += "\n"
 
             }
@@ -130,6 +137,62 @@ let mes='';
     }
     >Kopiuj</button>
   )
+}
+
+function KOPIUJ_ZAZNACZONE_BTN() {
+   const techContext = useContext(TechnologyContext);
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+  return (
+
+      <div  className={style.przerwa_container}>
+              <img
+              className={style.icon}
+              src={iconCopy}
+
+    onClick={(event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+let mes='';
+
+            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
+              mes += grupa.poczatek+"\t"
+              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
+              mes += grupa.klient+"\t"
+              mes += grupa.tytul+"\t"
+              mes += grupa.nazwa_papieru+"\t"
+              mes += grupa.gramatura+"\t"
+              mes += grupa.wykonczenie+"\t"
+              mes += grupa.bulk+"\t"
+              mes += grupa.powleczenie+"\t"
+              mes += grupa.przeloty+ " ark. \t"
+              mes += "\n"
+
+            }
+
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+
+            navigator.clipboard.writeText(mes);
+          }
+    }
+
+
+              alt="React Logo"
+            />
+      </div>
+
+        
+  );
+
+ 
+
+
+
+
+
 }
 
 

@@ -119,7 +119,7 @@ const WykonaniaTable = () => {
               {/* <th> Przeloty</th> */}
               {/* <th> Papier</th> */}
               {/* {selectedProces == 1 ? <th>Pliki </th> : <></>} */}
-              {/* <th> Status </th> */}
+              <th> Status </th>
             </tr>
           </thead>
           <tbody>

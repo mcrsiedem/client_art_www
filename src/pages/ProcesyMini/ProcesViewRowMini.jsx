@@ -98,7 +98,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
                   {/* <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td> */}
                   {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>} */}
-                  {/* {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>} */}
+                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
                    {/* <Status grup={grup}/> */}
                   <td></td>
 
@@ -233,6 +233,7 @@ function Status({grup}) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
+ const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{
     if (status==4) return style.select_DRUK
     if (etap==1) return style.select
@@ -254,6 +255,13 @@ function Status({grup}) {
         onChange={(event) => {
           if(grup.typ_grupy!=1){
             statusGrupyProcesView({...grup, status: event.target.value})
+dodajDoZamowienia(   {
+  kategoria: grup.nazwa,
+  event: "GRUPA ID "+ grup.id+ " zmiana z  "+ grup.status + " na "+event.target.value,
+  zamowienie_id: grup.zamowienie_id,
+  user_id: DecodeToken(sessionStorage.getItem("token")).id,
+})
+
           }
                 if(grup.typ_grupy==1){
                   //przerwa

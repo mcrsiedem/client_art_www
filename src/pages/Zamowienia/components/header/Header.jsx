@@ -50,6 +50,7 @@ export default function Header({ dodaj_clikHandler}) {
       <div className={style.rightHeaderContener}>
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
+        {/* <SzukajNr/> */}
         <img
           className={style.icon2}
           src={iconClose2}
@@ -80,13 +81,53 @@ function Szukaj() {
       title="Znajdź tytuł pracy..."
       placeholder="Praca..."
       onChange={(event) => {
-        const m = [...zamowieniaWyszukiwarka];
 
+
+        
+        let m = [...zamowieniaWyszukiwarka];
+           m =  m.filter((k) =>
+            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).toLowerCase().includes(event.target.value.toLowerCase()) 
+          )
+
+        setZamowienia(
+         m
+        );
+
+
+
+
+
+      }}
+    ></input>
+  );
+}
+
+function SzukajNr() {
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const clients = contextApp.clients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
+  const zamowienia = contextApp.zamowienia;
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const setZamowienia = contextApp.setZamowienia;
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+  return (
+    <input
+      className={style.szukajInput}
+      type="text"
+      title="Znajdź nr pracy..."
+      placeholder="Nr..."
+      onChange={(event) => {
+
+        let m = [...zamowieniaWyszukiwarka];
+
+        m =  m.filter((k) =>
+            k.tytul.concat(" ", k.nr ).toLowerCase().includes(event.target.value.toLowerCase()) 
+          )
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
         setZamowienia(
-          m.filter((k) =>
-            k.tytul.toLowerCase().includes(event.target.value.toLowerCase())
-          )
+         m
         );
       }}
     ></input>

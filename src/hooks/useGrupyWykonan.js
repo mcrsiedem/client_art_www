@@ -17,6 +17,7 @@ export function useGrupyWykonan(row){
   const selectedProcesor = techContext.selectedProcesor
   const setWykonaniaAll = techContext.setWykonaniaAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
+  const setGrupWykonanAllWyszukiwarka = techContext.setGrupWykonanAllWyszukiwarka
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
   const SumaCzasow = (grupa,new_wykonania) => {
@@ -48,6 +49,7 @@ function sumujGrupe(new_wykonania) {
       await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor).then((res)=>{
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
+      setGrupWykonanAllWyszukiwarka(res.data[1])
       return res
     }).then((res) =>{
       
@@ -69,10 +71,14 @@ function sumujGrupe(new_wykonania) {
       await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor).then((res)=>{
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
+      setGrupWykonanAllWyszukiwarka(res.data[1])
       return res
     }).then((res) =>{
       
       setGrupWykonanAll(prev=>{return prev})
+      setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+
+
     });
 
   

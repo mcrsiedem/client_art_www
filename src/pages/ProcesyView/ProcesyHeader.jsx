@@ -59,6 +59,8 @@ function ProcesyHeader() {
         <PrzerwaBTN />
         {/* <ODZNACZ_BTN /> */}
         <KOPIUJ_ZAZNACZONE_BTN />
+        <Szukaj />
+        <KOPIUJ_ZAZNACZONE_BTN2 />
         
 
         </div>
@@ -99,43 +101,56 @@ export default ProcesyHeader;
 //   )
 // }
 
+function Szukaj() {
+  const techContext = useContext(TechnologyContext);
+;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+    const setGrupWykonanAll = techContext.setGrupWykonanAll;
+    const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
+
+
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+  return (
+    <input
+      className={style.szukajInput}
+      type="text"
+      title="Znajdź tytuł pracy..."
+      placeholder="2..."
+      onChange={(event) => {
+  
+        
+
+
+        setGrupWykonanAll(grupyWykonanAllWyszukiwarka.filter((k) =>
+            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
+             k.tytul.toLowerCase().includes(event.target.value.toLowerCase())   ))
+
+
+
+
+
+
+
+
+
+      }}
+    ></input>
+  );
+}
+
 const KOPIUJ_ZAZNACZONE_BTN2= () =>{
      const techContext = useContext(TechnologyContext);
       const grupyWykonanAll = techContext.grupyWykonanAll;
-      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+      const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
   return(
 
     
     <button 
     onClick={(event) => {
-            // console.log(" select" + grup.global_id + " " + event.target.checked);
-let mes='';
-
-            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
-              mes += grupa.poczatek+"\t"
-              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
-              mes += grupa.klient+"\t"
-              mes += grupa.tytul+"\t"
-              mes += grupa.nazwa_papieru+"\t"
-              mes += grupa.gramatura+"\t"
-              mes += grupa.wykonczenie+"\t"
-              mes += grupa.bulk+"\t"
-              mes += grupa.powleczenie+"\t"
-              mes += grupa.przeloty+ " ark. \t"
-              mes += "\n"
-
-            }
-
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-
-            navigator.clipboard.writeText(mes);
+console.log(grupyWykonanAllWyszukiwarka)
           }
     }
-    >Kopiuj</button>
+    >pokaz grupy</button>
   )
 }
 

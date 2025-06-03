@@ -68,6 +68,7 @@ export const TechnologyContextProvider = ({children})=>{
 
         // wszsystkie grupy i wykonania
         const [grupyWykonanAll, setGrupWykonanAll] = useState([]);
+        const [grupyWykonanAllWyszukiwarka, setGrupWykonanAllWyszukiwarka] = useState([]);
         const [wykonaniaAll, setWykonaniaAll] = useState([]);
 
         // id otwieranej technologi
@@ -587,6 +588,7 @@ async function fechGrupyAndWykonaniaAll() {
   const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
   setWykonaniaAll(res.data[0])
   setGrupWykonanAll(res.data[1])
+  setGrupWykonanAllWyszukiwarka(res.data[1])
   console.clear()
   console.log("Procesy: ")
   // console.log("Wykonania: ", res.data[0])
@@ -600,10 +602,13 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
+      setGrupWykonanAllWyszukiwarka(res.data[1])
       return res
     }).then((res) =>{
       
-      setGrupWykonanAll(prev=>{return prev})
+      // setGrupWykonanAll(prev=>{return prev})
+      setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+
     });
     
     // console.log("wykoannia:",wykonaniaAll);
@@ -660,7 +665,7 @@ async function fechTechnology() {
                     handleUpdateRowElementyTech,
                     dragLegaId,setDragLegaId,
                     dropArkuszId,setDropArkuszId,
-                    grupaWykonan, setGrupaWykonan,
+                    grupaWykonan, setGrupaWykonan,grupyWykonanAllWyszukiwarka, setGrupWykonanAllWyszukiwarka,
                     wykonania, setWykonania,
                     handleChangeCardFragmenty_i_Elementy_Tech,
                     handleUpdateRowProcesyElementowTech,

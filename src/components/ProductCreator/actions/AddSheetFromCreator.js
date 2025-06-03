@@ -102,5 +102,18 @@ export function AddSheetFromCreator(mic,poc ) {
         };
       })
     );
+
+
+        mic.setProcesyElementow([])
+
+
+
+
+
+
+
+
+
+
   }
   

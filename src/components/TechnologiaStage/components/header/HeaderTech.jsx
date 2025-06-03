@@ -58,10 +58,13 @@ export default function Header({}) {
         {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
         {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
         <p className={style.title2}>Technologia </p>
+
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
         {/* <IconError/> */}
       </LeftPane>
       <CenterPane>
+        <p  className={style.title2}>  stary nr: {appcontext.zamowienia.filter(x=> x.id ==techContext.daneTech.zamowienie_id )[0].nr_stary} </p>
+
         <AlertLega />
       </CenterPane>
       <RightPane>

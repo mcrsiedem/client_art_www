@@ -59,8 +59,8 @@ function ProcesyHeader() {
         <PrzerwaBTN />
         {/* <ODZNACZ_BTN /> */}
         <KOPIUJ_ZAZNACZONE_BTN />
-        <Szukaj />
-        <KOPIUJ_ZAZNACZONE_BTN2 />
+        {/* <Szukaj /> */}
+        {/* <KOPIUJ_ZAZNACZONE_BTN2 /> */}
         
 
         </div>
@@ -174,11 +174,7 @@ let mes='';
               mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
               mes += grupa.klient+"\t"
               mes += grupa.tytul+"\t"
-              mes += grupa.nazwa_papieru+"\t"
-              mes += grupa.gramatura+"\t"
-              mes += grupa.wykonczenie+"\t"
-              mes += grupa.bulk+"\t"
-              mes += grupa.powleczenie+"\t"
+              mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
               mes += grupa.przeloty+ " ark. \t"
               mes += "\n"
 

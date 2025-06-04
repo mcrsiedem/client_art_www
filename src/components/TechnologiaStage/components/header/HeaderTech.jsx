@@ -63,7 +63,7 @@ export default function Header({}) {
         {/* <IconError/> */}
       </LeftPane>
       <CenterPane>
-        <p  className={style.title2}>  stary nr: {appcontext.zamowienia.filter(x=> x.id ==techContext.daneTech.zamowienie_id )[0].nr_stary} </p>
+        <p  className={style.title2}>  stary nr: {appcontext.zamowienia?.filter(x=> x.id ==techContext?.daneTech.zamowienie_id )[0]?.nr_stary} </p>
 
         <AlertLega />
       </CenterPane>

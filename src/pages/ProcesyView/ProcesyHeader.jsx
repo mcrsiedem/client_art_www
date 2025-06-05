@@ -3,12 +3,15 @@ import style from "./ProcesyHeader.module.css";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
+import iconSheet from "assets/extract.svg";
+
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
-
+import axios from "axios";
+import { IP } from "../../utils/Host";
 
 
 function ProcesyHeader() {
@@ -65,6 +68,7 @@ function ProcesyHeader() {
 
         </div>
         <div className={style.rightHeaderContener}>
+        <WYDAJ_ZAZNACZONE_BTN />
         <KOPIUJ_ZAZNACZONE_BTN />
      
           <img
@@ -188,6 +192,58 @@ let mes='';
             );
 
             navigator.clipboard.writeText(mes);
+          }
+    }
+
+
+              alt="React Logo"
+            />
+      </div>
+
+        
+  );
+
+}
+
+
+function WYDAJ_ZAZNACZONE_BTN() {
+   const techContext = useContext(TechnologyContext);
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+        const selectedProcesor = techContext.selectedProcesor
+        const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  return (
+
+      <div  className={style.przerwa_container}>
+              <img
+              className={style.icon_copy}
+              src={iconSheet}
+
+    onClick={async (event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+let mes='';
+
+            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
+              mes += grupa.poczatek+"\t"
+              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
+              mes += grupa.klient+"\t"
+              mes += grupa.tytul+"\t"
+              mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
+              mes += grupa.przeloty+ " ark. \t"
+              mes += "\n"
+
+            }
+
+            setGrupWykonanAll(
+              grupyWykonanAll.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+
+            navigator.clipboard.writeText(mes);
+
+            await axios.post(IP + "insertWydaniePapieru_status_multiselect/" + sessionStorage.getItem("token"), grupyWykonanAll.filter(x=> x.select == true));
+            fechGrupyAndWykonaniaForProcesor(selectedProcesor)
           }
     }
 

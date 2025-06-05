@@ -52,23 +52,23 @@ function ProcesyHeader() {
             setSelectedProcesor={setSelectedProcesor}
             selectedProcesor={selectedProcesor}
           />
-          <p> {selectedProces}</p>
+          {/* <p> {selectedProces}</p> */}
         </div>
 
         <div className={style.centerHeaderContener}>
         {/* <PokazStany /> */}
         <PrzerwaBTN />
         {/* <ODZNACZ_BTN /> */}
-        <KOPIUJ_ZAZNACZONE_BTN />
         {/* <Szukaj /> */}
         {/* <KOPIUJ_ZAZNACZONE_BTN2 /> */}
         
 
         </div>
         <div className={style.rightHeaderContener}>
+        <KOPIUJ_ZAZNACZONE_BTN />
      
           <img
-            className={style.icon}
+            className={style.icon_close}
             src={iconClose2}
             onClick={() => {
               navigate("/Panel");
@@ -163,7 +163,7 @@ function KOPIUJ_ZAZNACZONE_BTN() {
 
       <div  className={style.przerwa_container}>
               <img
-              className={style.icon}
+              className={style.icon_copy}
               src={iconCopy}
 
     onClick={(event) => {
@@ -198,12 +198,6 @@ let mes='';
 
         
   );
-
- 
-
-
-
-
 
 }
 

@@ -533,6 +533,25 @@ const _etap_plikow = [
   }
 ];
 
+const _status_wydania_papieru = [
+  {
+    id: 1,
+    nazwa: "Brak",
+  },
+  {
+    id: 2,
+    nazwa: "Jest",
+  },
+  {
+    id: 3,
+    nazwa: "Do wydania",
+  },
+  {
+    id: 4,
+    nazwa: "Wydany",
+  }
+];
+
 const _typ_produktu = [
   {
     id: 1,
@@ -637,6 +656,7 @@ export {
   _wykonczenie,
   _stan_technologi,
   _status_technologi,
-  _etap_plikow
+  _etap_plikow,
+  _status_wydania_papieru
 
 };

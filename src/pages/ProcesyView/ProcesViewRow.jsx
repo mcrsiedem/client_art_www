@@ -3,9 +3,10 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import icon from "assets/copy.svg";
 
+import iconAdd from "assets/add2.svg";
 
 
-import { _etap_plikow, _typ_elementu, reg_int } from "utils/initialvalue";
+import { _etap_plikow, _status_wydania_papieru, _typ_elementu, reg_int } from "utils/initialvalue";
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 import axios from "axios";
@@ -119,6 +120,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
+                  {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
                   <SelectBox grup={grup}/>
@@ -330,37 +332,125 @@ function Status({grup}) {
   );
 }
 
-function Stan({grup}) {
+
+
+
+
+function WydaniePapieruStatus({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
+  const zamowieniaPliki = contextApp.zamowieniaPliki
+  const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
-  const _stan_wykonania = contextApp._stan_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const grupyWykonanAll = techContext.grupyWykonanAll
+  const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
-  return (
-<td style={{width: "100px"}}>
+
+  const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
+      const [add,dodajDoZamowienia] = useHistoria()
+            const selectColor = (etap,status) =>{
+                 if (status==4) return style.select_DRUK
+    if (etap==1) return style.select
+    if (etap==2) return style.select
+    if (etap==3) return style.select
+    if (etap==4) return style.select_AKCEPT
+    if (etap==5) return style.select_AKCEPT
+    if (etap==6) return style.select_RIP
+    if (etap==7) return style.select_RIP
+    if (etap==8 && status==4) return style.select_DRUK
+    if (etap==8 ) return style.select_RIP
+     return style.procesRow_tr
+  }
+
+  if(grup.wydanie_papieru_status ==null){
+return (<td>        <div>
+        {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
+            className={style.iconSettings}
+            src={iconAdd}
+            onClick={async() => {
+             await axios.post(IP + "insertWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:2});
+            fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+
+            }}
+            alt="Procesy"
+          />:<></>}
+         
+        </div></td>)
+  } else {
+      return (
+<td className={style.td_tableProcesy_pliki}>
       <select
-        className={style.select}
-        value={grup.stan}
-        onChange={(event) => {
-          // setSelectedProcesor(event.target.value)
-          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,2,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
+        value={grup?.wydanie_papieru_status || 1}
+        onChange={async(event) => {
+const res1 = await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:event.target.value});
+            // etapPlikowGrupyWykonan(event.target.value,grup)
+          // dodajDoZamowienia(         {
+          //   kategoria: "Pliki",
+          //   event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
+          //   zamowienie_id: grup.zamowienie_id,
+          //   user_id: DecodeToken(sessionStorage.getItem("token")).id
+
+          // })
+
+          fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+        
 
         }}
       >
-        {_stan_wykonania
-        //  .filter(x => x.grupa == selectedProces )
-        .map((option) => (
+        {_status_wydania_papieru.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
         ))}
       </select>
-</td>
+      </td>
+
   );
+  }
 }
 
+function WYDANIE_BTN({
+  row,
+  showKartaTechnologiczna,
+  setShowKartaTechnologiczna,
+}) {
+  const techContext = useContext(TechnologyContext);
 
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+ 
+    const setShowProcesy = techContext.setShowProcesy;
+
+
+  if (row.wydanie_papieru_status == null ) {
+    return (
+      <td className={style.td_karta}>
+        <div>
+        {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
+            className={style.iconSettings}
+            src={iconAdd}
+            onClick={() => {
+        
+
+            }}
+            alt="Procesy"
+          />:<></>}
+         
+        </div>
+      </td>
+    );
+  } else {
+    return (
+      <td className={style.td_karta}>
+
+
+
+
+      </td>
+    );
+  }
+}
 
 
 function Etap({grup}) {
@@ -396,10 +486,7 @@ function Etap({grup}) {
         className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-          //etap pliku z zakresu brak do naświetlenia
-          // if(event.target.value <8){
             etapPlikowGrupyWykonan(event.target.value,grup)
-
           dodajDoZamowienia(         {
             kategoria: "Pliki",
             event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
@@ -408,20 +495,8 @@ function Etap({grup}) {
 
           })
 
-          // setGrupWykonanAll(grupyWykonanAll.map((t) => {
-          //   if (t.global_id == grup.global_id  ) {
-          //     return {...t,
-          //       zamowienia_pliki_etap: event.target.value
-          //     }
-          //   } else {
-          //     return t;
-          //   }
-          // }))
           fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         
-          // }
 
         }}
       >

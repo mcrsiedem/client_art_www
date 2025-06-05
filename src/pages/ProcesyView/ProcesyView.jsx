@@ -118,6 +118,7 @@ const WykonaniaTable = () => {
               <th> Spedycja</th>
               <th> Przeloty</th>
               <th> Papier</th>
+              {selectedProces == 1 ? <th>Papier </th> : <></>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
               <th> Status </th>
               <th     onClick={(event) => {

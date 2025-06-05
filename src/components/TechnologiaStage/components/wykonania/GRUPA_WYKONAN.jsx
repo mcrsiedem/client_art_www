@@ -66,7 +66,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                   .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
                       {/* <WykonanieRow row={row}/> */}
-                      <RowWykonanie rowWykonanie={rowWykonanie} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
+                      <RowWykonanie rowWykonanie={rowWykonanie} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
 
                     </div>
                   ))}

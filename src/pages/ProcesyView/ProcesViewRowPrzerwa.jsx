@@ -49,7 +49,7 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
         <td></td>
         
         
-      {grup.typ_grupy == 1 && selectedProces==1?  <><td></td><td></td><td></td><td></td></> : <><td></td><td></td><td></td> </> }
+      {grup.typ_grupy == 1 && selectedProces==1?  <><td></td><td></td><td></td><td></td><td></td></> : <><td></td><td></td><td></td> </> }
                   
         <td></td>
         <td></td>

@@ -80,26 +80,37 @@
 }
 
 .icon{
-    
     height: 43px;
     padding: 10px;
-
-
-    
 }
 
 .icon:hover{
-
-    /* outline:1px solid #ff0000; */
-   
-
-    /* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
-    /* background-image: linear-gradient(#383838 0%, #444343 80%); */
     background-color: rgb(230, 230, 230);
     border-radius: 5px;
-
-    
 }
+
+
+.icon_copy{
+    height: 43px;
+    padding: 12px;
+}
+
+.icon_copy:hover{
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+}
+
+
+.icon_close{
+    height: 43px;
+    padding: 12px;
+}
+
+.icon_close:hover{
+    background-color: rgb(255, 67, 67);
+    border-radius: 5px;
+}
+
 
 .procesy_input{
     color: rgb(190, 190, 190);

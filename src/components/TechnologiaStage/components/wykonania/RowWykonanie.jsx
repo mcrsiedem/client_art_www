@@ -11,8 +11,9 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { getMaxID } from "actions/getMaxID";
 import { useWykonania } from "hooks/useWykonania";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { useAccess } from "hooks/useAccess";
 
-export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie})  {
+export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,rowProces})  {
   return(<div
     draggable
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
@@ -25,7 +26,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie}) 
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
       <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
       <StanWykonania rowWykonanie={rowWykonanie}/>
-      <StatusWykonania rowWykonanie={rowWykonanie}/>
+      <StatusWykonania rowWykonanie={rowWykonanie} rowProces={rowProces}/>
       <DodajWykonanie rowWykonanie={rowWykonanie}/>
     </div>
   </div>)
@@ -120,7 +121,7 @@ function StanWykonania({ rowWykonanie }) {
   );
 }
 
-function StatusWykonania({ rowWykonanie }) {
+function StatusWykonania({ rowWykonanie,rowProces }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
@@ -128,6 +129,7 @@ function StatusWykonania({ rowWykonanie }) {
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   
   const [czasWykonania,statusWykonaniaTechnologia] = useWykonania(true);
+const [wolno,wolno_procesor] = useAccess(false);
 
 
   return (
@@ -141,7 +143,10 @@ function StatusWykonania({ rowWykonanie }) {
           if(rowWykonanie.technologia_id==1){
             // updateWykonanie({ ...rowWykonanie, status: event.target.value });
             }else{
-              statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value })
+              if(wolno_procesor(rowProces.nazwa_id)){
+                 statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value })
+              }
+             
               // updateWykonania(rowWykonanie.global_id,1,event.target.value,fechparametryTechnologii)
             }
       

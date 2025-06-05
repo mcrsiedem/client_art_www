@@ -52,6 +52,7 @@ function ProcesyHeader() {
             setSelectedProcesor={setSelectedProcesor}
             selectedProcesor={selectedProcesor}
           />
+          <p> {selectedProces}</p>
         </div>
 
         <div className={style.centerHeaderContener}>

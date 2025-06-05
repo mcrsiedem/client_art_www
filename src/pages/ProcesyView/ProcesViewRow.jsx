@@ -29,6 +29,7 @@ import { useHistoria } from "hooks/useHistoria";
 import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { useAccess } from "hooks/useAccess";
 
 
 
@@ -42,6 +43,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
+        const [wolno] = useAccess(false);
+
           const selectColor = (etapPlikow,status) =>{
             if (status==4 ) return style.procesRow_tr_DRUK
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
@@ -62,16 +65,31 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
 <>
                 <tr
                   title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." }
-                  draggable={unlockTable}
-                   key={grup.global_id}
-                  onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
-                 onDragOver={handleDragOver}
+                  draggable={wolno()}
+                  key={grup.global_id}
+                  onDrop={()=> {
+                      if(wolno()){
+                        handleDrop(grup.global_id,grup.procesor_id)
+                      }
+                  }
+                  }
+
+                                onDragOver={    handleDragOver                          }
+
+              
                   
+                  
+          
                   onDragStart={() => {
-                
+
+                    if(wolno()){
                       handleDragStart(grup.global_id,grup.typ_grupy)
-            
-                    
+                      
+                    }
+                    // if (DecodeToken(sessionStorage.getItem("token")).manage_druk == 1) {
+                    // }
+                 
+                               
                   }}
                  className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
                   onDoubleClick={(node, event) => {

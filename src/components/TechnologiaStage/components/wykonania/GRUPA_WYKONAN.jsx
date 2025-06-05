@@ -18,6 +18,7 @@ import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useAccess } from "hooks/useAccess";
 
 
 
@@ -54,8 +55,8 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
                  <Stangrupy rowGrupa={rowGrupa}/>
-                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie}/>
-                 <DodajGrupeWykonan rowGrupa={rowGrupa}/>
+                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
+                 <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <SkasujGrupeWykonan rowGrupa={rowGrupa}/>
               </div>
 
@@ -94,6 +95,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const grupaWykonan = techContext.grupaWykonan;
   const [sumujGrupe] = useGrupyWykonan()
   const [updateGrupaWykonan] = useGrupyWykonanFirst()
+  const [wolno,wolno_procesor] = useAccess(false);
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
     return suma;
@@ -105,15 +107,24 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   return (
     <div
                 onDragOver={handleDragOver}
-                onDrop={() => handleDrop(rowGrupa.id,rowProces.id,rowGrupa.id)}
+                onDrop={() => {
+
+                     if(wolno_procesor(rowProces.nazwa_id)){
+                      handleDrop(rowGrupa.id,rowProces.id,rowGrupa.id)}
+                     }
+                }
      className={style.col_dane}>
       <label className={style.label}> Procesor </label>
       <select
         className={style.input}
         value={rowGrupa.procesor_id}
         onChange={(event) => {
-          updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
+
+          if(wolno_procesor(rowProces.nazwa_id)){
+                updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
           dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
+          }
+      
     
         }}
       >
@@ -169,18 +180,22 @@ if(daneTech.id !=1){
 
 }
 
-function DodajGrupeWykonan({ rowGrupa }) {
+function DodajGrupeWykonan({ rowGrupa,rowProces }) {
   const techContext = useContext(TechnologyContext);
   let grupaWykonan = techContext.grupaWykonan;
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const daneTech = techContext.daneTech;
-
+const [wolno,wolno_procesor] = useAccess(false);
   return (
     <div style={{ paddingTop: "13px" }}>
       <img
         onDragOver={handleDragOver}
-        onDrop={() => handleDrop()}
+        onDrop={() => {
+          if(wolno_procesor(rowProces.nazwa_id)){
+            handleDrop()
+          }
+        } }
         className={style.expand}
         src={icon}
         onClick={() => {
@@ -289,7 +304,7 @@ function MnoznikPredkosci({ rowGrupa }) {
   );
 }
 
-function StatusGrupy({ rowGrupa }) {
+function StatusGrupy({ rowGrupa,rowProces }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
@@ -300,6 +315,8 @@ function StatusGrupy({ rowGrupa }) {
   const setWykonania = techContext.setWykonania
   const daneTech = techContext.daneTech
   const [sumujGrupe,statusGrupy,statusGrupyTechnologia] = useGrupyWykonan()
+const [wolno,wolno_procesor] = useAccess(false);
+
   return (
     <div className={style.col_dane}>
       <label className={style.label}> Status </label>
@@ -308,10 +325,14 @@ function StatusGrupy({ rowGrupa }) {
         value={rowGrupa.status}
         onChange={(event) => {
   
-
-          if(daneTech.id != 1){
+   if(wolno_procesor(rowProces.nazwa_id)){
+         if(daneTech.id != 1){
             statusGrupyTechnologia({...rowGrupa, status: event.target.value})
           }
+   }
+     
+
+
         }}
       >
         {_status_wykonania.map((option) => (

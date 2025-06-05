@@ -143,21 +143,7 @@ function Szukaj() {
   );
 }
 
-const KOPIUJ_ZAZNACZONE_BTN2= () =>{
-     const techContext = useContext(TechnologyContext);
-      const grupyWykonanAll = techContext.grupyWykonanAll;
-      const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
-  return(
 
-    
-    <button 
-    onClick={(event) => {
-console.log(grupyWykonanAllWyszukiwarka)
-          }
-    }
-    >pokaz grupy</button>
-  )
-}
 
 function KOPIUJ_ZAZNACZONE_BTN() {
    const techContext = useContext(TechnologyContext);
@@ -169,7 +155,7 @@ function KOPIUJ_ZAZNACZONE_BTN() {
               <img
               className={style.icon_copy}
               src={iconCopy}
-
+title="Kopiuj wydanie papieru"
     onClick={(event) => {
             // console.log(" select" + grup.global_id + " " + event.target.checked);
 let mes='';
@@ -218,6 +204,7 @@ function WYDAJ_ZAZNACZONE_BTN() {
               <img
               className={style.icon_copy}
               src={iconSheet}
+              title="Wydaj papier"
 
     onClick={async (event) => {
             // console.log(" select" + grup.global_id + " " + event.target.checked);

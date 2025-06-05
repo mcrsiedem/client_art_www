@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import icon from "assets/copy.svg";
 
-import iconAdd from "assets/add2.svg";
+import iconAdd from "assets/add4.svg";
 
 
 import { _etap_plikow, _status_wydania_papieru, _typ_elementu, reg_int } from "utils/initialvalue";
@@ -364,7 +364,7 @@ function WydaniePapieruStatus({grup}) {
   }
 
   if(grup.wydanie_papieru_status ==null){
-return (<td>        <div>
+return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
         {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
             className={style.iconSettings}
             src={iconAdd}

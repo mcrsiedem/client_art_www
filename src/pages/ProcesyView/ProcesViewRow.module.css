@@ -281,5 +281,11 @@ outline: none;
 
   .iconSettings{ width: 17px;
 padding-left: 2px;
-   
+   margin-left: 10px;
+   }
+
+
+
+   .td_tableProcesy_papier_wydanie{
+      /* text-align: center; */
    }

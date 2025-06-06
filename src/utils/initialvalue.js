@@ -504,6 +504,8 @@ const _etapy_produkcji = [
     id: 16,
     nazwa: "Oddane",
   },
+
+
 ];
 
 const _etap_plikow = [

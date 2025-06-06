@@ -7,13 +7,16 @@ export function useSortowanieZamowienia(){
 
 function sortWgEtapu({ zamowienie }) {
   if (sortowanieZamowieniaEtap == 1) {
-    return zamowienie.etap > 1;
+    return zamowienie.etap > 1 && zamowienie.status != 7;
   }
   if (sortowanieZamowieniaEtap == 2) {
-    return zamowienie.etap == 1;
+    return zamowienie.etap == 1 && zamowienie.status != 7;
   }
   if (sortowanieZamowieniaEtap == 3) {
     return true;
+  }
+   if (sortowanieZamowieniaEtap == 4) {
+    return zamowienie.status == 7; // anulowane
   }
 }
 

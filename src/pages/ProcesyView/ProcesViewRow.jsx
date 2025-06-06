@@ -115,6 +115,10 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   <TytulProcesGrup grup={grup}/>
                   {/* <td className={style.td_tableProcesy_praca}>{grup.tytul} {grup.nazwa_elementu}</td> */}
                   <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
+                  <DyspersjaGrupa grup={grup}/>
+
+                  <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
+
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi_elementu} {grup.uwagi}</td> */}
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
@@ -220,6 +224,20 @@ const TytulProcesGrup = ({ grup }) => {
   );
 };
 
+const DyspersjaGrupa = ({ grup }) => {
+const dyspersja = [2,3,5,6,12,13]
+
+if(dyspersja.includes(parseInt(grup.global_proces_id)))
+{
+   return (
+    <td title="Dyspersja" className={style.td_tableProcesy_nr_stary}>D </td>)
+
+}else {
+  return( <td className={style.td_tableProcesy_nr_stary}> </td>)
+}
+ 
+ 
+};
 
 function SelectBox({ grup }) {
   const appContext = useContext(AppContext);

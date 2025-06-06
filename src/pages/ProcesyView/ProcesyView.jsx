@@ -115,6 +115,8 @@ const WykonaniaTable = () => {
               <th> Klient</th>
               <th> Praca</th>
               <th> Uwagi</th>
+              <th title="Dyspersja"> D</th>
+              <th> Nakład</th>
               <th> Spedycja</th>
               <th> Przeloty</th>
               <th> Papier</th>

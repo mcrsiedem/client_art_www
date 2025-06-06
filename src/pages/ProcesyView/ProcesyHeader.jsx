@@ -121,7 +121,7 @@ function Szukaj() {
       className={style.szukajInput}
       type="text"
       title="Znajdź tytuł pracy..."
-      placeholder="..."
+      placeholder=""
       onChange={(event) => {
   
       

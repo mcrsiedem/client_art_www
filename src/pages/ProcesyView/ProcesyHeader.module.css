@@ -137,3 +137,14 @@ outline: none;
   .iconMenuBtn:active{
     rotate: 65deg;
   }
+
+
+  .szukajInput{
+    padding-left: 5px;
+
+  }
+
+    .szukajInput:focus, input:focus{
+    outline: none;
+}
+  

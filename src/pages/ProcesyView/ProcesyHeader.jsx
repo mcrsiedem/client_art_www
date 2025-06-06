@@ -62,12 +62,13 @@ function ProcesyHeader() {
         {/* <PokazStany /> */}
         <PrzerwaBTN />
         {/* <ODZNACZ_BTN /> */}
-        {/* <Szukaj /> */}
         {/* <KOPIUJ_ZAZNACZONE_BTN2 /> */}
         
 
         </div>
         <div className={style.rightHeaderContener}>
+        <Szukaj />
+
         <WYDAJ_ZAZNACZONE_BTN />
         <KOPIUJ_ZAZNACZONE_BTN />
      
@@ -120,17 +121,21 @@ function Szukaj() {
       className={style.szukajInput}
       type="text"
       title="Znajdź tytuł pracy..."
-      placeholder="2..."
+      placeholder="..."
       onChange={(event) => {
   
-        
+      
+
+         let  m =  grupyWykonanAllWyszukiwarka.filter(x=> x.tytul !=null  ).filter((k) =>
+                      //  k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).toLowerCase().includes(event.target.value.toLowerCase()) 
 
 
-        setGrupWykonanAll(grupyWykonanAllWyszukiwarka.filter((k) =>
-            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
-             k.tytul.toLowerCase().includes(event.target.value.toLowerCase())   ))
+          )
 
-
+        setGrupWykonanAll(
+         m
+        );
 
 
 

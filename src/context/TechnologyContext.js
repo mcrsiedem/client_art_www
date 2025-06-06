@@ -496,7 +496,8 @@ if(elementyTech.length>1){
      setGrupaWykonan([])
      setWykonania([])
      setGrupaOprawaTech([])
-     setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia,stan:res.data[0][0].etap}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
+    //  setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia,stan:res.data[0][0].etap}) 
+     setDaneTech({...res.data[0][0],id:1,prime_id:1,zamowienie_id:idZamowienia,stan:res.data[0][0].etap == 1 ? 1:2}) // kopiując dane z zamówienia do technologi nadpisuje id:1 
      setProduktyTech(res.data[1])
      setElementyTech(res.data[2].map(element => { return {...element, arkusz_szerokosc: "", arkusz_wysokosc: ""}}))
      setFragmentyTech(res.data[3])
@@ -524,7 +525,11 @@ setShowTechnologyStage(true);
 
 
 
+// const getStanFromEtap = (etap) =>{
 
+//   if(etap == 1) {return 1} else return 2
+
+// }
 
 
 

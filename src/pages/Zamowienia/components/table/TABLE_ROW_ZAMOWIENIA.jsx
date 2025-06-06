@@ -157,7 +157,13 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
 
 deleteZamowienie([row])
         }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
- 
+
+
+
+  {row.status ==7 && row.technologia_id==null && DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj==1 ? <button onClick={()=>{deleteZamowienie([row])}}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
+
+
+
     
       </div>
           

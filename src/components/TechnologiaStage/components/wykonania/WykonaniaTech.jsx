@@ -14,7 +14,7 @@ import ROW_OPRAWA from "./ROW_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaTech() {
-  const [createWykonaniaFromArkuszeLegi] = useProcesy()
+  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa] = useProcesy()
   const techContext = useContext(TechnologyContext);
   const showProcesy = techContext.showProcesy;
   const setShowProcesy = techContext.setShowProcesy;

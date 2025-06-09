@@ -1,7 +1,8 @@
 
 // fukncja do generowania wykonań i grup po stworzeniu arkuszy
 // podobna do useArkusze, ale rozdzielona na osobną część tylko do wykonań 
-
+import axios from "axios";
+import { IP } from "../utils/Host";
 
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
@@ -15,6 +16,8 @@ export function useProcesy(){
   const techContext = useContext(TechnologyContext);
   const arkusze = techContext.arkusze;
   const legi = techContext.legi;
+  const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
     const procesy = techContext.procesyElementow;
     const setGrupaWykonan = techContext.setGrupaWykonan;
     const setWykonania = techContext.setWykonania;
@@ -297,6 +300,173 @@ setWykonania(new_wykonania)
 
 }
 
+
+
+   function createProcesyFromArkuszNewGrupa( arkusz) {
+ // używane przy dodawaniu pojedynczych arkuszy gdy zmienia sie objetosc
+    // dodaje nową grupę wykonan z jednym wykonaniem
+    // nasteępnie tą grupę trzeba dodać do planu
+    // po dodaniu można
+   const new_legi = [...legi.filter(x=>x.delete != true && x.arkusz_id == arkusz.id)];
+  //  const new_procesy = [...procesy.filter(x=>x.delete != true)];
+  //  const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
+   let new_grupy = [...grupaWykonan];
+   const new_wykonania = [...wykonania];
+
+procesy.filter(x=> x.element_id == arkusz.element_id).map((proces,i)=> {
+  if(proces.arkusz==1){ 
+let grupa_id = MaxID(new_grupy)
+    new_grupy.push({
+      id: grupa_id,
+      global_id:0,
+      indeks: i + 1,
+      technologia_id: arkusz.technologia_id,
+       zamowienie_id: arkusz.zamowienie_id,
+      element_id: proces.element_id,
+      nazwa: proces.nazwa,
+      poczatek: "2024-10-30 10:00:00",
+      czas: 1,
+      koniec: "2024-10-30 11:00:00",
+      procesor_id:proces.procesor_domyslny,
+      narzad: proces.narzad,
+      predkosc: proces.predkosc,
+      proces_id: proces.id,
+      mnoznik: proces.mnoznik,
+      status:1,
+      stan:1,
+      uwagi: ""
+    });
+
+
+      new_wykonania.push({
+        id: MaxID(new_wykonania),
+        indeks: i + 1,
+        technologia_id: arkusz.technologia_id,
+          global_id:0,
+        nazwa: proces.nazwa,
+        element_id: arkusz.element_id,
+        arkusz_id: arkusz.id,
+        proces_id: proces.id,
+        typ_elementu: arkusz.typ_elementu,
+        poczatek: "2024-10-30 10:00:00",
+        czas: parseInt(((parseInt(arkusz.naklad) + parseInt(arkusz.nadkomplet))/ proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10),
+        koniec: "2024-10-30 11:00:00",
+        procesor_id:proces.procesor_domyslny,
+        grupa_id:grupa_id,
+        narzad: proces.narzad,
+        predkosc: proces.predkosc,
+        naklad: arkusz.naklad,
+        mnoznik: proces.mnoznik,
+        status:1,
+        stan:1,
+        przeloty: parseInt(arkusz.naklad) + parseInt(arkusz.nadkomplet) ,
+        uwagi: ""
+      });
+    
+
+// new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
+
+  }
+
+  if(proces.lega==1){ 
+    let grupa_id = MaxID(new_grupy)
+    new_grupy.push({
+      id: grupa_id,
+      technologia_id: arkusz.technologia_id,
+      zamowienie_id: arkusz.zamowienie_id,
+      global_id:0,
+      indeks: i + 1,
+      element_id: proces.element_id,
+      nazwa: proces.nazwa,
+      poczatek: "2024-10-30 10:00:00",
+      czas: 1,
+      koniec: "2024-10-30 11:00:00",
+      procesor_id:proces.procesor_domyslny,
+      narzad: proces.narzad,
+      predkosc: proces.predkosc,
+      proces_id: proces.id,
+      mnoznik: proces.mnoznik,
+      status:1,
+      stan:1,
+      uwagi: ""
+    });
+
+    new_legi
+    // .filter(a => a.element_id == proces.element_id)
+    .map(a=>{
+      new_wykonania.push({
+        id: MaxID(new_wykonania),
+        indeks: i + 1,
+        technologia_id: arkusz.technologia_id,
+                  global_id:0,
+        nazwa: proces.nazwa,
+        element_id: a.element_id,
+        arkusz_id: a.arkusz_id, // bylo a.id
+        proces_id: proces.id,
+        typ_elementu: a.typ_elementu,
+        poczatek: "2024-10-30 10:00:00",
+        czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
+        koniec: "2024-10-30 11:00:00",
+        procesor_id:proces.procesor_domyslny,
+        grupa_id:grupa_id,
+        narzad: proces.narzad,
+        predkosc: proces.predkosc,
+        naklad: a.naklad,
+        mnoznik: proces.mnoznik,
+        status:1,
+        stan:1,
+        przeloty: a.naklad / proces.ilosc_uzytkow,
+        uwagi: ""
+      });
+    })
+
+  }
+
+  
+
+})
+
+ new_grupy = new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) )
+
+
+// setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+// setWykonania(new_wykonania)
+
+saveGrupaWykonan(new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ))
+saveWykonania(new_wykonania.filter(x=>x.global_id == 0))
+
+}
+
+
+
+
+
+
+const saveGrupaWykonan = (grupaWykonan) =>{
+console.log(grupaWykonan)
+
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])
+resolve(res)
+  })
+}
+
+
+const saveWykonania = (wykonania) =>{
+  return new Promise(async(resolve,reject)=>{
+   let res = await axios.post(IP + "zapiszTechnologieInsertWykonania/" + sessionStorage.getItem("token"),[wykonania])
+resolve(res)
+  })
+}
+
+
+
+
+
+
+
+
+
 const MaxID = (value) => {
   let maxID = null;
   if (value.length == 0) return (maxID = 1);
@@ -337,7 +507,7 @@ const SumaPrzelotow = (wykonania,grupa) => {
 };
 
 
-  return [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE];
+  return [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa];
 
 }
 

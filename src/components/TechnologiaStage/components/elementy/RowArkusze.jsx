@@ -13,6 +13,8 @@ import addIcon2 from "assets/addIcon2.svg"
 import { findNadkomplet } from "actions/findNadkomplet";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
+import { useProcesy } from "hooks/useProcesy";
+import { zapiszTechnologieAddNewGrup } from "actions/zapiszTechnologieAddNewGrup";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -278,6 +280,33 @@ export default function RowArkusze  ({ row,i })  {
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
     const wykonania = techContext.wykonania;
+     const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa] = useProcesy()
+
+  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+  const produktyTech = techContext.produktyTech;
+  const setProduktyTech = techContext.setProduktyTech;
+  const elementyTech = techContext.elementyTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const oprawaTech = techContext.oprawaTech;
+
+  const grupaWykonan = techContext.grupaWykonan;
+
+  const procesyElementowTech = techContext.procesyElementowTech;
+
+
+  const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const setOprawaTech = techContext.setOprawaTech;
+
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const setWykonania = techContext.setWykonania;
+  const setProcesyElementowTech = techContext.setProcesyElementowTech;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
+  const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
 
 
 if(wykonania.some(x=> x.arkusz_id == row.id)){
@@ -291,6 +320,12 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
             title="Stwórz wykonania do tego arkusza"
             src={logoExtract}
             onClick={() => {
+              if(arkusze.some(x=> x.global_id === 0 )){
+                alert("Najpierw zapisz technologię z nową ilością arkuszy")
+              }else{
+              createProcesyFromArkuszNewGrupa(row)
+
+              }
               // handleRemoveArkusz()
             }}
             alt="Procesy"
@@ -466,6 +501,7 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
     const newArkusze = arkusze.slice();
     newArkusze.push({
       ...row,
+      global_id:0,
       id: new_arkusz_id,
       indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
       insert: true,

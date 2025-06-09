@@ -342,6 +342,7 @@ let grupa_id = MaxID(new_grupy)
         id: MaxID(new_wykonania),
         indeks: i + 1,
         technologia_id: arkusz.technologia_id,
+        zamowienie_id: arkusz.zamowienie_id,
           global_id:0,
         nazwa: proces.nazwa,
         element_id: arkusz.element_id,
@@ -397,7 +398,8 @@ let grupa_id = MaxID(new_grupy)
       new_wykonania.push({
         id: MaxID(new_wykonania),
         indeks: i + 1,
-        technologia_id: arkusz.technologia_id,
+        technologia_id: a.technologia_id,
+        zamowienie_id: a.zamowienie_id,
                   global_id:0,
         nazwa: proces.nazwa,
         element_id: a.element_id,

@@ -73,7 +73,7 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                 
         
                                                         {isOnline ? (     <div className={style.user}> 
-                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" />
+                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={()=>{console.log(DecodeToken(sessionStorage.getItem("token")).nazwisko)}}/>
                                                                         <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                                                                 </div>) : (     <div className={style.user}> 
                                                                         <img className={style.userIcon } src={userOffline} alt="Procesy" />

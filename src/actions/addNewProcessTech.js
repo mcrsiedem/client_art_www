@@ -3,14 +3,18 @@ import axios from "axios";
 import { IP } from "../utils/Host";
 
 
-export function addNewProcessTech(row,procesyElementowTechTemporary, setProcesyElementowTechTemporary) {
+export function addNewProcessTech(row,procesyElementowTechTemporary, setProcesyElementowTechTemporary,procesList) {
 
 const procesyElementowEditTemporary = procesyElementowTechTemporary.slice();
 
 // row = selectedElementTechROW
+let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
 
     procesyElementowEditTemporary.push({
-      id: Math.max(...procesyElementowTechTemporary.map((f) => f.id)) + 1,
+      // id: Math.max(...procesyElementowTechTemporary.map((f) => f.id)) + 1,
+        ...proc[0],
+
+      id: procesyElementowEditTemporary.length ==0 ? 1: Math.max(...procesyElementowEditTemporary.map((f) => f.id)) + 1,
       zamowienie_id: row.zamowienie_id,
       technologia_id: row.technologia_id,
       produkt_id: row.produkt_id,

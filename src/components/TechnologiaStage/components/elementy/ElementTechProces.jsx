@@ -90,13 +90,15 @@ function Footer() {
 
 function Table() {
   const techContext = useContext(TechnologyContext);
+    const contexApp = useContext(AppContext);
+  
   // const contexApp = useContext(AppContext);
   // const contexModal = useContext(ModalInsertContext);
   // const procesyElementow = contexModal.procesyElementow;
   const procesyElementowTechTemporary = techContext.procesyElementowTechTemporary;
   const procesyElementowTech = techContext.procesyElementowTech;
   const setProcesyElementowTechTemporary = techContext.setProcesyElementowTechTemporary;
-
+const procesList = contexApp.procesList;
 
   const selectedElementTechROW = techContext.selectedElementTechROW;
 
@@ -134,7 +136,7 @@ function Table() {
       </table>
       <div className={style.dodaj_proces_row}>
          <button className={style.btn_dodaj_proces} onClick={
-        ()=>addNewProcessTech(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary)
+        ()=>addNewProcessTech(selectedElementTechROW,procesyElementowTechTemporary,setProcesyElementowTechTemporary,procesList)
 // ()=>{
 //   console.log("procesty temp",techContext.procesyElementowTechTemporary)
 //   console.log("procesty ",techContext.procesyElementowTech)

@@ -227,7 +227,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button  
-    draggable
+    // draggable={false}
     key={id}
    onDrop={()=>handleDrop(id)}
   onDragOver={handleDragOver}

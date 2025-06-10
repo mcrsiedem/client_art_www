@@ -26,6 +26,8 @@ export function useProcesy(){
     const grupaOprawaTech = techContext.grupaOprawaTech;
     const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
     const procesList = contextApp.procesList;
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
     // procesList
     const [czasOprawy,iloscZbieran] = useOprawa()
    function createWykonaniaFromArkuszeLegi(
@@ -436,7 +438,7 @@ let grupa_id = MaxID(new_grupy)
 
 saveGrupaWykonan(new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ))
 saveWykonania(new_wykonania.filter(x=>x.global_id == 0))
-
+fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
 }
 
 

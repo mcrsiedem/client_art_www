@@ -203,6 +203,7 @@ const ZapisBtnPromise = () => {
   const grupaOprawaTech = techContext.grupaOprawaTech;
   const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
 
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
 
 
@@ -247,7 +248,6 @@ const ZapisBtnPromise = () => {
 
 
 
-
         if(daneTech.id != 1){
           zapiszTechnologieUpdate({
          daneTech,
@@ -273,7 +273,8 @@ const ZapisBtnPromise = () => {
          setWykonania,
          setProcesyElementowTech,
          setSaveButtonDisabled,
-         grupaOprawaTech, setGrupaOprawaTech
+         grupaOprawaTech, setGrupaOprawaTech,
+         fechparametryTechnologii
 
        });
 

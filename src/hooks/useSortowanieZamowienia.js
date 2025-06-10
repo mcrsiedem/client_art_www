@@ -18,6 +18,9 @@ function sortWgEtapu({ zamowienie }) {
    if (sortowanieZamowieniaEtap == 4) {
     return zamowienie.status == 7; // anulowane
   }
+   if (sortowanieZamowieniaEtap == 5) {
+    return zamowienie.etap == 16; // anulowane
+  }
 }
 
   return [sortWgEtapu];

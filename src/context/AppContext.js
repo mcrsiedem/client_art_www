@@ -175,6 +175,11 @@ const _firma = [
       id: 4,
       nazwa: "Anulowane",
     },
+    
+    {
+      id: 5,
+      nazwa: "Oddane",
+    },
   ];
 
 const typ_elementu=[

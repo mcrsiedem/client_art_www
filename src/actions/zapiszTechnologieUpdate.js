@@ -10,12 +10,14 @@ export async function zapiszTechnologieUpdate({daneTech,setDaneTech,produktyTech
   setLegiFragmenty,
   setArkusze,
   setGrupaWykonan,
-  setWykonania,setProcesyElementowTech,setSaveButtonDisabled}){
+  setWykonania,setProcesyElementowTech,setSaveButtonDisabled,fechparametryTechnologii}){
 
 
 
           let savedDane  = await saveDane({daneTech,produktyTech,elementyTech,fragmentyTech,oprawaTech,legi,legiFragmenty,arkusze,grupaWykonan,wykonania,procesyElementowTech})
           setSaveButtonDisabled(true)
+
+          fechparametryTechnologii(daneTech.zamowienie_id,daneTech.id)
           //  setDaneZamowienia(savedDane.daneZamowienia)
           //  setProdukty(savedDane.produkty)
           //  setElementy(savedDane.elementy)

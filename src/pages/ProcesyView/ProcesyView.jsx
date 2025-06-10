@@ -191,7 +191,8 @@ function Procesory() {
                 ))}
             </div>
 
-        <div className={style.procesor_btn_right}> Proces: {selectedProces}  Procesor: {selectedProcesor} </div>
+        {/* <div className={style.procesor_btn_right}> Proces: {selectedProces}  Procesor: {selectedProcesor} </div> */}
+        <div className={style.procesor_btn_right}>  </div>
 
     </div>
 
@@ -227,6 +228,8 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button  
+
+    title={"Procesor ID: "+ id}
     // draggable={false}
     key={id}
    onDrop={()=>handleDrop(id)}

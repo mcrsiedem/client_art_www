@@ -172,7 +172,17 @@ tr:nth-of-type(2n) {
   border-bottom: 1px solid rgb(192, 191, 191) ;
 }
 
-.procesor_btn_container{
+
+.procesor_btn_main{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+
+}
+
+
+.procesor_btn_center{
    display: flex;
    justify-content: center;
    align-items: center;
@@ -181,6 +191,16 @@ tr:nth-of-type(2n) {
    /* background-color: antiquewhite; */
    overflow: auto;
 }
+
+.procesor_btn_right{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+
+}
+
+
 
 
 .btn_procesor{
@@ -213,6 +233,7 @@ tr:nth-of-type(2n) {
    color: rgb(204, 203, 203);
    font-size: 0.9rem;
    padding: 5px;;
+   
 }
 
 .select{

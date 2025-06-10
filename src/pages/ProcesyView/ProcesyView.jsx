@@ -175,17 +175,26 @@ function Procesory() {
   const updateGrupaWykonan = techContext.updateGrupaWykonan
   const setSelectedProcesor = techContext.setSelectedProcesor
   const selectedProces = techContext.selectedProces
+  const selectedProcesor = techContext.selectedProcesor
   return (
-    <div className={style.procesor_btn_container}>
+    <div className={style.procesor_btn_main}>
+      <div className={style.procesor_btn_left}>  </div>
 
-{procesory
-         ?.filter(x => x.grupa == selectedProces  )
-        .map((procesor) => (
+                  <div className={style.procesor_btn_center}>
 
-          <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
+        {procesory
+                ?.filter(x => x.grupa == selectedProces  )
+                .map((procesor) => (
 
-        ))}
+                  <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
+
+                ))}
+            </div>
+
+        <div className={style.procesor_btn_right}> Proces: {selectedProces}  Procesor: {selectedProcesor} </div>
+
     </div>
+
   );
 }
 
@@ -195,17 +204,20 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll
   const setSelectedProcesor = techContext.setSelectedProcesor
-  // const selectedProcesor = techContext.selectedProcesor
+  const selectedProcesor = techContext.selectedProcesor
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
 
   function handleDrop(id) {
-    if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
+    if(id!=selectedProcesor){
+          if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       // let id_drop_grupa_proces = id;
       dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
 
     }
+    }
+
   }
 
   function handleDragOver(e) {

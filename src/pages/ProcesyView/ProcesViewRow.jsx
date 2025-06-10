@@ -107,7 +107,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
             
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
+                  {/* <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td> */}
+                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
                   {/* <td style={{width: "50px"}}>{grup.rok}</td> */}

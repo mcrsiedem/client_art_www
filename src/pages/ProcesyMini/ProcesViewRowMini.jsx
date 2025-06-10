@@ -90,13 +90,15 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+                  <DyspersjaGrupa grup={grup}/>
+
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   {/* <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td> */}
                   {/* <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td> */}
                   {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
-                  {/* <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td> */}
+                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
                    {/* <Status grup={grup}/> */}
@@ -311,6 +313,20 @@ function Stan({grup}) {
   );
 }
 
+const DyspersjaGrupa = ({ grup }) => {
+const dyspersja = [2,3,5,6,12,13]
+
+if(dyspersja.includes(parseInt(grup.global_proces_id)))
+{
+   return (
+    <td title="Dyspersja" className={style.td_tableProcesy_dyspersja}>D </td>)
+
+}else {
+  return( <td className={style.td_tableProcesy_dyspersja}> </td>)
+}
+ 
+ 
+};
 
 
 

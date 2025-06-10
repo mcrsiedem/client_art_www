@@ -114,6 +114,9 @@ const WykonaniaTable = () => {
               <th> Klient</th>
                  <th > </th>
               <th> Praca</th>
+              <th> </th>
+              <th> </th>
+
               {/* <th> Uwagi</th> */}
               {/* <th> Spedycja</th> */}
               {/* <th> Przeloty</th> */}

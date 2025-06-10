@@ -62,6 +62,20 @@
  }
 
 
+.procesRow_tr:hover{
+background: #9c9c9c;
+}
+.procesRow_tr_AKCEPT:hover{
+background: #9c9c9c;
+}
+
+.procesRow_tr_RIP:hover{
+background: #9c9c9c;
+}
+
+.procesRow_tr_DRUK:hover{
+background: #9c9c9c;
+}
 
 
  .input2{

@@ -54,7 +54,7 @@ function sumujGrupe(new_wykonania) {
 
         let new_wykonania =           wykonania.map((t) => {
             if (t.grupa_id === row.id) {
-              return {...t,predkosc:new_proces[0].predkosc,czas: parseInt(((parseInt(t.naklad))/ new_proces[0].predkosc* t.mnoznik) * 60 + new_proces[0].narzad,10)}
+              return {...t,narzad:new_proces[0].narzad, predkosc:new_proces[0].predkosc,czas: parseInt(((parseInt(t.naklad))/ new_proces[0].predkosc* t.mnoznik) * 60 + new_proces[0].narzad,10)}
             } else {
               return t;
             }
@@ -64,7 +64,7 @@ function sumujGrupe(new_wykonania) {
           setWykonania(new_wykonania)
 
 
-row = {...row, predkosc: new_proces[0].predkosc, czas: SumaCzasow(row,new_wykonania)}
+row = {...row,narzad:new_proces[0].narzad, predkosc: new_proces[0].predkosc, czas: SumaCzasow(row,new_wykonania)}
 
 
         setGrupaWykonan(

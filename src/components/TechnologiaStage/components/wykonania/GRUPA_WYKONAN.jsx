@@ -19,6 +19,7 @@ import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useAccess } from "hooks/useAccess";
+import { dragDropProcesGrupaToProcesorFromTech } from "actions/dragDropProcesGrupaToProcesorFromTech";
 
 
 
@@ -52,6 +53,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <NakladGrupy rowGrupa={rowGrupa} />
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
+                 <Narzad rowGrupa={rowGrupa} />
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
                  <MnoznikPredkosci rowGrupa={rowGrupa}/>
                  <Stangrupy rowGrupa={rowGrupa}/>
@@ -96,14 +98,14 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const [sumujGrupe] = useGrupyWykonan()
   const [updateGrupaWykonan] = useGrupyWykonanFirst()
   const [wolno,wolno_procesor] = useAccess(false);
-  const SumaCzasow = (grupa,new_wykonania) => {
-    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
-    return suma;
-  };
-  const SumaPrzelotow = (grupa,new_wykonania) => {
-    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
-    return suma;
-  };
+  // const SumaCzasow = (grupa,new_wykonania) => {
+  //   let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  //   return suma;
+  // };
+  // const SumaPrzelotow = (grupa,new_wykonania) => {
+  //   let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+  //   return suma;
+  // };
   return (
     <div
                 onDragOver={handleDragOver}
@@ -121,8 +123,13 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
         onChange={(event) => {
 
           if(wolno_procesor(rowProces.nazwa_id)){
-                updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
-          dragDropProcesGrupaToProcesor(rowGrupa.global_id,event.target.value,fechGrupyAndWykonaniaForProcesor)
+            if(daneTech.id !=1){
+               dragDropProcesGrupaToProcesorFromTech(rowGrupa.global_id,event.target.value,fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id)
+            }else{
+              updateGrupaWykonan({ ...rowGrupa, procesor_id: event.target.value });
+            }
+                
+         
           }
       
     
@@ -492,6 +499,29 @@ const PrzelotyGrupy = ({ rowGrupa }) => {
   );
 };
 
+const Narzad = ({ rowGrupa }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  return (
+    <div className={style.col_dane_przeloty}>
+      
+      <label className={style.label}> Narzad </label>
+      <input
+      
+        className={style.input}
+        value={rowGrupa.narzad}
+        onChange={(e) => {
+          if (e.target.value == "" || reg_txt.test(e.target.value)) {
+            // updateGrupaWykonan({
+            //   ...rowGrupa,
+            //   predkosc: e.target.value,
+            // });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
 
 
 

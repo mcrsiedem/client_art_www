@@ -23,6 +23,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
+      <NarzadWykonania rowWykonanie={rowWykonanie}/>
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
       <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
       <StanWykonania rowWykonanie={rowWykonanie}/>
@@ -356,6 +357,34 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
       <input
         className={style.input}
         value={rowWykonanie.przeloty}
+        onChange={(e) => {
+
+
+          // if (e.target.value == "" || reg_int.test(e.target.value)) {
+          //   if(e.target.value == "" ) e.target.value =0
+
+          //   updateWykonanie({
+          //     ...rowWykonanie,
+          //     przeloty: e.target.value,
+          //   });
+          // }
+        }}
+      ></input>
+    </div>
+  );
+};
+
+
+const NarzadWykonania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  return (
+    <div className={style.col_dane_przeloty}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+        className={style.input}
+        value={rowWykonanie.narzad}
         onChange={(e) => {
 
 

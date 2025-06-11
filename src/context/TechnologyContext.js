@@ -536,7 +536,7 @@ setShowTechnologyStage(true);
 
 
 async function fechparametryTechnologii(idZamowienia,idTechnologii) {
-  console.log("fechparametryTechnologii  -  pobieranie technologii")
+  // console.log("fechparametryTechnologii  -  pobieranie technologii")
   //pobierz wszystkie objekty do TECHNOLOGI nr... idTechnologii
   // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
 

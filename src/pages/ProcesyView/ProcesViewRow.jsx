@@ -122,6 +122,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
 
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi_elementu} {grup.uwagi}</td> */}
+                   <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td>
+
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
@@ -156,6 +158,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                       <td></td>
                       <td></td>
                       {/* <td>grupa_id {row.grupa_id}</td> */}
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

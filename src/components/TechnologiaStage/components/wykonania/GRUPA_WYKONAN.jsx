@@ -46,7 +46,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
           .map((rowGrupa, i) => (
             <div>
               <div 
-              title={"grupa_globa_id :"+rowGrupa.global_id}
+              title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
               className={style.grupa_container}>
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <NakladGrupy rowGrupa={rowGrupa} />

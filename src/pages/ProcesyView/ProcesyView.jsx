@@ -118,6 +118,8 @@ const WykonaniaTable = () => {
               <th title="Dyspersja"> D</th>
               <th> Nakład</th>
               <th> Spedycja</th>
+              <th title="Dyspersja"> Narz.</th>
+
               <th> Przeloty</th>
               <th> Papier</th>
               {selectedProces == 1 ? <th>Papier </th> : <></>}
@@ -230,7 +232,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
     <button  
 
     title={"Procesor ID: "+ id}
-    // draggable={false}
+    // draggable
     key={id}
    onDrop={()=>handleDrop(id)}
   onDragOver={handleDragOver}

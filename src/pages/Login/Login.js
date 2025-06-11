@@ -11,6 +11,7 @@ import { SocketContext } from "../../context/SocketContext";
  import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
+import { TechnologyContext } from "context/TechnologyContext";
 export default function Login( ) {
 
   const [user,setUser] = useState(null);
@@ -20,6 +21,7 @@ export default function Login( ) {
   const navigate = useNavigate();
 
   const contextApp = useContext(AppContext);
+  const techContext = useContext(TechnologyContext);
 
   
   //  const appcontext = useContext(AppContext);
@@ -82,7 +84,7 @@ if (res.data.length > 0) {
   setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
   navigate("/Panel");
 
-
+techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
  contextApp.setSelectedKlient(0);
  contextApp.setSelectedUser(0);
 

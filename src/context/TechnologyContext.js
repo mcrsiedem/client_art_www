@@ -75,7 +75,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [openTechnologiaId,setOpenTechnologiaId] =useState();
 
 
-        const [selectedProcesor, setSelectedProcesor] = useState(DecodeToken(sessionStorage.getItem("token")).procesor_domyslny);
+        const [selectedProcesor, setSelectedProcesor] = useState(1);
+        // const [selectedProcesor, setSelectedProcesor] = useState(DecodeToken(sessionStorage.getItem("token")).procesor_domyslny);
         const [selectedProces, setSelectedProces] = useState(1);
 
         const updateTechnology = useCallback(()=>{

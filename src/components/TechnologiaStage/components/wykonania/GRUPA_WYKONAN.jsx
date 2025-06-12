@@ -56,7 +56,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <Narzad rowGrupa={rowGrupa} />
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
-                 <MnoznikPredkosci rowGrupa={rowGrupa}/>
+                 {/* <MnoznikPredkosci rowGrupa={rowGrupa}/> */}
                  <Stangrupy rowGrupa={rowGrupa}/>
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
                  <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
@@ -454,6 +454,8 @@ const NakladGrupy = ({ rowGrupa }) => {
 const PredkoscGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad]=useWykonania()
+
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -464,9 +466,10 @@ const PredkoscGrupy = ({ rowGrupa }) => {
         value={rowGrupa.predkosc}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
-            updateGrupaWykonan({
+                       updateGrupaWykonan_updateWykonania_narzad({
               ...rowGrupa,
               predkosc: e.target.value,
+              update: true
             });
           }
         }}

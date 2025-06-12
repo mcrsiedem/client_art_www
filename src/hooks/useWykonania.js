@@ -48,7 +48,7 @@ function czasWykonania(wykonanie,naklad,predkosc) {
 
     function updateGrupaWykonan_updateWykonania_narzad(row) {
 
-
+      // przelicza czas wykonan po zmianie narzdu grupy
 
         setWykonania(
           wykonania         .map((t) => {
@@ -56,8 +56,9 @@ function czasWykonania(wykonanie,naklad,predkosc) {
               return {
                 ...t,
                 narzad: row.narzad,
+                predkosc: row.predkosc,
                 // czas: czasWykonania(t,t.naklad,t.predkosc),
-                czas: parseInt((t.naklad /  t.predkosc /  procesyElementowTech.filter(x=>x.id == t.proces_id)[0].ilosc_uzytkow * t.mnoznik) * 60 +  parseInt(row.narzad),10),
+                czas: parseInt((t.naklad /  parseInt(row.predkosc) /  procesyElementowTech.filter(x=>x.id == t.proces_id)[0].ilosc_uzytkow * t.mnoznik) * 60 +  parseInt(row.narzad),10),
                 update: true
       
               };

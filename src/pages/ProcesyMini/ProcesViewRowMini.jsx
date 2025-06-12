@@ -29,6 +29,7 @@ import { useHistoria } from "hooks/useHistoria";
 import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { useAccess } from "hooks/useAccess";
 
 
 
@@ -39,6 +40,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
     const wykonaniaAll = techContext.wykonaniaAll;
     const appcontext = useContext(AppContext);
     const typ_elementu = appcontext.typ_elementu;
+          const [wolno] = useAccess(false);
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
@@ -64,13 +66,18 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." }
                   draggable={unlockTable}
                    key={grup.global_id}
-                  onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
+                                    onDrop={()=> {
+                      if(wolno()){
+                        handleDrop(grup.global_id,grup.procesor_id)
+                      }
+                  }
+                  }
                  onDragOver={handleDragOver}
                   
                   onDragStart={() => {
-                
+                  if(wolno()){
                       handleDragStart(grup.global_id,grup.typ_grupy)
-            
+                  }
                     
                   }}
                  className={selectColor(grup.zamowienia_pliki_etap,grup.status) }

@@ -33,6 +33,24 @@ function czasWykonania(wykonanie,naklad,predkosc) {
   return newCzas
   }
 
+
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+
+
+function sumujGrupe(new_wykonania) {
+  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+  }
+
+
+
+
         async function statusWykonaniaTechnologia(wykonanieRow) {
         const res = await axios.put(
           IP +
@@ -50,8 +68,7 @@ function czasWykonania(wykonanie,naklad,predkosc) {
 
       // przelicza czas wykonan po zmianie narzdu grupy
 
-        setWykonania(
-          wykonania         .map((t) => {
+      let wykonania2 =  wykonania         .map((t) => {
             if (t.grupa_id == row.id) {
               return {
                 ...t,
@@ -67,11 +84,14 @@ function czasWykonania(wykonanie,naklad,predkosc) {
             }
           })
 
+        setWykonania(
+         wykonania2
+
         )
         setGrupaWykonan(
           grupaWykonan.map((t) => {
             if (t.id === row.id) {
-              return row;
+              return {...row,czas:SumaCzasow(row,wykonania2.filter(x => x.grupa_id == row.id)), przeloty: SumaPrzelotow(row,wykonania2.filter(x => x.grupa_id == row.id))};
             } else {
               return t;
             }

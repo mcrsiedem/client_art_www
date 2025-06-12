@@ -13,6 +13,10 @@ const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
+  const setGrupaWykonan = techContext.setGrupaWykonan
+  const grupaWykonan = techContext.grupaWykonan
+  const setWykonania = techContext.setWykonania
+  const wykonania = techContext.wykonania
 
 const procesyElementowTech = techContext.procesyElementowTech;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
@@ -29,19 +33,30 @@ function czasWykonania(wykonanie,naklad,predkosc) {
   return newCzas
   }
 
+
+  const SumaCzasow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+  const SumaPrzelotow = (grupa,new_wykonania) => {
+    let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+    return suma;
+  };
+
+
+function sumujGrupe(new_wykonania) {
+  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+  }
+
+
+
+
         async function statusWykonaniaTechnologia(wykonanieRow) {
         const res = await axios.put(
           IP +
             "zakoncz_wykonanie_uwolnij_dalej/" +
             sessionStorage.getItem("token"), wykonanieRow
-          // {
-          //   technologia_id: grupa.technologia_id,
-          //   proces_id: grupa.proces_id,
-          //   element_id: grupa.element_id,
-          //   grupa_id: grupa.id,
-          //   status: grupa.status,
-          //   global_id: grupa.global_id,
-          // }
+
         );
 
         fechparametryTechnologii(wykonanieRow.zamowienie_id, wykonanieRow.technologia_id);
@@ -49,7 +64,49 @@ function czasWykonania(wykonanie,naklad,predkosc) {
 
 
 
-  return [czasWykonania,statusWykonaniaTechnologia];
+    function updateGrupaWykonan_updateWykonania_narzad(row) {
+
+      // przelicza czas wykonan po zmianie narzdu grupy
+
+      let wykonania2 =  wykonania         .map((t) => {
+            if (t.grupa_id == row.id) {
+              return {
+                ...t,
+                narzad: row.narzad,
+                predkosc: row.predkosc,
+                // czas: czasWykonania(t,t.naklad,t.predkosc),
+                czas: parseInt((t.naklad /  parseInt(row.predkosc) /  procesyElementowTech.filter(x=>x.id == t.proces_id)[0].ilosc_uzytkow * t.mnoznik) * 60 +  parseInt(row.narzad),10),
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+
+        setWykonania(
+         wykonania2
+
+        )
+        setGrupaWykonan(
+          grupaWykonan.map((t) => {
+            if (t.id === row.id) {
+              return {...row,czas:SumaCzasow(row,wykonania2.filter(x => x.grupa_id == row.id)), przeloty: SumaPrzelotow(row,wykonania2.filter(x => x.grupa_id == row.id))};
+            } else {
+              return t;
+            }
+          })
+        )
+    
+
+      }
+
+
+
+
+
+
+  return [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad];
 }
 
 

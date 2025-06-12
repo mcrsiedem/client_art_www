@@ -25,7 +25,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
       <NarzadWykonania rowWykonanie={rowWykonanie}/>
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
-      <MnoznikWykoniania rowWykonanie={rowWykonanie}/>
+      {/* <MnoznikWykoniania rowWykonanie={rowWykonanie}/> */}
       <StanWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie} rowProces={rowProces}/>
       <DodajWykonanie rowWykonanie={rowWykonanie}/>

@@ -3,6 +3,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import style from "./GRUPA_WYKONAN.module.css";
 import icon from "assets/copy.svg";
+import logoExtract from "assets/extract_green.svg";
 import iconDelete from "assets/trash2.svg";
 import RowWykonanie from "./RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
@@ -20,6 +21,7 @@ import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useAccess } from "hooks/useAccess";
 import { dragDropProcesGrupaToProcesorFromTech } from "actions/dragDropProcesGrupaToProcesorFromTech";
+import { useWykonania } from "hooks/useWykonania";
 
 
 
@@ -55,11 +57,14 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <Narzad rowGrupa={rowGrupa} />
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
-                 <MnoznikPredkosci rowGrupa={rowGrupa}/>
+                 {/* <MnoznikPredkosci rowGrupa={rowGrupa}/> */}
                  <Stangrupy rowGrupa={rowGrupa}/>
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
                  <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <SkasujGrupeWykonan rowGrupa={rowGrupa}/>
+                 <AktualizujGrupe rowGrupa={rowGrupa}/>
+
+                 
               </div>
 
               {show &&
@@ -81,6 +86,9 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
   );
 
 };
+
+
+
 
 
 function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
@@ -243,6 +251,49 @@ const [wolno,wolno_procesor] = useAccess(false);
 
     }
   }
+}
+
+function AktualizujGrupe({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const daneTech = techContext.daneTech;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const grupaWykonan = techContext.grupaWykonan;
+
+  // const global_id_grupa = row.global_id
+  if(rowGrupa.update == true){
+      return (
+    <div style={{ paddingTop: "13px" }}>
+      <img
+        title="Nanieś zmiany na plan"
+        className={style.expand_max}
+        src={logoExtract} 
+        onClick={() => {
+
+          fechparametryTechnologii(rowGrupa.zamowienie_id,rowGrupa.technologia_id)
+        //    if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis==1)
+        //     {
+
+        //   if(daneTech.id !=1){
+        //   updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+
+        //   }else{
+        // setGrupaWykonan(
+        //   grupaWykonan.filter(e => e.id != rowGrupa.id)
+        // )
+        //   }
+
+
+        //     }
+
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+  }
+
+
 }
 
 function SkasujGrupeWykonan({ rowGrupa }) {
@@ -453,6 +504,8 @@ const NakladGrupy = ({ rowGrupa }) => {
 const PredkoscGrupy = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
   const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad]=useWykonania()
+
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -463,9 +516,10 @@ const PredkoscGrupy = ({ rowGrupa }) => {
         value={rowGrupa.predkosc}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
-            updateGrupaWykonan({
+                       updateGrupaWykonan_updateWykonania_narzad({
               ...rowGrupa,
               predkosc: e.target.value,
+              update: true
             });
           }
         }}
@@ -501,7 +555,9 @@ const PrzelotyGrupy = ({ rowGrupa }) => {
 
 const Narzad = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  // const updateGrupaWykonan_updateWykonania_narzad = techContext.updateGrupaWykonan_updateWykonania_narzad
+  const [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad]=useWykonania()
+
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -512,10 +568,11 @@ const Narzad = ({ rowGrupa }) => {
         value={rowGrupa.narzad}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
-            // updateGrupaWykonan({
-            //   ...rowGrupa,
-            //   predkosc: e.target.value,
-            // });
+            updateGrupaWykonan_updateWykonania_narzad({
+              ...rowGrupa,
+              narzad: e.target.value,
+              update: true
+            });
           }
         }}
       ></input>

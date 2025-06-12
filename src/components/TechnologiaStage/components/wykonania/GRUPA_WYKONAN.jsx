@@ -20,6 +20,7 @@ import { useGrupyWykonanFirst } from "hooks/useGrupyWykonanFirst";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useAccess } from "hooks/useAccess";
 import { dragDropProcesGrupaToProcesorFromTech } from "actions/dragDropProcesGrupaToProcesorFromTech";
+import { useWykonania } from "hooks/useWykonania";
 
 
 
@@ -501,7 +502,9 @@ const PrzelotyGrupy = ({ rowGrupa }) => {
 
 const Narzad = ({ rowGrupa }) => {
   const techContext = useContext(TechnologyContext);
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  // const updateGrupaWykonan_updateWykonania_narzad = techContext.updateGrupaWykonan_updateWykonania_narzad
+  const [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad]=useWykonania()
+
   return (
     <div className={style.col_dane_przeloty}>
       
@@ -512,10 +515,11 @@ const Narzad = ({ rowGrupa }) => {
         value={rowGrupa.narzad}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
-            // updateGrupaWykonan({
-            //   ...rowGrupa,
-            //   predkosc: e.target.value,
-            // });
+            updateGrupaWykonan_updateWykonania_narzad({
+              ...rowGrupa,
+              narzad: e.target.value,
+              update: true
+            });
           }
         }}
       ></input>

@@ -3,6 +3,7 @@ import { IP } from "utils/Host";
 import { getTechnology } from "actions/getTechnolgy";
 import { useEffect,createContext,useState, useCallback } from "react";import { initialProcesy } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useWykonania } from "hooks/useWykonania";
 ;
 
 
@@ -78,6 +79,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [selectedProcesor, setSelectedProcesor] = useState(1);
         // const [selectedProcesor, setSelectedProcesor] = useState(DecodeToken(sessionStorage.getItem("token"))?.procesor_domyslny);
         const [selectedProces, setSelectedProces] = useState(1);
+
+      //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
         const updateTechnology = useCallback(()=>{
             getTechnology(setTechnology)
@@ -226,8 +229,6 @@ export const TechnologyContextProvider = ({children})=>{
 
       function updateWykonaniaWszystkie(row) {
        
-        // console.log("grupa:"+ row[0])
-        // zmienia typ fragmentów gdy typ elementu jest zmieniany
         setGrupaWykonan(
           grupaWykonan.map((t) => {
             if (t.id === row.id) {
@@ -252,11 +253,8 @@ export const TechnologyContextProvider = ({children})=>{
             }
           })
         )
-
-
-
-
       }
+
 
 
 

@@ -13,6 +13,10 @@ const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
+  const setGrupaWykonan = techContext.setGrupaWykonan
+  const grupaWykonan = techContext.grupaWykonan
+  const setWykonania = techContext.setWykonania
+  const wykonania = techContext.wykonania
 
 const procesyElementowTech = techContext.procesyElementowTech;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
@@ -34,14 +38,7 @@ function czasWykonania(wykonanie,naklad,predkosc) {
           IP +
             "zakoncz_wykonanie_uwolnij_dalej/" +
             sessionStorage.getItem("token"), wykonanieRow
-          // {
-          //   technologia_id: grupa.technologia_id,
-          //   proces_id: grupa.proces_id,
-          //   element_id: grupa.element_id,
-          //   grupa_id: grupa.id,
-          //   status: grupa.status,
-          //   global_id: grupa.global_id,
-          // }
+
         );
 
         fechparametryTechnologii(wykonanieRow.zamowienie_id, wykonanieRow.technologia_id);
@@ -49,7 +46,46 @@ function czasWykonania(wykonanie,naklad,predkosc) {
 
 
 
-  return [czasWykonania,statusWykonaniaTechnologia];
+    function updateGrupaWykonan_updateWykonania_narzad(row) {
+
+
+
+        setWykonania(
+          wykonania         .map((t) => {
+            if (t.grupa_id == row.id) {
+              return {
+                ...t,
+                narzad: row.narzad,
+                // czas: czasWykonania(t,t.naklad,t.predkosc),
+                czas: parseInt((t.naklad /  t.predkosc /  procesyElementowTech.filter(x=>x.id == t.proces_id)[0].ilosc_uzytkow * t.mnoznik) * 60 +  parseInt(row.narzad),10),
+                update: true
+      
+              };
+            } else {
+              return t;
+            }
+          })
+
+        )
+        setGrupaWykonan(
+          grupaWykonan.map((t) => {
+            if (t.id === row.id) {
+              return row;
+            } else {
+              return t;
+            }
+          })
+        )
+    
+
+      }
+
+
+
+
+
+
+  return [czasWykonania,statusWykonaniaTechnologia,updateGrupaWykonan_updateWykonania_narzad];
 }
 
 

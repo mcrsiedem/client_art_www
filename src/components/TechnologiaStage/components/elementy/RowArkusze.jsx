@@ -273,40 +273,10 @@ export default function RowArkusze  ({ row,i })  {
   function GenerujWykonanieArkusz({ row }) {
     const techContext = useContext(TechnologyContext)
     const arkusze = techContext.arkusze;
-    const setArkusze = techContext.setArkusze;
-
-    const legi = techContext.legi;
-    const setLegi = techContext.setLegi;
-    const legiFragmenty = techContext.legiFragmenty;
-    const setLegiFragmenty = techContext.setLegiFragmenty;
     const wykonania = techContext.wykonania;
      const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa] = useProcesy()
 
-  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
-  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
 
-  const daneTech = techContext.daneTech;
-  const setDaneTech = techContext.setDaneTech;
-  const produktyTech = techContext.produktyTech;
-  const setProduktyTech = techContext.setProduktyTech;
-  const elementyTech = techContext.elementyTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const oprawaTech = techContext.oprawaTech;
-
-  const grupaWykonan = techContext.grupaWykonan;
-
-  const procesyElementowTech = techContext.procesyElementowTech;
-
-
-  const setFragmentyTech = techContext.setFragmentyTech;
-  const setElementyTech = techContext.setElementyTech;
-  const setOprawaTech = techContext.setOprawaTech;
-
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const setWykonania = techContext.setWykonania;
-  const setProcesyElementowTech = techContext.setProcesyElementowTech;
-  const grupaOprawaTech = techContext.grupaOprawaTech;
-  const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
 
 
 if(wykonania.some(x=> x.arkusz_id == row.id)){

@@ -3,6 +3,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import style from "./GRUPA_WYKONAN.module.css";
 import icon from "assets/copy.svg";
+import logoExtract from "assets/extract_green.svg";
 import iconDelete from "assets/trash2.svg";
 import RowWykonanie from "./RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
@@ -61,6 +62,9 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
                  <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <SkasujGrupeWykonan rowGrupa={rowGrupa}/>
+                 <AktualizujGrupe rowGrupa={rowGrupa}/>
+
+                 
               </div>
 
               {show &&
@@ -82,6 +86,9 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
   );
 
 };
+
+
+
 
 
 function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
@@ -244,6 +251,49 @@ const [wolno,wolno_procesor] = useAccess(false);
 
     }
   }
+}
+
+function AktualizujGrupe({ rowGrupa }) {
+  const techContext = useContext(TechnologyContext);
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const daneTech = techContext.daneTech;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const grupaWykonan = techContext.grupaWykonan;
+
+  // const global_id_grupa = row.global_id
+  if(rowGrupa.update == true){
+      return (
+    <div style={{ paddingTop: "13px" }}>
+      <img
+        title="Nanieś zmiany na plan"
+        className={style.expand_max}
+        src={logoExtract} 
+        onClick={() => {
+
+          fechparametryTechnologii(rowGrupa.zamowienie_id,rowGrupa.technologia_id)
+        //    if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis==1)
+        //     {
+
+        //   if(daneTech.id !=1){
+        //   updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+
+        //   }else{
+        // setGrupaWykonan(
+        //   grupaWykonan.filter(e => e.id != rowGrupa.id)
+        // )
+        //   }
+
+
+        //     }
+
+        }}
+        alt="Procesy"
+      />
+    </div>
+  );
+  }
+
+
 }
 
 function SkasujGrupeWykonan({ rowGrupa }) {

@@ -88,7 +88,11 @@ border-bottom: 1px solid rgb(182, 182, 182);
   margin-right: 10px;
 }
 
-
+.expand_max {
+  height: 15px;
+  margin-right: 10px;
+  /* margin-right: 10px; */
+}
 
 
 .grupa_container{

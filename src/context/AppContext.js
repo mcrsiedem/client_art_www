@@ -180,6 +180,17 @@ const _firma = [
       id: 5,
       nazwa: "Oddane",
     },
+    
+    
+    {
+      id: 6,
+      nazwa: "Wydrukowane",
+    },
+    {
+      id: 7,
+      nazwa: "Sfalcowane",
+    },
+  
   ];
 
 const typ_elementu=[

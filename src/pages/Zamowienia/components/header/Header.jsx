@@ -3,11 +3,13 @@ import style from "./Header.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import iconAdd2 from "assets/edit.svg";
+import iconCopy from "assets/copy5.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { useZamowienia } from "hooks/useZamowienia";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import DecodeToken from "pages/Login/DecodeToken";
+import { _etapy_produkcji } from "utils/initialvalue";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ export default function Header({ dodaj_clikHandler}) {
     const selectedUser = contextApp.selectedUser
     const selectedKlient = contextApp.selectedKlient
     const zamowienia = contextApp.zamowienia;
+    const setZamowienia = contextApp.setZamowienia;
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -51,8 +54,8 @@ export default function Header({ dodaj_clikHandler}) {
 
 
 
-                {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
-          title="Dodaj nowe zamówienie..."
+                {/* {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
+          title="Zmien etap zamowienia"
           className={style.icon}
           src={iconAdd2}
           onClick={() => {
@@ -63,14 +66,16 @@ export default function Header({ dodaj_clikHandler}) {
 
           }}
           alt="React Logo"
-        /> : <></>}
+        /> : <></>} */}
 
 
-
+               
 
 
       </div>
       <div className={style.rightHeaderContener}>
+        <BTN_KOPIUJ/>
+
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
         {/* <SzukajNr/> */}
@@ -88,6 +93,65 @@ export default function Header({ dodaj_clikHandler}) {
 }
 
 
+
+function BTN_KOPIUJ() {
+  const contextApp = useContext(AppContext);
+  const setClients = contextApp.setClients;
+  const clients = contextApp.clients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
+  const zamowienia = contextApp.zamowienia;
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const setZamowienia = contextApp.setZamowienia;
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+  return (
+<img
+          title="Skopiuj zaznaczone..."
+          className={style.icon}
+          src={iconCopy}
+          onClick={() => {
+  
+let mes='';
+
+
+            for( let grupa of zamowienia.filter(x=> x.select == true)){
+              mes += grupa.nr+"\t"
+              mes +=  grupa.stary_nr || " "+"\t"
+              mes += grupa.klient+"\t"
+              mes += grupa.tytul+"\t"
+              mes += grupa.naklad+"\t"
+              mes += grupa.ilosc_stron+"\t"
+              mes += grupa.data_przyjecia+"\t"
+              mes += grupa.data_spedycji+"\t"
+              mes += grupa.format_x+"x"+grupa.format_y+"\t"
+              mes += grupa.oprawa+"\t"
+              mes += _etapy_produkcji.filter((s) => s.id == grupa.etap).map((x) => x.nazwa)+"\t"
+              mes += grupa.opiekun+"\t"
+
+
+
+              
+              // mes += grupa.przeloty+ " ark. \t"
+              mes += "\n"
+
+            }
+
+            setZamowienia(
+              zamowienia.map((t) => {
+                  return { ...t, select: false};
+              })
+            );
+
+            navigator.clipboard.writeText(mes);
+
+
+
+
+
+          }}
+          alt="React Logo"
+        /> 
+  );
+}
 function Szukaj() {
   const contextApp = useContext(AppContext);
   const setClients = contextApp.setClients;

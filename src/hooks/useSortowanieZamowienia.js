@@ -21,6 +21,12 @@ function sortWgEtapu({ zamowienie }) {
    if (sortowanieZamowieniaEtap == 5) {
     return zamowienie.etap == 16; // anulowane
   }
+     if (sortowanieZamowieniaEtap == 6) {
+    return zamowienie.etap == 8; // wydrukwoane
+  }
+       if (sortowanieZamowieniaEtap == 7) {
+    return zamowienie.etap == 10; // sfalcowane
+  }
 }
 
   return [sortWgEtapu];

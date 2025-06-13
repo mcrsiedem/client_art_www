@@ -128,7 +128,7 @@ function Szukaj() {
 
          let  m =  grupyWykonanAllWyszukiwarka.filter(x=> x.tytul !=null  ).filter((k) =>
                       //  k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
-            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).toLowerCase().includes(event.target.value.toLowerCase()) 
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase()) 
 
 
           )

@@ -476,16 +476,16 @@ const _etapy_produkcji = [
     nazwa: "Naświetlanie",
   },  {
     id: 8,
-    nazwa: "Druk",
+    nazwa: "Wydrukowane",
   },  {
     id: 9,
     nazwa: "Uszlachetnianie",
   },  {
     id: 10,
-    nazwa: "Falcowanie",
+    nazwa: "Sfalcowane",
   },  {
     id: 11,
-    nazwa: "Oprawa",
+    nazwa: "Oprawione",
   },  {
     id: 12,
     nazwa: "Procesy dodatkowe",

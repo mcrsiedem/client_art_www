@@ -43,5 +43,22 @@ export function useZamowienia() {
   // };
 
 
-  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie];
+      async function zmienEtapWydrukowane(techologie) {
+        const res = await axios.put(
+          IP +
+            "zmieni_etap_wydrukowane/" +
+            sessionStorage.getItem("token"),
+          
+            techologie
+          
+        );
+
+        refreshZamowienia()
+      }
+
+
+
+
+
+  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane];
 }

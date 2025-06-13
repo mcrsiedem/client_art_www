@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./Header.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
+import iconAdd2 from "assets/edit.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { useZamowienia } from "hooks/useZamowienia";
@@ -13,8 +14,10 @@ export default function Header({ dodaj_clikHandler}) {
   const effectRan = useRef(false);
 
    const contextApp = useContext(AppContext);
+   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane] = useZamowienia();
     const selectedUser = contextApp.selectedUser
     const selectedKlient = contextApp.selectedKlient
+    const zamowienia = contextApp.zamowienia;
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -45,6 +48,26 @@ export default function Header({ dodaj_clikHandler}) {
           }}
           alt="React Logo"
         /> : <></>}
+
+
+
+                {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
+          title="Dodaj nowe zamówienie..."
+          className={style.icon}
+          src={iconAdd2}
+          onClick={() => {
+            // dodaj_clikHandler();
+            zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
+            // zmienEtapWydrukowane(zamowienia.filter(x=> x.select == true))
+            // console.log(zamowienia.filter(x=> x.technologia_id != null).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
+
+          }}
+          alt="React Logo"
+        /> : <></>}
+
+
+
+
 
       </div>
       <div className={style.rightHeaderContener}>

@@ -3,7 +3,7 @@ import style from "./Header.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
 import iconAdd2 from "assets/edit.svg";
-import iconCopy from "assets/copy5.svg";
+import iconCopy from "assets/edit2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { useZamowienia } from "hooks/useZamowienia";
@@ -54,7 +54,7 @@ export default function Header({ dodaj_clikHandler}) {
 
 
 
-                {/* {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
+                {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
           title="Zmien etap zamowienia"
           className={style.icon}
           src={iconAdd2}
@@ -66,7 +66,7 @@ export default function Header({ dodaj_clikHandler}) {
 
           }}
           alt="React Logo"
-        /> : <></>} */}
+        /> : <></>}
 
 
                

@@ -39,6 +39,7 @@ import PaperStage from "components/PaperStage/PaperStage";
 import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
 import DialogZapis from "components/Dialog/DialogZapis";
 import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
+import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 
 function ModalInsert({
   openModalInsert,

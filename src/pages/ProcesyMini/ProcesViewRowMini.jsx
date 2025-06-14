@@ -101,11 +101,13 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
 
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
+                  <PapierProcesGrup grup={grup}/>
+                  
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   {/* <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td> */}
                   {/* <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td> */}
                   {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
-                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
+                  {/* <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td> */}
                   {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
                    {/* <Status grup={grup}/> */}
@@ -202,7 +204,24 @@ const TytulProcesGrup = ({ grup }) => {
   );
 };
 
+const PapierProcesGrup = ({ grup }) => {
 
+  //nazwa_elementu
+  return (
+    <td>
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={grup.Praca}
+      className={style.tytulInput}
+      value={grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}
+      readOnly
+
+    />
+    </td>
+  );
+};
+
+      // <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
 
 
 const KoniecGrupa = ({ grup }) => {

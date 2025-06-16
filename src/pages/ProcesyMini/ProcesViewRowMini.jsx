@@ -102,6 +102,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
                   <PapierProcesGrup grup={grup}/>
+                  <WykonczenieProcesuGrup grup={grup}/>
                   
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   {/* <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td> */}
@@ -220,6 +221,25 @@ const PapierProcesGrup = ({ grup }) => {
     </td>
   );
 };
+
+const WykonczenieProcesuGrup = ({ grup }) => {
+
+  //nazwa_elementu
+  return (
+    <td>
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={grup.Praca}
+      className={style.tytulInput}
+      value={grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)}
+      readOnly
+
+    />
+    </td>
+  );
+};
+
+
 
       // <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
 

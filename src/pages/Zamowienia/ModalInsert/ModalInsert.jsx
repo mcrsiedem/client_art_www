@@ -260,6 +260,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
         readAlert={readAlert}
         setReadAlert={setReadAlert}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
+        setOpenModalInsert={setOpenModalInsert}
       />
       <PaperStage parent={"zamowienia"} />
     </div>

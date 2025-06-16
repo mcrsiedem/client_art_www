@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import style from "../ReadOnlyAlert/ReadOnlyAlert.module.css";
 
-export default function ReadOnlyAlert({ readAlert, setReadAlert, stanOtwarciaZamowienia }) {
+export default function ReadOnlyAlert({ readAlert, setReadAlert, stanOtwarciaZamowienia,setOpenModalInsert }) {
   //   useEffect(() => {}, []);
-
+  const navigate = useNavigate();
   if(readAlert){
       return (
     <div className={style.window}>
@@ -22,7 +23,8 @@ export default function ReadOnlyAlert({ readAlert, setReadAlert, stanOtwarciaZam
                   className={style.btn}
                   onClick={() => {
                     setReadAlert(false);
-                  
+                  // navigate("/Zamowienia");
+                  setOpenModalInsert(false);
                   }}
                 >
                   OK

@@ -134,11 +134,12 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
     <tr >
     <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>
-      <button onClick={()=>{
+        {(DecodeToken(sessionStorage.getItem("token")).id == 1 && <button onClick={()=>{
 
       odblokujZamowienie([row])
 
-          }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>
+          }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>)   }
+   
 
         <button onClick={()=>{
               setZamowienia(

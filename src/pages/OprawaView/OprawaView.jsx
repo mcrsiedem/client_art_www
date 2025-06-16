@@ -35,7 +35,7 @@ export default function OprawaView( ) {
       .then((res) => {
         if (res.data.Status === "Success") {
           fechGrupyAndWykonaniaForProcesor(1);
-          setSelectedProcesor(1);
+          // setSelectedProcesor(1);
           setSelectedProces(1);
 
           setProcesory(

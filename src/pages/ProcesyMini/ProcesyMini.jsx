@@ -15,6 +15,7 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import ProcesViewRowPrzerwa from "./ProcesViewRowPrzerwaMini";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function ProcesyMini( ) {
   const navigate = useNavigate();
@@ -31,13 +32,34 @@ export default function ProcesyMini( ) {
   const setNadkomplety =appContext.setNadkomplety;
 
       const [callForPaper] = useApiPapier();
+      const CheckProcesorID = (procesor_id) => {
+      
+        
+        if(procesor_id == null){
+          console.log(" Selected procesor form fech :" +procesor_id)
+        console.log(" Procesor domyslny form fech :" +DecodeToken(sessionStorage.getItem("token")).procesor_domyslny)
+           console.log("proc z tokena"+DecodeToken(sessionStorage.getItem("token")).procesor_domyslny)
+          
+        return procesor_id = DecodeToken(sessionStorage.getItem("token")).procesor_domyslny
+        }else {
+console.log("proc domyslny"+procesor_id)
+
+          return procesor_id
+        }
+      
+      
+      
+      }
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
+//DecodeToken(sessionStorage.getItem("token")).id0
 
-          fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+let proc = CheckProcesorID(selectedProcesor)
+// console.log("proc do fech "+proc)
+          fechGrupyAndWykonaniaForProcesor(proc);
           // setSelectedProcesor(selectedProcesor);
           // setSelectedProces(1);
 

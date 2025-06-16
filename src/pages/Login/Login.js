@@ -84,6 +84,7 @@ if (res.data.length > 0) {
   setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
   navigate("/Panel");
 
+   console.log("Load procesor domyslny: "+DecodeToken(res.data).procesor_domyslny)
 techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
  contextApp.setSelectedKlient(0);
  contextApp.setSelectedUser(0);

@@ -16,7 +16,7 @@ export default function BackStage({ user, setUser }) {
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;
 
-  const [selectedProcesor, setSelectedProcesor] = useState(1);
+  // const [selectedProcesor, setSelectedProcesor] = useState(1);
 
 
 

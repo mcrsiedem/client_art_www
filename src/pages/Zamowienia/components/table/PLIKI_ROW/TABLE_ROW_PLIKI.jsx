@@ -25,7 +25,7 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
         {/* <td></td> */}
         <td>     <Element plikiRow={plikiRow} />     </td>
         <td>     <Nazwa plikiRow={plikiRow} />     </td>
-      <td> </td>
+      <td>  </td>
 
         {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
         <td>     <IloscStron plikiRow={plikiRow} />     </td>
@@ -36,7 +36,7 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
 
       <td> </td>
       <td> </td>
-      <td> </td>
+      <td>Pliki </td>
         <td>     <Etap plikiRow={plikiRow} row={row}/>     </td>
       <td> </td>
       <td> </td>

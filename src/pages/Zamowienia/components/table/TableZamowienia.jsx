@@ -4,7 +4,7 @@ import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
-import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW_ZAMOWIENIA";
+import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW/TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";

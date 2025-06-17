@@ -15,12 +15,15 @@ import {
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
-import TABLE_ROW_PLIKI from "./TABLE_ROW_PLIKI";
+import TABLE_ROW_PLIKI from "../PLIKI_ROW/TABLE_ROW_PLIKI";
+import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
+  const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie
+  const procesyElementowTech = techContext.procesyElementowTech; // technologie
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
@@ -65,6 +68,13 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         }
       })
     );
+
+    if(row.technologia_id != null ){
+      fechparametryTechnologiiDetails(row.id,row.technologia_id)
+    }else{
+      techContext.setProcesyElementowTech([])
+    }
+    // tutaj pobrać procesy elementów z technologi
   }
 
   return (
@@ -129,6 +139,10 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   <>
   {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
   <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row}/>
+   )) }
+<p></p>
+  {procesyElementowTech?.map(proces=> (
+  <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row}/>
    )) }
       
     <tr >

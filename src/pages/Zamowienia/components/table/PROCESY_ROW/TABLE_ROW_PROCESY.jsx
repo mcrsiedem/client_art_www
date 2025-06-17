@@ -1,15 +1,16 @@
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useHistoria } from "hooks/useHistoria";
 import { useContext } from "react";
-import { _etap_plikow, _typ_elementu } from "utils/initialvalue";
-import style from "./TABLE_ROW_PLIKI.module.css";
+import { _etap_plikow, _stan_wykonania, _status_wykonania, _typ_elementu } from "utils/initialvalue";
+import style from "./TABLE_ROW_PROCESY.module.css";
 import { usePliki } from "hooks/usePliki";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
+import { AppContext } from "context/AppContext";
 
 
-export default function TABLE_ROW_PLIKI({plikiRow,row }) {
+export default function TABLE_ROW_PROCESY({proces,row }) {
     //row - row element
 
     
@@ -22,13 +23,13 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
         <tr className={style.row_pliki_tr}>
         <td></td>
         <td></td>
-        <td></td>
-        <td>     <Element plikiRow={plikiRow} />     </td>
-        <td>     <Nazwa plikiRow={plikiRow} />     </td>
+        {/* <td></td> */}
+        <td>     <Element proces={proces} />     </td>
+        <td>     <Nazwa proces={proces} />     </td>
       <td> </td>
 
         {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
-        <td>     <IloscStron plikiRow={plikiRow} />     </td>
+        <td>     <IloscStron proces={proces} />     </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -37,7 +38,7 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
       <td> </td>
       <td> </td>
       <td> </td>
-        <td>     <Etap plikiRow={plikiRow} row={row}/>     </td>
+        <td>     <Etap proces={proces} row={row}/>     </td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -49,11 +50,11 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
   }
 
 
-  function Element({ plikiRow}) {
+  function Element({ proces}) {
     return (
         <select
           className={style.select_element}
-          value={plikiRow.typ}
+          value={proces.typ_elementu}
          
 disabled
           onChange={(e) => {
@@ -71,47 +72,50 @@ disabled
   }
 
 
-  function Nazwa({ plikiRow }) {
+  function Nazwa({ proces }) {
     return (
       <input
         className={style.select_element}
-        value={plikiRow.nazwa}
+        value={proces.nazwa}
         disabled
         onChange={(e) => {}}
       ></input>
     );
   }
-  function IloscStron({ plikiRow }) {
+  function IloscStron({ proces }) {
     return (
-      <td className={style.select_strony}>{plikiRow.ilosc_stron}</td>
+      <td className={style.select_strony}>{proces.ilosc_stron}</td>
     );
   }
 
-  function Etap({ plikiRow,row}) {
+  function Etap({ proces,row}) {
     
     const contextModalInsert = useContext(ModalInsertContext);
     const [add,dodajDoZamowienia] = useHistoria()
     const [etapPlikowZamowienia,etapPlikowGrupyWykonan] = usePliki()
-if(row.etap !=1){
+      const contextApp = useContext(AppContext);
+    
+     const _status_wykonania = contextApp._status_wykonania
+
       return (
         <select
           className={style.select_etap}
-          value={plikiRow.etap}
+          value={proces.status}
          
-// disabled
-          onChange={(e) => {  
-            etapPlikowZamowienia(e.target.value,plikiRow)
-            dodajDoZamowienia(         {
-              kategoria: "Pliki",
-              event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
-              zamowienie_id: plikiRow.zamowienie_id,
-              user_id: DecodeToken(sessionStorage.getItem("token")).id
-            })
+disabled
+          // onChange={(e) => {  
+          //   etapPlikowZamowienia(e.target.value,proces)
+          //   dodajDoZamowienia(         {
+          //     kategoria: "Pliki",
+          //     event: _typ_elementu.filter(x=> x.id == proces.typ)[0]?.nazwa+ " "+proces.nazwa+" - zmiana z "+getNameOfEtapPliki(proces.etap)+ " na "+getNameOfEtapPliki(e.target.value),
+          //     zamowienie_id: proces.zamowienie_id,
+          //     user_id: DecodeToken(sessionStorage.getItem("token")).id
+          //   })
 
-          }}
+          // }}
         >
           {}
-          {_etap_plikow.map((option) => (
+          {_status_wykonania.map((option) => (
             <option key={option.id} value={option.id}>
               {option.nazwa}
             </option>
@@ -120,4 +124,4 @@ if(row.etap !=1){
     );
 }
 
-  }
+  

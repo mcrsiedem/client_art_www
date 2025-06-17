@@ -25,13 +25,14 @@ export default function TABLE_ROW_PROCESY({proces,row }) {
         <td></td>
         {/* <td></td> */}
         <td>     <Element proces={proces} />     </td>
-        <td>     <Nazwa proces={proces} />     </td>
+        <td>     <NazwaProcesu proces={proces} />     </td>
       <td> </td>
 
         {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
         <td>     <IloscStron proces={proces} />     </td>
       <td> </td>
       <td> </td>
+        <td>     <NazwaElementu proces={proces} />     </td>
       <td> </td>
       <td> </td>
 
@@ -50,33 +51,54 @@ export default function TABLE_ROW_PROCESY({proces,row }) {
   }
 
 
-  function Element({ proces}) {
-    return (
-        <select
-          className={style.select_element}
-          value={proces.typ_elementu}
+//   function Element({ proces}) {
+//     return (
+//         <select
+//           className={style.select_element}
+//           value={proces.typ_elementu}
          
-disabled
-          onChange={(e) => {
+// disabled
+//           onChange={(e) => {
 
-          }}
+//           }}
+//         >
+//           {}
+//           {_typ_elementu.map((option) => (
+//             <option key={option.id} value={option.id}>
+//               {option.nazwa}
+//             </option>
+//           ))}
+//         </select>
+//     );
+//   }
+
+
+    function Element({ proces}) {
+    return (
+        <input
+          className={style.input_element}
+          value={_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}
+disabled
         >
-          {}
-          {_typ_elementu.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
+        </input>
     );
   }
 
-
-  function Nazwa({ proces }) {
+  function NazwaProcesu({ proces }) {
     return (
       <input
         className={style.select_element}
         value={proces.nazwa}
+        disabled
+        onChange={(e) => {}}
+      ></input>
+    );
+  }
+    function NazwaElementu({ proces }) {
+    return (
+      <input
+        className={style.select_element}
+        value={proces.nazwa_elementu}
         disabled
         onChange={(e) => {}}
       ></input>

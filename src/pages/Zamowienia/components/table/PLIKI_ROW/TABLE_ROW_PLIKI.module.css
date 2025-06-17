@@ -29,6 +29,15 @@
   padding-left: 5px;
   
 }
+
+.input_element{
+  border: none;
+  color:rgb(40, 40, 40);
+  font-size: 0.9rem;
+  background-color: transparent;
+  padding-left: 15px;
+
+}
 .select_strony{
   border: none;
   color:rgb(40, 40, 40);

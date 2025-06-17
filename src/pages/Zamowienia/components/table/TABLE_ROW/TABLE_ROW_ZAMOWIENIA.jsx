@@ -140,7 +140,6 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
   {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
   <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row}/>
    )) }
-<p></p>
   {procesyElementowTech?.map(proces=> (
   <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row}/>
    )) }

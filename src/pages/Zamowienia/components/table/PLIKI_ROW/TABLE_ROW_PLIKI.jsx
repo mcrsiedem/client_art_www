@@ -24,19 +24,19 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
         <td></td>
         {/* <td></td> */}
         <td>     <Element plikiRow={plikiRow} />     </td>
-        <td>     <Nazwa plikiRow={plikiRow} />     </td>
+      <td>Pliki </td>
       <td>  </td>
 
         {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
         <td>     <IloscStron plikiRow={plikiRow} />     </td>
       <td> </td>
       <td> </td>
+        <td>     <Nazwa plikiRow={plikiRow} />     </td>
       <td> </td>
       <td> </td>
 
       <td> </td>
       <td> </td>
-      <td>Pliki </td>
         <td>     <Etap plikiRow={plikiRow} row={row}/>     </td>
       <td> </td>
       <td> </td>
@@ -51,24 +51,16 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
 
   function Element({ plikiRow}) {
     return (
-        <select
-          className={style.select_element}
-          value={plikiRow.typ}
-         
+        <input
+          className={style.input_element}
+          value={_typ_elementu.filter(x=>x.id ==plikiRow.typ)[0].nazwa}
 disabled
-          onChange={(e) => {
-
-          }}
         >
-          {}
-          {_typ_elementu.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa}
-            </option>
-          ))}
-        </select>
+        </input>
     );
   }
+  
+
 
 
   function Nazwa({ plikiRow }) {

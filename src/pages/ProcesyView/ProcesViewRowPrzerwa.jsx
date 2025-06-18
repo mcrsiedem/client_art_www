@@ -23,7 +23,7 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
                   const selectColor = (etap,status) =>{
     if (status==4) return style.procesRow_tr_DRUK
     if (status==2) return style.procesRow_tr_AKCEPT
-    if (status==3) return style.procesRow_tr_RIP
+    if (status==3) return style.procesRow_tr_ZAS
      return style.procesRow_tr
   }
 

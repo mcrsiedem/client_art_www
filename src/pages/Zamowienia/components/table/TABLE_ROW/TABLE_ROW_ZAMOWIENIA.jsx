@@ -103,35 +103,9 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         onMouseDown={(event) => {
 
 
-
-//  let indeks_start = zamowienia.indexOf(row)
-
-    //             setZamowienia(
-    //   zamowienia
-    //   .map(x => {return { ...x, select: false}})
-    //   .map((t,indeks) => {
-    //     if (t.id == row.id) {
-    //       return { ...t, select: true};
-    //     } else {
-    //       return t;
-    //     }
-    //   })
-    // );
-
-
-
-          if (event.ctrlKey) {
-            // console.log("db");
-          // sessionStorage.setItem("indeks_stop",zamowienia.indexOf(row))
-
+          if (event.shiftKey) {
             let indeks_start = sessionStorage.getItem("indeks_start")
-            // let indeks_stop = zamowienia.indexOf(row)
             let indeks_stop = i
-
-            console.log("stop: "+ i)
-               
-
-
                 setZamowienia( zamowienia           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
                            .filter((zam) => {
                             if (selectedUser == 0) {
@@ -161,7 +135,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
 
           }else{
 
-                            setZamowienia(
+
+                                      setZamowienia(
       zamowienia
       .map(x => {return { ...x, select: false}})
       .map((t,indeks) => {
@@ -172,18 +147,31 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         }
       })
     );
+         }
 
-          // sessionStorage.setItem("indeks_start",zamowienia.indexOf(row))
-          //   console.log("start: "+ zamowienia.indexOf(row))
-                sessionStorage.setItem("indeks_start",i)
-            console.log("start: "+ i)
+                              if (event.ctrlKey) {
+                            setZamowienia(
+      zamowienia
+      // .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (t.id == row.id) {
+          return { ...t, select: !t.select};
+        } else {
+          return t;
+        }
+      })
+    );
+         }
+
+
+          sessionStorage.setItem("indeks_start",i)
 
           }
 
 
 
 
-        }}
+        }
         onClick={(node, e) => {
           setSelectedZamowienie({...row, i});
 

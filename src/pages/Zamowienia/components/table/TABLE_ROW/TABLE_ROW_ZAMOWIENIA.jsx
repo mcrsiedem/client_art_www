@@ -17,6 +17,8 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
 import TABLE_ROW_PLIKI from "../PLIKI_ROW/TABLE_ROW_PLIKI";
 import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
+import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
+import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
@@ -31,8 +33,15 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const contextApp = useContext(AppContext);
   
   const zamowienia = contextApp.zamowienia
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka
   const setZamowienia = contextApp.setZamowienia
   const zamowieniaPliki = contextApp.zamowieniaPliki
+  const selectedUser= contextApp.selectedUser;
+  const selectedKlient= contextApp.selectedKlient;
+    const [sortWgEtapu] = useSortowanieZamowienia()
+  
+
+
   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
 
   // const onMenuHandle = (event) =>{
@@ -92,16 +101,54 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         // className={ style.row_zamowienia}
         key={row.id}
         onMouseDown={(event) => {
-          if (event.shiftKey) {
-            console.log("db");
-            let indeks_start = selectedZamowienie.i
+
+
+
+//  let indeks_start = zamowienia.indexOf(row)
+
+    //             setZamowienia(
+    //   zamowienia
+    //   .map(x => {return { ...x, select: false}})
+    //   .map((t,indeks) => {
+    //     if (t.id == row.id) {
+    //       return { ...t, select: true};
+    //     } else {
+    //       return t;
+    //     }
+    //   })
+    // );
+
+
+
+          if (event.ctrlKey) {
+            // console.log("db");
+          // sessionStorage.setItem("indeks_stop",zamowienia.indexOf(row))
+
+            let indeks_start = sessionStorage.getItem("indeks_start")
+            // let indeks_stop = zamowienia.indexOf(row)
             let indeks_stop = i
 
-            console.log("start: "+ indeks_start+ " stop:" + indeks_stop)
+            console.log("stop: "+ i)
+               
 
 
-                setZamowienia(
-      zamowienia
+                setZamowienia( zamowienia           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+                           .filter((zam) => {
+                            if (selectedUser == 0) {
+                              return true;
+                            } else {
+                             return  zam.opiekun_id == selectedUser;
+                            }
+                          })
+                           .filter(z => z.stan ==3)
+                           .filter((zam) => {
+                            if (selectedKlient == 0) {
+                              return true;
+                            } else {
+                             return  zam.klient_id == selectedKlient;
+                            }
+                          })
+                          .filter((zamowienie) => sortWgEtapu({zamowienie}))
       .map(x => {return { ...x, select: false}})
       .map((t,indeks) => {
         if (indeks >= indeks_start && indeks<= indeks_stop ) {
@@ -109,15 +156,36 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         } else {
           return t;
         }
+      })  );
+
+
+          }else{
+
+                            setZamowienia(
+      zamowienia
+      .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (t.id == row.id) {
+          return { ...t, select: true};
+        } else {
+          return t;
+        }
       })
     );
 
+          // sessionStorage.setItem("indeks_start",zamowienia.indexOf(row))
+          //   console.log("start: "+ zamowienia.indexOf(row))
+                sessionStorage.setItem("indeks_start",i)
+            console.log("start: "+ i)
 
           }
+
+
+
+
         }}
         onClick={(node, e) => {
           setSelectedZamowienie({...row, i});
-
 
 
 
@@ -141,7 +209,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         />
 
         <KlientTableZamowienia row={row} />
-        <PracaTableZamowienia row={row} />
+        <PracaTableZamowienia row={row} i={i} />
      
         <NakladTableZamowienia row={row} />
         <td>{row.ilosc_stron}</td>
@@ -351,14 +419,14 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
   );
 };
 
-const PracaTableZamowienia = ({ row }) => {
+const PracaTableZamowienia = ({ row,i }) => {
   return (
     <td>
     <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.Praca}
       className={style.tytulInput}
-      value={row.tytul}
+      value={i+" "+row.tytul}
       readOnly
 
     />

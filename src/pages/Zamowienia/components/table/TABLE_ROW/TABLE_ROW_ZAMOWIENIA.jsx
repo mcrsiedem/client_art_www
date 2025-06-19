@@ -18,13 +18,14 @@ import { useZamowienia } from "hooks/useZamowienia";
 import TABLE_ROW_PLIKI from "../PLIKI_ROW/TABLE_ROW_PLIKI";
 import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
 
-export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
+export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
   const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie
   const procesyElementowTech = techContext.procesyElementowTech; // technologie
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
+  const selectedZamowienie = contextModalInsert.selectedZamowienie;
   const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   const contextApp = useContext(AppContext);
@@ -91,12 +92,37 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow }) {
         // className={ style.row_zamowienia}
         key={row.id}
         onMouseDown={(event) => {
-          if (event.ctrlKey) {
+          if (event.shiftKey) {
             console.log("db");
+            let indeks_start = selectedZamowienie.i
+            let indeks_stop = i
+
+            console.log("start: "+ indeks_start+ " stop:" + indeks_stop)
+
+
+                setZamowienia(
+      zamowienia
+      .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (indeks >= indeks_start && indeks<= indeks_stop ) {
+          return { ...t, select: true};
+        } else {
+          return t;
+        }
+      })
+    );
+
+
           }
         }}
-        onClick={(node, event) => {
-          setSelectedZamowienie(row);
+        onClick={(node, e) => {
+          setSelectedZamowienie({...row, i});
+
+
+
+
+
+
 
         }}
         onDoubleClick={(node, event) => {
@@ -567,7 +593,7 @@ function SelectBox({ row }) {
           type="checkbox"
           checked={row.select}
           onChange={(event) => {
-            console.log(" select" + row.id + " " + event.target.checked);
+            // console.log(" select" + row.id + " " + event.target.checked);
             setZamowienia(
               zamowienia.map((t) => {
                 if (t.id == row.id) {

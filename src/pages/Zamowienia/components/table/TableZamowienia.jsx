@@ -96,9 +96,9 @@ export default function TableZamowienia({open2,setRow}){
           })
           .filter((zamowienie) => sortWgEtapu({zamowienie}))
 
-           .map((row) => {
+           .map((row,i) => {
              return (
-               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} />
+               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} i={i} />
              );
            })}
        </tbody>

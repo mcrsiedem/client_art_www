@@ -48,6 +48,7 @@ export const AppContextProvider = ({children})=>{
     const [wykonczenieEdit, setWykonczenieEdit] = useState(_wykonczenie);
     const [procesory, setProcesory] = useState();
     const [mobile, setMobile] = useState(false);
+    const [showZamowieniaInfo, setShowZamowieniaInfo] = useState(false);
       const [isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled] = useState(true);
 
 //d
@@ -134,7 +135,8 @@ export const AppContextProvider = ({children})=>{
                     isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled,
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
-                    uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy
+                    uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
+                    showZamowieniaInfo, setShowZamowieniaInfo
                 }}
             >
                 {children}

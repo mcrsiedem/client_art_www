@@ -14,6 +14,7 @@ import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/init
 import TableMini from "./components/table/TableMini";
 import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
+import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -107,6 +108,7 @@ const [refreshZamowienia] = useZamowienia()
             />
           )}
       <TechnologiaStage/>
+      <ZamowieniaInfo/>
     
       
     </div>

@@ -10,6 +10,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import DecodeToken from "pages/Login/DecodeToken";
 import { _etapy_produkcji } from "utils/initialvalue";
+import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ export default function Header({ dodaj_clikHandler}) {
 
       </div>
       <div className={style.rightHeaderContener}>
+        <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
 
         <SORTOWANIE_ZAMOWIENIA_ETAP/>

@@ -414,7 +414,7 @@ const PracaTableZamowienia = ({ row,i }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.Praca}
       className={style.tytulInput}
-      value={i+" "+row.tytul}
+      value={row.tytul}
       readOnly
 
     />

@@ -24,6 +24,7 @@ export const AppContextProvider = ({children})=>{
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
     const [productType, setProductType] = useState(null); 
     const [zamowienia, setZamowienia] = useState([]); 
+    const [zamowieniaInfo, setZamowieniaInfo] = useState(); 
     const [zamowieniaPliki, setZamowieniaPliki] = useState([]); 
     const [zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
@@ -136,7 +137,7 @@ export const AppContextProvider = ({children})=>{
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
-                    showZamowieniaInfo, setShowZamowieniaInfo
+                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo
                 }}
             >
                 {children}

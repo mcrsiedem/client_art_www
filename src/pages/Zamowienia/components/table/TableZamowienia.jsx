@@ -71,8 +71,8 @@ export default function TableZamowienia({open2,setRow}){
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
            {/* <th className={style.col_uwagi}>Uwagi</th> */}
 
-           <th className={style.col_checkbox}>
-           </th>
+           {/* <th className={style.col_checkbox}>
+           </th> */}
            <th className={style.col_alert}></th>
          </tr>
        </thead>

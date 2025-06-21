@@ -211,7 +211,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         <EtapZamowieniaTable row={row} />
         <OpiekunZamowieniaTable row={row} />
            {/* <UwagiTableZamowienia row={row} /> */}
-        <SelectBox row={row} />
+        {/* <SelectBox row={row} /> */}
         {/* <IconLockTable row={row} /> */}
         <td></td>
       </tr>
@@ -410,7 +410,7 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
 const PracaTableZamowienia = ({ row,i }) => {
   return (
     <td>
-    <input
+    <input 
       //firma_nazwa to skrocona nazwa klienta
       title={row.Praca}
       className={style.tytulInput}

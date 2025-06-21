@@ -8,6 +8,7 @@
   z-index: 3;
   /* backdrop-filter: grayscale(100%); */
   /* backdrop-filter: blur(100px); */
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: start;
@@ -22,11 +23,11 @@
   background-color: rgb(255, 255, 255);
   /* background-color: rgb(198, 198, 198); */
   border: 1px solid rgb(143, 143, 143);
-  /* border-radius: 10px; */
+  /* border-radius: 5px; */
   z-index: 3;
   display: grid;
   grid-template-rows: 2rem 35px 1fr 2.5rem;
-  box-shadow: 10px 10px 10px rgb(99, 99, 99);
+  /* box-shadow: 10px 10px 10px rgb(99, 99, 99); */
   gap: 10px;
 
 }

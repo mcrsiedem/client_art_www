@@ -4,6 +4,7 @@ import { AppContext } from "context/AppContext";
 import iconCopy from "assets/info.svg";
 import { _etapy_produkcji } from "utils/initialvalue";
 import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
+import { sendMail } from "actions/sendMail";
 
 export default function BTN_INFO_ZAMOWIENIA() {
   const contextApp = useContext(AppContext);
@@ -22,6 +23,8 @@ export default function BTN_INFO_ZAMOWIENIA() {
       onClick={() => {
         // setShowZamowieniaInfo(true);
               getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+              
 
             // zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
 

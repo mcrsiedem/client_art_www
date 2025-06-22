@@ -60,10 +60,8 @@ export default function Header({ dodaj_clikHandler}) {
           className={style.icon}
           src={iconAdd2}
           onClick={() => {
-            // dodaj_clikHandler();
+            // sprawdza co jest wydrukowame albo sfalcowane
             zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
-            // zmienEtapWydrukowane(zamowienia.filter(x=> x.select == true))
-            // console.log(zamowienia.filter(x=> x.technologia_id != null).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
 
           }}
           alt="React Logo"
@@ -75,6 +73,7 @@ export default function Header({ dodaj_clikHandler}) {
 
       </div>
       <div className={style.rightHeaderContener}>
+        {/* <BTN_INFO_ZAMOWIENIA/> */}
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
 

@@ -3,6 +3,7 @@ import style from "./ProcesyHeader.module.css";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
+import iconCalc from "assets/calc.svg";
 import iconSheet from "assets/extract.svg";
 
 import iconWC from "assets/wc.svg";
@@ -12,6 +13,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 import axios from "axios";
 import { IP } from "../../utils/Host";
+import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 
 
 function ProcesyHeader() {
@@ -60,6 +62,8 @@ function ProcesyHeader() {
 
         <div className={style.centerHeaderContener}>
         {/* <PokazStany /> */}
+        <BTN_INFO_ZAMOWIENIA_GRUPY />
+
         <PrzerwaBTN />
         {/* <ODZNACZ_BTN /> */}
         {/* <KOPIUJ_ZAZNACZONE_BTN2 /> */}
@@ -67,6 +71,7 @@ function ProcesyHeader() {
 
         </div>
         <div className={style.rightHeaderContener}>
+          
         <Szukaj />
 
         <WYDAJ_ZAZNACZONE_BTN />
@@ -429,3 +434,26 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
     );
   };
   
+
+  function BTN_INFO_ZAMOWIENIA_GRUPY() {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+    <img
+      title="Policz przeloty"
+      className={style.icon}
+      src={iconCalc}
+      onClick={() => {
+              getZamowieniaInfoGrupy(grupy)
+              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+
+      }}
+      alt="React Logo"
+    />
+  );
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 
 import icon from "assets/copy.svg";
+import iconCopy from "assets/info.svg";
 
 import iconAdd from "assets/add4.svg";
 
@@ -31,6 +32,8 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useAccess } from "hooks/useAccess";
+import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
+import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 
 
 
@@ -670,3 +673,4 @@ function EtapKolor({grup}) {
 
   );
 }
+

@@ -49,7 +49,7 @@ export default function TableZamowienia({open2,setRow}){
          contextApp.setSortowanieZamowienia("ilosc_stron")
          refreshZamowienia()
 
-            }} className={style.col_strony}>Strony</th>
+            }} className={style.col_strony}>Str.</th>
            <th onClick={()=>{
             contextApp.setSortowanieZamowienia("data_przyjecia")
             refreshZamowienia()

@@ -100,3 +100,44 @@
 .title{
   padding-top: 15px;
 }
+
+
+.cardInputNetto{
+
+    box-shadow: none;
+    width: 100px;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(107, 158, 224);
+    background-color: transparent;
+    /* background-color: green; */
+    border: none;
+}
+.cardNetto{ 
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: row;
+    width: 250px;
+    height: 50px;
+    /* border-bottom: 1px solid rgb(181, 181, 181) ; */
+    /* border-radius: 10px; */
+    color: gray;
+    font-size: 1.2rem;
+  
+    /* background-color: red; */
+}
+
+.bindingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* height: 120px; */
+    /* width: 120px; */
+  
+    gap:50px;
+    
+    
+}

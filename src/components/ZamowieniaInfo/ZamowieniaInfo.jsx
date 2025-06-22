@@ -56,12 +56,17 @@ const scrollTable = (table) => {
         </div>
 
             <div>
-              <p className={style.title}>Zamówienia: {appContext.zamowienia.filter(x=>x.select == true).length} szt.</p>
-              <p className={style.title}>Technologia: {appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length} szt.</p>
-              <p className={style.title}>{zamowieniaInfo.przeloty_druk} szt.</p>
-              <p className={style.title}>{zamowieniaInfo.przeloty_falc} szt.</p>
-              <p className={style.title}>{zamowieniaInfo.przeloty_druk_zakonczone} szt.</p>
-              <p className={style.title}>{zamowieniaInfo.przeloty_falc_zakonczone} szt.</p>
+              {/* <p className={style.title}>Zamówienia: {appContext.zamowienia.filter(x=>x.select == true).length} szt.</p>
+              <p className={style.title}>Technologia: {appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length} szt.</p> */}
+                                    <div className={style.bindingContainer}>
+            <Zamowienia  />
+            <Technologie  />
+          </div>
+              <p className={style.title}>Przeloty druku : {zamowieniaInfo.przeloty_druk_zakonczone.toLocaleString()} z {zamowieniaInfo.przeloty_druk.toLocaleString()} szt.</p>
+              <p className={style.title}>Przeloty falc : {zamowieniaInfo.przeloty_falc_zakonczone.toLocaleString()} z {zamowieniaInfo.przeloty_falc.toLocaleString()} szt.</p>
+              {/* <p className={style.title}>{zamowieniaInfo.przeloty_druk_zakonczone} szt.</p> */}
+              {/* <p className={style.title}>{zamowieniaInfo.przeloty_falc_zakonczone} szt.</p> */}
+
             </div>
 
 
@@ -71,3 +76,40 @@ const scrollTable = (table) => {
  }
 }
 
+const Zamowienia = () => {
+    const appContext = useContext(AppContext);
+
+  return (
+    <div className={style.cardNetto} >
+ 
+      Zamówienia
+      <input
+        className={style.cardInputNetto}
+        value={appContext.zamowienia.filter(x=>x.select == true).length}
+        placeholder="..."
+        type="text"
+
+  
+      ></input>
+      szt.
+    </div>
+  );
+};
+
+const Technologie = () => {
+    const appContext = useContext(AppContext);
+
+  return (
+    <div className={style.cardNetto} >
+    Technologie
+      <input
+        className={style.cardInputNetto}
+        value={appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length} 
+        placeholder="..."
+        type="text"
+
+      ></input>{" "}
+      szt.
+    </div>
+  );
+};

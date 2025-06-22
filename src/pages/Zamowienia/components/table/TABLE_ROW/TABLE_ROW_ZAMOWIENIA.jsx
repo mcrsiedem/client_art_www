@@ -200,7 +200,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
         <PracaTableZamowienia row={row} i={i} />
      
         <NakladTableZamowienia row={row} />
-        <td>{row.ilosc_stron}</td>
+        <td className={style.nakladInput}>{row.ilosc_stron}</td>
         <DataPrzyjeciaTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
         <td>{row.format_x + "x" + row.format_y}</td>
@@ -357,7 +357,7 @@ const NrTableZamowienia = ({ row }) => {
 };
 
 const NakladTableZamowienia = ({ row }) => {
-  return <td> {row.naklad} </td>;
+  return <td className={style.nakladInput}> {row.naklad.toLocaleString()} </td>;
 };
 
 const KlientTableZamowienia = ({ row }) => {

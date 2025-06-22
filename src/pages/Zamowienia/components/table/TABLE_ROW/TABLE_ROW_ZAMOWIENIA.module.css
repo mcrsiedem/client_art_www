@@ -416,3 +416,8 @@ height: 100px;
 	position:relative;
 	top:1px;
 }
+
+.nakladInput{
+  text-align: end;
+  padding-right: 5px;
+}

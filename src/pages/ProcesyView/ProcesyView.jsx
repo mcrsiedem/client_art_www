@@ -148,6 +148,7 @@ const WykonaniaTable = () => {
                       grup={grup}
                       unlockTable={unlockTable}
                       setUnlockTable={setUnlockTable}
+                      i={i}
                     />
                   );
                 } else {

@@ -1,6 +1,4 @@
 import React, { useEffect, useState,useContext,useRef} from "react";
-import iconLock from "assets/lock2.svg";
-import iconUnLock from "assets/unLock.svg";
 import style from "./ZamowieniaInfo.module.css";
 import iconClose2 from "assets/x2.svg";
 
@@ -8,36 +6,13 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 
 import { useApiPapier, usePapier } from "hooks/useApiPapier";
-import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 
 
 
 export default function ZamowieniaInfo({parent}) {
 
   // parent oznacza pochodzenie komponentu - zamowienia / technologia
-  const start = useRef();
-
-    const modalcontext = useContext(ModalInsertContext);
     const appContext = useContext(AppContext);
-    const zamowienia = appContext.zamowienia;
-    const zamowieniaInfo = appContext.zamowieniaInfo;
-
-    const [callForPaper] = useApiPapier();
-
-
-
-const scrollTable = (table) => {
-  if(table.current != null) {
-      table.current.scrollTo({ top: 10000, behavior: "smooth" })
-  }
-
-};
-
-  useEffect(() => {
-      // callForPaper()
-
-      }, []);
-
 
  if(appContext.showZamowieniaInfo){
   return (
@@ -51,25 +26,25 @@ const scrollTable = (table) => {
             onClick={() => {
               appContext.setShowZamowieniaInfo(false);
             }}
-            alt="React Logo"
           />
         </div>
 
-            <div>
-              {/* <p className={style.title}>Zamówienia: {appContext.zamowienia.filter(x=>x.select == true).length} szt.</p>
-              <p className={style.title}>Technologia: {appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length} szt.</p> */}
-                                    <div className={style.bindingContainer}>
-            <Zamowienia  />
-            <Technologie  />
+        <div>
+          <div className={style.bindingContainer}>
+            <Zamowienia />
+            <Technologie />
           </div>
-              <p className={style.title}>Przeloty druku : {zamowieniaInfo.przeloty_druk_zakonczone.toLocaleString()} z {zamowieniaInfo.przeloty_druk.toLocaleString()} szt.</p>
-              <p className={style.title}>Przeloty falc : {zamowieniaInfo.przeloty_falc_zakonczone.toLocaleString()} z {zamowieniaInfo.przeloty_falc.toLocaleString()} szt.</p>
-              {/* <p className={style.title}>{zamowieniaInfo.przeloty_druk_zakonczone} szt.</p> */}
-              {/* <p className={style.title}>{zamowieniaInfo.przeloty_falc_zakonczone} szt.</p> */}
 
+          <div className={style.containerDrukFalc}>
+            <div className={style.bindingContainer}>
+              <Druk />
             </div>
 
-
+            <div className={style.bindingContainer}>
+              <Falc />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -78,18 +53,14 @@ const scrollTable = (table) => {
 
 const Zamowienia = () => {
     const appContext = useContext(AppContext);
-
   return (
     <div className={style.cardNetto} >
- 
       Zamówienia
       <input
         className={style.cardInputNetto}
         value={appContext.zamowienia.filter(x=>x.select == true).length}
         placeholder="..."
         type="text"
-
-  
       ></input>
       szt.
     </div>
@@ -98,18 +69,44 @@ const Zamowienia = () => {
 
 const Technologie = () => {
     const appContext = useContext(AppContext);
-
+    let ilosc_tech = parseInt(appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length)
+    let ilosc_zam = parseInt(appContext.zamowienia.filter(x=>x.select == true ).length)
   return (
     <div className={style.cardNetto} >
     Technologie
       <input
-        className={style.cardInputNetto}
-        value={appContext.zamowienia.filter(x=>x.select == true && x.technologia_id != null).length} 
+        className={ilosc_tech == ilosc_zam ? style.cardInputNetto:style.cardInputNettoRed}
+        value={ilosc_tech} 
         placeholder="..."
         type="text"
-
       ></input>{" "}
       szt.
+    </div>
+  );
+};
+
+const Druk = () => {
+    const appContext = useContext(AppContext);
+    const zamowieniaInfo = appContext.zamowieniaInfo;
+    let procent = Math.ceil(parseInt(zamowieniaInfo.przeloty_druk_zakonczone)*100/ parseInt(zamowieniaInfo.przeloty_druk))
+  return (
+    <div  className={style.drukContainer} >
+    <p className={style.carDruk}> Przeloty druk : {zamowieniaInfo.przeloty_druk_zakonczone.toLocaleString()}  </p> <p className={style.carDrukZ}> z </p>  <p className={style.carDruk}> {zamowieniaInfo.przeloty_druk.toLocaleString()} ark.</p>   
+    <p className={procent == 100 ? style.carDrukGreen:style.carDrukBlue}> {procent} %</p> 
+    </div>
+  );
+};
+
+const Falc = () => {
+    const appContext = useContext(AppContext);
+    const zamowieniaInfo = appContext.zamowieniaInfo;
+    let procent = Math.ceil(parseInt(zamowieniaInfo.przeloty_falc_zakonczone)*100/ parseInt(zamowieniaInfo.przeloty_falc)) ||0
+
+  return (
+     <div  className={style.drukContainer} >
+    <p className={style.carDruk}> Przeloty falc : {zamowieniaInfo.przeloty_falc_zakonczone.toLocaleString() }  </p>  <p className={style.carDrukZ} > z </p>  <p className={style.carDruk}>  {zamowieniaInfo.przeloty_falc.toLocaleString()} ark.</p>  
+   
+    <p className={procent == 100 ? style.carDrukGreen:style.carDrukBlue}> {procent} %</p> 
     </div>
   );
 };

@@ -34,7 +34,7 @@ import { useAccess } from "hooks/useAccess";
 
 
 
-export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
+export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
     const navigate = useNavigate();
     const techContext = useContext(TechnologyContext);
     const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
@@ -42,6 +42,10 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     const appcontext = useContext(AppContext);
     const typ_elementu = appcontext.typ_elementu;
   const selectedProces = techContext.selectedProces;
+   const grupyWykonanAll = techContext.grupyWykonanAll;
+  const selectedProcesor = techContext.selectedProcesor;
+        const setGrupWykonanAll = techContext.setGrupWykonanAll;
+
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
@@ -68,6 +72,71 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
                   title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." }
                   draggable={wolno()}
                   key={grup.global_id}
+
+
+          //-------------------------------------------
+
+        onMouseDown={(event) => {
+
+
+          if (event.shiftKey) {
+            let indeks_start = sessionStorage.getItem("indeks_start")
+            let indeks_stop = i
+                setGrupWykonanAll( grupyWykonanAll
+                              .filter(
+                // (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+                (x) => x.procesor_id == selectedProcesor 
+              )          
+
+      .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (indeks >= indeks_start && indeks<= indeks_stop ) {
+          return { ...t, select: true};
+        } else {
+          return t;
+        }
+      })  );
+
+
+          }else{
+
+
+                                      setGrupWykonanAll(
+      grupyWykonanAll
+      .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (t.global_id == grup.global_id) {
+          return { ...t, select: true};
+        } else {
+          return t;
+        }
+      })
+    );
+         }
+
+                              if (event.ctrlKey) {
+                            setGrupWykonanAll(
+      grupyWykonanAll
+      // .map(x => {return { ...x, select: false}})
+      .map((t,indeks) => {
+        if (t.global_id == grup.global_id) {
+          return { ...t, select: !t.select};
+        } else {
+          return t;
+        }
+      })
+    );
+         }
+
+
+          sessionStorage.setItem("indeks_start",i)
+
+          }}
+
+          //-------------------------------------------
+
+
+
                   onDrop={()=> {
                       if(wolno()){
                         handleDrop(grup.global_id,grup.procesor_id)

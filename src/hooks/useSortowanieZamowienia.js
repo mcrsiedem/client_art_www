@@ -7,7 +7,7 @@ export function useSortowanieZamowienia(){
 
 function sortWgEtapu({ zamowienie }) {
   if (sortowanieZamowieniaEtap == 1) {
-    return zamowienie.etap > 1 && zamowienie.status != 7;
+    return zamowienie.etap > 1 && zamowienie.status != 7 ;
   }
   if (sortowanieZamowieniaEtap == 2) {
     return zamowienie.etap == 1 && zamowienie.status != 7;
@@ -27,6 +27,11 @@ function sortWgEtapu({ zamowienie }) {
        if (sortowanieZamowieniaEtap == 7) {
     return zamowienie.etap == 10; // sfalcowane
   }
+       if (sortowanieZamowieniaEtap == 0) {
+    return zamowienie.etap > 1 && zamowienie.etap <16 && zamowienie.status != 7 ;
+  }
+
+
 }
 
   return [sortWgEtapu];

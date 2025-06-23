@@ -57,6 +57,7 @@ function ProcesyHeader() {
             setSelectedProcesor={setSelectedProcesor}
             selectedProcesor={selectedProcesor}
           />
+          <DataWyswietlania/>
           {/* <p> {selectedProces}</p> */}
         </div>
 
@@ -152,6 +153,40 @@ function Szukaj() {
     ></input>
   );
 }
+
+function DataWyswietlania(){
+    const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  const dniWstecz = techContext.dniWstecz;
+  const setDniWstecz = techContext.setDniWstecz;
+  const selectedProcesor = techContext.selectedProcesor
+
+
+
+  return(
+      <div className={style.col}>
+      {/* <label className={style.label}> Wyświetl od... </label> */}
+      <input className={style.selectDataWyswietlania} type="date"
+         value={dniWstecz}
+        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
+         onChange={(event) => {
+
+          fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          setDniWstecz( event.target.value);
+
+
+
+            
+     
+
+         }}></input>
+    </div>
+  );
+}
+
+
+
+
 
 
 
@@ -360,7 +395,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
     <div className={style.col_dane}>
       
       <select
-        className={style.procesy_input}
+        className={style.selectProcesy}
         defaultValue={selectedProces}
         onChange={(event) => {
           setSelectedProces(event.target.value)

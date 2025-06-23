@@ -11,7 +11,7 @@ import { _wykonczenie } from "utils/initialvalue";
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
-    const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(1);
+    const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
@@ -161,6 +161,10 @@ const _firma = [
   ];
 
   const _sortowanieZamowienieEtap = [
+        {
+      id:0,
+      nazwa: "Bieżące",
+    },
 
     {
       id: 1,

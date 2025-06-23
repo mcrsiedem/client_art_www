@@ -4,6 +4,8 @@ import { getTechnology } from "actions/getTechnolgy";
 import { useEffect,createContext,useState, useCallback } from "react";import { initialProcesy } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useWykonania } from "hooks/useWykonania";
+import { today } from "actions/today";
+import { todayMinusDni } from "actions/todayMinusDni";
 ;
 
 
@@ -78,6 +80,7 @@ export const TechnologyContextProvider = ({children})=>{
 
         const [selectedProcesor, setSelectedProcesor] = useState(null);
         const [selectedProces, setSelectedProces] = useState(1);
+        const [dniWstecz, setDniWstecz] = useState(todayMinusDni(3));
 
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
@@ -666,14 +669,10 @@ const CheckProcesorID = (procesor_id) => {
 }
 async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
-  
-  // let procesor_id2
-
 
   // grupy i wykonania dla konktretnego procesora 
-  // console.log("technologie_grupy_an_wykonania_for_procesor/"+CheckProcesorID(procesor_id))
-    // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
-    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
+
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id+"/"+dniWstecz).then((res)=>{
       console.log(res.data)
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
@@ -687,10 +686,34 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
     });
     
-    // console.log("wykoannia:",wykonaniaAll);
-    // console.log("grup:",grupyWykonanAll);
+
 
   }
+
+async function fechGrupyAndWykonaniaForProcesor2(procesor_id,dniWstecz2) {
+
+
+  // grupy i wykonania dla konktretnego procesora 
+
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id+"/"+dniWstecz2).then((res)=>{
+      console.log(res.data)
+      setWykonaniaAll(res.data[0])
+      setGrupWykonanAll(res.data[1])
+      setGrupWykonanAllWyszukiwarka(res.data[1])
+      setSelectedProcesor(procesor_id)
+      return res
+    }).then((res) =>{
+      
+      // setGrupWykonanAll(prev=>{return prev})
+      setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+
+    });
+    
+
+
+  }
+
+
 
 
 async function fechTechnology() {
@@ -759,7 +782,7 @@ async function fechTechnology() {
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
-                    fechparametryTechnologiiDetails
+                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2
                 }}
             >
                 {children}

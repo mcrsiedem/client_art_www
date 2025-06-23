@@ -48,6 +48,8 @@ const procesory = appcontext.procesory
     <div className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
+          <DataWyswietlania/>
+
           {/* <ProcesSelect
             selectedProces={selectedProces}
             setSelectedProces={setSelectedProces}
@@ -221,4 +223,32 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
 
 
 
-  
+  function DataWyswietlania(){
+    const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  const dniWstecz = techContext.dniWstecz;
+  const setDniWstecz = techContext.setDniWstecz;
+  const selectedProcesor = techContext.selectedProcesor
+
+
+
+  return(
+      <div className={style.col}>
+      {/* <label className={style.label}> Wyświetl od... </label> */}
+      <input className={style.selectDataWyswietlania} type="date"
+         value={dniWstecz}
+        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
+         onChange={(event) => {
+
+          fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          setDniWstecz( event.target.value);
+
+
+
+            
+     
+
+         }}></input>
+    </div>
+  );
+}

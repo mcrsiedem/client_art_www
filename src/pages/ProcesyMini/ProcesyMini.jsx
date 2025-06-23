@@ -60,22 +60,6 @@ console.log("proc domyslny"+procesor_id)
 let proc = CheckProcesorID(selectedProcesor)
 // console.log("proc do fech "+proc)
           fechGrupyAndWykonaniaForProcesor(proc);
-          // setSelectedProcesor(selectedProcesor);
-          // setSelectedProces(1);
-
-          // setProcesory(
-          //   procesory
-          //     ?.map((t) => {
-          //       return { ...t, select: false };
-          //     })
-          //     .map((t) => {
-          //       if (t.id == 1) {
-          //         return { ...t, select: true };
-          //       } else {
-          //         return t;
-          //       }
-          //     })
-          // );
 
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)

@@ -13,6 +13,8 @@
  grid-template-columns: 1fr 1fr 1fr;
  /* border-bottom:1px solid #bebdbd; */
  /* margin-bottom: 10px; */
+    background-image: linear-gradient(black 0%, rgb(70, 69, 69) 80%);
+
 }
 
 .container{
@@ -128,6 +130,19 @@ outline: none;
   }
 
   .procesor_title{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    color: rgb(180, 180, 180);
+    padding-top: 15px;
   }
+
+
+  .selectDataWyswietlania{
+    margin-left: 20px;
+    border-radius: 5px;
+    padding:5px;
+    border: 1px solid rgb(180, 180, 180);
+    width: 100px;
+    color: azure;
+    background: transparent;
+}

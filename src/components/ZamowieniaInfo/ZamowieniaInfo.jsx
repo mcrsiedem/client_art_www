@@ -31,8 +31,8 @@ export default function ZamowieniaInfo({parent}) {
 
         <div>
           <div className={style.bindingContainer}>
-            <Zamowienia />
             <Technologie />
+            <Zamowienia />
           </div>
 
           <div className={style.containerDrukFalc}>
@@ -88,7 +88,7 @@ const Technologie = () => {
 const Druk = () => {
     const appContext = useContext(AppContext);
     const zamowieniaInfo = appContext.zamowieniaInfo;
-    let procent = Math.ceil(parseInt(zamowieniaInfo.przeloty_druk_zakonczone)*100/ parseInt(zamowieniaInfo.przeloty_druk))
+    let procent = Math.ceil(parseInt(zamowieniaInfo.przeloty_druk_zakonczone)*100/ parseInt(zamowieniaInfo.przeloty_druk)) ||0
   return (
     <div  className={style.drukContainer} >
     <p className={style.carDruk}> Przeloty druk : {zamowieniaInfo.przeloty_druk_zakonczone.toLocaleString()}  </p> <p className={style.carDrukZ}> z </p>  <p className={style.carDruk}> {zamowieniaInfo.przeloty_druk.toLocaleString()} ark.</p>   

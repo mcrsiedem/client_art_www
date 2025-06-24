@@ -46,6 +46,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
         const [expand, setExpand] = useState(false);
           const selectColor = (etapPlikow,status) =>{
             if (status==2 ) return style.procesRow_tr_RIP
+            if (status==4 ) return style.procesRow_tr_DRUK
     // if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
     // if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
     // if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
@@ -280,6 +281,7 @@ function Status({grup}) {
     // if (etap==5) return style.select_AKCEPT
     // if (etap==6) return style.select_RIP
     if (status==2) return style.select_RIP
+    if (status==4) return style.select_DRUK
       // if (etap==8) return style.select_DRUK
      return style.select
   }

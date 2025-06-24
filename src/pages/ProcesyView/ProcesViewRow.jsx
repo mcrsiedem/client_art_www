@@ -54,7 +54,11 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
         const [wolno] = useAccess(false);
 
           const selectColor = (etapPlikow,status) =>{
-            if (status==4 ) return style.procesRow_tr_DRUK
+
+            //druk
+            if(grup.proces_nazwa_id ==1){
+                          if (status==4 ) return style.procesRow_tr_DRUK
+            // if (status==2) return style.procesRow_tr_RIP
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
@@ -67,6 +71,30 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
  
 
      return style.procesRow_tr
+            }
+
+
+            //wszystko poza drukiem
+            if(grup.proces_nazwa_id !=1){
+                          if (status==4 ) return style.procesRow_tr_DRUK
+            if (status==2) return style.procesRow_tr_RIP
+    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
+    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
+    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_ZAS
+       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
+    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
+ 
+
+     return style.procesRow_tr
+            }
+
+
+
+
   }
 
   return (
@@ -357,6 +385,8 @@ function Status({grup}) {
   const selectedProcesor = techContext.selectedProcesor
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
             const selectColor = (etap,status) =>{
+              //druk
+              if(grup.proces_nazwa_id ==1){
     if (status==4) return style.select_DRUK
     if (etap==1) return style.select
     if (etap==2) return style.select
@@ -367,6 +397,26 @@ function Status({grup}) {
     if (etap==7) return style.select_ZAS
       if (etap==8) return style.select_DRUK
      return style.procesRow_tr
+              }
+
+              //wsystko poza drukierm
+              if(grup.proces_nazwa_id !=1){
+    if (status==4) return style.select_DRUK
+    if (status==2) return style.select_RIP
+    // if (etap==1) return style.select
+    // if (etap==2) return style.select
+    // if (etap==3) return style.select
+    // if (etap==4) return style.select_AKCEPT
+    // if (etap==5) return style.select_AKCEPT
+    // if (etap==6) return style.select_RIP
+    // if (etap==7) return style.select_ZAS
+    //   if (etap==8) return style.select_DRUK
+     return style.select
+              }
+
+
+
+
   }
   return (
 <td className={style.td_tableProcesy_pliki}>

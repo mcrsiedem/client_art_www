@@ -45,16 +45,16 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
           const selectColor = (etapPlikow,status) =>{
-            if (status==4 ) return style.procesRow_tr_DRUK
-    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
-    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
-       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
-    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
+            if (status==2 ) return style.procesRow_tr_RIP
+    // if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
+    // if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
+    // if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
+    // if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    // if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
+    // if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
+    // if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
+    //    if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
+    // if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
  
 
      return style.procesRow_tr
@@ -82,70 +82,59 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   }}
                  className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
                   onDoubleClick={(node, event) => {
-         
-                      if(grup.typ_grupy != 1 ){
-                        fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
-                      }
+         setExpand(!expand)
+                      // if(grup.typ_grupy != 1 ){
+                      //   fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
+                      // }
                     
                   }}
                 >
-                  {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td> */}
-                  {/* <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td> */}
-                  {/* <KoniecGrupa grup={grup}/> */}
-            
-                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   <DyspersjaGrupa grup={grup}/>
-
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
-                  <PapierProcesGrup grup={grup}/>
-                  <WykonczenieProcesuGrup grup={grup}/>
-                  
-                  {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
-                  {/* <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td> */}
-                  {/* <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td> */}
-                  {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
-                  {/* <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td> */}
-                  {/* {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>} */}
+                  {/* <PapierProcesGrup grup={grup}/> */}
+                  {/* <WykonczenieProcesuGrup grup={grup}/> */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
-                   {/* <Status grup={grup}/> */}
                   <td></td>
 
                   
                  
                 </tr>
                 {expand ? (
-              wykonaniaAll
-                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
-                .map((row) => {
-                  return (
-                    <tr  key={row.global_id}>
-                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
-      
-                      <td></td>
-                      <td>{row.czas}</td>
-                      {/* <td> global id {row.global_id}</td> */}
-                      {/* <td>element_id {row.element_id}</td> */}
+                  <>
+                    <tr  >
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      {/* <td>grupa_id {row.grupa_id}</td> */}
-                      <td></td>
+                      <td >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                       <td></td>
                       <td></td>
-                   
-           
-                      
-                 
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
-                  );
-                })
+<tr  >
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                  </>
+                    
+
             ) : (
               <></>
             )}   
@@ -283,16 +272,16 @@ function Status({grup}) {
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
  const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{
-    if (status==4) return style.select_DRUK
-    if (etap==1) return style.select
-    if (etap==2) return style.select
-    if (etap==3) return style.select
-    if (etap==4) return style.select_AKCEPT
-    if (etap==5) return style.select_AKCEPT
-    if (etap==6) return style.select_RIP
-    if (etap==7) return style.select_RIP
-      if (etap==8) return style.select_DRUK
-     return style.procesRow_tr
+    // if (status==4) return style.select_DRUK
+    // if (etap==1) return style.select
+    // if (etap==2) return style.select
+    // if (etap==3) return style.select
+    // if (etap==4) return style.select_AKCEPT
+    // if (etap==5) return style.select_AKCEPT
+    // if (etap==6) return style.select_RIP
+    if (status==2) return style.select_RIP
+      // if (etap==8) return style.select_DRUK
+     return style.select
   }
   return (
 <td className={style.td_tableProcesy_pliki}>
@@ -361,6 +350,14 @@ function Stan({grup}) {
 
 const DyspersjaGrupa = ({ grup }) => {
 const dyspersja = [2,3,5,6,12,13]
+const uv = [15,17]
+
+if(uv.includes(parseInt(grup.global_proces_id)))
+{
+   return (
+    <td title="Klisza" className={style.td_tableProcesy_dyspersja}>K </td>)
+
+   }
 
 if(dyspersja.includes(parseInt(grup.global_proces_id)))
 {

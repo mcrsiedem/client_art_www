@@ -146,22 +146,13 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
                       }
                   }
                   }
-
-                                onDragOver={    handleDragOver                          }
-
-              
-                  
-                  
+                  onDragOver={    handleDragOver                          }
           
                   onDragStart={() => {
 
                     if(wolno()){
                       handleDragStart(grup.global_id,grup.typ_grupy)
-                      
                     }
-                    // if (DecodeToken(sessionStorage.getItem("token")).manage_druk == 1) {
-                    // }
-                 
                                
                   }}
                  className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
@@ -176,77 +167,47 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
                   <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-            
-                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  {/* <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td> */}
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
-                  {/* <td style={{width: "50px"}}>{grup.rok}</td> */}
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   <TytulProcesGrup grup={grup}/>
-                  {/* <td className={style.td_tableProcesy_praca}>{grup.tytul} {grup.nazwa_elementu}</td> */}
                   <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
                   <DyspersjaGrupa grup={grup}/>
-
                   <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
-
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
-                  {/* <td style={{minWidth: "130px"}}> {grup.uwagi_elementu} {grup.uwagi}</td> */}
                    <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td>
-
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
-                  {/* <td style={{minWidth: "130px"}}>{grup.predkosc}</td> */}
                   <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
                   <SelectBox grup={grup}/>
-
-                  
-                   {/* <Status grup={grup}/> */}
                   <td></td>
-
-                  
                  
                 </tr>
                 {expand ? (
-              wykonaniaAll
+                wykonaniaAll
                 .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
                 .map((row) => {
                   return (
                     <tr  key={row.global_id}>
-                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
-      
                       <td></td>
                       <td>{row.czas}</td>
-                      {/* <td> global id {row.global_id}</td> */}
-                      {/* <td>element_id {row.element_id}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
-                      {/* <td>grupa_id {row.grupa_id}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
-                   
-           
-                      
-                 
                     </tr>
                   );
                 })
-            ) : (
-              <></>
-            )}   
-
-
-
+            ) : (<></>)}   
 </>
   );
 
@@ -302,6 +263,15 @@ const TytulProcesGrup = ({ grup }) => {
 
 const DyspersjaGrupa = ({ grup }) => {
 const dyspersja = [2,3,5,6,12,13]
+const uv = [15,17]
+
+
+if(uv.includes(parseInt(grup.global_proces_id)))
+{
+   return (
+    <td title="Klisza" className={style.td_tableProcesy_dyspersja}>K </td>)
+
+   }
 
 if(dyspersja.includes(parseInt(grup.global_proces_id)))
 {

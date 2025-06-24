@@ -45,7 +45,10 @@ export function useAccess() {
     }
 
 
-
+   //nazwa_id ==3  falc
+    if (DecodeToken(sessionStorage.getItem("token")).manage_inne == 1 && selectedProces == 2) {
+      return true;
+    }
 
 
     return false

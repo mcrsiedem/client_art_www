@@ -130,7 +130,7 @@ outline: none;
   }
 
   .procesor_title{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: rgb(180, 180, 180);
     padding-top: 15px;
@@ -141,8 +141,17 @@ outline: none;
     margin-left: 20px;
     border-radius: 5px;
     padding:5px;
-    border: 1px solid rgb(180, 180, 180);
+    /* border: 1px solid rgb(180, 180, 180); */
     width: 100px;
     color: azure;
     background: transparent;
+    border: none;
+}
+.selectDataWyswietlania::-webkit-calendar-picker-indicator{
+    background: url("../../assets/edit.svg");
+    padding: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    /* color: aliceblue;
+    accent-color: white; */
 }

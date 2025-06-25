@@ -51,7 +51,7 @@ export const AppContextProvider = ({children})=>{
     const [mobile, setMobile] = useState(false);
     const [showZamowieniaInfo, setShowZamowieniaInfo] = useState(false);
       const [isBtnZapiszPapierDisabled, setBtnZapiszPapierDisabled] = useState(true);
-
+const tableZamowienia = useRef();
 //d
     const [rowSelected, setRowSelected] = useState(null); 
 
@@ -137,7 +137,7 @@ export const AppContextProvider = ({children})=>{
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
-                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo
+                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia
                 }}
             >
                 {children}

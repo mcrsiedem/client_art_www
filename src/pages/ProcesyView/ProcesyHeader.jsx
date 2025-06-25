@@ -396,7 +396,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       
       <select
         className={style.selectProcesy}
-        defaultValue={selectedProces}
+        value={selectedProces}
         onChange={(event) => {
           setSelectedProces(event.target.value)
           setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )

@@ -4,6 +4,15 @@ import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
+  const tableZamowienia= contextApp.tableZamowienia;
+
+
+   const scrollTable = (table) => {
+  if(table.current != null) {
+      table.current.scrollTo({ top: 10000, behavior: "auto" })
+  }
+  
+};
 
   const refreshZamowienia = async () => {
     const res = await axios.get(
@@ -17,7 +26,7 @@ export function useZamowienia() {
     );
     contextApp.setZamowieniaPliki([...res2.data]);
 
-
+scrollTable(tableZamowienia)
 
   };
 

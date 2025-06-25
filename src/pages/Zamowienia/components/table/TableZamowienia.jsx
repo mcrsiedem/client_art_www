@@ -16,10 +16,19 @@ export default function TableZamowienia({open2,setRow}){
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
   const [sortWgEtapu] = useSortowanieZamowienia()
- const [refreshZamowienia] = useZamowienia()
+
+   const inputElement = useRef();
+
+  const tableZamowienia= contextApp.tableZamowienia;
+
+ 
+
+const [refreshZamowienia] = useZamowienia()
+
+
 
  return (
-   <div className={style.tableContainer} >
+   <div ref={tableZamowienia}  className={style.tableContainer} >
      <table className={style.tableZam}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>

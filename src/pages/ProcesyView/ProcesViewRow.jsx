@@ -78,6 +78,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
             if(grup.proces_nazwa_id !=1){
                           if (status==4 ) return style.procesRow_tr_DRUK
             if (status==2) return style.procesRow_tr_RIP
+            if (status==3) return style.procesRow_tr_RIP
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
     if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
@@ -403,6 +404,7 @@ function Status({grup}) {
               if(grup.proces_nazwa_id !=1){
     if (status==4) return style.select_DRUK
     if (status==2) return style.select_RIP
+    if (status==3) return style.select_RIP
     // if (etap==1) return style.select
     // if (etap==2) return style.select
     // if (etap==3) return style.select

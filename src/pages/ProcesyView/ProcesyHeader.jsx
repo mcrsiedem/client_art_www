@@ -418,7 +418,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
 
         }}
       >
-        {procesListName?.map((option) => (
+        {procesListName?.filter(x=>x.id !=6).map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

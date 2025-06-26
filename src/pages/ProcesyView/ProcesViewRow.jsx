@@ -57,6 +57,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
 
             //druk
             if(grup.proces_nazwa_id ==1){
+if (grup.select==true) return style.procesRow_select
+
                           if (status==4 ) return style.procesRow_tr_DRUK
             // if (status==2) return style.procesRow_tr_RIP
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
@@ -69,7 +71,6 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
        if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
     if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
  
-
      return style.procesRow_tr
             }
 
@@ -89,6 +90,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
        if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
     if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
  
+if (grup.select) return style.procesRow_select
 
      return style.procesRow_tr
             }
@@ -211,7 +213,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
-                  <SelectBox grup={grup}/>
+                  {/* <SelectBox grup={grup}/> */}
                   <td></td>
                  
                 </tr>

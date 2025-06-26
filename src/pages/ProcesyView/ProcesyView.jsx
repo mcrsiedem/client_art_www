@@ -125,15 +125,7 @@ const WykonaniaTable = () => {
               {selectedProces == 1 ? <th>Papier </th> : <></>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
               <th> Status </th>
-              <th     onClick={(event) => {
-            // console.log(" select" + grup.global_id + " " + event.target.checked);
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-          }
-    }> * </th>
+
             </tr>
           </thead>
           <tbody>

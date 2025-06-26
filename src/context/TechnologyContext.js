@@ -658,8 +658,8 @@ const CheckProcesorID = (procesor_id) => {
 
   
   if(procesor_id == null){
-    console.log(" Selected procesor form fech :" +procesor_id)
-  console.log(" Procesor domyslny form fech :" +DecodeToken(sessionStorage.getItem("token")).procesor_domyslny)
+    // console.log(" Selected procesor form fech :" +procesor_id)
+  // console.log(" Procesor domyslny form fech :" +DecodeToken(sessionStorage.getItem("token")).procesor_domyslny)
      return procesor_id = DecodeToken(sessionStorage.getItem("token")).procesor_domyslny
   }else {
     return procesor_id
@@ -674,7 +674,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
   // grupy i wykonania dla konktretnego procesora 
 
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id+"/"+dniWstecz).then((res)=>{
-      console.log(res.data)
+      // console.log(res.data)
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
       setGrupWykonanAllWyszukiwarka(res.data[1])

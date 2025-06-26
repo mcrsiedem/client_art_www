@@ -29,8 +29,8 @@ export default function ProcesoryMini({ user, setUser,logout }) {
   const appcontext = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
-  const setClients = appcontext.setClients;
-  const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
+  const grupyWykonanAllNiezakonczone = techContext.grupyWykonanAllNiezakonczone;
+  const setGrupWykonanAllNiezakonczone = techContext.setGrupWykonanAllNiezakonczone;
 //   const setSelectedProcesor = appcontext.setSelectedProcesor
    const setSelectedProcesor = techContext.setSelectedProcesor;
   async function checkToken() {
@@ -38,6 +38,20 @@ export default function ProcesoryMini({ user, setUser,logout }) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
+
+
+
+    axios
+      .get(IP + "/technologie_grupyWykonan/" + sessionStorage.getItem("token"))
+      .then((res) => {
+       
+setGrupWykonanAllNiezakonczone(res.data[0])
+// console.log()
+      });
+
+
+
+
         } else {
           navigate("/Login");
         }
@@ -71,7 +85,7 @@ export default function ProcesoryMini({ user, setUser,logout }) {
                                 <div className={style.container} >
                                 <div className={style.container_btn} >
                                                       
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(1); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>XL</p> </div>:<></>}                
+                                                         {/* {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(1); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>XL</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(2); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_1</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(3); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_3</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 ? <div className={style.kafle} onClick={() => {setSelectedProcesor(14); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_1</p> </div>:<></>}                
@@ -88,28 +102,28 @@ export default function ProcesoryMini({ user, setUser,logout }) {
                                                        
                                                        
                                                        
+                                                        */}
                                                        
                                                        
-                                                       
-                                                                                       {/* <button onClick={()=>{
+                                                                                       <button onClick={()=>{
                                                                     console.log(grupyWykonanAll)
                                                                   }}> OK</button>
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(1); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>XL</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(2); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_1</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_druk==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(3); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SM_3</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && (grupyWykonanAll.filter(x=> x.procesor_id == 14 && x.status < 4).length ==0) ? <div className={style.kafle} onClick={() => {setSelectedProcesor(14); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_1</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 15 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(15); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_2</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 16 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(16); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_3</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 17 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(17); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_4</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 18 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(18); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_5</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 19 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(19); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_6</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 20 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(20); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_7</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAll.filter(x=> x.procesor_id == 21 && x.status < 4).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(21); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_8</p> </div>:<></>}                
-                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && (grupyWykonanAll.filter(x=> x.procesor_id == 22 && x.status < 4).length) !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(22); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_9</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && (grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 14 ).length !=0) ? <div className={style.kafle} onClick={() => {setSelectedProcesor(14); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_1</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 15 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(15); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_2</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 16 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(16); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_3</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 17 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(17); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_4</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 18 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(18); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_5</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 19 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(19); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_6</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 20 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(20); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_7</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 21 ).length !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(21); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_8</p> </div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_falc==1 && (grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 22 ).length) !=0? <div className={style.kafle} onClick={() => {setSelectedProcesor(22); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>STAHL_9</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_uv==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(4); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>SITO</p> </div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_uv==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(5); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>LAMINATOR</p> </div>:<></>}                
                                                        
-                                                        */}
+                                                       
                                                        
                                                        
                                                        

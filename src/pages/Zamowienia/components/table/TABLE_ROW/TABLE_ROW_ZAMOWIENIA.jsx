@@ -229,7 +229,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
     <tr >
     <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>
-        {(DecodeToken(sessionStorage.getItem("token")).id == 1 && <button onClick={()=>{
+        {(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj   == 1 && <button onClick={()=>{
 
       odblokujZamowienie([row])
 

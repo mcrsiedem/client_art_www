@@ -71,6 +71,7 @@ export const TechnologyContextProvider = ({children})=>{
 
         // wszsystkie grupy i wykonania
         const [grupyWykonanAll, setGrupWykonanAll] = useState([]);
+        const [grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone] = useState([]);
         const [grupyWykonanAllWyszukiwarka, setGrupWykonanAllWyszukiwarka] = useState([]);
         const [wykonaniaAll, setWykonaniaAll] = useState([]);
 
@@ -782,7 +783,7 @@ async function fechTechnology() {
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
-                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2
+                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone
                 }}
             >
                 {children}

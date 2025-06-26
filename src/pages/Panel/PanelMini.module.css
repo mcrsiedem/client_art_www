@@ -37,9 +37,10 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
     }
     .kafle{
         display: flex;
-        justify-content: start;
+        justify-content: space-between;
         align-items: center;
         padding-left: 40px;
+        padding-right: 40px;
         backdrop-filter:  blur(10px);
         color: rgb(255, 255, 255);
         border-radius: 10px;
@@ -118,6 +119,12 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
     padding-top: 15px;
 }
 
+.menu_txt_zielony{
+    color: greenyellow;
+    font-size: 25px;
+    padding-top: 15px;
+    /* border: 1px solid greenyellow; */
+}
 
 .znak{
     position: absolute;

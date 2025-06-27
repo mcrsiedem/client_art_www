@@ -34,9 +34,9 @@ export default function OprawaView( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechGrupyAndWykonaniaForProcesor(1);
+          fechGrupyAndWykonaniaForProcesor(8);
           // setSelectedProcesor(1);
-          setSelectedProces(1);
+          setSelectedProces(6);
 
           setProcesory(
             procesory

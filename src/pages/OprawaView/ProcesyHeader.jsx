@@ -46,12 +46,13 @@ function ProcesyHeader() {
     <div className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
-          <ProcesSelect
+          <p className={style.title2}>OPRAWA </p>
+          {/* <ProcesSelect
             selectedProces={selectedProces}
             setSelectedProces={setSelectedProces}
             setSelectedProcesor={setSelectedProcesor}
             selectedProcesor={selectedProcesor}
-          />
+          /> */}
         </div>
 
         <div className={style.centerHeaderContener}>
@@ -96,7 +97,7 @@ function PrzerwaBTN() {
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
         onDrop={()=>handleDrop()}
-              className={style.icon}
+              className={style.icon2}
               src={iconWC}
               onClick={() => {
             setShow(!show)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./ProcesyHeader.module.css";
+import style from "./OprawaProcesyHeader.module.css";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";

@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import style from "./OprawaView.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "./ProcesyHeader";
+import OprawaProcesyHeader from "./OprawaProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
-import ProcesViewRow from "./ProcesViewRow";
+import OprawaProcesViewRow from "./OprawaProcesViewRow";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
@@ -35,7 +35,7 @@ export default function OprawaView( ) {
       .then((res) => {
         if (res.data.Status === "Success") {
           fechGrupyAndWykonaniaForProcesor(8);
-          // setSelectedProcesor(1);
+          setSelectedProcesor(8);
           setSelectedProces(6);
 
           setProcesory(
@@ -54,13 +54,7 @@ export default function OprawaView( ) {
 
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)
-                  getNadkomplety(setNadkomplety)
-
-
-
-
-
-
+         getNadkomplety(setNadkomplety)
         } else {
           navigate("/Login");
         }
@@ -78,7 +72,7 @@ export default function OprawaView( ) {
 
   return (
     <div className={style.main}>
-        <ProcesyHeader />
+        <OprawaProcesyHeader />
         <WykonaniaTable  />
       <div className={style.container}>
         <TechnologiaStage/>
@@ -108,7 +102,7 @@ const WykonaniaTable = () => {
             {grupyWykonanAll
               .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
               .map((grup, i) => {
-                return <ProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
+                return <OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
               })}
           </tbody>
         </table>

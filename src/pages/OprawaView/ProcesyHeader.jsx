@@ -159,7 +159,7 @@ setInitTime(event.target.value)
     >
       
     </input>
-  <select className={style.select} defaultValue={initMinuty} onChange={(event)=>{
+  <select className={style.select} value={initMinuty} onChange={(event)=>{
     setInitMintuty(event.target.value)
     setCzas(initTime * event.target.value)}}>
   <option key={1} value={1}> min. </option>

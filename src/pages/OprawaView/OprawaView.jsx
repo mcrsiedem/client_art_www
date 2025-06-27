@@ -19,7 +19,7 @@ export default function OprawaView( ) {
   const navigate = useNavigate();
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const setSelectedProces = techContext.setSelectedProces;
   const procesory = appContext.procesory
@@ -34,7 +34,7 @@ export default function OprawaView( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechGrupyAndWykonaniaForProcesor(8);
+          fechGrupyOprawaForProcesor(8);
           setSelectedProcesor(8);
           setSelectedProces(6);
 
@@ -44,7 +44,7 @@ export default function OprawaView( ) {
                 return { ...t, select: false };
               })
               .map((t) => {
-                if (t.id == 1) {
+                if (t.id == 8) {
                   return { ...t, select: true };
                 } else {
                   return t;
@@ -85,7 +85,7 @@ export default function OprawaView( ) {
 
 const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
-  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const grupyOprawaAll = techContext.grupyOprawaAll;
   const selectedProcesor = techContext.selectedProcesor;
   const [unlockTable, setUnlockTable] = useState(true);
 
@@ -99,7 +99,7 @@ const WykonaniaTable = () => {
             </tr>
           </thead>
           <tbody>
-            {grupyWykonanAll
+            {grupyOprawaAll
               .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
               .map((grup, i) => {
                 return <OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;

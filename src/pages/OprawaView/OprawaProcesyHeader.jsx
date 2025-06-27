@@ -56,7 +56,7 @@ function ProcesyHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
-        {/* <PokazStany /> */}
+        {/* <PokazStany2 /> */}
         <PrzerwaBTN />
 
         </div>
@@ -219,13 +219,13 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
 
   function PokazStany2({  }) {
     const techContext = useContext(TechnologyContext);
-    const grupyWykonanAll = techContext.grupyWykonanAll
+    const grupyOprawaAll = techContext.grupyOprawaAll
     return (
       <button
         onClick={async () => {
           console.clear()
           console.log("Prces Viev: ")
-          console.log("GrupyAll : ",grupyWykonanAll)
+          console.log("Grupy oprawa All : ",grupyOprawaAll)
 
   
         }}

@@ -308,7 +308,7 @@ function PrzerwaBTN() {
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
         onDrop={()=>handleDrop()}
-              className={style.icon}
+              className={style.icon2}
               src={iconWC}
               onClick={() => {
             setShow(!show)
@@ -481,7 +481,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
   return (
     <img
       title="Policz przeloty"
-      className={style.icon}
+      className={style.icon2}
       src={iconCalc}
       onClick={() => {
               getZamowieniaInfoGrupy(grupy)

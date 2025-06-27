@@ -71,6 +71,8 @@ export const TechnologyContextProvider = ({children})=>{
 
         // wszsystkie grupy i wykonania
         const [grupyWykonanAll, setGrupWykonanAll] = useState([]);
+        const [grupyOprawaAll, setGrupyOprawaAll] = useState([]);
+        const [grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka] = useState([]);
         const [grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone] = useState([]);
         const [grupyWykonanAllWyszukiwarka, setGrupWykonanAllWyszukiwarka] = useState([]);
         const [wykonaniaAll, setWykonaniaAll] = useState([]);
@@ -691,6 +693,33 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
   }
 
+  async function fechGrupyOprawaForProcesor(procesor_id) {
+
+
+  // grupy i wykonania dla konktretnego procesora 
+
+    await axios.get(IP + "technologie_grupy_oprawa_for_procesor/"+procesor_id+"/"+dniWstecz).then((res)=>{
+      // console.log(res.data)
+      setGrupyOprawaAll(res.data[0])
+      setGrupyOprawaAllWyszukiwarka(res.data[0])
+
+      setSelectedProcesor(procesor_id)
+      return res
+    }).then((res) =>{
+      
+      // setGrupWykonanAll(prev=>{return prev})
+      setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
+
+    });
+    
+
+
+  }
+
+
+
+  
+
 async function fechGrupyAndWykonaniaForProcesor2(procesor_id,dniWstecz2) {
 
 
@@ -709,7 +738,6 @@ async function fechGrupyAndWykonaniaForProcesor2(procesor_id,dniWstecz2) {
       setGrupWykonanAllWyszukiwarka(prev=>{return prev})
 
     });
-    
 
 
   }
@@ -783,7 +811,8 @@ async function fechTechnology() {
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
-                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone
+                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
+                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor
                 }}
             >
                 {children}

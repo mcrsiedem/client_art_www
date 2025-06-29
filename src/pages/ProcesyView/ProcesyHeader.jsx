@@ -157,6 +157,8 @@ function Szukaj() {
 function DataWyswietlania(){
     const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  
   const dniWstecz = techContext.dniWstecz;
   const setDniWstecz = techContext.setDniWstecz;
   const selectedProcesor = techContext.selectedProcesor
@@ -171,7 +173,9 @@ function DataWyswietlania(){
         //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
          onChange={(event) => {
 
-          fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
+          
           setDniWstecz( event.target.value);
 
 

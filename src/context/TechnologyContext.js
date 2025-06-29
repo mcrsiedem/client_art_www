@@ -83,7 +83,8 @@ export const TechnologyContextProvider = ({children})=>{
 
         const [selectedProcesor, setSelectedProcesor] = useState(null);
         const [selectedProces, setSelectedProces] = useState(1);
-        const [dniWstecz, setDniWstecz] = useState(todayMinusDni(3));
+        // const [dniWstecz, setDniWstecz] = useState(todayMinusDni(1));
+        const [dniWstecz, setDniWstecz] = useState(today());
 
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
@@ -675,7 +676,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
   // grupy i wykonania dla konktretnego procesora 
 
-    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id+"/"+dniWstecz).then((res)=>{
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
       // console.log(res.data)
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
@@ -688,10 +689,10 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       setGrupWykonanAllWyszukiwarka(prev=>{return prev})
 
     });
-    
-
 
   }
+
+
 
   async function fechGrupyOprawaForProcesor(procesor_id) {
 
@@ -720,12 +721,14 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
   
 
-async function fechGrupyAndWykonaniaForProcesor2(procesor_id,dniWstecz2) {
+
+
+async function fechGrupyAndWykonaniaForProcesor_dni_wstecz(procesor_id,dniWstecz2) {
 
 
   // grupy i wykonania dla konktretnego procesora 
 
-    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id+"/"+dniWstecz2).then((res)=>{
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+procesor_id+"/"+dniWstecz2).then((res)=>{
       console.log(res.data)
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
@@ -741,8 +744,6 @@ async function fechGrupyAndWykonaniaForProcesor2(procesor_id,dniWstecz2) {
 
 
   }
-
-
 
 
 async function fechTechnology() {
@@ -811,8 +812,8 @@ async function fechTechnology() {
                     wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
-                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,fechGrupyAndWykonaniaForProcesor2,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
-                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor
+                    fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
+                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz
                 }}
             >
                 {children}

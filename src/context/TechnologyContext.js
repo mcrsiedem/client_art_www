@@ -84,7 +84,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [selectedProcesor, setSelectedProcesor] = useState(null);
         const [selectedProces, setSelectedProces] = useState(1);
         // const [dniWstecz, setDniWstecz] = useState(todayMinusDni(1));
-        const [dniWstecz, setDniWstecz] = useState(today());
+        const [dniWstecz, setDniWstecz] = useState();
 
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
@@ -650,10 +650,10 @@ async function fechGrupyAndWykonaniaAll() {
   setWykonaniaAll(res.data[0])
   setGrupWykonanAll(res.data[1])
   setGrupWykonanAllWyszukiwarka(res.data[1])
-  console.clear()
-  console.log("Procesy: ")
+  // console.clear()
+  // console.log("Procesy: ")
   // console.log("Wykonania: ", res.data[0])
-  console.log("grupy: ",res.data[1])
+  // console.log("grupy: ",res.data[1])
 }
 
 
@@ -682,6 +682,8 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       setGrupWykonanAll(res.data[1])
       setGrupWykonanAllWyszukiwarka(res.data[1])
       setSelectedProcesor(procesor_id)
+      setDniWstecz(res.data[2][0].dni     )
+// console.log(res.data[2][0].dni)
       return res
     }).then((res) =>{
       
@@ -710,6 +712,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       
       // setGrupWykonanAll(prev=>{return prev})
       setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
+      
 
     });
     

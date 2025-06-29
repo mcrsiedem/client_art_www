@@ -460,10 +460,11 @@ function WydaniePapieruStatus({grup}) {
   const zamowieniaPliki = contextApp.zamowieniaPliki
   const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
   const grupyWykonanAll = techContext.grupyWykonanAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
+  const dniWstecz = techContext.dniWstecz
 
   const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
@@ -488,7 +489,7 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
             src={iconAdd}
             onClick={async() => {
              await axios.post(IP + "insertWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:2});
-            fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+            fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
 
             }}
             alt="Procesy"
@@ -512,7 +513,7 @@ const res1 = await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorag
 
           // })
 
-          fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
         
 
         }}
@@ -577,10 +578,11 @@ function Etap({grup}) {
   const zamowieniaPliki = contextApp.zamowieniaPliki
   const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
   const grupyWykonanAll = techContext.grupyWykonanAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
+  const dniWstecz = techContext.dniWstecz
 
   const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
       const [add,dodajDoZamowienia] = useHistoria()
@@ -613,7 +615,7 @@ function Etap({grup}) {
 
           })
 
-          fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
         
 
         }}

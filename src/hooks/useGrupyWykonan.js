@@ -47,7 +47,7 @@ function sumujGrupe(new_wykonania) {
               global_id: grupa.global_id
                 });
   // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
+      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
       setGrupWykonanAllWyszukiwarka(res.data[1])
@@ -69,7 +69,7 @@ function sumujGrupe(new_wykonania) {
               global_id: grupa.global_id
                 });
   // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
+      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
       setWykonaniaAll(res.data[0])
       setGrupWykonanAll(res.data[1])
       setGrupWykonanAllWyszukiwarka(res.data[1])

@@ -140,6 +140,7 @@ const WykonaniaTable = () => {
             </tr>
           </thead>
           <tbody>
+
             {selectedProcesor == 8 || selectedProcesor == 10 ? grupyOprawaAll
               .filter(
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
@@ -147,6 +148,8 @@ const WykonaniaTable = () => {
               .map((grup, i) => {
                 if (grup.typ_grupy != 1) {
                   return (
+                   //TODO
+                    // ProcesViewRowOprawa
                     <ProcesViewRow
                       grup={grup}
                       unlockTable={unlockTable}
@@ -171,6 +174,7 @@ const WykonaniaTable = () => {
               .map((grup, i) => {
                 if (grup.typ_grupy != 1) {
                   return (
+
                     <ProcesViewRow
                       grup={grup}
                       unlockTable={unlockTable}

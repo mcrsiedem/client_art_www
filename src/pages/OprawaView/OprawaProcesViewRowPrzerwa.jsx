@@ -43,6 +43,18 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
 
+
+                  const selectColor = (status) => {
+            if (status == 4) return style.procesRow_tr_DRUK;
+            if (status == 2) return style.procesRow_tr_RIP;
+            if (status == 3) return style.procesRow_tr_RIP;
+
+            if (grup.select) return style.procesRow_select;
+
+            return style.procesRow_tr;
+          };
+
+
   return (
 <>
                 <tr
@@ -58,7 +70,9 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
             
                     
                   }}
-                  className={style.tr_legi_mini}
+                  // className={style.tr_legi_mini}
+                 className={selectColor(grup.status) }
+
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){
@@ -74,14 +88,23 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
 
             <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                        <td style={{width: "50px"}}>{grup.nr}</td>
+                        {/* <td style={{width: "50px"}}>{grup.nr}</td>
                         <td style={{width: "50px"}}>{grup.rok}</td>
                         <td style={{width: "200px"}}>{grup.klient}</td>
                         <td style={{minWidth: "130px"}}>{grup.tytul}</td>
                         <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
-                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td>
+                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td> */}
 
                       <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      
+                      <td></td>
+                  <Status grup={grup}/>
+
 
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
@@ -200,10 +223,36 @@ function Status({grup}) {
   const selectedProcesor = techContext.selectedProcesor
     const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
   
+
+
+            const selectColor = (status) =>{
+
+
+
+              if(grup.proces_nazwa_id !=1){
+    if (status==4) return style.select_DRUK
+    if (status==2) return style.select_RIP
+    if (status==3) return style.select_RIP
+
+     return style.select
+              }
+
+
+
+
+  }
+
+
+
+
+
+
   return (
 <td style={{width: "160px"}}>
       <select
-        className={style.select}
+        // className={style.select}
+       className={selectColor(grup.status) }
+
         value={grup.status}
         onChange={(event) => {
    
@@ -221,6 +270,5 @@ function Status({grup}) {
 
   );
 }
-
 
 

@@ -97,7 +97,7 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr >
-              <th> Początek</th> <th> Czas</th> <th> Koniec</th> <th> </th> <th>Nr</th> <th> Rok</th> <th> Klient</th> <th> Praca</th> <th> Uwagi</th> <th> Przeloty</th> <th> </th>
+              <th> Początek</th> <th> Czas</th> <th> Koniec</th>  <th></th> <th> nr</th> <th> Klient</th> <th> Praca</th>   <th> </th><th> </th><th> </th><th> </th><th> </th>
             </tr>
           </thead>
           <tbody>

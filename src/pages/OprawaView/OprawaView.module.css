@@ -1,7 +1,7 @@
 
 .main{
    display: grid;
-   grid-template-rows: 60px 1fr 60px;
+   grid-template-rows: 50px 1fr 60px;
    /* background-color: #e74a3b; */
   
 }
@@ -11,6 +11,9 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   
+   
+
 /* background-color: lightcyan; */
 /* width: 700px; */
 }
@@ -18,6 +21,8 @@
 .tableContainer{
    /* padding-top: 50px; */
   height: calc(100vh - 120px);
+ width: 100vw;
+
   /* min-width: 100vw; */
   min-width: 95vw;
 
@@ -57,8 +62,17 @@
    height: 2rem;
    /* padding-left: 20px; */
    z-index: 2;
-   background: rgb(243, 243, 243);
-  color: #414040;
+   /* background: rgb(70, 69, 69); */
+    /* background:rgb(136, 136, 136); */
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    
+
+    /* background-image: linear-gradient(rgb(70, 69, 69)0%, black 80%); */
+    /* background-image: linear-gradient(black 0%, rgb(70, 69, 69) 80%); */
+
+
+  color: #2c2c2c;
+
   /* border-radius: 30px; */
   /* outline: 1px solid rgb(167, 0, 0); */
 
@@ -168,7 +182,18 @@ tr:nth-of-type(2n) {
   border-bottom: 1px solid rgb(192, 191, 191) ;
 }
 
-.procesor_btn_container{
+
+.procesor_btn_main{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+   
+
+}
+
+
+.procesor_btn_center{
    display: flex;
    justify-content: center;
    align-items: center;
@@ -177,6 +202,16 @@ tr:nth-of-type(2n) {
    /* background-color: antiquewhite; */
    overflow: auto;
 }
+
+.procesor_btn_right{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+
+}
+
+
 
 
 .btn_procesor{
@@ -209,10 +244,28 @@ tr:nth-of-type(2n) {
    color: rgb(204, 203, 203);
    font-size: 0.9rem;
    padding: 5px;;
+   
 }
 
 .select{
    border: none;
    background-color: transparent;
    padding-top: 3px;
+}
+
+
+.th_tableProcesy_poczatek{
+   padding-left: 10px;
+}
+
+.th_tableProcesy_czas{
+   /* padding-left: 10px; */
+   width:10px;
+   background-color: red;
+
+}
+
+.th_tableProcesy_koniec{
+   /* padding-left: 10px; */
+
 }

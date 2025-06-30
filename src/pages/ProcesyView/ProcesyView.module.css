@@ -63,7 +63,9 @@
    /* padding-left: 20px; */
    z-index: 2;
    /* background: rgb(70, 69, 69); */
-    background:rgb(44, 44, 44);
+    /* background:rgb(44, 44, 44); */
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
     
 
     /* background-image: linear-gradient(rgb(70, 69, 69)0%, black 80%); */
@@ -71,6 +73,8 @@
 
 
   color: #828282;
+  color: #2c2c2c;
+
   /* border-radius: 30px; */
   /* outline: 1px solid rgb(167, 0, 0); */
 

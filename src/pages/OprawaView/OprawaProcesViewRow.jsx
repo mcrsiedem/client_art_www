@@ -28,6 +28,7 @@ import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
+import { useAccess } from "hooks/useAccess";
 
 
 
@@ -42,12 +43,29 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
 
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
+                const [wolno] = useAccess(false);
+
+
+          const selectColor = (status) => {
+            if (status == 4) return style.procesRow_tr_DRUK;
+            if (status == 2) return style.procesRow_tr_RIP;
+            if (status == 3) return style.procesRow_tr_RIP;
+
+            if (grup.select) return style.procesRow_select;
+
+            return style.procesRow_tr;
+          };
+
+
+        
 
   return (
 <>
                 <tr
                   title={"Grupa id: " +grup.global_id}
-                  draggable={unlockTable}
+                  // draggable={unlockTable}
+                  draggable={wolno()}
+
                    key={grup.global_id}
                   onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
                  onDragOver={handleDragOver}
@@ -58,7 +76,9 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
             
                     
                   }}
-                  className={style.tr_legi_mini}
+                  // className={style.tr_legi_mini}
+                 className={selectColor(grup.status) }
+
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){

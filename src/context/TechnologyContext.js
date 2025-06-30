@@ -705,7 +705,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
   // grupy i wykonania dla konktretnego procesora 
 
-    await axios.get(IP + "technologie_grupy_oprawa_for_procesor/"+procesor_id+"/"+dniWstecz).then((res)=>{
+    await axios.get(IP + "technologie_grupy_oprawa_for_procesor/"+procesor_id).then((res)=>{
       // console.log(res.data)
       setGrupyOprawaAll(res.data[0])
       setGrupyOprawaAllWyszukiwarka(res.data[0])

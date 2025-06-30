@@ -82,7 +82,7 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                   }}
                 >
                   <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
-                  <td style={{width: "60px"}}>{zamienNaGodziny(  grup.czas) } </td>
+                              <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
                   {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
@@ -95,6 +95,10 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                         <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
                         <td style={{minWidth: "130px"}}>{grup.przeloty}</td> */}
 
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

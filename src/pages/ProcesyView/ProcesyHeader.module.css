@@ -57,6 +57,7 @@
         border-bottom-right-radius: 10px;
 
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
 
      }
 
@@ -66,6 +67,7 @@
             border-top-left-radius: 10px;
              border-bottom-left-radius: 10px;
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
         
         /* border-radius: 5px;
         padding-left: 10px;
@@ -113,6 +115,7 @@
     background-color: rgb(225, 225, 225);
     background-color: rgb(159, 244, 48);
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
 
 
 border-radius: 5px;
@@ -135,6 +138,7 @@ border-radius: 5px;
     padding: 6px;
     background-color: rgb(159, 244, 48);
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
 
 border-radius: 5px;
 
@@ -190,10 +194,11 @@ outline: none;
 
   .szukajInput{
     padding-left: 5px;
-     border: 1px solid rgb(198, 255, 124);
+     border: 1px solid rgb(109, 109, 109);
 border-radius: 5px; 
-        background-color: rgb(159, 244, 48);
-    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+        /* background-color: rgb(159, 244, 48); */
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
 
 
     margin-right: 20px;
@@ -212,8 +217,10 @@ border-radius: 5px;
     padding:5px;
     border: 1px solid grey;
     width: 100px;
-    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
- height: 27px;
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ 
+    height: 27px;
 }
 
 .selectProcesy{
@@ -222,7 +229,9 @@ border-radius: 5px;
     padding:3px;
     border: 1px solid grey;
     width: 200px;
-    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
- height: 27px;
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ 
+    height: 27px;
 
 }

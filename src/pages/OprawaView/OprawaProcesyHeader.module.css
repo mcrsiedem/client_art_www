@@ -125,14 +125,28 @@ border-radius: 10px;
     padding: 7px;
     /* background-color: rgb(225, 225, 225);
     background-color: rgb(159, 244, 48); */
-    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+  background-image: linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%); */
+
     /* background: #81b3ff;
     background-color: rgb(159, 244, 48); */
 
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
 
 
 border-radius: 10px;
     
+ /* border-width:1px;
+  color:#fff;
+  border-color:#84bbf3;
+  font-weight:bold;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  text-shadow:inset 0px 1px 0px #528ecc;
+  background:linear-gradient(#79bbff, #378de5); */
 }
 
 .icon2:hover{
@@ -177,7 +191,8 @@ outline: none;
     padding:5px;
     border: 1px solid grey;
     width: 100px;
-    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+  /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
 
 /* background: #81b3ff; */
 /* background: transparent; */

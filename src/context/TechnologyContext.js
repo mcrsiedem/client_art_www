@@ -707,6 +707,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       setGrupyOprawaAllWyszukiwarka(res.data[0])
 
       setSelectedProcesor(procesor_id)
+      setDniWstecz(res.data[1][0].dni     )
       return res
     }).then((res) =>{
       

@@ -181,7 +181,7 @@ setInitTime(event.target.value)
     const techContext = useContext(TechnologyContext);
   // const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
   // const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa
   
   const dniWstecz = techContext.dniWstecz;
   const setDniWstecz = techContext.setDniWstecz;
@@ -199,7 +199,8 @@ setInitTime(event.target.value)
 
           // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
-           fechGrupyOprawaForProcesor(selectedProcesor)
+          //  fechGrupyOprawaForProcesor(selectedProcesor)
+           fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,event.target.value)
           setDniWstecz( event.target.value);
 
 

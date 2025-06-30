@@ -748,6 +748,31 @@ async function fechGrupyAndWykonaniaForProcesor_dni_wstecz(procesor_id,dniWstecz
 
   }
 
+  async function fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(procesor_id,dniWstecz2) {
+
+
+  // grupy i wykonania dla konktretnego procesora 
+
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz_oprawa/"+procesor_id+"/"+dniWstecz2).then((res)=>{
+
+
+
+      setGrupyOprawaAll(res.data[1])
+      setGrupyOprawaAllWyszukiwarka(res.data[1])
+
+      setSelectedProcesor(procesor_id)
+      return res
+    }).then((res) =>{
+      
+      // setGrupWykonanAll(prev=>{return prev})
+      setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
+
+    });
+
+
+  }
+
+
 
 async function fechTechnology() {
 
@@ -816,7 +841,7 @@ async function fechTechnology() {
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
-                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz
+                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa
                 }}
             >
                 {children}

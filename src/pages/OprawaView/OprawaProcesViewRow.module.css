@@ -18,11 +18,18 @@
 
  .procesRow_tr{
     height: 30px;
+      background:linear-gradient(to bottom, #e6e6e6 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+    /* background:linear-gradient(to bottom, #cfcfcf 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+
     /* background-color: aqua; */
     /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
 
  }
   .procesRow_tr:nth-of-type(2n){
+      background:linear-gradient(to bottom, #cfcfcf 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+
     /* background-color: aqua; */
     /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
 /* background: #81b3ff; */
@@ -30,6 +37,7 @@
   .procesRow_select{
     height: 30px;
     background:linear-gradient(to bottom, #81b3ff 5%, #5e9bf7 100%);  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    
  }
   .procesRow_select:nth-of-type(2n){
     height: 30px;
@@ -112,6 +120,8 @@ padding-left: 10px;
 padding-right: 10px;
 border: 1px solid rgb(192, 192, 192);
 font-size: 0.8rem;
+    background:linear-gradient(to bottom, #b8b8b8 5%, #d8d8d8 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
 
  }
   .select_RIP{

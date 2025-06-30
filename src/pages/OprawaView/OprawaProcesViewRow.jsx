@@ -98,14 +98,16 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                         <td style={{minWidth: "130px"}}>{grup.tytul}</td>
-                        <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
-                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td>
+                        {/* <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
+                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td> */}
 
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td></td>
 
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
-                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> : <></>}
+                 <Status grup={grup}/> 
 
                   
                  

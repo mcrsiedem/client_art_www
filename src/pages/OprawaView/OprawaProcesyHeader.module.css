@@ -60,6 +60,8 @@
              border-top-left-radius: 10px;
              border-bottom-left-radius: 10px;
              background-color: rgb(159, 244, 48);
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
              font-size: 12px;
              text-align: center;
              color: rgb(0, 0, 0);
@@ -102,6 +104,8 @@ border-radius: 10px;
 }
 .select{
     background-color: rgb(159, 244, 48);
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
 
         /* border-radius: 10px; */
         border-top-right-radius: 10px;
@@ -117,8 +121,10 @@ border-radius: 10px;
     
     height: 33px;
     padding: 7px;
-    background-color: rgb(225, 225, 225);
-    background-color: rgb(159, 244, 48);
+    /* background-color: rgb(225, 225, 225);
+    background-color: rgb(159, 244, 48); */
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
 
 border-radius: 10px;
     

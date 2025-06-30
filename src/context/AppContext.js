@@ -72,7 +72,9 @@ const tableZamowienia = useRef();
         return  procesListName?.filter(pln => pln.id == id)[0].nazwa
        }
 
-
+const nazwaStatusuWykonania = (id) => {
+return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
+}
   // const effectRan = useRef(false);
   // useEffect(() => {
   //   if (effectRan.current === true) {
@@ -137,7 +139,7 @@ const tableZamowienia = useRef();
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
-                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia
+                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania
                 }}
             >
                 {children}

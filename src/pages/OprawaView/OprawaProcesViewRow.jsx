@@ -24,6 +24,9 @@ import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaO
 import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
 import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
+import { useGrupyWykonan } from "hooks/useGrupyWykonan";
+import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
+import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 
 
 
@@ -31,6 +34,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     const navigate = useNavigate();
     const techContext = useContext(TechnologyContext);
     const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+    const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
+    
     const wykonaniaAll = techContext.wykonaniaAll;
     const appcontext = useContext(AppContext);
     const typ_elementu = appcontext.typ_elementu;
@@ -124,16 +129,16 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable }) {
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       let id_drop_grupa_proces = id;
-      dragDropProcesGrupa(
+      dragDropProcesGrupaOprawa(
         id_drag_grupa_proces,
         id_drop_grupa_proces,
-        fechGrupyAndWykonaniaForProcesor
+        fechGrupyOprawaForProcesor
       );
     }
 
     if (sessionStorage.getItem("typ_drag") == "przerwa") {
       let czas = sessionStorage.getItem("czas_przerwy");
-      updateAddPrzerwa(id, czas,fechGrupyAndWykonaniaForProcesor);
+      updateAddPrzerwaOprawa(id, czas,fechGrupyOprawaForProcesor);
     }
   }
 
@@ -190,6 +195,8 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+    const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
+  
   return (
 <td style={{width: "160px"}}>
       <select
@@ -197,7 +204,8 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
    
-          updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+          statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value})
+          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >
         {_status_wykonania.map((option) => (

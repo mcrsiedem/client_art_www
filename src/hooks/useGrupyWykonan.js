@@ -5,9 +5,13 @@ import { getMaxID } from "actions/getMaxID";
 import { TechnologyContext } from "context/TechnologyContext";
 import { IP } from "utils/Host";
 import axios from "axios";
+import { useHistoria } from "./useHistoria";
+import { AppContext } from "context/AppContext";
 
 export function useGrupyWykonan(row){
   const techContext = useContext(TechnologyContext);
+  const appContext = useContext(AppContext);
+
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const setWykonania = techContext.setWykonania;
   const grupaWykonan = techContext.grupaWykonan;
@@ -20,6 +24,13 @@ export function useGrupyWykonan(row){
   const setGrupWykonanAllWyszukiwarka = techContext.setGrupWykonanAllWyszukiwarka
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const dniWstecz = techContext.dniWstecz;
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
+   const [add,dodajDoZamowienia] = useHistoria()
+
+  const nazwaStatusuWykonania = appContext.nazwaStatusuWykonania
+
+  
+
 
   const SumaCzasow = (grupa,new_wykonania) => {
     let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
@@ -111,6 +122,7 @@ function sumujGrupe(new_wykonania) {
 
       
       async function statusGrupyTechnologia_OPRAWA(grupa) {
+        // z widoku technologia stage
         const res = await axios.put(
           IP +
             "zakoncz_oprawe/" +
@@ -126,11 +138,43 @@ function sumujGrupe(new_wykonania) {
         );
 
         fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
+dodajDoZamowienia(   {
+  kategoria: "OPRAWA",
+  event: "GRUPA ID "+ grupa.id+ " zmiana statusu na  "+ nazwaStatusuWykonania( grupa.status) ,
+  zamowienie_id: grupa.zamowienie_id,
+  user_id: DecodeToken(sessionStorage.getItem("token")).id,
+})
+
+      }
+
+            async function statusGrupyTechnologia_OPRAWA_PROCESY(grupa) {
+        // z widoku technologia stage
+        const res = await axios.put(
+          IP +
+            "zakoncz_oprawe/" +
+            sessionStorage.getItem("token"),
+          {
+            technologia_id: grupa.technologia_id,
+            proces_id: grupa.proces_id,
+            element_id: grupa.element_id,
+            grupa_id: grupa.id,
+            status: grupa.status,
+            global_id: grupa.global_id,
+          }
+        );
+fechGrupyOprawaForProcesor(selectedProcesor)
+
+dodajDoZamowienia(   {
+  kategoria: "OPRAWA",
+  event: "GRUPA ID "+ grupa.id+ " zmiana statusu na  "+ nazwaStatusuWykonania( grupa.status) ,
+  zamowienie_id: grupa.zamowienie_id,
+  user_id: DecodeToken(sessionStorage.getItem("token")).id,
+})
+        // fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
       }
 
 
-
-  return [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA];
+  return [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY];
 }
 
 // użycie

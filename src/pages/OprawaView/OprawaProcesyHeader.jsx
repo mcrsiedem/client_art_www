@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
+import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
 
 
 
@@ -83,7 +84,7 @@ function PrzerwaBTN() {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesListName = contextApp.procesListName
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
 
   const [czas,setCzas] = useState(60)
   const [show,setShow] = useState(false)
@@ -129,7 +130,7 @@ function PrzerwaBTN() {
   
   
       if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
-       updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
+       updateDeletePrzerwaOprawa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyOprawaForProcesor)
       }
   
   

@@ -229,11 +229,7 @@ function StatusGrupy({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
-   const updateWykonaniaWszystkie = techContext.updateWykonaniaWszystkie
-   const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  const wykonania = techContext.wykonania
-  const setWykonania = techContext.setWykonania
+
   const daneTech = techContext.daneTech
 
   const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA] = useGrupyWykonan()
@@ -250,25 +246,7 @@ function StatusGrupy({ grupaOprawa }) {
             statusGrupyTechnologia_OPRAWA({...grupaOprawa, status: event.target.value})
           }
         }}
-    //     onChange={(event) => {
-  
-    //       // technologia_id == 1 - przed pierwszym zapisem zmiany localnie
-    //       // technologia_id != 1 - zmiany bezpośrednio na serwerze
-    //  // 1 - status
-    //         // 2 - stan
 
-    //       if(rowGrupa.technologia_id == 1){
-
-    //         updateWykonaniaWszystkie({ ...rowGrupa, status: event.target.value });
-    //         updateGrupaWykonan({ ...rowGrupa, status: event.target.value });
-    //       }else{
-
-       
-    //         updateWykonaniaOrazGrupa(rowGrupa.global_id,1,event.target.value,fechparametryTechnologii)
-
-    //       }
-
-    //     }}
       >
         {_status_wykonania.map((option) => (
           <option key={option.id} value={option.id}>

@@ -139,7 +139,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
   const setSelectedProcesor = techContext.setSelectedProcesor
   // const selectedProcesor = techContext.selectedProcesor
   const procesory = appContext.procesory
@@ -161,10 +161,10 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   // const grupyWykonanAll = techContext.grupyWykonanAll;
   return(
     <button  
-    draggable
+    // draggable
     key={id}
-   onDrop={()=>handleDrop(id)}
-  onDragOver={handleDragOver}
+  //  onDrop={()=>handleDrop(id)}
+  // onDragOver={handleDragOver}
    
 
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
@@ -173,7 +173,9 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
       // console.log(" id: ", id)
       // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
      setSelectedProcesor(id)
-     fechGrupyAndWykonaniaForProcesor(id)
+    //  fechGrupyAndWykonaniaForProcesor(id)
+     fechGrupyOprawaForProcesor(id)
+     
     //  fechGrupyAndWykonaniaAll()
 
      setProcesory(

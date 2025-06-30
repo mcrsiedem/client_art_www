@@ -25,6 +25,8 @@ export function useGrupyWykonan(row){
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const dniWstecz = techContext.dniWstecz;
   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa
+  
    const [add,dodajDoZamowienia] = useHistoria()
 
   const nazwaStatusuWykonania = appContext.nazwaStatusuWykonania
@@ -162,7 +164,8 @@ dodajDoZamowienia(   {
             global_id: grupa.global_id,
           }
         );
-fechGrupyOprawaForProcesor(selectedProcesor)
+// fechGrupyOprawaForProcesor(selectedProcesor)
+fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
 
 dodajDoZamowienia(   {
   kategoria: "OPRAWA",

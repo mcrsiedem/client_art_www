@@ -61,6 +61,7 @@
              border-bottom-left-radius: 10px;
              background-color: rgb(159, 244, 48);
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    /* background-color: rgb(159, 244, 48); */
 
              font-size: 12px;
              text-align: center;
@@ -103,8 +104,9 @@ border-radius: 10px;
 
 }
 .select{
-    background-color: rgb(159, 244, 48);
+    /* background-color: rgb(159, 244, 48); */
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    /* background-color: rgb(159, 244, 48); */
 
 
         /* border-radius: 10px; */
@@ -124,6 +126,9 @@ border-radius: 10px;
     /* background-color: rgb(225, 225, 225);
     background-color: rgb(159, 244, 48); */
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+    /* background: #81b3ff;
+    background-color: rgb(159, 244, 48); */
+
 
 
 border-radius: 10px;
@@ -165,3 +170,19 @@ outline: none;
   .iconMenuBtn:active{
     rotate: 65deg;
   }
+
+  .selectDataWyswietlania{
+    margin-left: 30px;
+    border-radius: 5px;
+    padding:5px;
+    border: 1px solid grey;
+    width: 100px;
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+/* background: #81b3ff; */
+/* background: transparent; */
+/* color: rgb(156, 156, 156); */
+
+ 
+    height: 25px;
+}

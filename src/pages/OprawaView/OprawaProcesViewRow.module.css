@@ -281,6 +281,13 @@ outline: none;
    padding-right: 10px;
 }
 
+.td_tableProcesy_spedycja{
+   /* width: 20px; */
+   font-size: 0.9rem;
+   padding-right: 10px;
+}
+
+
 .td_tableProcesy_praca{
    /* width: 20px; */
    font-size: 0.9rem;

@@ -97,7 +97,12 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr >
-              <th className={style.th_tableProcesy_poczatek}> Początek</th> <th className={style.th_tableProcesy_poczatek}> Czas</th> <th> Koniec</th>  <th></th> <th> Nr</th> <th> Klient</th> <th> Praca</th>   <th> </th><th> </th><th> </th><th> </th><th> </th>
+              <th className={style.th_tableProcesy_poczatek}> Początek</th> <th className={style.th_tableProcesy_poczatek}> Czas</th> <th> Koniec</th>  
+              <th></th>
+               <th> Nr</th> <th> Klient</th> <th> Praca</th>   <th> </th><th> </th><th> </th><th> </th><th> Nakład</th><th> </th><th> </th>
+              <th >Spedycja</th>
+              <th>Status</th>
+
             </tr>
           </thead>
           <tbody>

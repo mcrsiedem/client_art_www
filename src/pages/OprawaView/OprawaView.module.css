@@ -258,6 +258,10 @@ tr:nth-of-type(2n) {
    padding-left: 10px;
 }
 
+.td_tableProcesy_spedycja{
+
+}
+
 .th_tableProcesy_czas{
    /* padding-left: 10px; */
    width:10px;
@@ -265,10 +269,7 @@ tr:nth-of-type(2n) {
 
 }
 
-.th_tableProcesy_koniec{
-   /* padding-left: 10px; */
 
-}
 
    .procesor_btn_container{
     display: flex;

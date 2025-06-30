@@ -105,6 +105,12 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
                       <td></td>
                       <td></td>
                       <td></td>
+                  {/* <td className={style.td_tableProcesy_klient}>{grup.ilosc_zbieran}</td> */}
+                  <td className={style.td_tableProcesy_klient}>{grup.naklad}</td>
+                  <td className={style.td_tableProcesy_klient}>{grup.typ_procesu}</td>
+                  <td className={style.td_tableProcesy_klient}>{grup.rodzaj_procesu}</td>
+                  <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
+                  {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
 
                   {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
                  <Status grup={grup}/> 

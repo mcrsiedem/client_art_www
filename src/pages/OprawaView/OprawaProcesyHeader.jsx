@@ -48,6 +48,7 @@ function ProcesyHeader() {
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>OPRAWA </p>
+           <DataWyswietlania/>
           {/* <ProcesSelect
             selectedProces={selectedProces}
             setSelectedProces={setSelectedProces}
@@ -172,90 +173,41 @@ setInitTime(event.target.value)
 }
 
 
-function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,selectedProcesor}) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const procesListName = contextApp.procesListName
-  const procesList = contextApp.procesList
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-
-  const procesory = contextApp.procesory
-  const setProcesory = contextApp.setProcesory
-  return (
-    <div className={style.col_dane}>
-      
-      <select
-        className={style.procesy_input}
-        value={6}
-        onChange={(event) => {
-          setSelectedProces(event.target.value)
-          setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-           fechGrupyAndWykonaniaForProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
 
 
-           setProcesory(
-            procesory
-            .map((t) => {return{...t, select: false}})
-            .map((t) => {
-              if (t.id == procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny ) {
-                return {...t, select: true }
-              } else {
-                return t;
-              }
-            })
-          )
 
 
-        }}
-      >
-        {procesListName?.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
+  function DataWyswietlania(){
+    const techContext = useContext(TechnologyContext);
+  // const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  // const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
+  
+  const dniWstecz = techContext.dniWstecz;
+  const setDniWstecz = techContext.setDniWstecz;
+  const selectedProcesor = techContext.selectedProcesor
+
+
+
+  return(
+      <div className={style.col}>
+      {/* <label className={style.label}> Wyświetl od... </label> */}
+      <input className={style.selectDataWyswietlania} type="date"
+         value={dniWstecz}
+        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
+         onChange={(event) => {
+
+          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
+           fechGrupyOprawaForProcesor(selectedProcesor)
+          setDniWstecz( event.target.value);
+
+
+
+            
+     
+
+         }}></input>
     </div>
-  );}
-
-
-  function PokazStany2({  }) {
-    const techContext = useContext(TechnologyContext);
-    const grupyOprawaAll = techContext.grupyOprawaAll
-    return (
-      <button
-        onClick={async () => {
-          console.clear()
-          console.log("Prces Viev: ")
-          console.log("Grupy oprawa All : ",grupyOprawaAll)
-
-  
-        }}
-        className={ style.btn}
-      >
-        Stany...
-      </button>
-    );
-  }
-
-  const PokazStany = () => {
-    const techContext = useContext(TechnologyContext);
-    const grupyWykonanAll = techContext.grupyWykonanAll
-    return (
-      <div className={style.menu_produkty}>
-        <img
-          className={style.iconMenuBtn}
-          src={Logo_ustawienia2}
-          title="Auto wszystkie arkusze + legi"
-          onClick={() => {
-
-            console.clear()
-            console.log("Prces Viev: ")
-            console.log("GrupyAll : ",grupyWykonanAll)
-
-          }}
-          alt="x"
-        />
-      </div>
-    );
-  };
-  
+  );
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
+import DecodeToken from "pages/Login/DecodeToken";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
   const tableZamowienia= contextApp.tableZamowienia;
@@ -26,7 +27,11 @@ export function useZamowienia() {
     );
     contextApp.setZamowieniaPliki([...res2.data]);
 
+    // tylko dla Jarka
+       if(DecodeToken(sessionStorage.getItem("token")).id==3){
 scrollTable(tableZamowienia)
+       }
+
 
   };
 

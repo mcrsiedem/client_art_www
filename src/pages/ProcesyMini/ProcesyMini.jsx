@@ -22,6 +22,8 @@ export default function ProcesyMini( ) {
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
+  
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
   const setSelectedProces = techContext.setSelectedProces;
@@ -60,6 +62,8 @@ console.log("proc domyslny"+procesor_id)
 let proc = CheckProcesorID(selectedProcesor)
 // console.log("proc do fech "+proc)
           fechGrupyAndWykonaniaForProcesor(proc);
+          fechGrupyOprawaForProcesor(proc);
+          
 
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)
@@ -101,6 +105,9 @@ let proc = CheckProcesorID(selectedProcesor)
 const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
   const grupyWykonanAll = techContext.grupyWykonanAll;
+  const grupyOprawaAll = techContext.grupyOprawaAll;
+
+  
   const selectedProcesor = techContext.selectedProcesor;
   const selectedProces = techContext.selectedProces;
   const [unlockTable, setUnlockTable] = useState(true);
@@ -133,7 +140,7 @@ const WykonaniaTable = () => {
             </tr>
           </thead>
           <tbody>
-            {grupyWykonanAll
+            {selectedProcesor == 8 || selectedProcesor == 10 ? grupyOprawaAll
               .filter(
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )
@@ -155,7 +162,33 @@ const WykonaniaTable = () => {
                     />
                   );
                 }
-              })}
+              }) :
+              
+              grupyWykonanAll
+              .filter(
+                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+              )
+              .map((grup, i) => {
+                if (grup.typ_grupy != 1) {
+                  return (
+                    <ProcesViewRow
+                      grup={grup}
+                      unlockTable={unlockTable}
+                      setUnlockTable={setUnlockTable}
+                    />
+                  );
+                } else {
+                  return (
+                    <ProcesViewRowPrzerwa
+                      grup={grup}
+                      unlockTable={unlockTable}
+                      setUnlockTable={setUnlockTable}
+                    />
+                  );
+                }
+              })
+              
+              }
           </tbody>
         </table>
       </div>

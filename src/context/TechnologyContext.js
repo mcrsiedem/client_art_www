@@ -75,6 +75,10 @@ export const TechnologyContextProvider = ({children})=>{
         const [grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka] = useState([]);
         const [grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone] = useState([]);
         const [grupyWykonanAllWyszukiwarka, setGrupWykonanAllWyszukiwarka] = useState([]);
+
+        const [grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa] = useState([]);
+        const [grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka] = useState([]);
+
         const [wykonaniaAll, setWykonaniaAll] = useState([]);
 
         // id otwieranej technologi
@@ -842,7 +846,8 @@ async function fechTechnology() {
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
-                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa
+                    grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
+                    grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka
                 }}
             >
                 {children}

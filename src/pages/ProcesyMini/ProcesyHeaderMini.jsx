@@ -23,6 +23,7 @@ function ProcesyHeaderMini() {
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
   const wykonaniaAll = techContext.wykonaniaAll;
+  const grupyOprawaAll = techContext.grupyOprawaAll;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 const procesory = appcontext.procesory
 
@@ -60,7 +61,15 @@ const procesory = appcontext.procesory
 
         <div className={style.centerHeaderContener}>
           
-          <p className={style.procesor_title}> {procesory?.filter(x=> x.id == selectedProcesor)[0]?.nazwa} </p>
+          <p onClick={()=>{ 
+            // console.log(selectedProcesor)
+            console.log(grupyOprawaAll)
+            
+
+// setSelectedProces(8)
+            
+            
+            }} className={style.procesor_title}> {procesory?.filter(x=> x.id == selectedProcesor)[0]?.nazwa} </p>
         {/* <PokazStany /> */}
         {/* <PrzerwaBTN /> */}
 

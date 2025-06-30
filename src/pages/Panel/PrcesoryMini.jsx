@@ -31,6 +31,9 @@ export default function ProcesoryMini({ user, setUser,logout }) {
   const grupyWykonanAll = techContext.grupyWykonanAll;
   const grupyWykonanAllNiezakonczone = techContext.grupyWykonanAllNiezakonczone;
   const setGrupWykonanAllNiezakonczone = techContext.setGrupWykonanAllNiezakonczone;
+
+    const grupyWykonanAllNiezakonczoneOprawa = techContext.grupyWykonanAllNiezakonczoneOprawa;
+  const setGrupWykonanAllNiezakonczoneOprawa = techContext.setGrupWykonanAllNiezakonczoneOprawa;
 //   const setSelectedProcesor = appcontext.setSelectedProcesor
    const setSelectedProcesor = techContext.setSelectedProcesor;
   async function checkToken() {
@@ -46,6 +49,7 @@ export default function ProcesoryMini({ user, setUser,logout }) {
       .then((res) => {
        
 setGrupWykonanAllNiezakonczone(res.data[0])
+setGrupWykonanAllNiezakonczoneOprawa(res.data[1])
 // console.log()
       });
 
@@ -123,6 +127,8 @@ setGrupWykonanAllNiezakonczone(res.data[0])
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_inne==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(29); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>KODY</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 29 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_inne==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(6); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>BOBST</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 6 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
                                                          {DecodeToken(sessionStorage.getItem("token")).mini_inne==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(7); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>TYGIEL</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 7 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_oprawa==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(8); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>KOLBUS</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczoneOprawa.filter(x=> x.procesor_id == 8 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
+                                                         {DecodeToken(sessionStorage.getItem("token")).mini_oprawa==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(10); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>ST450</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczoneOprawa.filter(x=> x.procesor_id == 10 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
                                                        
                                                        
                                                        

@@ -94,3 +94,27 @@ border: 1px solid rgb(192, 192, 192);
 .procesy_input:focus{
 outline: none;
 }
+
+
+   .procesRow_tr_DRUK{
+    height: 30px;
+    /* color: #c5dad4; */
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+ }
+
+  .procesRow_tr_DRUK:nth-of-type(2n){
+    height: 30px;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+ }
+
+  .procesRow_tr_RIP{
+    height: 30px;
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ }
+
+  .procesRow_tr_RIP:nth-of-type(2n){
+    height: 30px;
+    background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ }

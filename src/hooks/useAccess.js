@@ -50,6 +50,9 @@ export function useAccess() {
       return true;
     }
 
+        if (DecodeToken(sessionStorage.getItem("token")).manage_oprawa == 1 && selectedProces == 6) {
+      return true;
+    }
 
     return false
   };

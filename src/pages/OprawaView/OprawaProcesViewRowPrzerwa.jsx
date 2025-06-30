@@ -31,7 +31,7 @@ import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwani
 
 
 
-export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }) {
+export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable }) {
     const navigate = useNavigate();
     const techContext = useContext(TechnologyContext);
     const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;

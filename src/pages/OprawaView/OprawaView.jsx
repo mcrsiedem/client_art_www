@@ -10,10 +10,12 @@ import { _status } from "utils/initialvalue";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
-import OprawaProcesViewRow from "./OprawaProcesViewRow";
+
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
+import OprawaProcesViewRowPrzerwa from "./OprawaProcesViewRowPrzerwa";
+import OprawaProcesViewRow from "./OprawaProcesViewRow";
 
 export default function OprawaView( ) {
   const navigate = useNavigate();
@@ -102,7 +104,19 @@ const WykonaniaTable = () => {
             {grupyOprawaAll
               .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
               .map((grup, i) => {
-                return <OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>;
+
+                // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+
+                if (grup.typ_grupy == 2) {
+                return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+                }
+                else{
+                return (<OprawaProcesViewRowPrzerwa grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+
+
+                }
+
+
               })}
           </tbody>
         </table>

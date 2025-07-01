@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext,useRef,useCallback } from "react
 import { useCookies } from "react-cookie";
 import HeaderModal from "./Header/HeaderModal";
 import Dane from "./Dane/Dane";
-import ProduktTemplate from "./ProduktTempalate/ProduktTemplate";
 
 import { initialProcesy } from "utils/initialvalue";
 import {
@@ -15,7 +14,7 @@ import {
   _status,
   _stan,
   _typ_produktu,
-  _rodzaj_oprawy,
+
 } from "utils/initialvalue";
 
 import axios from "axios";

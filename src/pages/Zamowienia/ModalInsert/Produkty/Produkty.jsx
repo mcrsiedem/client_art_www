@@ -1,7 +1,6 @@
 import style from "./Produkty.module.css";
 import { useContext, useState } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-// import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
 import iconHistoriaDark from "assets/iconHistoriaDark.svg";
 

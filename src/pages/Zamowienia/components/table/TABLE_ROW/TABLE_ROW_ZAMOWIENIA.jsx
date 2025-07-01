@@ -414,7 +414,7 @@ const PracaTableZamowienia = ({ row,i }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.Praca}
       className={style.tytulInput}
-      value={row.tytul}
+      value={DecodeToken(sessionStorage.getItem("token")).id==1 ? row.id +"   "+row.tytul : row.tytul}
       readOnly
 
     />

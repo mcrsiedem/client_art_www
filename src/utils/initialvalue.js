@@ -604,29 +604,7 @@ const _fsc = [
   },
 ];
 
-const _rodzaj_oprawy = [
-  {
-    id: 1,
-    nazwa: "HotMelt"
-  },
-  {
-    id: 2,
-    nazwa: "PUR",
-  },
-  {
-    id: 3,
-    nazwa: "Zeszyt",
-  },
-  {
-    id: 4,
-    nazwa: "Szyto klejona",
-  },
-  {
-    id: 5,
-    nazwa: "Kompletowanie",
-  }
 
-]
 
 
 
@@ -654,7 +632,7 @@ export {
   _waluta,
   initialDane,
   initialPreOrder,
-  _rodzaj_oprawy,
+
   _wykonczenie,
   _stan_technologi,
   _status_technologi,

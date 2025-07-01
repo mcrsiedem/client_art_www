@@ -2,7 +2,6 @@ import style from "./ProduktyTech.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
-// import { _papiery, _typ_produktu,_rodzaj_oprawy} from "../api";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
 import Logo_ustawienia from "assets/settings.svg";

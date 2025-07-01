@@ -330,6 +330,18 @@ gap:6px
   font-size: 0.9rem;
   color: rgb(86, 86, 86);
 }
+.procesy_elementy_indeks{
+  font-weight: bold;
+   font-size: 0.9rem;
+
+  color: rgb(86, 86, 86);
+  /* background-color: antiquewhite; */
+  padding-bottom: 2px;
+  /* margin-top: 0px; */
+  /* padding-top: 0; */
+}
+
+
 .procesy_elementy_light {
   font-size: 0.8rem;
   padding-top: 2px;

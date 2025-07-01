@@ -384,7 +384,7 @@ const showMeProcessName = (id) =>{
   .filter((frag) => frag.element_id == row.id)
   .sort((a, b) => a.indeks - b.indeks)
   .filter((x) => x.delete != true)
-  .map((pr,i) => (<><p className={style.procesy_elementy_bold}>{ procesListName?.filter(pln => pln.id == pr.nazwa_id)[0].nazwa } </p> <p className={style.procesy_elementy_light}>  {pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+ " "}</p> </>) ) 
+  .map((pr,i) => (<> <p className={style.procesy_elementy_indeks}> {pr.indeks}</p><p className={style.procesy_elementy_bold}>{ procesListName?.filter(pln => pln.id == pr.nazwa_id)[0].nazwa } </p> <p className={style.procesy_elementy_light}>  {pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+ " "}</p> </>) ) 
   }
   </>
   ) 

@@ -42,7 +42,7 @@ export   function useStatystyki() {
 
 let kal = []
               const promiseA = new Promise((resolve, reject) => {
-        for(let x=0; x<dni; x++){
+        for(let x=0; x<=dni; x++){
           kal.push({
             id : x,
             data: today_dodaj_dni(data_spedycji_min,x)

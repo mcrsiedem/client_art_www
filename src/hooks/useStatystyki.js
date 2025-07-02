@@ -30,7 +30,7 @@ export   function useStatystyki() {
           
         // console.log(kalendarz.data[1][0].data_spedycji_max)
 
-
+setKalendarz(kalendarz.data)
       }
 
 //----------------------------------------------------------------
@@ -41,3 +41,22 @@ export   function useStatystyki() {
 
     return [refreshKalendarz];
   }
+
+
+                      // {kalendarz.data[1][0].data_spedycji_max
+                      //   .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
+                      //   .map((grup, i) => {
+          
+                      //     // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+          
+                      //     if (grup.typ_grupy == 2) {
+                      //     return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+                      //     }
+                      //     else{
+                      //     return (<OprawaProcesViewRowPrzerwa grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+          
+          
+                      //     }
+          
+          
+                      //   })}

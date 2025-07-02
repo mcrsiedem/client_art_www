@@ -45,7 +45,7 @@ export const AppContextProvider = ({children})=>{
 
     const [listaPapierowPowleczenieWyszukiwarka,setListaPapierowPowleczenieWyszukiwarka] = useState();
     const [listaPapierowPowleczenie, setListaPapierowPowleczenie] = useState();
-    const [kalendarz, setKalendarz] = useState();
+    const [kalendarz, setKalendarz] = useState(0);
 
     const [wykonczenieEdit, setWykonczenieEdit] = useState(_wykonczenie);
     const [procesory, setProcesory] = useState();

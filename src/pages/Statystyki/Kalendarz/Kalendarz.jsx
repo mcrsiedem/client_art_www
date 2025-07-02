@@ -26,12 +26,16 @@ export default function Kalendarz() {
 
   const appContext = useContext(AppContext)
   const kalendarz = appContext.kalendarz;
-
+const ilosc_dni=kalendarz[1][0]?.ilosc_dni
 
   return (
-    <div className={style.container}>
-             
-                <Dzien/>
+    <div className={style.container2}>
+
+
+             {
+            [...Array(ilosc_dni).keys()].map(key => <Dzien key={key}/>)
+             }
+
      
     </div>
   );

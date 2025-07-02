@@ -13,6 +13,7 @@ import { _status } from "utils/initialvalue";
 import STATYSTYKI_HEADER from "./Header/STATYSTYKI_HEADER";
 import STATYSTYKI_FOOTER from "./Footer/STATYSTYKI_FOOTER";
 import STATYSTYKI_CENTER from "./Center/STATYSTYKI_CENTER";
+import { useStatystyki } from "hooks/useStatystyki";
 
 export default function Statystyki( ) {
   const navigate = useNavigate();
@@ -27,27 +28,15 @@ export default function Statystyki( ) {
   const setClients = appContext.setClients;
   const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka;
   const setNadkomplety = appContext.setNadkomplety;
-
+ const [refreshKalendarz] = useStatystyki()
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechGrupyAndWykonaniaForProcesor(1);
+          refreshKalendarz()
 
-          setProcesory(
-            procesory
-              ?.map((t) => {
-                return { ...t, select: false };
-              })
-              .map((t) => {
-                if (t.id == 1) {
-                  return { ...t, select: true };
-                } else {
-                  return t;
-                }
-              })
-          );
+
         } else {
           navigate("/Login");
         }

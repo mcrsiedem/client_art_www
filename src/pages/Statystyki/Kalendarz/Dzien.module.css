@@ -6,9 +6,10 @@
    align-items: center;
    justify-content: center;
    background-color: chartreuse;
-   width: 200px;
-   height: 200px;
-  
+   width: 100px;
+   height: calc(100vh - 120px);
+   outline: 1px solid green;
+
 }
 
 .main{

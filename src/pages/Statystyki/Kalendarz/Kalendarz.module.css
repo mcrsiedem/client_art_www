@@ -1,11 +1,15 @@
 
-.container{
+.container2{
    display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   
-  
+   flex-direction: row;
+   align-items: flex-start;
+   justify-content: flex-start;
+   /* flex-direction: row; */
+
+    /* transform: scaleX(0.2); */
+   /* height: 100vh */
+   /* background-color: antiquewhite; */
+
 }
 
 .main{

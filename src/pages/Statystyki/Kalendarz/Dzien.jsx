@@ -29,9 +29,9 @@ export default function Dzien() {
 
   return (
     <div className={style.container}>
-              <div  className={style.main}>
+   
       s
-              </div>
+           
     </div>
   );
 }

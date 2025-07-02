@@ -30,9 +30,9 @@ export default function Kalendarz() {
 
   return (
     <div className={style.container}>
-              <div  className={style.main}>
+             
                 <Dzien/>
-              </div>
+     
     </div>
   );
 }

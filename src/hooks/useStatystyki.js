@@ -11,6 +11,7 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "./useGrupyWykonan";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+import { today_dodaj_dni } from "actions/today_dodaj_dni";
 export   function useStatystyki() {
 
 
@@ -20,8 +21,9 @@ export   function useStatystyki() {
 
       const kalendarz =appcontext.kalendarz;
       const setKalendarz = appcontext.setKalendarz;
+      const kalendarzDane = appcontext.kalendarzDane;
+      const setKalendarzDane = appcontext.setKalendarzDane;
       let dni,data_spedycji_min,data_spedycji_max, zamowienia; 
-
 
       const refreshKalendarz = async () =>{
 
@@ -42,7 +44,8 @@ let kal = []
               const promiseA = new Promise((resolve, reject) => {
         for(let x=0; x<dni; x++){
           kal.push({
-            id : x 
+            id : x,
+            data: today_dodaj_dni(data_spedycji_min,x)
           })
         }
 
@@ -51,6 +54,7 @@ let kal = []
         promiseA.then(res => {
           console.log("PROMIS OK")
 setKalendarz(kal) 
+setKalendarzDane(zamowienia)
         })
 
 

@@ -46,15 +46,8 @@ export default function Kalendarz() {
             
                             return (<Dzien key={"ab"+i} grup={grup} />)
             
-                            // if (grup.typ_grupy == 2) {
-                            // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
-                            // }
-                            // else{
-                            // return (<OprawaProcesViewRowPrzerwa grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
-            
-            
-                            // }
-            
+          
+          
             
                           })}
     </div>

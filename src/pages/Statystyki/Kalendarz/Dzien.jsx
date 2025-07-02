@@ -25,12 +25,23 @@ export default function Dzien({grup}) {
 
   const appContext = useContext(AppContext)
   const kalendarz = appContext.kalendarz;
+  const kalendarzDane = appContext.kalendarzDane;
 
 
   return (
     <div className={style.container}>
    
-  {grup.id}
+  {grup.data} 
+                 {kalendarzDane
+                            .filter((x) => x.data_spedycji == grup.data)
+                            .map((praca, i) => {
+              
+                              return (<p key={"abc"+i}  >{praca.firma_nazwa}</p>)
+              
+            
+            
+              
+                            })}
            
     </div>
   );

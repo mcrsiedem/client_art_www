@@ -36,11 +36,27 @@ export default function Kalendarz() {
     <div className={style.container2}>
 
 
-             {
+             {/* {
             [...Array(kalendarz).keys()].map(key => <Dzien key={key}/>)
-             }
+             } */}
 
-     
+                        {kalendarz
+                        //   .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
+                          .map((grup, i) => {
+            
+                            return (<Dzien grup={grup} />)
+            
+                            // if (grup.typ_grupy == 2) {
+                            // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+                            // }
+                            // else{
+                            // return (<OprawaProcesViewRowPrzerwa grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+            
+            
+                            // }
+            
+            
+                          })}
     </div>
   );
 }

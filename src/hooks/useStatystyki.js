@@ -20,17 +20,30 @@ export   function useStatystyki() {
 
       const kalendarz =appcontext.kalendarz;
       const setKalendarz = appcontext.setKalendarz;
-
+      let dni,data_spedycji_min,data_spedycji_max, zamowienia; 
 
 
       const refreshKalendarz = async () =>{
 
 
-        const kalendarz = await axios.get(   IP + "zamowieniaKalendarz/" + sessionStorage.getItem("token"));
-          
+        const dane_kalendarz = await axios.get(   IP + "zamowieniaKalendarz/" + sessionStorage.getItem("token"));
+        dni = dane_kalendarz.data[1][0].ilosc_dni
+        data_spedycji_min = dane_kalendarz.data[1][0].data_spedycji_min
+        data_spedycji_max = dane_kalendarz.data[1][0].data_spedycji_max
+        zamowienia = dane_kalendarz.data[0]
+        // console.log(dni)
+        // console.log(data_spedycji_min)
+        // console.log(data_spedycji_max)
+      // console.log(zamowienia)
+        
         // console.log(kalendarz.data[1][0].data_spedycji_max)
+        for(let x=0; x<dni; x++){
+          kalendarz.push({
+            id : x 
+          })
+        }
 
-setKalendarz(kalendarz.data[1][0].ilosc_dni)
+setKalendarz(kalendarz)
       }
 
 //----------------------------------------------------------------

@@ -17,7 +17,7 @@ import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 // import KALENDARZ_BTN from "./btn/KALENDARZ_BTN";
 
 
-export default function Dzien() {
+export default function Dzien({grup}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ export default function Dzien() {
   return (
     <div className={style.container}>
    
-  s
+  {grup.id}
            
     </div>
   );

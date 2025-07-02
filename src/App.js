@@ -19,6 +19,7 @@ import TechnologieView from "pages/Technologie/TechnologieView";
 import OprawaView from "pages/OprawaView/OprawaView";
 import ProcesyMini from "pages/ProcesyMini/ProcesyMini";
 import ProcesoryMini from "pages/Panel/PrcesoryMini";
+import Statystyki from "pages/Statystyki/Statystyki";
 
 export default function App() {
 
@@ -42,6 +43,7 @@ export default function App() {
               <Route path='/Technologie' element={<TechnologieView />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
+              <Route path='/statystyki' element={<Statystyki />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

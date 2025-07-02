@@ -45,6 +45,7 @@ export const AppContextProvider = ({children})=>{
 
     const [listaPapierowPowleczenieWyszukiwarka,setListaPapierowPowleczenieWyszukiwarka] = useState();
     const [listaPapierowPowleczenie, setListaPapierowPowleczenie] = useState();
+    const [kalendarz, setKalendarz] = useState();
 
     const [wykonczenieEdit, setWykonczenieEdit] = useState(_wykonczenie);
     const [procesory, setProcesory] = useState();
@@ -139,7 +140,8 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     mobile, setMobile,setNadkomplety,nadkomplety,wykonczenieEdit,
                     uzytkownicy, setUzytkownicy,
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
-                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania
+                    showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania,
+                    kalendarz, setKalendarz
                 }}
             >
                 {children}

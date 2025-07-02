@@ -1,0 +1,21 @@
+.btn{
+    height: 40px;
+    background: rgb(228, 228, 228);
+    border: none;
+    width: 100%;
+     /* font-family: Garamond   ,Tahoma, Verdana, sans-serif; */
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+
+}
+
+.btn:hover{
+    background: rgb(200, 200, 200);
+
+}
+
+.icon{
+    width: 15px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+}

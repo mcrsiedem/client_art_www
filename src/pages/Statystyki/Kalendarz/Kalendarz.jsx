@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./STATYSTYKI_CENTER.module.css"
+import style from "./Kalendarz.module.css"
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
@@ -14,35 +14,24 @@ import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 import axios from "axios";
 // import { IP } from "";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
-import KALENDARZ_BTN from "./btn/KALENDARZ_BTN";
-import Kalendarz from "../Kalendarz/Kalendarz";
+// import KALENDARZ_BTN from "./btn/KALENDARZ_BTN";
+import Dzien from "./Dzien";
 
 
-export default function STATYSTYKI_CENTER() {
+export default function Kalendarz() {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
-  const show = localStorage.getItem("header");
+
   const techContext = useContext(TechnologyContext);
-  const selectedProces = techContext.selectedProces;
-  const setSelectedProces = techContext.setSelectedProces;
-  const setSelectedProcesor = techContext.setSelectedProcesor;
-  const selectedProcesor = techContext.selectedProcesor;
-  const wykonaniaAll = techContext.wykonaniaAll;
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+
   const appContext = useContext(AppContext)
+  const kalendarz = appContext.kalendarz;
+
 
   return (
     <div className={style.container}>
-          
-                <div className={style.leftHeaderContener}>
-                <KALENDARZ_BTN/>
-                </div>
-
-  
-                <div className={style.rightHeaderContener}>
-          <Kalendarz/>
-
-             
+              <div  className={style.main}>
+                <Dzien/>
               </div>
     </div>
   );

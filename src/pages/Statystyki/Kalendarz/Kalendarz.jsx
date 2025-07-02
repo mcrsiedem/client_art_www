@@ -16,6 +16,8 @@ import axios from "axios";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 // import KALENDARZ_BTN from "./btn/KALENDARZ_BTN";
 import Dzien from "./Dzien";
+import { IP } from "utils/Host";
+import { useStatystyki } from "hooks/useStatystyki";
 
 
 export default function Kalendarz() {
@@ -26,14 +28,16 @@ export default function Kalendarz() {
 
   const appContext = useContext(AppContext)
   const kalendarz = appContext.kalendarz;
-const ilosc_dni=kalendarz[1][0]?.ilosc_dni
+//    const [refreshKalendarz] = useStatystyki()
+
+
 
   return (
     <div className={style.container2}>
 
 
              {
-            [...Array(ilosc_dni).keys()].map(key => <Dzien key={key}/>)
+            [...Array(kalendarz).keys()].map(key => <Dzien key={key}/>)
              }
 
      

@@ -30,7 +30,7 @@ export   function useStatystyki() {
           
         // console.log(kalendarz.data[1][0].data_spedycji_max)
 
-setKalendarz(kalendarz.data)
+setKalendarz(kalendarz.data[1][0].ilosc_dni)
       }
 
 //----------------------------------------------------------------

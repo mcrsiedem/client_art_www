@@ -30,7 +30,7 @@ export default function Dzien() {
   return (
     <div className={style.container}>
    
-      s
+  s
            
     </div>
   );

@@ -37,13 +37,24 @@ export   function useStatystyki() {
       // console.log(zamowienia)
         
         // console.log(kalendarz.data[1][0].data_spedycji_max)
+
+let kal = []
+              const promiseA = new Promise((resolve, reject) => {
         for(let x=0; x<dni; x++){
-          kalendarz.push({
+          kal.push({
             id : x 
           })
         }
 
-setKalendarz(kalendarz)
+          resolve(777);
+        })
+        promiseA.then(res => {
+          console.log("PROMIS OK")
+setKalendarz(kal) 
+        })
+
+
+
       }
 
 //----------------------------------------------------------------

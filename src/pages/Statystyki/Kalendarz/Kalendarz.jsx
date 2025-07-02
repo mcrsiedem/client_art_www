@@ -44,7 +44,7 @@ export default function Kalendarz() {
                         //   .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
                           .map((grup, i) => {
             
-                            return (<Dzien grup={grup} />)
+                            return (<Dzien key={"ab"+i} grup={grup} />)
             
                             // if (grup.typ_grupy == 2) {
                             // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)

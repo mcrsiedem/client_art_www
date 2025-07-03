@@ -15,20 +15,25 @@ import TableMini from "./components/table/TableMini";
 import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
+import { ModalInsertContext } from "context/ModalInsertContext";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
+  const contextModal = useContext(ModalInsertContext);
+  
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const [openModalInsert, setOpenModalInsert] = useState(false);
   const open = useRef(false);
   const navigate = useNavigate();
   const data = contextApp.zamowienia;
+  const selectedZamowienie = contextModal.selectedZamowienie;
   const setData = contextApp.setZamowienia;
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   const setNadkomplety = contextApp.setNadkomplety;
   const [callForPaper] = useApiPapier();
 const [refreshZamowienia] = useZamowienia()
+
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
     open.current = false;
@@ -70,7 +75,7 @@ const [refreshZamowienia] = useZamowienia()
       ev.preventDefault();
       await axios
         .put(IP + "setOrderClosed", {
-          id: row.id,
+          id: selectedZamowienie.id,
         })
         .then(() => {
           return (ev.returnValue = "Are you sure you want to close?");

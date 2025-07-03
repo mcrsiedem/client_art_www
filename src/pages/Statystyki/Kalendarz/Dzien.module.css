@@ -6,13 +6,13 @@
    align-items: center;
    justify-content: center; */
    display: grid;
-   grid-template-rows: 50px 1fr 100px;
+   grid-template-rows: 50px 1fr 120px;
 
    background-color: rgb(244, 251, 255);
    
    width: 150px;
    height: calc(100vh - 120px);
-   outline: 1px solid rgb(226, 226, 226);
+   outline: 1px dashed rgb(231, 231, 231);
 
 }
 
@@ -53,4 +53,25 @@
     background: rgb(146, 192, 253);
     background: rgb(209, 209, 209);
 
+}
+
+.title_praca{
+         display: flex;
+
+   align-items: center;
+   justify-content: center; 
+    height: 35px;
+   /* letter-spacing: 3px; */
+    font-size: 0.8rem;
+    /* background: rgb(146, 192, 253);
+    background: rgb(209, 209, 209); */
+
+}
+.container_praca{
+   border: 1px solid rgb(197, 197, 197);
+   /* background-color: red; */
+}
+.tlo{
+   background: greenyellow;
+   width: 50%;
 }

@@ -25,7 +25,8 @@ export default function Dzien({ grup }) {
       <div>        {kalendarzDane
         .filter((x) => x.data_spedycji == grup.data)
         .map((praca, i) => {
-          return <p key={"abc" + i}>{praca.firma_nazwa}</p>;
+         return <PRACA key={"abc" + i} praca={praca}/>
+          // return <p key={"abc" + i}>{praca.firma_nazwa}</p>;
         })}
         </div>
      
@@ -37,6 +38,33 @@ export default function Dzien({ grup }) {
 }
 
 
+
+function PRACA({ praca }) {
+
+
+  const appContext = useContext(AppContext);
+
+  const kalendarzDane = appContext.kalendarzDane;
+
+  // let do_druku = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku)).reduce((a, b) => a + b, 0))
+  // let wydrukowano = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku_zakonczone)).reduce((a, b) => a + b, 0))
+  // let wydrukowano_procent = Math.ceil(wydrukowano*100 / do_druku)
+
+      return (
+    <div className={style.container_praca}>
+
+  
+   <div className={style.title_praca}> {praca.firma_nazwa}  - 100 {praca.wydrukowano_procent} %  </div>
+ 
+   
+
+     </div>
+  );
+  
+
+}
+
+
 function DZIEN_DRUK({ grup }) {
 
 
@@ -44,13 +72,20 @@ function DZIEN_DRUK({ grup }) {
 
   const kalendarzDane = appContext.kalendarzDane;
 
-  return (
+  let do_druku = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku)).reduce((a, b) => a + b, 0))
+  let wydrukowano = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku_zakonczone)).reduce((a, b) => a + b, 0))
+  let wydrukowano_procent = Math.ceil(wydrukowano*100 / do_druku)
+  if(do_druku!=0){
+      return (
     <div className={style.container_druk}>
 
      
-      <div className={style.title}> Do druku : {kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku)).reduce((a, b) => a + b, 0).toLocaleString()} ark.</div>
-      <div className={style.title}> Wydrukowane : {kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku_zakonczone)).reduce((a, b) => a + b, 0).toLocaleString()} ark.</div>
+      <div className={style.title}> Do druku : {do_druku.toLocaleString()} ark.</div>
+      <div className={style.title}> Wydrukowane : {wydrukowano.toLocaleString()} ark.</div>
+      <div className={style.title}>  {wydrukowano_procent} %</div>
 
      </div>
   );
+  }
+
 }

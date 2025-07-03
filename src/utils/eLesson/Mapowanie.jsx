@@ -31,3 +31,6 @@ export default function RowList({ children }) {
   );
 }
 //-------------------------   
+
+
+            // [...Array(kalendarz).keys()].map(key => <Dzien key={key}/>)

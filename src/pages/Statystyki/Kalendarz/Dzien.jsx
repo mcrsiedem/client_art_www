@@ -51,10 +51,13 @@ function PRACA({ praca }) {
   // let wydrukowano_procent = Math.ceil(wydrukowano*100 / do_druku)
 
       return (
-    <div className={style.container_praca}>
+    <div         onDoubleClick={(node, event) => {
+          // open2(row.id);
+          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+        }} className={style.container_praca}>
 
   
-   <div className={style.title_praca}> {praca.firma_nazwa}  - 100 {praca.wydrukowano_procent} %  </div>
+   <div className={style.title_praca}> {praca.firma_nazwa}  -  {praca.wydrukowano_procent} %  </div>
  
    
 

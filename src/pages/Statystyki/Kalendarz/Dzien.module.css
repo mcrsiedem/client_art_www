@@ -6,7 +6,7 @@
    align-items: center;
    justify-content: center; */
    display: grid;
-   grid-template-rows: 50px 1fr 120px;
+   grid-template-rows: 50px 1fr 100px;
 
    background-color: rgb(244, 251, 255);
    
@@ -47,11 +47,12 @@
 
    align-items: center;
    justify-content: center; 
-    height: 40px;
+    height: 30px;
    /* letter-spacing: 3px; */
     font-size: 0.8rem;
-    background: rgb(146, 192, 253);
     background: rgb(209, 209, 209);
+    background: rgb(146, 192, 253);
+   border: 1px solid rgb(122, 167, 226);
 
 }
 

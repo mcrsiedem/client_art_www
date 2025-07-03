@@ -9,6 +9,7 @@ import { IP } from "utils/Host";
 import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
+  
     const [lockDragDrop, setLockDragDrop] = useState(false);
     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
 

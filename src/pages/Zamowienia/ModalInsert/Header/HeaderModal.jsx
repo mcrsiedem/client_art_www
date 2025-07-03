@@ -290,6 +290,7 @@ const fragmenty = contextModalInsert.fragmenty;
 const oprawa = contextModalInsert.oprawa;
 const pakowanie = contextModalInsert.pakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
+const selectedZamowienie = contextModalInsert.selectedZamowienie;
 
 
 
@@ -310,7 +311,7 @@ const procesyElementow = contextModalInsert.procesyElementow;
                               setOpenModalInsert(false);
                               if (!readOnly) {
                                 await axios.put(IP + "setOrderClosed", {
-                                  id: row.id,
+                                  id: selectedZamowienie.id,
                                 });
                               contextModalInsert.setDaneZamowienia(initialDane)
                               contextModalInsert.setProdukty(initialProdukty)
@@ -329,7 +330,7 @@ const procesyElementow = contextModalInsert.procesyElementow;
                                      setOpenModalInsert(false);
                               if (!readOnly) {
                                 await axios.put(IP + "setOrderClosed", {
-                                  id: row.id,
+                                  id: selectedZamowienie.id,
                                 });
                               contextModalInsert.setDaneZamowienia(initialDane)
                               contextModalInsert.setProdukty(initialProdukty)

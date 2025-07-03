@@ -39,7 +39,10 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
     const [sortWgEtapu] = useSortowanieZamowienia()
-  
+
+      const contextModal = useContext(ModalInsertContext);
+    const openModalInsert = contextModal.openModalInsert;
+  const setOpenModalInsert = contextModal.setOpenModalInsert;
 
 
   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
@@ -182,8 +185,10 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
 
         }}
         onDoubleClick={(node, event) => {
-          open2(row.id);
-          setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+
+setOpenModalInsert(true)
+          // open2(row.id);
+          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }}
       >
         {/* <IconErrorTable row={row} /> */}

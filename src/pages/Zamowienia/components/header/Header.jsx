@@ -11,17 +11,20 @@ import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BT
 import DecodeToken from "pages/Login/DecodeToken";
 import { _etapy_produkcji } from "utils/initialvalue";
 import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
    const contextApp = useContext(AppContext);
+   const contexModal = useContext(ModalInsertContext);
    const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane] = useZamowienia();
     const selectedUser = contextApp.selectedUser
     const selectedKlient = contextApp.selectedKlient
     const zamowienia = contextApp.zamowienia;
     const setZamowienia = contextApp.setZamowienia;
+    const setSelectedZamowienie = contexModal.setSelectedZamowienie;
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -48,6 +51,7 @@ export default function Header({ dodaj_clikHandler}) {
           className={style.icon}
           src={iconAdd}
           onClick={() => {
+            setSelectedZamowienie({id:1})
             dodaj_clikHandler();
           }}
           alt="React Logo"

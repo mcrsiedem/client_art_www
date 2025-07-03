@@ -9,6 +9,7 @@ import { IP } from "utils/Host";
 import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
+    const [openModalInsert, setOpenModalInsert] = useState(false);
   
     const [lockDragDrop, setLockDragDrop] = useState(false);
     const [isSaveButtonDisabled, setSaveButtonDisabled] = useState(true);
@@ -245,6 +246,7 @@ export const ModalInsertContextProvider = ({children})=>{
     return (
       <ModalInsertContext.Provider
         value={{
+          openModalInsert, setOpenModalInsert,
           daneZamowienia, setDaneZamowienia,
           produkty, setProdukty,
           elementy, setElementy,

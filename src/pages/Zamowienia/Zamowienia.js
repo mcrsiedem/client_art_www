@@ -22,7 +22,7 @@ function Zamowienia({ user, setUser }) {
   const contextModal = useContext(ModalInsertContext);
   
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
-  const [openModalInsert, setOpenModalInsert] = useState(false);
+  // const [openModalInsert, setOpenModalInsert] = useState(false);
   const open = useRef(false);
   const navigate = useNavigate();
   const data = contextApp.zamowienia;
@@ -31,6 +31,8 @@ function Zamowienia({ user, setUser }) {
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   const setNadkomplety = contextApp.setNadkomplety;
+  const openModalInsert = contextModal.openModalInsert;
+  const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
 const [refreshZamowienia] = useZamowienia()
 

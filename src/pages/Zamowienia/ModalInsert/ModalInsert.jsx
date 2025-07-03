@@ -87,14 +87,16 @@ const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
+const selectedZamowienie= contextModalInsert.selectedZamowienie;
 
   useEffect(() => {
 
-    if (open.current) {
+    // if (open.current) {
+    if (selectedZamowienie.id !=1) {
       setShowParametryZamowienia(true);
       setShowTemplate(false);
-      open.current = false;
-      fechparametry(row.id,row.prime_id,setSaveButtonDisabled);
+      // open.current = false;
+      fechparametry(selectedZamowienie.id,selectedZamowienie.prime_id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
     }else{
       setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})
@@ -110,7 +112,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
       setHistoriaZamowienia([])
     }
 
-  }, [open]);
+  // }, [open]);
+  }, []);
 
   useEffect(() => {
     contextApp.updateClients()

@@ -9,6 +9,7 @@ import iconSheet from "assets/extract.svg";
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 export default function Dzien({ grup }) {
@@ -18,8 +19,9 @@ export default function Dzien({ grup }) {
 
   const kalendarzDane = appContext.kalendarzDane;
 
+
   return (
-    <div className={style.container}>
+    <div          className={style.container}>
       <div className={style.data}>  {grup.data}</div>
 
       <div>        {kalendarzDane
@@ -45,6 +47,9 @@ function PRACA({ praca }) {
   const appContext = useContext(AppContext);
 
   const kalendarzDane = appContext.kalendarzDane;
+        const contextModal = useContext(ModalInsertContext);
+    const setOpenModalInsert = contextModal.setOpenModalInsert;
+    const setSelectedZamowienie = contextModal.setSelectedZamowienie;
 
   // let do_druku = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku)).reduce((a, b) => a + b, 0))
   // let wydrukowano = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku_zakonczone)).reduce((a, b) => a + b, 0))
@@ -52,6 +57,10 @@ function PRACA({ praca }) {
 
       return (
     <div         onDoubleClick={(node, event) => {
+
+      setSelectedZamowienie({id:praca.id})
+setOpenModalInsert(true)
+
           // open2(row.id);
           // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
         }} className={style.container_praca}>

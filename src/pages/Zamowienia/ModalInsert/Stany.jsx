@@ -4,7 +4,7 @@ import axios from "axios";
 import { IP } from "../../../utils/Host";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import style from "../ModalInsert/Stany.module.css";
+import style from "./Stany.module.css";
 
 export default function Stany({
   handleChangeCardFragmenty,
@@ -30,7 +30,7 @@ export default function Stany({
   }
 
   useEffect(() => {
-    document.getElementById("header").style.display = "grid";
+    // document.getElementById("header").style.display = "grid";
     checkToken();
   }, []);
 

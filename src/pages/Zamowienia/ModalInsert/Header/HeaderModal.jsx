@@ -27,7 +27,6 @@ const openInNewTab = (url) => {
 export default function Header({
   setOpenModalInsert,
   stanOtwarciaZamowienia,
-  row,
   readOnly,
 }) {
   const[pokazStanyZamowienia] = useStanyZamowienia()
@@ -70,7 +69,7 @@ export default function Header({
 
         <div className={style.buttons}>
           <Zamknij
-            row={row}
+           
             setOpenModalInsert={setOpenModalInsert}
             readOnly={readOnly}
           />
@@ -280,7 +279,7 @@ function ZapiszJakoBTN({
 
 
 
-function Zamknij({setOpenModalInsert,readOnly,row}) {
+function Zamknij({setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const [refreshZamowienia] = useZamowienia()
 const daneZamowienia = contextModalInsert.daneZamowienia;

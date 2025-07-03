@@ -103,15 +103,6 @@ const [refreshZamowienia] = useZamowienia()
       </div>
           {openModalInsert && (
             <ModalInsert
-              openModalInsert={openModalInsert}
-              setOpenModalInsert={setOpenModalInsert}
-              user={user}
-              setUser={setUser}
-              open={open}
-              row={row}
-              data={data}
-              setData={setData}
-     
             />
           )}
       <TechnologiaStage/>

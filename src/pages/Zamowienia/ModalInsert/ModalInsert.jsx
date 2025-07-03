@@ -41,11 +41,7 @@ import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 
 function ModalInsert({
-  openModalInsert,
-  setOpenModalInsert,
-  open,
-  row,
-  refreshZamowienia
+  
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const contextPreOrder = useContext(PreOrderContext);
@@ -88,6 +84,8 @@ const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 const selectedZamowienie= contextModalInsert.selectedZamowienie;
+const openModalInsert= contextModalInsert.openModalInsert;
+const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
 
   useEffect(() => {
 
@@ -96,7 +94,7 @@ const selectedZamowienie= contextModalInsert.selectedZamowienie;
       setShowParametryZamowienia(true);
       setShowTemplate(false);
       // open.current = false;
-      fechparametry(selectedZamowienie.id,selectedZamowienie.prime_id,setSaveButtonDisabled);
+      fechparametry(selectedZamowienie.id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)
     }else{
       setDaneZamowienia({...initialDane, opiekun_id: DecodeToken(sessionStorage.getItem("token")).id})
@@ -119,7 +117,7 @@ const selectedZamowienie= contextModalInsert.selectedZamowienie;
     contextApp.updateClients()
 }, [isShowAddClientStage]);
 
-  async function fechparametry(idZamowienia,zamowienie_prime_id,setSaveButtonDisabled) {
+  async function fechparametry(idZamowienia,setSaveButtonDisabled) {
           // sprawdza czy zamowienie jest już otwarte, jeśli tak to zwraca error i otwiera zamowienie tylko do odczytu
           // jeśli sprawdzane zamówienie nie jest aktualnie otwarte, zmienia open_stan na 1, czyli blokuje do normalnego otwarcia
           await axios
@@ -194,7 +192,7 @@ const selectedZamowienie= contextModalInsert.selectedZamowienie;
         openModalStany={openModalStany}
         setOpenModalStany={setOpenModalStany}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-        row={row}
+    
         readAlert={readAlert}
         setReadAlert={setReadAlert}
         readOnly={readOnly}

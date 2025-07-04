@@ -20,6 +20,8 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
     <div  className={style.container}> 
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
       <RodzajArkuszaWykonania rowWykonanie={rowWykonanie}/>
+      {/* <td></td> */}
+      <StartDruku rowWykonanie={rowWykonanie}/>
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
@@ -292,11 +294,34 @@ const NakladWykonanie = ({ rowWykonanie }) => {
   );
 };
 
+const StartDruku = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  const procesyElementowTech = techContext.procesyElementowTech
+  const wykonania = techContext.wykonania
+  const [czasWykonania] = useWykonania()
+
+
+
+
+  return (
+    <div className={style.col_dane_start}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+        className={style.input}
+        // value={rowWykonanie.naklad}
+
+      ></input>
+    </div>
+  );
+};
+
 const MnoznikWykoniania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
   return (
-    <div className={style.col_dane_przeloty}>
+    <div className={style.col_dane_start}>
       
       {/* <label className={style.label}> Czas </label> */}
       <input

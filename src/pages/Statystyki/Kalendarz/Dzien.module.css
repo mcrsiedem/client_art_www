@@ -72,6 +72,12 @@
    border: 1px solid rgb(197, 197, 197);
    /* background-color: red; */
 }
+
+.container_praca_alert{
+   /* border: 1px solid rgb(252, 94, 94); */
+   background-color: red;
+}
+
 .tlo{
    background: greenyellow;
    width: 50%;

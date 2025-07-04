@@ -53,6 +53,44 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
 
+
+
+  const druk_alert = (grup) => {
+  // let data_spedycji_init = new Date(grup.data_spedycji+ " 06:00")
+
+  let data_alert = new Date(grup.data_spedycji+ " 06:00")
+    let poczatek = new Date(grup.poczatek)
+    // let czas = parseInt(grup.czas) + (72*60) -360
+    let czas = parseInt(grup.czas) + (72*60) 
+
+   data_alert.setMinutes(data_alert.getMinutes() - czas)
+
+      let  month = '' + (data_alert.getMonth() + 1),
+        day = '' + data_alert.getDate(),
+        year = data_alert.getFullYear();
+        let  h =  data_alert.getHours();
+       let m = data_alert.getMinutes();
+               if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    if (h < 10) 
+        h = '0' + h;
+    if (m < 10) 
+        m = '0' + m;
+
+    if(poczatek> data_alert){
+      return true
+    }
+          //  return [year, month, day].join('-').concat(" ").concat([h,m].join(':')); 
+          //  return czas
+  }
+
+
+
+
+
           const selectColor = (etapPlikow,status) =>{
 
             //druk
@@ -195,13 +233,14 @@ if (grup.select) return style.procesRow_select
                     
                   }}
                 >
-                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+                  <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert: style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+                  {/* <td className={style.td_tableProcesy_klient}>{druk_alert(grup)}</td> */}
                   <TytulProcesGrup grup={grup}/>
                   <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
                   <DyspersjaGrupa grup={grup}/>

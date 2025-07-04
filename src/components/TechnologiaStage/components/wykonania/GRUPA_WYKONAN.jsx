@@ -52,6 +52,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
               title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
               className={style.grupa_container}>
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
+                 <StartDruku rowGrupa={rowGrupa} />
                  <NakladGrupy rowGrupa={rowGrupa} />
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
@@ -496,6 +497,33 @@ const NakladGrupy = ({ rowGrupa }) => {
 
           
         }}
+      ></input>
+    </div>
+  );
+};
+const StartDruku = ({ rowGrupa }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateGrupaWykonan = techContext.updateGrupaWykonan
+  const [sumujGrupe] = useGrupyWykonan()
+  return (
+    <div className={style.col_dane_start}>
+      
+      <label className={style.label}> Start </label>
+      <input
+      disable
+        className={style.input}
+        value={rowGrupa.poczatek}
+        // onChange={(e) => {
+        //   if (e.target.value == "" || reg_txt.test(e.target.value)) {
+        //     updateGrupaWykonan({
+        //       ...rowGrupa,
+        //       czas: e.target.value,
+        //       update:true
+        //     });
+        //   }
+
+          
+        // }}
       ></input>
     </div>
   );

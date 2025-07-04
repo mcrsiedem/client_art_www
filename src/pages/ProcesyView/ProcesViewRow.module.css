@@ -239,6 +239,18 @@ outline: none;
    /* background-color: red; */
    /* padding-right: 10px; */
 }
+
+.td_tableProcesy_poczatek_alert{
+   width: 120px;
+   min-width: 120px;
+   font-size: 0.9rem;
+   padding-left: 10px;
+   background-color: rgb(255, 4, 4,0.5);
+   /* border: 1px solid red; */
+   /* border-radius: 20px; */
+   /* padding-right: 10px; */
+}
+
 .td_tableProcesy_czas{
     width: 40px;
    text-align: center;

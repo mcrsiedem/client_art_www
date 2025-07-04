@@ -51,6 +51,8 @@ function PRACA({ praca }) {
     const setOpenModalInsert = contextModal.setOpenModalInsert;
     const setSelectedZamowienie = contextModal.setSelectedZamowienie;
 
+    let poczatek_min_druk = new Date(praca.poczatek_min_druk)
+    let alert_point_druk = new Date(praca.alert_point_druk)
   // let do_druku = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku)).reduce((a, b) => a + b, 0))
   // let wydrukowano = parseInt(kalendarzDane.filter(x=>  x.data_spedycji == grup.data).map(x => parseInt(x.przeloty_druku_zakonczone)).reduce((a, b) => a + b, 0))
   // let wydrukowano_procent = Math.ceil(wydrukowano*100 / do_druku)
@@ -63,7 +65,7 @@ setOpenModalInsert(true)
 
           // open2(row.id);
           // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
-        }} className={style.container_praca}>
+        }} className={alert_point_druk > poczatek_min_druk ?style.container_praca:style.container_praca_alert}>
 
   
    <div className={style.title_praca}> {praca.firma_nazwa}  -  {praca.wydrukowano_procent} %  </div>

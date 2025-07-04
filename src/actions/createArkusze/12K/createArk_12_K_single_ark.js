@@ -3,23 +3,23 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_12_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_12_K_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
 let nr_arkusza = 0;
 let nr_legi = 0;
 
 
-ark_12(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+ark_12(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row)
 
 }
 
 
 
-const ark_12 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+const ark_12 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row) =>{
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     rodzaj_arkusza: 12,

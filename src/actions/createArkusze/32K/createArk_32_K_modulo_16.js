@@ -21,7 +21,7 @@ const pierwsza_32 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_
     nr_arkusza++
     new_arkusze.push({
       id: maxid,
-      indeks: getMaxIndeks(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
       ...ark,
       nr_arkusza,
       ilosc_leg: ilosc_leg_na_arkuszu,
@@ -50,7 +50,7 @@ const ark_16 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_l
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     rodzaj_arkusza: 16,
@@ -79,7 +79,7 @@ const ostatnia_32 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     rodzaj_arkusza: 32,

@@ -16,7 +16,7 @@ export function createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
   nr_arkusza++;
   new_arkusze.push({
     id: maxid,
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     naklad:Math.ceil( ark.naklad /  ilosc_leg_na_arkuszu),
@@ -29,7 +29,7 @@ export function createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
     // do każdego ark dodaje odpowiednią ilość leg
     new_legi.push({
       id: getMaxID(new_legi),
-      indeks: getMaxIndeks(new_legi),
+      indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
       ...lega,
       nr_legi,
       arkusz_id: maxid,
@@ -46,7 +46,7 @@ export function createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
     nr_arkusza++;
     new_arkusze.push({
       id: maxid,
-      indeks: getMaxIndeks(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
       ...ark,
       nr_arkusza,
       ilosc_leg: ilosc_leg_na_arkuszu,
@@ -58,7 +58,7 @@ export function createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
       // do każdego ark dodaje odpowiednią ilość leg
       new_legi.push({
         id: getMaxID(new_legi),
-        indeks: getMaxIndeks(new_legi),
+        indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
         ...lega,
         nr_legi,
         arkusz_id: maxid,

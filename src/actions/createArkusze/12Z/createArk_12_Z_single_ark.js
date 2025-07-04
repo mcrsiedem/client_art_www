@@ -19,7 +19,7 @@ const ark_12 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_l
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     rodzaj_arkusza: 12,

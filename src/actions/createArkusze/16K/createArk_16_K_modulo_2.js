@@ -4,7 +4,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 
 
 
-export function createArk_16_K_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_16_K_modulo_2(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
   let nr_arkusza = 0;
   let nr_legi = 0;
@@ -14,7 +14,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
   const maxid = getMaxID(new_arkusze);
   new_arkusze.push({
     id: maxid,
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     ilosc_leg: ilosc_leg_na_arkuszu,
@@ -25,7 +25,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
     // do każdego ark dodaje odpowiednią ilość leg
     new_legi.push({
       id: getMaxID(new_legi),
-      indeks: getMaxIndeks(new_legi),
+      indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
       ...lega,
       nr_legi,
       arkusz_id: maxid,
@@ -36,7 +36,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
 nr_arkusza++
     new_arkusze.push({
       id: getMaxID(new_arkusze),
-      indeks: getMaxIndeks(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
       ...ark,
       nr_arkusza,
       rodzaj_arkusza: 2,
@@ -50,7 +50,7 @@ nr_arkusza++
       // do każdego ark dodaje odpowiednią ilość leg
       new_legi.push({
         id: getMaxID(new_legi),
-        indeks: getMaxIndeks(new_legi),
+        indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
         ...lega,
         rodzaj_legi: 2,
         nr_legi,
@@ -62,7 +62,7 @@ nr_arkusza++
     nr_arkusza++
 new_arkusze.push({
   id: getMaxID(new_arkusze),
-  indeks: getMaxIndeks(new_arkusze),
+  indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
   ...ark,
   nr_arkusza,
   rodzaj_arkusza: 16,
@@ -76,7 +76,7 @@ for (let a = 0; a < ilosc_leg_na_arkuszu; a++) {
   // do każdego ark dodaje odpowiednią ilość leg
   new_legi.push({
     id: getMaxID(new_legi),
-    indeks: getMaxIndeks(new_legi),
+    indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
     ...lega,
     nr_legi,
     arkusz_id: getMaxID(new_arkusze)-1,

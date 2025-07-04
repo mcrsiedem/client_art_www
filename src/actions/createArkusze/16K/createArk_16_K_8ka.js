@@ -17,7 +17,7 @@ export function createArk_16_K_8ka(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_
 nr_arkusza++
     new_arkusze.push({
       id: getMaxID(new_arkusze),
-      indeks: getMaxIndeks(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
       ...ark,
       nr_arkusza,
       rodzaj_arkusza: 8,

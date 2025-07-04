@@ -21,7 +21,7 @@ const single_ark_lega = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_ark
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     rodzaj_arkusza: 32,

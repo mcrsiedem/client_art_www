@@ -3,7 +3,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_16_K_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_16_K_modulo_8(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
 
   let nr_arkusza = 0;
@@ -15,7 +15,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
   nr_arkusza++
   new_arkusze.push({
     id: maxid,
-    indeks: getMaxIndeks(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza,
     ilosc_leg: ilosc_leg_na_arkuszu,
@@ -40,7 +40,7 @@ for (let i = 0; i < ilosc_arkuszy - 2; i++) {
 nr_arkusza++
     new_arkusze.push({
       id: getMaxID(new_arkusze),
-      indeks: getMaxIndeks(new_arkusze),
+      indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
       ...ark,
       nr_arkusza,
       rodzaj_arkusza: 8,
@@ -66,7 +66,7 @@ nr_arkusza++
 nr_arkusza++
 new_arkusze.push({
   id: getMaxID(new_arkusze),
-  indeks: getMaxIndeks(new_arkusze),
+  indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
   ...ark,
   nr_arkusza,
   rodzaj_arkusza: 16,

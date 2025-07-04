@@ -198,6 +198,12 @@ function ponumerujArkusze() {
 let OPRAWY_KLEJONE = [50,51,52]
 if( OPRAWY_KLEJONE.includes(parseInt( oprawaTech[0].oprawa))) {
 
+  if(rodzaj_legi == 4) {
+  if (modulo == 0) {
+    createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
+  }
+}
+
   if(rodzaj_legi == 16) {
   if(row.ilosc_stron >14){ 
    if (modulo == 0) {
@@ -340,12 +346,6 @@ if(rodzaj_legi == 24) {
 }
 
 
-if(rodzaj_legi == 4) {
-  if (modulo == 0) {
-    createArk_modulo_0(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row)
-  }
-}
-
 
 if(rodzaj_legi == 32) {
 
@@ -410,6 +410,10 @@ if(rodzaj_legi == 32) {
 
 
 }
+
+
+
+
 }
 // --- koniec oprawy klejonej
 

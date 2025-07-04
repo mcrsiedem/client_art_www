@@ -226,7 +226,8 @@ const RodzajArkuszaWykonania = ({ rowWykonanie }) => {
       <input
       disabled
         className={style.input}
-        value={parseInt(arkusze?.filter(x=>x.id == rowWykonanie.arkusz_id)[0]?.rodzaj_arkusza)/parseInt(arkusze?.filter(x=>x.id == rowWykonanie.arkusz_id)[0]?.ilosc_leg)+"ka"}
+        value={rowWykonanie.nazwa_wykonania }
+        // value={parseInt(arkusze?.filter(x=>x.id == rowWykonanie.arkusz_id)[0]?.rodzaj_arkusza)/parseInt(arkusze?.filter(x=>x.id == rowWykonanie.arkusz_id)[0]?.ilosc_leg)+"ka"}
         onChange={(e) => {
 
 

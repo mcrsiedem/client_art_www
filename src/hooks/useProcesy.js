@@ -111,7 +111,8 @@ let grupa_id = MaxID(new_grupy)
         status:1,
         stan:1,
         przeloty: parseInt(a.naklad) + parseInt(a.nadkomplet) ,
-        uwagi: ""
+        uwagi: "",
+        nazwa_wykonania: a.rodzaj_arkusza
       });
     })
 
@@ -163,7 +164,8 @@ let grupa_id = MaxID(new_grupy)
         status:1,
         stan:1,
         przeloty: a.naklad / proces.ilosc_uzytkow,
-        uwagi: ""
+        uwagi: "",
+        nazwa_wykonania: a.rodzaj_legi
       });
     })
 

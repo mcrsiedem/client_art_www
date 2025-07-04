@@ -326,7 +326,8 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
 if(wykonania.some(x=> x.arkusz_id == row.id)){
       alert("Skasuj najpierw wykonanie do tego arkusza")
 }else{     
-      if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
+      if (arkusze.filter((x) => x.delete != true )) {
+      // if (arkusze.filter((x) => x.delete != true && x.element_id == row.element_id).length > 1) {
 
       let newArkusze = [...arkusze];
       let newArkusze2 =  newArkusze.map((t, a) => {

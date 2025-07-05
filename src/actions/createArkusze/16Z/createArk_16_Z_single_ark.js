@@ -3,14 +3,14 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_16_Z_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_16_Z_single_ark(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
 let nr_arkusza = 0;
 let nr_legi = 0;
 
 
 
-ark_16(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+ark_16(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row)
 }
 
 
@@ -21,7 +21,7 @@ ark_16(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu
 
 
 
-const ark_16 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+const ark_16 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row) =>{
 
   nr_arkusza++
   new_arkusze.push({

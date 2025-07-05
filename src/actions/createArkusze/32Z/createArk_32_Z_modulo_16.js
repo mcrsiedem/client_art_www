@@ -3,20 +3,20 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_32_Z_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_32_Z_modulo_16(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
 let nr_arkusza = 0;
 let nr_legi = 0;
 
 
-ark_16(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
-ostatnia_32(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi)
+ark_16(nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row)
+ostatnia_32(ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row)
 }
 
 
 
 
-const ark_16 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+const ark_16 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row) =>{
   nr_arkusza++
   new_arkusze.push({
     id: getMaxID(new_arkusze),
@@ -50,7 +50,7 @@ const ark_16 = (nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_l
 
 
 
-const ostatnia_32 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi) =>{
+const ostatnia_32 = (ilosc_arkuszy,nr_arkusza,new_arkusze,ark,nadkomplety,ilosc_leg_na_arkuszu,nr_legi,lega,new_legi,row) =>{
   for (let i = 0; i < Math.floor(ilosc_arkuszy); i++) {
   nr_arkusza++
   new_arkusze.push({

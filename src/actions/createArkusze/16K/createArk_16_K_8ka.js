@@ -3,7 +3,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { findNadkomplet } from "actions/findNadkomplet";
 
 
-export function createArk_16_K_8ka(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety) {
+export function createArk_16_K_8ka(new_arkusze,new_legi,ilosc_arkuszy,ark,ilosc_leg_na_arkuszu,lega,nadkomplety,row) {
 
 
   let nr_arkusza = 0;

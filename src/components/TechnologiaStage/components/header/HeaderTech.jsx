@@ -14,6 +14,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { skasujTechnologie } from "actions/skasujTechnologie";
+import SprawdzBTN from "./SprawdzBTN";
 
 
 export default function Header({}) {
@@ -63,7 +64,7 @@ export default function Header({}) {
         {/* <IconError/> */}
       </LeftPane>
       <CenterPane>
-        <p  className={style.title2}>  stary nr: {appcontext.zamowienia?.filter(x=> x.id ==techContext?.daneTech.zamowienie_id )[0]?.nr_stary} </p>
+        {/* <p  className={style.title2}>  stary nr: {appcontext.zamowienia?.filter(x=> x.id ==techContext?.daneTech.zamowienie_id )[0]?.nr_stary} </p> */}
 
         <AlertLega />
       </CenterPane>
@@ -130,26 +131,6 @@ const IconError = () =>{
 
 
 
-
-//----
-const SprawdzBTN = () => {
-  const techContext = useContext(TechnologyContext);
-  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
-  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
-
-  return (
-    <button
-      // disabled={isSaveButtonDisabled}
-      className={ style.btn}
-      onClick={() => {
-
-        setSaveButtonDisabled(false)
-      }}
-    >
-      Sprawdź 
-    </button>
-  );
-};
 const PotwierdzKorekteZamowieniaBTN = () => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;

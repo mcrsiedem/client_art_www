@@ -187,6 +187,8 @@ function Usun() {
   const techContext = useContext(TechnologyContext);
   const setShowProcesy = techContext.setShowProcesy;
   const daneTech = techContext.daneTech;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+
 if(daneTech.id == 1){
    return (
     <div>
@@ -200,6 +202,7 @@ if(daneTech.id == 1){
             techContext.setWykonania([])
             techContext.setGrupaOprawaTech([])
             setShowProcesy(false)
+            setSaveButtonDisabled(true)
             // handleRemoveItem(row.indeks, row.id);
                       //  setStatus(3)
           }}

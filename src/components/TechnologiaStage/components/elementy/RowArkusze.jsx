@@ -31,9 +31,9 @@ export default function RowArkusze  ({ row,i })  {
       <>
         <div
         draggable
-         onDragStart={() => handleDragMoveStartArkusz(row.id,row.indeks)}
+         onDragStart={() => handleDragMoveStartArkusz(row.id,row.indeks,row.element_id)}
          className={style.main2}>
-      <div      className={style.row3}        onDrop={()=>handleDrop(row.id,row.indeks)}
+      <div      className={style.row3}        onDrop={()=>handleDrop(row.id,row.indeks,row.element_id)}
               onDragOver={handleDragOver}  key={row.id}>
         <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
         <NrArkusza row={row} i={i+1}/>
@@ -113,9 +113,9 @@ export default function RowArkusze  ({ row,i })  {
 
     //drag arkusz
 
-      function handleDragMoveStartArkusz(id,indeks){
+      function handleDragMoveStartArkusz(id,indeks,element_id){
       sessionStorage.setItem("id_arkusz_drag", id);
-      sessionStorage.setItem("id_element_arkusz_drag", id);
+      sessionStorage.setItem("id_element_arkusz_drag", element_id);
       sessionStorage.setItem("id_indeks_drag", indeks);
       sessionStorage.setItem("typ_drag", "arkusz");
      }
@@ -137,73 +137,54 @@ export default function RowArkusze  ({ row,i })  {
  
      }
    
-    function handleDrop(id,indeks) {
+    function handleDrop(id,indeks,element_id) {
 
       //id to arkusz-id drop
       let typ_drag = sessionStorage.getItem("typ_drag")
+       let id_element_arkusz_drag = sessionStorage.getItem("id_element_arkusz_drag")
       if(typ_drag=='arkusz'){
-      let indeks_drag = sessionStorage.getItem("id_indeks_drag")
-      let id_arkusz_drag = sessionStorage.getItem("id_arkusz_drag")
+              //drop w obrębie tego samego elementu
 
-let indeks_drop= indeks;
+        if(element_id == id_element_arkusz_drag ){
+                let indeks_drag = sessionStorage.getItem("id_indeks_drag")
+                let id_arkusz_drag = sessionStorage.getItem("id_arkusz_drag")
+                let indeks_drop= indeks;
       
 
-            //drop w obrębie tego samego elementu
-            // let ark = [...arkusze.filter(x => x.element_id == row.element_id)]
-            let ark = [...arkusze]
-
-                        //     ark =  ark.map((t, a) => {
-                        
-                        //   if (t.id == id_arkusz_drag) {
-                        //     return {
-                        //       ...t,
-                        //       indeks: indeks,
-                        //       update: true
-                    
-                        //     };
-                        //   } else {
-                        //     return t;
-                        //   }
-                        // })
-//  setArkusze(ark)
-
-
-   
-   
-
                       setArkusze(
-            arkusze
+                            arkusze
 
-            .map((t) => {
-              if (t.indeks > indeks_drag) {
-                return {...t, indeks: t.indeks -1,update: true}
-              }else return t
-            })
+                            .map((t) => {
+                              if (t.indeks > indeks_drag) {
+                                return {...t, indeks: t.indeks -1,update: true}
+                              }else return t
+                            })
 
-            .map((t) => {
-              if (t.indeks >= indeks_drop) {
-                return {...t, indeks: t.indeks +1,update: true}
-              }else return t
-            })
+                            .map((t) => {
+                              if (t.indeks >= indeks_drop) {
+                                return {...t, indeks: t.indeks +1,update: true}
+                              }else return t
+                            })
 
-            .map((t) => {
-              if (t.id == id_arkusz_drag) {
-                return {...t, indeks: indeks_drop,update: true}
-              }else return t
-            })
-            .sort((a, b) => a.indeks - b.indeks)
-            // .sort((a, b) => a.oprawa_id - b.oprawa_id)
+                            .map((t) => {
+                              if (t.id == id_arkusz_drag) {
+                                return {...t, indeks: indeks_drop,update: true}
+                              }else return t
+                            })
+                            .sort((a, b) => a.indeks - b.indeks)
+                            // .sort((a, b) => a.oprawa_id - b.oprawa_id)
 
-            // .map((frag, i) => {
-            //   if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
-            //     k++;
-            //     return { ...frag,nr_legi:k, update: true };
-            //   } else  return frag;
-              
-            // })
-          
+                            // .map((frag, i) => {
+                            //   if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
+                            //     k++;
+                            //     return { ...frag,nr_legi:k, update: true };
+                            //   } else  return frag;
+                              
+                            // })
 
           );
+        }
+
 
       }
 

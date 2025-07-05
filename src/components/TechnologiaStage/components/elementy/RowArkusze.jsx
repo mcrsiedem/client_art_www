@@ -18,6 +18,8 @@ import { useProcesy } from "hooks/useProcesy";
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
     const setLegi = techContext.setLegi;
     const dragLegaId = techContext.dragLegaId;
     const setDragLegaId = techContext.setDragLegaId;
@@ -27,8 +29,11 @@ export default function RowArkusze  ({ row,i })  {
     const setDropArkuszId = techContext.setDropArkuszId;
     return (
       <>
-        <div className={style.main2}>
-      <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
+        <div
+        draggable
+         onDragStart={() => handleDragMoveStartArkusz(row.id,row.indeks)}
+         className={style.main2}>
+      <div      className={style.row3}        onDrop={()=>handleDrop(row.id,row.indeks)}
               onDragOver={handleDragOver}  key={row.id}>
         <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
         <NrArkusza row={row} i={i+1}/>
@@ -106,8 +111,23 @@ export default function RowArkusze  ({ row,i })  {
     );
 
 
+    //drag arkusz
+
+      function handleDragMoveStartArkusz(id,indeks){
+      sessionStorage.setItem("id_arkusz_drag", id);
+      sessionStorage.setItem("id_element_arkusz_drag", id);
+      sessionStorage.setItem("id_indeks_drag", indeks);
+      sessionStorage.setItem("typ_drag", "arkusz");
+     }
+
+
+
+    //
+
+
     function handleDragStart(id){
       //   e.preventDefault();
+       sessionStorage.setItem("typ_drag", "legi");
       setDragLegaId(id)
      }
 
@@ -117,38 +137,113 @@ export default function RowArkusze  ({ row,i })  {
  
      }
    
-    function handleDrop(id) {
-      setLegi(
-        legi.map((t, a) => {
-        // console.log("oprawa id" +prev)
-        if (t.id === dragLegaId) {
-          return {
-            ...t,
-            arkusz_id: id,
-            update: true
-  
-          };
-        } else {
-          return t;
-        }
-      })
-    );
+    function handleDrop(id,indeks) {
 
-    setLegiFragmenty(
-      legiFragmenty.map((t, a) => {
-      if (t.lega_id === dragLegaId) {
-        return {
-          ...t,
-          arkusz_id: id,
-          update: true
+      //id to arkusz-id drop
+      let typ_drag = sessionStorage.getItem("typ_drag")
+      if(typ_drag=='arkusz'){
+      let indeks_drag = sessionStorage.getItem("id_indeks_drag")
+      let id_arkusz_drag = sessionStorage.getItem("id_arkusz_drag")
 
-        };
-      } else {
-        return t;
+let indeks_drop= indeks;
+      
+
+            //drop w obrębie tego samego elementu
+            // let ark = [...arkusze.filter(x => x.element_id == row.element_id)]
+            let ark = [...arkusze]
+
+                        //     ark =  ark.map((t, a) => {
+                        
+                        //   if (t.id == id_arkusz_drag) {
+                        //     return {
+                        //       ...t,
+                        //       indeks: indeks,
+                        //       update: true
+                    
+                        //     };
+                        //   } else {
+                        //     return t;
+                        //   }
+                        // })
+//  setArkusze(ark)
+
+
+   
+   
+
+                      setArkusze(
+            arkusze
+
+            .map((t) => {
+              if (t.indeks > indeks_drag) {
+                return {...t, indeks: t.indeks -1,update: true}
+              }else return t
+            })
+
+            .map((t) => {
+              if (t.indeks >= indeks_drop) {
+                return {...t, indeks: t.indeks +1,update: true}
+              }else return t
+            })
+
+            .map((t) => {
+              if (t.id == id_arkusz_drag) {
+                return {...t, indeks: indeks_drop,update: true}
+              }else return t
+            })
+            .sort((a, b) => a.indeks - b.indeks)
+            // .sort((a, b) => a.oprawa_id - b.oprawa_id)
+
+            // .map((frag, i) => {
+            //   if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
+            //     k++;
+            //     return { ...frag,nr_legi:k, update: true };
+            //   } else  return frag;
+              
+            // })
+          
+
+          );
+
       }
-    })
-  );
-      setDropArkuszId(id)
+
+
+
+
+          if(typ_drag=='legi'){
+                        setLegi(
+                          legi.map((t, a) => {
+                          // console.log("oprawa id" +prev)
+                          if (t.id === dragLegaId) {
+                            return {
+                              ...t,
+                              arkusz_id: id,
+                              update: true
+                    
+                            };
+                          } else {
+                            return t;
+                          }
+                        })
+                      );
+
+                      setLegiFragmenty(
+                        legiFragmenty.map((t, a) => {
+                        if (t.lega_id === dragLegaId) {
+                          return {
+                            ...t,
+                            arkusz_id: id,
+                            update: true
+
+                          };
+                        } else {
+                          return t;
+                        }
+                      })
+                    );
+                        setDropArkuszId(id)
+      }
+
     }
   
     function handleDragOver(e) {

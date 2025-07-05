@@ -14,27 +14,22 @@ import { findNadkomplet } from "actions/findNadkomplet";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
 import { useProcesy } from "hooks/useProcesy";
-import { zapiszTechnologieAddNewGrup } from "actions/zapiszTechnologieAddNewGrup";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
     const setLegi = techContext.setLegi;
-    const arkusze = techContext.arkusze;
-    const setArkusze = techContext.setArkusze;
     const dragLegaId = techContext.dragLegaId;
     const setDragLegaId = techContext.setDragLegaId;
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
     const [showLegi, setShowLegi] = useState(false);
     const setDropArkuszId = techContext.setDropArkuszId;
-  
     return (
       <>
         <div className={style.main2}>
       <div      className={style.row3}        onDrop={()=>handleDrop(row.id)}
               onDragOver={handleDragOver}  key={row.id}>
-
         <Rozwin setShowLegi={setShowLegi} showLegi={showLegi} />
         <NrArkusza row={row} i={i+1}/>
         <TypElementu row={row} i={i+1}/>
@@ -45,8 +40,6 @@ export default function RowArkusze  ({ row,i })  {
          <td></td>
         <PapierSelectArkusze row={row} />
         <PapierPostacArkusze row={row} />
-        
-       
         <ArkuszSzerokosc row={row} />
         <ArkuszWysokosc row={row} />
         <td></td>
@@ -71,10 +64,7 @@ export default function RowArkusze  ({ row,i })  {
               <TypLega row={l} />
               <NakladLegi row={l} />
               <td></td>
-
               <RodzajLegi row={l} />
-              {/* <KopiujLege row={row} /> */}
-
               <td></td>
               <td></td>
               <UwagiLegi row={l} />
@@ -1107,7 +1097,7 @@ const nadkomplety = contextApp.nadkomplety;
     return (
         <input
         className={style.input_ark_typ}
-          value={row.uwagi}
+          value={row.indeks+" "+row.uwagi}
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_txt.test(e.target.value)) {

@@ -1,5 +1,24 @@
 //----------------------------------------------------------------------------------
 
+
+      const promiseA = new Promise((resolve, reject) => {
+        if (procesyElementowTech.length == grupaWykonan.length) {
+          resolve("OK");
+        } else {
+          reject("Dodaj procesy");
+        }
+      });
+      promiseA
+        .then((res) => setSaveButtonDisabled(false))
+        .catch(function (rej) {
+          //here when you reject the promise
+          alert(rej);
+          console.log(rej);
+        });
+
+
+
+
 // const saveDataOrder = ({daneZamowienia,cookies,produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,pakowanieEdit,procesyElementowEdit,saveAs}) =>{
 
 //     return new Promise(async(resolve,reject)=>{

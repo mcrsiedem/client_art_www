@@ -572,7 +572,8 @@ let n = 0;
      
       }
     ));
-    setLegi(new_legi.map((ark,i) => {
+    setLegi(new_legi
+      .map((ark,i) => {
       if(ark.element_id == row.id){
       n++;
         return {...ark, nr_legi: n, update: true}

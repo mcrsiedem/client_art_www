@@ -14,6 +14,7 @@ export function ponumerArkusze(row,setArkusze,arkusze,legi,setLegi){
       )
       let n = 0;
       setLegi( legi
+        .sort((a, b) => a.indeks - b.indeks)
         .map((ark,i) => {
         if(ark.element_id == row.id){
         n++;

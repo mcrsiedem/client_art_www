@@ -150,11 +150,13 @@ export default function RowArkusze  ({ row,i })  {
                 let id_arkusz_drag = sessionStorage.getItem("id_arkusz_drag")
                 let indeks_drop= indeks;
       
+          let m = 0;
+          let n = 1;    
 
-                      setArkusze(
-                            arkusze
 
-                            .map((t) => {
+
+                  
+           setArkusze(arkusze.map((t) => {
                               if (t.indeks > indeks_drag) {
                                 return {...t, indeks: t.indeks -1,update: true}
                               }else return t
@@ -171,18 +173,42 @@ export default function RowArkusze  ({ row,i })  {
                                 return {...t, indeks: indeks_drop,update: true}
                               }else return t
                             })
-                            .sort((a, b) => a.indeks - b.indeks)
+                
+                                        .sort((a, b) => a.indeks - b.indeks)
+                                    .map((ark,i) => {
+                            if(ark.element_id == id_element_arkusz_drag){
+                            m++;
+                              return {...ark, nr_arkusza: m, update: true}
+                            }else {return ark } 
+                          
+                            })
+                          )
+
+
+                          //przenumerowanie indeksow leg wzgledem arkuszy
+
+                                    setLegi(
+                                      legi.map((ark, i) => {
+                                      
+                                        if (
+                                          ark.element_id ==
+                                          id_element_arkusz_drag
+                                        ) {
+                                     
+                                          return {
+                                            ...ark,
+                                            nr_legi: 1,
+                                            update: true,
+                                          };
+                                        } else {
+                                          return ark;
+                                        }
+                                      })
+                                    );
                             // .sort((a, b) => a.oprawa_id - b.oprawa_id)
 
-                            // .map((frag, i) => {
-                            //   if (frag.element_id == legiFragmenty.filter(x=>x.id ==id_drag_fragment)[0].element_id  && frag.delete != true) {
-                            //     k++;
-                            //     return { ...frag,nr_legi:k, update: true };
-                            //   } else  return frag;
-                              
-                            // })
 
-          );
+
         }
 
 

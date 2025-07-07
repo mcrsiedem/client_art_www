@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import {  useEffect,useState,useContext  } from "react";
-import style from '../Panel/Panel.module.css';
+import style from './SandBox.module.css';
 import logoutIcon from 'assets/logout.png'
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'
@@ -20,9 +20,10 @@ import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
-import PanelMini from "./PanelMini";
+import DraggableResizableDiv from "./DraggableResizableDiv";
 
-export default function Panel({ user, setUser }) {
+
+export default function SandBox({ user, setUser }) {
   const navigate = useNavigate();
   const isOnline = useOnlineStatus();
   const appcontext = useContext(AppContext);
@@ -54,7 +55,7 @@ export default function Panel({ user, setUser }) {
   } else
     return (
       <>
-        <PanelMini isOnline={isOnline} navigate={navigate} logout={logout} />
+        
       </>
     );
 }
@@ -65,6 +66,8 @@ export default function Panel({ user, setUser }) {
 
 
 const PanelDesktop = ({isOnline,navigate,logout}) => {
+     const containerRef = useRef(null);
+     
   if(DecodeToken(sessionStorage.getItem("token")).wersja_max==1){
 
     return(<>
@@ -85,18 +88,25 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                         </div>
         
                                 <div className={style.container} >
-                                <div className={style.container_btn} >
-                                        
-                                                                        <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div>
-                                                                        <div className={style.kafle}  onClick={() => { navigate("/Zamowienia") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Technologie" /><p className={style.menu_txt}>TECHNOLOGIE</p></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
-                                                                        <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconCTP} alt="CTP" /> <p className={style.menu_txt}>CTP</p></div>
-                                                                        {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
-                                                                        <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/statystyki") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/sandbox") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                                        </div>
+                       <div className="app-container">
+            
+            <div
+                ref={containerRef}
+                className="draggable-container"
+                style={{
+                    position: 'relative', // Ważne dla pozycjonowania 'absolute' dziecka
+                    width: '800px',
+                    height: '600px',
+                    border: '2px dashed grey',
+                    margin: '50px auto',
+                    overflow: 'hidden', // Zapobiega wyjściu elementu poza kontener
+                }}
+            >
+                <DraggableResizableDiv containerRef={containerRef} />
+                {/* Możesz dodać więcej instancji DraggableResizableDiv */}
+                {/* <DraggableResizableDiv containerRef={containerRef} /> */}
+            </div>
+        </div>
                                 </div>
             
                 </div>

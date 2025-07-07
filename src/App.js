@@ -21,6 +21,7 @@ import ProcesyMini from "pages/ProcesyMini/ProcesyMini";
 import ProcesoryMini from "pages/Panel/PrcesoryMini";
 import Statystyki from "pages/Statystyki/Statystyki";
 import SandBox from "pages/SandBox/SandBox";
+import Gant from "pages/Gant/Gant";
 
 export default function App() {
 
@@ -46,6 +47,7 @@ export default function App() {
               <Route path='/ustawienia' element={<Ustawienia />} />
               <Route path='/statystyki' element={<Statystyki />} />
               <Route path='/sandbox' element={<SandBox />} />
+              <Route path='/gant' element={<Gant />} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

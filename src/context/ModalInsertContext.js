@@ -17,7 +17,7 @@ export const ModalInsertContextProvider = ({children})=>{
   const [isShowAddClientStage, showAddClientStage] = useState(false);
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [selectedElementROW,setSelectedElementROW] = useState(null)
-    const [selectedZamowienie,setSelectedZamowienie] = useState(1)
+    const [selectedZamowienie,setSelectedZamowienie] = useState({id:1})
     const [showHistoria,setShowHistoria] = useState(false)
 
 

@@ -154,9 +154,7 @@ export default function RowArkusze  ({ row,i })  {
           let n = 1;    
 
 
-
-                  
-           setArkusze(arkusze.map((t) => {
+          let new_arkusze = arkusze.map((t) => {
                               if (t.indeks > indeks_drag) {
                                 return {...t, indeks: t.indeks -1,update: true}
                               }else return t
@@ -182,13 +180,42 @@ export default function RowArkusze  ({ row,i })  {
                             }else {return ark } 
                           
                             })
-                          )
+
+       //--------------------------                     
+                            let new_legi = [...legi]
+                            let s =0;
+                            for( let ark of new_arkusze.filter(x => x.element_id ==id_element_arkusz_drag )){
+                            
+                              new_legi =  new_legi.map((lega,i) => {
+                                      
+                                        if ( ark.id == lega.arkusz_id   ) {
+                                    s++
+                                          
+                                     
+                                          return {
+                                            ...lega,
+                                            indeks: s,
+                                            update: true,
+                                          };
+                               
+                                        } else {
+                                          return lega;
+                                        }
+                                      })
+
+                
+
+                            }
+                  
+        //-----------------------------------------                 
 
 
                           //przenumerowanie indeksow leg wzgledem arkuszy
 
                                     setLegi(
-                                      legi.map((ark, i) => {
+                                      new_legi
+                                      .sort((a, b) => a.indeks - b.indeks)
+                                      .map((ark, i) => {
                                       
                                         if (
                                           ark.element_id ==
@@ -197,7 +224,7 @@ export default function RowArkusze  ({ row,i })  {
                                      
                                           return {
                                             ...ark,
-                                            nr_legi: 1,
+                                            nr_legi: i,
                                             update: true,
                                           };
                                         } else {
@@ -207,7 +234,7 @@ export default function RowArkusze  ({ row,i })  {
                                     );
                             // .sort((a, b) => a.oprawa_id - b.oprawa_id)
 
-
+ setArkusze(new_arkusze )
 
         }
 

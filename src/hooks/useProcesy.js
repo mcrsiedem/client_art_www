@@ -311,7 +311,7 @@ setWykonania(new_wykonania)
     // dodaje nową grupę wykonan z jednym wykonaniem
     // nasteępnie tą grupę trzeba dodać do planu
     // po dodaniu można
-   const new_legi = [...legi.filter(x=>x.delete != true && x.arkusz_id == arkusz.id)];
+   const new_legi = [...legi.filter(x=> (x.delete != true) && (x.arkusz_id == arkusz.id))];
   //  const new_procesy = [...procesy.filter(x=>x.delete != true)];
   //  const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
    let new_grupy = [...grupaWykonan];
@@ -395,7 +395,7 @@ let grupa_id = MaxID(new_grupy)
       stan:1,
       uwagi: ""
     });
-
+console.log(new_legi)
     new_legi
     // .filter(a => a.element_id == proces.element_id)
     .map(a=>{
@@ -432,15 +432,15 @@ let grupa_id = MaxID(new_grupy)
 
 })
 
- new_grupy = new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) )
+//  new_grupy = new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) )
 
 
-// setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
-// setWykonania(new_wykonania)
+setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+setWykonania(new_wykonania)
 
-saveGrupaWykonan(new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ))
-saveWykonania(new_wykonania.filter(x=>x.global_id == 0))
-fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
+// saveGrupaWykonan(new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ))
+// saveWykonania(new_wykonania.filter(x=>x.global_id == 0))
+// fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
 }
 
 
@@ -449,7 +449,7 @@ fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
 
 
 const saveGrupaWykonan = (grupaWykonan) =>{
-console.log(grupaWykonan)
+// console.log(grupaWykonan)
 
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])

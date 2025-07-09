@@ -216,8 +216,8 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
           if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       // let id_drop_grupa_proces = id;
-      // dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
-          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+      dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
 
 
 

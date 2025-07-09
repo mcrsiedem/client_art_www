@@ -25,6 +25,7 @@ border-bottom: 1px solid rgb(182, 182, 182);
 
 .nazwy_procesow{
   color: var(--art-text-label);
+ 
   text-align: center; 
 }
 
@@ -145,6 +146,7 @@ border-bottom: 1px solid rgb(182, 182, 182);
   color: var(--art-text-label);
   padding-bottom: 3px;
   text-align: center;
+   /* font-weight: bold; */
 }
 .select,
 .input {

@@ -618,6 +618,7 @@ function Etap({grup}) {
   const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
   const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const grupyWykonanAll = techContext.grupyWykonanAll
   const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
@@ -655,6 +656,7 @@ function Etap({grup}) {
           })
 
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+          // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
         
 
         }}

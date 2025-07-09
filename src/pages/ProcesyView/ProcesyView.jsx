@@ -37,8 +37,8 @@ export default function ProcesyView( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          // fechGrupyAndWykonaniaForProcesor(1);
-           fechGrupyAndWykonaniaForProcesor_dni_wstecz(1,dniWstecz)
+          fechGrupyAndWykonaniaForProcesor(1);
+          //  fechGrupyAndWykonaniaForProcesor_dni_wstecz(1,dniWstecz)
           setSelectedProcesor(1);
           setSelectedProces(1);
 

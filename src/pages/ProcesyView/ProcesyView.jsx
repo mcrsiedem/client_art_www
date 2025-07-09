@@ -28,6 +28,8 @@ export default function ProcesyView( ) {
   const setClients = appContext.setClients
   const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka
   const setNadkomplety =appContext.setNadkomplety;
+    const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  const dniWstecz = techContext.dniWstecz
 
       const [callForPaper] = useApiPapier();
   async function checkToken() {
@@ -35,7 +37,8 @@ export default function ProcesyView( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechGrupyAndWykonaniaForProcesor(1);
+          // fechGrupyAndWykonaniaForProcesor(1);
+           fechGrupyAndWykonaniaForProcesor_dni_wstecz(1,dniWstecz)
           setSelectedProcesor(1);
           setSelectedProces(1);
 
@@ -203,13 +206,20 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const selectedProcesor = techContext.selectedProcesor
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  const dniWstecz = techContext.dniWstecz
+
+
 
   function handleDrop(id) {
     if(id!=selectedProcesor){
           if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       // let id_drop_grupa_proces = id;
-      dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+      // dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+
+
 
     }
     }

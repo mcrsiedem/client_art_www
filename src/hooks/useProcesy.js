@@ -14,6 +14,7 @@ export function useProcesy(){
   
 
   const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
   const arkusze = techContext.arkusze;
   const legi = techContext.legi;
   const grupaWykonan = techContext.grupaWykonan;
@@ -443,7 +444,14 @@ setWykonania(new_wykonania)
 // fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
 }
 
-
+const aktualizujProcesy = () =>{
+// saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(wykonania,ng),przeloty:SumaPrzelotow(wykonania,ng)}) ))
+// saveWykonania(wykonania.filter(x=>x.global_id == 0))
+// fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
+saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0))
+saveWykonania(wykonania.filter(x=>x.global_id == 0))
+fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
+}
 
 
 
@@ -513,7 +521,7 @@ const SumaPrzelotow = (wykonania,grupa) => {
 };
 
 
-  return [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa];
+  return [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy];
 
 }
 

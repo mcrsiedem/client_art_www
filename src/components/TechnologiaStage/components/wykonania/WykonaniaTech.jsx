@@ -30,6 +30,7 @@ export default function WykonaniaTech() {
 
        <div className={style.header_procesy}>
         <p className={style.header_txt}>Procesy</p>
+<AktualizujProcesy/>
         <Usun/>
       </div>
 
@@ -40,15 +41,19 @@ export default function WykonaniaTech() {
   else {
     if(arkusze.length !=0){
       return (
-      <div  className={style.btn_show_procesy_container}>
-  <button className={style.btn_show_procesy} onClick={()=>{
-        createWykonaniaFromArkuszeLegi()
-        setShowProcesy(true)
-        // console.log("wykonania")
-      }} >Dodaj procesy</button>
-         
-      </div>
-    )
+        <div className={style.btn_show_procesy_container}>
+          <button
+            className={style.btn_show_procesy}
+            onClick={() => {
+              createWykonaniaFromArkuszeLegi();
+              setShowProcesy(true);
+              // console.log("wykonania")
+            }}
+          >
+            Dodaj procesy
+          </button>
+        </div>
+      );
     }
     
   }
@@ -210,6 +215,38 @@ if(daneTech.id == 1){
         />
       </div>
     </div>
+  );
+}else{
+  return(<div></div>)
+}
+ 
+}
+
+
+function AktualizujProcesy() {
+  const techContext = useContext(TechnologyContext);
+  const setShowProcesy = techContext.setShowProcesy;
+  const daneTech = techContext.daneTech;
+  const grupaWykonan = techContext.grupaWykonan;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy]=useProcesy();
+
+if(grupaWykonan.some(x=> x.global_id==0)){
+   return (
+
+
+        <button
+        title="Zapisz nowe grupy wykonan"
+          className={style.btn}
+          src={iconTrash}
+          onClick={() => {
+                                  aktualizujProcesy()
+          }}
+          alt="Procesy">
+            Zapisz nowe grupy
+          </button>
+
+
   );
 }
  

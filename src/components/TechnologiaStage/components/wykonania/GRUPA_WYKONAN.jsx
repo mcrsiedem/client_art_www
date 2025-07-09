@@ -127,7 +127,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
      className={style.col_dane}>
       <label className={style.label}> Procesor </label>
       <select
-        className={style.input}
+        className={rowGrupa.global_id == 0 ? style.input_yellow:style.input}
         value={rowGrupa.procesor_id}
         onChange={(event) => {
 
@@ -566,7 +566,7 @@ const PrzelotyGrupy = ({ rowGrupa }) => {
       <label className={style.label}> Przeloty </label>
       <input
       
-        className={style.input}
+       className={style.input}
         value={rowGrupa.przeloty}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
@@ -592,7 +592,7 @@ const Narzad = ({ rowGrupa }) => {
       <label className={style.label}> Narzad </label>
       <input
       
-        className={style.input}
+       className={style.input}
         value={rowGrupa.narzad}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {

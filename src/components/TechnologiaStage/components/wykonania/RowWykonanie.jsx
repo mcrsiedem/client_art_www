@@ -21,7 +21,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
       <RodzajArkuszaWykonania rowWykonanie={rowWykonanie}/>
       {/* <td></td> */}
-      <StartDruku rowWykonanie={rowWykonanie}/>
+      {/* <StartDruku rowWykonanie={rowWykonanie}/> */}
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>

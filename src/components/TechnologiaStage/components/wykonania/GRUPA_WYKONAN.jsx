@@ -52,7 +52,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
               title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
               className={style.grupa_container}>
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
-                 <StartDruku rowGrupa={rowGrupa} />
+                 {/* <StartDruku rowGrupa={rowGrupa} /> */}
                  <NakladGrupy rowGrupa={rowGrupa} />
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
@@ -125,7 +125,7 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
                      }
                 }
      className={style.col_dane}>
-      <label className={style.label}> Procesor </label>
+      <label className={style.label}> Start : {rowGrupa.poczatek} </label>
       <select
         className={rowGrupa.global_id == 0 ? style.input_yellow:style.input}
         value={rowGrupa.procesor_id}

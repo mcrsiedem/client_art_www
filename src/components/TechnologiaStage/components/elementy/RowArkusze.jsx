@@ -181,9 +181,7 @@ export default function RowArkusze  ({ row,i })  {
                           
                             })
 
-
-       //--------------------------   
-       // Po zmianie kolejności arkuszy przepisuje indeksy                  
+       //--------------------------                     
                             let new_legi = [...legi]
                             let s =0;
                             for( let ark of new_arkusze.filter(x => x.element_id ==id_element_arkusz_drag )){
@@ -212,7 +210,7 @@ export default function RowArkusze  ({ row,i })  {
         //-----------------------------------------                 
 
 
-
+                          //przenumerowanie indeksow leg wzgledem arkuszy
 
                                     setLegi(
                                       new_legi
@@ -235,10 +233,6 @@ export default function RowArkusze  ({ row,i })  {
                                       })
                                     );
                             // .sort((a, b) => a.oprawa_id - b.oprawa_id)
-
-
-
-                            // ponumerować jeszcze fragmenty
 
  setArkusze(new_arkusze )
 

@@ -10,7 +10,7 @@ import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./grupa_wykonan/GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 import iconTrash from "assets/trashgray.svg";
-import ROW_OPRAWA from "./grupa_wykonan_oprawa/ROW_OPRAWA";
+import ROW_OPRAWA from "./grupa_wykonan_oprawa/GRUPA_WYKONAN_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaTech() {

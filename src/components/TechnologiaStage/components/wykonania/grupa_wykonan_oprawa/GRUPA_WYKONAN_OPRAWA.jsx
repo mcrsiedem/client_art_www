@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-import style from "./ROW_OPRAWA.module.css";
+import style from "./GRUPA_WYKONAN_OPRAWA.module.css";
 import icon from "assets/copy.svg";
 import iconDelete from "assets/trash2.svg";
 import RowWykonanie from "../wykonanie/RowWykonanie";
@@ -20,7 +20,7 @@ import { updateSkasujGrupeOprawa } from "actions/updateSkasujGrupeOprawa";
 
 
 
-export default  function ROW_OPRAWA ({ grupaOprawa }) {
+export default  function GRUPA_WYKONAN_OPRAWA ({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;

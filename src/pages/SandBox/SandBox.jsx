@@ -21,6 +21,7 @@ import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import DraggableResizableDiv from "./DraggableResizableDiv";
+import SandboxTable from "./Table";
 
 
 export default function SandBox({ user, setUser }) {
@@ -50,6 +51,7 @@ export default function SandBox({ user, setUser }) {
     return (
       <>
         <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />
+        {/* <SandboxTable/> */}
       </>
     );
   } else

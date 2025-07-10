@@ -4,7 +4,7 @@ import { AppContext } from "context/AppContext";
 import style from "./ROW_OPRAWA.module.css";
 import icon from "assets/copy.svg";
 import iconDelete from "assets/trash2.svg";
-import RowWykonanie from "./wykonanie/RowWykonanie";
+import RowWykonanie from "../wykonanie/RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";

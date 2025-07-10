@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import icon from "assets/copy.svg";
 import iconCopy from "assets/info.svg";
+import iconRolka from "assets/rolka.svg";
+import iconArkusz from "assets/sheet2.svg";
 
 import iconAdd from "assets/add4.svg";
 
@@ -90,7 +92,11 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
 
 const papier_postac_name = id =>{
   if (id == 1 )  return "A"
-  if (id == 2 )  return "R"
+  if (id == 2 )  return (      <img
+    className={style.zamknij_icon}
+     src={iconRolka}
+    />)
+
 }
 
 
@@ -251,7 +257,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
                    <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td>
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
-                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (papier_postac_name(grup.papier_postac_id)+ " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
+                  <Papier grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
@@ -357,6 +363,37 @@ if(dyspersja.includes(parseInt(grup.global_proces_id)))
  
  
 };
+
+
+
+
+const Papier = ({ grup }) => {
+const dyspersja = [2,3,5,6,12,13]
+const uv = [15,17]
+
+if(grup.papier_postac_id == 2 && grup.typ_grupy !=1 )
+
+return(
+                    <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}><img
+    className={style.icon_rolka}
+     src={iconRolka}
+    />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
+)
+
+
+if(grup.papier_postac_id == 1 && grup.typ_grupy !=1 )
+
+return(
+                    <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}> <img
+    className={style.icon_rolka}
+     src={iconArkusz}
+    />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
+)
+ 
+ 
+};
+
+
 
 function SelectBox({ grup }) {
   const appContext = useContext(AppContext);

@@ -117,17 +117,19 @@ const WykonaniaTable = () => {
               <th >Nr</th>
               <th> Klient</th>
               <th> Praca</th>
-              <th> Uwagi</th>
+              {/* <th> </th> */}
               <th title="Dyspersja"> D/K</th>
               <th> Nakład</th>
               <th> Spedycja</th>
-              <th title="Dyspersja"> Narz.</th>
+              {/* <th title="Dyspersja"> Narz.</th> */}
 
               <th> Przeloty</th>
-              <th> Papier</th>
+              <th> </th>
               {selectedProces == 1 ? <th>Papier </th> : <></>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
               <th> Status </th>
+              <th > </th>
+
 
             </tr>
           </thead>

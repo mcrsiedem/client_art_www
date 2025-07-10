@@ -251,11 +251,11 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   {/* <td className={style.td_tableProcesy_klient}>{druk_alert(grup)}</td> */}
                   <TytulProcesGrup grup={grup}/>
-                  <td style={{minWidth: "130px"}}> {grup.uwagi}</td>
+                  {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   <DyspersjaGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
-                   <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td>
+                   {/* <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td> */}
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   <Papier grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}

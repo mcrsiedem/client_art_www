@@ -90,14 +90,14 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
   }
 
 
-const papier_postac_name = id =>{
-  if (id == 1 )  return "A"
-  if (id == 2 )  return (      <img
-    className={style.zamknij_icon}
-     src={iconRolka}
-    />)
+// const papier_postac_name = id =>{
+//   if (id == 1 )  return "A"
+//   if (id == 2 )  return (      <img
+//     className={style.zamknij_icon}
+//      src={iconRolka}
+//     />)
 
-}
+// }
 
 
           const selectColor = (etapPlikow,status) =>{
@@ -377,6 +377,7 @@ return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}><img
     className={style.icon_rolka}
      src={iconRolka}
+     title="Rola"
     />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
 
@@ -387,6 +388,7 @@ return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}> <img
     className={style.icon_rolka}
      src={iconArkusz}
+     title="Arkusz"
     />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
  

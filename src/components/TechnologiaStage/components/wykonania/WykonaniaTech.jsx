@@ -7,7 +7,7 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
-import GRUPA_WYKONAN from "./GRUPA_WYKONAN";
+import GRUPA_WYKONAN from "./grupa_wykonan/GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 import iconTrash from "assets/trashgray.svg";
 import ROW_OPRAWA from "./ROW_OPRAWA";

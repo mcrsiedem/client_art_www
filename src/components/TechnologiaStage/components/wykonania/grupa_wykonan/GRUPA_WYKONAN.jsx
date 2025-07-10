@@ -5,7 +5,7 @@ import style from "./GRUPA_WYKONAN.module.css";
 import icon from "assets/copy.svg";
 import logoExtract from "assets/extract_green.svg";
 import iconDelete from "assets/trash2.svg";
-import RowWykonanie from "./RowWykonanie";
+import RowWykonanie from "../RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";
@@ -52,13 +52,11 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
               title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
               className={style.grupa_container}>
                  <Procesor rowGrupa={rowGrupa} rowProces={rowProces}/>
-                 {/* <StartDruku rowGrupa={rowGrupa} /> */}
                  <NakladGrupy rowGrupa={rowGrupa} />
                  <CzasGrupy rowGrupa={rowGrupa} />
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <Narzad rowGrupa={rowGrupa} />
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
-                 {/* <MnoznikPredkosci rowGrupa={rowGrupa}/> */}
                  <Stangrupy rowGrupa={rowGrupa}/>
                  <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
                  <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
@@ -96,25 +94,15 @@ function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
-  // const updateGrupaWykonan = techContext.updateGrupaWykonan
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const wykonania = techContext.wykonania;
   const setWykonania = techContext.setWykonania;
   const daneTech = techContext.daneTech;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const grupaWykonan = techContext.grupaWykonan;
   const [sumujGrupe] = useGrupyWykonan()
   const [updateGrupaWykonan] = useGrupyWykonanFirst()
   const [wolno,wolno_procesor] = useAccess(false);
-  // const SumaCzasow = (grupa,new_wykonania) => {
-  //   let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
-  //   return suma;
-  // };
-  // const SumaPrzelotow = (grupa,new_wykonania) => {
-  //   let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
-  //   return suma;
-  // };
+
   return (
     <div
                 onDragOver={handleDragOver}

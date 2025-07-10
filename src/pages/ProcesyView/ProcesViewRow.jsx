@@ -378,7 +378,7 @@ return(
     className={style.icon_rolka}
      src={iconRolka}
      title="Rola"
-    />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
+    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
 
 
@@ -389,7 +389,7 @@ return(
     className={style.icon_rolka}
      src={iconArkusz}
      title="Arkusz"
-    />  { " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
+    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
  
  

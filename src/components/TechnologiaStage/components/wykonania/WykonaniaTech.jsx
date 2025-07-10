@@ -231,7 +231,7 @@ function AktualizujProcesy() {
   const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
   const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy]=useProcesy();
 
-if(grupaWykonan.some(x=> x.global_id==0)){
+if(grupaWykonan.some(x=> x.global_id==0) && daneTech.id !=1){
    return (
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-import style from "./WykonaniaTech.module.css";
+import style from "./WykonaniaStage.module.css";
 import logoExpand from "assets/expand.svg";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "utils/initialvalue";
@@ -13,7 +13,7 @@ import iconTrash from "assets/trashgray.svg";
 import ROW_OPRAWA from "./grupa_wykonan_oprawa/GRUPA_WYKONAN_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";
 
-export default function WykonaniaTech() {
+export default function WykonaniaStage() {
   const [
     createWykonaniaFromArkuszeLegi,
     createProcesyFromArkuszONE,
@@ -29,20 +29,11 @@ export default function WykonaniaTech() {
     return (
       <div
       title="WykonaniaTech"
-        onDoubleClick={() => {
-          // createWykonaniaFromArkuszeLegi()
+        onDoubleClick={() => {          // createWykonaniaFromArkuszeLegi()
         }}
         className={style.container}
       >
-
-        {/* //header */}
-        <div className={style.header_procesy}>
-              <p className={style.header_txt}>Procesy</p>
-              <AktualizujProcesy />
-              <Usun />
-        </div>
-
-        {/* //table */}
+        <WykonaniaStageHeader />
         <WykonaniaTechTable />
       </div>
     );
@@ -68,7 +59,19 @@ export default function WykonaniaTech() {
 
 
 
+const WykonaniaStageHeader = () => {
+  const techContext = useContext(TechnologyContext);
+  const procesyElementowTech = techContext.procesyElementowTech;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
 
+  return (
+  <div className={style.header_procesy}>
+              <p className={style.header_txt}>Procesy</p>
+              <AktualizujProcesy />
+              <Usun />
+        </div>
+  )
+}
 
 
 

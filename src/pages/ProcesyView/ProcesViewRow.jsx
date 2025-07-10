@@ -88,7 +88,10 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
   }
 
 
-
+const papier_postac_name = id =>{
+  if (id == 1 )  return "A"
+  if (id == 2 )  return "R"
+}
 
 
           const selectColor = (etapPlikow,status) =>{
@@ -248,7 +251,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
                    <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td>
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
-                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
+                  <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}>{grup.typ_grupy !=1 ? (papier_postac_name(grup.papier_postac_id)+ " - " +grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}

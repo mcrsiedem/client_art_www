@@ -7,10 +7,10 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
-import GRUPA_WYKONAN from "./grupa_wykonan/GRUPA_WYKONAN";
+import GRUPA_WYKONAN from "./procesy/grupa_wykonan/GRUPA_WYKONAN";
 import { useProcesy } from "hooks/useProcesy";
 import iconTrash from "assets/trashgray.svg";
-import ROW_OPRAWA from "./ROW_OPRAWA";
+import ROW_OPRAWA from "./oprawa/ROW_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaTech() {
@@ -30,7 +30,7 @@ export default function WykonaniaTech() {
 
        <div className={style.header_procesy}>
         <p className={style.header_txt}>Procesy</p>
-<AktualizujProcesy/>
+        <AktualizujProcesy/>
         <Usun/>
       </div>
 
@@ -84,12 +84,8 @@ const OprawaRow = ({ grupaOprawa }) => {
   return (
     <>
       <div className={style.row1}>
-        {/* <Rozwin rowProces={rowProces} show={show} setShow={setShow} /> */}
         <div className={style.procesy_container}>
-        {/* <p className={style.nazwy_procesow3}>{rowProces.nazwa} </p> */}
-        {/* <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p> */}
         </div>
-        {/* { (grupaWykonan?.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )} */}
       </div>
    <ROW_OPRAWA grupaOprawa={grupaOprawa}/>
       {/* {show &&

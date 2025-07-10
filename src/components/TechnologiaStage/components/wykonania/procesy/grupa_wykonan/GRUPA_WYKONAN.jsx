@@ -5,7 +5,7 @@ import style from "./GRUPA_WYKONAN.module.css";
 import icon from "assets/copy.svg";
 import logoExtract from "assets/extract_green.svg";
 import iconDelete from "assets/trash2.svg";
-import RowWykonanie from "./wykonanie/RowWykonanie";
+import RowWykonanie from ".././wykonanie/RowWykonanie";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import { updateWykonaniaOrazGrupa } from "actions/updateWykonaniaOrazGrupa";

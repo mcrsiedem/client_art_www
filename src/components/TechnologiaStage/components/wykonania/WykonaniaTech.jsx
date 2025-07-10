@@ -14,32 +14,40 @@ import ROW_OPRAWA from "./oprawa/ROW_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaTech() {
-  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa] = useProcesy()
+  const [
+    createWykonaniaFromArkuszeLegi,
+    createProcesyFromArkuszONE,
+    createProcesyFromArkuszNewGrupa,
+  ] = useProcesy();
   const techContext = useContext(TechnologyContext);
   const showProcesy = techContext.showProcesy;
   const setShowProcesy = techContext.setShowProcesy;
   const arkusze = techContext.arkusze;
   const daneTech = techContext.daneTech;
 
-  if(showProcesy || daneTech.id !=1 ){
-      return (
-    <div onDoubleClick={()=>{
-      // createWykonaniaFromArkuszeLegi()
+  if (showProcesy || daneTech.id != 1) {
+    return (
+      <div
+      title="WykonaniaTech"
+        onDoubleClick={() => {
+          // createWykonaniaFromArkuszeLegi()
+        }}
+        className={style.container}
+      >
 
-    }} className={style.container}>
+        {/* //header */}
+        <div className={style.header_procesy}>
+              <p className={style.header_txt}>Procesy</p>
+              <AktualizujProcesy />
+              <Usun />
+        </div>
 
-       <div className={style.header_procesy}>
-        <p className={style.header_txt}>Procesy</p>
-        <AktualizujProcesy/>
-        <Usun/>
+        {/* //table */}
+        <WykonaniaTechTable />
       </div>
-
-      <WykonaniaTechTable />
-    </div>
-  );
-  }
-  else {
-    if(arkusze.length !=0){
+    );
+  } else {
+    if (arkusze.length != 0) {
       return (
         <div className={style.btn_show_procesy_container}>
           <button
@@ -55,10 +63,16 @@ export default function WykonaniaTech() {
         </div>
       );
     }
-    
   }
-
 }
+
+
+
+
+
+
+
+
 const WykonaniaTechTable = () => {
   const techContext = useContext(TechnologyContext);
   const procesyElementowTech = techContext.procesyElementowTech;

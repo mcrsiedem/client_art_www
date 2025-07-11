@@ -1,15 +1,32 @@
 
 
-.dane {
-  padding: 5px 20px;
- background-color: rgb(233, 233, 233);
-display: flex;
-flex-direction: column;
-gap:5px;
-width: 100vw;
+
+
+.parametry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  /* height: 150px; */
+  background-color: rgb(243, 243, 243);
 
 
 }
+
+
+.parametry_btn{
+    /* height: 2rem; */
+    min-width: 200px;
+  border-radius: 5px;
+  border-color: transparent;
+  padding: 3.5px;
+  font-size: 1rem;
+  outline: 1px solid rgb(185, 185, 185);
+}
+
+
 
 .row1 {
   display: grid;

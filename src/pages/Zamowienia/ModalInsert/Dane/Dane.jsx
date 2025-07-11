@@ -12,16 +12,7 @@ import axios from "axios";
 
 import { IP } from "utils/Host";
 import { today } from "actions/today";
-export default function Dane({
-  selected_firma,setSelected_firma,
-
-  showAddClientStage
-}) {
-
-
-
-
-
+export default function Dane({showAddClientStage,setShowParametryZamowienia,setShowKosztyZamowienia}) {
 
   
   return (
@@ -65,6 +56,8 @@ export default function Dane({
         <Opiekun />
         <Uwagi />
         </Row>
+
+
       </div>
     </>
   );
@@ -78,6 +71,8 @@ function Row({children,style}) {
       </div>
     );
   }
+
+  
 
 function Firma() {
 const contextApp = useContext(AppContext);

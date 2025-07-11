@@ -26,7 +26,7 @@ export default function TableKoszty() {
             </thead>
             <tbody className={style.center}>
 
-              {kosztyDodatkowe.map((row,i) => {
+              {kosztyDodatkoweZamowienia.map((row,i) => {
                 return (
                   <tr
                     key={row.id}

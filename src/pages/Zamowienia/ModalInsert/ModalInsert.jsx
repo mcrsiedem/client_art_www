@@ -39,6 +39,7 @@ import HistoriaZamowienia from "./HistoriaZamowienia/HistoriaZamowienia";
 import DialogZapis from "components/Dialog/DialogZapis";
 import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
+import Parametery from "./Parametry/Parametry";
 
 function ModalInsert({
   
@@ -56,6 +57,7 @@ function ModalInsert({
   // const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
   const [isOK, setIsOK] = useState(false);
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
+  const [showKosztyZamowienia, setShowKosztyZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
 
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
@@ -160,8 +162,8 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
            setHistoriaZamowienia(res.data[7])
            setPakowanie(res.data[8])
            
-          //  setKosztyDodatkoweZamowienia(res.data[7])
-          //  setKosztyDodatkowe(res.data[8])
+           setKosztyDodatkoweZamowienia(res.data[9])
+          //  setKosztyDodatkowe(res.data[10])
 
           //  setSaveButtonDisabled(true)
           //  console.log("Koszty",res.data[7])
@@ -170,16 +172,18 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
 
 
   return (
-    <div className={style.container}
-        tabIndex="0"
-              onKeyDown={(event) => {
-            if (event.key === "Escape") {
-              contextModalInsert.setShowElementyProcesyInsert(false);
+    <div
+      className={style.container}
+      tabIndex="0"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          contextModalInsert.setShowElementyProcesyInsert(false);
 
-              // props.handleEditBlachy(event.target.value);
-              // document.activeElement.blur();
-            }
-          }}>
+          // props.handleEditBlachy(event.target.value);
+          // document.activeElement.blur();
+        }
+      }}
+    >
       <HeaderModal
         openModalInsert={openModalInsert}
         setOpenModalInsert={setOpenModalInsert}
@@ -192,14 +196,15 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
         openModalStany={openModalStany}
         setOpenModalStany={setOpenModalStany}
         stanOtwarciaZamowienia={stanOtwarciaZamowienia}
-    
         readAlert={readAlert}
         setReadAlert={setReadAlert}
         readOnly={readOnly}
         setReadOnly={setReadOnly}
       />
 
-      <Dane showAddClientStage={showAddClientStage} />
+      <Dane showAddClientStage={showAddClientStage} setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia} />
+        <Parametery setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia}/>
+
 
       <div className={style.main}>
         {showParametryZamowienia && (
@@ -233,13 +238,20 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
                 handleChangeCardFragmentyOprawaId
               }
             />
-            <PakowanieZamowienie/>
+            <PakowanieZamowienie />
             <HistoriaZamowienia />
 
-   
-            {/* <KosztyDodatkowe handleChangeCardPakowanie={handleChangeCardPakowanie}/> */}
+            <KosztyDodatkowe />
           </div>
         )}
+
+
+        {showKosztyZamowienia && (
+          <div>
+            <KosztyDodatkowe />
+          </div>
+        )}
+
 
         <ProductCreator
           showTemplate={showTemplate}
@@ -265,6 +277,8 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
       <PaperStage parent={"zamowienia"} />
     </div>
   );
+
+
 
   
   //----------------------------------

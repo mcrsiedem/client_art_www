@@ -9,10 +9,12 @@
 }
 .container2 {
   display: flex;
-  align-items: start;
+  align-items: end;
   justify-content: center;
   margin-top: 15px;
   margin-bottom: 15px;
+  height: 90%;
+  /* background-color: #646464; */
 }
 
 
@@ -117,25 +119,24 @@ width: 40px;
   background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
 border: none;
 }
+
 .btn_dodaj_koszty{
-  width: 220px;
-  height: 1.6rem;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%);
-  /* background-image: linear-gradient(rgb(240, 151, 50) 0%,rgb(255, 190, 116) 50%,rgb(240, 151, 50) 100%); */
-  /* border-color: rgb(182, 182, 182); */
-  /* box-shadow: none; */
-/* border: none; */
-/* font-weight: bold; */
-border: none;
+    min-width: 300px;
+   height: 2.6rem;
+    border: none;
+  font-size: 1rem;
+  border-left: 1px solid rgb(189, 189, 189);
+  border-right: 1px solid rgb(189, 189, 189);
+  color: aliceblue;
+  background-color: rgb(93, 93, 93);
+
 }
 
 .btn_dodaj_koszty:hover{
+    background-color: rgb(113, 113, 113);
 
-  /* box-shadow: none; */
-  border: 1px gray solid;
 }
+
 
 
 

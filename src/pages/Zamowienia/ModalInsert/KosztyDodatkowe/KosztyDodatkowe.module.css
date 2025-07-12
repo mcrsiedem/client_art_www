@@ -85,6 +85,7 @@
   width: 200px;
   height: 30px;
   border-radius: 5px;
+  background-color: #e3e3e3;
   /* background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%); */
   text-align: center;
 }

@@ -64,7 +64,10 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
     function HISTORIA_BTN({showTabs,setShowTabs}) {
   
     return (
-            <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}>
+            <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}
+             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:true})}}
+
+            >
 
         Historia zmian
       </button>

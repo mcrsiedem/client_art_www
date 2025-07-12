@@ -15,18 +15,18 @@ import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 
-export default function HistoriaZamowienia() {
+export default function HistoriaZamowienia({showTabs}) {
   const [oprawa_row, setOprawa_row] = useState();
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
 
   const contextModalInsert = useContext(ModalInsertContext);
   const showHistoria= contextModalInsert.showHistoria;
-if(showHistoria){
+if(showTabs.historia){
     return (
     <div className={style.container}>
       <div className={style.historia}>
-        <HISTORIA_HEADER/>
+        {/* <HISTORIA_HEADER/> */}
         <HISTORIA_TABLE/>
       </div>
     </div>

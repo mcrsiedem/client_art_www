@@ -241,14 +241,14 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
               }
             />
             <PakowanieZamowienie />
-            <HistoriaZamowienia />
+           
 
          
           </div>
         )}
 
    <KosztyDodatkowe showTabs={showTabs}  />
-
+ <HistoriaZamowienia  showTabs={showTabs} />
 
 
         <ProductCreator

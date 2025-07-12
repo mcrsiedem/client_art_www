@@ -12,14 +12,15 @@ import axios from "axios";
 
 import { IP } from "utils/Host";
 import { today } from "actions/today";
-export default function Parametery({showAddClientStage,setShowParametryZamowienia,setShowKosztyZamowienia}) {
+export default function Parametery({showTabs,setShowTabs}) {
 
-  
+
   return (
     <>
       <div  className={style.parametry}>
-        <PARAMETRY_BTN setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia}/>
-        <KOSZTY_BTN setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia}/>
+        <PARAMETRY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
+        <KOSZTY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
+        <HISTORIA_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
 
 
       </div>
@@ -36,21 +37,36 @@ function Row({children,style}) {
     );
   }
 
-  
-function PARAMETRY_BTN({setShowParametryZamowienia,setShowKosztyZamowienia}) {
+function PARAMETRY_BTN({showTabs,setShowTabs}) {
   
     return (
-      <button className={style.parametry_btn}>
+      <button className={showTabs.parametry ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabs({parametry:true,koszty:false,historia:false})}}
+      >
         Parametry
       </button>
     );
   }
 
-  function KOSZTY_BTN({setShowParametryZamowienia,setShowKosztyZamowienia}) {
+  function KOSZTY_BTN({showTabs,setShowTabs}) {
   
     return (
-      <button className={style.parametry_btn}>
+            <button
+             className={showTabs.koszty ? style.parametry_btn_select:style.parametry_btn}
+             onClick={()=>{ setShowTabs({parametry:false,koszty:true,historia:false})}}
+             >
+
         Koszty dodatkowe
+      </button>
+    );
+  }
+
+    function HISTORIA_BTN({showTabs,setShowTabs}) {
+  
+    return (
+            <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}>
+
+        Historia zmian
       </button>
     );
   }

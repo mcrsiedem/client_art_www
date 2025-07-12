@@ -5,12 +5,17 @@ import KosztyDodatkoweEdit from "pages/Zamowienia/KosztyDodatkoweEdit/KosztyDoda
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addKosztDodatkowyZamowienia } from "actions/addKosztDodatkowyZamowienia";
 import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
-export default function KosztyDodatkowe({ handleChangeCardPakowanie}) {
+export default function KosztyDodatkowe({ showTabs,handleChangeCardPakowanie}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
 const showKosztyDodatkoweEdit = contextModalInsert.showKosztyDodatkoweEdit;
 const daneZamowienia = contextModalInsert.daneZamowienia;
+
+
+if(showTabs.koszty){
+
+
 
 if(kosztyDodatkoweZamowienia.length == 0){
   return <>
@@ -40,4 +45,4 @@ if(kosztyDodatkoweZamowienia.length == 0){
 
 
 
-
+}

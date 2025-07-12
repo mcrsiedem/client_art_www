@@ -59,6 +59,7 @@ function ModalInsert({
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showKosztyZamowienia, setShowKosztyZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
+  const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false});
 
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);
@@ -88,6 +89,7 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 const selectedZamowienie= contextModalInsert.selectedZamowienie;
 const openModalInsert= contextModalInsert.openModalInsert;
 const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
+
 
   useEffect(() => {
 
@@ -203,11 +205,11 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
       />
 
       <Dane showAddClientStage={showAddClientStage} setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia} />
-        <Parametery setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia}/>
+        <Parametery showTabs={showTabs} setShowTabs={setShowTabs}/>
 
 
       <div className={style.main}>
-        {showParametryZamowienia && (
+        {showTabs.parametry && (
           <div>
             <Produkty />
             <Elementy
@@ -241,16 +243,12 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
             <PakowanieZamowienie />
             <HistoriaZamowienia />
 
-            <KosztyDodatkowe />
+         
           </div>
         )}
 
+   <KosztyDodatkowe showTabs={showTabs}  />
 
-        {showKosztyZamowienia && (
-          <div>
-            <KosztyDodatkowe />
-          </div>
-        )}
 
 
         <ProductCreator

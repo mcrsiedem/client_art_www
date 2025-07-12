@@ -2,46 +2,25 @@ import style from "./Produkty.module.css";
 import { useContext, useState } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
-import iconHistoriaDark from "assets/iconHistoriaDark.svg";
-
 import { reg_int, reg_txt } from "utils/initialvalue";
 import { useStatus } from "hooks/useStatus";
-import iconCopy from "assets/edit.svg";
 import ProduktyNaklad from "./Naklad/ProduktyNaklad";
 import { useHistoria } from "hooks/useHistoria";
 
 export default function Produkty( ) {
-
-  const contextModalInsert = useContext(ModalInsertContext);
-  const setShowHistoria= contextModalInsert.setShowHistoria;
-  const showHistoria= contextModalInsert.showHistoria;
   return (
       <div className={style.container}>
             <div className={style.produkt}>
-         
               <div className={style.produkt_menu_button}>
               <p className={style.row1}>Produkt</p>
-              <img
-              title="Historia zmian"
-              onClick={()=>{setShowHistoria(!showHistoria)}}
-          className={style.icon}
-          src={iconHistoriaDark}
-
-          alt="React Logo"
-        />
-              
               </div>
-              
-         
               <ProduktyTable2   />
-            
             </div>
     </div>
   );
 }
 
 //--------------------------
-
 
 function ProduktyTable2() {
   const contextModalInsert = useContext(ModalInsertContext);

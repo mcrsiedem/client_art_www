@@ -1,11 +1,6 @@
 import { useEffect,createContext,useState, useCallback, useRef } from "react";
-import { getUsers } from "../actions/getUsers";
-import { getClients } from "../actions/getClients";
-import { getProcess } from "actions/getProcesList";
 import { initialDane, initialProcesy } from "utils/initialvalue";
 
-import axios from "axios";
-import { IP } from "utils/Host";
 import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
 export const ModalInsertContextProvider = ({children})=>{
@@ -18,7 +13,6 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showElementyProcesyInsert, setShowElementyProcesyInsert] =     useState(false);
     const [selectedElementROW,setSelectedElementROW] = useState(null)
     const [selectedZamowienie,setSelectedZamowienie] = useState({id:1})
-    const [showHistoria,setShowHistoria] = useState(false)
 
 
 
@@ -282,7 +276,7 @@ export const ModalInsertContextProvider = ({children})=>{
           showMenuZamowienia, setShowMenuZamowienia,
           handleChangeCardFragmenty_i_Elementy_naklad,
           handleChangeCardFragmenty_i_Elementy_nazwa,
-          showHistoria,setShowHistoria
+      
 
 
 

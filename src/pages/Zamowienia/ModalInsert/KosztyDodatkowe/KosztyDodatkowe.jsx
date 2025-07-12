@@ -32,7 +32,7 @@ if(kosztyDodatkoweZamowienia.length == 0){
     
       <div className={style.container}>
         <div className={style.pakowanie}>
-        <HeaderKoszty style={style}/>
+        {/* <HeaderKoszty style={style}/> */}
         <TableKoszty  handleChangeCardPakowanie={handleChangeCardPakowanie} />
         </div>
         {showKosztyDodatkoweEdit &&(

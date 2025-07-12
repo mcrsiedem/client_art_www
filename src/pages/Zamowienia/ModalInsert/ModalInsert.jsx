@@ -108,7 +108,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
       setOprawa(initialOprawa)
       setPakowanie(initalPakowanie)
       setProcesyElementow(initialProcesy)
-      setKosztyDodatkowe([])
+      // setKosztyDodatkowe([])
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
       setHistoriaZamowienia([])
@@ -163,8 +163,8 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
            setTechnologieID(res.data[6])
            setHistoriaZamowienia(res.data[7])
            setPakowanie(res.data[8])
-           
            setKosztyDodatkoweZamowienia(res.data[9])
+           
           //  setKosztyDodatkowe(res.data[10])
 
           //  setSaveButtonDisabled(true)

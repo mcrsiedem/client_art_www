@@ -15,7 +15,7 @@ export default function StatusKosztow() {
           <label className={style.status_label}> Status </label>
           <select
             className={style.status}
-            defaultValue={kosztyDodatkoweZamowienia[0].status}
+            value={kosztyDodatkoweZamowienia[0].status}
     
             onChange={(event) => {
               // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)

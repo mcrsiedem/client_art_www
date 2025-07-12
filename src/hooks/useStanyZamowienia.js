@@ -28,12 +28,12 @@ console.log("Fragmenty : ", fragmenty);
 console.log("Oprawa : ", oprawa);
 console.log("Procesy elementów: ", procesyElementow);
 console.log("Pakowanie: ", pakowanie);
-console.log("Koszty dodatkowe: ", kosztyDodatkoweZamowienia);
 console.log("Papiery_nazwy: ", listaPapierowNazwy);
 console.log("Historia zamówienia: ", historiaZamowienia);
 console.log("Technologie do zamówienia: ", technologieID);
 console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 console.log("listaPapierowNazwy: ", listaPapierowNazwy);
+console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
 }
 
   return [pokazStanyZamowienia];

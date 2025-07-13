@@ -25,6 +25,9 @@ export default function Header({ dodaj_clikHandler}) {
     const zamowienia = contextApp.zamowienia;
     const setZamowienia = contextApp.setZamowienia;
     const setSelectedZamowienie = contexModal.setSelectedZamowienie;
+     const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -51,6 +54,8 @@ export default function Header({ dodaj_clikHandler}) {
           className={style.icon}
           src={iconAdd}
           onClick={() => {
+setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+
             setSelectedZamowienie({id:1})
             dodaj_clikHandler();
           }}

@@ -248,15 +248,11 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
           </div>
         )}
 
-   <KosztyDodatkowe  />
- <HistoriaZamowienia  />
+    <KosztyDodatkowe  />
+    <HistoriaZamowienia  />
 
 
-        <ProductCreator
-          showTemplate={showTemplate}
-          setShowTemplate={setShowTemplate}
-          setShowParametryZamowienia={setShowParametryZamowienia}
-        />
+        <ProductCreator        />
       </div>
       <ProcesElement showElementyProcesyInsert={showElementyProcesyInsert} />
       <Stany

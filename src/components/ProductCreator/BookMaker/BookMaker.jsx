@@ -7,11 +7,10 @@ import CardBinding from "./CardBinding";
 
 import { PreOrderContext } from "context/PreOrderContext";
 import { useCreatorBook } from "hooks/useCreatorBook";
-export default function BookMaker({
-  setShowTemplate,
-  setShowParametryZamowienia,
-}) {
-  
+export default function BookMaker() {
+   const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
   const contextApp = useContext(AppContext);
   const [showElement, setShowElement] = useState(false);
   // const [binding, setBinding] = useState( contextApp.bindingType.map((bind) => ({ ...bind, isSelcted: false })) ); // dodaje do obiektu pole isSelected
@@ -47,7 +46,7 @@ export default function BookMaker({
           <Falc/>
           </div>
        
-          <AddBtn setShowTemplate={setShowTemplate}  setShowParametryZamowienia={ setShowParametryZamowienia}/>
+          <AddBtn />
       </>
 
         )}
@@ -274,7 +273,10 @@ const Srodek = () => {
 };
 
 
-const AddBtn = ({ setShowTemplate, setShowParametryZamowienia }) => {
+const AddBtn = () => {
+   const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
   const context = useContext(PreOrderContext);
   const [createBook] = useCreatorBook();
   const isEmpty = () => {
@@ -303,8 +305,9 @@ const AddBtn = ({ setShowTemplate, setShowParametryZamowienia }) => {
       <button
         disabled={isEmpty()}
         onClick={() => {
-          setShowTemplate(false);
-          setShowParametryZamowienia(true);
+setShowTabs( {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
+         
+
           createBook();
         }}
         className={isEmpty() ? style.btn_disabled : style.btn}

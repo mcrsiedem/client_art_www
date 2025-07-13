@@ -7,7 +7,8 @@ export default function Parametery() {
  const contextModalInsert = useContext(ModalInsertContext);
 const showTabs = contextModalInsert.showTabs
 const setShowTabs = contextModalInsert.setShowTabs
-  return (
+
+    return (
     <>
       <div  className={style.parametry}>
         <PARAMETRY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
@@ -19,6 +20,8 @@ const setShowTabs = contextModalInsert.setShowTabs
       </div>
     </>
   );
+
+
 }
 
 
@@ -27,6 +30,7 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
     return (
       <button className={showTabs.parametry ? style.parametry_btn_select:style.parametry_btn}
        onClick={()=>{ setShowTabs({parametry:true,koszty:false,historia:false,faktury:false})}}
+       disabled = {showTabs.kreator}
       >
         Parametry
       </button>
@@ -39,6 +43,8 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
             <button
              className={showTabs.koszty ? style.parametry_btn_select:style.parametry_btn}
              onClick={()=>{ setShowTabs({parametry:false,koszty:true,historia:false,faktury:false})}}
+       disabled = {showTabs.kreator}
+
              >
 
         Koszty dodatkowe
@@ -51,6 +57,7 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
     return (
             <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}
              onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:true,faktury:false})}}
+       disabled = {showTabs.kreator}
 
             >
 
@@ -64,6 +71,7 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
     return (
             <button className={showTabs.faktury ? style.parametry_btn_select:style.parametry_btn}
              onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:false,faktury:true})}}
+       disabled = {showTabs.kreator}
 
             >
 

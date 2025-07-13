@@ -89,6 +89,8 @@ const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
 const selectedZamowienie= contextModalInsert.selectedZamowienie;
 const openModalInsert= contextModalInsert.openModalInsert;
 const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
+const ksiegowosc= contextModalInsert.ksiegowosc;
+const setKsiegowosc= contextModalInsert.setKsiegowosc;
 
 
   useEffect(() => {
@@ -111,6 +113,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
       setHistoriaZamowienia([])
+      setKsiegowosc([])
     }
 
   // }, [open]);
@@ -163,6 +166,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
            setHistoriaZamowienia(res.data[7])
            setPakowanie(res.data[8])
            setKosztyDodatkoweZamowienia(res.data[9])
+           setKsiegowosc(res.data[10])
            
 
   }

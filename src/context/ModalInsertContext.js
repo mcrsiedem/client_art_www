@@ -243,7 +243,8 @@ export const ModalInsertContextProvider = ({children})=>{
           showMenuZamowienia, setShowMenuZamowienia,
           handleChangeCardFragmenty_i_Elementy_naklad,
           handleChangeCardFragmenty_i_Elementy_nazwa,
-          showTabs, setShowTabs
+          showTabs, setShowTabs,
+          ksiegowosc, setKsiegowosc
       
 
 

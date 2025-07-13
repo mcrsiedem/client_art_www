@@ -3,7 +3,10 @@ import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { _typ_elementu } from "utils/initialvalue";
 
-export default function HistoriaZamowienia({showTabs}) {
+export default function HistoriaZamowienia() {
+ const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
 
 if(showTabs.historia){
     return (

@@ -39,7 +39,7 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showPaperStage, setShowPaperStage] =useState(false);
     const [showInputNrZamowienie, setShowInputNrZamowienie] =useState(false);
     const [showMenuZamowienia, setShowMenuZamowienia] = useState(false);
-
+  const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false,faktury:false,kreator: false});
     
     useEffect(() => {
      
@@ -276,6 +276,7 @@ export const ModalInsertContextProvider = ({children})=>{
           showMenuZamowienia, setShowMenuZamowienia,
           handleChangeCardFragmenty_i_Elementy_naklad,
           handleChangeCardFragmenty_i_Elementy_nazwa,
+          showTabs, setShowTabs
       
 
 

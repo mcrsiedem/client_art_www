@@ -30,10 +30,10 @@ export const ModalInsertContextProvider = ({children})=>{
    const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
 
 
-    const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]); // koszty dodatkowe zmówienia - zestawienie - jeśli są 
-    const [kosztyDodatkowe, setKosztyDodatkowe] = useState([]); // wszystkie koszty dodatkowe  pobierane wg id kosztów zamówienia
-    const [kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary] = useState([]); // koszty dodatkowe  w trakcie edycji
-    const [showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit] =     useState(false);
+    const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]);
+    const [ksiegowosc, setKsiegowosc] = useState([]);
+  
+
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
 
     const [showPaperStage, setShowPaperStage] =useState(false);
@@ -196,45 +196,14 @@ export const ModalInsertContextProvider = ({children})=>{
        
     };
 
-    const handleUpdateKosztyDodatkoweTemporary = (row) => {
-      setKosztyDodatkoweTemporary(
-        kosztyDodatkoweTemporary.map((t) => {
-          if (t.id == row.id) {
-            return row;
-          } else {
-            return t;
-          }
-        })
-      )
-    };
-
-    const handleDeleteKosztyDodatkoweTemporary = (row) => {
-      setKosztyDodatkoweTemporary(
-        kosztyDodatkoweTemporary.filter((t) => t.id != row.id)
-      )
-    };
 
 
 
 
 
 
-    useEffect(() => {
-      // gdy zmieniają sie koszty dodatkowe sumowany jest tutaj wynik
-      let suma = 0.0;
-      kosztyDodatkoweTemporary.forEach((element, i) => {
-        suma = parseFloat(parseFloat(suma) + parseFloat(element.suma));
-      });
 
-      setKosztyDodatkoweZamowienia((prev) =>
-        prev.map((x) => {
-          return {
-            ...x,
-            suma: suma,
-          };
-        })
-      );
-    }, [kosztyDodatkoweTemporary]);
+
 
     
     return (
@@ -250,7 +219,6 @@ export const ModalInsertContextProvider = ({children})=>{
           procesyElementow, setProcesyElementow,
           procesyElementowTemporary, setProcesyElementowTemporary,
           kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia,
-          kosztyDodatkowe, setKosztyDodatkowe,
           technologieID, setTechnologieID,
 
           lockDragDrop, setLockDragDrop,
@@ -266,10 +234,9 @@ export const ModalInsertContextProvider = ({children})=>{
           handleUpdateRowPakowanie,
           handleUpdateRowOprawa,
           handleUpdateRowProcesyElementow,
-          handleUpdateKosztyDodatkoweTemporary,
-          handleDeleteKosztyDodatkoweTemporary,
-          kosztyDodatkoweTemporary, setKosztyDodatkoweTemporary,
-          showKosztyDodatkoweEdit, setShowKosztyDodatkoweEdit,
+    
+      
+        
           selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia,showPaperStage, setShowPaperStage,
           selectedZamowienie,setSelectedZamowienie,isShowAddClientStage, showAddClientStage,addHistoria,historiaZamowienia, setHistoriaZamowienia,
           showInputNrZamowienie, setShowInputNrZamowienie,

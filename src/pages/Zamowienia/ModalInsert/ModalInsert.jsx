@@ -83,7 +83,6 @@ const technologieID = contextModalInsert.technologieID;
 const setTechnologieID = contextModalInsert.setTechnologieID;
 const setProcesyElementow = contextModalInsert.setProcesyElementow;
 const setKosztyDodatkoweZamowienia = contextModalInsert.setKosztyDodatkoweZamowienia;
-const setKosztyDodatkowe = contextModalInsert.setKosztyDodatkowe;
 const isShowAddClientStage = contextModalInsert.isShowAddClientStage;
 const showAddClientStage = contextModalInsert.showAddClientStage;
 const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
@@ -109,7 +108,6 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
       setOprawa(initialOprawa)
       setPakowanie(initalPakowanie)
       setProcesyElementow(initialProcesy)
-      // setKosztyDodatkowe([])
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
       setHistoriaZamowienia([])
@@ -166,11 +164,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
            setPakowanie(res.data[8])
            setKosztyDodatkoweZamowienia(res.data[9])
            
-          //  setKosztyDodatkowe(res.data[10])
 
-          //  setSaveButtonDisabled(true)
-          //  console.log("Koszty",res.data[7])
-           // tutaj odebrać zestaw jeśli istnieje
   }
 
 

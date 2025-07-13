@@ -37,7 +37,7 @@ export   function useKosztyDodatkowe() {
 
 const dodajKoszty = () => {
 
-  setKosztyDodatkoweZamowienia([{id:1,dodal:DecodeToken(sessionStorage.getItem("token")).id , insert:true}])
+  setKosztyDodatkoweZamowienia([{id:1,dodal:DecodeToken(sessionStorage.getItem("token")).id ,ilosc:1,cena:"0",suma:"0", insert:true}])
 
 }
 

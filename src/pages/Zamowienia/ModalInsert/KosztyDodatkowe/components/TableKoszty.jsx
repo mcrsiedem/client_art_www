@@ -2,12 +2,10 @@ import style from "./../KosztyDodatkowe.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
 import StatusKosztow from "./StatusKosztow";
-import EdytujKoszty from "./EdytujKoszty";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
-  const kosztyDodatkowe = contextModal.kosztyDodatkowe;
-  const setKosztyDodatkowe = contextModal.setKosztyDodatkowe;
+
   const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
   

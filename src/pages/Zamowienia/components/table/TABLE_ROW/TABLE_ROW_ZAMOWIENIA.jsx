@@ -44,6 +44,10 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
     const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 
+  //  const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
+
 
   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
 
@@ -185,6 +189,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
 
         }}
         onDoubleClick={(node, event) => {
+       setShowTabs(   {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
 
 setOpenModalInsert(true)
           // open2(row.id);

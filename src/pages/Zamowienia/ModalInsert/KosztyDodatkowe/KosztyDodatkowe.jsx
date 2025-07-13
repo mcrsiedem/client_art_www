@@ -5,6 +5,7 @@ import KosztyDodatkoweEdit from "pages/Zamowienia/KosztyDodatkoweEdit/KosztyDoda
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { addKosztDodatkowyZamowienia } from "actions/addKosztDodatkowyZamowienia";
 import React, { useEffect, useState, useContext,useRef,useCallback } from "react";
+import { useKosztyDodatkowe } from "hooks/useKosztyDodatkowe";
 export default function KosztyDodatkowe({ handleChangeCardPakowanie}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
@@ -13,7 +14,7 @@ const showKosztyDodatkoweEdit = contextModalInsert.showKosztyDodatkoweEdit;
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const showTabs = contextModalInsert.showTabs
 const setShowTabs = contextModalInsert.setShowTabs
-
+ const [dodajKoszty] = useKosztyDodatkowe();
 if(showTabs.koszty){
 
 
@@ -23,7 +24,7 @@ if(kosztyDodatkoweZamowienia.length == 0){
   <div className={style.container2}>
    <button
     className={style.btn_dodaj_koszty}
-    onClick={()=>addKosztDodatkowyZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,daneZamowienia)}
+    onClick={()=> dodajKoszty()}
    >Dodaj koszty dodatkowe</button> 
   </div>
   

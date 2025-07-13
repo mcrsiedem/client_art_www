@@ -9,6 +9,7 @@ export default function Parametery({showTabs,setShowTabs}) {
       <div  className={style.parametry}>
         <PARAMETRY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
         <KOSZTY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
+        <FAKTURY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
         <HISTORIA_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
 
 
@@ -22,7 +23,7 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
   
     return (
       <button className={showTabs.parametry ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabs({parametry:true,koszty:false,historia:false})}}
+       onClick={()=>{ setShowTabs({parametry:true,koszty:false,historia:false,faktury:false})}}
       >
         Parametry
       </button>
@@ -34,7 +35,7 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
     return (
             <button
              className={showTabs.koszty ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ setShowTabs({parametry:false,koszty:true,historia:false})}}
+             onClick={()=>{ setShowTabs({parametry:false,koszty:true,historia:false,faktury:false})}}
              >
 
         Koszty dodatkowe
@@ -46,11 +47,24 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
   
     return (
             <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:true})}}
+             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:true,faktury:false})}}
 
             >
 
         Historia zmian
+      </button>
+    );
+  }
+
+      function FAKTURY_BTN({showTabs,setShowTabs}) {
+  
+    return (
+            <button className={showTabs.faktury ? style.parametry_btn_select:style.parametry_btn}
+             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:false,faktury:true})}}
+
+            >
+
+        Faktury
       </button>
     );
   }

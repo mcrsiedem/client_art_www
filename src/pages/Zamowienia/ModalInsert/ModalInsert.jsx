@@ -59,7 +59,7 @@ function ModalInsert({
   const [showParametryZamowienia, setShowParametryZamowienia] = useState(false);
   const [showKosztyZamowienia, setShowKosztyZamowienia] = useState(false);
   const [showTemplate, setShowTemplate] = useState(true);
-  const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false});
+  const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false,faktury:false});
 
 const [check_data_wejscia, setCheck_data_wejscia] = useState(false);
 const [openModalStany, setOpenModalStany] = useState(false);

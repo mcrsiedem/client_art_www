@@ -20,7 +20,7 @@ export default function TableKoszty() {
                 <th className={style.col3}>Nazwa</th>
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>
-                <th className={style.col10}>Suma</th>
+                <th className={style.col10}>Wartość</th>
                 <th className={style.col10}>Uwagi</th>
               </tr>
             </thead>

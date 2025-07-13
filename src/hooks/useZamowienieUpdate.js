@@ -27,6 +27,8 @@ export  function useZamowienieUpdate(){
   const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
   const pakowanie= contextModalInsert.pakowanie;
   const setPakowanie= contextModalInsert.setPakowanie;
+  const kosztyDodatkoweZamowienia= contextModalInsert.kosztyDodatkoweZamowienia;
+  const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
 
 
 const setTechnologieID = contextModalInsert.setTechnologieID;
@@ -37,7 +39,7 @@ const [refreshZamowienia] = useZamowienia()
   setSaveButtonDisabled(true)
 
   dialogBox.current.show();
-  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie})
+  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia})
   dialogBox.current.showOK();
   const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
@@ -50,6 +52,8 @@ const [refreshZamowienia] = useZamowienia()
   setTechnologieID(res.data[6])
   setHistoriaZamowienia(res.data[7])
   setPakowanie(res.data[8])
+  setKosztyDodatkoweZamowienia(res.data[9])
+  
 
   refreshZamowienia();
   dialogBox.current.hide();
@@ -64,7 +68,7 @@ return[saveZamowienieUpdate]
 
 
 //----------------------------------------------------------------------------------
-const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie}) =>{
+const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
@@ -102,7 +106,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
 
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie])
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;
@@ -115,6 +119,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
   procesyElementow = res.data[5];
   historiaZamowienia = res.data[6];
   pakowanie = res.data[7];
+  // kosztyDodatkoweZamowienia = res.data[8];
   
 
       resolve({produkty,elementy,fragmenty,oprawa,daneZamowienia,procesyElementow,historiaZamowienia,pakowanie})

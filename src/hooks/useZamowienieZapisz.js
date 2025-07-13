@@ -22,6 +22,10 @@ export  function useZamowienieZapisz(){
   let procesyElementow= contextModalInsert.procesyElementow;
   let pakowanie= contextModalInsert.pakowanie;
   let setPakowanie= contextModalInsert.setPakowanie;
+  let ksiegowosc= contextModalInsert.ksiegowosc;
+  let setKsiegowosc= contextModalInsert.setKsiegowosc;
+  let kosztyDodatkoweZamowienia= contextModalInsert.kosztyDodatkoweZamowienia;
+  let setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
 
 const [refreshZamowienia] = useZamowienia()
 
@@ -51,7 +55,8 @@ const [refreshZamowienia] = useZamowienia()
               daneZamowienia = {...daneZamowienia, nr:"",stan:1,status:1, etap:2}
               }
 
-          let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
+          // let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
+          let savedDane  = await saveDane({daneZamowienia})
 
           let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
           let zamowienie_id = savedDane.data[0][1].zamowienie_id;  // nr id pod jakim zapisała sietechnologia
@@ -65,10 +70,12 @@ const [refreshZamowienia] = useZamowienia()
               oprawa = oprawa.map((obj) => {return{...obj, zamowienie_id} })
               procesyElementow = procesyElementow.map((obj) => {return{...obj, zamowienie_id} })
               pakowanie = pakowanie.map((obj) => {return{...obj, zamowienie_id} })
+              kosztyDodatkoweZamowienia = kosztyDodatkoweZamowienia.map((obj) => {return{...obj, zamowienie_id} })
+              ksiegowosc = ksiegowosc.map((obj) => {return{...obj, zamowienie_id} })
 
          
 
-          let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie})
+          let savedParametry  = await saveParametry({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc})
 
           response.push(savedParametry.data)
           console.log(response)
@@ -87,6 +94,8 @@ const [refreshZamowienia] = useZamowienia()
           setOprawa(res.data[4])
           setProcesyElementow(res.data[5])
           setPakowanie(res.data[8].sort((a, b) => a.indeks - b.indeks))
+          setKosztyDodatkoweZamowienia(res.data[9])
+          setKsiegowosc(res.data[10])
 
 
            }
@@ -146,9 +155,9 @@ const saveDane = ({daneZamowienia}) =>{
   })
 }
 
-const saveParametry = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie}) =>{
+const saveParametry = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "zamowienieInsertParametry/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie])
+   let res = await axios.post(IP + "zamowienieInsertParametry/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc])
 resolve(res)
   })
 }

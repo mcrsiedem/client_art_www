@@ -18,14 +18,11 @@ export   function useKosztyDodatkowe() {
       const modalcontext = useContext(ModalInsertContext);
       const techContext = useContext(TechnologyContext);
 
-      const setListaPapierowWyszukiwarka =appcontext.setListaPapierowWyszukiwarka;
-      const zamowieniaPliki = appcontext.zamowieniaPliki;
-      const setZamowieniaPliki = appcontext.setZamowieniaPliki;
-      const grupaWykonan = techContext.grupaWykonan;
+
       const zamowienia = appcontext.zamowienia;
       const setZamowienia = appcontext.setZamowienia;
       const [refreshZamowienia, odblokujZamowienie, deleteZamowienie] =useZamowienia();
-      const [sumujGrupe, statusGrupy] = useGrupyWykonan();
+
       const selectedProcesor = techContext.selectedProcesor;
       const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
       const setWykonaniaAll = techContext.setWykonaniaAll;
@@ -33,11 +30,27 @@ export   function useKosztyDodatkowe() {
   const dniWstecz = techContext.dniWstecz;
   const kosztyDodatkoweZamowienia = modalcontext.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = modalcontext.setKosztyDodatkoweZamowienia;
+  const daneZamowienia = modalcontext.daneZamowienia;
 
 
 const dodajKoszty = () => {
 
-  setKosztyDodatkoweZamowienia([{id:1,dodal:DecodeToken(sessionStorage.getItem("token")).id ,ilosc:1,cena:"0",suma:"0", insert:true}])
+  setKosztyDodatkoweZamowienia([
+    {
+      id: 1,
+      indeks:1,
+      zamowienie_id: daneZamowienia.id,
+      nazwa:"",
+      ilosc: "1",
+      cena: "0",
+      suma: "0",
+      info:"",
+      status:1,
+      stan:1,
+      insert: true,
+      dodal: DecodeToken(sessionStorage.getItem("token")).id,
+    },
+  ]);
 
 }
 

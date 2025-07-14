@@ -1,5 +1,5 @@
 import { useEffect,createContext,useState, useCallback, useRef } from "react";
-import { initialDane, initialProcesy } from "utils/initialvalue";
+import { initialDane, initialKsiegowosc, initialProcesy } from "utils/initialvalue";
 
 import { initialProdukty,initialElementy,initialFragmenty, initialOprawa, initalPakowanie } from "utils/initialvalue";
 export const ModalInsertContext = createContext();
@@ -31,7 +31,7 @@ export const ModalInsertContextProvider = ({children})=>{
 
 
     const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]);
-    const [ksiegowosc, setKsiegowosc] = useState([]);
+    const [ksiegowosc, setKsiegowosc] = useState(initialKsiegowosc);
   
 
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)

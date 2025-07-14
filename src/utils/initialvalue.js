@@ -75,6 +75,17 @@ const initialProdukty = [
     uwagi: "",
   },
 ];
+const initialKsiegowosc = 
+  {
+    zamowienie_id: 1,
+    koszty_status: 1,
+    koszty_wartosc: "",
+    faktury_status: 1,
+    faktury_wartosc: "",
+    faktury_naklad:0,
+    info: "",
+  }
+
 
 const initialElementy = [
   {
@@ -618,6 +629,7 @@ export {
   initialOprawa,
   initalPakowanie,
   initialProcesy,
+  initialKsiegowosc,
 
   _status_dokumentu,
   _stan_dokumentu,
@@ -637,6 +649,7 @@ export {
   _stan_technologi,
   _status_technologi,
   _etap_plikow,
-  _status_wydania_papieru
+  _status_wydania_papieru,
+  
 
 };

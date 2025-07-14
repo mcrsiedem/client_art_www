@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import HeaderModal from "./Header/HeaderModal";
 import Dane from "./Dane/Dane";
 
-import { initialProcesy } from "utils/initialvalue";
+import { initialKsiegowosc, initialProcesy } from "utils/initialvalue";
 import {
 
   initialElementy,
@@ -113,7 +113,7 @@ const setKsiegowosc= contextModalInsert.setKsiegowosc;
       setKosztyDodatkoweZamowienia([])
       setSaveButtonDisabled(true)
       setHistoriaZamowienia([])
-      setKsiegowosc([])
+      setKsiegowosc(initialKsiegowosc)
     }
 
   // }, [open]);

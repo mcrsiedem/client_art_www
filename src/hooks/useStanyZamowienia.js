@@ -12,6 +12,7 @@ export function useStanyZamowienia() {
   const procesyElementow = contextModalInsert.procesyElementow;
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
   const historiaZamowienia = contextModalInsert.historiaZamowienia;
+  const ksiegowosc = contextModalInsert.ksiegowosc;
 
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
@@ -34,6 +35,7 @@ console.log("Technologie do zamówienia: ", technologieID);
 console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 console.log("listaPapierowNazwy: ", listaPapierowNazwy);
 console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.log("ksiegowosc: ", ksiegowosc);
 }
 
   return [pokazStanyZamowienia];

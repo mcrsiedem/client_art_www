@@ -71,7 +71,7 @@ const [refreshZamowienia] = useZamowienia()
               procesyElementow = procesyElementow.map((obj) => {return{...obj, zamowienie_id} })
               pakowanie = pakowanie.map((obj) => {return{...obj, zamowienie_id} })
               kosztyDodatkoweZamowienia = kosztyDodatkoweZamowienia.map((obj) => {return{...obj, zamowienie_id} })
-              ksiegowosc = ksiegowosc.map((obj) => {return{...obj, zamowienie_id} })
+              ksiegowosc = {...ksiegowosc, zamowienie_id} 
 
          
 

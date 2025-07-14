@@ -142,7 +142,8 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     uzytkownicy, setUzytkownicy,
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
                     showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania,
-                    kalendarz, setKalendarz,kalendarzDane, setKalendarzDane
+                    kalendarz, setKalendarz,kalendarzDane, setKalendarzDane,
+                    _status_faktury
                 }}
             >
                 {children}
@@ -249,6 +250,19 @@ const typ_elementu=[
     {
       id: 2,
       nazwa: "Gotowe do faktury",
+    },
+
+  ];
+
+ const _status_faktury = [
+
+    {
+      id: 1,
+      nazwa: "Niedostępna",
+    },
+    {
+      id: 2,
+      nazwa: "Zafakturowane",
     },
 
   ];

@@ -1,0 +1,12 @@
+.nazwa_input{
+  width: 20px;
+background-color: rgb(231, 231, 231);
+border: none;
+
+}
+
+.nazwa_input:active{
+  width: 100%;
+  border: none;
+  
+}

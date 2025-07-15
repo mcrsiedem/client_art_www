@@ -3,6 +3,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
 import StatusKosztow from "./StatusKosztow";
 import DodajKoszty from "./DodajKoszty";
+import KOSZT_NAZWA from "./koszt/KOSZT_NAZWA";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -29,20 +30,21 @@ export default function TableKoszty() {
               
           {
           
-          kosztyDodatkoweZamowienia.map((row,i) => {
+          kosztyDodatkoweZamowienia.map((koszt,i) => {
 
                 return (
        
                  
                   <tr
-                    key={row.id}
+                    key={koszt.id}
                   >
-                    <Indeks row={row} i={i+1}/>
-                    <Nazwa row={row} />
-                    <Ilosc row={row} />
-                    <Cena row={row} />
-                    <Suma row={row} />
-                    <Info row={row} />
+                    <Indeks row={koszt} i={i+1}/>
+                    <KOSZT_NAZWA koszt={koszt}/>
+                    {/* <Nazwa row={koszt} /> */}
+                    <Ilosc row={koszt} />
+                    <Cena row={koszt} />
+                    <Suma row={koszt} />
+                    <Info row={koszt} />
      
                   </tr>
 
@@ -87,6 +89,21 @@ export default function TableKoszty() {
       <td>{row.nazwa}</td>
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function Ilosc({ row }) {
     return (
       <td>{row.ilosc}</td>

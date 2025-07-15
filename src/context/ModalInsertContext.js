@@ -57,6 +57,18 @@ export const ModalInsertContextProvider = ({children})=>{
        setHistoriaZamowienia(new_historia)
       // console.log(row)
     };
+
+                function handleKosztyDodatkoweZamowienia(koszt) {
+              setKosztyDodatkoweZamowienia(
+                kosztyDodatkoweZamowienia.map((t) => {
+                  if (t.id == koszt.id) {
+                    return koszt;
+                  } else {
+                    return t;
+                  }
+                })
+              );
+            }
      
      // aktualizacja row w stanie produkty, elementy, fragmenty, oprawa, pakowanie
       const handleUpdateRowProdukty = (row) => {
@@ -244,7 +256,7 @@ export const ModalInsertContextProvider = ({children})=>{
           handleChangeCardFragmenty_i_Elementy_naklad,
           handleChangeCardFragmenty_i_Elementy_nazwa,
           showTabs, setShowTabs,
-          ksiegowosc, setKsiegowosc
+          ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia
       
 
 

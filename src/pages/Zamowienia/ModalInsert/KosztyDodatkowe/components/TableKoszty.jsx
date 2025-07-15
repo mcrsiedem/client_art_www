@@ -121,7 +121,7 @@ export default function TableKoszty() {
   }
   function Suma({ row }) {
     return (
-      <td>{row.suma}</td>
+      <td>{row.suma.toString().toLocaleString()}</td>
     );
   }
   function Info({ row }) {

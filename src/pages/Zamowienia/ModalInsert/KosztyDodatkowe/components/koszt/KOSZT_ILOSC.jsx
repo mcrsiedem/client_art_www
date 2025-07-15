@@ -25,6 +25,8 @@ export default function KOSZT_ILOSC({koszt}) {
                 handleKosztyDodatkoweZamowienia({
                   ...koszt,
                   ilosc: event.target.value,
+                  suma: (event.target.value * parseFloat( koszt.cena.replace(/,/g, '.'))).toFixed(2),
+
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,
                 });

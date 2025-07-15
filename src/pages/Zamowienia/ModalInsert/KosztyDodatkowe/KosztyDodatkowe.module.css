@@ -45,10 +45,9 @@
   align-items: center;
   /* justify-content: center; */
   justify-content: flex-end;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding-left: 40px;
-  padding-right: 40px;
+margin:30px
+  /* padding-left: 40px;
+  padding-right: 40px; */
 }
 .suma{
   color: #646464;
@@ -65,10 +64,11 @@
 .col {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   align-items: start;
-  gap: 15px;
+
+  /* gap: 15px; */
 
 }
 .status{
@@ -80,7 +80,10 @@
   text-align: center;
 }
 .status_label{
-  font-size: 0.8rem;}
+  font-size: 0.8rem;
+  padding-left: 10px;
+}
+  
 
   .suma_label{
     font-size: 1.2rem;

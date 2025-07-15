@@ -17,7 +17,11 @@ export default function DodajKoszty() {
           <div className={style.dodaj_koszty_td}>
                         <button
               className={style.btn_dodaj_koszty}
-              onClick={() => dodajKoszty()}
+              onClick={() => {
+              dodajKoszty()
+              }
+                
+                }
             >
               Dodaj
             </button>

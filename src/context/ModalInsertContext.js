@@ -59,15 +59,23 @@ export const ModalInsertContextProvider = ({children})=>{
     };
 
                 function handleKosztyDodatkoweZamowienia(koszt) {
-              setKosztyDodatkoweZamowienia(
-                kosztyDodatkoweZamowienia.map((t) => {
+
+let koszty = kosztyDodatkoweZamowienia.map((t) => {
                   if (t.id == koszt.id) {
                     return koszt;
                   } else {
-                    return t;
+                    return t; 
                   }
+
                 })
-              );
+   let  suma = koszty.map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
+                setKsiegowosc({...ksiegowosc, koszty_wartosc:suma, update:true})
+
+              setKosztyDodatkoweZamowienia(koszty     );
+
+           
+
+
             }
      
      // aktualizacja row w stanie produkty, elementy, fragmenty, oprawa, pakowanie

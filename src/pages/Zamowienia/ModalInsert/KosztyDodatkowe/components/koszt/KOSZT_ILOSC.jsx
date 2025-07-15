@@ -8,6 +8,8 @@ import DecodeToken from "pages/Login/DecodeToken";
 export default function KOSZT_ILOSC({koszt}) {
     const contextModalInsert = useContext(ModalInsertContext);
     const handleKosztyDodatkoweZamowienia= contextModalInsert.handleKosztyDodatkoweZamowienia;
+    const ksiegowosc= contextModalInsert.ksiegowosc;
+    const setKsiegowosc= contextModalInsert.setKsiegowosc;
     
       return (
         <td>
@@ -30,6 +32,10 @@ export default function KOSZT_ILOSC({koszt}) {
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,
                 });
+
+                // zsumować koszty ale nie tu
+
+               // setKsiegowosc({...ksiegowosc, koszty_wartosc: (event.target.value * parseFloat( koszt.cena.replace(/,/g, '.'))).toFixed(2), update:true})
               }
             }}
           ></input>

@@ -13,6 +13,7 @@ export default function TableKoszty() {
 
   const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
+  const ksiegowosc = contextModal.ksiegowosc;
   
     return <div className={style.main}>
         
@@ -66,7 +67,7 @@ export default function TableKoszty() {
                     <td></td>
                     <td className={style.td_razem}>Razem:</td>
           
-                    <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0]?.suma || 0}</td>
+                    <td className={style.td_suma }> {ksiegowosc?.koszty_wartosc || 0}</td>
                     <td></td>
 
      

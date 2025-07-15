@@ -4,6 +4,9 @@ import { useContext } from "react";
 import StatusKosztow from "./StatusKosztow";
 import DodajKoszty from "./DodajKoszty";
 import KOSZT_NAZWA from "./koszt/KOSZT_NAZWA";
+import KOSZT_UWAGI from "./koszt/KOSZT_UWAGI";
+import KOSZT_ILOSC from "./koszt/KOSZT_ILOSC";
+import KOSZT_CENA from "./koszt/KOSZT_CENA";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -40,11 +43,12 @@ export default function TableKoszty() {
                   >
                     <Indeks row={koszt} i={i+1}/>
                     <KOSZT_NAZWA koszt={koszt}/>
-                    {/* <Nazwa row={koszt} /> */}
-                    <Ilosc row={koszt} />
-                    <Cena row={koszt} />
+                    <KOSZT_ILOSC koszt={koszt} />
+                    <KOSZT_CENA koszt={koszt} />
+
+                    {/* <Cena row={koszt} /> */}
                     <Suma row={koszt} />
-                    <Info row={koszt} />
+                    <KOSZT_UWAGI koszt={koszt} />
      
                   </tr>
 

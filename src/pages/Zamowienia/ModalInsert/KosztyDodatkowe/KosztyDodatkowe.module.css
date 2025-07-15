@@ -112,22 +112,43 @@ width: 40px;
 border: none;
 }
 
-.btn_dodaj_koszty{
-    min-width: 300px;
-   height: 2.6rem;
-    border: none;
-  font-size: 1rem;
-  border-left: 1px solid rgb(189, 189, 189);
-  border-right: 1px solid rgb(189, 189, 189);
-  color: aliceblue;
-  background-color: rgb(93, 93, 93);
 
+.dodaj_koszty_td{
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
-.btn_dodaj_koszty:hover{
+.btn_dodaj_koszty{
+    min-width: 100px;
+   height: 2rem;
+
+
+  /* background-color: rgb(253, 0, 0);
+  background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%); */
+  margin: 20px;
+
+
+  	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	background-color:#77d42a;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:0.8rem;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aade7c;
+}
+
+/* .btn_dodaj_koszty:hover{
     background-color: rgb(113, 113, 113);
 
-}
+} */
 
 
 
@@ -217,3 +238,5 @@ border: none;
   height: 2rem;
   font-size: 1rem;
 }
+
+

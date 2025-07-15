@@ -2,6 +2,7 @@ import style from "./../KosztyDodatkowe.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
 import StatusKosztow from "./StatusKosztow";
+import DodajKoszty from "./DodajKoszty";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -24,8 +25,15 @@ export default function TableKoszty() {
             </thead>
             <tbody className={style.center}>
 
-              {kosztyDodatkoweZamowienia.map((row,i) => {
+              
+              
+          {
+          
+          kosztyDodatkoweZamowienia.map((row,i) => {
+
                 return (
+       
+                 
                   <tr
                     key={row.id}
                   >
@@ -35,27 +43,33 @@ export default function TableKoszty() {
                     <Cena row={row} />
                     <Suma row={row} />
                     <Info row={row} />
-
      
                   </tr>
+
                 );
-              })}
-                                <tr
-           
-                  >
+              })
+              
+              }
+
+              {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)}
+
+                    <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td className={style.td_razem}>Razem:</td>
           
-                    <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0].suma}</td>
+                    <td className={style.td_suma }> {kosztyDodatkoweZamowienia[0]?.suma || 0}</td>
                     <td></td>
 
      
                   </tr>
+                
+                  
             </tbody>
           </table>
                 <div className={style.zestawienie_kosztow }>
+              
                        <StatusKosztow/>
                 </div>
         </div>

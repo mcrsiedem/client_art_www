@@ -8,19 +8,19 @@ export default function StatusKosztow() {
     const contextApp = useContext(AppContext);
     const contextModalInsert = useContext(ModalInsertContext);
     // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-    const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
+    const ksiegowosc = contextModalInsert.ksiegowosc;
     const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
       return (
         <div className={style.col}>
           <label className={style.status_label}> Status </label>
           <select
             className={style.status}
-            value={kosztyDodatkoweZamowienia[0].status}
+            value={ksiegowosc.koszty_status}
     
             onChange={(event) => {
               // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)
               // setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
-              zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)
+              // zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)
                 
             //   setSaveButtonDisabled(false)
             }}

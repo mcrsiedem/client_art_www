@@ -3,6 +3,7 @@ import TableKoszty from "./components/TableKoszty";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import React, { useContext } from "react";
 import { useKosztyDodatkowe } from "hooks/useKosztyDodatkowe";
+import StatusKosztow from "./components/StatusKosztow";
 export default function KosztyDodatkowe({ handleChangeCardPakowanie }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const kosztyDodatkoweZamowienia =
@@ -29,7 +30,7 @@ export default function KosztyDodatkowe({ handleChangeCardPakowanie }) {
     return (
       <div className={style.container}>
         <div className={style.pakowanie}>
-          <TableKoszty />
+          <TableKoszty /> 
         </div>
       </div>
     );

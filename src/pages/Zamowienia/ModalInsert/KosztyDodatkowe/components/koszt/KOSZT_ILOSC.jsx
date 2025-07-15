@@ -18,6 +18,8 @@ export default function KOSZT_ILOSC({koszt}) {
             onChange={(event) => {
 
                 const re2 = /^[0-9]+$/;
+                // const re2 = /^\d{0,6}(?:\.\d{0,2}){0,1}$/;
+
 
               if (event.target.value === "" || re2.test(event.target.value)) {
                 handleKosztyDodatkoweZamowienia({

@@ -23,6 +23,7 @@ export default function KOSZT_CENA({koszt}) {
                 handleKosztyDodatkoweZamowienia({
                   ...koszt,
                   cena: event.target.value,
+                  suma: (event.target.value.replace(/,/g, '.') * koszt.ilosc).toFixed(2),
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,
                 });

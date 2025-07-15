@@ -23,7 +23,7 @@ export default function DodajKoszty() {
                 
                 }
             >
-              Dodaj
+              dodaj
             </button>
           </div>
 

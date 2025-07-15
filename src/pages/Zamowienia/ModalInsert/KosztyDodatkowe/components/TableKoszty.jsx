@@ -53,7 +53,8 @@ export default function TableKoszty() {
               
               }
 
-              {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)}
+<tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>
+              {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
                     <tr>
                     <td></td>

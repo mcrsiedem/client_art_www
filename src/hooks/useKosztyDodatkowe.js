@@ -11,6 +11,8 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "./useGrupyWykonan";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+import { getMaxID } from "actions/getMaxID";
+import { getMaxIndeks } from "actions/getMaxIndeks";
 export   function useKosztyDodatkowe() {
 
 
@@ -35,10 +37,28 @@ export   function useKosztyDodatkowe() {
 
 const dodajKoszty = () => {
 
-  setKosztyDodatkoweZamowienia([
-    {
-      id: 1,
-      indeks:1,
+  // setKosztyDodatkoweZamowienia([
+  //   {
+  //     id: 1,
+  //     indeks:1,
+  //     zamowienie_id: daneZamowienia.id,
+  //     nazwa:"",
+  //     ilosc: "1",
+  //     cena: "0",
+  //     suma: "0",
+  //     info:"",
+  //     status:1,
+  //     stan:1,
+  //     insert: true,
+  //     dodal: DecodeToken(sessionStorage.getItem("token")).id,
+  //   }
+  // ])
+
+// }
+let koszty = [...kosztyDodatkoweZamowienia]
+ koszty.push({
+      id: getMaxID(koszty),
+      indeks:getMaxIndeks(koszty),
       zamowienie_id: daneZamowienia.id,
       nazwa:"",
       ilosc: "1",
@@ -49,83 +69,11 @@ const dodajKoszty = () => {
       stan:1,
       insert: true,
       dodal: DecodeToken(sessionStorage.getItem("token")).id,
-    },
-  ]);
-
+    }
+)
+console.log(koszty)
+setKosztyDodatkoweZamowienia(koszty)
 }
-
-
-      const etapPlikowZamowienia = async (etap,plikiRow) =>{
-        const zamowienie_id = plikiRow.zamowienie_id
-        const element_id= plikiRow.element_id
-        const global_id_pliki_row= plikiRow.global_id
-
-        const res1 = await axios.put(IP + "updatePlikiEtapZamowienia/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row});
-        const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
-          
-        let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
-
-    const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
-      zamowienie_id,
-      etap: new_etap
-        });
-
-
-        // to potrzebne, aby po zmianie etapu plikow nie zamykalo sie okienko, ale to na liście zamowienien tylko
-
-        appcontext.setZamowieniaPliki([...res_new_pliki.data]);
-        setZamowienia(zamowienia.map((t) => {
-          if (t.id == zamowienie_id ) {
-            return {...t,
-              etap: new_etap
-            }
-          } else {
-            return t;
-          }
-        }))
-        appcontext.setZamowieniaWyszukiwarka(appcontext.zamowienia.map((t) => {
-          if (t.id == zamowienie_id ) {
-            return {...t,
-              etap: new_etap
-            }
-          } else {
-            return t;
-          }
-        }))
-      }
-
-//----------------------------------------------------------------
-
-      const etapPlikowGrupyWykonan = async (etap,grupaWykonan) =>{
-
-        const zamowienie_id = grupaWykonan.zamowienie_id
-        const element_id= grupaWykonan.element_id
-        const global_id_grupa_row= grupaWykonan.global_id
-
-
-
-
-        console.log("plikiRow: "+grupaWykonan.global_id)
-        // zmiana etapu plików
-        const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap});
-        //pobranie plikow po korecie etapu
-        const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
-        //sprawdzenie najmniejszego etapu
-        let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
-        // ustawienie etapu calego zamowienia na najmniejszy etap plikow
-        const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {zamowienie_id,etap: new_etap});
-
-        await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
-          setWykonaniaAll(res.data[0])
-          setGrupWykonanAll(res.data[1])
-          return res
-        }).then((res) =>{
-          
-          setGrupWykonanAll(prev=>{return prev})
-        });
-        
-      }
-
 //----------------------------------------------------------------
 
     return [dodajKoszty];

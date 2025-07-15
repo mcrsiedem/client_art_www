@@ -166,7 +166,7 @@ const setKsiegowosc= contextModalInsert.setKsiegowosc;
            setHistoriaZamowienia(res.data[7])
            setPakowanie(res.data[8])
            setKosztyDodatkoweZamowienia(res.data[9])
-           setKsiegowosc(res.data[10])
+           setKsiegowosc(res.data[10][0])
            
 
   }

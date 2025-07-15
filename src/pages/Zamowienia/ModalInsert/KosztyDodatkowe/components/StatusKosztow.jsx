@@ -9,6 +9,7 @@ export default function StatusKosztow() {
     const contextModalInsert = useContext(ModalInsertContext);
     // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     const ksiegowosc = contextModalInsert.ksiegowosc;
+    const setKsiegowosc = contextModalInsert.setKsiegowosc;
     const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
       return (
         <div className={style.col}>
@@ -18,6 +19,7 @@ export default function StatusKosztow() {
             value={ksiegowosc.koszty_status}
     
             onChange={(event) => {
+              setKsiegowosc({...ksiegowosc, koszty_status:parseInt( event.target.value), update:true})
               // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)
               // setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
               // zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)

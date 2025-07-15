@@ -95,7 +95,7 @@ const [refreshZamowienia] = useZamowienia()
           setProcesyElementow(res.data[5])
           setPakowanie(res.data[8].sort((a, b) => a.indeks - b.indeks))
           setKosztyDodatkoweZamowienia(res.data[9])
-          setKsiegowosc(res.data[10])
+          setKsiegowosc(res.data[10][0])
 
 
            }

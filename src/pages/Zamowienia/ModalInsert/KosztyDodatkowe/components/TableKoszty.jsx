@@ -7,6 +7,7 @@ import KOSZT_NAZWA from "./koszt/KOSZT_NAZWA";
 import KOSZT_UWAGI from "./koszt/KOSZT_UWAGI";
 import KOSZT_ILOSC from "./koszt/KOSZT_ILOSC";
 import KOSZT_CENA from "./koszt/KOSZT_CENA";
+import UsunKoszt from "./UsunKoszt";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -26,6 +27,7 @@ export default function TableKoszty() {
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Wartość</th>
                 <th className={style.col10}>Uwagi</th>
+                <th className={style.col10}></th>
               </tr>
             </thead>
             <tbody className={style.center}>
@@ -50,6 +52,8 @@ export default function TableKoszty() {
                     {/* <Cena row={koszt} /> */}
                     <Suma row={koszt} />
                     <KOSZT_UWAGI koszt={koszt} />
+                    <UsunKoszt koszt={koszt} />
+
      
                   </tr>
 
@@ -58,7 +62,7 @@ export default function TableKoszty() {
               
               }
 
-<tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>
+<tr> <td colSpan="6" ><DodajKoszty/>  </td>  <td></td></tr>
               {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
                     <tr>

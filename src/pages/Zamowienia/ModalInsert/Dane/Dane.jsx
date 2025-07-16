@@ -21,7 +21,9 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
         <Row style={style.row1}>
             <Firma />
             <Klient  showAddClientStage={showAddClientStage} />
-            <NR_ZAMOWIENIA_KLIENTA />
+            <KOSZTY/>
+            <WARTOSC_FAKTURY/>
+
             <DataUwtorzenia />
             <DataPrzyjecia />
             <DataMeterialow />
@@ -49,14 +51,19 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
 
             <KODA_PRACY />
             <ISBN />
+
             <FSC />
             <Stan />
             <Status />
             <Etap />
         </Row>
         <Row style={style.row4}>
-        <Opiekun />
+            <NR_ZAMOWIENIA_KLIENTA />
+
+
         <Uwagi />
+        <Opiekun />
+
         </Row>
 
 
@@ -887,7 +894,47 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
+function KOSZTY( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Koszty </label>
+      <input className={style.input} type="text"
+      value={daneZamowienia.wartosc_zamowienia}
+      onChange={(event) => {
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+       }
+        
+      }}></input>
+    </div>
+  );
+}
 
+function WARTOSC_FAKTURY( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Faktura </label>
+      <input className={style.input} type="text"
+      value={daneZamowienia.wartosc_zamowienia}
+      onChange={(event) => {
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+       }
+        
+      }}></input>
+    </div>
+  );
+}
 
 function NAKLAD( ){
 

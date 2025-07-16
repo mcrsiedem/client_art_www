@@ -13,7 +13,7 @@ width: 100vw;
 
 .row1 {
   display: grid;
-  grid-template-columns: 230px 1fr 230px 110px 110px 110px 110px;
+  grid-template-columns: 230px 1fr 110px 110px 110px 110px 110px 110px;
   gap: 10px;
 
 }
@@ -28,7 +28,7 @@ width: 100vw;
 .row3 {
   display: grid;
   
-  grid-template-columns:  230px  1fr 1fr 75px 230px 230px 230px ;
+  grid-template-columns:  230px  1fr 1fr 75px  230px 230px 230px ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */
@@ -36,7 +36,7 @@ width: 100vw;
 .row4 {
   display: grid;
   
-  grid-template-columns:  230px 1fr  ;
+  grid-template-columns:  230px  1fr  230px ;
   gap: 10px;
   /* height: 2rem; */
   /* margin-left: 240px; */

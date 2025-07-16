@@ -5,7 +5,7 @@ import style from "../KosztyDodatkowe.module.css";
 
 import iconTrash from "assets/trash2.svg";
 
-export default function UsunKoszt() {
+export default function UsunKoszt({koszt}) {
   const buttonStyles = {
     // backgroundColor: '#ffa69fff',
     color: "white",
@@ -27,6 +27,10 @@ export default function UsunKoszt() {
     ...(isHovered ? buttonHoverStyles : {}),
   };
 
+    const contextModal = useContext(ModalInsertContext );
+
+  const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
+  const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
   return (
     <div>
       <div>
@@ -37,6 +41,16 @@ export default function UsunKoszt() {
           onMouseLeave={() => setIsHovered(false)}
           src={iconTrash}
           onClick={() => {
+
+                  setKosztyDodatkoweZamowienia(
+        kosztyDodatkoweZamowienia.map((t) => {
+          if (t.id == koszt.id) {
+            return {...koszt, delete: true};
+          } else {
+            return t;
+          }
+        })
+      )
             // handleRemoveItem(row.indeks, row.id);
             //  setStatus(3)
           }}

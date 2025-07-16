@@ -36,7 +36,7 @@ export default function TableKoszty() {
               
           {
           
-          kosztyDodatkoweZamowienia.map((koszt,i) => {
+          kosztyDodatkoweZamowienia.filter(x=>x.delete != true).map((koszt,i) => {
 
                 return (
        

@@ -33,6 +33,8 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
             <NR_ZAMOWIENIA /> 
             <Rok />
             <Tytul />
+            <NAKLAD/>
+
             <Waluta />
             <Cena />
             <WARTOSC_ZAMOWIENIA/>
@@ -885,6 +887,23 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
+
+
+function NAKLAD( ){
+
+  const contextModalInsert = useContext(ModalInsertContext);
+  const produkty = contextModalInsert.produkty;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Nakład </label>
+      <input className={style.input} type="text"
+      value={produkty[0].naklad.toLocaleString()}
+      onChange={(event) => {
+        
+      }}></input>
+    </div>
+  );
+}
 function SKONTO( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;

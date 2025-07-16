@@ -20,7 +20,7 @@ width: 100vw;
 .row2 {
   display: grid;
   
-  grid-template-columns:  70px 70px  70px 3fr  75px 110px 110px 110px 110px 110px 110px   ;
+  grid-template-columns:  70px 70px  70px 3fr 110px 75px 110px 110px 110px 110px 110px 110px   ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */

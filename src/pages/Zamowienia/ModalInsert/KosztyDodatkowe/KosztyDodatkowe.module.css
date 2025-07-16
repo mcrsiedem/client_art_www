@@ -78,6 +78,7 @@ margin:30px
   background-color: #e3e3e3;
     background-color: #575757;
     color: #e3e3e3;
+    
 
   /* background-image: linear-gradient(rgb(180, 180, 180) 0%,rgb(201, 200, 200) 50%,rgb(180, 180, 180) 100%); */
   text-align: center;
@@ -152,7 +153,7 @@ border: none;
 
 .btn_dodaj_koszty{
 margin: 10px;
-    width: 150px;
+    width: 100px;
     height: 25px;
     font-size: 0.8rem;
     font-weight: bold;

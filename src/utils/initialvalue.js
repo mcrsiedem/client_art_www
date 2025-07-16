@@ -3,6 +3,7 @@
 const reg_txt  = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
 const reg_int = /^[0-9]+$/;
 const reg_cena = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+const reg_cena_2 =  /^\d{0,6}(?:[.,]\d{0,2}){0,1}$/  // z kropką i przecinkiem
 
 
 
@@ -623,6 +624,7 @@ export {
   reg_int,
   reg_txt,
   reg_cena,
+  reg_cena_2,
   initialProdukty,
   initialElementy,
   initialFragmenty,

@@ -17,7 +17,8 @@ export default function KOSZT_CENA({koszt}) {
             value={koszt.cena}
             onChange={(event) => {
 
-                const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+              const re =  /^\d{0,6}(?:[.,]\d{0,2}){0,1}$/
 
               if (event.target.value === "" || re.test(event.target.value)) {
                 handleKosztyDodatkoweZamowienia({

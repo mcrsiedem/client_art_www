@@ -91,19 +91,44 @@ margin:30px
   }
 
   .td_suma{
-    font-weight: bold;
-    font-size: 1.2rem;
+    /* font-weight: bold;
+    font-size: 1.2rem; */
+    /* justify-content: end; */
+    /* background-color: #306108; */
+     text-align: left;
+     align-items: start;
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    
   }
   .td_razem{
     text-align: end;
-    font-weight: bold;
+        align-items: start;
+    /* font-weight: bold; */
     font-size: 1.1rem;
+    /* background-color: #5da81f; */
+
+  }
+
+    .title_suma{
+    font-weight: bold;
+    font-size: 1.2rem;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+   /* padding-left: 10px;
+   padding-top: 5px; */
+   /* background-color: #646464; */
   }
 
   .td_indeks{
 width: 40px;
 
   }
+
+
   .td_ilosc{
     width: 60px;
       }

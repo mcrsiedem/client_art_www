@@ -67,7 +67,7 @@ export default function TableKoszty() {
                     <td></td>
                     <td className={style.td_razem}>Razem:</td>
           
-                    <td className={style.td_suma }> {ksiegowosc?.koszty_wartosc || 0}</td>
+                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.koszty_wartosc || 0} </p> </td>
                     <td></td>
 
      

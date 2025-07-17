@@ -252,6 +252,10 @@ background: rgb(243, 243, 243);
 .col_firma2 {
    width: 85px;
 }
+.col_faktura {
+   /* width: 1fr; */
+}
+
 .col_status {
    width: 90px;
 }

@@ -214,6 +214,8 @@ setOpenModalInsert(true)
         <SpedycjaTableZamowienia row={row} /> */}
         {/* <td>{row.format_x + "x" + row.format_y}</td> */}
         {/* <OprawaTableZamowienia row={row} /> */}
+        <NumerFaktury row={row} />
+
         <FirmaZamowieniaTable row={row} />
         {/* <StanZamowieniaTable row={row} /> */}
         <StatusZamowieniaTable row={row} />
@@ -485,6 +487,23 @@ const FirmaZamowieniaTable = ({ row }) => {
     </td>
   );
 };
+
+const NumerFaktury = ({ row }) => {
+  const appContext = useContext(AppContext);
+  const _firma = appContext._firma;
+  return (
+    <td>
+    <input
+      title={row.lista_faktur}
+      className={style.tytulfirma}
+      value={row.lista_faktur}
+      readOnly
+
+    />
+    </td>
+  );
+};
+
 const IconErrorTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;

@@ -5,7 +5,7 @@ import style from "../Faktury.module.css";
 
 import iconTrash from "assets/trash2.svg";
 
-export default function UsunKoszt({koszt}) {
+export default function USUN_FAKTURE({faktura}) {
   const buttonStyles = {
     // backgroundColor: '#ffa69fff',
     color: "white",
@@ -29,8 +29,8 @@ export default function UsunKoszt({koszt}) {
 
     const contextModal = useContext(ModalInsertContext );
 
-  const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
-  const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
+  const faktury = contextModal.faktury;
+  const setFaktury = contextModal.setFaktury;
   return (
     <div>
       <div>
@@ -42,10 +42,10 @@ export default function UsunKoszt({koszt}) {
           src={iconTrash}
           onClick={() => {
 
-                  setKosztyDodatkoweZamowienia(
-        kosztyDodatkoweZamowienia.map((t) => {
-          if (t.id == koszt.id) {
-            return {...koszt, delete: true};
+                  setFaktury(
+        faktury.map((t) => {
+          if (t.id == faktura.id) {
+            return {...faktura, delete: true};
           } else {
             return t;
           }

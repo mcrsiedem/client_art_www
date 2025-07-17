@@ -32,6 +32,7 @@ export const ModalInsertContextProvider = ({children})=>{
 
     const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]);
     const [ksiegowosc, setKsiegowosc] = useState(initialKsiegowosc);
+    const [faktury, setFaktury] = useState([]);
   
 
     const [selectedKosztyDodatkoweZamowienia,setSelectedKosztyDodatkoweZamowienia] = useState(null)
@@ -77,6 +78,28 @@ let koszty = kosztyDodatkoweZamowienia.map((t) => {
 
 
             }
+
+
+
+
+                            function handleFaktury(faktura) {
+
+let fak = faktury.map((t) => {
+                  if (t.id == faktura.id) {
+                    return faktura;
+                  } else {
+                    return t; 
+                  }
+
+                })
+   let  suma = fak.map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
+                setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
+
+              setFaktury(fak     );
+
+              }
+
+
      
      // aktualizacja row w stanie produkty, elementy, fragmenty, oprawa, pakowanie
       const handleUpdateRowProdukty = (row) => {
@@ -264,7 +287,8 @@ let koszty = kosztyDodatkoweZamowienia.map((t) => {
           handleChangeCardFragmenty_i_Elementy_naklad,
           handleChangeCardFragmenty_i_Elementy_nazwa,
           showTabs, setShowTabs,
-          ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia
+          ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia,
+          faktury, setFaktury,handleFaktury
       
 
 

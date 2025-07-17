@@ -31,6 +31,10 @@ export  function useZamowienieUpdate(){
   const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
     const ksiegowosc = contextModalInsert.ksiegowosc;
     const setKsiegowosc = contextModalInsert.setKsiegowosc;
+    const faktury = contextModalInsert.faktury;
+    const setFaktury = contextModalInsert.setFaktury;
+
+    
     
 
 
@@ -42,7 +46,7 @@ const [refreshZamowienia] = useZamowienia()
   setSaveButtonDisabled(true)
 
   dialogBox.current.show();
-  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc})
+  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury})
   dialogBox.current.showOK();
   const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
@@ -57,6 +61,7 @@ const [refreshZamowienia] = useZamowienia()
   setPakowanie(res.data[8])
   setKosztyDodatkoweZamowienia(res.data[9])
   setKsiegowosc(res.data[10][0])
+  setFaktury(res.data[11])
   
 
   refreshZamowienia();
@@ -72,7 +77,7 @@ return[saveZamowienieUpdate]
 
 
 //----------------------------------------------------------------------------------
-const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc}) =>{
+const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
@@ -110,7 +115,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
 
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc])
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;

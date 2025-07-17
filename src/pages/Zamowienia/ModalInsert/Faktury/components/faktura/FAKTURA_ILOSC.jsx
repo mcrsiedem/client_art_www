@@ -5,18 +5,19 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "./Faktura.module.css";
 import DecodeToken from "pages/Login/DecodeToken";
 
-export default function KOSZT_ILOSC({koszt}) {
+export default function FAKTURA_ILOSC({faktura}) {
     const contextModalInsert = useContext(ModalInsertContext);
     const handleKosztyDodatkoweZamowienia= contextModalInsert.handleKosztyDodatkoweZamowienia;
     const ksiegowosc= contextModalInsert.ksiegowosc;
     const setKsiegowosc= contextModalInsert.setKsiegowosc;
+    const handleFaktury= contextModalInsert.handleFaktury;
     
       return (
         <td>
           <input
             className={style.nazwa_input}
             type="text"
-            value={koszt.ilosc}
+            value={faktura.ilosc}
             onChange={(event) => {
 
                 const re2 = /^[0-9]+$/;
@@ -24,10 +25,10 @@ export default function KOSZT_ILOSC({koszt}) {
 
 
               if (event.target.value === "" || re2.test(event.target.value)) {
-                handleKosztyDodatkoweZamowienia({
-                  ...koszt,
+                handleFaktury({
+                  ...faktura,
                   ilosc: event.target.value,
-                  suma: (event.target.value * parseFloat( koszt.cena.replace(/,/g, '.'))).toFixed(2),
+                  suma: (event.target.value * parseFloat( faktura.cena.replace(/,/g, '.'))).toFixed(2),
 
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,

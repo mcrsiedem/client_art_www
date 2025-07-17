@@ -12,6 +12,10 @@ export   function useKosztyDodatkowe() {
   const setKosztyDodatkoweZamowienia = modalcontext.setKosztyDodatkoweZamowienia;
   const daneZamowienia = modalcontext.daneZamowienia;
 
+  const faktury = modalcontext.faktury;
+  const setFaktury = modalcontext.setFaktury;
+
+
 const dodajKoszty = () => {
 
 let koszty = [...kosztyDodatkoweZamowienia]
@@ -33,5 +37,27 @@ let koszty = [...kosztyDodatkoweZamowienia]
 setKosztyDodatkoweZamowienia(koszty)
 }
 
-return [dodajKoszty];
+const dodajFakture = () => {
+
+let faktura = [...faktury]
+ faktura.push({
+      id: getMaxID(faktura),
+      indeks:getMaxIndeks(faktura),
+      zamowienie_id: daneZamowienia.id,
+      nazwa:"",
+      ilosc: "1",
+      cena: "0",
+      suma: "0",
+      info:"",
+      status:1,
+      stan:1,
+      insert: true,
+      dodal: DecodeToken(sessionStorage.getItem("token")).id,
+    }
+)
+setFaktury(faktura)
+}
+
+
+return [dodajKoszty,dodajFakture];
   }

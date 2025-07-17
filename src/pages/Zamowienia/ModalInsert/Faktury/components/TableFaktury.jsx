@@ -1,13 +1,18 @@
 import style from "./../Faktury.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
-import StatusKosztow from "./StatusKosztow";
-import DodajKoszty from "./DodajKoszty";
-import KOSZT_UWAGI from "./faktura/KOSZT_UWAGI";
-import KOSZT_ILOSC from "./faktura/KOSZT_ILOSC";
-import KOSZT_CENA from "./faktura/KOSZT_CENA";
-import UsunKoszt from "./UsunKoszt";
+import StatusKosztow from "./StatusFaktury";
+import DodajKoszty from "./DodajFaktury";
+import KOSZT_UWAGI from "./faktura/FAKTURA_UWAGI";
+import KOSZT_ILOSC from "./faktura/FAKTURA_ILOSC";
+import KOSZT_CENA from "./faktura/FAKTURA_CENA";
+import UsunKoszt from "./USUN_FAKTURE";
 import FAKTURA_NAZWA2 from "./faktura/FAKTURA_NAZWA2";
+import DodajFaktury from "./DodajFaktury";
+import FAKTURA_ILOSC from "./faktura/FAKTURA_ILOSC";
+import FAKTURA_CENA from "./faktura/FAKTURA_CENA";
+import FAKTURA_UWAGI from "./faktura/FAKTURA_UWAGI";
+import USUN_FAKTURE from "./USUN_FAKTURE";
 export default function TableFaktury() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -15,6 +20,8 @@ export default function TableFaktury() {
   const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
   const ksiegowosc = contextModal.ksiegowosc;
+  const faktury = contextModal.faktury;
+  
   
     return <div className={style.main}>
         
@@ -36,23 +43,22 @@ export default function TableFaktury() {
               
           {
           
-          kosztyDodatkoweZamowienia.filter(x=>x.delete != true).map((koszt,i) => {
+          faktury.filter(x=>x.delete != true).map((faktura,i) => {
 
                 return (
        
                  
                   <tr
-                    key={koszt.id}
+                    key={faktura.id}
                   >
-                    <Indeks row={koszt} i={i+1}/>
-                    <FAKTURA_NAZWA2 koszt={koszt}/>
-                    <KOSZT_ILOSC koszt={koszt} />
-                    <KOSZT_CENA koszt={koszt} />
+                    <Indeks faktura={faktura} i={i+1}/>
+                    <FAKTURA_NAZWA2 faktura={faktura}/>
+                    <FAKTURA_ILOSC faktura={faktura} />
+                    <FAKTURA_CENA faktura={faktura} />
 
-                    {/* <Cena row={koszt} /> */}
-                    <Suma row={koszt} />
-                    <KOSZT_UWAGI koszt={koszt} />
-                    <UsunKoszt koszt={koszt} />
+                    <Suma faktura={faktura} />
+                    <FAKTURA_UWAGI faktura={faktura} />
+                    <USUN_FAKTURE faktura={faktura} />
 
      
                   </tr>
@@ -62,7 +68,7 @@ export default function TableFaktury() {
               
               }
 
-<tr> <td colSpan="6" ><DodajKoszty/>  </td>  <td></td></tr>
+<tr> <td colSpan="6" ><DodajFaktury/>  </td>  <td></td></tr>
               {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
                     <tr>
@@ -71,7 +77,8 @@ export default function TableFaktury() {
                     <td></td>
                     <td className={style.td_razem}>Razem:</td>
           
-                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.koszty_wartosc || 0} </p> </td>
+                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.faktury_wartosc || 0} </p> </td>
+                    <td></td>
                     <td></td>
 
      
@@ -89,14 +96,14 @@ export default function TableFaktury() {
   }
   
 
-  function Indeks({ row,i }) {
+  function Indeks({ faktura,i }) {
     return (
       <td>{i}</td>
     );
   }
-  function Nazwa({ row }) {
+  function Nazwa({ faktura }) {
     return (
-      <td>{row.nazwa}</td>
+      <td>{faktura.nazwa}</td>
     );
   }
 
@@ -124,9 +131,9 @@ export default function TableFaktury() {
       <td>{row.cena}</td>
     );
   }
-  function Suma({ row }) {
+  function Suma({ faktura }) {
     return (
-      <td>{row.suma.toString().toLocaleString()}</td>
+      <td>{faktura.suma.toString().toLocaleString()}</td>
     );
   }
   function Info({ row }) {

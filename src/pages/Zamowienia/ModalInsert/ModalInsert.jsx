@@ -92,6 +92,7 @@ const openModalInsert= contextModalInsert.openModalInsert;
 const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
 const ksiegowosc= contextModalInsert.ksiegowosc;
 const setKsiegowosc= contextModalInsert.setKsiegowosc;
+const setFaktury= contextModalInsert.setFaktury;
 
 
   useEffect(() => {
@@ -168,6 +169,8 @@ const setKsiegowosc= contextModalInsert.setKsiegowosc;
            setPakowanie(res.data[8])
            setKosztyDodatkoweZamowienia(res.data[9])
            setKsiegowosc(res.data[10][0])
+           setFaktury(res.data[11])
+
            
 
   }

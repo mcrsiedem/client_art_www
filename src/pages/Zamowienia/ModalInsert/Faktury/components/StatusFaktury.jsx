@@ -4,7 +4,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Faktury.module.css";
 import { zapisKosztowDodatkowychZamowienia } from "actions/zapisKosztowDodatkowychZamowienia";
 
-export default function StatusKosztow() {
+export default function StatusFaktury() {
     const contextApp = useContext(AppContext);
     const contextModalInsert = useContext(ModalInsertContext);
     // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
@@ -16,10 +16,10 @@ export default function StatusKosztow() {
           <label className={style.status_label}> Status </label>
           <select
             className={style.status}
-            value={ksiegowosc.koszty_status}
+            value={ksiegowosc.faktury_status}
     
             onChange={(event) => {
-              setKsiegowosc({...ksiegowosc, koszty_status:parseInt( event.target.value), update:true})
+              setKsiegowosc({...ksiegowosc, faktury_status:parseInt( event.target.value), update:true})
               // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)
               // setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
               // zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)
@@ -27,7 +27,7 @@ export default function StatusKosztow() {
             //   setSaveButtonDisabled(false)
             }}
           >
-            {contextApp._status_koszty_dodatkowe.map((option) => (
+            {contextApp._status_faktury.map((option) => (
               <option key={option.id} value={option.id}>
               {option.nazwa}
               </option>

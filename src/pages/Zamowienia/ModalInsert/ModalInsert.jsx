@@ -40,6 +40,7 @@ import DialogZapis from "components/Dialog/DialogZapis";
 import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 import Parametery from "./Parametry/Parametry";
+import Faktury from "./Faktury/Faktury";
 
 function ModalInsert({
   
@@ -248,6 +249,7 @@ const setKsiegowosc= contextModalInsert.setKsiegowosc;
 
     <KosztyDodatkowe  />
     <HistoriaZamowienia  />
+    <Faktury/>
 
 
         <ProductCreator        />

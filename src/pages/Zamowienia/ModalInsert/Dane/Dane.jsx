@@ -21,8 +21,9 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
         <Row style={style.row1}>
             <Firma />
             <Klient  showAddClientStage={showAddClientStage} />
-            <KOSZTY/>
-            <WARTOSC_FAKTURY/>
+   <TerminPlatnosci />
+          
+            <Przedplata />
 
             <DataUwtorzenia />
             <DataPrzyjecia />
@@ -42,8 +43,9 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
             <WARTOSC_ZAMOWIENIA/>
             <Vat />
             <SKONTO />
-            <TerminPlatnosci />
-            <Przedplata />
+                     <KOSZTY/>
+            <WARTOSC_FAKTURY/>
+            
         </Row>
 
         <Row style={style.row3}>
@@ -895,41 +897,30 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 }
 
 function KOSZTY( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const contextModalInsert = useContext(ModalInsertContext);
+const ksiegowosc = contextModalInsert.ksiegowosc;
   return(
       <div className={style.col}>
-      <label className={style.label}> Koszty </label>
+      <label className={style.label}> Koszty dodatkowe</label>
       <input className={style.input} type="text"
-      value={daneZamowienia.wartosc_zamowienia}
+      value={ksiegowosc.koszty_wartosc}
       onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
-        
+ 
       }}></input>
     </div>
   );
 }
 
 function WARTOSC_FAKTURY( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const contextModalInsert = useContext(ModalInsertContext);
+const ksiegowosc = contextModalInsert.ksiegowosc;
   return(
       <div className={style.col}>
-      <label className={style.label}> Faktura </label>
+      <label className={style.label}> Faktury </label>
       <input className={style.input} type="text"
-      value={daneZamowienia.wartosc_zamowienia}
+      value={ksiegowosc.faktury_wartosc}
       onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
+ 
         
       }}></input>
     </div>

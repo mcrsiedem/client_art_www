@@ -34,7 +34,42 @@ function sortWgEtapu({ zamowienie }) {
 
 }
 
-  return [sortWgEtapu];
+
+function sortWgFaktur({ zamowienie }) {
+  if (sortowanieZamowieniaEtap == 1) {
+    return zamowienie.etap > 1 && zamowienie.status != 7 ;
+  }
+  if (sortowanieZamowieniaEtap == 2) {
+    return zamowienie.etap == 1 && zamowienie.status != 7;
+  }
+  if (sortowanieZamowieniaEtap == 3) {
+    return true;
+  }
+   if (sortowanieZamowieniaEtap == 4) {
+    return zamowienie.status == 7; // anulowane
+  }
+   if (sortowanieZamowieniaEtap == 5) {
+    return zamowienie.etap == 16; // anulowane
+  }
+     if (sortowanieZamowieniaEtap == 6) {
+    return zamowienie.etap == 8; // wydrukwoane
+  }
+       if (sortowanieZamowieniaEtap == 7) {
+    return zamowienie.etap == 10; // sfalcowane
+  }
+       if (sortowanieZamowieniaEtap == 0) {
+    return zamowienie.etap > 1 && zamowienie.etap <16 && zamowienie.status != 7 ;
+  }
+
+
+}
+
+
+
+
+
+
+  return [sortWgEtapu,sortWgFaktur];
 }
 
 

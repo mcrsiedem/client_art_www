@@ -207,27 +207,15 @@ setOpenModalInsert(true)
 
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} i={i} />
-     
-        {/* <NakladTableZamowienia row={row} /> */}
-        {/* <td className={style.nakladInput}>{row.ilosc_stron}</td> */}
-        {/* <DataPrzyjeciaTableZamowienia row={row} />
-        <SpedycjaTableZamowienia row={row} /> */}
-        {/* <td>{row.format_x + "x" + row.format_y}</td> */}
-        {/* <OprawaTableZamowienia row={row} /> */}
+    
+        <NumerWZ row={row} />
         <NumerFaktury row={row} />
-        <StatuKosztów row={row} />
-
-        <StatusZamowieniaTable row={row} />
-
-
+        <StatuKosztow row={row} />
+        <StatusFaktury row={row} />
         <FirmaZamowieniaTable row={row} />
-        {/* <StanZamowieniaTable row={row} /> */}
-        <StatusZamowieniaTable row={row} />
+        {/* <StatusZamowieniaTable row={row} /> */}
         <EtapZamowieniaTable row={row} />
         <OpiekunZamowieniaTable row={row} />
-           {/* <UwagiTableZamowienia row={row} /> */}
-        {/* <SelectBox row={row} /> */}
-        {/* <IconLockTable row={row} /> */}
         <td></td>
       </tr>
 
@@ -417,7 +405,7 @@ const StatusZamowieniaTable = ({ row }) => {
 };
 
 
-const StatuKosztów = ({ row }) => {
+const StatuKosztow = ({ row }) => {
   const techContext = useContext(TechnologyContext);
   const appContext = useContext(AppContext);
   const daneTech = techContext.daneTech;
@@ -442,6 +430,36 @@ const StatuKosztów = ({ row }) => {
     </td>
   );
 };
+
+
+const StatusFaktury = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const appContext = useContext(AppContext);
+  const daneTech = techContext.daneTech;
+  const _status_faktury = appContext._status_faktury;
+
+  
+  const selectColor = (status) =>{
+    if (status==1) return style.td_status
+    if (status==2) return style.td_status
+    if (status==3) return style.td_status
+    if (status==4) return style.td_status
+    if (status==5) return style.td_status
+    if (status==6) return style.td_status
+    if (status==7) return style.td_status
+     return style.td_status
+  }
+  return (
+    <td
+      className={selectColor(row.faktury_status) }
+    >
+      {_status_faktury.filter((s) => s.id == row.faktury_status).map((x) => x.nazwa)}
+    </td>
+  );
+};
+
+
+
 
 const StanZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
@@ -526,8 +544,24 @@ const NumerFaktury = ({ row }) => {
     <td>
     <input
       title={row.lista_faktur}
-      className={style.tytulfirma}
+      className={style.tytulfaktura}
       value={row.lista_faktur}
+      readOnly
+
+    />
+    </td>
+  );
+};
+
+const NumerWZ = ({ row }) => {
+  const appContext = useContext(AppContext);
+  const _firma = appContext._firma;
+  return (
+    <td>
+    <input
+      title={row.lista_wz}
+      className={style.tytulfaktura}
+      value={row.lista_wz}
       readOnly
 
     />

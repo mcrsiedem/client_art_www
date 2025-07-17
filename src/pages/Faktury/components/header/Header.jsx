@@ -184,7 +184,7 @@ function Szukaj() {
         let m = [...zamowieniaWyszukiwarka];
            m =  m.filter((k) =>
             // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
-            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).toLowerCase().includes(event.target.value.toLowerCase()) 
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.lista_faktur ).concat(" ", k.lista_wz ).toLowerCase().includes(event.target.value.toLowerCase()) 
           )
 
         setZamowienia(

@@ -73,13 +73,14 @@ const [refreshZamowienia] = useZamowienia()
          refreshZamowienia()
 
             }}className={style.col_netto}>Oprawa</th> */}
+           <th className={style.col_faktura}>Nr wz</th>
            <th className={style.col_faktura}>Nr faktury</th>
-           <th className={style.col_status_kosztow}>Status kosztów</th>
-           <th className={style.col_status}>Status faktury</th>
+           <th className={style.col_status_kosztow}>Koszty</th>
+           <th className={style.col_status_kosztow}>Faktura</th>
 
            <th className={style.col_firma2}>Firma</th>
            {/* <th className={style.col_status}>Stan</th> */}
-           <th className={style.col_status}>Status</th>
+           {/* <th className={style.col_status}>Status</th> */}
            <th className={style.col_etap}>Etap</th>
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
            {/* <th className={style.col_uwagi}>Uwagi</th> */}

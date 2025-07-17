@@ -47,6 +47,18 @@
   background: transparent;
   font-size: 0.9rem;
   width: 100%;
+  
+
+}
+
+.tytulfaktura{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  /* font-weight: bold; */
+  width: 100%;
+  padding-left: 10px;
+  
 
 }
 

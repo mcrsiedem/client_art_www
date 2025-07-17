@@ -38,12 +38,20 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
   }
 
   function KOSZTY_BTN({showTabs,setShowTabs}) {
-  
+  const contextModalInsert = useContext(ModalInsertContext);
+const daneZamowienia = contextModalInsert.daneZamowienia
     return (
             <button
              className={showTabs.koszty ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ setShowTabs({parametry:false,koszty:true,historia:false,faktury:false})}}
-       disabled = {showTabs.kreator}
+             onClick={()=>{ 
+              if(daneZamowienia.id ==1 ){
+                alert("Przed dodaniem kosztów zapisz zamówienie...")
+              }else{
+              setShowTabs({parametry:false,koszty:true,historia:false,faktury:false})}}
+
+              }
+              
+              disabled = {showTabs.kreator}
 
              >
 
@@ -67,10 +75,22 @@ function PARAMETRY_BTN({showTabs,setShowTabs}) {
   }
 
       function FAKTURY_BTN({showTabs,setShowTabs}) {
-  
+    const contextModalInsert = useContext(ModalInsertContext);
+const daneZamowienia = contextModalInsert.daneZamowienia
     return (
             <button className={showTabs.faktury ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:false,faktury:true})}}
+             onClick={()=>{
+                        if(daneZamowienia.id ==1 ){
+                alert("Przed dodaniem fatury zapisz zamówienie...")
+              }else{
+                          setShowTabs({parametry:false,koszty:false,historia:false,faktury:true})}
+
+
+              }
+              
+            
+            
+            }
        disabled = {showTabs.kreator}
 
             >

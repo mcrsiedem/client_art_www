@@ -215,6 +215,10 @@ setOpenModalInsert(true)
         {/* <td>{row.format_x + "x" + row.format_y}</td> */}
         {/* <OprawaTableZamowienia row={row} /> */}
         <NumerFaktury row={row} />
+        <StatuKosztów row={row} />
+
+        <StatusZamowieniaTable row={row} />
+
 
         <FirmaZamowieniaTable row={row} />
         {/* <StanZamowieniaTable row={row} /> */}
@@ -408,6 +412,33 @@ const StatusZamowieniaTable = ({ row }) => {
       className={selectColor(row.status) }
     >
       {_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}
+    </td>
+  );
+};
+
+
+const StatuKosztów = ({ row }) => {
+  const techContext = useContext(TechnologyContext);
+  const appContext = useContext(AppContext);
+  const daneTech = techContext.daneTech;
+  const _status_koszty_dodatkowe = appContext._status_koszty_dodatkowe;
+
+  
+  const selectColor = (status) =>{
+    if (status==1) return style.td_status
+    if (status==2) return style.td_status
+    if (status==3) return style.td_status_red
+    if (status==4) return style.td_status_red
+    if (status==5) return style.td_status
+    if (status==6) return style.td_status_red
+    if (status==7) return style.td_status_red
+     return style.td_status
+  }
+  return (
+    <td
+      className={selectColor(row.koszty_status) }
+    >
+      {_status_koszty_dodatkowe.filter((s) => s.id == row.koszty_status).map((x) => x.nazwa)}
     </td>
   );
 };

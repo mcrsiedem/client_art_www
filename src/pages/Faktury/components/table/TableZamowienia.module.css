@@ -260,6 +260,10 @@ background: rgb(243, 243, 243);
    width: 90px;
 }
 
+.col_status_kosztow {
+   width: 150px;
+}
+
 .col_netto {
    width: 100px;
 }

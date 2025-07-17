@@ -69,7 +69,7 @@ let koszty = kosztyDodatkoweZamowienia.map((t) => {
                   }
 
                 })
-   let  suma = koszty.map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
+   let  suma = koszty.filter(x=>x.delete != true).map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
                 setKsiegowosc({...ksiegowosc, koszty_wartosc:suma, update:true})
 
               setKosztyDodatkoweZamowienia(koszty     );
@@ -92,7 +92,7 @@ let fak = faktury.map((t) => {
                   }
 
                 })
-   let  suma = fak.map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
+   let  suma = fak.filter(x=>x.delete != true).map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
                 setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
 
               setFaktury(fak     );

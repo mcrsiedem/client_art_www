@@ -31,6 +31,7 @@ export default function UsunKoszt({koszt}) {
 
   const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
+  const handleKosztyDodatkoweZamowienia = contextModal.handleKosztyDodatkoweZamowienia;
   return (
     <div>
       <div>
@@ -42,15 +43,22 @@ export default function UsunKoszt({koszt}) {
           src={iconTrash}
           onClick={() => {
 
-                  setKosztyDodatkoweZamowienia(
-        kosztyDodatkoweZamowienia.map((t) => {
-          if (t.id == koszt.id) {
-            return {...koszt, delete: true};
-          } else {
-            return t;
-          }
-        })
-      )
+      //             setKosztyDodatkoweZamowienia(
+      //   kosztyDodatkoweZamowienia.map((t) => {
+      //     if (t.id == koszt.id) {
+      //       return {...koszt, delete: true};
+      //     } else {
+      //       return t;
+      //     }
+      //   })
+      // )
+
+
+                      handleKosztyDodatkoweZamowienia({
+                        ...koszt,
+            
+                        delete: true
+                      });
             // handleRemoveItem(row.indeks, row.id);
             //  setStatus(3)
           }}

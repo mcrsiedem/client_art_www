@@ -73,6 +73,7 @@ export default function TableKoszty() {
           
                     <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.koszty_wartosc || 0} </p> </td>
                     <td></td>
+                    <td></td>
 
      
                   </tr>

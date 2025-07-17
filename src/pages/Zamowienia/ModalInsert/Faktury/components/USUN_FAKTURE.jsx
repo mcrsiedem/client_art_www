@@ -31,6 +31,7 @@ export default function USUN_FAKTURE({faktura}) {
 
   const faktury = contextModal.faktury;
   const setFaktury = contextModal.setFaktury;
+  const handleFaktury = contextModal.handleFaktury;
   return (
     <div>
       <div>
@@ -42,15 +43,26 @@ export default function USUN_FAKTURE({faktura}) {
           src={iconTrash}
           onClick={() => {
 
-                  setFaktury(
-        faktury.map((t) => {
-          if (t.id == faktura.id) {
-            return {...faktura, delete: true};
-          } else {
-            return t;
-          }
-        })
-      )
+      //             setFaktury(
+      //   faktury.map((t) => {
+      //     if (t.id == faktura.id) {
+      //       return {...faktura, delete: true};
+      //     } else {
+      //       return t;
+      //     }
+      //   })
+      // )
+
+
+                handleFaktury({
+                  ...faktura,
+                  delete: true,
+                });
+
+
+
+
+
             // handleRemoveItem(row.indeks, row.id);
             //  setStatus(3)
           }}

@@ -59,8 +59,8 @@ export default function TableFaktury() {
                     <FAKTURA_CENA faktura={faktura} />
 
                     <Suma faktura={faktura} />
-                    <FAKTURA_UWAGI faktura={faktura} />
                     <FAKTURA_WZ faktura={faktura} />
+                    <FAKTURA_UWAGI faktura={faktura} />
                     <USUN_FAKTURE faktura={faktura} />
 
      
@@ -71,23 +71,13 @@ export default function TableFaktury() {
               
               }
 
-<tr> <td colSpan="8" ><DodajFaktury/>  </td> </tr>
-              {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
-                    <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    {/* <td className={style.td_razem}>Razem:</td>
-          
-                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.faktury_wartosc || 0} </p> </td> */}
-                    <td></td>
-     
-                  </tr>
+
                 
                   
             </tbody>
           </table>
+          <DodajFaktury/> 
                 <div className={style.zestawienie_kosztow }>
               
                        <StatusKosztow/>

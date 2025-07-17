@@ -62,25 +62,12 @@ export default function TableKoszty() {
               
               }
 
-<tr> <td colSpan="7" ><DodajKoszty/>  </td> </tr>
-              {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
-                    <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    {/* <td className={style.td_razem}>Razem:</td>
-          
-                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.koszty_wartosc || 0} </p> </td> */}
-                    <td></td>
-                    <td></td>
-
-     
-                  </tr>
                 
                   
             </tbody>
           </table>
+<DodajKoszty/>   
                 <div className={style.zestawienie_kosztow }>
               
                        <StatusKosztow/>

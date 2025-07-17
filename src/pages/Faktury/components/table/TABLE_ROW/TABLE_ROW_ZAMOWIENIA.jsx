@@ -15,7 +15,6 @@ import {
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
-import TABLE_ROW_PLIKI from "../PLIKI_ROW/TABLE_ROW_PLIKI";
 import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
@@ -99,7 +98,7 @@ const setShowTabs = contextModalInsert.setShowTabs
       <tr
       onContextMenu={(event)=>{
     
-         onMenuHandle2(event)
+        //  onMenuHandle2(event)
         }
        
         }
@@ -226,64 +225,7 @@ setOpenModalInsert(true)
         <td></td>
       </tr>
 
-{row.show &&(
 
-  <>
-  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
-  <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row}/>
-   )) }
-  {procesyElementowTech?.map(proces=> (
-  <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row}/>
-   )) }
-      
-    <tr >
-    <td colSpan={18}>
-      <div className={style.zamowienia_menu_row}>
-        {(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj   == 1 && <button onClick={()=>{
-
-      odblokujZamowienie([row])
-
-          }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>)   }
-   
-
-        <button onClick={()=>{
-              setZamowienia(
-                zamowienia.map((t) => {
-                  if (t.id == row.id) {
-                    return { ...row, select: false,show:false};
-                  } else {
-                    return t;
-                  }
-                })
-              );
-          }}className={style.btn_zamowienia_menu_row} >Zamknij</button>
-
-
- {row.stan ==1 || row.stan==2 ? <button onClick={()=>{
-
-deleteZamowienie([row])
-        }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
-
-
-
-  {row.status ==7 && row.technologia_id==null && DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj==1 ? <button onClick={()=>{deleteZamowienie([row])}}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
-
-
-
-    
-      </div>
-          
-    </td>
-
-
-   </tr>
-  </>
-
-
-  
-  
-
-)}
       {showKartaTechnologiczna && (
         <>
           <tr>

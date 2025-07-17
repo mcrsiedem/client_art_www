@@ -2,7 +2,7 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-import ModalInsert from "./ModalInsert/ModalInsert";
+// import ModalInsert from "./ModalInsert/ModalInsert";
 import style from "./ZamowieniaFaktury.module.css";
 import Header from "./components/header/Header";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
@@ -16,6 +16,7 @@ import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import ModalInsert from "pages/Zamowienia/ModalInsert/ModalInsert";
 function ZamowieniaFaktury({ user, setUser }) {
 
   const contextApp = useContext(AppContext);

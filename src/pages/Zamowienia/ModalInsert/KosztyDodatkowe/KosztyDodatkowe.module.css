@@ -148,6 +148,9 @@ border: none;
 
 
 .dodaj_koszty_td{
+  /* width:100vw; */
+  /* background-color: #646464; */
+
  display: flex;
  align-items: center;
  justify-content: center;

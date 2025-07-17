@@ -92,7 +92,7 @@ export default function TableKoszty() {
 
   function Indeks({ row,i }) {
     return (
-      <td>{i}</td>
+      <td className={style.td_indeks }>{i}</td>
     );
   }
   function Nazwa({ row }) {

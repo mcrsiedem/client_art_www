@@ -29,7 +29,7 @@ export default function TableFaktury() {
             <thead>
               <tr>
                 <th className={style.td_indeks}>#</th>
-                <th className={style.col3}>Nazwa</th>
+                <th className={style.col3}>Nr faktury</th>
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Wartość</th>
@@ -98,7 +98,7 @@ export default function TableFaktury() {
 
   function Indeks({ faktura,i }) {
     return (
-      <td>{i}</td>
+      <td className={style.td_indeks }>{i}</td>
     );
   }
   function Nazwa({ faktura }) {

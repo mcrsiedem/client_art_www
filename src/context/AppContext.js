@@ -258,12 +258,17 @@ const typ_elementu=[
 
     {
       id: 1,
-      nazwa: "Niedostępna",
+      nazwa: "Brak",
     },
     {
       id: 2,
+      nazwa: "W trakcie",
+    },
+  {
+      id: 3,
       nazwa: "Zafakturowane",
     },
+
 
   ];
 

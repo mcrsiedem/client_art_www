@@ -49,6 +49,7 @@ let faktura = [...faktury]
       cena: "0",
       suma: "0",
       info:"",
+      wz:"",
       status:1,
       stan:1,
       insert: true,

@@ -34,7 +34,7 @@ export default function TableFaktury() {
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Wartość</th>
-                <th className={style.col10}>WZ</th>
+                <th className={style.col10}>wz</th>
                 <th className={style.col10}>Uwagi</th>
                 <th className={style.col10}></th>
               </tr>

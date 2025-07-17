@@ -13,6 +13,7 @@ import FAKTURA_ILOSC from "./faktura/FAKTURA_ILOSC";
 import FAKTURA_CENA from "./faktura/FAKTURA_CENA";
 import FAKTURA_UWAGI from "./faktura/FAKTURA_UWAGI";
 import USUN_FAKTURE from "./USUN_FAKTURE";
+import FAKTURA_WZ from "./faktura/FAKTURA_WZ";
 export default function TableFaktury() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -33,6 +34,7 @@ export default function TableFaktury() {
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>
                 <th className={style.col10}>Wartość</th>
+                <th className={style.col10}>WZ</th>
                 <th className={style.col10}>Uwagi</th>
                 <th className={style.col10}></th>
               </tr>
@@ -58,6 +60,7 @@ export default function TableFaktury() {
 
                     <Suma faktura={faktura} />
                     <FAKTURA_UWAGI faktura={faktura} />
+                    <FAKTURA_WZ faktura={faktura} />
                     <USUN_FAKTURE faktura={faktura} />
 
      
@@ -68,19 +71,17 @@ export default function TableFaktury() {
               
               }
 
-<tr> <td colSpan="6" ><DodajFaktury/>  </td>  <td></td></tr>
+<tr> <td colSpan="8" ><DodajFaktury/>  </td> </tr>
               {/* {kosztyDodatkoweZamowienia.length == 0 && ( <tr> <td colSpan="6" ><DodajKoszty/>  </td> </tr>)} */}
 
                     <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td className={style.td_razem}>Razem:</td>
+                    {/* <td className={style.td_razem}>Razem:</td>
           
-                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.faktury_wartosc || 0} </p> </td>
+                    <td className={style.td_suma }> <p className={style.title_suma}>{ksiegowosc?.faktury_wartosc || 0} </p> </td> */}
                     <td></td>
-                    <td></td>
-
      
                   </tr>
                 

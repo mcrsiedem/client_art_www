@@ -105,8 +105,8 @@ const [refreshZamowienia] = useZamowienia()
             <ModalInsert
             />
           )}
-      <TechnologiaStage/>
-      <ZamowieniaInfo/>
+      {/* <TechnologiaStage/>
+      <ZamowieniaInfo/> */}
     
       
     </div>

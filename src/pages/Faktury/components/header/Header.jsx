@@ -236,13 +236,14 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
   const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
+  const sortowanieZamowieniaFaktury= contextApp.sortowanieZamowieniaFaktury;
   const _sortowanieZamowienieFaktury= contextApp._sortowanieZamowienieFaktury;
   
     return (
   
         <select
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
-          value={sortowanieZamowieniaEtap}
+          value={sortowanieZamowieniaFaktury}
           onChange={(event) => {
             // setSortowanieZamowieniaEtap(event.target.value)
             setSortowanieZamowieniaFaktury(event.target.value)

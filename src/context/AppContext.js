@@ -12,7 +12,7 @@ export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
-    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(0);
+    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
     const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
@@ -209,31 +209,26 @@ const _firma = [
 
 
   const _sortowanieZamowienieFaktury = [
-        {
-      id:0,
-      nazwa: "Bieżące",
-    },
 
     {
       id: 1,
-      nazwa: "Zamówienia",
-    },
-
-    {
-      id: 2,
       nazwa: "Wszystkie",
     },
 
     {
-      id: 3,
+      id: 2,
       nazwa: "Oddane",
     },
         {
-      id: 4,
+      id: 3,
       nazwa: "Gotowe do faktury",
     },
     
-
+        {
+      id: 4,
+      nazwa: "Zafakturowane",
+    },
+    
   
   ];
 

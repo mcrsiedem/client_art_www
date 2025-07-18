@@ -38,26 +38,22 @@ function sortWgEtapu({ zamowienie }) {
 
 
 function sortWgFaktur({ zamowienie }) {
-  if (sortowanieZamowieniaFaktury == 1) {
-    return zamowienie.etap > 1 && zamowienie.status != 7 ;
-  }
 
-  if (sortowanieZamowieniaFaktury == 2) {
+  if (sortowanieZamowieniaFaktury == 1) {
     return true;
   }
   
-   if (sortowanieZamowieniaFaktury == 3) {
+   if (sortowanieZamowieniaFaktury == 2) {
     return zamowienie.etap == 16; // anulowane
   }
 
-     if (sortowanieZamowieniaFaktury == 4) {
+     if (sortowanieZamowieniaFaktury == 3) {
     return zamowienie.koszty_status == 2; // anulowane
   }
     
-       if (sortowanieZamowieniaFaktury == 0) {
-    return zamowienie.etap > 1 && zamowienie.etap <16 && zamowienie.status != 7 ;
+     if (sortowanieZamowieniaFaktury == 4) {
+    return zamowienie.faktury_status == 3; // anulowane
   }
-
 
 }
 

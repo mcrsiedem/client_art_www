@@ -4,6 +4,8 @@ import { AppContext } from "context/AppContext";
 export function useSortowanieZamowienia(){
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap = contextApp.sortowanieZamowieniaEtap
+  const sortowanieZamowieniaFaktury= contextApp.sortowanieZamowieniaFaktury
+  const _sortowanieZamowienieFaktury = contextApp._sortowanieZamowienieFaktury
 
 function sortWgEtapu({ zamowienie }) {
   if (sortowanieZamowieniaEtap == 1) {
@@ -36,28 +38,23 @@ function sortWgEtapu({ zamowienie }) {
 
 
 function sortWgFaktur({ zamowienie }) {
-  if (sortowanieZamowieniaEtap == 1) {
+  if (sortowanieZamowieniaFaktury == 1) {
     return zamowienie.etap > 1 && zamowienie.status != 7 ;
   }
-  if (sortowanieZamowieniaEtap == 2) {
-    return zamowienie.etap == 1 && zamowienie.status != 7;
-  }
-  if (sortowanieZamowieniaEtap == 3) {
+
+  if (sortowanieZamowieniaFaktury == 2) {
     return true;
   }
-   if (sortowanieZamowieniaEtap == 4) {
-    return zamowienie.status == 7; // anulowane
-  }
-   if (sortowanieZamowieniaEtap == 5) {
+  
+   if (sortowanieZamowieniaFaktury == 3) {
     return zamowienie.etap == 16; // anulowane
   }
-     if (sortowanieZamowieniaEtap == 6) {
-    return zamowienie.etap == 8; // wydrukwoane
+
+     if (sortowanieZamowieniaFaktury == 4) {
+    return zamowienie.koszty_status == 2; // anulowane
   }
-       if (sortowanieZamowieniaEtap == 7) {
-    return zamowienie.etap == 10; // sfalcowane
-  }
-       if (sortowanieZamowieniaEtap == 0) {
+    
+       if (sortowanieZamowieniaFaktury == 0) {
     return zamowienie.etap > 1 && zamowienie.etap <16 && zamowienie.status != 7 ;
   }
 

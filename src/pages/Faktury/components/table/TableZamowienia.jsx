@@ -15,7 +15,7 @@ export default function TableZamowienia({open2,setRow}){
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
-  const [sortWgEtapu] = useSortowanieZamowienia()
+  const [sortWgEtapu,sortWgFaktur] = useSortowanieZamowienia()
 
    const inputElement = useRef();
 
@@ -108,7 +108,7 @@ const [refreshZamowienia] = useZamowienia()
              return  zam.klient_id == selectedKlient;
             }
           })
-          .filter((zamowienie) => sortWgEtapu({zamowienie}))
+          .filter((zamowienie) => sortWgFaktur({zamowienie}))
 
            .map((row,i) => {
              return (

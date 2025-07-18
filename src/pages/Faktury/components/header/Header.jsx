@@ -235,17 +235,20 @@ function SzukajNr() {
 function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
-  const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
+  const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
+  const _sortowanieZamowienieFaktury= contextApp._sortowanieZamowienieFaktury;
+  
     return (
   
         <select
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaEtap}
           onChange={(event) => {
-            setSortowanieZamowieniaEtap(event.target.value)
+            // setSortowanieZamowieniaEtap(event.target.value)
+            setSortowanieZamowieniaFaktury(event.target.value)
           }}
         >
-          {contextApp._sortowanieZamowienieEtap.map((option) => (
+          {contextApp._sortowanieZamowienieFaktury.map((option) => (
             <option key={option.id} value={option.id}>
             {option.nazwa}
             </option>

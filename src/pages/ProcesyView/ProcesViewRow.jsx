@@ -37,7 +37,6 @@ import { useAccess } from "hooks/useAccess";
 import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { druk_alert } from "actions/druk_alert";
-// import { selectColor } from "actions/selectColor";
 
 
 

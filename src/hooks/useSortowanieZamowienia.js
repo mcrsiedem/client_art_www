@@ -40,7 +40,7 @@ function sortWgEtapu({ zamowienie }) {
 function sortWgFaktur({ zamowienie }) {
 
   if (sortowanieZamowieniaFaktury == 1) {
-    return true;
+    return zamowienie.etap > 1 && zamowienie.status != 7 ;
   }
   
    if (sortowanieZamowieniaFaktury == 2) {

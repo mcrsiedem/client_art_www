@@ -290,6 +290,7 @@ const oprawa = contextModalInsert.oprawa;
 const pakowanie = contextModalInsert.pakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
 const selectedZamowienie = contextModalInsert.selectedZamowienie;
+const ksiegowosc = contextModalInsert.ksiegowosc;
 
 
 
@@ -303,7 +304,7 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
       onClick={async() => {
 
         // sprawdza czy było coś edytowane przed zamknięciem
-        if(isEdit(daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow)){
+        if(isEdit(daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,ksiegowosc)){
 
           let text = "Wyjście bez zapisu...";
                           if (window.confirm(text) == true) {
@@ -355,9 +356,10 @@ const selectedZamowienie = contextModalInsert.selectedZamowienie;
   );
 }
 
-const isEdit = (daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow) => {
+const isEdit = (daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,ksiegowosc) => {
 
  if (daneZamowienia.update == true) return true
+ if (ksiegowosc.update == true) return true
  if (produkty[0].update == true) return true
 
  for(let element of elementy){

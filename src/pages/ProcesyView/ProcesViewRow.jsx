@@ -36,6 +36,8 @@ import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useAccess } from "hooks/useAccess";
 import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
+import { druk_alert } from "actions/druk_alert";
+import { selectColor } from "actions/selectColor";
 
 
 
@@ -57,95 +59,6 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
 
 
 
-  const druk_alert = (grup) => {
-  // let data_spedycji_init = new Date(grup.data_spedycji+ " 06:00")
-
-  let data_alert = new Date(grup.data_spedycji+ " 06:00")
-    let poczatek = new Date(grup.poczatek)
-    // let czas = parseInt(grup.czas) + (72*60) -360
-    let czas = parseInt(grup.czas) + (72*60) 
-
-   data_alert.setMinutes(data_alert.getMinutes() - czas)
-
-      let  month = '' + (data_alert.getMonth() + 1),
-        day = '' + data_alert.getDate(),
-        year = data_alert.getFullYear();
-        let  h =  data_alert.getHours();
-       let m = data_alert.getMinutes();
-               if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    if (h < 10) 
-        h = '0' + h;
-    if (m < 10) 
-        m = '0' + m;
-
-    if(poczatek> data_alert){
-      return true
-    }
-          //  return [year, month, day].join('-').concat(" ").concat([h,m].join(':')); 
-          //  return czas
-  }
-
-
-// const papier_postac_name = id =>{
-//   if (id == 1 )  return "A"
-//   if (id == 2 )  return (      <img
-//     className={style.zamknij_icon}
-//      src={iconRolka}
-//     />)
-
-// }
-
-
-          const selectColor = (etapPlikow,status) =>{
-
-            //druk
-            if(grup.proces_nazwa_id ==1){
-if (grup.select==true) return style.procesRow_select
-
-                          if (status==4 ) return style.procesRow_tr_DRUK
-            // if (status==2) return style.procesRow_tr_RIP
-    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
-    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_ZAS
-       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
-    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
- 
-     return style.procesRow_tr
-            }
-
-
-            //wszystko poza drukiem
-            if(grup.proces_nazwa_id !=1){
-                          if (status==4 ) return style.procesRow_tr_DRUK
-            if (status==2) return style.procesRow_tr_RIP
-            if (status==3) return style.procesRow_tr_RIP
-    if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
-    if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
-    if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_ZAS
-       if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
-    if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
- 
-if (grup.select) return style.procesRow_select
-
-     return style.procesRow_tr
-            }
-
-
-
-
-  }
 
   return (
 <>
@@ -465,10 +378,8 @@ function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_wykonania = contextApp._status_wykonania
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const selectedProcesor = techContext.selectedProcesor
  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
-            const selectColor = (etap,status) =>{
+            const selectColorStatus = (etap,status) =>{
               //druk
               if(grup.proces_nazwa_id ==1){
     if (status==4) return style.select_DRUK
@@ -488,14 +399,6 @@ function Status({grup}) {
     if (status==4) return style.select_DRUK
     if (status==2) return style.select_RIP
     if (status==3) return style.select_RIP
-    // if (etap==1) return style.select
-    // if (etap==2) return style.select
-    // if (etap==3) return style.select
-    // if (etap==4) return style.select_AKCEPT
-    // if (etap==5) return style.select_AKCEPT
-    // if (etap==6) return style.select_RIP
-    // if (etap==7) return style.select_ZAS
-    //   if (etap==8) return style.select_DRUK
      return style.select
               }
 
@@ -507,7 +410,7 @@ function Status({grup}) {
 <td className={style.td_tableProcesy_pliki}>
 
       <select
-       className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
+       className={selectColorStatus(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
         onChange={(event) => {
           if(grup.typ_grupy!=1){
@@ -538,12 +441,8 @@ function Status({grup}) {
 function WydaniePapieruStatus({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const zamowieniaPliki = contextApp.zamowieniaPliki
-  const setZamowieniaPliki = contextApp.setZamowieniaPliki
 
   const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  const grupyWykonanAll = techContext.grupyWykonanAll
-  const setGrupWykonanAll = techContext.setGrupWykonanAll
   const selectedProcesor = techContext.selectedProcesor
   const dniWstecz = techContext.dniWstecz
 
@@ -585,14 +484,6 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
         value={grup?.wydanie_papieru_status || 1}
         onChange={async(event) => {
 const res1 = await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:event.target.value});
-            // etapPlikowGrupyWykonan(event.target.value,grup)
-          // dodajDoZamowienia(         {
-          //   kategoria: "Pliki",
-          //   event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
-          //   zamowienie_id: grup.zamowienie_id,
-          //   user_id: DecodeToken(sessionStorage.getItem("token")).id
-
-          // })
 
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
         
@@ -611,46 +502,7 @@ const res1 = await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorag
   }
 }
 
-function WYDANIE_BTN({
-  row,
-  showKartaTechnologiczna,
-  setShowKartaTechnologiczna,
-}) {
-  const techContext = useContext(TechnologyContext);
 
-  const fechparametryTechnologii = techContext.fechparametryTechnologii;
- 
-    const setShowProcesy = techContext.setShowProcesy;
-
-
-  if (row.wydanie_papieru_status == null ) {
-    return (
-      <td className={style.td_karta}>
-        <div>
-        {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
-            className={style.iconSettings}
-            src={iconAdd}
-            onClick={() => {
-        
-
-            }}
-            alt="Procesy"
-          />:<></>}
-         
-        </div>
-      </td>
-    );
-  } else {
-    return (
-      <td className={style.td_karta}>
-
-
-
-
-      </td>
-    );
-  }
-}
 
 
 function Etap({grup}) {
@@ -714,72 +566,4 @@ function Etap({grup}) {
   );
 }
 
-function EtapKolor({grup}) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const zamowieniaPliki = contextApp.zamowieniaPliki
-  const setZamowieniaPliki = contextApp.setZamowieniaPliki
-
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const selectedProcesor = techContext.selectedProcesor
-  const grupyWykonanAll = techContext.grupyWykonanAll
-  const setGrupWykonanAll = techContext.setGrupWykonanAll
-  const [etapPlikow] = usePliki()
-      const [add,dodajDoZamowienia] = useHistoria()
-            const selectColor = (etap) =>{
-    if (etap==1) return style.select
-    if (etap==2) return style.select
-    if (etap==3) return style.select
-    if (etap==4) return style.select_AKCEPT
-    if (etap==5) return style.select_AKCEPT
-    if (etap==6) return style.select_RIP
-    if (etap==7) return style.select_RIP
-    if (etap==8) return style.select_DRUK
-     return style.select
-  }
-
-  return (
-<td style={{width: "160px"}}>
-      <select
-        className={selectColor(grup.zamowienia_pliki_etap) }
-        // value={grup.zamowienia_pliki_etap}
-        onChange={(event) => {
-          //etap pliku z zakresu brak do naświetlenia
-          // if(event.target.value <8){
-          etapPlikow(event.target.value,grup)
-
-          // dodajDoZamowienia(         {
-          //   kategoria: "Pliki",
-          //   event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
-          //   zamowienie_id: grup.zamowienie_id,
-          //   user_id: DecodeToken(sessionStorage.getItem("token")).id
-
-          // })
-
-          setGrupWykonanAll(grupyWykonanAll.map((t) => {
-            if (t.global_id == grup.global_id  ) {
-              return {...t,
-                zamowienia_pliki_etap: event.target.value
-              }
-            } else {
-              return t;
-            }
-          }))
-          // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-        
-          // }
-
-        }}
-      >
-        {_etap_plikow.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-      </td>
-
-  );
-}
 

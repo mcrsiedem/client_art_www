@@ -275,3 +275,19 @@ tr:nth-of-type(2n) {
 .th_tableProcesy_praca{
    width: 220px;
 }
+
+.th_tableProcesy_papier_rodzaj{
+   width: 300px;
+}
+
+
+.th_tableProcesy_przeloty{
+   width: 70px;
+}
+
+.th_tableProcesy_naklad{
+   width: 70px;
+}
+.th_tableProcesy_ark{
+   width: 40px;
+}

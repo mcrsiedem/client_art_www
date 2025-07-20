@@ -121,16 +121,17 @@ const WykonaniaTable = () => {
               <th className={style.th_tableProcesy_praca}> Praca</th>
               {/* <th> </th> */}
               <th title="Dyspersja"> D/K</th>
-              <th> Nakład</th>
+              <th className={style.th_tableProcesy_naklad}> Nakład</th>
               <th title="Spedycja"> Sped.</th>
               {/* <th title="Dyspersja"> Narz.</th> */}
 
-              <th> Przeloty</th>
-              <th> Ark.</th>
-              <th> </th>
-              {selectedProces == 1 ? <th>Papier </th> : <></>}
+              <th className={style.th_tableProcesy_przeloty}> Przeloty</th>
+              <th className={style.th_tableProcesy_ark}> Ark.</th>
+              <th className={style.th_tableProcesy_papier_rodzaj}> </th>
+              {selectedProces == 1 ? <th className={style.th_tableProcesy_praca}>Papier </th> : <th ></th>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
-              <th> Status </th>
+              {selectedProces != 1 ? <th>Status </th> : <></>}
+              {/* <th> Status </th> */}
               <th > </th>
 
 

@@ -218,7 +218,7 @@ if (grup.select) return style.procesRow_select
                   <Papier grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
-                  {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
+                  {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
                   {/* <SelectBox grup={grup}/> */}
                   <td></td>
                  

@@ -214,6 +214,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_spedycja}>{formatujDatePoPolsku( grup.data_spedycji)}</td>
                    {/* <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td> */}
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
+                  <td className={style.td_tableProcesy_przeloty}>{grup.ilosc_narzadow} </td>
                   <Papier grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}

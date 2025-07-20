@@ -126,6 +126,7 @@ const WykonaniaTable = () => {
               {/* <th title="Dyspersja"> Narz.</th> */}
 
               <th> Przeloty</th>
+              <th> Ark.</th>
               <th> </th>
               {selectedProces == 1 ? <th>Papier </th> : <></>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}

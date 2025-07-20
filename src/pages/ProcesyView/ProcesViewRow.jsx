@@ -37,6 +37,7 @@ import { useAccess } from "hooks/useAccess";
 import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { druk_alert } from "actions/druk_alert";
+import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
 
 
 
@@ -207,7 +208,7 @@ if (grup.select) return style.procesRow_select
                   {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   <DyspersjaGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
-                  <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
+                  <td className={style.td_tableProcesy_spedycja}>{formatujDatePoPolsku( grup.data_spedycji)}</td>
                    {/* <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td> */}
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   <Papier grup={grup}/>

@@ -120,7 +120,7 @@ const WykonaniaTable = () => {
               {/* <th> </th> */}
               <th title="Dyspersja"> D/K</th>
               <th> Nakład</th>
-              <th> Spedycja</th>
+              <th title="Spedycja"> Sped.</th>
               {/* <th title="Dyspersja"> Narz.</th> */}
 
               <th> Przeloty</th>

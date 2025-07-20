@@ -12,6 +12,7 @@ import { date_time } from "actions/date_time";
 import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { updateZmienCzasTrwaniaGrupyPrzerwa } from "actions/updateZmienCzasTrwaniaGrupyPrzerwa";
+import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 
 
 export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable }) {
@@ -42,16 +43,18 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
         className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
       >
         {/* <td style={{ paddingLeft:"5px",minWidth: "130px", width: "130px", fontSize:"0.9rem" }}>{grup.poczatek}</td> */}
-                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+        <td></td>
+
+                  <td className={style.td_tableProcesy_poczatek}>{ grup.poczatek}</td>
 
         <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td>
         <KoniecGrupa grup={grup} />
         <td></td>
         
+                 
         
       {grup.typ_grupy == 1 && selectedProces==1?  <><td></td><td></td><td></td><td></td><td></td></> : <><td></td><td></td><td></td> </> }
                   
-        <td></td>
         <td></td>
         <td></td>
         <td></td>

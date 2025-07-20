@@ -109,14 +109,16 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
+              <th ></th>
+
               <th className={style.th_tableProcesy_poczatek}> Początek</th>
               <th className={style.th_tableProcesy_czas}> Czas</th>
               <th className={style.th_tableProcesy_koniec}> Koniec</th>
-              <th ></th>
-              <th > </th>
               <th >Nr</th>
+              <th ></th>
+              {/* <th > </th> */}
               <th> Klient</th>
-              <th> Praca</th>
+              <th className={style.th_tableProcesy_praca}> Praca</th>
               {/* <th> </th> */}
               <th title="Dyspersja"> D/K</th>
               <th> Nakład</th>

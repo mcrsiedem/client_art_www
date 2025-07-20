@@ -38,6 +38,8 @@ import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { druk_alert } from "actions/druk_alert";
 import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
+import { formatujDateZGodzinaPoPolsku } from "actions/formatujDateZGodzinaPoPolsku";
+import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 
 
 
@@ -196,12 +198,13 @@ if (grup.select) return style.procesRow_select
                     
                   }}
                 >
-                  <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert: style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+                  <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert_dzien: style.td_tableProcesy_poczatek_dzien}>{formatujDateZGodzinaIDniemTygodniaPoPolsku(grup.poczatek)}</td>
+                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
-                  <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
+                  {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
+                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   {/* <td className={style.td_tableProcesy_klient}>{druk_alert(grup)}</td> */}
                   <TytulProcesGrup grup={grup}/>
@@ -286,7 +289,7 @@ const TytulProcesGrup = ({ grup }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={grup.Praca}
       className={style.tytulInput}
-      value={grup.tytul +' '+grup.nazwa_elementu}
+      value={grup.nr_stary+ " "+grup.tytul +' '+grup.nazwa_elementu}
       readOnly
 
     />

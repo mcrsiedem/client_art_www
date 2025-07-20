@@ -35,7 +35,7 @@ export default  function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }
                      }
                 }
      className={style.col_dane}>
-      <label className={style.label}> Start : {rowGrupa.poczatek} </label>
+      <label className={style.label}> Start : {rowGrupa.poczatek} Wyk.: {rowGrupa.ilosc_narzadow}</label>
       <select
         className={rowGrupa.global_id == 0 && daneTech.id !=1 ? style.input_yellow:style.input}
         value={rowGrupa.procesor_id}

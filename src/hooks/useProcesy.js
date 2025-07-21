@@ -176,7 +176,7 @@ let grupa_id = MaxID(new_grupy)
 
 })
 
-setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
 
 
 setWykonania(new_wykonania)
@@ -300,7 +300,7 @@ let grupa_id = MaxID(new_grupy)
 
 })
 
-setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
 setWykonania(new_wykonania)
 
 }
@@ -433,21 +433,14 @@ console.log(new_legi)
 
 })
 
-//  new_grupy = new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) )
 
 
-setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ));
+setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
 setWykonania(new_wykonania)
 
-// saveGrupaWykonan(new_grupy.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng)}) ))
-// saveWykonania(new_wykonania.filter(x=>x.global_id == 0))
-// fechparametryTechnologii(arkusz.zamowienie_id, arkusz.technologia_id);
 }
 
 const aktualizujProcesy = () =>{
-// saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0).map( ng => ({...ng,czas:SumaCzasow(wykonania,ng),przeloty:SumaPrzelotow(wykonania,ng)}) ))
-// saveWykonania(wykonania.filter(x=>x.global_id == 0))
-// fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
 saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0))
 saveWykonania(wykonania.filter(x=>x.global_id == 0))
 fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
@@ -457,7 +450,6 @@ fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
 
 
 const saveGrupaWykonan = (grupaWykonan) =>{
-// console.log(grupaWykonan)
 
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])
@@ -518,6 +510,11 @@ const SumaPrzelotow = (wykonania,grupa) => {
   // sumuje wszystkie czasy z dowolnej grupy
   let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
   return suma;
+};
+
+const SumaWykonan= (wykonania,grupa) => {
+
+  return wykonania.filter(x=> x.grupa_id == grupa.id).length;
 };
 
 

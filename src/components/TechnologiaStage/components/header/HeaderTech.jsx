@@ -27,7 +27,7 @@ export default function Header({}) {
   return (
     <header
       className={style.headerMain}
-      onDoubleClick={() => {
+      onDoubleClick={async ()  => {
         console.clear();
         // console.log("Karta Technologiczna: ");
         console.log("Dane Tech: ", techContext.daneTech);
@@ -51,13 +51,13 @@ export default function Header({}) {
         //  ponumerujArkusze();
 
 
+        // 
+
       }}
     >
       <LeftPane>
         <IconError />
 
-        {/* <p>Karta technologiczna... {techContext.rowTechnologia?.id} {techContext.rowZamowienia?.id}</p> */}
-        {/* <p className={style.title}>Karta technologiczna {techContext.daneTech?.id}</p> */}
         <p className={style.title2}>Technologia </p>
 
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>

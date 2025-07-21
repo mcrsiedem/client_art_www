@@ -97,8 +97,12 @@ export async function zapiszTechnologie({daneTech,produktyTech,elementyTech,frag
 
 
    }else{
+     const res = await axios.get(IP + "restoreTechnologia/"+daneTech.zamowienie_id+"/"+ sessionStorage.getItem("token"));
     alert(" Coś poszło nie tak." + isSavedCorrect(response).error.sqlMessage +"\n sql: "+isSavedCorrect(response).error.sql)
     console.log("Uwaga : " ,isSavedCorrect(response).error.sqlMessage +" sql: ",isSavedCorrect(response).error.sql) ;
+    setSaveButtonDisabled(true)
+
+
    }
    
 
@@ -193,6 +197,10 @@ resolve(res)
 const saveGrupaWykonan = ({grupaWykonan}) =>{
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])
+                        .catch(function(rej) {
+                              // alert(rej)
+                              console.log("eror M ",rej);
+                            });
 resolve(res)
   })
 }

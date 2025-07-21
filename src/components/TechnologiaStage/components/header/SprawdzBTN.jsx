@@ -17,36 +17,36 @@ export default function SprawdzBTN () {
       className={ style.btn}
       onClick={() => {
 
-    //   const promiseA = new Promise((resolve, reject) => {
+      const promiseA = new Promise((resolve, reject) => {
 
-    //     if(procesyElementowTech.length == grupaWykonan.length){
-    //     resolve(777);
-    //     } else{
-    //       reject("Dodaj procesy")
-    //     }
-
-          
-    //     })
-    //     promiseA.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
-    //   alert(rej)
-    //   console.log(rej);
-    // });
-
-           
-    
-          const promiseB = new Promise((resolve, reject) => {
-
-        if(wykonania.map(x => x.proces_id).includes(procesyElementowTech.map(x => x.id))){
+        if(procesyElementowTech.length == grupaWykonan.length){
         resolve(777);
         } else{
-          reject("Nie za każdego procesu wygenerowały się wykonania. ")
+          reject("Dodaj procesy")
         }
 
+          
         })
-        promiseB.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
+        promiseA.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
       alert(rej)
       console.log(rej);
     });
+
+           
+    
+    //       const promiseB = new Promise((resolve, reject) => {
+
+    //     if(wykonania.map(x => x.proces_id).includes(procesyElementowTech.map(x => x.id))){
+    //     resolve(777);
+    //     } else{
+    //       reject("Nie za każdego procesu wygenerowały się wykonania. ")
+    //     }
+
+    //     })
+    //     promiseB.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
+    //   alert(rej)
+    //   console.log(rej);
+    // });
 
 
 

@@ -201,6 +201,8 @@ function SkasujGrupeWykonan({ rowGrupa }) {
   const daneTech = techContext.daneTech;
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
+  const setWykonania = techContext.setWykonania;
 
   // const global_id_grupa = row.global_id
   return (
@@ -214,13 +216,18 @@ function SkasujGrupeWykonan({ rowGrupa }) {
            if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis==1)
             {
 
-          if(daneTech.id !=1){
+          if(rowGrupa.global_id >1  && daneTech.id > 1   ){
           updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
 
           }else{
         setGrupaWykonan(
           grupaWykonan.filter(e => e.id != rowGrupa.id)
         )
+    setWykonania(
+          wykonania.filter(e => e.grupa_id != rowGrupa.id)
+        )
+
+
           }
           //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
           // handleRemoveItem(row.indeks, row.id);

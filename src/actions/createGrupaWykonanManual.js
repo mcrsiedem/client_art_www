@@ -15,6 +15,7 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
 
   const grupaWykonanEdit = grupaWykonan.slice();
   grupaWykonanEdit.push({
+    global_id:1,
     id: getMaxID(grupaWykonan),
     indeks: getMaxIndeks(grupaWykonan),
     element_id: rowProces.element_id,
@@ -76,6 +77,10 @@ if(procesList.filter(p => p.id == rowProces.proces_id )[0].arkusz == 1){
       procesor_id: procesList.filter(p => p.id == rowProces.proces_id )[0].procesor_domyslny,
       proces_id: rowProces.id,
       stan:1,
+      nazwa_wykonania: arkusz.rodzaj_arkusza,
+      arkusz_id: arkusz.id,
+      naklad: arkusz.naklad,
+      przeloty: parseInt(arkusz.naklad) + parseInt(arkusz.nadkomplet) ,
       status:1,
       czas: parseInt((arkusz.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
       uwagi: ""
@@ -90,86 +95,8 @@ if(procesList.filter(p => p.id == rowProces.proces_id )[0].arkusz == 1){
 
 
 setWykonania(wykonaniaEdit)
-setGrupaWykonan(prev=> prev.map( ng => ({...ng,czas:wykonaniaEdit.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ))
-// new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
-  // const new_wykonania = [];
-
-  // const grupa ={
-  //   id:1,
-  //   element_id:1,
-  //   proces_id:1,
-  //   produkt_id:1,
-  //   technologia_id:1,
-  //   zamowienie_id:1,
-  //   maszyna_id:1
-
-  // }
-
-
-
-  // procesy.map((proc,i)=> {
-  //   if(proc.nazwa_id==1){  // druk
-
-  //     new_grupy.push({
-  //       id: i + 1,
-  //       indeks: i + 1,
-  //       nazwa: proc.nazwa,
-  //       narzad: proc.narzad,
-  //       predkosc: proc.predkosc
-  //     });
-
-  //     arkusze
-  //     .filter(a => a.element_id == proc.element_id)
-  //     .map(a=>{
-  //       new_wykonania.push({
-  //         id: i + 1,
-  //         indeks: i + 1,
-  //         nazwa: proc.nazwa,
-  //         element_id: a.element_id,
-  //         arkusz_id: a.id,
-  //         proces_id: proc.id,
-  //         typ_elementu: a.typ_elementu,
-  //         narzad: proc.narzad,
-  //         predkosc: proc.predkosc
-  //       });
-  //     })
-
-  //   }
-  //   if(proc.nazwa_id==3){ // falcowanie
-  //     new_grupy.push({
-  //       id: i + 1,
-  //       indeks: i + 1,
-  //       nazwa: proc.nazwa,
-  //       narzad: proc.narzad,
-  //       predkosc: proc.predkosc
-  //     });
-
-  //     legi
-  //     .filter(a => a.element_id == proc.element_id)
-  //     .map(a=>{
-  //       new_wykonania.push({
-  //         id: i + 1,
-  //         indeks: i + 1,
-  //         nazwa: proc.nazwa,
-  //         element_id: a.element_id,
-  //         arkusz_id: a.id,
-  //         proces_id: proc.id,
-  //         typ_elementu: a.typ_elementu,
-  //         narzad: proc.narzad,
-  //         predkosc: proc.predkosc
-  //       });
-  //     })
-
-
-
-
-
-
-
-
-  //   }
-    
-  // })
+// setGrupaWykonan(prev=> prev.map( ng => ({...ng,czas:wykonaniaEdit.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) ))
+setGrupaWykonan(grupaWykonanEdit.map( ng => ({...ng,czas:SumaCzasow(wykonaniaEdit,ng),przeloty:SumaPrzelotow(wykonaniaEdit,ng),ilosc_narzadow:SumaWykonan(wykonaniaEdit,ng)}) ));
 
 
 }
@@ -177,3 +104,19 @@ setGrupaWykonan(prev=> prev.map( ng => ({...ng,czas:wykonaniaEdit.filter(x=> x.g
 
 
 
+const SumaCzasow = (wykonania,grupa) => {
+  // sumuje wszystkie czasy z dowolnej grupy
+  let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+  return suma;
+};
+
+const SumaPrzelotow = (wykonania,grupa) => {
+  // sumuje wszystkie czasy z dowolnej grupy
+  let  suma = wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.przeloty).reduce((a, b) => a + b, 0)
+  return suma;
+};
+
+const SumaWykonan= (wykonania,grupa) => {
+
+  return wykonania.filter(x=> x.grupa_id == grupa.id).length;
+};

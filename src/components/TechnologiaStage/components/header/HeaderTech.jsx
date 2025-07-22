@@ -15,6 +15,7 @@ import axios from "axios";
 import { IP } from "../../../../utils/Host";
 import { skasujTechnologie } from "actions/skasujTechnologie";
 import SprawdzBTN from "./SprawdzBTN";
+import { useHistoria } from "hooks/useHistoria";
 
 
 export default function Header({}) {
@@ -334,7 +335,7 @@ const IconNavigate =  ({ className, logo, navi }) => {
 
 const SkasujTechnologieBTN = () => {
     const techContext = useContext(TechnologyContext);
-
+const [add] = useHistoria()
 
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const daneTech = techContext.daneTech;

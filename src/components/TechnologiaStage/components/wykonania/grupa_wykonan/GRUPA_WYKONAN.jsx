@@ -24,6 +24,7 @@ import { dragDropProcesGrupaToProcesorFromTech } from "actions/dragDropProcesGru
 import { useWykonania } from "hooks/useWykonania";
 import Procesor from "./components/Procesor";
 import NakladGrupy from "./components/Naklad";
+import { useHistoria } from "hooks/useHistoria";
 
 
 
@@ -203,6 +204,7 @@ function SkasujGrupeWykonan({ rowGrupa }) {
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;
   const setWykonania = techContext.setWykonania;
+const [add,dodajDoZamowienia] = useHistoria()
 
   // const global_id_grupa = row.global_id
   return (
@@ -213,27 +215,27 @@ function SkasujGrupeWykonan({ rowGrupa }) {
         src={iconDelete} 
         onClick={() => {
 
-           if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis==1)
-            {
+           if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+             if (rowGrupa.global_id > 1 && daneTech.id > 1) {
+               updateSkasujGrupe(
+                 rowGrupa.global_id,
+                 fechparametryTechnologii,
+                 rowGrupa.zamowienie_id,
+                 rowGrupa.technologia_id
+               );
 
-          if(rowGrupa.global_id >1  && daneTech.id > 1   ){
-          updateSkasujGrupe(rowGrupa.global_id, fechparametryTechnologii,rowGrupa.zamowienie_id,rowGrupa.technologia_id);
+            dodajDoZamowienia(         {
+              kategoria: "Technologia",
+              event: "Skasowana grupa: " +rowGrupa.nazwa + " ID: " +rowGrupa.id,
+              zamowienie_id: rowGrupa.zamowienie_id,
+              user_id: DecodeToken(sessionStorage.getItem("token")).id
+            })
 
-          }else{
-        setGrupaWykonan(
-          grupaWykonan.filter(e => e.id != rowGrupa.id)
-        )
-    setWykonania(
-          wykonania.filter(e => e.grupa_id != rowGrupa.id)
-        )
-
-
-          }
-          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-          // handleRemoveItem(row.indeks, row.id);
-          // console.log(rowGrupa)
-
-            }
+             } else {
+               setGrupaWykonan(grupaWykonan.filter((e) => e.id != rowGrupa.id));
+               setWykonania(wykonania.filter((e) => e.grupa_id != rowGrupa.id));
+             }
+           }
 
         }}
         alt="Procesy"

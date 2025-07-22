@@ -182,6 +182,9 @@ function DodajGrupeWykonan({ rowGrupa }) {
 function SkasujGrupeWykonan({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
+  const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
+  const daneTech = techContext.daneTech;
   const [add,dodajDoZamowienia] = useHistoria()
   
   // const global_id_grupa = row.global_id
@@ -194,13 +197,20 @@ function SkasujGrupeWykonan({ grupaOprawa }) {
         src={iconDelete} 
         onClick={() => {
            if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
-          updateSkasujGrupeOprawa(grupaOprawa.global_id, fechparametryTechnologii,grupaOprawa.zamowienie_id,grupaOprawa.technologia_id);
+
+             if (grupaOprawa.global_id > 1 && daneTech.id > 1) {
+                        updateSkasujGrupeOprawa(grupaOprawa.global_id, fechparametryTechnologii,grupaOprawa.zamowienie_id,grupaOprawa.technologia_id);
                     dodajDoZamowienia(         {
                       kategoria: "Technologia",
                       event: "Skasowana oprawa ID: " +grupaOprawa.id,
                       zamowienie_id: grupaOprawa.zamowienie_id,
                       user_id: DecodeToken(sessionStorage.getItem("token")).id
                     })
+             }else {
+               setGrupaOprawaTech(grupaOprawaTech.filter((e) => e.id != grupaOprawa.id));
+              
+             }
+
         
         }
       }

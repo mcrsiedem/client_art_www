@@ -18,6 +18,7 @@ import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { updateSkasujGrupeOprawa } from "actions/updateSkasujGrupeOprawa";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useHistoria } from "hooks/useHistoria";
 
 
 
@@ -181,6 +182,8 @@ function DodajGrupeWykonan({ rowGrupa }) {
 function SkasujGrupeWykonan({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const [add,dodajDoZamowienia] = useHistoria()
+  
   // const global_id_grupa = row.global_id
    if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
   return (
@@ -190,11 +193,19 @@ function SkasujGrupeWykonan({ grupaOprawa }) {
         className={style.expand}
         src={iconDelete} 
         onClick={() => {
-          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-          // handleRemoveItem(row.indeks, row.id);
-          // console.log(grupaOprawa)
+           if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
           updateSkasujGrupeOprawa(grupaOprawa.global_id, fechparametryTechnologii,grupaOprawa.zamowienie_id,grupaOprawa.technologia_id);
-        }}
+                    dodajDoZamowienia(         {
+                      kategoria: "Technologia",
+                      event: "Skasowana oprawa ID: " +grupaOprawa.id,
+                      zamowienie_id: grupaOprawa.zamowienie_id,
+                      user_id: DecodeToken(sessionStorage.getItem("token")).id
+                    })
+        
+        }
+      }
+      
+      }
         alt="Procesy"
       />
     </div>

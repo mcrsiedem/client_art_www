@@ -633,7 +633,7 @@ function ShowTechnmologiaBtn({
     return (
       <td className={style.td_karta}>
         <div>
-        {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
+        {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ?  <img
             className={style.iconSettings}
             src={iconAdd}
             onClick={() => {
@@ -653,7 +653,7 @@ function ShowTechnmologiaBtn({
       <td className={style.td_karta}>
         <div>
 
-          {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ? <img
+          {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ? <img
             className={style.iconSettings}
             //  src={iconSettings}
             src={iconFile}

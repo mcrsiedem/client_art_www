@@ -509,7 +509,7 @@ function WydaniePapieruStatus({grup}) {
 
   if(grup.wydanie_papieru_status ==null){
 return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
-        {DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1 ?  <img
+        {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ?  <img
             className={style.iconSettings}
             src={iconAdd}
             onClick={async() => {

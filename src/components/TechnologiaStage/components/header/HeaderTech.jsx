@@ -92,11 +92,15 @@ const ClearBTN = () => {
   const techContext = useContext(TechnologyContext);
   const setShowProcesy = techContext.setShowProcesy;
 // if(DecodeToken(sessionStorage.getItem("token")).id ==1){
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
     return (
     <button
       className={ style.btn}
       onClick={() => {
-        techContext.setArkusze([])
+
+             if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+
+                      techContext.setArkusze([])
         techContext.setLegi([])
         techContext.setLegiFragmenty([])
         techContext.setGrupaWykonan([])
@@ -105,11 +109,13 @@ const ClearBTN = () => {
 
         setShowProcesy(false)
         
+             }
+
       }}
     >
       Clear 
     </button>
-  );
+  );}
 // }
 
 };
@@ -136,7 +142,7 @@ const PotwierdzKorekteZamowieniaBTN = () => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
   const setDaneTech = techContext.setDaneTech;
-
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
     return (
     <button
@@ -151,6 +157,7 @@ const PotwierdzKorekteZamowieniaBTN = () => {
       Potwierdź korekty
     </button>
   );
+}
 
 };
 
@@ -188,7 +195,7 @@ const ZapisBtnPromise = () => {
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
 
-
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
   return (
     <button
@@ -270,6 +277,7 @@ const ZapisBtnPromise = () => {
       Zapisz 
     </button>
   );
+}
 };
 //----
 const LeftPane = ({ children }) => {
@@ -335,7 +343,6 @@ const IconNavigate =  ({ className, logo, navi }) => {
 
 const SkasujTechnologieBTN = () => {
     const techContext = useContext(TechnologyContext);
-const [add] = useHistoria()
 
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const daneTech = techContext.daneTech;
@@ -347,14 +354,9 @@ if(techContext.grupaWykonan.length==0 & techContext.daneTech.id !=1){
       className={ style.btn}
       onClick={() => {
         skasujTechnologie(daneTech.id,daneTech.zamowienie_id,DecodeToken(sessionStorage.getItem("token")).id,refreshZamowienia,setShowTechnologyStage)
-        // techContext.setArkusze([])
-        // techContext.setLegi([])
-        // techContext.setLegiFragmenty([])
-        // techContext.setGrupaWykonan([])
-        // techContext.setWykonania([])
-        // techContext.setGrupaOprawaTech([])
 
-        // setShowProcesy(false)
+        // historia kasowanie zapisuje się po stronie bazy
+
         
       }}
     >

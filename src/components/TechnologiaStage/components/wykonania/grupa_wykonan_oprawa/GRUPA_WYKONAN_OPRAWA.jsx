@@ -17,6 +17,7 @@ import { getSumaCzasow } from "actions/getSumaCzasow";
 import { getSumaPrzelotow } from "actions/getSumaPrzelotow";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { updateSkasujGrupeOprawa } from "actions/updateSkasujGrupeOprawa";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 
@@ -41,7 +42,7 @@ export default  function GRUPA_WYKONAN_OPRAWA ({ grupaOprawa }) {
                  <MnoznikPredkosci grupaOprawa={grupaOprawa}/>
                  <Stangrupy grupaOprawa={grupaOprawa}/>
                  <StatusGrupy grupaOprawa={grupaOprawa} />
-                 <DodajGrupeWykonan grupaOprawa={grupaOprawa}/>
+                 {/* <DodajGrupeWykonan grupaOprawa={grupaOprawa}/> */}
                  <SkasujGrupeWykonan grupaOprawa={grupaOprawa}/>
               </div>
 
@@ -181,6 +182,7 @@ function SkasujGrupeWykonan({ grupaOprawa }) {
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   // const global_id_grupa = row.global_id
+   if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
   return (
     <div style={{ paddingTop: "13px" }}>
       <img
@@ -197,6 +199,7 @@ function SkasujGrupeWykonan({ grupaOprawa }) {
       />
     </div>
   );
+}
 
 }
 

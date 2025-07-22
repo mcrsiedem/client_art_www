@@ -134,6 +134,9 @@ const [wolno,wolno_procesor] = useAccess(false);
   }
 
   function handleDrop() {
+ if (sessionStorage.getItem("id_proces_wykonanie_drag") == rowGrupa.proces_id) {
+
+ 
     if (sessionStorage.getItem("typ_drag") == "wykonanie") {
       if(daneTech.id!=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
@@ -150,6 +153,9 @@ const [wolno,wolno_procesor] = useAccess(false);
 
 
     }
+
+    
+  }
   }
 }
 
@@ -207,6 +213,7 @@ function SkasujGrupeWykonan({ rowGrupa }) {
 const [add,dodajDoZamowienia] = useHistoria()
 
   // const global_id_grupa = row.global_id
+   if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
   return (
     <div style={{ paddingTop: "13px" }}>
       <img
@@ -242,7 +249,7 @@ const [add,dodajDoZamowienia] = useHistoria()
       />
     </div>
   );
-
+   }
 }
 
 

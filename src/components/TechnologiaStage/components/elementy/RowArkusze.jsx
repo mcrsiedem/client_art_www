@@ -16,6 +16,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import { useProcesy } from "hooks/useProcesy";
 import DodajArkusz from "./components/arkusze/DodajArkusz";
 import KopiujLega from "./components/legi/KopiujLega";
+import UsunLege from "./components/legi/UsunLege";
 
 export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
@@ -76,6 +77,7 @@ export default function RowArkusze  ({ row,i })  {
               
 
               <KopiujLega row={l} />
+              <UsunLege row={l} />
                         <td></td>
 
               <UwagiLegi row={l} />

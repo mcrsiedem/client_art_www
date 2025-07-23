@@ -55,28 +55,12 @@ export default function Login( ) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log("log: -" +IP + "users/" + input.login + "/" + input.haslo)
-
-    // axios.get(IP + "users/" + input.login + "/" + input.haslo).then((res) => {
-
-    //   console.log("odpowiedz", res)
-    //   console.log("data", res.data)
-    //   console.log("status", res.status)
-
-    //   if (res.data.length > 0) {
-    //     sessionStorage.setItem("id", DecodeToken(res.data).id); 
-    //     sessionStorage.setItem("token", res.data); 
-    //     setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
-    //     navigate("/Panel");
-    //   } else {
-    //     console.log("Błąd");
-    //   }
 
 
-    // }
-    // )
+  //sql injections
+ // ' or '1' = '1
+
     const res = await axios.get(IP + "users/" + input.login + "/" + input.haslo)
-// console.log("login: ",res)
 
 if (res.data.length > 0) {
   sessionStorage.setItem("id", DecodeToken(res.data).id); 

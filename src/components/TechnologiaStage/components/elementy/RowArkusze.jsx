@@ -75,8 +75,10 @@ export default function RowArkusze  ({ row,i })  {
               <RodzajLegi row={l} />
               
 
-              <UwagiLegi row={l} />
               <KopiujLega row={l} />
+                        <td></td>
+
+              <UwagiLegi row={l} />
 
             </div>
 

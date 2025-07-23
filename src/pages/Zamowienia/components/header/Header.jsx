@@ -12,6 +12,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { _etapy_produkcji } from "utils/initialvalue";
 import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { zabezpiecz } from "actions/zabezpiecz";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -70,8 +71,8 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
           src={iconAdd2}
           onClick={() => {
             // sprawdza co jest wydrukowame albo sfalcowane
-            zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
-
+           // zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
+zabezpiecz()
           }}
           alt="React Logo"
         /> : <></>}

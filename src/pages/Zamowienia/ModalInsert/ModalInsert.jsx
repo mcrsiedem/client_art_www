@@ -99,8 +99,8 @@ const setFaktury= contextModalInsert.setFaktury;
 
     // if (open.current) {
     if (selectedZamowienie.id !=1) {
-      setShowParametryZamowienia(true);
-      setShowTemplate(false);
+      // setShowParametryZamowienia(true);
+      // setShowTemplate(false);
       // open.current = false;
       fechparametry(selectedZamowienie.id,setSaveButtonDisabled);
       setSaveButtonDisabled(true)

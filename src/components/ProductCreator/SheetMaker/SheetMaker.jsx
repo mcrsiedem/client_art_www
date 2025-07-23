@@ -46,15 +46,18 @@ const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
 
   const poc = useContext(PreOrderContext)
   const mic = useContext(ModalInsertContext)
+const setShowTabs = mic.setShowTabs
+
   return (
     <div className={style.bindingContainer}>
     <button
       onClick={() => {
-        setShowTemplate(false);
-        setShowParametryZamowienia(true);
+        // setShowTemplate(false);
+        // setShowParametryZamowienia(true);
         AddSheetFromCreator(mic,poc) // przekazane contexty do funkcjis
         // AddProductFromCreator(naklad,binding,elements);
         console.log("preorder", poc.preOrder)
+        setShowTabs( {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
       }}
       className={style.btn}
     >

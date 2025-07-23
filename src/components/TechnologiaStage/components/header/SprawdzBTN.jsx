@@ -20,21 +20,21 @@ export default function SprawdzBTN () {
 
             if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
-      const promiseA = new Promise((resolve, reject) => {
+    //   const promiseA = new Promise((resolve, reject) => {
 
-        if(procesyElementowTech.length == grupaWykonan.length){
-        resolve(777);
-        } else{
-          reject("Dodaj procesy")
-        }
+    //     if(procesyElementowTech.length == grupaWykonan.length){
+    //     resolve(777);
+    //     } else{
+    //       reject("Dodaj procesy")
+    //     }
 
           
-        })
-        promiseA.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
-      alert(rej)
-      console.log(rej);
-    });
-
+    //     })
+    //     promiseA.then(res => setSaveButtonDisabled(false)  ).catch(function(rej) {
+    //   alert(rej)
+    //   console.log(rej);
+    // });
+setSaveButtonDisabled(false)
 
             }
 

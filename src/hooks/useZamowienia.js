@@ -36,7 +36,7 @@ scrollTable(tableZamowienia)
   };
 
   const odblokujZamowienie = (rowsToDelete) =>{
-    axios.delete(IP + "odblokuj_zamowienie", { data: { row: rowsToDelete } })
+    axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
       .then((res) => {
         refreshZamowienia();
       });

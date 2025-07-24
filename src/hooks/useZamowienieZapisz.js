@@ -128,7 +128,7 @@ const saveDane = ({daneZamowienia}) =>{
       data_materialow: daneZamowienia.data_materialow,
       data_spedycji: daneZamowienia.data_spedycji,
       opiekun_id: daneZamowienia.opiekun_id,
-      user: DecodeToken(sessionStorage.getItem("token")).id,
+      user: 0,
       stan: daneZamowienia.stan,
       status: daneZamowienia.status,
       etap: daneZamowienia.etap,  // pliki akcept druk etc

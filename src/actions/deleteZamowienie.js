@@ -9,7 +9,7 @@ export function deleteZamowienie(zamowienia,setZamowienia,setZamowieniaWyszukiwa
 
 
   axios
-  .delete(IP + "delete_zamowienie", { data: { row: rowsToDelete } })
+  .delete(IP + "delete_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
     .then((res) => {
 
 

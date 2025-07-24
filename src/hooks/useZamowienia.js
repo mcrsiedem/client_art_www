@@ -44,7 +44,7 @@ scrollTable(tableZamowienia)
 
 
   const deleteZamowienie = (rowsToDelete) => {
-    axios.delete(IP + "delete_zamowienie", { data: { row: rowsToDelete } })
+    axios.delete(IP + "delete_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
       .then((res) => {
       refreshZamowienia()
       });

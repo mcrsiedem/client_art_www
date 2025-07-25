@@ -43,7 +43,7 @@ const [refreshZamowienia] = useZamowienia()
           let saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia})
 
           let zamowienie_id = saved.data[0][1].zamowienie_id; 
-
+ 
           response.push(saved.data)
           console.log(response)
           if(isSavedCorrect(response).status) {

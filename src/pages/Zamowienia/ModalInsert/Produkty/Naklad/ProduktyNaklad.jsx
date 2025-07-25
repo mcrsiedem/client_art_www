@@ -3,9 +3,7 @@ import style from "./ProduktyNaklad.module.css";
 
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
-import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 import { useStatus } from "hooks/useStatus";
-import iconCopy from "assets/edit.svg";
 import { _typ_elementu, reg_int } from "utils/initialvalue";
 import { useHistoria } from "hooks/useHistoria";
 export default function ProduktyNaklad({ row }) {

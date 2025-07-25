@@ -12,7 +12,6 @@ import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOpr
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
-import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
 import DialogZapis from "components/Dialog/DialogZapis";
 import DecodeToken from "pages/Login/DecodeToken";
 import SaveAs from "../SaveAs/SaveAs";
@@ -134,7 +133,6 @@ function ZapiszBTN({ setSaveAs,dialogBox }) {
 
   const contextApp = useContext(AppContext);
   const [saveZamowienieUpdate] = useZamowienieUpdate();
-  // const [zapiszZamowienie] = useZamowienieZapisz();
   const [zapiszZamowienie] = useZamowienieInsert();
   return (
     <button

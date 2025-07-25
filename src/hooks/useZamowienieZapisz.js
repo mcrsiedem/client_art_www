@@ -55,6 +55,7 @@ const [refreshZamowienia] = useZamowienia()
 
           // let savedDane  = await saveDane({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow})
           let savedDane  = await saveDane({daneZamowienia})
+           console.log(savedDane.data)
 
           let zapis = savedDane.data[0][0].zapis; // jeśli dane zapisały sie to zapis == true
           let zamowienie_id = savedDane.data[0][1].zamowienie_id;  // nr id pod jakim zapisała sietechnologia

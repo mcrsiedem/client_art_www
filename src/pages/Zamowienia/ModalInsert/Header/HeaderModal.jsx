@@ -17,6 +17,7 @@ import { useZamowienieZapiszDuzo } from "hooks/useZamowienieZapiszDuzo";
 import DialogZapis from "components/Dialog/DialogZapis";
 import DecodeToken from "pages/Login/DecodeToken";
 import SaveAs from "../SaveAs/SaveAs";
+import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -134,7 +135,8 @@ function ZapiszBTN({ setSaveAs,dialogBox }) {
 
   const contextApp = useContext(AppContext);
   const [saveZamowienieUpdate] = useZamowienieUpdate();
-  const [zapiszZamowienie] = useZamowienieZapisz();
+  // const [zapiszZamowienie] = useZamowienieZapisz();
+  const [zapiszZamowienie] = useZamowienieInsert();
   return (
     <button
       onClick={async () => {

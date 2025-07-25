@@ -3,10 +3,13 @@ import style from "../SaveAs/SaveAs.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
+import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 
 export default function SaveAs({showSaveAs,setShowSaveAs,setSaveAs,dialogBox}) {
 
-    const [zapiszZamowienie] = useZamowienieZapisz();
+    // const [zapiszZamowienie] = useZamowienieZapisz();
+      const [zapiszZamowienie] = useZamowienieInsert();
+    
     if(showSaveAs){
         return (
     <div className={style.insertContainer}>

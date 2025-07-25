@@ -13,7 +13,6 @@ import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienia } from "hooks/useZamowienia";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
 import { useZamowienieZapisz } from "hooks/useZamowienieZapisz";
-import { useZamowienieZapiszDuzo } from "hooks/useZamowienieZapiszDuzo";
 import DialogZapis from "components/Dialog/DialogZapis";
 import DecodeToken from "pages/Login/DecodeToken";
 import SaveAs from "../SaveAs/SaveAs";
@@ -163,33 +162,6 @@ function ZapiszBTN({ setSaveAs,dialogBox }) {
 
 
 
-function ZapiszDuzo({ setSaveAs }) {
-  // Uwaga zapisuje 50 szt zamówień w ramach testów obciążenia
-  const contextModalInsert = useContext(ModalInsertContext);
-  const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
-  const produkty = contextModalInsert.produkty;
-  const [zapiszZamowienieDuzo] = useZamowienieZapiszDuzo();
-  if(DecodeToken(sessionStorage.getItem("token")).id==1){
-  return (
-    <button
-      onClick={async () => {
-        if (produkty[0].naklad != 0) {
-          setSaveAs(false);
-          for(let i=0; i<50; i++){
-            zapiszZamowienieDuzo();
-          }
-          
-        }
-      }}
-      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
-      disabled={isSaveButtonDisabled}
-    >
-      Zapisz dużo
-    </button>
-  );
-  }
-
-}
 
 
 

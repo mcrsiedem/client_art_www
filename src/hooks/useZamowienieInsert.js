@@ -38,19 +38,20 @@ const [refreshZamowienia] = useZamowienia()
 
   setSaveButtonDisabled(true)
   dialogBox.current.show();
-          let response = [];
+          const response = [];
 
-          let saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia})
+          const saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia})
 
-          let zamowienie_id = saved.data[0][1].zamowienie_id; 
- 
+       const   zamowienie_id = saved.data[0][1].zamowienie_id; 
+
           response.push(saved.data)
           console.log(response)
+
           if(isSavedCorrect(response).status) {
 
             dialogBox.current.showOK();
         
-          let res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
+          const res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
         
 
           setDaneZamowienia(res.data[0][0])
@@ -63,6 +64,8 @@ const [refreshZamowienia] = useZamowienia()
           setKosztyDodatkoweZamowienia(res.data[9])
           setKsiegowosc(res.data[10][0])
           setFaktury(res.data[11])
+           }else{
+            alert("Błąd")
            }
            
            refreshZamowienia();

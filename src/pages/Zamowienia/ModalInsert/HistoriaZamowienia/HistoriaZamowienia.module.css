@@ -93,3 +93,11 @@
     border-bottom: 1px solid #dbdad6;
   }
   
+
+  .th_data{
+    min-width: 150px;
+  }
+
+    .th_kategoria{
+    min-width: 200px;
+  }

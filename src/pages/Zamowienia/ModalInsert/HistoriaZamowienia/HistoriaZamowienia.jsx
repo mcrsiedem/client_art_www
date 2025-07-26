@@ -29,10 +29,10 @@ function HISTORIA_TABLE() {
       <table className={style.table_historia}>
         <thead className={style.glowka}>
           <tr>
-            <th className={style.col4}>Data</th>
-            <th className={style.col4}>Kategoria</th>
+            <th className={style.th_data}>Data</th>
+            <th className={style.th_kategoria}>Kategoria</th>
             <th className={style.col4}>Zdarzenie</th>
-            <th className={style.col4}>Użytkownik</th>
+            <th className={style.th_kategoria}>Użytkownik</th>
           </tr>
         </thead>
         <tbody className={style.table_historia_body}>

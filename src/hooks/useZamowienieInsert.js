@@ -40,9 +40,14 @@ const [refreshZamowienia] = useZamowienia()
   dialogBox.current.show();
           const response = [];
 
+          // tutaj testujemy błąd
+  //  daneZamowienia = {...daneZamowienia, data_spedycji:1}
+
           const saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia})
 
-       const   zamowienie_id = saved.data[0][1].zamowienie_id; 
+          if(saved.data !="error"){
+
+     const   zamowienie_id = saved.data[0][1].zamowienie_id; 
 
           response.push(saved.data)
           console.log(response)
@@ -70,6 +75,11 @@ const [refreshZamowienia] = useZamowienia()
            
            refreshZamowienia();
            dialogBox.current.hide();
+          }else{
+            alert("Bład zapisu zamówienia...")
+             dialogBox.current.hide();
+          }
+  
 }
 
 //----------------------------------------------------------------------------------

@@ -74,7 +74,7 @@ export   function usePliki() {
 
 //----------------------------------------------------------------
 
-      const etapPlikowGrupyWykonan = async (etap,grupaWykonan) =>{
+      const etapPlikowGrupyWykonan = async (etap,grupaWykonan,stary_etap) =>{
 
         const zamowienie_id = grupaWykonan.zamowienie_id
         const element_id= grupaWykonan.element_id
@@ -83,15 +83,15 @@ export   function usePliki() {
 
 
 
-        console.log("plikiRow: "+grupaWykonan.global_id)
+        // console.log("plikiRow: "+grupaWykonan.global_id)
         // zmiana etapu plików
-        const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap});
-        //pobranie plikow po korecie etapu
-        const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
-        //sprawdzenie najmniejszego etapu
-        let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
+        const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
+        // //pobranie plikow po korecie etapu
+        // const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
+        // //sprawdzenie najmniejszego etapu
+        // let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
         // ustawienie etapu calego zamowienia na najmniejszy etap plikow
-        const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {zamowienie_id,etap: new_etap});
+        // const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {zamowienie_id,etap: new_etap});
 
         await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
           setWykonaniaAll(res.data[0])

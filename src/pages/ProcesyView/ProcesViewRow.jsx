@@ -585,14 +585,8 @@ function Etap({grup}) {
         className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-            etapPlikowGrupyWykonan(event.target.value,grup)
-          dodajDoZamowienia(         {
-            kategoria: "Pliki",
-            event: _typ_elementu.filter(x=> x.id == grup.element_id)[0]?.nazwa+ " "+grup.nazwa+" - zmiana z "+getNameOfEtapPliki(grup.zamowienia_pliki_etap)+ " na "+getNameOfEtapPliki(event.target.value),
-            zamowienie_id: grup.zamowienie_id,
-            user_id: DecodeToken(sessionStorage.getItem("token")).id
+            etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
-          })
 
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);

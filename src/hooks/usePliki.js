@@ -18,16 +18,9 @@ export   function usePliki() {
       const modalcontext = useContext(ModalInsertContext);
       const techContext = useContext(TechnologyContext);
 
-      const setListaPapierowWyszukiwarka =appcontext.setListaPapierowWyszukiwarka;
-      const zamowieniaPliki = appcontext.zamowieniaPliki;
-      const setZamowieniaPliki = appcontext.setZamowieniaPliki;
-      const grupaWykonan = techContext.grupaWykonan;
       const zamowienia = appcontext.zamowienia;
       const setZamowienia = appcontext.setZamowienia;
-      const [refreshZamowienia, odblokujZamowienie, deleteZamowienie] =useZamowienia();
-      const [sumujGrupe, statusGrupy] = useGrupyWykonan();
       const selectedProcesor = techContext.selectedProcesor;
-      const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
       const setWykonaniaAll = techContext.setWykonaniaAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
   const dniWstecz = techContext.dniWstecz;
@@ -38,28 +31,15 @@ export   function usePliki() {
         const element_id= plikiRow.element_id
         const global_id_pliki_row= plikiRow.global_id
 
-        //  const min = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
-
 
         const min = await axios.put(IP + "updatePlikiEtapZamowienia/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row,stary_etap});
         const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
-          
-    //     let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
-
-    // const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
-    //   zamowienie_id,
-    //   etap: new_etap
-    //     });
-
-
-
-        // to potrzebne, aby po zmianie etapu plikow nie zamykalo sie okienko, ale to na liście zamowienien tylko
 
         appcontext.setZamowieniaPliki([...res_new_pliki.data]);
         setZamowienia(zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
-              etap: min
+              etap: min.data
             }
           } else {
             return t;
@@ -68,7 +48,7 @@ export   function usePliki() {
         appcontext.setZamowieniaWyszukiwarka(appcontext.zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
-              etap: min
+              etap: min.data
             }
           } else {
             return t;

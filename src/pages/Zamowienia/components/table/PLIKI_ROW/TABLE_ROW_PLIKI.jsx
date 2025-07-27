@@ -92,13 +92,13 @@ if(row.etap !=1){
          
 // disabled
           onChange={(e) => {  
-            etapPlikowZamowienia(e.target.value,plikiRow)
-            dodajDoZamowienia(         {
-              kategoria: "Pliki",
-              event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
-              zamowienie_id: plikiRow.zamowienie_id,
-              user_id: DecodeToken(sessionStorage.getItem("token")).id
-            })
+            etapPlikowZamowienia(e.target.value,plikiRow,plikiRow.etap)
+            // dodajDoZamowienia(         {
+            //   kategoria: "Pliki",
+            //   event: _typ_elementu.filter(x=> x.id == plikiRow.typ)[0]?.nazwa+ " "+plikiRow.nazwa+" - zmiana z "+getNameOfEtapPliki(plikiRow.etap)+ " na "+getNameOfEtapPliki(e.target.value),
+            //   zamowienie_id: plikiRow.zamowienie_id,
+            //   user_id: DecodeToken(sessionStorage.getItem("token")).id
+            // })
 
           }}
         >

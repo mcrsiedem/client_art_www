@@ -33,20 +33,24 @@ export   function usePliki() {
   const dniWstecz = techContext.dniWstecz;
 
 
-      const etapPlikowZamowienia = async (etap,plikiRow) =>{
+      const etapPlikowZamowienia = async (etap,plikiRow,stary_etap) =>{
         const zamowienie_id = plikiRow.zamowienie_id
         const element_id= plikiRow.element_id
         const global_id_pliki_row= plikiRow.global_id
 
-        const res1 = await axios.put(IP + "updatePlikiEtapZamowienia/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row});
+        //  const min = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
+
+
+        const min = await axios.put(IP + "updatePlikiEtapZamowienia/" + sessionStorage.getItem("token"), {zamowienie_id,element_id, etap,global_id_pliki_row,stary_etap});
         const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
           
-        let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
+    //     let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
 
-    const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
-      zamowienie_id,
-      etap: new_etap
-        });
+    // const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {
+    //   zamowienie_id,
+    //   etap: new_etap
+    //     });
+
 
 
         // to potrzebne, aby po zmianie etapu plikow nie zamykalo sie okienko, ale to na liście zamowienien tylko
@@ -55,7 +59,7 @@ export   function usePliki() {
         setZamowienia(zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
-              etap: new_etap
+              etap: min
             }
           } else {
             return t;
@@ -64,7 +68,7 @@ export   function usePliki() {
         appcontext.setZamowieniaWyszukiwarka(appcontext.zamowienia.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
-              etap: new_etap
+              etap: min
             }
           } else {
             return t;
@@ -82,16 +86,8 @@ export   function usePliki() {
 
 
 
-
-        // console.log("plikiRow: "+grupaWykonan.global_id)
-        // zmiana etapu plików
         const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
-        // //pobranie plikow po korecie etapu
-        // const res_new_pliki = await axios.get(   IP + "zamowieniapliki/" + sessionStorage.getItem("token"));
-        // //sprawdzenie najmniejszego etapu
-        // let new_etap = Math.min(...res_new_pliki.data.filter(x=> x.zamowienie_id == zamowienie_id ).map((f) => f.etap)) 
-        // ustawienie etapu calego zamowienia na najmniejszy etap plikow
-        // const res3 = await axios.put(IP + "updateZamowienieEtap/" + sessionStorage.getItem("token"), {zamowienie_id,etap: new_etap});
+
 
         await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
           setWykonaniaAll(res.data[0])

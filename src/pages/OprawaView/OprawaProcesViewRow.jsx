@@ -261,8 +261,8 @@ function Status({grup}) {
 
         value={grup.status}
         onChange={(event) => {
-   
-          statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value})
+   console.log("grupa"+grup)
+          statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value,stary_status: grup.status})
           // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >

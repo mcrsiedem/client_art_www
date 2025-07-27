@@ -57,7 +57,10 @@ function sumujGrupe(new_wykonania) {
               element_id: grupa.element_id,
               grupa_id: grupa.id,
               status: grupa.status,
-              global_id: grupa.global_id
+              global_id: grupa.global_id,
+              zamowienie_id: grupa.zamowienie_id,
+              grupa_nazwa: grupa.nazwa,
+              stary_status: grupa.stary_status,
                 });
   // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
       await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
@@ -116,6 +119,9 @@ function sumujGrupe(new_wykonania) {
             grupa_id: grupa.id,
             status: grupa.status,
             global_id: grupa.global_id,
+              zamowienie_id: grupa.zamowienie_id,
+              grupa_nazwa: grupa.nazwa,
+              stary_status: grupa.stary_status,
           }
         );
 
@@ -136,16 +142,14 @@ function sumujGrupe(new_wykonania) {
             grupa_id: grupa.id,
             status: grupa.status,
             global_id: grupa.global_id,
+                       zamowienie_id: grupa.zamowienie_id,
+              grupa_nazwa: grupa.nazwa,
+              stary_status: grupa.stary_status,
           }
         );
 
         fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
-dodajDoZamowienia(   {
-  kategoria: "OPRAWA",
-  event: "GRUPA ID "+ grupa.id+ " zmiana statusu na  "+ nazwaStatusuWykonania( grupa.status) ,
-  zamowienie_id: grupa.zamowienie_id,
-  user_id: DecodeToken(sessionStorage.getItem("token")).id,
-})
+
 
       }
 
@@ -162,17 +166,15 @@ dodajDoZamowienia(   {
             grupa_id: grupa.id,
             status: grupa.status,
             global_id: grupa.global_id,
+              zamowienie_id: grupa.zamowienie_id,
+              grupa_nazwa: grupa.nazwa,
+              stary_status: grupa.stary_status,
           }
         );
 // fechGrupyOprawaForProcesor(selectedProcesor)
 fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
 
-dodajDoZamowienia(   {
-  kategoria: "OPRAWA",
-  event: "GRUPA ID "+ grupa.id+ " zmiana statusu na  "+ nazwaStatusuWykonania( grupa.status) ,
-  zamowienie_id: grupa.zamowienie_id,
-  user_id: DecodeToken(sessionStorage.getItem("token")).id,
-})
+
         // fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
       }
 

@@ -265,9 +265,9 @@ function StatusGrupy({ grupaOprawa }) {
         value={grupaOprawa.status}
                 onChange={(event) => {
   
-
+console.log("grupa:", grupaOprawa)
           if(daneTech.id != 1){
-            statusGrupyTechnologia_OPRAWA({...grupaOprawa, status: event.target.value})
+            statusGrupyTechnologia_OPRAWA({...grupaOprawa, status: event.target.value,stary_status: grupaOprawa.status})
           }
         }}
 

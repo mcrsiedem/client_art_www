@@ -147,7 +147,7 @@ const [wolno,wolno_procesor] = useAccess(false);
             // updateWykonanie({ ...rowWykonanie, status: event.target.value });
             }else{
               if(wolno_procesor(rowProces.nazwa_id)){
-                 statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value })
+                 statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value,stary_status: rowWykonanie.status })
               }
              
               // updateWykonania(rowWykonanie.global_id,1,event.target.value,fechparametryTechnologii)

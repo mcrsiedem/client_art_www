@@ -334,13 +334,8 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
           if(grup.typ_grupy!=1){
-            statusGrupyProcesView({...grup, status: event.target.value})
-dodajDoZamowienia(   {
-  kategoria: grup.nazwa,
-  event: "GRUPA ID "+ grup.id+ " zmiana z  "+ grup.status + " na "+event.target.value,
-  zamowienie_id: grup.zamowienie_id,
-  user_id: DecodeToken(sessionStorage.getItem("token")).id,
-})
+            statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
+
 
           }
                 if(grup.typ_grupy==1){

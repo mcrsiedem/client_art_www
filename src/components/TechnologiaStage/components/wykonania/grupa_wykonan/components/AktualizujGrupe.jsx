@@ -24,6 +24,15 @@ export default  function AktualizujGrupe({ rowGrupa }) {
         onClick={() => {
 
           console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2])
+          
+          // axios
+          // wysłać do aktualizacji
+          // roznicaCzasu
+          // rowGrupa
+          // wykonania.filter(x=> x.grupa_id == rowGrupa.id)
+          
+          // then
+
           // fechparametryTechnologii(rowGrupa.zamowienie_id,rowGrupa.technologia_id)
 
 

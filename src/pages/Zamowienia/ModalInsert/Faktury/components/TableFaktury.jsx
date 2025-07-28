@@ -30,6 +30,7 @@ export default function TableFaktury() {
             <thead>
               <tr>
                 <th className={style.td_indeks}>#</th>
+                <th className={style.td_utworzono}>Utworzono</th>
                 <th className={style.col3}>Nr faktury</th>
                 <th className={style.col10}>Ilość</th>
                 <th className={style.col10}>Cena</th>
@@ -54,6 +55,7 @@ export default function TableFaktury() {
                     key={faktura.id}
                   >
                     <Indeks faktura={faktura} i={i+1}/>
+                    <DataUtworzenia faktura={faktura}/>
                     <FAKTURA_NAZWA2 faktura={faktura}/>
                     <FAKTURA_ILOSC faktura={faktura} />
                     <FAKTURA_CENA faktura={faktura} />
@@ -90,6 +92,11 @@ export default function TableFaktury() {
   function Indeks({ faktura,i }) {
     return (
       <td className={style.td_indeks }>{i}</td>
+    );
+  }
+    function DataUtworzenia({ faktura,i }) {
+    return (
+      <td className={style.td_indeks }>{faktura.utworzono}</td>
     );
   }
   function Nazwa({ faktura }) {

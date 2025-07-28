@@ -128,9 +128,7 @@ const ProcesRow = ({ rowProces }) => {
         <p  className={style.nazwy_procesow2}> {getNameOfElement(rowProces.element_id,elementyTech,_typ_elementu)}</p>
         <p  className={style.nazwy_procesow4}>  { rowProces.status_nazwa}</p>
         </div>
-        {/* <p className={style.nazwy_procesow}>Prędkość: {rowProces.predkosc} </p> */}
-        {/* <p className={style.nazwy_procesow}>Narząd: {rowProces.narzad}  </p> */}
-        {/* guzik widać tylko wtedy jak nie ma żadnej grupy wykonan */}
+
         { (grupaWykonan?.filter(p => p.proces_id == rowProces.id ).length ==0 &&      <ProcesBtn rowProces={rowProces}/>  )}
       </div>
       {show &&

@@ -28,7 +28,7 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
       <NarzadWykonania rowWykonanie={rowWykonanie}/>
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
       {/* <MnoznikWykoniania rowWykonanie={rowWykonanie}/> */}
-      <StanWykonania rowWykonanie={rowWykonanie}/>
+      {/* <StanWykonania rowWykonanie={rowWykonanie}/> */}
       <StatusWykonania rowWykonanie={rowWykonanie} rowProces={rowProces}/>
       <DodajWykonanie rowWykonanie={rowWykonanie}/>
     </div>
@@ -74,14 +74,20 @@ function DodajWykonanie({ rowWykonanie }) {
         src={icon}
         onClick={() => {
 
-          if(daneTech.id == 1){
+          // if(daneTech.id == 1){
+          // let newWykonania = [...wykonania]
+          // newWykonania.push({...rowWykonanie,id: getMaxID(wykonania),index:getMaxIndeks(wykonania),naklad:0,przeloty:0,czas:0,insert:true })
+          // setWykonania(newWykonania)
+          // }
+          // if(daneTech.id != 1){
+
+          //   }
+
+
           let newWykonania = [...wykonania]
           newWykonania.push({...rowWykonanie,id: getMaxID(wykonania),index:getMaxIndeks(wykonania),naklad:0,przeloty:0,czas:0,insert:true })
           setWykonania(newWykonania)
-          }
-          if(daneTech.id != 1){
-
-            }
+            
 
         }}
         alt="Procesy"
@@ -90,39 +96,7 @@ function DodajWykonanie({ rowWykonanie }) {
   );
 }
 
-function StanWykonania({ rowWykonanie }) {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const _stan_wykonania = contextApp._stan_wykonania
-  const updateWykonanie = techContext.updateWykonanie
-  const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  return (
-    <div className={style.col_dane}>
-      {/* <label className={style.label}> Status </label> */}
-      <select 
-        className={style.select}
-        value={rowWykonanie.stan}
-        onChange={(event) => {
 
-          if(rowWykonanie.technologia_id==1){
-          updateWykonanie({ ...rowWykonanie, stan: event.target.value });
-          }else{
- // 1 - status
-            // 2 - stan
-            updateWykonania(rowWykonanie.global_id,2,event.target.value,fechparametryTechnologii)
-          }
-         
-        }}
-      >
-        {_stan_wykonania.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
 
 function StatusWykonania({ rowWykonanie,rowProces }) {
   const techContext = useContext(TechnologyContext);
@@ -386,14 +360,14 @@ const PrzelotyWykonania = ({ rowWykonanie }) => {
         onChange={(e) => {
 
 
-          // if (e.target.value == "" || reg_int.test(e.target.value)) {
-          //   if(e.target.value == "" ) e.target.value =0
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            if(e.target.value == "" ) e.target.value =0
 
-          //   updateWykonanie({
-          //     ...rowWykonanie,
-          //     przeloty: e.target.value,
-          //   });
-          // }
+            updateWykonanie({
+              ...rowWykonanie,
+              przeloty: e.target.value,
+            });
+          }
         }}
       ></input>
     </div>

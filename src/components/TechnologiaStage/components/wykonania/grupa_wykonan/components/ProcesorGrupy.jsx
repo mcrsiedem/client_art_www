@@ -12,7 +12,7 @@ import { useAccess } from "hooks/useAccess";
 import { dragDropProcesGrupaToProcesorFromTech } from "actions/dragDropProcesGrupaToProcesorFromTech";
 
 
-export default  function Procesor({ rowGrupa,rowProces, handleChangeCardOprawa }) {
+export default  function ProcesorGrupy({ rowGrupa,rowProces, handleChangeCardOprawa }) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory

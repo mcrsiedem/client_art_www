@@ -41,7 +41,7 @@ export default  function GRUPA_WYKONAN_OPRAWA ({ grupaOprawa }) {
                  <PredkoscGrupy rowGrupa={grupaOprawa} />
                  <IloscZbieran grupaOprawa={grupaOprawa} />
                  <MnoznikPredkosci grupaOprawa={grupaOprawa}/>
-                 <Stangrupy grupaOprawa={grupaOprawa}/>
+                 {/* <Stangrupy grupaOprawa={grupaOprawa}/> */}
                  <StatusGrupy grupaOprawa={grupaOprawa} />
                  {/* <DodajGrupeWykonan grupaOprawa={grupaOprawa}/> */}
                  <SkasujGrupeWykonan grupaOprawa={grupaOprawa}/>

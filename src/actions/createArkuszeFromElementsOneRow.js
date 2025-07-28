@@ -320,52 +320,6 @@ const legiFragmentyEdit = legiFragmenty.slice();
     }
 
 
-    //  tworzy fragmety leg w jedej tablicy
-    // fragmentyTech.forEach((frag, i) => {
-    //   new_legi
-    //     .filter((f) => frag.element_id == f.element_id)
-    //     .filter((f) => row.typ == frag.typ)
-    //     .map((l, indeks) => {
-    //       new_legiFragmenty.push({
-    //         id: generateMaxID(new_legiFragmenty),
-    //         indeks: generateMaxIndeks(new_legiFragmenty),
-    //         ...legaFragment,
-    //         lega_id: l.id,
-    //         naklad: frag.naklad,
-    //         fragment_id: frag.id,
-    //         oprawa_id: frag.oprawa_id,
-    //         typ: frag.typ,
-    //       });
-    //     });
-    // });
-
-
-
-
-  
-
-
-    // new_legiFragmenty
-    // .sort((a,c)=>a.id-c.id)
-    // .sort((a,c)=>a.oprawa_id-c.oprawa_id)
-    // .map((x)=>{return {...x, indeks:1}})
-
-    // console.log("new_legiFragmenty :", new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id));
-    // console.log("new_legiFragmenty :", new_legiFragmenty);
-
-    // dla każdego fragmentu oprawy nalżey wygnerowac fragment legi
-// new_arkusze.push(arkusze)
-// new_legi.push(legi)
-// arkuszeEdit
-// const myArray = myArray.filter( function( el ) {
-//   return !toRemove.includes( el );
-// } );
-
-// const arktemp = arkuszeEdit.filter(x => new_arkusze.includes(x) )
-
-// setArkusze(
-//   arktemp
-//   .concat(new_arkusze));
 
 
     setArkusze(arkuszeEdit
@@ -375,32 +329,10 @@ const legiFragmentyEdit = legiFragmenty.slice();
     setLegi(legiEdit
       .filter(x => x.element_id !== rowElement.id)
       .concat(new_legi));
-    // setLegi(new_legi);
 
-
-    // setLegiFragmenty(new_legiFragmenty);
-
-    // const poj = null
-
-    // new_legiFragmenty.forEach(x=> {
-    //   if (poj.some(z=> z.oprawa_id != x.oprawa_id)){
-    //       poj.push(x)
-    //   }
-    // })
-    // setLegiFragmenty(poj.forEach(p=> {
-
-    // }))
-    // const legi_oprawa  = new_legiFragmenty.map
-    // setLegiFragmenty(new_legiFragmenty.sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i+1}}));
-
-
-    // generateLegi(new_arkusze)
   });
 
-  // const legaFragment = {
-  //   wersja: "fr",
-  //   element_id: row.id,
-  // };
+
   new_legi
   .map((l, indeks) => {
     new_legiFragmenty.push({
@@ -425,85 +357,6 @@ const legiFragmentyEdit = legiFragmenty.slice();
       .concat(new_legiFragmenty)
       .sort((a,c)=>a.id-c.id).sort((a,c)=>a.oprawa_id-c.oprawa_id).map((x,i)=>{return {...x, indeks: i}}));
 
-//   procesy.map((proc,i)=> {
-//     if(proc.nazwa_id==1){  // druk
-
-//       new_grupy.push({
-//         id: i + 1,
-//         indeks: i + 1,
-//         nazwa: proc.nazwa,
-//         poczatek: 1,
-//         czas: 1,
-//         koniec: 1,
-//         procesor_id:1,
-//         narzad: proc.narzad,
-//         predkosc: proc.predkosc
-//       });
-
-//       new_arkusze
-//       .filter(a => a.element_id == proc.element_id)
-//       .map(a=>{
-//         new_wykonania.push({
-//           id: i + 1,
-//           indeks: i + 1,
-//           nazwa: proc.nazwa,
-//           element_id: a.element_id,
-//           arkusz_id: a.id,
-//           proces_id: proc.id,
-//           typ_elementu: a.typ_elementu,
-//           poczatek: 1,
-//           czas: 1,
-//           koniec: 1,
-//           procesor_id:1,
-//           grupa_id:1,
-//           narzad: proc.narzad,
-//           predkosc: proc.predkosc
-//         });
-//       })
-
-//     }
-//     if(proc.nazwa_id==3){ // falcowanie
-//       new_grupy.push({
-//         id: i + 1,
-//         indeks: i + 1,
-//         nazwa: proc.nazwa,
-//         poczatek: 1,
-//         czas: 1,
-//         koniec: 1,
-//         procesor_id:1,
-//         narzad: proc.narzad,
-//         predkosc: proc.predkosc
-//       });
-
-//       new_legi
-//       .filter(a => a.element_id == proc.element_id)
-//       .map(a=>{
-//         new_wykonania.push({
-//           id: i + 1,
-//           indeks: i + 1,
-//           nazwa: proc.nazwa,
-//           element_id: a.element_id,
-//           arkusz_id: a.id,
-//           proces_id: proc.id,
-//           typ_elementu: a.typ_elementu,
-//           poczatek: 1,
-//           czas: 1,
-//           koniec: 1,
-//           procesor_id:1,
-//           grupa_id:1,
-//           narzad: proc.narzad,
-//           predkosc: proc.predkosc
-//         });
-//       })
-
-
-//     }
-    
-//   })
-//   setGrupaWykonan(new_grupy);
-//   setWykonania(new_wykonania)
-//   console.log("wykonania: ",new_wykonania)
-// }
 
 }
 

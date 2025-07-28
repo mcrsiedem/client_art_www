@@ -6,7 +6,7 @@ import HeaderTech from "components/TechnologiaStage/components/header/HeaderTech
 import DaneTech from "./components/dane/DaneTech";
 import ProduktyTech from "./components/produkty/ProduktyTech";
 import ElementyTech from "./components/elementy/ElementyTech";
-import WykonaniaTech from "./components/wykonania/WykonaniaStage";
+import WykonanieStage from "./components/wykonania/WykonaniaStage";
 import ProcesElementTech from "./components/elementy/ElementTechProces";
 import PaperStage from "components/PaperStage/PaperStage";
 import IntroligatorniaTech from "./components/introligatornia/IntroligatorniaTech";
@@ -25,7 +25,7 @@ export default function TechnologiaStage() {
           <ElementyTech />
           <IntroligatorniaTech />
           <div className={style.container_legi_arkusze}>
-            <WykonaniaTech />
+            <WykonanieStage />
           </div>
         </div>
         <ProcesElementTech />

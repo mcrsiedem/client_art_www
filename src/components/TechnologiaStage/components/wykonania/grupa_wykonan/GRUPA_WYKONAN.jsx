@@ -18,6 +18,7 @@ import StatusGrupy from "./components/StatusGrupy";
 
 export default  function GRUPA_WYKONAN ({ rowProces }) {
   const techContext = useContext(TechnologyContext);
+  const grupaWykonanInit = techContext.grupaWykonanInit;
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;
   const [show, setShow] = useState(true);

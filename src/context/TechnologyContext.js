@@ -66,7 +66,8 @@ export const TechnologyContextProvider = ({children})=>{
 
         // grupa - zbiór wykonań jednego procesu
         // wykonanie - wykonanie jednego procesu na arkuszu albo ledze
-        const [grupaWykonan, setGrupaWykonan] = useState([]);
+        const [grupaWykonanInit, setGrupaWykonanInit] = useState([]); // wartość początkowa
+        const [grupaWykonan, setGrupaWykonan] = useState([]);         // grupy po zmianie
         const [wykonania, setWykonania] = useState([]);
 
         // wszsystkie grupy i wykonania
@@ -575,6 +576,7 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
    setLegiFragmenty([])
    setArkusze([])
    setGrupaWykonan([])
+   setGrupaWykonanInit([])
    setWykonania([])
 
   setDaneTech(res.data[0][0]) 
@@ -586,7 +588,10 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   setLegi(res.data[6])
   setLegiFragmenty(res.data[7])
   setArkusze(res.data[8])
+
+  setGrupaWykonanInit(res.data[9])
   setGrupaWykonan(res.data[9])
+  
   setWykonania(res.data[10])
   setGrupaOprawaTech(res.data[11])
    setShowTechnologyStage(true)
@@ -847,7 +852,8 @@ async function fechTechnology() {
                     showProcesy,setShowProcesy,
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
-                    grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka
+                    grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
+                    grupaWykonanInit, setGrupaWykonanInit
                 }}
             >
                 {children}

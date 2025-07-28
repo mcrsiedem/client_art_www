@@ -584,10 +584,8 @@ function ShowTechnmologiaBtn({
   setShowKartaTechnologiczna,
 }) {
   const techContext = useContext(TechnologyContext);
-
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
- 
-    const setShowProcesy = techContext.setShowProcesy;
+  const setShowProcesy = techContext.setShowProcesy;
   if (row.open_stan==1 ) {
     return (
       <td className={style.td_karta}>

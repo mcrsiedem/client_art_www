@@ -14,6 +14,7 @@ import FAKTURA_CENA from "./faktura/FAKTURA_CENA";
 import FAKTURA_UWAGI from "./faktura/FAKTURA_UWAGI";
 import USUN_FAKTURE from "./USUN_FAKTURE";
 import FAKTURA_WZ from "./faktura/FAKTURA_WZ";
+import FAKTURA_SUMA from "./faktura/FAKTURA_SUMA";
 export default function TableFaktury() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -59,8 +60,9 @@ export default function TableFaktury() {
                     <FAKTURA_NAZWA2 faktura={faktura}/>
                     <FAKTURA_ILOSC faktura={faktura} />
                     <FAKTURA_CENA faktura={faktura} />
+                    <FAKTURA_SUMA faktura={faktura} />
 
-                    <Suma faktura={faktura} />
+                    {/* <Suma faktura={faktura} /> */}
                     <FAKTURA_WZ faktura={faktura} />
                     <FAKTURA_UWAGI faktura={faktura} />
                     <USUN_FAKTURE faktura={faktura} />

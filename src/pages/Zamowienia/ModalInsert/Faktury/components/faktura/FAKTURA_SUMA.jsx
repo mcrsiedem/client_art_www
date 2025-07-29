@@ -26,6 +26,7 @@ export default function FAKTURA_SUMA({faktura}) {
                 handleFaktury({
                   ...faktura,
                   suma: event.target.value,
+                  cena: (event.target.value.replace(/,/g, '.') / faktura.ilosc).toFixed(2),
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,
                 });

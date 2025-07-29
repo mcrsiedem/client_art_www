@@ -8,18 +8,24 @@
   /* padding-bottom: 20px; */
 }
 
-
+.col_dane_indeks{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+}
 .col_dane_arkusz {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 90px;
+  width:80px;
+  /* background-color: aqua; */
 }
 .col_dane_rodzaj_arkusza {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 90px;
+  width: 40px;
 }
 
 .select,
@@ -38,6 +44,24 @@
 text-align: center;
   
 }
+
+.input_indeks {
+  background-color: var(--art-input2);
+  height: 1.5rem;
+  /* border-radius: 5px; */
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  /* padding-left: 10px; */
+  text-align: center;
+  /* width: 10px; */
+  
+}
+
+
+
+
+
+
 
 
 /* 

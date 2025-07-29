@@ -18,17 +18,14 @@ export default function RowWykonanie  ({rowWykonanie,updateWykonaniaWszystkie,ro
     draggable
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
     <div  className={style.container}> 
+      <IndeksWykonania rowWykonanie={rowWykonanie}/>
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
       <RodzajArkuszaWykonania rowWykonanie={rowWykonanie}/>
-      {/* <td></td> */}
-      {/* <StartDruku rowWykonanie={rowWykonanie}/> */}
       <NakladWykonanie rowWykonanie={rowWykonanie}/>
       <CzasWykoniania rowWykonanie={rowWykonanie}/>
       <PredkoscWykoniania rowWykonanie={rowWykonanie}/>
       <NarzadWykonania rowWykonanie={rowWykonanie}/>
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
-      {/* <MnoznikWykoniania rowWykonanie={rowWykonanie}/> */}
-      {/* <StanWykonania rowWykonanie={rowWykonanie}/> */}
       <StatusWykonania rowWykonanie={rowWykonanie} rowProces={rowProces}/>
       <DodajWykonanie rowWykonanie={rowWykonanie}/>
     </div>
@@ -164,6 +161,35 @@ const CzasWykoniania = ({ rowWykonanie }) => {
     </div>
   );
 };
+
+const IndeksWykonania = ({ rowWykonanie }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie
+  const arkusze = techContext.arkusze
+  return (
+    <div className={style.col_dane_indeks}>
+      
+      {/* <label className={style.label}> Czas </label> */}
+      <input
+      disabled
+      title="Kolejność"
+        className={style.input_indeks}
+        value={rowWykonanie.indeks }
+        onChange={(e) => {
+
+
+          if (e.target.value == "" || reg_int.test(e.target.value)) {
+            updateWykonanie({
+              ...rowWykonanie,
+              indeks: e.target.value,
+            });
+          }
+        }}
+      ></input>
+    </div>
+  );
+};
+
 const ArkuszWykonania = ({ rowWykonanie }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie

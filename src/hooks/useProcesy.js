@@ -144,10 +144,10 @@ let grupa_id = MaxID(new_grupy)
 
     new_legi
     .filter(a => a.element_id == proces.element_id)
-    .map(a=>{
+    .map((a,indeks)=>{
       new_wykonania.push({
         id: MaxID(new_wykonania),
-        indeks: i + 1,
+        indeks: indeks + 1,
         nazwa: proces.nazwa,
         element_id: a.element_id,
         arkusz_id: a.arkusz_id, // bylo a.id

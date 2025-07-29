@@ -61,8 +61,6 @@ export default function TableFaktury() {
                     <FAKTURA_ILOSC faktura={faktura} />
                     <FAKTURA_CENA faktura={faktura} />
                     <FAKTURA_SUMA faktura={faktura} />
-
-                    {/* <Suma faktura={faktura} /> */}
                     <FAKTURA_WZ faktura={faktura} />
                     <FAKTURA_UWAGI faktura={faktura} />
                     <USUN_FAKTURE faktura={faktura} />

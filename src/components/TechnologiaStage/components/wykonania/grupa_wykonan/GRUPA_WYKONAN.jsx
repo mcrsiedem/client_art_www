@@ -33,6 +33,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
               <div 
               title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
               className={style.grupa_container}>
+
                  <ProcesorGrupy rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <NakladGrupy rowGrupa={rowGrupa} />
                  <CzasGrupy rowGrupa={rowGrupa} />

@@ -418,12 +418,23 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
 };
 
 const PracaTableZamowienia = ({ row,i }) => {
+
+    const sprawdzKoszty = (row) => {
+      if (row.etap == 16 && row.koszty_status == 1) {
+        return false;
+      }
+        return true;
+
+    };
+
+
   return (
     <td>
     <input 
       //firma_nazwa to skrocona nazwa klienta
-      title={row.Praca}
-      className={style.tytulInput}
+      title={sprawdzKoszty(row) ? row.Praca: "Praca oddana. Brak zamkniętych kosztów dodatkowych."}
+      // className={style.tytulInput_alert}
+      className={sprawdzKoszty(row) ? style.tytulInput : style.tytulInput_alert}
       // value={DecodeToken(sessionStorage.getItem("token")).id==1 ? row.id +"   "+row.tytul : row.tytul}
       value={ row.tytul}
       readOnly
@@ -431,6 +442,8 @@ const PracaTableZamowienia = ({ row,i }) => {
     />
     </td>
   );
+
+
 };
 
 const UwagiTableZamowienia = ({ row }) => {

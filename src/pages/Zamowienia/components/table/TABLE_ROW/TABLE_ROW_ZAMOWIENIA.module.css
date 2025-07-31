@@ -42,6 +42,16 @@
   width: 100%;
 
 }
+
+.tytulInput_alert{
+  border: none;
+  background: rgba(255, 0, 0, 0.719);
+  font-size: 0.9rem;
+  width: 100%;
+  color: #ffffff;
+  padding-left: 10px;
+
+}
 .tytulfirma{
   border: none;
   background: transparent;

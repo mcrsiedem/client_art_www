@@ -420,7 +420,7 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
 const PracaTableZamowienia = ({ row,i }) => {
 
     const sprawdzKoszty = (row) => {
-      if (row.etap == 16 && row.koszty_status == 1) {
+      if (row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3) {
         return false;
       }
         return true;

@@ -185,9 +185,19 @@ function Procesory() {
       <div className={style.procesor_btn_left}>  </div>
 
                   <div className={style.procesor_btn_center}>
+           
+                              {procesory
+                ?.filter(x => x.grupa == selectedProces  )
+                .filter(x => x.id == 35  )
+                .map((procesor) => (
+
+                  <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
+
+                ))}
+           
 
         {procesory
-                ?.filter(x => x.grupa == selectedProces  )
+                ?.filter(x => x.grupa == selectedProces && x.id !=35 )
                 .map((procesor) => (
 
                   <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />

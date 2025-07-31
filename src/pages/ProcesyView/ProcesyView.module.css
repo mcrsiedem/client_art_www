@@ -207,6 +207,7 @@ tr:nth-of-type(2n) {
    overflow: auto;
 }
 
+
 .procesor_btn_right{
    display: flex;
    justify-content: center;

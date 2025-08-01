@@ -1,57 +1,10 @@
+01/08/2025
 
-    Zamówienia:        
--   delete order
--   X close
--   yellow add icon od left
--   searchbar and sorting by column
--   select row color
+Zestawienie blach
+Aktualizacja grupy
+Status zafakturowane
+Ostrzeżenie o zeszycie /4
+Kopiawanie plików razem z nowym elementem
+Pliki dodane do otwieranego zamówienia
 
-
-UWAGA: skasować z sessionStorage id usera - pobierać je ze zweryfikowanego tokenu
-
-
-29/03/2024
-
-Zamówienia -    Wyszukiwarka
-ModalInsert -   
-                Status - stan - rodzaj dodać do kontekstu 
-                Procesy
-                Skalowanie okienka
-             
-
-Typy elementów oraz inne przenieśc do bazy danych z api
-
-dane - tytul i uwagi nowa walidacja tekstu z kropkami przecinkami i nawiasami
-
-16/04/2024
-Zapis domyślnych procesów i odczyt
-
-19/04/2024
-Procesy - filtrowanie typów
-
-Do listy procesów trzeba dodać na stałe front i back
-
-
-
-3/05/2024 ostatnie zmiant macbook
-
-20/08/2024
-Karta technologiczna - Elementy - zmiana papieru
-Karta technologiczna - Elementy - dodawanie procesów
-
-19/09/2024
-
-- zmiana procesora w grupie
-- dodawanie grupy i umieszczanie w niej wykonan
-
-
-KAŻDY PROCES POWINIENE MIEĆ DOMYŚLNY PROCESOR - PROCESOR MA PRĘDKOŚĆ I CZAS NARZĄD ZAMIAST POROCESU
-
-- grupa dodanie daty - statusu
-- dodać do bazy procesory
-
-
-Zmiana sposobu zapisu zamowienia
-
-6/01/2025 10:00 Paper Stage 11:47
-6/01/2025 13:55 Paper Stage 
+Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera

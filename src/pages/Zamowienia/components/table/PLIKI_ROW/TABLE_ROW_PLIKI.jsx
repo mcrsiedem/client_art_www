@@ -9,7 +9,7 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 
 
-export default function TABLE_ROW_PLIKI({plikiRow,row }) {
+export default function TABLE_ROW_PLIKI({plikiRow,row,indeksPliki }) {
     //row - row element
 
     
@@ -19,7 +19,7 @@ export default function TABLE_ROW_PLIKI({plikiRow,row }) {
     const [add] = useHistoria()
 
     return (
-        <tr className={style.row_pliki_tr}>
+        <tr key={"pliki"+indeksPliki} className={style.row_pliki_tr}>
         <td></td>
         <td></td>
         {/* <td></td> */}

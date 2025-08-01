@@ -229,8 +229,8 @@ setOpenModalInsert(true)
 {row.show &&(
 
   <>
-  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map(plikiRow=> (
-  <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row}/>
+  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map((plikiRow,indeksPliki)=> (
+  <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row} indeksPliki={indeksPliki}/>
    )) }
   {procesyElementowTech?.map(proces=> (
   <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row}/>

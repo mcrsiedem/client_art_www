@@ -19,6 +19,9 @@ export function useStanyZamowienia() {
 
   const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const technologieID = contextModalInsert.technologieID;
+// zamowieniaPliki
+  
+
   const pokazStanyZamowienia = () => {
 console.clear();
 console.log("Zamówienie: ");
@@ -28,14 +31,15 @@ console.log("Elementy : ", elementy);
 console.log("Fragmenty : ", fragmenty);
 console.log("Oprawa : ", oprawa);
 console.log("Procesy elementów: ", procesyElementow);
-console.log("Pakowanie: ", pakowanie);
-console.log("Papiery_nazwy: ", listaPapierowNazwy);
-console.log("Historia zamówienia: ", historiaZamowienia);
-console.log("Technologie do zamówienia: ", technologieID);
-console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
-console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
-console.log("ksiegowosc: ", ksiegowosc);
+// console.log("Pliki: ", procesyElementow);
+// console.log("Pakowanie: ", pakowanie);
+// console.log("Papiery_nazwy: ", listaPapierowNazwy);
+// console.log("Historia zamówienia: ", historiaZamowienia);
+// console.log("Technologie do zamówienia: ", technologieID);
+// console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
+// console.log("listaPapierowNazwy: ", listaPapierowNazwy);
+// console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+// console.log("ksiegowosc: ", ksiegowosc);
 }
 
   return [pokazStanyZamowienia];

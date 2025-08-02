@@ -13,6 +13,7 @@ export function useStanyZamowienia() {
   const kosztyDodatkoweZamowienia = contextModalInsert.kosztyDodatkoweZamowienia;
   const historiaZamowienia = contextModalInsert.historiaZamowienia;
   const ksiegowosc = contextModalInsert.ksiegowosc;
+  const faktury = contextModalInsert.faktury;
 
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
@@ -31,6 +32,7 @@ console.log("Elementy : ", elementy);
 console.log("Fragmenty : ", fragmenty);
 console.log("Oprawa : ", oprawa);
 console.log("Procesy elementów: ", procesyElementow);
+console.log("Faktury: ", faktury);
 // console.log("Pliki: ", procesyElementow);
 // console.log("Pakowanie: ", pakowanie);
 // console.log("Papiery_nazwy: ", listaPapierowNazwy);

@@ -11,7 +11,8 @@ export   function useKosztyDodatkowe() {
   const kosztyDodatkoweZamowienia = modalcontext.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = modalcontext.setKosztyDodatkoweZamowienia;
   const daneZamowienia = modalcontext.daneZamowienia;
-
+const ksiegowosc = modalcontext.ksiegowosc;
+    const setKsiegowosc = modalcontext.setKsiegowosc;
   const faktury = modalcontext.faktury;
   const setFaktury = modalcontext.setFaktury;
 
@@ -56,6 +57,7 @@ let faktura = [...faktury]
       dodal: DecodeToken(sessionStorage.getItem("token")).id,
     }
 )
+ setKsiegowosc({...ksiegowosc, faktury_status:3, update:true})
 setFaktury(faktura)
 }
 

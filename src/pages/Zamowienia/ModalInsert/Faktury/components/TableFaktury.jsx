@@ -1,12 +1,8 @@
 import style from "./../Faktury.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useContext } from "react";
-import StatusKosztow from "./StatusFaktury";
-import DodajKoszty from "./DodajFaktury";
-import KOSZT_UWAGI from "./faktura/FAKTURA_UWAGI";
-import KOSZT_ILOSC from "./faktura/FAKTURA_ILOSC";
-import KOSZT_CENA from "./faktura/FAKTURA_CENA";
-import UsunKoszt from "./USUN_FAKTURE";
+// import StatusKosztow from "./StatusFaktury";
+
 import FAKTURA_NAZWA2 from "./faktura/FAKTURA_NAZWA2";
 import DodajFaktury from "./DodajFaktury";
 import FAKTURA_ILOSC from "./faktura/FAKTURA_ILOSC";
@@ -15,6 +11,7 @@ import FAKTURA_UWAGI from "./faktura/FAKTURA_UWAGI";
 import USUN_FAKTURE from "./USUN_FAKTURE";
 import FAKTURA_WZ from "./faktura/FAKTURA_WZ";
 import FAKTURA_SUMA from "./faktura/FAKTURA_SUMA";
+import StatusFaktury from "./StatusFaktury";
 export default function TableFaktury() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -82,7 +79,7 @@ export default function TableFaktury() {
           <DodajFaktury/> 
                 <div className={style.zestawienie_kosztow }>
               
-                       <StatusKosztow/>
+                       <StatusFaktury/>
                 </div>
         </div>
   

@@ -92,8 +92,18 @@ let fak = faktury.map((t) => {
                   }
 
                 })
+    // if(fak.filter(x=>x.delete != true).length ==0 ){
+    //               setKsiegowosc({...ksiegowosc, faktury_status:1, update:true})
+    //             }
+    
    let  suma = fak.filter(x=>x.delete != true).map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
-                setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
+
+   if(fak.filter(x=>x.delete != true).length ==0 ){
+setKsiegowosc({...ksiegowosc, faktury_wartosc:suma,faktury_status:1, update:true})
+   }else{
+setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})   
+   }
+                // setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
 
               setFaktury(fak     );
 

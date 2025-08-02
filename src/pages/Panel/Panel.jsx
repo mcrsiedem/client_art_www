@@ -34,7 +34,6 @@ export default function Panel({ user, setUser }) {
     // window.onbeforeunload = function () {
     //   alert("STOP");
     // };
-    
     getNadkomplety(setNadkomplety)
     getClients(setClients,setClientsWyszukiwarka )
 
@@ -105,8 +104,12 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
           <li>Dodaj Asystenta</li>
           <li>Pobierz uprawnienia</li>
 
-          <li>Ustawienia</li>
-          <li>Odśwież</li>
+          <li >Ustawienia</li>
+          <li onClick={()=>{
+            window.location.reload(true)
+            setIsOpen(false)
+          }
+            }>Odśwież</li>
         </ul>
       )}
                                                                         <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={toggleMenu}/>

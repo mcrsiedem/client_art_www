@@ -151,7 +151,7 @@ const sprawdzDostep = (c) => {
            wybierz...
           </option>
         {contextApp.clients
-        .filter(c=>sprawdzDostep(c))
+        // .filter(c=>sprawdzDostep(c))
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.firma}

@@ -5,6 +5,6 @@ Aktualizacja grupy
 Status zafakturowane
 Ostrzeżenie o zeszycie /4
 Kopiawanie plików razem z nowym elementem
-Pliki dodane do otwieranego zamówienia
 
 Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera
+Pliki dodane do otwieranego zamówienia

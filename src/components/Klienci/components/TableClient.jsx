@@ -49,7 +49,7 @@ const sprawdzDostep = (c) => {
         </thead>
         <tbody className={style.center}>
           {clientsWyszukiwarka
-          .filter(c=>sprawdzDostep(c))
+          // .filter(c=>sprawdzDostep(c))
           .map((row, index) => {
             return (
               <tr

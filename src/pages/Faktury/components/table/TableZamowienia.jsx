@@ -92,7 +92,7 @@ const [refreshZamowienia] = useZamowienia()
        </thead>
        <tbody className={style.tableZam}>
          {zamowienia
-           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+          //  .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
            .filter((zam) => {
             if (selectedUser == 0) {
               return true;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from '../Panel/Panel.module.css';
 import logoutIcon from 'assets/logout.png'
@@ -65,15 +65,52 @@ export default function Panel({ user, setUser }) {
 
 
 const PanelDesktop = ({isOnline,navigate,logout}) => {
+  const dropdownRef = useRef(null);
+   const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Zmienia stan na przeciwny (otwiera/zamyka menu)
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // Jeśli kliknięto poza kontenerem menu, zamknij menu
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    // Dodaj nasłuchiwacz zdarzeń, gdy menu jest otwarte
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Funkcja czyszcząca: usuń nasłuchiwacz zdarzeń, gdy komponent się odmontowuje
+    // lub gdy isOpen zmienia się na false (menu się zamyka)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   if(DecodeToken(sessionStorage.getItem("token")).wersja_max==1){
 
     return(<>
-                <div className={style.main}>
+                <div className={style.main} >
                         <div className={style.header}>
                 
         
                                                         {isOnline ? (     <div className={style.user}> 
-                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={()=>{console.log(DecodeToken(sessionStorage.getItem("token")).nazwisko)}}/>
+                                                                                                                                        {isOpen && (
+        <ul className={style.dropdown_menu } ref={dropdownRef}>
+          <li>Dodaj Asystenta</li>
+          <li>Pobierz uprawnienia</li>
+
+          <li>Ustawienia</li>
+          <li>Odśwież</li>
+        </ul>
+      )}
+                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={toggleMenu}/>
+
                                                                         <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
                                                                 </div>) : (     <div className={style.user}> 
                                                                         <img className={style.userIcon } src={userOffline} alt="Procesy" />

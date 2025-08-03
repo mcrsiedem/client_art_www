@@ -2,9 +2,9 @@
 
 Zestawienie blach
 Aktualizacja grupy
-Status zafakturowane
-Ostrzeżenie o zeszycie /4
+Status zafakturowane X
+Ostrzeżenie o zeszycie /4 X
 Kopiawanie plików razem z nowym elementem
 
-Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera
+Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera X
 Pliki dodane do otwieranego zamówienia

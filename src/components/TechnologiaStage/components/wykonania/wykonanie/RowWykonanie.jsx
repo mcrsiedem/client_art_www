@@ -82,7 +82,7 @@ function DodajWykonanie({ rowWykonanie }) {
 
 
           let newWykonania = [...wykonania]
-          newWykonania.push({...rowWykonanie,id: getMaxID(wykonania),index:getMaxIndeks(wykonania),naklad:0,przeloty:0,czas:0,insert:true })
+          newWykonania.push({...rowWykonanie,id: getMaxID(wykonania),index:getMaxIndeks(wykonania),insert:true })
           setWykonania(newWykonania)
             
 

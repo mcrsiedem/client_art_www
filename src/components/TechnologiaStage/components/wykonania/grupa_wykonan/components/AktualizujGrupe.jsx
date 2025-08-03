@@ -3,7 +3,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import style from "./Grupa_wykonan.module.css";
 import { reg_txt } from "utils/initialvalue";
 import logoExtract from "assets/extract_green.svg";
-import { UPRAWNIENIE } from "actions/uprawnienie";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export default  function AktualizujGrupe({ rowGrupa }) {
@@ -23,9 +23,21 @@ export default  function AktualizujGrupe({ rowGrupa }) {
         className={style.expand_max}
         src={logoExtract} 
         onClick={() => {
-// console.log(UPRAWNIENIE.klienci_usun)
-          // UPRAWNIENIE.klienci_usun
-          // console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2])
+          if(rowGrupa.proces_nazwa_id==1 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
+            //druk
+
+          }
+      
+
+               if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
+            //falc
+
+          }
+      
+
+
+
+          console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2])
           // uprawnienia: proces_nazwa_id 
           // 1 druk 
           // 2 uszlachetnianie

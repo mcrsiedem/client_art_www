@@ -57,11 +57,9 @@ export default function Header({
             <> </>
           ) : (
             <>
-              {/* <HISTORIA_ZAMOWIENIA_BTN  /> */}
               <SprawdzBTN />
               <ZapiszJakoBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}  />
               <ZapiszBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} dialogBox={dialogBox} />
-              {/* <ZapiszDuzo setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} /> */}
             </>
           )}
         </div>
@@ -188,26 +186,26 @@ function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
                     setSaveButtonDisabled(false);
                   }
                   
-                if( OPRAWY_ZESZYTOWE.includes(parseInt( produkty[0].oprawa))) {
+                // if( OPRAWY_ZESZYTOWE.includes(parseInt( produkty[0].oprawa))) {
 
-                  for( let element of elementy){
+                //   for( let element of elementy){
 
-                    if(element.ilosc_stron%4 !=0 || element.ilosc_stron>192 ){
-                      alert("W oprawie zeszytowej ilość stron powinna być podzielna przez 4 ")
-                      setSaveButtonDisabled(true);
-                      }else{
-                        setSaveButtonDisabled(false);
-                      }
+                //     if(element.ilosc_stron%4 !=0 || element.ilosc_stron>192 ){
+                //       alert("W oprawie zeszytowej ilość stron powinna być podzielna przez 4 ")
+                //       setSaveButtonDisabled(true);
+                //       }else{
+                //         setSaveButtonDisabled(false);
+                //       }
                       
-                      if(element.ilosc_stron>192 ){
-                        alert("W oprawie zeszytowej dozwolona ilość stron: 192 ")
-                        setSaveButtonDisabled(true);
-                        }else{
-                          setSaveButtonDisabled(false);
-                        }
+                //       if(element.ilosc_stron>192 ){
+                //         alert("W oprawie zeszytowej dozwolona ilość stron: 192 ")
+                //         setSaveButtonDisabled(true);
+                //         }else{
+                //           setSaveButtonDisabled(false);
+                //         }
                     
-                  }
-                }
+                //   }
+                // }
         }
 
       }}

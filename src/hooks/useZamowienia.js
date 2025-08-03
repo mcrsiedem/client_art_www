@@ -50,15 +50,9 @@ scrollTable(tableZamowienia)
       });
   }
 
-  // const createPliki = async () => {
-  //   const res = await axios.get(
-  //     IP + "createPliki/" + sessionStorage.getItem("token")
-  //   );
-  // };
-
 
       async function zmienEtapWydrukowane(techologie) {
-        const res = await axios.put(
+       await axios.put(
           IP +
             "zmieni_etap_wydrukowane/" +
             sessionStorage.getItem("token"),

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import style from "./TABLE_ROW_ZAMOWIENIA.module.css";
 import iconAdd from "assets/add2.svg";
 import iconSettings from "assets/dots2.svg";
@@ -15,7 +15,6 @@ import {
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
-import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 
@@ -24,52 +23,23 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
   const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie
-  const procesyElementowTech = techContext.procesyElementowTech; // technologie
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
-  const selectedZamowienie = contextModalInsert.selectedZamowienie;
-  const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   const contextApp = useContext(AppContext);
   
   const zamowienia = contextApp.zamowienia
-  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka
   const setZamowienia = contextApp.setZamowienia
-  const zamowieniaPliki = contextApp.zamowieniaPliki
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
     const [sortWgEtapu] = useSortowanieZamowienia()
 
       const contextModal = useContext(ModalInsertContext);
-    const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 
   //  const contextModalInsert = useContext(ModalInsertContext);
-const showTabs = contextModalInsert.showTabs
 const setShowTabs = contextModalInsert.setShowTabs
 
 
-  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
-
-  // const onMenuHandle = (event) =>{
-  //   event.preventDefault();
-
-  //   console.log(event)
-  //   console.log(event.pageX)
-  //   console.log(event.pageY)
-  //   console.log(event.screenX)
-  //   console.log(event.screenY)
-  //   console.log(row.tytul)
-  //   setZamowienia(
-  //     zamowienia.map((t) => {
-  //       if (t.id == row.id) {
-  //         return { ...row, select: true };
-  //       } else {
-  //         return t;
-  //       }
-  //     })
-  //   );
-  //   setShowMenuZamowienia(true)
-  // }
 
   const onMenuHandle2 = (event) =>{
     event.preventDefault();
@@ -322,36 +292,7 @@ const KlientTableZamowienia = ({ row }) => {
   );
 };
 
-const SpedycjaTableZamowienia = ({ row }) => {
-  return (
-    <td>
-       <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={row.data_spedycji}
-      className={style.klientInput}
-      value={row.data_spedycji}
-      readOnly
 
-    />
-    </td>
-   
-  );
-};
-const DataPrzyjeciaTableZamowienia = ({ row }) => {
-  return (
-    <td>
-       <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={row.data_przyjecia}
-      className={style.klientInput}
-      value={row.data_przyjecia}
-      readOnly
-
-    />
-    </td>
-   
-  );
-};
 
 const PracaTableZamowienia = ({ row,i }) => {
   return (
@@ -368,41 +309,9 @@ const PracaTableZamowienia = ({ row,i }) => {
   );
 };
 
-const UwagiTableZamowienia = ({ row }) => {
-  return (
-    <td>
-    <input
-      title={row.uwagi}
-      className={style.tytulInput}
-      value={row.uwagi}
-      readOnly
 
-    />
-    </td>
-  );
-};
 
-const StatusZamowieniaTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  const selectColor = (status) =>{
-    if (status==1) return style.td_status
-    if (status==2) return style.td_status
-    if (status==3) return style.td_status_red
-    if (status==4) return style.td_status_red
-    if (status==5) return style.td_status
-    if (status==6) return style.td_status_red
-    if (status==7) return style.td_status_red
-     return style.td_status
-  }
-  return (
-    <td
-      className={selectColor(row.status) }
-    >
-      {_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}
-    </td>
-  );
-};
+
 
 
 const StatuKosztow = ({ row }) => {
@@ -461,31 +370,6 @@ const StatusFaktury = ({ row }) => {
 
 
 
-const StanZamowieniaTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  const selectColor = (stan) =>{
-    if (stan==1) return style.td_stan_blue
-    if (stan==2) return style.td_stan_yellow
-    if (stan==3) return style.td_stan
-     return style.td_stan
-  }
-
-  return (
-    <td
-    className={selectColor(row.stan) }
-      // className={row.stan == 2 ? style.td_stan_yellow :style.td_stan}
-      >
-    <input
-      title={row.klient}
-      className={style.inputStan}
-      value={_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}
-      readOnly
-
-    />
-    </td>
-  );
-};
 
 const EtapZamowieniaTable = ({ row }) => {
   const techContext = useContext(TechnologyContext);
@@ -569,44 +453,11 @@ const NumerWZ = ({ row }) => {
   );
 };
 
-const IconErrorTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  if (row.status > 2) {
-    return (
-      <td style={{ width: "30px" }}>
-        <img
-          className={style.iconErrorTable}
-          src={iconError}
-          onClick={() => {}}
-          alt="Procesy"
-        />
-      </td>
-    );
-  } else return <td></td>;
-};
-const IconLockTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  if (row.open_stan == 1) {
-    return (
-      <td style={{ width: "30px" }}>
-        <img
-          className={style.iconLockTable}
-          src={iconLockRed}
-          onClick={() => {}}
-          alt="Procesy"
-        />
-      </td>
-    );
-  }
-  return <td></td>;
-};
+
+
 
 function ShowTechnmologiaBtn({
-  row,
-  showKartaTechnologiczna,
-  setShowKartaTechnologiczna,
+  row
 }) {
   const techContext = useContext(TechnologyContext);
 
@@ -673,34 +524,6 @@ function ShowTechnmologiaBtn({
   }
 }
 
-function SelectBox({ row }) {
-  const appContext = useContext(AppContext);
-  const zamowienia = appContext.zamowienia;
-  const setZamowienia = appContext.setZamowienia;
-
-  return (
-    <td className={style.td_checkbox3}>
-      <div>
-        <input
-          type="checkbox"
-          checked={row.select}
-          onChange={(event) => {
-            // console.log(" select" + row.id + " " + event.target.checked);
-            setZamowienia(
-              zamowienia.map((t) => {
-                if (t.id == row.id) {
-                  return { ...row, select: event.target.checked };
-                } else {
-                  return t;
-                }
-              })
-            );
-          }}
-        ></input>
-      </div>
-    </td>
-  );
-}
 
 function CreateTechnmologiaBtn({ row }) {
   const techContext = useContext(TechnologyContext);
@@ -723,15 +546,3 @@ function CreateTechnmologiaBtn({ row }) {
   );
 }
 
-const MenuBtn = ({ showMenu, setShowMenu }) => {
-  return (
-    <img
-      className={style.iconMenuBtn}
-      src={iconSettings}
-      onClick={() => {
-        setShowMenu(!showMenu);
-      }}
-      alt="x"
-    />
-  );
-};

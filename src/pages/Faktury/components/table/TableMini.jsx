@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useContext } from "react";
 import style from "./TableMini.module.css";
 import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";

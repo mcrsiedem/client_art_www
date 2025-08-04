@@ -43,6 +43,10 @@ export default function ZamowieniaInfo({parent}) {
             <div className={style.bindingContainer}>
               <Falc />
             </div>
+
+             <div className={style.bindingContainer}>
+              <Naklad />
+            </div>
           </div>
         </div>
       </div>
@@ -107,6 +111,20 @@ const Falc = () => {
     <p className={style.carDruk}> Przeloty falc : {zamowieniaInfo.przeloty_falc_zakonczone.toLocaleString() }  </p>  <p className={style.carDrukZ} > z </p>  <p className={style.carDruk}>  {zamowieniaInfo.przeloty_falc.toLocaleString()} ark.</p>  
    
     <p className={procent == 100 ? style.carDrukGreen:style.carDrukBlue}> {procent} %</p> 
+    </div>
+  );
+};
+
+const Naklad = () => {
+    const appContext = useContext(AppContext);
+    const zamowieniaInfo = appContext.zamowieniaInfo;
+    let naklad = zamowieniaInfo.naklad
+
+  return (
+     <div  className={style.drukContainer} >
+    <p className={style.carDruk}> Suma nakładów : {naklad.toLocaleString()} szt.  </p>  
+   
+
     </div>
   );
 };

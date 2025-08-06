@@ -13,3 +13,9 @@ Pliki dodane do otwieranego zamówienia
 
  token CSRF razem z jwt
  
+
+
+
+
+ Problem statusu plików
+ Sprawdzić czy plik musi mieć ten sam id co element_id

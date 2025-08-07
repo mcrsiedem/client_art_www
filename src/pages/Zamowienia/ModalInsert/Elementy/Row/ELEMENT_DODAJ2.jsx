@@ -33,7 +33,7 @@ export default  function ELEMENT_DODAJ({ row }) {
         src={iconCopy}
         onClick={() => {
           // handleAddCard(row);
-          addElement(row,elementy,setElementy,fragmenty,setFragmenty);
+          addElement(row,elementy,setElementy,fragmenty,setFragmenty,procesyElementow,setProcesyElementow);
 
           add(         {
             kategoria: "Element",
@@ -54,11 +54,12 @@ export default  function ELEMENT_DODAJ({ row }) {
 
 
 
- function addElement(card,elementy,setElementy,fragmenty,setFragmenty) {
+ function addElement(card,elementy,setElementy,fragmenty,setFragmenty,procesyElementow,setProcesyElementow) {
         const newElementy = elementy.slice();
+        let newElementID =  Math.max(...newElementy.map((f) => f.id)) + 1
 
         newElementy.push({
-          id: Math.max(...newElementy.map((f) => f.id)) + 1,
+          id: newElementID,
           zamowienie_id: card.zamowienie_id,
           produkt_id: card.produkt_id,
           naklad: card.naklad,
@@ -111,7 +112,7 @@ export default  function ELEMENT_DODAJ({ row }) {
               info:x.info,
               typ: card.typ,
               oprawa_id: x.oprawa_id,
-              element_id: Math.max(...elementy.map((f) => f.id)) + 1,
+              element_id: newElementID,
               indeks: Math.max(...newFragmenty.filter((x) => x.delete != true).map((f) => f.indeks)) + 1,
               insert: true
             });
@@ -121,4 +122,13 @@ export default  function ELEMENT_DODAJ({ row }) {
         setFragmenty(newFragmenty);
 
 
+        //kopiowanie procesów
+        const newProcesy = procesyElementow.slice();
+
+      const procesyIN = procesyElementow.filter(x=>x.element_id == card.id).slice();
+      for(let proces of procesyIN){
+        newProcesy.push({...proces, id: Math.max(...newProcesy.map((f) => f.id)) + 1, element_id: newElementID, insert:true})
+      }
+
+      setProcesyElementow(newProcesy)
       }

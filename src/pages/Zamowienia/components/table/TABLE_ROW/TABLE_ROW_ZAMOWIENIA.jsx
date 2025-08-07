@@ -192,14 +192,12 @@ const setShowTabs = contextModalInsert.setShowTabs
        setShowTabs(   {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
 
 setOpenModalInsert(true)
-          // open2(row.id);
-          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+
         }}
       >
-        {/* <IconErrorTable row={row} /> */}
+
         <NrTableZamowienia row={row} />
 
-        {/* <td>{row.rok} </td> */}
         <ShowTechnmologiaBtn
           row={row}
           setShowKartaTechnologiczna={setShowKartaTechnologiczna}
@@ -619,17 +617,20 @@ function ShowTechnmologiaBtn({
     return (
       <td className={style.td_karta}>
         <div>
-        {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ?  <img
+      <img
             className={style.iconSettings}
             src={iconAdd}
             onClick={() => {
+              if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
               techContext.fechparametry(row?.id);
               // techContext.setShowTechnologyStage(true);
               techContext.setRowZamowienia(row);
               setShowProcesy(false)
+              }
+        
             }}
             alt="Procesy"
-          />:<></>}
+          />
          
         </div>
       </td>
@@ -639,19 +640,19 @@ function ShowTechnmologiaBtn({
       <td className={style.td_karta}>
         <div>
 
-          {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ? <img
+       <img
             className={style.iconSettings}
             //  src={iconSettings}
             src={iconFile}
             onClick={() => {
-             
-                fechparametryTechnologii(row.id, row.technologia_id);
+                           if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+                                            fechparametryTechnologii(row.id, row.technologia_id);
+                           }
+
             
             }}
             alt="Procesy"
-          /> :<></>
-
-          }
+          /> 
          
         </div>
       </td>

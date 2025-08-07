@@ -19,6 +19,7 @@ import { useStatus } from "hooks/useStatus";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 import { getNameOfElementTyp } from "actions/getNameOfElementTyp";
+import ELEMENT_DODAJ from "./Row/ELEMENT_DODAJ2";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -247,11 +248,10 @@ export default function RowElement({
             handleChangeCardElementy={handleChangeCardElementy}
             handleRemoveItem={handleRemoveItem}
           />
-          <Dodaj
-            row={row}
-            handleChangeCardElementy={handleChangeCardElementy}
-            handleAddCard={handleAddCard}
-          />
+          
+          <ELEMENT_DODAJ row={row}/>
+
+
         </div>
         {showFragmenty && (
           <>
@@ -411,35 +411,7 @@ function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   );
 }
 
-function Dodaj({ row, handleAddCard }) {
-  const [setStatus] = useStatus()
-  const [add] = useHistoria()
-  const contextModalInsert = useContext(ModalInsertContext);
 
-  const daneZamowienia = contextModalInsert.daneZamowienia
-  const elementy = contextModalInsert.elementy
-
-  return (
-    <div >
-      <img
-        className={style.expand}
-        src={iconCopy}
-        onClick={() => {
-          handleAddCard(row);
-
-          add(         {
-            kategoria: "Element",
-            event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - dodano ",
-            zamowienie_id: daneZamowienia.id
-          })
-                     // 
-                     setStatus(3)
-        }}
-        alt="Procesy"
-      />
-    </div>
-  );
-}
   
   function Typ({ row, handleChangeCardElementy,handleChangeCardFragmenty_i_Elementy }) {
     //row - row element

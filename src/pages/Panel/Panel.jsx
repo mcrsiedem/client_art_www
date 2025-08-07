@@ -13,7 +13,7 @@ import iconCTP from 'assets/iconCTP.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
 import iconLock from 'assets/iconLock.svg'
 import iconKalendarz from 'assets/iconKalendarz.svg'
-
+import axios from "axios";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
@@ -21,6 +21,7 @@ import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import PanelMini from "./PanelMini";
+import { IP } from "utils/Host";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
@@ -105,7 +106,20 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
           <li>Pobierz uprawnienia</li>
 
           <li >Ustawienia</li>
-          <li onClick={()=>{
+       
+
+{     DecodeToken(sessionStorage.getItem("token")).id==1?     <li onClick={async()=>{
+
+    const res = await axios.get(IP + "backup/" + sessionStorage.getItem("token"))
+      setIsOpen(false)
+        }
+            }>Backup</li>:<></>}
+
+
+
+
+
+                      <li onClick={()=>{
             window.location.reload(true)
             setIsOpen(false)
           }

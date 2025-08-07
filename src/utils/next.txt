@@ -19,3 +19,8 @@ Pliki dodane do otwieranego zamówienia
 
  Problem statusu plików
  Sprawdzić czy plik musi mieć ten sam id co element_id
+
+
+ wydanie znika po przeniesieniu na inny procesor_domyslny
+
+ kopiowanie elementu - kopiowanie procesów i plików

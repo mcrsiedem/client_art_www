@@ -60,9 +60,6 @@ export default function WykonaniaStage() {
 
 
 const WykonaniaStageHeader = () => {
-  const techContext = useContext(TechnologyContext);
-  const procesyElementowTech = techContext.procesyElementowTech;
-  const grupaOprawaTech = techContext.grupaOprawaTech;
 
   return (
   <div className={style.header_procesy}>
@@ -94,20 +91,13 @@ const WykonaniaTechTable = () => {
 }
 
 const OprawaRow = ({ grupaOprawa }) => {
-  const techContext = useContext(TechnologyContext);
-  const grupaWykonan = techContext.grupaWykonan;
-  const elementyTech = techContext.elementyTech;
-  const [show, setShow] = useState(true);
   return (
     <>
       <div className={style.row1}>
-        <div className={style.procesy_container}>
-        </div>
+        <div className={style.procesy_container}></div>
       </div>
-   <ROW_OPRAWA grupaOprawa={grupaOprawa}/>
-      {/* {show &&
-          <GRUPA_WYKONAN rowProces={rowProces} />} */}
-          <hr></hr>
+      <ROW_OPRAWA grupaOprawa={grupaOprawa} />
+      <hr></hr>
     </>
   );
 };

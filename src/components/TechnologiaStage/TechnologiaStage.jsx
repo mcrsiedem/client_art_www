@@ -24,9 +24,7 @@ export default function TechnologiaStage() {
           <ProduktyTech />
           <ElementyTech />
           <IntroligatorniaTech />
-          <div className={style.container_legi_arkusze}>
-            <WykonanieStage />
-          </div>
+          <WykonanieStage />
         </div>
         <ProcesElementTech />
         <PaperStage parent={"technologia"} />

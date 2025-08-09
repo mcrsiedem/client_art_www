@@ -40,7 +40,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                  <PredkoscGrupy rowGrupa={rowGrupa} />
                  <NarzadGrupy rowGrupa={rowGrupa} />
                  <PrzelotyGrupy rowGrupa={rowGrupa} />
-                 <StatusGrupy rowGrupa={rowGrupa} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
+                 <StatusGrupy rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <DodajGrupeWykonan rowGrupa={rowGrupa} rowProces={rowProces}/>
                  <SkasujGrupeWykonan rowGrupa={rowGrupa}/>
                  <AktualizujGrupe rowGrupa={rowGrupa}/>
@@ -50,7 +50,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                   .filter((f) => f.grupa_id == rowGrupa.id)
                   .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
-                      <RowWykonanie rowWykonanie={rowWykonanie} updateWykonaniaWszystkie={updateWykonaniaWszystkie} rowProces={rowProces}/>
+                      <RowWykonanie rowWykonanie={rowWykonanie} rowProces={rowProces}/>
                     </div>
                   ))}
             </div>

@@ -124,6 +124,13 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
             setIsOpen(false)
           }
             }>Odśwież</li>
+
+                                  <li onClick={()=>{
+                                    logout()
+        
+            setIsOpen(false)
+          }
+            }>Wyloguj</li>
         </ul>
       )}
                                                                         <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={toggleMenu}/>
@@ -135,7 +142,7 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                                                                         
                                                                 </div>) }
                                                         
-                                                { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )}
+                                                {/* { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )} */}
                         </div>
         
                                 <div className={style.container} >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {  useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "../RowWykonanie.module.css";
 import { reg_int } from "utils/initialvalue";
@@ -7,8 +7,6 @@ import { useWykonania } from "hooks/useWykonania";
 export default  function NakladWykonanie({ rowWykonanie }){
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie
-  const procesyElementowTech = techContext.procesyElementowTech
-  const wykonania = techContext.wykonania
   const [czasWykonania] = useWykonania()
 
   return (
@@ -18,7 +16,6 @@ export default  function NakladWykonanie({ rowWykonanie }){
         className={style.input}
         value={rowWykonanie.naklad}
         onChange={(e) => {
-
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             if(e.target.value == "" ) e.target.value =0
             if(rowWykonanie.nazwa=="Falcowanie")
@@ -30,8 +27,6 @@ export default  function NakladWykonanie({ rowWykonanie }){
                   czas: czasWykonania(rowWykonanie,e.target.value,rowWykonanie.predkosc),
                   update:true
                 });
-
-           
               }else {
                             updateWykonanie({
               ...rowWykonanie,
@@ -41,9 +36,6 @@ export default  function NakladWykonanie({ rowWykonanie }){
             });
               }
 
-
-
-            
           }
         }}
       ></input>

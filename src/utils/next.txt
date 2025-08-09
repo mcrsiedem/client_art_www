@@ -24,3 +24,5 @@ Pliki dodane do otwieranego zamówienia
  wydanie znika po przeniesieniu na inny procesor_domyslny
 
  kopiowanie elementu - kopiowanie procesów i plików
+
+ zapisz jako - kwota faktur

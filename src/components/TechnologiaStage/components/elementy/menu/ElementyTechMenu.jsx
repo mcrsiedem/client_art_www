@@ -8,21 +8,7 @@ import { useProcesy } from "hooks/useProcesy";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);
-  const legiFragmenty = techContext.legiFragmenty;
-  const setLegiFragmenty = techContext.setLegiFragmenty;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
-  const legi = techContext.legi;
-  const setLegi = techContext.setLegi;
-  const procesy = techContext.procesyElementow;
-  const grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const wykonania = techContext.wykonania;
-  const setWykonania = techContext.setWykonania;
-  const oprawaTech = techContext.oprawaTech;
-  const setOprawaTech = techContext.setOprawaTech;
-  const fragmentyTech = techContext.fragmentyTech;
-  const setFragmentyTech = techContext.setFragmentyTech;
+
   const setElementyTech = techContext.setElementyTech;
   const elementyTech = techContext.elementyTech;
   const setShowProcesy = techContext.setShowProcesy;
@@ -39,20 +25,7 @@ export default function MenuElementyTech({ row }) {
                 <button
                   className={style.menu_legi_btn}
                   onClick={() => {
-                    // createArkuszeFromElemenetsOneRow(
-                    //   arkusze,
-                    //   setArkusze,
-                    //   legi,
-                    //   setLegi,
-                    //   legiFragmenty,
-                    //   setLegiFragmenty,
-                    //   oprawaTech,
-                    //   setOprawaTech,
-                    //   fragmentyTech,
-                    //   setFragmentyTech,
-                    //   elementyTech,
-                    //   row, procesy, grupaWykonan, setGrupaWykonan,wykonania, setWykonania
-                    // );
+
 createProcesyFromArkuszONE()
         setShowProcesy(true)
 

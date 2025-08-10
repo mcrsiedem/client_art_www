@@ -336,7 +336,9 @@ const [add] = useHistoria()
         value={daneZamowienia.status}
         onChange={(event) => {
 
-          // nie można zrobić nieaktywnego, bo nie
+          // 8 skasowane, tu nie można tego użyć ze względu na kontrolę uprawnień
+          if(event.target.value !=8){
+                      // nie można zrobić nieaktywnego, bo nie
           if(event.target.value !=1){
               if(DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij == 1 && daneZamowienia.technologia_id ==null){
                 setDaneZamowienia({...daneZamowienia, status: event.target.value, update: true});
@@ -375,6 +377,9 @@ const [add] = useHistoria()
             }  
 
           }
+          }
+
+
 
             
 

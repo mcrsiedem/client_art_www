@@ -437,6 +437,11 @@ const _status_dokumentu = [
   {
     id: 7,
     nazwa: "Anulowane",
+  }
+  ,
+  {
+    id: 8,
+    nazwa: "Skasowane",
   },
 ];
 

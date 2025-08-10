@@ -19,6 +19,9 @@ import TABLE_ROW_PLIKI from "../PLIKI_ROW/TABLE_ROW_PLIKI";
 import TABLE_ROW_PROCESY from "../PROCESY_ROW/TABLE_ROW_PROCESY";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
+import OdblokujBTN from "./components/OdblokujBTN";
+import ZamknijBTN from "./components/ZamknijBTN";
+import SkasujBTN from "./components/SkasujBTN";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
@@ -218,9 +221,6 @@ setOpenModalInsert(true)
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
         <OpiekunZamowieniaTable row={row} />
-           {/* <UwagiTableZamowienia row={row} /> */}
-        {/* <SelectBox row={row} /> */}
-        {/* <IconLockTable row={row} /> */}
         <td></td>
       </tr>
 
@@ -237,77 +237,14 @@ setOpenModalInsert(true)
     <tr >
     <td colSpan={18}>
       <div className={style.zamowienia_menu_row}>
-        {(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj   == 1 && <button onClick={()=>{
-
-      odblokujZamowienie([row])
-
-          }}className={style.btn_zamowienia_menu_row_green} >Odblokuj</button>)   }
-   
-
-        <button onClick={()=>{
-              setZamowienia(
-                zamowienia.map((t) => {
-                  if (t.id == row.id) {
-                    return { ...row, select: false,show:false};
-                  } else {
-                    return t;
-                  }
-                })
-              );
-          }}className={style.btn_zamowienia_menu_row} >Zamknij</button>
-
-
- {row.stan ==1 || row.stan==2 ? <button onClick={()=>{
-
-deleteZamowienie([row])
-        }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
-
-
-
-  {row.status ==7 && row.technologia_id==null && DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj==1 ? <button onClick={()=>{deleteZamowienie([row])}}className={style.btn_zamowienia_menu_row_red} >Usuń</button>:<></>}
-
-
-
-    
+        <OdblokujBTN row={row}/>
+        <ZamknijBTN row={row}/>
+        <SkasujBTN row={row}/>
       </div>
-          
     </td>
-
-
    </tr>
   </>
-
-
-  
-  
-
 )}
-      {showKartaTechnologiczna && (
-        <>
-          <tr>
-            {technology
-              ?.filter((x) => x.zamowienie_id == row.id)
-              .map((l, i) => {
-                return (
-                  <tr draggable className={style.row5} key={l.id}>
-                    <td className={style.input3}> fragment </td>
-                  </tr>
-                );
-              })}
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <CreateTechnmologiaBtn row={row} />
-            </td>
-          </tr>
-        </>
-      )}
     </>
   );
 }
@@ -555,39 +492,7 @@ const FirmaZamowieniaTable = ({ row }) => {
     </td>
   );
 };
-const IconErrorTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  if (row.status > 2) {
-    return (
-      <td style={{ width: "30px" }}>
-        <img
-          className={style.iconErrorTable}
-          src={iconError}
-          onClick={() => {}}
-          alt="Procesy"
-        />
-      </td>
-    );
-  } else return <td></td>;
-};
-const IconLockTable = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  if (row.open_stan == 1) {
-    return (
-      <td style={{ width: "30px" }}>
-        <img
-          className={style.iconLockTable}
-          src={iconLockRed}
-          onClick={() => {}}
-          alt="Procesy"
-        />
-      </td>
-    );
-  }
-  return <td></td>;
-};
+
 
 function ShowTechnmologiaBtn({
   row,
@@ -660,65 +565,3 @@ function ShowTechnmologiaBtn({
   }
 }
 
-function SelectBox({ row }) {
-  const appContext = useContext(AppContext);
-  const zamowienia = appContext.zamowienia;
-  const setZamowienia = appContext.setZamowienia;
-
-  return (
-    <td className={style.td_checkbox3}>
-      <div>
-        <input
-          type="checkbox"
-          checked={row.select}
-          onChange={(event) => {
-            // console.log(" select" + row.id + " " + event.target.checked);
-            setZamowienia(
-              zamowienia.map((t) => {
-                if (t.id == row.id) {
-                  return { ...row, select: event.target.checked };
-                } else {
-                  return t;
-                }
-              })
-            );
-          }}
-        ></input>
-      </div>
-    </td>
-  );
-}
-
-function CreateTechnmologiaBtn({ row }) {
-  const techContext = useContext(TechnologyContext);
-  const updateDane = techContext.updateDane;
-  return (
-    <div style={{ width: "100%", textAlign: "center" }}>
-      <button
-        className={style.btn_dodaj_karte}
-        onClick={() => {
-          techContext.setShowTechnologyStage(true);
-          techContext.setRowZamowienia(row);
-          techContext.fechparametry(row?.id);
-
-          // techContext.setOpenTechnologia(true)
-        }}
-      >
-        Dodaj kartę{" "}
-      </button>
-    </div>
-  );
-}
-
-const MenuBtn = ({ showMenu, setShowMenu }) => {
-  return (
-    <img
-      className={style.iconMenuBtn}
-      src={iconSettings}
-      onClick={() => {
-        setShowMenu(!showMenu);
-      }}
-      alt="x"
-    />
-  );
-};

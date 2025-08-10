@@ -175,6 +175,11 @@
     align-items: center;
   
   }
+    .icon2{
+      padding-left: 7px;
+      margin: 5px;
+    height: 16px;
+  }
   .expand {
     width: 15px;
     margin-left: 10px;

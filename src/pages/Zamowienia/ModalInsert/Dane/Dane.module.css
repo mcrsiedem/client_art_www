@@ -147,6 +147,15 @@ padding-left: 10px;
   /* min-width: 50px; */
 }
 
+.input_naklad {
+  background-color: rgb(222, 222, 222);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  /* min-width: 50px; */
+}
 
 
 .input_textarea{

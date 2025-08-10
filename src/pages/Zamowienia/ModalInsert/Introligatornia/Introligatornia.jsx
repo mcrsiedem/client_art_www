@@ -10,7 +10,8 @@ import iconTable from "../../../../assets/settings.svg";
 import iconUstawienia from "../../../../assets/settings.svg";
 import OprawaElementyStage from "./OprawaElementyStage/OprawaElementyStage";
 import axios from "axios";
-
+import iconLock from "assets/lock2.svg";
+import iconUnLock from "assets/unLock.svg";
 import { IP } from "../../../../utils/Host";
 import { AppContext } from "context/AppContext";
 import { reg_int, reg_txt } from "utils/initialvalue";
@@ -105,8 +106,8 @@ function OprawaTable({
       <table className={style.table}>
         <thead className={style.glowka}>
           <tr>
+            <th className={style.col3}> <LockDradDrop/></th>
             <th className={style.col7}></th>
-            <th className={style.col3}>#</th>
             <th className={style.col4}>Oprawa</th>
             <th className={style.col4}>Str</th>
             <th className={style.col4}>Wersja</th>
@@ -710,4 +711,17 @@ function NakladOprawa({ row }) {
       ></input>
     </td>
   );
+}
+const LockDradDrop = () =>{
+  const contextModalInsert = useContext(ModalInsertContext);
+  return(
+    <img
+    onClick={() => {
+      // wyłącza drag drop w tabelkach
+      contextModalInsert.setLockDragDrop(!contextModalInsert.lockDragDrop);
+    }}
+    className={style.icon2}
+    src={contextModalInsert.lockDragDrop ? iconUnLock : iconLock}
+  />
+  )
 }

@@ -934,7 +934,9 @@ function NAKLAD( ){
   return(
       <div className={style.col}>
       <label className={style.label}> Nakład </label>
-      <input className={style.input} type="text"
+      <input className={style.input_naklad} type="text"
+      disabled
+      title="Nakład dodaj w parametrach"
       value={produkty[0].naklad.toLocaleString()}
       onChange={(event) => {
         

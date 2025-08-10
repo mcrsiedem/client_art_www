@@ -51,7 +51,6 @@ const ClearBTN = ({inputRef}) =>{
     const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
-    // const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
   
   if (inputRef.current) {
       if(inputRef.current.value ){
@@ -64,9 +63,6 @@ const ClearBTN = ({inputRef}) =>{
               console.log("input");
             }
             setZamowienia(zamowieniaWyszukiwarka);
-            // refreshZamowienia()
-
-
 
           }}
         >

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./Header.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconAdd from "assets/addIcon2.svg";
-import iconAdd2 from "assets/edit.svg";
+import iconAdd2 from "assets/edit3.svg";
 import iconCopy from "assets/edit2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
@@ -44,7 +44,7 @@ const setShowTabs = contextModalInsert.setShowTabs
         {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
           title="Dodaj nowe zamówienie..."
           className={style.icon}
-          src={iconAdd}
+          src={iconAdd2}
           onClick={() => {
 setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
 
@@ -55,17 +55,15 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
         /> : <></>}
 
 
-                {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
+                {/* {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
           title="Zmien etap zamowienia"
           className={style.icon}
           src={iconAdd2}
           onClick={() => {
-            // sprawdza co jest wydrukowame albo sfalcowane
-           // zmienEtapWydrukowane(zamowienia.filter(x=> x.technologia_id != null && x.etap != 16).map(x => {return {technologia_id: x.technologia_id, status: x.status}}  ))
 zabezpiecz()
           }}
           alt="React Logo"
-        /> : <></>}
+        /> : <></>} */}
 
       </div>
       <div className={style.rightHeaderContener}>

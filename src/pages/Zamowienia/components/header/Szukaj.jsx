@@ -6,6 +6,7 @@ import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 import { AppContext } from "context/AppContext";
 import iconClose2 from "assets/x2.svg";
 import iconSzukaj from "assets/szukaj.svg";
+import { useZamowienia } from "hooks/useZamowienia";
 
 
 export default function Szukaj() {
@@ -13,22 +14,20 @@ export default function Szukaj() {
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
-    const [inputValue, setInputValue] = useState('');
+
   const inputRef = useRef(null);
   // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
     <div className={style.main}>
-      <img className={style.icon} src={iconSzukaj} alt="React Logo" />
-      {/* <span className={style.icon_szukaj}>🔍</span> */}
+      <img className={style.icon2} src={iconSzukaj} alt="React Logo" />
       <input
         ref={inputRef}
         className={style.szukajInput}
         type="text"
-        value={inputValue}
         title="Znajdź tytuł pracy..."
-        placeholder="Praca..."
+        placeholder=""
         onChange={(event) => {
-           setInputValue(event.target.value);
+        
           let m = [...zamowieniaWyszukiwarka];
           m = m.filter((k) =>
             // k.tytul.toLowerCase().includes(event.target.value.toLowerCase())
@@ -52,7 +51,10 @@ const ClearBTN = ({inputRef}) =>{
     const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
-  if(inputRef.current.value ){
+    // const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
+  
+  if (inputRef.current) {
+      if(inputRef.current.value ){
       return(
         <div
           className={style.icon_clear}
@@ -62,11 +64,17 @@ const ClearBTN = ({inputRef}) =>{
               console.log("input");
             }
             setZamowienia(zamowieniaWyszukiwarka);
+            // refreshZamowienia()
+
+
+
           }}
         >
           <img className={style.icon} src={iconClose2} alt="React Logo" />
         </div>
   )
   }
+  }
+
 
 }

@@ -45,7 +45,8 @@ export   function usePliki() {
             return t;
           }
         }))
-        appcontext.setZamowieniaWyszukiwarka(appcontext.zamowienia.map((t) => {
+        // appcontext.setZamowieniaWyszukiwarka(appcontext.zamowienia.map((t) => {
+        appcontext.setZamowieniaWyszukiwarka(appcontext.zamowieniaWyszukiwarka.map((t) => {
           if (t.id == zamowienie_id ) {
             return {...t,
               etap: min.data

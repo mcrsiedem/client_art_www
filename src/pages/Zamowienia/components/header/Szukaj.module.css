@@ -30,8 +30,8 @@
     
 }
 .szukajInput:hover{
-background-color: azure;
-color: black;
+background-color: rgb(255, 255, 255);
+color: rgb(63, 63, 63);
 } 
 
 /* .szukajInput:focus + .icon_clear::after{
@@ -51,10 +51,10 @@ color: black;
 }
 
 
-.icon{
+.icon2{
     width: 15px;
         position: absolute;
     top: 7px;
-    left: 5px;
+    left: 10px;
     /* scale: 70%; */
 }

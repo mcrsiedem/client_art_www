@@ -5,7 +5,8 @@ import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 import { AppContext } from "context/AppContext";
 import iconClose2 from "assets/x2.svg";
-import iconSzukaj from "assets/szukaj.svg";
+// import iconSzukaj from "assets/szukaj.svg";
+import iconSzukaj from "assets/szukaj_green.svg";
 import { useZamowienia } from "hooks/useZamowienia";
 
 

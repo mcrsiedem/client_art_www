@@ -25,7 +25,7 @@ import ProcesElement from "./Elementy/ElementyProcesInsert/ProcesElement";
 import DecodeToken from "../../Login/DecodeToken";
 import Produkty from "./Produkty/Produkty";
 import Stany from "./Stany";
-import SaveAs from "./SaveAs/SaveAs";
+import SaveAs from "./Header/components/SaveAs";
 import ClientStage from "../../../components/Klienci/ClientStage";
 import ReadOnlyAlert from "./ReadOnlyAlert/ReadOnlyAlert";
 

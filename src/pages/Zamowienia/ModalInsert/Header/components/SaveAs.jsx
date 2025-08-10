@@ -1,5 +1,5 @@
 import { useContext} from "react";
-import style from "../SaveAs/SaveAs.module.css";
+import style from "./SaveAs.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
 import { useZamowienieInsert } from "hooks/useZamowienieInsert";

@@ -5,7 +5,7 @@ import style from "./HeaderModal.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useStanyZamowienia } from "hooks/useStanyZamowienia";
 import DialogZapis from "components/Dialog/DialogZapis";
-import SaveAs from "../SaveAs/SaveAs";
+import SaveAs from "./components/SaveAs";
 import ZapiszJakoBTN from "./components/ZapiszJakoBTN";
 import ZapiszBTN from "./components/ZapiszBTN";
 import ZamknijBTN from "./components/ZamknijBTN";

@@ -1,46 +1,72 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "./Szukaj.module.css";
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 import { AppContext } from "context/AppContext";
+import iconClose2 from "assets/x2.svg";
+import iconSzukaj from "assets/szukaj.svg";
+
 
 export default function Szukaj() {
   const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
+    const [inputValue, setInputValue] = useState('');
+  const inputRef = useRef(null);
   // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
     <div className={style.main}>
-      <span className={style.icon_szukaj}>🔍</span>
-          <input
-      className={style.szukajInput}
-      type="text"
-      title="Znajdź tytuł pracy..."
-      placeholder="Praca..."
-      onChange={(event) => {
+      <img className={style.icon} src={iconSzukaj} alt="React Logo" />
+      {/* <span className={style.icon_szukaj}>🔍</span> */}
+      <input
+        ref={inputRef}
+        className={style.szukajInput}
+        type="text"
+        value={inputValue}
+        title="Znajdź tytuł pracy..."
+        placeholder="Praca..."
+        onChange={(event) => {
+           setInputValue(event.target.value);
+          let m = [...zamowieniaWyszukiwarka];
+          m = m.filter((k) =>
+            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase())
+            k.tytul
+              .concat(" ", k.nr)
+              .concat(" ", k.nr_stary)
+              .toLowerCase()
+              .includes(event.target.value.toLowerCase())
+          );
 
+          setZamowienia(m);
+        }}
+      ></input>
 
-        
-        let m = [...zamowieniaWyszukiwarka];
-           m =  m.filter((k) =>
-            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
-            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).toLowerCase().includes(event.target.value.toLowerCase()) 
-          )
-
-        setZamowienia(
-         m
-        );
-
-
-
-
-
-      }}
-    ></input>
-
-    <span className={style.icon_clear}>❌</span>
+    <ClearBTN inputRef={inputRef}/>
     </div>
-
   );
+}
+
+const ClearBTN = ({inputRef}) =>{
+    const contextApp = useContext(AppContext);
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const setZamowienia = contextApp.setZamowienia;
+  if(inputRef.current.value ){
+      return(
+        <div
+          className={style.icon_clear}
+          onClick={() => {
+            if (inputRef.current) {
+              inputRef.current.value = "";
+              console.log("input");
+            }
+            setZamowienia(zamowieniaWyszukiwarka);
+          }}
+        >
+          <img className={style.icon} src={iconClose2} alt="React Logo" />
+        </div>
+  )
+  }
+
 }

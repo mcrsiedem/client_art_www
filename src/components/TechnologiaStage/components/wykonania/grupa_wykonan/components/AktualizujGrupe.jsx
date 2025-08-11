@@ -66,9 +66,6 @@ export default  function AktualizujGrupe({ rowGrupa }) {
 
 let  save = (val) => { 
     return new Promise((resolve,reject)=>{
-
-
-
     resolve("OK")
    
     

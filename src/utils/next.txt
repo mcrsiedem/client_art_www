@@ -2,8 +2,6 @@
 
 Zestawienie blach
 Aktualizacja grupy
-Status zafakturowane X
-Ostrzeżenie o zeszycie /4 X
 Kopiawanie plików razem z nowym elementem
 
 Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera X
@@ -21,8 +19,6 @@ Pliki dodane do otwieranego zamówienia
  Sprawdzić czy plik musi mieć ten sam id co element_id
 
 
- wydanie znika po przeniesieniu na inny procesor_domyslny
+
 
  kopiowanie elementu - kopiowanie procesów i plików
-
- zapisz jako - kwota faktur

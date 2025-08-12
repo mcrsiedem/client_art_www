@@ -79,12 +79,10 @@ const save = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
 }
 
 let roznicaCzasu = (grupaWykonanInit, rowGrupa) =>{
-let koniec = grupaWykonanInit.find(x=> x.id == rowGrupa.id).koniec
+// let koniec = grupaWykonanInit.find(x=> x.id == rowGrupa.id).koniec
 let stary_czas = grupaWykonanInit.find(x=> x.id == rowGrupa.id).czas
 let nowy_czas = rowGrupa.czas
-
-// let koniec = rowGrupa.koniec
-
+let koniec = rowGrupa.koniec
 let roznica = 0
 
   if(nowy_czas>stary_czas){

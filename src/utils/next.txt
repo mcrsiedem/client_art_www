@@ -22,3 +22,8 @@ Pliki dodane do otwieranego zamówienia
 
 
  kopiowanie elementu - kopiowanie procesów i plików
+
+
+Klienci.
+Odblokować znaki
+Sparametryzować zapytanie.

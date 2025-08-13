@@ -287,12 +287,60 @@ let new_wykonania =       wykonania.map((t) => {
           let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
           return suma;
         };
-  setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+        //zmienić na edycję tylko jeden grupy
+            setGrupaWykonan(
+      grupaWykonan.map((t) => {
+        if (t.id === row.grupa_id) {
+          return {...t,czas:SumaCzasow(t,new_wykonania),update:true, przeloty: SumaPrzelotow(t,new_wykonania)};
+        } else {
+          return t;
+        }
+      })
+    );
+  // setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
 
         setWykonania(new_wykonania)
 
 
       };
+
+
+      const updateGrupaAfterAddWykonanie = (row) => {
+
+        console.log("row",row)
+
+let new_wykonania =  [...wykonania] 
+ new_wykonania.push(row)
+
+ console.log("new_wykonania",new_wykonania)
+        const SumaCzasow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+        const SumaPrzelotow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+        //zmienić na edycję tylko jeden grupy
+            setGrupaWykonan(
+      grupaWykonan.map((t) => {
+        if (t.id === row.grupa_id) {
+          return {...t,czas:SumaCzasow(t,new_wykonania),update:true, przeloty: SumaPrzelotow(t,new_wykonania)};
+        } else {
+          return t;
+        }
+      })
+    );
+  // setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
+
+
+
+
+      };
+
+
+
+
 
       const updateRowOprawaTech = (row) => {
         setOprawaTech(
@@ -853,7 +901,7 @@ async function fechTechnology() {
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
-                    grupaWykonanInit, setGrupaWykonanInit
+                    grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie
                 }}
             >
                 {children}

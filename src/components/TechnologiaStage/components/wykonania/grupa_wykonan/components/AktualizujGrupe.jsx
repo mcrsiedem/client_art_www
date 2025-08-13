@@ -29,32 +29,16 @@ export default  function AktualizujGrupe({ rowGrupa }) {
 
         onClick={async() => {
 
-
           if(rowGrupa.proces_nazwa_id==1 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
-
-        //  console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2])
-
           let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
           let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
-          
-          await save({roznica_czasu,rowGrupa,wykonania_update})
+          await update({roznica_czasu,rowGrupa,wykonania_update})
           await refresh({fechparametryTechnologii,rowGrupa})
-
-
-          
           }
 
-               if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
-      
+          if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
 
           }
-
- 
-          // then
-
-          // 
-
-
         }}
         alt="Procesy"
       />
@@ -65,7 +49,7 @@ export default  function AktualizujGrupe({ rowGrupa }) {
 
 }
 
-const save = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
+const update = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
   return new Promise(async(resolve,reject)=>{
    let result = await axios.post(IP + "aktualizuj_grupe_wykonan/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
     resolve(result)

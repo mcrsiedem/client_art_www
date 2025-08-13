@@ -22,6 +22,7 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import PanelMini from "./PanelMini";
 import { IP } from "utils/Host";
+import { zabezpiecz } from "actions/zabezpiecz";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
@@ -103,7 +104,11 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                                                                                                                                         {isOpen && (
         <ul className={style.dropdown_menu } ref={dropdownRef}>
           <li>Dodaj Asystenta</li>
-          <li>Pobierz uprawnienia</li>
+          <li           onClick={() => {
+zabezpiecz()
+     setIsOpen(false)
+          }}>Pobierz uprawnienia</li>
+
 
           <li >Ustawienia</li>
        

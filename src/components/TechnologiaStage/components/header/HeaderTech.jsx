@@ -92,13 +92,13 @@ const ClearBTN = () => {
   const techContext = useContext(TechnologyContext);
   const setShowProcesy = techContext.setShowProcesy;
 // if(DecodeToken(sessionStorage.getItem("token")).id ==1){
- if (DecodeToken(sessionStorage.getItem("token")).id == 1) {
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
     return (
     <button
       className={ style.btn}
       onClick={() => {
 
-             if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+     
 
                       techContext.setArkusze([])
         techContext.setLegi([])
@@ -109,7 +109,7 @@ const ClearBTN = () => {
 
         setShowProcesy(false)
         
-             }
+           
 
       }}
     >

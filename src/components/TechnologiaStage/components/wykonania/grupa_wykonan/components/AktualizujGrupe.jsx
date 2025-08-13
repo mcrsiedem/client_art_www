@@ -26,39 +26,33 @@ export default  function AktualizujGrupe({ rowGrupa }) {
         title="Nanieś zmiany na plan"
         className={style.expand_max}
         src={logoExtract} 
-        onClick={async() => {
-          if(rowGrupa.proces_nazwa_id==1 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
-            //druk
 
+        onClick={async() => {
+
+
+          if(rowGrupa.proces_nazwa_id==1 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
+
+        //  console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2])
+
+          let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
+          let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
+          
+          await save({roznica_czasu,rowGrupa,wykonania_update})
+          await refresh({fechparametryTechnologii,rowGrupa})
+
+
+          
           }
-      
 
                if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
-            //falc
-
-          }
       
 
+          }
 
-
-          console.log(roznicaCzasu(grupaWykonanInit,rowGrupa)[0]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[1]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[2]+" " + roznicaCzasu(grupaWykonanInit,rowGrupa)[3])
-          // uprawnienia: proces_nazwa_id 
-          // 1 druk 
-          // 2 uszlachetnianie
-          // 3 falcowanie
-          let roznica_czasu = roznicaCzasu(grupaWykonanInit)
-
-          
-          // axios
-          // wysłać do aktualizacji
-          // roznicaCzasu
-          // rowGrupa
-          let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
-          // const saved  = await save(roznica_czasu,rowGrupa,wykonania_update)
-          
+ 
           // then
 
-          // fechparametryTechnologii(rowGrupa.zamowienie_id,rowGrupa.technologia_id)
+          // 
 
 
         }}
@@ -75,6 +69,14 @@ const save = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
   return new Promise(async(resolve,reject)=>{
    let result = await axios.post(IP + "aktualizuj_grupe_wykonan/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
     resolve(result)
+  })
+}
+
+const refresh = ({fechparametryTechnologii,rowGrupa}) =>{
+  
+  return new Promise(async(resolve,reject)=>{
+      fechparametryTechnologii(rowGrupa.zamowienie_id,rowGrupa.technologia_id)
+      resolve("OK")
   })
 }
 

@@ -19,7 +19,8 @@ import { useStatus } from "hooks/useStatus";
 import { getNameOfElement } from "actions/getNameOfElement";
 import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 import { getNameOfElementTyp } from "actions/getNameOfElementTyp";
-import ELEMENT_DODAJ from "./Row/ELEMENT_DODAJ2";
+import ELEMENT_DODAJ from "./Row/ELEMENT_DODAJ";
+import ELEMENT_PROCESY from "./Row/ELEMENT_PROCESY";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -237,12 +238,8 @@ export default function RowElement({
             handleChangeCardElementy={handleChangeCardElementy}
           />
 
-          <Procesy
-            row={row}
-            handleChangeCardElementy={handleChangeCardElementy}
-            setShowElementyProcesyInsert={setShowElementyProcesyInsert}
-            procesyElementow={procesyElementow}
-          />
+          <ELEMENT_PROCESY row={row}/>
+
           <Usun
             row={row}
             handleChangeCardElementy={handleChangeCardElementy}
@@ -326,70 +323,7 @@ const oprawa = contextModalInsert.oprawa;
     );}else return <p> </p>
   }
   
-function Procesy({ row}) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const appContext = useContext(AppContext);
 
-  const procesyElementow =contextModalInsert.procesyElementow;
-  const procesyElementowTemporary =contextModalInsert.procesyElementowTemporary;
-
-  const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
-
-    return (
-      <div id="procesy" className={style.procesy} >
-
-      <div className={style.procesy_elementy}>
-                    <img
-            className={style.expand_procesy}
-            src={Logo_ustawienia}
-            onClick={() => {
-              contextModalInsert.setShowElementyProcesyInsert(true);
-              contextModalInsert.setSelectedElementROW(row)
-              setProcesyElementowTemporary(procesyElementow)
-            }}
-            alt="Procesy"
-          />
-       </div>
-
-
-
-      <div  className={style.procesy_elementy_dol}>
-            {/* {procesyElementow
-            .filter((frag) => frag.element_id == row.id)
-            .sort((a, b) => a.indeks - b.indeks)
-            .filter((x) => x.delete != true)
-            .map((pr,i) => (<><p className={style.procesy_elementy_bold}>{appContext.showMeProcessName( pr.nazwa_id)} </p> <p className={style.procesy_elementy_light}>  {pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+ " "}</p> </>) 
-            )
-            } */}
-            <PROCESS_TITLE row={row}/>
-      </div>
- 
-    </div>
-    );
-  }
-
-const PROCESS_TITLE = ({row}) =>{
-  const contextModalInsert = useContext(ModalInsertContext);
-
-  const procesyElementow =contextModalInsert.procesyElementow;
-const appContext = useContext(AppContext);
-const procesListName = appContext.procesListName
-const showMeProcessName = (id) =>{
-    return  procesListName?.filter(pln => pln.id == id)[0].nazwa
-   }
-
-  return (
-  <>
-  {procesyElementow
-  .filter((frag) => frag.element_id == row.id)
-  .sort((a, b) => a.indeks - b.indeks)
-  .filter((x) => x.delete != true)
-  .map((pr,i) => (<> <p className={style.procesy_elementy_indeks}> {pr.indeks}</p><p className={style.procesy_elementy_bold}>{ procesListName?.filter(pln => pln.id == pr.nazwa_id)[0].nazwa } </p> <p className={style.procesy_elementy_light}>  {pr.typ+" "+pr.rodzaj+" "+pr.wykonczenie+" "+pr.obszar+ " "}</p> </>) ) 
-  }
-  </>
-  ) 
-}
-  
 function Usun({ row, handleChangeCardElementy, handleRemoveItem }) {
   const [setStatus] = useStatus()
   const [add] = useHistoria()

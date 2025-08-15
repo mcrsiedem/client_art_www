@@ -14,12 +14,15 @@ export default function ExpandOprawa({setExpand}) {
 
   return (
     <tr  className={style.container} >
-      <td className={style.main}  colSpan={16}>
+      <td colSpan={16}>
       
         <div className={style.container}>
-          <div className={style.container2}>
+          <div className={style.stage}>
+
           <button className={style.btn_zamknij} onClick={()=>setExpand(false)}>Zamknij</button>
-          <button className={style.btn_zamknij} onClick={()=>setExpand(false)}>Zamknij</button>
+          {/* <button className={style.btn_zamknij} onClick={()=>setExpand(false)}>Zamknij</button> */}
+
+
           </div>
         </div>
       

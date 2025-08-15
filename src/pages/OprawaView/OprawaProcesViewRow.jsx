@@ -29,6 +29,8 @@ import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
 import { useAccess } from "hooks/useAccess";
+import Expand from "./expand/ExpandOprawa";
+import ExpandOprawa from "./expand/ExpandOprawa";
 
 
 
@@ -46,113 +48,57 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
         const [expand, setExpand] = useState(false);
                 const [wolno] = useAccess(false);
 
-
           const selectColor = (status) => {
             if (status == 4) return style.procesRow_tr_DRUK;
             if (status == 2) return style.procesRow_tr_RIP;
             if (status == 3) return style.procesRow_tr_RIP;
-
             if (grup.select) return style.procesRow_select;
-
             return style.procesRow_tr;
           };
 
-
-        
-
   return (
-<>
-                <tr
-                  title={"Grupa id: " +grup.global_id}
-                  // draggable={unlockTable}
-                  draggable={wolno()}
+    <>
+      <tr
+        title={"Grupa id: " + grup.global_id}
+        // draggable={unlockTable}
+        draggable={wolno()}
+        key={grup.global_id}
+        onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}
+        onDragOver={handleDragOver}
+        onDragStart={() => {
+          handleDragStart(grup.global_id, grup.typ_grupy);
+        }}
+        // className={style.tr_legi_mini}
+        className={selectColor(grup.status)}
+        onDoubleClick={(node, event) => {
+          if (grup.typ_grupy != 1) {
+            // fechparametryTechnologii(grup.zamowienie_id, grup.technologia_id);
+            setExpand(!expand)
 
-                   key={grup.global_id}
-                  onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
-                 onDragOver={handleDragOver}
-                  
-                  onDragStart={() => {
-                
-                      handleDragStart(grup.global_id,grup.typ_grupy)
-            
-                    
-                  }}
-                  // className={style.tr_legi_mini}
-                 className={selectColor(grup.status) }
-
-                  onDoubleClick={(node, event) => {
-         
-                      if(grup.typ_grupy != 1 ){
-                        fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
-                      }
-                    
-                  }}
-                >
-                         <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
-                          <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
-                  <KoniecGrupa grup={grup}/>
-
-           
-
-                        <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
-                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
-                  <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
-                        <td style={{minWidth: "130px"}}>{grup.tytul}</td>
-                        {/* <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
-                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td> */}
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                  {/* <td className={style.td_tableProcesy_klient}>{grup.ilosc_zbieran}</td> */}
-                  <td className={style.td_tableProcesy_klient}>{grup.naklad}</td>
-                  <td className={style.td_tableProcesy_klient}>{grup.typ_procesu}</td>
-                  <td className={style.td_tableProcesy_klient}>{grup.rodzaj_procesu}</td>
-                  <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
-                  {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
-
-                  {/* {grup.typ_grupy != 1 ?  <Stan grup={grup}/> : <></>} */}
-                 <Status grup={grup}/> 
-
-                  
-                 
-                </tr>
-                {expand ? (
-              wykonaniaAll
-                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
-                .map((row) => {
-                  return (
-                    <tr  key={row.global_id}>
-                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
-      
-                      <td></td>
-                      <td>{row.czas}</td>
-                      {/* <td> global id {row.global_id}</td> */}
-                      {/* <td>element_id {row.element_id}</td> */}
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      {/* <td>grupa_id {row.grupa_id}</td> */}
-                      <td></td>
-                      <td></td>
-                   
-           
-                      
-                 
-                    </tr>
-                  );
-                })
-            ) : (
-              <></>
-            )}   
-
-
-
-</>
+          }
+        }}
+      >
+        <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+        <td className={style.td_tableProcesy_czas}>
+          {zamienNaGodziny(grup.czas)}{" "}
+        </td>
+        <KoniecGrupa grup={grup} />
+        <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
+        <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
+        <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+        <td style={{ minWidth: "130px" }}>{grup.tytul}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td className={style.td_tableProcesy_klient}>{grup.naklad}</td>
+        <td className={style.td_tableProcesy_klient}>{grup.typ_procesu}</td>
+        <td className={style.td_tableProcesy_klient}>{grup.rodzaj_procesu}</td>
+        <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
+        <Status grup={grup} />
+      </tr>
+      {expand ? (<ExpandOprawa/>) : (<></>)}
+    </>
   );
 
 
@@ -228,25 +174,14 @@ function Status({grup}) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
     const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
-  
-
-
-            const selectColor = (status) =>{
-
-
-
-              if(grup.proces_nazwa_id !=1){
-    if (status==4) return style.select_DRUK
-    if (status==2) return style.select_RIP
-    if (status==3) return style.select_RIP
-
-     return style.select
+            const selectColor = (status) => {
+              if (grup.proces_nazwa_id != 1) {
+                if (status == 4) return style.select_DRUK;
+                if (status == 2) return style.select_RIP;
+                if (status == 3) return style.select_RIP;
+                return style.select;
               }
-
-
-
-
-  }
+            };
 
 
 
@@ -256,14 +191,11 @@ function Status({grup}) {
   return (
 <td style={{width: "160px"}}>
       <select
-        // className={style.select}
        className={selectColor(grup.status) }
-
         value={grup.status}
         onChange={(event) => {
    console.log("grupa"+grup)
           statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value,stary_status: grup.status})
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
         }}
       >
         {_status_wykonania.map((option) => (

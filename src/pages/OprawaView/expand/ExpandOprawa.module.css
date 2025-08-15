@@ -1,0 +1,33 @@
+
+.main{
+   display: grid;
+   grid-template-rows: 50px 1fr 60px;
+   /* background-color: #e74a3b; */
+  
+}
+
+.container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   
+   
+
+/* background-color: lightcyan; */
+/* width: 700px; */
+}
+
+.tableContainer{
+   /* padding-top: 50px; */
+  height: calc(100vh - 120px);
+ width: 100vw;
+
+  /* min-width: 100vw; */
+  min-width: 95vw;
+
+   /* max-height: 300px;  */
+   overflow: auto;
+
+
+}

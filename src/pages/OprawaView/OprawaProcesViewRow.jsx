@@ -97,7 +97,10 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
       </tr>
-      {expand ? (<ExpandOprawa/>) : (<></>)}
+    
+
+      {expand ? (<ExpandOprawa setExpand={setExpand}/>) : (<></>)}
+    
     </>
   );
 

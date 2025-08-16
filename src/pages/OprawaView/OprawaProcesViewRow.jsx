@@ -11,7 +11,7 @@ import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
 import { useAccess } from "hooks/useAccess";
-import ExpandOprawa from "./expand/ExpandOprawa";
+import TechnologiaDetails from "./TechnologiaDetails/TechnologiaDetails";
 
 export default function OprawaProcesViewRow({ grup }) {
     const techContext = useContext(TechnologyContext);
@@ -58,7 +58,7 @@ export default function OprawaProcesViewRow({ grup }) {
             );
 
             if(grup.typ_grupy != 1 ){
-              fechparametryTechnologiiDetails(grup.id,grup.technologia_id)
+              fechparametryTechnologiiDetails(grup.zamowienie_id,grup.technologia_id)
             }else{
               techContext.setProcesyElementowTech([])
             }
@@ -87,7 +87,7 @@ export default function OprawaProcesViewRow({ grup }) {
         <Status grup={grup} />
       </tr>
 
-        <ExpandOprawa grup={grup}/>
+        <TechnologiaDetails grup={grup}/>
     </>
   );
 

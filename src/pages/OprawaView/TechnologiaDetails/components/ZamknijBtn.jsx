@@ -1,20 +1,13 @@
-import React, {useContext } from "react";
-import style from "./ExpandOprawa.module.css";
-
+import React, {useContext, } from "react";
+import style from "./ZamknijBtn.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 
-export default function ExpandOprawa({grup}) {
+export default function ZamknijBtn({ grup }) {
   const techContext = useContext(TechnologyContext);
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const grupyOprawaAll = techContext.grupyOprawaAll;
-
-if(grup.show)
   return (
-    <tr className={style.container}>
-      <td colSpan={16}>
-        <div className={style.container}>
-          <div className={style.stage}>
-            <button
+    <button
               className={style.btn_zamknij}
               onClick={() => {
                 setGrupyOprawaAll(
@@ -30,13 +23,7 @@ if(grup.show)
             >
               Zamknij
             </button>
-          </div>
-        </div>
-      </td>
-    </tr>
   );
-
-
 }
 
 

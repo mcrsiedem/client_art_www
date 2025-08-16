@@ -1,53 +1,27 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-
-
-import icon from "assets/copy.svg";
-
-
-
-import { reg_int } from "utils/initialvalue";
-// import NrArkusza from "./NrArkusza";
-// import { reg_int } from "utils/initialvalue";
-import axios from "axios";
-import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import style from "./OprawaProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "./OprawaProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
-import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
-import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
-import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
-import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
-import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
-import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
 import { useAccess } from "hooks/useAccess";
-import Expand from "./expand/ExpandOprawa";
 import ExpandOprawa from "./expand/ExpandOprawa";
 
-
-
-export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }) {
-    const navigate = useNavigate();
+export default function OprawaProcesViewRow({ grup }) {
     const techContext = useContext(TechnologyContext);
     const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
-  const selectedProces = techContext.selectedProces;
-    
-    const wykonaniaAll = techContext.wykonaniaAll;
-    const appcontext = useContext(AppContext);
-    const typ_elementu = appcontext.typ_elementu;
 
-      const fechparametryTechnologii = techContext.fechparametryTechnologii;
-        const [expand, setExpand] = useState(false);
-                const [wolno] = useAccess(false);
-
+    const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologiiDetails;
+    const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+    const grupyOprawaAll = techContext.grupyOprawaAll;
+      
+          const [wolno] = useAccess(false);
           const selectColor = (status) => {
             if (status == 4) return style.procesRow_tr_DRUK;
             if (status == 2) return style.procesRow_tr_RIP;
@@ -60,7 +34,6 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
     <>
       <tr
         title={"Grupa id: " + grup.global_id}
-        // draggable={unlockTable}
         draggable={wolno()}
         key={grup.global_id}
         onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}
@@ -68,12 +41,28 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
         onDragStart={() => {
           handleDragStart(grup.global_id, grup.typ_grupy);
         }}
-        // className={style.tr_legi_mini}
         className={selectColor(grup.status)}
         onDoubleClick={(node, event) => {
-          if (grup.typ_grupy != 1) {
-            // fechparametryTechnologii(grup.zamowienie_id, grup.technologia_id);
-            setExpand(!expand)
+          if (grup.typ_grupy !=1) {
+     
+            setGrupyOprawaAll(
+              grupyOprawaAll
+              .map(x => {return { ...x, show:false}})
+              .map((t) => {
+                if (t.global_id == grup.global_id) {
+                  return { ...t, show:true};
+                } else {
+                  return t;
+                }
+              })
+            );
+
+            if(grup.typ_grupy != 1 ){
+              fechparametryTechnologiiDetails(grup.id,grup.technologia_id)
+            }else{
+              techContext.setProcesyElementowTech([])
+            }
+
 
           }
         }}
@@ -97,10 +86,8 @@ export default function OprawaProcesViewRow({ grup,unlockTable, setUnlockTable }
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
       </tr>
-    
 
-      {expand ? (<ExpandOprawa setExpand={setExpand}/>) : (<></>)}
-    
+        <ExpandOprawa grup={grup}/>
     </>
   );
 

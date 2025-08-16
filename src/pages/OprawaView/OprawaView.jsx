@@ -77,7 +77,7 @@ export default function OprawaView( ) {
         <OprawaProcesyHeader />
         <WykonaniaTable  />
       <div className={style.container}>
-        <TechnologiaStage/>
+        {/* <TechnologiaStage/> */}
         <Procesory
         />
       </div>
@@ -113,10 +113,10 @@ const WykonaniaTable = () => {
                 // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
 
                 if (grup.typ_grupy == 2) {
-                return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+                return (<OprawaProcesViewRow grup={grup} key={i} />)
                 }
                 else{
-                return (<OprawaProcesViewRowPrzerwa grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
+                return (<OprawaProcesViewRowPrzerwa grup={grup}/>)
 
 
                 }

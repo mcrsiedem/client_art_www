@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import style from "./TABLE_ROW_ZAMOWIENIA.module.css";
 import iconAdd from "assets/add2.svg";
-import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
-import iconError from "assets/error.svg";
 import iconLockRed from "assets/lock2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -26,54 +24,21 @@ import SkasujBTN from "./components/SkasujBTN";
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
-  const technology = techContext.technology; // technologie
   const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie
   const procesyElementowTech = techContext.procesyElementowTech; // technologie
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
-  const selectedZamowienie = contextModalInsert.selectedZamowienie;
-  const setShowMenuZamowienia = contextModalInsert.setShowMenuZamowienia;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   const contextApp = useContext(AppContext);
   
   const zamowienia = contextApp.zamowienia
-  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka
   const setZamowienia = contextApp.setZamowienia
   const zamowieniaPliki = contextApp.zamowieniaPliki
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
     const [sortWgEtapu] = useSortowanieZamowienia()
-
       const contextModal = useContext(ModalInsertContext);
-    const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
-
-  //  const contextModalInsert = useContext(ModalInsertContext);
-const showTabs = contextModalInsert.showTabs
 const setShowTabs = contextModalInsert.setShowTabs
-
-
-  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
-
-  // const onMenuHandle = (event) =>{
-  //   event.preventDefault();
-
-  //   console.log(event)
-  //   console.log(event.pageX)
-  //   console.log(event.pageY)
-  //   console.log(event.screenX)
-  //   console.log(event.screenY)
-  //   console.log(row.tytul)
-  //   setZamowienia(
-  //     zamowienia.map((t) => {
-  //       if (t.id == row.id) {
-  //         return { ...row, select: true };
-  //       } else {
-  //         return t;
-  //       }
-  //     })
-  //   );
-  //   setShowMenuZamowienia(true)
-  // }
 
   const onMenuHandle2 = (event) =>{
     event.preventDefault();
@@ -94,111 +59,109 @@ const setShowTabs = contextModalInsert.setShowTabs
     }else{
       techContext.setProcesyElementowTech([])
     }
-    // tutaj pobrać procesy elementów z technologi
+
   }
 
   return (
     <>
       <tr
-      onContextMenu={(event)=>{
-    
-         onMenuHandle2(event)
+        onContextMenu={(event) => {
+          onMenuHandle2(event);
+        }}
+        title={
+          "Zamówienie id: " +
+          row.id +
+          " utworzono: " +
+          row.utworzono +
+          " Zmodyfikowano: " +
+          row.zmodyfikowano
         }
-       
+        className={
+          row.select ? style.row_zamowienia_select : style.row_zamowienia
         }
-        title={"Zamówienie id: " + row.id + " utworzono: " + row.utworzono + " Zmodyfikowano: " +row.zmodyfikowano}
-        className={row.select ? style.row_zamowienia_select: style.row_zamowienia}
         // className={ style.row_zamowienia}
         key={row.id}
         onMouseDown={(event) => {
-
-
           if (event.shiftKey) {
-            let indeks_start = sessionStorage.getItem("indeks_start")
-            let indeks_stop = i
-                setZamowienia( zamowienia           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-                           .filter((zam) => {
-                            if (selectedUser == 0) {
-                              return true;
-                            } else {
-                             return  zam.opiekun_id == selectedUser;
-                            }
-                          })
-                           .filter(z => z.stan ==3)
-                           .filter((zam) => {
-                            if (selectedKlient == 0) {
-                              return true;
-                            } else {
-                             return  zam.klient_id == selectedKlient;
-                            }
-                          })
-                          .filter((zamowienie) => sortWgEtapu({zamowienie}))
-      .map(x => {return { ...x, select: false}})
-      .map((t,indeks) => {
-        if (indeks >= indeks_start && indeks<= indeks_stop ) {
-          return { ...t, select: true};
-        } else {
-          return t;
-        }
-      })  );
-
-
-          }else{
-
-
-                                      setZamowienia(
-      zamowienia
-      .map(x => {return { ...x, select: false}})
-      .map((t,indeks) => {
-        if (t.id == row.id) {
-          return { ...t, select: true};
-        } else {
-          return t;
-        }
-      })
-    );
-         }
-
-                              if (event.ctrlKey) {
-                            setZamowienia(
-      zamowienia
-      // .map(x => {return { ...x, select: false}})
-      .map((t,indeks) => {
-        if (t.id == row.id) {
-          return { ...t, select: !t.select};
-        } else {
-          return t;
-        }
-      })
-    );
-         }
-
-
-          sessionStorage.setItem("indeks_start",i)
-
+            let indeks_start = sessionStorage.getItem("indeks_start");
+            let indeks_stop = i;
+            setZamowienia(
+              zamowienia
+                .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+                .filter((zam) => {
+                  if (selectedUser == 0) {
+                    return true;
+                  } else {
+                    return zam.opiekun_id == selectedUser;
+                  }
+                })
+                .filter((z) => z.stan == 3)
+                .filter((zam) => {
+                  if (selectedKlient == 0) {
+                    return true;
+                  } else {
+                    return zam.klient_id == selectedKlient;
+                  }
+                })
+                .filter((zamowienie) => sortWgEtapu({ zamowienie }))
+                .map((x) => {
+                  return { ...x, select: false };
+                })
+                .map((t, indeks) => {
+                  if (indeks >= indeks_start && indeks <= indeks_stop) {
+                    return { ...t, select: true };
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          } else {
+            setZamowienia(
+              zamowienia
+                .map((x) => {
+                  return { ...x, select: false };
+                })
+                .map((t, indeks) => {
+                  if (t.id == row.id) {
+                    return { ...t, select: true };
+                  } else {
+                    return t;
+                  }
+                })
+            );
           }
 
+          if (event.ctrlKey) {
+            setZamowienia(
+              zamowienia
+                // .map(x => {return { ...x, select: false}})
+                .map((t, indeks) => {
+                  if (t.id == row.id) {
+                    return { ...t, select: !t.select };
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          }
 
-
-
-        }
+          sessionStorage.setItem("indeks_start", i);
+        }}
         onClick={(node, e) => {
-          setSelectedZamowienie({...row, i});
-
-
-
-
-
-
+          setSelectedZamowienie({ ...row, i });
         }}
         onDoubleClick={(node, event) => {
-       setShowTabs(   {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
+          setShowTabs({
+            parametry: true,
+            koszty: false,
+            historia: false,
+            faktury: false,
+            kreator: false,
+          });
 
-setOpenModalInsert(true)
-
+          setOpenModalInsert(true);
         }}
       >
-
         <NrTableZamowienia row={row} />
 
         <ShowTechnmologiaBtn
@@ -209,7 +172,7 @@ setOpenModalInsert(true)
 
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} i={i} />
-     
+
         <NakladTableZamowienia row={row} />
         <td className={style.nakladInput}>{row.ilosc_stron}</td>
         <DataPrzyjeciaTableZamowienia row={row} />
@@ -224,27 +187,35 @@ setOpenModalInsert(true)
         <td></td>
       </tr>
 
-{row.show &&(
+      {row.show && (
+        <>
 
-  <>
-  {zamowieniaPliki.filter(x => x.zamowienie_id ==row.id).map((plikiRow,indeksPliki)=> (
-  <TABLE_ROW_PLIKI plikiRow={plikiRow} row={row} indeksPliki={indeksPliki}/>
-   )) }
-  {procesyElementowTech?.map(proces=> (
-  <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row}/>
-   )) }
-      
-    <tr >
-    <td colSpan={18}>
-      <div className={style.zamowienia_menu_row}>
-        <OdblokujBTN row={row}/>
-        <ZamknijBTN row={row}/>
-        <SkasujBTN row={row}/>
-      </div>
-    </td>
-   </tr>
-  </>
-)}
+          {zamowieniaPliki
+            .filter((x) => x.zamowienie_id == row.id)
+            .map((plikiRow, indeksPliki) => (
+              <TABLE_ROW_PLIKI
+                plikiRow={plikiRow}
+                row={row}
+                indeksPliki={indeksPliki}
+              />
+            ))}
+          {procesyElementowTech?.map((proces) => (
+            <TABLE_ROW_PROCESY proces={proces} rowZamowienie={row} />
+          ))}
+
+          <tr>
+            <td colSpan={18}>
+              <div className={style.zamowienia_menu_row}>
+                <OdblokujBTN row={row} />
+                <ZamknijBTN row={row} />
+                <SkasujBTN row={row} />
+              </div>
+            </td>
+          </tr>
+
+
+        </>
+      )}
     </>
   );
 }

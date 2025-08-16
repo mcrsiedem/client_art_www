@@ -307,12 +307,12 @@ let new_wykonania =       wykonania.map((t) => {
 
       const updateGrupaAfterAddWykonanie = (row) => {
 
-        console.log("row",row)
+        // console.log("row",row)
 
 let new_wykonania =  [...wykonania] 
  new_wykonania.push(row)
 
- console.log("new_wykonania",new_wykonania)
+//  console.log("new_wykonania",new_wykonania)
         const SumaCzasow = (grupa,new_wykonania) => {
           let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
           return suma;
@@ -321,11 +321,11 @@ let new_wykonania =  [...wykonania]
           let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
           return suma;
         };
-        //zmienić na edycję tylko jeden grupy
+
             setGrupaWykonan(
       grupaWykonan.map((t) => {
         if (t.id === row.grupa_id) {
-          return {...t,czas:SumaCzasow(t,new_wykonania),update:true, przeloty: SumaPrzelotow(t,new_wykonania)};
+          return {...t,czas:SumaCzasow(t,new_wykonania),update:true,ilosc_narzadow: parseInt(t.ilosc_narzadow)+1, przeloty: SumaPrzelotow(t,new_wykonania)};
         } else {
           return t;
         }

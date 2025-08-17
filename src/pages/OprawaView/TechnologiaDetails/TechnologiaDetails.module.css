@@ -1,14 +1,14 @@
 .container {
    width: 100%;
-   height: 150px;
+   margin: 10px;
 }
 
 .stage {
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    align-items: center;
    justify-content: center;
-   /* background-color: lightcyan; */
+   gap:20px;
    height: 100%;
 }
 

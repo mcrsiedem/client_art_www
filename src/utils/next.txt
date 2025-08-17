@@ -1,29 +1,25 @@
 01/08/2025
 
 Zestawienie blach
-Aktualizacja grupy
 Kopiawanie plików razem z nowym elementem
 
-Pobieranie szczegółów zamówienia na nowo ze sprawdzaniem uprawnien po stronie serwera X
 Pliki dodane do otwieranego zamówienia
-
-
-
- token CSRF razem z jwt
- 
-
-
 
 
  Problem statusu plików
  Sprawdzić czy plik musi mieć ten sam id co element_id
 
 
-
-
- kopiowanie elementu - kopiowanie procesów i plików
-
-
 Klienci.
 Odblokować znaki
 Sparametryzować zapytanie.
+
+Dodaj asystenta
+
+
+Oprawa. Szczegóły po dbClik. Elementy + procesy 
+
+ token CSRF razem z jwt
+
+
+Koszty i faktury. Stworzyć historię

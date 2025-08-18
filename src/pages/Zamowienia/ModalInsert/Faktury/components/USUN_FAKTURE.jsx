@@ -4,6 +4,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Faktury.module.css";
 
 import iconTrash from "assets/trash2.svg";
+import { useHistoria } from "hooks/useHistoria";
 
 export default function USUN_FAKTURE({faktura}) {
 
@@ -37,6 +38,8 @@ export default function USUN_FAKTURE({faktura}) {
     const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
   const ksiegowosc = contextModal.ksiegowosc;
   const setKsiegowosc = contextModal.setKsiegowosc;
+   const daneZamowienia = contextModal.daneZamowienia;
+     const [add] = useHistoria()
   return (
     <div>
       <div>
@@ -48,30 +51,23 @@ export default function USUN_FAKTURE({faktura}) {
           src={iconTrash}
           onClick={() => {
 
-      //             setFaktury(
-      //   faktury.map((t) => {
-      //     if (t.id == faktura.id) {
-      //       return {...faktura, delete: true};
-      //     } else {
-      //       return t;
-      //     }
-      //   })
-      // )
-
 
                 handleFaktury({
                   ...faktura,
                   delete: true,
                 });
 
+                if(faktura.insert != true){
+                              add(         {
+              kategoria: "Faktura",
+              event: "Skasowano: "+ faktura.nazwa+" ilosc: "+ faktura.ilosc+" cena: " + faktura.cena+" suma: "+ faktura.suma , 
+              zamowienie_id: daneZamowienia.id
+            })
+                }
 
-                // console.log("lenght: "+faktury.filter(x=>x.delete != true).length)
-                // if(faktury.filter(x=>x.delete == true).length ==0 ){
-                //   setKsiegowosc({...ksiegowosc, faktury_status:1, update:true})
-                // }
+   
 
-            // handleRemoveItem(row.indeks, row.id);
-            //  setStatus(3)
+
           }}
           alt="Procesy"
         />

@@ -3,6 +3,8 @@ import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Faktury.module.css";
 import { zapisKosztowDodatkowychZamowienia } from "actions/zapisKosztowDodatkowychZamowienia";
+import { useHistoria } from "hooks/useHistoria";
+import { getNameStatus } from "actions/getNameStatus";
 
 export default function StatusFaktury() {
     const contextApp = useContext(AppContext);
@@ -10,7 +12,11 @@ export default function StatusFaktury() {
     // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     const ksiegowosc = contextModalInsert.ksiegowosc;
     const setKsiegowosc = contextModalInsert.setKsiegowosc;
+    const daneZamowienia = contextModalInsert.daneZamowienia;
+
     const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
+        const _status_faktury = contextApp._status_faktury;
+        const [add] = useHistoria()
       return (
         <div className={style.col}>
           <label className={style.status_label}> Status </label>
@@ -20,11 +26,12 @@ export default function StatusFaktury() {
     
             onChange={(event) => {
               setKsiegowosc({...ksiegowosc, faktury_status:parseInt( event.target.value), update:true})
-              // console.log("koszty1 :" +kosztyDodatkoweZamowienia[0].id)
-              // setKosztyDodatkoweZamowienia({...kosztyDodatkoweZamowienia, status: event.target.value});
-              // zapisKosztowDodatkowychZamowienia(kosztyDodatkoweZamowienia,setKosztyDodatkoweZamowienia,event.target.value)
-                
-            //   setSaveButtonDisabled(false)
+
+                          add(         {
+                            kategoria: "Faktura",
+                            event: " Zmiana  z "+ getNameStatus( ksiegowosc.faktury_status,_status_faktury )+ " na "+ getNameStatus( event.target.value,_status_faktury ) ,
+                            zamowienie_id: daneZamowienia.id
+                          })
             }}
           >
             {contextApp._status_faktury.map((option) => (

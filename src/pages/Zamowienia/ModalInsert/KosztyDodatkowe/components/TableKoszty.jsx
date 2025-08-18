@@ -67,10 +67,9 @@ export default function TableKoszty() {
                   
             </tbody>
           </table>
-<DodajKoszty/>   
+                <DodajKoszty/>   
                 <div className={style.zestawienie_kosztow }>
-              
-                       <StatusKosztow/>
+                <StatusKosztow/>
                 </div>
         </div>
   

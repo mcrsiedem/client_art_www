@@ -4,6 +4,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../KosztyDodatkowe.module.css";
 
 import iconTrash from "assets/trash2.svg";
+import { useHistoria } from "hooks/useHistoria";
 
 export default function UsunKoszt({koszt}) {
   const buttonStyles = {
@@ -32,36 +33,33 @@ export default function UsunKoszt({koszt}) {
   const kosztyDodatkoweZamowienia = contextModal.kosztyDodatkoweZamowienia;
   const setKosztyDodatkoweZamowienia = contextModal.setKosztyDodatkoweZamowienia;
   const handleKosztyDodatkoweZamowienia = contextModal.handleKosztyDodatkoweZamowienia;
+      const daneZamowienia = contextModal.daneZamowienia;
+   const [add] = useHistoria()
   return (
     <div>
       <div>
         <img
           style={currentStyles}
-          // onClick={onClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           src={iconTrash}
           onClick={() => {
 
-      //             setKosztyDodatkoweZamowienia(
-      //   kosztyDodatkoweZamowienia.map((t) => {
-      //     if (t.id == koszt.id) {
-      //       return {...koszt, delete: true};
-      //     } else {
-      //       return t;
-      //     }
-      //   })
-      // )
-
-
                       handleKosztyDodatkoweZamowienia({
                         ...koszt,
-            
                         delete: true
                       });
-            // handleRemoveItem(row.indeks, row.id);
-            //  setStatus(3)
-          }}
+
+              if(koszt.insert != true){       
+            add(         {
+              kategoria: "Koszty dodatkowe",
+              event: "Skasowano: "+ koszt.nazwa+" ilosc: "+ koszt.ilosc+" cena: " + koszt.cena+" suma: "+ koszt.suma , 
+              zamowienie_id: daneZamowienia.id
+            })
+            }}
+          }
+
+          
           alt="Procesy"
         />
       </div>

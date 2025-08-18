@@ -464,6 +464,7 @@ const _status_wykonania = [
     nazwa: "Anulowane",
   },
 ];
+
 const _etapy_produkcji = [
   {
     id: 1,
@@ -657,6 +658,7 @@ export {
   _status_technologi,
   _etap_plikow,
   _status_wydania_papieru,
+
   
 
 };

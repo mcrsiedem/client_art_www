@@ -78,6 +78,7 @@ const [refreshZamowienia] = useZamowienia()
            <th className={style.col_status}>Stan</th>
            <th className={style.col_status}>Status</th>
            <th className={style.col_etap}>Etap</th>
+          
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
            {/* <th className={style.col_uwagi}>Uwagi</th> */}
 

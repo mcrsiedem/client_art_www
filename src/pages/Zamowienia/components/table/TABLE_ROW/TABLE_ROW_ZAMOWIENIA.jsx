@@ -10,6 +10,7 @@ import {
   _etapy_produkcji,
   _stan_dokumentu,
   _status_dokumentu,
+  _status_etapu,
 } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
@@ -183,6 +184,7 @@ const setShowTabs = contextModalInsert.setShowTabs
         <StanZamowieniaTable row={row} />
         <StatusZamowieniaTable row={row} />
         <EtapZamowieniaTable row={row} />
+    
         <OpiekunZamowieniaTable row={row} />
         <td></td>
       </tr>
@@ -430,6 +432,8 @@ const EtapZamowieniaTable = ({ row }) => {
     </td>
   );
 };
+
+
 
 
 const OpiekunZamowieniaTable = ({ row }) => {

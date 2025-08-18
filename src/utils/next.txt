@@ -19,3 +19,22 @@ Oprawa. Szczegóły po dbClik. Elementy + procesy
  token CSRF razem z jwt
 
 
+status etapu
+
+
+
+
+
+
+const _status_etapu = [
+
+  {
+    id:1,
+    nazwa: "W trakcie",
+  },
+
+  {
+    id: 2,
+    nazwa: "Zakończone",
+  }
+];

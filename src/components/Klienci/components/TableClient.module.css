@@ -1,15 +1,26 @@
 .id{
     width: 10px;
+    padding-left: 20px;
+}
+
+.firma{
+    padding-left: 20px;
+}
+.adres{
+    padding-left: 20px;
 }
 
 .kod{
+    padding-left: 20px;
     width: 20px;
 }
 .nip{
+    padding-left: 20px;
     width: 120px;
 }
 
 .opiekun{
+    padding-left: 20px;
     width: 200px;
 }
 .th_ustawienia{

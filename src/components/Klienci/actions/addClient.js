@@ -17,7 +17,7 @@ export const  addClient  = async ({daneKlienta,setClients,setClientsWyszukiwarka
       .then((res2) => {
         
          getClients(setClients,setClientsWyszukiwarka )
-         console.log("initialKlient",initialKlient)
+        //  console.log("initialKlient",initialKlient)
          setDaneKlienta(initialKlient)
          setShowAddClientPane(false)
       })

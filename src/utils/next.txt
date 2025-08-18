@@ -10,9 +10,6 @@ Pliki dodane do otwieranego zamówienia
  Sprawdzić czy plik musi mieć ten sam id co element_id
 
 
-Klienci.
-Odblokować znaki
-Sparametryzować zapytanie.
 
 Dodaj asystenta
 
@@ -22,4 +19,3 @@ Oprawa. Szczegóły po dbClik. Elementy + procesy
  token CSRF razem z jwt
 
 
-Koszty i faktury. Stworzyć historię

@@ -26,7 +26,8 @@ export function useGrupyWykonan(row){
   const dniWstecz = techContext.dniWstecz;
   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
   const fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa
-  
+      const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+    const grupyOprawaAll = techContext.grupyOprawaAll;
    const [add,dodajDoZamowienia] = useHistoria()
 
   const nazwaStatusuWykonania = appContext.nazwaStatusuWykonania
@@ -130,6 +131,7 @@ function sumujGrupe(new_wykonania) {
 
       
       async function statusGrupyTechnologia_OPRAWA(grupa) {
+   
         // z widoku technologia stage
         const res = await axios.put(
           IP +
@@ -148,12 +150,15 @@ function sumujGrupe(new_wykonania) {
           }
         );
 
+
         fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
 
 
       }
 
             async function statusGrupyTechnologia_OPRAWA_PROCESY(grupa) {
+
+
         // z widoku technologia stage
         const res = await axios.put(
           IP +
@@ -171,11 +176,21 @@ function sumujGrupe(new_wykonania) {
               stary_status: grupa.stary_status,
           }
         );
-// fechGrupyOprawaForProcesor(selectedProcesor)
-fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
+                // jeśli update OK status 200 to zmienia status grupy bez odświeżania wszystkiego 
+                if(res.status == 200){
+                  setGrupyOprawaAll(
+                    grupyOprawaAll.map((t) => {
+                      if (t.global_id == grupa.global_id) {
+                        return { ...t, status: grupa.status };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
+                }
+// fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
 
 
-        // fechparametryTechnologii(grupa.zamowienie_id, grupa.technologia_id);
       }
 
 

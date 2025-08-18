@@ -184,7 +184,8 @@ function Status({grup}) {
        className={selectColor(grup.status) }
         value={grup.status}
         onChange={(event) => {
-   console.log("grupa"+grup)
+
+
           statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value,stary_status: grup.status})
         }}
       >

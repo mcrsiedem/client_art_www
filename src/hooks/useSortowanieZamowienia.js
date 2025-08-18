@@ -32,10 +32,16 @@ function sortWgEtapu({ zamowienie }) {
     return zamowienie.etap == 10; // sfalcowane
   }
        if (sortowanieZamowieniaEtap == 0) {
-        // nie są anulowane, nie są harmonogramem, niezafakturowane  LUB nieoddane i zafakturowane
+
     return zamowienie.etap > 1 && zamowienie.faktury_status != 3 && zamowienie.status != 7  || zamowienie.etap < 16 && zamowienie.faktury_status == 3;
-    // return zamowienie.etap > 1 && zamowienie.etap <16 && zamowienie.status != 7 ;
-    // return zamowienie.etap > 1 && zamowienie.faktury_status != 3 ;
+    // return zamowienie.etap > 1  && zamowienie.status != 7  && zamowienie.etap < 16 ;
+
+  }
+  if (sortowanieZamowieniaEtap == 8) {
+
+    return zamowienie.etap > 1 && zamowienie.etap < 16 && zamowienie.status != 7;
+    // return zamowienie.etap > 1  && zamowienie.status != 7  && zamowienie.etap < 16 ;
+
   }
 
 

@@ -204,6 +204,10 @@ const _firma = [
       id: 7,
       nazwa: "Sfalcowane",
     },
+    {
+      id: 8,
+      nazwa: "Bieżace bez oddanych",
+    },
   
   ];
 

@@ -5,7 +5,7 @@ import { getClients } from "actions/getClients";
 export   const updateClient = async (daneKlienta,setClients,setClientsWyszukiwarka,setShowEdit)=> {
 
     await axios
-      .put(IP + "updateKlient", {
+      .put(IP + "updateKlient/" + sessionStorage.getItem("token"), {
         id: daneKlienta.id,
         firma: daneKlienta.firma,
         firma_nazwa: daneKlienta.firma_nazwa,

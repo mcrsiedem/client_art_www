@@ -4,7 +4,7 @@ import { getClients } from "actions/getClients";
 
 export const  addClient  = async ({daneKlienta,setClients,setClientsWyszukiwarka,setShowAddClientPane,setDaneKlienta,initialKlient}) =>{
   
-    await axios.post(IP + "klienci", {
+    await axios.post(IP + "klienci/" + sessionStorage.getItem("token"), {
         firma: daneKlienta.firma,
         firma_nazwa: daneKlienta.firma_nazwa,
         adres: daneKlienta.adres,

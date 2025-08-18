@@ -5,7 +5,7 @@ import { getClients } from "actions/getClients";
 export   const deleteClient = async (rowID,setClients,setClientsWyszukiwarka,setShowDeleteClientPane)=> {
 
     await axios
-      .put(IP + "klient", {
+      .put(IP + "klient/" + sessionStorage.getItem("token"), {
         id: rowID.current.id,
       })
       .then((res) => {

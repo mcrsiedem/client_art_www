@@ -588,7 +588,7 @@ function Etap({grup}) {
             etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
 
-          fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
         
 

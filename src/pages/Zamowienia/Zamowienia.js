@@ -69,30 +69,50 @@ const [refreshZamowienia] = useZamowienia()
   useEffect(() => {
     
     checkToken();
+
+
+    // aby nie dało się cofnąć
+    // Dodaj pusty wpis do historii, aby przycisk "Wstecz" nie cofał poza tę stronę
+    window.history.pushState(null, '', window.location.href);
+    const handlePopState = (event) => {
+      // window.history.pushState(null, '', window.location.href);
+      navigate(window.location.pathname, { replace: true });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Czyszczenie efektu: usuń listenera po odmontowaniu komponentu
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+
+
+
+
   }, []);
 
 
-  const onClose = useCallback(
-    async (ev) => {
-      ev.preventDefault();
-      await axios
-        .put(IP + "setOrderClosed", {
-          id: selectedZamowienie.id,
-        })
-        .then(() => {
-          return (ev.returnValue = "Are you sure you want to close?");
-        });
-    },
-    [row]
-  );
+  // const onClose = useCallback(
+  //   async (ev) => {
+  //     ev.preventDefault();
+  //     await axios
+  //       .put(IP + "setOrderClosed", {
+  //         id: selectedZamowienie.id,
+  //       })
+  //       .then(() => {
+  //         return (ev.returnValue = "Are you sure you want to close?");
+  //       });
+  //   },
+  //   [row]
+  // );
 
-  useEffect(() => {
-    if (openModalInsert) {
-      window.addEventListener("beforeunload", onClose);
-    } else {
-      window.removeEventListener("beforeunload", onClose);
-    }
-  }, [openModalInsert, setOpenModalInsert]);
+  // useEffect(() => {
+  //   if (openModalInsert) {
+  //     window.addEventListener("beforeunload", onClose);
+  //   } else {
+  //     window.removeEventListener("beforeunload", onClose);
+  //   }
+  // }, [openModalInsert, setOpenModalInsert]);
 
   return (
     <div className={style.container}>

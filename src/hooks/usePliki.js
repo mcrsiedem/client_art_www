@@ -23,6 +23,9 @@ export   function usePliki() {
       const selectedProcesor = techContext.selectedProcesor;
       const setWykonaniaAll = techContext.setWykonaniaAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
+      const setGrupWykonanAllWyszukiwarka = techContext.setGrupWykonanAllWyszukiwarka;
   const dniWstecz = techContext.dniWstecz;
 
 
@@ -69,15 +72,26 @@ export   function usePliki() {
 
         const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
 
-
-        await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
-          setWykonaniaAll(res.data[0])
-          setGrupWykonanAll(res.data[1])
-          return res
-        }).then((res) =>{
+          // jeßli update OK status == 200 aktualizacja stanu bez odßwieæania całości
+                        if(res1.status == 200){
+                  setGrupWykonanAll(
+                    grupyWykonanAll.map((t) => {
+                      if (t.global_id == grupaWykonan.global_id) {
+                        return { ...t, zamowienia_pliki_etap: etap };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
+                }
+        // await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
+        //   setWykonaniaAll(res.data[0])
+        //   setGrupWykonanAll(res.data[1])
+        //   return res
+        // }).then((res) =>{
           
-          setGrupWykonanAll(prev=>{return prev})
-        });
+        //   setGrupWykonanAll(prev=>{return prev})
+        // });
         
       }
 

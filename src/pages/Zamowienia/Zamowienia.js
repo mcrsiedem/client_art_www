@@ -73,10 +73,12 @@ const [refreshZamowienia] = useZamowienia()
 
     // aby nie dało się cofnąć
     // Dodaj pusty wpis do historii, aby przycisk "Wstecz" nie cofał poza tę stronę
-    window.history.pushState(null, '', window.location.href);
+    // window.history.pushState(null, '', window.location.href);
+    window.history.pushState(null, '', window.location.pathname);
     const handlePopState = (event) => {
       // window.history.pushState(null, '', window.location.href);
-      navigate(window.location.pathname, { replace: true });
+      // navigate(window.location.pathname, { replace: true });
+      navigate("/Zamowienia");
     };
 
     window.addEventListener('popstate', handlePopState);

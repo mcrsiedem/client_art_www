@@ -16,6 +16,7 @@ import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import DecodeToken from "pages/Login/DecodeToken";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -73,12 +74,27 @@ const [refreshZamowienia] = useZamowienia()
 
     // aby nie dało się cofnąć
     // Dodaj pusty wpis do historii, aby przycisk "Wstecz" nie cofał poza tę stronę
-    // window.history.pushState(null, '', window.location.href);
-    window.history.pushState(null, '', window.location.pathname);
+    window.history.pushState(null, '', window.location.href);
+    // window.history.pushState(null, '', window.location.pathname);
+    // window.history.pushState(null, '', window.location.pathname);
+    // window.history.pushState(null, '', window.location.pathname);
+
+
+
+
     const handlePopState = (event) => {
-      // window.history.pushState(null, '', window.location.href);
+      
+      alert(DecodeToken(sessionStorage.getItem("token")).imie+ ", bardzo nieładne zachowanie :D ")
+      // window.history.pushState(null, '', window.location.pathname);
+      
+      // window.history.pushState(null, '', window.location.pathname);
+    window.history.pushState(null, '', window.location.href);
+
+    // window.history.pushState(null, '', window.location.href);
+
       // navigate(window.location.pathname, { replace: true });
-      navigate("/Zamowienia");
+
+      // navigate("/Zamowienia");
     };
 
     window.addEventListener('popstate', handlePopState);

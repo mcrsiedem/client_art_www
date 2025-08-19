@@ -1,14 +1,20 @@
 import React, {useContext, } from "react";
 import style from "./ElementPane.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
+import ElementRow from "./ElementRow";
 
 export default function ElementPane({ grup }) {
   const techContext = useContext(TechnologyContext);
-  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-  const grupyOprawaAll = techContext.grupyOprawaAll;
+  const legiFragmenty = techContext.legiFragmenty;
+  const unikalneElementsIds = [...new Set(legiFragmenty.filter(x=> x.oprawa_id==grup.id).map(x => x.element_id))]
+  
   return (
     <div className={style.elementPane}>
-   
+                  {unikalneElementsIds
+                    .map((grup, i) => {
+                      return (<ElementRow/>)
+                      }
+                  )}
     </div>
   );
 }

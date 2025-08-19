@@ -24,3 +24,7 @@ Zmiana statusu
 Po update OK status 200 zmiana statusu bez odświeżania wszystkiego 
 
 
+
+
+
+Wykonania cząstkowe falcu, a może i wsystkich procesów

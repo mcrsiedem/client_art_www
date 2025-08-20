@@ -158,6 +158,7 @@ function handleAddFragment(card, fragmenty, setFragmenty,oprawa) {
     typ: card.typ,
     wersja: card.wersja,
     naklad: card.naklad,
+    info: "",
     oprawa_id: oprawa.filter(x => x.delete != true)[0].id  ,
     element_id: card.element_id,
     indeks: Math.max(...newFragmenty.map((f) => f.indeks)) + 1,

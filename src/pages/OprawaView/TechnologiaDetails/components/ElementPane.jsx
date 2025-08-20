@@ -11,8 +11,9 @@ export default function ElementPane({ grup }) {
   return (
     <div className={style.elementPane}>
                   {unikalneElementsIds
-                    .map((grup, i) => {
-                      return (<ElementRow/>)
+                    .map((element, i) => {
+                      return (<ElementRow element={element} i={i}/>)
+                      // return (<p> {element}</p>)
                       }
                   )}
     </div>

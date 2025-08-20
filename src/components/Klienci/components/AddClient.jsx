@@ -106,8 +106,9 @@ function Firma({ daneKlienta, setDaneKlienta }) {
         type="text"
         value={daneKlienta?.firma}
         onChange={(event) => {
-          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
-          if (event.target.value === "" || re.test(event.target.value)) {
+          // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"”„.,-]+$/;
+          // if (event.target.value === "" || re.test(event.target.value)) {
+          if (event.target.value !== "" ) {
             setDaneKlienta({ ...daneKlienta, firma: event.target.value });
           }
         }}
@@ -127,8 +128,9 @@ function Firma_nazwa_skrocona({ daneKlienta, setDaneKlienta }) {
         type="text"
         value={daneKlienta?.firma_nazwa}
         onChange={(event) => {
-          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ".,-]+$/;
-          if (event.target.value === "" || re.test(event.target.value)) {
+          // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"”„.,-]+$/;
+          // if (event.target.value === "" || re.test(event.target.value)) {
+          if (event.target.value !== "" ) {
             setDaneKlienta({ ...daneKlienta, firma_nazwa: event.target.value });
           }
         }}
@@ -148,9 +150,10 @@ function Adres({ daneKlienta, setDaneKlienta }) {
           type="text"
           value={daneKlienta?.adres}
           onChange={(event) => {
-             const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
+            //  const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ"-.]+$/;
 
-            if (event.target.value === "" || re.test(event.target.value)) {
+            // if (event.target.value === "" || re.test(event.target.value)) {
+            if (event.target.value !== "" ) {
               setDaneKlienta({ ...daneKlienta, adres: event.target.value });
             }
           }}

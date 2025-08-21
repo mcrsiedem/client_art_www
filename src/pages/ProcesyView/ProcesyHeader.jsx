@@ -14,6 +14,7 @@ import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
+import { wagaArkuszy } from "actions/wagaArkuszy";
 
 
 function ProcesyHeader() {
@@ -216,6 +217,7 @@ let mes='';
               mes += grupa.tytul+"\t"
               mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
               mes += grupa.przeloty+ " ark. \t"
+              mes += wagaArkuszy(grupa.arkusz_szerokosc,grupa.arkusz_wysokosc,grupa.gramatura,grupa.przeloty)+ " kg \t"
               mes += "\n"
 
             }
@@ -247,6 +249,13 @@ function WYDAJ_ZAZNACZONE_BTN() {
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
         const selectedProcesor = techContext.selectedProcesor
         const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+
+
+        // const wagaArkuszy = (arkusz_szerokosc,arkusz_wysokosc,gramatura,przeloty) => {
+        //   let waga = parseInt(arkusz_szerokosc)/1000 * parseInt(arkusz_wysokosc)/1000 * parseInt(gramatura) * parseInt(przeloty)
+        //   return Math.ceil(waga)
+        // }
+
   return (
 
       <div  className={style.przerwa_container}>
@@ -266,6 +275,7 @@ let mes='';
               mes += grupa.tytul+"\t"
               mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
               mes += grupa.przeloty+ " ark. \t"
+              mes += wagaArkuszy(grupa.arkusz_szerokosc,grupa.arkusz_wysokosc,grupa.gramatura,grupa.przeloty)+ " kg \t"
               mes += "\n"
 
             }

@@ -16,7 +16,7 @@ if(grup.show)
       <td colSpan={16}>
         <div className={style.container}>
           <div className={style.stage}>
-            <ElementPane grup={grup}/>
+            {/* <ElementPane grup={grup}/> */}
             <ZamknijBtn grup={grup}/>
           </div>
         </div>

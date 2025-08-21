@@ -7,17 +7,25 @@ export default function ElementRow({ element,i }) {
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const elementyTech = techContext.elementyTech;
+  const procesyElementowTech = techContext.procesyElementowTech;
+
   return (
     <div key={i} className={style.elementRow}>
-      <p> OK</p>
+    
 
-{/* {elementyTech
- .filter(x=> x.id == element)
-                    .map((elem, i) => {
-                      return ( <Row elem={elem}/>)
+      <div><p>{element.typ_nazwa}</p> </div>
+      <div className={style.row}>
+
+       {procesyElementowTech
+       .filter(x=> x.element_id == element.id)
+                    .map((el, i) => {
+                      return ( <p>{el.nazwa}</p>)
                       }
                   )}
-  */}
+
+
+ 
+      </div>
 
 
     </div>
@@ -35,24 +43,6 @@ function Row({ elem }) {
   return (
     <div className={style.row}>
 
-      <div><p>{elem.typ_nazwa}</p> </div>
-      <div>
-
-       {procesyElementowTech
-       .filter(x=> x.element_id == elem.id)
-                    .map((el, i) => {
-                      return ( <p>{el.nazwa}</p>)
-                      }
-                  )}
-
-                         {procesyElementowTech
-       .filter(x=> x.element_id == elem.id)
-                    .map((el, i) => {
-                      return ( <p>{el.status}</p>)
-                      }
-                  )}
- 
-      </div>
 
 
 

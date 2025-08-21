@@ -3,9 +3,9 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   /* background-color: lightcyan; */
-   border: 1px solid rgba(128, 128, 128, 0.423);
+    /* background-color: lightcyan;
+   border: 1px solid rgba(128, 128, 128, 0.423);  */
    border-radius: 10px;
-   width: 50%;
-   height: 120px;
+   width: 40%;
+   /* height: 120px; */
 }

@@ -81,20 +81,10 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                     
                   }}
                 >
-                  <td style={{minWidth: "130px",width:"130px"}}>{grup.poczatek}</td>
-                              <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
+                      <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-                  {/* <td style={{minWidth: "130px",width: "140px"}}>{grup.koniec} </td> */}
-
-            <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
-                        {/* <td style={{width: "50px"}}>{grup.nr}</td>
-                        <td style={{width: "50px"}}>{grup.rok}</td>
-                        <td style={{width: "200px"}}>{grup.klient}</td>
-                        <td style={{minWidth: "130px"}}>{grup.tytul}</td>
-                        <td style={{minWidth: "130px"}}>{grup.uwagi}</td>
-                        <td style={{minWidth: "130px"}}>{grup.przeloty}</td> */}
-
+                  <td style={{width: "80px"}}>{typ_elementu?.filter(x => x.id == grup.element_id)[0]?.nazwa}</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -189,7 +179,7 @@ const KoniecGrupa = ({ grup }) => {
   const updateWykonanie = techContext.updateWykonanie;
   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
   return (
-    <td style={{minWidth: "150px",width: "150px"}}>
+  <td className={style.td_tableProcesy_koniec}>
       <input
         disabled= {false}
         className={style.input2}

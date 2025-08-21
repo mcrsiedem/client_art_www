@@ -99,6 +99,7 @@ const WykonaniaTable = () => {
   const selectedProcesor = techContext.selectedProcesor;
   const selectedProces = techContext.selectedProces;
   const [unlockTable, setUnlockTable] = useState(true);
+  const [sortwanie,setSortowanie] = useState(false);
 
 
         const setGrupWykonanAll = techContext.setGrupWykonanAll;
@@ -122,7 +123,7 @@ const WykonaniaTable = () => {
               {/* <th> </th> */}
               <th title="Dyspersja"> D/K</th>
               <th className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th title="Spedycja"> Sped.</th>
+              <th onDoubleClick={()=>{  setSortowanie(!sortwanie)}} title="Spedycja"> Sped.</th>
               {/* <th title="Dyspersja"> Narz.</th> */}
 
               <th className={style.th_tableProcesy_przeloty}> Przeloty</th>
@@ -138,10 +139,15 @@ const WykonaniaTable = () => {
             </tr>
           </thead>
           <tbody>
-            {grupyWykonanAll
-              .filter(
-                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
-              )
+            {
+            (sortwanie
+              ? grupyWykonanAll
+                  .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3)
+                  .sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji))
+              : grupyWykonanAll.filter(
+                  (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+                )
+  )
               .map((grup, i) => {
                 if (grup.typ_grupy != 1) {
                   return (

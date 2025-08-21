@@ -9,14 +9,15 @@ export default function ElementRow({ element,i }) {
   const elementyTech = techContext.elementyTech;
   return (
     <div key={i} className={style.elementRow}>
+      <p> OK</p>
 
-{elementyTech
+{/* {elementyTech
  .filter(x=> x.id == element)
                     .map((elem, i) => {
                       return ( <Row elem={elem}/>)
                       }
                   )}
- 
+  */}
 
 
     </div>

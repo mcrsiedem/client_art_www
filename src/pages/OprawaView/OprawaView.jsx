@@ -96,32 +96,33 @@ const WykonaniaTable = () => {
       <div className={style.tableContainer}>
         <table className={style.tableProcesy}>
           <thead>
-            <tr >
-              <th className={style.th_tableProcesy_poczatek}> Początek</th> <th className={style.th_tableProcesy_poczatek}> Czas</th> <th> Koniec</th>  
-              <th></th>
-               <th> Nr</th> <th> Klient</th> <th> Praca</th>   <th> </th><th> </th><th> </th><th> </th><th> Nakład</th><th> </th><th> </th>
-              <th >Spedycja</th>
+            <tr>
+              <th className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
+              <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
+              <th> Koniec</th>
+              <th> Nr</th>
+               <th> Klient</th>
+              <th> Praca</th>
+              <th> Uwagi</th>
+        
+              <th> Nakład</th>
+              <th>Spedycja</th>
               <th>Status</th>
-
             </tr>
           </thead>
           <tbody>
             {grupyOprawaAll
-              .filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy<3)
+              .filter(
+                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+              )
               .map((grup, i) => {
-
                 // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
 
                 if (grup.typ_grupy == 2) {
-                return (<OprawaProcesViewRow grup={grup} key={i} />)
+                  return <OprawaProcesViewRow grup={grup} key={i} />;
+                } else {
+                  return <OprawaProcesViewRowPrzerwa grup={grup} />;
                 }
-                else{
-                return (<OprawaProcesViewRowPrzerwa grup={grup}/>)
-
-
-                }
-
-
               })}
           </tbody>
         </table>

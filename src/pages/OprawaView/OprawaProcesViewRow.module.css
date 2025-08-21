@@ -355,3 +355,10 @@ padding-left: 2px;
       /* text-align: center; */
    }
 
+.tytulInput{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  width: 150px;
+
+}

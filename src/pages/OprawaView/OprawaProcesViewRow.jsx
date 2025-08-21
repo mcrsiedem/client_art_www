@@ -42,7 +42,8 @@ export default function OprawaProcesViewRow({ grup }) {
           handleDragStart(grup.global_id, grup.typ_grupy);
         }}
         className={selectColor(grup.status)}
-        onDoubleClick={(node, event) => {
+        onContextMenu={(event) => {
+          event.preventDefault()
           if (grup.typ_grupy !=1) {
      
             setGrupyOprawaAll(
@@ -72,17 +73,15 @@ export default function OprawaProcesViewRow({ grup }) {
           {zamienNaGodziny(grup.czas)}{" "}
         </td>
         <KoniecGrupa grup={grup} />
-        <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
+        {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
-        <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
-        <td style={{ minWidth: "130px" }}>{grup.tytul}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
+        <Klient grup={grup} />
+
+        <Tytul grup={grup} />
+        
+        <td>{grup.uwagi}</td>
         <td className={style.td_tableProcesy_klient}>{grup.naklad}</td>
-        <td className={style.td_tableProcesy_klient}>{grup.typ_procesu}</td>
-        <td className={style.td_tableProcesy_klient}>{grup.rodzaj_procesu}</td>
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
       </tr>
@@ -123,8 +122,32 @@ export default function OprawaProcesViewRow({ grup }) {
 
 
 }
+const Klient = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInput}
+      value={ grup.klient}
+      readOnly
+    />
+    </td>
+  );
 
 
+};
+const Tytul = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInput}
+      value={ grup.tytul}
+      readOnly
+    />
+    </td>
+  );
+
+
+};
 
 
 

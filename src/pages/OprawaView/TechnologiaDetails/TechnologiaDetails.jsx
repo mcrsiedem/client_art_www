@@ -4,6 +4,7 @@ import style from "./TechnologiaDetails.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import ZamknijBtn from "./components/ZamknijBtn";
 import ElementPane from "./components/ElementPane";
+import TextEditor from "./components/TextEditor";
 
 export default function TechnologiaDetails({grup}) {
   const techContext = useContext(TechnologyContext);
@@ -13,10 +14,11 @@ export default function TechnologiaDetails({grup}) {
 if(grup.show)
   return (
     <tr className={style.container}>
-      <td colSpan={16}>
+      <td colSpan={17}>
         <div className={style.container}>
           <div className={style.stage}>
             <ElementPane grup={grup}/>
+            <TextEditor grup={grup}/>
             <ZamknijBtn grup={grup}/>
           </div>
         </div>

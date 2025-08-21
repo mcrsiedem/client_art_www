@@ -49,7 +49,7 @@ if(val == null){
   const ifNullStatus = (val) =>{
 
 if(val == null){
-  return ''
+  return getNameStatus(1, _status_wykonania)
 }else return getNameStatus(val, _status_wykonania)
    
   }

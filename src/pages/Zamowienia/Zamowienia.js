@@ -109,29 +109,6 @@ const [refreshZamowienia] = useZamowienia()
 
   }, []);
 
-
-  // const onClose = useCallback(
-  //   async (ev) => {
-  //     ev.preventDefault();
-  //     await axios
-  //       .put(IP + "setOrderClosed", {
-  //         id: selectedZamowienie.id,
-  //       })
-  //       .then(() => {
-  //         return (ev.returnValue = "Are you sure you want to close?");
-  //       });
-  //   },
-  //   [row]
-  // );
-
-  // useEffect(() => {
-  //   if (openModalInsert) {
-  //     window.addEventListener("beforeunload", onClose);
-  //   } else {
-  //     window.removeEventListener("beforeunload", onClose);
-  //   }
-  // }, [openModalInsert, setOpenModalInsert]);
-
   return (
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />

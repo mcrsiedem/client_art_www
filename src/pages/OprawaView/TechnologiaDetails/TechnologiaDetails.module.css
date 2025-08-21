@@ -1,6 +1,9 @@
 .container {
+   /* position: absolute;
+   top:0; */
    width: 100%;
    margin: 10px;
+   margin-bottom: 30px;
 }
 
 .stage {
@@ -19,7 +22,8 @@
    background-color: transparent;
    border-radius: 5px;
    border: 1px solid rgba(128, 128, 128, 0.429);
-   color: rgb(140, 140, 140)
+   color: rgb(140, 140, 140);
+   
 }
 
 .btn_zamknij:hover {

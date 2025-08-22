@@ -31,9 +31,8 @@ Kilka spedycji. Podświetlone różne daty
 
 
 
-Oprawa. Wyszukiwarka. Przenieść z wykonan
-Oprawa. Szczegóły po dbClik. Elementy + procesy 
-Oprawa. Zakończ. Całkowita realizacja wykonania.
-Oprawa. Dodaj realizację cząstkową.
-
-
+Oprawa. Zakończ - całkowita realizacja wykonania.
+Oprawa. Dodaj - realizacja cząstkowa.
+Oprawa. Sortowanie po oprawie i dacie spedycji, kliencie i nakładzie
+Oprawa. Zaznaczanie i kopiowanie do schowka.
+Oprawa. Przerwa nie działa

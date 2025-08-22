@@ -27,11 +27,12 @@
     margin-right: 10px;
     height: 27px;
     padding-left: 30px;
+
     
 }
 .szukajInput:hover{
-background-color: rgb(243, 250, 254);
-color: rgb(63, 63, 63);
+/* background-color: rgb(243, 250, 254); */
+color: rgb(155, 155, 155);
 } 
 
 /* .szukajInput:focus + .icon_clear::after{

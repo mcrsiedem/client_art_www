@@ -3,11 +3,19 @@ import style from "./Szukaj.module.css";
 import { AppContext } from "context/AppContext";
 import iconClose2 from "assets/x2.svg";
 import iconSzukaj from "assets/szukaj_green.svg";
+import { TechnologyContext } from "context/TechnologyContext";
 
 export default function Szukaj() {
   const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
+
+  const techContext = useContext(TechnologyContext);
+  const grupyOprawaAllWyszukiwarka = techContext.grupyOprawaAllWyszukiwarka;
+  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+
+   const setGrupWykonanAll = techContext.setGrupWykonanAll;
+    const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
 
   const inputRef = useRef(null);
   return (
@@ -21,16 +29,12 @@ export default function Szukaj() {
         placeholder=""
         onChange={(event) => {
         
-          let m = [...zamowieniaWyszukiwarka];
-          m = m.filter((k) =>
-            k.tytul
-              .concat(" ", k.nr)
-              .concat(" ", k.nr_stary)
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase())
+          let m = grupyOprawaAllWyszukiwarka.filter((k) =>
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase())
           );
 
-          setZamowienia(m);
+          setGrupyOprawaAll(m);
+
         }}
       ></input>
 
@@ -43,6 +47,9 @@ const ClearBTN = ({inputRef}) =>{
     const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
+    const techContext = useContext(TechnologyContext);
+  const grupyOprawaAllWyszukiwarka = techContext.grupyOprawaAllWyszukiwarka;
+  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   
   if (inputRef.current) {
       if(inputRef.current.value ){
@@ -53,7 +60,7 @@ const ClearBTN = ({inputRef}) =>{
             if (inputRef.current) {
               inputRef.current.value = "";
             }
-            setZamowienia(zamowieniaWyszukiwarka);
+            setGrupyOprawaAll(grupyOprawaAllWyszukiwarka);
 
           }}
         >

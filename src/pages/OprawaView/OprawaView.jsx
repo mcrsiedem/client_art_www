@@ -103,6 +103,7 @@ const WykonaniaTable = () => {
               <th> Nr</th>
                <th className={style.th_tableProcesy_klient}> Klient</th>
               <th className={style.th_tableProcesy_praca}> Praca</th>
+              <th className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
               <th className={style.th_tableProcesy_naklad}> Nakład</th>
               <th>Spedycja</th>
               <th>Status</th>

@@ -14,14 +14,12 @@ Pliki dodane do otwieranego zamówienia
 Dodaj asystenta
 
 
-Oprawa. Szczegóły po dbClik. Elementy + procesy 
+
 
  token CSRF razem z jwt
 
 
 
-Zmiana statusu
-Po update OK status 200 zmiana statusu bez odświeżania wszystkiego 
 
 
 
@@ -30,3 +28,12 @@ Po update OK status 200 zmiana statusu bez odświeżania wszystkiego
 Wykonania cząstkowe falcu, a może i wsystkich procesów
 
 Kilka spedycji. Podświetlone różne daty
+
+
+
+Oprawa. Wyszukiwarka. Przenieść z wykonan
+Oprawa. Szczegóły po dbClik. Elementy + procesy 
+Oprawa. Zakończ. Całkowita realizacja wykonania.
+Oprawa. Dodaj realizację cząstkową.
+
+

@@ -76,6 +76,7 @@ export default function OprawaProcesViewRow({ grup }) {
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
         <Klient grup={grup} />
         <Tytul grup={grup} />
+        <Rodzaj grup={grup} />
         <Naklad grup={grup} />
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
@@ -144,6 +145,18 @@ const Tytul = ({ grup,i }) => {
 
 
 };
+
+const Rodzaj = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInputNaklad}
+      value={ grup.typ_procesu}
+      readOnly
+    />
+    </td>
+  );
+};
 const Naklad = ({ grup,i }) => {
   return (
     <td>
@@ -154,8 +167,6 @@ const Naklad = ({ grup,i }) => {
     />
     </td>
   );
-
-
 };
 const Uwagi = ({ grup,i }) => {
   return (

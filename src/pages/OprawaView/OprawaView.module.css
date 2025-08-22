@@ -279,7 +279,9 @@ tr:nth-of-type(2n) {
    .th_tableProcesy_naklad{
    width: 60px;
 }
-   
+      .th_tableProcesy_rodzaj{
+   width: 70px;
+}
    .th_tableProcesy_klient{
    width: 150px;
 }

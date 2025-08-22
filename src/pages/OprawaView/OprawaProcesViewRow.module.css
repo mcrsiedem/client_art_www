@@ -333,13 +333,38 @@ outline: none;
    padding-right: 10px;
 }
 
-.tytulInput{
+.tytulInputKlient{
   border: none;
   background: transparent;
   font-size: 0.9rem;
   /* width: 100%; */
-  width: 300px;
+  min-width: 150px;
+}
 
+.tytulInputPraca{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  /* width: 100%; */
+  min-width: 400px;
+  /* border: #5e9bf7 1px solid; */
+}
+.tytulInputNaklad{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  /* width: 100%; */
+  width: 60px;
+  /* border: #5e9bf7 1px solid; */
+}
+
+.tytulInputUwagi{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  width: 98%;
+  /* width: 200px; */
+  /* border: #5e9bf7 1px solid; */
 }
 
   .iconSettings{ width: 17px;

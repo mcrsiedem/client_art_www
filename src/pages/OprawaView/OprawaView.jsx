@@ -101,13 +101,12 @@ const WykonaniaTable = () => {
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th>
               <th> Nr</th>
-               <th> Klient</th>
-              <th> Praca</th>
-              <th> Uwagi</th>
-        
-              <th> Nakład</th>
+               <th className={style.th_tableProcesy_klient}> Klient</th>
+              <th className={style.th_tableProcesy_praca}> Praca</th>
+              <th className={style.th_tableProcesy_naklad}> Nakład</th>
               <th>Spedycja</th>
               <th>Status</th>
+              <th> Uwagi</th>
             </tr>
           </thead>
           <tbody>

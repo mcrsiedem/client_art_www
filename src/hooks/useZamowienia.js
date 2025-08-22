@@ -10,7 +10,7 @@ export function useZamowienia() {
 
    const scrollTable = (table) => {
   if(table.current != null) {
-      table.current.scrollTo({ top: 10000, behavior: "auto" })
+      table.current.scrollTo({ top: 20000, behavior: "auto" })
   }
   
 };

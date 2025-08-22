@@ -73,17 +73,13 @@ export default function OprawaProcesViewRow({ grup }) {
           {zamienNaGodziny(grup.czas)}{" "}
         </td>
         <KoniecGrupa grup={grup} />
-        {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
-        {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
         <Klient grup={grup} />
-
         <Tytul grup={grup} />
-        
-        <td>{grup.uwagi}</td>
-        <td className={style.td_tableProcesy_klient}>{grup.naklad}</td>
+        <Naklad grup={grup} />
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
+        <Uwagi grup={grup} />
       </tr>
 
         <TechnologiaDetails grup={grup}/>
@@ -126,7 +122,7 @@ const Klient = ({ grup,i }) => {
   return (
     <td>
     <input 
-      className={style.tytulInput}
+      className={style.tytulInputKlient}
       value={ grup.klient}
       readOnly
     />
@@ -139,8 +135,34 @@ const Tytul = ({ grup,i }) => {
   return (
     <td>
     <input 
-      className={style.tytulInput}
+      className={style.tytulInputPraca}
       value={ grup.tytul}
+      readOnly
+    />
+    </td>
+  );
+
+
+};
+const Naklad = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInputNaklad}
+      value={ grup.naklad}
+      readOnly
+    />
+    </td>
+  );
+
+
+};
+const Uwagi = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInputUwagi}
+      value={ grup.uwagi}
       readOnly
     />
     </td>

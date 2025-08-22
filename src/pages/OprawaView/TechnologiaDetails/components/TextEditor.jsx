@@ -49,9 +49,14 @@ const TextEditor = ({grup}) => {
     setIsEditing(false);
   };
 
+  const handleScroll = (e) => {
+    // Zapobiega domyślnemu zachowaniu - przewijaniu
+    e.preventDefault(); 
+  };
   return (
-    <div className={styles.editorContainer}>
+    <div  className={styles.editorContainer}>
       <textarea
+      //  onWheel={handleScroll}
         className={styles.editorTextarea}
         value={text}
         // placeholder='Uwagi do oprawy...'

@@ -7,6 +7,7 @@ import { IP } from "utils/Host";
 import axios from "axios";
 import { useHistoria } from "./useHistoria";
 import { AppContext } from "context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export function useGrupyWykonan(row){
   const techContext = useContext(TechnologyContext);
@@ -29,6 +30,7 @@ export function useGrupyWykonan(row){
       const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
     const grupyOprawaAll = techContext.grupyOprawaAll;
    const [add,dodajDoZamowienia] = useHistoria()
+  const navigate = useNavigate();
 
   const nazwaStatusuWykonania = appContext.nazwaStatusuWykonania
 
@@ -176,8 +178,9 @@ function sumujGrupe(new_wykonania) {
               stary_status: grupa.stary_status,
           }
         );
-                // jeśli update OK status 200 to zmienia status grupy bez odświeżania wszystkiego 
-                if(res.status == 200){
+ console.log(res)
+                 if(res.data =='OK'){
+                // if(res.status == 200){
                   setGrupyOprawaAll(
                     grupyOprawaAll.map((t) => {
                       if (t.global_id == grupa.global_id) {
@@ -187,7 +190,7 @@ function sumujGrupe(new_wykonania) {
                       }
                     })
                   );
-                }
+                }else navigate("/Login");
 // fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
 
 

@@ -3,6 +3,7 @@ import styles from './TextEditor.module.css'; // Importuj jako obiekt!
 import axios from "axios";
 import { IP } from 'utils/Host';
 import { TechnologyContext } from 'context/TechnologyContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const TextEditor = ({grup}) => {
@@ -11,6 +12,7 @@ const TextEditor = ({grup}) => {
   const techContext = useContext(TechnologyContext);
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+  const navigate = useNavigate();
   const handleSave = () => {
 
 
@@ -18,7 +20,7 @@ const TextEditor = ({grup}) => {
   axios.put(IP + "grupa_wykonan_oprawa_uwagi/"+ sessionStorage.getItem("token"),[text, grup.global_id])
     .then((res) => {
 
-      if(res.status ==200){
+       if(res.data =='OK'){
         
     setGrupyOprawaAll(
       grupyOprawaAll.map((t) => {
@@ -33,7 +35,7 @@ const TextEditor = ({grup}) => {
       })
     );
 
-      }else alert("Błąd zapisu...")
+      }else navigate("/Login");
 
    
 

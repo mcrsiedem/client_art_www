@@ -121,7 +121,6 @@ if (grup.select) return style.procesRow_select
             let indeks_stop = i
                 setGrupWykonanAll( grupyWykonanAll
                               .filter(
-                // (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
                 (x) => x.procesor_id == selectedProcesor 
               )          
 
@@ -133,12 +132,8 @@ if (grup.select) return style.procesRow_select
           return t;
         }
       })  );
-
-
           }else{
-
-
-                                      setGrupWykonanAll(
+      setGrupWykonanAll(
       grupyWykonanAll
       .map(x => {return { ...x, select: false}})
       .map((t,indeks) => {
@@ -154,7 +149,6 @@ if (grup.select) return style.procesRow_select
                               if (event.ctrlKey) {
                             setGrupWykonanAll(
       grupyWykonanAll
-      // .map(x => {return { ...x, select: false}})
       .map((t,indeks) => {
         if (t.global_id == grup.global_id) {
           return { ...t, select: !t.select};
@@ -202,24 +196,19 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-                  {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
-                  {/* <td className={style.td_tableProcesy_klient}>{druk_alert(grup)}</td> */}
                   <TytulProcesGrup grup={grup}/>
-                  {/* <td style={{minWidth: "130px"}}> {grup.uwagi}</td> */}
                   <DyspersjaGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
                   <td className={style.td_tableProcesy_spedycja}>{formatujDatePoPolsku( grup.data_spedycji)}</td>
-                   {/* <td className={style.td_tableProcesy_przeloty}>{grup.narzad} </td> */}
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   <td className={style.td_tableProcesy_przeloty}>{grup.ilosc_narzadow} </td>
                   <Papier grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
-                  {/* <SelectBox grup={grup}/> */}
                   <td></td>
                  
                 </tr>
@@ -586,7 +575,6 @@ function Etap({grup}) {
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
             etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
-
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);

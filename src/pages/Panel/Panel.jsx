@@ -118,7 +118,7 @@ zabezpiecz()
     const res = await axios.get(IP + "backup/" + sessionStorage.getItem("token"))
       setIsOpen(false)
         }
-            }>Backup</li>:<></>}
+            }>Ewakuacja bazy</li>:<></>}
 
 
 

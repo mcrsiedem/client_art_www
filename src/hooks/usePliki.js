@@ -11,6 +11,7 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "./useGrupyWykonan";
 import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
+import { useNavigate } from "react-router-dom";
 export   function usePliki() {
 
 
@@ -27,6 +28,8 @@ export   function usePliki() {
       const grupyWykonanAllWyszukiwarka = techContext.grupyWykonanAllWyszukiwarka;
       const setGrupWykonanAllWyszukiwarka = techContext.setGrupWykonanAllWyszukiwarka;
   const dniWstecz = techContext.dniWstecz;
+    const navigate = useNavigate();
+  
 
 
       const etapPlikowZamowienia = async (etap,plikiRow,stary_etap) =>{
@@ -68,12 +71,11 @@ export   function usePliki() {
         const element_id= grupaWykonan.element_id
         const global_id_grupa_row= grupaWykonan.global_id
 
-
-
         const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
 
+       
           // jeßli update OK status == 200 aktualizacja stanu bez odßwieæania całości
-                        if(res1.status == 200){
+                        if(res1.data =='OK'){
                   setGrupWykonanAll(
                     grupyWykonanAll.map((t) => {
                       if (t.global_id == grupaWykonan.global_id) {
@@ -83,7 +85,7 @@ export   function usePliki() {
                       }
                     })
                   );
-                }
+                }else navigate("/Login");
         // await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
         //   setWykonaniaAll(res.data[0])
         //   setGrupWykonanAll(res.data[1])

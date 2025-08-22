@@ -21,14 +21,9 @@ function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
   const contextModal = useContext(ModalInsertContext);
-  
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
-  // const [openModalInsert, setOpenModalInsert] = useState(false);
   const open = useRef(false);
   const navigate = useNavigate();
-  const data = contextApp.zamowienia;
-  const selectedZamowienie = contextModal.selectedZamowienie;
-  const setData = contextApp.setZamowienia;
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   const setNadkomplety = contextApp.setNadkomplety;
@@ -46,10 +41,6 @@ const [refreshZamowienia] = useZamowienia()
     setOpenModalInsert(true);
     open.current = true;
   };
-
-  
-
-
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -65,46 +56,18 @@ const [refreshZamowienia] = useZamowienia()
       });
   }
 
-
-
   useEffect(() => {
     
     checkToken();
-
-
-    // aby nie dało się cofnąć
-    // Dodaj pusty wpis do historii, aby przycisk "Wstecz" nie cofał poza tę stronę
     window.history.pushState(null, '', window.location.href);
-    // window.history.pushState(null, '', window.location.pathname);
-    // window.history.pushState(null, '', window.location.pathname);
-    // window.history.pushState(null, '', window.location.pathname);
-
-
-
-
     const handlePopState = (event) => {
-      
-      alert(DecodeToken(sessionStorage.getItem("token")).imie+ ", bardzo nieładne zachowanie :D ")
-      // window.history.pushState(null, '', window.location.pathname);
-      
-      // window.history.pushState(null, '', window.location.pathname);
+    alert(DecodeToken(sessionStorage.getItem("token")).imie+ ", bardzo nieładne zachowanie :D ")
     window.history.pushState(null, '', window.location.href);
-
-    // window.history.pushState(null, '', window.location.href);
-
-      // navigate(window.location.pathname, { replace: true });
-
-      // navigate("/Zamowienia");
     };
-
     window.addEventListener('popstate', handlePopState);
-
-    // Czyszczenie efektu: usuń listenera po odmontowaniu komponentu
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-
-
 
 
   }, []);
@@ -128,5 +91,3 @@ const [refreshZamowienia] = useZamowienia()
   );
 }
 export default Zamowienia;
-
-

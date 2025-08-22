@@ -1,39 +1,17 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./OprawaProcesyHeader.module.css";
-import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
-import iconAdd from "assets/addIcon2.svg";
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
-
-
+import Szukaj from "./TechnologiaSzukaj/Szukaj";
 
 function ProcesyHeader() {
-  const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
-  const show = localStorage.getItem("header");
-  const techContext = useContext(TechnologyContext);
-  const selectedProces = techContext.selectedProces;
-  const setSelectedProces = techContext.setSelectedProces;
-  const setSelectedProcesor = techContext.setSelectedProcesor;
-  const selectedProcesor = techContext.selectedProcesor;
-  const wykonaniaAll = techContext.wykonaniaAll;
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-
-
-  const appContext = useContext(AppContext)
-
-  // aby useEffect załadował się tylko raz
   const effectRan = useRef(false);
   useEffect(() => {
     if (effectRan.current === true) {
-      // console.log("value: "+ value)
-   //   console.log("Test tokenu"+ token.token)
-      //console.log("Test pojedynczego rendera Header")
     }
     return () => {
       effectRan.current = true;
@@ -41,29 +19,19 @@ function ProcesyHeader() {
   }, []);
   //---------------------------------------------------------
 
-
-
   return (
     <div className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>OPRAWA </p>
            <DataWyswietlania/>
-          {/* <ProcesSelect
-            selectedProces={selectedProces}
-            setSelectedProces={setSelectedProces}
-            setSelectedProcesor={setSelectedProcesor}
-            selectedProcesor={selectedProcesor}
-          /> */}
         </div>
 
         <div className={style.centerHeaderContener}>
-        {/* <PokazStany2 /> */}
         <PrzerwaBTN />
-
         </div>
         <div className={style.rightHeaderContener}>
-     
+     <Szukaj/>
           <img
             className={style.icon}
             src={iconClose2}
@@ -83,13 +51,9 @@ export default ProcesyHeader;
 
 function PrzerwaBTN() {
   const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const procesListName = contextApp.procesListName
   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
-
   const [czas,setCzas] = useState(60)
   const [show,setShow] = useState(false)
-
   const [initTime,setInitTime] = useState(1)
   const [initMinuty,setInitMintuty] = useState(60)
   return (
@@ -108,12 +72,8 @@ function PrzerwaBTN() {
             />
            <TimeSelect show={show} setCzas={setCzas} initTime={initTime} setInitTime={setInitTime} initMinuty={initMinuty} setInitMintuty={setInitMintuty}/>
       </div>
-
         
   );
-
- 
-
 
 
   function handleDragStart(){
@@ -123,19 +83,9 @@ function PrzerwaBTN() {
   }
 
     function handleDrop() {
-     //  if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
-     //    let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
-     //    let id_drop_grupa_proces = id;
-     //    dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
-     //  }
-  
-  
       if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
        updateDeletePrzerwaOprawa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyOprawaForProcesor)
       }
-  
-  
-      
     }
 
     function handleDragOver(e) {
@@ -191,23 +141,11 @@ setInitTime(event.target.value)
 
   return(
       <div className={style.col}>
-      {/* <label className={style.label}> Wyświetl od... </label> */}
       <input className={style.selectDataWyswietlania} type="date"
          value={dniWstecz}
-        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
          onChange={(event) => {
-
-          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
-          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
-          //  fechGrupyOprawaForProcesor(selectedProcesor)
            fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,event.target.value)
           setDniWstecz( event.target.value);
-
-
-
-            
-     
-
          }}></input>
     </div>
   );

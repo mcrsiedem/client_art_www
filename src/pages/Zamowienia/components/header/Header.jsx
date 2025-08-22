@@ -54,24 +54,12 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
           alt="React Logo"
         /> : <></>}
 
-
-                {/* {DecodeToken(sessionStorage.getItem("token")).id == 1 ?         <img
-          title="Zmien etap zamowienia"
-          className={style.icon}
-          src={iconAdd2}
-          onClick={() => {
-zabezpiecz()
-          }}
-          alt="React Logo"
-        /> : <></>} */}
-
       </div>
       <div className={style.rightHeaderContener}>
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
-        {/* <SearchBar/> */}
         <img
           className={style.icon2}
           src={iconClose2}

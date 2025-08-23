@@ -107,7 +107,7 @@ if (grup.select) return style.procesRow_select
   return (
 <>
                 <tr
-                  title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." + grup.korekta_zamowienia_alert +" korekta" }
+                  title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark."  }
                   draggable={wolno()}
                   key={grup.global_id}
 

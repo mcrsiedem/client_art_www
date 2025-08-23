@@ -89,10 +89,26 @@ const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const selectedProcesor = techContext.selectedProcesor;
-  const [sortowanie,setSortowanie] = useState("status");
+  const [sortowanie,setSortowanie] = useState("poczatek");
 
-  let posortowanaOprawa = grupyOprawaAll.filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3)
-
+  // aby nie wywalało się sortowanie na przerwach trzeba dodać im jakieś dane dotyczy to tylko localeCompare
+  let posortowanaOprawa =[...grupyOprawaAll.map((t) => {
+        if (t.typ_grupy == 1) {
+          return {...t,
+            nr: "1",
+            naklad: "1",
+            typ_procesu: "1",
+            data_spedycji: "1",
+            typ_procesu: "1",
+            klient: "1",
+            tytul: "1",
+            uwagi: "1",
+            
+          };
+        } else {
+          return t;
+        }
+      })] 
   switch (sortowanie) {
      case 'nr':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.nr - b.nr);
@@ -101,7 +117,7 @@ const WykonaniaTable = () => {
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.naklad - b.naklad);
     break;
   case 'oprawa':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu));
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu) );
     break;
   case 'spedycja':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
@@ -154,9 +170,9 @@ const WykonaniaTable = () => {
               )
               .map((grup, i) => {
                 if (grup.typ_grupy == 2) {
-                  return <OprawaProcesViewRow grup={grup} key={"a"+i} i={i} />;
+                  return <OprawaProcesViewRow grup={grup} key={grup.global_id} i={i} />;
                 } else {
-                  return <OprawaProcesViewRowPrzerwa grup={grup} key={"x"+i} i={i} />;
+                  return <OprawaProcesViewRowPrzerwa grup={grup} key={grup.global_id} i={i} />;
                 }
               })}
           </tbody>

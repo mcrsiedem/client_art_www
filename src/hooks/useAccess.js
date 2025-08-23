@@ -32,7 +32,7 @@ export function useAccess() {
   //----------------------------------------------------------------
 
   const wolno = () => {
-   
+   console.log("OKs")
 
     //nazwa_id ==1  drduk
     if (DecodeToken(sessionStorage.getItem("token")).manage_druk == 1 && selectedProces == 1) {

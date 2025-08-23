@@ -119,9 +119,9 @@ const WykonaniaTable = () => {
                 // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
 
                 if (grup.typ_grupy == 2) {
-                  return <OprawaProcesViewRow grup={grup} key={i} />;
+                  return <OprawaProcesViewRow grup={grup} key={i} i={i} />;
                 } else {
-                  return <OprawaProcesViewRowPrzerwa grup={grup} />;
+                  return <OprawaProcesViewRowPrzerwa grup={grup} i={i} />;
                 }
               })}
           </tbody>

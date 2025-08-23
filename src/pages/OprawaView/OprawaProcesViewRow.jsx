@@ -12,14 +12,19 @@ import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
 import { useAccess } from "hooks/useAccess";
 import TechnologiaDetails from "./TechnologiaDetails/TechnologiaDetails";
+import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
+import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 
-export default function OprawaProcesViewRow({ grup }) {
+export default function OprawaProcesViewRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
     const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
 
     const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologiiDetails;
     const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
     const grupyOprawaAll = techContext.grupyOprawaAll;
+    const setProcesyElementowTech = techContext.setProcesyElementowTech;
+  const selectedProcesor = techContext.selectedProcesor;
+
       
           const [wolno] = useAccess(false);
           const selectColor = (status) => {
@@ -38,40 +43,13 @@ export default function OprawaProcesViewRow({ grup }) {
         key={grup.global_id}
         onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}
         onDragOver={handleDragOver}
-        onDragStart={() => {
-          handleDragStart(grup.global_id, grup.typ_grupy);
-        }}
+        onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
-        onContextMenu={(event) => {
-          event.preventDefault()
-          if (grup.typ_grupy !=1) {
-     
-            setGrupyOprawaAll(
-              grupyOprawaAll
-              .map(x => {return { ...x, show:false}})
-              .map((t) => {
-                if (t.global_id == grup.global_id) {
-                  return { ...t, show:true};
-                } else {
-                  return t;
-                }
-              })
-            );
-
-            if(grup.typ_grupy != 1 ){
-              fechparametryTechnologiiDetails(grup.zamowienie_id,grup.technologia_id)
-            }else{
-              techContext.setProcesyElementowTech([])
-            }
-
-
-          }
-        }}
+        onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech)}
+        onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i)}
       >
         <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
-        <td className={style.td_tableProcesy_czas}>
-          {zamienNaGodziny(grup.czas)}{" "}
-        </td>
+        <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(grup.czas)}</td>
         <KoniecGrupa grup={grup} />
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
         <Klient grup={grup} />

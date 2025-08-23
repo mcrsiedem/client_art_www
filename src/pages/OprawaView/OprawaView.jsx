@@ -16,6 +16,7 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import OprawaProcesViewRowPrzerwa from "./OprawaProcesViewRowPrzerwa";
 import OprawaProcesViewRow from "./OprawaProcesViewRow";
+import { sortOprawa } from "./actions/sortOprawa";
 
 export default function OprawaView( ) {
   const navigate = useNavigate();
@@ -89,58 +90,10 @@ const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const selectedProcesor = techContext.selectedProcesor;
-  const [sortowanie,setSortowanie] = useState("poczatek");
+  const sortowanieOprawy = techContext.sortowanieOprawy;
+  const setSortowanieOprawy = techContext.setSortowanieOprawy;
 
-  // aby nie wywalało się sortowanie na przerwach trzeba dodać im jakieś dane dotyczy to tylko localeCompare
-  let posortowanaOprawa =[...grupyOprawaAll.map((t) => {
-        if (t.typ_grupy == 1) {
-          return {...t,
-            nr: "1",
-            naklad: "1",
-            typ_procesu: "1",
-            data_spedycji: "1",
-            typ_procesu: "1",
-            klient: "1",
-            tytul: "1",
-            uwagi: "1",
-            
-          };
-        } else {
-          return t;
-        }
-      })] 
-  switch (sortowanie) {
-     case 'nr':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.nr - b.nr);
-    break;
-  case 'naklad':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.naklad - b.naklad);
-    break;
-  case 'oprawa':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu) );
-    break;
-  case 'spedycja':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
-    break;
-  case 'data':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
-    break;
-  case 'klient':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.klient.localeCompare(b.klient));
-    break;
-      case 'praca':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.tytul.localeCompare(b.tytul));
-    break;
-      case 'status':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => b.status - a.status);
-    break;
-      case 'uwagi':
-        posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.uwagi.localeCompare(b.uwagi));
-    break;
-  default:
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
-    break;
-}
+
 
   return (
     <div className={style.container}>
@@ -148,23 +101,24 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              <th onDoubleClick={()=>{  setSortowanie("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
+              <th onDoubleClick={()=>{  setSortowanieOprawy("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th>
-              <th onDoubleClick={()=>{  setSortowanie("nr")}} > Nr</th>
-              <th onDoubleClick={()=>{  setSortowanie("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
-              <th onDoubleClick={()=>{  setSortowanie("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
-              <th onDoubleClick={()=>{  setSortowanie("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
-              <th onDoubleClick={()=>{  setSortowanie("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th onDoubleClick={()=>{  setSortowanie("spedycja")}}>Spedycja</th>
-              <th onDoubleClick={()=>{  setSortowanie("status")}}>Status</th>
-              <th onDoubleClick={()=>{  setSortowanie("uwagi")}}> Uwagi</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("nr")}} > Nr</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("spedycja")}}>Spedycja</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("status")}}>Status</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("uwagi")}}> Uwagi</th>
             </tr>
           </thead>
           <tbody>
             {
           
-            posortowanaOprawa
+            
+            sortOprawa(grupyOprawaAll,sortowanieOprawy)
               .filter(
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )

@@ -14,6 +14,7 @@ import { useAccess } from "hooks/useAccess";
 import TechnologiaDetails from "./TechnologiaDetails/TechnologiaDetails";
 import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
+import { sortOprawa } from "./actions/sortOprawa";
 
 export default function OprawaProcesViewRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
@@ -24,6 +25,10 @@ export default function OprawaProcesViewRow({ grup,i}) {
     const grupyOprawaAll = techContext.grupyOprawaAll;
     const setProcesyElementowTech = techContext.setProcesyElementowTech;
   const selectedProcesor = techContext.selectedProcesor;
+
+   const sortowanieOprawy = techContext.sortowanieOprawy;
+  const setSortowanieOprawy = techContext.setSortowanieOprawy;
+
 
       
           const [wolno] = useAccess(false);
@@ -46,7 +51,7 @@ export default function OprawaProcesViewRow({ grup,i}) {
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
         onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech)}
-        onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i)}
+        onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOprawa)}
       >
         <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
         <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(grup.czas)}</td>
@@ -218,7 +223,9 @@ function Status({grup}) {
        className={selectColor(grup.status) }
         value={grup.status}
         onChange={(event) => {
-
+            // można tylko
+            // w trakcie jeśli było o czekujące
+            // zakonczone jeśli było oczekujące albo w trakcie
 
           statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value,stary_status: grup.status})
         }}

@@ -91,6 +91,8 @@ export const TechnologyContextProvider = ({children})=>{
         // const [dniWstecz, setDniWstecz] = useState(todayMinusDni(1));
         const [dniWstecz, setDniWstecz] = useState();
 
+const [sortowanieOprawy,setSortowanieOprawy] = useState("poczatek");
+
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
         const updateTechnology = useCallback(()=>{
@@ -901,7 +903,8 @@ async function fechTechnology() {
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
-                    grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie
+                    grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
+                    sortowanieOprawy,setSortowanieOprawy
                 }}
             >
                 {children}

@@ -4,7 +4,8 @@ export function onMouseDownHanlder(
   setGrupyOprawaAll,
   grupyOprawaAll,
   selectedProcesor,
-  i
+  i,
+  sortowanieOprawy,sortOprawa
 ) {
   
 
@@ -12,7 +13,7 @@ export function onMouseDownHanlder(
           if (event.shiftKey) {
             let indeks_start = sessionStorage.getItem("indeks_start")
             let indeks_stop = i
-                setGrupyOprawaAll( grupyOprawaAll
+                setGrupyOprawaAll( sortOprawa(grupyOprawaAll,sortowanieOprawy)
                               .filter(
                 (x) => x.procesor_id == selectedProcesor 
               )          
@@ -27,7 +28,7 @@ export function onMouseDownHanlder(
       })  );
           }else{
       setGrupyOprawaAll(
-      grupyOprawaAll
+      sortOprawa(grupyOprawaAll,sortowanieOprawy)
       .map(x => {return { ...x, select: false}})
       .map((t,indeks) => {
         if (t.global_id == grup.global_id) {
@@ -41,7 +42,7 @@ export function onMouseDownHanlder(
 
                               if (event.ctrlKey) {
                             setGrupyOprawaAll(
-      grupyOprawaAll
+      sortOprawa(grupyOprawaAll,sortowanieOprawy)
       .map((t,indeks) => {
         if (t.global_id == grup.global_id) {
           return { ...t, select: !t.select};

@@ -59,11 +59,12 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
 
-function selectColor (etapPlikow,status){
+function selectColor (etapPlikow,status,korekta_zamowienia_alert){
 
             //druk
             if(grup.proces_nazwa_id ==1){
 if (grup.select==true) return style.procesRow_select
+if (korekta_zamowienia_alert==1 && selectedProces==1) return style.procesRow_tr_REDALERT
 
                           if (status==4 ) return style.procesRow_tr_DRUK
             // if (status==2) return style.procesRow_tr_RIP
@@ -106,7 +107,7 @@ if (grup.select) return style.procesRow_select
   return (
 <>
                 <tr
-                  title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." }
+                  title={"Grupa id: " +grup.global_id + " Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark." + grup.korekta_zamowienia_alert +" korekta" }
                   draggable={wolno()}
                   key={grup.global_id}
 
@@ -183,7 +184,7 @@ if (grup.select) return style.procesRow_select
                     }
                                
                   }}
-                 className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
+                 className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert) }
                   onDoubleClick={(node, event) => {
          
                       if(grup.typ_grupy != 1 ){

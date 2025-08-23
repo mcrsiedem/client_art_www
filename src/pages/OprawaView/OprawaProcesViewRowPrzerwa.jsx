@@ -28,6 +28,7 @@ import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
+import { useAccess } from "hooks/useAccess";
 
 
 
@@ -42,6 +43,7 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
 
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
+          const [wolno] = useAccess(false);
 
 
                   const selectColor = (status) => {
@@ -59,7 +61,8 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
 <>
                 <tr
                   title={"Grupa id: " +grup.global_id}
-                  draggable={unlockTable}
+                       draggable={wolno()}
+
                    key={grup.global_id}
                   onDrop={()=>handleDrop(grup.global_id,grup.procesor_id)}
                  onDragOver={handleDragOver}
@@ -101,38 +104,6 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                   
                  
                 </tr>
-                {expand ? (
-              wykonaniaAll
-                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
-                .map((row) => {
-                  return (
-                    <tr  key={row.global_id}>
-                       {/* draggable={lockDragDrop}  onDragStart={()=>handleDragStart(row.id)} */}
-      
-                      <td></td>
-                      <td>{row.czas}</td>
-                      {/* <td> global id {row.global_id}</td> */}
-                      {/* <td>element_id {row.element_id}</td> */}
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                   
-           
-                      
-                 
-                    </tr>
-                  );
-                })
-            ) : (
-              <></>
-            )}   
 
 
 

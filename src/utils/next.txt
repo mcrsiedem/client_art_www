@@ -33,4 +33,3 @@ Kilka spedycji. Podświetlone różne daty
 
 Oprawa. Zakończ - całkowita realizacja wykonania.
 Oprawa. Dodaj - realizacja cząstkowa.
-Oprawa. Przerwa nie działa

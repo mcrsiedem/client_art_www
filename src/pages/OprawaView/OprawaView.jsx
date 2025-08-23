@@ -89,41 +89,74 @@ const WykonaniaTable = () => {
   const techContext = useContext(TechnologyContext);
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const selectedProcesor = techContext.selectedProcesor;
-  const [unlockTable, setUnlockTable] = useState(true);
-  let posortowaneDane = grupyWykonanAll.filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3)
+  const [sortowanie,setSortowanie] = useState("status");
+
+  let posortowanaOprawa = grupyOprawaAll.filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3)
+
+  switch (sortowanie) {
+     case 'nr':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.nr - b.nr);
+    break;
+  case 'naklad':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.naklad - b.naklad);
+    break;
+  case 'oprawa':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu));
+    break;
+  case 'spedycja':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
+    break;
+  case 'data':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
+    break;
+  case 'klient':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.klient.localeCompare(b.klient));
+    break;
+      case 'praca':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.tytul.localeCompare(b.tytul));
+    break;
+      case 'status':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => b.status - a.status);
+    break;
+      case 'uwagi':
+        posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.uwagi.localeCompare(b.uwagi));
+    break;
+  default:
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
+    break;
+}
+
   return (
     <div className={style.container}>
       <div className={style.tableContainer}>
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              <th className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
+              <th onDoubleClick={()=>{  setSortowanie("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th>
-              <th> Nr</th>
-               <th className={style.th_tableProcesy_klient}> Klient</th>
-              <th className={style.th_tableProcesy_praca}> Praca</th>
-              <th className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
-              <th className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th>Spedycja</th>
-              <th>Status</th>
-              <th> Uwagi</th>
+              <th onDoubleClick={()=>{  setSortowanie("nr")}} > Nr</th>
+              <th onDoubleClick={()=>{  setSortowanie("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
+              <th onDoubleClick={()=>{  setSortowanie("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
+              <th onDoubleClick={()=>{  setSortowanie("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
+              <th onDoubleClick={()=>{  setSortowanie("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
+              <th onDoubleClick={()=>{  setSortowanie("spedycja")}}>Spedycja</th>
+              <th onDoubleClick={()=>{  setSortowanie("status")}}>Status</th>
+              <th onDoubleClick={()=>{  setSortowanie("uwagi")}}> Uwagi</th>
             </tr>
           </thead>
           <tbody>
             {
           
-            grupyOprawaAll
+            posortowanaOprawa
               .filter(
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )
               .map((grup, i) => {
-                // return (<OprawaProcesViewRow grup={grup} unlockTable={unlockTable} setUnlockTable={setUnlockTable}/>)
-
                 if (grup.typ_grupy == 2) {
-                  return <OprawaProcesViewRow grup={grup} key={i} i={i} />;
+                  return <OprawaProcesViewRow grup={grup} key={"a"+i} i={i} />;
                 } else {
-                  return <OprawaProcesViewRowPrzerwa grup={grup} i={i} />;
+                  return <OprawaProcesViewRowPrzerwa grup={grup} key={"x"+i} i={i} />;
                 }
               })}
           </tbody>

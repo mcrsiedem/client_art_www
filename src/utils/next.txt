@@ -33,5 +33,4 @@ Kilka spedycji. Podświetlone różne daty
 
 Oprawa. Zakończ - całkowita realizacja wykonania.
 Oprawa. Dodaj - realizacja cząstkowa.
-Oprawa. Sortowanie po oprawie i dacie spedycji, kliencie i nakładzie
 Oprawa. Przerwa nie działa

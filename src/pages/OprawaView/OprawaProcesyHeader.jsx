@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./OprawaProcesyHeader.module.css";
 import iconClose2 from "assets/x2.svg";
+import iconCopy from "assets/copy.svg";
+
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
@@ -32,6 +34,7 @@ function ProcesyHeader() {
         </div>
         <div className={style.rightHeaderContener}>
      <Szukaj/>
+     <KOPIUJ_ZAZNACZONE_BTN/>
           <img
             className={style.icon}
             src={iconClose2}
@@ -48,6 +51,57 @@ function ProcesyHeader() {
 
 export default ProcesyHeader;
 
+function KOPIUJ_ZAZNACZONE_BTN() {
+   const techContext = useContext(TechnologyContext);
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
+       const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+    const grupyOprawaAll = techContext.grupyOprawaAll;
+  return (
+
+      <div  className={style.przerwa_container}>
+              <img
+              className={style.icon_copy}
+              src={iconCopy}
+title="Kopiuj zaznaczone..."
+    onClick={(event) => {
+            // console.log(" select" + grup.global_id + " " + event.target.checked);
+let mes='';
+
+            for( let grupa of grupyOprawaAll.filter(x=> x.select == true)){
+              // mes += grupa.poczatek+"\t"
+              // mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
+              mes += grupa.nr+"\t"
+              mes += grupa.klient+"\t"
+              mes += grupa.tytul+"\t"
+              mes += grupa.typ_procesu+"\t"
+              // mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
+              mes += grupa.naklad+ "\t"
+              mes += grupa.data_spedycji+ "\t"
+              mes += grupa.uwagi+ "\t"
+              mes += "\n"
+
+            }
+
+            // setGrupWykonanAll(
+            //   grupyWykonanAll.map((t) => {
+            //       return { ...t, select: false};
+            //   })
+            // );
+
+            navigator.clipboard.writeText(mes);
+          }
+    }
+
+
+              alt="React Logo"
+            />
+      </div>
+
+        
+  );
+
+}
 
 function PrzerwaBTN() {
   const techContext = useContext(TechnologyContext);

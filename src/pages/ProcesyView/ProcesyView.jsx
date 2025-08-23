@@ -120,7 +120,7 @@ const WykonaniaTable = () => {
               : grupyWykonanAll.filter(
                   (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
                 )
-  )
+            )
               .map((grup, i) => {
                 if (grup.typ_grupy != 1) {
                   return (
@@ -129,6 +129,7 @@ const WykonaniaTable = () => {
                       unlockTable={unlockTable}
                       setUnlockTable={setUnlockTable}
                       i={i}
+                      key={"x"+i}
                     />
                   );
                 } else {
@@ -137,6 +138,7 @@ const WykonaniaTable = () => {
                       grup={grup}
                       unlockTable={unlockTable}
                       setUnlockTable={setUnlockTable}
+                      key={"a"+i}
                     />
                   );
                 }

@@ -90,7 +90,7 @@ const WykonaniaTable = () => {
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const selectedProcesor = techContext.selectedProcesor;
   const [unlockTable, setUnlockTable] = useState(true);
-
+  let posortowaneDane = grupyWykonanAll.filter((x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3)
   return (
     <div className={style.container}>
       <div className={style.tableContainer}>
@@ -111,7 +111,9 @@ const WykonaniaTable = () => {
             </tr>
           </thead>
           <tbody>
-            {grupyOprawaAll
+            {
+          
+            grupyOprawaAll
               .filter(
                 (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
               )

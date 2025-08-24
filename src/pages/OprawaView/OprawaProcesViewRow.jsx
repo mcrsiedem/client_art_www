@@ -226,8 +226,18 @@ function Status({grup}) {
             // można tylko
             // w trakcie jeśli było o czekujące
             // zakonczone jeśli było oczekujące albo w trakcie
+            //nie można niedostępne
 
-          statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value,stary_status: grup.status})
+    if (grup.status > 1 && event.target.value !=1) {
+      statusGrupyTechnologia_OPRAWA_PROCESY({
+        ...grup,
+        status: event.target.value,
+        stary_status: grup.status,
+      });
+    }
+
+
+
         }}
       >
         {_status_wykonania.map((option) => (

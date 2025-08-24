@@ -5,6 +5,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import ZamknijBtn from "./components/ZamknijBtn";
 import ElementPane from "./components/ElementPane";
 import TextEditor from "./components/TextEditor";
+import DodajRealizacjeBtn from "./components/DodajRealizacjeBtn";
 
 export default function TechnologiaDetails({grup}) {
   const techContext = useContext(TechnologyContext);
@@ -17,6 +18,7 @@ if(grup.show)
       <td colSpan={17}>
         <div className={style.container}>
           <div className={style.stage}>
+            <DodajRealizacjeBtn grup={grup}/>
             <ElementPane grup={grup}/>
             <TextEditor grup={grup}/>
             <ZamknijBtn grup={grup}/>

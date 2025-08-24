@@ -1,14 +1,14 @@
 
 
 .btn_zamknij {
-   width: 100px;
-   height: 30px;
+   width: 120px;
+   height: 25px;
    background-color: transparent;
-   border-radius: 5px;
+   border-radius:7px;
    border: 1px solid rgba(128, 128, 128, 0.429);
-   background-color: rgb(41, 41, 41);
-
-   color: rgb(207, 207, 207);
+   background-color: rgb(212, 212, 212);
+font-size: 0.9rem;
+   color: rgb(49, 49, 49);
 
 }
 

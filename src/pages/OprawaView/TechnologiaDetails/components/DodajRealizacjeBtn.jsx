@@ -21,7 +21,7 @@ export default function DodajRealizacjeBtn({ grup }) {
                 );
               }}
             >
-              Dodaj realizację oprawy
+              Dodaj realizację
             </button>
   );
 }

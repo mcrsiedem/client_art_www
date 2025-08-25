@@ -65,16 +65,34 @@ function sumujGrupe(new_wykonania) {
               grupa_nazwa: grupa.nazwa,
               stary_status: grupa.stary_status,
                 });
-  // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
-      setWykonaniaAll(res.data[0])
-      setGrupWykonanAll(res.data[1])
-      setGrupWykonanAllWyszukiwarka(res.data[1])
-      return res
-    }).then((res) =>{
+
+
+          if(res.data =='OK'){
+                  setGrupWykonanAll(
+                    grupyWykonanAll.map((t) => {
+                      if (t.global_id == grupa.global_id) {
+                        return { ...t, status: grupa.status };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
+
+
+
+                }else navigate("/Login");
+
+
+
+    //   await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
+    //   setWykonaniaAll(res.data[0])
+    //   setGrupWykonanAll(res.data[1])
+    //   setGrupWykonanAllWyszukiwarka(res.data[1])
+    //   return res
+    // }).then((res) =>{
       
-      setGrupWykonanAll(prev=>{return prev})
-    });
+    //   setGrupWykonanAll(prev=>{return prev})
+    // });
 
   
     }
@@ -87,19 +105,35 @@ function sumujGrupe(new_wykonania) {
               status: grupa.status,
               global_id: grupa.global_id
                 });
+
+
+                          if(res.data =='OK'){
+                  setGrupWykonanAll(
+                    grupyWykonanAll.map((t) => {
+                      if (t.global_id == grupa.global_id) {
+                        return { ...t, status: grupa.status };
+                      } else {
+                        return t;
+                      }
+                    })
+                  );
+
+
+
+                }else navigate("/Login");
   // fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-      await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
-      setWykonaniaAll(res.data[0])
-      setGrupWykonanAll(res.data[1])
-      setGrupWykonanAllWyszukiwarka(res.data[1])
-      return res
-    }).then((res) =>{
+    //   await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+selectedProcesor+"/"+dniWstecz).then((res)=>{
+    //   setWykonaniaAll(res.data[0])
+    //   setGrupWykonanAll(res.data[1])
+    //   setGrupWykonanAllWyszukiwarka(res.data[1])
+    //   return res
+    // }).then((res) =>{
       
-      setGrupWykonanAll(prev=>{return prev})
-      setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+    //   setGrupWykonanAll(prev=>{return prev})
+    //   setGrupWykonanAllWyszukiwarka(prev=>{return prev})
 
 
-    });
+    // });
 
   
     }
@@ -180,7 +214,6 @@ function sumujGrupe(new_wykonania) {
         );
 //  console.log(res)
                  if(res.data =='OK'){
-                // if(res.status == 200){
                   setGrupyOprawaAll(
                     grupyOprawaAll.map((t) => {
                       if (t.global_id == grupa.global_id) {
@@ -191,8 +224,6 @@ function sumujGrupe(new_wykonania) {
                     })
                   );
                 }else navigate("/Login");
-// fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(selectedProcesor,dniWstecz)
-
 
       }
 

@@ -62,7 +62,7 @@ export default function TableMini({open2,setRow}){
              return  zam.opiekun_id == selectedUser;
             }
           })
-           .filter(z => z.stan !=3)
+           .filter(z => z.stan <3)
            .filter((zam) => {
             if (selectedKlient == 0) {
               return true;

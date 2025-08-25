@@ -97,7 +97,7 @@ const [refreshZamowienia] = useZamowienia()
              return  zam.opiekun_id == selectedUser;
             }
           })
-           .filter(z => z.stan ==3)
+           .filter(z => z.stan ==3 || z.stan ==4 )
            .filter((zam) => {
             if (selectedKlient == 0) {
               return true;

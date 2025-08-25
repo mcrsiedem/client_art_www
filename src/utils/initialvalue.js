@@ -383,6 +383,10 @@ const _stan_dokumentu = [
   {
     id: 3,
     nazwa: "Przyjęte",
+  },
+  {
+    id: 4,
+    nazwa: "Zakończone",
   }
 ];
 

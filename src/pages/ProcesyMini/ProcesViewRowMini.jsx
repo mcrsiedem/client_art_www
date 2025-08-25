@@ -310,7 +310,7 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
- const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa] = useGrupyWykonan()
+  const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
  const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{
     // if (status==4) return style.select_DRUK
@@ -333,16 +333,32 @@ function Status({grup}) {
        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
         onChange={(event) => {
-          if(grup.typ_grupy!=1){
-            statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
+
+          if(grup.nazwa = 'Oprawa'){
+
+                if (grup.status > 1 && event.target.value !=1) {
+      statusGrupyTechnologia_OPRAWA_PROCESY({
+        ...grup,
+        status: event.target.value,
+        stary_status: grup.status,
+      });
+    }
+    
+
+          }else{
+
+            
+            if(grup.typ_grupy!=1){
+              statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
+            }
+                  if(grup.typ_grupy==1){
+                    //przerwa
+              statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+            }
+          }
 
 
-          }
-                if(grup.typ_grupy==1){
-                  //przerwa
-            statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-          }
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+
         }}
       >
         {_status_wykonania.map((option) => (

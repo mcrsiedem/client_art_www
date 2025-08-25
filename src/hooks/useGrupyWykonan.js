@@ -178,7 +178,7 @@ function sumujGrupe(new_wykonania) {
               stary_status: grupa.stary_status,
           }
         );
- console.log(res)
+//  console.log(res)
                  if(res.data =='OK'){
                 // if(res.status == 200){
                   setGrupyOprawaAll(

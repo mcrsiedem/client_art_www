@@ -334,7 +334,7 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
 
-          if(grup.nazwa = 'Oprawa'){
+          if(grup.nazwa == 'Oprawa'){
 
                 if (grup.status > 1 && event.target.value !=1) {
       statusGrupyTechnologia_OPRAWA_PROCESY({

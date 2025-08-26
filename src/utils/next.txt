@@ -33,3 +33,21 @@ Kilka spedycji. Podświetlone różne daty
 
 Oprawa. Zakończ - całkowita realizacja wykonania.
 Oprawa. Dodaj - realizacja cząstkowa.
+        Wyślij input global_id  grupy oprawa oraz naklad
+        Sprawdź sumę wykonan oprawy. Jeśli jest mniejsza niż naklad. Dodaj wykonanie. Odeślij OK i global_id nowego wykonania i naklad
+
+Oprawa. Ilość arkuszy
+
+
+Zakończenia.
+    Proces
+    Grupa wykonań
+    Wykonanie
+
+    Grupa wykonan oprawa
+    Wykonanie oprawa
+
+    Postproces
+
+    Zamowienie
+    Realizacja Oddania

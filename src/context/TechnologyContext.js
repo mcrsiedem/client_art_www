@@ -69,6 +69,7 @@ export const TechnologyContextProvider = ({children})=>{
         const [grupaWykonanInit, setGrupaWykonanInit] = useState([]); // wartość początkowa
         const [grupaWykonan, setGrupaWykonan] = useState([]);         // grupy po zmianie
         const [wykonania, setWykonania] = useState([]);
+        const [wykonaniaOprawy,setWykonaniaOprawy] = useState([]);
 
         // wszsystkie grupy i wykonania
         const [grupyWykonanAll, setGrupWykonanAll] = useState([]);

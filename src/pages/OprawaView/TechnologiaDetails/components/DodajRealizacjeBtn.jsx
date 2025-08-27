@@ -1,28 +1,25 @@
-import React, {useContext, } from "react";
+import React, {useContext, useState, } from "react";
 import style from "./DodajRealizacjeBtn.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
+import AddRealizacjaOprawa from "./add/AddRealizacjaOprawa";
 
 export default function DodajRealizacjeBtn({ grup }) {
   const techContext = useContext(TechnologyContext);
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-  const grupyOprawaAll = techContext.grupyOprawaAll;
+  const [show, setShow] = useState(false);
+
   return (
+    <>
     <button
               className={style.btn_zamknij}
               onClick={() => {
-                setGrupyOprawaAll(
-                  grupyOprawaAll.map((t) => {
-                    if (t.global_id == grup.global_id) {
-                      return { ...t, show: false };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
+                setShow(true)
               }}
             >
               Dodaj realizację
-            </button>
+    </button>
+    <AddRealizacjaOprawa show={show} setShow={setShow} grup={grup}/>
+    </>
   );
 }
 

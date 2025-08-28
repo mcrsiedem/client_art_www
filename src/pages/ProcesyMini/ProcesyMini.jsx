@@ -127,7 +127,7 @@ const WykonaniaTable = () => {
                   .map((grup, i) => {
                     if (grup.typ_grupy != 1) {
                       return (
-                        //TODO
+                        //TODO 
                         // ProcesViewRowOprawa
                         <RowMiniOprawa
                           grup={grup}

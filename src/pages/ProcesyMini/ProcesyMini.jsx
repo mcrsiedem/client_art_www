@@ -16,6 +16,8 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import ProcesViewRowPrzerwa from "./ProcesViewRowPrzerwaMini";
 import DecodeToken from "pages/Login/DecodeToken";
+import ProcesViewRowPrzerwaMiniOprawa from "./oprawa/RowPrzerwaMiniOprawa";
+import RowMiniOprawa from "./oprawa/RowMiniOprawa";
 
 export default function ProcesyMini( ) {
   const navigate = useNavigate();
@@ -57,22 +59,13 @@ console.log("proc domyslny"+procesor_id)
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-//DecodeToken(sessionStorage.getItem("token")).id0
-
 let proc = CheckProcesorID(selectedProcesor)
-// console.log("proc do fech "+proc)
           fechGrupyAndWykonaniaForProcesor(proc);
           fechGrupyOprawaForProcesor(proc);
-          
 
          callForPaper()
          getClients(setClients,setClientsWyszukiwarka)
                   getNadkomplety(setNadkomplety)
-
-
-
-
-
 
         } else {
           navigate("/Login");
@@ -94,9 +87,7 @@ let proc = CheckProcesorID(selectedProcesor)
         <ProcesyHeaderMini />
         <WykonaniaTable  />
       <div className={style.container}>
-        {/* <TechnologiaStage/> */}
-        {/* <Procesory
-        /> */}
+
       </div>
     </div>
   );
@@ -118,81 +109,65 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              {/* <th className={style.th_tableProcesy_poczatek}> Początek</th> */}
-              {/* <th className={style.th_tableProcesy_czas}> Czas</th> */}
-              {/* <th className={style.th_tableProcesy_koniec}> Koniec</th> */}
-              <th ></th>
-           
-              <th >Nr</th>
+              <th></th>
+              <th>Nr</th>
               <th> Klient</th>
-                 <th > </th>
+              <th> </th>
               <th> Praca</th>
               <th> </th>
-              {/* <th> </th> */}
-              {/* <th> </th> */}
-
-              {/* <th> Uwagi</th> */}
-              {/* <th> Spedycja</th> */}
-              {/* <th> Przeloty</th> */}
-              {/* <th> Papier</th> */}
-              {/* {selectedProces == 1 ? <th>Pliki </th> : <></>} */}
               <th> Status </th>
             </tr>
           </thead>
           <tbody>
-
-            {selectedProcesor == 8 || selectedProcesor == 10 ? grupyOprawaAll
-              .filter(
-                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
-              )
-              .map((grup, i) => {
-                if (grup.typ_grupy != 1) {
-                  return (
-                   //TODO
-                    // ProcesViewRowOprawa
-                    <ProcesViewRow
-                      grup={grup}
-                      unlockTable={unlockTable}
-                      setUnlockTable={setUnlockTable}
-                    />
-                  );
-                } else {
-                  return (
-                    <ProcesViewRowPrzerwa
-                      grup={grup}
-                      unlockTable={unlockTable}
-                      setUnlockTable={setUnlockTable}
-                    />
-                  );
-                }
-              }) :
-              
-              grupyWykonanAll
-              .filter(
-                (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
-              )
-              .map((grup, i) => {
-                if (grup.typ_grupy != 1) {
-                  return (
-
-                    <ProcesViewRow
-                      grup={grup}
-                      unlockTable={unlockTable}
-                      setUnlockTable={setUnlockTable}
-                    />
-                  );
-                } else {
-                  return (
-                    <ProcesViewRowPrzerwa
-                      grup={grup}
-                      unlockTable={unlockTable}
-                      setUnlockTable={setUnlockTable}
-                    />
-                  );
-                }
-              })
-              
-              }
+            {selectedProcesor == 8 || selectedProcesor == 10
+              ? grupyOprawaAll
+                  .filter(
+                    (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+                  )
+                  .map((grup, i) => {
+                    if (grup.typ_grupy != 1) {
+                      return (
+                        //TODO
+                        // ProcesViewRowOprawa
+                        <RowMiniOprawa
+                          grup={grup}
+                          unlockTable={unlockTable}
+                          setUnlockTable={setUnlockTable}
+                        />
+                      );
+                    } else {
+                      return (
+                        <ProcesViewRowPrzerwaMiniOprawa
+                          grup={grup}
+                          unlockTable={unlockTable}
+                          setUnlockTable={setUnlockTable}
+                        />
+                      );
+                    }
+                  })
+              : grupyWykonanAll
+                  .filter(
+                    (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
+                  )
+                  .map((grup, i) => {
+                    if (grup.typ_grupy != 1) {
+                      return (
+                        <ProcesViewRow
+                          grup={grup}
+                          unlockTable={unlockTable}
+                          setUnlockTable={setUnlockTable}
+                        />
+                      );
+                    } else {
+                      return (
+                        <ProcesViewRowPrzerwa
+                          grup={grup}
+                          unlockTable={unlockTable}
+                          setUnlockTable={setUnlockTable}
+                        />
+                      );
+                    }
+                  })}
           </tbody>
         </table>
       </div>

@@ -1,16 +1,13 @@
-export function onContextMenuHanlder(
+export function onContextMenuHanlderMini(
   event,
   grup,
   setGrupyOprawaAll,
   grupyOprawaAll,
   fechparametryTechnologiiDetails,
-  setProcesyElementowTech,
-  prevet
+  setProcesyElementowTech
 ) {
 
-  if(prevet){
-    event.preventDefault();
-  }
+
   
   if (grup.typ_grupy != 1) {
     setGrupyOprawaAll(

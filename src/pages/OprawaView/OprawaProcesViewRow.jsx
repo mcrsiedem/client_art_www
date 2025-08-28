@@ -29,7 +29,7 @@ export default function OprawaProcesViewRow({ grup,i}) {
    const sortowanieOprawy = techContext.sortowanieOprawy;
   const setSortowanieOprawy = techContext.setSortowanieOprawy;
 
-
+let prevet = true;
       
           const [wolno] = useAccess(false);
           const selectColor = (status) => {
@@ -50,7 +50,7 @@ export default function OprawaProcesViewRow({ grup,i}) {
         onDragOver={handleDragOver}
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
-        onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech)}
+        onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
         onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOprawa)}
       >
         <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>

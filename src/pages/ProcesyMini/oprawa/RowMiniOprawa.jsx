@@ -20,9 +20,10 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useAccess } from "hooks/useAccess";
 import TechnologiaDetails from "pages/OprawaView/TechnologiaDetails/TechnologiaDetails";
-import ElementPane from "pages/OprawaView/TechnologiaDetails/components/ElementPane";
+// import ElementPane from "pages/OprawaView/TechnologiaDetails/components/ElementPane";
 import { onContextMenuHanlder } from "pages/OprawaView/actions/onContextMenuHanlder";
 import { onContextMenuHanlderMini } from "./actions/onContextMenuHanlderMini";
+import ElementPane from "./MiniOprawaDetails/components/ElementPane";
 
 
 export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
@@ -155,7 +156,7 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                     </tr>
                     <tr>
-
+<td></td><td></td><td></td><td></td><td></td>
                                 <ElementPane grup={grup}/>
                     </tr>
                     

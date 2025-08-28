@@ -24,6 +24,7 @@ import TechnologiaDetails from "pages/OprawaView/TechnologiaDetails/TechnologiaD
 import { onContextMenuHanlder } from "pages/OprawaView/actions/onContextMenuHanlder";
 import { onContextMenuHanlderMini } from "./actions/onContextMenuHanlderMini";
 import ElementPane from "./MiniOprawaDetails/components/ElementPane";
+import MiniOprawaDetails from "./MiniOprawaDetails/MiniOprawaDetails";
 
 
 export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
@@ -155,13 +156,7 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                     </tr>
-                    <tr>
-<td></td><td></td><td></td><td></td><td></td>
-                                <ElementPane grup={grup}/>
-                    </tr>
-                    
-                     {/* <TechnologiaDetails grup={grup}/> */}
-
+                                <MiniOprawaDetails grup={grup} setExpand={setExpand}/>
                   </>
                     
 

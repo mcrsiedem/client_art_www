@@ -1,11 +1,9 @@
 import style from "./MiniOprawaDetailss.module.css";
 import ZamknijBtn from "./components/ZamknijBtn";
 import ElementPane from "./components/ElementPane";
-import TextEditor from "./components/TextEditor";
-import DodajRealizacjeBtn from "./components/DodajRealizacjeBtn";
-import RealizacjeOprawy from "./components/RealizacjeOprawy";
 
-export default function MiniOprawaDetails({grup}) {
+
+export default function MiniOprawaDetails({grup,setExpand}) {
 
 if(grup.show)
   return (
@@ -15,10 +13,8 @@ if(grup.show)
       <td colSpan={17}>
         <div className={style.container}>
           <div className={style.stage}>
-            <DodajRealizacjeBtn grup={grup}/>
             <ElementPane grup={grup}/>
-            <TextEditor grup={grup}/>
-            <ZamknijBtn grup={grup}/>
+            <ZamknijBtn setExpand={setExpand}/>
           </div>
         </div>
       </td>

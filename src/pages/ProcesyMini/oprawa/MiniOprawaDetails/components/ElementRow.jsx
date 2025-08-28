@@ -7,20 +7,14 @@ import { AppContext } from "context/AppContext";
 
 export default function ElementRow({ element,i }) {
   const techContext = useContext(TechnologyContext);
-  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-  const grupyOprawaAll = techContext.grupyOprawaAll;
-  const elementyTech = techContext.elementyTech;
   const procesyElementowTech = techContext.procesyElementowTech;
-
-
-
   return (
     <div key={i} className={style.elementRow}>
       <p className={style.title_nazwa} >{element.typ_nazwa}</p> 
        {procesyElementowTech
        .filter(x=> x.element_id == element.id)
                     .map((el, i) => {
-                      return ( <Row el={el}/>)
+                      return ( <RowProces el={el}/>)
                       }
                   )}
     </div>
@@ -28,14 +22,8 @@ export default function ElementRow({ element,i }) {
 }
 
 
-function Row({ el }) {
-  const techContext = useContext(TechnologyContext);
+function RowProces({ el }) {
     const contextApp = useContext(AppContext);
-  
-  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-  const grupyOprawaAll = techContext.grupyOprawaAll;
-  const elementyTech = techContext.elementyTech;
-  const procesyElementowTech = techContext.procesyElementowTech;
   const _status_wykonania = contextApp._status_wykonania
   const ifNull = (val) =>{
 

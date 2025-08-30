@@ -51,3 +51,7 @@ Zakończenia.
 
     Zamowienie
     Realizacja Oddania
+
+
+
+view_nieslusznie_zakonczone_grupy - grupa zakończona pomimo, że wykonania nie

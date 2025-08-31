@@ -61,7 +61,7 @@ const [refreshZamowienia] = useZamowienia()
     checkToken();
     window.history.pushState(null, '', window.location.href);
     const handlePopState = (event) => {
-    alert(DecodeToken(sessionStorage.getItem("token")).imie+ ", bardzo nieładne zachowanie :D ")
+    alert("Proszę nie używać nawigacji przeglądarki. Dziękuję.")
     window.history.pushState(null, '', window.location.href);
     };
     window.addEventListener('popstate', handlePopState);

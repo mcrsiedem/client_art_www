@@ -477,7 +477,9 @@ function ShowTechnmologiaBtn({
   const techContext = useContext(TechnologyContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const setShowProcesy = techContext.setShowProcesy;
-  if (row.open_stan==1 ) {
+  if ( row.open_stan==1  ) {
+  if (row.open_user_id != DecodeToken(sessionStorage.getItem("token")).id ) {
+
     return (
       <td className={style.td_karta}>
         <div>
@@ -491,6 +493,8 @@ function ShowTechnmologiaBtn({
       </td>
     );
 
+
+  }
   }
 
   if (row.technologia_id == null ) {

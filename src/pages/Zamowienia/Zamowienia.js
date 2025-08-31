@@ -59,17 +59,17 @@ const [refreshZamowienia] = useZamowienia()
   useEffect(() => {
     
     checkToken();
-    window.history.pushState(null, '', window.location.href);
-    const handlePopState = (event) => {
-    alert("Proszę nie używać nawigacji przeglądarki. Dziękuję.")
-    window.history.pushState(null, '', window.location.href);
-    };
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
+    // window.history.pushState(null, '', window.location.href);
+    // const handlePopState = (event) => {
+    // alert("Proszę nie używać nawigacji przeglądarki. Dziękuję.")
+    // window.history.pushState(null, '', window.location.href);
+    // };
+    // window.addEventListener('popstate', handlePopState);
+    // return () => {
+    //   window.removeEventListener('popstate', handlePopState);
+    // };
 
-
+setOpenModalInsert(false)
   }, []);
 
   return (

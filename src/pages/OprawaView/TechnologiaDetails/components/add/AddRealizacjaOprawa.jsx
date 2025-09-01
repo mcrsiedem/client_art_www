@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import style from "./AddRealizacjaOprawa.module.css";
 import iconX from "assets/x.svg";
 import Zapisz from "./Zapisz";
+import { reg_int } from "utils/initialvalue";
 export default function AddRealizacjaOprawa({ setShow, show, grup }) {
   const [value, setValue] = useState();
 
@@ -17,7 +18,7 @@ export default function AddRealizacjaOprawa({ setShow, show, grup }) {
         >
           <Header setShow={setShow}></Header>
           <div className={style.center}>
-            <Naklad grup={grup} value={value} />
+            <Naklad grup={grup} value={value} setValue={setValue}/>
           </div>
           <div className={style.footer}>
             <Zapisz setShow={setShow} grup={grup} value={value} />
@@ -49,7 +50,7 @@ function Zamknij({ setShow }) {
   );
 }
 
-function Naklad({ grup, value }) {
+function Naklad({ grup, value,setValue }) {
   return (
     <div className={style.labelinput}>
       <label className={style.label}> Nakład </label>
@@ -57,7 +58,14 @@ function Naklad({ grup, value }) {
         className={style.firma}
         type="text"
         value={value}
-        onChange={(event) => {}}
+        onChange={(event) => {
+            // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
+if ( event.target.value === '' || reg_int.test(event.target.value)) {
+
+  setValue(event.target.value)
+}
+          
+          }}
       ></input>
     </div>
   );

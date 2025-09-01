@@ -1,14 +1,31 @@
 import axios from "axios";
 import { IP } from "utils/Host";
 import { getClients } from "actions/getClients";
+import { getMaxID } from "actions/getMaxID";
 
-export const  addRealizajcaOprawy  = async ({setShow,grup,value}) =>{
+export const  addRealizajcaOprawy  = async (setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy) =>{
   
-    await axios.post(IP + "klienci/" + sessionStorage.getItem("token"), {
-        naklad: value,
-        global_id: grup.global_id
-      })
-      .then((res2) => {
+  let status, insertId;
+    await axios.post(IP + "dodaj_realizacje_oprawy/" + sessionStorage.getItem("token"), {...grup, naklad: value})
+      .then((res) => {
+           status = res.data.status
+          insertId = res.data.insertId  
+
+        if(status=='OK'){
+
+
+const new_wykonaniaOprawy = wykonaniaOprawy.slice();
+
+new_wykonaniaOprawy.push({...grup, id: getMaxID(wykonaniaOprawy),naklad:value, global_id :insertId })
+
+
+
+      setWykonaniaOprawy(new_wykonaniaOprawy );
+    }
+
+
+
+        
         
          setShow(false)
       })

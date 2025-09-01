@@ -15,9 +15,8 @@ export default function DodajRealizacjeBtn({ grup }) {
     <button
               className={style.btn_zamknij}
               onClick={() => {
-
-                console.log(wykonaniaOprawy)
-                // setShow(true)
+                setShow(true)
+                // console.log(grup)
               }}
             >
               Dodaj realizację

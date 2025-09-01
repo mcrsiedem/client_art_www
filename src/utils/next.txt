@@ -55,3 +55,8 @@ Zakończenia.
 
 
 view_nieslusznie_zakonczone_grupy - grupa zakończona pomimo, że wykonania nie
+
+
+
+Oprawa. Dodaj realizację. Historia.
+Oprawa. Usuń realizację. Historia.

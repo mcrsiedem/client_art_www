@@ -16,11 +16,11 @@ export default function OprawaWykonania({ grup }) {
             <>
               <div className={style.container}>
               <div className={style.row}>
-                <div className={style.center}> 
-                <p className={style.title}>   {wykonanie.utworzono ||today_teraz() } Oprawiono:</p>
-                <p className={style.naklad}>   {wykonanie.naklad}</p>
-                <p className={style.title}>   szt.</p>
-                </div>
+                    <div className={style.center}> 
+                    <p className={style.title}>   {wykonanie.utworzono  } Oprawiono:</p>
+                    <p className={style.naklad}>   {wykonanie.naklad}</p>
+                    <p className={style.title}>   szt.</p>
+                     </div>
                   <button className={style.skasujBtn}>Usuń </button>
               </div>
               </div>

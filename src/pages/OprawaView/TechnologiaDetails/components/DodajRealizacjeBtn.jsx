@@ -7,6 +7,7 @@ export default function DodajRealizacjeBtn({ grup }) {
   const techContext = useContext(TechnologyContext);
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const [show, setShow] = useState(false);
+  const [value, setValue] = useState();
 
     const wykonaniaOprawy = techContext.wykonaniaOprawy;
 
@@ -15,13 +16,13 @@ export default function DodajRealizacjeBtn({ grup }) {
     <button
               className={style.btn_zamknij}
               onClick={() => {
+                setValue([])
                 setShow(true)
-                // console.log(grup)
               }}
             >
               Dodaj realizację
     </button>
-    <AddRealizacjaOprawa show={show} setShow={setShow} grup={grup}/>
+    <AddRealizacjaOprawa show={show} setShow={setShow} grup={grup} value={value} setValue={setValue}/>
     </>
   );
 }

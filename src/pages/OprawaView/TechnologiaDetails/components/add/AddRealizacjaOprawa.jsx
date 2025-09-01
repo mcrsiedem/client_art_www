@@ -3,8 +3,7 @@ import style from "./AddRealizacjaOprawa.module.css";
 import iconX from "assets/x.svg";
 import Zapisz from "./Zapisz";
 import { reg_int } from "utils/initialvalue";
-export default function AddRealizacjaOprawa({ setShow, show, grup }) {
-  const [value, setValue] = useState();
+export default function AddRealizacjaOprawa({ setShow, show, grup,value, setValue }) {
 
   if (show) {
     return (

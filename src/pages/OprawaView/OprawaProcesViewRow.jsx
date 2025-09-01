@@ -15,6 +15,7 @@ import TechnologiaDetails from "./TechnologiaDetails/TechnologiaDetails";
 import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOprawa } from "./actions/sortOprawa";
+import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
 
 export default function OprawaProcesViewRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);

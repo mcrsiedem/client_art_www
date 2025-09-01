@@ -907,7 +907,7 @@ async function fechTechnology() {
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
                     grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
-                    sortowanieOprawy,setSortowanieOprawy
+                    sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy
                 }}
             >
                 {children}

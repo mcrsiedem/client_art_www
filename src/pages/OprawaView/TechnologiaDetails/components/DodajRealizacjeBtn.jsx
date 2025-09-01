@@ -8,12 +8,16 @@ export default function DodajRealizacjeBtn({ grup }) {
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const [show, setShow] = useState(false);
 
+    const wykonaniaOprawy = techContext.wykonaniaOprawy;
+
   return (
     <>
     <button
               className={style.btn_zamknij}
               onClick={() => {
-                setShow(true)
+
+                console.log(wykonaniaOprawy)
+                // setShow(true)
               }}
             >
               Dodaj realizację

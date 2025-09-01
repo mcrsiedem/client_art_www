@@ -22,6 +22,8 @@ new_wykonaniaOprawy.push({...grup, id: getMaxID(wykonaniaOprawy),naklad:value, g
 
 
       setWykonaniaOprawy(new_wykonaniaOprawy );
+    }else{
+      alert(status.sqlMessage)
     }
 
 

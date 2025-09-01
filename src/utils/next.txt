@@ -60,3 +60,7 @@ view_nieslusznie_zakonczone_grupy - grupa zakończona pomimo, że wykonania nie
 
 Oprawa. Dodaj realizację. Historia.
 Oprawa. Usuń realizację. Historia.
+
+Dodaj realizacje.
+Jeśli suma realizacji nie przekracza nakładu zmień oprawe na w trakcie
+Jeśli suma realizacji jest równa lub większa od nakładu zakoncz oprawe

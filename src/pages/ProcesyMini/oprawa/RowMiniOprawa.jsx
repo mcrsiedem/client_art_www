@@ -25,6 +25,8 @@ import { onContextMenuHanlder } from "pages/OprawaView/actions/onContextMenuHanl
 import { onContextMenuHanlderMini } from "./actions/onContextMenuHanlderMini";
 import ElementPane from "./MiniOprawaDetails/components/ElementPane";
 import MiniOprawaDetails from "./MiniOprawaDetails/MiniOprawaDetails";
+import OprawaWykonania from "pages/OprawaView/OprawaWykonania/OprawaWykonania";
+import DodajRealizacjeBtn from "pages/OprawaView/TechnologiaDetails/components/DodajRealizacjeBtn";
 
 
 export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
@@ -156,7 +158,10 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                     </tr>
-                                <MiniOprawaDetails grup={grup} setExpand={setExpand}/>
+                    <TechnologiaDetails grup={grup}/>
+                     {/* <OprawaWykonania grup={grup}/>
+                                <DodajRealizacjeBtn grup={grup}/>
+                                <MiniOprawaDetails grup={grup} setExpand={setExpand}/> */}
                   </>
                     
 
@@ -211,7 +216,8 @@ const TytulProcesGrup = ({ grup }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={grup.Praca}
       className={style.tytulInput}
-      value={grup.tytul +' '+grup.nazwa_elementu}
+      // value={grup.tytul +' '+grup.nazwa_elementu}
+      value={grup.tytul }
       readOnly
 
     />

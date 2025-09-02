@@ -32,6 +32,7 @@ export const addRealizajcaOprawy = async (
           naklad: value,
           global_id: insertId,
           utworzono: today_teraz(),
+          grupa_id: grup.id
         });
 
         setWykonaniaOprawy(new_wykonaniaOprawy);

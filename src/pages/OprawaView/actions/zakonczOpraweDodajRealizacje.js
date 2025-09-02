@@ -22,7 +22,7 @@ export const zakonczOpraweDodajRealizacje = async (
       brakujacy_naklad = res.data.brakujacy_naklad;
 
       if (status == "OK") {
-        if(insertId>0){
+        if(parseInt( insertId)>0){
                   const new_wykonaniaOprawy = wykonaniaOprawy.slice();
 
         new_wykonaniaOprawy.push({
@@ -31,6 +31,7 @@ export const zakonczOpraweDodajRealizacje = async (
           naklad: brakujacy_naklad,
           global_id: insertId,
           utworzono: today_teraz(),
+          grupa_id:grup.id
         });
 
         setWykonaniaOprawy(new_wykonaniaOprawy);

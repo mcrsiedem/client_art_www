@@ -17,7 +17,7 @@
 .window{
     position: relative;
 
-    width: 40%;
+    /* width: 40%; */
     height: 170px;
     min-width: 150px;
     max-width: 350px;

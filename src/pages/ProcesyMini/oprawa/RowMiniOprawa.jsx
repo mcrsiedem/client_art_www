@@ -27,6 +27,7 @@ import ElementPane from "./MiniOprawaDetails/components/ElementPane";
 import MiniOprawaDetails from "./MiniOprawaDetails/MiniOprawaDetails";
 import OprawaWykonania from "pages/OprawaView/OprawaWykonania/OprawaWykonania";
 import DodajRealizacjeBtn from "pages/OprawaView/TechnologiaDetails/components/DodajRealizacjeBtn";
+import { zakonczOpraweDodajRealizacje } from "pages/OprawaView/actions/zakonczOpraweDodajRealizacje";
 
 
 export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
@@ -297,9 +298,13 @@ updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyA
 function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania
+    const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+    const wykonaniaOprawy = techContext.wykonaniaOprawy;
+  const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
+  const grupyOprawaAll = techContext.grupyOprawaAll;
+  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
  const [add,dodajDoZamowienia] = useHistoria()
             const selectColor = (etap,status) =>{
@@ -326,12 +331,14 @@ function Status({grup}) {
 
           if(grup.nazwa == 'Oprawa'){
 
-                if (grup.status > 1 && event.target.value !=1) {
-      statusGrupyTechnologia_OPRAWA_PROCESY({
-        ...grup,
-        status: event.target.value,
-        stary_status: grup.status,
-      });
+                if (grup.status > 1 && event.target.value ==4) {
+      zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+
+      // statusGrupyTechnologia_OPRAWA_PROCESY({
+      //   ...grup,
+      //   status: event.target.value,
+      //   stary_status: grup.status,
+      // });
     }
     
 

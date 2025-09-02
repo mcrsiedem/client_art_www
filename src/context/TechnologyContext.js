@@ -92,7 +92,7 @@ export const TechnologyContextProvider = ({children})=>{
         // const [dniWstecz, setDniWstecz] = useState(todayMinusDni(1));
         const [dniWstecz, setDniWstecz] = useState();
 
-const [sortowanieOprawy,setSortowanieOprawy] = useState("status");
+const [sortowanieOprawy,setSortowanieOprawy] = useState("data");
 
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 

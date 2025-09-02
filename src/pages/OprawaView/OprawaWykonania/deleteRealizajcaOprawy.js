@@ -4,19 +4,18 @@ import { getClients } from "actions/getClients";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
-export const addRealizajcaOprawy = async (
-  setShow,
-  grup,
-  value,
+export const deleteRealizajcaOprawy = async (
+  grup,wykonanie,
   wykonaniaOprawy,
   setWykonaniaOprawy,
   grupyOprawaAll,setGrupyOprawaAll
 ) => {
   let status, insertId,status_grupy;
   await axios
-    .post(IP + "dodaj_realizacje_oprawy/" + sessionStorage.getItem("token"), {
-      ...grup,
-      naklad: value,
+    .post(IP + "usun_realizacje_oprawy/" + sessionStorage.getItem("token"), {
+      ...wykonanie,
+      id_grupy: grup.id,
+      global_id_grupy: grup.global_id,
     })
     .then((res) => {
       status = res.data.status;
@@ -24,17 +23,17 @@ export const addRealizajcaOprawy = async (
       status_grupy = res.data.status_grupy;
 
       if (status == "OK") {
-        const new_wykonaniaOprawy = wykonaniaOprawy.slice();
+        // const new_wykonaniaOprawy = wykonaniaOprawy.slice();
 
-        new_wykonaniaOprawy.push({
-          ...grup,
-          id: getMaxID(wykonaniaOprawy),
-          naklad: value,
-          global_id: insertId,
-          utworzono: today_teraz(),
-        });
+        // new_wykonaniaOprawy.push({
+        //   ...grup,
+        //   id: getMaxID(wykonaniaOprawy),
+     
+        //   global_id: insertId,
+        //   utworzono: today_teraz(),
+        // });
 
-        setWykonaniaOprawy(new_wykonaniaOprawy);
+        setWykonaniaOprawy(wykonaniaOprawy.filter(x=>x.global_id != wykonanie.global_id));
 
       setGrupyOprawaAll(
       grupyOprawaAll.map((t, a) => {
@@ -53,6 +52,6 @@ export const addRealizajcaOprawy = async (
         alert(status.sqlMessage);
       }
 
-      setShow(false);
+    
     });
 };

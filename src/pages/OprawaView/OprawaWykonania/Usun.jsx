@@ -1,9 +1,9 @@
 
 import { useContext } from "react";
-import style from "./AddRealizacjaOprawa.module.css";
-import { addRealizajcaOprawy } from "./addRealizajcaOprawy";
+import style from "./OprawaWykonania.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
-export default function Zapisz({setShow,grup,value}) {
+import { deleteRealizajcaOprawy } from "./deleteRealizajcaOprawy";
+export default function Usun({grup,wykonanie}) {
 
     const techContext = useContext(TechnologyContext);
 
@@ -14,14 +14,13 @@ export default function Zapisz({setShow,grup,value}) {
     
     return (
       <button
-        className={style.btn}
+        className={style.skasujBtn}
         onClick={() => {
-           addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
-          setShow(false)
+           deleteRealizajcaOprawy(grup,wykonanie,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
           
-          }}
+          }} 
       >
-        Zapisz
+        Usuń
       </button>
     );
   }

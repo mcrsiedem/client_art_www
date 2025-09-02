@@ -4,26 +4,38 @@ import { getClients } from "actions/getClients";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
-export const deleteRealizajcaOprawy = async (
-  grup,wykonanie,
+export const zakonczOpraweDodajRealizacje = async (
+  grup,
   wykonaniaOprawy,
   setWykonaniaOprawy,
   grupyOprawaAll,setGrupyOprawaAll
 ) => {
-  let status,status_grupy;
+  let status, insertId,status_grupy,brakujacy_naklad;
   await axios
-    .post(IP + "usun_realizacje_oprawy/" + sessionStorage.getItem("token"), {
-      ...wykonanie,
-      id_grupy: grup.id,
-      global_id_grupy: grup.global_id,
+    .post(IP + "zakoncz_oprawe_dodaj_realizacje/" + sessionStorage.getItem("token"), {
+      ...grup,
     })
     .then((res) => {
       status = res.data.status;
+      insertId = res.data.insertId;
       status_grupy = res.data.status_grupy;
+      brakujacy_naklad = res.data.brakujacy_naklad;
 
       if (status == "OK") {
+        if(insertId>0){
+                  const new_wykonaniaOprawy = wykonaniaOprawy.slice();
 
-      setWykonaniaOprawy(wykonaniaOprawy.filter(x=>x.global_id != wykonanie.global_id));
+        new_wykonaniaOprawy.push({
+          ...grup,
+          id: getMaxID(wykonaniaOprawy),
+          naklad: brakujacy_naklad,
+          global_id: insertId,
+          utworzono: today_teraz(),
+        });
+
+        setWykonaniaOprawy(new_wykonaniaOprawy);
+        }
+
 
       setGrupyOprawaAll(
       grupyOprawaAll.map((t, a) => {
@@ -41,6 +53,7 @@ export const deleteRealizajcaOprawy = async (
       } else {
         alert(status.sqlMessage);
       }
-    
+
+      // setShow(false);
     });
 };

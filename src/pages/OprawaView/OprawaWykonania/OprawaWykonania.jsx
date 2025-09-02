@@ -11,7 +11,7 @@ export default function OprawaWykonania({ grup }) {
   return (
     <>
       {wykonaniaOprawy
-        .filter((x) => x.zamowienie_id == grup.zamowienie_id)
+        .filter((x) => x.zamowienie_id == grup.zamowienie_id && x.grupa_id == grup.id)
         .map((wykonanie) => {
           return (
             <>

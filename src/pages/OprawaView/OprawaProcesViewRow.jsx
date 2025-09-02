@@ -16,6 +16,7 @@ import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOprawa } from "./actions/sortOprawa";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
+import { zakonczOpraweDodajRealizacje } from "./actions/zakonczOpraweDodajRealizacje";
 
 export default function OprawaProcesViewRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
@@ -172,6 +173,8 @@ const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie;
   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
+
+
   return (
     <td className={style.td_tableProcesy_koniec}>
       <input
@@ -203,6 +206,10 @@ function Status({grup}) {
   const _status_wykonania = contextApp._status_wykonania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
+    const wykonaniaOprawy = techContext.wykonaniaOprawy;
+  const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
+  const grupyOprawaAll = techContext.grupyOprawaAll;
+  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
     const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
             const selectColor = (status) => {
               if (grup.proces_nazwa_id != 1) {
@@ -229,12 +236,13 @@ function Status({grup}) {
             // zakonczone jeśli było oczekujące albo w trakcie
             //nie można niedostępne
 
-    if (grup.status > 1 && event.target.value !=1) {
-      statusGrupyTechnologia_OPRAWA_PROCESY({
-        ...grup,
-        status: event.target.value,
-        stary_status: grup.status,
-      });
+    if (grup.status > 1 && event.target.value ==4) {
+      zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+      // statusGrupyTechnologia_OPRAWA_PROCESY({
+      //   ...grup,
+      //   status: event.target.value,
+      //   stary_status: grup.status,
+      // });
     }
 
 

@@ -108,8 +108,20 @@ const WykonaniaTable = () => {
       <div className={style.tableContainer}>
         <table className={style.tableProcesy}>
           <thead>
+            {selectedProcesor == 8 || selectedProcesor == 10 ?
+            //oprawa
+                 <tr> 
+              <th>Nr</th>
+              <th> Klient</th>
+              <th> </th>
+              <th> Praca</th>
+              <th> Status </th>
+            </tr>
+            
+            :
+            
+            //reszta
             <tr>
-              <th></th>
               <th>Nr</th>
               <th> Klient</th>
               <th> </th>
@@ -117,6 +129,9 @@ const WykonaniaTable = () => {
               <th> </th>
               <th> Status </th>
             </tr>
+
+          }
+       
           </thead>
           <tbody>
             {selectedProcesor == 8 || selectedProcesor == 10

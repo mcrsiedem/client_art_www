@@ -48,16 +48,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
             if (status==2 ) return style.procesRow_tr_RIP
             if (status==3 ) return style.procesRow_tr_RIP
             if (status==4 ) return style.procesRow_tr_DRUK
-    // if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr
-    // if (etapPlikow==2 && selectedProces==1) return style.procesRow_tr
-    // if (etapPlikow==3 && selectedProces==1) return style.procesRow_tr
-    // if (etapPlikow==4 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    // if (etapPlikow==5 && selectedProces==1) return style.procesRow_tr_AKCEPT
-    // if (etapPlikow==6 && selectedProces==1) return style.procesRow_tr_RIP
-    // if (etapPlikow==7 && selectedProces==1) return style.procesRow_tr_RIP
-    //    if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
-    // if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
- 
 
      return style.procesRow_tr
   }
@@ -91,9 +81,11 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                     
                   }}
                 >
-                  <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
+                  {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
                   <td className={style.td_tableProcesy_nr}>{grup.nr} </td>
-                  <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+                  {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
+                  <KlientProcesGrup grup={grup}/>
+
                   <DyspersjaGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
@@ -112,7 +104,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                       <td >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
                       <td></td>
                       <td></td>
@@ -121,7 +112,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                     </tr>
 <tr  >
-                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -138,7 +128,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                       <td >{grup.typ_grupy ==1 ? (" "):("Nakład: "+grup.naklad) +" szt."}</td>
                       <td></td>
                       <td></td>
@@ -151,7 +140,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                       <td >{grup.typ_grupy ==1 ? (" "):("Przeloty: "+grup.przeloty)+" ark."}</td>
                       <td></td>
                       <td></td>
@@ -160,7 +148,6 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                     </tr>
                                                             <tr  >
-                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -217,6 +204,22 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
 
 
 }
+const KlientProcesGrup = ({ grup }) => {
+
+  //nazwa_elementu
+  return (
+    <td >
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={grup.klient}
+      className={style.klientInput}
+      value={grup.klient}
+      readOnly
+
+    />
+    </td>
+  );
+};
 
 const TytulProcesGrup = ({ grup }) => {
 

@@ -68,7 +68,7 @@ let prevet = true;
         <Uwagi grup={grup} />
       </tr>
 
-        <TechnologiaDetails grup={grup}/>
+        <TechnologiaDetails mini={false} grup={grup}/>
     </>
   );
 
@@ -122,7 +122,7 @@ const Tytul = ({ grup,i }) => {
     <td>
     <input 
       className={style.tytulInputPraca}
-      value={ grup.tytul}
+      value={ grup.tytul +" "+grup.wersja}
       readOnly
     />
     </td>

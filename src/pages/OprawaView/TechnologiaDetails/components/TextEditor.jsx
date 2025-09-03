@@ -6,7 +6,7 @@ import { TechnologyContext } from 'context/TechnologyContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const TextEditor = ({grup}) => {
+const TextEditor = ({grup,mini}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(grup.uwagi);
   const techContext = useContext(TechnologyContext);
@@ -56,9 +56,10 @@ const TextEditor = ({grup}) => {
     e.preventDefault(); 
   };
   return (
-    <div  className={styles.editorContainer}>
+    <div  className={mini? styles.editorContainerMini :styles.editorContainer}>
       <textarea
       //  onWheel={handleScroll}
+      disabled={mini}
         className={styles.editorTextarea}
         value={text}
         // placeholder='Uwagi do oprawy...'

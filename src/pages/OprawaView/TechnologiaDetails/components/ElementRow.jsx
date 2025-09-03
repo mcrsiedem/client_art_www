@@ -58,7 +58,7 @@ if(val == null){
     <div className={style.row}>
 
     <p>{el.nazwa + " "+ ifNull(el.rodzaj) + " "+ ifNull(el.typ)+ " "+ ifNull(el.wykonczenie)}</p>
-    <p>{ifNullStatus(el.status)}</p>
+    <p className={el.status == 4 ?style.status_green:style.status_grey }>{ifNullStatus(el.status)}</p>
 
 
 

@@ -3,6 +3,7 @@ import style from "./OprawaWykonania.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import { today_teraz } from "actions/today_teraz";
 import Usun from "./Usun";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export default function OprawaWykonania({ grup }) {
   const techContext = useContext(TechnologyContext);
@@ -16,6 +17,10 @@ export default function OprawaWykonania({ grup }) {
           return (
             <>
               <div className={style.container}>
+                  <div className={style.row_title}> 
+                    <p className={style.title2}>   {wykonanie.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
+
+                     </div>
               <div className={style.row}>
                     <div className={style.center}> 
                     <p className={style.title}>   {wykonanie.utworzono  } Oprawiono:</p>

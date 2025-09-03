@@ -82,10 +82,13 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                     
                   }}
                 >
-                  <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td>
+                  {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}
                   <td className={style.td_tableProcesy_nr}>{grup.nr} </td>
-                  <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
-                  <DyspersjaGrupa grup={grup}/>
+                  {/* <td className={style.td_tableProcesy_klient}>{grup.klient}</td> */}
+                  <KlientProcesGrup grup={grup}/>
+
+                  
+                  {/* <DyspersjaGrupa grup={grup}/> */}
                   <td className={style.td_tableProcesy_typ}>{typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot}</td>
                   <TytulProcesGrup grup={grup}/>
                   {grup.typ_grupy != 1 ?  <Status grup={grup}/> :  <Status grup={grup}/>}
@@ -105,23 +108,19 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                     </tr>
 <tr  >
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)}</td>
+                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)} {grup.typ_grupy ==1 ? (" "):(" : "+grup.naklad) +" szt."}</td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                     </tr>
-                    <tr  >
-                      <td></td>
+                    {/* <tr  >
                       <td></td>
                       <td></td>
                       <td></td>
@@ -132,9 +131,8 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                       <td></td>
-                    </tr>
+                    </tr> */}
                                         <tr  >
-                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -150,8 +148,6 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
                       <td >{grup.typ_grupy ==1 ? (" "):("Spedycja: "+grup.data_spedycji)}</td>
                       <td></td>
                       <td></td>
@@ -159,10 +155,8 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                     </tr>
-                    <TechnologiaDetails grup={grup}/>
-                     {/* <OprawaWykonania grup={grup}/>
-                                <DodajRealizacjeBtn grup={grup}/>
-                                <MiniOprawaDetails grup={grup} setExpand={setExpand}/> */}
+                    <TechnologiaDetails mini={true} grup={grup}/>
+
                   </>
                     
 
@@ -208,6 +202,23 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
 
 }
 
+const KlientProcesGrup = ({ grup }) => {
+
+  //nazwa_elementu
+  return (
+    <td>
+    <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={grup.klient}
+      className={style.klientInput}
+      // value={grup.tytul +' '+grup.nazwa_elementu}
+      value={grup.klient }
+      readOnly
+
+    />
+    </td>
+  );
+};
 const TytulProcesGrup = ({ grup }) => {
 
   //nazwa_elementu
@@ -218,7 +229,8 @@ const TytulProcesGrup = ({ grup }) => {
       title={grup.Praca}
       className={style.tytulInput}
       // value={grup.tytul +' '+grup.nazwa_elementu}
-      value={grup.tytul }
+      // value={grup.tytul }
+        value={ grup.tytul +" "+grup.wersja}
       readOnly
 
     />

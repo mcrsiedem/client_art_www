@@ -39,3 +39,14 @@
 .title_nazwa{
    font-weight: bold;
 }
+
+.status_green{
+   color: rgb(71, 193, 14);
+   font-weight: bold;
+   padding-left: 10px;
+}
+
+.status_grey{
+   color: rgb(69, 69, 69);
+   font-weight: bold;
+}

@@ -216,6 +216,8 @@ outline: none;
 }
 .td_tableProcesy_nr{
    width: 40px;
+   padding-left: 2px;
+   padding-right: 7px;
    /* font-weight: bold; */
    font-size: 0.9rem;
 
@@ -271,6 +273,15 @@ outline: none;
   font-size: 0.9rem;
   /* width: 100%; */
   width: 300px;
+  padding-right: 10px;
+
+}
+.klientInput{
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  /* width: 100%; */
+  width:90px;
   padding-right: 10px;
 
 }

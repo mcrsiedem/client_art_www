@@ -6,11 +6,18 @@
    flex-direction: column;
    align-items: start;
    justify-content: center;
-   /* background-color: lightcyan; */
-    /* 
-   border: 1px solid rgba(128, 128, 128, 0.423);  */
    border-radius: 10px;
    width: 40%
+}
+
+.editorContainerMini {
+  position: relative;
+    display: flex;
+   flex-direction: column;
+   align-items: start;
+   justify-content: center;
+   border-radius: 10px;
+   width: 90%
 }
 
 /* Pseudo-element do tworzenia nakładki */
@@ -37,6 +44,7 @@ padding: 10px;
 height: 6rem;
   
 }
+
 
 .editorControls {
   position: relative;

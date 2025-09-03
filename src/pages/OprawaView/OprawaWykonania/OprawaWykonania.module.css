@@ -1,11 +1,11 @@
 .container {
    width: 100%;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    align-items: center;
    justify-content: center;
-   gap:5px;
-
+   /* gap:5px; */
+   
    
    
 }
@@ -22,6 +22,8 @@
     /* height: 20px; */
 }
 
+
+
 .title{
 /* font-weight: bold; */
 text-align: center;
@@ -32,9 +34,32 @@ font-weight: bold;
 text-align: center;
 height: 5px;
 }
+.row_title{
+   width: 90%;
+   display: flex;
+   flex-direction: row;
+   align-items: start;
+   justify-content: start;
+   font-size: 0.8rem;
+   padding-left: 5px;
+  
+
+}
+
+.title2{
+text-align: center;
+height: 5px;
+ font-weight: bold;
+color: rgb(0, 0, 0);
+}
+
+.title{
+text-align: center;
+height: 5px;
+}
 
 .row{
-   width: 40%;
+   width: 90%;
    padding: 5px;
    display: flex;
    flex-direction: row;
@@ -44,7 +69,6 @@ height: 5px;
    background-color: rgba(255, 217, 1, 0.594);
       /* border: 1px solid gray; */
    border-radius: 5px;
-   
 }
 
 

@@ -10,7 +10,7 @@ export const zakonczOpraweDodajRealizacje = async (
   setWykonaniaOprawy,
   grupyOprawaAll,setGrupyOprawaAll
 ) => {
-  let status, insertId,status_grupy,brakujacy_naklad;
+  let status, insertId,status_grupy,brakujacy_naklad,zrealizowano;
   await axios
     .post(IP + "zakoncz_oprawe_dodaj_realizacje/" + sessionStorage.getItem("token"), {
       ...grup,
@@ -20,6 +20,8 @@ export const zakonczOpraweDodajRealizacje = async (
       insertId = res.data.insertId;
       status_grupy = res.data.status_grupy;
       brakujacy_naklad = res.data.brakujacy_naklad;
+      zrealizowano = res.data.zrealizowano;
+
 
       if (status == "OK") {
         if(parseInt( insertId)>0){
@@ -44,6 +46,8 @@ export const zakonczOpraweDodajRealizacje = async (
         return {
           ...t,
           status: status_grupy,
+          zrealizowano:zrealizowano
+
         };
       } else {
         return t;

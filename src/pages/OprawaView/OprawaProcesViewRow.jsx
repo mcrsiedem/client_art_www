@@ -62,6 +62,7 @@ let prevet = true;
         <Klient grup={grup} />
         <Tytul grup={grup} />
         <Rodzaj grup={grup} />
+        <Zrealizowano grup={grup} />
         <Naklad grup={grup} />
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
@@ -142,6 +143,19 @@ const Rodzaj = ({ grup,i }) => {
     </td>
   );
 };
+
+const Zrealizowano = ({ grup,i }) => {
+  return (
+    <td>
+    <input 
+      className={style.tytulInputNaklad}
+      value={ grup.zrealizowano}
+      readOnly
+    />
+    </td>
+  );
+};
+
 const Naklad = ({ grup,i }) => {
   return (
     <td>

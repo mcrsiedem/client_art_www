@@ -28,6 +28,7 @@ import MiniOprawaDetails from "./MiniOprawaDetails/MiniOprawaDetails";
 import OprawaWykonania from "pages/OprawaView/OprawaWykonania/OprawaWykonania";
 import DodajRealizacjeBtn from "pages/OprawaView/TechnologiaDetails/components/DodajRealizacjeBtn";
 import { zakonczOpraweDodajRealizacje } from "pages/OprawaView/actions/zakonczOpraweDodajRealizacje";
+import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 
 
 export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
@@ -113,7 +114,7 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)} {grup.typ_grupy ==1 ? (" "):(" : "+grup.naklad) +" szt."}</td>
+                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)} {grup.typ_grupy ==1 ? (" "):(" : "+grup.naklad) +" szt. " +" - oprawiono: "+ ifNoTextSetZero( grup.zrealizowano) }</td>
                       <td></td>
                       <td></td>
                       <td></td>

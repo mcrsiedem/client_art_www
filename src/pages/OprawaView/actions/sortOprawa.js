@@ -27,6 +27,9 @@ export function sortOprawa( grupyOprawaAll,sortowanie) {
   case 'naklad':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.naklad - b.naklad);
     break;
+      case 'zrealizowano':
+    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.zrealizowano - b.zrealizowano);
+    break;
   case 'oprawa':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu) );
     break;

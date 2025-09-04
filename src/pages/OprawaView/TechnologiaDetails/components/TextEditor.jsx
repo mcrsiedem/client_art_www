@@ -17,7 +17,7 @@ const TextEditor = ({grup,mini}) => {
 
 
 
-  axios.put(IP + "grupa_wykonan_oprawa_uwagi/"+ sessionStorage.getItem("token"),[text, grup.global_id])
+  axios.put(IP + "grupa_wykonan_oprawa_uwagi/"+ sessionStorage.getItem("token"),[text, grup.global_id,grup.zamowienie_id])
     .then((res) => {
 
        if(res.data =='OK'){
@@ -59,7 +59,7 @@ const TextEditor = ({grup,mini}) => {
     <div  className={mini? styles.editorContainerMini :styles.editorContainer}>
       <textarea
       //  onWheel={handleScroll}
-      disabled={mini}
+      // disabled={mini}
         className={styles.editorTextarea}
         value={text}
         // placeholder='Uwagi do oprawy...'

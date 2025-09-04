@@ -49,7 +49,7 @@ export default function RowMiniOprawa({ grup,unlockTable, setUnlockTable }) {
         const [expand, setExpand] = useState(false);
           const selectColor = (etapPlikow,status) =>{
             if (status==2 ) return style.procesRow_tr_RIP
-            if (status==3 ) return style.procesRow_tr_RIP
+            if (status==3 ) return style.procesRow_tr_trakcie
             if (status==4 ) return style.procesRow_tr_DRUK
      return style.procesRow_tr
   }
@@ -114,7 +114,7 @@ onContextMenuHanlderMini(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparamet
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)} {grup.typ_grupy ==1 ? (" "):(" : "+grup.naklad) +" szt. " +" - oprawiono: "+ ifNoTextSetZero( grup.zrealizowano) }</td>
+                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)} {grup.typ_grupy ==1 ? (" "):(" : "+grup.naklad) +" szt. " +" - do oprawy zostało: "+ ifNoTextSetZero( grup.zrealizowano) }</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -329,7 +329,7 @@ function Status({grup}) {
     // if (etap==5) return style.select_AKCEPT
     // if (etap==6) return style.select_RIP
     if (status==2) return style.select_RIP
-    if (status==3) return style.select_RIP
+    if (status==3) return style.select_trakcie
     if (status==4) return style.select_DRUK
       // if (etap==8) return style.select_DRUK
      return style.select

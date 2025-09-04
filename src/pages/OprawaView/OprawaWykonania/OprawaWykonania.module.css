@@ -67,6 +67,8 @@ height: 5px;
    justify-content: space-between;
    gap:10px;
    background-color: rgba(255, 217, 1, 0.594);
+    /* background:linear-gradient(to bottom, #e3d056 5%, #c2b245 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+
       /* border: 1px solid gray; */
    border-radius: 5px;
 }

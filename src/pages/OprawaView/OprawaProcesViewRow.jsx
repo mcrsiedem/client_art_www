@@ -38,7 +38,7 @@ let prevet = true;
             if (grup.select) return style.procesRow_select;
             if (status == 4) return style.procesRow_tr_DRUK;
             if (status == 2) return style.procesRow_tr_RIP;
-            if (status == 3) return style.procesRow_tr_RIP;
+            if (status == 3) return style.procesRow_tr_trakcie;
             return style.procesRow_tr;
           };
 
@@ -229,7 +229,7 @@ function Status({grup}) {
               if (grup.proces_nazwa_id != 1) {
                 if (status == 4) return style.select_DRUK;
                 if (status == 2) return style.select_RIP;
-                if (status == 3) return style.select_RIP;
+                if (status == 3) return style.select_trakcie;
                 return style.select;
               }
             };

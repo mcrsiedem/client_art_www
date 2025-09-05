@@ -19,56 +19,47 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
     <>
       <div id="Dane" className={style.dane}>
         <Row style={style.row1}>
-            <Firma />
-            <Klient  showAddClientStage={showAddClientStage} />
-   <TerminPlatnosci />
-          
-            <Przedplata />
-
-            <DataUwtorzenia />
-            <DataPrzyjecia />
-            <DataMeterialow />
-            <DataSpedycji />
+          <Firma />
+          <Klient showAddClientStage={showAddClientStage} />
+          <TerminPlatnosci />
+          <Przedplata />
+          <DataUwtorzenia />
+          <DataPrzyjecia />
+          <DataMeterialow />
+          <DataSpedycji />
         </Row>
 
         <Row style={style.row2}>
-            <NR_ZAMOWIENIA_stary /> 
-            <NR_ZAMOWIENIA /> 
-            <Rok />
-            <Tytul />
-            <NAKLAD/>
-
-            <Waluta />
-            <Cena />
-            <WARTOSC_ZAMOWIENIA/>
-            <Vat />
-            <SKONTO />
-                     <KOSZTY/>
-            <WARTOSC_FAKTURY/>
-            
+          <NR_ZAMOWIENIA_stary />
+          <NR_ZAMOWIENIA />
+          <Rok />
+          <Tytul />
+          <NAKLAD />
+          <Waluta />
+          <Cena />
+          <WARTOSC_ZAMOWIENIA />
+          <Vat />
+          <SKONTO />
+          <KOSZTY />
+          <CenaZkosztami />
+          <WARTOSC_FAKTURY />
         </Row>
 
         <Row style={style.row3}>
-        <NR_KALKULACJI />
-
-            <KODA_PRACY />
-            <ISBN />
-
-            <FSC />
-            <Stan />
-            <Status />
-            <Etap />
+          <NR_KALKULACJI />
+          <KODA_PRACY />
+          <ISBN />
+          <FSC />
+          <Stan />
+          <Status />
+          <Etap />
         </Row>
+
         <Row style={style.row4}>
-            <NR_ZAMOWIENIA_KLIENTA />
-
-
-        <Uwagi />
-        <Opiekun />
-
+          <NR_ZAMOWIENIA_KLIENTA />
+          <Uwagi />
+          <Opiekun />
         </Row>
-
-
       </div>
     </>
   );
@@ -879,6 +870,28 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     </div>
   );
 }
+
+function CenaZkosztami( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const ksiegowosc = contextModalInsert.ksiegowosc;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Cena z kosztami </label>
+      <input className={style.input} type="text"
+      value={daneZamowienia.cena_z_kosztami}
+      onChange={(event) => {
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, cena_z_kosztami: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+       }
+      }}></input>
+    </div>
+  );
+}
+
 
 function WARTOSC_ZAMOWIENIA( ){
   const contextModalInsert = useContext(ModalInsertContext);

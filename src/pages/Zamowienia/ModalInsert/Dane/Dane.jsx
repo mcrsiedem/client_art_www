@@ -39,9 +39,11 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
           <Cena />
           <WARTOSC_ZAMOWIENIA />
           <Vat />
-          <SKONTO />
           <KOSZTY />
           <CenaZkosztami />
+          <SKONTO />
+          <WARTOSC_KONCOWA />
+          
           <WARTOSC_FAKTURY />
         </Row>
 
@@ -855,6 +857,8 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <div className={style.col}>
       <label className={style.label}> Cena szt. </label>
       <input className={style.input} type="text"
+      title="Wartość / nakład"
+
       value={daneZamowienia.cena}
       onChange={(event) => {
 
@@ -879,14 +883,16 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
   return(
       <div className={style.col}>
       <label className={style.label}> Cena z kosztami </label>
-      <input className={style.input} type="text"
+      <input className={style.input_naklad} type="text"
+      title=" ( nakład * cena lub wartosc zamowienia + koszty dodatkowe) / nakład"
+      disabled
       value={daneZamowienia.cena_z_kosztami}
       onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+      //  const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, cena_z_kosztami: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
+      //  if ( event.target.value === '' || re.test(event.target.value)) {
+      //   setDaneZamowienia({...daneZamowienia, cena_z_kosztami: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+      //  }
       }}></input>
     </div>
   );
@@ -902,11 +908,36 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <div className={style.col}>
       <label className={style.label}> Wartość </label>
       <input className={style.input} type="text"
+      title="Nakład * cena"
       value={daneZamowienia.wartosc_zamowienia}
       onChange={(event) => {
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
        if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+       }
+        
+      }}></input>
+    </div>
+  );
+}
+
+function WARTOSC_KONCOWA( ){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+      <div className={style.col}>
+      <label className={style.label}> Wartość końcowa</label>
+      <input className={style.input_naklad} type="text"
+      disabled
+      title="Cena za szt * nakład lub wartość + koszty dodatkowe - Skonto"
+
+      value={daneZamowienia.wartosc_koncowa}
+      onChange={(event) => {
+       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+       if ( event.target.value === '' || re.test(event.target.value)) {
+        setDaneZamowienia({...daneZamowienia, wartosc_koncowa: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
        }
         
       }}></input>
@@ -920,8 +951,9 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
   return(
       <div className={style.col}>
       <label className={style.label}> Koszty dodatkowe</label>
-      <input className={style.input} type="text"
+      <input className={style.input_naklad} type="text"
       value={ksiegowosc.koszty_wartosc}
+      disabled
       onChange={(event) => {
  
       }}></input>
@@ -935,8 +967,9 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
   return(
       <div className={style.col}>
       <label className={style.label}> Faktury </label>
-      <input className={style.input} type="text"
+      <input className={style.input_naklad} type="text"
       value={ksiegowosc.faktury_wartosc}
+      disabled
       onChange={(event) => {
  
         

@@ -20,7 +20,7 @@ width: 100vw;
 .row2 {
   display: grid;
   
-  grid-template-columns:  70px 70px  70px 3fr 110px 75px 110px 110px 110px 110px 110px 110px 110px   ;
+  grid-template-columns:  70px 70px  70px 3fr 110px 75px 110px 110px 110px 110px 110px 110px 110px 110px   ;
   gap: 10px;
   /* grid-column-start: 2; */
   /* margin-left: 240px; */
@@ -148,7 +148,7 @@ padding-left: 10px;
 }
 
 .input_naklad {
-  background-color: rgb(222, 222, 222);
+  background-color: rgb(230, 230, 230);
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;

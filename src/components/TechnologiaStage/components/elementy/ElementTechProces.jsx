@@ -107,13 +107,8 @@ const procesList = contexApp.procesList;
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.col_indeks}>#</th>
-            <th className={style.col_indeks}>id</th>
-            <th className={style.col_indeks}>index</th>
-            {/* <th className={style.col_indeks}>id</th>
-            <th className={style.col_indeks}>zam</th>
-            <th className={style.col_indeks}>prod</th>
-            <th className={style.col_indeks}>element</th> */}
+                      <th className={style.col_indeks}>#</th>
+            <th className={style.col_indeks}>indeks</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Ilość użytków</th>
@@ -122,7 +117,7 @@ const procesList = contexApp.procesList;
             <th className={style.col_kolory}>Front kolory</th>
             <th className={style.col_kolory}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
-            <th className={style.col_wersja}>Usun</th>
+            <th className={style.col_wersja}>Uwagi</th>
           </tr>
         </thead>
         <tbody>
@@ -154,7 +149,6 @@ const ProcesTechRow =({row,i,procesyElementowTechTemporary,
   return(
     <tr key={row.id +100}>
     <td>{i+1}</td>
-    <td>{row.id}</td>
     <INDEKS row={row} procesID={procesID}/>
     <ProcesName row={row} setProcesID={setProcesID}/>
     <ProcessTyp row={row} procesID={procesID}/>
@@ -248,6 +242,8 @@ const Info = ({ row }) => {
     <td>
       <input
         value={row.info}
+      className={style.select}
+
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
@@ -268,6 +264,8 @@ const BackKolor = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
+
         value={row.back_kolor}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -290,6 +288,8 @@ const FrontKolor = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
+
         defaultValue={row.front_kolor}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -311,6 +311,7 @@ const INDEKS = ({ row }) => {
   return (
     <td>
       <input
+         className={style.select_indeks}
         value={row.indeks}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -333,6 +334,8 @@ const IloscUzytkow = ({ row }) => {
     <td>
       <input
         value={row.ilosc_uzytkow}
+      className={style.select}
+
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
             handleUpdateRowProcesyElementowTech({
@@ -353,6 +356,8 @@ const FrontIlosc = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
+
         value={row.front_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -374,6 +379,8 @@ const BackIlosc = ({ row }) => {
   return (
     <td>
       <input
+      className={style.select}
+
         value={row.back_ilosc}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {

@@ -159,7 +159,6 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                {/* <td>{row.indeks}</td> */}
                 <INDEKS row={row}/>
                 <ProcesName row={row}/>
                 <ProcessTyp row={row}/>

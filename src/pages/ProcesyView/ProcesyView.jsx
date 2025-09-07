@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 import style from "./ProcesyView.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "./ProcesyHeader";
+import ProcesyHeader from "./header/ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
 import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 
-import ProcesViewRow from "./ProcesViewRow";
+import ProcesViewRow from "./row/ProcesViewRow";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
-import ProcesViewRowPrzerwa from "./ProcesViewRowPrzerwa";
+import ProcesViewRowPrzerwa from "./row/ProcesViewRowPrzerwa";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();

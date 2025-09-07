@@ -13,12 +13,12 @@ import { _etap_plikow, _status_wydania_papieru, _typ_elementu, reg_int } from "u
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "../../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import style from "./ProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "./ProcesyHeader";
+import ProcesyHeader from "../header/ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";

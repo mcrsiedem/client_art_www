@@ -41,6 +41,7 @@ const initialDane = {
   etap: 2,
   uwagi: "",
   cena: "",
+  cena_z_kosztami: "",
   waluta_id: 1,
   termin_platnosci: 30,
   vat_id: 4,
@@ -53,6 +54,7 @@ const initialDane = {
   nr_zamowienia_klienta:"",
   isbn:"",
   wartosc_zamowienia:"",
+  wartosc_koncowa:"",
   skonto:"",
   nr_kalkulacji:"",
 

@@ -98,6 +98,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
       status: daneZamowienia.status,
       etap: daneZamowienia.etap,  
       cena: daneZamowienia.cena,
+      cena_z_kosztami: daneZamowienia.cena_z_kosztami,
       waluta_id: daneZamowienia.waluta_id,
       vat_id: daneZamowienia.vat_id,
       uwagi: daneZamowienia.uwagi,
@@ -110,6 +111,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
       nr_zamowienia_klienta: daneZamowienia.nr_zamowienia_klienta,
       isbn: daneZamowienia.isbn,
       wartosc_zamowienia: daneZamowienia.wartosc_zamowienia,
+      wartosc_koncowa: daneZamowienia.wartosc_koncowa,
       skonto: daneZamowienia.skonto,
       nr_kalkulacji: daneZamowienia.nr_kalkulacji,
 

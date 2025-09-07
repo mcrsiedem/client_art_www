@@ -12,7 +12,7 @@ import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwa } from "actions/updateDeletePrzerwa";
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "../../../utils/Host";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { wagaArkuszy } from "actions/wagaArkuszy";
 

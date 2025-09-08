@@ -40,6 +40,8 @@ import { druk_alert } from "actions/druk_alert";
 import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
 import { formatujDateZGodzinaPoPolsku } from "actions/formatujDateZGodzinaPoPolsku";
 import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
+import { useContextMenuHandler } from "./useContextMenuHandler";
+import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
 
 
 
@@ -58,6 +60,7 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
+        const [onContextMenuHanlder] = useContextMenuHandler(false);
 
 function selectColor (etapPlikow,status,korekta_zamowienia_alert){
 
@@ -177,6 +180,7 @@ if (grup.select) return style.procesRow_select
                   }
                   }
                   onDragOver={    handleDragOver                          }
+                  onContextMenu={(event) => onContextMenuHanlder(event,grup)}
           
                   onDragStart={() => {
 
@@ -214,6 +218,9 @@ if (grup.select) return style.procesRow_select
                   <td></td>
                  
                 </tr>
+                  <ProcesRowDetails grup={grup}/>
+
+                
                 {expand ? (
                 wykonaniaAll
                 .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)

@@ -4,14 +4,14 @@ import { TechnologyContext } from "context/TechnologyContext";
 
 export default function ZamknijBtn({ grup }) {
   const techContext = useContext(TechnologyContext);
-  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-  const grupyOprawaAll = techContext.grupyOprawaAll;
+  const setGrupWykonanAll = techContext.setGrupWykonanAll;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
   return (
     <button
               className={style.btn_zamknij}
               onClick={() => {
-                setGrupyOprawaAll(
-                  grupyOprawaAll.map((t) => {
+                setGrupWykonanAll(
+                  grupyWykonanAll.map((t) => {
                     if (t.global_id == grup.global_id) {
                       return { ...t, show: false };
                     } else {

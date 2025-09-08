@@ -3,32 +3,31 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { getMaxID } from "actions/getMaxID";
 import axios from "axios";
+import { TechnologyContext } from "context/TechnologyContext";
 // import { useContext } from "react";
-import { IP } from "../utils/Host";
+// import { IP } from "../utils/Host";
 
-export function useMenuHandler(row){
+export function useContextMenuHandler(row){
 const modalcontext = useContext(ModalInsertContext);
 const historiaZamowienia = modalcontext.historiaZamowienia;
 const setHistoriaZamowienia = modalcontext.setHistoriaZamowienia;
 const daneZamowienia = modalcontext.daneZamowienia;
 
-function onContextMenuHanlder(
-  event,
-  grup,
-  setGrupyOprawaAll,
-  grupyOprawaAll,
-  fechparametryTechnologiiDetails,
-  setProcesyElementowTech,
-  prevet
-) {
+  const techContext = useContext(TechnologyContext);
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const setGrupWykonanAll = techContext.setGrupWykonanAll;
+  const selectedProcesor = techContext.selectedProcesor;
+  const selectedProces = techContext.selectedProces;
 
-  if(prevet){
-    event.preventDefault();
-  }
-  
+function onContextMenuHanlder(  event,  grup) {
+
+  // if(prevet){
+  //   event.preventDefault();
+  // }
+  event.preventDefault();
   if (grup.typ_grupy != 1) {
-    setGrupyOprawaAll(
-      grupyOprawaAll
+    setGrupWykonanAll(
+      grupyWykonanAll
         .map((x) => {
           return { ...x, show: false };
         })
@@ -41,11 +40,11 @@ function onContextMenuHanlder(
         })
     );
 
-    if (grup.typ_grupy != 1) {
-      fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
-    } else {
-      setProcesyElementowTech([]);
-    }
+    // if (grup.typ_grupy != 1) {
+    //   fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
+    // } else {
+    //   setProcesyElementowTech([]);
+    // }
   }
 }
 

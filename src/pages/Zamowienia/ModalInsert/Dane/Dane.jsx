@@ -1,5 +1,5 @@
 import style from "./Dane.module.css";
-import { useContext} from "react";
+import { useContext, useState} from "react";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt, reg_int } from "utils/initialvalue";
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -985,6 +985,12 @@ function NAKLAD( ){
   const produkty = contextModalInsert.produkty;
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   const [setStatus] = useStatus();
+      const daneZamowienia = contextModalInsert.daneZamowienia
+      const [add] = useHistoria()
+      const [valueIN,setValueIN] = useState(null)
+
+
+
 
   return(
       <div className={style.col}>
@@ -992,7 +998,19 @@ function NAKLAD( ){
       <input className={style.input} type="text"
       // disabled
       title="Nakład dodaj w parametrach"
-      value={produkty[0].naklad.toLocaleString()}
+      // value={produkty[0].naklad.toLocaleString()}
+      value={produkty[0].naklad}
+      onFocus={()=>{ setValueIN(produkty[0].naklad)}}
+                onBlur={(e)=>{
+            if(valueIN != e.target.value){
+                   
+            add(         {
+              kategoria: "Naklad",
+              event: " Produkt - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
+              zamowienie_id: daneZamowienia.id
+            })
+            }
+          }}
       onChange={(e) => {
 
                     if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -1004,6 +1022,11 @@ function NAKLAD( ){
       
               setStatus(3);
             }
+
+
+    
+
+
         
       }}></input>
     </div>

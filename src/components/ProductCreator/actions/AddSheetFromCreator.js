@@ -10,7 +10,8 @@ export function AddSheetFromCreator(mic,poc ) {
       mic.produkty.map((t) => {
         return {
           ...t,
-          naklad: poc.preOrder.naklad,
+          // naklad: poc.preOrder.naklad,
+          naklad: mic.produkty[0].naklad,
           format_x: poc.preOrder.szerokosc,
           format_y: poc.preOrder.wysokosc,
           oprawa: 0,
@@ -50,7 +51,7 @@ export function AddSheetFromCreator(mic,poc ) {
             papier_id: 0,
             papier_info: "",
             gramatura_id: 0,
-              naklad: poc.preOrder.naklad,
+              naklad: mic.produkty[0].naklad,
             uwagi: "",
         
             stan:0,
@@ -76,7 +77,7 @@ export function AddSheetFromCreator(mic,poc ) {
         produkt_id: 1,
         element_id: 1,
         oprawa_id: 1,
-        naklad: poc.preOrder.naklad,
+        naklad: mic.produkty[0].naklad,
         ilosc_stron: 2,
         wersja: "",
         typ: 6,
@@ -94,7 +95,7 @@ export function AddSheetFromCreator(mic,poc ) {
       mic.oprawa.map((t) => {
         return {
           ...t,
-          naklad: poc.preOrder.naklad,
+          naklad: mic.produkty[0].naklad,
           oprawa: 0,
   
           bok_oprawy: "",

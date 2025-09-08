@@ -22,7 +22,7 @@ export default function SheetMaker({
   return (
     <div className={style.container}>
         
-        <Naklad naklad={naklad} setNaklad={setNaklad} />
+        {/* <Naklad naklad={naklad} setNaklad={setNaklad} /> */}
         <div className={style.bindingContainer}>
           <CardNettoX netto={netto} setNetto={setNetto} />
           <CardNettoY netto={netto} setNetto={setNetto} />
@@ -46,11 +46,34 @@ const AddBtn = ({setShowTemplate,setShowParametryZamowienia}) => {
 
   const poc = useContext(PreOrderContext)
   const mic = useContext(ModalInsertContext)
-const setShowTabs = mic.setShowTabs
+   const contextModalInsert = useContext(ModalInsertContext);
+const showTabs = contextModalInsert.showTabs
+const setShowTabs = contextModalInsert.setShowTabs
+  const produkty = contextModalInsert.produkty;
+
+  const context = useContext(PreOrderContext);
+
+  const isEmpty = () => {
+    if (
+      produkty[0].naklad == null ||
+      produkty[0].naklad == "" ||
+      produkty[0].naklad == 0 ||
+      context.preOrder.szerokosc == null ||
+      context.preOrder.szerokosc == ""
+      ||
+      context.preOrder.wysokosc == null ||
+      context.preOrder.wysokosc == ""
+
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <div className={style.bindingContainer}>
     <button
+    disabled={isEmpty()}
       onClick={() => {
         // setShowTemplate(false);
         // setShowParametryZamowienia(true);
@@ -59,7 +82,7 @@ const setShowTabs = mic.setShowTabs
         console.log("preorder", poc.preOrder)
         setShowTabs( {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
       }}
-      className={style.btn}
+              className={isEmpty() ? style.btn_disabled : style.btn}
     >
       Dodaj
     </button>

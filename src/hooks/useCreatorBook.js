@@ -9,6 +9,8 @@ const modalInsertContext = useContext(ModalInsertContext);
 const preOrderContext = useContext(PreOrderContext);
 const appContext = useContext(AppContext);
 const procesList = appContext.procesList;
+const produkty = modalInsertContext.produkty;
+
 
 function createBook() {
 
@@ -16,7 +18,8 @@ function createBook() {
       modalInsertContext.produkty.map((t) => {
         return {
           ...t,
-          naklad: preOrderContext.preOrder.naklad,
+          // naklad: preOrderContext.preOrder.naklad,
+          naklad: produkty[0].naklad,
           format_x: preOrderContext.preOrder.szerokosc,
           format_y: preOrderContext.preOrder.wysokosc,
           oprawa: preOrderContext.preOrder.oprawa,
@@ -32,7 +35,7 @@ function createBook() {
         if (t.typ == 1) {
           return {
             ...t,
-            naklad: preOrderContext.preOrder.naklad,
+             naklad: produkty[0].naklad,
             ilosc_stron: preOrderContext.preOrder.strony_okl,
             format_x: preOrderContext.preOrder.szerokosc,
             format_y: preOrderContext.preOrder.wysokosc,
@@ -41,7 +44,8 @@ function createBook() {
         if (t.typ == 2) {
           return {
             ...t,
-            naklad: preOrderContext.preOrder.naklad,
+                         naklad: produkty[0].naklad,
+
             ilosc_stron: preOrderContext.preOrder.strony_srd,
             format_x: preOrderContext.preOrder.szerokosc,
             format_y: preOrderContext.preOrder.wysokosc,
@@ -55,7 +59,8 @@ function createBook() {
         if (t.typ == 1) {
           return {
             ...t,
-            naklad: preOrderContext.preOrder.naklad,
+                         naklad: produkty[0].naklad,
+
             ilosc_stron: preOrderContext.preOrder.strony_okl,
             format_x: preOrderContext.preOrder.szerokosc,
             format_y: preOrderContext.preOrder.wysokosc,
@@ -64,7 +69,8 @@ function createBook() {
         if (t.typ == 2) {
           return {
             ...t,
-            naklad: preOrderContext.preOrder.naklad,
+                         naklad: produkty[0].naklad,
+
             ilosc_stron: preOrderContext.preOrder.strony_srd,
             format_x: preOrderContext.preOrder.szerokosc,
             format_y: preOrderContext.preOrder.wysokosc,
@@ -77,7 +83,8 @@ function createBook() {
       modalInsertContext.oprawa.map((t) => {
         return {
           ...t,
-          naklad: preOrderContext.preOrder.naklad,
+                       naklad: produkty[0].naklad,
+
           oprawa: preOrderContext.preOrder.oprawa,
   
           bok_oprawy: preOrderContext.preOrder.wysokosc,

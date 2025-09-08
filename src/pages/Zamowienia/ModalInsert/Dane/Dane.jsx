@@ -1,6 +1,6 @@
 import style from "./Dane.module.css";
 import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt } from "utils/initialvalue";
+import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt, reg_int } from "utils/initialvalue";
 import addIcon2 from "../../../../assets/addIcon2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
@@ -12,6 +12,7 @@ import axios from "axios";
 
 import { IP } from "utils/Host";
 import { today } from "actions/today";
+import { useStatus } from "hooks/useStatus";
 export default function Dane({showAddClientStage,setShowParametryZamowienia,setShowKosztyZamowienia}) {
 
   
@@ -982,14 +983,27 @@ function NAKLAD( ){
 
   const contextModalInsert = useContext(ModalInsertContext);
   const produkty = contextModalInsert.produkty;
+  const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
+  const [setStatus] = useStatus();
+
   return(
       <div className={style.col}>
       <label className={style.label}> Nakład </label>
-      <input className={style.input_naklad} type="text"
-      disabled
+      <input className={style.input} type="text"
+      // disabled
       title="Nakład dodaj w parametrach"
       value={produkty[0].naklad.toLocaleString()}
-      onChange={(event) => {
+      onChange={(e) => {
+
+                    if (e.target.value === "" || reg_int.test(e.target.value)) {
+              handleUpdateRowProdukty({
+                ...produkty[0],
+                naklad: e.target.value,
+                update: true,
+              });
+      
+              setStatus(3);
+            }
         
       }}></input>
     </div>

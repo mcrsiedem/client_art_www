@@ -156,6 +156,17 @@
     /* background-image: linear-gradient(rgb(209, 239, 254) 0%,rgb(212, 212, 212) 95%,rgb(212, 212, 212) 100%); */
 }
 
+.btn_disabled{
+ 
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+   background-color: rgb(190, 190, 190);
+    color: #fff;
+    margin: 5px;
+  }
 
 .btn{
  

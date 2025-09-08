@@ -70,7 +70,7 @@ const initialProdukty = [
     format_x: "",
     format_y: "",
     oprawa: "",
-    naklad: 0,
+    naklad: "",
     stan:1,
     status:1,
     etap:1,

@@ -28,7 +28,7 @@ const setShowTabs = contextModalInsert.setShowTabs
       {showElement && (
         <>
      
-          <Naklad/>
+          {/* <Naklad/> */}
 
           <div className={style.bindingContainer}>
             <Okladka/>
@@ -277,12 +277,15 @@ const AddBtn = () => {
    const contextModalInsert = useContext(ModalInsertContext);
 const showTabs = contextModalInsert.showTabs
 const setShowTabs = contextModalInsert.setShowTabs
+  const produkty = contextModalInsert.produkty;
+
   const context = useContext(PreOrderContext);
   const [createBook] = useCreatorBook();
   const isEmpty = () => {
     if (
-      context.preOrder.naklad == null ||
-      context.preOrder.naklad == "" ||
+      produkty[0].naklad == null ||
+      produkty[0].naklad == "" ||
+      produkty[0].naklad == 0 ||
       context.preOrder.szerokosc == null ||
       context.preOrder.szerokosc == ""
       ||

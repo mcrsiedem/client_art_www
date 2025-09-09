@@ -12,6 +12,11 @@ if(grup.show)
       <td colSpan={mini? 4:17}>
         <div className={style.container}>
           <div className={style.stage}>
+
+            <div className={style.stage}> 
+
+
+            </div>
             {/* <OprawaWykonania grup={grup}/>
             <DodajRealizacjeBtn grup={grup}/>
             <ElementPane grup={grup}/>

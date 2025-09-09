@@ -18,6 +18,8 @@ const daneZamowienia = modalcontext.daneZamowienia;
   const setGrupWykonanAll = techContext.setGrupWykonanAll;
   const selectedProcesor = techContext.selectedProcesor;
   const selectedProces = techContext.selectedProces;
+const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologiiDetails;
+    const setProcesyElementowTech = techContext.setProcesyElementowTech;
 
 function onContextMenuHanlder(  event,  grup) {
 
@@ -40,11 +42,11 @@ function onContextMenuHanlder(  event,  grup) {
         })
     );
 
-    // if (grup.typ_grupy != 1) {
-    //   fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
-    // } else {
-    //   setProcesyElementowTech([]);
-    // }
+    if (grup.typ_grupy != 1) {
+      fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
+    } else {
+      setProcesyElementowTech([]);
+    }
   }
 }
 

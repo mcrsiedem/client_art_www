@@ -70,6 +70,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [grupaWykonan, setGrupaWykonan] = useState([]);         // grupy po zmianie
         const [wykonania, setWykonania] = useState([]);
         const [wykonaniaOprawy,setWykonaniaOprawy] = useState([]);
+        const [realizacje, setRealizacje] = useState([]);
+
 
         // wszsystkie grupy i wykonania
         const [grupyWykonanAll, setGrupWykonanAll] = useState([]);
@@ -683,6 +685,8 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
    setArkusze([])
    setGrupaWykonan([])
    setWykonania([])
+  setRealizacje([])
+
 
   setDaneTech(res.data[0][0]) 
   setProduktyTech(res.data[1])
@@ -697,6 +701,8 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   setWykonania(res.data[10])
   setGrupaOprawaTech(res.data[11])
   setWykonaniaOprawy(res.data[12])
+  setRealizacje(res.data[13])
+
   
   //  setShowTechnologyStage(true)
 }
@@ -907,7 +913,8 @@ async function fechTechnology() {
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
                     grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
-                    sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy
+                    sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy,
+                    realizacje, setRealizacje
                 }}
             >
                 {children}

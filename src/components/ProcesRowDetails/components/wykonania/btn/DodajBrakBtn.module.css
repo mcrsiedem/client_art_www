@@ -1,0 +1,23 @@
+
+
+.btn_zamknij {
+   width: 120px;
+   height: 25px;
+   background-color: transparent;
+   border-radius:7px;
+   border: 1px solid rgba(128, 128, 128, 0.429);
+   background-color: rgba(248, 0, 0, 0.178);
+font-size: 0.9rem;
+   color: rgb(49, 49, 49);
+   margin-top: 10px;
+
+}
+
+.btn_zamknij:hover {
+   /* background-color: #81b3ff; */
+      /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
+   background-color: rgba(248, 0, 0, 0.486);
+
+
+   color: rgb(255, 255, 255)
+}

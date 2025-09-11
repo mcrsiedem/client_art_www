@@ -51,6 +51,7 @@ export default  function AktualizujGrupe({ rowGrupa }) {
 
 const update = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
   return new Promise(async(resolve,reject)=>{
+    console.log(rowGrupa)
    let result = await axios.post(IP + "aktualizuj_grupe_wykonan/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
     resolve(result)
   })

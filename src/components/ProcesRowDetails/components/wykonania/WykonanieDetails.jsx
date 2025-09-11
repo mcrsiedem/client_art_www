@@ -26,10 +26,11 @@ if(wykonanie.show)
             <DodajRealizacjeBtn grup={grup}/>
             <ElementPane grup={grup}/>
             <TextEditor grup={grup} mini={mini}/> */}
+            
             <div  className={style.paneBtn}>
-              <DodajRealizacjeBtn wykonanie={wykonanie}/>
-            <DodajBrakBtn wykonanie={wykonanie}/>
-            <ZamknijWykonanieBtn wykonanie={wykonanie}/>
+                <DodajRealizacjeBtn wykonanie={wykonanie}/>
+                <DodajBrakBtn wykonanie={wykonanie}/>
+                <ZamknijWykonanieBtn wykonanie={wykonanie}/>
             </div>
 
             

@@ -16,6 +16,8 @@ import { IP } from "../../../../utils/Host";
 import { skasujTechnologie } from "actions/skasujTechnologie";
 import SprawdzBTN from "./SprawdzBTN";
 import { useHistoria } from "hooks/useHistoria";
+import { useProcesy } from "hooks/useProcesy";
+import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 
 
 export default function Header({}) {
@@ -70,6 +72,8 @@ export default function Header({}) {
         <AlertLega />
       </CenterPane>
       <RightPane>
+        <Dodruk />
+        <ZapisBtnPromiseDodruk />
         <PotwierdzKorekteZamowieniaBTN />
         <SkasujTechnologieBTN />
         
@@ -160,6 +164,40 @@ const PotwierdzKorekteZamowieniaBTN = () => {
 }
 
 };
+
+
+
+const Dodruk = () => {
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+    const [
+      createWykonaniaFromArkuszeLegi,
+      createProcesyFromArkuszONE,
+      createProcesyFromArkuszNewGrupa,
+    ] = useProcesy();
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+
+    return (
+    <button
+      // disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
+      className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
+      onClick={() => {
+        // daneTech.korekta_zamowienia_alert= null
+        // setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
+       createWykonaniaFromArkuszeLegi();
+      }}
+    >
+      Dodruk
+    </button>
+  );
+}
+
+};
+
+
+
+
 
 const ZapisBtnPromise = () => {
   const techContext = useContext(TechnologyContext);
@@ -279,7 +317,88 @@ const ZapisBtnPromise = () => {
   );
 }
 };
-//----
+//----a
+const ZapisBtnPromiseDodruk = () => {
+  const techContext = useContext(TechnologyContext);
+  const isSaveButtonDisabled = techContext.isSaveButtonDisabled;
+  const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+  const produktyTech = techContext.produktyTech;
+  const setProduktyTech = techContext.setProduktyTech;
+  const elementyTech = techContext.elementyTech;
+  const fragmentyTech = techContext.fragmentyTech;
+  const oprawaTech = techContext.oprawaTech;
+  const legi = techContext.legi;
+  const legiFragmenty = techContext.legiFragmenty;
+  const arkusze = techContext.arkusze;
+  const grupaWykonan = techContext.grupaWykonan;
+  const wykonania = techContext.wykonania;
+  const procesyElementowTech = techContext.procesyElementowTech;
+
+  const setLegiFragmenty = techContext.setLegiFragmenty;
+  const setFragmentyTech = techContext.setFragmentyTech;
+  const setElementyTech = techContext.setElementyTech;
+  const setOprawaTech = techContext.setOprawaTech;
+  const setLegi = techContext.setLegi;
+  const setArkusze = techContext.setArkusze;
+  const setGrupaWykonan = techContext.setGrupaWykonan;
+  const setWykonania = techContext.setWykonania;
+  const setProcesyElementowTech = techContext.setProcesyElementowTech;
+  const grupaOprawaTech = techContext.grupaOprawaTech;
+  const setGrupaOprawaTech = techContext.setGrupaOprawaTech;
+
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+
+
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+
+  return (
+    <button
+      disabled={isSaveButtonDisabled}
+      className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
+      onClick={() => {
+
+
+     
+        console.log("zapis 1st ");
+        daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
+        zapiszTechnologieDodruk({
+          daneTech,
+          produktyTech,
+          elementyTech,
+          fragmentyTech,
+          oprawaTech,
+          arkusze,
+          legi,
+          legiFragmenty,
+          grupaWykonan,
+          wykonania,
+          procesyElementowTech,
+          setProduktyTech,
+          setDaneTech,
+          setElementyTech,
+          setFragmentyTech,
+          setOprawaTech,
+          setLegi,
+          setLegiFragmenty,
+          setArkusze,
+          setGrupaWykonan,
+          setWykonania,
+          setProcesyElementowTech,setSaveButtonDisabled,
+          grupaOprawaTech, setGrupaOprawaTech
+        });
+      
+
+      }}
+    >
+      Zapisz Dodruk
+    </button>
+  );
+}
+};
+//--
 const LeftPane = ({ children }) => {
 
   return <div className={style.left}>{children}</div>;

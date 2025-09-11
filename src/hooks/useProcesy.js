@@ -37,11 +37,14 @@ export function useProcesy(){
    const new_legi = [...legi.filter(x=>x.delete != true)];
    const new_procesy = [...procesy.filter(x=>x.delete != true)];
    const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
-   const new_grupy = [];
-   const new_wykonania = [];
+  //  const new_grupy = [];
+  //  const new_wykonania = [];
+      const new_grupy = [...grupaWykonan];
+   const new_wykonania = [...wykonania];
 
    oprawaTech.map((oprawa,i)=> {
     let grupa_id = MaxID(new_grupaOprawaTech)
+   
     new_grupaOprawaTech.push({
       id: grupa_id,
       global_id:0,
@@ -67,6 +70,7 @@ export function useProcesy(){
     });
    })
    setGrupaOprawaTech(new_grupaOprawaTech)
+   
 procesy.map((proces,i)=> {
   if(proces.arkusz==1){ 
 let grupa_id = MaxID(new_grupy)
@@ -94,6 +98,7 @@ let grupa_id = MaxID(new_grupy)
     .map((a,i)=>{
       new_wykonania.push({
         id: MaxID(new_wykonania),
+        global_id:0,
         indeks: i + 1,
         nazwa: proces.nazwa,
         element_id: a.element_id,
@@ -148,6 +153,7 @@ let grupa_id = MaxID(new_grupy)
       new_wykonania.push({
         id: MaxID(new_wykonania),
         indeks: indeks + 1,
+        global_id:0,
         nazwa: proces.nazwa,
         element_id: a.element_id,
         arkusz_id: a.arkusz_id, // bylo a.id

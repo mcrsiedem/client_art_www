@@ -79,11 +79,33 @@ const setDaneTech = contextTech.setDaneTech
   );
 }
 
+function Klient2() {
+  const contextTech = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const daneTech = contextTech.daneTech;
+ const dane = contextTech.dane
+  return (
+    <div className={style.col}>
+      <label className={style.label}> Klient </label>
+      <select className={style.klient} defaultValue={dane?.klient_id}>
+        {contextApp.clients
+          .filter((x) => x.id == dane?.klient_id)
+          .map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.firma}
+            </option>
+          ))}
+      </select>
+    </div>
+  );
+}
+
+
 function Klient() {
   const contextTech = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const daneTech = contextTech.daneTech;
-
+ const dane = contextTech.dane
   return (
     <div className={style.col}>
       <label className={style.label}> Klient </label>

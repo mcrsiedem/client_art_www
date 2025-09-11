@@ -64,3 +64,8 @@ Oprawa. Usuń realizację. Historia.
 Dodaj realizacje.
 Jeśli suma realizacji nie przekracza nakładu zmień oprawe na w trakcie
 Jeśli suma realizacji jest równa lub większa od nakładu zakoncz oprawe
+
+
+
+Dodruk.
+Kopiowanie całej grupy

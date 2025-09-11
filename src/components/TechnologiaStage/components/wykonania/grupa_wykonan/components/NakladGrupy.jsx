@@ -14,12 +14,12 @@ export default  function NakladGrupy({ rowGrupa}) {
       <input
       disable
         className={style.input}
-        // value={rowGrupa.nazwa}
+        value={rowGrupa.naklad}
         onChange={(e) => {
           if (e.target.value == "" || reg_txt.test(e.target.value)) {
             updateGrupaWykonan({
               ...rowGrupa,
-              czas: e.target.value,
+              naklad: e.target.value,
               update:true
             });
           }

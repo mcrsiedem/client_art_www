@@ -21,7 +21,7 @@ export default function TableZamowienia({open2,setRow}){
 
   const tableZamowienia= contextApp.tableZamowienia;
 
- 
+  const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
 
 const [refreshZamowienia] = useZamowienia()
 
@@ -106,7 +106,13 @@ const [refreshZamowienia] = useZamowienia()
             }
           })
           .filter((zamowienie) => sortWgEtapu({zamowienie}))
-
+          .filter((k) =>
+            k.tytul
+              .concat(" ", k.nr)
+              .concat(" ", k.nr_stary)
+              .toLowerCase()
+              .includes(valueZamowieniaWyszukiwarka.toLowerCase())
+          )
            .map((row,i) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} i={i} />

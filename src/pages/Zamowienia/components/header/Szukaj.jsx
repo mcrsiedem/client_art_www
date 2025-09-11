@@ -8,6 +8,8 @@ export default function Szukaj() {
   const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
+  const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
+  const setValueZamowieniaWyszukiwarka = contextApp.setValueZamowieniaWyszukiwarka;
 
   const inputRef = useRef(null);
   return (
@@ -20,7 +22,8 @@ export default function Szukaj() {
         title="Znajdź tytuł pracy..."
         placeholder=""
         onChange={(event) => {
-        
+
+        setValueZamowieniaWyszukiwarka(event.target.value.toLowerCase())
           let m = [...zamowieniaWyszukiwarka];
           m = m.filter((k) =>
             k.tytul
@@ -43,6 +46,8 @@ const ClearBTN = ({inputRef}) =>{
     const contextApp = useContext(AppContext);
   const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
   const setZamowienia = contextApp.setZamowienia;
+  const setValueZamowieniaWyszukiwarka = contextApp.setValueZamowieniaWyszukiwarka;
+
   
   if (inputRef.current) {
       if(inputRef.current.value ){
@@ -53,6 +58,7 @@ const ClearBTN = ({inputRef}) =>{
             if (inputRef.current) {
               inputRef.current.value = "";
             }
+            setValueZamowieniaWyszukiwarka('')
             setZamowienia(zamowieniaWyszukiwarka);
 
           }}

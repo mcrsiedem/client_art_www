@@ -11,6 +11,7 @@ import { _wykonczenie } from "utils/initialvalue";
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
 
+    const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
     const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
@@ -144,7 +145,8 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     uzytkownicyGrupy, setUzytkownicyGrupy,zamowieniaPliki, setZamowieniaPliki,_status_wykonania_przerwy,
                     showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania,
                     kalendarz, setKalendarz,kalendarzDane, setKalendarzDane,
-                    _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury
+                    _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
+                    valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka
                 }}
             >
                 {children}

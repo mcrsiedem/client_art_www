@@ -88,6 +88,7 @@ let grupa_id = MaxID(new_grupy)
       predkosc: proces.predkosc,
       proces_id: proces.id,
       mnoznik: proces.mnoznik,
+      naklad: proces.naklad,
       status:1,
       stan:1,
       uwagi: ""
@@ -142,6 +143,8 @@ let grupa_id = MaxID(new_grupy)
       predkosc: proces.predkosc,
       proces_id: proces.id,
       mnoznik: proces.mnoznik,
+      naklad: proces.naklad,
+
       status:1,
       stan:1,
       uwagi: ""

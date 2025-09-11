@@ -69,3 +69,10 @@ Jeśli suma realizacji jest równa lub większa od nakładu zakoncz oprawe
 
 Dodruk.
 Kopiowanie całej grupy
+
+
+
+Nakła grupy
+
+w view_technologie_grupy_wykonan zmienić naklad z element na grupa
+wygenerować w grupach naklady z elementów z jakich pochodzą

@@ -6,19 +6,25 @@ export default function DodajRealizacjeBtn({ wykonanie }) {
   const techContext = useContext(TechnologyContext);
   const setWykonania = techContext.setWykonania;
   const wykonania = techContext.wykonania;
+  const realizacje = techContext.realizacje;
+
   return (
     <button
               className={style.btn_zamknij}
               onClick={() => {
-                setWykonania(
-                  wykonania.map((t) => {
-                    if (t.global_id == wykonanie.global_id) {
-                      return { ...t, show: false };
-                    } else {
-                      return t;
-                    }
-                  })
-                );
+
+                console.log(realizacje)
+
+                // setWykonania(
+                //   wykonania.map((t) => {
+                //     if (t.global_id == wykonanie.global_id) {
+                //       return { ...t, show: false };
+                //     } else {
+                //       return t;
+                //     }
+                //   })
+                // );
+
               }}
             >
               Dodaj realizację

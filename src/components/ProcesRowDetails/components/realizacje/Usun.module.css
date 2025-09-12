@@ -1,0 +1,95 @@
+.container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   /* gap:5px; */
+   
+   
+   
+}
+
+.center {
+
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+    gap:10px;
+    /* background-color: red; */
+    /* background-color: blueviolet; */
+    /* height: 20px; */
+}
+
+
+
+.title{
+/* font-weight: bold; */
+text-align: center;
+height: 5px;
+}
+.naklad{
+font-weight: bold;
+text-align: center;
+height: 5px;
+}
+.row_title{
+   width: 90%;
+   display: flex;
+   flex-direction: row;
+   align-items: start;
+   justify-content: start;
+   font-size: 0.8rem;
+   padding-left: 5px;
+  
+
+}
+
+.title2{
+text-align: center;
+height: 5px;
+ font-weight: bold;
+color: rgb(0, 0, 0);
+}
+
+.title{
+text-align: center;
+height: 5px;
+}
+
+.row{
+   width: 90%;
+   padding: 5px;
+   display: flex;
+   flex-direction: row;
+   align-items: start;
+   justify-content: space-between;
+   gap:10px;
+   background-color: rgba(255, 217, 1, 0.594);
+    /* background:linear-gradient(to bottom, #e3d056 5%, #c2b245 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+
+      /* border: 1px solid gray; */
+   border-radius: 5px;
+}
+
+
+.row:hover  .skasujBtn{
+ display: block;
+
+}
+.skasujBtn{
+  display: none;
+   background-color: transparent;
+   background-color: rgb(45, 45, 45);
+   border: none;
+   /* border: 1px solid rgb(157, 157, 157); */
+   width: 100px;
+   border-radius: 5px;
+   font-size: 0.9rem;
+   color: rgb(255, 255, 255);
+   
+}
+
+
+ 

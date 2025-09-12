@@ -24,8 +24,10 @@ export function onContextMenuHanlder(
         })
     );
 
+      // fechparametryTechnologiiDetails(wykonania.zamowienie_id, wykonania.technologia_id);
+
     // if (grup.typ_grupy != 1) {
-    //   fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
+    //   fechparametryTechnologiiDetails(wykonania.zamowienie_id, wykonania.technologia_id);
     // } else {
     //   setProcesyElementowTech([]);
     // }

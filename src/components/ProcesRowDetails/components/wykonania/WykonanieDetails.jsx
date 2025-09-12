@@ -1,3 +1,4 @@
+import Realizacje from "../realizacje/Realizacje";
 import style from "./WykonanieDetails.module.css";
 import DodajBrakBtn from "./btn/DodajBrakBtn";
 import DodajRealizacjeBtn from "./btn/DodajRealizacjeBtn";
@@ -17,6 +18,8 @@ if(wykonanie.show)
       <td colSpan={mini? 4:17}>
         <div className={style.container}>
           <div className={style.stage}>
+
+            <Realizacje wykonanie={wykonanie}/>
               {/* tu będą realizacje */}
             {/* <div className={style.stage}>  */}
             {/* <Wykonania grup={grup}/> */}
@@ -27,6 +30,10 @@ if(wykonanie.show)
             <ElementPane grup={grup}/>
             <TextEditor grup={grup} mini={mini}/> */}
             
+
+
+
+
             <div  className={style.paneBtn}>
                 <DodajRealizacjeBtn wykonanie={wykonanie}/>
                 <DodajBrakBtn wykonanie={wykonanie}/>

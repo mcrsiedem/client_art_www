@@ -30,7 +30,7 @@ export default function Wykonania({ grup, mini }) {
           return (
             <>
               <div 
-              title={"global_id: "+wykonanie.global_id+" id: "+wykonanie.id+" zamowienie_id: "+wykonanie.zamowienie_id+" technologia_id: "+wykonanie.technologia_id}
+              title={"global_id: "+wykonanie.global_id+" id: "+wykonanie.id+" zamowienie_id: "+wykonanie.zamowienie_id+" technologia_id: "+wykonanie.technologia_id+" proces_id: "+wykonanie.proces_id+" procesor_id: "+wykonanie.procesor_id}
               className={style.containerWykonanie}
               onContextMenu={(event) => onContextMenuHanlder(event,wykonanie,wykonania,setWykonania,fechparametryTechnologiiDetails)}
               

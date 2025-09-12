@@ -28,7 +28,7 @@ export default function Realizacje({ wykonanie }) {
                     <div className={style.center}> 
                     <p className={style.title}>   {realizacja.utworzono  } Wykonano:</p>
                     <p className={style.naklad}>   {realizacja.naklad}</p>
-                    <p className={style.title}>   szt.</p>
+                    <p className={style.title}>   ark.</p>
                      </div>
                   {/* <button className={style.skasujBtn}>Usuń </button> */}
                   <Usun wykonanie={wykonanie} realizacja={realizacja}/>

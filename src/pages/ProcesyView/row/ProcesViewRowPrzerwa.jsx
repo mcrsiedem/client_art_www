@@ -62,7 +62,6 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
         <td></td>
         <Status grup={grup} />
         <td></td>
-        <td></td>
 
       </tr>
     </>

@@ -34,10 +34,14 @@ export const addRealizajcaProcesu = async (
 
         setRealizacje(new_realizacje);
 
+          console.log("Dane z serwera:", res.data); // Sprawdź, co zwraca serwer
+  console.log("Status wykonania:", status_wykonania);
+  console.log("Do wykonania:", do_wykonania);
         // console.log(wykonanie.global_id)
               setWykonania(
       wykonania.map((t, a) => {
-      if (t.global_id === wykonanie.global_id) {
+      // if (t.global_id === wykonanie.global_id) {
+      if (t.global_id == 9929) {
         return {
           ...t,
           status: status_wykonania,

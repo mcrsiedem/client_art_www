@@ -42,7 +42,7 @@ export default function Wykonania({ grup, mini }) {
                 <p> Przeloty: {wykonanie.przeloty}</p>
                 <p> Status:  {getNameStatus( wykonanie.status,_status_wykonania)}</p>
                 </div>
-              <WykonanieDetails wykonanie={wykonanie}/>
+              <WykonanieDetails wykonanie={wykonanie} grup={grup}/>
 
               </div>
             </>

@@ -7,7 +7,7 @@ import ZamknijWykonanieBtn from "./btn/ZamknijWykonanieBtn";
 // import Wykonania from "./components/wykonania/Wykonania";
 
 
-export default function WykonanieDetails({wykonanie,mini}) {
+export default function WykonanieDetails({wykonanie,mini,grup}) {
 
 if(wykonanie.show)
   return (
@@ -35,7 +35,7 @@ if(wykonanie.show)
 
 
             <div  className={style.paneBtn}>
-                <DodajRealizacjeBtn wykonanie={wykonanie}/>
+                <DodajRealizacjeBtn wykonanie={wykonanie} grup={grup}/>
                 <DodajBrakBtn wykonanie={wykonanie}/>
                 <ZamknijWykonanieBtn wykonanie={wykonanie}/>
             </div>

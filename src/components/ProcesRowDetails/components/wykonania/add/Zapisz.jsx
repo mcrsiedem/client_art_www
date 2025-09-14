@@ -12,7 +12,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       // const grupyOprawaAll = techContext.grupyOprawaAll;
       // const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
       const wykonania = techContext.wykonania;
-      const setWykonania = techContext.setGrupyOprawaAll;
+      const setWykonania = techContext.setWykonania;
       const realizacje = techContext.realizacje;
       const setRealizacje = techContext.setRealizacje;
       const grupyWykonanAll = techContext.grupyWykonanAll;

@@ -7,7 +7,7 @@ import { today_teraz } from "actions/today_teraz";
 export const addRealizajcaProcesu = async (
  setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup
 ) => {
-  let status, insertId,status_grupy,zrealizowano;
+  let status, insertId,status_wykonania,do_wykonania;
   await axios
     .post(IP + "dodaj_realizacje_procesu/" + sessionStorage.getItem("token"), {
       ...wykonanie,
@@ -16,8 +16,8 @@ export const addRealizajcaProcesu = async (
     .then((res) => {
       status = res.data.status;
       insertId = res.data.insertId;
-      // status_grupy = res.data.status_grupy;
-      // zrealizowano = res.data.zrealizowano;
+      status_wykonania = res.data.status_wykonania;
+      do_wykonania = res.data.do_wykonania;
       
 
       if (status == "OK") {
@@ -34,24 +34,26 @@ export const addRealizajcaProcesu = async (
 
         setRealizacje(new_realizacje);
 
-  //     setGrupWykonanAll(
-  //     grupyWykonanAll.map((t, a) => {
-  //     if (t.global_id == grup.global_id) {
-  //       return {
-  //         ...t,
-  //         status: status_grupy,
-  //         zrealizowano:zrealizowano
-  //       };
-  //     } else {
-  //       return t;
-  //     }
-  //   })
-  // );
-        
+        // console.log(wykonanie.global_id)
+              setWykonania(
+      wykonania.map((t, a) => {
+      if (t.global_id === wykonanie.global_id) {
+        return {
+          ...t,
+          status: status_wykonania,
+          do_wykonania:do_wykonania
+        };
+      } else {
+        return t;
+      }
+    })
+  );
+
+
+        // setShow(false)
       } else {
         alert(status.sqlMessage);
       }
 
-      setShow(false);
-    });
+    })
 };

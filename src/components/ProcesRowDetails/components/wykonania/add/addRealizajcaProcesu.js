@@ -24,7 +24,7 @@ export const addRealizajcaProcesu = async (
       }
     );
 
-    const { status, insertId, status_wykonania, do_wykonania } = res.data;
+    const { status, insertId, status_wykonania, do_wykonania,status_grupy } = res.data;
 
     console.log("Dane z serwera:", res.data);
     console.log("Status wykonania:", status_wykonania);
@@ -56,6 +56,22 @@ export const addRealizajcaProcesu = async (
           return t;
         })
       );
+
+
+      setGrupWykonanAll(
+        grupyWykonanAll.map((t) => {
+          // Użyj unikalnego ID, tak jak w oryginale
+          if (t.global_id === grup.global_id) {
+            return {
+              ...t,
+              status: status_grupy,
+            
+            };
+          }
+          return t;
+        })
+      );
+
     } else {
       alert(status.sqlMessage);
     }

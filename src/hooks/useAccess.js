@@ -10,6 +10,7 @@ export function useAccess() {
 
   const wolno = () => {
 
+   
     //nazwa_id ==1  drduk
     if (DecodeToken(sessionStorage.getItem("token")).manage_druk == 1 && selectedProces == 1) {
       return true;
@@ -21,10 +22,13 @@ export function useAccess() {
     }
 
 
-   //nazwa_id ==3  falc
-    if (DecodeToken(sessionStorage.getItem("token")).manage_inne == 1 && selectedProces == 2) {
-      return true;
-    }
+
+    // 
+ let inne_proces_list =["2","4","5","7","8","9","10","11","12","13","14","15","16"]
+if (DecodeToken(sessionStorage.getItem("token")).manage_inne == 1 && inne_proces_list.includes(selectedProces)) {
+  return true;
+}
+
 
         if (DecodeToken(sessionStorage.getItem("token")).manage_oprawa == 1 && selectedProces == 6) {
       return true;

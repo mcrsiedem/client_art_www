@@ -15,7 +15,16 @@ export default function Wykonania({ grup, mini }) {
   const elementyTech = techContext.elementyTech;
   const _status_wykonania = contextApp._status_wykonania
     const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologiiDetails;
+function selectColor (status){
 
+  
+            if (status==4 ) return style.stage_dark
+            if (status==2) return style.stage
+            if (status==3) return style.stage_yellow
+              return style.stage
+            
+
+  }
 
   return (
     <>
@@ -37,12 +46,23 @@ export default function Wykonania({ grup, mini }) {
               onContextMenu={(event) => onContextMenuHanlder(event,wykonanie,wykonania,setWykonania,fechparametryTechnologiiDetails)}
               
               >
-                <div className={style.stage}>
+                {/* <div className={style.stage}> */}
+                <div className={selectColor(wykonanie.status)}>
+                   <div className={style.info2}>
                 <p  className={style.title_mini}>ark. </p> <p className={style.title_bold} >{wykonanie.nr_arkusza}</p>
+                </div>
+                  {/* <NrArkusza wykonanie={wykonanie}/> */}
                 <p>- </p> <p className={style.title_bold}> {wykonanie.nazwa_wykonania}</p>
                 <p> Przeloty: {wykonanie.przeloty}</p>
-                <p> Do wykonania zostało: {wykonanie.do_wykonania}</p>
-                <p> Status:  {getNameStatus( wykonanie.status,_status_wykonania)}</p>
+                {/* <p> Do wykonania zostało:  {wykonanie.do_wykonania }</p> */}
+                <div className={style.info}>
+                  <p> Zostało:  {wykonanie.do_wykonania >0 || wykonanie.do_wykonania=="" ? wykonanie.do_wykonania: wykonanie.przeloty   }</p>
+                </div>
+                
+                  {/* <Zostalo wykonanie={wykonanie}/> */}
+<div className={style.info}>
+                <p>  {getNameStatus( wykonanie.status,_status_wykonania)}</p>
+                </div>
                 </div>
               <WykonanieDetails wykonanie={wykonanie} grup={grup}/>
 
@@ -54,3 +74,24 @@ export default function Wykonania({ grup, mini }) {
   );
 }
 
+const NrArkusza = ({wykonanie}) => {
+
+  return(
+    <input
+    value={wykonanie.nr_arkusza}
+    >
+    
+    </input>
+  )
+}
+
+const Zostalo = ({wykonanie}) => {
+
+  return(
+    <input
+    value= {wykonanie.do_wykonania >0 || wykonanie.do_wykonania=="" ? wykonanie.do_wykonania: wykonanie.przeloty   }
+    >
+    
+    </input>
+  )
+}

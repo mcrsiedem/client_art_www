@@ -69,6 +69,7 @@ function selectColor (etapPlikow,status,korekta_zamowienia_alert){
 if (grup.select==true) return style.procesRow_select
 if (korekta_zamowienia_alert==1 && selectedProces==1) return style.procesRow_tr_REDALERT
 
+  if (status==3) return style.procesRow_tr_trakcie
                           if (status==4 ) return style.procesRow_tr_DRUK
             // if (status==2) return style.procesRow_tr_RIP
     if (etapPlikow==1 && selectedProces==1) return style.procesRow_tr

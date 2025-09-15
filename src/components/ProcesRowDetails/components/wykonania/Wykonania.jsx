@@ -56,7 +56,8 @@ function selectColor (status){
                 <p> Przeloty: {wykonanie.przeloty}</p>
                 {/* <p> Do wykonania zostało:  {wykonanie.do_wykonania }</p> */}
                 <div className={style.info}>
-                  <p> Zostało:  {wykonanie.do_wykonania >0 || wykonanie.do_wykonania=="" ? wykonanie.do_wykonania: wykonanie.przeloty   }</p>
+                  {/* <p> Zostało:  {wykonanie.do_wykonania >0 || wykonanie.do_wykonania=="" ? wykonanie.do_wykonania: wykonanie.przeloty   }</p> */}
+                  <p> Zostało:  {wykonanie.do_wykonania}</p>
                 </div>
                 
                   {/* <Zostalo wykonanie={wykonanie}/> */}

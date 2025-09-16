@@ -13,7 +13,7 @@ export default function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
       onClick={async () => {
 
         let OPRAWY_ZESZYTOWE = [54,55,56,57,58,59]
-        if (produkty[0].naklad) {
+        if (parseInt(produkty[0].format_x) > 0 ) {
                   if (
                     (contextModalInsert.daneZamowienia.data_spedycji == null) ^
                     (contextModalInsert.daneZamowienia.data_spedycji == "")
@@ -22,8 +22,12 @@ export default function SprawdzBTN({ setShowSaveAs, setSaveAs }) {
                     setSaveButtonDisabled(true);
                     
                   } else{
+    
                     setSaveButtonDisabled(false);
                   }
+
+
+  
                   
                 // if( OPRAWY_ZESZYTOWE.includes(parseInt( produkty[0].oprawa))) {
 

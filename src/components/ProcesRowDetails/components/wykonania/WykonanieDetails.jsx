@@ -19,7 +19,7 @@ if(wykonanie.show)
         <div className={style.container}>
           <div className={style.stage}>
 
-            <Realizacje wykonanie={wykonanie}/>
+            <Realizacje wykonanie={wykonanie} grup={grup}/>
               {/* tu będą realizacje */}
             {/* <div className={style.stage}>  */}
             {/* <Wykonania grup={grup}/> */}

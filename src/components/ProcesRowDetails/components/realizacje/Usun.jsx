@@ -1,22 +1,28 @@
 
 import { useContext } from "react";
-import style from "./Usun.module.css";
+import style from "./Realizacje.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
+import { deleteRealizajcaProcesu } from "./deleteRealizajcaProcesu";
 // import { deleteRealizajcaOprawy } from "./deleteRealizajcaOprawy";
-export default function Usun({grup,wykonanie}) {
+export default function Usun({wykonanie,realizacja,grup}) {
 
     const techContext = useContext(TechnologyContext);
 
-      const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
-      const wykonaniaOprawy = techContext.wykonaniaOprawy;
-      const grupyOprawaAll = techContext.grupyOprawaAll;
-      const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+
+      const wykonania = techContext.wykonania;
+      const setWykonania = techContext.setWykonania;
+      const realizacje = techContext.realizacje;
+      const setRealizacje = techContext.setRealizacje;
+      const grupyWykonanAll = techContext.grupyWykonanAll;
+      const setGrupWykonanAll = techContext.setGrupWykonanAll;
     
     return (
       <button
         className={style.skasujBtn}
         onClick={() => {
-          //  deleteRealizajcaOprawy(grup,wykonanie,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+  console.log(grup)
+
+            deleteRealizajcaProcesu({wykonanie,realizacja,grup,wykonania ,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll} )
           
           }} 
       >
@@ -24,3 +30,6 @@ export default function Usun({grup,wykonanie}) {
       </button>
     );
   }
+
+
+    

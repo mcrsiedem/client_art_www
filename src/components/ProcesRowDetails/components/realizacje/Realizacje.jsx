@@ -6,7 +6,7 @@ import { today_teraz } from "actions/today_teraz";
 import DecodeToken from "pages/Login/DecodeToken";
 import Usun from "./Usun";
 
-export default function Realizacje({ wykonanie }) {
+export default function Realizacje({ wykonanie,grup }) {
   const techContext = useContext(TechnologyContext);
   const wykonaniaOprawy = techContext.wykonaniaOprawy;
   const realizacje = techContext.realizacje;
@@ -31,7 +31,7 @@ export default function Realizacje({ wykonanie }) {
                     <p className={style.title}>   ark.</p>
                      </div>
                   {/* <button className={style.skasujBtn}>Usuń </button> */}
-                  <Usun wykonanie={wykonanie} realizacja={realizacja}/>
+                  <Usun wykonanie={wykonanie} realizacja={realizacja} grup={grup}/>
               </div>
               </div>
             </>

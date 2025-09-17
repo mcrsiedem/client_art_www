@@ -26,10 +26,10 @@ export const addRealizajcaProcesu = async (
 
     const { status, insertId, status_wykonania, do_wykonania,status_grupy } = res.data;
 
-    console.log("Dane z serwera:", res.data);
-    console.log("Status wykonania:", status_wykonania);
-    console.log("Do wykonania:", do_wykonania);
-    console.log("Do wykonanie.global_id:", wykonanie.global_id);
+    // console.log("Dane z serwera:", res.data);
+    // console.log("Status wykonania:", status_wykonania);
+    // console.log("Do wykonania:", do_wykonania);
+    // console.log("Do wykonanie.global_id:", wykonanie.global_id);
 
     if (status === "OK") {
       const new_realizacje = realizacje.slice();

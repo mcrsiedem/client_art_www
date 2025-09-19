@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import GanttChart from './GanttChart'; // Upewnij się, że ścieżka jest poprawna
+import { TechnologyContext } from 'context/TechnologyContext';
+
+
 
 const productionStages = [
   // Produkcja A
@@ -73,9 +76,11 @@ const productionStages = [
 ];
 
 function Gant() {
+    const techContext = useContext(TechnologyContext);
+  const gantStageGrupy = techContext.gantStageGrupy;
   return (
     <div className="App">
-      <GanttChart stages={productionStages} />
+      <GanttChart stages={gantStageGrupy} />
     </div>
   );
 }

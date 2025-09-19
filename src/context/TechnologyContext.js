@@ -93,6 +93,9 @@ export const TechnologyContextProvider = ({children})=>{
         const [selectedProces, setSelectedProces] = useState(1);
         // const [dniWstecz, setDniWstecz] = useState(todayMinusDni(1));
         const [dniWstecz, setDniWstecz] = useState();
+        const [gantStageGrupy, setGantStageGrupy] = useState();
+
+
 
 const [sortowanieOprawy,setSortowanieOprawy] = useState("data");
 
@@ -914,7 +917,8 @@ async function fechTechnology() {
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
                     grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
                     sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy,
-                    realizacje, setRealizacje
+                    realizacje, setRealizacje,
+                    gantStageGrupy, setGantStageGrupy
                 }}
             >
                 {children}

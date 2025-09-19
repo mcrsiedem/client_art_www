@@ -7,6 +7,14 @@
     font-family: Arial, sans-serif;
 }
 
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap:20px
+}
+
 /* Właściwy kontener wykresu Gantta */
 .ganttChart {
     width: 100%;
@@ -22,7 +30,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    padding-left: 160px; /* Odpowiednik szerokości etykiety zadania */
+    padding-left: 260px; /* Odpowiednik szerokości etykiety zadania */
     position: relative;
 }
 
@@ -32,7 +40,7 @@
 
 .timelineLine {
     position: absolute;
-    left: 160px;
+    left: 260px;
     right: 0;
     height: 1px;
     background-color: #ccc;
@@ -49,7 +57,7 @@
 
 /* Etykieta zadania (nazwa) */
 .stageName {
-    width: 150px;
+    width: 250px;
     flex-shrink: 0;
     font-size: 0.9em;
     color: #333;

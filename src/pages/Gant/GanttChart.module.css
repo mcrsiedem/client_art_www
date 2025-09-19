@@ -14,14 +14,13 @@
     gap: 20px;
 }
 
-/* Nowy kontener do przewijania - dodano, aby kontrolować przewijanie */
+/* Nowy kontener do przewijania */
 .scrollWrapper {
-    overflow-x: auto; /* Kluczowa właściwość umożliwiająca przewijanie w poziomie */
+    overflow-x: auto;
 }
 
 /* Właściwy kontener wykresu Gantta */
 .ganttChart {
-    /* Usunięto width: 100% i min-width: 1000px, ponieważ będą one ustawiane dynamicznie */
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
@@ -30,20 +29,36 @@
 
 /* Oś czasu */
 .timeline {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-left: 260px; /* Odpowiednik szerokości etykiety zadania */
     position: relative;
-    /* Dodano, aby oś czasu była zawsze widoczna na górze podczas przewijania */
+    height: 50px; /* Zwiększ wysokość osi czasu */
+    padding-left: 260px; /* Odpowiednik szerokości etykiety zadania */
     position: sticky; 
     top: 0;
     z-index: 10;
     background-color: #f8f9fa;
 }
 
-.timelineDate {
-    font-weight: bold;
+/* Kontener na generowane znaczniki */
+.timelineMarkersContainer {
+  position: absolute;
+  top: 0;
+  left: 260px; /* Dopasowuje się do szerokości etykiety zadania */
+  right: 0;
+  height: 100%;
+}
+
+/* Styl pojedynczego znacznika (dzień tygodnia) */
+.timelineMarker {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%); /* Ustawia znacznik na środku */
+  font-size: 0.8em;
+  text-align: center;
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  color: #555;
+  border-left: 1px solid rgba(0,0,0,0.1); /* Delikatna linia pomocnicza */
+  height: 100%;
+  padding-top: 5px;
 }
 
 .timelineLine {
@@ -52,10 +67,10 @@
     right: 0;
     height: 1px;
     background-color: #ccc;
-    bottom: -5px;
+    bottom: 0px;
 }
 
-/* Pozostałe style pozostają bez zmian */
+/* Reszta stylów bez zmian */
 .stageRow {
     margin-bottom: 10px;
     display: flex;

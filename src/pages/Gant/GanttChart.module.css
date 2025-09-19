@@ -27,8 +27,7 @@
   flex-shrink: 0;
   width: 250px;
   background-color: #f8f9fa;
-  /* Nowy, kluczowy styl */
-  margin-top: 70px; /* Dostosuj wartość, aby wyrównać z pierwszym wierszem paska */
+  margin-top: 70px;
 }
 
 .stageNameFixed {
@@ -43,6 +42,29 @@
 .scrollWrapper {
     overflow-x: auto;
     flex-grow: 1;
+    padding-bottom: 20px;
+    
+    /* Dodaj te reguły, aby pasek przewijania był zawsze widoczny */
+    /* Dla WebKit (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 10px;
+        height: 10px; /* Wysokość dla poziomego paska */
+    }
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Dla Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
 }
 
 .ganttChart {

@@ -8,6 +8,7 @@ const GanttChart = ({ stages }) => {
   const chartRef = useRef(null);
   const [minDate, setMinDate] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
+  const [totalChartWidth, setTotalChartWidth] = useState(0); // Dodano nowy stan
 
   const [refreshGant] = useGant();
 
@@ -25,21 +26,24 @@ const GanttChart = ({ stages }) => {
 
       setMinDate(calculatedMinDate);
       setMaxDate(calculatedMaxDate);
+
+      // Obliczanie całkowitej szerokości na podstawie skali (np. 1 piksel = 1 minuta)
+      const totalTimeSpanMinutes = (calculatedMaxDate.getTime() - calculatedMinDate.getTime()) / (1000 * 60);
+      const scaleFactor = 0.3; // Przykładowo, 10 pikseli na minutę
+      setTotalChartWidth(totalTimeSpanMinutes * scaleFactor);
     }
   }, [stages]);
 
   const calculateBarProperties = (start, end) => {
-    if (!minDate || !maxDate) return { width: 0, marginLeft: 0 };
+    if (!minDate || !maxDate || !totalChartWidth) return { width: 0, marginLeft: 0 };
 
     const totalTimeSpanMs = maxDate.getTime() - minDate.getTime();
     const stageDurationMs = new Date(end).getTime() - new Date(start).getTime();
     const startOffsetMs = new Date(start).getTime() - minDate.getTime();
 
-    const containerWidthPx = chartRef.current?.offsetWidth || 2000; // Używamy dynamicznej szerokości
-    // const containerWidthPx =  6000; // Używamy dynamicznej szerokości
-
-    const widthPx = (stageDurationMs / totalTimeSpanMs) * containerWidthPx;
-    const marginLeftPx = (startOffsetMs / totalTimeSpanMs) * containerWidthPx;
+    // Zmieniono, aby obliczenia opierały się na obliczonej stałej szerokości
+    const widthPx = (stageDurationMs / totalTimeSpanMs) * totalChartWidth;
+    const marginLeftPx = (startOffsetMs / totalTimeSpanMs) * totalChartWidth;
 
     return {
       width: `${Math.max(0, widthPx)}px`,
@@ -75,44 +79,50 @@ const GanttChart = ({ stages }) => {
         <button onClick={() => refreshGant()}>Odśwież</button>
       </div>
 
-      <div
-        ref={chartRef}
-        className={styles.ganttChart}
-      >
-        <div className={styles.timeline}>
-          <span className={styles.timelineDate}>{formatTime(minDate)}</span>
-          <span className={styles.timelineDate}>{formatTime(maxDate)}</span>
-          <div className={styles.timelineLine}></div>
-        </div>
+      {/* Dodano nowy kontener do przewijania */}
+      <div className={styles.scrollWrapper}>
+        <div
+          ref={chartRef}
+          className={styles.ganttChart}
+          // Ustawiamy szerokość wykresu na obliczoną wartość, aby umożliwić przewijanie
+          style={{ width: `${totalChartWidth}px` }} 
+        >
+          <div className={styles.timeline}>
+            <span className={styles.timelineDate}>{formatTime(minDate)}</span>
+            {/* Przesunięto drugą datę na koniec osi */}
+            <span className={styles.timelineDate} style={{ marginLeft: 'auto' }}>{formatTime(maxDate)}</span>
+            <div className={styles.timelineLine}></div>
+          </div>
 
-        {stages?.map(stage => {
-          const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
-          const barClass = getBarClass(stage.name);
-          const progressClass = getProgressClass(stage.name);
+          {stages?.map(stage => {
+            const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
+            const barClass = getBarClass(stage.name);
+            const progressClass = getProgressClass(stage.name);
 
-          return (
-            <div key={stage.id} className={styles.stageRow}>
-              <div className={styles.stageName}>
-                {stage.name.substring(0, 30)}
-              </div>
-              <div
-                className={`${styles.stageBar} ${barClass}`}
-                style={{ width, marginLeft }}
-                title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
-              >
+            return (
+              <div key={stage.id} className={styles.stageRow}>
+                <div className={styles.stageName}>
+                  {stage.name.substring(0, 30)}
+                </div>
                 <div
-                  className={`${styles.progressBar} ${progressClass}`}
-                  style={{ width: `${stage.progress}%` }}
-                ></div>
-                {stage.progress > 5 && (
-                  <span className={styles.progressText}>
-                    {stage.progress}%
-                  </span>
-                )}
+                  className={`${styles.stageBar} ${barClass}`}
+                  style={{ width, marginLeft }}
+                  title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
+                >
+                  <div
+                    className={`${styles.progressBar} ${progressClass}`}
+                    style={{ width: `${stage.progress}%` }}
+                  ></div>
+                  {stage.progress > 5 && (
+                    <span className={styles.progressText}>
+                      {stage.progress}%
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

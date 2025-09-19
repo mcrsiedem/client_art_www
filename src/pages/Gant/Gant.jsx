@@ -67,7 +67,7 @@ const productionStages = [
     id: 'C3',
     name: 'C: Oprawa',
     start: '2025-07-24',
-    end: '2025-07-27', // Koniec 27 lipca
+    end: '2025-10-27', // Koniec 27 lipca
     progress: 20,
   },
 ];

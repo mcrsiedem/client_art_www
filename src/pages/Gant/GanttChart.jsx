@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
+// 1. Importowanie modułu stylów
+import styles from './GanttChart.module.css';
 
 const GanttChart = ({ stages }) => {
   const chartRef = useRef(null);
@@ -16,7 +18,6 @@ const GanttChart = ({ stages }) => {
       calculatedMinDate.setDate(calculatedMinDate.getDate() - 2);
       calculatedMaxDate.setDate(calculatedMaxDate.getDate() + 5);
 
-
       setMinDate(calculatedMinDate.toISOString().split('T')[0]);
       setMaxDate(calculatedMaxDate.toISOString().split('T')[0]);
     }
@@ -25,9 +26,9 @@ const GanttChart = ({ stages }) => {
   const calculateBarProperties = (start, end) => {
     if (!minDate || !maxDate) return { width: 0, marginLeft: 0 };
 
-    const totalTimeSpanMs = new Date(maxDate).getTime() - new Date(minDate).getTime();
-    const stageDurationMs = new Date(end).getTime() - new Date(start).getTime();
-    const startOffsetMs = new Date(start).getTime() - new Date(minDate).getTime();
+    const totalTimeSpanMs = new Date(maxDate).getTime() - new Date(minDate).getTime(); //czas trwania projektu
+    const stageDurationMs = new Date(end).getTime() - new Date(start).getTime();  //czas trwania danego etapu 
+    const startOffsetMs = new Date(start).getTime() - new Date(minDate).getTime(); //odstęp od początku osi czasu
 
     const containerWidthPx = 1000; // Przykładowa, stała szerokość kontenera wykresu
 
@@ -35,106 +36,76 @@ const GanttChart = ({ stages }) => {
     const marginLeftPx = (startOffsetMs / totalTimeSpanMs) * containerWidthPx;
 
     return {
-      width: `${Math.max(0, widthPx)}px`, // Upewnij się, że szerokość nie jest ujemna
-      marginLeft: `${Math.max(0, marginLeftPx)}px` // Upewnij się, że margines nie jest ujemny
+      width: `${Math.max(0, widthPx)}px`,
+      marginLeft: `${Math.max(0, marginLeftPx)}px`
     };
   };
 
-  const getBarColor = (name) => {
-    if (name.startsWith('A:')) return '#007bff'; // Niebieski dla Produkcji A
-    if (name.startsWith('B:')) return '#ffc107'; // Żółty dla Produkcji B
-    if (name.startsWith('C:')) return '#28a745'; // Zielony dla Produkcji C
-    return '#6c757d'; // Domyślny kolor
+  // 2. Funkcja do dynamicznego wybierania klasy CSS dla paska (na podstawie nazwy)
+  const getBarClass = (name) => {
+    if (name.startsWith('A:')) return styles.barA;
+    if (name.startsWith('B:')) return styles.barB;
+    if (name.startsWith('C:')) return styles.barC;
+    return styles.barDefault;
   };
 
-  const getProgressColor = (name) => {
-    if (name.startsWith('A:')) return '#0056b3';
-    if (name.startsWith('B:')) return '#e0a800';
-    if (name.startsWith('C:')) return '#1e7e34';
-    return '#495057';
+  // 3. Funkcja do dynamicznego wybierania klasy CSS dla postępu (na podstawie nazwy)
+  const getProgressClass = (name) => {
+    if (name.startsWith('A:')) return styles.progressA;
+    if (name.startsWith('B:')) return styles.progressB;
+    if (name.startsWith('C:')) return styles.progressC;
+    return styles.progressDefault;
   };
 
   return (
-    <div style={{ overflowX: 'auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+    // 4. Użycie zaimportowanej klasy dla głównej otoczki
+    <div className={styles.chartContainer}> 
       <h2>Wykres Gantta dla Wielu Produkcji</h2>
       <div
         ref={chartRef}
-        style={{
-          width: '100%',
-          minWidth: '1000px', // Upewnij się, że jest wystarczająco szeroki
-          border: '1px solid #ddd',
-          borderRadius: '5px',
-          padding: '15px',
-          backgroundColor: '#f8f9fa'
-        }}
+        // 5. Użycie zaimportowanej klasy dla kontenera wykresu
+        className={styles.ganttChart}
       >
         {/* Oś czasu */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: '20px',
-          paddingLeft: '160px', // Odpowiednik szerokości etykiety zadania
-          position: 'relative'
-        }}>
-          <span style={{ fontWeight: 'bold' }}>{minDate}</span>
-          <span style={{ fontWeight: 'bold' }}>{maxDate}</span>
-          <div style={{
-            position: 'absolute',
-            left: '160px',
-            right: '0',
-            height: '1px',
-            backgroundColor: '#ccc',
-            bottom: '-5px'
-          }}></div>
+        <div 
+            // 6. Użycie zaimportowanej klasy dla osi czasu
+            className={styles.timeline}
+          >
+            {/* 7. Użycie zaimportowanej klasy dla daty */}
+            <span className={styles.timelineDate}>{minDate}</span> 
+            <span className={styles.timelineDate}>{maxDate}</span>
+            {/* 8. Użycie zaimportowanej klasy dla linii osi czasu */}
+            <div className={styles.timelineLine}></div> 
         </div>
 
         {/* Zadania na wykresie */}
         {stages.map(stage => {
           const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
+          // 9. Wybór dynamicznych klas
+          const barClass = getBarClass(stage.name);
+          const progressClass = getProgressClass(stage.name);
+
           return (
-            <div key={stage.id} style={{
-              marginBottom: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              minHeight: '30px' // Zapewnij minimalną wysokość wiersza
-            }}>
-              <div style={{ width: '150px', flexShrink: 0, fontSize: '0.9em', color: '#333' }}>
+            // 10. Użycie zaimportowanej klasy dla wiersza
+            <div key={stage.id} className={styles.stageRow}> 
+              {/* 11. Użycie zaimportowanej klasy dla nazwy zadania */}
+              <div className={styles.stageName}> 
                 {stage.name}
               </div>
               <div
-                style={{
-                  height: '22px',
-                  backgroundColor: getBarColor(stage.name),
-                  borderRadius: '3px',
-                  position: 'relative',
-                  ...{ width, marginLeft }, // Używamy bezpośrednio obliczonych właściwości
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                  overflow: 'hidden' // Ukryj, jeśli pasek postępu wystaje
-                }}
+                // 12. Połączenie dynamicznego stylu z klasą CSS
+                className={`${styles.stageBar} ${barClass}`}
+                style={{ width, marginLeft }} // Szerokość i margines muszą pozostać jako inline style, bo są dynamicznie wyliczane na podstawie dat
                 title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
               >
                 <div
-                  style={{
-                    height: '100%',
-                    width: `${stage.progress}%`,
-                    backgroundColor: getProgressColor(stage.name),
-                    borderRadius: '3px',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                  }}
+                  // 13. Połączenie dynamicznego stylu postępu z klasą CSS
+                  className={`${styles.progressBar} ${progressClass}`}
+                  style={{ width: `${stage.progress}%` }} // Szerokość postępu jest dynamiczna
                 ></div>
-                {stage.progress > 5 && ( // Pokaż % tylko jeśli jest wystarczająco miejsca
-                  <span style={{
-                    position: 'absolute',
-                    right: '5px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    color: 'white',
-                    fontSize: '0.75em',
-                    fontWeight: 'bold',
-                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
-                  }}>
+                {stage.progress > 5 && (
+                  // 14. Użycie zaimportowanej klasy dla tekstu postępu
+                  <span className={styles.progressText}>
                     {stage.progress}%
                   </span>
                 )}

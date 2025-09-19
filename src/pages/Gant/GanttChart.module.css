@@ -1,0 +1,98 @@
+/* GanttChart.module.css */
+
+/* Główne otoczka wykresu */
+.chartContainer {
+    overflow-x: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Właściwy kontener wykresu Gantta */
+.ganttChart {
+    width: 100%;
+    min-width: 1000px; /* Upewnij się, że jest wystarczająco szeroki */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+/* Oś czasu */
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-left: 160px; /* Odpowiednik szerokości etykiety zadania */
+    position: relative;
+}
+
+.timelineDate {
+    font-weight: bold;
+}
+
+.timelineLine {
+    position: absolute;
+    left: 160px;
+    right: 0;
+    height: 1px;
+    background-color: #ccc;
+    bottom: -5px;
+}
+
+/* Pojedynczy wiersz zadania */
+.stageRow {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    min-height: 30px; /* Zapewnij minimalną wysokość wiersza */
+}
+
+/* Etykieta zadania (nazwa) */
+.stageName {
+    width: 150px;
+    flex-shrink: 0;
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Ogólny pasek zadania (bez szerokości/marginesu, które są dynamiczne) */
+.stageBar {
+    height: 22px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Pasek postępu (wewnątrz paska zadania) */
+.progressBar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+}
+
+/* Tekst postępu */
+.progressText {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Klasy dla kolorowania pasków (zastępują getBarColor) */
+.barA { background-color: #007bff; } /* Niebieski */
+.barB { background-color: #ffc107; } /* Żółty */
+.barC { background-color: #28a745; } /* Zielony */
+.barDefault { background-color: #6c757d; } /* Szary */
+
+/* Klasy dla kolorowania postępu (zastępują getProgressColor) */
+.progressA { background-color: #0056b3; }
+.progressB { background-color: #e0a800; }
+.progressC { background-color: #1e7e34; }
+.progressDefault { background-color: #495057; }

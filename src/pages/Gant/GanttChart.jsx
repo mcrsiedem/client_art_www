@@ -27,7 +27,7 @@ const GanttChart = ({ stages }) => {
 
       // Obliczanie całkowitej szerokości
       const totalTimeSpanMinutes = (calculatedMaxDate.getTime() - calculatedMinDate.getTime()) / (1000 * 60);
-      const scaleFactor = 0.3; // Przykładowo, 10 pikseli na minutę
+      const scaleFactor = 0.2 // Przykładowo, 10 pikseli na minutę
       setTotalChartWidth(totalTimeSpanMinutes * scaleFactor);
     }
   }, [stages]);
@@ -83,7 +83,7 @@ const GanttChart = ({ stages }) => {
       );
       currentDate.setTime(currentDate.getTime() + interval);
     }
-    return markers;
+    return markers
   };
 
   // Pozostałe funkcje pomocnicze...

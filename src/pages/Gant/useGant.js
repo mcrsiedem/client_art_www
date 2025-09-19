@@ -16,7 +16,7 @@ export function useGant() {
       IP + "gantGrupy/" + sessionStorage.getItem("token")
     );
 setGantStageGrupy([])
-    setGantStageGrupy([...res.data.filter(x=> x.procesor_id==3)]);
+    setGantStageGrupy([...res.data.filter(x=> x.procesor_id==2)]);
     // contextApp.setZamowieniaWyszukiwarka([...res.data]);
   };
 

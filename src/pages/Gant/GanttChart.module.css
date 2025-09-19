@@ -78,6 +78,9 @@
     min-height: 30px;
 }
 
+.stageRow:hover{
+    background-color: #0057b346;
+}
 .stageName {
     width: 250px;
     flex-shrink: 0;

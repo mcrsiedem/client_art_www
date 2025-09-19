@@ -18,16 +18,14 @@ const GanttChart = ({ stages }) => {
       const calculatedMinDate = new Date(Math.min(...allDates));
       const calculatedMaxDate = new Date(Math.max(...allDates));
 
-      // Dodajemy bufor czasowy, np. 1 godzinę przed i 1 godzinę po
       calculatedMinDate.setHours(calculatedMinDate.getHours() - 1);
       calculatedMaxDate.setHours(calculatedMaxDate.getHours() + 1);
 
       setMinDate(calculatedMinDate);
       setMaxDate(calculatedMaxDate);
 
-      // Obliczanie całkowitej szerokości
       const totalTimeSpanMinutes = (calculatedMaxDate.getTime() - calculatedMinDate.getTime()) / (1000 * 60);
-      const scaleFactor = 0.2 // Przykładowo, 10 pikseli na minutę
+      const scaleFactor = 0.2; // Ustaw stałą wartość, np. 10px na minutę
       setTotalChartWidth(totalTimeSpanMinutes * scaleFactor);
     }
   }, [stages]);
@@ -53,15 +51,13 @@ const GanttChart = ({ stages }) => {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
   };
 
-  // Nowa funkcja do generowania znaczników osi czasu
   const renderTimelineMarkers = () => {
     if (!minDate || !maxDate || totalChartWidth === 0) return null;
 
     const markers = [];
     const daysOfWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
-    const interval = 24 * 60 * 60 * 1000; // 24 godziny w milisekundach
+    const interval = 24 * 60 * 60 * 1000;
     
-    // Obliczamy punkt startowy (początek dnia)
     const startDate = new Date(minDate);
     startDate.setHours(0, 0, 0, 0);
 
@@ -83,10 +79,9 @@ const GanttChart = ({ stages }) => {
       );
       currentDate.setTime(currentDate.getTime() + interval);
     }
-    return markers
+    return markers;
   };
 
-  // Pozostałe funkcje pomocnicze...
   const getBarClass = (name) => {
     if (name.startsWith('A:')) return styles.barA;
     if (name.startsWith('B:')) return styles.barB;
@@ -107,48 +102,55 @@ const GanttChart = ({ stages }) => {
         <h2>Druk</h2>
         <button onClick={() => refreshGant()}>Odśwież</button>
       </div>
-      <div className={styles.scrollWrapper}>
-        <div
-          ref={chartRef}
-          className={styles.ganttChart}
-          style={{ width: `${totalChartWidth}px` }}
-        >
-          {/* Nowa oś czasu z dynamicznie generowanymi znacznikami */}
-          <div className={styles.timeline}>
-            <div className={styles.timelineMarkersContainer}>
-              {renderTimelineMarkers()}
-            </div>
-            <div className={styles.timelineLine}></div>
-          </div>
-          
-          {stages?.map(stage => {
-            const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
-            const barClass = getBarClass(stage.name);
-            const progressClass = getProgressClass(stage.name);
 
-            return (
-              <div key={stage.id} className={styles.stageRow}>
-                <div className={styles.stageName}>
-                  {stage.name.substring(0, 30)}
-                </div>
-                <div
-                  className={`${styles.stageBar} ${barClass}`}
-                  style={{ width, marginLeft }}
-                  title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
-                >
-                  <div
-                    className={`${styles.progressBar} ${progressClass}`}
-                    style={{ width: `${stage.progress}%` }}
-                  ></div>
-                  {stage.progress > 5 && (
-                    <span className={styles.progressText}>
-                      {stage.progress}%
-                    </span>
-                  )}
-                </div>
+      <div className={styles.ganttWrapper}>
+        <div className={styles.stageNamesList}>
+          {stages?.map(stage => (
+            <div key={stage.id} className={styles.stageNameFixed}>
+              {stage.name.substring(0, 30)}
+            </div>
+          ))}
+        </div>
+        
+        <div className={styles.scrollWrapper}>
+          <div
+            ref={chartRef}
+            className={styles.ganttChart}
+            style={{ width: `${totalChartWidth}px` }}
+          >
+            <div className={styles.timeline}>
+              <div className={styles.timelineMarkersContainer}>
+                {renderTimelineMarkers()}
               </div>
-            );
-          })}
+              <div className={styles.timelineLine}></div>
+            </div>
+            
+            {stages?.map(stage => {
+              const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
+              const barClass = getBarClass(stage.name);
+              const progressClass = getProgressClass(stage.name);
+
+              return (
+                <div key={stage.id} className={styles.stageBarRow}>
+                  <div
+                    className={`${styles.stageBar} ${barClass}`}
+                    style={{ width, marginLeft }}
+                    title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
+                  >
+                    <div
+                      className={`${styles.progressBar} ${progressClass}`}
+                      style={{ width: `${stage.progress}%` }}
+                    ></div>
+                    {stage.progress > 5 && (
+                      <span className={styles.progressText}>
+                        {stage.progress}%
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

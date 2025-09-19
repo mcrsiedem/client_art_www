@@ -1,6 +1,5 @@
 /* GanttChart.module.css */
 
-/* Główne otoczka wykresu */
 .chartContainer {
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -12,80 +11,90 @@
     justify-content: start;
     align-items: center;
     gap: 20px;
+    margin-bottom: 20px;
 }
 
-/* Nowy kontener do przewijania */
+.ganttWrapper {
+  display: flex;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 15px;
+}
+
+.stageNamesList {
+  flex-shrink: 0;
+  width: 250px;
+  background-color: #f8f9fa;
+  /* Nowy, kluczowy styl */
+  margin-top: 70px; /* Dostosuj wartość, aby wyrównać z pierwszym wierszem paska */
+}
+
+.stageNameFixed {
+    width: 250px;
+    min-height: 30px;
+    font-size: 0.9em;
+    color: #333;
+    padding-top: 4px;
+    margin-bottom: 10px;
+}
+
 .scrollWrapper {
     overflow-x: auto;
+    flex-grow: 1;
 }
 
-/* Właściwy kontener wykresu Gantta */
 .ganttChart {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
     background-color: #f8f9fa;
 }
 
 /* Oś czasu */
 .timeline {
-    position: relative;
-    height: 50px; /* Zwiększ wysokość osi czasu */
-    padding-left: 260px; /* Odpowiednik szerokości etykiety zadania */
-    position: sticky; 
+    position: sticky;
     top: 0;
+    left: 0;
     z-index: 10;
     background-color: #f8f9fa;
+    height: 50px;
+    margin-bottom: 20px;
 }
 
-/* Kontener na generowane znaczniki */
 .timelineMarkersContainer {
   position: absolute;
   top: 0;
-  left: 260px; /* Dopasowuje się do szerokości etykiety zadania */
+  left: 0;
   right: 0;
   height: 100%;
 }
 
-/* Styl pojedynczego znacznika (dzień tygodnia) */
 .timelineMarker {
   position: absolute;
   top: 0;
-  transform: translateX(-50%); /* Ustawia znacznik na środku */
+  transform: translateX(-50%);
   font-size: 0.8em;
   text-align: center;
-  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  white-space: nowrap;
   color: #555;
-  border-left: 1px solid rgba(0,0,0,0.1); /* Delikatna linia pomocnicza */
+  border-left: 1px solid rgba(0,0,0,0.1);
   height: 100%;
   padding-top: 5px;
 }
 
 .timelineLine {
     position: absolute;
-    left: 260px;
+    left: 0;
     right: 0;
     height: 1px;
     background-color: #ccc;
     bottom: 0px;
 }
 
-/* Reszta stylów bez zmian */
-.stageRow {
+.stageBarRow {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     min-height: 30px;
-}
-
-.stageRow:hover{
-    background-color: #0057b346;
-}
-.stageName {
-    width: 250px;
-    flex-shrink: 0;
-    font-size: 0.9em;
-    color: #333;
 }
 
 .stageBar {

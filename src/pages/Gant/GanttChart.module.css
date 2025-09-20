@@ -92,7 +92,7 @@
 
 .timelineMarker {
   position: absolute;
-  top: 0;
+  top: -5px;
   transform: translateX(-50%);
   font-size: 0.8em;
   text-align: center;
@@ -155,3 +155,30 @@
 .progressB { background-color: #e0a800; }
 .progressC { background-color: #1e7e34; }
 .progressDefault { background-color: #495057; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timelineSubMarker {
+    position: absolute;
+    top: 40px; /* Przesunięcie na środek osi czasu */
+
+    transform: translate(-50%, -50%); /* Wyśrodkowanie */
+    font-size: 0.7em;
+    color: #999;
+    border-left: 1px dotted rgba(0,0,0,0.2);
+    height: 20%;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-align: left;
+}

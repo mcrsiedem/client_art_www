@@ -7,6 +7,8 @@ const GanttChart = ({ stages }) => {
   const [minDate, setMinDate] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
   const [totalChartWidth, setTotalChartWidth] = useState(0);
+  // Dodajemy zmienną stanu dla współczynnika skali
+  const [scaleFactor, setScaleFactor] = useState(0.2); 
 
   const [refreshGant] = useGant();
 
@@ -25,10 +27,10 @@ const GanttChart = ({ stages }) => {
       setMaxDate(calculatedMaxDate);
 
       const totalTimeSpanMinutes = (calculatedMaxDate.getTime() - calculatedMinDate.getTime()) / (1000 * 60);
-      const scaleFactor = 0.2; // Ustaw stałą wartość, np. 10px na minutę
+      // Używamy zmiennej stanu `scaleFactor` do obliczeń
       setTotalChartWidth(totalTimeSpanMinutes * scaleFactor);
     }
-  }, [stages]);
+  }, [stages, scaleFactor]); // Dodajemy scaleFactor jako zależność
 
   const calculateBarProperties = (start, end) => {
     if (!minDate || !maxDate || !totalChartWidth) return { width: 0, marginLeft: 0 };
@@ -51,36 +53,61 @@ const GanttChart = ({ stages }) => {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
   };
 
-  const renderTimelineMarkers = () => {
-    if (!minDate || !maxDate || totalChartWidth === 0) return null;
+const renderTimelineMarkers = () => {
+  if (!minDate || !maxDate || totalChartWidth === 0) return null;
 
-    const markers = [];
-    const daysOfWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
-    const interval = 24 * 60 * 60 * 1000;
-    
-    const startDate = new Date(minDate);
-    startDate.setHours(0, 0, 0, 0);
+  const markers = [];
+  const daysOfWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
+  const interval = 24 * 60 * 60 * 1000;
+  
+  const startDate = new Date(minDate);
+  startDate.setHours(0, 0, 0, 0);
 
-    let currentDate = new Date(startDate);
+  let currentDate = new Date(startDate);
 
-    while (currentDate <= maxDate) {
-      const offsetMs = currentDate.getTime() - minDate.getTime();
-      const leftPosition = (offsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
+  while (currentDate <= maxDate) {
+    const offsetMs = currentDate.getTime() - minDate.getTime();
+    const leftPosition = (offsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
 
-      markers.push(
-        <div 
-          key={currentDate.getTime()}
-          className={styles.timelineMarker} 
-          style={{ left: `${leftPosition}px` }}
-        >
-          {daysOfWeek[currentDate.getDay()]}<br />
-          {String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
-        </div>
-      );
-      currentDate.setTime(currentDate.getTime() + interval);
-    }
-    return markers;
-  };
+    // Znacznik dnia
+    markers.push(
+      <div 
+        key={`day-${currentDate.getTime()}`}
+        className={styles.timelineMarker} 
+        style={{ left: `${leftPosition+15}px` }}
+      >
+        {daysOfWeek[currentDate.getDay()]}<br />
+        {String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
+      </div>
+    );
+
+    // Znaczniki godzin 6:00 i 18:00
+    const hoursToAdd = [6, 18];
+    hoursToAdd.forEach(hour => {
+      const hourDate = new Date(currentDate);
+      hourDate.setHours(hour, 0, 0, 0);
+
+      // Sprawdzamy, czy znacznik godziny jest w widocznym zakresie
+      if (hourDate >= minDate && hourDate <= maxDate) {
+        const hourOffsetMs = hourDate.getTime() - minDate.getTime();
+        const hourLeftPosition = (hourOffsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
+
+        markers.push(
+          <div 
+            key={`hour-${hourDate.getTime()}`}
+            className={styles.timelineSubMarker} 
+            style={{ left: `${hourLeftPosition}px` }}
+          >
+            {hour}:00
+          </div>
+        );
+      }
+    });
+
+    currentDate.setTime(currentDate.getTime() + interval);
+  }
+  return markers;
+};
 
   const getBarClass = (name) => {
     if (name.startsWith('A:')) return styles.barA;
@@ -96,11 +123,31 @@ const GanttChart = ({ stages }) => {
     return styles.progressDefault;
   };
 
+  // Funkcja do obsługi zmiany wartości suwaka
+  const handleScaleChange = (event) => {
+    setScaleFactor(parseFloat(event.target.value));
+  };
+
   return (
     <div className={styles.chartContainer}>
       <div className={styles.header}>
         <h2>Druk</h2>
-        <button onClick={() => refreshGant()}>Odśwież</button>
+          <button onClick={() => refreshGant()}>Odśwież</button>
+
+        {/* Dodajemy suwak do kontroli powiększenia */}
+        <div className={styles.controls}>
+          <span>Powiększenie: </span>
+          <input
+            type="range"
+            min="0.05"
+            max="1.0"
+            step="0.05"
+            value={scaleFactor}
+            onChange={handleScaleChange}
+          />
+          <span style={{ marginLeft: '10px' }}>{scaleFactor.toFixed(2)}x</span>
+        </div>
+        
       </div>
 
       <div className={styles.ganttWrapper}>

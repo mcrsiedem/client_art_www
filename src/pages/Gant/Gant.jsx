@@ -2,19 +2,34 @@ import React, { useContext, useEffect } from 'react';
 import GanttChart from './GanttChart'; // Upewnij się, że ścieżka jest poprawna
 import { TechnologyContext } from 'context/TechnologyContext';
 import { useGant } from './useGant';
-
-
-
+import axios from "axios";
+import { IP } from "../../utils/Host";
+import { useNavigate } from "react-router-dom";
 
 
 function Gant() {
     const techContext = useContext(TechnologyContext);
   const gantStageGrupy = techContext.gantStageGrupy;
+  const navigate = useNavigate();
 
     const [refreshGant] = useGant();
 
+  async function checkToken() {
+    axios
+      .get(IP + "/islogged/" + sessionStorage.getItem("token"))
+      .then((res) => {
+        if (res.data.Status === "Success") {
+      refreshGant()
+
+        } else {
+          navigate("/Login");
+        }
+      });
+  }
+
   useEffect(() => {
-refreshGant()
+    checkToken();
+
   }, []);
 
   if(gantStageGrupy){

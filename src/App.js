@@ -47,7 +47,7 @@ export default function App() {
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
               {/* <Route path='/statystyki' element={<Statystyki />} /> */}
-              <Route path='/statystyki' element={<Gant />} />
+              <Route path='/kalendarz' element={<Gant />} />
               <Route path='/sandbox' element={<SandBox />} />
               <Route path='/gant' element={<Gant />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />

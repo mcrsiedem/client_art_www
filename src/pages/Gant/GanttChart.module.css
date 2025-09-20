@@ -17,6 +17,7 @@
 .ganttWrapper {
   display: flex;
   width: 100%;
+  /* height: calc(100vh - 90px); */
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f8f9fa;
@@ -26,6 +27,7 @@
 .stageNamesList {
   flex-shrink: 0;
   width: 250px;
+  
   background-color: #f8f9fa;
   margin-top: 70px;
 }

@@ -17,14 +17,14 @@ function Gant() {
 refreshGant()
   }, []);
 
-  // if(gantStageGrupy){
+  if(gantStageGrupy){
       return (
     <div className="App">
-      <GanttChart stages={gantStageGrupy} />/
+      <GanttChart stages={gantStageGrupy} />
       {/* <GanttChart /> */}
     </div>
   );
-  // }
+  }
 
 }
 

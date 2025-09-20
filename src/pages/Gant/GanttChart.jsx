@@ -196,11 +196,19 @@ const renderTimelineMarkers = () => {
                       <span className={styles.progressText}>
                         {stage.progress}%
                       </span>
+                      
                     )}
                   </div>
                 </div>
               );
             })}
+
+                        <div className={styles.timeline}>
+              <div className={styles.timelineMarkersContainer}>
+                {renderTimelineMarkers()}
+              </div>
+              <div className={styles.timelineLine}></div>
+            </div>
           </div>
         </div>
       </div>

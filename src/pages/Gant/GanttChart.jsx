@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from './GanttChart.module.css';
 import { useGant } from './useGant';
+import Procesory from './procesory_btn/Procesory';
 
 const GanttChart = ({ stages }) => {
   const chartRef = useRef(null);
@@ -132,7 +133,10 @@ const renderTimelineMarkers = () => {
     <div className={styles.chartContainer}>
       <div className={styles.header}>
         <h2>Druk</h2>
-          <button onClick={() => refreshGant()}>Odśwież</button>
+        <Procesory/>
+          {/* <button onClick={() => refreshGant(1)}>XL</button>
+          <button onClick={() => refreshGant(2)}>SM1</button>
+          <button onClick={() => refreshGant(3)}>SM3</button> */}
 
         {/* Dodajemy suwak do kontroli powiększenia */}
         <div className={styles.controls}>
@@ -153,7 +157,7 @@ const renderTimelineMarkers = () => {
       <div className={styles.ganttWrapper}>
         <div className={styles.stageNamesList}>
           {stages?.map(stage => (
-            <div key={stage.id} className={styles.stageNameFixed}>
+            <div key={stage.global_id} className={styles.stageNameFixed}>
               {stage.name.substring(0, 30)}
             </div>
           ))}
@@ -178,7 +182,7 @@ const renderTimelineMarkers = () => {
               const progressClass = getProgressClass(stage.name);
 
               return (
-                <div key={stage.id} className={styles.stageBarRow}>
+                <div key={stage.global_id+"a"} className={styles.stageBarRow}>
                   <div
                     className={`${styles.stageBar} ${barClass}`}
                     style={{ width, marginLeft }}

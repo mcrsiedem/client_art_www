@@ -1,23 +1,24 @@
 import axios from "axios";
 import { useContext } from "react";
 import { IP } from "utils/Host"
-import { AppContext } from "context/AppContext";
-import DecodeToken from "pages/Login/DecodeToken";
 import { TechnologyContext } from "context/TechnologyContext";
-export function useGant() {
-  const contextApp = useContext(AppContext);
-  const tableZamowienia = contextApp.tableZamowienia;
+import { AppContext } from "context/AppContext";
 
+export function useGant() {
   const techContext = useContext(TechnologyContext);
-  const gantStageGrupy = techContext.gantStageGrupy;
   const setGantStageGrupy = techContext.setGantStageGrupy;
-  const refreshGant = async () => {
+  const gantStageGrupy = techContext.gantStageGrupy;
+  const appContext = useContext(AppContext)
+  const selectedProcesor = techContext.selectedProcesor
+  const refreshGant = async (id) => {
+    let procesor_id = id || 3;
     const res = await axios.get(
       IP + "gantGrupy/" + sessionStorage.getItem("token")
     );
-setGantStageGrupy([])
-    setGantStageGrupy([...res.data.filter(x=> x.procesor_id==2)]);
-    // contextApp.setZamowieniaWyszukiwarka([...res.data]);
+    // Ta linia wyczyściła stan i w tym samym momencie go zaktualizowała nowymi danymi
+// console.log(procesor)
+// setGantStageGrupy([])
+    setGantStageGrupy(...[res.data.filter(x => x.procesor_id == procesor_id)]);
   };
 
   return [refreshGant];

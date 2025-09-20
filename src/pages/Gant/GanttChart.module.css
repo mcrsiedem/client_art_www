@@ -42,7 +42,7 @@
 .scrollWrapper {
     overflow-x: auto;
     flex-grow: 1;
-    padding-bottom: 20px;
+    /* padding-bottom: 10px; */
     
     /* Dodaj te reguły, aby pasek przewijania był zawsze widoczny */
     /* Dla WebKit (Chrome, Safari) */
@@ -118,7 +118,9 @@
     align-items: center;
     min-height: 30px;
 }
-
+.stageBarRow:hover{
+    background-color: #007bff2f;
+}
 .stageBar {
     height: 22px;
     border-radius: 3px;

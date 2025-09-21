@@ -154,7 +154,7 @@ const GanttChartAll = ({ stages }) => {
           />
           <span style={{ marginLeft: '10px' }}>{scaleFactor.toFixed(2)}x</span>
           <button className={styles.scrollToNowBtn} onClick={handleScrollToNow}>
-            Dzisiaj
+            Dziś
           </button>
         </div>
       </div>

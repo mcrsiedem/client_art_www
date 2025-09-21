@@ -23,6 +23,7 @@ import Statystyki from "pages/Statystyki/Statystyki";
 import SandBox from "pages/SandBox/SandBox";
 import Gant from "pages/Gant/Gant";
 import ZamowieniaFaktury from "pages/Faktury/ZamowieniaFaktury";
+import GantAll from "pages/Gant/GantAll";
 
 export default function App() {
 
@@ -48,6 +49,7 @@ export default function App() {
               <Route path='/ustawienia' element={<Ustawienia />} />
               {/* <Route path='/statystyki' element={<Statystyki />} /> */}
               <Route path='/kalendarz' element={<Gant />} />
+              <Route path='/kalendarz2' element={<GantAll />} />
               <Route path='/sandbox' element={<SandBox />} />
               <Route path='/gant' element={<Gant />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />

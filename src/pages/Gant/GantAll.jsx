@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import GanttChartAll from './GanttChartAll';
 
 
-function Gant() {
+function GantAll() {
     const techContext = useContext(TechnologyContext);
   const gantStageGrupy = techContext.gantStageGrupy;
   const navigate = useNavigate();
@@ -38,9 +38,9 @@ function Gant() {
   if(gantStageGrupy){
       return (
     <div className="App">
-      <GanttChart stages={gantStageGrupy} />
+      {/* <GanttChart stages={gantStageGrupy} /> */}
       {/* <GanttChartAll stages={gantStageGrupy} /> */}
-      {/* <GanttChartAll stages={gantStageGrupy} /> */}
+      <GanttChartAll stages={gantStageGrupy} />
       {/* <GanttChart /> */}
     </div>
   );
@@ -48,4 +48,4 @@ function Gant() {
 
 }
 
-export default Gant;
+export default GantAll;

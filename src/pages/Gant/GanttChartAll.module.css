@@ -8,7 +8,7 @@
   flex-direction: row;
   justify-content: end;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   margin-bottom: 20px;
 }
 
@@ -115,7 +115,7 @@
 
 .stageBar {
   height: 22px;
-  border-radius: 3px;
+  border-radius: 5px;
   position: absolute; /* Używamy pozycjonowania absolutnego, aby paski się nakładały */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -127,7 +127,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .progressText {
@@ -158,4 +158,15 @@
   padding-left: 5px;
   white-space: nowrap;
   text-align: left;
+}
+
+.scrollToNowBtn{
+border: 1px solid rgb(167, 167, 167);
+   border-radius: 10px;
+   /* border: none; */
+   width: 50px;
+   font-size: bold;
+   color: gray;
+   font-size: 0.8rem;
+   padding: 2px;
 }

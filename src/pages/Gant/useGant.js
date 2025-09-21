@@ -18,7 +18,29 @@ export function useGant() {
     // Ta linia wyczyściła stan i w tym samym momencie go zaktualizowała nowymi danymi
 // console.log(procesor)
 // setGantStageGrupy([])
-    // setGantStageGrupy(...[res.data.filter(x => x.procesor_id == procesor_id)]);
+    setGantStageGrupy(...[res.data.filter(x => x.procesor_id == procesor_id)]);
+    // setGantStageGrupy(...[res.data]);
+    //  setGantStageGrupy(...[res.data.filter(x => x.klient_id == 57)]);
+    // setGantStageGrupy(...[res.data.reduce((acc, stage) => {
+    //     const { procesor_id } = stage;
+    //     if (!acc[procesor_id]) {
+    //         acc[procesor_id] = [];
+    //     }
+    //     acc[procesor_id].push(stage);
+    //     return acc;
+    // }, {})]);
+  };
+
+
+  const refreshGantAll = async (id) => {
+    let procesor_id = id || 3;
+    const res = await axios.get(
+      IP + "gantGrupy/" + sessionStorage.getItem("token")
+    );
+    // Ta linia wyczyściła stan i w tym samym momencie go zaktualizowała nowymi danymi
+// console.log(procesor)
+// setGantStageGrupy([])
+   
     setGantStageGrupy(...[res.data]);
     // setGantStageGrupy(...[res.data.reduce((acc, stage) => {
     //     const { procesor_id } = stage;
@@ -30,5 +52,6 @@ export function useGant() {
     // }, {})]);
   };
 
-  return [refreshGant];
+
+  return [refreshGant,refreshGantAll];
 }

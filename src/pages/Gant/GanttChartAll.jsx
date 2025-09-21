@@ -1,14 +1,17 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import styles from './GanttChartAll.module.css';
 import Procesory from './procesory_btn/Procesory';
+import { AppContext } from 'context/AppContext';
 
 const GanttChartAll = ({ stages }) => {
   const chartRef = useRef(null);
+  const scrollWrapperRef = useRef(null); // Nowy ref dla przewijania
   const [minDate, setMinDate] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
   const [totalChartWidth, setTotalChartWidth] = useState(0);
   const [scaleFactor, setScaleFactor] = useState(0.2);
-
+  const contextApp = useContext(AppContext);
+  const procesory = contextApp.procesory
   const groupedStages = stages?.reduce((acc, stage) => {
     const { procesor_id } = stage;
     if (!acc[procesor_id]) {
@@ -56,20 +59,18 @@ const GanttChartAll = ({ stages }) => {
     };
   };
 
-  const getColorForTechnology = (globalId) => {
+  const getColorForTechnologyAndOrder = (technologiaId, zamowienieId) => {
+    const hashString = `${technologiaId}-${zamowienieId}`;
     let hash = 0;
-    const str = String(globalId);
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    for (let i = 0; i < hashString.length; i++) {
+        hash = hashString.charCodeAt(i) + ((hash << 5) - hash);
     }
-    
-    let color = '#';
-    for (let i = 0; i < 3; i++) {
-      const value = (hash >> (i * 8)) & 0xFF;
-      color += ('00' + value.toString(16)).substr(-2);
-    }
-    
-    return color;
+
+    const hue = (technologiaId * 137.508) % 360;
+    const saturation = 70 + (hash % 30);
+    const lightness = 50 + (hash % 10);
+
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
   const renderTimelineMarkers = () => {
@@ -120,11 +121,27 @@ const GanttChartAll = ({ stages }) => {
     setScaleFactor(parseFloat(event.target.value));
   };
 
+  const handleScrollToNow = () => {
+    if (!scrollWrapperRef.current || !minDate || !maxDate || totalChartWidth === 0) {
+      return;
+    }
+
+    const now = new Date();
+    const totalTimeSpanMs = maxDate.getTime() - minDate.getTime();
+    const nowOffsetMs = now.getTime() - minDate.getTime();
+    
+    // Obliczamy pozycję przewijania w pikselach
+    const scrollPosition = (nowOffsetMs / totalTimeSpanMs) * totalChartWidth;
+
+    // Przewijamy do tej pozycji, z opcjonalnym buforem, aby element nie był na samej krawędzi
+    scrollWrapperRef.current.scrollLeft = scrollPosition - (scrollWrapperRef.current.clientWidth / 2);
+  };
+
   return (
     <div className={styles.chartContainer}>
       <div className={styles.header}>
-        <h2>Druk</h2>
-        <Procesory/>
+        {/* <h2>Druk</h2> */}
+        {/* <Procesory/> */}
         <div className={styles.controls}>
           <span>Powiększenie:</span>
           <input
@@ -136,6 +153,9 @@ const GanttChartAll = ({ stages }) => {
             onChange={handleScaleChange}
           />
           <span style={{ marginLeft: '10px' }}>{scaleFactor.toFixed(2)}x</span>
+          <button className={styles.scrollToNowBtn} onClick={handleScrollToNow}>
+            Dzisiaj
+          </button>
         </div>
       </div>
       <div className={styles.ganttWrapper}>
@@ -143,12 +163,12 @@ const GanttChartAll = ({ stages }) => {
           {groupedStages && Object.keys(groupedStages).map(processorId => (
             <div key={`names-group-${processorId}`} className={styles.processorRow}>
               <div className={styles.processorNameFixed}>
-                Procesor: {processorId}
+                {procesory.find(x => x.id == processorId ).nazwa}
               </div>
             </div>
           ))}
         </div>
-        <div className={styles.scrollWrapper}>
+        <div className={styles.scrollWrapper} ref={scrollWrapperRef}>
           <div
             ref={chartRef}
             className={styles.ganttChart}
@@ -166,7 +186,7 @@ const GanttChartAll = ({ stages }) => {
                 <div className={styles.processorBarsGroup}>
                   {groupedStages[processorId].map(stage => {
                     const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
-                    const barColor = getColorForTechnology(stage.global_id);
+                    const barColor = getColorForTechnologyAndOrder(stage.technologia_id, stage.zamowienie_id);
 
                     return (
                       <div

@@ -9,6 +9,8 @@ import { useGant } from "../useGant";
 
 
 export default function Procesory() {
+
+  
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory

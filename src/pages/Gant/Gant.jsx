@@ -5,6 +5,7 @@ import { useGant } from './useGant';
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
+import GanttChartAll from './GanttChartAll';
 
 
 function Gant() {
@@ -32,10 +33,14 @@ function Gant() {
 
   }, []);
 
+
+
   if(gantStageGrupy){
       return (
     <div className="App">
-      <GanttChart stages={gantStageGrupy} />
+      {/* <GanttChart stages={gantStageGrupy} /> */}
+      {/* <GanttChartAll stages={gantStageGrupy} /> */}
+      <GanttChartAll stages={gantStageGrupy} />
       {/* <GanttChart /> */}
     </div>
   );

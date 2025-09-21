@@ -11,7 +11,6 @@ const GanttChart = ({ stages }) => {
   // Dodajemy zmienną stanu dla współczynnika skali
   const [scaleFactor, setScaleFactor] = useState(0.2); 
 
-  const [refreshGant] = useGant();
 
   useEffect(() => {
     if (stages && stages.length > 0) {
@@ -110,14 +109,26 @@ const renderTimelineMarkers = () => {
   return markers;
 };
 
-  const getBarClass = (name) => {
+  const getBarClass = (name,zamowienia_pliki_etap,status) => {
+
+    if (status==3) return styles.barWtrakcie;
+    if (zamowienia_pliki_etap==7) return styles.barZAS;
+    if (zamowienia_pliki_etap==6) return styles.barRIP;
+    if (zamowienia_pliki_etap==5) return styles.barAkcept;
+    if (zamowienia_pliki_etap==4) return styles.barAkcept;
     if (name.startsWith('A:')) return styles.barA;
     if (name.startsWith('B:')) return styles.barB;
     if (name.startsWith('C:')) return styles.barC;
     return styles.barDefault;
   };
 
-  const getProgressClass = (name) => {
+  const getProgressClass = (name,zamowienia_pliki_etap,status) => {
+    if (status==3) return styles.progressWtrakcie;
+    if (zamowienia_pliki_etap==7) return styles.progresRIP;
+    if (zamowienia_pliki_etap==6) return styles.progresRIP;
+    if (zamowienia_pliki_etap==5) return styles.progresAkcept;
+    if (zamowienia_pliki_etap==4) return styles.progresAkcept;
+
     if (name.startsWith('A:')) return styles.progressA;
     if (name.startsWith('B:')) return styles.progressB;
     if (name.startsWith('C:')) return styles.progressC;
@@ -178,8 +189,8 @@ const renderTimelineMarkers = () => {
             
             {stages?.map(stage => {
               const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
-              const barClass = getBarClass(stage.name);
-              const progressClass = getProgressClass(stage.name);
+              const barClass = getBarClass(stage.name, stage.zamowienia_pliki_etap,stage.status);
+              const progressClass = getProgressClass(stage.name, stage.zamowienia_pliki_etap,stage.status);
 
               return (
                 <div key={stage.global_id+"a"} className={styles.stageBarRow}>
@@ -188,16 +199,24 @@ const renderTimelineMarkers = () => {
                     style={{ width, marginLeft }}
                     title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
                   >
-                    <div
+                    
+                    
+                {stage.progress > 5 && stage.status ==3 &&(
+                  <div
                       className={`${styles.progressBar} ${progressClass}`}
                       style={{ width: `${stage.progress}%` }}
                     ></div>
-                    {stage.progress > 5 && (
+                      
+                     )} 
+
+                    {stage.progress > 5 && stage.status ==3 &&(
                       <span className={styles.progressText}>
                         {stage.progress}%
                       </span>
                       
                     )}
+
+
                   </div>
                 </div>
               );

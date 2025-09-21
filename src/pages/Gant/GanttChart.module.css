@@ -149,15 +149,22 @@
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
+.barRIP { background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); }
+.barZAS { background:linear-gradient(to bottom, #7b9739 5%, #8fb148 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); }
 
-.barA { background-color: #007bff; }
-.barB { background-color: #ffc107; }
-.barC { background-color: #28a745; }
-.barDefault { background-color: #6c757d; }
 
-.progressA { background-color: #0056b3; }
-.progressB { background-color: #e0a800; }
-.progressC { background-color: #1e7e34; }
+/* .barAkcept { background:linear-gradient(to bottom, #d7e6f5 5%, #abc4db 100%);  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); } */
+.barAkcept { background:#007bff98; }
+/* .barWtrakcie { background:#ffc107; } */
+.barWtrakcie { background:#6c757d; }
+
+
+/* .barDefault { background-color: #6c757d; } */
+.barDefault { background-color: #d3d3d3; border: 1px solid rgba(128, 128, 128, 0.425);}
+.progresRIP { background:linear-gradient(to bottom, #7b9739 5%, #8fb148 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );}
+.progressAkcept { background:#495057; }
+/* .progressWtrakcie { background:#e0a800; } */
+.progressWtrakcie { background:#e0a800; }
 .progressDefault { background-color: #495057; }
 
 .header {

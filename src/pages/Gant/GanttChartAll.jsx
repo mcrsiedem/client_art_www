@@ -12,6 +12,10 @@ const GanttChartAll = ({ stages }) => {
   const [scaleFactor, setScaleFactor] = useState(0.2);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
+
+          const [colorFrom, setColorFrom] = useState(2);
+  
+
   const groupedStages = stages?.reduce((acc, stage) => {
     const { procesor_id } = stage;
     if (!acc[procesor_id]) {
@@ -72,6 +76,89 @@ const GanttChartAll = ({ stages }) => {
 
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
+
+
+
+const getColorForTechnology = (technologiaId) => {
+  // Unikalny, deterministyczny generator hasha na podstawie technologiaId
+  let hash = 0;
+  const str = String(technologiaId);
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  // Generowanie koloru HSL
+  // Odcień (hue) jest unikalny dla każdej technologii
+  const hue = Math.abs(hash) % 360; 
+  // Nasycenie (saturation) i jasność (lightness) są stałe, aby zachować spójność
+  const saturation = 75;
+  const lightness = 60;
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+};
+
+
+const getColor = (stage,technologiaId,zamowienieId) => {
+
+  let parametr 
+
+  if(colorFrom==1){  //jeden parametr klient data spedycji itp 
+   parametr = stage.klient_id 
+      // Unikalny, deterministyczny generator hasha na podstawie technologiaId
+  let hash = 0;
+  const str = String(parametr);
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  // Generowanie koloru HSL
+  // Odcień (hue) jest unikalny dla każdej technologii
+  const hue = Math.abs(hash) % 360; 
+  // Nasycenie (saturation) i jasność (lightness) są stałe, aby zachować spójność
+  const saturation = 75;
+  const lightness = 60;
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  }
+
+ 
+if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
+    const hashString = `${technologiaId}-${zamowienieId}`;
+    let hash = 0;
+    for (let i = 0; i < hashString.length; i++) {
+        hash = hashString.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    const hue = (technologiaId * 137.508) % 360;
+    const saturation = 70 + (hash % 30);
+    const lightness = 50 + (hash % 10);
+
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+  if(colorFrom==3){  //jeden parametr klient data spedycji itp 
+   parametr = stage.data_spedycji 
+      // Unikalny, deterministyczny generator hasha na podstawie technologiaId
+  let hash = 0;
+  const str = String(parametr);
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  // Generowanie koloru HSL
+  // Odcień (hue) jest unikalny dla każdej technologii
+  const hue = Math.abs(hash) % 360; 
+  // Nasycenie (saturation) i jasność (lightness) są stałe, aby zachować spójność
+  const saturation = 75;
+  const lightness = 60;
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  }
+
+
+};
+
+
 
   const renderTimelineMarkers = () => {
     if (!minDate || !maxDate || totalChartWidth === 0) return null;
@@ -142,7 +229,24 @@ const GanttChartAll = ({ stages }) => {
       <div className={styles.header}>
         {/* <h2>Druk</h2> */}
         {/* <Procesory/> */}
+               <div className={styles.btnFormContainer}>
+             <button className={styles.btnForm} onClick={()=>{setColorFrom(2)}}>
+            Prace
+          </button>
+
+             <button className={styles.btnForm} onClick={()=>{setColorFrom(1)}}>
+            Klient
+          </button>
+                    <button className={styles.btnForm} onClick={()=>{setColorFrom(3)}}>
+            Spedycja
+          </button>
+
+          </div>
         <div className={styles.controls}>
+  
+
+   
+
           <span>Powiększenie:</span>
           <input
             type="range"
@@ -186,7 +290,9 @@ const GanttChartAll = ({ stages }) => {
                 <div className={styles.processorBarsGroup}>
                   {groupedStages[processorId].map(stage => {
                     const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
-                    const barColor = getColorForTechnologyAndOrder(stage.technologia_id, stage.zamowienie_id);
+                    // const barColor = getColorForTechnologyAndOrder(stage.technologia_id, stage.zamowienie_id);
+                    // const barColor = getColorForTechnology(stage.data_spedycji);
+                    const barColor = getColor(stage,stage.technologia_id, stage.zamowienie_id);
 
                     return (
                       <div

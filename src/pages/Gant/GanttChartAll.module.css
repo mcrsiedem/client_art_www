@@ -194,10 +194,11 @@ background-color: #555;
 
 .nowLine {
   position: absolute;
-  top: 0;
-  height: 100%; 
+  top: 50px;
+  bottom:150px;
+  height: 90%; 
   width: 2px;
-  background-color: #dc3545; 
+  background-color: #36363646; 
   z-index: 20;
   pointer-events: none;
   transform: translateX(+10px);
@@ -206,10 +207,11 @@ background-color: #555;
 .nowLabel {
   position: absolute;
   /* Pozycja etykiety: 50px (wysokość .timeline) + 5px odstępu */
-  top: 55px; 
+  top: 5px; 
   left: 5px;
   padding: 2px 5px;
-  background-color: #dc3545;
+  background-color: #36363646; 
+  /* background-color: #dc3545; */
   color: white;
   font-size: 0.7em;
   font-weight: bold;

@@ -178,7 +178,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
       const leftPosition = (offsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
 
       markers.push(
-        <div key={`day-${currentDate.getTime()}`} className={styles.timelineMarker} style={{ left: `${leftPosition + 25}px` }}>
+        <div key={`day-${currentDate.getTime()}`} className={styles.timelineMarker} style={{ left: `${leftPosition + 45}px` }}>
           {daysOfWeek[currentDate.getDay()]} {String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
         </div>
       );

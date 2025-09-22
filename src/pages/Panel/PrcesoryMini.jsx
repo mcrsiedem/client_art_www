@@ -11,6 +11,7 @@ import iconUstawienia from 'assets/iconUstawienia.svg'
 import iconMagazyn from 'assets/iconMagazyn.svg'
 import iconCTP from 'assets/iconCTP.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
+import iconWagoniki from 'assets/iconKalendarz.svg'
 import iconLock from 'assets/iconLock.svg'
 import iconKalendarz from 'assets/iconKalendarz.svg'
 import axios from "axios";
@@ -97,6 +98,7 @@ setGrupWykonanAllNiezakonczoneOprawa(res.data[1])
         {DecodeToken(sessionStorage.getItem("token")).mini_inne==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(7); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>TYGIEL</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczone.filter(x=> x.procesor_id == 7 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
         {DecodeToken(sessionStorage.getItem("token")).mini_oprawa==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(8); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>KOLBUS</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczoneOprawa.filter(x=> x.procesor_id == 8 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
         {DecodeToken(sessionStorage.getItem("token")).mini_oprawa==1? <div className={style.kafle} onClick={() => {setSelectedProcesor(10); navigate("/ProcesyMini") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>ST450</p> <p className={style.menu_txt_zielony} > {grupyWykonanAllNiezakonczoneOprawa.filter(x=> x.procesor_id == 10 && (x.status ==2 || x.status ==3) ).length}</p></div>:<></>}                
+        {DecodeToken(sessionStorage.getItem("token")).gant==1? <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconWagoniki} alt="Kalendarz" /><p className={style.menu_txt}>Kalendarz</p> </div>:<></>}                
       
                                                         </div>
 

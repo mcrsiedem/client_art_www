@@ -304,7 +304,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                 className={styles.nowLine} 
                 style={{ left: `${calculateNowPosition()}px` }}
               >
-                <span className={styles.nowLabel}>AKTUALNY CZAS</span>
+                <span className={styles.nowLabel}>TERAZ</span>
               </div>  
             
             {groupedStages && Object.keys(groupedStages).map(processorId => (

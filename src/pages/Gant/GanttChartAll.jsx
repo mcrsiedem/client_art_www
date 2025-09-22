@@ -165,6 +165,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
 
     const markers = [];
     const daysOfWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
+    // const daysOfWeek = ['Nd', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb'];
     const interval = 24 * 60 * 60 * 1000;
     
     const startDate = new Date(minDate);
@@ -178,7 +179,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
 
       markers.push(
         <div key={`day-${currentDate.getTime()}`} className={styles.timelineMarker} style={{ left: `${leftPosition + 15}px` }}>
-          {daysOfWeek[currentDate.getDay()]}{String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
+          {daysOfWeek[currentDate.getDay()]} {String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
         </div>
       );
 
@@ -322,6 +323,12 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                 </div>
               </div>
             ))}
+                        <div className={styles.timeline}>
+              <div className={styles.timelineMarkersContainer}>
+                {renderTimelineMarkers()}
+              </div>
+              <div className={styles.timelineLine}></div>
+            </div>
           </div>
         </div>
       </div>

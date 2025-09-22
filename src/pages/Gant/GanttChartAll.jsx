@@ -178,7 +178,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
       const leftPosition = (offsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
 
       markers.push(
-        <div key={`day-${currentDate.getTime()}`} className={styles.timelineMarker} style={{ left: `${leftPosition + 15}px` }}>
+        <div key={`day-${currentDate.getTime()}`} className={styles.timelineMarker} style={{ left: `${leftPosition + 25}px` }}>
           {daysOfWeek[currentDate.getDay()]} {String(currentDate.getDate()).padStart(2, '0')}/{String(currentDate.getMonth() + 1).padStart(2, '0')}
         </div>
       );
@@ -193,7 +193,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
           const hourLeftPosition = (hourOffsetMs / (maxDate.getTime() - minDate.getTime())) * totalChartWidth;
 
           markers.push(
-            <div key={`hour-${hourDate.getTime()}`} className={styles.timelineSubMarker} style={{ left: `${hourLeftPosition}px` }}>
+            <div key={`hour-${hourDate.getTime()}`} className={styles.timelineSubMarker} style={{ left: `${hourLeftPosition+25}px` }}>
               {hour}:00
             </div>
           );
@@ -303,13 +303,13 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
             
             {groupedStages && Object.keys(groupedStages).map(processorId => (
               <div key={`bars-group-${processorId}`} className={styles.processorRow}>
-
+{/* 
                                                           <div 
                 className={styles.nowLine} 
                 style={{ left: `${calculateNowPosition()}px` }}
               >
                 <span className={styles.nowLabel}>AKTUALNY CZAS</span>
-              </div>  
+              </div>   */}
 
 
                 <div className={styles.processorBarsGroup}>

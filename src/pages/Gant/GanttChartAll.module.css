@@ -188,3 +188,30 @@ background-color: #555;
     display: flex;
     gap:10px;
 }
+
+
+
+.nowLine {
+  position: absolute;
+  top: 0;
+  height: 100%; 
+  width: 2px;
+  background-color: #dc3545; 
+  z-index: 20;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.nowLabel {
+  position: absolute;
+  /* Pozycja etykiety: 50px (wysokość .timeline) + 5px odstępu */
+  top: 55px; 
+  left: 5px;
+  padding: 2px 5px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+  border-radius: 3px;
+  white-space: nowrap;
+}

@@ -12,7 +12,7 @@ const GanttChartAll = ({ stages }) => {
   const [scaleFactor, setScaleFactor] = useState(0.2);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
-
+const [nowTime, setNowTime] = useState(new Date()); 
           const [colorFrom, setColorFrom] = useState(2);
   
 
@@ -205,6 +205,19 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
     return markers;
   };
 
+
+  const calculateNowPosition = () => {
+    if (!minDate || !maxDate || totalChartWidth === 0) return 0;
+
+    const now = nowTime.getTime();
+    const totalTimeSpanMs = maxDate.getTime() - minDate.getTime();
+    const nowOffsetMs = now - minDate.getTime();
+
+    const leftPosition = (nowOffsetMs / totalTimeSpanMs) * totalChartWidth;
+
+    return Math.max(0, Math.min(leftPosition, totalChartWidth));
+  };
+
   const handleScaleChange = (event) => {
     setScaleFactor(parseFloat(event.target.value));
   };
@@ -285,9 +298,20 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
               </div>
               <div className={styles.timelineLine}></div>
             </div>
+
+
             
             {groupedStages && Object.keys(groupedStages).map(processorId => (
               <div key={`bars-group-${processorId}`} className={styles.processorRow}>
+
+                                                          <div 
+                className={styles.nowLine} 
+                style={{ left: `${calculateNowPosition()}px` }}
+              >
+                <span className={styles.nowLabel}>AKTUALNY CZAS</span>
+              </div>  
+
+
                 <div className={styles.processorBarsGroup}>
                   {groupedStages[processorId].map(stage => {
                     const { width, marginLeft } = calculateBarProperties(stage.start, stage.end);
@@ -306,6 +330,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                         }}
                         title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
                       >
+
                         {stage.progress > 5 && stage.status == 3 && (
                           <div
                             className={styles.progressBar}
@@ -317,12 +342,17 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                             {stage.progress}%
                           </span>
                         )}
+                        
                       </div>
+                      
                     );
                   })}
                 </div>
               </div>
             ))}
+
+
+
                         <div className={styles.timeline}>
               <div className={styles.timelineMarkersContainer}>
                 {renderTimelineMarkers()}

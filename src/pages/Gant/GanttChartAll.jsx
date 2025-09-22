@@ -292,6 +292,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
             className={styles.ganttChart}
             style={{ width: `${totalChartWidth}px` }}
           >
+
             <div className={styles.timeline}>
               <div className={styles.timelineMarkersContainer}>
                 {renderTimelineMarkers()}
@@ -299,17 +300,17 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
               <div className={styles.timelineLine}></div>
             </div>
 
-
-            
-            {groupedStages && Object.keys(groupedStages).map(processorId => (
-              <div key={`bars-group-${processorId}`} className={styles.processorRow}>
-{/* 
                                                           <div 
                 className={styles.nowLine} 
                 style={{ left: `${calculateNowPosition()}px` }}
               >
                 <span className={styles.nowLabel}>AKTUALNY CZAS</span>
-              </div>   */}
+              </div>  
+            
+            {groupedStages && Object.keys(groupedStages).map(processorId => (
+              <div key={`bars-group-${processorId}`} className={styles.processorRow}>
+
+ 
 
 
                 <div className={styles.processorBarsGroup}>

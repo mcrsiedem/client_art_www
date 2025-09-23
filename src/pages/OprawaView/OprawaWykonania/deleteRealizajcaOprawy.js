@@ -10,7 +10,7 @@ export const deleteRealizajcaOprawy = async (
   setWykonaniaOprawy,
   grupyOprawaAll,setGrupyOprawaAll
 ) => {
-  let status,status_grupy;
+  let status,status_grupy,zrealizowano;
   await axios
     .post(IP + "usun_realizacje_oprawy/" + sessionStorage.getItem("token"), {
       ...wykonanie,
@@ -20,6 +20,8 @@ export const deleteRealizajcaOprawy = async (
     .then((res) => {
       status = res.data.status;
       status_grupy = res.data.status_grupy;
+      zrealizowano = res.data.zrealizowano;
+      // console.log("zrealizowano:" +zrealizowano)
 
       if (status == "OK") {
 
@@ -31,6 +33,7 @@ export const deleteRealizajcaOprawy = async (
         return {
           ...t,
           status: status_grupy,
+          zrealizowano:zrealizowano===null? "": zrealizowano
         };
       } else {
         return t;

@@ -34,7 +34,7 @@ export const addRealizajcaProcesu = async (
     if (status === "OK") {
       const new_realizacje = realizacje.slice();
       new_realizacje.push({
-        ...realizacje,
+        ...wykonanie,
         id: getMaxID(realizacje),
         zrealizowano: value,
         global_id: insertId,

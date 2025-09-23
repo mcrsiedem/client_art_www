@@ -19,7 +19,9 @@ export default function Realizacje({ wykonanie,grup }) {
         .map((realizacja) => {
           return (
             <>
-              <div className={style.container}>
+              <div 
+               onDoubleClick={()=>{console.log(realizacja) }}
+              className={style.container}>
                   <div className={style.row_title}> 
                     <p className={style.title2}>   {realizacja.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 

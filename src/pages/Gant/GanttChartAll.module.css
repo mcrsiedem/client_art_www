@@ -8,7 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
   margin-bottom: 20px;
 }
 
@@ -31,7 +31,7 @@
 /* Nowy kontener wiersza, który będzie wspólny dla obu kolumn */
 .processorRow {
   display: flex;
-  min-height: 40px; /* Wysokość wiersza, która zawiera wszystkie paski zadań */
+  min-height: 30px; /* Wysokość wiersza, która zawiera wszystkie paski zadań */
   border-left: 3px solid #007bff;
   padding-left: 10px;
   margin-bottom: 20px; /* Odstęp między wierszami procesorów */
@@ -39,7 +39,7 @@
 
 .processorNameFixed {
   width: 150px;
-  min-height: 40px;
+  min-height: 30px;
   font-size: 0.9em;
   color: #333;
   padding: 4px 5px;
@@ -108,7 +108,7 @@
   align-items: center;
   position: relative;
   width: 100%;
-  min-height: 40px;
+  min-height: 30px;
 }
 .processorBarsGroup:hover {
   background-color: #007bff2f;
@@ -150,7 +150,7 @@
 
 .timelineSubMarker {
   position: absolute;
-  top: 40px;
+  top: 30px;
   transform: translate(-50%, -50%);
   font-size: 0.7em;
   color: #999;

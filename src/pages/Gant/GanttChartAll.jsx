@@ -281,7 +281,7 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
           {groupedStages && Object.keys(groupedStages).map(processorId => (
             <div key={`names-group-${processorId}`} className={styles.processorRow}>
               <div className={styles.processorNameFixed}>
-                {procesory.find(x => x.id == processorId ).nazwa}
+                {procesory.find(x => x.id == processorId ).nazwa.substring(0,13)}
               </div>
             </div>
           ))}

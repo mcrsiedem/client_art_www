@@ -497,7 +497,7 @@ const _etapy_produkcji = [
     nazwa: "RIP",
   },  {
     id: 7,
-    nazwa: "Naświetlanie",
+    nazwa: "Naświetlone",
   },  {
     id: 8,
     nazwa: "Wydrukowane",

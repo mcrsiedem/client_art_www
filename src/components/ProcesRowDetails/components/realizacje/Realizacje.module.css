@@ -73,6 +73,10 @@ height: 5px;
       /* border: 1px solid gray; */
    border-radius: 5px;
 }
+.row:hover  .skasujBtn{
+ display: block;
+
+}
 
 .rowRed{
    width: 90%;

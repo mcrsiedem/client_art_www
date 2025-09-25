@@ -69,6 +69,7 @@
       /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
       /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
       background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       height: 2.5rem;
@@ -109,7 +110,9 @@
 
 
     .btn{
-        background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+        /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
+    background-color: rgba(248, 0, 0, 0.486);
+
         width:  100px;
         height: 35px;
         border-radius: 5px;

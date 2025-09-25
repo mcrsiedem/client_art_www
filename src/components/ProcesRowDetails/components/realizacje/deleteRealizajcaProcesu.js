@@ -2,24 +2,24 @@ import axios from "axios";
 import { IP } from "utils/Host";
 
 export const deleteRealizajcaProcesu = async ({
-  wykonanie,realizacja,grup,wykonania ,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll
+ wykonanie,realizacja,grup,wykonania ,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll
 }) => {
-  try {
-    const res = await axios.post(
-      `${IP}usun_realizacje_procesu/${sessionStorage.getItem("token")}`,
-      {
-        ...realizacja,
-        id_grupy: grup.id,
-        global_id_wykonania: wykonanie.global_id,
-      }
-    );
+ try {
+  const res = await axios.post(
+  `${IP}usun_realizacje_procesu/${sessionStorage.getItem("token")}`,
+  {
+   ...realizacja,
+   id_grupy: grup.id,
+   global_id_wykonania: wykonanie.global_id,
+  }
+  );
 
-    const { status, status_grupy,status_wykonania,do_wykonania} = res.data;
+  const { status, status_grupy,status_wykonania,do_wykonania} = res.data;
 
-    if (status === "OK") {
-      setRealizacje(
-        realizacje.filter((x) => x.global_id !== realizacja.global_id)
-      );
+  if (status === "OK") {
+  setRealizacje(
+   realizacje.filter((x) => x.global_id !== realizacja.global_id)
+  );
 
       setWykonania(
         wykonania.map((t) => {
@@ -50,11 +50,11 @@ export const deleteRealizajcaProcesu = async ({
       );
 
 
-    } else {
-      alert(status.sqlMessage);
-    }
-  } catch (error) {
-    console.error("Błąd podczas usuwania realizacji procesu:", error);
-    alert(`Wystąpił błąd: ${error.message}`);
-  }
+  } else {
+  alert(status.sqlMessage);
+  }
+ } catch (error) {
+  console.error("Błąd podczas usuwania realizacji procesu:", error);
+  alert(`Wystąpił błąd: ${error.message}`);
+ }
 };

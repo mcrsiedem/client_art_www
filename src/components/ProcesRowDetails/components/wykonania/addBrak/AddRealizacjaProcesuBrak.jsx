@@ -18,7 +18,7 @@ export default function AddRealizacjaProcesuBrak({ setShow, show, wykonanie,grup
         >
           <Header setShow={setShow}></Header>
           <div className={style.center}>
-            <p>Czy zakończyć wykonanie i dodać brak?</p>
+            {/* <p>Czy dodać brak?</p> */}
             {/* <Naklad  value={value} setValue={setValue} wykonanie={wykonanie}/> */}
           </div>
           <div className={style.footer}>
@@ -33,7 +33,7 @@ export default function AddRealizacjaProcesuBrak({ setShow, show, wykonanie,grup
 function Header({ setShow }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj realizację </p>
+      <p className={style.title}>Brak</p>
       <Zamknij setShow={setShow} />
     </div>
   );

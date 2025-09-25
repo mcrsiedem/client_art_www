@@ -27,7 +27,7 @@ export default function ZapiszBrak({setShow,wykonanie,grup}) {
           
           }}
       >
-        Zapisz
+        Dodaj brak
       </button>
     );
   }

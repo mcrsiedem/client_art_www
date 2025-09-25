@@ -103,13 +103,10 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                 </tr>
                 {expand ? (
                   <>
+                   <ProcesRowDetails grup={grup}/>
                     <tr  >
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie):(" ")}</td>
-                      <td></td>
+                      <td colSpan={5} >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie +" - "+grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu+" - "+"Spedycja: "+grup.data_spedycji):(" ")}</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -120,7 +117,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)}</td>
+                      {/* <td >{grup.typ_grupy ==1 ? (" "):(grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu)}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
@@ -132,7 +129,8 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):("Nakład: "+grup.naklad) +" szt."}</td>
+                      <td></td>
+                      {/* <td >{grup.typ_grupy ==1 ? (" "):("Nakład: "+grup.naklad) +" szt."}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
@@ -144,7 +142,8 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):("Przeloty: "+grup.przeloty)+" ark."}</td>
+                      <td></td>
+                      {/* <td >{grup.typ_grupy ==1 ? (" "):("Przeloty: "+grup.przeloty)+" ark."}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
@@ -156,14 +155,14 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td >{grup.typ_grupy ==1 ? (" "):("Spedycja: "+grup.data_spedycji)}</td>
+                      {/* <td >{grup.typ_grupy ==1 ? (" "):("Spedycja: "+grup.data_spedycji)}</td> */}
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                     </tr>
-                  <ProcesRowDetails grup={grup}/>
+                 
                   </>
                     
 
@@ -333,30 +332,31 @@ function Status({grup}) {
       <select
        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
+        disabled
         onChange={(event) => {
 
-          if(grup.nazwa == 'Oprawa'){
+    //       if(grup.nazwa == 'Oprawa'){
 
-                if (grup.status > 1 && event.target.value !=1) {
-      statusGrupyTechnologia_OPRAWA_PROCESY({
-        ...grup,
-        status: event.target.value,
-        stary_status: grup.status,
-      });
-    }
+    //             if (grup.status > 1 && event.target.value !=1) {
+    //   statusGrupyTechnologia_OPRAWA_PROCESY({
+    //     ...grup,
+    //     status: event.target.value,
+    //     stary_status: grup.status,
+    //   });
+    // }
     
 
-          }else{
+    //       }else{
 
             
-            if(grup.typ_grupy!=1){
-              statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
-            }
-                  if(grup.typ_grupy==1){
-                    //przerwa
-              statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-            }
-          }
+    //         if(grup.typ_grupy!=1){
+    //           statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
+    //         }
+    //               if(grup.typ_grupy==1){
+    //                 //przerwa
+    //           statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+    //         }
+    //       }
 
 
 

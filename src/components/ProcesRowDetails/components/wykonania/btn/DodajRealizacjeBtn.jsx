@@ -17,17 +17,7 @@ export default function DodajRealizacjeBtn({ wykonanie,grup }) {
               onClick={() => {
           setValue([])
                 setShow(true)
-                // console.log(realizacje)
 
-                // setWykonania(
-                //   wykonania.map((t) => {
-                //     if (t.global_id == wykonanie.global_id) {
-                //       return { ...t, show: false };
-                //     } else {
-                //       return t;
-                //     }
-                //   })
-                // );
 
               }}
             >

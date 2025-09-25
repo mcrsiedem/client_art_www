@@ -28,10 +28,6 @@ function selectColor (status){
 
   return (
     <>
-      {/* <tr className={style.container}> */}
-      {/* <td colSpan={mini? 4:17}>
-
-      </td> */}
 
       {wykonania
         .filter((x) => x.grupa_id == grup.id)

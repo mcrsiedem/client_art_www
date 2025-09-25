@@ -74,8 +74,24 @@ height: 5px;
    border-radius: 5px;
 }
 
+.rowRed{
+   width: 90%;
+   padding: 5px;
+   display: flex;
+   flex-direction: row;
+   align-items: start;
+   justify-content: space-between;
+   gap:10px;
+    background-color: rgba(248, 0, 0, 0.486);
+    /* background:linear-gradient(to bottom, #e3d056 5%, #c2b245 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
 
-.row:hover  .skasujBtn{
+      /* border: 1px solid gray; */
+   border-radius: 5px;
+}
+
+
+
+.rowRed:hover  .skasujBtn{
  display: block;
 
 }

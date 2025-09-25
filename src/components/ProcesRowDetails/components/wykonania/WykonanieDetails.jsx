@@ -20,19 +20,6 @@ if(wykonanie.show)
           <div className={style.stage}>
 
             <Realizacje wykonanie={wykonanie} grup={grup}/>
-              {/* tu będą realizacje */}
-            {/* <div className={style.stage}>  */}
-            {/* <Wykonania grup={grup}/> */}
-
-            {/* </div> */}
-            {/* <OprawaWykonania grup={grup}/>
-            <DodajRealizacjeBtn grup={grup}/>
-            <ElementPane grup={grup}/>
-            <TextEditor grup={grup} mini={mini}/> */}
-            
-
-
-
 
             <div  className={style.paneBtn}>
                 <DodajRealizacjeBtn wykonanie={wykonanie} grup={grup}/>

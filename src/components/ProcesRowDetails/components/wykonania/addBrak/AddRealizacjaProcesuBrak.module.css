@@ -1,0 +1,136 @@
+.grayScaleBackground {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 114;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    background-color: rgba(32, 32, 32, 0.315);
+
+}
+
+
+
+.window{
+    position: relative;
+
+    /* width: 40%; */
+    height: 170px;
+    min-width: 150px;
+    max-width: 350px;
+    background-color: rgb(218, 218, 218);
+    border: 1px solid rgb(143, 143, 143);
+    border-radius: 5px;
+   z-index: 10;
+   display: grid;
+   grid-template-rows: 2rem  1fr 2.5rem;
+   /* justify-content: center;
+   align-items: center; */
+   
+   gap: 10px;
+   /* grid-template-rows: 30px 1fr 1fr ; */
+   box-shadow: 10px 10px 10px gray;
+  }
+
+  .center{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+  }
+
+
+  .footer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* gap: 10px; */
+    /* grid-template-rows: 30px 1fr 1fr ; */
+   }
+ 
+
+
+    
+    .header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+     width: 100%;
+  
+      padding-left: 10px;
+      padding-right: 10px;
+      /* background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%); */
+      /* background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%); */
+      background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      height: 2.5rem;
+      color: #fff;
+    }
+    .title{
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: #fff;
+      font-size: 0.9rem;
+      /* font-weight: bold; */
+      padding-top: 12px;
+      padding-left: 7px;
+    }
+
+    .labelinput{
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1.5rem;
+        width: 80%;
+    }
+
+    .labelinput_nip
+    {
+        display: grid;
+        grid-template-columns: 65px 1fr 1fr ;
+      
+    }
+    .label{
+       
+        padding-left: 10px;
+        font-size: 0.8rem;
+        padding-bottom: 3px;
+    }
+
+
+    .btn{
+        background-image: linear-gradient(rgb(97, 96, 96) 0%,rgb(106, 102, 102) 50%,rgb(81, 78, 78) 100%);
+        width:  100px;
+        height: 35px;
+        border-radius: 5px;
+        border-style: none;
+        color: #fff;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        position: relative;
+        bottom: 10px;
+      }
+
+.btn:hover{
+        color: #cecece;
+
+}
+
+    .firma{
+      border: none;
+      background-color: #ebebeb;
+      border-radius: 5px;
+      text-align: center;
+      color: #696969;
+    }
+

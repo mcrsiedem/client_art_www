@@ -2,7 +2,7 @@ import React, {useContext, } from "react";
 import style from "./ZamknijBtn.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 
-export default function ZamknijBtn({ grup }) {
+export default function ZamknijBtn({ grup ,expand, setExpand}) {
   const techContext = useContext(TechnologyContext);
   const setGrupWykonanAll = techContext.setGrupWykonanAll;
   const grupyWykonanAll = techContext.grupyWykonanAll;
@@ -19,6 +19,8 @@ export default function ZamknijBtn({ grup }) {
                     }
                   })
                 );
+         setExpand(!expand)
+
               }}
             >
               Zamknij

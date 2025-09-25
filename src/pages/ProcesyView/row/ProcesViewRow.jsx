@@ -219,7 +219,7 @@ if (grup.select) return style.procesRow_select
                   <td></td>
                  
                 </tr>
-                  <ProcesRowDetails grup={grup}/>
+                  <ProcesRowDetails grup={grup}  mini={false}/>
 
                 
                 {expand ? (

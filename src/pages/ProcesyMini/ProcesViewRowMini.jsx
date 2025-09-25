@@ -30,6 +30,8 @@ import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useAccess } from "hooks/useAccess";
+import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
+import { useContextMenuHandler } from "pages/ProcesyView/row/useContextMenuHandler";
 
 
 
@@ -44,6 +46,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
   const selectedProces = techContext.selectedProces;
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
+            const [onContextMenuHanlder] = useContextMenuHandler(false);
           const selectColor = (etapPlikow,status) =>{
             if (status==2 ) return style.procesRow_tr_RIP
             if (status==3 ) return style.procesRow_tr_trakcie
@@ -74,6 +77,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                   }}
                  className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
                   onDoubleClick={(node, event) => {
+                    onContextMenuHanlder(event,grup)
          setExpand(!expand)
                       // if(grup.typ_grupy != 1 ){
                       //   fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
@@ -159,7 +163,7 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                       <td></td>
                       <td></td>
                     </tr>
-
+                  <ProcesRowDetails grup={grup}/>
                   </>
                     
 

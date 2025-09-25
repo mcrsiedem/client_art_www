@@ -23,10 +23,10 @@ const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologii
 
 function onContextMenuHanlder(  event,  grup) {
 
-  // if(prevet){
-  //   event.preventDefault();
-  // }
-  event.preventDefault();
+  if(event){
+    event.preventDefault();
+  }
+  // event.preventDefault();
   if (grup.typ_grupy != 1) {
     setGrupWykonanAll(
       grupyWykonanAll

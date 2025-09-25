@@ -44,6 +44,7 @@ function selectColor (status){
               className={style.containerWykonanie}
               // onDoubleClick={()=>{console.log(wykonanie) }}
               onContextMenu={(event) => onContextMenuHanlder(event,wykonanie,wykonania,setWykonania,fechparametryTechnologiiDetails)}
+              onDoubleClick={(event) => onContextMenuHanlder(event,wykonanie,wykonania,setWykonania,fechparametryTechnologiiDetails)}
               
               >
                 {/* <div className={style.stage}> */}

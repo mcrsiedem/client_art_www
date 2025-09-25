@@ -28,8 +28,8 @@ export const addRealizajcaProcesuBrak = async (
     // console.log("Status wykonania:", status_wykonania);
     // console.log("Do wykonania:", do_wykonania);
     // console.log("Do wykonanie.global_id:", wykonanie.global_id);
-
-    if (status === "OK") {
+// console.log( res.data.status)
+    if (status === "OK" && parseInt(brakujace_przeloty) != 0) {
       const new_realizacje = realizacje.slice();
       new_realizacje.push({
         ...wykonanie,
@@ -38,6 +38,7 @@ export const addRealizajcaProcesuBrak = async (
         global_id: insertId,
         utworzono: today_teraz(),
         wykonanie_global_id: wykonanie.global_id,
+        typ:2
       });
       setRealizacje(new_realizacje);
 

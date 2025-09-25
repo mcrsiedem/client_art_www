@@ -26,6 +26,11 @@ export const addRealizajcaProcesu = async (
 
     const { status, insertId, status_wykonania, do_wykonania,status_grupy } = res.data;
 
+    console.log("status :", status);
+    console.log("insertId :", insertId);
+    console.log("status_wykonania :", status_wykonania);
+    console.log("do_wykonania :", do_wykonania);
+    console.log("status_grupy :", status_grupy);
     // console.log("Dane z serwera:", res.data);
     // console.log("Status wykonania:", status_wykonania);
     // console.log("Do wykonania:", do_wykonania);
@@ -40,6 +45,7 @@ export const addRealizajcaProcesu = async (
         global_id: insertId,
         utworzono: today_teraz(),
         wykonanie_global_id: wykonanie.global_id,
+        typ:1
       });
       setRealizacje(new_realizacje);
 

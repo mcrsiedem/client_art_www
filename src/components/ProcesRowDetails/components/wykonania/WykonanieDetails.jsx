@@ -23,7 +23,7 @@ if(wykonanie.show)
 
             <div  className={style.paneBtn}>
                 <DodajRealizacjeBtn wykonanie={wykonanie} grup={grup}/>
-                <DodajBrakBtn wykonanie={wykonanie}/>
+                <DodajBrakBtn wykonanie={wykonanie} grup={grup}/>
                 <ZamknijWykonanieBtn wykonanie={wykonanie}/>
             </div>
 

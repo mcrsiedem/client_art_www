@@ -24,7 +24,8 @@ const [wolno,wolno_procesor] = useAccess(false);
           if(rowWykonanie.technologia_id==1){
             }else{
               if(wolno_procesor(rowProces.nazwa_id)){
-                 statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value,stary_status: rowWykonanie.status })
+                // wyłączone aby zakańczać z pozycji operatora
+                //  statusWykonaniaTechnologia({...rowWykonanie,status:event.target.value,stary_status: rowWykonanie.status })
               }
             }
       

@@ -17,7 +17,7 @@ export default function AddRealizacjaProcesu({ setShow, show, wykonanie,value, s
         >
           <Header setShow={setShow}></Header>
           <div className={style.center}>
-            <Naklad  value={value} setValue={setValue}/>
+            <Naklad  value={value} setValue={setValue} wykonanie={wykonanie}/>
           </div>
           <div className={style.footer}>
             <Zapisz setShow={setShow} wykonanie={wykonanie} value={value}  grup={grup}/>
@@ -49,10 +49,10 @@ function Zamknij({ setShow }) {
   );
 }
 
-function Naklad({ value,setValue }) {
+function Naklad({ value,setValue,wykonanie }) {
   return (
     <div className={style.labelinput}>
-      <label className={style.label}> Nakład </label>
+      <label className={style.label}> Przeloty : {wykonanie.przeloty} </label>
       <input
         className={style.firma}
         type="text"

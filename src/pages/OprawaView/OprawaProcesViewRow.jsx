@@ -245,18 +245,11 @@ function Status({grup}) {
        className={selectColor(grup.status) }
         value={grup.status}
         onChange={(event) => {
-            // można tylko
-            // w trakcie jeśli było o czekujące
-            // zakonczone jeśli było oczekujące albo w trakcie
-            //nie można niedostępne
+
 
     if (grup.status > 1 && event.target.value ==4) {
       zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
-      // statusGrupyTechnologia_OPRAWA_PROCESY({
-      //   ...grup,
-      //   status: event.target.value,
-      //   stary_status: grup.status,
-      // });
+
     }
 
 

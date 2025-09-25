@@ -24,7 +24,8 @@ const [wolno,wolno_procesor] = useAccess(false);
   
    if(wolno_procesor(rowProces.nazwa_id)){
          if(daneTech.id != 1){
-            statusGrupyTechnologia({...rowGrupa, status: event.target.value, stary_status: rowGrupa.status,})
+            // wyłączone aby grupy zakańczać z pozycji operatora
+            // statusGrupyTechnologia({...rowGrupa, status: event.target.value, stary_status: rowGrupa.status,})
           }
    }
      

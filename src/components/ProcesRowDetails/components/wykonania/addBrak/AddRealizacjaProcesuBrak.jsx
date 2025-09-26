@@ -18,7 +18,7 @@ export default function AddRealizacjaProcesuBrak({ setShow, show, wykonanie,grup
         >
           <Header setShow={setShow}></Header>
           <div className={style.center}>
-            {/* <p>Czy dodać brak?</p> */}
+            Dodanie braku zakończy wykonanie
             {/* <Naklad  value={value} setValue={setValue} wykonanie={wykonanie}/> */}
           </div>
           <div className={style.footer}>

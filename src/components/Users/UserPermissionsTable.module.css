@@ -1,0 +1,108 @@
+/* UserPermissionsTable.module.css */
+
+.permissionsContainer {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* KONTENER ODPOWIEDZIALNY ZA PRZEWIJANIE */
+.tableResponsive {
+    overflow-x: auto; /* Włącza poziome przewijanie, gdy zawartość jest szersza */
+    max-width: 100%;
+    /* Dodaj przewijanie w pionie, jeśli masz bardzo dużo wierszy */
+    /* max-height: 80vh; 
+    overflow-y: auto; */
+}
+
+.permissionsTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1500px; /* Minimalna szerokość, by wymusić przewijanie poziome */
+}
+
+.permissionsTable th, 
+.permissionsTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.permissionsTable thead th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.85em;
+    padding: 10px 5px;
+}
+
+.permissionsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.permissionsTable tbody tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* === STYLISTYKA IKON UPRAWNIEŃ === */
+
+.permissionCell {
+    width: 45px; 
+}
+
+.permissionGranted {
+    color: green;
+    font-weight: bold;
+}
+
+.permissionDenied {
+    color: red;
+    font-weight: bold;
+}
+
+/* === LEPKIE KOLUMNY (STICKY) === */
+
+/* Baza dla wszystkich kolumn, które mają się przyklejać */
+.stickyCol {
+    position: sticky; /* KLUCZOWA WŁAŚCIWOŚĆ */
+    background-color: #fff; /* Tło musi być ustawione */
+    z-index: 10; /* Zapewnia, że kolumna jest na wierzchu */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* 1. Kolumna ID */
+.permissionsTable th:nth-child(1),
+.permissionsTable td:nth-child(1) {
+    left: 0; /* Przyklej do krawędzi 0 */
+    width: 40px;
+    min-width: 40px;
+}
+
+/* 2. Kolumna Imię i Nazwisko */
+.stickyNameCol {
+    left: 40px; /* Szerokość ID */
+    width: 160px;
+    min-width: 160px;
+    text-align: left !important;
+}
+
+/* 3. Kolumna Login */
+.stickyLoginCol {
+    left: 200px; /* Szerokość ID + Szerokość Imię i Nazwisko */
+    width: 100px;
+    min-width: 100px;
+}
+
+/* Stan ładowania/błędu */
+.loadingMessage, .errorMessage, .noDataMessage {
+    padding: 20px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.errorMessage {
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    background-color: #ffe0e0;
+}

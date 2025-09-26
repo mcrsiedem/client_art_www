@@ -24,6 +24,7 @@ import SandBox from "pages/SandBox/SandBox";
 import Gant from "pages/Gant/Gant";
 import ZamowieniaFaktury from "pages/Faktury/ZamowieniaFaktury";
 import GantAll from "pages/Gant/GantAll";
+import UserPermissionsTable from "components/Users/UserPermissionsTable ";
 
 export default function App() {
 
@@ -53,6 +54,7 @@ export default function App() {
               <Route path='/sandbox' element={<SandBox />} />
               <Route path='/gant' element={<Gant />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
+              <Route path='/users' element={<UserPermissionsTable/>} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

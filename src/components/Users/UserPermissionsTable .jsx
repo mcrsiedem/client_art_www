@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styles from './UserPermissionsTable.module.css';
-import axios from "axios";
+  import axios from "axios";
 import { IP } from "utils/Host";
+// === ZDEFINIOWANE KLUCZE KOLUMN ===
+// 1. Klucze podstawowych informacji o użytkowniku (STICKY, INPUT NUMBER)
+const USER_INFO_KEYS = ['asystent1', 'asystent2', 'procesor_domyslny'];
 
-// Lista uprawnień - klucze z Twojej tabeli, które chcemy wyświetlić
+// 2. Klucze dla przewijanych uprawnień (SWITCH/BOOLEAN)
 const PERMISSION_KEYS = [
-    'asystent1', 'asystent2', 'klienci_wszyscy', 'zamowienia_wszystkie',
+    'klienci_wszyscy', 'zamowienia_wszystkie',
     'technologie_wszystkie', 'technologia_zapis', 'klienci_zapis',
-    'papier_zapis', 'procesor_domyslny', 'harmonogram_przyjmij',
+    'papier_zapis', 'harmonogram_przyjmij',
     'zamowienie_zapis', 'zamowienie_przyjmij', 'zamowienie_skasuj',
     'zamowienie_oddaj', 'zamowienie_odblokuj', 'klienci_usun',
     'papier_usun', 'procesy_edycja', 'wersja_max', 'mini_druk',
@@ -16,13 +19,14 @@ const PERMISSION_KEYS = [
     'uprawnienia_ustaw', 'realizacje_dodaj', 'realizacje_usun', 'gant',
 ];
 
-// Mapowanie kluczy uprawnień na bardziej czytelne polskie nazwy
+// Mapowanie kluczy na bardziej czytelne polskie nazwy
 const PERMISSION_LABELS = {
     asystent1: 'Asystent 1', asystent2: 'Asystent 2',
+    procesor_domyslny: 'Procesor Dom.',
     klienci_wszyscy: 'Klienci (Widok)', zamowienia_wszystkie: 'Zamówienia (Widok)',
     technologie_wszystkie: 'Technologie (Widok)', technologia_zapis: 'Technologia (Zapis)',
     klienci_zapis: 'Klienci (Zapis)', papier_zapis: 'Papier (Zapis)',
-    procesor_domyslny: 'Procesor Dom.', harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
+    harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
     zamowienie_zapis: 'Zamówienie (Zapis)', zamowienie_przyjmij: 'Zamówienie (Przyjmij)',
     zamowienie_skasuj: 'Zamówienie (Skasuj)', zamowienie_oddaj: 'Zamówienie (Oddaj)',
     zamowienie_odblokuj: 'Zamówienie (Odblokuj)', klienci_usun: 'Klienci (Usuń)',
@@ -36,13 +40,12 @@ const PERMISSION_LABELS = {
     realizacje_usun: 'Realizacje (Usuń)', gant: 'Gantt',
 };
 
-// Symulowane dane użytkowników
+// Symulowane dane użytkowników (z wartościami INT dla Asystent/Procesor)
 const MOCK_USERS_DATA = [
     { id: 1, Imie: 'Anna', Nazwisko: 'Kowalska', Login: 'anna.k', Dzial: 1, asystent1: 1, asystent2: 0, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 1, papier_zapis: 0, procesor_domyslny: 0, harmonogram_przyjmij: 1, zamowienie_zapis: 1, zamowienie_przyjmij: 1, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 1, mini_druk: 1, mini_falc: 1, mini_oprawa: 1, mini_uv: 0, mini_inne: 0, manage_druk: 0, manage_falc: 0, manage_oprawa: 0, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 1, realizacje_usun: 0, gant: 1, },
-    { id: 2, Imie: 'Piotr', Nazwisko: 'Nowak', Login: 'piotr.n', Dzial: 2, asystent1: 0, asystent2: 1, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 0, technologia_zapis: 0, klienci_zapis: 0, papier_zapis: 1, procesor_domyslny: 1, harmonogram_przyjmij: 0, zamowienie_zapis: 0, zamowienie_przyjmij: 0, zamowienie_skasuj: 1, zamowienie_oddaj: 1, zamowienie_odblokuj: 1, klienci_usun: 1, papier_usun: 1, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 0, mini_oprawa: 0, mini_uv: 1, mini_inne: 1, manage_druk: 1, manage_falc: 1, manage_oprawa: 1, manage_inne: 1, uprawnienia_ustaw: 1, realizacje_dodaj: 1, realizacje_usun: 1, gant: 0, },
-    { id: 3, Imie: 'Jan', Nazwisko: 'Zieliński', Login: 'jan.z', Dzial: 1, asystent1: 1, asystent2: 1, klienci_wszyscy: 0, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 0, klienci_zapis: 1, papier_zapis: 1, procesor_domyslny: 0, harmonogram_przyjmij: 0, zamowienie_zapis: 1, zamowienie_przyjmij: 0, zamowienie_skasuj: 0, zamowienie_oddaj: 1, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 1, mini_oprawa: 0, mini_uv: 1, mini_inne: 0, manage_druk: 1, manage_falc: 0, manage_oprawa: 1, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 0, realizacje_usun: 0, gant: 1, },
-    // Dodaj więcej danych, aby ułatwić testowanie przewijania w pionie
-    { id: 4, Imie: 'Monika', Nazwisko: 'Dąbrowska', Login: 'monika.d', Dzial: 3, asystent1: 0, asystent2: 0, klienci_wszyscy: 1, zamowienia_wszystkie: 0, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 0, papier_zapis: 0, procesor_domyslny: 1, harmonogram_przyjmij: 1, zamowienie_zapis: 0, zamowienie_przyjmij: 1, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 1, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 1, mini_druk: 1, mini_falc: 0, mini_oprawa: 1, mini_uv: 0, mini_inne: 1, manage_druk: 0, manage_falc: 1, manage_oprawa: 0, manage_inne: 1, uprawnienia_ustaw: 0, realizacje_dodaj: 1, realizacje_usun: 0, gant: 0, },
+    { id: 2, Imie: 'Piotr', Nazwisko: 'Nowak', Login: 'piotr.n', Dzial: 2, asystent1: 0, asystent2: 1, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 0, technologia_zapis: 0, klienci_zapis: 0, papier_zapis: 1, procesor_domyslny: 10, harmonogram_przyjmij: 0, zamowienie_zapis: 0, zamowienie_przyjmij: 0, zamowienie_skasuj: 1, zamowienie_oddaj: 1, zamowienie_odblokuj: 1, klienci_usun: 1, papier_usun: 1, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 0, mini_oprawa: 0, mini_uv: 1, mini_inne: 1, manage_druk: 1, manage_falc: 1, manage_oprawa: 1, manage_inne: 1, uprawnienia_ustaw: 1, realizacje_dodaj: 1, realizacje_usun: 1, gant: 0, },
+    { id: 3, Imie: 'Jan', Nazwisko: 'Zieliński', Login: 'jan.z', Dzial: 1, asystent1: 1, asystent2: 5, klienci_wszyscy: 0, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 0, klienci_zapis: 1, papier_zapis: 1, procesor_domyslny: 3, harmonogram_przyjmij: 0, zamowienie_zapis: 1, zamowienie_przyjmij: 0, zamowienie_skasuj: 0, zamowienie_oddaj: 1, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 1, mini_oprawa: 0, mini_uv: 1, mini_inne: 0, manage_druk: 1, manage_falc: 0, manage_oprawa: 1, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 0, realizacje_usun: 0, gant: 1, },
+    { id: 4, Imie: 'Monika', Nazwisko: 'Dąbrowska', Login: 'monika.d', Dzial: 3, asystent1: 0, asystent2: 0, klienci_wszyscy: 1, zamowienia_wszystkie: 0, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 0, papier_zapis: 0, procesor_domyslny: 7, harmonogram_przyjmij: 1, zamowienie_zapis: 0, zamowienie_przyjmij: 1, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 1, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 1, mini_druk: 1, mini_falc: 0, mini_oprawa: 1, mini_uv: 0, mini_inne: 1, manage_druk: 0, manage_falc: 1, manage_oprawa: 0, manage_inne: 1, uprawnienia_ustaw: 0, realizacje_dodaj: 1, realizacje_usun: 0, gant: 0, },
     { id: 5, Imie: 'Krzysztof', Nazwisko: 'Wójcik', Login: 'krzysztof.w', Dzial: 1, asystent1: 1, asystent2: 1, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 1, papier_zapis: 1, procesor_domyslny: 1, harmonogram_przyjmij: 1, zamowienie_zapis: 1, zamowienie_przyjmij: 1, zamowienie_skasuj: 1, zamowienie_oddaj: 1, zamowienie_odblokuj: 1, klienci_usun: 1, papier_usun: 1, procesy_edycja: 1, wersja_max: 1, mini_druk: 1, mini_falc: 1, mini_oprawa: 1, mini_uv: 1, mini_inne: 1, manage_druk: 1, manage_falc: 1, manage_oprawa: 1, manage_inne: 1, uprawnienia_ustaw: 1, realizacje_dodaj: 1, realizacje_usun: 1, gant: 1, },
     { id: 6, Imie: 'Ewa', Nazwisko: 'Lewandowska', Login: 'ewa.l', Dzial: 2, asystent1: 0, asystent2: 0, klienci_wszyscy: 0, zamowienia_wszystkie: 0, technologie_wszystkie: 0, technologia_zapis: 0, klienci_zapis: 0, papier_zapis: 0, procesor_domyslny: 0, harmonogram_przyjmij: 0, zamowienie_zapis: 0, zamowienie_przyjmij: 0, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 0, mini_druk: 0, mini_falc: 0, mini_oprawa: 0, mini_uv: 0, mini_inne: 0, manage_druk: 0, manage_falc: 0, manage_oprawa: 0, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 0, realizacje_usun: 0, gant: 0, },
 ];
@@ -68,8 +71,9 @@ const UserPermissionsTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
+  const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
+
                 setUsers([...res.data]);
                 setLoading(false);
             } catch (err) {
@@ -80,9 +84,8 @@ const UserPermissionsTable = () => {
         fetchData();
     }, []);
 
-    // FUNKCJA ZMIANY UPRAWNIEŃ (edycja)
-    const handlePermissionChange = (userId, permissionKey, isChecked) => {
-        // 1. Aktualizacja stanu lokalnego
+    // FUNKCJA ZMIANY UPRAWNIEŃ (dla switchy 0/1)
+    const handleBooleanPermissionChange = (userId, permissionKey, isChecked) => {
         setUsers(prevUsers => 
             prevUsers.map(user => 
                 user.id === userId 
@@ -90,11 +93,24 @@ const UserPermissionsTable = () => {
                     : user
             )
         );
-
-        // 2. Wysłanie aktualizacji do API (symulacja)
         console.log(`[API UPDATE] Użytkownik ID ${userId}: Uprawnienie '${permissionKey}' zmieniono na ${isChecked ? 'Przyznane (1)' : 'Odebrane (0)'}`);
     };
 
+    // NOWA FUNKCJA ZMIANY WARTOŚCI (dla pól number)
+    const handleValueChange = (userId, key, value) => {
+        const intValue = parseInt(value, 10);
+        const finalValue = isNaN(intValue) ? 0 : intValue; 
+        
+        setUsers(prevUsers => 
+            prevUsers.map(user => 
+                user.id === userId 
+                    ? { ...user, [key]: finalValue }
+                    : user
+            )
+        );
+        console.log(`[API UPDATE] Użytkownik ID ${userId}: Kolumna '${key}' zmieniona na wartość ${finalValue}`);
+    };
+    
     // FUNKCJA SORTOWANIA
     const requestSort = (key) => {
         let direction = 'ascending';
@@ -120,11 +136,26 @@ const UserPermissionsTable = () => {
             );
         }
         
+        // Specjalne filtrowanie wartości: 0/1 dla BOOLEAN, specjalna logika dla INT
         if (filterPermission && filterState !== '') {
-            const expectedValue = parseInt(filterState);
-            sortableUsers = sortableUsers.filter(user => 
-                user[filterPermission] === expectedValue
-            );
+            
+            // Sprawdzamy, CZY DANE UPRAWNIENIE JEST W GRUPIE PÓL LICZBOWYCH.
+            const isInfoKey = USER_INFO_KEYS.includes(filterPermission);
+            
+            const filterValue = parseInt(filterState);
+            
+            if (!isInfoKey) { // Uprawnienie logiczne (Boolean, switch 0/1)
+                sortableUsers = sortableUsers.filter(user => 
+                    user[filterPermission] === filterValue
+                );
+            } else { // Kolumna liczbowa (INT, input number)
+                // Dla kolumn INT (asystent1, asystent2, procesor_domyslny): 0 dla brak, >0 dla aktywny
+                if (filterValue === 1) { // Filtruj na Przyznane / >0
+                     sortableUsers = sortableUsers.filter(user => user[filterPermission] > 0);
+                } else if (filterValue === 0) { // Filtruj na Odebrane / =0
+                    sortableUsers = sortableUsers.filter(user => user[filterPermission] === 0);
+                }
+            }
         }
 
         // 2. SORTOWANIE
@@ -154,7 +185,6 @@ const UserPermissionsTable = () => {
         return sortConfig.direction === 'ascending' ? ' 🔼' : ' 🔽';
     };
 
-    // Widoki stanu ładowania/błędu
     if (loading) {
         return <div className={styles.loadingMessage}>Ładowanie uprawnień... ⏳</div>;
     }
@@ -181,8 +211,8 @@ const UserPermissionsTable = () => {
                     onChange={(e) => setFilterPermission(e.target.value)}
                     className={styles.filterSelect}
                 >
-                    <option value="">-- Filtruj wg. Uprawnienia --</option>
-                    {PERMISSION_KEYS.map(key => (
+                    <option value="">-- Filtruj wg. Kolumny --</option>
+                    {[...USER_INFO_KEYS, ...PERMISSION_KEYS].map(key => (
                         <option key={key} value={key}>
                             {PERMISSION_LABELS[key]}
                         </option>
@@ -195,9 +225,9 @@ const UserPermissionsTable = () => {
                     disabled={!filterPermission}
                     className={styles.filterSelect}
                 >
-                    <option value="">Stan uprawnienia</option>
-                    <option value="1">Przyznane (✅)</option>
-                    <option value="0">Odebrane (❌)</option>
+                    <option value="">Status</option>
+                    <option value="1">Przyznane / &gt;0</option> 
+                    <option value="0">Odebrane / =0</option>
                 </select>
 
                 <button 
@@ -217,7 +247,7 @@ const UserPermissionsTable = () => {
                 <table className={styles.permissionsTable}>
                     <thead>
                         <tr>
-                            {/* Nagłówki z sortowaniem */}
+                            {/* KOLUMNY PODSTAWOWYCH DANYCH (STICKY) */}
                             <th className={styles.stickyHeader} onClick={() => requestSort('id')}>
                                 ID {getSortIndicator('id')}
                             </th>
@@ -234,13 +264,26 @@ const UserPermissionsTable = () => {
                                 Login {getSortIndicator('Login')}
                             </th>
                             
-                            {/* Renderowanie nagłówków dla uprawnień */}
+                            {/* KOLUMNY EDYTOWALNE LICZBOWO (STICKY) */}
+                            {USER_INFO_KEYS.map((key, index) => (
+                                <th 
+                                    key={key} 
+                                    title={key} 
+                                    onClick={() => requestSort(key)}
+                                    className={[styles.stickyHeader, styles.stickyInfoCol, styles[`stickyCol${index + 4}`]].join(' ')}
+                                >
+                                    {PERMISSION_LABELS[key]}
+                                    {getSortIndicator(key)}
+                                </th>
+                            ))}
+                            
+                            {/* KOLUMNY PRZEWIJANYCH UPRAWNIEŃ (BOOLEAN) */}
                             {PERMISSION_KEYS.map((key) => (
                                 <th 
                                     key={key} 
                                     title={key} 
                                     onClick={() => requestSort(key)}
-                                    className={styles.stickyHeader} /* Dodajemy klasę stickyHeader do wszystkich TH */
+                                    className={styles.stickyHeader}
                                 >
                                     {PERMISSION_LABELS[key] || key.replace('_', ' ')}
                                     {getSortIndicator(key)}
@@ -251,19 +294,37 @@ const UserPermissionsTable = () => {
                     <tbody>
                         {sortedAndFilteredUsers.map((user) => (
                             <tr key={user.id}>
+                                {/* KOMÓRKI PODSTAWOWYCH DANYCH (STICKY) */}
                                 <td className={styles.stickyCol}>{user.id}</td>
                                 <td className={[styles.stickyCol, styles.stickyNameCol].join(' ')}>
                                     <strong>{user.Imie} {user.Nazwisko}</strong>
                                 </td>
                                 <td className={[styles.stickyCol, styles.stickyLoginCol].join(' ')}>{user.Login}</td>
-                                {/* Renderowanie komórek z uprawnieniami (przełączniki) */}
+
+                                {/* NOWE KOMÓRKI EDYTOWALNE LICZBOWO (STICKY) */}
+                                {USER_INFO_KEYS.map((key, index) => (
+                                    <td 
+                                        key={key} 
+                                        className={[styles.stickyCol, styles.stickyInfoCol, styles[`stickyCol${index + 4}`]].join(' ')}
+                                    >
+                                        <input
+                                            type="number"
+                                            value={user[key] || 0}
+                                            onChange={(e) => handleValueChange(user.id, key, e.target.value)}
+                                            className={styles.numberInput}
+                                            min="0"
+                                        />
+                                    </td>
+                                ))}
+                                
+                                {/* KOMÓRKI PRZEWIJANYCH UPRAWNIEŃ (SWITCH) */}
                                 {PERMISSION_KEYS.map((key) => (
                                     <td key={key} className={styles.permissionCell}>
                                         <label className={styles.switch}>
                                             <input
                                                 type="checkbox"
                                                 checked={user[key] === 1}
-                                                onChange={(e) => handlePermissionChange(user.id, key, e.target.checked)}
+                                                onChange={(e) => handleBooleanPermissionChange(user.id, key, e.target.checked)}
                                             />
                                             <span className={styles.slider}></span>
                                         </label>

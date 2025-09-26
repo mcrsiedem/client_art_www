@@ -1,0 +1,12 @@
+  const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
+  import axios from "axios";
+import { IP } from "utils/Host";
+
+.tableResponsive {
+    overflow-x: auto; /* Poziome przewijanie (uprawnienia) */
+    /* NOWE: Pionowe przewijanie i maksymalna wysokość */
+    max-height: 500px; /* Ustawienie maksymalnej wysokości kontenera (możesz zmienić) */
+    overflow-y: auto; /* Włącza pionowe przewijanie */
+    max-width: 100%;
+    min-height: calc(100vh - 00px);
+}

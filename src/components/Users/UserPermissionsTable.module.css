@@ -38,21 +38,19 @@
     background-color: #c82333;
 }
 
-/* === TABELA I PRZEWIJANIE (KLUCZOWA ZMIANA) === */
+/* === TABELA I PRZEWIJANIE === */
 .tableResponsive {
-    overflow-x: auto; /* Poziome przewijanie (uprawnienia) */
-    /* NOWE: Pionowe przewijanie i maksymalna wysokość */
-    max-height: 500px; /* Ustawienie maksymalnej wysokości kontenera (możesz zmienić) */
-    overflow-y: auto; /* Włącza pionowe przewijanie */
+    overflow-x: auto; 
+    max-height: 500px; 
+    overflow-y: auto; 
     max-width: 100%;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 150px);
 }
 
 .permissionsTable {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1500px; 
-    
+    min-width: 1700px; 
 }
 
 .permissionsTable th {
@@ -85,39 +83,55 @@
     background-color: #e9e9e9;
 }
 
-/* === PRZYKLEJONY NAGŁÓWEK (NOWA KLASA) === */
+/* === PRZYKLEJONY NAGŁÓWEK (PIONOWO) === */
 .stickyHeader {
-    position: sticky; /* KLUCZOWA WŁAŚCIWOŚĆ */
-    top: 0; /* Przykleja nagłówek do górnej krawędzi kontenera .tableResponsive */
-    z-index: 15; /* Większy niż stickyCol (10), aby nagłówki zawsze były na wierzchu */
-    background-color: #f2f2f2; /* Zapewnienie stałego tła nagłówka */
+    position: sticky; 
+    top: 0; 
+    z-index: 15; 
+    background-color: #f2f2f2; 
 }
 
-/* === LEPKIE KOLUMNY (STICKY) === */
+/* === LEPKIE KOLUMNY (POZIOMO) === */
 
-/* Baza dla kolumn użytkowników (przyklejanie w poziomie) */
+/* Baza dla komórek sticky w poziomie */
 .stickyCol {
     position: sticky; 
     background-color: #fff; 
-    z-index: 10; /* Musi być mniejszy niż stickyHeader */
+    z-index: 10; 
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-/* Korygujemy Z-INDEX dla nagłówków sticky (które są jednocześnie sticky w poziomie) */
-.permissionsTable thead .stickyCol,
-.permissionsTable thead .stickyNameCol,
-.permissionsTable thead .stickyLoginCol {
-    z-index: 20; /* Najwyższy z-index, żeby był widoczny przy przewijaniu w obu osiach */
+/* KLASA DLA NOWYCH PÓL LICZBOWYCH */
+.numberInput {
+    width: 90%; /* Nieco mniejsze niż 100%, aby zmieściły się strzałki */
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
 }
 
-/* Pozycjonowanie w poziomie (left) pozostaje bez zmian */
+/* KLASY WSPÓLNE DLA NOWYCH KOLUMN (asystent1, asystent2, procesor_domyslny) */
+.stickyInfoCol {
+    width: 80px; 
+    min-width: 80px;
+}
+
+/* Z-INDEX dla nagłówków sticky (aby były na wierzchu w obu osiach) */
+.permissionsTable thead .stickyHeader {
+    z-index: 20; 
+}
+
+/* 1. Kolumna ID (index 1) */
 .permissionsTable th:nth-child(1),
 .permissionsTable td:nth-child(1) {
-    left: 0;
+    left: 0; 
     width: 40px;
     min-width: 40px;
 }
 
+/* 2. Kolumna Imię i Nazwisko (index 2) */
 .stickyNameCol {
     left: 40px; 
     width: 160px;
@@ -125,10 +139,37 @@
     text-align: left !important;
 }
 
+/* 3. Kolumna Login (index 3) */
 .stickyLoginCol {
     left: 200px; 
     width: 100px;
     min-width: 100px;
+}
+
+/* === POZYCJE DLA PÓL LICZBOWYCH === */
+/* Łączna szerokość kolumn 1, 2, 3 = 300px */
+
+/* 4. Kolumna Asystent 1 (index 4) */
+.permissionsTable th:nth-child(4),
+.permissionsTable td:nth-child(4) {
+    left: 300px; 
+}
+
+/* 5. Kolumna Asystent 2 (index 5) */
+.permissionsTable th:nth-child(5),
+.permissionsTable td:nth-child(5) {
+    left: 380px; /* 300px + 80px */
+}
+
+/* 6. Kolumna Procesor Dom. (index 6) */
+.permissionsTable th:nth-child(6),
+.permissionsTable td:nth-child(6) {
+    left: 460px; /* 380px + 80px */
+}
+
+/* Domyślna szerokość komórek uprawnień (przewijanych) */
+.permissionCell {
+    width: 45px; 
 }
 
 /* Stan ładowania/błędu */
@@ -144,7 +185,8 @@
     background-color: #ffe0e0;
 }
 
-/* === TOGGLE SWITCH DLA UPRAWNIEŃ === */
+
+/* === TOGGLE SWITCH DLA UPRAWNIEŃ (pozostałe kolumny) === */
 /* ... (Style switcha pozostają bez zmian) ... */
 
 .switch {

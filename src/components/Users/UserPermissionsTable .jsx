@@ -22,7 +22,7 @@ const PERMISSION_LABELS = {
     klienci_wszyscy: 'Klienci (Widok)', zamowienia_wszystkie: 'Zamówienia (Widok)',
     technologie_wszystkie: 'Technologie (Widok)', technologia_zapis: 'Technologia (Zapis)',
     klienci_zapis: 'Klienci (Zapis)', papier_zapis: 'Papier (Zapis)',
-    procesor_domyslny: 'Procesor', harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
+    procesor_domyslny: 'Procesor Dom.', harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
     zamowienie_zapis: 'Zamówienie (Zapis)', zamowienie_przyjmij: 'Zamówienie (Przyjmij)',
     zamowienie_skasuj: 'Zamówienie (Skasuj)', zamowienie_oddaj: 'Zamówienie (Oddaj)',
     zamowienie_odblokuj: 'Zamówienie (Odblokuj)', klienci_usun: 'Klienci (Usuń)',
@@ -41,7 +41,12 @@ const MOCK_USERS_DATA = [
     { id: 1, Imie: 'Anna', Nazwisko: 'Kowalska', Login: 'anna.k', Dzial: 1, asystent1: 1, asystent2: 0, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 1, papier_zapis: 0, procesor_domyslny: 0, harmonogram_przyjmij: 1, zamowienie_zapis: 1, zamowienie_przyjmij: 1, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 1, mini_druk: 1, mini_falc: 1, mini_oprawa: 1, mini_uv: 0, mini_inne: 0, manage_druk: 0, manage_falc: 0, manage_oprawa: 0, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 1, realizacje_usun: 0, gant: 1, },
     { id: 2, Imie: 'Piotr', Nazwisko: 'Nowak', Login: 'piotr.n', Dzial: 2, asystent1: 0, asystent2: 1, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 0, technologia_zapis: 0, klienci_zapis: 0, papier_zapis: 1, procesor_domyslny: 1, harmonogram_przyjmij: 0, zamowienie_zapis: 0, zamowienie_przyjmij: 0, zamowienie_skasuj: 1, zamowienie_oddaj: 1, zamowienie_odblokuj: 1, klienci_usun: 1, papier_usun: 1, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 0, mini_oprawa: 0, mini_uv: 1, mini_inne: 1, manage_druk: 1, manage_falc: 1, manage_oprawa: 1, manage_inne: 1, uprawnienia_ustaw: 1, realizacje_dodaj: 1, realizacje_usun: 1, gant: 0, },
     { id: 3, Imie: 'Jan', Nazwisko: 'Zieliński', Login: 'jan.z', Dzial: 1, asystent1: 1, asystent2: 1, klienci_wszyscy: 0, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 0, klienci_zapis: 1, papier_zapis: 1, procesor_domyslny: 0, harmonogram_przyjmij: 0, zamowienie_zapis: 1, zamowienie_przyjmij: 0, zamowienie_skasuj: 0, zamowienie_oddaj: 1, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 1, wersja_max: 0, mini_druk: 0, mini_falc: 1, mini_oprawa: 0, mini_uv: 1, mini_inne: 0, manage_druk: 1, manage_falc: 0, manage_oprawa: 1, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 0, realizacje_usun: 0, gant: 1, },
+    // Dodaj więcej danych, aby ułatwić testowanie przewijania w pionie
+    { id: 4, Imie: 'Monika', Nazwisko: 'Dąbrowska', Login: 'monika.d', Dzial: 3, asystent1: 0, asystent2: 0, klienci_wszyscy: 1, zamowienia_wszystkie: 0, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 0, papier_zapis: 0, procesor_domyslny: 1, harmonogram_przyjmij: 1, zamowienie_zapis: 0, zamowienie_przyjmij: 1, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 1, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 1, mini_druk: 1, mini_falc: 0, mini_oprawa: 1, mini_uv: 0, mini_inne: 1, manage_druk: 0, manage_falc: 1, manage_oprawa: 0, manage_inne: 1, uprawnienia_ustaw: 0, realizacje_dodaj: 1, realizacje_usun: 0, gant: 0, },
+    { id: 5, Imie: 'Krzysztof', Nazwisko: 'Wójcik', Login: 'krzysztof.w', Dzial: 1, asystent1: 1, asystent2: 1, klienci_wszyscy: 1, zamowienia_wszystkie: 1, technologie_wszystkie: 1, technologia_zapis: 1, klienci_zapis: 1, papier_zapis: 1, procesor_domyslny: 1, harmonogram_przyjmij: 1, zamowienie_zapis: 1, zamowienie_przyjmij: 1, zamowienie_skasuj: 1, zamowienie_oddaj: 1, zamowienie_odblokuj: 1, klienci_usun: 1, papier_usun: 1, procesy_edycja: 1, wersja_max: 1, mini_druk: 1, mini_falc: 1, mini_oprawa: 1, mini_uv: 1, mini_inne: 1, manage_druk: 1, manage_falc: 1, manage_oprawa: 1, manage_inne: 1, uprawnienia_ustaw: 1, realizacje_dodaj: 1, realizacje_usun: 1, gant: 1, },
+    { id: 6, Imie: 'Ewa', Nazwisko: 'Lewandowska', Login: 'ewa.l', Dzial: 2, asystent1: 0, asystent2: 0, klienci_wszyscy: 0, zamowienia_wszystkie: 0, technologie_wszystkie: 0, technologia_zapis: 0, klienci_zapis: 0, papier_zapis: 0, procesor_domyslny: 0, harmonogram_przyjmij: 0, zamowienie_zapis: 0, zamowienie_przyjmij: 0, zamowienie_skasuj: 0, zamowienie_oddaj: 0, zamowienie_odblokuj: 0, klienci_usun: 0, papier_usun: 0, procesy_edycja: 0, wersja_max: 0, mini_druk: 0, mini_falc: 0, mini_oprawa: 0, mini_uv: 0, mini_inne: 0, manage_druk: 0, manage_falc: 0, manage_oprawa: 0, manage_inne: 0, uprawnienia_ustaw: 0, realizacje_dodaj: 0, realizacje_usun: 0, gant: 0, },
 ];
+
 
 /**
  * Komponent funkcyjny do wyświetlania tabeli z uprawnieniami użytkowników.
@@ -57,14 +62,14 @@ const UserPermissionsTable = () => {
     // === Stany dla Filtrowania ===
     const [filterText, setFilterText] = useState('');
     const [filterPermission, setFilterPermission] = useState('');
-    const [filterState, setFilterState] = useState(''); // '1' - przyznane, '0' - odebrane
+    const [filterState, setFilterState] = useState('');
 
     // Symulacja pobierania danych
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
-                // await new Promise(resolve => setTimeout(resolve, 1500)); 
+                // await new Promise(resolve => setTimeout(resolve, 500)); 
                 setUsers([...res.data]);
                 setLoading(false);
             } catch (err) {
@@ -88,11 +93,6 @@ const UserPermissionsTable = () => {
 
         // 2. Wysłanie aktualizacji do API (symulacja)
         console.log(`[API UPDATE] Użytkownik ID ${userId}: Uprawnienie '${permissionKey}' zmieniono na ${isChecked ? 'Przyznane (1)' : 'Odebrane (0)'}`);
-        // W REALNEJ APLIKACJI: 
-        // fetch(`/api/users/${userId}/permissions`, { 
-        //     method: 'PATCH', 
-        //     body: JSON.stringify({ [permissionKey]: isChecked ? 1 : 0 }) 
-        // });
     };
 
     // FUNKCJA SORTOWANIA
@@ -101,7 +101,7 @@ const UserPermissionsTable = () => {
         if (sortConfig.key === key && sortConfig.direction === 'ascending') {
             direction = 'descending';
         } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
-            direction = 'none'; // Dodaj stan 'none' do wyłączenia sortowania
+            direction = 'none';
         }
         setSortConfig({ key, direction });
     };
@@ -164,7 +164,7 @@ const UserPermissionsTable = () => {
 
     return (
         <div className={styles.permissionsContainer}>
-            <h2> Uprawnienia Użytkowników </h2>
+            <h2>Tabela Uprawnień Użytkowników 🛡️</h2>
 
             {/* === Panel Filtrowania === */}
             <div className={styles.filterPanel}>
@@ -218,17 +218,17 @@ const UserPermissionsTable = () => {
                     <thead>
                         <tr>
                             {/* Nagłówki z sortowaniem */}
-                            <th className={styles.stickyCol} onClick={() => requestSort('id')}>
+                            <th className={styles.stickyHeader} onClick={() => requestSort('id')}>
                                 ID {getSortIndicator('id')}
                             </th>
                             <th 
-                                className={[styles.stickyCol, styles.stickyNameCol].join(' ')} 
+                                className={[styles.stickyHeader, styles.stickyNameCol].join(' ')} 
                                 onClick={() => requestSort('Nazwisko')}
                             >
                                 Imię i Nazwisko {getSortIndicator('Nazwisko')}
                             </th>
                             <th 
-                                className={[styles.stickyCol, styles.stickyLoginCol].join(' ')}
+                                className={[styles.stickyHeader, styles.stickyLoginCol].join(' ')}
                                 onClick={() => requestSort('Login')}
                             >
                                 Login {getSortIndicator('Login')}
@@ -236,7 +236,12 @@ const UserPermissionsTable = () => {
                             
                             {/* Renderowanie nagłówków dla uprawnień */}
                             {PERMISSION_KEYS.map((key) => (
-                                <th key={key} title={key} onClick={() => requestSort(key)}>
+                                <th 
+                                    key={key} 
+                                    title={key} 
+                                    onClick={() => requestSort(key)}
+                                    className={styles.stickyHeader} /* Dodajemy klasę stickyHeader do wszystkich TH */
+                                >
                                     {PERMISSION_LABELS[key] || key.replace('_', ' ')}
                                     {getSortIndicator(key)}
                                 </th>

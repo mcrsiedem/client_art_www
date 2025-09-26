@@ -8,5 +8,5 @@ import { IP } from "utils/Host";
     max-height: 500px; /* Ustawienie maksymalnej wysokości kontenera (możesz zmienić) */
     overflow-y: auto; /* Włącza pionowe przewijanie */
     max-width: 100%;
-    min-height: calc(100vh - 00px);
+    min-height: calc(100vh - 150px);
 }

@@ -72,8 +72,7 @@ const UserPermissionsTable = () => {
         const fetchData = async () => {
             try {
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
-  const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
-
+                const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
                 setUsers([...res.data]);
                 setLoading(false);
             } catch (err) {
@@ -96,7 +95,7 @@ const UserPermissionsTable = () => {
         console.log(`[API UPDATE] Użytkownik ID ${userId}: Uprawnienie '${permissionKey}' zmieniono na ${isChecked ? 'Przyznane (1)' : 'Odebrane (0)'}`);
     };
 
-    // NOWA FUNKCJA ZMIANY WARTOŚCI (dla pól number)
+    // FUNKCJA ZMIANY WARTOŚCI (dla pól number)
     const handleValueChange = (userId, key, value) => {
         const intValue = parseInt(value, 10);
         const finalValue = isNaN(intValue) ? 0 : intValue; 
@@ -126,17 +125,22 @@ const UserPermissionsTable = () => {
     const sortedAndFilteredUsers = useMemo(() => {
         let sortableUsers = [...users];
 
-        // 1. FILTROWANIE
+        // 1. FILTROWANIE TEKSTOWE (POPRAWIONE: Zabezpieczenie przed null/undefined)
         if (filterText) {
             const lowercasedFilter = filterText.toLowerCase();
             sortableUsers = sortableUsers.filter(user => 
-                user.Imie.toLowerCase().includes(lowercasedFilter) ||
-                user.Nazwisko.toLowerCase().includes(lowercasedFilter) ||
-                user.Login.toLowerCase().includes(lowercasedFilter)
+                // Zabezpieczenie (user.Pole || '') przed błędem 'toLowerCase' na null
+                (user.Imie || '').toLowerCase().includes(lowercasedFilter) ||
+                (user.Nazwisko || '').toLowerCase().includes(lowercasedFilter) ||
+                (user.Login || '').toLowerCase().includes(lowercasedFilter) ||
+                // Wyszukiwanie również w polach INT
+                USER_INFO_KEYS.some(key => 
+                    String(user[key]).includes(lowercasedFilter)
+                )
             );
         }
         
-        // Specjalne filtrowanie wartości: 0/1 dla BOOLEAN, specjalna logika dla INT
+        // 2. FILTROWANIE WG. UPRAWNIEŃ (Stan 0/1 lub 0/>0)
         if (filterPermission && filterState !== '') {
             
             // Sprawdzamy, CZY DANE UPRAWNIENIE JEST W GRUPIE PÓL LICZBOWYCH.
@@ -158,7 +162,7 @@ const UserPermissionsTable = () => {
             }
         }
 
-        // 2. SORTOWANIE
+        // 3. SORTOWANIE
         if (sortConfig.direction !== 'none') {
             sortableUsers.sort((a, b) => {
                 const aValue = a[sortConfig.key];
@@ -200,7 +204,7 @@ const UserPermissionsTable = () => {
             <div className={styles.filterPanel}>
                 <input 
                     type="text" 
-                    placeholder="Filtruj po Imieniu/Nazwisku/Loginie"
+                    placeholder="Filtruj po Imieniu/Loginie/Wartościach"
                     value={filterText}
                     onChange={(e) => setFilterText(e.target.value)}
                     className={styles.filterInput}

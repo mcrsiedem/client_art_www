@@ -40,9 +40,9 @@
 
 /* === TABELA I PRZEWIJANIE === */
 .tableResponsive {
-    overflow-x: auto; 
-    max-height: 500px; 
-    overflow-y: auto; 
+    overflow-x: auto; /* Poziome przewijanie (uprawnienia) */
+    max-height: 500px; /* Maksymalna wysokość kontenera */
+    overflow-y: auto; /* Pionowe przewijanie (użytkownicy) */
     max-width: 100%;
     min-height: calc(100vh - 150px);
 }
@@ -50,7 +50,7 @@
 .permissionsTable {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1700px; 
+    min-width: 1300px; /* Zmniejszona minimalna szerokość */
 }
 
 .permissionsTable th {
@@ -58,21 +58,25 @@
     user-select: none;
 }
 
+/* ZMNIEJSZONE WYPEŁNIENIE I CZCIONKA W KOMÓRKACH */
 .permissionsTable th, 
 .permissionsTable td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 6px 3px; 
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
+    font-size: 1em; 
 }
 
+/* ZMNIEJSZONE WYPEŁNIENIE I CZCIONKA W NAGŁÓWKACH */
 .permissionsTable thead th {
     background-color: #f2f2f2;
     color: #333;
     font-weight: bold;
-    font-size: 0.85em;
-    padding: 10px 5px;
+    font-size: 1em; 
+    padding: 8px 3px; 
+    line-height: 1.2;
 }
 
 .permissionsTable tbody tr:nth-child(even) {
@@ -83,153 +87,8 @@
     background-color: #e9e9e9;
 }
 
-/* === PRZYKLEJONY NAGŁÓWEK (PIONOWO) === */
-.stickyHeader {
-    position: sticky; 
-    top: 0; 
-    z-index: 15; 
-    background-color: #f2f2f2; 
-}
-
-/* === LEPKIE KOLUMNY (POZIOMO) === */
-
-/* Baza dla komórek sticky w poziomie */
-.stickyCol {
-    position: sticky; 
-    background-color: #fff; 
-    z-index: 10; 
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-
-/* KLASA DLA NOWYCH PÓL LICZBOWYCH */
-.numberInput {
-    width: 90%; /* Nieco mniejsze niż 100%, aby zmieściły się strzałki */
-    padding: 5px;
-    box-sizing: border-box;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
-}
-
-/* KLASY WSPÓLNE DLA NOWYCH KOLUMN (asystent1, asystent2, procesor_domyslny) */
-.stickyInfoCol {
-    width: 80px; 
-    min-width: 80px;
-}
-
-/* Z-INDEX dla nagłówków sticky (aby były na wierzchu w obu osiach) */
-.permissionsTable thead .stickyHeader {
-    z-index: 20; 
-}
-
-/* 1. Kolumna ID (index 1) */
-.permissionsTable th:nth-child(1),
-.permissionsTable td:nth-child(1) {
-    left: 0; 
-    width: 40px;
-    min-width: 40px;
-}
-
-/* 2. Kolumna Imię i Nazwisko (index 2) */
-.stickyNameCol {
-    left: 40px; 
-    width: 160px;
-    min-width: 160px;
-    text-align: left !important;
-}
-
-/* 3. Kolumna Login (index 3) */
-.stickyLoginCol {
-    left: 200px; 
-    width: 100px;
-    min-width: 100px;
-}
-
-/* === POZYCJE DLA PÓL LICZBOWYCH === */
-/* Łączna szerokość kolumn 1, 2, 3 = 300px */
-
-/* 4. Kolumna Asystent 1 (index 4) */
-.permissionsTable th:nth-child(4),
-.permissionsTable td:nth-child(4) {
-    left: 300px; 
-}
-
-/* 5. Kolumna Asystent 2 (index 5) */
-.permissionsTable th:nth-child(5),
-.permissionsTable td:nth-child(5) {
-    left: 380px; /* 300px + 80px */
-}
-
-/* 6. Kolumna Procesor Dom. (index 6) */
-.permissionsTable th:nth-child(6),
-.permissionsTable td:nth-child(6) {
-    left: 460px; /* 380px + 80px */
-}
-
-/* Domyślna szerokość komórek uprawnień (przewijanych) */
-.permissionCell {
-    width: 45px; 
-}
-
-/* Stan ładowania/błędu */
-.loadingMessage, .errorMessage, .noDataMessage {
-    padding: 20px;
-    font-size: 1.1em;
-    text-align: center;
-}
-
-.errorMessage {
-    color: #cc0000;
-    border: 1px solid #cc0000;
-    background-color: #ffe0e0;
-}
-
-
-/* === TOGGLE SWITCH DLA UPRAWNIEŃ (pozostałe kolumny) === */
-/* ... (Style switcha pozostają bez zmian) ... */
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 14px;
-  width: 14px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-.switch input:checked + .slider {
-  background-color: #4CAF50; 
-}
-
-.switch input:checked + .slider:before {
-  transform: translateX(20px);
+.numberInput{
+    border:none;
+    width: 50px;
+    
 }

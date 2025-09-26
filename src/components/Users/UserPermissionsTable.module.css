@@ -44,7 +44,7 @@
     max-height: 500px; /* Maksymalna wysokość kontenera */
     overflow-y: auto; /* Pionowe przewijanie (użytkownicy) */
     max-width: 100%;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 160px);
 
 }
 
@@ -67,7 +67,7 @@
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    font-size: 0.8em; 
+    font-size: 1em; 
 }
 
 /* ZMNIEJSZONE WYPEŁNIENIE I CZCIONKA W NAGŁÓWKACH */
@@ -75,7 +75,7 @@
     background-color: #f2f2f2;
     color: #333;
     font-weight: bold;
-    font-size: 0.75em; 
+    font-size: 0.9em; 
     padding: 8px 3px; 
     line-height: 1.2;
 }
@@ -235,4 +235,8 @@
 
 .switch input:checked + .slider:before {
   transform: translateX(14px); 
+}
+
+.numberInput{
+    border: none;
 }

@@ -110,6 +110,7 @@
 
 /* Stan ładowania/błędu */
 .loadingMessage, .errorMessage, .noDataMessage {
+    
     padding: 20px;
     font-size: 1.1em;
     text-align: center;

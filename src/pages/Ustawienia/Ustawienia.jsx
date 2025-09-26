@@ -68,7 +68,12 @@ export default function Ustawienia({ user, setUser }) {
                   }}
                 >
                   {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
-                  <p className={style.podpis_icon}>UŻYTKOWNICY</p>
+                  <p className={style.podpis_icon}
+                             onClick={() => {
+                    // modalContext.showAddClientStage(true)
+                    navigate("/users");
+                  }}
+                  >UŻYTKOWNICY</p>
                 </div>
 
                 <div

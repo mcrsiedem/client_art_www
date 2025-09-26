@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styles from './UserPermissionsTable.module.css';
+import axios from "axios";
+import { IP } from "utils/Host";
 
 // Lista uprawnień - klucze z Twojej tabeli, które chcemy wyświetlić
 const PERMISSION_KEYS = [
@@ -20,7 +22,7 @@ const PERMISSION_LABELS = {
     klienci_wszyscy: 'Klienci (Widok)', zamowienia_wszystkie: 'Zamówienia (Widok)',
     technologie_wszystkie: 'Technologie (Widok)', technologia_zapis: 'Technologia (Zapis)',
     klienci_zapis: 'Klienci (Zapis)', papier_zapis: 'Papier (Zapis)',
-    procesor_domyslny: 'Procesor Dom.', harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
+    procesor_domyslny: 'Procesor', harmonogram_przyjmij: 'Harmonogram (Przyjmij)',
     zamowienie_zapis: 'Zamówienie (Zapis)', zamowienie_przyjmij: 'Zamówienie (Przyjmij)',
     zamowienie_skasuj: 'Zamówienie (Skasuj)', zamowienie_oddaj: 'Zamówienie (Oddaj)',
     zamowienie_odblokuj: 'Zamówienie (Odblokuj)', klienci_usun: 'Klienci (Usuń)',
@@ -61,8 +63,9 @@ const UserPermissionsTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, 500)); 
-                setUsers(MOCK_USERS_DATA);
+                const res = await axios.get(IP + "all_users/" + sessionStorage.getItem("token"))
+                // await new Promise(resolve => setTimeout(resolve, 1500)); 
+                setUsers([...res.data]);
                 setLoading(false);
             } catch (err) {
                 setError("Błąd ładowania danych: " + err.message);
@@ -161,7 +164,7 @@ const UserPermissionsTable = () => {
 
     return (
         <div className={styles.permissionsContainer}>
-            <h2>Tabela Uprawnień Użytkowników 🛡️</h2>
+            <h2> Uprawnienia Użytkowników </h2>
 
             {/* === Panel Filtrowania === */}
             <div className={styles.filterPanel}>

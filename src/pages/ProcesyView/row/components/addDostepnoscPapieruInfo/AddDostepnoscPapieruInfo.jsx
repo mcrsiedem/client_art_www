@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import style from "./AddDostepnoscPapieruInfo.module.css";
 import iconX from "assets/x.svg";
 import Zapisz from "./Zapisz";
-import { reg_int } from "utils/initialvalue";
-export default function AddDostepnoscPapieruInfo({ setShow, show, wykonanie,value, setValue,grup }) {
+import { reg_int, reg_txt } from "utils/initialvalue";
+export default function AddDostepnoscPapieruInfo({ setShow, show,value, setValue,grup }) {
 
   if (show) {
     return (
@@ -17,10 +17,10 @@ export default function AddDostepnoscPapieruInfo({ setShow, show, wykonanie,valu
         >
           <Header setShow={setShow}></Header>
           <div className={style.center}>
-            <Naklad  value={value} setValue={setValue} wykonanie={wykonanie}/>
+            <Info  value={value} setValue={setValue} grup={grup}/>
           </div>
           <div className={style.footer}>
-            <Zapisz setShow={setShow} wykonanie={wykonanie} value={value}  grup={grup}/>
+            <Zapisz setShow={setShow} wykonanie={grup} value={value}  grup={grup}/>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function AddDostepnoscPapieruInfo({ setShow, show, wykonanie,valu
 function Header({ setShow }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj realizację </p>
+      <p className={style.title}>Dostępność papieru od :</p>
       <Zamknij setShow={setShow} />
     </div>
   );
@@ -49,20 +49,19 @@ function Zamknij({ setShow }) {
   );
 }
 
-function Naklad({ value,setValue,wykonanie }) {
+function Info({ value,setValue,grup }) {
   return (
     <div className={style.labelinput}>
-      <label className={style.label}> Przeloty : {wykonanie.przeloty} </label>
+      {/* <label className={style.label}> Papier dostępny od: </label> */}
       <input
         className={style.firma}
         type="text"
-        value={value}
+        defaultValue={grup.papier_info}
         onChange={(event) => {
             // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ./-]+$/;
-if ( event.target.value === '' || reg_int.test(event.target.value)) {
 
   setValue(event.target.value)
-}
+
           
           }}
       ></input>

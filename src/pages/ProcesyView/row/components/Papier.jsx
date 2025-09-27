@@ -5,7 +5,7 @@ import iconRolkaRed from "assets/rolkaRed.svg";
 import iconArkusz from "assets/sheet2.svg";
 import iconArkuszRed from "assets/sheet2red.svg";
 
-export default function Papier ({ grup }){
+export default function Papier ({ grup,setShow }){
 const dyspersja = [2,3,5,6,12,13]
 const uv = [15,17]
 
@@ -16,6 +16,7 @@ return(
     className={style.icon_rolka}
      src={ grup.papier_info == "" ? iconRolka:iconRolkaRed}
      title={"Rolka "+grup.papier_info}
+     onClick={()=>{setShow(true)}}
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
 
@@ -27,6 +28,8 @@ return(
     className={style.icon_rolka}
      src={ grup.papier_info == "" ? iconArkusz:iconArkuszRed}
      title={"Arkusz "+grup.papier_info}
+     onClick={()=>{setShow(true)}}
+
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
  

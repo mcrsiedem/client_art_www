@@ -26,6 +26,7 @@ import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDate
 import { useContextMenuHandler } from "./useContextMenuHandler";
 import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
 import Papier from "./components/Papier";
+import AddDostepnoscPapieruInfo from "./components/addDostepnoscPapieruInfo/AddDostepnoscPapieruInfo";
 
 
 
@@ -39,7 +40,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
    const grupyWykonanAll = techContext.grupyWykonanAll;
   const selectedProcesor = techContext.selectedProcesor;
         const setGrupWykonanAll = techContext.setGrupWykonanAll;
-
+  const [show, setShow] = useState(false);
+    const [value, setValue] = useState();
       const fechparametryTechnologii = techContext.fechparametryTechnologii;
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
@@ -195,7 +197,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_spedycja}>{formatujDatePoPolsku( grup.data_spedycji)}</td>
                   <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
                   <td className={style.td_tableProcesy_przeloty}>{grup.ilosc_narzadow} </td>
-                  <Papier grup={grup}/>
+                  <Papier setShow={setShow} grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
@@ -203,6 +205,8 @@ if (grup.select) return style.procesRow_select
                  
                 </tr>
                   <ProcesRowDetails grup={grup}  mini={false}/>
+                                  <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
+                  
 
 {/*                 
                 {expand ? (

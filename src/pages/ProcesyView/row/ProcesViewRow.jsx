@@ -1,49 +1,31 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-
-
-import icon from "assets/copy.svg";
-import iconCopy from "assets/info.svg";
-import iconRolka from "assets/rolka.svg";
-import iconRolkaRed from "assets/rolkaRed.svg";
-import iconArkusz from "assets/sheet2.svg";
-import iconArkuszRed from "assets/sheet2red.svg";
-
+import React, { useState, useContext } from "react";
 import iconAdd from "assets/add4.svg";
 
 
-import { _etap_plikow, _status_wydania_papieru, _typ_elementu, reg_int } from "utils/initialvalue";
-// import NrArkusza from "./NrArkusza";
-// import { reg_int } from "utils/initialvalue";
+import { _etap_plikow, _status_wydania_papieru, _typ_elementu } from "utils/initialvalue";
 import axios from "axios";
 import { IP } from "../../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import style from "./ProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "../header/ProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
-import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
-import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
-import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
 import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
 import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 import { usePliki } from "hooks/usePliki";
 import { useHistoria } from "hooks/useHistoria";
-import { getNameOfEtapPliki } from "actions/getNameOfEtapPliki";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { useAccess } from "hooks/useAccess";
-import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
-import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { druk_alert } from "actions/druk_alert";
 import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
-import { formatujDateZGodzinaPoPolsku } from "actions/formatujDateZGodzinaPoPolsku";
 import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 import { useContextMenuHandler } from "./useContextMenuHandler";
 import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
+import Papier from "./components/Papier";
 
 
 
@@ -51,7 +33,6 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
     const navigate = useNavigate();
     const techContext = useContext(TechnologyContext);
     const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-    const wykonaniaAll = techContext.wykonaniaAll;
     const appcontext = useContext(AppContext);
     const typ_elementu = appcontext.typ_elementu;
   const selectedProces = techContext.selectedProces;
@@ -223,7 +204,7 @@ if (grup.select) return style.procesRow_select
                 </tr>
                   <ProcesRowDetails grup={grup}  mini={false}/>
 
-                
+{/*                 
                 {expand ? (
                 wykonaniaAll
                 .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
@@ -245,7 +226,7 @@ if (grup.select) return style.procesRow_select
                     </tr>
                   );
                 })
-            ) : (<></>)}   
+            ) : (<></>)}    */}
 </>
   );
 
@@ -326,33 +307,6 @@ if(dyspersja.includes(parseInt(grup.global_proces_id)))
 
 
 
-const Papier = ({ grup }) => {
-const dyspersja = [2,3,5,6,12,13]
-const uv = [15,17]
-
-if(grup.papier_postac_id == 2 && grup.typ_grupy !=1 )
-
-return(
-                    <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}><img
-    className={style.icon_rolka}
-     src={ grup.papier_info == "" ? iconRolka:iconRolkaRed}
-     title={"Rolka "+grup.papier_info}
-    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
-)
-
-
-if(grup.papier_postac_id == 1 && grup.typ_grupy !=1 )
-
-return(
-                    <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}> <img
-    className={style.icon_rolka}
-     src={ grup.papier_info == "" ? iconArkusz:iconArkuszRed}
-     title={"Arkusz "+grup.papier_info}
-    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
-)
- 
- 
-};
 
 
 

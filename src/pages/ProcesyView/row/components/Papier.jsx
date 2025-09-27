@@ -15,7 +15,7 @@ return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}><img
     className={style.icon_rolka}
      src={ grup.papier_info == "" ? iconRolka:iconRolkaRed}
-     title={"Rolka "+grup.papier_info}
+     title={"ROLKA.  "+grup.papier_info}
      onClick={()=>{setShow(true)}}
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
@@ -27,7 +27,7 @@ return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}> <img
     className={style.icon_rolka}
      src={ grup.papier_info == "" ? iconArkusz:iconArkuszRed}
-     title={"Arkusz "+grup.papier_info}
+     title={"ARKUSZ.  "+grup.papier_info}
      onClick={()=>{setShow(true)}}
 
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>

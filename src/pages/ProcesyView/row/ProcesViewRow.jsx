@@ -4,7 +4,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import icon from "assets/copy.svg";
 import iconCopy from "assets/info.svg";
 import iconRolka from "assets/rolka.svg";
+import iconRolkaRed from "assets/rolkaRed.svg";
 import iconArkusz from "assets/sheet2.svg";
+import iconArkuszRed from "assets/sheet2red.svg";
 
 import iconAdd from "assets/add4.svg";
 
@@ -333,8 +335,8 @@ if(grup.papier_postac_id == 2 && grup.typ_grupy !=1 )
 return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}><img
     className={style.icon_rolka}
-     src={iconRolka}
-     title="Rola"
+     src={ grup.papier_info == "" ? iconRolka:iconRolkaRed}
+     title={"Rolka "+grup.papier_info}
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
 
@@ -344,8 +346,8 @@ if(grup.papier_postac_id == 1 && grup.typ_grupy !=1 )
 return(
                     <td title={grup.powleczenie+" Bulk:"+grup.bulk} className={style.td_tableProcesy_papier}> <img
     className={style.icon_rolka}
-     src={iconArkusz}
-     title="Arkusz"
+     src={ grup.papier_info == "" ? iconArkusz:iconArkuszRed}
+     title={"Arkusz "+grup.papier_info}
     />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
 )
  

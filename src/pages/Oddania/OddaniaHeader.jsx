@@ -9,6 +9,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
 import Szukaj from "./Szukaj/Szukaj";
 import { AppContext } from "context/AppContext";
+import RefreshOddania from "./components/RefreshOddania";
 
 function OddaniaHeader() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function OddaniaHeader() {
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>ODDANIA </p>
+          <RefreshOddania/>
            {/* <DataWyswietlania/> */}
         </div>
 

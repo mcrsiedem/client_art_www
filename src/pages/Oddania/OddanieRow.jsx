@@ -123,7 +123,7 @@ const Tytul = ({ grup,i }) => {
     <td>
     <input 
       className={style.tytulInputPraca}
-      value={ grup.tytul +" "+grup.wersja}
+      value={ grup.tytul }
       readOnly
     />
     </td>

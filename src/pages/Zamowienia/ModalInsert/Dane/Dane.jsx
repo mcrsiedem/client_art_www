@@ -450,13 +450,13 @@ const [add] = useHistoria()
           }
           
 
-          if(DecodeToken(sessionStorage.getItem("token")).zamowienie_oddaj == 1 && event.target.value==16){
-                  setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
-               add({kategoria: "Etap zamówienia",
-                event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
-                zamowienie_id: daneZamowienia.id}
-            );
-          }
+          // if(DecodeToken(sessionStorage.getItem("token")).zamowienie_oddaj == 1 && event.target.value==16){
+          //         setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
+          //      add({kategoria: "Etap zamówienia",
+          //       event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
+          //       zamowienie_id: daneZamowienia.id}
+          //   );
+          // }
 
 
           //------------------------------------------

@@ -32,7 +32,7 @@ function OddaniaHeader() {
   //---------------------------------------------------------
 
   return (
-    <div className={style.container}>
+    <div onDoubleClick={()=>{ console.log(oddaniaGrupy)}} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>ODDANIA </p>

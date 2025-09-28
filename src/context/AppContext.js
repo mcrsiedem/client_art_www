@@ -35,6 +35,9 @@ export const AppContextProvider = ({children})=>{
     const [nadkomplety, setNadkomplety] = useState();
     const [oddaniaGrupy, setOddaniaGrupy] = useState();
     const [oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka] = useState();
+    const [oddaniaWykonania, setOddaniaWykonania] = useState([]);
+
+
     const [sortowanieOddania,setSortowanieOddania] = useState("data");
             const [widokOddan, setWidokOddan] = useState(1);
     
@@ -166,7 +169,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
                     valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
-                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka
+                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania
                 }}
             >
                 {children}

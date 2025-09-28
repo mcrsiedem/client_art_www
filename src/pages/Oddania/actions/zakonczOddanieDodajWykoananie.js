@@ -4,15 +4,13 @@ import { getClients } from "actions/getClients";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
-export const zakonczOpraweDodajRealizacje = async (
+export const zakonczOddanieDodajWykoananie = async (
   grup,
-  wykonaniaOprawy,
-  setWykonaniaOprawy,
-  grupyOprawaAll,setGrupyOprawaAll
+  oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania
 ) => {
   let status, insertId,status_grupy,brakujacy_naklad,zrealizowano;
   await axios
-    .post(IP + "zakoncz_oprawe_dodaj_realizacje/" + sessionStorage.getItem("token"), {
+    .post(IP + "zakoncz_oddanie_dodaj_wykonanie/" + sessionStorage.getItem("token"), {
       ...grup,
     })
     .then((res) => {
@@ -25,23 +23,23 @@ export const zakonczOpraweDodajRealizacje = async (
 
       if (status == "OK") {
         if(parseInt( insertId)>0){
-                  const new_wykonaniaOprawy = wykonaniaOprawy.slice();
+                  const new_oddaniaWykonania = oddaniaWykonania.slice();
 
-        new_wykonaniaOprawy.push({
+        new_oddaniaWykonania.push({
           ...grup,
-          id: getMaxID(wykonaniaOprawy),
+          id: getMaxID(oddaniaWykonania),
           naklad: brakujacy_naklad,
           global_id: insertId,
           utworzono: today_teraz(),
-          grupa_id:grup.id
+
         });
 
-        setWykonaniaOprawy(new_wykonaniaOprawy);
+        setOddaniaWykonania(new_oddaniaWykonania);
         }
 
 
-      setGrupyOprawaAll(
-      grupyOprawaAll.map((t, a) => {
+      setOddaniaGrupy(
+      oddaniaGrupy.map((t, a) => {
       if (t.global_id == grup.global_id) {
         return {
           ...t,

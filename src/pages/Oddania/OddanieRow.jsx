@@ -16,7 +16,7 @@ import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOddania } from "./actions/sortOddania";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
-import { zakonczOpraweDodajRealizacje } from "./actions/zakonczOpraweDodajRealizacje";
+import { zakonczOddanieDodajWykoananie, zakonczOpraweDodajRealizacje } from "./actions/zakonczOddanieDodajWykoananie";
 
 export default function OddanieRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
@@ -26,10 +26,11 @@ export default function OddanieRow({ grup,i}) {
     const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
     const grupyOprawaAll = techContext.grupyOprawaAll;
     const setProcesyElementowTech = techContext.setProcesyElementowTech;
-  const selectedProcesor = techContext.selectedProcesor;
 
-   const sortowanieOprawy = techContext.sortowanieOprawy;
-  const setSortowanieOprawy = techContext.setSortowanieOprawy;
+  const appContext = useContext(AppContext)
+
+  const oddaniaGrupy =appContext.oddaniaGrupy;
+  const setOddaniaGrupy =appContext.setOddaniaGrupy
 
 let prevet = true;
       
@@ -52,7 +53,7 @@ let prevet = true;
         onDragOver={handleDragOver}
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
-        onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
+        // onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
         // onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOddania)}
       >
         {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
@@ -218,13 +219,18 @@ function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
   const _status_oddania = contextApp._status_oddania
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const selectedProcesor = techContext.selectedProcesor
-    const wykonaniaOprawy = techContext.wykonaniaOprawy;
+  const wykonaniaOprawy = techContext.wykonaniaOprawy;
   const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
-    const [sumujGrupe,statusGrupyProcesView,statusGrupyTechnologia,statusGrupyProcesViewPrzerwa,statusGrupyTechnologia_OPRAWA,statusGrupyTechnologia_OPRAWA_PROCESY] = useGrupyWykonan()
+
+
+  const oddaniaGrupy =contextApp.oddaniaGrupy;
+  const setOddaniaGrupy =contextApp.setOddaniaGrupy
+  const oddaniaWykonania =contextApp.oddaniaWykonania
+  const setOddaniaWykonania =contextApp.setOddaniaWykonania
+
+  
             const selectColor = (status) => {
               if (grup.proces_nazwa_id != 1) {
                 if (status == 4) return style.select_DRUK;
@@ -247,8 +253,8 @@ function Status({grup}) {
         onChange={(event) => {
 
 
-    if (grup.status > 1 && event.target.value ==4) {
-      zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+    if (grup.status > 0 && event.target.value ==4) {
+      zakonczOddanieDodajWykoananie(grup,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania)
 
     }
 

@@ -10,10 +10,18 @@ import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
 import Szukaj from "./Szukaj/Szukaj";
 import { AppContext } from "context/AppContext";
 import RefreshOddania from "./components/RefreshOddania";
+import TableSearch from "./components/wyszukiwarka/TableSearchFilter";
+import TableSearchFilter from "./components/wyszukiwarka/TableSearchFilter";
 
 function OddaniaHeader() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
+
+    const appContext = useContext(AppContext)
+    const techContext = useContext(TechnologyContext);
+    const oddaniaGrupy =appContext.oddaniaGrupy;
+    const setOddaniaGrupy =appContext.setOddaniaGrupy;
+
   useEffect(() => {
     if (effectRan.current === true) {
     }
@@ -37,6 +45,7 @@ function OddaniaHeader() {
         <div className={style.rightHeaderContener}>
           <FILTROWANIE_ODDANYCH/>
      <Szukaj/>
+
      <KOPIUJ_ZAZNACZONE_BTN/>
           <img
             className={style.icon}

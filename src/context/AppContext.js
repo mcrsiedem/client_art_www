@@ -34,6 +34,7 @@ export const AppContextProvider = ({children})=>{
     const [listaPapierow, setListaPapierow] = useState();
     const [nadkomplety, setNadkomplety] = useState();
     const [oddaniaGrupy, setOddaniaGrupy] = useState();
+    const [oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka] = useState();
     const [sortowanieOddania,setSortowanieOddania] = useState("data");
             const [widokOddan, setWidokOddan] = useState(1);
     
@@ -96,12 +97,14 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
     await axios.get(IP + "oddania_grupy/"+widok+"/"+ sessionStorage.getItem("token")).then((res)=>{
       console.log(res.data)
       setOddaniaGrupy(res.data)
+      setOddaniaGrupyWyszukiwarka(res.data)
+      
 
       return res
     }).then((res) =>{
       
-      // setGrupWykonanAll(prev=>{return prev})
-      // setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
+      setOddaniaGrupy(prev=>{return prev})
+      setOddaniaGrupyWyszukiwarka(prev=>{return prev})
       
 
     });
@@ -162,7 +165,8 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     kalendarz, setKalendarz,kalendarzDane, setKalendarzDane,
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
                     valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
-                    oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan
+                    oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
+                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka
                 }}
             >
                 {children}

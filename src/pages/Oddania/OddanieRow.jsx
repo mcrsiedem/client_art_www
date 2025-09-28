@@ -150,7 +150,7 @@ const Zrealizowano = ({ grup,i }) => {
     <td>
     <input 
       className={style.tytulInputNaklad}
-      value={ grup.zrealizowano}
+      value={ grup.zostalo}
       readOnly
     />
     </td>

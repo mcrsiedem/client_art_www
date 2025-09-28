@@ -217,7 +217,7 @@ updateZmienCzasTrwaniaGrupyOprawa(grup.global_id,date_time( e.target.value),fech
 function Status({grup}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
-  const _status_wykonania = contextApp._status_wykonania
+  const _status_oddania = contextApp._status_oddania
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
   const selectedProcesor = techContext.selectedProcesor
     const wykonaniaOprawy = techContext.wykonaniaOprawy;
@@ -256,7 +256,7 @@ function Status({grup}) {
 
         }}
       >
-        {_status_wykonania.map((option) => (
+        {_status_oddania.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

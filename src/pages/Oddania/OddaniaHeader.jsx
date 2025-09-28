@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
 import Szukaj from "./Szukaj/Szukaj";
+import { AppContext } from "context/AppContext";
 
 function OddaniaHeader() {
   const navigate = useNavigate();
@@ -26,12 +27,13 @@ function OddaniaHeader() {
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>ODDANIA </p>
-           <DataWyswietlania/>
+           {/* <DataWyswietlania/> */}
         </div>
 
         <div className={style.centerHeaderContener}>
         </div>
         <div className={style.rightHeaderContener}>
+          <FILTROWANIE_ODDANYCH/>
      <Szukaj/>
      <KOPIUJ_ZAZNACZONE_BTN/>
           <img
@@ -203,3 +205,47 @@ setInitTime(event.target.value)
     </div>
   );
 }
+
+
+function FILTROWANIE_ODDANYCH() {
+  const contextApp = useContext(AppContext);
+  const setWidokOddan= contextApp.setWidokOddan;
+  const widokOddan= contextApp.widokOddan;
+  const fechOddaniaGrupy= contextApp.fechOddaniaGrupy;
+
+  const _oddane = [
+    {
+      id: 1,
+      nazwa: "Do oddania",
+    },
+    {
+      id: 2,
+      nazwa: "Oddane",
+    },
+        {
+      id: 3,
+      nazwa: "Wszystkie",
+    },
+
+  ];
+
+    return (
+  
+        <select
+          className={style.szukajInputSort}
+          value={widokOddan}
+          onChange={(event) => {
+            setWidokOddan(event.target.value)
+          fechOddaniaGrupy(event.target.value)
+
+
+          }}
+        >
+          {_oddane.map((option) => (
+            <option key={option.id} value={option.id}>
+            {option.nazwa}
+            </option>
+          ))}
+        </select>
+    );
+  }

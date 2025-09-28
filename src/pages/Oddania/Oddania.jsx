@@ -21,11 +21,13 @@ import OddaniaHeader from "./OddaniaHeader";
 
 export default function Oddania( ) {
   const navigate = useNavigate();
+
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const oddaniaGrupy =appContext.oddaniaGrupy;
   const setOddaniaGrupy =appContext.setOddaniaGrupy;
   const fechOddaniaGrupy =appContext.fechOddaniaGrupy;
+  const widokOddan =appContext.widokOddan;
 
 
 
@@ -34,7 +36,7 @@ export default function Oddania( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          fechOddaniaGrupy()
+          fechOddaniaGrupy(widokOddan)
 
         } else {
           navigate("/Login");

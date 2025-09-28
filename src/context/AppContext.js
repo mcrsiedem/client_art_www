@@ -35,7 +35,8 @@ export const AppContextProvider = ({children})=>{
     const [nadkomplety, setNadkomplety] = useState();
     const [oddaniaGrupy, setOddaniaGrupy] = useState();
     const [sortowanieOddania,setSortowanieOddania] = useState("data");
-
+            const [widokOddan, setWidokOddan] = useState(1);
+    
     const [lockDragDropPapier, setLockDragDropPapier] = useState(false);
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
     const [listaPapierowNazwy, setListaPapierowNazwy] = useState();
@@ -84,13 +85,15 @@ const nazwaStatusuWykonania = (id) => {
 return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
 }
 
-  async function fechOddaniaGrupy() {
+  async function fechOddaniaGrupy(widok) {
 
 
   // grupy i wykonania dla konktretnego procesora 
   // const res = await axios.get(IP + "technologie/" + sessionStorage.getItem("token"));
+    //  const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
 
-    await axios.get(IP + "oddania_grupy/"+ sessionStorage.getItem("token")).then((res)=>{
+
+    await axios.get(IP + "oddania_grupy/"+widok+"/"+ sessionStorage.getItem("token")).then((res)=>{
       console.log(res.data)
       setOddaniaGrupy(res.data)
 
@@ -159,7 +162,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     kalendarz, setKalendarz,kalendarzDane, setKalendarzDane,
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
                     valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
-                    oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania
+                    oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan
                 }}
             >
                 {children}
@@ -340,6 +343,33 @@ const typ_elementu=[
     
 
   ];
+
+  const _status_oddania = [
+    {
+      id: 1,
+      nazwa: "Niedostępne"
+    },
+
+    {
+      id: 2,
+      nazwa: "Oczekujące",
+    },
+    {
+      id: 3,
+      nazwa: "W trakcie",
+    },
+    {
+      id: 4,
+      nazwa: "Oddane"
+    },
+    
+
+  ];
+
+
+
+
+
 
     const _status_wykonania_przerwy = [
     {

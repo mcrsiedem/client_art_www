@@ -223,3 +223,19 @@ border-radius: 5px;
 
 border-radius: 10px;
 }
+
+.szukajInputSort{
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    width: 200px;
+    
+}
+.szukajInputSort:focus{
+    outline: none;
+}

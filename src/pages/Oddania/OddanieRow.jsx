@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "./OprawaProcesViewRow.module.css";
+import style from "./OddanieRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _status } from "utils/initialvalue";
@@ -14,11 +14,11 @@ import { useAccess } from "hooks/useAccess";
 import TechnologiaDetails from "./TechnologiaDetails/TechnologiaDetails";
 import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
-import { sortOprawa } from "./actions/sortOprawa";
+import { sortOddania } from "./actions/sortOddania";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
 import { zakonczOpraweDodajRealizacje } from "./actions/zakonczOpraweDodajRealizacje";
 
-export default function OprawaProcesViewRow({ grup,i}) {
+export default function OddanieRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
     const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor;
 
@@ -53,12 +53,12 @@ let prevet = true;
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
         onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
-        onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOprawa)}
+        // onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOddania)}
       >
-        <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+        {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
         <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(grup.czas)}</td>
-        <KoniecGrupa grup={grup} />
-        <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
+        <KoniecGrupa grup={grup} /> */}
+        <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2, 4)} </td>
         <Klient grup={grup} />
         <Tytul grup={grup} />
         <Rodzaj grup={grup} />

@@ -1,24 +1,22 @@
-export function sortOprawa( grupyOprawaAll,sortowanie) {
+export function sortOddania( oddaniaGrupy,sortowanie) {
   
-    let posortowanaOprawa =[...grupyOprawaAll.map((t) => {
-        if (t.typ_grupy == 1) {
-          return {...t,
-            nr: "1",
-            naklad: "1",
-            typ_procesu: "1",
-            data_spedycji: "1",
-            typ_procesu: "1",
-            klient: "1",
-            tytul: "1",
-            uwagi: "1",
+    // let posortowanaOprawa =[...oddaniaGrupy.map((t) => {
+        
+    //       return {...t,
+    //         nr: "1",
+    //         naklad: "1",
+    //         typ_procesu: "1",
+    //         data_spedycji: "1",
+    //         typ_procesu: "1",
+    //         klient: "1",
+    //         tytul: "1",
+    //         uwagi: "1",
             
-          };
-        } else {
-          return t;
-        }
-      })] 
+    //       };
+  
+    //   })] 
 
-
+    let posortowanaOprawa = [...oddaniaGrupy] 
 
   switch (sortowanie) {
      case 'nr':
@@ -33,12 +31,12 @@ export function sortOprawa( grupyOprawaAll,sortowanie) {
   case 'oprawa':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu) );
     break;
-  case 'spedycja':
+  case 'data':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
     break;
-  case 'data':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
-    break;
+  // case 'data':
+  //   posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
+  //   break;
   case 'klient':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.klient.localeCompare(b.klient));
     break;

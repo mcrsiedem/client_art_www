@@ -7,6 +7,8 @@ import { getProcesListName } from "actions/getProcesListName";
 import { getProcesory } from "actions/getProcesory";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { _wykonczenie } from "utils/initialvalue";
+import axios from "axios";
+import { IP } from "utils/Host";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
@@ -31,6 +33,8 @@ export const AppContextProvider = ({children})=>{
     const [zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka] = useState([]); 
     const [listaPapierow, setListaPapierow] = useState();
     const [nadkomplety, setNadkomplety] = useState();
+    const [oddaniaGrupy, setOddaniaGrupy] = useState();
+    const [sortowanieOddania,setSortowanieOddania] = useState("data");
 
     const [lockDragDropPapier, setLockDragDropPapier] = useState(false);
     const [listaPapierowWyszukiwarka, setListaPapierowWyszukiwarka] = useState();
@@ -79,21 +83,29 @@ const tableZamowienia = useRef();
 const nazwaStatusuWykonania = (id) => {
 return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
 }
-  // const effectRan = useRef(false);
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
+
+  async function fechOddaniaGrupy() {
+
+
+  // grupy i wykonania dla konktretnego procesora 
+  // const res = await axios.get(IP + "technologie/" + sessionStorage.getItem("token"));
+
+    await axios.get(IP + "oddania_grupy/"+ sessionStorage.getItem("token")).then((res)=>{
+      console.log(res.data)
+      setOddaniaGrupy(res.data)
+
+      return res
+    }).then((res) =>{
       
-  //       getUsers(setUsers) 
-  //       getProcesList(setProcesList) // lista wszystkich dostępnych procesów
-  //       getBindingType(setBindingTyp)
-  //       getProductType(setProductType)
-  //       getProcesListName(setProcesListName)
-  //       getProcesory(setProcesory)
-  //   }
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
+      // setGrupWykonanAll(prev=>{return prev})
+      // setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
+      
+
+    });
+    
+
+
+  }
 
     useEffect(()=>{
       console.log("app context22")
@@ -146,7 +158,8 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     showZamowieniaInfo, setShowZamowieniaInfo,zamowieniaInfo, setZamowieniaInfo,tableZamowienia,nazwaStatusuWykonania,
                     kalendarz, setKalendarz,kalendarzDane, setKalendarzDane,
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
-                    valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka
+                    valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
+                    oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania
                 }}
             >
                 {children}

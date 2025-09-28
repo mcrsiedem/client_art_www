@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./OprawaProcesyHeader.module.css";
+import style from "./OddaniaHeader.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
 
@@ -7,9 +7,9 @@ import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
-import Szukaj from "./TechnologiaSzukaj/Szukaj";
+import Szukaj from "./Szukaj/Szukaj";
 
-function ProcesyHeader() {
+function OddaniaHeader() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
   useEffect(() => {
@@ -48,7 +48,7 @@ function ProcesyHeader() {
   );
 }
 
-export default ProcesyHeader;
+export default OddaniaHeader;
 
 function KOPIUJ_ZAZNACZONE_BTN() {
    const techContext = useContext(TechnologyContext);

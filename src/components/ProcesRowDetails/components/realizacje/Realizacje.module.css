@@ -111,7 +111,10 @@ height: 5px;
 }
 
 
+.rowSzary:hover  .skasujBtn{
+ display: block;
 
+}
 
 .rowRed:hover  .skasujBtn{
  display: block;

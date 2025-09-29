@@ -31,7 +31,7 @@ export default function ZakonczArkusz({ setShow, show, wykonanie,value, setValue
 function Header({ setShow }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj realizację </p>
+      <p className={style.title}>Zakończ arkusz </p>
       <Zamknij setShow={setShow} />
     </div>
   );

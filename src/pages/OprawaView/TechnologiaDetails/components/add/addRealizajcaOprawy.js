@@ -3,6 +3,7 @@ import { IP } from "utils/Host";
 import { getClients } from "actions/getClients";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export const addRealizajcaOprawy = async (
   setShow,
@@ -33,6 +34,7 @@ export const addRealizajcaOprawy = async (
           id: getMaxID(wykonaniaOprawy),
           naklad: value,
           global_id: insertId,
+          dodal_id: DecodeToken(sessionStorage.getItem("token")).id,
           utworzono: today_teraz(),
           grupa_id: grup.id
         });

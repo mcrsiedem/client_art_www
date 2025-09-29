@@ -34,7 +34,6 @@ export default function Realizacje({ wykonanie,grup }) {
                     <p className={style.naklad}>   {realizacja.zrealizowano}</p>
                     <p className={style.title}>   ark.</p>
                      </div>
-                  {/* <button className={style.skasujBtn}>Usuń </button> */}
                   <Usun wykonanie={wykonanie} realizacja={realizacja} grup={grup}/>
               </div>
               </div>
@@ -61,7 +60,6 @@ export default function Realizacje({ wykonanie,grup }) {
                     <p className={style.naklad}>   {realizacja.zrealizowano}</p>
                     <p className={style.title}>   ark.</p>
                      </div>
-                  {/* <button className={style.skasujBtn}>Usuń </button> */}
                   <Usun wykonanie={wykonanie} realizacja={realizacja} grup={grup}/>
               </div>
               </div>
@@ -87,7 +85,6 @@ export default function Realizacje({ wykonanie,grup }) {
                     <p className={style.naklad}>   {realizacja.zrealizowano}</p>
                     <p className={style.title}>   ark.</p>
                      </div>
-                  {/* <button className={style.skasujBtn}>Usuń </button> */}
                   <Usun wykonanie={wykonanie} realizacja={realizacja} grup={grup}/>
               </div>
               </div>

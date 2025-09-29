@@ -2,6 +2,7 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export const addRealizajcaProcesuBrak = async (
   setShow,
@@ -35,6 +36,8 @@ export const addRealizajcaProcesuBrak = async (
         ...wykonanie,
         id: getMaxID(realizacje),
         zrealizowano: brakujace_przeloty,
+        dodal_id: DecodeToken(sessionStorage.getItem("token")).id,
+
         global_id: insertId,
         utworzono: today_teraz(),
         wykonanie_global_id: wykonanie.global_id,

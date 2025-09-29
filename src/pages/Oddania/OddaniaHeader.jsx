@@ -35,7 +35,7 @@ function OddaniaHeader() {
     <div onDoubleClick={()=>{ console.log(oddaniaGrupy)}} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
-          <p className={style.title2}>ODDANIA </p>
+          <p className={style.title2}>SPEDYCJA </p>
           <RefreshOddania/>
            {/* <DataWyswietlania/> */}
         </div>

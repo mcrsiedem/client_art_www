@@ -71,6 +71,31 @@ export default function Realizacje({ wykonanie,grup }) {
 
 
 
+           if(realizacja.typ ==3){
+                      return (
+            <>
+              <div 
+               onDoubleClick={()=>{console.log(realizacja) }}
+              className={style.container}>
+                  <div className={style.row_title}> 
+                    <p className={style.title2}>   {realizacja.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
+
+                     </div>
+              <div className={style.rowSzary}>
+                    <div className={style.center}> 
+                    <p className={style.title}>   {realizacja.utworzono  } Rozjazd:</p>
+                    <p className={style.naklad}>   {realizacja.zrealizowano}</p>
+                    <p className={style.title}>   ark.</p>
+                     </div>
+                  {/* <button className={style.skasujBtn}>Usuń </button> */}
+                  <Usun wykonanie={wykonanie} realizacja={realizacja} grup={grup}/>
+              </div>
+              </div>
+            </>
+          );
+          }
+
+
 
         })}
     </>

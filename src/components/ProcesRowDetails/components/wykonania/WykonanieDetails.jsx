@@ -2,6 +2,7 @@ import Realizacje from "../realizacje/Realizacje";
 import style from "./WykonanieDetails.module.css";
 import DodajBrakBtn from "./btn/DodajBrakBtn";
 import DodajRealizacjeBtn from "./btn/DodajRealizacjeBtn";
+import ZakonczArkuszBtn from "./btn/ZakonczArkuszBtn";
 import ZamknijWykonanieBtn from "./btn/ZamknijWykonanieBtn";
 // import ZamknijBtn from "./components/ZamknijBtn";
 // import Wykonania from "./components/wykonania/Wykonania";
@@ -22,6 +23,7 @@ if(wykonanie.show)
             <Realizacje wykonanie={wykonanie} grup={grup}/>
 
             <div  className={style.paneBtn}>
+                <ZakonczArkuszBtn wykonanie={wykonanie} grup={grup}/>
                 <DodajRealizacjeBtn wykonanie={wykonanie} grup={grup}/>
                 <DodajBrakBtn wykonanie={wykonanie} grup={grup}/>
                 <ZamknijWykonanieBtn wykonanie={wykonanie}/>

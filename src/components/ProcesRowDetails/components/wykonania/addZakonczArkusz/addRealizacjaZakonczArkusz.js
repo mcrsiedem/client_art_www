@@ -48,7 +48,8 @@ export const addRealizacjaZakonczArkusz = async (
         typ:1
       });
 
-            new_realizacje.push({
+      if(brakujace_przeloty>0){
+                    new_realizacje.push({
         ...wykonanie,
         id: getMaxID(realizacje),
         zrealizowano: brakujace_przeloty,
@@ -57,6 +58,8 @@ export const addRealizacjaZakonczArkusz = async (
         wykonanie_global_id: wykonanie.global_id,
         typ:3
       });
+      }
+
 
       setRealizacje(new_realizacje);
 

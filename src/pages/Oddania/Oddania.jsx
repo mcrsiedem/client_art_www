@@ -85,6 +85,7 @@ const OddaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
+              {/* // */}
               {/* <th onDoubleClick={()=>{  setSortowanieOprawy("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th> */}

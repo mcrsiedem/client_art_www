@@ -44,9 +44,12 @@
    color: rgb(71, 193, 14);
    font-weight: bold;
    padding-left: 10px;
+   margin-left: 5px;
 }
 
 .status_grey{
    color: rgb(69, 69, 69);
    font-weight: bold;
+   margin-left: 5px;
+
 }

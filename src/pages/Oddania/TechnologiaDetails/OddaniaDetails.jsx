@@ -1,4 +1,4 @@
-import style from "./TechnologiaDetails.module.css";
+import style from "./OddaniaDetails.module.css";
 import ZamknijBtn from "./components/ZamknijBtn";
 import ElementPane from "./components/ElementPane";
 import TextEditor from "./components/TextEditor";
@@ -6,7 +6,7 @@ import DodajRealizacjeBtn from "./components/DodajRealizacjeBtn";
 import RealizacjeOprawy from "./components/RealizacjeOprawy";
 import OprawaWykonania from "../OprawaWykonania/OprawaWykonania";
 
-export default function TechnologiaDetails({grup,mini}) {
+export default function OddaniaDetails({grup,mini}) {
 
 if(grup.show)
   return (

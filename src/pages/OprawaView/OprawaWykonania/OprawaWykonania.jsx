@@ -16,7 +16,8 @@ export default function OprawaWykonania({ grup }) {
         .map((wykonanie) => {
           return (
             <>
-              <div className={style.container}>
+              <div onDoubleClick={()=>{console.log(wykonanie)}}
+              className={style.container}>
                   <div className={style.row_title}> 
                     <p className={style.title2}>   {wykonanie.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 

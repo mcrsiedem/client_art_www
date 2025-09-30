@@ -2,6 +2,7 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
+import DecodeToken from "pages/Login/DecodeToken";
 
 export const addRealizacjaZakonczArkusz = async (
   setShow,
@@ -41,6 +42,7 @@ export const addRealizacjaZakonczArkusz = async (
       new_realizacje.push({
         ...wykonanie,
         id: getMaxID(realizacje),
+        dodal_id: DecodeToken(sessionStorage.getItem("token")).id,
         zrealizowano: value,
         global_id: insertId,
         utworzono: today_teraz(),
@@ -52,6 +54,8 @@ export const addRealizacjaZakonczArkusz = async (
                     new_realizacje.push({
         ...wykonanie,
         id: getMaxID(realizacje),
+        dodal_id: DecodeToken(sessionStorage.getItem("token")).id,
+
         zrealizowano: brakujace_przeloty,
         global_id: idRozjazdu,
         utworzono: today_teraz(),

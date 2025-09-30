@@ -13,11 +13,12 @@ export default function OddaniaWykonania({ grup }) {
   
     const oddaniaGrupy =appContext.oddaniaGrupy;
     const setOddaniaGrupy =appContext.setOddaniaGrupy
+            const oddaniaWykonania =appContext.oddaniaWykonania
 
   return (
     <>
-      {oddaniaGrupy
-        .filter((x) => x.zamowienie_id == grup.zamowienie_id && x.grupa_id == grup.id)
+      {oddaniaWykonania 
+        .filter((x) => x.zamowienie_id == grup.zamowienie_id )
         .map((wykonanie) => {
           return (
             <>

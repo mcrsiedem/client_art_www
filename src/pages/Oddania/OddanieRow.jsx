@@ -11,13 +11,13 @@ import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";
 import { updateZmienCzasTrwaniaGrupyOprawa } from "actions/updateZmienCzasTrwaniaGrupyOprawa";
 import { useAccess } from "hooks/useAccess";
-import TechnologiaDetails from "./TechnologiaDetails/OddaniaDetails";
+import TechnologiaDetails from "./OddaniaDetails/OddaniaDetails";
 import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOddania } from "./actions/sortOddania";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
 import { zakonczOddanieDodajWykoananie, zakonczOpraweDodajRealizacje } from "./actions/zakonczOddanieDodajWykoananie";
-import OddaniaDetails from "./TechnologiaDetails/OddaniaDetails";
+import OddaniaDetails from "./OddaniaDetails/OddaniaDetails";
 
 export default function OddanieRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);

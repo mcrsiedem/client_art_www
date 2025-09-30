@@ -30,7 +30,7 @@ return(
      title={"ARKUSZ.  "+grup.papier_info}
      onClick={()=>{setShow(true)}}
 
-    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie}</td>
+    />  { grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie} { grup.proces_nazwa_id==2 ? " + "+ grup.typ_procesu+" "+ grup.wykonczenie_procesu: ""}</td>
 )
  
  

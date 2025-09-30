@@ -76,7 +76,9 @@ const OddaniaTable = () => {
   const oddaniaGrupy =appContext.oddaniaGrupy;
   const setOddaniaGrupy =appContext.setOddaniaGrupy;
   const fechOddaniaGrupy =appContext.fechOddaniaGrupy;
-  const sortowanieOddania = appContext.sortowanieOprawy;
+  const sortowanieOddania = appContext.sortowanieOddania;
+  const setSortowanieOddania = appContext.setSortowanieOddania;
+  
 
 
   return (
@@ -89,15 +91,15 @@ const OddaniaTable = () => {
               {/* <th onDoubleClick={()=>{  setSortowanieOprawy("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th> */}
-              <th onDoubleClick={()=>{  setSortowanieOprawy("nr")}}className={style.th_tableProcesy_nr} > Nr</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_naklad}> Oprawiono</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Oddano </th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("spedycja")}}>Spedycja</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("status")}}>Status</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("uwagi")}}> Uwagi</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("nr")}}className={style.th_tableProcesy_nr} > Nr</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("oprawa")}} className={style.th_tableProcesy_naklad}> Oprawiono</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("zrealizowano")}} className={style.th_tableProcesy_naklad}> Oddano </th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("data")}}>Spedycja</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("status")}}>Status</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("uwagi")}}> Uwagi</th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +111,8 @@ const OddaniaTable = () => {
               // .filter(
               //   (x) => x.procesor_id == selectedProcesor && x.typ_grupy == 2
               // )
-              oddaniaGrupy?.map((grup, i) => {
+              sortOddania(oddaniaGrupy,sortowanieOddania)?.map((grup, i) => {
+              // oddaniaGrupy?.map((grup, i) => {
                   return <OddanieRow grup={grup} key={grup.global_id} i={i} />;
              
               })}

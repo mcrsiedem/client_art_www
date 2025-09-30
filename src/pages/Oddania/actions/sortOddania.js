@@ -15,8 +15,9 @@ export function sortOddania( oddaniaGrupy,sortowanie) {
     //       };
   
     //   })] 
-
-    let posortowanaOprawa = [...oddaniaGrupy] 
+     let posortowanaOprawa;
+  if(oddaniaGrupy){
+   posortowanaOprawa = [...oddaniaGrupy] 
 
   switch (sortowanie) {
      case 'nr':
@@ -34,7 +35,7 @@ export function sortOddania( oddaniaGrupy,sortowanie) {
   case 'data':
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
     break;
-  // case 'data':
+  // case 'data': 
   //   posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
   //   break;
   case 'klient':
@@ -53,6 +54,8 @@ export function sortOddania( oddaniaGrupy,sortowanie) {
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
     break;
 }
+  }
+
 
 
       return posortowanaOprawa;

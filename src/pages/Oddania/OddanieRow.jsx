@@ -47,7 +47,7 @@ let prevet = true;
   return (
     <>
       <tr
-        title={"Grupa id: " + grup.global_id}
+        title={" global_id: " + grup.global_id+" zamowienie_id: " + grup.zamowienie_id}
         draggable={wolno()}
         key={grup.global_id}
         onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}

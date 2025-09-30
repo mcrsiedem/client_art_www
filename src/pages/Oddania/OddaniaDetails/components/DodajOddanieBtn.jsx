@@ -1,9 +1,10 @@
 import React, {useContext, useState, } from "react";
-import style from "./DodajRealizacjeBtn.module.css";
+import style from "./DodajOddanieBtn.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
-import AddRealizacjaOprawa from "./add/AddRealizacjaOprawa";
+import AddRealizacjaOprawa from "./add/AddRealizacjaOddania";
+import AddRealizacjaOddania from "./add/AddRealizacjaOddania";
 
-export default function DodajRealizacjeBtn({ grup }) {
+export default function DodajOddanieBtn({ grup }) {
   const techContext = useContext(TechnologyContext);
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ export default function DodajRealizacjeBtn({ grup }) {
             >
               Dodaj oddanie
     </button>
-    <AddRealizacjaOprawa show={show} setShow={setShow} grup={grup} value={value} setValue={setValue}/>
+    <AddRealizacjaOddania show={show} setShow={setShow} grup={grup} value={value} setValue={setValue}/>
     </>
   );
 }

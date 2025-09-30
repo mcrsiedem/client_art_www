@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import style from "./AddRealizacjaOprawa.module.css";
+import style from "./AddRealizacjaOddania.module.css";
 import iconX from "assets/x.svg";
 import Zapisz from "./Zapisz";
 import { reg_int } from "utils/initialvalue";
-export default function AddRealizacjaOprawa({ setShow, show, grup,value, setValue }) {
+export default function AddRealizacjaOddania({ setShow, show, grup,value, setValue }) {
 
   if (show) {
     return (
@@ -31,7 +31,7 @@ export default function AddRealizacjaOprawa({ setShow, show, grup,value, setValu
 function Header({ setShow }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj realizację </p>
+      <p className={style.title}>Dodaj oddanie </p>
       <Zamknij setShow={setShow} />
     </div>
   );

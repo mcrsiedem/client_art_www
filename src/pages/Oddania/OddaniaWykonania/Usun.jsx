@@ -1,6 +1,6 @@
 
 import { useContext } from "react";
-import style from "./OprawaWykonania.module.css";
+import style from "./OddaniaWykonania.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import { deleteRealizajcaOprawy } from "./deleteRealizajcaOprawy";
 export default function Usun({grup,wykonanie}) {

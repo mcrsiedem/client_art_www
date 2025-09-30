@@ -1,11 +1,5 @@
 export function onContextMenuHanlder(
-  event,
-  grup,
-  setGrupyOprawaAll,
-  grupyOprawaAll,
-  fechparametryTechnologiiDetails,
-  setProcesyElementowTech,
-  prevet
+event,grup,setOddaniaGrupy,oddaniaGrupy,prevet
 ) {
 
   if(prevet){
@@ -13,8 +7,8 @@ export function onContextMenuHanlder(
   }
   
   if (grup.typ_grupy != 1) {
-    setGrupyOprawaAll(
-      grupyOprawaAll
+    setOddaniaGrupy(
+      oddaniaGrupy
         .map((x) => {
           return { ...x, show: false };
         })
@@ -27,10 +21,10 @@ export function onContextMenuHanlder(
         })
     );
 
-    if (grup.typ_grupy != 1) {
-      fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
-    } else {
-      setProcesyElementowTech([]);
-    }
+    // if (grup.typ_grupy != 1) {
+    //   fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
+    // } else {
+    //   setProcesyElementowTech([]);
+    // }
   }
 }

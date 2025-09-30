@@ -4,6 +4,7 @@ import axios from "axios";
 import { IP } from 'utils/Host';
 import { TechnologyContext } from 'context/TechnologyContext';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from 'context/AppContext';
 
 
 const TextEditor = ({grup,mini}) => {
@@ -13,17 +14,22 @@ const TextEditor = ({grup,mini}) => {
   const grupyOprawaAll = techContext.grupyOprawaAll;
   const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
   const navigate = useNavigate();
+
+      const appContext = useContext(AppContext)
+    
+      const oddaniaGrupy =appContext.oddaniaGrupy;
+      const setOddaniaGrupy =appContext.setOddaniaGrupy
   const handleSave = () => {
 
 
 
-  axios.put(IP + "grupa_wykonan_oprawa_uwagi/"+ sessionStorage.getItem("token"),[text, grup.global_id,grup.zamowienie_id])
+  axios.put(IP + "oddania_uwagi/"+ sessionStorage.getItem("token"),[text, grup.global_id,grup.zamowienie_id])
     .then((res) => {
 
        if(res.data =='OK'){
         
-    setGrupyOprawaAll(
-      grupyOprawaAll.map((t) => {
+    setOddaniaGrupy(
+      oddaniaGrupy.map((t) => {
         if (t.global_id == grup.global_id) {
           return {...t,
             uwagi: text,

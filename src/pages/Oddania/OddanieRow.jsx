@@ -15,7 +15,7 @@ import TechnologiaDetails from "./OddaniaDetails/OddaniaDetails";
 import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOddania } from "./actions/sortOddania";
-import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
+import OprawaWykonania from "./OddaniaWykonania/OddaniaWykonania";
 import { zakonczOddanieDodajWykoananie, zakonczOpraweDodajRealizacje } from "./actions/zakonczOddanieDodajWykoananie";
 import OddaniaDetails from "./OddaniaDetails/OddaniaDetails";
 
@@ -54,7 +54,7 @@ let prevet = true;
         onDragOver={handleDragOver}
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
-        // onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
+        onContextMenu={(event) => onContextMenuHanlder(event,grup,setOddaniaGrupy,oddaniaGrupy,prevet)}
         // onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOddania)}
       >
         {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>

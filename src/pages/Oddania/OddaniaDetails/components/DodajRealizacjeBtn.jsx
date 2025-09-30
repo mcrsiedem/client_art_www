@@ -20,7 +20,7 @@ export default function DodajRealizacjeBtn({ grup }) {
                 setShow(true)
               }}
             >
-              Dodaj realizację
+              Dodaj oddanie
     </button>
     <AddRealizacjaOprawa show={show} setShow={setShow} grup={grup} value={value} setValue={setValue}/>
     </>

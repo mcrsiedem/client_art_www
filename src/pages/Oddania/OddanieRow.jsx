@@ -62,9 +62,10 @@ let prevet = true;
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2, 4)} </td>
         <Klient grup={grup} />
         <Tytul grup={grup} />
-        <Rodzaj grup={grup} />
-        <Zrealizowano grup={grup} />
+        {/* <Rodzaj grup={grup} /> */}
+        <Oprawiono grup={grup} />
         <Naklad grup={grup} />
+        <td className={style.td_tableProcesy_spedycja}>{grup.zostalo}</td>
         <td className={style.td_tableProcesy_spedycja}>{grup.data_spedycji}</td>
         <Status grup={grup} />
         <Uwagi grup={grup} />
@@ -145,12 +146,12 @@ const Rodzaj = ({ grup,i }) => {
   );
 };
 
-const Zrealizowano = ({ grup,i }) => {
+const Oprawiono = ({ grup,i }) => {
   return (
     <td>
     <input 
       className={style.tytulInputNaklad}
-      value={ grup.zostalo}
+      value={ grup.oprawiono}
       readOnly
     />
     </td>

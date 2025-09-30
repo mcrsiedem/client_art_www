@@ -30,7 +30,7 @@ export default function Szukaj() {
         onChange={(event) => {
         
           let m = grupyOprawaAllWyszukiwarka.filter((k) =>
-            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase())
+            k.tytul?.concat(" ", k?.nr ).concat(" ", k?.klient ).toLowerCase().includes(event.target.value.toLowerCase())
           );
 
           setGrupyOprawaAll(m);

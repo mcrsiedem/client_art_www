@@ -91,9 +91,9 @@ const OddaniaTable = () => {
               <th onDoubleClick={()=>{  setSortowanieOprawy("nr")}}className={style.th_tableProcesy_nr} > Nr</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Zostało </th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Oprawiono</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Zostało </th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("spedycja")}}>Spedycja</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("status")}}>Status</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("uwagi")}}> Uwagi</th>
@@ -122,83 +122,83 @@ const OddaniaTable = () => {
 
 
 
-function Procesory() {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
-  const procesory = contextApp.procesory
-  const updateGrupaWykonan = techContext.updateGrupaWykonan
-  const setSelectedProcesor = techContext.setSelectedProcesor
-  const selectedProces = techContext.selectedProces
-  return (
-    <div className={style.procesor_btn_container}>
+// function Procesory() {
+//   const techContext = useContext(TechnologyContext);
+//   const contextApp = useContext(AppContext);
+//   const procesory = contextApp.procesory
+//   const updateGrupaWykonan = techContext.updateGrupaWykonan
+//   const setSelectedProcesor = techContext.setSelectedProcesor
+//   const selectedProces = techContext.selectedProces
+//   return (
+//     <div className={style.procesor_btn_container}>
 
-{procesory
-         ?.filter(x => x.grupa == selectedProces  )
-        .map((procesor) => (
+// {procesory
+//          ?.filter(x => x.grupa == selectedProces  )
+//         .map((procesor) => (
 
-          <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
+//           <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
 
-        ))}
-    </div>
-  );
-}
+//         ))}
+//     </div>
+//   );
+// }
 
-const Btn_procesor = ({id,nazwa,procesor}) =>{
-  const appContext = useContext(AppContext)
-  const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
-  const setSelectedProcesor = techContext.setSelectedProcesor
-  // const selectedProcesor = techContext.selectedProcesor
-  const procesory = appContext.procesory
-  const setProcesory = appContext.setProcesory
+// const Btn_procesor = ({id,nazwa,procesor}) =>{
+//   const appContext = useContext(AppContext)
+//   const techContext = useContext(TechnologyContext);
+//   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+//   const fechGrupyOprawaForProcesor = techContext.fechGrupyOprawaForProcesor
+//   const setSelectedProcesor = techContext.setSelectedProcesor
+//   // const selectedProcesor = techContext.selectedProcesor
+//   const procesory = appContext.procesory
+//   const setProcesory = appContext.setProcesory
 
-  function handleDrop(id) {
-    if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
-      let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
-      // let id_drop_grupa_proces = id;
-      dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+//   function handleDrop(id) {
+//     if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
+//       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
+//       // let id_drop_grupa_proces = id;
+//       dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
 
-    }
-  }
+//     }
+//   }
 
-  function handleDragOver(e) {
-    e.preventDefault();
-  }
+//   function handleDragOver(e) {
+//     e.preventDefault();
+//   }
 
-  // const grupyWykonanAll = techContext.grupyWykonanAll;
-  return(
-    <button  
-    // draggable
-    key={id}
-  //  onDrop={()=>handleDrop(id)}
-  // onDragOver={handleDragOver}
+//   // const grupyWykonanAll = techContext.grupyWykonanAll;
+//   return(
+//     <button  
+//     // draggable
+//     key={id}
+//   //  onDrop={()=>handleDrop(id)}
+//   // onDragOver={handleDragOver}
    
 
-    className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
-    onClick={(event) => {
+//     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
+//     onClick={(event) => {
 
-      // console.log(" id: ", id)
-      // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
-     setSelectedProcesor(id)
-    //  fechGrupyAndWykonaniaForProcesor(id)
-     fechGrupyOprawaForProcesor(id)
+//       // console.log(" id: ", id)
+//       // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
+//      setSelectedProcesor(id)
+//     //  fechGrupyAndWykonaniaForProcesor(id)
+//      fechGrupyOprawaForProcesor(id)
      
-    //  fechGrupyAndWykonaniaAll()
+//     //  fechGrupyAndWykonaniaAll()
 
-     setProcesory(
-      procesory
-      .map((t) => {return{...t, select: false}})
-      .map((t) => {
-        if (t.id == id) {
-          return {...t, select: true }
-        } else {
-          return t;
-        }
-      })
-    )
-   }}>
-     {nazwa} 
-   </button> 
-  )
-}
+//      setProcesory(
+//       procesory
+//       .map((t) => {return{...t, select: false}})
+//       .map((t) => {
+//         if (t.id == id) {
+//           return {...t, select: true }
+//         } else {
+//           return t;
+//         }
+//       })
+//     )
+//    }}>
+//      {nazwa} 
+//    </button> 
+//   )
+// }

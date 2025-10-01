@@ -378,7 +378,7 @@ function PrzerwaMagicBTN() {
   const [initTime,setInitTime] = useState(1)
   const [initMinuty,setInitMintuty] = useState(60)
 
-  if(DecodeToken(sessionStorage.getItem("token")).id==1){
+  // if(DecodeToken(sessionStorage.getItem("token")).id==1){
   return (
 
       <div  className={style.przerwa_container}>
@@ -400,7 +400,7 @@ function PrzerwaMagicBTN() {
         
   );
 
-  }
+  // }
 
 
 

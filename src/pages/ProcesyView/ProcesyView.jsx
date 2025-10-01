@@ -15,6 +15,7 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import ProcesViewRowPrzerwa from "./row/ProcesViewRowPrzerwa";
+import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -23,11 +24,16 @@ export default function ProcesyView( ) {
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const setSelectedProces = techContext.setSelectedProces;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const multiSelect = techContext.multiSelect;
+  const setMultiSelect = techContext.setMultiSelect;
   const procesory = appContext.procesory
   const setProcesory = appContext.setProcesory
   const setClients = appContext.setClients
   const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka
   const setNadkomplety =appContext.setNadkomplety;
+  const selectedProcesor = techContext.selectedProcesor;
+
 
       const [callForPaper] = useApiPapier();
   async function checkToken() {
@@ -65,6 +71,45 @@ export default function ProcesyView( ) {
   useEffect(() => {
     checkToken();
   }, []);
+
+
+const handleCtrlV = ()=> {
+//  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
+// setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
+dragdropProcesGrupaMulti(fechGrupyAndWykonaniaForProcesor,selectedProcesor,sessionStorage.getItem("row_global_id"),multiSelect,setMultiSelect)
+
+  };
+
+const handleCtrlC = ()=> {
+//  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
+setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
+  };
+
+  const handleKeyDown = useCallback((event) => {
+    const isCtrlOrCmd = event.ctrlKey || event.metaKey;
+
+    if (isCtrlOrCmd && event.key === 'c') {
+      handleCtrlC();
+    }
+
+    if (isCtrlOrCmd && event.key === 'v') {
+      handleCtrlV();
+    }
+
+  }, [handleCtrlC])
+
+
+useEffect(() => {
+    // Dodajemy nasłuchiwacz zdarzeń 'keydown' do całego okna
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Funkcja czyszcząca: usuwamy nasłuchiwacz po odmontowaniu komponentu
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+
   return (
     <div className={style.main}>
         <ProcesyHeader />

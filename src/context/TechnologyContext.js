@@ -34,6 +34,7 @@ export const TechnologyContextProvider = ({children})=>{
     const [procesyElementow, setProcesyElementow] = useState([]);
     const [historiaZamowienia, setHistoriaZamowienia] = useState([]);
     const [pakowanie, setPakowanie] = useState([]);
+    const [multiSelect, setMultiSelect] = useState([]);
 
         //dane z technologii
         const [daneTech, setDaneTech] = useState([]);
@@ -918,7 +919,7 @@ async function fechTechnology() {
                     grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
                     sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy,
                     realizacje, setRealizacje,
-                    gantStageGrupy, setGantStageGrupy
+                    gantStageGrupy, setGantStageGrupy,multiSelect, setMultiSelect
                 }}
             >
                 {children}

@@ -28,6 +28,8 @@ function ProcesyHeader() {
   const setSelectedProces = techContext.setSelectedProces;
   const setSelectedProcesor = techContext.setSelectedProcesor;
   const selectedProcesor = techContext.selectedProcesor;
+  const multiSelect = techContext.multiSelect;
+  const setMultiSelect = techContext.setMultiSelect;
   const wykonaniaAll = techContext.wykonaniaAll;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 
@@ -53,10 +55,8 @@ function ProcesyHeader() {
 
   return (
     <div onDoubleClick={()=>{
-      console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id)  
-            
-            
-            )
+      console.log(multiSelect)
+      
     }} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>

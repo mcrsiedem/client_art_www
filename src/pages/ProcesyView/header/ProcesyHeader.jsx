@@ -5,6 +5,7 @@ import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
 import iconCalc from "assets/calc.svg";
 import iconSheet from "assets/extract.svg";
+import iconPrzerwa from "assets/magic_przerwa.svg";
 
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ import axios from "axios";
 import { IP } from "../../../utils/Host";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { wagaArkuszy } from "actions/wagaArkuszy";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 function ProcesyHeader() {
@@ -59,6 +61,7 @@ function ProcesyHeader() {
             selectedProcesor={selectedProcesor}
           />
           <DataWyswietlania/>
+        <PrzerwaMagicBTN />
           {/* <p> {selectedProces}</p> */}
         </div>
 
@@ -335,9 +338,6 @@ function PrzerwaBTN() {
         
   );
 
- 
-
-
 
   function handleDragStart(){
     sessionStorage.setItem("typ_drag", "przerwa");
@@ -346,17 +346,10 @@ function PrzerwaBTN() {
   }
 
     function handleDrop() {
-     //  if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
-     //    let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
-     //    let id_drop_grupa_proces = id;
-     //    dragDropProcesGrupa(id_drag_grupa_proces,id_drop_grupa_proces,fechGrupyAndWykonaniaForProcesor)
-     //  }
-  
-  
+
       if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
        updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
       }
-  
   
       
     }
@@ -366,6 +359,67 @@ function PrzerwaBTN() {
    }
 
 }
+
+function PrzerwaMagicBTN() {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const procesListName = contextApp.procesListName
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+
+  const [czas,setCzas] = useState(60)
+  const [show,setShow] = useState(false)
+
+  const [initTime,setInitTime] = useState(1)
+  const [initMinuty,setInitMintuty] = useState(60)
+
+  if(DecodeToken(sessionStorage.getItem("token")).id==1){
+  return (
+
+      <div  className={style.przerwa_container}>
+              <img
+              title="Przerwa Magic"
+        onDragStart={() => handleDragStart()}
+        onDragOver={handleDragOver}
+        onDrop={()=>handleDrop()}
+              className={style.icon3}
+              src={iconPrzerwa}
+            //   onClick={() => {
+            // setShow(!show)
+            //   }}
+              alt="React Logo"
+            />
+           {/* <TimeSelect show={show} setCzas={setCzas} initTime={initTime} setInitTime={setInitTime} initMinuty={initMinuty} setInitMintuty={setInitMintuty}/> */}
+      </div>
+
+        
+  );
+
+  }
+
+
+
+  function handleDragStart(){
+    sessionStorage.setItem("typ_drag", "przerwa_magic");
+    sessionStorage.setItem("czas_przerwy", czas);
+ 
+  }
+
+    function handleDrop() {
+
+      if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") == 1) {
+       updateDeletePrzerwa(sessionStorage.getItem("id_grupa_proces_drag"),fechGrupyAndWykonaniaForProcesor)
+      }
+  
+      
+    }
+
+    function handleDragOver(e) {
+     e.preventDefault();
+   }
+
+}
+// ------- 
+
 
 const TimeSelect = ({show,setCzas,initTime,setInitTime,initMinuty,setInitMintuty})=>{
 

@@ -27,6 +27,7 @@ import { useContextMenuHandler } from "./useContextMenuHandler";
 import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
 import Papier from "./components/Papier";
 import AddDostepnoscPapieruInfo from "./components/addDostepnoscPapieruInfo/AddDostepnoscPapieruInfo";
+import { updateAddPrzerwaMagic } from "actions/updateAddPrzerwaMagic";
 
 
 
@@ -250,6 +251,10 @@ if (grup.select) return style.procesRow_select
     if (sessionStorage.getItem("typ_drag") == "przerwa") {
       let czas = sessionStorage.getItem("czas_przerwy");
       updateAddPrzerwa(id, czas,fechGrupyAndWykonaniaForProcesor);
+    }
+        if (sessionStorage.getItem("typ_drag") == "przerwa_magic") {
+      let czas = sessionStorage.getItem("czas_przerwy");
+      updateAddPrzerwaMagic(id, czas,fechGrupyAndWykonaniaForProcesor,selectedProcesor);
     }
   }
 

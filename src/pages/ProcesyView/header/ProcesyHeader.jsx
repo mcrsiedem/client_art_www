@@ -31,6 +31,7 @@ function ProcesyHeader() {
   const wykonaniaAll = techContext.wykonaniaAll;
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 
+   const grupyWykonanAll = techContext.grupyWykonanAll;
 
   const appContext = useContext(AppContext)
 
@@ -51,7 +52,12 @@ function ProcesyHeader() {
 
 
   return (
-    <div className={style.container}>
+    <div onDoubleClick={()=>{
+      console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id)  
+            
+            
+            )
+    }} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <ProcesSelect

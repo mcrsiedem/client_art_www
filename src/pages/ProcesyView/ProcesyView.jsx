@@ -33,7 +33,7 @@ export default function ProcesyView( ) {
   const setClientsWyszukiwarka = appContext.setClientsWyszukiwarka
   const setNadkomplety =appContext.setNadkomplety;
   const selectedProcesor = techContext.selectedProcesor;
-
+    const [selectedProcesorMulti, setSelectedProcesorMulti] = useState([]);
 
       const [callForPaper] = useApiPapier();
   async function checkToken() {
@@ -76,11 +76,15 @@ export default function ProcesyView( ) {
 const handleCtrlV = ()=> {
 //  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
 // setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
-dragdropProcesGrupaMulti(fechGrupyAndWykonaniaForProcesor,selectedProcesor,sessionStorage.getItem("row_global_id"),multiSelect,setMultiSelect)
+if(selectedProcesorMulti==selectedProcesor){
+
+  dragdropProcesGrupaMulti(fechGrupyAndWykonaniaForProcesor,selectedProcesor,sessionStorage.getItem("row_global_id"),multiSelect,setMultiSelect)
+}
 
   };
 
 const handleCtrlC = ()=> {
+  setSelectedProcesorMulti(selectedProcesor)
 //  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
 setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
   };
@@ -88,7 +92,7 @@ setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>s
   const handleKeyDown = useCallback((event) => {
     const isCtrlOrCmd = event.ctrlKey || event.metaKey;
 
-    if (isCtrlOrCmd && event.key === 'c') {
+    if (isCtrlOrCmd && event.key === 'x') {
       handleCtrlC();
     }
 

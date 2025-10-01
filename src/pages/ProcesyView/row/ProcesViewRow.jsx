@@ -98,32 +98,6 @@ if (grup.select) return style.procesRow_select
 
 
 
-// const handleCtrlV = ()=> {
-// //  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
-// // setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
-// dragdropProcesGrupaMulti(fechGrupyAndWykonaniaForProcesor,selectedProcesor,grup.global_id,multiSelect)
-
-//   };
-
-//   const handleKeyDown = useCallback((event) => {
-//     const isCtrlOrCmd = event.ctrlKey || event.metaKey;
-
-//     if (isCtrlOrCmd && event.key === 'v') {
-//       handleCtrlV();
-//     }
-//   }, [handleCtrlV])
-
-
-// useEffect(() => {
-//     // Dodajemy nasłuchiwacz zdarzeń 'keydown' do całego okna
-//     window.addEventListener('keydown', handleKeyDown);
-
-//     // Funkcja czyszcząca: usuwamy nasłuchiwacz po odmontowaniu komponentu
-//     return () => {
-//       window.removeEventListener('keydown', handleKeyDown);
-//     };
-//   }, [handleKeyDown]);
-
 
   return (
 <>
@@ -184,6 +158,7 @@ if (grup.select) return style.procesRow_select
 
           sessionStorage.setItem("indeks_start",i)
           sessionStorage.setItem("row_global_id",grup.global_id)
+          sessionStorage.setItem("selectedProcesor",selectedProcesor)
 
           }}
 

@@ -139,9 +139,9 @@ function Uwagi( {row}){
   return(
       <td className={style.col}>
       <textarea  ref={textareaRef} className={style.input_textarea} rows="3" type="text"
-      onDoubleClick={()=>{handlePrint()
+      // onDoubleClick={()=>{handlePrint()
 
-      }}
+      // }}
       value={row.uwagi}
       onFocus={()=>{ setValueIN(row.uwagi)}}
       onBlur={(e)=>{

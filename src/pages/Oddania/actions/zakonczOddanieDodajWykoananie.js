@@ -8,7 +8,7 @@ export const zakonczOddanieDodajWykoananie = async (
   grup,
   oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania
 ) => {
-  let status, insertId,status_grupy,brakujacy_naklad,zrealizowano;
+  let status, insertId,status_grupy,brakujacy_naklad,oddano;
   await axios
     .post(IP + "zakoncz_oddanie_dodaj_wykonanie/" + sessionStorage.getItem("token"), {
       ...grup,
@@ -18,7 +18,7 @@ export const zakonczOddanieDodajWykoananie = async (
       insertId = res.data.insertId;
       status_grupy = res.data.status_grupy;
       brakujacy_naklad = res.data.brakujacy_naklad;
-      zrealizowano = res.data.zrealizowano;
+      oddano = res.data.oddano;
 
 
       if (status == "OK") {
@@ -44,7 +44,7 @@ export const zakonczOddanieDodajWykoananie = async (
         return {
           ...t,
           status: status_grupy,
-          zrealizowano:zrealizowano
+          oddano:oddano
 
         };
       } else {

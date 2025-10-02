@@ -16,7 +16,7 @@ const TrescWydruku = ({ onButtonClick,row, daneZamowienia}) => {
       <p>{row.uwagi}</p>
       <hr></hr>
 
-      <p>Wydrukowano: {new Date().toLocaleTimeString()}</p>
+      <p>Wydrukowano: {new Date().toLocaleDateString()}  - {new Date().toLocaleTimeString()}</p>
       {/* <button  onClick={()=>{ window.print()}} className={styles.przycisk} onClick={onButtonClick}> */}
       {/* <button  className={styles.przycisk} onClick={onButtonClick}>
        Drukuj

@@ -270,7 +270,7 @@ const contextApp = useContext(AppContext);
   return (
     <div className={style.col_dane}>
 <label className={style.label}> Oprawa </label>
-      <select
+      {/* <select
         disabled
         className={style.select_oprawa}
         value={row?.oprawa}
@@ -301,7 +301,16 @@ const contextApp = useContext(AppContext);
             {option.typ} {option.rodzaj} 
           </option>
         ))}
-      </select>
+      </select> */}
+
+      <input
+        disabled
+        className={style.select_oprawa}
+        value={contextApp.procesList?.find(x=>x.id==row.oprawa)?.typ || "brak"}
+      >
+
+      </input>
+
     </div>
   );
 }

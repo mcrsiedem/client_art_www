@@ -41,6 +41,7 @@ import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 import Parametery from "./Parametry/Parametry";
 import Faktury from "./Faktury/Faktury";
+import DrukujTreśćZHookiem from "./Wydruk/DrukujTreśćZHookiem";
 
 function ModalInsert({
   
@@ -93,6 +94,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
 const ksiegowosc= contextModalInsert.ksiegowosc;
 const setKsiegowosc= contextModalInsert.setKsiegowosc;
 const setFaktury= contextModalInsert.setFaktury;
+
 
 
   useEffect(() => {
@@ -244,7 +246,7 @@ const setFaktury= contextModalInsert.setFaktury;
               }
             />
             <PakowanieZamowienie />
-           
+           {/* <DrukujTreśćZHookiem/> */}
 
          
           </div>

@@ -41,7 +41,7 @@ import PakowanieZamowienie from "./Pakowanie/PakowanieZamowienie";
 import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 import Parametery from "./Parametry/Parametry";
 import Faktury from "./Faktury/Faktury";
-import DrukujTreśćZHookiem from "./Wydruk/DrukujTreśćZHookiem";
+import SimplePrintTextarea from "./Wydruk/SimplePrintTextarea ";
 
 function ModalInsert({
   
@@ -246,6 +246,7 @@ const setFaktury= contextModalInsert.setFaktury;
               }
             />
             <PakowanieZamowienie />
+            <SimplePrintTextarea  />
            {/* <DrukujTreśćZHookiem/> */}
 
          

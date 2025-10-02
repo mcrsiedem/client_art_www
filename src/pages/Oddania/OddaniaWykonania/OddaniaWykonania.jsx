@@ -29,8 +29,8 @@ export default function OddaniaWykonania({ grup }) {
                      </div>
               <div className={style.row}>
                     <div className={style.center}> 
-                    <p className={style.title}>   {wykonanie.utworzono  } Oprawiono:</p>
-                    <p className={style.naklad}>   {wykonanie.naklad}</p>
+                    <p className={style.title}>   {wykonanie.utworzono  } Oddano:</p>
+                    <p className={style.naklad}>   {wykonanie.zrealizowano}</p>
                     <p className={style.title}>   szt.</p>
                      </div>
                   {/* <button className={style.skasujBtn}>Usuń </button> */}

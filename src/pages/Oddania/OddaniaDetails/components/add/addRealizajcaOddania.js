@@ -7,7 +7,7 @@ import { today_teraz } from "actions/today_teraz";
 export const addRealizajcaOddania= async (
   setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,typ
 ) => {
-  let status, insertId,status_grupy,zrealizowano;
+  let status, insertId,status_grupy,oddano;
   await axios
     .post(IP + "dodaj_realizacje_oddania/" + sessionStorage.getItem("token"), {
       ...grup,
@@ -18,7 +18,7 @@ export const addRealizajcaOddania= async (
       status = res.data.status;
       insertId = res.data.insertId || 0; 
       status_grupy = res.data.status_grupy  || 0;
-      zrealizowano = res.data.zrealizowano  || 0;
+      oddano = res.data.oddano  || 0;
       
 
       if (status == "OK") {
@@ -27,7 +27,7 @@ export const addRealizajcaOddania= async (
         new_oddaniaWykonania.push({
           ...grup,
           id: getMaxID(oddaniaWykonania),
-          naklad: value,
+          zrealizowano: value,
           global_id: insertId,
           utworzono: today_teraz(),
           grupa_id: grup.id
@@ -41,7 +41,7 @@ export const addRealizajcaOddania= async (
         return {
           ...t,
           status: status_grupy,
-          zrealizowano:zrealizowano
+          oddano:oddano
         };
       } else {
         return t;

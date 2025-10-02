@@ -5,13 +5,14 @@ import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
 export const addRealizajcaOddania= async (
-  setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania
+  setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,typ
 ) => {
   let status, insertId,status_grupy,zrealizowano;
   await axios
     .post(IP + "dodaj_realizacje_oddania/" + sessionStorage.getItem("token"), {
       ...grup,
       zrealizowano: value,
+      typ: typ
     })
     .then((res) => {
       status = res.data.status;

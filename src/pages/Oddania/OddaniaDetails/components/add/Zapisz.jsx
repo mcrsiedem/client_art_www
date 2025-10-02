@@ -25,7 +25,7 @@ export default function Zapisz({setShow,grup,value}) {
       <button
         className={style.btn}
         onClick={() => {
-           addRealizajcaOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania)
+           addRealizajcaOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,1)
           setShow(false)
           
           }}

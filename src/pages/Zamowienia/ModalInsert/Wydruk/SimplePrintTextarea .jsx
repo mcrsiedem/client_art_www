@@ -37,7 +37,7 @@ const SimplePrintTextarea = () => {
         // --- Drukowanie ---
 
         // 8. Wywołujemy natychmiastowe drukowanie
-        // printWindow.print();
+        printWindow.print();
         
         // printWindow.close(); // Opcjonalnie: zamknięcie okna po wydruku
     };

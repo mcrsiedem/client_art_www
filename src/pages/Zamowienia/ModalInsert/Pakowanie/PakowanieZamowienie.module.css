@@ -5,11 +5,22 @@
   /* margin-bottom: 15px; */
 }
 .header_container{
+    display: flex;
+  align-items: start;
+  justify-content: space-between;
   padding: 2px;
   background-color: rgb(235, 235, 235);
   height: 2rem;
+  padding-right: 20px;
 }
-
+.otworzBTN{
+  border: none;
+  background-color: rgb(158, 158, 158);
+  border-radius: 5px;
+  padding: 5px ;
+  color: aliceblue;
+  font-size: 0.8rem;
+}
 .header_title {
   color: rgb(53, 53, 53);
   padding-left: 5px;

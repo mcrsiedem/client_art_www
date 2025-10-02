@@ -4,45 +4,58 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 import { _typ_elementu } from "utils/initialvalue";
 import { useState } from "react";
-import iconCopy from "../../../../assets/copy.svg";
-import iconTrash from "../../../../assets/trash2.svg";
-import iconTable from "../../../../assets/settings.svg";
 
+import {  reg_txt } from "utils/initialvalue";
 
-
-import { AppContext } from "context/AppContext";
-import { reg_int, reg_txt } from "utils/initialvalue";
-import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 import { useHistoria } from "hooks/useHistoria";
+import NewWindowPortal from "./NewWindowPortal";
+import TrescWydruku from "./TrescWydruku";
+
 
 export default function PakowanieZamowienie() {
   const [oprawa_row, setOprawa_row] = useState();
   const [showOprawaElementyStage, setShowOprawaElementyStage] = useState(false);
   const [expand, setExpand] = useState(true);
 
+  const [showPortal, setShowPortal] = useState(false);
+     const handleAction = () => {
+    alert('Akcja została wywołana z nowego okna!');
+  };
+
 
   return (
     <div className={style.container}>
       <div className={style.historia}>
-        <PAKOWANIE_HEADER/>
-        <PAKOWANIE_TABLE/>
+        <PAKOWANIE_HEADER showPortal={showPortal} setShowPortal={setShowPortal} handleAction={handleAction} />
+        <PAKOWANIE_TABLE showPortal={showPortal} setShowPortal={setShowPortal} handleAction={handleAction}/>
       </div>
     </div>  
   );
 }
 
 
-const PAKOWANIE_HEADER = () => {
+const PAKOWANIE_HEADER = ({setShowPortal,showPortal,handleAction}) => {
+
   return(
     <div className={style.header_container}>
       <p title={" Uwagi do pakowania"} className={style.header_title}>Uwagi do pakowania</p>
+       <button className={style.otworzBTN}  onClick={() => setShowPortal(true)} disabled={showPortal}>
+        {showPortal ? 'Drukowanie' : 'Drukuj'}
+      </button>
+
+
+
     </div>
   )
+
+
+  
 }
-function PAKOWANIE_TABLE() {
+function PAKOWANIE_TABLE({showPortal,setShowPortal,handleAction}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const pakowanie = contextModalInsert.pakowanie;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
 
   return (
     <div className={style.main}>
@@ -63,12 +76,18 @@ function PAKOWANIE_TABLE() {
                 >
                   {/* <td>{row.uwagi}</td> */}
                   <Uwagi row={row}/>
+              {showPortal && (
+                      <NewWindowPortal title="Uwagi " initialSize="width=800,height=500,top=100,left=100" setShowPortal={setShowPortal}>
+                        <TrescWydruku onButtonClick={handleAction}  row={row} daneZamowienia={daneZamowienia}/>
+                      </NewWindowPortal>
+                    )}
                 </tr>
               </>
             );
           })}
         </tbody>
       </table>
+             
     </div>
   );
 }

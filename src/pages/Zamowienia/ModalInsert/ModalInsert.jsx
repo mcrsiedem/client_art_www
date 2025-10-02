@@ -246,8 +246,8 @@ const setFaktury= contextModalInsert.setFaktury;
               }
             />
             <PakowanieZamowienie />
-            <SimplePrintTextarea  />
-           {/* <DrukujTreśćZHookiem/> */}
+            {/* <SimplePrintTextarea  /> */}
+     
 
          
           </div>

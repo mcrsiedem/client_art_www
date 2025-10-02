@@ -1,7 +1,7 @@
 export function onContextMenuHanlder(
-event,grup,setOddaniaGrupy,oddaniaGrupy,prevet
+event,grup,setOddaniaGrupy,oddaniaGrupy,prevet,fechOddaniaWykonania
 ) {
-
+console.log(grup.global_id)
   if(prevet){
     event.preventDefault();
   }
@@ -21,10 +21,9 @@ event,grup,setOddaniaGrupy,oddaniaGrupy,prevet
         })
     );
 
-    // if (grup.typ_grupy != 1) {
-    //   fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
-    // } else {
-    //   setProcesyElementowTech([]);
-    // }
+  
+
+      fechOddaniaWykonania(grup.global_id);
+
   }
 }

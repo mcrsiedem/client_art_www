@@ -91,30 +91,42 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
 
   async function fechOddaniaGrupy(widok) {
 
-
-  // grupy i wykonania dla konktretnego procesora 
-  // const res = await axios.get(IP + "technologie/" + sessionStorage.getItem("token"));
-    //  const res = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
-
-
     await axios.get(IP + "oddania_grupy/"+widok+"/"+ sessionStorage.getItem("token")).then((res)=>{
-      console.log(res.data)
+      // console.log(res.data)
       setOddaniaGrupy(res.data)
       setOddaniaGrupyWyszukiwarka(res.data)
-      
-
+    
       return res
     }).then((res) =>{
       
       setOddaniaGrupy(prev=>{return prev})
       setOddaniaGrupyWyszukiwarka(prev=>{return prev})
       
-
     });
     
 
+  }
+
+
+    async function fechOddaniaWykonania(grupa_global_id) {
+
+    await axios.get(IP + "oddania_wykonania/"+grupa_global_id+"/"+ sessionStorage.getItem("token")).then((res)=>{
+      // console.log(res.data)
+      setOddaniaWykonania(res.data)
+  
+
+      return res
+    }).then((res) =>{
+      
+      setOddaniaWykonania(prev=>{return prev})
+
+      
+    });
+    
 
   }
+
+
 
     useEffect(()=>{
       console.log("app context22")
@@ -169,7 +181,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
                     valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
-                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania
+                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania
                 }}
             >
                 {children}

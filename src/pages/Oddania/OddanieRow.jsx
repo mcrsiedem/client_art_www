@@ -32,6 +32,7 @@ export default function OddanieRow({ grup,i}) {
 
   const oddaniaGrupy =appContext.oddaniaGrupy;
   const setOddaniaGrupy =appContext.setOddaniaGrupy
+  const fechOddaniaWykonania =appContext.fechOddaniaWykonania
 
 let prevet = true;
       
@@ -54,7 +55,7 @@ let prevet = true;
         onDragOver={handleDragOver}
         onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
-        onContextMenu={(event) => onContextMenuHanlder(event,grup,setOddaniaGrupy,oddaniaGrupy,prevet)}
+        onContextMenu={(event) => onContextMenuHanlder(event,grup,setOddaniaGrupy,oddaniaGrupy,prevet,fechOddaniaWykonania)}
         // onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOddania)}
       >
         {/* <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>

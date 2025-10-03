@@ -435,16 +435,16 @@ function Status({grup}) {
       <select
        className={selectColorStatus(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.status}
-        onChange={(event) => {
-          if(grup.typ_grupy!=1){
-            statusGrupyProcesView({...grup, status: event.target.value})
-          }
-                if(grup.typ_grupy==1){
-                  //przerwa
-            statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-          }
-          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-        }}
+        disabled
+        // onChange={(event) => {
+        //   if(grup.typ_grupy!=1){
+        //     statusGrupyProcesView({...grup, status: event.target.value})
+        //   }
+        //         if(grup.typ_grupy==1){
+        //           //przerwa
+        //     statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+        //   }
+        // }}
       >
         {_status_wykonania.map((option) => (
           <option key={option.id} value={option.id}>

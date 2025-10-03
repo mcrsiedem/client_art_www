@@ -336,30 +336,26 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
 
-          if(grup.nazwa == 'Oprawa'){
+    //       if(grup.nazwa == 'Oprawa'){
 
-                if (grup.status > 1 && event.target.value ==4) {
-      zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+    //             if (grup.status > 1 && event.target.value ==4) {
+    //   zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
 
-      // statusGrupyTechnologia_OPRAWA_PROCESY({
-      //   ...grup,
-      //   status: event.target.value,
-      //   stary_status: grup.status,
-      // });
-    }
+
+    // }
     
 
-          }else{
+    //       }else{
 
             
-            if(grup.typ_grupy!=1){
-              statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
-            }
-                  if(grup.typ_grupy==1){
-                    //przerwa
-              statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-            }
-          }
+    //         if(grup.typ_grupy!=1){
+    //           statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
+    //         }
+    //               if(grup.typ_grupy==1){
+    //                 //przerwa
+    //           statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+    //         }
+    //       }
 
 
 

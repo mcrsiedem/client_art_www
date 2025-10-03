@@ -146,7 +146,7 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
 
-            statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+            // statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
       
         }}
       >

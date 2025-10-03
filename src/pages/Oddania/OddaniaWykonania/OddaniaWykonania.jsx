@@ -15,6 +15,8 @@ export default function OddaniaWykonania({ grup }) {
     const setOddaniaGrupy =appContext.setOddaniaGrupy
             const oddaniaWykonania =appContext.oddaniaWykonania
 
+
+            // grup - to oddanie
   return (
     <>
       {oddaniaWykonania 

@@ -60,6 +60,7 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
         <Status grup={grup} />
         <td></td>
 
@@ -146,7 +147,7 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
 
-            // statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
+            statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
       
         }}
       >

@@ -39,9 +39,11 @@ let prevet = true;
           const [wolno] = useAccess(false);
           const selectColor = (status) => {
             if (grup.select) return style.procesRow_select;
+          
             if (status == 4) return style.procesRow_tr_DRUK;
             if (status == 2) return style.procesRow_tr_RIP;
             if (status == 3) return style.procesRow_tr_trakcie;
+              if(grup.oprawiono>0) return style.procesRow_tr_RIP;
             return style.procesRow_tr;
           };
 

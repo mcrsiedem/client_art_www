@@ -29,7 +29,7 @@ export default function OddaniaWykonania({ grup }) {
                     <p className={style.title2}>   {wykonanie.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 
                      </div>
-              <div className={style.row}>
+              <div onDoubleClick={()=>{console.log(wykonanie)}} className={style.row}>
                     <div className={style.center}> 
                     <p className={style.title}>   {wykonanie.utworzono  } Oddano:</p>
                     <p className={style.naklad}>   {wykonanie.zrealizowano}</p>

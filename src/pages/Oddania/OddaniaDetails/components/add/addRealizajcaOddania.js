@@ -30,7 +30,8 @@ export const addRealizajcaOddania= async (
           zrealizowano: value,
           global_id: insertId,
           utworzono: today_teraz(),
-          grupa_id: grup.id
+          grupa_id: grup.id,
+          oddanie_global_id: grup.global_id
         });
 
         setOddaniaWykonania(new_oddaniaWykonania);

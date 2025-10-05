@@ -18,7 +18,6 @@ if(grup.show)
           <div className={style.stage}>
             <OddaniaWykonania grup={grup}/>
             <DodajOddanieBtn grup={grup}/>
-            {/* <ElementPane grup={grup}/> */}
             <TextEditor grup={grup} mini={mini}/>
             <ZamknijBtn grup={grup}/>
           </div>

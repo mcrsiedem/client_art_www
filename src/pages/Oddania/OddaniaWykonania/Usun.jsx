@@ -5,7 +5,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { deleteRealizajcaOddania } from "./deleteRealizajcaOddania";
 import { AppContext } from "context/AppContext";
 
-export default function Usun({grup,wykonanie}) {
+export default function Usun({grupaOddanie,wykonanieOddania}) {
 
     const techContext = useContext(TechnologyContext);
 
@@ -24,7 +24,7 @@ export default function Usun({grup,wykonanie}) {
       <button
         className={style.skasujBtn}
         onClick={() => {
-           deleteRealizajcaOddania(grup,wykonanie,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania )
+           deleteRealizajcaOddania(grupaOddanie,wykonanieOddania,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania )
           
           }} 
       >

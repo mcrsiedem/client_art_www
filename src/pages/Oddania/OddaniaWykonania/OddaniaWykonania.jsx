@@ -36,7 +36,7 @@ export default function OddaniaWykonania({ grup }) {
                     <p className={style.title}>   szt.</p>
                      </div>
                   {/* <button className={style.skasujBtn}>Usuń </button> */}
-                  <Usun grup={grup} wykonanie={wykonanie}/>
+                  <Usun grupaOddanie={grup} wykonanieOddania={wykonanie}/>
               </div>
               </div>
             </>

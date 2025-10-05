@@ -14,8 +14,10 @@ export const addRealizacjaZakonczArkusz = async (
   setRealizacje,
   grupyWykonanAll,
   setGrupWykonanAll,
-  grup
+  grup,
+  setIsLoading
 ) => {
+  setIsLoading(true)
   try {
     const res = await axios.post(
       IP + "dodaj_realizajce_zakoncz_arkusz/" + sessionStorage.getItem("token"),
@@ -27,11 +29,11 @@ export const addRealizacjaZakonczArkusz = async (
 
     const { status, insertId, status_wykonania, do_wykonania,status_grupy,idRozjazdu,brakujace_przeloty } = res.data;
 
-    console.log("status :", status);
-    console.log("insertId :", insertId);
-    console.log("status_wykonania :", status_wykonania);
-    console.log("do_wykonania :", do_wykonania);
-    console.log("status_grupy :", status_grupy);
+    // console.log("status :", status);
+    // console.log("insertId :", insertId);
+    // console.log("status_wykonania :", status_wykonania);
+    // console.log("do_wykonania :", do_wykonania);
+    // console.log("status_grupy :", status_grupy);
     // console.log("Dane z serwera:", res.data);
     // console.log("Status wykonania:", status_wykonania);
     // console.log("Do wykonania:", do_wykonania);
@@ -104,5 +106,7 @@ export const addRealizacjaZakonczArkusz = async (
   } catch (error) {
     console.error("Wystąpił błąd:", error);
     alert("Wystąpił błąd podczas dodawania realizacji procesu.");
-  }
+  }finally {
+        setIsLoading(false);
+      }
 };

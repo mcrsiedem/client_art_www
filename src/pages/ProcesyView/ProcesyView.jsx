@@ -16,6 +16,7 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import ProcesViewRowPrzerwa from "./row/ProcesViewRowPrzerwa";
 import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
+import Loading from "components/Loading/Loading";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -195,6 +196,7 @@ const WykonaniaTable = () => {
           </tbody>
         </table>
       </div>
+      <Loading/>
     </div>
   );
 };

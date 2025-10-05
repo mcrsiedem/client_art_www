@@ -12,7 +12,7 @@ import { IP } from "utils/Host";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
-
+    const [isLoading, setIsLoading] = useState(false);
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
@@ -143,6 +143,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
     
     return  <AppContext.Provider 
                 value={{
+                  isLoading, setIsLoading,
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia, setSortowanieZamowienia,
                   zamowienia, setZamowienia,

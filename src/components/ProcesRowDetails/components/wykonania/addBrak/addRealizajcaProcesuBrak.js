@@ -13,8 +13,10 @@ export const addRealizajcaProcesuBrak = async (
   setRealizacje,
   grupyWykonanAll,
   setGrupWykonanAll,
-  grup
+  grup,
+  setIsLoading
 ) => {
+  setIsLoading(true)
   try {
     const res = await axios.post(
       IP + "dodaj_realizacje_procesu_brak/" + sessionStorage.getItem("token"),
@@ -82,5 +84,7 @@ export const addRealizajcaProcesuBrak = async (
   } catch (error) {
     console.error("Wystąpił błąd:", error);
     alert("Wystąpił błąd podczas dodawania realizacji procesu.");
-  }
+  }finally {
+        setIsLoading(false);
+      }
 };

@@ -11,8 +11,8 @@ export default function AddRealizacjaBrakOddania({ setShow, show, grup,value, se
       <div className={style.grayScaleBackground}>
         <div
           onDoubleClick={() => {
-            console.clear();
-            console.log("daneKlienta : ");
+            // console.clear();
+            // console.log("daneKlienta : ");
           }}
           className={style.window}
         >
@@ -32,7 +32,7 @@ export default function AddRealizacjaBrakOddania({ setShow, show, grup,value, se
 function Header({ setShow }) {
   return (
     <div className={style.header}>
-      <p className={style.title}>Dodaj oddanie </p>
+      <p className={style.title}>Dodaj brak</p>
       <Zamknij setShow={setShow} />
     </div>
   );

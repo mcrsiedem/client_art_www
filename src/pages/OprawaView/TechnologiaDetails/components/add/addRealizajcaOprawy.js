@@ -13,7 +13,9 @@ export const addRealizajcaOprawy = async (
   setWykonaniaOprawy,
   grupyOprawaAll,setGrupyOprawaAll
 ) => {
+
   let status, insertId,status_grupy,zrealizowano;
+  
   await axios
     .post(IP + "dodaj_realizacje_oprawy/" + sessionStorage.getItem("token"), {
       ...grup,

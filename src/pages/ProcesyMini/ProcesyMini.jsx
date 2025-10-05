@@ -18,6 +18,7 @@ import ProcesViewRowPrzerwa from "./ProcesViewRowPrzerwaMini";
 import DecodeToken from "pages/Login/DecodeToken";
 import ProcesViewRowPrzerwaMiniOprawa from "./oprawa/RowPrzerwaMiniOprawa";
 import RowMiniOprawa from "./oprawa/RowMiniOprawa";
+import Loading from "components/Loading/Loading";
 
 export default function ProcesyMini( ) {
   const navigate = useNavigate();
@@ -186,6 +187,7 @@ const WykonaniaTable = () => {
           </tbody>
         </table>
       </div>
+       <Loading/>
     </div>
   );
 };

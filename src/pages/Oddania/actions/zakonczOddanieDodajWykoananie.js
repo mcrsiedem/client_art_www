@@ -31,6 +31,7 @@ export const zakonczOddanieDodajWykoananie = async (
           naklad: brakujacy_naklad,
           global_id: insertId,
           utworzono: today_teraz(),
+          zrealizowano :oddano
 
         });
 

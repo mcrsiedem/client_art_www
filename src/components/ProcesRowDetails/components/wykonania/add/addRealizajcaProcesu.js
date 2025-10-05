@@ -92,6 +92,7 @@ export const addRealizajcaProcesu = async (
     console.error("Wystąpił błąd:", error);
     alert("Wystąpił błąd podczas dodawania realizacji procesu.");
   }finally {
+        
         setIsLoading(false);
       }
 };

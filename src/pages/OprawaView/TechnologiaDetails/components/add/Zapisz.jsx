@@ -3,20 +3,25 @@ import { useContext } from "react";
 import style from "./AddRealizacjaOprawa.module.css";
 import { addRealizajcaOprawy } from "./addRealizajcaOprawy";
 import { TechnologyContext } from "context/TechnologyContext";
+import { AppContext } from "context/AppContext";
 export default function Zapisz({setShow,grup,value}) {
 
     const techContext = useContext(TechnologyContext);
+    const appContext = useContext(AppContext);
 
       const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
       const wykonaniaOprawy = techContext.wykonaniaOprawy;
       const grupyOprawaAll = techContext.grupyOprawaAll;
       const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+      const setIsLoading = appContext.setIsLoading;
+
+      
     
     return (
       <button
         className={style.btn}
         onClick={() => {
-           addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
+           addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading)
           setShow(false)
           
           }}

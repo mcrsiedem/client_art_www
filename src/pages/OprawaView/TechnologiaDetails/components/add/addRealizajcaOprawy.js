@@ -11,22 +11,20 @@ export const addRealizajcaOprawy = async (
   value,
   wykonaniaOprawy,
   setWykonaniaOprawy,
-  grupyOprawaAll,setGrupyOprawaAll
+  grupyOprawaAll,setGrupyOprawaAll,setIsLoading
 ) => {
 
-  let status, insertId,status_grupy,zrealizowano;
-  
-  await axios
+ setIsLoading(false);
+  try{
+
+
+    const res =   await axios
     .post(IP + "dodaj_realizacje_oprawy/" + sessionStorage.getItem("token"), {
       ...grup,
       naklad: value,
     })
-    .then((res) => {
-      status = res.data.status;
-      insertId = res.data.insertId;
-      status_grupy = res.data.status_grupy;
-      zrealizowano = res.data.zrealizowano;
-      
+
+ const { status, insertId,status_grupy,zrealizowano} = res.data;
 
       if (status == "OK") {
         const new_wykonaniaOprawy = wykonaniaOprawy.slice();
@@ -61,6 +59,24 @@ export const addRealizajcaOprawy = async (
         alert(status.sqlMessage);
       }
 
+
+
+
+  }catch (error) {
+    console.error("Wystąpił błąd:", error);
+    alert("Wystąpił błąd podczas dodawania realizacji procesu.");
+  }finally {
+        setIsLoading(false);
+      }
+
+
+
+
+
+      
+
+
+
       setShow(false);
-    });
+
 };

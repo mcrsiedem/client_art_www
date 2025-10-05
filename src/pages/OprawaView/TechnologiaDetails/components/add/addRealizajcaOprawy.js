@@ -14,7 +14,7 @@ export const addRealizajcaOprawy = async (
   grupyOprawaAll,setGrupyOprawaAll,setIsLoading
 ) => {
 
- setIsLoading(false);
+ setIsLoading(true);
   try{
 
 

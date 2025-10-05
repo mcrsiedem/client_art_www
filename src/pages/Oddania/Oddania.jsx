@@ -71,10 +71,10 @@ const OddaniaTable = () => {
               <th onDoubleClick={()=>{  setSortowanieOddania("nr")}}className={style.th_tableProcesy_nr} > Nr</th>
               <th onDoubleClick={()=>{  setSortowanieOddania("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
               <th onDoubleClick={()=>{  setSortowanieOddania("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
-              <th onDoubleClick={()=>{  setSortowanieOddania("oprawa")}} className={style.th_tableProcesy_naklad}> Oprawiono</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("oprawiono")}} className={style.th_tableProcesy_naklad}> Oprawiono</th>
               <th onDoubleClick={()=>{  setSortowanieOddania("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th onDoubleClick={()=>{  setSortowanieOddania("zrealizowano")}} className={style.th_tableProcesy_naklad}> Oddano </th>
-              <th onDoubleClick={()=>{  setSortowanieOddania("data")}}>Spedycja</th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("oddano")}} className={style.th_tableProcesy_naklad}> Oddano </th>
+              <th onDoubleClick={()=>{  setSortowanieOddania("spedycja")}}>Spedycja</th>
               <th onDoubleClick={()=>{  setSortowanieOddania("status")}}>Status</th>
               <th onDoubleClick={()=>{  setSortowanieOddania("uwagi")}}> Uwagi</th>
             </tr>

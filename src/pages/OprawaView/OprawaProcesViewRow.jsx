@@ -244,13 +244,14 @@ function Status({grup}) {
       <select
        className={selectColor(grup.status) }
         value={grup.status}
+        disabled
         onChange={(event) => {
 
+console.log("Tuuu2")
+    // if (grup.status > 1 && event.target.value ==4) {
+    //   zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
 
-    if (grup.status > 1 && event.target.value ==4) {
-      zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
-
-    }
+    // }
 
 
 

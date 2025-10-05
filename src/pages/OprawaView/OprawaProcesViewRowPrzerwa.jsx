@@ -216,11 +216,11 @@ function Status({grup}) {
        className={selectColor(grup.status) }
 
         value={grup.status}
-        // onChange={(event) => {
+        onChange={(event) => {
    
-        //   statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value})
-        //   // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
-        // }}
+          statusGrupyTechnologia_OPRAWA_PROCESY({...grup, status: event.target.value})
+          // updateWykonaniaOrazGrupaFromProcesView(grup.global_id,1,event.target.value,fechGrupyAndWykonaniaForProcesor,selectedProcesor)
+        }}
       >
         {_status_wykonania.map((option) => (
           <option key={option.id} value={option.id}>

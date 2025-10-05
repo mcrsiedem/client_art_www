@@ -1,6 +1,6 @@
 export function sortOddania( oddaniaGrupy,sortowanie) {
   
-    // let posortowanaOprawa =[...oddaniaGrupy.map((t) => {
+    // let posortowaneOddania =[...oddaniaGrupy.map((t) => {
         
     //       return {...t,
     //         nr: "1",
@@ -15,49 +15,51 @@ export function sortOddania( oddaniaGrupy,sortowanie) {
     //       };
   
     //   })] 
-     let posortowanaOprawa;
+     let posortowaneOddania;
   if(oddaniaGrupy){
-   posortowanaOprawa = [...oddaniaGrupy] 
+   posortowaneOddania = [...oddaniaGrupy] 
 
   switch (sortowanie) {
      case 'nr':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.nr - b.nr);
+    posortowaneOddania = posortowaneOddania.sort((a, b) => a.nr - b.nr);
     break;
   case 'naklad':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.naklad - b.naklad);
+    posortowaneOddania = posortowaneOddania.sort((a, b) => a.naklad - b.naklad);
     break;
-      case 'zrealizowano':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.zrealizowano - b.zrealizowano);
+      case 'oprawiono':
+    posortowaneOddania = posortowaneOddania.sort((a, b) => b.oprawiono - a.oprawiono )
+// posortowaneOddania = posortowaneOddania.sort((a, b) => 
+//   (b.oprawiono || 0) - (a.oprawiono || 0) || new Date(a.data_spedycji) - new Date(b.data_spedycji)
+// );
     break;
-  case 'oprawa':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.typ_procesu.localeCompare(b.typ_procesu) );
+      case 'oddano':
+    posortowaneOddania = posortowaneOddania.sort((a, b) => a.oddano - b.oddano );
     break;
-  case 'data':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
+
+  case 'spedycja':
+    posortowaneOddania = posortowaneOddania.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
     break;
-  // case 'data': 
-  //   posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
-  //   break;
+
   case 'klient':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.klient.localeCompare(b.klient));
+    posortowaneOddania = posortowaneOddania.sort((a, b) => a.klient.localeCompare(b.klient));
     break;
       case 'praca':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.tytul.localeCompare(b.tytul));
+    posortowaneOddania = posortowaneOddania.sort((a, b) => a.tytul.localeCompare(b.tytul));
     break;
       case 'status':
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => b.status - a.status);
+    posortowaneOddania = posortowaneOddania.sort((a, b) => b.status - a.status);
     break;
       case 'uwagi':
-        posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.uwagi.localeCompare(b.uwagi));
+        posortowaneOddania = posortowaneOddania.sort((a, b) => a.uwagi.localeCompare(b.uwagi));
     break;
   default:
-    posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
+     posortowaneOddania = posortowaneOddania.sort((a, b) => new Date(a.data_spedycji) - new Date(b.data_spedycji));
     break;
 }
   }
 
 
 
-      return posortowanaOprawa;
+      return posortowaneOddania;
 
 }

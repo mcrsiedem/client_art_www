@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import style from "../Faktury.module.css";
-import { zapisKosztowDodatkowychZamowienia } from "actions/zapisKosztowDodatkowychZamowienia";
 import { useHistoria } from "hooks/useHistoria";
 import { getNameStatus } from "actions/getNameStatus";
 

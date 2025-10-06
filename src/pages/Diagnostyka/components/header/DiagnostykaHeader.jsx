@@ -30,7 +30,7 @@ function DiagnostykaHeader() {
     <div onDoubleClick={()=>{ console.log(oddaniaGrupy)}} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
-          <p className={style.title2}>DIAGNOSTYKA </p>
+          <p className={style.title2}>INSPEKCJA ZMAÓWIENIA </p>
           {/* <RefreshOddania/> */}
            {/* <DataWyswietlania/> */}
         </div>

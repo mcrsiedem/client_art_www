@@ -27,7 +27,7 @@ import GantAll from "pages/Gant/GantAll";
 import UserPermissionsTable from "components/Users/UserPermissionsTable ";
 import Oddania from "pages/Oddania/Oddania";
 
-import Inspekcja from "pages/Diagnostyka/Inspekcja";
+import Inspekcja from "pages/Inspekcja/Inspekcja";
 
 export default function App() {
 

@@ -11,6 +11,7 @@ import { _status } from "utils/initialvalue";
 import DiagnostykaHeader from "./components/header/DiagnostykaHeader";
 import DaneDiag from "./components/dane/DaneDiag";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import ProduktDiag from "./components/produkt/ProduktDiag";
 
 export default function Diagnostyka( ) {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ export default function Diagnostyka( ) {
 
       <div className={style.container}>
        <DaneDiag/>
+       <ProduktDiag/>
  
       </div>
     </div>

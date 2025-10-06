@@ -31,7 +31,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
           .map((rowGrupa, i) => (
             <div>
               <div 
-              title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek}
+              title={"grupa_globa_id :"+rowGrupa.global_id +" Poczatek wykonania: "+rowGrupa.poczatek +"GRUPA_ID: "+rowGrupa.id}
               className={style.grupa_container}>
 
                  <ProcesorGrupy rowGrupa={rowGrupa} rowProces={rowProces}/>

@@ -22,13 +22,15 @@ export default function Realizacje({ wykonanie,grup }) {
                       return (
             <>
               <div 
+          title={"PROCESOR_ID: "+realizacja.procesor_id + " TYP: "+realizacja.typ}
                onDoubleClick={()=>{console.log(realizacja) }}
               className={style.container}>
                   <div className={style.row_title}> 
                     <p className={style.title2}>   {realizacja.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 
                      </div>
-              <div className={style.row}>
+              <div
+               className={style.row}>
                     <div className={style.center}> 
                     <p className={style.title}>   {realizacja.utworzono  } Wykonano:</p>
                     <p className={style.naklad}>   {realizacja.zrealizowano}</p>
@@ -54,7 +56,10 @@ export default function Realizacje({ wykonanie,grup }) {
                     <p className={style.title2}>   {realizacja.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 
                      </div>
-              <div className={style.rowRed}>
+              <div
+              title={"PROCESOR_ID: "+realizacja.procesor_id + " TYP: "+realizacja.typ}
+              
+              className={style.rowRed}>
                     <div className={style.center}> 
                     <p className={style.title}>   {realizacja.utworzono  } Brak:</p>
                     <p className={style.naklad}>   {realizacja.zrealizowano}</p>
@@ -73,6 +78,7 @@ export default function Realizacje({ wykonanie,grup }) {
                       return (
             <>
               <div 
+                 title={"PROCESOR_ID: "+realizacja.procesor_id + " TYP: "+realizacja.typ}
                onDoubleClick={()=>{console.log(realizacja) }}
               className={style.container}>
                   <div className={style.row_title}> 

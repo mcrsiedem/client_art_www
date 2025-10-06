@@ -3,13 +3,14 @@
 
    background-color: #f2f2f2;
    width: calc(100vw - 20px);
-   /* height: 50px; */
+   /* height: 60px; */
    border-radius: 10px;
       display: flex;
-   flex-direction: column;
+   flex-direction: row;
    align-items: center;
-   justify-content: center;
-   padding-top: 10px;
+   justify-content: space-between;
+
+   /* padding-top: 10px; */
 }
 
 .container{
@@ -24,13 +25,40 @@
 /* width: 700px; */
 }
 
+.row1{
+   display: flex;
+      flex-direction: row;
+         align-items: center;
+   justify-content:center;
+   gap:30px;
+   /* width: 100%; */
+   padding-top: 10px;
+   padding-left: 20px;
+   padding-right: 20px;
+
+}
+
+.row2{
+   display: flex;
+      flex-direction: row;
+         align-items: center;
+   justify-content:center;
+   gap:50px;
+   /* width: 100%; */
+   padding-top: 10px;
+   padding-left: 20px;
+   padding-right: 20px;
+
+}
+
+
    .title{
       font-size: 1.5rem;
       font-weight: bold;
    }
 
       .title2{
-      font-size: 1rem;
+      font-size: 1.5rem;
       /* font-weight: bold; */
    }
 

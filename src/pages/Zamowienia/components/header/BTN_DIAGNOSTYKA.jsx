@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import style from "./BTN_INFO_ZAMOWIENIA.module.css";
 import { AppContext } from "context/AppContext";
-import iconCopy from "assets/diagnostyka.svg";
+import iconCopy from "assets/diagnostyka_zielona.svg";
 import { _etapy_produkcji } from "utils/initialvalue";
 import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { sendMail } from "actions/sendMail";

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import style from "./DaneDiag.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import { _status } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { getNameStatus } from "actions/getNameStatus";
 
 
 
@@ -30,9 +31,11 @@ export default function DaneDiag( ) {
   return (
     <div className={style.main}>
     
-    <p className={style.title2}>{daneZamowienia?.nr} / {daneZamowienia?.rok}</p>
-    <p className={style.title}> {daneZamowienia?.klient} {daneZamowienia?.tytul}</p>
-    <p className={style.title2}> {daneZamowienia?.tytul}</p>
+    {/* <p className={style.title}> {daneZamowienia?.klient} {daneZamowienia?.tytul}</p> */}
+    {/* <p className={style.title2}> {daneZamowienia?.tytul}</p>
+    <p className={style.title2}>{daneZamowienia?.nr} / {daneZamowienia?.rok}</p> */}
+    <div className={style.row1}>   <p className={style.title}>{daneZamowienia?.nr} / {daneZamowienia?.rok}</p><p className={style.title}> {daneZamowienia?.klient} </p> <p className={style.title}>  {daneZamowienia?.tytul}</p> </div>
+    <div className={style.row2}> <p className={style.title2}>Stan: {daneZamowienia?.stan} {getNameStatus(daneZamowienia?.stan,_stan_dokumentu)} </p>  <p className={style.title2}> Status:{daneZamowienia?.status} {getNameStatus(daneZamowienia?.status,_status_dokumentu)}</p><p className={style.title2} > Etap: {daneZamowienia?.etap} {getNameStatus(daneZamowienia?.etap,_etapy_produkcji)} </p>  </div>
     </div>
   );
 }

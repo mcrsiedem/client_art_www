@@ -13,6 +13,7 @@ import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { zabezpiecz } from "actions/zabezpiecz";
 import Szukaj from "./Szukaj";
+import BTN_DIAGNOSTYKA from "./BTN_DIAGNOSTYKA";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
 
       </div>
       <div className={style.rightHeaderContener}>
+        <BTN_DIAGNOSTYKA/>
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
         <SORTOWANIE_ZAMOWIENIA_ETAP/>

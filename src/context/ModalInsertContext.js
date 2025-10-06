@@ -41,6 +41,8 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showInputNrZamowienie, setShowInputNrZamowienie] =useState(false);
     const [showMenuZamowienia, setShowMenuZamowienia] = useState(false);
   const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false,faktury:false,kreator: false});
+
+     
     
     useEffect(() => {
      
@@ -298,7 +300,8 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
           handleChangeCardFragmenty_i_Elementy_nazwa,
           showTabs, setShowTabs,
           ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia,
-          faktury, setFaktury,handleFaktury
+          faktury, setFaktury,handleFaktury,
+
       
 
 

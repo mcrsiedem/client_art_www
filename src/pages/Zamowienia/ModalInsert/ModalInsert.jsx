@@ -97,6 +97,7 @@ const setFaktury= contextModalInsert.setFaktury;
 
 
 
+
   useEffect(() => {
 
     // if (open.current) {

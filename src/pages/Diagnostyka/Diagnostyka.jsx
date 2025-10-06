@@ -9,9 +9,12 @@ import { _status } from "utils/initialvalue";
 
 
 import DiagnostykaHeader from "./components/header/DiagnostykaHeader";
+import DaneDiag from "./components/dane/DaneDiag";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 export default function Diagnostyka( ) {
   const navigate = useNavigate();
+  const modalContext = useContext(ModalInsertContext);
 
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
@@ -25,9 +28,35 @@ export default function Diagnostyka( ) {
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
-      .then((res) => {
+      .then(async (res) => {
         if (res.data.Status === "Success") {
           fechOddaniaGrupy(widokOddan)
+
+          const res = await axios.get(IP + "parametry/"+appContext.idZamowieniaDiag+"/"+ sessionStorage.getItem("token"));
+           modalContext.setDaneZamowienia([])
+           modalContext.setProdukty([])
+           modalContext.setElementy([])
+           modalContext.setFragmenty([])
+           modalContext.setOprawa([])
+           modalContext.setProcesyElementow([])
+           modalContext.setTechnologieID([])
+           modalContext.setHistoriaZamowienia([])
+           modalContext.setPakowanie([])
+           modalContext.setDaneZamowienia(res.data[0][0])
+           modalContext.setProdukty(res.data[1])
+           modalContext.setElementy(res.data[2])
+           modalContext.setFragmenty(res.data[3])
+           modalContext.setOprawa(res.data[4])
+           modalContext.setProcesyElementow(res.data[5])
+           modalContext.setTechnologieID(res.data[6])
+           modalContext.setHistoriaZamowienia(res.data[7])
+           modalContext.setPakowanie(res.data[8])
+           modalContext.setKosztyDodatkoweZamowienia(res.data[9])
+           modalContext.setKsiegowosc(res.data[10][0])
+           modalContext.setFaktury(res.data[11])
+
+
+
 
         } else {
           navigate("/Login");
@@ -37,7 +66,7 @@ export default function Diagnostyka( ) {
 
   useEffect(() => {
     checkToken();
-  }, []);
+  }, [appContext.idZamowieniaDiag]);
 
 
   return (
@@ -45,7 +74,7 @@ export default function Diagnostyka( ) {
         <DiagnostykaHeader />
 
       <div className={style.container}>
-        {/* <TechnologiaStage/> */}
+       <DaneDiag/>
  
       </div>
     </div>

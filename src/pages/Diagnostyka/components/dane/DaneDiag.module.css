@@ -1,9 +1,15 @@
 
 .main{
-   display: grid;
-   grid-template-rows: 50px 1fr ;
-   /* background-color: #e74a3b; */
-  
+
+   background-color: #f2f2f2;
+   width: calc(100vw - 20px);
+   /* height: 50px; */
+   border-radius: 10px;
+      display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding-top: 10px;
 }
 
 .container{
@@ -11,14 +17,23 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   gap:10px;
-   padding-top: 10px;
    
-   
+
 
 /* background-color: lightcyan; */
 /* width: 700px; */
 }
+
+   .title{
+      font-size: 1.5rem;
+      font-weight: bold;
+   }
+
+      .title2{
+      font-size: 1rem;
+      /* font-weight: bold; */
+   }
+
 
 .tableContainer{
    /* padding-top: 50px; */

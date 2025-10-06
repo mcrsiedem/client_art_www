@@ -26,6 +26,7 @@ import ZamowieniaFaktury from "pages/Faktury/ZamowieniaFaktury";
 import GantAll from "pages/Gant/GantAll";
 import UserPermissionsTable from "components/Users/UserPermissionsTable ";
 import Oddania from "pages/Oddania/Oddania";
+import Diagnostyka from "pages/Diagnostyka/Diagnostyka";
 
 export default function App() {
 
@@ -49,7 +50,7 @@ export default function App() {
               <Route path='/Technologie' element={<TechnologieView />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/ustawienia' element={<Ustawienia />} />
-              {/* <Route path='/statystyki' element={<Statystyki />} /> */}
+              <Route path='/statystyki' element={<Statystyki />} />
               <Route path='/kalendarz' element={<Gant />} />
               <Route path='/kalendarz2' element={<GantAll />} />
               <Route path='/sandbox' element={<SandBox />} />
@@ -57,6 +58,7 @@ export default function App() {
               <Route path='/Oddania' element={<Oddania />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
               <Route path='/users' element={<UserPermissionsTable/>} />
+              <Route path='/Diagnostyka' element={<Diagnostyka/>} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

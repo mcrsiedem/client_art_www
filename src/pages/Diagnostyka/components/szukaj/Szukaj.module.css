@@ -1,0 +1,61 @@
+
+.main{
+    position: relative;
+}
+.icon_szukaj{
+    position: absolute;
+    top: 3px;
+    left: 6px;
+}
+.icon_clear{
+    /* display: none; */
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    scale: 70%;
+    /* z-index: 10; */
+    /* width: 5px; */
+}
+
+.szukajInput{
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    padding-left: 30px;
+    
+}
+.szukajInput:hover{
+/* background-color: rgb(243, 250, 254); */
+color: rgb(63, 63, 63);
+color: rgb(182, 182, 182);
+} 
+
+/* .szukajInput:focus + .icon_clear::after{
+    display: block;
+} */
+
+
+
+
+.szukajInput::placeholder{
+    color: rgb(110, 110, 110);
+    font-size: 0.9rem;
+    /* padding-left: 20px; */
+}
+.szukajInput:focus{
+    outline: none;
+}
+
+
+.icon2{
+    width: 15px;
+        position: absolute;
+    top: 7px;
+    left: 10px;
+    /* scale: 70%; */
+}

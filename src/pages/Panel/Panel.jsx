@@ -10,6 +10,7 @@ import iconHistoria from 'assets/iconHistoria.svg'
 import iconUstawienia from 'assets/iconUstawienia.svg'
 import iconMagazyn from 'assets/iconMagazyn.svg'
 import iconCTP from 'assets/iconCTP.svg'
+import iconDiagnostyka from 'assets/diagnostyka.svg'
 import iconOddanie from 'assets/iconOddanie2.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
 import iconLock from 'assets/iconLock.svg'
@@ -154,15 +155,17 @@ zabezpiecz()
                                 <div className={style.container} >
                                 <div className={style.container_btn} >
                                         
-                                                                        <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div>
-                                                                        <div className={style.kafle}  onClick={() => { navigate("/faktury") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Faktury" /><p className={style.menu_txt}>FAKTURY</p></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
-                                                                        {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
-                                                                        <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/Oddania") }}><p className={style.znak }>  </p><img className={style.icon } src={iconOddanie} alt="ODDANIA" /> <p className={style.menu_txt}>SPEDYCJA</p></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
-                                                                        <div className={style.kafle} onClick={() => { navigate("/gant") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div>
+                                  <div className={style.kafle}  onClick={() => { navigate("/faktury") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Faktury" /><p className={style.menu_txt}>FAKTURY</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
+                                  {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
+                                  <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Oddania") }}><p className={style.znak }>  </p><img className={style.icon } src={iconOddanie} alt="ODDANIA" /> <p className={style.menu_txt}>SPEDYCJA</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Panel") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Diagnostyka") }}><p className={style.znak }>  </p><img className={style.icon } src={iconDiagnostyka} alt="Zamówienia" /><p className={style.menu_txt}>DIAGNOSTYKA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                                      
                                                         </div>
                                 </div>
             

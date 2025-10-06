@@ -30,7 +30,7 @@ export default function DaneIns( ) {
 
   return (
     <div className={style.main}>
-    <div className={style.row1}>   <p className={style.title}>{daneZamowienia?.nr} / {daneZamowienia?.rok}</p><p className={style.title}> {daneZamowienia?.klient} </p> <p className={style.title}>  {daneZamowienia?.tytul}</p> </div>
+    <div className={style.row1}>   <p className={style.title}>ID: {daneZamowienia?.id}</p> <p className={style.title}>{daneZamowienia?.nr} / {daneZamowienia?.rok}</p><p className={style.title}> {daneZamowienia?.klient} </p> <p className={style.title}>  {daneZamowienia?.tytul}</p> </div>
     <div className={style.row2}> <p className={style.title3}>Stan: {daneZamowienia?.stan} {getNameStatus(daneZamowienia?.stan,_stan_dokumentu)} </p>  <p className={style.title3}> Status: {daneZamowienia?.status} {getNameStatus(daneZamowienia?.status,_status_dokumentu)}</p><p className={style.title3} > Etap: {daneZamowienia?.etap} {getNameStatus(daneZamowienia?.etap,_etapy_produkcji)} </p>  </div>
     </div>
   );

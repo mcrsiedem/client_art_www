@@ -10,7 +10,7 @@ export default function IndeksWykonania({ rowWykonanie }) {
     <div className={style.col_dane_indeks}>
       <input
         disabled
-        title="Kolejność"
+        title={rowWykonanie.procesor_id}
         className={style.input_indeks}
         value={rowWykonanie.indeks}
         onChange={(e) => {

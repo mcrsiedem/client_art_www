@@ -1,7 +1,7 @@
 
 .main{
 
-   background-color: #b2b2b237;
+   background-color: #8ec6f9;
    /* width: calc(100vw - 20px); */
    /* height: 60px; */
    /* border-radius: 10px; */
@@ -55,7 +55,7 @@ width: 100vw;
    .title{
       font-size: 1.2rem;
       font-weight: bold;
-      color: #505050;
+      color: #272727;
    }
 
       .title2{

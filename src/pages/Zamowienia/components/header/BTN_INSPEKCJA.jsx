@@ -9,7 +9,7 @@ import { sendMail } from "actions/sendMail";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useNavigate } from "react-router-dom";
 
-export default function BTN_DIAGNOSTYKA() {
+export default function BTN_INSPEKCJA() {
   const contextApp = useContext(AppContext);
   const modalContext = useContext(ModalInsertContext);
   const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
@@ -24,7 +24,7 @@ export default function BTN_DIAGNOSTYKA() {
       src={iconCopy}
       onClick={() => {
        contextApp.setIdZamowieniaDiag(modalContext.selectedZamowienie.id)
-       navigate("/Diagnostyka");
+       navigate("/Inspekcja");
 
 
       }}

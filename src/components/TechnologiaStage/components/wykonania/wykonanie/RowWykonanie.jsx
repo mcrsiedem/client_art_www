@@ -13,9 +13,10 @@ import NarzadWykonania from "./components/NarzadWykonania";
 
 export default function RowWykonanie  ({rowWykonanie,rowProces})  {
   return(<div
+  
     draggable
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
-    <div  className={style.container}> 
+    <div onDoubleClick={()=>{console.log(rowWykonanie)}}  className={style.container}> 
       <IndeksWykonania rowWykonanie={rowWykonanie}/>
       <ArkuszWykonania rowWykonanie={rowWykonanie}/>
       <RodzajArkuszaWykonania rowWykonanie={rowWykonanie}/>

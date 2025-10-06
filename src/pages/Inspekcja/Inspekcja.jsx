@@ -8,10 +8,10 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { _status } from "utils/initialvalue";
 
 
-import DiagnostykaHeader from "./components/header/InspekcjaHeader";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DaneIns from "./components/dane/DaneIns";
 import ProduktIns from "./components/produkt/ProduktIns";
+import InspekcjaHeader from "./components/header/InspekcjaHeader";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ export default function Inspekcja( ) {
 
   return (
     <div className={style.main}>
-        <DiagnostykaHeader />
+        <InspekcjaHeader />
 
       <div className={style.container}>
        <DaneIns/>

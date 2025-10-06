@@ -26,7 +26,8 @@ import ZamowieniaFaktury from "pages/Faktury/ZamowieniaFaktury";
 import GantAll from "pages/Gant/GantAll";
 import UserPermissionsTable from "components/Users/UserPermissionsTable ";
 import Oddania from "pages/Oddania/Oddania";
-import Diagnostyka from "pages/Diagnostyka/Diagnostyka";
+
+import Inspekcja from "pages/Diagnostyka/Inspekcja";
 
 export default function App() {
 
@@ -58,7 +59,7 @@ export default function App() {
               <Route path='/Oddania' element={<Oddania />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
               <Route path='/users' element={<UserPermissionsTable/>} />
-              <Route path='/Diagnostyka' element={<Diagnostyka/>} />
+              <Route path='/Inspekcja' element={<Inspekcja/>} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

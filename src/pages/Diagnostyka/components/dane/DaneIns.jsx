@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "./DaneDiag.module.css";
+import style from "./DaneIns.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
@@ -9,7 +9,7 @@ import { getNameStatus } from "actions/getNameStatus";
 
 
 
-export default function DaneDiag( ) {
+export default function DaneIns( ) {
   const navigate = useNavigate();
 
   const appContext = useContext(AppContext)

@@ -2,18 +2,18 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-import style from "./Diagnostyka.module.css";
+import style from "./Inspekcja.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _status } from "utils/initialvalue";
 
 
-import DiagnostykaHeader from "./components/header/DiagnostykaHeader";
-import DaneDiag from "./components/dane/DaneDiag";
+import DiagnostykaHeader from "./components/header/InspekcjaHeader";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import ProduktDiag from "./components/produkt/ProduktDiag";
+import DaneIns from "./components/dane/DaneIns";
+import ProduktIns from "./components/produkt/ProduktIns";
 
-export default function Diagnostyka( ) {
+export default function Inspekcja( ) {
   const navigate = useNavigate();
   const modalContext = useContext(ModalInsertContext);
 
@@ -75,8 +75,8 @@ export default function Diagnostyka( ) {
         <DiagnostykaHeader />
 
       <div className={style.container}>
-       <DaneDiag/>
-       <ProduktDiag/>
+       <DaneIns/>
+       <ProduktIns/>
  
       </div>
     </div>

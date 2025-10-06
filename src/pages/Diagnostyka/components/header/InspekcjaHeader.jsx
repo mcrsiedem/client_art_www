@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./DiagnostykaHeader.module.css";
+import style from "./InspekcjaHeader.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
 
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 
-function DiagnostykaHeader() {
+function InspekcjaHeader() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -56,6 +56,6 @@ function DiagnostykaHeader() {
   );
 }
 
-export default DiagnostykaHeader;
+export default InspekcjaHeader;
 
 

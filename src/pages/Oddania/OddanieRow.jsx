@@ -51,11 +51,11 @@ let prevet = true;
     <>
       <tr
         title={" global_id: " + grup.global_id+" zamowienie_id: " + grup.zamowienie_id}
-        draggable={wolno()}
+        // draggable={wolno()}
         key={grup.global_id}
-        onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}
-        onDragOver={handleDragOver}
-        onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
+        // onDrop={() => handleDrop(grup.global_id, grup.procesor_id)}
+        // onDragOver={handleDragOver}
+        // onDragStart={() => handleDragStart(grup.global_id, grup.typ_grupy)}
         className={selectColor(grup.status)}
         onContextMenu={(event) => onContextMenuHanlder(event,grup,setOddaniaGrupy,oddaniaGrupy,prevet,fechOddaniaWykonania)}
         // onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOddania)}

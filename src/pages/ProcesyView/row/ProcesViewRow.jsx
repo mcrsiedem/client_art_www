@@ -212,7 +212,8 @@ if (grup.select) return style.procesRow_select
                  
                 </tr>
                   <ProcesRowDetails grup={grup}  mini={false}/>
-                                  <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
+                  
+                  <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
                   
 
 {/*                 

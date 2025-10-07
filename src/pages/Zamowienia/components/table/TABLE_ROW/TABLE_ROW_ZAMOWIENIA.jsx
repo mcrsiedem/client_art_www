@@ -295,12 +295,51 @@ const KlientTableZamowienia = ({ row }) => {
 };
 
 const SpedycjaTableZamowienia = ({ row }) => {
+
+    function isWeekend(dateString) {
+  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
+  // działa niezawodnie i interpretuje datę jako lokalną.
+  const date = new Date(dateString);
+
+  // Metoda getDay() zwraca dzień tygodnia, gdzie:
+  // 0 = Niedziela
+  // 1 = Poniedziałek
+  // ...
+  // 5 = Piątek
+  // 6 = Sobota
+  const dayOfWeek = date.getDay();
+
+  // Sprawdzamy, czy dzień tygodnia to sobota (6) lub niedziela (0).
+  return dayOfWeek === 0 || dayOfWeek === 6;
+  }
+
+function getPolishDayName(dateString) {
+  const date = new Date(dateString);
+  
+  // Tablica z polskimi nazwami dni tygodnia, gdzie indeks 0 to Niedziela (jak zwraca getDay()).
+  const polishDays = [
+    'Niedziela', // 0
+    'Poniedziałek', // 1
+    'Wtorek', // 2
+    'Środa', // 3
+    'Czwartek', // 4
+    'Piątek', // 5
+    'Sobota' // 6
+  ];
+  
+  // getDay() zwraca liczbę (0-6), którą wykorzystujemy jako indeks tablicy.
+  const dayIndex = date.getDay();
+  
+  return polishDays[dayIndex];
+}
+
+
   return (
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
-      title={row.data_spedycji}
-      className={style.klientInput}
+      title={getPolishDayName(row.data_spedycji)}
+      className={isWeekend(row.data_spedycji)? style.spedycjaInput_red:style.spedycjaInput}
       value={row.data_spedycji}
       readOnly
 
@@ -310,6 +349,24 @@ const SpedycjaTableZamowienia = ({ row }) => {
   );
 };
 const DataPrzyjeciaTableZamowienia = ({ row }) => {
+
+  function isWeekend(dateString) {
+  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
+  // działa niezawodnie i interpretuje datę jako lokalną.
+  const date = new Date(dateString);
+
+  // Metoda getDay() zwraca dzień tygodnia, gdzie:
+  // 0 = Niedziela
+  // 1 = Poniedziałek
+  // ...
+  // 5 = Piątek
+  // 6 = Sobota
+  const dayOfWeek = date.getDay();
+
+  // Sprawdzamy, czy dzień tygodnia to sobota (6) lub niedziela (0).
+  return dayOfWeek === 0 || dayOfWeek === 6;
+  }
+
   return (
     <td>
        <input

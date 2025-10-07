@@ -238,12 +238,47 @@ const oprawa = contextModalInsert.oprawa;
 const setOprawa = contextModalInsert.setOprawa;
 const [add] = useHistoria()
 
+function getPolishDayName(dateString) {
+  const date = new Date(dateString);
+  
+  // Tablica z polskimi nazwami dni tygodnia, gdzie indeks 0 to Niedziela (jak zwraca getDay()).
+  const polishDays = [
+    'Niedziela', // 0
+    'Poniedziałek', // 1
+    'Wtorek', // 2
+    'Środa', // 3
+    'Czwartek', // 4
+    'Piątek', // 5
+    'Sobota' // 6
+  ];
+  
+  // getDay() zwraca liczbę (0-6), którą wykorzystujemy jako indeks tablicy.
+  const dayIndex = date.getDay();
+  
+  return polishDays[dayIndex];
+}
+    function isWeekend(dateString) {
+  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
+  // działa niezawodnie i interpretuje datę jako lokalną.
+  const date = new Date(dateString);
 
+  // Metoda getDay() zwraca dzień tygodnia, gdzie:
+  // 0 = Niedziela
+  // 1 = Poniedziałek
+  // ...
+  // 5 = Piątek
+  // 6 = Sobota
+  const dayOfWeek = date.getDay();
+
+  // Sprawdzamy, czy dzień tygodnia to sobota (6) lub niedziela (0).
+  return dayOfWeek === 0 || dayOfWeek === 6;
+  }
     return(
         <div className={style.col}>
         <label className={style.label}> Data spedycji </label>
-        <input className={style.select} type="date"
+        <input className={isWeekend(daneZamowienia.data_spedycji) ?style.select_red:style.select} type="date"
         value={daneZamowienia.data_spedycji}
+         title={getPolishDayName(daneZamowienia.data_spedycji)}
         onChange={(event) => {
     
           setDaneZamowienia({

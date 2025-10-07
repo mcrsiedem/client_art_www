@@ -27,9 +27,34 @@
   /* background-color: #5cb811; */
   width: 60px;
 }
+
+
+
+
 .klientInput{
   border: none;
   background: transparent;
+  font-size: 0.9rem;
+  padding-top: 5px;
+  width: 100%;
+}
+
+
+
+
+.spedycjaInput{
+  border: none;
+  background: transparent;
+  /* background: red; */
+
+  font-size: 0.9rem;
+  padding-top: 5px;
+  width: 100%;
+}
+
+.spedycjaInput_red{
+  border: none;
+  background: red;
   font-size: 0.9rem;
   padding-top: 5px;
   width: 100%;

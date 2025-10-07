@@ -147,6 +147,16 @@ padding-left: 10px;
   /* min-width: 50px; */
 }
 
+.select_red {
+  background-color: rgb(253, 0, 0);
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  /* min-width: 50px; */
+}
+
 .input_naklad {
   background-color: rgb(230, 230, 230);
   height: 2rem;

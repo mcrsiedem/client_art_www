@@ -32,7 +32,7 @@ export default function InspekcjaHeader() {
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>INSPEKCJA ZAMÓWIENIA </p>
-          {/* <RefreshOddania/> */}
+v           {/* <RefreshOddania/> */}
            {/* <DataWyswietlania/> */}
         </div>
 
@@ -72,7 +72,7 @@ function ID( ){
  const [valueIN,setValueIN] = useState(appContext.idZamowieniaDiag)
   return(
       <div className={style.col}>
-      <label className={style.label}> ID ZAMÓWIENIA: </label>
+      <label className={style.label}> ID : </label>
       <input className={style.input} type="text"
       // disabled
       // title="Nakład dodaj w parametrach"

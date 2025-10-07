@@ -7,8 +7,9 @@ import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
+import { reg_int } from "utils/initialvalue";
 
-function InspekcjaHeader() {
+export default function InspekcjaHeader() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -36,6 +37,11 @@ function InspekcjaHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
+          <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                {/* <p className={style.title2}>ID: </p> */}
+                <ID />
+                          </div>
+       
         </div>
         <div className={style.rightHeaderContener}>
           {/* <FILTROWANIE_ODDANYCH/> */}
@@ -46,7 +52,7 @@ function InspekcjaHeader() {
             className={style.icon}
             src={iconClose2}
             onClick={() => {
-              navigate("/Panel");
+              navigate("/Zamowienia");
             }}
             alt="React Logo"
           />
@@ -56,6 +62,36 @@ function InspekcjaHeader() {
   );
 }
 
-export default InspekcjaHeader;
 
 
+
+
+function ID( ){
+
+  const appContext = useContext(AppContext)
+ const [valueIN,setValueIN] = useState(appContext.idZamowieniaDiag)
+  return(
+      <div className={style.col}>
+      <label className={style.label}> ID ZAMÓWIENIA: </label>
+      <input className={style.input} type="text"
+      // disabled
+      // title="Nakład dodaj w parametrach"
+      value={valueIN}
+
+      onBlur={(e) => {
+                    if (e.target.value === "" || reg_int.test(e.target.value)) {
+                      appContext.setIdZamowieniaDiag(valueIN)
+            }
+      }}
+      
+            onChange={(e) => {
+                    if (e.target.value === "" || reg_int.test(e.target.value)) {
+                      setValueIN(e.target.value)
+            }
+      }}
+      
+      
+      ></input>
+    </div>
+  );
+}

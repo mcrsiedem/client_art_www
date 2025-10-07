@@ -165,7 +165,7 @@ zabezpiecz()
                                   <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p></div>
                                   <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
                                   <div className={style.kafle} onClick={() => { navigate("/Panel") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                  <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                  {/* <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div> */}
                                                       
                                                         </div>
                                 </div>

@@ -56,9 +56,37 @@ export default function Inspekcja( ) {
            modalContext.setKsiegowosc(res.data[10][0])
            modalContext.setFaktury(res.data[11])
 
+           if(modalContext.daneZamowienia.technologia_id){
+              const res = await axios.get(IP + "technologie_parametry/"+modalContext.daneZamowienia.technologia_id+"/"+ sessionStorage.getItem("token"));
+                  techContext.setDaneTech([]) 
+                  techContext.setProduktyTech([])
+                  techContext.setElementyTech([])
+                  techContext.setFragmentyTech([])
+                  techContext.setOprawaTech([])
+                  techContext.setProcesyElementowTech([])
+                  techContext.setLegi([])
+                  techContext.setLegiFragmenty([])
+                  techContext.setArkusze([])
+                  techContext.setGrupaWykonan([])
+                  techContext.setGrupaWykonanInit([])
+                  techContext.setWykonania([])
 
+                  techContext.setDaneTech(res.data[0][0]) 
+                  techContext.setProduktyTech(res.data[1])
+                  techContext.setElementyTech(res.data[2])
+                  techContext.setFragmentyTech(res.data[3])
+                  techContext.setOprawaTech(res.data[4])
+                  techContext.setProcesyElementowTech(res.data[5])
+                  techContext.setLegi(res.data[6])
+                  techContext.setLegiFragmenty(res.data[7])
+                  techContext.setArkusze(res.data[8])
 
-
+                  // setGrupaWykonanInit(res.data[9])
+                  techContext.setGrupaWykonan(res.data[9])
+                  
+                  techContext.setWykonania(res.data[10])
+                  techContext.setGrupaOprawaTech(res.data[11])
+           }
         } else {
           navigate("/Login");
         }

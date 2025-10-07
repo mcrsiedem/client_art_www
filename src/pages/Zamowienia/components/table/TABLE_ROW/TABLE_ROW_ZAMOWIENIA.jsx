@@ -297,8 +297,7 @@ const KlientTableZamowienia = ({ row }) => {
 const SpedycjaTableZamowienia = ({ row }) => {
 
     function isWeekend(dateString) {
-  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
-  // działa niezawodnie i interpretuje datę jako lokalną.
+
   const date = new Date(dateString);
 
   // Metoda getDay() zwraca dzień tygodnia, gdzie:

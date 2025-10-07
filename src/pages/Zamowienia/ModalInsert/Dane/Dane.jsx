@@ -258,8 +258,7 @@ function getPolishDayName(dateString) {
   return polishDays[dayIndex];
 }
     function isWeekend(dateString) {
-  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
-  // działa niezawodnie i interpretuje datę jako lokalną.
+
   const date = new Date(dateString);
 
   // Metoda getDay() zwraca dzień tygodnia, gdzie:

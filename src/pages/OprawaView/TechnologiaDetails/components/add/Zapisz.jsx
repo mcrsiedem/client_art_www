@@ -21,8 +21,13 @@ export default function Zapisz({setShow,grup,value}) {
       <button
         className={style.btn}
         onClick={() => {
-           addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading)
+          if(value==""){
+            alert("Dodaj ilość")
+          }else{
+                  addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading)
           setShow(false)
+          }
+    
           
           }}
       >

@@ -25,8 +25,13 @@ export default function ZapiszBrak({setShow,grup,value}) {
       <button
         className={style.btn}
         onClick={() => {
-           addRealizajcaBrakOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,2)
+            if(value==""){
+            alert("Dodaj ilość")
+          }else{
+                addRealizajcaBrakOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,2)
           setShow(false)
+          }
+       
           
           }}
       >

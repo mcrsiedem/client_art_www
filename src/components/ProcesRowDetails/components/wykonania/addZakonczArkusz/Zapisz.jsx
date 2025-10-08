@@ -26,8 +26,17 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       <button
         className={style.btn}
         onClick={() => {
-          addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading)
+       if(value==""){
+        alert("Wpisz ilość")
+       
+        
+       }else{
+                   addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading)
           setShow(false)
+       }
+          
+     
+         
           
           }}
       >

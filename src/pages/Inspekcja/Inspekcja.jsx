@@ -12,6 +12,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DaneIns from "./components/dane/DaneIns";
 import ProduktIns from "./components/produkt/ProduktIns";
 import InspekcjaHeader from "./components/header/InspekcjaHeader";
+import ElementTechIns from "./components/element_tech_ins/ElementTechIns";
+import ElementTechInsPane from "./components/element_tech_ins/ElementTechInsPane";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
@@ -27,6 +29,8 @@ export default function Inspekcja( ) {
 
 
   async function checkToken() {
+
+    let technologia_id;
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then(async (res) => {
@@ -44,6 +48,7 @@ export default function Inspekcja( ) {
            modalContext.setHistoriaZamowienia([])
            modalContext.setPakowanie([])
            modalContext.setDaneZamowienia(res.data[0][0])
+          technologia_id = res.data[0][0].technologia_id ||0
            modalContext.setProdukty(res.data[1])
            modalContext.setElementy(res.data[2])
            modalContext.setFragmenty(res.data[3])
@@ -57,7 +62,7 @@ export default function Inspekcja( ) {
            modalContext.setFaktury(res.data[11])
 
            if(modalContext.daneZamowienia.technologia_id){
-              const res = await axios.get(IP + "technologie_parametry/"+modalContext.daneZamowienia.technologia_id+"/"+ sessionStorage.getItem("token"));
+              const res = await axios.get(IP + "technologie_parametry/"+technologia_id+"/"+ sessionStorage.getItem("token"));
                   techContext.setDaneTech([]) 
                   techContext.setProduktyTech([])
                   techContext.setElementyTech([])
@@ -105,6 +110,7 @@ export default function Inspekcja( ) {
       <div className={style.container}>
        <DaneIns/>
        <ProduktIns/>
+       <ElementTechInsPane/>
  
       </div>
     </div>

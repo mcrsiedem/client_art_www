@@ -12,7 +12,7 @@ import { IP } from "utils/Host";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
-    const [idZamowieniaDiag, setIdZamowieniaDiag] = useState(100);
+    const [idZamowieniaDiag, setIdZamowieniaDiag] = useState(127);
     const [isLoading, setIsLoading] = useState(false);
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);

@@ -18,6 +18,22 @@ export default function InspekcjaHeader() {
     const oddaniaGrupy =appContext.oddaniaGrupy;
     const setOddaniaGrupy =appContext.setOddaniaGrupy;
 
+const elementyTech =techContext.elementyTech;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     if (effectRan.current === true) {
     }
@@ -28,7 +44,11 @@ export default function InspekcjaHeader() {
   //---------------------------------------------------------
 
   return (
-    <div onDoubleClick={()=>{ console.log(oddaniaGrupy)}} className={style.container}>
+    <div onDoubleClick={()=>{ 
+      console.log(oddaniaGrupy)
+      showState(elementyTech)
+      
+      }} className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <p className={style.title2}>INSPEKCJA ZAMÓWIENIA </p>
@@ -94,4 +114,10 @@ function ID( ){
       ></input>
     </div>
   );
+}
+
+
+const showState = (elementyTech) =>{
+console.log("Elementy tech: " + elementyTech)
+
 }

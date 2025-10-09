@@ -180,11 +180,16 @@ zabezpiecz()
                                   <div className={style.kafle} onClick={() => { navigate("/Panel") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
                                   {/* <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div> */}
                                                       
-                                                        </div>
+                                                        </div >
 
-                                                      {/* < div>
-                                                          <p>users</p>
-                                                        </div> */}
+                                                      < div className={style.container_btn}> 
+
+                                                      {socketContext.usersIO.map((user,i) => {
+                                                                   return ( <p className={style.users}>{user.imie}</p>
+                                                                   );
+                                                                 })}
+                                                         
+                                                        </div>
                                                         
                                 </div>
                               

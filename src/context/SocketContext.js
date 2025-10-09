@@ -43,10 +43,11 @@ const [usersIO,setUsersIO] = useState([]);
           //tu przychodzi odpowiedź i jest zapisana w contexcie
           // setSocketReceiveMessage(data.message)
           setUsersIO(data)
-          console.log(data)
+          // console.log(data)
         });
 
         
+      // }, []);
       }, [socket]);
     
     

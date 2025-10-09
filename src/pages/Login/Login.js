@@ -77,9 +77,14 @@ techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
 
  const newSocket = io.connect(IP_SOCKET, {
   autoConnect: true,
+  reconnection: true,
+  reconnectionAttempts: Infinity, // Liczba prób ponownego łączenia
+        reconnectionDelay: 1000, // Czas oczekiwania przed pierwszą próbą
+        reconnectionDelayMax: 5000, // Maksymalny czas oczekiwania
   auth: {
     token: sessionStorage.getItem("token"), 
   },
+  transports: ['websocket']
 });
 socketContext.setSocket(newSocket)
 

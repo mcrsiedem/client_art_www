@@ -186,7 +186,7 @@ zabezpiecz()
                                                       
                                                         </div >
 
-                                                      < div className={style.container_btn}> 
+                                                      < div className={style.container_btn_prawy}> 
 <OnlineUsersList />
                                                       {/* {usersIO.map((user,i) => {
                                                                    return ( <p className={style.users}>{user.imie}</p>

@@ -53,6 +53,17 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
           /* height: calc(100vh - 70px); */
           /* padding-left: 250px; */
         }
+
+                .container_btn_prawy{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+          gap:20px;
+          /* background-color: rgb(143, 143, 143); */
+          /* height: calc(100vh - 70px); */
+          /* padding-left: 250px; */
+        }
     .kafle{
         display: flex;
         justify-content: start;

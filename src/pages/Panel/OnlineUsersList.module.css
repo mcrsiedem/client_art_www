@@ -1,12 +1,13 @@
 /* Kontener główny listy */
 .container {
-    max-width: 400px;
+    max-width: 450px;
     margin: 30px auto;
     padding: 20px;
     border-radius: 12px;
     /* Ładny, miękki cień */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
     background-color: #f7f9fc;
+            backdrop-filter:  blur(10px);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

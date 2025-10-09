@@ -7,6 +7,7 @@ const GanttChartAll = ({ stages }) => {
   const chartRef = useRef(null);
   const scrollWrapperRef = useRef(null); // Nowy ref dla przewijania
   const [minDate, setMinDate] = useState(null);
+  const [etykieta, setEtykieta] = useState("");
   const [maxDate, setMaxDate] = useState(null);
   const [totalChartWidth, setTotalChartWidth] = useState(0);
   const [scaleFactor, setScaleFactor] = useState(0.2);
@@ -254,10 +255,11 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                     <button className={styles.btnForm} onClick={()=>{setColorFrom(3)}}>
             Spedycja
           </button>
-
           </div>
+          {/* <p className={styles.etykieta}>  {etykieta}</p> */}
         <div className={styles.controls}>
   
+
 
    
 
@@ -329,7 +331,11 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                           marginLeft,
                           backgroundColor: barColor
                         }}
-                        title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
+
+                        // onClick={()=>{ setEtykieta(`${stage.name}        ${stage.start} - ${stage.end}   Ilość narządów: ${stage.ilosc_narzadow}      Przeloty: ${stage.przeloty} szt.`)}}
+                        onClick={()=>{ setEtykieta(`Start: ${stage.start} - ${stage.end}         Ilość narządów: ${stage.ilosc_narzadow}      Przeloty: ${stage.przeloty} szt.`)}}
+                        // title={`${stage.name}: ${stage.start} - ${stage.end} (${stage.progress}%)`}
+                        title={`${stage.name}        ${stage.start} - ${stage.end}   Ilość narządów: ${stage.ilosc_narzadow}      Przeloty: ${stage.przeloty} szt.`}
                       >
 
                         {stage.progress > 5 && stage.status == 3 && (
@@ -359,8 +365,10 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
                 {renderTimelineMarkers()}
               </div>
               <div className={styles.timelineLine}></div>
+
             </div>
           </div>
+                  {/* <p className={styles.etykieta}>  {etykieta}</p> */}
         </div>
       </div>
     </div>

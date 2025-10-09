@@ -7,10 +7,9 @@ import Zamowienia from "./pages/Zamowienia/Zamowienia";
 import History from "./pages/History/History";
 
 import ProcesyView from "pages/ProcesyView/ProcesyView";
-
+import { SocketProvider } from './context/SocketContext';
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
-import { SocketContextProvider } from "./context/SocketContext";
 import { ModalInsertContextProvider } from "./context/ModalInsertContext";
 import { PreOrderContextProvider } from "context/PreOrderContext";
 import { TechnologyContextProvider } from "context/TechnologyContext";
@@ -34,7 +33,7 @@ export default function App() {
 
   return (
     <BrowserRouter basename={''} >
-      <SocketContextProvider>
+      <SocketProvider>
       <AppContextProvider>
       <TechnologyContextProvider>
       <PreOrderContextProvider>
@@ -65,7 +64,7 @@ export default function App() {
       </PreOrderContextProvider>
       </TechnologyContextProvider>
       </AppContextProvider>
-      </SocketContextProvider>
+      </SocketProvider>
       
     </BrowserRouter>
   );

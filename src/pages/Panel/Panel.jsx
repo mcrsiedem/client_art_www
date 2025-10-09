@@ -26,7 +26,7 @@ import { getClients } from "actions/getClients";
 import PanelMini from "./PanelMini";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
-import { SocketContext } from "context/SocketContext";
+import { SocketContext, useSocket } from "context/SocketContext";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
@@ -35,8 +35,7 @@ export default function Panel({ user, setUser }) {
   const setNadkomplety = appcontext.setNadkomplety;
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
-  const socketContext = useContext(SocketContext);
-
+  // const socketContext = useContext(SocketContext);
   useEffect(() => {
     // window.onbeforeunload = function () {
     //   alert("STOP");
@@ -54,7 +53,8 @@ export default function Panel({ user, setUser }) {
   if (window.innerWidth > 900) {
     return (
       <>
-        <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} socketContext={socketContext}/>
+        {/* <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} socketContext={socketContext}/> */}
+        <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />
       </>
     );
   } else
@@ -70,8 +70,10 @@ export default function Panel({ user, setUser }) {
 
 
 
-const PanelDesktop = ({isOnline,navigate,logout,socketContext}) => {
+const PanelDesktop = ({isOnline,navigate,logout}) => {
   const dropdownRef = useRef(null);
+ const { socket, isConnected, isAuthenticated, updateAuthStatus } = useSocket()
+
    const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
 
   const toggleMenu = () => {
@@ -110,8 +112,8 @@ const PanelDesktop = ({isOnline,navigate,logout,socketContext}) => {
         <ul className={style.dropdown_menu } ref={dropdownRef}>
           
                     <li           onClick={() => {
-                        if(socketContext.socket){
-                           socketContext.socket.emit("ktotam");   
+                        if(socket){
+                           socket.emit("ktotam");   
                         }
                  
      setIsOpen(false)
@@ -184,10 +186,10 @@ zabezpiecz()
 
                                                       < div className={style.container_btn}> 
 
-                                                      {socketContext.usersIO.map((user,i) => {
+                                                      {/* {socketContext.usersIO.map((user,i) => {
                                                                    return ( <p className={style.users}>{user.imie}</p>
                                                                    );
-                                                                 })}
+                                                                 })} */}
                                                          
                                                         </div>
                                                         

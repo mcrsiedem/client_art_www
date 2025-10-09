@@ -7,7 +7,7 @@ import axios from "axios";
 import { IP, IP_SOCKET } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo_biale.svg";
-import { SocketContext } from "../../context/SocketContext";
+import {  useSocket } from "../../context/SocketContext";
 //  import background from "assets/logowanie_1.jpg" 
  import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
@@ -16,15 +16,15 @@ import { TechnologyContext } from "context/TechnologyContext";
 export default function Login( ) {
 
   const [user,setUser] = useState(null);
-  const [socket,setSocket] = useState(null);
+  // const [socket,setSocket] = useState(null);
   const [input, setInput] = useState({    login: "",    haslo: "",  });
-  const context = useContext(SocketContext);
+  // const context = useContext(SocketContext);
   const navigate = useNavigate();
 
   const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
-  const socketContext = useContext(SocketContext);
-
+  // const socketContext = useContext(SocketContext);
+const { socket, isConnected, isAuthenticated, updateAuthStatus } = useSocket()
   
   //  const appcontext = useContext(AppContext);
   //       const setMobile = appcontext.setMobile;
@@ -75,18 +75,19 @@ techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
  contextApp.setSelectedKlient(0);
  contextApp.setSelectedUser(0);
 
- const newSocket = io.connect(IP_SOCKET, {
-  autoConnect: true,
-  reconnection: true,
-  reconnectionAttempts: Infinity, // Liczba prób ponownego łączenia
-        reconnectionDelay: 1000, // Czas oczekiwania przed pierwszą próbą
-        reconnectionDelayMax: 5000, // Maksymalny czas oczekiwania
-  auth: {
-    token: sessionStorage.getItem("token"), 
-  },
-  transports: ['websocket']
-});
-socketContext.setSocket(newSocket)
+updateAuthStatus(true,res.data)
+//  const newSocket = io.connect(IP_SOCKET, {
+//   autoConnect: true,
+//   reconnection: true,
+//   reconnectionAttempts: Infinity, // Liczba prób ponownego łączenia
+//         reconnectionDelay: 1000, // Czas oczekiwania przed pierwszą próbą
+//         reconnectionDelayMax: 5000, // Maksymalny czas oczekiwania
+//   auth: {
+//     token: sessionStorage.getItem("token"), 
+//   },
+//   transports: ['websocket']
+// });
+// socketContext.setSocket(newSocket)
 
 } else {
   console.log("Błąd");

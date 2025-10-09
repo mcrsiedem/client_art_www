@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, createContext, useContext, useEffect, useRef } from "react";
+import io from "socket.io-client";
 import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP, IP_SOCKET } from "../../utils/Host";
 import DecodeToken from "./DecodeToken";
 import iconLogo from "../../assets/logo_biale.svg";
 import { SocketContext } from "../../context/SocketContext";
@@ -22,6 +23,7 @@ export default function Login( ) {
 
   const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
+  const socketContext = useContext(SocketContext);
 
   
   //  const appcontext = useContext(AppContext);
@@ -73,7 +75,13 @@ techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
  contextApp.setSelectedKlient(0);
  contextApp.setSelectedUser(0);
 
- 
+ const newSocket = io.connect(IP_SOCKET, {
+  autoConnect: true,
+  auth: {
+    token: sessionStorage.getItem("token"), 
+  },
+});
+socketContext.setSocket(newSocket)
 
 } else {
   console.log("Błąd");

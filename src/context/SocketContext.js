@@ -3,7 +3,14 @@ import io from "socket.io-client";
 import { IP_SOCKET } from "../utils/Host";
 import { getUsers } from "../actions/getUsers";
 import { getClients } from "../actions/getClients";
-const newSocket = io.connect(IP_SOCKET,{autoConnect: true});
+// const newSocket = io.connect(IP_SOCKET, {
+//   autoConnect: true,
+//   auth: {
+//     token: sessionStorage.getItem("token"), 
+//   },
+// });
+
+
 
 export const SocketContext = createContext();
 export const SocketContextProvider = ({children})=>{
@@ -18,11 +25,11 @@ const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);
     },[])
 
     
-    useEffect(()=>{
-        setSocket(newSocket)
-        // if(socket === null) return;
-        console.log("socket id: "+ newSocket.id)
-    },[])
+    // useEffect(()=>{
+    //     setSocket(newSocket)
+    //     // if(socket === null) return;
+    //     console.log("socket id: "+ newSocket.id)
+    // },[])
 
     useEffect(() => {
         if(socket === null) return;
@@ -36,7 +43,7 @@ const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);
     
     return  <SocketContext.Provider 
                 value={{
-                    user,socket,updateUser,socketReceiveMessage
+                    user,socket,updateUser,socketReceiveMessage,setSocket
                 }}
             >
                 {children}

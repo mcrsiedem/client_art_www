@@ -12,6 +12,7 @@ import { IP } from "utils/Host";
 
 export const AppContext = createContext();
 export const AppContextProvider = ({children})=>{
+   
     const [idZamowieniaDiag, setIdZamowieniaDiag] = useState(127);
     const [isLoading, setIsLoading] = useState(false);
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
@@ -184,8 +185,9 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     _status_faktury,_sortowanieZamowienieFaktury,sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury,
                     valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka,
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
-                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania
-                }}
+                    oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania,
+          
+                  }}
             >
                 {children}
             </AppContext.Provider>

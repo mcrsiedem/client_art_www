@@ -27,6 +27,7 @@ import PanelMini from "./PanelMini";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { SocketContext, useSocket } from "context/SocketContext";
+import OnlineUsersList from "./OnlineUsersList";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
@@ -72,7 +73,8 @@ export default function Panel({ user, setUser }) {
 
 const PanelDesktop = ({isOnline,navigate,logout}) => {
   const dropdownRef = useRef(null);
- const { socket, isConnected, isAuthenticated, updateAuthStatus } = useSocket()
+  const appcontext = useContext(AppContext);
+ const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
 
    const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
 
@@ -103,7 +105,7 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
   if(DecodeToken(sessionStorage.getItem("token")).wersja_max==1){
 
     return(<>
-                <div className={style.main} >
+                <div  onDoubleClick={ ()=>{ console.log(usersIO)}}className={style.main} >
                         <div className={style.header}>
                 
         
@@ -185,8 +187,8 @@ zabezpiecz()
                                                         </div >
 
                                                       < div className={style.container_btn}> 
-
-                                                      {/* {socketContext.usersIO.map((user,i) => {
+<OnlineUsersList />
+                                                      {/* {usersIO.map((user,i) => {
                                                                    return ( <p className={style.users}>{user.imie}</p>
                                                                    );
                                                                  })} */}

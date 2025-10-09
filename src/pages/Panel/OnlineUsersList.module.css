@@ -1,0 +1,95 @@
+/* Kontener główny listy */
+.container {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    /* Ładny, miękki cień */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
+    background-color: #f7f9fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Nagłówek */
+.header {
+    font-size: 1.6em;
+    color: #2c3e50;
+    border-bottom: 3px solid #e0e7ff;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Komunikat o braku użytkowników */
+.emptyMessage {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px 0;
+    font-style: italic;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+/* Styl dla pojedynczego elementu użytkownika (zgodne z Twoją klasą) */
+.users {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    /* Lekki efekt hover */
+    transition: all 0.2s ease-in-out; 
+}
+
+.users:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: #4a90e2;
+}
+
+/* Ikona statusu online */
+.onlineIcon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2ecc71; /* Żywa zieleń */
+    margin-right: 15px;
+    flex-shrink: 0;
+    /* Mała animacja pulsu */
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    animation: pulse 1.5s infinite;
+}
+
+/* Nazwa użytkownika */
+.userName {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #b6b6b6;
+    flex-grow: 1; /* Pozwala na rozciągnięcie i spchnięcie czasu zalogowania */
+}
+
+/* Czas zalogowania */
+.loginTime {
+    font-size: 0.8em;
+    color: #95a5a6;
+    margin-left: 10px;
+    font-style: italic;
+    text-align: right;
+}
+
+/* Animacja pulsu dla ikony online */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}

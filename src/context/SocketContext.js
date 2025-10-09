@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
-
+import { AppContext } from './AppContext';
+  
 // const SERVER_URL = 'https://planer.artdruk.eu'; 
 const SocketContext = createContext(null);
+
 
 // Używamy localStorage, co jest lepsze dla tokenów, które mają przetrwać odświeżenie strony.
 const STORAGE_TYPE = sessionStorage; 
@@ -17,8 +19,11 @@ const removeToken = () => STORAGE_TYPE.removeItem(TOKEN_KEY);
 export const useSocket = () => useContext(SocketContext);
 
 export const SocketProvider = ({ children }) => {
+
+const [usersIO, setUsersIO] = useState([]);
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
+    // const [usersIO, setUsersIO] = useState([]);
     
     // Stan początkowy oparty na obecności tokenu
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
@@ -37,6 +42,7 @@ export const SocketProvider = ({ children }) => {
     // ----------------------------------------------------
     // KLUCZOWY useEffect: Zarządzanie Połączeniem Socket.IO
     // ----------------------------------------------------
+  
     useEffect(() => {
         const token = getToken();
 
@@ -56,6 +62,7 @@ export const SocketProvider = ({ children }) => {
             newSocket.on('disconnect', () => setIsConnected(false));
 
                   newSocket.on("onlineUsers", (data) => {
+                 setUsersIO(data)
           //tu przychodzi odpowiedź i jest zapisana w contexcie
           // setSocketReceiveMessage(data.message)
           // setUsersIO(data)
@@ -92,11 +99,12 @@ export const SocketProvider = ({ children }) => {
         socket,
         isConnected,
         isAuthenticated,
-        updateAuthStatus 
-    }), [socket, isConnected, isAuthenticated]);
-
+        updateAuthStatus,
+  usersIO
+    }), [socket, isConnected, isAuthenticated,usersIO]);
     return (
         <SocketContext.Provider value={contextValue}>
+          
             {children}
         </SocketContext.Provider>
     );

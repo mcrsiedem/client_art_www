@@ -45,14 +45,14 @@ export default function Login( ) {
     }
    }, [user]);
 
-   useEffect(() => {
-    if(socket === null) return;
-    socket.on("receive_message", (data) => {
-      //tu przychodzi odpowiedź i jest zapisana w contexcie
-      context.setSocketReceive(data.message);
+  //  useEffect(() => {
+  //   if(socket === null) return;
+  //   socket.on("receive_message", (data) => {
+  //     //tu przychodzi odpowiedź i jest zapisana w contexcie
+  //     context.setSocketReceive(data.message);
       
-    });
-  }, [socket]);
+  //   });
+  // }, [socket]);
 
 
   const handleSubmit = async (event) => {

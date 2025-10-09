@@ -19,6 +19,7 @@ const [user,setUser] = useState(null);      // zalogowany user
 const [socket,setSocket] = useState(null);  
 const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);  
 
+const [usersIO,setUsersIO] = useState([]);   
 
     const updateUser = useCallback(()=>{
      setUser(user)
@@ -37,13 +38,21 @@ const [socketReceiveMessage,setSocketReceiveMessage] = useState(null);
           //tu przychodzi odpowiedź i jest zapisana w contexcie
           setSocketReceiveMessage(data.message)
         });
+
+      socket.on("onlineUsers", (data) => {
+          //tu przychodzi odpowiedź i jest zapisana w contexcie
+          // setSocketReceiveMessage(data.message)
+          setUsersIO(data)
+          console.log(data)
+        });
+
         
       }, [socket]);
     
     
     return  <SocketContext.Provider 
                 value={{
-                    user,socket,updateUser,socketReceiveMessage,setSocket
+                    user,socket,updateUser,socketReceiveMessage,setSocket,usersIO
                 }}
             >
                 {children}

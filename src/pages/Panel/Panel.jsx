@@ -26,6 +26,7 @@ import { getClients } from "actions/getClients";
 import PanelMini from "./PanelMini";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
+import { SocketContext } from "context/SocketContext";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ export default function Panel({ user, setUser }) {
   const setNadkomplety = appcontext.setNadkomplety;
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
+  const socketContext = useContext(SocketContext);
 
   useEffect(() => {
     // window.onbeforeunload = function () {
@@ -52,7 +54,7 @@ export default function Panel({ user, setUser }) {
   if (window.innerWidth > 900) {
     return (
       <>
-        <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />
+        <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} socketContext={socketContext}/>
       </>
     );
   } else
@@ -68,7 +70,7 @@ export default function Panel({ user, setUser }) {
 
 
 
-const PanelDesktop = ({isOnline,navigate,logout}) => {
+const PanelDesktop = ({isOnline,navigate,logout,socketContext}) => {
   const dropdownRef = useRef(null);
    const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
 
@@ -106,6 +108,17 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                                                         {isOnline ? (     <div className={style.user}> 
                                                                                                                                         {isOpen && (
         <ul className={style.dropdown_menu } ref={dropdownRef}>
+          
+                    <li           onClick={() => {
+                        if(socketContext.socket){
+                           socketContext.socket.emit("ktotam");   
+                        }
+                 
+     setIsOpen(false)
+          }}>Kto tam?</li>
+          
+          
+          
           <li>Dodaj Asystenta</li>
           <li           onClick={() => {
 zabezpiecz()
@@ -168,7 +181,13 @@ zabezpiecz()
                                   {/* <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div> */}
                                                       
                                                         </div>
+
+                                                      {/* < div>
+                                                          <p>users</p>
+                                                        </div> */}
+                                                        
                                 </div>
+                              
             
                 </div>
             </>);

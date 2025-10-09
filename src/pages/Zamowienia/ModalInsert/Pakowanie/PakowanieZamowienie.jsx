@@ -175,15 +175,14 @@ function Uwagi( {row}){
       }}
       onChange={(event) => {
         // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
-        if ( event.target.value === '' || reg_txt.test(event.target.value)) {
+        // if ( event.target.value === '' || reg_txt.test(event.target.value)) {
       
-          // setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
           handleUpdateRowPakowanie({
             ...row,
             uwagi: event.target.value,
             update:true
           });
-     }
+    //  }
      setStatus(3)
 
       }}></textarea>

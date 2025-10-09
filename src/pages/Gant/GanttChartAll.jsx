@@ -10,7 +10,7 @@ const GanttChartAll = ({ stages }) => {
   const [etykieta, setEtykieta] = useState("");
   const [maxDate, setMaxDate] = useState(null);
   const [totalChartWidth, setTotalChartWidth] = useState(0);
-  const [scaleFactor, setScaleFactor] = useState(0.2);
+  const [scaleFactor, setScaleFactor] = useState(0.5);
   const contextApp = useContext(AppContext);
   const procesory = contextApp.procesory
 const [nowTime, setNowTime] = useState(new Date()); 
@@ -184,7 +184,18 @@ if(colorFrom==2){  // dwa parametry technologia id i zamowienie id
         </div>
       );
 
-      const hoursToAdd = [6, 18];
+      // const hoursToAdd = [6, 18];
+       let hoursToAdd
+
+        
+      if(scaleFactor <0.3){
+        hoursToAdd = [ 6, 18];
+      }else{
+        hoursToAdd = [0,3, 6,9,12,15, 18,21];
+      }
+
+
+      // const hoursToAdd = [0,3, 6,9,12,15, 18,21];
       hoursToAdd.forEach(hour => {
         const hourDate = new Date(currentDate);
         hourDate.setHours(hour, 0, 0, 0);

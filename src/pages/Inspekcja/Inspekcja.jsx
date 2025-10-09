@@ -61,7 +61,8 @@ export default function Inspekcja( ) {
            modalContext.setKsiegowosc(res.data[10][0])
            modalContext.setFaktury(res.data[11])
 
-           if(modalContext.daneZamowienia.technologia_id){
+          //  if(modalContext.daneZamowienia.technologia_id){
+           if(technologia_id){
               const res = await axios.get(IP + "technologie_parametry/"+technologia_id+"/"+ sessionStorage.getItem("token"));
                   techContext.setDaneTech([]) 
                   techContext.setProduktyTech([])

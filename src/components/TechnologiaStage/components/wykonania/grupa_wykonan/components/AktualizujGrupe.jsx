@@ -37,7 +37,10 @@ export default  function AktualizujGrupe({ rowGrupa }) {
           }
 
           if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
-
+                      let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
+          let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
+       await update_falc({roznica_czasu,rowGrupa,wykonania_update})
+          await refresh({fechparametryTechnologii,rowGrupa})
           }
         }}
         alt="Procesy"
@@ -57,6 +60,13 @@ const update = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
   })
 }
 
+const update_falc = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
+  return new Promise(async(resolve,reject)=>{
+    console.log(rowGrupa)
+   let result = await axios.post(IP + "aktualizuj_grupe_wykonan_falc/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
+    resolve(result)
+  })
+}
 const refresh = ({fechparametryTechnologii,rowGrupa}) =>{
   
   return new Promise(async(resolve,reject)=>{

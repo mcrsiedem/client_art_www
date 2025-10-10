@@ -1,6 +1,6 @@
 import React from "react";
 import {  useEffect,useState,useContext  } from "react";
-import style from '../Panel/PanelMini.module.css';
+import style from './PanelMini.module.css';
 import logoutIcon from 'assets/logout.png'
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'

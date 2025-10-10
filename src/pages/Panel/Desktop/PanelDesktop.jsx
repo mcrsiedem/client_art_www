@@ -1,0 +1,188 @@
+import React, { useRef } from "react";
+import {  useEffect,useState,useContext  } from "react";
+import style from './PanelDesktop.module.css';
+import logoutIcon from 'assets/logout.png'
+import userOnline from 'assets/user_offline.svg'
+import userOffline from 'assets/user_offline.svg'
+import iconZamowienia from 'assets/iconZamowienia.svg'
+import iconTechnolgie from 'assets/iconTechnologie.svg'
+import iconHistoria from 'assets/iconHistoria.svg'
+import iconUstawienia from 'assets/iconUstawienia.svg'
+import iconMagazyn from 'assets/iconMagazyn.svg'
+import iconCTP from 'assets/iconCTP.svg'
+import iconDiagnostyka from 'assets/diagnostyka.svg'
+import iconInspekcja from 'assets/inspekcja.svg'
+import iconOddanie from 'assets/iconOddanie2.svg'
+import iconProcesy from 'assets/iconProcesy.svg'
+import iconLock from 'assets/iconLock.svg'
+import iconKalendarz from 'assets/iconKalendarz.svg'
+import axios from "axios";
+import DecodeToken from "pages/Login/DecodeToken";
+import { useNavigate } from "react-router-dom";
+import { useOnlineStatus } from "hooks/useOnlieStatus";
+import { AppContext } from "context/AppContext";
+import { getNadkomplety } from "actions/getNadkomplety";
+import { getClients } from "actions/getClients";
+import PanelMini from "../Mini/PanelMini";
+import { IP } from "utils/Host";
+import { zabezpiecz } from "actions/zabezpiecz";
+import { SocketContext, useSocket } from "context/SocketContext";
+import OnlineUsersList from "./OnlineUsersList";
+
+export default function PanelDesktop ({isOnline,navigate,logout})  {
+  const dropdownRef = useRef(null);
+  const appcontext = useContext(AppContext);
+ const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
+
+   const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Zmienia stan na przeciwny (otwiera/zamyka menu)
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // Jeśli kliknięto poza kontenerem menu, zamknij menu
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    // Dodaj nasłuchiwacz zdarzeń, gdy menu jest otwarte
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Funkcja czyszcząca: usuń nasłuchiwacz zdarzeń, gdy komponent się odmontowuje
+    // lub gdy isOpen zmienia się na false (menu się zamyka)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  if(DecodeToken(sessionStorage.getItem("token")).wersja_max==1){
+
+    return(<>
+                <div  onDoubleClick={ ()=>{ console.log(usersIO)}}className={style.main} >
+                        <div className={style.header}>
+                
+        
+                                                        {isOnline ? (     <div className={style.user}> 
+                                                                                                                                        {isOpen && (
+        <ul className={style.dropdown_menu } ref={dropdownRef}>
+          
+                    <li           onClick={() => {
+                        if(socket){
+                           socket.emit("ktotam");   
+                        }
+                 
+     setIsOpen(false)
+          }}>Kto tam?</li>
+          
+          
+          
+          <li>Dodaj Asystenta</li>
+          <li           onClick={() => {
+zabezpiecz()
+     setIsOpen(false)
+          }}>Pobierz uprawnienia</li>
+
+
+          <li >Ustawienia</li>
+       
+
+{     DecodeToken(sessionStorage.getItem("token")).id==1?     <li onClick={async()=>{
+
+    const res = await axios.get(IP + "backup/" + sessionStorage.getItem("token"))
+      setIsOpen(false)
+        }
+            }>Ewakuacja bazy</li>:<></>}
+
+
+
+
+
+                      <li onClick={()=>{
+            window.location.reload(true)
+            setIsOpen(false)
+          }
+            }>Odśwież</li>
+
+                                  <li onClick={()=>{
+                                    logout()
+        
+            setIsOpen(false)
+          }
+            }>Wyloguj</li>
+        </ul>
+      )}
+                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" onClick={toggleMenu}/>
+
+                                                                        <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                                                </div>) : (     <div className={style.user}> 
+                                                                        <img className={style.userIcon } src={userOffline} alt="Procesy" />
+                                                                        <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko} </p>
+                                                                        
+                                                                </div>) }
+                                                        
+                                                {/* { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )} */}
+                        </div>
+        
+                                <div className={style.container} >
+                                <div className={style.container_btn} >
+                                        
+                                  <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div>
+                                  <div className={style.kafle}  onClick={() => { navigate("/faktury") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Faktury" /><p className={style.menu_txt}>FAKTURY</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
+                                  {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
+                                  <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Oddania") }}><p className={style.znak }>  </p><img className={style.icon } src={iconOddanie} alt="ODDANIA" /> <p className={style.menu_txt}>SPEDYCJA</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
+                                  <div className={style.kafle} onClick={() => { navigate("/Panel") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
+                                  {/* <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div> */}
+                                                      
+                                                        </div >
+
+                                                      < div className={style.container_btn_prawy}> 
+<OnlineUsersList />
+                                                      {/* {usersIO.map((user,i) => {
+                                                                   return ( <p className={style.users}>{user.imie}</p>
+                                                                   );
+                                                                 })} */}
+                                                         
+                                                        </div>
+                                                        
+                                </div>
+                              
+            
+                </div>
+            </>);
+  }
+  else{
+        return(<>
+                <div className={style.main}>
+                        <div className={style.header}>
+                
+        
+                                                        {isOnline ? (     <div className={style.user}> 
+                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" />
+                                                                        <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
+                                                                </div>) : (     <div className={style.user}> 
+                                                                        <img className={style.userIcon } src={userOffline} alt="Procesy" />
+                                                                        <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko} </p>
+                                                                        
+                                                                </div>) }
+                                                        
+                                                { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )}
+                        </div>
+        
+                                <div className={style.container} >
+          
+                                </div>
+            
+                </div>
+            </>);
+  }
+        
+}

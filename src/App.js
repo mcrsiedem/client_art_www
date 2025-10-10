@@ -17,7 +17,7 @@ import Ustawienia from "pages/Ustawienia/Ustawienia";
 import TechnologieView from "pages/Technologie/TechnologieView";
 import OprawaView from "pages/OprawaView/OprawaView";
 import ProcesyMini from "pages/ProcesyMini/ProcesyMini";
-import ProcesoryMini from "pages/Panel/PrcesoryMini";
+
 import Statystyki from "pages/Statystyki/Statystyki";
 import SandBox from "pages/SandBox/SandBox";
 import Gant from "pages/Gant/Gant";
@@ -27,6 +27,7 @@ import UserPermissionsTable from "components/Users/UserPermissionsTable ";
 import Oddania from "pages/Oddania/Oddania";
 
 import Inspekcja from "pages/Inspekcja/Inspekcja";
+import ProcesoryMini from "pages/Panel/Mini/PrcesoryMini";
 
 export default function App() {
 

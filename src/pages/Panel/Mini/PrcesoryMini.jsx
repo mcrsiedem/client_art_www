@@ -1,6 +1,6 @@
 import React from "react";
 import {  useEffect,useState,useContext  } from "react";
-import style from '../Panel/PanelMini.module.css';
+import style from './ProcesoryMini.module.css';
 import logoutIcon from 'assets/logout.png'
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'
@@ -15,7 +15,7 @@ import iconWagoniki from 'assets/iconKalendarz.svg'
 import iconLock from 'assets/iconLock.svg'
 import iconKalendarz from 'assets/iconKalendarz.svg'
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import { IP } from "utils/Host";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";

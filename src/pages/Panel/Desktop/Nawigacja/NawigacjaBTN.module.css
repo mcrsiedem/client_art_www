@@ -1,0 +1,53 @@
+
+    .kafle{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding-left: 40px;
+        backdrop-filter:  blur(10px);
+        color: rgb(255, 255, 255);
+        border-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 350px;
+        height: 45px;
+        letter-spacing: 6px;
+        font-size: 0.9rem;
+        background-color: rgba(216, 216, 216,0.2);
+      font-weight: 600;
+      gap: 25px;
+    
+    }
+    
+    .kafle:hover > p{
+        color: rgb(255, 255, 255);
+    }
+    
+    
+    .kafle:hover {
+        background-color: rgba(255, 0, 0, 0.6);
+    
+    }
+  .icon{
+    width: 20px;
+}
+.menu_txt{
+    color: rgb(221, 221, 221);
+    font-size: 13px;
+    padding-top: 15px;
+}
+
+
+.znak{
+    position: absolute;
+    left: 15px;
+    top:18px;
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+}
+.iconLock{
+    position: absolute;
+    right: 15px;
+    width: 12px;
+}

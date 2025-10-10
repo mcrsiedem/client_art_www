@@ -52,7 +52,7 @@ export default function Panel({ user, setUser }) {
     sessionStorage.removeItem("token");
   };
 
-  if (window.innerWidth > 900) {
+  if (window.innerWidth > 900 && DecodeToken(sessionStorage.getItem("token")).wersja_max==1) {
     return (
       <>
         <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />

@@ -1,27 +1,19 @@
 import React from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from './ProcesoryMini.module.css';
-import logoutIcon from 'assets/logout.png'
-import userOnline from 'assets/user_offline.svg'
+
 import userOffline from 'assets/user_offline.svg'
-import iconZamowienia from 'assets/iconZamowienia.svg'
-import iconTechnolgie from 'assets/iconTechnologie.svg'
-import iconHistoria from 'assets/iconHistoria.svg'
-import iconUstawienia from 'assets/iconUstawienia.svg'
-import iconMagazyn from 'assets/iconMagazyn.svg'
-import iconCTP from 'assets/iconCTP.svg'
+
 import iconProcesy from 'assets/iconProcesy.svg'
 import iconWagoniki from 'assets/iconKalendarz.svg'
-import iconLock from 'assets/iconLock.svg'
-import iconKalendarz from 'assets/iconKalendarz.svg'
+
 import axios from "axios";
 import { IP } from "utils/Host";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useNavigate } from "react-router-dom";
 import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
-import { getNadkomplety } from "actions/getNadkomplety";
-import { getClients } from "actions/getClients";
+
 import { TechnologyContext } from "context/TechnologyContext";
 
 export default function ProcesoryMini({ user, setUser,logout }) {

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import {  useEffect,useState,useContext  } from "react";
 import style from './PanelDesktop.module.css';
-import logoutIcon from 'assets/logout.png'
+
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'
 import iconZamowienia from 'assets/iconZamowienia.svg'
@@ -14,20 +14,18 @@ import iconDiagnostyka from 'assets/diagnostyka.svg'
 import iconInspekcja from 'assets/inspekcja.svg'
 import iconOddanie from 'assets/iconOddanie2.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
-import iconLock from 'assets/iconLock.svg'
+
 import iconKalendarz from 'assets/iconKalendarz.svg'
 import axios from "axios";
 import DecodeToken from "pages/Login/DecodeToken";
-import { useNavigate } from "react-router-dom";
-import { useOnlineStatus } from "hooks/useOnlieStatus";
+
 import { AppContext } from "context/AppContext";
-import { getNadkomplety } from "actions/getNadkomplety";
-import { getClients } from "actions/getClients";
-import PanelMini from "../Mini/PanelMini";
+
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { SocketContext, useSocket } from "context/SocketContext";
 import OnlineUsersList from "./OnlineUsersList";
+import NawigacjaBTN from "./Nawigacja/NawigacjaBTN";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
   const dropdownRef = useRef(null);
@@ -60,7 +58,6 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
     };
   }, [isOpen]);
 
-  if(DecodeToken(sessionStorage.getItem("token")).wersja_max==1){
 
     return(<>
                 <div  onDoubleClick={ ()=>{ console.log(usersIO)}}className={style.main} >
@@ -125,64 +122,31 @@ zabezpiecz()
                                                                         
                                                                 </div>) }
                                                         
-                                                {/* { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )} */}
                         </div>
         
                                 <div className={style.container} >
                                 <div className={style.container_btn} >
-                                        
-                                  <div className={style.kafle} onClick={() => { navigate("/Zamowienia") }}> <p className={style.znak }>  </p> <img className={style.icon } src={iconZamowienia} alt="Zamówienia" /> <p className={style.menu_txt}>ZAMÓWIENIA</p>   </div>
-                                  <div className={style.kafle}  onClick={() => { navigate("/faktury") } }><p className={style.znak }>  </p><img className={style.icon } src={iconTechnolgie} alt="Faktury" /><p className={style.menu_txt}>FAKTURY</p></div>
-                                  <div className={style.kafle} onClick={() => { navigate("/ProcesyView") }} ><p className={style.znak }>  </p><img className={style.icon } src={iconProcesy} alt="Zamówienia" /><p className={style.menu_txt}>PROCESY</p> </div> 
-                                  {/* <div className={style.kafle} ><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Magazyn" /><p className={style.menu_txt}>MAGAZYN</p> </div> */}
-                                  <div className={style.kafle} onClick={() => { navigate("/OprawaView") }}><p className={style.znak }>  </p><img className={style.icon } src={iconMagazyn} alt="Oprawa" /><p className={style.menu_txt}>OPRAWA</p> </div>
-                                  <div className={style.kafle} onClick={() => { navigate("/Oddania") }}><p className={style.znak }>  </p><img className={style.icon } src={iconOddanie} alt="ODDANIA" /> <p className={style.menu_txt}>SPEDYCJA</p></div>
-                                  <div className={style.kafle} onClick={() => { navigate("/kalendarz2") }}><p className={style.znak }>  </p><img className={style.icon } src={iconKalendarz} alt="Ustawienia" /><p className={style.menu_txt}>KALENDARZ</p></div>
-                                  <div className={style.kafle} onClick={() => { navigate("/ustawienia") }}><p className={style.znak }>  </p><img className={style.icon } src={iconUstawienia} alt="Ustawienia" /><p className={style.menu_txt}>USTAWIENIA</p></div>
-                                  <div className={style.kafle} onClick={() => { navigate("/Panel") }}><p className={style.znak }>  </p><img className={style.icon } src={iconHistoria} alt="Zamówienia" /><p className={style.menu_txt}>HISTORIA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div>
-                                  {/* <div className={style.kafle} onClick={() => { navigate("/Inspekcja") }}><p className={style.znak }>  </p><img className={style.icon } src={iconInspekcja} alt="Zamówienia" /><p className={style.menu_txt}>INSPEKCJA</p><img className={style.iconLock } src={iconLock} alt="Zamówienia" /></div> */}
-                                                      
-                                                        </div >
+                                        <NawigacjaBTN handler={() => navigate("/Zamowienia")} icon={iconZamowienia} nazwa={"ZAMÓWIENIA"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/faktury")} icon={iconTechnolgie} nazwa={"FAKTURY"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/ProcesyView")} icon={iconProcesy} nazwa={"PROCESY"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/OprawaView")} icon={iconMagazyn} nazwa={"OPRAWA"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
+                                        <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
+                                </div >
 
-                                                      < div className={style.container_btn_prawy}> 
-<OnlineUsersList />
-                                                      {/* {usersIO.map((user,i) => {
-                                                                   return ( <p className={style.users}>{user.imie}</p>
-                                                                   );
-                                                                 })} */}
-                                                         
-                                                        </div>
-                                                        
+                                < div className={style.container_btn_prawy}> 
+                                <OnlineUsersList />
                                 </div>
-                              
-            
+                                </div>
                 </div>
             </>);
-  }
-  else{
-        return(<>
-                <div className={style.main}>
-                        <div className={style.header}>
-                
-        
-                                                        {isOnline ? (     <div className={style.user}> 
-                                                                        <img className={style.userIcon } src={userOnline} alt="Procesy" />
-                                                                        <p className={style.menu_txt}>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko}</p>
-                                                                </div>) : (     <div className={style.user}> 
-                                                                        <img className={style.userIcon } src={userOffline} alt="Procesy" />
-                                                                        <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko} </p>
-                                                                        
-                                                                </div>) }
-                                                        
-                                                { isOnline && (<button className={style.btnWyloguj} onClick={()=>logout()}>Wyloguj</button> )}
-                        </div>
-        
-                                <div className={style.container} >
-          
-                                </div>
-            
-                </div>
-            </>);
-  }
-        
-}
+
+
+};
+
+
+
+
+

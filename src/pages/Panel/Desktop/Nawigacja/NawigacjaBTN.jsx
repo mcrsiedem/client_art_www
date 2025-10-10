@@ -9,7 +9,9 @@ export default function NawigacjaBTN({ handler, icon, nazwa, locked }) {
     <div
       className={style.kafle}
       onClick={() => {
-        handler();
+
+        !locked && handler();
+     
       }}
     >
       <p className={style.znak}> </p>

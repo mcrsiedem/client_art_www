@@ -21,13 +21,7 @@ export const useSocket = () => useContext(SocketContext);
 
 // --- Funkcja do dekodowania (PRZYKŁADOWA) ---
 // W rzeczywistej aplikacji powinieneś użyć biblioteki JWT lub uzyskać ID z kontekstu.
-const decodeTokenForUserId = (token) => {
-    // MOCK: Zakładamy, że token to 'token-123' i zwracamy ID '123'
-    if (token && token.startsWith('token-')) {
-        return token.split('-')[1]; 
-    }
-    return null;
-}
+
 
 // --- Główny Dostawca Kontekstu Socket.IO ---
 export const SocketProvider = ({ children }) => {

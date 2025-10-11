@@ -3,6 +3,8 @@ import React, { createContext, useContext, useEffect, useState, useMemo, useRef,
 import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
 
+
+ let newSocket;
 // --- Stałe konfiguracyjne ---
 const STORAGE_TYPE = sessionStorage; 
 const TOKEN_KEY = 'token';
@@ -103,6 +105,10 @@ export const SocketProvider = ({ children }) => {
     // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
     // -----------------------------------------------------------------------
   
+
+    const logoutIO=()=>{
+        newSocket.emit("logout",{userId:currentUserId})
+    }
     useEffect(() => {
         const token = getToken();
         
@@ -118,7 +124,7 @@ export const SocketProvider = ({ children }) => {
             return; 
         }
 
-        const newSocket = io(IP_SOCKET, {
+       newSocket = io(IP_SOCKET, {
             auth: { token: token },
             transports: ['websocket'],
             reconnection: true,
@@ -197,7 +203,8 @@ export const SocketProvider = ({ children }) => {
         isAuthenticated,
         updateAuthStatus,
         usersIO,
-        currentUserId
+        currentUserId,
+        logoutIO
     }), [socket, isConnected, isAuthenticated, usersIO, currentUserId]);
     
     return (

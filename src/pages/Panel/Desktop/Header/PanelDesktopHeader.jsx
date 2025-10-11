@@ -14,7 +14,7 @@ import { useSocket } from "context/SocketContext";
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);
   const appcontext = useContext(AppContext);
-  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO } =
+  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO } =
     useSocket();
 
   const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
@@ -100,7 +100,7 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
               <li
                 onClick={() => {
                   logout();
-
+logoutIO()
                   setIsOpen(false);
                 }}
               >

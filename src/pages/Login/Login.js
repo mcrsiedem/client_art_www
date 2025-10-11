@@ -24,7 +24,8 @@ export default function Login( ) {
   const contextApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   // const socketContext = useContext(SocketContext);
-const { socket, isConnected, isAuthenticated, updateAuthStatus } = useSocket()
+  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO } =
+    useSocket();
   
   //  const appcontext = useContext(AppContext);
   //       const setMobile = appcontext.setMobile;
@@ -76,18 +77,10 @@ techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
  contextApp.setSelectedUser(0);
 
 updateAuthStatus(true,res.data)
-//  const newSocket = io.connect(IP_SOCKET, {
-//   autoConnect: true,
-//   reconnection: true,
-//   reconnectionAttempts: Infinity, // Liczba prób ponownego łączenia
-//         reconnectionDelay: 1000, // Czas oczekiwania przed pierwszą próbą
-//         reconnectionDelayMax: 5000, // Maksymalny czas oczekiwania
-//   auth: {
-//     token: sessionStorage.getItem("token"), 
-//   },
-//   transports: ['websocket']
-// });
-// socketContext.setSocket(newSocket)
+
+if(socket) {
+  socket.emit("addNewUser", { token: res.data ,socketId:socket.id });
+}
 
 } else {
   console.log("Błąd");

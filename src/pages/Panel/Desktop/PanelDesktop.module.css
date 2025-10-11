@@ -1,10 +1,10 @@
 .main{
     display: grid;
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 70px 1fr 80px;
     background: url(/src/assets/m7.jpg );
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 
     /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
     background-blend-mode: multiply,multiply; */
@@ -18,25 +18,13 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
 
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 30px;
-    padding-left: 30px;
-     position: relative; /* Ważne dla pozycjonowania rozwijanego menu */
-  /* display: inline-block; */
-}
+
 
 .container{
        display: grid;
-    grid-template-columns: 2fr 3fr;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-      gap:20px;
+    grid-template-columns: 1fr 3fr;
       height: calc(100vh - 150px);
+  
     }
 .users{
     color:wheat
@@ -46,8 +34,11 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
         .container_btn{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: start;
+        justify-content: start;
+
+        padding-top: 50px;
+        padding-left: 80px;
           gap:20px;
           /* background-color: rgb(143, 143, 143); */
           /* height: calc(100vh - 70px); */

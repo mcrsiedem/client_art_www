@@ -6,47 +6,15 @@
     align-items: center;
     padding-right: 30px;
     padding-left: 30px;
+    /* height: 60; */
      position: relative; /* Ważne dla pozycjonowania rozwijanego menu */
   /* display: inline-block; */
 }
 
-.container{
-       display: grid;
-    grid-template-columns: 2fr 3fr;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-      gap:20px;
-      height: calc(100vh - 70px);
-    }
-.users{
-    color:wheat
-}
 
 
-        .container_btn{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-          gap:20px;
-          /* background-color: rgb(143, 143, 143); */
-          /* height: calc(100vh - 70px); */
-          /* padding-left: 250px; */
-        }
 
-                .container_btn_prawy{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-          /* gap:20px; */
-          /* background-color: rgb(143, 143, 143); */
-          /* height: calc(100vh - 70px); */
-          /* padding-left: 250px; */
-          /* background-color: #007bff; */
-        }
+
     .kafle{
         display: flex;
         justify-content: start;

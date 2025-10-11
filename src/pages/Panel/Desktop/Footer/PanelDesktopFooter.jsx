@@ -44,7 +44,7 @@ export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
   }, [isOpen]);
 
   return (
-    <div className={style.header}>
+    <div className={style.footer}>
   
       <UserList/>
     </div>

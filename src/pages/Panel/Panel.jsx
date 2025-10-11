@@ -27,65 +27,92 @@ export default function Panel({ user, setUser }) {
 // Zaawansowane śledzenie aktywności użytkownika z throttlingiem i wykrywaniem bezczynności
 // Wysyła sygnały "active" co 5 sekund podczas aktywności i "idle" po 60 sekundach bezczynności
 // Dodatkowo wykrywa zmianę widoczności karty (np. przełączanie zakładek w przeglądarce)
-const ACTIVITY_INTERVAL = 5000; // 5 sekund (częstotliwość wysyłania "active")
-const IDLE_TIMEOUT = 10000;    // 60 sekund (definicja bezczynności)
+const ACTIVITY_INTERVAL = 5000;      // 5 sekund (Throttling dla statusu 'Aktywny')
+const IDLE_TIMEOUT = 60000;          // 60 sekund (1 minuta - czas do statusu 'Nieaktywny')
 
 function useActivityTracker(userId) {
-  // Refy do przechowywania timerów i flagi, aby nie wywoływać ponownych renderów
   const idleTimerRef = useRef(null);
   const isThrottledRef = useRef(false);
+  // Ref do śledzenia OSTATNIO WYSŁANEGO statusu
+  const currentStatusRef = useRef('Aktywny'); 
 
+  // --- Funkcje pomocnicze ---
+
+  // Funkcja wysyłająca status do serwera (kontrola jednorazowej wysyłki)
   const sendActivity = useCallback((status) => {
+
+    //   if (!socket) { 
+    //     console.warn("Socket jest NULL. Nie można wysłać aktywności.");
+    //     return; 
+    // }
+    // Sprawdzenie: Jeśli status się nie zmienił, nie wysyłaj nic
+    if (currentStatusRef.current === status) {
+      return; 
+    }
+    
+    // Wysyłka statusu do Socket.IO
     socket.emit('userActivity', { userId, status });
+    // Aktualizacja ostatnio wysłanego statusu
+    currentStatusRef.current = status; 
+    
   }, [userId]);
 
+  // Funkcja resetująca Timer Bezczynności
   const resetIdleTimer = useCallback(() => {
-    // 1. Zresetuj istniejący timer bezczynności
+    // Zawsze anuluj poprzedni timer
     if (idleTimerRef.current) {
       clearTimeout(idleTimerRef.current);
     }
-    // 2. Ustaw nowy timer bezczynności
+    
+    // Ustaw nowy timer, który po 60 sekundach spróbuje wysłać 'Nieaktywny'
     idleTimerRef.current = setTimeout(() => {
-      sendActivity('idle');
+      // Wywołanie sendActivity('Nieaktywny')
+      // Zostanie wysłane TYLKO, jeśli currentStatusRef.current jest różne od 'Nieaktywny'
+      sendActivity('Nieaktywny');
     }, IDLE_TIMEOUT);
   }, [sendActivity]);
 
+  // Funkcja obsługująca każdą wykrytą aktywność
   const handleActivity = useCallback(() => {
-    // A. Zresetuj timer bezczynności, ponieważ wykryto aktywność
+    // 🔑 KROK 1: Resetuje timer bezczynności (przedłuża status 'Aktywny')
     resetIdleTimer();
 
-    // B. Throttling: jeśli sygnał jest już "w kolejce" lub niedawno wysłany, pomiń
+    // KROK 2: Throttling (ograniczenie liczby wiadomości)
     if (isThrottledRef.current) {
       return;
     }
 
-    // C. Wyślij sygnał "active" i ustaw flagę throttling
-    sendActivity('active');
+    // Wywołanie sendActivity('Aktywny')
+    // Zostanie wysłane TYLKO, jeśli obecny status to np. 'Nieaktywny' lub 'Ukryty'
+    sendActivity('Aktywny');
+    
     isThrottledRef.current = true;
 
-    // D. Usuń flagę throttling po zdefiniowanym interwale
+    // Usuń flagę throttling po zdefiniowanym interwale (5 sekund)
     setTimeout(() => {
       isThrottledRef.current = false;
     }, ACTIVITY_INTERVAL);
-
+    
   }, [resetIdleTimer, sendActivity]);
+
+  // --- Efekty (Lifecycle) ---
 
   useEffect(() => {
     // Ustawienie początkowe
-    sendActivity('active');
+    sendActivity('Aktywny');
     resetIdleTimer();
-
+    
     // Rejestracja zdarzeń aktywności
     const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
     activityEvents.forEach(event => window.addEventListener(event, handleActivity));
 
-    // Dodatkowe wydajne sprawdzenie: Zmiana widoczności karty
+    // Obsługa zmiany widoczności karty ('hidden' dla minimalizacji/przełączenia karty)
     const handleVisibility = () => {
       if (document.hidden) {
-        sendActivity('hidden');
+        sendActivity('Ukryty'); // Możesz użyć "Ukryty" lub "Nieaktywny"
+        clearTimeout(idleTimerRef.current); // Zatrzymaj timer, bo 'Ukryty' ma wyższy priorytet
       } else {
-        // Natychmiastowe oznaczenie jako aktywnego po powrocie na kartę
-        handleActivity(); // Używamy handleActivity, aby zresetować też throttling
+        handleActivity(); // Powrót na kartę => 'Aktywny' i reset timera
       }
     };
 
@@ -95,10 +122,7 @@ function useActivityTracker(userId) {
     return () => {
       activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
       document.removeEventListener('visibilitychange', handleVisibility);
-      if (idleTimerRef.current) {
-        clearTimeout(idleTimerRef.current);
-      }
-      // Nie musimy czyścić timerów z throttlingu, bo zależą od handleActivity, które przestanie być wywoływane
+      clearTimeout(idleTimerRef.current);
     };
   }, [userId, handleActivity, resetIdleTimer, sendActivity]); 
 }

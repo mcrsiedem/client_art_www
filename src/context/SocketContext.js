@@ -4,7 +4,6 @@ import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
 
 // --- Stałe konfiguracyjne ---
-// const IP_SOCKET = IP_SOCKET; 
 const STORAGE_TYPE = sessionStorage; 
 const TOKEN_KEY = 'token';
 const ACTIVITY_INTERVAL = 5000;  
@@ -19,8 +18,21 @@ const removeToken = () => STORAGE_TYPE.removeItem(TOKEN_KEY);
 const SocketContext = createContext(null);
 export const useSocket = () => useContext(SocketContext);
 
-// --- Funkcja do dekodowania (PRZYKŁADOWA) ---
-// W rzeczywistej aplikacji powinieneś użyć biblioteki JWT lub uzyskać ID z kontekstu.
+// 🔑 KLUCZOWA ZMIANA: Funkcja do inicjalizacji stanu ID
+const getInitialUserId = () => {
+    const token = getToken();
+    if (token) {
+        try {
+            // Bezpośrednie dekodowanie tokenu z sessionStorage, jeśli istnieje
+            return DecodeToken(token).id; 
+        } catch (e) {
+            console.error("Błąd dekodowania tokenu podczas inicjalizacji:", e);
+            removeToken(); // Usuń nieprawidłowy/uszkodzony token
+            return null;
+        }
+    }
+    return null;
+};
 
 
 // --- Główny Dostawca Kontekstu Socket.IO ---
@@ -29,8 +41,9 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
-    // 🔑 NOWY STAN: Przechowuje ID użytkownika po autoryzacji
-    const [currentUserId, setCurrentUserId] = useState(); 
+    
+    // ✅ POPRAWKA: Inicjalizacja currentUserId na podstawie zdekodowanego tokenu
+    const [currentUserId, setCurrentUserId] = useState(getInitialUserId()); 
     
     // --- Refy dla śledzenia aktywności ---
     const idleTimerRef = useRef(null);
@@ -41,7 +54,7 @@ export const SocketProvider = ({ children }) => {
         if (status && token) {
             setToken(token);
             // Ustaw ID po otrzymaniu tokenu
-            setCurrentUserId(DecodeToken(sessionStorage.getItem("token")).id); 
+            setCurrentUserId(DecodeToken(token).id); 
         } else if (!status) {
             removeToken();
             // Wyczyść ID po wylogowaniu
@@ -51,19 +64,18 @@ export const SocketProvider = ({ children }) => {
     };
 
     // -----------------------------------------------------------------------
-    // SEKCJA 1: Zarządzanie Logiką Aktywności (Zależna od ID)
+    // SEKCJA 1: Zarządzanie Logiką Aktywności (Bez zmian logiki)
     // -----------------------------------------------------------------------
     
     const sendActivity = useCallback((status) => {
-        // 🔑 NOWA KONTROLA: Wymagaj zarówno socket, jak i currentUserId
         if (!socket || !currentUserId || currentStatusRef.current === status) { 
             return; 
         }
         
-        socket.emit('userActivity', { userId: currentUserId, status }); // Użyj currentUserId
+        socket.emit('userActivity', { userId: currentUserId, status }); 
         currentStatusRef.current = status; 
         
-    }, [socket, currentUserId]); // Zależność od obiektu socket i currentUserId
+    }, [socket, currentUserId]); 
 
     const resetIdleTimer = useCallback(() => {
         if (idleTimerRef.current) {
@@ -76,13 +88,10 @@ export const SocketProvider = ({ children }) => {
 
     const handleActivity = useCallback(() => {
         resetIdleTimer();
-
         if (isThrottledRef.current) {
             return;
         }
-
         sendActivity('Aktywny');
-        
         isThrottledRef.current = true;
         setTimeout(() => {
             isThrottledRef.current = false;
@@ -97,9 +106,15 @@ export const SocketProvider = ({ children }) => {
     useEffect(() => {
         const token = getToken();
         
-        // 🔑 WARUNEK POŁĄCZENIA: Wymagany jest ID użytkownika i token
-        if (!isAuthenticated || !token || !currentUserId) {
-            // Jeśli brakuje ID (np. token się zmienił lub jest pusty), wstrzymaj połączenie
+        // 🔑 NOWY WARUNEK POŁĄCZENIA: Użycie tokena zamiast isAuthenticated
+        // Sprawdzenie, czy jest token I jest ID. Użycie tokena, aby było
+        // zsynchronizowane z autoryzacją po stronie serwera.
+        if (!token || !currentUserId) {
+            // Jeśli brakuje tokenu lub ID, upewnij się, że rozłączamy stare gniazdo
+            if (socket) {
+                socket.disconnect();
+                setSocket(null);
+            }
             return; 
         }
 
@@ -111,12 +126,13 @@ export const SocketProvider = ({ children }) => {
 
         setSocket(newSocket);
         
-        // ... (standardowe listenery Socket.IO: connect, disconnect, onlineUsers, connect_error) ...
+        // ... (standardowe listenery Socket.IO) ...
         newSocket.on('connect', () => setIsConnected(true));
         newSocket.on('disconnect', () => setIsConnected(false));
         newSocket.on('onlineUsers', setUsersIO);
         newSocket.on('connect_error', (err) => {
             console.error('Błąd połączenia Socket.IO (autoryzacja):', err.message);
+            // Ustawiamy stany na wylogowanie/brak ID
             removeToken(); 
             setIsAuthenticated(false);
             setCurrentUserId(null);
@@ -132,29 +148,25 @@ export const SocketProvider = ({ children }) => {
             setSocket(null);
             setIsConnected(false);
         };
-        
-    }, [isAuthenticated, currentUserId]); // Zależność również od currentUserId
+        // ✅ Zależności: React reaguje, gdy zmienia się currentUserId lub token
+    }, [currentUserId]); // isAuthenticated jest teraz częściowo zbędny, skupiamy się na currentUserId
     
     // -----------------------------------------------------------------------
-    // SEKCJA 3: Efekt zarządzający Listenerami DOM (Śledzenie Aktywności)
+    // SEKCJA 3: Efekt zarządzający Listenerami DOM (Bez zmian logiki)
     // -----------------------------------------------------------------------
     
     useEffect(() => {
-        // 🔑 WARUNEK AKTYWNOŚCI: Uruchamiamy śledzenie tylko, gdy gniazdo i ID są gotowe
         if (!socket || !currentUserId) {
             clearTimeout(idleTimerRef.current);
             return;
         }
 
-        // Uruchomienie początkowe
         sendActivity('Aktywny');
         resetIdleTimer();
 
-        // 1. Rejestracja zdarzeń DOM
         const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
         activityEvents.forEach(event => window.addEventListener(event, handleActivity));
 
-        // ... (implementacja handleVisibility) ...
         const handleVisibility = () => {
             if (document.hidden) {
                 sendActivity('Ukryty'); 
@@ -166,7 +178,6 @@ export const SocketProvider = ({ children }) => {
 
         document.addEventListener('visibilitychange', handleVisibility);
 
-        // 2. Logika czyszczenia DOM
         return () => {
             activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
             document.removeEventListener('visibilitychange', handleVisibility);
@@ -186,7 +197,7 @@ export const SocketProvider = ({ children }) => {
         isAuthenticated,
         updateAuthStatus,
         usersIO,
-        currentUserId // Opcjonalnie udostępnij ID w kontekście
+        currentUserId
     }), [socket, isConnected, isAuthenticated, usersIO, currentUserId]);
     
     return (

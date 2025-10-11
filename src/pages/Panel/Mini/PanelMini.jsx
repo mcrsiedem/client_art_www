@@ -20,6 +20,7 @@ import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
+import { useSocket } from "context/SocketContext";
 
 export default function PanelMini({ user, setUser,logout }) {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ export default function PanelMini({ user, setUser,logout }) {
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
 
-
+  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO } =
+    useSocket();
 
 
 
@@ -48,7 +50,11 @@ export default function PanelMini({ user, setUser,logout }) {
 
         </div>) }
 
-        { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>logout()}>X</button> )}
+        { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>{
+          
+          logout()
+          logoutIO();
+          }}>X</button> )}
         </div>
 
         <div className={style.container} >

@@ -15,6 +15,7 @@ import { useOnlineStatus } from "hooks/useOnlieStatus";
 import { AppContext } from "context/AppContext";
 
 import { TechnologyContext } from "context/TechnologyContext";
+import { useSocket } from "context/SocketContext";
 
 export default function ProcesoryMini({ user, setUser,logout }) {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function ProcesoryMini({ user, setUser,logout }) {
   const grupyWykonanAll = techContext.grupyWykonanAll;
   const grupyWykonanAllNiezakonczone = techContext.grupyWykonanAllNiezakonczone;
   const setGrupWykonanAllNiezakonczone = techContext.setGrupWykonanAllNiezakonczone;
+
 
     const grupyWykonanAllNiezakonczoneOprawa = techContext.grupyWykonanAllNiezakonczoneOprawa;
   const setGrupWykonanAllNiezakonczoneOprawa = techContext.setGrupWykonanAllNiezakonczoneOprawa;
@@ -64,8 +66,8 @@ setGrupWykonanAllNiezakonczoneOprawa(res.data[1])
                                                                         <p>{DecodeToken(sessionStorage.getItem("token")).imie} {DecodeToken(sessionStorage.getItem("token")).nazwisko} </p>
                                                                         
                                                                 </div>) }
-                                                        
-                                                { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>navigate("/Panel") }>X</button> )}
+
+                                                { isOnline && (<button className={style.btnWyloguj_mini} onClick={()=>{navigate("/Panel");} }>X</button> )}
                         </div>
         
                                 <div className={style.container} >

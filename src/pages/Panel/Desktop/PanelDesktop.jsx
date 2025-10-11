@@ -38,7 +38,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                                 <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
-                        <OnlineUsersList />
+                        {/* <OnlineUsersList /> */}
                         </div>
                         </div>
                 <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>

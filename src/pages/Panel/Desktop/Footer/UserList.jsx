@@ -7,6 +7,13 @@ import userOnline from 'assets/user_offline.svg';
 import { useSocket } from 'context/SocketContext';
 import DecodeToken from 'pages/Login/DecodeToken';
 
+
+const OnlineIcon = ({status}) => {
+  if(status=="Aktywny") {
+  return( <span className={style.onlineIcon} title="Online" />);
+};
+}
+
 // Przykładowe dane
 const dummyUsers = [
   { id: 1, imie: 'Anna', nazwisko: 'Kowalska', zalogowany: '14:30', imageUrl: userOnline },
@@ -52,18 +59,20 @@ const UserList = () => {
       <div className={style.usersGrid}>
         {usersIO.filter(user => user.userId != DecodeToken(sessionStorage.getItem("token")).id).map((user, i) => (
           // Pojedynczy element użytkownika
-          <div key={user.id || i} className={style.userCard}>
-            
+          <div 
+              title={`${user.imie} ${user.nazwisko}\nZalogowano: ${user.zalogowany}\nOstatnio aktywny: ${user.ostatnia_aktywnosc}`}
+          
+          key={user.id || i} className={style.userCard}>
+            <OnlineIcon status={user.status} />
             {/* Ikona użytkownika */}
             <img
               className={style.userIcon}
-              title={`Zalogowano: ${user.zalogowany}`}
               src={user.imageUrl || userOnline} // Użyj obrazka z danych lub domyślnego
               alt={`Avatar użytkownika ${user.imie}`}
             />
             
             {/* Imię (skracane w CSS) */}
-            <span className={style.userName}>{user.imie}</span>
+            <span className={style.userName}>{user.imie} </span>
             
             {/* Nazwisko (skracane w CSS) */}
             {/* <span className={style.userSurname}>{user.nazwisko}</span> */}

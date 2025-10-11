@@ -9,6 +9,7 @@ import { AppContext } from "context/AppContext";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
+import UserList from "./UserList";
 
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);

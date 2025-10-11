@@ -20,6 +20,7 @@ import iconKalendarz from 'assets/iconKalendarz.svg'
 import OnlineUsersList from "./OnlineUsersList";
 import NawigacjaBTN from "./Nawigacja/NawigacjaBTN";
 import PanelDesktopHeader from "./Header/PanelDesktopHeader";
+import PanelDesktopFooter from "./Footer/PanelDesktopFooter";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
     return(<>
@@ -40,6 +41,8 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                         <OnlineUsersList />
                         </div>
                         </div>
+                <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>
+
                 </div>
             </>);
 

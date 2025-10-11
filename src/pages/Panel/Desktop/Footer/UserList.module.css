@@ -1,0 +1,89 @@
+/* UserList.module.css */
+
+/* 1. Kontener Główny - zapewnia, że komponent zajmie całą dostępną szerokość */
+.userListContainer {
+  width: 100%;
+  /* Opcjonalnie: Ustawienie maksymalnej wysokości, aby wymusić skalowanie/dopasowanie */
+  /* max-height: ...; */
+  overflow: hidden; /* Ukrywa ewentualne przewijanie */
+  padding: 5px 0; /* Lekki odstęp pionowy */
+}
+
+/* 2. CSS Grid - klucz do dynamicznego układu */
+.usersGrid2 {
+  display: grid;
+  /* ✨ MAGICZNA WŁAŚCIWOŚĆ: 
+      - auto-fit: Wypełnia cały dostępny obszar, dopasowując kolumny
+      - minmax(100px, 1fr): Minimalna szerokość kolumny to 100px, 
+        jeśli jest więcej miejsca, rozszerza się równomiernie (1fr)
+  */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1px; /* Odstęp między kolumnami */
+  align-items: start; /* Wyrównanie elementów na początku (góra) */
+  justify-content: start;
+  /* Zabezpieczenie przed przewijaniem wewnątrz samego Grida */
+  overflow: hidden;
+}
+
+
+
+.usersGrid {
+  display: flex;
+  flex-direction: row; /* Elementy w kolumnie (pionowo) */
+  align-items: center; /* Wyśrodkowanie tekstu i obrazka */
+  justify-content: center;
+}
+
+
+
+/* 3. Pojedyncza Karta Użytkownika */
+.userCard {
+  display: flex;
+  flex-direction: column; /* Elementy w kolumnie (pionowo) */
+  align-items: center; /* Wyśrodkowanie tekstu i obrazka */
+  text-align: center;
+  /* Wymuszenie dopasowania do rozmiaru kolumny */
+  width: 80px;
+  padding: 5px;
+  overflow: hidden; /* Kluczowe, aby zawartość się nie rozlała */
+}
+
+/* 4. Ikona Użytkownika */
+.userIcon {
+  width: 30px; /* Stała szerokość ikony */
+  height: 30px; /* Stała wysokość ikony */
+  border-radius: 50%; /* Okrągły obrazek */
+  object-fit: cover;
+  margin-bottom: 5px;
+  flex-shrink: 0; /* Zapobiega pomniejszaniu się ikony przy braku miejsca */
+}
+
+/* 5. Style Tekstowe - Skracanie/Przycinanie Tekstu (gdy się nie mieści) */
+
+.userName,
+.userSurname,
+.loginTime {
+  display: block; /* Upewnia się, że każdy span zajmuje całą dostępną szerokość */
+  width: 100%;
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  overflow: hidden; /* Ukrywa tekst, który się nie mieści */
+  text-overflow: ellipsis; /* Zastępuje ukryty tekst trzema kropkami (...) */
+  font-size: 0.9em; /* Domyślny rozmiar czcionki */
+  line-height: 1.2;
+}
+
+.userName {
+  font-weight: bold;
+  color: #e4e4e4;
+}
+
+.userSurname {
+  color: #e4e4e4;
+  font-size: 0.8em;
+}
+
+.loginTime {
+  font-size: 0.7em;
+  color: #e5e5e5;
+  margin-top: 2px;
+}

@@ -1,110 +1,202 @@
-import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
+import DecodeToken from 'pages/Login/DecodeToken';
+import React, { createContext, useContext, useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
-import { AppContext } from './AppContext';
-  
-// const SERVER_URL = 'https://planer.artdruk.eu'; 
-const SocketContext = createContext(null);
 
-
-// Używamy localStorage, co jest lepsze dla tokenów, które mają przetrwać odświeżenie strony.
+// --- Stałe konfiguracyjne ---
+// const IP_SOCKET = IP_SOCKET; 
 const STORAGE_TYPE = sessionStorage; 
 const TOKEN_KEY = 'token';
+const ACTIVITY_INTERVAL = 5000;  
+const IDLE_TIMEOUT = 60000;      
 
+// --- Zarządzanie Tokenem ---
 const getToken = () => STORAGE_TYPE.getItem(TOKEN_KEY); 
 const setToken = (token) => STORAGE_TYPE.setItem(TOKEN_KEY, token);
 const removeToken = () => STORAGE_TYPE.removeItem(TOKEN_KEY);
 
-// Hook do używania w komponentach:
+// --- Kontekst ---
+const SocketContext = createContext(null);
 export const useSocket = () => useContext(SocketContext);
 
-export const SocketProvider = ({ children }) => {
+// --- Funkcja do dekodowania (PRZYKŁADOWA) ---
+// W rzeczywistej aplikacji powinieneś użyć biblioteki JWT lub uzyskać ID z kontekstu.
+const decodeTokenForUserId = (token) => {
+    // MOCK: Zakładamy, że token to 'token-123' i zwracamy ID '123'
+    if (token && token.startsWith('token-')) {
+        return token.split('-')[1]; 
+    }
+    return null;
+}
 
-const [usersIO, setUsersIO] = useState([]);
+// --- Główny Dostawca Kontekstu Socket.IO ---
+export const SocketProvider = ({ children }) => {
+    const [usersIO, setUsersIO] = useState([]);
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
-    // const [usersIO, setUsersIO] = useState([]);
-    
-    // Stan początkowy oparty na obecności tokenu
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
+    // 🔑 NOWY STAN: Przechowuje ID użytkownika po autoryzacji
+    const [currentUserId, setCurrentUserId] = useState(); 
+    
+    // --- Refy dla śledzenia aktywności ---
+    const idleTimerRef = useRef(null);
+    const isThrottledRef = useRef(false);
+    const currentStatusRef = useRef('Aktywny'); 
 
-    // Funkcja wywoływana z komponentu Logowania/Wylogowania
     const updateAuthStatus = (status, token = null) => {
         if (status && token) {
             setToken(token);
+            // Ustaw ID po otrzymaniu tokenu
+            setCurrentUserId(DecodeToken(sessionStorage.getItem("token")).id); 
         } else if (!status) {
             removeToken();
+            // Wyczyść ID po wylogowaniu
+            setCurrentUserId(null); 
         }
-        // Ta zmiana stanu wywoła useEffect poniżej, inicjując lub rozłączając Socket.IO
         setIsAuthenticated(status);
     };
 
-    // ----------------------------------------------------
-    // KLUCZOWY useEffect: Zarządzanie Połączeniem Socket.IO
-    // ----------------------------------------------------
+    // -----------------------------------------------------------------------
+    // SEKCJA 1: Zarządzanie Logiką Aktywności (Zależna od ID)
+    // -----------------------------------------------------------------------
+    
+    const sendActivity = useCallback((status) => {
+        // 🔑 NOWA KONTROLA: Wymagaj zarówno socket, jak i currentUserId
+        if (!socket || !currentUserId || currentStatusRef.current === status) { 
+            return; 
+        }
+        
+        socket.emit('userActivity', { userId: currentUserId, status }); // Użyj currentUserId
+        currentStatusRef.current = status; 
+        
+    }, [socket, currentUserId]); // Zależność od obiektu socket i currentUserId
+
+    const resetIdleTimer = useCallback(() => {
+        if (idleTimerRef.current) {
+            clearTimeout(idleTimerRef.current);
+        }
+        idleTimerRef.current = setTimeout(() => {
+            sendActivity('Nieaktywny');
+        }, IDLE_TIMEOUT);
+    }, [sendActivity]);
+
+    const handleActivity = useCallback(() => {
+        resetIdleTimer();
+
+        if (isThrottledRef.current) {
+            return;
+        }
+
+        sendActivity('Aktywny');
+        
+        isThrottledRef.current = true;
+        setTimeout(() => {
+            isThrottledRef.current = false;
+        }, ACTIVITY_INTERVAL);
+        
+    }, [resetIdleTimer, sendActivity]);
+
+    // -----------------------------------------------------------------------
+    // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
+    // -----------------------------------------------------------------------
   
     useEffect(() => {
         const token = getToken();
-
-        // 1. Warunek: Mamy token i status jest pozytywny -> Inicjalizuj Socket
-        if (isAuthenticated && token) {
-            
-            const newSocket = io(IP_SOCKET, {
-                auth: { token: token }, // Przekazanie tokenu do serwera
-                transports: ['websocket'],
-                reconnection: true,
-            });
-
-            setSocket(newSocket);
-            
-            // Konfiguracja listenerów
-            newSocket.on('connect', () => setIsConnected(true));
-            newSocket.on('disconnect', () => setIsConnected(false));
-
-                  newSocket.on("onlineUsers", (data) => {
-                 setUsersIO(data)
-          //tu przychodzi odpowiedź i jest zapisana w contexcie
-          // setSocketReceiveMessage(data.message)
-          // setUsersIO(data)
-          console.log(data)
-        });
-            
-            // Obsługa błędu autoryzacji z serwera
-            newSocket.on('connect_error', (err) => {
-                console.error('Błąd połączenia Socket.IO (autoryzacja):', err.message);
-                // Usuń token, zaktualizuj stan, co wymusi ponowne uruchomienie useEffect
-                removeToken(); 
-                setIsAuthenticated(false);
-            });
-
-            // 2. Logika czyszcząca: Rozłącza instancję przed jej zniszczeniem (przy odświeżeniu/wylogowaniu)
-            return () => {
-                newSocket.off('connect');
-                newSocket.off('disconnect');
-                newSocket.off('connect_error');
-                newSocket.disconnect(); // KLUCZOWE
-                setSocket(null);
-                setIsConnected(false);
-            };
+        
+        // 🔑 WARUNEK POŁĄCZENIA: Wymagany jest ID użytkownika i token
+        if (!isAuthenticated || !token || !currentUserId) {
+            // Jeśli brakuje ID (np. token się zmienił lub jest pusty), wstrzymaj połączenie
+            return; 
         }
-        
-        // 3. Warunek: Użytkownik się wylogował lub token zniknął (isAuthenticated == false)
-        // W tym przypadku poprzednia instancja zostanie rozłączona przez funkcję czyszczącą, 
-        // a setSocket(null) zapobiegnie użyciu jej w dalszej części kodu.
-        
-    }, [isAuthenticated]); // Zależność od stanu autoryzacji
 
-    // Używamy useMemo, aby uniknąć zbędnego ponownego renderowania komponentów-dzieci
+        const newSocket = io(IP_SOCKET, {
+            auth: { token: token },
+            transports: ['websocket'],
+            reconnection: true,
+        });
+
+        setSocket(newSocket);
+        
+        // ... (standardowe listenery Socket.IO: connect, disconnect, onlineUsers, connect_error) ...
+        newSocket.on('connect', () => setIsConnected(true));
+        newSocket.on('disconnect', () => setIsConnected(false));
+        newSocket.on('onlineUsers', setUsersIO);
+        newSocket.on('connect_error', (err) => {
+            console.error('Błąd połączenia Socket.IO (autoryzacja):', err.message);
+            removeToken(); 
+            setIsAuthenticated(false);
+            setCurrentUserId(null);
+        });
+
+        // Logika czyszcząca
+        return () => {
+            newSocket.off('connect');
+            newSocket.off('disconnect');
+            newSocket.off('connect_error');
+            newSocket.off('onlineUsers');
+            newSocket.disconnect(); 
+            setSocket(null);
+            setIsConnected(false);
+        };
+        
+    }, [isAuthenticated, currentUserId]); // Zależność również od currentUserId
+    
+    // -----------------------------------------------------------------------
+    // SEKCJA 3: Efekt zarządzający Listenerami DOM (Śledzenie Aktywności)
+    // -----------------------------------------------------------------------
+    
+    useEffect(() => {
+        // 🔑 WARUNEK AKTYWNOŚCI: Uruchamiamy śledzenie tylko, gdy gniazdo i ID są gotowe
+        if (!socket || !currentUserId) {
+            clearTimeout(idleTimerRef.current);
+            return;
+        }
+
+        // Uruchomienie początkowe
+        sendActivity('Aktywny');
+        resetIdleTimer();
+
+        // 1. Rejestracja zdarzeń DOM
+        const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
+        activityEvents.forEach(event => window.addEventListener(event, handleActivity));
+
+        // ... (implementacja handleVisibility) ...
+        const handleVisibility = () => {
+            if (document.hidden) {
+                sendActivity('Ukryty'); 
+                clearTimeout(idleTimerRef.current);
+            } else {
+                handleActivity();
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibility);
+
+        // 2. Logika czyszczenia DOM
+        return () => {
+            activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
+            document.removeEventListener('visibilitychange', handleVisibility);
+            
+            clearTimeout(idleTimerRef.current);
+            currentStatusRef.current = 'Aktywny'; 
+        };
+    }, [socket, currentUserId, handleActivity, resetIdleTimer, sendActivity]); 
+
+    // -----------------------------------------------------------------------
+    // SEKCJA 4: Kontekst
+    // -----------------------------------------------------------------------
+
     const contextValue = useMemo(() => ({
         socket,
         isConnected,
         isAuthenticated,
         updateAuthStatus,
-  usersIO
-    }), [socket, isConnected, isAuthenticated,usersIO]);
+        usersIO,
+        currentUserId // Opcjonalnie udostępnij ID w kontekście
+    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId]);
+    
     return (
         <SocketContext.Provider value={contextValue}>
-          
             {children}
         </SocketContext.Provider>
     );

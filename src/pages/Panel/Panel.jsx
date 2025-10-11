@@ -30,102 +30,102 @@ export default function Panel({ user, setUser }) {
 const ACTIVITY_INTERVAL = 5000;      // 5 sekund (Throttling dla statusu 'Aktywny')
 const IDLE_TIMEOUT = 60000;          // 60 sekund (1 minuta - czas do statusu 'Nieaktywny')
 
-function useActivityTracker(userId) {
-  const idleTimerRef = useRef(null);
-  const isThrottledRef = useRef(false);
-  // Ref do śledzenia OSTATNIO WYSŁANEGO statusu
-  const currentStatusRef = useRef('Aktywny'); 
+// function useActivityTracker(userId) {
+//   const idleTimerRef = useRef(null);
+//   const isThrottledRef = useRef(false);
+//   // Ref do śledzenia OSTATNIO WYSŁANEGO statusu
+//   const currentStatusRef = useRef('Aktywny'); 
 
-  // --- Funkcje pomocnicze ---
+//   // --- Funkcje pomocnicze ---
 
-  // Funkcja wysyłająca status do serwera (kontrola jednorazowej wysyłki)
-  const sendActivity = useCallback((status) => {
+//   // Funkcja wysyłająca status do serwera (kontrola jednorazowej wysyłki)
+//   const sendActivity = useCallback((status) => {
 
-      if (!socket) { 
-        console.warn("Socket jest NULL. Nie można wysłać aktywności.");
-        return; 
-    }
-    // Sprawdzenie: Jeśli status się nie zmienił, nie wysyłaj nic
-    if (currentStatusRef.current === status) {
-      return; 
-    }
+//       if (!socket) { 
+//         console.warn("Socket jest NULL. Nie można wysłać aktywności.");
+//         return; 
+//     }
+//     // Sprawdzenie: Jeśli status się nie zmienił, nie wysyłaj nic
+//     if (currentStatusRef.current === status) {
+//       return; 
+//     }
     
-    // Wysyłka statusu do Socket.IO
-    socket.emit('userActivity', { userId, status });
-    // Aktualizacja ostatnio wysłanego statusu
-    currentStatusRef.current = status; 
+//     // Wysyłka statusu do Socket.IO
+//     socket.emit('userActivity', { userId, status });
+//     // Aktualizacja ostatnio wysłanego statusu
+//     currentStatusRef.current = status; 
     
-  }, [userId]);
+//   }, [userId]);
 
-  // Funkcja resetująca Timer Bezczynności
-  const resetIdleTimer = useCallback(() => {
-    // Zawsze anuluj poprzedni timer
-    if (idleTimerRef.current) {
-      clearTimeout(idleTimerRef.current);
-    }
+//   // Funkcja resetująca Timer Bezczynności
+//   const resetIdleTimer = useCallback(() => {
+//     // Zawsze anuluj poprzedni timer
+//     if (idleTimerRef.current) {
+//       clearTimeout(idleTimerRef.current);
+//     }
     
-    // Ustaw nowy timer, który po 60 sekundach spróbuje wysłać 'Nieaktywny'
-    idleTimerRef.current = setTimeout(() => {
-      // Wywołanie sendActivity('Nieaktywny')
-      // Zostanie wysłane TYLKO, jeśli currentStatusRef.current jest różne od 'Nieaktywny'
-      sendActivity('Nieaktywny');
-    }, IDLE_TIMEOUT);
-  }, [sendActivity]);
+//     // Ustaw nowy timer, który po 60 sekundach spróbuje wysłać 'Nieaktywny'
+//     idleTimerRef.current = setTimeout(() => {
+//       // Wywołanie sendActivity('Nieaktywny')
+//       // Zostanie wysłane TYLKO, jeśli currentStatusRef.current jest różne od 'Nieaktywny'
+//       sendActivity('Nieaktywny');
+//     }, IDLE_TIMEOUT);
+//   }, [sendActivity]);
 
-  // Funkcja obsługująca każdą wykrytą aktywność
-  const handleActivity = useCallback(() => {
-    // 🔑 KROK 1: Resetuje timer bezczynności (przedłuża status 'Aktywny')
-    resetIdleTimer();
+//   // Funkcja obsługująca każdą wykrytą aktywność
+//   const handleActivity = useCallback(() => {
+//     // 🔑 KROK 1: Resetuje timer bezczynności (przedłuża status 'Aktywny')
+//     resetIdleTimer();
 
-    // KROK 2: Throttling (ograniczenie liczby wiadomości)
-    if (isThrottledRef.current) {
-      return;
-    }
+//     // KROK 2: Throttling (ograniczenie liczby wiadomości)
+//     if (isThrottledRef.current) {
+//       return;
+//     }
 
-    // Wywołanie sendActivity('Aktywny')
-    // Zostanie wysłane TYLKO, jeśli obecny status to np. 'Nieaktywny' lub 'Ukryty'
-    sendActivity('Aktywny');
+//     // Wywołanie sendActivity('Aktywny')
+//     // Zostanie wysłane TYLKO, jeśli obecny status to np. 'Nieaktywny' lub 'Ukryty'
+//     sendActivity('Aktywny');
     
-    isThrottledRef.current = true;
+//     isThrottledRef.current = true;
 
-    // Usuń flagę throttling po zdefiniowanym interwale (5 sekund)
-    setTimeout(() => {
-      isThrottledRef.current = false;
-    }, ACTIVITY_INTERVAL);
+//     // Usuń flagę throttling po zdefiniowanym interwale (5 sekund)
+//     setTimeout(() => {
+//       isThrottledRef.current = false;
+//     }, ACTIVITY_INTERVAL);
     
-  }, [resetIdleTimer, sendActivity]);
+//   }, [resetIdleTimer, sendActivity]);
 
-  // --- Efekty (Lifecycle) ---
+//   // --- Efekty (Lifecycle) ---
 
-  useEffect(() => {
-    // Ustawienie początkowe
-    sendActivity('Aktywny');
-    resetIdleTimer();
+//   useEffect(() => {
+//     // Ustawienie początkowe
+//     sendActivity('Aktywny');
+//     resetIdleTimer();
     
-    // Rejestracja zdarzeń aktywności
-    const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
-    activityEvents.forEach(event => window.addEventListener(event, handleActivity));
+//     // Rejestracja zdarzeń aktywności
+//     const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
+//     activityEvents.forEach(event => window.addEventListener(event, handleActivity));
 
-    // Obsługa zmiany widoczności karty ('hidden' dla minimalizacji/przełączenia karty)
-    const handleVisibility = () => {
-      if (document.hidden) {
-        sendActivity('Ukryty'); // Możesz użyć "Ukryty" lub "Nieaktywny"
-        clearTimeout(idleTimerRef.current); // Zatrzymaj timer, bo 'Ukryty' ma wyższy priorytet
-      } else {
-        handleActivity(); // Powrót na kartę => 'Aktywny' i reset timera
-      }
-    };
+//     // Obsługa zmiany widoczności karty ('hidden' dla minimalizacji/przełączenia karty)
+//     const handleVisibility = () => {
+//       if (document.hidden) {
+//         sendActivity('Ukryty'); // Możesz użyć "Ukryty" lub "Nieaktywny"
+//         clearTimeout(idleTimerRef.current); // Zatrzymaj timer, bo 'Ukryty' ma wyższy priorytet
+//       } else {
+//         handleActivity(); // Powrót na kartę => 'Aktywny' i reset timera
+//       }
+//     };
 
-    document.addEventListener('visibilitychange', handleVisibility);
+//     document.addEventListener('visibilitychange', handleVisibility);
 
-    // Czyszczenie (cleanup) po odmontowaniu komponentu
-    return () => {
-      activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
-      document.removeEventListener('visibilitychange', handleVisibility);
-      clearTimeout(idleTimerRef.current);
-    };
-  }, [userId, handleActivity, resetIdleTimer, sendActivity]); 
-}
+//     // Czyszczenie (cleanup) po odmontowaniu komponentu
+//     return () => {
+//       activityEvents.forEach(event => window.removeEventListener(event, handleActivity));
+//       document.removeEventListener('visibilitychange', handleVisibility);
+//       clearTimeout(idleTimerRef.current);
+//     };
+//   }, [userId, handleActivity, resetIdleTimer, sendActivity]); 
+// }
 
 
 
@@ -138,7 +138,7 @@ function useActivityTracker(userId) {
     navigate("/Login");
     sessionStorage.removeItem("token");
   };
-useActivityTracker(DecodeToken(sessionStorage.getItem("token")).id);
+// useActivityTracker(DecodeToken(sessionStorage.getItem("token")).id);
   if (window.innerWidth > 900 && DecodeToken(sessionStorage.getItem("token")).wersja_max==1) {
     return (
       <>

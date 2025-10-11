@@ -41,10 +41,10 @@ function useActivityTracker(userId) {
   // Funkcja wysyłająca status do serwera (kontrola jednorazowej wysyłki)
   const sendActivity = useCallback((status) => {
 
-    //   if (!socket) { 
-    //     console.warn("Socket jest NULL. Nie można wysłać aktywności.");
-    //     return; 
-    // }
+      if (!socket) { 
+        console.warn("Socket jest NULL. Nie można wysłać aktywności.");
+        return; 
+    }
     // Sprawdzenie: Jeśli status się nie zmienił, nie wysyłaj nic
     if (currentStatusRef.current === status) {
       return; 

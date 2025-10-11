@@ -41,9 +41,9 @@ const dummyUsers = [
  * Komponent wyświetlający poziomą listę użytkowników.
  * Używa CSS Grid do elastycznego rozmieszczenia i dopasowania do szerokości rodzica.
  */
-const UserList = ({ usersIO = dummyUsers }) => {
-// const UserList = () => {
-  //  const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
+// const UserList = ({ usersIO = dummyUsers }) => {
+const UserList = () => {
+   const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
   return (
     // Kontener główny, który zajmie 100% szerokości rodzica
     <div className={style.userListContainer}>

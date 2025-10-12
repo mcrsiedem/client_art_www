@@ -6,9 +6,10 @@
     align-items: center;
     padding-right: 30px;
     padding-left: 30px;
-    /* height: 60; */
+
      position: relative; /* Ważne dla pozycjonowania rozwijanego menu */
-  /* display: inline-block; */
+
+  /* background-color: #ffd0001e; */
 }
 
 

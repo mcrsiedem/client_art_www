@@ -1,16 +1,14 @@
 
 
-.footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding-right: 30px;
-    padding-left: 30px; */
-    /* height: 60px; */
-     position: relative; /* Ważne dla pozycjonowania rozwijanego menu */
-  /* display: inline-block; */
-  /* background-color: red; */
-  padding-bottom: 30px;
-  width: 98vw;
-  /* background-color: red; */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30px;
+
+  position: relative;
+  /* Ważne dla pozycjonowania rozwijanego menu */
+
+  padding-bottom: 10px;
+  /* background-color: #00ff0012; */
 }

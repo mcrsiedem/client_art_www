@@ -21,6 +21,7 @@ import OnlineUsersList from "./OnLineUserList/OnlineUsersList";
 import NawigacjaBTN from "./Nawigacja/NawigacjaBTN";
 import PanelDesktopHeader from "./Header/PanelDesktopHeader";
 import PanelDesktopFooter from "./Footer/PanelDesktopFooter";
+import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
     return(<>
@@ -39,6 +40,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                         </div >
                         < div className={style.container_btn_prawy}> 
                         <OnlineUsersList />
+                        <PodgladRealizacji/>
                         </div>
                         </div>
                 <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>

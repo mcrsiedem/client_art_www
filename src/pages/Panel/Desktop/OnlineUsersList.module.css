@@ -1,6 +1,6 @@
 /* Kontener główny listy */
 .container {
-    max-width: 450px;
+    max-width: 650px;
     margin: 30px auto;
     padding: 20px;
     border-radius: 12px;
@@ -15,6 +15,9 @@
 
 /* Nagłówek */
 .header {
+      display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 1.6em;
     color: #ffffff;
     border-bottom: 2px solid #e7e7e7;
@@ -22,6 +25,7 @@
     margin-bottom: 20px;
     text-align: center;
     font-weight: 700;
+    padding-left: 5px;
 }
 
 /* Komunikat o braku użytkowników */
@@ -46,6 +50,7 @@
     border-radius: 8px;
     /* Lekki efekt hover */
     transition: all 0.2s ease-in-out; 
+
 }
 
 .users:hover {
@@ -67,6 +72,18 @@
     animation: pulse 1.5s infinite;
 }
 
+/* Ikona statusu offline */
+.offlineIcon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #6d6d6d; /* Żywa zieleń */
+    margin-right: 15px;
+    flex-shrink: 0;
+    /* Mała animacja pulsu */
+
+}
+
 /* Nazwa użytkownika */
 .userName {
     font-size: 1.1em;
@@ -74,6 +91,22 @@
     color: #e8e8e8;
     flex-grow: 1; /* Pozwala na rozciągnięcie i spchnięcie czasu zalogowania */
 }
+
+
+
+
+/* Log Time Container*/
+.loginTimeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    margin-left: 50px;
+
+
+}
+
+
 
 /* Czas zalogowania */
 .loginTime {
@@ -126,4 +159,19 @@
 
 .listWrapper::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+
+.icon2 {
+  /* margin-left: 30px; */
+  border: 1px solid gray;
+/* background-color: rgb(255, 0, 0); */
+border-radius: 5px;
+    height: 25px;
+    padding: 2px;
+}
+
+.icon2:hover {
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
 }

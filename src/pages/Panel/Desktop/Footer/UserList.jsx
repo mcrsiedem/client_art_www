@@ -1,11 +1,12 @@
 // UserList.js
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './UserList.module.css';
 
 // Przykładowy obrazek (zastąp własnym)
 import userOnline from 'assets/user_offline.svg'; 
 import { useSocket } from 'context/SocketContext';
 import DecodeToken from 'pages/Login/DecodeToken';
+import { AppContext } from 'context/AppContext';
 
 
 const OnlineIcon = ({status}) => {
@@ -50,6 +51,10 @@ const dummyUsers = [
  */
 // const UserList = ({ usersIO = dummyUsers }) => {
 const UserList = () => {
+   const appcontext = useContext(AppContext);
+      
+      const pokazUzytkownikowOnline = appcontext.pokazUzytkownikowOnline;
+      const setPokazUzytkownikowOnline = appcontext.setPokazUzytkownikowOnline;
    const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
   return (
     // Kontener główny, który zajmie 100% szerokości rodzica
@@ -95,7 +100,10 @@ const UserList = () => {
           ))}
 
         {usersIO.length > 1 ? (
-          <div title={`Użytkownicy zalogowani`} className={style.userCardInfo}>
+          <div 
+          onClick={()=>{setPokazUzytkownikowOnline(!pokazUzytkownikowOnline)}}
+          title={`Użytkownicy zalogowani`} className={style.userCardInfo}>
+          
             <span className={style.info}>{usersIO.length}</span>
           </div>
         ) : (

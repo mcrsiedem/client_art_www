@@ -17,7 +17,14 @@ export default function Panel({ user, setUser }) {
   const setNadkomplety = appcontext.setNadkomplety;
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
- const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
+ const {         socket,
+        isConnected,
+        isAuthenticated,
+        updateAuthStatus,
+        usersIO,
+        currentUserId,
+        logoutIO,
+        podgladRealizacji, callPodgladRalizacji } = useSocket()
   useEffect(() => {
     getNadkomplety(setNadkomplety)
     getClients(setClients,setClientsWyszukiwarka )

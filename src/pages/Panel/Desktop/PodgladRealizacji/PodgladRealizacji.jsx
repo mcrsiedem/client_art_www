@@ -27,12 +27,19 @@ export default function PodgladRealizacji(){
     
     const pokazUzytkownikowOnline = appcontext.pokazUzytkownikowOnline;
     const setPokazUzytkownikowOnline = appcontext.setPokazUzytkownikowOnline;
- const { socket, isConnected, isAuthenticated, updateAuthStatus,usersIO } = useSocket()
+ const {         socket,
+        isConnected,
+        isAuthenticated,
+        updateAuthStatus,
+        usersIO,
+        currentUserId,
+        logoutIO,
+        podgladRealizacji, callPodgladRalizacji } = useSocket()
 
     return (
     <div className={style.container}>
       <h2 className={style.header}>
-        Realizacje z dziś ({usersIO.length})
+        Realizacje z dziś ({podgladRealizacji.length})
                {/* <img
           className={style.icon2}
           src={iconClose2}
@@ -45,27 +52,27 @@ export default function PodgladRealizacji(){
       
       <div className={style.listWrapper}>
         {/* Zastosowanie Twojej struktury mapowania */}
-        {usersIO.map((user, i) => (
+        {podgladRealizacji?.map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')
           <div key={user.id || i} className={style.users}>
             {/* <OnlineIcon status={user.status}/> */}
             {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
-            <span className={style.userName}>{user.imie} {user.nazwisko}</span>
+            <span className={style.userName}>{user.dodal} {user.nazwisko}</span>
             
-            {user.zalogowany && (
+         
               <div className={style.loginTimeContainer}>
                     <span className={style.loginTime}>
                     {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                    Zalogowany: {user.zalogowany}
+                    Utworzono: {user.utworzono}
                 </span>
                       <span className={style.loginTime}>
                     {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                    Aktywny: {user.ostatnia_aktywnosc}
+                  {user.nazwa}
                 </span>
               </div>
           
                 
-            )}
+          
           </div>
         ))}
       </div>

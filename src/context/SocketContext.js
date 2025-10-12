@@ -2,8 +2,9 @@ import DecodeToken from 'pages/Login/DecodeToken';
 import React, { createContext, useContext, useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
-
-
+import { IP } from "utils/Host";
+import axios from "axios";
+  
  let newSocket;
 // --- Stałe konfiguracyjne ---
 const STORAGE_TYPE = sessionStorage; 
@@ -43,9 +44,10 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
-    
+
     // ✅ POPRAWKA: Inicjalizacja currentUserId na podstawie zdekodowanego tokenu
     const [currentUserId, setCurrentUserId] = useState(getInitialUserId()); 
+        const [podgladRealizacji, setPodgladRealizacji] = useState([]);
     
     // --- Refy dla śledzenia aktywności ---
     const idleTimerRef = useRef(null);
@@ -105,6 +107,14 @@ export const SocketProvider = ({ children }) => {
     // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
     // -----------------------------------------------------------------------
   
+      const callPodgladRalizacji = async (od) =>{
+
+        
+        const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
+
+        setPodgladRealizacji(res.data[0]);
+
+      }
 
     const logoutIO=()=>{
         newSocket.emit("logout",{userId:currentUserId})
@@ -143,6 +153,18 @@ export const SocketProvider = ({ children }) => {
             setIsAuthenticated(false);
             setCurrentUserId(null);
         });
+
+
+
+
+
+            newSocket.on("pobierz_podglad_realizacji", () => {
+
+// tutaj pobrac 
+callPodgladRalizacji("2025-10-10 18:00")
+
+  });
+
 
         // Logika czyszcząca
         return () => {
@@ -204,8 +226,9 @@ export const SocketProvider = ({ children }) => {
         updateAuthStatus,
         usersIO,
         currentUserId,
-        logoutIO
-    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId]);
+        logoutIO,
+        podgladRealizacji, callPodgladRalizacji
+    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji]);
     
     return (
         <SocketContext.Provider value={contextValue}>

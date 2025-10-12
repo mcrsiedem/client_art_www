@@ -137,7 +137,7 @@
        Musisz to dostosować do finalnej wysokości Twojego kontenera głównego (.container),
        uwzględniając nagłówek i padding. */
     max-height: 650px; 
-    
+    height: 500px;
     /* WŁAŚCIWOŚCI KLUCZOWE: */
     /* 1. Włącza przewijanie pionowe (Y) tylko, gdy zawartość się nie mieści */
     overflow-y: auto; 

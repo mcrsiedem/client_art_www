@@ -1,5 +1,7 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { IP } from "utils/Host";
+import axios from "axios";
+  
 import style from './PanelDesktop.module.css';
 
 import userOnline from 'assets/user_offline.svg'
@@ -22,8 +24,33 @@ import NawigacjaBTN from "./Nawigacja/NawigacjaBTN";
 import PanelDesktopHeader from "./Header/PanelDesktopHeader";
 import PanelDesktopFooter from "./Footer/PanelDesktopFooter";
 import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
+import { useSocket } from "context/SocketContext";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
+ const {         socket,
+        isConnected,
+        isAuthenticated,
+        updateAuthStatus,
+        usersIO,
+        currentUserId,
+        logoutIO,
+        podgladRealizacji, callPodgladRalizacji } = useSocket()
+  async function checkToken() {
+    axios
+      .get(IP + "/islogged/" + sessionStorage.getItem("token"))
+      .then((res) => {
+        if (res.data.Status === "Success") {
+callPodgladRalizacji("2025-10-10 18:00")
+        } else {
+          navigate("/Login");
+        }
+      });
+  }
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
     return(<>
                 <div  className={style.main} >
                 <PanelDesktopHeader isOnline={isOnline} navigate={navigate} logout={logout}/>

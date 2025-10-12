@@ -41,6 +41,7 @@ export const AppContextProvider = ({children})=>{
     const [pokazUzytkownikowOnline, setPokazUzytkownikowOnline] = useState(null);
 
 
+
     const [sortowanieOddania,setSortowanieOddania] = useState("data");
             const [widokOddan, setWidokOddan] = useState(1);
     
@@ -188,6 +189,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
                     oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania,
                     pokazUzytkownikowOnline, setPokazUzytkownikowOnline,
+              
           
                   }}
             >

@@ -34,7 +34,7 @@ export default function PodgladRealizacji(){
         usersIO,
         currentUserId,
         logoutIO,
-        podgladRealizacji, callPodgladRalizacji } = useSocket()
+        podgladRealizacji, callPodgladRalizacji,podgladTableRef } = useSocket()
 
     return (
     <div className={style.container}>
@@ -50,7 +50,7 @@ export default function PodgladRealizacji(){
         /> */}
       </h2>
       
-      <div className={style.listWrapper}>
+      <div ref={podgladTableRef} className={style.listWrapper}>
         {/* Zastosowanie Twojej struktury mapowania */}
         {podgladRealizacji?.map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')

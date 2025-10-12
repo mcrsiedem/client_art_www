@@ -21,14 +21,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       const setRealizacje = techContext.setRealizacje;
       const grupyWykonanAll = techContext.grupyWykonanAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
-     const {         socket,
-            isConnected,
-            isAuthenticated,
-            updateAuthStatus,
-            usersIO,
-            currentUserId,
-            logoutIO,
-            podgladRealizacji, callPodgladRalizacji } = useSocket()
+     const {         socket } = useSocket()
     return (
       <button
         className={style.btn}

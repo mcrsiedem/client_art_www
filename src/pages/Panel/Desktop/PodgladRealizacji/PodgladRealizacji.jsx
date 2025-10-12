@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 // Importujemy style z pliku CSS Modules
 import style from './PodgladRealizacji.module.css';
 import { useSocket } from 'context/SocketContext';
@@ -24,22 +24,25 @@ const OnlineIcon = ({status}) => {
  */
 export default function PodgladRealizacji(){
    const appcontext = useContext(AppContext);
+          const podgladTableRef2 = useRef(null);
     
     const pokazUzytkownikowOnline = appcontext.pokazUzytkownikowOnline;
     const setPokazUzytkownikowOnline = appcontext.setPokazUzytkownikowOnline;
- const {         socket,
-        isConnected,
-        isAuthenticated,
-        updateAuthStatus,
-        usersIO,
-        currentUserId,
-        logoutIO,
-        podgladRealizacji, callPodgladRalizacji,podgladTableRef } = useSocket()
+ const { podgladRealizacji } = useSocket()
+useEffect(() => {
+    // Sprawdzamy, czy dane istnieją i czy ref istnieje
+    if (podgladRealizacji && podgladTableRef2.current) {
+        // Użycie setTimeout(..., 0) jest tutaj wciąż dobrym zabezpieczeniem
+        setTimeout(() => {
+            podgladTableRef2.current.scrollTo({ top: 30000, behavior: "auto" });
+        }, 0);
+    }
+}, [podgladRealizacji]);
 
     return (
     <div className={style.container}>
       <h2 className={style.header}>
-        Realizacje z dziś ({podgladRealizacji.length})
+       Ostatnie realizacje... ({podgladRealizacji.length})
                {/* <img
           className={style.icon2}
           src={iconClose2}
@@ -50,7 +53,7 @@ export default function PodgladRealizacji(){
         /> */}
       </h2>
       
-      <div ref={podgladTableRef} className={style.listWrapper}>
+      <div ref={podgladTableRef2} className={style.listWrapper}>
         {/* Zastosowanie Twojej struktury mapowania */}
         {podgladRealizacji?.map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')

@@ -40,7 +40,7 @@ const getInitialUserId = () => {
 
 // --- Główny Dostawca Kontekstu Socket.IO ---
 export const SocketProvider = ({ children }) => {
-      const podgladTableRef = useRef(null);
+
     const [usersIO, setUsersIO] = useState([]);
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
@@ -114,10 +114,7 @@ export const SocketProvider = ({ children }) => {
         const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 
         setPodgladRealizacji(res.data[0]);
-        if(podgladTableRef.current){
 
-            podgladTableRef.current.scrollTo({ top: 30000, behavior: "auto" })
-        }
         
 
       }
@@ -233,7 +230,7 @@ callPodgladRalizacji("2025-10-10 18:00")
         usersIO,
         currentUserId,
         logoutIO,
-        podgladRealizacji, callPodgladRalizacji,podgladTableRef
+        podgladRealizacji, callPodgladRalizacji
     }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji]);
     
     return (

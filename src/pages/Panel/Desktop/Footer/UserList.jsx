@@ -75,7 +75,7 @@ const UserList = () => {
             <span className={style.userName}>{user.imie} </span>
             
             {/* Nazwisko (skracane w CSS) */}
-            {/* <span className={style.userSurname}>{user.nazwisko}</span> */}
+            <span className={style.userSurname}>{user.nazwisko}</span>
             
             {/* Data/czas zalogowania */}
             {/* {user.zalogowany && (

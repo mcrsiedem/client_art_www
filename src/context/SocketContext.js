@@ -121,7 +121,7 @@ export const SocketProvider = ({ children }) => {
       }
 
     const logoutIO=()=>{
-        newSocket.emit("logout",{userId:currentUserId})
+        newSocket.emit("logout",{userId:currentUserId,socketId: socket.id})
     }
     useEffect(() => {
         const token = getToken();

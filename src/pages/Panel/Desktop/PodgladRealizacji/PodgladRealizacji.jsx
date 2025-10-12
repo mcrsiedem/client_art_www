@@ -47,9 +47,9 @@ export default function PodgladRealizacji() {
   return (
     <div className={style.container}>
       <h2 className={style.header}>
-        Ostatnie realizacje... ({podgladRealizacji.length}) 
+        Ostatnie realizacje... ({podgladRealizacji?.length}) 
         <div className={style.statystykiContainerData}>
-            Od : {podgladRealizacji[0].utworzono} {formatujDateZGodzinaICalyDniemTygodniaPoPolsku(podgladRealizacji[0].utworzono)}
+            Od : {podgladRealizacji[0]?.utworzono} {formatujDateZGodzinaICalyDniemTygodniaPoPolsku(podgladRealizacji[0]?.utworzono)}
 </div>
         {/* <img
           className={style.icon2}

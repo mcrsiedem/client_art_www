@@ -110,11 +110,14 @@ export const SocketProvider = ({ children }) => {
     // -----------------------------------------------------------------------
   
       const callPodgladRalizacji = async (od) =>{
-
+        let podglady=[]
         
         const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 
-        setPodgladRealizacji(res.data[0]);
+        podglady.push(...res.data[0])
+        podglady.push(...res.data[1])
+        podglady.push(...res.data[2])
+        setPodgladRealizacji(podglady);
 
         
 

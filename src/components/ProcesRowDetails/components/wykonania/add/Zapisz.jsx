@@ -4,6 +4,7 @@ import style from "./AddRealizacjaProcesu.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import { addRealizajcaProcesu } from "./addRealizajcaProcesu";
 import { AppContext } from "context/AppContext";
+import { useSocket } from "context/SocketContext";
 export default function Zapisz({setShow,wykonanie,value,grup}) {
 
     const appContext = useContext(AppContext);
@@ -20,7 +21,14 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       const setRealizacje = techContext.setRealizacje;
       const grupyWykonanAll = techContext.grupyWykonanAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
-    
+     const {         socket,
+            isConnected,
+            isAuthenticated,
+            updateAuthStatus,
+            usersIO,
+            currentUserId,
+            logoutIO,
+            podgladRealizacji, callPodgladRalizacji } = useSocket()
     return (
       <button
         className={style.btn}
@@ -28,7 +36,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
             if(value==""){
             alert("Dodaj ilość")
           }else{
-                 addRealizajcaProcesu(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading)
+                 addRealizajcaProcesu(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket)
           setShow(false)
           }
      

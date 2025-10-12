@@ -57,9 +57,16 @@ export default function PodgladRealizacji(){
           <div key={user.id || i} className={style.users}>
             {/* <OnlineIcon status={user.status}/> */}
             {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
-            <span className={style.userName}>{user.dodal} {user.nazwisko}</span>
+           
             
-         
+                       <div className={style.nameContainer}>
+    <span className={style.userName}>{user.dodal} {user.nazwisko}</span>
+                      <span className={style.nazwa}>
+                    {/* Formatujemy datę/czas, jeśli jest dostępna */}
+                  {user.nazwa}      
+                </span>
+              </div>
+              
               <div className={style.loginTimeContainer}>
                     <span className={style.loginTime}>
                     {/* Formatujemy datę/czas, jeśli jest dostępna */}
@@ -67,7 +74,7 @@ export default function PodgladRealizacji(){
                 </span>
                       <span className={style.loginTime}>
                     {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                  {user.nazwa}
+                  Przeloty: {user.zrealizowano} ark
                 </span>
               </div>
           

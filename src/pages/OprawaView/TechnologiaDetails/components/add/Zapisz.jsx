@@ -15,7 +15,7 @@ export default function Zapisz({setShow,grup,value}) {
       const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
       const setIsLoading = appContext.setIsLoading;
 
-      
+
     
     return (
       <button

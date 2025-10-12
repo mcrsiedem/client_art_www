@@ -108,7 +108,15 @@
 
 }
 
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    /* margin-left: 50px; */
 
+
+}
 
 /* Czas zalogowania */
 .loginTime {
@@ -118,6 +126,15 @@
     font-style: italic;
     text-align: right;
 }
+
+.nazwa {
+    font-size: 0.8em;
+    color: #ededed;
+    margin-left: 5px;
+    font-style: italic;
+    text-align: right;
+}
+
 
 /* Animacja pulsu dla ikony online */
 @keyframes pulse {

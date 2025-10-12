@@ -15,7 +15,7 @@ export const addRealizajcaProcesu = async (
   grupyWykonanAll,
   setGrupWykonanAll,
   grup,
-  setIsLoading
+  setIsLoading,socket
 ) => {
   setIsLoading(true);
   try {
@@ -82,6 +82,10 @@ export const addRealizajcaProcesu = async (
           return t;
         })
       );
+
+
+
+socket.emit("realizacja")
 
     } else {
       alert(status.sqlMessage);

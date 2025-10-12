@@ -66,8 +66,8 @@ callPodgladRalizacji("2025-10-10 18:00")
                                 <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
-                        <OnlineUsersList />
                         <PodgladRealizacji/>
+                        <OnlineUsersList />
                         </div>
                         </div>
                 <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>

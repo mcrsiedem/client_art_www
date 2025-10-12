@@ -9,7 +9,7 @@ import { AppContext } from "context/AppContext";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
-import UserList from "./UserList";
+import UserList from "./UserList/UserList";
 
 export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);

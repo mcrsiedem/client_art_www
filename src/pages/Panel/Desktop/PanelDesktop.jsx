@@ -17,7 +17,7 @@ import iconProcesy from 'assets/iconProcesy.svg'
 
 import iconKalendarz from 'assets/iconKalendarz.svg'
 
-import OnlineUsersList from "./OnlineUsersList";
+import OnlineUsersList from "./OnLineUserList/OnlineUsersList";
 import NawigacjaBTN from "./Nawigacja/NawigacjaBTN";
 import PanelDesktopHeader from "./Header/PanelDesktopHeader";
 import PanelDesktopFooter from "./Footer/PanelDesktopFooter";

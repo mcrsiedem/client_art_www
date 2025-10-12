@@ -57,34 +57,50 @@ const UserList = () => {
       {/* Używamy CSS Grid, aby umieścić użytkowników w jednym rzędzie 
           i automatycznie dopasować ich liczbę oraz rozmiar */}
       <div className={style.usersGrid}>
-        {usersIO.filter(user => user.userId != DecodeToken(sessionStorage.getItem("token")).id).map((user, i) => (
-          // Pojedynczy element użytkownika
-          <div 
+        {usersIO
+          // .filter(
+          //   (user) =>
+          //     user.userId != DecodeToken(sessionStorage.getItem("token")).id
+          // )
+          .map((user, i) => (
+            // Pojedynczy element użytkownika
+            <div
               title={`${user.imie} ${user.nazwisko}\nZalogowano: ${user.zalogowany}\nOstatnio aktywny: ${user.ostatnia_aktywnosc}`}
-          
-          key={user.id || i} className={style.userCard}>
-            <OnlineIcon status={user.status} />
-            {/* Ikona użytkownika */}
-            <img
-              className={style.userIcon}
-              src={user.imageUrl || userOnline} // Użyj obrazka z danych lub domyślnego
-              alt={`Avatar użytkownika ${user.imie}`}
-            />
-            
-            {/* Imię (skracane w CSS) */}
-            <span className={style.userName}>{user.imie} </span>
-            
-            {/* Nazwisko (skracane w CSS) */}
-            <span className={style.userSurname}>{user.nazwisko}</span>
-            
-            {/* Data/czas zalogowania */}
-            {/* {user.zalogowany && (
+              key={user.id || i}
+              className={
+                user.status == "Aktywny" ? style.userCardActive : style.userCard
+              }
+            >
+              <OnlineIcon status={user.status} />
+              {/* Ikona użytkownika */}
+              <img
+                className={style.userIcon}
+                src={user.imageUrl || userOnline} // Użyj obrazka z danych lub domyślnego
+                alt={`Avatar użytkownika ${user.imie}`}
+              />
+
+              {/* Imię (skracane w CSS) */}
+              <span className={style.userName}>{user.imie} </span>
+
+              {/* Nazwisko (skracane w CSS) */}
+              <span className={style.userSurname}>{user.nazwisko}</span>
+
+              {/* Data/czas zalogowania */}
+              {/* {user.zalogowany && (
               <span className={style.loginTime}>
                 Zalogowano: {user.zalogowany}
               </span>
             )} */}
+            </div>
+          ))}
+
+        {usersIO.length > 1 ? (
+          <div title={`Użytkownicy zalogowani`} className={style.userCardInfo}>
+            <span className={style.info}>{usersIO.length}</span>
           </div>
-        ))}
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

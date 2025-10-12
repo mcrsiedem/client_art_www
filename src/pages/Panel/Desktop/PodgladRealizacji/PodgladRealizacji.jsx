@@ -69,6 +69,22 @@ useEffect(() => {
                   {user.nazwa}      
                 </span>
               </div>
+
+
+
+                            <div className={style.klientContainer}>
+                    <span className={style.loginTime}>
+                    {/* Formatujemy datę/czas, jeśli jest dostępna */}
+                     {user.nr} {user.rok} {user.klient}
+                </span>
+                      <span className={style.loginTime}>
+                    {/* Formatujemy datę/czas, jeśli jest dostępna */}
+             {user.tytul} 
+                </span>
+              </div>
+
+
+
               
               <div className={style.loginTimeContainer}>
                     <span className={style.loginTime}>
@@ -77,7 +93,7 @@ useEffect(() => {
                 </span>
                       <span className={style.loginTime}>
                     {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                  Przeloty: {user.zrealizowano} ark
+             Ark.  {user.nr_arkusza}   -   Przeloty: {user.zrealizowano} ark
                 </span>
               </div>
           

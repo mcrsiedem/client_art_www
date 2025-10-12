@@ -25,22 +25,18 @@ import PanelDesktopHeader from "./Header/PanelDesktopHeader";
 import PanelDesktopFooter from "./Footer/PanelDesktopFooter";
 import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
 import { useSocket } from "context/SocketContext";
+import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
- const {         socket,
-        isConnected,
-        isAuthenticated,
-        updateAuthStatus,
-        usersIO,
-        currentUserId,
-        logoutIO,
-        podgladRealizacji, callPodgladRalizacji } = useSocket()
+ const {   callPodgladRalizacji } = useSocket()
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-callPodgladRalizacji("2025-10-10 18:00")
+// callPodgladRalizacji("2025-10-10 18:00")
+callPodgladRalizacji(todayMinusDniGodziny(1))
+
         } else {
           navigate("/Login");
         }

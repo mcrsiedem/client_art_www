@@ -4,6 +4,7 @@ import { io } from 'socket.io-client';
 import { IP_SOCKET } from 'utils/Host';
 import { IP } from "utils/Host";
 import axios from "axios";
+import { todayMinusDniGodziny } from 'actions/todayMinusDniGodziny';
   
  let newSocket;
 // --- Stałe konfiguracyjne ---
@@ -164,8 +165,8 @@ export const SocketProvider = ({ children }) => {
             newSocket.on("pobierz_podglad_realizacji", () => {
 
 // tutaj pobrac 
-callPodgladRalizacji("2025-10-10 18:00")
-
+// callPodgladRalizacji("2025-10-10 18:00")
+callPodgladRalizacji(todayMinusDniGodziny(1))
   });
 
 

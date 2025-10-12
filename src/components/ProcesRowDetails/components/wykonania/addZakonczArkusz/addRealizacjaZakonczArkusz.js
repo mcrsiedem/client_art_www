@@ -15,7 +15,8 @@ export const addRealizacjaZakonczArkusz = async (
   grupyWykonanAll,
   setGrupWykonanAll,
   grup,
-  setIsLoading
+  setIsLoading,
+  socket
 ) => {
   setIsLoading(true)
   try {
@@ -98,6 +99,7 @@ export const addRealizacjaZakonczArkusz = async (
         })
       );
 
+      socket.emit("realizacja")
     } else {
       alert(status.sqlMessage);
     }

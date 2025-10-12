@@ -4,6 +4,7 @@ import style from "./AddRealizacjaOprawa.module.css";
 import { addRealizajcaOprawy } from "./addRealizajcaOprawy";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
+import { useSocket } from "context/SocketContext";
 export default function Zapisz({setShow,grup,value}) {
 
     const techContext = useContext(TechnologyContext);
@@ -15,7 +16,7 @@ export default function Zapisz({setShow,grup,value}) {
       const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
       const setIsLoading = appContext.setIsLoading;
 
-
+     const {         socket } = useSocket()
     
     return (
       <button
@@ -24,7 +25,7 @@ export default function Zapisz({setShow,grup,value}) {
           if(value==""){
             alert("Dodaj ilość")
           }else{
-                  addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading)
+                  addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading,socket)
           setShow(false)
           }
     

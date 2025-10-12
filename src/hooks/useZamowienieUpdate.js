@@ -5,6 +5,7 @@ import axios from "axios";
 import { IP } from "../utils/Host";
 
 import { useZamowienia } from "./useZamowienia";
+import { useSocket } from "context/SocketContext";
 export  function useZamowienieUpdate(){
   const contextModalInsert = useContext(ModalInsertContext);
   const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
@@ -33,7 +34,7 @@ export  function useZamowienieUpdate(){
     const setKsiegowosc = contextModalInsert.setKsiegowosc;
     const faktury = contextModalInsert.faktury;
     const setFaktury = contextModalInsert.setFaktury;
-
+     const {         socket } = useSocket()
     
     
 
@@ -63,7 +64,7 @@ const [refreshZamowienia] = useZamowienia()
   setKsiegowosc(res.data[10][0])
   setFaktury(res.data[11])
   
-
+socket.emit("realizacja")
   refreshZamowienia();
   dialogBox.current.hide();
 

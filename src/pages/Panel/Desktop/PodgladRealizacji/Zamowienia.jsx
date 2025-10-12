@@ -24,7 +24,7 @@ const OnlineIcon = ({ status }) => {
  */
 export default function Zamowienia({podglad,i}) {
 
- return( <div key={podglad.global_id || i} className={style.users}>
+ return( <div key={podglad.global_id || i} className={style.usersZamowienia}>
             {/* <OnlineIcon status={podglad.status}/> */}
             {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
 
@@ -56,7 +56,7 @@ export default function Zamowienia({podglad,i}) {
               </span>
               <span className={style.loginTime}>
                 {/* Formatujemy datę/czas, jeśli jest dostępna */}
-            {podglad.kategoria} 
+          Historia zamówienia :  {podglad.kategoria} 
               </span>
             </div>
           </div>)

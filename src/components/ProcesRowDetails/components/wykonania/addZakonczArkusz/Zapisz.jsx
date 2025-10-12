@@ -4,6 +4,7 @@ import style from "./ZakonczArkusz.module.css";
 import { TechnologyContext } from "context/TechnologyContext";
 import { addRealizacjaZakonczArkusz } from "./addRealizacjaZakonczArkusz";
 import { AppContext } from "context/AppContext";
+import { useSocket } from "context/SocketContext";
 
 export default function Zapisz({setShow,wykonanie,value,grup}) {
 
@@ -21,7 +22,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       const grupyWykonanAll = techContext.grupyWykonanAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
       const setIsLoading = appContext.setIsLoading;
-    
+         const {         socket } = useSocket()
     return (
       <button
         className={style.btn}
@@ -34,7 +35,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
        
         
        }else{
-          addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading)
+          addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket)
           setShow(false)
        }
           

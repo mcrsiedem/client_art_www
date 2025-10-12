@@ -12,7 +12,7 @@ import iconClose2 from "assets/x2.svg";
 
 export default function Oprawa({podglad,i}) {
 
- return( <div key={podglad.global_id || i} className={style.users}>
+ return( <div key={podglad.global_id || i} className={style.usersOprawa}>
             {/* <OnlineIcon status={podglad.status}/> */}
             {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
 

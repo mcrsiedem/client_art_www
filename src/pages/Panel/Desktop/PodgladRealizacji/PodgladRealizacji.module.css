@@ -11,7 +11,7 @@
             backdrop-filter:  blur(10px);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-height: 750px;
-  height: 600px;
+  height: 620px;
   /* background-color: #4a90e2; */
 }
 
@@ -60,6 +60,62 @@
     transform: translateY(-2px);
     border-color: rgba(46, 204, 113, 0.7);
 }
+
+
+.usersOprawa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 11px;
+    margin-bottom: 8px;
+    /* background-color: #4d4d4d54; */
+    border: 1px solid #dcdcdc78;
+    border-radius: 8px;
+    /* Lekki efekt hover */
+    transition: all 0.2s ease-in-out; 
+    background-color: #f9de1528;
+
+}
+
+.usersOprawa:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(46, 204, 113, 0.7);
+}
+
+
+
+
+
+
+.usersZamowienia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 11px;
+    margin-bottom: 8px;
+    /* background-color: #4d4d4d54; */
+    border: 1px solid #dcdcdc78;
+    border-radius: 8px;
+    /* Lekki efekt hover */
+    transition: all 0.2s ease-in-out; 
+    background-color: #155df928;
+
+}
+
+.usersZamowienia:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(46, 204, 113, 0.7);
+}
+
+
+
+
+
+
+
+
 
 /* Ikona statusu online */
 .onlineIcon {
@@ -210,4 +266,43 @@ border-radius: 5px;
 .icon2:hover {
     background-color: rgb(255, 0, 0);
     border-radius: 5px;
+}
+
+
+.statystykiContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    color: #c9c9c9;
+        font-style: italic;
+    /* margin-left: 50px; */
+/* margin-bottom: 15px; */
+/* background-color: #2ecc71; */
+/* height: 20px; */
+
+/* border-top: 1px solid rgb(211, 211, 211); */
+/* margin-top: 5px; */
+
+}
+
+.statystykiContainerData {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    color: #fcfcfc;
+        font-style: italic;
+        font-size: 1rem;
+        padding-right: 20px;
+    /* margin-left: 50px; */
+/* margin-bottom: 15px; */
+/* background-color: #2ecc71; */
+/* height: 20px; */
+
+/* border-top: 1px solid rgb(211, 211, 211); */
+/* margin-top: 5px; */
+
 }

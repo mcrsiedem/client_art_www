@@ -12,7 +12,8 @@ export const addRealizajcaOprawy = async (
   value,
   wykonaniaOprawy,
   setWykonaniaOprawy,
-  grupyOprawaAll,setGrupyOprawaAll,setIsLoading
+  grupyOprawaAll,setGrupyOprawaAll,setIsLoading,
+  socket
 ) => {
 
  setIsLoading(true);
@@ -55,6 +56,8 @@ export const addRealizajcaOprawy = async (
       }
     })
   );
+
+  socket.emit("realizacja")
         
       } else {
         alert(status.sqlMessage);

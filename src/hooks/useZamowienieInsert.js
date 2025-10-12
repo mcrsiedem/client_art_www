@@ -4,6 +4,7 @@ import { IP } from "../utils/Host";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useZamowienia } from "./useZamowienia";
+import { useSocket } from "context/SocketContext";
 
 // 25/07/2025
 // nowy zapis zamówienia - dane i parametry w jednym
@@ -33,7 +34,7 @@ export  function useZamowienieInsert(){
   let faktury= contextModalInsert.faktury;
 
 const [refreshZamowienia] = useZamowienia()
-
+     const {         socket } = useSocket()
  async function zapiszZamowienie({dialogBox}){
 
   setSaveButtonDisabled(true)
@@ -69,6 +70,7 @@ const [refreshZamowienia] = useZamowienia()
           setKosztyDodatkoweZamowienia(res.data[9])
           setKsiegowosc(res.data[10][0])
           setFaktury(res.data[11])
+          socket.emit("realizacja")
            }else{
             alert("Błąd")
            }

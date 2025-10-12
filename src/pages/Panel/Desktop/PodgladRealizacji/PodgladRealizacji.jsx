@@ -7,6 +7,8 @@ import iconClose2 from "assets/x2.svg";
 import Realizacje from "./Realizacje";
 import Oprawa from "./Oprawa";
 import Zamowienia from "./Zamowienia";
+import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
+import { formatujDateZGodzinaICalyDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaICalyDniemTygodniaPoPolsku";
 // Komponent ikony online (używany tylko dla estetyki)
 // const OnlineIcon = () => (
 //   <span className={style.onlineIcon} title="Online" />
@@ -45,7 +47,10 @@ export default function PodgladRealizacji() {
   return (
     <div className={style.container}>
       <h2 className={style.header}>
-        Ostatnie realizacje... ({podgladRealizacji.length})
+        Ostatnie realizacje... ({podgladRealizacji.length}) 
+        <div className={style.statystykiContainerData}>
+            Od : {podgladRealizacji[0].utworzono} {formatujDateZGodzinaICalyDniemTygodniaPoPolsku(podgladRealizacji[0].utworzono)}
+</div>
         {/* <img
           className={style.icon2}
           src={iconClose2}
@@ -77,7 +82,37 @@ export default function PodgladRealizacji() {
             }
             
           })}
+
       </div>
+                <div className={style.statystykiContainer}>
+                  <div>
+                                  Druk : {podgladRealizacji
+    .filter(pozycja => pozycja.nazwa === "Druk")
+    .reduce((acc, pozycja) => acc + pozycja.zrealizowano, 0).toLocaleString('pl-PL')} ark.
+                  </div>
+
+<div>
+            Falc : {podgladRealizacji
+    .filter(pozycja => pozycja.nazwa === "Falcowanie")
+    .reduce((acc, pozycja) => acc + pozycja.zrealizowano, 0).toLocaleString('pl-PL')} ark.
+
+</div>
+
+<div>
+            Oprawa : {podgladRealizacji
+    .filter(pozycja => pozycja.rodzaj === "Oprawa")
+    .reduce((acc, pozycja) => acc + pozycja.naklad, 0).toLocaleString('pl-PL')} szt
+</div>
+
+<div>
+            Uszlachetnianie : {podgladRealizacji
+    .filter(pozycja => pozycja.nazwa === "Uszlachetnianie")
+    .reduce((acc, pozycja) => acc + pozycja.zrealizowano, 0).toLocaleString('pl-PL')} ark.
+</div>
+
     </div>
+      </div>
+
+    
   );
 }

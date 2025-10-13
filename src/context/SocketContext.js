@@ -46,6 +46,7 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
+    const reconnectTimerRef = useRef(null); 
 
     // ✅ POPRAWKA: Inicjalizacja currentUserId na podstawie zdekodowanego tokenu
     const [currentUserId, setCurrentUserId] = useState(getInitialUserId()); 
@@ -159,6 +160,45 @@ const logoutIO = useCallback(() => {
     // const logoutIO=()=>{
     //     newSocket.emit("logout",{userId:currentUserId,socketId: socket.id})
     // }
+
+
+    const handleDisconnect = useCallback((reason, currentSocket) => {
+    
+    // 1. Sprawdzenie Krytycznych Błędów (np. Serwer nas wyrzucił)
+    if (reason === 'io server disconnect') {
+        // To oznacza, że serwer świadomie i celowo nas rozłączył (np. błąd tokenu)
+        console.error("Serwer Socket.IO nas wyrzucił. WYMAGANE RE-LOGOWANIE.");
+        updateAuthStatus(false); 
+        // W tym przypadku nie próbujemy się łączyć, oczekujemy, że router przekieruje
+        return;
+    }
+    
+    // 2. Obsługa Problemów Sieciowych / Timeoutów
+    if (reason === 'transport close' || reason === 'ping timeout' || reason === 'transport error') {
+        // To są typowe błędy sieciowe, które wcześniej Socket.IO sam obsługiwał.
+        console.info("Rozłączenie tymczasowe, ponawiam za 5 sekund.");
+
+        // Zapobiegamy wielokrotnym timerom:
+        if (reconnectTimerRef.current) {
+            clearTimeout(reconnectTimerRef.current);
+        }
+
+        // 💡 MANUALNA PRÓBA POŁĄCZENIA
+        reconnectTimerRef.current = setTimeout(() => {
+            if (currentSocket) {
+                 // Wymuszenie nowego połączenia:
+                 currentSocket.connect(); 
+            }
+        }, 5000); // Spróbuj się połączyć za 5 sekund
+        return;
+    }
+    
+    // 3. Rozłączenie Zwykłe (np. user.disconnect() lub zamykanie karty)
+    // W pozostałych przypadkach po prostu czekamy, aż użytkownik podejmie akcję
+    
+}, [updateAuthStatus]);
+
+
     useEffect(() => {
         const token = getToken();
         
@@ -193,7 +233,14 @@ const logoutIO = useCallback(() => {
         handleActivity(); 
     }
 });
-        newSocket.on('disconnect', () => setIsConnected(false));
+        newSocket.on('disconnect', (reason) => {
+        setIsConnected(false);
+        // console.warn('Socket.IO został rozłączony. Powód:', reason);
+        
+        // 💡 Tutaj następuje reakcja na rozłączenie
+        // handleDisconnect(reason, newSocket); 
+    });
+
         newSocket.on('onlineUsers', setUsersIO);
         newSocket.on('connect_error', (err) => {
             console.error('Błąd połączenia Socket.IO (autoryzacja):', err.message);

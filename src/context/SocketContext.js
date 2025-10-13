@@ -123,9 +123,42 @@ export const SocketProvider = ({ children }) => {
 
       }
 
-    const logoutIO=()=>{
-        newSocket.emit("logout",{userId:currentUserId,socketId: socket.id})
-    }
+const logoutIO = useCallback(() => {
+        // 1. Zgłoszenie wylogowania do Socket.IO (jeśli socket istnieje i jest połączony)
+        if (socket && isConnected) {
+             // Wysyłamy informację do serwera. Serwer na podstawie 'userId' (lub 'socket.id') 
+             // usunie użytkownika z listy online, a następnie Socket.IO sam 
+             // obsłuży rozłączenie po stronie serwera.
+            socket.emit("logout", { userId: currentUserId,socketId: socket.id }); 
+            // 💡 Opuszczenie tej linii i poleganie na 'updateAuthStatus' 
+            // jest zazwyczaj lepsze, ponieważ `useEffect` monitorujący token/ID 
+            // zajmie się czyszczeniem Socket.IO (disconnect).
+            // socket.disconnect(); 
+        }
+
+        // 2. Usunięcie tokenu i zresetowanie stanu uwierzytelnienia/ID
+        updateAuthStatus(false);
+        
+        // 3. Wyczyść stan specyficzny dla użytkownika
+        setUsersIO([]);
+        setPodgladRealizacji([]);
+        
+        // 4. Czyszczenie timera bezczynności (kluczowe, by nie wysyłać stanu 'Nieaktywny' po wylogowaniu)
+        if (idleTimerRef.current) {
+            clearTimeout(idleTimerRef.current);
+            idleTimerRef.current = null;
+        }
+        currentStatusRef.current = 'Wylogowany'; 
+        
+        // 5. Opcjonalnie: Przekierowanie na stronę logowania (zwykle wykonuje się w komponencie wywołującym lub w globalnym routerze)
+        // router.push('/login'); 
+    }, [socket, isConnected, currentUserId, updateAuthStatus]); 
+
+
+
+    // const logoutIO=()=>{
+    //     newSocket.emit("logout",{userId:currentUserId,socketId: socket.id})
+    // }
     useEffect(() => {
         const token = getToken();
         
@@ -235,7 +268,7 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
         currentUserId,
         logoutIO,
         podgladRealizacji, callPodgladRalizacji
-    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji]);
+    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji,logoutIO]);
     
     return (
         <SocketContext.Provider value={contextValue}>

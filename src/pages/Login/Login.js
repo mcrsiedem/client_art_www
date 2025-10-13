@@ -78,9 +78,9 @@ techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
 
 updateAuthStatus(true,res.data)
 
-if(socket) {
-  socket.emit("addNewUser", { token: res.data ,socketId:socket.id });
-}
+// if(socket) {
+//   socket.emit("addNewUser", { token: res.data ,socketId:socket.id });
+// }
 
 } else {
   console.log("Błąd");

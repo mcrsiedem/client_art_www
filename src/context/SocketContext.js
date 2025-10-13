@@ -74,14 +74,14 @@ export const SocketProvider = ({ children }) => {
     // -----------------------------------------------------------------------
     
     const sendActivity = useCallback((status) => {
-        if (!socket || !currentUserId || currentStatusRef.current === status) { 
+        if (!socket || !socket.connected || !isConnected || !currentUserId || currentStatusRef.current === status) { 
             return; 
         }
-        
+        // alert( "Połączone: " + socket.connected )
         socket.emit('userActivity', { userId: currentUserId, status }); 
         currentStatusRef.current = status; 
         
-    }, [socket, currentUserId]); 
+    }, [socket, isConnected,currentUserId]); 
 
     const resetIdleTimer = useCallback(() => {
         if (idleTimerRef.current) {
@@ -183,15 +183,32 @@ const logoutIO = useCallback(() => {
         setSocket(newSocket);
         
         // ... (standardowe listenery Socket.IO) ...
-        newSocket.on('connect', () => setIsConnected(true));
+        newSocket.on('connect', () => {
+    setIsConnected(true);
+    
+    // ✅ GWARANCJA, że akcja jest wysyłana TYLKO na świeże, żywe gniazdo
+    if (currentUserId) {
+        // To wywołuje handleActivity, które wysyła 'Aktywny', resetuje timer 
+        // i ustawi listenery DOM (jeśli zostały usunięte/wyłączone)
+        handleActivity(); 
+    }
+});
         newSocket.on('disconnect', () => setIsConnected(false));
         newSocket.on('onlineUsers', setUsersIO);
         newSocket.on('connect_error', (err) => {
             console.error('Błąd połączenia Socket.IO (autoryzacja):', err.message);
-            // Ustawiamy stany na wylogowanie/brak ID
-            removeToken(); 
-            setIsAuthenticated(false);
-            setCurrentUserId(null);
+            // // Ustawiamy stany na wylogowanie/brak ID
+
+            
+            // removeToken(); 
+            // setIsAuthenticated(false);
+            // setCurrentUserId(null);
+
+                updateAuthStatus(false); 
+    
+    // CZYŚCI DODATKOWE STANY
+    setUsersIO([]);
+    setPodgladRealizacji([]);
         });
 
 
@@ -205,6 +222,11 @@ const logoutIO = useCallback(() => {
 callPodgladRalizacji(todayMinusDniGodziny(1))
   });
 
+
+              newSocket.on("wysylamsocket", (sockets) => {
+
+console.log(sockets)
+  });
 
         // Logika czyszcząca
         return () => {
@@ -224,7 +246,7 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
     // -----------------------------------------------------------------------
     
     useEffect(() => {
-        if (!socket || !currentUserId) {
+        if (!socket || !currentUserId || !isConnected) {
             clearTimeout(idleTimerRef.current);
             return;
         }
@@ -240,7 +262,23 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
                 sendActivity('Ukryty'); 
                 clearTimeout(idleTimerRef.current);
             } else {
-                handleActivity();
+                // handleActivity();
+                if (socket && !socket.connected) {
+            // Jeśli socket istnieje, ale jest rozłączony, 
+            // próbujemy go połączyć na nowo (to wywoła connect lub connect_error)
+            // socket.connect(); 
+
+
+            socket.disconnect(); 
+            
+            // 2. Zerowanie stanu Socket, co wymusi ponowne uruchomienie useEffect w Sekcji 2
+            setSocket(null); 
+            
+        } else if (socket && socket.connected) {
+            // Jeśli jakimś cudem jesteśmy połączeni, ale byliśmy Ukryci, 
+            // wznów aktywność
+            handleActivity(); 
+        }
             }
         };
 
@@ -253,7 +291,7 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
             clearTimeout(idleTimerRef.current);
             currentStatusRef.current = 'Aktywny'; 
         };
-    }, [socket, currentUserId, handleActivity, resetIdleTimer, sendActivity]); 
+    }, [socket, currentUserId, isConnected , handleActivity, resetIdleTimer, sendActivity]); 
 
     // -----------------------------------------------------------------------
     // SEKCJA 4: Kontekst

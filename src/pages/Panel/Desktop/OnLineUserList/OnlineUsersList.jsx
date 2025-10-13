@@ -57,7 +57,7 @@ if(pokazUzytkownikowOnline){
         {/* Zastosowanie Twojej struktury mapowania */}
         {usersIO.map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')
-          <div key={user.id || i} className={style.users}>
+          <div key={user.socketId || i} className={style.users}>
             <OnlineIcon status={user.status}/>
             {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
             <span className={style.userName}>{user.imie} {user.nazwisko}</span>

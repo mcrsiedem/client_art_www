@@ -30,7 +30,7 @@ export default function PanelMini({ user, setUser,logout }) {
   const setClients = appcontext.setClients;
   const setClientsWyszukiwarka = appcontext.setClientsWyszukiwarka;
 
-  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO } =
+  const { logoutIO } =
     useSocket();
 
 

@@ -249,15 +249,15 @@ const logoutIO = useCallback(() => {
             // // Ustawiamy stany na wylogowanie/brak ID
 
             
-            // removeToken(); 
-            // setIsAuthenticated(false);
-            // setCurrentUserId(null);
+            removeToken(); 
+            setIsAuthenticated(false);
+            setCurrentUserId(null);
 
-                updateAuthStatus(false); 
+                // updateAuthStatus(false); 
     
     // CZYŚCI DODATKOWE STANY
-    setUsersIO([]);
-    setPodgladRealizacji([]);
+    // setUsersIO([]);
+    // setPodgladRealizacji([]);
         });
 
 

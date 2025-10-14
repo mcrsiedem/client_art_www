@@ -17,6 +17,7 @@ import { useApiPapier } from "hooks/useApiPapier";
 import ProcesViewRowPrzerwa from "./row/ProcesViewRowPrzerwa";
 import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 import Loading from "components/Loading/Loading";
+import { useSocket } from "context/SocketContext";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function ProcesyView( ) {
     const [selectedProcesorMulti, setSelectedProcesorMulti] = useState([]);
 
       const [callForPaper] = useApiPapier();
+       const {   lokalizacja} = useSocket()
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -70,7 +72,13 @@ export default function ProcesyView( ) {
   }
 
   useEffect(() => {
+     lokalizacja.current = "Procesy"; 
     checkToken();
+
+     return () => {
+
+   lokalizacja.current = null;
+        };
   }, []);
 
 

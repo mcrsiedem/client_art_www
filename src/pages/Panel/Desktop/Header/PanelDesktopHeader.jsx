@@ -14,7 +14,7 @@ import { useSocket } from "context/SocketContext";
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);
   const appcontext = useContext(AppContext);
-  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO } =
+  const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO,lokalizacja } =
     useSocket();
 
   const [isOpen, setIsOpen] = useState(false); // Stan do kontrolowania widoczności menu
@@ -44,7 +44,12 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
   }, [isOpen]);
 
   return (
-    <div className={style.header}>
+    <div
+          onDoubleClick={()=>{
+        console.log("Co widzę: "+lokalizacja.current )
+        // console.log("podgladRealizacji: ",podgladRealizacji )
+      }}
+    className={style.header}>
       {isOnline ? (
         <div className={style.user}>
           {isOpen && (

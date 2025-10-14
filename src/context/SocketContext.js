@@ -48,6 +48,8 @@ export const SocketProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
     const reconnectTimerRef = useRef(null); 
 
+const lokalizacja = useRef(null); 
+
     // ✅ POPRAWKA: Inicjalizacja currentUserId na podstawie zdekodowanego tokenu
     const [currentUserId, setCurrentUserId] = useState(getInitialUserId()); 
         const [podgladRealizacji, setPodgladRealizacji] = useState([]);
@@ -263,10 +265,14 @@ const logoutIO = useCallback(() => {
 
 
             newSocket.on("pobierz_podglad_realizacji", () => {
-
-// tutaj pobrac 
-// callPodgladRalizacji("2025-10-10 18:00")
+                // callPodgladRalizacji(todayMinusDniGodziny(1))
+                console.log("gdzie jestem: "+lokalizacja.current)
+if(lokalizacja.current=="Panel"){
+console.log("odświeżam tylko panel " )
 callPodgladRalizacji(todayMinusDniGodziny(1))
+}
+
+
   });
 
 
@@ -352,8 +358,8 @@ console.log(sockets)
         usersIO,
         currentUserId,
         logoutIO,
-        podgladRealizacji, callPodgladRalizacji
-    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji,logoutIO]);
+        podgladRealizacji, callPodgladRalizacji,lokalizacja
+    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji,logoutIO,lokalizacja]);
     
     return (
         <SocketContext.Provider value={contextValue}>

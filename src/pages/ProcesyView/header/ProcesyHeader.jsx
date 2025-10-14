@@ -17,6 +17,7 @@ import { IP } from "../../../utils/Host";
 import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { wagaArkuszy } from "actions/wagaArkuszy";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useSocket } from "context/SocketContext";
 
 
 function ProcesyHeader() {
@@ -36,7 +37,7 @@ function ProcesyHeader() {
    const grupyWykonanAll = techContext.grupyWykonanAll;
 
   const appContext = useContext(AppContext)
-
+ const { podgladRealizacji,lokalizacja } = useSocket()
   // aby useEffect załadował się tylko raz
   const effectRan = useRef(false);
   useEffect(() => {
@@ -55,10 +56,15 @@ function ProcesyHeader() {
 
   return (
     <div onDoubleClick={()=>{
-      console.log(multiSelect)
+      // console.log(multiSelect)
       
     }} className={style.container}>
-      <header id="header" className={style.body}>
+      <header
+      onDoubleClick={()=>{
+        console.log("Co widzę: "+lokalizacja.current )
+        console.log("podgladRealizacji: ",podgladRealizacji )
+      }}
+      id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <ProcesSelect
             selectedProces={selectedProces}

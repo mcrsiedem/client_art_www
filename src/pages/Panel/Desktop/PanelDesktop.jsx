@@ -28,7 +28,7 @@ import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
- const {   callPodgladRalizacji } = useSocket()
+ const {   callPodgladRalizacji ,lokalizacja} = useSocket()
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -43,8 +43,20 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
       });
   }
 
+
+
+
   useEffect(() => {
     checkToken();
+    lokalizacja.current = "Panel"; 
+
+    console.log(" Panel powinno być widać raz...")
+
+            return () => {
+
+   lokalizacja.current = null;
+        };
+
   }, []);
 
     return(<>

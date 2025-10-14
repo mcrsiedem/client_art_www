@@ -5,7 +5,8 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 
 export function formatujDateZGodzinaICalyDniemTygodniaPoPolsku(dataString) {
-  const data = new Date(dataString);
+  if(dataString){
+      const data = new Date(dataString);
   const dzien = data.getDate();
   
   const nazwyMiesiecyPolskie = [
@@ -23,5 +24,7 @@ export function formatujDateZGodzinaICalyDniemTygodniaPoPolsku(dataString) {
   const minuty = String(data.getMinutes()).padStart(2, '0');
 
   // return ` ${dzien} ${miesiac} ${godziny}:${minuty} ${dzienTygodniaSkrot} `;
-  return `${dzienTygodniaSkrot} `;
+  return `${dzienTygodniaSkrot} ` || " ";
+  }
+return " ---- : -- : --"
 }

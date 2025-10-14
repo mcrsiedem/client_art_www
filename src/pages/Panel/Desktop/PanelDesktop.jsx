@@ -34,8 +34,8 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-// callPodgladRalizacji("2025-10-10 18:00")
-callPodgladRalizacji(todayMinusDniGodziny(1))
+
+callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-10 18:00")
 
         } else {
           navigate("/Login");
@@ -48,15 +48,13 @@ callPodgladRalizacji(todayMinusDniGodziny(1))
 
   useEffect(() => {
     checkToken();
-    lokalizacja.current = "Panel"; 
+    lokalizacja.current = "Panel";
 
-    console.log(" Panel powinno być widać raz...")
+    console.log(" Panel powinno być widać raz...");
 
-            return () => {
-
-   lokalizacja.current = null;
-        };
-
+    return () => {
+      lokalizacja.current = null;
+    };
   }, []);
 
     return(<>

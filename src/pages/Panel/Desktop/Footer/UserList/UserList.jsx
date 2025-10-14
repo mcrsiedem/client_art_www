@@ -70,7 +70,7 @@ const UserList = () => {
           .map((user, i) => (
             // Pojedynczy element użytkownika
             <div
-              title={`${user.imie} ${user.socketId}\nZalogowano: ${user.zalogowany}\nOstatnio aktywny: ${user.ostatnia_aktywnosc}`}
+              title={`${user.imie} ${user.nazwisko}\nZalogowano: ${user.zalogowany}\nOstatnio aktywny: ${user.ostatnia_aktywnosc}\nSocket ID: ${user.socketId}`}
               key={user.socketId || i}
               className={
                 user.status == "Aktywny" ? style.userCardActive : style.userCard

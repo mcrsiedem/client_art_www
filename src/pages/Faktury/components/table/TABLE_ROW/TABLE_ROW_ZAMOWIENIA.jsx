@@ -484,17 +484,20 @@ function ShowTechnmologiaBtn({
     return (
       <td className={style.td_karta}>
         <div>
-        {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ?  <img
+       <img
             className={style.iconSettings}
             src={iconAdd}
             onClick={() => {
-              techContext.fechparametry(row?.id);
+            if(  DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ){
+                     techContext.fechparametry(row?.id);
               // techContext.setShowTechnologyStage(true);
               techContext.setRowZamowienia(row);
               setShowProcesy(false)
+              }
+         
             }}
             alt="Procesy"
-          />:<></>}
+          />
          
         </div>
       </td>
@@ -504,19 +507,19 @@ function ShowTechnmologiaBtn({
       <td className={style.td_karta}>
         <div>
 
-          {DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ? <img
+          <img
             className={style.iconSettings}
             //  src={iconSettings}
             src={iconFile}
             onClick={() => {
-             
+               if(  DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ){
+                     techContext.fechparametry(row?.id);
                 fechparametryTechnologii(row.id, row.technologia_id);
+               }
             
             }}
             alt="Procesy"
-          /> :<></>
-
-          }
+          /> 
          
         </div>
       </td>

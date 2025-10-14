@@ -265,15 +265,13 @@ const logoutIO = useCallback(() => {
 
 
             newSocket.on("pobierz_podglad_realizacji", () => {
-                // callPodgladRalizacji(todayMinusDniGodziny(1))
-                console.log("gdzie jestem: "+lokalizacja.current)
-if(lokalizacja.current=="Panel"){
-console.log("odświeżam tylko panel " )
-callPodgladRalizacji(todayMinusDniGodziny(1))
-}
-
-
-  });
+              // callPodgladRalizacji(todayMinusDniGodziny(1))
+              console.log("gdzie jestem: " + lokalizacja.current);
+              if (lokalizacja.current == "Panel") {
+                console.log("odświeżam tylko panel ");
+                callPodgladRalizacji(todayMinusDniGodziny(1));
+              }
+            });
 
 
               newSocket.on("wysylamsocket", (sockets) => {
@@ -315,25 +313,43 @@ console.log(sockets)
                 sendActivity('Ukryty'); 
                 clearTimeout(idleTimerRef.current);
             } else {
-                // handleActivity();
+          
                 if (socket && !socket.connected) {
-            // Jeśli socket istnieje, ale jest rozłączony, 
-            // próbujemy go połączyć na nowo (to wywoła connect lub connect_error)
-            // socket.connect(); 
-
 
             socket.disconnect(); 
-            
-            // 2. Zerowanie stanu Socket, co wymusi ponowne uruchomienie useEffect w Sekcji 2
             setSocket(null); 
             
         } else if (socket && socket.connected) {
-            // Jeśli jakimś cudem jesteśmy połączeni, ale byliśmy Ukryci, 
-            // wznów aktywność
+        
             handleActivity(); 
         }
             }
         };
+
+//  const handleVisibility = () => {
+//             if (document.hidden) {
+//                 sendActivity('Ukryty'); 
+//                 clearTimeout(idleTimerRef.current);
+//             } else {
+//                 // === KLUCZOWA ZMIANA TUTAJ ===
+//                 if (socket) {
+//                     // Niezależnie od socket.connected, zamykamy stare gniazdo.
+//                     // Używamy .disconnect(), by upewnić się, że gniazdo zamyka połączenie.
+//                     socket.disconnect(); 
+//                     
+//                     // Ustawienie na null wymusza PONOWNE URUCHOMIENIE Sekcji 2 useEffect, 
+//                     // która tworzy nowe gniazdo z tokenem.
+//                     setSocket(null); 
+//                     
+//                 } else {
+//                     // Jeśli nie ma gniazda, ale wróciliśmy do widoczności,
+//                     // wywołaj handleActivity, co przy braku socketu nic nie zrobi,
+//                     // ale uruchomienie Sekcji 2 powinno nastąpić automatycznie, 
+//                     // jeśli currentUserId jest ustawiony.
+//                     handleActivity();
+//                 }
+//             }
+//         };
 
         document.addEventListener('visibilitychange', handleVisibility);
 

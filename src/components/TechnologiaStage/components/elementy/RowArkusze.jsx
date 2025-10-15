@@ -922,6 +922,7 @@ const nadkomplety = contextApp.nadkomplety;
     const legiFragmenty = techContext.legiFragmenty;
     return (
         <input
+        title={"lega_id: "+row.id}
         className={style.input_legi}
           value={row.nr_legi}
           onChange={(e) =>

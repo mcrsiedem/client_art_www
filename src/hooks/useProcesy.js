@@ -160,6 +160,7 @@ let grupa_id = MaxID(new_grupy)
         nazwa: proces.nazwa,
         element_id: a.element_id,
         arkusz_id: a.arkusz_id, // bylo a.id
+        lega_id: a.id, // bylo a.id
         proces_id: proces.id,
         typ_elementu: a.typ_elementu,
         poczatek: "2024-10-30 10:00:00",
@@ -287,6 +288,7 @@ let grupa_id = MaxID(new_grupy)
         nazwa: proces.nazwa,
         element_id: a.element_id,
         arkusz_id: a.arkusz_id, // bylo a.id
+        lega_id: a.id,
         proces_id: proces.id,
         typ_elementu: a.typ_elementu,
         poczatek: "2024-10-30 10:00:00",
@@ -423,6 +425,7 @@ console.log(new_legi)
         nazwa: proces.nazwa,
         element_id: a.element_id,
         arkusz_id: a.arkusz_id, // bylo a.id
+        lega_id: a.id,
         proces_id: proces.id,
         typ_elementu: a.typ_elementu,
         poczatek: "2024-10-30 10:00:00",

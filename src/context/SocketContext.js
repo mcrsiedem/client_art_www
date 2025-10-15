@@ -201,6 +201,18 @@ const logoutIO = useCallback(() => {
 }, [updateAuthStatus]);
 
 
+
+  useEffect(() => {
+
+
+    console.log(" Pobudka..");
+
+    return () => {
+   
+    };
+  }, []);
+
+
     useEffect(() => {
         const token = getToken();
         

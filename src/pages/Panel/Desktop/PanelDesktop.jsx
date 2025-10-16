@@ -27,16 +27,18 @@ import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
 import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 
+
 export default function PanelDesktop ({isOnline,navigate,logout})  {
   const [loading, setLoading] = useState(true);
- const {   callPodgladRalizacji ,lokalizacja} = useSocket()
+ const {  callPodgladRalizacji,  lokalizacja} = useSocket()
+
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
 
-callPodgladRalizacji(todayMinusDniGodziny(1),{setLoading}) // callPodgladRalizacji("2025-10-10 18:00")
+callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-10 18:00")
 
         } else {
           navigate("/Login");

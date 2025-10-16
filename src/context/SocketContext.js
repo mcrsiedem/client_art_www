@@ -5,6 +5,7 @@ import { IP_SOCKET } from 'utils/Host';
 import { IP } from "utils/Host";
 import axios from "axios";
 import { todayMinusDniGodziny } from 'actions/todayMinusDniGodziny';
+
   
  let newSocket;
 // --- Stałe konfiguracyjne ---
@@ -47,12 +48,48 @@ export const SocketProvider = ({ children }) => {
     const [isConnected, setIsConnected] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
     const reconnectTimerRef = useRef(null); 
+    const lokalizacja = useRef(null); 
+    
+    // const {callPodgladRalizacji,podgladRealizacji, setPodgladRealizacji,loading, setLoading} = useRealizacje(); 
+    
+    const [podgladRealizacji, setPodgladRealizacji] = useState([]);
+  
+const [loading, setLoading] = useState(false);
+const callPodgladRalizacji = async (od) =>{
 
-const lokalizacja = useRef(null); 
+    if(podgladRealizacji.length==0){
+                setLoading?.(true)
+        let podglady=[]
+        
+        const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 
+        podglady.push(...res.data[0])
+        podglady.push(...res.data[1])
+        podglady.push(...res.data[2])
+        setPodgladRealizacji(podglady);
+      
+
+        setLoading?.(false)
+    }else{
+                let podglady=[]
+        
+        const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
+
+        podglady.push(...res.data[0])
+        podglady.push(...res.data[1])
+        podglady.push(...res.data[2])
+        setPodgladRealizacji(podglady);
+    }
+
+   
+        
+
+      }
+    
+    
     // ✅ POPRAWKA: Inicjalizacja currentUserId na podstawie zdekodowanego tokenu
     const [currentUserId, setCurrentUserId] = useState(getInitialUserId()); 
-        const [podgladRealizacji, setPodgladRealizacji] = useState([]);
+        // const [podgladRealizacji, setPodgladRealizacji] = useState([]);
     
     // --- Refy dla śledzenia aktywności ---
     const idleTimerRef = useRef(null);
@@ -112,22 +149,22 @@ const lokalizacja = useRef(null);
     // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
     // -----------------------------------------------------------------------
   
-      const callPodgladRalizacji = async (od,{setLoading}) =>{
-        let podglady=[]
+    //   const callPodgladRalizacji = async (od,{setLoading}) =>{
+    //     let podglady=[]
         
-        const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
+    //     const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 
-        podglady.push(...res.data[0])
-        podglady.push(...res.data[1])
-        podglady.push(...res.data[2])
-        setPodgladRealizacji(podglady);
+    //     podglady.push(...res.data[0])
+    //     podglady.push(...res.data[1])
+    //     podglady.push(...res.data[2])
+    //     setPodgladRealizacji(podglady);
       
 
-            setLoading?.(false)
+    //         setLoading?.(false)
    
         
 
-      }
+    //   }
 
 const logoutIO = useCallback(() => {
         // 1. Zgłoszenie wylogowania do Socket.IO (jeśli socket istnieje i jest połączony)
@@ -284,7 +321,7 @@ const logoutIO = useCallback(() => {
               console.log("gdzie jestem: " + lokalizacja.current);
               if (lokalizacja.current == "Panel") {
                 console.log("odświeżam tylko panel ");
-                callPodgladRalizacji(todayMinusDniGodziny(1),null);
+                callPodgladRalizacji(todayMinusDniGodziny(1));
               }
             });
 
@@ -389,8 +426,8 @@ console.log(sockets)
         usersIO,
         currentUserId,
         logoutIO,
-        podgladRealizacji, callPodgladRalizacji,lokalizacja
-    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,callPodgladRalizacji,logoutIO,lokalizacja]);
+        podgladRealizacji,lokalizacja,callPodgladRalizacji,loading, setLoading
+    }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,logoutIO,lokalizacja,callPodgladRalizacji,loading, setLoading]);
     
     return (
         <SocketContext.Provider value={contextValue}>

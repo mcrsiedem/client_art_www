@@ -10,6 +10,7 @@ import Zamowienia from "./Zamowienia";
 import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 import { formatujDateZGodzinaICalyDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaICalyDniemTygodniaPoPolsku";
 import LoadingMini from "components/Loading/LoadingMini";
+import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 // Komponent ikony online (używany tylko dla estetyki)
 // const OnlineIcon = () => (
 //   <span className={style.onlineIcon} title="Online" />
@@ -28,14 +29,21 @@ const OnlineIcon = ({ status }) => {
  * * @param {object} props
  * @param {Array<{id: number, imie: string, nazwisko: string, zalogowany: string}>} props.usersIO - Lista użytkowników online.
  */
-export default function PodgladRealizacji({loading}) {
+export default function PodgladRealizacji() {
   const appcontext = useContext(AppContext);
   const podgladTableRef2 = useRef(null);
+  // const {loading,podgladRealizacji,callPodgladRalizacji} = useRealizacje();
+  const {loading,podgladRealizacji,callPodgladRalizacji} = useSocket();
 
   const pokazUzytkownikowOnline = appcontext.pokazUzytkownikowOnline;
   const setPokazUzytkownikowOnline = appcontext.setPokazUzytkownikowOnline;
-  const { podgladRealizacji } = useSocket();
+
+    useEffect(() => {
+    callPodgladRalizacji(todayMinusDniGodziny(1))
+
+  }, []);
   useEffect(() => {
+
     // Sprawdzamy, czy dane istnieją i czy ref istnieje
     if (podgladRealizacji && podgladTableRef2.current) {
       // Użycie setTimeout(..., 0) jest tutaj wciąż dobrym zabezpieczeniem

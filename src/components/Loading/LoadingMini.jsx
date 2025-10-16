@@ -3,8 +3,11 @@ import style from "./LoadingMini.module.css";
 import { AppContext } from "context/AppContext";
 import iconAdd from "assets/history.svg";
 import iconLoading from "assets/loading_yellow.svg";
+
 export default function LoadingMini( {loading}) {
   const appContext = useContext(AppContext);
+  // const {loading} = useRealizacje();
+
   // const isLoading = appContext.isLoading;
   // if (isLoading) {
   if (loading) {

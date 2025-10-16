@@ -9,7 +9,7 @@ import { useSocket } from "context/SocketContext";
 export default function Zapisz({setShow,wykonanie,value,grup}) {
 
     const techContext = useContext(TechnologyContext);
-    const appContext = useContext(AppContext);
+ 
 
       // const setWykonaniaOprawy = techContext.setWykonaniaOprawy;
       // const wykonaniaOprawy = techContext.wykonaniaOprawy;
@@ -21,7 +21,10 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
       const setRealizacje = techContext.setRealizacje;
       const grupyWykonanAll = techContext.grupyWykonanAll;
       const setGrupWykonanAll = techContext.setGrupWykonanAll;
+
+      const appContext = useContext(AppContext);
       const setIsLoading = appContext.setIsLoading;
+
          const {         socket } = useSocket()
     return (
       <button

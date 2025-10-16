@@ -131,6 +131,7 @@ useEffect(() => {
         <TechnologiaStage/>
         <Procesory
         />
+        <Loading/>
       </div>
     </div>
   );

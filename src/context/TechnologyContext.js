@@ -1,11 +1,12 @@
 import axios from "axios";
 import { IP } from "utils/Host";
 import { getTechnology } from "actions/getTechnolgy";
-import { useEffect,createContext,useState, useCallback } from "react";import { initialProcesy } from "utils/initialvalue";
+import { useEffect,createContext,useState, useCallback, useContext } from "react";import { initialProcesy } from "utils/initialvalue";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useWykonania } from "hooks/useWykonania";
 import { today } from "actions/today";
 import { todayMinusDni } from "actions/todayMinusDni";
+import { AppContext } from "./AppContext";
 ;
 
 
@@ -99,6 +100,9 @@ export const TechnologyContextProvider = ({children})=>{
 
 
 const [sortowanieOprawy,setSortowanieOprawy] = useState("data");
+
+      const appContext = useContext(AppContext);
+      const setIsLoading = appContext.setIsLoading;
 
       //  const[czasWykonania,statusWykonaniaTechnologia] = useWykonania();
 
@@ -707,7 +711,7 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   setWykonaniaOprawy(res.data[12])
   setRealizacje(res.data[13])
 
-  
+    setIsLoading(false)
   //  setShowTechnologyStage(true)
 }
 

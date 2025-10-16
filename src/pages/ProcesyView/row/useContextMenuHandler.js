@@ -4,6 +4,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { getMaxID } from "actions/getMaxID";
 import axios from "axios";
 import { TechnologyContext } from "context/TechnologyContext";
+import { AppContext } from "context/AppContext";
 // import { useContext } from "react";
 // import { IP } from "../utils/Host";
 
@@ -21,8 +22,14 @@ const daneZamowienia = modalcontext.daneZamowienia;
 const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologiiDetails;
     const setProcesyElementowTech = techContext.setProcesyElementowTech;
 
+      const appContext = useContext(AppContext);
+      const setIsLoading = appContext.setIsLoading;
+    
+    
+
 function onContextMenuHanlder(  event,  grup) {
 
+  setIsLoading(true)  
   if(event){
     event.preventDefault();
   }
@@ -44,6 +51,7 @@ function onContextMenuHanlder(  event,  grup) {
 
     if (grup.typ_grupy != 1) {
       fechparametryTechnologiiDetails(grup.zamowienie_id, grup.technologia_id);
+    
     } else {
       setProcesyElementowTech([]);
     }

@@ -121,10 +121,10 @@ const lokalizacja = useRef(null);
         podglady.push(...res.data[1])
         podglady.push(...res.data[2])
         setPodgladRealizacji(podglady);
-        if(setLoading){
+      
 
-            setLoading(false)
-        }
+            setLoading?.(false)
+   
         
 
       }
@@ -284,7 +284,7 @@ const logoutIO = useCallback(() => {
               console.log("gdzie jestem: " + lokalizacja.current);
               if (lokalizacja.current == "Panel") {
                 console.log("odświeżam tylko panel ");
-                callPodgladRalizacji(todayMinusDniGodziny(1));
+                callPodgladRalizacji(todayMinusDniGodziny(1),null);
               }
             });
 

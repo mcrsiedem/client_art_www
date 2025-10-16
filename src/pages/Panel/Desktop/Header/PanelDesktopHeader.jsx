@@ -9,6 +9,7 @@ import { AppContext } from "context/AppContext";
 import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
+import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
 
 
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
@@ -47,6 +48,8 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
     <div
           onDoubleClick={()=>{
         console.log("Co widzę: "+lokalizacja.current )
+        console.log("Hash: "+getCurrentBuildHash() )
+
         // console.log("podgladRealizacji: ",podgladRealizacji )
       }}
     className={style.header}>

@@ -26,3 +26,4 @@ yarn-error.log*
 
 
 src/utils/Host.js
+src/utils/Host2.js

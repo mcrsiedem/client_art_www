@@ -121,7 +121,10 @@ const lokalizacja = useRef(null);
         podglady.push(...res.data[1])
         podglady.push(...res.data[2])
         setPodgladRealizacji(podglady);
-setLoading(false)
+        if(setLoading){
+
+            setLoading(false)
+        }
         
 
       }

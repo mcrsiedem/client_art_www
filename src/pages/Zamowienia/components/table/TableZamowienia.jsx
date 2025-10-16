@@ -8,6 +8,7 @@ import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW/TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
+import LoadingMini from "components/Loading/LoadingMini";
 export default function TableZamowienia({open2,setRow,loading}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
@@ -26,7 +27,9 @@ export default function TableZamowienia({open2,setRow,loading}){
 const [refreshZamowienia] = useZamowienia()
 
   if (loading) {
-    return <div>Ładowanie danych...</div>;
+    // return <div>Ładowanie danych...</div>;
+    return <LoadingMini loading={loading}/>;
+
   }
 
   // if (zamowienia.length === 0) {

@@ -9,6 +9,7 @@ import Oprawa from "./Oprawa";
 import Zamowienia from "./Zamowienia";
 import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 import { formatujDateZGodzinaICalyDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaICalyDniemTygodniaPoPolsku";
+import LoadingMini from "components/Loading/LoadingMini";
 // Komponent ikony online (używany tylko dla estetyki)
 // const OnlineIcon = () => (
 //   <span className={style.onlineIcon} title="Online" />
@@ -27,7 +28,7 @@ const OnlineIcon = ({ status }) => {
  * * @param {object} props
  * @param {Array<{id: number, imie: string, nazwisko: string, zalogowany: string}>} props.usersIO - Lista użytkowników online.
  */
-export default function PodgladRealizacji() {
+export default function PodgladRealizacji({loading}) {
   const appcontext = useContext(AppContext);
   const podgladTableRef2 = useRef(null);
 
@@ -43,6 +44,12 @@ export default function PodgladRealizacji() {
       }, 0);
     }
   }, [podgladRealizacji]);
+
+    // if (loading) {
+    //   // return <div>Ładowanie danych...</div>;
+    //   return <LoadingMini loading={loading}/>;
+  
+    // }
 
   return (
     <div className={style.container}>
@@ -62,8 +69,8 @@ export default function PodgladRealizacji() {
       </h2>
 
       <div ref={podgladTableRef2} className={style.listWrapper}>
-        {/* Zastosowanie Twojej struktury mapowania */}
-        {podgladRealizacji
+    
+        {loading? (<LoadingMini loading={loading}/>):( podgladRealizacji
           ?.sort((a, b) => new Date(a.utworzono) - new Date(b.utworzono))
           .map((podglad, i) => {
 
@@ -80,8 +87,8 @@ export default function PodgladRealizacji() {
          if (podglad.rodzaj == "Zamowienia") {
               return <Zamowienia podglad={podglad} i={i} />;
             }
-            
-          })}
+          
+          }))}
 
       </div>
                 <div className={style.statystykiContainer}>

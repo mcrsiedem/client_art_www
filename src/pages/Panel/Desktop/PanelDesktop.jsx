@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IP } from "utils/Host";
 import axios from "axios";
   
@@ -28,6 +28,7 @@ import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
+  const [loading, setLoading] = useState(true);
  const {   callPodgladRalizacji ,lokalizacja} = useSocket()
   async function checkToken() {
     axios
@@ -35,7 +36,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
       .then((res) => {
         if (res.data.Status === "Success") {
 
-callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-10 18:00")
+callPodgladRalizacji(todayMinusDniGodziny(1),{setLoading}) // callPodgladRalizacji("2025-10-10 18:00")
 
         } else {
           navigate("/Login");
@@ -72,7 +73,7 @@ callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-1
                                 <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
-                        <PodgladRealizacji/>
+                        <PodgladRealizacji loading={loading}/>
                         <OnlineUsersList />
                         </div>
                         </div>

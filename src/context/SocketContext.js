@@ -112,7 +112,7 @@ const lokalizacja = useRef(null);
     // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
     // -----------------------------------------------------------------------
   
-      const callPodgladRalizacji = async (od) =>{
+      const callPodgladRalizacji = async (od,{setLoading}) =>{
         let podglady=[]
         
         const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
@@ -121,7 +121,7 @@ const lokalizacja = useRef(null);
         podglady.push(...res.data[1])
         podglady.push(...res.data[2])
         setPodgladRealizacji(podglady);
-
+setLoading(false)
         
 
       }

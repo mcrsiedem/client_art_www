@@ -17,6 +17,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
+import Loading from "components/Loading/Loading";
 function Zamowienia({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -52,7 +53,7 @@ const [loading, setLoading] = useState(true);
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
           getNadkomplety(setNadkomplety);
-               setLoading(false);
+          setLoading(false);
         } else {
           navigate("/Login");
         }
@@ -88,7 +89,7 @@ setOpenModalInsert(false)
           )}
       <TechnologiaStage/>
       <ZamowieniaInfo/>
-    
+
       
     </div>
   );

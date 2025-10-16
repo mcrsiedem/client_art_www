@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import style from "./Loading.module.css";
+import style from "./LoadingMini.module.css";
 import { AppContext } from "context/AppContext";
 import iconAdd from "assets/history.svg";
 import iconLoading from "assets/loading_yellow.svg";
-export default function Loading( ) {
+export default function LoadingMini( {loading}) {
   const appContext = useContext(AppContext);
-  const isLoading = appContext.isLoading;
-  if (isLoading) {
+  // const isLoading = appContext.isLoading;
+  // if (isLoading) {
+  if (loading) {
     return (
       <div className={style.grayScaleBackground}>
         <div

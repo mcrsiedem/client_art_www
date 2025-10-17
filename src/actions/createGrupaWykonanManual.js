@@ -25,6 +25,7 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
     mnoznik:1,
     procesor_id: procesList.filter(p => p.id == rowProces.proces_id )[0].procesor_domyslny,
     proces_id: rowProces.id,
+    naklad: rowProces.naklad,
     stan:1,
     status:1,
     uwagi: ""
@@ -45,7 +46,10 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
     indeks: getMaxIndeks(wykonania),
     element_id: lega.element_id,
     grupa_id: getMaxID(grupaWykonan),
+            arkusz_id: lega.arkusz_id, // bylo a.id
+            lega_id: lega.id, // bylo a.id
     nazwa: rowProces.nazwa,
+          nazwa_wykonania: lega.rodzaj_legi,
     narzad: procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,
     predkosc: procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc,
     mnoznik:1,
@@ -53,6 +57,8 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
     proces_id: rowProces.id,
     stan:1,
     status:1,
+       naklad: lega.naklad,
+    przeloty: lega.naklad / rowProces.ilosc_uzytkow,
     czas: parseInt((lega.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
     uwagi: ""
   });

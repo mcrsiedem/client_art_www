@@ -10,6 +10,7 @@ export default function RodzajArkuszaWykonania({ rowWykonanie }) {
   return (
     <div className={style.col_dane_rodzaj_arkusza}>
       <input
+      title="nazwa_wykonania"
         disabled
         className={style.input}
         value={rowWykonanie.nazwa_wykonania}
@@ -17,7 +18,7 @@ export default function RodzajArkuszaWykonania({ rowWykonanie }) {
           if (e.target.value == "" || reg_int.test(e.target.value)) {
             updateWykonanie({
               ...rowWykonanie,
-              czas: e.target.value,
+              nazwa_wykonania: e.target.value,
             });
           }
         }}

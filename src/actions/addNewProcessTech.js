@@ -27,11 +27,25 @@ let proc = procesList.filter(x=> x.id == 14).map(x=>{return x})
       front_kolor: "",
       back_kolor: "",
       info: "",
-      indeks: Math.max(...procesyElementowTechTemporary.map((f) => f.indeks)) + 1,
+      // indeks: Math.max(...procesyElementowTechTemporary.map((f) => f.indeks)) + 1,
+       indeks: newIndex(row,procesyElementowTechTemporary),
       insert: true
     });
 
     procesyElementowEditTemporary.sort((a, b) => a.indeks - b.indeks);
     setProcesyElementowTechTemporary(procesyElementowEditTemporary);
 
+}
+const newIndex = (row,procesyElementowTemporary) =>{
+
+  let index;
+
+  if(procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).length == 0){
+    index = 1
+  }else{
+    index = Math.max(...procesyElementowTemporary.filter(x=>x.element_id==row.id&& x.delete !=true).map((f) => f.indeks)) + 1
+
+  }
+
+  return index
 }

@@ -260,3 +260,20 @@ margin-bottom: 30px;
 
     /* border-radius: 10px; */
 }
+
+
+.btn_red{
+    width: 450px;
+    height: 23px;
+    font-size: 1.2rem;
+    padding-top: 5px;
+    /* font-weight: bold; */
+        color: rgb(201, 201, 201);
+    font-family: Poppins;
+    /* border: 1.5px solid rgb(67, 226, 18); */
+    /* background-color: greenyellow; */
+      /* background-image: linear-gradient(rgb(241, 0, 0) 0%, rgb(179, 32, 32) 80%); */
+    border-radius: 5px;
+    /* box-shadow: 3px 3px 1px rgb(139, 228, 7); */
+    /* margin-right: 100px; */
+}

@@ -230,7 +230,20 @@ function AktualizujProcesy() {
   const daneTech = techContext.daneTech;
   const grupaWykonan = techContext.grupaWykonan;
   const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
+    const procesyElementowTech = techContext.procesyElementowTech;
   const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy]=useProcesy();
+
+if(procesyElementowTech.some(x=> x.insert==true)){
+   return (
+
+
+<p  className={style.btn_red}> Najpierw zapisz Technologie z nowym procesem </p>
+         
+      
+
+
+  );
+}
 
 if(grupaWykonan.some(x=> x.global_id==0) && daneTech.id !=1){
    return (

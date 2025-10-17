@@ -117,13 +117,14 @@ const procesList = contexApp.procesList;
             <th className={style.col_kolory}>Front kolory</th>
             <th className={style.col_kolory}>Back kolory</th>
             <th className={style.col_wersja}>Uwagi</th>
-            <th className={style.col_wersja}>Uwagi</th>
+            <th className={style.col_wersja}></th>
           </tr>
         </thead>
         <tbody>
           {procesyElementowTechTemporary
           .filter(x => x.element_id == selectedElementTechROW.id)
           .sort((a, b) => a.indeks - b.indeks)
+          .filter((x) => x.delete != true)
           .map((row, i) => { 
             return <ProcesTechRow row={row} i={i} procesyElementowTechTemporary={procesyElementowTechTemporary} setProcesyElementowTechTemporary={setProcesyElementowTechTemporary}/>
             })}
@@ -396,12 +397,22 @@ const BackIlosc = ({ row }) => {
   );
 }
 
-function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTemporary }) {
+function Usun({ row }) {
     const techContext = useContext(TechnologyContext);
     const grupaWykonan = techContext.grupaWykonan;
     const setGrupaWykonan = techContext.setGrupaWykonan;
-    const wykonania = techContext.wykonania;
-    const setWykonania = techContext.setWykonania;
+    const procesyElementowTemporary = techContext.procesyElementowTemporary;
+    const setProcesyElementowTemporary = techContext.setProcesyElementowTemporary;
+
+
+
+  
+  // const contexApp = useContext(AppContext);
+  // const contexModal = useContext(ModalInsertContext);
+  // const procesyElementow = contexModal.procesyElementow;
+  const procesyElementowTechTemporary = techContext.procesyElementowTechTemporary;
+  const procesyElementowTech = techContext.procesyElementowTech;
+  const setProcesyElementowTechTemporary = techContext.setProcesyElementowTechTemporary;
   return (
     <td className={style.col_button}>
       <div>
@@ -410,10 +421,30 @@ function Usun({ row, procesyElementowTechTemporary, setProcesyElementowTechTempo
           src={iconTrash}
           onClick={() => {
 
-            // przed pierwszym zapisem
-            setProcesyElementowTechTemporary(procesyElementowTechTemporary.filter((p) => p.id !== row.id));
-            setGrupaWykonan(grupaWykonan.filter((p) => p.proces_id !== row.id))
-            setWykonania(wykonania.filter((p) => p.proces_id !== row.id))
+            // // przed pierwszym zapisem
+            // setProcesyElementowTechTemporary(procesyElementowTechTemporary.filter((p) => p.id !== row.id));
+            // setGrupaWykonan(grupaWykonan.filter((p) => p.proces_id !== row.id))
+            // setWykonania(wykonania.filter((p) => p.proces_id !== row.id))
+
+           setProcesyElementowTechTemporary(procesyElementowTechTemporary.map((t, a) => {
+                if (t.id == row.id) {
+                  return {
+                    ...t,
+                    delete: true
+                  };
+                } else {
+                  return t;
+                }
+              })
+            );
+
+      
+
+      
+          
+
+
+
           }}
           alt="Procesy"
         />

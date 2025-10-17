@@ -146,7 +146,6 @@ let grupa_id = MaxID(new_grupy)
       proces_id: proces.id,
       mnoznik: proces.mnoznik,
       naklad: proces.naklad,
-
       status:1,
       stan:1,
       uwagi: ""
@@ -461,16 +460,18 @@ setWykonania(new_wykonania)
 
 }
 
-const aktualizujProcesy = () =>{
-saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0))
-saveWykonania(wykonania.filter(x=>x.global_id == 0))
-fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
+const aktualizujProcesy = async () =>{
+await saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0))
+await saveWykonania(wykonania.filter(x=>x.global_id == 0))
+await fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
 }
 
 
 
 
 const saveGrupaWykonan = (grupaWykonan) =>{
+
+  console.log(" grupa do zapisu: ",grupaWykonan)
 
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertGrupyZammowienia/" + sessionStorage.getItem("token"),[grupaWykonan])

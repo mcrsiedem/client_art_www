@@ -15,7 +15,7 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
 
   const grupaWykonanEdit = grupaWykonan.slice();
   grupaWykonanEdit.push({
-    global_id:1,
+    global_id:0,
     id: getMaxID(grupaWykonan),
     indeks: getMaxIndeks(grupaWykonan),
     element_id: rowProces.element_id,
@@ -28,7 +28,10 @@ export function createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGr
     naklad: rowProces.naklad,
     stan:1,
     status:1,
-    uwagi: ""
+    uwagi: "",
+      insert: true,
+      technologia_id: rowProces.technologia_id,
+      zamowienie_id: rowProces.zamowienie_id
   });
 
    setGrupaWykonan(grupaWykonanEdit);
@@ -42,8 +45,9 @@ if(procesList.filter(p => p.id == rowProces.proces_id )[0].lega == 1){
 
 legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
   wykonaniaEdit.push({
+    global_id:0,
     id: getMaxID(wykonania),
-    indeks: getMaxIndeks(wykonania),
+    indeks: lega.indeks,
     element_id: lega.element_id,
     grupa_id: getMaxID(grupaWykonan),
             arkusz_id: lega.arkusz_id, // bylo a.id
@@ -60,7 +64,14 @@ legi.filter(lega => lega.element_id == rowProces.element_id).forEach(lega => {
        naklad: lega.naklad,
     przeloty: lega.naklad / rowProces.ilosc_uzytkow,
     czas: parseInt((lega.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
-    uwagi: ""
+    uwagi: "",
+    technologia_id: rowProces.technologia_id,
+      zamowienie_id: rowProces.zamowienie_id,
+      typ_elementu: rowProces.typ_elementu,
+      poczatek:"2024-10-30 10:00",
+      koniec:"2024-10-30 10:00",
+     insert: true,
+
   });
   
 });
@@ -72,8 +83,9 @@ if(procesList.filter(p => p.id == rowProces.proces_id )[0].arkusz == 1){
 
   arkusze.filter(arkusz => arkusz.element_id == rowProces.element_id).forEach(arkusz => {
     wykonaniaEdit.push({
+          global_id:0,
       id: getMaxID(wykonania),
-      indeks: getMaxIndeks(wykonania),
+      indeks: arkusz.indeks,
       element_id: arkusz.element_id,
       grupa_id: getMaxID(grupaWykonan),
       nazwa: rowProces.nazwa,
@@ -89,7 +101,14 @@ if(procesList.filter(p => p.id == rowProces.proces_id )[0].arkusz == 1){
       przeloty: parseInt(arkusz.naklad) + parseInt(arkusz.nadkomplet) ,
       status:1,
       czas: parseInt((arkusz.naklad / procesList.filter(p => p.id == rowProces.proces_id )[0].predkosc ) * 60 + procesList.filter(p => p.id == rowProces.proces_id )[0].narzad,10),
-      uwagi: ""
+      uwagi: "",
+          technologia_id: rowProces.technologia_id,
+      zamowienie_id: rowProces.zamowienie_id,
+      typ_elementu: rowProces.typ_elementu,
+      poczatek:"2024-10-30 10:00",
+      koniec:"2024-10-30 10:00",
+     insert: true,
+
     });
     
   });

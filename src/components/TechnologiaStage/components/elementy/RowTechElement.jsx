@@ -46,7 +46,7 @@ export default function RowTechElement({  row,  indeks}) {
         <IloscLeg row={row} />
         <Nazwa row={row} indeks={indeks} />
         <Uwagi row={row}indeks={indeks} />
-        <Procesy row={row} />
+        <Procesy row={row} indeks={indeks} />
         <MenuElementyBtn  row={row} />
       </div>
       {showArkusze && (
@@ -74,7 +74,7 @@ export default function RowTechElement({  row,  indeks}) {
 
 }
 
-function Procesy({ row }) {
+function Procesy({ row,indeks }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
   const techontext = useContext(TechnologyContext);
@@ -87,9 +87,12 @@ function Procesy({ row }) {
   const setProcesyElementowTechTemporary =
     techontext.setProcesyElementowTechTemporary;
 const procesListName = appContext.procesListName
-
+  const elementy = techontext.elementy;
   return (
-    <div id="procesy" className={style.procesy}>
+    <div id="procesy" 
+      // className={elementy[indeks].procesy == row.procesy ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].procesy} type="text"
+    className={style.procesy}
+    >
 
       <img
         className={style.expand}

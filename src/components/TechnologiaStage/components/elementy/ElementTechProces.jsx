@@ -170,21 +170,28 @@ const ProcesName = ({ row,setProcesID }) => {
   const contexApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const procesListName = contexApp.procesListName;
+  const procesListEdit = JSON.parse(JSON.stringify(contexApp.procesList))
+    const procesList = contexApp.procesList;
   return (
     <td>
       <select
         className={style.select}
-        defaultValue={row.nazwa_id}
+        value={row.nazwa_id}
         onChange={(e) => {
           // console.log("proces2 ",e.target.value)
           setProcesID(e.target.value)
+                    let proc = procesList.filter(x=> x.nazwa_id == e.target.value).map(x=>{return x})
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
           techContext.handleUpdateRowProcesyElementowTech({
             ...row,
+              ...proc[0],
             nazwa_id: e.target.value,
             nazwa: getNameOfProces(e.target.value,procesListName),
-            update:true
+              // proces_id: procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id,
+              proces_id: contexApp.procesList.find( proces => proces.nazwa_id == e.target.value).id,
+            update:true,
+            id:row.id
           });
         }}
       >
@@ -204,18 +211,22 @@ const ProcessTyp = ({ row,procesID }) => {
   const contexApp = useContext(AppContext);
   const techContext = useContext(TechnologyContext);
   const selectedElementTechROW = techContext.selectedElementTechROW;
-
+    const selectedElementROW = techContext.selectedElementROW;
+  const procesList = contexApp.procesList;
   return (
     <td>
       <select
         className={style.select}
-        defaultValue={row.proces_id}
+        value={row.proces_id}
         onChange={(e) => {
-          console.log(e.target.value)
+          // console.log(e.target.value)
+            let proc = procesList.filter(x=> x.id == e.target.value).map(x=>{return x})
           techContext.handleUpdateRowProcesyElementowTech({
             ...row,
+                 ...proc[0],
             proces_id: e.target.value,
-            update:true
+            update:true,
+                id:row.id
           });
         }}
       >
@@ -223,8 +234,8 @@ const ProcessTyp = ({ row,procesID }) => {
         {contexApp.procesList
         // .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id )[0].nazwa_id)
         // .filter(p=> p.nazwa_id == techContext.procesyElementowTechTemporary.filter(x=> x.element_id == selectedElementTechROW.id && x.indeks == row.indeks)[0].nazwa_id)
-        .filter(p=> p.nazwa_id == procesID)
-     
+        // .filter(p=> p.nazwa_id == procesID)
+     .filter(p=> p.nazwa_id == techContext.procesyElementowTechTemporary.filter(x=> x.element_id == selectedElementTechROW.id && x.indeks == row.indeks)[0].nazwa_id)
 
                .map((option) => (
           <option key={option.id} value={option.id}>

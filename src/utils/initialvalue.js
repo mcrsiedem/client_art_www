@@ -614,19 +614,8 @@ const _typ_elementu = [
   {
     id: 6,
     nazwa: "Ulotka",
-  },
-   {
-    id: 7,
-    nazwa: "Proof",
-  },
-   {
-    id: 8,
-    nazwa: "Czystodruk z akceptem",
-  },
-   { 
-    id: 9,
-    nazwa: "Czystodruk bez akceptu",
-  },
+  }
+
 ];
 
 const _fsc = [

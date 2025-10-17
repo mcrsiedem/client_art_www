@@ -209,7 +209,7 @@ const ProcesName = ({ row }) => {
             id:row.id
           });
 
-          console.log("Proces1 NAME: "+procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id)
+          // console.log("Proces1 NAME: "+procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id)
         }}
       >
         {}

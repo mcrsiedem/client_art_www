@@ -41,6 +41,8 @@ if (DecodeToken(sessionStorage.getItem("token")).manage_inne == 1 && inne_proces
     const wolno_procesor = (process) => {
    
 
+      // wplno zmieniać procesory tylko w falcu i druku
+
     //nazwa_id ==1  drduk
     if (DecodeToken(sessionStorage.getItem("token")).manage_druk == 1 && process == 1) {
       return true;

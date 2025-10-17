@@ -39,6 +39,7 @@ export default  function ProcesorGrupy({ rowGrupa,rowProces, handleChangeCardOpr
       <select
         className={rowGrupa.global_id == 0 && daneTech.id !=1 ? style.input_yellow:style.input}
         value={rowGrupa.procesor_id}
+        disabled={  !wolno_procesor(rowProces.nazwa_id)}
         onChange={(event) => {
 
           if(wolno_procesor(rowProces.nazwa_id)){

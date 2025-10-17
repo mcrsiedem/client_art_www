@@ -104,6 +104,17 @@ export default function ProcesViewRowMini({ grup,unlockTable, setUnlockTable }) 
                 {expand ? (
                   <>
                    <ProcesRowDetails grup={grup} expand={expand} setExpand={setExpand} mini={true}/>
+                                  <tr  >
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td  className={style.td_przeloty}colSpan={5} >{"Suma przelotów: "+grup.przeloty }</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <tr  >
                       <td></td>
                       <td colSpan={5} >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie +" - "+grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu+" - "+"Spedycja: "+grup.data_spedycji):(" ")}</td>

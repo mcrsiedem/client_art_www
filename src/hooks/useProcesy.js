@@ -30,7 +30,9 @@ export function useProcesy(){
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
     // procesList
-    const [czasOprawy,iloscZbieran] = useOprawa()
+    const [czasOprawy,iloscZbieran] = useOprawa();
+
+
    function createWykonaniaFromArkuszeLegi(
   ) {
    const new_arkusze = [...arkusze.filter(x=>x.delete != true)];

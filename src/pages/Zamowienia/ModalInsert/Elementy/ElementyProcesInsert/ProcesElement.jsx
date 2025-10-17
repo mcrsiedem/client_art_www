@@ -9,6 +9,7 @@ import { _typ_elementu, reg_int } from "utils/initialvalue";
 import { reg_txt } from "utils/initialvalue";
 import { useHistoria } from "hooks/useHistoria";
 import { getNameOfElement } from "actions/getNameOfElement";
+import { useStatus } from "hooks/useStatus";
 export default function ProcesElement({showElementyProcesyInsert}) {
 
 if(showElementyProcesyInsert){
@@ -70,7 +71,7 @@ function Footer() {
     const elementy = contextModalInsert.elementy
     const daneZamowienia = contextModalInsert.daneZamowienia
     const [add] = useHistoria()
-
+   const [setStatus] = useStatus()
   return (
     <div className={style.footer}>
       <button
@@ -84,7 +85,7 @@ function Footer() {
             event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu  ",
             zamowienie_id: daneZamowienia.id
           })
-
+     setStatus(3)
           return {...row, historia: true}
             } 
       
@@ -94,7 +95,7 @@ function Footer() {
             event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu  ",
             zamowienie_id: daneZamowienia.id
           })
-
+     setStatus(3)
           return {...row, historia: true}
             } 
                   
@@ -104,7 +105,7 @@ function Footer() {
             event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - zmiana procesu  ",
             zamowienie_id: daneZamowienia.id
           })
-
+     setStatus(3)
           return {...row, historia: true}
             } else return row
 

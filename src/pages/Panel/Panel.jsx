@@ -29,28 +29,6 @@ export default function Panel({ user, setUser }) {
        alert("Aplikacja zaktualizowana...")
     }
 
-    // // 1. Sprawdź, czy udało się znaleźć własny hash
-    // if (!currentHash) {
-    //     console.error("Nie udało się zidentyfikować aktualnego hasha.");
-    //     return;
-    // }
-
-    // // 2. Wyślij zapytanie do API po oczekiwany hash
-    // axios.get('/api/check-version')
-    //   .then(response => {
-    //     const expectedHash = response.data.expectedHash;
-        
-    //     // 3. PORÓWNANIE
-    //     if (currentHash !== expectedHash) {
-    //       console.log(`Wersja: ${currentHash}. Oczekiwana: ${expectedHash}. Wymuszanie przeładowania...`);
-    //       window.location.reload(true); // Twarde przeładowanie
-    //     } else {
-    //       console.log(`Aplikacja jest aktualna (Hash: ${currentHash})`);
-    //     }
-    //   })
-    //   .catch(error => console.error('Błąd sprawdzania wersji', error));
- 
-
 
 
   }, []);

@@ -223,7 +223,7 @@ tr:nth-of-type(2n) {
    background-color: var(--art-input);
    border-radius: 10px;
    border: none;
-   width: 100px;
+   /* width: 100px; */
    font-size: bold;
    color: gray;
    font-size: 0.9rem;

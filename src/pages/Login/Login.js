@@ -85,7 +85,7 @@ techContext.setSelectedProcesor(DecodeToken(token).procesor_domyslny)
 //  console.log("hash: "+hash)
 //  console.log("ver: "+ ver.ver) 
 //  console.log("Typ 'hash':", typeof hash); // Powinno być: string
-// console.log("Typ 'ver':", typeof ver);  // Powinno być: string
+console.log("Typ 'ver':", typeof ver);  // Powinno być: string
  if(hash.toString().trim() == ver.ver.toString().trim()){
   // hash !="brak" && contextApp.setRestart(true)
 //  contextApp.setRestart(true)

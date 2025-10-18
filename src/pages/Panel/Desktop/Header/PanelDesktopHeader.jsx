@@ -10,11 +10,14 @@ import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
 import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
+import DialogHipopotam from "components/DialogHipopotam/DialogHipopotam";
 
 
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);
   const appcontext = useContext(AppContext);
+
+    const hipopotemDialogBox = useRef(null);
   const { socket, isConnected, isAuthenticated, updateAuthStatus, usersIO,logoutIO,lokalizacja } =
     useSocket();
 
@@ -54,6 +57,7 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
         // console.log("podgladRealizacji: ",podgladRealizacji )
       }}
     className={style.header}>
+  
       {isOnline ? (
         <div className={style.user}>
           {isOpen && (
@@ -63,6 +67,12 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
                   if (socket) {
                     socket.emit("ktotam");
                   }
+
+  hipopotemDialogBox.current.show();
+  hipopotemDialogBox.current.showOK();
+  hipopotemDialogBox.current.hide();
+
+
 
                   setIsOpen(false);
                 }}
@@ -128,6 +138,7 @@ logoutIO()
             {DecodeToken(sessionStorage.getItem("token")).imie}{" "}
             {DecodeToken(sessionStorage.getItem("token")).nazwisko}
           </p>
+                <DialogHipopotam dialogBox={hipopotemDialogBox}/>
         </div>
       ) : (
         <div className={style.user}>

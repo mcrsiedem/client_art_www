@@ -15,6 +15,7 @@ export const AppContextProvider = ({children})=>{
    
     const [idZamowieniaDiag, setIdZamowieniaDiag] = useState(127);
     const [isLoading, setIsLoading] = useState(false);
+    const [restart, setRestart] = useState(false);
 
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
@@ -148,6 +149,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
     
     return  <AppContext.Provider 
                 value={{
+                  restart, setRestart,
              idZamowieniaDiag, setIdZamowieniaDiag,
                   isLoading, setIsLoading, 
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,

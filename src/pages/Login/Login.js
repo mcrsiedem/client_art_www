@@ -13,6 +13,7 @@ import {  useSocket } from "../../context/SocketContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import { TechnologyContext } from "context/TechnologyContext";
+import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
 export default function Login( ) {
 
   const [user,setUser] = useState(null);
@@ -62,21 +63,39 @@ export default function Login( ) {
 
   //sql injections
  // ' or '1' = '1
+ let hash = getCurrentBuildHash() ; 
 
-    const res = await axios.get(IP + "users/" + input.login + "/" + input.haslo)
+    const res = await axios.get(IP + "users/" + input.login + "/" + input.haslo + "/" + hash)
+    let token = res.data[0]
+    let ver = res.data[1][0]
+    // console.log("ververver+"+ ver)
 
-if (res.data.length > 0) {
-  sessionStorage.setItem("id", DecodeToken(res.data).id); 
-  sessionStorage.setItem("token", res.data); 
-  setUser({id: DecodeToken(res.data).id, user:DecodeToken(res.data).imie })
+if (token.length > 0) {
+  sessionStorage.setItem("id", DecodeToken(token).id); 
+  sessionStorage.setItem("token", token); 
+  setUser({id: DecodeToken(token).id, user:DecodeToken(token).imie })
   navigate("/Panel");
 
-   console.log("Load procesor domyslny: "+DecodeToken(res.data).procesor_domyslny)
-techContext.setSelectedProcesor(DecodeToken(res.data).procesor_domyslny)
+  //  console.log("Load procesor domyslny: "+DecodeToken(res.data).procesor_domyslny)
+techContext.setSelectedProcesor(DecodeToken(token).procesor_domyslny)
  contextApp.setSelectedKlient(0);
  contextApp.setSelectedUser(0);
 
-updateAuthStatus(true,res.data)
+ // Jeśli hash użytkownika nie równa się najnowszej wersji ver to odśwież jak będziesz w panelu
+//  console.log("hash: "+hash)
+//  console.log("ver: "+ ver.ver) 
+//  console.log("Typ 'hash':", typeof hash); // Powinno być: string
+// console.log("Typ 'ver':", typeof ver);  // Powinno być: string
+ if(hash.toString().trim() == ver.ver.toString().trim()){
+  // hash !="brak" && contextApp.setRestart(true)
+//  contextApp.setRestart(true)
+console.log("hash === ver ")
+ }else{
+  contextApp.setRestart(true)
+  console.log("hash !== ver ")
+ }
+
+updateAuthStatus(true,token)
 
 // if(socket) {
 //   socket.emit("addNewUser", { token: res.data ,socketId:socket.id });
@@ -130,7 +149,9 @@ function Center({ input, setInput, handleSubmit }) {
           />
         </div>
 
-        <button onClick={()=>handleSubmit}type="submit" className={style.myButton}>
+        <button 
+        title={"Wersja: "+getCurrentBuildHash() }
+        onClick={()=>handleSubmit}type="submit" className={style.myButton}>
           Zaloguj
         </button>
       </form>

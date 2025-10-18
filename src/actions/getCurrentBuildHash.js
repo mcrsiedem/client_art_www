@@ -20,5 +20,5 @@ export function getCurrentBuildHash() {
       }
     }
   }
-  return null;
+  return "brak";
 }

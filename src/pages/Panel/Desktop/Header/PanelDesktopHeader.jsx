@@ -49,6 +49,7 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
           onDoubleClick={()=>{
         console.log("Co widzę: "+lokalizacja.current )
         console.log("Hash: "+getCurrentBuildHash() )
+        console.log("restart: "+appcontext.restart )
 
         // console.log("podgladRealizacji: ",podgladRealizacji )
       }}

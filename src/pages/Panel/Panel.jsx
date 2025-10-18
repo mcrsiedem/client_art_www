@@ -24,7 +24,10 @@ export default function Panel({ user, setUser }) {
     getNadkomplety(setNadkomplety)
     getClients(setClients,setClientsWyszukiwarka )
 
-
+    if(appcontext.restart){
+       window.location.reload(true)
+       alert("Aplikacja zaktualizowana...")
+    }
 
     // // 1. Sprawdź, czy udało się znaleźć własny hash
     // if (!currentHash) {

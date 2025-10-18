@@ -16,7 +16,7 @@ import { IP } from "../../../../utils/Host";
 import { skasujTechnologie } from "actions/skasujTechnologie";
 import SprawdzBTN from "./SprawdzBTN";
 import { useHistoria } from "hooks/useHistoria";
-import { useProcesy } from "hooks/useProcesy";
+import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 
 

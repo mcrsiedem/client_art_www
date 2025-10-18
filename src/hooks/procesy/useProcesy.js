@@ -2,12 +2,15 @@
 // fukncja do generowania wykonań i grup po stworzeniu arkuszy
 // podobna do useArkusze, ale rozdzielona na osobną część tylko do wykonań 
 import axios from "axios";
-import { IP } from "../utils/Host";
+import { IP } from "../../utils/Host";
 
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
-import { useOprawa } from "./useOprawa";
+import { useOprawa } from "../useOprawa";
+import { addNewGrupa } from "./addNewGrupa";
+import { addNewWykonanieArkusz } from "./addNewWykonanieArkusz";
+import { addNewWykonanieCzystodruki } from "./addNewWykonanieCzystodruki";
 
 export function useProcesy(){
     const contextApp = useContext(AppContext);
@@ -74,82 +77,23 @@ export function useProcesy(){
    setGrupaOprawaTech(new_grupaOprawaTech)
    
 procesy.map((proces,i)=> {
-  if(proces.arkusz==1){ 
-let grupa_id = MaxID(new_grupy)
-    new_grupy.push({
-      id: grupa_id,
-      global_id:0,
-      indeks: i + 1,
-      element_id: proces.element_id,
-      nazwa: proces.nazwa,
-      poczatek: "2024-10-30 10:00:00",
-      czas: 1,
-      koniec: "2024-10-30 11:00:00",
-      procesor_id:proces.procesor_domyslny,
-      narzad: proces.narzad,
-      predkosc: proces.predkosc,
-      proces_id: proces.id,
-      mnoznik: proces.mnoznik,
-      naklad: proces.naklad,
-      status:1,
-      stan:1,
-      uwagi: ""
-    });
 
-    new_arkusze
-    .filter(a => a.element_id == proces.element_id)
-    .map((a,i)=>{
-      new_wykonania.push({
-        id: MaxID(new_wykonania),
-        global_id:0,
-        indeks: i + 1,
-        nazwa: proces.nazwa,
-        element_id: a.element_id,
-        arkusz_id: a.id,
-        proces_id: proces.id,
-        typ_elementu: a.typ_elementu,
-        poczatek: "2024-10-30 10:00:00",
-        czas: parseInt(((parseInt(a.naklad) + parseInt(a.nadkomplet))/ proces.predkosc * proces.mnoznik) * 60 + proces.narzad,10),
-        koniec: "2024-10-30 11:00:00",
-        procesor_id:proces.procesor_domyslny,
-        grupa_id:grupa_id,
-        narzad: proces.narzad,
-        predkosc: proces.predkosc,
-        naklad: a.naklad,
-        mnoznik: proces.mnoznik,
-        status:1,
-        stan:1,
-        przeloty: parseInt(a.naklad) + parseInt(a.nadkomplet) ,
-        uwagi: "",
-        nazwa_wykonania: a.rodzaj_arkusza
-      });
-    })
+      if (proces.arkusz == 1) {
+        let grupa_id = MaxID(new_grupy);
+        addNewGrupa({ new_grupy, grupa_id, proces, i });
+        if(proces.proces_id == 82 || proces.proces_id == 83){
+        addNewWykonanieCzystodruki({ new_arkusze, new_wykonania, grupa_id, proces });
+        }else{
+          addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
+        }
+      }
 
-// new_grupy.map( ng => ({...ng,czas:new_wykonania.filter(x=> x.grupa_id == ng.id).map(x => x.czas).reduce((a, b) => a + b, 0)}) )
 
-  }
 
   if(proces.lega==1){ 
     let grupa_id = MaxID(new_grupy)
-    new_grupy.push({
-      id: grupa_id,
-      global_id:0,
-      indeks: i + 1,
-      element_id: proces.element_id,
-      nazwa: proces.nazwa,
-      poczatek: "2024-10-30 10:00:00",
-      czas: 1,
-      koniec: "2024-10-30 11:00:00",
-      procesor_id:proces.procesor_domyslny,
-      narzad: proces.narzad,
-      predkosc: proces.predkosc,
-      proces_id: proces.id,
-      mnoznik: proces.mnoznik,
-      naklad: proces.naklad,
-      status:1,
-      stan:1,
-      uwagi: ""
-    });
+    addNewGrupa({new_grupy,grupa_id,proces,i})
+
 
     new_legi
     .filter(a => a.element_id == proces.element_id)

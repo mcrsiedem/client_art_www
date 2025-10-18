@@ -4,7 +4,7 @@ import style from "./ElementyTechMenu.module.css";
 import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { ponumerArkusze } from "actions/ponumerArkusze";
 import { useArkuszeOne } from "hooks/useArkuszeOne";
-import { useProcesy } from "hooks/useProcesy";
+import { useProcesy } from "hooks/procesy/useProcesy";
 export default function MenuElementyTech({ row }) {
 
   const techContext = useContext(TechnologyContext);

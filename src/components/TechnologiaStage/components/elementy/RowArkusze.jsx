@@ -13,7 +13,7 @@ import addIcon2 from "assets/addIcon2.svg"
 import { findNadkomplet } from "actions/findNadkomplet";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
-import { useProcesy } from "hooks/useProcesy";
+import { useProcesy } from "hooks/procesy/useProcesy";
 import DodajArkusz from "./components/arkusze/DodajArkusz";
 import KopiujLega from "./components/legi/KopiujLega";
 import UsunLege from "./components/legi/UsunLege";

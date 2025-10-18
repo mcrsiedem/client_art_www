@@ -8,7 +8,7 @@ import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "util
 import { getNameOfElement } from "actions/getNameOfElement";
 import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./grupa_wykonan/GRUPA_WYKONAN";
-import { useProcesy } from "hooks/useProcesy";
+import { useProcesy } from "hooks/procesy/useProcesy";
 import iconTrash from "assets/trashgray.svg";
 import ROW_OPRAWA from "./grupa_wykonan_oprawa/GRUPA_WYKONAN_OPRAWA";
 import { getNameOfProces } from "actions/getNameOfProces";

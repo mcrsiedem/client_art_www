@@ -13,7 +13,7 @@ import addIcon2 from "assets/addIcon2.svg"
 import { findNadkomplet } from "actions/findNadkomplet";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
-import { useProcesy } from "hooks/useProcesy";
+import { useProcesy } from "hooks/procesy/useProcesy";
 
 export default 
   function DodajArkusz({ row }) {

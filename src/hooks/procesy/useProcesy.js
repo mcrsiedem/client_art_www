@@ -40,11 +40,8 @@ export function useProcesy(){
   ) {
    const new_arkusze = [...arkusze.filter(x=>x.delete != true)];
    const new_legi = [...legi.filter(x=>x.delete != true)];
-   const new_procesy = [...procesy.filter(x=>x.delete != true)];
    const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
-  //  const new_grupy = [];
-  //  const new_wykonania = [];
-      const new_grupy = [...grupaWykonan];
+   const new_grupy = [...grupaWykonan];
    const new_wykonania = [...wykonania];
 
    oprawaTech.map((oprawa,i)=> {

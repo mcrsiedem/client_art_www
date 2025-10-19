@@ -35,7 +35,10 @@ if (pierwszyArkusz) {
     stan:1,
     przeloty: 2 ,
     uwagi: "",
-    nazwa_wykonania: a.rodzaj_arkusza
+    nazwa_wykonania: a.rodzaj_arkusza,
+          technologia_id: proces.technologia_id || 0,
+      zamowienie_id: proces.zamowienie_id,
+         insert: true,
   })
   }
 
@@ -67,6 +70,11 @@ if (pierwszyArkusz) {
         przeloty: proces.proces_id == 82 || proces.proces_id == 83 ? 1: parseInt(a.naklad) + parseInt(a.nadkomplet) ,
         uwagi: "",
         nazwa_wykonania: a.rodzaj_arkusza
+        ,
+    nazwa_wykonania: a.rodzaj_arkusza,
+          technologia_id: proces.technologia_id || 0,
+      zamowienie_id: proces.zamowienie_id,
+         insert: true,
       });
     })
   }

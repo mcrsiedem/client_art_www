@@ -30,7 +30,10 @@ export function addNewWykonanieLegi({new_legi,new_wykonania,grupa_id,proces}){
         stan:1,
         przeloty: a.naklad / proces.ilosc_uzytkow,
         uwagi: "",
-        nazwa_wykonania: a.rodzaj_legi
+        nazwa_wykonania: a.rodzaj_legi,
+          technologia_id: proces.technologia_id || 0,
+      zamowienie_id: proces.zamowienie_id,
+         insert: true,
       });
     })
 

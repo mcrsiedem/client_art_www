@@ -171,11 +171,7 @@ const Dodruk = () => {
   const techContext = useContext(TechnologyContext);
   const daneTech = techContext.daneTech;
   const setDaneTech = techContext.setDaneTech;
-    const [
-      createWykonaniaFromArkuszeLegi,
-      createProcesyFromArkuszONE,
-      createProcesyFromArkuszNewGrupa,
-    ] = useProcesy();
+    const       {createWykonaniaFromArkuszeLegi}= useProcesy();
  if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
     return (

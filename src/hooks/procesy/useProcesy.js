@@ -53,13 +53,13 @@ export function useProcesy(){
     procesy.map((proces, i) => {
       if (proces.arkusz == 1) {
         let grupa_id = MaxID(new_grupy);
-        addNewGrupa({ new_grupy, grupa_id, proces, i });
+        addNewGrupa({ new_grupy, grupa_id, proces });
         addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
       }
 
       if (proces.lega == 1) {
         let grupa_id = MaxID(new_grupy);
-        addNewGrupa({ new_grupy, grupa_id, proces, i });
+        addNewGrupa({ new_grupy, grupa_id, proces });
         addNewWykonanieLegi({ new_legi, new_wykonania, grupa_id, proces });
       }
     });
@@ -74,7 +74,38 @@ setWykonania(new_wykonania)
 
 
 
+  // Tworzenie grupy i wykonan z jednego procesu. Wykorzystywane gdy dodajemy nagle jeden proces i trzeba go umieścić w planie
+   function createGrupaWykonaniaFromOneProcess(proces) {
+    // proces to rowProces procesy elementów tech
+   const new_arkusze = [...arkusze.filter(x=>x.delete != true)];
+   const new_legi = [...legi.filter(x=>x.delete != true)];
+   const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
+   const new_grupy = [...grupaWykonan];
+   const new_wykonania = [...wykonania];
 
+  //  oprawaTech.map((oprawa,i)=> {
+  //   let grupa_id = MaxID(new_grupaOprawaTech)
+  //   addNewGrupaOprawa({ new_grupaOprawaTech,oprawa,grupa_id,procesList,czasOprawy,iloscZbieran});
+  //  })
+  //  setGrupaOprawaTech(new_grupaOprawaTech)
+   
+
+      if (proces.arkusz == 1) {
+        let grupa_id = MaxID(new_grupy);
+        addNewGrupa({ new_grupy, grupa_id, proces });
+        addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
+      }
+
+      if (proces.lega == 1) {
+        let grupa_id = MaxID(new_grupy);
+        addNewGrupa({ new_grupy, grupa_id, proces });
+        addNewWykonanieLegi({ new_legi, new_wykonania, grupa_id, proces });
+      }
+
+
+setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
+setWykonania(new_wykonania)
+}
 
 
 
@@ -448,7 +479,13 @@ const SumaWykonan= (wykonania,grupa) => {
 };
 
 
-  return [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy];
+  return {
+    createWykonaniaFromArkuszeLegi,
+    createGrupaWykonaniaFromOneProcess,
+    createProcesyFromArkuszONE,
+    createProcesyFromArkuszNewGrupa,
+    aktualizujProcesy,
+  };
 
 }
 

@@ -1,6 +1,7 @@
+import { getMaxIndeks } from "actions/getMaxIndeks";
 
 
-export function addNewGrupa({new_grupy,grupa_id,proces,i}){
+export function addNewGrupa({new_grupy,grupa_id,proces}){
 
 
 
@@ -9,7 +10,7 @@ export function addNewGrupa({new_grupy,grupa_id,proces,i}){
         new_grupy.push({
       id: grupa_id,
       global_id:0,
-      indeks: i + 1,
+      indeks: getMaxIndeks(new_grupy),
       element_id: proces.element_id,
       nazwa: proces.nazwa,
       poczatek: "2024-10-30 10:00:00",
@@ -23,14 +24,17 @@ export function addNewGrupa({new_grupy,grupa_id,proces,i}){
       naklad: 2,
       status:1,
       stan:1,
-      uwagi: ""
+      uwagi: "",
+      insert: true,
+      technologia_id: proces.technologia_id || 0,
+      zamowienie_id: proces.zamowienie_id
     });
   } else{
     // wszystko inne poza czystodrukami
       new_grupy.push({
       id: grupa_id,
       global_id:0,
-      indeks: i + 1,
+      indeks: getMaxIndeks(new_grupy),
       element_id: proces.element_id,
       nazwa: proces.nazwa,
       poczatek: "2024-10-30 10:00:00",
@@ -44,7 +48,10 @@ export function addNewGrupa({new_grupy,grupa_id,proces,i}){
       naklad: proces.naklad,
       status:1,
       stan:1,
-      uwagi: ""
+      uwagi: "",
+      insert: true,
+      technologia_id: proces.technologia_id || 0,
+      zamowienie_id: proces.zamowienie_id
     });
 
 

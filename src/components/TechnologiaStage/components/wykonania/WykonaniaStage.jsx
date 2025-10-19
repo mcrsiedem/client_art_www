@@ -6,19 +6,13 @@ import logoExpand from "assets/expand.svg";
 import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import { _stan_wykonania, _status_wykonania, _typ_elementu, reg_txt } from "utils/initialvalue";
 import { getNameOfElement } from "actions/getNameOfElement";
-import { createGrupaWykonanManual } from "actions/createGrupaWykonanManual";
 import GRUPA_WYKONAN from "./grupa_wykonan/GRUPA_WYKONAN";
 import { useProcesy } from "hooks/procesy/useProcesy";
 import iconTrash from "assets/trashgray.svg";
 import ROW_OPRAWA from "./grupa_wykonan_oprawa/GRUPA_WYKONAN_OPRAWA";
-import { getNameOfProces } from "actions/getNameOfProces";
 
 export default function WykonaniaStage() {
-  const [
-    createWykonaniaFromArkuszeLegi,
-    createProcesyFromArkuszONE,
-    createProcesyFromArkuszNewGrupa,
-  ] = useProcesy();
+  const {    createWykonaniaFromArkuszeLegi  } = useProcesy();
   const techContext = useContext(TechnologyContext);
   const showProcesy = techContext.showProcesy;
   const setShowProcesy = techContext.setShowProcesy;
@@ -168,6 +162,7 @@ const ProcesBtn = ({ rowProces,row, showMenu, setShowMenu }) => {
   const fragmentyTech = techContext.fragmentyTech;
   const setFragmentyTech = techContext.setFragmentyTech;
   const procesList =appcontext.procesList  // wszystkie procesy
+  const {createGrupaWykonaniaFromOneProcess} = useProcesy();
 
   const elementyTech = techContext.elementyTech;
   return (
@@ -179,7 +174,7 @@ const ProcesBtn = ({ rowProces,row, showMenu, setShowMenu }) => {
         title="Policz czasy wykonań"
         onClick={() => {
 
-          createGrupaWykonanManual(rowProces,procesList,grupaWykonan,setGrupaWykonan,legi,wykonania,setWykonania,arkusze,setArkusze)
+          createGrupaWykonaniaFromOneProcess(rowProces)
         }}
         alt="x"
       />
@@ -231,7 +226,7 @@ function AktualizujProcesy() {
   const grupaWykonan = techContext.grupaWykonan;
   const setSaveButtonDisabled = techContext.setSaveButtonDisabled;
     const procesyElementowTech = techContext.procesyElementowTech;
-  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa,aktualizujProcesy]=useProcesy();
+  const {aktualizujProcesy} =useProcesy();
 
 if(procesyElementowTech.some(x=> x.insert==true)){
    return (

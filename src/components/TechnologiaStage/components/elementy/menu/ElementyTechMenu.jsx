@@ -13,7 +13,7 @@ export default function MenuElementyTech({ row }) {
   const elementyTech = techContext.elementyTech;
   const setShowProcesy = techContext.setShowProcesy;
 
-  const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE] = useProcesy();
+  const {createProcesyFromArkuszONE} = useProcesy();
 
   if (row.showMenu) {
     return (

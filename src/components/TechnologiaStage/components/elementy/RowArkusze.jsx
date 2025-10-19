@@ -402,7 +402,7 @@ export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext)
     const arkusze = techContext.arkusze;
     const wykonania = techContext.wykonania;
-     const [createWykonaniaFromArkuszeLegi,createProcesyFromArkuszONE,createProcesyFromArkuszNewGrupa] = useProcesy()
+     const {createProcesyFromArkuszNewGrupa} = useProcesy()
 
 
 

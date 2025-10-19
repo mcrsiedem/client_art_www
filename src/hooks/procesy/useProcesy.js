@@ -10,7 +10,8 @@ import { AppContext } from "context/AppContext";
 import { useOprawa } from "../useOprawa";
 import { addNewGrupa } from "./addNewGrupa";
 import { addNewWykonanieArkusz } from "./addNewWykonanieArkusz";
-import { addNewWykonanieCzystodruki } from "./addNewWykonanieCzystodruki";
+import { addNewGrupaOprawa } from "./addNewGrupaOprawa";
+import { addNewWykonanieLegi } from "./addNewWykonanieLegi";
 
 export function useProcesy(){
     const contextApp = useContext(AppContext);
@@ -32,12 +33,11 @@ export function useProcesy(){
     const procesList = contextApp.procesList;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
-    // procesList
     const [czasOprawy,iloscZbieran] = useOprawa();
 
 
-   function createWykonaniaFromArkuszeLegi(
-  ) {
+  // automatyczne generowanie grup leg i oprawy przy tworzeniu karty tech. 
+   function createWykonaniaFromArkuszeLegi() {
    const new_arkusze = [...arkusze.filter(x=>x.delete != true)];
    const new_legi = [...legi.filter(x=>x.delete != true)];
    const new_grupaOprawaTech = [...grupaOprawaTech.filter(x=>x.delete != true)];
@@ -46,93 +46,60 @@ export function useProcesy(){
 
    oprawaTech.map((oprawa,i)=> {
     let grupa_id = MaxID(new_grupaOprawaTech)
-   
-    new_grupaOprawaTech.push({
-      id: grupa_id,
-      global_id:0,
-      indeks: MaxIndeks(new_grupaOprawaTech),
-      nazwa:procesList.filter(x=>x.id == oprawa.oprawa)[0].nazwa,
-      poczatek: "2024-10-30 10:00:00",
-      czas: czasOprawy(oprawa.id),
-      koniec: "2024-10-30 11:00:00",
-      procesor_id: procesList.filter(x=>x.id == oprawa.oprawa)[0].procesor_domyslny,
-      narzad: procesList.filter(x=>x.id == oprawa.oprawa)[0].narzad,
-      predkosc: procesList.filter(x=>x.id == oprawa.oprawa)[0].predkosc,
-      proces_id: oprawa.oprawa, 
-      oprawa_id: oprawa.id, //lokalne id oprawy, w przypadku jednej == 1
-      mnoznik: procesList.filter(x=>x.id == oprawa.oprawa)[0].mnoznik,
-      naklad: oprawa.naklad,
-      bok_oprawy:oprawa.bok_oprawy,
-      wersja: oprawa.wersja,
-      ilosc_zbieran: iloscZbieran(oprawa.id),
-
-      status:1,
-      stan:1,
-      uwagi: oprawa.uwagi
-    });
+    addNewGrupaOprawa({ new_grupaOprawaTech,oprawa,grupa_id,procesList,czasOprawy,iloscZbieran});
    })
    setGrupaOprawaTech(new_grupaOprawaTech)
    
-procesy.map((proces,i)=> {
-
+    procesy.map((proces, i) => {
       if (proces.arkusz == 1) {
         let grupa_id = MaxID(new_grupy);
         addNewGrupa({ new_grupy, grupa_id, proces, i });
-        if(proces.proces_id == 82 || proces.proces_id == 83){
-        addNewWykonanieCzystodruki({ new_arkusze, new_wykonania, grupa_id, proces });
-        }else{
-          addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
-        }
+        addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
       }
 
-
-
-  if(proces.lega==1){ 
-    let grupa_id = MaxID(new_grupy)
-    addNewGrupa({new_grupy,grupa_id,proces,i})
-
-
-    new_legi
-    .filter(a => a.element_id == proces.element_id)
-    .map((a,indeks)=>{
-      new_wykonania.push({
-        id: MaxID(new_wykonania),
-        indeks: indeks + 1,
-        global_id:0,
-        nazwa: proces.nazwa,
-        element_id: a.element_id,
-        arkusz_id: a.arkusz_id, // bylo a.id
-        lega_id: a.id, // bylo a.id
-        proces_id: proces.id,
-        typ_elementu: a.typ_elementu,
-        poczatek: "2024-10-30 10:00:00",
-        czas: parseInt((a.naklad /  proces.predkosc / proces.ilosc_uzytkow * proces.mnoznik) * 60 + proces.narzad,10) ,
-        koniec: "2024-10-30 11:00:00",
-        procesor_id:proces.procesor_domyslny,
-        grupa_id:grupa_id,
-        narzad: proces.narzad,
-        predkosc: proces.predkosc,
-        naklad: a.naklad,
-        mnoznik: proces.mnoznik,
-        status:1,
-        stan:1,
-        przeloty: a.naklad / proces.ilosc_uzytkow,
-        uwagi: "",
-        nazwa_wykonania: a.rodzaj_legi
-      });
-    })
-
-  }
-
-  
-
-})
+      if (proces.lega == 1) {
+        let grupa_id = MaxID(new_grupy);
+        addNewGrupa({ new_grupy, grupa_id, proces, i });
+        addNewWykonanieLegi({ new_legi, new_wykonania, grupa_id, proces });
+      }
+    });
 
 setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
-
-
 setWykonania(new_wykonania)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    function createProcesyFromArkuszONE(

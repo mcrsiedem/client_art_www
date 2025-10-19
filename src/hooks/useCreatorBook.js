@@ -120,14 +120,14 @@ function createBook() {
 
       })
 
-
+      // dodawanie czystodruków do WSIP 
       let proc = procesList.filter(x=> x.id == 83).map(x=>{return x})
       if(modalInsertContext.daneZamowienia.klient_id == 62 ){
     temp.push( {
     ...proc[0],
     zamowienie_id: 1,
     produkt_id: 1,
-    element_id: 1,
+    element_id: 2,
     proces_id: 83,
     nazwa_id: 17,
     front_ilosc: "",
@@ -142,33 +142,7 @@ function createBook() {
 }
 
 modalInsertContext.setProcesyElementow(temp)
-    // modalInsertContext.setProcesyElementow(
-    //   modalInsertContext.procesyElementow.map((t) => {
-    //     if (t.id != 3) {
-    //       let proc = procesList.filter(x=> x.id == t.proces_id).map(x=> {return x})
-    //       return {
-    //         ...t,
-    //         ...proc[0],
-    //         id: t.id
-    //       };
-    //     } 
 
-    //     // w falcowanie nadpisujemy domyślne 16stki w initialvalue tym co wybrane jest w preorderze
-    //     if (t.id == 3) {
-    //       let proc = procesList.filter(x=> x.id == preOrderContext.preOrder.falc_skladka).map(x=>{return x})
-    //       return {
-    //         ...t,
-    //         ...proc[0],
-    //         proces_id: preOrderContext.preOrder.falc_skladka,
-    //         id: t.id
-
-    //       };
-    //     } 
-        
-    //     // return t
-
-    //   })
-    // );
 
   }
 

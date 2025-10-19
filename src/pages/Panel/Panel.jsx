@@ -26,7 +26,7 @@ export default function Panel({ user, setUser }) {
 
     if(appcontext.restart){
        window.location.reload(true)
-       alert("Aplikacja zaktualizowana...")
+      //  alert("Aplikacja zaktualizowana...")
     }
 
 

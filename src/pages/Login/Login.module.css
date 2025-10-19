@@ -112,3 +112,8 @@ background-color: rgb(219, 219, 219);;
 	top:1px;
 }
 
+.icon{
+  width: 50px;
+  /* DODANE WŁAŚCIWOŚCI ANIMACJI */
+  animation: spin 3.5s linear infinite; /* Nazwa: spin, Czas: 1.5s, Szybkość: liniowa, Powtarzanie: nieskończone */
+}

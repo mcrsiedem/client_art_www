@@ -14,9 +14,11 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import { TechnologyContext } from "context/TechnologyContext";
 import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
+import iconAdd from "assets/history.svg";
 export default function Login( ) {
 
   const [user,setUser] = useState(null);
+  const [logowanie,setLogowanie] = useState(true);
   // const [socket,setSocket] = useState(null);
   const [input, setInput] = useState({    login: "",    haslo: "",  });
   // const context = useContext(SocketContext);
@@ -59,6 +61,7 @@ export default function Login( ) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLogowanie(false)
 
 
   //sql injections
@@ -112,6 +115,7 @@ updateAuthStatus(true,token)
     <div className={style.container}>
       <div className={style.center}>
         <Center
+        logowanie={logowanie}
           input={input}
           setInput={setInput}
           handleSubmit={handleSubmit}
@@ -121,14 +125,16 @@ updateAuthStatus(true,token)
   );
 }
 
-function Center({ input, setInput, handleSubmit }) {
-  return (
+function Center({ input, setInput, handleSubmit,logowanie }) {
+
+      return (
     <div className={style.loginPaine}>
       <form onSubmit={handleSubmit} className={style.form}>
-        <div>
+      
+{logowanie ? (<> 
+  <div>
           <img className={style.icon2} src={iconLogo} alt="logo" />
         </div>
-
         <div>
           <input
             type="text"
@@ -149,12 +155,20 @@ function Center({ input, setInput, handleSubmit }) {
           />
         </div>
 
-        <button 
+    <button 
         title={"Wersja: "+getCurrentBuildHash() }
         onClick={()=>handleSubmit}type="submit" className={style.myButton}>
           Zaloguj
-        </button>
+        </button> </> ) : (<div>           <img
+            className={style.icon}
+            src={iconAdd}
+          /></div>)}    
+        
       </form>
     </div>
   );
+  
+
+
+
 }

@@ -10,6 +10,21 @@
 
 </IfModule>
 
+<IfModule mod_headers>
+    # Nagłówki dla INDEX.HTML (wymuszenie weryfikacji)
+    <FilesMatch "index\.html$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # --- NOWY BLOK DLA ZASOBÓW STATYCZNYCH (długi cache) ---
+    # Ustawia Cache-Control na rok (31536000 sekund) dla plików z hashami w nazwie.
+    <FilesMatch "\.(js|css|gif|png|jpe?g|svg|ico|woff2?|eot|ttf|otf)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+</IfModule>
+
 # Działa dobrze, ale konieczne było aktywowanie "mod_rewrite"
 # sudo a2enmod rewrite
 # restart apacha

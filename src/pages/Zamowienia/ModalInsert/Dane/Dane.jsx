@@ -680,10 +680,12 @@ function NR_ZAMOWIENIA( ){
       <div className={style.col}>
         <label className={style.label}> Zamówienie </label>
         <input
+        
           className={style.input}
           type="text"
           title="Numer zamówienia"
-          value={daneZamowienia.nr}
+       value={daneZamowienia.nr } 
+
         ></input>
       </div>
     );

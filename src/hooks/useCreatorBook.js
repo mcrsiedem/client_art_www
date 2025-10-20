@@ -136,7 +136,7 @@ function createBook() {
     back_kolor: "",
     ilosc_uzytkow: 1,
     info: "",
-    indeks: 2,
+    indeks: 3,
     id: 4,
   })
 }

@@ -200,12 +200,35 @@
   .input {
     background-color: transparent;
     height: 2rem;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     border-color: transparent;
     /* outline: 1px solid rgb(185, 185, 185); */
-    padding-left: 10px;
+    /* padding-left: 10px; */
     
   }
 
-  .glowka{background-image: red;
+  /* .glowka{background-image: red;
+  } */
+
+
+
+    .input_naklad {
+    background-color: transparent;
+    height: 2rem;
+     min-width: 50px;
+    /* border: none; */
+
+    
+  }
+
+
+  .table .th_naklad2 {
+         min-width: 50px;
+       background-color: red;
+       /* color: #fff; */
+  }
+
+  .table .tdNaklad{
+    min-width: 50px;
+    background-color: aqua;
   }

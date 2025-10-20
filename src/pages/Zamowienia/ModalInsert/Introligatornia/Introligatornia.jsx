@@ -18,6 +18,7 @@ import { reg_int, reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 import { useHistoria } from "hooks/useHistoria";
+import ProcesyOprawa from "./OprawaElementyStage/Procesy/ProcesyOprawa";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -111,11 +112,12 @@ function OprawaTable({
             <th className={style.col4}>Oprawa</th>
             <th className={style.col4}>Str</th>
             <th className={style.col4}>Wersja</th>
-            <th className={style.col4}>Naklad</th>
+            <th className={style.th_naklad2}>Naklad</th>
             <th className={style.col4}>Bok oprawy</th>
             <th className={style.col6}>Czystodruki</th>
             <th className={style.col6}>Data spedycji</th>
             <th className={style.col7}>Uwagi</th>
+            <th className={style.col7}></th>
             <th className={style.col7}></th>
             <th className={style.col7}></th>
             {/* <th className={style.col7}></th> */}
@@ -157,6 +159,7 @@ function OprawaTable({
                   <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
+                  <ProcesyOprawa row={row} />
 
                   <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe
@@ -196,6 +199,7 @@ function OprawaTable({
                             }
                           />
 
+                          <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
@@ -681,9 +685,9 @@ function NakladOprawa({ row }) {
   const [valueIN,setValueIN] = useState(null)
   const daneZamowienia = contextModalInsert.daneZamowienia
   return (
-    <td>
+    <td className={style.tdNaklad}>
       <input
-        className={style.input}
+        className={style.input_naklad}
         value={row.naklad}
         onFocus={()=>{ setValueIN(row.naklad)}}
         onBlur={(e)=>{

@@ -70,7 +70,7 @@ function PAKOWANIE_TABLE({showPortal,setShowPortal,handleAction}) {
           //  .filter((x) => x.delete != true)
           .map((row) => {
             return (
-              <>
+            
                 <tr
                   key={row.id}
                 >
@@ -82,7 +82,7 @@ function PAKOWANIE_TABLE({showPortal,setShowPortal,handleAction}) {
                       </NewWindowPortal>
                     )}
                 </tr>
-              </>
+            
             );
           })}
         </tbody>

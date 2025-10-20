@@ -215,7 +215,7 @@
     .input_naklad {
     background-color: transparent;
     height: 2rem;
-     min-width: 50px;
+     min-width: 155px;
     /* border: none; */
 
     
@@ -223,12 +223,16 @@
 
 
   .table .th_naklad2 {
-         min-width: 50px;
+         /* min-width: 50px; */
        background-color: red;
        /* color: #fff; */
   }
 
   .table .tdNaklad{
-    min-width: 50px;
+    /* min-width: 50px; */
     background-color: aqua;
   }
+
+  /* .th_naklad2{
+    width: 85px;
+  } */

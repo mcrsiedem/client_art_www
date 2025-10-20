@@ -106,7 +106,7 @@ function OprawaTable({
     <div className={style.main}>
       <table className={style.table}>
         <thead className={style.glowka}>
-          <tr>
+          <tr className={style.table_tr}>
             <th className={style.col3}> <LockDradDrop/></th>
             <th className={style.col7}></th>
             <th className={style.col4}>Oprawa</th>

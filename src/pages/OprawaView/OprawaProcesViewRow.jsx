@@ -247,7 +247,7 @@ function Status({grup}) {
         disabled
         onChange={(event) => {
 
-console.log("Tuuu2")
+// console.log("Tuuu2")
     // if (grup.status > 1 && event.target.value ==4) {
     //   zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
 

@@ -103,22 +103,22 @@ function OprawaTable({
   const setOprawa = contextModalInsert.setOprawa;
 
   return (
-    <div className={style.main}>
-      <table className={style.table}>
+    <div className={style.main2}>
+      <table className={style.table_oprawa}>
         <thead className={style.glowka}>
           <tr className={style.table_tr}>
-            <th className={style.col3}> <LockDradDrop/></th>
+            <th className={style.th_lock}> <LockDradDrop/></th>
             <th className={style.col7}></th>
-            <th className={style.col4}>Oprawa</th>
-            <th className={style.col4}>Str</th>
-            <th className={style.col4}>Wersja</th>
-            <th className={style.th_naklad2}>Naklad</th>
-            <th className={style.col4}>Bok oprawy</th>
-            <th className={style.col6}>Czystodruki</th>
+            <th className={style.th_oprawa}>Oprawa</th>
+            <th className={style.th_str}>Str</th>
+            <th className={style.th_czystodruki}>Wersja</th>
+            <th className={style.th_naklad}>Naklad</th>
+            <th className={style.th_bok_oprawy}>Bok oprawy</th>
+            <th className={style.th_czystodruki}>Czystodruki</th>
             <th className={style.col6}>Data spedycji</th>
             <th className={style.col7}>Uwagi</th>
-            <th className={style.col7}></th>
-            <th className={style.col7}></th>
+            <th className={style.th_lock}></th>
+            <th className={style.th_lock}></th>
             <th className={style.col7}></th>
             {/* <th className={style.col7}></th> */}
           </tr>
@@ -146,8 +146,9 @@ function OprawaTable({
                     />
                   </div>
                   {/* <td>{row.produkt_id}</td> */}
-                  <td>{row.id}</td>
+                  {/* <td >{row.id}</td> */}
 
+                  <IdOprawy row={row} />
                   <RodzajOprawy row={row} />
                   <td></td>
 
@@ -159,7 +160,7 @@ function OprawaTable({
                   <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
-                  <ProcesyOprawa row={row} />
+                  {/* <ProcesyOprawa row={row} /> */}
 
                   <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe
@@ -267,9 +268,9 @@ function DataCzystodrukow({ row }) {
   const [valueIN,setValueIN] = useState(null)
   const daneZamowienia = contextModalInsert.daneZamowienia
   return (
-    <td className={style.col}>
+    <td className={style.tdNaklad}>
       <input
-        className={style.input}
+        className={style.input_czystodruki}
         type="date"
         value={row.data_czystodrukow}
         onChange={(event) => {
@@ -305,9 +306,9 @@ const [setStatus] = useStatus()
   const daneZamowienia = contextModalInsert.daneZamowienia
 
   return (
-    <td>
+    <td className={style.tdOprawa}>
       <select
-        className={style.select}
+        className={style.select_oprawa}
         value={row.oprawa}
         onChange={(event) => {
           handleUpdateRowOprawa({ ...row, oprawa: event.target.value,update:true });
@@ -345,6 +346,30 @@ const [setStatus] = useStatus()
           </option>
         ))}
       </select>
+    </td>
+  );
+}
+
+
+function IdOprawy({ row }) {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const produkty = contextModalInsert.produkty;
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const setProdukty = contextModalInsert.setProdukty;
+  const contextApp = useContext(AppContext);
+const [setStatus] = useStatus()
+  const [add] = useHistoria()
+  const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia
+
+  return (
+    <td className={style.tdID}>
+      <input
+        className={style.input_id}
+        value={row.id}
+      >
+
+      </input>
     </td>
   );
 }
@@ -497,7 +522,7 @@ function handleAddRowOprawa(card, oprawa, setOprawa) {
 function Typ({ row }) {
   return (
     <td>
-      <select className={style.select} value={row.typ } disabled>
+      <select className={style.select_typ} value={row.typ } disabled>
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
@@ -508,6 +533,10 @@ function Typ({ row }) {
     </td>
   );
 }
+
+
+
+
 
 function WersjaOprawaFragment({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
@@ -539,9 +568,9 @@ function NakladOprawaFregment({ row }) {
   const handleUpdateRowFragmenty = contextModalInsert.handleUpdateRowFragmenty;
   const [setStatus] = useStatus()
   return (
-    <td>
+    <td className={style.tdNaklad}>
       <input
-        className={style.input}
+        className={style.input_naklad}
         value={row.naklad}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -609,9 +638,9 @@ function BokOprawy({ row }) {
   const daneZamowienia = contextModalInsert.daneZamowienia
 
   return (
-    <td>
+    <td className={style.tdNaklad}>
       <input
-        className={style.input}
+        className={style.input_naklad}
         value={row.bok_oprawy}
         onFocus={()=>{ setValueIN(row.bok_oprawy)}}
         onBlur={(e)=>{

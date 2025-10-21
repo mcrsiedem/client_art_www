@@ -63,6 +63,12 @@ padding-left: 40px;
   
   
 }
+
+
+
+
+
+
 .input_alert{
   background-color: rgb(255, 252, 177);
   height: 2rem;
@@ -84,6 +90,7 @@ padding-left: 40px;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
   height: 1.5rem;
+  font-style: italic;
   
 }
 .rowFragmenty_naklad{
@@ -95,6 +102,7 @@ padding-left: 40px;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
   height: 1.5rem;
+    font-style: italic;
   
 }
 .rowFragmenty_strony{
@@ -116,6 +124,7 @@ padding-left: 40px;
   outline: 1px solid rgb(185, 185, 185);
   padding-left: 10px;
   height: 1.5rem;
+    font-style: italic;
   
 }
 

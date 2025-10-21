@@ -160,7 +160,7 @@ function OprawaTable({
                   <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
-                  <ProcesyOprawa row={row} />
+                  {/* <ProcesyOprawa row={row} /> */}
 
                   <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe

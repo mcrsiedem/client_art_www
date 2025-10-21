@@ -175,15 +175,33 @@
     align-items: center; */
   
   }
+
+
     .icon2{
       padding-left: 7px;
       margin: 5px;
     height: 16px;
   }
+
+
+
   .expand {
     width: 15px;
     margin-left: 10px;
   }
+
+  .expand_icon {
+  width: 15px;
+  padding-bottom: 5px;
+
+  }
+  .expand_icon_bok {
+  width: 15px;
+  padding-bottom: 5px;
+    rotate: 270deg;
+  }
+
+
 
   .pokaz_elementy_oprawy {
     height: 20px;
@@ -219,7 +237,7 @@
     border-color: transparent;
     /* outline: 1px solid rgb(185, 185, 185); */
     /* padding-left: 10px; */
-    
+    font-style: italic;
   }
 
 
@@ -231,15 +249,67 @@
 
 
   }
+   .input_uwagi {
+    background-color: transparent;
+    height: 2rem;
+    border: none;
+    border-bottom: 1px dashed rgba(128, 128, 128, 0.253);
+    
+    font-style: italic;
 
+  }
+.td_ilosc_stron{
+  text-align: end;
+  padding-right: 10px;
+}
+   .input_uwagi_fragmenty {
+    background-color: transparent;
+    height: 2rem;
+    font-size: 0.9rem;
+    border: none;
+    border-bottom: 1px dashed rgba(128, 128, 128, 0.253);
+    font-style: italic;
+    /* padding-left: 10px; */
+    text-align: end;
+    color: #3d3d3d;
+    padding-right: 10px;
+
+  }
+
+     .input_bok_oprawy{
+    background-color: transparent;
+    height: 2rem;
+    border: none;
+    width: 50px;
+    text-align: end;
+  }
   
    .input_naklad {
     background-color: transparent;
     height: 2rem;
     border: none;
     width: 50px;
+    text-align: end;
+    font-weight: bold;
+  
 
   }
+
+     .input_naklad_fragment {
+    background-color: transparent;
+    height: 2rem;
+    font-size: 0.9rem;
+    border: none;
+    width: 50px;
+    text-align: end;
+    font-style: italic;
+    padding-right: 3px;
+
+  }
+
+
+
+
     .table_oprawa .input_czystodruki {
     background-color: transparent;
     height: 2rem;
@@ -278,15 +348,21 @@ width: 230px;
 
 
   .table_oprawa .select_oprawa{
-    background: rgba(50, 52, 54, 0.726);
+    /* background: rgba(50, 52, 54, 0.726);
+    background: rgba(50, 52, 54, 0.575); */
+
+background: rgba(50, 52, 54, 0.075); 
     box-shadow: none;
-    border: 1px solid rgb(88, 88, 88);
-    border: none;
-    color: rgb(255, 255, 255);
+       border: 1px solid rgba(88, 88, 88, 0.247);
+
+    /* border: none; */
+    color: rgb(43, 43, 43);
     padding-left: 10px;
     border-radius: 5px;
     margin-right: 10px;
-    height: 27px;
+    height: 25px;
+    font-weight: bold;
+    /* font-style: italic; */
     width: 260px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -304,16 +380,21 @@ width: 20px;
 
 
   .table_oprawa .input_id{
-    background: rgba(50, 52, 54, 0.726);
+background: rgba(50, 52, 54, 0.075); 
+
+
     box-shadow: none;
-    border: 1px solid rgb(88, 88, 88);
-    border: none;
+    border: 1px solid rgba(88, 88, 88, 0.247);
+    /* border: none; */
+    color: rgb(43, 43, 43);
     color: rgb(24, 24, 24);
-    color: rgb(255, 255, 255);
+    font-weight: bold;
+
+    /* color: rgb(255, 255, 255); */
     padding-left: 10px;
     border-radius: 5px;
     margin-right: 10px;
-    height: 27px;
+    height: 25px;
     width: 30px;
     margin-top: 5px;
     margin-bottom: 5px;

@@ -245,7 +245,8 @@ const oprawa = contextModalInsert.oprawa;
     return (
       <div>
         <img
-          className={style.expand}
+          // className={style.expand}
+          className={showFragmenty? style.expand:style.expand_bok}
           src={logoExpand}
           onClick={() => {
             setShowFragmenty(!showFragmenty);

@@ -363,6 +363,13 @@ gap:6px
 
 
 
+.expand_bok {
+  height: 15px;
+  margin-right: 10px;
+  rotate: 270deg;
+}
+
+
 .expand_procesy {
   height: 15px;
   margin-right: 10px;

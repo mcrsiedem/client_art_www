@@ -1,20 +1,29 @@
 .procesy {
   background-color: white;
   height: 2rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   border-color: transparent;
-  outline: 1px solid rgb(185, 185, 185);
-  padding-left: 10px;
+  /* outline: 1px solid rgb(185, 185, 185); */
+  /* padding-left: 10px; */
+  border-right: 1px dashed grey;
   min-width: max-content;
   display: grid;
   grid-template-columns: 25px 1fr;
+  margin-top: 3px;
+  padding-right: 5px;
 }
 
 
 .procesy_elementy {
-  /* background-color: greenyellow; */
+  background-color: rgba(221, 221, 221, 0.527);
+  height: 2rem;
   padding-top: 2px;
-  padding-right: 5px;
+  border-radius: 5px;
+  /* padding-right: 5px; */
+}
+
+.procesy_elementy:hover{
+    background-color: rgba(212, 255, 131, 0.527);
 }
 
 .procesy_elementy_dol {
@@ -23,7 +32,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 5px;
-  gap: 6px
+  gap: 6px;
+  padding-left: 7px;
 }
 
 .procesy_elementy_bold {
@@ -55,7 +65,8 @@
 
 .expand_procesy {
   height: 15px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  margin-left: 5px;
 }
 
 .expand_procesy:hover {

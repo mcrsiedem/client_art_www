@@ -137,7 +137,7 @@ function OprawaTable({
                   {/* <td>{row.zamowienie_id}</td> */}
                   <div className={style.expand}>
                     <img
-                      className={style.icon}
+                      className={expand? style.expand_icon:style.expand_icon_bok}
                       src={logoExpand}
                       onClick={() => {
                         setExpand(!expand);
@@ -160,7 +160,7 @@ function OprawaTable({
                   <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
-                  {/* <ProcesyOprawa row={row} /> */}
+                  <ProcesyOprawa row={row} />
 
                   <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe
@@ -185,7 +185,7 @@ function OprawaTable({
 
                           <td></td>
                           <Typ row={row} />
-                          <td>{row.ilosc_stron} </td>
+                          <td className={style.td_ilosc_stron}>{row.ilosc_stron} </td>
                           <WersjaOprawaFragment
                             row={row}
                             handleChangeCardFragmenty={
@@ -545,7 +545,7 @@ function WersjaOprawaFragment({ row }) {
   return (
     <td>
       <input
-        className={style.input}
+        className={style.input_uwagi_fragmenty}
         value={row.wersja}
         onChange={(e) => {
           if (e.target.value === "" || reg_txt.test(e.target.value)) {
@@ -570,7 +570,7 @@ function NakladOprawaFregment({ row }) {
   return (
     <td className={style.tdNaklad}>
       <input
-        className={style.input_naklad}
+        className={style.input_naklad_fragment}
         value={row.naklad}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -599,7 +599,7 @@ const daneZamowienia = contextModalInsert.daneZamowienia
   return (
     <td>
       <input
-        className={style.input}
+        className={style.input_uwagi}
         value={row.wersja}
         onFocus={()=>{ setValueIN(row.wersja)}}
         onBlur={(e)=>{
@@ -640,7 +640,7 @@ function BokOprawy({ row }) {
   return (
     <td className={style.tdNaklad}>
       <input
-        className={style.input_naklad}
+        className={style.input_bok_oprawy}
         value={row.bok_oprawy}
         onFocus={()=>{ setValueIN(row.bok_oprawy)}}
         onBlur={(e)=>{
@@ -678,7 +678,7 @@ function UwagiOprawa({ row }) {
   return (
     <td>
       <input
-        className={style.input}
+        className={style.input_uwagi}
         value={row.uwagi}
         onFocus={()=>{ setValueIN(row.uwagi)}}
         onBlur={(e)=>{

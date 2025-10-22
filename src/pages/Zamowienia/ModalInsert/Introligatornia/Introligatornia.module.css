@@ -291,6 +291,8 @@
     width: 50px;
     text-align: end;
     font-weight: bold;
+    color: rgb(85, 85, 85);
+
   
 
   }
@@ -356,7 +358,7 @@ background: rgba(50, 52, 54, 0.075);
        border: 1px solid rgba(88, 88, 88, 0.247);
 
     /* border: none; */
-    color: rgb(43, 43, 43);
+    color: rgb(85, 85, 85);
     padding-left: 10px;
     border-radius: 5px;
     margin-right: 10px;
@@ -386,8 +388,10 @@ background: rgba(50, 52, 54, 0.075);
     box-shadow: none;
     border: 1px solid rgba(88, 88, 88, 0.247);
     /* border: none; */
-    color: rgb(43, 43, 43);
-    color: rgb(24, 24, 24);
+    /* color: rgb(43, 43, 43); */
+    /* color: rgb(24, 24, 24); */
+    color: rgb(85, 85, 85);
+
     font-weight: bold;
 
     /* color: rgb(255, 255, 255); */

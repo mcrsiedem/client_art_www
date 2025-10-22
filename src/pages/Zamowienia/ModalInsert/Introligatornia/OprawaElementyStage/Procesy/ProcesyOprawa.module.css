@@ -11,6 +11,7 @@
   grid-template-columns: 25px 1fr;
   margin-top: 3px;
   padding-right: 5px;
+
 }
 
 
@@ -34,7 +35,13 @@
   padding-top: 5px;
   gap: 6px;
   padding-left: 7px;
+    width: 500px;
+    overflow: hidden;
+
 }
+
+
+
 
 .procesy_elementy_bold {
   font-weight: bold;

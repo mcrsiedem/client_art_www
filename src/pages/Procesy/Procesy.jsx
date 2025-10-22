@@ -14,37 +14,14 @@ function Procesy() {
       const procesory = appcontext.procesory;
       const procesListName = appcontext.procesListName;
       const procesList = appcontext.procesList;
-    const mockViewProcesy = [
-    { 
-        id: 1, nazwa_id: 10, nazwa: "Druk A3", typ: "Druk", rodzaj: "Cyfrowy", wykonczenie: "Brak", 
-        obszar: "Graficzny", procesor_domyslny_nazwa: "Maszyna Drukowa K", procesor_domyslny: 101,
-        predkosc: 1000, narzad: 30, mnoznik: 1.5, arkusz: 1, lega: 0, produkt: 0, komplet: 0, 
-        ilosc_uzytkow: 1, info: "Kolor CMYK, druk jednostronny" 
-    },
-    { 
-        id: 2, nazwa_id: 20, nazwa: "Lakierowanie UV", typ: "Wykonczenie", rodzaj: "UV", wykonczenie: "Połysk", 
-        obszar: "Postpress", procesor_domyslny_nazwa: "Lakierka B", procesor_domyslny: 102,
-        predkosc: 500, narzad: 15, mnoznik: 1.0, arkusz: 0, lega: 1, produkt: 0, komplet: 0, 
-        ilosc_uzytkow: 2, info: "Lakier na okładkę" 
-    },
-];
 
-const mockProcesory = [
-    { id: 101, nazwa: "Maszyna Drukowa K", grupa: 1, mnoznik: 1.5, predkosc: 1500, narzad: 30 },
-    { id: 102, nazwa: "Lakierka B", grupa: 2, mnoznik: 1.0, predkosc: 700, narzad: 15 },
-];
-
-const mockProcesyNazwa = [
-    { id: 1, nazwa: "Druk offsetowy", utworzono: "2025-01-01", zmodyfikowano: "2025-10-12" },
-    { id: 2, nazwa: "Szycie", utworzono: "2025-01-05", zmodyfikowano: "2025-10-12" },
-];
 
 const CONFIGURATIONS = {
     'view_procesy': {
         dane: procesList,
         naglowki: [
             'ID', 'Nazwa ID', 'Nazwa', 'Typ', 'Rodzaj', 'Wykończenie', 'Obszar', 
-            'Domyślny Procesor', 'ID Proc.', 'Prędkość', 'Narzęd', 'Mnożnik', 
+            'Domyślny Procesor', 'ID Proc.', 'Prędkość', 'Narząd', 'Mnożnik', 
             'Arkusz', 'Lega', 'Produkt', 'Komplet', 'Użytki', 'Info'
         ],
         klucze: [
@@ -55,7 +32,7 @@ const CONFIGURATIONS = {
         ],
         nazwa: "Procesy"
     },
-    'procesory': { dane: procesory, naglowki: ['ID', 'Nazwa Procesora', 'Grupa', 'Mnożnik', 'Prędkość', 'Narzęd'], klucze: ['id', 'nazwa', 'grupa', 'mnoznik', 'predkosc', 'narzad'], nazwa: "Procesory" },
+    'procesory': { dane: procesory, naglowki: ['ID', 'Nazwa Procesora', 'Grupa', 'Mnożnik', 'Prędkość', 'Narząd'], klucze: ['id', 'nazwa', 'grupa', 'mnoznik', 'predkosc', 'narzad'], nazwa: "Procesory" },
     'procesy_nazwa': { dane: procesListName, naglowki: ['ID', 'Nazwa', 'Utworzono', 'Zmodyfikowano'], klucze: ['id', 'nazwa', 'utworzono', 'zmodyfikowano'], nazwa: "Grupy Procesów" }
 };
     const [aktualnaTabela, setAktualnaTabela] = useState('view_procesy');

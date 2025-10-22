@@ -103,7 +103,7 @@ const CONFIGURATIONS = {
                 {dane?.length === 0 ? (
                     <p>Brak danych do wyświetlenia.</p>
                 ) : (
-                    <table>
+                    <table className={styles.glownaTabela}>
                         <thead>
                             <tr>
                                 {naglowki.map((naglowek, index) => (

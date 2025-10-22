@@ -91,7 +91,7 @@ export default function Ustawienia({ user, setUser }) {
                 <div
                   className={style.pane}
                   onClick={() => {
-                    // navigate("/Zamowienia");
+                    navigate("/Procesy");
                   }}
                 >
                   {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}

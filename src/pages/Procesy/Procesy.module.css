@@ -2,21 +2,21 @@
 
 /* Definicja palety kolorów dla spójności */
 :root {
-    --primary-color: #007bffa4;     /* Dyskretny błękit dla akcentu/aktywnych elementów */
-    --light-bg: #f8f9fa;          /* Bardzo jasne tło */
-    --medium-bg: #e9ecef;         /* Nieco ciemniejsze tło (np. dla nagłówka) */
-    --hover-bg: #f1f1f1;          /* Delikatne podświetlenie wiersza */
-    --text-color: #343a40;        /* Ciemny, ale nie czarny, kolor tekstu */
-    --border-color: #dee2e6;      /* Subtelny kolor linii */
+    --primary-color: #007bff;     
+    --light-bg: #f8f9fa;          
+    --medium-bg: #e9ecef;         
+    --hover-bg: #f1f1f1;          
+    --text-color: #343a40;        
+    --border-color: #dee2e6;      
 }
 
 .tabelaDanychKontener {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Bardziej nowoczesna czcionka */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     padding: 20px;
     color: var(--text-color);
 }
 
-/* --- Sekcja Przełączników --- */
+/* --- Sekcja Przełączników (bez zmian) --- */
 
 .przelaczniki {
     margin-bottom: 20px;
@@ -29,7 +29,7 @@
     background-color: white;
     color: var(--text-color);
     cursor: pointer;
-    border-radius: 5px; /* Delikatnie zaokrąglone rogi */
+    border-radius: 5px; 
     transition: all 0.2s ease-in-out;
     font-weight: 500;
 }
@@ -40,61 +40,63 @@
 }
 
 .aktywny {
-    background-color: var(--primary-color) !important; /* Ważniejsze niż tło w hover */
+    background-color: var(--primary-color) !important;
     color: white !important;
     border-color: var(--primary-color) !important;
     font-weight: 600;
 }
 
-/* --- Sekcja Tabela --- */
+/* --- Sekcja Tabela (Izolacja Stylów) --- */
 
 .tabelaKontener {
     margin-top: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); /* Subtelny cień */
-    border-radius: 8px; /* Zaokrąglamy całość */
-    overflow: hidden; /* Upewnia się, że zaokrąglenie działa na zawartość */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
+    border-radius: 8px; 
+    overflow-x: auto;
+    overflow-y: hidden; 
 }
 
-table {
+/* 1. Stylowanie GŁÓWNEJ TABELI */
+.glownaTabela {
     width: 100%;
+    min-width: 800px;
     border-collapse: collapse;
 }
 
-/* Nagłówki */
-th {
-    background-color: var(--medium-bg); /* Lekko ciemniejsze tło nagłówka */
+/* 2. Stylowanie NAGŁÓWKÓW TH (bezpieczny selektor: glownaTabela -> thead -> th) */
+.glownaTabela thead th {
+    background-color: var(--medium-bg); 
     color: var(--text-color);
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 2px solid var(--border-color);
+    /* Linia oddzielająca nagłówek od ciała */
+    border-bottom: 2px solid var(--border-color); 
     font-weight: 600;
-    text-transform: uppercase; /* Lekka elegancja */
+    text-transform: uppercase; 
     font-size: 0.85rem;
 }
 
-/* Komórki i paski zebry */
-td {
+/* 3. Stylowanie KOMÓREK TD (bezpieczny selektor: glownaTabela -> tbody -> td) */
+.glownaTabela tbody td {
     padding: 10px 15px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color); /* Delikatna dolna linia */
-    background-color: white; /* Ustawienie tła dla paska zebry */
+    /* Dół komórki */
+    border-bottom: 1px solid var(--border-color); 
+    background-color: white; 
 }
 
-/* Paski zebry: Jasnoszare tło dla nieparzystych wierszy */
-tr:nth-child(odd) td {
+/* Paski zebry (bezpieczny selektor) */
+.glownaTabela tbody tr:nth-child(odd) td {
     background-color: var(--light-bg); 
 }
 
-/* Efekt najechania myszką (Hover) */
-tbody tr:hover td {
-    background-color: var(--hover-bg); /* Bardzo delikatna zmiana koloru */
+/* Efekt najechania myszką (Hover) (bezpieczny selektor) */
+.glownaTabela tbody tr:hover td {
+    background-color: var(--hover-bg); 
     cursor: pointer;
 }
 
-/* Usuń niepotrzebne linie zew. dla czystszego wyglądu */
-th:first-child, td:first-child {
-    padding-left: 20px; 
-}
-th:last-child, td:last-child {
-    padding-right: 20px; 
+/* Usuwamy border z ostatniego wiersza dla czystszego wyglądu */
+.glownaTabela tbody tr:last-child td {
+    border-bottom: none;
 }

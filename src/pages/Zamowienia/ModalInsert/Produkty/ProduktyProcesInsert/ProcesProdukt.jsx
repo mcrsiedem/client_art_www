@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import style from "./ProcesElement.module.css";
-import iconX from "assets/xDark.svg";
+import style from "./ProcesProdukt.module.css";
+
 import iconTrash from "assets/trash2.svg";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -8,11 +8,17 @@ import { addNewProcess } from "actions/addProcess";
 import { _typ_elementu, reg_int } from "utils/initialvalue";
 import { reg_txt } from "utils/initialvalue";
 import { useHistoria } from "hooks/useHistoria";
-import { getNameOfElement } from "actions/getNameOfElement";
-import { useStatus } from "hooks/useStatus";
-export default function ProcesElement({showElementyProcesyInsert}) {
 
-if(showElementyProcesyInsert){
+import Window from "./components/Window";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+export default function ProcesProdukt() {
+
+    const modalContext = useContext(ModalInsertContext);
+  // const appContext = useContext(AppContext);
+  const showProcesyProduktow = modalContext.showProcesyProduktow;
+
+if(showProcesyProduktow){
     return (
    <Window>
       <Header />
@@ -22,103 +28,6 @@ if(showElementyProcesyInsert){
   );
 }
 
-}
-
-
-function Window({children}) {
-  const modalContext = useContext(ModalInsertContext);
-  return (
-    <div className={style.blurContainer}>
-      <div className={style.window}>{children}</div>
-    </div>
-  );
-}
-
-
-function Header() {
-  const modalContext = useContext(ModalInsertContext);
-  const appContext = useContext(AppContext);
-  const rowElement = modalContext.selectedElementROW;
-  return (
-    <div className={style.header}>
-      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu?.filter(x => x.id == rowElement?.typ)[0]?.nazwa} {rowElement?.naklad} szt. {rowElement?.nazwa}</p> </p> 
-      <Zamknij/>
-    </div>
-  );
-}
-function Zamknij() {
-  const modalContext = useContext(ModalInsertContext);
-
-
-  return (
-    <img
-      className={style.zamknij_icon}
-      src={iconX}
-      onClick={() => {
-        modalContext.setShowElementyProcesyInsert(false);
- 
-      }}
-      alt="Procesy"
-    />
-  );
-}
-
-function Footer() {
-  const modalContext = useContext(ModalInsertContext);
-  const setProcesyElementow = modalContext.setProcesyElementow;
-  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
-    const contextModalInsert = useContext(ModalInsertContext);
-    const elementy = contextModalInsert.elementy
-    const daneZamowienia = contextModalInsert.daneZamowienia
-    const [add] = useHistoria()
-   const [setStatus] = useStatus()
-  return (
-    <div className={style.footer}>
-      <button
-        className={style.btn}
-        onClick={() => {
-          modalContext.setShowElementyProcesyInsert(false);
-          setProcesyElementow(procesyElementowTemporary.map(row => {
-            if(row.delete== true && row.historia != true){
-              add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } 
-      
-            if(row.insert== true && row.historia != true && row.update != true){
-              add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } 
-                  
-            if(row.update== true && row.historia == false){
-              add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - zmiana procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } else return row
-
-
-}))
-
-
-        }}
-      >
-        Zapisz
-      </button>
-    </div>
-  );
 }
 
 function Table() {
@@ -131,7 +40,7 @@ function Table() {
 
 
 
-  const selectedElementROW = contexModal.selectedElementROW;
+  const selectedOprawaRow = contexModal.selectedOprawaRow;
 
   return (
     <div className={style.main}>
@@ -152,8 +61,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementowTemporary
-          .filter(x => x.element_id == selectedElementROW.id)
+          {procesyElementowTemporary?.filter(x => x.element_id == selectedOprawaRow.id)
           .sort((a, b) => a.indeks - b.indeks)
           .filter((x) => x.delete != true)
           .map((row, i) => {
@@ -176,7 +84,7 @@ function Table() {
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedElementROW,procesyElementowTemporary,setProcesyElementowTemporary,procesList)}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedOprawaRow,procesyElementowTemporary,setProcesyElementowTemporary,procesList)}>Dodaj nowy proces</button>
       </div>
      
     </div>

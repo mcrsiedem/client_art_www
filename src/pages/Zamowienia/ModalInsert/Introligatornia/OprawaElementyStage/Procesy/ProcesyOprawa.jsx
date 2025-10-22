@@ -9,8 +9,8 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 export default  function ProcesyOprawa({ row}) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const procesyElementow =contextModalInsert.procesyElementow;
-  const setProcesyElementowTemporary =contextModalInsert.setProcesyElementowTemporary;
+  const procesyProduktow =contextModalInsert.procesyElemprocesyProduktowentow;
+  const setProcesyProduktowTemporary =contextModalInsert.setProcesyProduktowTemporary;
 
     return (
       <div id="procesy" className={style.procesy}>
@@ -19,9 +19,9 @@ export default  function ProcesyOprawa({ row}) {
             className={style.expand_procesy}
             src={Logo_ustawienia}
             onClick={() => {
-              contextModalInsert.setShowElementyProcesyInsert(true);
-              contextModalInsert.setSelectedElementROW(row);
-              setProcesyElementowTemporary(procesyElementow);
+              contextModalInsert.setShowProcesyProduktow(true);
+              contextModalInsert.setSelectedOprawaRow(row);
+              setProcesyProduktowTemporary(procesyProduktow);
             }}
             alt="Procesy"
           />
@@ -39,14 +39,14 @@ export default  function ProcesyOprawa({ row}) {
 
   const PROCESS_TITLE = ({row}) =>{
   const contextModalInsert = useContext(ModalInsertContext);
-const procesyElementow =contextModalInsert.procesyElementow;
+const procesyProduktow =contextModalInsert.procesyProduktow;
 const appContext = useContext(AppContext);
 const procesListName = appContext.procesListName
 
 
   return (
   <>
-  {procesyElementow
+  {procesyProduktow
   .filter((frag) => frag.element_id == row.id)
   .sort((a, b) => a.indeks - b.indeks)
   .filter((x) => x.delete != true)

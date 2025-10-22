@@ -42,6 +42,7 @@ import KosztyDodatkowe from "./KosztyDodatkowe/KosztyDodatkowe";
 import Parametery from "./Parametry/Parametry";
 import Faktury from "./Faktury/Faktury";
 import SimplePrintTextarea from "./Wydruk/SimplePrintTextarea ";
+import ProcesProdukt from "./Produkty/ProduktyProcesInsert/ProcesProdukt";
 
 function ModalInsert({
   
@@ -262,6 +263,7 @@ const setFaktury= contextModalInsert.setFaktury;
         <ProductCreator        />
       </div>
       <ProcesElement showElementyProcesyInsert={showElementyProcesyInsert} />
+      <ProcesProdukt  />
       <Stany
         handleChangeCardFragmenty={handleChangeCardFragmenty}
         openModalStany={openModalStany}

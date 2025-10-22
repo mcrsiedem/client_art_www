@@ -24,10 +24,14 @@ export const ModalInsertContextProvider = ({children})=>{
     const [oprawa, setOprawa] = useState(initialOprawa);
     const [pakowanie, setPakowanie] = useState(initalPakowanie);
     const [procesyElementow, setProcesyElementow] = useState(initialProcesy);
-    // const [procesyElementow, setProcesyElementow] = useState();
+    const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
     const [technologieID, setTechnologieID] = useState(null); // nr id technologi wygenerowanych zamówienia
-   // tymczasowe procesy aby mozna było zamknąć bez zapisywania
-   const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
+
+    // procesy_produktow  - vie_procesy_produktow
+    const [procesyProduktow, setProcesyProduktow] = useState([]);
+    const [procesyProduktowTemporary, setProcesyProduktowTemporary] = useState([]);
+    const [showProcesyProduktow, setShowProcesyProduktow] =     useState(false);
+    const [selectedOprawaRow,setSelectedOprawaRow] = useState(null)
 
 
     const [kosztyDodatkoweZamowienia, setKosztyDodatkoweZamowienia] = useState([]);
@@ -301,7 +305,8 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
           showTabs, setShowTabs,
           ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia,
           faktury, setFaktury,handleFaktury,
-
+          procesyProduktow, setProcesyProduktow,procesyProduktowTemporary, setProcesyProduktowTemporary,
+          showProcesyProduktow, setShowProcesyProduktow,selectedOprawaRow,setSelectedOprawaRow
       
 
 

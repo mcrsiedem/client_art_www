@@ -1,0 +1,100 @@
+/* TabelaDanych.module.css */
+
+/* Definicja palety kolorów dla spójności */
+:root {
+    --primary-color: #007bff;     /* Dyskretny błękit dla akcentu/aktywnych elementów */
+    --light-bg: #f8f9fa;          /* Bardzo jasne tło */
+    --medium-bg: #e9ecef;         /* Nieco ciemniejsze tło (np. dla nagłówka) */
+    --hover-bg: #f1f1f1;          /* Delikatne podświetlenie wiersza */
+    --text-color: #343a40;        /* Ciemny, ale nie czarny, kolor tekstu */
+    --border-color: #dee2e6;      /* Subtelny kolor linii */
+}
+
+.tabelaDanychKontener {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Bardziej nowoczesna czcionka */
+    padding: 20px;
+    color: var(--text-color);
+}
+
+/* --- Sekcja Przełączników --- */
+
+.przelaczniki {
+    margin-bottom: 20px;
+}
+
+.przelaczniki button {
+    padding: 10px 18px;
+    margin-right: 8px;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 5px; /* Delikatnie zaokrąglone rogi */
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.przelaczniki button:hover {
+    background-color: var(--light-bg);
+    border-color: var(--primary-color);
+}
+
+.aktywny {
+    background-color: var(--primary-color) !important; /* Ważniejsze niż tło w hover */
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+/* --- Sekcja Tabela --- */
+
+.tabelaKontener {
+    margin-top: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); /* Subtelny cień */
+    border-radius: 8px; /* Zaokrąglamy całość */
+    overflow: hidden; /* Upewnia się, że zaokrąglenie działa na zawartość */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Nagłówki */
+th {
+    background-color: var(--medium-bg); /* Lekko ciemniejsze tło nagłówka */
+    color: var(--text-color);
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 600;
+    text-transform: uppercase; /* Lekka elegancja */
+    font-size: 0.85rem;
+}
+
+/* Komórki i paski zebry */
+td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color); /* Delikatna dolna linia */
+    background-color: white; /* Ustawienie tła dla paska zebry */
+}
+
+/* Paski zebry: Jasnoszare tło dla nieparzystych wierszy */
+tr:nth-child(odd) td {
+    background-color: var(--light-bg); 
+}
+
+/* Efekt najechania myszką (Hover) */
+tbody tr:hover td {
+    background-color: var(--hover-bg); /* Bardzo delikatna zmiana koloru */
+    cursor: pointer;
+}
+
+/* Usuń niepotrzebne linie zew. dla czystszego wyglądu */
+th:first-child, td:first-child {
+    padding-left: 20px; 
+}
+th:last-child, td:last-child {
+    padding-right: 20px; 
+}

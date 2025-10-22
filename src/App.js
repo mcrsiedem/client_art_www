@@ -28,6 +28,7 @@ import Oddania from "pages/Oddania/Oddania";
 
 import Inspekcja from "pages/Inspekcja/Inspekcja";
 import ProcesoryMini from "pages/Panel/Mini/PrcesoryMini";
+import Procesy from "pages/Procesy/Procesy";
 
 export default function App() {
 
@@ -60,6 +61,7 @@ export default function App() {
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
               <Route path='/users' element={<UserPermissionsTable/>} />
               <Route path='/Inspekcja' element={<Inspekcja/>} />
+              <Route path='/Procesy' element={<Procesy/>} />
             </Routes>
       </ModalInsertContextProvider>
       </PreOrderContextProvider>

@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Procesy.module.css';
+import { AppContext } from 'context/AppContext';
 
 // --- MOCKOWE DANE I PEŁNA KONFIGURACJA DLA view_procesy ---
 
-const mockViewProcesy = [
+
+
+// ------------------------------------
+
+
+function Procesy() { 
+          const appcontext = useContext(AppContext);
+      const procesory = appcontext.procesory;
+      const procesListName = appcontext.procesListName;
+      const procesList = appcontext.procesList;
+    const mockViewProcesy = [
     { 
         id: 1, nazwa_id: 10, nazwa: "Druk A3", typ: "Druk", rodzaj: "Cyfrowy", wykonczenie: "Brak", 
         obszar: "Graficzny", procesor_domyslny_nazwa: "Maszyna Drukowa K", procesor_domyslny: 101,
@@ -30,7 +41,7 @@ const mockProcesyNazwa = [
 
 const CONFIGURATIONS = {
     'view_procesy': {
-        dane: mockViewProcesy,
+        dane: procesList,
         naglowki: [
             'ID', 'Nazwa ID', 'Nazwa', 'Typ', 'Rodzaj', 'Wykończenie', 'Obszar', 
             'Domyślny Procesor', 'ID Proc.', 'Prędkość', 'Narzęd', 'Mnożnik', 
@@ -44,13 +55,9 @@ const CONFIGURATIONS = {
         ],
         nazwa: "Procesy"
     },
-    'procesory': { dane: mockProcesory, naglowki: ['ID', 'Nazwa Procesora', 'Grupa', 'Mnożnik', 'Prędkość', 'Narzęd'], klucze: ['id', 'nazwa', 'grupa', 'mnoznik', 'predkosc', 'narzad'], nazwa: "Procesory" },
-    'procesy_nazwa': { dane: mockProcesyNazwa, naglowki: ['ID', 'Nazwa', 'Utworzono', 'Zmodyfikowano'], klucze: ['id', 'nazwa', 'utworzono', 'zmodyfikowano'], nazwa: "Grupy Procesów" }
+    'procesory': { dane: procesory, naglowki: ['ID', 'Nazwa Procesora', 'Grupa', 'Mnożnik', 'Prędkość', 'Narzęd'], klucze: ['id', 'nazwa', 'grupa', 'mnoznik', 'predkosc', 'narzad'], nazwa: "Procesory" },
+    'procesy_nazwa': { dane: procesListName, naglowki: ['ID', 'Nazwa', 'Utworzono', 'Zmodyfikowano'], klucze: ['id', 'nazwa', 'utworzono', 'zmodyfikowano'], nazwa: "Grupy Procesów" }
 };
-// ------------------------------------
-
-
-function Procesy() { 
     const [aktualnaTabela, setAktualnaTabela] = useState('view_procesy');
     const [dane, setDane] = useState([]);
     
@@ -67,6 +74,10 @@ function Procesy() {
     const zmienTabele = (kluczTabeli) => {
         setAktualnaTabela(kluczTabeli);
     };
+
+
+
+
 
     return (
         <div className={styles.tabelaDanychKontener}> 
@@ -85,10 +96,11 @@ function Procesy() {
 
             <hr/>
 
-            <h2>Aktualnie Wyświetlana Tabela: {nazwaTabeli}</h2>
+            {/* <h2>Aktualnie Wyświetlana Tabela: {nazwaTabeli}</h2> */}
+            <h2> {nazwaTabeli}</h2>
 
             <div className={styles.tabelaKontener}> 
-                {dane.length === 0 ? (
+                {dane?.length === 0 ? (
                     <p>Brak danych do wyświetlenia.</p>
                 ) : (
                     <table>
@@ -100,7 +112,7 @@ function Procesy() {
                             </tr>
                         </thead>
                         <tbody>
-                            {dane.map((wiersz, rowIndex) => (
+                            {dane?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.id || rowIndex}> 
                                     {klucze.map((kluczKolumny, colIndex) => (

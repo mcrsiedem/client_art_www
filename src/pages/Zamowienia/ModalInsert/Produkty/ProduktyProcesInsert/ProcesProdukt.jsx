@@ -36,6 +36,7 @@ function Table() {
   const procesyElementow = contexModal.procesyElementow;
   const procesyElementowTemporary = contexModal.procesyElementowTemporary;
   const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+  const procesyProduktow = contexModal.procesyProduktow;
   const procesList = contexApp.procesList;
 
 
@@ -61,7 +62,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyElementowTemporary?.filter(x => x.element_id == selectedOprawaRow.id)
+          {procesyProduktow.length !=0 && procesyProduktow?.filter(x => x.element_id == selectedOprawaRow.id)
           .sort((a, b) => a.indeks - b.indeks)
           .filter((x) => x.delete != true)
           .map((row, i) => {

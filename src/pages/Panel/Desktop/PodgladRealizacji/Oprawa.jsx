@@ -27,10 +27,17 @@ export default function Oprawa({podglad,i}) {
             </div>
 
             <div className={style.klientContainer}>
-              <span className={style.loginTime}>
+                       <div className={style.klientContainer2}>
+                    <span className={style.loginTime}>
                 {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                {podglad.nr} {podglad.rok} {podglad.klient}
+                 {podglad.klient}
               </span>
+            <span className={style.loginTime}>
+                {/* Formatujemy datę/czas, jeśli jest dostępna */}
+                {podglad.nr} {podglad.rok} 
+              </span>
+
+              </div>
               <span className={style.loginTime}>
                 {/* Formatujemy datę/czas, jeśli jest dostępna */}
                 {podglad.tytul}

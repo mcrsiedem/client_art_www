@@ -27,7 +27,8 @@ export const ModalInsertContextProvider = ({children})=>{
     const [procesyElementowTemporary, setProcesyElementowTemporary] = useState(initialProcesy);
     const [technologieID, setTechnologieID] = useState(null); // nr id technologi wygenerowanych zamówienia
 
-    // procesy_produktow  - vie_procesy_produktow
+    
+    // procesy_produktow  - view_procesy_produktow
     const [procesyProduktow, setProcesyProduktow] = useState([]);
     const [procesyProduktowTemporary, setProcesyProduktowTemporary] = useState([]);
     const [showProcesyProduktow, setShowProcesyProduktow] =     useState(false);

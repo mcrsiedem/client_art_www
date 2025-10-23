@@ -12,6 +12,7 @@ import { useHistoria } from "hooks/useHistoria";
 import Window from "./components/Window";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useProcessProdukt } from "./actions/useProcessProdukt";
 export default function ProcesProdukt() {
 
     const modalContext = useContext(ModalInsertContext);
@@ -38,6 +39,7 @@ function Table() {
   const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
   const procesyProduktow = contexModal.procesyProduktow;
   const procesList = contexApp.procesList;
+  const {addProcessProdukt} = useProcessProdukt();
 
 
 
@@ -62,7 +64,9 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {procesyProduktow.length !=0 && procesyProduktow?.filter(x => x.element_id == selectedOprawaRow.id)
+          {/* {procesyElementowTemporary.length !=0 && procesyElementowTemporary?.filter(x => x.oprawa_id == selectedOprawaRow.id) */}
+          {procesyElementowTemporary.length !=0 && procesyElementowTemporary
+   
           .sort((a, b) => a.indeks - b.indeks)
           .filter((x) => x.delete != true)
           .map((row, i) => {
@@ -70,7 +74,7 @@ function Table() {
               <tr key={row.id}>
                 <td>{i+1}</td>
                 <INDEKS row={row}/>
-                <ProcesName row={row}/>
+                {/* <ProcesName row={row}/>
                 <ProcessTyp row={row}/>
                 <IloscUzytkow row={row}/>
                 <FrontIlosc row={row}/>
@@ -78,14 +82,14 @@ function Table() {
                 <FrontKolor row={row}/>
                 <BackKolor row={row}/>
                 <Info row={row}/>
-                <Usun row={row}/>
+                <Usun row={row}/> */}
               </tr>
             );
           })}
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=>addNewProcess(selectedOprawaRow,procesyElementowTemporary,setProcesyElementowTemporary,procesList)}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=> addProcessProdukt()}>Dodaj nowy proces</button>
       </div>
      
     </div>

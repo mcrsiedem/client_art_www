@@ -53,13 +53,13 @@ export const SocketProvider = ({ children }) => {
     // const {callPodgladRalizacji,podgladRealizacji, setPodgladRealizacji,loading, setLoading} = useRealizacje(); 
     
     const [podgladRealizacji, setPodgladRealizacji] = useState([]);
-  
+     let podglady=[]
 const [loading, setLoading] = useState(false);
 const callPodgladRalizacji = async (od) =>{
 
     if(podgladRealizacji.length==0){
                 setLoading?.(true)
-        let podglady=[]
+     
         
         const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 

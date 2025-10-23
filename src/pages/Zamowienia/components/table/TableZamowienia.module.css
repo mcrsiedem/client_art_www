@@ -44,6 +44,11 @@ background: rgb(243, 243, 243);
 
 }
 
+
+.table_tr{
+       /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  */
+}
+
 .row_zamowienia:nth-of-type(2n) {
    background: #f7f6f6;
    outline: 1px solid rgb(189, 189, 189);

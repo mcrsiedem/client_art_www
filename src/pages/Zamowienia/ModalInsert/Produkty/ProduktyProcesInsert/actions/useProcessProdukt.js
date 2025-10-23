@@ -7,7 +7,7 @@ import { getMaxIndeks } from "actions/getMaxIndeks";
 import DecodeToken from "pages/Login/DecodeToken";
 
 
-export function useProcessProdukt(rowOprawa){
+export function useProcessProdukt(){
 const modalcontext = useContext(ModalInsertContext);
 const procesyProduktow = modalcontext.procesyProduktow;
 const setProcesyProduktow = modalcontext.setProcesyProduktow;
@@ -28,11 +28,11 @@ let procesyProduktowTemporaryEdit = procesyProduktowTemporary
     ? [...procesyProduktowTemporary] 
     : [];
 
-if (procesyProduktowTemporary && procesyProduktowTemporary.length > 0) {
-    // Użycie operatora spread ([...]) tworzy płytką kopię tablicy.
-    procesyProduktowTemporaryEdit = [...procesyProduktowTemporary];
+// if (procesyProduktowTemporary && procesyProduktowTemporary.length > 0) {
+//     // Użycie operatora spread ([...]) tworzy płytką kopię tablicy.
+//     procesyProduktowTemporaryEdit = [...procesyProduktowTemporary];
 
-  }
+//   }
 
 
 // let proc = appContext.procesList.filter(x=> x.id == 77).map(x=>{return x})
@@ -40,10 +40,10 @@ if (procesyProduktowTemporary && procesyProduktowTemporary.length > 0) {
       procesyProduktowTemporaryEdit.push({
         // ...proc[0],
         ...appContext.procesList.find(x=> x.id == 77), // domyślny procesor produktowy
-        id: getMaxID(procesyProduktowTemporary),
-        indeks: getMaxIndeks(procesyProduktowTemporary),
-        // utworzyl: DecodeToken(sessionStorage.getItem("token").id),
-        // zmodyfikowal: DecodeToken(sessionStorage.getItem("token").id),
+        id: getMaxID({procesyProduktowTemporary}),
+        indeks: getMaxIndeks({procesyProduktowTemporary}),
+        utworzyl: DecodeToken(sessionStorage.getItem("token")).id,
+        zmodyfikowal: DecodeToken(sessionStorage.getItem("token")).id,
         zamowienie_id: selectedOprawaRow.zamowienie_id,
         oprawa_id: selectedOprawaRow.id,
         insert:true

@@ -35,7 +35,7 @@ function Table() {
   const contexApp = useContext(AppContext);
   const contexModal = useContext(ModalInsertContext);
   const procesyElementow = contexModal.procesyElementow;
-  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
+  const procesyProduktowTemporary = contexModal.procesyProduktowTemporary;
   const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
   const procesyProduktow = contexModal.procesyProduktow;
   const procesList = contexApp.procesList;
@@ -65,24 +65,22 @@ function Table() {
         </thead>
         <tbody>
           {/* {procesyElementowTemporary.length !=0 && procesyElementowTemporary?.filter(x => x.oprawa_id == selectedOprawaRow.id) */}
-          {procesyElementowTemporary.length !=0 && procesyElementowTemporary
-   
-          .sort((a, b) => a.indeks - b.indeks)
+          {procesyProduktowTemporary?.sort((a, b) => a.indeks - b.indeks)
           .filter((x) => x.delete != true)
           .map((row, i) => {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
                 <INDEKS row={row}/>
-                {/* <ProcesName row={row}/>
-                <ProcessTyp row={row}/>
+                {/* {/* <ProcesName row={row}/> */}
+                {/* <ProcessTyp row={row}/>
                 <IloscUzytkow row={row}/>
                 <FrontIlosc row={row}/>
                 <BackIlosc row={row}/>
                 <FrontKolor row={row}/>
-                <BackKolor row={row}/>
+                <BackKolor row={row}/> */}
                 <Info row={row}/>
-                <Usun row={row}/> */}
+                <Usun row={row}/> 
               </tr>
             );
           })}

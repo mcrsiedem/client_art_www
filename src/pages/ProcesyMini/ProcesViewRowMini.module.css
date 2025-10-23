@@ -48,6 +48,37 @@
     background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
  }
 
+ 
+  .procesRow_tr_REDALERT{
+    height: 30px;
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+   background-color: rgb(255, 4, 4,0.5);
+ 
+   }
+
+
+  .procesRow_tr_REDALERT:nth-of-type(2n){
+    height: 30px;
+    /* background:linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 ); */
+   background-color: rgb(255, 4, 4,0.6);
+
+   }
+
+
+
+  .procesRow_tr_ZAS{
+    height: 30px;
+    background:linear-gradient(to bottom, #7b9739 5%, #8fb148 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ }
+
+  .procesRow_tr_ZAS:nth-of-type(2n){
+    height: 30px;
+                background:linear-gradient(to bottom, #7b9739 5%, #8fb148 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+
+
+
+ }
+
    .procesRow_tr_trakcie{
     height: 30px;
     background:linear-gradient(to bottom, #e3d056 5%, #c2b245 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
@@ -109,6 +140,19 @@ border: 1px solid #8d8237a1;
     font-size: 0.8rem;
 
  }
+
+    .select_ZAS{
+border-radius: 5px;
+padding-left: 10px;
+padding-right: 10px;
+border: 1px solid rgb(136, 192, 63);
+    background:linear-gradient(to bottom, #7b9739 5%, #8fb148 100%); -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+   
+font-size: 0.8rem;
+
+
+ }
+
 
    .select_DRUK{
 border-radius: 5px;

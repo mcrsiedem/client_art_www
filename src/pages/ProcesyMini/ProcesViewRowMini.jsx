@@ -113,7 +113,7 @@ if (grup.select) return style.procesRow_select
                   }
                     
                   }}
-                 className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
+                 className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert) }
                 //  className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert) }
 
                   onDoubleClick={(node, event) => {

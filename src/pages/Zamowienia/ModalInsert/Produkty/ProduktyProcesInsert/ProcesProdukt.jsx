@@ -13,6 +13,7 @@ import Window from "./components/Window";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useProcessProdukt } from "./actions/useProcessProdukt";
+import ProcesName from "./components/ProcesName";
 export default function ProcesProdukt() {
 
     const modalContext = useContext(ModalInsertContext);
@@ -71,8 +72,10 @@ function Table() {
             return (
               <tr key={row.id}>
                 <td>{i+1}</td>
-                <INDEKS row={row}/>
-                {/* {/* <ProcesName row={row}/> */}
+                <Indeks row={row}/>
+                 <ProcesName row={row}/>
+                 {/* <ProcessTyp row={row}/> */}
+                {/* <ProcesName row={row}/>
                 {/* <ProcessTyp row={row}/>
                 <IloscUzytkow row={row}/>
                 <FrontIlosc row={row}/>
@@ -95,44 +98,7 @@ function Table() {
 }
 
 
-const ProcesName = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const contexApp = useContext(AppContext);
-  // daneTechEdit = JSON.parse(JSON.stringify(daneTech))
-  const procesListEdit = JSON.parse(JSON.stringify(contexApp.procesList))
-  const procesList = contexApp.procesList;
-  return (
-    <td>
-      <select
-        className={style.select}
-        value={row.nazwa_id}
-        onChange={(e) => {
-          // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
-          // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
-          let proc = procesList.filter(x=> x.nazwa_id == e.target.value).map(x=>{return x})
-          contexModal.handleUpdateRowProcesyElementow({
-            ...row,
-            ...proc[0],
-            nazwa_id: e.target.value,
-             proces_id: procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id,
-            update: true,
-            historia: false,
-            id:row.id
-          });
 
-          // console.log("Proces1 NAME: "+procesListEdit.filter( proces => proces.nazwa_id == e.target.value)[0].id)
-        }}
-      >
-        {}
-        {contexApp.procesListName?.filter(x=>x.id !=6).map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
-      </select>
-    </td>
-  );
-};
 
 const ProcessTyp = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
@@ -218,7 +184,7 @@ const FrontKolor = ({ row }) => {
     </td>
   );
 }
-const INDEKS = ({ row }) => {
+const Indeks = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
   return (

@@ -219,7 +219,7 @@ function Adres({ daneKlienta, setDaneKlienta }) {
         }}
       >
         {context.users
-        // .filter(x => x.Dzial == 2)
+
         .map((option) => (
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 

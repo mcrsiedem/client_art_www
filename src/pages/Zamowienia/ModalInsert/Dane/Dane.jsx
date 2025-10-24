@@ -330,7 +330,7 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
         }}
       >
         {contextApp.users?.filter(x => x.zamowienie_zapis == 1).map((option) => (
-        // {contextApp.users?.map((option) => (
+    
           <option key={option.id} value={option.id}>
           {option.Imie} {option.Nazwisko} 
           </option>

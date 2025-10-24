@@ -199,37 +199,7 @@ const contextTech = useContext(TechnologyContext);
     );
 }
 
-function Opiekun() {
-  const contextApp = useContext(AppContext);
-  const contextModalInsert = useContext(ModalInsertContext);
 
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const contextTech = useContext(TechnologyContext);
-const daneTech = contextTech.daneTech
-const setDaneTech = contextTech.setDaneTechch
-  return (
-    <div className={style.col}>
-      <label className={style.label}> Opiekun </label>
-      <select
-      disabled
-        className={style.select}
-        value={daneTech.opiekun_id}
-        onChange={(event) => {
-          setDaneTech({...daneTech, opiekun_id: event.target.value,update: true});
-          setSaveButtonDisabled(false)
-        }}
-      >
-        {contextApp.users.filter(x => x.Dzial == 2).map((option) => (
-          <option key={option.id} value={option.id}>
-          {option.Imie} {option.Nazwisko} 
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
 
 function Status() {
   const contextModalInsert = useContext(ModalInsertContext);

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { getMaxID } from "actions/getMaxID";
 import { getMaxIndeks } from "actions/getMaxIndeks";
@@ -15,31 +14,16 @@ const procesyProduktowTemporary = modalcontext.procesyProduktowTemporary;
 const setProcesyProduktowTemporary = modalcontext.setProcesyProduktowTemporary;
 const selectedOprawaRow = modalcontext.selectedOprawaRow;
 
-const techContext = useContext(TechnologyContext);
 const appContext = useContext(AppContext);
 
-
-
-    
-    
 
 function addProcessProdukt( ) {
 let procesyProduktowTemporaryEdit = procesyProduktowTemporary 
     ? [...procesyProduktowTemporary] 
     : [];
 
-// if (procesyProduktowTemporary && procesyProduktowTemporary.length > 0) {
-//     // Użycie operatora spread ([...]) tworzy płytką kopię tablicy.
-//     procesyProduktowTemporaryEdit = [...procesyProduktowTemporary];
-
-//   }
-
-
-// let proc = appContext.procesList.filter(x=> x.id == 77).map(x=>{return x})
-
       procesyProduktowTemporaryEdit.push({
-        // ...proc[0],
-        ...appContext.procesList.find(x=> x.id == 77), // domyślny procesor produktowy
+        ...appContext.procesList.find(x=> x.id == 77), // domyślny proces produktowy
         id: getMaxID(procesyProduktowTemporary),
         indeks: getMaxIndeks(procesyProduktowTemporary),
         utworzyl: DecodeToken(sessionStorage.getItem("token")).id,
@@ -52,12 +36,7 @@ let procesyProduktowTemporaryEdit = procesyProduktowTemporary
       procesyProduktowTemporaryEdit.sort((a, b) => a.indeks - b.indeks);
       setProcesyProduktowTemporary(procesyProduktowTemporaryEdit);
 
-
 }
-
-
-
-  
 
   return {addProcessProdukt};
 }

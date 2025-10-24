@@ -7,7 +7,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 import { _typ_elementu, reg_int } from "utils/initialvalue";
 
-export default function  ProcesName ({ row }) {
+export default function  ProcessTyp ({ row }) {
 
     // rowProcesProduktTemporary
 
@@ -21,22 +21,21 @@ export default function  ProcesName ({ row }) {
     <td>
       <select
         className={style.select}
-        value={row.nazwa_id}
+        value={row.proces_id}
         onChange={(e) => {
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
-          let procesDomyslny = procesList.find((x) => x.nazwa_id == e.target.value)
+          let procesDomyslny = procesList.find((x) => x.id == e.target.value)
             // .map((x) => {
             //   return x;
             // });
 
           CONTEXT_MODAL.setProcesyProduktowTemporary((prev) =>
             prev.map((proces) =>
-              proces.id == row.id
+              proces.id === row.id
                 ? {
                     ...row,
                     ...procesDomyslny,
-                    nazwa_id: e.target.value,
                     proces_id:procesDomyslny.id,
                     update: true,
                     historia: false,
@@ -52,18 +51,15 @@ export default function  ProcesName ({ row }) {
 
         {
             // tylko procesy produktowe czyli produkt == 1 
-        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt == 1).map((option) => option.nazwa)))
-          // 2. Mapujemy po każdej unikalnej nazwie
-          .map((unikalnaNazwa) => {
-            // 3. Znajdujemy pierwszy obiekt w oryginalnej liście  pasujący do tej unikalnej nazwy, aby pobrać jego ID.
-            const opcja = contexApp.procesList.find((opt) => opt.nazwa === unikalnaNazwa );
-            // 4. Renderujemy opcję używając ID pierwszego pasującego elementu
-            return (
-              <option key={opcja.nazwa_id} value={opcja.nazwa_id}>
-                {opcja.nazwa}
-              </option>
-            );
-          })
+procesList
+        .filter(p=> p.produkt==1 && p.nazwa_id == procesList.find(x=> x.id == row.proces_id)?.nazwa_id)
+        // .filter(p=> p.produkt==1 && p.nazwa_id == 18)
+
+               .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}
+          </option>
+        ))
           
           }
 

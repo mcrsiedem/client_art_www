@@ -213,11 +213,29 @@ const ProcesName = ({ row }) => {
         }}
       >
         {}
-        {contexApp.procesListName?.filter(x=>x.id !=6).map((option) => (
+        {/* {contexApp.procesListName?.filter(x=>x.id !=6).map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>
-        ))}
+        ))} */}
+        {            // tylko procesy produktowe czyli produkt == 1 
+        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt != 1).map((option) => option.nazwa)))
+          // 2. Mapujemy po każdej unikalnej nazwie
+          .map((unikalnaNazwa) => {
+            // 3. Znajdujemy pierwszy obiekt w oryginalnej liście  pasujący do tej unikalnej nazwy, aby pobrać jego ID.
+            const opcja = contexApp.procesList.find((opt) => opt.nazwa === unikalnaNazwa );
+            // 4. Renderujemy opcję używając ID pierwszego pasującego elementu
+            return (
+              <option key={opcja.nazwa_id} value={opcja.nazwa_id}>
+                {opcja.nazwa}
+              </option>
+            );
+          })}
+
+
+
+
+
       </select>
     </td>
   );

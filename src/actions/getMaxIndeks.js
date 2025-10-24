@@ -12,5 +12,5 @@ export function getMaxIndeks(stan){
 
    return max; 
     }
-return 0
+return 1
 }

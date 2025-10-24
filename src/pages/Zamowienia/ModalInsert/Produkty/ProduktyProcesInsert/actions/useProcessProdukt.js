@@ -40,8 +40,8 @@ let procesyProduktowTemporaryEdit = procesyProduktowTemporary
       procesyProduktowTemporaryEdit.push({
         // ...proc[0],
         ...appContext.procesList.find(x=> x.id == 77), // domyślny procesor produktowy
-        id: getMaxID({procesyProduktowTemporary}),
-        indeks: getMaxIndeks({procesyProduktowTemporary}),
+        id: getMaxID(procesyProduktowTemporary),
+        indeks: getMaxIndeks(procesyProduktowTemporary),
         utworzyl: DecodeToken(sessionStorage.getItem("token")).id,
         zmodyfikowal: DecodeToken(sessionStorage.getItem("token")).id,
         zamowienie_id: selectedOprawaRow.zamowienie_id,

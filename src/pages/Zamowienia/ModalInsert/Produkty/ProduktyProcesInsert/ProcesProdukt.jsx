@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useProcessProdukt } from "./actions/useProcessProdukt";
 import ProcesName from "./components/ProcesName";
+import ProcessTyp from "./components/ProcesTyp";
 export default function ProcesProdukt() {
 
     const modalContext = useContext(ModalInsertContext);
@@ -71,9 +72,10 @@ function Table() {
           .map((row, i) => {
             return (
               <tr key={row.id}>
-                <td>{i+1}</td>
+                <td>{row.id}</td>
                 <Indeks row={row}/>
                  <ProcesName row={row}/>
+                 <ProcessTyp row={row}/> 
                  {/* <ProcessTyp row={row}/> */}
                 {/* <ProcesName row={row}/>
                 {/* <ProcessTyp row={row}/>
@@ -100,7 +102,7 @@ function Table() {
 
 
 
-const ProcessTyp = ({ row }) => {
+const ProcessTyp2 = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   const selectedElementROW = contexModal.selectedElementROW;

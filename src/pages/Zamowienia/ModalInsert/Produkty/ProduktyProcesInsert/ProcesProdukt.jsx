@@ -57,12 +57,10 @@ function Table() {
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Ilość użytków</th>
-            <th className={style.col_ilosc}>Front</th>
-            <th className={style.col_ilosc}>Back</th>
-            <th className={style.col_kolory}>Front kolory</th>
-            <th className={style.col_kolory}>Back kolory</th>
+            <th className={style.col_typ}>Naklad</th>
+
             <th className={style.col_wersja}>Uwagi</th>
-            <th className={style.col_wersja}>Uwagi</th>
+            {/* <th className={style.col_wersja}>Uwagi</th> */}
           </tr>
         </thead>
         <tbody>
@@ -92,7 +90,7 @@ function Table() {
         </tbody>
       </table>
       <div className={style.dodaj_proces_row}>
-         <button className={style.btn_dodaj_proces} onClick={()=> addProcessProdukt()}>Dodaj nowy proces</button>
+         <button className={style.btn_dodaj_proces} onClick={()=> addProcessProdukt()}>Nowy</button>
       </div>
      
     </div>

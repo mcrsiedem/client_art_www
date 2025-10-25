@@ -153,40 +153,45 @@ border: 1px solid rgba(167, 167, 167, 0.274);
 background-color: #bebebe15;
 
 }
-/* .table2 th, .table2 tr:nth-child(even){
-  background-color: rgb(191, 209, 194);
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
-
-  }
-  .table2 tr:nth-child(odd){
-    background-color: rgb(213, 230, 216);
-    outline-style: none;
-    font-size:1rem;
-  } */
-.col_indeks {
-  width: 40px;
-}
-
-.col_ilosc {
-  width: 50px;
-}
-
-.col_kolory {
-  width: 120px;
-}
-
-.col_proces {
-  width: 100px;
-}
 
 .select {
   background: transparent;
   height: 25px; 
+    width: 100%;
+  box-shadow: none;
+  border: none;
+  /* border-bottom: #3333336d 1px dashed; */
+
+}
+
+.col_button{
+  width: 20px;
+}
+
+.expand{
+  width: 15px;
+}
+
+.col_naklad{
+  width: 100px;
+}
+.col_ilosc_uzytkow{
+  width: 130px;
+}
+.col_proces{
+  width: 200px;
+}
+
+
+.select_proces {
+  background: transparent;
+  height: 25px; 
+  /* border-bottom: #3333336d 1px dashed; */
+  width: 100%;
   box-shadow: none;
   border: none;
 }
+
 
 .input_ilosc_uzytkow{
   background: transparent;
@@ -202,14 +207,30 @@ background-color: #bebebe15;
 
 }
 
+
+.input_opis{
+  background: transparent;
+  height: 25px; 
+  width: 100%;
+  box-shadow: none;
+  border: none;
+  border-bottom: #3333336d 1px dashed;
+  font-weight: 700;
+  /* font-size: 1.5rem; */
+  color: #535353;
+  text-align: center;
+
+}
+
+
 .input_naklad{
   background: transparent;
   height: 25px; 
-  width: 80px;
+    width: 100%;
   box-shadow: none;
   border: none;
   /* border-bottom: #3333336d 1px dashed; */
-  /* font-weight: 700; */
+  font-weight: 700;
   font-size:1rem;
   color: #535353;
   text-align: center;
@@ -219,12 +240,12 @@ background-color: #bebebe15;
 .select_indeks {
   background: transparent;
   height: 25px; 
-  width: 80px;
+  width: 20px;
   box-shadow: none;
   border: none;
   /* border-bottom: #3333336d 1px dashed; */
-  font-weight: 700;
-  font-size: 1.1rem;
+  /* font-weight: 700;
+  font-size: 1.1rem; */
   color: #535353;
   text-align: start;
 }
@@ -235,7 +256,7 @@ background-color: #bebebe15;
 .table  td {
   font-size: 0.9rem;
   height: 2rem;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   border-bottom: 1px solid #dbdad6;
 }
 
@@ -284,17 +305,6 @@ background-color: #bebebe15;
 .table th:first-child {
   border-top-left-radius: 8px;
 }
-
-
-
-
-/* Specyficzne szerokości kolumn (bez zmian) */
-.col_indeks { width: 10px; }
-.col_proces { width: 50px; }
-.col_typ { width: 10%; }
-.col_ilosc { width: 8%; }
-.col_kolory { width: 10%; }
-.col_wersja { width: 15%; }
 
 
 /* --- Ciało tabeli (tbody) i wiersze --- */

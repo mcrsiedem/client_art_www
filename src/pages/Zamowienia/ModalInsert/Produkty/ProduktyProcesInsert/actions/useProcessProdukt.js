@@ -30,6 +30,7 @@ let procesyProduktowTemporaryEdit = procesyProduktowTemporary
         zmodyfikowal: DecodeToken(sessionStorage.getItem("token")).id,
         zamowienie_id: selectedOprawaRow.zamowienie_id,
         oprawa_id: selectedOprawaRow.id,
+        naklad: selectedOprawaRow.naklad,
         insert:true
       });
 

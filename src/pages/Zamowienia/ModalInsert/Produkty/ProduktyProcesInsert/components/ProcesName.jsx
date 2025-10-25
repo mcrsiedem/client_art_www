@@ -20,7 +20,7 @@ export default function  ProcesName ({ row }) {
   return (
     <td>
       <select
-        className={style.select}
+        className={style.select_proces}
         value={row.nazwa_id}
         onChange={(e) => {
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie

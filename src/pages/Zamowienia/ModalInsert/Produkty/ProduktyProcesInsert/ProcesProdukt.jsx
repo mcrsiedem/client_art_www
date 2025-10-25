@@ -54,12 +54,12 @@ function Table() {
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.col_indeks}>ID</th>
-            <th className={style.col_indeks}>#</th>
+            <th className={style.expand}>ID</th>
+            <th className={style.expand}>#</th>
             <th className={style.col_proces}>Proces</th>
-            <th className={style.col_typ}>Typ</th>
-            <th className={style.col_typ}>Ilość użytków</th>
-            <th className={style.col_typ}>Naklad</th>
+            <th className={style.col_proces}>Typ</th>
+            <th className={style.col_ilosc_uzytkow}>Ilość użytków</th>
+            <th className={style.col_naklad}>Naklad</th>
 
             <th className={style.col_wersja}>Opis</th>
             <th className={style.col_wersja}></th>
@@ -73,7 +73,7 @@ function Table() {
           .map((row, i) => {
             return (
               <tr key={row.id}>
-                <td>{row.id}</td>
+                <td className={style.select_indeks}>{row.id}</td>
                 <Indeks row={row}/>
                  <ProcesName row={row}/>
                  <ProcessTyp row={row}/> 
@@ -132,22 +132,31 @@ const Indeks = ({ row }) => {
 
 
 const Info = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+  // const contexModal = useContext(ModalInsertContext);
+  // const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+    const CONTEXT_MODAL = useContext(ModalInsertContext);
+  
   return (
     <td>
       <input
-      className={style.select}
+      className={style.input_opis}
         value={row.info}
         onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              info: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
+    
+          CONTEXT_MODAL.setProcesyProduktowTemporary((prev) =>
+            prev.map((proces) =>
+              proces.id === row.id
+                ? {
+                    ...row,
+                    info:e.target.value,
+                    update: true,
+                    historia: false,
+                    id: row.id,
+                  }
+                : proces
+            )
+          );
+        
         }}
       ></input>
     </td>

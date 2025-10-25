@@ -147,8 +147,8 @@ function Table() {
             <th className={style.col_ilosc}>Back</th>
             <th className={style.col_kolory}>Front kolory</th>
             <th className={style.col_kolory}>Back kolory</th>
-            <th className={style.col_wersja}>Uwagi</th>
-            <th className={style.col_wersja}>Uwagi</th>
+            <th className={style.col_wersja}>Opis</th>
+            <th className={style.col_wersja}></th>
           </tr>
         </thead>
         <tbody>

@@ -183,19 +183,53 @@ background-color: #bebebe15;
 
 .select {
   background: transparent;
-  height: 25px;
-  
+  height: 25px; 
   box-shadow: none;
   border: none;
 }
 
-.select_indeks {
+.input_ilosc_uzytkow{
   background: transparent;
-  height: 25px;
-    width: 40px;
+  height: 25px; 
+  width: 80px;
   box-shadow: none;
   border: none;
+  /* border-bottom: #3333336d 1px dashed; */
+  font-weight: 700;
+  /* font-size: 1.5rem; */
+  color: #535353;
+  text-align: center;
+
 }
+
+.input_naklad{
+  background: transparent;
+  height: 25px; 
+  width: 80px;
+  box-shadow: none;
+  border: none;
+  /* border-bottom: #3333336d 1px dashed; */
+  /* font-weight: 700; */
+  font-size:1rem;
+  color: #535353;
+  text-align: center;
+
+}
+
+.select_indeks {
+  background: transparent;
+  height: 25px; 
+  width: 80px;
+  box-shadow: none;
+  border: none;
+  /* border-bottom: #3333336d 1px dashed; */
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #535353;
+  text-align: start;
+}
+
+
 
 
 .table  td {

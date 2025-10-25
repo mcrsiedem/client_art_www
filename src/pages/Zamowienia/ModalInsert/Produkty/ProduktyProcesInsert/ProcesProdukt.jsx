@@ -15,6 +15,8 @@ import Footer from "./components/Footer";
 import { useProcessProdukt } from "./actions/useProcessProdukt";
 import ProcesName from "./components/ProcesName";
 import ProcessTyp from "./components/ProcesTyp";
+import IloscUzytkow from "./components/IloscUzytkow";
+import Naklad from "./components/Naklad";
 export default function ProcesProdukt() {
 
     const modalContext = useContext(ModalInsertContext);
@@ -52,14 +54,15 @@ function Table() {
       <table className={style.table}>
         <thead>
           <tr>
+            <th className={style.col_indeks}>ID</th>
             <th className={style.col_indeks}>#</th>
-            <th className={style.col_indeks}>indeks</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_typ}>Typ</th>
             <th className={style.col_typ}>Ilość użytków</th>
             <th className={style.col_typ}>Naklad</th>
 
-            <th className={style.col_wersja}>Uwagi</th>
+            <th className={style.col_wersja}>Opis</th>
+            <th className={style.col_wersja}></th>
             {/* <th className={style.col_wersja}>Uwagi</th> */}
           </tr>
         </thead>
@@ -74,6 +77,8 @@ function Table() {
                 <Indeks row={row}/>
                  <ProcesName row={row}/>
                  <ProcessTyp row={row}/> 
+                 <IloscUzytkow row={row}/>
+                 <Naklad row={row}/>
                  {/* <ProcessTyp row={row}/> */}
                 {/* <ProcesName row={row}/>
                 {/* <ProcessTyp row={row}/>
@@ -98,92 +103,6 @@ function Table() {
 }
 
 
-
-
-const ProcessTyp2 = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const contexApp = useContext(AppContext);
-  const selectedElementROW = contexModal.selectedElementROW;
-  const procesList = contexApp.procesList;
-
-  return (
-    <td>
-      <select
-        className={style.select}
-        value={row.proces_id}
-        onChange={(e) => {
-          console.log(e.target.value)
-          let proc = procesList.filter(x=> x.id == e.target.value).map(x=>{return x})
-          contexModal.handleUpdateRowProcesyElementow({
-            ...row,
-            ...proc[0],
-            proces_id: e.target.value,
-            update: true,
-            historia: false,
-            id:row.id
-          });
-          console.log("Proces1 TYP: "+e.target.value)
-        }}
-      >
-        {}
-        {contexApp.procesList
-        .filter(p=> p.nazwa_id == contexModal.procesyElementowTemporary.filter(x=> x.element_id == selectedElementROW.id && x.indeks == row.indeks)[0].nazwa_id)
-
-               .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.typ} {option.rodzaj} {option.wykonczenie} {option.obszar}
-          </option>
-        ))}
-      </select>
-    </td>
-  );
-};
-
-const BackKolor = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
-  return (
-    <td>
-      <input
-      className={style.select}
-        value={row.back_kolor}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              back_kolor: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
-
-const FrontKolor = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
-  return (
-    <td>
-      <input
-       className={style.select}
-        value={row.front_kolor}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              front_kolor: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
 const Indeks = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);
   const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
@@ -207,74 +126,10 @@ const Indeks = ({ row }) => {
   );
 }
 
-const IloscUzytkow = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
-  return (
-    <td>
-      <input
-      className={style.select}
-        value={row.ilosc_uzytkow}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              ilosc_uzytkow: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
 
-const FrontIlosc = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
-  return (
-    <td>
-      <input
-      className={style.select}
-        value={row.front_ilosc}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              front_ilosc: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
 
-const BackIlosc = ({ row }) => {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
-  return (
-    <td>
-      <input
-      className={style.select}
-        value={row.back_ilosc}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              back_ilosc: e.target.value,
-              update: true,
-              historia: false
-            });
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
+
+
 
 const Info = ({ row }) => {
   const contexModal = useContext(ModalInsertContext);

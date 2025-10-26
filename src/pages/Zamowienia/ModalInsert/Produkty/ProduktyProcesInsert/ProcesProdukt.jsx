@@ -41,7 +41,7 @@ function Table() {
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.expand}>ID</th>
+            {/* <th className={style.expand}>ID</th> */}
             <th className={style.expand}>#</th>
             <th className={style.col_proces}>Proces</th>
             <th className={style.col_proces}>Typ</th>
@@ -59,7 +59,7 @@ function Table() {
           .map((row, i) => {
             return (
               <tr key={row.id}>
-                <td className={style.select_indeks}>{row.id}</td>
+                {/* <td className={style.select_indeks}>{row.id}</td> */}
                 <Indeks row={row}/>
                  <ProcesName row={row}/>
                  <ProcessTyp row={row}/> 

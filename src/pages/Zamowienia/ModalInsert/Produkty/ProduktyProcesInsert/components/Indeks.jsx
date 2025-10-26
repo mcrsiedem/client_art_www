@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import style from "../ProcesProdukt.module.css";
-import iconTrash from "assets/trash2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { _typ_elementu, reg_int } from "utils/initialvalue";
-import { useHistoria } from "hooks/useHistoria";
 
 export default function Indeks ({ row }) {
-  const contexModal = useContext(ModalInsertContext);
-  const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;
+      const CONTEXT_MODAL = useContext(ModalInsertContext);
+  
   return (
     <td>
       <input
@@ -15,12 +13,19 @@ export default function Indeks ({ row }) {
         value={row.indeks}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowProcesyElementow({
-              ...row,
-              indeks: e.target.value,
-              update: true,
-              historia: false
-            });
+          CONTEXT_MODAL.setProcesyProduktowTemporary((prev) =>
+            prev.map((proces) =>
+              proces.id === row.id
+                ? {
+                    ...row,
+                    indeks:e.target.value,
+                    update: true,
+                    historia: false,
+                    id: row.id,
+                  }
+                : proces
+            )
+          );
           }
         }}
       ></input>
@@ -28,49 +33,3 @@ export default function Indeks ({ row }) {
   );
 }
 
-
-function Usun({ row}) {
-  const contexModal = useContext(ModalInsertContext);
-  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
-  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
-  const elementy = contexModal.elementy;
-  const daneZamowienia = contexModal.daneZamowienia;
-    const [add] = useHistoria()
-  return (
-    <td className={style.col_button}>
-      <div>
-        <img
-          className={style.expand}
-          src={iconTrash}
-          onClick={() => {
-
-            if(row.zamowienie_id == 1){
-              setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
-
-            }else{
-           setProcesyElementowTemporary((prev) =>
-              prev.map((t, a) => {
-                if (t.id == row.id) {
-                  return {
-                    ...t,
-                    delete: true
-                  };
-                } else {
-                  return t;
-                }
-              })
-            );
-
-      
-
-            }
-          
- 
-      
-          }}
-          alt="Procesy"
-        />
-      </div>
-    </td>
-  );
-}

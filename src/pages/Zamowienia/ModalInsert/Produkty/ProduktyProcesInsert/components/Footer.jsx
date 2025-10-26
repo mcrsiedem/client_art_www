@@ -16,24 +16,42 @@ import { useContext } from "react";
 
 export default function Footer() {
   const modalContext = useContext(ModalInsertContext);
-  const setProcesyElementow = modalContext.setProcesyElementow;
-  const procesyElementowTemporary = modalContext.procesyElementowTemporary;
+
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy
     const daneZamowienia = contextModalInsert.daneZamowienia
     const [add] = useHistoria()
    const [setStatus] = useStatus()
+
+   const sprawdzKolejnoscIndeksow = (array) => {
+  // Sprawdzamy każdy element tablicy.
+  // 'element' to bieżący obiekt, 'index' to pozycja tego obiektu w tablicy (0, 1, 2, ...).
+  return array.every((element, index) => {
+    // Oczekiwany indeks to pozycja w tablicy + 1, ponieważ chcemy, żeby było 1, 2, 3, ...
+    const oczekiwanyIndeks = index + 1;
+
+    // Sprawdzamy, czy wartość pola 'indeks' w obiekcie jest równa oczekiwanemu indeksowi.
+    // Używamy Number() na wszelki wypadek, gdyby wartość 'indeks' była stringiem,
+    // choć w Twoim przykładzie jest number.
+    return Number(element.indeks) === oczekiwanyIndeks;
+  });
+};
+
+
+
   return (
     <div className={style.footer}>
       <button
         className={style.btn}
         onClick={() => {
-          modalContext.setShowElementyProcesyInsert(false);
-          setProcesyElementow(procesyElementowTemporary.map(row => {
+
+          if(sprawdzKolejnoscIndeksow(modalContext.procesyProduktowTemporary.filter(x=> x.delete != true))){
+                      modalContext.setShowProcesyProduktow(false);
+           modalContext.setProcesyProduktow( modalContext.procesyProduktowTemporary.map(row => {
             if(row.delete== true && row.historia != true){
               add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - kasowanie procesu  ",
+            kategoria: "Procesy produktu",
+            event: "OPRAWA_ID: "+row.oprawa_id+ " - kasowanie procesu  ",
             zamowienie_id: daneZamowienia.id
           })
      setStatus(3)
@@ -42,8 +60,8 @@ export default function Footer() {
       
             if(row.insert== true && row.historia != true && row.update != true){
               add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - dodanie procesu  ",
+            kategoria: "Procesy produktu",
+            event: "OPRAWA_ID: "+row.oprawa_id+ " - dodanie procesu  ",
             zamowienie_id: daneZamowienia.id
           })
      setStatus(3)
@@ -52,8 +70,8 @@ export default function Footer() {
                   
             if(row.update== true && row.historia == false){
               add(         {
-            kategoria: "Procesy",
-            event: getNameOfElement(row.element_id,elementy,_typ_elementu)+ " - zmiana procesu  ",
+            kategoria: "Procesy produktu",
+            event: "OPRAWA_ID: "+row.oprawa_id+ " - zmiana procesu  ",
             zamowienie_id: daneZamowienia.id
           })
      setStatus(3)
@@ -62,6 +80,10 @@ export default function Footer() {
 
 
 }))
+          }else{
+            alert("Ponumeruj ładnie kolejność : ) ")
+          }
+
 
 
         }}

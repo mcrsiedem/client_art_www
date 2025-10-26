@@ -1,14 +1,16 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useContext } from "react";
 import style from "../ProcesProdukt.module.css";
 
 import iconTrash from "assets/trash2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { _typ_elementu, reg_int } from "utils/initialvalue";
+import { _typ_elementu } from "utils/initialvalue";
 import { useHistoria } from "hooks/useHistoria";
 export default function Usun({ row}) {
-  const contexModal = useContext(ModalInsertContext);
-  const procesyElementowTemporary = contexModal.procesyElementowTemporary;
-  const setProcesyElementowTemporary = contexModal.setProcesyElementowTemporary;
+
+
+
+      const CONTEXT_MODAL = useContext(ModalInsertContext);
+    
     const [add] = useHistoria()
   return (
     <td className={style.col_button}>
@@ -19,21 +21,24 @@ export default function Usun({ row}) {
           onClick={() => {
 
             if(row.zamowienie_id == 1){
-              setProcesyElementowTemporary(procesyElementowTemporary.filter((p) => p.id !== row.id));
+              CONTEXT_MODAL.setProcesyProduktowTemporary(CONTEXT_MODAL.procesyProduktowTemporary.filter((p) => p.id !== row.id));
+
+
 
             }else{
-           setProcesyElementowTemporary((prev) =>
-              prev.map((t, a) => {
-                if (t.id == row.id) {
-                  return {
-                    ...t,
-                    delete: true
-                  };
-                } else {
-                  return t;
-                }
-              })
-            );
+          CONTEXT_MODAL.setProcesyProduktowTemporary((prev) =>
+            prev.map((proces) =>
+              proces.id === row.id
+                ? {
+                    ...row,
+                    delete: true,
+                    historia: false,
+                    id: row.id,
+                  }
+                : proces
+            )
+          );
+        
 
       
 

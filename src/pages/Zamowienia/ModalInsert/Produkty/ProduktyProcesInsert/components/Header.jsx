@@ -8,7 +8,11 @@ export default function Header() {
 const modalcontext = useContext(ModalInsertContext);
   return (
     <div 
-    onClick={()=>{ console.log("procesyProduktowTemporary" ,modalcontext.procesyProduktowTemporary)}}
+    onClick={()=>{
+       console.log("procesyProduktowTemporary" ,modalcontext.procesyProduktowTemporary)
+       console.log("procesyProduktow" ,modalcontext.procesyProduktow)
+      
+      }}
     className={style.header}>
       {/* <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu?.filter(x => x.id == rowElement?.typ)[0]?.nazwa} {rowElement?.naklad} szt. {rowElement?.nazwa}</p> </p>  */}
       <p className={style.title}>Procesy produktu </p> 

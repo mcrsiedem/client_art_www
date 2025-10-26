@@ -95,6 +95,7 @@ const setOpenModalInsert= contextModalInsert.setOpenModalInsert;
 const ksiegowosc= contextModalInsert.ksiegowosc;
 const setKsiegowosc= contextModalInsert.setKsiegowosc;
 const setFaktury= contextModalInsert.setFaktury;
+const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
 
 
 
@@ -162,6 +163,7 @@ const setFaktury= contextModalInsert.setFaktury;
            setTechnologieID([])
            setHistoriaZamowienia([])
            setPakowanie([])
+            setProcesyProduktow([])
            setDaneZamowienia(res.data[0][0])
            setProdukty(res.data[1])
            setElementy(res.data[2])
@@ -174,6 +176,8 @@ const setFaktury= contextModalInsert.setFaktury;
            setKosztyDodatkoweZamowienia(res.data[9])
            setKsiegowosc(res.data[10][0])
            setFaktury(res.data[11])
+           //pliki
+           setProcesyProduktow(res.data[13])
 
            
 

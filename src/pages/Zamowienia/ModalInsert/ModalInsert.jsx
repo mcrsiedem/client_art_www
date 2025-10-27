@@ -121,6 +121,7 @@ const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
       setSaveButtonDisabled(true)
       setHistoriaZamowienia([])
       setKsiegowosc(initialKsiegowosc)
+      setProcesyProduktow([])
     }
 
   // }, [open]);

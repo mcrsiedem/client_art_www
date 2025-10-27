@@ -114,12 +114,12 @@ function OprawaTable({
             <th className={style.th_czystodruki}>Wersja</th>
             <th className={style.th_naklad}>Naklad</th>
             <th className={style.th_bok_oprawy}>Bok oprawy</th>
+            <th className={style.th_uwagi}>Uwagi</th>
+            <th className={style.th_procesy}></th>
             <th className={style.th_czystodruki}>Czystodruki</th>
-            <th className={style.col6}>Data spedycji</th>
-            <th className={style.col7}>Uwagi</th>
+            <th className={style.th_czystodruki}>Data spedycji</th>
             <th className={style.th_lock}></th>
             <th className={style.th_lock}></th>
-            <th className={style.col7}></th>
             {/* <th className={style.col7}></th> */}
           </tr>
         </thead>
@@ -156,11 +156,11 @@ function OprawaTable({
                   <NakladOprawa row={row} />
                   <BokOprawy row={row} />
 
-                  <DataCzystodrukow row={row} />
-                  <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <UwagiOprawa row={row} />
                   <ProcesyOprawa row={row} />
+                  <DataCzystodrukow row={row} />
+                  <DataSpedycji row={row} index_oprawy={index_oprawy} />
 
                   <Usun row={row} handleRemoveItem={handleRemoveItem} />
                   <DodajOprawe

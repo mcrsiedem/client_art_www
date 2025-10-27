@@ -33,6 +33,7 @@ export const TechnologyContextProvider = ({children})=>{
     const [fragmenty, setFragmenty] = useState([]);
     const [oprawa, setOprawa] = useState([]);
     const [procesyElementow, setProcesyElementow] = useState([]);
+    const [procesyProduktow, setProcesyProduktow] = useState([]);
     const [historiaZamowienia, setHistoriaZamowienia] = useState([]);
     const [pakowanie, setPakowanie] = useState([]);
     const [multiSelect, setMultiSelect] = useState([]);
@@ -45,6 +46,8 @@ export const TechnologyContextProvider = ({children})=>{
         const [oprawaTech, setOprawaTech] = useState([]);
         const [grupaOprawaTech, setGrupaOprawaTech] = useState([]);
         const [procesyElementowTech, setProcesyElementowTech] = useState([]);
+        const [procesyProduktowTech, setProcesyProduktowTech] = useState([]);
+        const [procesyProduktowTechTemporary, setProcesyProduktowTechTemporary] = useState([]);
         const [procesyElementowTechTemporary, setProcesyElementowTechTemporary] = useState(initialProcesy); // aby mozna było zamknąc bez zapisywania
         const [showElementyTechProcesyInsert, setShowElementyTechProcesyInsert] =     useState(false);
         const [selectedElementTechROW,setSelectedElementTechROW] = useState(null)
@@ -435,23 +438,6 @@ if(elementyTech.length>1){
       }
 
 
-
-  
-
-    //    const updateDane = useCallback((data) => {
-    //     console.log("data",data)
-    //     setDane(data);
-    //   }, []);
-
-
-
-
-      //  useEffect(() => {
-      //   fechparametry(rowZamowienia?.id)
-      //     }, [rowZamowienia]);
-
-          // useEffect(() => {
-          //     }, [rowTechnologia]);
         
        useEffect(() => {
         const ilosc_stron = parseInt(legi[0]?.ilosc_stron);
@@ -538,6 +524,7 @@ if(elementyTech.length>1){
      setFragmenty([])
      setOprawa([])
      setProcesyElementow([])
+     setProcesyProduktow([])
      setHistoriaZamowienia([])
      setPakowanie([])
 
@@ -548,6 +535,7 @@ if(elementyTech.length>1){
      setFragmenty(res.data[3])
      setOprawa(res.data[4])
      setProcesyElementow(res.data[5])
+    setProcesyProduktow(res.data[13])
      setHistoriaZamowienia(res.data[7])
      setPakowanie(res.data[8].sort((a, b) => a.indeks - b.indeks))
 
@@ -561,6 +549,7 @@ if(elementyTech.length>1){
     setOprawaTech([])
 
     setProcesyElementowTech([])
+    setProcesyProduktowTech([])
     setLegi([])
      setLegiFragmenty([])
      setArkusze([])
@@ -574,6 +563,7 @@ if(elementyTech.length>1){
      setFragmentyTech(res.data[3])
      setOprawaTech(res.data[4])
      setProcesyElementowTech(res.data[5])
+         setProcesyProduktowTech(res.data[13])
 
 
 
@@ -681,6 +671,9 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
      setHistoriaZamowienia(res_zam.data[7])
      setPakowanie(res_zam.data[8])
 
+
+     setProcesyProduktow(res_zam.data[13])
+
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
   setDaneTech([]) 
   setProduktyTech([])
@@ -694,6 +687,7 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
    setGrupaWykonan([])
    setWykonania([])
   setRealizacje([])
+  setProcesyProduktowTech([])
 
 
   setDaneTech(res.data[0][0]) 
@@ -711,6 +705,7 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   setWykonaniaOprawy(res.data[12])
   setRealizacje(res.data[13])
 
+setProcesyProduktowTech([])
     setIsLoading(false)
   //  setShowTechnologyStage(true)
 }
@@ -880,13 +875,14 @@ async function fechTechnology() {
                     elementy, setElementy,
                     fragmenty, setFragmenty,
                     oprawa, setOprawa,
-                    procesyElementow, setProcesyElementow,
+                    procesyElementow, setProcesyElementow,procesyProduktow, setProcesyProduktow,procesyProduktowTechTemporary, setProcesyProduktowTechTemporary,
+
                     daneTech, setDaneTech,
                     produktyTech, setProduktyTech,
                     elementyTech, setElementyTech,
                     fragmentyTech, setFragmentyTech,
                     oprawaTech, setOprawaTech,grupaOprawaTech, setGrupaOprawaTech,
-                    procesyElementowTech, setProcesyElementowTech,
+                    procesyElementowTech, setProcesyElementowTech,procesyProduktowTech, setProcesyProduktowTech,
                     procesyElementowTechTemporary, setProcesyElementowTechTemporary,
                     menuElementyTech,setMenuElementyTech,
                     legi, setLegi,

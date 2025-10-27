@@ -23,6 +23,8 @@ export  function useZamowienieUpdate(){
   const setOprawa= contextModalInsert.setOprawa;
   const setProcesyElementow= contextModalInsert.setProcesyElementow;
   const procesyElementow= contextModalInsert.procesyElementow;
+  const procesyProduktow= contextModalInsert.procesyProduktow;
+  const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
   const technologieID= contextModalInsert.technologieID;
   const historiaZamowienia= contextModalInsert.historiaZamowienia?.filter(x=>x.insert == true );
   const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
@@ -34,7 +36,7 @@ export  function useZamowienieUpdate(){
     const setKsiegowosc = contextModalInsert.setKsiegowosc;
     const faktury = contextModalInsert.faktury;
     const setFaktury = contextModalInsert.setFaktury;
-     const {         socket } = useSocket()
+     const { socket } = useSocket()
     
     
 
@@ -47,7 +49,7 @@ const [refreshZamowienia] = useZamowienia()
   setSaveButtonDisabled(true)
 
   dialogBox.current.show();
-  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury})
+  await save({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,procesyProduktow})
   dialogBox.current.showOK();
   const res = await axios.get(IP + "parametry/"+daneZamowienia.id+"/"+ sessionStorage.getItem("token"));
 
@@ -63,6 +65,8 @@ const [refreshZamowienia] = useZamowienia()
   setKosztyDodatkoweZamowienia(res.data[9])
   setKsiegowosc(res.data[10][0])
   setFaktury(res.data[11])
+  //pliki
+  setProcesyProduktow(res.data[13])
   
 socket.emit("realizacja")
   refreshZamowienia();
@@ -78,7 +82,7 @@ return[saveZamowienieUpdate]
 
 
 //----------------------------------------------------------------------------------
-const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury}) =>{
+const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,procesyProduktow}) =>{
 
   return new Promise(async(resolve,reject)=>{
       
@@ -118,7 +122,7 @@ const save = ({daneZamowienia,produkty,elementy,fragmenty,oprawa,procesyElemento
 
 
 
-    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury])
+    }, produkty,elementy,fragmenty,oprawa,procesyElementow,technologieID,historiaZamowienia,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,procesyProduktow])
     
   // let zamowienie_id = res.data[1].id;
   // let produkty_zamowienie_id = res.data[2][0].zamowienie_id;

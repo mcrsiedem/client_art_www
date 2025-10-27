@@ -33,6 +33,9 @@ export  function useZamowienieInsert(){
   let setFaktury= contextModalInsert.setFaktury;
   let faktury= contextModalInsert.faktury;
 
+    const procesyProduktow= contextModalInsert.procesyProduktow;
+  const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
+
 const [refreshZamowienia] = useZamowienia()
      const {         socket } = useSocket()
  async function zapiszZamowienie({dialogBox}){
@@ -44,7 +47,7 @@ const [refreshZamowienia] = useZamowienia()
           // tutaj testujemy błąd
   //  daneZamowienia = {...daneZamowienia, data_spedycji:1}
 
-          const saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia})
+          const saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow})
 
           if(saved.data !="error"){
 
@@ -70,6 +73,8 @@ const [refreshZamowienia] = useZamowienia()
           setKosztyDodatkoweZamowienia(res.data[9])
           setKsiegowosc(res.data[10][0])
           setFaktury(res.data[11])
+          //pliki
+          setProcesyProduktow(res.data[13])
           socket.emit("realizacja")
            }else{
             alert("Błąd")
@@ -86,9 +91,9 @@ const [refreshZamowienia] = useZamowienia()
 
 //----------------------------------------------------------------------------------
 
-const save = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia}) =>{
+const save = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow}) =>{
   return new Promise(async(resolve,reject)=>{
-   let res = await axios.post(IP + "zamowienieInsert/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia])
+   let res = await axios.post(IP + "zamowienieInsert/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow])
 resolve(res)
   })
 }

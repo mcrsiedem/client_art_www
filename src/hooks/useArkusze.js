@@ -65,6 +65,9 @@ import { createArk_32_Z_modulo_24 } from "actions/createArkusze/32Z/createArk_32
 import { createArk_32_Z_modulo_28 } from "actions/createArkusze/32Z/createArk_32_Z_modulo_28";
 import { AppContext } from "context/AppContext";
 import { useIntroligatornia } from "./useIntroligatornia";
+import { getMaxIndeks } from "actions/getMaxIndeks";
+import { findNadkomplet } from "actions/findNadkomplet";
+import { getMaxID } from "actions/getMaxID";
 
 
 export function useArkusze(status_id){
@@ -649,6 +652,86 @@ let nr= 1;
 
 
   function createUlotki() {
+
+      const new_arkusze = [];
+  const new_legi = [];
+  const new_legiFragmenty = [];
+  const new_grupy = [];
+  const new_wykonania = [];
+
+ elementyTech.map((row) => {
+    
+    const ilosc_leg_na_arkuszu = row.ilosc_leg;
+    const rodzaj_legi = row.lega;
+    let rodzaj_arkusza = 0;
+    if(row.ilosc_stron == row.lega ){
+    rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu / ilosc_leg_na_arkuszu; // wszystkie legi na rkuszu są takie same
+    } else{
+      rodzaj_arkusza = rodzaj_legi * ilosc_leg_na_arkuszu // rózne legi na arkuszu
+    }
+
+    const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza /ilosc_leg_na_arkuszu;
+    const modulo = row.ilosc_stron % rodzaj_arkusza;
+
+    const ark = {
+      typ_elementu: row.typ,
+      rodzaj_arkusza,
+      naklad: row.naklad,
+      nadkomplet: "",
+      element_id: row.id,
+      ilosc_stron: row.lega,
+      uwagi: "",
+      nr_arkusza: "",
+      arkusz_szerokosc: row.arkusz_szerokosc,
+      arkusz_wysokosc: row.arkusz_wysokosc,
+      papier_id: row.papier_id,
+      papier_postac_id: row.papier_postac_id,
+      technologia_id: row.technologia_id,
+      insert: true
+    };
+
+    const lega = {
+      typ_elementu: row.typ,
+      rodzaj_legi,
+      element_id: row.id,
+      ilosc_stron: row.lega,
+      naklad: row.naklad,
+      uwagi: "",
+      nr_legi: "",
+      technologia_id: row.technologia_id,
+      insert: true
+    };
+
+
+  new_arkusze.push({
+    id: getMaxID(new_arkusze),
+    indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
+    ...ark,
+    nr_arkusza:1,
+    naklad:Math.ceil( ark.naklad /  ilosc_leg_na_arkuszu),
+    ilosc_leg: ilosc_leg_na_arkuszu,
+    nadkomplet: findNadkomplet(nadkomplety,ark.naklad /  ilosc_leg_na_arkuszu) 
+  });
+
+
+
+    // do każdego ark dodaje odpowiednią ilość leg
+    new_legi.push({
+      id: getMaxID(new_legi),
+      indeks: getMaxIndeks(new_legi.filter(x=> x.element_id == row.id)),
+      ...lega,
+      nr_legi:1,
+      arkusz_id: 1, // to zle ale nie chce mi sie teraz porawiać bo jestem pijany hihi
+    });
+
+
+
+
+
+
+  });
+
+
 
   }
 

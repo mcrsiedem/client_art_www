@@ -7,7 +7,7 @@
 }
 .row1{
   display: grid;
-  grid-template-columns: 20px 200px 70px 110px 1fr 2fr 4fr 120px 120px 20px;
+  grid-template-columns: 20px 200px 70px 110px 1fr 2fr 5fr 120px 120px 20px;
   gap: 10px;
   margin-left: 70px;
   margin-right: 70px;
@@ -71,6 +71,7 @@ margin-bottom: 0px;
 
 .menu_introligatornia{
   position: relative;
+  padding-top: 16px;
   }
 
   .expand {
@@ -148,7 +149,7 @@ padding-left: 5px;
 }
 
 .procesy_elementy:hover{
-    background-color: rgba(212, 255, 131, 0.527);
+    background-color: rgba(219, 219, 219, 0.527);
 }
 
 .procesy {
@@ -193,5 +194,6 @@ padding-left: 5px;
 
 .procesy_elementy_light {
   font-size: 0.8rem;
-  /* padding-top: 2px; */
+  padding-top: 5px;
+  /* color: #ffffff; */
 }

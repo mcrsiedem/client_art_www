@@ -374,7 +374,7 @@ function Strony({ row,indeks }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   const elementy = techContext.elementy;
 
-  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
+  const {createArkuszeFromElemenets,ponumerujArkusze} = useArkusze()
 
   const handleKeyPress= (e)=> {
     if (e.key === 'Enter') {

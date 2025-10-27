@@ -642,13 +642,19 @@ let nr= 1;
 
 
 
-  // ponumerujFregmentyLeg()
 
-  // ponumerujArkusze()
 
 }
 
 
+
+  function createUlotki() {
+
+  }
+
+
+
+  
 
 const MaxID = (value) => {
   let maxID = null;
@@ -690,7 +696,7 @@ const SumaPrzelotow = (wykonania,grupa) => {
 };
 
 
-  return [createArkuszeFromElemenets,ponumerujArkusze];
+  return {createArkuszeFromElemenets,ponumerujArkusze,createUlotki};
 
 }
 

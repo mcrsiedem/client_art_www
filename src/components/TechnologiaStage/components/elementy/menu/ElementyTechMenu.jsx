@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "./ElementyTechMenu.module.css";
-import { createArkuszeFromElemenetsOneRow } from "actions/createArkuszeFromElementsOneRow";
 import { ponumerArkusze } from "actions/ponumerArkusze";
 import { useArkuszeOne } from "hooks/useArkuszeOne";
 import { useProcesy } from "hooks/procesy/useProcesy";

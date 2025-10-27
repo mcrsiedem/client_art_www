@@ -25,8 +25,8 @@ export default function Header({}) {
   const appcontext = useContext(AppContext);
   const listaPapierow = appcontext.listaPapierow;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  
-  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
+
+  const { createArkuszeFromElemenets, ponumerujArkusze } = useArkusze();
   return (
     <header
       className={style.headerMain}
@@ -34,7 +34,7 @@ export default function Header({}) {
         console.clear();
         // console.log("Karta Technologiczna: ");
         console.log("Dane Tech: ", techContext.daneTech);
-        // console.log("Produkt Tech: ", techContext.produktyTech);
+        console.log("Produkt Tech: ", techContext.produktyTech);
         console.log("Elementy Tech: ", techContext.elementyTech);
         console.log("Fragmenty Tech: ", techContext.fragmentyTech);
         console.log("Oprawa Tech: ", techContext.oprawaTech);
@@ -50,8 +50,6 @@ export default function Header({}) {
           "lista wszystkich procesów appcontext.procesList: ",
           appcontext.procesList
         );
-        //  ponumerujArkusze();
-        //  ponumerujArkusze();
 
 
         // 

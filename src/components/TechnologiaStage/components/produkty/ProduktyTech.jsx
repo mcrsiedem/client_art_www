@@ -128,8 +128,10 @@ function ProduktyTable2() {
 
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
 
-  const [createArkuszeFromElemenets,ponumerujArkusze] = useArkusze()
-  // const [createArkuszeFromElemenets,ponumerujArkusze] = useArkuszeFragmenty()
+    const contextTech = useContext(TechnologyContext);
+  const produktyTech = contextTech.produktyTech;
+
+  const { createArkuszeFromElemenets, createUlotki } = useArkusze();
  
       return (
     
@@ -140,7 +142,16 @@ const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {
         src={Logo_ustawienia2}
         title="Auto wszystkie arkusze + legi"
         onClick={() => {
-          createArkuszeFromElemenets()
+
+          if (produktyTech.typ == 1) {
+            createArkuszeFromElemenets();
+          }
+          if (produktyTech.typ == 2) {
+          createUlotki()
+
+          }
+          // if typ
+         
         }}
         alt="x"
       />

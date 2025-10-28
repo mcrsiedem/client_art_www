@@ -16,7 +16,9 @@ export default function ElementyTech({}) {
       <div className={style.element}>
         {/* <ElementyTableHeader /> */}
         <ElementyTable />
+        
       </div>
+      
     </div>
   );
 }
@@ -39,6 +41,7 @@ function ElementyTable({}) {
             .map((row, indeks) => {
               return <RowTechElement key={row.id} indeks={indeks} row={row} />;
             })}
+            
         </div>
 
 

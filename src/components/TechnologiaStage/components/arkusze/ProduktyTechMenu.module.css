@@ -1,0 +1,60 @@
+
+
+
+  .menu_legi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  position:  absolute ;
+  top: 5px;
+  left: -180px;
+  z-index: 100;
+  
+  width: 200px;
+  height: 120px;
+  
+  background-color: grey;
+  border-radius: 10px;
+  }
+  
+  .menu_legi_btn{
+  height: 50px;
+  width: 100%;
+  background-color: gray;
+  color: whitesmoke;
+  border: none;
+  /* border: 1px solid rgb(157, 157, 157); */
+  }
+  .menu_legi_btn:hover{
+  background-color: rgb(157, 157, 157);
+  }
+  
+  .td_checkbox{
+    width: 20px;
+  }
+  
+  /* .tr_legi_mini{
+    
+    height: 1rem;
+    background-color: rgb(155, 210, 255);
+  } */
+  
+  .tr_legi_mini td {
+    height: 1rem;
+  
+    background-color: rgb(182, 210, 247);
+    /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
+  
+    /* border-radius: 5px; */
+  }
+  
+  .td_checkbox{
+    width: 10px;
+  }
+  
+  .ch_box{
+  
+   height: 12px;
+  }

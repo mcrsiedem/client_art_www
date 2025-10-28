@@ -17,16 +17,22 @@ export default function ProduktyTech() {
   const contextTech = useContext(TechnologyContext);
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
+  const produktyTech = contextTech.produktyTech;
+
+
   return (
     <div className={style.container}>
       <div className={style.produkt}>
+        <div className={style.produkt_menu_button}>
+          <p style={{ color: "grey", fontSize: "1.5rem", paddingTop: "10px" }}> Druk </p>
 
-      <div className={style.produkt_menu_button}>
-    {/* <p>Produkt</p> */}
-    <p style={{color:"grey" , fontSize:"1.5rem", paddingTop:"10px"}}> Druk</p>
-<Generuj/>
-  </div>
-   
+
+         {produktyTech[0].typ ==1 && <GenerujBroszure />} 
+         {produktyTech[0].typ ==2 && <GenerujUlotki />} 
+
+
+        </div>
+
         <ProduktyTable2 />
       </div>
     </div>
@@ -35,68 +41,147 @@ export default function ProduktyTech() {
 
 //--------------------------
 
-function Generuj() {
+function GenerujUlotki() {
   const contextTech = useContext(TechnologyContext);
   const arkusze = contextTech.arkusze;
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
 
+  if (arkusze.length == 0) {
+    return (
+      <div className={style.produkt_menu_button_sub}>
+        {/* <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(2, elementyTech, setElementyTech);
+            }}
+          >
+            2
+          </button>
+        </div> */}
 
-  if(arkusze.length ==0) {  return (
+        {/* <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(12, elementyTech, setElementyTech);
+            }}
+          >
+            12
+          </button>
+        </div>
 
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(16, elementyTech, setElementyTech);
+            }}
+          >
+            16
+          </button>
+        </div>
 
-    <div className={style.produkt_menu_button_sub}>
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(24, elementyTech, setElementyTech);
+            }}
+          >
+            24
+          </button>
+        </div> */}
 
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.ulotki_dodaj_legi_btn}
+            onClick={() => {
+              input1632toElement(32, elementyTech, setElementyTech);
+            }}
+          >
+            Dodaj legi do ulotek
+          </button>
+        </div>
 
-
-  <div className={style.produkt_menu_button_sub_16}>
-
-
-
-        <button className={style.BTN_12_24_16_32} onClick={() => {
-              input1632toElement(2,elementyTech,setElementyTech)
-            
-        }}>2</button>
+        <MenuProduktyBtn />
       </div>
+    );
+  }
+}
 
-      <div className={style.produkt_menu_button_sub_16}>
 
 
 
-        <button className={style.BTN_12_24_16_32} onClick={() => {
-              input1632toElement(12,elementyTech,setElementyTech)
-            
-        }}>12</button>
+function GenerujBroszure() {
+  const contextTech = useContext(TechnologyContext);
+  const arkusze = contextTech.arkusze;
+  const elementyTech = contextTech.elementyTech;
+  const setElementyTech = contextTech.setElementyTech;
+
+  if (arkusze.length == 0) {
+    return (
+      <div className={style.produkt_menu_button_sub}>
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(2, elementyTech, setElementyTech);
+            }}
+          >
+            2
+          </button>
+        </div>
+
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(12, elementyTech, setElementyTech);
+            }}
+          >
+            12
+          </button>
+        </div>
+
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(16, elementyTech, setElementyTech);
+            }}
+          >
+            16
+          </button>
+        </div>
+
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(24, elementyTech, setElementyTech);
+            }}
+          >
+            24
+          </button>
+        </div>
+
+        <div className={style.produkt_menu_button_sub_16}>
+          <button
+            className={style.BTN_12_24_16_32}
+            onClick={() => {
+              input1632toElement(32, elementyTech, setElementyTech);
+            }}
+          >
+            32
+          </button>
+        </div>
+
+        <MenuProduktyBtn />
       </div>
-
-      <div className={style.produkt_menu_button_sub_16}>
-        <button className={style.BTN_12_24_16_32} onClick={() => {
-              input1632toElement(16,elementyTech,setElementyTech)
-            
-        }}>16</button>
-      </div>
-
-      <div className={style.produkt_menu_button_sub_16}>
-        <button className={style.BTN_12_24_16_32} onClick={() => {
-              input1632toElement(24,elementyTech,setElementyTech)
-            
-        }}>24</button>
-      </div>
-
-      <div className={style.produkt_menu_button_sub_16}>
-        <button className={style.BTN_12_24_16_32} onClick={() => {
-              input1632toElement(32,elementyTech,setElementyTech)
-            
-        }}>32</button>
-      </div>
-
-
-      <MenuProduktyBtn />
-    </div>
-
-
-  );}
-
+    );
+  }
 }
 
 
@@ -173,13 +258,13 @@ const updateRowProduktyTech = contextTech.updateRowProduktyTech;
       <label className={style.label}> Typ </label>
       <select
         className={style.select}
-        defaultValue={row?.typ}
-        onChange={(e) => {
-          updateRowProduktyTech({
-            ...row,
-            typ: e.target.value, update:true
-          });
-        }}
+        value={row?.typ}
+        // onChange={(e) => {
+        //   updateRowProduktyTech({
+        //     ...row,
+        //     typ: e.target.value, update:true
+        //   });
+        // }}
       >
         {}
         {contextApp.productType.map((option) => (

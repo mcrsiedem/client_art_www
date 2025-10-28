@@ -959,6 +959,8 @@ const nadkomplety = contextApp.nadkomplety;
   function NakladLegi ({row,i}) {
     const techContext = useContext(TechnologyContext)
     const handleUpdateRowLegi = techContext.handleUpdateRowLegi;
+    const elementyTech = techContext.elementyTech;
+    const setElementyTech = techContext.setElementyTech;
     return (
         <input
         className={style.input_legi}
@@ -972,7 +974,24 @@ const nadkomplety = contextApp.nadkomplety;
               naklad: e.target.value,
               update: true
             }
-            )}}
+
+
+
+            )
+        //           setElementyTech(
+        //   elementyTech.map((t) => {
+        //     if (t.id === row.element_id) {
+        //       return {...t, zmiana: e.target.value}
+        //     } else {
+        //       return t;
+        //     }
+        //   })
+        // )
+          
+          }
+          
+          
+          }
           }
         ></input>
     );

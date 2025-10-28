@@ -18,8 +18,11 @@ import Arkusz from "./Arkusz";
 export default function ArkuszeDoDruku() {
   const contextTech = useContext(TechnologyContext);
   const elementyTech = contextTech.elementyTech;
+  const arkusze = contextTech.arkusze;
   const setElementyTech = contextTech.setElementyTech;
-  return (
+
+  if(arkusze.length >0){
+      return (
     <div className={style.container}>
       
       <div className={style.produkt}>
@@ -36,6 +39,8 @@ export default function ArkuszeDoDruku() {
       </div>
     </div>
   );
+  }
+
 }
 
 //--------------------------

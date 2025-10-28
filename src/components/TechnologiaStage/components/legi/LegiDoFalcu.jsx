@@ -19,7 +19,10 @@ import Lega from "./Lega";
 export default function LegiDoFalcu() {
   const contextTech = useContext(TechnologyContext);
   const elementyTech = contextTech.elementyTech;
+  const legi = contextTech.legi;
   const setElementyTech = contextTech.setElementyTech;
+
+    if(legi.length>0){
   return (
     <div className={style.container}>
       
@@ -36,6 +39,7 @@ export default function LegiDoFalcu() {
       </div>
     </div>
   );
+}
 }
 
 //--------------------------
@@ -110,7 +114,8 @@ function LegiTable() {
   const legi = contextTech.legi;
 
 
-  return (
+
+      return (
         <div className={style.container_for_arkusze}>
           
           {legi?.filter((x) => x.typ_elementu !=1 && x.delete != true)
@@ -128,6 +133,10 @@ function LegiTable() {
         </div>
         
   );
+  
+
+
+
 }
 
 const MenuProduktyBtn = ({ row, showMenu, setShowMenu }) => {

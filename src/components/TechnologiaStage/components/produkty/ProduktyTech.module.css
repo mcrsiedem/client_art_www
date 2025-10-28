@@ -224,3 +224,26 @@ scale: 125%
   box-shadow: none;
   /* box-shadow: 2px 2px 2px rgb(141, 141, 141) */
 }
+
+
+.ulotki_dodaj_legi_btn{
+  /* width: 30px; */
+  height: 30px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background: transparent;
+  border: 1px solid rgb(214, 214, 214);
+  /* border: none; */
+  /* background-color: rgb(230, 240, 253); */
+  box-shadow: 1px 1px 1px rgb(141, 141, 141);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ulotki_dodaj_legi_btn:hover{
+  background-color: rgb(215, 215, 215);
+}
+.ulotki_dodaj_legi_btn:active{
+  box-shadow: none;
+  /* box-shadow: 2px 2px 2px rgb(141, 141, 141) */
+}

@@ -340,7 +340,7 @@ function Id({ row }) {
   const sprawdzCzyJestLega = (row) =>{
 
 if (!legi.some( x => x.element_id == row.id)) return style.input_id_red
-if (legi.filter( x => x.element_id == row.id).reduce((akumulator, element) => akumulator + element.naklad, 0)!= row.naklad) return style.input_id_yellow
+if (legi.filter( x => x.element_id == row.id).reduce((akumulator, element) => parseInt(akumulator) + parseInt(element.naklad), 0)< row.naklad) return style.input_id_yellow
 
     return style.input_id
   }

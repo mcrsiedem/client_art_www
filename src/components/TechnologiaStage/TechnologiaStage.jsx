@@ -10,6 +10,7 @@ import ProcesElementTech from "./components/elementy/ElementTechProces";
 import PaperStage from "components/PaperStage/PaperStage";
 import IntroligatorniaTech from "./components/introligatornia/IntroligatorniaTech";
 import ArkuszeDoDruku from "./components/arkusze/ArkuszeDoDruku";
+import LegiDoFalcu from "./components/legi/LegiDoFalcu";
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
@@ -21,7 +22,11 @@ export default function TechnologiaStage() {
                   <div className={style.main}>
                           <ProduktyTech />
                           <ElementyTech />
+                          <div className={style.ark_leg_container}>
+
                           <ArkuszeDoDruku/>
+                          <LegiDoFalcu/>
+                          </div>
                            
                           <IntroligatorniaTech />
                           <WykonanieStage />

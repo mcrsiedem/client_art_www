@@ -1,4 +1,4 @@
-import style from "./ArkuszeDoDruku.module.css";
+import style from "./LegiDoFalcu.module.css";
 import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
@@ -13,9 +13,10 @@ import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArk
 import { input1632toElement } from "actions/input1632toElement";
 import { useArkusze } from "hooks/useArkusze";
 import RowArkusze from "../elementy/RowArkusze";
-import Arkusz from "./Arkusz";
+import Arkusz from "./Lega";
+import Lega from "./Lega";
 
-export default function ArkuszeDoDruku() {
+export default function LegiDoFalcu() {
   const contextTech = useContext(TechnologyContext);
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
@@ -27,12 +28,11 @@ export default function ArkuszeDoDruku() {
 
       <div className={style.produkt_menu_button}>
     {/* <p>Produkt</p> */}
-    <p style={{color:"grey" , fontSize:"1.5rem", paddingTop:"10px" , paddingLeft:"20px"}}> Arkusze</p>
+    <p style={{color:"grey" , fontSize:"1.5rem", paddingTop:"10px", paddingLeft:"20px"}}> Legi</p>
 {/* <Generuj/> */}
-{/* <hr></hr> */}
   </div>
    
-        <ArkuszeTable />
+        <LegiTable />
       </div>
     </div>
   );
@@ -105,24 +105,24 @@ function Generuj() {
 }
 
 
-function ArkuszeTable() {
+function LegiTable() {
   const contextTech = useContext(TechnologyContext);
-  const arkusze = contextTech.arkusze;
+  const legi = contextTech.legi;
 
 
   return (
         <div className={style.container_for_arkusze}>
           
-          {arkusze?.filter((x) => x.typ_elementu !=1 && x.delete != true)
-.sort((a, b) => a.nr_arkusza - b.nr_arkusza)
+          {legi?.filter((x) => x.typ_elementu !=1 && x.delete != true)
+.sort((a, b) => a.nr_legi - b.nr_legi)
             .map((row, i) => {
-              return <Arkusz key={row.id} i={i} row={row} />;
+              return <Lega key={row.id} i={i} row={row} />;
             })}
 
-                      {arkusze?.filter((x) =>  x.typ_elementu ==1 && x.delete != true)
-.sort((a, b) => a.nr_arkusza - b.nr_arkusza)
+                      {legi?.filter((x) =>  x.typ_elementu ==1 && x.delete != true)
+.sort((a, b) => a.nr_legi - b.nr_legi)
             .map((row, i) => {
-              return <Arkusz key={row.id} i={i} row={row} />;
+              return <Lega key={row.id} i={i} row={row} />;
             })}
              {/* <hr></hr> */}
         </div>

@@ -7,7 +7,7 @@ import logoExtract from "assets/extract_green.svg";
 import logoExpand from "assets/expand.svg";
 import iconTrash from "assets/trash2.svg"
 import icon from "assets/copy.svg";
-import style from "./Arkusz.module.css";
+import style from "./Lega.module.css";
 import { _typ_elementu, reg_cena, reg_int, reg_txt } from "utils/initialvalue";
 import addIcon2 from "assets/addIcon2.svg"
 import { findNadkomplet } from "actions/findNadkomplet";
@@ -17,7 +17,7 @@ import { getNameOfPapier } from "actions/getNameOfPapier";
 import { getNameOfElementTyp } from "actions/getNameOfElementTyp";
 
 
-export default function Arkusz  ({ row,i })  {
+export default function Lega  ({ row,i })  {
     const techContext = useContext(TechnologyContext);
     const legi = techContext.legi;
     const elementyTech = techContext.elementyTech;
@@ -34,30 +34,28 @@ export default function Arkusz  ({ row,i })  {
 
 
       <Elementy row={row}/>
-      <NrArkusza row={row}/>
-      <RodzajArkusza row={row}/>
+      <NrLegi row={row}/>
+      <RodzajLegi row={row}/>
       <Naklad row={row}/>
-      <Rozjazd row={row}/>
-      <Papier row={row}/>
+      {/* <Rozjazd row={row}/> */}
+      {/* <Papier row={row}/> */}
 
     </div>)
 
 
-  function NrArkusza({ row }) {
-    return <input className={style.nr_arkusza} value={row.nr_arkusza}></input>;
+  function NrLegi({ row }) {
+    return <input className={style.nr_arkusza} value={row.nr_legi}></input>;
   }
 
-    function RodzajArkusza({ row }) {
-    return <input className={style.input_id} value={row.rodzaj_arkusza +"ka"}></input>;
+    function RodzajLegi({ row }) {
+    return <input className={style.input_id} value={row.rodzaj_legi +"ka"}></input>;
   }
 
 
   function Naklad({ row }) {
     return <input className={style.input_id} value={row.naklad}></input>;
   } 
-   function Rozjazd({ row }) {
-    return <input className={style.input_id} value={row.nadkomplet}></input>;
-  }
+
 
      function Papier({ row }) {
    const appcontext = useContext(AppContext);
@@ -70,9 +68,7 @@ export default function Arkusz  ({ row,i })  {
     return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } value={getNameOfElementTyp( row.typ_elementu,_typ_elementu) +" " + elementyTech.find(x => x.id == row.element_id).nazwa}></input>;
   }
 
-      function NazwaElementu({ row }) {
-    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } value={getNameOfElementTyp( row.typ_elementu,_typ_elementu)}></input>;
-  }
+
 
     //drag arkusz
 

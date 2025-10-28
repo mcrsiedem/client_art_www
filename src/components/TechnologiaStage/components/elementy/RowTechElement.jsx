@@ -333,19 +333,32 @@ function Rozwin({ arkusze,row, showArkusze, setShowArkusze }) {
 function Id({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+  const legi = techContext.legi;
+
+
+
+  const sprawdzCzyJestLega = (row) =>{
+
+if (!legi.some( x => x.element_id == row.id)) return style.input_id_red
+if (legi.filter( x => x.element_id == row.id).reduce((akumulator, element) => akumulator + element.naklad, 0)!= row.naklad) return style.input_id_yellow
+
+    return style.input_id
+  }
   return (
     <input
-      className={style.input_id}
+      // className={style.input_id}
+      className={sprawdzCzyJestLega(row)}
       disabled
       value={row.id}
-      onChange={(e) => {
-        if (e.target.value === "" || reg_int.test(e.target.value)) {
-          handleUpdateRowElementyTech({
-            ...row,
-            naklad: e.target.value,
-          });
-        }
-      }}
+      title="Czerwone: nie ma legi, Żółte: za mała ilość leg"
+      // onChange={(e) => {
+      //   if (e.target.value === "" || reg_int.test(e.target.value)) {
+      //     handleUpdateRowElementyTech({
+      //       ...row,
+      //       naklad: e.target.value,
+      //     });
+      //   }
+      // }}
     ></input>
   );
 }

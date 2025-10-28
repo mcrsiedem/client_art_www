@@ -101,7 +101,7 @@ function GenerujUlotki() {
               input1632toElement(32, elementyTech, setElementyTech);
             }}
           >
-            Dodaj legi do ulotek
+            Utwórz lege z każdej ulotki
           </button>
         </div>
 

@@ -23,10 +23,11 @@
   .menu_legi_btn{
   height: 50px;
   width: 100%;
-  background-color: rgb(178, 217, 19);
+  background-color: rgb(216, 216, 216);
   
   color: rgb(65, 65, 65);
-  
+  text-align: start;
+  padding-left: 20px;
   border: none;
   border-bottom: 1px solid rgb(189, 189, 189);
   }
@@ -42,7 +43,9 @@
   .menu_legi_btn:last-child{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: rgb(185, 185, 185);
+    background-color: rgba(185, 185, 185, 0.411);
+      text-align: center;
+  padding-left: 0px;
   }
   .menu_legi_btn:last-child:hover{
     border-bottom-left-radius: 10px;

@@ -315,7 +315,7 @@ function NadkompletElement({ row }) {
 
 
 function Rozwin({ arkusze,row, showArkusze, setShowArkusze }) {
-  if  (arkusze?.filter((x) => x.element_id == row.id).length !== 0){
+  if  (arkusze?.filter(x=> x.delete != true).filter((x) => x.element_id == row.id).length !== 0){
   return (
     <div>
       <img
@@ -339,7 +339,7 @@ function Id({ row }) {
 
   const sprawdzCzyJestLega = (row) =>{
 
-if (!legi.some( x => x.element_id == row.id)) return style.input_id_red
+if (!legi.filter(x=> x.delete != true).some( x => x.element_id == row.id)) return style.input_id_red
 if (legi.filter( x => x.element_id == row.id).reduce((akumulator, element) => parseInt(akumulator) + parseInt(element.naklad), 0)< row.naklad) return style.input_id_yellow
 
     return style.input_id

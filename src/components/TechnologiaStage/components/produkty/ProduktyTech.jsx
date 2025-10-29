@@ -12,6 +12,7 @@ import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { createArkuszeFromElemenets } from "actions/createArkusze/STAREcreateArkuszeFromElements";
 import { input1632toElement } from "actions/input1632toElement";
 import { useArkusze } from "hooks/useArkusze";
+import GenerujUlotki from "./components/GenerujUlotki";
 
 export default function ProduktyTech() {
   const contextTech = useContext(TechnologyContext);
@@ -41,13 +42,13 @@ export default function ProduktyTech() {
 
 //--------------------------
 
-function GenerujUlotki() {
+function GenerujUlotki2() {
   const contextTech = useContext(TechnologyContext);
   const arkusze = contextTech.arkusze;
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
 
-  if (arkusze.length == 0) {
+  if (arkusze.filter(x=> x.delete != true).length == 0) {
     return (
       <div className={style.produkt_menu_button_sub}>
         {/* <div className={style.produkt_menu_button_sub_16}>
@@ -120,7 +121,7 @@ function GenerujBroszure() {
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
 
-  if (arkusze.length == 0) {
+  if (arkusze.filter(x=> x.delete != true).length == 0) {
     return (
       <div className={style.produkt_menu_button_sub}>
         <div className={style.produkt_menu_button_sub_16}>

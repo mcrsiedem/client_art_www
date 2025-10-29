@@ -22,7 +22,7 @@ export default function LegiDoFalcu() {
   const legi = contextTech.legi;
   const setElementyTech = contextTech.setElementyTech;
 
-    if(legi.length>0){
+    if(legi.filter(x=> x.delete != true).length>0){
   return (
     <div className={style.container}>
       

@@ -21,7 +21,7 @@ export default function ArkuszeDoDruku() {
   const arkusze = contextTech.arkusze;
   const setElementyTech = contextTech.setElementyTech;
 
-  if(arkusze.length >0){
+  if(arkusze.filter(x=> x.delete != true).length >0){
       return (
     <div className={style.container}>
       

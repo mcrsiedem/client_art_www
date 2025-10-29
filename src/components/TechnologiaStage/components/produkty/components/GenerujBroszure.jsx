@@ -1,4 +1,4 @@
-import style from "./ProduktyTech.module.css";
+import style from "./GenerujBroszure.module.css";
 import { useContext } from "react";
 
 import { TechnologyContext } from "context/TechnologyContext";

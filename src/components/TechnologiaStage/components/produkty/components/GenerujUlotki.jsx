@@ -7,12 +7,14 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 
 import { input1632toElement } from "actions/input1632toElement";
 import { useArkusze } from "hooks/useArkusze";
+import { useGenerujUlotku } from "./useGenerujUlotku";
 
 export default function  GenerujUlotki() {
   const contextTech = useContext(TechnologyContext);
   const arkusze = contextTech.arkusze;
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
+  const {generujUlotki} = useGenerujUlotku()
 
   if (arkusze.filter(x=> x.delete != true).length == 0) {
     return (
@@ -65,11 +67,34 @@ export default function  GenerujUlotki() {
           <button
             className={style.ulotki_dodaj_legi_btn}
             onClick={() => {
-              input1632toElement(32, elementyTech, setElementyTech);
+              // input1632toElement(32, elementyTech, setElementyTech);
+generujUlotki()
             }}
           >
-            Utwórz lege z każdej ulotki
+                    Utwórz lege z każdej ulotki
+           
           </button>
+
+
+        </div>
+
+
+        <div className={style.produkt_scal}>
+
+
+                    <button
+            className={style.ulotki_dodaj_legi_btn}
+            onClick={() => {
+              input1632toElement(32, elementyTech, setElementyTech);
+              
+            }}
+          >
+         Scal legi na arkusz 
+          </button>
+
+          <input 
+          className={style.scal_po_ile}
+          value={1}></input>
         </div>
 
         <MenuProduktyBtn />

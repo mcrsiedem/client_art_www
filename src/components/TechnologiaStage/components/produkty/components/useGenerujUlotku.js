@@ -12,11 +12,14 @@ export function useGenerujUlotku(status_id){
 // const procesList = appContext.procesList;
 // const produkty = modalInsertContext.produkty;
   const contextTech = useContext(TechnologyContext);
+  const legi = contextTech.legi;
+  const setLegi = contextTech.setLegi;
   const arkusze = contextTech.arkusze;
+  const setArkusze = contextTech.setArkusze;
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
 
-function generujUlotki() {
+function legiKazdaUlotka() {
 
   setElementyTech(
     elementyTech.map((t) => {
@@ -29,19 +32,20 @@ function generujUlotki() {
         // } else {
         //   return t;
         // }
-      
-
-     
-
-
     })
   );
+
+
+
+
+
+
 
   }
 
 
 
-  return {generujUlotki};
+  return {legiKazdaUlotka};
 
 
 

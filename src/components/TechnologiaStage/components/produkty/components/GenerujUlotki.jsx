@@ -14,7 +14,7 @@ export default function  GenerujUlotki() {
   const arkusze = contextTech.arkusze;
   const elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
-  const {generujUlotki} = useGenerujUlotku()
+  const {legiKazdaUlotka} = useGenerujUlotku()
 
   if (arkusze.filter(x=> x.delete != true).length == 0) {
     return (
@@ -68,7 +68,7 @@ export default function  GenerujUlotki() {
             className={style.ulotki_dodaj_legi_btn}
             onClick={() => {
               // input1632toElement(32, elementyTech, setElementyTech);
-generujUlotki()
+legiKazdaUlotka()
             }}
           >
                     Utwórz lege z każdej ulotki

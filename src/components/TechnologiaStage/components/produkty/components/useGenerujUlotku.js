@@ -32,20 +32,14 @@ const legiKazdaUlotka = () =>{
     return { ...t, lega: t.ilosc_stron, ilosc_leg: 1};
     })
 
-  // setElementyTech(
-  //   elementyTech.map((t) => {
-  //   return { ...t, lega: t.ilosc_stron, ilosc_leg: 1};
-  //   })
-  // );
-      const new_arkusze = [];
+  const new_arkusze = [];
   const new_legi = [];
   const new_legiFragmenty = [];
-  const new_grupy = [];
-  const new_wykonania = [];
-   let arkusz_id = 1;
+
+   let arkusz_id = 0;
 
  elementyTech.map((row) => {
-    
+    arkusz_id++
     const ilosc_leg_na_arkuszu = row.ilosc_leg;
     const rodzaj_legi = row.lega;
     let rodzaj_arkusza = 0;
@@ -91,7 +85,7 @@ const legiKazdaUlotka = () =>{
 
   new_arkusze.push({
     // id: getMaxID(new_arkusze),
-    id: arkusz_id++,
+    id: arkusz_id,
     indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
     ...ark,
     nr_arkusza:1,
@@ -159,16 +153,10 @@ const legiKazdaUlotkaJedenArkusz = () =>{
     return { ...t, lega: t.ilosc_stron, ilosc_leg: 1};
     })
 
-  // setElementyTech(
-  //   elementyTech.map((t) => {
-  //   return { ...t, lega: t.ilosc_stron, ilosc_leg: 1};
-  //   })
-  // );
-      const new_arkusze = [];
+
+  const new_arkusze = [];
   const new_legi = [];
   const new_legiFragmenty = [];
-  const new_grupy = [];
-  const new_wykonania = [];
    let arkusz_id = 1;
 
  elementyTech.map((row) => {

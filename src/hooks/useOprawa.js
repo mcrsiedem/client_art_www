@@ -35,7 +35,7 @@ let ilosc_leg = legiFragmenty.filter(x=>x.oprawa_id ==local_oprawa_id&& x.typ!=1
 // zeszyt 54-59
 // inna 60-66
 
-if(proces_id == 50 || proces_id ==51 || proces_id ==52){
+if(proces_id == 50 || proces_id ==51 || proces_id ==52 || proces_id ==91){
 
   czas= Math.ceil(ilosc_leg /16) * naklad / predkosc *60 +narzad
   return  parseInt(czas,10);

@@ -16,6 +16,8 @@ export function useGenerujUlotku(status_id){
   let elementyTech = contextTech.elementyTech;
   const setElementyTech = contextTech.setElementyTech;
       const oprawaTech = contextTech.oprawaTech;
+      const procesyElementowTech = contextTech.procesyElementowTech;
+      const setProcesyElementowTech = contextTech.setProcesyElementowTech;
 
     const legiFragmenty = contextTech.legiFragmenty;
     const setLegiFragmenty = contextTech.setLegiFragmenty;
@@ -40,7 +42,7 @@ const legiKazdaUlotka = () =>{
   const new_legiFragmenty = [];
   const new_grupy = [];
   const new_wykonania = [];
-   let arkusz_id = 0;
+   let arkusz_id = 1;
 
  elementyTech.map((row) => {
     
@@ -167,7 +169,7 @@ const legiKazdaUlotkaJedenArkusz = () =>{
   const new_legiFragmenty = [];
   const new_grupy = [];
   const new_wykonania = [];
-   let arkusz_id = 0;
+   let arkusz_id = 1;
 
  elementyTech.map((row) => {
     
@@ -264,7 +266,7 @@ const legiKazdaUlotkaJedenArkusz = () =>{
     });
   });
 
-setArkusze(new_arkusze)
+setArkusze(new_arkusze.filter(x => x.id ==1)) // arkusze poza id 1 bo są puste
 setLegi(new_legi)
 setLegiFragmenty(new_legiFragmenty)
 
@@ -274,6 +276,9 @@ setElementyTech(
     })
   );
 
+
+
+  setProcesyElementowTech(procesyElementowTech.filter(x=> x.element_id ==1))
 
   }
 

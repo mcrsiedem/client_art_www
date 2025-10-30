@@ -728,10 +728,32 @@ let nr= 1;
 
 
 
-
+    
+  });
+  new_legi
+  .map((l, indeks) => {
+    new_legiFragmenty.push({
+      id: getMaxID(new_legiFragmenty),
+      indeks: getMaxIndeks(new_legiFragmenty),
+      // ...legaFragment,
+      lega_id: l.id,
+      nr_legi: l.nr_legi,
+      naklad: l.naklad,
+      fragment_id: l.id,
+      rodzaj_legi: l.rodzaj_legi,
+      // oprawa_id: l.oprawa_id,oprawaTech
+      oprawa_id: oprawaTech[0]?.id,
+      typ: l.typ_elementu,
+      wersja: "",
+      element_id: l.element_id,
+      arkusz_id: l.arkusz_id,
+      insert: true
+    });
   });
 
-
+setArkusze(new_arkusze)
+setLegi(new_legi)
+setLegiFragmenty(new_legiFragmenty)
 
   }
 

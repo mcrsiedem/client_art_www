@@ -36,7 +36,11 @@ function legiKazdaUlotka() {
   );
 
 
+elementyTech.forEach(element => {
 
+    
+  
+});
 
 
 

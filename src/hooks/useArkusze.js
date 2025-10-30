@@ -658,6 +658,7 @@ let nr= 1;
   const new_legiFragmenty = [];
   const new_grupy = [];
   const new_wykonania = [];
+   let arkusz_id = 0;
 
  elementyTech.map((row) => {
     
@@ -672,6 +673,7 @@ let nr= 1;
 
     const ilosc_arkuszy = row.ilosc_stron / rodzaj_arkusza /ilosc_leg_na_arkuszu;
     const modulo = row.ilosc_stron % rodzaj_arkusza;
+
 
     const ark = {
       typ_elementu: row.typ,
@@ -702,7 +704,7 @@ let nr= 1;
       insert: true
     };
 
-
+    
   new_arkusze.push({
     id: getMaxID(new_arkusze),
     indeks: getMaxIndeks(new_arkusze.filter(x=> x.element_id == row.id)),
@@ -728,7 +730,7 @@ let nr= 1;
 
 
 
-    
+
   });
   new_legi
   .map((l, indeks) => {

@@ -14,7 +14,7 @@ export function AddSheetFromCreator(mic,poc ) {
           naklad: mic.produkty[0].naklad,
           format_x: poc.preOrder.szerokosc,
           format_y: poc.preOrder.wysokosc,
-          oprawa: 0,
+          oprawa: 91,
           ilosc_stron: 2,
           typ:2,
           opiekun_zamowienia_id: DecodeToken(sessionStorage.getItem("token")).id,
@@ -76,7 +76,7 @@ export function AddSheetFromCreator(mic,poc ) {
         zamowienie_id: 1,
         produkt_id: 1,
         element_id: 1,
-        oprawa_id: 1,
+        oprawa_id: 91,
         naklad: mic.produkty[0].naklad,
         ilosc_stron: 2,
         wersja: "",
@@ -96,7 +96,7 @@ export function AddSheetFromCreator(mic,poc ) {
         return {
           ...t,
           naklad: mic.produkty[0].naklad,
-          oprawa: 0,
+          oprawa: 91,
   
           bok_oprawy: "",
     

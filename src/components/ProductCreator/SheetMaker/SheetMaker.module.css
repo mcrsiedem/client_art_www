@@ -181,12 +181,14 @@
   
   .btn:hover{
    
-    height: 30px;
-    width: 100px;
+    height: 40px;
+    width: 120px;
     border-radius: 10px;
     border: none;
     background-image: linear-gradient(rgb(107, 158, 224) 0%, rgb(126, 182, 255) 50%, rgb(107, 158, 224) 100%);
     color: #fff;
     outline: whitesmoke 1px solid;
+    transition: 1 1 1 ;
+        transition: background-image 0.3s ease,
     
   }

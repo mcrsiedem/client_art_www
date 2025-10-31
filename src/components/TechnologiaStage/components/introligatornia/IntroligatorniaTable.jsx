@@ -360,9 +360,9 @@ function RodzajOprawy({ row, handleChangeCardOprawa }) {
           }
         }}
       >
-                       {   <option value = "0"  >
+                       {/* {   <option value = "0"  >
              brak oprawy
-            </option>}
+            </option>} */}
          {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
             {option.typ} {option.rodzaj} 

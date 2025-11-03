@@ -8,6 +8,8 @@
 /* === PANEL FILTROWANIA === */
 .filterPanel {
     display: flex;
+  align-items: center;
+  justify-content: space-between;
     gap: 15px;
     margin-bottom: 20px;
     padding: 15px;
@@ -15,7 +17,20 @@
     border-radius: 5px;
     background-color: #f7f7f7;
     flex-wrap: wrap; 
+
 }
+
+.center {
+    display: flex;
+    gap: 15px;
+    /* margin-bottom: 20px; */
+    /* padding: 15px; */
+    /* border: 1px solid #e0e0e0; */
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    flex-wrap: wrap; 
+}
+
 
 .filterInput, .filterSelect {
     padding: 8px 10px;
@@ -26,7 +41,7 @@
 
 .resetButton {
     padding: 8px 15px;
-    background-color: #dc3545;
+    background-color: #4b4b4b;
     color: white;
     border: none;
     border-radius: 4px;
@@ -35,8 +50,25 @@
 }
 
 .resetButton:hover {
+    background-color: rgb(139, 139, 139);
+}
+
+.closeButton {
+    padding: 8px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.closeButton:hover {
     background-color: #c82333;
 }
+
+
+
 
 /* === TABELA I PRZEWIJANIE === */
 .tableResponsive {

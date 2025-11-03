@@ -195,7 +195,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
-                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2,4)}</td>
+                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   <TytulProcesGrup grup={grup}/>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styles from './UserPermissionsTable.module.css';
   import axios from "axios";
 import { IP } from "utils/Host";
+import { useNavigate } from 'react-router-dom';
 // === ZDEFINIOWANE KLUCZE KOLUMN ===
 // 1. Klucze podstawowych informacji o użytkowniku (STICKY, INPUT NUMBER)
 const USER_INFO_KEYS = ['asystent1', 'asystent2', 'procesor_domyslny'];
@@ -59,6 +60,7 @@ const UserPermissionsTable = () => {
     const [filterText, setFilterText] = useState('');
     const [filterPermission, setFilterPermission] = useState('');
     const [filterState, setFilterState] = useState('');
+      const navigate = useNavigate();
 
     // Symulacja pobierania danych
     useEffect(() => {
@@ -191,11 +193,12 @@ const UserPermissionsTable = () => {
 
     return (
         <div className={styles.permissionsContainer}>
-            <h2>Tabela Uprawnień Użytkowników 🛡️</h2>
+            {/* <h2>Tabela Uprawnień Użytkowników 🛡️</h2> */}
 
             {/* === Panel Filtrowania === */}
             <div className={styles.filterPanel}>
-                <input 
+                <div>  <h3>Uprawnienia </h3> </div>
+                <div className={styles.center}>                 <input 
                     type="text" 
                     placeholder="Filtruj po Imieniu/Loginie/Wartościach"
                     value={filterText}
@@ -231,8 +234,20 @@ const UserPermissionsTable = () => {
                     onClick={() => { setFilterText(''); setFilterPermission(''); setFilterState(''); setSortConfig({ key: 'id', direction: 'ascending' }); }}
                     className={styles.resetButton}
                 >
-                    Resetuj filtry
+                    Reset
                 </button>
+            </div>
+
+
+                    <div>                  <button 
+                    onClick={() => {  navigate("/ustawienia")}}
+                    className={styles.closeButton}
+                >
+                    X
+                </button></div>
+                
+
+
             </div>
             
             {sortedAndFilteredUsers.length === 0 && (

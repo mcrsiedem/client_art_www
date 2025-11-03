@@ -64,14 +64,14 @@ export default function Ustawienia({ user, setUser }) {
                 <div
                   className={style.pane}
                   onClick={() => {
+                     navigate("/users");
                     // navigate("/Zamowienia");
                   }}
                 >
                   {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
                   <p className={style.podpis_icon}
                              onClick={() => {
-                    // modalContext.showAddClientStage(true)
-                    navigate("/users");
+       
                   }}
                   >UŻYTKOWNICY</p>
                 </div>

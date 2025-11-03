@@ -167,7 +167,7 @@ function  PapierSelect2({
   return (
    <div className={style.papier_input_container}>
       <select
-        className={elementy[indeks].papier_id == row.papier_id ?style.select_papier :style.select_papierError} title={"W zamówieniu "+getNameOfPapier(listaPapierow, elementy[indeks].papier_id)}
+        className={elementy[indeks]?.papier_id == row.papier_id ?style.select_papier :style.select_papierError} title={"W zamówieniu "+getNameOfPapier(listaPapierow, elementy[indeks]?.papier_id)}
         value={row.papier_id}
         onChange={(e) => {
           handleChangeCardFragmenty_i_Elementy_Tech({
@@ -232,7 +232,7 @@ function PapierPostac({
   return (
    <div className={style.papier_input_container}>
       <select
-        className={elementy[indeks].papier_postac_id == row.papier_postac_id ?style.select_papier_postac :style.select_papier_postacError} title={"W zamówieniu "+getNameOfPapierPostac(listaPapierowPostac, elementy[indeks].papier_postac_id)}
+        className={elementy[indeks]?.papier_postac_id == row.papier_postac_id ?style.select_papier_postac :style.select_papier_postacError} title={"W zamówieniu "+getNameOfPapierPostac(listaPapierowPostac, elementy[indeks]?.papier_postac_id)}
       
         // className={row.papier_id =="0" ? style.select_papier_postac : style.select_papier_postac }
         value={row.papier_postac_id}
@@ -287,7 +287,7 @@ function Naklad({ row ,indeks}) {
   const elementy = techContext.elementy;
   return (
     <input
-      className={elementy[indeks].naklad == row.naklad ?style.input :style.inputError} title={"W zamówieniu :"+elementy[indeks].naklad} type="text"
+      className={elementy[indeks]?.naklad == row.naklad ?style.input :style.inputError} title={"W zamówieniu :"+elementy[indeks]?.naklad} type="text"
       value={row.naklad}
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -409,7 +409,7 @@ function Strony({ row,indeks }) {
   return (
     <input
     onKeyUp={handleKeyPress}
-    className={elementy[indeks].ilosc_stron == row.ilosc_stron ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].ilosc_stron} type="text"
+    className={elementy[indeks]?.ilosc_stron == row.ilosc_stron ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks]?.ilosc_stron} type="text"
 
       value={row.ilosc_stron}
       onChange={(e) => {
@@ -431,7 +431,7 @@ function NettoX({ row,indeks }) {
 
   return (
     <input
-    className={elementy[indeks].format_x == row.format_x ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].format_x} type="text"
+    className={elementy[indeks]?.format_x == row.format_x ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks]?.format_x} type="text"
 
       // className={style.input}
       value={row.format_x}
@@ -456,7 +456,7 @@ function NettoY({ row, indeks }) {
 
   return (
     <input
-    className={elementy[indeks].format_y == row.format_y ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks].format_y} type="text"
+    className={elementy[indeks]?.format_y == row.format_y ?style.input :style.inputError} title={"W zamówieniu: "+elementy[indeks]?.format_y} type="text"
 
       value={row.format_y}
       onChange={(e) => {

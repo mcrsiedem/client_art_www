@@ -44,34 +44,94 @@ export default function Arkusz  ({ row,i })  {
 
 
   function NrArkusza({ row }) {
-    return <input className={style.nr_arkusza} value={row.nr_arkusza}></input>;
+    const techContext = useContext(TechnologyContext);
+    const legi = techContext.legi;
+    const setLegi = techContext.setLegi;
+    const arkusze = techContext.arkusze;
+    const setArkusze = techContext.setArkusze;
+    const select = () => {
+
+
+      setLegi(
+        legi
+          .map((t, a) => {
+            return {
+              ...t,
+              select: false,
+            };
+          })
+          .map((lega, i) => {
+            if (row.id == lega.arkusz_id) {
+              return {
+                ...lega,
+                select: true,
+              };
+            } else {
+              return lega;
+            }
+          })
+      );
+
+
+
+      setArkusze(
+        arkusze
+          .map((t, a) => {
+            return {
+              ...t,
+              select: false,
+            };
+          })
+          .map((ark, i) => {
+            if (row.id == ark.id) {
+              return {
+                ...ark,
+                select: true,
+              };
+            } else {
+              return ark;
+            }
+          })
+      );
+
+
+
+
+
+    };
+
+
+    return <input className={row.select == true ? style.nr_arkusza_select:style.nr_arkusza} defaultValue={row.nr_arkusza} onClick={()=> {
+      console.log("Arkusz id: "+row.id)
+      select()
+    }}></input>;
   }
 
     function RodzajArkusza({ row }) {
-    return <input className={style.input_id} value={row.rodzaj_arkusza +"ka"}></input>;
+    return <input className={style.input_id} defaultValue={row.rodzaj_arkusza +"ka"}></input>;
   }
 
 
   function Naklad({ row }) {
-    return <input className={style.input_id} value={row.naklad}></input>;
+    return <input className={style.input_id} defaultValue={row.naklad}></input>;
   } 
    function Rozjazd({ row }) {
-    return <input className={style.input_id} value={row.nadkomplet}></input>;
+    return <input className={style.input_id} defaultValue={row.nadkomplet}></input>;
   }
 
      function Papier({ row }) {
    const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
-    return <input className={style.input_papier} value={ getNameOfPapier(listaPapierow, row.papier_id)}></input>;
+    return <input className={style.input_papier} defaultValue={ getNameOfPapier(listaPapierow, row.papier_id)}></input>;
   }
 
 
     function Elementy({ row }) {
-    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } value={getNameOfElementTyp( row.typ_elementu,_typ_elementu) +" " + elementyTech.find(x => x.id == row.element_id).nazwa}></input>;
+    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } defaultValue={getNameOfElementTyp( row.typ_elementu,_typ_elementu) +" " + elementyTech.find(x => x.id == row.element_id).nazwa}></input>;
   }
 
       function NazwaElementu({ row }) {
-    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } value={getNameOfElementTyp( row.typ_elementu,_typ_elementu)}></input>;
+    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } defaultValue={getNameOfElementTyp( row.typ_elementu,_typ_elementu)}></input>;
   }
 
     //drag arkusz

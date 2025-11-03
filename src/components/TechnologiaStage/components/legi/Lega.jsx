@@ -44,28 +44,28 @@ export default function Lega  ({ row,i })  {
 
 
   function NrLegi({ row }) {
-    return <input className={style.nr_arkusza} value={row.nr_legi}></input>;
+    return <input className={row.select == true ? style.nr_arkusza_select:style.nr_arkusza} defaultValue={row.nr_legi}></input>;
   }
 
     function RodzajLegi({ row }) {
-    return <input className={style.input_id} value={row.rodzaj_legi +"ka"}></input>;
+    return <input className={style.input_id} defaultValue={row.rodzaj_legi +"ka"}></input>;
   }
 
 
   function Naklad({ row }) {
-    return <input className={style.input_id} value={row.naklad}></input>;
+    return <input className={style.input_id} defaultValue={row.naklad}></input>;
   } 
 
 
      function Papier({ row }) {
    const appcontext = useContext(AppContext);
     const listaPapierow = appcontext.listaPapierow;
-    return <input className={style.input_papier} value={ getNameOfPapier(listaPapierow, row.papier_id)}></input>;
+    return <input className={style.input_papier} defaultValue={ getNameOfPapier(listaPapierow, row.papier_id)}></input>;
   }
 
 
     function Elementy({ row }) {
-    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } value={getNameOfElementTyp( row.typ_elementu,_typ_elementu) +" " + elementyTech.find(x => x.id == row.element_id).nazwa}></input>;
+    return <input className={row.typ_elementu ==1 ? style.input_element_okldka:style.input_element } defaultValue={getNameOfElementTyp( row.typ_elementu,_typ_elementu) +" " + elementyTech.find(x => x.id == row.element_id).nazwa}></input>;
   }
 
 

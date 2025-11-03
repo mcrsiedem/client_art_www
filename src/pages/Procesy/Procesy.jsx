@@ -74,7 +74,7 @@ const CONFIGURATIONS = {
             <hr/>
 
             {/* <h2>Aktualnie Wyświetlana Tabela: {nazwaTabeli}</h2> */}
-            <h2> {nazwaTabeli}</h2>
+            {/* <h2> {nazwaTabeli}</h2> */}
 
             <div className={styles.tabelaKontener}> 
                 {dane?.length === 0 ? (

@@ -15,6 +15,15 @@ import ProcesyHeader from "./UstawieniaHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
 import UstawieniaHeader from "./UstawieniaHeader";
+import iconPapiert from "assets/papier.svg";
+import iconUser from "assets/users2.svg";
+import iconProcesy from "assets/iconProcesy.svg";
+import iconUsers from "assets/users.svg";
+import iconKlienci from "assets/klienci.svg";
+import iconMaszyny from "assets/maszyny.svg";
+
+
+
 import iconZamowienia from "assets/iconZamowienia.svg";
 import PaperStage from "components/PaperStage/PaperStage";
 import { ModalInsertContext } from "context/ModalInsertContext";
@@ -57,7 +66,7 @@ export default function Ustawienia({ user, setUser }) {
                     setShowPaperStage(true)
                   }}
                 >
-                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <img className={style.icon} src={iconPapiert} alt="Zamówienia" />{" "}
                   <p className={style.podpis_icon}>PAPIERY</p>
                 </div>
 
@@ -68,7 +77,7 @@ export default function Ustawienia({ user, setUser }) {
                     // navigate("/Zamowienia");
                   }}
                 >
-                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <img className={style.icon} src={iconUser} alt="Zamówienia" />{" "}
                   <p className={style.podpis_icon}
                              onClick={() => {
        
@@ -83,7 +92,7 @@ export default function Ustawienia({ user, setUser }) {
                     // navigate("/Zamowienia");
                   }}
                 >
-                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <img className={style.icon} src={iconKlienci} alt="Zamówienia" />{" "}
                   <p className={style.podpis_icon}>KLIENCI</p>
                 </div>
 
@@ -94,19 +103,19 @@ export default function Ustawienia({ user, setUser }) {
                     navigate("/Procesy");
                   }}
                 >
-                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <img className={style.icon} src={iconMaszyny} alt="Zamówienia" />{" "}
                   <p className={style.podpis_icon}>PROCESY</p>
                 </div>
 
-                <div
+                {/* <div
                   className={style.pane}
                   onClick={() => {
                     // navigate("/Zamowienia");
                   }}
                 >
-                  {/* <img className={style.icon} src={iconZamowienia} alt="Zamówienia" />{" "} */}
+                  <img className={style.icon} src={iconMaszyny} alt="Zamówienia" />{" "}
                   <p className={style.podpis_icon}>MASZYNY</p>
-                </div>
+                </div> */}
 
 
       </div>

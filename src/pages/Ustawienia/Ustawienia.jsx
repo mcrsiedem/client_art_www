@@ -21,6 +21,9 @@ import iconProcesy from "assets/iconProcesy.svg";
 import iconUsers from "assets/users.svg";
 import iconKlienci from "assets/klienci.svg";
 import iconMaszyny from "assets/maszyny.svg";
+import iconWykres from "assets/wykres.svg";
+
+
 
 
 
@@ -107,15 +110,15 @@ export default function Ustawienia({ user, setUser }) {
                   <p className={style.podpis_icon}>PROCESY</p>
                 </div>
 
-                {/* <div
+                <div
                   className={style.pane}
                   onClick={() => {
                     // navigate("/Zamowienia");
                   }}
                 >
-                  <img className={style.icon} src={iconMaszyny} alt="Zamówienia" />{" "}
-                  <p className={style.podpis_icon}>MASZYNY</p>
-                </div> */}
+                  <img className={style.icon} src={iconWykres} alt="Zamówienia" />{" "}
+                  <p className={style.podpis_icon}>STATYSTYKI</p>
+                </div>
 
 
       </div>

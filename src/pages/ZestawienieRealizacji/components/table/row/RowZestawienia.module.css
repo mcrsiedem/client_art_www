@@ -177,7 +177,7 @@
 .row_zamowienia:nth-of-type(2n){
   /* background: #dbdad6; */
   background: #f7f6f6;
-  outline: 1px solid rgb(189, 189, 189);
+  /* outline: 1px solid rgb(189, 189, 189); */
 }
 
 .row_zamowienia:nth-of-type(1n):hover{

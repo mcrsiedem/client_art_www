@@ -1,0 +1,125 @@
+.headerZamowieniaContainer {
+    position: sticky;
+    /* background-color: black; */
+    /* background-image: linear-gradient(black 0%, rgb(70, 69, 69) 80%); */
+    height: 50px;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* padding-left: 00px; */
+    padding-right: 10px;
+
+
+}
+
+.title2 {
+    padding-top: 15px;
+    font-size: 1.2rem;
+    color: rgb(201, 201, 201);
+    font-family: Poppins;
+}
+
+
+.leftHeaderContener {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+
+}
+
+
+
+.centerHeaderContener {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+    
+}
+
+.rightHeaderContener {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+    height: 50px;
+}
+
+.icon,
+.icon2 {
+
+    height: 90%;
+    padding: 10px;
+}
+
+.icon:hover {
+    background-color: rgb(78, 78, 78);
+    border-radius: 5px;
+}
+
+.icon2:hover {
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+}
+
+.szukajInput{
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+}
+.szukajInput:hover{
+background-color: azure;
+color: black;
+}
+
+.szukajInputSort{
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    color: rgb(167, 167, 167);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    width: 200px;
+    
+}
+.szukajInputSort:focus{
+    outline: none;
+}
+.szukajInputSortBlue{
+    background: rgb(0, 157, 255);
+    box-shadow: none;
+    border: 1px solid rgb(88, 88, 88);
+    border: none;
+    color: rgb(243, 243, 243);
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 27px;
+    width: 200px;
+    /* font-size: 1.2rem; */
+}
+
+.szukajInputSortBlue:focus{
+    outline: none;
+}
+
+
+
+.szukajInput::placeholder{
+    color: rgb(110, 110, 110);
+    font-size: 0.9rem;
+}
+.szukajInput:focus{
+    outline: none;
+}

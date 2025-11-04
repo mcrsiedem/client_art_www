@@ -2,23 +2,20 @@ import React, { useEffect, useState,useRef,useContext,useCallback } from "react"
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
-import ModalInsert from "./ModalInsert/ModalInsert";
-import style from "../Zamowienia/Zamowienia.module.css";
+import style from "./ZestawienieRealizacji.module.css";
 import Header from "./components/header/Header";
-import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
 import { AppContext } from "context/AppContext";
 import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableMini from "./components/table/TableMini";
-import TableZamowienia from "./components/table/TableZamowienia";
+import TableZamowienia from "./components/table/TableZestawienia";
 import { useZamowienia } from "hooks/useZamowienia";
-import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
-function Zamowienia({ user, setUser }) {
+import Footer from "./components/footer/Footer";
+function ZestawieniaRealizacji({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
   const contextModal = useContext(ModalInsertContext);
@@ -68,19 +65,15 @@ setOpenModalInsert(false)
   return (
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
-      <div className={style.multiTableContainer}>
-        <TableZamowienia  open2={open2} setRow={setRow}  header={false} loading={loading}/>
-        <TableMini  open2={open2} setRow={setRow}  header={false}/>
-      </div>
-          {openModalInsert && (
-            <ModalInsert
-            />
-          )}
-      <TechnologiaStage/>
-      <ZamowieniaInfo/>
+      <TableZamowienia  open2={open2} setRow={setRow}  header={false} loading={loading}/>
+      <Footer dodaj_clikHandler={dodaj_clikHandler} />
+
+
+
+
 
       
     </div>
   );
 }
-export default Zamowienia;
+export default ZestawieniaRealizacji;

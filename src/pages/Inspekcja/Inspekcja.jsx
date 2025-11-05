@@ -10,10 +10,10 @@ import { _status } from "utils/initialvalue";
 
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DaneIns from "./components/dane/DaneIns";
-import ProduktIns from "./components/produkt/ProduktIns";
 import InspekcjaHeader from "./components/header/InspekcjaHeader";
-import ElementTechIns from "./components/element_tech_ins/ElementTechIns";
 import ElementTechInsPane from "./components/element_tech_ins/ElementTechInsPane";
+import ProduktyTechInspekcja from "./components/produkty_tech_inspekcja/ProduktyTechInspekcja";
+import FragmentyTechInspekcja from "./components/fragmenty_tech_insp/FragmentyTechInspekcja";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
@@ -110,30 +110,43 @@ export default function Inspekcja( ) {
 
       <div className={style.container}>
        <DaneIns/>
-       <ProduktIns/>
+       {/* <ProduktIns/> */}
 
                 <div className={style.main2}>
                     <div className={style.title_container}>
-                    <p className={style.title}> ELEMENTY ZAMÓWIENIA</p>
+                    <p className={style.title}> PRODUKTY </p>
+                    <p className={style.title}> PRODUKTY TECHNOLOGII</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <ProduktyTechInspekcja/>
+                    <ProduktyTechInspekcja/>
+                    </div>
+
+                </div>
+
+                <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> ELEMENTY </p>
                     <p className={style.title}> ELEMENTY TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
                     <ElementTechInsPane/>
                     <ElementTechInsPane/>
                     </div>
+                
                 </div>
 
                                 <div className={style.main2}>
                     <div className={style.title_container}>
-                    <p className={style.title}> ELEMENTY ZAMÓWIENIA</p>
-                    <p className={style.title}> ELEMENTY TECHNOLOGII</p>
+                    <p className={style.title}> FRAGMENTY </p>
+                    <p className={style.title}> FRAGMENTY TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <ElementTechInsPane/>
-                    <ElementTechInsPane/>
+                    <FragmentyTechInspekcja/>
+                    <FragmentyTechInspekcja/>
                     </div>
+                
                 </div>
-
 
 
 

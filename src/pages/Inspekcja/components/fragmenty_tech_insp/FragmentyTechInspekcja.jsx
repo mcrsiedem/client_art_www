@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ElementTechInsPane.module.css";
+import styles from "./FragmentyTechInspekcja.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
@@ -9,7 +9,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 
-export default function ElementTechInsPane( ) {
+export default function FragmentyTechInspekcja( ) {
   const navigate = useNavigate();
 
   const appContext = useContext(AppContext)
@@ -23,23 +23,17 @@ export default function ElementTechInsPane( ) {
 
   const daneZamowienia =modalContext.daneZamowienia;
   const produkty =modalContext.produkty;
-  const elementyTech =techContext.elementyTech;
+  const fragmentyTech =techContext.fragmentyTech;
   
 
 
   
-      let  naglowki= [
-             `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
-        ]
+      let  naglowki= [`element_id`, `global_id`, `id`, `ilosc_stron`, `indeks`, `info`, `naklad`, `oprawa_id`, `produkt_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
 
-       let klucze = [
-            `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
-        ]
+       let klucze = [`element_id`, `global_id`, `id`, `ilosc_stron`, `indeks`, `info`, `naklad`, `oprawa_id`, `produkt_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
 
   return (
-    // <div className={styles.main}> 
     <div className={styles.tabelaKontener}>
-      {/* <p> Elementy Tech</p> */}
                     <table className={styles.glownaTabela}>
                         <thead>
                             <tr>
@@ -49,7 +43,7 @@ export default function ElementTechInsPane( ) {
                             </tr>
                         </thead>
                         <tbody>
-                            {elementyTech?.map((wiersz, rowIndex) => (
+                            {fragmentyTech?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.global_id || rowIndex}> 
                                     {klucze.map((kluczKolumny, colIndex) => (
@@ -61,7 +55,6 @@ export default function ElementTechInsPane( ) {
                     </table>
                     
     </div>
-    // </div>
   );
 }
 

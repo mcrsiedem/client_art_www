@@ -54,9 +54,9 @@ const [loading, setLoading] = useState(true);
         if (res.data.Status === "Success") {
      
           refreshZamowienia();
-          callForPaper();
-          getClients(setClients, setClientsWyszukiwarka);
-          getNadkomplety(setNadkomplety);
+          // callForPaper();
+          // getClients(setClients, setClientsWyszukiwarka);
+          // getNadkomplety(setNadkomplety);
           setLoading(false);
         } else {
           navigate("/Login");

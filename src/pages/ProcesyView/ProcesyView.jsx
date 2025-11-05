@@ -83,10 +83,7 @@ export default function ProcesyView( ) {
 
 
 const handleCtrlV = ()=> {
-//  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
-// setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
 if(selectedProcesorMulti==selectedProcesor){
-
   dragdropProcesGrupaMulti(fechGrupyAndWykonaniaForProcesor,selectedProcesor,sessionStorage.getItem("row_global_id"),multiSelect,setMultiSelect)
 }
 
@@ -94,7 +91,6 @@ if(selectedProcesorMulti==selectedProcesor){
 
 const handleCtrlC = ()=> {
   setSelectedProcesorMulti(selectedProcesor)
-//  console.log(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
 setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
   };
 

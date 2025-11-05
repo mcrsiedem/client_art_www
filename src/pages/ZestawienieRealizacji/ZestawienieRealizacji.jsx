@@ -15,6 +15,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
 import Footer from "./components/footer/Footer";
+import { getGraniceMiesiaca } from "actions/getGraniceMiesiaca";
 function ZestawieniaRealizacji({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -30,6 +31,12 @@ function ZestawieniaRealizacji({ user, setUser }) {
   const [callForPaper] = useApiPapier();
 const [refreshZamowienia] = useZamowienia()
 const [loading, setLoading] = useState(true);
+
+
+  const AKTUALNY_MIESIAC = getGraniceMiesiaca();
+  const [dataOd, setDataOd] = useState(AKTUALNY_MIESIAC.pierwszyDzien);
+  const [dataDo, setDataDo] = useState(AKTUALNY_MIESIAC.ostatniDzien);
+
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -64,7 +71,7 @@ setOpenModalInsert(false)
 
   return (
     <div className={style.container}>
-      <Header dodaj_clikHandler={dodaj_clikHandler} />
+      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}/>
       <TableZamowienia  open2={open2} setRow={setRow}  header={false} loading={loading}/>
       <Footer dodaj_clikHandler={dodaj_clikHandler} />
 

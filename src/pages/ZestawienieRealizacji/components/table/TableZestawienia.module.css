@@ -275,6 +275,10 @@ background: rgb(243, 243, 243);
    width: 90px;
 }
 
+
+.col_utworzono{
+   width: 60px;
+}
 .col_uwagi {
    /* background-color: red; */
    max-width: 100px;

@@ -15,8 +15,9 @@ import { zabezpiecz } from "actions/zabezpiecz";
 import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
+import { TechnologyContext } from "context/TechnologyContext";
 
-export default function Header({ dodaj_clikHandler}) {
+export default function Header({ dataDo,dataOd,setDataDo,setDataOd}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -39,29 +40,20 @@ const setShowTabs = contextModalInsert.setShowTabs
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <REFRESH_ZAMOWIENIA_BTN/> */}
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zestawienia reazlizacji </p>
+        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zestawienia realizacji </p>
       </div>
 
       <div className={style.centerHeaderContener}>
-        {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
-          title="Dodaj nowe zamówienie..."
-          className={style.icon}
-          src={iconAdd2}
-          onClick={() => {
-setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+<DataOd dataOd={dataOd}/>
+<DataDo dataDo={dataDo}/>
 
-            setSelectedZamowienie({id:1})
-            dodaj_clikHandler();
-          }}
-          alt="React Logo"
-        /> : <></>}
 
       </div>
       <div className={style.rightHeaderContener}>
-        <BTN_INSPEKCJA/>
-        <BTN_INFO_ZAMOWIENIA/>
-        <BTN_KOPIUJ/>
-        <SORTOWANIE_ZAMOWIENIA_ETAP/>
+        {/* <BTN_INSPEKCJA/>
+        <BTN_INFO_ZAMOWIENIA/> */}
+        {/* <BTN_KOPIUJ/>
+        <SORTOWANIE_ZAMOWIENIA_ETAP/> */}
         <Szukaj/>
         <img
           className={style.icon2}
@@ -75,6 +67,61 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
     </header>
   );
 }
+
+
+function DataOd({dataOd,setDataOd}){
+    const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  
+  const dniWstecz = techContext.dniWstecz;
+  const setDniWstecz = techContext.setDniWstecz;
+  const selectedProcesor = techContext.selectedProcesor
+
+
+  return(
+      <div className={style.col}>
+      <input className={style.selectDataWyswietlania} type="date"
+         value={dataOd}
+        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
+         onChange={(event) => {
+
+          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
+          
+          // setDniWstecz( event.target.value);
+         }}></input>
+    </div>
+  );
+}
+
+
+function DataDo({dataDo,setDataDo}){
+    const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
+  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
+  
+  const dniWstecz = techContext.dniWstecz;
+  const setDniWstecz = techContext.setDniWstecz;
+  const selectedProcesor = techContext.selectedProcesor
+
+
+  return(
+      <div className={style.col}>
+      <input className={style.selectDataWyswietlania} type="date"
+         value={dataDo}
+        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
+         onChange={(event) => {
+
+          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
+          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
+          
+          // setDniWstecz( event.target.value);
+         }}></input>
+    </div>
+  );
+}
+
 
 
 

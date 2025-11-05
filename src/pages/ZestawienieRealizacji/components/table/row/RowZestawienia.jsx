@@ -160,28 +160,14 @@ const setShowTabs = contextModalInsert.setShowTabs
           setOpenModalInsert(true);
         }}
       >
+        <DataPrzyjeciaTableZamowienia row={row} />
         <NrTableZamowienia row={row} />
-
-        <ShowTechnmologiaBtn
-          row={row}
-          setShowKartaTechnologiczna={setShowKartaTechnologiczna}
-          showKartaTechnologiczna={showKartaTechnologiczna}
-        />
-
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} i={i} />
-
         <NakladTableZamowienia row={row} />
-        <td className={style.nakladInput}>{row.ilosc_stron}</td>
-        <DataPrzyjeciaTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
         <td>{row.format_x + "x" + row.format_y}</td>
-        <OprawaTableZamowienia row={row} />
-        <FirmaZamowieniaTable row={row} />
-        <StanZamowieniaTable row={row} />
-        <StatusZamowieniaTable row={row} />
-        <EtapZamowieniaTable row={row} />
-    
+      
         <OpiekunZamowieniaTable row={row} />
         <td></td>
       </tr>
@@ -217,7 +203,7 @@ const NrTableZamowienia = ({ row }) => {
        disabled
       
       title={row.nr}
-      className={style.nrInput}
+      className={style.input_nr}
       value={row.nr+" / "+row.rok.substring(2,4)}
       readOnly
 
@@ -339,9 +325,9 @@ const DataPrzyjeciaTableZamowienia = ({ row }) => {
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
-      title={row.data_przyjecia}
-      className={style.klientInput}
-      value={row.data_przyjecia}
+      title={row.utworzono}
+      className={style.input_utworzono}
+      value={row.utworzono}
       readOnly
 
     />

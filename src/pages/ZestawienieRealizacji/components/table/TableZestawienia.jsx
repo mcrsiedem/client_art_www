@@ -42,58 +42,15 @@ const [refreshZamowienia] = useZamowienia()
      <table className={style.tableZam}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
-           {/* <th className={style.col_alert}>!</th> */}
-           <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("nr")
-         refreshZamowienia()
 
-            }} className={style.col_nr}>Nr</th>
-           {/* <th className={style.col_rok}>Rok</th> */}
-           <th title="Technologia" className={style.th_karta}>
-         
-             <img
-               className={style.iconSettings}
-               src={iconFile}
-               onClick={() => {}}
-               alt="Procesy"
-             />
-           </th>
-           <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
+           <th className={style.col_utworzono}>Utworzono</th>
+           <th  className={style.col_nr}></th>
+           <th className={style.col_klient}>Klient</th>
            <th className={style.col_praca}>Praca</th>
-           <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("naklad")
-         refreshZamowienia()
-
-            }} className={style.col_strony}>Nakład</th>
-           <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("ilosc_stron")
-         refreshZamowienia()
-
-            }} className={style.col_strony}>Str.</th>
-           <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_przyjecia")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Przyjęcie</th>
-           <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_spedycji")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Spedycja</th>
-           <th className={style.col_strony}>Netto</th>
-           <th  onClick={()=>{
-         contextApp.setSortowanieZamowienia("oprawa_id")
-         refreshZamowienia()
-
-            }}className={style.col_netto}>Oprawa</th>
-           <th className={style.col_firma2}>Firma</th>
-           <th className={style.col_status}>Stan</th>
-           <th className={style.col_status}>Status</th>
-           <th className={style.col_etap}>Etap</th>
-          
+           <th  className={style.col_strony}>Przeloty</th>
+           <th className={style.col_spedycja}>Proces</th>
+           <th className={style.col_strony}>Procesor</th>
            <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
-           {/* <th className={style.col_uwagi}>Uwagi</th> */}
-
-           {/* <th className={style.col_checkbox}>
-           </th> */}
            <th className={style.col_alert}></th>
          </tr>
        </thead>

@@ -14,6 +14,8 @@ import InspekcjaHeader from "./components/header/InspekcjaHeader";
 import ElementTechInsPane from "./components/element_tech_ins/ElementTechInsPane";
 import ProduktyTechInspekcja from "./components/produkty_tech_inspekcja/ProduktyTechInspekcja";
 import FragmentyTechInspekcja from "./components/fragmenty_tech_insp/FragmentyTechInspekcja";
+import OprawaTechInspekcja from "./components/oprawa_tech_inspekcja/OprawaTechInspekcja";
+import ProcesyElementowTechInspekcja from "./components/procesy_elementow_tech_inspekcja/ProcesyElementowTechInspekcja";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ export default function Inspekcja( ) {
            modalContext.setHistoriaZamowienia([])
            modalContext.setPakowanie([])
            modalContext.setDaneZamowienia(res.data[0][0])
-          technologia_id = res.data[0][0].technologia_id ||0
+          technologia_id = res.data[0][0].technologia_id || 0
            modalContext.setProdukty(res.data[1])
            modalContext.setElementy(res.data[2])
            modalContext.setFragmenty(res.data[3])
@@ -60,10 +62,6 @@ export default function Inspekcja( ) {
            modalContext.setKosztyDodatkoweZamowienia(res.data[9])
            modalContext.setKsiegowosc(res.data[10][0])
            modalContext.setFaktury(res.data[11])
-
-          //  if(modalContext.daneZamowienia.technologia_id){
-           if(technologia_id){
-              const res = await axios.get(IP + "technologie_parametry/"+technologia_id+"/"+ sessionStorage.getItem("token"));
                   techContext.setDaneTech([]) 
                   techContext.setProduktyTech([])
                   techContext.setElementyTech([])
@@ -76,6 +74,10 @@ export default function Inspekcja( ) {
                   techContext.setGrupaWykonan([])
                   techContext.setGrupaWykonanInit([])
                   techContext.setWykonania([])
+          //  if(modalContext.daneZamowienia.technologia_id){
+           if(technologia_id){
+              const res = await axios.get(IP + "technologie_parametry/"+technologia_id+"/"+ sessionStorage.getItem("token"));
+
 
                   techContext.setDaneTech(res.data[0][0]) 
                   techContext.setProduktyTech(res.data[1])
@@ -121,7 +123,6 @@ export default function Inspekcja( ) {
                     <ProduktyTechInspekcja/>
                     <ProduktyTechInspekcja/>
                     </div>
-
                 </div>
 
                 <div className={style.main2}>
@@ -133,10 +134,9 @@ export default function Inspekcja( ) {
                     <ElementTechInsPane/>
                     <ElementTechInsPane/>
                     </div>
-                
                 </div>
 
-                                <div className={style.main2}>
+                <div className={style.main2}>
                     <div className={style.title_container}>
                     <p className={style.title}> FRAGMENTY </p>
                     <p className={style.title}> FRAGMENTY TECHNOLOGII</p>
@@ -145,8 +145,30 @@ export default function Inspekcja( ) {
                     <FragmentyTechInspekcja/>
                     <FragmentyTechInspekcja/>
                     </div>
-                
                 </div>
+
+                <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> OPRAWA </p>
+                    <p className={style.title}> OPRAWA TECHNOLOGII</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <OprawaTechInspekcja/>
+                    <OprawaTechInspekcja/>
+                    </div>
+                </div>
+
+                                <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> PROCESY ELEMENTÓW </p>
+                    <p className={style.title}> PROCESY ELEMENTÓW TECHNOLOGII</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <ProcesyElementowTechInspekcja/>
+                    <ProcesyElementowTechInspekcja/>
+                    </div>
+                </div>
+
 
 
 

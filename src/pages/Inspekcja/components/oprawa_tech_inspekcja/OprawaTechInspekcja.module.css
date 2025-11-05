@@ -49,8 +49,6 @@
 /* 2. Stylowanie NAGŁÓWKÓW TH (bezpieczny selektor: glownaTabela -> thead -> th) */
 .glownaTabela thead th {
     background-color: var(--medium-bg); 
-   background-color: rgb(160, 127, 127);
-
     color: var(--text-color);
     padding: 12px 15px;
     text-align: left;

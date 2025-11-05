@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProduktyTechInspekcja.module.css";
+import styles from "./ProcesyElementowTechInspekcja.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
@@ -9,7 +9,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 
-export default function ProduktyTechInspekcja( ) {
+export default function ProcesyElementowTechInspekcja( ) {
   const navigate = useNavigate();
 
   const appContext = useContext(AppContext)
@@ -23,18 +23,16 @@ export default function ProduktyTechInspekcja( ) {
 
   const daneZamowienia =modalContext.daneZamowienia;
   const produkty =modalContext.produkty;
-  const produktyTech =techContext.produktyTech;
+  const procesyElementowTech =techContext.procesyElementowTech;
   
 
 
   
-      let  naglowki= [ `zamowienie_id`,`technologia_id`,`etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_stron`, `indeks`, `naklad`, `nazwa`, `oprawa`, `stan`, `status`,  `typ`, `uwagi`]
+      let  naglowki= [`arkusz`, `back_ilosc`, `back_kolor`, `element_id`, `front_ilosc`, `front_kolor`, `global_id`, `id`, `ilosc_uzytkow`, `indeks`, `info`, `infoprocesy`, `komplet`, `lega`, `mnoznik`, `naklad`, `narzad`, `nazwa`, `nazwa_elementu`, `nazwa_id`, `nr`, `obszar`, `predkosc`, `proces_id`, `procesor_domyslny`, `produkt`, `produkt_id`, `rodzaj`, `stan`, `status`, `status_nazwa`, `technologia_id`, `typ`, `typ_elementu`, `wykonczenie`, `zamowienie_id`]
 
 
   return (
-    // <div className={styles.main}> 
     <div className={styles.tabelaKontener}>
-      {/* <p> Elementy Tech</p> */}
                     <table className={styles.glownaTabela}>
                         <thead>
                             <tr>
@@ -44,7 +42,7 @@ export default function ProduktyTechInspekcja( ) {
                             </tr>
                         </thead>
                         <tbody>
-                            {produktyTech?.map((wiersz, rowIndex) => (
+                            {procesyElementowTech?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.global_id || rowIndex}> 
                                     {naglowki.map((kluczKolumny, colIndex) => (
@@ -54,8 +52,8 @@ export default function ProduktyTechInspekcja( ) {
                             ))}
                         </tbody>
                     </table>
+                    
     </div>
-    // </div>
   );
 }
 

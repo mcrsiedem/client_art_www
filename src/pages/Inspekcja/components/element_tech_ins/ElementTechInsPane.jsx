@@ -32,9 +32,6 @@ export default function ElementTechInsPane( ) {
              `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
         ]
 
-       let klucze = [
-            `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
-        ]
 
   return (
     // <div className={styles.main}> 
@@ -52,7 +49,7 @@ export default function ElementTechInsPane( ) {
                             {elementyTech?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.global_id || rowIndex}> 
-                                    {klucze.map((kluczKolumny, colIndex) => (
+                                    {naglowki.map((kluczKolumny, colIndex) => (
                                         <td key={colIndex}>{wiersz[kluczKolumny]}</td>
                                     ))}
                                 </tr>

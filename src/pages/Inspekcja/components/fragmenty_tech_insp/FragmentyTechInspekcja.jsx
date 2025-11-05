@@ -30,7 +30,6 @@ export default function FragmentyTechInspekcja( ) {
   
       let  naglowki= [`element_id`, `global_id`, `id`, `ilosc_stron`, `indeks`, `info`, `naklad`, `oprawa_id`, `produkt_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
 
-       let klucze = [`element_id`, `global_id`, `id`, `ilosc_stron`, `indeks`, `info`, `naklad`, `oprawa_id`, `produkt_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
 
   return (
     <div className={styles.tabelaKontener}>
@@ -46,7 +45,7 @@ export default function FragmentyTechInspekcja( ) {
                             {fragmentyTech?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.global_id || rowIndex}> 
-                                    {klucze.map((kluczKolumny, colIndex) => (
+                                    {naglowki.map((kluczKolumny, colIndex) => (
                                         <td key={colIndex}>{wiersz[kluczKolumny]}</td>
                                     ))}
                                 </tr>

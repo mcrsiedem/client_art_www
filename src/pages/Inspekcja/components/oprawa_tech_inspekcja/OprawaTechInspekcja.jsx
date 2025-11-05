@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProduktyTechInspekcja.module.css";
+import styles from "./OprawaTechInspekcja.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
@@ -9,7 +9,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 
-export default function ProduktyTechInspekcja( ) {
+export default function OprawaTechInspekcja( ) {
   const navigate = useNavigate();
 
   const appContext = useContext(AppContext)
@@ -23,18 +23,16 @@ export default function ProduktyTechInspekcja( ) {
 
   const daneZamowienia =modalContext.daneZamowienia;
   const produkty =modalContext.produkty;
-  const produktyTech =techContext.produktyTech;
+  const oprawaTech =techContext.oprawaTech;
   
 
 
   
-      let  naglowki= [ `zamowienie_id`,`technologia_id`,`etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_stron`, `indeks`, `naklad`, `nazwa`, `oprawa`, `stan`, `status`,  `typ`, `uwagi`]
+      let  naglowki= [`global_id`,`bok_oprawy`, `data_czystodrukow`, `data_spedycji`,  `id`, `indeks`, `naklad`, `oprawa`, `produkt_id`, `technologia_id`, `utworzono`, `uwagi`, `wersja`, `zamowienie_id`, `zmodyfikowano`]
 
 
   return (
-    // <div className={styles.main}> 
     <div className={styles.tabelaKontener}>
-      {/* <p> Elementy Tech</p> */}
                     <table className={styles.glownaTabela}>
                         <thead>
                             <tr>
@@ -44,7 +42,7 @@ export default function ProduktyTechInspekcja( ) {
                             </tr>
                         </thead>
                         <tbody>
-                            {produktyTech?.map((wiersz, rowIndex) => (
+                            {oprawaTech?.map((wiersz, rowIndex) => (
                                 // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
                                 <tr key={wiersz.global_id || rowIndex}> 
                                     {naglowki.map((kluczKolumny, colIndex) => (
@@ -54,8 +52,8 @@ export default function ProduktyTechInspekcja( ) {
                             ))}
                         </tbody>
                     </table>
+                    
     </div>
-    // </div>
   );
 }
 

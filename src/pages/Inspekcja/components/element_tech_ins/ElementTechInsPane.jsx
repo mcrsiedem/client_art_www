@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "./ElementTechInsPane.module.css";
+import styles from "./ElementTechInsPane.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _etapy_produkcji, _stan_dokumentu, _status, _status_dokumentu } from "utils/initialvalue";
@@ -29,24 +29,39 @@ export default function ElementTechInsPane( ) {
 
 
   
+      let  naglowki= [
+             `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
+        ]
 
-
-
+       let klucze = [
+            `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`
+        ]
 
   return (
-    <div className={style.main}>
-                {elementyTech?.sort((a, b) => b.typ - a.typ)
-                  // .filter((x) => x.delete != true)
-                  .map((elementTech, i) => {
-                    return (
-                        <ElementTechIns
-                          key={elementTech.globa_id}
-                          elementTech={elementTech}
- 
-                        />
-                    );
-                  })}
+    // <div className={styles.main}> 
+    <div className={styles.tabelaKontener}>
+      {/* <p> Elementy Tech</p> */}
+                    <table className={styles.glownaTabela}>
+                        <thead>
+                            <tr>
+                                {naglowki.map((naglowek, index) => (
+                                    <th key={index}>{naglowek}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {elementyTech?.map((wiersz, rowIndex) => (
+                                // Używamy rowIndex jako klucza, jeśli wiersz.id jest potencjalnie puste
+                                <tr key={wiersz.global_id || rowIndex}> 
+                                    {klucze.map((kluczKolumny, colIndex) => (
+                                        <td key={colIndex}>{wiersz[kluczKolumny]}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
     </div>
+    // </div>
   );
 }
 

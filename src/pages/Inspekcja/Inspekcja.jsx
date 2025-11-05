@@ -111,8 +111,22 @@ export default function Inspekcja( ) {
       <div className={style.container}>
        <DaneIns/>
        <ProduktIns/>
+                <div className={style.main2}>
+                    <p className={style.title}> ELEMENTY TECH</p>
+                    <div className={style.containerDouble}>
+                    <ElementTechInsPane/>
+                    <ElementTechInsPane/>
+                    </div>
+                </div>
+
+
+       {/* <div className={style.containerDouble}>
        <ElementTechInsPane/>
- 
+       <ElementTechInsPane/>
+
+
+
+      </div> */}
       </div>
     </div>
   );

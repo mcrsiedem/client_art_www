@@ -28,7 +28,7 @@ export default function ProcesyElementowTechInspekcja( ) {
 
 
   
-      let  naglowki= [`arkusz`, `back_ilosc`, `back_kolor`, `element_id`, `front_ilosc`, `front_kolor`, `global_id`, `id`, `ilosc_uzytkow`, `indeks`, `info`, `infoprocesy`, `komplet`, `lega`, `mnoznik`, `naklad`, `narzad`, `nazwa`, `nazwa_elementu`, `nazwa_id`, `nr`, `obszar`, `predkosc`, `proces_id`, `procesor_domyslny`, `produkt`, `produkt_id`, `rodzaj`, `stan`, `status`, `status_nazwa`, `technologia_id`, `typ`, `typ_elementu`, `wykonczenie`, `zamowienie_id`]
+      let  naglowki= [`global_id`, `arkusz`, `lega`,`id`,`indeks`,`element_id`,`nazwa`,`back_ilosc`, `back_kolor`,  `front_ilosc`, `front_kolor`,  `ilosc_uzytkow`,  `info`, `infoprocesy`, `komplet`,  `mnoznik`, `naklad`, `narzad`,  `nazwa_elementu`, `nazwa_id`, `nr`, `obszar`, `predkosc`, `proces_id`, `procesor_domyslny`, `produkt`, `produkt_id`, `rodzaj`, `stan`, `status`, `status_nazwa`, `technologia_id`, `typ`, `typ_elementu`, `wykonczenie`, `zamowienie_id`]
 
 
   return (

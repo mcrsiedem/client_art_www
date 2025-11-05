@@ -164,6 +164,8 @@ const setShowTabs = contextModalInsert.setShowTabs
         <NrTableZamowienia row={row} />
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} i={i} />
+        <RodzajArkusza row={row} />
+        <NrArkusza row={row} />
         <NakladTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
         <td>{row.format_x + "x" + row.format_y}</td>
@@ -233,6 +235,13 @@ const NakladTableZamowienia = ({ row }) => {
   return <td className={style.nakladInput}> {row.naklad.toLocaleString()} </td>;
 };
 
+const NrArkusza = ({ row }) => {
+  return <td className={style.nakladInput}> {row.nr_arkusza} </td>;
+};
+
+const RodzajArkusza = ({ row }) => {
+  return <td className={style.nakladInput}> {row.rodzaj_arkusza ? row.rodzaj_arkusza +"ka" : " "} </td>;
+};
 const KlientTableZamowienia = ({ row }) => {
   return (
     <td>

@@ -45,6 +45,7 @@ const setShowTabs = contextModalInsert.setShowTabs
 
       <div className={style.centerHeaderContener}>
 <DataOd dataOd={dataOd}/>
+-
 <DataDo dataDo={dataDo}/>
 
 

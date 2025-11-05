@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import style from "./Szukaj.module.css";
 import { AppContext } from "context/AppContext";
 import iconClose2 from "assets/x2.svg";
-import iconSzukaj from "assets/szukaj_green.svg";
+import iconSzukaj from "assets/szukaj.svg";
 
 export default function Szukaj() {
   const contextApp = useContext(AppContext);

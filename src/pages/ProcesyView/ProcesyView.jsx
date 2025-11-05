@@ -44,6 +44,7 @@ export default function ProcesyView( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
+          console.log("fechGrupyAndWykonaniaForProcesor")
           fechGrupyAndWykonaniaForProcesor(1);
           //  fechGrupyAndWykonaniaForProcesor_dni_wstecz(1,dniWstecz)
           setSelectedProcesor(1);

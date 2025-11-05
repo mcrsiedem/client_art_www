@@ -235,7 +235,7 @@ const ZapisBtnPromise = () => {
       className={isSaveButtonDisabled ? style.btn_disabled : style.btn}
       onClick={() => {
 
-
+    setSaveButtonDisabled(true)
         if(daneTech.id == 1){
         console.log("zapis 1st ");
         daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
@@ -270,6 +270,7 @@ const ZapisBtnPromise = () => {
 
 
         if(daneTech.id != 1){
+              setSaveButtonDisabled(true)
           zapiszTechnologieUpdate({
          daneTech,
          setDaneTech,

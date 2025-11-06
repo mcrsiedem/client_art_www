@@ -39,7 +39,7 @@ export default function PodgladRealizacji() {
   const setPokazUzytkownikowOnline = appcontext.setPokazUzytkownikowOnline;
 
     useEffect(() => {
-    callPodgladRalizacji(todayMinusDniGodziny(1))
+    // callPodgladRalizacji(todayMinusDniGodziny(1))
 
   }, []);
   useEffect(() => {

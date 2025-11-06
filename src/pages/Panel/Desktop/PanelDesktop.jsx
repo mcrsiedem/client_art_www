@@ -38,7 +38,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
       .then((res) => {
         if (res.data.Status === "Success") {
 
-callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-10 18:00")
+// callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-10 18:00")
 
         } else {
           navigate("/Login");
@@ -75,7 +75,7 @@ callPodgladRalizacji(todayMinusDniGodziny(1)) // callPodgladRalizacji("2025-10-1
                                 <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
-                        <PodgladRealizacji loading={loading}/>
+                        {/* <PodgladRealizacji loading={loading}/> */}
                         <OnlineUsersList />
                         </div>
                         </div>

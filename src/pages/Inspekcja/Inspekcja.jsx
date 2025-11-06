@@ -31,6 +31,16 @@ export default function Inspekcja( ) {
   let  naglowki_arkusze= [`global_id`, `id`,`indeks`,`arkusz_szerokosc`, `arkusz_wysokosc`, `element_id`,  `ilosc_leg`, `ilosc_stron` , `korekta_zamowienia_alert`, `nadkomplet`, `naklad`, `nr_arkusza`, `papier_id`, `papier_postac_id`, `rodzaj_arkusza`, `technologia_id`, `typ_elementu`, `uwagi`, `zamowienie_id`]
   let  naglowki_legi= [`global_id`,`id`,`indeks`,`arkusz_id`, `element_id`,   `ilosc_stron`,  `korekta_zamowienia_alert`, `naklad`, `nr_legi`, `rodzaj_legi`, `technologia_id`, `typ_elementu`, `uwagi`, `zamowienie_id`]
   let  naglowki_legiFragmenty= [`arkusz_id`, `element_id`, `fragment_id`, `global_id`, `id`, `indeks`, `korekta_zamowienia_alert`, `lega_id`, `naklad`, `nr_legi`, `oprawa_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
+  let  naglowki_grupy= [`arkusz_szerokosc`, `arkusz_wysokosc`, `bulk`, `czas`, `data_spedycji`, `element_id`, `global_id`, `global_proces_id`, `gramatura`, `id`, `ilosc_narzadow`, `indeks`, `klient`, `klient_id`, `koniec`, `korekta_zamowienia_alert`, `mnoznik`, `naklad`, `narzad`, `naswietlenia`, `nazwa`, `nazwa_elementu`, `nazwa_papieru`, `nr`, `nr_stary`, `obszar_procesu`, `papier_info`, `papier_postac`, `papier_postac_id`, `poczatek`, `powleczenie`, `predkosc`, `proces_id`, `proces_nazwa_id`, `procesor_id`, `przeloty`, `rodzaj_procesu`, `rok`, `stan`, `status`, `technologia_id`, `typ_elementu`, `typ_grupy`, `typ_procesu`, `tytul`, `uwagi`, `uwagi_elementu`, `wydanie_papieru_status`, `wykonczenie`, `wykonczenie_procesu`, `zamowienia_pliki_etap`, `zamowienie_id`]
+  let  naglowki_grupy_oprawa= [`bok_oprawy`, `czas`, `data_spedycji`, `global_id`, `id`, `ilosc_zbieran`, `indeks`, `klient`, `koniec`, `korekta_zamowienia_alert`, `mnoznik`, `naklad`, `narzad`, `nazwa`, `nr`, `obszar_procesu`, `oprawa_id`, `poczatek`, `predkosc`, `proces_id`, `proces_nazwa_id`, `procesor_id`, `rodzaj_procesu`, `rok`, `stan`, `status`, `technologia_id`, `typ_grupy`, `typ_procesu`, `tytul`, `uwagi`, `wersja`, `wykonczenie_procesu`, `zamowienie_id`, `zrealizowano`]
+  let  naglowki_wykonania= [`arkusz_id`, `czas`, `do_wykonania`, `element_id`, `global_id`, `grupa_id`, `id`, `ilosc_uzytkow`, `indeks`, `koniec`, `lega_id`, `mnoznik`, `naklad`, `narzad`, `nazwa`, `nazwa_wykonania`, `nr_arkusza`, `papier_id`, `poczatek`, `predkosc`, `proces_id`, `proces_indeks`, `proces_nazwa_id`, `procesor_id`, `przeloty`, `stan`, `status`, `technologia_id`, `typ_elementu`, `uwagi`, `zamowienie_id`]
+  let  naglowki_wykonania_oprawa= [`dodal`, `dodal_id`, `global_id`, `grupa_id`, `id`, `naklad`, `oprawa_id`, `proces_id`, `procesor_id`, `technologia_id`, `utworzono`, `zamowienie_id`]
+  let  naglowki_realizacje= [`dodal`, `dodal_id`, `dzial`, `global_id`, `grupa_id`, `naklad`, `nazwa`, `proces_id`, `procesor_id`, `przeloty_wykonania`, `technologia_id`, `typ`, `utworzono`, `uwagi`, `wykonanie_global_id`, `wykonanie_id`, `zamowienie_id`, `zrealizowano`]
+  let  naglowki_koszty_dodatkowe= [`cena`, `dodal`, `global_id`, `id`, `ilosc`, `indeks`, `info`, `nazwa`, `stan`, `status`, `suma`, `utworzono`, `zamowienie_id`, `zmienil`, `zmodyfikowano`]
+  let  naglowki_faktury= [`cena`, `dodal`, `global_id`, `id`, `ilosc`, `indeks`, `info`, `nazwa`, `stan`, `status`, `suma`, `utworzono`, `wz`, `zamowienie_id`, `zmienil`, `zmodyfikowano`]
+  let  naglowki_ksiegowosc= [`faktury_naklad`, `faktury_status`, `faktury_wartosc`, `global_id`, `info`, `koszty_status`, `koszty_wartosc`, `utworzono`, `zamowienie_id`, `zmodyfikowano`]
+  let  naglowki_pliki= [`data_akceptu`, `data_otrzymania_plikow`, `data_utworzenia`, `element_id`, `etap`, `global_id`, `id`, `ilosc_stron`, `nazwa`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `utworzono`, `uwagi`, `zamowienie_id`, `zmodyfikowano`]
+  let  naglowki_historia= [`data`, `event`, `id`, `kategoria`, `user`, `user_id`, `zamowienie_id`]
   
   async function checkToken() {
 
@@ -185,6 +195,7 @@ export default function Inspekcja( ) {
                     <Row tabela={techContext.oprawaTech} naglowki={naglowki_oprawa}/>
                     </div>
                 </div>
+
                 <div className={style.main2}>
                     <div className={style.title_container}>
                     <p className={style.title}> LEGI</p>

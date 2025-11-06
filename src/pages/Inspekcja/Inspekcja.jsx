@@ -11,25 +11,27 @@ import { _status } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DaneIns from "./components/dane/DaneIns";
 import InspekcjaHeader from "./components/header/InspekcjaHeader";
-import ElementTechInsPane from "./components/element_tech_ins/ElementTechInsPane";
-import ProduktyTechInspekcja from "./components/produkty_tech_inspekcja/ProduktyTechInspekcja";
-import FragmentyTechInspekcja from "./components/fragmenty_tech_insp/FragmentyTechInspekcja";
-import OprawaTechInspekcja from "./components/oprawa_tech_inspekcja/OprawaTechInspekcja";
+
 import ProcesyElementowTechInspekcja from "./components/procesy_elementow_tech_inspekcja/ProcesyElementowTechInspekcja";
+import Row from "./components/row/Row";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
   const modalContext = useContext(ModalInsertContext);
-
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
-  const oddaniaGrupy =appContext.oddaniaGrupy;
-  const setOddaniaGrupy =appContext.setOddaniaGrupy;
   const fechOddaniaGrupy =appContext.fechOddaniaGrupy;
   const widokOddan =appContext.widokOddan;
 
-
-
+  let  naglowki_produkty= [ `zamowienie_id`,`technologia_id`,`etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_stron`, `indeks`, `naklad`, `nazwa`, `oprawa`, `stan`, `status`,  `typ`, `uwagi`]
+  let  naglowki_elementy= [ `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`]
+  let  naglowki_fragmenty= [`element_id`, `global_id`, `id`, `ilosc_stron`, `indeks`, `info`, `naklad`, `oprawa_id`, `produkt_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
+  let  naglowki_oprawa= [`global_id`,`bok_oprawy`, `data_czystodrukow`, `data_spedycji`,  `id`, `indeks`, `naklad`, `oprawa`, `produkt_id`, `technologia_id`, `utworzono`, `uwagi`, `wersja`, `zamowienie_id`, `zmodyfikowano`]
+  let  naglowki_procesy_elementow= [`global_id`, `arkusz`, `lega`,`id`,`indeks`,`element_id`,`nazwa`,`back_ilosc`, `back_kolor`,  `front_ilosc`, `front_kolor`,  `ilosc_uzytkow`,  `info`, `infoprocesy`, `komplet`,  `mnoznik`, `naklad`, `narzad`,  `nazwa_elementu`, `nazwa_id`, `nr`, `obszar`, `predkosc`, `proces_id`, `procesor_domyslny`, `produkt`, `produkt_id`, `rodzaj`, `stan`, `status`, `status_nazwa`, `technologia_id`, `typ`, `typ_elementu`, `wykonczenie`, `zamowienie_id`]
+  let  naglowki_arkusze= [`global_id`, `id`,`indeks`,`arkusz_szerokosc`, `arkusz_wysokosc`, `element_id`,  `ilosc_leg`, `ilosc_stron` , `korekta_zamowienia_alert`, `nadkomplet`, `naklad`, `nr_arkusza`, `papier_id`, `papier_postac_id`, `rodzaj_arkusza`, `technologia_id`, `typ_elementu`, `uwagi`, `zamowienie_id`]
+  let  naglowki_legi= [`global_id`,`id`,`indeks`,`arkusz_id`, `element_id`,   `ilosc_stron`,  `korekta_zamowienia_alert`, `naklad`, `nr_legi`, `rodzaj_legi`, `technologia_id`, `typ_elementu`, `uwagi`, `zamowienie_id`]
+  let  naglowki_legiFragmenty= [`arkusz_id`, `element_id`, `fragment_id`, `global_id`, `id`, `indeks`, `korekta_zamowienia_alert`, `lega_id`, `naklad`, `nr_legi`, `oprawa_id`, `technologia_id`, `typ`, `wersja`, `zamowienie_id`]
+  
   async function checkToken() {
 
     let technologia_id;
@@ -120,8 +122,8 @@ export default function Inspekcja( ) {
                     <p className={style.title}> PRODUKTY TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <ProduktyTechInspekcja/>
-                    <ProduktyTechInspekcja/>
+                    <Row tabela={modalContext.produkty} naglowki={naglowki_produkty}/>
+                    <Row tabela={techContext.produktyTech} naglowki={naglowki_produkty}/>
                     </div>
                 </div>
 
@@ -131,8 +133,9 @@ export default function Inspekcja( ) {
                     <p className={style.title}> ELEMENTY TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <ElementTechInsPane/>
-                    <ElementTechInsPane/>
+                    <Row tabela={modalContext.elementy} naglowki={naglowki_elementy}/>
+                    <Row tabela={techContext.elementyTech} naglowki={naglowki_elementy}/>
+  
                     </div>
                 </div>
 
@@ -142,10 +145,35 @@ export default function Inspekcja( ) {
                     <p className={style.title}> FRAGMENTY TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <FragmentyTechInspekcja/>
-                    <FragmentyTechInspekcja/>
+                    <Row tabela={modalContext.fragmenty} naglowki={naglowki_fragmenty}/>
+                    <Row tabela={techContext.fragmentyTech} naglowki={naglowki_fragmenty}/>
+               
                     </div>
                 </div>
+
+
+                <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> PROCESY ELEMENTÓW </p>
+                    <p className={style.title}> PROCESY ELEMENTÓW TECHNOLOGII</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={modalContext.procesyElementow} naglowki={naglowki_procesy_elementow}/>
+                    <Row tabela={techContext.procesyElementowTech} naglowki={naglowki_procesy_elementow}/>
+                    </div>
+                </div>
+
+                                <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> ARKUSZE</p>
+                    <p className={style.title}> </p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={techContext.arkusze} naglowki={naglowki_arkusze}/>
+                    {/* <Row tabela={techContext.legi} naglowki={naglowki_legi}/> */}
+                    </div>
+                </div>
+
 
                 <div className={style.main2}>
                     <div className={style.title_container}>
@@ -153,22 +181,20 @@ export default function Inspekcja( ) {
                     <p className={style.title}> OPRAWA TECHNOLOGII</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <OprawaTechInspekcja/>
-                    <OprawaTechInspekcja/>
+                    <Row tabela={modalContext.oprawa} naglowki={naglowki_oprawa}/>
+                    <Row tabela={techContext.oprawaTech} naglowki={naglowki_oprawa}/>
                     </div>
                 </div>
-
-                                <div className={style.main2}>
+                <div className={style.main2}>
                     <div className={style.title_container}>
-                    <p className={style.title}> PROCESY ELEMENTÓW </p>
-                    <p className={style.title}> PROCESY ELEMENTÓW TECHNOLOGII</p>
+                    <p className={style.title}> LEGI</p>
+                    <p className={style.title}> LEGI FRAGMENTY</p>
                     </div>
                     <div className={style.containerDouble}>
-                    <ProcesyElementowTechInspekcja/>
-                    <ProcesyElementowTechInspekcja/>
+                    <Row tabela={techContext.legi} naglowki={naglowki_legi}/>
+                    <Row tabela={techContext.legiFragmenty} naglowki={naglowki_legiFragmenty}/>
                     </div>
                 </div>
-
 
 
 

@@ -1,6 +1,3 @@
-/* TabelaDanych.module.css */
-
-/* Definicja palety kolorów dla spójności */
 :root {
     --primary-color: #007bff;     
     --light-bg: #f8f9fa;          
@@ -14,18 +11,9 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     padding: 20px;
     color: var(--text-color);
-    /* background-color: #007bff; */
 }
 
-/* --- Sekcja Przełączników (bez zmian) --- */
 
-
-
-
-
-
-
-/* --- Sekcja Tabela (Izolacja Stylów) --- */
 
 .tabelaKontener {
     /* margin-top: 20px; */
@@ -35,29 +23,29 @@
     overflow-y: auto;
     height: min-content;
    background-color: var(--medium-bg); 
-    /* max-height: 79vh; */
-    
 }
 
 /* 1. Stylowanie GŁÓWNEJ TABELI */
 .glownaTabela {
+    min-width: 49vw;
+    /* max-width: 99vw; */
     /* width: 100%; */
-    /* min-width: 800px; */
     border-collapse: collapse;
 }
 
 /* 2. Stylowanie NAGŁÓWKÓW TH (bezpieczny selektor: glownaTabela -> thead -> th) */
 .glownaTabela thead th {
     background-color: var(--medium-bg); 
+   /* background-color: rgb(160, 127, 127); */
     color: var(--text-color);
-    padding: 12px 15px;
+    padding: 5px 12px;
     text-align: left;
     /* Linia oddzielająca nagłówek od ciała */
     border-bottom: 2px solid var(--border-color); 
     font-weight: 600;
     text-transform: uppercase; 
     font-size: 0.85rem;
-        position: sticky;
+    position: sticky;
     top: 0; /* Przykleja nagłówek do górnej krawędzi rodzica (tabelaKontener) */
     z-index: 10;
     
@@ -65,7 +53,7 @@
 
 /* 3. Stylowanie KOMÓREK TD (bezpieczny selektor: glownaTabela -> tbody -> td) */
 .glownaTabela tbody td {
-    padding: 10px 15px;
+    padding: 5px 12px;
     text-align: left;
     /* Dół komórki */
     border-bottom: 1px solid var(--border-color); 

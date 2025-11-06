@@ -62,9 +62,9 @@
 }
 
 /* Paski zebry (bezpieczny selektor) */
-.glownaTabela tbody tr:nth-child(odd) td {
+/* .glownaTabela tbody tr:nth-child(odd) td {
     background-color: var(--light-bg); 
-}
+} */
 
 /* Efekt najechania myszką (Hover) (bezpieczny selektor) */
 .glownaTabela tbody tr:hover td {

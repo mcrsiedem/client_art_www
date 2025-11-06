@@ -14,6 +14,7 @@ import InspekcjaHeader from "./components/header/InspekcjaHeader";
 
 import ProcesyElementowTechInspekcja from "./components/procesy_elementow_tech_inspekcja/ProcesyElementowTechInspekcja";
 import Row from "./components/row/Row";
+import Loading from "components/Loading/Loading";
 
 export default function Inspekcja( ) {
   const navigate = useNavigate();
@@ -22,6 +23,8 @@ export default function Inspekcja( ) {
   const techContext = useContext(TechnologyContext);
   const fechOddaniaGrupy =appContext.fechOddaniaGrupy;
   const widokOddan =appContext.widokOddan;
+
+
 
   let  naglowki_produkty= [ `zamowienie_id`,`technologia_id`,`etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_stron`, `indeks`, `naklad`, `nazwa`, `oprawa`, `stan`, `status`,  `typ`, `uwagi`]
   let  naglowki_elementy= [ `arkusz_szerokosc`, `arkusz_wysokosc`, `etap`, `format_x`, `format_y`, `global_id`, `id`, `ilosc_leg`, `ilosc_stron`, `indeks`, `lega`, `naklad`, `nazwa`, `papier_id`, `papier_info`, `papier_postac_id`, `produkt_id`, `stan`, `status`, `technologia_id`, `typ`, `typ_nazwa`, `uwagi`, `zamowienie_id`]
@@ -106,14 +109,17 @@ export default function Inspekcja( ) {
                   
                   techContext.setWykonania(res.data[10])
                   techContext.setGrupaOprawaTech(res.data[11])
+                  appContext.setIsLoading(false);
            }
         } else {
           navigate("/Login");
+          appContext.setIsLoading(false);
         }
       });
   }
 
   useEffect(() => {
+appContext.setIsLoading(true);
     checkToken();
   }, [appContext.idZamowieniaDiag]);
 
@@ -206,9 +212,78 @@ export default function Inspekcja( ) {
                     </div>
                 </div>
 
+               <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> GRUPY WYKONAN</p>
+                    <p className={style.title}> </p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={techContext.grupaWykonan} naglowki={naglowki_grupy}/>
+                    {/* <Row tabela={techContext.wykonania} naglowki={naglowki_wykonania}/> */}
+                    </div>
+                </div>
+                               <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> WYKONANIA</p>
+                    <p className={style.title}> REALIZACJE</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={techContext.wykonania} naglowki={naglowki_wykonania}/>
+                    <Row tabela={techContext.realizacje} naglowki={naglowki_realizacje}/>
+                    </div>
+                </div>
 
+                
+               <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> GRUPY WYKONAN OPRAWA</p>
+                    <p className={style.title}> WYKONANIA OPRAWA</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={techContext.grupaOprawaTech} naglowki={naglowki_grupy_oprawa}/>
+                    <Row tabela={techContext.wykonaniaOprawy} naglowki={naglowki_wykonania_oprawa}/>
+                    </div>
+                </div>
+
+                               <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> KOSZTY DODATKOWE</p>
+                    <p className={style.title}> FAKTURY</p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={modalContext.kosztyDodatkoweZamowienia} naglowki={naglowki_koszty_dodatkowe}/>
+                    <Row tabela={modalContext.faktury} naglowki={naglowki_faktury}/>
+                    </div>
+                </div>
+
+                                               <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> HISTORIA</p>
+                    <p className={style.title}> </p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={modalContext.historiaZamowienia} naglowki={naglowki_historia}/>
+                    {/* <Row tabela={modalContext.faktury} naglowki={naglowki_faktury}/> */}
+                    </div>
+                </div>
+
+
+
+                    {/* <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> PLIKI</p>
+                    <p className={style.title}> </p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={appContext.zamowieniaPliki} naglowki={naglowki_pliki}/>
+                    </div>
+
+
+                </div> */}
 
       </div>
+
+      <Loading/>
     </div>
   );
 }

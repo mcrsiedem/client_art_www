@@ -249,6 +249,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
           if (sessionStorage.getItem("typ_drag") == "grupa_proces" && sessionStorage.getItem("typ_grupy") != 1) {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       dragDropProcesGrupaToProcesor(id_drag_grupa_proces,id,fechGrupyAndWykonaniaForProcesor)
+       appContext.setIsLoading(true);
     }
     }
   }
@@ -266,7 +267,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   onDragOver={handleDragOver}
     className={procesor.select ? style.btn_procesor_selected : style.btn_procesor}
     onClick={(event) => {
-
+ appContext.setIsLoading(true);
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)
      setProcesory(

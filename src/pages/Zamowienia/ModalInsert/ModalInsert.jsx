@@ -180,7 +180,7 @@ const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
            //pliki
            setProcesyProduktow(res.data[13])
 
-           
+             contextApp.setIsLoading(false);
 
   }
 

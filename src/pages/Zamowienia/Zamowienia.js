@@ -79,7 +79,7 @@ setOpenModalInsert(false)
       <TechnologiaStage/>
       <ZamowieniaInfo/>
 
-      
+       <Loading/>
     </div>
   );
 }

@@ -577,7 +577,7 @@ if(elementyTech.length>1){
     });
 
 setShowTechnologyStage(true);
-
+appContext.setIsLoading(false);
 
 
 
@@ -646,6 +646,7 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   setWykonania(res.data[10])
   setGrupaOprawaTech(res.data[11])
    setShowTechnologyStage(true)
+   appContext.setIsLoading(false);
 }
 
 async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
@@ -760,6 +761,8 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       
       // setGrupWykonanAll(prev=>{return prev})
       setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+ appContext.setIsLoading(false);
+
 
     });
 
@@ -784,7 +787,7 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
       
       // setGrupWykonanAll(prev=>{return prev})
       setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
-      
+       appContext.setIsLoading(false);
 
     });
     
@@ -814,7 +817,7 @@ async function fechGrupyAndWykonaniaForProcesor_dni_wstecz(procesor_id,dniWstecz
       
       // setGrupWykonanAll(prev=>{return prev})
       setGrupWykonanAllWyszukiwarka(prev=>{return prev})
-
+ appContext.setIsLoading(false);
     });
 
 
@@ -838,7 +841,7 @@ async function fechGrupyAndWykonaniaForProcesor_dni_wstecz(procesor_id,dniWstecz
       
       // setGrupWykonanAll(prev=>{return prev})
       setGrupyOprawaAllWyszukiwarka(prev=>{return prev})
-
+ appContext.setIsLoading(false);
     });
 
 

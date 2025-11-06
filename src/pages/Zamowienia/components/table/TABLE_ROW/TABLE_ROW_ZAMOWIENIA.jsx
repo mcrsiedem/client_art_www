@@ -30,6 +30,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
   const [showKartaTechnologiczna, setShowKartaTechnologiczna] = useState(false);
   const contextApp = useContext(AppContext);
+        
   
   const zamowienia = contextApp.zamowienia
   const setZamowienia = contextApp.setZamowienia
@@ -152,6 +153,7 @@ const setShowTabs = contextModalInsert.setShowTabs
           setSelectedZamowienie({ ...row, i });
         }}
         onDoubleClick={(node, event) => {
+            contextApp.setIsLoading(true);
           setShowTabs({
             parametry: true,
             koszty: false,
@@ -531,8 +533,10 @@ function ShowTechnmologiaBtn({
   setShowKartaTechnologiczna,
 }) {
   const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const setShowProcesy = techContext.setShowProcesy;
+  
   if ( row.open_stan==1  ) {
   if (row.open_user_id != DecodeToken(sessionStorage.getItem("token")).id ) {
 
@@ -562,6 +566,7 @@ function ShowTechnmologiaBtn({
             src={iconAdd}
             onClick={() => {
               if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+              contextApp.setIsLoading(true);
               techContext.fechparametry(row?.id);
               // techContext.setShowTechnologyStage(true);
               techContext.setRowZamowienia(row);
@@ -586,6 +591,7 @@ function ShowTechnmologiaBtn({
             src={iconFile}
             onClick={() => {
                            if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+                                    contextApp.setIsLoading(true);
                                             fechparametryTechnologii(row.id, row.technologia_id);
                            }
 

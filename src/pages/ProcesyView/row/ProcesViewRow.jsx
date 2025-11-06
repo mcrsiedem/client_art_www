@@ -49,6 +49,8 @@ export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
         const [expand, setExpand] = useState(false);
         const [wolno] = useAccess(false);
         const [onContextMenuHanlder] = useContextMenuHandler(false);
+     const appContext = useContext(AppContext);
+    
 
 function selectColor (etapPlikow,status,korekta_zamowienia_alert){
 
@@ -249,6 +251,7 @@ if (grup.select) return style.procesRow_select
     if (sessionStorage.getItem("typ_drag") == "grupa_proces") {
       let id_drag_grupa_proces = sessionStorage.getItem("id_grupa_proces_drag");
       let id_drop_grupa_proces = id;
+    appContext.setIsLoading(true);
       dragDropProcesGrupa(
         id_drag_grupa_proces,
         id_drop_grupa_proces,

@@ -9,7 +9,7 @@
 
 .tabelaDanychKontener {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    padding: 20px;
+    padding: 15px;
     color: var(--text-color);
 }
 
@@ -58,6 +58,7 @@
     /* Dół komórki */
     border-bottom: 1px solid var(--border-color); 
     background-color: white; 
+    font-size: 0.9rem;
 }
 
 /* Paski zebry (bezpieczny selektor) */

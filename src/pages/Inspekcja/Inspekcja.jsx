@@ -124,7 +124,6 @@ export default function Inspekcja( ) {
 
       <div className={style.container}>
        <DaneIns/>
-       {/* <ProduktIns/> */}
 
                 <div className={style.main2}>
                     <div className={style.title_container}>

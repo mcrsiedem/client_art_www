@@ -167,6 +167,17 @@ appContext.setIsLoading(true);
                 </div>
 
 
+                    <div className={style.main2}>
+                    <div className={style.title_container}>
+                    <p className={style.title}> PLIKI</p>
+                    <p className={style.title}> </p>
+                    </div>
+                    <div className={style.containerDouble}>
+                    <Row tabela={appContext.zamowieniaPliki} naglowki={naglowki_pliki}/>
+                    </div>
+
+
+                </div>
                 <div className={style.main2}>
                     <div className={style.title_container}>
                     <p className={style.title}> PROCESY ELEMENTÓW </p>
@@ -269,17 +280,6 @@ appContext.setIsLoading(true);
 
 
 
-                    {/* <div className={style.main2}>
-                    <div className={style.title_container}>
-                    <p className={style.title}> PLIKI</p>
-                    <p className={style.title}> </p>
-                    </div>
-                    <div className={style.containerDouble}>
-                    <Row tabela={appContext.zamowieniaPliki} naglowki={naglowki_pliki}/>
-                    </div>
-
-
-                </div> */}
 
       </div>
 

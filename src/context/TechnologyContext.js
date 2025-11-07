@@ -714,48 +714,24 @@ setProcesyProduktowTech([])
 
 
 
-async function fechGrupyAndWykonaniaAll() {
-
-// wszystkie grupy 
-  // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
-  const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
-  setWykonaniaAll(res.data[0])
-  setGrupWykonanAll(res.data[1])
-  setGrupWykonanAllWyszukiwarka(res.data[1])
-  // console.clear()
-  // console.log("Procesy: ")
-  // console.log("Wykonania: ", res.data[0])
-  // console.log("grupy: ",res.data[1])
-}
-
-
-const CheckProcesorID = (procesor_id) => {
-
-  
-  if(procesor_id == null){
-    // console.log(" Selected procesor form fech :" +procesor_id)
-  // console.log(" Procesor domyslny form fech :" +DecodeToken(sessionStorage.getItem("token")).procesor_domyslny)
-     return procesor_id = DecodeToken(sessionStorage.getItem("token")).procesor_domyslny
-  }else {
-    return procesor_id
-  }
-
-
-
-}
 async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
 
   // grupy i wykonania dla konktretnego procesora 
 
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
-      // console.log(res.data)
-      setWykonaniaAll(res.data[0])
-      setGrupWykonanAll(res.data[1])
-      setGrupWykonanAllWyszukiwarka(res.data[1])
+      // setWykonaniaAll(res.data[0])
+      // setGrupWykonanAll(res.data[1])
+      // setGrupWykonanAllWyszukiwarka(res.data[1])
+      // setSelectedProcesor(procesor_id)
+      // setDniWstecz(res.data[2][0].dni     )
+
+      setGrupWykonanAll(res.data[0])
+      setGrupWykonanAllWyszukiwarka(res.data[0])
       setSelectedProcesor(procesor_id)
-      setDniWstecz(res.data[2][0].dni     )
-// console.log(res.data[2][0].dni)
+      setDniWstecz(res.data[1][0].dni     )
+
+
       return res
     }).then((res) =>{
       
@@ -856,11 +832,7 @@ async function fechTechnology() {
 
   
     setTechnology([...res.data]);
-  
-    // const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+zamowienie_prime_id);
-    // const res = await axios.get(IP + "technologie_grupy_an_wykonania_all");
-    // setWykonaniaAll(res.data[0])
-    // setGrupWykonanAll(res.data[1])
+
   }
 
 
@@ -913,7 +885,7 @@ async function fechTechnology() {
                     openTechnologiaId,setOpenTechnologiaId,
                     fechparametryTechnologii,
                     fechTechnology,
-                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaAll,fechGrupyAndWykonaniaForProcesor,
+                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaForProcesor,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,

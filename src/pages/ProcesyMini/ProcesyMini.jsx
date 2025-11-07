@@ -220,7 +220,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
   const appContext = useContext(AppContext)
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
-  const fechGrupyAndWykonaniaAll = techContext.fechGrupyAndWykonaniaAll
+
   const setSelectedProcesor = techContext.setSelectedProcesor
   // const selectedProcesor = techContext.selectedProcesor
   const procesory = appContext.procesory
@@ -255,7 +255,7 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
       // console.log(" grupy wykonan techcontex: ", grupyWykonanAll)
      setSelectedProcesor(id)
      fechGrupyAndWykonaniaForProcesor(id)
-    //  fechGrupyAndWykonaniaAll()
+
 
      setProcesory(
       procesory

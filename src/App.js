@@ -32,8 +32,6 @@ import Procesy from "pages/Procesy/Procesy";
 import ZestawieniaRealizacji from "pages/ZestawienieRealizacji/ZestawienieRealizacji";
 
 export default function App() {
-
-
   return (
     <BrowserRouter basename={''} >
       <SocketProvider>
@@ -70,7 +68,6 @@ export default function App() {
       </TechnologyContextProvider>
       </AppContextProvider>
       </SocketProvider>
-      
     </BrowserRouter>
   );
 }

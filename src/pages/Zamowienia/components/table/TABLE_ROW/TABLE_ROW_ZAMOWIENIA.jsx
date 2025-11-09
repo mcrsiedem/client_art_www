@@ -22,7 +22,7 @@ import OdblokujBTN from "./components/OdblokujBTN";
 import ZamknijBTN from "./components/ZamknijBTN";
 import SkasujBTN from "./components/SkasujBTN";
 
-export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
+export default function TABLE_ROW_ZAMOWIENIA({ row,i }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
   const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie

@@ -37,8 +37,9 @@ export default function ProcesyView( ) {
   const selectedProcesor = techContext.selectedProcesor;
     const [selectedProcesorMulti, setSelectedProcesorMulti] = useState([]);
 
-      const [callForPaper] = useApiPapier();
-       const {   lokalizacja} = useSocket()
+  const [callForPaper] = useApiPapier();
+  const {   lokalizacja} = useSocket()
+
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
@@ -46,7 +47,6 @@ export default function ProcesyView( ) {
         if (res.data.Status === "Success") {
           console.log("fechGrupyAndWykonaniaForProcesor")
           fechGrupyAndWykonaniaForProcesor(1);
-          //  fechGrupyAndWykonaniaForProcesor_dni_wstecz(1,dniWstecz)
           setSelectedProcesor(1);
           setSelectedProces(1);
           setProcesory(

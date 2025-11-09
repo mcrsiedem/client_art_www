@@ -18,7 +18,7 @@ import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
-function Zamowienia({ user, setUser }) {
+function Zamowienia() {
 
   const contextApp = useContext(AppContext);
   const contextModal = useContext(ModalInsertContext);
@@ -31,8 +31,8 @@ function Zamowienia({ user, setUser }) {
   const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
-const [refreshZamowienia] = useZamowienia()
-const [loading, setLoading] = useState(true);
+  const [refreshZamowienia] = useZamowienia();
+  const [loading, setLoading] = useState(true);
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -62,14 +62,14 @@ const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     checkToken();
-setOpenModalInsert(false)
+    setOpenModalInsert(false)
   }, []);
 
   return (
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
       <div className={style.multiTableContainer}>
-        <TableZamowienia  open2={open2} setRow={setRow}  header={false} loading={loading}/>
+        <TableZamowienia loading={loading}/>
         <TableMini  open2={open2} setRow={setRow}  header={false}/>
       </div>
           {openModalInsert && (

@@ -9,7 +9,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import LoadingMini from "components/Loading/LoadingMini";
-export default function TableZamowienia({open2,setRow,loading}){
+export default function TableZamowienia({loading}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
@@ -125,7 +125,7 @@ const [refreshZamowienia] = useZamowienia()
           )
            .map((row,i) => {
              return (
-               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} i={i} />
+               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} i={i} />
              );
            })}
        </tbody>

@@ -716,30 +716,41 @@ setProcesyProduktowTech([])
 
 async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
+  // #GRUPY_01
+  // ProcesyView - używane w momencie zmiany procesora  
 
+const cofnijDateOJedenDzien = (dane) => {
+
+  if (!Array.isArray(dane) || dane.length === 0) {
+    return "Błąd: Tablica jest pusta lub niepoprawna.";
+  }
+
+  const dataString = dane[0].poczatek;
+  const dataObiekt = new Date(dataString);
+
+  if (isNaN(dataObiekt.getTime())) {
+    return "Błąd: Niepoprawny format daty w polu 'poczatek'.";
+  }
+
+  // tu miałem odjąć 1 dzień ale się rozmyśliłem dlatego jest 0
+  dataObiekt.setDate(dataObiekt.getDate() - 0);
+  const nowaData = dataObiekt.toISOString().substring(0, 10);
+  return nowaData;
+}
   // grupy i wykonania dla konktretnego procesora 
 
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor/"+procesor_id).then((res)=>{
-      // setWykonaniaAll(res.data[0])
-      // setGrupWykonanAll(res.data[1])
-      // setGrupWykonanAllWyszukiwarka(res.data[1])
-      // setSelectedProcesor(procesor_id)
-      // setDniWstecz(res.data[2][0].dni     )
 
       setGrupWykonanAll(res.data[0])
       setGrupWykonanAllWyszukiwarka(res.data[0])
       setSelectedProcesor(procesor_id)
-      setDniWstecz(res.data[1][0].dni     )
-
+      // setDniWstecz(res.data[1][0].dni     )
+      setDniWstecz(cofnijDateOJedenDzien(res.data[0])   )
 
       return res
     }).then((res) =>{
-      
-      // setGrupWykonanAll(prev=>{return prev})
       setGrupWykonanAllWyszukiwarka(prev=>{return prev})
- appContext.setIsLoading(false);
-
-
+      appContext.setIsLoading(false);
     });
 
   }
@@ -749,7 +760,6 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
   async function fechGrupyOprawaForProcesor(procesor_id) {
 
 
-  // grupy i wykonania dla konktretnego procesora 
 
     await axios.get(IP + "technologie_grupy_oprawa_for_procesor/"+procesor_id).then((res)=>{
       // console.log(res.data)
@@ -778,15 +788,14 @@ async function fechGrupyAndWykonaniaForProcesor(procesor_id) {
 
 
 async function fechGrupyAndWykonaniaForProcesor_dni_wstecz(procesor_id,dniWstecz2) {
-
-
-  // grupy i wykonania dla konktretnego procesora 
+// #GRUPY_02
+// ProcesyView - używane w momencie zmiany daty wyświetlania od...
 
     await axios.get(IP + "technologie_grupy_an_wykonania_for_procesor_dni_wstecz/"+procesor_id+"/"+dniWstecz2).then((res)=>{
-      console.log(res.data)
-      setWykonaniaAll(res.data[0])
-      setGrupWykonanAll(res.data[1])
-      setGrupWykonanAllWyszukiwarka(res.data[1])
+      // console.log(res.data)
+      // setWykonaniaAll(res.data[0])
+      setGrupWykonanAll(res.data[0])
+      setGrupWykonanAllWyszukiwarka(res.data[0])
       setSelectedProcesor(procesor_id)
       return res
     }).then((res) =>{

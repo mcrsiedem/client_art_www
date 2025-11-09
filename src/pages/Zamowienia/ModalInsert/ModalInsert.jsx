@@ -98,7 +98,7 @@ const setFaktury= contextModalInsert.setFaktury;
 const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
 
 
-
+const openZamowienieId = 1
 
   useEffect(() => {
 

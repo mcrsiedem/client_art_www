@@ -38,16 +38,12 @@ function ProcesyHeader() {
 
   const appContext = useContext(AppContext)
  const { podgladRealizacji,lokalizacja } = useSocket()
-  // aby useEffect załadował się tylko raz
-  const effectRan = useRef(false);
+
+
   useEffect(() => {
-    if (effectRan.current === true) {
-      // console.log("value: "+ value)
-   //   console.log("Test tokenu"+ token.token)
-      //console.log("Test pojedynczego rendera Header")
-    }
+
     return () => {
-      effectRan.current = true;
+
     };
   }, []);
   //---------------------------------------------------------
@@ -74,23 +70,13 @@ function ProcesyHeader() {
           />
           <DataWyswietlania/>
         <PrzerwaMagicBTN />
-          {/* <p> {selectedProces}</p> */}
         </div>
-
         <div className={style.centerHeaderContener}>
-        {/* <PokazStany /> */}
         <BTN_INFO_ZAMOWIENIA_GRUPY />
-
         <PrzerwaBTN />
-        {/* <ODZNACZ_BTN /> */}
-        {/* <KOPIUJ_ZAZNACZONE_BTN2 /> */}
-        
-
         </div>
         <div className={style.rightHeaderContener}>
-          
         <Szukaj />
-
         <WYDAJ_ZAZNACZONE_BTN />
         <KOPIUJ_ZAZNACZONE_BTN />
      
@@ -110,24 +96,7 @@ function ProcesyHeader() {
 
 export default ProcesyHeader;
 
-// const ODZNACZ_BTN = () =>{
-//      const techContext = useContext(TechnologyContext);
-//       const grupyWykonanAll = techContext.grupyWykonanAll;
-//       const setGrupWykonanAll = techContext.setGrupWykonanAll;
-//   return(
-//     <button 
-//     onClick={(event) => {
-//             // console.log(" select" + grup.global_id + " " + event.target.checked);
-//             setGrupWykonanAll(
-//               grupyWykonanAll.map((t) => {
-//                   return { ...t, select: false};
-//               })
-//             );
-//           }
-//     }
-//     >Odznacz</button>
-//   )
-// }
+
 
 function Szukaj() {
   const techContext = useContext(TechnologyContext);
@@ -145,25 +114,12 @@ function Szukaj() {
       title="Znajdź tytuł pracy..."
       placeholder=""
       onChange={(event) => {
-  
-      
-
          let  m =  grupyWykonanAllWyszukiwarka.filter(x=> x.tytul !=null  ).filter((k) =>
-                      //  k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
             k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase()) 
-
-
           )
-
         setGrupWykonanAll(
          m
         );
-
-
-
-
-
-
 
       }}
     ></input>
@@ -172,42 +128,21 @@ function Szukaj() {
 
 function DataWyswietlania(){
     const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
   const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  
   const dniWstecz = techContext.dniWstecz;
   const setDniWstecz = techContext.setDniWstecz;
   const selectedProcesor = techContext.selectedProcesor
-
-
-
   return(
       <div className={style.col}>
-      {/* <label className={style.label}> Wyświetl od... </label> */}
       <input className={style.selectDataWyswietlania} type="date"
          value={dniWstecz}
-        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
          onChange={(event) => {
-
-          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
-          
           setDniWstecz( event.target.value);
-
-
-
-            
-     
-
          }}></input>
     </div>
   );
 }
-
-
-
-
-
 
 
 function KOPIUJ_ZAZNACZONE_BTN() {
@@ -480,8 +415,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
         onChange={(event) => {
           setSelectedProces(event.target.value)
           setSelectedProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-           fechGrupyAndWykonaniaForProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
-
+          fechGrupyAndWykonaniaForProcesor(procesList.filter(x => x.nazwa_id == event.target.value)[0].procesor_domyslny )
 
            setProcesory(
             procesory

@@ -225,7 +225,7 @@ background: rgb(243, 243, 243);
 
 .col_nr {
    width: 60px;
-
+cursor:pointer;
 
 }
 
@@ -262,7 +262,7 @@ background: rgb(243, 243, 243);
 }
 
 .col_netto {
-   width: 100px;
+   width: 60px;
 }
 
 .col_strony{
@@ -273,6 +273,12 @@ background: rgb(243, 243, 243);
 
 .col_spedycja{
    width: 90px;
+   cursor:pointer;
+}
+
+.col_oprawa{
+   width: 90px;
+   cursor:pointer;
 }
 
 .col_uwagi {

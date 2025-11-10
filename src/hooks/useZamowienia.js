@@ -18,7 +18,7 @@ export function useZamowienia() {
 
   const refreshZamowienia = async () => {
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);

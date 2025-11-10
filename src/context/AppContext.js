@@ -20,7 +20,8 @@ export const AppContextProvider = ({children})=>{
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
-    const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
+    // const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
+    const sortowanieZamowienia = useRef('nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     // const [zestawZamowienia, setZestawZamowienia] = useState("Bieżące");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const [users, setUsers] = useState(null);
@@ -155,7 +156,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
              idZamowieniaDiag, setIdZamowieniaDiag,
                   isLoading, setIsLoading, 
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
-                  sortowanieZamowienia, setSortowanieZamowienia,
+                  sortowanieZamowienia,
                   zestawZamowienia,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,

@@ -38,7 +38,8 @@ const {refreshZamowienia} = useZamowienia()
          <tr className={style.table_tr}>
            {/* <th className={style.col_alert}>!</th> */}
            <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("nr")
+             contextApp.setIsLoading(true);
+         contextApp.sortowanieZamowienia.current = "nr asc"
          refreshZamowienia()
 
             }} className={style.col_nr}>Nr</th>
@@ -56,29 +57,34 @@ const {refreshZamowienia} = useZamowienia()
            <th className={style.col_praca}>Praca</th>
            <th onClick={()=>{
             contextApp.setIsLoading(true);
-         contextApp.setSortowanieZamowienia("naklad")
+         contextApp.sortowanieZamowienia.current = "naklad"
          refreshZamowienia()
 
             }} className={style.col_strony}>Nakład</th>
            <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("ilosc_stron")
+             contextApp.setIsLoading(true);
+         contextApp.sortowanieZamowienia.current = "ilosc_stron"
          refreshZamowienia()
 
             }} className={style.col_strony}>Str.</th>
            <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_przyjecia")
+             contextApp.setIsLoading(true);
+            contextApp.sortowanieZamowienia.current = "data_przyjecia"
             refreshZamowienia()
             }} className={style.col_spedycja}>Przyjęcie</th>
            <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_spedycji")
+             contextApp.setIsLoading(true);
+            contextApp.sortowanieZamowienia.current = "data_spedycji"
             refreshZamowienia()
             }} className={style.col_spedycja}>Spedycja</th>
-           <th className={style.col_strony}>Netto</th>
+           <th className={style.col_netto}>Netto</th>
            <th  onClick={()=>{
-         contextApp.setSortowanieZamowienia("oprawa_id")
+             contextApp.setIsLoading(true);
+         contextApp.sortowanieZamowienia.current = "oprawa_id"
          refreshZamowienia()
 
-            }}className={style.col_netto}>Oprawa</th>
+            }}className={style.col_oprawa}>Oprawa</th>
+
            <th className={style.col_firma2}>Firma</th>
            <th className={style.col_status}>Stan</th>
            <th className={style.col_status}>Status</th>

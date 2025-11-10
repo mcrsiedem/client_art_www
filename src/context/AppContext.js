@@ -225,37 +225,37 @@ const _firma = [
       id:0,
       nazwa: "Bieżące",
     },
-
-    {
-      id: 1,
-      nazwa: "Zamówienia",
-    },
     {
       id: 2,
       nazwa: "Harmonogram",
     },
     {
       id: 3,
-      nazwa: "Wszystkie",
+      nazwa: "Wydrukowane",
     },
     {
       id: 4,
-      nazwa: "Anulowane",
+      nazwa: "Sfalcowane",
     },
     
     {
       id: 5,
-      nazwa: "Oddane",
+      nazwa: "Oprawione",
     },
     
     
     {
       id: 6,
-      nazwa: "Wydrukowane",
+      nazwa: "Oddane",
+    },
+
+        {
+      id: 7,
+      nazwa: "Anulowane",
     },
     {
       id: 7,
-      nazwa: "Sfalcowane",
+      nazwa: "Wszystkie",
     },
     // {
     //   id: 8,

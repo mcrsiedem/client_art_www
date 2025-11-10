@@ -15,6 +15,7 @@ import { zabezpiecz } from "actions/zabezpiecz";
 import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
+import { useZamowienia } from "hooks/useZamowienia";
 
 export default function Header({ dodaj_clikHandler}) {
   const navigate = useNavigate();
@@ -128,17 +129,36 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
   const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
+  const zestawZamowienia= contextApp.zestawZamowienia;
+  const setIsLoading= contextApp.setIsLoading;
+  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort] = useZamowienia();
+
     return (
   
         <select
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaEtap}
           onChange={(event) => {
+
+                    const promiseA = new Promise((resolve, reject) => {
+            setIsLoading(true)
             setSortowanieZamowieniaEtap(event.target.value)
+            zestawZamowienia.current= event.target.value
+  
+                      resolve(777);
+                    })
+
+                            promiseA.then(res => {
+
+          refreshZamowieniaSort(setIsLoading);
+        })
+
+
+
           }}
         >
           {contextApp._sortowanieZamowienieEtap.map((option) => (
-            <option key={option.id} value={option.id}>
+            <option key={option.id} value={option.nazwa}>
             {option.nazwa}
             </option>
           ))}

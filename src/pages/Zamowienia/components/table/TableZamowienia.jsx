@@ -115,7 +115,7 @@ const [refreshZamowienia] = useZamowienia()
              return  zam.klient_id == selectedKlient;
             }
           })
-          .filter((zamowienie) => sortWgEtapu({zamowienie}))
+          // .filter((zamowienie) => sortWgEtapu({zamowienie}))
           .filter((k) =>
             k.tytul
               .concat(" ", k.nr)

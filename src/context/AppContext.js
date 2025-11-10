@@ -21,7 +21,8 @@ export const AppContextProvider = ({children})=>{
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
     const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
-    const [zestawZamowienia, setZestawZamowienia] = useState("biezace");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
+    const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
+    // const [zestawZamowienia, setZestawZamowienia] = useState("Bieżące");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
     const [selectedKlient, setSelectedKlient] = useState("0");
@@ -155,7 +156,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   isLoading, setIsLoading, 
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia, setSortowanieZamowienia,
-                  zestawZamowienia, setZestawZamowienia,
+                  zestawZamowienia,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy

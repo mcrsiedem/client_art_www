@@ -17,10 +17,13 @@ export function useZamowienia() {
 
   const refreshZamowienia = async () => {
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/" + sessionStorage.getItem("token")
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
+
+    
+    // setIsLoading(false)
 
     // const res2 = await axios.get(
     //   IP + "zamowieniapliki/" + sessionStorage.getItem("token")
@@ -34,6 +37,24 @@ scrollTable(tableZamowienia)
 
 
   };
+
+  const refreshZamowieniaSort = async (setIsLoading) => {
+    const res = await axios.get(
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setZamowienia([...res.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data]);
+
+      setIsLoading(false)
+    
+       if(DecodeToken(sessionStorage.getItem("token")).id==3){
+       scrollTable(tableZamowienia)
+       }
+
+
+  };
+
+
 
   const odblokujZamowienie = (rowsToDelete) =>{
     axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
@@ -68,5 +89,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane];
+  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort];
 }

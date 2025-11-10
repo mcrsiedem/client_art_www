@@ -24,20 +24,10 @@ export function useZamowienia() {
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
       setIsLoading(false)
 
-    
-    // setIsLoading(false)
-
-    // const res2 = await axios.get(
-    //   IP + "zamowieniapliki/" + sessionStorage.getItem("token")
-    // );
-    // contextApp.setZamowieniaPliki([...res2.data]);
-
     // tylko dla Jarka
        if(DecodeToken(sessionStorage.getItem("token")).id==3){
 scrollTable(tableZamowienia)
        }
-
-
   };
 
 

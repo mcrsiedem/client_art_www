@@ -70,7 +70,7 @@ export default function TableMini({open2,setRow}){
              return  zam.klient_id == selectedKlient;
             }
           })
-          .filter((zamowienie) => sortWgEtapu({zamowienie}))
+          // .filter((zamowienie) => sortWgEtapu({zamowienie}))
 
            .map((row) => {
              return (

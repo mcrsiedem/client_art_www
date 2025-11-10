@@ -6,6 +6,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
   const tableZamowienia= contextApp.tableZamowienia;
+  const setIsLoading= contextApp.setIsLoading;
 
 
    const scrollTable = (table) => {
@@ -21,6 +22,7 @@ export function useZamowienia() {
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
+      setIsLoading(false)
 
     
     // setIsLoading(false)
@@ -38,21 +40,7 @@ scrollTable(tableZamowienia)
 
   };
 
-  const refreshZamowieniaSort = async (setIsLoading) => {
-    const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
-    );
-    contextApp.setZamowienia([...res.data]);
-    contextApp.setZamowieniaWyszukiwarka([...res.data]);
 
-      setIsLoading(false)
-    
-       if(DecodeToken(sessionStorage.getItem("token")).id==3){
-       scrollTable(tableZamowienia)
-       }
-
-
-  };
 
 
 
@@ -89,5 +77,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort};
+  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane};
 }

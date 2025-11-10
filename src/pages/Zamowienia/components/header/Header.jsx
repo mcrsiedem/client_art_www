@@ -131,7 +131,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
   const zestawZamowienia= contextApp.zestawZamowienia;
   const setIsLoading= contextApp.setIsLoading;
-  const {refreshZamowienia,refreshZamowieniaSort} = useZamowienia();
+  const {refreshZamowienia} = useZamowienia();
 
     return (
   
@@ -150,7 +150,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
 
                             promiseA.then(res => {
 
-          refreshZamowieniaSort(setIsLoading);
+          refreshZamowienia();
         })
 
 

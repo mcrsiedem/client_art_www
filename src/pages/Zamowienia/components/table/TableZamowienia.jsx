@@ -3,22 +3,20 @@ import style from "./TableZamowienia.module.css";
 import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import { AppContext } from "context/AppContext";
-import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./TABLE_ROW/TABLE_ROW_ZAMOWIENIA";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import LoadingMini from "components/Loading/LoadingMini";
 export default function TableZamowienia({loading}){
-  const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
-  const setZamowienia = contextApp.setZamowienia
+
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
   const [sortWgEtapu] = useSortowanieZamowienia()
 
-   const inputElement = useRef();
+
 
   const tableZamowienia= contextApp.tableZamowienia;
 
@@ -27,14 +25,10 @@ export default function TableZamowienia({loading}){
 const {refreshZamowienia} = useZamowienia()
 
   if (loading) {
-    // return <div>Ładowanie danych...</div>;
     return <LoadingMini loading={loading}/>;
-
   }
 
-  // if (zamowienia.length === 0) {
-  //   return <div>Brak użytkowników do wyświetlenia.</div>;
-  // }
+
 
 
  return (
@@ -61,6 +55,7 @@ const {refreshZamowienia} = useZamowienia()
            <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
            <th className={style.col_praca}>Praca</th>
            <th onClick={()=>{
+            contextApp.setIsLoading(true);
          contextApp.setSortowanieZamowienia("naklad")
          refreshZamowienia()
 

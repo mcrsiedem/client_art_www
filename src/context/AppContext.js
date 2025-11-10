@@ -21,6 +21,7 @@ export const AppContextProvider = ({children})=>{
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
     const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
+    const [zestawZamowienia, setZestawZamowienia] = useState("biezace");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
     const [selectedKlient, setSelectedKlient] = useState("0");
@@ -154,6 +155,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   isLoading, setIsLoading, 
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia, setSortowanieZamowienia,
+                  zestawZamowienia, setZestawZamowienia,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy
@@ -253,10 +255,10 @@ const _firma = [
       id: 7,
       nazwa: "Sfalcowane",
     },
-    {
-      id: 8,
-      nazwa: "Bieżace bez oddanych",
-    },
+    // {
+    //   id: 8,
+    //   nazwa: "Bieżace bez oddanych",
+    // },
   
   ];
 

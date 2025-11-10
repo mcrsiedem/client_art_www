@@ -16,7 +16,7 @@ import { IP } from "utils/Host";
 
 export default function ZamknijBTN({setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const [refreshZamowienia] = useZamowienia()
+const {refreshZamowienia} = useZamowienia()
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const produkty = contextModalInsert.produkty;
 const elementy = contextModalInsert.elementy;

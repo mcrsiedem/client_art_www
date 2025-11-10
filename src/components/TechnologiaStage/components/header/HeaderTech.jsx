@@ -431,7 +431,7 @@ const IconNavigate =  ({ className, logo, navi }) => {
   const fechGrupyAndWykonaniaForProcesor =
     techContext.fechGrupyAndWykonaniaForProcesor;
   const selectedProcesor = techContext.selectedProcesor;
-  const [refreshZamowienia] = useZamowienia()
+  const {refreshZamowienia} = useZamowienia()
   return (
     <img
       className={className}
@@ -460,7 +460,7 @@ const SkasujTechnologieBTN = () => {
 
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const daneTech = techContext.daneTech;
-    const [refreshZamowienia] = useZamowienia()
+    const {refreshZamowienia} = useZamowienia()
 if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis ==1){
 if(techContext.grupaWykonan.length==0 & techContext.daneTech.id !=1){
       return (

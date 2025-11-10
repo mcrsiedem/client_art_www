@@ -131,7 +131,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
   const zestawZamowienia= contextApp.zestawZamowienia;
   const setIsLoading= contextApp.setIsLoading;
-  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort] = useZamowienia();
+  const {refreshZamowienia,refreshZamowieniaSort} = useZamowienia();
 
     return (
   

@@ -89,5 +89,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort];
+  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaSort};
 }

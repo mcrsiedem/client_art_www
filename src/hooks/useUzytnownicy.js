@@ -8,7 +8,7 @@ export function useUzytnownicy() {
   const setUzytkownicy = contextApp.setUzytkownicy;
   const setUzytkownicyGrupy = contextApp.setUzytkownicyGrupy;
 
-  const [refreshZamowienia] = useZamowienia();
+  const {refreshZamowienia} = useZamowienia();
 
   async function getUzytnownicy() {
     const res = await axios.get(

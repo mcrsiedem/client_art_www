@@ -23,7 +23,7 @@ export default function TableZamowienia({open2,setRow}){
 
  
 
-const [refreshZamowienia] = useZamowienia()
+const {refreshZamowienia} = useZamowienia()
 
 
 

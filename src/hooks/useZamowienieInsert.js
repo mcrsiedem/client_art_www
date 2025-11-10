@@ -36,7 +36,7 @@ export  function useZamowienieInsert(){
     const procesyProduktow= contextModalInsert.procesyProduktow;
   const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
 
-const [refreshZamowienia] = useZamowienia()
+const {refreshZamowienia} = useZamowienia()
      const {         socket } = useSocket()
  async function zapiszZamowienie({dialogBox}){
 

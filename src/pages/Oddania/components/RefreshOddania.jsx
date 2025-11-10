@@ -7,7 +7,7 @@ import { AppContext } from "context/AppContext";
 export default function RefreshOddania(){
     const appContext = useContext(AppContext)
   
-  const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia()
+  const {refreshZamowienia} = useZamowienia()
     const [disabled, setDisabled] = useState(false);
 
     const fechOddaniaGrupy =appContext.fechOddaniaGrupy;

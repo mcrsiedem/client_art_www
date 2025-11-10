@@ -24,7 +24,7 @@ export default function TableZamowienia({loading}){
 
   const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
 
-const [refreshZamowienia] = useZamowienia()
+const {refreshZamowienia} = useZamowienia()
 
   if (loading) {
     // return <div>Ładowanie danych...</div>;

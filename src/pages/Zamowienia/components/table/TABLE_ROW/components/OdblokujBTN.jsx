@@ -5,7 +5,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 export default function OdblokujBTN({row}) {
   
-   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
+   const {refreshZamowienia,odblokujZamowienie} = useZamowienia();
  
  if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj   == 1 || row.open_user_id == DecodeToken(sessionStorage.getItem("token")).id){
   return (

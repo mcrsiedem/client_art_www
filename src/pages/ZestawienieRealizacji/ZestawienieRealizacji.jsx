@@ -29,7 +29,7 @@ function ZestawieniaRealizacji({ user, setUser }) {
   const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
-const [refreshZamowienia] = useZamowienia()
+const {refreshZamowienia} = useZamowienia()
 const [loading, setLoading] = useState(true);
 
 

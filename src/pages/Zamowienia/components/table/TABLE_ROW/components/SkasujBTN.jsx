@@ -5,7 +5,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 export default function SkasujBTN({row}) {
   
-   const [refreshZamowienia,odblokujZamowienie,deleteZamowienie] = useZamowienia();
+   const {refreshZamowienia,deleteZamowienie} = useZamowienia();
  
 
 //  if(DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj   == 1){

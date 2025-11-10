@@ -48,8 +48,7 @@ const setShowTabs = contextModalInsert.setShowTabs
           className={style.icon}
           src={iconAdd2}
           onClick={() => {
-setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
-
+            setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
             setSelectedZamowienie({id:1})
             dodaj_clikHandler();
           }}

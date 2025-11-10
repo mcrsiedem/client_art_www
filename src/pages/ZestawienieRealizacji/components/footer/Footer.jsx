@@ -125,24 +125,3 @@ let mes='';
   );
 }
 
-function SORTOWANIE_ZAMOWIENIA_ETAP() {
-  const contextApp = useContext(AppContext);
-  const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
-  const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
-    return (
-  
-        <select
-          className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
-          value={sortowanieZamowieniaEtap}
-          onChange={(event) => {
-            setSortowanieZamowieniaEtap(event.target.value)
-          }}
-        >
-          {contextApp._sortowanieZamowienieEtap.map((option) => (
-            <option key={option.id} value={option.id}>
-            {option.nazwa}
-            </option>
-          ))}
-        </select>
-    );
-  }

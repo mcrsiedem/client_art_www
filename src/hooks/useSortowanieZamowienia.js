@@ -32,9 +32,8 @@ function sortWgEtapu({ zamowienie }) {
     return zamowienie.etap == 10; // sfalcowane
   }
        if (sortowanieZamowieniaEtap == 0) {
-
-    return zamowienie.etap > 1 && zamowienie.faktury_status != 3 && zamowienie.status != 7  || zamowienie.etap < 16 && zamowienie.faktury_status == 3;
-    // return zamowienie.etap > 1  && zamowienie.status != 7  && zamowienie.etap < 16 ;
+return true;
+    // return zamowienie.etap > 1 && zamowienie.faktury_status != 3 && zamowienie.status != 7  || zamowienie.etap < 16 && zamowienie.faktury_status == 3;
 
   }
   if (sortowanieZamowieniaEtap == 8) {

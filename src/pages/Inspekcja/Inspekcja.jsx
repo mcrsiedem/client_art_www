@@ -52,7 +52,9 @@ export default function Inspekcja( ) {
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then(async (res) => {
         if (res.data.Status === "Success") {
-          fechOddaniaGrupy(widokOddan)
+
+          try{
+fechOddaniaGrupy(widokOddan)
 
           const res = await axios.get(IP + "parametry/"+appContext.idZamowieniaDiag+"/"+ sessionStorage.getItem("token"));
            modalContext.setDaneZamowienia([])
@@ -109,8 +111,14 @@ export default function Inspekcja( ) {
                   
                   techContext.setWykonania(res.data[10])
                   techContext.setGrupaOprawaTech(res.data[11])
-                  appContext.setIsLoading(false);
            }
+          }catch{
+
+          }finally{
+                  appContext.setIsLoading(false);
+
+          }
+          
         } else {
           navigate("/Login");
           appContext.setIsLoading(false);

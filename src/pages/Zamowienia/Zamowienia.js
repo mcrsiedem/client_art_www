@@ -18,6 +18,7 @@ import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
+import DiaglogAlert from "components/Dialog/DiaglogAlert";
 function Zamowienia() {
 
   const contextApp = useContext(AppContext);
@@ -80,6 +81,7 @@ function Zamowienia() {
       <ZamowieniaInfo/>
 
        <Loading/>
+       <DiaglogAlert/>
     </div>
   );
 }

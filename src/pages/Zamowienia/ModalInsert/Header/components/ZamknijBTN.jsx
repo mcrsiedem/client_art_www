@@ -10,12 +10,14 @@ import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOpr
 
 import { useZamowienia } from "hooks/useZamowienia";
 import { IP } from "utils/Host";
+import { AppContext } from "context/AppContext";
 
 
 
 
 export default function ZamknijBTN({setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
+  const appContext = useContext(AppContext);
 const {refreshZamowienia} = useZamowienia()
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const produkty = contextModalInsert.produkty;
@@ -39,6 +41,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                           if (window.confirm(text) == true) {
                               setOpenModalInsert(false);
                               if (!readOnly) {
+                                appContext.setIsLoading(true)
                                 await axios.put(IP + "setOrderClosed", {
                                   id: selectedZamowienie.id,
                                 });
@@ -49,6 +52,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
                                 refreshZamowienia();
+                                appContext.setIsLoading(false)
                               }
                             
                           } else {
@@ -58,6 +62,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
         else{
                                      setOpenModalInsert(false);
                               if (!readOnly) {
+                                 appContext.setIsLoading(true)
                                 await axios.put(IP + "setOrderClosed", {
                                   id: selectedZamowienie.id,
                                 });
@@ -68,6 +73,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
                                 refreshZamowienia();
+                                  appContext.setIsLoading(false)
                               }
         }
       

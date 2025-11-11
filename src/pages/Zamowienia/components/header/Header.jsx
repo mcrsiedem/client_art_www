@@ -27,13 +27,7 @@ export default function Header({ dodaj_clikHandler}) {
      const contextModalInsert = useContext(ModalInsertContext);
 const setShowTabs = contextModalInsert.setShowTabs
 
-  useEffect(() => {
-    if (effectRan.current === true) {
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
+
 
   return (
     <header onDoubleClick={()=>{  

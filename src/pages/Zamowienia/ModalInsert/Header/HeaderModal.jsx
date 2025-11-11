@@ -10,6 +10,7 @@ import ZapiszJakoBTN from "./components/ZapiszJakoBTN";
 import ZapiszBTN from "./components/ZapiszBTN";
 import ZamknijBTN from "./components/ZamknijBTN";
 import SprawdzBTN from "./components/SprawdzBTN";
+import Loading from "components/Loading/Loading";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -64,6 +65,7 @@ export default function Header({
             setOpenModalInsert={setOpenModalInsert}
             readOnly={readOnly}
           />
+          <Loading/>
         </div>
       </div>
       <DialogZapis dialogBox={dialogBox}/>

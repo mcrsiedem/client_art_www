@@ -442,11 +442,15 @@ const IconNavigate =  ({ className, logo, navi }) => {
         techContext.setRowZamowienia(null);
         techContext.setRowTechnologia(null);
         fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+        appContext.setIsLoading(true)
+
         // refreshZamowienia(appContext.setZamowienia,appContext.setZamowieniaWyszukiwarka)
         await axios.put(IP + "setOrderClosed", {
           id: techContext.daneTech.zamowienie_id,
         });
         refreshZamowienia();
+        appContext.setIsLoading(false)
+
         // techContext.setOpenTechnologia(false)
       }}
       alt="Logo"

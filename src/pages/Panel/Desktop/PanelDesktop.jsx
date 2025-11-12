@@ -53,8 +53,6 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
     checkToken();
     lokalizacja.current = "Panel";
 
-    console.log(" Panel powinno być widać raz...");
-
     return () => {
       lokalizacja.current = null;
     };

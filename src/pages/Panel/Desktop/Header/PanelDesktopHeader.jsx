@@ -85,7 +85,7 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
                 onClick={() => {
                   zabezpiecz();
                   setIsOpen(false);
-                }}
+                }}l
               >
                 Pobierz uprawnienia
               </li>
@@ -102,6 +102,24 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
                   }}
                 >
                   Ewakuacja bazy
+                </li>
+              ) : (
+                <></>
+              )}
+
+
+                            {DecodeToken(sessionStorage.getItem("token")).id == 1 ? (
+                <li
+                  onClick={async () => {
+                    const res = await axios.get(
+                      IP + "pool/" + sessionStorage.getItem("token")
+                    );
+                    console.log(`--- Status puli ---`);
+                    console.log(res.data)
+                    setIsOpen(false);
+                  }}
+                >
+                  Połączenia w puli...
                 </li>
               ) : (
                 <></>

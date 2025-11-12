@@ -33,7 +33,9 @@ function Zamowienia() {
   const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
   const {refreshZamowienia} = useZamowienia();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+    const appContext = useContext(AppContext);
+    const isLoading = appContext.isLoading;
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -54,7 +56,7 @@ function Zamowienia() {
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
           getNadkomplety(setNadkomplety);
-          setLoading(false);
+          // setLoading(false);
         } else {
           navigate("/Login");
         }
@@ -70,7 +72,7 @@ function Zamowienia() {
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
       <div className={style.multiTableContainer}>
-        <TableZamowienia loading={loading}/>
+        <TableZamowienia />
         <TableMini  open2={open2} setRow={setRow}  header={false}/>
       </div>
           {openModalInsert && (

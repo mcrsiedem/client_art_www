@@ -8,7 +8,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import LoadingMini from "components/Loading/LoadingMini";
-export default function TableZamowienia({loading}){
+export default function TableZamowienia(){
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia
 
@@ -24,9 +24,9 @@ export default function TableZamowienia({loading}){
 
 const {refreshZamowienia} = useZamowienia()
 
-  if (loading) {
-    return <LoadingMini loading={loading}/>;
-  }
+  // if (loading) {
+  //   return <LoadingMini loading={loading}/>;
+  // }
 
 
 

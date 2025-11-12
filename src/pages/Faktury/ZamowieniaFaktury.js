@@ -17,6 +17,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import ModalInsert from "pages/Zamowienia/ModalInsert/ModalInsert";
+import Loading from "components/Loading/Loading";
 function ZamowieniaFaktury({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
@@ -35,7 +36,7 @@ function ZamowieniaFaktury({ user, setUser }) {
   const openModalInsert = contextModal.openModalInsert;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
-const {refreshZamowienia} = useZamowienia()
+const {refreshZamowieniaFaktury} = useZamowienia()
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -55,7 +56,7 @@ const {refreshZamowienia} = useZamowienia()
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
-          refreshZamowienia();
+          refreshZamowieniaFaktury();
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
           getNadkomplety(setNadkomplety);
@@ -106,10 +107,8 @@ const {refreshZamowienia} = useZamowienia()
             <ModalInsert
             />
           )}
-      {/* <TechnologiaStage/>
-      <ZamowieniaInfo/> */}
     
-      
+          <Loading/>
     </div>
   );
 }

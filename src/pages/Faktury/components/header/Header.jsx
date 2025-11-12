@@ -143,14 +143,14 @@ function Szukaj() {
 function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
-  const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
   const sortowanieZamowieniaFaktury= contextApp.sortowanieZamowieniaFaktury;
   const _sortowanieZamowienieFaktury= contextApp._sortowanieZamowienieFaktury;
 
-    const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
-    const zestawZamowienia= contextApp.zestawZamowienia;
+    const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
+    const zestawFaktury= contextApp.zestawFaktury;
     const setIsLoading= contextApp.setIsLoading;
-    const {refreshZamowienia} = useZamowienia();
+    
+    const {refreshZamowieniaFaktury} = useZamowienia();
   
     return (
   
@@ -160,21 +160,21 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
           onChange={(event) => {
                     const promiseA = new Promise((resolve, reject) => {
             setIsLoading(true)
-            setSortowanieZamowieniaEtap(event.target.value)
-            zestawZamowienia.current= event.target.value
+            setSortowanieZamowieniaFaktury(event.target.value)
+            zestawFaktury.current= event.target.value
   
                       resolve(777);
                     })
 
                             promiseA.then(res => {
 
-          refreshZamowienia();
+          refreshZamowieniaFaktury();
         })
 
           }}
         >
-          {contextApp._sortowanieZamowienieEtap.map((option) => (
-            <option key={option.id} value={option.id}>
+          {contextApp._sortowanieZamowienieFaktury.map((option) => (
+            <option key={option.id} value={option.nazwa}>
             {option.nazwa}
             </option>
           ))}

@@ -23,6 +23,8 @@ export const AppContextProvider = ({children})=>{
     // const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const sortowanieZamowienia = useRef('nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
+    const zestawFaktury = useRef('Oddane');  //  []]
+   
     // const [zestawZamowienia, setZestawZamowienia] = useState("Bieżące");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
@@ -157,7 +159,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   isLoading, setIsLoading, 
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia,
-                  zestawZamowienia,
+                  zestawZamowienia,zestawFaktury,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy

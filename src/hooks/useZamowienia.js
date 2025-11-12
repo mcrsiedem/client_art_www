@@ -17,6 +17,7 @@ export function useZamowienia() {
 };
 
   const refreshZamowienia = async () => {
+    setIsLoading(true)
     const res = await axios.get(
       IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
     );
@@ -30,6 +31,20 @@ scrollTable(tableZamowienia)
        }
   };
 
+  const refreshZamowieniaFaktury = async () => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawFaktury.current+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setZamowienia([...res.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data]);
+      setIsLoading(false)
+
+    // tylko dla Jarka
+       if(DecodeToken(sessionStorage.getItem("token")).id==3){
+scrollTable(tableZamowienia)
+       }
+  };
 
 
 
@@ -67,5 +82,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane};
+  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury};
 }

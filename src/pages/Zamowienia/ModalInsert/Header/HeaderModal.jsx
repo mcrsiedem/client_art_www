@@ -22,6 +22,7 @@ export default function Header({
   setOpenModalInsert,
   stanOtwarciaZamowienia,
   readOnly,
+  lokalizacja
 }) {
   const[pokazStanyZamowienia] = useStanyZamowienia()
   const dialogBox = useRef(null);
@@ -61,7 +62,7 @@ export default function Header({
 
         <div className={style.buttons}>
           <ZamknijBTN
-           
+            lokalizacja={lokalizacja}
             setOpenModalInsert={setOpenModalInsert}
             readOnly={readOnly}
           />

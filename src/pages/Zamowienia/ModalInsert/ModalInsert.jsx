@@ -44,7 +44,7 @@ import Faktury from "./Faktury/Faktury";
 import SimplePrintTextarea from "./Wydruk/SimplePrintTextarea ";
 import ProcesProdukt from "./Produkty/ProduktyProcesInsert/ProcesProdukt";
 
-function ModalInsert({
+function ModalInsert({lokalizacja
   
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
@@ -215,6 +215,7 @@ const openZamowienieId = 1
         setReadAlert={setReadAlert}
         readOnly={readOnly}
         setReadOnly={setReadOnly}
+        lokalizacja={lokalizacja}
       />
 
       <Dane showAddClientStage={showAddClientStage} setShowParametryZamowienia={setShowParametryZamowienia} setShowKosztyZamowienia={setShowKosztyZamowienia} />

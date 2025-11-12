@@ -76,7 +76,7 @@ function Zamowienia() {
         <TableMini  open2={open2} setRow={setRow}  header={false}/>
       </div>
           {openModalInsert && (
-            <ModalInsert
+            <ModalInsert lokalizacja={"zamowienia"}
             />
           )}
       <TechnologiaStage/>

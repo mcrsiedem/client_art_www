@@ -104,7 +104,7 @@ const {refreshZamowieniaFaktury} = useZamowienia()
         {/* <TableMini  open2={open2} setRow={setRow}  header={false}/> */}
       </div>
           {openModalInsert && (
-            <ModalInsert
+            <ModalInsert lokalizacja={"faktury"}
             />
           )}
     

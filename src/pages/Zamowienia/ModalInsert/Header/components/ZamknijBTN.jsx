@@ -15,10 +15,10 @@ import { AppContext } from "context/AppContext";
 
 
 
-export default function ZamknijBTN({setOpenModalInsert,readOnly}) {
+export default function ZamknijBTN({lokalizajca,setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
-const {refreshZamowienia} = useZamowienia()
+const {refreshZamowienia,refreshZamowieniaFaktury} = useZamowienia()
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const produkty = contextModalInsert.produkty;
 const elementy = contextModalInsert.elementy;
@@ -51,7 +51,13 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setFragmenty(initialFragmenty)
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
-                                refreshZamowienia();
+                              if(lokalizajca="faktury"){
+                                  refreshZamowieniaFaktury()
+                              }
+
+                                 if(lokalizajca="zamowienia"){
+                                        refreshZamowienia();
+                              }
                                 appContext.setIsLoading(false)
                               }
                             
@@ -72,7 +78,13 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setFragmenty(initialFragmenty)
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
-                                refreshZamowienia();
+                                                    if(lokalizajca="faktury"){
+                                  refreshZamowieniaFaktury()
+                              }
+
+                                 if(lokalizajca="zamowienia"){
+                                        refreshZamowienia();
+                              }
                                   appContext.setIsLoading(false)
                               }
         }

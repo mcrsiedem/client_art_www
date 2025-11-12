@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import { _etapy_produkcji } from "utils/initialvalue";
+import { useZamowienia } from "hooks/useZamowienia";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -145,6 +146,11 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
   const sortowanieZamowieniaFaktury= contextApp.sortowanieZamowieniaFaktury;
   const _sortowanieZamowienieFaktury= contextApp._sortowanieZamowienieFaktury;
+
+    const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
+    const zestawZamowienia= contextApp.zestawZamowienia;
+    const setIsLoading= contextApp.setIsLoading;
+    const {refreshZamowienia} = useZamowienia();
   
     return (
   
@@ -152,11 +158,22 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaFaktury}
           onChange={(event) => {
-            // setSortowanieZamowieniaEtap(event.target.value)
-            setSortowanieZamowieniaFaktury(event.target.value)
+                    const promiseA = new Promise((resolve, reject) => {
+            setIsLoading(true)
+            setSortowanieZamowieniaEtap(event.target.value)
+            zestawZamowienia.current= event.target.value
+  
+                      resolve(777);
+                    })
+
+                            promiseA.then(res => {
+
+          refreshZamowienia();
+        })
+
           }}
         >
-          {contextApp._sortowanieZamowienieFaktury.map((option) => (
+          {contextApp._sortowanieZamowienieEtap.map((option) => (
             <option key={option.id} value={option.id}>
             {option.nazwa}
             </option>

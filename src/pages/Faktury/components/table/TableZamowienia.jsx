@@ -108,7 +108,7 @@ const {refreshZamowienia} = useZamowienia()
              return  zam.klient_id == selectedKlient;
             }
           })
-          .filter((zamowienie) => sortWgFaktur({zamowienie}))
+          // .filter((zamowienie) => sortWgFaktur({zamowienie}))
 
            .map((row,i) => {
              return (

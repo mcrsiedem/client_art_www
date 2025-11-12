@@ -243,7 +243,6 @@ const _firma = [
       nazwa: "Oprawione",
     },
     
-    
     {
       id: 6,
       nazwa: "Oddane",
@@ -257,10 +256,6 @@ const _firma = [
       id: 7,
       nazwa: "Wszystkie",
     },
-    // {
-    //   id: 8,
-    //   nazwa: "Bieżace bez oddanych",
-    // },
   
   ];
 

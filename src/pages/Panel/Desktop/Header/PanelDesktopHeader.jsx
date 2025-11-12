@@ -11,6 +11,15 @@ import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
 import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
 import DialogHipopotam from "components/DialogHipopotam/DialogHipopotam";
+import Ktotam from "./Menu/Ktotam";
+import DodajAsystenta from "./Menu/DodajAsystenta";
+import PobierzUprawnienia from "./Menu/PobierzUprawnienia";
+import Ustawienia from "./Menu/Ustawienia";
+import EwakuacjaBazy from "./Menu/EwakuacjaBazy";
+import PolaczeniaPuli from "./Menu/PolaczeniaPuli";
+import Odswiez from "./Menu/Odswiez";
+import Wyloguj from "./Menu/Wyloguj";
+
 
 
 export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
@@ -40,8 +49,7 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
-    // Funkcja czyszcząca: usuń nasłuchiwacz zdarzeń, gdy komponent się odmontowuje
-    // lub gdy isOpen zmienia się na false (menu się zamyka)
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -54,7 +62,6 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
         console.log("Hash: "+getCurrentBuildHash() )
         console.log("restart: "+appcontext.restart )
 
-        // console.log("podgladRealizacji: ",podgladRealizacji )
       }}
     className={style.header}>
   
@@ -62,87 +69,16 @@ export default function PanelDesktopHeader({ isOnline, navigate, logout }) {
         <div className={style.user}>
           {isOpen && (
             <ul className={style.dropdown_menu} ref={dropdownRef}>
-              <li
-                onClick={() => {
-                  if (socket) {
-                    socket.emit("ktotam");
-                  }
 
-  hipopotemDialogBox.current.show();
-  hipopotemDialogBox.current.showOK();
-  hipopotemDialogBox.current.hide();
+              <Ktotam socket={socket} hipopotemDialogBox={hipopotemDialogBox} setIsOpen={setIsOpen}/>
+              <DodajAsystenta socket={socket} hipopotemDialogBox={hipopotemDialogBox} setIsOpen={setIsOpen}/>
+              <PobierzUprawnienia setIsOpen={setIsOpen}/>
+              <Ustawienia socket={socket} hipopotemDialogBox={hipopotemDialogBox} setIsOpen={setIsOpen}/>
+              <EwakuacjaBazy setIsOpen={setIsOpen}/>
+              <PolaczeniaPuli setIsOpen={setIsOpen}/>
+              <Odswiez setIsOpen={setIsOpen}/>
+              <Wyloguj setIsOpen={setIsOpen}/>
 
-
-
-                  setIsOpen(false);
-                }}
-              >
-                Kto tam?
-              </li>
-
-              <li>Dodaj Asystenta</li>
-              <li
-                onClick={() => {
-                  zabezpiecz();
-                  setIsOpen(false);
-                }}l
-              >
-                Pobierz uprawnienia
-              </li>
-
-              <li>Ustawienia</li>
-
-              {DecodeToken(sessionStorage.getItem("token")).id == 1 ? (
-                <li
-                  onClick={async () => {
-                    const res = await axios.get(
-                      IP + "backup/" + sessionStorage.getItem("token")
-                    );
-                    setIsOpen(false);
-                  }}
-                >
-                  Ewakuacja bazy
-                </li>
-              ) : (
-                <></>
-              )}
-
-
-                            {DecodeToken(sessionStorage.getItem("token")).id == 1 ? (
-                <li
-                  onClick={async () => {
-                    const res = await axios.get(
-                      IP + "pool/" + sessionStorage.getItem("token")
-                    );
-                    console.log(`--- Status puli ---`);
-                    console.log(res.data)
-                    setIsOpen(false);
-                  }}
-                >
-                  Połączenia w puli...
-                </li>
-              ) : (
-                <></>
-              )}
-
-              <li
-                onClick={() => {
-                  window.location.reload(true);
-                  setIsOpen(false);
-                }}
-              >
-                Odśwież
-              </li>
-
-              <li
-                onClick={() => {
-                  logout();
-logoutIO()
-                  setIsOpen(false);
-                }}
-              >
-                Wyloguj
-              </li>
             </ul>
           )}
           <img
@@ -170,3 +106,5 @@ logoutIO()
     </div>
   );
 }
+
+

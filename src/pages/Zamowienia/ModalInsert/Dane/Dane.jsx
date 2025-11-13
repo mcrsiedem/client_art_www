@@ -685,7 +685,7 @@ function NR_ZAMOWIENIA( ){
           type="text"
           title="Numer zamówienia"
        value={daneZamowienia.nr } 
-
+readOnly={true}
         ></input>
       </div>
     );
@@ -751,6 +751,7 @@ function NR_ZAMOWIENIA( ){
           type="text"
           title="Numer zamówienia"
           value={daneZamowienia.nr}
+          readOnly={true}
         ></input>
       </div>
     );

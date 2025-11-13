@@ -255,7 +255,7 @@ const _firma = [
       nazwa: "Anulowane",
     },
     {
-      id: 7,
+      id: 8,
       nazwa: "Wszystkie",
     },
   

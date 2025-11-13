@@ -367,6 +367,7 @@ const [setStatus] = useStatus()
       <input
         className={style.input_id}
         value={row.id}
+             readOnly={true}
       >
 
       </input>

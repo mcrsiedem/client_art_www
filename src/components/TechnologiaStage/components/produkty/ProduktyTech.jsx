@@ -117,6 +117,7 @@ const updateRowProduktyTech = contextTech.updateRowProduktyTech;
       <select
         className={style.select}
         value={row?.typ}
+           readOnly={true}
         // onChange={(e) => {
         //   updateRowProduktyTech({
         //     ...row,

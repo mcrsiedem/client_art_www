@@ -180,7 +180,7 @@ const openZamowienieId = 1
            //pliki
            setProcesyProduktow(res.data[13])
 
-           console.log(res.data)
+          //  console.log(res.data)
              contextApp.setIsLoading(false);
 
   }

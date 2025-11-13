@@ -25,7 +25,10 @@ export function useZamowienia() {
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
       setIsLoading(false)
 
-    // tylko dla Jarka
+      // console.log("----zamowienia----")
+      // console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
+      // console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
+
        if(DecodeToken(sessionStorage.getItem("token")).id==3){
 scrollTable(tableZamowienia)
        }
@@ -39,6 +42,10 @@ scrollTable(tableZamowienia)
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
       setIsLoading(false)
+      //  console.log("----faktury----")
+      // console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
+      // console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
+
 
     // tylko dla Jarka
        if(DecodeToken(sessionStorage.getItem("token")).id==3){

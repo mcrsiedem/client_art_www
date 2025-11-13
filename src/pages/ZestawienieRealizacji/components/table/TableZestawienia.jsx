@@ -24,7 +24,7 @@ export default function TableZamowienia({open2,setRow}){
 
   const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
 
-// const [refreshZamowienia] = useZamowienia()
+
 
 
  return (

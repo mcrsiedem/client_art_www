@@ -361,15 +361,8 @@ const NakladGrupy = ({ grupaOprawa }) => {
       disable
         className={style.input}
         value={grupaOprawa.naklad}
-        // value={zamienNaGodziny(rowGrupa.czas)}
-        // onChange={(e) => {
-        //   if (e.target.value == "" || reg_txt.test(e.target.value)) {
-        //     updateGrupaWykonan({
-        //       ...rowGrupa,
-        //       czas: e.target.value,
-        //     });
-        //   }
-        // }}
+           readOnly={true}
+
       ></input>
     </div>
   );

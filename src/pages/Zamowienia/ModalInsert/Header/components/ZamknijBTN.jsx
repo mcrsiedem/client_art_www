@@ -15,7 +15,7 @@ import { AppContext } from "context/AppContext";
 
 
 
-export default function ZamknijBTN({lokalizajca,setOpenModalInsert,readOnly}) {
+export default function ZamknijBTN({lokalizacja,setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
 const {refreshZamowienia,refreshZamowieniaFaktury} = useZamowienia()
@@ -33,7 +33,10 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
       className={style.zamknij_icon}
       src={iconX}
       onClick={async() => {
-
+// console.log("Wartość lokalizajca: ", lokalizacja); 
+// console.log("Typ lokalizajca: ", typeof lokalizacja); 
+// console.log("Czy to jest 'faktury'?", lokalizacja == "faktury");
+// console.log("Czy to jest 'zamowienia'?", lokalizacja == "zamowienia");
         // sprawdza czy było coś edytowane przed zamknięciem
         if(isEdit(daneZamowienia,produkty,elementy,fragmenty,oprawa,pakowanie,procesyElementow,ksiegowosc)){
 
@@ -51,11 +54,12 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setFragmenty(initialFragmenty)
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
-                              if(lokalizajca="faktury"){
+                              if(lokalizacja=="faktury"){
+                                
                                   refreshZamowieniaFaktury()
                               }
 
-                                 if(lokalizajca="zamowienia"){
+                                 if(lokalizacja=="zamowienia"){
                                         refreshZamowienia();
                               }
                                 appContext.setIsLoading(false)
@@ -78,11 +82,14 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               contextModalInsert.setFragmenty(initialFragmenty)
                               contextModalInsert.setOprawa(initialOprawa)
                               contextModalInsert.setProcesyElementow(initialProcesy)
-                                                    if(lokalizajca="faktury"){
+                                                    if(lokalizacja=="faktury"){
+                                               
+
                                   refreshZamowieniaFaktury()
                               }
 
-                                 if(lokalizajca="zamowienia"){
+                                 if(lokalizacja=="zamowienia"){
+
                                         refreshZamowienia();
                               }
                                   appContext.setIsLoading(false)

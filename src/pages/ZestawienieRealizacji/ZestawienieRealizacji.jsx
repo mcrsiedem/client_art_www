@@ -30,7 +30,7 @@ function ZestawieniaRealizacji({ user, setUser }) {
   const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
 const {refreshZamowienia} = useZamowienia()
-const [loading, setLoading] = useState(true);
+
 
 
   const AKTUALNY_MIESIAC = getGraniceMiesiaca();
@@ -54,10 +54,7 @@ const [loading, setLoading] = useState(true);
         if (res.data.Status === "Success") {
      
           refreshZamowienia();
-          // callForPaper();
-          // getClients(setClients, setClientsWyszukiwarka);
-          // getNadkomplety(setNadkomplety);
-          setLoading(false);
+
         } else {
           navigate("/Login");
         }
@@ -72,7 +69,7 @@ setOpenModalInsert(false)
   return (
     <div className={style.container}>
       <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}/>
-      <TableZamowienia  open2={open2} setRow={setRow}  header={false} loading={loading}/>
+      <TableZamowienia  open2={open2} setRow={setRow}  header={false} />
       <Footer dodaj_clikHandler={dodaj_clikHandler} />
 
 

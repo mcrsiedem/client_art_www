@@ -27,7 +27,7 @@ export default function Header() {
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Faktury </p>
+        {/* <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Faktury </p> */}
       </div>
 
       <div className={style.centerHeaderContener}>

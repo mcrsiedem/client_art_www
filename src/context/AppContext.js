@@ -19,7 +19,7 @@ export const AppContextProvider = ({children})=>{
 
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
-    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState(2);
+    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState("Oddane");
     // const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const sortowanieZamowienia = useRef('nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]

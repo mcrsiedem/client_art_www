@@ -1,42 +1,12 @@
+
+14/11/20205
+
+Dodanie do widoku grup falcu rodzaj oprawy przy rodzaju legi
+
+
 01/08/2025
 
-Zestawienie blach
-Kopiawanie plików razem z nowym elementem
-
-Pliki dodane do otwieranego zamówienia
-
-
- Problem statusu plików
- Sprawdzić czy plik musi mieć ten sam id co element_id
-
-
-
-Dodaj asystenta
-
-
-
-
  token CSRF razem z jwt
-
-
-
-
-
-
-
-
-Wykonania cząstkowe falcu, a może i wsystkich procesów
-
-Kilka spedycji. Podświetlone różne daty
-
-
-
-Oprawa. Zakończ - całkowita realizacja wykonania.
-Oprawa. Dodaj - realizacja cząstkowa.
-        Wyślij input global_id  grupy oprawa oraz naklad
-        Sprawdź sumę wykonan oprawy. Jeśli jest mniejsza niż naklad. Dodaj wykonanie. Odeślij OK i global_id nowego wykonania i naklad
-
-Oprawa. Ilość arkuszy
 
 
 Zakończenia.

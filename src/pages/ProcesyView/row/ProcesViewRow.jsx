@@ -104,7 +104,7 @@ if (grup.select) return style.procesRow_select
   return (
 <>
                 <tr
-                  title={"Grupa global_id: " +grup.global_id + "Grupa id: " +grup.id +" Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark."+" technologia_id" + grup.technologia_id +" Status" + grup.status }
+                  title={"Grupa global_id: " +grup.global_id + "Grupa id: " +grup.id +" Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark."+" technologia_id" + grup.technologia_id +" Status" + grup.status +" Oprawa główna: "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ }
                   draggable={wolno()}
                   key={grup.global_id}
 
@@ -198,7 +198,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
                   <KoniecGrupa grup={grup}/>
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2,4)}</td>
-                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu:typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot} </td>
+                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu+" "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ.substring(0,1):typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot  } </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
                   <TytulProcesGrup grup={grup}/>
                   <DyspersjaGrupa grup={grup}/>

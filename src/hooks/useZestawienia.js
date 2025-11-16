@@ -8,53 +8,17 @@ export function useZestawienia() {
   const tableZamowienia= contextApp.tableZamowienia;
   const setIsLoading= contextApp.setIsLoading;
 
-   const scrollTable = (table) => {
-  if(table.current != null) {
-      table.current.scrollTo({ top: 20000, behavior: "auto" })
-  }
-  
-};
 
-  const refreshRealizacjeZestawienie = async () => {
+  const refreshRealizacjeZestawienie = async (dataOd,dataDo,kto) => {
     setIsLoading(true)
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+      IP + "zestawienie_user/"+dataOd+"/"+dataDo+"/"+kto+"/" + sessionStorage.getItem("token")
     );
-    contextApp.setZamowienia([...res.data]);
-    contextApp.setZamowieniaWyszukiwarka([...res.data]);
+    // contextApp.setZamowienia([...res.data]);
+    // contextApp.setZamowieniaWyszukiwarka([...res.data]);
       setIsLoading(false)
 
   };
-
-  const odblokujZamowienie = (rowsToDelete) =>{
-    axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
-      .then((res) => {
-        // refreshZamowienia();
-      });
-  }
-
-
-  const deleteZamowienie = (rowsToDelete) => {
-    axios.delete(IP + "delete_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
-      .then((res) => {
-      // refreshZamowienia()
-      });
-  }
-
-
-      async function zmienEtapWydrukowane(techologie) {
-       await axios.put(
-          IP +
-            "zmieni_etap_wydrukowane/" +
-            sessionStorage.getItem("token"),
-          
-            techologie
-          
-        );
-
-        // refreshZamowienia()
-      }
-
 
 
 

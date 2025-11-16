@@ -54,7 +54,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
       .then((res) => {
         if (res.data.Status === "Success") {
      
-          refreshRealizacjeZestawienie();
+          refreshRealizacjeZestawienie(dataOd,dataDo,2);
 
         } else {
           navigate("/Login");

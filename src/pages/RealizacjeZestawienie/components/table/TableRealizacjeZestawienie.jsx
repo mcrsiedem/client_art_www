@@ -12,7 +12,7 @@ import LoadingMini from "components/Loading/LoadingMini";
 export default function TableRealizacjeZestawienie({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
-  const zamowienia = contextApp.zamowienia
+  const realizacjeZestawienie = contextApp.realizacjeZestawienie
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
@@ -47,34 +47,34 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
          </tr>
        </thead>
        <tbody className={style.tableZam}>
-         {zamowienia
+         {realizacjeZestawienie
           //  .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-           .filter((zam) => {
-            if (selectedUser == 0) {
-              return true;
-            } else {
-             return  zam.opiekun_id == selectedUser;
-            }
-          })
-           .filter(z => z.stan ==3 || z.stan ==4 )
-           .filter((zam) => {
-            if (selectedKlient == 0) {
-              return true;
-            } else {
-             return  zam.klient_id == selectedKlient;
-            }
-          })
-          .filter((zamowienie) => sortWgEtapu({zamowienie}))
-          .filter((k) =>
-            k.tytul
-              .concat(" ", k.nr)
-              .concat(" ", k.nr_stary)
-              .toLowerCase()
-              .includes(valueZamowieniaWyszukiwarka.toLowerCase())
-          )
+          //  .filter((zam) => {
+          //   if (selectedUser == 0) {
+          //     return true;
+          //   } else {
+          //    return  zam.opiekun_id == selectedUser;
+          //   }
+          // })
+          //  .filter(z => z.stan ==3 || z.stan ==4 )
+          //  .filter((zam) => {
+          //   if (selectedKlient == 0) {
+          //     return true;
+          //   } else {
+          //    return  zam.klient_id == selectedKlient;
+          //   }
+          // })
+          // .filter((realizacjeZestawienie) => sortWgEtapu({zamowienie}))
+          // .filter((k) =>
+          //   k.tytul
+          //     .concat(" ", k.nr)
+          //     .concat(" ", k.nr_stary)
+          //     .toLowerCase()
+          //     .includes(valueZamowieniaWyszukiwarka.toLowerCase())
+          // )
            .map((row,i) => {
              return (
-               <TABLE_ROW_ZAMOWIENIA key={row.id} row={row} open2={open2} setRow={setRow} i={i} />
+               <TABLE_ROW_ZAMOWIENIA key={row.global_id} row={row} open2={open2} setRow={setRow} i={i} />
              );
            })}
        </tbody>

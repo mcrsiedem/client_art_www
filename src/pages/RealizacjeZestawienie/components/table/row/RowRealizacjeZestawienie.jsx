@@ -168,7 +168,7 @@ const setShowTabs = contextModalInsert.setShowTabs
         <NrArkusza row={row} />
         <NakladTableZamowienia row={row} />
         <SpedycjaTableZamowienia row={row} />
-        <td>{row.format_x + "x" + row.format_y}</td>
+        <td>{row.procesor_id}</td>
       
         <OpiekunZamowieniaTable row={row} />
         <td></td>
@@ -303,7 +303,7 @@ function getPolishDayName(dateString) {
       //firma_nazwa to skrocona nazwa klienta
       title={getPolishDayName(row.data_spedycji)}
       className={isWeekend(row.data_spedycji)? style.spedycjaInput_red:style.spedycjaInput}
-      value={row.data_spedycji}
+      value={row.proces_id}
       readOnly
 
     />

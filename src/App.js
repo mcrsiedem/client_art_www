@@ -29,7 +29,7 @@ import Oddania from "pages/Oddania/Oddania";
 import Inspekcja from "pages/Inspekcja/Inspekcja";
 import ProcesoryMini from "pages/Panel/Mini/PrcesoryMini";
 import Procesy from "pages/Procesy/Procesy";
-import ZestawieniaRealizacji from "pages/ZestawienieRealizacji/ZestawienieRealizacji";
+import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawienie";
 
 export default function App() {
   return (

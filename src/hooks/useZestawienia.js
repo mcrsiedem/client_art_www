@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
-export function useZamowienia() {
+export function useZestawienia() {
   const contextApp = useContext(AppContext);
   const tableZamowienia= contextApp.tableZamowienia;
-
+  const setIsLoading= contextApp.setIsLoading;
 
    const scrollTable = (table) => {
   if(table.current != null) {
@@ -15,30 +15,21 @@ export function useZamowienia() {
   
 };
 
-  const refreshZamowienia = async () => {
+  const refreshRealizacjeZestawienie = async () => {
+    setIsLoading(true)
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia+"/" + sessionStorage.getItem("token")
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
-
-    const res2 = await axios.get(
-      IP + "zamowieniapliki/" + sessionStorage.getItem("token")
-    );
-    contextApp.setZamowieniaPliki([...res2.data]);
-
-    // tylko dla Jarka
-       if(DecodeToken(sessionStorage.getItem("token")).id==3){
-scrollTable(tableZamowienia)
-       }
-
+      setIsLoading(false)
 
   };
 
   const odblokujZamowienie = (rowsToDelete) =>{
     axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
       .then((res) => {
-        refreshZamowienia();
+        // refreshZamowienia();
       });
   }
 
@@ -46,7 +37,7 @@ scrollTable(tableZamowienia)
   const deleteZamowienie = (rowsToDelete) => {
     axios.delete(IP + "delete_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
       .then((res) => {
-      refreshZamowienia()
+      // refreshZamowienia()
       });
   }
 
@@ -61,12 +52,12 @@ scrollTable(tableZamowienia)
           
         );
 
-        refreshZamowienia()
+        // refreshZamowienia()
       }
 
 
 
 
 
-  return [refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane];
+  return {refreshRealizacjeZestawienie};
 }

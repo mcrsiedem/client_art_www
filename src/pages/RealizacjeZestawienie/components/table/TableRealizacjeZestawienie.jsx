@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef,useContext } from "react";
-import style from "./TableZestawienia.module.css";
+import style from "./TableRealizacjeZestawienie.module.css";
 import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import { AppContext } from "context/AppContext";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
-import TABLE_ROW_ZAMOWIENIA from "./row/RowZestawienia";
+import TABLE_ROW_ZAMOWIENIA from "./row/RowRealizacjeZestawienie";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import LoadingMini from "components/Loading/LoadingMini";
-export default function TableZestawienia({open2,setRow}){
+export default function TableRealizacjeZestawienie({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia

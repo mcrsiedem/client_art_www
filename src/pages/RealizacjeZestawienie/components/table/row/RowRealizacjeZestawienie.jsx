@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import style from "./RowZestawienia.module.css";
+import style from "./RowRealizacjeZestawienie.module.css";
 import iconAdd from "assets/add2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
 import iconLockRed from "assets/lock2.svg";
@@ -19,7 +19,7 @@ import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 
 
-export default function RowZestawienia({ row, open2, setRow,i }) {
+export default function RowRealizacjeZestawienie({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
   const fechparametryTechnologiiDetails = techContext.fechparametryTechnologiiDetails; // technologie

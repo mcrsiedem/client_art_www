@@ -20,12 +20,10 @@ export const AppContextProvider = ({children})=>{
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState("Oddane");
-    // const [sortowanieZamowienia, setSortowanieZamowienia] = useState("nr asc");
     const sortowanieZamowienia = useRef('nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const zestawFaktury = useRef('Oddane');  //  []]
    
-    // const [zestawZamowienia, setZestawZamowienia] = useState("Bieżące");  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");
     const [selectedKlient, setSelectedKlient] = useState("0");
@@ -36,6 +34,8 @@ export const AppContextProvider = ({children})=>{
     const [procesList, setProcesList] = useState(null); // lista wszystkich dostępnych procesów
     const [procesListName, setProcesListName] = useState(null); // lista nazw procesów
     const [productType, setProductType] = useState(null); 
+    const [realizacjeZestawienie, setRealizacjeZestawienie] = useState([]); 
+    const [realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka] = useState([]); 
     const [zamowienia, setZamowienia] = useState([]); 
     const [zamowieniaInfo, setZamowieniaInfo] = useState(); 
     const [zamowieniaPliki, setZamowieniaPliki] = useState([]); 
@@ -160,6 +160,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia,
                   zestawZamowienia,zestawFaktury,
+                  realizacjeZestawienie, setRealizacjeZestawienie,realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,
                     users,updateUsers,          // wszystcy uzytkownicy

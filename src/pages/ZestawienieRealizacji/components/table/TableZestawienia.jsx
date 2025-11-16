@@ -9,7 +9,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import LoadingMini from "components/Loading/LoadingMini";
-export default function TableZamowienia({open2,setRow}){
+export default function TableZestawienia({open2,setRow}){
   const [showMenu, setShowMenu] = useState(false);
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia

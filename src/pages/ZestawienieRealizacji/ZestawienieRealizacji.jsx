@@ -9,7 +9,7 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableZamowienia from "./components/table/TableZestawienia";
+import TableZestawienia from "./components/table/TableZestawienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
@@ -69,7 +69,7 @@ setOpenModalInsert(false)
   return (
     <div className={style.container}>
       <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}/>
-      <TableZamowienia  open2={open2} setRow={setRow}  header={false} />
+      <TableZestawienia  open2={open2} setRow={setRow}  header={false} />
       <Footer dodaj_clikHandler={dodaj_clikHandler} />
 
 

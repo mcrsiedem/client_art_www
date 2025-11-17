@@ -37,12 +37,12 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
            <th  className={style.col_nr}></th>
            <th className={style.col_klient}>Klient</th>
            <th className={style.col_praca}>Praca</th>
-           <th  className={style.col_spedycja}>Rodzaj ark.</th>
-           <th  className={style.col_spedycja}>Nr arkusza</th>
+           <th  className={style.col_rodzaj_arkusza}>Rodzaj</th>
+           <th  className={style.col_spedycja}>Ark.</th>
            <th  className={style.col_strony}>Przeloty</th>
-           <th className={style.col_spedycja}>Proces</th>
-           <th className={style.col_strony}>Procesor</th>
-           <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
+           <th className={style.col_grupa}>Grupa</th>
+           <th className={style.col_maszyna}>Maszyna</th>
+
            <th className={style.col_alert}></th>
          </tr>
        </thead>

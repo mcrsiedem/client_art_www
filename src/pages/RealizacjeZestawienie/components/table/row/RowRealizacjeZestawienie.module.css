@@ -463,5 +463,9 @@ height: 100px;
 
 .nakladInput{
   text-align: end;
-  padding-right: 5px;
+  padding-right: 15px;
+}
+
+.center{
+  text-align: start;
 }

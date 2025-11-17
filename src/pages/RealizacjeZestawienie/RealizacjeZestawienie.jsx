@@ -37,6 +37,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   const AKTUALNY_MIESIAC = getGraniceMiesiaca();
   const [dataOd, setDataOd] = useState(AKTUALNY_MIESIAC.pierwszyDzien);
   const [dataDo, setDataDo] = useState(AKTUALNY_MIESIAC.ostatniDzien);
+  const [kto, setKto] = useState(0);
 
 
   function dodaj_clikHandler() {
@@ -54,7 +55,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
       .then((res) => {
         if (res.data.Status === "Success") {
      
-          refreshRealizacjeZestawienie(dataOd,dataDo,47);
+          refreshRealizacjeZestawienie(dataOd,dataDo,kto);
 
         } else {
           navigate("/Login");
@@ -68,9 +69,9 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
 
   return (
     <div className={style.container}>
-      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}/>
+      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd} />
       <TableRealizacjeZestawienie  open2={open2} setRow={setRow}  header={false} />
-      <Footer dodaj_clikHandler={dodaj_clikHandler} />
+      <Footer dodaj_clikHandler={dodaj_clikHandler} kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
       <Loading/>
     </div>
   );

@@ -160,17 +160,17 @@ const setShowTabs = contextModalInsert.setShowTabs
           setOpenModalInsert(true);
         }}
       >
-        <DataPrzyjeciaTableZamowienia row={row} />
+        <Utworzono row={row} />
         <NrTableZamowienia row={row} />
         <KlientTableZamowienia row={row} />
         <PracaTableZamowienia row={row} i={i} />
         <RodzajArkusza row={row} />
         <NrArkusza row={row} />
-        <NakladTableZamowienia row={row} />
-        <SpedycjaTableZamowienia row={row} />
-        <td>{row.procesor_id}</td>
+        <Zrealizowano row={row} />
+        <Dzial row={row} />
+        <td>{row.procesor_nazwa}</td>
       
-        <OpiekunZamowieniaTable row={row} />
+
         <td></td>
       </tr>
 
@@ -179,23 +179,9 @@ const setShowTabs = contextModalInsert.setShowTabs
   );
 }
 
-const OprawaTableZamowienia = ({ row }) => {
-  const techContext = useContext(TechnologyContext);
-  const contextApp = useContext(AppContext);
 
-  return (
-    <td>
-       <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={row.oprawa}
-      className={style.klientInput}
-      value={row.oprawa}
-      readOnly
-    />
-    </td>
-   
-  );
-};
+
+
 
 const NrTableZamowienia = ({ row }) => {
   if(row.nr != null){
@@ -231,12 +217,16 @@ const NrTableZamowienia = ({ row }) => {
   
 };
 
-const NakladTableZamowienia = ({ row }) => {
-  return <td className={style.nakladInput}> {row.naklad.toLocaleString()} </td>;
+const Zrealizowano = ({ row }) => {
+  return <td className={style.nakladInput}> {row.zrealizowano.toLocaleString()} </td>;
+};
+
+const Dzial = ({ row }) => {
+  return <td className={style.center}> {row.proces_nazwa} </td>;
 };
 
 const NrArkusza = ({ row }) => {
-  return <td className={style.nakladInput}> {row.nr_arkusza} </td>;
+  return <td className={style.center}> {row.nr_arkusza} </td>;
 };
 
 const RodzajArkusza = ({ row }) => {
@@ -311,24 +301,8 @@ function getPolishDayName(dateString) {
    
   );
 };
-const DataPrzyjeciaTableZamowienia = ({ row }) => {
+const Utworzono = ({ row }) => {
 
-  function isWeekend(dateString) {
-  // Tworzy obiekt Date. Konstruktor w formacie 'YYYY-MM-DD'
-  // działa niezawodnie i interpretuje datę jako lokalną.
-  const date = new Date(dateString);
-
-  // Metoda getDay() zwraca dzień tygodnia, gdzie:
-  // 0 = Niedziela
-  // 1 = Poniedziałek
-  // ...
-  // 5 = Piątek
-  // 6 = Sobota
-  const dayOfWeek = date.getDay();
-
-  // Sprawdzamy, czy dzień tygodnia to sobota (6) lub niedziela (0).
-  return dayOfWeek === 0 || dayOfWeek === 6;
-  }
 
   return (
     <td>

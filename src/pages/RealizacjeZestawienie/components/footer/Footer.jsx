@@ -15,8 +15,9 @@ import { zabezpiecz } from "actions/zabezpiecz";
 import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
+import { useZestawienia } from "hooks/useZestawienia";
 
-export default function Footer({ dodaj_clikHandler}) {
+export default function Footer({ dodaj_clikHandler,kto, setKto,dataDo,dataOd}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -38,12 +39,15 @@ const setShowTabs = contextModalInsert.setShowTabs
     <footer onDoubleClick={()=>{  
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
+        <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
         {/* <REFRESH_ZAMOWIENIA_BTN/>
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p> */}
       </div>
 
       <div className={style.centerHeaderContener}>
-        {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
+        <p> Narządy: </p>
+        <p> Przeloty: </p>
+        {/* {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
           title="Dodaj nowe zamówienie..."
           className={style.icon}
           src={iconAdd2}
@@ -54,7 +58,7 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
             dodaj_clikHandler();
           }}
           alt="React Logo"
-        /> : <></>}
+        /> : <></>} */}
 
       </div>
       <div className={style.rightHeaderContener}>
@@ -76,7 +80,33 @@ setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator:
   );
 }
 
+function User({kto, setKto,dataDo,dataOd}) {
+  const contextApp = useContext(AppContext);
+  const selectedUser = contextApp.selectedUser;
+  const setSelectedUser = contextApp.setSelectedUser;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+const {refreshRealizacjeZestawienie} = useZestawienia()
+    return (
+      <select
+        className={style.user}
+        value={kto}
+        onChange={(event) => {
 
+          setKto(event.target.value);
+            refreshRealizacjeZestawienie(dataOd,dataDo,event.target.value);
+        }}
+      >
+        {<option value="0">Wszyscy</option>}
+
+        {contextApp.users?.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.Imie} {option.Nazwisko}
+          </option>
+        ))}
+      </select>
+    );
+
+}
 
 function BTN_KOPIUJ() {
   const contextApp = useContext(AppContext);

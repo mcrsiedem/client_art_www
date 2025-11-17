@@ -1,7 +1,8 @@
 .container{
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 1fr ;
   height: 100vh;
+
 }
 
 .multiTableContainer{
@@ -468,4 +469,10 @@ height: 100px;
 
 .center{
   text-align: start;
+}
+
+.indeks{
+       width: 10px;
+   text-align: end;
+   padding-right: 15px;
 }

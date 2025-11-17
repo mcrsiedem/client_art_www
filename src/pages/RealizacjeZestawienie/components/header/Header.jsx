@@ -16,8 +16,9 @@ import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { TechnologyContext } from "context/TechnologyContext";
+import { useZestawienia } from "hooks/useZestawienia";
 
-export default function Header({ dataDo,dataOd,setDataDo,setDataOd}) {
+export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -41,12 +42,16 @@ const setShowTabs = contextModalInsert.setShowTabs
       <div className={style.leftHeaderContener}>
         {/* <REFRESH_ZAMOWIENIA_BTN/> */}
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zestawienia realizacji </p>
+    
       </div>
 
       <div className={style.centerHeaderContener}>
-<DataOd dataOd={dataOd}/>
--
-<DataDo dataDo={dataDo}/>
+
+       
+          <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
+<DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
+
+<DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
 
 
       </div>
@@ -55,7 +60,8 @@ const setShowTabs = contextModalInsert.setShowTabs
         <BTN_INFO_ZAMOWIENIA/> */}
         {/* <BTN_KOPIUJ/>
         <SORTOWANIE_ZAMOWIENIA_ETAP/> */}
-        <Szukaj/>
+        {/* <Szukaj/> */}
+
         <img
           className={style.icon2}
           src={iconClose2}
@@ -70,55 +76,68 @@ const setShowTabs = contextModalInsert.setShowTabs
 }
 
 
-function DataOd({dataOd,setDataOd}){
-    const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
-  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  
-  const dniWstecz = techContext.dniWstecz;
-  const setDniWstecz = techContext.setDniWstecz;
-  const selectedProcesor = techContext.selectedProcesor
 
+function User({kto, setKto,dataDo,dataOd}) {
+  const contextApp = useContext(AppContext);
+  const selectedUser = contextApp.selectedUser;
+  const setSelectedUser = contextApp.setSelectedUser;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+const {refreshRealizacjeZestawienie} = useZestawienia()
+    return (
+      <select
+        className={style.user}
+        value={kto}
+        onChange={(event) => {
 
-  return(
-      <div className={style.col}>
-      <input className={style.selectDataWyswietlania} type="date"
-         value={dataOd}
-        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
-         onChange={(event) => {
+          setKto(event.target.value);
+            refreshRealizacjeZestawienie(dataOd,dataDo,event.target.value);
+        }}
+      >
+        {<option value="0">Wybierz pracownika</option>}
 
-          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
-          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
-          
-          // setDniWstecz( event.target.value);
-         }}></input>
+        {contextApp.users?.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.Imie} {option.Nazwisko}
+          </option>
+        ))}
+      </select>
+    );
+
+}
+
+function DataOd({ dataOd, dataDo, setDataOd, kto }) {
+  const { refreshRealizacjeZestawienie } = useZestawienia();
+
+  return (
+    <div className={style.col}>
+      <input
+        className={style.selectDataWyswietlania}
+        type="date"
+        value={dataOd}
+        onChange={(event) => {
+          setDataOd(event.target.value);
+          refreshRealizacjeZestawienie(event.target.value, dataDo, kto);
+        }}
+      ></input>
     </div>
   );
 }
 
 
-function DataDo({dataDo,setDataDo}){
-    const techContext = useContext(TechnologyContext);
-  const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
-  const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  
-  const dniWstecz = techContext.dniWstecz;
-  const setDniWstecz = techContext.setDniWstecz;
-  const selectedProcesor = techContext.selectedProcesor
+function DataDo({ dataDo, dataOd, setDataDo, kto }) {
+  const { refreshRealizacjeZestawienie } = useZestawienia();
 
-
-  return(
-      <div className={style.col}>
-      <input className={style.selectDataWyswietlania} type="date"
-         value={dataDo}
-        //  disabled= {DecodeToken(sessionStorage.getItem("token")).zamowienie_przyjmij==1? false:true}
-         onChange={(event) => {
-
-          // fechGrupyAndWykonaniaForProcesor2(selectedProcesor,event.target.value) 
-          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,event.target.value) 
-          
-          // setDniWstecz( event.target.value);
-         }}></input>
+  return (
+    <div className={style.col}>
+      <input
+        className={style.selectDataWyswietlania}
+        type="date"
+        value={dataDo}
+        onChange={(event) => {
+          refreshRealizacjeZestawienie(dataOd, event.target.value, kto);
+          setDataDo(event.target.value);
+        }}
+      ></input>
     </div>
   );
 }

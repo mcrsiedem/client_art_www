@@ -292,6 +292,12 @@ background: rgb(243, 243, 243);
 .col_utworzono{
    width: 60px;
 }
+.col_indeks{
+   width: 20px;
+   text-align: center;
+}
+
+
 .col_uwagi {
    /* background-color: red; */
    max-width: 100px;

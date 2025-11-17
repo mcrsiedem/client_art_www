@@ -33,8 +33,9 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
 
+           <th className={style.col_indeks}>#</th>
            <th className={style.col_utworzono}>Utworzono</th>
-           <th  className={style.col_nr}></th>
+           <th className={style.col_klient}>Nr</th>
            <th className={style.col_klient}>Klient</th>
            <th className={style.col_praca}>Praca</th>
            <th  className={style.col_rodzaj_arkusza}>Rodzaj</th>
@@ -43,7 +44,7 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
            <th className={style.col_grupa}>Grupa</th>
            <th className={style.col_maszyna}>Maszyna</th>
 
-           <th className={style.col_alert}></th>
+           {/* <th className={style.col_alert}></th> */}
          </tr>
        </thead>
        <tbody className={style.tableZam}>

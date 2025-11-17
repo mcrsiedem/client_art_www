@@ -69,9 +69,9 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
 
   return (
     <div className={style.container}>
-      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd} />
+      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
       <TableRealizacjeZestawienie  open2={open2} setRow={setRow}  header={false} />
-      <Footer dodaj_clikHandler={dodaj_clikHandler} kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
+      <Footer dodaj_clikHandler={dodaj_clikHandler} kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}   setDataDo={setDataDo} setDataOd={setDataOd} />
       <Loading/>
     </div>
   );

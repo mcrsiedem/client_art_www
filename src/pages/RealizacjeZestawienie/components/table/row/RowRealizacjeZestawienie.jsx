@@ -160,6 +160,7 @@ const setShowTabs = contextModalInsert.setShowTabs
           setOpenModalInsert(true);
         }}
       >
+        <Indeks i={i} row={row} />
         <Utworzono row={row} />
         <NrTableZamowienia row={row} />
         <KlientTableZamowienia row={row} />
@@ -171,7 +172,6 @@ const setShowTabs = contextModalInsert.setShowTabs
         <td>{row.procesor_nazwa}</td>
       
 
-        <td></td>
       </tr>
 
 
@@ -217,6 +217,9 @@ const NrTableZamowienia = ({ row }) => {
   
 };
 
+const Indeks = ({ row,i }) => {
+  return <td className={style.indeks}> {i+1} </td>;
+};
 const Zrealizowano = ({ row }) => {
   return <td className={style.nakladInput}> {row.zrealizowano.toLocaleString()} </td>;
 };
@@ -248,59 +251,7 @@ const KlientTableZamowienia = ({ row }) => {
   );
 };
 
-const SpedycjaTableZamowienia = ({ row }) => {
 
-    function isWeekend(dateString) {
-
-  const date = new Date(dateString);
-
-  // Metoda getDay() zwraca dzień tygodnia, gdzie:
-  // 0 = Niedziela
-  // 1 = Poniedziałek
-  // ...
-  // 5 = Piątek
-  // 6 = Sobota
-  const dayOfWeek = date.getDay();
-
-  // Sprawdzamy, czy dzień tygodnia to sobota (6) lub niedziela (0).
-  return dayOfWeek === 0 || dayOfWeek === 6;
-  }
-
-function getPolishDayName(dateString) {
-  const date = new Date(dateString);
-  
-  // Tablica z polskimi nazwami dni tygodnia, gdzie indeks 0 to Niedziela (jak zwraca getDay()).
-  const polishDays = [
-    'Niedziela', // 0
-    'Poniedziałek', // 1
-    'Wtorek', // 2
-    'Środa', // 3
-    'Czwartek', // 4
-    'Piątek', // 5
-    'Sobota' // 6
-  ];
-  
-  // getDay() zwraca liczbę (0-6), którą wykorzystujemy jako indeks tablicy.
-  const dayIndex = date.getDay();
-  
-  return polishDays[dayIndex];
-}
-
-
-  return (
-    <td>
-       <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={getPolishDayName(row.data_spedycji)}
-      className={isWeekend(row.data_spedycji)? style.spedycjaInput_red:style.spedycjaInput}
-      value={row.proces_id}
-      readOnly
-
-    />
-    </td>
-   
-  );
-};
 const Utworzono = ({ row }) => {
 
 

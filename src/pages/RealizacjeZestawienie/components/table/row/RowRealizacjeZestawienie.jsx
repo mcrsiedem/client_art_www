@@ -38,13 +38,17 @@ export default function RowRealizacjeZestawienie({ row, open2, setRow,i }) {
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 const setShowTabs = contextModalInsert.setShowTabs
 
+ const realizacjeZestawienie= contextApp.realizacjeZestawienie;
+ const setRealizacjeZestawienie= contextApp.setRealizacjeZestawienie;
+
+
   const onMenuHandle2 = (event) =>{
     event.preventDefault();
-    setZamowienia(
-      zamowienia
+    setRealizacjeZestawienie(
+      realizacjeZestawienie
       .map(x => {return { ...x, select: false, show:false}})
       .map((t) => {
-        if (t.id == row.id) {
+        if (t.global_id == row.global_id) {
           return { ...row, select: true,show:true};
         } else {
           return t;
@@ -52,11 +56,11 @@ const setShowTabs = contextModalInsert.setShowTabs
       })
     );
 
-    if(row.technologia_id != null ){
-      fechparametryTechnologiiDetails(row.id,row.technologia_id)
-    }else{
-      techContext.setProcesyElementowTech([])
-    }
+    // if(row.technologia_id != null ){
+    //   fechparametryTechnologiiDetails(row.id,row.technologia_id)
+    // }else{
+    //   techContext.setProcesyElementowTech([])
+    // }
 
   }
 
@@ -64,7 +68,7 @@ const setShowTabs = contextModalInsert.setShowTabs
     <>
       <tr
         onContextMenu={(event) => {
-          onMenuHandle2(event);
+          // onMenuHandle2(event);
         }}
         title={
           "Zamówienie id: " +
@@ -80,70 +84,72 @@ const setShowTabs = contextModalInsert.setShowTabs
         // className={ style.row_zamowienia}
         key={row.id}
         onMouseDown={(event) => {
-          if (event.shiftKey) {
-            let indeks_start = sessionStorage.getItem("indeks_start");
-            let indeks_stop = i;
-            setZamowienia(
-              zamowienia
-                .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-                .filter((zam) => {
-                  if (selectedUser == 0) {
-                    return true;
-                  } else {
-                    return zam.opiekun_id == selectedUser;
-                  }
-                })
-                .filter((z) => z.stan == 3)
-                .filter((zam) => {
-                  if (selectedKlient == 0) {
-                    return true;
-                  } else {
-                    return zam.klient_id == selectedKlient;
-                  }
-                })
-                .filter((zamowienie) => sortWgEtapu({ zamowienie }))
-                .map((x) => {
-                  return { ...x, select: false };
-                })
-                .map((t, indeks) => {
-                  if (indeks >= indeks_start && indeks <= indeks_stop) {
-                    return { ...t, select: true };
-                  } else {
-                    return t;
-                  }
-                })
-            );
-          } else {
-            setZamowienia(
-              zamowienia
-                .map((x) => {
-                  return { ...x, select: false };
-                })
-                .map((t, indeks) => {
-                  if (t.id == row.id) {
-                    return { ...t, select: true };
-                  } else {
-                    return t;
-                  }
-                })
-            );
-          }
+          onMenuHandle2(event);
 
-          if (event.ctrlKey) {
-            setZamowienia(
-              zamowienia
-                // .map(x => {return { ...x, select: false}})
-                .map((t, indeks) => {
-                  if (t.id == row.id) {
-                    return { ...t, select: !t.select };
-                  } else {
-                    return t;
-                  }
-                })
-            );
-          }
+          // if (event.shiftKey) {
+          //   let indeks_start = sessionStorage.getItem("indeks_start");
+          //   let indeks_stop = i;
+          //   setZamowienia(
+          //     zamowienia
+          //       .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+          //       .filter((zam) => {
+          //         if (selectedUser == 0) {
+          //           return true;
+          //         } else {
+          //           return zam.opiekun_id == selectedUser;
+          //         }
+          //       })
+          //       .filter((z) => z.stan == 3)
+          //       .filter((zam) => {
+          //         if (selectedKlient == 0) {
+          //           return true;
+          //         } else {
+          //           return zam.klient_id == selectedKlient;
+          //         }
+          //       })
+          //       .filter((zamowienie) => sortWgEtapu({ zamowienie }))
+          //       .map((x) => {
+          //         return { ...x, select: false };
+          //       })
+          //       .map((t, indeks) => {
+          //         if (indeks >= indeks_start && indeks <= indeks_stop) {
+          //           return { ...t, select: true };
+          //         } else {
+          //           return t;
+          //         }
+          //       })
+          //   );
+          // } else {
+          //   setZamowienia(
+          //     zamowienia
+          //       .map((x) => {
+          //         return { ...x, select: false };
+          //       })
+          //       .map((t, indeks) => {
+          //         if (t.id == row.id) {
+          //           return { ...t, select: true };
+          //         } else {
+          //           return t;
+          //         }
+          //       })
+          //   );
+          // }
 
-          sessionStorage.setItem("indeks_start", i);
+          // if (event.ctrlKey) {
+          //   setZamowienia(
+          //     zamowienia
+          //       // .map(x => {return { ...x, select: false}})
+          //       .map((t, indeks) => {
+          //         if (t.id == row.id) {
+          //           return { ...t, select: !t.select };
+          //         } else {
+          //           return t;
+          //         }
+          //       })
+          //   );
+          // }
+
+          // sessionStorage.setItem("indeks_start", i);
         }}
         onClick={(node, e) => {
           setSelectedZamowienie({ ...row, i });

@@ -84,72 +84,72 @@ const setShowTabs = contextModalInsert.setShowTabs
         // className={ style.row_zamowienia}
         key={row.id}
         onMouseDown={(event) => {
-          onMenuHandle2(event);
+          // onMenuHandle2(event);
 
-          // if (event.shiftKey) {
-          //   let indeks_start = sessionStorage.getItem("indeks_start");
-          //   let indeks_stop = i;
-          //   setZamowienia(
-          //     zamowienia
-          //       .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-          //       .filter((zam) => {
-          //         if (selectedUser == 0) {
-          //           return true;
-          //         } else {
-          //           return zam.opiekun_id == selectedUser;
-          //         }
-          //       })
-          //       .filter((z) => z.stan == 3)
-          //       .filter((zam) => {
-          //         if (selectedKlient == 0) {
-          //           return true;
-          //         } else {
-          //           return zam.klient_id == selectedKlient;
-          //         }
-          //       })
-          //       .filter((zamowienie) => sortWgEtapu({ zamowienie }))
-          //       .map((x) => {
-          //         return { ...x, select: false };
-          //       })
-          //       .map((t, indeks) => {
-          //         if (indeks >= indeks_start && indeks <= indeks_stop) {
-          //           return { ...t, select: true };
-          //         } else {
-          //           return t;
-          //         }
-          //       })
-          //   );
-          // } else {
-          //   setZamowienia(
-          //     zamowienia
-          //       .map((x) => {
-          //         return { ...x, select: false };
-          //       })
-          //       .map((t, indeks) => {
-          //         if (t.id == row.id) {
-          //           return { ...t, select: true };
-          //         } else {
-          //           return t;
-          //         }
-          //       })
-          //   );
-          // }
+          if (event.shiftKey) {
+            let indeks_start = sessionStorage.getItem("indeks_start");
+            let indeks_stop = i;
+            setRealizacjeZestawienie(
+              realizacjeZestawienie
+                // .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+                // .filter((zam) => {
+                //   if (selectedUser == 0) {
+                //     return true;
+                //   } else {
+                //     return zam.opiekun_id == selectedUser;
+                //   }
+                // })
+                // .filter((z) => z.stan == 3)
+                // .filter((zam) => {
+                //   if (selectedKlient == 0) {
+                //     return true;
+                //   } else {
+                //     return zam.klient_id == selectedKlient;
+                //   }
+                // })
+                // .filter((zamowienie) => sortWgEtapu({ zamowienie }))
+                // .map((x) => {
+                //   return { ...x, select: false };
+                // })
+                .map((t, indeks) => {
+                  if (indeks >= indeks_start && indeks <= indeks_stop) {
+                    return { ...t, select: true };
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          } else {
+            setRealizacjeZestawienie(
+              realizacjeZestawienie
+                .map((x) => {
+                  return { ...x, select: false };
+                })
+                .map((t, indeks) => {
+                  if (t.global_id == row.global_id) {
+                    return { ...t, select: true };
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          }
 
-          // if (event.ctrlKey) {
-          //   setZamowienia(
-          //     zamowienia
-          //       // .map(x => {return { ...x, select: false}})
-          //       .map((t, indeks) => {
-          //         if (t.id == row.id) {
-          //           return { ...t, select: !t.select };
-          //         } else {
-          //           return t;
-          //         }
-          //       })
-          //   );
-          // }
+          if (event.ctrlKey) {
+            setRealizacjeZestawienie(
+              realizacjeZestawienie
+                // .map(x => {return { ...x, select: false}})
+                .map((t, indeks) => {
+                  if (t.global_id == row.global_id) {
+                    return { ...t, select: !t.select };
+                  } else {
+                    return t;
+                  }
+                })
+            );
+          }
 
-          // sessionStorage.setItem("indeks_start", i);
+          sessionStorage.setItem("indeks_start", i);
         }}
         onClick={(node, e) => {
           setSelectedZamowienie({ ...row, i });
@@ -194,7 +194,7 @@ const NrTableZamowienia = ({ row }) => {
     return (
     <td>
        <input
-       disabled
+      //  disabled
       
       title={row.nr}
       className={style.input_nr}

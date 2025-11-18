@@ -190,3 +190,11 @@ color: black;
     font-family: Poppins;
 
 }
+
+.title_przeloty_zaznaczenie {
+    /* padding-top: 10px; */
+    font-size: 1rem;
+    color: rgb(8, 8, 8);
+    font-family: Poppins;
+
+}

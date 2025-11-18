@@ -31,14 +31,13 @@ export default function Footer({ dodaj_clikHandler,kto, setKto,dataDo,dataOd,set
     <footer onDoubleClick={()=>{  
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
+              <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Zaznaczono: </p><p className={style.title_przeloty_zaznaczenie}> { contextApp.realizacjeZestawienie.filter(x => x.select == true).length} /  { contextApp.realizacjeZestawienie.filter(x => x.select == true).map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} ark.</p></div>
+      
       </div>
 
       <div className={style.centerHeaderContener}>
         <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Narządy: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.length} </p></div>
-        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>
-               
-
-
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
       </div>
       <div className={style.rightHeaderContener}>
 

@@ -17,6 +17,7 @@ import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { TechnologyContext } from "context/TechnologyContext";
 import { useZestawienia } from "hooks/useZestawienia";
+import Tabs from "../tabs/Tabs";
 
 export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) {
   const navigate = useNavigate();
@@ -27,14 +28,6 @@ export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) 
     const setSelectedZamowienie = contexModal.setSelectedZamowienie;
      const contextModalInsert = useContext(ModalInsertContext);
 const setShowTabs = contextModalInsert.setShowTabs
-
-  useEffect(() => {
-    if (effectRan.current === true) {
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
 
   return (
     <header onDoubleClick={()=>{  
@@ -71,6 +64,7 @@ const setShowTabs = contextModalInsert.setShowTabs
           alt="React Logo"
         />
       </div>
+      
     </header>
   );
 }

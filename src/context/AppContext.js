@@ -79,6 +79,9 @@ const tableZamowienia = useRef();
 //d
     const [rowSelected, setRowSelected] = useState(null); 
 
+  const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:true,maszyny:false,osoby:false,prace:false});
+
+
     const updateProcesList = useCallback(()=>{
         getProcesList(setProcesList) 
        },[])
@@ -199,6 +202,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
                     oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania,
                     pokazUzytkownikowOnline, setPokazUzytkownikowOnline,
+                    showTabsRealizacje, setShowTabsRealizacje
               
           
                   }}

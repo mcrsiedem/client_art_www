@@ -79,7 +79,7 @@ const tableZamowienia = useRef();
 //d
     const [rowSelected, setRowSelected] = useState(null); 
 
-  const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:true,maszyny:false,osoby:false,prace:false});
+  const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:false,maszyny:false,osoby:true,prace:false});
 
 
     const updateProcesList = useCallback(()=>{

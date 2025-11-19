@@ -2,21 +2,20 @@ import { useContext } from "react";
 import style from "./Tabs.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { AppContext } from "context/AppContext";
 
 export default function Tabs() {
- const contextModalInsert = useContext(ModalInsertContext);
-const showTabs = contextModalInsert.showTabs
-const setShowTabs = contextModalInsert.setShowTabs
+ const appContext = useContext(AppContext);
+const showTabsRealizacje = appContext.showTabsRealizacje
+const setShowTabsRealizacje = appContext.setShowTabsRealizacje
 
     return (
     <>
       <div  className={style.parametry}>
-        <PARAMETRY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
-        <KOSZTY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
-        <FAKTURY_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
-        <HISTORIA_BTN showTabs={showTabs} setShowTabs={setShowTabs}/>
-
-
+        <PRACOWNICY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
+        <DZIALY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
+        <MASZYNY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
+        <ZAMOWIENIA_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
       </div>
     </>
   );
@@ -25,77 +24,48 @@ const setShowTabs = contextModalInsert.setShowTabs
 }
 
 
-function PARAMETRY_BTN({showTabs,setShowTabs}) {
+function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
   
     return (
-      <button className={showTabs.parametry ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabs({parametry:true,koszty:false,historia:false,faktury:false})}}
-       disabled = {showTabs.kreator}
+      <button className={showTabsRealizacje.osoby ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:false,osoby:true,prace:false})}}
       >
-        Parametry
+        Pracownicy
       </button>
     );
   }
 
-  function KOSZTY_BTN({showTabs,setShowTabs}) {
-  const contextModalInsert = useContext(ModalInsertContext);
-const daneZamowienia = contextModalInsert.daneZamowienia
-    return (
-            <button
-             className={showTabs.koszty ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ 
-              if(daneZamowienia.id ==1 ){
-                alert("Przed dodaniem kosztów zapisz zamówienie...")
-              }else{
-              setShowTabs({parametry:false,koszty:true,historia:false,faktury:false})}}
-
-              }
-              
-              disabled = {showTabs.kreator}
-
-             >
-
-        Koszty dodatkowe
-      </button>
-    );
-  }
-
-    function HISTORIA_BTN({showTabs,setShowTabs}) {
+  function DZIALY_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
   
     return (
-            <button className={showTabs.historia ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{ setShowTabs({parametry:false,koszty:false,historia:true,faktury:false})}}
-       disabled = {showTabs.kreator}
-
-            >
-
-        Historia zmian
+      <button className={showTabsRealizacje.grupy ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabsRealizacje({grupy:true,maszyny:false,osoby:false,prace:false})}}
+      >
+        Działy
       </button>
     );
   }
 
-      function FAKTURY_BTN({showTabs,setShowTabs}) {
-    const contextModalInsert = useContext(ModalInsertContext);
-const daneZamowienia = contextModalInsert.daneZamowienia
+  function MASZYNY_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
+  
     return (
-            <button className={showTabs.faktury ? style.parametry_btn_select:style.parametry_btn}
-             onClick={()=>{
-                        if(daneZamowienia.id ==1 ){
-                alert("Przed dodaniem fatury zapisz zamówienie...")
-              }else{
-                          setShowTabs({parametry:false,koszty:false,historia:false,faktury:true})}
+      <button className={showTabsRealizacje.maszyny ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:true,osoby:false,prace:false})}}
+      >
+        Maszyny
+      </button>
+    );
+  }
 
 
-              }
-              
-            
-            
-            }
-       disabled = {showTabs.kreator}
 
-            >
-
-        Faktury
+  function ZAMOWIENIA_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
+  
+    return (
+      <button className={showTabsRealizacje.prace ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:true,osoby:false,prace:true})}}
+      >
+        Zamówienia
       </button>
     );
   }

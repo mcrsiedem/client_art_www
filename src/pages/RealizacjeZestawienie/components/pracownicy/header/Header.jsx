@@ -17,7 +17,7 @@ import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { TechnologyContext } from "context/TechnologyContext";
 import { useZestawienia } from "hooks/useZestawienia";
-import Tabs from "../tabs/Tabs";
+// import Tabs from "../tabs/Tabs";
 
 export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) {
   const navigate = useNavigate();
@@ -34,18 +34,18 @@ const setShowTabs = contextModalInsert.setShowTabs
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <REFRESH_ZAMOWIENIA_BTN/> */}
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zestawienia realizacji </p>
+        {/* <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zestawienia realizacji </p> */}
     
       </div>
 
       <div className={style.centerHeaderContener}>
 
        
-          {/* <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
+          <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
 <DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
 
 <DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
- */}
+
 
       </div>
       <div className={style.rightHeaderContener}>
@@ -55,14 +55,14 @@ const setShowTabs = contextModalInsert.setShowTabs
         <SORTOWANIE_ZAMOWIENIA_ETAP/> */}
         {/* <Szukaj/> */}
 
-        <img
+        {/* <img
           className={style.icon2}
           src={iconClose2}
           onClick={() => {
             navigate("/Panel");
           }}
           alt="React Logo"
-        />
+        /> */}
       </div>
       
     </header>

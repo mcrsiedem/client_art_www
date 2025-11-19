@@ -1,25 +1,22 @@
-import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
 import axios from "axios";
-import { IP } from "../../utils/Host";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "./RealizacjeZestawienie.module.css";
-import Header from "./components/header/Header";
-import { AppContext } from "context/AppContext";
-import { getClients } from "actions/getClients";
-import { getNadkomplety } from "actions/getNadkomplety";
-import { useApiPapier } from "hooks/useApiPapier";
-import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableRealizacjeZestawienie from "./components/table/TableRealizacjeZestawienie";
-import { useZamowienia } from "hooks/useZamowienia";
-import { ModalInsertContext } from "context/ModalInsertContext";
-import DecodeToken from "pages/Login/DecodeToken";
-import Loading from "components/Loading/Loading";
-import Footer from "./components/footer/Footer";
+import { IP } from "utils/Host";
+import style from "./Pracownicy.module.css";
+
 import { getGraniceMiesiaca } from "actions/getGraniceMiesiaca";
+import { ModalInsertContext } from "context/ModalInsertContext";
 import { useZestawienia } from "hooks/useZestawienia";
-import Tabs from "./components/tabs/Tabs";
-import Pracownicy from "./components/pracownicy/Pracownicy";
-function RealizacjeZestawienie() {
+
+import Footer from "../footer/Footer";
+
+import TableRealizacjeZestawienie from "../table/TableRealizacjeZestawienie";
+import Header from "./header/Header";
+import { AppContext } from "context/AppContext";
+
+function Pracownicy() {
+   const appContext = useContext(AppContext);
+  const showTabsRealizacje = appContext.showTabsRealizacje
   const contextModal = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
@@ -58,17 +55,18 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   }
 
   useEffect(() => {
-    // checkToken();
+    checkToken();
   }, []);
 
-  return (
+if(showTabsRealizacje.osoby){
+    return (
     <div className={style.container}>
-      
       <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
-      <Tabs/>
-      <Pracownicy/>
-      <Loading/>
+      <TableRealizacjeZestawienie  open2={open2} setRow={setRow}  header={false} />
+      <Footer dodaj_clikHandler={dodaj_clikHandler} kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}   setDataDo={setDataDo} setDataOd={setDataOd} />
     </div>
   );
 }
-export default RealizacjeZestawienie;
+
+}
+export default Pracownicy;

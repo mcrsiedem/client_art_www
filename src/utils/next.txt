@@ -31,3 +31,5 @@ Reazlizacja procesu.
 
 
 Chyba można skasować nakład z realizacji, ponieważ pracujemy tu na przelotach
+
+test

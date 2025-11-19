@@ -41,11 +41,11 @@ const setShowTabs = contextModalInsert.setShowTabs
       <div className={style.centerHeaderContener}>
 
        
-          <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
+          {/* <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
 <DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
 
 <DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
-
+ */}
 
       </div>
       <div className={style.rightHeaderContener}>

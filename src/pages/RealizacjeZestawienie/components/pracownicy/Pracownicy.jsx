@@ -8,9 +8,9 @@ import { getGraniceMiesiaca } from "actions/getGraniceMiesiaca";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useZestawienia } from "hooks/useZestawienia";
 
-import Footer from "../footer/Footer";
+import Footer from "./footer/Footer";
 
-import TableRealizacjeZestawienie from "../table/TableRealizacjeZestawienie";
+import TableRealizacjeZestawienie from "./table/TableRealizacjeZestawienie";
 import Header from "./header/Header";
 import { AppContext } from "context/AppContext";
 

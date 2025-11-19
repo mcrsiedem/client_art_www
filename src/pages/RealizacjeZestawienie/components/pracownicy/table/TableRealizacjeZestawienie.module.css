@@ -1,6 +1,7 @@
 .tableContainer {
    position: relative;
    width: 100vw;
+   height: calc(100vh - 190px);
    overflow: auto;
  padding-left :20px;
 padding-right :15px; 

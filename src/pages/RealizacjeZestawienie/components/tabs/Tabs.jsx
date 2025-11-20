@@ -3,16 +3,19 @@ import style from "./Tabs.module.css";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_txt } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { AppContext } from "context/AppContext";
+import { useZestawienia } from "hooks/useZestawienia";
 
-export default function Tabs() {
+export default function Tabs({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) {
  const appContext = useContext(AppContext);
 const showTabsRealizacje = appContext.showTabsRealizacje
 const setShowTabsRealizacje = appContext.setShowTabsRealizacje
+const {refreshRealizacjeZestawienie} = useZestawienia()
+
 
     return (
     <>
       <div  className={style.parametry}>
-        <PRACOWNICY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
+        <PRACOWNICY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje} refreshRealizacjeZestawienie={refreshRealizacjeZestawienie} dataDo={dataDo} dataOd={dataOd} kto={kto}/>
         <DZIALY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
         <MASZYNY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
         <ZAMOWIENIA_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
@@ -24,11 +27,15 @@ const setShowTabsRealizacje = appContext.setShowTabsRealizacje
 }
 
 
-function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
+function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealizacjeZestawienie,dataOd,dataDo,kto}) {
   
     return (
       <button className={showTabsRealizacje.osoby ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:false,osoby:true,prace:false})}}
+       onClick={()=>{
+        // refreshRealizacjeZestawienie(dataOd,dataDo,kto);
+         setShowTabsRealizacje({grupy:false,maszyny:false,osoby:true,prace:false})}
+        
+        }
       >
         Pracownicy
       </button>

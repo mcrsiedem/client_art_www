@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import DecodeToken from "pages/Login/DecodeToken";
-import { _etapy_produkcji } from "utils/initialvalue";
+import { _etapy_produkcji, _users_grupa } from "utils/initialvalue";
 import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { zabezpiecz } from "actions/zabezpiecz";
@@ -42,9 +42,10 @@ const setShowTabs = contextModalInsert.setShowTabs
 
        
           <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
-<DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
+          <Dzialy kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
 
-<DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
+          <DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
+          <DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
 
 
       </div>
@@ -77,7 +78,10 @@ function User({kto, setKto,dataDo,dataOd}) {
   const setSelectedUser = contextApp.setSelectedUser;
   const setSelectedKlient = contextApp.setSelectedKlient;
 const {refreshRealizacjeZestawienie} = useZestawienia()
-    return (
+  const showTabsRealizacje = contextApp.showTabsRealizacje
+
+  if(showTabsRealizacje.osoby){
+        return (
       <select
         className={style.user}
         value={kto}
@@ -96,8 +100,48 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
         ))}
       </select>
     );
+  }
+
 
 }
+
+
+
+function Dzialy({kto, setKto,dataDo,dataOd}) {
+  const contextApp = useContext(AppContext);
+  const selectedUser = contextApp.selectedUser;
+  const setSelectedUser = contextApp.setSelectedUser;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+const {refreshRealizacjeZestawienie} = useZestawienia()
+  const showTabsRealizacje = contextApp.showTabsRealizacje
+
+  let lista_dostepnych_grup =[5,8,10]
+
+  if(showTabsRealizacje.grupy){
+        return (
+      <select
+        className={style.user}
+        value={kto}
+        onChange={(event) => {
+
+          setKto(event.target.value);
+            refreshRealizacjeZestawienie(dataOd,dataDo,event.target.value);
+        }}
+      >
+        {<option value="0">Wybierz grupe</option>}
+
+        {_users_grupa.filter(x=> lista_dostepnych_grup.includes(x.id)).map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.nazwa}
+          </option>
+        ))}
+      </select>
+    );
+  }
+
+
+}
+
 
 function DataOd({ dataOd, dataDo, setDataOd, kto }) {
   const { refreshRealizacjeZestawienie } = useZestawienia();

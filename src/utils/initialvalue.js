@@ -630,6 +630,67 @@ const _fsc = [
 ];
 
 
+const _users_grupa = [
+  {
+    id: 1,
+    nazwa: "Zarząd",
+  },
+  {
+    id: 2,
+    nazwa: "Opiekun Klienta",
+  },
+    {
+    id: 3,
+    nazwa: "Planowanie",
+  },
+    {
+    id: 4,
+    nazwa: "CTP",
+  },
+    {
+    id: 5,
+    nazwa: "Drukarze",
+  },
+    {
+    id: 6,
+    nazwa: "Pomocnicy",
+  },
+    {
+    id: 7,
+    nazwa: "Introligatornia",
+  },
+    {
+    id: 8,
+    nazwa: "Falcowanie",
+  },
+    {
+    id: 9,
+    nazwa: "Krajacze",
+  },
+    {
+    id: 10,
+    nazwa: "Uszlachetnianie",
+  },
+    {
+    id: 11,
+    nazwa: "Magazyn",
+  },
+    {
+    id: 12,
+    nazwa: "Kierownicy",
+  },
+    {
+    id: 13,
+    nazwa: "Księgowość",
+  },
+    {
+    id: 14,
+    nazwa: "Administrator",
+  }
+
+];
+
+
 
 
 
@@ -665,6 +726,8 @@ export {
   _status_technologi,
   _etap_plikow,
   _status_wydania_papieru,
+
+  _users_grupa
 
   
 

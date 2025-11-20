@@ -41,6 +41,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
     open.current = true;
   };
   async function checkToken() {
+    console.log("Check Token")
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
@@ -55,7 +56,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   }
 
   useEffect(() => {
-    checkToken();
+    // checkToken();
   }, []);
 
 if(showTabsRealizacje.osoby){

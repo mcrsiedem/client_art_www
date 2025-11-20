@@ -63,7 +63,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
     <div className={style.container}>
       
       <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
-      <Tabs/>
+      <Tabs dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
       <Pracownicy/>
       <Loading/>
     </div>

@@ -32,5 +32,17 @@ export function useZestawienia() {
   };
 
 
-  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa};
+    const refreshRealizacjeZestawienieProcesory = async (dataOd,dataDo) => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zestawienie_procesory/"+dataOd+"/"+dataDo+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setRealizacjeZestawienieProcesory([...res.data]);
+    // contextApp.setRealizacjeZestawienieWyszukiwarka([...res.data]);
+      setIsLoading(false)
+
+  };
+
+
+  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory};
 }

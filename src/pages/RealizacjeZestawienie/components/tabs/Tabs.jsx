@@ -70,7 +70,7 @@ function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealiza
   
     return (
       <button className={showTabsRealizacje.prace ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:true,osoby:false,prace:true})}}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:false,osoby:false,prace:true})}}
       >
         Zamówienia
       </button>

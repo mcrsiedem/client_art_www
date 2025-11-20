@@ -36,6 +36,8 @@ export const AppContextProvider = ({children})=>{
     const [productType, setProductType] = useState(null); 
     const [realizacjeZestawienie, setRealizacjeZestawienie] = useState([]); 
     const [realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka] = useState([]); 
+    const [realizacjeZestawienieGrupy, setRealizacjeZestawienieGrupy] = useState([]); 
+
     const [zamowienia, setZamowienia] = useState([]); 
     const [zamowieniaInfo, setZamowieniaInfo] = useState(); 
     const [zamowieniaPliki, setZamowieniaPliki] = useState([]); 
@@ -163,6 +165,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap,
                   sortowanieZamowienia,
                   zestawZamowienia,zestawFaktury,
+                  realizacjeZestawienieGrupy, setRealizacjeZestawienieGrupy,
                   realizacjeZestawienie, setRealizacjeZestawienie,realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,

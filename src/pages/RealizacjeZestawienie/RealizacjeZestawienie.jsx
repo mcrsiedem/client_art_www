@@ -30,6 +30,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   const [dataOd, setDataOd] = useState(AKTUALNY_MIESIAC.pierwszyDzien);
   const [dataDo, setDataDo] = useState(AKTUALNY_MIESIAC.ostatniDzien);
   const [kto, setKto] = useState(0);
+  const [grupa, setGrupa] = useState(0);
 
 
   function dodaj_clikHandler() {
@@ -62,7 +63,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   return (
     <div className={style.container}>
       
-      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
+      <Header  dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto} grupa={grupa} setGrupa={setGrupa}/>
       <Tabs dataDo={dataDo} dataOd={dataOd} setDataDo={setDataDo} setDataOd={setDataOd}  kto={kto} setKto={setKto}/>
       <Pracownicy/>
       <Loading/>

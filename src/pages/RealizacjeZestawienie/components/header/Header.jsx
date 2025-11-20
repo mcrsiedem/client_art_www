@@ -19,7 +19,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { useZestawienia } from "hooks/useZestawienia";
 import Tabs from "../tabs/Tabs";
 
-export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto}) {
+export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto,grupa,setGrupa}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -42,7 +42,7 @@ const setShowTabs = contextModalInsert.setShowTabs
 
        
           <User kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
-          <Dzialy kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd}/>
+          <Dzialy kto={kto} setKto={setKto} dataDo={dataDo} dataOd={dataOd} grupa={grupa} setGrupa={setGrupa}/>
 
           <DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd}/>
           <DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo}/>
@@ -107,15 +107,29 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
 
 
 
-function Dzialy({kto, setKto,dataDo,dataOd}) {
+function Dzialy({kto, setKto,dataDo,dataOd,grupa,setGrupa}) {
   const contextApp = useContext(AppContext);
   const selectedUser = contextApp.selectedUser;
   const setSelectedUser = contextApp.setSelectedUser;
   const setSelectedKlient = contextApp.setSelectedKlient;
-const {refreshRealizacjeZestawienie} = useZestawienia()
+const {refreshRealizacjeZestawienieGrupa} = useZestawienia()
   const showTabsRealizacje = contextApp.showTabsRealizacje
 
   let lista_dostepnych_grup =[5,8,10]
+// 1	Zarząd
+// 2	Opiekun Klienta
+// 3	Planowanie
+// 4	CTP
+// 5	Drukarze
+// 6	Pomocnicy
+// 7	Introligatornia
+// 8	Falcowanie
+// 9	Krajacze
+// 10	Uszlachetnianie
+// 11	Magazyn
+// 12	Kierowcy
+// 13	Księgowość
+// 14	Administrator
 
   if(showTabsRealizacje.grupy){
         return (
@@ -124,8 +138,8 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
         value={kto}
         onChange={(event) => {
 
-          setKto(event.target.value);
-            refreshRealizacjeZestawienie(dataOd,dataDo,event.target.value);
+          setGrupa(event.target.value);
+            refreshRealizacjeZestawienieGrupa(dataOd,dataDo,event.target.value);
         }}
       >
         {<option value="0">Wybierz grupe</option>}

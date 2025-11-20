@@ -20,8 +20,17 @@ export function useZestawienia() {
 
   };
 
+  const refreshRealizacjeZestawienieGrupa = async (dataOd,dataDo,grupa) => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zestawienie_grupa/"+dataOd+"/"+dataDo+"/"+grupa+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setRealizacjeZestawienieGrupy([...res.data]);
+    // contextApp.setRealizacjeZestawienieWyszukiwarka([...res.data]);
+      setIsLoading(false)
+
+  };
 
 
-
-  return {refreshRealizacjeZestawienie};
+  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa};
 }

@@ -19,6 +19,7 @@ import Tabs from "./components/tabs/Tabs";
 import Pracownicy from "./components/pracownicy/Pracownicy";
 import Grupy from "./components/grupy/Grupy";
 import Proceosory from "./components/procesory/Procesory";
+import Klienci from "./components/klienci/Klienci";
 function RealizacjeZestawienie() {
   const contextModal = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
@@ -70,6 +71,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
       <Pracownicy/>
       <Grupy/>
       <Proceosory dataDo={dataDo} dataOd={dataOd}/>
+      <Klienci dataDo={dataDo} dataOd={dataOd}/>
       <Loading/>
     </div>
   );

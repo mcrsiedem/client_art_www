@@ -38,6 +38,7 @@ export const AppContextProvider = ({children})=>{
     const [realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka] = useState([]); 
     const [realizacjeZestawienieGrupy, setRealizacjeZestawienieGrupy] = useState([]); 
     const [realizacjeZestawienieProcesory, setRealizacjeZestawienieProcesory] = useState([]); 
+    const [realizacjeZestawienieKlienci, setRealizacjeZestawienieKlienci] = useState([]); 
 
     const [zamowienia, setZamowienia] = useState([]); 
     const [zamowieniaInfo, setZamowieniaInfo] = useState(); 
@@ -82,7 +83,7 @@ const tableZamowienia = useRef();
 //d
     const [rowSelected, setRowSelected] = useState(null); 
 
-  const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:false,maszyny:false,osoby:true,prace:false});
+  const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:false,maszyny:false,osoby:true,prace:false,klienci:false});
 
 
     const updateProcesList = useCallback(()=>{
@@ -168,6 +169,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                   zestawZamowienia,zestawFaktury,
                   realizacjeZestawienieGrupy, setRealizacjeZestawienieGrupy,
                   realizacjeZestawienieProcesory, setRealizacjeZestawienieProcesory,
+                  realizacjeZestawienieKlienci, setRealizacjeZestawienieKlienci,
                   realizacjeZestawienie, setRealizacjeZestawienie,realizacjeZestawienieWyszukiwarka, setRealizacjeZestawienieWyszukiwarka,
                   zamowienia, setZamowienia,
                   zamowieniaWyszukiwarka, setZamowieniaWyszukiwarka,

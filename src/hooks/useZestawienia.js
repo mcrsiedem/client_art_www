@@ -44,5 +44,17 @@ export function useZestawienia() {
   };
 
 
-  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory};
+      const refreshRealizacjeZestawienieKlienci= async (dataOd,dataDo) => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zestawienie_klienci/"+dataOd+"/"+dataDo+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setRealizacjeZestawienieKlienci([...res.data]);
+    // contextApp.setRealizacjeZestawienieWyszukiwarka([...res.data]);
+      setIsLoading(false)
+
+  };
+
+
+  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci};
 }

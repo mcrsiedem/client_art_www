@@ -18,7 +18,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
         <PRACOWNICY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje} refreshRealizacjeZestawienie={refreshRealizacjeZestawienie} dataDo={dataDo} dataOd={dataOd} kto={kto}/>
         <DZIALY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
         <MASZYNY_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
-        <ZAMOWIENIA_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
+        <KLIENCI_BTN showTabsRealizacje={showTabsRealizacje} setShowTabsRealizacje={setShowTabsRealizacje}/>
       </div>
     </>
   );
@@ -33,7 +33,7 @@ function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealiza
       <button className={showTabsRealizacje.osoby ? style.parametry_btn_select:style.parametry_btn}
        onClick={()=>{
         // refreshRealizacjeZestawienie(dataOd,dataDo,kto);
-         setShowTabsRealizacje({grupy:false,maszyny:false,osoby:true,prace:false})}
+         setShowTabsRealizacje({grupy:false,maszyny:false,osoby:true,prace:false,klienci:false})}
         
         }
       >
@@ -46,7 +46,7 @@ function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealiza
   
     return (
       <button className={showTabsRealizacje.grupy ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabsRealizacje({grupy:true,maszyny:false,osoby:false,prace:false})}}
+       onClick={()=>{ setShowTabsRealizacje({grupy:true,maszyny:false,osoby:false,prace:false,klienci:false})}}
       >
         Działy
       </button>
@@ -57,7 +57,7 @@ function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealiza
   
     return (
       <button className={showTabsRealizacje.maszyny ? style.parametry_btn_select:style.parametry_btn}
-       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:true,osoby:false,prace:false})}}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:true,osoby:false,prace:false,klienci:false})}}
       >
         Maszyny
       </button>
@@ -73,6 +73,18 @@ function PRACOWNICY_BTN({showTabsRealizacje,setShowTabsRealizacje,refreshRealiza
        onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:false,osoby:false,prace:true})}}
       >
         Zamówienia
+      </button>
+    );
+  }
+
+
+    function KLIENCI_BTN({showTabsRealizacje,setShowTabsRealizacje}) {
+  
+    return (
+      <button className={showTabsRealizacje.klienci ? style.parametry_btn_select:style.parametry_btn}
+       onClick={()=>{ setShowTabsRealizacje({grupy:false,maszyny:false,osoby:false,prace:false,klienci:true})}}
+      >
+        Klienci
       </button>
     );
   }

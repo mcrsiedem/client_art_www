@@ -1,0 +1,18 @@
+
+
+.icon,
+.icon2 {
+
+    height: 90%;
+    padding: 10px;
+}
+
+.icon:hover {
+    background-color: rgb(78, 78, 78);
+    border-radius: 5px;
+}
+
+.icon2:hover {
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+}

@@ -110,7 +110,7 @@ export default function Ustawienia({ user, setUser }) {
                   <p className={style.podpis_icon}>PROCESY</p>
                 </div>
 
-                <div
+                {/* <div
                   className={style.pane}
                   onClick={() => {
                     navigate("/Zestawienia");
@@ -118,7 +118,7 @@ export default function Ustawienia({ user, setUser }) {
                 >
                   <img className={style.icon} src={iconWykres} alt="Zestawienia" />{" "}
                   <p className={style.podpis_icon}>STATYSTYKI</p>
-                </div>
+                </div> */}
 
 
       </div>

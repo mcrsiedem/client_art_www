@@ -31,14 +31,16 @@ export default function Footer({ dodaj_clikHandler,kto, setKto,dataDo,dataOd,set
     <footer onDoubleClick={()=>{  
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
-              <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Zaznaczono: </p><p className={style.title_przeloty_zaznaczenie}> { contextApp.realizacjeZestawienie.filter(x => x.select == true).length} /  { contextApp.realizacjeZestawienie.filter(x => x.select == true).map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} ark.</p></div>
+              {/* <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Zaznaczono: </p><p className={style.title_przeloty_zaznaczenie}> { contextApp.realizacjeZestawienieKlienci.filter(x => x.select == true).length} /  { contextApp.realizacjeZestawienie.filter(x => x.select == true).map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} ark.</p></div> */}
       
       </div>
 
       <div className={style.centerHeaderContener}>
         {/* <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Narządy: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieGrupy.length} </p></div> */}
-        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Narządy: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieProcesory.map(x => parseInt(x.LiczbaWpisow)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieProcesory.map(x => parseInt(x.SumaZrealizowano)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        {/* <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Narządy: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieProcesory.map(x => parseInt(x.LiczbaWpisow)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>            */}
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty druk: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.druk_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty falc: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.falc_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty uv/folia: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.uszlachetnienie_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
       </div>
       <div className={style.rightHeaderContener}>
 

@@ -16,6 +16,7 @@ import iconDiagnostyka from 'assets/diagnostyka.svg'
 import iconInspekcja from 'assets/inspekcja.svg'
 import iconOddanie from 'assets/iconOddanie2.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
+import iconWykres from "assets/wykres.svg";
 
 import iconKalendarz from 'assets/iconKalendarz.svg'
 
@@ -70,7 +71,8 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                                 <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
                                 <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
                                 <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/>
+                                {/* <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/> */}
+                                <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
                         {/* <PodgladRealizacji loading={loading}/> */}

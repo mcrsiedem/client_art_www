@@ -22,6 +22,7 @@ import Proceosory from "./components/procesory/Procesory";
 import Klienci from "./components/klienci/Klienci";
 function RealizacjeZestawienie() {
   const contextModal = useContext(ModalInsertContext);
+  const appContext = useContext(AppContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
   const navigate = useNavigate();
@@ -60,7 +61,10 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   }
 
   useEffect(() => {
-    // checkToken();
+    appContext.setRealizacjeZestawienie([]);
+    appContext.setRealizacjeZestawienieGrupy([]);
+appContext.setRealizacjeZestawienieProcesory([]);
+    appContext.setRealizacjeZestawienieKlienci([]);
   }, []);
 
   return (

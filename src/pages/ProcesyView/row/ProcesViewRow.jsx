@@ -30,6 +30,7 @@ import AddDostepnoscPapieruInfo from "./components/addDostepnoscPapieruInfo/AddD
 import { updateAddPrzerwaMagic } from "actions/updateAddPrzerwaMagic";
 import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 
+import iconCzas from "assets/kalendarz2.svg";
 
 
 export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
@@ -166,8 +167,6 @@ if (grup.select) return style.procesRow_select
 
           //-------------------------------------------
 
-
-
                   onDrop={()=> {
                       if(wolno()){
                         handleDrop(grup.global_id,grup.procesor_id)
@@ -196,7 +195,10 @@ if (grup.select) return style.procesRow_select
                   <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert_dzien: style.td_tableProcesy_poczatek_dzien}>{formatujDateZGodzinaIDniemTygodniaPoPolsku(grup.poczatek)}</td>
                   <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
                   <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
-                  <KoniecGrupa grup={grup}/>
+                  <td className={style.td_tableProcesy_poczatek}>{grup.koniec}</td>
+                  {/* <KoniecGrupa grup={grup}/> */}
+                  <Czas grup={grup}/>
+
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu+" "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ.substring(0,1):typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot  } </td>
                   <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
@@ -209,7 +211,6 @@ if (grup.select) return style.procesRow_select
                   <Papier setShow={setShow} grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
-                  {/* <Status grup={grup}/> */}
                   {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
                   <td></td>
                  
@@ -219,29 +220,7 @@ if (grup.select) return style.procesRow_select
                   <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
                   
 
-{/*                 
-                {expand ? (
-                wykonaniaAll
-                .filter((el) => el.grupa_id == grup.id && el.technologia_id == grup.technologia_id && grup.typ_grupy!=3)
-                .map((row) => {
-                  return (
-                    <tr  key={row.global_id}>
-                      <td></td>
-                      <td>{row.czas}</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  );
-                })
-            ) : (<></>)}    */}
+
 </>
   );
 
@@ -335,43 +314,6 @@ if(dyspersja.includes(parseInt(grup.global_proces_id)))
 
 
 
-
-
-
-function SelectBox({ grup }) {
-  const appContext = useContext(AppContext);
-  const zamowienia = appContext.zamowienia;
-  const setZamowienia = appContext.setZamowienia;
-   const techContext = useContext(TechnologyContext);
-    const grupyWykonanAll = techContext.grupyWykonanAll;
-    const setGrupWykonanAll = techContext.setGrupWykonanAll;
-    
-
-  return (
-    <td className={style.td_tableProcesy_ch_box}>
-      <div>
-        <input
-        className={style.ch_box}
-          type="checkbox"
-          checked={grup.select}
-          onChange={(event) => {
-            console.log(" select" + grup.global_id + " " + event.target.checked);
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                if (t.global_id == grup.global_id) {
-                  return { ...grup, select: event.target.checked };
-                } else {
-                  return t;
-                }
-              })
-            );
-          }}
-        ></input>
-      </div>
-    </td>
-  );
-}
-
 const KoniecGrupa = ({ grup }) => {
   const techContext = useContext(TechnologyContext);
   const updateWykonanie = techContext.updateWykonanie;
@@ -400,6 +342,38 @@ updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyA
     </td>
   );
 };
+
+
+
+const Czas = ({ grup }) => {
+  const techContext = useContext(TechnologyContext);
+  const updateWykonanie = techContext.updateWykonanie;
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
+  return (
+        <td className={style.td_tableProcesy_kalendarz}>
+
+      <img
+            className={style.iconSettings}
+            src={iconCzas}
+            onClick={() => {
+              // if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+              // contextApp.setIsLoading(true);
+              // techContext.fechparametry(row?.id);
+              // // techContext.setShowTechnologyStage(true);
+              // techContext.setRowZamowienia(row);
+              // setShowProcesy(false)
+              // }
+        
+            }}
+            alt="Procesy"
+          />
+    </td>
+  );
+};
+
+
+
+
 
 
 function Status({grup}) {

@@ -48,7 +48,8 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
                   <td className={style.td_tableProcesy_poczatek}>{ grup.poczatek}</td>
 
         <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td>
-        <KoniecGrupa grup={grup} />
+        {/* <KoniecGrupa grup={grup} /> */}
+                  <td className={style.td_tableProcesy_poczatek}>{ grup.koniec}</td>
         
                  
         

@@ -13,6 +13,7 @@ import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { updateZmienCzasTrwaniaGrupyPrzerwa } from "actions/updateZmienCzasTrwaniaGrupyPrzerwa";
 import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
+import Czas from "./components/Czas";
 
 
 export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable }) {
@@ -47,7 +48,8 @@ export default function ProcesViewRowPrzerwa({ grup,unlockTable, setUnlockTable 
 
                   <td className={style.td_tableProcesy_poczatek}>{ grup.poczatek}</td>
 
-        <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td>
+        {/* <td className={style.td_tableProcesy_czas} >{zamienNaGodziny(grup.czas)} </td> */}
+        <Czas grup={grup}/>
         {/* <KoniecGrupa grup={grup} /> */}
                   <td className={style.td_tableProcesy_poczatek}>{ grup.koniec}</td>
         

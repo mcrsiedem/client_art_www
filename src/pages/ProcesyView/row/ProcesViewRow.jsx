@@ -31,6 +31,8 @@ import { updateAddPrzerwaMagic } from "actions/updateAddPrzerwaMagic";
 import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 
 import iconCzas from "assets/kalendarz2.svg";
+import Kalendarz from "./components/Kalendarz";
+import Czas from "./components/Czas";
 
 
 export default function ProcesViewRow({ grup,unlockTable, setUnlockTable,i }) {
@@ -194,10 +196,12 @@ if (grup.select) return style.procesRow_select
                 >
                   <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert_dzien: style.td_tableProcesy_poczatek_dzien}>{formatujDateZGodzinaIDniemTygodniaPoPolsku(grup.poczatek)}</td>
                   <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
-                  <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td>
-                  <td className={style.td_tableProcesy_poczatek}>{grup.koniec}</td>
-                  {/* <KoniecGrupa grup={grup}/> */}
+                  {/* <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(  grup.czas) } </td> */}
                   <Czas grup={grup}/>
+
+                  <td className={style.td_tableProcesy_koniec}>{grup.koniec}</td>
+                  {/* <KoniecGrupa grup={grup}/> */}
+                  {/* <Kalendarz grup={grup}/> */}
 
                   <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2,4)}</td>
                   <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu+" "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ.substring(0,1):typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot  } </td>
@@ -342,35 +346,6 @@ updateZmienCzasTrwaniaGrupy(grup.global_id,date_time( e.target.value),fechGrupyA
     </td>
   );
 };
-
-
-
-const Czas = ({ grup }) => {
-  const techContext = useContext(TechnologyContext);
-  const updateWykonanie = techContext.updateWykonanie;
-  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-  return (
-        <td className={style.td_tableProcesy_kalendarz}>
-
-      <img
-            className={style.iconSettings}
-            src={iconCzas}
-            onClick={() => {
-              // if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
-              // contextApp.setIsLoading(true);
-              // techContext.fechparametry(row?.id);
-              // // techContext.setShowTechnologyStage(true);
-              // techContext.setRowZamowienia(row);
-              // setShowProcesy(false)
-              // }
-        
-            }}
-            alt="Procesy"
-          />
-    </td>
-  );
-};
-
 
 
 

@@ -111,6 +111,10 @@ tr:nth-of-type(2n) {
       
     }
 
+    
+
+
+
    .col_klient{
       min-width: 100px;
    }
@@ -277,6 +281,7 @@ tr:nth-of-type(2n) {
 }
 
 .th_tableProcesy_koniec{
+   /* width: 90px; */
    padding-left: 10px;
 
 }

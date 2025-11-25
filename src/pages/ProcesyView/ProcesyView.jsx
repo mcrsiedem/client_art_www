@@ -18,6 +18,7 @@ import ProcesViewRowPrzerwa from "./row/ProcesViewRowPrzerwa";
 import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 import Loading from "components/Loading/Loading";
 import { useSocket } from "context/SocketContext";
+import KalendarzPane from "./row/components/KalendarzPane/KalendarzPane";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -151,7 +152,6 @@ const WykonaniaTable = () => {
               <th className={style.th_tableProcesy_poczatek}> Początek</th>
               <th className={style.th_tableProcesy_czas}> Czas</th>
               <th className={style.th_tableProcesy_koniec}> Koniec</th>
-              <th className={style.th_tableProcesy_koniec}></th>
               <th >Nr</th>
               <th ></th>
               <th> Klient</th>
@@ -204,6 +204,7 @@ const WykonaniaTable = () => {
         </table>
       </div>
       <Loading/>
+      <KalendarzPane/>
     </div>
   );
 };

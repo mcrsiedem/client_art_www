@@ -35,7 +35,7 @@ export default function KalendarzPane({ setShow, show, wykonanie,value, setValue
 function Header() {
   return (
     <div className={style.header}>
-      <p className={style.title}>Zmień czas </p>
+      <p className={style.title}>Data zakończenia</p>
       <Zamknij  />
     </div>
   );

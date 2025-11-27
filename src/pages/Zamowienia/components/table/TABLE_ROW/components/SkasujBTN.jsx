@@ -8,7 +8,7 @@ export default function SkasujBTN({row}) {
    const {refreshZamowienia,deleteZamowienie} = useZamowienia();
  
 
-//  if(DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj   == 1){
+ if(DecodeToken(sessionStorage.getItem("token")).zamowienie_skasuj   == 1){
  if(row.stan ==1 || row.stan==2){
   return (
             <button onClick={()=>{
@@ -17,5 +17,7 @@ deleteZamowienie([row])
         }}className={style.btn_zamowienia_menu_row_red} >Usuń</button>
   );
  }
+
+}
   
 }

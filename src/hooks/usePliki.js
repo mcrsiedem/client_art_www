@@ -70,10 +70,15 @@ export   function usePliki() {
         const zamowienie_id = grupaWykonan.zamowienie_id
         const element_id= grupaWykonan.element_id
         const global_id_grupa_row= grupaWykonan.global_id
+        const technologia_id = grupaWykonan.technologia_id
+        const naswietlenia = grupaWykonan.naswietlenia
 
         let token = sessionStorage.getItem("token")
         let api = IP + "updatePlikiEtapGrupyWykonan/" + token
         let dane = {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap}
+
+        let dane2 = {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap,technologia_id,naswietlenia}
+
 
         const res1 = await axios.put(api,dane);
 

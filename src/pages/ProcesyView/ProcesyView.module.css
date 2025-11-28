@@ -1,218 +1,139 @@
-
-.main{
+.main {
    display: grid;
    grid-template-rows: 50px 1fr 60px;
-   /* background-color: #e74a3b; */
-  
+
 }
 
-.container{
+.container {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   
-   
 
-/* background-color: lightcyan; */
-/* width: 700px; */
 }
 
-.tableContainer{
-   /* padding-top: 50px; */
-  height: calc(100vh - 120px);
- width: 100vw;
-
-  /* min-width: 100vw; */
-  min-width: 95vw;
-
-   /* max-height: 300px;  */
+.tableContainer {
+   height: calc(100vh - 120px);
+   width: 100vw;
+   min-width: 95vw;
    overflow: auto;
-
-
 }
 
-.szczegoly{
+.szczegoly {
    background-color: gray;
-  
-}
-/* .btn_procesor{
-   width: 50px;
-   height: 35px;
-   font-size: 0.5rem;
-   font-weight: bold;
-   color: rgb(219, 219, 219);
-   border: 1.5px solid rgb(72, 72, 72);
-   background-color: var(--art-input);
-   border-radius: 10px;
 
 }
 
-.btn_procesor:hover{
-   background-image: linear-gradient(#383838 0%, #3a3333 80%);
-
-} */
 
 
-.tableProcesy th{
+.tableProcesy th {
    font-size: 0.9rem;
    position: sticky;
-   top:0;
-   /* background: #3f3f3f; */
+   top: 0;
    height: 2rem;
-   /* padding-left: 20px; */
    z-index: 2;
-   /* background: rgb(70, 69, 69); */
-    /* background:rgb(44, 44, 44); */
-    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
-
-    
-
-    /* background-image: linear-gradient(rgb(70, 69, 69)0%, black 80%); */
-    /* background-image: linear-gradient(black 0%, rgb(70, 69, 69) 80%); */
-
-
-  color: #828282;
-  color: #2c2c2c;
-
-  /* border-radius: 30px; */
-  /* outline: 1px solid rgb(167, 0, 0); */
-
+   background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+   -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.2), 2, 0.0, 0, 1);
+   color: #828282;
+   color: #2c2c2c;
 }
 
 
 
 tr:nth-of-type(2n) {
-   /* background: #dbdad6; */
    background: #f7f6f6;
 }
 
 
-/* tr{
- outline: 1px solid #e7e6e3;
-} */
-/* tr:hover{
+.alert {
+   background: red;
+}
 
-   outline: 1px solid #a5a4a2;
-} */
-
-.alert{ background:red; }
-
-.alert2{ background: green; }
+.alert2 {
+   background: green;
+}
 
 .bgdanger {
    background-color: #e74a3b;
-   background-image: linear-gradient(180deg,#e74a3b 10%,#be2617 100%);
+   background-image: linear-gradient(180deg, #e74a3b 10%, #be2617 100%);
    background-size: cover;
 }
 
 
-   .iconSettings{ width: 15px;
-      
-    }
+.iconSettings {
+   width: 15px;
 
-    
+}
 
+.col_klient {
+   min-width: 100px;
+}
 
+.col_karta {
+   min-width: 10px;
+}
 
-   .col_klient{
-      min-width: 100px;
-   }
+.col_button {
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   border: none;
+}
 
-   .col_karta{
-      min-width: 10px;
+.td_checkbox {
+   border: none;
+}
 
-
-   }
-
-   .col_button{
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      border: none;
-      /* padding-top: 10px; */
-
-     
-   }
-
-   .td_checkbox{
-
-      border: none;
-
-   }
-   .th_checkbox{
- 
-
-   }
+.th_checkbox {}
 
 
-   .td_karta{
+.td_karta {
+   border: none;
+}
 
-      border: none;
+.th_karta {
+   width: 30px;
 
-   }
-   .th_karta{
- width: 30px;
-
-   }
+}
 
 
 
-.iconMenuBtn{
+.iconMenuBtn {
    width: 18px;
 }
 
-/* .table th
-{
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
-
-} */
-
 .table tr:nth-child(even) {
-  /* background-color:  rgb(238, 238, 238); */
-  color: rgb(61, 61, 61);
-  font-size: 0.9rem;
-  outline-style: none;
-  border-bottom: 1px solid rgb(192, 191, 191)  ;
-
+   color: rgb(61, 61, 61);
+   font-size: 0.9rem;
+   outline-style: none;
+   border-bottom: 1px solid rgb(192, 191, 191);
 }
-
-
 
 .table tr:nth-child(odd) {
-  /* background-color: red; */
-  outline-style: none;
-  font-size: 1rem;
-  border-bottom: 1px solid rgb(192, 191, 191) ;
+   outline-style: none;
+   font-size: 1rem;
+   border-bottom: 1px solid rgb(192, 191, 191);
 }
 
-
-.procesor_btn_main{
+.procesor_btn_main {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100vw;
    height: 100%;
    gap: 15px;
-/* background-color: rgb(165, 162, 3);   */
-
 }
 
-
-.procesor_btn_center{
+.procesor_btn_center {
    display: flex;
    justify-content: center;
    align-items: center;
    gap: 15px;
    width: 80vw;
-   /* background-color: antiquewhite; */
    overflow: auto;
 }
 
-
-.procesor_btn_right{
+.procesor_btn_right {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -221,9 +142,7 @@ tr:nth-of-type(2n) {
 }
 
 
-
-
-.btn_procesor{
+.btn_procesor {
    background-color: var(--art-input);
    border-radius: 10px;
    border: none;
@@ -231,77 +150,72 @@ tr:nth-of-type(2n) {
    font-size: bold;
    color: gray;
    font-size: 0.9rem;
-   padding: 5px;;
-      padding-left: 10px;
-   padding-right: 10px;
-}
-
-.btn_procesor:hover{
-   background-color: #383838;
-   border-radius: 10px;
-   border: none;
-   min-width: 100px;
-   color: rgb(204, 203, 203);
-   font-size: 0.9rem;
-   padding: 5px;;
-      padding-left: 10px;
-   padding-right: 10px;
-}
-
-.btn_procesor_selected{
-
-   background-color: #383838;
-   border-radius: 10px;
-   border: none;
-   min-width: 100px;
-   color: rgb(204, 203, 203);
-   font-size: 0.9rem;
-   padding: 5px;;
+   padding: 5px;
    padding-left: 10px;
    padding-right: 10px;
-   
 }
 
-.select{
+.btn_procesor:hover {
+   background-color: #383838;
+   border-radius: 10px;
+   border: none;
+   min-width: 100px;
+   color: rgb(204, 203, 203);
+   font-size: 0.9rem;
+   padding: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.btn_procesor_selected {
+
+   background-color: #383838;
+   border-radius: 10px;
+   border: none;
+   min-width: 100px;
+   color: rgb(204, 203, 203);
+   font-size: 0.9rem;
+   padding: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.select {
    border: none;
    background-color: transparent;
    padding-top: 3px;
 }
 
 
-.th_tableProcesy_poczatek{
+.th_tableProcesy_poczatek {
    padding-left: 10px;
 }
 
-.th_tableProcesy_czas{
-   /* padding-left: 10px; */
-   width:10px;
+.th_tableProcesy_czas {
+   width: 10px;
    background-color: red;
-
 }
 
-.th_tableProcesy_koniec{
-   /* width: 90px; */
+.th_tableProcesy_koniec {
    padding-left: 10px;
-
 }
 
-.th_tableProcesy_praca{
+.th_tableProcesy_praca {
    width: 300px;
 }
 
-.th_tableProcesy_papier_rodzaj{
+.th_tableProcesy_papier_rodzaj {
    width: 350px;
 }
 
-
-.th_tableProcesy_przeloty{
+.th_tableProcesy_przeloty {
    width: 70px;
 }
 
-.th_tableProcesy_naklad{
+.th_tableProcesy_naklad {
    width: 70px;
 }
-.th_tableProcesy_ark{
+
+.th_tableProcesy_ark {
    width: 40px;
 }

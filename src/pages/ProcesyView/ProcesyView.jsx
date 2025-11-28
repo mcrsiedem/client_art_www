@@ -163,6 +163,7 @@ const WykonaniaTable = () => {
               <th className={style.th_tableProcesy_ark}> Ark.</th>
               <th className={style.th_tableProcesy_papier_rodzaj}> </th>
               {selectedProces == 1 ? <th className={style.th_tableProcesy_praca}>Papier </th> : <th ></th>}
+              {selectedProces == 1 ? <th>Naświetlenia </th> : <></>}
               {selectedProces == 1 ? <th>Pliki </th> : <></>}
               {selectedProces != 1 ? <th>Status </th> : <></>}
               <th > </th>

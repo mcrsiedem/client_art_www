@@ -188,7 +188,7 @@ if (grup.select) return style.procesRow_select
                   <td className={style.td_tableProcesy_przeloty}>{grup.ilosc_narzadow} </td>
                   <Papier setShow={setShow} grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
-                  {grup.typ_grupy != 1 && selectedProces==1?  <>s</> : <></>}
+                  {grup.typ_grupy != 1 && selectedProces==1?  <>{grup.naswietlenia || "-"}</> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
                   <td></td>

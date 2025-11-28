@@ -71,7 +71,11 @@ export   function usePliki() {
         const element_id= grupaWykonan.element_id
         const global_id_grupa_row= grupaWykonan.global_id
 
-        const res1 = await axios.put(IP + "updatePlikiEtapGrupyWykonan/" + sessionStorage.getItem("token"), {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap});
+        let token = sessionStorage.getItem("token")
+        let api = IP + "updatePlikiEtapGrupyWykonan/" + token
+        let dane = {zamowienie_id,element_id,global_id_grupa_row,etap,stary_etap}
+
+        const res1 = await axios.put(api,dane);
 
        
           // jeßli update OK status == 200 aktualizacja stanu bez odßwieæania całości

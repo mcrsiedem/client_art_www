@@ -19,6 +19,7 @@ import { dragdropProcesGrupaMulti } from "actions/dragdropProcesGrupaMulti";
 import Loading from "components/Loading/Loading";
 import { useSocket } from "context/SocketContext";
 import KalendarzPane from "./row/components/KalendarzPane/KalendarzPane";
+import NaswietleniaPane from "./row/components/NaswietleniaPane/NaswietleniaPane";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -206,6 +207,7 @@ const WykonaniaTable = () => {
       </div>
       <Loading/>
       <KalendarzPane/>
+      <NaswietleniaPane/>
     </div>
   );
 };

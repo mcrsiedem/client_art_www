@@ -417,7 +417,9 @@ function Etap({grup}) {
         className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-            etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
+          techContext.setSelectedGrupaTechROW(grup)
+techContext.setShowNaswietlenia(true)
+            // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);

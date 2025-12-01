@@ -88,7 +88,7 @@ export   function usePliki() {
                   setGrupWykonanAll(
                     grupyWykonanAll.map((t) => {
                       if (t.global_id == grupaWykonan.global_id) {
-                        return { ...t, zamowienia_pliki_etap: etap };
+                        return { ...t, zamowienia_pliki_etap: etap ,naswietlenia: grupaWykonan.naswietlenia};
                       } else {
                         return t;
                       }

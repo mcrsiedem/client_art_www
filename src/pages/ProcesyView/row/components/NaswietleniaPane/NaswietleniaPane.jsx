@@ -10,7 +10,7 @@ export default function NaswietleniaPane() {
   const techContext = useContext(TechnologyContext);
   const [data, setData] = useState(techContext.selectedGrupaTechROW.koniec);
   // const [iloscNarzadow, setIloscNarzadow] = useState(techContext.selectedGrupaTechROW.ilosc_narzadow);
-const [naswietlenia,setNaswietlenia] = useState(parseInt(techContext.selectedGrupaTechROW.ilosc_narzadow)*8);
+const [naswietlenia,setNaswietlenia] = useState();
 
   if (techContext.showNaswietlenia) {
     return (
@@ -63,13 +63,15 @@ const Naswietlenia = ({ naswietlenia,setNaswietlenia }) => {
         disabled= {false}
         className={style.data_input}
         // type="datetime-local"
-        value={ naswietlenia}
+        value={ techContext.selectedGrupaTechROW.ilosc_narzadow*8}
         onChange={(e) => {
 
           if (e.target.value != "" ) {
             setNaswietlenia(e.target.value)
             // setData(e.target.value)
-            techContext.setSelectedGrupaTechROW({...techContext.selectedGrupaTechROW, naswietlenia: e.target.value})
+            // techContext.setSelectedGrupaTechROW({...techContext.selectedGrupaTechROW, naswietlenia: e.target.value})
+
+
           }
         }}
       ></input>

@@ -26,6 +26,8 @@ import AddDostepnoscPapieruInfo from "./components/addDostepnoscPapieruInfo/AddD
 import { updateAddPrzerwaMagic } from "actions/updateAddPrzerwaMagic";
 
 import Czas from "./components/Czas";
+import TytulProcesGrup from "./components/TytulProcesGrup";
+import DyspersjaGrupa from "./components/DyspersjaGrupa";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -237,45 +239,8 @@ if (grup.select) return style.procesRow_select
 
 }
 
-const TytulProcesGrup = ({ grup }) => {
-  //nazwa_elementu
-  return (
-    <td>
-    <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={grup.Praca}
-      className={style.tytulInput}
-      value={grup.nr_stary+ " "+grup.tytul +' '+grup.nazwa_elementu}
-      readOnly
-
-    />
-    </td>
-  );
-};
-
-const DyspersjaGrupa = ({ grup }) => {
-const dyspersja = [2,3,5,6,12,13]
-const uv = [15,17]
 
 
-if(uv.includes(parseInt(grup.global_proces_id)))
-{
-   return (
-    <td title="Klisza" className={style.td_tableProcesy_dyspersja}>K </td>)
-
-   }
-
-if(dyspersja.includes(parseInt(grup.global_proces_id)))
-{
-   return (
-    <td title="Dyspersja" className={style.td_tableProcesy_nr_stary}>D </td>)
-
-}else {
-  return( <td className={style.td_tableProcesy_nr_stary}> </td>)
-}
- 
- 
-};
 
 function Status({grup}) {
   const contextApp = useContext(AppContext);

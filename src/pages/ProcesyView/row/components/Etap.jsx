@@ -33,19 +33,17 @@ export default function Etap({grup,setShowNaswietlenia}) {
   }
 
   return (
-<td className={style.td_tableProcesy_pliki}>
+    <td className={style.td_tableProcesy_pliki}>
       <select
-        className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
+        className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-          techContext.setSelectedGrupaTechROW(grup)
-setShowNaswietlenia(true)
-            // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
+          techContext.setSelectedGrupaTechROW(grup);
+          setShowNaswietlenia(true);
+          // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
-        
-
         }}
       >
         {_etap_plikow.map((option) => (
@@ -54,7 +52,6 @@ setShowNaswietlenia(true)
           </option>
         ))}
       </select>
-      </td>
-
+    </td>
   );
 }

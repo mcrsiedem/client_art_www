@@ -76,7 +76,7 @@ const Naswietlenia = ({ naswietlenia,setNaswietlenia }) => {
 const Zastosuj = ({ naswietlenia,setShowNaswietlenia }) => {
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
-    const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
+  const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
   
   return (
  

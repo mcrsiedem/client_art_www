@@ -101,7 +101,6 @@ export const TechnologyContextProvider = ({children})=>{
         const [dniWstecz, setDniWstecz] = useState();
         const [gantStageGrupy, setGantStageGrupy] = useState();
         const [showKalendarz, setShowKalendarz] = useState(false);
-        const [showNaswietlenia, setShowNaswietlenia] = useState(false);
 
 
 
@@ -905,8 +904,7 @@ async function fechTechnology() {
                     sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy,
                     realizacje, setRealizacje,
                     gantStageGrupy, setGantStageGrupy,multiSelect, setMultiSelect,
-                    showKalendarz, setShowKalendarz,
-                    showNaswietlenia, setShowNaswietlenia
+                    showKalendarz, setShowKalendarz
                 }}
             >
                 {children}

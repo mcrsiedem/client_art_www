@@ -29,6 +29,7 @@ import Przeloty from "./components/Przeloty";
 import Narzady from "./components/Narzady";
 import NaswietleniaIlosc from "./components/NaswietleniaIlosc";
 import { onMouseDownHandler } from "./components/actions/onMouseDownHandler";
+import NaswietleniaPane from "./components/NaswietleniaPane/NaswietleniaPane";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -44,45 +45,48 @@ export default function ProcesViewRow({ grup,i }) {
     const [wolno] = useAccess(false);
     const [onContextMenuHanlder] = useContextMenuHandler(false);
     const {handleDrop,handleDragOver,handleDragStart} = useDragDrop(false);
+    const [showNaswietlenia, setShowNaswietlenia] = useState(false);
+
 
   return (
 <>
-  <tr
-    title={"Grupa global_id: " +grup.global_id + "Grupa id: " +grup.id +" Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark."+" technologia_id" + grup.technologia_id +" Status" + grup.status +" Oprawa główna: "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ }
-    draggable={wolno()}
-    key={grup.global_id}
-    onMouseDown={(event) => { onMouseDownHandler(event,grupyWykonanAll,setGrupWykonanAll,selectedProcesor,grup,i)}}
-    onDrop={()=> {if(wolno()){handleDrop(grup.global_id,grup.procesor_id)}}}
-    onDragOver={handleDragOver}
-    onContextMenu={(event) => onContextMenuHanlder(event,grup)}
-    onDragStart={() => {if(wolno()){handleDragStart(grup.global_id,grup.typ_grupy)} }}
-    className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
-    onDoubleClick={() => {if(grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}}}
-  >
-    
-    <Dzien grup={grup} style={style}/>
-    <Poczatek grup={grup}/>
-    <Czas grup={grup}/>
-    <Koniec grup={grup}/>
-    <Nr grup={grup}/>
-    <Element grup={grup} selectedProces={selectedProces} procesList={appcontext.procesList} typ_elementu={appcontext.typ_elementu}/>
-    <Klient grup={grup}/>
-    <TytulProcesGrup grup={grup}/>
-    <DyspersjaGrupa grup={grup}/>
-    <Naklad grup={grup}/>
-    <Spedycja grup={grup}/>
-    <Przeloty grup={grup}/>
-    <Narzady grup={grup}/>
-    <Papier setShow={setShow} grup={grup}/>
-    {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
-    {grup.typ_grupy != 1 && selectedProces==1?  <NaswietleniaIlosc grup={grup}/> : <></>}
-    {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
-    {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
-    <td></td>
-    
-  </tr>
+    <tr
+      title={"Grupa global_id: " +grup.global_id + "Grupa id: " +grup.id +" Prędkość : "+grup.predkosc+" ark/h "+" Przeloty: "+ grup.przeloty +" ark."+" technologia_id" + grup.technologia_id +" Status" + grup.status +" Oprawa główna: "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ }
+      draggable={wolno()}
+      key={grup.global_id}
+      onMouseDown={(event) => { onMouseDownHandler(event,grupyWykonanAll,setGrupWykonanAll,selectedProcesor,grup,i)}}
+      onDrop={()=> {if(wolno()){handleDrop(grup.global_id,grup.procesor_id)}}}
+      onDragOver={handleDragOver}
+      onContextMenu={(event) => onContextMenuHanlder(event,grup)}
+      onDragStart={() => {if(wolno()){handleDragStart(grup.global_id,grup.typ_grupy)} }}
+      className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
+      onDoubleClick={() => {if(grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}}}
+    >
+      <Dzien grup={grup} style={style}/>
+      <Poczatek grup={grup}/>
+      <Czas grup={grup}/>
+      <Koniec grup={grup}/>
+      <Nr grup={grup}/>
+      <Element grup={grup} selectedProces={selectedProces} procesList={appcontext.procesList} typ_elementu={appcontext.typ_elementu}/>
+      <Klient grup={grup}/>
+      <TytulProcesGrup grup={grup}/>
+      <DyspersjaGrupa grup={grup}/>
+      <Naklad grup={grup}/>
+      <Spedycja grup={grup}/>
+      <Przeloty grup={grup}/>
+      <Narzady grup={grup}/>
+      <Papier setShow={setShow} grup={grup}/>
+      {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
+      {grup.typ_grupy != 1 && selectedProces==1?  <NaswietleniaIlosc grup={grup}/> : <></>}
+      {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup} setShowNaswietlenia={setShowNaswietlenia}/> : <></>}
+      {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
+      <td></td>
+      
+    </tr>
     <ProcesRowDetails grup={grup}  mini={false}/>
     <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
+    <NaswietleniaPane showNaswietlenia={showNaswietlenia} setShowNaswietlenia={setShowNaswietlenia} />
+
 </>
   );
 

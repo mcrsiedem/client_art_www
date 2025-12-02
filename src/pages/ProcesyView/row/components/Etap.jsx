@@ -11,7 +11,7 @@ import { useHistoria } from "hooks/useHistoria";
 
 
 
-export default function Etap({grup}) {
+export default function Etap({grup,setShowNaswietlenia}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
 
@@ -39,7 +39,7 @@ export default function Etap({grup}) {
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
           techContext.setSelectedGrupaTechROW(grup)
-techContext.setShowNaswietlenia(true)
+setShowNaswietlenia(true)
             // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)

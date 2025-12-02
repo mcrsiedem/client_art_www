@@ -207,7 +207,6 @@ const WykonaniaTable = () => {
       </div>
       <Loading/>
       <KalendarzPane/>
-      <NaswietleniaPane/>
     </div>
   );
 };

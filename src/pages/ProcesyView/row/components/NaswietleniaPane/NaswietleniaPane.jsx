@@ -2,26 +2,21 @@ import React, { useState, useContext } from "react";
 import style from "./NaswietleniaPane.module.css";
 import iconX from "assets/x.svg";
 import { TechnologyContext } from "context/TechnologyContext";
-import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
-import { date_time } from "actions/date_time";
-import { updateZmienCzasTrwaniaGrupyPrzerwa } from "actions/updateZmienCzasTrwaniaGrupyPrzerwa";
 import { usePliki } from "hooks/usePliki";
-export default function NaswietleniaPane() {
+export default function NaswietleniaPane({showNaswietlenia,setShowNaswietlenia}) {
   const techContext = useContext(TechnologyContext);
-  const [data, setData] = useState(techContext.selectedGrupaTechROW.koniec);
-  // const [iloscNarzadow, setIloscNarzadow] = useState(techContext.selectedGrupaTechROW.ilosc_narzadow);
 const [naswietlenia,setNaswietlenia] = useState();
 
-  if (techContext.showNaswietlenia) {
+  if (showNaswietlenia) {
     return (
       <div className={style.grayScaleBackground}>
         <div className={style.window}>
-          <Header> </Header>
+          <Header setShowNaswietlenia={setShowNaswietlenia}> </Header>
           <div className={style.center}>
             <Naswietlenia naswietlenia={naswietlenia} setNaswietlenia={setNaswietlenia}  />
           </div>
           <div className={style.footer}>
-            <Zastosuj naswietlenia={naswietlenia}  />
+            <Zastosuj naswietlenia={naswietlenia}  setShowNaswietlenia={setShowNaswietlenia} />
           </div>
         </div>
       </div>
@@ -29,15 +24,15 @@ const [naswietlenia,setNaswietlenia] = useState();
   }
 }
 
-function Header() {
+function Header({setShowNaswietlenia}) {
   return (
     <div className={style.header}>
       <p className={style.title}>Naświetlenia</p>
-      <Zamknij  />
+      <Zamknij setShowNaswietlenia={setShowNaswietlenia} />
     </div>
   );
 }
-function Zamknij() {
+function Zamknij({setShowNaswietlenia}) {
   const techContext = useContext(TechnologyContext);
 
   return (
@@ -45,7 +40,7 @@ function Zamknij() {
       className={style.zamknij_icon}
       src={iconX}
       onClick={() => {
-         techContext.setShowNaswietlenia(false)
+       setShowNaswietlenia(false)
       }}
       alt="Procesy"
     />
@@ -78,7 +73,7 @@ const Naswietlenia = ({ naswietlenia,setNaswietlenia }) => {
   );
 };
 
-const Zastosuj = ({ naswietlenia }) => {
+const Zastosuj = ({ naswietlenia,setShowNaswietlenia }) => {
   const techContext = useContext(TechnologyContext);
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
     const [etapPlikow,etapPlikowGrupyWykonan] = usePliki()
@@ -100,7 +95,7 @@ const Zastosuj = ({ naswietlenia }) => {
 etapPlikowGrupyWykonan(naswietlenia,techContext.selectedGrupaTechROW,techContext.selectedGrupaTechROW.zamowienia_pliki_etap)
 // techContext.setSelectedGrupaTechROW({...techContext.selectedGrupaTechROW, naswietlenia: naswietlenia})
            
-techContext.setShowNaswietlenia(false)
+setShowNaswietlenia(false)
           
         }}
       >Dodaj</button>

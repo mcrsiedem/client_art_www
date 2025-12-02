@@ -5,9 +5,7 @@ import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _status } from "utils/initialvalue";
 import { useAccess } from "hooks/useAccess";
-import { druk_alert } from "actions/druk_alert";
 import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
-import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
 import { useContextMenuHandler } from "./useContextMenuHandler";
 import ProcesRowDetails from "components/ProcesRowDetails/ProcesRowDetails";
 import Papier from "./components/Papier";
@@ -21,6 +19,17 @@ import WydaniePapieruStatus from "./components/WydaniePapieruStatus";
 import Status from "./components/Status";
 import { selectColor } from "./components/actions/selectColor";
 import { useDragDrop } from "./components/actions/useDragDrop";
+import Poczatek from "./components/Poczatek";
+import Koniec from "./components/Koniec";
+import Dzien from "./components/Dzien";
+import Nr from "./components/Nr";
+import Element from "./components/Element";
+import Klient from "./components/Klient";
+import Naklad from "./components/Naklad";
+import Spedycja from "./components/Spedycja";
+import Przeloty from "./components/Przeloty";
+import Narzady from "./components/Narzady";
+import NaswietleniaIlosc from "./components/NaswietleniaIlosc";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -31,9 +40,9 @@ export default function ProcesViewRow({ grup,i }) {
     const grupyWykonanAll = techContext.grupyWykonanAll;
     const selectedProcesor = techContext.selectedProcesor;
     const setGrupWykonanAll = techContext.setGrupWykonanAll;
+    const fechparametryTechnologii = techContext.fechparametryTechnologii;
     const [show, setShow] = useState(false);
     const [value, setValue] = useState();
-    const fechparametryTechnologii = techContext.fechparametryTechnologii;
     const [wolno] = useAccess(false);
     const [onContextMenuHanlder] = useContextMenuHandler(false);
     const {handleDrop,handleDragOver,handleDragStart} = useDragDrop(false);
@@ -97,54 +106,37 @@ export default function ProcesViewRow({ grup,i }) {
           }}
 
           //-------------------------------------------
-                  onDrop={()=> {
-                      if(wolno()){
-                        handleDrop(grup.global_id,grup.procesor_id)
-                      }
-                  }
-                  }
+                  onDrop={()=> {if(wolno()){handleDrop(grup.global_id,grup.procesor_id)}}}
                   onDragOver={    handleDragOver                          }
                   onContextMenu={(event) => onContextMenuHanlder(event,grup)}
-          
-                  onDragStart={() => {
-
-                    if(wolno()){
-                      handleDragStart(grup.global_id,grup.typ_grupy)
-                    }
-                               
-                  }}
-                 className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
-                  onDoubleClick={() => {
-         
-                      if(grup.typ_grupy != 1 ){
-                        fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
-                      }
-                    
-                  }}
+                  onDragStart={() => {                    if(wolno()){                      handleDragStart(grup.global_id,grup.typ_grupy)                    } }}
+                  className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
+                  onDoubleClick={() => {if(grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}}}
                 >
-                  <td className={druk_alert(grup) ? style.td_tableProcesy_poczatek_alert_dzien: style.td_tableProcesy_poczatek_dzien}>{formatujDateZGodzinaIDniemTygodniaPoPolsku(grup.poczatek)}</td>
-                  <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
+
+                  
+                  <Dzien grup={grup} style={style}/>
+                  <Poczatek grup={grup}/>
                   <Czas grup={grup}/>
-                  <td className={style.td_tableProcesy_koniec}>{grup.koniec}</td>
-                  <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok?.substring(2,4)}</td>
-                  <td className={style.td_tableProcesy_nr_stary}>{selectedProces==3? grup.rodzaj_procesu+" "+appcontext.procesList?.filter(x => x.id == grup.oprawa_produktu)[0]?.typ.substring(0,1):typ_elementu?.filter(x => x.id == grup.typ_elementu)[0]?.skrot  } </td>
-                  <td className={style.td_tableProcesy_klient}>{grup.klient}</td>
+                  <Koniec grup={grup}/>
+                  <Nr grup={grup}/>
+                  <Element grup={grup} selectedProces={selectedProces} procesList={appcontext.procesList} typ_elementu={appcontext.typ_elementu}/>
+                  <Klient grup={grup}/>
                   <TytulProcesGrup grup={grup}/>
                   <DyspersjaGrupa grup={grup}/>
-                  <td className={style.td_tableProcesy_przeloty}>{grup.naklad} </td>
-                  <td className={style.td_tableProcesy_spedycja}>{formatujDatePoPolsku( grup.data_spedycji)}</td>
-                  <td className={style.td_tableProcesy_przeloty}>{grup.przeloty} </td>
-                  <td className={style.td_tableProcesy_przeloty}>{grup.ilosc_narzadow} </td>
+                  <Naklad grup={grup}/>
+                  <Spedycja grup={grup}/>
+                  <Przeloty grup={grup}/>
+                  <Narzady grup={grup}/>
                   <Papier setShow={setShow} grup={grup}/>
                   {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
-                  {grup.typ_grupy != 1 && selectedProces==1?  <>{grup.naswietlenia || "-"}</> : <></>}
+                  {grup.typ_grupy != 1 && selectedProces==1?  <NaswietleniaIlosc grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup}/> : <></>}
                   {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
                   <td></td>
                  
                 </tr>
                   <ProcesRowDetails grup={grup}  mini={false}/>
-                  
                   <AddDostepnoscPapieruInfo show={show} setShow={setShow} value={value} setValue={setValue} grup={grup}/>
 </>
   );

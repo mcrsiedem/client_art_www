@@ -239,6 +239,10 @@ const _firma = [
       id:0,
       nazwa: "Bieżące",
     },
+            {
+      id:1,
+      nazwa: "Przed drukiem",
+    },
     {
       id: 2,
       nazwa: "Harmonogram",

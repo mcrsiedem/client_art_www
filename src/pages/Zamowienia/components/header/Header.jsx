@@ -90,7 +90,8 @@ function BTN_KOPIUJ() {
 let mes='';
 
 
-            for( let grupa of zamowienia.filter(x=> x.select == true)){
+            // for( let grupa of zamowienia.filter(x=> x.select == true)){
+            for( let grupa of zamowienia){
               mes += grupa.nr+"\t"
               mes +=  grupa.stary_nr || " "+"\t"
               mes += grupa.klient+"\t"

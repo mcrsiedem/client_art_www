@@ -9,7 +9,8 @@ export function useSortowanieZamowienia(){
 
 function sortWgEtapu({ zamowienie }) {
   if (sortowanieZamowieniaEtap == 1) {
-    return zamowienie.etap > 1 && zamowienie.status != 7 ;
+    // return zamowienie.etap > 1 && zamowienie.status != 7 ;
+    return zamowienie.etap > 1 && zamowienie.etap < 8 ;
     
     // return zamowienie.etap > 1 && zamowienie.status != 7 && (zamowienie.etap == 16 && zamowienie.koszty_status == 1) ;
   }

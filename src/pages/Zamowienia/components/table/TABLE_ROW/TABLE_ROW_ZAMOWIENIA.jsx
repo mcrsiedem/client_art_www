@@ -89,7 +89,7 @@ const setShowTabs = contextModalInsert.setShowTabs
             let indeks_stop = i;
             setZamowienia(
               zamowienia
-                .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+                // .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
                 .filter((zam) => {
                   if (selectedUser == 0) {
                     return true;
@@ -105,7 +105,7 @@ const setShowTabs = contextModalInsert.setShowTabs
                     return zam.klient_id == selectedKlient;
                   }
                 })
-                .filter((zamowienie) => sortWgEtapu({ zamowienie }))
+                // .filter((zamowienie) => sortWgEtapu({ zamowienie }))
                 .map((x) => {
                   return { ...x, select: false };
                 })

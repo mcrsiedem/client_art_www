@@ -54,7 +54,7 @@ export default function TableMini({open2,setRow}){
        </thead>
        <tbody className={style.bodyContainer}>
          {zamowienia
-           .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
+          //  .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
            .filter((zam) => {
             if (selectedUser == 0) {
               return true;

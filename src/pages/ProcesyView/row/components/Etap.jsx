@@ -39,8 +39,8 @@ export default function Etap({grup,setShowNaswietlenia}) {
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
           techContext.setSelectedGrupaTechROW(grup);
-          setShowNaswietlenia(true);
-          // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
+          // setShowNaswietlenia(true);
+          etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);

@@ -42,6 +42,7 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
             className={style.iconSettings}
             src={iconAdd}
             onClick={async() => {
+              console.log("wydanie")
              await axios.post(IP + "insertWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:2});
             fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
 
@@ -57,7 +58,8 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
         className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup?.wydanie_papieru_status || 1}
         onChange={async(event) => {
-
+ console.log("wydanie2")
+ await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:event.target.value});
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
         
 

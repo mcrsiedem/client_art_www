@@ -904,7 +904,11 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
        if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, cena: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+
+
+        const cenaAsNumber = event.target.value ? parseFloat(event.target.value.replace(',', '.')) : 0;
+        
+        setDaneZamowienia({...daneZamowienia, cena: event.target.value, wartosc_zamowienia:cenaAsNumber*daneZamowienia.naklad, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
        }
         
@@ -949,9 +953,11 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       title="Nakład * cena"
       value={daneZamowienia.wartosc_zamowienia}
       onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+       const re = /^\d{0,10}(?:\,\d{0,2}){0,1}$/;
        if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+             const cenaAsNumber = daneZamowienia.cena ? parseFloat(event.target.value.replace(',', '.')) : 0;
+             const wartoscAsNumber = event.target.value  ? parseFloat(event.target.value.replace(',', '.')) : 0;
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, cena: (wartoscAsNumber / daneZamowienia.naklad).toFixed(2), status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
        }
         
       }}></input>
@@ -1016,56 +1022,54 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
   );
 }
 
-function NAKLAD( ){
-
+function NAKLAD() {
   const contextModalInsert = useContext(ModalInsertContext);
   const produkty = contextModalInsert.produkty;
   const handleUpdateRowProdukty = contextModalInsert.handleUpdateRowProdukty;
   const [setStatus] = useStatus();
-      const daneZamowienia = contextModalInsert.daneZamowienia
-      const [add] = useHistoria()
-      const [valueIN,setValueIN] = useState(null)
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+  const [add] = useHistoria();
+  const [valueIN, setValueIN] = useState(null);
 
-
-
-
-  return(
-      <div className={style.col}>
+  return (
+    <div className={style.col}>
       <label className={style.label}> Nakład </label>
-      <input className={style.input} type="text"
-      // disabled
-      title="Nakład dodaj w parametrach"
-      // value={produkty[0].naklad.toLocaleString()}
-      value={produkty[0].naklad}
-      onFocus={()=>{ setValueIN(produkty[0].naklad)}}
-                onBlur={(e)=>{
-            if(valueIN != e.target.value){
-                   
-            add(         {
+      <input
+        className={style.input}
+        type="text"
+        // disabled
+        title="Nakład dodaj w parametrach"
+        // value={produkty[0].naklad.toLocaleString()}
+        value={produkty[0].naklad}
+        onFocus={() => {
+          setValueIN(produkty[0].naklad);
+        }}
+        onBlur={(e) => {
+          if (valueIN != e.target.value) {
+            add({
               kategoria: "Naklad",
-              event: " Produkt - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
-              zamowienie_id: daneZamowienia.id
-            })
-            }
-          }}
-      onChange={(e) => {
+              event:
+                " Produkt - zmiana nakladu z " +
+                valueIN +
+                " na " +
+                e.target.value +
+                " szt. ",
+              zamowienie_id: daneZamowienia.id,
+            });
+          }
+        }}
+        onChange={(e) => {
+          if (e.target.value === "" || reg_int.test(e.target.value)) {
+            handleUpdateRowProdukty({
+              ...produkty[0],
+              naklad: e.target.value,
+              update: true,
+            });
 
-                    if (e.target.value === "" || reg_int.test(e.target.value)) {
-              handleUpdateRowProdukty({
-                ...produkty[0],
-                naklad: e.target.value,
-                update: true,
-              });
-      
-              setStatus(3);
-            }
-
-
-    
-
-
-        
-      }}></input>
+            setStatus(3);
+          }
+        }}
+      ></input>
     </div>
   );
 }

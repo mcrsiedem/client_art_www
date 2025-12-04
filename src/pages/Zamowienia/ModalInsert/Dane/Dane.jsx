@@ -13,7 +13,10 @@ import axios from "axios";
 import { IP } from "utils/Host";
 import { today } from "actions/today";
 import { useStatus } from "hooks/useStatus";
-import NAKLAD from "./Naklad";
+import NAKLAD from "./components/Naklad";
+import KOSZTY from "./components/Koszty";
+import CenaZkosztami from "./components/CenaZkosztami";
+import Cena from "./components/Cena";
 export default function Dane({showAddClientStage,setShowParametryZamowienia,setShowKosztyZamowienia}) {
 
   
@@ -887,31 +890,6 @@ function ISBN( ){
 //---
 
 
-function Cena( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const produkty = contextModalInsert.produkty;
-
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Cena szt. </label>
-      <input className={style.input} type="text"
-      title="Wartość / nakład"
-
-      value={daneZamowienia.cena}
-      onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        const cenaAsNumber = event.target.value ? Number(event.target.value.replace(',', '.')) : 0;
-        setDaneZamowienia({...daneZamowienia, cena: event.target.value, wartosc_zamowienia:(cenaAsNumber*produkty[0].naklad).toFixed(2), status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
-        
-      }}></input>
-    </div>
-  );
-}
 
 
 function WARTOSC_ZAMOWIENIA( ){
@@ -941,28 +919,6 @@ const produkty = contextModalInsert.produkty;
 
 
 
-function CenaZkosztami( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const ksiegowosc = contextModalInsert.ksiegowosc;
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Cena z kosztami </label>
-      <input className={style.input_naklad} type="text"
-      title=" ( nakład * cena lub wartosc zamowienia + koszty dodatkowe) / nakład"
-      disabled
-      value={daneZamowienia.cena_z_kosztami}
-      onChange={(event) => {
-      //  const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-
-      //  if ( event.target.value === '' || re.test(event.target.value)) {
-      //   setDaneZamowienia({...daneZamowienia, cena_z_kosztami: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-      //  }
-      }}></input>
-    </div>
-  );
-}
 
 
 
@@ -990,21 +946,6 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-function KOSZTY( ){
-const contextModalInsert = useContext(ModalInsertContext);
-const ksiegowosc = contextModalInsert.ksiegowosc;
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Koszty dodatkowe</label>
-      <input className={style.input_naklad} type="text"
-      value={ksiegowosc.koszty_wartosc}
-      disabled
-      onChange={(event) => {
- 
-      }}></input>
-    </div>
-  );
-}
 
 function WARTOSC_FAKTURY( ){
 const contextModalInsert = useContext(ModalInsertContext);

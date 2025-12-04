@@ -1,4 +1,4 @@
-import style from "./Dane.module.css";
+import style from "../Dane.module.css";
 import { useContext, useState} from "react";
 import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji, reg_int } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";

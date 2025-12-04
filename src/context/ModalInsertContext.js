@@ -129,9 +129,17 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
           }
         })
       )
-       
+
+        // setDaneZamowienia({...daneZamowienia, naklad:row.naklad,wartosc_zamowienia:1});
 
 
+
+
+    };
+
+
+          const handleUpdateDane = (dane) => {
+            setDaneZamowienia(dane);
 
     };
 
@@ -310,8 +318,8 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
           ksiegowosc, setKsiegowosc,handleKosztyDodatkoweZamowienia,
           faktury, setFaktury,handleFaktury,
           procesyProduktow, setProcesyProduktow,procesyProduktowTemporary, setProcesyProduktowTemporary,
-          showProcesyProduktow, setShowProcesyProduktow,selectedOprawaRow,setSelectedOprawaRow
-      
+          showProcesyProduktow, setShowProcesyProduktow,selectedOprawaRow,setSelectedOprawaRow,
+      handleUpdateDane
 
 
 

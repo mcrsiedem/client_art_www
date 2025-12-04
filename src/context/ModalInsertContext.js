@@ -130,6 +130,9 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
         })
       )
        
+
+
+
     };
 
     const handleUpdateRowElementy = (row) => {

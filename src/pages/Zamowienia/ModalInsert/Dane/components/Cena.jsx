@@ -1,32 +1,55 @@
 import style from "../Dane.module.css";
-import { useContext} from "react";
-import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_dokumentu,_stan_dokumentu,_vat,_waluta,_rodzaj,_fsc, _etapy_produkcji } from "utils/initialvalue";
+import { useContext } from "react";
 import { ModalInsertContext } from "context/ModalInsertContext";
 
-
-export default function Cena( ){
+export default function Cena() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const produkty = contextModalInsert.produkty;
-
-  return(
-      <div className={style.col}>
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  const produkty = contextModalInsert.produkty;
+const ksiegowosc = contextModalInsert.ksiegowosc;
+  return (
+    <div className={style.col}>
       <label className={style.label}> Cena szt. </label>
-      <input className={style.input} type="text"
-      title="Wartość / nakład"
+      <input
+        className={style.input}
+        type="text"
+        title="Wartość / nakład"
+        value={daneZamowienia.cena}
+        onChange={(event) => {
+          const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
+          if (event.target.value === "" || re.test(event.target.value)) {
+            const cenaAsNumber = event.target.value
+              ? Number(event.target.value.replace(",", "."))
+              : 0;
 
-      value={daneZamowienia.cena}
-      onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        const cenaAsNumber = event.target.value ? Number(event.target.value.replace(',', '.')) : 0;
-        setDaneZamowienia({...daneZamowienia, cena: event.target.value, wartosc_zamowienia:(cenaAsNumber*produkty[0].naklad).toFixed(2), status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
-        
-      }}></input>
+              let text = `
+              wartosc: ${(cenaAsNumber * produkty[0].naklad)} 
+              koszty: ${parseFloat(ksiegowosc.koszty_wartosc) || 0}
+              koszty + wartosc:  ${(cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)} 
+              naklad: ${produkty[0].naklad }
+              cena : ${(( (cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0) )/ produkty[0].naklad ).toFixed(2)}
+
+
+              `
+              console.log(text)
+
+              let wartosc_koncowa =(cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)
+              let skonto =((parseFloat(daneZamowienia.skonto) || 0) / 100 )
+
+            setDaneZamowienia({
+              ...daneZamowienia,
+              cena: event.target.value,
+              cena_z_kosztami: (( (cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0) )/ produkty[0].naklad ).toFixed(2),
+              wartosc_zamowienia: (cenaAsNumber * produkty[0].naklad).toFixed(2),
+              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+              status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+              update: true,
+
+            });
+          }
+        }}
+      ></input>
     </div>
   );
 }
-

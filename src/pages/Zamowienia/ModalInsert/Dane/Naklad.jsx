@@ -55,10 +55,10 @@ export default function NAKLAD() {
 
 
 
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia:(wartoscAsNumber*parseInt(e.target.value)).toFixed(2), status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true}); // czemu to nie działa?
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia:(wartoscAsNumber*parseInt(e.target.value || 0)).toFixed(2) , status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true}); // czemu to nie działa?
 
 
-            setStatus(3);
+   
           }
         }}
       ></input>

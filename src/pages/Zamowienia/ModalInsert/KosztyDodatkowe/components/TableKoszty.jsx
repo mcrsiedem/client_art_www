@@ -39,8 +39,6 @@ export default function TableKoszty() {
           kosztyDodatkoweZamowienia.filter(x=>x.delete != true).map((koszt,i) => {
 
                 return (
-       
-                 
                   <tr
                     key={koszt.id}
                   >
@@ -48,22 +46,13 @@ export default function TableKoszty() {
                     <KOSZT_NAZWA koszt={koszt}/>
                     <KOSZT_ILOSC koszt={koszt} />
                     <KOSZT_CENA koszt={koszt} />
-
-                    {/* <Cena row={koszt} /> */}
                     <Suma row={koszt} />
                     <KOSZT_UWAGI koszt={koszt} />
                     <UsunKoszt koszt={koszt} />
-
-     
                   </tr>
-
                 );
               })
-              
               }
-
-
-                
                   
             </tbody>
           </table>

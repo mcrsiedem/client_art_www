@@ -66,25 +66,35 @@ export const ModalInsertContextProvider = ({children})=>{
       // console.log(row)
     };
 
-                function handleKosztyDodatkoweZamowienia(koszt) {
+function handleKosztyDodatkoweZamowienia(koszt) {
+  let koszty = kosztyDodatkoweZamowienia.map((t) => {
+    if (t.id == koszt.id) {
+      return koszt;
+    } else {
+      return t;
+    }
+  });
+  let suma = koszty
+    .filter((x) => x.delete != true)
+    .map((x) => parseFloat(x.suma.replace(/,/g, ".")))
+    .reduce((a, b) => a + b, 0)
+    .toFixed(2);
+  setKsiegowosc({ ...ksiegowosc, koszty_wartosc: suma, update: true });
+  setKosztyDodatkoweZamowienia(koszty);
 
-let koszty = kosztyDodatkoweZamowienia.map((t) => {
-                  if (t.id == koszt.id) {
-                    return koszt;
-                  } else {
-                    return t; 
-                  }
+// let skonto =((parseFloat(daneZamowienia.skonto) || 0) / 100 )
+// let wartosc_koncowa =(parseFloat(daneZamowienia.wartosc_zamowienia) || 0) + (parseFloat(koszty) || 0)
+//             setDaneZamowienia({
+//               ...daneZamowienia,       
+//               cena_z_kosztami: ((parseFloat(koszty) || 0) + (parseFloat(daneZamowienia.wartosc_zamowienia) || 0)) / (produkty[0].naklad || 1),
+//               wartosc_koncowa: (parseFloat(daneZamowienia.wartosc_zamowienia) || 0) - (wartosc_koncowa * skonto),
+//               status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+//               update: true,
 
-                })
-   let  suma = koszty.filter(x=>x.delete != true).map(x => parseFloat( x.suma.replace(/,/g, '.'))).reduce((a, b) => a + b, 0).toFixed(2)
-                setKsiegowosc({...ksiegowosc, koszty_wartosc:suma, update:true})
-
-              setKosztyDodatkoweZamowienia(koszty     );
-
-           
+//             });
 
 
-            }
+}
 
 
 

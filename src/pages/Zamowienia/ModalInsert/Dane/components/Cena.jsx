@@ -29,8 +29,6 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
               koszty + wartosc:  ${(cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)} 
               naklad: ${produkty[0].naklad }
               cena : ${(( (cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0) )/ produkty[0].naklad ).toFixed(2)}
-
-
               `
               console.log(text)
 

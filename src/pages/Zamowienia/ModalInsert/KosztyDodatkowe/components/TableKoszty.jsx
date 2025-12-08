@@ -40,7 +40,7 @@ export default function TableKoszty() {
 
                 return (
                   <tr
-                    key={koszt.id}
+                    key={koszt.global_id || i}
                   >
                     <Indeks row={koszt} i={i+1}/>
                     <KOSZT_NAZWA koszt={koszt}/>

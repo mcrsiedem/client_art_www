@@ -68,7 +68,7 @@ const {refreshZamowienia} = useZamowienia()
   //pliki
   setProcesyProduktow(res.data[13])
   
-socket.emit("realizacja")
+// socket.emit("realizacja")
   refreshZamowienia();
   dialogBox.current.hide();
 

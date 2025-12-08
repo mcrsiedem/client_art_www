@@ -28,11 +28,11 @@ console.clear();
 console.log("Zamówienie: ");
 console.log("Dane : ", daneZamowienia);
 console.log("Produkt : ", produkty);
-console.log("Elementy : ", elementy);
-console.log("Fragmenty : ", fragmenty);
-console.log("Oprawa : ", oprawa);
-console.log("Procesy elementów: ", procesyElementow);
-console.log("Faktury: ", faktury);
+// console.log("Elementy : ", elementy);
+// console.log("Fragmenty : ", fragmenty);
+// console.log("Oprawa : ", oprawa);
+// console.log("Procesy elementów: ", procesyElementow);
+// console.log("Faktury: ", faktury);
 // console.log("Pliki: ", procesyElementow);
 // console.log("Pakowanie: ", pakowanie);
 // console.log("Papiery_nazwy: ", listaPapierowNazwy);
@@ -40,7 +40,7 @@ console.log("Faktury: ", faktury);
 // console.log("Technologie do zamówienia: ", technologieID);
 // console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 // console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-// console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
 // console.log("ksiegowosc: ", ksiegowosc);
 }
 

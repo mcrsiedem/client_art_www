@@ -647,27 +647,29 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 
 
 
-function Uwagi( ){
+function Uwagi() {
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return(
-      <div className={style.col}>
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
+  return (
+    <div className={style.col}>
       <label className={style.label}> Uwagi </label>
-      <textarea className={style.input_textarea} rows="3" type="text"
-      value={daneZamowienia.uwagi}
-      onChange={(event) => {
-
-   
-        // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ./-šž,!:]+$/;
-        if ( event.target.value === '' || reg_txt.test(event.target.value)) {
-      
-          setDaneZamowienia({...daneZamowienia, uwagi: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-           
-     }
-
-      }}></textarea>
+      <textarea
+        className={style.input_textarea}
+        rows="3"
+        type="text"
+        value={daneZamowienia.uwagi}
+        onChange={(event) => {
+          if (event.target.value === "" || reg_txt.test(event.target.value)) {
+            setDaneZamowienia({
+              ...daneZamowienia,
+              uwagi: event.target.value,
+              status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+              update: true,
+            });
+          }
+        }}
+      ></textarea>
     </div>
   );
 }

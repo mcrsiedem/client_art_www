@@ -45,7 +45,7 @@ const setTechnologieID = contextModalInsert.setTechnologieID;
 
 const {refreshZamowienia} = useZamowienia()
 
-  async function saveZamowienieUpdate({dialogBox}){
+  async function updateZamowienie({dialogBox}){
   setSaveButtonDisabled(true)
 
   dialogBox.current.show();
@@ -74,7 +74,7 @@ const {refreshZamowienia} = useZamowienia()
 
 }
 
-return[saveZamowienieUpdate]
+return {updateZamowienie}
 }
 
 

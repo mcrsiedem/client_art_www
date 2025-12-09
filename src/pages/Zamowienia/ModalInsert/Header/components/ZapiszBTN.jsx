@@ -10,7 +10,7 @@ export default function ZapiszBTN({ setSaveAs,dialogBox }) {
   const produkty = contextModalInsert.produkty;
   const daneZamowienia = contextModalInsert.daneZamowienia;
 
-  const [saveZamowienieUpdate] = useZamowienieUpdate();
+  const {updateZamowienie} = useZamowienieUpdate();
   const [zapiszZamowienie] = useZamowienieInsert();
   return (
     <button
@@ -21,7 +21,7 @@ export default function ZapiszBTN({ setSaveAs,dialogBox }) {
         }
 
         if (produkty[0].naklad != 0 && daneZamowienia.id != 1) {
-           saveZamowienieUpdate({dialogBox});
+           updateZamowienie({dialogBox});
           //  dialogBox.current.show();
         }
       }}

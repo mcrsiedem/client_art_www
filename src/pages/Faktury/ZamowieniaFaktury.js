@@ -22,14 +22,10 @@ function ZamowieniaFaktury({ user, setUser }) {
 
   const contextApp = useContext(AppContext);
   const contextModal = useContext(ModalInsertContext);
-  
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
-  // const [openModalInsert, setOpenModalInsert] = useState(false);
   const open = useRef(false);
   const navigate = useNavigate();
-  const data = contextApp.zamowienia;
   const selectedZamowienie = contextModal.selectedZamowienie;
-  const setData = contextApp.setZamowienia;
   const setClients = contextApp.setClients;
   const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
   const setNadkomplety = contextApp.setNadkomplety;

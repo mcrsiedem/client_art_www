@@ -298,6 +298,10 @@ const _firma = [
       id: 4,
       nazwa: "Zafakturowane",
     },
+    {
+      id: 5,
+      nazwa: "Brak faktury",
+    },
     
   
   ];

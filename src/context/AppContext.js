@@ -19,10 +19,10 @@ export const AppContextProvider = ({children})=>{
 
     const [valueZamowieniaWyszukiwarka, setValueZamowieniaWyszukiwarka] = useState('');
     const [sortowanieZamowieniaEtap, setSortowanieZamowieniaEtap] = useState(0);
-    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState("Oddane");
+    const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState("Gotowe do faktury");
     const sortowanieZamowienia = useRef('nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
-    const zestawFaktury = useRef('Oddane');  //  []]
+    const zestawFaktury = useRef('Gotowe do faktury');  //  []]
    
     const [users, setUsers] = useState(null);
     const [selectedUser, setSelectedUser] = useState("0");

@@ -21,9 +21,16 @@ export default function Szukaj() {
         placeholder=""
         onChange={(event) => {
         
+          // let m = oddaniaGrupyWyszukiwarka.filter((k) =>
+          //   k.tytul.concat(" ", k.nr ).concat(" ", k.firma_nazwa ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase())
+          // );
+
           let m = oddaniaGrupyWyszukiwarka.filter((k) =>
-            k.tytul.concat(" ", k.nr ).concat(" ", k.firma_nazwa ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase())
-          );
+    // NOWY WARUNEK: Sprawdź, czy k.nr ma jakąkolwiek wartość (nie jest null, undefined, '', 0, false)
+    k.nr && 
+    // STARY WARUNEK: Kontynuuj filtrowanie tylko jeśli k.nr istnieje
+    k.tytul.concat(" ", k.nr ).concat(" ", k.firma_nazwa ).concat(" ", k.klient ).toLowerCase().includes(event.target.value.toLowerCase())
+);
 
           setOddaniaGrupy(m);
 

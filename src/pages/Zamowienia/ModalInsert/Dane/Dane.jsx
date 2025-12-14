@@ -12,12 +12,11 @@ import axios from "axios";
 
 import { IP } from "utils/Host";
 import { today } from "actions/today";
-import { useStatus } from "hooks/useStatus";
 import NAKLAD from "./components/Naklad";
 import KOSZTY from "./components/Koszty";
 import CenaZkosztami from "./components/CenaZkosztami";
 import Cena from "./components/Cena";
-export default function Dane({showAddClientStage,setShowParametryZamowienia,setShowKosztyZamowienia}) {
+export default function Dane({showAddClientStage}) {
 
   
   return (
@@ -48,7 +47,6 @@ export default function Dane({showAddClientStage,setShowParametryZamowienia,setS
           <CenaZkosztami />
           <SKONTO />
           <WARTOSC_KONCOWA />
-          
           <WARTOSC_FAKTURY />
         </Row>
 

@@ -15,6 +15,7 @@ export default function NAKLAD() {
   const setDaneZamowienia = contextModalInsert.setDaneZamowienia;
   const [add] = useHistoria();
   const [valueIN, setValueIN] = useState(null);
+const ksiegowosc = contextModalInsert.ksiegowosc;
 
   return (
     <div className={style.col}>
@@ -45,20 +46,30 @@ export default function NAKLAD() {
         }}
         onChange={(e) => {
           if (e.target.value === "" || reg_int.test(e.target.value)) {
-            const wartoscAsNumber = daneZamowienia.cena ? parseFloat(daneZamowienia.cena.replace(',', '.')) : 0;
+            const wartoscAsNumber = daneZamowienia.cena
+              ? parseFloat(daneZamowienia.cena.replace(",", "."))
+              : 0;
             handleUpdateRowProdukty({
               ...produkty[0],
               naklad: e.target.value,
               update: true,
-            }
-          );
+            });
 
 
+              let wartosc_zamowienia =(wartoscAsNumber * parseInt(e.target.value || 0)).toFixed(2)
+              let status = daneZamowienia.stan == 3 ? 3 : daneZamowienia.status;
+              let cena_z_kosztami = (parseFloat(e.target.value) * parseFloat(daneZamowienia.cena.replace(",", ".") || 0)+ (parseFloat(ksiegowosc.koszty_wartosc) || 0) / parseFloat(e.target.value) || 0).toFixed(2) 
+              let skonto =((parseFloat(daneZamowienia.skonto) || 0) / 100 )
+              let wartosc_koncowa =(parseFloat(daneZamowienia.cena.replace(",", ".") || 0) * parseFloat(e.target.value) || 0) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)
 
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia:(wartoscAsNumber*parseInt(e.target.value || 0)).toFixed(2) , status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true}); // czemu to nie działa?
-
-
-   
+            setDaneZamowienia({
+              ...daneZamowienia,
+              wartosc_zamowienia,
+              cena_z_kosztami,
+              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+              status,
+              update: true,
+            }); // czemu to nie działa?
           }
         }}
       ></input>

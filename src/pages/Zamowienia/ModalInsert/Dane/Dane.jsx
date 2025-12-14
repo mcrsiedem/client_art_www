@@ -897,6 +897,8 @@ function WARTOSC_ZAMOWIENIA( ){
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const ksiegowosc = contextModalInsert.ksiegowosc;
+
 const produkty = contextModalInsert.produkty;
   return(
       <div className={style.col}>
@@ -909,7 +911,19 @@ const produkty = contextModalInsert.produkty;
        if ( event.target.value === '' || re.test(event.target.value)) {
              const cenaAsNumber = daneZamowienia.cena ? parseFloat(event.target.value.replace(',', '.')) : 0;
              const wartoscAsNumber = event.target.value  ? parseFloat(event.target.value.replace(',', '.')) : 0;
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value , cena: (wartoscAsNumber ||0 / produkty[0].naklad ||0).toFixed(2) , status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+              let skonto =((parseFloat(daneZamowienia.skonto) || 0) / 100 )
+              let wartosc_koncowa =(parseFloat(event.target.value) || 0) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)
+
+
+        setDaneZamowienia({
+          ...daneZamowienia,
+          wartosc_zamowienia: event.target.value,
+          cena: (wartoscAsNumber / produkty[0].naklad || 0).toFixed(2),
+          status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+
+          update: true,
+        });
        }
         
       }}></input>
@@ -969,6 +983,8 @@ function SKONTO( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const ksiegowosc = contextModalInsert.ksiegowosc;
+
 // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   return(
       <div className={style.col}>
@@ -981,7 +997,18 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
        const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
 
        if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, skonto: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+
+let wartosc_koncowa =(parseFloat(daneZamowienia.wartosc_zamowienia) || 0) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)
+        let skonto =((parseFloat(event.target.value) || 0) / 100 )
+
+        setDaneZamowienia({
+          ...daneZamowienia,
+          skonto: event.target.value,
+          status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
+              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa *skonto),
+
+          update: true,
+        });
          
        }
         

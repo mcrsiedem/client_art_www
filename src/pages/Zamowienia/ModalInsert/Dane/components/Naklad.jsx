@@ -66,7 +66,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
               ...daneZamowienia,
               wartosc_zamowienia,
               cena_z_kosztami,
-              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+              wartosc_koncowa: (wartosc_koncowa - (wartosc_koncowa * skonto)).toFixed(2),
               status,
               update: true,
             }); // czemu to nie działa?

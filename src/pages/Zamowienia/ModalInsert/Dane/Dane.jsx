@@ -920,7 +920,7 @@ const produkty = contextModalInsert.produkty;
           wartosc_zamowienia: event.target.value,
           cena: (wartoscAsNumber / produkty[0].naklad || 0).toFixed(2),
           status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
-              wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+ wartosc_koncowa: (wartosc_koncowa - (wartosc_koncowa * skonto)).toFixed(2),
 
           update: true,
         });

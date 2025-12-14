@@ -87,7 +87,7 @@ let wartosc_koncowa =(parseFloat(daneZamowienia.wartosc_zamowienia) || 0) + (par
             setDaneZamowienia({
               ...daneZamowienia,       
               cena_z_kosztami: (((parseFloat(suma) || 0) + (parseFloat(daneZamowienia.wartosc_zamowienia) || 0)) / (produkty[0].naklad || 1)).toFixed(2),
-             wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
+wartosc_koncowa: (wartosc_koncowa - (wartosc_koncowa * skonto)).toFixed(2),
               status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
               update: true,
 

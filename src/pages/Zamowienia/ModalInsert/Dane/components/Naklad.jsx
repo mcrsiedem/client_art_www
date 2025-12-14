@@ -58,7 +58,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
 
               let wartosc_zamowienia =(wartoscAsNumber * parseInt(e.target.value || 0)).toFixed(2)
               let status = daneZamowienia.stan == 3 ? 3 : daneZamowienia.status;
-              let cena_z_kosztami = (parseFloat(e.target.value) * parseFloat(daneZamowienia.cena.replace(",", ".") || 0)+ (parseFloat(ksiegowosc.koszty_wartosc) || 0) / parseFloat(e.target.value) || 0).toFixed(2) 
+              let cena_z_kosztami = (((parseFloat(e.target.value) * wartoscAsNumber) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)) / parseFloat(e.target.value) || 0).toFixed(2) 
               let skonto =((parseFloat(daneZamowienia.skonto) || 0) / 100 )
               let wartosc_koncowa =(parseFloat(daneZamowienia.cena.replace(",", ".") || 0) * parseFloat(e.target.value) || 0) + (parseFloat(ksiegowosc.koszty_wartosc) || 0)
 

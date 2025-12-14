@@ -31,9 +31,6 @@ export default function TableKoszty() {
               </tr>
             </thead>
             <tbody className={style.center}>
-
-              
-              
           {
           
           kosztyDodatkoweZamowienia.filter(x=>x.delete != true).map((koszt,i) => {

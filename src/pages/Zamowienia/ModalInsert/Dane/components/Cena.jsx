@@ -38,7 +38,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
             setDaneZamowienia({
               ...daneZamowienia,
               cena: event.target.value,
-              cena_z_kosztami: (( (cenaAsNumber * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0) )/ produkty[0].naklad ).toFixed(2),
+              cena_z_kosztami: (( (cenaAsNumber  * produkty[0].naklad) + (parseFloat(ksiegowosc.koszty_wartosc) || 0) )/ produkty[0].naklad || 0).toFixed(2),
               wartosc_zamowienia: (cenaAsNumber * produkty[0].naklad).toFixed(2),
               wartosc_koncowa: wartosc_koncowa - (wartosc_koncowa * skonto),
               status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,

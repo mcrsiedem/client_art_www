@@ -909,7 +909,7 @@ const produkty = contextModalInsert.produkty;
        if ( event.target.value === '' || re.test(event.target.value)) {
              const cenaAsNumber = daneZamowienia.cena ? parseFloat(event.target.value.replace(',', '.')) : 0;
              const wartoscAsNumber = event.target.value  ? parseFloat(event.target.value.replace(',', '.')) : 0;
-        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value, cena: (wartoscAsNumber / produkty[0].naklad).toFixed(2), status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+        setDaneZamowienia({...daneZamowienia, wartosc_zamowienia: event.target.value , cena: (wartoscAsNumber ||0 / produkty[0].naklad ||0).toFixed(2) , status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
        }
         
       }}></input>

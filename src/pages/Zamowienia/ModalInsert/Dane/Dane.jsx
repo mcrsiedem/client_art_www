@@ -17,6 +17,7 @@ import KOSZTY from "./components/Koszty";
 import CenaZkosztami from "./components/CenaZkosztami";
 import Cena from "./components/Cena";
 import WARTOSC_ZAMOWIENIA from "./components/WARTOSC_ZAMOWIENIA";
+import WartoscKoncowa from "./components/WartoscKoncowa";
 export default function Dane({showAddClientStage}) {
 
   
@@ -47,7 +48,7 @@ export default function Dane({showAddClientStage}) {
           <KOSZTY />
           <CenaZkosztami />
           <SKONTO />
-          <WARTOSC_KONCOWA />
+          <WartoscKoncowa />
           <WARTOSC_FAKTURY />
         </Row>
 
@@ -891,36 +892,6 @@ function ISBN( ){
 //---
 
 
-
-
-
-
-
-
-
-function WARTOSC_KONCOWA( ){
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Wartość końcowa</label>
-      <input className={style.input_naklad} type="text"
-      disabled
-      title="Cena za szt * nakład lub wartość + koszty dodatkowe - Skonto"
-
-      value={daneZamowienia.wartosc_koncowa}
-      onChange={(event) => {
-       const re = /^\d{0,6}(?:\,\d{0,2}){0,1}$/;
-       if ( event.target.value === '' || re.test(event.target.value)) {
-        setDaneZamowienia({...daneZamowienia, wartosc_koncowa: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
-       }
-        
-      }}></input>
-    </div>
-  );
-}
 
 
 function WARTOSC_FAKTURY( ){

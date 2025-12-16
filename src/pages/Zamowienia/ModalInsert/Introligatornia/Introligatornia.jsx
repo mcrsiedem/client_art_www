@@ -20,6 +20,7 @@ import { useStatus } from "hooks/useStatus";
 import { useHistoria } from "hooks/useHistoria";
 import ProcesyOprawa from "./OprawaElementyStage/Procesy/ProcesyOprawa";
 import NakladOprawa from "./components/NakladOprawa";
+import NakladFragmentu from "./components/NakladFragment";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -186,7 +187,7 @@ function OprawaTable({
                             }
                           />
 
-                          <NakladOprawaFregment
+                          <NakladFragmentu
                             row={row}
                             handleChangeCardFragmenty={
                               handleChangeCardFragmenty
@@ -331,7 +332,7 @@ const [setStatus] = useStatus()
             </option>} */}
         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
           <option key={option.id} value={option.id}>
-            {option.typ} {option.rodzaj + " "+row.naklad +" szt."} 
+            {option.typ} {option.rodzaj + " "+parseInt(row?.naklad).toLocaleString()+" szt."} 
        
           </option>
         ))}
@@ -487,7 +488,7 @@ function Typ({ row }) {
         {}
         {_typ_elementu.map((option) => (
           <option key={option.id} value={option.id}>
-            {option.nazwa +" "+row.wersja+" "+row.naklad +" szt."}
+            {option.nazwa +" "+row.wersja+" "+parseInt(row?.naklad).toLocaleString() +" szt."}
           </option>
         ))}
       </select>

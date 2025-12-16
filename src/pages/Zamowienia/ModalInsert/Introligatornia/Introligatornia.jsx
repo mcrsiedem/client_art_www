@@ -19,6 +19,7 @@ import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
 import { useHistoria } from "hooks/useHistoria";
 import ProcesyOprawa from "./OprawaElementyStage/Procesy/ProcesyOprawa";
+import NakladOprawa from "./components/NakladOprawa";
 
 export default function IntroligatorniaTable({
   handleChangeCardProdukty,
@@ -81,24 +82,16 @@ export default function IntroligatorniaTable({
 }
 
 function OprawaTable({
-  handleChangeCardProdukty,
   handleDragStart,
-  handleChangeCardFragmentyOprawaId,
   handleDrop,
   handleDragOver,
-  handleChangeCardOprawa,
   expand,
   setExpand,
   handleChangeCardFragmenty,
-  setShowOprawaElementyStage,
-  oprawa_row,
-  setOprawa_row,
 }) {
   const contextModalInsert = useContext(ModalInsertContext);
   const fragmenty = contextModalInsert.fragmenty;
   const lockDragDrop = contextModalInsert.lockDragDrop;
-  const setFragmenty = contextModalInsert.setFragmenty;
-  const elementy = contextModalInsert.elementy;
   const oprawa = contextModalInsert.oprawa;
   const setOprawa = contextModalInsert.setOprawa;
 
@@ -223,9 +216,6 @@ function OprawaTable({
   );
 }
 
-function Header() {
-  return <div className={style.header}> Introligatornia</div>;
-}
 
 function DataSpedycji({ row,index_oprawy }) {
   const contextModalInsert = useContext(ModalInsertContext);
@@ -353,14 +343,9 @@ const [setStatus] = useStatus()
 
 function IdOprawy({ row }) {
   const contextModalInsert = useContext(ModalInsertContext);
-  const produkty = contextModalInsert.produkty;
-  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-  const setProdukty = contextModalInsert.setProdukty;
-  const contextApp = useContext(AppContext);
 const [setStatus] = useStatus()
   const [add] = useHistoria()
   const [valueIN,setValueIN] = useState(null)
-  const daneZamowienia = contextModalInsert.daneZamowienia
 
   return (
     <td className={style.tdID}>
@@ -427,31 +412,6 @@ const [setStatus] = useStatus()
   );
 }
 
-function PodzielOprawe({
-  row,
-  handleChangeCardOprawa,
-  handleAddCard,
-  setShowOprawaElementyStage,
-  oprawa_row,
-  setOprawa_row,
-}) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const oprawa = contextModalInsert.oprawa;
-  const setOprawa = contextModalInsert.setOprawa;
-  return (
-    <td className={style.col_button}>
-      <img
-        className={style.expand}
-        src={iconTable}
-        onClick={() => {
-          setShowOprawaElementyStage(true);
-          setOprawa_row(row);
-        }}
-        alt="Procesy"
-      />
-    </td>
-  );
-}
 
 
 const handleRemoveItem = (
@@ -467,7 +427,7 @@ const handleRemoveItem = (
   if (oprawa.filter((x) => x.delete != true).length !== 1) {
 
       setOprawa((prev) =>
-    prev.map((t, a) => {
+    prev.map((t) => {
       if (t.id == id) {
         return {
           ...t,
@@ -481,7 +441,7 @@ const handleRemoveItem = (
 
 
   setFragmenty((prev) =>
-    prev.map((t, a) => {
+    prev.map((t) => {
       if (t.oprawa_id == id) {
         return {
           ...t,
@@ -707,45 +667,7 @@ function UwagiOprawa({ row }) {
   );
 }
 
-function NakladOprawa({ row }) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
-  const [setStatus] = useStatus()
-  const [add] = useHistoria()
-  const [valueIN,setValueIN] = useState(null)
-  const daneZamowienia = contextModalInsert.daneZamowienia
-  return (
-    <td className={style.tdNaklad}>
-      <input
-        className={style.input_naklad}
-        value={row.naklad}
-        onFocus={()=>{ setValueIN(row.naklad)}}
-        onBlur={(e)=>{
-          if(valueIN != e.target.value){
-                 
-          add(         {
-            kategoria: "Naklad oprawy",
-            event: " Oprawa - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
-            zamowienie_id: daneZamowienia.id
-          })
-          }
-        }}
-        onChange={(e) => {
-          if (e.target.value === "" || reg_int.test(e.target.value)) {
-            handleUpdateRowOprawa({
-              ...row,
-              naklad:  ifNoTextSetNull(e.target.value) ,
-              update:true
-            });
 
-                       // 
-                       setStatus(3)
-          }
-        }}
-      ></input>
-    </td>
-  );
-}
 const LockDradDrop = () =>{
   const contextModalInsert = useContext(ModalInsertContext);
   return(

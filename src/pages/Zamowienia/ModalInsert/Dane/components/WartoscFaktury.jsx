@@ -4,7 +4,7 @@ import { _firma, _produkty, _klient, _zestawy, _elementy, _opiekun, _status_doku
 import { ModalInsertContext } from "context/ModalInsertContext";
 
 
-export default function  KOSZTY( ){
+export default function  WartoscFaktury( ){
 const contextModalInsert = useContext(ModalInsertContext);
 const ksiegowosc = contextModalInsert.ksiegowosc;
 
@@ -36,12 +36,13 @@ const formatujKwote = (kwota) => {
 
   return(
       <div className={style.col}>
-      <label className={style.label}> Koszty dodatkowe</label>
+      <label className={style.label}> Faktury </label>
       <input className={style.input_naklad} type="text"
-      value={formatujKwote(ksiegowosc.koszty_wartosc)}
+      value={formatujKwote(ksiegowosc.faktury_wartosc)}
       disabled
       onChange={(event) => {
  
+        
       }}></input>
     </div>
   );

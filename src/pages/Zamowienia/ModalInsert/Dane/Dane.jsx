@@ -18,6 +18,7 @@ import CenaZkosztami from "./components/CenaZkosztami";
 import Cena from "./components/Cena";
 import WARTOSC_ZAMOWIENIA from "./components/WARTOSC_ZAMOWIENIA";
 import WartoscKoncowa from "./components/WartoscKoncowa";
+import WartoscFaktury from "./components/WartoscFaktury";
 export default function Dane({showAddClientStage}) {
 
   
@@ -49,7 +50,7 @@ export default function Dane({showAddClientStage}) {
           <CenaZkosztami />
           <SKONTO />
           <WartoscKoncowa />
-          <WARTOSC_FAKTURY />
+          <WartoscFaktury />
         </Row>
 
         <Row style={style.row3}>
@@ -893,23 +894,6 @@ function ISBN( ){
 
 
 
-
-function WARTOSC_FAKTURY( ){
-const contextModalInsert = useContext(ModalInsertContext);
-const ksiegowosc = contextModalInsert.ksiegowosc;
-  return(
-      <div className={style.col}>
-      <label className={style.label}> Faktury </label>
-      <input className={style.input_naklad} type="text"
-      value={ksiegowosc.faktury_wartosc}
-      disabled
-      onChange={(event) => {
- 
-        
-      }}></input>
-    </div>
-  );
-}
 
 
 function SKONTO( ){

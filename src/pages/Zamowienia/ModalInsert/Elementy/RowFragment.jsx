@@ -9,6 +9,7 @@ import { IP } from "utils/Host";
 import { reg_txt } from "utils/initialvalue";
 import { ifNoTextSetNull } from "actions/ifNoTextSetNull";
 import { useStatus } from "hooks/useStatus";
+import FragmentNaklad from "./Row/FragmentNaklad";
 export default function RowFragment({
   row,
   rowElement
@@ -31,7 +32,7 @@ export default function RowFragment({
     <>
     <div className={style.row_fragmenty} draggable={lockDragDrop} onDragStart={()=>handleDragStart} key={row.id}>
       <Typ row={row} />
-      <Naklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
+      <FragmentNaklad row={row} handleUpdateRowFragmenty={handleUpdateRowFragmenty} />
        <div ></div>
       <div disabled > </div>
       <div disabled > </div>
@@ -75,33 +76,9 @@ function Typ({ row }) {
   );
 }
 
-function Naklad({ row, handleUpdateRowFragmenty }) {
-  const [setStatus] = useStatus()
 
-  return (
 
-      <input
-        className={style.rowFragmenty_naklad}
-        value={row.naklad}
-        onChange={(e) => {
 
-            handleUpdateRowFragmenty({
-            ...row,
-            naklad: ifNoTextSetNull(e.target.value) ,
-            update: true
-          })
-
-           // 
-           setStatus(3)
-        }
-        
-
-          
-        }
-      ></input>
-
-  );
-}
 function  Wersja({ row, handleUpdateRowFragmenty }) {
   const [setStatus] = useStatus()
   return (

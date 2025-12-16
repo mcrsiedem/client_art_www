@@ -21,6 +21,7 @@ import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 import { getNameOfElementTyp } from "actions/getNameOfElementTyp";
 import ELEMENT_DODAJ from "./Row/ELEMENT_DODAJ";
 import ELEMENT_PROCESY from "./Row/ELEMENT_PROCESY";
+import ElementNaklad from "./Row/ElementNaklad";
 export default function RowElement({
     row,
     handleChangeCardElementy,
@@ -131,7 +132,7 @@ export default function RowElement({
               handleChangeCardFragmenty_i_Elementy
             }
           />
-          <Naklad
+          <ElementNaklad
             row={row}
             handleChangeCardElementy={handleChangeCardElementy}
           />
@@ -429,78 +430,11 @@ const [setStatus] = useStatus()
     );
   }
   
-  function Naklad({ row }) {
-    const [setStatus] = useStatus()
-   const contextModalInsert = useContext(ModalInsertContext);
-    const fragmenty = contextModalInsert.fragmenty
-    const elementy = contextModalInsert.elementy
-    const daneZamowienia = contextModalInsert.daneZamowienia
-    const handleChangeCardFragmenty_i_Elementy_naklad = contextModalInsert.handleChangeCardFragmenty_i_Elementy_naklad
-    const [add] = useHistoria()
-    const [valueIN,setValueIN] = useState(null)
 
-      const sprawdzSume = () => {
 
-        let suma_nakladow = fragmenty
-          .filter((x) => x.element_id == row.id)
-          .map((x) => parseInt(x.naklad))
-          .reduce((a, b) => a + b, 0);
 
-        if (suma_nakladow == row.naklad) {
-          return style.input;
-        }else{
-          return style.input_alert;
-        }
-   
-      };
 
-      const ilezostalo = () => {
-        let suma_nakladow = fragmenty
-          .filter((x) => x.element_id == row.id)
-          .map((x) => parseInt(x.naklad))
-          .reduce((a, b) => a + b, 0);
-          if(parseInt(row.naklad)-suma_nakladow == 0){
-            return "Suma nakładów OK"
-          }else{
-             return "Brakuje "+(parseInt(row.naklad)-suma_nakladow)+" szt.";
-          }
-       
-      };
-
-    return (
-        <input
-          onDoubleClick={()=>{console.log("db")}}
-          className={sprawdzSume()}
-          title={ilezostalo()}
-          value={row.naklad}
-          onChange={(e) =>
-            {
-         
-        if (e.target.value === "" || reg_int.test(e.target.value)) {
-          handleChangeCardFragmenty_i_Elementy_naklad({
-                  ...row,
-                  naklad: ifNoTextSetNull(e.target.value),
-                  update: true,
-                });
-                setStatus(3);
-              }
-        }
-          }
-          onFocus={()=>{ setValueIN(row.naklad)}}
-          onBlur={(e)=>{
-            if(valueIN != e.target.value){
-                        setStatus(3)
-            add(         {
-              kategoria: "Naklad",
-              event: getNameOfElement(row.id,elementy,_typ_elementu)+ " "+row.nazwa+" - zmiana nakladu z "+valueIN + " na "+e.target.value + " szt. ",
-              zamowienie_id: daneZamowienia.id
-            })
-            }
-          }}
-        ></input>
-    
-    );
-  }
+  
   function Nazwa({ row, handleChangeCardElementy }) {
     const [setStatus] = useStatus()
     const modalcontext = useContext(ModalInsertContext);

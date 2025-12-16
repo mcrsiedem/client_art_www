@@ -626,6 +626,9 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 }
 
 
+
+
+
 function Przedplata( ){
   const contextModalInsert = useContext(ModalInsertContext);
   const daneZamowienia = contextModalInsert.daneZamowienia;

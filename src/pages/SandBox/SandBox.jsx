@@ -22,6 +22,7 @@ import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import DraggableResizableDiv from "./DraggableResizableDiv";
 import SandboxTable from "./Table";
+import FormToPdf from "components/pdf/FormToPDF";
 
 
 export default function SandBox({ user, setUser }) {
@@ -111,6 +112,8 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                 {/* Możesz dodać więcej instancji DraggableResizableDiv */}
                 {/* <DraggableResizableDiv containerRef={containerRef} /> */}
             </div>
+
+      <FormToPdf/>
         </div>
                                 </div>
             

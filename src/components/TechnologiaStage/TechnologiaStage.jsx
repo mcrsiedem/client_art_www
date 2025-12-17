@@ -19,7 +19,7 @@ export default function TechnologiaStage() {
     return (
       <div className={style.container}>
                   <HeaderTech />
-                    <Loading/>
+                  <Loading/>
                   <DaneTech />
                   <div className={style.main}>
                           <ProduktyTech />

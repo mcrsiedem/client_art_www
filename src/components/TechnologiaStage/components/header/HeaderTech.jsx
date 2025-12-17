@@ -18,6 +18,7 @@ import SprawdzBTN from "./SprawdzBTN";
 import { useHistoria } from "hooks/useHistoria";
 import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
+import FormToPdf from "components/pdf/FormToPDF";
 
 
 export default function Header({}) {
@@ -70,6 +71,7 @@ export default function Header({}) {
         <AlertLega />
       </CenterPane>
       <RightPane>
+        <FormToPdf/>
         <Dodruk />
         <ZapisBtnPromiseDodruk />
         <PotwierdzKorekteZamowieniaBTN />

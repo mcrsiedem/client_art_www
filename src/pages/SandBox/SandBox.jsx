@@ -112,8 +112,7 @@ const PanelDesktop = ({isOnline,navigate,logout}) => {
                 {/* Możesz dodać więcej instancji DraggableResizableDiv */}
                 {/* <DraggableResizableDiv containerRef={containerRef} /> */}
             </div>
-
-      <FormToPdf/>
+/
         </div>
                                 </div>
             

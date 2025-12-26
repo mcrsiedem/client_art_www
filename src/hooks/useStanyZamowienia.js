@@ -41,6 +41,9 @@ console.log("Produkt : ", produkty);
 // console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 // console.log("listaPapierowNazwy: ", listaPapierowNazwy);
 console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.table( daneZamowienia);
+
+
 // console.log("ksiegowosc: ", ksiegowosc);
 }
 

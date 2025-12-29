@@ -1,12 +1,20 @@
-import React, { useState, forwardRef, useImperativeHandle, useEffect } from "react";
+import React, { useState, forwardRef, useImperativeHandle, useEffect, useContext } from "react";
 import style from "./DialogAlert.module.css"
 import iconOK from "assets/error.svg"
 import iconH from "assets/hip.svg"
 import axios from "axios";
 
 import { IP } from "utils/Host";
+import { AppContext } from "context/AppContext";
+import { useZamowienia } from "hooks/useZamowienia";
 export default function DiaglogAlert()  {
   const [show, setShow] = useState(false);
+    const contextApp = useContext(AppContext);
+    const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
+    const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
+      const zestawZamowienia= contextApp.zestawZamowienia;
+       const setIsLoading= contextApp.setIsLoading;
+       const {refreshZamowienia} = useZamowienia();
  const res= null
   useEffect(  () => {
 
@@ -29,7 +37,22 @@ if(show){
     return (
 
     <div className={style.grayScaleBackground} >
-    <div className={style.window} >
+    <div 
+    onClick={()=>{
+                    const promiseA = new Promise((resolve, reject) => {
+            setIsLoading(true)
+            setSortowanieZamowieniaEtap("Oddane")
+            zestawZamowienia.current= "Oddane"
+  
+                      resolve(777);
+                    })
+
+                            promiseA.then(res => {
+
+          refreshZamowienia();
+        })
+     }}
+    className={style.window} >
 
  <img
       className={style.ok_icon}

@@ -34,6 +34,24 @@ scrollTable(tableZamowienia)
        }
   };
 
+
+  const refreshZamowieniaNiezamknieteKoszty = async () => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setZamowienia([...res.data.filter( row => row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3 && row.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id)]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data.filter( row => row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3)]);
+      setIsLoading(false)
+
+scrollTable(tableZamowienia)
+       
+  };
+
+
+
+
+
   const refreshZamowieniaFaktury = async () => {
     setIsLoading(true)
     const res = await axios.get(
@@ -89,5 +107,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury};
+  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury,refreshZamowieniaNiezamknieteKoszty};
 }

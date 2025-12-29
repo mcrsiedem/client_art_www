@@ -14,7 +14,7 @@ export default function DiaglogAlert()  {
     const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
       const zestawZamowienia= contextApp.zestawZamowienia;
        const setIsLoading= contextApp.setIsLoading;
-       const {refreshZamowienia} = useZamowienia();
+       const {refreshZamowienia,refreshZamowieniaNiezamknieteKoszty} = useZamowienia();
  const res= null
   useEffect(  () => {
 
@@ -39,6 +39,7 @@ if(show){
     <div className={style.grayScaleBackground} >
     <div 
     onClick={()=>{
+ 
                     const promiseA = new Promise((resolve, reject) => {
             setIsLoading(true)
             setSortowanieZamowieniaEtap("Oddane")
@@ -49,7 +50,8 @@ if(show){
 
                             promiseA.then(res => {
 
-          refreshZamowienia();
+          // refreshZamowienia();
+          refreshZamowieniaNiezamknieteKoszty();
         })
      }}
     className={style.window} >

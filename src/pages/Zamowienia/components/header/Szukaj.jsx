@@ -21,6 +21,7 @@ export default function Szukaj() {
         type="text"
         title="Znajdź tytuł pracy..."
         placeholder=""
+        value={valueZamowieniaWyszukiwarka}
         onChange={(event) => {
 
         setValueZamowieniaWyszukiwarka(event.target.value.toLowerCase())

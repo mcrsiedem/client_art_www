@@ -39,7 +39,7 @@ const {refreshZamowienia} = useZamowienia()
            {/* <th className={style.col_alert}>!</th> */}
            <th onClick={()=>{
              contextApp.setIsLoading(true);
-         contextApp.sortowanieZamowienia.current = "nr asc"
+         contextApp.sortowanieZamowienia.current = "rok, nr asc"
          refreshZamowienia()
 
             }} className={style.col_nr}>Nr</th>

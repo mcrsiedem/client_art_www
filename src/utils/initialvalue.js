@@ -27,7 +27,7 @@ const initialDane = {
   id: 1,
   prime_id: 1,
   nr: "",
-  rok: "2025",
+  rok: "2026",
   firma_id: 1,
   klient_id: 0,
   opiekun_id:  0,

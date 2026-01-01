@@ -39,9 +39,21 @@ function Header() {
   const modalContext = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
   const rowElement = modalContext.selectedElementROW;
+      const listaPapierow = appContext.listaPapierow;
+    const listaPapierowWyszukiwarka = appContext.listaPapierowWyszukiwarka;
+
+  const papier = (papier_id) => {
+
+
+let nazwa = listaPapierowWyszukiwarka.find(x=> x.id == papier_id )?.nazwa || ' '
+let gramatura = listaPapierowWyszukiwarka.find(x=> x.id == papier_id )?.gramatura || ' '
+let wykonczenie = listaPapierowWyszukiwarka.find(x=> x.id == papier_id )?.wykonczenie || ' '
+
+    return `${nazwa} ${gramatura} ${wykonczenie}  `
+  }
   return (
     <div className={style.header}>
-      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu?.filter(x => x.id == rowElement?.typ)[0]?.nazwa} {rowElement?.naklad} szt. {rowElement?.nazwa}</p> </p> 
+      <p className={style.title}>Procesy - <p className={style.title2}>{appContext.typ_elementu?.filter(x => x.id == rowElement?.typ)[0]?.nazwa} {rowElement?.naklad} szt. {rowElement?.nazwa} - {papier(rowElement?.papier_id)}</p> </p> 
       <Zamknij/>
     </div>
   );

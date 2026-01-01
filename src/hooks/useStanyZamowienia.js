@@ -28,7 +28,7 @@ console.clear();
 console.log("Zamówienie: ");
 console.log("Dane : ", daneZamowienia);
 console.log("Produkt : ", produkty);
-// console.log("Elementy : ", elementy);
+console.log("Elementy : ", elementy);
 // console.log("Fragmenty : ", fragmenty);
 // console.log("Oprawa : ", oprawa);
 // console.log("Procesy elementów: ", procesyElementow);
@@ -41,7 +41,7 @@ console.log("Produkt : ", produkty);
 // console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 // console.log("listaPapierowNazwy: ", listaPapierowNazwy);
 console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
-console.table( daneZamowienia);
+// console.table( daneZamowienia);
 
 
 // console.log("ksiegowosc: ", ksiegowosc);

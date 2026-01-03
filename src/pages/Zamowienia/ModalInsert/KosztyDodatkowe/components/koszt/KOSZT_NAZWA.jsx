@@ -16,14 +16,14 @@ export default function KOSZT_NAZWA({koszt}) {
             onChange={(event) => {
               const re =
                 /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
-              if (event.target.value === "" || re.test(event.target.value)) {
+              // if (event.target.value === "" || re.test(event.target.value)) {
                 handleKosztyDodatkoweZamowienia({
                   ...koszt,
                   nazwa: event.target.value,
                   zmienil: DecodeToken(sessionStorage.getItem("token")).id,
                   update: true,
                 });
-              }
+              // }
             }}
           ></input>
         </td>

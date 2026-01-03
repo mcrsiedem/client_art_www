@@ -575,7 +575,7 @@ const daneZamowienia = contextModalInsert.daneZamowienia
           }
         }}
         onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          // if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowOprawa({
               ...row,
               wersja: e.target.value,
@@ -584,7 +584,7 @@ const daneZamowienia = contextModalInsert.daneZamowienia
 
                        // 
                        setStatus(3)
-          }
+          // }
         }}
       ></input>
     </td>
@@ -654,14 +654,14 @@ function UwagiOprawa({ row }) {
           }
         }}
         onChange={(e) => {
-          if (e.target.value === "" || reg_txt.test(e.target.value)) {
+          // if (e.target.value === "" || reg_txt.test(e.target.value)) {
             handleUpdateRowOprawa({
               ...row,
               uwagi: e.target.value,
               update:true
             });
                        setStatus(3)
-          }
+          // }
         }}
       ></input>
     </td>

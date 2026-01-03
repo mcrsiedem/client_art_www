@@ -461,7 +461,9 @@ const [setStatus] = useStatus()
           className={style.input}
           onChange={(e) =>
 
- {      if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+ {      
+  
+  // if ( e.target.value === '' || reg_txt.test(e.target.value)) {
   handleChangeCardFragmenty_i_Elementy_nazwa({
               ...row,
               nazwa: e.target.value,
@@ -471,7 +473,7 @@ const [setStatus] = useStatus()
            // 
             setStatus(3)
 
-          }
+          // }
           }
           }
         ></input>

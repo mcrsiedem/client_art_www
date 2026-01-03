@@ -615,10 +615,10 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
         
 
          const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
-        if ( event.target.value === '' || re.test(event.target.value)) {
+        // if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          
-     }
+    //  }
 
       }}></input>
     </div>
@@ -664,14 +664,14 @@ function Uwagi() {
         type="text"
         value={daneZamowienia.uwagi}
         onChange={(event) => {
-          if (event.target.value === "" || reg_txt.test(event.target.value)) {
+          // if (event.target.value === "" || reg_txt.test(event.target.value)) {
             setDaneZamowienia({
               ...daneZamowienia,
               uwagi: event.target.value,
               status: daneZamowienia.stan == 3 ? 3 : daneZamowienia.status,
               update: true,
             });
-          }
+          // }
         }}
       ></textarea>
     </div>

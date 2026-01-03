@@ -107,7 +107,7 @@ function Nazwa({ row }) {
         onChange={(e) =>
           {
             
-            if ( e.target.value === '' || reg_txt.test(e.target.value)) {
+            // if ( e.target.value === '' || reg_txt.test(e.target.value)) {
             handleUpdateRowProdukty({
             ...row,
             nazwa: e.target.value,
@@ -115,7 +115,7 @@ function Nazwa({ row }) {
           })
  // 
  setStatus(3)
-          }
+          // }
         }
     
         }
@@ -364,7 +364,7 @@ function Uwagi({ row }) {
         onChange={(e) =>
           { 
             // const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻ.,:/-]+$/;
-            if ( e.target.value === '' || reg_txt.test(e.target.value)) { 
+            // if ( e.target.value === '' || reg_txt.test(e.target.value)) { 
               handleUpdateRowProdukty({
             ...row,
             uwagi: e.target.value,
@@ -373,7 +373,8 @@ function Uwagi({ row }) {
         
            // 
            setStatus(3)
-        }
+        // }
+
           }
         }
       ></input>

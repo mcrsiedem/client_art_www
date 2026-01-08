@@ -19,6 +19,7 @@ import { useHistoria } from "hooks/useHistoria";
 import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 import FormToPdf from "components/pdf/FormToPDF";
+import { useArkuszeAuto } from "hooks/useArkuszeAuto";
 
 
 export default function Header({}) {
@@ -71,6 +72,7 @@ export default function Header({}) {
         <AlertLega />
       </CenterPane>
       <RightPane>
+        <Arkusze />
         <FormToPdf/>
         <Dodruk />
         <ZapisBtnPromiseDodruk />
@@ -191,6 +193,33 @@ const Dodruk = () => {
 
 };
 
+const Arkusze = () => {
+  const techContext = useContext(TechnologyContext);
+  const daneTech = techContext.daneTech;
+  const setDaneTech = techContext.setDaneTech;
+    const       {autoArk}= useArkuszeAuto();
+
+
+
+ if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+
+    return (
+    <button
+      // disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
+      className={ style.btn  }
+      onClick={() => {
+        autoArk()
+        // daneTech.korekta_zamowienia_alert= null
+        // setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
+      //  createWykonaniaFromArkuszeLegi();
+      }}
+    >
+      Arkusze
+    </button>
+  );
+}
+
+};
 
 
 

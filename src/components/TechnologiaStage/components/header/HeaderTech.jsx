@@ -19,7 +19,7 @@ import { useHistoria } from "hooks/useHistoria";
 import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 import FormToPdf from "components/pdf/FormToPDF";
-import { useArkuszeAuto } from "hooks/useArkuszeAuto";
+import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
 
 
 export default function Header({}) {

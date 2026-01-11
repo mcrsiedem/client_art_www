@@ -1,9 +1,20 @@
 
 export function legiZeszyt(ilosc_stron,glowna_skladka) {
 
+    // oddaje tablice z legami
+    
 let male_skladki;
 
 switch (glowna_skladka) {
+
+    case 4:
+    male_skladki = [];
+    break;
+
+  case 8:
+    male_skladki = [4];
+    break;
+
   case 12:
     male_skladki = [4];
     break;

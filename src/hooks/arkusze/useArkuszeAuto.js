@@ -6,8 +6,8 @@ export const useArkuszeAuto = () =>{
     const autoArk = () => {
 
       let legi
-      // legi = legiZeszyt(4,16)
-      legi = legiKlejona(84,16)
+      // legi = legiZeszyt(4,4)
+      legi = legiKlejona(2,2)
 
       console.log(legi)
 

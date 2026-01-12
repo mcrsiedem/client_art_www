@@ -523,8 +523,9 @@ function LegaMnoznik({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
 
   return (
-    <input
-      className={style.input_mini}
+    <div className={style.mnoznik}>
+           <input
+      className={style.input_mini_right}
       value={row.lega_mnoznik}
       title="Mnożnik"
       placeholder=""
@@ -538,6 +539,11 @@ function LegaMnoznik({ row }) {
         }
       }}
     ></input>
+    <p className={style.mnoznik_x}>x</p>
+    </div>
+
+    
+
   );
 }
 

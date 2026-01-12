@@ -44,6 +44,7 @@ export default function RowTechElement({  row,  indeks}) {
         <ArkuszWysokosc row={row} />
         <Lega row={row} />
         <IloscLeg row={row} />
+        <LegaMnoznik row={row} />
         <Nazwa row={row} indeks={indeks} />
         <Uwagi row={row}indeks={indeks} />
         <Procesy row={row} indeks={indeks} />
@@ -481,7 +482,7 @@ function Lega({ row }) {
   return (
     <input
       className={style.input}
-      placeholder="..."
+      title="Rodzaj legi"
       value={row.lega}
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
@@ -501,9 +502,9 @@ function IloscLeg({ row }) {
 
   return (
     <input
-      className={style.input}
+      className={style.input_mini}
       value={row.ilosc_leg}
-      placeholder="..."
+      title="Ilość różnych leg"
       onChange={(e) => {
         if (e.target.value === "" || reg_int.test(e.target.value)) {
           handleUpdateRowElementyTech({
@@ -516,6 +517,30 @@ function IloscLeg({ row }) {
     ></input>
   );
 }
+
+function LegaMnoznik({ row }) {
+  const techContext = useContext(TechnologyContext);
+  const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
+
+  return (
+    <input
+      className={style.input_mini}
+      value={row.lega_mnoznik}
+      title="Mnożnik"
+      placeholder=""
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            lega_mnoznik: ifNoTextSetNull(e.target.value),
+            update: true
+          });
+        }
+      }}
+    ></input>
+  );
+}
+
 function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;

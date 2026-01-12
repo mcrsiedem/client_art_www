@@ -92,6 +92,27 @@
     border-radius: 10px;
 }
 
+.btn_mini{
+    width: 50px;
+    height: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(219, 219, 219);
+    border: 1.5px solid rgb(72, 72, 72);
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgb(29, 29, 29);
+    margin-right: 100px;
+}
+
+.btn_mini:hover{
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
+}
+
+
+
+
 .btn_disabled{
     width: 125px;
     height: 25px;

@@ -39,7 +39,7 @@ const FormToPdf = () => {
         {({ loading, error }) => {
           if (error) return `Błąd: ${error.message}`;
         //   return loading ? 'Generowanie...' : 'Pobierz teraz';
-          return loading ? 'Generowanie...' : <button className={style.btn} > PDF</button>;
+          return loading ? 'Generowanie...' : <button className={style.btn_mini} > PDF</button>;
         }}
       </PDFDownloadLink>
     </div>

@@ -7,7 +7,8 @@ export const useArkuszeAuto = () =>{
 
       let legi
       // legi = legiZeszyt(4,4)
-      legi = legiKlejona(2,2)
+      // legi = legiKlejona(106,16)
+      legi = legiZeszyt(106,16)
 
       console.log(legi)
 

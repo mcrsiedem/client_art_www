@@ -64,29 +64,27 @@ export default function Header({}) {
         <p className={style.title2}>Technologia </p>
 
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
-        {/* <IconError/> */}
       </LeftPane>
-      <CenterPane>
-        {/* <p  className={style.title2}>  stary nr: {appcontext.zamowienia?.filter(x=> x.id ==techContext?.daneTech.zamowienie_id )[0]?.nr_stary} </p> */}
 
+      <CenterPane>
         <AlertLega />
       </CenterPane>
+
       <RightPane>
-        <Arkusze />
-        <FormToPdf/>
-        <Dodruk />
-        <ZapisBtnPromiseDodruk />
-        <PotwierdzKorekteZamowieniaBTN />
-        <SkasujTechnologieBTN />
-        
-        <ClearBTN />
-        <SprawdzBTN />
-        <ZapisBtnPromise />
-        <IconNavigate
-          className={style.btn_x}
-          logo={IconClose}
-          navi={"/Panel"}
-        />
+            <Arkusze />
+            {/* <FormToPdf/> */}
+            <Dodruk />
+            <ZapisBtnPromiseDodruk />
+            <PotwierdzKorekteZamowieniaBTN />
+            <SkasujTechnologieBTN />
+            <ClearBTN />
+            <SprawdzBTN />
+            <ZapisBtnPromise />
+            <IconNavigate
+              className={style.btn_x}
+              logo={IconClose}
+              navi={"/Panel"}
+            />
       </RightPane>
     </header>
   );
@@ -206,7 +204,7 @@ const Arkusze = () => {
     return (
     <button
       // disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
-      className={ style.btn  }
+      className={ style.btn_mini  }
       onClick={() => {
         autoArk()
         // daneTech.korekta_zamowienia_alert= null

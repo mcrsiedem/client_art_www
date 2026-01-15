@@ -41,6 +41,7 @@ export default function Header({}) {
         console.log("Fragmenty Tech: ", techContext.fragmentyTech);
         console.log("Oprawa Tech: ", techContext.oprawaTech);
         console.log("Procesy elementów tech: ", techContext.procesyElementowTech);
+        console.log("Procesy produktów tech: ", techContext.procesyProduktowTech);
         console.log("Arkusze: ", techContext.arkusze);
         console.log("Legi: ", techContext.legi);
         console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
@@ -48,10 +49,13 @@ export default function Header({}) {
         console.log("Wykonania tech: ", techContext.wykonania);
         // console.log("listaPapierow: ", appcontext.listaPapierow);
         console.log("grupaOprawaTech: ", techContext.grupaOprawaTech);
-        console.log(
-          "lista wszystkich procesów appcontext.procesList: ",
-          appcontext.procesList
-        );
+        console.table( techContext.procesyElementowTech);
+        console.table( techContext.procesyProduktowTech);
+
+        // console.log(
+        //   "lista wszystkich procesów appcontext.procesList: ",
+        //   appcontext.procesList
+        // );
 
 
         // 
@@ -60,9 +64,7 @@ export default function Header({}) {
     >
       <LeftPane>
         <IconError />
-
         <p className={style.title2}>Technologia </p>
-
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
       </LeftPane>
 
@@ -80,10 +82,7 @@ export default function Header({}) {
             <ClearBTN />
             <SprawdzBTN />
             <ZapisBtnPromise />
-            <IconNavigate
-              className={style.btn_x}
-              logo={IconClose}
-              navi={"/Panel"}
+            <IconNavigate  className={style.btn_x} logo={IconClose}  navi={"/Panel"}
             />
       </RightPane>
     </header>

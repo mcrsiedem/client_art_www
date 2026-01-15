@@ -21,25 +21,17 @@ export default function TABLE_ROW_PROCESY({proces,row }) {
 
     return (
         <tr className={style.row_pliki_tr}>
-        <td></td>
+        {/* <td></td> */}
+        <td>     <Etap proces={proces} row={row}/>     </td>
         <td></td>
         {/* <td></td> */}
         <td>     <Element proces={proces} />     </td>
         <td>     <NazwaProcesu proces={proces} />     </td>
-      <td> </td>
 
-        {/* <td>      <p> {plikiRow.element_id}</p>       </td> */}
-        <td>     <IloscStron proces={proces} />     </td>
-      <td> </td>
-      <td> </td>
-        <td>     <NazwaElementu proces={proces} />     </td>
-      <td> </td>
-      <td> </td>
+        {/* <td>     <IloscStron proces={proces} />     </td> */}
 
-      <td> </td>
-      <td> </td>
-      <td> </td>
-        <td>     <Etap proces={proces} row={row}/>     </td>
+        {/* <td>     <NazwaElementu proces={proces} />     </td> */}
+
       <td> </td>
       <td> </td>
       <td> </td>

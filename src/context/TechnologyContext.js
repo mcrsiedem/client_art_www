@@ -653,16 +653,16 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
 
   // pobierz szczegóły pracay bez otwierania technologii
   // uzwane w widoku zamowienia po kliknięciu prawym
-
+  await clearState();
   const res_zam = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
-  setDane([])
-  setProdukty([])
-  setElementy([])
-  setFragmenty([])
-  setOprawa([])
-  setProcesyElementow([])
-  setHistoriaZamowienia([])
-  setPakowanie([])
+  // setDane([])
+  // setProdukty([])
+  // setElementy([])
+  // setFragmenty([])
+  // setOprawa([])
+  // setProcesyElementow([])
+  // setHistoriaZamowienia([])
+  // setPakowanie([])
   setDane(res_zam.data[0][0])
      setProdukty(res_zam.data[1])
      setElementy(res_zam.data[2])
@@ -676,19 +676,19 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
      setProcesyProduktow(res_zam.data[13])
 
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
-  setDaneTech([]) 
-  setProduktyTech([])
-  setElementyTech([])
-  setFragmentyTech([])
-  setOprawaTech([])
-  setProcesyElementowTech([])
-  setLegi([])
-   setLegiFragmenty([])
-   setArkusze([])
-   setGrupaWykonan([])
-   setWykonania([])
-  setRealizacje([])
-  setProcesyProduktowTech([])
+  // setDaneTech([]) 
+  // setProduktyTech([])
+  // setElementyTech([])
+  // setFragmentyTech([])
+  // setOprawaTech([])
+  // setProcesyElementowTech([])
+  // setLegi([])
+  //  setLegiFragmenty([])
+  //  setArkusze([])
+  //  setGrupaWykonan([])
+  //  setWykonania([])
+  // setRealizacje([])
+  // setProcesyProduktowTech([])
 
 
   setDaneTech(res.data[0][0]) 
@@ -706,12 +706,42 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   setWykonaniaOprawy(res.data[12])
   setRealizacje(res.data[13])
 
-setProcesyProduktowTech([])
     setIsLoading(false)
   //  setShowTechnologyStage(true)
 }
 
 
+const clearState = () =>{
+
+  return new Promise((resolve,reject)=>{
+
+  setDane([])
+  setProdukty([])
+  setElementy([])
+  setFragmenty([])
+  setOprawa([])
+  setProcesyElementow([])
+  setHistoriaZamowienia([])
+  setPakowanie([])
+
+  setDaneTech([]) 
+  setProduktyTech([])
+  setElementyTech([])
+  setFragmentyTech([])
+  setOprawaTech([])
+  setProcesyElementowTech([])
+  setLegi([])
+  setLegiFragmenty([])
+  setArkusze([])
+  setGrupaWykonan([])
+  setWykonania([])
+  setRealizacje([])
+  setProcesyProduktowTech([])
+
+      resolve("OK")
+
+  })
+}
 
 
 async function fechGrupyAndWykonaniaForProcesor(procesor_id) {

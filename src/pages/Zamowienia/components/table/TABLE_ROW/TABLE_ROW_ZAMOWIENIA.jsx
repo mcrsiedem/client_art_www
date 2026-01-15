@@ -57,6 +57,7 @@ const setShowTabs = contextModalInsert.setShowTabs
     );
 
     if(row.technologia_id != null ){
+
       fechparametryTechnologiiDetails(row.id,row.technologia_id)
     }else{
       techContext.setProcesyElementowTech([])

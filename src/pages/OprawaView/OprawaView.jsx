@@ -107,6 +107,8 @@ const WykonaniaTable = () => {
               <th onDoubleClick={()=>{  setSortowanieOprawy("nr")}} > Nr</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
+              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Format</th>
+ 
               <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Do oprawy </th>
               <th onDoubleClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>

@@ -12,6 +12,7 @@ import { addNewGrupa } from "./addNewGrupa";
 import { addNewWykonanieArkusz } from "./addNewWykonanieArkusz";
 import { addNewGrupaOprawa } from "./addNewGrupaOprawa";
 import { addNewWykonanieLegi } from "./addNewWykonanieLegi";
+import { addNewGrupaPostProcesy } from "./addNewGrupaPostProcesy";
 
 export function useProcesy(){
     const contextApp = useContext(AppContext);
@@ -24,6 +25,7 @@ export function useProcesy(){
   const grupaWykonan = techContext.grupaWykonan;
   const wykonania = techContext.wykonania;
     const procesy = techContext.procesyElementow;
+    const procesyProduktowTech = techContext.procesyProduktowTech;
     const setGrupaWykonan = techContext.setGrupaWykonan;
     const setWykonania = techContext.setWykonania;
     const oprawaTech = techContext.oprawaTech;
@@ -44,6 +46,8 @@ export function useProcesy(){
    const new_grupy = [...grupaWykonan];
    const new_wykonania = [...wykonania];
 
+   
+
    oprawaTech.map((oprawa,i)=> {
     let grupa_id = MaxID(new_grupaOprawaTech)
     addNewGrupaOprawa({ new_grupaOprawaTech,oprawa,grupa_id,procesList,czasOprawy,iloscZbieran});
@@ -63,6 +67,22 @@ export function useProcesy(){
         addNewWykonanieLegi({ new_legi, new_wykonania, grupa_id, proces });
       }
     });
+
+
+        procesyProduktowTech.map((proces, i) => {
+          // dodaj nową grupę
+          // dodaj wykonanie do grupy
+
+        let grupa_id = MaxID(new_grupy);
+        //addNewGrupaPostProcesy({ new_grupy, grupa_id, proces });
+
+        
+      //  addNewWykonanieArkusz({ new_arkusze, new_wykonania, grupa_id, proces });
+      
+
+    });
+
+
 
 setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
 setWykonania(new_wykonania)

@@ -75,7 +75,7 @@ const {refreshZamowienia} = useZamowienia()
           setFaktury(res.data[11])
           //pliki
           setProcesyProduktow(res.data[13])
-          socket.emit("realizacja")
+          // socket.emit("realizacja")
            }else{
             alert("Błąd")
            }

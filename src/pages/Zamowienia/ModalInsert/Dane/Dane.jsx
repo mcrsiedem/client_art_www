@@ -777,6 +777,7 @@ function NR_ZAMOWIENIA_stary( ){
       <div className={style.col}>
         <label className={style.label}> Stary nr </label>
         <input
+        disabled
           className={style.input}
           type="text"
           title="Stary nr zamówienia"
@@ -1033,7 +1034,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       <label className={style.label}> Rok </label>
       <input className={style.input} type="text"
             value={daneZamowienia.rok}
-
+      readOnly={true}
             
             onChange={(event) => {
 

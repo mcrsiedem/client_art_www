@@ -42,29 +42,6 @@ export default function TABLE_ROW_PROCESY({proces,row }) {
     );
   }
 
-
-//   function Element({ proces}) {
-//     return (
-//         <select
-//           className={style.select_element}
-//           value={proces.typ_elementu}
-         
-// disabled
-//           onChange={(e) => {
-
-//           }}
-//         >
-//           {}
-//           {_typ_elementu.map((option) => (
-//             <option key={option.id} value={option.id}>
-//               {option.nazwa}
-//             </option>
-//           ))}
-//         </select>
-//     );
-//   }
-
-
     function Element({ proces}) {
     return (
         <input
@@ -86,21 +63,8 @@ disabled
       ></input>
     );
   }
-    function NazwaElementu({ proces }) {
-    return (
-      <input
-        className={style.select_element}
-        value={proces.nazwa_elementu}
-        disabled
-        onChange={(e) => {}}
-      ></input>
-    );
-  }
-  function IloscStron({ proces }) {
-    return (
-      <td className={style.select_strony}>{proces.ilosc_stron}</td>
-    );
-  }
+
+
 
   function Etap({ proces,row}) {
     
@@ -111,22 +75,48 @@ disabled
     
      const _status_wykonania = contextApp._status_wykonania
 
+
+
+          if(proces.status=="3"){
+      return (<div>
+        <p className={style.wtrakcie}> W trakcie</p>
+      </div>)
+
+      
+     }
+
+               if(proces.status=="4"){
+      return (<div>
+        <p className={style.zakonczone}> Zrobione.</p>
+      </div>)
+      }
+
+
+            return (
+      <div>
+        <p className={style.czeka}> Czeka</p>
+      </div>)
+}
+
+  
+
+  function Etap2({ proces,row}) {
+    
+    const contextModalInsert = useContext(ModalInsertContext);
+    const [add,dodajDoZamowienia] = useHistoria()
+    const [etapPlikowZamowienia,etapPlikowGrupyWykonan] = usePliki()
+      const contextApp = useContext(AppContext);
+    
+     const _status_wykonania = contextApp._status_wykonania
+
+
       return (
         <select
           className={style.select_etap}
           value={proces.status}
          
 disabled
-          // onChange={(e) => {  
-          //   etapPlikowZamowienia(e.target.value,proces)
-          //   dodajDoZamowienia(         {
-          //     kategoria: "Pliki",
-          //     event: _typ_elementu.filter(x=> x.id == proces.typ)[0]?.nazwa+ " "+proces.nazwa+" - zmiana z "+getNameOfEtapPliki(proces.etap)+ " na "+getNameOfEtapPliki(e.target.value),
-          //     zamowienie_id: proces.zamowienie_id,
-          //     user_id: DecodeToken(sessionStorage.getItem("token")).id
-          //   })
 
-          // }}
         >
           {}
           {_status_wykonania.map((option) => (
@@ -137,5 +127,3 @@ disabled
         </select>
     );
 }
-
-  

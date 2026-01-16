@@ -446,3 +446,30 @@ height: 100px;
 	position:relative;
 	top:1px;
 }
+
+
+.zakonczone{
+  font-size: 0.8rem;
+  padding-left: 15px;
+  padding-top: 5px;
+  color: #25aa10;
+  font-weight: bold;
+}
+
+.czeka{
+  font-size: 0.8rem;
+  padding-left: 15px;
+  padding-top: 5px;
+
+  color: #878787;
+  font-weight: bold;
+}
+
+.wtrakcie{
+  font-size: 0.8rem;
+  padding-left: 15px;
+  padding-top: 5px;
+
+  color: #f17a12;
+  font-weight: bold;
+}

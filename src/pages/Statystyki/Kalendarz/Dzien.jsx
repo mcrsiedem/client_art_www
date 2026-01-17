@@ -10,6 +10,8 @@ import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { formatujDateZGodzinaIDniemTygodniaPoPolsku } from "actions/formatujDateZGodzinaIDniemTygodniaPoPolsku";
+import { formatujDatePoPolsku } from "actions/formatujDatePoPolsku";
 
 
 export default function Dzien({ grup }) {
@@ -22,7 +24,7 @@ export default function Dzien({ grup }) {
 
   return (
     <div          className={style.container}>
-      <div className={style.data}>  {grup.data}</div>
+      <div className={style.data}>  {formatujDatePoPolsku(grup.data) + " "+ formatujDateZGodzinaIDniemTygodniaPoPolsku(grup.data)} </div>
 
       <div>        {kalendarzDane
         .filter((x) => x.data_spedycji == grup.data)

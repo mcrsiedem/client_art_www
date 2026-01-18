@@ -75,7 +75,7 @@ scrollTable(tableZamowienia)
   const refreshZamowieniaProofy = async () => {
     setIsLoading(true)
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawFaktury.current+"/" + sessionStorage.getItem("token")
+      IP + "zamowienia_proofy/" + sessionStorage.getItem("token")
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);

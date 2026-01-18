@@ -93,21 +93,21 @@ const {refreshZamowienia} = useZamowienia()
        <tbody className={style.tableZam}>
          {zamowienia
           //  .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-           .filter((zam) => {
-            if (selectedUser == 0) {
-              return true;
-            } else {
-             return  zam.opiekun_id == selectedUser;
-            }
-          })
-           .filter(z => z.stan ==3)
-           .filter((zam) => {
-            if (selectedKlient == 0) {
-              return true;
-            } else {
-             return  zam.klient_id == selectedKlient;
-            }
-          })
+          //  .filter((zam) => {
+          //   if (selectedUser == 0) {
+          //     return true;
+          //   } else {
+          //    return  zam.opiekun_id == selectedUser;
+          //   }
+          // })
+          //  .filter(z => z.stan ==3)
+          //  .filter((zam) => {
+          //   if (selectedKlient == 0) {
+          //     return true;
+          //   } else {
+          //    return  zam.klient_id == selectedKlient;
+          //   }
+          // })
           // .filter((zamowienie) => sortWgFaktur({zamowienie}))
 
            .map((row,i) => {

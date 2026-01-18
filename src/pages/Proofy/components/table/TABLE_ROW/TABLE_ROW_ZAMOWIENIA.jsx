@@ -282,8 +282,8 @@ const KlientTableZamowienia = ({ row }) => {
        <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.klientInput}
-      value={row.firma_nazwa}
+      className={style.firma_nazwa}
+      value={row.klient}
       readOnly
 
     />

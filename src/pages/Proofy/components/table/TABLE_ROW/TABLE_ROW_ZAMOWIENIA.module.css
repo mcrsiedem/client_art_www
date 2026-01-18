@@ -433,3 +433,9 @@ height: 100px;
   text-align: end;
   padding-right: 5px;
 }
+
+
+.firma_nazwa{
+  width: 200px;
+  border: none;
+}

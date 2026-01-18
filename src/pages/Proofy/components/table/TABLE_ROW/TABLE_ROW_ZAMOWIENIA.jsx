@@ -17,6 +17,11 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { useZamowienia } from "hooks/useZamowienia";
 import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
+import Klient from "./Klient";
+import Data from "./Data";
+import Format from "./Format";
+import Ilosc from "./Ilosc";
+import Uwagi from "./Data copy";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
   const techContext = useContext(TechnologyContext);
@@ -166,26 +171,14 @@ setOpenModalInsert(true)
         }}
       >
         {/* <IconErrorTable row={row} /> */}
-        <NrTableZamowienia row={row} />
 
-        {/* <td>{row.rok} </td> */}
-        <ShowTechnmologiaBtn
-          row={row}
-          setShowKartaTechnologiczna={setShowKartaTechnologiczna}
-          showKartaTechnologiczna={showKartaTechnologiczna}
-        />
-
-        <KlientTableZamowienia row={row} />
-        <PracaTableZamowienia row={row} i={i} />
-    
-        <NumerWZ row={row} />
-        <NumerFaktury row={row} />
-        <StatuKosztow row={row} />
-        <StatusFaktury row={row} />
+        <Data row={row} />
+        <Klient row={row} />
+        <Format row={row} />
+        <Ilosc row={row} />
+        <Uwagi row={row} />
         <FirmaZamowieniaTable row={row} />
-        {/* <StatusZamowieniaTable row={row} /> */}
-        <EtapZamowieniaTable row={row} />
-        <OpiekunZamowieniaTable row={row} />
+
         <td></td>
       </tr>
 
@@ -276,21 +269,7 @@ const NakladTableZamowienia = ({ row }) => {
   return <td className={style.nakladInput}> {row.naklad.toLocaleString()} </td>;
 };
 
-const KlientTableZamowienia = ({ row }) => {
-  return (
-    <td>
-       <input
-      //firma_nazwa to skrocona nazwa klienta
-      title={row.klient}
-      className={style.firma_nazwa}
-      value={row.klient}
-      readOnly
 
-    />
-    </td>
-   
-  );
-};
 
 
 

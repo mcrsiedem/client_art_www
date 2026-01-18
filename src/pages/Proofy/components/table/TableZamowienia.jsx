@@ -32,62 +32,19 @@ const {refreshZamowienia} = useZamowienia()
      <table className={style.tableZam}>
        <thead className={style.th_head}>
          <tr className={style.table_tr}>
-           {/* <th className={style.col_alert}>!</th> */}
-           <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("nr")
-         refreshZamowienia()
 
-            }} className={style.col_nr}>Nr</th>
-           {/* <th className={style.col_rok}>Rok</th> */}
-           <th title="Technologia" className={style.th_karta}>
-             <img
-               className={style.iconSettings}
-               src={iconFile}
-               onClick={() => {}}
-               alt="Procesy"
-             />
-           </th>
-           <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
-           <th className={style.col_praca}>Praca</th>
-           {/* <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("naklad")
-         refreshZamowienia()
+           <th className={style.firma_nazwa}>Data zamówienia</th>
+           {/* <th className={style.firma_nazwa}><SELECT_KLIENT_ZAMOWWIENIA/></th> */}
+           <th className={style.firma_nazwa}>Klient</th>
 
-            }} className={style.col_strony}>Nakład</th> */}
-           {/* <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("ilosc_stron")
-         refreshZamowienia()
+           <th className={style.firma_nazwa}>Format</th>
+           <th className={style.firma_nazwa}>Ilość</th>
+           <th className={style.firma_nazwa}>Uwagi</th>
+         
 
-            }} className={style.col_strony}>Str.</th> */}
-           {/* <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_przyjecia")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Przyjęcie</th> */}
-           {/* <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_spedycji")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Spedycja</th> */}
-           {/* <th className={style.col_strony}>Netto</th> */}
-           {/* <th  onClick={()=>{
-         contextApp.setSortowanieZamowienia("oprawa_id")
-         refreshZamowienia()
+           <th className={style.firma_nazwa}>Firma</th>
 
-            }}className={style.col_netto}>Oprawa</th> */}
-           <th className={style.col_faktura}>Nr wz</th>
-           <th className={style.col_faktura}>Nr faktury</th>
-           <th className={style.col_status_kosztow}>Koszty</th>
-           <th className={style.col_status_kosztow}>Faktura</th>
-
-           <th className={style.col_firma2}>Firma</th>
-           {/* <th className={style.col_status}>Stan</th> */}
-           {/* <th className={style.col_status}>Status</th> */}
-           <th className={style.col_etap}>Etap</th>
-           <th className={style.col_firma}><SELECT_OPIEKUN_ZAMOWWIENIA/></th>
-           {/* <th className={style.col_uwagi}>Uwagi</th> */}
-
-           {/* <th className={style.col_checkbox}>
-           </th> */}
-           <th className={style.col_alert}></th>
+      
          </tr>
        </thead>
        <tbody className={style.tableZam}>

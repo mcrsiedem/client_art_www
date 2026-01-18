@@ -273,8 +273,12 @@ const _firma = [
     {
       id: 8,
       nazwa: "Wszystkie",
+    }
+  ,
+    {
+      id: 9,
+      nazwa: "Proofy",
     },
-  
   ];
 
 
@@ -302,7 +306,10 @@ const _firma = [
       id: 5,
       nazwa: "Brak faktury",
     },
-    
+        {
+      id: 6,
+      nazwa: "Proofy",
+    },
   
   ];
 

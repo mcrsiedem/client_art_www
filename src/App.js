@@ -30,6 +30,7 @@ import Inspekcja from "pages/Inspekcja/Inspekcja";
 import ProcesoryMini from "pages/Panel/Mini/PrcesoryMini";
 import Procesy from "pages/Procesy/Procesy";
 import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawienie";
+import Proofy from "pages/Proofy/Proofy";
 
 export default function App() {
   return (
@@ -58,6 +59,7 @@ export default function App() {
               <Route path='/gant' element={<Gant />} />
               <Route path='/Oddania' element={<Oddania />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
+              <Route path='/proofy' element={<Proofy/>} />
               <Route path='/users' element={<UserPermissionsTable/>} />
               <Route path='/Inspekcja' element={<Inspekcja/>} />
               <Route path='/Procesy' element={<Procesy/>} />

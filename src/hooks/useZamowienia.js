@@ -67,12 +67,21 @@ scrollTable(tableZamowienia)
 
     // tylko dla Jarka
        if(DecodeToken(sessionStorage.getItem("token")).id==3){
-scrollTable(tableZamowienia)
+    scrollTable(tableZamowienia)
        }
   };
 
 
+  const refreshZamowieniaProofy = async () => {
+    setIsLoading(true)
+    const res = await axios.get(
+      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawFaktury.current+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setZamowienia([...res.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data]);
+      setIsLoading(false)
 
+  };
 
   const odblokujZamowienie = (rowsToDelete) =>{
     axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
@@ -107,5 +116,5 @@ scrollTable(tableZamowienia)
 
 
 
-  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury,refreshZamowieniaNiezamknieteKoszty};
+  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury,refreshZamowieniaNiezamknieteKoszty,refreshZamowieniaProofy};
 }

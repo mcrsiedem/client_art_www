@@ -1,65 +1,52 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, {  useEffect, useRef,useContext } from "react";
 import style from "./Header.module.css";
 import iconClose2 from "assets/x2.svg";
-import iconAdd from "assets/addIcon2.svg";
-import iconAdd2 from "assets/edit3.svg";
 import iconCopy from "assets/edit2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
-import DecodeToken from "pages/Login/DecodeToken";
 import { _etapy_produkcji } from "utils/initialvalue";
-import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
-import { ModalInsertContext } from "context/ModalInsertContext";
-import { zabezpiecz } from "actions/zabezpiecz";
-import Szukaj from "./Szukaj";
-import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
-import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { useZamowienia } from "hooks/useZamowienia";
 
-export default function Header({ dodaj_clikHandler}) {
+export default function Header() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
    const contextApp = useContext(AppContext);
-   const contexModal = useContext(ModalInsertContext);
-    const setSelectedZamowienie = contexModal.setSelectedZamowienie;
-     const contextModalInsert = useContext(ModalInsertContext);
-const setShowTabs = contextModalInsert.setShowTabs
 
-
+  useEffect(() => {
+    if (effectRan.current === true) {
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
 
   return (
     <header onDoubleClick={()=>{  
-            console.log("--------")
-      console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
-      console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
+
+        <p  className={style.title2}>Proofy </p>
       </div>
 
       <div className={style.centerHeaderContener}>
-        {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?         <img
-          title="Dodaj nowe zamówienie..."
-          className={style.icon}
-          src={iconAdd2}
-          onClick={() => {
-            setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
-            setSelectedZamowienie({id:1})
-            dodaj_clikHandler();
-          }}
-          alt="React Logo"
-        /> : <></>}
+
+
+
+
+
+
+
+               
+
 
       </div>
       <div className={style.rightHeaderContener}>
-        <BTN_INSPEKCJA/>
-        <BTN_INFO_ZAMOWIENIA/>
-        <BTN_KOPIUJ/>
+        {/* <BTN_KOPIUJ/>
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
-        <Szukaj/>
+        <Szukaj/> */}
         <img
           className={style.icon2}
           src={iconClose2}
@@ -79,7 +66,6 @@ function BTN_KOPIUJ() {
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
-  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
 <img
           title="Skopiuj zaznaczone..."
@@ -91,7 +77,6 @@ let mes='';
 
 
             for( let grupa of zamowienia.filter(x=> x.select == true)){
-            // for( let grupa of zamowienia){
               mes += grupa.nr+"\t"
               mes +=  grupa.stary_nr || " "+"\t"
               mes += grupa.klient+"\t"
@@ -104,7 +89,6 @@ let mes='';
               mes += grupa.oprawa+"\t"
               mes += _etapy_produkcji.filter((s) => s.id == grupa.etap).map((x) => x.nazwa)+"\t"
               mes += grupa.opiekun+"\t"
-              
               // mes += grupa.przeloty+ " ark. \t"
               mes += "\n"
 
@@ -117,54 +101,80 @@ let mes='';
             );
 
             navigator.clipboard.writeText(mes);
+
+
+
+
+
           }}
           alt="React Logo"
         /> 
   );
 }
+function Szukaj() {
+  const contextApp = useContext(AppContext);
+  const zamowieniaWyszukiwarka = contextApp.zamowieniaWyszukiwarka;
+  const setZamowienia = contextApp.setZamowienia;
+  // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+  return (
+    <input
+      className={style.szukajInput}
+      type="text"
+      title="Znajdź tytuł pracy..."
+      placeholder="Praca..."
+      onChange={(event) => {
+
+        let m = [...zamowieniaWyszukiwarka];
+           m =  m.filter((k) =>
+            // k.tytul.toLowerCase().includes(event.target.value.toLowerCase()) 
+            k.tytul.concat(" ", k.nr ).concat(" ", k.nr_stary ).concat(" ", k.lista_faktur ).concat(" ", k.lista_wz ).toLowerCase().includes(event.target.value.toLowerCase()) 
+          )
+
+        setZamowienia(
+         m
+        );
+
+
+      }}
+    ></input>
+  );
+}
+
 
 function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);
   const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
-  const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
-  const zestawZamowienia= contextApp.zestawZamowienia;
-  const setIsLoading= contextApp.setIsLoading;
-  const {refreshZamowienia} = useZamowienia();
-  const navigate = useNavigate();
+  const sortowanieZamowieniaFaktury= contextApp.sortowanieZamowieniaFaktury;
+  const _sortowanieZamowienieFaktury= contextApp._sortowanieZamowienieFaktury;
+
+    const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
+    const zestawFaktury= contextApp.zestawFaktury;
+    const setIsLoading= contextApp.setIsLoading;
+    
+    const {refreshZamowieniaFaktury} = useZamowienia();
+  
     return (
   
         <select
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
-          value={sortowanieZamowieniaEtap}
+          value={sortowanieZamowieniaFaktury}
           onChange={(event) => {
-
-            if(event.target.value=="Proofy"){
-      navigate("/proofy");
-
-            }
-            else{
                     const promiseA = new Promise((resolve, reject) => {
             setIsLoading(true)
-            setSortowanieZamowieniaEtap(event.target.value)
-            zestawZamowienia.current= event.target.value
+            setSortowanieZamowieniaFaktury(event.target.value)
+            zestawFaktury.current= event.target.value
   
                       resolve(777);
                     })
 
                             promiseA.then(res => {
 
-          refreshZamowienia();
+          refreshZamowieniaFaktury();
         })
-            }
-    
-
-
-
-
 
           }}
         >
-          {contextApp._sortowanieZamowienieEtap.map((option) => (
+          {contextApp._sortowanieZamowienieFaktury.map((option) => (
             <option key={option.id} value={option.nazwa}>
             {option.nazwa}
             </option>
@@ -172,3 +182,6 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
         </select>
     );
   }
+
+
+

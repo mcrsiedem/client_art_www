@@ -27,7 +27,8 @@ export default function Header() {
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
-        {/* <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Faktury </p> */}
+
+        <p  className={style.title2}>Faktury </p>
       </div>
 
       <div className={style.centerHeaderContener}>
@@ -149,7 +150,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
     const setSortowanieZamowieniaFaktury= contextApp.setSortowanieZamowieniaFaktury;
     const zestawFaktury= contextApp.zestawFaktury;
     const setIsLoading= contextApp.setIsLoading;
-    
+      const navigate = useNavigate();
     const {refreshZamowieniaFaktury} = useZamowienia();
   
     return (
@@ -158,7 +159,14 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaFaktury}
           onChange={(event) => {
-                    const promiseA = new Promise((resolve, reject) => {
+
+                        if(event.target.value=="Proofy"){
+      navigate("/proofy");
+
+            }
+            else{
+
+                                  const promiseA = new Promise((resolve, reject) => {
             setIsLoading(true)
             setSortowanieZamowieniaFaktury(event.target.value)
             zestawFaktury.current= event.target.value
@@ -170,6 +178,8 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
 
           refreshZamowieniaFaktury();
         })
+            }
+
 
           }}
         >

@@ -23,7 +23,7 @@ import Format from "./Format";
 import Ilosc from "./Ilosc";
 import Uwagi from "./Data copy";
 
-export default function TABLE_ROW_ZAMOWIENIA({ row, open2, setRow,i }) {
+export default function TABLE_ROW_ZAMOWIENIA({ row,i }) {
   const techContext = useContext(TechnologyContext);
   const contextModalInsert = useContext(ModalInsertContext);
   const technology = techContext.technology; // technologie
@@ -166,11 +166,10 @@ const setShowTabs = contextModalInsert.setShowTabs
        setShowTabs(   {parametry:true,koszty:false,historia:false,faktury:false,kreator: false})
 
 setOpenModalInsert(true)
-          // open2(row.id);
-          // setRow({ id: row.id, prime_id: row.prime_id }); // tutaj pobrać z row zestaw_id ale napierw dodać takie pole w zamowieniach
+    
         }}
       >
-        {/* <IconErrorTable row={row} /> */}
+  
 
         <Data row={row} />
         <Klient row={row} />

@@ -63,10 +63,11 @@ const UserList = () => {
           i automatycznie dopasować ich liczbę oraz rozmiar */}
       <div className={style.usersGrid}>
         {usersIO
-          // .filter(
-          //   (user) =>
-          //     user.userId != DecodeToken(sessionStorage.getItem("token")).id
-          // )
+          .filter(
+            (user) =>
+              // user.userId != DecodeToken(sessionStorage.getItem("token")).id
+              user.userId !=10
+          )
           .map((user, i) => (
             // Pojedynczy element użytkownika
             <div
@@ -99,7 +100,7 @@ const UserList = () => {
             </div>
           ))}
 
-        {usersIO.length > 1 ? (
+        {usersIO.length > 0 && DecodeToken(sessionStorage.getItem("token")).id== 1? (
           <div 
           onClick={()=>{setPokazUzytkownikowOnline(!pokazUzytkownikowOnline)}}
           title={`Użytkownicy zalogowani`} className={style.userCardInfo}>

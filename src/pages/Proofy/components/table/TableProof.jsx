@@ -16,6 +16,7 @@ export default function TableProof({ open2, setRow }) {
             <th className={style.firma_nazwa}>Klient</th>
             <th className={style.firma_nazwa}>Format</th>
             <th className={style.firma_nazwa}>Ilość</th>
+            <th className={style.firma_nazwa}>Faktura</th>
             <th className={style.firma_nazwa}>Uwagi</th>
             <th className={style.firma_nazwa}>Firma</th>
           </tr>

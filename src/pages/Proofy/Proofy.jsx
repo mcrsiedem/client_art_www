@@ -7,10 +7,10 @@ import style from "./Proofy.module.css";
 import Header from "./components/header/Header";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableZamowienia from "./components/table/TableProof";
 import { useZamowienia } from "hooks/useZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import Loading from "components/Loading/Loading";
+import TableProof from "./components/table/TableProof";
 function Proofy() {
 
   const contextModal = useContext(ModalInsertContext);
@@ -53,9 +53,9 @@ const {refreshZamowieniaProofy} = useZamowienia()
     <div className={style.container}>
       <Header />
       <div className={style.multiTableContainer}>
-        <TableZamowienia  open2={open2} setRow={setRow}  />
+        <TableProof  open2={open2} setRow={setRow}  />
       </div>
-          <Loading/>
+        <Loading/>
     </div>
   );
 }

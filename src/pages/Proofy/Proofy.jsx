@@ -7,7 +7,7 @@ import style from "./Proofy.module.css";
 import Header from "./components/header/Header";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableZamowienia from "./components/table/TableZamowienia";
+import TableZamowienia from "./components/table/TableProof";
 import { useZamowienia } from "hooks/useZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import Loading from "components/Loading/Loading";
@@ -43,32 +43,11 @@ const {refreshZamowieniaProofy} = useZamowienia()
 
 
   useEffect(() => {
-    
     checkToken();
   }, []);
 
 
-  // const onClose = useCallback(
-  //   async (ev) => {
-  //     ev.preventDefault();
-  //     await axios
-  //       .put(IP + "setOrderClosed", {
-  //         id: selectedZamowienie.id,
-  //       })
-  //       .then(() => {
-  //         return (ev.returnValue = "Are you sure you want to close?");
-  //       });
-  //   },
-  //   [row]
-  // );
 
-  // useEffect(() => {
-  //   if (openModalInsert) {
-  //     window.addEventListener("beforeunload", onClose);
-  //   } else {
-  //     window.removeEventListener("beforeunload", onClose);
-  //   }
-  // }, [openModalInsert, setOpenModalInsert]);
 
   return (
     <div className={style.container}>

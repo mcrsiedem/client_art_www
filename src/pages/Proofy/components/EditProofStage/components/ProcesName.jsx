@@ -1,21 +1,18 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, {useContext } from "react";
 import style from "../EditProof.module.css";
 
 
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
 
-import { _typ_elementu, reg_int } from "utils/initialvalue";
 
 export default function  ProcesName ({ row }) {
 
     // rowProcesProduktTemporary
 
-  const contexModal = useContext(ModalInsertContext);
   const CONTEXT_MODAL = useContext(ModalInsertContext);
   const contexApp = useContext(AppContext);
   // daneTechEdit = JSON.parse(JSON.stringify(daneTech))
-  const procesListEdit = JSON.parse(JSON.stringify(contexApp.procesList))
   const procesList = contexApp.procesList;
   return (
     <td>
@@ -25,14 +22,14 @@ export default function  ProcesName ({ row }) {
         onChange={(e) => {
           // tutaj ma filtrować się lista wszystkich procesów która wyświetla się w Typie
           // nazwa_id powinna zmienić się chyba w Typie a nie tutaj
-          let procesDomyslny = procesList.find((x) => x.nazwa_id == e.target.value)
+          let procesDomyslny = procesList.find((x) => x.nazwa_id === e.target.value)
             // .map((x) => {
             //   return x;
             // });
 
           CONTEXT_MODAL.setProcesyProduktowTemporary((prev) =>
             prev.map((proces) =>
-              proces.id == row.id
+              proces.id === row.id
                 ? {
                     ...row,
                     ...procesDomyslny,
@@ -52,7 +49,7 @@ export default function  ProcesName ({ row }) {
 
         {
             // tylko procesy produktowe czyli produkt == 1 
-        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt == 1).map((option) => option.nazwa)))
+        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt === 1).map((option) => option.nazwa)))
           // 2. Mapujemy po każdej unikalnej nazwie
           .map((unikalnaNazwa) => {
             // 3. Znajdujemy pierwszy obiekt w oryginalnej liście  pasujący do tej unikalnej nazwy, aby pobrać jego ID.

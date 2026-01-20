@@ -23,7 +23,7 @@
   border-radius: 10px;
   z-index: 3;
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 50px 150px 50px;
 
 }
 
@@ -41,7 +41,7 @@
   border-top-right-radius: 10px;
   height: 50px;
 
-    padding: 20px;
+  padding: 20px;
   background-color: #fcfcfc; /* Bardzo jasne, neutralne tło */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.534); /* Subtelniejszy cień */
@@ -62,7 +62,7 @@
   justify-content: start;
   align-items: center;
   color: #6a6a6a;
-  font-size: 2rem;
+  font-size: 1.5rem;
   /* font-weight: bold; */
   padding-top: 2px;
   padding-left: 10px;
@@ -172,9 +172,16 @@ background-color: #bebebe15;
   width: 15px;
 }
 
-.col_naklad{
-  width: 100px;
+
+
+.col_mala{
+  width: 80px;
 }
+.col_srednia{
+  width: 150px;
+}
+
+
 .col_ilosc_uzytkow{
   width: 130px;
 }
@@ -292,10 +299,11 @@ background-color: #bebebe15;
 }
 
 .table th {
-  padding: 14px 15px; /* Więcej przestrzeni */
-  text-align: left;
-  font-weight: 600;
+  padding: 3px 15px; 
   border-bottom: 3px solid #ffffff; /* Lekko ciemniejsza linia */
+  /* background-color: #535353;
+   */
+   height: 20px;
 }
 
 .table th:last-child {
@@ -312,8 +320,13 @@ background-color: #bebebe15;
 .table tbody tr {
   background-color: #ffffff;
   transition: background-color 0.3s ease;
-}
 
+}
+.table tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+
+}
 .table tbody tr:hover {
   background-color: #ebf4ff; /* Bardzo delikatny, subtelny błękit przy najechaniu */
 }
@@ -336,3 +349,6 @@ background-color: #bebebe15;
 .table tbody tr:last-child td {
   border-bottom: none;
 }
+
+
+

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useContext  } from "react";
 import style from "../EditProof.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { _typ_elementu, reg_int } from "utils/initialvalue";
 export default function  Info  ({ row }) {
   // const contexModal = useContext(ModalInsertContext);
   // const handleUpdateRowProcesyElementow = contexModal.handleUpdateRowProcesyElementow;

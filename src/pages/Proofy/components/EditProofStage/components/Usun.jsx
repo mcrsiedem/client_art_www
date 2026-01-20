@@ -3,15 +3,12 @@ import style from "../EditProof.module.css";
 
 import iconTrash from "assets/trash2.svg";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { _typ_elementu } from "utils/initialvalue";
-import { useHistoria } from "hooks/useHistoria";
 export default function Usun({ row}) {
 
 
 
       const CONTEXT_MODAL = useContext(ModalInsertContext);
     
-    const [add] = useHistoria()
   return (
     <td className={style.col_button}>
       <div>
@@ -20,7 +17,7 @@ export default function Usun({ row}) {
           src={iconTrash}
           onClick={() => {
 
-            if(row.zamowienie_id == 1){
+            if(row.zamowienie_id === 1){
               CONTEXT_MODAL.setProcesyProduktowTemporary(CONTEXT_MODAL.procesyProduktowTemporary.filter((p) => p.id !== row.id));
 
 

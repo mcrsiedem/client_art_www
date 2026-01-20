@@ -23,7 +23,6 @@ const modalcontext = useContext(ModalInsertContext);
 
 
 function Zamknij({setShowEditProof}) {
-  const modalContext = useContext(ModalInsertContext);
 
 
   return (

@@ -46,7 +46,7 @@ const FirmaZamowieniaTable = ({ row }) => {
     <input
       title={row.klient}
       className={style.tytulfirma}
-      value={_firma.filter((s) => s.id == row.firma_id).map((x) => x.nazwa_skrocona)}
+      value={_firma.filter((s) => s.id === row.firma_id).map((x) => x.nazwa_skrocona)}
       readOnly
 
     />

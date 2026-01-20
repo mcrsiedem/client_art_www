@@ -40,16 +40,16 @@ function Table() {
     <div className={style.main}>
       <table className={style.table}>
         <thead>
-          <tr>
+          <tr className={style.table_tr}>
             {/* <th className={style.expand}>ID</th> */}
             <th className={style.expand}>#</th>
-            <th className={style.col_proces}>Proces</th>
-            <th className={style.col_proces}>Typ</th>
-            <th className={style.col_ilosc_uzytkow}>Ilość użytków</th>
-            <th className={style.col_naklad}>Naklad</th>
+            <th className={style.col_mala}>Data</th>
+            <th className={style.expand2}>Klient</th>
+            <th className={style.col_mala}>Format</th>
+            <th className={style.col_mala}>Ilość</th>
 
-            <th className={style.col_wersja}>Opis</th>
-            <th className={style.col_wersja}></th>
+            <th className={style.col_srednia}>Faktura</th>
+            <th className={style.expand2}>Uwagi</th>
             {/* <th className={style.col_wersja}>Uwagi</th> */}
           </tr>
         </thead>
@@ -72,9 +72,9 @@ function Table() {
           })}
         </tbody>
       </table>
-      <div className={style.dodaj_proces_row}>
+      {/* <div className={style.dodaj_proces_row}>
          <button className={style.btn_dodaj_proces} onClick={()=> addProcessProdukt()}>Nowy</button>
-      </div>
+      </div> */}
      
     </div>
   );

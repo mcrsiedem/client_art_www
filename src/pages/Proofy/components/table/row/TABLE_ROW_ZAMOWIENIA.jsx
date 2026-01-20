@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import style from "./TABLE_ROW_ZAMOWIENIA.module.css";
 import { AppContext } from "context/AppContext";
 
@@ -8,8 +8,12 @@ import Format from "./Format";
 import Ilosc from "./Ilosc";
 import Uwagi from "./Data copy";
 import NrFaktury from "./NrFaktury";
+import EditProof from "../../EditProofStage/EditProof";
 
 export default function TABLE_ROW_ZAMOWIENIA({ row }) {
+
+    const [showEditProof, setShowEditProof] = useState(false);
+  
 
   return (
     <>
@@ -17,7 +21,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row }) {
         onContextMenu={() => {}}
         className={          row.select ? style.row_zamowienia_select : style.row_zamowienia        }
         key={row.id}
-        onDoubleClick={() => {}}
+        onDoubleClick={() => {setShowEditProof(true)}}
       >
         <Data row={row} />
         <Klient row={row} />
@@ -29,6 +33,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row }) {
 
         <td></td>
       </tr>
+      <EditProof showEditProof={showEditProof} setShowEditProof={setShowEditProof}/>
     </>
   );
 }

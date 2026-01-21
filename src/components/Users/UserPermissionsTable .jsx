@@ -17,7 +17,7 @@ const PERMISSION_KEYS = [
     'papier_usun', 'procesy_edycja', 'wersja_max', 'mini_druk',
     'mini_falc', 'mini_oprawa', 'mini_uv', 'mini_inne',
     'manage_druk', 'manage_falc', 'manage_oprawa', 'manage_inne',
-    'uprawnienia_ustaw', 'realizacje_dodaj', 'realizacje_usun', 'gant',
+    'uprawnienia_ustaw', 'realizacje_dodaj', 'realizacje_usun', 'gant','procesy_kooperacja'
 ];
 
 // Mapowanie kluczy na bardziej czytelne polskie nazwy
@@ -38,7 +38,7 @@ const PERMISSION_LABELS = {
     manage_druk: 'Manage Druk', manage_falc: 'Manage Falc',
     manage_oprawa: 'Manage Oprawa', manage_inne: 'Manage Inne',
     uprawnienia_ustaw: 'Uprawnienia (Ustaw)', realizacje_dodaj: 'Realizacje (Dodaj)',
-    realizacje_usun: 'Realizacje (Usuń)', gant: 'Gantt',
+    realizacje_usun: 'Realizacje (Usuń)', gant: 'Gantt',procesy_kooperacja: 'Kooperacja',
 };
 
 // Symulowane dane użytkowników (z wartościami INT dla Asystent/Procesor)

@@ -20,6 +20,7 @@ import Loading from "components/Loading/Loading";
 import { useSocket } from "context/SocketContext";
 import KalendarzPane from "./row/components/KalendarzPane/KalendarzPane";
 import NaswietleniaPane from "./row/components/NaswietleniaPane/NaswietleniaPane";
+import { sprawdzDostep } from "actions/sprawdzDostep";
 
 export default function ProcesyView( ) {
   const navigate = useNavigate();
@@ -49,8 +50,16 @@ export default function ProcesyView( ) {
         if (res.data.Status === "Success") {
           console.log("fechGrupyAndWykonaniaForProcesor")
           fechGrupyAndWykonaniaForProcesor(1);
-          setSelectedProcesor(1);
-          setSelectedProces(1);
+
+          if(sprawdzDostep("procesy_kooperacja")){
+            setSelectedProcesor(36);
+            setSelectedProces(17);
+          }else{
+            setSelectedProcesor(1);
+            setSelectedProces(1);
+          }
+
+          // setSelectedProces(1);
           setProcesory(
             procesory
               ?.map((t) => {

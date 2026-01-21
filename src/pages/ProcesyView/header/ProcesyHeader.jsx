@@ -18,6 +18,7 @@ import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 import { wagaArkuszy } from "actions/wagaArkuszy";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSocket } from "context/SocketContext";
+import { sprawdzDostep } from "actions/sprawdzDostep";
 
 
 function ProcesyHeader() {
@@ -432,11 +433,16 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
 
         }}
       >
-        {procesListName?.filter(x=>x.id !=6).map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.nazwa}
-          </option>
-        ))}
+        {procesListName
+  ?.filter(x => 
+    x.id !== 6 && // Zawsze odfiltruj 6
+    (!sprawdzDostep("procesy_kooperacja") || x.id == 17) // Jeśli dostęp=true, to odfiltruj też 1
+  )
+  .map((option) => (
+    <option key={option.id} value={option.id}>
+      {option.nazwa}
+    </option>
+  ))}
       </select>
     </div>
   );}

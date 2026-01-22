@@ -17,6 +17,7 @@ export default function PrzelotyWykonania({ rowWykonanie }) {
             updateWykonanie({
               ...rowWykonanie,
               przeloty: e.target.value,
+              update:true
             });
           }
         }}

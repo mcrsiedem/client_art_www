@@ -1,0 +1,36 @@
+.footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  padding-top: 8px;
+  padding-left: 10px;
+  gap: 20px;
+  padding-bottom: 10px;
+  padding: 20px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.534);
+  overflow-x: auto;
+  height: 50px;
+}
+
+.btn {
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  border: 2px solid rgba(167, 167, 167, 0.274);
+  color: #212121;
+  font-size: 1rem;
+  background-color: rgb(200, 200, 200);
+
+}
+
+.btn:hover {
+  /* background-color: #a1a1a115; */
+  background-color: rgb(222, 222, 222);
+
+
+}

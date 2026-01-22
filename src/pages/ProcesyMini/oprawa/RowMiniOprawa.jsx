@@ -220,6 +220,8 @@ const KlientProcesGrup = ({ grup }) => {
     </td>
   );
 };
+
+
 const TytulProcesGrup = ({ grup }) => {
 
   //nazwa_elementu

@@ -1,5 +1,5 @@
 
-import style from "../EditProof.module.css";
+import style from "./Footer.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useHistoria } from "hooks/useHistoria";
 import { useStatus } from "hooks/useStatus";

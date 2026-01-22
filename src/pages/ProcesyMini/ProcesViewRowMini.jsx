@@ -687,6 +687,9 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
              console.log("wydanie2")
  await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:event.target.value});
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+          }else{
+             console.log("brak uprawnien do wydania papieru")
+
           }
 
         

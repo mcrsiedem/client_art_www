@@ -126,6 +126,19 @@ export function useZamowienia() {
     refreshZamowienia();
   }
 
+
+
+    async function edytujProofa(row) {
+
+      console.log(row)
+    // await axios.put(
+    //   IP + "edytuj_proofa/" + sessionStorage.getItem("token"),
+    //   row,
+    // );
+
+    // refreshZamowienia();
+  }
+
   return {
     refreshZamowienia,
     odblokujZamowienie,
@@ -134,5 +147,6 @@ export function useZamowienia() {
     refreshZamowieniaFaktury,
     refreshZamowieniaNiezamknieteKoszty,
     refreshZamowieniaProofy,
+    edytujProofa
   };
 }

@@ -3,6 +3,7 @@ import style from "./Footer.module.css";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useHistoria } from "hooks/useHistoria";
 import { useStatus } from "hooks/useStatus";
+import { useZamowienia } from "hooks/useZamowienia";
 import { useContext } from "react";
 
 
@@ -11,23 +12,10 @@ export default function Footer() {
   const modalContext = useContext(ModalInsertContext);
 
     const contextModalInsert = useContext(ModalInsertContext);
-    const daneZamowienia = contextModalInsert.daneZamowienia
-    const [add] = useHistoria()
-   const [setStatus] = useStatus()
+    const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary
 
-   const sprawdzKolejnoscIndeksow = (array) => {
-  // Sprawdzamy każdy element tablicy.
-  // 'element' to bieżący obiekt, 'index' to pozycja tego obiektu w tablicy (0, 1, 2, ...).
-  return array.every((element, index) => {
-    // Oczekiwany indeks to pozycja w tablicy + 1, ponieważ chcemy, żeby było 1, 2, 3, ...
-    const oczekiwanyIndeks = index + 1;
+   const {edytujProofa} = useZamowienia()
 
-    // Sprawdzamy, czy wartość pola 'indeks' w obiekcie jest równa oczekiwanemu indeksowi.
-    // Używamy Number() na wszelki wypadek, gdyby wartość 'indeks' była stringiem,
-    // choć w Twoim przykładzie jest number.
-    return Number(element.indeks) === oczekiwanyIndeks;
-  });
-};
 
 
 
@@ -37,45 +25,8 @@ export default function Footer() {
         className={style.btn}
         onClick={() => {
 
-          if(sprawdzKolejnoscIndeksow(modalContext.procesyProduktowTemporary.filter(x=> x.delete !== true))){
-                      modalContext.setShowProcesyProduktow(false);
-           modalContext.setProcesyProduktow( modalContext.procesyProduktowTemporary.map(row => {
-            if(row.delete=== true && row.historia !== true){
-              add(         {
-            kategoria: "Procesy produktu",
-            event: "OPRAWA_ID: "+row.oprawa_id+ " - kasowanie procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } 
-      
-            if(row.insert=== true && row.historia !== true && row.update !== true){
-              add(         {
-            kategoria: "Procesy produktu",
-            event: "OPRAWA_ID: "+row.oprawa_id+ " - dodanie procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } 
-                  
-            if(row.update=== true && row.historia === false){
-              add(         {
-            kategoria: "Procesy produktu",
-            event: "OPRAWA_ID: "+row.oprawa_id+ " - zmiana procesu  ",
-            zamowienie_id: daneZamowienia.id
-          })
-     setStatus(3)
-          return {...row, historia: true}
-            } else return row
 
-
-}))
-          }else{
-            alert("Ponumeruj ładnie kolejność : ) ")
-          }
-
+edytujProofa(procesyProduktowTemporary[0])
 
 
         }}

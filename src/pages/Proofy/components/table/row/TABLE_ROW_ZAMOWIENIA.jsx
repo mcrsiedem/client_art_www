@@ -26,9 +26,8 @@ export default function TABLE_ROW_ZAMOWIENIA({ row }) {
         className={ row.select ? style.row_zamowienia_select : style.row_zamowienia        }
         key={row.id}
         onDoubleClick={() => {
-          setProcesyProduktowTemporary([row])
-
-          setShowEditProof(true)}}
+        setProcesyProduktowTemporary([row])
+        setShowEditProof(true)}}
       >
         <Data row={row} />
         <Klient row={row} />

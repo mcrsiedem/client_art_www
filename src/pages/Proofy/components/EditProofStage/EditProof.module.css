@@ -356,3 +356,17 @@ background-color: #bebebe15;
   width: 20px;
   border: none;
 }
+
+.col{
+  width: 100px;
+  border: none;
+  padding: 3px;
+}
+
+.col_klient{
+  /* width: 100px; */
+  /* border: #333 dashed 1px; */
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+}

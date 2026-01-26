@@ -66,7 +66,7 @@ function Table() {
                  <Klient row={row}/>
                  <Format row={row}/>
                  <Ilosc row={row}/>
-                 <NrFaktry row={row}/>
+                 <NrFaktury row={row}/>
                  <Uwagi row={row}/>
                  
                  {/* <ProcessTyp row={row}/> 
@@ -104,14 +104,31 @@ function Id ({ row })  {
   );
 };
 function Format ({ row })  {
+      const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
   return (
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.firma_nazwa}
+      className={style.col}
       value={row.format}
-      readOnly
+               onChange={(event) => {
+          setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            format: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+        
+         }}
 
     />
     </td>
@@ -120,23 +137,35 @@ function Format ({ row })  {
 };
 
 function Klient ({ row })  {
+    const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   const contextApp = useContext(AppContext);
   return (
     <td>
 <select
-        className={style.klient}
+        className={style.col_klient}
         value={row.klient_id}
         onChange={(event) => {
-          console.log("OK")
-      //     setDaneZamowienia({
-      //       ...daneZamowienia,
-      //       klient_id: event.target.value,
-      //       status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,
-      //       update: true,
-      //     });
-      //       // 
-      // // setStaus(3)
-      //      ;
+            // setProcesyProduktowTemporary([{...procesyProduktowTemporary, klient_id: event.target.value,update: true}]);
+
+
+setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            klient_id: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+
         }}
       >
         <option key={1} value={"0"}> 
@@ -159,14 +188,31 @@ function Klient ({ row })  {
 
 
 function Ilosc ({ row })  {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
   return (
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.firma_nazwa}
+      className={style.col}
       value={row.ilosc}
-      readOnly
+                     onChange={(event) => {
+          setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            ilosc: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+        
+         }}
 
     />
     </td>
@@ -175,6 +221,8 @@ function Ilosc ({ row })  {
 };
 function Data({row}){
   const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
   const daneZamowienia = contextModalInsert.daneZamowienia;
 const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
@@ -182,9 +230,20 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   <td>
       <input className={style.select} type="date"
          value={row.data_zamowienia}
-         disabled
+        //  disabled
          onChange={(event) => {
-            // setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+          setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            data_zamowienia: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
         
          }}></input>
          </td>
@@ -192,15 +251,32 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
   );
 }
 
-function NrFaktry ({ row })  {
+function NrFaktury ({ row })  {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
   return (
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.firma_nazwa}
+      className={style.col}
       value={row.nr_faktury}
-      readOnly
+                     onChange={(event) => {
+          setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            nr_faktury: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+        
+         }}
 
     />
     </td>
@@ -210,14 +286,31 @@ function NrFaktry ({ row })  {
 
 
 function Uwagi ({ row })  {
+  const contextModalInsert = useContext(ModalInsertContext);
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const setProcesyProduktowTemporary = contextModalInsert.setProcesyProduktowTemporary;
   return (
     <td>
        <input
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
-      className={style.firma_nazwa}
+      className={style.col}
       value={row.uwagi}
-      readOnly
+                     onChange={(event) => {
+          setProcesyProduktowTemporary(
+      procesyProduktowTemporary.map((t) => {
+        if (t.id == row.id) {
+          return {...t,
+            uwagi: event.target.value,
+            update: true
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+        
+         }}
 
     />
     </td>

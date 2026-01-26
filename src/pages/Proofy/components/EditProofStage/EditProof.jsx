@@ -15,6 +15,7 @@ import Naklad from "./components/Naklad";
 import Info from "./components/Info";
 import Indeks from "./components/Indeks";
 import Usun from "./components/Usun";
+import { AppContext } from "context/AppContext";
 export default function EditProof({showEditProof,setShowEditProof}) {
 
     const modalContext = useContext(ModalInsertContext);
@@ -47,21 +48,27 @@ function Table() {
             <th className={style.expand2}>Klient</th>
             <th className={style.col_mala}>Format</th>
             <th className={style.col_mala}>Ilość</th>
-
             <th className={style.col_srednia}>Faktura</th>
             <th className={style.expand2}>Uwagi</th>
             {/* <th className={style.col_wersja}>Uwagi</th> */}
           </tr>
         </thead>
         <tbody>
-          {procesyProduktowTemporary?.sort((a, b) => a.indeks - b.indeks)
-          .filter((x) => x.delete != true)
+          {/* {procesyProduktowTemporary?.sort((a, b) => a.indeks - b.indeks) */}
+          {procesyProduktowTemporary
+          ?.filter((x) => x.delete != true)
           .map((row, i) => {
             return (
               <tr key={row.id}>
                 {/* <td className={style.select_indeks}>{row.id}</td> */}
-                <Indeks row={row}/>
-                 <ProcesName row={row}/>
+                <Id row={row}/>
+                 <Data row={row}/>
+                 <Klient row={row}/>
+                 <Format row={row}/>
+                 <Ilosc row={row}/>
+                 <NrFaktry row={row}/>
+                 <Uwagi row={row}/>
+                 
                  {/* <ProcessTyp row={row}/> 
                  <IloscUzytkow row={row}/>
                  <Naklad row={row}/>
@@ -79,3 +86,141 @@ function Table() {
     </div>
   );
 }
+
+
+function Id ({ row })  {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.col_id}
+      value={row.id}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+function Format ({ row })  {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.firma_nazwa}
+      value={row.format}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+
+function Klient ({ row })  {
+  const contextApp = useContext(AppContext);
+  return (
+    <td>
+<select
+        className={style.klient}
+        value={row.klient_id}
+        onChange={(event) => {
+          console.log("OK")
+      //     setDaneZamowienia({
+      //       ...daneZamowienia,
+      //       klient_id: event.target.value,
+      //       status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,
+      //       update: true,
+      //     });
+      //       // 
+      // // setStaus(3)
+      //      ;
+        }}
+      >
+        <option key={1} value={"0"}> 
+           wybierz...
+          </option>
+        {contextApp.clients
+
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma}
+          </option>
+        ))}
+      </select>
+    </td>
+   
+  );
+};
+
+
+
+
+function Ilosc ({ row })  {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.firma_nazwa}
+      value={row.ilosc}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+function Data({row}){
+  const contextModalInsert = useContext(ModalInsertContext);
+  const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+  return(
+  <td>
+      <input className={style.select} type="date"
+         value={row.data_zamowienia}
+         disabled
+         onChange={(event) => {
+            // setDaneZamowienia({...daneZamowienia, data_przyjecia: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
+        
+         }}></input>
+         </td>
+  
+  );
+}
+
+function NrFaktry ({ row })  {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.firma_nazwa}
+      value={row.nr_faktury}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+
+
+function Uwagi ({ row })  {
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.klient}
+      className={style.firma_nazwa}
+      value={row.uwagi}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};

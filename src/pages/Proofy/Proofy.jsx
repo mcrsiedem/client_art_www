@@ -11,15 +11,20 @@ import { useZamowienia } from "hooks/useZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import Loading from "components/Loading/Loading";
 import TableProof from "./components/table/TableProof";
+import { AppContext } from "context/AppContext";
+import { getClients } from "actions/getClients";
 function Proofy() {
 
+    const contextApp = useContext(AppContext);
+  
   const contextModal = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
   const navigate = useNavigate();
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 const {refreshZamowieniaProofy} = useZamowienia()
-
+  const setClients = contextApp.setClients;
+  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
 
   const open2 = () => {
     setOpenModalInsert(true);
@@ -33,6 +38,7 @@ const {refreshZamowieniaProofy} = useZamowienia()
       .then((res) => {
         if (res.data.Status === "Success") {
           refreshZamowieniaProofy();
+          getClients(setClients, setClientsWyszukiwarka);
 
         } else {
           navigate("/Login");

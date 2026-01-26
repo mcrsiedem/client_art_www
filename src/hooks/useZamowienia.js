@@ -5,116 +5,134 @@ import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
-  const tableZamowienia= contextApp.tableZamowienia;
-  const setIsLoading= contextApp.setIsLoading;
+  const tableZamowienia = contextApp.tableZamowienia;
+  const setIsLoading = contextApp.setIsLoading;
 
-
-   const scrollTable = (table) => {
-  if(table.current != null) {
-      table.current.scrollTo({ top: 20000, behavior: "auto" })
-  }
-  
-};
+  const scrollTable = (table) => {
+    if (table.current != null) {
+      table.current.scrollTo({ top: 20000, behavior: "auto" });
+    }
+  };
 
   const refreshZamowienia = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+      IP +
+        "zamowienia/" +
+        contextApp.sortowanieZamowienia.current +
+        "/" +
+        contextApp.zestawZamowienia.current +
+        "/" +
+        sessionStorage.getItem("token"),
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
-      setIsLoading(false)
+    setIsLoading(false);
 
-      // console.log("----zamowienia----")
-      // console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
-      // console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
-
-       if(DecodeToken(sessionStorage.getItem("token")).id==3){
-scrollTable(tableZamowienia)
-       }
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
   };
-
 
   const refreshZamowieniaNiezamknieteKoszty = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawZamowienia.current+"/" + sessionStorage.getItem("token")
+      IP +
+        "zamowienia/" +
+        contextApp.sortowanieZamowienia.current +
+        "/" +
+        contextApp.zestawZamowienia.current +
+        "/" +
+        sessionStorage.getItem("token"),
     );
-    contextApp.setZamowienia([...res.data.filter( row => row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3 && row.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id)]);
-    contextApp.setZamowieniaWyszukiwarka([...res.data.filter( row => row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3)]);
-      setIsLoading(false)
+    contextApp.setZamowienia([
+      ...res.data.filter(
+        (row) =>
+          row.etap == 16 &&
+          row.koszty_status == 1 &&
+          row.faktury_status != 3 &&
+          row.opiekun_id == DecodeToken(sessionStorage.getItem("token")).id,
+      ),
+    ]);
+    contextApp.setZamowieniaWyszukiwarka([
+      ...res.data.filter(
+        (row) =>
+          row.etap == 16 && row.koszty_status == 1 && row.faktury_status != 3,
+      ),
+    ]);
+    setIsLoading(false);
 
-scrollTable(tableZamowienia)
-       
+    scrollTable(tableZamowienia);
   };
-
-
-
-
 
   const refreshZamowieniaFaktury = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const res = await axios.get(
-      IP + "zamowienia/"+contextApp.sortowanieZamowienia.current+"/"+contextApp.zestawFaktury.current+"/" + sessionStorage.getItem("token")
+      IP +
+        "zamowienia/" +
+        contextApp.sortowanieZamowienia.current +
+        "/" +
+        contextApp.zestawFaktury.current +
+        "/" +
+        sessionStorage.getItem("token"),
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
-      setIsLoading(false)
-      //  console.log("----faktury----")
-      // console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
-      // console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
-
+    setIsLoading(false);
 
     // tylko dla Jarka
-       if(DecodeToken(sessionStorage.getItem("token")).id==3){
-    scrollTable(tableZamowienia)
-       }
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
   };
 
-
   const refreshZamowieniaProofy = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const res = await axios.get(
-      IP + "zamowienia_proofy/" + sessionStorage.getItem("token")
+      IP + "zamowienia_proofy/" + sessionStorage.getItem("token"),
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
-      setIsLoading(false)
-
+    setIsLoading(false);
   };
 
-  const odblokujZamowienie = (rowsToDelete) =>{
-    axios.delete(IP + "odblokuj_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
+  const odblokujZamowienie = (rowsToDelete) => {
+    axios
+      .delete(IP + "odblokuj_zamowienie/" + sessionStorage.getItem("token"), {
+        data: { row: rowsToDelete },
+      })
       .then((res) => {
         refreshZamowienia();
       });
-  }
-
+  };
 
   const deleteZamowienie = (rowsToDelete) => {
-    axios.delete(IP + "delete_zamowienie/"+ sessionStorage.getItem("token"), { data: { row: rowsToDelete } })
+    axios
+      .delete(IP + "delete_zamowienie/" + sessionStorage.getItem("token"), {
+        data: { row: rowsToDelete },
+      })
       .then((res) => {
-      refreshZamowienia()
+        refreshZamowienia();
       });
+  };
+
+  async function zmienEtapWydrukowane(techologie) {
+    await axios.put(
+      IP + "zmieni_etap_wydrukowane/" + sessionStorage.getItem("token"),
+
+      techologie,
+    );
+
+    refreshZamowienia();
   }
 
-
-      async function zmienEtapWydrukowane(techologie) {
-       await axios.put(
-          IP +
-            "zmieni_etap_wydrukowane/" +
-            sessionStorage.getItem("token"),
-          
-            techologie
-          
-        );
-
-        refreshZamowienia()
-      }
-
-
-
-
-
-  return {refreshZamowienia,odblokujZamowienie,deleteZamowienie,zmienEtapWydrukowane,refreshZamowieniaFaktury,refreshZamowieniaNiezamknieteKoszty,refreshZamowieniaProofy};
+  return {
+    refreshZamowienia,
+    odblokujZamowienie,
+    deleteZamowienie,
+    zmienEtapWydrukowane,
+    refreshZamowieniaFaktury,
+    refreshZamowieniaNiezamknieteKoszty,
+    refreshZamowieniaProofy,
+  };
 }

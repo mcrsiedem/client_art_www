@@ -11,6 +11,7 @@ import ZapiszBTN from "./components/ZapiszBTN";
 import ZamknijBTN from "./components/ZamknijBTN";
 import SprawdzBTN from "./components/SprawdzBTN";
 import Loading from "components/Loading/Loading";
+import OddajBTN from "./components/OddajBTN";
 // import { useState } from "react";
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -39,7 +40,7 @@ export default function Header({
       >
         <div className={style.title}>
           {/* <LockDradDrop /> */}
-          Zamówienie
+          Zamówienie      
           {readOnly && (
             <div>
               otwarte {stanOtwarciaZamowienia.data} przez{" "}
@@ -53,6 +54,7 @@ export default function Header({
             <> </>
           ) : (
             <>
+        
               <SprawdzBTN />
               <ZapiszJakoBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs}  />
               <ZapiszBTN setShowSaveAs={setShowSaveAs} setSaveAs={setSaveAs} dialogBox={dialogBox} />

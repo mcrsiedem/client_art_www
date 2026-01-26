@@ -3,10 +3,13 @@ import { useContext } from "react";
 import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
+import { ModalInsertContext } from "context/ModalInsertContext";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
   const tableZamowienia = contextApp.tableZamowienia;
   const setIsLoading = contextApp.setIsLoading;
+  const zamowienia = contextApp.zamowienia;
+  const setZamowienia = contextApp.setZamowienia;
 
   const scrollTable = (table) => {
     if (table.current != null) {
@@ -128,15 +131,31 @@ export function useZamowienia() {
 
 
 
-    async function edytujProofa(row) {
+    async function edytujProofa(row,{setShowEditProof}) {
 
-      console.log(row)
-    // await axios.put(
-    //   IP + "edytuj_proofa/" + sessionStorage.getItem("token"),
-    //   row,
-    // );
+      // console.log(row)
+   const res = await axios.put(
+      IP + "edytuj_proofa/" + sessionStorage.getItem("token"),
+      row,
+    );
 
-    // refreshZamowienia();
+    if(res.data.status == "ok"){
+            setShowEditProof(false)
+      setZamowienia(
+      zamowienia.map((t) => {
+        if (t.id == row.id) {
+          return {...row
+          }
+        } else {
+          return t;
+        }
+      })
+    );
+    }
+else{
+  alert(res.data.status)
+}
+
   }
 
   return {

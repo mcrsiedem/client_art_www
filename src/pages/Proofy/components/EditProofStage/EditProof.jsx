@@ -26,7 +26,7 @@ if(showEditProof){
    <Window>
       <Header setShowEditProof={setShowEditProof}/>
       <Table />
-      <Footer />
+      <Footer setShowEditProof={setShowEditProof}/>
    </Window>
   );
 }

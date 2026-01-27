@@ -6,11 +6,14 @@ export default function ZapiszJakoBTN({ setShowSaveAs,setSaveAs,}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const isSaveButtonDisabled = contextModalInsert.isSaveButtonDisabled;
   const produkty= contextModalInsert.produkty;
+  const historiaZamowienia = contextModalInsert.historiaZamowienia;
+  const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
 
   return (
     <button
       disabled={isSaveButtonDisabled}
       onClick={async () => {
+
 
         if(produkty[0].naklad){
         setShowSaveAs(true);

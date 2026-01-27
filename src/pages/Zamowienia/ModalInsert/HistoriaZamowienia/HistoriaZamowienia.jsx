@@ -33,6 +33,7 @@ function HISTORIA_TABLE() {
             <th className={style.th_kategoria}>Kategoria</th>
             <th className={style.col4}>Zdarzenie</th>
             <th className={style.th_kategoria}>Użytkownik</th>
+            {/* <th className={style.th_kategoria}>ID ZAM</th> */}
           </tr>
         </thead>
         <tbody className={style.table_historia_body}>
@@ -49,6 +50,7 @@ function HISTORIA_TABLE() {
                   <td>{row.kategoria}</td>
                   <td>{row.event}</td>
                   <td>{row.user}</td>
+                  {/* <td>{row.zamowienie_id}</td> */}
                 </tr>
               </>
             );

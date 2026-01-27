@@ -33,6 +33,8 @@ export  function useZamowienieInsert(){
   let setFaktury= contextModalInsert.setFaktury;
   let faktury= contextModalInsert.faktury;
 
+    const setHistoriaZamowienia= contextModalInsert.setHistoriaZamowienia;
+
     const procesyProduktow= contextModalInsert.procesyProduktow;
   const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
 
@@ -94,7 +96,10 @@ const {refreshZamowienia} = useZamowienia()
 const save = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow}) =>{
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zamowienieInsert/" + sessionStorage.getItem("token"),[produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow])
-resolve(res)
+  setHistoriaZamowienia([]) // zerowanie historii po zapisz jako
+   resolve(res)
+
+
   })
 }
 

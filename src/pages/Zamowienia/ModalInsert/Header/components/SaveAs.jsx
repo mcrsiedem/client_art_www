@@ -38,6 +38,8 @@ export default function SaveAs({showSaveAs,setShowSaveAs,setSaveAs,dialogBox}) {
                     <button
                     className={style.btn}
                     onClick={() => {
+
+                      
                       zapiszZamowienie({dialogBox});
                       setShowSaveAs(!showSaveAs)
                     }}

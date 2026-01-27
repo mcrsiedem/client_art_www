@@ -158,6 +158,7 @@ setProcesyProduktowTemporary(
         if (t.id == row.id) {
           return {...t,
             klient_id: event.target.value,
+            klient: contextApp.clients.find(x=>x.id ==event.target.value ).firma,
             update: true
           }
         } else {

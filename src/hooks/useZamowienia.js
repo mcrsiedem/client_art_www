@@ -138,6 +138,7 @@ export function useZamowienia() {
       IP + "edytuj_proofa/" + sessionStorage.getItem("token"),
       row,
     );
+    console.log(res.data)
 
     if(res.data.status == "ok"){
             setShowEditProof(false)

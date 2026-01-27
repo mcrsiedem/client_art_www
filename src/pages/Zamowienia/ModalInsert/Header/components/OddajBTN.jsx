@@ -4,6 +4,7 @@ import style from "../HeaderModal.module.css";
 import { useZamowienieUpdate } from "hooks/useZamowienieUpdate";
 import { useZamowienieInsert } from "hooks/useZamowienieInsert";
 import DecodeToken from "pages/Login/DecodeToken";
+import { useZamowienia } from "hooks/useZamowienia";
 
 export default function OddajBTN({ setSaveAs,dialogBox }) {
 
@@ -17,15 +18,9 @@ export default function OddajBTN({ setSaveAs,dialogBox }) {
 
   const {updateZamowienie} = useZamowienieUpdate();
   const [zapiszZamowienie] = useZamowienieInsert();
+  const { zamowienieOddaj } = useZamowienia();
 
 
-  function usunElement() {
-  if (window.confirm("Potwierdź usunięcie!")) {
-    alert("Usunięto!");
-  } else {
-    alert("Anulowano.");
-  }
-}
   if (DecodeToken(sessionStorage.getItem("token")).id == 1) {
       return (
     <button
@@ -42,7 +37,7 @@ export default function OddajBTN({ setSaveAs,dialogBox }) {
 
 
   if (window.confirm("Potwierdź usunięcie!")) {
-    alert("Usunięto!");
+    zamowienieOddaj(daneZamowienia.id)
   } else {
     alert("Anulowano.");
   }

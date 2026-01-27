@@ -159,6 +159,25 @@ else{
 
   }
 
+
+      async function zamowienieOddaj(id) {
+
+      // 
+   const res = await axios.put(
+      IP + "zamowienie_oddaj/" + sessionStorage.getItem("token"),
+      {id},
+    );
+    console.log(res.data)
+
+    if(res.data.status == "ok"){
+
+    }
+else{
+  alert(res.data.status)
+}
+
+  }
+
   return {
     refreshZamowienia,
     odblokujZamowienie,
@@ -167,6 +186,7 @@ else{
     refreshZamowieniaFaktury,
     refreshZamowieniaNiezamknieteKoszty,
     refreshZamowieniaProofy,
-    edytujProofa
+    edytujProofa,
+    zamowienieOddaj
   };
 }

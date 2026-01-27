@@ -40,7 +40,7 @@ export default function Header({
       >
         <div className={style.title}>
           {/* <LockDradDrop /> */}
-          Zamówienie      
+          Zamówienie      <OddajBTN />
           {readOnly && (
             <div>
               otwarte {stanOtwarciaZamowienia.data} przez{" "}

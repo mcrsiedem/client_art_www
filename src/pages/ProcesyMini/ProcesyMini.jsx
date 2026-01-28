@@ -128,7 +128,7 @@ const WykonaniaTable = () => {
               <th> </th>
               <th> Praca</th>
               <th> </th>
-              <th> Status </th>
+              <th>  </th>
             </tr>
 
           }

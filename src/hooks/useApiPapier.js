@@ -50,7 +50,7 @@ export   function useApiPapier() {
     
         setListaPapierowPowleczenie(res.data[6]);
         setListaPapierowPowleczenieWyszukiwarka(res.data[6]);
-    console.log("api papi")
+    // console.log("api papi")
       }
 
 

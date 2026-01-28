@@ -10,6 +10,7 @@ import NakladWykonanie from "./components/NakladWykonania";
 import PredkoscWykoniania from "./components/PredkoscWykonania";
 import PrzelotyWykonania from "./components/PrzelotyWykonania";
 import NarzadWykonania from "./components/NarzadWykonania";
+import UsunWykonanie from "./components/UsunWykonanie";
 
 export default function RowWykonanie  ({rowWykonanie,rowProces})  {
   return(<div
@@ -27,6 +28,7 @@ export default function RowWykonanie  ({rowWykonanie,rowProces})  {
       <PrzelotyWykonania rowWykonanie={rowWykonanie}/>
       <StatusWykonania rowWykonanie={rowWykonanie} rowProces={rowProces}/>
       <DodajWykonanie rowWykonanie={rowWykonanie}/>
+      <UsunWykonanie rowWykonanie={rowWykonanie}/>
     </div>
   </div>)
   

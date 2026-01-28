@@ -48,6 +48,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
               {show &&
                 wykonania
                   .filter((f) => f.grupa_id == rowGrupa.id)
+                  .filter((f) => f.delete != true)
                   .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
                       <RowWykonanie rowWykonanie={rowWykonanie} rowProces={rowProces}/>

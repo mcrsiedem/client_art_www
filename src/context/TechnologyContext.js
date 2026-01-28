@@ -324,13 +324,9 @@ let new_wykonania =       wykonania.map((t) => {
 
 
       const updateGrupaAfterAddWykonanie = (row) => {
-
-        // console.log("row",row)
-
 let new_wykonania =  [...wykonania] 
- new_wykonania.push(row)
+  new_wykonania.push(row)
 
-//  console.log("new_wykonania",new_wykonania)
         const SumaCzasow = (grupa,new_wykonania) => {
           let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
           return suma;
@@ -349,15 +345,33 @@ let new_wykonania =  [...wykonania]
         }
       })
     );
-  // setGrupaWykonan(grupaWykonan.map( grupa=> ({...grupa,czas:SumaCzasow(grupa,new_wykonania), przeloty: SumaPrzelotow(grupa,new_wykonania)})))
-
-
-
-
       };
 
 
 
+      const updateGrupaAfterDeleteWykonanie = (row) => {
+let new_wykonania =  [...wykonania] 
+new_wykonania = new_wykonania.filter(x=> x.global_id != row.global_id )
+
+        const SumaCzasow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => x.czas).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+        const SumaPrzelotow = (grupa,new_wykonania) => {
+          let  suma = new_wykonania.filter(x=> x.grupa_id == grupa.id).map(x => parseInt(x.przeloty)).reduce((a, b) => a + b, 0)
+          return suma;
+        };
+
+            setGrupaWykonan(
+      grupaWykonan.map((t) => {
+        if (t.id === row.grupa_id) {
+          return {...t,czas:SumaCzasow(t,new_wykonania),update:true,ilosc_narzadow: parseInt(t.ilosc_narzadow)-1, przeloty: SumaPrzelotow(t,new_wykonania)};
+        } else {
+          return t;
+        }
+      })
+    );
+      };
 
 
       const updateRowOprawaTech = (row) => {
@@ -930,7 +944,7 @@ async function fechTechnology() {
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
                     grupyOprawaAll, setGrupyOprawaAll,grupyOprawaAllWyszukiwarka, setGrupyOprawaAllWyszukiwarka,fechGrupyOprawaForProcesor,fechGrupyAndWykonaniaForProcesor_dni_wstecz,fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa,
                     grupyWykonanAllNiezakonczoneOprawa, setGrupWykonanAllNiezakonczoneOprawa,grupyWykonanAllOprawaWyszukiwarka, setGrupWykonanAllOprawaWyszukiwarka,
-                    grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,
+                    grupaWykonanInit, setGrupaWykonanInit,updateGrupaAfterAddWykonanie,updateGrupaAfterDeleteWykonanie,
                     sortowanieOprawy,setSortowanieOprawy,wykonaniaOprawy,setWykonaniaOprawy,
                     realizacje, setRealizacje,
                     gantStageGrupy, setGantStageGrupy,multiSelect, setMultiSelect,

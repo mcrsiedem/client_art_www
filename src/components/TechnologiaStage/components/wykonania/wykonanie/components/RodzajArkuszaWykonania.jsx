@@ -11,7 +11,7 @@ export default function RodzajArkuszaWykonania({ rowWykonanie }) {
     <div className={style.col_dane_rodzaj_arkusza}>
       <input
       title="nazwa_wykonania"
-        disabled
+        // disabled
         className={style.input}
         value={rowWykonanie.nazwa_wykonania}
         onChange={(e) => {

@@ -22,14 +22,12 @@ export default function DodajWykonanie({ rowWykonanie }) {
             id: getMaxID(wykonania),
             indeks: getMaxIndeks(wykonania),
             insert: true,
-          }
+          };
           newWykonania.push(wyk);
 
-          updateGrupaAfterAddWykonanie(wyk)
-          
+          updateGrupaAfterAddWykonanie(wyk);
+
           setWykonania(newWykonania);
-
-
         }}
         alt="Procesy"
       />

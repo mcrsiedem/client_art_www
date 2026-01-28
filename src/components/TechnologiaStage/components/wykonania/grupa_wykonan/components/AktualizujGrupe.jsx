@@ -36,7 +36,7 @@ export default  function AktualizujGrupe({ rowGrupa }) {
           await refresh({fechparametryTechnologii,rowGrupa})
           }
 
-          if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_falc==1){
+          if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
                       let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
           let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
        await update_falc({roznica_czasu,rowGrupa,wykonania_update})

@@ -159,6 +159,30 @@ else{
 
   }
 
+  
+    async function dodajProofa() {
+
+
+      let zamowienia_new = [...zamowienia];
+      // console.log(row)
+   const res = await axios.post(
+      IP + "dodaj_proofa/" + sessionStorage.getItem("token"),
+      
+    );
+    console.log(res.data)
+
+    if(res.data.status == "ok"){
+       zamowienia_new.push({id: res.data.id})
+      setZamowienia(
+      zamowienia_new
+    );
+    }
+else{
+  alert(res.data.status)
+}
+
+  }
+
 
       async function zamowienieOddaj(id) {
 
@@ -187,6 +211,7 @@ else{
     refreshZamowieniaNiezamknieteKoszty,
     refreshZamowieniaProofy,
     edytujProofa,
+    dodajProofa,
     zamowienieOddaj
   };
 }

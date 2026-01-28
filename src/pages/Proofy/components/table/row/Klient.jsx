@@ -13,7 +13,7 @@ export default function Klient ({ row })  {
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
       className={style.firma_nazwa}
-      value={row.klient}
+      value={row.klient || " wybierz... "}
       readOnly
 
     />

@@ -268,7 +268,7 @@ function NrFaktury ({ row })  {
       procesyProduktowTemporary.map((t) => {
         if (t.id == row.id) {
           return {...t,
-            nr_faktury: event.target.value,
+            faktura: event.target.value,
             update: true
           }
         } else {

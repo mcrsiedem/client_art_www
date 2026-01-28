@@ -2,6 +2,7 @@ import style from "../Dane.module.css";
 import { useContext, useEffect, useState} from "react";
 
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { useHistoria } from "hooks/useHistoria";
 
 
 // Funkcja pomocnicza do usuwania spacji (separatorów tysięcy)
@@ -37,6 +38,8 @@ export default function WARTOSC_ZAMOWIENIA( ){
     const ksiegowosc = contextModalInsert.ksiegowosc;
 
     const produkty = contextModalInsert.produkty;
+      const [add] = useHistoria();
+        const [valueIN, setValueIN] = useState(null);
 
     // Używamy stanu lokalnego do przechowywania sformatowanej wartości w polu input
     // Inicjalizujemy go na podstawie wartości z kontekstu, ale sformatowanej
@@ -105,7 +108,25 @@ export default function WARTOSC_ZAMOWIENIA( ){
         title="Nakład * cena"
         // Używamy stanu lokalnego `inputValue` dla wartości pola
         value={inputValue}
+                        onFocus={() => { setValueIN(inputValue); 
+        }}
         onChange={handleValueChange}
+            onBlur={(e) => {
+            // Zapisujemy czystą wartość po blur, do logiki historii, aby porównanie było poprawne
+            const currentValue = e.target.value; 
+            if (valueIN != currentValue) {
+                add({
+                    kategoria: "Wartość ",
+                    event:
+                        " Zmiana wartości z " +
+                        valueIN +
+                        " na " +
+                        currentValue +
+                        " ",
+                    zamowienie_id: daneZamowienia.id,
+                });
+            }
+        }}
         ></input>
         </div>
     );

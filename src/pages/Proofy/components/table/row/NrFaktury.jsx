@@ -13,7 +13,7 @@ export default function NrFaktury ({ row })  {
       //firma_nazwa to skrocona nazwa klienta
       title={row.klient}
       className={style.firma_nazwa}
-      value={row.nr_faktury}
+      value={row.faktura}
       readOnly
 
     />

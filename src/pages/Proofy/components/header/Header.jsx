@@ -7,10 +7,14 @@ import { AppContext } from "context/AppContext";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import { _etapy_produkcji } from "utils/initialvalue";
 import { useZamowienia } from "hooks/useZamowienia";
+import iconAdd2 from "assets/edit3.svg";
+import DecodeToken from "pages/Login/DecodeToken";
+
 
 export default function Header() {
   const navigate = useNavigate();
   const effectRan = useRef(false);
+  const {dodajProofa} = useZamowienia();
 
    const contextApp = useContext(AppContext);
 
@@ -35,7 +39,18 @@ export default function Header() {
 
 
 
-
+        {DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1 ?         <img
+          title="Dodaj proofa..."
+          className={style.icon}
+          src={iconAdd2}
+          onClick={() => {
+            dodajProofa()
+            // setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+            // setSelectedZamowienie({id:1})
+            // dodaj_clikHandler();
+          }}
+          alt="React Logo"
+        /> : <></>}
 
 
 

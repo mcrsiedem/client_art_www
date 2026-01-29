@@ -27,6 +27,7 @@ import PanelDesktopFooter from "./Footer/PanelDesktopFooter";
 import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
 import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
+import Kalkulator from "./Kalkulator/Kalkulator";
 
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
@@ -77,6 +78,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                         < div className={style.container_btn_prawy}> 
                         {/* <PodgladRealizacji loading={loading}/> */}
                         <OnlineUsersList />
+                        <Kalkulator />
                         </div>
                         </div>
                 <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>

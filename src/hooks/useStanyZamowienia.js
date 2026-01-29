@@ -36,12 +36,12 @@ console.log("Elementy : ", elementy);
 // console.log("Pliki: ", procesyElementow);
 // console.log("Pakowanie: ", pakowanie);
 // console.log("Papiery_nazwy: ", listaPapierowNazwy);
-console.log("Historia zamówienia: ", historiaZamowienia);
+// console.log("Historia zamówienia: ", historiaZamowienia);
 // console.log("Technologie do zamówienia: ", technologieID);
-// console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
+console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 // console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
-// console.table( daneZamowienia);
+// console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.table( listaPapierowWyszukiwarka);
 
 
 // console.log("ksiegowosc: ", ksiegowosc);

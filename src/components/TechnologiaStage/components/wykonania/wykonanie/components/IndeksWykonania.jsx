@@ -9,7 +9,7 @@ export default function IndeksWykonania({ rowWykonanie }) {
   return (
     <div className={style.col_dane_indeks}>
       <input
-        disabled
+        // disabled
         title={" Procesor ID: "+rowWykonanie.procesor_id + " LEGA_iD: "+rowWykonanie.lega_id }
         className={style.input_indeks}
         value={rowWykonanie.indeks}

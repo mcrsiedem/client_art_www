@@ -1,177 +1,165 @@
-/* Kontener główny listy */
 .container {
-    max-width: 650px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 12px;
-    /* Ładny, miękki cień */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
-    background-color: #f7f9fc41;
-            backdrop-filter:  blur(10px);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-height: 750px;
-  /* background-color: #4a90e2; */
+  min-height: 100vh;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Nagłówek */
+.card {
+  max-width: 1000px;
+  width: 800px;
+  background-color: rgba(43, 106, 131, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(241, 245, 249, 0.55);
+}
+
 .header {
-      display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.6em;
-    color: #ffffff;
-    border-bottom: 2px solid #e7e7e7;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-    padding-left: 5px;
+  background-color: rgba(45, 45, 46, 0.77);
+  padding: 30px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Komunikat o braku użytkowników */
-.emptyMessage {
-    text-align: center;
-    color: #7f8c8d;
-    padding: 20px 0;
-    font-style: italic;
-    background-color: #ecf0f1;
-    border-radius: 8px;
+.headerTitle {
+  margin: 0;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* Styl dla pojedynczego elementu użytkownika (zgodne z Twoją klasą) */
-.users {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 11px;
-    margin-bottom: 8px;
-    background-color: #4d4d4d54;
-    border: 1px solid #dcdcdc78;
-    border-radius: 8px;
-    /* Lekki efekt hover */
-    transition: all 0.2s ease-in-out; 
-
+.headerSubtitle {
+  margin: 5px 0 0 0px;
+  color: #c4c4c4;
+  font-size: 14px;
 }
 
-.users:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
-    border-color: rgba(46, 204, 113, 0.7);
+.body {
+  padding: 30px;
 }
 
-/* Ikona statusu online */
-.onlineIcon {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #2ecc71; /* Żywa zieleń */
-    margin-right: 15px;
-    flex-shrink: 0;
-    /* Mała animacja pulsu */
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
-    animation: pulse 1.5s infinite;
+.scrollArea {
+  margin-bottom: 20px;
+  height: 280px;
+  overflow: auto;
 }
 
-/* Ikona statusu offline */
-.offlineIcon {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #6d6d6d; /* Żywa zieleń */
-    margin-right: 15px;
-    flex-shrink: 0;
-    /* Mała animacja pulsu */
-
+.sectionCard {
+  padding: 15px 20px 20px 20px;
+  background-color: rgba(45, 45, 46, 0.77);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.63);
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  position: relative;
+  transition: border-color 0.2s;
 }
 
-/* Nazwa użytkownika */
-.userName {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #e8e8e8;
-    flex-grow: 1; /* Pozwala na rozciągnięcie i spchnięcie czasu zalogowania */
+.sectionCard:hover {
+  border-color: #c7d2fe !important;
 }
 
-
-
-
-/* Log Time Container*/
-.loginTimeContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: center;
-    margin-left: 50px;
-
-
+.label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #d2d2d2;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
 }
 
-
-
-/* Czas zalogowania */
-.loginTime {
-    font-size: 0.8em;
-    color: #ededed;
-    margin-left: 10px;
-    font-style: italic;
-    text-align: right;
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: rgba(216, 216, 216, 0.2);
+  color: #c2c6cc;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Animacja pulsu dla ikony online */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
-  }
+.input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
 }
 
-.listWrapper {
-    /* Ustawienie maksymalnej wysokości, po przekroczeniu której zacznie się przewijanie.
-       Musisz to dostosować do finalnej wysokości Twojego kontenera głównego (.container),
-       uwzględniając nagłówek i padding. */
-    min-height: 300px; 
-    
-    /* WŁAŚCIWOŚCI KLUCZOWE: */
-    /* 1. Włącza przewijanie pionowe (Y) tylko, gdy zawartość się nie mieści */
-    overflow-y: auto; 
-    
-    /* 2. Ukrywa niepotrzebne przewijanie poziome (X) */
-    overflow-x: hidden;
-
-    /* Opcjonalne: Dodaj mały padding, aby zawartość nie "przyklejała" się do krawędzi paska przewijania */
-    padding-right: 10px; 
-    padding-left: 5px;
+.controls {
+  display: flex;
+  gap: 15px;
 }
 
-.listWrapper::-webkit-scrollbar {
-  width: 8px;
+.btnAdd {
+  background-color: rgba(203, 213, 225, 0.09);
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: #c0c0c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
 }
 
-.listWrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
+.btnCalculate {
+  flex: 1;
+  background-color: rgba(178, 236, 16, 0.39);
+  color: #b1ec10;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: opacity 0.2s;
+  letter-spacing: 5px;
 }
 
-.listWrapper::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
+.btnCalculate:hover, .btnAdd:hover {
+  opacity: 0.9;
 }
 
-
-.icon2 {
-  /* margin-left: 30px; */
-  border: 1px solid gray;
-/* background-color: rgb(255, 0, 0); */
-border-radius: 5px;
-    height: 25px;
-    padding: 2px;
+.resultArea {
+  padding: 30px;
+  background-color: rgba(45, 45, 46, 0.77);
+  border-top: 1px solid #f1f5f9;
+  text-align: center;
 }
 
-.icon2:hover {
-    background-color: rgb(255, 0, 0);
-    border-radius: 5px;
+.totalValue {
+  font-size: 48px;
+  font-weight: 900;
+  color: #bebebe;
+}
+
+.unit {
+  font-size: 24px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-left: 10px;
+}
+
+.trashBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.2s;
+}
+
+.trashBtn:hover {
+  color: #ef4444;
 }

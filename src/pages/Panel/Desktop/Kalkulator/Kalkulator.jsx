@@ -50,6 +50,7 @@ const Kalkulator = () => {
   const styles = {
     container: {
       minHeight: '100-screen',
+      // width:'1000px',
       // backgroundColor: '#f8fafc',
       backgroundColor: 'transparent',
       display: 'flex',
@@ -59,9 +60,9 @@ const Kalkulator = () => {
       fontFamily: 'system-ui, -apple-system, sans-serif'
     },
     card: {
-      maxWidth: '650px',
-      width: '100%',
-      backgroundColor: '#ffffff',
+      maxWidth: '1000px',
+      width: '800px',
+      backgroundColor: 'rgb(216, 216, 216,0.2)',
       // backgroundColor: '#ffffff',
       borderRadius: '24px',
       boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
@@ -69,7 +70,8 @@ const Kalkulator = () => {
       border: '1px solid #f1f5f9'
     },
     header: {
-      backgroundColor: '#272727',
+      backgroundColor: 'rgba(45, 45, 46, 0.77)',
+      // backgroundColor: 'rgb(216, 216, 216,0.5)',
       padding: '30px',
       color: '#ffffff',
       display: 'flex',
@@ -77,9 +79,10 @@ const Kalkulator = () => {
       alignItems: 'center'
     },
     sectionCard: {
-      padding: '20px',
-      // backgroundColor: '#f8fafc',
-      backgroundColor: 'tansparent',
+      padding: '15px 20px 20px 20px',
+      // width:'100px',
+      backgroundColor: '#2020208f',
+      // backgroundColor: 'tansparent',
       borderRadius: '16px',
       border: '1px solid #e2e8f0',
       marginBottom: '15px',
@@ -93,7 +96,7 @@ const Kalkulator = () => {
       display: 'block',
       fontSize: '11px',
       fontWeight: '600',
-      color: '#64748b',
+      color: '#d2d2d2',
       textTransform: 'uppercase',
       marginBottom: '8px',
       letterSpacing: '0.05em'
@@ -104,7 +107,21 @@ const Kalkulator = () => {
       border: '1px solid #e2e8f0',
       borderRadius: '8px',
       outline: 'none',
-      fontSize: '14px'
+      fontSize: '14px',
+      backgroundColor: 'rgba(216, 216, 216,0.2)',
+      color: 'rgb(255, 255, 255)',
+      
+    },
+        input_nazwa: {
+      width: '100%',
+      padding: '10px 12px',
+      border: '1px solid #e2e8f0',
+      borderRadius: '8px',
+      outline: 'none',
+      fontSize: '14px',
+      backgroundColor: 'rgba(216, 216, 216,0.2)',
+      color: 'rgb(255, 255, 255)',
+
     },
     btnCalculate: {
       flex: 1,
@@ -112,7 +129,7 @@ const Kalkulator = () => {
       color: 'white',
       border: 'none',
       borderRadius: '12px',
-      padding: '15px 25px',
+      // padding: '15px 25px',
       fontWeight: 'bold',
       cursor: 'pointer',
       fontSize: '16px',
@@ -132,7 +149,7 @@ const Kalkulator = () => {
     },
     resultArea: {
       padding: '30px',
-      backgroundColor: '#f8fafc',
+      backgroundColor: 'rgba(45, 45, 46, 0.77)',
       borderTop: '1px solid #f1f5f9',
       textAlign: 'center'
     },
@@ -157,19 +174,21 @@ const Kalkulator = () => {
         <div style={styles.header}>
           <div>
             <h1 style={{ margin: 0, fontSize: '24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <BookOpen size={32} /> Kalkulator Grzbietu
+              <BookOpen size={32} /> Kalkulator Grzbietu 
+          {/* <Calculator size={48} style={{ opacity: 0.3 }} />  Kalkulator Grzbietu */}
+
             </h1>
-            <p style={{ margin: '5px 0 0 0', color: '#c4c4c4', fontSize: '14px' }}>Oblicz grubość publikacji</p>
+            <p style={{ margin: '5px 0 0 0px', color: '#c4c4c4', fontSize: '14px' }}>Oblicz grubość publikacji</p>
           </div>
-          <Calculator size={48} style={{ opacity: 0.3 }} />
+          <Calculator size={48} style={{ opacity: 0.3 }} onClick={()=>{console.log("ok")}}/>
         </div>
 
         <div style={{ padding: '30px' }}>
-          <div style={{ marginBottom: '20px' }}>
+          <div style={{ marginBottom: '20px', height:'280px' ,overflow:'auto' }}>
             {sections.map((section) => (
               <div key={section.id} style={styles.sectionCard} className="section-item">
-                <div style={{ flex: '2', minWidth: '150px' }}>
-                  <label style={styles.label}>Nazwa części</label>
+                <div style={{  width: '100px' }}>
+                  <label style={styles.label}>Element</label>
                   <input 
                     style={styles.input}
                     type="text"
@@ -181,7 +200,7 @@ const Kalkulator = () => {
                 <div style={{ width: '80px' }}>
                   <label style={styles.label}>Strony</label>
                   <input 
-                    style={styles.input}
+                    style={styles.input_nazwa}
                     type="number"
                     min="2"
                     step="2"
@@ -190,7 +209,7 @@ const Kalkulator = () => {
                   />
                 </div>
 
-                <div style={{ width: '150px' }}>
+                <div style={{ width: '250px' }}>
                   <label style={styles.label}>Papier (mm)</label>
                   <select 
                     style={styles.input}
@@ -230,15 +249,16 @@ const Kalkulator = () => {
         </div>
 
         <div style={styles.resultArea}>
-          <span style={{ color: '#64748b', fontSize: '14px', fontWeight: '500' }}>
+          <span style={{ color: '#9da2aa', fontSize: '14px', fontWeight: '500' }}>
             Przybliżona grubość grzbietu:
           </span>
           <div style={{ marginTop: '10px' }}>
-            <span style={{ fontSize: '48px', fontWeight: '900', color: '#1e293b' }}>{totalThickness}</span>
+            {/* <span style={{ fontSize: '48px', fontWeight: '900', color: '#1e293b' }}>{totalThickness}</span> */}
+            <span style={{ fontSize: '48px', fontWeight: '900', color: '#bebebe' }}>{totalThickness}</span>
             <span style={{ fontSize: '24px', fontWeight: '700', color: '#94a3b8', marginLeft: '10px' }}>mm</span>
           </div>
           
-          <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px', color: '#94a3b8', fontSize: '12px' }}>
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '20px', color: '#9da2aa', fontSize: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <Layers size={14} /> Suma stron: {sections.reduce((a, b) => a + b.pages, 0)}
             </div>

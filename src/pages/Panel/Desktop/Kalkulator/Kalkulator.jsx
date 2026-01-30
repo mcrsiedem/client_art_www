@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './Kalkulator.module.css';
 import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
+import { AppContext } from 'context/AppContext';
 
 const Kalkulator = () => {
   const [sections, setSections] = useState([
@@ -53,6 +54,10 @@ const Kalkulator = () => {
   useEffect(() => {
     calculateThickness();
   }, []);
+
+      const appcontext = useContext(AppContext);
+      const listaPapierow = appcontext.listaPapierow;
+      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
 
   return (
     <div className={styles.container}>

@@ -1,46 +1,79 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
 import styles from './Kalkulator.module.css';
 import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
+import { useApiPapier } from 'hooks/useApiPapier';
 
 const Kalkulator = () => {
-   const appcontext = useContext(AppContext);
-      const listaPapierow = appcontext.listaPapierow;
-      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+  const [callForPaper] = useApiPapier();
+  const { listaPapierow, listaPapierowWyszukiwarka } = useContext(AppContext);
+  
   const [sections, setSections] = useState([
-    { id: 1, pages: 4, thickness: 0.25, label: 'Okładka', papier_id:1 },
-    { id: 2, pages: 80, thickness: 0.08, label: 'Środek' ,papier_id:1}
+    { id: 1, pages: 4, thickness: 0.25, label: 'Okładka', papier_id: 1 },
+    { id: 2, pages: 80, thickness: 0.08, label: 'Środek', papier_id: 1 }
   ]);
+  
   const [totalThickness, setTotalThickness] = useState(0);
   const scrollRef = useRef(null);
 
-  // Funkcja obliczania
-  const calculateThickness = () => {
+  // 1. Pobranie danych z API przy montowaniu
+  useEffect(() => {
+    callForPaper();
+  }, []);
+
+  // 2. Funkcja obliczająca jednostkową grubość arkusza
+  const obliczGruboscArkusza = useCallback((id) => {
+    if (!listaPapierow || listaPapierow.length === 0) return 0.1; // Wartość domyślna podczas ładowania
+    
+    const papier = listaPapierow.find(x => x.id == id);
+    if (!papier) return 0.1;
+
+    // Formuła: (gramatura / 1000) * bulk
+    return (parseFloat(papier.gramatura) / 1000) * parseFloat(papier.bulk);
+  }, [listaPapierow]);
+
+  // 3. Główna funkcja przeliczająca całkowity grzbiet
+  const calculateThickness = useCallback(() => {
     const total = sections.reduce((sum, section) => {
       const sheets = section.pages / 2;
+      // Używamy aktualnej grubości z obiektu sekcji
       return sum + (sheets * section.thickness);
-    }, 0)+1;
-    setTotalThickness(total.toFixed(2));
+    }, 0);
+    
+    // Dodajemy 1mm zapasu (zgodnie z Twoim oryginałem)
+    const finalResult = total > 0 ? total + 1 : 0;
+    setTotalThickness(finalResult.toFixed(2));
+  }, [sections]);
+
+  // 4. Reaguj na zmiany w sekcjach lub załadowanie listy papierów
+  useEffect(() => {
+    calculateThickness();
+  }, [sections, calculateThickness]);
+
+  // Aktualizacja sekcji - teraz automatycznie przelicza grubość przy zmianie papier_id
+  const updateSection = (id, field, value) => {
+    setSections(prevSections => prevSections.map(s => {
+      if (s.id === id) {
+        const updatedSection = { ...s, [field]: value };
+        
+        // Jeśli zmieniamy papier_id, od razu aktualizujemy też thickness dla tej sekcji
+        if (field === 'papier_id') {
+          updatedSection.thickness = obliczGruboscArkusza(value);
+        }
+        return updatedSection;
+      }
+      return s;
+    }));
   };
 
-    const obliczGruboscArkusza = (id) => {
-
-   let papier =  listaPapierow.find(x => x.id == id )
-   let grubosc = (parseFloat(papier.gramatura) ) /1000 * parseFloat(papier.bulk)
-
-   console.log(papier)
-
-
-      return grubosc;
-   
-  };
-
-  // Dodawanie sekcji z auto-scrollem
   const addSection = () => {
     const newId = Date.now();
+    // Pobieramy domyślną grubość dla papieru o ID 1 (lub pierwszego z listy)
+    const defaultThickness = obliczGruboscArkusza(1);
+
     setSections([
       ...sections,
-      { id: newId, pages: 16, thickness: 0.1, label: 'Nowa sekcja' , papier_id:1}
+      { id: newId, pages: 16, thickness: defaultThickness, label: 'Nowa sekcja', papier_id: 1 }
     ]);
 
     setTimeout(() => {
@@ -59,29 +92,16 @@ const Kalkulator = () => {
     }
   };
 
-  const updateSection = (id, field, value,papier_id) => {
-    setSections(sections.map(s => 
-      s.id === id ? { ...s, [field]: value,papier_id:papier_id } : s
-    ));
-  };
-
-  // Oblicz przy pierwszym załadowaniu
-  useEffect(() => {
-    calculateThickness();
-  }, []);
-
-     
-
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <div onDoubleClick={()=>{ console.table(sections)}} className={styles.header}>
+        <div onDoubleClick={() => console.table(sections)} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
               <BookOpen size={32} color="#b1ec10" /> 
               Kalkulator Grzbietu
             </h1>
-            <p className={styles.headerSubtitle}>Obliczanie grubości publikacji</p>
+            <p className={styles.headerSubtitle}>Oblicz grubość publikacji</p>
           </div>
           <Calculator size={48} style={{ opacity: 0.2 }} />
         </div>
@@ -113,26 +133,17 @@ const Kalkulator = () => {
                 </div>
 
                 <div style={{ flex: '2', minWidth: '200px' }}>
-                  <label className={styles.label}>Rodzaj papieru (mm)</label>
+                  <label className={styles.label}>Rodzaj papieru</label>
                   <select 
                     className={styles.input}
                     value={section.papier_id}
-                    // onChange={(e) => updateSection(section.id, 'thickness', parseFloat(e.target.value))}
-                    onChange={(e) => updateSection(section.id, 'thickness', obliczGruboscArkusza(e.target.value),e.target.value)}
+                    onChange={(e) => updateSection(section.id, 'papier_id', e.target.value)}
                   >
-
-                              {listaPapierowWyszukiwarka.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nazwa} {option.gramatura}  {option.wykonczenie}
-            </option>
-          ))}
-                    {/* <option value={0.07}>Gazetowy 45g (0.07)</option>
-                    <option value={0.08}>Offset 80g (0.08)</option>
-                    <option value={0.10}>Kreda 115g (0.10)</option>
-                    <option value={0.12}>Kreda 135g (0.12)</option>
-                    <option value={0.15}>Kreda 170g (0.15)</option>
-                    <option value={0.25}>Karton 250g (0.25)</option>
-                    <option value={0.30}>Karton 300g (0.30)</option> */}
+                    {listaPapierowWyszukiwarka && listaPapierowWyszukiwarka.map((option) => (
+                      <option key={option.id} value={option.id}>
+                        {option.nazwa} {option.gramatura}g {option.wykonczenie}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -147,23 +158,23 @@ const Kalkulator = () => {
             ))}
           </div>
 
-          <div className={styles.controls}>
+          {/* <div className={styles.controls}>
             <button className={styles.btnAdd} onClick={addSection}>
               <Plus size={20} /> Dodaj element
             </button>
-            <button className={styles.btnCalculate} onClick={calculateThickness}>
-              OBLICZ GRZBIET
-            </button>
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.resultArea}>
-
-
+          <div className={styles.resultAreaLeft}>
+  <button className={styles.btnAdd} onClick={addSection}>
+              <Plus size={20} /> Dodaj element
+            </button>
+          </div>
+          <div className={styles.resultAreaCenter}>
           <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
             Przybliżona grubość grzbietu:
           </span>
-
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
             <span className={styles.totalValue}>{totalThickness}</span>
@@ -173,13 +184,15 @@ const Kalkulator = () => {
           <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center', gap: '25px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <Layers size={16} /> 
-              <span>Łącznie stron: <strong>{sections.reduce((a, b) => a + b.pages, 0)}</strong></span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
-              {/* <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#b1ec10' }}></div>
-              <span>Status: Gotowy do druku</span> */}
+              <span>Łącznie stron: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
             </div>
           </div>
+          </div>
+          <div className={styles.resultAreaRight}>
+s
+          </div>
+
+
         </div>
       </div>
     </div>

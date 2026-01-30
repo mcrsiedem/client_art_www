@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh;
+  min-height: 60vh;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -11,6 +11,7 @@
 .card {
   max-width: 1000px;
   width: 800px;
+  height: 600px;
   background-color: rgba(43, 106, 131, 0.15);
   border-radius: 24px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
@@ -48,7 +49,7 @@
 
 .scrollArea {
   margin-bottom: 20px;
-  height: 300px;
+  height: 250px;
   overflow-y: auto;
   padding-right: 10px;
 }
@@ -134,10 +135,10 @@
   color: #bebebe;
 }
 .btnAdd {
-  background-color: rgba(203, 213, 225, 0.05);
+  background-color: #b1ec105e;
   border: 1px dashed rgba(203, 213, 225, 0.4);
   border-radius: 12px;
-  padding: 12px 20px;
+  padding: 10px 10px;
   color: #c0c0c0;
   cursor: pointer;
   display: flex;
@@ -148,7 +149,9 @@
 }
 
 .btnAdd:hover {
-  background-color: rgba(203, 213, 225, 0.1);
+  /* background-color: rgba(203, 213, 225, 0.1); */
+  background-color: #b1ec1083;
+
   border-color: #ffffff;
   color: #ffffff;
 }
@@ -176,14 +179,32 @@
 }
 
 .resultArea {
-  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px;
   background-color: rgba(35, 35, 36, 0.9);
   border-top: 1px solid rgba(241, 245, 249, 0.1);
   text-align: center;
 }
 
+.resultAreaLeft {
+/* background-color: #a2b894; */
+      display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
+.resultAreaCenter {
+  width: 300px;
+/* background-color: #94a3b8; */
+}
+.resultAreaRight {
+/* background-color: #ebc107; */
+}
+
+
 .totalValue {
-  font-size: 56px;
+  font-size: 40px;
   font-weight: 900;
   color: #ffffff;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
@@ -210,3 +231,6 @@
   color: #ef4444;
   transform: rotate(90deg);
 }
+
+
+

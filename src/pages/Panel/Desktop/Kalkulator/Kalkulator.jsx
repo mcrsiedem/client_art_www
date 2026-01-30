@@ -53,6 +53,7 @@ const Kalkulator = () => {
       // width:'1000px',
       // backgroundColor: '#f8fafc',
       backgroundColor: 'transparent',
+      
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -62,12 +63,12 @@ const Kalkulator = () => {
     card: {
       maxWidth: '1000px',
       width: '800px',
-      backgroundColor: 'rgb(216, 216, 216,0.2)',
+      backgroundColor: 'rgba(43, 106, 131, 0.15)',
       // backgroundColor: '#ffffff',
       borderRadius: '24px',
       boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
       overflow: 'hidden',
-      border: '1px solid #f1f5f9'
+      border: '1px solid #f1f5f98e'
     },
     header: {
       backgroundColor: 'rgba(45, 45, 46, 0.77)',
@@ -81,10 +82,12 @@ const Kalkulator = () => {
     sectionCard: {
       padding: '15px 20px 20px 20px',
       // width:'100px',
-      backgroundColor: '#2020208f',
+      // backgroundColor: '#2020208f',
+      backgroundColor: 'rgba(45, 45, 46, 0.77)',
+      // backgroundColor: 'rgb(216, 216, 216,0.2)',
       // backgroundColor: 'tansparent',
       borderRadius: '16px',
-      border: '1px solid #e2e8f0',
+      border: '1px solid #e2e8f0a1',
       marginBottom: '15px',
       display: 'flex',
       flexWrap: 'wrap',
@@ -104,12 +107,13 @@ const Kalkulator = () => {
     input: {
       width: '100%',
       padding: '10px 12px',
-      border: '1px solid #e2e8f0',
+      border: '1px solid #e2e8f080',
       borderRadius: '8px',
       outline: 'none',
       fontSize: '14px',
       backgroundColor: 'rgba(216, 216, 216,0.2)',
-      color: 'rgb(255, 255, 255)',
+      color: '#c2c6cc',
+  
       
     },
         input_nazwa: {
@@ -120,27 +124,28 @@ const Kalkulator = () => {
       outline: 'none',
       fontSize: '14px',
       backgroundColor: 'rgba(216, 216, 216,0.2)',
-      color: 'rgb(255, 255, 255)',
+      color: '#c2c6cc',
 
     },
     btnCalculate: {
       flex: 1,
-      backgroundColor: '#464646',
-      color: 'white',
+      backgroundColor: '#b2ec1063',
+      color: '#dfffc5',
       border: 'none',
       borderRadius: '12px',
       // padding: '15px 25px',
       fontWeight: 'bold',
       cursor: 'pointer',
       fontSize: '16px',
-      transition: 'background-color 0.2s'
+      transition: 'background-color 0.2s',
+      letterSpacing: '5px'
     },
     btnAdd: {
-      backgroundColor: 'white',
-      border: '2px dashed #cbd5e1',
+      backgroundColor: '#cbd5e117',
+      border: '1px dashed #cbd5e1',
       borderRadius: '12px',
       padding: '12px 20px',
-      color: '#475569',
+      color: '#c0c0c0',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
@@ -148,7 +153,7 @@ const Kalkulator = () => {
       fontWeight: '500'
     },
     resultArea: {
-      padding: '30px',
+      padding: '25px',
       backgroundColor: 'rgba(45, 45, 46, 0.77)',
       borderTop: '1px solid #f1f5f9',
       textAlign: 'center'
@@ -240,7 +245,7 @@ const Kalkulator = () => {
 
           <div style={{ display: 'flex', gap: '15px' }}>
             <button style={styles.btnAdd} onClick={addSection}>
-              <Plus size={20} /> Dodaj sekcję
+              <Plus size={20} /> Dodaj element
             </button>
             <button style={styles.btnCalculate} onClick={calculateThickness}>
               POLICZ GRUBOŚĆ

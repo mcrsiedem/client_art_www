@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Kalkulator.module.css';
 import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
 
 const Kalkulator = () => {
   const [sections, setSections] = useState([
-    { id: 1, pages: 4, thickness: 0.08, label: 'Okładka' },
+    { id: 1, pages: 4, thickness: 0.25, label: 'Okładka' },
     { id: 2, pages: 80, thickness: 0.08, label: 'Środek' }
   ]);
   const [totalThickness, setTotalThickness] = useState(0);
+  const scrollRef = useRef(null);
 
+  // Funkcja obliczania
   const calculateThickness = () => {
     const total = sections.reduce((sum, section) => {
       const sheets = section.pages / 2;
@@ -17,11 +19,22 @@ const Kalkulator = () => {
     setTotalThickness(total.toFixed(2));
   };
 
+  // Dodawanie sekcji z auto-scrollem
   const addSection = () => {
+    const newId = Date.now();
     setSections([
       ...sections,
-      { id: Date.now(), pages: 8, thickness: 0.1, label: 'Nowa sekcja' }
+      { id: newId, pages: 16, thickness: 0.1, label: 'Nowa sekcja' }
     ]);
+
+    setTimeout(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTo({
+          top: scrollRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const removeSection = (id) => {
@@ -36,25 +49,31 @@ const Kalkulator = () => {
     ));
   };
 
+  // Oblicz przy pierwszym załadowaniu
+  useEffect(() => {
+    calculateThickness();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
-              <BookOpen size={32} /> Kalkulator Grzbietu
+              <BookOpen size={32} color="#b1ec10" /> 
+              Kalkulator Grzbietu
             </h1>
-            <p className={styles.headerSubtitle}>Oblicz grubość publikacji</p>
+            <p className={styles.headerSubtitle}>Obliczanie grubości publikacji</p>
           </div>
-          <Calculator size={48} style={{ opacity: 0.3 }} />
+          <Calculator size={48} style={{ opacity: 0.2 }} />
         </div>
 
         <div className={styles.body}>
-          <div className={styles.scrollArea}>
+          <div className={styles.scrollArea} ref={scrollRef}>
             {sections.map((section) => (
               <div key={section.id} className={styles.sectionCard}>
-                <div style={{ width: '100px' }}>
-                  <label className={styles.label}>Element</label>
+                <div style={{ flex: '2', minWidth: '150px' }}>
+                  <label className={styles.label}>Nazwa elementu</label>
                   <input 
                     className={styles.input}
                     type="text"
@@ -63,7 +82,7 @@ const Kalkulator = () => {
                   />
                 </div>
 
-                <div style={{ width: '80px' }}>
+                <div style={{ width: '100px' }}>
                   <label className={styles.label}>Strony</label>
                   <input 
                     className={styles.input}
@@ -75,8 +94,8 @@ const Kalkulator = () => {
                   />
                 </div>
 
-                <div style={{ width: '250px' }}>
-                  <label className={styles.label}>Papier (mm)</label>
+                <div style={{ flex: '2', minWidth: '200px' }}>
+                  <label className={styles.label}>Rodzaj papieru (mm)</label>
                   <select 
                     className={styles.input}
                     value={section.thickness}
@@ -86,46 +105,54 @@ const Kalkulator = () => {
                     <option value={0.08}>Offset 80g (0.08)</option>
                     <option value={0.10}>Kreda 115g (0.10)</option>
                     <option value={0.12}>Kreda 135g (0.12)</option>
+                    <option value={0.15}>Kreda 170g (0.15)</option>
                     <option value={0.25}>Karton 250g (0.25)</option>
                     <option value={0.30}>Karton 300g (0.30)</option>
                   </select>
                 </div>
 
-                {sections.length > 1 && (
-                  <button 
-                    className={styles.trashBtn}
-                    onClick={() => removeSection(section.id)}
-                    title="Usuń sekcję"
-                  >
-                    <Trash2 size={20} />
-                  </button>
-                )}
+                <button 
+                  className={styles.trashBtn}
+                  onClick={() => removeSection(section.id)}
+                  style={{ visibility: sections.length > 1 ? 'visible' : 'hidden' }}
+                >
+                  <Trash2 size={20} />
+                </button>
               </div>
             ))}
           </div>
 
           <div className={styles.controls}>
             <button className={styles.btnAdd} onClick={addSection}>
-              <Plus size={20} /> Dodaj sekcję
+              <Plus size={20} /> Dodaj element
             </button>
             <button className={styles.btnCalculate} onClick={calculateThickness}>
-              POLICZ GRUBOŚĆ
+              OBLICZ GRZBIET
             </button>
           </div>
         </div>
 
         <div className={styles.resultArea}>
-          <span style={{ color: '#9da2aa', fontSize: '14px', fontWeight: '500' }}>
+
+
+          <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
             Przybliżona grubość grzbietu:
           </span>
-          <div style={{ marginTop: '10px' }}>
+
+
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
             <span className={styles.totalValue}>{totalThickness}</span>
             <span className={styles.unit}>mm</span>
           </div>
           
-          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '20px', color: '#9da2aa', fontSize: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <Layers size={14} /> Suma stron: {sections.reduce((a, b) => a + b.pages, 0)}
+          <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center', gap: '25px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Layers size={16} /> 
+              <span>Łącznie stron: <strong>{sections.reduce((a, b) => a + b.pages, 0)}</strong></span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              {/* <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#b1ec10' }}></div>
+              <span>Status: Gotowy do druku</span> */}
             </div>
           </div>
         </div>

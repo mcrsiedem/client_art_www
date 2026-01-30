@@ -13,9 +13,10 @@
   width: 800px;
   background-color: rgba(43, 106, 131, 0.15);
   border-radius: 24px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  border: 1px solid rgba(241, 245, 249, 0.55);
+  border: 1px solid rgba(241, 245, 249, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .header {
@@ -32,11 +33,11 @@
   font-size: 24px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .headerSubtitle {
-  margin: 5px 0 0 0px;
+  margin: 5px 0 0 0;
   color: #c4c4c4;
   font-size: 14px;
 }
@@ -47,26 +48,53 @@
 
 .scrollArea {
   margin-bottom: 20px;
-  height: 280px;
-  overflow: auto;
+  height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Styl paska przewijania */
+.scrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollArea::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.scrollArea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
 
 .sectionCard {
   padding: 15px 20px 20px 20px;
   background-color: rgba(45, 45, 46, 0.77);
   border-radius: 16px;
-  border: 1px solid rgba(226, 232, 240, 0.63);
+  border: 1px solid rgba(226, 232, 240, 0.1);
   margin-bottom: 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   align-items: flex-end;
   position: relative;
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .sectionCard:hover {
-  border-color: #c7d2fe !important;
+  border-color: #b1ec1063;
+  background-color: rgba(55, 55, 56, 0.85);
 }
 
 .label {
@@ -82,18 +110,18 @@
 .input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid rgba(226, 232, 240, 0.5);
+  border: 1px solid rgba(226, 232, 240, 0.2);
   border-radius: 8px;
   outline: none;
   font-size: 14px;
-  background-color: rgba(216, 216, 216, 0.2);
-  color: #c2c6cc;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: rgba(30, 30, 30, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s;
 }
 
 .input:focus {
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+  border-color: #b1ec10;
+  box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
 }
 
 .controls {
@@ -102,8 +130,8 @@
 }
 
 .btnAdd {
-  background-color: rgba(203, 213, 225, 0.09);
-  border: 1px dashed #cbd5e1;
+  background-color: rgba(203, 213, 225, 0.05);
+  border: 1px dashed rgba(203, 213, 225, 0.4);
   border-radius: 12px;
   padding: 12px 20px;
   color: #c0c0c0;
@@ -112,36 +140,50 @@
   align-items: center;
   gap: 8px;
   font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btnAdd:hover {
+  background-color: rgba(203, 213, 225, 0.1);
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .btnCalculate {
   flex: 1;
-  background-color: rgba(178, 236, 16, 0.39);
+  background-color: rgba(178, 236, 16, 0.2);
   color: #b1ec10;
-  border: none;
+  border: 1px solid #b1ec10;
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
   font-size: 16px;
-  transition: opacity 0.2s;
-  letter-spacing: 5px;
+  transition: all 0.2s;
+  letter-spacing: 2px;
 }
 
-.btnCalculate:hover, .btnAdd:hover {
-  opacity: 0.9;
+.btnCalculate:hover {
+  background-color: rgba(178, 236, 16, 0.3);
+  box-shadow: 0 0 15px rgba(177, 236, 16, 0.2);
+}
+
+.btnCalculate:active {
+  transform: scale(0.98);
 }
 
 .resultArea {
   padding: 30px;
-  background-color: rgba(45, 45, 46, 0.77);
-  border-top: 1px solid #f1f5f9;
+  background-color: rgba(35, 35, 36, 0.9);
+  border-top: 1px solid rgba(241, 245, 249, 0.1);
   text-align: center;
 }
 
 .totalValue {
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 900;
-  color: #bebebe;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  /* padding-left: 50px; */
 }
 
 .unit {
@@ -154,12 +196,13 @@
 .trashBtn {
   background: none;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   cursor: pointer;
   padding: 8px;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
 .trashBtn:hover {
   color: #ef4444;
+  transform: rotate(90deg);
 }

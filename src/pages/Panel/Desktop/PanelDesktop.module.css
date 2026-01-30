@@ -1,6 +1,6 @@
 .main{
     display: grid;
-    grid-template-rows: 70px 1fr 100x;
+    grid-template-rows: 70px 1fr 85px;
     background: url(/src/assets/m7.jpg );
     background-repeat: no-repeat;
     background-size: cover;

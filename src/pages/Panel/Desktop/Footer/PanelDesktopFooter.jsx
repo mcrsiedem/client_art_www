@@ -10,6 +10,8 @@ import { IP } from "utils/Host";
 import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
 import UserList from "./UserList/UserList";
+import {  Calculator} from 'lucide-react';
+
 
 export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
   const dropdownRef = useRef(null);
@@ -45,6 +47,7 @@ export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
 
   return (
     <div className={style.footer}>
+          {/* <Calculator size={50} style={{ opacity: 1,marginLeft:'30px', color:'#eaf4d1d6'}} />  */}
   
       <UserList/>
     </div>

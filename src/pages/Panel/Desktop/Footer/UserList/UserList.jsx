@@ -89,6 +89,7 @@ const UserList = () => {
               <span className={style.userName}>{user.imie} </span>
 
               {/* Nazwisko (skracane w CSS) */}
+              {/* <span className={style.userSurname}>{user.nazwisko}</span> */}
               <span className={style.userSurname}>{user.nazwisko}</span>
 
               {/* Data/czas zalogowania */}
@@ -100,7 +101,7 @@ const UserList = () => {
             </div>
           ))}
 
-        {usersIO.length > 0 && DecodeToken(sessionStorage.getItem("token")).id== 1? (
+        {/* {usersIO.length > 0 && DecodeToken(sessionStorage.getItem("token")).id== 1? (
           <div 
           onClick={()=>{setPokazUzytkownikowOnline(!pokazUzytkownikowOnline)}}
           title={`Użytkownicy zalogowani`} className={style.userCardInfo}>
@@ -109,7 +110,7 @@ const UserList = () => {
           </div>
         ) : (
           <></>
-        )}
+        )} */}
       </div>
     </div>
   );

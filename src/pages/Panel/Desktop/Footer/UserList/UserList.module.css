@@ -62,7 +62,8 @@ gap: 7px;
   flex-direction: column; 
   align-items: center; 
   text-align: center;
-  width: 90px;
+  width: 80px;
+  height: 70px;
   padding: 9px;
   overflow: hidden;
   background-color: #f7f9fc41;
@@ -88,7 +89,8 @@ gap: 7px;
   flex-direction: column; 
   align-items: center; 
   text-align: center;
-  width: 90px;
+  width: 80px;
+  height: 70px;
   padding: 9px;
   overflow: hidden;
   background-color: #66d95941;
@@ -111,7 +113,8 @@ gap: 7px;
   flex-direction: column; 
   align-items: center; 
   text-align: center;
-  width: 90px;
+  /* width: 80px; */
+  height: 50px;
   padding: 9px;
   overflow: hidden;
   background-color: #4087fa66;
@@ -154,8 +157,8 @@ gap: 7px;
 
 /* 4. Ikona Użytkownika */
 .userIcon {
-  width: 30px; /* Stała szerokość ikony */
-  height: 30px; /* Stała wysokość ikony */
+  width: 25px; /* Stała szerokość ikony */
+  height: 25px; /* Stała wysokość ikony */
   border-radius: 50%; /* Okrągły obrazek */
   object-fit: cover;
   margin-bottom: 5px;
@@ -172,7 +175,7 @@ gap: 7px;
   white-space: nowrap; /* Zapobiega zawijaniu tekstu */
   overflow: hidden; /* Ukrywa tekst, który się nie mieści */
   text-overflow: ellipsis; /* Zastępuje ukryty tekst trzema kropkami (...) */
-  font-size: 0.8em; /* Domyślny rozmiar czcionki */
+  font-size: 0.7em; /* Domyślny rozmiar czcionki */
   line-height: 1.2;
 }
 
@@ -183,7 +186,7 @@ gap: 7px;
 
 .userSurname {
   color: #e4e4e4;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .loginTime {

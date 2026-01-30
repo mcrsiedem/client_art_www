@@ -99,9 +99,9 @@ const Kalkulator = () => {
           <div>
             <h1 className={styles.headerTitle}>
               <BookOpen size={32} color="#b1ec10" /> 
-              Kalkulator Grzbietu
+              Kalkulator Grzbietu **
             </h1>
-            <p className={styles.headerSubtitle}>Oblicz grubość publikacji</p>
+            <p className={styles.headerSubtitle}>** Oblicz sobie grubość grzbietu, a jak nie ma papieru to napisz do Piotra.</p>
           </div>
           <Calculator size={48} style={{ opacity: 0.2 }} />
         </div>

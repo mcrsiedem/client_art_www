@@ -129,6 +129,10 @@
   gap: 15px;
 }
 
+.input > option {
+  background-color: rgb(88, 88, 88);
+  color: #bebebe;
+}
 .btnAdd {
   background-color: rgba(203, 213, 225, 0.05);
   border: 1px dashed rgba(203, 213, 225, 0.4);

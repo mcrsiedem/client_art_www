@@ -4,9 +4,12 @@ import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 
 const Kalkulator = () => {
+   const appcontext = useContext(AppContext);
+      const listaPapierow = appcontext.listaPapierow;
+      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
   const [sections, setSections] = useState([
-    { id: 1, pages: 4, thickness: 0.25, label: 'Okładka' },
-    { id: 2, pages: 80, thickness: 0.08, label: 'Środek' }
+    { id: 1, pages: 4, thickness: 0.25, label: 'Okładka', papier_id:1 },
+    { id: 2, pages: 80, thickness: 0.08, label: 'Środek' ,papier_id:1}
   ]);
   const [totalThickness, setTotalThickness] = useState(0);
   const scrollRef = useRef(null);
@@ -16,8 +19,20 @@ const Kalkulator = () => {
     const total = sections.reduce((sum, section) => {
       const sheets = section.pages / 2;
       return sum + (sheets * section.thickness);
-    }, 0);
+    }, 0)+1;
     setTotalThickness(total.toFixed(2));
+  };
+
+    const obliczGruboscArkusza = (id) => {
+
+   let papier =  listaPapierow.find(x => x.id == id )
+   let grubosc = (parseFloat(papier.gramatura) ) /1000 * parseFloat(papier.bulk)
+
+   console.log(papier)
+
+
+      return grubosc;
+   
   };
 
   // Dodawanie sekcji z auto-scrollem
@@ -25,7 +40,7 @@ const Kalkulator = () => {
     const newId = Date.now();
     setSections([
       ...sections,
-      { id: newId, pages: 16, thickness: 0.1, label: 'Nowa sekcja' }
+      { id: newId, pages: 16, thickness: 0.1, label: 'Nowa sekcja' , papier_id:1}
     ]);
 
     setTimeout(() => {
@@ -44,9 +59,9 @@ const Kalkulator = () => {
     }
   };
 
-  const updateSection = (id, field, value) => {
+  const updateSection = (id, field, value,papier_id) => {
     setSections(sections.map(s => 
-      s.id === id ? { ...s, [field]: value } : s
+      s.id === id ? { ...s, [field]: value,papier_id:papier_id } : s
     ));
   };
 
@@ -55,14 +70,12 @@ const Kalkulator = () => {
     calculateThickness();
   }, []);
 
-      const appcontext = useContext(AppContext);
-      const listaPapierow = appcontext.listaPapierow;
-      const listaPapierowWyszukiwarka = appcontext.listaPapierowWyszukiwarka;
+     
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <div className={styles.header}>
+        <div onDoubleClick={()=>{ console.table(sections)}} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
               <BookOpen size={32} color="#b1ec10" /> 
@@ -103,16 +116,23 @@ const Kalkulator = () => {
                   <label className={styles.label}>Rodzaj papieru (mm)</label>
                   <select 
                     className={styles.input}
-                    value={section.thickness}
-                    onChange={(e) => updateSection(section.id, 'thickness', parseFloat(e.target.value))}
+                    value={section.papier_id}
+                    // onChange={(e) => updateSection(section.id, 'thickness', parseFloat(e.target.value))}
+                    onChange={(e) => updateSection(section.id, 'thickness', obliczGruboscArkusza(e.target.value),e.target.value)}
                   >
-                    <option value={0.07}>Gazetowy 45g (0.07)</option>
+
+                              {listaPapierowWyszukiwarka.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nazwa} {option.gramatura}  {option.wykonczenie}
+            </option>
+          ))}
+                    {/* <option value={0.07}>Gazetowy 45g (0.07)</option>
                     <option value={0.08}>Offset 80g (0.08)</option>
                     <option value={0.10}>Kreda 115g (0.10)</option>
                     <option value={0.12}>Kreda 135g (0.12)</option>
                     <option value={0.15}>Kreda 170g (0.15)</option>
                     <option value={0.25}>Karton 250g (0.25)</option>
-                    <option value={0.30}>Karton 300g (0.30)</option>
+                    <option value={0.30}>Karton 300g (0.30)</option> */}
                   </select>
                 </div>
 

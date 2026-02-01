@@ -31,10 +31,12 @@ import ProcesoryMini from "pages/Panel/Mini/PrcesoryMini";
 import Procesy from "pages/Procesy/Procesy";
 import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawienie";
 import Proofy from "pages/Proofy/Proofy";
+import { UIContextProvider } from "context/UIContext";
 
 export default function App() {
   return (
     <BrowserRouter basename={''} >
+      <UIContextProvider>
       <SocketProvider>
       <AppContextProvider>
       <TechnologyContextProvider>
@@ -70,6 +72,7 @@ export default function App() {
       </TechnologyContextProvider>
       </AppContextProvider>
       </SocketProvider>
+      </UIContextProvider>
     </BrowserRouter>
   );
 }

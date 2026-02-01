@@ -3,10 +3,13 @@ import styles from './Kalkulator.module.css';
 import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
+import { UIContext } from 'context/UIContext';
 
 const Kalkulator = () => {
   const [callForPaper] = useApiPapier();
   const { listaPapierow, listaPapierowWyszukiwarka } = useContext(AppContext);
+  const uiContext = useContext(UIContext);
+
   
   const [sections, setSections] = useState([
     { id: 1, pages: 4, thickness: 0.25, label: 'Okładka', papier_id: 1 },
@@ -92,6 +95,7 @@ const Kalkulator = () => {
     }
   };
 
+  if(uiContext.showKalkulatorGrzbietu){
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -101,7 +105,7 @@ const Kalkulator = () => {
               <BookOpen size={32} color="#b1ec10" /> 
               Kalkulator Grzbietu **
             </h1>
-            <p className={styles.headerSubtitle}>** Oblicz sobie grubość grzbietu, a jak nie ma papieru to napisz do Piotra.</p>
+            <p className={styles.headerSubtitle}>** Oblicz grubość grzbietu, a jak nie ma papieru to napisz do Piotra prośbę o dodanie.</p>
           </div>
           <Calculator size={48} style={{ opacity: 0.2 }} />
         </div>
@@ -189,7 +193,7 @@ const Kalkulator = () => {
           </div>
           </div>
           <div className={styles.resultAreaRight}>
-s
+
           </div>
 
 
@@ -197,6 +201,8 @@ s
       </div>
     </div>
   );
+  }
+
 };
 
 export default Kalkulator;

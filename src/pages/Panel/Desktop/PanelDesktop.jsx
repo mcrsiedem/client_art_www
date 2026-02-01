@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IP } from "utils/Host";
 import axios from "axios";
   
@@ -17,6 +17,7 @@ import iconInspekcja from 'assets/inspekcja.svg'
 import iconOddanie from 'assets/iconOddanie2.svg'
 import iconProcesy from 'assets/iconProcesy.svg'
 import iconWykres from "assets/wykres.svg";
+import iconKalkulator from "assets/calc_white2.svg";
 
 import iconKalendarz from 'assets/iconKalendarz.svg'
 
@@ -28,11 +29,14 @@ import PodgladRealizacji from "./PodgladRealizacji/PodgladRealizacji";
 import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 import Kalkulator from "./Kalkulator/Kalkulator";
+import { UIContext } from "context/UIContext";
 
 
 export default function PanelDesktop ({isOnline,navigate,logout})  {
   const [loading, setLoading] = useState(true);
  const {  callPodgladRalizacji,  lokalizacja} = useSocket()
+   const uiContext = useContext(UIContext);
+ 
 
   async function checkToken() {
     axios
@@ -74,6 +78,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                                 <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
                                 {/* <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/> */}
                                 <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/>
+                                <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/>
                         </div >
                         < div className={style.container_btn_prawy}> 
                         {/* <PodgladRealizacji loading={loading}/> */}

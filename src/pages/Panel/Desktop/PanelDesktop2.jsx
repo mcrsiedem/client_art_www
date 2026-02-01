@@ -32,7 +32,7 @@ import Kalkulator from "./Kalkulator/Kalkulator";
 import { UIContext } from "context/UIContext";
 
 
-export default function PanelDesktop ({isOnline,navigate,logout})  {
+export default function PanelDesktop2 ({isOnline,navigate,logout})  {
   const [loading, setLoading] = useState(true);
  const {  callPodgladRalizacji,  lokalizacja} = useSocket()
    const uiContext = useContext(UIContext);

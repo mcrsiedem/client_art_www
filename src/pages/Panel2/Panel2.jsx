@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { 
   Plus, 
   FileText, 
@@ -11,10 +11,13 @@ import {
 } from 'lucide-react';
 import styles from './Panel2.module.css';
 import { useNavigate } from 'react-router-dom';
+import Kalkulator from 'pages/Panel/Desktop/Kalkulator/Kalkulator';
+import { UIContext } from 'context/UIContext';
 
 const Panel2 = () => {
 
     const navigate = useNavigate();
+       const uiContext = useContext(UIContext);
   
   const sidebarItems = [
     { name: 'ZAMÓWIENIA', icon: <FileText size={18} />, handle:()=> navigate("/Zamowienia") },
@@ -32,14 +35,14 @@ const Panel2 = () => {
     { 
       id: 1, 
       label: 'Nowe Zamówienie', 
-      desc: 'Dodaj ekspresowo zlecenie', 
+      desc: 'Dodaj nowe zamówienie', 
       icon: <Plus size={32} />, 
       glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' 
     },
     { 
       id: 2, 
       label: 'Papiery', 
-      desc: 'Sprawdź wąskie gardła', 
+      desc: 'Dodaj papier', 
       icon: <Zap size={32} />, 
       glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' 
     },
@@ -55,9 +58,19 @@ const Panel2 = () => {
       label: 'Kalkulator do grzbietów', 
       desc: 'Pobierz statystyki PDF', 
       icon: <TrendingUp size={32} />, 
-      glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' 
+      glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' ,
+      handle: ()=> {
+        uiContext.setShowKalkulatorGrzbietu(true)
+        setShowAction(null)
+
+      }
     },
   ];
+
+          const [showActions, setShowAction] = useState(quickActions);
+
+
+    
 
   return (
     <div className={styles.container}>
@@ -85,13 +98,13 @@ const Panel2 = () => {
 
                       <section className={styles.dashboardSection}>
                                   <header className={styles.welcomeContainer}>
-                                    <h2 className={styles.welcomeHeading}>Witaj ponownie, Macieju</h2>
-                                    <p className={styles.welcomeSubtext}>Oto Twoje szybkie skróty na dzisiaj.</p>
+                                    <h2 className={styles.welcomeHeading}>Na skróty...</h2>
+                                    {/* <p className={styles.welcomeSubtext}>Szybkie skróty...</p> */}
                                   </header>
 
                                   <div className={styles.quickActionsGrid}>
-                                    {quickActions.map((action) => (
-                                      <button key={action.id} className={styles.actionCard}>
+                                    {showActions.map((action) => (
+                                      <button key={action.id} className={styles.actionCard} onClick={()=>action.handle()}>
                                         <div className={styles.hoverGlow} style={{ background: action.glow }} />
                                         <div className={styles.iconWrapper}>{action.icon}</div>
                                         <div className={styles.textContent}>
@@ -101,6 +114,8 @@ const Panel2 = () => {
                                         <Plus className={styles.cornerIcon} size={16} />
                                       </button>
                                     ))}
+                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
+
                                   </div>
                       </section>
               </main>

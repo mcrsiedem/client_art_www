@@ -12,6 +12,7 @@ import PanelMini from "./Mini/PanelMini";
 import PanelDesktop from "./Desktop/PanelDesktop";
 import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
 import { useApiPapier } from "hooks/useApiPapier";
+import PanelDesktop2 from "./Desktop/PanelDesktop2";
 
 
 export default function Panel({ user, setUser }) {
@@ -47,6 +48,7 @@ export default function Panel({ user, setUser }) {
     return (
       <>
         <PanelDesktop isOnline={isOnline} navigate={navigate} logout={logout} />
+        {/* <PanelDesktop2 isOnline={isOnline} navigate={navigate} logout={logout} /> */}
       </>
     );
   } else

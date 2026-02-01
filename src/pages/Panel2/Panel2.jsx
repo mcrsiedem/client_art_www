@@ -1,0 +1,105 @@
+import React from 'react';
+import { 
+  Plus, 
+  FileText, 
+  Truck, 
+  TrendingUp, 
+  Zap, 
+  Calendar, 
+  Users, 
+  Settings 
+} from 'lucide-react';
+import styles from './Panel2.module.css';
+
+const Panel2 = () => {
+  const sidebarItems = [
+    { name: 'ZAMÓWIENIA', icon: <FileText size={18} /> },
+    { name: 'FAKTURY', icon: <FileText size={18} /> },
+    { name: 'PROCESY', icon: <Settings size={18} /> },
+    { name: 'OPRAWA', icon: <div className={styles.squareIcon} /> },
+    { name: 'SPEDYCJA', icon: <Truck size={18} /> },
+    { name: 'KALENDARZ', icon: <Calendar size={18} /> },
+    { name: 'USTAWIENIA', icon: <Settings size={18} /> },
+    { name: 'STATYSTYKI', icon: <TrendingUp size={18} /> },
+    { name: 'GRZBIET', icon: <div className={styles.circleIcon} /> },
+  ];
+
+  const quickActions = [
+    { 
+      id: 1, 
+      label: 'Nowe Zamówienie', 
+      desc: 'Dodaj ekspresowo zlecenie', 
+      icon: <Plus size={32} />, 
+      glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' 
+    },
+    { 
+      id: 2, 
+      label: 'Status Produkcji', 
+      desc: 'Sprawdź wąskie gardła', 
+      icon: <Zap size={32} />, 
+      glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' 
+    },
+    { 
+      id: 3, 
+      label: 'Baza Klientów', 
+      desc: 'Zarządzaj kontaktami', 
+      icon: <Users size={32} />, 
+      glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' 
+    },
+    { 
+      id: 4, 
+      label: 'Raport Dnia', 
+      desc: 'Pobierz statystyki PDF', 
+      icon: <TrendingUp size={32} />, 
+      glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' 
+    },
+  ];
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.backgroundSmoke} />
+      <div className={styles.overlay} />
+
+      <header className={styles.header}>
+        <div className={styles.userBadge}>
+          <div className={styles.initialsCircle}>MR</div>
+          <span className={styles.userName}>Maciej Romiszewski</span>
+        </div>
+      </header>
+
+      <main className={styles.mainContent}>
+        <nav className={styles.sidebar}>
+          {sidebarItems.map((item, idx) => (
+            <button key={idx} className={styles.sidebarButton}>
+              <span className={styles.sidebarIcon}>{item.icon}</span>
+              <span className={styles.sidebarText}>{item.name}</span>
+            </button>
+          ))}
+        </nav>
+
+        <section className={styles.dashboardSection}>
+          <header className={styles.welcomeContainer}>
+            <h2 className={styles.welcomeHeading}>Witaj ponownie, Macieju</h2>
+            <p className={styles.welcomeSubtext}>Oto Twoje szybkie skróty na dzisiaj.</p>
+          </header>
+
+          <div className={styles.quickActionsGrid}>
+            {quickActions.map((action) => (
+              <button key={action.id} className={styles.actionCard}>
+                <div className={styles.hoverGlow} style={{ background: action.glow }} />
+                <div className={styles.iconWrapper}>{action.icon}</div>
+                <div className={styles.textContent}>
+                  <h3 className={styles.actionTitle}>{action.label}</h3>
+                  <p className={styles.actionDesc}>{action.desc}</p>
+                </div>
+                <Plus className={styles.cornerIcon} size={16} />
+              </button>
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default Panel2;

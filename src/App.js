@@ -32,6 +32,7 @@ import Procesy from "pages/Procesy/Procesy";
 import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawienie";
 import Proofy from "pages/Proofy/Proofy";
 import { UIContextProvider } from "context/UIContext";
+import Panel2 from "pages/Panel2/Panel2";
 
 export default function App() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
               <Route path='/OprawaView' element={<OprawaView/>} />
               <Route path='/History' element={<History />} />
               <Route path='/Panel' element={<Panel />} />
+              <Route path='/Panel2' element={<Panel2 />} />
               <Route path='/Technologie' element={<TechnologieView />} />
               <Route path='/zamowienia' element={<Zamowienia />} />
               <Route path='/ustawienia' element={<Ustawienia />} />

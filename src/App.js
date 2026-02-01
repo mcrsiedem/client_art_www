@@ -33,6 +33,7 @@ import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawi
 import Proofy from "pages/Proofy/Proofy";
 import { UIContextProvider } from "context/UIContext";
 import Panel2 from "pages/Panel2/Panel2";
+// import Panel3 from "pages/Panel2/Panel3";
 
 export default function App() {
   return (

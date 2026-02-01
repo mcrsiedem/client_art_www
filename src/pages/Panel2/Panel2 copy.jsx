@@ -10,22 +10,18 @@ import {
   Settings 
 } from 'lucide-react';
 import styles from './Panel2.module.css';
-import { useNavigate } from 'react-router-dom';
 
 const Panel2 = () => {
-
-    const navigate = useNavigate();
-  
   const sidebarItems = [
-    { name: 'ZAMÓWIENIA', icon: <FileText size={18} />, handle:()=> navigate("/Zamowienia") },
-    { name: 'FAKTURY', icon: <FileText size={18} /> , handle:()=> navigate("/faktury")},
-    { name: 'PROCESY', icon: <Settings size={18} /> , handle:()=> navigate("/ProcesyView")},
-    { name: 'OPRAWA', icon: <div className={styles.squareIcon} /> , handle:()=> navigate("/OprawaView")},
-    { name: 'SPEDYCJA', icon: <Truck size={18} /> , handle:()=> navigate("/Oddania")},
-    { name: 'KALENDARZ', icon: <Calendar size={18} /> , handle:()=> navigate("/kalendarz2")},
-    { name: 'USTAWIENIA', icon: <Settings size={18} /> , handle:()=> navigate("/ustawienia")},
-    { name: 'STATYSTYKI', icon: <TrendingUp size={18} /> , handle:()=> navigate("/Zestawienia")},
-    // { name: 'GRZBIET', icon: <div className={styles.circleIcon} />, handle:()=> navigate("/Zamowienia") },
+    { name: 'ZAMÓWIENIA', icon: <FileText size={18} /> },
+    { name: 'FAKTURY', icon: <FileText size={18} /> },
+    { name: 'PROCESY', icon: <Settings size={18} /> },
+    { name: 'OPRAWA', icon: <div className={styles.squareIcon} /> },
+    { name: 'SPEDYCJA', icon: <Truck size={18} /> },
+    { name: 'KALENDARZ', icon: <Calendar size={18} /> },
+    { name: 'USTAWIENIA', icon: <Settings size={18} /> },
+    { name: 'STATYSTYKI', icon: <TrendingUp size={18} /> },
+    { name: 'GRZBIET', icon: <div className={styles.circleIcon} /> },
   ];
 
   const quickActions = [
@@ -76,7 +72,7 @@ const Panel2 = () => {
               <main className={styles.mainContent}>
                       <nav className={styles.sidebar}>
                         {sidebarItems.map((item, idx) => (
-                          <button key={idx} className={styles.sidebarButton} onClick={()=>item.handle()}>
+                          <button key={idx} className={styles.sidebarButton}>
                             <span className={styles.sidebarIcon}>{item.icon}</span>
                             <span className={styles.sidebarText}>{item.name}</span>
                           </button>

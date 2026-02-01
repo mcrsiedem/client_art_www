@@ -37,21 +37,24 @@ const Panel2 = () => {
       label: 'Nowe Zamówienie', 
       desc: 'Dodaj nowe zamówienie', 
       icon: <Plus size={32} />, 
-      glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' 
+      glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
+      handle: ()=> console.log("o")
     },
     { 
       id: 2, 
       label: 'Papiery', 
       desc: 'Dodaj papier', 
       icon: <Zap size={32} />, 
-      glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' 
+      glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' ,
+      handle: ()=> console.log("o")
     },
     { 
       id: 3, 
       label: 'Baza Klientów', 
       desc: 'Zarządzaj kontaktami', 
       icon: <Users size={32} />, 
-      glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' 
+      glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' ,
+      handle: ()=> console.log("o")
     },
     { 
       id: 4, 
@@ -59,15 +62,12 @@ const Panel2 = () => {
       desc: 'Pobierz statystyki PDF', 
       icon: <TrendingUp size={32} />, 
       glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' ,
-      handle: ()=> {
-        uiContext.setShowKalkulatorGrzbietu(true)
-        setShowAction(null)
-
-      }
+      handle: ()=>  uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)
+  
     },
   ];
 
-          const [showActions, setShowAction] = useState(quickActions);
+          // const [showActions, setShowAction] = useState(quickActions);
 
 
     
@@ -103,7 +103,7 @@ const Panel2 = () => {
                                   </header>
 
                                   <div className={styles.quickActionsGrid}>
-                                    {showActions.map((action) => (
+                                    {quickActions.map((action) => (
                                       <button key={action.id} className={styles.actionCard} onClick={()=>action.handle()}>
                                         <div className={styles.hoverGlow} style={{ background: action.glow }} />
                                         <div className={styles.iconWrapper}>{action.icon}</div>
@@ -114,9 +114,9 @@ const Panel2 = () => {
                                         <Plus className={styles.cornerIcon} size={16} />
                                       </button>
                                     ))}
-                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
 
                                   </div>
+                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                       </section>
               </main>
     </div>

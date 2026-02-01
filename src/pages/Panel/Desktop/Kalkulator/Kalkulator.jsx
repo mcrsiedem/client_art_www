@@ -6,9 +6,10 @@ import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
 
 const Kalkulator = () => {
+  const uiContext = useContext(UIContext);
+  
   const [callForPaper] = useApiPapier();
   const { listaPapierow, listaPapierowWyszukiwarka } = useContext(AppContext);
-  const uiContext = useContext(UIContext);
 
   
   const [sections, setSections] = useState([
@@ -95,7 +96,7 @@ const Kalkulator = () => {
     }
   };
 
-  if(uiContext.showKalkulatorGrzbietu){
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -201,7 +202,7 @@ const Kalkulator = () => {
       </div>
     </div>
   );
-  }
+  
 
 };
 

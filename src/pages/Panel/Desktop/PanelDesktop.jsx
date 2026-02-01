@@ -83,7 +83,7 @@ export default function PanelDesktop ({isOnline,navigate,logout})  {
                         < div className={style.container_btn_prawy}> 
                         {/* <PodgladRealizacji loading={loading}/> */}
                         <OnlineUsersList />
-                        <Kalkulator />
+                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                         </div>
                         </div>
                 <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>

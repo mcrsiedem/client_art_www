@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState,useEffect, useContext  } from "react";
 import { AppContext } from "context/AppContext";
 import { ModalInsertContext } from "context/ModalInsertContext";
+
 export   function useApiPapier() {
 
 
@@ -25,9 +26,10 @@ export   function useApiPapier() {
       const setListaPapierowWykonczeniaWyszukiwarka = appcontext.setListaPapierowWykonczeniaWyszukiwarka;
       const setListaPapierowPowleczenie = appcontext.setListaPapierowPowleczenie;
       const setListaPapierowPowleczenieWyszukiwarka = appcontext.setListaPapierowPowleczenieWyszukiwarka;
+        // const uiContext = useContext(UIContext);
   
       const callForPaper = async () =>{
-        
+
         const res = await axios.get(IP + "papiery-parametry/" + sessionStorage.getItem("token"));
 
         setListaPapierow(res.data[0].map(x => {return {...x, typ_row: 1, delete:false}}  )  );

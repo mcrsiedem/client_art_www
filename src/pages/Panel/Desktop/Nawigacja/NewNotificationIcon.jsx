@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewNotificationIcon = ({ size = 24, color = "#4ae254", dotColor = "#f30a0a" }) => {
+const NewNotificationIcon = ({ size = 24, color = "#b3b3b3", dotColor = "#19d408" }) => {
   return (
     <svg 
       width={size} 

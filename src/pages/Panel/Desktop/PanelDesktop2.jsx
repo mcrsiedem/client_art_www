@@ -30,6 +30,7 @@ import { useSocket } from "context/SocketContext";
 import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 import Kalkulator from "./Kalkulator/Kalkulator";
 import { UIContext } from "context/UIContext";
+import Card from "./Nawigacja/Card";
 
 
 export default function PanelDesktop2 ({isOnline,navigate,logout})  {
@@ -82,6 +83,8 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
                     </Left>
                     <Right>
                         {/* <PodgladRealizacji loading={loading}/> */}
+                        {/* <Card/> */}
+                        <Card/>
                         <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                     </Right>

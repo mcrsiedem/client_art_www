@@ -34,8 +34,10 @@
 .container_btn_prawy {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
 
     /* background-color: #00ff734a; */
 }

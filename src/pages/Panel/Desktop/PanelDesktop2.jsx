@@ -31,13 +31,100 @@ import { todayMinusDniGodziny } from "actions/todayMinusDniGodziny";
 import Kalkulator from "./Kalkulator/Kalkulator";
 import { UIContext } from "context/UIContext";
 import Card from "./Nawigacja/Card";
+import { 
+  Plus,  FileText, 
+  Truck, 
+  TrendingUp, 
+  Zap, 
+  Calendar, 
+  Users, 
+  Settings, 
+  Calculator,
+  CalculatorIcon,
+  Layers
+} from 'lucide-react';
 
 
 export default function PanelDesktop2 ({isOnline,navigate,logout})  {
   const [loading, setLoading] = useState(true);
  const {  callPodgladRalizacji,  lokalizacja} = useSocket()
    const uiContext = useContext(UIContext);
- 
+
+
+   const [quickActions, setQuickActions] = useState([
+      { 
+        id: 1, 
+        label: 'Nowe Zamówienie', 
+        desc: 'Dodaj nowe zamówienie', 
+        icon: <Plus size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
+        handle: ()=> console.log("o"),
+        show: true
+      },
+      { 
+        id: 2, 
+        label: 'Papiery', 
+        desc: 'Dodaj papier', 
+        icon: <Layers size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' ,
+        handle: ()=> console.log("o"),
+        show: true
+      },
+      { 
+        id: 3, 
+        label: 'Klienci', 
+        desc: 'Zarządzaj kontaktami', 
+        icon: <Users size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' ,
+        handle: ()=> console.log("o"),
+        show: true
+      },
+            { 
+        id: 4, 
+        label: 'Statystki', 
+        desc: 'Zestawienia przelotów', 
+        // icon: <TrendingUp size={32} />, 
+        icon: <TrendingUp size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(249, 26, 22, 0.2), rgba(234, 42, 8, 0.2))' ,
+        handle: ()=> {
+          uiContext.setShowKalkulatorGrzbietu(prev => !prev)
+      toggleActionVisibility2()
+        } ,
+        show: true
+    
+      },
+      { 
+        id: 5, 
+        label: 'Kalkulator do grzbietów', 
+        desc: 'Policz grubość grzbietu', 
+        // icon: <TrendingUp size={32} />, 
+        icon: <CalculatorIcon size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' ,
+        handle: ()=> {
+          uiContext.setShowKalkulatorGrzbietu(prev => !prev)
+      toggleActionVisibility2()
+        } ,
+        show: true
+    
+      }
+
+    ]);
+
+
+const toggleActionVisibility = (id) => {
+  setQuickActions(prevActions => 
+    prevActions.map(action => 
+      action.id === id ? { ...action, show: false } : action
+    )
+  );
+};
+
+const toggleActionVisibility2 = (id) => {
+  setQuickActions(quickActions.map(action => { return {...action, show: false} }))
+  
+    
+  
+};
 
   async function checkToken() {
     axios
@@ -78,13 +165,16 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
                       <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
-                      <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/>
-                      <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/>
+                      {/* <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/> */}
+                      {/* <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/> */}
                     </Left>
                     <Right>
                         {/* <PodgladRealizacji loading={loading}/> */}
                         {/* <Card/> */}
-                        <Card/>
+                                    {quickActions.filter(x=> x.show == true).map((action) => (
+                                          <Card action={action}/>
+                                    ))}
+                        
                         <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                     </Right>

@@ -4,24 +4,29 @@
         justify-content: start;
         align-items: center;
         padding-left: 40px;
+        /* padding-left: clamp(10px, 40px, 10px); */
         backdrop-filter:  blur(10px);
         color: rgb(255, 255, 255);
         border-radius: 10px;
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
-        width: 350px;
-        height: 45px;
+        width: 65%;
         letter-spacing: 6px;
-        font-size: 0.9rem;
+        font-size: 0.9em;
+      /* font-size: clamp(0.7rem, 1vw + 0.5rem, 1.2rem); */
+
         background-color: rgba(216, 216, 216,0.2);
       font-weight: 600;
       gap: 25px;
       z-index: 300;
+      overflow: hidden;
     
     }
     
     .kafle:hover > p{
         color: rgb(255, 255, 255);
+      /* font-size: clamp(0.7rem, 1vw + 0.5rem, 1.2rem); */
+
     }
     
     

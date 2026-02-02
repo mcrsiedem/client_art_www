@@ -102,7 +102,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' ,
         handle: ()=> {
           uiContext.setShowKalkulatorGrzbietu(prev => !prev)
-      toggleActionVisibility2()
+      // toggleActionVisibility2()
         } ,
         show: true
     

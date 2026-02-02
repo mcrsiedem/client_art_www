@@ -63,8 +63,8 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
       },
       { 
         id: 2, 
-        label: 'Papiery', 
-        desc: 'Dodaj papier', 
+        label: 'Baza papierów', 
+        desc: 'Zarządzaj papierami', 
         icon: <Layers size={32} />, 
         glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' ,
         handle: ()=> console.log("o"),
@@ -73,7 +73,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
       { 
         id: 3, 
         label: 'Klienci', 
-        desc: 'Zarządzaj kontaktami', 
+        desc: 'Zarządzaj klientami', 
         icon: <Users size={32} />, 
         glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' ,
         handle: ()=> console.log("o"),
@@ -168,15 +168,20 @@ const toggleActionVisibility2 = (id) => {
                       {/* <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/> */}
                       {/* <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/> */}
                     </Left>
+
+                    <Center>
+                      <OnlineUsersList />
+                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
+                         {/* <PodgladRealizacji loading={loading}/> */}
+                    </Center>
                     <Right>
-                        {/* <PodgladRealizacji loading={loading}/> */}
+                       
                         {/* <Card/> */}
                                     {quickActions.filter(x=> x.show == true).map((action) => (
                                           <Card action={action}/>
                                     ))}
                         
-                        <OnlineUsersList />
-                        {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
+                        
                     </Right>
               </Container>
           <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>
@@ -193,9 +198,13 @@ function Container({ children }) {
 }
 
 function Left({ children }) {
-  return <div className={style.container_btn}>{children}</div>;
+  return <div className={style.left}>{children}</div>;
+}
+
+function Center({ children }) {
+  return <div className={style.center}>{children}</div>;
 }
 
 function Right({ children }) {
-  return <div className={style.container_btn_prawy}>{children}</div>;
+  return <div className={style.right}>{children}</div>;
 }

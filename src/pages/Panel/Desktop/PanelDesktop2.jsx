@@ -43,32 +43,42 @@ import {
   CalculatorIcon,
   Layers
 } from 'lucide-react';
+import { ModalInsertContext } from "context/ModalInsertContext";
+import PaperStage from "components/PaperStage/PaperStage";
+import ClientStage from "components/Klienci/ClientStage";
 
 
 export default function PanelDesktop2 ({isOnline,navigate,logout})  {
   const [loading, setLoading] = useState(true);
  const {  callPodgladRalizacji,  lokalizacja} = useSocket()
    const uiContext = useContext(UIContext);
+     const modalContext = useContext(ModalInsertContext);
+   
+     const setShowPaperStage = modalContext.setShowPaperStage;
 
 
    const [quickActions, setQuickActions] = useState([
-      { 
-        id: 1, 
-        label: 'Nowe Zamówienie', 
-        desc: 'Dodaj nowe zamówienie', 
-        icon: <Plus size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
-        handle: ()=> console.log("o"),
-        show: true
-      },
+      // { 
+      //   id: 1, 
+      //   label: 'Nowe Zamówienie', 
+      //   desc: 'Dodaj nowe zamówienie', 
+      //   icon: <Plus size={32} />, 
+      //   glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
+      //   handle: ()=> {
+      //     navigate("/Zamowienia")
+      //     modalContext.setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+      //     modalContext.setSelectedZamowienie({id:1})
+      //     modalContext.setOpenModalInsert(true);
+
+      //   },
+      // },
       { 
         id: 2, 
         label: 'Baza papierów', 
         desc: 'Zarządzaj papierami', 
         icon: <Layers size={32} />, 
         glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' ,
-        handle: ()=> console.log("o"),
-        show: true
+        handle: ()=> setShowPaperStage(true),
       },
       { 
         id: 3, 
@@ -76,8 +86,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         desc: 'Zarządzaj klientami', 
         icon: <Users size={32} />, 
         glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' ,
-        handle: ()=> console.log("o"),
-        show: true
+        handle: ()=> modalContext.showAddClientStage(true),
       },
             { 
         id: 4, 
@@ -87,10 +96,10 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         icon: <TrendingUp size={32} />, 
         glow: 'linear-gradient(135deg, rgba(249, 26, 22, 0.2), rgba(234, 42, 8, 0.2))' ,
         handle: ()=> {
-          uiContext.setShowKalkulatorGrzbietu(prev => !prev)
-      toggleActionVisibility2()
+          navigate("/Zestawienia")
+          // uiContext.setShowKalkulatorGrzbietu(prev => !prev)
+      // toggleActionVisibility2()
         } ,
-        show: true
     
       },
       { 
@@ -104,7 +113,6 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
           uiContext.setShowKalkulatorGrzbietu(prev => !prev)
       // toggleActionVisibility2()
         } ,
-        show: true
     
       }
 
@@ -170,6 +178,8 @@ const toggleActionVisibility2 = (id) => {
                     </Left>
 
                     <Center>
+                      <PaperStage parent={"ustawienia"}/>
+                                        <ClientStage parent={"ustawienia"}/>
                       <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                          {/* <PodgladRealizacji loading={loading}/> */}
@@ -177,7 +187,7 @@ const toggleActionVisibility2 = (id) => {
                     <Right>
                        
                         {/* <Card/> */}
-                                    {quickActions.filter(x=> x.show == true).map((action) => (
+                                    {quickActions.map((action) => (
                                           <Card action={action}/>
                                     ))}
                         

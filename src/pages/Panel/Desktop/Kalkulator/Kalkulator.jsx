@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
 import styles from './Kalkulator.module.css';
-import { BookOpen, Calculator, Plus, Trash2, Layers } from 'lucide-react';
+import { BookOpen, Calculator, Plus, Trash2, Layers, ClosedCaptionIcon, ArrowDownRightFromSquareIcon, X } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
@@ -108,7 +108,11 @@ const Kalkulator = () => {
             </h1>
             <p className={styles.headerSubtitle}>** Oblicz grubość grzbietu, a jak nie ma papieru to napisz do Piotra prośbę o dodanie.</p>
           </div>
-          <Calculator size={48} style={{ opacity: 0.2 }} />
+          
+
+          <X size={48} style={{ opacity: 0.2 } } onClick={()=>{uiContext.setShowKalkulatorGrzbietu(false )}} />
+      
+
         </div>
 
         <div className={styles.body}>

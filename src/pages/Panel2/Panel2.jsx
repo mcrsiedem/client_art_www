@@ -76,7 +76,7 @@ const Panel2 = () => {
     <div className={styles.container}>
       
       <div className={styles.backgroundSmoke} />
-          <div className={styles.overlay} />
+      <div className={styles.overlay} />
 
                             <header className={styles.header}>
                               <div className={styles.userBadge}>
@@ -119,6 +119,14 @@ const Panel2 = () => {
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                       </section>
               </main>
+
+                                          {/* <header className={styles.header}>
+                              <div className={styles.userBadge}>
+                                <div className={styles.initialsCircle}>MR</div>
+                                <span className={styles.userName}>Maciej Romiszewski</span>
+                              </div>
+
+                            </header> */}
     </div>
   );
 };

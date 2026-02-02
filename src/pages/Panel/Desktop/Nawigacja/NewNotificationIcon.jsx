@@ -46,7 +46,7 @@ const NewNotificationIcon = ({ size = 24, color = "#b3b3b3", dotColor = "#19d408
       />
 
       {/* Pulsująca kropka "New" */}
-      <circle 
+      {/* <circle 
         className="notification-dot"
         cx="18" 
         cy="6" 
@@ -54,7 +54,7 @@ const NewNotificationIcon = ({ size = 24, color = "#b3b3b3", dotColor = "#19d408
         fill={dotColor} 
         stroke="white" 
         strokeWidth="2"
-      />
+      /> */}
     </svg>
   );
 };

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { IP } from "utils/Host";
 import axios from "axios";
   
-import style from './PanelDesktop.module.css';
+import style from './PanelDesktop2.module.css';
 
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'
@@ -64,40 +64,45 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
     };
   }, []);
 
-    return(<>
-      <div >
-                        <div  className={style.main} >
-                <PanelDesktopHeader isOnline={isOnline} navigate={navigate} logout={logout}/>
-                        <div className={style.container} >
-                        <div className={style.container_btn} >
-                                <NawigacjaBTN handler={() => navigate("/Zamowienia")} icon={iconZamowienia} nazwa={"ZAMÓWIENIA"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/faktury")} icon={iconTechnolgie} nazwa={"FAKTURY"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/ProcesyView")} icon={iconProcesy} nazwa={"PROCESY"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/OprawaView")} icon={iconMagazyn} nazwa={"OPRAWA"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
-                                <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
-                                {/* <NawigacjaBTN handler={() => navigate("/Panel")} icon={iconHistoria} nazwa={"HISTORIA"} locked={true}/> */}
-                                <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/>
-                                <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/>
-                        </div >
-                        < div className={style.container_btn_prawy}> 
+    return(
+    
+          <div  className={style.main} >
+          <PanelDesktopHeader isOnline={isOnline} navigate={navigate} logout={logout}/>
+              <Container>
+                    <Left>
+                      <NawigacjaBTN handler={() => navigate("/Zamowienia")} icon={iconZamowienia} nazwa={"ZAMÓWIENIA"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/faktury")} icon={iconTechnolgie} nazwa={"FAKTURY"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/ProcesyView")} icon={iconProcesy} nazwa={"PROCESY"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/OprawaView")} icon={iconMagazyn} nazwa={"OPRAWA"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
+                      <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/>
+                      <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/>
+                    </Left>
+                    <Right>
                         {/* <PodgladRealizacji loading={loading}/> */}
                         <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
-                        </div>
-                        </div>
-                <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>
+                    </Right>
+              </Container>
+          <PanelDesktopFooter isOnline={isOnline} navigate={navigate} logout={logout}/>
+          </div>
+   
 
-                </div>
-      </div>
-
-            </>);
+           );
 
 
 };
 
+function Container({ children }) {
+  return <div className={style.container}>{children}</div>;
+}
 
+function Left({ children }) {
+  return <div className={style.container_btn}>{children}</div>;
+}
 
-
-
+function Right({ children }) {
+  return <div className={style.container_btn_prawy}>{children}</div>;
+}

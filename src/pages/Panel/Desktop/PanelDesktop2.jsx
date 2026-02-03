@@ -174,7 +174,7 @@ const toggleActionVisibility2 = (id) => {
                       <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
-                      <NawigacjaBTN handler={() => navigate("/Statystyki")} icon={iconWykres} nazwa={"PRODUKCJA"} locked={false}/>
+                      {/* <NawigacjaBTN handler={() => navigate("/Statystyki")} icon={iconWykres} nazwa={"PRODUKCJA"} locked={false}/> */}
                       {/* <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/> */}
                     </Left>
 

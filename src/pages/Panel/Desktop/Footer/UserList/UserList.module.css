@@ -36,6 +36,8 @@
   justify-content: end;
 /* background-color: red; */
 overflow: hidden;
+padding-right: 20px;
+padding-bottom: 5px;
 gap: 7px;
 }
 

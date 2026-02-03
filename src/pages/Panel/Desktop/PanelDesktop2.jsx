@@ -41,7 +41,8 @@ import {
   Settings, 
   Calculator,
   CalculatorIcon,
-  Layers
+  Layers,
+  BarChart3
 } from 'lucide-react';
 import { ModalInsertContext } from "context/ModalInsertContext";
 import PaperStage from "components/PaperStage/PaperStage";
@@ -58,20 +59,20 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
 
 
    const [quickActions, setQuickActions] = useState([
-      // { 
-      //   id: 1, 
-      //   label: 'Nowe Zamówienie', 
-      //   desc: 'Dodaj nowe zamówienie', 
-      //   icon: <Plus size={32} />, 
-      //   glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
-      //   handle: ()=> {
-      //     navigate("/Zamowienia")
-      //     modalContext.setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
-      //     modalContext.setSelectedZamowienie({id:1})
-      //     modalContext.setOpenModalInsert(true);
+      { 
+        id: 1, 
+        label: 'Raport produkcji', 
+        desc: 'Zestawienie wg spedycji', 
+        icon: <BarChart3 size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
+        handle: ()=> {
+          navigate("/Statystyki")
+          // modalContext.setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+          // modalContext.setSelectedZamowienie({id:1})
+          // modalContext.setOpenModalInsert(true);
 
-      //   },
-      // },
+        },
+      },
       { 
         id: 2, 
         label: 'Baza papierów', 
@@ -173,7 +174,7 @@ const toggleActionVisibility2 = (id) => {
                       <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
-                      {/* <NawigacjaBTN handler={() => navigate("/Zestawienia")} icon={iconWykres} nazwa={"STATYSTYKI"} locked={false}/> */}
+                      <NawigacjaBTN handler={() => navigate("/Statystyki")} icon={iconWykres} nazwa={"PRODUKCJA"} locked={false}/>
                       {/* <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/> */}
                     </Left>
 

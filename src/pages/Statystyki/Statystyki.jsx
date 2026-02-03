@@ -8,6 +8,7 @@ import STATYSTYKI_HEADER from "./Header/STATYSTYKI_HEADER";
 import STATYSTYKI_FOOTER from "./Footer/STATYSTYKI_FOOTER";
 import STATYSTYKI_CENTER from "./Center/STATYSTYKI_CENTER";
 import { useStatystyki } from "hooks/useStatystyki";
+import Wykres from "./Wykres";
 
 export default function Statystyki( ) {
   const navigate = useNavigate();
@@ -31,9 +32,10 @@ export default function Statystyki( ) {
 
   return (
     <div className={style.container}>
-      <STATYSTYKI_HEADER />
+      {/* <STATYSTYKI_HEADER />
       <STATYSTYKI_CENTER />
-      <STATYSTYKI_FOOTER />
+      <STATYSTYKI_FOOTER /> */}
+      <Wykres/>
     </div>
   );
 }

@@ -77,7 +77,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         label: 'Baza papierów', 
         desc: 'Zarządzaj papierami', 
         icon: <Layers size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))' ,
+        glow: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.9))' ,
         handle: ()=> setShowPaperStage(true),
       },
       { 
@@ -85,7 +85,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         label: 'Klienci', 
         desc: 'Zarządzaj klientami', 
         icon: <Users size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))' ,
+        glow: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.9))' ,
         handle: ()=> modalContext.showAddClientStage(true),
       },
             { 
@@ -94,7 +94,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         desc: 'Zestawienia przelotów', 
         // icon: <TrendingUp size={32} />, 
         icon: <TrendingUp size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(249, 26, 22, 0.2), rgba(234, 42, 8, 0.2))' ,
+        glow: 'linear-gradient(135deg, rgba(249, 26, 22, 0.2), rgba(234, 42, 8, 0.9))' ,
         handle: ()=> {
           navigate("/Zestawienia")
           // uiContext.setShowKalkulatorGrzbietu(prev => !prev)
@@ -108,7 +108,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         desc: 'Policz grubość grzbietu', 
         // icon: <TrendingUp size={32} />, 
         icon: <CalculatorIcon size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.2))' ,
+        glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.9))' ,
         handle: ()=> {
           uiContext.setShowKalkulatorGrzbietu(prev => !prev)
       // toggleActionVisibility2()

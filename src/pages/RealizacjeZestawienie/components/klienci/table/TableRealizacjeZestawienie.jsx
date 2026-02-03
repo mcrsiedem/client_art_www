@@ -30,7 +30,7 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
      const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci } = useZestawienia();
   
 
-  if(realizacjeZestawienieKlienci.length ==0){
+  if(realizacjeZestawienieKlienci.length ==0 && DecodeToken(sessionStorage.getItem("token")).zestawienia==1){
     return(
        <div  className={style.odwiezContainer} >
        <button

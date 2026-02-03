@@ -8,8 +8,10 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 35620,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 35620,
 		"przeloty_falc" : 30000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 30000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -21,8 +23,10 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 391145,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 391145,
 		"przeloty_falc" : 350000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 350000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -34,8 +38,10 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 428120,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 428120,
 		"przeloty_falc" : 410000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 410000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -47,8 +53,10 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 396340,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 396340,
 		"przeloty_falc" : 360000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 360000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -58,10 +66,12 @@ export const rawData = [
 		"firma_nazwa" : "WSIP",
 		"data_spedycji" : "2026-02-23",
 		"etap" : 2,
-		"przeloty_druku" : 589730,
+		"przeloty_druku" : 616900,
 		"przeloty_druku_zakonczone" : 0,
-		"przeloty_falc" : 575000,
+		"do_wydrukowania" : 616900,
+		"przeloty_falc" : 600000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 600000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -69,12 +79,14 @@ export const rawData = [
 		"klient_id" : 148,
 		"klient" : "Agencja Wydawnicza Tomczak Grzegorz",
 		"firma_nazwa" : " Tomczak",
-		"data_spedycji" : "2026-02-05",
+		"data_spedycji" : "2026-02-12",
 		"etap" : 2,
 		"przeloty_druku" : 7520,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 7520,
 		"przeloty_falc" : 4800,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 4800,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -86,8 +98,25 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 67720,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 67720,
 		"przeloty_falc" : 60890,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 60890,
+		"wydrukowano_procent" : 0
+	},
+	{
+		"id" : 1222,
+		"klient_id" : 202,
+		"klient" : "H2 Dystrybucja sp zoo",
+		"firma_nazwa" : "H2",
+		"data_spedycji" : "2026-02-12",
+		"etap" : 2,
+		"przeloty_druku" : 153310,
+		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 153310,
+		"przeloty_falc" : 137750,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 137750,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -99,8 +128,10 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 14320,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 14320,
 		"przeloty_falc" : 13200,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 13200,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -112,8 +143,25 @@ export const rawData = [
 		"etap" : 2,
 		"przeloty_druku" : 135300,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 135300,
 		"przeloty_falc" : 132000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 132000,
+		"wydrukowano_procent" : 0
+	},
+	{
+		"id" : 1238,
+		"klient_id" : 44,
+		"klient" : "Fischer Trading Group Sp. z o.o.",
+		"firma_nazwa" : "Fischer Trading",
+		"data_spedycji" : "2026-02-10",
+		"etap" : 2,
+		"przeloty_druku" : 481950,
+		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 481950,
+		"przeloty_falc" : 459000,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 459000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -125,8 +173,10 @@ export const rawData = [
 		"etap" : 3,
 		"przeloty_druku" : 11680,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 11680,
 		"przeloty_falc" : 9000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 9000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -138,8 +188,10 @@ export const rawData = [
 		"etap" : 4,
 		"przeloty_druku" : 237620,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 237620,
 		"przeloty_falc" : 221000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 221000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -151,8 +203,10 @@ export const rawData = [
 		"etap" : 4,
 		"przeloty_druku" : 97560,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 97560,
 		"przeloty_falc" : 89600,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 89600,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -164,47 +218,25 @@ export const rawData = [
 		"etap" : 4,
 		"przeloty_druku" : 45280,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 45280,
 		"przeloty_falc" : 40000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 40000,
 		"wydrukowano_procent" : 0
 	},
 	{
-		"id" : 1229,
-		"klient_id" : 56,
-		"klient" : "PrintCare Majewski Grzelak sp.k.",
-		"firma_nazwa" : "PrintCare",
+		"id" : 1237,
+		"klient_id" : 55,
+		"klient" : "AgroHorti Media Sp. z o.o.",
+		"firma_nazwa" : "AgroHorti",
 		"data_spedycji" : "2026-02-09",
 		"etap" : 4,
-		"przeloty_druku" : 2450,
+		"przeloty_druku" : 16745,
 		"przeloty_druku_zakonczone" : 0,
-		"przeloty_falc" : 3000,
+		"do_wydrukowania" : 16745,
+		"przeloty_falc" : 14000,
 		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 0
-	},
-	{
-		"id" : 1230,
-		"klient_id" : 56,
-		"klient" : "PrintCare Majewski Grzelak sp.k.",
-		"firma_nazwa" : "PrintCare",
-		"data_spedycji" : "2026-02-09",
-		"etap" : 4,
-		"przeloty_druku" : 2700,
-		"przeloty_druku_zakonczone" : 0,
-		"przeloty_falc" : 3000,
-		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 0
-	},
-	{
-		"id" : 1235,
-		"klient_id" : 1,
-		"klient" : "DESA Unicum",
-		"firma_nazwa" : "DESA",
-		"data_spedycji" : "2026-02-05",
-		"etap" : 4,
-		"przeloty_druku" : 7995,
-		"przeloty_druku_zakonczone" : 0,
-		"przeloty_falc" : 4900,
-		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 14000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -216,8 +248,10 @@ export const rawData = [
 		"etap" : 6,
 		"przeloty_druku" : 37260,
 		"przeloty_druku_zakonczone" : 35160,
+		"do_wydrukowania" : 2100,
 		"przeloty_falc" : 32400,
 		"przeloty_falc_zakonczone" : 27000,
+		"do_sfalcowania" : 5400,
 		"wydrukowano_procent" : 95
 	},
 	{
@@ -229,22 +263,11 @@ export const rawData = [
 		"etap" : 6,
 		"przeloty_druku" : 84200,
 		"przeloty_druku_zakonczone" : 82000,
+		"do_wydrukowania" : 2200,
 		"przeloty_falc" : 77000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 77000,
 		"wydrukowano_procent" : 98
-	},
-	{
-		"id" : 1208,
-		"klient_id" : 138,
-		"klient" : "PRACOWNIA C C Sp. z o.o.",
-		"firma_nazwa" : "PRACOWNIA C C",
-		"data_spedycji" : "2026-02-06",
-		"etap" : 6,
-		"przeloty_druku" : 2830,
-		"przeloty_druku_zakonczone" : 0,
-		"przeloty_falc" : 1800,
-		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 0
 	},
 	{
 		"id" : 1217,
@@ -255,8 +278,10 @@ export const rawData = [
 		"etap" : 6,
 		"przeloty_druku" : 116220,
 		"przeloty_druku_zakonczone" : 49140,
+		"do_wydrukowania" : 67080,
 		"przeloty_falc" : 105000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 105000,
 		"wydrukowano_procent" : 43
 	},
 	{
@@ -268,8 +293,10 @@ export const rawData = [
 		"etap" : 6,
 		"przeloty_druku" : 159900,
 		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 159900,
 		"przeloty_falc" : 145000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 145000,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -280,23 +307,42 @@ export const rawData = [
 		"data_spedycji" : "2026-02-13",
 		"etap" : 6,
 		"przeloty_druku" : 62140,
-		"przeloty_druku_zakonczone" : 8200,
+		"przeloty_druku_zakonczone" : 41000,
+		"do_wydrukowania" : 21140,
 		"przeloty_falc" : 77000,
 		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 14
+		"do_sfalcowania" : 77000,
+		"wydrukowano_procent" : 66
 	},
 	{
-		"id" : 1225,
-		"klient_id" : 82,
-		"klient" : "BOOKOLIKA SP. Z O.O.",
-		"firma_nazwa" : "BOOKOLIKA",
-		"data_spedycji" : "2026-02-06",
+		"id" : 1229,
+		"klient_id" : 56,
+		"klient" : "PrintCare Majewski Grzelak sp.k.",
+		"firma_nazwa" : "PrintCare",
+		"data_spedycji" : "2026-02-09",
 		"etap" : 6,
-		"przeloty_druku" : 19420,
-		"przeloty_druku_zakonczone" : 16570,
-		"przeloty_falc" : 20000,
+		"przeloty_druku" : 2450,
+		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 2450,
+		"przeloty_falc" : 3000,
 		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 86
+		"do_sfalcowania" : 3000,
+		"wydrukowano_procent" : 0
+	},
+	{
+		"id" : 1230,
+		"klient_id" : 56,
+		"klient" : "PrintCare Majewski Grzelak sp.k.",
+		"firma_nazwa" : "PrintCare",
+		"data_spedycji" : "2026-02-09",
+		"etap" : 6,
+		"przeloty_druku" : 2700,
+		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 2700,
+		"przeloty_falc" : 3000,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 3000,
+		"wydrukowano_procent" : 0
 	},
 	{
 		"id" : 1233,
@@ -306,9 +352,26 @@ export const rawData = [
 		"data_spedycji" : "2026-02-09",
 		"etap" : 6,
 		"przeloty_druku" : 21420,
-		"przeloty_druku_zakonczone" : 0,
+		"przeloty_druku_zakonczone" : 15470,
+		"do_wydrukowania" : 5950,
 		"przeloty_falc" : 16560,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 16560,
+		"wydrukowano_procent" : 73
+	},
+	{
+		"id" : 1235,
+		"klient_id" : 1,
+		"klient" : "DESA Unicum",
+		"firma_nazwa" : "DESA",
+		"data_spedycji" : "2026-02-05",
+		"etap" : 6,
+		"przeloty_druku" : 7995,
+		"przeloty_druku_zakonczone" : 0,
+		"do_wydrukowania" : 7995,
+		"przeloty_falc" : 4900,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 4900,
 		"wydrukowano_procent" : 0
 	},
 	{
@@ -320,8 +383,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 239400,
 		"przeloty_druku_zakonczone" : 239400,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 228000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 228000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -333,8 +398,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 354380,
 		"przeloty_druku_zakonczone" : 354380,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 342000,
 		"przeloty_falc_zakonczone" : 198000,
+		"do_sfalcowania" : 144000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -346,8 +413,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 56160,
 		"przeloty_druku_zakonczone" : 56160,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 50000,
 		"przeloty_falc_zakonczone" : 20000,
+		"do_sfalcowania" : 30000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -359,8 +428,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 56160,
 		"przeloty_druku_zakonczone" : 56160,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 50000,
 		"przeloty_falc_zakonczone" : 15000,
+		"do_sfalcowania" : 35000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -372,8 +443,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 64480,
 		"przeloty_druku_zakonczone" : 64480,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 60000,
 		"przeloty_falc_zakonczone" : 25000,
+		"do_sfalcowania" : 35000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -385,8 +458,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 64480,
 		"przeloty_druku_zakonczone" : 64480,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 60000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 60000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -398,8 +473,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 96200,
 		"przeloty_druku_zakonczone" : 96200,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 0,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -411,8 +488,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 73853,
 		"przeloty_druku_zakonczone" : 73853,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 87800,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 87800,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -424,8 +503,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 81390,
 		"przeloty_druku_zakonczone" : 81390,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 74400,
 		"przeloty_falc_zakonczone" : 46500,
+		"do_sfalcowania" : 27900,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -437,8 +518,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 6800,
 		"przeloty_druku_zakonczone" : 6800,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 0,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -450,8 +533,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 700,
 		"przeloty_druku_zakonczone" : 700,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 0,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -463,21 +548,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 10190,
 		"przeloty_druku_zakonczone" : 10190,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 4000,
 		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 100
-	},
-	{
-		"id" : 1185,
-		"klient_id" : 149,
-		"klient" : "Grafdrukpol Poligrafia Wróblewski P., Siemieniuk B., Bajszczak W. Spółka Jawna",
-		"firma_nazwa" : "Grafdrukpol",
-		"data_spedycji" : "2026-01-26",
-		"etap" : 8,
-		"przeloty_druku" : 600,
-		"przeloty_druku_zakonczone" : 600,
-		"przeloty_falc" : 0,
-		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 4000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -489,8 +563,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 41675,
 		"przeloty_druku_zakonczone" : 41675,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 42000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 42000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -502,8 +578,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 5020,
 		"przeloty_druku_zakonczone" : 5020,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 3300,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 3300,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -515,8 +593,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 3870,
 		"przeloty_druku_zakonczone" : 3870,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 2400,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 2400,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -528,21 +608,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 7210,
 		"przeloty_druku_zakonczone" : 7210,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 5100,
 		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 100
-	},
-	{
-		"id" : 1198,
-		"klient_id" : 6,
-		"klient" : "Magnum X Sp. z o.o.",
-		"firma_nazwa" : "Magnum X",
-		"data_spedycji" : "2026-01-29",
-		"etap" : 8,
-		"przeloty_druku" : 27753,
-		"przeloty_druku_zakonczone" : 27753,
-		"przeloty_falc" : 26100,
-		"przeloty_falc_zakonczone" : 17400,
+		"do_sfalcowania" : 5100,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -554,8 +623,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 5960,
 		"przeloty_druku_zakonczone" : 5960,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 10000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 10000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -567,8 +638,25 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 21570,
 		"przeloty_druku_zakonczone" : 21570,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 17500,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 17500,
+		"wydrukowano_procent" : 100
+	},
+	{
+		"id" : 1208,
+		"klient_id" : 138,
+		"klient" : "PRACOWNIA C C Sp. z o.o.",
+		"firma_nazwa" : "PRACOWNIA C C",
+		"data_spedycji" : "2026-02-06",
+		"etap" : 8,
+		"przeloty_druku" : 2830,
+		"przeloty_druku_zakonczone" : 2830,
+		"do_wydrukowania" : 0,
+		"przeloty_falc" : 1800,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 1800,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -580,8 +668,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 17333,
 		"przeloty_druku_zakonczone" : 17333,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 17500,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 17500,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -593,8 +683,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 21480,
 		"przeloty_druku_zakonczone" : 21480,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 0,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -606,8 +698,25 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 2580,
 		"przeloty_druku_zakonczone" : 2580,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 2000,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 2000,
+		"wydrukowano_procent" : 100
+	},
+	{
+		"id" : 1225,
+		"klient_id" : 82,
+		"klient" : "BOOKOLIKA SP. Z O.O.",
+		"firma_nazwa" : "BOOKOLIKA",
+		"data_spedycji" : "2026-02-06",
+		"etap" : 8,
+		"przeloty_druku" : 19420,
+		"przeloty_druku_zakonczone" : 19420,
+		"do_wydrukowania" : 0,
+		"przeloty_falc" : 20000,
+		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 20000,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -619,8 +728,10 @@ export const rawData = [
 		"etap" : 8,
 		"przeloty_druku" : 38220,
 		"przeloty_druku_zakonczone" : 38220,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 32400,
 		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 32400,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -632,8 +743,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 276120,
 		"przeloty_druku_zakonczone" : 276120,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 1075000,
 		"przeloty_falc_zakonczone" : 1075000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -645,8 +758,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 531900,
 		"przeloty_druku_zakonczone" : 531900,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 2254000,
 		"przeloty_falc_zakonczone" : 2254000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -658,8 +773,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 7660,
 		"przeloty_druku_zakonczone" : 7660,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 15000,
 		"przeloty_falc_zakonczone" : 15000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -671,8 +788,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 23810,
 		"przeloty_druku_zakonczone" : 23810,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 22000,
 		"przeloty_falc_zakonczone" : 22000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -684,8 +803,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 9620,
 		"przeloty_druku_zakonczone" : 9620,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 8000,
 		"przeloty_falc_zakonczone" : 8000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -697,8 +818,10 @@ export const rawData = [
 		"etap" : 10,
 		"przeloty_druku" : 49920,
 		"przeloty_druku_zakonczone" : 49920,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 44000,
 		"przeloty_falc_zakonczone" : 44000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -710,8 +833,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 59335,
 		"przeloty_druku_zakonczone" : 59335,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 55500,
 		"przeloty_falc_zakonczone" : 55500,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -723,8 +848,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 41240,
 		"przeloty_druku_zakonczone" : 41240,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 36000,
 		"przeloty_falc_zakonczone" : 36000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -736,8 +863,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 61340,
 		"przeloty_druku_zakonczone" : 61340,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 54000,
 		"przeloty_falc_zakonczone" : 54000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -749,8 +878,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 84755,
 		"przeloty_druku_zakonczone" : 84755,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 75300,
 		"przeloty_falc_zakonczone" : 75300,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -762,8 +893,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 84755,
 		"przeloty_druku_zakonczone" : 84755,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 75300,
 		"przeloty_falc_zakonczone" : 75300,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -775,8 +908,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 180060,
 		"przeloty_druku_zakonczone" : 180060,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 154000,
 		"przeloty_falc_zakonczone" : 154000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -788,8 +923,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 77000,
 		"przeloty_druku_zakonczone" : 77000,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 315000,
 		"przeloty_falc_zakonczone" : 315000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -801,8 +938,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 1160,
 		"przeloty_druku_zakonczone" : 1160,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 1500,
 		"przeloty_falc_zakonczone" : 1500,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -814,8 +953,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 4220,
 		"przeloty_druku_zakonczone" : 4220,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 2700,
 		"przeloty_falc_zakonczone" : 2700,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -827,8 +968,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 6220,
 		"przeloty_druku_zakonczone" : 6220,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 5000,
 		"przeloty_falc_zakonczone" : 5000,
+		"do_sfalcowania" : 0,
 		"wydrukowano_procent" : 100
 	},
 	{
@@ -840,35 +983,10 @@ export const rawData = [
 		"etap" : 11,
 		"przeloty_druku" : 54520,
 		"przeloty_druku_zakonczone" : 54520,
+		"do_wydrukowania" : 0,
 		"przeloty_falc" : 60000,
 		"przeloty_falc_zakonczone" : 30000,
-		"wydrukowano_procent" : 100
-	},
-	{
-		"id" : 1187,
-		"klient_id" : 48,
-		"klient" : "Instytut Zarządzania Informacją Sp. zoo",
-		"firma_nazwa" : "IZI",
-		"data_spedycji" : "2026-01-30",
-		"etap" : 11,
-		"przeloty_druku" : 39840,
-		"przeloty_druku_zakonczone" : 39840,
-		"przeloty_falc" : 35240,
-		"przeloty_falc_zakonczone" : 0,
-		"wydrukowano_procent" : 100
-	},
-	{
-		"id" : 1219,
-		"klient_id" : 69,
-		"klient" : "AVT- Korporacja Sp z o.o.",
-		"firma_nazwa" : "AVT",
-		"data_spedycji" : "2026-02-03",
-		"etap" : 11,
-		"przeloty_druku" : 9480,
-		"przeloty_druku_zakonczone" : 9480,
-		"przeloty_falc" : 6440,
-		"przeloty_falc_zakonczone" : 0,
+		"do_sfalcowania" : 30000,
 		"wydrukowano_procent" : 100
 	}
 ]
-;

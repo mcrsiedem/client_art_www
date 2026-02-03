@@ -223,8 +223,10 @@ const Wykres = () => {
       if (!groups[key]) {
         groups[key] = { label: key, range, druku: 0, falc: 0, timestamp: date.getTime() };
       }
-      groups[key].druku += item.przeloty_druku;
-      groups[key].falc += item.przeloty_falc;
+      // groups[key].druku += item.przeloty_druku;
+      // groups[key].falc += item.przeloty_falc;
+         groups[key].druku += item.do_wydrukowania;
+      groups[key].falc += item.do_sfalcowania;
     });
     return Object.values(groups).sort((a, b) => a.timestamp - b.timestamp);
   }, [viewType]);
@@ -254,7 +256,7 @@ const Wykres = () => {
             <h1 style={styles.mainTitle}>
               <BarChart3 size={32} color="#4f46e5" /> Raport Produkcji
             </h1>
-            <span style={styles.subTitle}>Zestawienie przelotów</span>
+            <span style={styles.subTitle}>Zestawienie przelotów do wykonania w wybranym interwale</span>
           </div>
 
           <div style={styles.buttonGroup}>

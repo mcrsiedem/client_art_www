@@ -64,7 +64,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
         label: 'Raport produkcji', 
         desc: 'Zestawienie wg spedycji', 
         icon: <BarChart3 size={32} />, 
-        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2))' ,
+        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 123, 212, 0.9))' ,
         handle: ()=> {
           navigate("/Statystyki")
           // modalContext.setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})

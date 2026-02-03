@@ -25,6 +25,10 @@
     background-color: transparent;
     border-radius: 10px;
     box-shadow: 3px 3px 3px rgb(29, 29, 29);
+    text-transform: uppercase;
+    /* letter-spacing: 1px; */
+    /* font-family: 'Inter', sans-serif; */
+    ;
   
   }
   .btn_disabled{
@@ -36,6 +40,8 @@
     border: 1.5px solid rgb(72, 72, 72);
     background-color: transparent;
     border-radius: 10px;
+    text-transform: uppercase;
+
     /* box-shadow: 3px 3px 3px rgb(133, 133, 133); */
   
   }

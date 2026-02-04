@@ -14,7 +14,7 @@ const Kalkulator = () => {
   
   const [sections, setSections] = useState([
     { id: 1, pages: 80, thickness: 0.0648, label: 'Środek', papier_id: 10 },
-    { id: 1, pages: 4, thickness: 0.20, label: 'Okładka', papier_id: 83 }
+    { id: 2, pages: 4, thickness: 0.20, label: 'Okładka', papier_id: 83 }
   ]);
   
   const [totalThickness, setTotalThickness] = useState(0);

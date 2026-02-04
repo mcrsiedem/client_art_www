@@ -63,7 +63,7 @@ const {refreshRealizacjeZestawienie} = useZestawienia()
   useEffect(() => {
     appContext.setRealizacjeZestawienie([]);
     appContext.setRealizacjeZestawienieGrupy([]);
-appContext.setRealizacjeZestawienieProcesory([]);
+    appContext.setRealizacjeZestawienieProcesory([]);
     appContext.setRealizacjeZestawienieKlienci([]);
   }, []);
 

@@ -39,6 +39,7 @@ createProcesyFromArkuszONE()
                 </button>
 
         <KopiujFormatPapieru row={row} />
+        <KopiujNadkomplet row={row} />
 
         
         <Anuluj  row={row}/>
@@ -115,6 +116,43 @@ setElementyTech(elementyTech.map((t) => {
   )
 }
 
+const KopiujNadkomplet = ({ row}) =>{
+  const techContext = useContext(TechnologyContext);
+  const setArkusze = techContext.setArkusze;
+  const arkusze = techContext.arkusze;
+  const setElementyTech = techContext.setElementyTech;
+  const elementyTech = techContext.elementyTech;
+
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+
+setArkusze(
+  arkusze.map((arkusz) => {
+    if (arkusz.element_id === row.id) {
+      return {
+        ...arkusz,
+        nadkomplet: row.nadkomplet,
+        update: true
+
+      };
+    } else {
+      return arkusz;
+    }
+  })
+);
+setElementyTech(elementyTech.map((t) => {
+  return {...t,
+    showMenu: false}
+}));
+
+    }}
+  >
+    Rozdaj nadkomplet
+  </button>
+  )
+}
 
 
 

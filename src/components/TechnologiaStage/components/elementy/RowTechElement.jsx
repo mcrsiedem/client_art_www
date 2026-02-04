@@ -308,8 +308,17 @@ function NadkompletElement({ row }) {
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
   return (
     <input
-    disabled
+    // disabled
       className={style.input}
+      onChange={(e) => {
+        if (e.target.value === "" || reg_int.test(e.target.value)) {
+          handleUpdateRowElementyTech({
+            ...row,
+            nadkomplet: e.target.value,
+           
+          });
+        }
+      }}
     ></input>
   );
 }

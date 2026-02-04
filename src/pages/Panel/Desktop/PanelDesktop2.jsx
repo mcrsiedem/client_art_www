@@ -91,8 +91,8 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
       },
             { 
         id: 4, 
-        label: 'Statystki', 
-        desc: 'Zestawienia przelotów', 
+        label: 'Karta pracownika', 
+        desc: 'Przeloty', 
         // icon: <TrendingUp size={32} />, 
         icon: <TrendingUp size={32} />, 
         glow: 'linear-gradient(135deg, rgba(249, 26, 22, 0.2), rgba(234, 42, 8, 0.9))' ,

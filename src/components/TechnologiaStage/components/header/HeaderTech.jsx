@@ -20,6 +20,8 @@ import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 import FormToPdf from "components/pdf/FormToPDF";
 import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
+import {Folder, FolderOpenDot, LampFloor, LayoutGrid, LucideLampFloor } from 'lucide-react';
+
 
 
 export default function Header({}) {
@@ -63,8 +65,9 @@ export default function Header({}) {
       }}
     >
       <LeftPane>
+       < FolderOpenDot size={22} style={{marginRight:'10px',marginLeft:'10px'}}/>
+        <p className={style.title2}> Technologia </p>
         <IconError />
-        <p className={style.title2}>Technologia </p>
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
       </LeftPane>
 

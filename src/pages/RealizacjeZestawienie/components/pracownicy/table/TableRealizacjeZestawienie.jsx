@@ -41,6 +41,7 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
            <th  className={style.col_rodzaj_arkusza}>Rodzaj</th>
            <th  className={style.col_spedycja}>Ark.</th>
            <th  className={style.col_strony}>Przeloty</th>
+           <th  className={style.col_strony}>Naklad</th>
            <th className={style.col_grupa}>Grupa</th>
            <th className={style.col_maszyna}>Maszyna</th>
 

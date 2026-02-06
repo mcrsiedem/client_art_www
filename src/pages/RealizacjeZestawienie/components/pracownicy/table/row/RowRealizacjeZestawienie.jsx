@@ -174,6 +174,7 @@ const setShowTabs = contextModalInsert.setShowTabs
         <RodzajArkusza row={row} />
         <NrArkusza row={row} />
         <Zrealizowano row={row} />
+        <ZrealizowanoNaklad row={row} />
         <Dzial row={row} />
         <td>{row.procesor_nazwa}</td>
       
@@ -228,6 +229,10 @@ const Indeks = ({ row,i }) => {
 };
 const Zrealizowano = ({ row }) => {
   return <td className={style.nakladInput}> {row.zrealizowano.toLocaleString()} </td>;
+};
+
+const ZrealizowanoNaklad = ({ row }) => {
+  return <td className={style.nakladInput}> {row?.zrealizowano_naklad?.toLocaleString() ?? 0} </td>;
 };
 
 const Dzial = ({ row }) => {

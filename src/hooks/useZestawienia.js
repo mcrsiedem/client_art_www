@@ -16,6 +16,7 @@ export function useZestawienia() {
           const res = await axios.get(
       IP + "zestawienie_user/"+dataOd+"/"+dataDo+"/"+kto+"/" + sessionStorage.getItem("token")
     );
+
     contextApp.setRealizacjeZestawienie([...res.data]);
     contextApp.setRealizacjeZestawienieWyszukiwarka([...res.data]);
     }

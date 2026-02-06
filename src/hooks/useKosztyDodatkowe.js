@@ -86,7 +86,7 @@ const importKosztyDodatkowwe = async (nr, rok) => {
     res.data.forEach((k) => {
       noweKoszty.push({
         id: k.id,
-        indeks: k.indeks,
+        indeks: getMaxIndeks(noweKoszty),
         zamowienie_id: daneZamowienia.id,
         nazwa: k.nazwa,
         ilosc: 1, // Sugestia: używaj liczb zamiast stringów do obliczeń

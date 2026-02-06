@@ -36,7 +36,7 @@ export default function ImportujKoszty() {
           importKosztyDodatkowwe(nr, rok);
         }}
       >
-        Importuj koszty
+        Importuj koszty z  nr/rok
       </button>
 
 

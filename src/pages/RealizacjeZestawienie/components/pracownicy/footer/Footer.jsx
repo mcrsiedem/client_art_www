@@ -37,8 +37,8 @@ export default function Footer({ dodaj_clikHandler,kto, setKto,dataDo,dataOd,set
 
       <div className={style.centerHeaderContener}>
         <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Narządy: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.length} </p></div>
-        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Naklad: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano_naklad).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Naklad: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienie.map(x => x.zrealizowano_naklad || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
       </div>
       <div className={style.rightHeaderContener}>
 

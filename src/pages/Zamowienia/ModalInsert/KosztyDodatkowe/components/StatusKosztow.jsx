@@ -16,7 +16,7 @@ export default function StatusKosztow() {
     const [add] = useHistoria()
       return (
         <div className={style.col}>
-          <label className={style.status_label}> Status </label>
+          {/* <label className={style.status_label}> Status </label> */}
           <select
             className={style.status}
             value={ksiegowosc.koszty_status}

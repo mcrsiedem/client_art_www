@@ -10,7 +10,7 @@ export default function DodajFaktury() {
     // const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
     const ksiegowosc = contextModalInsert.ksiegowosc;
     const setKosztyDodatkoweZamowienia= contextModalInsert.setKosztyDodatkoweZamowienia;
-      const [dodajKoszty,dodajFakture] = useKosztyDodatkowe();
+      const {dodajKoszty,dodajFakture} = useKosztyDodatkowe();
     
       return (
           <div className={style.dodaj_koszty_td}>

@@ -26,9 +26,9 @@ export function useStanyZamowienia() {
   const pokazStanyZamowienia = () => {
 console.clear();
 console.log("Zamówienie: ");
-console.log("Dane : ", daneZamowienia);
-console.log("Produkt : ", produkty);
-console.log("Elementy : ", elementy);
+// console.log("Dane : ", daneZamowienia);
+// console.log("Produkt : ", produkty);
+// console.log("Elementy : ", elementy);
 // console.log("Fragmenty : ", fragmenty);
 // console.log("Oprawa : ", oprawa);
 // console.log("Procesy elementów: ", procesyElementow);
@@ -38,10 +38,11 @@ console.log("Elementy : ", elementy);
 // console.log("Papiery_nazwy: ", listaPapierowNazwy);
 // console.log("Historia zamówienia: ", historiaZamowienia);
 // console.log("Technologie do zamówienia: ", technologieID);
-console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
+// console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
 // console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-// console.log("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
-console.table( listaPapierowWyszukiwarka);
+// console.table("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.table( kosztyDodatkoweZamowienia);
+// console.table( listaPapierowWyszukiwarka);
 
 
 // console.log("ksiegowosc: ", ksiegowosc);

@@ -9,6 +9,7 @@ import KOSZT_ILOSC from "./koszt/KOSZT_ILOSC";
 import KOSZT_CENA from "./koszt/KOSZT_CENA";
 import UsunKoszt from "./UsunKoszt";
 import KopiujKoszty from "./KopiujKoszty";
+import ImportujKoszty from "./ImportujKoszty";
 export default function TableKoszty() {
 
   const contextModal = useContext(ModalInsertContext );
@@ -56,8 +57,9 @@ export default function TableKoszty() {
           </table>
                 <DodajKoszty/>   
                 <div className={style.zestawienie_kosztow }>
-                <StatusKosztow/>
                 <KopiujKoszty/>
+                <ImportujKoszty/>
+                <StatusKosztow/>
                 </div>
         </div>
   

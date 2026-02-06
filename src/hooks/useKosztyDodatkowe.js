@@ -89,9 +89,9 @@ const importKosztyDodatkowwe = async (nr, rok) => {
         indeks: getMaxIndeks(noweKoszty),
         zamowienie_id: daneZamowienia.id,
         nazwa: k.nazwa,
-        ilosc: 1, // Sugestia: używaj liczb zamiast stringów do obliczeń
-        cena: 0,
-        suma: 0,
+        ilosc: "1", // Sugestia: używaj liczb zamiast stringów do obliczeń
+        cena: "0",
+        suma: "0",
         info: "",
         status: 1,
         stan: 1,

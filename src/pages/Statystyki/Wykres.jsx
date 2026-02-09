@@ -17,7 +17,7 @@ const Wykres = () => {
       color: '#0f172a'
     },
     wrapper: {
-      maxWidth: '1200px',
+      maxWidth: '97vw',
       margin: '0 auto'
     },
     header: {

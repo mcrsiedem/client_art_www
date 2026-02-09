@@ -1,3 +1,6 @@
+
+// SELECT id,klient_id,klient,firma_nazwa,data_spedycji,etap,przeloty_druku,przeloty_druku_zakonczone,do_wydrukowania,przeloty_falc,przeloty_falc_zakonczone,do_sfalcowania,wydrukowano_procent FROM artdruk.view_zamowienia_kalendarz;
+
 export const rawData = [
 	{
 		"id" : 337,

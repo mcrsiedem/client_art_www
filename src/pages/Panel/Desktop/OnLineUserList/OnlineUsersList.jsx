@@ -88,39 +88,7 @@ if(pokazUzytkownikowOnline){
         ))}
 
 
-                {/* {DecodeToken(sessionStorage.getItem("token")).id == 1 && usersIO */}
-                {usersIO
-                 .filter(
-            (user) =>
-              // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              // user.userId ==49
-              user.userId ==10
-          )
-        .map((user, i) => (
-          // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')
-          // <div key={user.socketId || i} className={style.users} style={{marginTop:'50px', background:'rgba(248, 1, 1, 0.361)'}}>
-          <div key={user.socketId || i} className={style.users} style={{marginTop:'50px', background:'rgba(248, 1, 1, 0.361)'}}>
-            <OnlineIcon status={user.status}/>
-            {/* Wyświetlamy imię i nazwisko dla pełniejszej informacji */}
-            {/* <span className={style.userName}>{user.imie} {user.nazwisko}</span> */}
-            {/* <span className={style.userName}>{user.imie} {user.nazwisko}</span> */}
-            
-            {user.zalogowany && (
-              <div className={style.loginTimeContainer}>
-                    <span className={style.loginTime}>
-                    {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                    Zalogowany: {user.zalogowany}
-                </span>
-                      <span className={style.loginTime}>
-                    {/* Formatujemy datę/czas, jeśli jest dostępna */}
-                    Aktywny: {user.ostatnia_aktywnosc}
-                </span>
-              </div>
-          
-                
-            )}
-          </div>
-        ))}
+
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useEffect, useState, useContext } from "react";
 import style from "./PanelDesktopHeader.module.css";
 import userOnline from "assets/user_offline.svg";
+import userOnline2 from "assets/user_wiedzmin.svg";
+
 import userOffline from "assets/user_offline.svg";
 import axios from "axios";
 import DecodeToken from "pages/Login/DecodeToken";

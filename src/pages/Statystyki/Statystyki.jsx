@@ -8,7 +8,7 @@ import STATYSTYKI_HEADER from "./Header/STATYSTYKI_HEADER";
 import STATYSTYKI_FOOTER from "./Footer/STATYSTYKI_FOOTER";
 import STATYSTYKI_CENTER from "./Center/STATYSTYKI_CENTER";
 import { useStatystyki } from "hooks/useStatystyki";
-import Wykres from "./Wykres";
+import Wykres from "./Wykres/Wykres";
 
 export default function Statystyki( ) {
   const navigate = useNavigate();

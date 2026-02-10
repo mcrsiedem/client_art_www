@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Calendar, BarChart3, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
-import { rawData } from './Dane';
+// import { rawData } from './Dane';
+import { daneTestowe } from './DaneTestowe';
 
 
 
 
 const Wykres = () => {
   const [viewType, setViewType] = useState('weekly');
+  const [rawData, setRawData] = useState(daneTestowe);
 
   const styles = {
     container: {
@@ -203,6 +205,8 @@ const Wykres = () => {
   };
 
   const processedData = useMemo(() => {
+
+    if (!rawData || rawData.length === 0) return [];
     const groups = {};
     rawData.forEach(item => {
       const date = new Date(item.data_spedycji);
@@ -229,7 +233,7 @@ const Wykres = () => {
       groups[key].falc += item.do_sfalcowania;
     });
     return Object.values(groups).sort((a, b) => a.timestamp - b.timestamp);
-  }, [viewType]);
+  }, [viewType,rawData]);
 
   const maxVal = useMemo(() => {
     const allValues = processedData.flatMap(d => [d.druku, d.falc]);
@@ -312,10 +316,10 @@ const Wykres = () => {
             </h2>
             <div style={styles.legend}>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#3b82f6'}}></div> Druk
+                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#173f2ea7'}}></div> Druk
               </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#f59e0b'}}></div> Falc
+                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#c5ef49b2'}}></div> Falc
               </div>
             </div>
           </div>
@@ -334,11 +338,11 @@ const Wykres = () => {
                 <div style={styles.barGroup}>
                   <div 
                     title={`Druk: ${group.druku.toLocaleString()}`}
-                    style={styles.bar((group.druku / maxVal) * 100, '#3b82f6')}
+                    style={styles.bar((group.druku / maxVal) * 100, '#173f2ea7')}
                   ></div>
                   <div 
                     title={`Falc: ${group.falc.toLocaleString()}`}
-                    style={styles.bar((group.falc / maxVal) * 100, '#f59e0b')}
+                    style={styles.bar((group.falc / maxVal) * 100, '#c5ef49b2')}
                   ></div>
                 </div>
                 <div style={styles.labelWrapper}>

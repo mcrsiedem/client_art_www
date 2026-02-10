@@ -21,6 +21,7 @@ import EwakuacjaBazy from "./Menu/EwakuacjaBazy";
 import PolaczeniaPuli from "./Menu/PolaczeniaPuli";
 import Odswiez from "./Menu/Odswiez";
 import Wyloguj from "./Menu/Wyloguj";
+import DevilUserIcon from "../Footer/UserList/DevilUserIcon";
 
 
 

@@ -47,6 +47,7 @@ import {
 import { ModalInsertContext } from "context/ModalInsertContext";
 import PaperStage from "components/PaperStage/PaperStage";
 import ClientStage from "components/Klienci/ClientStage";
+import DevilUserIcon from "./Footer/UserList/DevilUserIcon";
 
 
 export default function PanelDesktop2 ({isOnline,navigate,logout})  {
@@ -174,6 +175,7 @@ const toggleActionVisibility2 = (id) => {
                       <NawigacjaBTN handler={() => navigate("/Oddania")} icon={iconOddanie} nazwa={"SPEDYCJA"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/kalendarz2")} icon={iconKalendarz} nazwa={"KALENDARZ"} locked={false}/>
                       <NawigacjaBTN handler={() => navigate("/ustawienia")} icon={iconUstawienia} nazwa={"USTAWIENIA"} locked={false}/>
+
                       {/* <NawigacjaBTN handler={() => navigate("/Statystyki")} icon={iconWykres} nazwa={"PRODUKCJA"} locked={false}/> */}
                       {/* <NawigacjaBTN handler={() =>uiContext.setShowKalkulatorGrzbietu(!uiContext.showKalkulatorGrzbietu)} icon={iconKalkulator} nazwa={"GRZBIET"} locked={false} nowe={true}/> */}
                     </Left>
@@ -184,6 +186,8 @@ const toggleActionVisibility2 = (id) => {
                       <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                          {/* <PodgladRealizacji loading={loading}/> */}
+          <DevilUserIcon/>
+
                     </Center>
                     <Right>
                        

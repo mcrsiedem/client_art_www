@@ -201,14 +201,14 @@ const DevilUserIcon = () => {
         <div style={styles.labelWrapper}>
           <div style={styles.underline} />
           <span style={styles.labelText}>
-            Devil Inside
+            Evil Inside
           </span>
         </div>
       </div>
 
       <div style={styles.footer}>
         <p style={styles.footerText}>
-          Precision. Power. Presence.
+          {/* Precision. Power. Presence. */}
         </p>
       </div>
     </div>

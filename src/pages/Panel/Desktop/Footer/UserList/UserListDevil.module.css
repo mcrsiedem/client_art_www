@@ -8,6 +8,7 @@
   overflow: hidden; /* Ukrywa ewentualne przewijanie */
   padding: 5px 0; /* Lekki odstęp pionowy */
   /* max-height: 99%; */
+  /* background-color: rgba(255, 0, 0, 0.139); */
 }
 
 /* 2. CSS Grid - klucz do dynamicznego układu */
@@ -24,6 +25,7 @@
   justify-content: start;
   /* Zabezpieczenie przed przewijaniem wewnątrz samego Grida */
   overflow: hidden;
+
 }
 
 
@@ -32,12 +34,13 @@
   display: flex;
   flex-direction: row; /* Elementy w kolumnie (pionowo) */
   align-items: center; /* Wyśrodkowanie tekstu i obrazka */
-  justify-content: end;
+  justify-content: start;
 /* background-color: red; */
 overflow: hidden;
-padding-right: 20px;
+padding-left: 30px;
 padding-bottom: 5px;
 gap: 7px;
+
 }
 
 
@@ -67,18 +70,16 @@ gap: 7px;
   height: 70px;
   padding: 9px;
   overflow: hidden;
-  background-color: #f7f9fc41;
+  background-color: #ff00001b;
   backdrop-filter: blur(10px);
   border-radius: 15px;
   border: 1px solid gray;
-  /* Ważne: Zapewniamy miejsce na cień, aby pulsowanie nie przesuwało innych elementów */
-  /* margin: 10px;  */
 }
 
 /* STYL DLA AKTYWNEGO STANU (klasa dodawana dynamicznie) */
 .userCard.is-active {
   /* Stała, bazowa poświata */
-  box-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
   /* Zastosowanie animacji: 1.5 sekundy, nieskończone powtarzanie */
   animation: pulse 1.5s infinite; 
 }
@@ -94,17 +95,11 @@ gap: 7px;
   height: 70px;
   padding: 9px;
   overflow: hidden;
-  background-color: #66d95941;
+  background-color: #ff00005b;
   backdrop-filter: blur(10px);
   border-radius: 15px;
-    border: 1px solid rgb(20, 167, 6);
+    border: 1px solid rgb(167, 6, 6);
   
-  /* Ważne: Zapewniamy miejsce na cień, aby pulsowanie nie przesuwało innych elementów */
-  /* margin: 10px;  */
-    /* Stała, bazowa poświata */
-  /* box-shadow: 0 0 5px rgba(255, 0, 157, 0.8); */
-  /* Zastosowanie animacji: 1.5 sekundy, nieskończone powtarzanie */
-  /* animation: pulse 3.5s infinite;  */
 }
 
 
@@ -158,11 +153,12 @@ gap: 7px;
 
 /* 4. Ikona Użytkownika */
 .userIcon {
-  width: 25px; /* Stała szerokość ikony */
-  height: 25px; /* Stała wysokość ikony */
+  padding-top: 10px;
+  width: 40px; /* Stała szerokość ikony */
+  height: 40px; /* Stała wysokość ikony */
   border-radius: 50%; /* Okrągły obrazek */
   object-fit: cover;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   flex-shrink: 0; /* Zapobiega pomniejszaniu się ikony przy braku miejsca */
 }
 
@@ -203,16 +199,16 @@ gap: 7px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #2ecc71; /* Żywa zieleń */
+    background-color: #cc2e2e; /* Żywa zieleń */
     margin-right: 15px;
     flex-shrink: 0;
     /* Mała animacja pulsu */
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    box-shadow: 0 0 0 0 rgba(161, 13, 13, 0.7);
     animation: pulse 3s infinite;
 }
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    box-shadow: 0 0 0 0 rgba(150, 12, 12, 0.7);
   }
   70% {
     box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);

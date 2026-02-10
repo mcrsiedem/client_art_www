@@ -60,8 +60,8 @@ if(pokazUzytkownikowOnline){
                  .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId !=49
-              // user.userId !=10
+              // user.userId !=49
+              user.userId !=10
           )
         .map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')
@@ -93,8 +93,8 @@ if(pokazUzytkownikowOnline){
                  .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId ==49
-              // user.userId !=10
+              // user.userId ==49
+              user.userId ==10
           )
         .map((user, i) => (
           // Używamy tagu 'div' zamiast 'p', bo p nie powinien zawierać blokowych elementów (jak 'span')

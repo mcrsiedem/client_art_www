@@ -11,6 +11,7 @@ import { zabezpiecz } from "actions/zabezpiecz";
 import { useSocket } from "context/SocketContext";
 import UserList from "./UserList/UserList";
 import {  Calculator} from 'lucide-react';
+import UserListDevil from "./UserList/UserListDevil";
 
 
 export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
@@ -49,6 +50,7 @@ export default function PanelDesktopFooter({ isOnline, navigate, logout }) {
     <div className={style.footer}>
           {/* <Calculator size={50} style={{ opacity: 1,marginLeft:'30px', color:'#eaf4d1d6'}} />  */}
   
+      <UserListDevil/>
       <UserList/>
     </div>
   );

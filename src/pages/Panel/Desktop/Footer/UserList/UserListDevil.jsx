@@ -42,7 +42,7 @@ const UserListDevil = () => {
           .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId ==1
+              user.userId ==10
           )
           .map((user, i) => (
             // Pojedynczy element użytkownika

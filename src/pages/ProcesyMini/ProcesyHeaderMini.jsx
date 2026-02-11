@@ -66,10 +66,10 @@ const procesory = appcontext.procesory
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <DataWyswietlania/>
-          <button className={style.okladki}
+          {selectedProcesor == 1 &&           <button className={style.okladki}
           onClick={()=>{ 
             // console.log(selectedProcesor)
-  setGrupWykonanAll(grupyWykonanAll            .filter((zam) => {
+          setGrupWykonanAll(grupyWykonanAll            .filter((zam) => {
               if ( zam.typ_elementu ==1 && !isPolFormat(zam.arkusz_szerokosc,zam.arkusz_wysokosc))  {
                 return true;
               } else {
@@ -78,7 +78,8 @@ const procesory = appcontext.procesory
             }))
             }}
 
-          >OKŁADKI /2</button>
+          >OKŁADKI</button>}
+
 
           {/* <ProcesSelect
             selectedProces={selectedProces}

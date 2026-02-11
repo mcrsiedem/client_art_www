@@ -316,10 +316,10 @@ const Wykres = () => {
             </h2>
             <div style={styles.legend}>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#173f2ea7'}}></div> Druk
+                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#10b981'}}></div> Druk
               </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#c5ef49b2'}}></div> Falc
+                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#f59e0b'}}></div> Falc
               </div>
             </div>
           </div>
@@ -338,11 +338,11 @@ const Wykres = () => {
                 <div style={styles.barGroup}>
                   <div 
                     title={`Druk: ${group.druku.toLocaleString()}`}
-                    style={styles.bar((group.druku / maxVal) * 100, '#173f2ea7')}
+                    style={styles.bar((group.druku / maxVal) * 100, '#09644675')}
                   ></div>
                   <div 
                     title={`Falc: ${group.falc.toLocaleString()}`}
-                    style={styles.bar((group.falc / maxVal) * 100, '#c5ef49b2')}
+                    style={styles.bar((group.falc / maxVal) * 100, '#f59f0b79')}
                   ></div>
                 </div>
                 <div style={styles.labelWrapper}>

@@ -125,6 +125,24 @@
   box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
 }
 
+.inputNr {
+  width: 60px;
+  padding: 10px 12px;
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: rgba(30, 30, 30, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+
+.inputNr:focus {
+  border-color: #b1ec10;
+  box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
+}
+
+
 .controls {
   display: flex;
   gap: 15px;
@@ -155,6 +173,33 @@
   border-color: #ffffff;
   color: #ffffff;
 }
+
+
+.btnImport{
+  background-color: #ec94105e;
+  border: 1px dashed rgba(203, 213, 225, 0.4);
+  border-radius: 12px;
+  padding: 10px 10px;
+  color: #c0c0c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btnImport:hover {
+  /* background-color: rgba(203, 213, 225, 0.1); */
+  /* background-color: #b1ec1083; */
+  background-color:  #fc9d0e5e;
+
+
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+
 
 .btnCalculate {
   flex: 1;
@@ -199,7 +244,14 @@
 /* background-color: #94a3b8; */
 }
 .resultAreaRight {
-/* background-color: #ebc107; */
+/* background-color: #ebc1074e; */
+      display: flex;
+    align-items: center;
+
+    justify-content: center;
+    gap:10px
+
+
 }
 
 

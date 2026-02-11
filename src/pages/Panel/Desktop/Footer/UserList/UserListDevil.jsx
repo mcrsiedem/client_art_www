@@ -1,6 +1,8 @@
 // UserList.js
 import React, { useContext } from 'react';
 import style from './UserListDevil.module.css';
+import { Calendar, BarChart3, Clock, CheckCircle2, Ban } from 'lucide-react';
+
 
 // Przykładowy obrazek (zastąp własnym)
 import userOnline from 'assets/user_offline.svg'; 
@@ -40,7 +42,7 @@ const UserListDevil = () => {
           .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId ==10
+              user.userId ==1
           )
           .map((user, i) => (
             // Pojedynczy element użytkownika
@@ -52,6 +54,9 @@ const UserListDevil = () => {
               }
             >
               <OnlineIcon status={user.status} />
+                                  
+              <Ban size={35} style={{marginTop:'10px', color:'#ffffff57'}}/> 
+       
               {/* Ikona użytkownika */}
               {/* <img
                 className={style.userIcon}

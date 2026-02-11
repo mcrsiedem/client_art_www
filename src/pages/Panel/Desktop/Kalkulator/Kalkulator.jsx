@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
 import styles from './Kalkulator.module.css';
-import { BookOpen, Calculator, Plus, Trash2, Layers, ClosedCaptionIcon, ArrowDownRightFromSquareIcon, X } from 'lucide-react';
+import { BookOpen, Calculator, Plus, Trash2, Layers, ClosedCaptionIcon, ArrowDownRightFromSquareIcon, X,Download } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
@@ -18,6 +18,8 @@ const Kalkulator = () => {
   ]);
   
   const [totalThickness, setTotalThickness] = useState(0);
+  const [nr, setNr] = useState();
+  const [rok, setRok] = useState(2026);
   const scrollRef = useRef(null);
 
   // 1. Pobranie danych z API przy montowaniu
@@ -199,6 +201,25 @@ const Kalkulator = () => {
           </div>
           <div className={styles.resultAreaRight}>
 
+                              <input 
+                    className={styles.inputNr}
+                    placeholder='nr'
+
+                    type="text"
+                    value={nr}
+
+                    // onChange={(e) => updateSection(section.id, 'label', e.target.value)}
+                  />
+
+                                               <input 
+                    className={styles.inputNr}
+                    type="text"
+                    value={rok}
+                    // onChange={(e) => updateSection(section.id, 'label', e.target.value)}
+                  />
+                    <button className={styles.btnImport} onClick={addSection}>
+              <Download size={20} /> 
+            </button>
           </div>
 
 

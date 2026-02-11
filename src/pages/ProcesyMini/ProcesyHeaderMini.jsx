@@ -24,6 +24,11 @@ function ProcesyHeaderMini() {
   const selectedProcesor = techContext.selectedProcesor;
   const wykonaniaAll = techContext.wykonaniaAll;
   const grupyOprawaAll = techContext.grupyOprawaAll;
+  const setGrupyOprawaAll = techContext.setGrupyOprawaAll;
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const setGrupWykonanAll = techContext.setGrupWykonanAll;
+
+  
   const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor;
 const procesory = appcontext.procesory
 
@@ -43,13 +48,37 @@ const procesory = appcontext.procesory
   }, []);
   //---------------------------------------------------------
 
+  const isPolFormat = (width, height) =>{
 
+                // Próg zdefiniowany w zadaniu
+            const threshold = 0.3744;
+            
+            // Obliczenie: (szerokość * wysokość) / 1 000 000
+            const result = (width * height) / 1000000;
+            
+            // Zwrócenie wyniku porównania
+            return result > threshold;
+
+  }
 
   return (
     <div className={style.container}>
       <header id="header" className={style.body}>
         <div className={style.leftHeaderContener}>
           <DataWyswietlania/>
+          <button className={style.okladki}
+          onClick={()=>{ 
+            // console.log(selectedProcesor)
+  setGrupWykonanAll(grupyWykonanAll            .filter((zam) => {
+              if ( zam.typ_elementu ==1 && !isPolFormat(zam.arkusz_szerokosc,zam.arkusz_wysokosc))  {
+                return true;
+              } else {
+               return  false;
+              }
+            }))
+            }}
+
+          >OKŁADKI /2</button>
 
           {/* <ProcesSelect
             selectedProces={selectedProces}
@@ -63,15 +92,11 @@ const procesory = appcontext.procesory
           
           <p onClick={()=>{ 
             // console.log(selectedProcesor)
-            console.log(grupyOprawaAll)
-            
-
-// setSelectedProces(8)
-            
-            
+  
             }} className={style.procesor_title}> {procesory?.filter(x=> x.id == selectedProcesor)[0]?.nazwa} </p>
-        {/* <PokazStany /> */}
-        {/* <PrzerwaBTN /> */}
+
+
+
 
         </div>
         <div className={style.rightHeaderContener}>

@@ -34,6 +34,7 @@ const setShowTabs = contextModalInsert.setShowTabs
             console.log("--------")
       console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
       console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
+      console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>

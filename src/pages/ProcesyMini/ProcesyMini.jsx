@@ -104,6 +104,19 @@ const WykonaniaTable = () => {
   const selectedProces = techContext.selectedProces;
   const [unlockTable, setUnlockTable] = useState(true);
 
+  const isPolFormat = (width, height) =>{
+
+                // Próg zdefiniowany w zadaniu
+            const threshold = 0.3744;
+            
+            // Obliczenie: (szerokość * wysokość) / 1 000 000
+            const result = (width * height) / 1000000;
+            
+            // Zwrócenie wyniku porównania
+            return result > threshold;
+
+  }
+
   return (
     <div className={style.container}>
       <div className={style.tableContainer}>
@@ -165,6 +178,16 @@ const WykonaniaTable = () => {
                   .filter(
                     (x) => x.procesor_id == selectedProcesor && x.typ_grupy < 3
                   )
+
+          //   .filter((zam) => {
+          //   if (DecodeToken(sessionStorage.getItem("token")).dzial==9 && zam.typ_elementu ==1 && !isPolFormat(zam.arkusz_szerokosc,zam.arkusz_wysokosc))  {
+          //     return true;
+          //   } else {
+          //    return  false;
+          //   }
+          // })
+
+
                   .map((grup, i) => {
                     if (grup.typ_grupy != 1) {
                       return (

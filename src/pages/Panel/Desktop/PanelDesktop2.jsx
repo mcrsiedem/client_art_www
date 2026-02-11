@@ -186,7 +186,7 @@ const toggleActionVisibility2 = (id) => {
                       <OnlineUsersList />
                         {uiContext.showKalkulatorGrzbietu && <Kalkulator />}
                          {/* <PodgladRealizacji loading={loading}/> */}
-          <DevilUserIcon/>
+                         {/* <DevilUserIcon/> */}
 
                     </Center>
                     <Right>

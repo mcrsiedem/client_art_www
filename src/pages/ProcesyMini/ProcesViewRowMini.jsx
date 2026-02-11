@@ -158,7 +158,7 @@ if (grup.select) return style.procesRow_select
                     </tr>
                     <tr  >
                       <td></td>
-                      <td colSpan={5} >{grup.typ_grupy !=1 ? (grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie +" - "+grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu+" - "+"Spedycja: "+grup.data_spedycji):(" ")}</td>
+                      <td colSpan={5} >{grup.typ_grupy !=1 ? (grup.poczatek+ " "+grup.arkusz_szerokosc+"x"+grup.arkusz_wysokosc+" "+grup.nazwa_papieru+ " "+grup.gramatura+" "+grup.wykonczenie +" - "+grup.rodzaj_procesu+" "+grup.typ_procesu+" "+grup.wykonczenie_procesu+" "+grup.obszar_procesu+" - "+"Spedycja: "+grup.data_spedycji):(" ")}</td>
                       <td></td>
                       <td></td>
                       <td></td>

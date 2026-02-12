@@ -22,7 +22,7 @@ export default function Etap({grup,setShowNaswietlenia}) {
                  if (status==4) return style.select_DRUK
     if (etap==1) return style.select
     if (etap==2) return style.select
-    if (etap==3) return style.select
+    if (etap==3) return style.select_AKCEPT
     if (etap==4) return style.select_AKCEPT
     if (etap==5) return style.select_AKCEPT
     if (etap==6) return style.select_RIP

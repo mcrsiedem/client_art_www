@@ -23,8 +23,10 @@ const Kalkulator = () => {
   ]);
   
   const [totalThickness, setTotalThickness] = useState(0);
+    const [totalWeight, setTotalWeight] = useState(0);
   const [nr, setNr] = useState();
   const [rok, setRok] = useState(2026);
+
   const scrollRef = useRef(null);
 
   // 1. Pobranie danych z API przy montowaniu
@@ -33,15 +35,20 @@ const Kalkulator = () => {
   }, []);
 
   // 2. Funkcja obliczająca jednostkową grubość arkusza
-  const obliczGruboscArkusza = useCallback((id) => {
-    if (!listaPapierow || listaPapierow.length === 0) return 0.1; // Wartość domyślna podczas ładowania
-    
-    const papier = listaPapierow.find(x => x.id == id);
-    if (!papier) return 0.1;
-
-    // Formuła: (gramatura / 1000) * bulk
-    return (parseFloat(papier.gramatura) / 1000) * parseFloat(papier.bulk);
+  // Pobieranie danych papieru po ID
+  const getPapierById = useCallback((id) => {
+    return listaPapierow?.find(x => x.id == id);
   }, [listaPapierow]);
+
+  // Obliczanie grubości pojedynczego arkusza
+  const obliczGruboscArkusza = useCallback((id) => {
+    const papier = getPapierById(id);
+    if (!papier) return 0.1;
+    return (parseFloat(papier.gramatura) / 1000) * parseFloat(papier.bulk);
+  }, [getPapierById]);
+
+
+  
 
   // 3. Główna funkcja przeliczająca całkowity grzbiet
   const calculateThickness = useCallback(() => {
@@ -56,10 +63,40 @@ const Kalkulator = () => {
     setTotalThickness(finalResult.toFixed(2));
   }, [sections]);
 
+    const calculateWeight = useCallback(() => {
+    const total = sections.reduce((sum, section) => {
+      const papier = getPapierById(section.papier_id);
+      if (!papier) return sum;
+
+      const gramatura = parseFloat(papier.gramatura) || 0;
+      const arkusze = (parseInt(section.pages) || 0) / 2;
+      const powierzchniaM2 = (section.width * section.height) / 1000000;
+      
+      const wagaSekcji = powierzchniaM2 * (gramatura / 1000) * arkusze;
+      return sum + wagaSekcji;
+    }, 0);
+    
+    setTotalWeight(total.toFixed(3));
+  }, [sections, getPapierById]);
+
+
+
   // 4. Reaguj na zmiany w sekcjach lub załadowanie listy papierów
   useEffect(() => {
     calculateThickness();
-  }, [sections, calculateThickness]);
+    calculateWeight();
+  }, [sections, calculateThickness,calculateWeight]);
+
+
+
+
+
+
+
+
+
+
+
 
   // Aktualizacja sekcji - teraz automatycznie przelicza grubość przy zmianie papier_id
   const updateSection = (id, field, value) => {
@@ -84,7 +121,7 @@ const Kalkulator = () => {
 
     setSections([
       ...sections,
-      { id: newId, pages: 16, thickness: defaultThickness, label: 'Nowa sekcja', papier_id: 1 }
+      { id: newId, pages: 16, thickness: defaultThickness, label: 'Nowa sekcja', papier_id: 1, width: sections[1].width, height: sections[1].height }
     ]);
 
     setTimeout(() => {
@@ -110,7 +147,9 @@ const pobierzElementyZamowienia = async () => {
       // Zakładam, że obliczGruboscArkusza jest dostępna w zasięgu
       thickness: obliczGruboscArkusza(x.papier_id || 1), 
       label: x.typ_nazwa || "cos",
-      papier_id: x.papier_id
+      papier_id: x.papier_id,
+      width: x.format_x,
+      height: x.format_y,
     }));
 
     // 3. Aktualizujemy stan sekcji
@@ -151,8 +190,8 @@ const pobierzElementyZamowienia = async () => {
           <div className={styles.scrollArea} ref={scrollRef}>
             {sections.map((section) => (
               <div key={section.id} className={styles.sectionCard}>
-                <div style={{ flex: '2', minWidth: '150px' }}>
-                  <label className={styles.label}>Nazwa elementu</label>
+                <div style={{ flex: '1', minWidth: '90px' }}>
+                  <label className={styles.label}>Element</label>
                   <input 
                     className={styles.input}
                     type="text"
@@ -161,7 +200,7 @@ const pobierzElementyZamowienia = async () => {
                   />
                 </div>
 
-                <div style={{ width: '100px' }}>
+                <div style={{ width: '80px' }}>
                   <label className={styles.label}>Strony</label>
                   <input 
                     className={styles.input}
@@ -172,6 +211,32 @@ const pobierzElementyZamowienia = async () => {
                     onChange={(e) => updateSection(section.id, 'pages', parseInt(e.target.value) || 0)}
                   />
                 </div>
+
+
+
+                  <div style={{ width: '80px' }}>
+                  <label className={styles.label}>Szer (mm)</label>
+                  <input 
+                    className={styles.input}
+                    type="number"
+                    value={section.width}
+                    onChange={(e) => updateSection(section.id, 'width', parseInt(e.target.value) || 0)}
+                  />
+                </div>
+
+                 <div style={{ width: '80px' }}>
+                  <label className={styles.label}>Wys (mm)</label>
+                  <input 
+                    className={styles.input}
+                    type="number"
+                    value={section.height}
+                    onChange={(e) => updateSection(section.id, 'height', parseInt(e.target.value) || 0)}
+                  />
+                </div>
+
+                
+
+
 
                 <div style={{ flex: '2', minWidth: '200px' }}>
                   <label className={styles.label}>Rodzaj papieru</label>
@@ -214,12 +279,18 @@ const pobierzElementyZamowienia = async () => {
           </div>
           <div className={styles.resultAreaCenter}>
           <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
-            Przybliżona grubość grzbietu:
+            Przybliżona grubość grzbietu oraz waga:
           </span>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
             <span className={styles.totalValue}>{totalThickness}</span>
             <span className={styles.unit}>mm</span>
+            <span className={styles.unit2}> - </span>
+
+
+
+                <span className={styles.totalWeight}>{totalWeight}</span>
+                <span className={styles.unit}>kg</span>
           </div>
           
           <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center', gap: '25px' }}>

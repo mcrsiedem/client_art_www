@@ -4,8 +4,10 @@ import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { TechnologyContext } from "context/TechnologyContext";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
+  const techcontext = useContext(TechnologyContext);
   const tableZamowienia = contextApp.tableZamowienia;
   const setIsLoading = contextApp.setIsLoading;
   const zamowienia = contextApp.zamowienia;
@@ -204,6 +206,32 @@ else{
 
 
 
+const getElementy = async (nr, rok) => {
+  setIsLoading(true);
+  try {
+    const res = await axios.get(
+      IP +
+      "elementy/" +
+      nr +
+      "/" +
+      rok +
+      "/" +
+      sessionStorage.getItem("token")
+    );
+
+    // Aktualizujemy kontekst dla innych komponentów
+    techcontext.setElementyTech(res.data);
+    
+    // Zwracamy dane, aby móc z nich skorzystać w łańcuchu async/await
+    return res.data[0];
+  } catch (error) {
+    console.error("Błąd podczas pobierania elementów:", error);
+    return [];
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return {
     refreshZamowienia,
@@ -215,6 +243,7 @@ else{
     refreshZamowieniaProofy,
     edytujProofa,
     dodajProofa,
-    zamowienieOddaj
+    zamowienieOddaj,
+    getElementy
   };
 }

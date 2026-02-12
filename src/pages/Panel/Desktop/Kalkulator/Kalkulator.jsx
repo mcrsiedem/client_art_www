@@ -4,17 +4,22 @@ import { BookOpen, Calculator, Plus, Trash2, Layers, ClosedCaptionIcon, ArrowDow
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
+import { useZamowienia } from 'hooks/useZamowienia';
+import { TechnologyContext } from 'context/TechnologyContext';
 
 const Kalkulator = () => {
   const uiContext = useContext(UIContext);
+    const techcontext = useContext(TechnologyContext);
+  
   
   const [callForPaper] = useApiPapier();
+  const {getElementy} = useZamowienia();
   const { listaPapierow, listaPapierowWyszukiwarka } = useContext(AppContext);
 
   
   const [sections, setSections] = useState([
-    { id: 1, pages: 80, thickness: 0.0648, label: 'Środek', papier_id: 10 },
-    { id: 2, pages: 4, thickness: 0.20, label: 'Okładka', papier_id: 83 }
+    { id: 1, pages: 80, thickness: 0.0648, label: 'Środek', papier_id: 10, width: 210, height: 297 },
+    { id: 2, pages: 4, thickness: 0.20, label: 'Okładka', papier_id: 83 , width: 210, height: 297}
   ]);
   
   const [totalThickness, setTotalThickness] = useState(0);
@@ -91,6 +96,31 @@ const Kalkulator = () => {
       }
     }, 100);
   };
+
+
+const pobierzElementyZamowienia = async () => {
+  // 1. Czekamy aż dane zostaną pobrane i przypisane do zmiennej data
+  const data = await getElementy(nr, rok);
+
+  // 2. Wykonujemy resztę logiki tylko gdy mamy dane
+  if (data && Array.isArray(data)) {
+    const sec = data.map(x => ({
+      id: x.id,
+      pages: x.ilosc_stron,
+      // Zakładam, że obliczGruboscArkusza jest dostępna w zasięgu
+      thickness: obliczGruboscArkusza(x.papier_id || 1), 
+      label: x.typ_nazwa || "cos",
+      papier_id: x.papier_id
+    }));
+
+    // 3. Aktualizujemy stan sekcji
+  console.log(data)
+
+    setSections(sec);
+  }
+};
+
+
 
   const removeSection = (id) => {
     if (sections.length > 1) {
@@ -204,20 +234,26 @@ const Kalkulator = () => {
                               <input 
                     className={styles.inputNr}
                     placeholder='nr'
+                    title='Wpisz nr zlecenia i pobierz elementy'
 
                     type="text"
                     value={nr}
 
-                    // onChange={(e) => updateSection(section.id, 'label', e.target.value)}
+                    onChange={(e) => setNr( e.target.value)}
                   />
 
                                                <input 
                     className={styles.inputNr}
+                    title='Wpisz nr zlecenia i pobierz elementy'
+
                     type="text"
                     value={rok}
-                    // onChange={(e) => updateSection(section.id, 'label', e.target.value)}
+                                        onChange={(e) => setRok( e.target.value)}
+
                   />
-                    <button className={styles.btnImport} onClick={addSection}>
+                    <button 
+                    title='Wpisz nr zlecenia i pobierz elementy'
+                    className={styles.btnImport} onClick={pobierzElementyZamowienia}>
               <Download size={20} /> 
             </button>
           </div>

@@ -30,6 +30,7 @@ import Narzady from "./components/Narzady";
 import NaswietleniaIlosc from "./components/NaswietleniaIlosc";
 import { onMouseDownHandler } from "./components/actions/onMouseDownHandler";
 import NaswietleniaPane from "./components/NaswietleniaPane/NaswietleniaPane";
+import { ModalInsertContext } from "context/ModalInsertContext";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -48,6 +49,11 @@ export default function ProcesViewRow({ grup,i }) {
     const [showNaswietlenia, setShowNaswietlenia] = useState(false);
 
 
+      const contextModalInsert = useContext(ModalInsertContext);
+    
+    const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
+
+
   return (
 <>
     <tr
@@ -61,6 +67,9 @@ export default function ProcesViewRow({ grup,i }) {
       onDragStart={() => {if(wolno()){handleDragStart(grup.global_id,grup.typ_grupy)} }}
       className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
       onDoubleClick={() => {if(grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}}}
+            onClick={(node, e) => {
+          setSelectedZamowienie({ ...grup,id:grup.zamowienie_id, i }); // aby można było odtworzyć zamówienie w zleceniu 
+        }}
     >
       <Dzien grup={grup} style={style}/>
       <Poczatek grup={grup}/>

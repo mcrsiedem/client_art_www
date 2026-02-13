@@ -12,9 +12,14 @@ import IntroligatorniaTech from "./components/introligatornia/IntroligatorniaTec
 import ArkuszeDoDruku from "./components/arkusze/ArkuszeDoDruku";
 import LegiDoFalcu from "./components/legi/LegiDoFalcu";
 import Loading from "components/Loading/Loading";
+import ModalInsert from "pages/Zamowienia/ModalInsert/ModalInsert";
+import { ModalInsertContext } from "context/ModalInsertContext";
 export default function TechnologiaStage() {
   const techContext = useContext(TechnologyContext);
   const showTechnologyStage = techContext.showTechnologyStage;
+  const contextModal = useContext(ModalInsertContext);
+   const openModalInsert = contextModal.openModalInsert;
+   
   if (showTechnologyStage) {
     return (
       <div className={style.container}>
@@ -35,6 +40,11 @@ export default function TechnologiaStage() {
                   </div>
                   <ProcesElementTech />
                   <PaperStage parent={"technologia"} />
+
+                            {openModalInsert && (
+            <ModalInsert lokalizacja={"zamowienia"}
+            />
+          )}
       </div>
     );
   }

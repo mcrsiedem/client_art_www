@@ -293,3 +293,9 @@ tr:nth-of-type(2n) {
    .th_tableProcesy_uwagi{
    width: 420px;
 }
+
+
+.tableProcesy  th{
+   	cursor:pointer;
+
+}

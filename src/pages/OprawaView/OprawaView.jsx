@@ -101,20 +101,20 @@ const WykonaniaTable = () => {
         <table className={style.tableProcesy}>
           <thead>
             <tr>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
+              <th onClick={()=>{  setSortowanieOprawy("data")}}  className={style.th_tableProcesy_poczatek}> Początek</th>{" "}
               <th className={style.th_tableProcesy_poczatek}> Czas</th>{" "}
               <th> Koniec</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("nr")}} > Nr</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Format</th>
+              <th onClick={()=>{  setSortowanieOprawy("nr")}} > Nr</th>
+              <th onClick={()=>{  setSortowanieOprawy("klient")}}  className={style.th_tableProcesy_klient}> Klient</th>
+              <th onClick={()=>{  setSortowanieOprawy("praca")}} className={style.th_tableProcesy_praca}> Praca</th>
+              <th onClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Format</th>
  
-              <th onDoubleClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Do oprawy </th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("spedycja")}}>Spedycja</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("status")}}>Status</th>
-              <th onDoubleClick={()=>{  setSortowanieOprawy("uwagi")}}> Uwagi</th>
+              <th onClick={()=>{  setSortowanieOprawy("oprawa")}} className={style.th_tableProcesy_rodzaj}> Rodzaj</th>
+              <th onClick={()=>{  setSortowanieOprawy("zrealizowano")}} className={style.th_tableProcesy_naklad}> Do oprawy </th>
+              <th onClick={()=>{  setSortowanieOprawy("naklad")}} className={style.th_tableProcesy_naklad}> Nakład</th>
+              <th onClick={()=>{  setSortowanieOprawy("spedycja")}}>Spedycja</th>
+              <th onClick={()=>{  setSortowanieOprawy("status")}}>Status</th>
+              <th onClick={()=>{  setSortowanieOprawy("uwagi")}}> Uwagi</th>
             </tr>
           </thead>
           <tbody>

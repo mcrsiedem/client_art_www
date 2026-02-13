@@ -62,7 +62,7 @@ const Wykres = () => {
       fontWeight: '700',
       border: 'none',
       cursor: 'pointer',
-      backgroundColor: active ? '#4f46e5' : 'transparent',
+      backgroundColor: active ? '#30639b' : 'transparent',
       color: active ? '#fff' : '#64748b',
       transition: 'all 0.2s'
     }),
@@ -258,13 +258,13 @@ const Wykres = () => {
         <div style={styles.header}>
           <div style={styles.titleSection}>
             <h1 style={styles.mainTitle}>
-              <BarChart3 size={32} color="#4f46e5" /> Raport Produkcji
+              <BarChart3 size={32} color="#30639b" /> Raport Produkcji
             </h1>
             <span style={styles.subTitle}>Zestawienie przelotów do wykonania w wybranym interwale</span>
           </div>
 
           <div style={styles.buttonGroup}>
-            {['daily', 'weekly', 'monthly'].map((type) => (
+            { ['weekly', 'monthly'].map((type) => (
               <button
                 key={type}
                 onClick={() => setViewType(type)}
@@ -277,7 +277,7 @@ const Wykres = () => {
         </div>
 
         {/* Stats */}
-        <div style={styles.statsGrid}>
+        {/* <div style={styles.statsGrid}>
           <div style={styles.statCard}>
             <div style={styles.iconBox('#2563eb')}><BarChart3 size={20}/></div>
             <div>
@@ -306,20 +306,20 @@ const Wykres = () => {
               <div style={{fontSize: '1.25rem', fontWeight: 900}}>{stats.falc_zak.toLocaleString()}</div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Chart */}
         <div style={styles.chartCard}>
           <div style={styles.chartHeader}>
             <h2 style={{fontSize: '1.125rem', fontWeight: 700, margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-              <Calendar size={18} color="#6366f1" /> Harmonogram Realizacji
+              <Calendar size={18} color="#359b30" /> Harmonogram Realizacji
             </h2>
             <div style={styles.legend}>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#09644675'}}></div> Druk
+                <div style={{width: '22px', height: '22px', borderRadius: '3px', backgroundColor: '#359b30'}}></div> Druk
               </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <div style={{width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#f59f0b79'}}></div> Falc
+                <div style={{width: '22px', height: '22px', borderRadius: '3px', backgroundColor: '#30639b'}}></div> Falc
               </div>
             </div>
           </div>
@@ -338,11 +338,11 @@ const Wykres = () => {
                 <div style={styles.barGroup}>
                   <div 
                     title={`Druk: ${group.druku.toLocaleString()}`}
-                    style={styles.bar((group.druku / maxVal) * 100, '#09644675')}
+                    style={styles.bar((group.druku / maxVal) * 100, '#359b30')}
                   ></div>
                   <div 
                     title={`Falc: ${group.falc.toLocaleString()}`}
-                    style={styles.bar((group.falc / maxVal) * 100, '#f59f0b79')}
+                    style={styles.bar((group.falc / maxVal) * 100, '#30639b')}
                   ></div>
                 </div>
                 <div style={styles.labelWrapper}>

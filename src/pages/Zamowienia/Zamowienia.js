@@ -78,7 +78,7 @@ function Zamowienia() {
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
         <TableFx  showSettings={showSettings} setShowSettings={setShowSettings}/>
-        <TableMini  open2={open2} setRow={setRow}  header={false}/>
+        {/* <TableMini  open2={open2} setRow={setRow}  header={false}/> */}
       </div>
           {openModalInsert && (
             <ModalInsert lokalizacja={"zamowienia"}

@@ -49,9 +49,10 @@ const inlineStyles = `
   .table-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     background: var(--bg-main);
     font-family: sans-serif;
+    overflow: auto;
   }
 
   .table-header {
@@ -132,6 +133,7 @@ const inlineStyles = `
     border-radius: 0.75rem;
     overflow: auto;
     position: relative;
+        // background: green;
   }
 
   .custom-table {
@@ -202,10 +204,11 @@ const inlineStyles = `
   }
 
   .custom-td {
-    padding: 0.75rem 1rem;
+    // padding: 0.75rem 1rem;
+    padding: 0.4rem 0.5rem;
     font-size: 0.875rem;
     color: var(--text-main);
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #9e9e9e96;
     border-right: 1px solid #f1f5f9;
     white-space: nowrap;
     overflow: hidden;

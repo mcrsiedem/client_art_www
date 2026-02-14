@@ -18,7 +18,7 @@ import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { useZamowienia } from "hooks/useZamowienia";
 import { 
   Settings, 
-  Columns4Icon,
+  Columns2,
   FileText, 
   ChevronDown, 
   ChevronUp,
@@ -54,7 +54,7 @@ const setShowTabs = contextModalInsert.setShowTabs
           onClick={() => setShowSettings(!showSettings)}
           // className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
         >
-          <Columns4Icon style={{color:'#ffffff6b'}} size={25} />
+          <Columns2 style={{color:'#ffffff6b'}} size={25} />
         </button>
       </div>
 

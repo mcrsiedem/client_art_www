@@ -19,6 +19,7 @@ import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
 import DiaglogAlert from "components/Dialog/DiaglogAlert";
+import TableFx from "./components/table/TableFx";
 function Zamowienia() {
 
   const contextApp = useContext(AppContext);
@@ -72,7 +73,8 @@ function Zamowienia() {
     <div className={style.container}>
       <Header dodaj_clikHandler={dodaj_clikHandler} />
       <div className={style.multiTableContainer}>
-        <TableZamowienia />
+        {/* <TableZamowienia /> */}
+        <TableFx />
         <TableMini  open2={open2} setRow={setRow}  header={false}/>
       </div>
           {openModalInsert && (

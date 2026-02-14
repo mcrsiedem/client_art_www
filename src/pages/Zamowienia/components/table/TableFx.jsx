@@ -146,6 +146,7 @@ const inlineStyles = `
     top: 0;
     z-index: 10;
     background: #f8fafc;
+    
   }
 
   .custom-th {
@@ -157,6 +158,7 @@ const inlineStyles = `
     border-right: 1px solid var(--border-color);
     cursor: pointer;
     user-select: none;
+    
   }
 
   .custom-th:hover {
@@ -172,6 +174,7 @@ const inlineStyles = `
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    
   }
 
   .sort-icon {

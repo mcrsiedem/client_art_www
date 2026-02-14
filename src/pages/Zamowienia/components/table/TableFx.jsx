@@ -24,7 +24,7 @@ const styles = {
   tableWrapper: "table-wrapper",
   table: "custom-table",
   thead: "custom-thead",
-  th: "custom-th",
+  th2: "custom-th",
   thContent: "th-content",
   resizer: "resizer",
   tbody: "custom-tbody",
@@ -182,9 +182,10 @@ const inlineStyles = `
   .resizer {
     position: absolute;
     right: 0;
+    border:none;
     top: 0;
     height: 100%;
-    width: 4px;
+    width: 1px;
     cursor: col-resize;
     z-index: 5;
   }
@@ -402,7 +403,7 @@ export default function TableFx() {
                 return (
                   <th 
                     key={col.id}
-                    className={styles.th}
+                    className={styles.th2}
                     style={{ width: columnWidths[col.id] || 150 }}
                     onClick={() => requestSort(col.id, col.noSort)}
                   >
@@ -447,7 +448,7 @@ function CellContent({ row, colId }) {
   switch (colId) {
     case "nr": return <span style={{fontWeight: 'bold'}}>{row.nr}</span>;
     case "tytul": return row.tytul;
-    case "netto": return <span className={styles.price}>{row.netto} zł</span>;
+    case "netto": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={styles.badge}>{row.status_nazwa}</span>;
     case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
     default: return row[colId] || "-";

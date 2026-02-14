@@ -24,7 +24,9 @@ import {
   ChevronUp,
   X,
   Search,
-  Filter
+  Filter,
+  BetweenVerticalStart,
+  StretchVertical
 } from "lucide-react";
 
 export default function Header({ dodaj_clikHandler,showSettings, setShowSettings}) {
@@ -44,18 +46,15 @@ const setShowTabs = contextModalInsert.setShowTabs
             console.log("--------")
       console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
       console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
+      // console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
       console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
+      console.table(contextApp.zamowienia)
+
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
-                <button 
-                 style={{background:'transparent', border:'none', marginLeft:'10px'}}
-          onClick={() => setShowSettings(!showSettings)}
-          // className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
-        >
-          <Columns2 style={{color:'#ffffff6b'}} size={25} />
-        </button>
+
       </div>
 
       <div className={style.centerHeaderContener}>
@@ -73,6 +72,14 @@ const setShowTabs = contextModalInsert.setShowTabs
 
       </div>
       <div className={style.rightHeaderContener}>
+                        <button 
+                        title="Pokaż kolumny"
+                 style={{background:'transparent', border:'none', marginRight:'10px'}}
+          onClick={() => setShowSettings(!showSettings)}
+          // className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
+        >
+          <BetweenVerticalStart style={{color:'#95c912d4'}} size={25} />
+        </button>
         <BTN_INSPEKCJA/>
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>

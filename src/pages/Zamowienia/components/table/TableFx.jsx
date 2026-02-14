@@ -9,6 +9,7 @@ import {
   Filter
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
+import { _etapy_produkcji } from "utils/initialvalue";
 
 /** * SYMULACJA STYLÓW CSS MODULES */
 const styles = {
@@ -41,7 +42,7 @@ const inlineStyles = `
     --bg-white: #ffffff;
     --border-color: #e2e8f0;
     --text-main: #1e293b;
-    --text-muted: #64748b;
+    --text-muted: #000000be;
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
   }
@@ -153,7 +154,7 @@ const inlineStyles = `
 
   .custom-th {
     position: relative;
-    height: 3rem;
+    height: 2rem;
     padding: 0 1rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
@@ -171,10 +172,10 @@ const inlineStyles = `
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-muted);
-    text-transform: uppercase;
+    // text-transform: uppercase;
     letter-spacing: 0.05em;
     
   }
@@ -191,12 +192,15 @@ const inlineStyles = `
     top: 0;
     height: 100%;
     width: 1px;
+    
     cursor: col-resize;
     z-index: 5;
+    background: #b4b4b4a1;
   }
 
   .resizer:hover {
     background: var(--primary);
+    cursor: col-resize;
   }
 
   .custom-tr:hover {
@@ -262,6 +266,7 @@ export default function TableFx({showSettings, setShowSettings}) {
   // --- DEFINICJA KOLUMN ---
   const allColumns = [
     { id: "nr", label: "Nr" },
+    { id: "rok", label: "Rok" },
     { id: "technologia", label: "Karta", isIcon: true, noSort: true },
     { id: "klient", label: "Klient" },
     { id: "tytul", label: "Praca" }, // Używamy tytul jako klucza danych
@@ -269,7 +274,14 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "ilosc_stron", label: "Str." },
     { id: "netto", label: "Netto" },
     { id: "status_nazwa", label: "Status" },
-    { id: "opiekun", label: "Opiekun" }
+    { id: "opiekun", label: "Opiekun" },
+    { id: "data_spedycji", label: "Spedycja" },
+    { id: "utworzono", label: "Utworzono" },
+    { id: "nr_kalkulacji", label: "Kalkulacja" },
+    { id: "format_x", label: "Szer." },
+    { id: "format_y", label: "Wys." },
+    { id: "etap", label: "Etap" },
+    
   ];
 
   // --- STATE: KONFIGURACJA SORTOWANIA ---
@@ -283,7 +295,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 100, tytul: 250, klient: 150 };
+    return saved ? JSON.parse(saved) : { nr: 80, tytul: 250, klient: 150 };
   });
 
   // const [showSettings, setShowSettings] = useState(false);
@@ -457,6 +469,7 @@ function CellContent({ row, colId }) {
     case "netto": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={styles.badge}>{row.status_nazwa}</span>;
     case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
+    case "etap": return <span className={styles.price}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
     default: return row[colId] || "-";
   }
 }

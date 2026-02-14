@@ -252,7 +252,7 @@ const STORAGE_KEYS = {
   WIDTHS: "table_css_mod_widths"
 };
 
-export default function TableFx() {
+export default function TableFx({showSettings, setShowSettings}) {
   const contextApp = useContext(AppContext);
   const zamowieniaRaw = contextApp.zamowienia || [];
   
@@ -283,7 +283,7 @@ export default function TableFx() {
     return saved ? JSON.parse(saved) : { nr: 100, tytul: 250, klient: 150 };
   });
 
-  const [showSettings, setShowSettings] = useState(false);
+  // const [showSettings, setShowSettings] = useState(false);
 
   // --- LOGIKA SORTOWANIA (Memoized) ---
   const sortedItems = useMemo(() => {
@@ -356,7 +356,7 @@ export default function TableFx() {
     <div className={styles.container}>
       <style>{inlineStyles}</style>
       
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
           <h1 style={{fontSize: '1.25rem', fontWeight: 'bold'}}>Zamówienia</h1>
           <div className={styles.searchWrapper}>
@@ -372,7 +372,7 @@ export default function TableFx() {
           <Settings size={18} />
           Kolumny
         </button>
-      </div>
+      </div> */}
 
       {showSettings && (
         <div className={styles.settingsPanel}>

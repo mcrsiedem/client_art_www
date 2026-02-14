@@ -37,6 +37,9 @@ function Zamowienia() {
   // const [loading, setLoading] = useState(true);
     const appContext = useContext(AppContext);
     const isLoading = appContext.isLoading;
+      const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
+
+    
 
   function dodaj_clikHandler() {
     setOpenModalInsert(true);
@@ -71,10 +74,10 @@ function Zamowienia() {
 
   return (
     <div className={style.container}>
-      <Header dodaj_clikHandler={dodaj_clikHandler} />
+      <Header showSettings={showSettings} setShowSettings={setShowSettings} dodaj_clikHandler={dodaj_clikHandler} />
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
-        <TableFx />
+        <TableFx  showSettings={showSettings} setShowSettings={setShowSettings}/>
         <TableMini  open2={open2} setRow={setRow}  header={false}/>
       </div>
           {openModalInsert && (

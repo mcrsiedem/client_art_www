@@ -16,8 +16,18 @@ import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { useZamowienia } from "hooks/useZamowienia";
+import { 
+  Settings, 
+  Columns4Icon,
+  FileText, 
+  ChevronDown, 
+  ChevronUp,
+  X,
+  Search,
+  Filter
+} from "lucide-react";
 
-export default function Header({ dodaj_clikHandler}) {
+export default function Header({ dodaj_clikHandler,showSettings, setShowSettings}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -39,6 +49,13 @@ const setShowTabs = contextModalInsert.setShowTabs
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
+                <button 
+                 style={{background:'transparent', border:'none', marginLeft:'10px'}}
+          onClick={() => setShowSettings(!showSettings)}
+          // className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
+        >
+          <Columns4Icon style={{color:'#ffffff6b'}} size={25} />
+        </button>
       </div>
 
       <div className={style.centerHeaderContener}>

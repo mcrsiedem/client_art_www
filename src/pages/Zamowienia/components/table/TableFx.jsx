@@ -128,7 +128,7 @@ const inlineStyles = `
 
   .table-wrapper {
     flex: 1;
-    margin: 0 1.5rem 1.5rem;
+    // margin: 0 1.5rem 1.5rem;
     background: var(--bg-white);
     border: 1px solid var(--border-color);
     border-radius: 0.75rem;
@@ -464,7 +464,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 
 function CellContent({ row, colId }) {
   switch (colId) {
-    case "nr": return <span style={{fontWeight: 'bold'}}>{row.nr}</span>;
+    case "nr": return <span style={{fontWeight: 'bold',paddingLeft:'10px'}}>{row.nr+" / "+row.rok.substring(2,4)}</span>;
     case "tytul": return row.tytul;
     case "netto": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={styles.badge}>{row.status_nazwa}</span>;

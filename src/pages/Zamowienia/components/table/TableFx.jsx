@@ -402,31 +402,47 @@ export default function TableFx({showSettings, setShowSettings}) {
 
 
 
+
+
+ const didMouseMove = useRef(false);
+
 // const sortedItems = useMemo(() => {
 //   let sortableItems = [...zamowieniaRaw];
 //   if (sortConfig !== null) {
 //     sortableItems.sort((a, b) => {
-//       // --- NOWA LOGIKA: Sortowanie wstępne po roku dla kolumny 'nr' ---
+//       // --- LOGIKA DLA 'nr' (Sortowanie po roku) ---
 //       if (sortConfig.key === 'nr') {
 //         const rokA = parseInt(a.rok) || 0;
 //         const rokB = parseInt(b.rok) || 0;
-
 //         if (rokA !== rokB) {
-//           // Zawsze sortujemy lata (np. rosnąco), niezależnie od kierunku 'nr'
-//           // Lub dostosuj: sortConfig.direction === 'asc' ? rokA - rokB : rokB - rokA
-//           return rokA - rokB; 
+//           return sortConfig.direction === 'asc' ? rokA - rokB : rokB - rokA;
 //         }
 //       }
 
-//       // --- RESZTA TWOJEJ ORYGINALNEJ LOGIKI ---
 //       let valA = a[sortConfig.key];
 //       let valB = b[sortConfig.key];
 
+//       // Obsługa pustych wartości (zawsze na dole)
 //       const isEmpty = (val) => val === undefined || val === null || val === '';
 //       if (isEmpty(valA) && isEmpty(valB)) return 0;
 //       if (isEmpty(valA)) return 1;
 //       if (isEmpty(valB)) return -1;
 
+//       // --- NOWA LOGIKA: Obsługa dat (data_spedycji, data_przyjecia) ---
+//       const dateKeys = ['data_spedycji', 'data_przyjecia'];
+//       if (dateKeys.includes(sortConfig.key)) {
+//         const dateA = new Date(valA);
+//         const dateB = new Date(valB);
+
+//         // Sprawdzamy, czy daty są poprawne
+//         if (!isNaN(dateA) && !isNaN(dateB)) {
+//           return sortConfig.direction === 'asc' 
+//             ? dateA - dateB 
+//             : dateB - dateA;
+//         }
+//       }
+
+//       // --- LOGIKA DLA LICZB ---
 //       const parseToNumber = (val) => {
 //         if (typeof val === 'number') return val;
 //         if (typeof val === 'string') {
@@ -442,82 +458,106 @@ export default function TableFx({showSettings, setShowSettings}) {
 
 //       if (numA !== null && numB !== null) {
 //         return sortConfig.direction === 'asc' ? numA - numB : numB - numA;
-//       } else {
-//         const strA = String(valA).toLowerCase();
-//         const strB = String(valB).toLowerCase();
-//         return sortConfig.direction === 'asc' 
-//           ? strA.localeCompare(strB) 
-//           : strB.localeCompare(strA);
-//       }
+//       } 
+      
+//       // --- LOGIKA DLA STRINGÓW ---
+//       const strA = String(valA).toLowerCase();
+//       const strB = String(valB).toLowerCase();
+//       return sortConfig.direction === 'asc' 
+//         ? strA.localeCompare(strB) 
+//         : strB.localeCompare(strA);
 //     });
 //   }
 //   return sortableItems;
 // }, [zamowieniaRaw, sortConfig]);
 
- const didMouseMove = useRef(false);
-
 const sortedItems = useMemo(() => {
   let sortableItems = [...zamowieniaRaw];
-  if (sortConfig !== null) {
-    sortableItems.sort((a, b) => {
-      // --- LOGIKA DLA 'nr' (Sortowanie po roku) ---
-      if (sortConfig.key === 'nr') {
+
+  // Mapowanie wag dla stanów (nadrzędny priorytet wyświetlania)
+  // 3 -> 1 (zawsze najwyżej)
+  // 2 -> 2
+  // 1 -> 3
+  // 4 -> 4 (zawsze najniżej)
+  const stanPriority = {
+    3: 1,
+    2: 2,
+    1: 3,
+    4: 4
+  };
+
+  sortableItems.sort((a, b) => {
+    // 1. GŁÓWNY PRIORYTET: Sortowanie po 'stan' (3 -> 2 -> 1 -> 4)
+    const pA = stanPriority[a.stan] || 99;
+    const pB = stanPriority[b.stan] || 99;
+
+    if (pA !== pB) {
+      return pA - pB;
+    }
+
+    // 2. SORTOWANIE DODATKOWE: Tylko gdy stany są takie same
+    let result = 0;
+
+    if (sortConfig !== null) {
+      const { key, direction } = sortConfig;
+      let valA = a[key];
+      let valB = b[key];
+
+      // Obsługa specyficzna dla 'nr' (rok)
+      if (key === 'nr') {
         const rokA = parseInt(a.rok) || 0;
         const rokB = parseInt(b.rok) || 0;
         if (rokA !== rokB) {
-          return sortConfig.direction === 'asc' ? rokA - rokB : rokB - rokA;
+          result = direction === 'asc' ? rokA - rokB : rokB - rokA;
         }
       }
 
-      let valA = a[sortConfig.key];
-      let valB = b[sortConfig.key];
+      // Sprawdź puste wartości
+      if (result === 0) {
+        const isEmpty = (v) => v === undefined || v === null || v === '';
+        if (isEmpty(valA) && !isEmpty(valB)) result = 1;
+        else if (!isEmpty(valA) && isEmpty(valB)) result = -1;
+        else if (!isEmpty(valA) && !isEmpty(valB)) {
+          
+          // Obsługa dat
+          const dateKeys = ['data_spedycji', 'data_przyjecia'];
+          if (dateKeys.includes(key)) {
+            const dA = new Date(valA);
+            const dB = new Date(valB);
+            if (!isNaN(dA) && !isNaN(dB)) {
+              result = direction === 'asc' ? dA - dB : dB - dA;
+            }
+          }
 
-      // Obsługa pustych wartości (zawsze na dole)
-      const isEmpty = (val) => val === undefined || val === null || val === '';
-      if (isEmpty(valA) && isEmpty(valB)) return 0;
-      if (isEmpty(valA)) return 1;
-      if (isEmpty(valB)) return -1;
+          // Obsługa liczb
+          if (result === 0) {
+            const parseToNum = (v) => {
+              if (typeof v === 'number') return v;
+              const n = parseFloat(String(v).replace(',', '.').trim());
+              return isNaN(n) ? null : n;
+            };
+            const nA = parseToNum(valA);
+            const nB = parseToNum(valB);
+            if (nA !== null && nB !== null) {
+              result = direction === 'asc' ? nA - nB : nB - nA;
+            }
+          }
 
-      // --- NOWA LOGIKA: Obsługa dat (data_spedycji, data_przyjecia) ---
-      const dateKeys = ['data_spedycji', 'data_przyjecia'];
-      if (dateKeys.includes(sortConfig.key)) {
-        const dateA = new Date(valA);
-        const dateB = new Date(valB);
-
-        // Sprawdzamy, czy daty są poprawne
-        if (!isNaN(dateA) && !isNaN(dateB)) {
-          return sortConfig.direction === 'asc' 
-            ? dateA - dateB 
-            : dateB - dateA;
+          // Obsługa stringów
+          if (result === 0) {
+            const sA = String(valA).toLowerCase();
+            const sB = String(valB).toLowerCase();
+            result = direction === 'asc' 
+              ? sA.localeCompare(sB, 'pl') 
+              : sB.localeCompare(sA, 'pl');
+          }
         }
       }
+    }
 
-      // --- LOGIKA DLA LICZB ---
-      const parseToNumber = (val) => {
-        if (typeof val === 'number') return val;
-        if (typeof val === 'string') {
-          const normalized = val.replace(',', '.').trim();
-          const parsed = parseFloat(normalized);
-          return isNaN(parsed) ? null : parsed;
-        }
-        return null;
-      };
+    return result;
+  });
 
-      const numA = parseToNumber(valA);
-      const numB = parseToNumber(valB);
-
-      if (numA !== null && numB !== null) {
-        return sortConfig.direction === 'asc' ? numA - numB : numB - numA;
-      } 
-      
-      // --- LOGIKA DLA STRINGÓW ---
-      const strA = String(valA).toLowerCase();
-      const strB = String(valB).toLowerCase();
-      return sortConfig.direction === 'asc' 
-        ? strA.localeCompare(strB) 
-        : strB.localeCompare(strA);
-    });
-  }
   return sortableItems;
 }, [zamowieniaRaw, sortConfig]);
 
@@ -659,7 +699,8 @@ const sortedItems = useMemo(() => {
              return  zam.opiekun_id == contextApp.selectedUser;
             }
           })
-        .filter( item => item.stan > 2 ).map((row,i) => (
+        .map((row,i) => (
+        // .filter( item => item.stan > 2 ).map((row,i) => (
               <tr key={row.id} className={styles.tr}
                      onClick={(node, e) => {
           setSelectedZamowienie({ ...row, i });
@@ -678,7 +719,7 @@ const sortedItems = useMemo(() => {
         }}
               >
                 {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
-                  <td key={`${row.id}-${col.id}`} className={styles.td}>
+                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
                     <CellContent row={row} colId={col.id} />
                   </td>
                 ))}
@@ -696,7 +737,7 @@ const sortedItems = useMemo(() => {
 
 
 
-                        {sortedItems.filter( item => {
+                        {/* {sortedItems.filter( item => {
           if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
         } )
         
@@ -731,7 +772,7 @@ const sortedItems = useMemo(() => {
                   </td>
                 ))}
               </tr>
-            ))}
+            ))} */}
 
 
 
@@ -743,7 +784,7 @@ const sortedItems = useMemo(() => {
 
             
 
-                        {sortedItems.filter( item => {
+                        {/* {sortedItems.filter( item => {
           if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
         } )
         
@@ -778,7 +819,7 @@ const sortedItems = useMemo(() => {
                   </td>
                 ))}
               </tr>
-            ))}
+            ))} */}
 
 
 

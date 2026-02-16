@@ -453,7 +453,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 //   return sortableItems;
 // }, [zamowieniaRaw, sortConfig]);
 
-
+ const didMouseMove = useRef(false);
 
 const sortedItems = useMemo(() => {
   let sortableItems = [...zamowieniaRaw];
@@ -540,11 +540,16 @@ const sortedItems = useMemo(() => {
 
   const handleMouseDown = (id, e) => {
     e.stopPropagation(); // Ważne, aby kliknięcie w resizer nie wyzwalało sortowania
-    e.preventDefault();
+    // e.preventDefault();
+    didMouseMove.current = false;
     const startX = e.pageX;
     const startWidth = columnWidths[id] || 150;
 
     const onMouseMove = (moveEvent) => {
+         const diff = Math.abs(moveEvent.pageX - startX);
+      if (diff > 2) { // Mała tolerancja na drgnięcie ręki
+        didMouseMove.current = true;
+      }
       // const newWidth = Math.max(60, startWidth + (moveEvent.pageX - startX));
       const newWidth = Math.max(20, startWidth + (moveEvent.pageX - startX));
       setColumnWidths(prev => ({ ...prev, [id]: newWidth }));
@@ -610,7 +615,14 @@ const sortedItems = useMemo(() => {
                     key={col.id}
                     className={styles.th2}
                     style={{ width: columnWidths[col.id] || 150 }}
-                    onClick={() => requestSort(col.id, col.noSort)}
+                             onClick={() => {
+                        // Sortuj tylko jeśli nie było przesunięcia (prawdziwy resize)
+                        if (!didMouseMove.current) {
+                            requestSort(col.id, col.noSort);
+                        }
+                        // Resetujemy flagę po każdym kliknięciu
+                        didMouseMove.current = false;
+                    }}
                   >
                     <div className={styles.thContent}>
                       {col.isIcon ? <FileText size={16} /> : col.label}

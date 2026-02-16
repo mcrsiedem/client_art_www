@@ -13,7 +13,7 @@ import {
   KeySquare
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
-import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _waluta } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import DecodeToken from "pages/Login/DecodeToken";
@@ -367,6 +367,7 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "oprawa", label: "Oprawa" , visible: true},
     { id: "ilosc_stron", label: "Str." , visible: true},
     { id: "cena", label: "Cena" , visible: false},
+    { id: "waluta_id", label: "Waluta" , visible: true},
     { id: "wartosc_zamowienia", label: "Wartosc zamówienia" , visible: false},
     { id: "data_materialow", label: "Data materiałów" , visible: false},
     { id: "data_przyjecia", label: "Data przyjęcia" , visible: true},
@@ -818,7 +819,8 @@ function CellContent({ row, colId }) {
     case "naklad": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.naklad.toLocaleString()}</div>;
     case "ilosc_stron": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.ilosc_stron}</div>;
 
-    case "cena": return <span className={styles.price}>{row.cena} zł</span>;
+    case "cena": return <span className={styles.price2}>{row.cena}</span>;
+    case "waluta_id": return <span >{_waluta.filter((s) => s.id == row.waluta_id).map((x) => x.nazwa)}</span>;
     case "wartosc_zamowienia": return <span >{row.wartosc_zamowienia.replace('.', ',').trim()} </span>;
     case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
     // case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;

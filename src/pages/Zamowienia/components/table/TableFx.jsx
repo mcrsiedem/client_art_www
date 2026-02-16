@@ -6,10 +6,20 @@ import {
   ChevronUp,
   X,
   Search,
-  Filter
+  Filter,
+  Plus,Lock,
+  FileLock,
+  CirclePlus,
+  KeySquare
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import { TechnologyContext } from "context/TechnologyContext";
+import DecodeToken from "pages/Login/DecodeToken";
+import iconAdd from "assets/add2.svg";
+import iconFile from "assets/iconTechnologieDark.svg";
+import iconLockRed from "assets/lock2.svg";
 
 /** * SYMULACJA STYLÓW CSS MODULES */
 const styles = {
@@ -322,6 +332,15 @@ const STORAGE_KEYS = {
 export default function TableFx({showSettings, setShowSettings}) {
   const contextApp = useContext(AppContext);
   const zamowieniaRaw = contextApp.zamowienia || [];
+
+        const contextModal = useContext(ModalInsertContext);
+        const setShowTabs = contextModal.setShowTabs
+  const setOpenModalInsert = contextModal.setOpenModalInsert;
+
+  const setSelectedZamowienie = contextModal.setSelectedZamowienie;
+
+
+  
   
   // --- DEFINICJA KOLUMN ---
   const allColumns = [
@@ -356,7 +375,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 50, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:30,rok:60,technologia:30 ,naklad:40,format_x:30,format_y:30,cena:60, nr_kalkulacji:100,data_spedycji:70};
+    return saved ? JSON.parse(saved) : { nr: 50, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:30,rok:60,technologia:20 ,naklad:40,format_x:30,format_y:30,cena:60, nr_kalkulacji:100,data_spedycji:70};
   });
 
 
@@ -487,7 +506,7 @@ const sortedItems = useMemo(() => {
 
     const onMouseMove = (moveEvent) => {
       // const newWidth = Math.max(60, startWidth + (moveEvent.pageX - startX));
-      const newWidth = Math.max(30, startWidth + (moveEvent.pageX - startX));
+      const newWidth = Math.max(20, startWidth + (moveEvent.pageX - startX));
       setColumnWidths(prev => ({ ...prev, [id]: newWidth }));
     };
 
@@ -535,6 +554,7 @@ const sortedItems = useMemo(() => {
               </label>
             ))}
           </div>
+          <SELECT_KLIENT_ZAMOWWIENIA/>
         </div>
       )}
 
@@ -572,8 +592,24 @@ const sortedItems = useMemo(() => {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {sortedItems.filter( item => item.stan > 2 ).map((row) => (
-              <tr key={row.id} className={styles.tr}>
+            {sortedItems.filter( item => item.stan > 2 ).map((row,i) => (
+              <tr key={row.id} className={styles.tr}
+                     onClick={(node, e) => {
+          setSelectedZamowienie({ ...row, i });
+        }}
+                      onDoubleClick={(node, event) => {
+            contextApp.setIsLoading(true);
+          setShowTabs({
+            parametry: true,
+            koszty: false,
+            historia: false,
+            faktury: false,
+            kreator: false,
+          });
+
+          setOpenModalInsert(true);
+        }}
+              >
                 {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
                   <td key={`${row.id}-${col.id}`} className={styles.td}>
                     <CellContent row={row} colId={col.id} />
@@ -623,11 +659,126 @@ function CellContent({ row, colId }) {
 
     case "cena": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
-    case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
+    // case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
+    case "technologia": return     row.stan>2 &&    <ShowTechnmologiaBtn          row={row}   />;
     case "etap": return <span className={styles.stan}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
     case "stan": return <span className={styles.stan}>{_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}</span>;
 
 
     default: return row[colId] || "-";
   }
+}
+
+
+function ShowTechnmologiaBtn({
+  row,
+}) {
+  const techContext = useContext(TechnologyContext);
+  const contextApp = useContext(AppContext);
+  const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  const setShowProcesy = techContext.setShowProcesy;
+  
+  if ( row.open_stan==1  ) {
+  if (row.open_user_id != DecodeToken(sessionStorage.getItem("token")).id ) {
+
+    return (
+     
+        <div>
+         <button style={{border:'none'}}
+
+            alt="Procesy"
+          >
+<KeySquare size={16} style={{color: '#c61515'}} />
+
+
+          </button>
+         
+        </div>
+     
+    );
+
+
+  }
+  }
+
+  if (row.technologia_id == null ) {
+    return (
+    
+        <div >
+      <button style={{color: '#94a3b8',border:'none',background:'transparent'}}
+            // className={styles.iconSettings}
+            // src={iconAdd}
+            onClick={() => {
+              if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+              contextApp.setIsLoading(true);
+              techContext.fechparametry(row?.id);
+              // techContext.setShowTechnologyStage(true);
+              techContext.setRowZamowienia(row);
+              setShowProcesy(false)
+              }
+        
+            }}
+            alt="Procesy"
+          >
+<CirclePlus size={16} style={{color: '#21ff03a7'}} />
+            
+            </button>
+         
+        </div>
+     
+    );
+  } else {
+    return (
+    
+        <div style={{color: '#94a3b8',border:'none'}}>
+
+       <button style={{color: '#94a3b8',border:'none'}}
+
+            onClick={() => {
+                           if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1){
+                                    contextApp.setIsLoading(true);
+                                            fechparametryTechnologii(row.id, row.technologia_id);
+                           }
+
+            
+            }}
+            alt="Procesy"
+          >
+<FileText size={16} style={{color: '#94a3b8',border:'none'}} />
+
+          </button>
+         
+        </div>
+      
+    );
+  }
+}
+
+
+function SELECT_KLIENT_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedKlient = contextApp.selectedKlient;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+  const selectedUser = contextApp.selectedUser;
+    return (
+      <select
+        className={styles.select_klient_zamowienia}
+        value={selectedKlient}
+        onChange={(event) => {
+          setSelectedKlient(event.target.value);
+        }}
+      >
+        {<option value="0">Klient</option>}
+
+        {contextApp.clients?.filter(kl=>  {
+          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
+        }
+         )
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma_nazwa} 
+          </option>
+        ))}
+      </select>
+    );
 }

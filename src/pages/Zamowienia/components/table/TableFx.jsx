@@ -9,7 +9,7 @@ import {
   Filter
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
-import { _etapy_produkcji, _stan_dokumentu } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
 
 /** * SYMULACJA STYLÓW CSS MODULES */
 const styles = {
@@ -36,6 +36,9 @@ const styles = {
 
   
   badge: "status-badge",
+  badgeRed: "status-badge-red",
+
+
   price: "price-text",
   stan: "stan",
   sortIcon: "sort-icon"
@@ -255,16 +258,26 @@ const inlineStyles = `
 
 
   
-
   .status-badge {
+    display: inline-flex;
+    padding: 0.125rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #292929;
+  }
+  .status-badge-red {
     display: inline-flex;
     padding: 0.125rem 0.625rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 500;
-    background: #dbeafe;
-    color: #1e40af;
+    background: #ff0000;
+    // background: #dbeafe;
+    color: #ffffff;
   }
+
+
 
   .price-text {
     color: #15803d;
@@ -318,15 +331,15 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "naklad", label: "Nakład" , visible: true},
     { id: "ilosc_stron", label: "Str." , visible: true},
     { id: "netto", label: "Netto" , visible: false},
-    { id: "opiekun", label: "Opiekun", visible: true },
     { id: "data_spedycji", label: "Spedycja" , visible: true},
     { id: "utworzono", label: "Utworzono" , visible: false},
     { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
     { id: "format_x", label: "Szer." , visible: true},
     { id: "format_y", label: "Wys." , visible: true},
-    { id: "status_nazwa", label: "Status" , visible: false},
+    { id: "opiekun", label: "Opiekun", visible: true },
+    { id: "status_nazwa", label: "Status" , visible: true},
     { id: "stan", label: "Stan" , visible: true},
-    { id: "etap", label: "Etap" , visible: true},
+    { id: "etap", label: "Etap zamówienia" , visible: true},
     
   ];
 
@@ -341,7 +354,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 80, tytul: 340, klient: 150,stan: 95,ilosc_stron:50,rok:60,technologia:60 ,naklad:60,format_x:60,format_y:60,netto:80};
+    return saved ? JSON.parse(saved) : { nr: 60, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:50,rok:60,technologia:30 ,naklad:60,format_x:60,format_y:60,netto:80, nr_kalkulacji:100,data_spedycji:70};
   });
 
   // const [showSettings, setShowSettings] = useState(false);
@@ -400,7 +413,8 @@ export default function TableFx({showSettings, setShowSettings}) {
     const startWidth = columnWidths[id] || 150;
 
     const onMouseMove = (moveEvent) => {
-      const newWidth = Math.max(60, startWidth + (moveEvent.pageX - startX));
+      // const newWidth = Math.max(60, startWidth + (moveEvent.pageX - startX));
+      const newWidth = Math.max(30, startWidth + (moveEvent.pageX - startX));
       setColumnWidths(prev => ({ ...prev, [id]: newWidth }));
     };
 
@@ -547,13 +561,14 @@ export default function TableFx({showSettings, setShowSettings}) {
 
 function CellContent({ row, colId }) {
   switch (colId) {
-    case "nr": return <div style={{fontWeight: 'bold',paddingLeft:'10px', textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
+    case "nr": return <div style={{fontWeight: 'bold', paddingRight:'5px',textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
     case "netto": return <span className={styles.price}>{row.cena} zł</span>;
-    case "status_nazwa": return <span className={styles.badge}>{row.status_nazwa}</span>;
+    case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
     case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
     case "etap": return <span className={styles.stan}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
     case "stan": return <span className={styles.stan}>{_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}</span>;
+
 
     default: return row[colId] || "-";
   }

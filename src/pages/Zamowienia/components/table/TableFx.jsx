@@ -111,8 +111,10 @@ const inlineStyles = `
   }
 
   .settings-panel {
-    margin: 0 1.5rem 1.5rem;
+    // margin: 1 1.5rem 1.5rem;
+    margin:1rem;
     background: var(--bg-white);
+    // background: rgb(255, 65, 141);
     border: 1px solid var(--border-color);
     border-radius: 0.75rem;
     padding: 1.25rem;
@@ -163,7 +165,7 @@ const inlineStyles = `
   .custom-th {
     position: relative;
     height: 2rem;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
@@ -286,7 +288,7 @@ const inlineStyles = `
 
     .stan {
     color: #292929;
-    font-weight: 600;
+    // font-weight: 600;
     //  text-transform: uppercase;
 
   }
@@ -330,7 +332,7 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
     { id: "naklad", label: "Nakład" , visible: true},
     { id: "ilosc_stron", label: "Str." , visible: true},
-    { id: "netto", label: "Netto" , visible: false},
+    { id: "cena", label: "Cena" , visible: false},
     { id: "data_spedycji", label: "Spedycja" , visible: true},
     { id: "utworzono", label: "Utworzono" , visible: false},
     { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
@@ -354,39 +356,110 @@ export default function TableFx({showSettings, setShowSettings}) {
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 60, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:50,rok:60,technologia:30 ,naklad:60,format_x:60,format_y:60,netto:80, nr_kalkulacji:100,data_spedycji:70};
+    return saved ? JSON.parse(saved) : { nr: 50, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:30,rok:60,technologia:30 ,naklad:40,format_x:30,format_y:30,cena:60, nr_kalkulacji:100,data_spedycji:70};
   });
 
-  // const [showSettings, setShowSettings] = useState(false);
 
-  // --- LOGIKA SORTOWANIA (Memoized) ---
-  const sortedItems = useMemo(() => {
-    let sortableItems = [...zamowieniaRaw];
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        const valA = a[sortConfig.key];
-        const valB = b[sortConfig.key];
 
-        if (valA === undefined || valB === undefined) return 0;
+// const sortedItems = useMemo(() => {
+//   let sortableItems = [...zamowieniaRaw];
+//   if (sortConfig !== null) {
+//     sortableItems.sort((a, b) => {
+//       let valA = a[sortConfig.key];
+//       let valB = b[sortConfig.key];
 
-        // Sortowanie numeryczne
-        if (typeof valA === 'number' && typeof valB === 'number') {
-          return sortConfig.direction === 'asc' ? valA - valB : valB - valA;
+//       // 1. Obsługa pustych wartości (null, undefined, "")
+//       const isEmpty = (val) => val === undefined || val === null || val === '';
+      
+//       if (isEmpty(valA) && isEmpty(valB)) return 0;
+//       if (isEmpty(valA)) return 1; // Puste na koniec
+//       if (isEmpty(valB)) return -1; // Puste na koniec
+
+//       // 2. Próba konwersji na liczbę (obsługa "1,17" oraz typowych liczb)
+//       const parseToNumber = (val) => {
+//         if (typeof val === 'number') return val;
+//         if (typeof val === 'string') {
+//           // Zamiana przecinka na kropkę i usunięcie białych znaków
+//           const normalized = val.replace(',', '.').trim();
+//           const parsed = parseFloat(normalized);
+//           return isNaN(parsed) ? null : parsed;
+//         }
+//         return null;
+//       };
+
+//       const numA = parseToNumber(valA);
+//       const numB = parseToNumber(valB);
+
+//       // 3. Logika porównywania
+//       if (numA !== null && numB !== null) {
+//         // Sortowanie numeryczne
+//         return sortConfig.direction === 'asc' ? numA - numB : numB - numA;
+//       } else {
+//         // Sortowanie tekstowe (jeśli to nie są liczby)
+//         const strA = String(valA).toLowerCase();
+//         const strB = String(valB).toLowerCase();
+//         return sortConfig.direction === 'asc' 
+//           ? strA.localeCompare(strB) 
+//           : strB.localeCompare(strA);
+//       }
+//     });
+//   }
+//   return sortableItems;
+// }, [zamowieniaRaw, sortConfig]);
+
+const sortedItems = useMemo(() => {
+  let sortableItems = [...zamowieniaRaw];
+  if (sortConfig !== null) {
+    sortableItems.sort((a, b) => {
+      // --- NOWA LOGIKA: Sortowanie wstępne po roku dla kolumny 'nr' ---
+      if (sortConfig.key === 'nr') {
+        const rokA = parseInt(a.rok) || 0;
+        const rokB = parseInt(b.rok) || 0;
+
+        if (rokA !== rokB) {
+          // Zawsze sortujemy lata (np. rosnąco), niezależnie od kierunku 'nr'
+          // Lub dostosuj: sortConfig.direction === 'asc' ? rokA - rokB : rokB - rokA
+          return rokA - rokB; 
         }
+      }
 
-        // Sortowanie tekstowe (alfabetyczne)
+      // --- RESZTA TWOJEJ ORYGINALNEJ LOGIKI ---
+      let valA = a[sortConfig.key];
+      let valB = b[sortConfig.key];
+
+      const isEmpty = (val) => val === undefined || val === null || val === '';
+      if (isEmpty(valA) && isEmpty(valB)) return 0;
+      if (isEmpty(valA)) return 1;
+      if (isEmpty(valB)) return -1;
+
+      const parseToNumber = (val) => {
+        if (typeof val === 'number') return val;
+        if (typeof val === 'string') {
+          const normalized = val.replace(',', '.').trim();
+          const parsed = parseFloat(normalized);
+          return isNaN(parsed) ? null : parsed;
+        }
+        return null;
+      };
+
+      const numA = parseToNumber(valA);
+      const numB = parseToNumber(valB);
+
+      if (numA !== null && numB !== null) {
+        return sortConfig.direction === 'asc' ? numA - numB : numB - numA;
+      } else {
         const strA = String(valA).toLowerCase();
         const strB = String(valB).toLowerCase();
-        
-        if (sortConfig.direction === 'asc') {
-          return strA.localeCompare(strB);
-        } else {
-          return strB.localeCompare(strA);
-        }
-      });
-    }
-    return sortableItems;
-  }, [zamowieniaRaw, sortConfig]);
+        return sortConfig.direction === 'asc' 
+          ? strA.localeCompare(strB) 
+          : strB.localeCompare(strA);
+      }
+    });
+  }
+  return sortableItems;
+}, [zamowieniaRaw, sortConfig]);
+
+
 
   // Funkcja wyzwalająca zmianę sortowania
   const requestSort = (key, noSort) => {
@@ -442,24 +515,6 @@ export default function TableFx({showSettings, setShowSettings}) {
     <div className={styles.container}>
       <style>{inlineStyles}</style>
       
-      {/* <div className={styles.header}>
-        <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
-          <h1 style={{fontSize: '1.25rem', fontWeight: 'bold'}}>Zamówienia</h1>
-          <div className={styles.searchWrapper}>
-            <Search size={16} style={{position: 'absolute', left: '0.75rem', color: '#94a3b8'}} />
-            <input type="text" placeholder="Szukaj..." className={styles.searchInput} />
-          </div>
-        </div>
-
-        <button 
-          onClick={() => setShowSettings(!showSettings)}
-          className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
-        >
-          <Settings size={18} />
-          Kolumny
-        </button>
-      </div> */}
-
       {showSettings && (
         <div className={styles.settingsPanel}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1rem'}}>
@@ -563,7 +618,10 @@ function CellContent({ row, colId }) {
   switch (colId) {
     case "nr": return <div style={{fontWeight: 'bold', paddingRight:'5px',textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
-    case "netto": return <span className={styles.price}>{row.cena} zł</span>;
+    case "naklad": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.naklad.toLocaleString()}</div>;
+    case "ilosc_stron": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.ilosc_stron}</div>;
+
+    case "cena": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
     case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
     case "etap": return <span className={styles.stan}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;

@@ -79,7 +79,7 @@ function Zamowienia() {
         {/* <TableZamowienia /> */}
         <TableFx  showSettings={showSettings} setShowSettings={setShowSettings}/>
         {/* <TableFx  showSettings={showSettings} setShowSettings={setShowSettings}/> */}
-        <TableMini  open2={open2} setRow={setRow}  header={false}/>
+        {/* <TableMini  open2={open2} setRow={setRow}  header={false}/> */}
       </div>
           {openModalInsert && (
             <ModalInsert lokalizacja={"zamowienia"}

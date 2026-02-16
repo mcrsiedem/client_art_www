@@ -11,7 +11,7 @@
    background-color: #ffffff;
    border: 1px solid rgb(143, 143, 143);
    border-radius: 10px;
-  z-index: 2;
+  z-index: 12;
   display: grid;
   grid-template-rows: 50px 220px 30px 1fr  ;
 

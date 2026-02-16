@@ -9,7 +9,7 @@ import {
   Filter
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
-import { _etapy_produkcji } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu } from "utils/initialvalue";
 
 /** * SYMULACJA STYLÓW CSS MODULES */
 const styles = {
@@ -31,8 +31,13 @@ const styles = {
   tbody: "custom-tbody",
   tr: "custom-tr",
   td: "custom-td",
+  td_szkic: "custom-td_szkic",
+  td_do_przyjecia: "custom_td_do_przyjecia",
+
+  
   badge: "status-badge",
   price: "price-text",
+  stan: "stan",
   sortIcon: "sort-icon"
 };
 
@@ -217,7 +222,39 @@ const inlineStyles = `
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    // background: #82f86a96;/
   }
+
+    .custom-td_szkic{
+    // padding: 0.75rem 1rem;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    border-bottom: 1px solid #9e9e9e96;
+    border-right: 1px solid #f1f5f9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #73737359;
+  }
+
+      .custom_td_do_przyjecia{
+    // padding: 0.75rem 1rem;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    border-bottom: 1px solid #9e9e9e96;
+    border-right: 1px solid #f1f5f9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // background: #f8de6a96;
+   background: rgb(246, 212, 45);
+
+  }
+
+
+  
 
   .status-badge {
     display: inline-flex;
@@ -233,6 +270,14 @@ const inlineStyles = `
     color: #15803d;
     font-weight: 600;
   }
+
+    .stan {
+    color: #292929;
+    font-weight: 600;
+    //  text-transform: uppercase;
+
+  }
+
 
   @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
@@ -265,22 +310,23 @@ export default function TableFx({showSettings, setShowSettings}) {
   
   // --- DEFINICJA KOLUMN ---
   const allColumns = [
-    { id: "nr", label: "Nr" },
-    { id: "rok", label: "Rok" },
-    { id: "technologia", label: "Karta", isIcon: true, noSort: true },
-    { id: "klient", label: "Klient" },
-    { id: "tytul", label: "Praca" }, // Używamy tytul jako klucza danych
-    { id: "naklad", label: "Nakład" },
-    { id: "ilosc_stron", label: "Str." },
-    { id: "netto", label: "Netto" },
-    { id: "status_nazwa", label: "Status" },
-    { id: "opiekun", label: "Opiekun" },
-    { id: "data_spedycji", label: "Spedycja" },
-    { id: "utworzono", label: "Utworzono" },
-    { id: "nr_kalkulacji", label: "Kalkulacja" },
-    { id: "format_x", label: "Szer." },
-    { id: "format_y", label: "Wys." },
-    { id: "etap", label: "Etap" },
+    { id: "nr", label: "Nr" , visible: true},
+    { id: "rok", label: "Rok" , visible: false},
+    { id: "technologia", label: "Karta", isIcon: true, noSort: true , visible: true},
+    { id: "klient", label: "Klient" , visible: true},
+    { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
+    { id: "naklad", label: "Nakład" , visible: true},
+    { id: "ilosc_stron", label: "Str." , visible: true},
+    { id: "netto", label: "Netto" , visible: false},
+    { id: "opiekun", label: "Opiekun", visible: true },
+    { id: "data_spedycji", label: "Spedycja" , visible: true},
+    { id: "utworzono", label: "Utworzono" , visible: false},
+    { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
+    { id: "format_x", label: "Szer." , visible: true},
+    { id: "format_y", label: "Wys." , visible: true},
+    { id: "status_nazwa", label: "Status" , visible: false},
+    { id: "stan", label: "Stan" , visible: true},
+    { id: "etap", label: "Etap" , visible: true},
     
   ];
 
@@ -290,12 +336,12 @@ export default function TableFx({showSettings, setShowSettings}) {
   // --- STATE: WIDOCZNOŚĆ I SZEROKOŚĆ ---
   const [visibleColumns, setVisibleColumns] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
-    return saved ? JSON.parse(saved) : allColumns.map(c => c.id);
+    return saved ? JSON.parse(saved) : allColumns.filter(col => col.visible == true).map(c => c.id);
   });
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 80, tytul: 250, klient: 150 };
+    return saved ? JSON.parse(saved) : { nr: 80, tytul: 340, klient: 150,stan: 95,ilosc_stron:50,rok:60,technologia:60 ,naklad:60,format_x:60,format_y:60,netto:80};
   });
 
   // const [showSettings, setShowSettings] = useState(false);
@@ -366,6 +412,17 @@ export default function TableFx({showSettings, setShowSettings}) {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
   };
+
+
+  const switchTdColor = (stan,styles) =>{
+
+      switch(stan){
+        case 1 : return styles.td_szkic
+        case 2 : return styles.td_do_przyjecia
+        default: return styles.td
+      }
+
+  }
 
   return (
     <div className={styles.container}>
@@ -446,10 +503,36 @@ export default function TableFx({showSettings, setShowSettings}) {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {sortedItems.map((row) => (
+            {sortedItems.filter( item => item.stan > 2 ).map((row) => (
               <tr key={row.id} className={styles.tr}>
                 {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
                   <td key={`${row.id}-${col.id}`} className={styles.td}>
+                    <CellContent row={row} colId={col.id} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+
+
+
+                        {sortedItems.filter( item => item.stan == 2 ).map((row) => (
+              <tr key={row.id} className={styles.tr}>
+                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
+                  // <td key={`${row.id}-${col.id}`} className={styles.td}>
+                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
+                    <CellContent row={row} colId={col.id} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+
+
+
+                        {sortedItems.filter( item => item.stan == 1 ).map((row) => (
+              <tr key={row.id} className={styles.tr}>
+                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
+                  // <td key={`${row.id}-${col.id}`} className={styles.td}>
+                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
                     <CellContent row={row} colId={col.id} />
                   </td>
                 ))}
@@ -464,12 +547,14 @@ export default function TableFx({showSettings, setShowSettings}) {
 
 function CellContent({ row, colId }) {
   switch (colId) {
-    case "nr": return <span style={{fontWeight: 'bold',paddingLeft:'10px'}}>{row.nr+" / "+row.rok.substring(2,4)}</span>;
+    case "nr": return <div style={{fontWeight: 'bold',paddingLeft:'10px', textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
     case "netto": return <span className={styles.price}>{row.cena} zł</span>;
     case "status_nazwa": return <span className={styles.badge}>{row.status_nazwa}</span>;
     case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
-    case "etap": return <span className={styles.price}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
+    case "etap": return <span className={styles.stan}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
+    case "stan": return <span className={styles.stan}>{_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}</span>;
+
     default: return row[colId] || "-";
   }
 }

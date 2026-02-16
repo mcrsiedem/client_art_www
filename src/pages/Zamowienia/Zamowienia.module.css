@@ -12,10 +12,10 @@
    align-items: center;
    justify-content: center; */
    display: grid;
-   grid-template-rows: 2fr 1fr;
+   grid-template-rows:  1fr;
    height: calc(100vh - 50px);
    gap:10px;
-   padding-bottom: 15px;
+   padding-bottom: 1px;
 
    /* height: 200px; */
 

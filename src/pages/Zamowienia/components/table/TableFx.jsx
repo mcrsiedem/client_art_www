@@ -684,9 +684,104 @@ const sortedItems = useMemo(() => {
               </tr>
             ))}
 
+            
 
 
-                        {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan == 2 ).map((row) => (
+
+
+
+
+
+
+
+
+                        {sortedItems.filter( item => {
+          if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
+        } )
+        
+                   .filter((zam) => {
+            if (contextApp.selectedUser == 0) {
+              return true;
+            } else {
+             return  zam.opiekun_id == contextApp.selectedUser;
+            }
+          })
+        .filter( item => item.stan == 2 ).map((row,i) => (
+              <tr key={row.id} className={styles.tr}
+                     onClick={(node, e) => {
+          setSelectedZamowienie({ ...row, i });
+        }}
+                      onDoubleClick={(node, event) => {
+            contextApp.setIsLoading(true);
+          setShowTabs({
+            parametry: true,
+            koszty: false,
+            historia: false,
+            faktury: false,
+            kreator: false,
+          });
+
+          setOpenModalInsert(true);
+        }}
+              >
+                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
+                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
+                    <CellContent row={row} colId={col.id} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+
+
+
+
+
+
+
+
+
+            
+
+                        {sortedItems.filter( item => {
+          if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
+        } )
+        
+                   .filter((zam) => {
+            if (contextApp.selectedUser == 0) {
+              return true;
+            } else {
+             return  zam.opiekun_id == contextApp.selectedUser;
+            }
+          })
+        .filter( item => item.stan == 1 ).map((row,i) => (
+              <tr key={row.id} className={styles.tr}
+                     onClick={(node, e) => {
+          setSelectedZamowienie({ ...row, i });
+        }}
+                      onDoubleClick={(node, event) => {
+            contextApp.setIsLoading(true);
+          setShowTabs({
+            parametry: true,
+            koszty: false,
+            historia: false,
+            faktury: false,
+            kreator: false,
+          });
+
+          setOpenModalInsert(true);
+        }}
+              >
+                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
+                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
+                    <CellContent row={row} colId={col.id} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+
+
+
+                        {/* {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan == 2 ).map((row) => (
               <tr key={row.id} className={styles.tr}>
                 {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
                   // <td key={`${row.id}-${col.id}`} className={styles.td}>
@@ -708,7 +803,7 @@ const sortedItems = useMemo(() => {
                   </td>
                 ))}
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
       </div>

@@ -35,9 +35,9 @@ function Zamowienia() {
   const [callForPaper] = useApiPapier();
   const {refreshZamowienia} = useZamowienia();
   // const [loading, setLoading] = useState(true);
-    const appContext = useContext(AppContext);
-    const isLoading = appContext.isLoading;
-      const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
+  const appContext = useContext(AppContext);
+  const isLoading = appContext.isLoading;
+  const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
 
     
 

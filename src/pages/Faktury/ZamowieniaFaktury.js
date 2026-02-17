@@ -14,7 +14,6 @@ import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/init
 import TableMini from "./components/table/TableMini";
 import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
-import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import ModalInsert from "pages/Zamowienia/ModalInsert/ModalInsert";
 import Loading from "components/Loading/Loading";

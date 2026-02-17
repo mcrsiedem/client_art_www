@@ -48,7 +48,7 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
       <div className="progressFooter">
         <span className="footerText">Zakończono: {current.toLocaleString()} {unit}</span>
         <span className="footerText">Całość: {total.toLocaleString()} ark.</span>
-      {zostalo > 0 && <span className="footerText">Zostało: {zostalo.toLocaleString()} ark.</span>}  
+      {zostalo > 0 && <span className="footerText">Zostało: <span className="footerTextYellow">{zostalo.toLocaleString()} </span>  ark.</span>}  
       </div>
     </div>
   );
@@ -208,6 +208,7 @@ export default function ZamowieniaInfo() {
         .progressBarFill { height: 100%; transition: width 0.7s ease-out; }
         .progressFooter { display: flex; justify-content: space-between; margin-top: 0.4rem; }
         .footerText { font-size: 0.8rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; }
+        .footerTextYellow { padding: 5px; font-size: 0.9rem; color: #f31409; font-weight: 700; text-transform: uppercase; }
         .summaryBox {
           margin-top: 2rem;
           background-color: #1e293b;

@@ -369,7 +369,7 @@ const sortedItems = useMemo(() => {
                     // msUserSelect: 'none',
                     // userSelect: 'none'}:{background:'#ffffff91'}}
                         className={switchTdColor(row.stan,row.select || false, styles)}
-                         onMouseDown={(event)=> onMouseDownTableRow(event,row,zamowienia,setZamowienia,selectedUser,selectedKlient,i)}
+                         onMouseDown={(event)=> onMouseDownTableRow(event,row,zamowienia,setZamowienia,selectedUser,selectedKlient,i,sortedItems)}
 
                       >
                         <CellContent row={row} colId={col.id} />

@@ -219,6 +219,29 @@ export default function ZamowieniaInfo() {
           justify-content: space-between;
           color: #ffffff;
         }
+
+                .summaryBoxKlejona {
+          margin-top: 2rem;
+          background-color: #1e3b30c4;
+          border-radius: 0.75rem;
+          padding: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #ffffff;
+        }
+
+                        .summaryBoxZeszyt {
+          margin-top: 2rem;
+          background-color: #ff9100;
+          border-radius: 0.75rem;
+          padding: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #ffffff;
+        }
+
         .summaryLabel { color: #cbd5e1; font-weight: 500; }
         .summaryValue { font-size: 1.5rem; font-weight: 900; }
       `}</style>
@@ -273,16 +296,48 @@ export default function ZamowieniaInfo() {
             color="#6366f1"
           />
 
+
+
+
+          <div className="summaryBoxKlejona">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        
+              <span className="summaryLabel">Zeszyt</span>
+              <span className="summaryValue">{zamowieniaInfo.naklad_zeszyt.toLocaleString()}</span>
+              <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
+            </div>
+            <div>
+              
+              <span className="summaryLabel"> Kolbus </span>
+              <span className="summaryValue">{zamowieniaInfo.naklad_klejona.toLocaleString()}</span>
+              <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
+            </div>
+            
+          </div>
+
+
           <div className="summaryBox">
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <StackIcon />
+              {/* <StackIcon />  */}
               <span className="summaryLabel">Całkowity nakład</span>
             </div>
             <div>
               <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
+            
           </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>

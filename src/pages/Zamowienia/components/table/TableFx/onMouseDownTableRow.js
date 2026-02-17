@@ -8,14 +8,14 @@
  * @param {number|string} selectedKlient - ID wybranego klienta (do filtrowania zakresu)
  * @param {number} i - Indeks wiersza w przefiltrowanej liście
  */
-export function onMouseDownTableRow(event, row, zamowienia, setZamowienia, selectedUser, selectedKlient, i) {
+export function onMouseDownTableRow(event, row, zamowienia, setZamowienia, selectedUser, selectedKlient, i,sortedItems) {
     // Pobieramy indeks startowy dla operacji z Shiftem
     const lastIndex = parseInt(sessionStorage.getItem("indeks_start"));
 
     setZamowienia(prevZamowienia => {
         // 1. Najpierw identyfikujemy wiersze, które są aktualnie widoczne (przefiltrowane),
         // aby operacja Shift działała zgodnie z tym, co użytkownik widzi na ekranie.
-        const visibleRows = prevZamowienia.filter(zam => {
+        const visibleRows = sortedItems.filter(zam => {
             const userMatch = selectedUser == 0 || zam.opiekun_id == selectedUser;
             const klientMatch = selectedKlient == 0 || zam.klient_id == selectedKlient;
             const stanMatch = zam.stan == 3;

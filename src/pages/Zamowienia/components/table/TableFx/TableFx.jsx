@@ -40,7 +40,7 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "nr", label: "Nr" , visible: true},
     { id: "rok", label: "Rok" , visible: false},
     { id: "technologia", label: "Karta", isIcon: true, noSort: true , visible: true},
-    { id: "klient", label: "Klient" , visible: true},
+    { id: "firma_nazwa", label: "Klient" , visible: true},
     { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
     { id: "kod_pracy", label: "Kod", visible: true }, // Używamy tytul jako klucza danych
     { id: "naklad", label: "Nakład" , visible: true},
@@ -263,8 +263,7 @@ const sortedItems = useMemo(() => {
               </label>
             ))}
           </div>
-          <SELECT_KLIENT_ZAMOWWIENIA />
-          <SELECT_OPIEKUN_ZAMOWWIENIA />
+
         </div>
       )}
 
@@ -493,60 +492,3 @@ function ShowTechnmologiaBtn({
 }
 
 
-function SELECT_KLIENT_ZAMOWWIENIA() {
-  const contextApp = useContext(AppContext);
-  const selectedKlient = contextApp.selectedKlient;
-  const setSelectedKlient = contextApp.setSelectedKlient;
-  const selectedUser = contextApp.selectedUser;
-    return (
-      <select
-        className={styles.select_opiekun_zamowienia}
-        value={selectedKlient}
-        onChange={(event) => {
-          setSelectedKlient(event.target.value);
-        }}
-      >
-        {<option value="0">Wszyscy klienci</option>}
-
-        {contextApp.clients?.filter(kl=>  {
-          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
-        }
-         )
-        .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.firma_nazwa} 
-          </option>
-        ))}
-      </select>
-    );
-}
-
-
-function SELECT_OPIEKUN_ZAMOWWIENIA() {
-  const contextApp = useContext(AppContext);
-  const selectedUser = contextApp.selectedUser;
-  const setSelectedUser = contextApp.setSelectedUser;
-  const setSelectedKlient = contextApp.setSelectedKlient;
-  if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
-    return (
-      <select
-        className={styles.select_opiekun_zamowienia}
-        value={selectedUser}
-        onChange={(event) => {
-          setSelectedUser(event.target.value);
-             setSelectedKlient(0)
-        }}
-      >
-        {<option value="0">Opiekun</option>}
-
-        {contextApp.users?.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.Imie} {option.Nazwisko}
-          </option>
-        ))}
-      </select>
-    );
-  }else{
-    return  <th className={styles.col_firma}>Opiekun</th>
-  }
-}

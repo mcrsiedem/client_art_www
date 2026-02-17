@@ -93,10 +93,12 @@
     flex: 1;
     /* // margin: 0 1.5rem 1.5rem; */
     background: var(--bg-white);
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
+    /* border: 1px solid var(--border-color); */
+    /* border-radius: 0.75rem; */
     overflow: auto;
     position: relative;
+    margin-bottom: 2rem;
+
         /* // background: green; */
   }
 

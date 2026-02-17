@@ -54,7 +54,8 @@ const setShowTabs = contextModalInsert.setShowTabs
       <div className={style.leftHeaderContener}>
         <REFRESH_ZAMOWIENIA_BTN/>
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
-
+     <SELECT_KLIENT_ZAMOWWIENIA />
+          <SELECT_OPIEKUN_ZAMOWWIENIA />
       </div>
 
       <div className={style.centerHeaderContener}>
@@ -76,13 +77,14 @@ const setShowTabs = contextModalInsert.setShowTabs
                         title="Pokaż kolumny"
                  style={{background:'transparent', border:'none', marginRight:'10px'}}
           onClick={() => setShowSettings(!showSettings)}
-          // className={`${styles.btnSettings} ${showSettings ? styles.btnSettingsActive : ''}`}
+          // className={`${style.btnSettings} ${showSettings ? style.btnSettingsActive : ''}`}
         >
           <BetweenVerticalStart style={{color:'#95c912d4'}} size={25} />
         </button>
         <BTN_INSPEKCJA/>
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
+     
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
         <img
@@ -197,3 +199,71 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
         </select>
     );
   }
+
+
+
+  function SELECT_KLIENT_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedKlient = contextApp.selectedKlient;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+  const selectedUser = contextApp.selectedUser;
+    return (
+      <select
+        className={style.szukajInputSort}
+        value={selectedKlient}
+        onChange={(event) => {
+          setSelectedKlient(event.target.value);
+        }}
+      >
+        {<option value="0">Wszyscy klienci</option>}
+
+        {contextApp.clients?.filter(kl=>  {
+          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
+        }
+         )
+         .sort((a, b) => {
+    // Sortowanie alfabetyczne po 'firma_nazwa'
+    // Używamy localeCompare, aby poprawnie obsługiwać polskie znaki (ą, ć, ę, itd.)
+    const nazwaA = a.firma_nazwa || "";
+    const nazwaB = b.firma_nazwa || "";
+    
+    return nazwaA.localeCompare(nazwaB, 'pl', { sensitivity: 'base' });
+  })
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma_nazwa} 
+          </option>
+        ))}
+      </select>
+    );
+}
+
+
+function SELECT_OPIEKUN_ZAMOWWIENIA() {
+  const contextApp = useContext(AppContext);
+  const selectedUser = contextApp.selectedUser;
+  const setSelectedUser = contextApp.setSelectedUser;
+  const setSelectedKlient = contextApp.setSelectedKlient;
+  if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
+    return (
+      <select
+        className={style.szukajInputSort}
+        value={selectedUser}
+        onChange={(event) => {
+          setSelectedUser(event.target.value);
+             setSelectedKlient(0)
+        }}
+      >
+        {<option value="0">Opiekun</option>}
+
+        {contextApp.users?.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.Imie} {option.Nazwisko}
+          </option>
+        ))}
+      </select>
+    );
+  }else{
+    return  <th className={style.col_firma}>Opiekun</th>
+  }
+}

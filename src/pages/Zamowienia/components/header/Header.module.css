@@ -18,6 +18,7 @@
     font-size: 1.2rem;
     color: rgb(201, 201, 201);
     font-family: Poppins;
+    margin-right: 30px;
 }
 
 
@@ -82,7 +83,7 @@ color: black;
 }
 
 .szukajInputSort{
-    background: transparent;
+    background-color: transparent;
     box-shadow: none;
     border: 1px solid rgb(88, 88, 88);
     color: rgb(167, 167, 167);
@@ -91,11 +92,33 @@ color: black;
     margin-right: 10px;
     height: 27px;
     width: 200px;
+/* transition: background-color 3s ease-in-out, border-color 0.3s ease, box-shadow 0.3s ease; */
+
     
 }
 .szukajInputSort:focus{
     outline: none;
+    background: black;
+
 }
+
+
+
+
+
+.szukajInputSort:focus {
+outline: none;
+background-color: black;
+border-color: rgb(120, 120, 120); /* Opcjonalnie: lekkie rozjaśnienie ramki przy focusie */
+}
+
+
+
+
+
+
+
+
 .szukajInputSortBlue{
     background: rgb(0, 157, 255);
     box-shadow: none;

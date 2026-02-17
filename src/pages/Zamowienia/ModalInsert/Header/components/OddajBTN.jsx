@@ -21,7 +21,7 @@ export default function OddajBTN({ setSaveAs,dialogBox }) {
   const { zamowienieOddaj } = useZamowienia();
 
 
-  if (DecodeToken(sessionStorage.getItem("token")).id == 1) {
+  if (DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj == 1) {
       return (
     <button
       onClick={async () => {

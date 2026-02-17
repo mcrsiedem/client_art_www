@@ -1,52 +1,59 @@
 /**
  * Obsługuje zaznaczanie wierszy w tabeli (Single, Ctrl+Click, Shift+Click).
- * Uwzględnia aktualne sortowanie i filtrowanie.
  * * @param {MouseEvent} event - Zdarzenie myszy
  * @param {Object} row - Obiekt wiersza, który został kliknięty
- * @param {Function} setZamowienia - Funkcja aktualizująca stan globalny
- * @param {Array} sortedVisibleRows - LISTA WYŚWIETLANA: przefiltrowane i POSORTOWANE wiersze widoczne w UI
- * @param {number} i - Indeks klikniętego wiersza w liście sortedVisibleRows
+ * @param {Array} zamowienia - Aktualny stan zamówień
+ * @param {Function} setZamowienia - Funkcja aktualizująca stan
+ * @param {number|string} selectedUser - ID wybranego opiekuna (do filtrowania zakresu)
+ * @param {number|string} selectedKlient - ID wybranego klienta (do filtrowania zakresu)
+ * @param {number} i - Indeks wiersza w przefiltrowanej liście
  */
-export function onMouseDownTableRow(event, row, setZamowienia, sortedVisibleRows, i) {
+export function onMouseDownTableRow(event, row, zamowienia, setZamowienia, selectedUser, selectedKlient, i) {
     // Pobieramy indeks startowy dla operacji z Shiftem
-    const lastIndexStr = sessionStorage.getItem("indeks_start");
-    const lastIndex = lastIndexStr !== null ? parseInt(lastIndexStr, 10) : null;
+    const lastIndex = parseInt(sessionStorage.getItem("indeks_start"));
 
     setZamowienia(prevZamowienia => {
-        // 1. Obsługa CTRL + CLICK (Przełączanie pojedynczego elementu bez resetowania reszty)
+        // 1. Najpierw identyfikujemy wiersze, które są aktualnie widoczne (przefiltrowane),
+        // aby operacja Shift działała zgodnie z tym, co użytkownik widzi na ekranie.
+        const visibleRows = prevZamowienia.filter(zam => {
+            const userMatch = selectedUser == 0 || zam.opiekun_id == selectedUser;
+            const klientMatch = selectedKlient == 0 || zam.klient_id == selectedKlient;
+            const stanMatch = zam.stan == 3;
+            return userMatch && klientMatch && stanMatch;
+        });
+
+        // 2. Obsługa CTRL + CLICK (Dodawanie/Usuwanie pojedynczego wiersza do istniejącego zaznaczenia)
         if (event.ctrlKey) {
             return prevZamowienia.map(t => 
                 t.id === row.id ? { ...t, select: !t.select } : t
             );
         }
 
-        // 2. Obsługa SHIFT + CLICK (Zaznaczanie zakresu wg aktualnego widoku)
-        if (event.shiftKey && lastIndex !== null) {
+        // 3. Obsługa SHIFT + CLICK (Zaznaczanie zakresu)
+        if (event.shiftKey && !isNaN(lastIndex)) {
             const start = Math.min(lastIndex, i);
             const end = Math.max(lastIndex, i);
 
-            // Pobieramy ID wszystkich wierszy, które znajdują się w widocznym zakresie (po sortowaniu)
-            const idsInRange = new Set(
-                sortedVisibleRows
-                    .slice(start, end + 1)
-                    .map(r => r.id)
-            );
+            // Pobieramy ID wierszy, które znajdują się w widocznym zakresie
+            const idsInRange = visibleRows
+                .slice(start, end + 1)
+                .map(r => r.id);
 
             return prevZamowienia.map(t => {
-                if (idsInRange.has(t.id)) {
+                if (idsInRange.includes(t.id)) {
                     return { ...t, select: true };
                 }
-                return t;
+                return t; // Reszta pozostaje bez zmian (lub zmień na select: false jeśli zakres ma resetować inne)
             });
         }
 
-        // 3. ZWYKŁE KLIKNIĘCIE (Reset zaznaczenia i wybór tylko jednego)
+        // 4. ZWYKŁE KLIKNIĘCIE (Czyścimy wszystko i zaznaczamy tylko ten jeden)
         return prevZamowienia.map(t => ({
             ...t,
             select: t.id === row.id
         }));
     });
 
-    // Zawsze aktualizujemy punkt odniesienia dla Shifta po kliknięciu
+    // Zapisujemy indeks klikniętego elementu jako punkt odniesienia dla następnego Shifta
     sessionStorage.setItem("indeks_start", i.toString());
 }

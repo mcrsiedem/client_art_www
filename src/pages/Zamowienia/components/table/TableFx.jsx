@@ -230,7 +230,7 @@ const inlineStyles = `
 
   .custom-td {
     // padding: 0.75rem 1rem;
-    padding: 0.4rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     font-size: 0.875rem;
     color: var(--text-main);
     border-bottom: 1px solid #9e9e9e96;
@@ -243,7 +243,7 @@ const inlineStyles = `
 
     .custom-td_szkic{
     // padding: 0.75rem 1rem;
-    padding: 0.4rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     font-size: 0.875rem;
     color: var(--text-main);
     border-bottom: 1px solid #9e9e9e96;
@@ -256,7 +256,7 @@ const inlineStyles = `
 
       .custom_td_do_przyjecia{
     // padding: 0.75rem 1rem;
-    padding: 0.4rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     font-size: 0.875rem;
     color: var(--text-main);
     border-bottom: 1px solid #9e9e9e96;
@@ -323,20 +323,7 @@ const inlineStyles = `
   }
 `;
 
-/** * SYMULACJA ŚRODOWISKA (MOCKI) */
-// export const AppContext = createContext({
-//   zamowienia: [
-//     { id: 1, nr: "105/2024", tytul: "Katalog Produktowy", naklad: 1000, ilosc_stron: 48, stan: 3, status_nazwa: "W produkcji", netto: 4500 },
-//     { id: 2, nr: "102/2024", tytul: "Ulotki A5", naklad: 5000, ilosc_stron: 2, stan: 4, status_nazwa: "Gotowe", netto: 1200 },
-//     { id: 3, nr: "108/2024", tytul: "Plakaty B2", naklad: 200, ilosc_stron: 1, stan: 3, status_nazwa: "Oczekiwanie", netto: 800 },
-//   ],
-//   valueZamowieniaWyszukiwarka: "",
-//   setIsLoading: () => {},
-//   sortowanieZamowienia: { current: "" }
-// });
 
-  // const contextApp = useContext(AppContext);
-  // const zamowienia = contextApp.zamowienia
 const STORAGE_KEYS = {
   COLUMNS: "table_css_mod_columns",
   WIDTHS: "table_css_mod_widths"
@@ -345,15 +332,10 @@ const STORAGE_KEYS = {
 export default function TableFx({showSettings, setShowSettings}) {
   const contextApp = useContext(AppContext);
   const zamowieniaRaw = contextApp.zamowienia || [];
-
-        const contextModal = useContext(ModalInsertContext);
-        const setShowTabs = contextModal.setShowTabs
+  const contextModal = useContext(ModalInsertContext);
+  const setShowTabs = contextModal.setShowTabs;
   const setOpenModalInsert = contextModal.setOpenModalInsert;
-
   const setSelectedZamowienie = contextModal.setSelectedZamowienie;
-
-
-  
   
   // --- DEFINICJA KOLUMN ---
   const allColumns = [
@@ -374,8 +356,8 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "data_spedycji", label: "Spedycja" , visible: true},
     { id: "utworzono", label: "Utworzono" , visible: false},
     { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
-    { id: "format_x", label: "Szer." , visible: true},
-    { id: "format_y", label: "Wys." , visible: true},
+    { id: "format_x", label: "Netto" , visible: true},
+    // { id: "format_y", label: "Wys." , visible: true},
     { id: "opiekun", label: "Opiekun", visible: true },
     { id: "firma", label: "Firma", visible: true },
     { id: "status_nazwa", label: "Status" , visible: true},
@@ -728,124 +710,6 @@ const sortedItems = useMemo(() => {
 
             
 
-
-
-
-
-
-
-
-
-
-                        {/* {sortedItems.filter( item => {
-          if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
-        } )
-        
-                   .filter((zam) => {
-            if (contextApp.selectedUser == 0) {
-              return true;
-            } else {
-             return  zam.opiekun_id == contextApp.selectedUser;
-            }
-          })
-        .filter( item => item.stan == 2 ).map((row,i) => (
-              <tr key={row.id} className={styles.tr}
-                     onClick={(node, e) => {
-          setSelectedZamowienie({ ...row, i });
-        }}
-                      onDoubleClick={(node, event) => {
-            contextApp.setIsLoading(true);
-          setShowTabs({
-            parametry: true,
-            koszty: false,
-            historia: false,
-            faktury: false,
-            kreator: false,
-          });
-
-          setOpenModalInsert(true);
-        }}
-              >
-                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
-                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
-                    <CellContent row={row} colId={col.id} />
-                  </td>
-                ))}
-              </tr>
-            ))} */}
-
-
-
-
-
-
-
-
-
-            
-
-                        {/* {sortedItems.filter( item => {
-          if(contextApp.selectedKlient==0){return true} else {return  item.klient_id == contextApp.selectedKlient}
-        } )
-        
-                   .filter((zam) => {
-            if (contextApp.selectedUser == 0) {
-              return true;
-            } else {
-             return  zam.opiekun_id == contextApp.selectedUser;
-            }
-          })
-        .filter( item => item.stan == 1 ).map((row,i) => (
-              <tr key={row.id} className={styles.tr}
-                     onClick={(node, e) => {
-          setSelectedZamowienie({ ...row, i });
-        }}
-                      onDoubleClick={(node, event) => {
-            contextApp.setIsLoading(true);
-          setShowTabs({
-            parametry: true,
-            koszty: false,
-            historia: false,
-            faktury: false,
-            kreator: false,
-          });
-
-          setOpenModalInsert(true);
-        }}
-              >
-                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
-                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
-                    <CellContent row={row} colId={col.id} />
-                  </td>
-                ))}
-              </tr>
-            ))} */}
-
-
-
-                        {/* {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan == 2 ).map((row) => (
-              <tr key={row.id} className={styles.tr}>
-                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
-                  // <td key={`${row.id}-${col.id}`} className={styles.td}>
-                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
-                    <CellContent row={row} colId={col.id} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-
-
-
-                        {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan == 1 ).map((row) => (
-              <tr key={row.id} className={styles.tr}>
-                {allColumns.filter(c => visibleColumns.includes(c.id)).map((col) => (
-                  // <td key={`${row.id}-${col.id}`} className={styles.td}>
-                  <td key={`${row.id}-${col.id}`} className={switchTdColor(row.stan,styles)}>
-                    <CellContent row={row} colId={col.id} />
-                  </td>
-                ))}
-              </tr>
-            ))} */}
           </tbody>
         </table>
       </div>
@@ -857,6 +721,7 @@ function CellContent({ row, colId }) {
   switch (colId) {
     case "nr": return <div style={{fontWeight: 'bold', paddingRight:'5px',textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
+    case "format_x": return `${row.format_x}x${row.format_y} `;
     case "naklad": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.naklad.toLocaleString()}</div>;
     case "ilosc_stron": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.ilosc_stron}</div>;
 

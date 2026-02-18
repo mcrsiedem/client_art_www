@@ -448,6 +448,7 @@ const [setStatus] = useStatus()
      
         <input
           value={row.nazwa}
+          title={row.nazwa}
           onFocus={()=>{ setValueIN(row.nazwa)}}
           onBlur={(e)=>{
             if(valueIN != e.target.value){
@@ -623,6 +624,7 @@ const [setStatus] = useStatus()
   
         <input
         className={style.input}
+        title={row.uwagi}
           value={row.uwagi}
           onFocus={()=>{ setValueIN(row.uwagi)}}
           onBlur={(e)=>{

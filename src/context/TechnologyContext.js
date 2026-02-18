@@ -720,6 +720,7 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   setWykonaniaOprawy(res.data[12])
   setRealizacje(res.data[13])
 
+  console.table(procesyElementowTech)
     setIsLoading(false)
   //  setShowTechnologyStage(true)
 }

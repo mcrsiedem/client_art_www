@@ -14,6 +14,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { onMouseDownTableRow } from "./onMouseDownTableRow";
 import styles from "./TableFx.module.css"
+import { useMenu } from "./useMenu";
 
 
 
@@ -34,6 +35,9 @@ export default function TableFx({showSettings, setShowSettings}) {
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
+
+      const {onMenuHandle} = useMenu()
+  
   
   // --- DEFINICJA KOLUMN ---
   const allColumns = [
@@ -337,29 +341,34 @@ const sortedItems = useMemo(() => {
               })
               .map((row, i) => (
                 // .filter( item => item.stan > 2 ).map((row,i) => (
+                  <>
                 <tr
-                  key={row.id}
-                  className={styles.tr}
-                  onClick={(node, e) => {
-                    setSelectedZamowienie({ ...row, i });
-                  }}
-                  onDoubleClick={(node, event) => {
-                    contextApp.setIsLoading(true);
-                    setShowTabs({
-                      parametry: true,
-                      koszty: false,
-                      historia: false,
-                      faktury: false,
-                      kreator: false,
-                    });
+                        key={row.id}
+                        className={styles.tr}
+                                onContextMenu={(event) => {
+                        onMenuHandle(event,sortedItems,row);
+        }}
+                        onClick={(node, e) => {
+                          setSelectedZamowienie({ ...row, i });
+                        }}
+                        onDoubleClick={(node, event) => {
+                          contextApp.setIsLoading(true);
+                          setShowTabs({
+                            parametry: true,
+                            koszty: false,
+                            historia: false,
+                            faktury: false,
+                            kreator: false,
+                          });
 
-                    setOpenModalInsert(true);
-                  }}
+                          setOpenModalInsert(true);
+                        }}
 
                 >
                   {allColumns
                     .filter((c) => visibleColumns.includes(c.id))
                     .map((col) => (
+                      <>
                       <td
                         key={`${row.id}-${col.id}`}
                     //     style={row.select?{background:'#81b3ff',WebkitTouchCallout: 'none',
@@ -373,9 +382,22 @@ const sortedItems = useMemo(() => {
 
                       >
                         <CellContent row={row} colId={col.id} />
+
                       </td>
+
+                      </>
                     ))}
+
+
+
+
                 </tr>
+      {row.show && (
+        <>
+          s
+        </>
+      )}
+                </>
               ))}
           </tbody>
         </table>

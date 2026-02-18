@@ -37,7 +37,7 @@ export default function TABLE_ROW_ZAMOWIENIA({ row,i }) {
   const zamowieniaPliki = contextApp.zamowieniaPliki
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
-    const [sortWgEtapu] = useSortowanieZamowienia()
+  const [sortWgEtapu] = useSortowanieZamowienia()
       const contextModal = useContext(ModalInsertContext);
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 const setShowTabs = contextModalInsert.setShowTabs

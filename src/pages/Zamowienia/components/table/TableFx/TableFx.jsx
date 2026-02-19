@@ -15,6 +15,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import { onMouseDownTableRow } from "./onMouseDownTableRow";
 import styles from "./TableFx.module.css"
 import { useMenu } from "./useMenu";
+import CellBtn from "./CelllBtn";
 
 
 
@@ -430,7 +431,7 @@ function CellContent({ row, colId }) {
 }
 
 
-function CellBtn({ row }) {
+function CellBtn2({ row }) {
 
   if(row.open_stan == 1 ) return <BtnLock row={row}/>
   if( row.stan>2  && row.technologia_id == null)  return <BtnCirclePlus row={row}/>

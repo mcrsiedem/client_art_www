@@ -47,9 +47,10 @@ function selectColor (status){
                 <div className={selectColor(wykonanie.status)}>
                    <div className={style.info2}>
                 <p  className={style.title_mini}>ark. </p> <p className={style.title_bold} >{wykonanie.nr_arkusza}</p>
+                <p  className={style.title_mini}>lega </p> <p className={style.title_bold} >{wykonanie.nr_legi}</p>
                 </div>
                   {/* <NrArkusza wykonanie={wykonanie}/> */}
-                <p>- </p> <p className={style.title_bold}> {wykonanie.nazwa_wykonania}</p>
+                <p> </p> <p className={style.title_bold}> {wykonanie.nazwa_wykonania}</p>
                 <p> Przeloty: {wykonanie.przeloty}</p>
                 {/* <p> Do wykonania zostało:  {wykonanie.do_wykonania }</p> */}
                 <div className={style.info}>

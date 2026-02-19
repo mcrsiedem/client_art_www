@@ -11,7 +11,6 @@ import { getClients } from "actions/getClients";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import TableMini from "./components/table/TableMini";
 import TableZamowienia from "./components/table/TableZamowienia";
 import { useZamowienia } from "hooks/useZamowienia";
 import ZamowieniaInfo from "components/ZamowieniaInfo/ZamowieniaInfo";
@@ -78,7 +77,6 @@ function Zamowienia() {
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
         <TableFx  showSettings={showSettings} setShowSettings={setShowSettings}/>
-        {/* <TableMini  open2={open2} setRow={setRow}  header={false}/> */}
       </div>
           {openModalInsert && (
             <ModalInsert lokalizacja={"zamowienia"}

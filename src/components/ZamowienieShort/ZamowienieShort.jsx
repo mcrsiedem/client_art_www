@@ -1,5 +1,6 @@
 import { AppContext } from "context/AppContext";
 import React, { useContext, createContext, useState } from "react";
+import styles from "./ZamowienieShort.module.css"
 
 // Mock AppContext do celów podglądu
 
@@ -56,10 +57,10 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
 
 // --- Główny Komponent ---
 
-export default function ZamowieniaInfo() {
+export default function ZamowienieShort({rowZamowienie}) {
   const { showZamowieniaInfo, setShowZamowieniaInfo, zamowienia, zamowieniaInfo } = useContext(AppContext);
 
-  if (!showZamowieniaInfo) return null;
+  if (!rowZamowienie.show) return null;
 
   const selectedCount = zamowienia.filter(x => x.select).length;
   const techCount = zamowienia.filter(x => x.select && x.technologia_id).length;

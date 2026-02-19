@@ -16,6 +16,7 @@ import { onMouseDownTableRow } from "./onActions/onMouseDownTableRow";
 import styles from "./TableFx.module.css"
 import { useMenu } from "./hooks/useMenu";
 import CellBtn from "./components/CelllBtn";
+import ZamowienieShort from "components/ZamowienieShort/ZamowienieShort";
 
 
 
@@ -395,6 +396,7 @@ const sortedItems = useMemo(() => {
                 </tr>
       {row.show && (
         <>
+          {/* <ZamowienieShort rowZamowienie={row}/> */}
           s
         </>
       )}

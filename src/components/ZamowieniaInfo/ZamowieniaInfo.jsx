@@ -1,5 +1,6 @@
 import { AppContext } from "context/AppContext";
 import React, { useContext, createContext, useState } from "react";
+import styles from "./ZamowieniaInfo.module.css"
 
 // Mock AppContext do celów podglądu
 

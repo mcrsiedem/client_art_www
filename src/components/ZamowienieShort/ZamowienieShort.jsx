@@ -291,7 +291,7 @@ export default function ZamowienieShort({rowZamowienie}) {
             <span className="dividerLabel">Status Przelotów</span>
             <div className="line"></div>
           </div>
-{/* 
+
           <ProgressItem 
             label="Druk"
             current={zamowieniaInfo.przeloty_druk_zakonczone}
@@ -305,7 +305,7 @@ export default function ZamowienieShort({rowZamowienie}) {
             total={zamowieniaInfo.przeloty_falc}
             unit="ark."
             color="#6366f1"
-          /> */}
+          />
 
 
 

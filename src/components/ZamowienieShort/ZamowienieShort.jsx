@@ -58,7 +58,7 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
 // --- Główny Komponent ---
 
 export default function ZamowienieShort({rowZamowienie}) {
-  const { showZamowieniaInfo, setShowZamowieniaInfo, zamowienia, zamowieniaInfo } = useContext(AppContext);
+  const { showZamowieniaInfo, setShowZamowieniaInfo, setZamowienia,zamowienia, zamowieniaInfo } = useContext(AppContext);
 
   if (!rowZamowienie.show) return null;
 
@@ -255,7 +255,17 @@ export default function ZamowienieShort({rowZamowienie}) {
           </div>
           <button 
             className="closeButton" 
-            onClick={() => setShowZamowieniaInfo(false)}
+            onClick={() =>     setZamowienia(
+      zamowienia.map((t) => {
+        if (t.id == rowZamowienie.id) {
+          return {...t,
+            show: false,
+          }
+        } else {
+          return t;
+        }
+      })
+    )}
           >
             <CloseIcon />
           </button>

@@ -397,7 +397,7 @@ const sortedItems = useMemo(() => {
       {row.show && (
         <>
           <ZamowienieShort rowZamowienie={row}/>
-          s
+          
         </>
       )}
                 </>

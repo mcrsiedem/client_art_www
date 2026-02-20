@@ -281,7 +281,7 @@ export default function ZamowienieShort({rowZamowienie}) {
             <span className="dividerLabel">Status Przelotów</span>
             <div className="line"></div>
           </div>
-
+{/* 
           <ProgressItem 
             label="Druk"
             current={zamowieniaInfo.przeloty_druk_zakonczone}
@@ -295,7 +295,7 @@ export default function ZamowienieShort({rowZamowienie}) {
             total={zamowieniaInfo.przeloty_falc}
             unit="ark."
             color="#6366f1"
-          />
+          /> */}
 
 
 
@@ -304,13 +304,13 @@ export default function ZamowienieShort({rowZamowienie}) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         
               <span className="summaryLabel">Zeszyt</span>
-              <span className="summaryValue">{zamowieniaInfo.naklad_zeszyt.toLocaleString()}</span>
+              {/* <span className="summaryValue">{zamowieniaInfo.naklad_zeszyt.toLocaleString()}</span> */}
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
             <div>
               
               <span className="summaryLabel"> Kolbus </span>
-              <span className="summaryValue">{zamowieniaInfo.naklad_klejona.toLocaleString()}</span>
+              {/* <span className="summaryValue">{zamowieniaInfo.naklad_klejona.toLocaleString()}</span> */}
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
             
@@ -323,7 +323,7 @@ export default function ZamowienieShort({rowZamowienie}) {
               <span className="summaryLabel">Całkowity nakład</span>
             </div>
             <div>
-              <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span>
+              {/* <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span> */}
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
             

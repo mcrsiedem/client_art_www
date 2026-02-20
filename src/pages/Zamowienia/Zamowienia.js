@@ -21,22 +21,15 @@ import DiaglogAlert from "components/Dialog/DiaglogAlert";
 import TableFx from "./components/table/TableFx/TableFx";
 function Zamowienia() {
 
-  const contextApp = useContext(AppContext);
-  const contextModal = useContext(ModalInsertContext);
+  const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading} = useContext(AppContext);
+  const {openModalInsert,setOpenModalInsert} = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
   const navigate = useNavigate();
-  const setClients = contextApp.setClients;
-  const setClientsWyszukiwarka = contextApp.setClientsWyszukiwarka;
-  const setNadkomplety = contextApp.setNadkomplety;
-  const openModalInsert = contextModal.openModalInsert;
-  const setOpenModalInsert = contextModal.setOpenModalInsert;
   const [callForPaper] = useApiPapier();
   const {refreshZamowienia} = useZamowienia();
-  // const [loading, setLoading] = useState(true);
-  const appContext = useContext(AppContext);
-  const isLoading = appContext.isLoading;
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
+
 
     
 

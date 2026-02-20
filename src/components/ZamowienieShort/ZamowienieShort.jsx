@@ -56,8 +56,8 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
 
 export default function ZamowienieShort({ rowZamowienie }) {
   // Używamy mocka jeśli AppContext nie jest dostarczony z góry
-  const context = useContext(AppContext);
-  const { zamowienia, setZamowienia, zamowieniaInfo } = context;
+  // const context = useContext(AppContext);
+  const { zamowienia, setZamowienia, zamowieniaInfo } = useContext(AppContext);
 
   if (!rowZamowienie?.show) return null;
 
@@ -66,13 +66,11 @@ export default function ZamowienieShort({ rowZamowienie }) {
   const hasTechError = techCount !== selectedCount;
 
   const handleClose = () => {
-    if (setZamowienia) {
-      setZamowienia(
-        zamowienia.map((t) => 
-          t.id === rowZamowienie.id ? { ...t, show: false } : t
-        )
-      );
-    }
+    setZamowienia(
+      zamowienia.map((t) =>
+        t.id === rowZamowienie.id ? { ...t, show: false } : t,
+      ),
+    );
   };
 
   return (
@@ -150,26 +148,26 @@ export default function ZamowienieShort({ rowZamowienie }) {
 }
 
 // Komponent opakowujący dla podglądu (Demo)
-export function App() {
-  const [zamowienia, setZamowienia] = useState([
-    { id: 1, select: true, technologia_id: 101, show: true },
-    { id: 2, select: true, technologia_id: null, show: true }
-  ]);
+// export function App() {
+//   const [zamowienia, setZamowienia] = useState([
+//     { id: 1, select: true, technologia_id: 101, show: true },
+//     { id: 2, select: true, technologia_id: null, show: true }
+//   ]);
 
-  const zamowieniaInfo = {
-    przeloty_druk: 12500,
-    przeloty_druk_zakonczone: 9400,
-    przeloty_falc: 10000,
-    przeloty_falc_zakonczone: 4500,
-    naklad: 5000
-  };
+//   const zamowieniaInfo = {
+//     przeloty_druk: 12500,
+//     przeloty_druk_zakonczone: 9400,
+//     przeloty_falc: 10000,
+//     przeloty_falc_zakonczone: 4500,
+//     naklad: 5000
+//   };
 
-  return (
-    <AppContext.Provider value={{ zamowienia, setZamowienia, zamowieniaInfo }}>
-      <ZamowienieShort rowZamowienie={zamowienia[0]} />
-    </AppContext.Provider>
-  );
-}
+//   return (
+//     <AppContext.Provider value={{ zamowienia, setZamowienia, zamowieniaInfo }}>
+//       <ZamowienieShort rowZamowienie={zamowienia[0]} />
+//     </AppContext.Provider>
+//   );
+// }
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

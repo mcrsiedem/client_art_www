@@ -667,7 +667,12 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
 
   // pobierz szczegóły pracay bez otwierania technologii
   // uzwane w widoku zamowienia po kliknięciu prawym
+
+
+
+  
   await clearState();
+
   const res_zam = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
   // setDane([])
   // setProdukty([])

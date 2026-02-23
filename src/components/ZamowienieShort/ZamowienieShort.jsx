@@ -35,25 +35,18 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
   return (
 
           // <div key={i}  className={styles.summaryBox}>
-          <div key={i}  className={switchColor(proces.status, styles)}>
+          <div key={i}  className={switchColorBackGround(proces.status, styles)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className={styles.summaryLabel}>{i}</span>
+              <span className={styles.procesLabel}>{i}</span>
               <span className={styles.summaryLabelProces}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span>
               <span className={styles.summaryLabel}>{proces.nazwa}</span>
             </div>
             <div>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1'}}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
+              <span className={switchColorLabel(proces.status, styles)}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
             </div>
           </div>
   );
 };
-
-
-
-
-
-
-
 
 
 
@@ -71,7 +64,7 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
   }
 
   
-    const switchColor = (status,styles) =>{
+    const switchColorBackGround = (status,styles) =>{
       switch(status){
         case 3 : return styles.wtrakcie
         case 4 : return styles.zrobione
@@ -80,42 +73,18 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
 
   }
 
+    const switchColorLabel = (status,styles) =>{
+      switch(status){
+        case 3 : return styles.procesLabel
+        case 4 : return styles.procesLabel
+        default: return styles.procesLabel
+      }
+
+  }
 
 
 
 
-const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
-  const percentage = Math.round((current / total) * 100) || 0;
-  const isFinished = percentage >= 100;
-  const fillColor = isFinished ? "#10b981" : color;
-  const zostalo = total - current;
-
-  return (
-    <div className={styles.progressItem}>
-      <div className={styles.progressHeader}>
-        <span className={styles.progressTitle}>{label}</span>
-        <span className={styles.progressPercent} style={{ color: fillColor }}>
-          {percentage}%
-        </span>
-      </div>
-      <div className={styles.progressBarContainer}>
-        <div 
-          className={styles.progressBarFill} 
-          style={{ width: `${percentage}%`, backgroundColor: fillColor }}
-        />
-      </div>
-      <div className={styles.progressFooter}>
-        <span className={styles.footerText}>Zakończono: {current.toLocaleString()} {unit}</span>
-        <span className={styles.footerText}>Całość: {total.toLocaleString()} ark.</span>
-        {zostalo > 0 && (
-          <span className={styles.footerText}>
-            Zostało: <span className={styles.footerTextYellow}>{zostalo.toLocaleString()} </span> ark.
-          </span>
-        )}  
-      </div>
-    </div>
-  );
-};
 
 // --- Główny Komponent ---
 
@@ -156,11 +125,6 @@ export default function ZamowienieShort({ rowZamowienie }) {
 
         <div className={styles.content}>
           <div className={styles.statsGrid}></div>
-
-          {/* <div className={styles.sectionDivider}>
-            <span className={styles.dividerLabel}>Procesy</span>
-            <div className={styles.line}></div>
-          </div> */}
 
           <div className={styles.procesContainer}>
                       {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (

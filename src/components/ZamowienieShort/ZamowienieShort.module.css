@@ -71,14 +71,34 @@
 }
 
 .procesContainer{
-  height: 400px; 
-   overflow-y: auto;
-   margin-bottom: 10px;
+  max-height: 400px; 
+  overflow-y: auto;
+  padding-right: 5px;
 }
+
+        .procesContainer::-webkit-scrollbar {
+          width: 6px;
+          padding-right: 10px;
+          
+        }
+        .procesContainer::-webkit-scrollbar-track {
+          background: #f8f9f1;
+          border-radius: 10px;
+          
+        }
+        .procesContainer::-webkit-scrollbar-thumb {
+          background: #cbd5e1af;
+          border-radius: 10px;
+
+        }
+        .procesContainer::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+
+        }
 
 .statsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   /* gap: 1rem; */
   /* margin-bottom: 2rem; */
   
@@ -178,9 +198,25 @@
 .summaryBoxKlejona { background-color: #1e3b30c4; }
 .summaryBoxZeszyt { background-color: #ff9100; }
 
-.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.3rem;text-transform: uppercase  }
+.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.2rem;text-transform: uppercase  }
 .summaryLabel { color: #cbd5e1; font-weight: 500; font-size: 0.9rem; }
 .summaryValue { font-size: 1.5rem; font-weight: 900; }
+
+.procesLabel{
+  margin-left: 4px;
+  color: #f0fdf4;
+
+            font-size: 0.85rem;
+          font-weight: 500;
+          padding: 6px 12px;
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+}
+
+
 
 .wtrakcie  {
   composes: summaryBox;

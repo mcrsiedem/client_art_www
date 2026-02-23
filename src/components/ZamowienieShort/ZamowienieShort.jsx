@@ -29,25 +29,46 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
   const subTextClass = isError ? styles.orangeSub : styles[`${variant}Sub`];
   const { procesyElementowTech } = useContext(TechnologyContext);
 
-  const onClickHandler = () => {
-    console.table(procesyElementowTech)
-  }
+  // const onClickHandler = () => {
+  //   console.table(proces)
+  // }
   return (
 
-          <div key={i} onClick={onClickHandler}className={styles.summaryBox}>
+          // <div key={i}  className={styles.summaryBox}>
+          <div key={i}  className={switchColor(proces.status, styles)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span className={styles.summaryLabel}>{i}</span>
-              <span className={styles.summaryLabel}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span>
+              <span className={styles.summaryLabelProces}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span>
+              <span className={styles.summaryLabel}>{proces.nazwa}</span>
             </div>
             <div>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}>szt.</span>
+              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
             </div>
           </div>
   );
 };
 
+  function Etap({ proces, row, styles }) {
+    if (proces.status == "3") {
+      return <span> W trakcie</span>;
+    }
 
+    if (proces.status == "4") {
+      return <span> Zrobione.</span>;
+    }
 
+    return <span> Czeka</span>;
+  }
+
+  
+    const switchColor = (status,styles) =>{
+      switch(status){
+        case 3 : return styles.wtrakcie
+        case 4 : return styles.zrobione
+        default: return styles.czeka
+      }
+
+  }
 
 
 
@@ -131,7 +152,7 @@ export default function ZamowienieShort({ rowZamowienie }) {
             <div className={styles.line}></div>
           </div>
 
-          {procesyElementowTech?.map((proces, i) => (
+          {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
             <ProcessCard key={i}
               proces={proces}
               rowZamowienie={rowZamowienie}

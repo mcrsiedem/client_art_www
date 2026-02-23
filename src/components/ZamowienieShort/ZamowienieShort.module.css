@@ -168,5 +168,26 @@
 .summaryBoxKlejona { background-color: #1e3b30c4; }
 .summaryBoxZeszyt { background-color: #ff9100; }
 
-.summaryLabel { color: #cbd5e1; font-weight: 500; }
+.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.5rem; }
+.summaryLabel { color: #cbd5e1; font-weight: 500; font-size: 1rem; }
 .summaryValue { font-size: 1.5rem; font-weight: 900; }
+
+.wtrakcie  {
+  composes: summaryBox;
+
+  background: rgb(171, 134, 10);
+}
+
+ .zrobione   {
+  composes: summaryBox;
+ color: green;
+   background: rgba(19, 81, 4, 0.822);
+
+}
+ .czeka {
+  composes: summaryBox;
+
+  background: #313131b9;
+  color: #1e293b;
+}
+

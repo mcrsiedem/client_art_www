@@ -137,7 +137,7 @@ export default function ZamowienieShort({ rowZamowienie }) {
         <header className={styles.header}>
           <div className={styles.headerTitleGroup}>
             <div className={styles.accentBar}></div>
-            <h2 className={styles.title}>Stan Produkcji</h2>
+            <h2 className={styles.title}>Stan procesów</h2>
           </div>
           <button className={styles.closeButton} onClick={handleClose}>
             <CloseIcon />
@@ -147,18 +147,22 @@ export default function ZamowienieShort({ rowZamowienie }) {
         <div className={styles.content}>
           <div className={styles.statsGrid}></div>
 
-          <div className={styles.sectionDivider}>
+          {/* <div className={styles.sectionDivider}>
             <span className={styles.dividerLabel}>Procesy</span>
             <div className={styles.line}></div>
-          </div>
+          </div> */}
 
-          {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
+          <div className={styles.procesContainer}>
+                      {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
             <ProcessCard key={i}
               proces={proces}
               rowZamowienie={rowZamowienie}
               i={i + 1}
             />
           ))}
+          </div>
+
+
         </div>
       </div>
     </div>

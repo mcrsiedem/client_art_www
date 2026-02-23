@@ -67,13 +67,21 @@
 
 .content {
   padding: 1.5rem;
+
+}
+
+.procesContainer{
+  height: 400px; 
+   overflow-y: auto;
+   margin-bottom: 10px;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  /* gap: 1rem; */
+  /* margin-bottom: 2rem; */
+  
 }
 
 /* Stat Cards */
@@ -162,13 +170,15 @@
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
+  
+  height: 50px;
 }
 
 .summaryBox { background-color: #1e293b; }
 .summaryBoxKlejona { background-color: #1e3b30c4; }
 .summaryBoxZeszyt { background-color: #ff9100; }
 
-.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.5rem; }
+.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.3rem; }
 .summaryLabel { color: #cbd5e1; font-weight: 500; font-size: 1rem; }
 .summaryValue { font-size: 1.5rem; font-weight: 900; }
 
@@ -181,7 +191,7 @@
  .zrobione   {
   composes: summaryBox;
  color: green;
-   background: rgba(19, 81, 4, 0.822);
+   background: rgb(48, 90, 33);
 
 }
  .czeka {

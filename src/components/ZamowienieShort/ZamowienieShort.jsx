@@ -42,11 +42,21 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
               <span className={styles.summaryLabel}>{proces.nazwa}</span>
             </div>
             <div>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
+              <span style={{ marginLeft: '4px', color: '#cbd5e1'}}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
             </div>
           </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
 
   function Etap({ proces, row, styles }) {
     if (proces.status == "3") {

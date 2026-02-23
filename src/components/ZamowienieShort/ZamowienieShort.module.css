@@ -178,8 +178,8 @@
 .summaryBoxKlejona { background-color: #1e3b30c4; }
 .summaryBoxZeszyt { background-color: #ff9100; }
 
-.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.3rem; }
-.summaryLabel { color: #cbd5e1; font-weight: 500; font-size: 1rem; }
+.summaryLabelProces { color: #cbd5e1; font-weight: 500; font-size: 1.3rem;text-transform: uppercase  }
+.summaryLabel { color: #cbd5e1; font-weight: 500; font-size: 0.9rem; }
 .summaryValue { font-size: 1.5rem; font-weight: 900; }
 
 .wtrakcie  {
@@ -191,7 +191,7 @@
  .zrobione   {
   composes: summaryBox;
  color: green;
-   background: rgb(48, 90, 33);
+   background: rgb(82, 118, 69);
 
 }
  .czeka {

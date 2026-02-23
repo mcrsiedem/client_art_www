@@ -49,6 +49,7 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "firma_nazwa", label: "Klient" , visible: true},
     { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
     { id: "kod_pracy", label: "Kod", visible: true }, // Używamy tytul jako klucza danych
+    { id: "nr_zamowienia_klienta", label: "Nr zam. klienta" , visible: false},
     { id: "naklad", label: "Nakład" , visible: true},
     { id: "oprawa", label: "Oprawa" , visible: true},
     { id: "ilosc_stron", label: "Str." , visible: true},

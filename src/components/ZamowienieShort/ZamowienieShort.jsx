@@ -1,6 +1,8 @@
 import React, { useContext, createContext, useState } from "react";
 import styles from "./ZamowienieShort.module.css"
 import { AppContext } from "context/AppContext";
+import { TechnologyContext } from "context/TechnologyContext";
+import { _typ_elementu } from "utils/initialvalue";
 
 
 const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => {
@@ -18,6 +20,38 @@ const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => 
     </div>
   );
 };
+
+
+
+const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blue", isError = false }) => {
+  const cardClass = isError ? styles.orangeCard : styles[`${variant}Card`];
+  const textClass = isError ? styles.orangeText : styles[`${variant}Text`];
+  const subTextClass = isError ? styles.orangeSub : styles[`${variant}Sub`];
+  const { procesyElementowTech } = useContext(TechnologyContext);
+
+  const onClickHandler = () => {
+    console.table(procesyElementowTech)
+  }
+  return (
+
+          <div key={i} onClick={onClickHandler}className={styles.summaryBox}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className={styles.summaryLabel}>{i}</span>
+              <span className={styles.summaryLabel}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span>
+            </div>
+            <div>
+              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}>szt.</span>
+            </div>
+          </div>
+  );
+};
+
+
+
+
+
+
+
 
 const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
   const percentage = Math.round((current / total) * 100) || 0;
@@ -58,6 +92,9 @@ export default function ZamowienieShort({ rowZamowienie }) {
   // Używamy mocka jeśli AppContext nie jest dostarczony z góry
   // const context = useContext(AppContext);
   const { zamowienia, setZamowienia, zamowieniaInfo } = useContext(AppContext);
+  const { procesyElementowTech } = useContext(TechnologyContext);
+
+
 
   if (!rowZamowienie?.show) return null;
 
@@ -87,60 +124,20 @@ export default function ZamowienieShort({ rowZamowienie }) {
         </header>
 
         <div className={styles.content}>
-          <div className={styles.statsGrid}>
-            <StatCard 
-              label="Aktywne zamówienia" 
-              value={selectedCount} 
-              unit="szt." 
-            />
-            <StatCard 
-              label="Przypisane technologie" 
-              value={techCount} 
-              unit={`/ ${selectedCount}`} 
-              isError={hasTechError}
-              variant="green"
-            />
-          </div>
+          <div className={styles.statsGrid}></div>
 
           <div className={styles.sectionDivider}>
-            <span className={styles.dividerLabel}>Status Przelotów</span>
+            <span className={styles.dividerLabel}>Procesy</span>
             <div className={styles.line}></div>
           </div>
 
-          <ProgressItem 
-            label="Druk"
-            current={zamowieniaInfo.przeloty_druk_zakonczone}
-            total={zamowieniaInfo.przeloty_druk}
-            unit="ark."
-          />
-
-          <ProgressItem 
-            label="Falcowanie"
-            current={zamowieniaInfo.przeloty_falc_zakonczone}
-            total={zamowieniaInfo.przeloty_falc}
-            unit="ark."
-            color="#6366f1"
-          />
-
-          <div className={styles.summaryBoxKlejona}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className={styles.summaryLabel}>Zeszyt</span>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}>szt.</span>
-            </div>
-            <div>
-              <span className={styles.summaryLabel}>Kolbus</span>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}>szt.</span>
-            </div>
-          </div>
-
-          <div className={styles.summaryBox}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className={styles.summaryLabel}>Całkowity nakład</span>
-            </div>
-            <div>
-              <span style={{ marginLeft: '4px', color: '#cbd5e1' }}>szt.</span>
-            </div>
-          </div>
+          {procesyElementowTech?.map((proces, i) => (
+            <ProcessCard key={i}
+              proces={proces}
+              rowZamowienie={rowZamowienie}
+              i={i + 1}
+            />
+          ))}
         </div>
       </div>
     </div>

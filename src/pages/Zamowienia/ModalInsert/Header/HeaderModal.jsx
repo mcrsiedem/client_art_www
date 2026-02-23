@@ -72,13 +72,13 @@ export default function Header({
         </div>
       </div>
       <DialogZapis dialogBox={dialogBox}/>
-       <SaveAs
+      <SaveAs
                 showSaveAs={showSaveAs}
                 setSaveAs={setSaveAs}
                 setShowSaveAs={setShowSaveAs}
                 dialogBox={dialogBox}
   
-              />
+      />
 
     </>
   );

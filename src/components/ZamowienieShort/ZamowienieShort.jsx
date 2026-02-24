@@ -3,6 +3,7 @@ import styles from "./ZamowienieShort.module.css"
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _typ_elementu } from "utils/initialvalue";
+import ElementCard from "./ElementCard";
 
 
 const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => {
@@ -20,6 +21,8 @@ const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => 
     </div>
   );
 };
+
+
 
 
 
@@ -47,8 +50,6 @@ const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blu
           </div>
   );
 };
-
-
 
 
   function Etap({ proces, row, styles }) {
@@ -92,7 +93,7 @@ export default function ZamowienieShort({ rowZamowienie }) {
   // Używamy mocka jeśli AppContext nie jest dostarczony z góry
   // const context = useContext(AppContext);
   const { zamowienia, setZamowienia, zamowieniaInfo } = useContext(AppContext);
-  const { procesyElementowTech } = useContext(TechnologyContext);
+  const { procesyElementowTech,elementyTech } = useContext(TechnologyContext);
 
 
 
@@ -130,11 +131,11 @@ export default function ZamowienieShort({ rowZamowienie }) {
             
             {procesyElementowTech
             ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
-            .map((proces, i) => (
+            .map((rowElement, i) => (
             // {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
-            <ProcessCard key={i}
-              proces={proces}
-              rowZamowienie={rowZamowienie}
+            <ElementCard key={i}
+              rowElement={rowElement}
+             
               i={i + 1}
             />
           ))}
@@ -147,27 +148,6 @@ export default function ZamowienieShort({ rowZamowienie }) {
   );
 }
 
-// Komponent opakowujący dla podglądu (Demo)
-// export function App() {
-//   const [zamowienia, setZamowienia] = useState([
-//     { id: 1, select: true, technologia_id: 101, show: true },
-//     { id: 2, select: true, technologia_id: null, show: true }
-//   ]);
-
-//   const zamowieniaInfo = {
-//     przeloty_druk: 12500,
-//     przeloty_druk_zakonczone: 9400,
-//     przeloty_falc: 10000,
-//     przeloty_falc_zakonczone: 4500,
-//     naklad: 5000
-//   };
-
-//   return (
-//     <AppContext.Provider value={{ zamowienia, setZamowienia, zamowieniaInfo }}>
-//       <ZamowienieShort rowZamowienie={zamowienia[0]} />
-//     </AppContext.Provider>
-//   );
-// }
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

@@ -217,6 +217,19 @@
 }
 
 
+.elementCard{
+  margin-top: 2rem;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+  height: 50px;
+  border: 1px solid #0000003c;
+}
+
+
 
 .wtrakcie  {
   composes: summaryBox;

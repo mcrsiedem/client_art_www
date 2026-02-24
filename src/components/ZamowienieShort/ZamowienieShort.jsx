@@ -129,8 +129,8 @@ export default function ZamowienieShort({ rowZamowienie }) {
 
           <div className={styles.procesContainer}>
             
-            {procesyElementowTech
-            ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
+            {elementyTech
+            // ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
             .map((rowElement, i) => (
             // {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
             <ElementCard key={i}

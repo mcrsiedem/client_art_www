@@ -1,13 +1,15 @@
 .elementCard {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   border-radius: 0.75rem;
   padding: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
-  height: 50px;
+  height: 70px;
   border: 1px solid #0000003c;
+  
+
 }
 
 .elementLabelIndeks {
@@ -27,5 +29,11 @@
   color: #353535;
   font-weight: 500;
   font-size: 1.2rem;
+  text-transform: uppercase
+}
+.elementLabelNameMini {
+  color: #353535;
+  font-weight: 500;
+  font-size: 0.8rem;
   text-transform: uppercase
 }

@@ -16,8 +16,8 @@ export default function ElementCard ({ rowElement,i }) {
           <div key={i}  className={styles.elementCard}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span className={styles.elementLabelIndeks}>{i}</span>
-              <span className={styles.elementLabelName}>{_typ_elementu.filter(x=>x.id ==rowElement.typ_elementu)[0].nazwa}</span>
-              {/* <span className={styles.summaryLabel}>{proces.nazwa}</span> */}
+              <span className={styles.elementLabelName}>{_typ_elementu.filter(x=>x.id ==rowElement.typ)[0].nazwa}</span>
+              <span className={styles.elementLabelNameMini}>{rowElement.nazwa}</span>
             </div>
             <div>
               {/* <span className={switchColorLabel(proces.status, styles)}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span> */}

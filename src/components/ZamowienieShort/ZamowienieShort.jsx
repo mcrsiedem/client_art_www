@@ -127,7 +127,11 @@ export default function ZamowienieShort({ rowZamowienie }) {
           <div className={styles.statsGrid}></div>
 
           <div className={styles.procesContainer}>
-            {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
+            
+            {procesyElementowTech
+            ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
+            .map((proces, i) => (
+            // {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
             <ProcessCard key={i}
               proces={proces}
               rowZamowienie={rowZamowienie}

@@ -127,7 +127,7 @@ export default function ZamowienieShort({ rowZamowienie }) {
           <div className={styles.statsGrid}></div>
 
           <div className={styles.procesContainer}>
-                      {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
+            {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
             <ProcessCard key={i}
               proces={proces}
               rowZamowienie={rowZamowienie}

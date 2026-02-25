@@ -8,6 +8,17 @@
   color: #ffffff;
   height: 70px;
   border: 1px solid #0000003c;
+
+        background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+    border: 1px solid #f1f2f6;
+    color: #35353582;
+    min-width: 500px;
+    margin-right: 20px;
+    margin-bottom: 5px;
   
 
 }
@@ -40,8 +51,13 @@
 
 .procesContainer{
   display: flex;
-  background-color: antiquewhite;
+
+  /* background-color: antiquewhite;   */
   margin: 10px;
+    gap:20px;
+  /* width: 250px; */
+
+  
 }
 
 

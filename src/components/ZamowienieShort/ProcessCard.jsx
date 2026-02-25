@@ -19,7 +19,7 @@ export default function ProcessCard  ({ proces,rowZamowienie,i,label, value, uni
           // <div key={i}  className={styles.summaryBox}>
           <div key={i}  className={switchColorBackGround(proces.status, styles)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className={styles.procesLabel}>{i}</span>
+              {/* <span className={styles.procesLabel}>{i}</span> */}
               {/* <span className={styles.summaryLabelProces}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span> */}
               <span className={styles.summaryLabel}>{proces.nazwa}</span>
             </div>
@@ -47,8 +47,8 @@ export default function ProcessCard  ({ proces,rowZamowienie,i,label, value, uni
     const switchColorBackGround = (status,styles) =>{
       switch(status){
         case 3 : return styles.wtrakcie
-        case 4 : return styles.zrobione
-        default: return styles.czeka
+        case 4 : return styles.wtrakcie
+        default: return styles.wtrakcie
       }
 
   }

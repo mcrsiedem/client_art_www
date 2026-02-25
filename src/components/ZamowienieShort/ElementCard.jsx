@@ -22,7 +22,7 @@ export default function ElementCard ({ rowElement,i }) {
             <div className={styles.procesContainer}>
 
                           {procesyElementowTech
-                          .filter(x => x.typ_elementu == rowElement.typ)
+                          .filter(x => x.element_id == rowElement.id)
                           // ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
                           .map((proces, i) => (
                           // {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (

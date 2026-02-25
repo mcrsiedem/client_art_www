@@ -236,12 +236,30 @@ export default function ZamowienieShort({ rowZamowienie }) {
   return <span className={className}>{status}</span>;
 };
 
+
+  const StatusPill2 = ({ status }) => {
+  let className = 'status-pill ';
+  
+  if (status === 4) className += 'pill-zakonczone';
+  else if (status === 3) className += 'pill-w-trakcie';
+  else className += 'pill-czeka';
+
+  return <span className={className}>{status}</span>;
+};
+
 const getProcessClass = (status) => {
   const normalized = status.toLowerCase().replace(' ', '-');
   if (normalized === 'zakończone') return 'status-zakonczone';
   if (normalized === 'w-trakcie') return 'status-w-trakcie';
   return 'status-czeka';
 };
+const getProcessClass2 = (status) => {
+  // const normalized = status.toLowerCase().replace(' ', '-');
+  if (status === 4) return 'status-zakonczone';
+  if (status === 3) return 'status-w-trakcie';
+  return 'status-czeka';
+};
+
   return (
     <div className={styles.overlay}>
       <div className={styles.window}>
@@ -274,11 +292,12 @@ const getProcessClass = (status) => {
 
 <div className="grid">
   <style>{styles2}</style>
-        {data.map((item) => (
+        {elementyTech.map((item) => (
           <div key={item.id} className="card">
             <div className="card-header">
               <div className="title-group">
                 <span className="badge-typ">Element {item.typ}</span>
+                <h2>{item.typ_nazwa}</h2>
                 <h2>{item.nazwa}</h2>
               </div>
             </div>
@@ -298,15 +317,16 @@ const getProcessClass = (status) => {
               <h3 style={{ fontSize: '0.85rem', color: '#636e72', marginBottom: '0.5rem' }}>
                 Etapy Realizacji
               </h3>
-              {item.procesy.map((proces) => (
+              {procesyElementowTech
+                          .filter(x => x.element_id == item.id)?.map((proces) => (
                 <div 
                   key={proces.id} 
-                  className={`process-item ${getProcessClass(proces.status)}`}
+                  className={`process-item ${getProcessClass2(proces.status)}`}
                 >
                   <div className="process-info">
-                    <span className="process-name">{proces.nazwa_procesu}</span>
+                    <span className="process-name">{proces.nazwa}</span>
                   </div>
-                  <StatusPill status={proces.status} />
+                  <StatusPill2 status={proces.status} />
                 </div>
               ))}
             </div>

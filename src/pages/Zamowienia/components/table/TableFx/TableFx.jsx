@@ -349,7 +349,7 @@ const sortedItems = useMemo(() => {
                         key={row.id}
                         className={styles.tr}
                                 onContextMenu={(event) => {
-                        onMenuHandle(event,sortedItems,row);
+                        // onMenuHandle(event,sortedItems,row);
         }}
                         onClick={(node, e) => {
                           setSelectedZamowienie({ ...row, i });

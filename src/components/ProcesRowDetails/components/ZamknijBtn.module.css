@@ -1,8 +1,10 @@
 
 
 .btn_zamknij {
-   width: 120px;
-   height: 25px;
+   /* width: 120px; */
+   min-width: 120px;
+   padding: 0 20px;
+   height: 35px;
    background-color: transparent;
    border-radius:7px;
    border: 1px solid rgba(128, 128, 128, 0.429);
@@ -10,7 +12,7 @@
 font-size: 0.9rem;
    color: rgb(49, 49, 49);
    margin-top: 10px;
-   margin-bottom: 100px;
+   margin-bottom: 30px;
 
 }
 

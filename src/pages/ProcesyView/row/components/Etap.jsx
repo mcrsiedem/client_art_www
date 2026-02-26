@@ -8,6 +8,7 @@ import { TechnologyContext } from "context/TechnologyContext";
 import { _status } from "utils/initialvalue";
 import { usePliki } from "hooks/usePliki";
 import { useHistoria } from "hooks/useHistoria";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 
@@ -38,12 +39,16 @@ export default function Etap({grup,setShowNaswietlenia}) {
         className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
         value={grup.zamowienia_pliki_etap}
         onChange={(event) => {
-          techContext.setSelectedGrupaTechROW(grup);
+
+          if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1){
+                      techContext.setSelectedGrupaTechROW(grup);
           // setShowNaswietlenia(true);
           etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
           // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
           // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+          }
+
         }}
       >
         {_etap_plikow.map((option) => (

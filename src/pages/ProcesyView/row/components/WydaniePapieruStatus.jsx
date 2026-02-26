@@ -58,9 +58,12 @@ return (<td className={style.td_tableProcesy_papier_wydanie}>        <div>
         className={selectColor(grup.zamowienia_pliki_etap,grup.status) }
         value={grup?.wydanie_papieru_status || 1}
         onChange={async(event) => {
- console.log("wydanie2")
+
+          if(DecodeToken(sessionStorage.getItem("token")).technologie_wszystkie == 1 ){
  await axios.put(IP + "updateWydaniePapieru_status/" + sessionStorage.getItem("token"), {global_id_grupa:grup.global_id,status:event.target.value});
           fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+          }
+
         
 
         }}

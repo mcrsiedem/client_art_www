@@ -32,6 +32,7 @@ import { onMouseDownHandler } from "./components/actions/onMouseDownHandler";
 import NaswietleniaPane from "./components/NaswietleniaPane/NaswietleniaPane";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import DecodeToken from "pages/Login/DecodeToken";
+import EtapZamowienia from "./components/EtapZamowienia";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -93,7 +94,8 @@ export default function ProcesViewRow({ grup,i }) {
       {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
       {grup.typ_grupy != 1 && selectedProces==1?  <NaswietleniaIlosc grup={grup}/> : <></>}
       {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup} setShowNaswietlenia={setShowNaswietlenia}/> : <></>}
-      {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
+      {grup.typ_grupy != 1 && selectedProces==1?  <> </> :  <Status grup={grup}/>}
+      {grup.typ_grupy != 1 && selectedProces==17?  <EtapZamowienia grup={grup} setShowNaswietlenia={setShowNaswietlenia}/> :  <> </>}
       <td></td>
       
     </tr>

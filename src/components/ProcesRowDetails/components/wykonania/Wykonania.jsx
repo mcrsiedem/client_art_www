@@ -59,7 +59,7 @@ function selectColor (status){
                 </div>
                 
                   {/* <Zostalo wykonanie={wykonanie}/> */}
-<div className={style.info}>
+              <div className={style.info}>
                 <p>  {getNameStatus( wykonanie.status,_status_wykonania)}</p>
                 </div>
                 </div>

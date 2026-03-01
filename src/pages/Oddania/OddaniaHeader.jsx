@@ -211,34 +211,7 @@ const TimeSelect = ({
     );
 };
 
-function DataWyswietlania() {
-  const techContext = useContext(TechnologyContext);
-  // const fechGrupyAndWykonaniaForProcesor2 = techContext.fechGrupyAndWykonaniaForProcesor2
-  // const fechGrupyAndWykonaniaForProcesor_dni_wstecz = techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz
-  const fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa =
-    techContext.fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa;
 
-  const dniWstecz = techContext.dniWstecz;
-  const setDniWstecz = techContext.setDniWstecz;
-  const selectedProcesor = techContext.selectedProcesor;
-
-  return (
-    <div className={style.col}>
-      <input
-        className={style.selectDataWyswietlania}
-        type="date"
-        value={dniWstecz}
-        onChange={(event) => {
-          fechGrupyAndWykonaniaForProcesor_dni_wstecz_oprawa(
-            selectedProcesor,
-            event.target.value
-          );
-          setDniWstecz(event.target.value);
-        }}
-      ></input>
-    </div>
-  );
-}
 
 function FILTROWANIE_ODDANYCH() {
   const contextApp = useContext(AppContext);

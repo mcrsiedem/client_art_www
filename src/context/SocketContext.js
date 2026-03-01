@@ -151,26 +151,7 @@ const callPodgladRalizacji = async (od) =>{
         
     }, [resetIdleTimer, sendActivity]);
 
-    // -----------------------------------------------------------------------
-    // SEKCJA 2: Efekt zarządzający Połączeniem Socket.IO
-    // -----------------------------------------------------------------------
-  
-    //   const callPodgladRalizacji = async (od,{setLoading}) =>{
-    //     let podglady=[]
-        
-    //     const res = await axios.get(IP + "podglad_realizacji_dzien/"+od+"/" + sessionStorage.getItem("token"));
 
-    //     podglady.push(...res.data[0])
-    //     podglady.push(...res.data[1])
-    //     podglady.push(...res.data[2])
-    //     setPodgladRealizacji(podglady);
-      
-
-    //         setLoading?.(false)
-   
-        
-
-    //   }
 
 const logoutIO = useCallback(() => {
         // 1. Zgłoszenie wylogowania do Socket.IO (jeśli socket istnieje i jest połączony)

@@ -1,29 +1,18 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-
-
-import icon from "assets/copy.svg";
+import React, { useState, useContext } from "react";
 
 
 
-import { reg_int } from "utils/initialvalue";
+
+
 // import NrArkusza from "./NrArkusza";
 // import { reg_int } from "utils/initialvalue";
-import axios from "axios";
-import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import style from "./OprawaProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
-import ProcesyHeader from "./OprawaProcesyHeader";
 import { _status } from "utils/initialvalue";
 import { zamienNaGodziny } from "actions/zamienNaGodziny";
-import { dragDropProcesGrupa } from "actions/dragDropProcesGrupa";
-import { dragDropProcesGrupaToProcesor } from "actions/dragDropProcesGrupaToProcesor";
-import TechnologiaStage from "components/TechnologiaStage/TechnologiaStage";
-import { updateWykonaniaOrazGrupaFromProcesView } from "actions/updateWykonaniaOrazGrupaFromProcesView";
-import { updateAddPrzerwa } from "actions/updateAddPrzerwa";
 import { date_time } from "actions/date_time";
-import { updateZmienCzasTrwaniaGrupy } from "actions/updateZmienCzasTrwaniaGrupy";
 import { useGrupyWykonan } from "hooks/useGrupyWykonan";
 import { dragDropProcesGrupaOprawa } from "actions/dragDropProcesGrupaOprawa";
 import { updateAddPrzerwaOprawa } from "actions/updateAddPrzerwaOprawa";

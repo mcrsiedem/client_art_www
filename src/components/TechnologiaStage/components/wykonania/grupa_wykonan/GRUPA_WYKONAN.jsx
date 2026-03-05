@@ -51,7 +51,7 @@ export default  function GRUPA_WYKONAN ({ rowProces }) {
                   .filter((f) => f.delete != true)
                   .map((rowWykonanie, i) => (
                     <div className={style.wykonania_container}>
-                      <RowWykonanie rowWykonanie={rowWykonanie} rowProces={rowProces}/>
+                      <RowWykonanie rowWykonanie={rowWykonanie} rowProces={rowProces} />
                     </div>
                   ))}
             </div>

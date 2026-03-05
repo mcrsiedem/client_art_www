@@ -16,23 +16,32 @@ export default  function DodajGrupeWykonan({ rowGrupa,rowProces }) {
   const setGrupaWykonan = techContext.setGrupaWykonan;
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
   const daneTech = techContext.daneTech;
+  const wykonania = techContext.wykonania;
+
 const [wolno,wolno_procesor] = useAccess(false);
+
+      const sprawdzCzyOstnieWykonanie = () => {
+
+  if (wykonania.filter( x => x.grupa_id == sessionStorage.getItem("id_grupa_wykonanie_drag")).length >1) return true
+}
   return (
     <div style={{ paddingTop: "13px" }}>
       <img
         onDragOver={handleDragOver}
         onDrop={() => {
-          if(wolno_procesor(rowProces.nazwa_id)){
+
+     
+                     if(wolno_procesor(rowProces.nazwa_id)){
             handleDrop()
           }
+          
+ 
         } }
         className={style.expand}
         src={icon}
         onClick={() => {
             if(daneTech.id==1){
    let newGrupa = [...grupaWykonan]
-          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-          // handleRemoveItem(row.indeks, row.id);
           newGrupa.push({...rowGrupa,id: getMaxID(grupaWykonan),czas:0,przeloty:0 })
           setGrupaWykonan(newGrupa)
           console.log(newGrupa)
@@ -44,8 +53,14 @@ const [wolno,wolno_procesor] = useAccess(false);
     </div>
   );
 
+
+
   function handleDragOver(e) {
-    e.preventDefault();
+    // e.preventDefault();
+
+        if (sprawdzCzyOstnieWykonanie()) {
+      e.preventDefault();
+    }
   }
 
   function handleDrop() {
@@ -55,13 +70,11 @@ const [wolno,wolno_procesor] = useAccess(false);
     if (sessionStorage.getItem("typ_drag") == "wykonanie") {
       if(daneTech.id!=1){
       let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
-      // console.log("id: "+id_drag_wykonania)
       updateWydzielWykonanieZgrupy(id_drag_wykonania, fechparametryTechnologii,daneTech.zamowienie_id);
-      // let id_drop_grupa = id;
       }
       if(daneTech.id==1){
         let id_drag_wykonania = sessionStorage.getItem("id_wykonanie_drag");
-        // console.log("id: "+id_drag_wykonania)
+ 
         // let id_drop_grupa = id;
         
         }

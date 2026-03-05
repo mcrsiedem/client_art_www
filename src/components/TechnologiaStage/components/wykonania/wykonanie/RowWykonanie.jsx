@@ -11,10 +11,22 @@ import PredkoscWykoniania from "./components/PredkoscWykonania";
 import PrzelotyWykonania from "./components/PrzelotyWykonania";
 import NarzadWykonania from "./components/NarzadWykonania";
 import UsunWykonanie from "./components/UsunWykonanie";
+import { useContext } from "react";
+import { TechnologyContext } from "context/TechnologyContext";
 
 export default function RowWykonanie  ({rowWykonanie,rowProces})  {
+
+    const {wykonania} = useContext(TechnologyContext);
+
+
+    const sprawdzCzyOstnieWykonanie = () => {
+
+  if (wykonania.filter( x => x.grupa_id == rowWykonanie.grupa_id).length >1) return true
+}
+
   return(<div
   
+    // draggable={sprawdzCzyOstnieWykonanie()}
     draggable
     onDrag={() => handleDragWykonanieStart(rowWykonanie)}>
     <div onDoubleClick={()=>{console.log(rowWykonanie)}}  className={style.container}> 
@@ -46,3 +58,4 @@ export default function RowWykonanie  ({rowWykonanie,rowProces})  {
     sessionStorage.setItem("id_grupa_wykonanie_drag", rowWykonanie.grupa_id);
   }
 }
+

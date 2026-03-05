@@ -66,7 +66,7 @@ const UserList = () => {
           .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId !=10
+              user.userId !=10 && user.userId !=60
           )
           .map((user, i) => (
             // Pojedynczy element użytkownika

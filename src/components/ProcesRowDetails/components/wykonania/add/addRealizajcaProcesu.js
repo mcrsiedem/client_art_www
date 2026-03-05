@@ -85,7 +85,7 @@ export const addRealizajcaProcesu = async (
 
 
 
-socket.emit("realizacja")
+// socket.emit("realizacja")
 
     } else {
       alert(status.sqlMessage);

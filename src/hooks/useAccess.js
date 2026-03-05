@@ -24,7 +24,7 @@ export function useAccess() {
 
 
     // 
- let inne_proces_list =["2","4","5","7","8","9","10","11","12","13","14","15","16"]
+ let inne_proces_list =["2","4","5","7","8","9","10","11","12","13","14","15","16","17"]
 if (DecodeToken(sessionStorage.getItem("token")).manage_inne == 1 && inne_proces_list.includes(selectedProces)) {
   return true;
 }

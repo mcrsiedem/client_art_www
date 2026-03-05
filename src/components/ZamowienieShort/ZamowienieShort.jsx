@@ -3,6 +3,7 @@ import styles from "./ZamowienieShort.module.css"
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import { _typ_elementu } from "utils/initialvalue";
+import ElementCard from "./ElementCard";
 
 
 const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => {
@@ -23,64 +24,177 @@ const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => 
 
 
 
-const ProcessCard = ({ proces,rowZamowienie,i,label, value, unit, variant = "blue", isError = false }) => {
-  const cardClass = isError ? styles.orangeCard : styles[`${variant}Card`];
-  const textClass = isError ? styles.orangeText : styles[`${variant}Text`];
-  const subTextClass = isError ? styles.orangeSub : styles[`${variant}Sub`];
-  const { procesyElementowTech } = useContext(TechnologyContext);
-
-  // const onClickHandler = () => {
-  //   console.table(proces)
-  // }
-  return (
-
-          // <div key={i}  className={styles.summaryBox}>
-          <div key={i}  className={switchColorBackGround(proces.status, styles)}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className={styles.procesLabel}>{i}</span>
-              <span className={styles.summaryLabelProces}>{_typ_elementu.filter(x=>x.id ==proces.typ_elementu)[0].nazwa}</span>
-              <span className={styles.summaryLabel}>{proces.nazwa}</span>
-            </div>
-            <div>
-              <span className={switchColorLabel(proces.status, styles)}><Etap proces={proces} row={rowZamowienie} styles={styles}/></span>
-            </div>
-          </div>
-  );
-};
 
 
 
+const data = [
+  {
+    id: 1,
+    typ: 1,
+    nazwa: 'Okładka',
+    pliki: '10-10-2026',
+    akcept: '11-10-2026',
+    procesy: [
+      { id: 1, typ: 1, nazwa_procesu: 'druk', status: 'Zakończone' },
+      { id: 2, typ: 2, nazwa_procesu: 'uszalachetnianie', status: 'W trakcie' }
+    ]
+  },
+  {
+    id: 2,
+    typ: 2,
+    nazwa: 'Środek',
+    pliki: '10-10-2026',
+    akcept: '11-10-2026',
+    procesy: [
+      { id: 1, typ: 1, nazwa_procesu: 'druk', status: 'W trakcie' },
+      { id: 2, typ: 3, nazwa_procesu: 'Falcowanie', status: 'Czeka' }
+    ]
+  }
+];
 
-  function Etap({ proces, row, styles }) {
-    if (proces.status == "3") {
-      return <span> W trakcie</span>;
-    }
-
-    if (proces.status == "4") {
-      return <span> Zrobione.</span>;
-    }
-
-    return <span> Czeka</span>;
+const styles2 = `
+  .dashboard-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #2d3436;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    min-height: 100vh;
   }
 
-  
-    const switchColorBackGround = (status,styles) =>{
-      switch(status){
-        case 3 : return styles.wtrakcie
-        case 4 : return styles.zrobione
-        default: return styles.czeka
-      }
-
+  .header {
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 1rem;
   }
 
-    const switchColorLabel = (status,styles) =>{
-      switch(status){
-        case 3 : return styles.procesLabel
-        case 4 : return styles.procesLabel
-        default: return styles.procesLabel
-      }
-
+  .header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e272e;
+    margin: 0;
   }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+    border: 1px solid #f1f2f6;
+  }
+
+  .card:hover {
+    // transform: translateY(-4px);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .badge-typ {
+    background: #0984e3;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .card h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #2d3436;
+  }
+
+  .dates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background: #f1f2f6;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .date-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .date-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+
+  .date-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .process-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .process-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 6px;
+    background: #fff;
+    border-left: 4px solid #dfe6e9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* Dynamic border colors based on status */
+  .status-zakonczone { border-left-color: #00b894; }
+  .status-w-trakcie { border-left-color: #fdcb6e; }
+  .status-czeka { border-left-color: #b2bec3; }
+
+  .process-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: capitalize;
+  }
+
+  .status-pill {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .pill-zakonczone { background: #e6fffb; color: #00b894; border: 1px solid #b7eb8f; }
+  .pill-w-trakcie { background: #fffbe6; color: #d48806; border: 1px solid #ffe58f; }
+  .pill-czeka { background: #f5f5f5; color: #8c8c8c; border: 1px solid #d9d9d9; }
+`;
+
 
 
 
@@ -92,7 +206,7 @@ export default function ZamowienieShort({ rowZamowienie }) {
   // Używamy mocka jeśli AppContext nie jest dostarczony z góry
   // const context = useContext(AppContext);
   const { zamowienia, setZamowienia, zamowieniaInfo } = useContext(AppContext);
-  const { procesyElementowTech } = useContext(TechnologyContext);
+  const { procesyElementowTech,elementyTech } = useContext(TechnologyContext);
 
 
 
@@ -109,6 +223,42 @@ export default function ZamowienieShort({ rowZamowienie }) {
       ),
     );
   };
+
+
+  const StatusPill = ({ status }) => {
+  const normalized = status.toLowerCase().replace(' ', '-');
+  let className = 'status-pill ';
+  
+  if (normalized === 'zakończone') className += 'pill-zakonczone';
+  else if (normalized === 'w-trakcie') className += 'pill-w-trakcie';
+  else className += 'pill-czeka';
+
+  return <span className={className}>{status}</span>;
+};
+
+
+  const StatusPill2 = ({ status }) => {
+  let className = 'status-pill ';
+  
+  if (status === 4) className += 'pill-zakonczone';
+  else if (status === 3) className += 'pill-w-trakcie';
+  else className += 'pill-czeka';
+
+  return <span className={className}>{status}</span>;
+};
+
+const getProcessClass = (status) => {
+  const normalized = status.toLowerCase().replace(' ', '-');
+  if (normalized === 'zakończone') return 'status-zakonczone';
+  if (normalized === 'w-trakcie') return 'status-w-trakcie';
+  return 'status-czeka';
+};
+const getProcessClass2 = (status) => {
+  // const normalized = status.toLowerCase().replace(' ', '-');
+  if (status === 4) return 'status-zakonczone';
+  if (status === 3) return 'status-w-trakcie';
+  return 'status-czeka';
+};
 
   return (
     <div className={styles.overlay}>
@@ -127,13 +277,69 @@ export default function ZamowienieShort({ rowZamowienie }) {
           <div className={styles.statsGrid}></div>
 
           <div className={styles.procesContainer}>
-            {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
-            <ProcessCard key={i}
-              proces={proces}
-              rowZamowienie={rowZamowienie}
+            
+            {/* {elementyTech
+            // ?.filter((element, index, self) => index === self.findIndex((t) => t.typ_elementu === element.typ_elementu)) // pokazuje same elementy
+            .map((rowElement, i) => (
+            // {procesyElementowTech?.sort((a, b) => b.status - a.status).map((proces, i) => (
+            <ElementCard key={i}
+              rowElement={rowElement}
+             
               i={i + 1}
             />
-          ))}
+          ))} */}
+
+
+<div className="grid">
+  <style>{styles2}</style>
+        {elementyTech.map((item) => (
+          <div key={item.id} className="card">
+            <div className="card-header">
+              <div className="title-group">
+                <span className="badge-typ">Element {item.typ}</span>
+                <h2>{item.typ_nazwa}</h2>
+                <h2>{item.nazwa}</h2>
+              </div>
+            </div>
+
+            <div className="dates-grid">
+              <div className="date-item">
+                <span className="date-label">Pliki dostarczone</span>
+                <span className="date-value">{item.pliki}</span>
+              </div>
+              <div className="date-item">
+                <span className="date-label">Akceptacja klienta</span>
+                <span className="date-value">{item.akcept}</span>
+              </div>
+            </div>
+
+            <div className="process-list">
+              <h3 style={{ fontSize: '0.85rem', color: '#636e72', marginBottom: '0.5rem' }}>
+                Etapy Realizacji
+              </h3>
+              {procesyElementowTech
+                          .filter(x => x.element_id == item.id)?.map((proces) => (
+                <div 
+                  key={proces.id} 
+                  className={`process-item ${getProcessClass2(proces.status)}`}
+                >
+                  <div className="process-info">
+                    <span className="process-name">{proces.nazwa}</span>
+                  </div>
+                  <StatusPill2 status={proces.status} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+
+
+
+
+
+
           </div>
 
 
@@ -143,27 +349,6 @@ export default function ZamowienieShort({ rowZamowienie }) {
   );
 }
 
-// Komponent opakowujący dla podglądu (Demo)
-// export function App() {
-//   const [zamowienia, setZamowienia] = useState([
-//     { id: 1, select: true, technologia_id: 101, show: true },
-//     { id: 2, select: true, technologia_id: null, show: true }
-//   ]);
-
-//   const zamowieniaInfo = {
-//     przeloty_druk: 12500,
-//     przeloty_druk_zakonczone: 9400,
-//     przeloty_falc: 10000,
-//     przeloty_falc_zakonczone: 4500,
-//     naklad: 5000
-//   };
-
-//   return (
-//     <AppContext.Provider value={{ zamowienia, setZamowienia, zamowieniaInfo }}>
-//       <ZamowienieShort rowZamowienie={zamowienia[0]} />
-//     </AppContext.Provider>
-//   );
-// }
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

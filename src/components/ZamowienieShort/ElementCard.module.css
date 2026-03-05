@@ -1,0 +1,76 @@
+.elementCard {
+  /* margin-top: 2rem; */
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+  height: 70px;
+  border: 1px solid #0000003c;
+
+        background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+    border: 1px solid #f1f2f6;
+    color: #35353582;
+    min-width: 500px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+  
+
+}
+
+.elementLabelIndeks {
+  margin-left: 4px;
+  color: #f0fdf4;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: rgba(74, 74, 74, 0.847);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.elementLabelName {
+  color: #353535;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase
+}
+.elementLabelNameMini {
+  color: #353535;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase
+}
+
+.procesContainer{
+  display: flex;
+
+  /* background-color: antiquewhite;   */
+  margin: 10px;
+    gap:20px;
+  /* width: 250px; */
+
+  
+}
+
+
+.procesLabel{
+  margin-left: 4px;
+  color: #000000;
+
+            font-size: 0.85rem;
+          font-weight: 500;
+          padding: 6px 12px;
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+}

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 
-import { _etap_plikow, _status_wydania_papieru, _typ_elementu } from "utils/initialvalue";
+import { _etap_plikow, _etapy_produkcji, _status_wydania_papieru, _typ_elementu } from "utils/initialvalue";
 import style from "../ProcesViewRow.module.css";
 import { AppContext } from "context/AppContext";
 import { TechnologyContext } from "context/TechnologyContext";
@@ -12,7 +12,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 
 
 
-export default function Etap({grup,setShowNaswietlenia}) {
+export default function EtapZamowienia({grup,setShowNaswietlenia}) {
   const techContext = useContext(TechnologyContext);
   const contextApp = useContext(AppContext);
 
@@ -37,21 +37,22 @@ export default function Etap({grup,setShowNaswietlenia}) {
     <td className={style.td_tableProcesy_pliki}>
       <select
         className={selectColor(grup.zamowienia_pliki_etap, grup.status)}
-        value={grup.zamowienia_pliki_etap}
+        value={grup.etap_zamowienia}
         onChange={(event) => {
 
-          if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1){
-                      techContext.setSelectedGrupaTechROW(grup);
-          // setShowNaswietlenia(true);
-          etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
+          // if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1){
+          //             techContext.setSelectedGrupaTechROW(grup);
+          // // setShowNaswietlenia(true);
+          // etapPlikowGrupyWykonan(event.target.value,grup,grup.zamowienia_pliki_etap)
 
-          // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
-          // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
-          }
+          // // fechGrupyAndWykonaniaForProcesor_dni_wstecz(selectedProcesor,dniWstecz)
+          // // fechGrupyAndWykonaniaForProcesor(selectedProcesor);
+          // }
 
         }}
+        // disabled
       >
-        {_etap_plikow.map((option) => (
+        {_etapy_produkcji.map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}
           </option>

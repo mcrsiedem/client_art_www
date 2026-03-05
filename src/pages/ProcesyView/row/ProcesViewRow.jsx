@@ -31,6 +31,8 @@ import NaswietleniaIlosc from "./components/NaswietleniaIlosc";
 import { onMouseDownHandler } from "./components/actions/onMouseDownHandler";
 import NaswietleniaPane from "./components/NaswietleniaPane/NaswietleniaPane";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import DecodeToken from "pages/Login/DecodeToken";
+import EtapZamowienia from "./components/EtapZamowienia";
 
 
 export default function ProcesViewRow({ grup,i }) {
@@ -47,11 +49,17 @@ export default function ProcesViewRow({ grup,i }) {
     const [onContextMenuHanlder] = useContextMenuHandler(false);
     const {handleDrop,handleDragOver,handleDragStart} = useDragDrop(false);
     const [showNaswietlenia, setShowNaswietlenia] = useState(false);
-
-
-      const contextModalInsert = useContext(ModalInsertContext);
-    
+    const contextModalInsert = useContext(ModalInsertContext);
     const setSelectedZamowienie = contextModalInsert.setSelectedZamowienie;
+
+    const onClikHandler = () => {
+      setSelectedZamowienie({ ...grup, id: grup.zamowienie_id, i });
+    };
+
+    const onDoubleClickHandler = () => {
+       
+      if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1 && grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}
+    };
 
 
   return (
@@ -66,10 +74,8 @@ export default function ProcesViewRow({ grup,i }) {
       onContextMenu={(event) => onContextMenuHanlder(event,grup)}
       onDragStart={() => {if(wolno()){handleDragStart(grup.global_id,grup.typ_grupy)} }}
       className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert,grup,style,selectedProces) }
-      onDoubleClick={() => {if(grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}}}
-            onClick={(node, e) => {
-          setSelectedZamowienie({ ...grup,id:grup.zamowienie_id, i }); // aby można było odtworzyć zamówienie w zleceniu 
-        }}
+      onDoubleClick={onDoubleClickHandler}
+      onClick={onClikHandler}
     >
       <Dzien grup={grup} style={style}/>
       <Poczatek grup={grup}/>
@@ -88,7 +94,8 @@ export default function ProcesViewRow({ grup,i }) {
       {grup.typ_grupy != 1 && selectedProces==1?  <WydaniePapieruStatus grup={grup}/> : <></>}
       {grup.typ_grupy != 1 && selectedProces==1?  <NaswietleniaIlosc grup={grup}/> : <></>}
       {grup.typ_grupy != 1 && selectedProces==1?  <Etap grup={grup} setShowNaswietlenia={setShowNaswietlenia}/> : <></>}
-      {grup.typ_grupy != 1 && selectedProces==1?  <></> :  <Status grup={grup}/>}
+      {grup.typ_grupy != 1 && selectedProces==1?  <> </> :  <Status grup={grup}/>}
+      {grup.typ_grupy != 1 && selectedProces==17?  <EtapZamowienia grup={grup} setShowNaswietlenia={setShowNaswietlenia}/> :  <> </>}
       <td></td>
       
     </tr>

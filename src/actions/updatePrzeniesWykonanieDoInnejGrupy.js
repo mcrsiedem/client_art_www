@@ -11,6 +11,8 @@ export function updatePrzeniesWykonanieDoInnejGrupy(global_id_wykonania,grupa_id
     .then((res) => {
     // console.log("procesor " +res.data[0].mcr)
     // fechparametryTechnologii
+    console.log("Zmiana grupy: ", res.data)
+    console.log("ostatnie_wykonania: "+ostatnie_wykonania)
     fechparametryTechnologii(zamowienie_id,res.data[0].technologia_id)
 
     });

@@ -24,6 +24,7 @@ export const addRealizajcaOprawy = async (
     .post(IP + "dodaj_realizacje_oprawy/" + sessionStorage.getItem("token"), {
       ...grup,
       naklad: value,
+      brak: false
     })
 
  const { status, insertId,status_grupy,zrealizowano} = res.data;
@@ -57,7 +58,7 @@ export const addRealizajcaOprawy = async (
     })
   );
 
-  socket.emit("realizacja")
+  // socket.emit("realizacja")
         
       } else {
         alert(status.sqlMessage);

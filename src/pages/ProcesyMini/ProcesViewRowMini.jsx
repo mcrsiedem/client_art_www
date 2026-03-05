@@ -117,12 +117,16 @@ if (grup.select) return style.procesRow_select
                 //  className={selectColor(grup.zamowienia_pliki_etap,grup.status,grup.korekta_zamowienia_alert) }
 
                   onDoubleClick={(node, event) => {
-                    onContextMenuHanlder(event,grup)
+
+                    if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1){
+                                          onContextMenuHanlder(event,grup)
          setExpand(!expand)
                       // if(grup.typ_grupy != 1 ){
                       //   fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)
                       // }
                     
+                    }
+
                   }}
                 >
                   {/* <td className={style.td_tableProcesy_nr_stary}>{grup.nr_stary} </td> */}

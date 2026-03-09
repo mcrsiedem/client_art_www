@@ -4,7 +4,7 @@
  * * @param {Array} data - Tablica obiektów do sprawdzenia
  * @returns {Object} Wynik walidacji z informacją o błędach
  */
-function verifyTimelineContinuity(data) {
+export  function verifyTimelineContinuity(data) {
     if (!data || data.length < 2) {
         return { isValid: true, errors: [] };
     }

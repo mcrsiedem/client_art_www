@@ -4,6 +4,7 @@ import Logo_ustawienia2 from "assets/refresh_green2.svg";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
 import iconCalc from "assets/calc.svg";
+import iconCalc2 from "assets/ok.svg";
 import iconSheet from "assets/extract.svg";
 import iconPrzerwa from "assets/magic_przerwa.svg";
 
@@ -19,6 +20,8 @@ import { wagaArkuszy } from "actions/wagaArkuszy";
 import DecodeToken from "pages/Login/DecodeToken";
 import { useSocket } from "context/SocketContext";
 import { sprawdzDostep } from "actions/sprawdzDostep";
+import { verifyTimelineContinuity } from "actions/verifyTimelineContinuity";
+
 
 
 function ProcesyHeader() {
@@ -73,6 +76,7 @@ function ProcesyHeader() {
         <PrzerwaMagicBTN />
         </div>
         <div className={style.centerHeaderContener}>
+        <SprawdzKolejnoscDat />
         <BTN_INFO_ZAMOWIENIA_GRUPY />
         <PrzerwaBTN />
         </div>
@@ -505,6 +509,40 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       src={iconCalc}
       onClick={() => {
               getZamowieniaInfoGrupy(grupy)
+              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+
+      }}
+      alt="React Logo"
+    />
+  );
+}
+
+  function SprawdzKolejnoscDat() {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  // const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+    <img
+      title="Sprawdź ciągłość czasu kalendarza..."
+      className={style.icon2}
+      src={iconCalc2}
+      onClick={() => {
+
+        const raport = verifyTimelineContinuity(grupyWykonanAll)
+        if (!raport.isValid) {
+    alert(`Znaleziono błędy w ciągłości (${raport.totalErrors}):`);
+    raport.errors.forEach(err => {
+        console.error(`- Między ID ${err.afterGlobalId} a ${err.beforeGlobalId}: ${err.type} (${err.gapMinutes} min)`);
+    });
+} else {
+    alert("Ciągłość czasu jest zachowana.");
+}
+        // console.log(raport)
+              // getZamowieniaInfoGrupy(grupy)
               // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
 
       }}

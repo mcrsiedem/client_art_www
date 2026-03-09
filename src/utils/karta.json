@@ -1,0 +1,108 @@
+{
+    "dane": {
+        "id": 1208,
+        "prime_id": null,
+        "utworzono": "2026-03-06 15:03",
+        "nr": "294",
+        "rok": "2026",
+        "tytul": "Ekspresja marzec",
+        "data_przyjecia": "2026-03-06",
+        "data_materialow": "2026-03-06",
+        "data_spedycji": "2026-03-12",
+        "firma": "ArtDruk Sp.",
+        "klient_id": 1,
+        "klient": "DESA Unicum",
+        "opiekun": "Imię Nazwisko"
+    },
+    "produkt": {
+        "zamowienie_id": 1415,
+        "naklad": 700,
+        "ilosc_stron": 252,
+        "format_x": "205",
+        "format_y": "270",
+        "nazwa": "",
+        "oprawa": 51,
+        "uwagi": "",
+        "stan": 1,
+        "status": 1,
+        "etap": 1,
+        "korekta_zamowienia_alert": null
+    },
+    "elementy": [
+        {
+            "typ_nazwa": "Okładka",
+            "ilosc_stron": 4,
+            "format_x": "205",
+            "format_y": "270",
+            "papier": "Kreda mat 300g",
+            "papier_postac_id": "Arkusz",
+            "procesy": [
+                {
+                    "id": 1,
+                    "nazwa": "druk"
+                },
+                      {
+                    "id": 2,
+                    "nazwa": "uszlachetnienie folia mat"
+                }
+            ]
+        },
+        {
+            "typ_nazwa": "Środek",
+            "ilosc_stron": 80,
+            "format_x": "205",
+            "format_y": "270",
+            "papier": "Kreda mat 90g",
+            "papier_postac_id": "Arkusz",
+                        "procesy": [
+                {
+                    "id": 1,
+                    "nazwa": "druk"
+                },
+                      {
+                    "id": 2,
+                    "nazwa": "falcowanie 16stki"
+                }
+            ]
+        }
+    ],
+
+    "arkusze": [
+    {
+        "id": 1,
+        "ilosc_stron": 4,
+        "naklad": 350,
+        "nadkomplet": "300",
+        "nr_arkusza": "1",
+        "papier": "Kreda mat 90g",
+        "arkusz_szerokosc": "500",
+        "arkusz_wysokosc": "700"
+    },
+        {
+        "id": 2,
+        "ilosc_stron": 4,
+        "naklad": 350,
+        "nadkomplet": "300",
+        "nr_arkusza": "1",
+        "papier": "Kreda mat 90g",
+        "arkusz_szerokosc": "500",
+        "arkusz_wysokosc": "700"
+    },
+        {
+        "id": 3,
+        "ilosc_stron": 4,
+        "naklad": 350,
+        "nadkomplet": "300",
+        "nr_arkusza": "1",
+        "papier": "Kreda mat 90g",
+        "arkusz_szerokosc": "500",
+        "arkusz_wysokosc": "700"
+    }
+   
+]
+}
+
+
+
+
+

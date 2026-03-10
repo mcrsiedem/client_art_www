@@ -9,7 +9,7 @@ import { getClients } from "actions/getClients";
 import PanelMini from "./Mini/PanelMini";
 // import PanelDesktop from "./Desktop/PanelDesktop";
 import { getCurrentBuildHash } from "actions/getCurrentBuildHash";
-import PanelDesktop2 from "./Desktop/PanelDesktop2";
+import PanelDesktop2 from "./Desktop/PanelDesktop";
 
 export default function Panel({ user, setUser }) {
   const navigate = useNavigate();

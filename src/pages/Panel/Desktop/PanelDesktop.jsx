@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { IP } from "utils/Host";
 import axios from "axios";
   
-import style from './PanelDesktop2.module.css';
+import style from './PanelDesktop.module.css';
 
 import userOnline from 'assets/user_offline.svg'
 import userOffline from 'assets/user_offline.svg'

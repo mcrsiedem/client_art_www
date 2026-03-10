@@ -1,0 +1,32 @@
+{
+    "planer": [
+        {
+            "Login": "Login",
+            "Panel": [
+                {
+                    "Zamowienia": [
+                        "Header",
+                        "TableFx"
+                    ],
+                    "ModalInsert": [],
+                    "Faktury": [
+                        "Header",
+                        "TableZamowienia"
+                    ],
+                    "Procesy": [
+                        "ProcesyHeader",
+                        "WykonaniaTable",
+                        "Procesory"
+                    ],
+                    "Oprawa": [
+                        "OprawaProcesyHeader",
+                        "WykonaniaTable",
+                        "Procesory"],
+                    "Spedycja": [
+                        "OddanieHeader",
+                        "OddanieTable"]
+                }
+            ]
+        }
+    ]
+}

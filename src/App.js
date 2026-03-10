@@ -32,6 +32,7 @@ import Procesy from "pages/Procesy/Procesy";
 import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawienie";
 import Proofy from "pages/Proofy/Proofy";
 import { UIContextProvider } from "context/UIContext";
+import Diagram from "components/Diagram/Diagram";
 
 export default function App() {
   return (
@@ -60,6 +61,7 @@ export default function App() {
               <Route path='/sandbox' element={<SandBox />} />
               <Route path='/gant' element={<Gant />} />
               <Route path='/Oddania' element={<Oddania />} />
+              <Route path='/Diagram' element={<Diagram />} />
               <Route path='/faktury' element={<ZamowieniaFaktury/>} />
               <Route path='/proofy' element={<Proofy/>} />
               <Route path='/users' element={<UserPermissionsTable/>} />

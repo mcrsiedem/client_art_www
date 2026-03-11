@@ -81,7 +81,7 @@ export default function TableFx({showSettings, setShowSettings}) {
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
-    return saved ? JSON.parse(saved) : { nr: 50, klient: 150,status_nazwa:85,stan: 95,ilosc_stron:30,rok:60,technologia:40 ,naklad:40,format_x:30,format_y:30,cena:60, nr_kalkulacji:100,data_spedycji:70};
+    return saved ? JSON.parse(saved) : { nr: 50, klient: 150,status_nazwa:85,stan: 95,oprawa:100,ilosc_stron:30,rok:60,technologia:25 ,naklad:40,format_x:60,format_y:30,cena:60, nr_kalkulacji:100,data_spedycji:70};
   });
 
 

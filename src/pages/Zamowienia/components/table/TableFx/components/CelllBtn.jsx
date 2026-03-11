@@ -35,13 +35,13 @@ function BtnLock({
 
     return (
      
-        <div>
+      
          <button style={{border:'none',background:'transparent'}}
             alt="Procesy"
           >
           <KeySquare size={16} style={{color: '#c61515'}} />
           </button>
-        </div>
+   
     );
   }
   
@@ -59,7 +59,7 @@ function BtnCirclePlus({
   
     return (
     
-        <div >
+   
       <button style={{color: '#94a3b8',border:'none',background:'transparent'}}
             // className={styles.iconSettings}
             // src={iconAdd}
@@ -79,7 +79,7 @@ function BtnCirclePlus({
             
             </button>
          
-        </div>
+ 
      
     );
   
@@ -98,7 +98,7 @@ function BtnFile({
 
     return (
     
-        <div style={{color: '#94a3b8',border:'none',minWidth: '20px', whiteSpace: 'nowrap'}}>
+      
 
        <button style={{color: '#94a3b8',border:'none',background:'transparent'}}
 
@@ -116,7 +116,7 @@ function BtnFile({
 
           </button>
          
-        </div>
+     
       
     );
   

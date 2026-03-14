@@ -37,6 +37,7 @@ export default function TableFx({showSettings, setShowSettings}) {
   const setZamowienia = contextApp.setZamowienia
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
+  const tableZamowienia= contextApp.tableZamowienia;
 
       const {onMenuHandle} = useMenu()
   
@@ -274,7 +275,7 @@ const sortedItems = useMemo(() => {
         </div>
       )}
 
-      <div className={styles.tableWrapper}>
+      <div ref={tableZamowienia} className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>

@@ -180,7 +180,7 @@ function Szukaj() {
         // let toFilter =  JSON.parse(JSON.stringify(klienciEdit))
         setClientsWyszukiwarka(
           m.filter((k) =>
-            k.firma.toLowerCase().includes(event.target.value.toLowerCase())
+            k?.firma.concat(" ", k?.firma_nazwa ).toLowerCase().includes(event.target.value.toLowerCase())
           )
         );
       }}

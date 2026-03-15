@@ -43,6 +43,7 @@ export default function ProcesViewRow({ grup,i }) {
     const selectedProcesor = techContext.selectedProcesor;
     const setGrupWykonanAll = techContext.setGrupWykonanAll;
     const fechparametryTechnologii = techContext.fechparametryTechnologii;
+    const wykonaniaAll = techContext.wykonaniaAll;
     const [show, setShow] = useState(false);
     const [value, setValue] = useState();
     const [wolno] = useAccess(false);
@@ -82,7 +83,7 @@ export default function ProcesViewRow({ grup,i }) {
       <Czas grup={grup}/>
       <Koniec grup={grup}/>
       <Nr grup={grup}/>
-      <Element grup={grup} selectedProces={selectedProces} procesList={appcontext.procesList} typ_elementu={appcontext.typ_elementu}/>
+      <Element grup={grup} selectedProces={selectedProces} procesList={appcontext.procesList} typ_elementu={appcontext.typ_elementu} wykonaniaAll={wykonaniaAll}/>
       <Klient grup={grup}/>
       <TytulProcesGrup grup={grup}/>
       <DyspersjaGrupa grup={grup}/>

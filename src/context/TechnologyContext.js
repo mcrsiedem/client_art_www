@@ -796,6 +796,8 @@ const cofnijDateOJedenDzien = (dane) => {
       setSelectedProcesor(procesor_id)
       // setDniWstecz(res.data[1][0].dni     )
       setDniWstecz(cofnijDateOJedenDzien(res.data[0])   )
+      setWykonaniaAll(res.data[1])
+      // console.log("wykonania",res.data[1])
 
       return res
     }).then((res) =>{

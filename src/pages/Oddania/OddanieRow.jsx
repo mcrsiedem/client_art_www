@@ -16,7 +16,7 @@ import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOddania } from "./actions/sortOddania";
 import OprawaWykonania from "./OddaniaWykonania/OddaniaWykonania";
-import { zakonczOddanieDodajWykoananie, zakonczOpraweDodajRealizacje } from "./actions/zakonczOddanieDodajWykoananie";
+import { zakonczOddanieDodajWykoananie } from "./actions/zakonczOddanieDodajWykoananie";
 import OddaniaDetails from "./OddaniaDetails/OddaniaDetails";
 
 export default function OddanieRow({ grup,i}) {

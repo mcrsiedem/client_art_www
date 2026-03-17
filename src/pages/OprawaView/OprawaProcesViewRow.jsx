@@ -16,7 +16,7 @@ import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOprawa } from "./actions/sortOprawa";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
-import { zakonczOpraweDodajRealizacje } from "./actions/zakonczOpraweDodajRealizacje";
+
 
 export default function OprawaProcesViewRow({ grup,i}) {
     const techContext = useContext(TechnologyContext);
@@ -263,11 +263,7 @@ function Status({grup}) {
         disabled
         onChange={(event) => {
 
-// console.log("Tuuu2")
-    // if (grup.status > 1 && event.target.value ==4) {
-    //   zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
 
-    // }
 
 
 

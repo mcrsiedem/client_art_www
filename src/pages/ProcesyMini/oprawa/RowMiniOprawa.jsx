@@ -27,7 +27,7 @@ import ElementPane from "./MiniOprawaDetails/components/ElementPane";
 import MiniOprawaDetails from "./MiniOprawaDetails/MiniOprawaDetails";
 import OprawaWykonania from "pages/OprawaView/OprawaWykonania/OprawaWykonania";
 import DodajRealizacjeBtn from "pages/OprawaView/TechnologiaDetails/components/DodajRealizacjeBtn";
-import { zakonczOpraweDodajRealizacje } from "pages/OprawaView/actions/zakonczOpraweDodajRealizacje";
+
 import { ifNoTextSetZero } from "actions/ifNoTextSetZero";
 
 
@@ -338,26 +338,7 @@ function Status({grup}) {
         value={grup.status}
         onChange={(event) => {
 
-    //       if(grup.nazwa == 'Oprawa'){
 
-    //             if (grup.status > 1 && event.target.value ==4) {
-    //   zakonczOpraweDodajRealizacje(grup,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll)
-
-
-    // }
-    
-
-    //       }else{
-
-            
-    //         if(grup.typ_grupy!=1){
-    //           statusGrupyProcesView({...grup, status: event.target.value, stary_status:grup.status})
-    //         }
-    //               if(grup.typ_grupy==1){
-    //                 //przerwa
-    //           statusGrupyProcesViewPrzerwa({...grup, status: event.target.value})
-    //         }
-    //       }
 
 
 

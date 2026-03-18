@@ -5,6 +5,8 @@ import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
 import iconCalc from "assets/calc.svg";
 import iconCalc2 from "assets/ok.svg";
+import iconWytnij from "assets/wytnij.svg";
+import iconWklej from "assets/wklej.svg";
 import iconSheet from "assets/extract.svg";
 import iconPrzerwa from "assets/magic_przerwa.svg";
 
@@ -85,8 +87,10 @@ function ProcesyHeader({handleCtrlV,handleCtrlC}) {
         <PrzerwaMagicBTN />
         </div>
         <div className={style.centerHeaderContener}>
-        <CTRX handleCtrlC={handleCtrlC}/>
-        <CTRV handleCtrlV={handleCtrlV}/>
+        {/* <CTRX handleCtrlC={handleCtrlC}/>
+        <CTRV handleCtrlV={handleCtrlV}/> */}
+        <Wytnij handleCtrlC={handleCtrlC}/>
+        <Wklej handleCtrlV={handleCtrlV}/>
         <SprawdzKolejnoscDat />
         <BTN_INFO_ZAMOWIENIA_GRUPY />
         <PrzerwaBTN />
@@ -98,7 +102,7 @@ function ProcesyHeader({handleCtrlV,handleCtrlC}) {
      
           <img
             className={style.icon_close}
-            src={iconClose2}
+            src={iconWytnij}
             onClick={() => {
               navigate("/Panel");
             }}
@@ -283,7 +287,7 @@ function PrzerwaBTN() {
   const [initMinuty,setInitMintuty] = useState(60)
   return (
 
-      <div  className={style.przerwa_container}>
+      <div title="Wstaw przerwę..." className={style.przerwa_container}>
               <img
         onDragStart={() => handleDragStart()}
         onDragOver={handleDragOver}
@@ -555,6 +559,55 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
         // console.log(raport)
               // getZamowieniaInfoGrupy(grupy)
               // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+
+      }}
+      alt="React Logo"
+    />
+  );
+}
+
+
+  function Wytnij({handleCtrlC}) {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  // const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+    <img
+      title="Wytnij prace... CTRL + X" 
+      className={style.icon2}
+      src={iconWytnij}
+      onClick={() => {
+
+   handleCtrlC()
+
+      }}
+      alt="React Logo"
+    />
+  );
+}
+
+
+
+  function Wklej({handleCtrlV}) {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  // const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+    <img
+      title="Wstaw prace... CTRL + V"
+      className={style.icon2}
+      src={iconWklej}
+      onClick={() => {
+
+   handleCtrlV()
 
       }}
       alt="React Logo"

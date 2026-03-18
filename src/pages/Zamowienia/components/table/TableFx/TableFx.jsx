@@ -22,7 +22,8 @@ import ZamowienieShort from "components/ZamowienieShort/ZamowienieShort";
 
 const STORAGE_KEYS = {
   COLUMNS: "table_css_mod_columns",
-  WIDTHS: "table_css_mod_widths"
+  WIDTHS: "table_css_mod_widths",
+  SORT: "table_css_mod_sort"
 };
 
 export default function TableFx({showSettings, setShowSettings}) {
@@ -72,8 +73,12 @@ export default function TableFx({showSettings, setShowSettings}) {
   ];
 
   // --- STATE: KONFIGURACJA SORTOWANIA ---
-  const [sortConfig, setSortConfig] = useState({ key: 'nr', direction: 'asc' });
-
+  // const [sortConfig, setSortConfig] = useState({ key: 'nr', direction: 'asc' });
+const [sortConfig, setSortConfig] = useState(() => {
+  const saved = localStorage.getItem(STORAGE_KEYS.SORT);
+  // Jeśli mamy zapis w pamięci, parsujemy go, w przeciwnym razie dajemy domyślne wartości
+  return saved ? JSON.parse(saved) : { key: 'nr', direction: 'asc' };
+});
   // --- STATE: WIDOCZNOŚĆ I SZEROKOŚĆ ---
   const [visibleColumns, setVisibleColumns] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
@@ -191,6 +196,10 @@ const sortedItems = useMemo(() => {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.WIDTHS, JSON.stringify(columnWidths));
   }, [columnWidths]);
+
+  useEffect(() => {
+  localStorage.setItem(STORAGE_KEYS.SORT, JSON.stringify(sortConfig));
+}, [sortConfig]);
 
   const handleMouseDown = (id, e) => {
     e.stopPropagation(); // Ważne, aby kliknięcie w resizer nie wyzwalało sortowania

@@ -104,6 +104,7 @@ if(selectedProcesorMulti==selectedProcesor){
 const handleCtrlC = ()=> {
   setSelectedProcesorMulti(selectedProcesor)
 setMultiSelect(grupyWykonanAll.filter((x) => x.select ==true ).flatMap(stage =>stage.global_id))
+console.log("ctr x")
   };
 
   const handleKeyDown = useCallback((event) => {
@@ -133,7 +134,7 @@ useEffect(() => {
 
   return (
     <div className={style.main}>
-        <ProcesyHeader />
+        <ProcesyHeader  handleCtrlV={handleCtrlV} handleCtrlC={handleCtrlC}/>
         <WykonaniaTable  />
       <div className={style.container}>
         <TechnologiaStage/>

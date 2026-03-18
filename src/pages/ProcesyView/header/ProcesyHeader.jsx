@@ -22,9 +22,18 @@ import { useSocket } from "context/SocketContext";
 import { sprawdzDostep } from "actions/sprawdzDostep";
 import { verifyTimelineContinuity } from "actions/verifyTimelineContinuity";
 
+import { 
+  Copy, 
+  ClipboardPaste,
+  ClipboardX,
+  ChevronDown, 
+  ChevronUp,
+  X,
+  CirclePlus,
+  KeySquare
+} from "lucide-react";
 
-
-function ProcesyHeader() {
+function ProcesyHeader({handleCtrlV,handleCtrlC}) {
   const [value, setValue] = useState("cos2");
   const navigate = useNavigate();
   const show = localStorage.getItem("header");
@@ -76,6 +85,8 @@ function ProcesyHeader() {
         <PrzerwaMagicBTN />
         </div>
         <div className={style.centerHeaderContener}>
+        <CTRX handleCtrlC={handleCtrlC}/>
+        <CTRV handleCtrlV={handleCtrlV}/>
         <SprawdzKolejnoscDat />
         <BTN_INFO_ZAMOWIENIA_GRUPY />
         <PrzerwaBTN />
@@ -548,5 +559,57 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       }}
       alt="React Logo"
     />
+  );
+}
+
+  function CTRX({handleCtrlC}) {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  // const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+
+    <button
+      title="Sprawdź ciągłość czasu kalendarza..."
+      className={style.icon4}
+      src={iconCalc2}
+      onClick={() => {
+          handleCtrlC()
+
+      }}
+      alt="React Logo"
+    >
+ctr X    
+      </button>
+  );
+}
+
+  function CTRV({handleCtrlV}) {
+  const contextApp = useContext(AppContext);
+  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
+  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+    const techContext = useContext(TechnologyContext);
+    const grupyWykonanAll = techContext.grupyWykonanAll;
+  
+  // const grupy = grupyWykonanAll.filter(x=>x.select==true).map(x => {return {global_id: x.global_id}}  );
+  return (
+
+    <button
+      title="Sprawdź ciągłość czasu kalendarza..."
+      className={style.icon4}
+      src={iconCalc2}
+      onClick={() => {
+          handleCtrlV()
+
+      }}
+      alt="React Logo"
+    >
+      ctrl V
+                                  {/* <ClipboardX size={10} style={{ opacity: 1 }} /> */}
+      
+      </button>
   );
 }

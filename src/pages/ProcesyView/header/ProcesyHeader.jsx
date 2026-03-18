@@ -102,7 +102,7 @@ function ProcesyHeader({handleCtrlV,handleCtrlC}) {
      
           <img
             className={style.icon_close}
-            src={iconWytnij}
+            src={iconClose2}
             onClick={() => {
               navigate("/Panel");
             }}

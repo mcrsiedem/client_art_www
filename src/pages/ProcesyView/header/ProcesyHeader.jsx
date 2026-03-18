@@ -573,7 +573,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
   return (
 
     <button
-      title="Sprawdź ciągłość czasu kalendarza..."
+      title="Wytnij zaznaczone prace..."
       className={style.icon4}
       src={iconCalc2}
       onClick={() => {
@@ -582,7 +582,7 @@ function ProcesSelect({ selectedProces,setSelectedProces,setSelectedProcesor,sel
       }}
       alt="React Logo"
     >
-ctr X    
+ctrl + x    
       </button>
   );
 }
@@ -598,7 +598,7 @@ ctr X
   return (
 
     <button
-      title="Sprawdź ciągłość czasu kalendarza..."
+      title="Wklej prace..."
       className={style.icon4}
       src={iconCalc2}
       onClick={() => {
@@ -607,7 +607,7 @@ ctr X
       }}
       alt="React Logo"
     >
-      ctrl V
+      ctrl + v
                                   {/* <ClipboardX size={10} style={{ opacity: 1 }} /> */}
       
       </button>

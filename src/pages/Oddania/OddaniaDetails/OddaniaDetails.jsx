@@ -8,7 +8,7 @@ import OddaniaWykonania from "../OddaniaWykonania/OddaniaWykonania";
 import DodajOddanieBtn from "./components/DodajOddanieBtn";
 import DodajOddanieBrakBtn from "./components/DodajOddanieBrakBtn";
 
-export default function OddaniaDetails({grup,mini}) {
+export default function OddaniaDetails({grup,mini,setIsLoading}) {
 
 if(grup.show)
   return (
@@ -19,7 +19,7 @@ if(grup.show)
           <div className={style.stage}>
             <OddaniaWykonania grup={grup}/>
             <div className={style.stageBtn}>
-              <DodajOddanieBrakBtn grup={grup}/>
+            <DodajOddanieBrakBtn grup={grup}/>
             <DodajOddanieBtn grup={grup}/>
             </div>
             

@@ -5,7 +5,7 @@ import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
 export const addRealizajcaOddania= async (
-  setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,typ
+  setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,typ,setIsLoading
 ) => {
   let status, insertId,status_grupy,oddano;
   await axios
@@ -55,5 +55,5 @@ export const addRealizajcaOddania= async (
       }
 
       setShow(false);
-    });
+    }).then((res)=>{setIsLoading(false)});
 };

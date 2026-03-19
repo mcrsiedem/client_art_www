@@ -6,7 +6,7 @@ import { today_teraz } from "actions/today_teraz";
 
 export const zakonczOddanieDodajWykoananie = async (
   grup,
-  oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania
+  oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania,setIsLoading
 ) => {
   let status, insertId,status_grupy,brakujacy_naklad,oddano;
   await axios
@@ -59,5 +59,5 @@ export const zakonczOddanieDodajWykoananie = async (
       }
 
       // setShow(false);
-    });
+    }).then((res)=>{ setIsLoading(false)});
 };

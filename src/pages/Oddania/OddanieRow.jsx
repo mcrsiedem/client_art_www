@@ -75,7 +75,7 @@ let prevet = true;
         <Uwagi grup={grup} />
       </tr>
 
-        <OddaniaDetails mini={false} grup={grup}/>
+        <OddaniaDetails mini={false} grup={grup} />
     </>
   );
 
@@ -234,6 +234,7 @@ function Status({grup}) {
   const setOddaniaGrupy =contextApp.setOddaniaGrupy
   const oddaniaWykonania =contextApp.oddaniaWykonania
   const setOddaniaWykonania =contextApp.setOddaniaWykonania
+  const setIsLoading = contextApp.setIsLoading;
 
   
             const selectColor = (status) => {
@@ -257,10 +258,10 @@ function Status({grup}) {
        className={selectColor(grup.status) }
         value={grup.status}
         onChange={(event) => {
-
+    setIsLoading(true)
 
     if (grup.status > 0 && event.target.value ==4) {
-      zakonczOddanieDodajWykoananie(grup,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania)
+      zakonczOddanieDodajWykoananie(grup,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania,setIsLoading)
 
     }
 

@@ -18,7 +18,7 @@ export default function ZapiszBrak({setShow,grup,value}) {
         const setOddaniaGrupy =appContext.setOddaniaGrupy
         const oddaniaWykonania =appContext.oddaniaWykonania
         const setOddaniaWykonania =appContext.setOddaniaWykonania
-
+ const setIsLoading =appContext.setIsLoading
         
     
     return (
@@ -28,7 +28,8 @@ export default function ZapiszBrak({setShow,grup,value}) {
             if(value==""){
             alert("Dodaj ilość")
           }else{
-                addRealizajcaBrakOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,2)
+            setIsLoading(true)
+                addRealizajcaBrakOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,2,setIsLoading)
           setShow(false)
           }
        

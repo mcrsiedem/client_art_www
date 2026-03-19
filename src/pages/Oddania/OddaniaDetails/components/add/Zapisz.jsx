@@ -18,6 +18,7 @@ export default function Zapisz({setShow,grup,value}) {
         const setOddaniaGrupy =appContext.setOddaniaGrupy
         const oddaniaWykonania =appContext.oddaniaWykonania
         const setOddaniaWykonania =appContext.setOddaniaWykonania
+        const setIsLoading =appContext.setIsLoading
 
         
     
@@ -28,7 +29,8 @@ export default function Zapisz({setShow,grup,value}) {
             if(value==""){
             alert("Dodaj ilość")
           }else{
-                     addRealizajcaOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,1)
+            setIsLoading(true)
+                     addRealizajcaOddania(setShow,grup,value,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania, setOddaniaWykonania,1,setIsLoading)
           setShow(false)
           }
   

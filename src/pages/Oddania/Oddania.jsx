@@ -12,6 +12,7 @@ import { _status } from "utils/initialvalue";
 import { sortOddania } from "./actions/sortOddania";
 import OddanieRow from "./OddanieRow";
 import OddaniaHeader from "./OddaniaHeader";
+import Loading from "components/Loading/Loading";
 
 export default function Oddania( ) {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ export default function Oddania( ) {
         <OddaniaTable  />
       <div className={style.container}>
         {/* <TechnologiaStage/> */}
+         <Loading/>
  
       </div>
     </div>
@@ -61,6 +63,7 @@ const OddaniaTable = () => {
   const oddaniaGrupy =appContext.oddaniaGrupy;
   const sortowanieOddania = appContext.sortowanieOddania;
   const setSortowanieOddania = appContext.setSortowanieOddania;
+    const setIsLoading = appContext.setIsLoading;
 
   return (
     <div className={style.container}>

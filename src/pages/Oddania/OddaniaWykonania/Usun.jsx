@@ -20,11 +20,13 @@ export default function Usun({grupaOddanie,wykonanieOddania}) {
           const setOddaniaGrupy =appContext.setOddaniaGrupy
           const oddaniaWykonania =appContext.oddaniaWykonania
           const setOddaniaWykonania =appContext.setOddaniaWykonania
+          const setIsLoading =appContext.setIsLoading
     return (
       <button
         className={style.skasujBtn}
         onClick={() => {
-           deleteRealizajcaOddania(grupaOddanie,wykonanieOddania,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania )
+          setIsLoading(true)
+           deleteRealizajcaOddania(grupaOddanie,wykonanieOddania,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania,setIsLoading )
           
           }} 
       >

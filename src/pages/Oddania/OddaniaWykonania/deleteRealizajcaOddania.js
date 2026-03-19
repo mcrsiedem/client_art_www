@@ -4,7 +4,7 @@ import { getClients } from "actions/getClients";
 import { getMaxID } from "actions/getMaxID";
 import { today_teraz } from "actions/today_teraz";
 
-export const deleteRealizajcaOddania = async (grupaOddanie,wykonanieOddania,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania) => {
+export const deleteRealizajcaOddania = async (grupaOddanie,wykonanieOddania,oddaniaGrupy,setOddaniaGrupy,oddaniaWykonania,setOddaniaWykonania,setIsLoading) => {
   let status,status_grupy,oddano;
   await axios
     .post(IP + "usun_realizacje_oddania/" + sessionStorage.getItem("token"), {
@@ -40,5 +40,5 @@ export const deleteRealizajcaOddania = async (grupaOddanie,wykonanieOddania,odda
         alert(status.sqlMessage);
       }
     
-    });
+    }).then((res)=>{setIsLoading(false)});
 };

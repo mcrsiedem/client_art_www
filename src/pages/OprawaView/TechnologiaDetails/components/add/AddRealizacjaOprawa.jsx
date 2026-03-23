@@ -23,22 +23,22 @@ export default function AddRealizacjaOprawa({ setShow, show, grup, value, setVal
         
         <div className={style.center}>
           <div className={style.columnContainer}>
-            {/* Sekcja Nakładu */}
-            <Naklad grup={grup} value={value} setValue={setValue} />
-            
-            {/* Sekcja Checkboxa "Dodaj jako brak" */}
-            <div className={style.checkboxWrapper}>
-              <input
-                type="checkbox"
-                id="isBrakCheckbox"
-                className={style.checkboxInput}
-                checked={isBrak}
-                onChange={(e) => setIsBrak(e.target.checked)}
-              />
-              <label htmlFor="isBrakCheckbox" className={style.checkboxLabel}>
-                Dodaj jako brak
-              </label>
-            </div>
+                {/* Sekcja Nakładu */}
+                
+                {/* Sekcja Checkboxa "Dodaj jako brak" */}
+                <Naklad grup={grup} value={value} setValue={setValue} />
+                <div className={style.checkboxWrapper}>
+                  <input
+                    type="checkbox"
+                    id="isBrakCheckbox"
+                    className={style.checkboxInput}
+                    checked={isBrak}
+                    onChange={(e) => setIsBrak(e.target.checked)}
+                  />
+                  <label htmlFor="isBrakCheckbox" className={style.checkboxLabel}>
+                    Dodaj jako brak
+                  </label>
+                </div>
           </div>
         </div>
 

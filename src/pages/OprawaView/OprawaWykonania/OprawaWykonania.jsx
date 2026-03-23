@@ -22,15 +22,22 @@ export default function OprawaWykonania({ grup }) {
                     <p className={style.title2}>   {wykonanie.dodal || DecodeToken(sessionStorage.getItem("token")).imie +" "+DecodeToken(sessionStorage.getItem("token")).nazwisko } </p>
 
                      </div>
-              <div className={style.row}>
+                     {wykonanie.typ == 1 ?                 <div className={style.row_brak}>
+                    <div className={style.center}> 
+                    <p className={style.title}>   {wykonanie.utworzono  } Brak:</p>
+                    <p className={style.naklad}>   {wykonanie.naklad}</p>
+                    <p className={style.title}>   szt.</p>
+                    </div>
+                  <Usun grup={grup} wykonanie={wykonanie}/>
+              </div>:                <div className={style.row}>
                     <div className={style.center}> 
                     <p className={style.title}>   {wykonanie.utworzono  } Oprawiono:</p>
                     <p className={style.naklad}>   {wykonanie.naklad}</p>
                     <p className={style.title}>   szt.</p>
-                     </div>
-                  {/* <button className={style.skasujBtn}>Usuń </button> */}
+                    </div>
                   <Usun grup={grup} wykonanie={wykonanie}/>
-              </div>
+              </div> }
+
               </div>
             </>
           );

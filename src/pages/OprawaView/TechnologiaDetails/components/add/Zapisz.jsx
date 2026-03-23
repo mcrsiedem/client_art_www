@@ -5,7 +5,7 @@ import { addRealizajcaOprawy } from "./addRealizajcaOprawy";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 import { useSocket } from "context/SocketContext";
-export default function Zapisz({setShow,grup,value}) {
+export default function Zapisz({setShow,grup,value,isBrak}) {
 
     const techContext = useContext(TechnologyContext);
     const appContext = useContext(AppContext);
@@ -25,7 +25,7 @@ export default function Zapisz({setShow,grup,value}) {
           if(value==""){
             alert("Dodaj ilość")
           }else{
-                  addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading,socket)
+          addRealizajcaOprawy(setShow,grup,value,wykonaniaOprawy,setWykonaniaOprawy,grupyOprawaAll,setGrupyOprawaAll,setIsLoading,socket,isBrak)
           setShow(false)
           }
     

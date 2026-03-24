@@ -19,6 +19,7 @@ import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
 import DiaglogAlert from "components/Dialog/DiaglogAlert";
 import TableFx from "./components/table/TableFx/TableFx";
+import DialogHipopotamapi from "components/DialogHipopotam/DialogHipopotamapi";
 function Zamowienia() {
 
   const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading} = useContext(AppContext);
@@ -80,6 +81,7 @@ function Zamowienia() {
 
        <Loading/>
        <DiaglogAlert/>
+       <DialogHipopotamapi/>
     </div>
   );
 }

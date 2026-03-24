@@ -15,9 +15,9 @@ export default function Ktotam ({socket,hipopotemDialogBox,setIsOpen}){
                     socket.emit("ktotam");
                   }
 
-  // hipopotemDialogBox.current.show();
-  // hipopotemDialogBox.current.showOK();
-  // hipopotemDialogBox.current.hide();
+  hipopotemDialogBox.current.show();
+  hipopotemDialogBox.current.showOK();
+  hipopotemDialogBox.current.hide();
 
 
 

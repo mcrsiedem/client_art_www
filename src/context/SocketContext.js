@@ -5,6 +5,7 @@ import { IP_SOCKET } from 'utils/Host';
 import { IP } from "utils/Host";
 import axios from "axios";
 import { todayMinusDniGodziny } from 'actions/todayMinusDniGodziny';
+import { AppContext } from './AppContext';
 
   
  let newSocket;
@@ -20,8 +21,9 @@ const setToken = (token) => STORAGE_TYPE.setItem(TOKEN_KEY, token);
 const removeToken = () => STORAGE_TYPE.removeItem(TOKEN_KEY);
 
 // --- Kontekst ---
-const SocketContext = createContext(null);
+export const SocketContext = createContext(null);
 export const useSocket = () => useContext(SocketContext);
+
 
 // 🔑 KLUCZOWA ZMIANA: Funkcja do inicjalizacji stanu ID
 const getInitialUserId = () => {
@@ -49,6 +51,9 @@ export const SocketProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
     const reconnectTimerRef = useRef(null); 
     const lokalizacja = useRef(null); 
+    const [showHipopotamApi, setShowHipopotamApi] = useState(true);
+
+    
     
     // const {callPodgladRalizacji,podgladRealizacji, setPodgladRealizacji,loading, setLoading} = useRealizacje(); 
     
@@ -240,6 +245,7 @@ const logoutIO = useCallback(() => {
   }, []);
 
 
+
     useEffect(() => {
         const token = getToken();
         
@@ -299,8 +305,11 @@ const logoutIO = useCallback(() => {
     // setPodgladRealizacji([]);
         });
 
+            //hipopotem
+            newSocket.on("hipopotam", () => {
+                setShowHipopotamApi(true)
 
-
+            });
 
 
             newSocket.on("pobierz_podglad_realizacji", () => {
@@ -413,6 +422,7 @@ console.log(sockets)
         usersIO,
         currentUserId,
         logoutIO,
+        showHipopotamApi, setShowHipopotamApi,
         podgladRealizacji,lokalizacja,callPodgladRalizacji,loading, setLoading
     }), [socket, isConnected, isAuthenticated, usersIO, currentUserId,podgladRealizacji,logoutIO,lokalizacja,callPodgladRalizacji,loading, setLoading]);
     

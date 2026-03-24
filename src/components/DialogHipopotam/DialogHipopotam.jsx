@@ -32,6 +32,7 @@ if(showSnackbar){
       className={style.ok_icon}
       src={iconOK}
       alt="Procesy"
+      onClick={()=>{setShowSnackbar(false)}}
     /> 
    
       

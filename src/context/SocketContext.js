@@ -51,7 +51,7 @@ export const SocketProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!getToken());
     const reconnectTimerRef = useRef(null); 
     const lokalizacja = useRef(null); 
-    const [showHipopotamApi, setShowHipopotamApi] = useState(true);
+    const [showHipopotamApi, setShowHipopotamApi] = useState(false);
 
     
     

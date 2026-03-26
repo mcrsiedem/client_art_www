@@ -69,6 +69,7 @@ export default function TableFx({showSettings, setShowSettings}) {
     { id: "status_nazwa", label: "Status" , visible: true},
     { id: "stan", label: "Stan" , visible: true},
     { id: "etap", label: "Etap zamówienia" , visible: true},
+    { id: "lista_faktur", label: "Faktury" , visible: false},
     
   ];
 

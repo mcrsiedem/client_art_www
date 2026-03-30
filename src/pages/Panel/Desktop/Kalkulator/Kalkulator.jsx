@@ -25,6 +25,8 @@ const Kalkulator = () => {
   const [totalThickness, setTotalThickness] = useState(0);
     const [totalWeight, setTotalWeight] = useState(0);
   const [nr, setNr] = useState();
+  const [naklad, setNaklad] = useState(1);
+  const [warstwy, setWarstwy] = useState(1);
   const [rok, setRok] = useState(2026);
 
   const scrollRef = useRef(null);
@@ -137,6 +139,8 @@ const Kalkulator = () => {
 
 const pobierzElementyZamowienia = async () => {
   // 1. Czekamy aż dane zostaną pobrane i przypisane do zmiennej data
+  setNaklad(1)
+  setWarstwy(1)
   const data = await getElementy(nr, rok);
 
   // 2. Wykonujemy resztę logiki tylko gdy mamy dane
@@ -283,21 +287,53 @@ const pobierzElementyZamowienia = async () => {
           </span>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
-            <span className={styles.totalValue}>{totalThickness}</span>
+            <span className={styles.totalValue}>{(totalThickness* naklad * warstwy).toFixed(2)}</span>
             <span className={styles.unit}>mm</span>
             <span className={styles.unit2}> - </span>
 
 
 
-                <span className={styles.totalWeight}>{totalWeight}</span>
+                <span className={styles.totalWeight}>{(totalWeight * naklad * warstwy).toFixed(2)}</span>
                 <span className={styles.unit}>kg</span>
           </div>
           
-          <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center', gap: '25px' }}>
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <Layers size={16} /> 
-              <span>Łącznie stron: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
+              <span>Strony: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
             </div>
+
+                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Layers size={16} /> 
+              <span>Ilość w paczce : </span>                           <input 
+                    className={styles.inputNaklad}
+                    placeholder='1'
+                    title={naklad.toLocaleString()}
+
+                    type="text"
+                    value={naklad}
+
+                    onChange={(e) => setNaklad( e.target.value)}
+                  />
+            </div>
+
+
+                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Layers size={16} /> 
+              <span>Warstwy : </span>                           <input 
+                    className={styles.inputNaklad}
+                    placeholder='1'
+                    title={warstwy.toLocaleString()}
+
+                    type="text"
+                    value={warstwy}
+
+                    onChange={(e) => setWarstwy( e.target.value)}
+                  />
+            </div>
+
+
+
           </div>
           </div>
           <div className={styles.resultAreaRight}>

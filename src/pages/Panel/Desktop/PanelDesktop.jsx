@@ -105,7 +105,7 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
       { 
         id: 5, 
         label: 'Kalkulator do grzbietów', 
-        desc: 'Policz grubość grzbietu', 
+        desc: 'Policz grubość grzbietu oraz wagę', 
         // icon: <TrendingUp size={32} />, 
         icon: <CalculatorIcon size={32} />, 
         glow: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 179, 8, 0.9))' ,

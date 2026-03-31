@@ -221,6 +221,8 @@ const getElementy = async (nr, rok) => {
 
     // Aktualizujemy kontekst dla innych komponentów
     techcontext.setElementyTech(res.data);
+    techcontext.setDaneTech(res.data[1]);
+    console.log(res.data[1]);
     
     // Zwracamy dane, aby móc z nich skorzystać w łańcuchu async/await
     return res.data[0];

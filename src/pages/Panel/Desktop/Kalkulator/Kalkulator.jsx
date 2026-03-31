@@ -34,6 +34,7 @@ const Kalkulator = () => {
 
   // 1. Pobranie danych z API przy montowaniu
   useEffect(() => {
+    techcontext.setDaneTech([])
     callForPaper();
   }, []);
 
@@ -143,9 +144,8 @@ const pobierzElementyZamowienia = async () => {
   setNaklad(1)
   setWarstwy(1)
   const data = await getElementy(nr, rok);
-
   // 2. Wykonujemy resztę logiki tylko gdy mamy dane
-  if (data && Array.isArray(data)) {
+  if (data[0] && Array.isArray(data)) {
     const sec = data.map(x => ({
       id: x.id,
       pages: x.ilosc_stron,
@@ -158,7 +158,7 @@ const pobierzElementyZamowienia = async () => {
     }));
 
     // 3. Aktualizujemy stan sekcji
-  console.log(data)
+  // console.log(data)
 
     setSections(sec);
   }
@@ -180,9 +180,14 @@ const pobierzElementyZamowienia = async () => {
           <div>
             <h1 className={styles.headerTitle}>
               <BookOpen size={32} color="#b1ec10" /> 
-              Kalkulator Grzbietu **
+              Kalkulator Grzbietu
             </h1>
-            <p className={styles.headerSubtitle}>** Oblicz grubość grzbietu, a jak nie ma papieru to napisz do Piotra prośbę o dodanie.</p>
+            {/* <p className={styles.headerSubtitle}>.</p> */}
+            {/* <p className={styles.headerSubtitle}>Oblicz grubość grzbietu oraz wagę...</p> */}
+
+            {techcontext.daneTech.length > 0 ? (<p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p>): (<p className={styles.headerSubtitle}>Policz grzbiet oraz wage...</p>)}
+            {/* // <p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p> */}
+            
           </div>
           
 

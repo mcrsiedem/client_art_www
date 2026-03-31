@@ -152,8 +152,9 @@ function Procesory() {
   return (
     <div className={style.procesor_btn_container}>
 
+{/* wyłączony vitrualny kolbus i korokodajl */}
 {procesory
-         ?.filter(x => x.grupa == selectedProces  )
+         ?.filter(x => x.grupa == selectedProces && x.virtual != 1 )
         .map((procesor) => (
 
           <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />

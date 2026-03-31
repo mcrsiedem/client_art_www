@@ -238,8 +238,10 @@ function Procesory() {
                 .map((procesor) => (
                   <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
                 ))}
+{/* wyłączony vitrualna XL SM FALC */}
+
         {procesory
-                ?.filter(x => x.grupa == selectedProces && x.id !=35 )
+                ?.filter(x => x.grupa == selectedProces && x.id !=35  && x.virtual != 1)
                 .map((procesor) => (
                   <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
                 ))}

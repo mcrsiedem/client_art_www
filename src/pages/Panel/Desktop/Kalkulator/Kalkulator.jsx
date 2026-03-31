@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
 import styles from './Kalkulator.module.css';
-import { BookOpen, Calculator, Plus, Trash2, Layers, ClosedCaptionIcon, ArrowDownRightFromSquareIcon, X,Download } from 'lucide-react';
+import { BookOpen, Plus, Trash2, Layers, X,Download,Grid3X3, Box, File } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
@@ -27,6 +27,7 @@ const Kalkulator = () => {
   const [nr, setNr] = useState();
   const [naklad, setNaklad] = useState(1);
   const [warstwy, setWarstwy] = useState(1);
+  const [iloscNaWarstwie, setIloscNaWarstwie] = useState(1);
   const [rok, setRok] = useState(2026);
 
   const scrollRef = useRef(null);
@@ -293,44 +294,14 @@ const pobierzElementyZamowienia = async () => {
 
 
 
-                <span className={styles.totalWeight}>{(totalWeight * naklad * warstwy).toFixed(2)}</span>
+                <span className={styles.totalWeight}>{(totalWeight * naklad * warstwy *iloscNaWarstwie).toFixed(2)}</span>
                 <span className={styles.unit}>kg</span>
           </div>
           
           <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
-              <Layers size={16} /> 
-              <span>Strony: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
-            </div>
-
-                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
-              <Layers size={16} /> 
-              <span>Ilość w paczce : </span>                           <input 
-                    className={styles.inputNaklad}
-                    placeholder='1'
-                    title={naklad.toLocaleString()}
-
-                    type="text"
-                    value={naklad}
-
-                    onChange={(e) => setNaklad( e.target.value)}
-                  />
-            </div>
 
 
-                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
-              <Layers size={16} /> 
-              <span>Warstwy : </span>                           <input 
-                    className={styles.inputNaklad}
-                    placeholder='1'
-                    title={warstwy.toLocaleString()}
-
-                    type="text"
-                    value={warstwy}
-
-                    onChange={(e) => setWarstwy( e.target.value)}
-                  />
-            </div>
+            
 
 
 
@@ -366,6 +337,55 @@ const pobierzElementyZamowienia = async () => {
           </div>
 
 
+        </div>
+        <div className={styles.resultAreaBottom}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <File  color="#1c8de9" size={16} /> 
+              <span>Strony: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
+            </div>
+
+                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Box color="#933e3e" size={16} /> 
+              <span>Ilość w paczce : </span>                           <input 
+                    className={styles.inputNaklad}
+                    placeholder='1'
+                    title={naklad.toLocaleString()}
+
+                    type="text"
+                    value={naklad}
+
+                    onChange={(e) => setNaklad( e.target.value)}
+                  />
+            </div>
+
+
+                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Layers  color="#a9ac18" size={16} /> 
+              <span>Warstwy : </span>                           <input 
+                    className={styles.inputNaklad}
+                    placeholder='1'
+                    title={warstwy.toLocaleString()}
+
+                    type="text"
+                    value={warstwy}
+
+                    onChange={(e) => setWarstwy( e.target.value)}
+                  />
+            </div>
+
+                                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+              <Grid3X3  color="#3e9392" size={16} /> 
+              <span>Ilość paczek na warstwie : </span>                           <input 
+                    className={styles.inputNaklad}
+                    placeholder='1'
+                    title={iloscNaWarstwie.toLocaleString()}
+
+                    type="text"
+                    value={iloscNaWarstwie}
+
+                    onChange={(e) => setIloscNaWarstwie( e.target.value)}
+                  />
+            </div>
         </div>
       </div>
     </div>

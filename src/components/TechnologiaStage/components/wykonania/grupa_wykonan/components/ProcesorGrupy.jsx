@@ -56,7 +56,7 @@ export default  function ProcesorGrupy({ rowGrupa,rowProces, handleChangeCardOpr
         }}
       >
         {procesory
-        .filter(x => x.grupa == rowProces.nazwa_id )
+        .filter(x => x.grupa == rowProces.nazwa_id && x.virtual != 1)
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}

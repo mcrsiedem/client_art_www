@@ -694,7 +694,7 @@ function NR_ZAMOWIENIA( ){
           className={style.input}
           type="text"
           title="Numer zamówienia"
-       value={daneZamowienia.nr } 
+       value={daneZamowienia.nr ||"" } 
 readOnly={true}
         ></input>
       </div>

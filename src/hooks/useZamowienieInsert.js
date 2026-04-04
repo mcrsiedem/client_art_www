@@ -51,20 +51,17 @@ const {refreshZamowienia} = useZamowienia()
 
           const saved  = await save({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kosztyDodatkoweZamowienia,ksiegowosc,faktury,daneZamowienia,procesyProduktow})
 
-          if(saved.data !="error"){
+          let zapisOK = saved.data[0][0].zapis
+          
+          if(zapisOK){
 
-     const   zamowienie_id = saved.data[0][1].zamowienie_id; 
-
-          response.push(saved.data)
-          console.log(response)
-
-          if(isSavedCorrect(response).status) {
-
+            
+            const   zamowienie_id = saved.data[0][1].zamowienie_id; 
+            console.log(`ID ${zamowienie_id} Zapis zamówienia`)
             dialogBox.current.showOK();
-        
-          const res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
-        
 
+
+          const res = await axios.get(IP + "parametry/"+zamowienie_id+"/"+ sessionStorage.getItem("token"));
           setDaneZamowienia(res.data[0][0])
           setProdukty(res.data[1])
           setElementy(res.data[2])
@@ -78,14 +75,16 @@ const {refreshZamowienia} = useZamowienia()
           //pliki
           setProcesyProduktow(res.data[13])
           // socket.emit("realizacja")
-           }else{
-            alert("Błąd")
-           }
+          //  }else{
+          //   alert("Błąd")
+          //  }
            
            refreshZamowienia();
            dialogBox.current.hide();
           }else{
-            alert("Bład zapisu zamówienia...")
+          let errorMessage = saved.data[0][1].message
+
+            alert("Bład zapisu zamówienia... "+errorMessage)
              dialogBox.current.hide();
           }
   
@@ -102,22 +101,6 @@ const save = ({produkty,elementy,fragmenty,oprawa,procesyElementow,pakowanie,kos
 
   })
 }
-
-const isSavedCorrect = (response) =>{
-
-  // sprawdza wszystkie statusy z opowiedzi
-  // jeśli chociaż jednej jest false to cały zapis trzeba anulować 
-
-  for( let val of response){
-    for( let value of val){
-      if (value[0].zapis == false) return {status: false, error: value[1] }
-    }
-  }
-
-  return {status: true }
-  
-}
-
 
   return[zapiszZamowienie]
 }

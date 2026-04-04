@@ -9,6 +9,8 @@ export const addDostepnoscPapieru = async (
   grup
 ) => {
   try {
+        console.log(`dostępność papieru`)
+
     const res = await axios.put(
       IP + "dodaj_info_dostepnosc_papieru/" + sessionStorage.getItem("token"),
       {

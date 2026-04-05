@@ -121,15 +121,15 @@ export function useZamowienia() {
       });
   };
 
-  async function zmienEtapWydrukowane(techologie) {
-    await axios.put(
-      IP + "zmieni_etap_wydrukowane/" + sessionStorage.getItem("token"),
+  // async function zmienEtapWydrukowane(techologie) {
+  //   await axios.put(
+  //     IP + "zmieni_etap_wydrukowane/" + sessionStorage.getItem("token"),
 
-      techologie,
-    );
+  //     techologie,
+  //   );
 
-    refreshZamowienia();
-  }
+  //   refreshZamowienia();
+  // }
 
 
 
@@ -239,7 +239,7 @@ const getElementy = async (nr, rok) => {
     refreshZamowienia,
     odblokujZamowienie,
     deleteZamowienie,
-    zmienEtapWydrukowane,
+    // zmienEtapWydrukowane,
     refreshZamowieniaFaktury,
     refreshZamowieniaNiezamknieteKoszty,
     refreshZamowieniaProofy,

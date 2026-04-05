@@ -35,7 +35,7 @@ export function useTechnologiaInsert() {
     setGrupaOprawaTech,
   } = useContext(TechnologyContext);
 
-  async function zapiszTechnologiePool() {
+  async function zapiszTechnologie() {
 
     
     let payload= [daneTech,produktyTech,
@@ -90,7 +90,7 @@ try {
   }
 
 
-  return { zapiszTechnologiePool };
+  return { zapiszTechnologie };
 }
 
 

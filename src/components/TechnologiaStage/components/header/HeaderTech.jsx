@@ -22,6 +22,7 @@ import FormToPdf from "components/pdf/FormToPDF";
 import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
 import {Folder, FolderOpenDot, LampFloor, LayoutGrid, LucideLampFloor } from 'lucide-react';
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { useTechnologiaInsert } from "hooks/useTechnologiaInsert";
 
 
 
@@ -263,6 +264,7 @@ const ZapisBtnPromise = () => {
 
   const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
+  const {zapiszTechnologiePool} = useTechnologiaInsert()
 
  if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
@@ -276,31 +278,33 @@ const ZapisBtnPromise = () => {
         if(daneTech.id == 1){
         console.log("zapis 1st ");
         daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
-        zapiszTechnologie({
-          daneTech,
-          produktyTech,
-          elementyTech,
-          fragmentyTech,
-          oprawaTech,
-          arkusze,
-          legi,
-          legiFragmenty,
-          grupaWykonan,
-          wykonania,
-          procesyElementowTech,
-          setProduktyTech,
-          setDaneTech,
-          setElementyTech,
-          setFragmentyTech,
-          setOprawaTech,
-          setLegi,
-          setLegiFragmenty,
-          setArkusze,
-          setGrupaWykonan,
-          setWykonania,
-          setProcesyElementowTech,setSaveButtonDisabled,
-          grupaOprawaTech, setGrupaOprawaTech
-        });
+
+        zapiszTechnologiePool()
+        // zapiszTechnologie({
+        //   daneTech,
+        //   produktyTech,
+        //   elementyTech,
+        //   fragmentyTech,
+        //   oprawaTech,
+        //   arkusze,
+        //   legi,
+        //   legiFragmenty,
+        //   grupaWykonan,
+        //   wykonania,
+        //   procesyElementowTech,
+        //   setProduktyTech,
+        //   setDaneTech,
+        //   setElementyTech,
+        //   setFragmentyTech,
+        //   setOprawaTech,
+        //   setLegi,
+        //   setLegiFragmenty,
+        //   setArkusze,
+        //   setGrupaWykonan,
+        //   setWykonania,
+        //   setProcesyElementowTech,setSaveButtonDisabled,
+        //   grupaOprawaTech, setGrupaOprawaTech
+        // });
        
       }
 

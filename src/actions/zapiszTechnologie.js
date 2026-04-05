@@ -126,16 +126,6 @@ const isSavedCorrect = (response) =>{
   
 }
 
-// const isSavedCorrect2 = (response) =>{
-//   for( let val of response){
-//     for( let value of val){
-//       if (value[0].zapis == false) return false
-//     }
-//   }
-
-//   return true;
-  
-// }
 
 
 //----------------------------------------------------------------------------------

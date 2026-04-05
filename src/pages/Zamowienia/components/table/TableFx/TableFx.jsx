@@ -426,12 +426,12 @@ function CellContent({ row, colId }) {
     case "nr": return <div style={{fontWeight: 'bold', paddingRight:'5px',textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
     case "format_x": return `${row.format_x}x${row.format_y} `;
-    case "naklad": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.naklad.toLocaleString()}</div>;
+    case "naklad": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.naklad?.toLocaleString()}</div>;
     case "ilosc_stron": return <div style={{textAlign:'right', paddingRight:'5px'}}>{ row.ilosc_stron}</div>;
 
     case "cena": return <span className={styles.price2}>{row.cena}</span>;
     case "waluta_id": return <span >{_waluta.filter((s) => s.id == row.waluta_id).map((x) => x.nazwa)}</span>;
-    case "wartosc_zamowienia": return <span >{row.wartosc_zamowienia.replace('.', ',').trim()} </span>;
+    case "wartosc_zamowienia": return <span >{row.wartosc_zamowienia?.replace('.', ',').trim()} </span>;
     case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
     // case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;
     // case "technologia": return    row.stan>2  &&  <ShowTechnmologiaBtn  row={row}/>;

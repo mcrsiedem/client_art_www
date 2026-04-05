@@ -56,7 +56,15 @@ export default  function ProcesorGrupy({ rowGrupa,rowProces, handleChangeCardOpr
         }}
       >
         {procesory
-        .filter(x => x.grupa == rowProces.nazwa_id && x.virtual != 1)
+        // .filter(x => x.grupa == rowProces.nazwa_id && x.virtual != 1)
+        .filter(x => {
+   
+    const isSameGroup = x.grupa == rowProces.nazwa_id;
+    // const virtualCondition = daneTech.stan == 1 ? x.virtual == 1 : x.virtual != 1;
+    
+    // return isSameGroup && virtualCondition;
+    return isSameGroup;
+  })
         .map((option) => (
           <option key={option.id} value={option.id}>
             {option.nazwa}

@@ -36,6 +36,7 @@ let prevet = true;
           const [wolno] = useAccess(false);
           const selectColor = (status) => {
             if (grup.select) return style.procesRow_select;
+            if (grup.stan == 1) return style.procesRow_tr_wstepna;
             if (status == 4) return style.procesRow_tr_DRUK;
             if (status == 2) return style.procesRow_tr_RIP;
             if (status == 3) return style.procesRow_tr_trakcie;

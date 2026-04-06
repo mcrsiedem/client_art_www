@@ -105,6 +105,21 @@
  }
 
 
+   .procesRow_tr_wstepna{
+    height: 30px;
+    /* color: #efefef; */
+    background:linear-gradient(to bottom, #bfbfbf 5%, #7c7c7c 100%);  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ }
+
+  .procesRow_tr_wstepna:nth-of-type(2n){
+    height: 30px;
+    background:linear-gradient(to bottom, #bfbfbf 5%, #7c7c7c 100%);  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.2) , 2, 0.0 , 0 , 1 );
+ }
+
+.procesRow_tr_wstepna:hover{
+background: #81b3ff;
+}
+
 .procesRow_tr:hover{
 background: #81b3ff;
 }

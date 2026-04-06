@@ -3,9 +3,18 @@
 
 export function selectColor (etapPlikow,status,korekta_zamowienia_alert,grup,style,selectedProces){
 
+
+
             //druk
             if(grup.proces_nazwa_id ==1){
 if (grup.select==true) return style.procesRow_select
+
+
+   if(grup.stan ==1){
+ return style.procesRow_tr_wstepna
+   }
+
+
 if (korekta_zamowienia_alert==1 && selectedProces==1) return style.procesRow_tr_REDALERT
 
   if (status==3) return style.procesRow_tr_trakcie
@@ -26,6 +35,14 @@ if (korekta_zamowienia_alert==1 && selectedProces==1) return style.procesRow_tr_
 
             //wszystko poza drukiem
             if(grup.proces_nazwa_id !=1){
+
+if (grup.select) return style.procesRow_select
+
+   if(grup.stan ==1){
+ return style.procesRow_tr_wstepna
+   }
+
+
                           if (status==4 ) return style.procesRow_tr_DRUK
 
             if (status==2) return style.procesRow_tr_RIP
@@ -40,7 +57,7 @@ if (korekta_zamowienia_alert==1 && selectedProces==1) return style.procesRow_tr_
        if (etapPlikow==8 && selectedProces==1 && status ==4) return style.procesRow_tr_DRUK
     if (etapPlikow==8 && selectedProces==1) return style.procesRow_tr_RIP
  
-if (grup.select) return style.procesRow_select
+
 
      return style.procesRow_tr
             }

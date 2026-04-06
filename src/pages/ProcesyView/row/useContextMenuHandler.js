@@ -29,7 +29,8 @@ const fechparametryTechnologiiDetails =     techContext.fechparametryTechnologii
 
 function onContextMenuHanlder(  event,  grup) {
 
-  setIsLoading(true)  
+  if(grup.stan >1){
+    setIsLoading(true)  
   if(event){
     event.preventDefault();
   }
@@ -56,6 +57,8 @@ function onContextMenuHanlder(  event,  grup) {
       setProcesyElementowTech([]);
     }
   }
+  }
+  
 }
 
 

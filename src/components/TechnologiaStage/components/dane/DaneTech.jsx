@@ -234,28 +234,45 @@ const contextTech = useContext(TechnologyContext);
 
 
 function Stan( ) {
-  const contextModalInsert = useContext(ModalInsertContext);
-  const daneZamowienia = contextModalInsert.daneZamowienia;
-const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
-const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
-const contextTech = useContext(TechnologyContext);  
-  const daneTech = contextTech.daneTech
-  const setDaneTech = contextTech.setDaneTech
+  const {setSaveButtonDisabled} = useContext(ModalInsertContext);
+//   const daneZamowienia = contextModalInsert.daneZamowienia;
+// const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+// const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const {daneTech,setDaneTech,grupaOprawaTech, setGrupaOprawaTech,grupaWykonan, setGrupaWykonan} = useContext(TechnologyContext);  
+  // const daneTech = contextTech.daneTech
+  // const setDaneTech = contextTech.setDaneTech
   return (
     <div className={style.col}>
       <label className={style.label}> Stan </label>
       <select
+        disabled={daneTech.id != 1 }
         className={style.select}
         value={daneTech.stan}
         onChange={(event) => {
-          if(daneTech.id == 1 && event.target.value < 3){
-          setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
+
+        
+                     setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
           setSaveButtonDisabled(false)
-          }
-          if(daneTech.id != 1 && event.target.value > 1){
-            setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
-            setSaveButtonDisabled(false)
-            }
+          
+   
+
+//               setGrupaWykonan(
+//       grupaWykonan.map((t) => {
+//  return {...t,
+//             stan: parseInt(event.target.value),
+//             update: true
+//           }
+//       })
+//     );
+
+          // if(daneTech.id == 1 && event.target.value < 3){
+          // setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
+          // setSaveButtonDisabled(false)
+          // }
+          // if(daneTech.id != 1 && event.target.value > 1){
+          //   setDaneTech({...daneTech, stan: parseInt(event.target.value),update: true});
+          //   setSaveButtonDisabled(false)
+          //   }
           
         }}
       >

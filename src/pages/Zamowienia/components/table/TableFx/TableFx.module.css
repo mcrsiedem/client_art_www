@@ -109,6 +109,8 @@
         .tableWrapper::-webkit-scrollbar {
           width: 6px;
           padding-right: 10px;
+          height: 8px;
+
           
         }
         .tableWrapper::-webkit-scrollbar-track {
@@ -118,12 +120,12 @@
           
         }
         .tableWrapper::-webkit-scrollbar-thumb {
-          background: #0a0900af;
+          background: #585f64;
           border-radius: 10px;
 
         }
         .tableWrapper::-webkit-scrollbar-thumb:hover {
-          background: #00050a9e;
+          background: rgba(0, 5, 10, 0.699)
 
         }
 

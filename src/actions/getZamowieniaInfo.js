@@ -11,8 +11,9 @@ console.log(zamowienia)
   axios.put(IP + "zamowieniaInfo/"+ sessionStorage.getItem("token"),zamowienia)
     .then((res) => {
 
-    setZamowieniaInfo(res.data)
+setZamowieniaInfo(res.data)
 setShowZamowieniaInfo(true)
+console.table(res.data)
 
 
     });

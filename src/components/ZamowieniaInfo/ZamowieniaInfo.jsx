@@ -1,6 +1,8 @@
 import { AppContext } from "context/AppContext";
 import React, { useContext, createContext, useState } from "react";
 import styles from "./ZamowieniaInfo.module.css"
+import {DollarSign, Folder, FolderOpenDot, LampFloor, LayoutGrid, LucideLampFloor } from 'lucide-react';
+
 
 // Mock AppContext do celów podglądu
 
@@ -212,7 +214,7 @@ export default function ZamowieniaInfo() {
         .footerTextYellow { padding: 5px; font-size: 0.9rem; color: #f31409; font-weight: 700; text-transform: uppercase; }
         .summaryBox {
           margin-top: 2rem;
-          background-color: #1e293b;
+          background-color: #3a547c;
           border-radius: 0.75rem;
           padding: 1.25rem;
           display: flex;
@@ -235,6 +237,20 @@ export default function ZamowieniaInfo() {
                         .summaryBoxZeszyt {
           margin-top: 2rem;
           background-color: #ff9100;
+          border-radius: 0.75rem;
+          padding: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #ffffff;
+        }
+
+                                
+        
+        
+        .summaryBoxWartosc {
+          margin-top: 2rem;
+          background-color: #423f3b;
           border-radius: 0.75rem;
           padding: 1.25rem;
           display: flex;
@@ -331,7 +347,18 @@ export default function ZamowieniaInfo() {
 
 
 
-
+          <div className="summaryBoxWartosc">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              {/* <StackIcon />  */}
+              <span className="summaryLabel">Wartość bez kosztów dodatkowych</span>
+            </div>
+            <div>
+              <span className="summaryValue">{zamowieniaInfo.wartosc_zamowienia.toLocaleString()}</span>
+       {/* < DollarSign size={22} style={{color:'greenyellow',paddingBottom:'5px',marginLeft:'10'}}/> */}
+              <span style={{ marginLeft: '4px', color: '#94a3b8' }}></span>
+            </div>
+            
+          </div>
 
 
 

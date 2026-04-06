@@ -18,8 +18,11 @@ export default function BTN_INFO_ZAMOWIENIA() {
       className={style.icon}
       src={iconCopy}
       onClick={() => {
-              getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+        if(zamowienia.length >0){
+          getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
               // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+        }
+              
 
       }}
       alt="React Logo"

@@ -1,31 +1,47 @@
-import { useContext } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import style from "./BTN_INFO_ZAMOWIENIA.module.css";
 import { AppContext } from "context/AppContext";
 import iconCopy from "assets/info.svg";
 import { _etapy_produkcji } from "utils/initialvalue";
-import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
-import { sendMail } from "actions/sendMail";
+import axios from "axios";
+import { IP } from "utils/Host";
 
 export default function BTN_INFO_ZAMOWIENIA() {
-  const contextApp = useContext(AppContext);
-  const setShowZamowieniaInfo = contextApp.setShowZamowieniaInfo;
-  const setZamowieniaInfo = contextApp.setZamowieniaInfo;
+  const {setShowZamowieniaInfo,setZamowieniaInfo,zamowienia,setIsLoading} = useContext(AppContext);
   
-  const zamowienia = contextApp.zamowienia.filter(x=>x.select==true && x.technologia_id != null).map(x => {return {id: x.id}}  );
+
+  const zamowieniaFiltred = useMemo(() => {
+    return zamowienia
+      .filter(x => x.select === true && x.technologia_id != null)
+      .map(x => ({ id: x.id }));
+  }, [zamowienia]);
+  
+const getZamowieniaInfo = useCallback(() => {
+    const token = sessionStorage.getItem("token");
+    
+    axios.put(`${IP}zamowieniaInfo/${token}`, zamowieniaFiltred)
+      .then((res) => {
+        setZamowieniaInfo(res.data);
+        setShowZamowieniaInfo(true);
+        setIsLoading(false)
+      })
+      .catch(err => console.error("Błąd pobierania info:", err));
+  }, [zamowieniaFiltred, setZamowieniaInfo, setShowZamowieniaInfo]);
+  
   return (
     <img
       title="Info"
       className={style.icon}
       src={iconCopy}
       onClick={() => {
-        if(zamowienia.length >0){
-          getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
-              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+        if(zamowieniaFiltred.length >0){
+          setIsLoading(true)
+          getZamowieniaInfo()
         }
               
-
       }}
       alt="React Logo"
     />
   );
 }
+

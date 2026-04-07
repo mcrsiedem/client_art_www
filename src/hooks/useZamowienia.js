@@ -10,8 +10,11 @@ export function useZamowienia() {
   const techcontext = useContext(TechnologyContext);
   const tableZamowienia = contextApp.tableZamowienia;
   const setIsLoading = contextApp.setIsLoading;
-  const zamowienia = contextApp.zamowienia;
+  // const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
+
+  const {zamowienia} = useContext(AppContext);
+
 
   const scrollTable = (table) => {
     if (table.current != null) {
@@ -235,6 +238,9 @@ const getElementy = async (nr, rok) => {
 };
 
 
+
+
+
   return {
     refreshZamowienia,
     odblokujZamowienie,
@@ -246,6 +252,7 @@ const getElementy = async (nr, rok) => {
     edytujProofa,
     dodajProofa,
     zamowienieOddaj,
-    getElementy
+    getElementy,
+  
   };
 }

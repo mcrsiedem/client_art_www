@@ -6,14 +6,14 @@ import { IP } from "../utils/Host";
 export function getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo) {
 
 
-console.log(zamowienia)
+// console.log(zamowienia)
 
   axios.put(IP + "zamowieniaInfo/"+ sessionStorage.getItem("token"),zamowienia)
     .then((res) => {
 
 setZamowieniaInfo(res.data)
 setShowZamowieniaInfo(true)
-console.table(res.data)
+// console.table(res.data)
 
 
     });

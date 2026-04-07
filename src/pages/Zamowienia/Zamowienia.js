@@ -68,6 +68,10 @@ function Zamowienia() {
     { id: "stan", label: "Stan" , visible: true},
     { id: "etap", label: "Etap zamówienia" , visible: true},
     { id: "lista_faktur", label: "Faktury" , visible: false},
+    { id: "koszty_status", label: "Koszty" , visible: false},
+    { id: "faktury_status", label: "Faktury status" , visible: false},
+
+    
     
   ];
     

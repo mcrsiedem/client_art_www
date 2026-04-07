@@ -160,6 +160,11 @@ function BTN_KOPIUJ_NEW({ allColumns, visibleColumns }) {
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
+    const _status_koszty_dodatkowe = contextApp._status_koszty_dodatkowe;
+    const _status_faktury = contextApp._status_faktury;
+
+    
+
 
   const handleCopy = () => {
     let mes = "";
@@ -202,6 +207,9 @@ function BTN_KOPIUJ_NEW({ allColumns, visibleColumns }) {
     return row.wartosc_zamowienia ? String(row.wartosc_zamowienia).replace('.', ',') : "";
             case "waluta_id":
               return _waluta.find((s) => s.id == row.waluta_id)?.nazwa || "-";
+    case "koszty_status": return _status_koszty_dodatkowe.find((s) => s.id == row.koszty_status).nazwa || "-";
+    case "faktury_status": return _status_faktury.find((s) => s.id == row.faktury_status).nazwa || "-";
+
             default:
               return row[col.id] || "";
           }

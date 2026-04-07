@@ -20,6 +20,7 @@ import ZamowienieShort from "components/ZamowienieShort/ZamowienieShort";
 
 
 
+
 const STORAGE_KEYS = {
   COLUMNS: "table_css_mod_columns",
   WIDTHS: "table_css_mod_widths",
@@ -39,39 +40,16 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
   const selectedUser= contextApp.selectedUser;
   const selectedKlient= contextApp.selectedKlient;
   const tableZamowienia= contextApp.tableZamowienia;
+    const _status_koszty_dodatkowe = contextApp._status_koszty_dodatkowe;
+    const _status_faktury = contextApp._status_faktury;
+
+    
+
 
       const {onMenuHandle} = useMenu()
   
   
-  // --- DEFINICJA KOLUMN ---
-  // const allColumns = [
-  //   { id: "nr", label: "Nr" , visible: true},
-  //   { id: "rok", label: "Rok" , visible: false},
-  //   { id: "technologia", label: "Karta", isIcon: true, noSort: true , visible: true},
-  //   { id: "firma_nazwa", label: "Klient" , visible: true},
-  //   { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
-  //   { id: "kod_pracy", label: "Kod", visible: true }, // Używamy tytul jako klucza danych
-  //   { id: "nr_zamowienia_klienta", label: "Nr zam. klienta" , visible: false},
-  //   { id: "naklad", label: "Nakład" , visible: true},
-  //   { id: "oprawa", label: "Oprawa" , visible: true},
-  //   { id: "ilosc_stron", label: "Str." , visible: true},
-  //   { id: "cena", label: "Cena" , visible: false},
-  //   { id: "waluta_id", label: "Waluta" , visible: true},
-  //   { id: "wartosc_zamowienia", label: "Wartosc zamówienia" , visible: false},
-  //   { id: "data_materialow", label: "Data materiałów" , visible: false},
-  //   { id: "data_przyjecia", label: "Data przyjęcia" , visible: true},
-  //   { id: "data_spedycji", label: "Spedycja" , visible: true},
-  //   { id: "utworzono", label: "Utworzono" , visible: false},
-  //   { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
-  //   { id: "format_x", label: "Netto" , visible: true},
-  //   { id: "opiekun", label: "Opiekun", visible: true },
-  //   { id: "firma", label: "Firma", visible: true },
-  //   { id: "status_nazwa", label: "Status" , visible: true},
-  //   { id: "stan", label: "Stan" , visible: true},
-  //   { id: "etap", label: "Etap zamówienia" , visible: true},
-  //   { id: "lista_faktur", label: "Faktury" , visible: false},
-    
-  // ];
+
 
   // --- STATE: KONFIGURACJA SORTOWANIA ---
   // const [sortConfig, setSortConfig] = useState({ key: 'nr', direction: 'asc' });
@@ -80,11 +58,7 @@ const [sortConfig, setSortConfig] = useState(() => {
   // Jeśli mamy zapis w pamięci, parsujemy go, w przeciwnym razie dajemy domyślne wartości
   return saved ? JSON.parse(saved) : { key: 'nr', direction: 'asc' };
 });
-  // --- STATE: WIDOCZNOŚĆ I SZEROKOŚĆ ---
-  // const [visibleColumns, setVisibleColumns] = useState(() => {
-  //   const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
-  //   return saved ? JSON.parse(saved) : allColumns.filter(col => col.visible == true).map(c => c.id);
-  // });
+
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);
@@ -395,7 +369,7 @@ const sortedItems = useMemo(() => {
                          onMouseDown={(event)=> onMouseDownTableRow(event,row,zamowienia,setZamowienia,selectedUser,selectedKlient,i,sortedItems)}
 
                       >
-                        <CellContent row={row} colId={col.id} />
+                        <CellContent row={row} colId={col.id} _status_koszty_dodatkowe={_status_koszty_dodatkowe} _status_faktury={_status_faktury}/>
 
                       </td>
 
@@ -421,7 +395,7 @@ const sortedItems = useMemo(() => {
   );
 }
 
-function CellContent({ row, colId }) {
+function CellContent({ row, colId,_status_koszty_dodatkowe,_status_faktury }) {
   switch (colId) {
     case "nr": return <div style={{fontWeight: 'bold', paddingRight:'5px',textAlign:'right'}}>{row.stan>2 ? row.nr+" / "+row.rok.substring(2,4): ""}</div>;
     case "tytul": return row.tytul;
@@ -438,6 +412,8 @@ function CellContent({ row, colId }) {
     case "technologia": return      <CellBtn  row={row}/>;
     case "etap": return <span className={styles.stan}>{_etapy_produkcji.filter((s) => s.id == row.etap).map((x) => x.nazwa)}</span>;
     case "stan": return <span className={styles.stan}>{_stan_dokumentu.filter((s) => s.id == row.stan).map((x) => x.nazwa)}</span>;
+    case "koszty_status": return <span className={styles.stan}>{_status_koszty_dodatkowe.filter((s) => s.id == row.koszty_status).map((x) => x.nazwa)}</span>;
+    case "faktury_status": return <span className={styles.stan}>{_status_faktury.filter((s) => s.id == row.faktury_status).map((x) => x.nazwa)}</span>;
 
 
     default: return row[colId] || "-";

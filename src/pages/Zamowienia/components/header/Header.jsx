@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
 import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
 import DecodeToken from "pages/Login/DecodeToken";
-import { _etapy_produkcji } from "utils/initialvalue";
+// import { _etapy_produkcji } from "utils/initialvalue";
 import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { zabezpiecz } from "actions/zabezpiecz";
@@ -16,6 +16,8 @@ import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { useZamowienia } from "hooks/useZamowienia";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _waluta } from "utils/initialvalue";
+
 import { 
   Settings, 
   Columns2,
@@ -26,7 +28,8 @@ import {
   Search,
   Filter,
   BetweenVerticalStart,
-  StretchVertical
+  StretchVertical,
+  KeySquare
 } from "lucide-react";
 
 export default function Header({ dodaj_clikHandler,showSettings, setShowSettings}) {
@@ -84,6 +87,7 @@ const setShowTabs = contextModalInsert.setShowTabs
         <BTN_INSPEKCJA/>
         <BTN_INFO_ZAMOWIENIA/>
         <BTN_KOPIUJ/>
+        <BTN_KOPIUJ_NEW/>
      
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
@@ -149,6 +153,86 @@ let mes='';
         /> 
   );
 }
+
+function BTN_KOPIUJ_NEW({ allColumns, visibleColumns }) {
+  const contextApp = useContext(AppContext);
+  const zamowienia = contextApp.zamowienia;
+  const setZamowienia = contextApp.setZamowienia;
+
+  const handleCopy = () => {
+    let mes = "";
+
+    // 1. Pobierz tylko zaznaczone wiersze
+    const selectedRows = zamowienia.filter((x) => x.select === true);
+
+    if (selectedRows.length === 0) {
+      alert("Najpierw zaznacz wiersze do skopiowania.");
+      return;
+    }
+
+    // 2. Opcjonalnie: Dodaj nagłówki kolumn (tylko widocznych)
+    const headers = allColumns
+      .filter((col) => visibleColumns.includes(col.id))
+      .map((col) => col.label)
+      .join("\t");
+    mes += headers + "\n";
+
+    // 3. Iteruj po wierszach
+    selectedRows.forEach((row) => {
+      // 4. Iteruj TYLKO po widocznych kolumnach
+      const rowData = allColumns
+        .filter((col) => visibleColumns.includes(col.id))
+        .map((col) => {
+          // Specyficzna logika formatowania dla konkretnych ID (analogicznie do CellContent)
+          switch (col.id) {
+            case "nr":
+              return row.stan > 2 ? `${row.nr} / ${row.rok.substring(2, 4)}` : "";
+            case "format_x":
+              return `${row.format_x}x${row.format_y}`;
+            case "stan":
+              return _stan_dokumentu.find((s) => s.id == row.stan)?.nazwa || "-";
+            case "etap":
+              return _etapy_produkcji.find((s) => s.id == row.etap)?.nazwa || "-";
+            case "status_nazwa":
+              return _status_dokumentu.find((s) => s.id == row.status)?.nazwa || "-";
+            case "waluta_id":
+              return _waluta.find((s) => s.id == row.waluta_id)?.nazwa || "-";
+            default:
+              return row[col.id] || "";
+          }
+        })
+        .join("\t"); // Rozdzielacz tabulacji (idealny do Excela)
+
+      mes += rowData + "\n";
+    });
+
+    // 5. Zapisz do schowka
+    navigator.clipboard.writeText(mes).then(() => {
+      // Opcjonalnie: odznacz wiersze po skopiowaniu
+      setZamowienia(
+        zamowienia.map((t) => ({ ...t, select: false }))
+      );
+      console.log("Skopiowano do schowka");
+    });
+  };
+
+  return (
+    <img
+          title="Skopiuj zaznaczone..."
+          className={style.icon}
+          src={iconCopy}
+          onClick={handleCopy}
+          alt="React Logo"
+        /> 
+
+
+    // <button onClick={handleCopy} className={style.copyBtn}>
+    //   <KeySquare size={16} /> Kopiuj widoczne
+    // </button>
+  );
+}
+
+
 
 function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const contextApp = useContext(AppContext);

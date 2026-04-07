@@ -1,17 +1,12 @@
-import React, { useEffect, useState,useRef,useContext,useCallback } from "react";
+import React, { useEffect, useState,useRef,useContext } from "react";
 import axios from "axios";
 import { IP } from "../../utils/Host";
 import { useNavigate } from "react-router-dom";
 import style from "./RealizacjeZestawienie.module.css";
 import Header from "./components/header/Header";
 import { AppContext } from "context/AppContext";
-import { getClients } from "actions/getClients";
-import { getNadkomplety } from "actions/getNadkomplety";
-import { useApiPapier } from "hooks/useApiPapier";
 import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu } from "utils/initialvalue";
-import { useZamowienia } from "hooks/useZamowienia";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import DecodeToken from "pages/Login/DecodeToken";
 import Loading from "components/Loading/Loading";
 import { getGraniceMiesiaca } from "actions/getGraniceMiesiaca";
 import { useZestawienia } from "hooks/useZestawienia";

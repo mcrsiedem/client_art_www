@@ -1,21 +1,10 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useRef,useContext } from "react";
 import style from "./Header.module.css";
-import iconClose2 from "assets/x2.svg";
-import iconAdd from "assets/addIcon2.svg";
-import iconAdd2 from "assets/edit3.svg";
 import iconCopy from "assets/edit2.svg";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "context/AppContext";
-import REFRESH_ZAMOWIENIA_BTN from "components/REFRESH_BTN/REFRESH_ZAMOWIENIA_BTN";
-import DecodeToken from "pages/Login/DecodeToken";
 import { _etapy_produkcji } from "utils/initialvalue";
-import BTN_INFO_ZAMOWIENIA from "./BTN_INFO_ZAMOWIENIA";
 import { ModalInsertContext } from "context/ModalInsertContext";
-import { zabezpiecz } from "actions/zabezpiecz";
-import Szukaj from "./Szukaj";
-import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
-import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
-import { TechnologyContext } from "context/TechnologyContext";
 import { useZestawienia } from "hooks/useZestawienia";
 // import Tabs from "../tabs/Tabs";
 

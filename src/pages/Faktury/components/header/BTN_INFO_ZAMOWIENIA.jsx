@@ -3,7 +3,6 @@ import style from "./BTN_INFO_ZAMOWIENIA.module.css";
 import { AppContext } from "context/AppContext";
 import iconCopy from "assets/info.svg";
 import { _etapy_produkcji } from "utils/initialvalue";
-import { getZamowieniaInfo } from "actions/getZamowieniaInfo";
 import { sendMail } from "actions/sendMail";
 
 export default function BTN_INFO_ZAMOWIENIA() {
@@ -18,8 +17,6 @@ export default function BTN_INFO_ZAMOWIENIA() {
       className={style.icon}
       src={iconCopy}
       onClick={() => {
-              getZamowieniaInfo(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
-              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
 
       }}
       alt="React Logo"

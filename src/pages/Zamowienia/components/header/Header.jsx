@@ -32,7 +32,7 @@ import {
   KeySquare
 } from "lucide-react";
 
-export default function Header({ dodaj_clikHandler,showSettings, setShowSettings}) {
+export default function Header({ dodaj_clikHandler,showSettings, setShowSettings,visibleColumns, setVisibleColumns,allColumns}) {
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
@@ -86,8 +86,8 @@ const setShowTabs = contextModalInsert.setShowTabs
         </button>
         <BTN_INSPEKCJA/>
         <BTN_INFO_ZAMOWIENIA/>
-        <BTN_KOPIUJ/>
-        <BTN_KOPIUJ_NEW/>
+        {/* <BTN_KOPIUJ/> */}
+        <BTN_KOPIUJ_NEW visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} allColumns={allColumns}/>
      
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         <Szukaj/>
@@ -110,6 +110,8 @@ function BTN_KOPIUJ() {
   const contextApp = useContext(AppContext);
   const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
+
+  // stare do skasowania
   // const klienciEdit = JSON.parse(JSON.stringify(setClients));
   return (
 <img
@@ -195,6 +197,9 @@ function BTN_KOPIUJ_NEW({ allColumns, visibleColumns }) {
               return _etapy_produkcji.find((s) => s.id == row.etap)?.nazwa || "-";
             case "status_nazwa":
               return _status_dokumentu.find((s) => s.id == row.status)?.nazwa || "-";
+              case "wartosc_zamowienia":
+    // Pobieramy wartość, zamieniamy na string i podmieniamy kropkę na przecinek
+    return row.wartosc_zamowienia ? String(row.wartosc_zamowienia).replace('.', ',') : "";
             case "waluta_id":
               return _waluta.find((s) => s.id == row.waluta_id)?.nazwa || "-";
             default:

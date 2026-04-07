@@ -26,7 +26,7 @@ const STORAGE_KEYS = {
   SORT: "table_css_mod_sort"
 };
 
-export default function TableFx({showSettings, setShowSettings}) {
+export default function TableFx({showSettings, setShowSettings,visibleColumns, setVisibleColumns,allColumns}) {
   const contextApp = useContext(AppContext);
   const zamowieniaRaw = contextApp.zamowienia || [];
   const contextModal = useContext(ModalInsertContext);
@@ -44,34 +44,34 @@ export default function TableFx({showSettings, setShowSettings}) {
   
   
   // --- DEFINICJA KOLUMN ---
-  const allColumns = [
-    { id: "nr", label: "Nr" , visible: true},
-    { id: "rok", label: "Rok" , visible: false},
-    { id: "technologia", label: "Karta", isIcon: true, noSort: true , visible: true},
-    { id: "firma_nazwa", label: "Klient" , visible: true},
-    { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
-    { id: "kod_pracy", label: "Kod", visible: true }, // Używamy tytul jako klucza danych
-    { id: "nr_zamowienia_klienta", label: "Nr zam. klienta" , visible: false},
-    { id: "naklad", label: "Nakład" , visible: true},
-    { id: "oprawa", label: "Oprawa" , visible: true},
-    { id: "ilosc_stron", label: "Str." , visible: true},
-    { id: "cena", label: "Cena" , visible: false},
-    { id: "waluta_id", label: "Waluta" , visible: true},
-    { id: "wartosc_zamowienia", label: "Wartosc zamówienia" , visible: false},
-    { id: "data_materialow", label: "Data materiałów" , visible: false},
-    { id: "data_przyjecia", label: "Data przyjęcia" , visible: true},
-    { id: "data_spedycji", label: "Spedycja" , visible: true},
-    { id: "utworzono", label: "Utworzono" , visible: false},
-    { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
-    { id: "format_x", label: "Netto" , visible: true},
-    { id: "opiekun", label: "Opiekun", visible: true },
-    { id: "firma", label: "Firma", visible: true },
-    { id: "status_nazwa", label: "Status" , visible: true},
-    { id: "stan", label: "Stan" , visible: true},
-    { id: "etap", label: "Etap zamówienia" , visible: true},
-    { id: "lista_faktur", label: "Faktury" , visible: false},
+  // const allColumns = [
+  //   { id: "nr", label: "Nr" , visible: true},
+  //   { id: "rok", label: "Rok" , visible: false},
+  //   { id: "technologia", label: "Karta", isIcon: true, noSort: true , visible: true},
+  //   { id: "firma_nazwa", label: "Klient" , visible: true},
+  //   { id: "tytul", label: "Praca", visible: true }, // Używamy tytul jako klucza danych
+  //   { id: "kod_pracy", label: "Kod", visible: true }, // Używamy tytul jako klucza danych
+  //   { id: "nr_zamowienia_klienta", label: "Nr zam. klienta" , visible: false},
+  //   { id: "naklad", label: "Nakład" , visible: true},
+  //   { id: "oprawa", label: "Oprawa" , visible: true},
+  //   { id: "ilosc_stron", label: "Str." , visible: true},
+  //   { id: "cena", label: "Cena" , visible: false},
+  //   { id: "waluta_id", label: "Waluta" , visible: true},
+  //   { id: "wartosc_zamowienia", label: "Wartosc zamówienia" , visible: false},
+  //   { id: "data_materialow", label: "Data materiałów" , visible: false},
+  //   { id: "data_przyjecia", label: "Data przyjęcia" , visible: true},
+  //   { id: "data_spedycji", label: "Spedycja" , visible: true},
+  //   { id: "utworzono", label: "Utworzono" , visible: false},
+  //   { id: "nr_kalkulacji", label: "Kalkulacja" , visible: true},
+  //   { id: "format_x", label: "Netto" , visible: true},
+  //   { id: "opiekun", label: "Opiekun", visible: true },
+  //   { id: "firma", label: "Firma", visible: true },
+  //   { id: "status_nazwa", label: "Status" , visible: true},
+  //   { id: "stan", label: "Stan" , visible: true},
+  //   { id: "etap", label: "Etap zamówienia" , visible: true},
+  //   { id: "lista_faktur", label: "Faktury" , visible: false},
     
-  ];
+  // ];
 
   // --- STATE: KONFIGURACJA SORTOWANIA ---
   // const [sortConfig, setSortConfig] = useState({ key: 'nr', direction: 'asc' });
@@ -81,10 +81,10 @@ const [sortConfig, setSortConfig] = useState(() => {
   return saved ? JSON.parse(saved) : { key: 'nr', direction: 'asc' };
 });
   // --- STATE: WIDOCZNOŚĆ I SZEROKOŚĆ ---
-  const [visibleColumns, setVisibleColumns] = useState(() => {
-    const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
-    return saved ? JSON.parse(saved) : allColumns.filter(col => col.visible == true).map(c => c.id);
-  });
+  // const [visibleColumns, setVisibleColumns] = useState(() => {
+  //   const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
+  //   return saved ? JSON.parse(saved) : allColumns.filter(col => col.visible == true).map(c => c.id);
+  // });
 
   const [columnWidths, setColumnWidths] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.WIDTHS);

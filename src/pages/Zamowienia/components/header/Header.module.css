@@ -148,3 +148,51 @@ border-color: rgb(120, 120, 120); /* Opcjonalnie: lekkie rozjaśnienie ramki prz
 }
 
 
+/* --- TOAST NOTIFICATION --- */
+.toast {
+    position: fixed;
+    bottom: 1px;
+    right: 10px;
+    background-color: rgb(40, 167, 69); /* Niebieski pasujący do reszty Twoich stylów, ew. zmień na zielony rgb(40, 167, 69) */
+    background-color: rgb(0, 157, 255); /* Niebieski pasujący do reszty Twoich stylów, ew. zmień na zielony rgb(40, 167, 69) */
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-family: Poppins, sans-serif;
+    font-size: 0.9rem;
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    pointer-events: none; /* Zapobiega klikaniu w dymek */
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toast_container{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.icon3{
+    /* padding: 5px; */
+
+    height: 50%;
+    /* padding: 10px; */
+}
+
+.icon3:hover {
+    background-color: rgb(78, 78, 78);
+    border-radius: 5px;
+}
+

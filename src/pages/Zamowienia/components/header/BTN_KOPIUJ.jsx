@@ -80,23 +80,30 @@ export default function BTN_KOPIUJ_NEW({ allColumns, visibleColumns }) {
       }, 2000);
 
       // Opcjonalnie: odznacz wiersze po skopiowaniu
-      setZamowienia(
-        zamowienia.map((t) => ({ ...t, select: false }))
-      );
+      // setZamowienia(
+      //   zamowienia.map((t) => ({ ...t, select: false }))
+      // );
       console.log("Skopiowano do schowka");
     });
   };
 
   return (
-    <img
-          title="Skopiuj zaznaczone..."
-          className={style.icon}
-          src={iconCopy}
-          onClick={handleCopy}
-          alt="React Logo"
-        /> 
+<div className={style.toast_container}>
+      <img
+        title="Skopiuj do schowka... CTRL + C"
+        className={style.icon3}
+        src={iconCopy}
+        onClick={handleCopy}
+        alt="Ikona Kopiuj"
+      /> 
 
-
+      {/* Okienko potwierdzające (Toast) */}
+      {showToast && (
+        <div className={style.toast}>
+          Skopiowano!
+        </div>
+      )}
+    </div>
 
   );
 }

@@ -613,7 +613,7 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
     return (
         <input
         className={style.input_ark_nr}
-        defaultValue={row.arkusz_szerokosc}
+        value={row.arkusz_szerokosc}
           onChange={(e) =>
             {
               if (e.target.value === '' || reg_cena.test(e.target.value)) {

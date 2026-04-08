@@ -559,8 +559,7 @@ function LegaMnoznik({ row }) {
 function ArkuszSzerokosc({ row }) {
   const techContext = useContext(TechnologyContext);
   const handleUpdateRowElementyTech = techContext.handleUpdateRowElementyTech;
-  const arkusze = techContext.arkusze;
-  const setArkusze = techContext.setArkusze;
+
   return (
 
     <input
@@ -578,21 +577,6 @@ function ArkuszSzerokosc({ row }) {
           });
         }
 
-
-        // setArkusze(
-        //   arkusze.map((arkusz) => {
-        //     if (arkusz.element_id === row.id) {
-        //       return {
-        //         ...arkusz,
-        //         arkusz_szerokosc: e.target.value,
-        //         update: true
-      
-        //       };
-        //     } else {
-        //       return arkusz;
-        //     }
-        //   })
-        // );
       }}
     ></input>
   

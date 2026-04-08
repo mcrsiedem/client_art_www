@@ -89,25 +89,47 @@ const KopiujFormatPapieru = ({ row}) =>{
     className={style.menu_legi_btn}
     onClick={() => {
 
-setArkusze(
-  arkusze.map((arkusz) => {
+// setArkusze(
+//   arkusze.map((arkusz) => {
+//     if (arkusz.element_id === row.id) {
+//       return {
+//         ...arkusz,
+//         arkusz_szerokosc: row.arkusz_szerokosc,
+//         arkusz_wysokosc: row.arkusz_wysokosc,
+//         update: true
+
+//       };
+//     } else {
+//       return arkusz;
+//     }
+//   })
+// );
+
+setArkusze(prevArkusze => 
+  prevArkusze.map((arkusz) => {
     if (arkusz.element_id === row.id) {
       return {
         ...arkusz,
         arkusz_szerokosc: row.arkusz_szerokosc,
         arkusz_wysokosc: row.arkusz_wysokosc,
         update: true
-
       };
-    } else {
-      return arkusz;
     }
+    return arkusz;
   })
 );
-setElementyTech(elementyTech.map((t) => {
-  return {...t,
-    showMenu: false}
-}));
+
+
+
+// setElementyTech(elementyTech.map((t) => {
+//   return {...t,
+//     showMenu: false}
+// }));
+
+
+setElementyTech(currentTech => 
+    currentTech.map(t => ({ ...t, showMenu: false }))
+  );
 
     }}
   >

@@ -269,8 +269,9 @@
     padding: 0.2rem 0.5rem;
     font-size: 0.875rem;
     color: var(--text-main);
-    border-bottom: 1px solid #9e9e9e96;
-    border-right: 1px solid #f1f5f9;
+    border-bottom: 1px dashed #0881e496;
+    border-right: 1px dashed #0881e496;
+    /* border-right: 1px solid #f1f5f9; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

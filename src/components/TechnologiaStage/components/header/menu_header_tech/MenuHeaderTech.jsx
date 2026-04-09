@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
-import style from "./ElementyTechMenu.module.css";
+import style from "./MenuHeaderTech.module.css";
 import { ponumerArkusze } from "actions/ponumerArkusze";
 import { useArkuszeOne } from "hooks/useArkuszeOne";
 import { useProcesy } from "hooks/procesy/useProcesy";
-export default function MenuElementyTech({ row }) {
+import { ModalInsertContext } from "context/ModalInsertContext";
+export default function MenuHeaderTech({ showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
 
@@ -14,11 +15,11 @@ export default function MenuElementyTech({ row }) {
 
   const {createProcesyFromArkuszONE} = useProcesy();
 
-  if (row.showMenu) {
+  if (showMenu) {
     return (
       <div className={style.menu_legi}>
          {/* <DodajNowyElement row={row}  /> */}
-         <DodajArkusz row={row}  />
+         {/* <DodajArkusz row={row}  />
         <Ponumeruj row={row} />
 
                 <button
@@ -39,10 +40,11 @@ export default function MenuElementyTech({ row }) {
                 </button>
 
         <KopiujFormatPapieru row={row} />
-        <KopiujNadkomplet row={row} />
+        <KopiujNadkomplet row={row} /> */}
 
         
-        <Anuluj  row={row}/>
+        <Zamowienie  setShowMenu={setShowMenu}/>
+        <Anuluj  setShowMenu={setShowMenu}/>
 
       </div>
     );
@@ -177,9 +179,26 @@ setElementyTech(elementyTech.map((t) => {
 }
 
 
+const Zamowienie = ({setShowMenu} ) =>{
+  const techContext = useContext(TechnologyContext)
+  const {setOpenModalInsert} = useContext(ModalInsertContext);
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+      setShowMenu(false)
+      setOpenModalInsert(true);
+
+    }}
+  >
+    Zamówienie
+  </button>
+  )
+}
 
 
-const Anuluj = ( ) =>{
+
+const Anuluj = ({setShowMenu} ) =>{
   const techContext = useContext(TechnologyContext)
   const elementyTech = techContext.elementyTech;
   const setElementyTech = techContext.setElementyTech;
@@ -187,10 +206,7 @@ const Anuluj = ( ) =>{
     <button
     className={style.menu_legi_btn}
     onClick={() => {
-      setElementyTech(elementyTech.map((t) => {
-        return {...t,
-          showMenu: false}
-      }));
+      setShowMenu(false);
 
     }}
   >
@@ -198,6 +214,9 @@ const Anuluj = ( ) =>{
   </button>
   )
 }
+
+
+
 
 
 const DodajArkusz= ({ row }) =>{

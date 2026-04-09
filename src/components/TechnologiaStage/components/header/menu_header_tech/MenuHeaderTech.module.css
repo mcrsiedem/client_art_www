@@ -1,0 +1,82 @@
+
+
+
+  .menu_legi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  position:  absolute ;
+  top: 55px;
+  left: 15px;
+  z-index: 100;
+  
+  width: 200px;
+  height: 220px;
+  
+  background-color: rgba(133, 201, 244, 0.507);
+  border-radius: 10px;
+  border: 1px solid rgb(189, 189, 189);
+  }
+  
+  .menu_legi_btn{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(216, 216, 216);
+  
+  color: rgb(65, 65, 65);
+  text-align: start;
+  padding-left: 20px;
+  border: none;
+  border-bottom: 1px solid rgb(189, 189, 189);
+  }
+  .menu_legi_btn:hover{
+  background-color: rgb(160, 160, 160);
+  }
+  /* .table2 tr:nth-child(odd) { */
+  .menu_legi_btn:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+  }
+  .menu_legi_btn:last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(185, 185, 185, 0.411);
+      text-align: center;
+  padding-left: 0px;
+  }
+  .menu_legi_btn:last-child:hover{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(141, 141, 141);
+  }
+  
+  .td_checkbox{
+    width: 20px;
+  }
+  
+  /* .tr_legi_mini{
+    
+    height: 1rem;
+    background-color: rgb(155, 210, 255);
+  } */
+  
+  .tr_legi_mini td {
+    height: 1rem;
+  
+    background-color: rgb(182, 210, 247);
+    /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
+  
+    /* border-radius: 5px; */
+  }
+  
+  .td_checkbox{
+    width: 10px;
+  }
+  
+  .ch_box{
+  
+   height: 12px;
+  }

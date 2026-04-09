@@ -1,5 +1,5 @@
 import style from "./Header.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import { AppContext } from "context/AppContext";
 
@@ -20,9 +20,10 @@ import { useProcesy } from "hooks/procesy/useProcesy";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 import FormToPdf from "components/pdf/FormToPDF";
 import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
-import {Folder, FolderOpenDot, LampFloor, LayoutGrid, LucideLampFloor } from 'lucide-react';
+import {Folder, FolderOpenDot, LampFloor, LayoutGrid, LucideLampFloor, Menu } from 'lucide-react';
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useTechnologiaInsert } from "hooks/useTechnologiaInsert";
+import MenuHeaderTech from "./menu_header_tech/MenuHeaderTech";
 
 
 
@@ -35,6 +36,9 @@ export default function Header({}) {
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 
   const { createArkuszeFromElemenets, ponumerujArkusze } = useArkusze();
+
+    const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
+  
   return (
     <header
       className={style.headerMain}
@@ -69,10 +73,16 @@ export default function Header({}) {
       }}
     >
       <LeftPane>
-        <button onClick={()=>{setOpenModalInsert(true) }} style={{background:'transparent', border:'none'}}> 
+        <MenuHeaderTech showMenu={showMenu} setShowMenu ={setShowMenu}/>
+
+        <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
+
+       < Menu size={22} style={{color:'white',marginRight:'10px',marginLeft:'10px'}}/>
+        </button>
+        {/* <button onClick={()=>{setOpenModalInsert(true) }} style={{background:'transparent', border:'none'}}> 
 
        < FolderOpenDot size={22} style={{color:'white',marginRight:'10px',marginLeft:'10px'}}/>
-        </button>
+        </button> */}
         <p className={style.title2}> Technologia </p>
         <IconError />
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>

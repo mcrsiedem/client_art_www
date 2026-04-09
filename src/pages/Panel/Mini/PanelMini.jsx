@@ -21,6 +21,8 @@ import { AppContext } from "context/AppContext";
 import { getNadkomplety } from "actions/getNadkomplety";
 import { getClients } from "actions/getClients";
 import { useSocket } from "context/SocketContext";
+import UserList from "../Desktop/Footer/UserList/UserList";
+import UserListDevil from "../Desktop/Footer/UserList/UserListDevil";
 
 export default function PanelMini({ user, setUser, logout }) {
   const navigate = useNavigate();
@@ -78,7 +80,15 @@ export default function PanelMini({ user, setUser, logout }) {
               <p className={style.znak}> </p>
               <img className={style.icon} src={iconProcesy} alt="Zamówienia" />
               <p className={style.menu_txt}>PROCESY</p>{" "}
+
             </div>
+
+            <div className={style.userContainer}>
+
+      {/* <UserList/> */}
+            </div>
+      {/* <UserListDevil/> */}
+
           </div>
         </div>
       </div>

@@ -5,6 +5,8 @@ import { ponumerArkusze } from "actions/ponumerArkusze";
 import { useArkuszeOne } from "hooks/useArkuszeOne";
 import { useProcesy } from "hooks/procesy/useProcesy";
 import { ModalInsertContext } from "context/ModalInsertContext";
+import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
+import DecodeToken from "pages/Login/DecodeToken";
 export default function MenuHeaderTech({ showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -19,10 +21,10 @@ export default function MenuHeaderTech({ showMenu, setShowMenu }) {
     return (
       <div className={style.menu_legi}>
         <Zamowienie  setShowMenu={setShowMenu}/>
+        <Arkusze  setShowMenu={setShowMenu}/>
+        {/* <Zamowienie  setShowMenu={setShowMenu}/>
         <Zamowienie  setShowMenu={setShowMenu}/>
-        <Zamowienie  setShowMenu={setShowMenu}/>
-        <Zamowienie  setShowMenu={setShowMenu}/>
-        <Zamowienie  setShowMenu={setShowMenu}/>
+        <Zamowienie  setShowMenu={setShowMenu}/> */}
         <Anuluj  setShowMenu={setShowMenu}/>
 
       </div>
@@ -30,6 +32,44 @@ export default function MenuHeaderTech({ showMenu, setShowMenu }) {
   }
 }
 
+
+
+const PotwierdzKorekty = ({setShowMenu} ) =>{
+  const techContext = useContext(TechnologyContext)
+  const {setOpenModalInsert} = useContext(ModalInsertContext);
+      const       {autoArk}= useArkuszeAuto();
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+      autoArk()
+
+    }}
+  >
+    Arkusze
+  </button>
+  )
+}
+
+
+const Arkusze = ({setShowMenu} ) =>{
+  const techContext = useContext(TechnologyContext)
+  const {setOpenModalInsert} = useContext(ModalInsertContext);
+      const       {autoArk}= useArkuszeAuto();
+
+       if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+      autoArk()
+
+    }}
+  >
+    Arkusze
+  </button>
+  )
+}}
 
 
 

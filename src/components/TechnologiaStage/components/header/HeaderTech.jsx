@@ -93,7 +93,7 @@ export default function Header({}) {
       </CenterPane>
 
       <RightPane>
-            <Arkusze />
+            {/* <Arkusze /> */}
             {/* <FormToPdf/> */}
             <Dodruk />
             <ZapisBtnPromiseDodruk />
@@ -210,33 +210,7 @@ const Dodruk = () => {
 
 };
 
-const Arkusze = () => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  const setDaneTech = techContext.setDaneTech;
-    const       {autoArk}= useArkuszeAuto();
 
-
-
- if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
-
-    return (
-    <button
-      // disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
-      className={ style.btn_mini  }
-      onClick={() => {
-        autoArk()
-        // daneTech.korekta_zamowienia_alert= null
-        // setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
-      //  createWykonaniaFromArkuszeLegi();
-      }}
-    >
-      Arkusze
-    </button>
-  );
-}
-
-};
 
 
 

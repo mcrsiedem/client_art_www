@@ -95,11 +95,11 @@ export default function Header({}) {
       <RightPane>
             {/* <Arkusze /> */}
             {/* <FormToPdf/> */}
-            <Dodruk />
-            <ZapisBtnPromiseDodruk />
-            <PotwierdzKorekteZamowieniaBTN />
+            {/* <Dodruk /> */}
+            {/* <ZapisBtnPromiseDodruk /> */}
+            {/* <PotwierdzKorekteZamowieniaBTN /> */}
             <SkasujTechnologieBTN />
-            <ClearBTN />
+            {/* <ClearBTN /> */}
             <SprawdzBTN />
             <ZapisBtnPromise />
             <IconNavigate  className={style.btn_x} logo={IconClose}  navi={"/Panel"}
@@ -161,54 +161,32 @@ const IconError = () =>{
 
 
 
-const PotwierdzKorekteZamowieniaBTN = () => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  const setDaneTech = techContext.setDaneTech;
- if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
+// const PotwierdzKorekteZamowieniaBTN = () => {
+//   const techContext = useContext(TechnologyContext);
+//   const daneTech = techContext.daneTech;
+//   const setDaneTech = techContext.setDaneTech;
+//  if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
-    return (
-    <button
-      disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
-      className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
-      onClick={() => {
-        // daneTech.korekta_zamowienia_alert= null
-        setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
+//     return (
+//     <button
+//       disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
+//       className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
+//       onClick={() => {
+//         // daneTech.korekta_zamowienia_alert= null
+//         setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
       
-      }}
-    >
-      Potwierdź korekty
-    </button>
-  );
-}
+//       }}
+//     >
+//       Potwierdź korekty
+//     </button>
+//   );
+// }
 
-};
+// };
 
 
 
-const Dodruk = () => {
-  const techContext = useContext(TechnologyContext);
-  const daneTech = techContext.daneTech;
-  const setDaneTech = techContext.setDaneTech;
-    const       {createWykonaniaFromArkuszeLegi}= useProcesy();
- if (DecodeToken(sessionStorage.getItem("token")).technologia_zapis == 1) {
 
-    return (
-    <button
-      // disabled={daneTech.korekta_zamowienia_alert == 1 ? false : true}
-      className={ daneTech.korekta_zamowienia_alert == 1 ? style.btn : style.btn_disabled  }
-      onClick={() => {
-        // daneTech.korekta_zamowienia_alert= null
-        // setDaneTech({...daneTech, alert:true, korekta_zamowienia_alert: null})
-       createWykonaniaFromArkuszeLegi();
-      }}
-    >
-      Dodruk
-    </button>
-  );
-}
-
-};
 
 
 

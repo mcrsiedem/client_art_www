@@ -13,7 +13,7 @@
   z-index: 100;
   
   width: 200px;
-  height: 220px;
+  /* height: 220px; */
   
   background-color: rgba(133, 201, 244, 0.507);
   border-radius: 10px;
@@ -23,16 +23,28 @@
   .menu_legi_btn{
   height: 50px;
   width: 100%;
-  background-color: rgb(216, 216, 216);
+  /* background-color: rgba(0, 0, 0, 0.858); */
+    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+
+    /* background-color: rgba(141, 141, 141, 0.897); */
+
+    /* background-color: rgba(133, 201, 244, 0.943); */
   
-  color: rgb(65, 65, 65);
+  color: rgb(225, 225, 225);
+  font-weight: 500;
   text-align: start;
   padding-left: 20px;
   border: none;
   border-bottom: 1px solid rgb(189, 189, 189);
   }
   .menu_legi_btn:hover{
-  background-color: rgb(160, 160, 160);
+        /* background-color: rgba(0, 0, 0, 0.322); */
+  /* background-color: rgba(0, 0, 0, 0.699); */
+    background-image: linear-gradient(#383838 0%, #0a0a0aa1 80%);
+
+
+
+
   }
   /* .table2 tr:nth-child(odd) { */
   .menu_legi_btn:first-child{
@@ -43,7 +55,11 @@
   .menu_legi_btn:last-child{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: rgba(185, 185, 185, 0.411);
+    /* background-color: rgba(239, 80, 80, 0.671); */
+    /* background-image: linear-gradient(#383838 0%, #fd0303 70%); */
+    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+
+
       text-align: center;
   padding-left: 0px;
   }
@@ -51,6 +67,8 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: rgb(141, 141, 141);
+    background-image: linear-gradient(#fea0a0 0%, #ff0000a1 80%);
+
   }
   
   .td_checkbox{

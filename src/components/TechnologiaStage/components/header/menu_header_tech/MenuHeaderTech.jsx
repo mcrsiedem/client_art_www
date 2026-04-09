@@ -19,6 +19,10 @@ export default function MenuHeaderTech({ showMenu, setShowMenu }) {
     return (
       <div className={style.menu_legi}>
         <Zamowienie  setShowMenu={setShowMenu}/>
+        <Zamowienie  setShowMenu={setShowMenu}/>
+        <Zamowienie  setShowMenu={setShowMenu}/>
+        <Zamowienie  setShowMenu={setShowMenu}/>
+        <Zamowienie  setShowMenu={setShowMenu}/>
         <Anuluj  setShowMenu={setShowMenu}/>
 
       </div>

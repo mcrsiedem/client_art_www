@@ -8,34 +8,44 @@
   justify-content: center;
   
   position:  absolute ;
-  top: 55px;
-  left: 15px;
+  top: 49px;
+  left: -10px;
   z-index: 100;
   
-  width: 200px;
+  width: 240px;
   /* height: 220px; */
   
   background-color: rgba(133, 201, 244, 0.507);
-  border-radius: 10px;
-  border: 1px solid rgb(189, 189, 189);
+   border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  /* border-radius: 10px; */
+  /* border: 1px solid rgb(189, 189, 189); */
+  animation: fadeIn 0.3s ease-out forwards;
   }
+
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
   
   .menu_legi_btn{
   height: 50px;
   width: 100%;
-  /* background-color: rgba(0, 0, 0, 0.858); */
-    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
-
-    /* background-color: rgba(141, 141, 141, 0.897); */
-
-    /* background-color: rgba(133, 201, 244, 0.943); */
-  
+  background-color: rgba(0, 0, 0, 0.904);
   color: rgb(225, 225, 225);
-  font-weight: 500;
-  text-align: start;
-  padding-left: 20px;
+  font-family: Poppins;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-align: center;
+  /* padding-left: 70px; */
   border: none;
-  border-bottom: 1px solid rgb(189, 189, 189);
+  border-bottom: 1px solid rgb(5, 5, 5);
   }
   .menu_legi_btn:hover{
         /* background-color: rgba(0, 0, 0, 0.322); */
@@ -48,16 +58,16 @@
   }
   /* .table2 tr:nth-child(odd) { */
   .menu_legi_btn:first-child{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
 
   }
   .menu_legi_btn:last-child{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    /* background-color: rgba(239, 80, 80, 0.671); */
+    background-color: rgb(0, 0, 0);
     /* background-image: linear-gradient(#383838 0%, #fd0303 70%); */
-    background-image: linear-gradient(#383838 0%, #0a0a0a 80%);
+    background-image: linear-gradient(#383838 0%, #ff000068 60%);
 
 
       text-align: center;
@@ -66,8 +76,12 @@
   .menu_legi_btn:last-child:hover{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: rgb(141, 141, 141);
-    background-image: linear-gradient(#fea0a0 0%, #ff0000a1 80%);
+        background-color: rgb(0, 0, 0);
+
+    /* background-image: linear-gradient(#fea0a0 0%, #ff0000a1 80%); */
+        background-image: linear-gradient(#383838 0%, #ff000068 80%);
+
+
 
   }
   

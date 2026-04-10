@@ -40,34 +40,34 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
   const navigate = useNavigate();
   const effectRan = useRef(false);
 
-   const contextApp = useContext(AppContext);
-   const contexModal = useContext(ModalInsertContext);
-    const setSelectedZamowienie = contexModal.setSelectedZamowienie;
-     const contextModalInsert = useContext(ModalInsertContext);
-const setShowTabs = contextModalInsert.setShowTabs
-    const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
+  const contextApp = useContext(AppContext);
+  const contexModal = useContext(ModalInsertContext);
+  const setSelectedZamowienie = contexModal.setSelectedZamowienie;
+  const contextModalInsert = useContext(ModalInsertContext);
+  const setShowTabs = contextModalInsert.setShowTabs
+  const [showMenu, setShowMenu] = useState(true); // Stan do kontrolowania widoczności menu
 
 
 
-  return (
-    <header onDoubleClick={()=>{  
-            console.log("--------")
+    const showLog = () => {
+      console.log("--------")
       console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
       console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
-      // console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
       console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
       console.table(contextApp.zamowienia)
+    }
 
-     }} id="header" className={style.headerZamowieniaContainer}>
+  return (
+    <header onDoubleClick={()=>{  showLog()}} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
-        <MenuHeaderZamowienia showMenu={showMenu} setShowMenu ={setShowMenu}/>
-        
-      <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
-       < Menu size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'0px'}}/>
-        </button>
-        {/* <REFRESH_ZAMOWIENIA_BTN/> */}
-        <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
-     <SELECT_KLIENT_ZAMOWWIENIA />
+          <MenuHeaderZamowienia showMenu={showMenu} setShowMenu ={setShowMenu}/>
+              
+            <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
+            < Menu size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'0px'}}/>
+              </button>
+              {/* <REFRESH_ZAMOWIENIA_BTN/> */}
+              <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
+          <SELECT_KLIENT_ZAMOWWIENIA />
           <SELECT_OPIEKUN_ZAMOWWIENIA />
       </div>
 

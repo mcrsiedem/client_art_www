@@ -9,7 +9,7 @@ import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
 import DecodeToken from "pages/Login/DecodeToken";
 import { Eraser, File, Menu, RefreshCcw, Save, Sheet, SquareMenu, TriangleAlert } from "lucide-react";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
-export default function MenuHeaderZamowienia({ showMenu = true, setShowMenu }) {
+export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
 

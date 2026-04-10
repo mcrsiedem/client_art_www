@@ -29,9 +29,12 @@ import {
   Filter,
   BetweenVerticalStart,
   StretchVertical,
-  KeySquare
+  KeySquare,
+  Menu,
+  EllipsisVertical
 } from "lucide-react";
 import BTN_KOPIUJ_NEW from "./BTN_KOPIUJ";
+import MenuHeaderZamowienia from "./menu_header_zamowienia/MenuHeaderZamowienia";
 
 export default function Header({ dodaj_clikHandler,showSettings, setShowSettings,visibleColumns, setVisibleColumns,allColumns}) {
   const navigate = useNavigate();
@@ -42,6 +45,7 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
     const setSelectedZamowienie = contexModal.setSelectedZamowienie;
      const contextModalInsert = useContext(ModalInsertContext);
 const setShowTabs = contextModalInsert.setShowTabs
+    const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
 
 
 
@@ -56,7 +60,12 @@ const setShowTabs = contextModalInsert.setShowTabs
 
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
-        <REFRESH_ZAMOWIENIA_BTN/>
+        <MenuHeaderZamowienia showMenu={showMenu} setShowMenu ={setShowMenu}/>
+        
+      <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
+       < Menu size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'0px'}}/>
+        </button>
+        {/* <REFRESH_ZAMOWIENIA_BTN/> */}
         <p title={contextApp.zamowienia.filter((zam) => zam.stan==3).length+ " przyjętych"} className={style.title2}>Zamówienia </p>
      <SELECT_KLIENT_ZAMOWWIENIA />
           <SELECT_OPIEKUN_ZAMOWWIENIA />

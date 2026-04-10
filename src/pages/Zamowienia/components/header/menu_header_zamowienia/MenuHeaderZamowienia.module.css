@@ -1,0 +1,113 @@
+.menu_legi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 49px;
+  left: -10px;
+  z-index: 9000;
+
+  width: 240px;
+  /* height: 220px; */
+
+  background-color: rgba(133, 201, 244, 0.507);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* border-radius: 10px; */
+  /* border: 1px solid rgb(189, 189, 189); */
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* transform: translateX(-250px); */
+  }
+
+  to {
+    opacity: 1;
+    /* transform: translateX(0px); */
+  }
+}
+
+.menu_legi_btn {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.904);
+  color: rgb(225, 225, 225);
+  font-family: Poppins;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-align: start;
+  padding-left: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(5, 5, 5);
+}
+
+.menu_legi_btn:hover {
+  /* background-color: rgba(0, 0, 0, 0.322); */
+  background-color: rgba(0, 0, 0, 0.813);
+  /* background-color: rgba(#22de26); */
+  /* background-image: linear-gradient(#383838 0%, #0a0a0aa1 80%); */
+  /* background-image: linear-gradient(#22de26 0%, #8bf05c5f 80%); */
+
+
+
+
+}
+
+/* .table2 tr:nth-child(odd) { */
+.menu_legi_btn:first-child {
+  /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+
+}
+
+.menu_legi_btn:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  /* background-image: linear-gradient(#383838 0%, #ff000068 60%); */
+  text-align: center;
+  padding-left: 0px;
+}
+
+.menu_legi_btn:last-child:hover {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.87);
+  /* background-image: linear-gradient(#383838 0%, #ff000068 80%); */
+}
+
+
+
+
+.td_checkbox {
+  width: 20px;
+}
+
+/* .tr_legi_mini{
+    
+    height: 1rem;
+    background-color: rgb(155, 210, 255);
+  } */
+
+.tr_legi_mini td {
+  height: 1rem;
+
+  background-color: rgb(182, 210, 247);
+  /* background-image: linear-gradient(rgb(156, 188, 230) 0%, rgb(182, 210, 247) 50%, rgb(156, 188, 230) 100%); */
+
+  /* border-radius: 5px; */
+}
+
+.td_checkbox {
+  width: 10px;
+}
+
+.ch_box {
+
+  height: 12px;
+}

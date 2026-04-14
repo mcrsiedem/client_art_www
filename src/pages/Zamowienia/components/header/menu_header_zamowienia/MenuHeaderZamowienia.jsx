@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TechnologyContext } from "context/TechnologyContext";
 import style from "./MenuHeaderZamowienia.module.css";
 import { ponumerArkusze } from "actions/ponumerArkusze";
@@ -9,6 +9,7 @@ import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
 import DecodeToken from "pages/Login/DecodeToken";
 import { Eraser, File, Menu, RefreshCcw, Save, Sheet, SquareMenu, TriangleAlert } from "lucide-react";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
+import { useZamowienia } from "hooks/useZamowienia";
 export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -18,16 +19,18 @@ export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
   const setShowProcesy = techContext.setShowProcesy;
 
   const {createProcesyFromArkuszONE} = useProcesy();
+    const [disabled, setDisabled] = useState(false);
+
 
   if (showMenu) {
     return (
       <div className={style.menu_legi}>
-        <Zamowienie  setShowMenu={setShowMenu}/>
-        <Arkusze  setShowMenu={setShowMenu}/>
+        <Odswiez  setShowMenu={setShowMenu} disabled={disabled} setDisabled={setDisabled}/>
+        {/* <Arkusze  setShowMenu={setShowMenu}/>
         <Dodruk  setShowMenu={setShowMenu}/>
         <PotwierdzKorekty  setShowMenu={setShowMenu}/>
         <ZapisBtnPromiseDodruk  setShowMenu={setShowMenu}/>
-        <Clear  setShowMenu={setShowMenu}/>
+        <Clear  setShowMenu={setShowMenu}/> */}
 
         {/* <Zamowienie  setShowMenu={setShowMenu}/>
         <Zamowienie  setShowMenu={setShowMenu}/>
@@ -223,21 +226,38 @@ const Dodruk = ({setShowMenu} ) =>{
 
 
 
-const Zamowienie = ({setShowMenu} ) =>{
+const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
   const techContext = useContext(TechnologyContext)
   const {setOpenModalInsert} = useContext(ModalInsertContext);
+  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+
+
   return(
     <button
     className={style.menu_legi_btn}
     onClick={() => {
-      setShowMenu(false)
-      setOpenModalInsert(true);
+            if(!disabled){
+      setShowMenu(false);
+
+            // refreshZamowieniaProofy()
+            refreshZamowienia();
+            setDisabled(true)
+            // console.log("refresh")
+            setTimeout(() => {
+              setDisabled(false);
+              // console.log("unlock")
+            }, 2000);
+        
+
+            }
+
 
     }}
   >
-       < File size={15} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>
+     {disabled?  < RefreshCcw size={15} style={{color:'grey',marginRight:'10px',marginLeft:'4px'}}/> :
+                  < RefreshCcw size={15} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>}
 
-    Zamówienie
+    Odśwież
   </button>
   )
 }

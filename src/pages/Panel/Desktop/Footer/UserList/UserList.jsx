@@ -64,10 +64,24 @@ const UserList = () => {
       <div className={style.usersGrid}>
         {usersIO
           .filter(
-            (user) =>
-              // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId !=10 && user.userId !=60
+            (user) =>{
+// 1. Pobieramy ID z tokena
+  const loggedInUserId = DecodeToken(sessionStorage.getItem("token"))?.id;
+
+  // 2. Podstawowe filtrowanie (zawsze aktywne)
+  const isNotExcluded = user.userId !== 10 && user.userId !== 60;
+
+  // 3. Warunek specjalny: jeśli ja mam ID 10, to dodatkowo odfiltruj użytkownika o ID 4
+  if (loggedInUserId === 10) {
+    return isNotExcluded && user.userId !== 4;
+  }
+
+  // W przeciwnym razie stosuj tylko standardowe filtry
+  return isNotExcluded;
+            }
+          
           )
+
           .map((user, i) => (
             // Pojedynczy element użytkownika
             <div

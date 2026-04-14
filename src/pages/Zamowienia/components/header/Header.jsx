@@ -60,7 +60,7 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
   return (
     <header onDoubleClick={()=>{  showLog()}} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
-          {/* <MenuHeaderZamowienia showMenu={showMenu} setShowMenu ={setShowMenu}/> */}
+          <MenuHeaderZamowienia showMenu={showMenu} setShowMenu ={setShowMenu}/>
               
             <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
             < Menu size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'0px'}}/>

@@ -85,7 +85,7 @@ const OdblokujZamowienia = ({setShowMenu } ) =>{
   const {selectedZamowienie} = useContext(ModalInsertContext);
   const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
 
-  return(
+ if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj==1)  {return(
     <button
     className={style.menu_legi_btn}
     onClick={ async() => {
@@ -103,6 +103,7 @@ const OdblokujZamowienia = ({setShowMenu } ) =>{
     Odblokuj zamówienie
   </button>
   )
+}
 }
 
 

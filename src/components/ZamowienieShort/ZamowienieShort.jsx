@@ -109,7 +109,7 @@ const styles2 = `
   .badge-typ {
     background: #0984e3;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding: 2px 8px;
     border-radius: 4px;
     text-transform: uppercase;
@@ -296,7 +296,7 @@ const getProcessClass2 = (status) => {
           <div key={item.id} className="card">
             <div className="card-header">
               <div className="title-group">
-                <span className="badge-typ">Element {item.typ}</span>
+                <span className="badge-typ">Element {item.indeks} /  {elementyTech.length}</span>
                 <h2>{item.typ_nazwa}</h2>
                 <h2>{item.nazwa}</h2>
               </div>

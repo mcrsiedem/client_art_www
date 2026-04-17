@@ -51,6 +51,9 @@ export function sortOprawa( grupyOprawaAll,sortowanie) {
       case 'uwagi':
         posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.uwagi.localeCompare(b.uwagi));
     break;
+          case 'ilosc_zbieran':
+        posortowanaOprawa = posortowanaOprawa.sort((a, b) => a.ilosc_zbieran - b.ilosc_zbieran);
+    break;
   default:
     posortowanaOprawa = posortowanaOprawa.sort((a, b) => new Date(a.poczatek) - new Date(b.poczatek));
     break;

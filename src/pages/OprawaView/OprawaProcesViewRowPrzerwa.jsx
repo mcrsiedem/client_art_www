@@ -83,6 +83,8 @@ export default function OprawaProcesViewRowPrzerwa({ grup,unlockTable, setUnlock
                       <td></td>
                       <td></td>
                       <td></td>
+                      <td></td>
+                      <td></td>
                       
                   <Status grup={grup}/>
                       <td></td>

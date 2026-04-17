@@ -62,6 +62,8 @@ let prevet = true;
         <td className={style.td_tableProcesy_nr}>{grup.nr} / {grup.rok.substring(2, 4)} </td>
         <Klient grup={grup} />
         <Tytul grup={grup} />
+        <td className={style.td_tableProcesy_nr}>{grup.ilosc_zbieran}  </td>
+
         <Szerokosc grup={grup} />
     
         <Rodzaj grup={grup} />

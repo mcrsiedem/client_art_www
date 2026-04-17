@@ -43,7 +43,7 @@ export default  function GRUPA_WYKONAN_OPRAWA ({ grupaOprawa }) {
                  <MnoznikPredkosci grupaOprawa={grupaOprawa}/>
                  {/* <Stangrupy grupaOprawa={grupaOprawa}/> */}
                  <StatusGrupy grupaOprawa={grupaOprawa} />
-                 {/* <DodajGrupeWykonan grupaOprawa={grupaOprawa}/> */}
+                 <DodajGrupeWykonan grupaOprawa={grupaOprawa}/>
                  <SkasujGrupeWykonan grupaOprawa={grupaOprawa}/>
               </div>
 
@@ -129,31 +129,36 @@ if(daneTech.technologia_id !=null){
 }
 
 function DodajGrupeWykonan({ rowGrupa }) {
-  const techContext = useContext(TechnologyContext);
-  let grupaWykonan = techContext.grupaWykonan;
-  const setGrupaWykonan = techContext.setGrupaWykonan;
-  const fechparametryTechnologii = techContext.fechparametryTechnologii;
-  const daneTech = techContext.daneTech;
+  const {grupaOprawaTech,setGrupaWykonan,fechparametryTechnologii,daneTech} = useContext(TechnologyContext);
+  // let grupaWykonan = techContext.grupaWykonan;
+  // const setGrupaWykonan = techContext.setGrupaWykonan;
+  // const fechparametryTechnologii = techContext.fechparametryTechnologii;
+  // const daneTech = techContext.daneTech;
+  const onClikHandler = () => {
+    
+          let newGrupa = [...grupaOprawaTech]
+          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
+          // handleRemoveItem(row.indeks, row.id);
+          // newGrupa.push({...rowGrupa,id: getMaxID(grupaOprawaTech),czas:0,przeloty:0 })
+          setGrupaWykonan(newGrupa)
+          console.log(newGrupa)
+  } 
 
   return (
     <div style={{ paddingTop: "13px" }}>
       <img
-        onDragOver={handleDragOver}
-        onDrop={() => handleDrop(1)}
+        // onDragOver={handleDragOver}
+        // onDrop={() => handleDrop(1)}
         className={style.expand}
         src={icon}
-        onClick={() => {
-          let newGrupa = [...grupaWykonan]
-          //handleAddArkusz(row, grupaWykonan, setGrupaWykonan);
-          // handleRemoveItem(row.indeks, row.id);
-          newGrupa.push({...rowGrupa,id: getMaxID(grupaWykonan),czas:0,przeloty:0 })
-          setGrupaWykonan(newGrupa)
-          console.log(newGrupa)
-        }}
+        onClick={onClikHandler}
         alt="Procesy"
       />
     </div>
   );
+
+
+
 
   function handleDragOver(e) {
     e.preventDefault();

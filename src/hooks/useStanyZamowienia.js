@@ -26,21 +26,21 @@ export function useStanyZamowienia() {
   const pokazStanyZamowienia = () => {
 console.clear();
 console.log("Zamówienie: ");
-// console.log("Dane : ", daneZamowienia);
-// console.log("Produkt : ", produkty);
-// console.log("Elementy : ", elementy);
-// console.log("Fragmenty : ", fragmenty);
-// console.log("Oprawa : ", oprawa);
-// console.log("Procesy elementów: ", procesyElementow);
-// console.log("Faktury: ", faktury);
-// console.log("Pliki: ", procesyElementow);
-// console.log("Pakowanie: ", pakowanie);
-// console.log("Papiery_nazwy: ", listaPapierowNazwy);
-// console.log("Historia zamówienia: ", historiaZamowienia);
-// console.log("Technologie do zamówienia: ", technologieID);
-// console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
-// console.log("listaPapierowNazwy: ", listaPapierowNazwy);
-// console.table("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
+console.log("Dane : ", daneZamowienia);
+console.log("Produkt : ", produkty);
+console.log("Elementy : ", elementy);
+console.log("Fragmenty : ", fragmenty);
+console.log("Oprawa : ", oprawa);
+console.log("Procesy elementów: ", procesyElementow);
+console.log("Faktury: ", faktury);
+console.log("Pliki: ", procesyElementow);
+console.log("Pakowanie: ", pakowanie);
+console.log("Papiery_nazwy: ", listaPapierowNazwy);
+console.log("Historia zamówienia: ", historiaZamowienia);
+console.log("Technologie do zamówienia: ", technologieID);
+console.log("listaPapierowWyszukiwarka: ", listaPapierowWyszukiwarka);
+console.log("listaPapierowNazwy: ", listaPapierowNazwy);
+console.table("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
 console.table( kosztyDodatkoweZamowienia);
 // console.table( listaPapierowWyszukiwarka);
 

@@ -16,6 +16,8 @@ import { onContextMenuHanlder } from "./actions/onContextMenuHanlder";
 import { onMouseDownHanlder } from "./actions/onMouseDownHanlder";
 import { sortOprawa } from "./actions/sortOprawa";
 import OprawaWykonania from "./OprawaWykonania/OprawaWykonania";
+import { ModalInsertContext } from "context/ModalInsertContext";
+import DecodeToken from "pages/Login/DecodeToken";
 
 
 export default function OprawaProcesViewRow({ grup,i}) {
@@ -27,9 +29,14 @@ export default function OprawaProcesViewRow({ grup,i}) {
     const grupyOprawaAll = techContext.grupyOprawaAll;
     const setProcesyElementowTech = techContext.setProcesyElementowTech;
   const selectedProcesor = techContext.selectedProcesor;
+    const fechparametryTechnologii = techContext.fechparametryTechnologii;
 
    const sortowanieOprawy = techContext.sortowanieOprawy;
   const setSortowanieOprawy = techContext.setSortowanieOprawy;
+
+        const {setSelectedZamowienie} = useContext(ModalInsertContext);
+    
+
 
 let prevet = true;
       
@@ -43,6 +50,15 @@ let prevet = true;
             return style.procesRow_tr;
           };
 
+              const onClikHandler = () => {
+      setSelectedZamowienie({ ...grup, id: grup.zamowienie_id, i });
+    };
+
+        const onDoubleClickHandler = () => {
+           
+          if(DecodeToken(sessionStorage.getItem("token")).realizacje_dodaj == 1 && grup.typ_grupy != 1 ){fechparametryTechnologii(grup.zamowienie_id,grup.technologia_id)}
+        };
+
   return (
     <>
       <tr
@@ -55,6 +71,10 @@ let prevet = true;
         className={selectColor(grup.status)}
         onContextMenu={(event) => onContextMenuHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,fechparametryTechnologiiDetails,setProcesyElementowTech,prevet)}
         onMouseDown={(event) => onMouseDownHanlder(event,grup,setGrupyOprawaAll,grupyOprawaAll,selectedProcesor,i,sortowanieOprawy,sortOprawa)}
+      onClick={onClikHandler}
+      onDoubleClick={onDoubleClickHandler}
+
+
       >
         <td className={style.td_tableProcesy_poczatek}>{grup.poczatek}</td>
         <td className={style.td_tableProcesy_czas}>{zamienNaGodziny(grup.czas)}</td>

@@ -78,7 +78,7 @@ export default function OprawaView( ) {
         <OprawaProcesyHeader />
         <WykonaniaTable  />
       <div className={style.container}>
-        {/* <TechnologiaStage/> */}
+        <TechnologiaStage/>
         <Procesory
         />
       </div>

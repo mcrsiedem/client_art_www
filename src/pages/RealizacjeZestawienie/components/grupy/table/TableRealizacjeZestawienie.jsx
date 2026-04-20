@@ -1,128 +1,96 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useMemo, useContext, useRef } from "react";
 import style from "./TableRealizacjeZestawienie.module.css";
 import iconSettings from "assets/dots2.svg";
-import iconFile from "assets/iconTechnologieDark.svg";
 import { AppContext } from "context/AppContext";
-import { sprawdzDostepZamowienia } from "actions/sprawdzDostepZamowienia";
 import TABLE_ROW_ZAMOWIENIA from "./row/RowRealizacjeZestawienie";
 import DecodeToken from "pages/Login/DecodeToken";
-import { useSortowanieZamowienia } from "hooks/useSortowanieZamowienia";
-import { useZamowienia } from "hooks/useZamowienia";
-import LoadingMini from "components/Loading/LoadingMini";
-export default function TableRealizacjeZestawienie({open2,setRow}){
-  const [showMenu, setShowMenu] = useState(false);
+
+export default function TableRealizacjeZestawienie({ open2, setRow }) {
   const contextApp = useContext(AppContext);
-  const realizacjeZestawienieGrupy = contextApp.realizacjeZestawienieGrupy
-  const setZamowienia = contextApp.setZamowienia
-  const selectedUser= contextApp.selectedUser;
-  const selectedKlient= contextApp.selectedKlient;
-  const [sortWgEtapu] = useSortowanieZamowienia()
+  const realizacjeZestawienieGrupy = contextApp.realizacjeZestawienieGrupy || [];
+  const tableZamowienia = contextApp.tableZamowienia;
 
-   const inputElement = useRef();
+  // Stan przechowywania konfiguracji sortowania
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  const tableZamowienia= contextApp.tableZamowienia;
+  // Funkcja zmieniająca kolumnę/kierunek sortowania
+  const requestSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
 
-  const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
+  // Logika sortowania danych
+  const sortedData = useMemo(() => {
+    let sortableItems = [...realizacjeZestawienieGrupy];
+    if (sortConfig.key !== null) {
+      sortableItems.sort((a, b) => {
+        // Obsługa wartości null/undefined, by nie wywalało błędu przy porównywaniu
+        const aValue = parseInt(a[sortConfig.key], 10) || 0;
+        const bValue = parseInt(b[sortConfig.key], 10) || 0
 
-
-
-
- return (
-   <div ref={tableZamowienia}  className={style.tableContainer} >
-     <table className={style.tableZam}>
-       <thead className={style.th_head}>
-         <tr className={style.table_tr}>
-
-           <th className={style.col_indeks}>#</th>
-           <th className={style.col_utworzono}>Pracownik</th>
-           <th className={style.col_klient}>Narzady</th>
-           <th className={style.col_praca}>Przeloty</th>
-
-
-
-         </tr>
-       </thead>
-       <tbody className={style.tableZam}>
-         {realizacjeZestawienieGrupy
-
-           .map((row,i) => {
-             return (
-               <TABLE_ROW_ZAMOWIENIA key={row.global_id} row={row} open2={open2} setRow={setRow} i={i} />
-             );
-           })}
-       </tbody>
-     </table>
-   </div>
- );
-}
-
-const MenuBtn = ({ showMenu, setShowMenu }) => {
-  return (
-    <img
-              className={style.iconMenuBtn}
-              src={iconSettings}
-              onClick={() => {
-                setShowMenu(!showMenu);
-                
-              }}
-              alt="x"
-            />
-  )
-}
-
-function SELECT_OPIEKUN_ZAMOWWIENIA() {
-  const contextApp = useContext(AppContext);
-  const selectedUser = contextApp.selectedUser;
-  const setSelectedUser = contextApp.setSelectedUser;
-  const setSelectedKlient = contextApp.setSelectedKlient;
-  if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
-    return (
-      <select
-        className={style.select_opiekun_zamowienia}
-        value={selectedUser}
-        onChange={(event) => {
-          setSelectedUser(event.target.value);
-             setSelectedKlient(0)
-        }}
-      >
-        {<option value="0">Wszyscy</option>}
-
-        {contextApp.users?.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.Imie} {option.Nazwisko}
-          </option>
-        ))}
-      </select>
-    );
-  }else{
-    return  <th className={style.col_firma}>Opiekun</th>
-  }
-}
-
-function SELECT_KLIENT_ZAMOWWIENIA() {
-  const contextApp = useContext(AppContext);
-  const selectedKlient = contextApp.selectedKlient;
-  const setSelectedKlient = contextApp.setSelectedKlient;
-  const selectedUser = contextApp.selectedUser;
-    return (
-      <select
-        className={style.select_klient_zamowienia}
-        value={selectedKlient}
-        onChange={(event) => {
-          setSelectedKlient(event.target.value);
-        }}
-      >
-        {<option value="0">Klient</option>}
-
-        {contextApp.clients?.filter(kl=>  {
-          if(selectedUser==0){return true} else {return  kl.opiekun_id == selectedUser}
+        if (aValue < bValue) {
+          return sortConfig.direction === 'asc' ? -1 : 1;
         }
-         )
-        .map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.firma_nazwa} 
-          </option>
-        ))}
-      </select>
-    );
+        if (aValue > bValue) {
+          return sortConfig.direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableItems;
+  }, [realizacjeZestawienieGrupy, sortConfig]);
+
+  // Pomocniczy komponent do rysowania strzałek sortowania
+  const getSortIcon = (name) => {
+    if (sortConfig.key !== name) return " ↕";
+    return sortConfig.direction === 'asc' ? " ▲" : " ▼";
+  };
+
+  return (
+    <div ref={tableZamowienia} className={style.tableContainer}>
+      <table className={style.tableZam}>
+        <thead className={style.th_head}>
+          <tr className={style.table_tr}>
+            <th className={style.col_indeks}>#</th>
+            <th className={style.col_utworzono}>Pracownik</th>
+            
+            <th 
+              className={style.col_klient} 
+              onClick={() => requestSort('LiczbaWpisow')} 
+              style={{ cursor: "pointer", userSelect: "none" }}
+            >
+              Narzady{getSortIcon('LiczbaWpisow')}
+            </th>
+            
+            <th 
+              className={style.col_praca} 
+              onClick={() => requestSort('SumaZrealizowanoTyp1')} 
+              style={{ cursor: "pointer", userSelect: "none" }}
+            >
+              Przeloty{getSortIcon('SumaZrealizowanoTyp1')}
+            </th>
+          </tr>
+        </thead>
+        <tbody className={style.tableZam}>
+          {sortedData.map((row, i) => {
+            return (
+              <TABLE_ROW_ZAMOWIENIA 
+                key={row.global_id || i} 
+                row={row} 
+                open2={open2} 
+                setRow={setRow} 
+                i={i} 
+              />
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
+
+// Pozostałe komponenty pomocnicze (MenuBtn, SELECT_OPIEKUN, SELECT_KLIENT) 
+// można zostawić poniżej bez zmian, jeśli są używane w innym miejscu pliku.

@@ -37,10 +37,10 @@ function Zamowienia() {
   WIDTHS: "table_css_mod_widths",
   SORT: "table_css_mod_sort"
 };
-  const [visibleColumns, setVisibleColumns] = useState(() => {
-    const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
-    return saved ? JSON.parse(saved) : allColumns.filter(col => col.visible == true).map(c => c.id);
-  });
+  // const [visibleColumns, setVisibleColumns] = useState(() => {
+  //   const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
+  //   return saved ? JSON.parse(saved) : allColumns?.filter(col => col.visible == true).map(c => c.id);
+  // });
 
     const allColumns = [
     { id: "nr", label: "Nr" , visible: true},
@@ -74,6 +74,21 @@ function Zamowienia() {
     
     
   ];
+
+  //   const [visibleColumns, setVisibleColumns] = useState(() => {
+  //   const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
+  //   return saved ? JSON.parse(saved) : allColumns?.filter(col => col.visible == true).map(c => c.id);
+  // });
+
+
+  const [visibleColumns, setVisibleColumns] = useState(() => {
+  const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
+  if (saved) return JSON.parse(saved);
+  
+  // Jeśli nie ma w storage, filtruj allColumns, 
+  // a jeśli allColumns jest undefined, zwróć pustą tablicę []
+  return allColumns?.filter(col => col.visible === true).map(c => c.id) || [];
+});
     
 
   function dodaj_clikHandler() {

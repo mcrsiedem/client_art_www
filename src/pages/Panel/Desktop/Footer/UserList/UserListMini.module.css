@@ -1,0 +1,214 @@
+/* UserList.module.css */
+
+/* 1. Kontener Główny - zapewnia, że komponent zajmie całą dostępną szerokość */
+.userListContainer {
+  width: 300px;
+  /* Opcjonalnie: Ustawienie maksymalnej wysokości, aby wymusić skalowanie/dopasowanie */
+  /* max-height: ...; */
+  overflow: hidden; /* Ukrywa ewentualne przewijanie */
+  /* padding: 0 0; Lekki odstęp pionowy */
+  /* max-height: 99%; */
+  /* background-color: #2ecc71; */
+
+}
+
+/* 2. CSS Grid - klucz do dynamicznego układu */
+
+
+
+.usersGrid {
+  display: grid;
+  
+  /* flex-direction: row; 
+  align-items: center; 
+  justify-content: center; */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+
+/* background-color: red; */
+overflow: hidden;
+/* padding-right: 20px;
+padding-bottom: 5px; */
+gap: 7px;
+}
+
+
+
+/* 3. Pojedyncza Karta Użytkownika */
+/* .userCard {
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+  width: 90px;
+  padding: 9px;
+  overflow: hidden;
+  background-color: #f7f9fc41;
+  backdrop-filter:  blur(10px);
+  border-radius: 15px;
+} */
+
+.userCard {
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+  width: 80px;
+  height: 70px;
+  padding: 9px;
+  overflow: hidden;
+  background-color: #f7f9fc41;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid gray;
+  /* Ważne: Zapewniamy miejsce na cień, aby pulsowanie nie przesuwało innych elementów */
+  /* margin: 10px;  */
+}
+
+/* STYL DLA AKTYWNEGO STANU (klasa dodawana dynamicznie) */
+.userCard.is-active {
+  /* Stała, bazowa poświata */
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  /* Zastosowanie animacji: 1.5 sekundy, nieskończone powtarzanie */
+  animation: pulse 1.5s infinite; 
+}
+
+
+.userCardActive {
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+  width: 80px;
+  height: 70px;
+  padding: 9px;
+  overflow: hidden;
+  background-color: #66d95941;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+    border: 1px solid rgb(20, 167, 6);
+  
+  /* Ważne: Zapewniamy miejsce na cień, aby pulsowanie nie przesuwało innych elementów */
+  /* margin: 10px;  */
+    /* Stała, bazowa poświata */
+  /* box-shadow: 0 0 5px rgba(255, 0, 157, 0.8); */
+  /* Zastosowanie animacji: 1.5 sekundy, nieskończone powtarzanie */
+  /* animation: pulse 3.5s infinite;  */
+}
+
+
+.userCardInfo{
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+  /* width: 80px; */
+  height: 50px;
+  padding: 9px;
+  overflow: hidden;
+  background-color: #4087fa66;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+    border: 1px solid rgb(174, 174, 174);
+    height: 100%;
+    gap:10px
+  
+  /* Ważne: Zapewniamy miejsce na cień, aby pulsowanie nie przesuwało innych elementów */
+  /* margin: 10px;  */
+    /* Stała, bazowa poświata */
+  /* box-shadow: 0 0 5px rgba(255, 0, 157, 0.8); */
+  /* Zastosowanie animacji: 1.5 sekundy, nieskończone powtarzanie */
+  /* animation: pulse 3.5s infinite;  */
+}
+
+.info {
+  display: block; /* Upewnia się, że każdy span zajmuje całą dostępną szerokość */
+  width: 100%;
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  overflow: hidden; /* Ukrywa tekst, który się nie mieści */
+  text-overflow: ellipsis; /* Zastępuje ukryty tekst trzema kropkami (...) */
+  font-size: 3.6em; /* Domyślny rozmiar czcionki */
+  line-height: 1.2;
+  color: #e4e4e4;
+}
+
+.info_nie_ma {
+  display: block; /* Upewnia się, że każdy span zajmuje całą dostępną szerokość */
+  /* width: 100%; */
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  overflow: hidden; /* Ukrywa tekst, który się nie mieści */
+  text-overflow: ellipsis; /* Zastępuje ukryty tekst trzema kropkami (...) */
+  font-size: 0.8em; /* Domyślny rozmiar czcionki */
+  line-height: 1.2;
+  color: #e4e4e4;
+  
+}
+
+/* 4. Ikona Użytkownika */
+.userIcon {
+  width: 25px; /* Stała szerokość ikony */
+  height: 25px; /* Stała wysokość ikony */
+  border-radius: 50%; /* Okrągły obrazek */
+  object-fit: cover;
+  margin-bottom: 5px;
+  flex-shrink: 0; /* Zapobiega pomniejszaniu się ikony przy braku miejsca */
+}
+
+/* 5. Style Tekstowe - Skracanie/Przycinanie Tekstu (gdy się nie mieści) */
+
+.userName,
+.userSurname,
+.loginTime {
+  display: block; /* Upewnia się, że każdy span zajmuje całą dostępną szerokość */
+  width: 100%;
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+  overflow: hidden; /* Ukrywa tekst, który się nie mieści */
+  text-overflow: ellipsis; /* Zastępuje ukryty tekst trzema kropkami (...) */
+  font-size: 0.7em; /* Domyślny rozmiar czcionki */
+  line-height: 1.2;
+}
+
+.userName {
+  /* font-weight: bold; */
+  color: #e4e4e4;
+}
+
+.userSurname {
+  color: #e4e4e4;
+  font-size: 0.7em;
+}
+
+.loginTime {
+  font-size: 0.7em;
+  color: #e5e5e5;
+  margin-top: 2px;
+}
+
+.onlineIcon {
+  position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2ecc71; /* Żywa zieleń */
+    margin-right: 15px;
+    flex-shrink: 0;
+    /* Mała animacja pulsu */
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    animation: pulse 3s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}

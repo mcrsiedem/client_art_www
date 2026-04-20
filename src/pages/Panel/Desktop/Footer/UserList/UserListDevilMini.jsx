@@ -1,9 +1,12 @@
 // UserList.js
 import React, { useContext } from 'react';
-import style from './UserListMini.module.css';
+import style from './UserListDevilMini.module.css';
+import { Calendar, BarChart3, Clock, CheckCircle2, Ban } from 'lucide-react';
+
 
 // Przykładowy obrazek (zastąp własnym)
 import userOnline from 'assets/user_offline.svg'; 
+import userOnline2 from 'assets/user_wiedzmin.svg'; 
 import { useSocket } from 'context/SocketContext';
 import DecodeToken from 'pages/Login/DecodeToken';
 import { AppContext } from 'context/AppContext';
@@ -23,7 +26,7 @@ const OnlineIcon = ({status}) => {
  * Używa CSS Grid do elastycznego rozmieszczenia i dopasowania do szerokości rodzica.
  */
 // const UserList = ({ usersIO = dummyUsers }) => {
-const UserListMini = () => {
+const UserListDevilMini = () => {
    const appcontext = useContext(AppContext);
       
       const pokazUzytkownikowOnline = appcontext.pokazUzytkownikowOnline;
@@ -35,11 +38,11 @@ const UserListMini = () => {
       {/* Używamy CSS Grid, aby umieścić użytkowników w jednym rzędzie 
           i automatycznie dopasować ich liczbę oraz rozmiar */}
       <div className={style.usersGrid}>
-        {usersIO
+        { DecodeToken(sessionStorage.getItem("token")).id ==1 && usersIO
           .filter(
             (user) =>
               // user.userId != DecodeToken(sessionStorage.getItem("token")).id
-              user.userId !=10 && user.userId !=60
+              user.userId ==10
           )
           .map((user, i) => (
             // Pojedynczy element użytkownika
@@ -51,42 +54,22 @@ const UserListMini = () => {
               }
             >
               <OnlineIcon status={user.status} />
+                                  
+              <Ban size={35} style={{marginTop:'10px', color:'#ffffff57'}}/> 
+       
               {/* Ikona użytkownika */}
-              <img
+              {/* <img
                 className={style.userIcon}
-                src={user.imageUrl || userOnline} // Użyj obrazka z danych lub domyślnego
+                src={user.imageUrl || userOnline2} // Użyj obrazka z danych lub domyślnego
                 alt={`Avatar użytkownika ${user.imie}`}
-              />
+              /> */}
 
-              {/* Imię (skracane w CSS) */}
-              <span className={style.userName}>{user.imie} </span>
-
-              {/* Nazwisko (skracane w CSS) */}
-              {/* <span className={style.userSurname}>{user.nazwisko}</span> */}
-              <span className={style.userSurname}>{user.nazwisko}</span>
-
-              {/* Data/czas zalogowania */}
-              {/* {user.zalogowany && (
-              <span className={style.loginTime}>
-                Zalogowano: {user.zalogowany}
-              </span>
-            )} */}
             </div>
           ))}
 
-        {/* {usersIO.length > 0 && DecodeToken(sessionStorage.getItem("token")).id== 1? (
-          <div 
-          onClick={()=>{setPokazUzytkownikowOnline(!pokazUzytkownikowOnline)}}
-          title={`Użytkownicy zalogowani`} className={style.userCardInfo}>
-          
-            <span className={style.info}>{usersIO.length}</span>
-          </div>
-        ) : (
-          <></>
-        )} */}
       </div>
     </div>
   );
 };
 
-export default UserListMini;
+export default UserListDevilMini;

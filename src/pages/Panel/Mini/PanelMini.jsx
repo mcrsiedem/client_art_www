@@ -23,6 +23,8 @@ import { getClients } from "actions/getClients";
 import { useSocket } from "context/SocketContext";
 import UserList from "../Desktop/Footer/UserList/UserList";
 import UserListDevil from "../Desktop/Footer/UserList/UserListDevil";
+import UserListMini from "../Desktop/Footer/UserList/UserListMini";
+import UserListDevilMini from "../Desktop/Footer/UserList/UserListDevilMini";
 
 export default function PanelMini({ user, setUser, logout }) {
   const navigate = useNavigate();
@@ -85,9 +87,11 @@ export default function PanelMini({ user, setUser, logout }) {
 
             <div className={style.userContainer}>
 
-      {/* <UserList/> */}
+         { DecodeToken(sessionStorage.getItem("token")).id == 1 && <UserListMini/>}     
+         { DecodeToken(sessionStorage.getItem("token")).id == 1 && <UserListDevilMini/>}     
             </div>
-      {/* <UserListDevil/> */}
+
+            {/* <UserListDevil/> */}
 
           </div>
         </div>

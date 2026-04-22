@@ -15,15 +15,18 @@ export const addRealizajcaProcesu = async (
   grupyWykonanAll,
   setGrupWykonanAll,
   grup,
-  setIsLoading,socket
+  setIsLoading,socket,procesory
 ) => {
   setIsLoading(true);
   try {
+    let proces_nazwa_id = procesory?.find(x=>x.id == wykonanie.procesor_id).grupa
+
     const res = await axios.post(
       IP + "dodaj_realizacje_procesu/" + sessionStorage.getItem("token"),
       {
         ...wykonanie,
         zrealizowano: value,
+        proces_nazwa_id: proces_nazwa_id
       }
     );
 

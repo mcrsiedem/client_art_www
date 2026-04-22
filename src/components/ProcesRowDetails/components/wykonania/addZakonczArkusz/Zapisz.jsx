@@ -38,7 +38,7 @@ export default function Zapisz({setShow,wykonanie,value,grup}) {
        
         
        }else{
-          addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket)
+          addRealizacjaZakonczArkusz(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket,appContext.procesory)
           setShow(false)
        }
           

@@ -16,15 +16,19 @@ export const addRealizacjaZakonczArkusz = async (
   setGrupWykonanAll,
   grup,
   setIsLoading,
-  socket
+  socket,
+  procesory
 ) => {
   setIsLoading(true)
   try {
+    let proces_nazwa_id = procesory?.find(x=>x.id == wykonanie.procesor_id).grupa
+    // console.log("Proces nazwa id : "+ proces_nazwa_id)
     const res = await axios.post(
       IP + "dodaj_realizajce_zakoncz_arkusz/" + sessionStorage.getItem("token"),
       {
         ...wykonanie,
         zrealizowano: value,
+        proces_nazwa_id: proces_nazwa_id
       }
     );
 

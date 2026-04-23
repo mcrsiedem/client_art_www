@@ -575,6 +575,10 @@ const _status_wydania_papieru = [
   {
     id: 4,
     nazwa: "Wydany",
+  },
+  {
+    id: 5,
+    nazwa: "W dostawie",
   }
 ];
 

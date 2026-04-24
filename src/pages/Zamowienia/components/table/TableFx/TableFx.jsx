@@ -332,6 +332,7 @@ const sortedItems = useMemo(() => {
                   <>
                 <tr
                         key={row.id}
+                        title={`Zamówienie ID: ${row.id}`}
                         className={styles.tr}
                                 onContextMenu={(event) => {
                         onMenuHandle(event,sortedItems,row);

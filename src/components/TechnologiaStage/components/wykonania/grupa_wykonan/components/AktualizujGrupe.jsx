@@ -16,8 +16,7 @@ export default  function AktualizujGrupe({ rowGrupa }) {
   const grupaWykonanInit = techContext.grupaWykonanInit; // wartość początkowa
   const grupaWykonan = techContext.grupaWykonan;          // grupy po zmianie
   const wykonania = techContext.wykonania;         
-
-
+const proces_nazwa_id =rowGrupa.proces_nazwa_id;
   // const global_id_grupa = row.global_id
   if(rowGrupa.update == true){
       return (
@@ -32,14 +31,14 @@ export default  function AktualizujGrupe({ rowGrupa }) {
           if(rowGrupa.proces_nazwa_id==1 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
           let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
           let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
-          await update({roznica_czasu,rowGrupa,wykonania_update})
+          await update({roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id})
           await refresh({fechparametryTechnologii,rowGrupa})
           }
 
           if(rowGrupa.proces_nazwa_id==3 && DecodeToken(sessionStorage.getItem("token")).manage_druk==1){
                       let roznica_czasu = roznicaCzasu(grupaWykonanInit,rowGrupa)
           let wykonania_update =  wykonania.filter(x=> x.grupa_id == rowGrupa.id)
-       await update_falc({roznica_czasu,rowGrupa,wykonania_update})
+       await update_falc({roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id})
           await refresh({fechparametryTechnologii,rowGrupa})
           }
         }}
@@ -52,18 +51,18 @@ export default  function AktualizujGrupe({ rowGrupa }) {
 
 }
 
-const update = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
+const update = ({roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id}) =>{
   return new Promise(async(resolve,reject)=>{
     console.log(rowGrupa)
-   let result = await axios.post(IP + "aktualizuj_grupe_wykonan/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
+   let result = await axios.post(IP + "aktualizuj_grupe_wykonan/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id])
     resolve(result)
   })
 }
 
-const update_falc = ({roznica_czasu,rowGrupa,wykonania_update}) =>{
+const update_falc = ({roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id}) =>{
   return new Promise(async(resolve,reject)=>{
     console.log(rowGrupa)
-   let result = await axios.post(IP + "aktualizuj_grupe_wykonan_falc/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update])
+   let result = await axios.post(IP + "aktualizuj_grupe_wykonan_falc/" + sessionStorage.getItem("token"),[roznica_czasu,rowGrupa,wykonania_update,proces_nazwa_id])
     resolve(result)
   })
 }

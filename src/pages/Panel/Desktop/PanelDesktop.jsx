@@ -60,18 +60,18 @@ export default function PanelDesktop2 ({isOnline,navigate,logout})  {
 
 
    const [quickActions, setQuickActions] = useState([
-      // { 
-      //   id: 1, 
-      //   label: 'Raport produkcji', 
-      //   desc: 'Zestawienie wg spedycji', 
-      //   icon: <BarChart3 size={32} />, 
-      //   glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 123, 212, 0.9))' ,
-      //   handle: ()=> {
-      //     navigate("/Statystyki")
+      { 
+        id: 1, 
+        label: 'Raport produkcji', 
+        desc: 'Zestawienie wg spedycji', 
+        icon: <BarChart3 size={32} />, 
+        glow: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 123, 212, 0.9))' ,
+        handle: ()=> {
+          navigate("/Statystyki")
 
 
-      //   },
-      // },
+        },
+      },
       { 
         id: 2, 
         label: 'Baza papierów', 

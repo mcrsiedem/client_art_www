@@ -13,7 +13,7 @@ import Wykres from "./Wykres/Wykres";
 export default function Statystyki( ) {
   const navigate = useNavigate();
 
- const [refreshKalendarz] = useStatystyki()
+ const {refreshKalendarz} = useStatystyki()
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))

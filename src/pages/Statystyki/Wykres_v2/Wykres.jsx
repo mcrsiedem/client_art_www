@@ -3,12 +3,14 @@ import { Calendar, BarChart3, Clock, CheckCircle2 } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 
 const Wykres = () => {
-  // 1. Zmiana startu na miesięczny
-  const [viewType, setViewType] = useState('monthly');
+  const [viewType, setViewType] = useState('weekly');
   const appcontext = useContext(AppContext);
   
-  const daneZamowieniaProgres = appcontext.zamowieniaProgres;
+    const daneZamowieniaProgres = appcontext.zamowieniaProgres;
 
+
+
+  // Konfiguracja procesów: klucze z JSON, kolory i etykiety
   const config = [
     { key: 'przeloty_druk_zostalo', color: '#359b30', label: 'Druk' },
     { key: 'przeloty_falc_zostalo', color: '#30639b', label: 'Falc' },
@@ -56,11 +58,7 @@ const Wykres = () => {
       const date = new Date(item.data_spedycji);
       let key, range;
 
-      // 2. Obsługa trzech wariantów widoku
-      if (viewType === 'daily') {
-        key = date.toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        range = date.toLocaleDateString('pl-PL', { weekday: 'long' });
-      } else if (viewType === 'weekly') {
+      if (viewType === 'weekly') {
         const info = getWeekInfo(item.data_spedycji);
         key = info.label;
         range = info.range;
@@ -74,17 +72,18 @@ const Wykres = () => {
           label: key, 
           range, 
           timestamp: date.getTime(),
-          values: { przeloty_druk_zostalo: 0, przeloty_falc_zostalo: 0, przeloty_pur_zostalo: 0, przeloty_hotmelt_zostalo: 0, przeloty_zeszyt_zostalo: 0 }
+          values: { przeloty_druk_zostalo: 0, przeloty_falc_zostalo: 0, przeloty_pur_zostalo: 0, przeloty_hotmelt_zostalo: 0,przeloty_zeszyt_zostalo: 0 }
         };
       }
 
+      // Sumowanie wartości dla danej grupy (tygodnia/miesiąca)
       config.forEach(c => {
         groups[key].values[c.key] += item[c.key] || 0;
       });
     });
 
     return Object.values(groups).sort((a, b) => a.timestamp - b.timestamp);
-  }, [viewType, daneZamowieniaProgres]);
+  }, [viewType]);
 
   const maxVal = useMemo(() => {
     const allSums = processedData.flatMap(g => Object.values(g.values));
@@ -103,12 +102,13 @@ const Wykres = () => {
             <p style={{ color: '#64748b', margin: '5px 0 0 0' }}>Suma przelotów do wykonania w okresach</p>
           </div>
           <div style={styles.buttonGroup}>
-            {/* 3. Dodanie przycisku dziennego do mapowania */}
-            {['daily', 'weekly', 'monthly'].map(t => (
+            {['weekly', 'monthly'].map(t => (
               <button key={t} onClick={() => setViewType(t)} style={styles.navButton(viewType === t)}>
-                {t === 'daily' ? 'Dziennie' : t === 'weekly' ? 'Tygodniowo' : 'Miesięcznie'}
+                {t === 'weekly' ? 'Tygodniowo' : 'Miesięcznie'}
               </button>
             ))}
+
+
           </div>
         </div>
 

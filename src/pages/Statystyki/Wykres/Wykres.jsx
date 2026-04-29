@@ -31,7 +31,6 @@ const Wykres = () => {
 
   const currentLimit = useMemo(() => LIMIT_MATRIX[processTab][viewType], [processTab, viewType]);
 
-  // Funkcja pomocnicza do zakresów dat
   const getWeekRange = (date) => {
     const d = new Date(date);
     const day = d.getDay() || 7;
@@ -74,10 +73,11 @@ const Wykres = () => {
 
   const maxVal = useMemo(() => {
     const allVisibleValues = processedData.flatMap(g => activeConfig.map(c => g.values[c.key]));
-    const peak = Math.max(...allVisibleValues, currentLimit, 100);
-    const step = peak > 200000 ? 50000 : 10000;
-    return Math.ceil((peak * 1.25) / step) * step; 
-  }, [processedData, activeConfig, currentLimit]);
+    // Jeśli widok dzienny, nie bierzemy limitu pod uwagę przy liczeniu skali osi Y
+    const peakReference = viewType === 'daily' ? Math.max(...allVisibleValues, 100) : Math.max(...allVisibleValues, currentLimit, 100);
+    const step = peakReference > 200000 ? 50000 : 10000;
+    return Math.ceil((peakReference * 1.25) / step) * step; 
+  }, [processedData, activeConfig, currentLimit, viewType]);
 
   const styles = {
     container: { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '2rem', fontFamily: 'system-ui, sans-serif' },
@@ -89,7 +89,6 @@ const Wykres = () => {
       backgroundColor: active ? activeColor : '#f1f5f9', color: active ? '#fff' : '#64748b', fontWeight: 'bold', fontSize: '13px'
     }),
     chartCard: { backgroundColor: '#fff', padding: '2rem', borderRadius: '24px', boxShadow: '0 4px 20px -5px rgb(0 0 0 / 0.1)' },
-    // Kontener przewijany
     scrollContainer: { overflowX: 'auto', paddingBottom: '15px', scrollbarWidth: 'thin', scrollbarColor: '#cbd5e1 transparent' },
     chartArea: { position: 'relative', height: '420px', padding: '40px 0 0 80px', minWidth: 'max-content' },
     chartViewport: { position: 'relative', height: '100%', display: 'flex', alignItems: 'end', gap: '8rem', borderBottom: '2px solid #f1f5f9', paddingRight: '40px' },
@@ -147,9 +146,12 @@ const Wykres = () => {
               </div>
 
               <div style={styles.chartViewport}>
-                <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
-                  <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
-                </div>
+                {/* LINIA LIMITU WYŚWIETLA SIĘ TYLKO JEŚLI NIE JESTEŚMY W WIDOKU DZIENNYM */}
+                {viewType !== 'daily' && (
+                  <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
+                    <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
+                  </div>
+                )}
 
                 {processedData.map((group, idx) => (
                   <div key={idx} style={styles.barContainer}>

@@ -23,6 +23,18 @@ const Wykres = () => {
     { key: 'przeloty_zeszyt_zostalo', color: '#ef44d8', label: 'Zeszyt', category: 'finishing' }
   ];
 
+  // Funkcja formatująca wartości nad słupkami
+  const formatValue = (val) => {
+    if (!val || val <= 0) return '';
+    if (val >= 1000000) {
+      return (val / 1000000).toFixed(3) + ' mln'; // np. 1.439 mln
+    }
+    if (val >= 1000) {
+      return (val / 1000).toFixed(1) + ' k'; // np. 999.5 k
+    }
+    return val;
+  };
+
   const activeConfig = useMemo(() => {
     if (processTab === 'main') return allConfig.filter(c => c.category === 'main');
     if (processTab === 'finishing') return allConfig.filter(c => c.category === 'finishing');
@@ -73,7 +85,6 @@ const Wykres = () => {
 
   const maxVal = useMemo(() => {
     const allVisibleValues = processedData.flatMap(g => activeConfig.map(c => g.values[c.key]));
-    // Jeśli widok dzienny, nie bierzemy limitu pod uwagę przy liczeniu skali osi Y
     const peakReference = viewType === 'daily' ? Math.max(...allVisibleValues, 100) : Math.max(...allVisibleValues, currentLimit, 100);
     const step = peakReference > 200000 ? 50000 : 10000;
     return Math.ceil((peakReference * 1.25) / step) * step; 
@@ -103,7 +114,7 @@ const Wykres = () => {
     barGroup: { display: 'flex', alignItems: 'end', gap: '6px', height: '100%' },
     barWrapper: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'end', height: '100%' },
     bar: (height, color) => ({ width: '100%', backgroundColor: color, height: `${height}%`, borderRadius: '4px 4px 0 0', transition: 'all 0.6s ease' }),
-    barValue: { fontSize: '10px', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px', textAlign: 'center' },
+    barValue: { fontSize: '10px', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px', textAlign: 'center', whiteSpace: 'nowrap' },
     labelBox: { marginTop: '12px', textAlign: 'center' },
     mainLabel: { display: 'block', fontSize: '13px', fontWeight: '800', color: '#1e293b' },
     subLabel: { display: 'block', fontSize: '10px', color: '#94a3b8', marginTop: '2px' }
@@ -146,7 +157,6 @@ const Wykres = () => {
               </div>
 
               <div style={styles.chartViewport}>
-                {/* LINIA LIMITU WYŚWIETLA SIĘ TYLKO JEŚLI NIE JESTEŚMY W WIDOKU DZIENNYM */}
                 {viewType !== 'daily' && (
                   <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
                     <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
@@ -159,7 +169,7 @@ const Wykres = () => {
                       {activeConfig.map(c => (
                         <div key={c.key} style={styles.barWrapper}>
                           <span style={styles.barValue}>
-                            {group.values[c.key] > 0 ? (group.values[c.key] >= 1000 ? (group.values[c.key]/1000).toFixed(1)+'k' : group.values[c.key]) : ''}
+                            {formatValue(group.values[c.key])}
                           </span>
                           <div style={styles.bar((group.values[c.key] / maxVal) * 100, c.color)}></div>
                         </div>

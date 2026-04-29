@@ -10,7 +10,7 @@ const Wykres = () => {
   const daneZamowieniaProgres = appcontext.zamowieniaProgres;
 
   const LIMIT_MATRIX = {
-    all: { daily: 40000, weekly: 200000, monthly: 800000 },
+    all: { daily: 40000, weekly: 2000000, monthly: 8000000 },
     main: { daily: 30000, weekly: 2000000, monthly: 8000000 },
     finishing: { daily: 5000, weekly: 25000, monthly: 80000 }
   };

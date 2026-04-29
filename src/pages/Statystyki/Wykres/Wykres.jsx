@@ -92,7 +92,7 @@ const Wykres = () => {
     // Kontener przewijany
     scrollContainer: { overflowX: 'auto', paddingBottom: '15px', scrollbarWidth: 'thin', scrollbarColor: '#cbd5e1 transparent' },
     chartArea: { position: 'relative', height: '420px', padding: '40px 0 0 80px', minWidth: 'max-content' },
-    chartViewport: { position: 'relative', height: '100%', display: 'flex', alignItems: 'end', gap: '3rem', borderBottom: '2px solid #f1f5f9', paddingRight: '40px' },
+    chartViewport: { position: 'relative', height: '100%', display: 'flex', alignItems: 'end', gap: '8rem', borderBottom: '2px solid #f1f5f9', paddingRight: '40px' },
     yAxis: { position: 'absolute', left: 0, top: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '11px', color: '#94a3b8', fontWeight: '600', width: '70px', borderRight: '1px dashed #e2e8f0' },
     targetLine: (yPos) => ({
       position: 'absolute', left: 0, right: 0, bottom: `${yPos}%`, 
@@ -115,7 +115,7 @@ const Wykres = () => {
       <div style={styles.wrapper}>
         <div style={styles.header}>
           <h1 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '10px', color: '#1e293b' }}>
-            <BarChart3 color="#30639b" size={32} /> Raport Produkcji
+            <BarChart3 color="#30639b" size={32} /> Przeloty do wykonania
           </h1>
           <div style={{ display: 'flex', gap: '20px' }}>
             <div style={styles.buttonGroup}>

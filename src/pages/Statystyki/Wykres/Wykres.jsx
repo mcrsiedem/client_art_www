@@ -11,8 +11,8 @@ const Wykres = () => {
 
   const LIMIT_MATRIX = {
     all: { daily: 40000, weekly: 2000000, monthly: 8000000 },
-    main: { daily: 30000, weekly: 2000000, monthly: 8000000 },
-    finishing: { daily: 5000, weekly: 25000, monthly: 80000 }
+    main: { daily: 300000, weekly: 2000000, monthly: 8000000 },
+    finishing: { daily: 50000, weekly: 25000, monthly: 80000 }
   };
 
   const allConfig = [

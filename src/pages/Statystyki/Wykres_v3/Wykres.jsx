@@ -9,11 +9,10 @@ const Wykres = () => {
   const appcontext = useContext(AppContext);
   const daneZamowieniaProgres = appcontext.zamowieniaProgres;
 
-  // Matryca limitów - teraz będą aktywne dla każdego widoku
   const LIMIT_MATRIX = {
-    all: { daily: 200000, weekly: 2000000, monthly: 8000000 },
-    main: { daily: 100000, weekly: 2000000, monthly: 8000000 },
-    finishing: { daily: 100000, weekly: 200000, monthly: 800000 }
+    all: { daily: 40000, weekly: 2000000, monthly: 8000000 },
+    main: { daily: 300000, weekly: 2000000, monthly: 8000000 },
+    finishing: { daily: 50000, weekly: 200000, monthly: 800000 }
   };
 
   const allConfig = [
@@ -79,13 +78,12 @@ const Wykres = () => {
     return Object.values(groups).sort((a, b) => a.timestamp - b.timestamp);
   }, [viewType, daneZamowieniaProgres]);
 
-  // Dynamiczne obliczanie maxVal uwzględniające limit (żeby linia nie wystawała poza wykres)
   const maxVal = useMemo(() => {
     const allVisibleValues = processedData.flatMap(g => activeConfig.map(c => g.values[c.key]));
-    const peakReference = Math.max(...allVisibleValues, currentLimit, 100);
+    const peakReference = viewType === 'daily' ? Math.max(...allVisibleValues, 100) : Math.max(...allVisibleValues, currentLimit, 100);
     const step = peakReference > 200000 ? 50000 : 10000;
     return Math.ceil((peakReference * 1.25) / step) * step; 
-  }, [processedData, activeConfig, currentLimit]);
+  }, [processedData, activeConfig, currentLimit, viewType]);
 
   const styles = {
     container: { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '2rem', fontFamily: 'system-ui, sans-serif' },
@@ -99,15 +97,18 @@ const Wykres = () => {
     chartCard: { backgroundColor: '#fff', padding: '2rem', borderRadius: '24px', boxShadow: '0 4px 20px -5px rgb(0 0 0 / 0.1)' },
     scrollContainer: { overflowX: 'auto', paddingBottom: '15px', scrollbarWidth: 'thin', scrollbarColor: '#cbd5e1 transparent' },
     chartArea: { position: 'relative', height: '420px', padding: '40px 0 0 80px', minWidth: 'max-content' },
+    // UWAGA: Usunięto borderBottom stąd
     chartViewport: { position: 'relative', height: '100%', display: 'flex', alignItems: 'end', gap: '9rem', paddingRight: '40px' },
+    // UWAGA: Dodano paddingBottom, aby "0" zrównało się z linią pod słupkami (labelBox ma ok 45px)
     yAxis: { position: 'absolute', left: 0, top: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '11px', color: '#94a3b8', fontWeight: '600', width: '70px', borderRight: '1px dashed #e2e8f0', paddingBottom: '45px', boxSizing: 'border-box' },
     targetLine: (yPos) => ({
-      position: 'absolute', left: 0, right: 0, bottom: `calc(${yPos}% + 45px)`, 
+      position: 'absolute', left: 0, right: 0, bottom: `calc(${yPos}% + 45px)`, // Przesunięcie linii limitu o wysokość etykiet
       borderTop: '2px dashed #ef4444', zIndex: 10, pointerEvents: 'none',
       display: 'flex', alignItems: 'start', justifyContent: 'flex-end', transition: 'bottom 0.5s ease'
     }),
     targetLabel: { backgroundColor: '#ef4444', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '4px', marginTop: '-10px', fontWeight: 'bold' },
     barContainer: { width: '130px', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'end' },
+    // UWAGA: Tutaj teraz jest oś X (borderBottom)
     barGroup: { display: 'flex', alignItems: 'end', gap: '6px', height: '100%', borderBottom: '2px solid #f1f5f9', paddingBottom: '2px' },
     barWrapper: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'end', height: '100%' },
     bar: (height, color) => ({ width: '100%', backgroundColor: color, height: `${height}%`, borderRadius: '4px 4px 0 0', transition: 'all 0.6s ease' }),
@@ -154,10 +155,11 @@ const Wykres = () => {
               </div>
 
               <div style={styles.chartViewport}>
-                {/* Linia limitu - teraz zawsze widoczna */}
-                <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
-                  <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
-                </div>
+                {viewType !== 'daily' && (
+                  <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
+                    <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
+                  </div>
+                )}
 
                 {processedData.map((group, idx) => (
                   <div key={idx} style={styles.barContainer}>

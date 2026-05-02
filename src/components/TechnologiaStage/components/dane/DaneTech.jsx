@@ -20,7 +20,7 @@ export default function DaneTech({
 
   return (
     <>
-      <div id="Dane" className={daneTech.stan == 2 ? style.dane : style.dane_wstepna}>
+      <div id="Dane" className={daneTech.stan == 1 ? style.dane_wstepna : style.dane}>
         <Row style={style.row1}>
             <Firma />
             <Klient />
@@ -250,7 +250,7 @@ const {daneTech,setDaneTech,grupaOprawaTech, setGrupaOprawaTech,grupaWykonan, se
       <label className={style.label}> Stan </label>
       <select
         disabled={daneTech.id != 1 }
-        className={style.select}
+        className={daneTech.stan == 1 ? style.select_wstepna : style.select}
         value={daneTech.stan}
         onChange={(event) => {
 

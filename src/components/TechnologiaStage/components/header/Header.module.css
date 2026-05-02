@@ -9,6 +9,16 @@
     padding-top: 28px;
 }
 
+.wstepna{
+    color: rgb(252, 255, 47);
+    color: greenyellow;
+
+    /* padding: 20px; */
+    padding-left: 30px;
+    padding-top: 28px;
+}
+
+
 .headerMain {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

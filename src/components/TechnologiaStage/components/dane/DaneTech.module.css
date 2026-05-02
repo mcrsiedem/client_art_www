@@ -116,6 +116,19 @@ padding-left: 10px;
   /* min-width: 50px; */
 }
 
+.select_wstepna {
+  background-color: yellowgreen;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(119, 119, 119);
+  padding-left: 10px;
+  color: black;
+  /* min-width: 50px; */
+}
+
+
+
 .inputError,.selectError {
   background-color: rgb(254, 18, 18,0.6);
   height: 2rem;

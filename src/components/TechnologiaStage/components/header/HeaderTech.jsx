@@ -82,6 +82,7 @@ export default function Header({}) {
         <p className={style.title2}> Technologia </p>
         <IconError />
         <p> {techContext.daneTech.id==1? <p className={style.new} >nowa</p>:<></>}</p>
+        <p> {techContext.daneTech.stan==1? <p className={style.wstepna} >  wstępna</p>:<></>}</p>
       </LeftPane>
 
       <CenterPane>

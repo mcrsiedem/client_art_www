@@ -1,18 +1,32 @@
 
 
 .dane {
-  padding: 5px 20px;
- background-color: transparent;
+padding: 5px 20px;
+background-color: transparent;
 display: flex;
 flex-direction: column;
 gap:5px;
 width: 100vw;
-
 height: 120px;
 /* background-image: linear-gradient( 180deg,#0a0a0a 0%, #383838 80%); */
 background-color: var(--art-input3);
 
 }
+
+.dane_wstepna {
+padding: 5px 20px;
+background-color: transparent;
+display: flex;
+flex-direction: column;
+gap:5px;
+width: 100vw;
+height: 120px;
+background-image: linear-gradient( 180deg,#f0c711 0%, #f0c711 80%);
+/* background-color: var(--art-input3); */
+}
+
+
+
 
 .row1 {
   display: grid;

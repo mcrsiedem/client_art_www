@@ -14,9 +14,13 @@ export default function DaneTech({
   showAddClientStage
 }) {
 
+  const {daneTech} = useContext(TechnologyContext);
+
+
+
   return (
     <>
-      <div id="Dane" className={style.dane}>
+      <div id="Dane" className={daneTech.stan == 2 ? style.dane : style.dane_wstepna}>
         <Row style={style.row1}>
             <Firma />
             <Klient />

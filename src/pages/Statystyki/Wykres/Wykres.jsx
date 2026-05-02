@@ -21,9 +21,25 @@ const Wykres = () => {
     { key: 'przeloty_falc_zostalo', color: '#30639b', label: 'Falc', category: 'main' },
     { key: 'przeloty_pur_zostalo', color: '#f59e0b', label: 'PUR', category: 'finishing' },
     { key: 'przeloty_hotmelt_zostalo', color: '#ef4444', label: 'Hotmelt', category: 'finishing' },
-    { key: 'przeloty_zeszyt_zostalo', color: '#ef44d8', label: 'Zeszyt', category: 'finishing' }
+    { key: 'przeloty_zeszyt_zostalo', color: '#36a3b6be', label: 'Zeszyt', category: 'finishing' }
   ];
 
+
+  const allConfig3 = [
+    { key: 'przeloty_druk_zostalo', color: '#1E4D2B', label: 'Druk', category: 'main' },      // Głęboka, butelkowa zieleń
+    { key: 'przeloty_falc_zostalo', color: '#2C3E50', label: 'Falc', category: 'main' },      // Elegancki granat (Midnight Blue)
+    { key: 'przeloty_pur_zostalo', color: '#B8860B', label: 'PUR', category: 'finishing' },   // Ciemne złoto / Ugier
+    { key: 'przeloty_hotmelt_zostalo', color: '#800020', label: 'Hotmelt', category: 'finishing' }, // Burgund / Wino
+    { key: 'przeloty_zeszyt_zostalo', color: '#4A90E2', label: 'Zeszyt', category: 'finishing' }  // Stalowy błękit
+  ];
+
+  const allConfig1 = [
+    { key: 'przeloty_druk_zostalo', color: '#9ecc4e', label: 'Druk', category: 'main' },      // Szałwiowa zieleń
+    { key: 'przeloty_falc_zostalo', color: '#639db9', label: 'Falc', category: 'main' },      // Gołębi błękit / Stalowy
+    { key: 'przeloty_pur_zostalo', color: '#c9a23f', label: 'PUR', category: 'finishing' },   // Piaskowe złoto
+    { key: 'przeloty_hotmelt_zostalo', color: '#c04347', label: 'Hotmelt', category: 'finishing' }, // Brudny róż / Koralowy pastel
+    { key: 'przeloty_zeszyt_zostalo', color: '#49262db9', label: 'Zeszyt', category: 'finishing' }  // Zgaszony fiolet / Wrzos
+  ];
   const formatValue = (val) => {
     if (!val || val <= 0) return '';
     if (val >= 1000000) return (val / 1000000).toFixed(3) + ' mln';

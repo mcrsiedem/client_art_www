@@ -103,6 +103,14 @@ const Wykres = () => {
     return Math.ceil((peakReference * 1.25) / step) * step; 
   }, [processedData, activeConfig, currentLimit]);
 
+  const totals = useMemo(() => {
+  const sums = {};
+  allConfig.forEach(c => {
+    sums[c.key] = processedData.reduce((acc, group) => acc + (group.values[c.key] || 0), 0);
+  });
+  return sums;
+}, [processedData]);
+
   const styles = {
     container: { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '2rem', fontFamily: 'system-ui, sans-serif' },
     wrapper: { maxWidth: '98vw', margin: '0 auto' },
@@ -197,13 +205,29 @@ const Wykres = () => {
             </div>
           </div>
           
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
+          {/* <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
               {activeConfig.map(c => (
               <div key={c.key} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: '700', color: '#64748b' }}>
                 <div style={{ width: '14px', height: '14px', backgroundColor: c.color, borderRadius: '4px' }}></div> {c.label}
               </div>
             ))}
-          </div>
+          </div> */}
+
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '130px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
+  {activeConfig.map(c => (
+    <div key={c.key} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '700', color: '#64748b' }}>
+        <div style={{ width: '24px', height: '24px', backgroundColor: c.color, borderRadius: '4px' }}></div> 
+        {c.label}
+      </div>
+      {/* Tutaj wyświetlamy sumę */}
+      <span style={{ fontSize: '15px', fontWeight: '800', color: '#64748b', marginLeft: '10px' }}>
+        {totals[c.key] > 0 ? formatValue(totals[c.key]) : '0'}
+      </span>
+    </div>
+  ))}
+</div>
+
         </div>
       </div>
     </div>

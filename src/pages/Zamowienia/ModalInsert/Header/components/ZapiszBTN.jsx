@@ -12,7 +12,11 @@ export default function ZapiszBTN({ setSaveAs,dialogBox }) {
 
   const {updateZamowienie} = useZamowienieUpdate();
   const [zapiszZamowienie] = useZamowienieInsert();
-  return (
+  // if (daneZamowienia.etap >= 16) {
+  //   return null; 
+  // }
+
+ return (
     <button
       onClick={async () => {
         if (produkty[0].naklad != 0 && daneZamowienia.id == 1) {

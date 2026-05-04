@@ -42,6 +42,38 @@ export function useZamowienia() {
     }
   };
 
+  const refreshZamowieniaPaginations = async () => {
+
+    // .json({
+    //         data: rows,
+    //         pagination: {
+    //             total: totalRecords,
+    //             currentPage: page,
+    //             totalPages: Math.ceil(totalRecords / size),
+    //             pageSize: size
+    //         }
+    //     });
+    setIsLoading(true);
+    const res = await axios.get(
+      IP +
+        "zamowieniaPaginations/" +
+        contextApp.sortowanieZamowienia.current +
+        "/" +
+        contextApp.zestawZamowienia.current +
+        "/" +
+        sessionStorage.getItem("token"),
+    );
+    contextApp.setZamowienia([...res.data.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    console.log(res.data.pagination)
+    setIsLoading(false);
+
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
+  };
+
+
   const refreshZamowieniaNiezamknieteKoszty = async () => {
     setIsLoading(true);
     const res = await axios.get(
@@ -243,6 +275,7 @@ const getElementy = async (nr, rok) => {
 
   return {
     refreshZamowienia,
+    refreshZamowieniaPaginations,
     odblokujZamowienie,
     deleteZamowienie,
     // zmienEtapWydrukowane,

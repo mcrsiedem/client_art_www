@@ -28,7 +28,7 @@ function Zamowienia() {
   const open = useRef(false);
   const navigate = useNavigate();
   const [callForPaper] = useApiPapier();
-  const {refreshZamowienia} = useZamowienia();
+  const {refreshZamowienia,refreshZamowieniaPaginations} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
 
 
@@ -107,6 +107,7 @@ function Zamowienia() {
         if (res.data.Status === "Success") {
      
           refreshZamowienia();
+          // refreshZamowieniaPaginations()
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
           getNadkomplety(setNadkomplety);

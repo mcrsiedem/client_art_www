@@ -330,21 +330,21 @@ const sortedItems = useMemo(() => {
           <tbody className={styles.tbody}>
             {/* {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan > 2 ).map((row,i) => ( */}
             {sortedItems
-              .filter((item) => {
-                if (contextApp.selectedKlient == 0) {
-                  return true;
-                } else {
-                  return item.klient_id == contextApp.selectedKlient;
-                }
-              })
+              // .filter((item) => {
+              //   if (contextApp.selectedKlient == 0) {
+              //     return true;
+              //   } else {
+              //     return item.klient_id == contextApp.selectedKlient;
+              //   }
+              // })
 
-              .filter((zam) => {
-                if (contextApp.selectedUser == 0) {
-                  return true;
-                } else {
-                  return zam.opiekun_id == contextApp.selectedUser;
-                }
-              })
+              // .filter((zam) => {
+              //   if (contextApp.selectedUser == 0) {
+              //     return true;
+              //   } else {
+              //     return zam.opiekun_id == contextApp.selectedUser;
+              //   }
+              // })
               .map((row, i) => (
                 // .filter( item => item.stan > 2 ).map((row,i) => (
                   <>

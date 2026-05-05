@@ -23,6 +23,8 @@ export const AppContextProvider = ({children})=>{
     const [sortowanieZamowieniaFaktury, setSortowanieZamowieniaFaktury] = useState("Gotowe do faktury");
     const sortowanieZamowienia = useRef('rok, nr asc');  //  
     const zestawZamowienia = useRef('Bieżące');  //  ["biezace","wydrukowane","sfalcowane","oprawione","oddane","wszystkie"]
+    // const klientZamowienia = useRef('Bieżące');
+    // const userZamowienia = useRef('Bieżące');
     const zestawFaktury = useRef('Gotowe do faktury');  //  []]
 
    

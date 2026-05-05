@@ -410,30 +410,52 @@ const sortedItems = useMemo(() => {
           </tbody>
         </table>
       </div>
-      <div className={styles.pagination}>
+<div className={styles.pagination}>
+  {/* Przycisk Poprzednia */}
   <button 
+    className={styles.pageBtn}
     disabled={contextApp.pagination?.currentPage === 1}
     onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage - 1)}
   >
-    Poprzednia
+    &lt;
   </button>
-  
-  <span>
-    Strona <strong>{contextApp.pagination?.currentPage}</strong> z {contextApp.pagination?.totalPages}
-  </span>
 
+  {/* Dynamiczne numery stron */}
+  <div className={styles.pageNumbers}>
+    {getPaginationRange(
+      contextApp.pagination?.currentPage || 1, 
+      contextApp.pagination?.totalPages || 1
+    ).map((page, index) => (
+      page === "..." ? (
+        <span key={`dots-${index}`} className={styles.dots}>...</span>
+      ) : (
+        <button
+          key={page}
+          className={`${styles.pageBtn} ${contextApp.pagination?.currentPage === page ? styles.activePage : ""}`}
+          onClick={() => contextApp.handlePageChange(page)}
+        >
+          {page}
+        </button>
+      )
+    ))}
+  </div>
+
+  {/* Przycisk Następna */}
   <button 
+    className={styles.pageBtn}
     disabled={contextApp.pagination?.currentPage === contextApp.pagination?.totalPages}
     onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage + 1)}
   >
-    Następna
+    &gt;
   </button>
 
+  {/* Wybór wielkości strony */}
   <select 
+    className={styles.pageSelect}
     value={contextApp.pagination?.pageSize} 
-    onChange={(e) => contextApp.data.handleSizeChange(Number(e.target.value))}
+    onChange={(e) => contextApp.handleSizeChange(Number(e.target.value))}
   >
-    {[10, 20, 50, 100].map(size => (
+    {[20, 50, 100].map(size => (
       <option key={size} value={size}>Pokaż {size}</option>
     ))}
   </select>

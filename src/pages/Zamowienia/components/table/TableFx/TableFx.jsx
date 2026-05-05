@@ -217,12 +217,12 @@ const sortedItems = useMemo(() => {
 
   const getPaginationRange = (current, total) => {
   const range = [];
-  const delta = 2; // Ile stron pokazać po bokach obecnej strony
+  const delta = 3; // Ile stron pokazać po bokach obecnej strony
 
   for (let i = 1; i <= total; i++) {
     if (
       i === 1 || // Pierwsza strona
-      i === total || // Ostatnia strona
+      i === total  || // Ostatnia strona
       (i >= current - delta && i <= current + delta) // Strony wokół obecnej
     ) {
       range.push(i);
@@ -412,6 +412,7 @@ const sortedItems = useMemo(() => {
       </div>
 <div className={styles.pagination}>
   {/* Przycisk Poprzednia */}
+  
   <button 
     className={styles.pageBtn}
     disabled={contextApp.pagination?.currentPage === 1}
@@ -450,7 +451,7 @@ const sortedItems = useMemo(() => {
   </button>
 
   {/* Wybór wielkości strony */}
-  <select 
+  {/* <select 
     className={styles.pageSelect}
     value={contextApp.pagination?.pageSize} 
     onChange={(e) => contextApp.handleSizeChange(Number(e.target.value))}
@@ -458,7 +459,7 @@ const sortedItems = useMemo(() => {
     {[20, 50, 100].map(size => (
       <option key={size} value={size}>Pokaż {size}</option>
     ))}
-  </select>
+  </select> */}
 </div>
     </div>
   );

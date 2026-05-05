@@ -215,6 +215,24 @@ const sortedItems = useMemo(() => {
 
   }
 
+  const getPaginationRange = (current, total) => {
+  const range = [];
+  const delta = 2; // Ile stron pokazać po bokach obecnej strony
+
+  for (let i = 1; i <= total; i++) {
+    if (
+      i === 1 || // Pierwsza strona
+      i === total || // Ostatnia strona
+      (i >= current - delta && i <= current + delta) // Strony wokół obecnej
+    ) {
+      range.push(i);
+    } else if (range[range.length - 1] !== "...") {
+      range.push("...");
+    }
+  }
+  return range;
+};
+
   return (
     <div className={styles.container}>
 

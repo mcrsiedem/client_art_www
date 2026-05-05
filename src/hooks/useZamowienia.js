@@ -22,7 +22,8 @@ export function useZamowienia() {
     }
   };
 
-  const refreshZamowienia = async () => {
+
+    const refreshZamowienia_OLD = async () => {
     setIsLoading(true);
     const res = await axios.get(
       IP +
@@ -35,6 +36,39 @@ export function useZamowienia() {
     );
     contextApp.setZamowienia([...res.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data]);
+    setIsLoading(false);
+
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
+  };
+
+
+  const refreshZamowienia = async () => {
+
+    // .json({
+    //         data: rows,
+    //         pagination: {
+    //             total: totalRecords,
+    //             currentPage: page,
+    //             totalPages: Math.ceil(totalRecords / size),
+    //             pageSize: size
+    //         }
+    //     });
+    setIsLoading(true);
+    const res = await axios.get(
+      IP +
+        "zamowieniaPaginations/" +
+        contextApp.sortowanieZamowienia.current +
+        "/" +
+        contextApp.zestawZamowienia.current +
+        "/" +
+        sessionStorage.getItem("token"),
+    );
+    contextApp.setZamowienia([...res.data.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    contextApp.setPagination(res.data.pagination);
+    console.log(res.data.pagination)
     setIsLoading(false);
 
     if (DecodeToken(sessionStorage.getItem("token")).id == 3) {

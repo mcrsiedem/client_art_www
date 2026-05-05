@@ -33,36 +33,7 @@ export async function saveTech({daneTech,setDaneTech,produktyTech,setProduktyTec
  
      let savedProducts = await goSaveRest({produktyTechEdit,elementyTechEdit,fragmentyTechEdit,oprawaTechEdit,legiEdit,legiFragmentyEdit,arkuszeEdit,grupaWykonanEdit,wykonaniaEdit,procesyElementowTechEdit});
 
-    // elementyEdit = savedProducts.elementyEdit
-    // fragmentyEdit = savedProducts.fragmentyEdit
-    // oprawaEdit = savedProducts.oprawaEdit
-    // pakowanieEdit = savedProducts.pakowanieEdit
-    // procesyElementowEdit = savedProducts.procesyElementowEdit
 
-    //  let savedElements = await saveElements({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,procesyElementowEdit});
-    //  fragmentyEdit = savedElements.fragmentyEdit
-    //  procesyElementowEdit = savedElements.procesyElementowEdit
-
-    //  let savedBindings = await saveBindings({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit,});
-    //  fragmentyEdit = savedBindings.fragmentyEdit
-
-    //  let savedFragments= await saveFragments({produktyEdit,elementyEdit,fragmentyEdit,oprawaEdit});
-    //  fragmentyEdit = savedFragments.fragmentyEdit
-
-    //  let savedPacking= await savePacking({pakowanieEdit});
-    //  pakowanieEdit = savedPacking.pakowanieEdit
-
-    //  let savedProcess= await saveProcess({procesyElementowEdit});
-    //  procesyElementowEdit = savedProcess.procesyElementowEdit
-
-    // setProdukty(produktyEdit)
-    //  setElementy(elementyEdit)
-    //  setFragmenty(fragmentyEdit)
-    //  setOprawa(oprawaEdit)
-    //  setPakowanie(pakowanieEdit)
-    //  setProcesyElementow(procesyElementowEdit)
-
-    //  refreshZamowienia();
 
 
 }

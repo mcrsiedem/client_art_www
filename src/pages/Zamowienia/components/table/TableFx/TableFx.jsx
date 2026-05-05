@@ -392,6 +392,34 @@ const sortedItems = useMemo(() => {
           </tbody>
         </table>
       </div>
+      <div className={styles.pagination}>
+  <button 
+    disabled={contextApp.pagination?.currentPage === 1}
+    onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage - 1)}
+  >
+    Poprzednia
+  </button>
+  
+  <span>
+    Strona <strong>{contextApp.pagination?.currentPage}</strong> z {contextApp.pagination?.totalPages}
+  </span>
+
+  <button 
+    disabled={contextApp.pagination?.currentPage === contextApp.pagination?.totalPages}
+    onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage + 1)}
+  >
+    Następna
+  </button>
+
+  <select 
+    value={contextApp.pagination?.pageSize} 
+    onChange={(e) => contextApp.data.handleSizeChange(Number(e.target.value))}
+  >
+    {[10, 20, 50, 100].map(size => (
+      <option key={size} value={size}>Pokaż {size}</option>
+    ))}
+  </select>
+</div>
     </div>
   );
 }

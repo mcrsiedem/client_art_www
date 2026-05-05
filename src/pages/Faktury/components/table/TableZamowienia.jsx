@@ -49,30 +49,7 @@ const {refreshZamowienia} = useZamowienia()
            </th>
            <th className={style.col_klient}><SELECT_KLIENT_ZAMOWWIENIA/></th>
            <th className={style.col_praca}>Praca</th>
-           {/* <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("naklad")
-         refreshZamowienia()
 
-            }} className={style.col_strony}>Nakład</th> */}
-           {/* <th onClick={()=>{
-         contextApp.setSortowanieZamowienia("ilosc_stron")
-         refreshZamowienia()
-
-            }} className={style.col_strony}>Str.</th> */}
-           {/* <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_przyjecia")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Przyjęcie</th> */}
-           {/* <th onClick={()=>{
-            contextApp.setSortowanieZamowienia("data_spedycji")
-            refreshZamowienia()
-            }} className={style.col_spedycja}>Spedycja</th> */}
-           {/* <th className={style.col_strony}>Netto</th> */}
-           {/* <th  onClick={()=>{
-         contextApp.setSortowanieZamowienia("oprawa_id")
-         refreshZamowienia()
-
-            }}className={style.col_netto}>Oprawa</th> */}
            <th className={style.col_faktura}>Nr wz</th>
            <th className={style.col_faktura}>Nr faktury</th>
            <th className={style.col_status_kosztow}>Koszty</th>

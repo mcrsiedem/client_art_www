@@ -63,7 +63,7 @@ export function useZamowienia() {
         "/" +
         contextApp.zestawZamowienia.current +
         "/" +
-         contextApp.selectedKlient +
+        contextApp.selectedKlient +
         "/" +
          contextApp.selectedUser +
         "/" +

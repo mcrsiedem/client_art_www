@@ -227,12 +227,15 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const selectedKlient = contextApp.selectedKlient;
   const setSelectedKlient = contextApp.setSelectedKlient;
   const selectedUser = contextApp.selectedUser;
+  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+
     return (
       <select
         className={style.szukajInputSort}
         value={selectedKlient}
         onChange={(event) => {
           setSelectedKlient(event.target.value);
+          // refreshZamowienia(event.target.value)
         }}
       >
         {<option value="0">Wszyscy klienci</option>}

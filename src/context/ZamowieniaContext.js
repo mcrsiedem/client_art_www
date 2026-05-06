@@ -7,7 +7,7 @@ export const ZamowienieContextProvider = ({ children }) => {
   const [sortowanieZamowien, setSortowanieZamowien] = useState(0);
   const [zestawZamowien, setZestawZamowien] = useState(0);
 
-  
+
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
@@ -27,8 +27,11 @@ export const ZamowienieContextProvider = ({ children }) => {
   return (
     <ZamowienieContext.Provider
       value={{
-        idZamowieniaDiag,
-        setIdZamowieniaDiag,
+   wybranyKlient, setWybranyKlient,
+   wybranyOpiekun, setWybranyOpiekun,
+   sortowanieZamowien, setSortowanieZamowien,
+   zestawZamowien, setZestawZamowien
+
       }}
     >
       {children}

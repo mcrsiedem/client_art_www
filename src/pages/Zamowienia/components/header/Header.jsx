@@ -189,19 +189,19 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
 
             }
             else{
-                    const promiseA = new Promise((resolve, reject) => {
-            setIsLoading(true)
+        //             const promiseA = new Promise((resolve, reject) => {
+        //     setIsLoading(true)
             setSortowanieZamowieniaEtap(event.target.value)
-            zestawZamowienia.current= event.target.value
+        //     zestawZamowienia.current= event.target.value
   
-                      resolve(777);
-                    })
+        //               resolve(777);
+        //             })
 
-                            promiseA.then(res => {
+        //                     promiseA.then(res => {
 
-          refreshZamowienia();
-          // refreshZamowieniaPaginations();
-        })
+        //   refreshZamowienia();
+        //   // refreshZamowieniaPaginations();
+        // })
             }
     
 

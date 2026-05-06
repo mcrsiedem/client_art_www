@@ -22,7 +22,7 @@ import TableFx from "./components/table/TableFx/TableFx";
 import DialogHipopotamapi from "components/DialogHipopotam/DialogHipopotamapi";
 function Zamowienia() {
 
-  const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading,pagination, selectedKlient, selectedUser} = useContext(AppContext);
+  const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading,pagination, selectedKlient, selectedUser,sortowanieZamowieniaEtap} = useContext(AppContext);
   const {openModalInsert,setOpenModalInsert} = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
@@ -119,9 +119,11 @@ function Zamowienia() {
   }
 
   useEffect(() => {
+
   refreshZamowienia();
-}, [pagination.currentPage, selectedKlient, selectedUser]); 
+}, [pagination.currentPage, selectedKlient, selectedUser,sortowanieZamowieniaEtap]); 
 // Za każdym razem gdy zmieni się strona, pobierz nowe dane
+
   useEffect(() => {
     checkToken();
     setOpenModalInsert(false)

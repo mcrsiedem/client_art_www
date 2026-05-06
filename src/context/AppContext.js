@@ -176,6 +176,12 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
        
 
     },[])
+
+
+    //     useEffect(()=>{
+
+    //       console.log("Zmiana")
+    // },[selectedKlient,selectedUser,sortowanieZamowieniaEtap])
     
     return  <AppContext.Provider 
                 value={{

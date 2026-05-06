@@ -33,6 +33,7 @@ import ZestawieniaRealizacji from "pages/RealizacjeZestawienie/RealizacjeZestawi
 import Proofy from "pages/Proofy/Proofy";
 import { UIContextProvider } from "context/UIContext";
 import Diagram from "components/Diagram/Diagram";
+import { ZamowienieContextProvider } from "context/ZamowieniaContext";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
       <UIContextProvider>
       <SocketProvider>
       <AppContextProvider>
+      <ZamowienieContextProvider>
       <TechnologyContextProvider>
       <PreOrderContextProvider>
       <ModalInsertContextProvider>
@@ -72,6 +74,7 @@ export default function App() {
       </ModalInsertContextProvider>
       </PreOrderContextProvider>
       </TechnologyContextProvider>
+      </ZamowienieContextProvider>
       </AppContextProvider>
       </SocketProvider>
       </UIContextProvider>

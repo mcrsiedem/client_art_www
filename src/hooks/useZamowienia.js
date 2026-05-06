@@ -67,6 +67,10 @@ export function useZamowienia() {
         "/" +
          contextApp.selectedUser +
         "/" +
+              contextApp.pagination.page +
+        "/" +
+              contextApp.pagination.size +
+        "/" +
         sessionStorage.getItem("token"),
     );
     contextApp.setZamowienia([...res.data.data]);

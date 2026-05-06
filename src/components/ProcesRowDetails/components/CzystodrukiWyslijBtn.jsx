@@ -15,6 +15,7 @@ export default function CzystodrukiWyslijBtn({ grup ,expand, setExpand}) {
       const setWykonania = techContext.setWykonania;
       const realizacje = techContext.realizacje;
       const setRealizacje = techContext.setRealizacje;
+      const procesory = appContext.procesory;
 
       let setShow = null;
       let value = 1;
@@ -38,7 +39,7 @@ export default function CzystodrukiWyslijBtn({ grup ,expand, setExpand}) {
         //  setExpand(!expand)
 
                   let wykonanie = wykonania.find(x =>x.grupa_id == grup.id && x.technologia_id == grup.technologia_id)
-                 addRealizajcaProcesu(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket)
+                 addRealizajcaProcesu(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket,procesory)
                 //  addRealizajcaProcesu(setShow,wykonanie,value,wykonania,setWykonania,realizacje,setRealizacje,grupyWykonanAll,setGrupWykonanAll,grup,setIsLoading,socket)
 
 

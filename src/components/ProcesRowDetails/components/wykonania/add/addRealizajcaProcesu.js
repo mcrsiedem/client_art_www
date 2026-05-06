@@ -18,6 +18,8 @@ export const addRealizajcaProcesu = async (
   setIsLoading,socket,procesory
 ) => {
   setIsLoading(true);
+
+  console.log("to tut")
   try {
     let proces_nazwa_id = procesory?.find(x=>x.id == wykonanie.procesor_id).grupa
 

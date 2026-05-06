@@ -45,7 +45,7 @@ export const AppContextProvider = ({children})=>{
     const [realizacjeZestawienieKlienci, setRealizacjeZestawienieKlienci] = useState([]); 
 
     const [zamowienia, setZamowienia] = useState([]); 
-    const [pagination, setPagination] = useState([]); 
+
     const [zamowieniaProgres, setZamowieniaProgres] = useState([]); 
     const [zamowieniaInfo, setZamowieniaInfo] = useState(); 
     const [zamowieniaPliki, setZamowieniaPliki] = useState([]); 
@@ -90,7 +90,19 @@ const tableZamowienia = useRef();
     const [rowSelected, setRowSelected] = useState(null); 
 
   const [showTabsRealizacje, setShowTabsRealizacje] = useState({grupy:false,maszyny:false,osoby:true,prace:false,klienci:false});
-
+ 
+ 
+  const [pagination, setPagination] = useState({
+  currentPage: 1,
+  totalPages: 1,
+  pageSize: 50,
+  total: 0
+});
+const handlePageChange = (newPage) => {
+  if (newPage >= 1 && newPage <= pagination.totalPages) {
+    setPagination(prev => ({ ...prev, currentPage: newPage }));
+  }
+};
 
     const updateProcesList = useCallback(()=>{
         getProcesList(setProcesList) 
@@ -215,7 +227,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
                     oddaniaGrupy, setOddaniaGrupy,fechOddaniaGrupy,sortowanieOddania,setSortowanieOddania,_status_oddania,widokOddan, setWidokOddan,
                     oddaniaGrupyWyszukiwarka, setOddaniaGrupyWyszukiwarka,oddaniaWykonania, setOddaniaWykonania,fechOddaniaWykonania,
                     pokazUzytkownikowOnline, setPokazUzytkownikowOnline,
-                    showTabsRealizacje, setShowTabsRealizacje,
+                    showTabsRealizacje, setShowTabsRealizacje,handlePageChange
                
               
           

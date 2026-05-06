@@ -67,7 +67,7 @@ export function useZamowienia() {
         "/" +
          contextApp.selectedUser +
         "/" +
-              contextApp.pagination.page +
+              contextApp.pagination.currentPage +
         "/" +
               contextApp.pagination.size +
         "/" +

@@ -5,7 +5,7 @@ export const ZamowienieContextProvider = ({ children }) => {
   const [wybranyKlient, setWybranyKlient] = useState(0);
   const [wybranyOpiekun, setWybranyOpiekun] = useState(0);
   const [sortowanieZamowien, setSortowanieZamowien] = useState(0);
-  const [zestawZamowien, setZestawZamowien] = useState(0);
+  const [widokZamowien,setWidokZamowien] = useState(0);
 
 
   const [pagination, setPagination] = useState({
@@ -30,7 +30,7 @@ export const ZamowienieContextProvider = ({ children }) => {
    wybranyKlient, setWybranyKlient,
    wybranyOpiekun, setWybranyOpiekun,
    sortowanieZamowien, setSortowanieZamowien,
-   zestawZamowien, setZestawZamowien,handlePageChange
+   _widokZamowien,widokZamowien,setWidokZamowien,handlePageChange,pagination, setPagination
 
       }}
     >
@@ -38,3 +38,50 @@ export const ZamowienieContextProvider = ({ children }) => {
     </ZamowienieContext.Provider>
   );
 };
+
+  const _widokZamowien = [
+        {
+      id:0,
+      nazwa: "Bieżące",
+    },
+            {
+      id:1,
+      nazwa: "Przed drukiem",
+    },
+    {
+      id: 2,
+      nazwa: "Harmonogram",
+    },
+    {
+      id: 3,
+      nazwa: "Wydrukowane",
+    },
+    {
+      id: 4,
+      nazwa: "Sfalcowane",
+    },
+    
+    {
+      id: 5,
+      nazwa: "Oprawione",
+    },
+    
+    {
+      id: 6,
+      nazwa: "Oddane",
+    },
+
+        {
+      id: 7,
+      nazwa: "Anulowane",
+    },
+    {
+      id: 8,
+      nazwa: "Wszystkie",
+    }
+  ,
+    {
+      id: 9,
+      nazwa: "Proofy",
+    },
+  ];

@@ -5,6 +5,7 @@ import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 export function useZamowienia() {
   const contextApp = useContext(AppContext);
   const techcontext = useContext(TechnologyContext);
@@ -14,6 +15,7 @@ export function useZamowienia() {
   const setZamowienia = contextApp.setZamowienia;
 
   const {zamowienia} = useContext(AppContext);
+  const zamContext = useContext(ZamowienieContext);
 
 
   const scrollTable = (table) => {
@@ -84,7 +86,10 @@ export function useZamowienia() {
     }
   };
 
-  const refreshZamowieniaPaginations = async () => {
+
+
+
+    const refZamPagination = async () => {
 
     // .json({
     //         data: rows,
@@ -99,14 +104,23 @@ export function useZamowienia() {
     const res = await axios.get(
       IP +
         "zamowieniaPaginations/" +
-        contextApp.sortowanieZamowienia.current +
+        zamContext.sortowanieZamowien +
         "/" +
-        contextApp.zestawZamowienia.current +
+        zamContext.widokZamowien +
+        "/" +
+        zamContext.wybranyKlient +
+        "/" +
+         zamContext.wybranyOpiekun +
+        "/" +
+        zamContext.pagination.currentPage +
+        "/" +
+        zamContext.pagination.size +
         "/" +
         sessionStorage.getItem("token"),
     );
     contextApp.setZamowienia([...res.data.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    contextApp.setPagination(res.data.pagination);
     console.log(res.data.pagination)
     setIsLoading(false);
 
@@ -114,7 +128,6 @@ export function useZamowienia() {
       scrollTable(tableZamowienia);
     }
   };
-
 
   const refreshZamowieniaNiezamknieteKoszty = async () => {
     setIsLoading(true);
@@ -317,7 +330,7 @@ const getElementy = async (nr, rok) => {
 
   return {
     refreshZamowienia,
-    refreshZamowieniaPaginations,
+    refZamPagination,
     odblokujZamowienie,
     deleteZamowienie,
     // zmienEtapWydrukowane,

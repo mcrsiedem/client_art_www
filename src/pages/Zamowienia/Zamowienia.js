@@ -20,22 +20,31 @@ import Loading from "components/Loading/Loading";
 import DiaglogAlert from "components/Dialog/DiaglogAlert";
 import TableFx from "./components/table/TableFx/TableFx";
 import DialogHipopotamapi from "components/DialogHipopotam/DialogHipopotamapi";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 function Zamowienia() {
 
-  const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading,pagination, selectedKlient, selectedUser,sortowanieZamowieniaEtap} = useContext(AppContext);
+  const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading, selectedKlient, selectedUser,sortowanieZamowieniaEtap} = useContext(AppContext);
   const {openModalInsert,setOpenModalInsert} = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
   const navigate = useNavigate();
   const [callForPaper] = useApiPapier();
-  const {refreshZamowienia,refreshZamowieniaPaginations} = useZamowienia();
+  const {refreshZamowienia,refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
+  const {
+    wybranyKlient,
+    pagination,
+    wybranyOpiekun,
+    sortowanieZamowien,
+    widokZamowien,
+  } = useContext(ZamowienieContext);
 
 
   const STORAGE_KEYS = {
   COLUMNS: "table_css_mod_columns",
   WIDTHS: "table_css_mod_widths",
-  SORT: "table_css_mod_sort"
+  SORT: "table_css_mod_sort",
+  VIEW: "table_css_mod_view"
 };
   // const [visibleColumns, setVisibleColumns] = useState(() => {
   //   const saved = localStorage.getItem(STORAGE_KEYS.COLUMNS);
@@ -106,8 +115,10 @@ function Zamowienia() {
       .then((res) => {
         if (res.data.Status === "Success") {
      
+
+          // refZamPagination(); 
           refreshZamowienia();
-          // refreshZamowieniaPaginations()
+
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
           getNadkomplety(setNadkomplety);
@@ -118,10 +129,21 @@ function Zamowienia() {
       });
   }
 
+
+
+//     useEffect(() => {
+//   refreshZamowienia();
+// }, [pagination.currentPage, selectedKlient, selectedUser,sortowanieZamowieniaEtap]); 
+
+
   useEffect(() => {
 
   refreshZamowienia();
-}, [pagination.currentPage, selectedKlient, selectedUser,sortowanieZamowieniaEtap]); 
+}, [wybranyKlient,
+    pagination,
+    wybranyOpiekun,
+    sortowanieZamowien,
+    widokZamowien]); 
 // Za każdym razem gdy zmieni się strona, pobierz nowe dane
 
   useEffect(() => {

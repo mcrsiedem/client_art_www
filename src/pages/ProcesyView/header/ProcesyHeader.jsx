@@ -166,52 +166,67 @@ function DataWyswietlania(){
 
 
 function KOPIUJ_ZAZNACZONE_BTN() {
-   const techContext = useContext(TechnologyContext);
-      const grupyWykonanAll = techContext.grupyWykonanAll;
-      const setGrupWykonanAll = techContext.setGrupWykonanAll;
-  return (
+  const techContext = useContext(TechnologyContext);
+  const grupyWykonanAll = techContext.grupyWykonanAll;
+  const setGrupWykonanAll = techContext.setGrupWykonanAll;
 
-      <div  className={style.przerwa_container}>
-              <img
-              className={style.icon_copy}
-              src={iconCopy}
-title="Kopiuj wydanie papieru"
-    onClick={(event) => {
-            // console.log(" select" + grup.global_id + " " + event.target.checked);
-let mes='';
+  // Funkcja czyszcząca dane przed wysłaniem do schowka
+  const formatujPole = (tekst) => {
+    if (!tekst && tekst !== 0) return "";
+    return String(tekst)
+      .replace(/"/g, '„') // Zamiana cudzysłowu prostego na drukarski (rozwiązuje Twój główny problem)
+      .replace(/[\n\r\t]/g, " ") // Zamiana enterów i tabulatorów na spacje
+      .trim();
+  };
 
-            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
-              mes += grupa.poczatek+"\t"
-              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
-              mes += grupa.klient+"\t"
-              mes += grupa.tytul+"\t"
-              mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
-              mes += grupa.przeloty+ " ark. \t"
-              mes += wagaArkuszy(grupa.arkusz_szerokosc,grupa.arkusz_wysokosc,grupa.gramatura,grupa.przeloty)+ " kg \t"
-              mes += "\n"
+  const obslugaKopiowania = () => {
+    let mes = '';
+    const wybraneGrupy = grupyWykonanAll.filter(x => x.select === true);
 
-            }
-
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-
-            navigator.clipboard.writeText(mes);
-          }
+    for (let grupa of wybraneGrupy) {
+      // Budowanie wiersza z użyciem funkcji czyszczącej
+      mes += formatujPole(grupa.poczatek) + "\t";
+      mes += formatujPole(`${grupa.nr_stary}-${grupa.nr}`) + "\t";
+      mes += formatujPole(grupa.klient) + "\t";
+      mes += formatujPole(grupa.tytul) + "\t";
+      
+      // Składanie opisu papieru w jedno bezpieczne pole
+      const opisPapieru = `${grupa.arkusz_szerokosc}x${grupa.arkusz_wysokosc} ${grupa.nazwa_papieru} ${grupa.gramatura} ${grupa.wykonczenie}`;
+      mes += formatujPole(opisPapieru) + "\t";
+      
+      mes += formatujPole(grupa.przeloty) + " ark.\t";
+      
+      const waga = wagaArkuszy(grupa.arkusz_szerokosc, grupa.arkusz_wysokosc, grupa.gramatura, grupa.przeloty);
+      mes += formatujPole(waga) + " kg\t";
+      
+      mes += "\r\n"; // Standardowy znak końca linii (Windows/Excel)
     }
 
+    // Kopiowanie do schowka
+    if (mes) {
+      navigator.clipboard.writeText(mes).then(() => {
+        // Po udanym skopiowaniu odznaczamy elementy
+        setGrupWykonanAll(
+          grupyWykonanAll.map((t) => ({ ...t, select: false }))
+        );
+      }).catch(err => {
+        console.error("Błąd kopiowania do schowka: ", err);
+      });
+    }
+  };
 
-              alt="React Logo"
-            />
-      </div>
-
-        
+  return (
+    <div className={style.przerwa_container}>
+      <img
+        className={style.icon_copy}
+        src={iconCopy}
+        title="Kopiuj wydanie papieru"
+        alt="Kopiuj"
+        onClick={obslugaKopiowania}
+      />
+    </div>
   );
-
 }
-
 
 function WYDAJ_ZAZNACZONE_BTN() {
    const techContext = useContext(TechnologyContext);
@@ -221,10 +236,55 @@ function WYDAJ_ZAZNACZONE_BTN() {
         const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
 
 
-        // const wagaArkuszy = (arkusz_szerokosc,arkusz_wysokosc,gramatura,przeloty) => {
-        //   let waga = parseInt(arkusz_szerokosc)/1000 * parseInt(arkusz_wysokosc)/1000 * parseInt(gramatura) * parseInt(przeloty)
-        //   return Math.ceil(waga)
-        // }
+          const formatujPole = (tekst) => {
+    if (!tekst && tekst !== 0) return "";
+    return String(tekst)
+      .replace(/"/g, '„') // Zamiana cudzysłowu prostego na drukarski (rozwiązuje Twój główny problem)
+      .replace(/[\n\r\t]/g, " ") // Zamiana enterów i tabulatorów na spacje
+      .trim();
+  };
+
+
+    const obslugaKopiowania = () => {
+    let mes = '';
+    const wybraneGrupy = grupyWykonanAll.filter(x => x.select === true);
+
+    for (let grupa of wybraneGrupy) {
+      // Budowanie wiersza z użyciem funkcji czyszczącej
+      mes += formatujPole(grupa.poczatek) + "\t";
+      mes += formatujPole(`${grupa.nr_stary}-${grupa.nr}`) + "\t";
+      mes += formatujPole(grupa.klient) + "\t";
+      mes += formatujPole(grupa.tytul) + "\t";
+      
+      // Składanie opisu papieru w jedno bezpieczne pole
+      const opisPapieru = `${grupa.arkusz_szerokosc}x${grupa.arkusz_wysokosc} ${grupa.nazwa_papieru} ${grupa.gramatura} ${grupa.wykonczenie}`;
+      mes += formatujPole(opisPapieru) + "\t";
+      
+      mes += formatujPole(grupa.przeloty) + " ark.\t";
+      
+      const waga = wagaArkuszy(grupa.arkusz_szerokosc, grupa.arkusz_wysokosc, grupa.gramatura, grupa.przeloty);
+      mes += formatujPole(waga) + " kg\t";
+      
+      mes += "\r\n"; // Standardowy znak końca linii (Windows/Excel)
+    }
+
+    // Kopiowanie do schowka
+    if (mes) {
+      navigator.clipboard.writeText(mes).then( async () => {
+        // Po udanym skopiowaniu odznaczamy elementy
+        setGrupWykonanAll(
+          grupyWykonanAll.map((t) => ({ ...t, select: false }))
+        );
+
+await axios.post(IP + "insertWydaniePapieru_status_multiselect/" + sessionStorage.getItem("token"), grupyWykonanAll.filter(x=> x.select == true));
+            fechGrupyAndWykonaniaForProcesor(selectedProcesor)
+
+
+      }).catch(err => {
+        console.error("Błąd kopiowania do schowka: ", err);
+      });
+    }
+  };
 
   return (
 
@@ -234,34 +294,7 @@ function WYDAJ_ZAZNACZONE_BTN() {
               src={iconSheet}
               title="Wydaj papier"
 
-    onClick={async (event) => {
-            // console.log(" select" + grup.global_id + " " + event.target.checked);
-let mes='';
-
-            for( let grupa of grupyWykonanAll.filter(x=> x.select == true)){
-              mes += grupa.poczatek+"\t"
-              mes +=  grupa.nr_stary+"-"+grupa.nr+"\t"
-              mes += grupa.klient+"\t"
-              mes += grupa.tytul+"\t"
-              mes += grupa.arkusz_szerokosc+"x"+grupa.arkusz_wysokosc +" "+ grupa.nazwa_papieru+" "+grupa.gramatura+" "+grupa.wykonczenie+"\t"
-              mes += grupa.przeloty+ " ark. \t"
-              mes += wagaArkuszy(grupa.arkusz_szerokosc,grupa.arkusz_wysokosc,grupa.gramatura,grupa.przeloty)+ " kg \t"
-              mes += "\n"
-
-            }
-
-            setGrupWykonanAll(
-              grupyWykonanAll.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-
-            navigator.clipboard.writeText(mes);
-
-            await axios.post(IP + "insertWydaniePapieru_status_multiselect/" + sessionStorage.getItem("token"), grupyWykonanAll.filter(x=> x.select == true));
-            fechGrupyAndWykonaniaForProcesor(selectedProcesor)
-          }
-    }
+    onClick={obslugaKopiowania}
 
 
               alt="React Logo"

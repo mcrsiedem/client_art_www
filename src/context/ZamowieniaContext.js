@@ -30,7 +30,7 @@ export const ZamowienieContextProvider = ({ children }) => {
    wybranyKlient, setWybranyKlient,
    wybranyOpiekun, setWybranyOpiekun,
    sortowanieZamowien, setSortowanieZamowien,
-   zestawZamowien, setZestawZamowien
+   zestawZamowien, setZestawZamowien,handlePageChange
 
       }}
     >

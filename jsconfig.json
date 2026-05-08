@@ -1,18 +1,15 @@
 {
     "compilerOptions": {
         "module": "ESNext",
-        // "moduleResolution": "Node",
-        "moduleResolution": "bundler",
+        "moduleResolution": "Node",
+       
         "target": "ES2020",
         "jsx": "react",
         "allowImportingTsExtensions": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
-        // "baseUrl": "src"
-        "paths": {
-            "*": ["./src/*"],      /* Pozwala na: import { x } from 'components/x' */
-            "@/*": ["./src/*"]    /* Pozwala na: import { x } from '@/components/x' (zalecane) */
-        }
+        "baseUrl": "src"
+
     },
     "exclude": [
         "node_modules",

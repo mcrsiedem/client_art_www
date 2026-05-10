@@ -25,7 +25,7 @@ export function useZamowienia() {
   };
 
 
-    const refreshZamowienia_OLD = async () => {
+    const refreshZamowienia = async () => {
     setIsLoading(true);
     const res = await axios.get(
       IP +
@@ -46,7 +46,7 @@ export function useZamowienia() {
   };
 
 
-  const refreshZamowienia = async () => {
+  const refreshZamowienia_NEW = async () => {
 
     // .json({
     //         data: rows,

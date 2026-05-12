@@ -31,7 +31,7 @@ function Zamowienia() {
   const [callForPaper] = useApiPapier();
   const {refreshZamowienia,refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
-  const { pagination} = useContext(ZamowienieContext);
+  const { pagination,widok} = useContext(ZamowienieContext);
 
 
   const STORAGE_KEYS = {
@@ -134,7 +134,7 @@ function Zamowienia() {
           refZamPagination(); 
 
   // refreshZamowienia();
-}, [    pagination]); 
+}, [    widok]); 
 // Za każdym razem gdy zmieni się strona, pobierz nowe dane
 
   useEffect(() => {

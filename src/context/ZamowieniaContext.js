@@ -8,7 +8,10 @@ export const ZamowienieContextProvider = ({ children }) => {
     currentPage: 1,
     pageSize: 50,
     totalPages: 0,
-    total: 0,
+    total: 0
+  });
+
+    const [widok, setWidok] = useState({
     kolumna: "nr",
     kierunek: "asc",
     widok: "Bieżące", // używamy ID z tablicy _widokZamowien
@@ -21,11 +24,20 @@ const updatePagination = (updates) => {
       ...prev,
       ...updates,
       // Jeśli zmieniamy filtr lub sortowanie, zazwyczaj chcemy wrócić na 1. stronę
-      currentPage: updates.currentPage || (updates.pageSize ? prev.currentPage : 1),
+      // currentPage: updates.currentPage || (updates.pageSize ? prev.currentPage : 1),
     }));
   };
 
 
+
+  const updateWidok = (updates) => {
+    setWidok((prev) => ({
+      ...prev,
+      ...updates
+      // Jeśli zmieniamy filtr lub sortowanie, zazwyczaj chcemy wrócić na 1. stronę
+      // currentPage: updates.currentPage || (updates.pageSize ? prev.currentPage : 1),
+    }));
+  };
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= pagination.totalPages) {
@@ -46,7 +58,7 @@ const updatePagination = (updates) => {
     <ZamowienieContext.Provider
       value={{
    _widokZamowien,handlePageChange,
-      updatePagination,  pagination, setPagination
+      updatePagination,  pagination, setPagination,widok,updateWidok
 
       }}
     >

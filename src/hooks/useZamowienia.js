@@ -15,7 +15,7 @@ export function useZamowienia() {
   const setZamowienia = contextApp.setZamowienia;
 
   const {zamowienia} = useContext(AppContext);
-  const {pagination} = useContext(ZamowienieContext);
+  const {pagination,updatePagination,widok} = useContext(ZamowienieContext);
 
 
   const scrollTable = (table) => {
@@ -46,45 +46,6 @@ export function useZamowienia() {
   };
 
 
-  const refreshZamowienia_NEW = async () => {
-
-    // .json({
-    //         data: rows,
-    //         pagination: {
-    //             total: totalRecords,
-    //             currentPage: page,
-    //             totalPages: Math.ceil(totalRecords / size),
-    //             pageSize: size
-    //         }
-    //     });
-    setIsLoading(true);
-    const res = await axios.get(
-      IP +
-        "zamowieniaPaginations/" +
-        contextApp.sortowanieZamowienia.current +
-        "/" +
-        contextApp.zestawZamowienia.current +
-        "/" +
-        contextApp.selectedKlient +
-        "/" +
-         contextApp.selectedUser +
-        "/" +
-              contextApp.pagination.currentPage +
-        "/" +
-              contextApp.pagination.size +
-        "/" +
-        sessionStorage.getItem("token"),
-    );
-    contextApp.setZamowienia([...res.data.data]);
-    contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
-    contextApp.setPagination(res.data.pagination);
-    console.log(res.data.pagination)
-    setIsLoading(false);
-
-    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
-      scrollTable(tableZamowienia);
-    }
-  };
 
 
 
@@ -96,13 +57,12 @@ export function useZamowienia() {
     const res = await axios.post(
       IP +
         "zamowieniaPaginations/" +
-        sessionStorage.getItem("token"),
-    pagination 
+        sessionStorage.getItem("token"),{...pagination,...widok}
   
     );
     contextApp.setZamowienia([...res.data.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
-    contextApp.setPagination(res.data.pagination);
+    updatePagination(res.data.pagination)
     console.log(res.data.pagination)
     setIsLoading(false);
 

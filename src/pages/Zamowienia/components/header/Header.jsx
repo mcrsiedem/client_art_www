@@ -178,7 +178,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setIsLoading= contextApp.setIsLoading;
   const {refreshZamowienia} = useZamowienia();
   const navigate = useNavigate();
-        const {updatePagination} = useContext(ZamowienieContext);
+        const {updatePagination,updateWidok} = useContext(ZamowienieContext);
 
   
     return (
@@ -197,7 +197,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
             setIsLoading(true)
             setSortowanieZamowieniaEtap(event.target.value)
             zestawZamowienia.current= event.target.value
-              updatePagination({widok: event.target.value})
+              updateWidok({widok: event.target.value})
             
   
                       resolve(777);

@@ -233,6 +233,8 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSelectedKlient = contextApp.setSelectedKlient;
   const selectedUser = contextApp.selectedUser;
   const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+    const {updatePagination} = useContext(ZamowienieContext);
+
 
     return (
       <select
@@ -240,6 +242,8 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
         value={selectedKlient}
         onChange={(event) => {
           setSelectedKlient(event.target.value);
+          updatePagination({klientId:event.target.value})
+
           // refreshZamowienia(event.target.value)
         }}
       >
@@ -272,6 +276,9 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const selectedUser = contextApp.selectedUser;
   const setSelectedUser = contextApp.setSelectedUser;
   const setSelectedKlient = contextApp.setSelectedKlient;
+        const {updatePagination} = useContext(ZamowienieContext);
+
+
   if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
     return (
       <select
@@ -280,6 +287,9 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         onChange={(event) => {
           setSelectedUser(event.target.value);
              setSelectedKlient(0)
+
+             updatePagination({opiekunId:event.target.value})
+
         }}
       >
         {<option value="0">Opiekun</option>}

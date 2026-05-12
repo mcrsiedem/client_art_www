@@ -3,26 +3,6 @@ import { useEffect, createContext, useState } from "react";
 export const ZamowienieContext = createContext();
 export const ZamowienieContextProvider = ({ children }) => {
 
-  // const [wybranyKlient, setWybranyKlient] = useState(0);
-  // const [wybranyOpiekun, setWybranyOpiekun] = useState(0);
-  // const [sortowanieZamowien, setSortowanieZamowien] = useState(0);
-  // const [widokZamowien,setWidokZamowien] = useState(0);
-
-
-
-  // const [kolumna, setKolumna] = useState("nr"); 
-  // const [kierunek, setKierunek] = useState("asc");
-  // const [widok, setWidok] = useState("Bieżące");
-  // const [opiekun, setOpiekun] = useState(0);
-  // const [klient, setKlient] = useState(0);
-  // const [pagination, setPagination] = useState({
-  //   currentPage: 1,
-  //   totalPages: 1,
-  //   pageSize: 50,
-  //   total: 0,
-  // });
-
-
 
   const [pagination, setPagination] = useState({
     currentPage: 1,

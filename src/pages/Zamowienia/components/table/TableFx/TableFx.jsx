@@ -49,7 +49,8 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
 
       const {onMenuHandle} = useMenu()
   
-  const {setKolumna,setKierunek} = useContext(ZamowienieContext);
+  const {updatePagination} = useContext(ZamowienieContext);
+
   
 
 
@@ -166,8 +167,10 @@ const sortedItems = useMemo(() => {
     }
     setSortConfig({ key, direction });
 
-  setKolumna(key)
-setKierunek(direction)
+
+    updatePagination({kolumna: key})
+    updatePagination({kierunek: direction})
+
 
   };
 

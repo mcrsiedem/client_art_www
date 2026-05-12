@@ -7,11 +7,11 @@ export const ZamowienieContextProvider = ({ children }) => {
   const [pagination, setPagination] = useState({
     currentPage: 1,
     pageSize: 50,
-    totalPages: 1,
+    totalPages: 0,
     total: 0,
     kolumna: "nr",
     kierunek: "asc",
-    widok: 0, // używamy ID z tablicy _widokZamowien
+    widok: "Bieżące", // używamy ID z tablicy _widokZamowien
     klientId: 0,
     opiekunId: 0,
   });
@@ -34,13 +34,13 @@ const updatePagination = (updates) => {
   };
 
 
-  useEffect(() => {
-    console.log(pagination.kolumna)
-    console.log(pagination.kierunek)
-    console.log(pagination.widok)
-    console.log(`Opiekun:  ${pagination.opiekunId}`)
-    console.log(`Klient:  ${pagination.klientId}`)
-  }, [pagination]);
+  // useEffect(() => {
+  //   console.log(pagination.kolumna)
+  //   console.log(pagination.kierunek)
+  //   console.log(pagination.widok)
+  //   console.log(`Opiekun:  ${pagination.opiekunId}`)
+  //   console.log(`Klient:  ${pagination.klientId}`)
+  // }, [pagination]);
 
   return (
     <ZamowienieContext.Provider

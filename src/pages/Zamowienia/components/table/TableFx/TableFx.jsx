@@ -49,7 +49,7 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
 
       const {onMenuHandle} = useMenu()
   
-  const {updatePagination} = useContext(ZamowienieContext);
+  const {updatePagination,handlePageChange,pagination} = useContext(ZamowienieContext);
 
   
 
@@ -341,21 +341,21 @@ const sortedItems = useMemo(() => {
           <tbody className={styles.tbody}>
             {/* {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan > 2 ).map((row,i) => ( */}
             {sortedItems
-              .filter((item) => {
-                if (contextApp.selectedKlient == 0) {
-                  return true;
-                } else {
-                  return item.klient_id == contextApp.selectedKlient;
-                }
-              })
+              // .filter((item) => {
+              //   if (contextApp.selectedKlient == 0) {
+              //     return true;
+              //   } else {
+              //     return item.klient_id == contextApp.selectedKlient;
+              //   }
+              // })
 
-              .filter((zam) => {
-                if (contextApp.selectedUser == 0) {
-                  return true;
-                } else {
-                  return zam.opiekun_id == contextApp.selectedUser;
-                }
-              })
+              // .filter((zam) => {
+              //   if (contextApp.selectedUser == 0) {
+              //     return true;
+              //   } else {
+              //     return zam.opiekun_id == contextApp.selectedUser;
+              //   }
+              // })
               .map((row, i) => (
                 // .filter( item => item.stan > 2 ).map((row,i) => (
                   <>
@@ -426,8 +426,8 @@ const sortedItems = useMemo(() => {
   
   <button 
     className={styles.pageBtn}
-    disabled={contextApp.pagination?.currentPage === 1}
-    onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage - 1)}
+    disabled={pagination?.currentPage === 1}
+    onClick={() => handlePageChange(pagination.currentPage - 1)}
   >
     &lt;
   </button>
@@ -435,16 +435,16 @@ const sortedItems = useMemo(() => {
   {/* Dynamiczne numery stron */}
   <div className={styles.pageNumbers}>
     {getPaginationRange(
-      contextApp.pagination?.currentPage || 1, 
-      contextApp.pagination?.totalPages || 1
+      pagination?.currentPage || 1, 
+      pagination?.totalPages || 1
     ).map((page, index) => (
       page === "..." ? (
         <span key={`dots-${index}`} className={styles.dots}>...</span>
       ) : (
         <button
           key={page}
-          className={`${styles.pageBtn} ${contextApp.pagination?.currentPage === page ? styles.activePage : ""}`}
-          onClick={() => contextApp.handlePageChange(page)}
+          className={`${styles.pageBtn} ${pagination?.currentPage === page ? styles.activePage : ""}`}
+          onClick={() => handlePageChange(page)}
         >
           {page}
         </button>
@@ -455,8 +455,8 @@ const sortedItems = useMemo(() => {
   {/* Przycisk Następna */}
   <button 
     className={styles.pageBtn}
-    disabled={contextApp.pagination?.currentPage === contextApp.pagination?.totalPages}
-    onClick={() => contextApp.handlePageChange(contextApp.pagination.currentPage + 1)}
+    disabled={pagination?.currentPage === pagination?.totalPages}
+    onClick={() => handlePageChange(pagination.currentPage + 1)}
   >
     &gt;
   </button>
@@ -464,7 +464,7 @@ const sortedItems = useMemo(() => {
   {/* Wybór wielkości strony */}
   {/* <select 
     className={styles.pageSelect}
-    value={contextApp.pagination?.pageSize} 
+    value={pagination?.pageSize} 
     onChange={(e) => contextApp.handleSizeChange(Number(e.target.value))}
   >
     {[20, 50, 100].map(size => (

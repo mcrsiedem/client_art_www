@@ -15,7 +15,7 @@ export function useZamowienia() {
   const setZamowienia = contextApp.setZamowienia;
 
   const {zamowienia} = useContext(AppContext);
-  const zamContext = useContext(ZamowienieContext);
+  const {pagination} = useContext(ZamowienieContext);
 
 
   const scrollTable = (table) => {
@@ -91,32 +91,14 @@ export function useZamowienia() {
 
     const refZamPagination = async () => {
 
-    // .json({
-    //         data: rows,
-    //         pagination: {
-    //             total: totalRecords,
-    //             currentPage: page,
-    //             totalPages: Math.ceil(totalRecords / size),
-    //             pageSize: size
-    //         }
-    //     });
+
     setIsLoading(true);
-    const res = await axios.get(
+    const res = await axios.post(
       IP +
         "zamowieniaPaginations/" +
-        zamContext.sortowanieZamowien +
-        "/" +
-        zamContext.widokZamowien +
-        "/" +
-        zamContext.wybranyKlient +
-        "/" +
-         zamContext.wybranyOpiekun +
-        "/" +
-        zamContext.pagination.currentPage +
-        "/" +
-        zamContext.pagination.size +
-        "/" +
         sessionStorage.getItem("token"),
+    pagination 
+  
     );
     contextApp.setZamowienia([...res.data.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data.data]);

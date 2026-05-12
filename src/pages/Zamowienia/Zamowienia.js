@@ -31,13 +31,7 @@ function Zamowienia() {
   const [callForPaper] = useApiPapier();
   const {refreshZamowienia,refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
-  const {
-    wybranyKlient,
-    pagination,
-    wybranyOpiekun,
-    sortowanieZamowien,
-    widokZamowien,
-  } = useContext(ZamowienieContext);
+  const { pagination} = useContext(ZamowienieContext);
 
 
   const STORAGE_KEYS = {
@@ -116,8 +110,8 @@ function Zamowienia() {
         if (res.data.Status === "Success") {
      
 
-          // refZamPagination(); 
-          refreshZamowienia();
+          refZamPagination(); 
+          // refreshZamowienia();
 
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
@@ -137,13 +131,10 @@ function Zamowienia() {
 
 
   useEffect(() => {
+          refZamPagination(); 
 
-  refreshZamowienia();
-}, [wybranyKlient,
-    pagination,
-    wybranyOpiekun,
-    sortowanieZamowien,
-    widokZamowien]); 
+  // refreshZamowienia();
+}, [    pagination]); 
 // Za każdym razem gdy zmieni się strona, pobierz nowe dane
 
   useEffect(() => {

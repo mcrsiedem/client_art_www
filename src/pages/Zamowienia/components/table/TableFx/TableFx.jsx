@@ -17,6 +17,7 @@ import styles from "./TableFx.module.css"
 import { useMenu } from "./hooks/useMenu";
 import CellBtn from "./components/CelllBtn";
 import ZamowienieShort from "components/ZamowienieShort/ZamowienieShort";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 
 
 
@@ -48,12 +49,14 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
 
       const {onMenuHandle} = useMenu()
   
+  const {setKolumna,setKierunek} = useContext(ZamowienieContext);
   
 
 
   // --- STATE: KONFIGURACJA SORTOWANIA ---
   // const [sortConfig, setSortConfig] = useState({ key: 'nr', direction: 'asc' });
 const [sortConfig, setSortConfig] = useState(() => {
+
   const saved = localStorage.getItem(STORAGE_KEYS.SORT);
   // Jeśli mamy zapis w pamięci, parsujemy go, w przeciwnym razie dajemy domyślne wartości
   return saved ? JSON.parse(saved) : { key: 'nr', direction: 'asc' };
@@ -162,6 +165,10 @@ const sortedItems = useMemo(() => {
       direction = 'desc';
     }
     setSortConfig({ key, direction });
+
+  setKolumna(key)
+setKierunek(direction)
+
   };
 
   useEffect(() => {
@@ -294,6 +301,7 @@ const sortedItems = useMemo(() => {
                         // Sortuj tylko jeśli nie było przesunięcia (prawdziwy resize)
                         if (!didMouseMove.current) {
                           requestSort(col.id, col.noSort);
+
                         }
                         // Resetujemy flagę po każdym kliknięciu
                         didMouseMove.current = false;

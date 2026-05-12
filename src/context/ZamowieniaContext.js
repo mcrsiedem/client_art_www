@@ -2,12 +2,19 @@ import { useEffect, createContext, useState } from "react";
 
 export const ZamowienieContext = createContext();
 export const ZamowienieContextProvider = ({ children }) => {
+
   const [wybranyKlient, setWybranyKlient] = useState(0);
   const [wybranyOpiekun, setWybranyOpiekun] = useState(0);
   const [sortowanieZamowien, setSortowanieZamowien] = useState(0);
   const [widokZamowien,setWidokZamowien] = useState(0);
 
 
+
+  const [kolumna, setKolumna] = useState("nr");
+  const [kierunek, setKierunek] = useState("asc");
+  const [widok, setWidok] = useState("Bieżące");
+  const [opiekun, setOpiekun] = useState(0);
+  const [klient, setKlient] = useState(0);
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
@@ -22,7 +29,11 @@ export const ZamowienieContextProvider = ({ children }) => {
   };
 
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(kolumna)
+    console.log(kierunek)
+    console.log(widok)
+  }, [kolumna,kierunek,widok]);
 
   return (
     <ZamowienieContext.Provider
@@ -30,7 +41,10 @@ export const ZamowienieContextProvider = ({ children }) => {
    wybranyKlient, setWybranyKlient,
    wybranyOpiekun, setWybranyOpiekun,
    sortowanieZamowien, setSortowanieZamowien,
-   _widokZamowien,widokZamowien,setWidokZamowien,handlePageChange,pagination, setPagination
+   _widokZamowien,widokZamowien,setWidokZamowien,handlePageChange,
+
+   kolumna, setKolumna,kierunek, setKierunek,widok, setWidok,opiekun, setOpiekun,klient, setKlient,
+   pagination, setPagination
 
       }}
     >

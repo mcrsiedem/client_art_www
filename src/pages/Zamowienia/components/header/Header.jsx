@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import BTN_KOPIUJ_NEW from "./BTN_KOPIUJ";
 import MenuHeaderZamowienia from "./menu_header_zamowienia/MenuHeaderZamowienia";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 
 export default function Header({ dodaj_clikHandler,showSettings, setShowSettings,visibleColumns, setVisibleColumns,allColumns}) {
   const navigate = useNavigate();
@@ -177,6 +178,8 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setIsLoading= contextApp.setIsLoading;
   const {refreshZamowienia} = useZamowienia();
   const navigate = useNavigate();
+    const {setWidok} = useContext(ZamowienieContext);
+  
     return (
   
         <select
@@ -193,6 +196,8 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
             setIsLoading(true)
             setSortowanieZamowieniaEtap(event.target.value)
             zestawZamowienia.current= event.target.value
+              setWidok(event.target.value)
+            
   
                       resolve(777);
                     })

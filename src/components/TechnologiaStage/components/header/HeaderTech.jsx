@@ -8,7 +8,7 @@ import { zapiszTechnologieUpdate } from "actions/zapiszTechnologieUpdate";
 import { zapiszTechnologie } from "actions/zapiszTechnologie";
 import DecodeToken from "pages/Login/DecodeToken";
 import iconError from "assets/error.svg";
-import { refreshZamowienia } from "actions/refreshZamowienia";
+
 import { useArkusze } from "hooks/useArkusze";
 import { useZamowienia } from "hooks/useZamowienia";
 import axios from "axios";
@@ -431,7 +431,7 @@ const IconNavigate =  ({ className, logo, navi }) => {
   const fechGrupyAndWykonaniaForProcesor =
     techContext.fechGrupyAndWykonaniaForProcesor;
   const selectedProcesor = techContext.selectedProcesor;
-  const {refreshZamowienia} = useZamowienia()
+  const {refZamPagination} = useZamowienia()
   return (
     <img
       className={className}
@@ -444,11 +444,11 @@ const IconNavigate =  ({ className, logo, navi }) => {
         fechGrupyAndWykonaniaForProcesor(selectedProcesor);
         appContext.setIsLoading(true)
 
-        // refreshZamowienia(appContext.setZamowienia,appContext.setZamowieniaWyszukiwarka)
+        
         await axios.put(IP + "setOrderClosed", {
           id: techContext.daneTech.zamowienie_id,
         });
-        refreshZamowienia();
+        refZamPagination();
         appContext.setIsLoading(false)
 
         // techContext.setOpenTechnologia(false)
@@ -464,14 +464,17 @@ const SkasujTechnologieBTN = () => {
 
   const setShowTechnologyStage = techContext.setShowTechnologyStage;
   const daneTech = techContext.daneTech;
-    const {refreshZamowienia} = useZamowienia()
+const {refZamPagination} = useZamowienia()
+
+  
+
 if(DecodeToken(sessionStorage.getItem("token")).technologia_zapis ==1){
 if(techContext.grupaWykonan.length==0 & techContext.daneTech.id !=1){
       return (
     <button
       className={ style.btn}
       onClick={() => {
-        skasujTechnologie(daneTech.id,daneTech.zamowienie_id,DecodeToken(sessionStorage.getItem("token")).id,refreshZamowienia,setShowTechnologyStage)
+        skasujTechnologie(daneTech.id,daneTech.zamowienie_id,DecodeToken(sessionStorage.getItem("token")).id,refZamPagination,setShowTechnologyStage)
 
         // historia kasowanie zapisuje się po stronie bazy
 

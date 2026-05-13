@@ -43,7 +43,7 @@ export  function useZamowienieUpdate(){
 
 const setTechnologieID = contextModalInsert.setTechnologieID;
 
-const {refreshZamowienia} = useZamowienia()
+const {refZamPagination} = useZamowienia()
 
   async function updateZamowienie({dialogBox}){
   setSaveButtonDisabled(true)
@@ -69,7 +69,7 @@ const {refreshZamowienia} = useZamowienia()
   setProcesyProduktow(res.data[13])
   
 // socket.emit("realizacja")
-  refreshZamowienia();
+  refZamPagination();
   dialogBox.current.hide();
 
 }

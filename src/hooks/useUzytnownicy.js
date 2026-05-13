@@ -8,7 +8,7 @@ export function useUzytnownicy() {
   const setUzytkownicy = contextApp.setUzytkownicy;
   const setUzytkownicyGrupy = contextApp.setUzytkownicyGrupy;
 
-  const {refreshZamowienia} = useZamowienia();
+  const {refZamPagination} = useZamowienia();
 
   async function getUzytnownicy() {
     const res = await axios.get(
@@ -18,7 +18,7 @@ export function useUzytnownicy() {
     setUzytkownicy(res.data[0]);
     setUzytkownicyGrupy(res.data[1]);
 
-    refreshZamowienia();
+    refZamPagination();
     setSaveButtonDisabled(true);
   }
 

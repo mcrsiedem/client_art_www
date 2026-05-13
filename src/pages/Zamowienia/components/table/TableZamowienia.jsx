@@ -22,7 +22,7 @@ export default function TableZamowienia(){
 
   const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
 
-const {refreshZamowienia} = useZamowienia()
+const {refZamPagination} = useZamowienia()
 
   // if (loading) {
   //   return <LoadingMini loading={loading}/>;
@@ -40,7 +40,7 @@ const {refreshZamowienia} = useZamowienia()
            <th onClick={()=>{
              contextApp.setIsLoading(true);
          contextApp.sortowanieZamowienia.current = "rok, nr asc"
-         refreshZamowienia()
+         refZamPagination()
 
             }} className={style.col_nr}>Nr</th>
            {/* <th className={style.col_rok}>Rok</th> */}
@@ -58,30 +58,30 @@ const {refreshZamowienia} = useZamowienia()
            <th onClick={()=>{
             contextApp.setIsLoading(true);
          contextApp.sortowanieZamowienia.current = "naklad"
-         refreshZamowienia()
+         refZamPagination()
 
             }} className={style.col_strony}>Nakład</th>
            <th onClick={()=>{
              contextApp.setIsLoading(true);
          contextApp.sortowanieZamowienia.current = "ilosc_stron"
-         refreshZamowienia()
+         refZamPagination()
 
             }} className={style.col_strony}>Str.</th>
            <th onClick={()=>{
              contextApp.setIsLoading(true);
             contextApp.sortowanieZamowienia.current = "data_przyjecia"
-            refreshZamowienia()
+            refZamPagination()
             }} className={style.col_spedycja}>Przyjęcie</th>
            <th onClick={()=>{
              contextApp.setIsLoading(true);
             contextApp.sortowanieZamowienia.current = "data_spedycji"
-            refreshZamowienia()
+            refZamPagination()
             }} className={style.col_spedycja}>Spedycja</th>
            <th className={style.col_netto}>Netto</th>
            <th  onClick={()=>{
              contextApp.setIsLoading(true);
          contextApp.sortowanieZamowienia.current = "oprawa_id"
-         refreshZamowienia()
+         refZamPagination()
 
             }}className={style.col_oprawa}>Oprawa</th>
 

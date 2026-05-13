@@ -23,7 +23,7 @@ export default function TableZamowienia({open2,setRow}){
 
  
 
-const {refreshZamowienia} = useZamowienia()
+const {refZamPagination} = useZamowienia()
 
 
 
@@ -35,7 +35,7 @@ const {refreshZamowienia} = useZamowienia()
            {/* <th className={style.col_alert}>!</th> */}
            <th onClick={()=>{
          contextApp.setSortowanieZamowienia("nr")
-         refreshZamowienia()
+         refZamPagination()
 
             }} className={style.col_nr}>Nr</th>
            {/* <th className={style.col_rok}>Rok</th> */}

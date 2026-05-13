@@ -29,7 +29,7 @@ function Zamowienia() {
   const open = useRef(false);
   const navigate = useNavigate();
   const [callForPaper] = useApiPapier();
-  const {refreshZamowienia,refZamPagination} = useZamowienia();
+  const {refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
   const { pagination,widok} = useContext(ZamowienieContext);
 
@@ -111,7 +111,7 @@ function Zamowienia() {
      
 
           refZamPagination(); 
-          // refreshZamowienia();
+      
 
           callForPaper();
           getClients(setClients, setClientsWyszukiwarka);
@@ -130,14 +130,14 @@ function Zamowienia() {
   useEffect(() => {
           refZamPagination(false); 
 
-  // refreshZamowienia();
+
   // odświeżanie tylko gdy zmieni się widok, albo currentPage
 }, [    widok]); 
 
   useEffect(() => {
           refZamPagination(true); 
 
-  // refreshZamowienia();
+
   // odświeżanie tylko gdy zmieni się widok, albo currentPage
 }, [    pagination.currentPage]); 
 

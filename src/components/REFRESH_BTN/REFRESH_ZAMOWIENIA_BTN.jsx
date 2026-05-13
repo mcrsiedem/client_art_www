@@ -4,7 +4,7 @@ import { useZamowienia } from "hooks/useZamowienia";
 import style from "./REFRESH_ZAMOWIENIA_BTN.module.css";
 import { useState } from "react";
 export default function REFRESH_ZAMOWIENIA_BTN(){
-  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+  const {refreshZamowieniaProofy,refZamPagination} = useZamowienia()
     const [disabled, setDisabled] = useState(false);
   
 
@@ -18,7 +18,7 @@ export default function REFRESH_ZAMOWIENIA_BTN(){
             if(!disabled){
 
             // refreshZamowieniaProofy()
-            refreshZamowienia();
+            refZamPagination();
             setDisabled(true)
             // console.log("refresh")
             setTimeout(() => {

@@ -6,7 +6,7 @@ export function skasujTechnologie(
   technologia_id,
   zamowienie_id,
   user_id,
-  refreshZamowienia,
+  refZamPagination,
   setShowTechnologyStage,
 ) {
   axios
@@ -23,6 +23,6 @@ export function skasujTechnologie(
     )
     .then((res) => {
       setShowTechnologyStage(false);
-      refreshZamowienia();
+      refZamPagination();
     });
 }

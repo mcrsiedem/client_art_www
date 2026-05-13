@@ -38,7 +38,7 @@ export  function useZamowienieInsert(){
     const procesyProduktow= contextModalInsert.procesyProduktow;
   const setProcesyProduktow= contextModalInsert.setProcesyProduktow;
 
-const {refreshZamowienia} = useZamowienia()
+const {refZamPagination} = useZamowienia()
      const {         socket } = useSocket()
  async function zapiszZamowienie({dialogBox}){
 
@@ -79,7 +79,7 @@ const {refreshZamowienia} = useZamowienia()
           //   alert("Błąd")
           //  }
            
-           refreshZamowienia();
+           refZamPagination();
            dialogBox.current.hide();
           }else{
           let errorMessage = saved.data[0][1].message

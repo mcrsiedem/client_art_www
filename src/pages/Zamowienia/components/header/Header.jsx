@@ -179,7 +179,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
   const zestawZamowienia= contextApp.zestawZamowienia;
   const setIsLoading= contextApp.setIsLoading;
-  const {refreshZamowienia} = useZamowienia();
+
   const navigate = useNavigate();
         const {updatePagination,updateWidok} = useContext(ZamowienieContext);
 
@@ -208,7 +208,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
 
                             promiseA.then(res => {
 
-          // refreshZamowienia();
+      
      
         })
             }
@@ -236,7 +236,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const selectedKlient = contextApp.selectedKlient;
   const setSelectedKlient = contextApp.setSelectedKlient;
   const selectedUser = contextApp.selectedUser;
-  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+  const {refreshZamowieniaProofy} = useZamowienia()
     const {updatePagination,updateWidok} = useContext(ZamowienieContext);
 
 
@@ -248,7 +248,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
           setSelectedKlient(event.target.value);
           updateWidok({klientId:event.target.value})
 
-          // refreshZamowienia(event.target.value)
+        
         }}
       >
         {<option value="0">Wszyscy klienci</option>}

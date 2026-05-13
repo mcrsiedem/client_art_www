@@ -50,8 +50,7 @@ export function useZamowienia() {
 
 
 
-    const refZamPagination = async (paginacja1) => {
-
+    const refZamPagination = async (paginacja1 = true) => {
 
     setIsLoading(true);
     let res
@@ -155,7 +154,7 @@ export function useZamowienia() {
         data: { row: rowsToDelete },
       })
       .then((res) => {
-        refreshZamowienia();
+        refZamPagination();
       });
   };
 
@@ -165,7 +164,7 @@ export function useZamowienia() {
         data: { row: rowsToDelete },
       })
       .then((res) => {
-        refreshZamowienia();
+        refZamPagination();
       });
   };
 
@@ -176,7 +175,7 @@ export function useZamowienia() {
   //     techologie,
   //   );
 
-  //   refreshZamowienia();
+
   // }
 
 

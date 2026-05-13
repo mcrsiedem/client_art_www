@@ -52,7 +52,7 @@ export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
 const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
   const techContext = useContext(TechnologyContext)
   const {setOpenModalInsert} = useContext(ModalInsertContext);
-  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+  const {refreshZamowieniaProofy,refZamPagination} = useZamowienia()
 
   return(
     <button
@@ -60,7 +60,7 @@ const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
     onClick={() => {
             if(!disabled){
       setShowMenu(false);
-            refreshZamowienia();
+            refZamPagination();
             setDisabled(true)
             setTimeout(() => {
               setDisabled(false);
@@ -83,7 +83,7 @@ const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
 const OdblokujZamowienia = ({setShowMenu } ) =>{
   const techContext = useContext(TechnologyContext)
   const {selectedZamowienie} = useContext(ModalInsertContext);
-  const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
+  const {refreshZamowieniaProofy,refZamPagination} = useZamowienia()
 
  if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj==1)  {return(
     <button
@@ -92,7 +92,7 @@ const OdblokujZamowienia = ({setShowMenu } ) =>{
     await axios.put(IP + "setOrderClosed", {
                                   id: selectedZamowienie.id,
                                 }).then(x=> {setShowMenu(false)
-                                  refreshZamowienia()
+                                  refZamPagination()
                                 });
 
     }}

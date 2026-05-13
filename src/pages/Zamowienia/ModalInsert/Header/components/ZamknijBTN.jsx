@@ -18,7 +18,7 @@ import { AppContext } from "context/AppContext";
 export default function ZamknijBTN({lokalizacja,setOpenModalInsert,readOnly}) {
   const contextModalInsert = useContext(ModalInsertContext);
   const appContext = useContext(AppContext);
-const {refreshZamowienia,refreshZamowieniaFaktury,refZamPagination} = useZamowienia()
+const {refreshZamowieniaFaktury,refZamPagination} = useZamowienia()
 const daneZamowienia = contextModalInsert.daneZamowienia;
 const produkty = contextModalInsert.produkty;
 const elementy = contextModalInsert.elementy;
@@ -90,7 +90,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
 
                                  if(lokalizacja=="zamowienia"){
 
-                                        refreshZamowienia();
+                                        
                                         refZamPagination(true)
                               }
                                   appContext.setIsLoading(false)

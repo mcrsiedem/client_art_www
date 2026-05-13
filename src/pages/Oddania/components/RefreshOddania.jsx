@@ -7,7 +7,7 @@ import { AppContext } from "context/AppContext";
 export default function RefreshOddania(){
     const appContext = useContext(AppContext)
   
-  const {refreshZamowienia} = useZamowienia()
+  const {refZamPagination} = useZamowienia()
     const [disabled, setDisabled] = useState(false);
 
     const fechOddaniaGrupy =appContext.fechOddaniaGrupy;
@@ -21,7 +21,7 @@ export default function RefreshOddania(){
           onClick={() => {
             if(!disabled){
   fechOddaniaGrupy(widokOddan)
-            refreshZamowienia()
+            refZamPagination()
             setDisabled(true)
             // console.log("refresh")
             setTimeout(() => {

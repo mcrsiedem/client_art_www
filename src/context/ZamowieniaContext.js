@@ -33,10 +33,17 @@ const updatePagination = (updates) => {
   const updateWidok = (updates) => {
     setWidok((prev) => ({
       ...prev,
-      ...updates
+      ...updates,
+      // currentPage:1,
       // Jeśli zmieniamy filtr lub sortowanie, zazwyczaj chcemy wrócić na 1. stronę
       // currentPage: updates.currentPage || (updates.pageSize ? prev.currentPage : 1),
     }));
+    //     setPagination((prev) => ({
+    //   ...prev,
+    //   // Jeśli zmieniamy filtr lub sortowanie, zazwyczaj chcemy wrócić na 1. stronę
+    //   // currentPage: updates.currentPage || (updates.pageSize ? prev.currentPage : 1),
+    //   currentPage:1,
+    // }));
   };
 
   const handlePageChange = (newPage) => {

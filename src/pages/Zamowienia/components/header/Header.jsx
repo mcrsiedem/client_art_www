@@ -45,6 +45,7 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
   const contexModal = useContext(ModalInsertContext);
   const setSelectedZamowienie = contexModal.setSelectedZamowienie;
   const contextModalInsert = useContext(ModalInsertContext);
+  const {pagination,widok} = useContext(ZamowienieContext);
   const setShowTabs = contextModalInsert.setShowTabs
   const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
 
@@ -53,9 +54,11 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
     const showLog = () => {
       console.log("--------")
       console.log("contextApp.sortowanieZamowienia.current : "+contextApp.sortowanieZamowienia.current)
-      console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
-      console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
-      console.table(contextApp.zamowienia)
+      // console.log("contextApp.zestawZamowienia.current: "+contextApp.zestawZamowienia.current)
+      // console.log("DecodeToken ",DecodeToken(sessionStorage.getItem("token")))
+      // console.table(contextApp.zamowienia)
+      console.table(pagination)
+      console.table(widok)
     }
 
   return (
@@ -205,7 +208,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
 
                             promiseA.then(res => {
 
-          refreshZamowienia();
+          // refreshZamowienia();
      
         })
             }
@@ -234,7 +237,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setSelectedKlient = contextApp.setSelectedKlient;
   const selectedUser = contextApp.selectedUser;
   const {refreshZamowieniaProofy,refreshZamowienia} = useZamowienia()
-    const {updatePagination} = useContext(ZamowienieContext);
+    const {updatePagination,updateWidok} = useContext(ZamowienieContext);
 
 
     return (
@@ -243,7 +246,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
         value={selectedKlient}
         onChange={(event) => {
           setSelectedKlient(event.target.value);
-          updatePagination({klientId:event.target.value})
+          updateWidok({klientId:event.target.value})
 
           // refreshZamowienia(event.target.value)
         }}
@@ -277,7 +280,7 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
   const selectedUser = contextApp.selectedUser;
   const setSelectedUser = contextApp.setSelectedUser;
   const setSelectedKlient = contextApp.setSelectedKlient;
-        const {updatePagination} = useContext(ZamowienieContext);
+        const {updatePagination,updateWidok} = useContext(ZamowienieContext);
 
 
   if (DecodeToken(sessionStorage.getItem("token")).zamowienia_wszystkie == 1) {
@@ -287,9 +290,9 @@ function SELECT_OPIEKUN_ZAMOWWIENIA() {
         value={selectedUser}
         onChange={(event) => {
           setSelectedUser(event.target.value);
-             setSelectedKlient(0)
+          //    setSelectedKlient(0)
 
-             updatePagination({opiekunId:event.target.value})
+             updateWidok({opiekunId:event.target.value})
 
         }}
       >

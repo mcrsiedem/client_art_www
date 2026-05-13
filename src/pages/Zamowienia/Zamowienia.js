@@ -125,17 +125,24 @@ function Zamowienia() {
 
 
 
-//     useEffect(() => {
-//   refreshZamowienia();
-// }, [pagination.currentPage, selectedKlient, selectedUser,sortowanieZamowieniaEtap]); 
 
 
   useEffect(() => {
-          refZamPagination(); 
+          refZamPagination(false); 
 
   // refreshZamowienia();
+  // odświeżanie tylko gdy zmieni się widok, albo currentPage
 }, [    widok]); 
-// Za każdym razem gdy zmieni się strona, pobierz nowe dane
+
+  useEffect(() => {
+          refZamPagination(true); 
+
+  // refreshZamowienia();
+  // odświeżanie tylko gdy zmieni się widok, albo currentPage
+}, [    pagination.currentPage]); 
+
+
+
 
   useEffect(() => {
     checkToken();

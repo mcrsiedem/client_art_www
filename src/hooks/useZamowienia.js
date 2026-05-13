@@ -50,20 +50,36 @@ export function useZamowienia() {
 
 
 
-    const refZamPagination = async () => {
+    const refZamPagination = async (paginacja1) => {
 
 
     setIsLoading(true);
-    const res = await axios.post(
+    let res
+
+    if(paginacja1){
+           res = await axios.post(
       IP +
         "zamowieniaPaginations/" +
         sessionStorage.getItem("token"),{...pagination,...widok}
   
     );
+
+    }else{
+
+                 res = await axios.post(
+      IP +
+        "zamowieniaPaginations/" +
+        sessionStorage.getItem("token"),{...pagination,...widok,currentPage:1}
+  
+    );
+    }
+
+
+
     contextApp.setZamowienia([...res.data.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
     updatePagination(res.data.pagination)
-    console.log(res.data.pagination)
+    // console.log(res.data.pagination)
     setIsLoading(false);
 
     if (DecodeToken(sessionStorage.getItem("token")).id == 3) {

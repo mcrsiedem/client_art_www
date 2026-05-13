@@ -49,7 +49,7 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
 
       const {onMenuHandle} = useMenu()
   
-  const {updatePagination,handlePageChange,pagination} = useContext(ZamowienieContext);
+  const {updatePagination,handlePageChange,pagination,updateWidok} = useContext(ZamowienieContext);
 
   
 
@@ -73,7 +73,7 @@ const [sortConfig, setSortConfig] = useState(() => {
 const didMouseMove = useRef(false);
 
 const sortedItems = useMemo(() => {
-  let sortableItems = [...zamowieniaRaw];
+  // let zamowieniaRaw = [...zamowieniaRaw];
 
 
   const stanPriority = {
@@ -83,7 +83,7 @@ const sortedItems = useMemo(() => {
     4: 4
   };
 
-  sortableItems.sort((a, b) => {
+  zamowieniaRaw.sort((a, b) => {
     // 1. GŁÓWNY PRIORYTET: Sortowanie po 'stan' (3 -> 2 -> 1 -> 4)
     const pA = stanPriority[a.stan] || 99;
     const pB = stanPriority[b.stan] || 99;
@@ -155,24 +155,47 @@ const sortedItems = useMemo(() => {
     return result;
   });
 
-  return sortableItems;
+  return zamowieniaRaw;
 }, [zamowieniaRaw, sortConfig]);
 
   // Funkcja wyzwalająca zmianę sortowania
+  // const requestSort = (key, noSort) => {
+  //   if (noSort) return;
+  //   let direction = 'asc';
+  //   if (sortConfig.key === key && sortConfig.direction === 'asc') {
+  //     direction = 'desc';
+  //   }
+  //   setSortConfig({ key, direction });
+
+
+  //   updatePagination({kolumna: key})
+  //   updatePagination({kierunek: direction})
+
+
+  // };
+
+
+
+
+
+
   const requestSort = (key, noSort) => {
-    if (noSort) return;
-    let direction = 'asc';
-    if (sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
-    setSortConfig({ key, direction });
+  if (noSort) return;
 
+  let direction = 'asc';
+  // Używamy sortConfig tylko do wizualizacji ikonki strzałki w nagłówku
+  if (sortConfig.key === key && sortConfig.direction === 'asc') {
+    direction = 'desc';
+  }
 
-    updatePagination({kolumna: key})
-    updatePagination({kierunek: direction})
+  console.log({ key, direction })
+  // 1. Aktualizujemy lokalny stan ikonki (żeby strzałka się obróciła)
+  setSortConfig({ key, direction });
 
-
-  };
+  // 2. Wysyłamy żądanie do API przez funkcję z kontekstu
+  // updateWidok({ kolumna: key, kierunek: direction, currentPage: 1 });
+  updateWidok({ kolumna: key, kierunek: direction });
+};
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.COLUMNS, JSON.stringify(visibleColumns));
@@ -340,7 +363,7 @@ const sortedItems = useMemo(() => {
 
           <tbody className={styles.tbody}>
             {/* {sortedItems.filter( item => item.klient_id == contextApp.selectedKlient ).filter( item => item.stan > 2 ).map((row,i) => ( */}
-            {sortedItems
+            {zamowieniaRaw
               // .filter((item) => {
               //   if (contextApp.selectedKlient == 0) {
               //     return true;

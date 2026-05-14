@@ -6,7 +6,7 @@ export const ZamowienieContextProvider = ({ children }) => {
 
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    pageSize: 50,
+    pageSize: 300,
     totalPages: 0,
     total: 0
   });

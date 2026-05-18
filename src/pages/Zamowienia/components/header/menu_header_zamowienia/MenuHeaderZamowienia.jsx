@@ -10,9 +10,10 @@ import { useProcesy } from "hooks/procesy/useProcesy";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { useArkuszeAuto } from "hooks/arkusze/useArkuszeAuto";
 import DecodeToken from "pages/Login/DecodeToken";
-import { Eraser, File, Lock, Menu, RefreshCcw, Save, Sheet, SquareMenu, TriangleAlert } from "lucide-react";
+import { Eraser, File, Lock, Menu, RefreshCcw, Save, Search, Sheet, SquareMenu, TriangleAlert } from "lucide-react";
 import { zapiszTechnologieDodruk } from "actions/zapiszTechnologieDodruk";
 import { useZamowienia } from "hooks/useZamowienia";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
 
   const techContext = useContext(TechnologyContext);
@@ -30,6 +31,7 @@ export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
       <div className={style.menu_legi}>
         <Odswiez  setShowMenu={setShowMenu} disabled={disabled} setDisabled={setDisabled}/>
         <OdblokujZamowienia  setShowMenu={setShowMenu} />
+        <ZnajdzZlecenie  setShowMenu={setShowMenu} />
         
         {/* <Arkusze  setShowMenu={setShowMenu}/>
         <Dodruk  setShowMenu={setShowMenu}/>
@@ -70,8 +72,8 @@ const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
 
     }}
   >
-     {disabled?  < RefreshCcw size={15} style={{color:'grey',marginRight:'10px',marginLeft:'4px'}}/> :
-                  < RefreshCcw size={15} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>}
+     {disabled?  < RefreshCcw size={20} style={{color:'grey',marginRight:'10px',marginLeft:'4px'}}/> :
+                  < RefreshCcw size={20} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>}
 
     Odśwież
   </button>
@@ -97,7 +99,7 @@ const OdblokujZamowienia = ({setShowMenu } ) =>{
 
     }}
   >
-      < Lock size={15} style={{color:'yellow',marginRight:'10px',marginLeft:'4px'}}/> 
+      < Lock size={20} style={{color:'orange',marginRight:'10px',marginLeft:'4px'}}/> 
                  
 
     Odblokuj zamówienie
@@ -106,7 +108,33 @@ const OdblokujZamowienia = ({setShowMenu } ) =>{
 }
 }
 
+const ZnajdzZlecenie = ({setShowMenu } ) =>{
+  const techContext = useContext(TechnologyContext)
+  const {selectedZamowienie} = useContext(ModalInsertContext);
+  const {refreshZamowieniaProofy,refZamPagination} = useZamowienia()
+  const {setShowWyszukiwarka,showWyszukiwarka} = useContext(ZamowienieContext);
 
+
+ if(DecodeToken(sessionStorage.getItem("token")).zamowienie_odblokuj==1)  {return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={ () => {
+
+      setShowWyszukiwarka(!showWyszukiwarka)
+      setShowMenu(false);
+
+
+
+    }}
+  >
+      < Search size={20} style={{color:'grey',marginRight:'10px',marginLeft:'4px'}}/> 
+                 
+
+    Znajdź zlecenie
+  </button>
+  )
+}
+}
 
 
 const Anuluj = ({setShowMenu} ) =>{

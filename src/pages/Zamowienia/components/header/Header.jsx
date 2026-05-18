@@ -181,7 +181,7 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
   const setIsLoading= contextApp.setIsLoading;
 
   const navigate = useNavigate();
-        const {updatePagination,updateWidok} = useContext(ZamowienieContext);
+        const {updatePagination,updateWidok,setShowWyszukiwarka} = useContext(ZamowienieContext);
 
   
     return (
@@ -190,6 +190,12 @@ function SORTOWANIE_ZAMOWIENIA_ETAP() {
           className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
           value={sortowanieZamowieniaEtap}
           onChange={(event) => {
+                      if(event.target.value=="Znajdz zamówienie"){
+            setSortowanieZamowieniaEtap(event.target.value)
+            setShowWyszukiwarka(true)
+ return
+
+            }
 
             if(event.target.value=="Proofy"){
       navigate("/proofy");

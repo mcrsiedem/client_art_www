@@ -21,6 +21,7 @@ import DiaglogAlert from "components/Dialog/DiaglogAlert";
 import TableFx from "./components/table/TableFx/TableFx";
 import DialogHipopotamapi from "components/DialogHipopotam/DialogHipopotamapi";
 import { ZamowienieContext } from "context/ZamowieniaContext";
+import Wyszukiwarka from "./components/Wyszukiwarka/Wyszukiwarka";
 function Zamowienia() {
 
   const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading, selectedKlient, selectedUser,sortowanieZamowieniaEtap} = useContext(AppContext);
@@ -31,7 +32,7 @@ function Zamowienia() {
   const [callForPaper] = useApiPapier();
   const {refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
-  const { pagination,widok} = useContext(ZamowienieContext);
+  const { pagination,widok,showWyszukiwarka} = useContext(ZamowienieContext);
 
 
   const STORAGE_KEYS = {
@@ -154,12 +155,23 @@ function Zamowienia() {
       <Header showSettings={showSettings} setShowSettings={setShowSettings} dodaj_clikHandler={dodaj_clikHandler} visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} allColumns={allColumns}/>
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
+
+                 {showWyszukiwarka && (
+            <Wyszukiwarka lokalizacja={"zamowienia"}
+            />
+          )}
         <TableFx  showSettings={showSettings} setShowSettings={setShowSettings} visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} allColumns={allColumns}/>
+  
       </div>
           {openModalInsert && (
             <ModalInsert lokalizacja={"zamowienia"}
             />
           )}
+
+     
+
+
+          
       <TechnologiaStage/>
       <ZamowieniaInfo/>
 

@@ -3,6 +3,7 @@ import { useEffect, createContext, useState } from "react";
 export const ZamowienieContext = createContext();
 export const ZamowienieContextProvider = ({ children }) => {
 
+const [showWyszukiwarka, setShowWyszukiwarka] = useState(true);
 
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -65,7 +66,8 @@ const updatePagination = (updates) => {
     <ZamowienieContext.Provider
       value={{
    _widokZamowien,handlePageChange,
-      updatePagination,  pagination, setPagination,widok,updateWidok
+      updatePagination,  pagination, setPagination,widok,updateWidok,
+      showWyszukiwarka, setShowWyszukiwarka,
 
       }}
     >

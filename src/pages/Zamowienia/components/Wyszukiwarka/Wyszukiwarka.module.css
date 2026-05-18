@@ -1,0 +1,346 @@
+.container {
+  /* min-height: 70vh; */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  z-index: 10;
+
+}
+
+.card {
+  max-width: 1100px;
+  width: 900px;
+  height: 280px;
+  background-color: rgba(131, 88, 43, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(241, 245, 249, 0.15);
+  backdrop-filter: blur(10px);
+  /* background-color: #b1ec10; */
+}
+
+.header {
+  background-color: rgba(45, 45, 46, 0.77);
+  padding: 30px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerSubtitle {
+  margin: 5px 0 0 0;
+  color: #c4c4c4;
+  font-size: 14px;
+
+  max-width: 700px;
+  white-space: nowrap;     /* Blokuje zawijanie tekstu do nowej linii */
+  overflow: hidden;        /* Ukrywa tekst wychodzący poza 300px */
+  text-overflow: ellipsis;
+}
+
+.body {
+  padding: 30px;
+}
+
+.scrollArea {
+  margin-bottom: 20px;
+  height: 250px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Styl paska przewijania */
+.scrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollArea::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.scrollArea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.sectionCard {
+  padding: 15px 20px 20px 20px;
+  background-color: rgba(45, 45, 46, 0.77);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.1);
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sectionCard:hover {
+  border-color: #b1ec1063;
+  background-color: rgba(55, 55, 56, 0.85);
+}
+
+.label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #d2d2d2;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: rgba(30, 30, 30, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  border-color: #b1ec10;
+  box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
+}
+
+.inputNr {
+  width: 60px;
+  padding: 10px 12px;
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: rgba(30, 30, 30, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+
+.inputNr:focus {
+  border-color: #b1ec10;
+  box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
+}
+
+
+
+.inputNaklad {
+  width: 40px;
+  padding: 5px 5px;
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  border-radius: 8px;
+  outline: none;
+  font-size: 10px;
+  background-color: rgba(30, 30, 30, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+
+.inputNaklad:focus {
+  border-color: #b1ec10;
+  box-shadow: 0 0 0 2px rgba(177, 236, 16, 0.1);
+}
+
+
+
+.controls {
+  display: flex;
+  gap: 15px;
+}
+
+.input > option {
+  background-color: rgb(88, 88, 88);
+  color: #bebebe;
+}
+.btnAdd {
+  background-color: #b1ec105e;
+  border: 1px dashed rgba(203, 213, 225, 0.4);
+  border-radius: 12px;
+  padding: 10px 10px;
+  color: #c0c0c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btnAdd:hover {
+  /* background-color: rgba(203, 213, 225, 0.1); */
+  background-color: #b1ec1083;
+
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+
+.btnImport{
+  background-color: #ec94105e;
+  border: 1px dashed rgba(203, 213, 225, 0.4);
+  border-radius: 12px;
+  padding: 10px 10px;
+  color: #c0c0c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btnImport:hover {
+  /* background-color: rgba(203, 213, 225, 0.1); */
+  /* background-color: #b1ec1083; */
+  background-color:  #fc9d0e5e;
+
+
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+
+
+.btnCalculate {
+  flex: 1;
+  background-color: rgba(178, 236, 16, 0.2);
+  color: #b1ec10;
+  border: 1px solid #b1ec10;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+  letter-spacing: 2px;
+}
+
+.btnCalculate:hover {
+  background-color: rgba(178, 236, 16, 0.3);
+  box-shadow: 0 0 15px rgba(177, 236, 16, 0.2);
+}
+
+.btnCalculate:active {
+  transform: scale(0.98);
+}
+
+.resultArea {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 20px;
+  background-color: rgba(35, 35, 36, 0.9);
+  border-top: 1px solid rgba(241, 245, 249, 0.1);
+  text-align: center;
+  height: 120px;
+/* background-color: #a2b894; */
+
+}
+
+.resultAreaLeft {
+      display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
+.resultAreaCenter {
+  /* width: 300px; */
+/* background-color: #94a3b8; */
+}
+.resultAreaRight {
+/* background-color: #ebc1074e; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    gap:10px
+
+
+}
+
+.resultAreaBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+  background-color: rgba(35, 35, 36, 0.9);
+/* background-color: #a2b894; */
+/* margin: 5px; */
+height: 40px;
+}
+
+
+.totalValue {
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  /* padding-left: 50px; */
+}
+
+.totalWeight {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff80;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  /* padding-left: 50px; */
+}
+
+.unit {
+  font-size: 24px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-left: 10px;
+}
+.unit2 {
+  /* font-size: 24px;
+  font-weight: 700;
+  color: #94a3b8; */
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+
+.trashBtn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s;
+}
+
+.trashBtn:hover {
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+
+

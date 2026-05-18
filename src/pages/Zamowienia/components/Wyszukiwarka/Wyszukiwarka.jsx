@@ -6,10 +6,13 @@ import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
 import { useZamowienia } from 'hooks/useZamowienia';
 import { TechnologyContext } from 'context/TechnologyContext';
+import { ZamowienieContext } from 'context/ZamowieniaContext';
 
 const Wyszukiwarka = () => {
   const uiContext = useContext(UIContext);
     const techcontext = useContext(TechnologyContext);
+      const {setShowWyszukiwarka} = useContext(ZamowienieContext);
+    
   
   
   const [callForPaper] = useApiPapier();
@@ -179,20 +182,20 @@ const pobierzElementyZamowienia = async () => {
         <div onDoubleClick={() => console.table(sections)} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
-              <Search size={32} color="#b1ec10" /> 
+              <Search size={25} color="#b1ec10" /> 
               Znajdź zlecenie
             </h1>
             {/* <p className={styles.headerSubtitle}>.</p> */}
             {/* <p className={styles.headerSubtitle}>Oblicz grubość grzbietu oraz wagę...</p> */}
 
             {/* {techcontext.daneTech.length > 0 ? (<p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p>): (<p className={styles.headerSubtitle}>Policz grzbiet oraz wage...</p>)} */}
-<p className={styles.headerSubtitle}>Wpisz nr zlecenia</p>
+{/* <p className={styles.headerSubtitle}>Wpisz nr zlecenia</p> */}
             {/* // <p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p> */}
             
           </div>
           
 
-          <X size={48} style={{ opacity: 0.2 } } onClick={()=>{uiContext.setShowKalkulatorGrzbietu(false )}} />
+          <X size={25} style={{ opacity: 0.2 } } onClick={()=>{setShowWyszukiwarka(false )}} />
       
 
         </div>
@@ -205,38 +208,14 @@ const pobierzElementyZamowienia = async () => {
 
         <div className={styles.resultArea}>
           <div className={styles.resultAreaLeft}>
-  <button className={styles.btnAdd} onClick={addSection}>
-              <Plus size={20} /> Dodaj element
-            </button>
+  {/* <button className={styles.btnAdd} onClick={addSection}>
+              <Plus size={20} /> 
+              Znajdź zlecenie
+            </button> */}
           </div>
           <div className={styles.resultAreaCenter}>
-          <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
-            Przybliżona grubość grzbietu oraz waga:
-          </span>
 
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
-            <span className={styles.totalValue}>{(totalThickness* naklad * warstwy).toFixed(2)}</span>
-            <span className={styles.unit}>mm</span>
-            <span className={styles.unit2}> - </span>
-
-
-
-                <span className={styles.totalWeight}>{(totalWeight * naklad * warstwy *iloscNaWarstwie).toFixed(2)}</span>
-                <span className={styles.unit}>kg</span>
-          </div>
-          
-          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
-
-
-            
-
-
-
-          </div>
-          </div>
-          <div className={styles.resultAreaRight}>
-
-                              <input 
+                                          <input 
                     className={styles.inputNr}
                     placeholder='nr'
                     title='Wpisz nr zlecenia i pobierz elementy'
@@ -261,12 +240,39 @@ const pobierzElementyZamowienia = async () => {
                     className={styles.btnImport} onClick={pobierzElementyZamowienia}>
               <Download size={20} /> 
             </button>
+          {/* <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
+            Przybliżona grubość grzbietu oraz waga:
+          </span>
+
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
+            <span className={styles.totalValue}>{(totalThickness* naklad * warstwy).toFixed(2)}</span>
+            <span className={styles.unit}>mm</span>
+            <span className={styles.unit2}> - </span>
+
+
+
+                <span className={styles.totalWeight}>{(totalWeight * naklad * warstwy *iloscNaWarstwie).toFixed(2)}</span>
+                <span className={styles.unit}>kg</span>
+          </div>
+          
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
+
+
+            
+
+
+
+          </div> */}
+          </div>
+          <div className={styles.resultAreaRight}>
+
+
           </div>
 
 
         </div>
-        <div className={styles.resultAreaBottom}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+        {/* <div className={styles.resultAreaBottom}> */}
+            {/* <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <File  color="#1c8de9" size={16} /> 
               <span>Strony: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
             </div>
@@ -312,8 +318,8 @@ const pobierzElementyZamowienia = async () => {
 
                     onChange={(e) => setIloscNaWarstwie( e.target.value)}
                   />
-            </div>
-        </div>
+            </div> */}
+        {/* </div> */}
       </div>
     </div>
   );

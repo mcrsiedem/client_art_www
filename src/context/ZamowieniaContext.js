@@ -3,7 +3,7 @@ import { useEffect, createContext, useState } from "react";
 export const ZamowienieContext = createContext();
 export const ZamowienieContextProvider = ({ children }) => {
 
-const [showWyszukiwarka, setShowWyszukiwarka] = useState(true);
+const [showWyszukiwarka, setShowWyszukiwarka] = useState(false);
 
   const [pagination, setPagination] = useState({
     currentPage: 1,

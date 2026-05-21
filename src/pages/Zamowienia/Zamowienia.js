@@ -156,7 +156,7 @@ function Zamowienia() {
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
 
-                 {showWyszukiwarka && (
+            {showWyszukiwarka && (
             <Wyszukiwarka lokalizacja={"zamowienia"}
             />
           )}

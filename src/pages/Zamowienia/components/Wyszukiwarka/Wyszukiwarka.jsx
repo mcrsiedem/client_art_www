@@ -27,11 +27,16 @@ const Wyszukiwarka = () => {
   
   const [totalThickness, setTotalThickness] = useState(0);
     const [totalWeight, setTotalWeight] = useState(0);
-  const [nr, setNr] = useState();
   const [naklad, setNaklad] = useState(1);
   const [warstwy, setWarstwy] = useState(1);
   const [iloscNaWarstwie, setIloscNaWarstwie] = useState(1);
+
+
   const [rok, setRok] = useState(2026);
+  
+  const [nr, setNr] = useState(1);
+  const [klient, setKlient] = useState(1);
+
 
   const scrollRef = useRef(null);
 

@@ -31,7 +31,9 @@ import {
   StretchVertical,
   KeySquare,
   Menu,
-  EllipsisVertical
+  EllipsisVertical,
+  SearchAlert,
+  SearchIcon
 } from "lucide-react";
 import BTN_KOPIUJ_NEW from "./BTN_KOPIUJ";
 import MenuHeaderZamowienia from "./menu_header_zamowienia/MenuHeaderZamowienia";
@@ -102,9 +104,14 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
         <BTN_INFO_ZAMOWIENIA/>
         {/* <BTN_KOPIUJ/> */}
         <BTN_KOPIUJ_NEW visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} allColumns={allColumns}/>
-     
+          
+ 
+
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
-        <Szukaj/>
+        {/* <Szukaj/> */}
+               <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
+            < SearchIcon size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'5px'}}/>
+          </button>
         <img
           className={style.icon2}
           src={iconClose2}

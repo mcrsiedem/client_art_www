@@ -50,7 +50,7 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
   const {pagination,widok} = useContext(ZamowienieContext);
   const setShowTabs = contextModalInsert.setShowTabs
   const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
-
+const {setShowWyszukiwarka,showWyszukiwarka} = useContext(ZamowienieContext);
 
 
     const showLog = () => {
@@ -92,14 +92,18 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
 
       </div>
       <div className={style.rightHeaderContener}>
-                        <button 
-                        title="Pokaż kolumny"
-                 style={{background:'transparent', border:'none', marginRight:'10px'}}
+
+
+      <button 
+          title="Pokaż kolumny"
+          style={{background:'transparent', border:'none', marginRight:'10px'}}
           onClick={() => setShowSettings(!showSettings)}
-          // className={`${style.btnSettings} ${showSettings ? style.btnSettingsActive : ''}`}
-        >
+          >
           <BetweenVerticalStart style={{color:'#95c912d4'}} size={25} />
-        </button>
+      </button>
+
+
+
         <BTN_INSPEKCJA/>
         <BTN_INFO_ZAMOWIENIA/>
         {/* <BTN_KOPIUJ/> */}
@@ -109,7 +113,7 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
 
         <SORTOWANIE_ZAMOWIENIA_ETAP/>
         {/* <Szukaj/> */}
-               <button onClick={()=>{setShowMenu(!showMenu) }} style={{background:'transparent', border:'none'}}> 
+               <button onClick={()=>{setShowWyszukiwarka(true)}} style={{background:'transparent', border:'none'}}> 
             < SearchIcon size={22} style={{color:'yellowgreen',marginRight:'15px',marginLeft:'5px'}}/>
           </button>
         <img

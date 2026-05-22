@@ -32,10 +32,11 @@ const Wyszukiwarka = () => {
   const [iloscNaWarstwie, setIloscNaWarstwie] = useState(1);
 
 
-  const [rok, setRok] = useState(2026);
-  
   const [nr, setNr] = useState(1);
-  const [klient, setKlient] = useState(1);
+  const [rok, setRok] = useState(2026);
+  const [klient, setKlient] = useState(null);
+  const [praca, setPraca] = useState(null);
+  const [opiekun, setOpiekun] = useState(null);
 
 
   const scrollRef = useRef(null);

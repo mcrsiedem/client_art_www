@@ -120,7 +120,7 @@ const ZnajdzZlecenie = ({setShowMenu } ) =>{
     className={style.menu_legi_btn}
     onClick={ () => {
 
-      setShowWyszukiwarka(!showWyszukiwarka)
+      setShowWyszukiwarka(true)
       setShowMenu(false);
 
 

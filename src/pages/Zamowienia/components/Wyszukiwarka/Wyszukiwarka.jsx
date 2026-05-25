@@ -215,7 +215,7 @@ const pobierzElementyZamowienia = async () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <div onDoubleClick={() => console.table(sections)} className={styles.header}>
+        {/* <div onDoubleClick={() => console.table(sections)} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
               <Search size={20} color="#303030" /> 
@@ -228,7 +228,7 @@ const pobierzElementyZamowienia = async () => {
           <X size={20} styles={{ opacity: 0.2 } } onClick={()=>{setShowWyszukiwarka(false )}} />
       
 
-        </div>
+        </div> */}
 
         {/* <div className={styles.body}>
 
@@ -289,6 +289,11 @@ const pobierzElementyZamowienia = async () => {
              <button className={styles.btnAdd} onClick={()=>pobierzGlobalSearch()}>
               <Search size={18} /> 
               Znajdź
+            </button>
+
+                         <button className={styles.btnZamknij} onClick={()=>setShowWyszukiwarka(false )}>
+              <X size={18} /> 
+              
             </button>
 
           </div>

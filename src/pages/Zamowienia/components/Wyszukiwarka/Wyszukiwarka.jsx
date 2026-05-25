@@ -7,6 +7,7 @@ import { UIContext } from 'context/UIContext';
 import { useZamowienia } from 'hooks/useZamowienia';
 import { TechnologyContext } from 'context/TechnologyContext';
 import { ZamowienieContext } from 'context/ZamowieniaContext';
+import { ModalInsertContext } from 'context/ModalInsertContext';
 
 const Wyszukiwarka = () => {
   const uiContext = useContext(UIContext);
@@ -188,7 +189,7 @@ const pobierzElementyZamowienia = async () => {
         <div onDoubleClick={() => console.table(sections)} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
-              <Search size={22} color="#303030" /> 
+              <Search size={20} color="#303030" /> 
               Znajdź zlecenie
             </h1>
             {/* <p className={styles.headerSubtitle}>.</p> */}
@@ -201,7 +202,7 @@ const pobierzElementyZamowienia = async () => {
           </div>
           
 
-          <X size={25} style={{ opacity: 0.2 } } onClick={()=>{setShowWyszukiwarka(false )}} />
+          <X size={20} styles={{ opacity: 0.2 } } onClick={()=>{setShowWyszukiwarka(false )}} />
       
 
         </div>
@@ -218,37 +219,20 @@ const pobierzElementyZamowienia = async () => {
           </div>
           <div className={styles.resultAreaCenter}>
 
-                                          <input 
-                    className={styles.inputNr}
-                    placeholder='nr'
-                    title='Wpisz nr zlecenia i pobierz elementy'
+            <Nr  nr={nr} setRok={setNr} />
+            <Rok  rok={rok} setRok={setRok} />
 
-                    type="text"
-                    value={nr}
-
-                    onChange={(e) => setNr( e.target.value)}
-                  />
-
-                                               <input 
-                    className={styles.inputNr}
-                    title='Wpisz nr zlecenia i pobierz elementy'
-
-                    type="text"
-                    value={rok}
-                                        onChange={(e) => setRok( e.target.value)}
-
-                  />
                     {/* <button 
                     title='Wpisz nr zlecenia i pobierz elementy'
                     className={styles.btnImport} onClick={pobierzElementyZamowienia}>
               <Download size={20} /> 
             </button> */}
  
-          {/* <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
+          {/* <span styles={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
             Przybliżona grubość grzbietu oraz waga:
           </span>
 
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
+          <div styles={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
             <span className={styles.totalValue}>{(totalThickness* naklad * warstwy).toFixed(2)}</span>
             <span className={styles.unit}>mm</span>
             <span className={styles.unit2}> - </span>
@@ -259,7 +243,7 @@ const pobierzElementyZamowienia = async () => {
                 <span className={styles.unit}>kg</span>
           </div>
           
-          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
+          <div styles={{ marginTop: '10px', display: 'flex', justifyContent: 'center', gap: '25px'}}>
 
 
             
@@ -279,12 +263,12 @@ const pobierzElementyZamowienia = async () => {
 
         </div>
         {/* <div className={styles.resultAreaBottom}> */}
-            {/* <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+            {/* <div styles={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <File  color="#1c8de9" size={16} /> 
               <span>Strony: <strong>{sections.reduce((a, b) => a + (parseInt(b.pages) || 0), 0)}</strong></span>
             </div>
 
-                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+                       <div styles={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <Box color="#933e3e" size={16} /> 
               <span>Ilość w paczce : </span>                           <input 
                     className={styles.inputNaklad}
@@ -299,7 +283,7 @@ const pobierzElementyZamowienia = async () => {
             </div>
 
 
-                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+                       <div styles={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <Layers  color="#a9ac18" size={16} /> 
               <span>Warstwy : </span>                           <input 
                     className={styles.inputNaklad}
@@ -313,7 +297,7 @@ const pobierzElementyZamowienia = async () => {
                   />
             </div>
 
-                                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
+                                   <div styles={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '13px' }}>
               <Grid3X3  color="#3e9392" size={16} /> 
               <span>Ilość paczek na warstwie : </span>                           <input 
                     className={styles.inputNaklad}
@@ -335,3 +319,35 @@ const pobierzElementyZamowienia = async () => {
 };
 
 export default Wyszukiwarka;
+
+function Nr({nr, setNr} ){
+  return(
+      <div className={styles.colData}>
+      <label className={styles.labelData}> Nr </label>
+      <input className={styles.inputData} type="text"
+            value={nr}
+            onChange={(event) => {
+              const re = /^[0-9]+$/;
+              if (event.target.value === '' || re.test(event.target.value)) {
+              setNr(event.target.value);
+              }
+            }}></input>
+    </div>
+  );
+}
+
+function Rok({rok, setRok} ){
+  return(
+      <div className={styles.colData}>
+      <label className={styles.labelData}> Rok </label>
+      <input className={styles.inputData} type="text"
+            value={rok}
+            onChange={(event) => {
+              const re = /^[0-9]+$/;
+              if (event.target.value === '' || re.test(event.target.value)) {
+              setRok(event.target.value);
+              }
+            }}></input>
+    </div>
+  );
+}

@@ -25,6 +25,30 @@ export function useZamowienia() {
   };
 
 
+    const globalSearch = async (dane) => {
+
+    // setIsLoading(true);
+    // let  res = await axios.post(
+    //   IP +
+    //     "zamowieniaPaginations/" +
+    //     sessionStorage.getItem("token"),{...pagination,...widok}
+  
+    // );
+
+    
+    // contextApp.setZamowienia([...res.data.data]);
+    // contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    // setIsLoading(false);
+
+    // if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+    //   scrollTable(tableZamowienia);
+    // }
+
+
+console.log(dane.nr)
+  };
+
+
     const refreshZamowienia = async () => {
     setIsLoading(true);
     const res = await axios.get(
@@ -44,8 +68,6 @@ export function useZamowienia() {
       scrollTable(tableZamowienia);
     }
   };
-
-
 
 
 
@@ -298,6 +320,7 @@ const getElementy = async (nr, rok) => {
     dodajProofa,
     zamowienieOddaj,
     getElementy,
+    globalSearch
   
   };
 }

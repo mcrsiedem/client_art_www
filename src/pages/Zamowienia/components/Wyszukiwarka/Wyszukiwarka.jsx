@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
 import styles from './Wyszukiwarka.module.css';
-import { BookOpen, Plus, Trash2, Layers, X,Download,Grid3X3, Box, File, Search } from 'lucide-react';
+import {  X,  Search,  Delete } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
 import { useApiPapier } from 'hooks/useApiPapier';
 import { UIContext } from 'context/UIContext';
@@ -14,6 +14,7 @@ const Wyszukiwarka = () => {
     const techcontext = useContext(TechnologyContext);
       const {setShowWyszukiwarka} = useContext(ZamowienieContext);
     
+    const {globalSearch} = useZamowienia();
   
   
   const [callForPaper] = useApiPapier();
@@ -33,7 +34,7 @@ const Wyszukiwarka = () => {
   const [iloscNaWarstwie, setIloscNaWarstwie] = useState(1);
 
 
-  const [nr, setNr] = useState(1);
+  const [nr, setNr] = useState(null);
   const [rok, setRok] = useState(2026);
   const [klient, setKlient] = useState(null);
   const [praca, setPraca] = useState(null);
@@ -148,6 +149,34 @@ const Wyszukiwarka = () => {
     }, 100);
   };
 
+const pobierzGlobalSearch = () => {
+  // // 1. Czekamy aż dane zostaną pobrane i przypisane do zmiennej data
+  // setNaklad(1)
+  // setWarstwy(1)
+  // const data = await getElementy(nr, rok);
+  // // 2. Wykonujemy resztę logiki tylko gdy mamy dane
+  // if (data[0] && Array.isArray(data)) {
+  //   const sec = data.map(x => ({
+  //     id: x.id,
+  //     pages: x.ilosc_stron,
+  //     // Zakładam, że obliczGruboscArkusza jest dostępna w zasięgu
+  //     thickness: obliczGruboscArkusza(x.papier_id || 1), 
+  //     label: x.typ_nazwa || "cos",
+  //     papier_id: x.papier_id,
+  //     width: x.format_x,
+  //     height: x.format_y,
+  //   }));
+
+  //   // 3. Aktualizujemy stan sekcji
+  // // console.log(data)
+
+  //   setSections(sec);
+  // }
+  console.log(nr)
+  globalSearch({nr:nr})
+};
+
+
 
 const pobierzElementyZamowienia = async () => {
   // 1. Czekamy aż dane zostaną pobrane i przypisane do zmiennej data
@@ -190,7 +219,7 @@ const pobierzElementyZamowienia = async () => {
           <div>
             <h1 className={styles.headerTitle}>
               <Search size={20} color="#303030" /> 
-              Znajdź zlecenie
+              Znajdź zamówienie
             </h1>
             {/* <p className={styles.headerSubtitle}>.</p> */}
             {/* <p className={styles.headerSubtitle}>Oblicz grubość grzbietu oraz wagę...</p> */}
@@ -219,8 +248,12 @@ const pobierzElementyZamowienia = async () => {
           </div>
           <div className={styles.resultAreaCenter}>
 
-            <Nr  nr={nr} setRok={setNr} />
+            <Nr  nr={nr} setNr={setNr} />
             <Rok  rok={rok} setRok={setRok} />
+            <Praca  praca={praca} setPraca={setPraca} />
+            <Klient  klient={klient} setKlient={setKlient} />
+
+
 
                     {/* <button 
                     title='Wpisz nr zlecenia i pobierz elementy'
@@ -253,7 +286,13 @@ const pobierzElementyZamowienia = async () => {
           </div> */}
           </div>
           <div className={styles.resultAreaRight}>
-             <button className={styles.btnAdd} onClick={pobierzElementyZamowienia}>
+
+                         <button className={styles.btnWyczysc} onClick={pobierzElementyZamowienia}>
+              <Delete size={18} /> 
+              
+            </button>
+
+             <button className={styles.btnAdd} onClick={()=>pobierzGlobalSearch()}>
               <Search size={18} /> 
               Znajdź
             </button>
@@ -348,6 +387,66 @@ function Rok({rok, setRok} ){
               setRok(event.target.value);
               }
             }}></input>
+    </div>
+  );
+}
+
+
+
+
+function Praca({praca, setPraca} ){
+
+
+  return(
+      <div className={styles.colData}>
+      <label className={styles.labelData}> Tytul </label>
+      <input className={styles.inputData} type="text"
+      value={praca}
+      onChange={(event) => {
+        
+
+         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
+        setPraca(event.target.value);
+         
+
+      }}></input>
+    </div>
+  );
+}
+
+
+function Klient({klient, setKlient }) {
+
+const contextModalInsert = useContext(ModalInsertContext);
+const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
+const daneZamowienia = contextModalInsert.daneZamowienia;
+const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+const contextApp = useContext(AppContext);
+
+  return (
+    <div className={styles.colData}>
+      <label className={styles.labelData}> Klient </label>
+      <select
+        className={styles.inputData}
+        value={klient}
+        onChange={(event) => {
+          setKlient( event.target.value);
+            // 
+      // setStaus(3)
+           ;
+        }}
+      >
+        <option key={1} value={"0"}> 
+           wybierz...
+          </option>
+        {contextApp.clients
+        .map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.firma}
+          </option>
+        ))}
+      </select>
+
     </div>
   );
 }

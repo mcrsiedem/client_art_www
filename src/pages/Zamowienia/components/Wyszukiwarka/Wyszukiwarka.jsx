@@ -188,7 +188,7 @@ const pobierzElementyZamowienia = async () => {
         <div onDoubleClick={() => console.table(sections)} className={styles.header}>
           <div>
             <h1 className={styles.headerTitle}>
-              <Search size={25} color="#b1ec10" /> 
+              <Search size={22} color="#303030" /> 
               Znajdź zlecenie
             </h1>
             {/* <p className={styles.headerSubtitle}>.</p> */}
@@ -214,10 +214,7 @@ const pobierzElementyZamowienia = async () => {
 
         <div className={styles.resultArea}>
           <div className={styles.resultAreaLeft}>
-  {/* <button className={styles.btnAdd} onClick={addSection}>
-              <Plus size={20} /> 
-              Znajdź zlecenie
-            </button> */}
+
           </div>
           <div className={styles.resultAreaCenter}>
 
@@ -241,11 +238,12 @@ const pobierzElementyZamowienia = async () => {
                                         onChange={(e) => setRok( e.target.value)}
 
                   />
-                    <button 
+                    {/* <button 
                     title='Wpisz nr zlecenia i pobierz elementy'
                     className={styles.btnImport} onClick={pobierzElementyZamowienia}>
               <Download size={20} /> 
-            </button>
+            </button> */}
+ 
           {/* <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: '500' }}>
             Przybliżona grubość grzbietu oraz waga:
           </span>
@@ -271,7 +269,10 @@ const pobierzElementyZamowienia = async () => {
           </div> */}
           </div>
           <div className={styles.resultAreaRight}>
-
+             <button className={styles.btnAdd} onClick={pobierzElementyZamowienia}>
+              <Search size={18} /> 
+              Znajdź
+            </button>
 
           </div>
 

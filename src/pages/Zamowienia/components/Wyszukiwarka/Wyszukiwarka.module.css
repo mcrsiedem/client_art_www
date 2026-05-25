@@ -1,10 +1,11 @@
 .container {
   /* min-height: 70vh; */
-  background-color: transparent;
+  /* background-color: transparent; */
+  /* background-color: rgb(232, 232, 247); */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   font-family: system-ui, -apple-system, sans-serif;
   z-index: 10;
   animation: slideDown 0.3s ease-out;
@@ -12,10 +13,11 @@
 }
 
 .card {
-  max-width: 400px;
-  width: 900px;
-  height: 140px;
-  background-color: rgba(216, 211, 206, 0.15);
+  /* max-width: 400px; */
+  /* width: 900px; */
+  /* width: 98%; */
+  /* height: 140px; */
+  background-color: rgba(243, 243, 243, 0.15);
   border-radius: 24px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -29,9 +31,9 @@
     to { opacity: 1; transform: translateY(0); }
   }
 .header {
-  background-color: rgba(45, 45, 46, 0.77);
+  background-color: rgba(185, 185, 185, 0.77);
   padding: 10px 25px;
-  color: #ffffff;
+  color: #313131;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,6 +85,7 @@
 .sectionCard {
   padding: 15px 20px 20px 20px;
   background-color: rgba(45, 45, 46, 0.77);
+  
   border-radius: 16px;
   border: 1px solid rgba(226, 232, 240, 0.1);
   margin-bottom: 15px;
@@ -145,8 +148,8 @@
   border-radius: 8px;
   outline: none;
   font-size: 14px;
-  background-color: rgba(30, 30, 30, 0.4);
-  color: #e2e8f0;
+  background-color: rgba(184, 184, 184, 0.4);
+  color: #161616;
   transition: all 0.2s;
 }
 
@@ -186,11 +189,13 @@
   color: #bebebe;
 }
 .btnAdd {
-  background-color: #b1ec105e;
+  /* background-color: #185168fa; */
+  background-color: #b1ec1083;
+
   border: 1px dashed rgba(203, 213, 225, 0.4);
   border-radius: 12px;
-  padding: 10px 10px;
-  color: #c0c0c0;
+  padding: 10px 20px;
+  color: #303030;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -203,8 +208,10 @@
   /* background-color: rgba(203, 213, 225, 0.1); */
   background-color: #b1ec1083;
 
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #303030;
+  /* color: #ffffff; */
+  color: #303030;
+
 }
 
 
@@ -260,7 +267,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px;
-  background-color: rgba(35, 35, 36, 0.9);
+  background-color: rgba(231, 231, 231, 0.9);
+  /* background-color: rgba(214, 214, 214, 0.77); */
+
   border-top: 1px solid rgba(241, 245, 249, 0.1);
   text-align: center;
   height: 100px;

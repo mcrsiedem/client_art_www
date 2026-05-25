@@ -173,7 +173,7 @@ const pobierzGlobalSearch = () => {
   //   setSections(sec);
   // }
   console.log(nr)
-  globalSearch({nr:nr})
+  globalSearch({nr:nr,rok:rok, praca:praca,klient:klient})
 };
 
 
@@ -221,13 +221,7 @@ const pobierzElementyZamowienia = async () => {
               <Search size={20} color="#303030" /> 
               Znajdź zamówienie
             </h1>
-            {/* <p className={styles.headerSubtitle}>.</p> */}
-            {/* <p className={styles.headerSubtitle}>Oblicz grubość grzbietu oraz wagę...</p> */}
-
-            {/* {techcontext.daneTech.length > 0 ? (<p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p>): (<p className={styles.headerSubtitle}>Policz grzbiet oraz wage...</p>)} */}
-{/* <p className={styles.headerSubtitle}>Wpisz nr zlecenia</p> */}
-            {/* // <p className={styles.headerSubtitle}>{techcontext.daneTech[0]?.firma_nazwa} -  {techcontext.daneTech[0]?.tytul}</p> */}
-            
+  
           </div>
           
 

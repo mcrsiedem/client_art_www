@@ -12,6 +12,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+   /* height: calc(100vh - 50px); */
+
     background: var(--bg-main);
     font-family: sans-serif;
     overflow: auto;

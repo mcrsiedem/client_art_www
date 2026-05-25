@@ -27,25 +27,25 @@ export function useZamowienia() {
 
     const globalSearch = async (dane) => {
 
-    // setIsLoading(true);
-    // let  res = await axios.post(
-    //   IP +
-    //     "zamowieniaPaginations/" +
-    //     sessionStorage.getItem("token"),{...pagination,...widok}
+    setIsLoading(true);
+    let  res = await axios.post(
+      IP +
+        "zamowieniaGlobalSearch/" +
+        sessionStorage.getItem("token"),{...dane}
   
-    // );
+    );
 
     
-    // contextApp.setZamowienia([...res.data.data]);
-    // contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
-    // setIsLoading(false);
+    contextApp.setZamowienia([...res.data.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    setIsLoading(false);
 
-    // if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
-    //   scrollTable(tableZamowienia);
-    // }
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
 
 
-console.log(dane.nr)
+// console.log(dane)
   };
 
 

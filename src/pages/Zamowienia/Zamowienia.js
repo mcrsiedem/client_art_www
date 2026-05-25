@@ -156,10 +156,6 @@ function Zamowienia() {
       <div className={style.multiTableContainer}>
         {/* <TableZamowienia /> */}
 
-            {showWyszukiwarka && (
-            <Wyszukiwarka lokalizacja={"zamowienia"}
-            />
-          )}
         <TableFx  showSettings={showSettings} setShowSettings={setShowSettings} visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} allColumns={allColumns}/>
   
       </div>

@@ -18,6 +18,7 @@ import { useMenu } from "./hooks/useMenu";
 import CellBtn from "./components/CelllBtn";
 import ZamowienieShort from "components/ZamowienieShort/ZamowienieShort";
 import { ZamowienieContext } from "context/ZamowieniaContext";
+import Wyszukiwarka from "../../Wyszukiwarka/Wyszukiwarka";
 
 
 
@@ -49,7 +50,7 @@ export default function TableFx({showSettings, setShowSettings,visibleColumns, s
 
       const {onMenuHandle} = useMenu()
   
-  const {updatePagination,handlePageChange,pagination,updateWidok} = useContext(ZamowienieContext);
+  const {updatePagination,handlePageChange,pagination,updateWidok,showWyszukiwarka} = useContext(ZamowienieContext);
 
   
 
@@ -309,6 +310,12 @@ const sortedItems = useMemo(() => {
 
         </div>
       )}
+
+
+                  {showWyszukiwarka && (
+            <Wyszukiwarka lokalizacja={"zamowienia"}
+            />
+          )}
 
       <div ref={tableZamowienia} className={styles.tableWrapper}>
         <table className={styles.table}>

@@ -193,9 +193,11 @@ const sortedItems = useMemo(() => {
   // 1. Aktualizujemy lokalny stan ikonki (żeby strzałka się obróciła)
   setSortConfig({ key, direction });
 
-  // 2. Wysyłamy żądanie do API przez funkcję z kontekstu
-  // updateWidok({ kolumna: key, kierunek: direction, currentPage: 1 });
-  updateWidok({ kolumna: key, kierunek: direction });
+  // 2. Wysyłamy żądanie do API przez funkcję z kontekstu jeśli wyszukiwarka jest zamknięta. 
+  //    Jeśli jest otwarta to sortowanie jest tylko lokalne
+  if(!showWyszukiwarka){
+    updateWidok({ kolumna: key, kierunek: direction });
+  }
 };
 
   useEffect(() => {

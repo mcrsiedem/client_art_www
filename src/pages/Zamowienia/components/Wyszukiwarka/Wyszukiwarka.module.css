@@ -11,7 +11,7 @@
   font-family: system-ui, -apple-system, sans-serif;
   z-index: 10;
   animation: slideDown 0.3s ease-out;
-  height: 105px;
+  /* height: 90px; */
 
 }
 
@@ -67,28 +67,10 @@
 }
 
 .body {
-  padding: 30px;
+  /* padding: 30px; */
 }
 
-.scrollArea {
-  margin-bottom: 20px;
-  height: 250px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
 
-/* Styl paska przewijania */
-.scrollArea::-webkit-scrollbar {
-  width: 6px;
-}
-.scrollArea::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-.scrollArea::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-}
 
 
 
@@ -336,7 +318,8 @@
     justify-content: flex-end;
     
     gap:10px;
-    padding-right: 10px;
+    /* padding-bottom: 15px; */
+    /* padding-right: 10px; */
   /* width: 300px; */
 /* background-color: #94a3b8; */
 }
@@ -347,7 +330,7 @@
     justify-content: flex-end;
     
     gap:10px;
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 .resultAreaBottom {
@@ -355,6 +338,8 @@
     align-items: center;
     justify-content: center;
     gap:20px;
+    padding-bottom: 5px;
+
   /* background-color: rgba(35, 35, 36, 0.9); */
 /* background-color: #a2b894; */
 /* margin: 5px; */
@@ -426,7 +411,7 @@
 .labelData {
   font-size: 0.7rem;
   padding-left: 10px;
-  color: #919191;
+  color: #616161;
   text-transform: uppercase;
   
 }

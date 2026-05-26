@@ -26,25 +26,24 @@ import NrKalkulacji from "./components/NrKalkulacji";
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
-  const [nr, setNr] = useState(null);
-  const [rok, setRok] = useState(2026);
-  const [klient, setKlient] = useState(null);
-  const [praca, setPraca] = useState(null);
-  const [isbn, setIsbn] = useState(null);
-  const [kod, setKod] = useState(null);
-  const [nr_zamowienia_klienta,setNr_zamowienia_klienta] = useState(null);
-  const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
+  // const [nr, setNr] = useState(null);
+  // const [rok, setRok] = useState(2026);
+  // const [klient, setKlient] = useState(null);
+  // const [praca, setPraca] = useState(null);
+  // const [isbn, setIsbn] = useState(null);
+  // const [kod, setKod] = useState(null);
+  // const [nr_zamowienia_klienta,setNr_zamowienia_klienta] = useState(null);
+  // const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
 
 
   // 1. Pobranie danych z API przy montowaniu
 
   const pobierzGlobalSearch = () => {
-    console.log(nr);
-    globalSearch({ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji});
+    globalSearch();
   };
 
   //kod_pracy,nr_zamowienia_klienta,nr_kalkulacji
@@ -69,15 +68,18 @@ export default function Wyszukiwarka() {
               title="Wyczyść"
               className={styles.btnWyczysc}
               onClick={() => {
-                setRok("");
-                setNr("");
-                setPraca("");
-                setKlient(0);
+                // setRok("");
+                // setNr("");
+                // setPraca("");
+                // setKlient(0);
 
-                setIsbn("");
-                setKod("");
-                setNr_zamowienia_klienta("");
-                setNr_kalkulacji("");
+                // setIsbn("");
+                // setKod("");
+                // setNr_zamowienia_klienta("");
+                // setNr_kalkulacji("");
+
+                // console.log(dane)
+
                 
               }}
             >
@@ -86,7 +88,7 @@ export default function Wyszukiwarka() {
 
             <button
               className={styles.btnAdd}
-              onClick={() => pobierzGlobalSearch()}
+              onClick={() =>  globalSearch()}
             >
               <Search size={18} />
               Znajdź
@@ -95,7 +97,12 @@ export default function Wyszukiwarka() {
             <button
               title="Zamknij"
               className={styles.btnZamknij}
-              onClick={() => setShowWyszukiwarka(false)}
+              onClick={() =>{
+
+                setShowWyszukiwarka(false)
+
+
+              } }
             >
               <X size={18} />
             </button>

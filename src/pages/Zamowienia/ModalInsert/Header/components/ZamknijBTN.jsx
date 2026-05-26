@@ -32,7 +32,7 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
 
  const { showWyszukiwarka } = useContext(ZamowienieContext);
 
-  const { globalSearch } = useZamowienia();
+  const { globalSearch,dane } = useZamowienia();
   return (
     <img
       className={style.zamknij_icon}
@@ -65,7 +65,13 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                               }
 
                                  if(lokalizacja=="zamowienia"){
-                                        refZamPagination(true);
+                                    if (showWyszukiwarka) {
+                                    globalSearch();
+                                    console.log("zam 1")
+                                  } else {
+                                    refZamPagination(true);
+                                    console.log("zam 2")
+                                  }
                               }
                                 appContext.setIsLoading(false)
                               }
@@ -96,7 +102,14 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
                                  if(lokalizacja=="zamowienia"){
 
                                     
-                                        refZamPagination(true)
+                                  if (showWyszukiwarka) {
+                                    globalSearch();
+                                    console.log("zam 3")
+                                  } else {
+                                    refZamPagination(true);
+                                    console.log("zam 4")
+                                  }
+                                       
 
 
                               }

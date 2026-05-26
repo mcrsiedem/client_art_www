@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { IP } from "../utils/Host";
 import { AppContext } from "context/AppContext";
 import DecodeToken from "pages/Login/DecodeToken";
@@ -14,10 +14,19 @@ export function useZamowienia() {
   // const zamowienia = contextApp.zamowienia;
   const setZamowienia = contextApp.setZamowienia;
 
+    // const [nr, setNr] = useState(null);
+    // const [rok, setRok] = useState(2026);
+    // const [klient, setKlient] = useState(null);
+    // const [praca, setPraca] = useState(null);
+    // const [isbn, setIsbn] = useState(null);
+    // const [kod, setKod] = useState(null);
+    // const [nr_zamowienia_klienta,setNr_zamowienia_klienta] = useState(null);
+    // const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
+
   const {zamowienia} = useContext(AppContext);
-  const {pagination,updatePagination,widok} = useContext(ZamowienieContext);
+  const {pagination,updatePagination,widok,nr,rok,klient,praca,isbn,kod,nr_zamowienia_klienta,nr_kalkulacji} = useContext(ZamowienieContext);
 
-
+  // let dane = { nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji}
   const scrollTable = (table) => {
     if (table.current != null) {
       table.current.scrollTo({ top: 20000, behavior: "auto" });
@@ -25,13 +34,13 @@ export function useZamowienia() {
   };
 
 
-    const globalSearch = async (dane) => {
+    const globalSearch = async () => {
 
     setIsLoading(true);
     let  res = await axios.post(
       IP +
         "zamowieniaGlobalSearch/" +
-        sessionStorage.getItem("token"),{...dane}
+        sessionStorage.getItem("token"),{ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji}
   
     );
 
@@ -321,6 +330,7 @@ const getElementy = async (nr, rok) => {
     zamowienieOddaj,
     getElementy,
     globalSearch
+    
   
   };
 }

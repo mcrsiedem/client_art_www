@@ -196,7 +196,7 @@
   border: 1px dashed rgba(203, 213, 225, 0.4);
   border-radius: 5px;
   padding: 5px 5px;
-  color: #303030;
+  color: #d3d3d3;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -209,9 +209,9 @@
   /* background-color: rgba(203, 213, 225, 0.1); */
   background-color: #ec3c10;
 
-  border-color: #303030;
+  border-color: #dfdfdf;
   /* color: #ffffff; */
-  color: #303030;
+  color: #414141;
 
 }
 
@@ -395,17 +395,21 @@
 
 
 
-
+.colData_nr {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap:2px;
+}
 
 .colData {
   /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap:2px
-
-
-  /* width: 100%; */
+  gap:2px;
+  /* width:80px ; */
 }
 
 .labelData {
@@ -422,7 +426,6 @@
   border-color: transparent;
   outline: 1px solid rgb(216, 216, 216);
   padding: 5px 10px;
-
 }
 
 
@@ -431,6 +434,5 @@
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(50, 160, 233);
-
-
 }
+

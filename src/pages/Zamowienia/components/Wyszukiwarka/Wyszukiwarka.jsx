@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import styles from "./Wyszukiwarka.module.css";
-import { X, Search, Delete } from "lucide-react";
+import { X, Search, Delete, Trash, Trash2 } from "lucide-react";
 import { AppContext } from "context/AppContext";
 import { useApiPapier } from "hooks/useApiPapier";
 import { UIContext } from "context/UIContext";
@@ -20,6 +20,8 @@ import Praca from "./components/Praca";
 import Klient from "./components/Klient";
 import Isbn from "./components/Isbn";
 import KodaPracy from "./components/KodPracy";
+import NrZamowieniaKlienta from "./components/NrZamowieniaKlienta";
+import NrKalkulacji from "./components/NrKalkulacji";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
@@ -34,13 +36,15 @@ export default function Wyszukiwarka() {
   const [praca, setPraca] = useState(null);
   const [isbn, setIsbn] = useState(null);
   const [kod, setKod] = useState(null);
+  const [nr_zamowienia_klienta,setNr_zamowienia_klienta] = useState(null);
+  const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
 
 
   // 1. Pobranie danych z API przy montowaniu
 
   const pobierzGlobalSearch = () => {
     console.log(nr);
-    globalSearch({ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn });
+    globalSearch({ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji});
   };
 
   //kod_pracy,nr_zamowienia_klienta,nr_kalkulacji
@@ -56,6 +60,9 @@ export default function Wyszukiwarka() {
             <Klient klient={klient} setKlient={setKlient} />
             <Isbn isbn={isbn} setIsbn={setIsbn} />
             <KodaPracy kod={kod} setKod={setKod} />
+            <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
+            <NrZamowieniaKlienta nr_zamowienia_klienta={nr_zamowienia_klienta} setNr_zamowienia_klienta={setNr_zamowienia_klienta} />
+
           </div>
           <div className={styles.resultAreaRight}>
             <button
@@ -66,9 +73,15 @@ export default function Wyszukiwarka() {
                 setNr("");
                 setPraca("");
                 setKlient(0);
+
+                setIsbn("");
+                setKod("");
+                setNr_zamowienia_klienta("");
+                setNr_kalkulacji("");
+                
               }}
             >
-              <Delete size={18} />
+              <Trash2 size={18} />
             </button>
 
             <button

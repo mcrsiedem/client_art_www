@@ -11,6 +11,7 @@ import { initialDane,initialProdukty,initialElementy,initialFragmenty,initialOpr
 import { useZamowienia } from "hooks/useZamowienia";
 import { IP } from "utils/Host";
 import { AppContext } from "context/AppContext";
+import { ZamowienieContext } from "context/ZamowieniaContext";
 
 
 
@@ -28,6 +29,10 @@ const pakowanie = contextModalInsert.pakowanie;
 const procesyElementow = contextModalInsert.procesyElementow;
 const selectedZamowienie = contextModalInsert.selectedZamowienie;
 const ksiegowosc = contextModalInsert.ksiegowosc;
+
+ const { showWyszukiwarka } = useContext(ZamowienieContext);
+
+  const { globalSearch } = useZamowienia();
   return (
     <img
       className={style.zamknij_icon}
@@ -90,8 +95,10 @@ const ksiegowosc = contextModalInsert.ksiegowosc;
 
                                  if(lokalizacja=="zamowienia"){
 
-                                        
+                                    
                                         refZamPagination(true)
+
+
                               }
                                   appContext.setIsLoading(false)
                               }

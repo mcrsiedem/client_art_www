@@ -284,7 +284,7 @@ const PLN = ({ row }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.utworzono}
       className={style.input_przeloty}
-       value={parseInt(row.suma_waluta_1).toLocaleString()}
+       value={parseInt(row.suma_waluta_1 || 0).toLocaleString() }
       readOnly
 
     />
@@ -302,7 +302,7 @@ const EURO = ({ row }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.utworzono}
       className={style.input_przeloty}
-       value={parseInt(row.suma_waluta_2).toLocaleString()}
+       value={parseInt(row.suma_waluta_2 || 0).toLocaleString()}
       readOnly
 
     />
@@ -320,7 +320,7 @@ const USD = ({ row }) => {
       //firma_nazwa to skrocona nazwa klienta
       title={row.utworzono}
       className={style.input_przeloty}
-       value={parseInt(row.suma_waluta_3).toLocaleString()}
+       value={parseInt(row.suma_waluta_3 || 0).toLocaleString()}
       readOnly
 
     />

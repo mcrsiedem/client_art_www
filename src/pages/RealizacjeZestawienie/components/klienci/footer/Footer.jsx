@@ -41,6 +41,9 @@ export default function Footer({ dodaj_clikHandler,kto, setKto,dataDo,dataOd,set
         <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty druk: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.druk_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
         <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty falc: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.falc_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
         <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty uv/folia: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.uszlachetnienie_przeloty)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> PLN: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.suma_waluta_1)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> EURO: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.suma_waluta_2)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+        <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> USD: </p><p className={style.title_przeloty_wartosc}> { contextApp.realizacjeZestawienieKlienci.map(x => parseInt(x.suma_waluta_3)).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
       </div>
       <div className={style.rightHeaderContener}>
 

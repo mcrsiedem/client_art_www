@@ -68,6 +68,19 @@ export function useZestawienia() {
 
   };
 
+        const refreshRealizacjeZestawienieKlienciWartosc= async (dataOd,dataDo) => {
+    setIsLoading(true)
+    if(DecodeToken(sessionStorage.getItem("token")).zestawienia==1){
+    const res = await axios.get(
+      IP + "zestawienie_klienci_wartosc/"+dataOd+"/"+dataDo+"/" + sessionStorage.getItem("token")
+    );
+    contextApp.setRealizacjeZestawienieKlienci([...res.data]);
+    // contextApp.setRealizacjeZestawienieWyszukiwarka([...res.data]);
+  }
+      setIsLoading(false)
 
-  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci};
+  };
+
+
+  return {refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci,refreshRealizacjeZestawienieKlienciWartosc};
 }

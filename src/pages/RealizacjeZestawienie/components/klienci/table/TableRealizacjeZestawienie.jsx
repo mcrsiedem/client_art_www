@@ -27,14 +27,17 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
 
   const valueZamowieniaWyszukiwarka = contextApp.valueZamowieniaWyszukiwarka;
   const showTabsRealizacje = contextApp.showTabsRealizacje
-     const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci } = useZestawienia();
+     const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci ,refreshRealizacjeZestawienieKlienciWartosc} = useZestawienia();
   
 
   if(realizacjeZestawienieKlienci.length ==0 && DecodeToken(sessionStorage.getItem("token")).zestawienia==1){
     return(
        <div  className={style.odwiezContainer} >
        <button
-       onClick={()=>{refreshRealizacjeZestawienieKlienci(dataOd, dataDo);}}
+      //  onClick={()=>{refreshRealizacjeZestawienieKlienci(dataOd, dataDo);}}
+       onClick={()=>{refreshRealizacjeZestawienieKlienciWartosc(dataOd, dataDo);}}
+
+       
        className={style.odwiezBtn}>Pobierz
        
        </button>

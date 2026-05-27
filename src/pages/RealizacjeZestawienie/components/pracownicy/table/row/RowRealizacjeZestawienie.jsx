@@ -42,28 +42,6 @@ const setShowTabs = contextModalInsert.setShowTabs
  const setRealizacjeZestawienie= contextApp.setRealizacjeZestawienie;
 
 
-  // const onMenuHandle2 = (event) =>{
-  //   event.preventDefault();
-  //   setRealizacjeZestawienie(
-  //     realizacjeZestawienie
-  //     .map(x => {return { ...x, select: false, show:false}})
-  //     .map((t) => {
-  //       if (t.global_id == row.global_id) {
-  //         return { ...row, select: true,show:true};
-  //       } else {
-  //         return t;
-  //       }
-  //     })
-  //   );
-
-  //   // if(row.technologia_id != null ){
-  //   //   fechparametryTechnologiiDetails(row.id,row.technologia_id)
-  //   // }else{
-  //   //   techContext.setProcesyElementowTech([])
-  //   // }
-
-  // }
-
   return (
     <>
       <tr

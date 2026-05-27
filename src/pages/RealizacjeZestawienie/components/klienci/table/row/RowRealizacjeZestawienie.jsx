@@ -38,31 +38,11 @@ export default function RowRealizacjeZestawienie({ row, open2, setRow,i }) {
   const setOpenModalInsert = contextModal.setOpenModalInsert;
 const setShowTabs = contextModalInsert.setShowTabs
 
- const realizacjeZestawienie= contextApp.realizacjeZestawienie;
- const setRealizacjeZestawienie= contextApp.setRealizacjeZestawienie;
+ const realizacjeZestawienieKlienci= contextApp.realizacjeZestawienieKlienci;
+ const setRealizacjeZestawienieKlienci= contextApp.setRealizacjeZestawienieKlienci;
 
 
-  // const onMenuHandle2 = (event) =>{
-  //   event.preventDefault();
-  //   setRealizacjeZestawienie(
-  //     realizacjeZestawienie
-  //     .map(x => {return { ...x, select: false, show:false}})
-  //     .map((t) => {
-  //       if (t.global_id == row.global_id) {
-  //         return { ...row, select: true,show:true};
-  //       } else {
-  //         return t;
-  //       }
-  //     })
-  //   );
 
-  //   // if(row.technologia_id != null ){
-  //   //   fechparametryTechnologiiDetails(row.id,row.technologia_id)
-  //   // }else{
-  //   //   techContext.setProcesyElementowTech([])
-  //   // }
-
-  // }
 
   return (
     <>
@@ -89,8 +69,8 @@ const setShowTabs = contextModalInsert.setShowTabs
           if (event.shiftKey) {
             let indeks_start = sessionStorage.getItem("indeks_start");
             let indeks_stop = i;
-            setRealizacjeZestawienie(
-              realizacjeZestawienie
+            setRealizacjeZestawienieKlienci(
+              realizacjeZestawienieKlienci
                 .map((t, indeks) => {
                   if (indeks >= indeks_start && indeks <= indeks_stop) {
                     return { ...t, select: true };
@@ -100,13 +80,13 @@ const setShowTabs = contextModalInsert.setShowTabs
                 })
             );
           } else {
-            setRealizacjeZestawienie(
-              realizacjeZestawienie
+            setRealizacjeZestawienieKlienci(
+              realizacjeZestawienieKlienci
                 .map((x) => {
                   return { ...x, select: false };
                 })
                 .map((t, indeks) => {
-                  if (t.global_id == row.global_id) {
+                  if (t.klient_id == row.klient_id) {
                     return { ...t, select: true };
                   } else {
                     return t;
@@ -116,11 +96,11 @@ const setShowTabs = contextModalInsert.setShowTabs
           }
 
           if (event.ctrlKey) {
-            setRealizacjeZestawienie(
-              realizacjeZestawienie
+            setRealizacjeZestawienieKlienci(
+              realizacjeZestawienieKlienci
                 // .map(x => {return { ...x, select: false}})
                 .map((t, indeks) => {
-                  if (t.global_id == row.global_id) {
+                  if (t.klient_id == row.klient_id) {
                     return { ...t, select: !t.select };
                   } else {
                     return t;

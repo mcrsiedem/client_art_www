@@ -29,10 +29,11 @@ export default function Header({ dataDo,dataOd,setDataDo,setDataOd,kto,setKto,gr
      const contextModalInsert = useContext(ModalInsertContext);
 const setShowTabs = contextModalInsert.setShowTabs
   const realizacjeZestawienie = contextApp.realizacjeZestawienie
+  const realizacjeZestawienieKlienci = contextApp.realizacjeZestawienieKlienci
 
   return (
     <header onDoubleClick={()=>{  
-console.table(realizacjeZestawienie)
+console.table(realizacjeZestawienieKlienci)
      }} id="header" className={style.headerZamowieniaContainer}>
       <div className={style.leftHeaderContener}>
         {/* <REFRESH_ZAMOWIENIA_BTN/> */}

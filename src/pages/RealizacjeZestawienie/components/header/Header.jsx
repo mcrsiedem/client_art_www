@@ -201,7 +201,7 @@ function DataOd({ dataOd, dataDo, setDataOd, kto,grupa,setGrupa }) {
 
 
 function DataDo({ dataDo, dataOd, setDataDo, kto,grupa,setGrupa }) {
-  const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci } = useZestawienia();
+  const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci,refreshRealizacjeZestawienieKlienciWartosc } = useZestawienia();
   const contextApp = useContext(AppContext);
   const showTabsRealizacje = contextApp.showTabsRealizacje
 
@@ -226,7 +226,8 @@ function DataDo({ dataDo, dataOd, setDataDo, kto,grupa,setGrupa }) {
           }
 
                         if(showTabsRealizacje.klienci){
-            refreshRealizacjeZestawienieKlienci(dataOd,event.target.value);
+            // refreshRealizacjeZestawienieKlienci(dataOd,event.target.value);
+            refreshRealizacjeZestawienieKlienciWartosc(dataOd,event.target.value);
           }
 
           setDataDo(event.target.value);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useEffect, useRef,useContext, useMemo } from "react";
 import style from "./TableRealizacjeZestawienie.module.css";
 import iconSettings from "assets/dots2.svg";
 import iconFile from "assets/iconTechnologieDark.svg";
@@ -30,6 +30,42 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
      const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci ,refreshRealizacjeZestawienieKlienciWartosc} = useZestawienia();
   
 
+       const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+     
+  const requestSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+
+    const sortedData = useMemo(() => {
+      let sortableItems = [...realizacjeZestawienieKlienci];
+      if (sortConfig.key !== null) {
+        sortableItems.sort((a, b) => {
+          // Obsługa wartości null/undefined, by nie wywalało błędu przy porównywaniu
+          const aValue = parseInt(a[sortConfig.key], 10) || 0;
+          const bValue = parseInt(b[sortConfig.key], 10) || 0
+  
+          if (aValue < bValue) {
+            return sortConfig.direction === 'asc' ? -1 : 1;
+          }
+          if (aValue > bValue) {
+            return sortConfig.direction === 'asc' ? 1 : -1;
+          }
+          return 0;
+        });
+      }
+      return sortableItems;
+    }, [realizacjeZestawienieKlienci, sortConfig]);
+
+      const getSortIcon = (name) => {
+    if (sortConfig.key !== name) return " ↕";
+    return sortConfig.direction === 'asc' ? " ▲" : " ▼";
+  };
+
   if(realizacjeZestawienieKlienci.length ==0 && DecodeToken(sessionStorage.getItem("token")).zestawienia==1){
     return(
        <div  className={style.odwiezContainer} >
@@ -56,12 +92,12 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
 
            <th className={style.col_indeks}>#</th>
            <th className={style.col_klient}>Klient</th>
-           <th className={style.col_klient}>Przeloty druku</th>
-           <th className={style.col_klient}>Przeloty falcu</th>
-           <th className={style.col_klient}>Przeloty uszlachetnianie</th>
-           <th className={style.col_klient}>PLN</th>
-           <th className={style.col_klient}>EURO</th>
-           <th className={style.col_klient}>USD</th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('druk_przeloty')} >Przeloty druku</th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('falc_przeloty')} >Przeloty falcu</th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('uszlachetnienie_przeloty')} >Przeloty uszlachetnianie</th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('suma_waluta_1')} >PLN </th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('suma_waluta_2')} >EURO</th>
+           <th className={style.col_klient} style={{ cursor: "pointer", userSelect: "none" }} onClick={() => requestSort('suma_waluta_3')} >USD</th>
 
 
            {/* <th className={style.col_alert}></th> */}
@@ -69,7 +105,9 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
        </thead>
        <tbody className={style.tableZam}>
 
-         {contextApp.realizacjeZestawienieKlienci
+         {
+        //  contextApp.realizacjeZestawienieKlienci
+         sortedData
            .map((row,i) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.global_id} row={row} open2={open2} setRow={setRow} i={i} />

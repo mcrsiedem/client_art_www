@@ -45,24 +45,24 @@ const czySaPrzynajmniejDwa = zaznaczoneElementy.length >= 2;
 {czySaPrzynajmniejDwa ? (
   // WIDOK 1: Jeśli zaznaczono 2 lub więcej elementów -> Pokazuje CAŁOŚĆ
   <div className={style.centerHeaderContener}>
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty} style={{fontWeight:"bold"}}> Zaznaczone: </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty druk: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.druk_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty falc: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.falc_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty uv/folia: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.uszlachetnienie_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> PLN: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_1) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> EURO: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_2) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> USD: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_3) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
-  </div>
-) : (
-  // WIDOK 2: Jeśli zaznaczono mniej niż 2 elementy -> Pokazuje tylko ZAZNACZONE
-  <div className={style.centerHeaderContener}>
-    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Całość: </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Zaznaczone: </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty druk: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.druk_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty falc: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.falc_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty uv/folia: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.uszlachetnienie_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> PLN: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.suma_waluta_1) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> EURO: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.suma_waluta_2) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
     <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> USD: </p><p className={style.title_przeloty_wartosc}> { listaZKontekstu.map(x => parseInt(x.suma_waluta_3) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+  </div>
+) : (
+  // WIDOK 2: Jeśli zaznaczono mniej niż 2 elementy -> Pokazuje tylko ZAZNACZONE
+  <div className={style.centerHeaderContener}>
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Całość: </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty druk: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.druk_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty falc: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.falc_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> Przeloty uv/folia: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.uszlachetnienie_przeloty) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> PLN: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_1) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> EURO: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_2) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
+    <div className={style.title_przeloty_container}> <p className={style.title_przeloty}> USD: </p><p className={style.title_przeloty_wartosc}> { zaznaczoneElementy.map(x => parseInt(x.suma_waluta_3) || 0).reduce((a, b) => a + b, 0).toLocaleString()} </p></div>           
   </div>
 )}
 

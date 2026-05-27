@@ -42,27 +42,27 @@ const setShowTabs = contextModalInsert.setShowTabs
  const setRealizacjeZestawienie= contextApp.setRealizacjeZestawienie;
 
 
-  const onMenuHandle2 = (event) =>{
-    event.preventDefault();
-    setRealizacjeZestawienie(
-      realizacjeZestawienie
-      .map(x => {return { ...x, select: false, show:false}})
-      .map((t) => {
-        if (t.global_id == row.global_id) {
-          return { ...row, select: true,show:true};
-        } else {
-          return t;
-        }
-      })
-    );
+  // const onMenuHandle2 = (event) =>{
+  //   event.preventDefault();
+  //   setRealizacjeZestawienie(
+  //     realizacjeZestawienie
+  //     .map(x => {return { ...x, select: false, show:false}})
+  //     .map((t) => {
+  //       if (t.global_id == row.global_id) {
+  //         return { ...row, select: true,show:true};
+  //       } else {
+  //         return t;
+  //       }
+  //     })
+  //   );
 
-    // if(row.technologia_id != null ){
-    //   fechparametryTechnologiiDetails(row.id,row.technologia_id)
-    // }else{
-    //   techContext.setProcesyElementowTech([])
-    // }
+  //   // if(row.technologia_id != null ){
+  //   //   fechparametryTechnologiiDetails(row.id,row.technologia_id)
+  //   // }else{
+  //   //   techContext.setProcesyElementowTech([])
+  //   // }
 
-  }
+  // }
 
   return (
     <>
@@ -91,26 +91,6 @@ const setShowTabs = contextModalInsert.setShowTabs
             let indeks_stop = i;
             setRealizacjeZestawienie(
               realizacjeZestawienie
-                // .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-                // .filter((zam) => {
-                //   if (selectedUser == 0) {
-                //     return true;
-                //   } else {
-                //     return zam.opiekun_id == selectedUser;
-                //   }
-                // })
-                // .filter((z) => z.stan == 3)
-                // .filter((zam) => {
-                //   if (selectedKlient == 0) {
-                //     return true;
-                //   } else {
-                //     return zam.klient_id == selectedKlient;
-                //   }
-                // })
-                // .filter((zamowienie) => sortWgEtapu({ zamowienie }))
-                // .map((x) => {
-                //   return { ...x, select: false };
-                // })
                 .map((t, indeks) => {
                   if (indeks >= indeks_start && indeks <= indeks_stop) {
                     return { ...t, select: true };

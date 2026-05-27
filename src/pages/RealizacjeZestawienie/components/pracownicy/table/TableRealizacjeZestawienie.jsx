@@ -50,30 +50,6 @@ export default function TableRealizacjeZestawienie({open2,setRow}){
        </thead>
        <tbody className={style.tableZam}>
          {realizacjeZestawienie
-          //  .filter((zamowienie) => sprawdzDostepZamowienia(zamowienie))
-          //  .filter((zam) => {
-          //   if (selectedUser == 0) {
-          //     return true;
-          //   } else {
-          //    return  zam.opiekun_id == selectedUser;
-          //   }
-          // })
-          //  .filter(z => z.stan ==3 || z.stan ==4 )
-          //  .filter((zam) => {
-          //   if (selectedKlient == 0) {
-          //     return true;
-          //   } else {
-          //    return  zam.klient_id == selectedKlient;
-          //   }
-          // })
-          // .filter((realizacjeZestawienie) => sortWgEtapu({zamowienie}))
-          // .filter((k) =>
-          //   k.tytul
-          //     .concat(" ", k.nr)
-          //     .concat(" ", k.nr_stary)
-          //     .toLowerCase()
-          //     .includes(valueZamowieniaWyszukiwarka.toLowerCase())
-          // )
            .map((row,i) => {
              return (
                <TABLE_ROW_ZAMOWIENIA key={row.global_id} row={row} open2={open2} setRow={setRow} i={i} />

@@ -69,9 +69,6 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
        </thead>
        <tbody className={style.tableZam}>
 
-
-
-
          {contextApp.realizacjeZestawienieKlienci
            .map((row,i) => {
              return (

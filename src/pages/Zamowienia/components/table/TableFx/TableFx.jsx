@@ -454,55 +454,50 @@ const sortedItems = useMemo(() => {
         </table>
       </div>
 <div className={styles.pagination}>
-  {/* Przycisk Poprzednia */}
-  
-  <button 
-    className={styles.pageBtn}
-    disabled={pagination?.currentPage === 1}
-    onClick={() => handlePageChange(pagination.currentPage - 1)}
-  >
-    &lt;
-  </button>
 
-  {/* Dynamiczne numery stron */}
-  <div className={styles.pageNumbers}>
-    {getPaginationRange(
-      pagination?.currentPage || 1, 
-      pagination?.totalPages || 1
-    ).map((page, index) => (
-      page === "..." ? (
-        <span key={`dots-${index}`} className={styles.dots}>...</span>
-      ) : (
-        <button
-          key={page}
-          className={`${styles.pageBtn} ${pagination?.currentPage === page ? styles.activePage : ""}`}
-          onClick={() => handlePageChange(page)}
-        >
-          {page}
-        </button>
-      )
-    ))}
-  </div>
+      {!showWyszukiwarka && (
+        <>
 
-  {/* Przycisk Następna */}
-  <button 
-    className={styles.pageBtn}
-    disabled={pagination?.currentPage === pagination?.totalPages}
-    onClick={() => handlePageChange(pagination.currentPage + 1)}
-  >
-    &gt;
-  </button>
+          <button 
+            className={styles.pageBtn}
+            disabled={pagination?.currentPage === 1}
+            onClick={() => handlePageChange(pagination.currentPage - 1)}
+          >
+            &lt;
+          </button>
 
-  {/* Wybór wielkości strony */}
-  {/* <select 
-    className={styles.pageSelect}
-    value={pagination?.pageSize} 
-    onChange={(e) => contextApp.handleSizeChange(Number(e.target.value))}
-  >
-    {[20, 50, 100].map(size => (
-      <option key={size} value={size}>Pokaż {size}</option>
-    ))}
-  </select> */}
+          <div className={styles.pageNumbers}>
+            {getPaginationRange(
+              pagination?.currentPage || 1, 
+              pagination?.totalPages || 1
+            ).map((page, index) => (
+              page === "..." ? (
+                <span key={`dots-${index}`} className={styles.dots}>...</span>
+              ) : (
+                <button
+                  key={page}
+                  className={`${styles.pageBtn} ${pagination?.currentPage === page ? styles.activePage : ""}`}
+                  onClick={() => handlePageChange(page)}
+                >
+                  {page}
+                </button>
+              )
+            ))}
+          </div>
+
+          <button 
+            className={styles.pageBtn}
+            disabled={pagination?.currentPage === pagination?.totalPages}
+            onClick={() => handlePageChange(pagination.currentPage + 1)}
+          >
+        
+          </button>
+
+        </>
+      )}
+
+
+
 </div>
     </div>
   );

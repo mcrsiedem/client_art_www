@@ -68,15 +68,15 @@ export default function Wyszukiwarka() {
               title="Wyczyść"
               className={styles.btnWyczysc}
               onClick={() => {
-                // setRok("");
-                // setNr("");
-                // setPraca("");
-                // setKlient(0);
+                setRok("");
+                setNr("");
+                setPraca("");
+                setKlient(0);
 
-                // setIsbn("");
-                // setKod("");
-                // setNr_zamowienia_klienta("");
-                // setNr_kalkulacji("");
+                setIsbn("");
+                setKod("");
+                setNr_zamowienia_klienta("");
+                setNr_kalkulacji("");
 
                 // console.log(dane)
 

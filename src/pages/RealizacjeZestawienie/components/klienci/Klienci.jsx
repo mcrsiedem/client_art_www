@@ -11,7 +11,7 @@ import { useZestawienia } from "hooks/useZestawienia";
 import Footer from "./footer/Footer";
 
 import TableRealizacjeZestawienie from "./table/TableRealizacjeZestawienie";
-import Header from "./header/Header";
+import Header from "../../header/Header";
 import { AppContext } from "context/AppContext";
 
 function Klienci({dataOd, dataDo}) {

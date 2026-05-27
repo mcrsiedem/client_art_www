@@ -169,10 +169,11 @@ color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 1cqmin;
+    padding-top: 10px;
     /* padding-left: 20px; */
     /* height: 50px; */
     gap:10px;
+    width: 200px;
 
 
 }

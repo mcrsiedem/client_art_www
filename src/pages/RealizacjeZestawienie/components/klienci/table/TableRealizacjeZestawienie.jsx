@@ -56,6 +56,9 @@ export default function TableRealizacjeZestawienie({open2,setRow,dataOd, dataDo}
            <th className={style.col_klient}>Przeloty druku</th>
            <th className={style.col_klient}>Przeloty falcu</th>
            <th className={style.col_klient}>Przeloty uszlachetnianie</th>
+           <th className={style.col_klient}>PLN</th>
+           <th className={style.col_klient}>EURO</th>
+           <th className={style.col_klient}>USD</th>
 
 
            {/* <th className={style.col_alert}></th> */}

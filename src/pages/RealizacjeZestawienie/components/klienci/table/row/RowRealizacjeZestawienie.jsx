@@ -171,6 +171,9 @@ const setShowTabs = contextModalInsert.setShowTabs
         <Druk row={row} />
         <Falc row={row} />
         <Uv row={row} />
+        <PLN row={row} />
+        <EURO row={row} />
+        <USD row={row} />
       </tr>
     </>
   );
@@ -272,7 +275,59 @@ const Uv = ({ row }) => {
   );
 };
 
+const PLN = ({ row }) => {
 
+
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.utworzono}
+      className={style.input_przeloty}
+       value={parseInt(row.suma_waluta_1).toLocaleString()}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+
+const EURO = ({ row }) => {
+
+
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.utworzono}
+      className={style.input_przeloty}
+       value={parseInt(row.suma_waluta_2).toLocaleString()}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
+
+const USD = ({ row }) => {
+
+
+  return (
+    <td>
+       <input
+      //firma_nazwa to skrocona nazwa klienta
+      title={row.utworzono}
+      className={style.input_przeloty}
+       value={parseInt(row.suma_waluta_3).toLocaleString()}
+      readOnly
+
+    />
+    </td>
+   
+  );
+};
 
 
 const Narzady = ({ row }) => {

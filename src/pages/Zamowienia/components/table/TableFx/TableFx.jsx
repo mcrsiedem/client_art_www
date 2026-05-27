@@ -8,7 +8,7 @@ import {
   KeySquare
 } from "lucide-react";
 import { AppContext } from "context/AppContext";
-import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _waluta } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _vat, _waluta } from "utils/initialvalue";
 import { ModalInsertContext } from "context/ModalInsertContext";
 import { TechnologyContext } from "context/TechnologyContext";
 import DecodeToken from "pages/Login/DecodeToken";
@@ -513,6 +513,7 @@ function CellContent({ row, colId,_status_koszty_dodatkowe,_status_faktury }) {
 
     case "cena": return <span className={styles.price2}>{row.cena}</span>;
     case "waluta_id": return <span >{_waluta.filter((s) => s.id == row.waluta_id).map((x) => x.nazwa)}</span>;
+    case "vat_id": return <span >{_vat.filter((s) => s.id == row.vat_id).map((x) => x.stawka)}</span>;
     case "wartosc_zamowienia": return <span >{row.wartosc_zamowienia?.replace('.', ',').trim()} </span>;
     case "status_nazwa": return <span className={row.status==3 ? styles.badgeRed :styles.badge}>{_status_dokumentu.filter((s) => s.id == row.status).map((x) => x.nazwa)}</span>;
     // case "technologia": return <FileText size={16} style={{color: '#94a3b8'}} />;

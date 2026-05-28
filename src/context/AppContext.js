@@ -303,6 +303,11 @@ const _firma = [
     {
       id: 9,
       nazwa: "Proofy",
+    },
+    
+    {
+      id: 10,
+      nazwa: "Wydrukowane + Sfalcowane",
     }
   ];
 

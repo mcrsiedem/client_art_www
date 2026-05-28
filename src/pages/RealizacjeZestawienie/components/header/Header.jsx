@@ -49,6 +49,8 @@ console.table(realizacjeZestawienieKlienci)
 
           <DataOd dataOd={dataOd} dataDo={dataDo} kto={kto} setDataOd={setDataOd} grupa={grupa} setGrupa={setGrupa}/>
           <DataDo dataOd={dataOd} dataDo={dataDo} kto={kto} setDataDo={setDataDo} grupa={grupa} setGrupa={setGrupa}/>
+          <BTN_ROK  rok={2025} setDataOd={setDataOd} setDataDo={setDataDo}/>
+          <BTN_ROK  rok={2026} setDataOd={setDataOd} setDataDo={setDataDo}/>
 
 
       </div>
@@ -237,74 +239,43 @@ function DataDo({ dataDo, dataOd, setDataDo, kto,grupa,setGrupa }) {
   );
 }
 
-
-
-
-function BTN_KOPIUJ() {
+function BTN_ROK({rok,setDataOd,setDataDo}) {
   const contextApp = useContext(AppContext);
-  const zamowienia = contextApp.zamowienia;
-  const setZamowienia = contextApp.setZamowienia;
+  const { refreshRealizacjeZestawienie,refreshRealizacjeZestawienieGrupa,refreshRealizacjeZestawienieProcesory,refreshRealizacjeZestawienieKlienci,refreshRealizacjeZestawienieKlienciWartosc } = useZestawienia();
+  const showTabsRealizacje = contextApp.showTabsRealizacje
   // const klienciEdit = JSON.parse(JSON.stringify(setClients));
+
+    if(showTabsRealizacje.klienci){
   return (
-<img
+<button
           title="Skopiuj zaznaczone..."
-          className={style.icon}
-          src={iconCopy}
+          className={style.rok_btn}
+          // src={iconCopy}
           onClick={() => {
-  
-let mes='';
+            let dataOd,dataDo
 
-
-            for( let grupa of zamowienia.filter(x=> x.select == true)){
-              mes += grupa.nr+"\t"
-              mes +=  grupa.stary_nr || " "+"\t"
-              mes += grupa.klient+"\t"
-              mes += grupa.tytul+"\t"
-              mes += grupa.naklad+"\t"
-              mes += grupa.ilosc_stron+"\t"
-              mes += grupa.data_przyjecia+"\t"
-              mes += grupa.data_spedycji+"\t"
-              mes += grupa.format_x+"x"+grupa.format_y+"\t"
-              mes += grupa.oprawa+"\t"
-              mes += _etapy_produkcji.filter((s) => s.id == grupa.etap).map((x) => x.nazwa)+"\t"
-              mes += grupa.opiekun+"\t"
-              
-              // mes += grupa.przeloty+ " ark. \t"
-              mes += "\n"
-
+            switch(rok){
+               case 2025 : 
+                            dataOd = '2025-01-01'
+                            dataDo = '2025-12-31'
+               break;
+                      case 2026 : 
+                            dataOd = '2026-01-01'
+                            dataDo = '2026-12-31'
+               break;
             }
+          
+setDataOd(dataOd)
+setDataDo(dataDo)
+            refreshRealizacjeZestawienieKlienciWartosc(dataOd,dataDo);
+          
 
-            setZamowienia(
-              zamowienia.map((t) => {
-                  return { ...t, select: false};
-              })
-            );
-
-            navigator.clipboard.writeText(mes);
           }}
           alt="React Logo"
-        /> 
+        > {rok}
+        </button>
   );
 }
+}
 
-function SORTOWANIE_ZAMOWIENIA_ETAP() {
-  const contextApp = useContext(AppContext);
-  const sortowanieZamowieniaEtap= contextApp.sortowanieZamowieniaEtap;
-  const setSortowanieZamowieniaEtap= contextApp.setSortowanieZamowieniaEtap;
-    return (
-  
-        <select
-          className={sortowanieZamowieniaEtap ==2 ? style.szukajInputSortBlue :style.szukajInputSort}
-          value={sortowanieZamowieniaEtap}
-          onChange={(event) => {
-            setSortowanieZamowieniaEtap(event.target.value)
-          }}
-        >
-          {contextApp._sortowanieZamowienieEtap.map((option) => (
-            <option key={option.id} value={option.id}>
-            {option.nazwa}
-            </option>
-          ))}
-        </select>
-    );
-  }
+

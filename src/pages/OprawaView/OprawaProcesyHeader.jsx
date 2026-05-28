@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef,useContext } from "react";
 import style from "./OprawaProcesyHeader.module.css";
 import iconClose2 from "assets/x2.svg";
 import iconCopy from "assets/copy.svg";
+import iconCalc from "assets/calc.svg";
+
 
 import iconWC from "assets/wc.svg";
 import { useNavigate } from "react-router-dom";
 import { TechnologyContext } from "context/TechnologyContext";
 import { updateDeletePrzerwaOprawa } from "actions/updateDeletePrzerwaOprawa";
 import Szukaj from "./TechnologiaSzukaj/Szukaj";
+import { getZamowieniaInfoGrupy } from "actions/getZamowieniaInfoGrupy";
 
 function ProcesyHeader() {
   const navigate = useNavigate();
@@ -30,6 +33,7 @@ function ProcesyHeader() {
         </div>
 
         <div className={style.centerHeaderContener}>
+          <BTN_INFO_ZAMOWIENIA_GRUPY/>
         <PrzerwaBTN />
         </div>
         <div className={style.rightHeaderContener}>
@@ -202,5 +206,28 @@ setInitTime(event.target.value)
           setDniWstecz( event.target.value);
          }}></input>
     </div>
+  );
+}
+
+
+  function BTN_INFO_ZAMOWIENIA_GRUPY() {
+    const techContext = useContext(TechnologyContext);
+
+      const grupyOprawaAll = techContext.grupyOprawaAll;
+  
+  const grupy = grupyOprawaAll.filter(x=>x.select==true).map(x => parseInt(x.naklad) || 0).reduce((a, b) => a + b, 0);
+  return (
+    <img
+      title="Policz przeloty"
+      className={style.icon2}
+      src={iconCalc}
+      onClick={() => {
+        alert("Suma nakładów: " + grupyOprawaAll.filter(x=>x.select==true).map(x => parseInt(x.naklad) || 0).reduce((a, b) => a + b, 0).toLocaleString() + " szt.")
+              // getZamowieniaInfoGrupy(grupy)
+              // sendMail(zamowienia,setShowZamowieniaInfo,setZamowieniaInfo)
+
+      }}
+      alt="React Logo"
+    />
   );
 }

@@ -13,6 +13,7 @@ const [showWyszukiwarka, setShowWyszukiwarka] = useState(false);
     const [kod, setKod] = useState(null);
     const [nr_zamowienia_klienta,setNr_zamowienia_klienta] = useState(null);
     const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
+    const [papierId,setPapierId] = useState(null);
 
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -77,7 +78,7 @@ const updatePagination = (updates) => {
    _widokZamowien,handlePageChange,
       updatePagination,  pagination, setPagination,widok,updateWidok,
       showWyszukiwarka, setShowWyszukiwarka,
-      nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji
+      nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId
 
       }}
     >

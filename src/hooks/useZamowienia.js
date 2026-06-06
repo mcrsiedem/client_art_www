@@ -24,7 +24,7 @@ export function useZamowienia() {
     // const [nr_kalkulacji,setNr_kalkulacji] = useState(null);
 
   const {zamowienia} = useContext(AppContext);
-  const {pagination,updatePagination,widok,nr,rok,klient,praca,isbn,kod,nr_zamowienia_klienta,nr_kalkulacji} = useContext(ZamowienieContext);
+  const {pagination,updatePagination,widok,nr,rok,klient,praca,isbn,kod,nr_zamowienia_klienta,nr_kalkulacji,papierId} = useContext(ZamowienieContext);
 
   // let dane = { nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji}
   const scrollTable = (table) => {
@@ -40,7 +40,7 @@ export function useZamowienia() {
     let  res = await axios.post(
       IP +
         "zamowieniaGlobalSearch/" +
-        sessionStorage.getItem("token"),{ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji}
+        sessionStorage.getItem("token"),{ nr: nr, rok: rok, praca: praca, klient: klient,isbn:isbn, kod_pracy:kod,nr_zamowienia_klienta ,nr_kalkulacji,papier_id:papierId}
   
     );
 

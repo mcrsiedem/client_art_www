@@ -22,11 +22,13 @@ import Isbn from "./components/Isbn";
 import KodaPracy from "./components/KodPracy";
 import NrZamowieniaKlienta from "./components/NrZamowieniaKlienta";
 import NrKalkulacji from "./components/NrKalkulacji";
+import Papier from "./components/Papier";
+// import Papier from "pages/ProcesyView/row/components/Papier";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
@@ -57,6 +59,7 @@ export default function Wyszukiwarka() {
             <Rok rok={rok} setRok={setRok} />
             <Praca praca={praca} setPraca={setPraca} />
             <Klient klient={klient} setKlient={setKlient} />
+            <Papier papierId={papierId} setPapierId={setPapierId} />
             <Isbn isbn={isbn} setIsbn={setIsbn} />
             <KodaPracy kod={kod} setKod={setKod} />
             <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
@@ -77,6 +80,8 @@ export default function Wyszukiwarka() {
                 setKod("");
                 setNr_zamowienia_klienta("");
                 setNr_kalkulacji("");
+                setPapierId(0);
+
 
                 // console.log(dane)
 

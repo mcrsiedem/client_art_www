@@ -17,7 +17,7 @@ const contextApp = useContext(AppContext);
 
   return (
     <div className={styles.colData}>
-      <label className={styles.labelData}> Procesy Elementów </label>
+      <label className={styles.labelData}> Proces </label>
       <select
         className={styles.inputData}
         style={{width:"260px"}}
@@ -34,7 +34,7 @@ const contextApp = useContext(AppContext);
           </option>
           {procesList.filter(x=> x.nazwa_id != 6).sort((a,c)=>a.nazwa_id-c.nazwa_id).map((option) => (
             <option key={option.id} value={option.id}>
-              {option.nazwa} {option.typ}  {option.rodzaj}
+              {option.nazwa} {option.typ}  {option.rodzaj} {option.wykonczenie} {option.obszar}
             </option>
           ))}
       </select>

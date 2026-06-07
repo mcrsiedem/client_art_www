@@ -4,7 +4,7 @@ import styles from '../Wyszukiwarka.module.css';
   export default function Szerokosc({szerokosc, setSzerokosc} ){
   return(
       <div className={styles.colData_nr}>
-      <label className={styles.labelData}> Szerokość </label>
+      <label className={styles.labelData}> Netto szer. </label>
       <input className={styles.inputData} style={{width:"80px"}} type="text"
             value={szerokosc}
             onChange={(event) => {

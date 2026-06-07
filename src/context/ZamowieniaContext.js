@@ -17,6 +17,10 @@ const [showWyszukiwarka, setShowWyszukiwarka] = useState(false);
     const [wysokosc,setWysokosc] = useState(null);
     const [szerokosc,setSzerokosc] = useState(null);
     const [element_proces_id,setElement_proces_id] = useState(null);
+    const [arkusz_wysokosc,setArkusz_wysokosc] = useState(null);
+    const [arkusz_szerokosc, setArkusz_szerokosc] = useState(null);
+
+    
 
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -81,7 +85,7 @@ const updatePagination = (updates) => {
    _widokZamowien,handlePageChange,
       updatePagination,  pagination, setPagination,widok,updateWidok,
       showWyszukiwarka, setShowWyszukiwarka,
-      nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id
+      nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id,arkusz_wysokosc,setArkusz_wysokosc,arkusz_szerokosc, setArkusz_szerokosc
 
       }}
     >

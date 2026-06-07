@@ -26,12 +26,14 @@ import Papier from "./components/Papier";
 import Wysokosc from "./components/Wysokosc";
 import Szerokosc from "./components/Szerokosc";
 import ProcesyElementow from "./components/ProcesyElementow";
+import SzerokoscPapieru from "./components/SzerokoscPapieru";
+import WysokoscPapieru from "./components/WysokoscPapieru";
 // import Papier from "pages/ProcesyView/row/components/Papier";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id,arkusz_wysokosc,setArkusz_wysokosc,arkusz_szerokosc, setArkusz_szerokosc } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
@@ -63,8 +65,8 @@ export default function Wyszukiwarka() {
             <Nr nr={nr} setNr={setNr} />
             <Rok rok={rok} setRok={setRok} />
             <Praca praca={praca} setPraca={setPraca} />
+            <Szerokosc szerokosc={szerokosc} setSzerokosc={setSzerokosc} />
                   <Wysokosc wysokosc={wysokosc} setWysokosc={setWysokosc} />
-            <Szerokosc szerokosc={szerokosc} setNr={setSzerokosc} />
             <Isbn isbn={isbn} setIsbn={setIsbn} />
             <KodaPracy kod={kod} setKod={setKod} />
             <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
@@ -76,8 +78,11 @@ export default function Wyszukiwarka() {
 
       
 
-            <Papier papierId={papierId} setPapierId={setPapierId} />
             <ProcesyElementow element_proces_id={element_proces_id} setElement_proces_id={setElement_proces_id} />
+            <Papier papierId={papierId} setPapierId={setPapierId} />
+            <SzerokoscPapieru arkusz_szerokosc={arkusz_szerokosc} setArkusz_szerokosc={setArkusz_szerokosc} />
+            <WysokoscPapieru arkusz_wysokosc={arkusz_wysokosc} setArkusz_wysokosc={setArkusz_wysokosc} />
+           
            
             </div>
 
@@ -99,6 +104,11 @@ export default function Wyszukiwarka() {
                 setPapierId(0);
                 setWysokosc("");
                 setSzerokosc("");
+                setElement_proces_id(0);
+                setArkusz_szerokosc("");
+                setArkusz_wysokosc("");
+
+
 
 
                 // console.log(dane)

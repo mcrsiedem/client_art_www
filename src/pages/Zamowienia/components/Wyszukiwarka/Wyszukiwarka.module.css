@@ -305,9 +305,8 @@
 }
 
 .resultAreaLeft {
-      display: flex;
+    display: flex;
     align-items: center;
-
     justify-content: start;
     padding-left: 10px;
 }
@@ -315,14 +314,28 @@
 
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    
+    justify-content: center;
+flex-direction: column;   
     gap:10px;
     /* padding-bottom: 15px; */
     /* padding-right: 10px; */
   /* width: 300px; */
 /* background-color: #94a3b8; */
 }
+
+.resultAreaRow {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+flex-direction: row;   
+    gap:10px;
+    /* padding-bottom: 15px; */
+    /* padding-right: 10px; */
+  /* width: 300px; */
+/* background-color: #94a3b8; */
+}
+
 .resultAreaRight {
 /* background-color: #ebc1074e; */
     display: flex;
@@ -425,7 +438,7 @@
   border-radius: 5px;
   border-color: transparent;
   outline: 1px solid rgb(216, 216, 216);
-  padding: 5px 10px;
+  padding: 2px 5px;
 }
 
 

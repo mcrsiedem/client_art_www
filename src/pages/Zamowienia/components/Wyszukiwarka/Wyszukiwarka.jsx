@@ -23,12 +23,14 @@ import KodaPracy from "./components/KodPracy";
 import NrZamowieniaKlienta from "./components/NrZamowieniaKlienta";
 import NrKalkulacji from "./components/NrKalkulacji";
 import Papier from "./components/Papier";
+import Wysokosc from "./components/Wysokosc";
+import Szerokosc from "./components/Szerokosc";
 // import Papier from "pages/ProcesyView/row/components/Papier";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
@@ -55,15 +57,25 @@ export default function Wyszukiwarka() {
         <div className={styles.resultArea}>
           <div className={styles.resultAreaLeft}></div>
           <div className={styles.resultAreaCenter}>
+
+            <div className={styles.resultAreaRow}>
             <Nr nr={nr} setNr={setNr} />
             <Rok rok={rok} setRok={setRok} />
             <Praca praca={praca} setPraca={setPraca} />
             <Klient klient={klient} setKlient={setKlient} />
-            <Papier papierId={papierId} setPapierId={setPapierId} />
             <Isbn isbn={isbn} setIsbn={setIsbn} />
             <KodaPracy kod={kod} setKod={setKod} />
             <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
             <NrZamowieniaKlienta nr_zamowienia_klienta={nr_zamowienia_klienta} setNr_zamowienia_klienta={setNr_zamowienia_klienta} />
+            </div>
+
+            <div className={styles.resultAreaRow}>
+            <Wysokosc wysokosc={wysokosc} setWysokosc={setWysokosc} />
+            <Szerokosc szerokosc={szerokosc} setNr={setSzerokosc} />
+
+            <Papier papierId={papierId} setPapierId={setPapierId} />
+           
+            </div>
 
           </div>
           <div className={styles.resultAreaRight}>
@@ -81,6 +93,8 @@ export default function Wyszukiwarka() {
                 setNr_zamowienia_klienta("");
                 setNr_kalkulacji("");
                 setPapierId(0);
+                setWysokosc("");
+                setSzerokosc("");
 
 
                 // console.log(dane)

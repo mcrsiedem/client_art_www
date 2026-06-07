@@ -25,12 +25,13 @@ import NrKalkulacji from "./components/NrKalkulacji";
 import Papier from "./components/Papier";
 import Wysokosc from "./components/Wysokosc";
 import Szerokosc from "./components/Szerokosc";
+import ProcesyElementow from "./components/ProcesyElementow";
 // import Papier from "pages/ProcesyView/row/components/Papier";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
@@ -62,7 +63,8 @@ export default function Wyszukiwarka() {
             <Nr nr={nr} setNr={setNr} />
             <Rok rok={rok} setRok={setRok} />
             <Praca praca={praca} setPraca={setPraca} />
-            <Klient klient={klient} setKlient={setKlient} />
+                  <Wysokosc wysokosc={wysokosc} setWysokosc={setWysokosc} />
+            <Szerokosc szerokosc={szerokosc} setNr={setSzerokosc} />
             <Isbn isbn={isbn} setIsbn={setIsbn} />
             <KodaPracy kod={kod} setKod={setKod} />
             <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
@@ -70,10 +72,12 @@ export default function Wyszukiwarka() {
             </div>
 
             <div className={styles.resultAreaRow}>
-            <Wysokosc wysokosc={wysokosc} setWysokosc={setWysokosc} />
-            <Szerokosc szerokosc={szerokosc} setNr={setSzerokosc} />
+            <Klient klient={klient} setKlient={setKlient} />
+
+      
 
             <Papier papierId={papierId} setPapierId={setPapierId} />
+            <ProcesyElementow element_proces_id={element_proces_id} setElement_proces_id={setElement_proces_id} />
            
             </div>
 

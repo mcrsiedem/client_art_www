@@ -25,6 +25,7 @@ export default
     const legiFragmenty = techContext.legiFragmenty;
     const setLegiFragmenty = techContext.setLegiFragmenty;
     const oprawaTech = techContext.oprawaTech;
+    const daneTech = techContext.daneTech;
       const [show, setShow] = useState(false);
   
 
@@ -34,7 +35,7 @@ export default
             className={style.expand}
             src={icon}
             onClick={() => {
-              handleAddArkusz(row, arkusze, setArkusze,legi,legiFragmenty,oprawaTech,setLegi,setLegiFragmenty);
+              handleAddArkusz(row, arkusze, setArkusze,legi,legiFragmenty,oprawaTech,setLegi,setLegiFragmenty,daneTech);
             }}
             alt="Procesy"
           />
@@ -46,34 +47,11 @@ export default
 
 
 
-    function PODAJ({ show }) {
-    const techContext = useContext(TechnologyContext);
-    const arkusze = techContext.arkusze;
-    const setArkusze = techContext.setArkusze;
-    const legi = techContext.legi;
-    const setLegi = techContext.setLegi;
-    const legiFragmenty = techContext.legiFragmenty;
-    const setLegiFragmenty = techContext.setLegiFragmenty;
-    const oprawaTech = techContext.oprawaTech;
-  
-        if(show){
-          return (
-              <div className={style.background}>
-                  <div className={style.main}>
-                    <button>OK</button>
-                  </div>
-
-              </div>
-            );
-
-        }
-    
-    
-  }
 
 
 
-      const handleAddArkusz = (row, arkusze, setArkusze,legi,legiFragmenty,oprawaTech,setLegi,setLegiFragmenty) => {
+
+      const handleAddArkusz = (row, arkusze, setArkusze,legi,legiFragmenty,oprawaTech,setLegi,setLegiFragmenty,daneTech) => {
 
       let new_arkusz_id = Math.max(...arkusze.map((f) => f.id)) + 1
       //------------------- akrusz
@@ -83,6 +61,7 @@ export default
       global_id:0,
       id: new_arkusz_id,
       indeks: Math.max(...newArkusze.map((f) => f.indeks)) + 1,
+      zamowienie_id: daneTech.zamowienie_id,
       insert: true,
     });
 

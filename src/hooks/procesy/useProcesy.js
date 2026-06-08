@@ -419,7 +419,48 @@ setWykonania(new_wykonania)
 
 }
 
-const aktualizujProcesy = async () =>{
+
+
+
+
+const aktualizujProcesy = async () => {
+  try {
+    const grupyDoZapisu = grupaWykonan.filter(x => x.global_id === 0);
+    const wykonaniaDoZapisu = wykonania.filter(x => x.global_id === 0);
+
+    // 1. Najpierw zapisujemy grupy i czekamy na odpowiedź serwera
+    console.log("Start zapisu grup...");
+    const resGrupy = await saveGrupaWykonan(grupyDoZapisu);
+    console.log("Grupy zapisane pomyślnie:", resGrupy.data);
+
+    // 2. Dopiero po sukcesie grup, odpalamy wykonania
+    console.log("Start zapisu wykonań...");
+    const resWykonania = await saveWykonania(wykonaniaDoZapisu);
+    console.log("Wykonania zapisane pomyślnie:", resWykonania.data);
+
+    // 3. Na końcu odświeżamy parametry
+    await fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
+    console.log("Parametry odświeżone.");
+
+  } catch (error) {
+    // Jeśli cokolwiek się wywali (błąd 500, brak sieci, timeout), zobaczysz to tutaj
+    console.error("Błąd w aktualizujProcesy:", error.response?.data || error.message);
+  }
+};
+
+// Czyste funkcje zwracające Promise z Axiosa (z zachowaniem Twojej literówki w URL)
+const saveGrupaWykonan = (grupaWykonan) => {
+  const token = sessionStorage.getItem("token");
+  return axios.post(`${IP}zapiszTechnologieInsertGrupyZammowienia/${token}`, [grupaWykonan]);
+};
+
+const saveWykonania = (wykonania) => {
+  const token = sessionStorage.getItem("token");
+  return axios.post(`${IP}zapiszTechnologieInsertWykonania/${token}`, [wykonania]);
+};
+
+
+const aktualizujProcesy2 = async () =>{
 await saveGrupaWykonan(grupaWykonan.filter(x=>x.global_id == 0))
 await saveWykonania(wykonania.filter(x=>x.global_id == 0))
 await fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
@@ -428,7 +469,7 @@ await fechparametryTechnologii(daneTech.zamowienie_id, daneTech.id);
 
 
 
-const saveGrupaWykonan = (grupaWykonan) =>{
+const saveGrupaWykonan2 = (grupaWykonan) =>{
 
   console.log(" grupa do zapisu: ",grupaWykonan)
 
@@ -439,7 +480,8 @@ resolve(res)
 }
 
 
-const saveWykonania = (wykonania) =>{
+const saveWykonania2 = (wykonania) =>{
+  console.log(" wykonania do zapisu: ",wykonania)
   return new Promise(async(resolve,reject)=>{
    let res = await axios.post(IP + "zapiszTechnologieInsertWykonania/" + sessionStorage.getItem("token"),[wykonania])
 resolve(res)

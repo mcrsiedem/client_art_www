@@ -424,6 +424,8 @@ function Usun({ row }) {
   const procesyElementowTechTemporary = techContext.procesyElementowTechTemporary;
   const procesyElementowTech = techContext.procesyElementowTech;
   const setProcesyElementowTechTemporary = techContext.setProcesyElementowTechTemporary;
+
+
   return (
     <td className={style.col_button}>
       <div>
@@ -437,7 +439,20 @@ function Usun({ row }) {
             // setGrupaWykonan(grupaWykonan.filter((p) => p.proces_id !== row.id))
             // setWykonania(wykonania.filter((p) => p.proces_id !== row.id))
 
-           setProcesyElementowTechTemporary(procesyElementowTechTemporary.map((t, a) => {
+            // przed skasowaniem procesu sprawdza czy istnieją grupy wykonan
+
+            if (
+              grupaWykonan.find(
+                (x) =>
+                  parseInt(x.global_proces_id) == parseInt(row.proces_id) &&
+                  parseInt(x.element_id) == parseInt(row.element_id),
+              )
+            ) {
+              alert("Najpier skasuj grupy wykonan")
+            }else{
+
+
+                         setProcesyElementowTechTemporary(procesyElementowTechTemporary.map((t, a) => {
                 if (t.id == row.id) {
                   return {
                     ...t,
@@ -448,6 +463,17 @@ function Usun({ row }) {
                 }
               })
             );
+              // alert("Można kasować")
+            }
+
+
+
+
+
+
+
+
+
 
       
 

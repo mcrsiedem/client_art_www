@@ -74,7 +74,7 @@ const WykonaniaTechTable = () => {
 
   return (
   <div className={style.main}>
-      {procesyElementowTech.sort((a, b) => a.element_id - b.element_id).map((rowProces) => (
+      {procesyElementowTech.filter(x=> x.delete != true).sort((a, b) => a.element_id - b.element_id).map((rowProces) => (
         <ProcesRow rowProces={rowProces} />
       ))}
          {grupaOprawaTech.sort((a, b) => a.id - b.id).map((grupaOprawa) => (

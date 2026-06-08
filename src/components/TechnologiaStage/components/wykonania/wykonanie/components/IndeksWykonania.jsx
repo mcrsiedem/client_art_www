@@ -18,6 +18,7 @@ export default function IndeksWykonania({ rowWykonanie }) {
             updateWykonanie({
               ...rowWykonanie,
               indeks: e.target.value,
+              update:true
             });
           }
         }}

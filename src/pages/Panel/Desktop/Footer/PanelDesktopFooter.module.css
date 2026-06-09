@@ -1,14 +1,20 @@
 
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 30px;
+  display: grid;
+  grid-template-columns: 100px 1fr ;
+  /* justify-content: space-between;
+  align-items: center; */
+  /* padding-right: 30px;
 
   position: relative;
-  width: 100%;
+  width: 100%; */
+  margin-bottom: 10px;
   /* background-color: aqua; */
+padding-right: 30px;
+gap:10px
+
+
   /* Ważne dla pozycjonowania rozwijanego menu */
 
   /* padding-bottom: 10px; */

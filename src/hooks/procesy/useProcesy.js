@@ -84,8 +84,8 @@ export function useProcesy(){
 
 
 
-setGrupaWykonan(new_grupy.map( ng => ({...ng,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
-setWykonania(new_wykonania)
+setGrupaWykonan(new_grupy.map( ng => ({...ng,technologia_id:daneTech.id,czas:SumaCzasow(new_wykonania,ng),przeloty:SumaPrzelotow(new_wykonania,ng),ilosc_narzadow:SumaWykonan(new_wykonania,ng)}) ));
+setWykonania(new_wykonania.map( ng => ({...ng,technologia_id:daneTech.id})))
 }
 
 

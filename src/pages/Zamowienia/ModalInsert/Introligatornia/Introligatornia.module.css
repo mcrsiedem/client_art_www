@@ -373,11 +373,11 @@ width: 230px;
     /* background: rgba(50, 52, 54, 0.726);
     background: rgba(50, 52, 54, 0.575); */
 
-background: rgba(50, 52, 54, 0.075); 
+/* background: rgba(50, 52, 54, 0.075);  */
     box-shadow: none;
        border: 1px solid rgba(88, 88, 88, 0.247);
 
-    /* border: none; */
+    border: none;
     color: rgb(85, 85, 85);
     padding-left: 10px;
     border-radius: 5px;
@@ -388,6 +388,7 @@ background: rgba(50, 52, 54, 0.075);
     width: 260px;
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-left: 15px;
 }
 
 .select_oprawa:focus{

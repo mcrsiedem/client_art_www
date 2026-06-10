@@ -54,7 +54,7 @@ export default function IntroligatorniaTable({
   return (
     <div className={style.container}>
       <div className={style.oprawa}>
-        <p className={style.produkt_txt}>Oprawa</p>
+        <p className={style.produkt_txt}>Introligatornia</p>
         {/* <Header  /> */}
         <OprawaTable
           handleChangeCardProdukty={handleChangeCardProdukty}
@@ -298,37 +298,37 @@ const [setStatus] = useStatus()
 
   return (
     <td className={style.tdOprawa}>
-      <select
+      <input
         className={style.select_oprawa}
-        value={row.oprawa}
+        value={contextApp.procesList?.find(x=>x.id==row.oprawa)?.typ || "brak oprawy"}
         disabled
-        onChange={(event) => {
-          handleUpdateRowOprawa({ ...row, oprawa: event.target.value,update:true });
+        // onChange={(event) => {
+        //   handleUpdateRowOprawa({ ...row, oprawa: event.target.value,update:true });
 
-          if (row.indeks == 0) {
-            setProdukty(
-              produkty.map((p) => {
-                if (p.id === row.produkt_id) {
-                  return { ...p, oprawa: event.target.value,update:true };
-                } else {
-                  return p;
-                }
-              })
-            );
-          }
+        //   if (row.indeks == 0) {
+        //     setProdukty(
+        //       produkty.map((p) => {
+        //         if (p.id === row.produkt_id) {
+        //           return { ...p, oprawa: event.target.value,update:true };
+        //         } else {
+        //           return p;
+        //         }
+        //       })
+        //     );
+        //   }
 
-          add(         {
-            kategoria: "Oprawa",
-            event: " Nowa oprawa : "+contextApp.procesList?.filter(x=>x.id==event.target.value )[0]?.typ || "brak oprawy",
-            zamowienie_id: daneZamowienia.id
-          })
-           // 
-           setStatus(3)
+        //   add(         {
+        //     kategoria: "Oprawa",
+        //     event: " Nowa oprawa : "+contextApp.procesList?.filter(x=>x.id==event.target.value )[0]?.typ || "brak oprawy",
+        //     zamowienie_id: daneZamowienia.id
+        //   })
+        //    // 
+        //    setStatus(3)
 
 
-        }}
+        // }}
       >
-                {   <option value = "0"  >
+                {/* {   <option value = "0"  >
              brak oprawy
             </option>}
         {contextApp.procesList?.filter(x=>x.nazwa_id==6).map((option) => (
@@ -336,8 +336,8 @@ const [setStatus] = useStatus()
             {option.typ} {option.rodzaj + " "+parseInt(row?.naklad).toLocaleString()+" szt."} 
        
           </option>
-        ))}
-      </select>
+        ))} */}
+      </input>
     </td>
   );
 }

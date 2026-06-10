@@ -27,7 +27,7 @@ export default function Footer() {
   const setProdukty = contextModalInsert.setProdukty;
     const [add] = useHistoria()
    const [setStatus] = useStatus()
-
+  const contextApp = useContext(AppContext);
    const sprawdzKolejnoscIndeksow = (array) => {
   // Sprawdzamy każdy element tablicy.
   // 'element' to bieżący obiekt, 'index' to pozycja tego obiektu w tablicy (0, 1, 2, ...).
@@ -110,6 +110,14 @@ if (selectedOprawaRow.indeks == 0) {
           
           }
           handleUpdateRowOprawa({ ...selectedOprawaRow, oprawa: proces_id,update:true });
+
+                    add(         {
+            kategoria: "Oprawa",
+            event: " Nowa oprawa : "+contextApp.procesList?.find(x=>x.id==proces_id)?.typ || "brak oprawy",
+            zamowienie_id: daneZamowienia.id
+          })
+           // 
+           setStatus(3)
 
 
           }else{

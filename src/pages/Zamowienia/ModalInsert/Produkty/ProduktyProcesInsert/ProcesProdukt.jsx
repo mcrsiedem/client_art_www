@@ -36,6 +36,8 @@ function Table() {
   const contexModal = useContext(ModalInsertContext);
   const procesyProduktowTemporary = contexModal.procesyProduktowTemporary;
   const {addProcessProdukt} = useProcessProdukt();
+const selectedOprawaRow = contexModal.selectedOprawaRow;
+
   return (
     <div className={style.main}>
       <table className={style.table}>
@@ -56,6 +58,7 @@ function Table() {
         <tbody>
           {procesyProduktowTemporary?.sort((a, b) => a.indeks - b.indeks)
           .filter((x) => x.delete != true)
+          .filter((x) => x.oprawa_id == selectedOprawaRow.id)
           .map((row, i) => {
             return (
               <tr key={row.id}>

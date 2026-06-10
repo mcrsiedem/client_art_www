@@ -20,6 +20,8 @@ export default function Footer() {
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy
     const daneZamowienia = contextModalInsert.daneZamowienia
+  const handleUpdateRowOprawa = contextModalInsert.handleUpdateRowOprawa;
+  const selectedOprawaRow = contextModalInsert.selectedOprawaRow;
 
       const produkty = contextModalInsert.produkty;
   const setProdukty = contextModalInsert.setProdukty;
@@ -48,7 +50,7 @@ export default function Footer() {
         className={style.btn}
         onClick={() => {
 
-          if(sprawdzKolejnoscIndeksow(modalContext.procesyProduktowTemporary.filter(x=> x.delete != true))){
+          if(sprawdzKolejnoscIndeksow(modalContext.procesyProduktowTemporary.filter(x=> x.delete != true).filter((x) => x.oprawa_id == selectedOprawaRow.id))){
                       modalContext.setShowProcesyProduktow(false);
            modalContext.setProcesyProduktow( modalContext.procesyProduktowTemporary.map(row => {
             if(row.delete== true && row.historia != true){
@@ -88,11 +90,14 @@ export default function Footer() {
       let proces = modalContext.procesyProduktowTemporary
   .filter(x => x.delete != true)
   .filter(x => x.nazwa_id == 6)
+          .filter((x) => x.oprawa_id == selectedOprawaRow.id)
+
   .sort((a, b) => parseInt(b.indeks) - parseInt(a.indeks))[0];
 
 let proces_id = proces ? proces.proces_id : 0;
 
 
+if (selectedOprawaRow.indeks == 0) {
             setProdukty(
               produkty.map((p) => {
                 if (p.indeks == 0) {
@@ -103,6 +108,8 @@ let proces_id = proces ? proces.proces_id : 0;
               })
             );
           
+          }
+          handleUpdateRowOprawa({ ...selectedOprawaRow, oprawa: proces_id,update:true });
 
 
           }else{

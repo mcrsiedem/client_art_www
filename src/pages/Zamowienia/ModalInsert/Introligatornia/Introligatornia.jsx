@@ -301,6 +301,7 @@ const [setStatus] = useStatus()
       <select
         className={style.select_oprawa}
         value={row.oprawa}
+        disabled
         onChange={(event) => {
           handleUpdateRowOprawa({ ...row, oprawa: event.target.value,update:true });
 

@@ -26,7 +26,7 @@ let procesyProduktowTemporaryEdit = procesyProduktowTemporary
         ...appContext.procesList.find(x=> x.id == 77), // domyślny proces produktowy
         proces_id: 77,
         id: getMaxID(procesyProduktowTemporary),
-        indeks: getMaxIndeks(procesyProduktowTemporary.filter(x=> x.delete != true)),
+        indeks: getMaxIndeks(procesyProduktowTemporary.filter(x=> x.delete != true).filter((x) => x.oprawa_id == selectedOprawaRow.id)),
         utworzyl: DecodeToken(sessionStorage.getItem("token")).id,
         zmodyfikowal: DecodeToken(sessionStorage.getItem("token")).id,
         zamowienie_id: selectedOprawaRow.zamowienie_id,

@@ -52,7 +52,7 @@ export default function  ProcessTyp ({ row }) {
         {
             // tylko procesy produktowe czyli produkt == 1 
 procesList
-        .filter(p=> p.produkt==1 && p.nazwa_id == procesList.find(x=> x.id == row.proces_id)?.nazwa_id)
+        .filter(p=> (p.produkt==1 || p.komplet==1) && p.nazwa_id == procesList.find(x=> x.id == row.proces_id)?.nazwa_id)
         // .filter(p=> p.produkt==1 && p.nazwa_id == 18)
 
                .map((option) => (

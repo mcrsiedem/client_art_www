@@ -52,7 +52,7 @@ export default function  ProcesName ({ row }) {
 
         {
             // tylko procesy produktowe czyli produkt == 1 
-        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt == 1).map((option) => option.nazwa)))
+        Array.from(new Set(contexApp.procesList.filter((x) => x.produkt == 1 || x.komplet == 1).map((option) => option.nazwa)))
           // 2. Mapujemy po każdej unikalnej nazwie
           .map((unikalnaNazwa) => {
             // 3. Znajdujemy pierwszy obiekt w oryginalnej liście  pasujący do tej unikalnej nazwy, aby pobrać jego ID.

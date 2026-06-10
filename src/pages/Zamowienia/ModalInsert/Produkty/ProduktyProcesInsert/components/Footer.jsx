@@ -20,6 +20,9 @@ export default function Footer() {
     const contextModalInsert = useContext(ModalInsertContext);
     const elementy = contextModalInsert.elementy
     const daneZamowienia = contextModalInsert.daneZamowienia
+
+      const produkty = contextModalInsert.produkty;
+  const setProdukty = contextModalInsert.setProdukty;
     const [add] = useHistoria()
    const [setStatus] = useStatus()
 
@@ -80,6 +83,28 @@ export default function Footer() {
 
 
 }))
+
+
+      let proces = modalContext.procesyProduktowTemporary
+  .filter(x => x.delete != true)
+  .filter(x => x.nazwa_id == 6)
+  .sort((a, b) => parseInt(b.indeks) - parseInt(a.indeks))[0];
+
+let proces_id = proces ? proces.proces_id : 0;
+
+
+            setProdukty(
+              produkty.map((p) => {
+                if (p.indeks == 0) {
+                  return { ...p, oprawa: proces_id,update:true };
+                } else {
+                  return p;
+                }
+              })
+            );
+          
+
+
           }else{
             alert("Ponumeruj ładnie kolejność : ) ")
           }

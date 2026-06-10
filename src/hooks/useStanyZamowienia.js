@@ -14,6 +14,9 @@ export function useStanyZamowienia() {
   const historiaZamowienia = contextModalInsert.historiaZamowienia;
   const ksiegowosc = contextModalInsert.ksiegowosc;
   const faktury = contextModalInsert.faktury;
+  const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  
+
 
   const appcontext = useContext(AppContext);
   const listaPapierowNazwy = appcontext.listaPapierowNazwy;
@@ -43,6 +46,8 @@ console.log("listaPapierowNazwy: ", listaPapierowNazwy);
 console.table("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
 console.table( kosztyDodatkoweZamowienia);
 // console.table( listaPapierowWyszukiwarka);
+console.table("procesyProduktowTemporary: ", procesyProduktowTemporary);
+
 
 
 // console.log("ksiegowosc: ", ksiegowosc);

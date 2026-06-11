@@ -102,7 +102,10 @@ function createBook() {
             ...appContext.procesList.find(x=> x.id == parseInt(preOrderContext.preOrder.oprawa)), 
             proces_id: preOrderContext.preOrder.oprawa,
             oprawa_id:1,
-            naklad:produkty[0].naklad
+            naklad:produkty[0].naklad,
+            indeks:1,
+            user_id:DecodeToken(sessionStorage.getItem("token")).id
+
           }]);
 
 

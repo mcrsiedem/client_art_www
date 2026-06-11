@@ -15,6 +15,9 @@ export function useStanyZamowienia() {
   const ksiegowosc = contextModalInsert.ksiegowosc;
   const faktury = contextModalInsert.faktury;
   const procesyProduktowTemporary = contextModalInsert.procesyProduktowTemporary;
+  const procesyProduktow = contextModalInsert.procesyProduktow;
+
+  
   
 
 
@@ -46,6 +49,7 @@ console.log("listaPapierowNazwy: ", listaPapierowNazwy);
 console.table("kosztyDodatkoweZamowienia: ", kosztyDodatkoweZamowienia);
 console.table( kosztyDodatkoweZamowienia);
 // console.table( listaPapierowWyszukiwarka);
+console.table("procesyProduktow: ", procesyProduktow);
 console.table("procesyProduktowTemporary: ", procesyProduktowTemporary);
 
 

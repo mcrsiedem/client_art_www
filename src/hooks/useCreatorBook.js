@@ -93,6 +93,19 @@ function createBook() {
     );
 
 
+    // let procesy_produktow_temp = modalInsertContext.procesyProduktow({
+    //         ...appContext.procesList.find(x=> x.id == parseInt(preOrderContext.preOrder.oprawa)), 
+    //         proces_id: preOrderContext.preOrder.oprawa,
+    //       });
+
+         modalInsertContext.setProcesyProduktow([{
+            ...appContext.procesList.find(x=> x.id == parseInt(preOrderContext.preOrder.oprawa)), 
+            proces_id: preOrderContext.preOrder.oprawa,
+            oprawa_id:1,
+            naklad:produkty[0].naklad
+          }]);
+
+
 
     let temp =       modalInsertContext.procesyElementow.map((t) => {
         if (t.id != 3) {
@@ -142,6 +155,7 @@ function createBook() {
 }
 
 modalInsertContext.setProcesyElementow(temp)
+// modalInsertContext.setProcesyProduktow(procesy_produktow_temp)
 
 
   }

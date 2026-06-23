@@ -30,6 +30,9 @@ export default function MenuHeaderZamowienia({ showMenu, setShowMenu }) {
     return (
       <div className={style.menu_legi}>
         <Odswiez  setShowMenu={setShowMenu} disabled={disabled} setDisabled={setDisabled}/>
+        <OdswiezDataZakonczeniaDruku  setShowMenu={setShowMenu} disabled={disabled} setDisabled={setDisabled}/>
+
+        
         <OdblokujZamowienia  setShowMenu={setShowMenu} />
         <ZnajdzZlecenie  setShowMenu={setShowMenu} />
         
@@ -61,7 +64,7 @@ const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
     className={style.menu_legi_btn}
     onClick={() => {
             if(!disabled){
-      setShowMenu(false);
+            setShowMenu(false);
             refZamPagination();
             setDisabled(true)
             setTimeout(() => {
@@ -76,6 +79,35 @@ const Odswiez = ({setShowMenu,disabled, setDisabled} ) =>{
                   < RefreshCcw size={20} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>}
 
     Odśwież
+  </button>
+  )
+}
+
+const OdswiezDataZakonczeniaDruku = ({setShowMenu,disabled, setDisabled} ) =>{
+  const techContext = useContext(TechnologyContext)
+  const {setOpenModalInsert} = useContext(ModalInsertContext);
+  const {refreshZamowieniaProofy,refZamPagination,refZamPaginationKoniecDruku} = useZamowienia()
+
+  return(
+    <button
+    className={style.menu_legi_btn}
+    onClick={() => {
+            if(!disabled){
+            setShowMenu(false);
+            refZamPaginationKoniecDruku();
+            setDisabled(true)
+            setTimeout(() => {
+              setDisabled(false);
+            }, 2000);
+        
+            }
+
+    }}
+  >
+     {disabled?  < RefreshCcw size={20} style={{color:'grey',marginRight:'10px',marginLeft:'4px'}}/> :
+                  < RefreshCcw size={20} style={{color:'yellowgreen',marginRight:'10px',marginLeft:'4px'}}/>}
+
+    Koniec Druku
   </button>
   )
 }

@@ -76,6 +76,7 @@ function Zamowienia() {
     { id: "faktury_status", label: "Faktury status" , visible: false},
     { id: "isbn", label: "ISBN" , visible: false},
     { id: "vat_id", label: "VAT" , visible: false},
+    { id: "koniec_druku", label: "Koniec druku" , visible: false},
 
     
     

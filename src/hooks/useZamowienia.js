@@ -106,6 +106,41 @@ export function useZamowienia() {
     }
 
 
+    contextApp.setZamowienia([...res.data.data]);
+    contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
+    updatePagination(res.data.pagination)
+    // console.log(res.data.pagination)
+    setIsLoading(false);
+
+    if (DecodeToken(sessionStorage.getItem("token")).id == 3) {
+      scrollTable(tableZamowienia);
+    }
+  };
+
+
+    const refZamPaginationKoniecDruku = async (paginacja1 = true) => {
+
+    setIsLoading(true);
+    let res
+
+    if(paginacja1){
+           res = await axios.post(
+      IP +
+        "zamowieniaPaginationsKoniecDruku/" +
+        sessionStorage.getItem("token"),{...pagination,...widok}
+  
+    );
+
+    }else{
+
+                 res = await axios.post(
+      IP +
+        "zamowieniaPaginationsKoniecDruku/" +
+        sessionStorage.getItem("token"),{...pagination,...widok,currentPage:1}
+  
+    );
+    }
+
 
     contextApp.setZamowienia([...res.data.data]);
     contextApp.setZamowieniaWyszukiwarka([...res.data.data]);
@@ -117,6 +152,10 @@ export function useZamowienia() {
       scrollTable(tableZamowienia);
     }
   };
+
+
+
+
 
   const refreshZamowieniaNiezamknieteKoszty = async () => {
     setIsLoading(true);
@@ -320,6 +359,7 @@ const getElementy = async (nr, rok) => {
   return {
     refreshZamowienia,
     refZamPagination,
+    refZamPaginationKoniecDruku,
     odblokujZamowienie,
     deleteZamowienie,
     // zmienEtapWydrukowane,

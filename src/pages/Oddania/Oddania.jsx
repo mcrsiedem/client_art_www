@@ -25,12 +25,16 @@ export default function Oddania( ) {
   const widokOddan =appContext.widokOddan;
 
 
+  const setIsLoading = appContext.setIsLoading;
+
 
   async function checkToken() {
     axios
       .get(IP + "/islogged/" + sessionStorage.getItem("token"))
       .then((res) => {
         if (res.data.Status === "Success") {
+      setIsLoading(true)
+
           fechOddaniaGrupy(widokOddan)
 
         } else {

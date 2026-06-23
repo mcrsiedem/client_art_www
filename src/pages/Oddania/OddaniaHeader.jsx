@@ -218,6 +218,7 @@ function FILTROWANIE_ODDANYCH() {
   const setWidokOddan = contextApp.setWidokOddan;
   const widokOddan = contextApp.widokOddan;
   const fechOddaniaGrupy = contextApp.fechOddaniaGrupy;
+  const setIsLoading = contextApp.setIsLoading;
 
   const _oddane = [
     {
@@ -239,6 +240,8 @@ function FILTROWANIE_ODDANYCH() {
       className={style.szukajInputSort}
       value={widokOddan}
       onChange={(event) => {
+      setIsLoading(true)
+
         setWidokOddan(event.target.value);
         fechOddaniaGrupy(event.target.value);
       }}

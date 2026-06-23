@@ -129,6 +129,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
 
     await axios.get(IP + "oddania_grupy/"+widok+"/"+ sessionStorage.getItem("token")).then((res)=>{
       // console.log(res.data)
+
       setOddaniaGrupy(res.data)
       setOddaniaGrupyWyszukiwarka(res.data)
     
@@ -137,7 +138,7 @@ return _status_wykonania.filter(x=> x.id ==id)[0].nazwa
       
       setOddaniaGrupy(prev=>{return prev})
       setOddaniaGrupyWyszukiwarka(prev=>{return prev})
-      
+      setIsLoading(false)
     });
     
 

@@ -78,7 +78,7 @@ try {
             setGrupaWykonan(refreshRes.data[9]);
             setWykonania(refreshRes.data[10]);
             setGrupaOprawaTech(refreshRes.data[11]);
-            setProcesyProduktowTech(refreshRes.data[12]);
+            setProcesyProduktowTech(refreshRes.data[14]);
             
 
         } else {

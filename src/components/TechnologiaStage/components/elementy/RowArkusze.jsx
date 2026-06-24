@@ -402,6 +402,8 @@ export default function RowArkusze  ({ row,i })  {
     const techContext = useContext(TechnologyContext)
     const arkusze = techContext.arkusze;
     const wykonania = techContext.wykonania;
+    const daneTech = techContext.daneTech;
+
      const {createProcesyFromArkuszNewGrupa} = useProcesy()
 
 
@@ -421,7 +423,8 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
               if(arkusze.some(x=> !x.global_id || x.global_id == 0 )){
                 alert("Najpierw zapisz technologię z nową ilością arkuszy")
               }else{
-              createProcesyFromArkuszNewGrupa(row)
+              // createProcesyFromArkuszNewGrupa(row)
+              createProcesyFromArkuszNewGrupa({...row, zamowienie_id: daneTech.zamowienie_id})
 
               }
               // handleRemoveArkusz()

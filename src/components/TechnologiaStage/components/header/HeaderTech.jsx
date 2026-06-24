@@ -56,11 +56,13 @@ export default function Header({}) {
         console.log("Legi: ", techContext.legi);
         console.log("Fragmenty leg tech: ", techContext.legiFragmenty);
         console.log("Grupy wykonan tech: ", techContext.grupaWykonan);
+              console.table( techContext.grupaWykonan);
         console.log("Wykonania tech: ", techContext.wykonania);
         // console.log("listaPapierow: ", appcontext.listaPapierow);
         console.log("grupaOprawaTech: ", techContext.grupaOprawaTech);
         console.table( techContext.procesyElementowTech);
         console.table( techContext.procesyProduktowTech);
+  
 
         // console.log(
         //   "lista wszystkich procesów appcontext.procesList: ",

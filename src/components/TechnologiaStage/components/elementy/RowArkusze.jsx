@@ -418,7 +418,7 @@ if(wykonania.some(x=> x.arkusz_id == row.id)){
             title="Stwórz wykonania do tego arkusza"
             src={logoExtract}
             onClick={() => {
-              if(arkusze.some(x=> x.global_id === 0 )){
+              if(arkusze.some(x=> !x.global_id || x.global_id == 0 )){
                 alert("Najpierw zapisz technologię z nową ilością arkuszy")
               }else{
               createProcesyFromArkuszNewGrupa(row)

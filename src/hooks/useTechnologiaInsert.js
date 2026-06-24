@@ -33,6 +33,8 @@ export function useTechnologiaInsert() {
     setSaveButtonDisabled,
     grupaOprawaTech,
     setGrupaOprawaTech,
+    procesyProduktowTech,
+    setProcesyProduktowTech
   } = useContext(TechnologyContext);
 
   async function zapiszTechnologiePool() {
@@ -48,7 +50,7 @@ export function useTechnologiaInsert() {
     grupaWykonan,
     grupaOprawaTech,
     wykonania,
-    procesyElementowTech]
+    procesyElementowTech,procesyProduktowTech]
 
 try {
         const token = sessionStorage.getItem("token");
@@ -76,6 +78,8 @@ try {
             setGrupaWykonan(refreshRes.data[9]);
             setWykonania(refreshRes.data[10]);
             setGrupaOprawaTech(refreshRes.data[11]);
+            setProcesyProduktowTech(refreshRes.data[12]);
+            
 
         } else {
             throw new Error(res.data.error || "Błąd zapisu");

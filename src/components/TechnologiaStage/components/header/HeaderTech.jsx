@@ -239,31 +239,6 @@ const ZapisBtnPromise = () => {
         daneTech.autor_id = DecodeToken(sessionStorage.getItem("token")).id  
 
         zapiszTechnologiePool()
-        // zapiszTechnologie({
-        //   daneTech,
-        //   produktyTech,
-        //   elementyTech,
-        //   fragmentyTech,
-        //   oprawaTech,
-        //   arkusze,
-        //   legi,
-        //   legiFragmenty,
-        //   grupaWykonan,
-        //   wykonania,
-        //   procesyElementowTech,
-        //   setProduktyTech,
-        //   setDaneTech,
-        //   setElementyTech,
-        //   setFragmentyTech,
-        //   setOprawaTech,
-        //   setLegi,
-        //   setLegiFragmenty,
-        //   setArkusze,
-        //   setGrupaWykonan,
-        //   setWykonania,
-        //   setProcesyElementowTech,setSaveButtonDisabled,
-        //   grupaOprawaTech, setGrupaOprawaTech
-        // });
        
       }
 

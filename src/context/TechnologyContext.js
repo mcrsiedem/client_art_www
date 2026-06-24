@@ -659,6 +659,8 @@ async function fechparametryTechnologii(idZamowienia,idTechnologii) {
   
   setWykonania(res.data[10])
   setGrupaOprawaTech(res.data[11])
+  setProcesyProduktowTech(res.data[14])
+  
    setShowTechnologyStage(true)
    appContext.setIsLoading(false);
 }
@@ -674,14 +676,7 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
   await clearState();
 
   const res_zam = await axios.get(IP + "parametry/"+idZamowienia+"/"+ sessionStorage.getItem("token"));
-  // setDane([])
-  // setProdukty([])
-  // setElementy([])
-  // setFragmenty([])
-  // setOprawa([])
-  // setProcesyElementow([])
-  // setHistoriaZamowienia([])
-  // setPakowanie([])
+
   setDane(res_zam.data[0][0])
      setProdukty(res_zam.data[1])
      setElementy(res_zam.data[2])
@@ -695,19 +690,6 @@ async function fechparametryTechnologiiDetails(idZamowienia,idTechnologii) {
      setProcesyProduktow(res_zam.data[13])
 
   const res = await axios.get(IP + "technologie_parametry/"+idTechnologii+"/"+ sessionStorage.getItem("token"));
-  // setDaneTech([]) 
-  // setProduktyTech([])
-  // setElementyTech([])
-  // setFragmentyTech([])
-  // setOprawaTech([])
-  // setProcesyElementowTech([])
-  // setLegi([])
-  //  setLegiFragmenty([])
-  //  setArkusze([])
-  //  setGrupaWykonan([])
-  //  setWykonania([])
-  // setRealizacje([])
-  // setProcesyProduktowTech([])
 
 
   setDaneTech(res.data[0][0]) 

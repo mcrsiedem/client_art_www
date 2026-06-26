@@ -18,7 +18,7 @@ const contextApp = useContext(AppContext);
       <label className={styles.labelData}> Klient </label>
       <select
         className={styles.inputData}
-        style={{width:"310px"}}
+        style={{width:"240px"}}
         value={klient}
         onChange={(event) => {
           setKlient( event.target.value);

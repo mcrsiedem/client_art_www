@@ -28,12 +28,14 @@ import Szerokosc from "./components/Szerokosc";
 import ProcesyElementow from "./components/ProcesyElementow";
 import SzerokoscPapieru from "./components/SzerokoscPapieru";
 import WysokoscPapieru from "./components/WysokoscPapieru";
+import Miesiac from "./components/DataSpedycji";
+import DataSpedycji from "./components/DataSpedycji";
 // import Papier from "pages/ProcesyView/row/components/Papier";
 
 export default function Wyszukiwarka() {
   const uiContext = useContext(UIContext);
   const techcontext = useContext(TechnologyContext);
-  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id,arkusz_wysokosc,setArkusz_wysokosc,arkusz_szerokosc, setArkusz_szerokosc } = useContext(ZamowienieContext);
+  const { setShowWyszukiwarka,nr, setNr,rok, setRok,klient, setKlient,praca, setPraca,isbn, setIsbn,kod, setKod,nr_zamowienia_klienta,setNr_zamowienia_klienta,nr_kalkulacji,setNr_kalkulacji,papierId,setPapierId,wysokosc,setWysokosc,szerokosc,setSzerokosc,element_proces_id,setElement_proces_id,arkusz_wysokosc,setArkusz_wysokosc,arkusz_szerokosc, setArkusz_szerokosc,dataSpedycji, setDataSpedycji } = useContext(ZamowienieContext);
 
   const { globalSearch } = useZamowienia();
 
@@ -71,6 +73,8 @@ export default function Wyszukiwarka() {
             <KodaPracy kod={kod} setKod={setKod} />
             <NrKalkulacji nr_kalkulacji={nr_kalkulacji} setNr_kalkulacji={setNr_kalkulacji} />
             <NrZamowieniaKlienta nr_zamowienia_klienta={nr_zamowienia_klienta} setNr_zamowienia_klienta={setNr_zamowienia_klienta} />
+            <DataSpedycji dataSpedycji={dataSpedycji} setDataSpedycji={setDataSpedycji} />
+
             </div>
 
             <div className={styles.resultAreaRow}>
@@ -107,6 +111,7 @@ export default function Wyszukiwarka() {
                 setElement_proces_id(0);
                 setArkusz_szerokosc("");
                 setArkusz_wysokosc("");
+                setDataSpedycji("");
 
 
 

@@ -20,7 +20,7 @@ const contextApp = useContext(AppContext);
       <label className={styles.labelData}> Proces </label>
       <select
         className={styles.inputData}
-        style={{width:"260px"}}
+        style={{width:"320px"}}
         value={element_proces_id}
         onChange={(event) => {
           setElement_proces_id( event.target.value);

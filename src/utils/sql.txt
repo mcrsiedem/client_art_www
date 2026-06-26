@@ -1,0 +1,1 @@
+SELECT * FROM artdruk.view_zamowienia_progres where data_spedycji> '2026-05-01' and data_spedycji< '2026-06-01' and (przeloty_druk_zostalo > 0 or przeloty_falc_zostalo >0 ) and etap =16

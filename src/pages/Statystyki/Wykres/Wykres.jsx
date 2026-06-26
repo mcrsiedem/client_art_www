@@ -188,7 +188,7 @@ const Wykres = () => {
                     <div style={styles.barGroup}>
                       {activeConfig.map(c => (
                         <div key={c.key} style={styles.barWrapper}>
-                          <span style={styles.barValue}>
+                          <span title={c.label} style={styles.barValue}>
                             {formatValue(group.values[c.key])}
                           </span>
                           <div style={styles.bar((group.values[c.key] / maxVal) * 100, c.color)}></div>
@@ -205,13 +205,7 @@ const Wykres = () => {
             </div>
           </div>
           
-          {/* <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
-              {activeConfig.map(c => (
-              <div key={c.key} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: '700', color: '#64748b' }}>
-                <div style={{ width: '14px', height: '14px', backgroundColor: c.color, borderRadius: '4px' }}></div> {c.label}
-              </div>
-            ))}
-          </div> */}
+
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '130px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
   {activeConfig.map(c => (

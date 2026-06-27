@@ -28,7 +28,7 @@ const StatCard = ({ label, value, unit, variant = "blue", isError = false }) => 
   );
 };
 
-const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
+const ProgressItem = ({ label, current, total, unit, color = "#2563eb" ,jednostka}) => {
   const percentage = Math.round((current / total) * 100) || 0;
   const isFinished = percentage >= 100;
   const fillColor = isFinished ? "#10b981" : color;
@@ -50,8 +50,8 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" }) => {
       </div>
       <div className="progressFooter">
         <span className="footerText">Zakończono: {current.toLocaleString()} {unit}</span>
-        <span className="footerText">Całość: {total.toLocaleString()} ark.</span>
-      {zostalo > 0 && <span className="footerText">Zostało: <span className="footerTextYellow">{zostalo.toLocaleString()} </span>  ark.</span>}  
+        <span className="footerText">Całość: {total.toLocaleString()} {unit}</span>
+      {zostalo > 0 && <span className="footerText">Zostało: <span className="footerTextYellow">{zostalo.toLocaleString()} </span>  {unit}</span>}  
       </div>
     </div>
   );
@@ -79,8 +79,8 @@ export default function ZamowieniaInfo() {
           align-items: flex-start;
           justify-content: center;
           background-color: rgba(15, 23, 42, 0.5);
-          // backdrop-filter: blur(4px);
-          padding-top: 3rem;
+         // backdrop-filter: blur(4px);
+          // padding-top: 3rem;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         .window {
@@ -138,10 +138,14 @@ export default function ZamowieniaInfo() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1rem;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
         }
         .statCard {
-          padding: 1rem;
+        display:flex;
+        align-items: center;
+          justify-content: space-between;
+
+          padding: 0.5rem;
           border-radius: 0.75rem;
           border: 1px solid #f1f5f9;
         }
@@ -159,7 +163,7 @@ export default function ZamowieniaInfo() {
           gap: 0.25rem;
         }
         .cardValue {
-          font-size: 1.875rem;
+          font-size: 1.275rem;
           font-weight: 900;
         }
         .cardUnit {
@@ -190,6 +194,7 @@ export default function ZamowieniaInfo() {
           align-items: center;
           gap: 0.75rem;
           margin-bottom: 1.25rem;
+          margin-top:1rem;
         }
         .dividerLabel {
           font-size: 0.65rem;
@@ -197,6 +202,7 @@ export default function ZamowieniaInfo() {
           color: #94a3b8;
           text-transform: uppercase;
           letter-spacing: 0.1em;
+
         }
         .line {
           height: 1px;
@@ -227,7 +233,7 @@ export default function ZamowieniaInfo() {
           margin-top: 2rem;
           background-color: #1e3b30c4;
           border-radius: 0.75rem;
-          padding: 1.25rem;
+          padding: 0.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -238,7 +244,7 @@ export default function ZamowieniaInfo() {
           margin-top: 2rem;
           background-color: #ff9100;
           border-radius: 0.75rem;
-          padding: 1.25rem;
+          padding: 0.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -252,7 +258,7 @@ export default function ZamowieniaInfo() {
           margin-top: 2rem;
           background-color: #423f3b;
           border-radius: 0.75rem;
-          padding: 1.25rem;
+          padding: 0.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -294,7 +300,7 @@ export default function ZamowieniaInfo() {
           </div>
 
           <div className="sectionDivider">
-            <span className="dividerLabel">Status Przelotów</span>
+            <span className="dividerLabel">Suma wykonań</span>
             <div className="line"></div>
           </div>
 
@@ -313,13 +319,6 @@ export default function ZamowieniaInfo() {
             color="#6366f1"
           />
 
-          <ProgressItem 
-            label="Druk progres.."
-            current={zamowieniaInfo.przeloty_druk_all - zamowieniaInfo.przeloty_druk_zostalo}
-            total={zamowieniaInfo.przeloty_druk_all}
-            unit="ark."
-            color="#6366f1"
-          />
 
 
 
@@ -331,22 +330,17 @@ export default function ZamowieniaInfo() {
               <span className="summaryValue">{zamowieniaInfo.naklad_zeszyt.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
+            +
             <div>
               
               <span className="summaryLabel"> Kolbus </span>
               <span className="summaryValue">{zamowieniaInfo.naklad_klejona.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
-            
-          </div>
-
-
-          <div className="summaryBox">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              {/* <StackIcon />  */}
-              <span className="summaryLabel">Całkowity nakład</span>
-            </div>
-            <div>
+            =
+                        <div>
+              
+              <span className="summaryLabel">  </span>
               <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
@@ -355,27 +349,59 @@ export default function ZamowieniaInfo() {
 
 
 
+                   <div className="sectionDivider">
+            <span className="dividerLabel">Zamówienia progres</span>
+            <div className="line"></div>
+          </div>
+          {/* <p style={{ fontWeight:'bold'}}>Zamówienia progres</p> */}
+
+          <ProgressItem 
+            label="Druk progres"
+            current={zamowieniaInfo.przeloty_druk_all - zamowieniaInfo.przeloty_druk_zostalo}
+            total={zamowieniaInfo.przeloty_druk_all}
+            unit="ark."
+          />
+
+          <ProgressItem 
+            label="Falc progres"
+            current={zamowieniaInfo.przeloty_falc_all - zamowieniaInfo.przeloty_falc_zostalo}
+            total={zamowieniaInfo.przeloty_falc_all}
+            unit="ark."
+          />
+
+          <ProgressItem 
+            label="Zeszyt progres"
+            current={zamowieniaInfo.przeloty_zeszyt_all - zamowieniaInfo.przeloty_zeszyt_zostalo}
+            total={zamowieniaInfo.przeloty_zeszyt_all}
+            unit="szt."
+          />
+                  <ProgressItem 
+            label="PUR progres"
+            current={zamowieniaInfo.przeloty_pur_all - zamowieniaInfo.przeloty_pur_zostalo}
+            total={zamowieniaInfo.przeloty_pur_all}
+            unit="szt."
+          />
+                  <ProgressItem 
+            label="HotMelt progres"
+            current={zamowieniaInfo.przeloty_hotmelt_all - zamowieniaInfo.przeloty_hotmelt_zostalo}
+            total={zamowieniaInfo.przeloty_hotmelt_all}
+            unit="szt."
+          />
+
           <div className="summaryBoxWartosc">
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              {/* <StackIcon />  */}
               <span className="summaryLabel">Wartość bez kosztów dodatkowych</span>
             </div>
             <div>
               <span className="summaryValue">{zamowieniaInfo.wartosc_zamowienia.toLocaleString()}</span>
-       {/* < DollarSign size={22} style={{color:'greenyellow',paddingBottom:'5px',marginLeft:'10'}}/> */}
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}></span>
             </div>
-            
           </div>
-
-
-
-
-
-
-
         </div>
       </div>
+
+      {/* -------------------------------------- */}
+
     </div>
   );
 }

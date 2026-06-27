@@ -273,7 +273,7 @@ export default function ZamowieniaInfo() {
         <header className="header">
           <div className="headerTitleGroup">
             <div className="accentBar"></div>
-            <h2 className="title">Stan Produkcji</h2>
+            <h2 className="title">Suma przelotów</h2>
           </div>
           <button 
             className="closeButton" 
@@ -330,17 +330,17 @@ export default function ZamowieniaInfo() {
               <span className="summaryValue">{zamowieniaInfo.naklad_zeszyt.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
-            +
+            
             <div>
               
               <span className="summaryLabel"> Kolbus </span>
               <span className="summaryValue">{zamowieniaInfo.naklad_klejona.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
-            =
+            
                         <div>
               
-              <span className="summaryLabel">  </span>
+              <span className="summaryLabel"> Nakład </span>
               <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
@@ -349,11 +349,43 @@ export default function ZamowieniaInfo() {
 
 
 
-                   <div className="sectionDivider">
-            <span className="dividerLabel">Zamówienia progres</span>
-            <div className="line"></div>
-          </div>
+
           {/* <p style={{ fontWeight:'bold'}}>Zamówienia progres</p> */}
+
+
+
+          <div className="summaryBoxWartosc">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="summaryLabel">Wartość bez kosztów dodatkowych</span>
+            </div>
+            <div>
+              <span className="summaryValue">{zamowieniaInfo.wartosc_zamowienia.toLocaleString()}</span>
+              <span style={{ marginLeft: '4px', color: '#94a3b8' }}></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* -------------------------------------- */}
+
+      <div className="window">
+        <header className="header">
+          <div className="headerTitleGroup">
+            <div className="accentBar"></div>
+            <h2 className="title">Zamówienia progres</h2>
+          </div>
+          <button 
+            className="closeButton" 
+            onClick={() => setShowZamowieniaInfo(false)}
+          >
+            <CloseIcon />
+          </button>
+        </header>
+
+        <div className="content">
+          {/* <div className="statsGrid">
+
+          </div> */}
 
           <ProgressItem 
             label="Druk progres"
@@ -388,19 +420,9 @@ export default function ZamowieniaInfo() {
             unit="szt."
           />
 
-          <div className="summaryBoxWartosc">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className="summaryLabel">Wartość bez kosztów dodatkowych</span>
-            </div>
-            <div>
-              <span className="summaryValue">{zamowieniaInfo.wartosc_zamowienia.toLocaleString()}</span>
-              <span style={{ marginLeft: '4px', color: '#94a3b8' }}></span>
-            </div>
-          </div>
+
         </div>
       </div>
-
-      {/* -------------------------------------- */}
 
     </div>
   );

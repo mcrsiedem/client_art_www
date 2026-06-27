@@ -313,6 +313,14 @@ export default function ZamowieniaInfo() {
             color="#6366f1"
           />
 
+          <ProgressItem 
+            label="Druk progres.."
+            current={zamowieniaInfo.przeloty_druk_all - zamowieniaInfo.przeloty_druk_zostalo}
+            total={zamowieniaInfo.przeloty_druk_all}
+            unit="ark."
+            color="#6366f1"
+          />
+
 
 
 

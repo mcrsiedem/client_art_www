@@ -209,7 +209,11 @@ export default function ZamowieniaInfo() {
           background-color: #f1f5f9;
           flex: 1;
         }
-        .progressItem { margin-bottom: 1.5rem; }
+        .progressItem { margin-bottom: 1.5rem; border-bottom: 1px solid #c4c4c4}
+
+                .progressItem:hover {
+          background-color: #f1f5f9;
+        }
         .progressHeader { display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: flex-end; }
         .progressTitle { font-size: 0.875rem; font-weight: 700; color: #334155; }
         .progressPercent { font-size: 0.875rem; font-weight: 900; }
@@ -267,6 +271,7 @@ export default function ZamowieniaInfo() {
 
         .summaryLabel { color: #cbd5e1; font-weight: 500; }
         .summaryValue { font-size: 1.5rem; font-weight: 900; }
+        .summaryValue2 { font-size: 1.2rem; font-weight: 900; }
       `}</style>
 
       <div className="window">
@@ -338,12 +343,12 @@ export default function ZamowieniaInfo() {
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
             </div>
             
-                        <div>
+                        {/* <div>
               
               <span className="summaryLabel"> Nakład </span>
               <span className="summaryValue">{zamowieniaInfo.naklad.toLocaleString()}</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}>szt.</span>
-            </div>
+            </div> */}
             
           </div>
 
@@ -356,11 +361,14 @@ export default function ZamowieniaInfo() {
 
           <div className="summaryBoxWartosc">
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span className="summaryLabel">Wartość bez kosztów dodatkowych</span>
+              <span className="summaryLabel">Wartość bez kosztów</span>
             </div>
-            <div>
-              <span className="summaryValue">{zamowieniaInfo.wartosc_zamowienia.toLocaleString()}</span>
+            <div style={{ display:'flex',gap:'20px',margin: '15px 0px', color: '#ffffff' }}>
+              <span className="summaryValue2">{zamowieniaInfo.wartosc_zamowienia_pl.toLocaleString()} PLN</span>
+              <span className="summaryValue2">{zamowieniaInfo.wartosc_zamowienia_euro.toLocaleString()} EURO</span>
+              <span className="summaryValue2">{zamowieniaInfo.wartosc_zamowienia_dolar.toLocaleString()} USD</span>
               <span style={{ marginLeft: '4px', color: '#94a3b8' }}></span>
+
             </div>
           </div>
         </div>

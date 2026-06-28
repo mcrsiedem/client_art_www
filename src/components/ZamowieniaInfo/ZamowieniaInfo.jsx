@@ -34,7 +34,8 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" ,jednostk
   const fillColor = isFinished ? "#10b981" : color;
   const zostalo = total - current
 
-  return (
+  if(total>0){
+      return (
     <div className="progressItem">
       <div className="progressHeader">
         <span className="progressTitle">{label}</span>
@@ -55,6 +56,8 @@ const ProgressItem = ({ label, current, total, unit, color = "#2563eb" ,jednostk
       </div>
     </div>
   );
+  }
+
 };
 
 // --- Główny Komponent ---
@@ -86,6 +89,7 @@ export default function ZamowieniaInfo() {
         .window {
           position: relative;
           width: 100%;
+          height: 500px;
           max-width: 600px;
           background-color: #ffffff;
           border-radius: 1rem;
@@ -211,9 +215,9 @@ export default function ZamowieniaInfo() {
         }
         .progressItem { margin-bottom: 1.5rem; border-bottom: 1px solid #c4c4c4}
 
-                .progressItem:hover {
-          background-color: #f1f5f9;
-        }
+        //         .progressItem:hover {
+        //   background-color: #f1f5f9;
+        // }
         .progressHeader { display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: flex-end; }
         .progressTitle { font-size: 0.875rem; font-weight: 700; color: #334155; }
         .progressPercent { font-size: 0.875rem; font-weight: 900; }

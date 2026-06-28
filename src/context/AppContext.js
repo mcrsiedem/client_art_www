@@ -287,20 +287,20 @@ const _firma = [
       nazwa: "Oprawione",
     },
     
-    {
-      id: 6,
-      nazwa: "Oddane",
-    },
+    // {
+    //   id: 6,
+    //   nazwa: "Oddane",
+    // },
 
         {
       id: 7,
       nazwa: "Anulowane",
     },
-    {
-      id: 8,
-      nazwa: "Wszystkie",
-    }
-  ,
+  //   {
+  //     id: 8,
+  //     nazwa: "Wszystkie",
+  //   }
+  // ,
     {
       id: 9,
       nazwa: "Proofy",

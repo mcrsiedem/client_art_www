@@ -282,7 +282,7 @@ export default function ZamowieniaInfo() {
         <header className="header">
           <div className="headerTitleGroup">
             <div className="accentBar"></div>
-            <h2 className="title">Suma przelotów</h2>
+            <h2 className="title">Suma zakończonych wykonań</h2>
           </div>
           <button 
             className="closeButton" 
@@ -384,7 +384,7 @@ export default function ZamowieniaInfo() {
         <header className="header">
           <div className="headerTitleGroup">
             <div className="accentBar"></div>
-            <h2 className="title">Zamówienia progres</h2>
+            <h2 className="title">Suma realizacji - Zamówienia Progres</h2>
           </div>
           <button 
             className="closeButton" 

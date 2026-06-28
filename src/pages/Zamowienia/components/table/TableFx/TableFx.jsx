@@ -455,7 +455,7 @@ const sortedItems = useMemo(() => {
       </div>
 <div className={styles.pagination}>
 
-      {!showWyszukiwarka && (
+      {/* {!showWyszukiwarka && (
         <>
 
           <button 
@@ -494,7 +494,7 @@ const sortedItems = useMemo(() => {
           </button>
 
         </>
-      )}
+      )} */}
 
 
 

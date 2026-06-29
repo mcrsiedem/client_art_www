@@ -16,7 +16,7 @@ import Szukaj from "./Szukaj";
 import BTN_DIAGNOSTYKA from "./BTN_INSPEKCJA";
 import BTN_INSPEKCJA from "./BTN_INSPEKCJA";
 import { useZamowienia } from "hooks/useZamowienia";
-import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _waluta } from "utils/initialvalue";
+import { _etapy_produkcji, _stan_dokumentu, _status_dokumentu, _waluta, initialDane } from "utils/initialvalue";
 
 import { 
   Settings, 
@@ -33,7 +33,11 @@ import {
   Menu,
   EllipsisVertical,
   SearchAlert,
-  SearchIcon
+  SearchIcon,
+  Calendar,
+  Calendar1,
+  Calendar1Icon,
+  CalendarCheck
 } from "lucide-react";
 import BTN_KOPIUJ_NEW from "./BTN_KOPIUJ";
 import MenuHeaderZamowienia from "./menu_header_zamowienia/MenuHeaderZamowienia";
@@ -49,8 +53,13 @@ export default function Header({ dodaj_clikHandler,showSettings, setShowSettings
   const contextModalInsert = useContext(ModalInsertContext);
   const {pagination,widok} = useContext(ZamowienieContext);
   const setShowTabs = contextModalInsert.setShowTabs
+  const daneZamowienia = contextModalInsert.daneZamowienia
+  const setDaneZamowienia = contextModalInsert.setDaneZamowienia
+  const harmonogramRef = contextModalInsert.harmonogramRef
   const [showMenu, setShowMenu] = useState(false); // Stan do kontrolowania widoczności menu
 const {setShowWyszukiwarka,showWyszukiwarka} = useContext(ZamowienieContext);
+
+
 
 
     const showLog = () => {
@@ -86,9 +95,33 @@ const {setShowWyszukiwarka,showWyszukiwarka} = useContext(ZamowienieContext);
             setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
             setSelectedZamowienie({id:1})
             dodaj_clikHandler();
+            harmonogramRef.current = false
+
+            // setDaneZamowienia({...daneZamowienia, etap:2})
+
           }}
           alt="React Logo"
         /> : <></>}
+
+
+        {DecodeToken(sessionStorage.getItem("token")).zamowienie_zapis == 1 ?               <button 
+          title="Dodaj do harmonogramu"
+          style={{background:'transparent', border:'none', marginRight:'10px'}}
+          onClick={() => {
+                       setShowTabs( {parametry:false,koszty:false,historia:false,faktury:false,kreator: true})
+            setSelectedZamowienie({id:1})
+            dodaj_clikHandler();
+            harmonogramRef.current = true
+            // setDaneZamowienia({...initialDane, etap:1})
+
+          
+          }}
+          >
+          <CalendarCheck style={{color:'#95c912d4'}} size={25} />
+      </button> : <></>}
+
+
+
 
       </div>
       <div className={style.rightHeaderContener}>

@@ -10,9 +10,21 @@ const preOrderContext = useContext(PreOrderContext);
 const appContext = useContext(AppContext);
 const procesList = appContext.procesList;
 const produkty = modalInsertContext.produkty;
+  const showTabs = modalInsertContext.setShowTabs
+  const setDaneZamowienia = modalInsertContext.setDaneZamowienia
+  const daneZamowienia = modalInsertContext.daneZamowienia
+const harmonogramRef = modalInsertContext.harmonogramRef;
 
 
 function createBook() {
+
+  if(harmonogramRef.current == true ){
+    setDaneZamowienia({...daneZamowienia,etap:1})
+  }
+  
+    if(harmonogramRef.current == false ){
+    setDaneZamowienia({...daneZamowienia,etap:2})
+  }
 
     modalInsertContext.setProdukty(
       modalInsertContext.produkty.map((t) => {

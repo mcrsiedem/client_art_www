@@ -5,6 +5,14 @@ export function AddSheetFromCreator(mic,poc ) {
 
 
 
+    if(mic.harmonogramRef.current == true ){
+    mic.setDaneZamowienia({...mic.daneZamowienia,etap:1})
+  }
+  
+    if(mic.harmonogramRef.current == false ){
+    mic.setDaneZamowienia({...mic.daneZamowienia,etap:2})
+  }
+
     //  console.log("mic ", mic.produkty);
     mic.setProdukty(
       mic.produkty.map((t) => {

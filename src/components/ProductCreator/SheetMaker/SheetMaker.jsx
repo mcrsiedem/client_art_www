@@ -53,6 +53,13 @@ const setShowTabs = contextModalInsert.setShowTabs
 
   const context = useContext(PreOrderContext);
 
+
+
+// const harmonogramRef = contextModalInsert.harmonogramRef;
+//   const daneZamowienia = contextModalInsert.daneZamowienia;
+// const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
+
+
   const isEmpty = () => {
     if (
       produkty[0].naklad == null ||

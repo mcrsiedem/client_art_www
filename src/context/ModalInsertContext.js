@@ -46,8 +46,29 @@ export const ModalInsertContextProvider = ({children})=>{
     const [showInputNrZamowienie, setShowInputNrZamowienie] =useState(false);
     const [showMenuZamowienia, setShowMenuZamowienia] = useState(false);
   const [showTabs, setShowTabs] = useState({parametry:true,koszty:false,historia:false,faktury:false,kreator: false});
+  
 
+    const harmonogramRef = useRef(false); 
      
+  // useEffect(() => {
+
+  //   setDaneZamowienia({...daneZamowienia, etap: showTabs.harmonogram? 1:2})
+  //   // if (showTabs.harmonogram) {
+  //   //   // Aktualizujemy stan w kontekście na 1
+  //   //   // setDaneZamowienia(prev => ({ ...prev, etap: 1}));
+  //   //   // setDaneZamowienia(prev => ({ ...prev, etap: 1}));
+  //   //         setDaneZamowienia({...daneZamowienia, etap:1})
+  //   //   // setDaneZamowienia(prev => ({ ...prev, etap: 2}));
+
+
+  //   // }else{
+  //   //   // setDaneZamowienia(prev => ({ ...prev, etap: 2}));
+  //   //         setDaneZamowienia({...daneZamowienia, etap:2})
+
+
+  //   // }
+  // }, [showTabs.harmonogram]);
+
     
     useEffect(() => {
      
@@ -329,7 +350,8 @@ setKsiegowosc({...ksiegowosc, faktury_wartosc:suma, update:true})
           faktury, setFaktury,handleFaktury,
           procesyProduktow, setProcesyProduktow,procesyProduktowTemporary, setProcesyProduktowTemporary,
           showProcesyProduktow, setShowProcesyProduktow,selectedOprawaRow,setSelectedOprawaRow,
-      handleUpdateDane
+      handleUpdateDane,
+      harmonogramRef
 
 
 

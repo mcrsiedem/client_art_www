@@ -435,6 +435,8 @@ const setDaneZamowienia= contextModalInsert.setDaneZamowienia;
 const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
 const historiaZamowienia = contextModalInsert.historiaZamowienia;
 const setHistoriaZamowienia = contextModalInsert.setHistoriaZamowienia;
+const harmonogramRef = contextModalInsert.harmonogramRef;
+const showTabs = contextModalInsert.showTabs;
 const [add] = useHistoria()
 // etap produkcji tj pliki akcept druk etc
 // po każdej zmianie etapu z harmonogram / nowe zamówienie stan zmienia się na do przyjęcia
@@ -443,7 +445,7 @@ const [add] = useHistoria()
       <label className={style.label}> Etap produkcji </label>
       <select
         className={style.select}
-        value={daneZamowienia.etap}
+        value={ harmonogramRef.current && daneZamowienia.id ==1 ? 1: daneZamowienia.etap}
         onChange={(event) => {
           //------------------------------------------
           // etap można zmieniać ponieżej plików
@@ -488,17 +490,6 @@ const [add] = useHistoria()
 
           }
           
-
-          // if(DecodeToken(sessionStorage.getItem("token")).zamowienie_oddaj == 1 && event.target.value==16){
-          //         setDaneZamowienia({...daneZamowienia, etap: parseInt(event.target.value) , update: true});
-          //      add({kategoria: "Etap zamówienia",
-          //       event: "Zmiana etapu zamówienia z "+ _etapy_produkcji.filter(x=>x.id == daneZamowienia.etap )[0].nazwa + " na "+ _etapy_produkcji.filter(x=>x.id == event.target.value )[0].nazwa,
-          //       zamowienie_id: daneZamowienia.id}
-          //   );
-          // }
-
-
-          //------------------------------------------
           
            
         }}
@@ -614,7 +605,7 @@ const setSaveButtonDisabled = contextModalInsert.setSaveButtonDisabled;
       onChange={(event) => {
         
 
-         const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
+        //  const re = /^[a-zA-Z0-9_+\sąćęłńóśźżĄĘŁŃÓŚŹŻŚĆŹ.-/-ŠšŽžČčĐđ,!:]+$/;
         // if ( event.target.value === '' || re.test(event.target.value)) {
         setDaneZamowienia({...daneZamowienia, tytul: event.target.value, status: daneZamowienia.stan ==3 ? 3:daneZamowienia.status,update: true});
          

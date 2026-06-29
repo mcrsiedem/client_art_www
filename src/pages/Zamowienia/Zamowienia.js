@@ -25,7 +25,7 @@ import Wyszukiwarka from "./components/Wyszukiwarka/Wyszukiwarka";
 function Zamowienia() {
 
   const {setClients,setClientsWyszukiwarka,setNadkomplety,isLoading, selectedKlient, selectedUser,sortowanieZamowieniaEtap} = useContext(AppContext);
-  const {openModalInsert,setOpenModalInsert} = useContext(ModalInsertContext);
+  const {openModalInsert,setOpenModalInsert,daneZamowienia,setDaneZamowienia} = useContext(ModalInsertContext);
   const [row, setRow] = useState({ id: 1, prime_id: 1 });
   const open = useRef(false);
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ function Zamowienia() {
   const {refZamPagination} = useZamowienia();
   const [showSettings, setShowSettings] = useState(false); // ustawienia tabeli zamówienia
   const { pagination,widok,showWyszukiwarka} = useContext(ZamowienieContext);
+
 
 
   const STORAGE_KEYS = {

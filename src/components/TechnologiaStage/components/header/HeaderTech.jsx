@@ -47,6 +47,18 @@ export default function Header({}) {
         // console.log("Karta Technologiczna: ");
         console.log("Dane Tech: ", techContext.daneTech);
         console.log("Produkt Tech: ", techContext.produktyTech);
+
+        console.log("Elementy Tech:");
+        console.table( techContext.elementyTech);
+        console.log("____________________________________");
+
+        console.log("Procesy Tech:");
+        console.table( techContext.procesyElementowTech);
+        console.log("____________________________________");
+
+        // console.table( techContext.elementyTech,['zamowienie_id']);
+
+
         console.log("Elementy Tech: ", techContext.elementyTech);
         console.log("Fragmenty Tech: ", techContext.fragmentyTech);
         console.log("Oprawa Tech: ", techContext.oprawaTech);

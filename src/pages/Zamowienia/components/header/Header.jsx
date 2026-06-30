@@ -117,7 +117,7 @@ const {setShowWyszukiwarka,showWyszukiwarka} = useContext(ZamowienieContext);
           
           }}
           >
-          <CalendarCheck style={{color:'#cfb846'}} size={27} />
+          <CalendarCheck style={{color:'#95c912d4'}} size={27} />
       </button> : <></>}
 
 

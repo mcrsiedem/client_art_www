@@ -279,10 +279,10 @@ const Wykres = () => {
           {/* Pomocnicza legenda podziału słupka */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', fontSize: '12px', color: '#64748b', marginTop: '-5px', paddingBottom: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '14px', height: '14px', backgroundColor: '#94a3b8', borderRadius: '3px' }}></div> Główny (Etap  1)
+              <div style={{ width: '14px', height: '14px', backgroundColor: '#596575', borderRadius: '3px' }}></div> Zamówienia
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '14px', height: '14px', backgroundColor: '#94a3b8', borderRadius: '3px', opacity: 0.45, borderTop: '1px dashed rgba(0,0,0,0.2)' }}></div> Harmonogram (Etap = 1)
+              <div style={{ width: '14px', height: '14px', backgroundColor: '#94a3b8', borderRadius: '3px', opacity: 0.45, borderTop: '1px dashed rgba(0,0,0,0.2)' }}></div> Harmonogram 
             </div>
           </div>
 

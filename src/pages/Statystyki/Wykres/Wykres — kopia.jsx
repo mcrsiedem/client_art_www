@@ -9,7 +9,7 @@ const Wykres = () => {
   const appcontext = useContext(AppContext);
   const daneZamowieniaProgres = appcontext.zamowieniaProgres;
 
-  // Matryca limitów - aktywne dla każdego widoku
+  // Matryca limitów - teraz będą aktywne dla każdego widoku
   const LIMIT_MATRIX = {
     all: { daily: 200000, weekly: 2000000, monthly: 8000000 },
     main: { daily: 100000, weekly: 2000000, monthly: 8000000 },
@@ -24,6 +24,22 @@ const Wykres = () => {
     { key: 'przeloty_zeszyt_zostalo', color: '#36a3b6be', label: 'Zeszyt', category: 'finishing' }
   ];
 
+
+  const allConfig3 = [
+    { key: 'przeloty_druk_zostalo', color: '#1E4D2B', label: 'Druk', category: 'main' },      // Głęboka, butelkowa zieleń
+    { key: 'przeloty_falc_zostalo', color: '#2C3E50', label: 'Falc', category: 'main' },      // Elegancki granat (Midnight Blue)
+    { key: 'przeloty_pur_zostalo', color: '#B8860B', label: 'PUR', category: 'finishing' },   // Ciemne złoto / Ugier
+    { key: 'przeloty_hotmelt_zostalo', color: '#800020', label: 'Hotmelt', category: 'finishing' }, // Burgund / Wino
+    { key: 'przeloty_zeszyt_zostalo', color: '#4A90E2', label: 'Zeszyt', category: 'finishing' }  // Stalowy błękit
+  ];
+
+  const allConfig1 = [
+    { key: 'przeloty_druk_zostalo', color: '#9ecc4e', label: 'Druk', category: 'main' },      // Szałwiowa zieleń
+    { key: 'przeloty_falc_zostalo', color: '#639db9', label: 'Falc', category: 'main' },      // Gołębi błękit / Stalowy
+    { key: 'przeloty_pur_zostalo', color: '#c9a23f', label: 'PUR', category: 'finishing' },   // Piaskowe złoto
+    { key: 'przeloty_hotmelt_zostalo', color: '#c04347', label: 'Hotmelt', category: 'finishing' }, // Brudny róż / Koralowy pastel
+    { key: 'przeloty_zeszyt_zostalo', color: '#49262db9', label: 'Zeszyt', category: 'finishing' }  // Zgaszony fiolet / Wrzos
+  ];
   const formatValue = (val) => {
     if (!val || val <= 0) return '';
     if (val >= 1000000) return (val / 1000000).toFixed(3) + ' mln';
@@ -50,7 +66,6 @@ const Wykres = () => {
     return `${f(monday)} - ${f(sunday)}`;
   };
 
-  // Grupowanie danych z rozbiciem na główny proces i harmonogram
   const processedData = useMemo(() => {
     const groups = {};
     daneZamowieniaProgres.forEach(item => {
@@ -73,40 +88,28 @@ const Wykres = () => {
 
       if (!groups[key]) {
         groups[key] = { label: key, subLabel, timestamp: date.getTime(), values: {} };
-        allConfig.forEach(c => {
-          groups[key].values[c.key] = { main: 0, schedule: 0, total: 0 };
-        });
+        allConfig.forEach(c => groups[key].values[c.key] = 0);
       }
-
-      allConfig.forEach(c => {
-        const val = item[c.key] || 0;
-        if (Number(item.etap) === 1) {
-          groups[key].values[c.key].schedule += val;
-        } else if (Number(item.etap) > 1) {
-          groups[key].values[c.key].main += val;
-        }
-        groups[key].values[c.key].total += val;
-      });
+      allConfig.forEach(c => { groups[key].values[c.key] += item[c.key] || 0; });
     });
     return Object.values(groups).sort((a, b) => a.timestamp - b.timestamp);
   }, [viewType, daneZamowieniaProgres]);
 
-  // Dynamiczne obliczanie maxVal na osi Y (uwzględnia łączną sumę etapów)
+  // Dynamiczne obliczanie maxVal uwzględniające limit (żeby linia nie wystawała poza wykres)
   const maxVal = useMemo(() => {
-    const allVisibleValues = processedData.flatMap(g => activeConfig.map(c => g.values[c.key].total));
+    const allVisibleValues = processedData.flatMap(g => activeConfig.map(c => g.values[c.key]));
     const peakReference = Math.max(...allVisibleValues, currentLimit, 100);
     const step = peakReference > 200000 ? 50000 : 10000;
     return Math.ceil((peakReference * 1.25) / step) * step; 
   }, [processedData, activeConfig, currentLimit]);
 
-  // Obliczanie sum końcowych do dolnej legendy
   const totals = useMemo(() => {
-    const sums = {};
-    allConfig.forEach(c => {
-      sums[c.key] = processedData.reduce((acc, group) => acc + (group.values[c.key]?.total || 0), 0);
-    });
-    return sums;
-  }, [processedData]);
+  const sums = {};
+  allConfig.forEach(c => {
+    sums[c.key] = processedData.reduce((acc, group) => acc + (group.values[c.key] || 0), 0);
+  });
+  return sums;
+}, [processedData]);
 
   const styles = {
     container: { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '2rem', fontFamily: 'system-ui, sans-serif' },
@@ -130,34 +133,9 @@ const Wykres = () => {
     targetLabel: { backgroundColor: '#ef4444', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '4px', marginTop: '-10px', fontWeight: 'bold' },
     barContainer: { width: '130px', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'end' },
     barGroup: { display: 'flex', alignItems: 'end', gap: '6px', height: '100%', borderBottom: '2px solid #f1f5f9', paddingBottom: '2px' },
-    // Poprawiony barWrapper - wysokość zależy teraz od realnej sumy wartości słupka
-    barWrapper: (totalHeight) => ({ 
-      flex: 1, 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'end', 
-      height: `${totalHeight}%`,
-      minHeight: '25px', // Zapewnia bezpieczną przestrzeń na etykietę tekstową, nawet gdy wartość wynosi 0
-      transition: 'height 0.6s ease'
-    }),
-    // Elastyczny stack dopasowany do wysokości wrappera
-    barStack: { 
-      width: '100%', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'end', 
-      height: '100%' 
-    },
-    // Segmenty liczą swój procent względem całkowitej wysokości wrappera słupka
-    barSegment: (segmentShare, color, isSchedule) => ({
-      width: '100%',
-      backgroundColor: color,
-      height: `${segmentShare}%`,
-      transition: 'all 0.6s ease',
-      opacity: isSchedule ? 0.45 : 1, 
-      borderTop: isSchedule ? '1px dashed rgba(255,255,255,0.4)' : 'none'
-    }),
-    barValue: { fontSize: '10px', fontWeight: 'bold', color: '#94a3b8', marginBottom: '6px', textAlign: 'center', whiteSpace: 'nowrap', display: 'block', width: '100%' },
+    barWrapper: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'end', height: '100%' },
+    bar: (height, color) => ({ width: '100%', backgroundColor: color, height: `${height}%`, borderRadius: '4px 4px 0 0', transition: 'all 0.6s ease' }),
+    barValue: { fontSize: '10px', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px', textAlign: 'center', whiteSpace: 'nowrap' },
     labelBox: { height: '45px', marginTop: '12px', textAlign: 'center' },
     mainLabel: { display: 'block', fontSize: '13px', fontWeight: '800', color: '#1e293b' },
     subLabel: { display: 'block', fontSize: '10px', color: '#94a3b8', marginTop: '2px' }
@@ -200,7 +178,7 @@ const Wykres = () => {
               </div>
 
               <div style={styles.chartViewport}>
-                {/* Linia limitu */}
+                {/* Linia limitu - teraz zawsze widoczna */}
                 <div style={styles.targetLine((currentLimit / maxVal) * 100)}>
                   <span style={styles.targetLabel}>LIMIT: {currentLimit.toLocaleString()}</span>
                 </div>
@@ -208,48 +186,14 @@ const Wykres = () => {
                 {processedData.map((group, idx) => (
                   <div key={idx} style={styles.barContainer}>
                     <div style={styles.barGroup}>
-                      {activeConfig.map(c => {
-                        const dataObj = group.values[c.key] || { main: 0, schedule: 0, total: 0 };
-                        
-                        // Wyliczamy całkowitą wysokość słupka w odniesieniu do osi Y wykresu (maxVal)
-                        const totalHeight = (dataObj.total / maxVal) * 100;
-                        
-                        // Wyliczamy udział procentowy segmentów wewnątrz tej wysokości (suma musi dać 100% wysokości wrappera)
-                        const mainShare = dataObj.total > 0 ? (dataObj.main / dataObj.total) * 100 : 0;
-                        const scheduleShare = dataObj.total > 0 ? (dataObj.schedule / dataObj.total) * 100 : 0;
-
-                        return (
-                          <div key={c.key} style={styles.barWrapper(totalHeight)}>
-                            <span title={`${c.label} (Suma: ${dataObj.total})`} style={styles.barValue}>
-                              {formatValue(dataObj.total)}
-                            </span>
-                            
-                            <div style={styles.barStack}>
-                              {/* Część górna: Harmonogram (etap == 1) */}
-                              {dataObj.schedule > 0 && (
-                                <div 
-                                  title={`Harmonogram: ${dataObj.schedule.toLocaleString()}`}
-                                  style={{
-                                    ...styles.barSegment(scheduleShare, c.color, true),
-                                    borderRadius: '4px 4px 0 0'
-                                  }}
-                                />
-                              )}
-
-                              {/* Część dolna: Główna (etap > 1) */}
-                              {dataObj.main > 0 && (
-                                <div 
-                                  title={`W toku: ${dataObj.main.toLocaleString()}`}
-                                  style={{
-                                    ...styles.barSegment(mainShare, c.color, false),
-                                    borderRadius: dataObj.schedule > 0 ? '0 0 0 0' : '4px 4px 0 0' 
-                                  }}
-                                />
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
+                      {activeConfig.map(c => (
+                        <div key={c.key} style={styles.barWrapper}>
+                          <span title={c.label} style={styles.barValue}>
+                            {formatValue(group.values[c.key])}
+                          </span>
+                          <div style={styles.bar((group.values[c.key] / maxVal) * 100, c.color)}></div>
+                        </div>
+                      ))}
                     </div>
                     <div style={styles.labelBox}>
                       <span style={styles.mainLabel}>{group.label}</span>
@@ -261,30 +205,22 @@ const Wykres = () => {
             </div>
           </div>
           
-          {/* Legenda główna z sumami */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '130px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
-            {activeConfig.map(c => (
-              <div key={c.key} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '700', color: '#64748b' }}>
-                  <div style={{ width: '24px', height: '24px', backgroundColor: c.color, borderRadius: '4px' }}></div> 
-                  {c.label}
-                </div>
-                <span style={{ fontSize: '15px', fontWeight: '800', color: '#64748b', marginLeft: '10px' }}>
-                  {totals[c.key] > 0 ? formatValue(totals[c.key]) : '0'}
-                </span>
-              </div>
-            ))}
-          </div>
 
-          {/* Pomocnicza legenda podziału słupka */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', fontSize: '12px', color: '#64748b', marginTop: '-5px', paddingBottom: '10px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '14px', height: '14px', backgroundColor: '#94a3b8', borderRadius: '3px' }}></div> Główny (Etap  1)
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '14px', height: '14px', backgroundColor: '#94a3b8', borderRadius: '3px', opacity: 0.45, borderTop: '1px dashed rgba(0,0,0,0.2)' }}></div> Harmonogram (Etap = 1)
-            </div>
-          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '130px', marginTop: '40px', padding: '20px', borderTop: '1px solid #f1f5f9' }}>
+  {activeConfig.map(c => (
+    <div key={c.key} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '700', color: '#64748b' }}>
+        <div style={{ width: '24px', height: '24px', backgroundColor: c.color, borderRadius: '4px' }}></div> 
+        {c.label}
+      </div>
+      {/* Tutaj wyświetlamy sumę */}
+      <span style={{ fontSize: '15px', fontWeight: '800', color: '#64748b', marginLeft: '10px' }}>
+        {totals[c.key] > 0 ? formatValue(totals[c.key]) : '0'}
+      </span>
+    </div>
+  ))}
+</div>
 
         </div>
       </div>

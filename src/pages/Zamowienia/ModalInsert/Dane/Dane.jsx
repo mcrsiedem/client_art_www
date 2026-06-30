@@ -444,7 +444,7 @@ const [add] = useHistoria()
     <div className={style.col}>
       <label className={style.label}> Etap produkcji </label>
       <select
-        className={style.select}
+        className={daneZamowienia.etap == 1 || harmonogramRef.current==true ? style.select_harm :style.select}
         value={ harmonogramRef.current && daneZamowienia.id ==1 ? 1: daneZamowienia.etap}
         onChange={(event) => {
           //------------------------------------------

@@ -121,7 +121,7 @@ padding-left: 10px;
 }
 
 .btn_przujmij_do_harmonogramu {
-  background: rgb(246, 212, 45);
+  background: #f6d42d;
 
   /* background-color: rgb(41, 159, 255); */
   /* background-image: linear-gradient(rgb(107, 158, 224,0.3) 0%, rgb(126, 182, 255,0.3) 50%, rgb(107, 158, 224,0.3) 100%); */
@@ -139,6 +139,16 @@ padding-left: 10px;
 .select,
 .input {
   background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: 1px solid rgb(185, 185, 185);
+  padding-left: 10px;
+  /* min-width: 50px; */
+}
+
+.select_harm {
+  background-color: #f6d42d;
   height: 2rem;
   border-radius: 5px;
   border-color: transparent;

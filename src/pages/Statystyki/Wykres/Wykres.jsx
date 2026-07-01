@@ -1,10 +1,13 @@
 import React, { useState, useMemo, useContext } from 'react';
-import { BarChart3 } from 'lucide-react';
+import { BarChart3, ClosedCaption, X } from 'lucide-react';
 import { AppContext } from 'context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Wykres = () => {
   const [viewType, setViewType] = useState('monthly');
   const [processTab, setProcessTab] = useState('all');
+    const navigate = useNavigate();
+  
   
   const appcontext = useContext(AppContext);
   const daneZamowieniaProgres = appcontext.zamowieniaProgres;
@@ -185,6 +188,14 @@ const Wykres = () => {
                 </button>
               ))}
             </div>
+
+                  <button 
+          title="Zamknij"
+          style={{background:'transparent', border:'none', marginRight:'10px'}}
+          onClick={() => {navigate("/Panel");}}
+          >
+          <X style={{marginLeft:'20px', color:'#ffffffd4',height:'30px',width:'30px', padding:'5px',backgroundColor:'#ff0000', borderRadius:'5px'}} size={10} />
+      </button>
           </div>
         </div>
 

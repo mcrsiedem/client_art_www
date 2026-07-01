@@ -246,7 +246,7 @@ function Procesory() {
                   <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
                 ))}
             </div>
-                  <Btn_all_procesor  />
+                  {/* <Btn_all_procesor  /> */}
 
         <div className={style.procesor_btn_right}>  </div>
     </div>

@@ -246,6 +246,8 @@ function Procesory() {
                   <Btn_procesor key={procesor.id} setSelectedProcesor={setSelectedProcesor} id={procesor.id} nazwa={procesor.nazwa} procesor={procesor} />
                 ))}
             </div>
+                  <Btn_all_procesor  />
+
         <div className={style.procesor_btn_right}>  </div>
     </div>
   );
@@ -299,6 +301,38 @@ const Btn_procesor = ({id,nazwa,procesor}) =>{
     )
    }}>
      {nazwa} 
+   </button> 
+  )
+}
+
+const Btn_all_procesor = () =>{
+  const appContext = useContext(AppContext)
+  const techContext = useContext(TechnologyContext);
+  const fechGrupyAndWykonaniaForProcesor = techContext.fechGrupyAndWykonaniaForProcesor
+  const fechGrupyAndWykonaniaForProces = techContext.fechGrupyAndWykonaniaForProces
+  
+  const setSelectedProcesor = techContext.setSelectedProcesor
+  const selectedProcesor = techContext.selectedProcesor
+  const selectedProces = techContext.selectedProces
+  const procesory = appContext.procesory
+  const setProcesory = appContext.setProcesory
+
+let id =20
+
+if( selectedProces == 3)   return(
+    <button  
+
+    title={"Procesor ID: "+ id}
+    key={id}
+
+    className={style.btn_procesor}
+    onClick={(event) => {
+ appContext.setIsLoading(true);
+    //  setSelectedProcesor(id)
+     fechGrupyAndWykonaniaForProces(1)
+
+   }}>
+    All
    </button> 
   )
 }

@@ -789,6 +789,30 @@ const cofnijDateOJedenDzien = (dane) => {
 
   }
 
+async function fechGrupyAndWykonaniaForProces(proces_nazwa_id) {
+
+// pokaż wszystkie grupy dla procesu bez podziały na procesory
+    await axios.get(IP + "technologie_grupy_an_wykonania_for_proces/"+proces_nazwa_id).then((res)=>{
+
+      setGrupWykonanAll(res.data[0])
+      setGrupWykonanAllWyszukiwarka(res.data[0])
+      // setSelectedProcesor(procesor_id)
+      // setDniWstecz(res.data[1][0].dni     )
+
+      setWykonaniaAll(res.data[1])
+      // console.log("wykonania",res.data[1])
+
+      return res
+    }).then((res) =>{
+      setGrupWykonanAllWyszukiwarka(prev=>{return prev})
+      appContext.setIsLoading(false);
+    });
+
+  }
+
+
+
+
 
 
   async function fechGrupyOprawaForProcesor(procesor_id) {
@@ -928,7 +952,7 @@ async function fechTechnology() {
                     openTechnologiaId,setOpenTechnologiaId,
                     fechparametryTechnologii,
                     fechTechnology,
-                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaForProcesor,
+                    wykonaniaAll, setWykonaniaAll,grupyWykonanAll, setGrupWykonanAll,fechGrupyAndWykonaniaForProcesor,fechGrupyAndWykonaniaForProces,
                     selectedProcesor, setSelectedProcesor,selectedProces, setSelectedProces,fechparametry,
                     showProcesy,setShowProcesy,
                     fechparametryTechnologiiDetails,dniWstecz, setDniWstecz,grupyWykonanAllNiezakonczone, setGrupWykonanAllNiezakonczone,
